@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 9e71757215f6a0a5b664abd3f8a9ee632b1535f3
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b150dc8e0688b27fdc677bf23a75389c493f1325
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876377"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210189"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Bestanden herstellen naar een virtuele machine in Azure
 Azure Backup maakt herstelpunten die worden opgeslagen in geografisch redundante Recovery Services-kluizen. Wanneer u vanaf een herstelpunt herstelt, kunt u de hele VM of afzonderlijke bestanden herstellen. In dit artikel wordt uitgelegd hoe u afzonderlijke bestanden kunt herstellen. In deze zelfstudie leert u het volgende:
@@ -106,7 +106,7 @@ Als u uw bestanden wilt herstellen, biedt Azure Backup een op uw VM uit te voere
 
     Het script wordt gedownload en er wordt een wachtwoord weergegeven, zoals getoond in het volgende voorbeeld:
 
-    ```
+    ```output
     File downloaded: myVM_we_1571974050985163527.sh. Use password c068a041ce12465
     ```
 

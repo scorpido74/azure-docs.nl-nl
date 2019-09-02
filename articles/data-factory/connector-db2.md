@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 49f86a6a8858fd0ef3085ed571f3348d33f70c8d
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 16dd40a521a9b0a240574c2f177f896c31508a37
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966575"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211704"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Gegevens van DB2 kopiëren met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -32,6 +32,7 @@ U kunt gegevens uit de DB2-Data Base kopiëren naar elk ondersteund Sink-gegeven
 
 In het bijzonder ondersteunt deze DB2-connector de volgende IBM DB2-platforms en-versies met distributed Relationed data base Architecture (DRDA) SQL Access Manager (SQLAM) versie 9, 10 en 11:
 
+* IBM DB2 voor z/OS 12
 * IBM DB2 voor z/OS 11,1
 * IBM DB2 voor z/OS 10,1
 * IBM DB2 voor i 7,3
@@ -64,7 +65,7 @@ De volgende eigenschappen worden ondersteund voor gekoppelde DB2-service:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **Db2** | Ja |
+| Type | De eigenschap type moet worden ingesteld op: **Db2** | Ja |
 | server |Naam van de DB2-Server. U kunt het poort nummer opgeven na de server naam gescheiden door een dubbele punt, `server:port`bijvoorbeeld. |Ja |
 | database |Naam van de DB2-Data Base. |Ja |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de DB2-Data Base.<br/>Toegestane waarde is: **Basic**. |Ja |
@@ -105,7 +106,7 @@ Als u gegevens wilt kopiëren uit DB2, stelt u de eigenschap type van de gegeven
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **RelationalTable** | Ja |
+| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **RelationalTable** | Ja |
 | tableName | De naam van de tabel in de DB2-Data Base. | Nee (als 'query' in de activiteitbron is opgegeven) |
 
 **Voorbeeld**
@@ -135,7 +136,7 @@ Als u gegevens wilt kopiëren uit DB2, stelt u het bron type in de Kopieer activ
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **RelationalSource** | Ja |
+| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **RelationalSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**

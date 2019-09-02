@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: fa3ad71dcc7738169f78f4dab94bd9bdf4d4cc89
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: f1ceae17195c08af380a7448dd4dbf3bfa3f9de2
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182964"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211869"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Quickstart: Aanmelden met micro soft toevoegen aan een Java-Web-app
 
@@ -35,7 +35,6 @@ Wanneer u de hand leiding hebt voltooid, accepteert uw toepassing aanmeldingen v
 > ## <a name="prerequisites"></a>Vereisten
 > Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig: 
 > - Java Development Kit (JDK) 8 of hoger en Maven.
-> - Een Azure Active Directory-Tenant (Azure AD). Zie [een Azure AD-Tenant verkrijgen](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-create-new-tenant) voor meer informatie over het verkrijgen van een Azure AD-Tenant.
 >
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden

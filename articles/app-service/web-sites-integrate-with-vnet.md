@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a96c02d1d7d2fae43e0a5915e9233bde842ce621
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 3a014bab0252667c3c70e56399a72de4e5771a86
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066671"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210110"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uw app integreren met een Azure-Virtual Network
 In dit document wordt de Azure App Service functie voor de integratie van virtuele netwerken beschreven en wordt uitgelegd hoe u deze kunt instellen met apps in de [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). [Virtuele netwerken van Azure][VNETOverview] (VNets) kunt u veel van uw Azure-resources in een niet-Internet routeerbaar netwerk plaatsen.  
@@ -110,7 +110,7 @@ Selecteer de **verbinding verbreken**om uw app te verbreken vanuit het VNet. Hie
 
 #### <a name="web-app-for-containers"></a>Web-app voor containers
 
-Als u gebruikmaakt van App Service op Linux met de ingebouwde installatie kopieën, werkt de regionale VNet-integratie functie zonder extra wijzigingen. Als u Web App for Containers gebruikt, moet u uw docker-installatie kopie aanpassen om VNet-integratie te kunnen gebruiken. Gebruik in uw docker-installatie kopie de variabele poort omgeving als de gateway poort van de hoofd webserver, in plaats van een hardcoded poort nummer te gebruiken. De variabele poort omgeving wordt automatisch ingesteld door App Service platform op de opstart tijd van de container.
+Als u gebruikmaakt van App Service op Linux met de ingebouwde installatie kopieën, werkt de regionale VNet-integratie functie zonder extra wijzigingen. Als u Web App for Containers gebruikt, moet u uw docker-installatie kopie aanpassen om VNet-integratie te kunnen gebruiken. Gebruik in uw docker-installatie kopie de variabele poort omgeving als de gateway poort van de hoofd webserver, in plaats van een hardcoded poort nummer te gebruiken. De variabele poort omgeving wordt automatisch ingesteld door App Service platform op de opstart tijd van de container. Als u SSH gebruikt, moet de SSH-daemon worden geconfigureerd om te Luis teren naar het poort nummer dat is opgegeven door de omgevings variabele SSH_PORT bij gebruik van regionale VNet-integratie.
 
 ### <a name="service-endpoints"></a>Service-eindpunten
 

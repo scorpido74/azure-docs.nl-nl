@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 6c06d789e6a005c0079f889cead6a75f4d0baf19
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c4eba3e08e403243e76ac891d3bfcb59f12cad85
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875700"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211918"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Kennismaking met de gebruikersinterface van Azure IoT Central
 
@@ -39,9 +39,29 @@ Als _operator_ gebruikt u de gebruikersinterface van Azure IoT Central om uw Azu
 
 Gebruik het navigatie menu aan de linkerkant om toegang te krijgen tot de verschillende gebieden van de toepassing. U kunt de navigatie balk uitvouwen of samen **<** vouwen **>** door te selecteren of:
 
-| Menu | Description |
-| ---- | ----------- |
-| ![Linkernavigatiemenu](media/overview-iot-central-tour/navigationbar.png) | <ul><li>Met de knop **dash board** wordt uw toepassings dashboard weer gegeven. Als opbouw functie kunt u het dash board aanpassen voor uw Opera tors. Gebruikers kunnen ook hun eigen Dash boards maken.</li><li>Met de knop **Device Explorer** ziet u een lijst met de gesimuleerde en echte apparaten die aan elke apparaatsjabloon in de toepassing zijn gekoppeld. Als operator gebruikt u de **Device Explorer** om uw verbonden apparaten te beheren.</li><li>Met de knop **Apparaatsets** kunt u apparaatsets bekijken en maken. Als operator kunt u de apparaatsets maken als een logische verzameling apparaten die door een query wordt gespecificeerd.</li><li>Met de knop **Analyse** worden analytische gegevens weergegeven die zijn afgeleid van telemetriegegevens van apparaten en apparaatsets. Als operator kunt u uw apparaatgegevens aangepast weergeven voor meer inzicht in uw toepassing.</li><li>De knop **Taken** schakelt bulksgewijs beheer van apparaten doordat u taken kunt maken en uitvoeren voor het uitvoeren van updates op schaal.</li><li>De knop **Apparaatsjablonen** geeft de hulpprogramma's weer die een opbouwfunctie gebruikt om apparaatsjablonen te maken en beheren.</li><li>Met de knop **Continue gegevensexport** kan een beheerder een continue export configureren naar andere Azure-services zoals opslag en wachtrijen.</li><li>Met de knop **Beheer** worden de beheerpagina's van de toepassing weergegeven waar een administrator de instellingen, gebruikers en rollen van een toepassing kan beheren.</li></ul> |
+:::row:::
+  :::column span="":::
+      ![Left navigation menu](media/overview-iot-central-tour/navigationbar.png)
+  :::column-end:::
+  :::column span="2":::
+
+      **Dashboard** displays your application dashboard. As a builder, you can customize the dashboard for your operators. Users can also create their own  dashboards.
+    
+      **Device Explorer** lists the simulated and real devices associated with each device template in the application. As an operator, you use the **Device Explorer** to manage your connected devices.
+    
+      **Device Sets** enables you to view and create device sets. As an operator, you can create device sets as a logical collection of devices specified by a query.
+    
+      **Analytics** shows analytics derived from device telemetry for devices and device sets. As an operator, you can create custom views on top of device data to derive insights from your application.
+    
+      **Jobs** enables bulk device management by having you create and run jobs to perform updates at scale.
+    
+      **Device Templates** shows the tools a builder uses to create and manage device templates.
+    
+      **Continuous Data Export** enables an administrator to configure a continuous export to other Azure services such as storage and queues.
+    
+      **Administration** shows the application administration pages where an administrator can manage application settings, users, and roles.
+   :::column-end:::
+:::row-end:::
 
 ## <a name="search-help-and-support"></a>Zoeken, hulp en ondersteuning
 

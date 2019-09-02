@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: daea1415c42960970d097753bc657392d4e1a1f4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
-ms.translationtype: HT
+ms.openlocfilehash: fd8abf81589f3338f9e45c6c1d23681269ccc654
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137264"
+ms.locfileid: "70164857"
 ---
 # <a name="quickstart-computer-vision-client-library-for-java"></a>Quickstart: Client bibliotheek voor Java Computer Vision
 
@@ -142,6 +142,9 @@ Maak eerst een **resources/** map in de map **src/main/** van het project en voe
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_refs)]
 
+> [!NOTE]
+> U kunt ook een externe installatie kopie analyseren met behulp van de URL. Zie de voorbeeld code op [github](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/ComputerVisionQuickstart.java) voor scenario's met betrekking tot externe installatie kopieën.
+
 ### <a name="specify-visual-features"></a>Visuele functies opgeven
 
 Geef vervolgens op welke visuele functies u wilt uitpakken in de analyse. Zie de [VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable) -inventarisatie voor een volledige lijst.
@@ -149,17 +152,59 @@ Geef vervolgens op welke visuele functies u wilt uitpakken in de analyse. Zie de
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_features)]
 
 ### <a name="analyze"></a>Analyseren
-Met deze methode worden gedetailleerde resultaten voor elke omvang van de afbeeldings analyse afgedrukt op de console. U wordt aangeraden deze methode aanroepen in een try/catch-blok te zetten
+Met deze methode worden gedetailleerde resultaten voor elke omvang van de afbeeldings analyse afgedrukt op de console. U wordt aangeraden deze methode aanroep rond te zetten in een try/catch-blok. De methode **analyzeImageInStream** retourneert een **ImageAnalysis** -object dat alle geëxtraheerde informatie bevat.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_analyze)]
 
-### <a name="display-results"></a>Resultaten weergeven
+In de volgende secties ziet u hoe u deze gegevens in detail kunt parseren.
 
-Met de bovenstaande methode aanroep wordt een ImageAnalysis-object geretourneerd dat alle geëxtraheerde informatie bevat. U kunt een code blok als volgt gebruiken om de details van een bepaalde visuele functie af te drukken.
+### <a name="get-image-description"></a>Beschrijving van afbeelding ophalen
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_display)]
+Met de volgende code wordt de lijst met gegenereerde bijschriften voor de afbeelding opgehaald. Zie [afbeeldingen beschrijven](../concept-describing-images.md) voor meer informatie.
 
-Zie de voorbeeld code op [github](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/ComputerVisionQuickstart.java) voor een volledige reeks weergave opties.
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_captions)]
+
+### <a name="get-image-category"></a>Categorie van installatie kopie ophalen
+
+Met de volgende code wordt de gedetecteerde categorie van de afbeelding opgehaald. Zie [installatie kopieën categoriseren](../concept-categorizing-images.md) voor meer informatie.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_category)]
+
+### <a name="get-image-tags"></a>Afbeeldings Tags ophalen
+
+Met de volgende code wordt de set gedetecteerde labels in de afbeelding opgehaald. Zie [inhouds Tags](../concept-tagging-images.md) voor meer informatie
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_tags)]
+
+### <a name="get-faces"></a>Gezichten ophalen
+
+Met de volgende code worden de gedetecteerde gezichten in de afbeelding met hun rechthoek coördinaten als resultaat gegeven en selecteert u face Attributes. Zie [gezichts detectie](../concept-detecting-faces.md) voor meer informatie.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_faces)]
+
+### <a name="get-adult-or-racy-content"></a>Inhoud voor volwassenen of ongepaste ophalen
+
+Met de volgende code wordt de gedetecteerde aanwezigheid van inhoud voor volwassenen of ongepaste in de installatie kopie afgedrukt. Zie [inhoud voor volwassenen en ongepaste](../concept-detecting-adult-content.md) voor meer informatie.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_adult)]
+
+### <a name="get-image-color-scheme"></a>Kleuren schema afbeelding ophalen
+
+Met de volgende code worden de gedetecteerde kleur kenmerken in de afbeelding afgedrukt, zoals de dominante kleuren en accent kleur. Zie [kleuren schema's](../concept-detecting-color-schemes.md) voor meer informatie.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_colors)]
+
+### <a name="get-domain-specific-content"></a>Domein-specifieke inhoud ophalen
+
+Computer Vision kunt een speciaal model gebruiken om verdere analyse van installatie kopieën uit te voeren. Zie [Domain-specifieke inhoud](../concept-detecting-domain-content.md) voor meer informatie. 
+
+Met de volgende code worden gegevens over gedetecteerde beroemdheden in de installatie kopie geparseerd.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_celebrities)]
+
+Met de volgende code worden gegevens over gedetecteerde bezienswaardigheden in de installatie kopie geparseerd.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_landmarks)]
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 

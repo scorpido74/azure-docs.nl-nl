@@ -17,12 +17,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a2b6d01802fd819471a9cfb382166e6293261ca
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a130878baa10be426072dfe79284a1d602dfb6ff
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852894"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211857"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Quickstart: Een token verkrijgen en Microsoft Graph API aanroepen vanuit een console-app met behulp van de identiteit van de app
 
@@ -39,9 +39,7 @@ Voor deze Snelstartgids is [.net Core 2,2](https://www.microsoft.com/net/downloa
 
 > [!div renderon="docs" class="sxs-lookup"]
 >
-> U hebt twee opties voor het starten van de snelstarttoepassing:
-> * [Express] [Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * [Handmatig] [Optie 2: registreer de toepassing en configureer handmatig de toepassing en het codevoorbeeld](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> U hebt twee opties voor het starten van de snelstarttoepassing: Express (optie 1 hieronder) en hand matig (optie 2)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld
 >
@@ -80,12 +78,12 @@ Voor deze Snelstartgids is [.net Core 2,2](https://www.microsoft.com/net/downloa
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Stap 2: uw Visual Studio-project downloaden
 
-[Download het Visual Studio-project](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/msal3x.zip)
+[Download het Visual Studio-project](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Stap 3: uw Visual Studio-project configureren
 
 1. Pak het zip-bestand uit in een lokale map dicht bij de hoofdmap van de schijf, bijvoorbeeld **C:\Azure-Samples**.
-1. Open de oplossing in Visual Studio - **daemon-console.sln** (optioneel).
+1. Open de oplossing in Visual Studio- **1-call-MSGraph\daemon-console.SLN** (optioneel).
 1. Bewerk **appsettings.json** en vervang de waarden van de velden `ClientId`, `Tenant` en `ClientSecret` door het volgende:
 
     ```json
@@ -145,7 +143,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 Als u Visual Studio gebruikt, drukt u op **F5** om de toepassing uit te voeren. anders voert u de toepassing uit via de opdracht prompt of de-console:
 
 ```console
-cd {ProjectFolder}\daemon-console
+cd {ProjectFolder}\daemon-console\1-Call-Graph
 dotnet run
 ```
 
@@ -166,7 +164,7 @@ MSAL ([micro soft. Identity. client](https://www.nuget.org/packages/Microsoft.Id
  U kunt MSAL.NET installeren door de volgende opdracht uit te voeren in **Package Manager Console** van Visual Studio:
 
 ```powershell
-Install-Package Microsoft.Identity.Client -Pre
+Install-Package Microsoft.Identity.Client
 ```
 
 Als u Visual Studio niet gebruikt, kunt u ook de volgende opdracht uitvoeren om MSAL aan uw project toe te voegen:
@@ -221,8 +219,15 @@ Zie de [naslagdocumentatie voor `AcquireTokenForClient`](https://docs.microsoft.
 
 ## <a name="next-steps"></a>Volgende stappen
 
+Voor meer informatie over daemon-toepassingen raadpleegt u de pagina scenario overloop
+
 > [!div class="nextstepaction"]
-> [Voor beeld van .NET core-daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
+> [Daemon-toepassing die web-Api's aanroept](scenario-daemon-overview.md)
+
+Voor de zelf studie over de daemon-toepassing raadpleegt u:
+
+> [!div class="nextstepaction"]
+> [Zelf studie voor daemon .NET Core-Console](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
 
 Meer informatie over machtigingen en toestemming:
 
@@ -233,9 +238,6 @@ Zie de Oauth 2.0-clientreferentiestroom voor meer informatie over de auth-stroom
 
 > [!div class="nextstepaction"]
 > [Oauth-clientreferentiestroom](v2-oauth2-client-creds-grant-flow.md)
-
-> [!div class="nextstepaction"]
-> [Clientreferentiestromen met MSAL.NET](https://aka.ms/msal-net-client-credentials)
 
 Help ons het micro soft Identity-platform te verbeteren. Vertel ons wat u denkt door een korte enquête met twee vragen te volt ooien.
 

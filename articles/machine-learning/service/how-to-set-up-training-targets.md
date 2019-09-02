@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1ee18abfab2cf286ee010bd6d25dfbc5a38cebb
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: c9bc9d64d7f21498acd5cb0c23447e7ff77de629
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011567"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195576"
 ---
-# <a name="set-up-compute-targets-for-model-training"></a>Compute-doelen voor modeltraining instellen 
+# <a name="set-up-and-use-compute-targets-for-model-training"></a>Reken doelen voor model training instellen en gebruiken 
 
 Met Azure Machine Learning-service kunt u uw model trainen op diverse resources of omgevingen en gezamenlijk ook [__reken doelen__](concept-azure-machine-learning-architecture.md#compute-targets)genoemd. Een compute-doel kan een lokale machine of een Cloud resource zijn, zoals een Azure Machine Learning compute, Azure HDInsight of een externe virtuele machine.  U kunt ook reken doelen voor model implementatie maken, zoals wordt beschreven in [' waar en hoe u uw modellen implementeert '](how-to-deploy-and-where.md).
 
@@ -47,33 +47,9 @@ Azure Machine Learning-service heeft verschillende ondersteuning voor verschille
 
 Bij het trainen is het gebruikelijk om te beginnen op de lokale computer en dat trainings script later uit te voeren op een ander reken doel. Met Azure Machine Learning-service kunt u uw script uitvoeren op verschillende reken doelen zonder dat u het script hoeft te wijzigen. 
 
-Alles wat u hoeft te doen, is het definiëren van de omgeving voor elk reken doel met een **uitvoerings configuratie**.  Wanneer u uw trainings experiment wilt uitvoeren op een ander Compute-doel, geeft u de uitvoerings configuratie op voor die reken kracht.
+Alles wat u hoeft te doen, is het definiëren van de omgeving voor elk reken doel in een **uitvoerings configuratie**.  Wanneer u uw trainings experiment wilt uitvoeren op een ander Compute-doel, geeft u de uitvoerings configuratie op voor die reken kracht. Zie [omgevingen maken en beheren voor training en implementatie](how-to-use-environments.md) voor meer informatie over het opgeven van een omgeving en het binden ervan voor het uitvoeren van een configuratie.
 
 Meer informatie over het [verzenden van experimenten](#submit) aan het einde van dit artikel.
-
-### <a name="manage-environment-and-dependencies"></a>Omgeving en afhankelijkheden beheren
-
-Wanneer u een uitvoerings configuratie maakt, moet u bepalen hoe u de omgeving en afhankelijkheden op het reken doel beheert. 
-
-#### <a name="system-managed-environment"></a>Systeem-beheerde omgeving
-
-Gebruik een door een systeem beheerde omgeving als u wilt dat [Conda](https://conda.io/docs/) de python-omgeving en de script afhankelijkheden voor u beheert. Een door een systeem beheerde omgeving wordt standaard gebruikt en de meest voorkomende keuze. Het is handig voor externe Compute-doelen, met name wanneer u dat doel niet kunt configureren. 
-
-U hoeft alleen maar elke pakket afhankelijkheid op te geven met behulp van de [CondaDependency-klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) . vervolgens maakt Conda een bestand met de naam **conda_dependencies. yml** in de map **aml_config** in uw werk ruimte met de lijst met pakket afhankelijkheden en Hiermee stelt u uw python-omgeving in wanneer u uw trainings experiment verzendt. 
-
-De eerste installatie van een nieuwe omgeving kan enkele minuten duren, afhankelijk van de grootte van de vereiste afhankelijkheden. Zolang de lijst met pakketten ongewijzigd blijft, treedt de instel tijd slechts één keer op.
-  
-De volgende code toont een voor beeld van een systeem beheerde omgeving waarvoor scikit is vereist:
-    
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_system_managed)]
-
-#### <a name="user-managed-environment"></a>Gebruiker-beheerde omgeving
-
-Voor een door een gebruiker beheerde omgeving bent u verantwoordelijk voor het instellen van uw omgeving en het installeren van elk pakket dat nodig is voor uw trainings script voor het Compute-doel. Als uw trainings omgeving al is geconfigureerd (zoals op uw lokale machine), kunt u de Setup-stap `user_managed_dependencies` overs laan op True. Conda controleert uw omgeving niet en installeert niets voor u.
-
-De volgende code toont een voor beeld van het configureren van trainings uitvoeringen voor een door de gebruiker beheerde omgeving:
-
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
 
 ## <a name="whats-an-estimator"></a>Wat is een estimator?
 
@@ -390,7 +366,7 @@ Zie [resource management](reference-azure-machine-learning-cli.md#resource-manag
 
 U kunt de berekenings doelen die aan uw werk ruimte zijn gekoppeld, openen, maken en beheren met de [VS code-extensie](how-to-vscode-tools.md#create-and-manage-compute-targets) voor Azure machine learning service.
 
-## <a id="submit"></a>Trainings uitvoering verzenden
+## <a id="submit"></a>Een trainings uitvoering verzenden met Azure Machine Learning SDK
 
 Nadat u een uitvoerings configuratie hebt gemaakt, kunt u deze gebruiken om uw experiment uit te voeren.  Het code patroon voor het verzenden van een trainings uitvoering is hetzelfde voor alle typen reken doelen:
 
@@ -430,8 +406,70 @@ Hetzelfde experiment wisselen om uit te voeren in een ander reken doel door gebr
 U kunt ook het volgende doen:
 
 * Dien het experiment in met `Estimator` een object zoals wordt weer gegeven in de [trein ml-modellen met schattingen](how-to-train-ml-models.md).
-* Dien een experiment [in met de CLI-extensie](reference-azure-machine-learning-cli.md#experiments).
+* Verzend een HyperDrive-uitvoering voor [afstemming](how-to-tune-hyperparameters.md)-afstemming.
 * Een experiment verzenden via de [VS code-extensie](how-to-vscode-tools.md#train-and-tune-models).
+
+## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Voer een configuratie uit en voer run uit met Azure Machine Learning CLI
+
+U kunt [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) en [machine learning cli-extensie](reference-azure-machine-learning-cli.md) gebruiken voor het maken van uitvoerings configuraties en het verzenden van uitvoeringen op verschillende reken doelen. In de volgende voor beelden wordt ervan uitgegaan dat u een bestaande Azure machine learning-werkruimte hebt en u bent `az login` aangemeld bij Azure met behulp van de CLI-opdracht. 
+
+### <a name="create-run-configuration"></a>Configuratie voor uitvoeren maken
+
+De eenvoudigste manier om een uitvoerings configuratie te maken is door de map te navigeren die uw machine learning python-scripts bevat en de CLI-opdracht te gebruiken
+
+```azurecli
+az ml folder attach
+```
+
+Met deze opdracht maakt u een `.azureml` submap met configuratie bestanden voor het uitvoeren van sjablonen voor verschillende Compute-doelen. U kunt deze bestanden kopiëren en bewerken om uw configuratie aan te passen, bijvoorbeeld om Python-pakketten toe te voegen of docker-instellingen te wijzigen.  
+
+### <a name="create-an-experiment"></a>Een experiment maken
+
+Maak eerst een experiment voor uw uitvoeringen
+
+```azurecli
+az ml experiment create -n <experiment>
+```
+
+### <a name="script-run"></a>Script uitvoeren
+
+Een script uitvoering verzenden, een opdracht uitvoeren
+
+```azurecli
+az ml run submit-script -e <experiment> -c <runconfig> my_train.py
+```
+
+### <a name="hyperdrive-run"></a>HyperDrive uitvoeren
+
+U kunt HyperDrive gebruiken met Azure CLI om het afstemmen van de para meters uit te voeren. Maak eerst een HyperDrive-configuratie bestand in de volgende indeling. Zie [Hyper parameters afstemmen voor uw model](how-to-tune-hyperparameters.md) artikel voor meer informatie over afstemming-tuning-para meters.
+
+```yml
+# hdconfig.yml
+sampling: 
+    type: random # Supported options: Random, Grid, Bayesian
+    parameter_space: # specify a name|expression|values tuple for each parameter.
+    - name: --penalty # The name of a script parameter to generate values for.
+      expression: choice # supported options: choice, randint, uniform, quniform, loguniform, qloguniform, normal, qnormal, lognormal, qlognormal
+      values: [0.5, 1, 1.5] # The list of values, the number of values is dependent on the expression specified.
+policy: 
+    type: BanditPolicy # Supported options: BanditPolicy, MedianStoppingPolicy, TruncationSelectionPolicy, NoTerminationPolicy
+    evaluation_interval: 1 # Policy properties are policy specific. See the above link for policy specific parameter details.
+    slack_factor: 0.2
+primary_metric_name: Accuracy # The metric used when evaluating the policy
+primary_metric_goal: Maximize # Maximize|Minimize
+max_total_runs: 8 # The maximum number of runs to generate
+max_concurrent_runs: 2 # The number of runs that can run concurrently.
+max_duration_minutes: 100 # The maximum length of time to run the experiment before cancelling.
+```
+
+Voeg dit bestand toe naast de configuratie bestanden voor uitvoeren. Dien vervolgens een HyperDrive-uitvoering in met:
+```azurecli
+az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configuration-name <hdconfig> my_train.py
+```
+
+Let op de sectie *argumenten* in runconfig en de *parameter ruimte* in HyperDrive config. Ze bevatten de opdracht regel argumenten die moeten worden door gegeven aan het trainings script. De waarde in runconfig blijft hetzelfde voor elke iteratie, terwijl het bereik in HyperDrive config wordt herhaald. Geef in beide bestanden niet hetzelfde argument op.
+
+Zie [de referentie documentatie](reference-azure-machine-learning-cli.md)voor ```az ml``` meer informatie over deze cli-opdrachten en een volledige set met argumenten.
 
 <a id="gitintegration"></a>
 

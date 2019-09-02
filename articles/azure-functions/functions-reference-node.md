@@ -13,10 +13,10 @@ ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
 ms.openlocfilehash: 62115dd519336c728b679e4e698182a50660a464
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 09/02/2019
 ms.locfileid: "68949889"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaars handleiding voor Azure Functions java script
@@ -418,7 +418,7 @@ Wanneer u met HTTP-triggers werkt, kunt u op een aantal manieren toegang krijgen
 
 De volgende tabel bevat de node. js-versie die wordt gebruikt door elke primaire versie van de functions runtime:
 
-| Functie versie | Versie van Node.js | 
+| Functie versie | Node. js-versie | 
 |---|---|
 | 1.x | 6.11.2 (vergrendeld door de runtime) |
 | 2.x  | _Actieve LTS_ en _onderhoud LTS_ node. js-versies (8.11.1 en 10.14.1 aanbevolen). Stel de versie in met behulp van de [app-instelling](functions-how-to-use-azure-function-app-settings.md#settings)WEBSITE_NODE_DEFAULT_VERSION.|

@@ -7,14 +7,14 @@ manager: carmonm
 keywords: herstel op item niveau; bestands herstel vanuit Azure VM-back-up; bestanden herstellen vanuit een Azure VM
 ms.service: backup
 ms.topic: conceptual
-ms.date: 3/01/2019
+ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 67ba9ba9bc85213ec479a90d205ed9570c62bf8c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5ff4f1ff8a3d6143285b2842c351e1d26bd356ea
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954613"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210369"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -68,7 +68,7 @@ Als u bestanden of mappen van het herstel punt wilt herstellen, gaat u naar de v
     - download.microsoft.com
     - Url's van de Recovery service (geo-naam verwijst naar de regio waar de Recovery service-kluis zich bevindt)
         - https:\//pod01-rec2.geo-name.backup.windowsazure.com (voor open bare geografische gebieden van Azure)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (voor Azure China)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (voor Azure China 21vianet)
         - https:\//pod01-rec2.geo-name.backup.windowsazure.us (voor Azure Amerikaanse overheid)
         - https:\//pod01-rec2.geo-name.backup.windowsazure.de (voor Azure Duitsland)
     - uitgaande poort 3260
@@ -247,7 +247,7 @@ Deze functie is gebouwd voor toegang tot de VM-gegevens zonder dat u de hele VM 
 
 #### <a name="select-recovery-point-who-can-generate-script"></a>Herstel punt selecteren (wie kan een script genereren)
 
-Het script biedt toegang tot VM-gegevens. het is belang rijk om te bepalen wie het in de eerste plaats kan genereren. U moet zich aanmelden bij Azure Portal en moet beschikken over [RBAC-machtigingen](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) om het script te kunnen genereren.
+Het script biedt toegang tot VM-gegevens. het is belang rijk om te bepalen wie het in de eerste plaats kan genereren. Er moet worden aangemeld bij Azure Portal en moet RBAC zijn [geautoriseerd](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) om het script te kunnen genereren.
 
 Bestands herstel heeft hetzelfde machtigings niveau nodig als vereist voor het terugzetten van de VM en het terugzetten van schijven. Met andere woorden, alleen geautoriseerde gebruikers kunnen de VM-gegevens weer geven om het script te kunnen genereren.
 

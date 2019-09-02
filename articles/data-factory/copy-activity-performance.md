@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 05ecfdc4f082aaa44fe54e6b807a1c5faf84eb8d
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 22c83b1fe53a9209fd243fe807bb76718cbdcbbd
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996450"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211695"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Gids voor de prestaties en schaal baarheid van de Kopieer activiteit
 > [!div class="op_single_selector" title1="Selecteer de versie van Azure Data Factory die u gebruikt:"]
@@ -181,6 +181,7 @@ Voor elke uitvoering van de Kopieer activiteit bepaalt Azure Data Factory het aa
 | Scenario kopiëren | Standaard parallelle kopie aantal bepaald door de service |
 | --- | --- |
 | Gegevens kopiëren tussen winkels op basis van bestanden |Is afhankelijk van de grootte van de bestanden en het aantal DIUs dat wordt gebruikt voor het kopiëren van gegevens tussen twee gegevens archieven in de Cloud of de fysieke configuratie van de zelf-hostende Integration runtime-computer. |
+| Kopiëren van relationele gegevens opslag met ingeschakelde partitie optie (inclusief [Oracle](connector-oracle.md#oracle-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP-tabel](connector-sap-table.md#sap-table-as-source)en [SAP open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source))|4 |
 | Gegevens uit een bron archief kopiëren naar Azure-tabel opslag |4 |
 | Alle andere kopieerscenario 's |1 |
 

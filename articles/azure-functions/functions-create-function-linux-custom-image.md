@@ -1,22 +1,19 @@
 ---
 title: Azure Functions op Linux maken met behulp van een aangepaste installatie kopie
 description: Informatie over het maken van Azure Functions uitgevoerd op een aangepaste installatiekopie van Linux.
-services: functions
-keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
-ms.devlang: azure-cli
-manager: jeconnoc
-ms.openlocfilehash: 525cb444ad7b1b78de867f83539ac338ddd144e9
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+manager: gwallace
+ms.openlocfilehash: 80f7185b69a7953656235d3bd622b7f61611de1a
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562931"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210173"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Een functie in Linux maken met behulp van een aangepaste installatie kopie
 
@@ -56,7 +53,7 @@ U kunt ook de [Azure Cloud Shell](https://shell.azure.com/bash) gebruiken.
 
 ## <a name="create-the-local-function-app-project"></a>Het lokale functie-app-project maken
 
-Voer de volgende opdracht uit vanaf de opdrachtregel om een functie-app-project te maken in de map `MyFunctionProj` van de huidige lokale map.
+Voer de volgende opdracht uit vanaf de opdrachtregel om een functie-app-project te maken in de map `MyFunctionProj` van de huidige lokale map. Voor een python-project [moet u in een virtuele omgeving worden uitgevoerd](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional).
 
 ```bash
 func init MyFunctionProj --docker
@@ -68,7 +65,7 @@ Wanneer u hierom wordt gevraagd, kiest u een runtime voor de werkrol uit de volg
 
 * `dotnet`: Hiermee maakt u een .NET core Class Library-project (. csproj).
 * `node`: hiermee maakt u een JavaScript-project.
-* `python`: hiermee maakt u een Python-project.
+* `python`: hiermee maakt u een Python-project.  
 
 Wanneer de opdracht wordt uitgevoerd, ziet u ongeveer de volgende uitvoer:
 

@@ -10,18 +10,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 30025499ae3073a04863d711423bd9556e7fc6c4
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 3ad8eaaca719429a858a7d84156c616dd02d3c7c
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726040"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211658"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Gegevens kopiëren uit de SAP-Cloud voor de klant (C4C) met behulp van Azure Data Factory
 
 In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren van/naar SAP-Cloud voor klant (C4C). Dit is gebaseerd op de [overzicht kopieeractiviteit](copy-activity-overview.md) artikel met daarin een algemeen overzicht van de kopieeractiviteit.
+
+>[!TIP]
+>Zie [SAP Data Integration using Azure Data Factory White Paper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) with introduction, comparsion en guidance (Engelstalig) voor meer informatie over de algemene ondersteuning van de ADF op SAP Data Integration scenario.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
@@ -41,7 +44,7 @@ De volgende eigenschappen worden ondersteund voor SAP-Cloud voor door de klant g
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **SapCloudForCustomer**. | Ja |
+| Type | De eigenschap type moet worden ingesteld op: **SapCloudForCustomer**. | Ja |
 | url | De URL van de SAP C4C OData-service. | Ja |
 | username | Geef de gebruikers naam op om verbinding te maken met de SAP-C4C. | Ja |
 | password | Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
@@ -81,7 +84,7 @@ Als u gegevens wilt kopiëren uit de SAP-Cloud voor de klant, stelt u de eigensc
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **SapCloudForCustomerResource** |Ja |
+| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **SapCloudForCustomerResource** |Ja |
 | path | Geef het pad op van de SAP C4C OData-entiteit. |Ja |
 
 **Voorbeeld:**
@@ -109,11 +112,11 @@ Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zij
 
 ### <a name="sap-c4c-as-source"></a>SAP C4C als bron
 
-Als u gegevens wilt kopiëren uit de SAP-Cloud voor de klant, stelt u het bron type in de Kopieer activiteit in op **SapCloudForCustomerSource**. De volgende eigenschappen worden ondersteund in de kopieeractiviteit **bron** sectie:
+Als u gegevens wilt kopiëren uit de SAP-Cloud voor de klant, stelt u het bron type in de Kopieer activiteit in op **SapCloudForCustomerSource**. De volgende eigenschappen worden ondersteund in de kopieeractiviteit **source** sectie:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **SapCloudForCustomerSource**  | Ja |
+| Type | De eigenschap type moet worden ingesteld op: **SapCloudForCustomerSource**  | Ja |
 | query | Geef de aangepaste OData-query op om gegevens te lezen. | Nee |
 
 Voorbeeld query om gegevens op te halen voor een specifieke dag:`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
@@ -156,7 +159,7 @@ Als u gegevens wilt kopiëren naar een SAP-Cloud voor de klant, stelt u het sink
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **SapCloudForCustomerSink**  | Ja |
+| Type | De eigenschap type moet worden ingesteld op: **SapCloudForCustomerSink**  | Ja |
 | writeBehavior | Het schrijf gedrag van de bewerking. Kan ' Insert ', ' Update ' zijn. | Nee. Standaard ' Insert '. |
 | writeBatchSize | De Batch grootte van de schrijf bewerking. De Batch grootte voor het verkrijgen van de beste prestaties kan verschillen voor de verschillende tabellen of servers. | Nee. Standaard 10. |
 
@@ -208,7 +211,7 @@ Bij het kopiëren van gegevens uit de SAP-Cloud voor de klant, worden de volgend
 | Edm.Binary | Byte[] |
 | Edm.Boolean | Bool |
 | Edm.Byte | Byte[] |
-| Edm.DateTime | Datetime |
+| Edm.DateTime | DateTime |
 | Edm.Decimal | Decimal |
 | Edm.Double | Double |
 | EDM. single | Single |

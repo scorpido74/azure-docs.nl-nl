@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 8ed9b86f8dd4f255a6ea8420ef27fbb131df91a9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 1bba5e91e3edda41b75a96d8b55495ca5d1c092b
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644880"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70209633"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>T-SQL-verschillen in beheerde exemplaren, beperkingen en bekende problemen
 
@@ -338,6 +338,10 @@ Een beheerd exemplaar heeft geen toegang tot bestands shares en Windows-mappen, 
 - `CREATE ASSEMBLY FROM FILE`wordt niet ondersteund. Zie [Assembly maken op basis van een bestand](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY`kan niet verwijzen naar bestanden. Zie [ALTER assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
+### <a name="database-mail-db_mail"></a>Database Mail (db_mail)
+ - `sp_send_dbmail`kan atachments niet verzenden @file_attachments met behulp van para meter. Het lokale bestands systeem en de omvangele shares of Azure Blob-opslag zijn niet toegankelijk via deze procedure.
+ - Zie de bekende problemen met betrekking `@query` tot para meter en authenticatie.
+ 
 ### <a name="dbcc"></a>DBCC
 
 Niet-gedocumenteerde DBCC-instructies die zijn ingeschakeld in SQL Server, worden niet ondersteund in beheerde exemplaren.
@@ -475,8 +479,8 @@ Beperkingen:
 - Herstellen van `.BAK` een bestand met een beperking die in dit document is `FILESTREAM` beschreven (bijvoorbeeld of `FILETABLE` objecten) kan niet worden hersteld op een beheerd exemplaar.
 - `.BAK`bestanden die meerdere back-upsets bevatten, kunnen niet worden hersteld. 
 - `.BAK`bestanden die meerdere logboek bestanden bevatten, kunnen niet worden hersteld.
-- Back-ups die data bases bevatten die groter zijn dan 8TB, actieve in-Memory OLTP-objecten of meer dan 280 bestanden kunnen niet worden hersteld op een Algemeen-exemplaar. 
-- Back-ups met data bases die groter zijn dan 4 TB of in-Memory OLTP-objecten met de totale grootte die groter is dan de grootte die is beschreven in [resource limieten](sql-database-managed-instance-resource-limits.md) , kunnen niet worden hersteld op bedrijfskritiek exemplaar.
+- Back-ups die data bases bevatten die groter zijn dan 8TB, Active in-memory OLTP Objects of meer dan 280 bestanden kunnen niet worden hersteld op een Algemeen-exemplaar. 
+- Back-ups die data bases bevatten die groter zijn dan 4 TB of in-memory OLTP objecten met de totale grootte die groter is dan de grootte die is beschreven in [resource limieten](sql-database-managed-instance-resource-limits.md) , kunnen niet worden hersteld op bedrijfskritiek exemplaar.
 Zie Restore statements ( [instructies herstellen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)) voor meer informatie over Restore-instructies.
 
 ### <a name="service-broker"></a>Service Broker
@@ -536,6 +540,14 @@ De maximale bestands grootte van `tempdb` mag niet groter zijn dan 24 GB per ker
 Een beheerd exemplaar plaatst uitgebreide informatie in fouten Logboeken. Er zijn veel interne systeem gebeurtenissen vastgelegd in het fouten logboek. Gebruik een aangepaste procedure om fout logboeken te lezen die een aantal irrelevante vermeldingen filteren. Zie [Managed instance – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/)voor meer informatie.
 
 ## <a name="Issues"></a>Bekende problemen
+
+### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Kan niet verificatie, naar externe e-mail servers met behulp van een beveiligde verbinding (SSL)
+
+**Vallen** Aug 2019
+
+Data base mail die is [geconfigureerd met behulp van beveiligde verbinding (SSL)](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail) kan niet worden geverifieerd op sommige e-mail servers buiten Azure. Dit is een beveiligings configuratie probleem dat binnenkort wordt opgelost.
+
+**Enkele** Een tijdelijke beveiligde verbinding (SSL) vormt de configuratie van de data base mail totdat het probleem is opgelost. 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Meerdere data base-Service Broker dialoog vensters moeten opnieuw worden geïnitialiseerd na de upgrade van de servicelaag
 

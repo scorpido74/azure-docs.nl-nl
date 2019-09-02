@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 4bce7aeebee729ed253d39720ef520880c261a22
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 3777aecea5e25b33a7010ad90887829406e491ae
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639659"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210164"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Een installatie zonder toezicht van Azure Backup Server uitvoeren
 
@@ -26,7 +26,7 @@ Deze stappen zijn niet van toepassing als u Azure Backup Server v1 installeert.
 
 2. Plak de volgende code in het bestand MABSSetup. ini. Vervang de tekst tussen de haakjes (\< \>) door waarden uit uw omgeving. De volgende tekst is een voor beeld:
 
-   ```
+   ```text
    [OPTIONS]
    UserName=administrator
    CompanyName=<Microsoft Corporation>
@@ -49,7 +49,7 @@ Deze stappen zijn niet van toepassing als u Azure Backup Server v1 installeert.
 
 3. Sla het bestand op. Voer vervolgens de volgende opdracht uit vanaf een opdracht prompt met verhoogde bevoegdheid op de installatie server:
 
-   ```
+   ```cmd
    start /wait <cdlayout path>/Setup.exe /i  /f <.ini file path>/setup.ini /L <log path>/setup.log
    ```
 

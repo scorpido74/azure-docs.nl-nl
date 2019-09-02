@@ -6,16 +6,17 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/5/2018
+ms.date: 06/05/2018
 ms.author: dacurwin
-ms.openlocfilehash: 25e511a1596c1119d1db8c9270ce216cd5186e72
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: d9e7aaca99e551e17e8b4be5ef6146a19e44355f
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735474"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210210"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Back-up van bestanden en toepassingen in Azure Stack
+
 U kunt Azure Backup gebruiken om bestanden en toepassingen op Azure Stack te beveiligen (of er back-ups van te maken). Als u een back-up wilt maken van bestanden en toepassingen, installeert u Microsoft Azure Backup Server als een virtuele machine die wordt uitgevoerd op Azure Stack. U kunt de bestanden op elke Azure Stack-server in hetzelfde virtuele netwerk beveiligen. Nadat u Azure Backup Server hebt geïnstalleerd, voegt u Azure-schijven toe om de lokale opslag ruimte beschikbaar te maken voor back-upgegevens op de korte termijn. Azure Backup Server maakt gebruik van Azure Storage voor lange termijn retentie.
 
 > [!NOTE]
@@ -23,7 +24,6 @@ U kunt Azure Backup gebruiken om bestanden en toepassingen op Azure Stack te bev
 >
 
 In dit artikel wordt niet beschreven hoe u Azure Backup Server installeert in de Azure Stack omgeving. Zie het artikel Installing [Azure backup server](backup-mabs-install-azure-stack.md)om Azure Backup Server op Azure stack te installeren.
-
 
 ## <a name="back-up-files-and-folders-in-azure-stack-vms-to-azure"></a>Back-ups maken van bestanden en mappen in Azure Stack Vm's naar Azure
 
@@ -41,7 +41,7 @@ Als u Azure Backup Server wilt configureren voor het beveiligen van bestanden in
 
     ![Wizard nieuwe beveiligings groep wordt geopend](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
 
-    Het scherm **groeps leden selecteren** wordt geopend. 
+    Het scherm **groeps leden selecteren** wordt geopend.
 
     ![Wizard nieuwe beveiligings groep wordt geopend](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
@@ -63,7 +63,7 @@ Als u Azure Backup Server wilt configureren voor het beveiligen van bestanden in
     > Bewaar op Azure Backup Server gekoppelde schijven meer dan vijf dagen **geen** back-upgegevens.
     >
 
-    ![Wizard nieuwe beveiligings groep wordt geopend](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png) 
+    ![Wizard nieuwe beveiligings groep wordt geopend](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
 
     In plaats van het selecteren van een interval voor incrementele back-ups, voor het uitvoeren van een snelle volledige back-up, net vóór elk gepland herstel punt, klikt u op **net vóór een herstel punt**. Als u toepassings werkbelastingen beveiligt, maakt Azure Backup Server herstel punten op basis van het schema voor de synchronisatie frequentie (mits de toepassing incrementele back-ups ondersteunt). Als de toepassing geen incrementele back-ups ondersteunt, voert Azure Backup Server een snelle volledige back-up uit.
 
@@ -80,13 +80,13 @@ Als u Azure Backup Server wilt configureren voor het beveiligen van bestanden in
 
 9. Als u een back-up naar Azure wilt maken, controleert u op de pagina **online beveiligings gegevens opgeven** of de werk belastingen waarvan u een back-up wilt maken naar Azure zijn geselecteerd.
 
-10. Geef in **schema voor online back-ups opgeven**op wanneer incrementele back-ups naar Azure moeten worden uitgevoerd. 
+10. Geef in **schema voor online back-ups opgeven**op wanneer incrementele back-ups naar Azure moeten worden uitgevoerd.
 
     U kunt plannen dat back-ups elke dag, week/maand/jaar en de tijd/datum waarop ze moeten worden uitgevoerd, worden uitgevoerd. Back-ups kunnen Maxi maal twee keer per dag plaatsvinden. Telkens wanneer een back-uptaak wordt uitgevoerd, wordt er een gegevens herstel punt in azure gemaakt op basis van de kopie van de back-upgegevens die op de Azure Backup Server schijf zijn opgeslagen.
 
 11. Geef bij **online Bewaar beleid opgeven**op hoe de herstel punten die zijn gemaakt op basis van de dagelijkse/wekelijkse/maandelijkse/jaarlijkse back-ups, worden bewaard in Azure.
 
-12. In **Kies online replicatie**, geeft u op hoe de eerste volledige replicatie van gegevens wordt uitgevoerd. 
+12. In **Kies online replicatie**, geeft u op hoe de eerste volledige replicatie van gegevens wordt uitgevoerd.
 
 13. Controleer uw instellingen op **samen vatting**. Wanneer u op **groep maken**klikt, vindt de initiële gegevens replicatie plaats. Wanneer de gegevens replicatie is voltooid, wordt op de pagina **status** de status van de beveiligings groep weer gegeven als **OK**. De eerste back-uptaak vindt plaats in overeenstemming met de instellingen van de beveiligings groep.
 
@@ -115,11 +115,10 @@ Gebruik Azure Backup Server-console om gegevens op uw virtuele machine te herste
     * **Melding** Klik op **een E-mail verzenden wanneer het herstel is voltooid**en geef de ontvangers op die de melding ontvangen. Scheid de e-mail adressen met komma's.
     * Nadat u de selecties hebt gemaakt, klikt u op **volgende**
 
-7. Controleer uw herstel instellingen en klik op **herstellen**. 
+7. Controleer uw herstel instellingen en klik op **herstellen**.
 
-    > [!Note] 
-    > Terwijl de herstel taak wordt uitgevoerd, worden alle synchronisatie taken voor de geselecteerde herstel items geannuleerd.
-    >
+    >[!Note]
+    >Terwijl de herstel taak wordt uitgevoerd, worden alle synchronisatie taken voor de geselecteerde herstel items geannuleerd.
 
 Als u Modern Backup Storage (MBS) gebruikt, wordt de herstel bewerking door de eind gebruiker (EUR) van de bestands server niet ondersteund. Voor bestands server% is een afhankelijkheid van Volume Shadow Copy Service (VSS), die Modern Backup Storage niet wordt gebruikt. Als EUR is ingeschakeld, gebruikt u de volgende stappen om gegevens te herstellen:
 
@@ -128,12 +127,16 @@ Als u Modern Backup Storage (MBS) gebruikt, wordt de herstel bewerking door de e
 2. Klik in het menu **Eigenschappen** op **vorige versies** en kies de versie die u wilt herstellen.
 
 ## <a name="view-azure-backup-server-with-a-vault"></a>Azure Backup Server met een kluis weer geven
-Als u Azure Backup Server entiteiten in azure Portal wilt weer geven, kunt u de volgende stappen uitvoeren:
+
+U kunt de volgende stappen volgen om Azure Backup Server entiteiten in de Azure Portal te bekijken:
+
 1. Open Recovery Services kluis.
 2. Klik op back-upinfrastructuur.
 3. Servers voor back-upbeheer weer geven.
 
 ## <a name="see-also"></a>Zie ook
+
 Raadpleeg een van de volgende artikelen voor meer informatie over het gebruik van Azure Backup Server voor het beveiligen van andere werk belastingen:
-- [Back-up van share point-farm maken](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
-- [Back-up maken van SQL Server](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+
+* [Back-up van share point-farm maken](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
+* [Back-up maken van SQL Server](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
