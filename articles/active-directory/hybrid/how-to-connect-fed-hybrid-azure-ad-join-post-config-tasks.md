@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e76abcac94a877e6bc7ea5c417c77c8c2febff
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 70e3267792f27a170efa26cc4267d1b25045a099
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032700"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231239"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Taken na configuratie voor hybride Azure AD-koppeling
 
@@ -31,12 +31,12 @@ Nadat u Azure AD Connect hebt uitgevoerd om uw organisatie te configureren voor 
 Alle apparaten die lid zijn van een domein met Windows 10 en Windows Server 2016 worden automatisch geregistreerd bij Azure AD zodra alle configuratie stappen zijn voltooid. Als u de voor keur geeft aan een beheerde implementatie in plaats van deze automatische registratie, kunt u groeps beleid gebruiken om de automatische implementatie selectief in of uit te scha kelen.  Dit groeps beleid moet worden ingesteld voordat de andere configuratie stappen worden gestart:
 * Maak een groeps beleidsobject in uw Active Directory.
 * Noem het (ex-Hybrid Azure AD-deelname).
-* Bewerk & Ga naar:  Computer configuratie >-beleid > Beheersjablonen > Windows-onderdelen > apparaatregistratie.
+* Bewerken en ga naar:  Computer configuratie >-beleid > Beheersjablonen > Windows-onderdelen > apparaatregistratie.
 
 >[!NOTE]
 >Voor 2012R2 zijn de beleids instellingen ingesteld op **computer configuratie > beleid > Beheersjablonen > Windows-onderdelen > Workplace join > automatisch werk plek toevoegen aan client computers**
 
-* Deze instelling uitschakelen:  Registreer computers die lid zijn van een domein als apparaten.
+* Schakel deze instelling in:  Registreer computers die lid zijn van een domein als apparaten.
 * Toep assen en klik op OK.
 * Koppel het groeps beleidsobject aan de gewenste locatie (organisatie-eenheid, beveiligings groep of het domein voor alle apparaten).
 

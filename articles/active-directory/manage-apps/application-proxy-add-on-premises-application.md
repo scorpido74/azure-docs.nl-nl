@@ -12,12 +12,12 @@ ms.date: 08/28/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd5b1ffa2d66135e0068ef9f459843d616351c19
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: fe6da9b1557293ee9002681c6ce90c1c6c62a25b
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162601"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231251"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Zelfstudie: Een on-premises toepassing voor externe toegang toevoegen via Application Proxy in Azure Active Directory
 
@@ -69,7 +69,7 @@ TLS 1.2 inschakelen:
 1. Start de server opnieuw op.
 
 > [!IMPORTANT]
-> Om onze klanten de beste versleuteling van de klasse te bieden, maken we updates voor de Application proxy-service om de toegang tot alleen TLS 1,2-protocollen te beperken. Op basis van wijzigingen van de klant gereedheids worden er geleidelijk uitgegaan van klanten die alleen gebruikmaken van TLS 1,2-protocollen en worden er geen gevolgen van deze wijziging weer geven. De afschrijving van TLS 1,0 en 1,1 wordt op 2019 31 augustus voltooid en de klanten ontvangen de voorafgaande kennisgeving dat deze wijziging wordt voor bereid. Om deze wijziging voor te bereiden, moet u ervoor zorgen dat alle combi Naties van client-server en browser server zijn bijgewerkt met TLS 1,2 om de verbinding met de Application proxy-service te onderhouden. Dit zijn clients die uw gebruikers gebruiken om toegang te krijgen tot toepassingen die zijn gepubliceerd via de toepassings proxy. Zie voor bereidingen voor [TLS 1,2 in Office 365](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) voor nuttige Naslag informatie en bronnen.
+> Voor de beste versleuteling van onze klanten, beperkt de Application proxy-service de toegang tot alleen TLS 1,2-protocollen. Deze wijzigingen werden sinds 31 augustus 2019 geleidelijk uitgerold en zijn van kracht. Zorg ervoor dat alle combi Naties van client-server en browser server zijn bijgewerkt voor het gebruik van TLS 1,2 om de verbinding met de Application proxy-service te onderhouden. Dit zijn clients die uw gebruikers gebruiken om toegang te krijgen tot toepassingen die zijn gepubliceerd via de toepassings proxy. Zie voor bereidingen voor [TLS 1,2 in Office 365](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) voor nuttige Naslag informatie en bronnen.
 
 ## <a name="prepare-your-on-premises-environment"></a>Bereid uw on-premises omgeving voor
 

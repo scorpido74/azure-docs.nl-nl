@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 3158ebddf6ffe5594c9daf0fd9f3e3fe980c0b24
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b4f9c0ab3ca50b0ce8c9ba27d8773c58a72dcfa9
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845666"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70230960"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 
@@ -31,7 +31,7 @@ Hyper-V zonder Virtual Machine Manager | U kunt herstel na nood geval uitvoeren 
 
 ## <a name="on-premises-servers"></a>On-premises servers
 
-**Server** | **Vereiste** | **Details**
+**Server** | **Vereisten** | **Details**
 --- | --- | ---
 Hyper-V (wordt uitgevoerd zonder Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016 (inclusief Server Core-installatie), Windows Server 2012 R2 met de nieuwste updates | Als u Windows Server 2012 R2 al hebt geconfigureerd met/of SCVMM 2012 R2 met Azure Site Recovery en een upgrade van het besturings systeem wilt uitvoeren, volgt u de [documentatie bij](upgrade-2012R2-to-2016.md) de richt lijnen. 
 Hyper-V (uitgevoerd met Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Als Virtual Machine Manager wordt gebruikt, moeten hosts met Windows Server 2019 worden beheerd in Virtual Machine Manager 2019. Op dezelfde manier moeten hosts met Windows Server 2016 worden beheerd in Virtual Machine Manager 2016.<br/><br/>
@@ -148,10 +148,10 @@ Managed Disks | Ja, voor failover.<br/><br/> Failback van beheerde schijven word
 
 On-premises Vm's die u naar Azure repliceert, moeten voldoen aan de vereisten van de Azure-VM die in deze tabel worden samenvatten.
 
-**Onderdeel** | **Vereiste** | **Details**
+**Onderdeel** | **Vereisten** | **Details**
 --- | --- | ---
 Gast besturingssysteem | Site Recovery ondersteunt alle besturings systemen die worden [ondersteund door Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | De controle van vereisten mislukt als dit niet wordt ondersteund.
-Architectuur van gast besturingssysteem | 64-bits | De controle van vereisten mislukt als dit niet wordt ondersteund.
+Architectuur van gast besturingssysteem | 32-bits (Windows Server 2008)/64-bit | De controle van vereisten mislukt als dit niet wordt ondersteund.
 Schijf grootte van het besturings systeem | Maxi maal 2.048 GB voor virtuele machines van de eerste generatie.<br/><br/> Maxi maal 300 GB voor virtuele machines van de tweede generatie.  | De controle van vereisten mislukt als dit niet wordt ondersteund.
 Aantal besturingssysteem schijven | 1 | De controle van vereisten mislukt als dit niet wordt ondersteund.
 Aantal gegevens schijven | 16 of minder  | De controle van vereisten mislukt als dit niet wordt ondersteund.
@@ -166,13 +166,13 @@ VM-type | Generatie 1<br/><br/> Generatie 2: Windows | Virtuele machines van de 
 
 ## <a name="recovery-services-vault-actions"></a>Recovery Services kluis acties
 
-**Actie** |  **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
+**Actie** |  **Hyper-V met VMM** | **Hyper-V zonder VMM**
 --- | --- | ---
 De kluis verplaatsen tussen resource groepen<br/><br/> Binnen en tussen abonnementen | Nee | Nee
 Opslag, netwerk, Azure-Vm's verplaatsen tussen resource groepen<br/><br/> Binnen en tussen abonnementen | Nee | Nee
 
 > [!NOTE]
-> Bij het repliceren van Hyper-Vm's (beheerd met/zonder SCVMM) van on-premises naar Azure, kunt u naar slechts één AD-Tenant repliceren vanaf één specifieke omgeving-Hyper-V-site of SCVMM, zoals van toepassing.
+> Wanneer u Hyper-Vm's van on-premises repliceert naar Azure, kunt u naar slechts één AD-Tenant repliceren vanaf één specifieke omgeving-Hyper-V-site of Hyper-V met VMM, indien van toepassing.
 
 
 ## <a name="provider-and-agent"></a>Provider en agent

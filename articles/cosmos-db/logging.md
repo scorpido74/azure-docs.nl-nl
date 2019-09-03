@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 3a2702abd39ecdf506d58b6bd8884f12607e29e8
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: d8a9963edd689a32ae0642ac6fa4a622c248bc5b
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615304"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232379"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Registratie in diagnoselogboek in Azure Cosmos DB 
 
@@ -436,7 +436,7 @@ Zie voor meer informatie over de betekenis van de gegevens die wordt geretournee
 * Query uitvoeren op waarvoor operations duurt langer dan 3 milliseconden:
 
     ```
-    AzureDiagnostics | where toint(duration_s) > 30000 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
+    AzureDiagnostics | where toint(duration_s) > 3 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
     ```
 
 * Query uitvoeren voor welke agent de bewerkingen wordt uitgevoerd:
@@ -448,7 +448,7 @@ Zie voor meer informatie over de betekenis van de gegevens die wordt geretournee
 * Zoeken naar wanneer de langlopende bewerkingen zijn uitgevoerd:
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , toint(duration_s)/1000 | render timechart
+    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , duration_s | render timechart
     ```
 
 Zie [zoeken naar Logboeken in azure monitor logs](../log-analytics/log-analytics-log-search-new.md)voor meer informatie over het gebruik van de nieuwe Zoek taal voor Logboeken. 
@@ -474,7 +474,7 @@ De volgende tabel beschrijft de inhoud van elke logboekvermelding.
 | **clientIpAddress** | **clientIpAddress_s** | IP-adres van de client. |
 | **requestCharge** | **requestCharge_s** | Het aantal ru's die worden gebruikt door de bewerking |
 | **collectionRid** | **collectionId_s** | De unieke ID voor de verzameling.|
-| **Duur** | **duration_s** | De duur van de bewerking, in tikken. |
+| **Duur** | **duration_s** | De duur van de bewerking, in milliseconden. |
 | **requestLength** | **requestLength_s** | De lengte van de aanvraag, in bytes. |
 | **responseLength** | **responseLength_s** | De lengte van het antwoord, in bytes.|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | Deze waarde is niet leeg zijn wanneer [brontokens](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) worden gebruikt voor verificatie. De waarde verwijst naar de resource-ID van de gebruiker. |

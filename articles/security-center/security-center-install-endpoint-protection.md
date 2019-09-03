@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4274b3684a2e9e79385a561b1cad426b4ffd954e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 58a220192d6a02c6ad66094e8421405578a82a01
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609943"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231314"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Endpoint Protection-problemen met Azure Security Center beheren
 Azure Security Center bewaakt de status van antimalware Protection en meldt dit onder de Blade met Endpoint Protection-problemen. Security Center markeert problemen, zoals gedetecteerde bedreigingen en onvoldoende beveiliging, waardoor uw virtuele machines (Vm's) en computers kwetsbaar zijn voor aanvallen op malware. Door de informatie onder **problemen met Endpoint Protection**te gebruiken, kunt u een plan identificeren om eventuele gevonden problemen op te lossen.
@@ -31,12 +31,12 @@ Security Center worden de volgende Endpoint Protection-problemen gerapporteerd:
 - Endpoint Protection-status:
 
   - De hand tekening is verouderd: er is een antimalware-oplossing geïnstalleerd op deze Vm's en computers, maar de oplossing heeft niet de nieuwste antimalware-hand tekeningen.
-  - Geen real-time beveiliging: er is een antimalware-oplossing geïnstalleerd op deze Vm's en computers, maar deze is niet geconfigureerd voor realtime-beveiliging.   De service is mogelijk uitgeschakeld of Security Center kan de status mogelijk niet verkrijgen omdat de oplossing niet wordt ondersteund. Zie [partner integratie](security-center-os-coverage.md#supported-endpoint-protection-solutions) voor een lijst met ondersteunde oplossingen.
+  - Geen real-time beveiliging: er is een antimalware-oplossing geïnstalleerd op deze Vm's en computers, maar deze is niet geconfigureerd voor realtime-beveiliging.   De service is mogelijk uitgeschakeld of Security Center kan de status mogelijk niet verkrijgen omdat de oplossing niet wordt ondersteund. Zie [partner integratie](security-center-services.md#endpoint-supported) voor een lijst met ondersteunde oplossingen.
   - Niet rapporteren: er is een antimalware-oplossing geïnstalleerd, maar geen rapport gegevens.
   - Onbekend: er is een antimalware-oplossing geïnstalleerd, maar de status is onbekend of er wordt een onbekende fout gerapporteerd.
 
     > [!NOTE]
-    > Zie [beveiligings oplossingen integreren](security-center-os-coverage.md#supported-endpoint-protection-solutions) voor een lijst met beveiligings oplossingen voor Endpoint Protection die zijn geïntegreerd met Security Center.
+    > Zie [beveiligings oplossingen integreren](security-center-services.md#endpoint-supported) voor een lijst met beveiligings oplossingen voor Endpoint Protection die zijn geïntegreerd met Security Center.
     >
     >
 

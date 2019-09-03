@@ -5,18 +5,18 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 6/27/2019
+ms.date: 09/03/2019
 ms.author: raynew
-ms.openlocfilehash: 6a0e07f338da039be1660e59510b24bcd44eed0c
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: f3ff6e5e05cab9aab5257d810c6785e7691bae45
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491748"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232186"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Welke workloads kunt u met Azure Site Recovery beveiligen?
 
-In dit artikel beschrijft de workloads en toepassingen die u voor herstel na noodgeval met beveiligen kunt de [Azure Site Recovery](site-recovery-overview.md) service.
+In dit artikel worden werk belastingen en toepassingen beschreven die u kunt beveiligen voor herstel na nood gevallen met de [Azure site Recovery](site-recovery-overview.md) -service.
 
 
 
@@ -35,13 +35,13 @@ Site Recovery biedt als volgt beveiliging op toepassingsniveau en herstel:
 * Toepassingsonafhankelijk, met replicatie voor alle workloads die worden uitgevoerd op een ondersteunde machine.
 * Bijna-synchrone replicatie met RPO’s van slechts 30 seconden. Hiermee wordt voldaan aan de behoeften van zelfs de meest kritieke zakelijke apps.
 * Toepassingsconsistente momentopnamen voor toepassingen met één of meer lagen.
-* Integratie met SQL Server AlwaysOn en samenwerking met andere replicatietechnologieën voor op toepassingsniveau, met inbegrip van AD-replicatie, SQL AlwaysOn, Exchange Database-beschikbaarheidsgroepen (dag's).
+* Integratie met SQL Server AlwaysOn en samen werking met andere replicatie technologieën op toepassings niveau, waaronder AD-replicatie, SQL AlwaysOn, Exchange data base Availability groups (Dag's).
 * Flexibele herstelplannen waarmee u een volledige reeks toepassingen kunt herstellen met één klik. U kunt in uw plan ook externe scripts en handmatige acties opnemen.
 * Geavanceerd netwerkbeheer in Site Recovery en Azure om de netwerkvereisten voor apps te vereenvoudigen. Dit omvat onder andere de mogelijkheid om IP-adressen te reserveren, om load balancing te configureren en om te integreren met Azure Traffic Manager, zodat u met een laag RTO kunt schakelen tussen netwerken.
 * Een uitgebreide Automation-bibliotheek met toepassingsspecifieke scripts die klaar zijn voor gebruik, en kunnen worden gedownload en geïntegreerd met herstelplannen.
 
 ## <a name="workload-summary"></a>Workloadoverzicht
-Met Site Recovery kan elke app die wordt uitgevoerd op een ondersteunde machine, worden gerepliceerd. Bovendien wordt er samengewerkt met productteams om aanvullende toepassingsspecifieke tests uit te voeren.
+Met Site Recovery kan elke app die wordt uitgevoerd op een ondersteunde machine, worden gerepliceerd. Daarnaast hebben we samen met product teams extra tests uitgevoerd voor de apps die in de tabel zijn opgegeven.
 
 | **Workload** |**Virtuele Azure-machines repliceren naar Azure** |**Virtuele Hyper-V-machines repliceren naar een secundaire site** | **Virtuele Hyper-V-machines repliceren naar Azure** | **Virtuele VMware-machines repliceren naar een secundaire site** | **Virtuele VMware-machines repliceren naar Azure** |
 | --- | --- | --- | --- | --- |---|

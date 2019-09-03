@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 08/30/2019
+ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 7623244d8b7de012d80e7e4844a9b3693ccdd662
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b07adc955b7904c6e6a3278480cec5a2be91ec35
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186692"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232904"
 ---
 ::: zone target="docs"
 
@@ -67,7 +67,7 @@ Meld u aan bij de Azure Portal op [https://aka.ms/azuredataboxfromdiskdocs](http
 > - **Verbinding maken en ontgrendelen**: Verbind het apparaat en Ontgrendel de schijf om de gegevens te kopiëren.
 > - **Gegevens kopiëren naar de schijf en valideren**: Gegevens kopiëren naar de schijven in de voorgemaakte mappen.
 > - **De schijven retour neren**: Ga terug naar Azure Data Center waar gegevens worden geüpload naar uw opslag account.
-> - **Controleer de gegevens in azure**: Controleer of uw gegevens zijn geüpload naar uw opslag account voordat u deze verwijdert van de bron datum server.
+> - **Controleer de gegevens in azure**: Controleer of uw gegevens zijn geüpload naar uw opslag account voordat u deze verwijdert van de bron gegevens server.
 
 ::: zone-end
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 18297410842b432af0093a71406df71f7e03db9d
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: 311db544a119d4b9bee7d31cfdfac33aa3c4ed79
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602048"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233223"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Inzicht in de status van uw virtuele machines in azure
 
@@ -164,7 +164,7 @@ Klik op **status weer geven** selectie vakje en de status wordt geretourneerd vo
 
 Voor een van de items in de lijst kunt u op de corresponderende status klikken om status diagnostiek te starten. hier ziet u hoe de status van de geselecteerde virtuele machine wordt geëvalueerd. 
 
-Als u op de pagina **virtual machines** de naam van een virtuele machine selecteert onder de naam van de virtuele **machine**, gaat u naar de pagina van het **VM-exemplaar** . Op deze pagina vindt u meer informatie over de problemen met waarschuwingen en status criteria die van invloed zijn op de geselecteerde virtuele machine. Filter de status Details door in de linkerbovenhoek van de pagina de **status pictogram te** selecteren om te zien welke onderdelen slecht zijn. U kunt ook de VM-status waarschuwingen weer geven die zijn gegenereerd door een niet-gezond onderdeel gecategoriseerd op basis van de ernst van de waarschuwing.
+Als u op de pagina **virtual machines** de naam van een virtuele machine selecteert onder de naam van de virtuele **machine**, gaat u naar de pagina van het **VM-exemplaar** . Op deze pagina vindt u meer informatie over de problemen met waarschuwingen en status criteria die van invloed zijn op de geselecteerde virtuele machine. Filter de status Details door in de linkerbovenhoek van de pagina de status pictogram te selecteren om te zien welke onderdelen slecht zijn. U kunt ook de VM-status waarschuwingen weer geven die zijn gegenereerd door een niet-gezond onderdeel gecategoriseerd op basis van de ernst van de waarschuwing.
 
 Selecteer in de lijst weergave van de **virtuele machine** de naam van een virtuele machine om de **status** pagina voor die virtuele machine te openen, op dezelfde manier als u direct **inzichten (preview)** van de virtuele machine hebt geselecteerd.
 
@@ -285,7 +285,7 @@ Als u een bijgewerkte status wilt zien, kunt u de pagina status diagnostiek vern
 
 Azure Monitor voor VM's status kan worden geïntegreerd met [Azure-waarschuwingen](../../azure-monitor/platform/alerts-overview.md). Er wordt een waarschuwing gegeven wanneer vooraf gedefinieerde criteria, wanneer gedetecteerd, worden gewijzigd van de status in orde in een slechte staat. Waarschuwingen worden gecategoriseerd op Ernst, van Ernst 0 tot en met Ernst 4, met Ernst 0 als het hoogste niveau.
 
-Waarschuwingen zijn niet gekoppeld aan een actie groep om u te waarschuwen wanneer de waarschuwing is geactiveerd. De eigenaar van het abonnement moet meldingen configureren door de stappen in de sectie [waarschuwingen configureren](#configure-alerts) te volgen.
+Waarschuwingen zijn niet gekoppeld aan een actie groep om u te waarschuwen wanneer de waarschuwing is geactiveerd. Een gebruiker met de rol van eigenaar bij het abonnements bereik moet meldingen configureren door de stappen in de sectie [waarschuwingen configureren](#configure-alerts) te volgen.
 
 Het totale aantal VM-status waarschuwingen dat is gecategoriseerd op ernst is beschikbaar op het **status** dashboard in het gedeelte **waarschuwingen** . Wanneer u het totaal aantal waarschuwingen of het nummer selecteert dat overeenkomt met een Ernst niveau, wordt de pagina **waarschuwingen** geopend en worden alle waarschuwingen weer gegeven die overeenkomen met uw selectie.
 

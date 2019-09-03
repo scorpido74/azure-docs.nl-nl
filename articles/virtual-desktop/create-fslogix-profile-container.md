@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: 05289b8e3aa0e083dd948a2d43f3af92418bc5d2
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 078a29fc1ab66151aa41c3901bb6a3af6479a0ba
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70052008"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233267"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Een FSLogix-profiel container maken voor een hostgroep met Azure NetApp Files
 
@@ -218,7 +218,7 @@ Deze sectie is gebaseerd op het [maken van een profiel container voor een hostgr
 
 6. Maak rechtstreeks verbinding met een VM-onderdeel van de hostgroep met Extern bureaublad en open de **bestanden Verkenner.** Ga vervolgens naar het **koppelingspad** (in het volgende voor beeld is \\ \\het koppelingspad ANF-SMB-3863.gt1107.onmicrosoft.com\\ANF vol).
 
-   Binnen deze map moet er een profiel-VHD zijn zoals in het volgende voor beeld.
+   In deze map moet er een VHD (of VHDX) van het profiel staan, zoals in het volgende voor beeld.
 
    ![Een scherm afbeelding van de inhoud van de map in het koppelingspad. In is één VHD-bestand met de naam ' Profile_ssbb '.](media/mount-path-folder.png)
 

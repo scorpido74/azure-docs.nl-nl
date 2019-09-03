@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c6980d11fa5fe3733e351923d058d1ad0a1677e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 66dbfa40d5a19c7f15ed2772740b84652ae3e58c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084927"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231270"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: Uw hybride Azure Active Directory deelname-implementatie plannen
 
@@ -64,10 +64,10 @@ Voor apparaten met het Windows-besturings systeem wordt de ondersteunde versie v
 ### <a name="windows-down-level-devices"></a>Windows-apparaten op lagere niveaus
 
 - Windows 8.1
-- Windows 7. Raadpleeg voor ondersteunings informatie over Windows 7 dit artikel [wordt de ondersteuning voor Windows 7 beëindigd](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support)
+- Windows 7. Zie [ondersteuning voor Windows 7](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support)voor meer informatie over ondersteuning voor Windows 7.
 - Windows Server 2012 R2
 - Windows Server 2012
-- Windows Server 2008 R2
+- Windows Server 2008 R2. Zie voor ondersteunings informatie over Windows Server 2008 en 2008 R2 [voor bereiding op Windows server 2008-ondersteuning](https://www.microsoft.com/cloud-platform/windows-server-2008).
 
 Als eerste plannings stap moet u uw omgeving controleren en bepalen of u apparaten van het lagere niveau van Windows moet ondersteunen.
 

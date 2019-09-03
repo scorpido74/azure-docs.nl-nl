@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 22c83b1fe53a9209fd243fe807bb76718cbdcbbd
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: f760917ae8f4ab11902799e36973ae896c4a2b43
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211695"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232345"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Gids voor de prestaties en schaal baarheid van de Kopieer activiteit
 > [!div class="op_single_selector" title1="Selecteer de versie van Azure Data Factory die u gebruikt:"]
@@ -181,7 +181,7 @@ Voor elke uitvoering van de Kopieer activiteit bepaalt Azure Data Factory het aa
 | Scenario kopiëren | Standaard parallelle kopie aantal bepaald door de service |
 | --- | --- |
 | Gegevens kopiëren tussen winkels op basis van bestanden |Is afhankelijk van de grootte van de bestanden en het aantal DIUs dat wordt gebruikt voor het kopiëren van gegevens tussen twee gegevens archieven in de Cloud of de fysieke configuratie van de zelf-hostende Integration runtime-computer. |
-| Kopiëren van relationele gegevens opslag met ingeschakelde partitie optie (inclusief [Oracle](connector-oracle.md#oracle-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP-tabel](connector-sap-table.md#sap-table-as-source)en [SAP open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source))|4 |
+| Kopiëren van relationeel gegevens archief met ingeschakelde partitie optie (inclusief [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP-tabel](connector-sap-table.md#sap-table-as-source)en [SAP open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source))|4 |
 | Gegevens uit een bron archief kopiëren naar Azure-tabel opslag |4 |
 | Alle andere kopieerscenario 's |1 |
 
@@ -193,7 +193,7 @@ Als u de belasting wilt beheren op machines die uw gegevens archieven hosten, of
 **Punten om te noteren:**
 
 - Wanneer u gegevens kopieert tussen archieven op basis van bestanden, bepaalt **parallelCopies** de parallelle factor op bestands niveau. De Chunking binnen één bestand vindt onder automatisch en transparant plaats. Het is ontworpen om de beste geschikte segment grootte te gebruiken voor een bepaald type brongegevens opslag om gegevens parallel en rechthoekig naar **parallelCopies**te laden. Het werkelijke aantal parallelle exemplaren data movement service wordt gebruikt voor de kopieerbewerking tijdens runtime is niet meer dan het aantal bestanden dat u hebt. Als het Kopieer gedrag **mergeFile**is, kan de Kopieer activiteit niet profiteren van parallellisme op bestands niveau.
-- Wanneer u gegevens kopieert uit winkels die niet op bestanden zijn gebaseerd (met uitzonde ring van [Oracle](connector-oracle.md#oracle-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP-tabel](connector-sap-table.md#sap-table-as-source)en [SAP open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) -connector als bron waarvoor partitionering van gegevens is ingeschakeld) voor archieven die zijn gebaseerd op bestand, de service voor gegevens verplaatsing Hiermee wordt de eigenschap **parallelCopies** genegeerd. Zelfs als parallelle uitvoering is opgegeven, wordt deze niet toegepast in dit geval.
+- Wanneer u gegevens kopieert uit winkels die niet op bestanden zijn gebaseerd (met uitzonde ring van [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP-tabel](connector-sap-table.md#sap-table-as-source)en [SAP open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) -connector als bron waarvoor partitionering van gegevens is ingeschakeld) voor archieven die zijn gebaseerd op bestand, de gegevens de eigenschap **parallelCopies** wordt genegeerd door de verplaatsings service. Zelfs als parallelle uitvoering is opgegeven, wordt deze niet toegepast in dit geval.
 - De eigenschap **parallelCopies** is rechthoekig naar **dataIntegrationUnits**. De eerste wordt in de eenheden voor de integratie van gegevens geteld.
 - Wanneer u een waarde voor de eigenschap **parallelCopies** opgeeft, moet u rekening houden met de toename van de belasting van uw bron-en Sink-gegevens opslag. Houd ook rekening met de toename van de belasting voor de zelf-hostende Integration runtime als de Kopieer activiteit hiervoor is gemachtigd, bijvoorbeeld voor hybride kopieën. Deze belasting toename treedt vooral op wanneer u meerdere activiteiten of gelijktijdige uitvoeringen hebt van dezelfde activiteiten die worden uitgevoerd op hetzelfde gegevens archief. Als u merkt dat het gegevens archief of de zelf-hostende Integration runtime wordt overspoeld met de belasting, verlaagt u de **parallelCopies** -waarde om de belasting te ontlasten.
 

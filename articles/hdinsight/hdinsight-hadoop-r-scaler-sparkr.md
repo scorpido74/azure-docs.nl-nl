@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: 75bbcfa831ba7ef0b3dd0da629cfa94768d6ae9d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b96779a0a37602b6d114c9baf517df2637f734a2
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873331"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231120"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Schaalr en Spark in HDInsight combi neren
 
@@ -193,7 +193,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>De luchtvaart maatschappij en weers gegevens importeren in Spark DataFrames
 
-Nu gebruiken we de functie [Read. df ()](http://spark.apache.org/docs/latest/api/R/read.df.html) van de sparker om de weers-en vliegtuig gegevens te importeren naar Spark DataFrames. Deze functie, zoals veel andere Spark-methoden, wordt uitgevoerd vertraagd, wat inhoudt dat ze in de wachtrij worden geplaatst voor uitvoering, maar pas worden uitgevoerd als dat nodig is.
+Nu gebruiken we de functie [Read. df ()](https://spark.apache.org/docs/latest/api/R/read.df.html) van de sparker om de weers-en vliegtuig gegevens te importeren naar Spark DataFrames. Deze functie, zoals veel andere Spark-methoden, wordt uitgevoerd vertraagd, wat inhoudt dat ze in de wachtrij worden geplaatst voor uitvoering, maar pas worden uitgevoerd als dat nodig is.
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -266,7 +266,7 @@ weatherDF <- rename(weatherDF,
 
 ## <a name="joining-the-weather-and-airline-data"></a>De weers-en vliegtuig gegevens samen voegen
 
-We gebruiken nu de functie vonken [samen voegen ()](http://spark.apache.org/docs/latest/api/R/join.html) om een left outer join van de luchtvaart maatschappij en de weers gegevens door vertrek AirportID en DateTime. Met de outer join kunnen we alle gegevens records van de luchtvaart maatschappijen bewaren, zelfs als er geen overeenkomende weer gegevens zijn. Na de samen voeging verwijdert u enkele overbodige kolommen en wijzigt u de naam van de opgeslagen kolommen om het binnenkomende data frame-voor voegsel dat door de samen voeging is geïntroduceerd, te verwijderen.
+We gebruiken nu de functie vonken [samen voegen ()](https://spark.apache.org/docs/latest/api/R/join.html) om een left outer join van de luchtvaart maatschappij en de weers gegevens door vertrek AirportID en DateTime. Met de outer join kunnen we alle gegevens records van de luchtvaart maatschappijen bewaren, zelfs als er geen overeenkomende weer gegevens zijn. Na de samen voeging verwijdert u enkele overbodige kolommen en wijzigt u de naam van de opgeslagen kolommen om het binnenkomende data frame-voor voegsel dat door de samen voeging is geïntroduceerd, te verwijderen.
 
 ```
 logmsg('Join airline data with weather at Origin Airport')

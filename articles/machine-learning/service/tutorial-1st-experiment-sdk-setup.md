@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/28/2019
-ms.openlocfilehash: df74d2d07937634e2b656746c0a9fc9cd86b8c93
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b1da94a2644c299447271b447f51ae4f7750774c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182613"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231077"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Zelfstudie: Aan de slag met het maken van uw eerste ML-experiment
 
@@ -24,16 +24,14 @@ In deze zelf studie voltooit u de end-to-end-stappen om aan de slag te gaan met 
 In deze zelfstudie hebt u:
 
 > [!div class="checklist"]
-> * Maak een machine learning-werk ruimte voor gebruik in de volgende zelf studie.
+> * Maak een [Azure machine learning-werkruimte](concept-workspace.md) voor gebruik in de volgende zelf studie.
 > * Maak een cloud-gebaseerde Jupyter-notebook-VM met Azure Machine Learning python SDK geïnstalleerd en vooraf geconfigureerd.
 
-## <a name="prerequisites"></a>Vereisten
-
-De enige vereiste voor deze zelf studie is een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer nog vandaag de [gratis of betaalde versie van de Azure Machine Learning Service](https://aka.ms/AMLFree).
+Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer nog vandaag de [gratis of betaalde versie van de Azure Machine Learning Service](https://aka.ms/AMLFree).
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
-Een werk ruimte is een Foundation-resource in de cloud die u gebruikt om machine learning modellen te experimenteren, te trainen en te implementeren. Uw Azure-abonnement en resource groep worden gebonden aan een eenvoudig verbruikte object in de SDK. Als u al een Azure Machine Learning service-werk ruimte hebt, kunt u door gaan naar de [volgende sectie](#azure). Anders maakt u er nu een.
+Een Azure Machine Learning-werk ruimte is een Foundation-resource in de cloud die u gebruikt om machine learning modellen te experimenteren, te trainen en te implementeren. Uw Azure-abonnement en resource groep worden gebonden aan een eenvoudig verbruikte object in de SDK. Als u al een Azure Machine Learning service-werk ruimte hebt, kunt u door gaan naar de [volgende sectie](#azure). Anders maakt u er nu een.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -58,10 +56,7 @@ Vanuit uw werk ruimte maakt u een Cloud resource om aan de slag te gaan met Jupy
 1. Selecteer vervolgens **Maken**. Het kan even duren voordat u uw VM hebt ingesteld.
 
 1. Wacht totdat de status wordt gewijzigd in **wordt uitgevoerd**.
-
-### <a name="launch-jupyter-web-interface"></a>Jupyter web interface starten
-
-Nadat de virtuele machine is uitgevoerd, gebruikt u de sectie voor **laptop-vm's** om de Jupyter-webinterface te starten.
+   Nadat de virtuele machine is uitgevoerd, gebruikt u de sectie voor **laptop-vm's** om de Jupyter-webinterface te starten.
 
 1. Selecteer **Jupyter** in de kolom **URI** voor uw VM.
 
@@ -69,14 +64,6 @@ Nadat de virtuele machine is uitgevoerd, gebruikt u de sectie voor **laptop-vm's
 
    Met de koppeling wordt uw notebook server gestart en wordt de Jupyter-notebook-webpagina geopend in een nieuw browser tabblad.  Deze koppeling werkt alleen voor de persoon die de virtuele machine heeft gemaakt. Elke gebruiker van de werk ruimte moet een eigen VM maken.
 
-1. Selecteer op de webpagina van de Jupyter-notebook de naam van de hoofdmap.  
-
-   Deze map bevindt zich in het [opslag account](concept-workspace.md#resources) van de werk ruimte, in plaats van op de VM van de notebook zelf.  Als u de VM van de notebook verwijdert, blijft u al uw werk behouden.  Wanneer u later een nieuwe VM voor een notitie blok maakt, wordt dezelfde map geladen. Als u uw werk ruimte deelt met anderen, wordt uw map weer geven en ziet u de mappen.
-
-1. Open de `samples-*` submap en open vervolgens de Jupyter-notebook`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
-
-   > [!Warning]
-   > Zorg ervoor dat u `tutorial-1st-experiment-sdk-train.ipynb` het bestand opent, `.yml` **niet** het bestand met de > dezelfde naam. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

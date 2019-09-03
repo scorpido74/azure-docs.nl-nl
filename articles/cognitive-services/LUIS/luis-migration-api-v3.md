@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: diberry
-ms.openlocfilehash: 82285b27822b6c93f8efc24579bb99c308649ac0
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5b0516f3d610c0a518d6afc461dddebfb68a7c5d
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932677"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213513"
 ---
 # <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>Preview: Migreren naar API versie 3. x voor LUIS-apps
 
@@ -223,7 +223,7 @@ In v2 wordt de entiteit geïdentificeerd door de naam van de _entiteit_ met de r
 ]
 ```
 
-In v3 wordt naar de entiteit verwezen door de rol van de _entiteit_ , als de voor spelling voor de rol is:
+In v3 wordt naar de entiteit verwezen door de rol van de _entiteit_, als de voor spelling voor de rol is:
 
 ```JSON
 "entities":{
@@ -418,7 +418,7 @@ Verzend in de volgende JSON-hoofd tekst om een nieuwe sublijst met synoniemen to
     },
     "dynamicLists": [
         {
-            "listEntityName":"ProductList",
+            "listEntity*":"ProductList",
             "requestLists":[
                 {
                     "name": "Azure Cognitive Services",

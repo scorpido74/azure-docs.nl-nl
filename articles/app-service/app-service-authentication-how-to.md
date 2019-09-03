@@ -4,21 +4,21 @@ description: Laat zien hoe u verificatie en autorisatie kunt aanpassen in App Se
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: cfowler
+manager: gwallace
 editor: ''
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 09/02/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ee8d8c54bd618780e00d9975f2fc6950cd795d44
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 105728bdab9c70bb807f38e4a09d5be863694c16
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098546"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231971"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Geavanceerd gebruik van verificatie en autorisatie in Azure App Service
 
@@ -130,7 +130,7 @@ Wanneer u Fully Qualified Url's gebruikt, moet de URL ofwel worden gehost in het
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
 ```
 
-U moet de volgende opdracht uitvoeren in de [Azure Cloud shell](../cloud-shell/quickstart.md):
+Voer de volgende opdracht uit in de [Azure Cloud shell](../cloud-shell/quickstart.md):
 
 ```azurecli-interactive
 az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
@@ -197,7 +197,7 @@ Wanneer het toegangs token van uw provider (niet het [sessie token](#extend-sess
 
 Zodra uw provider is geconfigureerd, kunt u [het vernieuwings token en de verloop tijd voor het toegangs token vinden](#retrieve-tokens-in-app-code) in de token opslag. 
 
-Als u uw toegangs token op elk gewenst moment wilt `/.auth/refresh` vernieuwen, kunt u gewoon een wille keurige taal aanroepen. Het volgende code fragment gebruikt jQuery om uw toegangs tokens van een Java script-client te vernieuwen.
+Als u uw toegangs token op elk gewenst moment wilt vernieuwen `/.auth/refresh` , kunt u gewoon een wille keurige taal aanroepen. Het volgende code fragment gebruikt jQuery om uw toegangs tokens van een Java script-client te vernieuwen.
 
 ```JavaScript
 function refreshTokens() {
@@ -230,7 +230,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>Het domein van aanmeldings accounts beperken
 
-Met zowel het micro soft-account als de Azure Active Directory kunt u zich vanuit meerdere domeinen aanmelden. Micro soft-account staat bijvoorbeeld _Outlook.com_-, _live.com_-en _Hotmail.com_ -accounts toe. Azure Active Directory kunt een wille keurig aantal aangepaste domeinen voor de aanmeldings accounts. Dit gedrag is mogelijk niet gewenst voor een interne app, waarvan u niet wilt dat iedereen met een _Outlook.com_ -account toegang heeft. Voer de volgende stappen uit om de domein naam van de aanmeldings accounts te beperken.
+Met zowel het micro soft-account als de Azure Active Directory kunt u zich vanuit meerdere domeinen aanmelden. Micro soft-account staat bijvoorbeeld _Outlook.com_-, _live.com_-en _Hotmail.com_ -accounts toe. Azure AD biedt een wille keurig aantal aangepaste domeinen voor de aanmeldings accounts. U kunt uw gebruikers echter ook rechtstreeks naar uw eigen Azure AD-aanmeldings pagina (zoals `contoso.com`) versnellen. Voer de volgende stappen uit om de domein naam van de aanmeldings accounts voor te stellen.
 
 Ga [https://resources.azure.com](https://resources.azure.com)in naar **abonnementen** >  **_abonnementsnaam\_ resourceGroups resource\<_**  >  >  **_\<\_ groeps\_ naam >_**  > **providers** **micro soft. Web** > **sites** **_app name>\_\<_**  >  >  >  **configuratie**  >  **authsettings**. 
 
@@ -239,6 +239,54 @@ Klik op **bewerken**, wijzig de volgende eigenschap en klik vervolgens op **put*
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
+
+Met deze instelling wordt de `domain_hint` query teken reeks parameter toegevoegd aan de omleidings-URL voor aanmelding. 
+
+> [!IMPORTANT]
+> Het is mogelijk dat de client de `domain_hint` para meter verwijdert nadat de omleidings-URL is ontvangen en u zich vervolgens aanmeldt met een ander domein. Hoewel deze functie handig is, is het geen beveiligings functie.
+>
+
+## <a name="authorize-or-deny-users"></a>Gebruikers autoriseren of weigeren
+
+Hoewel App Service de eenvoudigste autorisatie aanvraag verkrijgt (dat wil zeggen niet-geverifieerde aanvragen afwijzen), is voor uw app mogelijk meer verfijnde autorisatie gedrag vereist, zoals het beperken van de toegang tot een specifieke groep gebruikers. In bepaalde gevallen moet u aangepaste toepassings code schrijven om toegang tot de aangemelde gebruiker toe te staan of te weigeren. In andere gevallen kunnen App Service of uw ID-provider u helpen zonder code wijzigingen te hoeven vereisen.
+
+- [Server niveau](#server-level-windows-apps-only)
+- [Niveau van ID-provider](#identity-provider-level)
+- [Toepassings niveau](#application-level)
+
+### <a name="server-level-windows-apps-only"></a>Server niveau (alleen Windows-apps)
+
+Voor elke Windows-app kunt u autorisatie gedrag van de IIS-webserver definiëren door het bestand *Web. config* te bewerken. Linux-apps gebruiken geen IIS en kunnen niet worden geconfigureerd via *Web. config*.
+
+1. Ga naar`https://<app-name>.scm.azurewebsites.net/DebugConsole`
+
+1. Ga in de browser Verkenner van uw App Service-bestanden naar *site/wwwroot*. Als er geen *Web. config* bestaat, maakt u het door **+** **nieuw bestand**te selecteren.  >  
+
+1. Selecteer het potlood voor *Web. config* om het te bewerken. Voeg de volgende configuratie code toe en klik op **Opslaan**. Als *Web. config* al bestaat, kunt u het `<authorization>` element gewoon toevoegen met alles. Voeg de accounts toe die u wilt toestaan in `<allow>` het-element.
+
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <configuration>
+       <system.web>
+          <authorization>
+            <allow users="user1@contoso.com,user2@contoso.com"/>
+            <deny users="*"/>
+          </authorization>
+       </system.web>
+    </configuration>
+    ```
+
+### <a name="identity-provider-level"></a>Niveau van ID-provider
+
+De ID-provider kan bepaalde machtigingen voor een schakel sleutel geven. Bijvoorbeeld:
+
+- Voor [Azure app service](configure-authentication-provider-aad.md)kunt u [toegang op ondernemings niveau](../active-directory/manage-apps/what-is-access-management.md) rechtstreeks in azure AD beheren. Zie [de toegang van een gebruiker tot een toepassing verwijderen](../active-directory/manage-apps/methods-for-removing-user-access.md)voor instructies.
+- Google API-projecten die deel uitmaken van een [organisatie](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) kunnen worden geconfigureerd om alleen toegang te verlenen aan gebruikers in uw organisatie (Zie [de pagina **OAuth 2,0** -ondersteuning instellen](https://support.google.com/cloud/answer/6158849?hl=en)) voor [Google](configure-authentication-provider-google.md).
+
+### <a name="application-level"></a>Toepassings niveau
+
+Als een van de andere niveaus niet de autorisatie biedt die u nodig hebt, of als uw platform of ID-provider niet wordt ondersteund, moet u aangepaste code schrijven om gebruikers te autoriseren op basis van de [gebruikers claims](#access-user-claims).
+
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]

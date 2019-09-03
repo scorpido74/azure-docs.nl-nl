@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/03/2019
 ms.author: raynew
-ms.openlocfilehash: 6882476cabc3dc3a737f31eeeb4ccd92e5ea6ee0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d415f303976ae454cb99f07e8d6e15e338e24d7d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872751"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231467"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architectuur voor herstel na noodgevallen van Azure naar Azure
 
@@ -66,7 +66,7 @@ Wanneer u Azure VM-replicatie inschakelt, Site Recovery standaard een nieuw repl
 **Beleids instelling** | **Details** | **Standaard**
 --- | --- | ---
 **Bewaar periode van het herstel punt** | Hiermee geeft u op hoelang Site Recovery herstel punten bewaard | 24 uur
-**Frequentie van de app-consistente moment opname** | Hoe vaak Site Recovery een app-consistente moment opname gebruikt. | Elke 60 minuten.
+**Frequentie van de app-consistente moment opname** | Hoe vaak Site Recovery een app-consistente moment opname gebruikt. | Elke vier uur
 
 ### <a name="managing-replication-policies"></a>Replicatie beleid beheren
 

@@ -1,5 +1,5 @@
 ---
-title: Uw omgeving configureren voor een blauw druk-operator
+title: Uw omgeving configureren voor een Blueprint Operator
 description: Meer informatie over het configureren van uw Azure-omgeving voor gebruik met de standaard functie voor op rollen gebaseerde toegangs beheer (RBAC) op basis van de blauw druk-operator.
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,14 +7,14 @@ ms.date: 08/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 8c39eadc6f1448e19ffee6d741cc50a7b6e09475
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 27f7c747dfd39fed7a67924da71b9293979e0f94
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70148607"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231890"
 ---
-# <a name="configure-your-environment-for-a-blueprint-operator"></a>Uw omgeving configureren voor een blauw druk-operator
+# <a name="configure-your-environment-for-a-blueprint-operator"></a>Uw omgeving configureren voor een Blueprint Operator
 
 Het beheer van uw blauw druk-definities en blauw druk-toewijzingen kunnen worden toegewezen aan verschillende teams. Het is gebruikelijk dat een architect of governance-team verantwoordelijk is voor het levenscyclus beheer van uw blauw drukken definities terwijl een operationeel team verantwoordelijk is voor het beheren van toewijzingen van deze centraal beheerde blauw drukken.
 
@@ -40,7 +40,7 @@ Een definitie van een blauw druk kan door het systeem toegewezen of door de gebr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [levenscyclus van een blauwdruk](../concepts/lifecycle.md).
+- Meer informatie over de [levens duur van de blauw druk](../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../concepts/parameters.md) gebruikt.
 - Meer informatie over hoe u de [blauwdrukvolgorde](../concepts/sequencing-order.md) aanpast.
 - Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](../concepts/resource-locking.md).

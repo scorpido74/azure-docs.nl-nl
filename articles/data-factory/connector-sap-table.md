@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: faae9ae335e391afac4ed2ef75472f1fecdaca86
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 94bdeebcecdf924468f022ac95867bd82df5a793
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211671"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231333"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Gegevens uit een SAP-tabel kopiëren met behulp van Azure Data Factory
 
@@ -35,9 +35,9 @@ Deze SAP-tabel connector ondersteunt met name:
 - Gegevens uit een SAP-tabel kopiëren in:
 
   - SAP ERP Central component (SAP ECC) versie 7,01 of hoger (in een recente SAP-ondersteunings pakket stack uitgebracht na 2015).
-  - SAP Business Warehouse (SAP BW) versie 7,01 of hoger.
+  - SAP Business Warehouse (SAP BW) versie 7,01 of hoger (in een recente SAP-ondersteunings pakket stack uitgebracht na 2015).
   - SAP S/4HANA.
-  - Andere producten in SAP Business Suite versie 7,01 of hoger.
+  - Andere producten in SAP Business Suite versie 7,01 of hoger (in een recente SAP-ondersteunings pakket stack uitgebracht na 2015).
 
 - Het kopiëren van gegevens uit een SAP transparante tabel, een gegroepeerde tabel, een geclusterde tabel en een weer gave.
 - Kopiëren van gegevens met behulp van basis verificatie of beveiligde netwerk communicatie (SNC), als SNC is geconfigureerd.

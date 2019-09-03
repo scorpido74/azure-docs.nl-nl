@@ -1,6 +1,6 @@
 ---
 title: Migreren van Azure Media Services v2 naar v3 | Microsoft Docs
-description: Dit artikel worden wijzigingen die zijn geïntroduceerd in Azure Media Services v3 en ziet u de verschillen tussen twee versies. Dit artikel bevat ook hulp bij de migratie voor het verplaatsen van Media Services v2 naar v3.
+description: In dit artikel worden wijzigingen beschreven die in Azure Media Services v3 zijn geïntroduceerd en verschillen tussen twee versies worden weer gegeven. Het artikel bevat ook migratie richtlijnen voor het overstappen van Media Services v2 naar v3.
 services: media-services
 documentationcenter: na
 author: Juliako
@@ -15,110 +15,113 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: b85b06552dcd0fc419302882f05814adbd454f46
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 901542e2a69d2c7880825d76c1d69d3795713ed2
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542565"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231169"
 ---
-# <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Hulp bij de migratie voor het verplaatsen van Media Services v2 naar v3
+# <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migratie richtlijnen voor het overstappen van Media Services versie 2 naar v3
 
-In dit artikel worden wijzigingen die zijn geïntroduceerd in Azure Media Services v3 beschreven, ziet u de verschillen tussen twee versies en bevat migratierichtlijnen voor de.
+In dit artikel worden de wijzigingen beschreven die in Azure Media Services v3 zijn geïntroduceerd, verschillen tussen twee versies weer gegeven en de richt lijnen voor migratie.
 
-Als u een videoservice ontwikkeld vandaag nog hebt op de [oudere Media Services v2-API's](../previous/media-services-overview.md), moet u de volgende richtlijnen en overwegingen vóór migratie naar de v3 API's bekijken. Er zijn veel voordelen en nieuwe functies in de API v3 die de ervaring voor ontwikkelaars en de mogelijkheden van Media Services te verbeteren. Echter, als met de naam in de [bekende problemen](#known-issues) sectie van dit artikel, er zijn ook enkele beperkingen vanwege wijzigingen tussen de API-versies. Deze pagina wordt onderhouden als het Media Services-team voortdurende verbeteringen in de v3 API's en adressen van de tussenruimte tussen de versies. 
+Als u op dit moment een video service hebt ontwikkeld voor de [oudere Media Services v2 api's](../previous/media-services-overview.md), moet u de volgende richt lijnen en overwegingen door nemen voordat u naar de V3-api's migreert. Er zijn veel voor delen en nieuwe functies in de V3 API die de ontwikkel ervaring en mogelijkheden van Media Services verbeteren. Net als in het gedeelte [bekende problemen](#known-issues) in dit artikel, zijn er echter ook enkele beperkingen door wijzigingen tussen de API-versies. Deze pagina blijft behouden naarmate het Media Services team voortdurende verbeteringen in de V3-Api's aanbrengt en de hiaten tussen de versies verhelpt. 
 
 > [!NOTE]
 > U kunt momenteel geen gebruik maken van de Azure-portal om v3-resources te beheren. Gebruik de [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
 
-## <a name="benefits-of-media-services-v3"></a>Voordelen van Media Services v3
+## <a name="benefits-of-media-services-v3"></a>Voor delen van Media Services v3
   
-### <a name="api-is-more-approachable"></a>API is meer toegankelijk
+### <a name="api-is-more-approachable"></a>API is beter te benaderen
 
-*  v3 is gebaseerd op een geïntegreerde API-gebied dat functionaliteit voor zowel beheer als bewerkingen beschikbaar stelt die is gebouwd op Azure Resource Manager. Azure Resource Manager-sjablonen kunnen maken en implementeren van transformaties, Streaming-eindpunten en Live gebeurtenissen worden gebruikt.
-* [OpenAPI-specificatie (voorheen Swagger)](https://aka.ms/ams-v3-rest-sdk) document.
-    Wordt aangegeven dat het schema voor alle onderdelen van de service, inclusief de encoding op basis van bestanden.
-* SDK's beschikbaar voor [.NET](https://aka.ms/ams-v3-dotnet-ref), .NET Core, [Node.js](https://aka.ms/ams-v3-nodejs-ref), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [gaat](https://aka.ms/ams-v3-go-ref), en Ruby.
-* [Azure CLI](https://aka.ms/ams-v3-cli-ref) -integratie voor eenvoudige bieden ondersteuning voor scripts.
+*  v3 is gebaseerd op een geïntegreerde API-gebied dat functionaliteit voor zowel beheer als bewerkingen beschikbaar stelt die is gebouwd op Azure Resource Manager. Azure Resource Manager sjablonen kunnen worden gebruikt voor het maken en implementeren van trans formaties, streaming-eind punten, Live-gebeurtenissen en meer.
+* [OpenAPI-specificatie (voorheen Swagger-document genoemd)](https://aka.ms/ams-v3-rest-sdk) .
+    Beschrijft het schema voor alle service onderdelen, inclusief code ring op basis van een bestand.
+* Sdk's beschikbaar voor [.net](https://aka.ms/ams-v3-dotnet-ref), .net core, [node. js](https://aka.ms/ams-v3-nodejs-ref), [python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Go](https://aka.ms/ams-v3-go-ref)en Ruby.
+* [Azure cli](https://aka.ms/ams-v3-cli-ref) -integratie voor eenvoudige script ondersteuning.
 
 ### <a name="new-features"></a>Nieuwe functies
 
-* Voor bestandsopslag taak verwerken, kunt u een URL voor HTTP (S) als de invoer.<br/>U hoeft niet dat inhoud die al is opgeslagen in Azure, noch moet u om activa te maken.
-* Introduceert het concept van [transformeert](transforms-jobs-concept.md) voor bestandsgebaseerde taak verwerken. Een transformatie kan worden gebruikt om herbruikbare buildconfiguraties, voor het maken van Azure Resource Manager-sjablonen en van Verwerkingsinstellingen tussen meerdere klanten of tenants isoleren.
-* Een Asset kan hebben meerdere [Streaming-Locators](streaming-locators-concept.md) elk met verschillende [dynamische verpakking](dynamic-packaging-overview.md) en instellingen voor dynamische versleuteling.
-* [Inhoudsbeveiliging](content-key-policy-concept.md) biedt ondersteuning voor meerdere belangrijke functies.
-* U kunt Live gebeurtenissen die tot 24 uur lang wanneer met behulp van Media Services voor een single-bitrate bijdrage transcodering feed in een uitvoerstroom met meerdere bitrates streamen.
-* Nieuwe met lage latentie live streaming ondersteuning voor Live gebeurtenissen. Zie voor meer informatie, [latentie](live-event-latency.md).
-* Live gebeurtenis Preview ondersteunt [dynamische verpakking](dynamic-packaging-overview.md) en dynamische versleuteling. Hierdoor kunnen de beveiliging van inhoud op Preview-versie, evenals DASH en HLS-verpakking.
-* Live uitvoer is eenvoudiger te gebruiken dan de entiteit wordt in de v2-API's. 
-* Verbeterde RTMP-ondersteuning (verbeterde stabiliteit en meer bron encoder-ondersteuning).
-* Beveiligde RTMPS opnemen.<br/>Als u een Live gebeurtenis hebt gemaakt, krijgt u 4 URL's voor opnemen. Opname van de 4 URL's zijn bijna identiek, hetzelfde streaming-token (AppId), alleen de poort nummer onderdeel verschilt. Twee van de URL's zijn primaire en back-up voor RTMPS.   
-* U hebt op rollen gebaseerd toegangsbeheer (RBAC via uw entiteiten). 
+* Voor taak verwerking op basis van een bestand kunt u een HTTP/S-URL gebruiken als invoer.<br/>U hoeft inhoud niet al in azure te hebben opgeslagen en u hoeft geen assets te maken.
+* Introduceert het concept van [trans formaties](transforms-jobs-concept.md) voor taak verwerking op basis van bestanden. Een trans formatie kan worden gebruikt om herbruikbare configuraties te bouwen, Azure Resource Manager-sjablonen te maken en verwerkings instellingen te isoleren tussen meerdere klanten of tenants.
+* Een Asset kan meerdere [Stream](streaming-locators-concept.md) -Locators hebben elk met verschillende [dynamische pakketten](dynamic-packaging-overview.md) en dynamische versleutelings instellingen.
+* [Content Protection](content-key-policy-concept.md) ondersteunt functies met meerdere sleutels.
+* U kunt live-gebeurtenissen die Maxi maal 24 uur duren, streamen wanneer u Media Services gebruikt voor het omzetten van een single bitrate-bijdrage-feed in een uitvoer stroom met meerdere bitrates.
+* Nieuwe ondersteuning voor live streaming met lage latentie voor Live-gebeurtenissen. Zie [latentie](live-event-latency.md)voor meer informatie.
+* Preview van Live Event ondersteunt [dynamische pakketten](dynamic-packaging-overview.md) en dynamische versleuteling. Hiermee wordt de beveiliging van inhoud op de preview-versie en de verstreep-en HLS-verpakking ingeschakeld.
+* Live output is eenvoudiger te gebruiken dan de entiteit van het programma in de v2-Api's. 
+* Verbeterde RTMP-ondersteuning (verbeterde stabiliteit en meer ondersteuning voor broncode encoders).
+* RTMP beveiligde opname.<br/>Wanneer u een live gebeurtenis maakt, krijgt u vier opname-Url's. De 4 opname-Url's zijn bijna identiek, hebben hetzelfde streaming token (AppId), alleen het poort nummer onderdeel is anders. Twee van de Url's zijn primaire en back-ups voor RTMP.   
+* U hebt op rollen gebaseerd toegangs beheer (RBAC) voor uw entiteiten. 
 
 ## <a name="changes-from-v2"></a>Wijzigingen van v2
 
-* Voor de activa die zijn gemaakt met v3, Media Services ondersteunt alleen de [Azure Storage-serverzijde opslagversleuteling](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
-    * Kunt u v3 API's met activa die zijn gemaakt met v2-API's die waren [opslagversleuteling](../previous/media-services-rest-storage-encryption.md) (AES-256) aangeboden door mediaservices.
-    * U kunt geen nieuwe activa maken met de verouderde AES-256 [opslagversleuteling](../previous/media-services-rest-storage-encryption.md) met behulp van v3 API's.
-* De eigenschappen van de Asset in v3 verschillen om te zien van v2, [hoe de eigenschappen van toegewezen](assets-concept.md#map-v3-asset-properties-to-v2).
-* De v3-SDK's zijn nu ontkoppeld van de Storage-SDK, waardoor u meer controle over de versie van de Storage-SDK u wilt gebruiken en voorkomt u problemen met versiebeheer. 
-* In de v3 API's zijn alle van de codering bitsnelheden in bits per seconde. Dit is anders dan de v2 voorinstellingen van Media Encoder Standard. Bijvoorbeeld, de bitrate in v2 zou worden opgegeven als 128 (kbps), maar in v3 het normaal zou zijn 128000 (bits per seconde). 
-* Entiteiten AssetFiles AccessPolicies en IngestManifests bestaan niet in v3.
-* De eigenschap IAsset.ParentAssets bestaat niet in v3.
-* Inhoudssleutels is niet langer een entiteit, het is nu een eigenschap van de Streaming-Locator gemaakt.
-* Ondersteuning voor Event Grid vervangt NotificationEndpoints.
-* De volgende entiteiten zijn gewijzigd
-    * Taakuitvoer taak vervangt, en maakt nu deel uit van een taak.
-    * Streaming-Locator vervangt Locator.
-    * Live gebeurtenis vervangt kanaal.<br/>Live gebeurtenissen facturering is gebaseerd op Livekanaal meters. Zie voor meer informatie, [facturering](live-event-states-billing.md) en [prijzen](https://azure.microsoft.com/pricing/details/media-services/).
+* Voor assets die zijn gemaakt met v3, Media Services alleen de [Azure storage opslag versleuteling aan de server zijde](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)ondersteunt.
+    * U kunt v3-Api's gebruiken met assets die zijn gemaakt met v2-Api's met de [opslag versleuteling](../previous/media-services-rest-storage-encryption.md) (AES 256) van Media Services.
+    * U kunt geen nieuwe assets maken met de verouderde AES 256- [opslag versleuteling](../previous/media-services-rest-storage-encryption.md) met behulp van v3-api's.
+* De eigenschappen van het [activum](assets-concept.md)in v3 verschillen van v2, Zie [hoe de eigenschappen worden toegewezen](assets-concept.md#map-v3-asset-properties-to-v2).
+* De V3 Sdk's zijn nu losgekoppeld van de opslag-SDK, waarmee u meer controle hebt over de versie van de opslag-SDK die u wilt gebruiken en voor komt versie problemen. 
+* In de V3-Api's bevinden alle coderings bitsnelheden zich in bits per seconde. Dit wijkt af van de v2-Media Encoder Standard voor instellingen. De bitrate in v2 wordt bijvoorbeeld opgegeven als 128 (kbps), maar in v3 zou 128000 (bits/seconde) zijn. 
+* Entiteiten AssetFiles, AccessPolicies en IngestManifests bestaan niet in v3.
+* De eigenschap IAsset. ParentAssets bestaat niet in v3.
+* ContentKeys is geen entiteit meer, het is nu een eigenschap van de streaming-Locator.
+* Event Grid-ondersteuning vervangt NotificationEndpoints.
+* De naam van de volgende entiteiten is gewijzigd
+    * Taak uitvoer vervangt taak en maakt nu deel uit van een taak.
+    * De streaming-Locator vervangt Locator.
+    * Live gebeurtenis vervangt kanaal.<br/>Facturering van Live-gebeurtenissen is gebaseerd op Live Channel meters. Zie [facturering](live-event-states-billing.md) en [prijzen](https://azure.microsoft.com/pricing/details/media-services/)voor meer informatie.
     * Live uitvoer vervangt programma.
-* Live-uitvoer starten zodra ze zijn gemaakt en stoppen wanneer ze worden verwijderd. Programma's anders gewerkt in de v2-API's, ze moest worden gestart na het maken.
-*  Voor informatie over een taak, moet u weten de naam van de transformatie waarmee de taak is gemaakt. 
-
-## <a name="feature-gaps-with-respect-to-v2-apis"></a>Functiehiaten met betrekking tot v2-API 's
-
-De API v3 heeft de volgende functiehiaten met betrekking tot de v2-API. Sluit de hiaten wordt gewerkt.
-
-* De [Premium Encoder](../previous/media-services-premium-workflow-encoder-formats.md) en verouderde [media analytics-processors](../previous/media-services-analytics-overview.md) (Azure Media Services Indexer 2-Preview, Face Redactor, enzovoort) zijn niet toegankelijk is via v3.<br/>Klanten die willen migreren van de Media Indexer 1 of 2-preview kunnen onmiddellijk de AudioAnalyzer vooraf ingesteld in de API v3 gebruiken.  Deze nieuwe definitie bevat meer functionaliteit dan de oudere Media Indexer 1 of 2. 
-* Veel van de [geavanceerde functies van de Media Encoder Standard in v2](../previous/media-services-advanced-encoding-with-mes.md) API's zijn momenteel niet beschikbaar zijn in v3, zoals:
-  
-    * Samenvoegen van Assets
-    * Overlays
-    * Bijsnijden
-    * Miniaturen Sprites
-    * Invoegen van een op de achtergrond audiotrack als invoer heeft geen audio
-    * Invoegen van een video bijhouden als invoer heeft geen video
-* Live-evenementen met transcodering op dit moment bieden geen ondersteuning voor Slate invoegen halverwege stream en ad markering invoeging via API-aanroep. 
+* Live-uitvoer starten zodra ze zijn gemaakt en stoppen wanneer ze worden verwijderd. Program ma's hebben in de v2-Api's anders gewerkt, maar ze moesten worden gestart na het maken.
+*  Als u informatie over een taak wilt ontvangen, moet u de naam van de trans formatie weten waaronder de taak is gemaakt. 
 
 > [!NOTE]
-> Maak een bladwijzer voor dit artikel en blijven controleren op updates.
- 
-## <a name="code-differences"></a>Codeverschillen
+> Bekijk de naamgevings regels die worden toegepast op [Media Services v3-resources](media-services-apis-overview.md#naming-conventions). Bekijk ook [naamgevings](assets-concept.md#naming-blobs)-blobs.
 
-De volgende tabel bevat de codeverschillen tussen v2 en v3 voor algemene scenario's.
+## <a name="feature-gaps-with-respect-to-v2-apis"></a>Hiaten in functies met betrekking tot v2-Api's
+
+De V3 API heeft de volgende functie hiaten ten opzichte van de v2 API. Het sluiten van de hiaten is het onderhanden werk.
+
+* De [Premium encoder](../previous/media-services-premium-workflow-encoder-formats.md) en de verouderde [Media Analytics-processors](../previous/media-services-analytics-overview.md) (Azure Media Services indexer 2, Face Redactor, enzovoort) zijn niet toegankelijk via v3.<br/>Klanten die vanaf de preview-versie van Media Indexer 1 of 2 willen migreren, kunnen onmiddellijk de voor instelling AudioAnalyzer in de V3 API gebruiken.  Deze nieuwe definitie bevat meer functies dan de oudere Media Indexer 1 of 2. 
+* Veel van de [geavanceerde functies van de Media Encoder Standard in v2](../previous/media-services-advanced-encoding-with-mes.md) -api's zijn momenteel niet beschikbaar in v3, zoals:
+  
+    * Activa bijvoegen
+    * Overlays
+    * Bijsnijd
+    * Miniatuur sprites
+    * Een Silent audio-track invoegen wanneer de invoer geen audio heeft
+    * Een video track invoegen wanneer de invoer geen video bevat
+* Live-gebeurtenissen met transcode ring bieden momenteel geen ondersteuning voor de toevoeging van een mid-Stream en het invoegen van AD-markeringen via API-aanroepen. 
+
+> [!NOTE]
+> Geef een blad wijzer op voor dit artikel en blijf controleren op updates.
+ 
+## <a name="code-differences"></a>Code verschillen
+
+In de volgende tabel ziet u de code verschillen tussen v2 en v3 voor algemene scenario's.
 
 |Scenario|V2 API|V3 API|
 |---|---|---|
-|Maak een asset en upload een bestand |[v2 .NET-voorbeeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[V3 .NET-voorbeeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
-|Een taak indienen|[v2 .NET-voorbeeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[V3 .NET-voorbeeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Laat zien hoe maakt u eerst een transformatie en vervolgens een taak te verzenden.|
-|Publiceren van een asset met AES-versleuteling |1. ContentKeyAuthorizationPolicyOption maken<br/>2. Create ContentKeyAuthorizationPolicy<br/>3. Create AssetDeliveryPolicy<br/>4. Asset maken en uploaden van inhoud taak of verzenden en uitvoerasset gebruiken<br/>5. AssetDeliveryPolicy koppelen aan Asset<br/>6. ContentKey maken<br/>7. ContentKey koppelen aan Asset<br/>8. Create AccessPolicy<br/>9. Locator maken<br/><br/>[v2 .NET-voorbeeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Beleid voor inhoud sleutels maken<br/>2. Asset maken<br/>3. Inhoud uploaden of activa zoals JobOutput<br/>4. Streaming-Locator te maken<br/><br/>[V3 .NET-voorbeeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
-|Informatie over taken en beheren |[Taken met v2 beheren](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[Beheren van taken met v3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
+|Een Asset maken en een bestand uploaden |[v2 .NET-voor beeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET-voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
+|Een taak indienen|[v2 .NET-voor beeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET-voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Laat zien hoe u eerst een trans formatie maakt en vervolgens een taak verzendt.|
+|Een Asset met AES-versleuteling publiceren |1. ContentKeyAuthorizationPolicyOption maken<br/>2. ContentKeyAuthorizationPolicy maken<br/>3. Create AssetDeliveryPolicy<br/>4. Activa maken en inhoud uploaden of taak verzenden en uitvoer activa gebruiken<br/>5. AssetDeliveryPolicy koppelen aan Asset<br/>6. ContentKey maken<br/>7. ContentKey koppelen aan activa<br/>8. AccessPolicy maken<br/>9. Locator maken<br/><br/>[v2 .NET-voor beeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Beleid voor inhouds sleutels maken<br/>2. Asset maken<br/>3. Inhoud uploaden of activa gebruiken als JobOutput<br/>4. Streaming-Locator maken<br/><br/>[v3 .NET-voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|Taak Details ophalen en taken beheren |[Taken beheren met v2](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[Taken beheren met v3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
 
 ## <a name="known-issues"></a>Bekende problemen
 
-* U kunt momenteel geen gebruik maken van de Azure-portal om v3-resources te beheren. Gebruik de [REST-API](https://aka.ms/ams-v3-rest-sdk), CLI of een van de ondersteunde SDK's.
-* Hebt u nodig voor het inrichten van gereserveerde Media-eenheden (groepsbeleidsinstelling) in uw account om de gelijktijdigheid van taken en de prestaties van uw taken, met name die met betrekking tot de Video of Audio-analyse. Zie [Mediaverwerking schalen](../previous/media-services-scale-media-processing-overview.md) voor meer informatie. U kunt de meest recent gebruikte met behulp van beheren [CLI 2.0 voor Media Services v3](media-reserved-units-cli-how-to.md), met de [Azure-portal](../previous/media-services-portal-scale-media-processing.md), of met behulp van de [v2 API's](../previous/media-services-dotnet-encoding-units.md). U moet voor het inrichten van de meest recent gebruikte, of u van Media Services v2 of v3 gebruikmaakt API's.
-* Media Services-entiteiten die zijn gemaakt met de API kan niet worden beheerd door de v2-API v3.  
-* Het wordt niet aanbevolen om entiteiten die zijn gemaakt met v2-API's via de v3 API's te beheren. Hieronder vindt u voorbeelden van de verschillen die de entiteiten in twee versies niet compatibel maken:   
-    * Jobs en taken die zijn gemaakt in v2, niet worden weergegeven in v3 als ze niet gekoppeld aan een transformatie zijn. De aanbeveling is om over te schakelen naar v3 transformaties en taken. Er is een relatief korte periode van die moeten worden bewaakt de v2 actieve taken tijdens de overschakeling.
-    * Kanalen en programma's die zijn gemaakt met versie 2 (die zijn toegewezen aan Live-evenementen en Live uitvoer in v3) kunnen niet worden voortgezet met v3 die worden beheerd. De aanbeveling is om over te schakelen op v3 Live gebeurtenissen en Live uitvoer op een handige kanaal stoppen.<br/>U kunt geen momenteel kan migreren kanalen continu worden uitgevoerd.  
+* U kunt momenteel geen gebruik maken van de Azure-portal om v3-resources te beheren. Gebruik de [rest API](https://aka.ms/ams-v3-rest-sdk), CLI of een van de ondersteunde sdk's.
+* U moet gereserveerde media-eenheden (MRUs) inrichten in uw account om de gelijktijdigheid en prestaties van uw taken te bepalen, met name voor de analyse van video of audio. Zie [Mediaverwerking schalen](../previous/media-services-scale-media-processing-overview.md) voor meer informatie. U kunt de MRUs beheren met [CLI 2,0 voor Media Services v3](media-reserved-units-cli-how-to.md), met behulp van de [Azure Portal](../previous/media-services-portal-scale-media-processing.md)of met behulp van de [v2-api's](../previous/media-services-dotnet-encoding-units.md). U moet MRUs inrichten, ongeacht of u Media Services v2-of v3-Api's gebruikt.
+* Media Services entiteiten die met de V3 API zijn gemaakt, kunnen niet worden beheerd door de v2 API.  
+* Het is niet raadzaam om entiteiten te beheren die met v2 Api's zijn gemaakt via de V3-Api's. Hieronder volgen enkele voor beelden van de verschillen die de entiteiten in twee versies incompatibel maken:   
+    * Taken en taken die zijn gemaakt in v2, worden niet weer gegeven in v3, omdat ze niet zijn gekoppeld aan een trans formatie. De aanbeveling is om over te scha kelen naar v3-trans formaties en-taken. Er is een relatief korte periode voor het bewaken van de Inflight v2-taken tijdens het overschakelen.
+    * Kanalen en Program Ma's die zijn gemaakt met v2 (die zijn toegewezen aan Live-gebeurtenissen en live-uitvoer in v3), kunnen niet worden beheerd met v3. De aanbeveling is om over te scha kelen naar v3 Live-gebeurtenissen en live-uitvoer op een handige kanaal stop.<br/>Momenteel kunt u continu actieve kanalen niet migreren.  
 
 > [!NOTE]
-> Deze pagina wordt onderhouden als het Media Services-team voortdurende verbeteringen in de v3 API's en adressen van de tussenruimte tussen de versies.
+> Deze pagina blijft behouden naarmate het Media Services team voortdurende verbeteringen in de V3-Api's aanbrengt en de hiaten tussen de versies verhelpt.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Stel vragen, feedback geven, updates ophalen
+## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk de [Azure Media Services-community](media-services-community.md) artikel om te zien van verschillende manieren kunt u vragen stellen, feedback te geven en updates over Media Services ophalen.
+Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
 
 ## <a name="next-steps"></a>Volgende stappen
 

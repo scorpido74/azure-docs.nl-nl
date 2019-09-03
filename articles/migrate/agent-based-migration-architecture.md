@@ -1,137 +1,131 @@
 ---
-title: Migratie op basis van de agent architectuur in Azure Migrate-servermigratie
-description: Biedt een overzicht van VMware-VM-migratie op basis van een agent met de migratie van Azure-Server migreren.
+title: Migratie architectuur op basis van agents in Azure Migrate server migratie
+description: Biedt een overzicht van de virtuele machine migratie op basis van een agent met Azure Migrate server migratie.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
-ms.openlocfilehash: 21c779587842c976ba93d7fa592a91ee714bc55c
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: f5ad3aa0fc51f47942750d3745ffef1d6e4a087d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811152"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232580"
 ---
-# <a name="agent-based-migration-architecture"></a>Migratie op basis van de agent architectuur
+# <a name="agent-based-migration-architecture"></a>Migratiearchitectuur op basis van een agent
 
-Dit artikel bevat een overzicht van de architectuur en processen die worden gebruikt voor replicatie op basis van een agent met het hulpprogramma voor migratie van Azure-Server migreren.
+Dit artikel bevat een overzicht van de architectuur en processen die worden gebruikt voor replicatie op basis van een agent met het hulp programma voor migratie van Azure Migrate-server.
 
-[Azure Migrate](migrate-services-overview.md) biedt een centraal punt voor het volgen van detectie, beoordeling en migratie van uw on-premises toepassingen, workloads en AWS/GCP VM-instanties naar Azure. De hub biedt hulpprogramma's voor Azure Migrate voor evaluatie en migratie, evenals van derden independent software vendor (ISV)-aanbiedingen.
+[Azure migrate](migrate-services-overview.md) biedt een centrale hub voor het bijhouden van de detectie, beoordeling en migratie van uw on-premises apps en werk belastingen en AWS/GCP VM-instanties naar Azure. De hub biedt Azure Migrate-hulpprogram ma's voor evaluatie en migratie, evenals onafhankelijke ISV'S-aanbiedingen (Independent Software Vendor) van derden.
 
 ## <a name="agent-based-replication"></a>Replicatie op basis van een agent
 
-Replicatie op basis van een agent in de Azure Migrate Serverreplicatie hulpprogramma wordt gebruikt voor het migreren van on-premises virtuele VMware-machines en fysieke servers naar Azure. Het kan ook worden gebruikt voor het migreren van andere on-premises gevirtualiseerde servers, evenals persoonlijke en openbare cloud virtuele machines, met inbegrip van AWS-exemplaren en GCP VM's.
+Replicatie op basis van agents in het hulp programma Azure Migrate Server-replicatie wordt gebruikt om on-premises virtuele VMware-machines en fysieke servers naar Azure te migreren. Het kan ook worden gebruikt voor het migreren van andere on-premises gevirtualiseerde servers, evenals persoonlijke en open bare Cloud-Vm's, waaronder AWS-instanties en virtuele GCP-machines.
 
-Voor VMware-migratie biedt het hulpprogramma voor migratie van Azure Migrate-Server een aantal opties:
+Het hulp programma voor migratie van Azure Migrate server biedt een aantal opties voor VMware-migratie:
 
 - Migratie met behulp van replicatie op basis van een agent, zoals beschreven in dit artikel.
-- Zonder agent replicatie, voor het migreren van virtuele machines zonder dat u hoeft te installeren op deze.
+- Replicatie zonder agent, voor het migreren van Vm's, zodat er niets hoeft te worden geïnstalleerd.
 
-Meer informatie over [een migratiemethode selecteren voor VMware](server-migrate-overview.md).
+Meer informatie over [het selecteren van een migratie methode voor VMware](server-migrate-overview.md).
 
-## <a name="server-migration-and-azure-site-recovery"></a>Migratie van servers en Azure Site Recovery
+## <a name="server-migration-and-azure-site-recovery"></a>Server migratie en Azure Site Recovery
 
-Azure Migrate servermigratie is een hulpprogramma voor migratie on-premises en de openbare cloud-workloads naar Azure. Dit geoptimaliseerd voor migratie. Site Recovery is een hulpprogramma van de herstel na noodgevallen. Azure migratie-Server en Site Recovery deelt sommige algemene technologie-onderdelen die worden gebruikt voor replicatie van gegevens, maar voor verschillende doeleinden.
+Azure Migrate server migratie is een hulp programma voor het migreren van on-premises en open bare Cloud werkbelastingen naar Azure. Deze is geoptimaliseerd voor migratie. Site Recovery is een hulp programma voor nood herstel. Migratie van Azure server en Site Recovery delen enkele veelvoorkomende technologie onderdelen die worden gebruikt voor gegevens replicatie, maar hebben verschillende doel einden.
 
 ## <a name="architectural-components"></a>Architectuuronderdelen
 
 ![Architectuur](./media/agent-based-replication-architecture/architecture.png)
 
-De tabel bevat een overzicht van de onderdelen die worden gebruikt voor de migratie op basis van een agent.
+De tabel bevat een overzicht van de onderdelen die worden gebruikt voor migratie op basis van een agent.
 
 **Onderdeel** | **Details** | **Installatie**
 --- | --- | ---
-**Replicatie-apparaat** | De replicatie-apparaat (configuratieserver) is een on-premises computer die als een brug tussen de on-premises omgeving en het hulpprogramma voor migratie van Azure-Server migreren fungeert. Het apparaat detecteert de voorraad van on-premises VM, zodat Azure-servermigratie replicatie en migratie kunt indelen. Het apparaat bestaat uit twee onderdelen:<br/><br/> **Configuratieserver**: Maakt verbinding met Azure Migrate-servermigratie en coördineert de replicatie.<br/> **Processerver**: Handelt de gegevensreplicatie af. Het VM-gegevens ontvangt, worden gecomprimeerd versleutelt deze en verzendt naar de Azure-abonnement. Servermigratie schrijft, de gegevens naar beheerde schijven. | De processerver wordt standaard geïnstalleerd samen met de configuratieserver op het apparaat van de replicatie.
-**Mobility-service** | De Mobility-service is een agent is geïnstalleerd op elke machine die u wilt repliceren en migreren. Gegevens van replicatie stuurt van de machine het naar de processerver. Er zijn een aantal verschillende agents van de Mobility-service beschikbaar. | Installatiebestanden voor de Mobility-service zich op het apparaat van de replicatie. U downloadt en installeert de agent die u nodig hebt, in overeenstemming met het besturingssysteem en versie van de computer die u wilt repliceren.
+**Replicatie apparaat** | Het replicatie apparaat (configuratie server) is een on-premises computer die fungeert als een brug tussen de on-premises omgeving en het hulp programma voor migratie van Azure Migrate-server. Het apparaat detecteert de on-premises VM-inventaris, zodat de migratie van Azure Server replicatie en migratie kan organiseren. Het apparaat heeft twee onderdelen:<br/><br/> **Configuratie server**: Maakt verbinding met Azure Migrate server migratie en coördineert replicatie.<br/> **Processerver**: Hiermee wordt de gegevens replicatie verwerkt. Er worden VM-gegevens ontvangen, gecomprimeerd en versleuteld en verzonden naar het Azure-abonnement. Daar schrijft de server migratie de gegevens naar Managed disks. | Standaard wordt de proces server samen met de configuratie server op het replicatie apparaat geïnstalleerd.
+**Mobility-service** | De Mobility-service is een agent die is geïnstalleerd op elke computer die u wilt repliceren en migreren. Het verzendt replicatie gegevens van de machine naar de proces server. Er zijn een aantal verschillende agents voor Mobility-services beschikbaar. | Installatie bestanden voor de Mobility-service bevinden zich op het replicatie-apparaat. U downloadt en installeert de agent die u nodig hebt, in overeenstemming met het besturings systeem en de versie van de computer die u wilt repliceren.
 
 ### <a name="mobility-service-installation"></a>Installatie van de Mobility-service
 
-U kunt de Mobility-Service met behulp van de volgende manieren implementeren:
+U kunt de Mobility-service implementeren met behulp van de volgende methoden:
 
-- **Push-installatie**: De Mobility-service wordt geïnstalleerd door de processerver, wanneer u beveiliging voor een machine inschakelt. 
-- **Handmatig installeren**: U kunt de Mobility-service handmatig installeren op elke machine via de gebruikersinterface of opdrachtprompt.
+- **Push-installatie**: De Mobility-service wordt geïnstalleerd door de proces server wanneer u de beveiliging voor een machine inschakelt. 
+- **Hand matig installeren**: U kunt de Mobility-service hand matig op elke computer installeren via de gebruikers interface of de opdracht prompt.
 
-De Mobility-service communiceert met de replicatie-apparaat en machines gerepliceerd. Als er antivirussoftware die worden uitgevoerd op het apparaat van de replicatie, processervers of machines die worden gerepliceerd, moeten de volgende mappen worden uitgesloten van scannen:
+De Mobility-service communiceert met het replicatie apparaat en de gerepliceerde machines. Als u antivirus software hebt uitgevoerd op het replicatie apparaat, de proces servers of de computers die worden gerepliceerd, moeten de volgende mappen worden uitgesloten van scannen:
 
 
-- C:\Program Files\Microsoft Azure Recovery Services Agent
+- C:\Program Files\Microsoft Azure Recovery Services-agent
 - C:\ProgramData\ASR
 - C:\ProgramData\ASRLogs
 - C:\ProgramData\ASRSetupLogs
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
 - C:\Program Files (x86) \Microsoft Azure Site Recovery
-- C:\ProgramData\ASR\agent (op Windows-machines met de Mobility-service geïnstalleerd)
+- C:\ProgramData\ASR\agent (op Windows-computers waarop de Mobility-service is geïnstalleerd)
 
 ## <a name="replication-process"></a>Replicatieproces
 
-1. Wanneer u replicatie voor een virtuele machine inschakelt, begint de initiële replicatie naar Azure.
-2. Tijdens de eerste replicatie de Mobility-service leest gegevens uit de machineschijven, en verzendt dit naar de processerver.
-3. Deze gegevens worden gebruikt als seeding voor een kopie van de schijf in uw Azure-abonnement. 
-4. Nadat de initiële replicatie is voltooid, begint de replicatie van deltaverschillen naar Azure. Replicatie is op blokniveau, en in de buurt van de continue.
-4. De Mobility-Service intercepts schrijft in het geheugen van VM-schijf of door te integreren met het opslagsubsysteem van het besturingssysteem. Deze methode voorkomt schijf-i/o-bewerkingen op de replicerende machine voor incrementele replicatie. 
-5. Bijgehouden wijzigingen voor een virtuele machine worden verzonden naar de processerver op HTTPS-poort 9443 inkomende. Deze poort kan worden gewijzigd. De processerver worden gecomprimeerd en versleutelt deze en verzendt ze naar Azure. 
+1. Wanneer u replicatie voor een virtuele machine inschakelt, begint de eerste replicatie naar Azure.
+2. Tijdens de eerste replicatie leest de Mobility-service gegevens van de machine schijven en verzendt deze naar de proces server.
+3. Deze gegevens worden gebruikt voor het seeden van een kopie van de schijf in uw Azure-abonnement. 
+4. Wanneer de initiële replicatie is voltooid, begint de replicatie van Delta wijzigingen naar Azure. Replicatie is op blok niveau en bijna doorlopend.
+4. De Mobility-service onderschept de schrijf bewerkingen naar het schijf geheugen van de virtuele machine door te integreren met het opslag subsysteem van het besturings systeem. Deze methode voor komt dat I/O-bewerkingen op de replicerende computer worden uitgevoerd voor incrementele replicatie. 
+5. Bijgehouden wijzigingen voor een machine worden verzonden naar de proces server op poort HTTPS 9443 binnenkomend. Deze poort kan worden gewijzigd. De proces server comprimeert en versleutelt deze en verzendt deze naar Azure. 
 
 ## <a name="ports"></a>Poorten
 
-**apparaat** | **verbinding**
+**Apparaatconfiguratie** | **verbinding**
 --- | --- 
-VM's | De Mobility-service die wordt uitgevoerd op virtuele machines communiceert met de on-premises replicatie-apparaat op poort 443 voor HTTPS inkomende, voor het replicatiebeheer van.<br/><br/> Virtuele machines verzenden replicatiegegevens naar de processerver (die wordt uitgevoerd op het apparaat replicatie standaard) op HTTPS-poort 9443 inkomende. Deze poort kan worden gewijzigd.
-Replicatie-apparaat | De replicatie-apparaat stuurt replicatie met Azure via HTTPS-poort 443 uitgaande.
-Processerver | De processerver ontvangt replicatiegegevens, optimaliseert en versleutelt deze en verzendt ze naar Azure storage via poort 443 uitgaande.
+VM's | De Mobility-service die wordt uitgevoerd op Vm's communiceert met het on-premises replicatie apparaat op poort HTTPS 443 inkomend voor replicatie beheer.<br/><br/> Vm's verzenden de replicatie gegevens naar de proces server (standaard actief op het replicatie apparaat) op poort HTTPS 9443 binnenkomend. Deze poort kan worden gewijzigd.
+Replicatie apparaat | Het replicatie apparaat organiseert de replicatie met Azure via poort HTTPS 443 uitgaand.
+Processerver | De proces server ontvangt replicatie gegevens, optimaliseert en versleutelt deze en verzendt deze naar Azure Storage via poort 443 uitgaand.
 
 
 ## <a name="performance-and-scaling"></a>Prestaties en schalen
 
-Standaard implementeert u een één replicatie-apparaat dat wordt uitgevoerd zowel de configuratieserver en de processerver. Als u slechts een paar machines repliceert, is deze implementatie is voldoende. Echter, als u wilt repliceren en honderden machines migreren, een enkel proces-server niet mogelijk om af te handelen het replicatieverkeer. In dit geval kunt u aanvullende, scale-out processervers implementeren.
+Standaard implementeert u één replicatie apparaat waarop zowel de configuratie server als de proces server worden uitgevoerd. Als u slechts enkele computers repliceert, is deze implementatie voldoende. Als u echter honderden computers repliceert en migreert, kan één proces server mogelijk niet alle replicatie verkeer afhandelen. In dit geval kunt u extra, scale-out proces servers implementeren.
 
-### <a name="site-recovery-deployment-planner-for-vmware"></a>Site Recovery-Implementatieplanner voor VMware
+### <a name="site-recovery-deployment-planner-for-vmware"></a>Site Recovery Deployment Planner voor VMware
 
-Als u virtuele VMware-machines repliceert, kunt u de [Site Recovery Deployment Planner](../site-recovery/site-recovery-deployment-planner.md) voor VMware om te bepalen van de prestatie-eisen, met inbegrip van de dagelijkse gegevens wijzigen tarief, en de processervers u nodig hebt.
+Als u virtuele VMware-machines repliceert, kunt u de [Site Recovery Deployment planner](../site-recovery/site-recovery-deployment-planner.md) voor VMware gebruiken om te helpen bij het bepalen van de prestatie vereisten, inclusief de dagelijkse wijzigings snelheid van gegevens en de proces servers die u nodig hebt.
 
-### <a name="replication-appliance-capacity"></a>Replicatie toestel capaciteit
+### <a name="replication-appliance-capacity"></a>Capaciteit van replicatie apparaat
 
-De waarden in deze tabel kunnen worden gebruikt om te achterhalen of u een aanvullende processerver in uw implementatie moet.
+De waarden in deze tabel kunnen worden gebruikt om erachter te komen of u een extra proces server nodig hebt in uw implementatie.
 
-- Als uw dagelijkse wijzigingssnelheid (verloop) meer dan 2 TB is, implementeert u een aanvullende processerver.
-- Als u meer dan 200 machines repliceert, implementeert u een extra replicatie-apparaat.
+- Als uw dagelijkse wijzigings frequentie (verloop frequentie) groter is dan 2 TB, implementeert u een extra proces server.
+- Als u meer dan 200 computers repliceert, implementeert u een extra replicatie apparaat.
 
-**CPU** | **Geheugen** | **Vrije ruimte voor gegevens in cache opslaan** | **Tarief verloop** | **Replicatie-limieten**
+**CPU** | **Geheugenmetabase** | **Vrije ruimte voor het opslaan van gegevens in de cache** | **Verloop frequentie** | **Replicatie limieten**
 --- | --- | --- | --- | ---
-8 vcpu's (2-sockets * 4 kernen \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB of minder | < 100 machines 
-12 vcpu's (2-sockets * 6 kernen \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB tot 1 TB | 100-150-machines.
-16 vcpu's (2-sockets * 8 kernen \@ 2,5 GHz) | 32 G1 |  1 TB | 1 TB tot 2 TB | 151-200-machines.
+8 vcpu's (2 sockets * 4 kernen \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB of minder | < 100-machines 
+12 vcpu's (2 sockets * 6 kernen \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB tot 1 TB | 100-150 machines.
+16 vcpu's (2 sockets * 8 kernen \@ 2,5 GHz) | 32 G1 |  1 TB | 1 TB tot 2 TB | 151-200 machines.
 
-### <a name="scale-out-process-server-sizing"></a>Schaling van de scale-out-proces
+### <a name="scale-out-process-server-sizing"></a>Grootte van scale-out proces server
 
-Als u een uitbreidbare processerver implementeren wilt, kan deze tabel u helpen te achterhalen schaling.
+Als u een scale-out proces server moet implementeren, kan deze tabel u helpen de server grootte te bepalen.
 
-**Processerver** | **Vrije ruimte voor gegevens in cache opslaan** | **Tarief verloop** | **Replicatie-limieten**
+**Processerver** | **Vrije ruimte voor het opslaan van gegevens in de cache** | **Verloop frequentie** | **Replicatie limieten**
 --- | --- | --- | --- 
-4 vcpu's (2-sockets * 2 kernen \@ 2,5 GHz), 8 GB geheugen | 300 GB | 250 GB of minder | Maximaal 85 machines 
-8 vcpu's (2-sockets * 4 kernen \@ 2,5 GHz), 12 GB geheugen | 600 GB | 251 GB tot 1 TB    | 86 150-machines.
-12 vcpu's (2-sockets * 6 kernen \@ 2,5 GHz), 24 GB geheugen | 1 TB | 1-2 TB | 151 225 machines.
+4 vcpu's (2 sockets * 2 kernen \@ 2,5 GHz), 8 GB geheugen | 300 GB | 250 GB of minder | Maxi maal 85 computers 
+8 vcpu's (2 sockets * 4 kernen \@ 2,5 GHz), 12 GB geheugen | 600 GB | 251 GB tot 1 TB    | 86-150 machines.
+12 vcpu's (2 sockets * 6 kernen \@ 2,5 GHz), 24 GB geheugen | 1 TB | 1-2 TB | 151-225 machines.
 
-## <a name="control-upload-throughput"></a>Besturingselement voor uploaden van doorvoer
-
-De hoeveelheid bandbreedte die wordt gebruikt om gegevens te uploaden naar Azure op elke Hyper-V-host, kunt u beperken. Wees voorzichtig. Als u de waarden te laag ingesteld wordt nadelige invloed hebben op replicatie en vertraagt de migratie.
+## <a name="control-upload-throughput"></a>Upload doorvoer beheren
 
 
-1. Aanmelden bij de Hyper-V-host of cluster-knooppunt.
-2. Voer **C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.msc**, open de Windows Azure Backup MMC-module.
-3. Selecteer in de module **eigenschappen wijzigen**.
-4. In **beperking**, selecteer **inschakelen voor gebruik van internetbandbreedte voor back-upbewerkingen**. Stel de limieten in voor werktijden en niet-wordt gewerkt. Geldige bereiken liggen tussen 512 Kbps en 1023 Mbps.
-I
+ VMware-verkeer dat wordt gerepliceerd naar Azure, loopt via een specifieke proces server. U kunt de door Voer van een upload beperken door de band breedte op de computers die worden uitgevoerd als proces servers te beperken. U kunt de band breedte beïnvloeden met behulp van de volgende register sleutel:
 
-### <a name="influence-upload-efficiency"></a>Invloed uploaden efficiëntie
+- Met de waarde voor HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM-REGI ster wordt het aantal threads aangegeven dat wordt gebruikt voor gegevens overdracht (initiële of Delta replicatie) van een schijf. Een hogere waarde verhoogt de netwerk bandbreedte die wordt gebruikt voor replicatie. De standaard waarde is vier. De maximum waarde is 32. Houd het verkeer in de gaten om de waarde te optimaliseren.
+- Daarnaast kunt u de band breedte op de proces Server computer als volgt beperken:
 
-Als u ongebruikte bandbreedte voor replicatie hebt en wilt uploads verhogen, kunt u het aantal threads dat is toegewezen voor de taak uploaden als volgt verhogen:
+    1. Open de Azure Backup MMC-module op de computer met de proces server. Er is een snelkoppeling op het bureau blad of in de map C:\Program Files\Microsoft Azure Recovery Services Agent\bin. 
+    2. Selecteer in de module **Eigenschappen wijzigen**.
+    3. Selecteer in **beperking**de optie **beperking van Internet bandbreedte gebruik inschakelen voor back-** upbewerkingen. Stel de limieten voor werk-en niet-werk uren in. Geldige bereiken zijn van 512 Kbps tot 1.023 Mbps.
 
-1. Open het register met Regedit.
-2. Navigeer naar de sleutel HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM
-3. Verhoog de waarde voor het aantal threads die worden gebruikt voor het uploaden van gegevens voor elke replicerende virtuele machine. De standaardwaarde is 4 en de maximumwaarde is 32. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Proberen op basis van een agent [VMware VM-migratie](tutorial-migrate-vmware-agent.md) met behulp van Azure Migrate-servermigratie.
+Probeer de migratie van een [VMware-VM](tutorial-migrate-vmware-agent.md) op basis van een agent uit te proberen met Azure migrate server migratie.

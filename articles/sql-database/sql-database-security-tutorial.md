@@ -8,14 +8,14 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9850285482db4f5981c183b51152ba1a3ac4975c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ba648a2bf563b775c39f11ab8d5c4069c4bf740f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640124"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231187"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Zelfstudie: Een enkelvoudige of pooldatabase beveiligen
 
@@ -58,7 +58,7 @@ Voor alle stappen in deze zelfstudie moet u zich aanmelden bij de [Azure-portal]
 
 ## <a name="create-firewall-rules"></a>Firewall-regels maken
 
-SQL-databases worden in Azure beveiligd door een firewall. Standaard worden alle verbindingen met de server en de databases geweigerd, behalve verbindingen van andere Azure-services. Raadpleeg [firewallregels op Azure SQL Database-serverniveau en -databaseniveau](sql-database-firewall-configure.md) voor meer informatie.
+SQL-databases worden in Azure beveiligd door een firewall. Standaard worden alle verbindingen met de server en de data base geweigerd. Raadpleeg [firewallregels op Azure SQL Database-serverniveau en -databaseniveau](sql-database-firewall-configure.md) voor meer informatie.
 
 Stel **Toegang tot Azure services toestaan** in op **UIT** voor de veiligste configuratie. Vervolgens maakt u een [gereserveerd IP-adres (klassieke implementatie)](../virtual-network/virtual-networks-reserved-public-ip.md) voor de resource die verbinding moet maken, zoals een Azure-VM of cloudservice, en laat u alleen dat IP-adres toe door de firewall. Als u het [resourcebeheer](/azure/virtual-network/virtual-network-ip-addresses-overview-arm)-implementatiemodel gebruikt, is er voor elke resource een toegewezen openbaar IP-adres nodig.
 
@@ -87,9 +87,6 @@ Stel als volgt een serverfirewallregel in:
    1. Selecteer **OK** en sluit de pagina **Firewallinstellingen**.
 
 U kunt nu verbinding maken met elke database op de server met het opgegeven IP-adres of IP-adresbereik.
-
-> [!IMPORTANT]
-> Standaard is toegang door de SQL Database-firewall ingeschakeld voor alle Azure-services, onder **Toegang tot Azure-services verlenen**. Kies **UIT** om toegang voor alle Azure-services uit te schakelen.
 
 ### <a name="setup-database-firewall-rules"></a>Database-firewallregels instellen
 

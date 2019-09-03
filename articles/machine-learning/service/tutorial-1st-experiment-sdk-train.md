@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 07/20/2019
-ms.openlocfilehash: cee5801826c78bdee51ba5afb14d6776a1191702
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.date: 09/03/2019
+ms.openlocfilehash: 8065284d65f1b0a91fc05846b451305906c74fc8
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051625"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231098"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Zelfstudie: Uw eerste ML model trainen
 
@@ -34,6 +34,29 @@ In deze zelfstudie leert u het volgende:
 De enige vereiste is om deel één van deze zelf studie, [installatie omgeving en werk ruimte](tutorial-1st-experiment-sdk-setup.md)uit te voeren.
 
 In dit deel van de zelf studie voert u de code uit in het voor beeld `tutorials/tutorial-1st-experiment-sdk-train.ipynb` -Jupyter-notitie blok dat is geopend aan het einde van deel 1. In dit artikel wordt uitgelegd hoe dezelfde code in het notitie blok zich bevindt.
+
+## <a name="launch-jupyter-web-interface"></a>Jupyter web interface starten
+
+1. Selecteer op de pagina werk ruimte in de Azure Portal **laptop-vm's** aan de linkerkant.
+
+1. Selecteer **Jupyter** in de kolom **URI** voor de virtuele machine die u in deel één van deze zelf studie hebt gemaakt.
+
+    ![De Jupyter-notebook server starten](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
+
+   Met de koppeling wordt uw notebook server gestart en wordt de Jupyter-notebook-webpagina geopend in een nieuw browser tabblad.  Deze koppeling werkt alleen voor de persoon die de virtuele machine heeft gemaakt. Elke gebruiker van de werk ruimte moet een eigen VM maken.
+
+1. Selecteer op de webpagina van de Jupyter-notebook de naam van de hoofdmap.  
+
+
+   Deze map bevindt zich in het [opslag account](concept-workspace.md#resources) van de werk ruimte, in plaats van op de VM van de notebook zelf.  Als u de VM van de notebook verwijdert, blijft u al uw werk behouden.  Wanneer u later een nieuwe VM voor een notitie blok maakt, wordt dezelfde map geladen. Als u uw werk ruimte deelt met anderen, wordt uw map weer geven en ziet u de mappen.
+
+1. Open de `samples-*` submap en open vervolgens de Jupyter-notebook`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
+
+   > [!Warning]
+   > Zorg ervoor dat u `tutorial-1st-experiment-sdk-train.ipynb` het bestand opent, `.yml` **niet** het bestand met de > dezelfde naam. 
+
+1. De rest van dit artikel bevat dezelfde inhoud als u ziet in het notitie blok.  Schakel nu over naar het notitie blok als u de code wilt uitvoeren.
+
 
 ## <a name="connect-workspace-and-create-experiment"></a>Verbinding maken met werk ruimte en experiment maken
 

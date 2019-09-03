@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9bc9d64d7f21498acd5cb0c23447e7ff77de629
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 07176fbe22e70658856dd266687a15d719e78e9f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195576"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231083"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Reken doelen voor model training instellen en gebruiken 
 
@@ -422,6 +422,19 @@ az ml folder attach
 ```
 
 Met deze opdracht maakt u een `.azureml` submap met configuratie bestanden voor het uitvoeren van sjablonen voor verschillende Compute-doelen. U kunt deze bestanden kopiëren en bewerken om uw configuratie aan te passen, bijvoorbeeld om Python-pakketten toe te voegen of docker-instellingen te wijzigen.  
+
+### <a name="structure-of-run-configuration-file"></a>Structuur van het configuratie bestand voor de uitvoering
+
+Het configuratie bestand voor de uitvoering is YAML opgemaakt, met de volgende secties
+ * Het script dat moet worden uitgevoerd en de bijbehorende argumenten
+ * De naam van de compute-doel, ' local ' of de naam van een compute in de werk ruimte.
+ * Para meters voor het uitvoeren van de uitvoering: Framework, Communicator voor gedistribueerde uitvoeringen, maximum duur en aantal reken knooppunten.
+ * Omgevings sectie. Zie [omgevingen maken en beheren voor training en implementatie](how-to-use-environments.md) voor meer informatie over de velden in deze sectie.
+   * Om Python-pakketten op te geven die moeten worden geïnstalleerd voor de run, maakt u [Conda-omgevings bestand](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually)en stelt u het veld __condaDependenciesFile__ in.
+ * Details van de uitvoerings geschiedenis om de map voor het logboek bestand op te geven en om de uitvoer verzameling en moment opnamen van de uitvoerings geschiedenis in of uit te scha kelen.
+ * Configuratie details die specifiek zijn voor het geselecteerde Framework.
+ * Details van gegevens referentie en gegevens opslag.
+ * Configuratie gegevens die specifiek zijn voor Machine Learning Compute voor het maken van een nieuw cluster.
 
 ### <a name="create-an-experiment"></a>Een experiment maken
 

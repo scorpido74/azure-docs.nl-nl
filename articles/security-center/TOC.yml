@@ -4,8 +4,10 @@
   items:
     - name: Over Security Center
       href: security-center-intro.md
-    - name: Door Security Center ondersteunde platformen en functies
+    - name: Ondersteunde platforms
       href: security-center-os-coverage.md
+    - name: Ondersteunde functies
+      href: security-center-services.md
 - name: Snelstartgidsen
   expanded: true
   items:

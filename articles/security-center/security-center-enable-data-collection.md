@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/06/2019
+ms.date: 06/10/2019
 ms.author: v-mohabe
-ms.openlocfilehash: e87ea5f6d8a92f18fc1b289ebf9ffd1cc0326812
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 12739bf230eb7a2d5afa4edd57dbc2761907ec4e
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845896"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231350"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Verzamelen van gegevens in Azure Security Center
 Security Center verzamelt gegevens van uw virtuele machines van Azure (Vm's), schaal sets voor virtuele machines, IaaS containers en niet-Azure-computers (inclusief on-premises) om te controleren op beveiligings problemen en bedreigingen. Gegevens worden verzameld met behulp van de Log Analytics-agent, die verschillende aan beveiliging gerelateerde configuraties en gebeurtenis logboeken van de computer leest en de gegevens naar uw werk ruimte kopieert voor analyse. Voorbeelden van dergelijke gegevens zijn: besturingssysteem systeemtype en versie, besturingssysteemlogboeken (Windows-gebeurtenislogboeken), actieve processen, computernaam, IP-adressen en aangemelde gebruiker. De Log Analytics-agent kopieert ook crash dump bestanden naar uw werk ruimte.
@@ -41,7 +41,7 @@ Als u de gegevens van de computers wilt verzamelen, moet de Log Analytics-agent 
 > Automatische inrichting is standaard uitgeschakeld. Als u wilt instellen in Security Center voor het installeren van automatische inrichting standaard, ingesteld op **op**.
 >
 
-Als automatische inrichting is ingeschakeld, wordt Security Center de Log Analytics agent ingericht op alle ondersteunde Azure-Vm's en eventuele nieuwe virtuele machines die worden gemaakt. Automatische inrichting wordt sterk aanbevolen, maar handmatige agentinstallatie is ook beschikbaar. [Meer informatie over het installeren van de log Analytics agent-extensie](#manualagent).
+Als automatische inrichting is ingeschakeld, wordt Security Center de Log Analytics agent ingericht op alle ondersteunde Azure-Vm's en eventuele nieuwe virtuele machines die worden gemaakt. Automatische inrichting wordt sterk aanbevolen, maar handmatige agentinstallatie is ook beschikbaar. [Meer informatie over het installeren van de log Analytics agent-extensie](#manual-agent).
 
 
 
@@ -59,7 +59,7 @@ Automatische inrichting van de Log Analytics-agent inschakelen:
 
 >[!NOTE]
 > - Zie voor instructies over het inrichten van een bestaande installatie [automatische inrichting in geval van een bestaande installatie van de agent](#preexisting).
-> - Zie [de log Analytics agent-extensie hand matig installeren](#manualagent)voor instructies over het hand matig inrichten.
+> - Zie [de log Analytics agent-extensie hand matig installeren](#manual-agent)voor instructies over het hand matig inrichten.
 > - Zie voor instructies voor automatische inrichting uitschakelen, [automatische inrichting uitschakelen](#offprovisioning).
 > - Voor instructies over hoe onboarding Security Center met behulp van PowerShell, Zie [automatiseren onboarding van Azure Security Center met behulp van PowerShell](security-center-powershell-onboarding.md).
 >
@@ -240,7 +240,7 @@ Als u automatisch inrichten na uitschakelen voorheen op:
 >  Als u automatische inrichting uitschakelt, wordt de Log Analytics-agent niet verwijderd van Azure-Vm's waar de agent is ingericht. Zie voor meer informatie over het verwijderen van de OMS-extensie [hoe verwijder ik OMS-extensies geïnstalleerd door Security Center](security-center-faq.md#remove-oms).
 >
     
-## Handmatige configuratie van agent <a name="manualagent"></a>
+## Handmatige configuratie van agent <a name="manual-agent"></a>
  
 Er zijn verschillende manieren om de Log Analytics agent hand matig te installeren. Als u handmatig installeert, zorg er dan voor dat u de automatische inrichting uitschakelt.
 

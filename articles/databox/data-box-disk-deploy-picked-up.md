@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 09/03/2019
+ms.localizationpriority: high
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e58e33efebfe372bd5cacc45f0a8045cec18878d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 259c20aead3bbe7b44c59efe031a079ba80e2905
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135045"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232963"
 ---
 ::: zone target="chromeless"
 
@@ -49,7 +50,7 @@ Voltooi voordat u begint de [Zelfstudie: Gegevens kopiëren naar de Azure Data B
     - U wordt aangeraden schijven te verpakken met een goed beveiligde ballon.
     - Zorg ervoor dat het passend is Snug om de bewegingen in het vak te verminderen.
 
-De volgende stappen worden bepaald door de locatie waar u het apparaat retourneert. De instructies zijn verschillend voor VS/Canada, Australië of landen in Azië.
+De volgende stappen worden bepaald door de locatie waar u het apparaat retourneert. De instructies zijn verschillend voor US/Canada, Europese Unie (EU), Australië of landen in Azië.
 
 ### <a name="pick-up-in-us-canada"></a>Orderverzamelen in Nederland, Canada
 

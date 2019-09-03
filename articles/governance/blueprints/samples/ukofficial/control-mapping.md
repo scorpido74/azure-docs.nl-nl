@@ -8,12 +8,12 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 7da31e09157b8877db4d36d0f061f29433d02d11
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: b53f293f6289377d85f4346933f7edb7369065cf
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515629"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231629"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Controle van de toewijzing van de voor beelden van het Verenigd Konink rijk en UK NHS blauw drukken
 
@@ -39,7 +39,7 @@ Als u wilt weten waar uw Azure-resources mogelijk niet-optimale cryptografische 
 - Beveiligde overdracht naar opslag accounts moet zijn ingeschakeld
 - Voor Service Fabric clusters moet de eigenschap ClusterProtectionLevel zijn ingesteld op EncryptAndSign
 - Transparent Data Encryption voor SQL-data bases moet zijn ingeschakeld
-- Transparante gegevensversleuteling in SQL DB implementeren
+- Transparante gegevens versleuteling van SQL DB implementeren
 - Versleuteling vereisen voor Data Lake Store accounts
 - Toegestane locaties (is vastgelegd in "UK-Zuid" en "UK-WEST")
 - Toegestane locaties voor resource groepen (is vastgelegd in "UK-Zuid" en "UK-WEST")
@@ -48,7 +48,7 @@ Als u wilt weten waar uw Azure-resources mogelijk niet-optimale cryptografische 
 
 Deze blauw druk helpt u bij het beheren van beveiligings problemen met informatie systemen door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die ontbrekende eindpunt beveiliging controleren, ontbrekende systeem updates, kwets bare besturings systemen, SQL-beveiligings problemen en virtuele computer lekken. Deze inzichten bieden real-time informatie over de beveiligings status van uw geïmplementeerde resources en kunnen u helpen bij het bepalen van herstel acties.
 
-- Ontbrekende Endpoint Protection bewaken in Azure Security Center
+- Ontbrekende Endpoint Protection in Azure Security Center controleren
 - Systeem updates moeten worden geïnstalleerd op uw computers
 - Beveiligings problemen in de beveiligings configuratie op uw computers moeten worden hersteld
 - Beveiligings problemen voor uw SQL-data bases moeten worden hersteld
@@ -58,9 +58,9 @@ Deze blauw druk helpt u bij het beheren van beveiligings problemen met informati
 
 Deze blauw druk helpt u bij het beveiligen van informatie systeem assets door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die beschermende bewaking bieden op onbeperkte toegang, white list-activiteit en bedreigingen.
 
-- Onbeperkte netwerktoegang tot opslagaccounts controleren
+- Onbeperkte netwerk toegang tot opslag accounts controleren
 - Adaptieve toepassings besturings elementen moeten worden ingeschakeld op virtuele machines
-- Detectie van bedreigingen implementeren op SQL-servers
+- Detectie van bedreigingen op SQL-servers implementeren
 - Standaard micro soft IaaS anti-malware-extensie voor Windows Server implementeren
 
 ## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 veilig gebruikers beheer/10 identiteit en verificatie
@@ -111,13 +111,13 @@ Met deze blauw druk kunt u ook de toegang tot Azure-resources beheren door Azure
 - \[Voor\]beeld: Virtuele Linux-machines controleren die externe verbindingen van accounts zonder wacht woorden toestaan
 - Opslag accounts moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources
 - Virtuele machines moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources
-- Controleer virtuele machines die niet gebruikmaken van beheerde schijven
+- Virtuele machines controleren die geen beheerde schijven gebruiken
 
 ## <a name="11-external-interface-protection"></a>11 externe interface beveiliging
 
 Behalve met het gebruik van meer dan 25 beleids regels voor het juiste veilige gebruikers beheer, kunt u met deze blauw druk Service interfaces beveiligen tegen onbevoegde toegang door een [Azure Policy](../../../policy/overview.md) definitie toe te wijzen waarmee onbeperkte opslag accounts worden bewaakt. Opslag accounts met onbeperkte toegang kunnen onbedoelde toegang tot gegevens in het informatie systeem toestaan. Deze blauw druk wijst ook een beleid toe dat adaptieve toepassings besturings elementen op virtuele machines mogelijk maakt.
 
-- Onbeperkte netwerktoegang tot opslagaccounts controleren
+- Onbeperkte netwerk toegang tot opslag accounts controleren
 - Adaptieve toepassings besturings elementen moeten worden ingeschakeld op virtuele machines
 
 ## <a name="12-secure-service-administration"></a>12 beheer van beveiligde services
@@ -153,10 +153,10 @@ Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden va
 
 - Controle moet worden ingeschakeld voor geavanceerde instellingen voor gegevens beveiliging op SQL Server
 - Diagnostische instelling voor controleren
-- Instellingen voor SQL-controle op serverniveau
+- Controle-instellingen op SQL server-niveau controleren
 - \[Voor\]beeld: Log Analytics-agent voor Linux-Vm's implementeren
 - \[Voor\]beeld: Log Analytics-agent voor Windows-Vm's implementeren
-- Network Watcher implementeren wanneer er virtuele netwerken worden gemaakt
+- Network Watcher implementeren bij het maken van virtuele netwerken
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -168,7 +168,7 @@ Nu u de controle toewijzing van het Verenigd Konink rijk-en UK-NHS blauw drukken
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
-- Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
+- Meer informatie over de [levens duur van de blauw druk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.
 - Meer informatie over hoe u de [blauwdrukvolgorde](../../concepts/sequencing-order.md) aanpast.
 - Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](../../concepts/resource-locking.md).

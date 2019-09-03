@@ -9,12 +9,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: 87bd22ec4f2cfae62d1f80284ad8346ca292d016
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 37098411f465c611dc9d2e2443f369e01d6e338c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567669"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70230998"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Zelfstudie: Beveiliging van een beheerd exemplaar in Azure SQL Database met behulp van Azure AD-server-principals (aanmeldingen)
 
@@ -55,10 +55,12 @@ Zorg dat u over het volgende beschikt als u de zelfstudie wilt uitvoeren:
 
 ## <a name="limiting-access-to-your-managed-instance"></a>De toegang tot uw beheerde exemplaar beperken
 
-Beheerde exemplaren kunnen alleen worden geopend via een particulier IP-adres. Er zijn geen service-eindpunten beschikbaar om verbinding te maken met een beheerd exemplaar buiten het Managed Instance-netwerk. Net als bij een geïsoleerd SQL Server on-premises omgeving, moeten toepassingen of gebruikers toegang hebben tot het beheerde exemplaar van het netwerk (VNet) voordat een verbinding tot stand kan worden gebracht. Zie het volgende artikel [Uw toepassing verbinden met een beheerd exemplaar](sql-database-managed-instance-connect-app.md) voor meer informatie.
+Beheerde exemplaren kunnen worden geopend via een privé-IP-adres. Net als bij een geïsoleerd SQL Server on-premises omgeving, moeten toepassingen of gebruikers toegang hebben tot het beheerde exemplaar van het netwerk (VNet) voordat een verbinding tot stand kan worden gebracht. Zie het volgende artikel [Uw toepassing verbinden met een beheerd exemplaar](sql-database-managed-instance-connect-app.md) voor meer informatie.
+
+Het is ook mogelijk om een service-eind punt op het beheerde exemplaar te configureren, waardoor open bare verbindingen op dezelfde manier als Azure SQL Database worden toegestaan. Voor meer informatie raadpleegt u het volgende artikel, het [configureren van het open bare eind punt in Azure SQL database Managed instance](sql-database-managed-instance-public-endpoint-configure.md).
 
 > [!NOTE] 
-> Omdat beheerde exemplaren alleen kunnen worden geopend binnen het eigen VNET, zijn [firewallregels voor SQL Database](sql-database-firewall-configure.md) niet van toepassing. Managed Instance heeft zijn eigen [ingebouwde firewall](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
+> Zelfs als service-eind punten zijn ingeschakeld [SQL database firewall regels](sql-database-firewall-configure.md) niet van toepassing zijn. Het beheerde exemplaar heeft een eigen [ingebouwde firewall](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md) voor het beheren van de connectiviteit.
 
 ## <a name="create-an-azure-ad-server-principal-login-for-a-managed-instance-using-ssms"></a>Een AD-server-principal (aanmelding) voor een beheerd exemplaar maken met SSMS
 

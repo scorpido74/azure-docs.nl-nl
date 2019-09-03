@@ -7,13 +7,12 @@ ms.date: 02/04/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 83133629d92abb50d9fd7509cf182282503fc041
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 54a4da8e6d2720086b86c3573623f9dac2469ea4
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799212"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232916"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Quickstart: Een Azure Blueprint definiëren en toewijzen met REST API
 
@@ -73,7 +72,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
 - Vervang `{subscriptionId}` door uw abonnements-ID
 
 > [!NOTE]
-> Blauwdrukken kunnen ook worden gemaakt op abonnementsniveau. Zie voor een voorbeeld [blauwdruk maken abonnement voorbeeld](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
+> Blauw drukken kan ook worden gemaakt op abonnements niveau. Zie [voor beeld Blue maken bij abonnement](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint)voor meer informatie.
 
 1. Maak het eerste _blauwdruk_object. De **Aanvraagbody** bevat eigenschappen van de blauwdruk, te maken resourcegroepen en alle parameters op blauwdrukniveau. De parameters worden tijdens het toewijzen ingesteld en gebruikt door de artefacten die in latere stappen worden toegevoegd.
 
@@ -83,7 +82,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2018-11-01-preview
      ```
 
-   - Aanvraagtekst
+   - Hoofdtekst van de aanvraag
 
      ```json
      {
@@ -142,7 +141,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/roleContributor?api-version=2018-11-01-preview
      ```
 
-   - Aanvraagtekst
+   - Hoofdtekst van de aanvraag
 
      ```json
      {
@@ -162,7 +161,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/policyTags?api-version=2018-11-01-preview
      ```
 
-   - Aanvraagtekst
+   - Hoofdtekst van de aanvraag
 
      ```json
      {
@@ -190,7 +189,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/policyStorageTags?api-version=2018-11-01-preview
      ```
 
-   - Aanvraagtekst
+   - Hoofdtekst van de aanvraag
 
      ```json
      {
@@ -218,7 +217,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/templateStorage?api-version=2018-11-01-preview
      ```
 
-   - Aanvraagtekst
+   - Hoofdtekst van de aanvraag
 
      ```json
      {
@@ -304,7 +303,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/roleOwner?api-version=2018-11-01-preview
      ```
 
-   - Aanvraagtekst
+   - Hoofdtekst van de aanvraag
 
      ```json
      {
@@ -339,7 +338,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
 - Vervang `{YourMG}` door de ID van uw beheergroep
 - Vervang `{subscriptionId}` door uw abonnements-ID
 
-1. Geef in de Azure Blueprint-service-principal de rol **Eigenaar** op in het doelabonnement. De AppId statisch is (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), maar de service-principal-ID is afhankelijk van de tenant. U kunt voor uw tenant details aanvragen met de volgende REST API. Deze gebruikt [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md), die een andere autorisatie heeft.
+1. Geef in de Azure Blueprint-service-principal de rol **Eigenaar** op in het doelabonnement. De AppId is static (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), maar de id van de Service-Principal is afhankelijk van de Tenant. U kunt voor uw tenant details aanvragen met de volgende REST API. Deze gebruikt [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md), die een andere autorisatie heeft.
 
    - REST API-URI
 
@@ -355,7 +354,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
      PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
      ```
 
-   - Aanvraagtekst
+   - Hoofdtekst van de aanvraag
 
      ```json
      {
@@ -439,7 +438,7 @@ Als u de blauwdruk zelf wilt verwijderen, gebruikt u de volgende REST API-bewerk
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [levenscyclus van een blauwdruk](./concepts/lifecycle.md).
+- Meer informatie over de [levens duur van de blauw druk](./concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](./concepts/parameters.md) gebruikt.
 - Meer informatie over hoe u de [blauwdrukvolgorde](./concepts/sequencing-order.md) aanpast.
 - Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](./concepts/resource-locking.md).

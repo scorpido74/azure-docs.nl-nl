@@ -1,88 +1,88 @@
 ---
-title: Prestatiehandleiding voor voor Azure SignalR Service
-description: Een overzicht van de prestaties van Azure SignalR Service.
+title: Prestatie handleiding voor de Azure signalerings service
+description: Een overzicht van de prestaties van de Azure signalerings service.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: zhshang
-ms.openlocfilehash: f7cc05c8c2a299d809c4386d119fef58fa2548d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 027f9f99161a0e4f76a39a15780bc840380a61ba
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61269438"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232532"
 ---
-# <a name="performance-guide-for-azure-signalr-service"></a>Prestatiehandleiding voor voor Azure SignalR Service
+# <a name="performance-guide-for-azure-signalr-service"></a>Prestatie handleiding voor de Azure signalerings service
 
-Een van de belangrijkste voordelen van het gebruik van Azure SignalR Service is het gemak van het SignalR-toepassingen schalen. In een grootschalige scenario zijn de prestaties een belangrijke factor. 
+Een van de belangrijkste voor delen van het gebruik van de Azure signalerings service is het gemak van het schalen van signaal toepassingen. In een grootschalig scenario is de prestaties een belang rijke factor. 
 
-In deze handleiding stellen we de factoren die invloed hebben op prestaties van SignalR-toepassingen. We beschrijven normale prestaties in verschillende gebruiksscenario's. In de end moet stellen we de omgeving en de hulpprogramma's die u gebruiken kunt voor het genereren van een rapport over prestaties.
+In deze hand leiding worden de factoren die van invloed zijn op de prestaties van de signaal toepassing geïntroduceerd. We beschrijven typische prestaties in verschillende gebruiks scenario's. In het eind worden de omgeving en hulpprogram ma's geïntroduceerd die u kunt gebruiken om een prestatie rapport te genereren.
 
 ## <a name="term-definitions"></a>Term definities
 
-*Inkomende*: Het binnenkomende bericht naar Azure SignalR Service.
+Inkomend: Het inkomende bericht voor de Azure signalerings service.
 
-*Uitgaande*: Het uitgaande bericht van Azure SignalR-Service.
+Uitgaand: Het uitgaande bericht van de Azure signalerings service.
 
-*Bandbreedte*: De totale grootte van alle berichten in één seconde.
+*Band breedte*: De totale grootte van alle berichten in 1 seconde.
 
-*Standaardmodus*: De modus met de standaard-werken als een Azure SignalR Service-exemplaar is gemaakt. Azure SignalR-Service wordt verwacht dat de app-server tot stand brengen van een verbinding met het voordat een clientverbindingen.
+*Standaard modus*: De standaard werk modus wanneer een exemplaar van de Azure signalerings service is gemaakt. De Azure signalerings service verwacht dat de app server een verbinding tot stand brengt voordat client verbindingen worden geaccepteerd.
 
-*Serverloze modus*: Een modus waarin Azure SignalR Service alleen clientverbindingen accepteert. Er is geen serververbinding is toegestaan.
+*Serverloze modus*: Een modus waarin de Azure signalerings service alleen client verbindingen accepteert. Er is geen server verbinding toegestaan.
 
 ## <a name="overview"></a>Overzicht
 
-Azure SignalR Service definieert zeven standaard-laag voor verschillende prestatie-capaciteit. Deze handleiding vindt u antwoorden op de volgende vragen:
+De Azure signalerings service definieert zeven standaard lagen voor verschillende prestatie capaciteiten. In deze hand leiding worden de volgende vragen beantwoord:
 
--   Wat is de standaard Azure SignalR Service-prestaties voor elke laag?
+-   Wat zijn de typische prestaties van de Azure signalerings service voor elke laag?
 
--   Azure SignalR Service voldoet aan de mijn vereisten voor doorvoer van bericht (bijvoorbeeld verzenden 100.000 berichten per seconde)?
+-   Voldoet de Azure signalerings service aan mijn vereisten voor bericht doorvoer (bijvoorbeeld 100.000 berichten per seconde verzenden)?
 
--   Voor mijn specifieke scenario, welke laag geschikt voor mij is? Of hoe kan ik de juiste laag selecteren?
+-   Welke laag is geschikt voor mijn specifieke scenario? Of hoe kan ik de juiste laag selecteren?
 
--   Wat voor soort app-server (VM-grootte) is geschikt voor mij? Hoe vaak moet ik implementeren?
+-   Welk type app-server (VM-grootte) is geschikt voor mij? Hoeveel ervan moet ik implementeren?
 
-Als u wilt deze vragen te beantwoorden, biedt deze handleiding eerst een op hoog niveau Beschrijving van de factoren die invloed hebben op prestaties. Vervolgens ziet u de maximale binnenkomende en uitgaande berichten voor elke laag voor typische gebruiksvoorbeelden: **echo**, **uitzending**, **verzenden naar groep**, en **verzenden naar verbinding** (peer-to-peer chatten).
+Deze hand leiding geeft eerst uitleg over de factoren die van invloed zijn op de prestaties om deze vragen te beantwoorden. Vervolgens ziet u het maximum aantal binnenkomende en uitgaande berichten voor elke laag voor typische gebruiks voorbeelden: **echo**, **broadcast**, **verzenden naar groep**en **verzenden naar verbinding** (peer-to-peer-chat).
 
-Deze handleiding dekken niet alle scenario's (en verschillende use cases, berichtgrootten, berichten verzenden patronen, enzovoort). Maar het biedt enkele methoden om u te helpen:
+Deze hand leiding heeft geen betrekking op alle scenario's (en verschillende gebruiks voorbeelden, bericht grootten, bericht verzendings patronen, enzovoort). Maar het biedt een aantal methoden om u te helpen:
 
-- Evalueer uw geschatte vereiste voor de binnenkomende of uitgaande berichten.
-- De juiste lagen vinden door te controleren van de tabel van de prestaties.
+- Evalueer uw vereiste bij benadering voor de inkomende of uitgaande berichten.
+- Zoek de juiste lagen door de prestatie tabel te controleren.
 
-## <a name="performance-insight"></a>Queryprestaties
+## <a name="performance-insight"></a>Prestatie inzicht
 
-Deze sectie beschrijft de methoden van de evaluatie van prestaties, en vervolgens een lijst met alle factoren die invloed hebben op prestaties. Uiteindelijk moet biedt het methoden om te evalueren prestatie-eisen.
+In deze sectie worden de evaluatie methoden voor prestaties beschreven en worden vervolgens alle factoren vermeld die van invloed zijn op de prestaties. In het eind biedt het een methode om u te helpen bij het evalueren van prestatie vereisten.
 
 ### <a name="methodology"></a>Methodologie
 
-*Doorvoer* en *latentie* zijn twee typische aspecten van de prestaties controleren. Voor Azure SignalR Service heeft elke SKU-laag een eigen beleid beperking doorvoer. Het beleid wordt gedefinieerd *de maximaal toegestane doorvoer (binnenkomende en uitgaande bandbreedte)* zoals de maximale doorvoer behaalde wanneer 99 procent van de berichten latentie die is minder dan 1 seconde.
+De *door Voer* en *latentie* zijn twee typische aspecten van het controleren van de prestaties. Voor de Azure signalerings service heeft elke SKU-laag een eigen doorvoer beperkings beleid. Het beleid definieert *de Maxi maal toegestane door Voer (binnenkomende en uitgaande band breedte)* als de Maxi maal behaalde door Voer als maxi maal 99 procent van de berichten een latentie van minder dan 1 seconde heeft.
 
-Latentie is de tijdsduur van de verbinding voor het ontvangen van het antwoordbericht van Azure SignalR-Service te verzenden. Laten we **echo** als voorbeeld. Elke clientverbinding wordt een tijdstempel in het bericht toegevoegd. Het oorspronkelijke bericht verzendt van de appserver-hub terug naar de client. De vertraging doorgifte wordt dus eenvoudig berekend door elke clientverbinding. De tijdstempel is gekoppeld voor elk bericht dat in **uitzending**, **verzenden naar groep**, en **verzenden naar verbinding**.
+Latentie is de tijds duur van de verbinding die het bericht verzendt om het antwoord bericht van de Azure signalerings service te ontvangen. Laten we een voor beeld van **echo's** maken. Elke client verbinding voegt een tijds tempel in het bericht toe. De hub van de app-server stuurt het oorspronkelijke bericht terug naar de client. De vertraging van de doorgifte kan dus eenvoudig worden berekend door elke client verbinding. De tijds tempel wordt gekoppeld voor elk bericht in **broadcasten**, **verzenden naar groep**en **verzenden naar verbinding**.
 
-Meerdere VM's om te simuleren duizenden gelijktijdige clientverbindingen, gemaakt in een virtueel particulier netwerk in Azure. Alle VM's verbinding maken met de dezelfde Azure SignalR Service-exemplaar.
+Voor het simuleren van duizenden gelijktijdige client verbindingen worden meerdere Vm's gemaakt in een virtueel particulier netwerk in Azure. Al deze Vm's maken verbinding met hetzelfde exemplaar van de Azure signalerings service.
 
-In de standaardmodus van Azure SignalR Service, appserver-VM's worden geïmplementeerd in hetzelfde virtuele particuliere netwerk als client VM's. Alle client-VM's en app-server virtuele machines zijn geïmplementeerd in hetzelfde netwerk van dezelfde regio bevinden om te voorkomen dat de regio-overschrijdende latentie.
+In de standaard modus van de Azure signalerings service worden app server-Vm's geïmplementeerd in hetzelfde virtuele particuliere netwerk als client-Vm's. Alle client-Vm's en app server-Vm's worden geïmplementeerd in hetzelfde netwerk van dezelfde regio om te voor komen dat de latentie tussen regio's wordt overschreden.
 
-### <a name="performance-factors"></a>Prestatiefactoren
+### <a name="performance-factors"></a>Prestatie factoren
 
-In theorie wordt Azure SignalR Service capaciteit beperkt door de rekenbronnen die: CPU, geheugen en netwerk. Meer verbindingen met Azure SignalR Service bijvoorbeeld ervoor zorgen dat de service meer geheugen gebruiken. Voor grotere berichtenverkeer (bijvoorbeeld elk bericht groter is dan 2048 bytes), Azure SignalR-Service moet meer CPU-cycli voor het verwerken van verkeer. Ondertussen Azure netwerkbandbreedte ook standaard een limiet ingesteld voor maximum verkeer.
+Theoretisch is de capaciteit van de Azure signalerings service beperkt door de reken resources: CPU, geheugen en netwerk. Meer verbindingen met de Azure signalerings service zorgen er bijvoorbeeld voor dat de service meer geheugen gebruikt. Voor groter bericht verkeer (bijvoorbeeld elk bericht groter is dan 2.048 bytes), moet de Azure signalerings service meer CPU-cycli best Eden om verkeer te verwerken. Ondertussen legt Azure-netwerk bandbreedte ook een limiet voor het maximale verkeer.
 
-Het transporttype is een andere factor die van invloed op prestaties. Er zijn drie typen [WebSocket](https://en.wikipedia.org/wiki/WebSocket), [Server-verzonden-gebeurtenis](https://en.wikipedia.org/wiki/Server-sent_events), en [Long-Polling](https://en.wikipedia.org/wiki/Push_technology). 
+Het transport type is een andere factor die van invloed is op de prestaties. De drie typen zijn [](https://en.wikipedia.org/wiki/WebSocket)websockets, door de [server verzonden gebeurtenissen](https://en.wikipedia.org/wiki/Server-sent_events)en [lange polling](https://en.wikipedia.org/wiki/Push_technology). 
 
-WebSocket is een in twee richtingen en full-duplex communicatieprotocol via één TCP-verbinding. Server-verzonden-gebeurtenis is een Unidirectioneel protocol voor pushberichten uit naar de client. Long-Polling vereist dat de clients te peilen regelmatig gegevens van de server via een HTTP-aanvraag. Voor de dezelfde API dezelfde voorwaarden, WebSocket is de beste prestaties, Server-verzonden-gebeurtenis is trager en Long-Polling het langzaamst is. Azure SignalR Service raadt WebSocket standaard.
+WebSocket is een bidirectionele en full-duplex communicatie protocol via één TCP-verbinding. Server-sent-event is een onwaar-protocol om berichten van de server naar de client te pushen. Voor lange polling moeten clients periodiek gegevens van de server via een HTTP-aanvraag pollen. Voor dezelfde API onder dezelfde voor waarden biedt WebSocket de beste prestaties, de door de server verzonden gebeurtenis is langzamer en lange polling is het langzaamst. De Azure signalerings service beveelt standaard WebSocket aan.
 
-De kosten voor het doorsturen van bericht beperkt ook prestaties. Azure SignalR Service speelt een rol als een router bericht het bericht van een set van clients of servers met andere clients of servers stuurt. Een ander scenario of API vereist een andere routeringsbeleid. 
+De kosten voor bericht routering beperken ook de prestaties. De Azure signalerings service speelt een rol af als een Message router, waarmee het bericht wordt gerouteerd van een set clients of servers naar andere clients of servers. Een ander scenario of API vereist een ander routerings beleid. 
 
-Voor **echo**, de client verzendt een bericht naar zichzelf en de bestemming van de routering is ook zelf. Dit patroon heeft de laagste routering kosten. Maar voor **uitzending**, **verzenden naar groep**, en **verzenden naar verbinding**, Azure SignalR Service nodig heeft om te controleren of de doel-verbindingen via de interne gedistribueerde gegevens structuur. Deze extra verwerking maakt gebruik van meer CPU, geheugen en netwerkbandbreedte. Als gevolg hiervan is trager.
+Bij **echo**verzendt de client een bericht naar zichzelf en is het routerings doel ook zelf. Dit patroon heeft de laagste routerings kosten. Maar voor **broadcasten**, **verzenden naar groep**en **verzenden naar verbinding**, moet de Azure signalerings service de doel verbindingen opzoeken via de interne gedistribueerde gegevens structuur. Deze extra verwerking maakt gebruik van meer CPU-, geheugen-en netwerk bandbreedte. Als gevolg hiervan zijn de prestaties langzamer.
 
-In de standaardmodus kan de app-server ook een knelpunt voor bepaalde scenario's. De SDK van Azure SignalR heeft om aan te roepen van de hub, terwijl er wordt een live-verbinding met elke client via de heartbeat signalen bijgehouden.
+In de standaard modus kan de app-server ook een knel punt vormen voor bepaalde scenario's. De Azure Signalr SDK moet de hub aanroepen, terwijl een live-verbinding wordt bijgehouden met elke client via heartbeat-signalen.
 
-De client verzendt een bericht in de modus voor serverloze, door HTTP post, die niet zo efficiënt als WebSocket.
+In de serverloze modus verzendt de client een bericht via HTTP post, dat niet zo efficiënt is als WebSocket.
 
-Een andere factor is een protocol: JSON en [MessagePack](https://msgpack.org/index.html). MessagePack is kleiner dan de grootte en geleverde sneller dan de JSON. MessagePack kan niet door de prestaties verbeteren. De prestaties van Azure SignalR Service is niet gevoelig zijn voor protocollen, omdat deze niet worden gedecodeerd de berichtnettolading van het tijdens het doorsturen van berichten van clients op servers of vice versa.
+Een andere factor is Protocol: JSON en [Message Pack](https://msgpack.org/index.html). Message Pack is kleiner en wordt sneller geleverd dan JSON. De prestaties worden echter door Message Pack mogelijk niet verbeterd. De prestaties van de Azure Signalr-service zijn niet gevoelig voor protocollen omdat deze de bericht lading niet ontsleutelt tijdens het door sturen van berichten van clients naar servers of andersom.
 
-Kortom, de volgende factoren invloed hebben op de inkomende en uitgaande capaciteit:
+In samen vatting zijn de volgende factoren van invloed op de inkomende en uitgaande capaciteit:
 
 -   SKU-laag (CPU/geheugen)
 
@@ -90,134 +90,134 @@ Kortom, de volgende factoren invloed hebben op de inkomende en uitgaande capacit
 
 -   Berichtgrootte
 
--   snelheid van berichten verzenden
+-   Verzend frequentie van berichten
 
--   Type transport (WebSocket, Server-verzonden-gebeurtenis of Long-Polling)
+-   Transport type (WebSocket, server-verzonden-event of Long-Polling)
 
--   Gebruiksscenario's (routering kosten)
+-   Use-case-scenario (routerings kosten)
 
--   App-server en service-verbindingen (in de servermodus)
+-   App-server-en service verbindingen (in server modus)
 
 
-### <a name="finding-a-proper-sku"></a>Zoeken naar een juiste SKU
+### <a name="finding-a-proper-sku"></a>Een juiste SKU zoeken
 
-Hoe kunt u de capaciteit voor binnenkomend en uitgaand evalueren of vinden welke laag is geschikt voor een specifieke use case?
+Hoe kunt u de inkomende/uitgaande capaciteit evalueren of bepalen welke laag geschikt is voor een specifieke use case?
 
-Wordt ervan uitgegaan dat de app-server is een krachtig genoeg is niet van het prestatieknelpunt. Controleer de maximale bandbreedte voor binnenkomende en uitgaande voor elke laag.
+Stel dat de app-server krachtig genoeg is en niet het knel punt van de prestaties is. Controleer vervolgens de maximale binnenkomende en uitgaande band breedte voor elke laag.
 
-#### <a name="quick-evaluation"></a>Een snelle evaluatie
+#### <a name="quick-evaluation"></a>Snelle evaluatie
 
-Vereenvoudig de evaluatie eerst laten we veronderstelling dat sommige standaardinstellingen: 
+We gaan de evaluatie eerst vereenvoudigen door een aantal standaard instellingen op te nemen: 
 
-- Het transporttype is WebSocket.
-- De grootte van het bericht is 2048 bytes.
-- Elke seconde wordt een bericht verzonden.
-- Azure SignalR-Service is in de standaardmodus.
+- Het transport type is WebSocket.
+- De bericht grootte is 2.048 bytes.
+- Er wordt elke 1 seconde een bericht verzonden.
+- De Azure signalerings service bevindt zich in de standaard modus.
 
-Voor elke laag heeft een eigen maximale bandbreedte voor binnenkomende en uitgaande bandbreedte. Nadat de verbinding binnenkomend of uitgaand de limiet overschrijdt kan niet worden gegarandeerd door een goede gebruikerservaring.
+Elke laag heeft zijn eigen maximale inkomende band breedte en uitgaande band breedte. Een soepele gebruikers ervaring is niet gegarandeerd nadat de binnenkomende of uitgaande verbinding de limiet overschrijdt.
 
-**Echo** geeft de maximale bandbreedte voor binnenkomende omdat deze de laagste routering kosten heeft. **Uitzenden** definieert het maximum aantal uitgaande message-bandbreedte.
+**Echo** geeft de maximale binnenkomende band breedte, omdat deze de laagste routerings kosten heeft. **Broadcast** Hiermee wordt de maximale band breedte voor uitgaande berichten gedefinieerd.
 
-Voer *niet* groter zijn dan de geselecteerde waarden in de volgende twee tabellen.
+De gemarkeerde waarden in de volgende twee tabellen mogen *niet* worden overschreden.
 
 |       Echo                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen                       | 1000 | 2,000 | 5,000 | 10\.000 | 20,000 | 50,000 | 100\.000 |
-| **Binnenkomende bandbreedte** | **2 MBps**    | **4 MBps**    | **10 MBps**   | **20 MBps**    | **40 MBps**    | **100 MBps**   | **200 MBps**    |
-| Uitgaande bandbreedte | 2 Mbps   | 4 Mbps   | 10 Mbps  | 20 MBps   | 40 MBps   | 100 MBps  | 200 MBps   |
+| Verbindingen                       | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| **Inkomende band breedte** | **2 MBps**    | **4 MBps**    | **10 MBps**   | **20 MBps**    | **40 MBps**    | **100 MBps**   | **200 MBps**    |
+| Uitgaande band breedte | 2 Mbps   | 4 Mbps   | 10 Mbps  | 20 MBps   | 40 MBps   | 100 MBps  | 200 MBps   |
 
 
 |     Uitzenden             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Verbindingen               | 1000 | 2,000 | 5,000  | 10\.000 | 20,000 | 50,000  | 100\.000 |
-| Binnenkomende bandbreedte  | 4 k   | 4 k   | 4 k    | 4 k    | 4 k    | 4 k     | 4 k    |
-| **Uitgaande bandbreedte** | **4 MBps**    | **8 MBps**    | **20 MBps**    | **40 MBps**    | **80 MBps**    | **200 MBps**    | **400 MBps**   |
+| Verbindingen               | 1000 | 2,000 | 5,000  | 10.000 | 20,000 | 50,000  | 100,000 |
+| Inkomende band breedte  | 4 KBps   | 4 KBps   | 4 KBps    | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps    |
+| **Uitgaande band breedte** | **4 MBps**    | **8 MBps**    | **20 MBps**    | **40 MBps**    | **80 MBps**    | **200 MBps**    | **400 MBps**   |
 
-*Binnenkomende bandbreedte* en *uitgaande bandbreedte* zijn de totale berichtgrootte per seconde.  Hier volgen de formules:
+*Inkomende band breedte* en *uitgaande band breedte* zijn de totale bericht grootte per seconde.  Hier volgen de formules:
 ```
   inboundBandwidth = inboundConnections * messageSize / sendInterval
   outboundBandwidth = outboundConnections * messageSize / sendInterval
 ```
 
-- *inboundConnections*: Het aantal verbindingen die het bericht te verzenden.
+- *inboundConnections*: Het aantal verbindingen dat het bericht verzendt.
 
-- *outboundConnections*: Het aantal verbindingen die het bericht te ontvangen.
+- *outboundConnections*: Het aantal verbindingen dat het bericht ontvangt.
 
-- *messageSize*: De grootte van een enkel bericht (gemiddelde waarde). Een kleine bericht dat kleiner is dan 1024 bytes heeft invloed op de prestaties die vergelijkbaar is met een bericht 1024 bytes.
+- *messageSize*: De grootte van één bericht (gemiddelde waarde). Een klein bericht van minder dan 1.024 bytes heeft een invloed op de prestaties die vergelijkbaar is met een bericht van 1.024 bytes.
 
-- *sendInterval*: De tijd van het verzenden van één bericht. Het is doorgaans 1 seconde per bericht, wat betekent dat elke seconde van één bericht verzenden. Een kleinere waarde betekent meer bericht verzonden in een bepaalde periode. 0,5 seconden per bericht betekent bijvoorbeeld dat twee berichten verzonden per seconde.
+- *sendInterval*: De tijd van het verzenden van één bericht. Normaal gesp roken is het 1 seconde per bericht, wat betekent dat u elke seconde één bericht verzendt. Een kleiner interval betekent dat er meer berichten worden verzonden in een tijds periode. Zo betekent 0,5 seconden per bericht dat elke seconde twee berichten verzendt.
 
-- *Verbindingen*: De vastgelegde maximale drempelwaarde voor Azure SignalR Service voor elke laag. Als het nummer van de verbinding is verhoogd, wordt het ten koste gaan van bandbreedtebeperking van verbinding.
+- *Verbindingen*: De toegezegde maximale drempel waarde voor de Azure signalerings service voor elke laag. Als het verbindings nummer verder toeneemt, wordt de verbindings beperking in rekening gebracht.
 
-#### <a name="evaluation-for-complex-use-cases"></a>Evaluatie voor complexe use-cases
+#### <a name="evaluation-for-complex-use-cases"></a>Evaluatie voor complexe use cases
 
-##### <a name="bigger-message-size-or-different-sending-rate"></a>Grootte van het bericht groter of andere verzendsnelheid
+##### <a name="bigger-message-size-or-different-sending-rate"></a>Grotere bericht grootte of ander verzend tempo
 
-De echte use-case is gecompliceerder. Er kan een bericht groter is dan 2048 bytes verzonden, of de verzendsnelheid bericht is niet één bericht per seconde. We gaan de uitzending van Unit100 als voorbeeld om te zoeken over het evalueren van de prestaties.
+De echte use-case is ingewik kelder. Er kan een bericht worden verzonden dat groter is dan 2.048 bytes, of het verzend bericht is niet één bericht per seconde. We gaan Unit100's broadcast als voor beeld nemen om te ontdekken hoe u de prestaties ervan kunt evalueren.
 
-De volgende tabel ziet u een echte use case van **uitzending**. Maar de grootte van het bericht, aantal verbindingen en bericht verzenden tarief verschillen van wat wordt ervan uitgegaan in de vorige sectie dat. De vraag is hoe we kunt deduceren een van deze items (grootte van het bericht, aantal verbindingen of snelheid voor het verzenden van berichten) als we weten slechts twee dat.
+In de volgende tabel ziet u een real use-case van **broadcast**. Maar de bericht grootte, het aantal verbindingen en de verzend frequentie van berichten verschillen van wat we in de vorige sectie hebben aangenomen. De vraag is hoe we een van deze items (bericht grootte, aantal verbindingen of verzend frequentie) kunnen afleiden als we er slechts twee van hebben.
 
-| Uitzenden  | Berichtgrootte | Binnenkomende berichten per seconde | Verbindingen | Intervallen verzenden |
+| Uitzenden  | Berichtgrootte | Inkomende berichten per seconde | Verbindingen | Intervallen verzenden |
 |---|---------------------|--------------------------|-------------|-------------------------|
-| 1 | 20 KB                | 1                        | 100\.000     | 5 per seconde                      |
-| 2 | 256 kB               | 1                        | 8,000       | 5 per seconde                      |
+| 1 | 20 KB                | 1                        | 100,000     | 5 sec                      |
+| 2 | 256 kB               | 1                        | 8,000       | 5 sec                      |
 
-De volgende formule is eenvoudig te afleiden op basis van de vorige formule:
+De volgende formule is gemakkelijk te afleiden op basis van de vorige formule:
 
 ```
 outboundConnections = outboundBandwidth * sendInterval / messageSize
 ```
 
-Voor Unit100 is de maximale bandbreedte voor uitgaand 400 MB van de vorige tabel. Het maximum aantal uitgaande verbindingen moet voor de grootte van een bericht van 20-KB, 400 MB \* 5 / 20 KB = 100.000, die overeenkomt met de werkelijke waarde.
+Voor Unit100 is de maximale uitgaande band breedte 400 MB van de vorige tabel. Voor een bericht grootte van 20 KB moet het maximum aantal uitgaande verbindingen 400 MB \* 5/20 KB = 100.000 zijn, wat overeenkomt met de werkelijke waarde.
 
-##### <a name="mixed-use-cases"></a>Gemengde use-cases
+##### <a name="mixed-use-cases"></a>Gemengde use cases
 
-Normaal gesproken combineert de vier eenvoudige gebruiksvoorbeelden samen de echte use-case: **echo**, **uitzending**, **verzenden naar groep**, en **verzenden naar verbinding**. De methode die u gebruiken om te evalueren van de capaciteit is:
+In het praktijk voorbeeld worden de vier basis cases samen met elkaar gecombineerd: **echo**, **broadcast**, **verzenden naar groep**en **verzenden naar verbinding**. De methode die u gebruikt om de capaciteit te evalueren, is:
 
-1. De gemengde gebruiksvoorbeelden onderverdelen in vier eenvoudige gebruiksvoorbeelden.
-1. De maximumgrootte van een bericht binnenkomende en uitgaande bandbreedte berekenen met behulp van de vorige formules afzonderlijk.
-1. Som van de Bandbreedteberekeningen voor het ophalen van de totale bandbreedte van de maximale binnenkomend en uitgaand. 
+1. Deel de cases voor gemengde gebruik in vier elementaire use cases.
+1. De maximale band breedte voor inkomend en uitgaand verkeer berekenen door de voor gaande formules afzonderlijk te gebruiken.
+1. Som van de bandbreedte berekeningen om de totale maximale inkomende/uitgaande band breedte te verkrijgen. 
 
-Kies een van de juiste laag uit de tabellen Maximumbandbreedte binnenkomend en uitgaand.
+Vervolgens neemt u de juiste laag op in de tabellen maximum aantal inkomende/uitgaande band breedte.
 
 > [!NOTE]
-> Voor het verzenden van een bericht naar honderden of duizenden kleine groepen of van duizenden clients een bericht verzenden naar elkaar worden verbonden, worden de kosten voor routering dominante. Deze gevolgen rekening nemen.
+> Voor het verzenden van een bericht naar honderden of duizenden kleine groepen, of voor duizenden clients die een bericht naar elkaar verzenden, worden de kosten van het bewerkings plan dominant. Houd rekening met dit voor deel.
 
-Zorg ervoor dat de app-server voor het geval van het gebruik van een bericht te verzenden naar clients, *niet* het knelpunt. De volgende 'CASESTUDY'-sectie vindt u richtlijnen over het aantal appservers u nodig hebt en het aantal serververbindingen dient u te configureren.
+Zorg ervoor dat de app-server *niet* het knel punt is voor het gebruik van het verzenden van een bericht naar clients. De sectie ' casestudy ' bevat richt lijnen voor het aantal app-servers dat u nodig hebt en het aantal server verbindingen dat u moet configureren.
 
 ## <a name="case-study"></a>Casestudy
 
-De volgende secties doorlopen vier standaard use cases voor WebSocket-transport: **echo**, **uitzending**, **verzenden naar groep**, en **verzenden naar verbinding**. Voor elk scenario vindt de sectie u de huidige capaciteit voor binnenkomend en uitgaand voor Azure SignalR Service. Hierin wordt ook uitgelegd over de belangrijkste factoren die invloed hebben op prestaties.
+In de volgende secties worden vier typische gebruiks voorbeelden voor WebSocket-Trans Port beschreven: **echo**, **broadcast**, **verzenden naar groep**en **verzenden naar verbinding**. Voor elk scenario bevat de sectie de huidige binnenkomende en uitgaande capaciteit voor de Azure signalerings service. Ook worden de belangrijkste factoren beschreven die van invloed zijn op de prestaties.
 
-In de standaardmodus maakt de appserver vijf server-verbindingen met Azure SignalR Service. De app-server maakt standaard gebruik van de Azure SignalR Service-SDK. In de volgende Prestatietestresultaten serververbindingen verhoogd tot 15 (of meer voor uitzenden en het verzenden van een bericht naar een grote groep).
+In de standaard modus maakt de app server vijf server verbindingen met de Azure signalerings service. De app server maakt standaard gebruik van de Azure signalerings Service-SDK. In de volgende resultaten van de prestatie test worden server verbindingen verhoogd tot 15 (of meer voor het uitzenden en verzenden van een bericht naar een grote groep).
 
-Verschillende use cases hebben verschillende vereisten voor app-servers. **Uitzenden** moet klein aantal servers met Apps. **Echo** of **verzenden naar verbinding** moet veel appservers.
+Verschillende use cases hebben verschillende vereisten voor app-servers. **Broadcast** vereist een klein aantal app-servers. **Echo** of **verzenden naar verbinding** vereist veel app-servers.
 
-Gebruik in alle gevallen, de standaardgrootte van het bericht is 2048 bytes en het interval voor het verzenden van bericht is 1 seconde.
+In alle use-cases is de standaard bericht grootte 2.048 bytes en het verzend interval van het bericht 1 seconde.
 
-### <a name="default-mode"></a>Standaardmodus
+### <a name="default-mode"></a>Standaard modus
 
-Clients, servers met web apps en Azure SignalR Service betrokken zijn bij de standaardmodus. Elke client staat voor een enkele verbinding.
+Clients, Web-app-servers en de Azure signalerings service zijn betrokken bij de standaard modus. Elke client staat voor één verbinding.
 
 #### <a name="echo"></a>Echo
 
-Een web-app maakt eerst verbinding met Azure SignalR Service. Ten tweede veel clients verbinding maken met de web-app, die de clients omgeleid naar Azure SignalR Service met het toegangstoken en een eindpunt. Vervolgens dat de clients WebSocket-verbindingen met Azure SignalR Service tot stand brengen.
+De eerste keer dat een web-app verbinding maakt met de Azure signalerings service. Ten tweede, veel clients maken verbinding met de web-app, waarmee de clients worden omgeleid naar de Azure signalerings service met het toegangs token en-eind punt. Vervolgens maken de clients WebSocket-verbindingen met de Azure signalerings service.
 
-Nadat alle clients verbindingen tot stand brengen, start ze verzenden van een bericht met een tijdstempel op de specifieke hub per seconde. De hub kan het bericht terug naar de oorspronkelijke client. Elke client berekent de latentie wanneer deze weer de echo-bericht ontvangt.
+Nadat alle clients verbindingen tot stand hebben gebracht, gaan ze een bericht verzenden dat elke seconde een tijds tempel voor de specifieke hub bevat. De hub ECHO het bericht terug naar de oorspronkelijke client. Elke client berekent de latentie wanneer het ECHO bericht weer wordt ontvangen.
 
-In het volgende diagram wordt 5 tot en met 8 (rood gemarkeerde verkeer) zijn in een lus. De lus wordt uitgevoerd voor een standaardduur (5 minuten) en de statistieken van alle bericht latentie opgehaald.
+In het volgende diagram bevinden zich in een lus 5 t/m 8 (rood gemarkeerd verkeer). De lus wordt uitgevoerd voor een standaard duur (5 minuten) en de statistieken van alle bericht latentie worden opgehaald.
 
-![Verkeer voor de echo-use-case](./media/signalr-concept-performance/echo.png)
+![Verkeer voor de echo use-case](./media/signalr-concept-performance/echo.png)
 
-Het gedrag van **echo** bepaalt dat de maximale bandbreedte voor inkomend gelijk aan het maximum aantal uitgaande bandbreedte is. Zie de volgende tabel voor meer informatie.
+Het gedrag van **echo** bepaalt dat de maximale binnenkomende band breedte gelijk is aan de maximale uitgaande band breedte. Zie de volgende tabel voor meer informatie.
 
 |       Echo                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen                       | 1000 | 2,000 | 5,000 | 10\.000 | 20,000 | 50,000 | 100\.000 |
-| Inkomende/uitgaande berichten per seconde | 1000 | 2,000 | 5,000 | 10\.000 | 20,000 | 50,000 | 100\.000 |
-| Inkomende/uitgaande bandbreedte | 2 Mbps   | 4 Mbps   | 10 Mbps  | 20 MBps   | 40 MBps   | 100 MBps  | 200 MBps   |
+| Verbindingen                       | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Inkomende/uitgaande berichten per seconde | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Inkomende/uitgaande band breedte | 2 Mbps   | 4 Mbps   | 10 Mbps  | 20 MBps   | 40 MBps   | 100 MBps  | 200 MBps   |
 
-In dit geval gebruik roept elke client de hub die is gedefinieerd in de app-server. De hub worden alleen de methode die is gedefinieerd in de oorspronkelijke client aanroepen. Deze hub is de meest eenvoudige hub voor **echo**.
+In dit geval roept elke client de hub aan die is gedefinieerd in de app-server. De hub roept alleen de methode aan die is gedefinieerd in de oorspronkelijke client zijde. Deze hub is de meest licht gewicht hub voor **echo's**.
 
 ```
         public void Echo(IDictionary<string, object> data)
@@ -226,213 +226,213 @@ In dit geval gebruik roept elke client de hub die is gedefinieerd in de app-serv
         }
 ```
 
-Zelfs voor dit eenvoudige hub, de druk verkeer op de appserver is belangrijk als de **echo** binnenkomend bericht belasting toeneemt. Deze druk verkeer vereist veel appservers voor grote SKU-laag. De volgende tabel bevat het aantal van de app-server voor elke laag.
+Zelfs voor deze eenvoudige hub is de verkeers druk op de app-server prominent, omdat de inkomend bericht over het laden van de **echo** toeneemt. Deze verkeers druk vereist veel app-servers voor grote SKU-lagen. De volgende tabel geeft een overzicht van het aantal app-servers voor elke laag.
 
 
 |    Echo          | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2,000 | 5,000 | 10\.000 | 20,000 | 50,000 | 100\.000 |
-| Aantal App-server | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
+| Verbindingen      | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Aantal app-servers | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
-> De client verbinding number, berichtgrootte, bericht verzenden snelheid, de SKU-laag en de CPU/geheugen van de appserver invloed hebben op de algehele prestaties van **echo**.
+> Het client verbindings nummer, de bericht grootte, de verzend snelheid van berichten, de SKU-laag en de CPU/het geheugen van de app-server beïnvloeden de algehele prestaties van **echo's**.
 
 #### <a name="broadcast"></a>Uitzenden
 
-Voor **uitzending**, wanneer de web-app het bericht ontvangt verzendt een broadcast naar alle clients. Er zijn meer clients om uit te zenden, het meer berichtverkeer er is op alle clients. Zie het volgende diagram.
+Wanneerde web-app het bericht ontvangt, wordt deze verzonden naar alle clients. Hoe meer clients er worden uitgezonden, des te meer berichten verkeer naar alle clients. Zie het volgende diagram.
 
-![Verkeer voor de uitzending use-case](./media/signalr-concept-performance/broadcast.png)
+![Verkeer voor de use-case van de uitzending](./media/signalr-concept-performance/broadcast.png)
 
-Een klein aantal clients worden uitgezonden. De bandbreedte multicastverkeer voor message klein is, maar de uitgaande bandbreedte is enorm. De bandbreedte voor uitgaand multicastverkeer voor message wordt verhoogd als de clientverbinding of broadcastsnelheid wordt verhoogd.
+Een klein aantal clients wordt uitgezonden. De band breedte van het inkomende bericht is klein, maar de uitgaande band breedte is enorm. De uitgaande bericht bandbreedte neemt toe als de client verbinding of de broadcast frequentie toeneemt.
 
-De volgende tabel geeft een overzicht van de maximale-clientverbindingen, aantal inkomende/uitgaande berichten, en bandbreedte.
+De volgende tabel bevat een overzicht van de maximale client verbindingen, het inkomende/uitgaande aantal berichten en de band breedte.
 
 |     Uitzenden             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Verbindingen               | 1000 | 2,000 | 5,000  | 10\.000 | 20,000 | 50,000  | 100\.000 |
-| Binnenkomende berichten per seconde  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Uitgaande berichten per seconde | 2,000 | 4,000 | 10\.000 | 20,000 | 40,000 | 100\.000 | 200\.000 |
-| Binnenkomende bandbreedte  | 4 k   | 4 k   | 4 k    | 4 k    | 4 k    | 4 k     | 4 k     |
-| Uitgaande bandbreedte | 4 Mbps   | 8 MBps   | 20 MBps   | 40 MBps   | 80 MBps   | 200 MBps   | 400 MBps   |
+| Verbindingen               | 1000 | 2,000 | 5,000  | 10.000 | 20,000 | 50,000  | 100,000 |
+| Inkomende berichten per seconde  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
+| Uitgaande berichten per seconde | 2,000 | 4,000 | 10.000 | 20,000 | 40,000 | 100,000 | 200.000 |
+| Inkomende band breedte  | 4 KBps   | 4 KBps   | 4 KBps    | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps     |
+| Uitgaande band breedte | 4 Mbps   | 8 MBps   | 20 MBps   | 40 MBps   | 80 MBps   | 200 MBps   | 400 MBps   |
 
-De clients broadcasting geposte berichten zijn niet meer dan vier. Ze nodig hebben minder appservers vergeleken met **echo** omdat het bedrag multicastverkeer voor message klein is. Twee appservers zijn voldoende voor zowel SLA- en Prestatieoverwegingen. Maar u moet de standaard-server-verbindingen om te voorkomen dat imbalance, met name voor Unit50 en Unit100 verhogen.
+De omroep clients die berichten posten, zijn niet meer dan vier. Ze hebben minder toepassings servers nodig vergeleken met **echo's** , omdat de inkomende bericht grootte klein is. Er zijn twee app-servers voldoende voor zowel SLA-als prestatie overwegingen. Maar u moet de standaard server verbindingen verhogen om te voor komen dat er geen evenwicht meer is, met name voor Unit50 en Unit100.
 
 |   Uitzenden      | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2,000 | 5,000 | 10\.000 | 20,000 | 50,000 | 100\.000 |
-| Aantal App-server | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
+| Verbindingen      | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Aantal app-servers | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
-> Verhoog de verbindingen van de standaard-server van 5 tot en met 40 op elke appserver om te voorkomen dat mogelijk is dat niet in balans server-verbindingen met Azure SignalR Service.
+> Verhoog de standaard server verbindingen van 5 tot 40 op elke app-server om mogelijke niet-sluitende server verbindingen met de Azure signalerings service te voor komen.
 >
-> Het nummer van de client verbinding, de grootte van het bericht, de snelheid voor het verzenden van berichten en het SKU-laag van invloed zijn op de algehele prestaties voor **uitzending**.
+> Het aantal client verbindingen, de bericht grootte, de verzend snelheid van berichten en de SKU-laag zijn van invloed op de algehele prestaties van de **uitzending**.
 
-#### <a name="send-to-group"></a>Verzenden aan groep
+#### <a name="send-to-group"></a>Verzenden naar groep
 
-De **verzenden naar groep** use-case heeft een vergelijkbaar patroon verkeer naar **uitzending**. Het verschil is dat nadat clients tot stand brengen van verbindingen met Azure SignalR Service WebSocket, ze moeten deelnemen aan groepen voordat ze een bericht naar een specifieke groep kunnen verzenden. Het volgende diagram illustreert de werkstroom verkeer.
+De use-case **voor verzenden naar groep** heeft een vergelijkbaar verkeerspatroon om te broadcasten. Het verschil is dat nadat clients WebSocket-verbindingen met de Azure signalerings service hebben tot stand zijn gebracht, ze lid moeten worden van groepen voordat ze een bericht kunnen verzenden naar een specifieke groep. In het volgende diagram ziet u de verkeers stroom.
 
-![Verkeer voor de aanvraag verzenden aan groep gebruiken](./media/signalr-concept-performance/sendtogroup.png)
+![Verkeer voor de gebruiks Case voor verzenden naar groep](./media/signalr-concept-performance/sendtogroup.png)
 
-Een lid en het aantal van de groep zijn afhankelijk van twee factoren die invloed hebben op prestaties. Ter vereenvoudiging van de analyse, definiëren we twee soorten groepen:
+Groepslid en aantal groepen zijn twee factoren die van invloed zijn op de prestaties. Voor het vereenvoudigen van de analyse definieert u twee soorten groepen:
 
-- **Kleine groep**: Elke groep heeft 10 verbindingen. Het groepsnummer is gelijk aan (max verbinding aantal) / 10. Bijvoorbeeld, voor Unit1, als er 1000 verbinding tellingen, nu zijn 1000 / 10 = 100 groepen.
+- **Kleine groep**: Elke groep heeft 10 verbindingen. Het groeps nummer is gelijk aan (maximum aantal verbindingen)/10. Bijvoorbeeld: voor Unit1, als er 1.000-verbindings aantallen zijn, hebben we 1000/10 = 100 groepen.
 
-- **Grote groep**: Het groepsnummer is altijd 10. Het aantal groepen lid is gelijk aan (max verbinding aantal) / 10. Voor Unit1, als er 1000 verbinding tellingen, klikt u vervolgens elke groep heeft bijvoorbeeld 1000 / 10 = 100 leden.
+- **Big groep**: Het groeps nummer is altijd 10. Het aantal leden van de groep is gelijk aan (maximum aantal verbindingen)/10. Bijvoorbeeld: voor Unit1, als er 1.000-verbindings aantallen zijn, heeft elke groep 1000/10 = 100 leden.
 
-**Verzenden naar groep** zorgt voor een routering kosten voor Azure SignalR Service omdat het vinden van de doel-verbindingen via de structuur van een gedistribueerde gegevens heeft. Als de verzendende verbindingen verhoogt, verhoogt de kosten.
+De **groep verzenden naar** levert de bewerkings kosten van de Azure signalerings service, omdat deze de doel verbindingen via een gedistribueerde gegevens structuur moet vinden. Naarmate de verzend verbindingen toenemen, nemen de kosten toe.
 
 ##### <a name="small-group"></a>Kleine groep
 
-De kosten voor routering is van belang voor het verzenden van berichten naar veel kleine groepen. Op dit moment de Azure SignalR Service-implementatie komt binnen via de routering kostenlimiet op Unit50. Toevoegen van meer CPU en geheugen niet helpen, zodat Unit100 verbeteren kan niet meer standaard. Als u meer binnenkomende bandbreedte nodig hebt, moet u contact opnemen met klantondersteuning.
+De bewerkings kosten zijn belang rijk voor het verzenden van berichten naar een groot aantal kleine groepen. Op dit moment komt de implementatie van de Azure signalerings service voor de kosten limiet van het routerings percentage bij Unit50. Het toevoegen van meer CPU en geheugen helpt niet, zodat Unit100 niet meer kan worden verbeterd door het ontwerp. Neem contact op met de klant ondersteuning als u meer inkomende band breedte nodig hebt.
 
-|   Verzenden naar een kleine groep     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50 | Unit100 |
+|   Naar kleine groep verzenden     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50 | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|--------|---------|
-| Verbindingen               | 1000 | 2,000 | 5,000  | 10\.000 | 20,000 | 50,000 | 100\.000
-| Aantal voor leden van groep        | 10    | 10    | 10     | 10     | 10     | 10     | 10 
-| Aantal groepen               | 100   | 200   | 500    | 1000  | 2,000  | 5,000  | 10\.000 
-| Binnenkomende berichten per seconde  | 200   | 400   | 1000  | 2,500  | 4,000  | 7,000  | 7,000   |
-| Binnenkomende bandbreedte  | 400 k  | 800 kBps  | 2 Mbps     | 5 Mbps     | 8 MBps     | 14 MBps    | 14 MBps     |
-| Uitgaande berichten per seconde | 2,000 | 4,000 | 10\.000 | 25,000 | 40,000 | 70,000 | 70,000  |
-| Uitgaande bandbreedte | 4 Mbps    | 8 MBps    | 20 MBps    | 50 MBps     | 80 MBps    | 140 MBps   | 140 MBps    |
+| Verbindingen               | 1000 | 2,000 | 5,000  | 10.000 | 20,000 | 50,000 | 100,000
+| Groepslid aantal leden        | 10    | 10    | 10     | 10     | 10     | 10     | 10 
+| Aantal groepen               | 100   | 200   | 500    | 1000  | 2,000  | 5,000  | 10.000 
+| Inkomende berichten per seconde  | 200   | 400   | 1000  | 2,500  | 4,000  | 7,000  | 7,000   |
+| Inkomende band breedte  | 400 KBps  | 800 KBps  | 2 Mbps     | 5 Mbps     | 8 MBps     | 14 MBps    | 14 MBps     |
+| Uitgaande berichten per seconde | 2,000 | 4,000 | 10.000 | 25,000 | 40,000 | 70.000 | 70.000  |
+| Uitgaande band breedte | 4 Mbps    | 8 MBps    | 20 MBps    | 50 MBps     | 80 MBps    | 140 MBps   | 140 MBps    |
 
-Veel clientverbindingen zijn aanroepen van de hub, zodat het nummer van de app is ook belangrijk voor prestaties. De volgende tabel bevat de aantallen van de voorgestelde Apps-server.
+Veel client verbindingen bellen de hub, waardoor het nummer van de app-server ook essentieel is voor de prestaties. De volgende tabel geeft een lijst van de voorgestelde app server-aantallen.
 
-|  Verzenden naar een kleine groep   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
+|  Naar kleine groep verzenden   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2,000 | 5,000 | 10\.000 | 20,000 | 50,000 | 100\.000 |
-| Aantal App-server | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
+| Verbindingen      | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Aantal app-servers | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
-> De client verbinding number, berichtgrootte, bericht verzenden snelheid, routering kosten, SKU-laag en CPU/geheugen van de appserver invloed hebben op de algehele prestaties van **verzenden naar een kleine groep**.
+> Het client verbindingsnummer, de bericht grootte, de verzend snelheid van berichten, de route kosten, de SKU-laag en de CPU/het geheugen van de app-server zijn van invloed op de algehele prestaties van **verzenden naar kleine groep**.
 
-##### <a name="big-group"></a>Grote groep
+##### <a name="big-group"></a>Big-groep
 
-Voor **verzenden naar grote groep**, de uitgaande bandbreedte wordt het knelpunt voordat de limiet te maken met de routering kosten. De volgende tabel bevat de maximale uitgaande bandbreedte, die bijna hetzelfde is als die voor **uitzending**.
+Voor de **groep verzenden naar Big**wordt de uitgaande band breedte het knel punt voordat de kosten limiet van de route ring wordt bereikt. De volgende tabel bevat de maximale uitgaande band breedte, die bijna hetzelfde is als voor **broadcasten**.
 
-|    Verzenden naar grote groep      | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
+|    Naar grote groep verzenden      | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Verbindingen               | 1000 | 2,000 | 5,000  | 10\.000 | 20,000 | 50,000  | 100\.000
-| Aantal voor leden van groep        | 100   | 200   | 500    | 1000  | 2,000  | 5,000   | 10\.000 
+| Verbindingen               | 1000 | 2,000 | 5,000  | 10.000 | 20,000 | 50,000  | 100,000
+| Groepslid aantal leden        | 100   | 200   | 500    | 1000  | 2,000  | 5,000   | 10.000 
 | Aantal groepen               | 10    | 10    | 10     | 10     | 10     | 10      | 10
-| Binnenkomende berichten per seconde  | 20    | 20    | 20     | 20     | 20     | 20      | 20      |
-| Binnenkomende bandbreedte  | 80 kBps   | 40 kBps   | 40 kBps    | 20 kBps    | 40 kBps    | 40 kBps     | 40 kBps     |
-| Uitgaande berichten per seconde | 2,000 | 4,000 | 10\.000 | 20,000 | 40,000 | 100\.000 | 200\.000 |
-| Uitgaande bandbreedte | 8 MBps    | 8 MBps    | 20 MBps    | 40 MBps    | 80 MBps    | 200 MBps    | 400 MBps    |
+| Inkomende berichten per seconde  | 20    | 20    | 20     | 20     | 20     | 20      | 20      |
+| Inkomende band breedte  | 80 KBps   | 40 KBps   | 40 KBps    | 20 KBps    | 40 KBps    | 40 KBps     | 40 KBps     |
+| Uitgaande berichten per seconde | 2,000 | 4,000 | 10.000 | 20,000 | 40,000 | 100,000 | 200.000 |
+| Uitgaande band breedte | 8 MBps    | 8 MBps    | 20 MBps    | 40 MBps    | 80 MBps    | 200 MBps    | 400 MBps    |
 
-De verzendende aantal verbindingen is niet meer dan 40. De werkbelasting van de app-server is klein, zodat het aanbevolen aantal web-apps klein is.
+Het aantal verzonden verbindingen is niet groter dan 40. De belasting op de app-server is klein, dus het voorgestelde aantal web-apps is klein.
 
-|  Verzenden naar grote groep  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
+|  Naar grote groep verzenden  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2,000 | 5,000 | 10\.000 | 20,000 | 50,000 | 100\.000 |
-| Aantal App-server | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
+| Verbindingen      | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Aantal app-servers | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
-> Verhoog de verbindingen van de standaard-server van 5 tot en met 40 op elke appserver om te voorkomen dat mogelijk is dat niet in balans server-verbindingen met Azure SignalR Service.
+> Verhoog de standaard server verbindingen van 5 tot 40 op elke app-server om mogelijke niet-sluitende server verbindingen met de Azure signalerings service te voor komen.
 > 
-> Het nummer van de client verbinding, grootte van het bericht, snelheid voor het verzenden van berichten, routering kosten en SKU-laag van invloed zijn op de algehele prestaties van **verzenden naar grote groep**.
+> Het aantal client verbindingen, de bericht grootte, de verzend snelheid van berichten, de routerings kosten en de SKU-laag zijn van invloed op de algehele prestaties van de **verzenden naar een grote groep**.
 
 #### <a name="send-to-connection"></a>Verzenden naar verbinding
 
-In de **verzenden naar verbinding** use-case, wanneer clients tot stand brengen van verbindingen met Azure SignalR Service, elke client roept een speciale hub om hun eigen verbindings-ID. De benchmark prestaties verzamelt alle id's die verbinding, plaatst ze en ze opnieuw toegewezen aan alle clients als het doel van een verzenden. De clients blijven het bericht verzenden naar de doelverbinding, totdat de prestatietest is voltooid.
+Wanneer clients de verbindingen met de Azure signalerings service tot stand brengen, roept elke client een speciale hub aan om hun eigen verbindings-id op te halen. Met de Bench Mark voor prestaties worden alle verbindings-Id's verzameld, worden deze in wille keurige volg orde en opnieuw toegewezen aan alle clients als een verzend doel. De clients verzenden het bericht naar de doel verbinding totdat de prestatie test is voltooid.
 
-![Verkeer voor de aanvraag verzenden naar de client gebruiken](./media/signalr-concept-performance/sendtoclient.png)
+![Verkeer voor de gebruiks case van send-to-client](./media/signalr-concept-performance/sendtoclient.png)
 
-Voor de routering kosten **verzenden naar verbinding** is vergelijkbaar met de kosten voor **verzenden naar een kleine groep**.
+De routerings kosten voor **verzenden naar verbinding** zijn vergelijkbaar met de kosten voor **verzenden naar een kleine groep**.
 
-Als het aantal verbindingen toeneemt, beperkt de kosten voor routering algehele prestaties. Unit50 heeft de limiet bereikt. Als gevolg hiervan kan niet Unit100 verder verbeteren.
+Naarmate het aantal verbindingen toeneemt, worden de kosten voor de route ring van de totale prestaties beperkt. Unit50 heeft de limiet bereikt. Als gevolg hiervan kunnen Unit100 niet verder worden verbeterd.
 
-De volgende tabel bevat een overzicht van statistische na veel afgerond van het uitvoeren de **verzenden naar verbinding** benchmark.
+De volgende tabel is een statistische samen vatting na veel rondingen van het uitvoeren van de Bench Mark **voor verzenden naar verbinding** .
 
 |   Verzenden naar verbinding   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50          | Unit100         |
 |------------------------------------|-------|-------|-------|--------|--------|-----------------|-----------------|
-| Verbindingen                        | 1000 | 2,000 | 5,000 | 10\.000 | 20,000 | 50,000          | 100\.000         |
-| Inkomende/uitgaande berichten per seconde | 1000 | 2,000 | 5,000 | 8,000  | 9,000  | 20,000 | 20,000 |
-| Inkomende/uitgaande bandbreedte | 2 Mbps    | 4 Mbps    | 10 Mbps   | 16 MBps    | 18 MBps    | 40 MBps       | 40 MBps       |
+| Verbindingen                        | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000          | 100,000         |
+| Inkomende/uitgaande berichten per seconde | 1000 | 2,000 | 5,000 | 8,000  | 9\.000  | 20,000 | 20,000 |
+| Inkomende/uitgaande band breedte | 2 Mbps    | 4 Mbps    | 10 Mbps   | 16 MBps    | 18 MBps    | 40 MBps       | 40 MBps       |
 
-Deze use case vereist hoge belasting op de server app. Zie de voorgestelde appserver tellen in de volgende tabel.
+Voor deze use-case moet hoge belasting aan de kant van de app-server worden gebruikt. Zie het aantal voorgestelde app-servers in de volgende tabel.
 
 |  Verzenden naar verbinding  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2,000 | 5,000 | 10\.000 | 20,000 | 50,000 | 100\.000 |
-| Aantal App-server | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
+| Verbindingen      | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Aantal app-servers | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
-> De client verbinding number, berichtgrootte, bericht verzenden snelheid, routering kosten, SKU-laag en CPU/geheugen voor de appserver invloed hebben op de algehele prestaties van **verzenden naar verbinding**.
+> Het client verbindingsnummer, de bericht grootte, de verzend snelheid van berichten, de route kosten, de SKU-laag en de CPU/het geheugen voor de app-server zijn van invloed op de algehele prestaties van **verzenden naar verbinding**.
 
-#### <a name="aspnet-signalr-echo-broadcast-and-send-to-small-group"></a>ASP.NET SignalR echo, uitzenden, maken en te verzenden naar een kleine groep
+#### <a name="aspnet-signalr-echo-broadcast-and-send-to-small-group"></a>ASP.NET signalerings ECHO, broadcasten en verzenden naar kleine groep
 
-Azure SignalR Service biedt dezelfde prestaties capaciteit voor ASP.NET SignalR. 
+De Azure signalerings service biedt dezelfde prestatie capaciteit voor ASP.NET-Signa lering. 
 
-De prestatietest maakt gebruik van Azure Web Apps van [Standard S3 van Service-Plan](https://azure.microsoft.com/pricing/details/app-service/windows/) voor ASP.NET SignalR.
+De prestatie test maakt gebruik van Azure Web Apps van het [standaard service plan S3](https://azure.microsoft.com/pricing/details/app-service/windows/) voor ASP.net signalering.
 
-De volgende tabel geeft het aantal van de voorgestelde web-app voor ASP.NET SignalR **echo**.
+In de volgende tabel ziet u het aantal voorgestelde web-apps voor ASP.NET signalerings **echo**.
 
 |   Echo           | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2,000 | 5,000 | 10\.000 | 20,000 | 50,000 | 100\.000 |
-| Aantal App-server | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
+| Verbindingen      | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Aantal app-servers | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
-De volgende tabel geeft het aantal van de voorgestelde web-app voor ASP.NET SignalR **uitzending**.
+In de volgende tabel ziet u het aantal voorgestelde web-apps voor ASP.NET signalerings **broadcast**.
 
 |  Uitzenden       | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2,000 | 5,000 | 10\.000 | 20,000 | 50,000 | 100\.000 |
-| Aantal App-server | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
+| Verbindingen      | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Aantal app-servers | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
-De volgende tabel geeft het aantal van de voorgestelde web-app voor ASP.NET SignalR **verzenden naar een kleine groep**.
+In de volgende tabel ziet u het aantal voorgestelde web-apps voor ASP.NET signalering **verzenden naar een kleine groep**.
 
-|  Verzenden naar een kleine groep     | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
+|  Naar kleine groep verzenden     | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2,000 | 5,000 | 10\.000 | 20,000 | 50,000 | 100\.000 |
-| Aantal App-server | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
+| Verbindingen      | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Aantal app-servers | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 ### <a name="serverless-mode"></a>Serverloze modus
 
-Clients en Azure SignalR Service zijn in de modus voor serverloze betrokken. Elke client staat voor een enkele verbinding. De client verzendt berichten via de REST-API naar een andere client of broadcast-berichten op alle.
+Clients en de Azure signalerings service zijn betrokken bij de serverloze modus. Elke client staat voor één verbinding. De client verzendt berichten via de REST API naar een andere client of broadcast berichten.
 
-Verzenden van hoge dichtheid berichten via de REST-API is niet zo efficiënt als het gebruik van WebSocket. Moet u een nieuwe telkens van de HTTP-verbinding kunt maken en die zijn extra kosten in de modus zonder server.
+Het verzenden van berichten met hoge dichtheid via de REST API is niet zo efficiënt als het gebruik van WebSocket. U moet elke keer een nieuwe HTTP-verbinding maken en dat is een extra kosten in de serverloze modus.
 
-#### <a name="broadcast-through-rest-api"></a>Verzonden via de REST-API
-Alle clients tot stand brengen van verbindingen met Azure SignalR Service WebSocket. Sommige clients start broadcasting via de REST-API. Het bericht verzenden (inkomend) is allemaal via HTTP Post, die niet efficiënt vergeleken met WebSocket.
+#### <a name="broadcast-through-rest-api"></a>Uitzenden via REST API
+Alle clients maken WebSocket-verbindingen met de Azure signalerings service. Vervolgens starten sommige clients via de REST API. Het bericht dat wordt verzonden (inkomend) is alle via HTTP post, wat niet efficiënt is vergeleken met WebSocket.
 
-|   Verzonden via de REST-API     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
+|   Uitzenden via REST API     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Verbindingen               | 1000 | 2,000 | 5,000  | 10\.000 | 20,000 | 50,000  | 100\.000 |
-| Binnenkomende berichten per seconde  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Uitgaande berichten per seconde | 2,000 | 4,000 | 10\.000 | 20,000 | 40,000 | 100\.000 | 200\.000 |
-| Binnenkomende bandbreedte  | 4 k    | 4 k    | 4 k     | 4 k     | 4 k     | 4 k      | 4 k      |
-| Uitgaande bandbreedte | 4 Mbps    | 8 MBps    | 20 MBps    | 40 MBps    | 80 MBps    | 200 MBps    | 400 MBps    |
+| Verbindingen               | 1000 | 2,000 | 5,000  | 10.000 | 20,000 | 50,000  | 100,000 |
+| Inkomende berichten per seconde  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
+| Uitgaande berichten per seconde | 2,000 | 4,000 | 10.000 | 20,000 | 40,000 | 100,000 | 200.000 |
+| Inkomende band breedte  | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps     | 4 KBps     | 4 KBps      | 4 KBps      |
+| Uitgaande band breedte | 4 Mbps    | 8 MBps    | 20 MBps    | 40 MBps    | 80 MBps    | 200 MBps    | 400 MBps    |
 
-#### <a name="send-to-user-through-rest-api"></a>Verzenden naar de gebruiker via REST-API
-Voordat ze verbinding maken met Azure SignalR Service, de benchmark gebruikersnamen toegewezen aan alle clients. Nadat de clients tot stand brengen van de WebSocket-verbindingen met Azure SignalR Service, start ze berichten verzenden naar anderen via HTTP Post.
+#### <a name="send-to-user-through-rest-api"></a>Naar gebruiker verzenden via REST API
+De Bench Mark wijst gebruikers namen toe aan alle clients voordat ze verbinding maken met de Azure signalerings service. Nadat de clients WebSocket-verbindingen met de Azure signalerings service hebben tot stand zijn gebracht, sturen ze via HTTP post berichten naar anderen.
 
-|   Verzenden naar de gebruiker via REST-API | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
+|   Naar gebruiker verzenden via REST API | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Verbindingen               | 1000 | 2,000 | 5,000  | 10\.000 | 20,000 | 50,000  | 100\.000 |
-| Binnenkomende berichten per seconde  | 300   | 600   | 900    | 1,300  | 2,000  | 10\.000  | 18,000  |
-| Uitgaande berichten per seconde | 300   | 600   | 900    | 1,300  | 2,000  | 10\.000  | 18,000 |
-| Binnenkomende bandbreedte  | 600 kBps  | 1.2 MBps  | 1.8 MBps   | 2.6 MBps   | 4 Mbps     | 10 Mbps     | 36 MBps    |
-| Uitgaande bandbreedte | 600 kBps  | 1.2 MBps  | 1.8 MBps   | 2.6 MBps   | 4 Mbps     | 10 Mbps     | 36 MBps    |
+| Verbindingen               | 1000 | 2,000 | 5,000  | 10.000 | 20,000 | 50,000  | 100,000 |
+| Inkomende berichten per seconde  | 300   | 600   | 900    | 1\.300  | 2,000  | 10.000  | 18.000  |
+| Uitgaande berichten per seconde | 300   | 600   | 900    | 1\.300  | 2,000  | 10.000  | 18.000 |
+| Inkomende band breedte  | 600 KBps  | 1,2 MBps  | 1,8 MBps   | 2,6 MBps   | 4 Mbps     | 10 Mbps     | 36 MBps    |
+| Uitgaande band breedte | 600 KBps  | 1,2 MBps  | 1,8 MBps   | 2,6 MBps   | 4 Mbps     | 10 Mbps     | 36 MBps    |
 
-## <a name="performance-test-environments"></a>Prestaties en testomgevingen
+## <a name="performance-test-environments"></a>Prestatie test omgevingen
 
-Gebruik voor alle eerder vermelde gevallen, we de prestaties te testen in een Azure-omgeving die wordt uitgevoerd. We hebben gebruikt, maximaal 50 client VM's en 20 appserver-VM's. Hier volgen enkele details:
+Voor alle use-cases die eerder zijn vermeld, hebben we de prestatie tests uitgevoerd in een Azure-omgeving. We hebben meestal 50-client-Vm's en 20 app server-Vm's gebruikt. Hier volgen enkele details:
 
-- Client VM-grootte: StandardDS2V2 (2 vCPU, 7G memory)
+- VM-grootte van client: StandardDS2V2 (2 vCPU, 7G-geheugen)
 
-- App-server VM-grootte: StandardF4sV2 (4 vCPU, geheugen van 8G)
+- VM-grootte van app-server: StandardF4sV2 (4 vCPU, 8G-geheugen)
 
-- Azure SignalR-SDK-server-verbindingen: 15
+- Azure signalering SDK-server verbindingen: 15
 
-## <a name="performance-tools"></a>Hulpprogramma's voor prestaties
+## <a name="performance-tools"></a>Prestatie hulpprogramma's
 
-U kunt de prestaties van hulpprogramma's voor Azure SignalR Service vinden op [GitHub](https://github.com/Azure/azure-signalr-bench/tree/master/SignalRServiceBenchmarkPlugin).
+U kunt prestatie hulpprogramma's voor Azure signalerings service vinden op [github](https://github.com/Azure/azure-signalr-bench/).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een overzicht van Azure SignalR Service-prestaties in typische gebruiksscenario's.
+In dit artikel krijgt u een overzicht van de prestaties van de Azure signalerings service in typische gebruiks scenario's.
 
-Als u meer informatie over leest de inhoud van de service en schalen, u de volgende handleidingen:
+Lees de volgende hand leidingen om meer te weten te komen over de interne service en om deze te schalen:
 
 * [Interne werking van Azure SignalR Service](signalr-concept-internals.md)
-* [Azure SignalR Service schalen](signalr-howto-scale-multi-instances.md)
+* [Azure signalerings service schalen](signalr-howto-scale-multi-instances.md)

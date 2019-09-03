@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 09ef80742c931c9b7e8f8c2e2cf0b9e373ad6184
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 3141a32437e56bcefe830bc94109e93208e0258d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015736"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232152"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>Zelfstudie: IPass SmartConnect configureren voor automatische gebruikers inrichting
 
@@ -57,7 +57,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 Voordat u iPass SmartConnect configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u configuratie-informatie ophalen van de iPass SmartConnect-beheer console:
 
 1. Als u het Bearer-token wilt ophalen dat nodig is voor verificatie op basis van uw iPass SmartConnect SCIM-eind punt, raadpleegt u de eerste keer dat u iPass SmartConnect instelt, omdat deze waarde alleen wordt opgegeven. 
-2. Als u geen Bearer-token hebt, neemt u contact op met het ondersteunings team van [mailto:help@ipass.comiPass SmartConnect] () om een nieuwe op te halen.
+2. Als u geen Bearer-token hebt, neemt u contact op met het ondersteunings [team van IPass SmartConnect](mailto:help@ipass.com) om een nieuwe te verkrijgen.
 
 ## <a name="add-ipass-smartconnect-from-the-gallery"></a>IPass SmartConnect toevoegen vanuit de galerie
 

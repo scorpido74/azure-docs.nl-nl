@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 08/14/2019
-ms.openlocfilehash: a02709ffde144e7bd5e4d05fcd0e07c5d84a15fb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 09/03/2019
+ms.openlocfilehash: e81ae2fc563300402339fc40893fbbdbbd326dcd
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035836"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233241"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Tijd zones in Azure SQL Database beheerde instantie
 
@@ -83,37 +83,19 @@ U kunt een back-upbestand herstellen of gegevens importeren naar een beheerd exe
 
 ### <a name="point-in-time-restore"></a>Terugzetten naar eerder tijdstip
 
-<del>Wanneer u een herstel naar een bepaald tijdstip uitvoert, wordt de tijd om te herstellen, geïnterpreteerd als UTC-tijd. Op deze manier worden wille keurige ambiguïteiten veroorzaakt door zomer tijd en zijn de mogelijke wijzigingen worden vermeden.<del>
-
- >[!WARNING]
-  > Het huidige gedrag is niet in overeenstemming met de instructie hierboven en de tijd om te herstellen naar wordt geïnterpreteerd als de tijd zone van het beheerde exemplaar van de bron waarvoor automatische database back-ups worden gemaakt. Er wordt aan gewerkt om dit gedrag te corrigeren om het gegeven punt in de tijd te interpreteren als UTC-tijd.
+Wanneer u een herstel naar een bepaald tijdstip uitvoert, wordt de tijd om te herstellen, geïnterpreteerd als UTC-tijd. Op deze manier worden wille keurige ambiguïteiten veroorzaakt door zomer tijd en zijn de mogelijke wijzigingen worden vermeden.
 
 ### <a name="auto-failover-groups"></a>Automatische failover-groepen
 
 Het gebruik van dezelfde tijd zone in een primair en secundair exemplaar in een failovergroep wordt niet afgedwongen, maar we raden dit ten zeerste aan.
 
   >[!WARNING]
-  > We raden u ten zeerste aan dezelfde tijd zone te gebruiken voor het primaire en secundaire exemplaar in een failovergroep. Vanwege sommige zeldzame scenario's wordt de dezelfde tijd zone op de primaire en secundaire instanties niet afgedwongen. Het is belang rijk om te begrijpen dat in het geval van een hand matige of automatische failover de oorspronkelijke tijd zone wordt bewaard.
+  > We raden u ten zeerste aan dezelfde tijd zone te gebruiken voor het primaire en secundaire exemplaar in een failovergroep. Als gevolg van bepaalde zeldzame use-cases kan dezelfde tijd zone niet worden toegepast op de primaire en secundaire instanties. Het is belang rijk om te begrijpen dat in het geval van een hand matige of automatische failover de oorspronkelijke tijd zone wordt bewaard.
 
 ## <a name="limitations"></a>Beperkingen
 
 - De tijd zone van het bestaande beheerde exemplaar kan niet worden gewijzigd.
 - Externe processen die vanuit de SQL Server Agent taken worden gestart, hebben geen tijd zone van het exemplaar.
-
-## <a name="known-issues"></a>Bekende problemen
-
-Wanneer een PITR-bewerking (Point-in-time Restore) wordt uitgevoerd, wordt de tijd die moet worden teruggezet, geïnterpreteerd als per tijd zone die is ingesteld op het beheerde exemplaar van automatische database back-ups, zelfs hoewel de portal pagina voor PITR aangeeft dat de tijd wordt geïnterpreteerd als UTC.
-
-Voorbeeld:
-
-Stel dat er voor de automatische back-ups van een tijd zoneset Eastern (standaard tijd) (UTC-5) is ingesteld.
-De portal pagina voor herstel naar een bepaald tijdstip geeft aan dat de tijd die u wilt herstellen, UTC is:
-
-![PITR met de lokale tijd met behulp van portal](media/sql-database-managed-instance-timezone/02-pitr-with-nonutc-timezone.png)
-
-De tijd voor het herstellen naar wordt echter in werkelijkheid geïnterpreteerd als Eastern (standaard tijd). in deze specifieke voorbeeld database wordt de status op 9 AM Eastern (standaard tijd) en niet UTC-tijd hersteld.
-
-Als u naar een bepaald punt in UTC-tijd wilt herstellen, moet u eerst de overeenkomende tijd in de tijd zone van het bron exemplaar berekenen en die tijd gebruiken in het portal-of Power shell/CLI-script.
 
 ## <a name="list-of-supported-time-zones"></a>Lijst met ondersteunde tijd zones
 
@@ -122,28 +104,28 @@ Als u naar een bepaald punt in UTC-tijd wilt herstellen, moet u eerst de overeen
 | Datumgrens (standaardtijd) | (UTC-12:00) Internationale Datumgrens West |
 | UTC-11 | (UTC-11:00) Coordinated Universal Time-11 |
 | Aleoeten (standaardtijd) | (UTC-10:00) Aleoeten |
-| Hawaï (standaardtijd) | (UTC-10:00) Hawaii |
+| Hawaï (standaardtijd) | (UTC-10:00) Hawaï |
 | Marquesas Standard Time | (UTC-09:30) Marquesaseilanden |
 | Alaska (standaardtijd) | (UTC-09:00) Alaska |
 | UTC-09 | (UTC-09:00) Coordinated Universal Time-09 |
-| Pacific (standaardtijd, Mexico) | (UTC-08:00) Baja California |
+| Pacific (standaard tijd, Mexico) | (UTC-08:00) Baja California |
 | UTC-08 | (UTC-08:00) Coordinated Universal Time-08 |
-| Pacific (standaardtijd) | (UTC-08:00) Pacific Time (VS en Canada) |
+| Pacific (standaardtijd) | (UTC-08:00) Pacific Time (VS & Canada) |
 | US Mountain (standaardtijd) | (UTC-07:00) Arizona |
-| Mountain (standaardtijd, Mexico) | (UTC-07:00) Chihuahua, La Paz, Mazatlan |
-| Mountain (standaardtijd) | (UTC-07:00) Mountain Time (VS en Canada) |
+| Mountain (standaard tijd, Mexico) | (UTC-07:00) Chihuahua, La Paz, Mazatlan |
+| Mountain (standaardtijd) | (UTC-07:00) Mountain Time (VS & Canada) |
 | Centraal-Amerika (stnd. tijd) | (UTC-06:00) Centraal-Amerika |
-| Central (standaardtijd) | (UTC-06:00) Central Time (VS en Canada) |
+| Central (standaardtijd) | (UTC-06:00) Central Time (US & Canada) |
 | Paaseiland (standaardtijd) | (UTC-06:00) Paaseiland |
-| Central (standaardtijd, Mexico) | (UTC-06:00) Guadalajara, Mexico, Monterrey |
+| Central (standaard tijd, Mexico) | (UTC-06:00) Guadalajara, Mexico-stad, Monterrey |
 | Canada - centraal (standaardtijd) | (UTC-06:00) Saskatchewan |
 | SA Pacific (standaardtijd) | (UTC-05:00) Bogota, Lima, Quito, Rio Branco |
-| Eastern (standaardtijd, Mexico) | (UTC-05:00) Chetumal |
-| Eastern (standaardtijd) | (UTC-05:00) Eastern Time (VS en Canada) |
+| Eastern (standaard tijd, Mexico) | (UTC-05:00) Chetumal |
+| Eastern (standaardtijd) | (UTC-05:00) Eastern Time (VS & Canada) |
 | Haïti (standaardtijd) | (UTC-05:00) Haïti |
 | Cuba (standaardtijd) | (UTC-05:00) Havana |
-| US - oost (standaardtijd) | (UTC-05:00) Indiana (East) |
-| Turks-en Caicoseilanden (standaard tijd) | (UTC-05:00) Turks- en Caicoseilanden |
+| US - oost (standaardtijd) | (UTC-05:00) Indiana (Oost) |
+| Turks-en Caicoseilanden (standaard tijd) | (UTC-05:00) Turks-en Caicos |
 | Paraguay (standaardtijd) | (UTC-04:00) Asuncion |
 | Atlantic (standaardtijd) | (UTC-04:00) Atlantic Time (Canada) |
 | Venezuela Standard Time | (UTC-04:00) Caracas |
@@ -161,7 +143,7 @@ Als u naar een bepaald punt in UTC-tijd wilt herstellen, moet u eerst de overeen
 | Saint-Pierre (standaardtijd) | (UTC-03:00) Saint-Pierre en Miquelon |
 | Bahia standaardtijd | (UTC-03:00) Salvador |
 | UTC-02 | (UTC-02:00) Coordinated Universal Time-02 |
-| Mid-Atlantic (standaardtijd) | (UTC-02:00) Mid-Atlantic - verouderd |
+| Mid-Atlantic (standaard tijd) | (UTC-02:00) Mid-Atlantic - Oud |
 | Azoren (standaardtijd) | (UTC-01:00) Azoren |
 | Cabo Verde (standaard tijd) | (UTC-01:00) Cabo Verde |
 | UTC | (UTC) Coordinated Universal Time |
@@ -170,10 +152,10 @@ Als u naar een bepaald punt in UTC-tijd wilt herstellen, moet u eerst de overeen
 | W. Europa (standaard tijd) | (UTC+01:00) Amsterdam, Berlijn, Bern, Rome, Stockholm, Wenen |
 | Centraal-Europa (standaardtijd) | (UTC+01:00) Belgrado, Bratislava, Boedapest, Ljubljana, Praag |
 | Romance (standaardtijd) | (UTC+01:00) Brussel, Kopenhagen, Madrid, Parijs |
-| Marokko (standaardtijd) | (UTC +01:00) Casablanca |
-| Standaardtijd van Sao Tomé | (UTC+01:00) Sao Tomé |
+| Marokko (standaardtijd) | (UTC + 01:00) Casablanca |
+| Standaardtijd van Sao Tomé | (UTC + 01:00) Sao Tomé |
 | Europa centraal (standaardtijd) | (UTC+01:00) Sarajevo, Skopje, Warschau, Zagreb |
-| W. Centraal-Afrika (standaard tijd) | (UTC+01:00) West Central Africa |
+| W. Centraal-Afrika (standaard tijd) | (UTC+01:00) Centraal-Afrika - West |
 | Jordanië (standaardtijd) | (UTC+02:00) Amman |
 | GTB (standaardtijd) | (UTC+02:00) Athene, Boekarest |
 | Midden-Oosten (standaardtijd) | (UTC+02:00) Beiroet |
@@ -187,47 +169,47 @@ Als u naar een bepaald punt in UTC-tijd wilt herstellen, moet u eerst de overeen
 | Kaliningrad (standaard tijd) | (UTC+02:00) Kaliningrad |
 | Soedan (standaardtijd) | (UTC + 02:00) Khartoem |
 | Libië standaardtijd | (UTC+02:00) Tripoli |
-| Namibië (standaardtijd) | (UTC + 02:00) Windhoek |
+| Namibië (standaardtijd) | (UTC + 02:00) Wind hoek |
 | Arab. schiereiland (st. tijd) | (UTC+03:00) Bagdad |
-| Turkije standaardtijd | (UTC+03:00) Istanboel |
+| Turkije standaardtijd | (UTC + 03:00) Istanboel |
 | Arabisch schiereiland (st.tijd) | (UTC+03:00) Koeweit, Riyad |
 | Belarus (standaardtijd) | (UTC+03:00) Minsk |
-| Rusland (standaard tijd) | (UTC+03:00) Moskou, Sint-Petersburg |
+| Rusland (standaard tijd) | (UTC + 03:00) Moskou, St. Peters Burg |
 | E. Afrika (standaard tijd) | (UTC+03:00) Nairobi |
 | Iran (standaardtijd) | (UTC+03:30) Teheran |
 | Arabisch schiereiland (st.tijd) | (UTC+04:00) Abu Dhabi, Muscat |
 | Astrachan (standaardtijd) | (UTC+04:00) Astrachan, Oeljanovsk |
 | Azerbeidzjan (standaardtijd) | (UTC+04:00) Bakoe |
-| Rusland-tijd Zone 3 | (UTC+04:00) Izhevsk, Samara |
+| Rusland-tijd Zone 3 | (UTC+04:00) Izjevsk, Samara |
 | Mauritius (standaardtijd) | (UTC+04:00) Port Louis |
-| Saratov (standaardtijd) | (UTC+04:00) Saratov |
+| Saratov (standaardtijd) | (UTC + 04:00) Saratov |
 | Georgië (standaardtijd) | (UTC+04:00) Tbilisi |
-| Volgograd (standaard tijd) | (UTC+04:00) Volgograd |
+| Volgograd (standaard tijd) | (UTC + 04:00) Volgograd |
 | Kaukasus (standaardtijd) | (UTC+04:00) Jerevan |
-| Afghanistan (standaardtijd) | (UTC+04:30) Kaboel |
+| Afghanistan (standaardtijd) | (UTC+04:30) Kabul |
 | West Asia (standaardtijd) | (UTC+05:00) Asjchabad, Tasjkent |
-| Jekaterinenburg standaard tijd) | (UTC+05:00) Jekaterinenburg |
+| Jekaterinenburg standaard tijd) | (UTC+05:00) Ekaterinenburg |
 | Pakistan (standaardtijd) | (UTC+05:00) Islamabad, Karachi |
 | India (standaardtijd) | (UTC+05:30) Chennai, Kolkata, Mumbai, New Delhi |
 | Sri Lanka (standaardtijd) | (UTC+05:30) Sri Jayawardenepura |
 | Nepal (standaardtijd) | (UTC+05:45) Kathmandu |
 | Central Asia (standaardtijd) | (UTC+06:00) Astana |
 | Bangladesh standaardtijd | (UTC+06:00) Dhaka |
-| Omsk (standaardtijd) | (UTC+06:00) Omsk |
+| Omsk (standaardtijd) | (UTC + 06:00) Omsk |
 | Myanmar (standaardtijd) | (UTC+06:30) Yangon (Rangoon) |
 | Zuidoost-Azië (standaardtijd) | (UTC+07:00) Bangkok, Hanoi, Jakarta |
-| Altaj (standaardtijd) | (UTC+07:00) Barnaoel, Gorno-Altajsk |
+| Altaj (standaardtijd) | (UTC+07:00) Barnaul, Gorno-Altajsk |
 | W. Mongolië (standaard tijd) | (UTC+07:00) Hovd |
 | North Asia (standaard tijd) | (UTC+07:00) Krasnoyarsk |
-| NVT. Central Asia (standaardtijd) | (UTC+07:00) Novosibirsk |
+| NVT. Central Asia (standaardtijd) | (UTC + 07:00) Novosibirsk |
 | Tomsk (standaardtijd) | (UTC+07:00) Tomsk |
-| China (standaardtijd) | (UTC+08:00) Beijing, Chongqing, Hongkong SAR, Urumqi |
+| China (standaardtijd) | (UTC+08:00) Beijing, Chongqing, Hongkong, Urumqi |
 | Noord-Azië Oost (standaard tijd) | (UTC+08:00) Irkoetsk |
 | Singapore (standaard tijd) | (UTC+08:00) Kuala Lumpur, Singapore |
 | W. Australië (standaard tijd) | (UTC+08:00) Perth |
 | Taipei (standaardtijd) | (UTC+08:00) Taipei |
 | Ulaanbaatar standaardtijd | (UTC+08:00) Ulaanbaatar |
-| Australië - centraal-west (standaardtijd) | (UTC+08:45) Eucla |
+| Australië Central W. (standaard tijd) | (UTC+08:45) Eucla |
 | Transbaikal (standaardtijd) | (UTC+09:00) Chita |
 | Tokio (standaardtijd) | (UTC+09:00) Osaka, Sapporo, Tokio |
 | Noord-Korea (standaardtijd) | (UTC+09:00) Pyongyang |
@@ -243,20 +225,20 @@ Als u naar een bepaald punt in UTC-tijd wilt herstellen, moet u eerst de overeen
 | Lord Howe Island (standaardtijd) | (UTC+10:30) Lord Howe Island |
 | Bougainville (standaardtijd) | (UTC+11:00) Bougainville |
 | Rusland-tijd zone 10 | (UTC+11:00) Chokurdakh |
-| Magadan standaardtijd | (UTC+10:00) Magadan |
+| Magadan standaardtijd | (UTC+11:00) Magadan |
 | Norfolk (standaardtijd) | (UTC+11:00) Norfolk |
-| Sachalin (standaardtijd) | (UTC+10:00) Sakhalin |
+| Sachalin (standaardtijd) | (UTC+11:00) Sachalin |
 | Central Pacific (standaardtijd) | (UTC+11:00) Salomonseilanden, Nieuw-Caledonië |
 | Rusland-tijd zone 11 | (UTC+12:00) Anadyr, Petropavlovsk-Kamtsjatski |
 | Nieuw-Zeeland (standaardtijd) | (UTC+12:00) Auckland, Wellington |
 | UTC+12 | (UTC+12:00) Coordinated Universal Time+12 |
 | Fiji (standaardtijd) | (UTC+12:00) Fiji |
-| Kamtsjatka (standaardtijd) | (UTC+12:00) Petropavlovsk-Kamtsjatski - verouderd |
+| Kamtsjatka (standaardtijd) | (UTC+12:00) Petropavlovsk-Kamtsjatski - Oud |
 | Chathameilanden (standaardtijd) | (UTC+12:45) Chathameilanden |
-| UTC+13 | (UTC+13:00) Coordinated Universal Time+13 |
+| UTC+13 | (UTC + 13:00) Coordinated Universal Time + 13 |
 | Tonga (standaardtijd) | (UTC+13:00) Nuku'alofa |
 | Samoa (standaardtijd) | (UTC+13:00) Samoa |
-| Line-eilanden (standaardtijd) | (UTC+14:00) Kiritimati-eiland |
+| Line-eilanden (standaardtijd) | (UTC+14:00) Kiritimati |
 
 ## <a name="see-also"></a>Zie ook 
 

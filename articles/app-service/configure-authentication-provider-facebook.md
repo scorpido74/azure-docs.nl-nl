@@ -1,6 +1,6 @@
 ---
 title: Facebook-verificatie configureren-Azure App Service
-description: Meer informatie over het configureren van Facebook-verificatie voor uw App Services-toepassing.
+description: Meer informatie over het configureren van Facebook-verificatie voor uw App Service-app.
 services: app-service
 documentationcenter: ''
 author: mattchenderson
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f4d26572dc21e2c7454fb739cb4b5fb5665bd1db
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 410d769d0d9abe3a0a0f9c45e3cf67bb94ec9f4d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098584"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232071"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-facebook-login"></a>Uw App Service-toepassing configureren voor het gebruik van Facebook-aanmelding
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -30,9 +30,9 @@ Als u de procedure in dit onderwerp wilt volt ooien, moet u beschikken over een 
 
 ## <a name="register"> </a>Uw toepassing registreren bij Facebook
 1. Ga naar de website van [Facebook-ontwikkel aars] en meld u aan met de referenties van uw Facebook-account.
-3. Beschrijving Als u geen Facebook-account voor ontwikkel aars hebt, klikt u op **aan de slag** en volgt u de registratie stappen.
+3. Beschrijving Als u geen Facebook-account voor ontwikkel aars hebt, klikt u op **aan de slag**en volgt u de registratie stappen.
 4. Klik op **mijn apps** > **nieuwe app toevoegen**.
-5. Typ in **weergave naam**een unieke naam voor uw app. Geef ook uw **contact-e-mail**op en klik vervolgens op **App-ID maken** en de beveiligings controle volt ooien. Hiermee gaat u naar het ontwikkelaars dashboard voor uw nieuwe Facebook-app.
+5. Typ in **weergave naam**een unieke naam voor uw app. Geef ook uw **contact-e-mail**op en klik vervolgens op **App-ID maken** en de beveiligings controle volt ooien. Het dash board voor ontwikkel aars voor uw nieuwe Facebook-app wordt geopend.
 6. Klik op **dash board** > **Facebook-aanmelding** > **instellen** > op**Web**.
 1. Klik in de linkernavigatiebalk onder Facebook- **aanmelding**op **instellingen**.
 1. In **geldige OAuth**omleidings- `https://<app-name>.azurewebsites.net/.auth/login/facebook/callback` uri's typt en vervangt  *\<u de app-naam >* door de naam van uw Azure app service-app. Klik op **Wijzigingen opslaan**.
@@ -42,11 +42,11 @@ Als u de procedure in dit onderwerp wilt volt ooien, moet u beschikken over een 
    > Het app-geheim is een belang rijke beveiligings referentie. Deel dit geheim niet met iemand of distribueer het in een client toepassing.
    > 
    > 
-9. Het Facebook-account dat is gebruikt voor het registreren van de toepassing is een beheerder van de app. Op dit moment kunnen alleen beheerders zich aanmelden bij deze toepassing. Als u andere Facebook-accounts wilt verifiëren, klikt u op **app controleren** en schakelt  **\<u uw app-naam > openbaar** in om algemene open bare toegang mogelijk te maken met Facebook-verificatie.
+9. Het Facebook-account dat u hebt gebruikt om de toepassing te registreren, is een beheerder van de app. Op dit moment kunnen alleen beheerders zich aanmelden bij deze toepassing. Als u andere Facebook-accounts wilt verifiëren, klikt u op **app controleren** en schakelt  **\<u uw app-naam > openbaar** in om algemene open bare toegang mogelijk te maken met Facebook-verificatie.
 
 ## <a name="secrets"> </a>Facebook-gegevens toevoegen aan uw toepassing
 1. Meld u aan bij de [Azure-portal] en navigeer naar uw app service-app. Klik op **instellingen** > **verificatie/autorisatie**en controleer of **app service-verificatie** is **ingeschakeld**.
-2. Klik op **Facebook**, plak de App-ID en de geheime waarden van de app die u eerder hebt verkregen, en Schakel eventueel de scopes in die nodig zijn voor uw toepassing en klik vervolgens op **OK**.
+2. Klik op **Facebook**, plak de waarde van de App-ID en de geheime sleutel van de app die u eerder hebt verkregen, en Schakel eventueel de scopes in die nodig zijn voor uw toepassing en klik vervolgens op **OK**.
    
     ![][0]
    

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: c31a9fde50de8190cdd7bc19600344a8e58cf60b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e2faa47a58283623747ae569de22e1c57df1a51f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827319"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231144"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
@@ -72,6 +72,9 @@ Schrijf doorvoer van NIC (MB per seconde) | net. verzonden. gemiddeld  |Berekeni
 
 ## <a name="collected-metadata-vmware"></a>Verzamelde meta gegevens-VMware
 
+> [!NOTE]
+> Meta gegevens die door het Azure Migrate apparaat worden gedetecteerd, worden gebruikt om u te helpen uw toepassingen van rechts formaat te migreren naar Azure, Azure-geschiktheids analyse, analyse van toepassings afhankelijkheden en kosten planning uit te voeren. Micro soft gebruikt deze gegevens niet ten opzichte van een controle op naleving van licenties.
+
 Hier ziet u de volledige lijst met virtuele VMware-VM-meta gegevens die door het apparaat worden verzameld en naar Azure worden verzonden.
 
 **Gegevens** | **Item**
@@ -122,6 +125,9 @@ Details van host per VM | ((HostSystem) container). VM
 
 
 ## <a name="collected-performance-data-hyper-v"></a>Verzamelde prestatie gegevens-Hyper-V
+
+> [!NOTE]
+> Meta gegevens die door het Azure Migrate apparaat worden gedetecteerd, worden gebruikt om u te helpen uw toepassingen van rechts formaat te migreren naar Azure, Azure-geschiktheids analyse, analyse van toepassings afhankelijkheden en kosten planning uit te voeren. Micro soft gebruikt deze gegevens niet ten opzichte van een controle op naleving van licenties.
 
 Dit zijn de prestatie gegevens van de VMware-VM die door het apparaat worden verzameld en naar Azure worden verzonden.
 

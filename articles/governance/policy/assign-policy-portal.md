@@ -7,13 +7,12 @@ ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 291152b46f97c9b6dd10b67c7ce812fcc791ce09
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 805f9178cb77241b8332fb78687a8409206e5c05
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979593"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231573"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Quickstart: Een beleidstoewijzing maken om niet-conforme resources te identificeren
 
@@ -30,15 +29,15 @@ In deze snelstart maakt u een beleidstoewijzing en wijst u de beleidsdefinitie *
 
 1. Start de Azure Policy-service in Azure Portal door **Alle services** te selecteren en dan **Beleid** te zoeken en te selecteren.
 
-   ![Zoeken naar beleid in alle Services](./media/assign-policy-portal/search-policy.png)
+   ![Beleid zoeken in alle services](./media/assign-policy-portal/search-policy.png)
 
 1. Selecteer **Toewijzingen** in het linkerdeelvenster van de Azure Policy-pagina. Een toewijzing is een beleid dat is toegewezen om te worden toegepast binnen een bepaald bereik.
 
-   ![Toewijzingen pagina overzichtspagina voor beleid selecteren](./media/assign-policy-portal/select-assignments.png)
+   ![Pagina toewijzingen selecteren op de pagina overzicht van beleid](./media/assign-policy-portal/select-assignments.png)
 
 1. Selecteer **Beleid toewijzen** boven in de pagina **Beleidstoewijzingen**.
 
-   ![Een beleidsdefinitie op de pagina Toewijzingen toewijzen](./media/assign-policy-portal/select-assign-policy.png)
+   ![Een beleids definitie toewijzen van de pagina toewijzingen](./media/assign-policy-portal/select-assign-policy.png)
 
 1. Selecteer op de pagina **Beleid toewijzen** het **bereik** door te klikken op het beletselteken en een beheergroep of abonnement te selecteren. U kunt ook een resourcegroep selecteren. Het bereik bepaalt op welke resources of groep resources de beleidstoewijzing wordt afgedwongen. Klik vervolgens op **Selecteren** aan de onderkant van de pagina **Bereik**.
 
@@ -52,7 +51,7 @@ In deze snelstart maakt u een beleidstoewijzing en wijst u de beleidsdefinitie *
    - Tag en waarde toepassen
    - SQL Server-versie 12.0 vereisen
 
-   Zie voor een gedeeltelijke lijst van beschikbare ingebouwde beleidsregels, [voorbeelden voor Azure Policy](./samples/index.md).
+   Zie Azure Policy-voor [beelden](./samples/index.md)voor een gedeeltelijke lijst met beschik bare ingebouwde beleids regels.
 
 1. Doorzoek uw beleidsdefinities en zoek de definitie *Controleren van virtuele machines die geen beheerde schijven gebruiken*. Klik op dit beleid en vervolgens op **Selecteren**.
 
@@ -71,7 +70,7 @@ U bent er nu klaar voor om niet-compatibele resources te identificeren om inzich
 
 Selecteer **Naleving** links op de pagina. Zoek dan de beleidstoewijzing **Virtuele machines zonder beheerde schijven controleren** die u hebt gemaakt.
 
-![Details van de naleving op de pagina beleidsnaleving](./media/assign-policy-portal/policy-compliance.png)
+![Compatibiliteits Details op de pagina naleving van beleid](./media/assign-policy-portal/policy-compliance.png)
 
 Als er bestaande resources zijn die niet conform deze nieuwe toewijzing zijn, worden deze weergegeven bij **Niet-conforme resources**.
 
@@ -79,9 +78,9 @@ Als een voorwaarde wordt geëvalueerd ten opzichte van uw bestaande resources en
 
 | **Resourcestatus** | **Effect** | **Beleidsevaluatie** | **Nalevingsstatus** |
 | --- | --- | --- | --- |
-| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Niet-compatibel |
+| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | Waar | Niet-compatibel |
 | Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Compatibel |
-| Nieuw | Controleren, AuditIfNotExist\* | True | Niet-compatibel |
+| Nieuw | Controleren, AuditIfNotExist\* | Waar | Niet-compatibel |
 | Nieuw | Controleren, AuditIfNotExist\* | False | Compatibel |
 
 \*Voor de acties Toevoegen, DeployIfNotExist en AuditIfNotExist moet de IF-instructie TRUE zijn.
@@ -95,7 +94,7 @@ Als u de gemaakte toewijzing wilt verwijderen, volgt u deze stappen:
 
 1. Klik met de rechtermuisknop op de beleidstoewijzing **Controleren van virtuele machines die geen beheerde schijven gebruiken** en selecteer **Toewijzing verwijderen**
 
-   ![Een toewijzing van de naleving pagina verwijderen](./media/assign-policy-portal/delete-assignment.png)
+   ![Een toewijzing verwijderen van de pagina naleving](./media/assign-policy-portal/delete-assignment.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

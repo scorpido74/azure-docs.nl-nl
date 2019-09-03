@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 9038bdb79504289c3aa149868d8a02e74c11fdb7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bb4583c88f2e867c619a2163d91bff1d48b6a7a3
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103431"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70230706"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Kan geen extern bureaublad met een virtuele machine omdat de netwerkinterface is uitgeschakeld
 
@@ -52,8 +52,7 @@ Seriële besturingselement gebruiken om in te schakelen de interface voor de vir
 
     Bijvoorbeeld, als de interwork-interface is de naam 'Ethernet 2', voer de volgende opdracht:
 
-        netsh interface set interface name=""Ethernet 2" admin=enabled
-
+        netsh interface set interface name="Ethernet 2" admin=enabled
 
 4.  Controleer de status van de netwerkinterface opnieuw om het ervoor te zorgen dat de netwerkinterface is ingeschakeld.
 

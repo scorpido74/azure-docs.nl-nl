@@ -1,37 +1,37 @@
 ---
-title: Toewijzingen met PowerShell beheren
-description: Informatie over het beheren van blueprint-toewijzingen met de officiële Azure blauwdrukken PowerShell-module, Az.Blueprint.
+title: Toewijzingen beheren met Power shell
+description: Meer informatie over het beheren van blauw druk-toewijzingen met de officiële Azure blauw drukken Power shell-module, AZ. blauw druk.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d8eacffe4b792eda5d81051f6aa65caa3292c896
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: beaa3f4c5ab272592e7fae5a95b40a9b586aaf65
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60682829"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232888"
 ---
-# <a name="how-to-manage-assignments-with-powershell"></a>Toewijzingen met PowerShell beheren
+# <a name="how-to-manage-assignments-with-powershell"></a>Toewijzingen beheren met Power shell
 
-Een blauwdruktoewijzing kan worden beheerd met behulp van de **Az.Blueprint** Azure PowerShell-module. De module biedt ondersteuning voor ophalen, maken, bijwerken en toewijzingen worden verwijderd. Details op bestaande blauwdrukdefinities kan ook door de module worden opgehaald. In dit artikel bevat informatie over het installeren van de module en gaan gebruiken.
+Een blauw druk-toewijzing kan worden beheerd met de module **AZ. blauw** drukken Azure PowerShell. De module ondersteunt het ophalen, maken, bijwerken en verwijderen van toewijzingen. De module kan ook details over bestaande blauw drukken-definities ophalen. In dit artikel wordt beschreven hoe u de module installeert en hoe u deze gebruikt.
 
-## <a name="add-the-azblueprint-module"></a>De module Az.Blueprint toevoegen
+## <a name="add-the-azblueprint-module"></a>De module AZ. Blue toevoegen
 
-De module moet worden toegevoegd zodat Azure PowerShell voor het beheren van blueprint-toewijzingen. Deze module kan worden gebruikt met lokaal geïnstalleerde PowerShell, met [Azure Cloud Shell](https://shell.azure.com) of met de [Azure PowerShell Docker-installatiekopie](https://hub.docker.com/r/azuresdk/azure-powershell/).
+Als u Azure PowerShell wilt inschakelen om blauw drukken-toewijzingen te beheren, moet u de module toevoegen. Deze module kan worden gebruikt met lokaal geïnstalleerde PowerShell, met [Azure Cloud Shell](https://shell.azure.com) of met de [Azure PowerShell Docker-installatiekopie](https://hub.docker.com/r/azuresdk/azure-powershell/).
 
 ### <a name="base-requirements"></a>Basisvereisten
 
-De module voor Azure blauwdrukken vereist de volgende software:
+Voor de Azure-blauw drukken-module is de volgende software vereist:
 
 - Azure PowerShell 1.5.0 of hoger. Als deze nog niet is geïnstalleerd, volgt u [deze instructies](/powershell/azure/install-az-ps) op.
 - PowerShellGet 2.0.1 of hoger. Als deze nog niet is geïnstalleerd of bijgewerkt, volgt u [deze instructies](/powershell/gallery/installing-psget) op.
 
 ### <a name="install-the-module"></a>Installeer de module
 
-De blauwdrukken-module voor PowerShell is **Az.Blueprint**.
+De blauw drukken-module voor Power shell is **AZ. blauw druk**.
 
 1. Voer vanuit een PowerShell-prompt met **beheerdersrechten** de volgende opdracht uit:
 
@@ -41,21 +41,21 @@ De blauwdrukken-module voor PowerShell is **Az.Blueprint**.
    ```
 
    > [!NOTE]
-   > Als **Az.Accounts** is al geïnstalleerd, kan het nodig zijn om te gebruiken `-AllowClobber` om af te dwingen de installatie.
+   > Als **AZ. accounts** al is geïnstalleerd, kan het nodig `-AllowClobber` zijn om de installatie te forceren.
 
-1. Valideren dat de module is geïmporteerd en de juiste versie (0.1.0):
+1. Controleer of de module is geïmporteerd en de juiste versie is (0.1.0):
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.Blueprint module
    Get-Command -Module 'Az.Blueprint' -CommandType 'Cmdlet'
    ```
 
-## <a name="get-blueprint-definitions"></a>Blauwdrukdefinities ophalen
+## <a name="get-blueprint-definitions"></a>Blauw drukken-definities ophalen
 
-De eerste stap bij het werken met een toewijzing is vaak een verwijzing naar de blauwdrukdefinitie van een ophalen.
-De `Get-AzBlueprint` -cmdlet krijgt u een of meer blauwdrukdefinities. De cmdlet blauwdrukdefinities kunt ophalen uit een beheergroep met `-ManagementGroupId {mgId}` of een abonnement met `-SubscriptionId {subId}`. De **naam** parameter een blauwdrukdefinitie opgehaald, maar moet worden gebruikt met **ManagementGroupId** of **SubscriptionId**. **Versie** kan worden gebruikt met **naam** moet explicieter aangeven van welke blauwdrukdefinitie wordt geretourneerd. In plaats van **versie**, de switch `-LatestPublished` grijpers het meest recent gepubliceerde versie.
+De eerste stap bij het werken met een toewijzing wordt vaak een verwijzing naar de definitie van een blauw druk opgehaald.
+De `Get-AzBlueprint` cmdlet haalt een of meer blauw drukken-definities op. De cmdlet kan blauw drukken-definities ophalen van een beheer `-ManagementGroupId {mgId}` groep met of een `-SubscriptionId {subId}`abonnement met. De para meter **name** haalt een blauw druk-definitie op, maar moet worden gebruikt met **ManagementGroupId** of **SubscriptionId**. **Versie** kan worden gebruikt met **naam** om duidelijk te zijn over welke blauw druk-definitie wordt geretourneerd. In plaats van **versie**wordt de `-LatestPublished` meest recent gepubliceerde versie door de switch oppakken.
 
-Het volgende voorbeeld wordt `Get-AzBlueprint` om op te halen van alle versies van de blauwdrukdefinitie van een die met de naam ' 101-blauwdrukken-definition-abonnement is van een specifiek abonnement weergegeven als `{subId}`:
+In het volgende voor `Get-AzBlueprint` beeld worden alle versies van een blauw druk-definitie met de naam ' 101-blauw drukken-definitie-abonnement ' opgehaald `{subId}`van een specifiek abonnement dat wordt weer gegeven als:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -67,7 +67,7 @@ $blueprints = Get-AzBlueprint -SubscriptionId '{subId}' -Name '101-blueprints-de
 $blueprints
 ```
 
-De voorbeelduitvoer voor de blauwdrukdefinitie van een met meerdere versies er zo uit:
+De voorbeeld uitvoer voor een blauw druk-definitie met meerdere versies ziet er als volgt uit:
 
 ```output
 Name                 : 101-blueprints-definition-subscription
@@ -82,7 +82,7 @@ Parameters           : {storageAccount_storageAccountType, storageAccount_locati
 ResourceGroups       : ResourceGroup
 ```
 
-De [blauwdruk parameters](../concepts/parameters.md#blueprint-parameters) op de blauwdruk definitie kan worden uitgebreid om meer informatie te verstrekken.
+De [blauw druk-para meters](../concepts/parameters.md#blueprint-parameters) voor de definitie van de blauw druk kunnen worden uitgevouwen om meer informatie te geven.
 
 ```azurepowershell-interactive
 $blueprints.Parameters
@@ -97,11 +97,11 @@ allowedlocations_listOfAllowedLocations                Microsoft.Azure.Commands.
 [Usergrouporapplicationname]:Reader_RoleAssignmentName Microsoft.Azure.Commands.Blueprint.Models.PSParameterDefinition
 ```
 
-## <a name="get-blueprint-assignments"></a>Blueprint-toewijzingen ophalen
+## <a name="get-blueprint-assignments"></a>Blauw druk-toewijzingen ophalen
 
-Als de blauwdruktoewijzing al bestaat, krijgt u een verwijzing naar het met de `Get-AzBlueprintAssignment` cmdlet. De cmdlet voert **SubscriptionId** en **naam** als optionele parameters. Als **SubscriptionId** niet is opgegeven, de huidige context van het abonnement wordt gebruikt.
+Als de blauw druk-toewijzing al bestaat, kunt u er een verwijzing naar krijgen `Get-AzBlueprintAssignment` met de cmdlet. De cmdlet vindt **SubscriptionId** en **name** als optionele para meters. Als **SubscriptionId** niet is opgegeven, wordt de huidige abonnements context gebruikt.
 
-Het volgende voorbeeld wordt `Get-AzBlueprintAssignment` om op te halen van een enkele blauwdruktoewijzing "Toewijzing-lock-resource-groups" met de naam van een specifiek abonnement weergegeven als `{subId}`:
+In het volgende voor `Get-AzBlueprintAssignment` beeld wordt een enkele blauw druk-toewijzing met de naam ' toewijzing-Lock-resource-groups ' opgehaald `{subId}`uit een specifiek abonnement dat wordt weer gegeven als:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -113,7 +113,7 @@ $blueprintAssignment = Get-AzBlueprintAssignment -SubscriptionId '{subId}' -Name
 $blueprintAssignment
 ```
 
-In de voorbeelduitvoer voor een blauwdruktoewijzing ziet er zo uit:
+De voorbeeld uitvoer voor een blauw druk-toewijzing ziet er als volgt uit:
 
 ```output
 Name              : Assignment-lock-resource-groups
@@ -127,47 +127,47 @@ Parameters        :
 ResourceGroups    : ResourceGroup
 ```
 
-## <a name="create-blueprint-assignments"></a>Blueprint-toewijzingen maken
+## <a name="create-blueprint-assignments"></a>Blauw druk-toewijzingen maken
 
-Als de blauwdruktoewijzing nog niet bestaat, kunt u maken met de `New-AzBlueprintAssignment` cmdlet. Deze cmdlet maakt gebruik van de volgende parameters:
+Als de blauw druk toewijzing nog niet bestaat, kunt u deze maken met `New-AzBlueprintAssignment` de cmdlet. Voor deze cmdlet worden de volgende para meters gebruikt:
 
-- **Naam** (vereist)
-  - Hiermee geeft u de naam van de blauwdruktoewijzing
-  - Moet uniek zijn en niet al bestaan in **abonnements-id**
-- **Blauwdruk** (vereist)
-  - Hiermee geeft u de blauwdrukdefinitie van de toewijzen
-  - Gebruik `Get-AzBlueprint` ophalen van de referentieobject
-- **Locatie** (vereist)
-  - Hiermee geeft u de regio voor het systeem toegewezen beheerde identiteits- en abonnement implementatieobject moet worden gemaakt in
-- **Abonnement** (optioneel)
-  - Hiermee geeft u het abonnement dat de toewijzing wordt geïmplementeerd op
-  - Als niet is opgegeven, wordt standaard de huidige context van het abonnement
-- **Vergrendeling** (optioneel)
-  - Definieert de [blauwdruk resource vergrendelen](../concepts/resource-locking.md) moet worden gebruikt voor geïmplementeerde resources
+- **Naam** lang
+  - Geeft de naam aan van de toewijzing van de blauw druk
+  - Moet uniek zijn en niet al bestaan in **SubscriptionId**
+- **Blauw druk** lang
+  - Hiermee wordt de definitie van de blauw druk opgegeven die moet worden toegewezen
+  - Gebruiken `Get-AzBlueprint` om het referentie object op te halen
+- **Locatie** lang
+  - Hiermee geeft u de regio voor het door het systeem toegewezen beheerde identiteits-en abonnements implementatie object op dat moet worden gemaakt in
+- **Abonnement** Beschrijving
+  - Hiermee geeft u het abonnement op waarop de toewijzing wordt geïmplementeerd
+  - Als niet wordt vermeld, wordt standaard de context van het huidige abonnement gebruikt
+- **Vergren delen** Beschrijving
+  - Hiermee wordt de resource vergrendeling van de [blauw druk](../concepts/resource-locking.md) gedefinieerd die moet worden gebruikt voor geïmplementeerde resources
   - Ondersteunde opties: _None_, _AllResourcesReadOnly_, _AllResourcesDoNotDelete_
-  - Als niet is opgegeven, standaard _None_
-- **SystemAssignedIdentity** (optioneel)
-  - Selecteer om te maken van een systeem toegewezen beheerde identiteit voor de toewijzing en de resources wilt implementeren
-  - Standaard voor de parameter 'identiteit' is ingesteld
+  - Als dit niet is gegeven, wordt standaard ingesteld op _geen_
+- **SystemAssignedIdentity** Beschrijving
+  - Selecteer deze optie om een door het systeem toegewezen beheerde identiteit voor de toewijzing te maken en de resources te implementeren
+  - Standaard instelling voor de para meter Identity
   - Kan niet worden gebruikt met **UserAssignedIdentity**
-- **UserAssignedIdentity** (optioneel)
-  - Hiermee geeft u de gebruiker toegewezen beheerde identiteit moet worden gebruikt voor de toewijzing en de resources wilt implementeren
-  - Onderdeel van de parameter 'id' instellen
+- **UserAssignedIdentity** Beschrijving
+  - Hiermee geeft u de door de gebruiker toegewezen beheerde identiteit op die moet worden gebruikt voor de toewijzing en voor het implementeren van de resources
+  - Onderdeel van de para meter ' identiteit ' die is ingesteld
   - Kan niet worden gebruikt met **SystemAssignedIdentity**
-- **Parameter** (optioneel)
-  - Een [hash-tabel](/powershell/module/microsoft.powershell.core/about/about_hash_tables) van sleutel/waarde-paren voor instelling [dynamische parameters](../concepts/parameters.md#dynamic-parameters) voor de blauwdruktoewijzing
-  - Een dynamische parameter is standaard de **defaultValue** in het definitie
-  - Als een parameter niet wordt opgegeven en geen heeft **defaultValue**, de parameter niet optioneel
+- **Para meter** Beschrijving
+  - Een [hash-tabel](/powershell/module/microsoft.powershell.core/about/about_hash_tables) met sleutel-waardeparen voor het instellen van [dynamische para meters](../concepts/parameters.md#dynamic-parameters) voor de toewijzing van de blauw druk
+  - De standaard waarde voor een dynamische para meter is de **DefaultValue** in de definitie
+  - Als er geen para meter is ingesteld en geen **DefaultValue**heeft, is de para meter niet optioneel
 
     > [!NOTE]
-    > **Parameter** biedt geen ondersteuning voor secureStrings.
+    > De **para meter** biedt geen ondersteuning voor secureStrings.
 
-- **ResourceGroupParameter** (optioneel)
-  - Een [hash-tabel](/powershell/module/microsoft.powershell.core/about/about_hash_tables) van resource-group-artefacten
-  - Elke resource group artefact tijdelijke aanduiding heeft een sleutel/waarde-paren voor het instellen van dynamisch **naam** en/of **locatie** op deze resource group-artefact
-  - Als een resource-group-parameter is niet beschikbaar en geen heeft **defaultValue**, de resource-group-parameter niet optioneel
+- **ResourceGroupParameter** Beschrijving
+  - Een [hash-tabel](/powershell/module/microsoft.powershell.core/about/about_hash_tables) met bron groeps artefacten
+  - Elke tijdelijke aanduiding voor een resource groeps artefact heeft een sleutel/waarde-paren voor het dynamisch instellen van een **naam** en/of **locatie** op het bron groeps artefact
+  - Als er geen para meter voor een resource groep is ingesteld en geen **DefaultValue**heeft, is de para meter van de resource groep niet optioneel
 
-Het volgende voorbeeld wordt een nieuwe toewijzing van versie '1.1' van de blauwdrukdefinitie van de 'Mijn-blauwdruk' opgehaald met `Get-AzBlueprint`, beheerde identiteit en de toewijzing object wordt de locatie ingesteld op 'westus2', wordt Hiermee vergrendelt u de resources met  _AllResourcesReadOnly_, en stelt u de hashtabellen voor zowel **Parameter** en **ResourceGroupParameter** op specifieke abonnement weergegeven als `{subId}`:
+In het volgende voor beeld wordt een nieuwe toewijzing gemaakt van versie ' 1,1 ' van de blauw druk-definitie ' My- `Get-AzBlueprint`blauw ' die is opgehaald met, wordt de locatie van het beheerde identiteits-en toewijzings object ingesteld op ' westus2 ', worden de resources vergrendeld met _AllResourcesReadOnly_ en worden de hash-tabellen voor zowel **para meter** -als **ResourceGroupParameter** op een specifiek `{subId}`abonnement ingesteld als:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -188,7 +188,7 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Bluep
     -Parameter $bpParameters -ResourceGroupParameter $bpRGParameters
 ```
 
-In de voorbeelduitvoer voor het maken van een blauwdruktoewijzing van de ziet er zo uit:
+De voorbeeld uitvoer voor het maken van een blauw druk-toewijzing ziet er als volgt uit:
 
 ```output
 Name              : my-blueprint-assignment
@@ -202,50 +202,50 @@ Parameters        : {storageAccount_storageAccountType}
 ResourceGroups    : ResourceGroup
 ```
 
-## <a name="update-blueprint-assignments"></a>Blueprint-toewijzingen bijwerken
+## <a name="update-blueprint-assignments"></a>Blauw druk-toewijzingen bijwerken
 
-Soms is het nodig zijn om bij te werken van de blauwdruktoewijzing van een die al is gemaakt. De `Set-AzBlueprintAssignment` cmdlet worden verwerkt met deze actie. De cmdlet voert de meeste van de parameters die de `New-AzBlueprintAssignment` cmdlet biedt, zodat alles dat is ingesteld voor de toewijzing moet worden bijgewerkt. De uitzonderingen voor dit zijn de _naam_, _blauwdruk_, en _SubscriptionId_. Alleen de opgegeven waarden worden bijgewerkt.
+Soms is het nodig om een blauw druk-toewijzing bij te werken die al is gemaakt. De `Set-AzBlueprintAssignment` cmdlet verwerkt deze actie. De cmdlet krijgt de meeste van de para meters `New-AzBlueprintAssignment` die door de cmdlet worden gebruikt, waardoor alles dat is ingesteld voor de toewijzing, kan worden bijgewerkt. De uitzonde ringen hierop zijn de _naam_, _blauw druk_en _SubscriptionId_. Alleen de beschik bare waarden worden bijgewerkt.
 
-Zie voor meer informatie over wat er gebeurt tijdens het bijwerken van een blauwdruktoewijzing van de, [regels voor het bijwerken van toewijzingen](./update-existing-assignments.md#rules-for-updating-assignments).
+Zie [regels voor het bijwerken van toewijzingen](./update-existing-assignments.md#rules-for-updating-assignments)voor informatie over wat er gebeurt bij het bijwerken van een blauw druk-toewijzing.
 
-- **Naam** (vereist)
-  - Hiermee geeft u de naam van de blauwdruktoewijzing om bij te werken
-  - Aan de hand van de toewijzing om bij te werken, niet op de toewijzing wijzigen
-- **Blauwdruk** (vereist)
-  - Hiermee geeft u de blauwdrukdefinitie van de blauwdruktoewijzing
-  - Gebruik `Get-AzBlueprint` ophalen van de referentieobject
-  - Aan de hand van de toewijzing om bij te werken, niet op de toewijzing wijzigen
-- **Locatie** (optioneel)
-  - Hiermee geeft u de regio voor het systeem toegewezen beheerde identiteits- en abonnement implementatieobject moet worden gemaakt in
-- **Abonnement** (optioneel)
-  - Hiermee geeft u het abonnement dat de toewijzing wordt geïmplementeerd op
-  - Als niet is opgegeven, wordt standaard de huidige context van het abonnement
-  - Aan de hand van de toewijzing om bij te werken, niet op de toewijzing wijzigen
-- **Vergrendeling** (optioneel)
-  - Definieert de [blauwdruk resource vergrendelen](../concepts/resource-locking.md) moet worden gebruikt voor geïmplementeerde resources
+- **Naam** lang
+  - Geeft de naam aan van de toewijzing van de blauw druk die moet worden bijgewerkt
+  - Wordt gebruikt voor het zoeken van de toewijzing die moet worden bijgewerkt, niet voor het wijzigen van de toewijzing
+- **Blauw druk** lang
+  - Hiermee geeft u de blauw druk definitie van de blauw druk toewijzen
+  - Gebruiken `Get-AzBlueprint` om het referentie object op te halen
+  - Wordt gebruikt voor het zoeken van de toewijzing die moet worden bijgewerkt, niet voor het wijzigen van de toewijzing
+- **Locatie** Beschrijving
+  - Hiermee geeft u de regio voor het door het systeem toegewezen beheerde identiteits-en abonnements implementatie object op dat moet worden gemaakt in
+- **Abonnement** Beschrijving
+  - Hiermee geeft u het abonnement op waarop de toewijzing wordt geïmplementeerd
+  - Als niet wordt vermeld, wordt standaard de context van het huidige abonnement gebruikt
+  - Wordt gebruikt voor het zoeken van de toewijzing die moet worden bijgewerkt, niet voor het wijzigen van de toewijzing
+- **Vergren delen** Beschrijving
+  - Hiermee wordt de resource vergrendeling van de [blauw druk](../concepts/resource-locking.md) gedefinieerd die moet worden gebruikt voor geïmplementeerde resources
   - Ondersteunde opties: _None_, _AllResourcesReadOnly_, _AllResourcesDoNotDelete_
-- **SystemAssignedIdentity** (optioneel)
-  - Selecteer om te maken van een systeem toegewezen beheerde identiteit voor de toewijzing en de resources wilt implementeren
-  - Standaard voor de parameter 'identiteit' is ingesteld
+- **SystemAssignedIdentity** Beschrijving
+  - Selecteer deze optie om een door het systeem toegewezen beheerde identiteit voor de toewijzing te maken en de resources te implementeren
+  - Standaard instelling voor de para meter Identity
   - Kan niet worden gebruikt met **UserAssignedIdentity**
-- **UserAssignedIdentity** (optioneel)
-  - Hiermee geeft u de gebruiker toegewezen beheerde identiteit moet worden gebruikt voor de toewijzing en de resources wilt implementeren
-  - Onderdeel van de parameter 'id' instellen
+- **UserAssignedIdentity** Beschrijving
+  - Hiermee geeft u de door de gebruiker toegewezen beheerde identiteit op die moet worden gebruikt voor de toewijzing en voor het implementeren van de resources
+  - Onderdeel van de para meter ' identiteit ' die is ingesteld
   - Kan niet worden gebruikt met **SystemAssignedIdentity**
-- **Parameter** (optioneel)
-  - Een [hash-tabel](/powershell/module/microsoft.powershell.core/about/about_hash_tables) van sleutel/waarde-paren voor instelling [dynamische parameters](../concepts/parameters.md#dynamic-parameters) voor de blauwdruktoewijzing
-  - Een dynamische parameter is standaard de **defaultValue** in het definitie
-  - Als een parameter niet wordt opgegeven en geen heeft **defaultValue**, de parameter niet optioneel
+- **Para meter** Beschrijving
+  - Een [hash-tabel](/powershell/module/microsoft.powershell.core/about/about_hash_tables) met sleutel-waardeparen voor het instellen van [dynamische para meters](../concepts/parameters.md#dynamic-parameters) voor de toewijzing van de blauw druk
+  - De standaard waarde voor een dynamische para meter is de **DefaultValue** in de definitie
+  - Als er geen para meter is ingesteld en geen **DefaultValue**heeft, is de para meter niet optioneel
 
     > [!NOTE]
-    > **Parameter** biedt geen ondersteuning voor secureStrings.
+    > De **para meter** biedt geen ondersteuning voor secureStrings.
 
-- **ResourceGroupParameter** (optioneel)
-  - Een [hash-tabel](/powershell/module/microsoft.powershell.core/about/about_hash_tables) van resource-group-artefacten
-  - Elke resource group artefact tijdelijke aanduiding heeft een sleutel/waarde-paren voor het instellen van dynamisch **naam** en/of **locatie** op deze resource group-artefact
-  - Als een resource-group-parameter is niet beschikbaar en geen heeft **defaultValue**, de resource-group-parameter niet optioneel
+- **ResourceGroupParameter** Beschrijving
+  - Een [hash-tabel](/powershell/module/microsoft.powershell.core/about/about_hash_tables) met bron groeps artefacten
+  - Elke tijdelijke aanduiding voor een resource groeps artefact heeft een sleutel/waarde-paren voor het dynamisch instellen van een **naam** en/of **locatie** op het bron groeps artefact
+  - Als er geen para meter voor een resource groep is ingesteld en geen **DefaultValue**heeft, is de para meter van de resource groep niet optioneel
 
-Het volgende voorbeeld werkt u de toewijzing van versie '1.1' van de blauwdrukdefinitie van de 'Mijn-blauwdruk' opgehaald met `Get-AzBlueprint` door het wijzigen van de lock-modus:
+In het volgende voor beeld wordt de toewijzing van versie 1,1 van de blauw druk-definitie ' mijn-blauw druk ' `Get-AzBlueprint` bijgewerkt met door de vergrendelings modus te wijzigen:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -258,7 +258,7 @@ $bpAssignment = Set-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Bluep
     -SubscriptionId '{subId}' -Lock AllResourcesDoNotDelete
 ```
 
-In de voorbeelduitvoer voor het maken van een blauwdruktoewijzing van de ziet er zo uit:
+De voorbeeld uitvoer voor het maken van een blauw druk-toewijzing ziet er als volgt uit:
 
 ```output
 Name              : my-blueprint-assignment
@@ -272,11 +272,11 @@ Parameters        : {storageAccount_storageAccountType}
 ResourceGroups    : ResourceGroup
 ```
 
-## <a name="remove-blueprint-assignments"></a>Blueprint-toewijzingen verwijderen
+## <a name="remove-blueprint-assignments"></a>Blauw drukken-toewijzingen verwijderen
 
-Wanneer het tijd voor de blauwdruktoewijzing van een moet worden verwijderd, is de `Remove-AzBlueprintAssignment` cmdlet worden verwerkt met deze actie. De cmdlet voert een **naam** of **InputObject** om op te geven welke blauwdruk toewijzing te verwijderen. **SubscriptionId** is _vereist_ en in alle gevallen moet worden opgegeven.
+Wanneer het tijd is voor het verwijderen van een blauw druk-toewijzing `Remove-AzBlueprintAssignment` , wordt deze actie door de cmdlet afgehandeld. De cmdlet krijgt een **naam** of **input object** om op te geven welke blauw druk-toewijzing moet worden verwijderd. **SubscriptionId** is _vereist_ en moet in alle gevallen worden opgegeven.
 
-Het volgende voorbeeld haalt u een bestaande blauwdruktoewijzing van met `Get-AzBlueprintAssignment` en vervolgens verwijderd uit het specifieke abonnement weergegeven als `{subId}`:
+In het volgende voor beeld wordt een bestaande blauw druk `Get-AzBlueprintAssignment` -toewijzing opgehaald met en vervolgens verwijderd uit het specifieke `{subId}`abonnement, weer gegeven als:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -288,9 +288,9 @@ $blueprintAssignment = Get-AzBlueprintAssignment -Name 'Assignment-lock-resource
 Remove-AzBlueprintAssignment -InputObject $blueprintAssignment -SubscriptionId '{subId}'
 ```
 
-## <a name="end-to-end-code-example"></a>Codevoorbeeld van de end-to-end
+## <a name="end-to-end-code-example"></a>Voor beeld van end-to-end-code
 
-Alle stappen bijeenbrengt, het volgende voorbeeld opgehaald van de blauwdrukdefinitie, vervolgens wordt gemaakt, bijgewerkt en een blauwdruktoewijzing van de verwijdert in het specifieke abonnement weergegeven als `{subId}`:
+Alle stappen in het volgende voor beeld worden de definitie van de blauw druk opgehaald, vervolgens wordt een blauw druk-toewijzing gemaakt, bijgewerkt en verwijderd in het `{subId}`specifieke abonnement, aangeduid als:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -332,7 +332,7 @@ Remove-AzBlueprintAssignment -InputObject $bpAssignment -SubscriptionId '{subId}
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [levenscyclus van een blauwdruk](../concepts/lifecycle.md).
+- Meer informatie over de [levens duur van de blauw druk](../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../concepts/parameters.md) gebruikt.
 - Meer informatie over hoe u de [blauwdrukvolgorde](../concepts/sequencing-order.md) aanpast.
 - Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](../concepts/resource-locking.md).

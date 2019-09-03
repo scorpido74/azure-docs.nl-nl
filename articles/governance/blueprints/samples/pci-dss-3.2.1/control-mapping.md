@@ -8,12 +8,12 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: c2dbfa5f6c9d679582a1834f2ff645c5ff79c51e
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: d7d62770bc0e2683fc7bc1554493954c0e98758b
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515700"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232686"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>De toewijzing van het voor beeld van het PCI-DSS v 3.2.1-blauw druk
 
@@ -25,7 +25,7 @@ De volgende toewijzingen zijn de **PCI-DSS v 3.2.1:2018** -besturings elementen.
 
 Deze blauw druk helpt u bij het beheren en best uren van netwerken door [Azure Policy](../../../policy/overview.md) definities toe te wijzen waarmee netwerk beveiligings groepen met strikte regels worden bewaakt. Het kan zijn dat te beperken regels mogelijk onbedoelde netwerk toegang toestaan en moeten worden gecontroleerd. Deze blauw druk wijst een Azure Policy definities toe waarmee onbeveiligde eind punten, toepassingen en opslag accounts worden bewaakt. Eind punten en toepassingen die niet zijn beveiligd door een firewall en opslag accounts met onbeperkte toegang, kunnen onbedoelde toegang tot gegevens in het informatie systeem toestaan.
 
-- Onbeperkte netwerktoegang tot opslagaccounts controleren
+- Onbeperkte netwerk toegang tot opslag accounts controleren
 - Toegang via Internet gericht eind punt moet worden beperkt
 
 ## <a name="34a-41-41g-41h-and-653-cryptographic-protection"></a>3.4. a, 4,1, 4.1. g, 4.1. h en 6.5.3 cryptografische bescherming
@@ -34,7 +34,7 @@ Deze blauw druk helpt u bij het afdwingen van uw beleid met het gebruik van cryp
 
 - Functie-App moet alleen toegankelijk zijn via HTTPS
 - Web-App moet alleen toegankelijk zijn via HTTPS
-- API-app mag alleen toegankelijk zijn via HTTPS
+- De API-app mag alleen toegankelijk zijn via HTTPS
 - Transparent Data Encryption voor SQL-data bases moet zijn ingeschakeld
 - Schijf versleuteling moet worden toegepast op virtuele machines
 - De variabelen van het Automation-account moeten worden versleuteld
@@ -42,14 +42,14 @@ Deze blauw druk helpt u bij het afdwingen van uw beleid met het gebruik van cryp
 - Beveiligde overdracht naar opslag accounts moet zijn ingeschakeld
 - Voor Service Fabric clusters moet de eigenschap ClusterProtectionLevel zijn ingesteld op EncryptAndSign
 - Transparent Data Encryption voor SQL-data bases moet zijn ingeschakeld
-- Transparante gegevensversleuteling in SQL DB implementeren
+- Transparante gegevens versleuteling van SQL DB implementeren
 
 ## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5,1, 6,2, 6,6 en 11.2.1 beveiligings problemen met scannen en systeem updates
 
 Deze blauw druk helpt u bij het beheren van beveiligings problemen met informatie systemen door [Azure Policy](../../../policy/overview.md) definities toe te wijzen waarmee ontbrekende systeem updates, besturingssysteem problemen met het besturings systeem, SQL-beveiligings problemen en beveiligings problemen met virtuele machines in Azure worden bewaakt Security Center. Azure Security Center biedt rapportage mogelijkheden waarmee u real-time inzicht kunt krijgen in de beveiligings status van geïmplementeerde Azure-resources.
 
-- Ontbrekende Endpoint Protection bewaken in Azure Security Center
-- Microsoft IaaSAntimalware-standaarduitbreiding voor Windows Server implementeren
+- Ontbrekende Endpoint Protection in Azure Security Center controleren
+- Standaard micro soft IaaSAntimalware-extensie voor Windows Server implementeren
 - Detectie van bedreigingen op SQL-servers implementeren
 - Systeem updates moeten worden geïnstalleerd op uw computers
 - Beveiligings problemen in de beveiligings configuratie op uw computers moeten worden hersteld
@@ -75,7 +75,7 @@ Onderzoeksservices.
 - MFA moet zijn ingeschakeld voor accounts met schrijf machtigingen voor uw abonnement
 - MFA moet zijn ingeschakeld voor accounts met lees machtigingen voor uw abonnement
 - Een Azure Active Directory beheerder moet worden ingericht voor SQL-servers
-- Het gebruik van aangepaste RBAC-regels controleren
+- Gebruik van aangepaste RBAC-regels controleren
 
 ## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>versie 8.1.2-en 8.1.5-minimale bevoegdheid en beoordeling van gebruikers toegangs rechten
 
@@ -112,7 +112,7 @@ Diagnostische logboeken bieden inzicht in bewerkingen die zijn uitgevoerd in azu
 
 - Controle moet worden ingeschakeld voor geavanceerde instellingen voor gegevens beveiliging op SQL Server
 - Diagnostische instelling voor controleren
-- Instellingen voor SQL-controle op serverniveau
+- Controle-instellingen op SQL server-niveau controleren
 - Controle op SQL-servers implementeren
 - Opslag accounts moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources
 - Virtuele machines moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources
@@ -134,7 +134,7 @@ Nu u de controle toewijzing van de PCI-DSS v 3.2.1-blauw druk hebt gecontroleerd
 
 ## <a name="addition-articles-about-blueprints-and-how-to-use-them"></a>Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
-- Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
+- Meer informatie over de [levens duur van de blauw druk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.
 - Meer informatie over hoe u de [blauwdrukvolgorde](../../concepts/sequencing-order.md) aanpast.
 - Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](../../concepts/resource-locking.md).

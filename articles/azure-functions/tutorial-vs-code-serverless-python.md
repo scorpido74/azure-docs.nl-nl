@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: 4f5c10536992f51ac61815507a3869e521520299
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 43fee2ce25e358bbcff915d2fbef96bf4b7c1a0c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170715"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233120"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Python implementeren voor Azure Functions met Visual Studio code
 
@@ -56,7 +56,7 @@ Volg de instructies voor uw besturings systeem op het [werk met Azure functions 
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Zodra de functions-extensie is geïnstalleerd, meldt u zich aan bij uw Azure **-account door te navigeren naar Azure: Functie** Verkenner, selecteer **Aanmelden bij Azure**en volg de aanwijzingen.
+Zodra de functions-extensie is geïnstalleerd, meldt u zich aan bij uw **Azure-account door naar Azure te gaan: Functie** Verkenner, selecteer **Aanmelden bij Azure**en volg de aanwijzingen.
 
 ![Meld u aan bij Azure via Visual Studio code](media/tutorial-vs-code-serverless-python/azure-sign-in.png)
 
@@ -207,7 +207,7 @@ De belangrijkste onderdelen van de code zijn als volgt:
 
 ## <a name="debug-locally"></a>Lokaal fouten opsporen
 
-1. Wanneer u het functions-project maakt, maakt de Visual Studio code-extensie ook een `.vscode/launch.json` start configuratie met een enkele configuratie met de naam **koppelen aan python-functies**. Met deze configuratie kunt u gewoon op F5 drukken of de debug Explorer gebruiken om het project te starten:
+1. Wanneer u het functions-project maakt, maakt de Visual Studio code-extensie ook een `.vscode/launch.json` start configuratie met een enkele configuratie met de naam **koppelen aan python-functies**. Met deze configuratie kunt u alleen **F5** selecteren of de debug Explorer gebruiken om het project te starten:
 
     ![Debug Explorer waarin de functies worden gestart configuratie starten](media/tutorial-vs-code-serverless-python/launch-configuration.png)
 
@@ -393,7 +393,7 @@ Na uw eerste implementatie kunt u wijzigingen aanbrengen in uw code, zoals het t
     }
     ```
 
-1. Start het fout opsporingsprogramma door op F5 te drukken of de opdracht **fout** > opsporing**starten** in het menu te selecteren. In het **uitvoer** venster moeten nu beide eind punten in uw project worden weer gegeven:
+1. Start het fout opsporingsprogramma door op **F5 te drukken** of de opdracht **debug** > **starten** in het menu te selecteren. In het **uitvoer** venster moeten nu beide eind punten in uw project worden weer gegeven:
 
     ```output
     Http Functions:
@@ -479,15 +479,15 @@ In deze sectie voegt u een opslag binding toe aan de functie HttpExample die eer
             )
     ```
 
-1. Als u deze wijzigingen lokaal wilt testen, start u de debugger opnieuw in Visual Studio code door op F5 te drukken of de opdracht **debug** > **Start Debugging** te selecteren. Net als in het **uitvoer** venster moeten de eind punten in uw project worden weer gegeven.
+1. Als u deze wijzigingen lokaal wilt testen, start u de debugger opnieuw in Visual Studio code door op **F5 te drukken** of de opdracht **debug** > **Start Debugging** te selecteren. Net als in het **uitvoer** venster moeten de eind punten in uw project worden weer gegeven.
 
 1. Ga in een browser naar de URL `http://localhost:7071/api/HttpExample?name=VS%20Code` voor het maken van een aanvraag voor het HttpExample-eind punt, dat ook een bericht naar de wachtrij moet schrijven.
 
 1. U kunt een van de volgende drie methoden gebruiken om te controleren of het bericht is geschreven naar de wachtrij voor outwachtrijen (zoals genoemd in de binding):
 
-    1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en navigeer naar de resource groep met uw functions-project. In die resource groep, lokaal en navigeert u naar het opslag account voor het project en navigeert u naar **wacht rijen**. Navigeer op die pagina naar outwachtrij, waarin alle vastgelegde berichten moeten worden weer gegeven.
+    1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en ga naar de resource groep met uw functions-project. Zoek in deze resource groep het opslag account voor het project en open het. Ga vervolgens naar **wacht rijen**. Ga op de pagina naar outwachtrij, waarin alle geregistreerde berichten moeten worden weer gegeven.
 
-    1. Navigeer en onderzoek de wachtrij met behulp van de Azure Storage Explorer, die kan worden geïntegreerd met Visual Studio, zoals wordt beschreven in [functies verbinden om te Azure Storage met Visual Studio code](functions-add-output-binding-storage-queue-vs-code.md), met name de sectie [de uitvoer wachtrij onderzoeken](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue) .
+    1. Open en controleer de wachtrij met behulp van de Azure Storage Explorer, die kan worden geïntegreerd met Visual Studio, zoals wordt beschreven in [functies verbinden om te Azure Storage met Visual Studio code](functions-add-output-binding-storage-queue-vs-code.md), met name de sectie [de uitvoer wachtrij onderzoeken](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue) .
 
     1. Gebruik de Azure CLI om een query uit te kunnen uitvoeren op de opslag wachtrij, zoals beschreven in [query uitvoeren op de opslag wachtrij](functions-add-output-binding-storage-queue-python.md#query-the-storage-queue).
     

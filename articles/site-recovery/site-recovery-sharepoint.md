@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: bc6d9e7214d2b7cd009e7562357bed420e49f185
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e9b688d54049c21da3276a20e27dcc9ad3d4ceca
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325116"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231485"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Herstel na nood geval instellen voor een share point-toepassing met meerdere lagen voor herstel na nood geval met behulp van Azure Site Recovery
 
@@ -56,7 +56,7 @@ Share point kan worden geïmplementeerd op een of meer servers met behulp van ge
 
 ## <a name="site-recovery-support"></a>Ondersteuning voor Site Recovery
 
-Voor het maken van dit artikel zijn virtuele VMware-machines met Windows Server 2012 R2 Enter prise gebruikt. Share point 2013 Enter prise Edition en SQL Server 2014 Enter prise Edition zijn gebruikt. Als Site Recovery replicatie is toepassings neutraal, worden de aanbevelingen die hier worden gegeven, ook naar verwachting op de volgende scenario's in de wachtrij geplaatst.
+Site Recovery is neutraal van toepassingen en moet werken met elke versie van share point die wordt uitgevoerd op een ondersteunde computer. Voor het maken van dit artikel zijn virtuele VMware-machines met Windows Server 2012 R2 Enter prise gebruikt. Share point 2013 Enter prise Edition en SQL Server 2014 Enter prise Edition zijn gebruikt.
 
 ### <a name="source-and-target"></a>Bron en doel
 
@@ -67,13 +67,6 @@ Voor het maken van dit artikel zijn virtuele VMware-machines met Windows Server 
 **Fysieke server** | Ja | Ja
 **Azure** | N.v.t. | Ja
 
-### <a name="sharepoint-versions"></a>Share point-versies
-De volgende versies van share Point server worden ondersteund.
-
-* Share Point server 2013 Standard
-* Share Point server 2013 Enter prise
-* Share Point server 2016 Standard
-* Share Point server 2016 Enter prise
 
 ### <a name="things-to-keep-in-mind"></a>Dingen die u moet onthouden
 
@@ -93,7 +86,7 @@ Volg [deze richt lijnen](site-recovery-vmware-to-azure.md) om te beginnen met he
 
 ## <a name="networking-configuration"></a>Netwerk configuratie
 
-### <a name="network-properties"></a>Netwerk eigenschappen
+### <a name="network-properties"></a>Netwerkeigenschappen
 
 * Configureer voor de virtuele machines van de app en de weblaag netwerk instellingen in Azure Portal zodat de Vm's worden gekoppeld aan het juiste DR-netwerk na een failover.
 
@@ -109,7 +102,7 @@ Volg [deze richt lijnen](site-recovery-vmware-to-azure.md) om te beginnen met he
 Voor Internet gerichte sites [maakt u een Traffic Manager profiel van het type Priority](../traffic-manager/traffic-manager-create-profile.md) in het Azure-abonnement. En configureer uw DNS-en Traffic Manager profiel op de volgende manier.
 
 
-| **Positie** | **Bron** | **Stemming**|
+| **Positie** | **Bron** | **Doel**|
 | --- | --- | --- |
 | Openbare DNS | Open bare DNS voor share point-sites <br/><br/> Bijvoorbeeld: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
 | On-premises DNS | sharepointonprem.contoso.com | Openbaar IP-adres op de on-premises Farm |

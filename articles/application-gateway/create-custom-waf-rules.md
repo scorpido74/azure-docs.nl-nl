@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 2499842eeb2dd5a8fa845ed364a6aea7418acc8b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a4cc11447686f81017332a3528019a54a5167c52
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824424"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231993"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Aangepaste regels voor Web Application firewall v2 maken en gebruiken
 
@@ -127,7 +127,7 @@ En de bijbehorende JSON:
 
 ## <a name="example-2"></a>Voorbeeld 2
 
-U alle aanvragen van IP-adressen in het bereik 198.168.5.4/24 wilt blok keren.
+U alle aanvragen van IP-adressen in het bereik 198.168.5.0/24 wilt blok keren.
 
 In dit voor beeld blokkeert u al het verkeer dat afkomstig is van een IP-adres bereik. De naam van de regel is *myrule1* en de prioriteit is ingesteld op 100.
 
@@ -140,7 +140,7 @@ $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
 $condition1 = New-AzApplicationGatewayFirewallCondition `
    -MatchVariable $variable1 `
    -Operator IPMatch `
-   -MatchValue "192.168.5.4/24" `
+   -MatchValue "192.168.5.0/24" `
    -NegationCondition $False
 
 $rule = New-AzApplicationGatewayFirewallCustomRule `
@@ -166,7 +166,7 @@ Hier volgt de bijbehorende JSON:
             "matchVariable": "RemoteAddr",
             "operator": "IPMatch",
             "matchValues": [
-              "192.168.5.4/24"
+              "192.168.5.0/24"
             ]
           }
         ]
@@ -175,11 +175,11 @@ Hier volgt de bijbehorende JSON:
   }
 ```
 
-Overeenkomende CRS-regel:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.4/24" "id:7001,deny"`
+Overeenkomende CRS-regel:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
 ## <a name="example-3"></a>Voorbeeld 3
 
-Voor dit voor beeld wilt u de *evilbot*van de gebruiker en het verkeer in het bereik 192.168.5.4/24 blok keren. Als u dit wilt doen, kunt u twee afzonderlijke match-voor waarden maken en deze in dezelfde regel plaatsen. Dit zorgt ervoor dat beide *evilbot* in de header van de gebruikers agent **en** IP-adressen uit het bereik 192.168.5.4/24 worden geblokkeerd.
+Voor dit voor beeld wilt u de *evilbot*van de gebruiker en het verkeer in het bereik 192.168.5.0/24 blok keren. Als u dit wilt doen, kunt u twee afzonderlijke match-voor waarden maken en deze in dezelfde regel plaatsen. Dit zorgt ervoor dat beide *evilbot* in de header van de gebruikers agent **en** IP-adressen uit het bereik 192.168.5.0/24 worden geblokkeerd.
 
 Logic: p **en** q
 
@@ -194,7 +194,7 @@ $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
 $condition1 = New-AzApplicationGatewayFirewallCondition `
    -MatchVariable $variable1 `
    -Operator IPMatch `
-   -MatchValue "192.168.5.4/24" `
+   -MatchValue "192.168.5.0/24" `
    -NegationCondition $False
 
 $condition2 = New-AzApplicationGatewayFirewallCondition `
@@ -229,7 +229,7 @@ Hier volgt de bijbehorende JSON:
               "operator": "IPMatch", 
               "negateCondition": false, 
               "matchValues": [ 
-                "192.168.5.4/24" 
+                "192.168.5.0/24" 
               ] 
             }, 
             { 
@@ -251,7 +251,7 @@ Hier volgt de bijbehorende JSON:
 
 ## <a name="example-4"></a>Voor beeld 4
 
-Voor dit voor beeld wilt u blok keren als de aanvraag zich buiten het IP-adres bereik *192.168.5.4/24*bevindt, of de teken reeks van de gebruikers agent is niet *Chrome* (wat betekent dat de gebruiker de Chrome-browser niet gebruikt). Omdat deze logica gebruikmaakt van **of**, zijn de twee voor waarden in afzonderlijke regels, zoals in het volgende voor beeld wordt weer gegeven. *myrule1* en *myrule2* moeten beide overeenkomen om het verkeer te blok keren.
+Voor dit voor beeld wilt u blok keren als de aanvraag zich buiten het IP-adres bereik *192.168.5.0/24*bevindt, of de teken reeks van de gebruikers agent is niet *Chrome* (wat betekent dat de gebruiker de Chrome-browser niet gebruikt). Omdat deze logica gebruikmaakt van **of**, zijn de twee voor waarden in afzonderlijke regels, zoals in het volgende voor beeld wordt weer gegeven. *myrule1* en *myrule2* moeten beide overeenkomen om het verkeer te blok keren.
 
 Logic: **niet** (p **en** q) = **niet** p **of geen** q.
 
@@ -266,7 +266,7 @@ $variable2 = New-AzApplicationGatewayFirewallMatchVariable `
 $condition1 = New-AzApplicationGatewayFirewallCondition `
    -MatchVariable $variable1 `
    -Operator IPMatch `
-   -MatchValue "192.168.5.4/24" `
+   -MatchValue "192.168.5.0/24" `
    -NegationCondition $True
 
 $condition2 = New-AzApplicationGatewayFirewallCondition `
@@ -307,7 +307,7 @@ En de bijbehorende JSON:
             "operator": "IPMatch",
             "negateCondition": true,
             "matchValues": [
-              "192.168.5.4/24"
+              "192.168.5.0/24"
             ]
           }
         ]
