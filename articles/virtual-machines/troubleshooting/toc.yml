@@ -97,8 +97,9 @@
 - name: Een virtuele machine opnieuw starten of het formaat van een virtuele machine wijzigen
   href: restart-resize-error-troubleshooting.md
 - name: Seriële console
-  href: serial-console-overview.md
   items:
+    - name: Overzicht van seriële console
+      href: serial-console-overview.md
     - name: Seriële console voor Linux
       href: serial-console-linux.md
       items:

@@ -15,7 +15,7 @@
       items:
         - name: Uw eerste ML-experiment maken
           items:
-            - name: 1. Werkruimte en ontwikkelomgeving instellen
+            - name: 1. Werkruimte en dev-omgeving instellen
               href: tutorial-1st-experiment-sdk-setup.md
             - name: 2. Uw eerste model trainen
               href: tutorial-1st-experiment-sdk-train.md
@@ -33,10 +33,10 @@
               href: tutorial-auto-train-models.md
     - name: Visuele interface
       items:
-        - name: Regressiemodel trainen
+        - name: 1. Regressiemodel trainen
           displayName: studio
           href: ui-tutorial-automobile-price-train-score.md
-        - name: Regressiemodel implementeren
+        - name: 2. Regressiemodel implementeren
           displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
     - name: Geautomatiseerde Machine Learning

@@ -45,7 +45,7 @@ sections:
         items:
           - html: <a href="tutorial-1st-experiment-sdk-setup">Stel uw omgeving in en train uw eerste ML-experiment.</a>
           - html: <a href="tutorial-train-models-with-aml">Train en implementeer modellen voor classificatie van afbeeldingen.</a>
-          - html: <a href="tutorial-data-prep">Bereid gegevens voor en gebruik geautomatiseerde ML om taxitarieven te voorspellen.</b></a>
+          - html: <a href="tutorial-auto-train-models">Geautomatiseerde ML gebruiken om taxitarieven te voorspellen.</b></a>
           - html: <a href="how-to-run-batch-predictions">Voer batchvoorspellingen uit voor grote gegevenssets met ML-pijplijnen.</b></a>
   - title: Voorbeelden
     items:
