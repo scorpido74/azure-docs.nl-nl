@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af98633e1dfdbe6392199ade282a918c6134a033
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c0b1471abd7e057af919ed274547daf94d356c2b
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347401"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213601"
 ---
 # <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>Zelfstudie: De Cloud Security Fabric integreren met Azure Active Directory
 
@@ -104,7 +104,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     ![De downloadkoppeling certificaat](common/metadataxml.png)
 
-5. Als u de **handtekening** opties wilt wijzigen volgens uw vereiste, klikt u op de knop **bewerken** om het dialoog venster **SAML-handtekening certificaat** te openen.
+5. Als u de **handtekening** opties wilt wijzigen volgens uw vereiste, klikt u op de knop **bewerken** om het dialoog venster **SAML-handtekening certificaat** te openen.
 
     ![SAML-antwoord](./media/ciscocloudlock-tutorial/saml.png)
 
@@ -153,7 +153,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ### <a name="create-the-cloud-security-fabric-test-user"></a>De test gebruiker voor de Cloud Security Fabric maken
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in de Cloud Security Fabric. Werk samen met [het ondersteunings team voor Cloud Security Fabric](mailto:support@cloudlock.com) om de gebruikers toe te voegen aan het Cloud platform Security Fabric. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
+In deze sectie maakt u een gebruiker met de naam B. Simon in de Cloud Security Fabric. Werk samen met [het ondersteunings team voor Cloud Security Fabric](mailto:support@cloudlock.com) om de gebruikers toe te voegen aan het Cloud platform Security Fabric. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
 
 ### <a name="test-sso"></a>SSO testen 
 

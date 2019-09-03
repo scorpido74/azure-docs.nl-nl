@@ -7,12 +7,12 @@ ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/02/2019
-ms.openlocfilehash: 7fa8562c466c81ebc05360bf06cdde1ee29bed9e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 0c4bf3143bbf1ceb2f2f3c4a22477daa03690a0e
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598984"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213594"
 ---
 # <a name="what-are-azure-open-datasets-preview-and-how-can-you-use-them"></a>Wat zijn Azure open gegevens sets (preview) en hoe kunt u deze gebruiken?
 
@@ -49,7 +49,7 @@ Met een Azure-account kunt u toegang krijgen tot open gegevens sets met behulp v
 
 Gegevens sets openen biedt Azure Notebooks en Azure Databricks notitie blokken die u kunt gebruiken om verbinding te maken met Azure Machine Learning service en Azure Databricks. Gegevens sets kunnen ook worden geopend via een python-SDK. 
 
-U hebt echter geen Azure-account nodig om toegang te krijgen tot open gegevens sets; u kunt deze vanuit elke python-omgeving openen zonder of zonder Spark.
+U hebt echter geen Azure-account nodig om toegang te krijgen tot open gegevens sets; u kunt ze openen vanuit elke python-omgeving met of zonder Spark.
 
 ## <a name="request-or-contribute-datasets"></a>Gegevens sets voor aanvragen of bijdragen
 
