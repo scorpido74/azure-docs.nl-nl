@@ -4,14 +4,14 @@ description: Leer hoe u een container maakt in Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/01/2019
 ms.author: mjbrown
-ms.openlocfilehash: a88d8f33624278ac6e70b918cec7cef133fe4b34
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 876e35e320e37081cf6e6f89fda4f31af8713571
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093483"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240751"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Een Azure Cosmos-container maken
 
@@ -25,15 +25,15 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand account.
 
-1. Open het deelvenster **Data Explorer** en selecteer **Nieuwe verzameling**. Geef de volgende gegevens op:
+1. Open het deel venster **Data Explorer** en selecteer **nieuwe container**. Geef de volgende gegevens op:
 
    * Geef aan of u een nieuwe database maakt of een bestaande database gebruikt.
-   * Voer een verzamelings-id in.
+   * Voer een container-ID in.
    * Voer een partitiesleutel in.
    * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
-![Schermopname van het Data Explorer-deelvenster met Nieuwe verzameling gemarkeerd](./media/how-to-create-container/partitioned-collection-create-sql.png)
+![Scherm afbeelding van Data Explorer deel venster, met nieuwe container gemarkeerd](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
 ### <a id="portal-mongodb"></a>Azure Cosmos DB-API voor MongoDB
 
@@ -41,15 +41,15 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
 
 1. [Maak een nieuw Azure Cosmos-account](create-mongodb-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 
-1. Open het deelvenster **Data Explorer** en selecteer **Nieuwe verzameling**. Geef de volgende gegevens op:
+1. Open het deel venster **Data Explorer** en selecteer **nieuwe container**. Geef de volgende gegevens op:
 
    * Geef aan of u een nieuwe database maakt of een bestaande database gebruikt.
-   * Voer een verzamelings-id in.
+   * Voer een container-ID in.
    * Voer een shardsleutel in.
    * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
-![Schermopname van Azure Cosmos DB-API voor MongoDB, dialoogvenster Verzameling toevoegen](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+![Scherm opname van Azure Cosmos DB-API voor MongoDB, container toevoegen dialoog venster](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
 ### <a id="portal-cassandra"></a>Cassandra-API
 

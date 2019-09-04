@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: b6b353e0e01f3f598048e5fbb2682603045b1037
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.localizationpriority: high
+ms.openlocfilehash: f5473ae7bd9ac1615d59d18c996e01902e1adbd6
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164463"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241418"
 ---
 ::: zone target = "docs"
 
@@ -50,7 +51,7 @@ Deze hand leiding bevat instructies voor het controleren van vereisten, het beka
 Zorg voordat u begint voor het volgende:
 
 1. U hebt de zelfstudie [ Volg orde](data-box-heavy-deploy-ordered.md)Azure data Box Heavy.
-2. U hebt uw Data Box Heavy ontvangen en de status van de bestelling in dePortal is afgeleverd.
+2. U hebt uw Data Box Heavy ontvangen en de status van de bestelling in de portal is **afgeleverd**.
 3. U hebt de [Data Box Heavy veiligheids richtlijnen](data-box-safety.md)gecontroleerd.
 4. U moet toegang hebben tot een platte site in het Data Center met nabij een beschik bare netwerk verbinding die een apparaat met deze footprint kan ondersteunen. Dit apparaat kan niet worden gekoppeld in een rek.
 5. U hebt vier gegronde netstroom kabels ontvangen die u kunt gebruiken met uw opslag apparaat.
@@ -86,7 +87,7 @@ Voer de volgende stappen uit om uw apparaat te bekabelen.
 
     ![Data Box Heavy stroom kabels in lade](media/data-box-heavy-deploy-set-up/data-box-heavy-power-cords-tray.png)
 
-6. De volgende stap is het identificeren van de verschillende poorten aan de achterkant van het apparaat. Er zijn twee apparaat knooppunten: **Knooppunt1** en **Knooppunt2**. Elk knoop punt heeft vier netwerk interfaces, beheer, **bestand1**, **bestand2**, **Data3**. Beheer wordt gebruikt om tijdens de eerste configuratie van het apparaat het management te configureren. Bestand1-**Data3** zijn gegevens poorten. Beheer-en **Data3** -poorten zijn 1 Gbps, terwijl **bestand1**, **bestand2** kan werken als 40-Gbps-poorten of 10-Gbps-poorten. Onder aan de twee knoop punten zijn vier energie-eenheden (PSUs) die worden gedeeld via de twee knoop punten van het apparaat. Wanneer u dit apparaat begezicht, zijn de **PSUs** **PSU1**, **PSU2**, **PSU3**en **PSU4** van links naar rechts.
+6. De volgende stap is het identificeren van de verschillende poorten aan de achterkant van het apparaat. Er zijn twee apparaat knooppunten: **Knooppunt1** en **Knooppunt2**. Elk knoop punt heeft vier netwerk interfaces **, beheer,** **bestand1**, **bestand2**, **Data3**. Beheer **wordt gebruikt** om tijdens de eerste configuratie van het apparaat het management te configureren. Bestand1-**Data3** zijn gegevens poorten. Beheer **-en** **Data3** -poorten zijn 1 Gbps, terwijl **bestand1**, **bestand2** kan werken als 40-Gbps-poorten of 10-Gbps-poorten. Onder aan de twee knoop punten zijn vier energie-eenheden (PSUs) die worden gedeeld via de twee knoop punten van het apparaat. Wanneer u dit apparaat begezicht, zijn de **PSUs** **PSU1**, **PSU2**, **PSU3**en **PSU4** van links naar rechts.
 
     ![Data Box Heavy poorten](media/data-box-heavy-deploy-set-up/data-box-heavy-ports.png)
 

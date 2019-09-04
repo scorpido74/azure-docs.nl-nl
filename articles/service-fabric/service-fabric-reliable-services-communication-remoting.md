@@ -1,6 +1,6 @@
 ---
-title: Service voor externe toegang met behulp van C# in Service Fabric | Microsoft Docs
-description: Externe communicatie met Service Fabric kan clients en services om te communiceren met C#-services met behulp van een externe procedureaanroep.
+title: Externe toegang C# tot service met in service Fabric | Microsoft Docs
+description: Met Service Fabric externe toegang kunnen clients en services communiceren met C# Services met behulp van een externe procedure aanroep.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: f9cd6e2fee738d2d42c790b4eb7b9a876a44b01d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9ef2cd695f9591f299bb85b95d14d60b987c38d
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772972"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258691"
 ---
-# <a name="service-remoting-in-c-with-reliable-services"></a>Service voor externe toegang in C# met Reliable Services
+# <a name="service-remoting-in-c-with-reliable-services"></a>Externe toegang tot de C# Service met reliable Services
 
 > [!div class="op_single_selector"]
 > * [C# op Windows](service-fabric-reliable-services-communication-remoting.md)
@@ -29,19 +29,19 @@ ms.locfileid: "60772972"
 >
 >
 
-Voor services die niet zijn gekoppeld aan een bepaalde communicatieprotocol of stack, zoals een web-API, Windows Communication Foundation of andere resources, biedt het framework van Reliable Services een mechanisme voor externe toegang snel en eenvoudig instellen van externe procedureaanroepen voor Services. In dit artikel wordt beschreven hoe het instellen van externe procedureaanroepen voor services die zijn geschreven met C#.
+Voor services die niet zijn gekoppeld aan een bepaald communicatie protocol of stack, zoals een web-API, Windows Communication Foundation of anderen, biedt het Reliable Services Framework een extern mechanisme om snel en eenvoudig externe procedure aanroepen in te stellen voor Onderzoeksservices. In dit artikel wordt beschreven hoe u externe procedure aanroepen instelt voor services die C#zijn geschreven met.
 
-## <a name="set-up-remoting-on-a-service"></a>Instellen van een service voor externe toegang
+## <a name="set-up-remoting-on-a-service"></a>Externe toegang instellen voor een service
 
-U kunt instellen van externe toegang tot een service in twee eenvoudige stappen:
+U kunt in twee eenvoudige stappen externe toegang instellen voor een service:
 
-1. Maak een interface voor uw service te implementeren. Deze interface definieert de methoden die beschikbaar voor een externe procedureaanroep op uw service zijn. De methoden retourneren van de taak moeten zijn asynchrone methoden. De interface moet implementeren `Microsoft.ServiceFabric.Services.Remoting.IService` om aan te geven dat de service een externe communicatie-interface heeft.
-2. Gebruik een listener voor externe toegang in uw service. Een listener voor externe toegang is een `ICommunicationListener` mogelijkheden voor externe toegang biedt-implementatie. De `Microsoft.ServiceFabric.Services.Remoting.Runtime` naamruimte bevat de uitbreidingsmethode `CreateServiceRemotingListener` voor staatloze en stateful services die kunnen worden gebruikt voor het maken van een listener voor externe toegang met behulp van het standaardprotocol voor het transport van externe toegang.
+1. Maak een interface voor uw service die u wilt implementeren. Deze interface definieert de methoden die beschikbaar zijn voor een externe procedure aanroep voor uw service. De methoden moeten asynchrone methoden van het taak resultaat hebben. De interface moet worden `Microsoft.ServiceFabric.Services.Remoting.IService` geïmplementeerd om aan te geven dat de service een interface voor externe toegang heeft.
+2. Gebruik een externe listener in uw service. Een externe listener is een `ICommunicationListener` implementatie die mogelijkheden biedt voor externe communicatie. De `Microsoft.ServiceFabric.Services.Remoting.Runtime` naam ruimte bevat de uitbreidings `CreateServiceRemotingListener` methode voor stateless en stateful services die kunnen worden gebruikt om een externe listener te maken met behulp van het standaard externe transport protocol.
 
 >[!NOTE]
->De `Remoting` naamruimte is beschikbaar als een afzonderlijke NuGet-pakket met de naam `Microsoft.ServiceFabric.Services.Remoting`.
+>De `Remoting` naam ruimte is beschikbaar als een afzonderlijk NuGet- `Microsoft.ServiceFabric.Services.Remoting`pakket met de naam.
 
-Bijvoorbeeld, een één methode voor het "Hallo wereld" ophalen via een externe procedureaanroep wordt aangegeven dat de volgende stateless service.
+De volgende stateless service biedt bijvoorbeeld een enkele methode om Hallo wereld te verkrijgen via een externe procedure aanroep.
 
 ```csharp
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
@@ -74,13 +74,13 @@ class MyService : StatelessService, IMyService
 ```
 
 > [!NOTE]
-> De argumenten en de typen retourneren die in de service-interface kunnen een eenvoudige, complexe of aangepaste typen zijn, maar moeten ze kunnen worden geserialiseerd met de .NET [DataContractSerializer](https://msdn.microsoft.com/library/ms731923.aspx).
+> De argumenten en retour typen in de service-interface kunnen eenvoudige, complexe of aangepaste typen zijn, maar ze moeten kunnen worden geserialiseerd met de .NET [DataContractSerializer](https://msdn.microsoft.com/library/ms731923.aspx).
 >
 >
 
-## <a name="call-remote-service-methods"></a>Externe servicemethoden aanroepen
+## <a name="call-remote-service-methods"></a>Externe service methoden aanroepen
 
-Methoden voor het aanroepen van een service met behulp van de stack voor externe toegang wordt uitgevoerd met behulp van een lokale proxyserver naar de service via de `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` klasse. De `ServiceProxy` methode maakt u een lokale proxyserver met behulp van dezelfde interface die de service implementeert. Met deze proxy, kunt u methoden op afstand op de interface aanroepen.
+Het aanroepen van methoden voor een service met behulp van de externe stack wordt uitgevoerd door middel van een lokale proxy `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` voor de service via de-klasse. Met `ServiceProxy` de-methode wordt een lokale proxy gemaakt met behulp van de interface die door de service wordt geïmplementeerd. Met die proxy kunt u op afstand methoden op de interface aanroepen.
 
 ```csharp
 
@@ -90,43 +90,43 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ```
 
-Het framework voor externe toegang geeft uitzonderingen die door de service naar de client. Als gevolg hiervan, wanneer `ServiceProxy`wordt gebruikt, de client is verantwoordelijk voor het verwerken van de uitzonderingen die door de service.
+Het externe Framework geeft uitzonde ringen door de service door aan de client. Als gevolg hiervan `ServiceProxy`wordt de client verantwoordelijk voor het verwerken van de uitzonde ringen die door de service worden veroorzaakt.
 
-## <a name="service-proxy-lifetime"></a>De levensduur van de Service-proxy
+## <a name="service-proxy-lifetime"></a>Levens duur van Service proxy
 
-Maken van de Service-proxy is een lichte bewerking, zodat u zoveel behoefte kunt maken. Proxy-service-exemplaren kunnen worden hergebruikt voor, zolang ze wel nodig zijn. Als een externe procedureaanroep is een uitzondering genereert, kunt u nog steeds hetzelfde exemplaar van de proxy opnieuw gebruiken. De proxy van elke service bevat een communicatie-client gebruikt voor het verzenden van berichten via de kabel. Tijdens het aanroepen van externe oproepen, interne controles uitgevoerd om te bepalen of de client communicatie geldig is. Op basis van de resultaten van deze controles, wordt de client communicatie opnieuw gemaakt als nodig is. Dus als er een uitzondering optreedt, u hoeft niet opnieuw maken `ServiceProxy`.
+Het maken van een Service proxy is een licht gewicht bewerking, zodat u zoveel mogelijk kunt maken. Service proxy-exemplaren kunnen opnieuw worden gebruikt zolang ze nodig zijn. Als een externe procedure aanroep een uitzonde ring genereert, kunt u nog steeds hetzelfde proxy-exemplaar gebruiken. Elke service proxy bevat een communicatie client die wordt gebruikt voor het verzenden van berichten via de kabel. Tijdens het aanroepen van externe aanroepen worden interne controles uitgevoerd om te bepalen of de communicatie client geldig is. Op basis van de resultaten van die controles wordt de communicatie client, indien nodig, opnieuw gemaakt. Als er een uitzonde ring optreedt, hoeft u dus niet opnieuw te maken `ServiceProxy`.
 
-### <a name="service-proxy-factory-lifetime"></a>Service-proxy factory levensduur
+### <a name="service-proxy-factory-lifetime"></a>Levens duur van Service proxy-Factory
 
-[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) is een factory die de proxy worden exemplaren voor externe communicatie van andere interfaces gemaakt. Als u de API `ServiceProxyFactory.CreateServiceProxy` voor het maken van een proxy, het framework maakt u een singleton-serviceproxy.
-Het is handig om een handmatig maken wanneer u nodig hebt voor de onderdrukking [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) eigenschappen.
-Maken van de factory is een dure bewerking. Een service proxy factory onderhoudt een interne cache van de client communicatie.
-Er is een best practice om de service proxy factory zo lang mogelijk in cache.
+[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) is een Factory waarmee proxy-instanties voor verschillende externe interfaces worden gemaakt. Als u de API `ServiceProxyFactory.CreateServiceProxy` gebruikt om een proxy te maken, maakt het Framework een singleton-Service proxy.
+Het is handig om een hand matig te maken wanneer u [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) -eigenschappen wilt overschrijven.
+Het maken van de fabriek is een dure bewerking. Een Service proxy-Factory houdt een interne cache van de communicatie-client bij.
+Een best practice is de Service proxy-Factory zo lang mogelijk in de cache op te slaan.
 
-## <a name="remoting-exception-handling"></a>Afhandeling van uitzonderingen voor externe toegang
+## <a name="remoting-exception-handling"></a>Afhandeling van externe uitzonde ringen
 
-Alle externe uitzonderingen die door de API-service worden verzonden naar de client als AggregateException. Externe uitzonderingen moet kunnen worden geserialiseerd met DataContract. Als dat niet het geval is, de API-proxy genereert [ServiceException](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) met de serialisatiefout erin.
+Alle externe uitzonde ringen die worden veroorzaakt door de API van de service, worden teruggestuurd naar de client als AggregateException. Externe uitzonde ringen moeten kunnen worden geserialiseerd door data contract. Als dat niet het geval is, genereert de proxy-API [ServiceException](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) met de serialisatiefout.
 
-Proxy voor de service handelt alle failover-uitzonderingen voor de servicepartitie die deze wordt gemaakt. Deze oplossing voor de eindpunten weer als er failover-uitzonderingen (niet-tijdelijke uitzonderingen) zijn en probeert om opnieuw de aanroep met het juiste eindpunt. Het aantal nieuwe pogingen voor failover-uitzonderingen is onbepaalde tijd.
-Als er tijdelijke uitzonderingen optreden, probeert de proxy opnieuw de aanroep.
+De Service proxy verwerkt alle failover-uitzonde ringen voor de service partitie waarvoor deze is gemaakt. De eind punten worden opnieuw omgezet als er failover-uitzonde ringen zijn (geen tijdelijke uitzonde ringen) en de aanroep opnieuw probeert met het juiste eind punt. Het aantal nieuwe pogingen voor failover-uitzonde ringen is oneindig.
+Als er tijdelijke uitzonde ringen optreden, probeert de proxy de aanroep opnieuw uit te voeren.
 
-Standaardparameters voor nieuwe pogingen worden geleverd door [OperationRetrySettings](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings).
+De standaard parameters voor opnieuw proberen worden opgegeven door [OperationRetrySettings](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings).
 
-Een gebruiker kan deze waarden configureren door het OperationRetrySettings-object doorgeven aan de constructor ServiceProxyFactory.
+Een gebruiker kan deze waarden configureren door het object OperationRetrySettings door te geven aan de ServiceProxyFactory-constructor.
 
-## <a name="use-the-remoting-v2-stack"></a>De remoting V2-stack gebruiken
+## <a name="use-the-remoting-v2-stack"></a>De externe v2-stack gebruiken
 
-Vanaf versie 2.8 van het NuGet-pakket voor externe toegang hebt u de optie voor het gebruik van de remoting V2-stack. De remoting V2-stack presteert beter. Het biedt ook functies zoals meer pluggable API's en aangepaste serialisatie.
-Sjablooncode blijft de V1-stack van externe toegang gebruiken.
-Remoting V2 is niet compatibel met V1 (de vorige voor externe toegang-stack). Volg de instructies in het artikel [upgraden van V1 in V2](#upgrade-from-remoting-v1-to-remoting-v2) om te voorkomen dat gevolgen voor de beschikbaarheid van de service.
+Vanaf versie 2,8 van het NuGet Remoting-pakket hebt u de mogelijkheid om de externe v2-stack te gebruiken. De externe v2-stack werkt beter. Het biedt ook functies als aangepaste serialisatie en meer pluggable Api's.
+De sjabloon code blijft de externe v1-stack gebruiken.
+Remoting v2 is niet compatibel met V1 (de vorige externe stack). Volg de instructies in het artikel [upgrade van v1 naar v2](#upgrade-from-remoting-v1-to-remoting-v2) om te voor komen dat er gevolgen zijn voor de beschik baarheid van de service.
 
-De volgende methoden zijn beschikbaar voor het inschakelen van de V2-stack.
+De volgende benaderingen zijn beschikbaar om de v2-stack in te scha kelen.
 
-### <a name="use-an-assembly-attribute-to-use-the-v2-stack"></a>Een assembly-kenmerk gebruiken om te gebruiken van de stack V2
+### <a name="use-an-assembly-attribute-to-use-the-v2-stack"></a>Een assembly-kenmerk gebruiken om de v2-stack te gebruiken
 
-Deze stappen wijzigen de sjablooncode voor het gebruik van de V2-stack met behulp van een assembly-kenmerk.
+Met deze stappen wijzigt u de sjabloon code om de v2-stack te gebruiken met behulp van een assembly-kenmerk.
 
-1. Wijzigen van de endpoint-resource in `"ServiceEndpoint"` naar `"ServiceEndpointV2"` in het servicemanifest.
+1. Wijzig de eindpunt resource van `"ServiceEndpoint"` `"ServiceEndpointV2"` in in het service manifest.
 
    ```xml
    <Resources>
@@ -136,7 +136,7 @@ Deze stappen wijzigen de sjablooncode voor het gebruik van de V2-stack met behul
    </Resources>
    ```
 
-2. Gebruik de `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners` uitbreidingsmethode maken voor externe toegang-listeners (equal voor zowel V1 als V2).
+2. Gebruik de `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners` uitbreidings methode voor het maken van externe listeners (gelijk voor v1 en v2).
 
    ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -145,22 +145,22 @@ Deze stappen wijzigen de sjablooncode voor het gebruik van de V2-stack met behul
     }
    ```
 
-3. Markeren van de assembly die de interfaces voor externe toegang met bevat een `FabricTransportServiceRemotingProvider` kenmerk.
+3. Markeer de assembly die de externe interfaces met een `FabricTransportServiceRemotingProvider` kenmerk bevat.
 
    ```csharp
    [assembly: FabricTransportServiceRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2, RemotingClientVersion = RemotingClientVersion.V2)]
    ```
 
-Er zijn geen codewijzigingen vereist zijn in het clientproject.
-Bouw de client-assembly met de interface-assembly om ervoor te zorgen dat de assembly-kenmerk dat eerder is getoond wordt gebruikt.
+Er zijn geen code wijzigingen vereist in het client project.
+Bouw de client-assembly met de interface-assembly om ervoor te zorgen dat het assembly kenmerk dat eerder wordt weer gegeven, wordt gebruikt.
 
-### <a name="use-explicit-v2-classes-to-use-the-v2-stack"></a>Expliciete V2-klassen te gebruiken van de V2-stack gebruiken
+### <a name="use-explicit-v2-classes-to-use-the-v2-stack"></a>Expliciete v2-klassen gebruiken om de v2-stack te gebruiken
 
-Als alternatief voor het gebruik van een kenmerk van de assembly, kan het V2-stack ook worden ingeschakeld met behulp van expliciete V2-klassen.
+Als alternatief voor het gebruik van een assembly-kenmerk kan de v2-stack ook worden ingeschakeld met behulp van expliciete v2-klassen.
 
-Deze stappen wijzigen de sjablooncode voor het gebruik van de V2-stack met behulp van expliciete V2-klassen.
+Met deze stappen wijzigt u de sjabloon code om de v2-stack te gebruiken met behulp van expliciete v2-klassen.
 
-1. Wijzigen van de endpoint-resource in `"ServiceEndpoint"` naar `"ServiceEndpointV2"` in het servicemanifest.
+1. Wijzig de eindpunt resource van `"ServiceEndpoint"` `"ServiceEndpointV2"` in in het service manifest.
 
    ```xml
    <Resources>
@@ -170,7 +170,7 @@ Deze stappen wijzigen de sjablooncode voor het gebruik van de V2-stack met behul
    </Resources>
    ```
 
-2. Gebruik [FabricTransportServiceRemotingListener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet) uit de `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` naamruimte.
+2. Gebruik [FabricTransportServiceRemotingListener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet) uit de `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` naam ruimte.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -186,7 +186,7 @@ Deze stappen wijzigen de sjablooncode voor het gebruik van de V2-stack met behul
     }
    ```
 
-3. Gebruik [FabricTransportServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) uit de `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` naamruimte voor het maken van clients.
+3. Gebruik [FabricTransportServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) uit de `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` naam ruimte om clients te maken.
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -195,14 +195,14 @@ Deze stappen wijzigen de sjablooncode voor het gebruik van de V2-stack met behul
           });
    ```
 
-## <a name="upgrade-from-remoting-v1-to-remoting-v2"></a>Upgrade uitvoeren van externe toegang V1 naar remoting V2
+## <a name="upgrade-from-remoting-v1-to-remoting-v2"></a>Upgrade van externe v1 naar externe versie v2
 
-Als u wilt upgraden van V1 in V2, zijn upgrades voor verificatie in twee stappen vereist. Volg de stappen in deze reeks.
+Als u een upgrade wilt uitvoeren van v1 naar v2, zijn upgrades van twee stappen vereist. Volg de stappen in deze reeks.
 
-1. De V1-service upgraden naar V2-service met behulp van dit kenmerk.
-Deze wijziging zorgt ervoor dat de service de V1 en V2-listener luistert.
+1. Voer met dit kenmerk een upgrade uit van de V1-service naar de v2-service.
+Met deze wijziging wordt gecontroleerd of de service naar de v1-en v2-listener luistert.
 
-    a. Voeg een eindpuntresource met de naam 'ServiceEndpointV2' in het servicemanifest.
+    a. Voeg een eindpunt resource met de naam ' ServiceEndpointV2 ' toe aan het service manifest.
       ```xml
       <Resources>
         <Endpoints>
@@ -211,7 +211,7 @@ Deze wijziging zorgt ervoor dat de service de V1 en V2-listener luistert.
       </Resources>
       ```
 
-    b. Gebruik de volgende uitbreidingsmethode te maken van een listener voor externe toegang.
+    b. Gebruik de volgende extensie methode voor het maken van een externe listener.
 
     ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -220,33 +220,33 @@ Deze wijziging zorgt ervoor dat de service de V1 en V2-listener luistert.
     }
     ```
 
-    c. Een assembly-kenmerk toevoegen op interfaces voor externe toegang om de V1 en V2-listener en de V2-client te gebruiken.
+    c. Voeg een assembly-kenmerk toe op externe interfaces voor het gebruik van de v1-en v2-listener en de v2-client.
     ```csharp
     [assembly: FabricTransportServiceRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2|RemotingListenerVersion.V1, RemotingClientVersion = RemotingClientVersion.V2)]
 
       ```
-2. Upgrade van de V1-client naar een V2-client met behulp van het kenmerk van de client V2.
-Deze stap zorgt ervoor dat de client maakt gebruik van de V2-stack.
-Er is geen wijziging in de client-project/service vereist. Client-projecten bouwen met bijgewerkte interface assembly is voldoende.
+2. Upgrade de V1-client naar een v2-client met behulp van het kenmerk v2-client.
+Met deze stap zorgt u ervoor dat de-client gebruikmaakt van de v2-stack.
+Het client project/de service hoeft niet te worden gewijzigd. Het bouwen van client projecten met een bijgewerkte interface-assembly is voldoende.
 
-3. Deze stap is optioneel. Gebruik het V2-listener-kenmerk en werk vervolgens de V2-service.
-Deze stap zorgt ervoor dat de service alleen op de V2-listener luistert.
+3. Deze stap is optioneel. Gebruik het kenmerk v2-listener en werk vervolgens de v2-service bij.
+Met deze stap zorgt u ervoor dat de service alleen luistert op de v2-listener.
 
     ```csharp
     [assembly: FabricTransportServiceRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2, RemotingClientVersion = RemotingClientVersion.V2)]
     ```
 
 
-## <a name="use-the-remoting-v2-interface-compatible-stack"></a>De remoting V2 (compatibel interface)-stack gebruiken
+## <a name="use-the-remoting-v2-interface-compatible-stack"></a>De externe v2-stack (interface compatibel) gebruiken
 
- De remoting V2 (interface compatibel zijn, ook wel V2_1) stack heeft alle functies van de externe toegang-stack V2. De interface-stack is compatibel met de externe communicatie van V1-stack, maar het is niet compatibel met V2 en V1. Om te upgraden van V1 naar V2_1 zonder die betrekking hebben op beschikbaarheid van de service, volgt u de stappen in het artikel Upgrade van V1 in V2 (compatibel-interface).
+ De externe v2-stack (interface compatibel, bekend als V2_1) beschikt over alle functies van de v2-externe stack. De Interface stack is compatibel met de externe v1-stack, maar is niet achterwaarts compatibel met v2 en v1. Als u wilt upgraden van v1 naar V2_1 zonder dat dit van invloed is op de beschik baarheid van de service, volgt u de stappen in het artikel upgrade van v1 naar v2 (interface compatibel).
 
 
-### <a name="use-an-assembly-attribute-to-use-the-remoting-v2-interface-compatible-stack"></a>Een assembly-kenmerk gebruiken om te gebruiken van de remoting V2-stack (interface-compatibel)
+### <a name="use-an-assembly-attribute-to-use-the-remoting-v2-interface-compatible-stack"></a>Gebruik een assembly-kenmerk om de externe v2-stack (interface compatibel) te gebruiken
 
-Volg deze stappen om te wijzigen in een V2_1-stack.
+Volg deze stappen om een V2_1-stack te wijzigen.
 
-1. Voeg een eindpuntresource met de naam 'ServiceEndpointV2_1' in het servicemanifest.
+1. Voeg een eindpunt resource met de naam ' ServiceEndpointV2_1 ' toe aan het service manifest.
 
    ```xml
    <Resources>
@@ -256,7 +256,7 @@ Volg deze stappen om te wijzigen in een V2_1-stack.
    </Resources>
    ```
 
-2. Gebruik de methode van de extensie voor externe toegang om te maken van een listener voor externe toegang.
+2. Gebruik de externe uitbreidings methode voor het maken van een externe listener.
 
    ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -265,21 +265,21 @@ Volg deze stappen om te wijzigen in een V2_1-stack.
     }
    ```
 
-3. Voeg een [kenmerk assembly](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet) op interfaces voor externe toegang.
+3. Voeg een [Assembly-kenmerk](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet) toe op externe interfaces.
 
    ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
 
    ```
 
-Er zijn geen wijzigingen vereist zijn in het clientproject.
-Bouw de client-assembly met de interface-assembly om ervoor te zorgen dat het vorige kenmerk van de assembly wordt gebruikt.
+Er zijn geen wijzigingen vereist in het client project.
+Bouw de client-assembly met de interface-assembly om er zeker van te zijn dat het vorige assembly kenmerk wordt gebruikt.
 
-### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>Externe communicatie met expliciete klassen gebruiken om een gegevensfactory-listener /-client voor de V2 (compatibel interface) versie te maken
+### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>Gebruik expliciete externe klassen om een listener/client-Factory te maken voor de v2-versie (interface compatibel)
 
 Volg deze stappen:
 
-1. Voeg een eindpuntresource met de naam 'ServiceEndpointV2_1' in het servicemanifest.
+1. Voeg een eindpunt resource met de naam ' ServiceEndpointV2_1 ' toe aan het service manifest.
 
    ```xml
    <Resources>
@@ -289,7 +289,7 @@ Volg deze stappen:
    </Resources>
    ```
 
-2. Gebruik de [remoting V2-listener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet). De service-eindpunt resource standaardnaam gebruikt is "ServiceEndpointV2_1." Het moet worden gedefinieerd in het servicemanifest.
+2. Gebruik de [externe v2-listener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet). De standaard naam van de service-eindpunt resource die wordt gebruikt, is ' ServiceEndpointV2_1 '. Deze moet worden gedefinieerd in het service manifest.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -307,7 +307,7 @@ Volg deze stappen:
     }
    ```
 
-3. Gebruik de V2 [clientfabriek](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet).
+3. De v2- [client-Factory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)gebruiken.
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
           {
@@ -317,14 +317,19 @@ Volg deze stappen:
           });
    ```
 
-## <a name="upgrade-from-remoting-v1-to-remoting-v2-interface-compatible"></a>Upgrade van externe toegang V1 naar remoting V2 (compatibel-interface)
+## <a name="upgrade-from-remoting-v1-to-remoting-v2-interface-compatible"></a>Upgrade van remoting v1 naar Remoting v2 (interface compatibel)
 
-Upgrade uitvoeren van V1 in V2 (interface compatibel zijn, V2_1 genoemd), upgrades voor verificatie in twee stappen zijn vereist. Volg de stappen in deze reeks.
+Als u een upgrade wilt uitvoeren van v1 naar v2 (interface compatibel, bekend als V2_1), zijn upgrades in twee stappen vereist. Volg de stappen in deze reeks.
 
-1. De V1-service upgraden naar V2_1 service met behulp van het volgende kenmerk.
-Deze wijziging zorgt ervoor dat de service op de V1- en de V2_1-listener luistert.
+> [!NOTE]
+> Bij de upgrade van v1 naar v2 moet u `Remoting` controleren of de naam ruimte is bijgewerkt voor het gebruik van v2. Voorbeeld: Micro soft. ServiceFabric. Services. Remoting. v2. FabricTransport. client
+>
+>
 
-    a. Voeg een eindpuntresource met de naam 'ServiceEndpointV2_1' in het servicemanifest.
+1. Voer een upgrade uit van de V1-service naar de V2_1-service met behulp van het volgende kenmerk.
+Met deze wijziging wordt gecontroleerd of de service luistert op de v1 en de V2_1-listener.
+
+    a. Voeg een eindpunt resource met de naam ' ServiceEndpointV2_1 ' toe aan het service manifest.
       ```xml
       <Resources>
         <Endpoints>
@@ -333,7 +338,7 @@ Deze wijziging zorgt ervoor dat de service op de V1- en de V2_1-listener luister
       </Resources>
       ```
 
-    b. Gebruik de volgende uitbreidingsmethode te maken van een listener voor externe toegang.
+    b. Gebruik de volgende extensie methode voor het maken van een externe listener.
 
     ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -342,29 +347,29 @@ Deze wijziging zorgt ervoor dat de service op de V1- en de V2_1-listener luister
     }
     ```
 
-    c. Een assembly-kenmerk op interfaces voor externe toegang toevoegen aan de V1, V2_1 listener en u V2_1 client.
+    c. Voeg een assembly-kenmerk toe op externe interfaces voor het gebruik van de v1-, V2_1-listener-en V2_1-client.
     ```csharp
    [assembly: FabricTransportServiceRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1 | RemotingListenerVersion.V1, RemotingClientVersion = RemotingClientVersion.V2_1)]
 
       ```
-2. De V1-client naar de client V2_1 upgraden met behulp van het kenmerk van de client V2_1.
-Deze stap zorgt ervoor dat de client gebruikt de V2_1-stack.
-Er is geen wijziging in de client-project/service vereist. Client-projecten bouwen met bijgewerkte interface assembly is voldoende.
+2. Werk de V1-client bij naar de V2_1-client met behulp van het V2_1-client kenmerk.
+Met deze stap zorgt u ervoor dat de client de V2_1-stack gebruikt.
+Het client project/de service hoeft niet te worden gewijzigd. Het bouwen van client projecten met een bijgewerkte interface-assembly is voldoende.
 
-3. Deze stap is optioneel. De versie van de listener V1 verwijderen uit het kenmerk en werk vervolgens de V2-service.
-Deze stap zorgt ervoor dat de service alleen op de V2-listener luistert.
+3. Deze stap is optioneel. Verwijder de versie van de V1-listener uit het kenmerk en werk vervolgens de v2-service bij.
+Met deze stap zorgt u ervoor dat de service alleen luistert op de v2-listener.
 
     ```csharp
     [assembly: FabricTransportServiceRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1, RemotingClientVersion = RemotingClientVersion.V2_1)]
     ```
   
-### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>Gebruik aangepaste serialisatie met een externe toegang verpakt bericht
+### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>Aangepaste serialisatie met een extern verpakt bericht gebruiken
 
-Voor een ingepakte bericht van externe toegang maken we een enkel object verpakte met alle parameters als een veld in het.
+Voor een extern verpakte bericht maken we één verpakt object met alle para meters als een veld.
 Volg deze stappen:
 
-1. Implementeer de `IServiceRemotingMessageSerializationProvider` interface voor de implementatie voor aangepaste serialisatie.
-    Dit codefragment laat zien hoe de implementatie eruit ziet.
+1. Implementeer de `IServiceRemotingMessageSerializationProvider` interface voor het leveren van implementatie voor aangepaste serialisatie.
+    Dit code fragment laat zien hoe de implementatie eruitziet.
 
       ```csharp
       public class ServiceRemotingJsonSerializationProvider : IServiceRemotingMessageSerializationProvider
@@ -525,7 +530,7 @@ Volg deze stappen:
     }
     ```
 
-2. Onderdrukking van de standaardprovider voor serialisatie met `JsonSerializationProvider` voor een listener voor externe toegang.
+2. De standaard-serialization-provider `JsonSerializationProvider` vervangen door voor een externe listener.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -541,7 +546,7 @@ Volg deze stappen:
    }
    ```
 
-3. Onderdrukking van de standaardprovider voor serialisatie met `JsonSerializationProvider` voor de clientfabriek van een externe communicatie.
+3. De standaard-serialization-provider `JsonSerializationProvider` vervangen door voor een externe client-Factory.
 
     ```csharp
     var proxyFactory = new ServiceProxyFactory((c) =>
@@ -554,5 +559,5 @@ Volg deze stappen:
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Web-API met OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md)
-* [Windows Communication Foundation communicatie via Reliable Services](service-fabric-reliable-services-communication-wcf.md)
+* [Communicatie Windows Communication Foundation met Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 * [Beveiligde communicatie voor Reliable Services](service-fabric-reliable-services-secure-communication.md)

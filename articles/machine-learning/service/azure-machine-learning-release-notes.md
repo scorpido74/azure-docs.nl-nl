@@ -10,19 +10,67 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 01ee8e5b9d7ab1e8ab4086e559ce8dd8df76252f
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 0880b5706f2621971a4e5c82a6db03cdd22ce4d6
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182701"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278297"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Releaseopmerkingen Azure Machine Learning-service
 
-In dit artikel meer informatie over de versies van de Azure Machine Learning-service.  Ga voor de volledige SDK-referentie-inhoud naar de hoofd pagina van de hand leiding van de Azure Machine Learning van de [**SDK voor python**](https://aka.ms/aml-sdk) . 
+In dit artikel meer informatie over de versies van de Azure Machine Learning-service.  Ga voor de volledige SDK-referentie-inhoud naar de hoofd pagina van de hand leiding van de Azure Machine Learning van de [**SDK voor python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . 
 
 Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informatie over bekende problemen en oplossingen.
 
+## <a name="2019-09-03"></a>2019-09-03
+### <a name="azure-machine-learning-sdk-for-python-v1060"></a>Azure Machine Learning SDK voor python v-1.0.60
+
++ **Nieuwe functies**
+  + Geïntroduceerde FileDataset, die verwijst naar één of meer bestanden in uw gegevens opslag of open bare url's. De bestanden kunnen elk een wille keurige indeling hebben. FileDataset biedt u de mogelijkheid om de bestanden te downloaden of te koppelen aan uw compute. Ga voor meer informatie over FileDataset naar https://aka.ms/file-dataset.
+  + Ondersteuning voor pijplijn yaml toegevoegd voor PythonScript stap, Adla stap, Databrick stap, DataTransferStep en AzureBatch stap
+
++ **Oplossingen en verbeteringen voor oplossingen**
+  + **azureml-automl-core**
+    + AutoArima is nu een suggestie voor een voor beeld van een pijp lijn.
+    + Verbeterde fout rapportage voor prognoses.
+    + De logboek registratie is verbeterd door aangepaste uitzonde ringen te gebruiken in plaats van algemeen in de prognose taken.
+    + De controle op max_concurrent_iterations is verwijderd zodat deze kleiner is dan het totale aantal herhalingen.
+    + AutoML-modellen retour neren nu AutoMLExceptions
+    + Met deze release worden de uitvoerings prestaties van automatische machine learning lokale uitvoeringen verbeterd.
+  + **azureml-core**
+    + Introduce `Dataset.get_all()` waarin een woorden lijst `TabularDataset` en `FileDataset` objecten worden geretourneerd op basis van de registratie naam. 
+    
+    ```py 
+    workspace = Workspace.from_config() 
+    all_datasets = Dataset.get_all(workspace) 
+    mydata = all_datasets['my-data'] 
+    ```
+    
+    + Als `parition_format` argument inintroducen `Dataset.Tabular.from_parquet.files`voor `Dataset.Tabular.from_delimited_files` en. De partitie gegevens van elk gegevenspad worden geëxtraheerd in kolommen op basis van de opgegeven indeling. {COLUMN_NAME} maakt een teken reeks kolom, en ' {COLUMN_NAME: JJJJ/MM/DD/uu/mm/SS} ' maakt een date time kolom, waarbij ' jjjj ', ' MM ', ' DD ', ' HH ', ' mm ' en ' ss ' worden gebruikt voor het extra heren van jaar, maand, dag, uur, minuut en seconde voor het datum type De partition_format moet beginnen met de positie van de eerste partitie sleutel tot het einde van het bestandspad. Bijvoorbeeld, op basis van het pad '.. /USA/2019/01/01/data.csv ' waarbij de partitie op land en tijd staat, partition_format = '/{Country}/{PartitionDate: JJJJ/MM/DD}/data. csv ' maakt teken reeks kolom ' land ' met de waarde ' USA ' en datetime column ' PartitionDate ' met de waarde ' 2019-01-01 '.
+    + `to_csv_files`en `to_parquet_files` er zijn methoden toegevoegd aan `TabularDataset`. Met deze methoden wordt de conversie `TabularDataset` tussen a `FileDataset` en a ingeschakeld door de gegevens te converteren naar bestanden met de opgegeven indeling.
+    + Automatisch aanmelden bij het REGI ster van de basis installatie kopie bij het opslaan van een Dockerfile die is gegenereerd door model. pakket ().
+    + ' gpu_support ' is niet langer nodig; Nu wordt de NVIDIA docker-extensie automatisch gedetecteerd en gebruikt wanneer deze beschikbaar is. Deze wordt in een toekomstige release verwijderd.
+    + Er is ondersteuning toegevoegd om PipelineDrafts te maken, bij te werken en te gebruiken.
+    + Met deze release worden de uitvoerings prestaties van automatische machine learning lokale uitvoeringen verbeterd.
+    + Gebruikers kunnen metrische gegevens opvragen uit de uitvoerings geschiedenis op naam.
+    + De logboek registratie is verbeterd door aangepaste uitzonde ringen te gebruiken in plaats van algemeen in de prognose taken.
+  + **azureml-explain-model**
+    + De feature_maps-para meter is toegevoegd aan de nieuwe MimicWrapper, zodat gebruikers de onbewerkte functie verklaringen kunnen ophalen.
+    + Gegevensset-uploads zijn nu standaard uitgeschakeld voor het uploaden van uitleg en kunnen opnieuw worden ingeschakeld met upload_datasets = True
+    + Er zijn ' is_law ' filter parameters toegevoegd aan de uitleg lijst en Download functies.
+    + Voegt methode `get_raw_explanation(feature_maps)` toe aan zowel globale als lokale uitleg objecten.
+    + Versie controle toegevoegd aan lightgbm met afgedrukte waarschuwing als onderstaande ondersteunde versie
+    + Geoptimaliseerd geheugen gebruik bij de batch verwerking van uitleg
+    + AutoML-modellen retour neren nu AutoMLExceptions
+  + **azureml-pipeline-core**
+    + Er is ondersteuning toegevoegd om PipelineDrafts te maken, bij te werken en te gebruiken-kan worden gebruikt om onveranderlijke pijplijn definities te onderhouden en ze interactief te gebruiken om uit te voeren
+  + **azureml-train-automl**
+    + Er is een functie gemaakt voor het installeren van specifieke versies van GPU-capable pytorch v 1.1.0, CUDA Toolkit 9,0, pytorch-trans formaties die vereist zijn om BERT/XLNet in te scha kelen in de externe python-runtime omgeving.
+  + **azureml-train-core**
+    + Vroegtijdige uitval van sommige afstemming definitie fouten rechtstreeks in de SDK in plaats van aan de server zijde.
+
+  
 ## <a name="2019-08-19"></a>2019-08-19
 
 ### <a name="azure-machine-learning-sdk-for-python-v1057"></a>Azure Machine Learning SDK voor python v-1.0.57
@@ -269,7 +317,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informa
 
 + **Nieuwe functies**
   + **azureml-opendatasets**
-    + **azureml-contrib-** opengegevenssets is nu beschikbaar als **azureml-** opendatasets. Het oude pakket kan nog steeds werken, maar we raden u aan om gebruik te maken van **azureml-** opengegevenssets voor geavanceerde mogelijkheden en verbeteringen.
+    + **azureml-contrib-opengegevenssets** is nu beschikbaar als **azureml-opendatasets**. Het oude pakket kan nog steeds werken, maar we raden u aan om gebruik te maken van **azureml-opengegevenssets** voor geavanceerde mogelijkheden en verbeteringen.
     + Met dit nieuwe pakket kunt u open gegevens sets als gegevensset registreren in de AML-werk ruimte en gebruikmaken van de functies die door gegevensset worden geboden.
     + Het omvat ook bestaande mogelijkheden, zoals het gebruik van open gegevens sets als Panda-en SPARK-dataframes en de locatie koppeling voor een bepaalde gegevensset, zoals weer.
 
@@ -391,7 +439,7 @@ Er is een wijziging doorgegaan die de prestaties verbeterd, omdat deze problemen
   + AmlCompute quota goedkeuringen zijn nog sneller geworden. We hebben nu het proces voor het goed keuren van uw quotum aanvragen binnen een drempel waarde geautomatiseerd. Meer informatie over de werking van quota's vindt [u in het beheren van quota's](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
 
 + **Preview-functies**
-    + Integratie met [MLflow](https://mlflow.org) 1.0.0 tracking via het MLflow-pakket ([voor beeld](https://aka.ms/azureml-mlflow-examples)-notebooks).
+    + Integratie met [MLflow](https://mlflow.org) 1.0.0 tracking via het MLflow-pakket ([voor beeld-notebooks](https://aka.ms/azureml-mlflow-examples)).
     + Verzend Jupyter notebook als een run. [API-referentie documentatie](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
     + Open bare preview-versie van de [gegevens drift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift?view=azure-ml-py) via het contrib-datadrift-pakket ([voorbeeld notitieblokken](https://aka.ms/azureml-datadrift-example)). Data gradatie is een van de belangrijkste redenen waarbij de nauw keurigheid van het model in de loop van de tijd verloopt. Het gebeurt wanneer gegevens die worden geleverd aan model in productie verschillen van de gegevens waarop het model is getraind. AML data drift detector helpt klanten bij het bewaken van gegevens drift en bij het verzenden van een waarschuwing wanneer er een drift wordt gedetecteerd. 
 
@@ -908,7 +956,7 @@ De Azure-portal voor de Azure Machine Learning-service heeft de volgende updates
 ### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Azure Machine Learning-SDK voor Python v0.1.74
 
 + **Belangrijke wijzigingen** 
-  * \* Werk ruimte. compute_targets, gegevens opslag, experimenten, afbeeldingen, modellen en webservices zijn eigenschappen in plaats van methoden. Vervang bijvoorbeeld *Workspace.compute_targets()* met *Workspace.compute_targets*.
+  * \* Werk ruimte. compute_targets, gegevens opslag, experimenten, afbeeldingen, modellen en *webservices* zijn eigenschappen in plaats van methoden. Vervang bijvoorbeeld *Workspace.compute_targets()* met *Workspace.compute_targets*.
   * *Run.get_context* Hiermee wordt vervangen *Run.get_submitted_run*. De laatste methode wordt verwijderd in toekomstige releases.
   * *PipelineData* klasse verwacht nu een datastore-object als een parameter in plaats van datastore_name. Op deze manier *pijplijn* default_datastore in plaats van default_datastore_name accepteert.
 

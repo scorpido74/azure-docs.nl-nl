@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dapine
-ms.openlocfilehash: eaf689ecb8fd64dca15570179733b7d7539a352e
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d05f98ae695dd428a28ce49934e05c60de6328bc
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050075"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257043"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker-containers installeren en uitvoeren
  
@@ -104,7 +104,7 @@ Plaats het pakket bestand in een map en verwijs naar deze map als de invoer kopp
 
 ### <a name="package-types"></a>Pakket typen
 
-De map invoer koppeling kan de **productie**, **fase ring**en getrainde versie van de app tegelijkertijd bevatten. Alle pakketten zijn gekoppeld. 
+De map invoer koppeling kan de **productie**, **fase ring**en **getrainde** versie van de app tegelijkertijd bevatten. Alle pakketten zijn gekoppeld. 
 
 |Pakket type|Query eind punt-API|Beschik baarheid van query's|Bestands naam indeling pakket|
 |--|--|--|--|
@@ -236,7 +236,7 @@ Er zijn meer [voor beelden](luis-container-configuration.md#example-docker-run-c
 
 > [!IMPORTANT]
 > De `Eula`, `Billing`, en `ApiKey` opties moeten worden opgegeven voor het uitvoeren van de container; anders wordt de container niet start.  Zie voor meer informatie, [facturering](#billing).
-> De waarde ApiKey is de **sleutel** van de pagina sleutels en eind punten in de Luis-Portal en is ook beschikbaar op de `Cognitive Services` pagina Azure-resource sleutels.  
+> De ApiKey-waarde is de **sleutel** van de **Azure-resources** -pagina in de Luis-Portal en is ook `Cognitive Services` beschikbaar op de pagina Azure-resource sleutels.  
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -274,7 +274,7 @@ curl -X GET \
 "http://localhost:5000/luis/v2.0/apps/{APPLICATION_ID}?q=turn%20on%20the%20lights&staging=false&timezoneOffset=0&verbose=false&log=true" \
 -H "accept: application/json"
 ```
-Als u query's wilt uitvoeren naar de faserings omgeving, wijzigt u de parameter waarde voor de **faserings** query teken reeks in waar: 
+Als u query's wilt uitvoeren naar de **faserings** omgeving, wijzigt u de parameter waarde voor de **faserings** query teken reeks in waar: 
 
 `staging=true`
 
@@ -342,7 +342,7 @@ U kunt een LUIS-toepassing gebruiken als deze geen van de volgende afhankelijkhe
 Niet-ondersteunde app-configuraties|Details|
 |--|--|
 |Niet-ondersteunde container culturen| Nederlands (nl-NL)<br>Japans (ja-JP)<br>Duits wordt alleen ondersteund met de [1.0.2 tokenizer](luis-language-support.md#custom-tokenizer-versions).|
-|Niet-ondersteunde entiteiten voor alle cult uren|[](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-keyphrase) Vooraf samengestelde woordgroepen instantie voor alle cult uren|
+|Niet-ondersteunde entiteiten voor alle cult uren|Vooraf samengestelde [woordgroepen](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-keyphrase) instantie voor alle cult uren|
 |Niet-ondersteunde entiteiten voor de Engelse (en-US) cultuur|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) vooraf gemaakte entiteiten|
 |Spraak gebeuren|Externe afhankelijkheden worden niet ondersteund in de container.|
 |Sentimentanalyse|Externe afhankelijkheden worden niet ondersteund in de container.|

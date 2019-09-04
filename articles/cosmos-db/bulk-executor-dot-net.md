@@ -6,19 +6,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 0b74c7b178ee4512067de4b8decba0c3c565ccd4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 26e4c4edbcfc282fffd0d43673d3585cfe973848
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616970"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241270"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Bulksgewijs uitvoeren van de .NET-bibliotheek gebruiken voor bulk bewerkingen in Azure Cosmos DB
 
-Deze zelf studie bevat instructies over het gebruik van de invoerder .NET-bibliotheek van Azure Cosmos DB voor het importeren en bijwerken van documenten naar de Azure Cosmos-container. Zie overzichts artikel bulk-uitvoerder [bibliotheek](bulk-executor-overview.md) voor meer informatie over de bibliotheek voor bulk doorvoer In deze zelf studie wordt een voor beeld van een .NET-toepassing weer geven waarmee wille keurig gegenereerde documenten bulksgewijs worden geïmporteerd in een Azure Cosmos-container. Na het importeren ziet u hoe u de geïmporteerde gegevens bulksgewijs kunt bijwerken door het opgeven van patches als bewerkingen die moeten worden uitgevoerd op specifieke document velden. 
+Deze zelf studie bevat instructies over het gebruik van de invoerder .NET-bibliotheek van Azure Cosmos DB voor het importeren en bijwerken van documenten naar de Azure Cosmos-container. Zie [overzichts artikel bulk](bulk-executor-overview.md) -uitvoerder bibliotheek voor meer informatie over de bibliotheek voor bulk doorvoer In deze zelf studie wordt een voor beeld van een .NET-toepassing weer geven waarmee wille keurig gegenereerde documenten bulksgewijs worden geïmporteerd in een Azure Cosmos-container. Na het importeren ziet u hoe u de geïmporteerde gegevens bulksgewijs kunt bijwerken door het opgeven van patches als bewerkingen die moeten worden uitgevoerd op specifieke document velden. 
 
 Bulksgewijs executor-bibliotheek wordt momenteel ondersteund door Azure Cosmos DB SQL API en Gremlin-API-accounts. In dit artikel wordt beschreven hoe u een bulk-uitvoerder-.NET-bibliotheek met SQL API-accounts gebruikt. Zie voor meer informatie over het gebruik van grote hoeveelheden executor .NET-bibliotheek met Gremlin-API, [bulksgewijs bewerkingen uitvoeren in Azure Cosmos DB Gremlin API](bulk-executor-graph-dotnet.md). 
 
@@ -58,7 +58,7 @@ De toepassing ' BulkImportSample ' genereert wille keurige documenten en importe
    private static readonly int CollectionThroughput = int.Parse(ConfigurationManager.AppSettings["CollectionThroughput"]);
    ```
 
-   Het importprogramma bulksgewijs maakt een nieuwe database en een verzameling met de databasenaam, de naam van verzameling en de doorvoer die zijn opgegeven in het bestand App.config. 
+   De functie voor bulk import maakt een nieuwe data base en een container met de database naam, container naam en doorvoer waarden die zijn opgegeven in het bestand app. config. 
 
 3. De volgende keer dat het object DocumentClient wordt geïnitialiseerd met de directe TCP-verbindings modus:  
 

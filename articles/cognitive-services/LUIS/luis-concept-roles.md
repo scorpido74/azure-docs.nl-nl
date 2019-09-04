@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: b4bd61ea74055a04718d8a9d8d5ccd42671af2ac
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: eead9e0fec8ac4322bc7816de4a4774f8be8129c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638351"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257959"
 ---
 # <a name="entity-roles-for-contextual-subtypes"></a>Entiteits rollen voor contextuele subtypen
 
@@ -93,7 +93,7 @@ De entiteit en de rol worden tussen haakjes, `{}`. De entiteit en de rol worden 
 
 ## <a name="entity-roles-versus-collaborator-roles"></a>Entiteits rollen versus samenwerkings rollen
 
-Entiteits rollen zijn van toepassing op het gegevens model van de LUIS-app. Rollen voor [samen](luis-concept-collaborator.md) werkingen zijn van toepassing op niveaus van toegang tot ontwerpen. 
+Entiteits rollen zijn van toepassing op het gegevens model van de LUIS-app. Rollen voor [samen werking of Inzender](luis-concept-keys.md#contributions-from-other-authors) zijn van toepassing op niveaus van toegang tot ontwerpen. 
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 

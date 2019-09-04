@@ -4,14 +4,14 @@ description: Meer informatie over het vinden van de kosten voor de aanvraag eenh
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 09/01/2019
 ms.author: thweiss
-ms.openlocfilehash: 682273524269682f62cd386de1c9161888747f16
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c5699bb851bd0a818a987228155c62683e93f51a
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093711"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240790"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>De kosten voor de aanvraag eenheid zoeken in Azure Cosmos DB
 
@@ -176,7 +176,7 @@ Op dit moment kunt u de aanvraag kosten vinden in de Azure Portal alleen voor ee
 
 1. [Maak een nieuw Azure Cosmos-account](create-mongodb-dotnet.md#create-a-database-account) en voer het in met gegevens of selecteer een bestaand account dat al gegevens bevat.
 
-1. Ga naar het **Data Explorer** venster en selecteer vervolgens de verzameling waarmee u wilt werken.
+1. Ga naar het deel venster **Data Explorer** en selecteer vervolgens de container waaraan u wilt werken.
 
 1. Selecteer **New Query** (Nieuwe query).
 

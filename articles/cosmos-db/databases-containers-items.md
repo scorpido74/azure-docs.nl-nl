@@ -4,15 +4,15 @@ description: In dit artikel wordt beschreven hoe u data bases, containers en ite
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 09/01/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 9c8460380755c6057f7507443d0b564e85c2ff86
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: de9b0a372d04b40a24b6dc0a8952722129f4a55f
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598496"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241215"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Werken met data bases, containers en items in Azure Cosmos DB
 
@@ -74,7 +74,7 @@ Een Azure Cosmos-container is gespecialiseerd in API-specifieke entiteiten, zoal
 
 | Azure Cosmos-entiteit | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-container | Collection | Tabel | Verzameling | Graph | Tabel |
+|Azure Cosmos-container | Container | Tabel | Verzameling | Graph | Tabel |
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Eigenschappen van een Azure Cosmos-container
 

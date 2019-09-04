@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: atsenthi
-ms.openlocfilehash: 8e39318dcaa31a111908c6be1ae7a51d73eb7478
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 36c0f02202c738ac96d26b748b741cd8eee27380
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623830"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241827"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Wat is het resource model van de Service Fabric-toepassing?
 Het is raadzaam dat Service Fabric toepassingen worden geïmplementeerd op uw Service Fabric cluster via Azure Resource Manager. Met deze methode kunnen toepassingen en services in JSON worden beschreven en worden geïmplementeerd in dezelfde resource manager-sjabloon als uw cluster. In plaats van het implementeren en beheren van toepassingen via Power shell of Azure CLI, hoeft u niet te wachten tot het cluster gereed is. Het proces van toepassingsregistratie, -inrichting en -implementatie kan in één stap worden uitgevoerd. Dit is de best practice voor het beheren van de levenscyclus van toepassingen in uw cluster. Bekijk de [Aanbevolen procedures](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)voor meer informatie.
@@ -41,7 +41,7 @@ Voor het implementeren van een toepassing vanuit een resource manager-sjabloon i
 ![Create a storage account][CreateStorageAccount]
 
 ### <a name="configure-storage-account"></a>Opslag account configureren 
-Zodra het opslag account is gemaakt, moet u een BLOB-container maken waarin de toepassingen kunnen worden klaargezet. Ga in het Azure Portal naar het opslag account waarin u uw toepassingen wilt opslaan. Selecteer de Blade blobs en klik op de knop **container toevoegen** . Voeg een nieuwe container met open bare BLOB-toegangs niveau toe.
+Zodra het opslag account is gemaakt, moet u een BLOB-container maken waarin de toepassingen kunnen worden klaargezet. Ga in het Azure Portal naar het opslag account waarin u uw toepassingen wilt opslaan. Selecteer de Blade **blobs** en klik op de knop **container toevoegen** . Voeg een nieuwe container met open bare BLOB-toegangs niveau toe.
    
 ![Blob maken][CreateBlob]
 
@@ -154,6 +154,10 @@ Informatie over het resource model van de toepassing ophalen:
 
 * [Een toepassing model leren in Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model)
 * [Toepassings-en service manifesten Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-and-service-manifests)
+
+## <a name="see-also"></a>Zie ook
+* [Aanbevolen procedures](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
+* [Toepassingen en services beheren als Azure-resources](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
 
 <!--Image references-->
 [CreateStorageAccount]: ./media/service-fabric-application-model/create-storage-account.png

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: b08ce504e96d09b7406f3d8fb1b2afc2c1925e90
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 675d3e2f0dc27e70af497284ce273e87d005a2e1
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164154"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241072"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Voor beeld: meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
@@ -173,7 +173,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 > [!NOTE]
 > Upgrade-en schaal bewerkingen op een cluster of knooppunt groep sluiten elkaar wederzijds uit. U kunt geen cluster-of knooppunt groep tegelijkertijd bijwerken en schalen. In plaats daarvan moet elk bewerkings type worden voltooid voor de doel resource vóór de volgende aanvraag op dezelfde resource. Meer informatie hierover vindt u in onze [probleemoplossings handleiding](https://aka.ms/aks-pending-upgrade).
 
-Als uw AKS-cluster in de eerste stap is gemaakt, `--kubernetes-version` is er een van *1.13.10* opgegeven. Hiermee stelt u de Kubernetes-versie in voor zowel het besturings vlak als de eerste knooppunt groep. Er zijn verschillende opdrachten voor het bijwerken van de Kubernetes-versie van het besturings vlak en de knooppunt groep. De `az aks upgrade` opdracht wordt gebruikt om het besturings vlak bij te werken, `az aks nodepool upgrade` terwijl de wordt gebruikt voor het bijwerken van een afzonderlijke knooppunt groep.
+Als uw AKS-cluster in de eerste stap is gemaakt, `--kubernetes-version` is er een van *1.13.10* opgegeven. Hiermee stelt u de Kubernetes-versie in voor zowel het besturings vlak als de eerste knooppunt groep. Er zijn verschillende opdrachten voor het bijwerken van de Kubernetes-versie van het besturings vlak en de knooppunt groep die [hieronder](#upgrade-a-cluster-control-plane-with-multiple-node-pools)wordt uitgelegd.
 
 > [!NOTE]
 > De versie van de installatie kopie van het besturings systeem van de knooppunt groep is gekoppeld aan de Kubernetes-versie van het cluster. U kunt upgrades van de installatie kopie van het besturings systeem downloaden na een upgrade van een cluster.
@@ -190,7 +190,7 @@ az aks nodepool upgrade \
 ```
 
 > [!Tip]
-> Als u het besturings element wiltbijwerken naar 1.14.6 `az aks upgrade -k 1.14.6`, voert u uit.
+> Als u het besturings element wiltbijwerken naar 1.14.6 `az aks upgrade -k 1.14.6`, voert u uit. Meer informatie over [het plannen van upgrades met meerdere knooppunt groepen](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 Vermeld opnieuw de status van uw knooppunt groepen met de opdracht [AZ AKS node pool List][az-aks-nodepool-list] . In het volgende voor beeld ziet u dat *mynodepool* zich in de *upgrade* status bevindt op *1.13.10*:
 
@@ -229,14 +229,32 @@ Het duurt enkele minuten om de knoop punten bij te werken naar de opgegeven vers
 
 Als best practice moet u alle knooppunt groepen in een AKS-cluster upgraden naar dezelfde Kubernetes-versie. Met de mogelijkheid om afzonderlijke knooppunt groepen bij te werken, kunt u een rolling upgrade uitvoeren en een Peul plannen tussen knooppunt groepen om de actieve tijds duur van de toepassing binnen de hierboven vermelde beperkingen te hand haven.
 
+## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Een cluster besturings vlak upgraden met meerdere knooppunt groepen
+
 > [!NOTE]
 > Kubernetes maakt gebruik van het standaard versie beheer schema van [semantische versie](https://semver.org/) . Het versie nummer wordt weer gegeven als *x. y. z*, waarbij *x* de primaire versie is, *y* de secundaire versie en *z* de versie van de patch. In versie *1.12.6*is bijvoorbeeld 1 de primaire versie, 12 de secundaire versie en 6 de versie van de patch. De Kubernetes-versie van het besturings vlak en de eerste knooppunt groep wordt ingesteld tijdens het maken van het cluster. Voor alle extra knooppunt groepen wordt de Kubernetes-versie ingesteld wanneer ze aan het cluster worden toegevoegd. De Kubernetes-versies kunnen verschillen tussen de knooppunt Pools en tussen de knooppunt groep en het besturings vlak, maar de volgende beperkingen zijn van toepassing:
 > 
 > * De versie van de knooppunt groep moet dezelfde primaire versie hebben als het besturings vlak.
 > * De versie van de knooppunt groep kan een secundaire versie zijn die kleiner is dan de versie van het besturings element.
 > * De versie van de groep van toepassingen kan elke patch versie zijn, zolang de andere twee beperkingen worden gevolgd.
-> 
-> Als u de Kubernetes-versie van het besturings vlak wilt `az aks upgrade`bijwerken, gebruikt u. Als uw cluster slechts één knooppunt groep heeft, wordt `az aks upgrade` met de opdracht ook de Kubernetes-versie van de knooppunt groep bijgewerkt.
+
+Een AKS-cluster heeft twee cluster resource-objecten. De eerste is een Kubernetes-versie van besturings vlak. De tweede is een agent groep met een Kubernetes-versie. Een besturings vlak wordt toegewezen aan een of meer knooppunt groepen en heeft elk een eigen Kubernetes-versie. Het gedrag voor een upgrade bewerking is afhankelijk van welke resource is gericht en welke versie van de onderliggende API wordt aangeroepen.
+
+1. Voor het bijwerken van het besturings vlak is het vereist`az aks upgrade`
+   * Als het cluster één agent groep heeft, worden zowel het besturings vlak als de groep met één agent tegelijk bijgewerkt
+   * Als het cluster meerdere agent groepen heeft, wordt alleen het besturings vlak bijgewerkt
+1. Upgraden met`az aks nodepool upgrade`
+   * Hiermee wordt alleen de doel knooppunt groep met de opgegeven Kubernetes-versie bijgewerkt
+
+De relatie tussen de Kubernetes-versies van knooppunt Pools moet ook volgen op een set regels.
+
+1. U kunt de Kubernetes-versie van het besturings vlak of de groep van het knoop punt niet verlagen.
+1. Als er geen Kubernetes-versie van het besturings element is opgegeven, is de standaard waarde de huidige bestaande versie van het besturings element.
+1. Als er geen Kubernetes-versie van een knooppunt groep is opgegeven, wordt de standaard versie van het besturings element.
+1. U kunt een besturings vlak of knooppunt groep op een bepaald moment bijwerken of schalen, u kunt beide bewerkingen niet tegelijkertijd verzenden.
+1. Een Kubernetes-versie van een knooppunt groep moet dezelfde primaire versie zijn als het besturings vlak.
+1. Een Kubernetes-versie van een knooppunt groep kan Maxi maal twee (2) secundaire versies kleiner zijn dan het besturings vlak, nooit meer.
+1. Een knooppunt groep kan een Kubernetes-patch versie zijn die kleiner is dan of gelijk is aan het besturings vlak, nooit meer.
 
 ## <a name="scale-a-node-pool-manually"></a>Een knooppunt groep hand matig schalen
 
@@ -292,7 +310,7 @@ Het duurt enkele minuten voordat de schaal bewerking is voltooid.
 
 ## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>Een specifieke knooppunt groep automatisch schalen door de automatische cluster schaalr in te scha kelen
 
-AKS biedt een afzonderlijke functie in Preview voor het automatisch schalen van knooppunt groepen met een functie genaamd [cluster](cluster-autoscaler.md)auto Scaler. Deze functie is een AKS-invoeg toepassing die per knooppunt groep kan worden ingeschakeld met unieke minimum-en maximum schaal aantallen per knooppunt groep. Meer informatie over [het gebruik van de cluster-automatische schaal functie per knooppunt groep](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled).
+AKS biedt een afzonderlijke functie in Preview voor het automatisch schalen van knooppunt groepen met een functie genaamd [cluster auto Scaler](cluster-autoscaler.md). Deze functie is een AKS-invoeg toepassing die per knooppunt groep kan worden ingeschakeld met unieke minimum-en maximum schaal aantallen per knooppunt groep. Meer informatie over [het gebruik van de cluster-automatische schaal functie per knooppunt groep](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled).
 
 ## <a name="delete-a-node-pool"></a>Een knooppunt groep verwijderen
 

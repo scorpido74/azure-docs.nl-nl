@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff4259c438fec448ba510e4c248de6f4acc184ab
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: c3d1d211f85c50a482e1dd9c482cb75477942de7
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990489"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278202"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Wat zijn veld-Programmeer bare poort matrices (FPGA) en implementeren
 
@@ -133,7 +133,7 @@ Volg de instructies voor:
 * De geïmplementeerde model gebruiken
 * Geïmplementeerde services verwijderen
 
-Gebruik de [Azure machine learning SDK voor python](https://aka.ms/aml-sdk) om een service definitie te maken. Een service definitie is een bestand met een beschrijving van een pijp lijn van grafieken (invoer, featurizer en classificatie) op basis van tensor flow. De implementatie opdracht comprimeert de definitie en grafieken automatisch in een ZIP-bestand en uploadt de ZIP naar Azure Blob-opslag. De DNN is al geïmplementeerd om te worden uitgevoerd op de FPGA.
+Gebruik de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) om een service definitie te maken. Een service definitie is een bestand met een beschrijving van een pijp lijn van grafieken (invoer, featurizer en classificatie) op basis van tensor flow. De implementatie opdracht comprimeert de definitie en grafieken automatisch in een ZIP-bestand en uploadt de ZIP naar Azure Blob-opslag. De DNN is al geïmplementeerd om te worden uitgevoerd op de FPGA.
 
 ### <a name="load-azure-ml-workspace"></a>Azure ML-werk ruimte laden
 
@@ -183,7 +183,7 @@ print(feature_tensor.shape)
 
 ### <a name="add-classifier"></a>Classificatie toevoegen
 
-Deze classificatie is getraind op de ImageNet-gegevensset.  Voor beelden voor de overdracht van learning en training uw aangepaste gewichten zijn beschikbaar in de set voor [beeld](https://aka.ms/aml-notebooks)-notebooks.
+Deze classificatie is getraind op de ImageNet-gegevensset.  Voor beelden voor de overdracht van learning en training uw aangepaste gewichten zijn beschikbaar in de set voor [beeld-notebooks](https://aka.ms/aml-notebooks).
 
 ```python
 classifier_output = model_graph.get_default_classifier(feature_tensor)
@@ -424,7 +424,7 @@ Alle [Azure data Box Edge-](https://docs.microsoft.com/azure/databox-online/data
 
 ## <a name="secure-fpga-web-services"></a>Beveiligde FPGA-webservices
 
-Als u uw FPGA-webservices wilt beveiligen, raadpleegt u het document [beveiligde](how-to-secure-web-service.md) webservices.
+Als u uw FPGA-webservices wilt beveiligen, raadpleegt u het document [beveiligde webservices](how-to-secure-web-service.md) .
 
 ## <a name="next-steps"></a>Volgende stappen
 

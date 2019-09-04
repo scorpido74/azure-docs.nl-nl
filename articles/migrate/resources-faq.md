@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 03651ecb073d02a373c434b8cb55bdafec6d142a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 46c6ac52e1afb6c1619b814580a1059fd3dfedda
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142219"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279504"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Migrate: Veelgestelde vragen
 
@@ -27,7 +27,7 @@ Zie de [lijst voor VMware](https://docs.microsoft.com/azure/migrate/migrate-supp
 
 Azure Migrate biedt een gecentraliseerde hub om uw migratie te starten, detectie en evaluatie van machines en workloads uit te voeren en te volgen, en de migratie van machines en workloads naar Azure uit te voeren en te volgen. [Azure site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) is een oplossing voor nood herstel. Azure Migrate server migratie gebruikt Azure Site Recovery op de back-end om migratie scenario's voor de migratie van on-premises machines in te scha kelen.
 
-## <a name="azure-migrate-appliance-vmwarephysical-servers"></a>Azure Migrate apparaat (VMware/fysieke servers)
+## <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
 ### <a name="how-does-the-azure-migrate-appliance-connect-to-azure"></a>Hoe maakt het Azure Migrate apparaat verbinding met Azure?
 
@@ -87,6 +87,9 @@ Voor Hyper-V maakt detectie gebruik van referenties voor Hyper-V-hosts. Als Vm's
 ### <a name="how-many-vms-can-i-discover-with-a-single-migration-appliance"></a>Hoeveel Vm's kan ik vinden met één migratie apparaat?
 
 U kunt Maxi maal 10.000 VMware-Vm's en Maxi maal 5.000 virtuele Hyper-V-machines detecteren met één migratie apparaat. Als u meer computers in uw on-premises omgeving hebt, leert u hoe u de [Hyper-V-](scale-hyper-v-assessment.md) en [VMware](scale-vmware-assessment.md) -evaluatie kunt schalen.
+
+### <a name="can-i-delete-the-azure-migrate-appliance-from-the-project"></a>Kan ik het Azure Migrate apparaat uit het project verwijderen?
+Het verwijderen van het apparaat uit het project wordt momenteel niet ondersteund. De enige manier om het apparaat te verwijderen, is door de resource groep te verwijderen die het Azure Migrate project bevat dat is gekoppeld aan het apparaat, maar die ook andere geregistreerde apparaten, de gedetecteerde inventaris, beoordelingen en alle andere Azure-artefacten verwijdert. gekoppeld aan het project in de resource groep.
 
 ## <a name="azure-migrate-server-assessment"></a>Evaluatie van Azure Migrate-server
 

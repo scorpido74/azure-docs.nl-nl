@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/26/2019
+ms.date: 9/4/2019
 ms.author: raiye
-ms.openlocfilehash: 63c0502cb7b5abf6b6005683cc97d3229ec90e47
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 9e93cb6cf57a42463e631332fb4714457b9b675f
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945434"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275494"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure Guest OS releases en SDK Compatibility Matrix
 Voorziet in actuele informatie over de nieuwste versies van het Azure-gast besturingssysteem voor Cloud Services. Deze informatie helpt u bij het plannen van het upgradepad voordat een gast besturingssysteem wordt uitgeschakeld. Als u uw rollen configureert voor het gebruik van *automatische* updates van gast besturingssystemen zoals beschreven in de update-instellingen van het [Azure-gast besturingssysteem][Azure Guest OS Update Settings], is het niet belang rijk dat u deze pagina leest.
@@ -41,6 +41,9 @@ Voorziet in actuele informatie over de nieuwste versies van het Azure-gast bestu
 Weet u niet zeker hoe u uw gast besturingssysteem kunt bijwerken? Bekijk [Dit][cloud updates] uit.
 
 ## <a name="news-updates"></a>Nieuws updates
+
+###### <a name="september-4-2019"></a>**4 september 2019**
+Het besturings systeem voor augustus gast is uitgebracht.
 
 ###### <a name="july-26-2019"></a>**26 juli 2019**
 Het besturings systeem van juli wordt uitgebracht.
@@ -100,8 +103,9 @@ Het besturings systeem september gast is uitgebracht.
 
 | Configuratie teken reeks | Uitgebracht op | Datum uitschakelen |
 | --- | --- | --- |
+| WA-GUEST-OS-6.10 _201908-01 |  4 augustus 2019  |  Post 6,12  |  
 | WA-GUEST-OS-6,9 _201907-01 |26 juli 2019 |Post 6,11 |
-| WA-GUEST-OS-6.8_201906-01 |8 juli 2019 |Post 6,10 |
+|~~WA-GUEST-OS-6,8 _201906-01~~|8 juli 2019 |4 augustus 2019 |
 |~~WA-GUEST-OS-6,7 _201905-01~~ |6 juni 2019 |26 juli 2019 |
 |~~WA-GUEST-OS-6.6_201904-01~~ |7 mei 2019 |8 juli 2019 |
 |~~WA-GUEST-OS-6.5_201903-01~~ |26 maart 2019 |6 juni 2019 |
@@ -122,8 +126,9 @@ Het besturings systeem september gast is uitgebracht.
 
 | Configuratie teken reeks | Uitgebracht op | Datum uitschakelen |
 | --- | --- | --- |
+| WA-GUEST-OS-5.34 _201908-01  |  4 augustus 2019  |  Post 5,36  |  
 | WA-GUEST-OS-5.33 _201907-01 |26 juli 2019 |Post 5,35 |  
-| WA-GUEST-OS-5.32_201906-01 |8 juli 2019 |Post 5,34 |
+|~~WA-GUEST-OS-5.32 _201906-01~~|8 juli 2019 |4 augustus 2019 |
 |~~WA-GUEST-OS-5.31 _201905-01~~ |6 juni 2019 |26 juli 2019 |
 |~~WA-GUEST-OS-5.30_201904-01~~ |7 mei 2019 |8 juli 2019 |
 |~~WA-GUEST-OS-5.29_201903-01~~ |26 maart 2019 |6 juni 2019 |
@@ -141,8 +146,9 @@ Het besturings systeem september gast is uitgebracht.
 
 | Configuratie teken reeks | Uitgebracht op | Datum uitschakelen |
 | --- | --- | --- |
+| WA-GUEST-OS-4.69 _201908-01 |  4 augustus 2019  |  Post 4,71  |  
 | WA-GUEST-OS-4.68 _201907-01 | 26 juli 2019  |Post 4,70 |
-| WA-GUEST-OS-4.67_201906-01 |8 juli 2019 |Post 4,69 |
+|~~WA-GUEST-OS-4.67 _201906-01~~|8 juli 2019 |4 augustus 2019 |
 |~~WA-GUEST-OS-4.66 _201905-01~~ |6 juni 2019 |26 juli 2019 |
 |~~WA-GUEST-OS-4.65_201904-01~~ |7 mei 2019 |8 juli 2019 |
 |~~WA-GUEST-OS-4.64_201903-01~~ |26 maart 2019 |6 juni 2019 |
@@ -160,8 +166,9 @@ Het besturings systeem september gast is uitgebracht.
 
 | Configuratie teken reeks | Uitgebracht op | Datum uitschakelen |
 | --- | --- | --- |
+| WA-GUEST-OS-3.76 _201908-01 |  4 augustus 2019  |  Post 3,78  |  
 | WA-GAST BESTURINGSSYSTEEM-3,75 _201907-01 | 26 juli 2019 |Post 3,77 |
-| WA-GUEST-OS-3.74_201906-01 |8 juli 2019 |Post 3,76 |
+|~~WA-GUEST-OS-3.74 _201906-01~~|8 juli 2019 |4 augustus 2019 |
 |~~WA-GUEST-OS-3.73 _201905-01~~ |6 juni 2019 |26 juli 2019 |
 |~~WA-GUEST-OS-3.72_201904-01~~ |7 mei 2019 |8 juli 2019 |
 |~~WA-GUEST-OS-3.71_201903-01~~ |26 maart 2019 |6 juni 2019 |
@@ -179,8 +186,9 @@ Het besturings systeem september gast is uitgebracht.
 
 | Configuratie teken reeks | Uitgebracht op | Datum uitschakelen |
 | --- | --- | --- |
+| WA-GUEST-OS-2.89 _201908-01 |  4 augustus 2019  |  Post 2,91  |  
 | WA-GUEST-OS-2,88 _201907-01 | 26 juli 2019 |Post 2,90 |
-| WA-GUEST-OS-2.87_201906-01 |8 juli 2019 |Post 2,89 |
+|~~WA-GUEST-OS-2.87 _201906-01~~|8 juli 2019 |4 augustus 2019 |
 |~~WA-GUEST-OS-2.86 _201905-01~~ |6 juni 2019 |26 juli 2019 |
 |~~WA-GUEST-OS-2.85_201904-01~~ |7 mei 2019 |8 juli 2019 |
 |~~WA-GUEST-OS-2.84_201903-01~~ |26 maart 2019 |6 juni 2019 |
@@ -209,7 +217,7 @@ Hoewel het [pensionerings beleid voor de Azure SDK][retire policy sdk] aangeeft 
 ## <a name="guest-os-release-information"></a>Release-informatie voor het gast besturingssysteem
 Er zijn drie datums die belang rijk zijn voor de releases van gast besturingssystemen: **release** datum, **Uitgeschakelde** datum en **verval** datum. Een gast besturingssysteem wordt beschouwd als beschikbaar wanneer het zich in de portal bevindt en kan worden geselecteerd als het doel-gast besturingssysteem. Wanneer een gast besturingssysteem de **Uitgeschakelde** datum bereikt, wordt het verwijderd uit Azure. Elke Cloud service die gericht is op het gast besturingssysteem, blijft echter gewoon functioneren.
 
-In het venster tussen de uitgeschakelde datum en de **verval** datum kunt u eenvoudig van het ene naar het andere gast besturingssysteem overstappen. Als u *automatisch* gebruikt als uw gast besturingssysteem, hebt u altijd de nieuwste versie en hoeft u zich geen zorgen te maken over het verlopen van het besturings systeem.
+In het venster tussen de **Uitgeschakelde** datum en de **verval** datum kunt u eenvoudig van het ene naar het andere gast besturingssysteem overstappen. Als u *automatisch* gebruikt als uw gast besturingssysteem, hebt u altijd de nieuwste versie en hoeft u zich geen zorgen te maken over het verlopen van het besturings systeem.
 
 Wanneer de **verloop** datum wordt verstreken, wordt een Cloud service die nog steeds gebruikmaakt van dat gast besturingssysteem, gestopt, verwijderd of gedwongen bijgewerkt. U kunt [hier][retirepolicy]meer lezen over het pensionerings beleid.
 
@@ -242,7 +250,7 @@ Wanneer een nieuwe versie van het gast besturingssysteem wordt gepubliceerd, kan
 
 Zie het MSDN-blog bericht met de titel [instantie wordt opnieuw opgestart vanwege upgrades van het besturings systeem][restarts]voor een grote hoeveelheid informatie over het opnieuw opstarten en verwijzingen naar meer informatie technische details van gast-en host OS-updates.
 
-Als u het gast besturingssysteem hand matig bijwerkt, raadpleegt u het uittredings [beleid voor gast besturingssysteem][retirepolicy] voor aanvullende informatie.
+Als u het gast besturingssysteem hand matig bijwerkt, raadpleegt u het [uittredings beleid voor gast besturingssysteem][retirepolicy] voor aanvullende informatie.
 
 ## <a name="guest-os-supportability-and-retirement-policy"></a>Ondersteunings beleid voor gast besturingssystemen en buiten gebruik stellen
 Het beleid voor de ondersteuning van gast besturingssystemen en het buiten gebruik stellen wordt [hier][retirepolicy]uitgelegd.

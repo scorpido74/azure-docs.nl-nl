@@ -1,27 +1,27 @@
 ---
 title: 'Voorbeeld: De AdventureWorks-inventarisatie database model leren Azure Search'
 description: Meer informatie over het model leren van relationele gegevens, het transformeren ervan naar een platte gegevensset, voor het indexeren en zoeken in volledige tekst in Azure Search.
-author: cstone
+author: HeidiSteen
 manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/25/2019
-ms.author: chstone
-ms.openlocfilehash: 52ccf3edfca5b3481b038bd5d3449c1dd6354179
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 09/05/2019
+ms.author: heidist
+ms.openlocfilehash: c25dd34460e7e92bb20913f5b812044623dd38e3
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649907"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274039"
 ---
 # <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Voorbeeld: De AdventureWorks Inventory data base model leren voor Azure Search
 
-Het model leren van Structured Data Base-inhoud in een efficiënte zoek index is zelden een eenvoudige oefening. Voor het plannen en wijzigen van het beheer is er sprake van de uitdaging om de bron rijen te ontkoppelen van de status die is gekoppeld aan een tabel in zoek vriendelijke entiteiten. In dit artikel wordt gebruikgemaakt van de AdventureWorks-voorbeeld gegevens, beschik bare online, om veelvoorkomende ervaringen te markeren in de overgang van Data Base naar zoeken. 
+Azure Search een samengevoegde rijenset geaccepteerd als invoer voor de [pijp lijn voor het indexeren (gegevens opname)](search-what-is-an-index.md). Als uw bron gegevens afkomstig zijn uit een relationele data base van SQL Server, ziet u in dit artikel één benadering voor het maken van een samengevoegde rijenset vóór het indexeren, met behulp van de AdventureWorks-voorbeeld database als voor beeld.
 
 ## <a name="about-adventureworks"></a>Over AdventureWorks
 
-Als u een SQL Server-exemplaar hebt, is het mogelijk dat u bekend bent met de AdventureWorks-voorbeeld database. De tabellen die in deze data base zijn opgenomen, zijn vijf tabellen die product informatie beschikbaar maken.
+Als u een SQL Server-exemplaar hebt, is het mogelijk dat u bekend bent met de [AdventureWorks-voorbeeld database](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017). De tabellen die in deze data base zijn opgenomen, zijn vijf tabellen die product informatie beschikbaar maken.
 
 + **Product model**: naam
 + **Product**: naam, kleur, kosten, grootte, gewicht, afbeelding, categorie (elke rij wordt toegevoegd aan een specifiek product model)
@@ -29,7 +29,7 @@ Als u een SQL Server-exemplaar hebt, is het mogelijk dat u bekend bent met de Ad
 + **ProductModelProductDescription**: de land instelling (elke rij wordt toegevoegd aan een product model aan een specifieke ProductDescription voor een specifieke taal)
 + **ProductCategory**: naam, bovenliggende categorie
 
-Wanneer al deze gegevens worden gecombineerd in een samengevoegde rijenset die in een zoek index kan worden opgenomen, is de taak bij de hand. 
+Als al deze gegevens worden gecombineerd in een samengevoegde rijenset die in een zoek index kan worden opgenomen, is het doel van dit voor beeld. 
 
 ## <a name="considering-our-options"></a>Overweeg onze opties
 
@@ -43,7 +43,7 @@ Het oplossen van dit probleem is niet zo eenvoudig als het verplaatsen van de do
 
 ## <a name="use-a-collection-data-type"></a>Een verzamelings gegevens type gebruiken
 
-De "juiste aanpak" is het gebruik van een zoek schema-functie die geen directe parallelle in het database model heeft: **Verzameling (EDM. String)** . Een verzamelings gegevens type wordt gebruikt wanneer u een lijst met afzonderlijke teken reeksen hebt, in plaats van een zeer lange teken reeks (één). Als u Tags of tref woorden hebt, gebruikt u een verzamelings gegevens type voor dit veld.
+De "juiste aanpak" is het gebruik van een zoek schema-functie die geen directe parallelle in het database model heeft: **Verzameling (EDM. String)** . Deze construct wordt gedefinieerd in het Azure Search-index schema. Een verzamelings gegevens type wordt gebruikt wanneer u een lijst met afzonderlijke teken reeksen moet vertegenwoordigen in plaats van een zeer lange teken reeks (één). Als u Tags of tref woorden hebt, gebruikt u een verzamelings gegevens type voor dit veld.
 
 Door index velden met meerdere waarden te definiëren voor de **verzameling (EDM. String)** voor "kleur", "grootte" en "afbeelding", wordt de aanvullende informatie bewaard voor facetten en filters zonder de index te vervuilen met dubbele vermeldingen. Op dezelfde manier kunt u statistische functies Toep assen op de numerieke product velden, waarbij u **minListPrice** in plaats van elke product- **listPrice**indexeert.
 
@@ -164,5 +164,3 @@ WHERE
 
 > [!div class="nextstepaction"]
 > [Voorbeeld: Facet-taxonomieën op meerdere niveaus in Azure Search](search-example-adventureworks-multilevel-faceting.md)
-
-

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 0a47bb70ef87783d9b275329452c94526c67a2c3
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: d82f843cb5cdd7b910c734f26a93144374061b74
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211746"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274503"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Gegevens kopiëren van SAP Business Warehouse via open hub met behulp van Azure Data Factory
 
@@ -89,7 +89,7 @@ Als u deze SAP Business Warehouse open hub-connector wilt gebruiken, moet u het 
 
 > [!TIP]
 >
-> Zie [gegevens laden van SAP Business Warehouse (BW)](load-sap-bw-data.md)met behulp van Azure Data Factory voor een overzicht van het gebruik van SAP BW open hub-connector.
+> Zie [gegevens laden van SAP Business Warehouse (BW) met behulp van Azure Data Factory](load-sap-bw-data.md)voor een overzicht van het gebruik van SAP BW open hub-connector.
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -145,11 +145,8 @@ Als u gegevens wilt kopiëren van en naar SAP BW geopende hub, stelt u de eigens
 |:--- |:--- |:--- |
 | Type | De eigenschap type moet worden ingesteld op **SapOpenHubTable**.  | Ja |
 | openHubDestinationName | De naam van het open hub-doel waaruit de gegevens moeten worden gekopieerd. | Ja |
-| excludeLastRequest | Hiermee wordt aangegeven of de records van de laatste aanvraag moeten worden uitgesloten. | Nee (de standaardwaarde is **true**) |
-| baseRequestId | De ID van de aanvraag voor het laden van verschillen. Als deze eenmaal is ingesteld, worden alleen gegevens opgehaald met de waarde-naam **groter dan** die van deze eigenschap.  | Nee |
 
->[!TIP]
->Als uw open hub-tabel alleen de gegevens bevat die zijn gegenereerd op basis van een enkele aanvraag-ID, kunt u bijvoorbeeld altijd volledige belasting doen en de bestaande gegevens in de tabel overschrijven, of u kunt de DTP slechts eenmaal uitvoeren voor de test, de optie ' excludeLastRequest ' uitschakelen om de d te kopiëren ATA-out.
+Als u de instelling `excludeLastRequest` en `baseRequestId` in de gegevensset hebt ingesteld, wordt deze nog steeds ondersteund als-is. u wordt aangeraden het nieuwe model in de activiteit bron te gebruiken.
 
 **Voorbeeld:**
 
@@ -158,12 +155,13 @@ Als u gegevens wilt kopiëren van en naar SAP BW geopende hub, stelt u de eigens
     "name": "SAPBWOpenHubDataset",
     "properties": {
         "type": "SapOpenHubTable",
+        "typeProperties": {
+            "openHubDestinationName": "<open hub destination name>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP BW Open Hub linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "openHubDestinationName": "<open hub destination name>"
         }
     }
 }
@@ -175,7 +173,16 @@ Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zij
 
 ### <a name="sap-bw-open-hub-as-source"></a>SAP BW hub als bron openen
 
-Als u gegevens wilt kopiëren van SAP BW geopende hub, stelt u het bron type in de Kopieer activiteit in op **SapOpenHubSource**. Er zijn geen aanvullende typespecifieke eigenschappen nodig in de sectie **bron** van de Kopieer activiteit.
+Als u gegevens wilt kopiëren van SAP BW geopende hub, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
+
+| Eigenschap | Description | Vereist |
+|:--- |:--- |:--- |
+| Type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **SapOpenHubSource**. | Ja |
+| excludeLastRequest | Hiermee wordt aangegeven of de records van de laatste aanvraag moeten worden uitgesloten. | Nee (de standaardwaarde is **true**) |
+| baseRequestId | De ID van de aanvraag voor het laden van verschillen. Als deze eenmaal is ingesteld, worden alleen gegevens opgehaald met de waarde-naam **groter dan** die van deze eigenschap.  | Nee |
+
+>[!TIP]
+>Als uw open hub-tabel alleen de gegevens bevat die zijn gegenereerd op basis van een enkele aanvraag-ID, kunt u bijvoorbeeld altijd volledige belasting doen en de bestaande gegevens in de tabel overschrijven, of u kunt de DTP slechts eenmaal uitvoeren voor de test, de optie ' excludeLastRequest ' uitschakelen om de d te kopiëren ATA-out.
 
 Als u het laden van gegevens wilt versnellen, kunt [`parallelCopies`](copy-activity-performance.md#parallel-copy) u de Kopieer activiteit zo instellen dat gegevens van SAP BW hub parallel worden geladen. Als u bijvoorbeeld hebt ingesteld `parallelCopies` op vier, Data Factory gelijktijdig vier rfc's-aanroepen uitvoeren en elke RFC-aanroep haalt een deel van de gegevens op uit uw SAP BW open hub Table gepartitioneerd door de DTP-aanvraag-id en de pakket-id. Dit geldt wanneer het aantal unieke DTP-aanvraag-ID + pakket-ID groter is dan de `parallelCopies`waarde van. Bij het kopiëren van gegevens naar gegevens opslag op basis van een bestand, is het ook opnieuw opdracht om naar een map te schrijven als meerdere bestanden (Geef alleen de mapnaam op). in dat geval zijn de prestaties beter dan het schrijven naar één bestand.
 
@@ -200,7 +207,8 @@ Als u het laden van gegevens wilt versnellen, kunt [`parallelCopies`](copy-activ
         ],
         "typeProperties": {
             "source": {
-                "type": "SapOpenHubSource"
+                "type": "SapOpenHubSource",
+                "excludeLastRequest": true
             },
             "sink": {
                 "type": "<sink type>"

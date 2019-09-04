@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 2a540606a6f9cfa790a2244628e7f0b7bef35986
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 4356d9e1cd3d6f1a924603f7405d612814d35859
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639257"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256919"
 ---
 # <a name="authoring-cycle-for-your-luis-app"></a>Ontwerp cyclus voor uw LUIS-app
 LUIS leert beste in een iteratief cyclus van wijzigingen in het gegevensmodel, utterance voorbeelden, publiceren en verzamelen van gegevens van eindpunt query's. 
@@ -38,14 +38,14 @@ U LUIS negeren uitingen die niet relevant zijn voor het domein van uw app door t
 ## <a name="train-and-publish-the-app"></a>De app trainen en publiceren
 Wanneer u 15 tot 30 verschillende uitingen in elke intentie hebt, met de vereiste entiteiten met het label, moet u de [training](luis-how-to-train.md) vervolgens [publiceren](luis-how-to-publish-app.md). Gebruik de koppeling om op te halen van de eindpunten van de melding publiceren geslaagd. Zorg ervoor dat u uw app maakt en publiceert zodat deze beschikbaar is in de [eindpunt regio's](luis-reference-regions.md) die u nodig hebt. 
 
-## <a name="https-endpoint-testing"></a>HTTPS-eindpunt testen
-U kunt uw LUIS-app van het HTTPS-eindpunt testen. Door te testen vanaf het eind punt kan LUIS elke uitingen met weinig vertrouwen voor [beoordeling](luis-how-to-review-endpoint-utterances.md)kiezen.  
+## <a name="https-prediction-endpoint-testing"></a>HTTPS-voor spelling-eindpunt test
+U kunt uw LUIS-app testen vanuit het HTTPS prediction-eind punt. Door te testen vanaf het Voorspellings eindpunt kan LUIS een wille keurige uitingen met lage betrouw baarheid kiezen voor [controle](luis-how-to-review-endpoint-utterances.md).  
 
 ## <a name="recycle"></a>Prullenbak
 
-Wanneer u klaar bent met een cyclus van het ontwerpen, kunt u opnieuw beginnen. Begin met het controleren van het uitingen Luis- [eind punt](luis-how-to-review-endpoint-utterances.md) dat is gemarkeerd met een lage betrouw baarheid. Controleer deze uitingen voor zowel de intentie en de entiteit. Zodra u uitingen bekijkt, moet de beoordeling-lijst niet leeg zijn.  
+Wanneer u klaar bent met een cyclus van het ontwerpen, kunt u opnieuw beginnen. Begin met het [controleren van voorspellings eindpunt uitingen](luis-how-to-review-endpoint-utterances.md) Luis gemarkeerd met lage betrouw baarheid. Controleer deze uitingen voor zowel de intentie en de entiteit. Zodra u uitingen bekijkt, moet de beoordeling-lijst niet leeg zijn.  
 
-U [](luis-concept-version.md#clone-a-version) kunt de huidige versie in een nieuwe versie klonen en vervolgens de ontwerp wijzigingen in de nieuwe versie starten. 
+U kunt de huidige versie in een nieuwe versie [klonen](luis-concept-version.md#clone-a-version) en vervolgens de ontwerp wijzigingen in de nieuwe versie starten. 
 
 ## <a name="batch-testing"></a>Batchgewijs testen
 
@@ -53,4 +53,4 @@ U [](luis-concept-version.md#clone-a-version) kunt de huidige versie in een nieu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Kennis met concepten over [samenwerking](luis-concept-collaborator.md).
+Kennis met concepten over [samenwerking](luis-concept-keys.md).

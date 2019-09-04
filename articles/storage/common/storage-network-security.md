@@ -9,31 +9,31 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 90f064ce5d6dc7ffa6b4c532ac30d9b4dd60e13f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 00e69d9222444e3b700fca10e3f15b4b110e0c60
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981144"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241743"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-firewalls en virtuele netwerken configureren
 
-Azure Storage biedt een gelaagd beveiligingsmodel. Dit model kunt u voor het beveiligen van uw storage-accounts naar een specifieke set ondersteunde netwerken. Als het netwerkregels zijn geconfigureerd, toegang alleen toepassingen waarbij gegevens uit meer dan de opgegeven set netwerken worden gevraagd een opslagaccount.
+Azure Storage biedt een gelaagd beveiligingsmodel. Met dit model kunt u uw opslag accounts beveiligen naar een specifieke subset van netwerken. Wanneer netwerk regels zijn geconfigureerd, hebben alleen toepassingen die gegevens aanvragen via de opgegeven set netwerken toegang tot een opslag account. U kunt de toegang tot uw opslag account beperken tot aanvragen die afkomstig zijn van opgegeven IP-adressen, IP-adresbereiken of uit een lijst met subnetten in azure Virtual Networks.
 
-Een toepassing die toegang heeft tot een storage-account wanneer het netwerkregels zijn van kracht is juiste verificatie bij de aanvraag vereist. Autorisatie wordt ondersteund met Azure Active Directory-referenties (Azure AD) voor blobs en wacht rijen, met een geldige account toegangs sleutel of met een SAS-token.
+Een toepassing die toegang heeft tot een opslag account wanneer netwerk regels van kracht zijn, moet de aanvraag correct worden geautoriseerd. Autorisatie wordt ondersteund met Azure Active Directory-referenties (Azure AD) voor blobs en wacht rijen, met een geldige account toegangs sleutel of met een SAS-token.
 
 > [!IMPORTANT]
-> Firewall-regels voor uw storage-account inschakelen binnenkomende aanvragen voor gegevens standaard geblokkeerd, tenzij de aanvragen afkomstig zijn van een service die wordt uitgevoerd binnen een Azure Virtual Network (VNet). Aanvragen die zijn geblokkeerd omvatten die van andere Azure-services vanuit de Azure-portal van logboekregistratie en metrische gegevens over services, enzovoort.
+> Als u firewall regels inschakelt voor uw opslag account, worden binnenkomende aanvragen voor gegevens standaard geblokkeerd, tenzij de aanvragen afkomstig zijn van een service die binnen een Azure Virtual Network (VNet) actief is. Aanvragen die zijn geblokkeerd omvatten die van andere Azure-services vanuit de Azure-portal van logboekregistratie en metrische gegevens over services, enzovoort.
 >
-> U kunt toegang verlenen tot Azure-services die worden uitgevoerd van binnen een VNet doordat het subnet van het service-exemplaar. Inschakelen van een beperkt aantal scenario's via de [uitzonderingen](#exceptions) mechanisme dat wordt beschreven in de volgende sectie. Voor toegang tot de Azure-portal, moet u zich op een computer in de vertrouwde grens (IP- of VNet) die u hebt ingesteld.
+> U kunt toegang verlenen tot Azure-Services die binnen een VNet worden bediend door verkeer van het subnet dat als host fungeert voor het service-exemplaar toe te staan. U kunt ook een beperkt aantal scenario's inschakelen met behulp van het mechanisme [uitzonde ringen](#exceptions) dat in de volgende sectie wordt beschreven. Als u toegang wilt krijgen tot gegevens van het opslag account via de Azure Portal, moet u zich op een computer bevindt binnen de vertrouwde grens (ofwel IP of VNet) die u hebt ingesteld.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="scenarios"></a>Scenario's
 
-Opslagaccounts voor het weigeren van toegang tot verkeer via alle netwerken (met inbegrip van internetverkeer) standaard configureren. Vervolgens toegang verlenen aan verkeer van specifieke VNets. Deze configuratie kunt u een beveiligde netwerkgrens voor uw toepassingen te bouwen. U kunt ook toegang verlenen tot openbare internet IP-adresbereiken, het inschakelen van verbindingen met specifieke on-premises of internet-clients.
+Als u uw opslag account wilt beveiligen, moet u eerst een regel configureren om de toegang tot verkeer van alle netwerken (met inbegrip van Internet verkeer) standaard te weigeren. Vervolgens configureert u regels die toegang verlenen tot verkeer van specifieke VNets. Deze configuratie kunt u een beveiligde netwerkgrens voor uw toepassingen te bouwen. U kunt ook regels configureren voor het verlenen van toegang tot verkeer van open bare IP-adresbereiken voor het Internet, het inschakelen van verbindingen van specifieke internet-of lokale clients.
 
-Netwerkregels worden toegepast op alle netwerkprotocollen naar Azure-opslag, met inbegrip van REST en SMB. Voor toegang tot de gegevens met hulpprogramma's als Azure portal, Storage Explorer en AZCopy, zijn de expliciete netwerkregels vereist.
+Netwerkregels worden toegepast op alle netwerkprotocollen naar Azure-opslag, met inbegrip van REST en SMB. Om toegang te krijgen tot gegevens met behulp van hulpprogram ma's zoals de Azure Portal, Storage Explorer en AZCopy, moeten expliciete netwerk regels worden geconfigureerd.
 
 U kunt netwerkregels toepassen op bestaande opslagaccounts of bij het maken van nieuwe storage-accounts.
 
@@ -50,7 +50,7 @@ U kunt niet-beheerde schijven in opslagaccounts met netwerkregels toegepast op b
 Standaard accepteren opslagaccounts verbindingen van clients op een netwerk. Als u wilt beperken de toegang tot geselecteerde netwerken, moet u eerst de standaardactie wijzigen.
 
 > [!WARNING]
-> Wijzigingen aanbrengen in netwerkregels kan invloed hebben op uw toepassingen kunnen verbinding maken met Azure Storage. Als u de standaardregel voor het netwerk op **weigeren** blokkeert de toegang tot de gegevens, tenzij specifieke regels worden **verlenen** toegang worden ook toegepast. Zorg ervoor dat toegang verlenen tot een toegestane netwerken met behulp van netwerkregels voordat u de standaardregel voor het weigeren van toegang wijzigen.
+> Wijzigingen aanbrengen in netwerkregels kan invloed hebben op uw toepassingen kunnen verbinding maken met Azure Storage. Als u de standaard netwerk regel instelt op **weigeren** , wordt alle toegang tot de gegevens geblokkeerd, tenzij specifieke netwerk regels die toegang **verlenen** , ook worden toegepast. Zorg ervoor dat toegang verlenen tot een toegestane netwerken met behulp van netwerkregels voordat u de standaardregel voor het weigeren van toegang wijzigen.
 
 ### <a name="managing-default-network-access-rules"></a>Standaardregels voor netwerktoegang beheren
 
@@ -112,9 +112,9 @@ U kunt de standaardregels voor netwerktoegang voor storage-accounts via Azure po
 
 ## <a name="grant-access-from-a-virtual-network"></a>Toegang verlenen vanuit een virtueel netwerk
 
-U kunt storage-accounts voor toegang alleen vanaf specifieke vnet's configureren.
+U kunt opslag accounts configureren om alleen toegang toe te staan vanaf specifieke subnetten. De toegestane subnetten kunnen deel uitmaken van een VNet in hetzelfde abonnement of in een ander abonnement, met inbegrip van abonnementen die horen bij een andere Azure Active Directory Tenant.
 
-Schakel een [Service-eindpunt](/azure/virtual-network/virtual-network-service-endpoints-overview) voor Azure Storage binnen het VNet. Dit eindpunt biedt verkeer een optimale route naar de Azure Storage-service. De identiteit van het virtuele netwerk en het subnet worden ook verzonden bij elke aanvraag. Beheerders kunnen vervolgens configureren voor netwerkregels voor het opslagaccount waarmee aanvragen worden ontvangen van specifieke subnetten in het VNet. Clients krijgen toegang via deze netwerkregels moet blijven om te voldoen aan de autorisatievereisten van het storage-account voor toegang tot de gegevens.
+Schakel een [Service-eindpunt](/azure/virtual-network/virtual-network-service-endpoints-overview) voor Azure Storage binnen het VNet. Het service-eind punt routeert verkeer van het VNet via een optimaal pad naar de Azure Storage-service. De identiteiten van het subnet en het virtuele netwerk worden ook met elke aanvraag verzonden. Beheerders kunnen vervolgens netwerk regels configureren voor het opslag account waarmee aanvragen kunnen worden ontvangen van specifieke subnetten in een VNet. Clients krijgen toegang via deze netwerkregels moet blijven om te voldoen aan de autorisatievereisten van het storage-account voor toegang tot de gegevens.
 
 Elk opslagaccount biedt ondersteuning voor maximaal 100 regels voor virtueel netwerk, die kunnen worden gecombineerd met [IP-netwerkregels](#grant-access-from-an-internet-ip-range).
 
@@ -131,7 +131,10 @@ Bij het plannen voor herstel na noodgevallen tijdens een regionale storing, moet
 
 Als u wilt een virtueel netwerk-regel van toepassing op een storage-account, moet de gebruiker de juiste machtigingen voor de subnetten die worden toegevoegd. De machtiging die nodig is *Service koppelen aan een Subnet* en is opgenomen in de *Inzender voor Opslagaccounts* ingebouwde rol. Het kan ook worden toegevoegd aan de aangepaste roldefinities.
 
-Storage-account en de virtuele netwerken krijgen toegang mogelijk tot verschillende abonnementen behoren, maar deze abonnementen moeten deel uitmaken van dezelfde Azure AD-tenant.
+Het opslag account en de virtuele netwerken waartoe toegang wordt verleend, kunnen zich in verschillende abonnementen bevinden, met inbegrip van abonnementen die deel uitmaken van een andere Azure AD-Tenant.
+
+> [!NOTE]
+> Het configureren van regels die toegang verlenen tot subnetten in virtuele netwerken die deel uitmaken van een andere Azure Active Directory Tenant, worden momenteel alleen ondersteund via Power shell, CLI en REST Api's. Deze regels kunnen niet worden geconfigureerd via de Azure Portal, maar kunnen wel worden weer gegeven in de portal.
 
 ### <a name="managing-virtual-network-rules"></a>Virtual network-regels beheren
 
@@ -149,6 +152,8 @@ U kunt virtuele-netwerkregels voor storage-accounts via Azure portal, PowerShell
 
     > [!NOTE]
     > Als een service-eindpunt voor Azure Storage is niet eerder hebt geconfigureerd voor de geselecteerde virtuele netwerk en subnetten, kunt u deze configureren als onderdeel van deze bewerking.
+    >
+    > Momenteel worden alleen virtuele netwerken die deel uitmaken van dezelfde Azure Active Directory Tenant weer gegeven voor selectie tijdens het maken van de regel. Als u toegang wilt verlenen tot een subnet in een virtueel netwerk dat deel uitmaakt van een andere Tenant, gebruikt u Power shell, CLI of REST Api's.
 
 1. Als u wilt een virtueel netwerk of subnet regel verwijderen, klikt u op **...**  opent u het snelmenu voor het virtuele netwerk of subnet en klik op **verwijderen**.
 
@@ -176,6 +181,9 @@ U kunt virtuele-netwerkregels voor storage-accounts via Azure portal, PowerShell
     $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
     ```
+
+    > [!TIP]
+    > Als u een netwerk regel wilt toevoegen voor een subnet in een VNet dat deel uitmaakt van een andere Azure AD-Tenant, gebruikt u een volledig gekwalificeerde **VirtualNetworkResourceId** -para meter in de notatie "/Subscriptions/Subscription-id/resourceGroups/resourceGroup-name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name".
 
 1. Verwijderen van een regel voor een virtueel netwerk en subnet.
 
@@ -209,6 +217,11 @@ U kunt virtuele-netwerkregels voor storage-accounts via Azure portal, PowerShell
     $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
     az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
     ```
+
+    > [!TIP]
+    > Als u een regel wilt toevoegen voor een subnet in een VNet dat deel uitmaakt van een andere Azure AD-Tenant, gebruikt u een volledig gekwalificeerde subnet-ID in de notatie '/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name '.
+    > 
+    > U kunt de para meter **abonnement** gebruiken om de subnet-id op te halen voor een VNet dat deel uitmaakt van een andere Azure AD-Tenant.
 
 1. Verwijderen van een regel voor een virtueel netwerk en subnet.
 
@@ -344,7 +357,7 @@ Netwerkregels kunnen zorgen ervoor dat de configuratie van een beveiligd netwerk
 
 Sommige Microsoft-services die interactie met de storage-accounts hebben werken van netwerken die toegang via netwerkregels kunnen niet worden toegekend.
 
-Om te helpen bij dit type service werken zoals bedoeld, kunt u de set vertrouwde Microsoft-services om de netwerkregels over te slaan. Deze services wordt sterke verificatie gebruikt voor toegang tot het opslagaccount.
+Als u bepaalde services wilt gebruiken, moet u een subset van vertrouwde micro soft-Services toestaan om de netwerk regels over te slaan. Deze services wordt sterke verificatie gebruikt voor toegang tot het opslagaccount.
 
 Als u inschakelt de **vertrouwde Microsoft-services toestaan...**  uitzondering, de volgende services (indien geregistreerd in uw abonnement), krijgen toegang tot het opslagaccount:
 

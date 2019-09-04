@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
-ms.openlocfilehash: 57dc9c05778563bc0c5df1a8ac8895b51008b01f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 5032762c1275d3f1c8d1a020a54d20555f8ba3fe
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657071"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242439"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>Problemen met Azure-aanmelding oplossen
 
@@ -106,7 +106,7 @@ Zorg ervoor dat u de juiste aanmeldings referenties gebruikt. Controleer vervolg
 
 ### <a name="cant-activate-new-azure-in-open-subscription"></a>Kan geen nieuw Azure activeren in een open-abonnement
 
-Als u een Azure in open-abonnement wilt maken, moet u een geldige OSA-sleutel (online service Activation) hebben waaraan ten minste één Azure in open token is gekoppeld. Als u geen OSA-sleutel hebt, neemt u contact op met een van de micro soft-partners die worden vermeld in [micro soft Pinpoint](http://pinpoint.microsoft.com/).
+Als u een Azure in open-abonnement wilt maken, moet u een geldige OSA-sleutel (online service Activation) hebben waaraan ten minste één Azure in open token is gekoppeld. Als u geen OSA-sleutel hebt, neemt u contact op met een van de micro soft-partners die worden vermeld in [micro soft Pinpoint](https://pinpoint.microsoft.com/).
 
 ### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>Fout: *U komt niet in aanmerking voor een Azure-abonnement*
 

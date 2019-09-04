@@ -12,16 +12,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 1c4fae5c41f4f23c4a7fe3135b602133aa69aacd
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8c931521e77123844817dff0e9209f8f95f7ad59
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873687"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279906"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Wat is Azure SQL Database-Service?
 
-Azure SQL Database is een service voor algemeen gebruik van relationele data bases waarmee u Maxi maal beschik bare gegevenslaag met hoge prestaties kunt maken voor de toepassingen en oplossingen in Microsoft Azure Cloud. SQL Database kan de juiste keuze zijn voor een groot aantal moderne Cloud toepassingen, omdat u hiermee krachtige functies kunt gebruiken voor het verwerken van relationele gegevens en [niet-relationele structuren](sql-database-multi-model-features.md) zoals grafieken, JSON, ruimtelijke en XML. Het is gebaseerd op de nieuwste stabiele versie van de [Microsoft SQL server data base-engine](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json) en biedt u de mogelijkheid om uitgebreide set geavanceerde functies voor het verwerken van query's te gebruiken, zoals [hoge prestaties in het geheugen](sql-database-in-memory.md) en [intelligente query verwerking ](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json).
+Azure SQL Database is een service voor algemeen gebruik van relationele data bases waarmee u een Maxi maal beschik bare gegevenslaag met hoge prestaties voor de toepassingen en oplossingen in Microsoft Azure Cloud kunt maken. SQL Database kan de juiste keuze zijn voor een groot aantal moderne Cloud toepassingen, omdat u hiermee krachtige functies kunt gebruiken voor het verwerken van relationele gegevens en [niet-relationele structuren](sql-database-multi-model-features.md) zoals grafieken, JSON, ruimtelijke en XML. Het is gebaseerd op de nieuwste stabiele versie van de [Microsoft SQL server data base-engine](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json) en biedt u de mogelijkheid om een uitgebreide set geavanceerde functies voor het verwerken van query's te gebruiken, zoals [hoge prestaties in de geheugen technologieën](sql-database-in-memory.md) en [intelligente query verwerking ](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json).
 In het kader van de cloudstrategie van Microsoft worden nieuwe mogelijkheden van SQL Server eerst uitgebracht in SQL Database en vervolgens in SQL Server zelf. Dankzij deze aanpak kunt u beschikken over de nieuwste mogelijkheden van SQL Server zonder overhead voor patching en upgrading, en zijn de nieuwe functies getest op miljoenen databases. Met SQL Database kunt u eenvoudig prestaties in twee verschillende aankoop modellen definiëren en schalen: een [op vCore gebaseerd inkoop model](sql-database-service-tiers-vcore.md) en een [op DTU gebaseerd aankoop model](sql-database-service-tiers-dtu.md). SQL Database is een volledig beheerde service met ingebouwde high-beschikbaarheids, back-ups en andere veelvoorkomende onderhouds bewerkingen. Micro soft behandelt alle patches en updates van de SQL-en besturingssysteem code naadloos en samen vatting van alle beheer van de onderliggende infra structuur.
 
 > [!NOTE]
@@ -80,12 +80,12 @@ Azure SQL Database biedt een aantal geavanceerde functies voor het bewaken en op
  - De ingebouwde bewakings mogelijkheden van de nieuwste versie van SQL Server data base-engine waarmee u real-time prestatie inzichten kunt vinden. 
  - PaaS bewakings mogelijkheden van het Azure-platform waarmee u eenvoudig een groot aantal data base-exemplaren kunt bewaken en ook de aanbevelingen voor het oplossen van problemen biedt die u kunnen helpen bij het oplossen van prestatie problemen.
 
-De belangrijkste ingebouwde functie voor het controleren van de data base-engine die u moet gebruiken, is een [query archief](sql-database-operate-query-store.md) component waarmee de prestaties van uw query's in realtime worden vastgelegd en waarmee u de potentiële prestatie problemen en de belangrijkste kunt identificeren Bron verbruikers. Automatische afstemming en aanbevelingen bieden adviezen over de query's met de teruggedraaide-prestaties en ontbrekende of gedupliceerde indexen. Met automatisch afstemmen in Azure SQL Database kunt u hand matig de scripts Toep assen waarmee de problemen kunnen worden opgelost of Azure SQL Database de oplossing toe te passen, testen en verifiëren. Dit biedt enige voor deel, waardoor de wijziging wordt behouden of hersteld, afhankelijk van het resultaat. Naast de mogelijkheden van query Store en automatisch afstemmen kunt u ook standaard [dmv's en XEvent](sql-database-monitoring-with-dmvs.md) gebruiken om de prestaties van de werk belasting te controleren.
+De belangrijkste ingebouwde functie voor het controleren van de data base-engine die u moet gebruiken, is een [query archief](sql-database-operate-query-store.md) component waarmee de prestaties van uw query's in realtime worden vastgelegd en waarmee u de potentiële prestatie problemen en de belangrijkste bron kunt identificeren licht. Automatische afstemming en aanbevelingen bieden adviezen over de query's met de teruggedraaide-prestaties en ontbrekende of gedupliceerde indexen. Met automatisch afstemmen in Azure SQL Database kunt u hand matig de scripts Toep assen waarmee de problemen kunnen worden opgelost of Azure SQL Database de oplossing toe te passen, testen en verifiëren. Dit biedt enige voor deel, waardoor de wijziging wordt behouden of hersteld, afhankelijk van het resultaat. Naast de mogelijkheden van query Store en automatisch afstemmen kunt u ook standaard [dmv's en XEvent](sql-database-monitoring-with-dmvs.md) gebruiken om de prestaties van de werk belasting te controleren.
 
-Azure-platform biedt de ingebouwde hulpprogram ma's voor [prestatie bewaking](sql-database-performance.md) en [waarschuwingen](sql-database-insights-alerts-portal.md) , gecombineerd met de prestatie classificaties waarmee u de status van duizenden data bases eenvoudig kunt bewaken. Met behulp van deze tools kunt u snel beoordelen wat de impact is van het aanpassen van de schaal op basis van uw huidige prestatiebehoeften of de prestatiebehoeften van uw project. Daarnaast kan SQL Database [metrische gegevens en diagnostische logboeken verzenden](sql-database-metrics-diag-logging.md) die de bewaking vergemakkelijken. U kunt SQL Database configureren voor het opslaan van resourcegebruik, werkrollen en sessies, en connectiviteit in een van deze Azure-resources:
+Azure-platform biedt de ingebouwde hulpprogram ma's voor [prestatie bewaking](sql-database-performance.md) en [waarschuwingen](sql-database-insights-alerts-portal.md) , gecombineerd met de prestatie classificaties waarmee u de status van duizenden data bases eenvoudig kunt bewaken. Met deze hulpprogram ma's kunt u snel de gevolgen van het omhoog of omlaag schalen op basis van uw huidige of verwachte prestatie vereisten beoordelen. Daarnaast kan SQL Database [metrische gegevens en diagnostische logboeken verzenden](sql-database-metrics-diag-logging.md) die de bewaking vergemakkelijken. U kunt SQL Database configureren voor het opslaan van resourcegebruik, werkrollen en sessies, en connectiviteit in een van deze Azure-resources:
 
-- **Azure Storage**: Voor het archiveren van grote hoeveel heden telemetrie voor een kleine prijs
-- **Azure Event Hub**: Voor het integreren van SQL Database telemetrie met uw aangepaste bewakings oplossing of dynamische pijp lijnen
+- **Azure Storage**: Voor het archiveren van grote hoeveel heden telemetrie voor een kleine prijs.
+- **Azure Event Hub**: Voor het integreren van SQL Database telemetrie met uw aangepaste bewakings oplossing of dynamische pijp lijnen.
 - **Azure monitor logboeken**: Voor een ingebouwde bewakings oplossing met rapportage-, waarschuwings-en beperkende mogelijkheden.
 
     ![architectuur](./media/sql-database-metrics-diag-logging/architecture.png)
@@ -94,7 +94,7 @@ Azure-platform biedt de ingebouwde hulpprogram ma's voor [prestatie bewaking](sq
 
 In een traditionele SQL Server omgeving hebt u doorgaans (ten minste) 2 machines lokaal ingesteld met exacte (synchroon onderhanden) kopieën van de gegevens (met behulp van functies als AlwaysOn-beschikbaarheids groepen of exemplaren van failoverclusters) om te beveiligen tegen een fout in één machine/onderdeel. Dit biedt hoge Beschik baarheid, maar biedt geen bescherming tegen een natuur ramp die uw Data Center vernietigt.
 
-Bij herstel na nood gevallen wordt ervan uitgegaan dat een onherstelbare gebeurtenis geografisch kan worden gelokaliseerd zodat er een andere machine of set machines met een kopie van uw gegevens ver weg is.  In SQL Server kunt u AlwaysOn-beschikbaarheids groepen gebruiken die worden uitgevoerd in de async-modus om deze mogelijkheid te verkrijgen.  De snelheid van lichte problemen betekent meestal dat personen niet hoeven te wachten op replicatie voordat een trans actie wordt doorgevoerd, zodat er gegevens verloren gaan wanneer u niet-geplande failovers uitvoert.
+Bij herstel na nood gevallen wordt ervan uitgegaan dat een onherstelbare gebeurtenis geografisch kan worden gelokaliseerd zodat er een andere machine of set machines met een kopie van uw gegevens ver weg is.  In SQL Server kunt u AlwaysOn-beschikbaarheids groepen gebruiken die worden uitgevoerd in de async-modus om deze mogelijkheid te verkrijgen.  De snelheid van het licht probleem betekent meestal dat personen niet hoeven te wachten op replicatie voordat een trans actie wordt door gegeven, zodat er gegevens verloren kunnen gaan wanneer u niet-geplande failovers uitvoert.
 
 Data bases in de Premium-en Business Critical-service lagen [komen al iets overeen](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) met de synchronisatie van een beschikbaarheids groep. Data bases in lagere service lagen bieden redundantie via opslag met behulp van een [ander, maar gelijkwaardig mechanisme](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability). Er is logica die bescherming biedt tegen een storing van één machine.  De functie actieve geo-replicatie biedt u de mogelijkheid om te beveiligen tegen nood gevallen waarbij een hele regio wordt vernietigd.
 
@@ -121,15 +121,15 @@ De toonaangevende Azure-beschik service level agreement baarheid van 99,99% [(Sl
 
 ## <a name="built-in-intelligence"></a>Ingebouwde intelligentie
 
-Met SQL Database beschikt u over ingebouwde intelligentie waarmee u de kosten van het uitvoeren en beheren van databases drastisch verlaagt en de prestaties en beveiliging van uw toepassing optimaliseert. SQL Database verwerkt 24 uur per dag miljoenen workloads van klanten en verzamelt en verwerkt daarbij enorme hoeveelheden telemetriegegevens, waarbij de privacy van klanten te allen tijde volledig wordt gerespecteerd. Er worden verschillen de algoritmen gebruikt om de telemetriegegevens continu te evalueren zodat de service zich kan aanpassen aan uw toepassing. Op basis van deze analyses stelt de service aanbevelingen op voor het verbeteren van de prestaties, afgestemd op uw specifieke workloads.
+Met SQL Database beschikt u over ingebouwde intelligentie waarmee u de kosten van het uitvoeren en beheren van databases drastisch verlaagt en de prestaties en beveiliging van uw toepassing optimaliseert. SQL Database verwerkt 24 uur per dag miljoenen workloads van klanten en verzamelt en verwerkt daarbij enorme hoeveelheden telemetriegegevens, waarbij de privacy van klanten te allen tijde volledig wordt gerespecteerd. Er worden verschillen de algoritmen gebruikt om de telemetriegegevens continu te evalueren zodat de service zich kan aanpassen aan uw toepassing. Op basis van deze analyse krijgt de service de aanbevelingen voor prestatie verbetering die zijn afgestemd op uw specifieke werk belasting.
 
 ### <a name="automatic-performance-monitoring-and-tuning"></a>Automatisch bewaking en afstemming van prestaties
 
 SQL Database biedt gedetailleerde informatie over de query’s die u wilt bewaken. SQL Database leert uw databasepatronen zodat u uw databaseschema kunt aanpassen aan uw workload. SQL Database geeft [aanbevelingen voor het afstemmen van de prestaties](sql-database-advisor.md), waarmee u de aanbevolen acties kunt weergeven en uitvoeren.
 
-Maar doorlopende databasebewaking is een moeilijke, tijdrovende taak, zeker wanneer het om vele databases gaat. Met [Intelligent Insights](sql-database-intelligent-insights.md) wordt deze taak automatisch voor u uitgevoerd door de prestaties van SQL Database op schaal automatisch te bewaken en u te informeren over problemen met prestatievermindering. Hierbij wordt de hoofdoorzaak van het probleem aangegeven. Indien mogelijk worden er ook aanbevelingen voor prestatieverbetering geboden.
+Een voortdurende bewaking van een Data Base is echter een hard en tijdrovende taak, met name bij het omgaan met veel data bases. Met [Intelligent Insights](sql-database-intelligent-insights.md) wordt deze taak automatisch voor u uitgevoerd door de prestaties van SQL Database op schaal automatisch te bewaken en u te informeren over problemen met prestatievermindering. Hierbij wordt de hoofdoorzaak van het probleem aangegeven. Indien mogelijk worden er ook aanbevelingen voor prestatieverbetering geboden.
 
-Het is vrijwel onmogelijk om het beheer van enorme hoeveelheden databases op een efficiënte manier uit te voeren, zelfs met de hulpprogramma’s en rapporten van SQL Database en de Azure-portal. In plaats van het handmatig bewaken en afstemmen van uw database, kunt u overwegen sommige van deze taken over te laten aan SQL Database, met de functie voor [automatisch afstemmen](sql-database-automatic-tuning.md). SQL Database voert automatisch aanbevelingen, tests en verifieert alle afstemmings acties uit om ervoor te zorgen dat de prestaties verbeteren. Op die manier past SQL Database zich automatisch op een gecontroleerde en veilige manier aan uw workloads aan. Automatische afstemming betekent dat de prestaties van uw database zorgvuldig worden bewaakt en vergeleken voor en na elke afstemactie. Als de prestaties niet zijn verbeterd, wordt de betreffende actie teruggedraaid.
+Het is vrijwel onmogelijk om het beheer van enorme hoeveelheden databases op een efficiënte manier uit te voeren, zelfs met de hulpprogramma’s en rapporten van SQL Database en de Azure-portal. In plaats van het handmatig bewaken en afstemmen van uw database, kunt u overwegen sommige van deze taken over te laten aan SQL Database, met de functie voor [automatisch afstemmen](sql-database-automatic-tuning.md). SQL Database voert automatisch aanbevelingen, tests en verifieert alle afstemmings acties uit om ervoor te zorgen dat de prestaties verbeteren. Op deze manier kunnen SQL Database automatisch worden aangepast aan uw werk belasting op een gecontroleerde en veilige manier. Automatische afstemming betekent dat de prestaties van uw database zorgvuldig worden bewaakt en vergeleken voor en na elke afstemactie. Als de prestaties niet zijn verbeterd, wordt de betreffende actie teruggedraaid.
 
 Veel van onze partners die [multitenant SaaS-apps](sql-database-design-patterns-multi-tenancy-saas-applications.md) uitvoeren op SQL Database, vertrouwen al op deze automatische afstemming, zodat de prestaties van hun toepassingen altijd stabiel en voorspelbaar zijn. Dankzij deze functie wordt de kans op prestatieproblemen (op welk moment dan ook) aanzienlijk kleiner. En omdat een deel van hun klanten ook werkt met SQL Server, maken ze gebruik van dezelfde indexeringsaanbevelingen van SQL Database om hun klanten met SQL Server te helpen.
 
@@ -147,7 +147,7 @@ Er is ook een reeks functies voor de [verwerking van adaptieve query’s](/sql/r
 SQL Database biedt een reeks [ingebouwde functies voor beveiliging en naleving](sql-database-security-overview.md) zodat uw toepassing voldoet aan diverse vereisten op het gebied van beveiliging en de naleving van voorschriften.
 
 > [!IMPORTANT]
-> Azure SQL Database (alle implementatie opties), is gecertificeerd op basis van een aantal nalevings standaarden. Zie het vertrouwens centrum van [Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) voor meer informatie over de meest recente lijst met SQL database nalevings certificeringen.
+> Azure SQL Database (alle implementatie opties), is gecertificeerd op basis van een aantal nalevings standaarden. Zie het [vertrouwens centrum van Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) voor meer informatie over de meest recente lijst met SQL database nalevings certificeringen.
 
 ### <a name="advance-threat-protection"></a>Advanced Threat Protection
 
@@ -165,7 +165,7 @@ Geavanceerde gegevens beveiliging is een uniform pakket voor geavanceerde SQL-be
 
 ### <a name="auditing-for-compliance-and-security"></a>Controles voor naleving en beveiliging
 
-[](sql-database-auditing.md) Met auditing worden database gebeurtenissen bijgehouden en naar een audit logboek in uw Azure Storage-account geschreven. Dankzij controles kunt u zorgen voor naleving van wet- en regelgeving, krijgt u inzicht in de activiteit in uw database en in de afwijkingen en discrepanties die kunnen wijzen op problemen voor het bedrijf of vermoedelijke schendingen van de beveiliging.
+Met [auditing](sql-database-auditing.md) worden database gebeurtenissen bijgehouden en naar een audit logboek in uw Azure Storage-account geschreven. Dankzij controles kunt u zorgen voor naleving van wet- en regelgeving, krijgt u inzicht in de activiteit in uw database en in de afwijkingen en discrepanties die kunnen wijzen op problemen voor het bedrijf of vermoedelijke schendingen van de beveiliging.
 
 ### <a name="data-encryption"></a>Gegevensversleuteling
 
@@ -177,7 +177,7 @@ Dankzij [Azure Active Directory-integratie](sql-database-aad-authentication.md) 
 
 ### <a name="compliance-certification"></a>Nalevingscertificering
 
-SQL Database wordt regelmatig gecontroleerd en is gecertificeerd volgens diverse nalevingsstandaarden. Zie het vertrouwens centrum van [Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) voor meer informatie over de meest recente lijst met SQL database nalevings certificeringen.
+SQL Database wordt regelmatig gecontroleerd en is gecertificeerd volgens diverse nalevingsstandaarden. Zie het [vertrouwens centrum van Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) voor meer informatie over de meest recente lijst met SQL database nalevings certificeringen.
 
 ## <a name="easy-to-use-tools"></a>Gebruiksvriendelijke hulpprogramma’s
 
@@ -208,7 +208,7 @@ De huidige versie van SQL Database is V12. Versie V11 is buiten gebruik gesteld.
 
 ### <a name="can-i-control-when-patching-downtime-occurs"></a>Kan ik bepalen wanneer uitval tijd van patches optreedt
 
-Nee. De impact van patching is doorgaans niet merkbaar als u [probeert logica](sql-database-develop-overview.md#resiliency) in uw app te gebruiken. Voor meer informatie over het voorbereiden van geplande onderhouds gebeurtenissen in uw Azure SQL database raadpleegt u Azure-onderhouds [gebeurtenissen plannen in Azure SQL database](sql-database-planned-maintenance.md).
+Nee. De impact van patching is doorgaans niet merkbaar als u [probeert logica](sql-database-develop-overview.md#resiliency) in uw app te gebruiken. Voor meer informatie over het voorbereiden van geplande onderhouds gebeurtenissen in uw Azure SQL database raadpleegt u [Azure-onderhouds gebeurtenissen plannen in Azure SQL database](sql-database-planned-maintenance.md).
 
 ### <a name="azure-hybrid-benefit-questions"></a>Vragen over Azure Hybrid Benefit
 

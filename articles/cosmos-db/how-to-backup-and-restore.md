@@ -1,63 +1,63 @@
 ---
-title: Azure Cosmos DB-gegevens herstellen vanaf een back-up
-description: In dit artikel wordt beschreven hoe u Azure Cosmos DB-gegevens herstellen vanaf een back-up, contact opnemen met ondersteuning van Azure voor het herstellen van gegevens, de stappen om uit te voeren nadat de gegevens is hersteld.
+title: Azure Cosmos DB gegevens herstellen vanuit een back-up
+description: In dit artikel wordt beschreven hoe u Azure Cosmos DB gegevens terugzet vanuit een back-up, hoe u contact opneemt met de ondersteuning van Azure om gegevens te herstellen, stappen die u moet uitvoeren nadat de gegevens zijn hersteld.
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/01/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: c32c333de94d1ed0089323e00e6dbbaaebb36488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 19ca835ca8211202cd358ac2ec3695675183a372
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241051"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240762"
 ---
-# <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Gegevens terugzetten vanaf een back-up in Azure Cosmos DB 
+# <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Gegevens herstellen vanuit een back-up in Azure Cosmos DB 
 
-Als u per ongeluk de database of een container verwijdert, kunt u [een ondersteuningsticket]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) of [contact opnemen met ondersteuning voor Azure]( https://azure.microsoft.com/support/options/) om terug te zetten van de gegevens van automatische online back-ups. Azure-ondersteuning is alleen beschikbaar voor geselecteerde abonnementen zoals **Standard**, **Developer**, en hoger is dan deze abonnementen. Azure-ondersteuning is niet beschikbaar bij **Basic** plan. Zie voor meer informatie over de verschillende ondersteuningsplannen, de [ondersteuningsabonnementen voor Azure](https://azure.microsoft.com/support/plans/) pagina. 
+Als u per ongeluk uw data base of container verwijdert, kunt u [een ondersteunings ticket indienen]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) of [ondersteuning voor Azure aanroepen]( https://azure.microsoft.com/support/options/) om de gegevens van automatische online back-ups te herstellen. Ondersteuning voor Azure is alleen beschikbaar voor geselecteerde abonnementen, zoals **Standard**, **Developer**en abonnementen hoger. Ondersteuning voor Azure is niet beschikbaar voor het **Basic** -abonnement. Zie de pagina [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/) voor meer informatie over verschillende ondersteunings abonnementen. 
 
-Voor het herstellen van een momentopname van de back-up van een specifieke Azure Cosmos DB is vereist dat de gegevens beschikbaar voor de duur van de back-cyclus die momentopname te maken zijn.
+Als u een specifieke moment opname van de back-up wilt herstellen, moet Azure Cosmos DB de gegevens beschikbaar hebben voor de duur van de back-upcyclus voor die moment opname.
 
-## <a name="request-a-restore"></a>Aanvraag voor een herstelpunt
+## <a name="request-a-restore"></a>Een terugzet bewerking aanvragen
 
-U hebt de volgende informatie voordat u aanvraagt van een herstelpunt:
+U moet de volgende gegevens hebben voordat u een herstel bewerking kunt aanvragen:
 
-* Uw abonnement-ID gereed hebben.
+* Uw abonnement-ID gereed is.
 
-* Op basis van hoe uw gegevens per ongeluk is verwijderd of gewijzigd, moet u bereid om aanvullende informatie. Het wordt aanbevolen dat u de beschikbare informatie vooruit hebt om te minimaliseren, de back-en-weer die schadelijk zijn in sommige gevallen voor het gevoelige van tijd.
+* Op basis van de manier waarop uw gegevens per ongeluk zijn verwijderd of gewijzigd, moet u voor bereidingen treffen voor aanvullende informatie. Het is raadzaam dat u de informatie die u voor het eerst beschikbaar hebt, hebt om de back-and-Case zo klein mogelijk te houden.
 
-* Als het gehele Azure Cosmos DB-account wordt verwijderd, moet u de naam van het verwijderde account op te geven. Als u een ander account met dezelfde naam als het account verwijderd maakt, deelt u die met het ondersteuningsteam, omdat de service helpt om te bepalen het juiste account om te kiezen. Het verdient bestand verschillende ondersteuningstickets voor elke account verwijderd omdat de verwarring van de status van het herstel wordt.
+* Als het volledige Azure Cosmos DB account wordt verwijderd, moet u de naam van het verwijderde account opgeven. Als u een ander account met dezelfde naam als het verwijderde account maakt, deelt u dit met het ondersteunings team, omdat het u helpt om het juiste account te bepalen. Het is raadzaam om verschillende ondersteunings tickets voor elk verwijderd account te bestand, omdat het de Verwar ring van de herstel bewerking minimaliseert.
 
-* Als een of meer databases zijn verwijderd, moet u opgeven van de Azure Cosmos-account, evenals de namen van de Azure Cosmos-database en opgeven of een nieuwe database met dezelfde naam bestaat.
+* Als een of meer data bases worden verwijderd, moet u het Azure Cosmos-account opgeven, evenals de namen van de Azure Cosmos-data bases en opgeven of er een nieuwe Data Base met dezelfde naam bestaat.
 
-* Als een of meer containers zijn verwijderd, moet u de naam van de Azure Cosmos-account, databasenamen en de namen van containers opgeven. En geef als een container met dezelfde naam bestaat.
+* Als een of meer containers worden verwijderd, moet u de naam van het Azure Cosmos-account, de database namen en de container namen opgeven. En geef op of er een container met dezelfde naam bestaat.
 
-* Als u hebt per ongeluk verwijderd of beschadigd van uw gegevens, moet u contact opnemen [ondersteuning van Azure](https://azure.microsoft.com/support/options/) binnen acht uur zodat het team van Azure Cosmos DB kunt u de gegevens herstelt vanaf de back-ups.
+* Als u uw gegevens per ongeluk hebt verwijderd of beschadigd, neemt u binnen 8 uur contact op met [Azure-ondersteuning](https://azure.microsoft.com/support/options/) , zodat het Azure Cosmos DB team u kan helpen bij het herstellen van de gegevens van de back-ups.
   
-  * Als u uw database of de container per ongeluk hebt verwijderd, moet u een Sev B of Sev C Azure-ondersteuningsaanvraag openen. 
-  * Als u hebt per ongeluk verwijderd of beschadigd bepaalde documenten in de container, moet u een ondersteuningsaanvraag Sev A openen. 
+  * Als u per ongeluk uw data base of container hebt verwijderd, opent u een Ernst B of ernst C Azure-ondersteunings aanvraag. 
+  * Als u per ongeluk een aantal documenten in de container hebt verwijderd of beschadigd, opent u een Ernst-ondersteunings aanvraag. 
 
-Wanneer gegevensbeschadiging optreedt en de documenten in een container worden gewijzigd of verwijderd, **zo snel mogelijk verwijderen van de container**. Door het verwijderen van de container, kunt u Azure Cosmos DB van het overschrijven van de back-ups voorkomen. Als de verwijdering niet mogelijk om een bepaalde reden is, moet u zo snel mogelijk een ticket indienen. Naast de naam van de Azure Cosmos-account, databasenamen, namen van verzamelingen, moet u het punt in tijd waarop de gegevens kunnen worden hersteld. Het is belangrijk om te worden zo nauwkeurig mogelijk om te bepalen van de beste beschikbare back-ups op dat moment. Het is ook belangrijk op te geven van de tijd in UTC. 
+Als de gegevens zijn beschadigd en als de documenten in een container worden gewijzigd of verwijderd, moet u **de container zo snel mogelijk verwijderen**. Als u de container verwijdert, kunt u voor komen dat Azure Cosmos DB de back-ups overschrijft. Als het verwijderen om de een of andere reden niet mogelijk is, moet u zo snel mogelijk een ticket indienen. Naast de naam van het Azure Cosmos-account, database namen, container namen, moet u het tijdstip opgeven waarop de gegevens kunnen worden teruggezet. Het is belang rijk om zo nauw keurig mogelijk te zijn om ons te helpen bij het bepalen van de beste beschik bare back-ups op dat moment. Het is ook belang rijk om de tijd op te geven in UTC. 
 
-De volgende schermafbeelding ziet u hoe u een ondersteuningsaanvraag voor een container(collection/graph/table) om gegevens te herstellen met behulp van Azure portal maken. Geef aanvullende informatie zoals het type gegevens, het doel van het herstel tijd wanneer de gegevens naar help ons prioriteren van de aanvraag is verwijderd.
+In de volgende scherm afbeelding ziet u hoe u een ondersteunings aanvraag voor een container (verzameling/grafiek/tabel) kunt maken om gegevens te herstellen met behulp van Azure Portal. Geef aanvullende informatie op, zoals het type gegevens, het doel van de herstel tijd, het tijdstip waarop de gegevens zijn verwijderd om ons te helpen bij het bepalen van de prioriteit van de aanvraag.
 
-![Maak een back-ondersteuningsaanvraag met behulp van Azure portal](./media/how-to-backup-and-restore/backup-support-request-portal.png)
+![Een verzoek tot ondersteuning voor back-ups maken met behulp van Azure Portal](./media/how-to-backup-and-restore/backup-support-request-portal.png)
 
-## <a name="post-restore-actions"></a>Acties na herstellen
+## <a name="post-restore-actions"></a>Acties na herstel
 
-Nadat u de gegevens herstelt, krijgt u een melding over de naam van het nieuwe account (deze bevindt zich doorgaans in de indeling `<original-name>-restored1`) en het tijdstip waarop het account is hersteld om. De herstelde account heeft de dezelfde ingerichte doorvoer, indexering en deze zich in dezelfde regio bevinden als de oorspronkelijke account. Een gebruiker die de beheerder van abonnement of een coadmin ziet het herstelde account.
+Nadat u de gegevens hebt hersteld, ontvangt u een melding over de naam van het nieuwe account (meestal in de indeling `<original-name>-restored1`) en het tijdstip waarop het account is hersteld. Het herstelde account heeft dezelfde ingerichte door Voer, het indexerings beleid en het bevindt zich in dezelfde regio als het oorspronkelijke account. Een gebruiker die de abonnements beheerder of een cobeheerder is, kan het herstelde account zien.
 
-Nadat de gegevens is hersteld, moet u controleren en valideren van de gegevens in de herstelde account en zorg ervoor dat deze bevat de versie die u verwacht. Als alles er goed uitziet, moet u de gegevens migreren naar uw oorspronkelijke account met [Azure Cosmos DB-wijzigingenfeed](change-feed.md) of [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
+Nadat de gegevens zijn hersteld, moet u de gegevens in het herstelde account controleren en valideren en ervoor zorgen dat deze de versie bevat die u verwacht. Als alles goed lijkt, migreert u de gegevens terug naar uw oorspronkelijke account met [Azure Cosmos DB wijzigings feed](change-feed.md) of [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
 
-Het wordt aanbevolen dat u de container of de database verwijdert onmiddellijk na de migratie van de gegevens. Als u de herstelde databases of containers niet verwijderen, ze worden kosten in rekening gebracht voor aanvraageenheden-, opslag- en uitgaand verkeer.
+U wordt aangeraden de container of data base onmiddellijk na het migreren van de gegevens te verwijderen. Als u de herstelde data bases of containers niet verwijdert, worden er kosten in rekening gebracht voor aanvraag eenheden, opslag en uitgaand verkeer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Vervolgens kunt u meer informatie over het migreren van de gegevens terug naar uw oorspronkelijke account met behulp van de volgende artikelen:
+Vervolgens leert u hoe u de gegevens opnieuw naar uw oorspronkelijke account kunt migreren met behulp van de volgende artikelen:
 
-* Om te maken van een herstelpunt aanvragen, contact op met ondersteuning voor Azure, [bestand een ticket van de Azure-portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
-* [Gebruik Cosmos DB-wijzigingenfeed](change-feed.md) om gegevens te verplaatsen met Azure Cosmos DB.
+* Neem contact op met de ondersteuning van Azure, maak [een ticket van de Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om een herstel aanvraag te doen.
+* [Gebruik Cosmos DB Change feed](change-feed.md) om gegevens naar Azure Cosmos DB te verplaatsen.
 
-* [Gebruik Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) om gegevens te verplaatsen met Azure Cosmos DB.
+* [Gebruik Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) om gegevens te verplaatsen naar Azure Cosmos db.

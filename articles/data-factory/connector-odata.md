@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 30bad3dd519d622d7e224da7bd53e7c6625014f6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a31f0618f7e9dc8fdb0e9b2988d3d3c32fefcf64
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966478"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277674"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Gegevens kopiëren van een OData-bron met behulp van Azure Data Factory
 
@@ -52,7 +52,7 @@ De volgende eigenschappen worden ondersteund voor een gekoppelde OData-service:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** moet worden ingesteld op **OData**. |Ja |
+| Type | De eigenschap **type** moet worden ingesteld op **OData**. |Ja |
 | url | De basis-URL van de OData-service. |Ja |
 | authenticationType | Het type verificatie dat wordt gebruikt om verbinding te maken met de OData-bron. Toegestane waarden zijn **anoniem**, **basis**, **Windows**, **AadServicePrincipal**en **ManagedServiceIdentity**. OAuth op basis van de gebruiker wordt niet ondersteund. | Ja |
 | userName | Geef **userName** als u basisverificatie of Windows-verificatie gebruikt. | Nee |
@@ -201,7 +201,7 @@ Als u gegevens wilt kopiëren uit OData, stelt u de eigenschap **type** van de g
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de DataSet moet worden ingesteld op **ODataResource**. | Ja |
+| Type | De eigenschap **type** van de DataSet moet worden ingesteld op **ODataResource**. | Ja |
 | path | Het pad naar de OData-resource. | Ja |
 
 **Voorbeeld**
@@ -212,6 +212,7 @@ Als u gegevens wilt kopiëren uit OData, stelt u de eigenschap **type** van de g
     "properties":
     {
         "type": "ODataResource",
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<OData linked service name>",
             "type": "LinkedServiceReference"
@@ -232,11 +233,11 @@ Zie voor een volledige lijst van eigenschappen die beschikbaar zijn voor het def
 
 ### <a name="odata-as-source"></a>OData als bron
 
-Als u gegevens wilt kopiëren uit OData, stelt u het **bron** type in de Kopieer activiteit in op **RelationalSource**. De volgende eigenschappen worden ondersteund in de Kopieeractiviteit **bron** sectie:
+Als u gegevens wilt kopiëren uit OData, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **RelationalSource**. | Ja |
+| Type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **ODataSource**. | Ja |
 | query | OData-query opties voor het filteren van gegevens. Voorbeeld: `"$select=Name,Description&$top=5"`.<br/><br/>**Opmerking**: De OData-connector kopieert gegevens van de gecombineerde URL `[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`:. Zie [ODATA URL Components](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)(Engelstalig) voor meer informatie. | Nee |
 
 **Voorbeeld**
@@ -260,7 +261,7 @@ Als u gegevens wilt kopiëren uit OData, stelt u het **bron** type in de Kopieer
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "ODataSource",
                 "query": "$select=Name,Description&$top=5"
             },
             "sink": {
@@ -270,6 +271,8 @@ Als u gegevens wilt kopiëren uit OData, stelt u het **bron** type in de Kopieer
     }
 ]
 ```
+
+Als u getypte bron gebruikt `RelationalSource` , wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
 
 ## <a name="data-type-mapping-for-odata"></a>Toewijzing van gegevens type voor OData
 

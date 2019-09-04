@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 79cb276f121c351a9954994038d9d826819edf5d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1e6d3b78887c9d195fdf0137553860c141bdaaba
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087460"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241060"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Controle punten en opnieuw afspelen in Durable Functions (Azure Functions)
 
@@ -146,7 +146,10 @@ Het gedrag voor opnieuw afspelen maakt beperkingen voor het type code dat kan wo
 
 * De Orchestrator-code mag **nooit een asynchrone bewerking initiëren** , met uitzonde ring van `context.df` de [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) -API of de API van het object. Bijvoorbeeld Nee `Task.Run`, `Task.Delay` `setTimeout()` of `HttpClient.SendAsync` in .net of en`setInterval()` in Java script. Het duurzame taak raamwerk voert Orchestrator-code uit op één thread en kan niet communiceren met andere threads die kunnen worden gepland door andere async-Api's. Als dit gebeurt, `InvalidOperationException` wordt er een uitzonde ring gegenereerd.
 
-* **Oneindige lussen moeten worden** vermeden in Orchestrator-code. Omdat het duurzame taak raamwerk uitvoerings geschiedenis opslaat als de Orchestration-functie wordt uitgevoerd, kan een oneindige lus ertoe leiden dat een Orchestrator-exemplaar geen geheugen meer beschikbaar heeft. Voor oneindige lussen gebruikt u api's zoals [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.net) of `continueAsNew` (Java script) om de uitvoering van de functie opnieuw te starten en de vorige uitvoerings geschiedenis te verwijderen.
+> [!NOTE]
+> De [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) -API voert asynchrone I/O uit, wat niet is toegestaan in een Orchestrator-functie en kan alleen worden gebruikt in niet-Orchestrator-functies.
+
+* **Oneindige lussen moeten worden vermeden** in Orchestrator-code. Omdat het duurzame taak raamwerk uitvoerings geschiedenis opslaat als de Orchestration-functie wordt uitgevoerd, kan een oneindige lus ertoe leiden dat een Orchestrator-exemplaar geen geheugen meer beschikbaar heeft. Voor oneindige lussen gebruikt u api's zoals [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.net) of `continueAsNew` (Java script) om de uitvoering van de functie opnieuw te starten en de vorige uitvoerings geschiedenis te verwijderen.
 
 * Java script Orchestrator-functies mogen `async`niet zijn. Ze moeten worden gedeclareerd als synchrone Generator functies.
 

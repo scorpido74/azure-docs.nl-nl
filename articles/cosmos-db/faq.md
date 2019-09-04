@@ -4,15 +4,15 @@ description: Vind antwoorden op veelgestelde vragen over Azure Cosmos DB, een we
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: cb2b3246264d04ce97c45dff58979079a731998e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 30530f445941747c659f584d279261148b08825e
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066084"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240802"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Veelgestelde vragen over de verschillende API's in Azure Cosmos DB
 
@@ -119,7 +119,7 @@ Wanneer u een regio, houd er rekening mee dat Azure Cosmos DB onafhankelijke en 
 
 ### <a name="is-it-possible-to-switch-from-container-level-throughput-provisioning-to-database-level-throughput-provisioning-or-vice-versa"></a>Is het mogelijk om over te schakelen van niveau containerdoorvoer wordt ingericht voor het inrichten van de database-level doorvoer? Of omgekeerd
 
-Container en de inrichting van de database-level doorvoer zijn aparte aanbiedingen en schakelen tussen een van deze vereisen migreren van gegevens van bron naar bestemming. Dit betekent dat u wilt maken van een nieuwe database of een nieuwe verzameling en vervolgens migreren van gegevens met behulp van [bulksgewijs executor bibliotheek](bulk-executor-overview.md) of [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
+Container en de inrichting van de database-level doorvoer zijn aparte aanbiedingen en schakelen tussen een van deze vereisen migreren van gegevens van bron naar bestemming. Dit betekent dat u een nieuwe data base of een nieuwe container moet maken en vervolgens gegevens kunt migreren met behulp van de [bibliotheek voor bulksgewijs](bulk-executor-overview.md) uitvoerder of [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
 
 ### <a name="does-azure-cosmosdb-support-time-series-analysis"></a>Azure cosmos DB biedt ondersteuning voor tijdseries analyseren?
 
@@ -149,7 +149,8 @@ Ja, de SQL-API biedt ondersteuning voor transacties van tussen meerder documente
 
 Een container is een groep van documenten en de bijbehorende JavaScript-toepassingslogica. Een container is een factureerbare entiteit, waar de [kosten](performance-levels.md) wordt bepaald door de doorvoer en opslag gebruikt. Containers kunnen omvatten een of meer partities of servers en voor het afhandelen van vrijwel onbeperkte hoeveelheid opslag of doorvoer kunnen schalen.
 
-* Voor de SQL-API en de API van Cosmos DB voor MongoDB-accounts, wordt een container toegewezen aan een verzameling.
+* Voor de SQL-API wordt een container toegewezen aan een container.
+* Voor de API van Cosmos DB voor MongoDB-accounts wordt een container toegewezen aan een verzameling.
 * Voor Cassandra en Table-API-accounts, wordt een container toegewezen aan een tabel.
 * Voor accounts van de Gremlin-API, is een container worden toegewezen aan een grafiek.
 
@@ -157,7 +158,7 @@ Containers zijn ook de factureringsentiteiten voor Azure Cosmos DB. Elke contain
 
 ### <a name="how-do-i-create-a-database"></a>Hoe maak ik een database?
 
-U kunt databases maken met behulp van de [Azure-portal](https://portal.azure.com), zoals beschreven in [toevoegen van een verzameling](create-sql-api-java.md#add-a-container), een van de [Azure Cosmos DB SDK's](sql-api-sdk-dotnet.md), of de [REST-API's](/rest/api/cosmos-db/).
+U kunt data bases maken met behulp van de [Azure Portal](https://portal.azure.com), zoals beschreven in [een container toevoegen](create-sql-api-java.md#add-a-container), een van de [Azure Cosmos DB Sdk's](sql-api-sdk-dotnet.md)of de [rest-api's](/rest/api/cosmos-db/).
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>Hoe stel ik gebruikers en machtigingen in?
 
@@ -179,7 +180,7 @@ Voor het gebruik van optimistische gelijktijdigheid in .NET, gebruiken de [Acces
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>Hoe voer ik transacties in de SQL-API?
 
-De SQL-API biedt ondersteuning voor taalgeïntegreerde transacties via in JavaScript opgeslagen procedures en triggers. Alle databasebewerkingen in scripts worden uitgevoerd onder snapshot-isolatie. Als het is een verzameling met één partitie, wordt de uitvoering is afgestemd op de verzameling. Als de verzameling is gepartitioneerd, wordt de uitvoering is afgestemd op documenten met dezelfde partitiesleutel waarde binnen de verzameling. Er wordt aan het begin van de transactie een schermopname van de documentversies (ETags) gemaakt en de transactie wordt alleen uitgevoerd als het script kan worden uitgevoerd. Als JavaScript een fout genereert, wordt de transactie teruggedraaid. Zie voor meer informatie, [serverzijde JavaScript programmeren voor Azure Cosmos DB](stored-procedures-triggers-udfs.md).
+De SQL-API biedt ondersteuning voor taalgeïntegreerde transacties via in JavaScript opgeslagen procedures en triggers. Alle databasebewerkingen in scripts worden uitgevoerd onder snapshot-isolatie. Als het een container met één partitie is, wordt de uitvoering binnen het bereik van de container. Als de container is gepartitioneerd, wordt de uitvoering beperkt tot documenten met dezelfde partitie sleutel waarde in de container. Er wordt aan het begin van de transactie een schermopname van de documentversies (ETags) gemaakt en de transactie wordt alleen uitgevoerd als het script kan worden uitgevoerd. Als JavaScript een fout genereert, wordt de transactie teruggedraaid. Zie voor meer informatie, [serverzijde JavaScript programmeren voor Azure Cosmos DB](stored-procedures-triggers-udfs.md).
 
 ### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>Hoe kan ik bulksgewijs invoegen documenten in Cosmos DB?
 
@@ -191,7 +192,7 @@ U kunt bulksgewijs invoegen documenten in Azure Cosmos DB in een van de volgende
 
 ### <a name="does-the-sql-api-support-resource-link-caching"></a>Voert de SQL-API ondersteuning resourcekoppelingen?
 
-Ja, omdat Azure Cosmos DB een RESTful-service is, resourcekoppelingen onveranderbaar zijn en kunnen in de cache worden opgeslagen. SQL-API-clients kunnen een header 'If-None-Match' voor leesbewerkingen voor een resource-achtige document of een verzameling opgeven en vervolgens hun lokale kopieën werken nadat de serverversie is gewijzigd.
+Ja, omdat Azure Cosmos DB een RESTful-service is, resourcekoppelingen onveranderbaar zijn en kunnen in de cache worden opgeslagen. SQL API-clients kunnen de header If-None-Match opgeven voor lees bewerkingen voor een resource-achtige document of container en vervolgens de lokale kopieën bijwerken nadat de server versie is gewijzigd.
 
 ### <a name="is-a-local-instance-of-sql-api-available"></a>Is een lokaal exemplaar van SQL-API beschikbaar?
 
@@ -225,7 +226,7 @@ Naast de algemene MongoDB-fout codes heeft de API van de Azure Cosmos DB voor Mo
 
 | Fout               | Code  | Description  | Oplossing  |
 |---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | Het totale aantal aanvraageenheden verbruikt meer is dan de frequentie van de ingerichte aanvraageenheid voor de verzameling en is beperkt. | Houd rekening met schaal de doorvoer toegewezen opnieuw aan een container of een set van containers met de Azure-portal of opnieuw proberen. |
+| TooManyRequests     | 16500 | Het totale aantal verbruikte aanvraag eenheden is hoger dan de ingerichte aanvraag-eenheids snelheid voor de container en is beperkt. | Houd rekening met schaal de doorvoer toegewezen opnieuw aan een container of een set van containers met de Azure-portal of opnieuw proberen. |
 | ExceededMemoryLimit | 16501 | Als een service met meerdere tenants, heeft de bewerking van de client geheugen toegewezen overschreden. | Verklein het bereik van de bewerking door meer beperkende querycriteria of neem contact op met ondersteuning van de [Azure-portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Voor beeld <em>: &nbsp; db.&nbsp;getCollection (' gebruikers '). aggregate ([ &nbsp; &nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {naam: Andy}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {leeftijd:-1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])</em>) |
 
 ### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmos-dbs-api-for-mongodb"></a>Is het Simba-stuur programma voor MongoDB ondersteund voor gebruik met de API van Azure Cosmos DB voor MongoDB?
@@ -523,7 +524,7 @@ De RU-kosten zijn gebaseerd op de werkset van de gegevens van het transport en n
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Wat is de maximale schaal die een grafiekdatabase in Gremlin-API van Azure Cosmos DB hebben kunt?
 
-Azure Cosmos DB maakt gebruik van [horizontale partitionering](partition-data.md) automatisch adres toename in de vereisten voor opslag en doorvoer. De maximale doorvoer en opslag van de capaciteit van een werkbelasting wordt bepaald door het aantal partities die gekoppeld aan een bepaalde verzameling zijn. Een verzameling Gremlin-API heeft echter een specifieke set richtlijnen om te controleren of een goede prestaties op schaal. Zie voor meer informatie over partitionering en aanbevolen procedures, [partitionering in Azure Cosmos DB](partition-data.md) artikel.
+Azure Cosmos DB maakt gebruik van [horizontale partitionering](partition-data.md) automatisch adres toename in de vereisten voor opslag en doorvoer. De maximale door Voer en opslag capaciteit van een werk belasting wordt bepaald door het aantal partities dat is gekoppeld aan een bepaalde container. Een Gremlin API-container heeft echter een specifieke set richt lijnen om een goede prestatie ervaring op schaal te garanderen. Zie voor meer informatie over partitionering en aanbevolen procedures, [partitionering in Azure Cosmos DB](partition-data.md) artikel.
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Hoe kan ik beveiligen tegen aanvallen via injectie met behulp van Gremlin-stuurprogramma's?
 

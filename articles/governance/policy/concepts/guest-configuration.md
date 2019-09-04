@@ -7,30 +7,28 @@ ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 054f9ed21ee0d7ef725c2b7eee8174c53374b5bc
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 06a767af71f457273e0e20d1248d64c22b3563e7
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232260"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274953"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informatie over Azure Policy Gast-configuratie
 
 Naast het controleren en [herstellen](../how-to/remediate-resources.md) van Azure-resources, kunnen Azure Policy instellingen in een machine controleren. De validatie wordt uitgevoerd door de configuratie van de Gast-extensie en de client. De extensie, via de client, valideert instellingen zoals de configuratie van het besturingssysteem, Toepassingsconfiguratie of aanwezigheid en omgevingsinstellingen.
 
-Op dit moment voert Azure Policy-gast configuratie alleen een controle van instellingen in de computer uit.
+Op dit moment voert Azure Policy-gast configuratie alleen een controle van de instellingen in de computer uit.
 Het is nog niet mogelijk om configuraties toe te passen.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="extension-and-client"></a>Extensie en client
 
 Voor het controleren van instellingen binnen een machine is de extensie van de [virtuele machine](../../../virtual-machines/extensions/overview.md) ingeschakeld. De extensie wordt gedownload voor de toewijzing van configuratiebeleid van toepassing en de bijbehorende definitie van de configuratie.
 
-### <a name="limits-set-on-the-exension"></a>Limieten die zijn ingesteld voor de exension
+### <a name="limits-set-on-the-extension"></a>Limieten die zijn ingesteld voor de uitbrei ding
 
 De gast configuratie mag niet meer dan 5% van het CPU-gebruik overschrijden om de uitbrei ding te beperken van impact toepassingen die worden uitgevoerd op de computer.
-Dit is waar BOH voor configuraties van micro soft als ' ingebouwd ' en voor aangepaste configuraties die door klanten zijn gemaakt.
+Dit geldt zowel voor configuraties die door micro soft zijn gegeven als ' ingebouwd ' en voor aangepaste configuraties die door klanten zijn gemaakt.
 
 ## <a name="register-guest-configuration-resource-provider"></a>Configuratie van de Gast-resourceprovider registreren
 
@@ -144,6 +142,32 @@ Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindo
 Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
 Waar `<version>` verwijst naar het huidige versie nummer.
+
+### <a name="collecting-logs-remotely"></a>Logboeken extern verzamelen
+
+De eerste stap bij het oplossen van problemen met configuratie van gast configuraties of modules `Test-GuestConfigurationPackage` moet de cmdlet gebruiken volgens de stappen in [een gast configuratie pakket testen](../how-to/guest-configuration-create.md#test-a-guest-configuration-package).  Als dat niet lukt, kan het verzamelen van client logboeken helpen bij het vaststellen van problemen.
+
+#### <a name="windows"></a>Windows
+
+Als u de Azure VM-opdracht uitvoeren wilt gebruiken om gegevens vast te leggen van logboek bestanden op Windows-computers, kan het volgende Power shell-voorbeeld script nuttig zijn. Zie [Power shell-scripts uitvoeren in uw Windows-VM met de opdracht uitvoeren](../../../virtual-machines/windows/run-command.md)voor meer informatie over het uitvoeren van het script vanuit Azure portal of het gebruik van Azure PowerShell.
+
+```powershell
+$linesToIncludeBeforeMatch = 0
+$linesToIncludeAfterMatch = 10
+$latestVersion = Get-ChildItem -Path 'C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\' | ForEach-Object {$_.FullName} | Sort-Object -Descending | Select-Object -First 1
+Select-String -Path "$latestVersion\dsc\logs\dsc.log" -pattern 'DSCEngine','DSCManagedEngine' -CaseSensitive -Context $linesToIncludeBeforeMatch,$linesToIncludeAfterMatch | Select-Object -Last 10
+```
+
+#### <a name="linux"></a>Linux
+
+Als u de Azure VM-opdracht uitvoeren wilt gebruiken om informatie vast te leggen van logboek bestanden in Linux-machines, kan het volgende voor beeld bash-script nuttig zijn. Zie voor meer informatie over het uitvoeren van het script vanuit Azure portal of het gebruik van Azure CLI [shell scripts uitvoeren in uw Linux-VM met de opdracht uitvoeren](../../../virtual-machines/linux/run-command.md)
+
+```Bash
+linesToIncludeBeforeMatch=0
+linesToIncludeAfterMatch=10
+latestVersion=$(find /var/lib/waagent/ -type d -name "Microsoft.GuestConfiguration.ConfigurationforLinux-*" -maxdepth 1 -print | sort -z | sed -n 1p)
+egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' "$latestVersion/GCAgent/logs/dsc.log" | tail
+```
 
 ## <a name="guest-configuration-samples"></a>Voor beelden van gast configuraties
 

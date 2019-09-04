@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 504158f248cde3a399475cdec99de3e6a4ebfcc5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b0881cb6dac9ec83d2126942c758508e760f9c83
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60598008"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274427"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>Installeren van pakketten van binnen een laptop
 
@@ -40,13 +40,13 @@ Als uitvoer van de opdracht geeft aan dat al door de voorwaarde is voldaan, word
 
 ## <a name="r"></a>R
 
-Pakketten in R kunnen worden geïnstalleerd vanuit CRAN of GitHub met de `install.packages` functie in een codecel:
+Pakketten in R kunnen worden geïnstalleerd vanuit kranen of github met `install.packages` behulp van de functie in een code-cel:
 
 ```r
 install.packages("package_name")
 ```
 
-U kunt ook voorlopige versies en andere pakketten ontwikkeling installeren vanuit GitHub met behulp van de bibliotheek devtools:
+U kunt ook prerelease-versies en andere ontwikkel pakketten van GitHub installeren met behulp van de devtools-bibliotheek:
 
 ```r
 options(unzip = 'internal')
@@ -66,12 +66,22 @@ Installeer vervolgens de pakketten:
 
 ```fsharp
 Paket.Package
-[ "MathNet.Numerics"
-"MathNet.Numerics.FSharp"
-]
+  [ "MathNet.Numerics"
+    "MathNet.Numerics.FSharp"
+  ]
+```
+
+Laad vervolgens de Paket-Generator:
+```fsharp
+#load "Paket.Generated.Refs.fsx"
+```
+
+Open de bibliotheek:
+```fsharp
+open MathNet.Numerics
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Procedure: Configureren en beheren van projecten](configure-manage-azure-notebooks-projects.md)
-- [Procedure: Een diavoorstelling](present-jupyter-notebooks-slideshow.md)
+- [Procedure: Projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
+- [Procedure: Een diavoorstelling weer geven](present-jupyter-notebooks-slideshow.md)

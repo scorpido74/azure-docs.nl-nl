@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: bb37c9106149397f50e84b340b1be1189e0de7d1
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 726fdd6aeebac970142fa9225381af77114bfe42
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186262"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274117"
 ---
 # <a name="tutorial-add-structure-to-unstructured-content-with-cognitive-search"></a>Zelfstudie: Structuur toevoegen aan ' ongestructureerde inhoud ' met cognitieve zoek functie
 
@@ -22,10 +22,10 @@ Als u ongestructureerde tekst-of afbeeldings inhoud hebt, kunt u met de [cogniti
 
 > [!div class="checklist"]
 > * Begin met hele documenten (ongestructureerde tekst) zoals PDF, MD, DOCX en PPTX in Azure Blob-opslag.
-> * Maak een pijp lijn die tekst extraheert, taal detecteert, entiteiten herkent en sleutel zinnen detecteert.
+> * Definieer een pijp lijn die tekst extraheert, taal detecteert, entiteiten herkent en sleutel zinnen detecteert.
 > * Definieer een index voor het opslaan van de uitvoer (onbewerkte inhoud, plus pijp lijn gegenereerde naam/waarde-paren).
-> * Voer de pijp lijn uit om de index te maken en te laden.
-> * Verken inhoud met zoeken in volledige tekst en een uitgebreide query syntaxis.
+> * Voer de pijp lijn uit om trans formaties en analyses te starten en om de index te maken en te laden.
+> * Bekijk de resultaten met zoeken in volledige tekst en een uitgebreide query syntaxis.
 
 U hebt verschillende services nodig om deze procedure te volt ooien, plus de [postman desktop-app](https://www.getpostman.com/) of een ander hulp programma voor het testen van webtoepassingen om rest API-aanroepen te maken. 
 
@@ -63,7 +63,7 @@ In deze walkthrough wordt Azure Search gebruikt voor het indexeren en query's, C
 
 1. Zodra de app is gemaakt, klikt u op **Ga naar de resource** om de pagina overzicht te openen.
 
-1. Klik op blobs-service.
+1. Klik op **blobs** -service.
 
 1. Klik op **+ container** om een container te maken en geef deze de naam *tandwiel-Search-demo*.
 
@@ -117,7 +117,7 @@ De aanvraag methoden die in deze zelf studie worden gebruikt, zijn **post**, **p
 
 Stel in headers ' content-type ' `application/json` in en stel `api-key` in op de beheer-API-sleutel van uw Azure Search service. Wanneer u de koppen hebt ingesteld, kunt u deze gebruiken voor elke aanvraag in deze oefening.
 
-  ![URL en header] van Postman-aanvraag (media/search-get-started-postman/postman-url.png "URL en header") van Postman-aanvraag
+  ![URL en header van Postman-aanvraag](media/search-get-started-postman/postman-url.png "URL en header van Postman-aanvraag")
 
 ## <a name="3---create-the-pipeline"></a>3: de pijp lijn maken
 

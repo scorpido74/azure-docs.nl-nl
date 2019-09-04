@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: b69bd39e97cc97830142c8b1911f1116927643b2
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: ae3530af7741b8ce48e08c2a85589ffae8a83f49
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467511"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276779"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Aanvragen verifiëren voor Azure Cognitive Services
 
@@ -66,7 +66,7 @@ In de volgende video wordt gedemonstreerd met behulp van een Cognitive Services 
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>Verifiëren met een sleutel voor meerdere service abonnementen
 
 >[!WARNING]
-> Op dit moment bieden deze services **geen** ondersteuning voor meerdere service sleutels: QnA Maker, spraak Services en Custom Vision.
+> Op dit moment bieden deze services **geen** ondersteuning voor meerdere service sleutels: QnA Maker, spraak Services, Custom Vision en anomalie detectie.
 
 Deze optie gebruikt ook een abonnements sleutel voor het verifiëren van aanvragen. Het belangrijkste verschil is dat een abonnements sleutel niet is gekoppeld aan een specifieke service, maar één sleutel kan worden gebruikt om aanvragen voor meerdere Cognitive Services te verifiëren. Zie [Cognitive Services prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/) voor informatie over regionale Beschik baarheid, ondersteunde functies en prijzen.
 

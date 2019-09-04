@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/29/2019
+ms.date: 09/04/2019
 ms.author: dalek
-ms.openlocfilehash: f2ea87f237fa5cca8a4b1f6773d2b47729cfb5b0
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: f0a3930cfb3ff403e0ce9d9be308370810e2065a
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147554"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277014"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Het gebruik en de kosten voor Application Insights beheren
 
@@ -43,7 +43,7 @@ Prijzen voor [Azure-toepassing Insights][start] is gebaseerd op gegevens volume 
 
 ### <a name="multi-step-web-tests"></a>Webtests met meerdere stappen
 
-Voor webtests [met meerdere stappen](../../azure-monitor/app/availability-multistep.md) worden extra kosten in rekening gebracht. Webtests met meerdere stappen zijn webtests die een reeks acties uitvoeren.
+Voor [webtests met meerdere stappen](../../azure-monitor/app/availability-multistep.md) worden extra kosten in rekening gebracht. Webtests met meerdere stappen zijn webtests die een reeks acties uitvoeren.
 
 Er worden geen afzonderlijke kosten in rekening gebracht voor *ping-tests* van één pagina. Telemetrie van ping-tests en tests met meerdere stappen wordt in rekening gebracht op hetzelfde als andere telemetrie van uw app.
 
@@ -54,7 +54,7 @@ Application Insights maakt het eenvoudig om te begrijpen wat uw kosten waarschij
 ![Prijzen kiezen](./media/pricing/pricing-001.png)
 
 A. Controleer uw gegevens volume voor de maand. Dit omvat alle gegevens die worden ontvangen en bewaard (na [steek proeven](../../azure-monitor/app/sampling.md)) van de server en client-apps, en van beschikbaarheids testen.  
-B. Er worden afzonderlijke kosten in rekening gebracht voor webtests [met meerdere stappen](../../azure-monitor/app/availability-multistep.md). (Dit omvat geen eenvoudige beschikbaarheids testen, die zijn opgenomen in de kosten van het gegevens volume.)  
+B. Er worden afzonderlijke kosten in rekening gebracht voor [webtests met meerdere stappen](../../azure-monitor/app/availability-multistep.md). (Dit omvat geen eenvoudige beschikbaarheids testen, die zijn opgenomen in de kosten van het gegevens volume.)  
 C. Bekijk trends in gegevens volumes voor de afgelopen maand.  
 D. [Steek proeven](../../azure-monitor/app/sampling.md)voor gegevens opname inschakelen.   
 E. Stel de dagelijkse gegevens volume limiet in.  
@@ -120,6 +120,8 @@ Als u het dagelijks kapje wilt wijzigen, selecteert u in de sectie **configurere
 
 ![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-003.png)
 
+Als u [het dagelijks kapje wilt wijzigen via Azure Resource Manager](../../azure-monitor/app/powershell.md), wijzigt `dailyQuota`u de eigenschap in.  Via Azure Resource Manager kunt u ook de `dailyQuotaResetTime` en de dagelijkse `warningThreshold`Cap instellen. 
+
 ## <a name="sampling"></a>Steekproeven
 [Steek proeven](../../azure-monitor/app/sampling.md) zijn een methode om de snelheid waarmee telemetrie wordt verzonden naar uw app te verminderen, terwijl u de mogelijkheid houdt om gerelateerde gebeurtenissen te vinden tijdens diagnostische Zoek opdrachten. U behoudt ook de juiste gebeurtenis aantallen.
 
@@ -153,7 +155,7 @@ In elk bewaard record `itemCount` geeft het aantal oorspronkelijke records aan d
 
 De standaard Bewaar periode voor Application Insights resources is 90 dagen. Voor elke Application Insights resource kunnen verschillende Bewaar perioden worden geselecteerd. De volledige set beschik bare Bewaar perioden is 30, 60, 90, 120, 180, 270, 365, 550 of 730 dagen. 
 
-Als u de retentie wilt wijzigen Application Insights, gaat u naar de pagina **gebruik en geschatte kosten** en selecteert u de optie **gegevens** retentie:
+Als u de retentie wilt wijzigen Application Insights, gaat u naar de pagina **gebruik en geschatte kosten** en selecteert u de optie **gegevens retentie** :
 
 ![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-005.png)
 

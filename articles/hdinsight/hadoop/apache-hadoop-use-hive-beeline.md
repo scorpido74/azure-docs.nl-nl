@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7c4af8346b5da20c662b5549284a3540d08908f8
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4ebdf1d14b1f8721a3709a7e8c90f2a1db76b6fc
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072927"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259135"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>De Apache Beeline-client gebruiken met Apache Hive
 
@@ -44,9 +44,9 @@ Vervang `<headnode-FQDN>` door de Fully Qualified Domain name van een cluster ho
 
 ---
 
-### <a name="to-hdinsight-enterprise-security-package-esp-cluster"></a>Naar HDInsight-cluster Enterprise Security Package (ESP)
+### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Naar HDInsight Enterprise Security Package (ESP)-cluster met behulp van Kerberos
 
-Wanneer u verbinding maakt tussen een client en een Enterprise Security Package (ESP)-cluster dat is gekoppeld aan Azure Active Directory (Aad) op een computer in dezelfde realm van het cluster, moet u `<AAD-Domain>` ook de domein naam en de naam van een domein gebruikers account opgeven met machtigingen voor toegang tot het `<username>`cluster:
+Wanneer u vanaf een client verbinding maakt met een Enterprise Security Package (ESP)-cluster dat is gekoppeld aan Azure Active Directory (Aad)-DS op een computer in dezelfde realm van het cluster, moet u `<AAD-Domain>` ook de domein naam en de naam van een domein gebruikers account opgeven met machtigingen voor toegang tot het `<username>`cluster:
 
 ```bash
 kinit <username>
@@ -57,12 +57,18 @@ Vervang `<username>` door de naam van een account in het domein met machtigingen
 
 ---
 
-### <a name="over-public-internet"></a>Via open bare Internet
+### <a name="over-public-or-private-endpoints"></a>Via open bare of persoonlijke eind punten
 
-Wanneer u verbinding maakt met een ESP-cluster dat is gekoppeld aan een niet-ESP-of Azure Active Directory (Aad) via het open bare Internet, moet `admin`u de naam van het cluster aanmeldings account (standaard) en het wacht woord opgeven. Bijvoorbeeld, met behulp van Beeline van een-client systeem om `<clustername>.azurehdinsight.net` verbinding te maken met het adres. Deze verbinding wordt via poort `443`tot stand gebracht en is versleuteld met SSL:
+Wanneer u verbinding maakt met een cluster met behulp van de open bare of persoonlijke eind punten, moet u de naam `admin`van het cluster aanmeldings account (standaard) en het wacht woord opgeven. Bijvoorbeeld, met behulp van Beeline van een-client systeem om `<clustername>.azurehdinsight.net` verbinding te maken met het adres. Deze verbinding wordt via poort `443`tot stand gebracht en is versleuteld met SSL:
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
+```
+
+of voor een persoonlijk eind punt:
+
+```bash
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
 ```
 
 Vervang `clustername` door de naam van uw HDInsight-cluster. Vervang `admin` door het cluster aanmeldings account voor uw cluster. Vervang `password` door het wacht woord voor het account voor het aanmelden bij het cluster.
@@ -73,13 +79,21 @@ Vervang `clustername` door de naam van uw HDInsight-cluster. Vervang `admin` doo
 
 Apache Spark biedt een eigen implementatie van HiveServer2, die ook wel de Spark Thrift-server wordt genoemd. Deze service maakt gebruik van Spark SQL om query's op te lossen in plaats van Hive, en kan betere prestaties leveren, afhankelijk van uw query.
 
-#### <a name="over-public-internet-with-apache-spark"></a>Via het open bare Internet met Apache Spark
+#### <a name="through-public-or-private-endpoints"></a>Via open bare of privé-eind punten
 
-De connection string die wordt gebruikt om verbinding te maken via internet, is iets anders. In plaats van `httpPath=/hive2` `httpPath/sparkhive2`deze te bevatten:
+Het gebruikte connection string is iets anders. In plaats van `httpPath=/hive2` `httpPath/sparkhive2`deze te bevatten:
 
 ```bash 
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
 ```
+
+of voor een persoonlijk eind punt:
+
+```bash 
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+```
+
+Vervang `clustername` door de naam van uw HDInsight-cluster. Vervang `admin` door het cluster aanmeldings account voor uw cluster. Vervang `password` door het wacht woord voor het account voor het aanmelden bij het cluster.
 
 ---
 

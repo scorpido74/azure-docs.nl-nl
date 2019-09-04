@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: 8065284d65f1b0a91fc05846b451305906c74fc8
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 989775916454b6710aef6c2c5be6792920622dab
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231098"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241298"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Zelfstudie: Uw eerste ML model trainen
 
@@ -47,25 +47,21 @@ In dit deel van de zelf studie voert u de code uit in het voor beeld `tutorials/
 
 1. Selecteer op de webpagina van de Jupyter-notebook de naam van de hoofdmap.  
 
-
    Deze map bevindt zich in het [opslag account](concept-workspace.md#resources) van de werk ruimte, in plaats van op de VM van de notebook zelf.  Als u de VM van de notebook verwijdert, blijft u al uw werk behouden.  Wanneer u later een nieuwe VM voor een notitie blok maakt, wordt dezelfde map geladen. Als u uw werk ruimte deelt met anderen, wordt uw map weer geven en ziet u de mappen.
 
-1. Open de `samples-*` submap en open vervolgens de Jupyter-notebook`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
-
-   > [!Warning]
-   > Zorg ervoor dat u `tutorial-1st-experiment-sdk-train.ipynb` het bestand opent, `.yml` **niet** het bestand met de > dezelfde naam. 
-
-1. De rest van dit artikel bevat dezelfde inhoud als u ziet in het notitie blok.  Schakel nu over naar het notitie blok als u de code wilt uitvoeren.
-
+1. Open de `samples-*` submap en open vervolgens de Jupyter-notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb`, **niet** het `.yml` bestand met dezelfde naam. 
 
 ## <a name="connect-workspace-and-create-experiment"></a>Verbinding maken met werk ruimte en experiment maken
+
+> [!Important]
+> De rest van dit artikel bevat dezelfde inhoud als u ziet in het notitie blok.  
+>
+> Schakel nu over naar het Jupyter-notebook als u wilt lezen tijdens het uitvoeren van de code. 
+> Als u één code-cel in een notitie blok wilt uitvoeren, klikt u op de cel code en drukt u op **SHIFT + ENTER**. Of voer het hele notitie blok uit door in het bovenste menu op **cel > alles uitvoeren** te klikken.
 
 Importeer de `Workspace` klasse en laad uw abonnements gegevens uit het bestand `config.json` met behulp van `from_config().` de functie deze zoekt standaard naar het JSON-bestand in de huidige map, maar u kunt ook een pad-para meter opgeven om naar het bestand te verwijzen gebruiken `from_config(path="your/file/path")`. In een Cloud notebook server bevindt het bestand zich automatisch in de hoofdmap.
 
 Als met de volgende code wordt gevraagd om extra verificatie, plakt u de koppeling eenvoudigweg in een browser en voert u het verificatie token in.
-
-> [!TIP]
-> Als u nog geen ervaring hebt met Jupyter-notebooks, voert u code uit door te klikken op een code-cel en **SHIFT + ENTER** om de cellen een voor een tegelijk uit te voeren. U kunt ook de hele notebook tegelijk uitvoeren, op **cel** klikken in de bovenste menu balk en vervolgens op **alles uitvoeren**.
 
 ```python
 from azureml.core import Workspace

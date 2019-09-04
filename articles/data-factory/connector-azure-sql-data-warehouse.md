@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 2bfb094994bcc6f41044a08aab6eb0155967638e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: d3365f0a893c80043c93091c3e4e91382bdcd67e
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231425"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275863"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens kopiëren naar of van Azure SQL Data Warehouse met behulp van Azure Data Factory 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -234,7 +234,9 @@ De volgende eigenschappen worden ondersteund om gegevens te kopiëren van of naa
 | Eigenschap  | Description                                                  | Vereist                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | De **type** eigenschap van de gegevensset moet worden ingesteld op **AzureSqlDWTable**. | Ja                         |
-| tableName | De naam van de tabel of weergave in de Azure SQL Data Warehouse-instantie waarnaar de gekoppelde service naar verwijst. | Nee voor bron, Ja voor sink |
+| schema | De naam van het schema. |Nee voor bron, Ja voor sink  |
+| table | De naam van de tabel/weer gave. |Nee voor bron, Ja voor sink  |
+| tableName | De naam van de tabel/weer gave met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en`table`voor nieuwe werk belasting. | Nee voor bron, Ja voor sink |
 
 #### <a name="dataset-properties-example"></a>Voorbeeld van de gegevensset-eigenschappen
 
@@ -250,7 +252,8 @@ De volgende eigenschappen worden ondersteund om gegevens te kopiëren van of naa
         },
         "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
-            "tableName": "MyTable"
+            "schema": "<schema_name>",
+            "table": "<table_name>"
         }
     }
 }
@@ -429,12 +432,12 @@ Als aan de vereisten zijn niet voldaan, wordt Azure Data Factory controleert of 
     >[!IMPORTANT]
     >Als uw Azure Storage is geconfigureerd met het VNet-service-eind punt, moet u beheerde identiteits verificatie gebruiken: Raadpleeg de [gevolgen van het gebruik van VNet-service-eind punten met Azure Storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Meer informatie over de vereiste configuraties in Data Factory van een [Azure Blob-beheerde identiteits verificatie](connector-azure-blob-storage.md#managed-identity) en [Azure data Lake Storage Gen2 beheerde identiteits verificatie](connector-azure-data-lake-storage.md#managed-identity) sectie.
 
-2. De **indeling van de bron gegevens** is van **Parquet**, **Orc**of tekst met **scheidings tekens**, met de volgende configuraties:
+2. De **indeling van de bron gegevens** is van **Parquet**, **Orc**of **tekst met scheidings tekens**, met de volgende configuraties:
 
    1. Mappad bevat geen filter voor joker tekens.
    2. De bestands naam is leeg of verwijst naar één bestand. Als u de naam van het Joker teken opgeeft in de Kopieer activiteit, `*` kan `*.*`deze alleen zijn of.
    3. `rowDelimiter`is **standaard**, **\n**, **\r\n**of **\r**.
-   4. `nullValue`is standaard ingesteld op ' "' ('"), en `treatEmptyAsNull` wordt als standaard waarde ingevuld of ingesteld op True.
+   4. `nullValue`is standaard **ingesteld op '** "' ('"), en `treatEmptyAsNull` wordt als standaard waarde ingevuld of ingesteld op True.
    5. `encodingName`is standaard ingesteld op **UTF-8**.
    6. `quoteChar`, `escapeChar` en`skipLineCount` niet opgegeven. Ondersteuning voor PolyBase overslaan rij met koppen die kan worden geconfigureerd als `firstRowAsHeader` in ADF.
    7. `compression` kan **geen compressie**, **GZip**, of **Deflate**.

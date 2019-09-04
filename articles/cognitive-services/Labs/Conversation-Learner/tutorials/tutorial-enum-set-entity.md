@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: nolachar
+ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5443b97febd6bf3831690531bceb540181e7676c
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 429570d81f7e15758d8ea60951bb4d01b96f8f2c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706980"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256488"
 ---
 # <a name="when-to-use-enum-entities-and-set-entity-actions"></a>Wanneer u ENUM-entiteiten gebruikt en ENTITEITs acties INSTELT
 
@@ -39,21 +39,21 @@ In deze zelf studie worden twee nieuwe functies geïntroduceerd. Een nieuw type 
 
 Er zijn gevallen in discussies waarbij de betekenis van woorden afhankelijk is van de context.  Normaal gesp roken worden de gelabelde sleutel woorden geleerd en geëxtraheerd met behulp van een language Standing service, maar in deze gevallen is het mogelijk dat deze systemen geen gebruik kunnen maken van voor beelden met een label.
 
-Stel dat u deelneemt aan een gesprek tussen mensen in de buurt en dat u alleen het woord ' ja ' hoort. U weet niet wat het ' ja ' is om te bevestigen of te controleren omdat u de vraag niet hebt gedaan. De vraag wordt gevraagd voordat de context is. Dit is het antwoord. En omdat ' ja ' een veelvoorkomende reactie op veel verschillende vragen is, kan het niet worden geleerd door voor beelden te bieden zoals u dat zou doen met [aangepaste](04-introduction-to-entities.md) getrainde entiteiten. vervolgens zou het label ' ja ' moeten worden weer gegeven als die entiteit.
+Stel dat u deelneemt aan een gesprek tussen mensen in de buurt en dat u alleen het woord ' ja ' hoort. U weet niet wat het ' ja ' is om te bevestigen of te controleren omdat u de vraag niet hebt gedaan. De vraag wordt gevraagd voordat de context is. Dit is het antwoord. En omdat ' ja ' een veelvoorkomende reactie op veel verschillende vragen is, kan het niet worden geleerd door voor beelden te bieden zoals u dat zou doen met [aangepaste getrainde](04-introduction-to-entities.md) entiteiten. vervolgens zou het label ' ja ' moeten worden weer gegeven als die entiteit.
 
 ### <a name="example"></a>Voorbeeld
 
 Laten we verder verduidelijken met het volgende voor beeld:
 
 Tape Als Azure Cognitive Services?
-Gebruiker: Ja-bot: Bent u tevreden over Ice room?
-Gebruiker: Ja
+Gebruiker Ja-bot: Bent u tevreden over Ice room?
+Gebruiker Ja
 
-In de vorige zelf studies hebben we gekeken naar [aangepaste](04-introduction-to-entities.md) getrainde entiteiten. het is ook mogelijk om een entiteit met de naam "likesCogServices" te maken en de eerste "ja" als deze entiteit te labelen.  Het systeem zou echter ook het tweede ' ja ' labelen. Wanneer we hebben geprobeerd om het label van de tweede ' ja ' te corrigeren op ' likesIceCream ', maken we een conflict van twee dezelfde invoer ' ja ', wat een afwijkend dingen is en die achterblijven.
+In de vorige zelf studies hebben we gekeken naar [aangepaste getrainde](04-introduction-to-entities.md) entiteiten. het is ook mogelijk om een entiteit met de naam "likesCogServices" te maken en de eerste "ja" als deze entiteit te labelen.  Het systeem zou echter ook het tweede ' ja ' labelen. Wanneer we hebben geprobeerd om het label van de tweede ' ja ' te corrigeren op ' likesIceCream ', maken we een conflict van twee dezelfde invoer ' ja ', wat een afwijkend dingen is en die achterblijven.
 
 In deze gevallen moet u ENUM-entiteiten en SET_ENTITY-acties gebruiken.
 
-## <a name="when-to-use-enums-or-setentity-actions"></a>Wanneer u ENUMs of SET_ENTITY-acties wilt gebruiken
+## <a name="when-to-use-enums-or-set_entity-actions"></a>Wanneer u ENUMs of SET_ENTITY-acties wilt gebruiken
 
 Gebruik deze regels hieronder om te weten wanneer u ENUM-entiteiten en SET_ENTITY-acties moet gebruiken:
 
@@ -66,13 +66,13 @@ Met andere woorden, u kunt deze gebruiken voor eventuele gesloten prompts, zoals
 > Er is momenteel een beperking van Maxi maal vijf waarden per Enum-entiteit. Elke waarde gebruikt een van de sleuven in de huidige limiet van 64. Zie [cl-waarden en-grenzen](../cl-values-and-boundaries.md)
 
 Voorbeeld: Tape Is uw bestelling correct?
-Gebruiker: Ja
+Gebruiker Ja
 
 Wanneer de mogelijke waarden van de entiteit open-beëindigd zijn en niet zijn opgelost, moet u een alternatieve functie gebruiken, zoals een [verwachte entiteit](05-expected-entity.md).
 
 Voorbeeld: Tape Hoe heet u?
-Gebruiker: Matt-bot: Wat is uw favoriete kleur?
-Gebruiker: Zilver
+Gebruiker Matt-bot: Wat is uw favoriete kleur?
+Gebruiker Zilver
 
 Deze prompts worden beschouwd als open beëindigd omdat ze kunnen worden beantwoord met wille keurige waarden.
 

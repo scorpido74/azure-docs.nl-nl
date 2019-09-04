@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: cf6a5b07dd72c4e2364281b755e77e642f8fe167
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 161539aaec4d3b7162405f437b7fb3dd1f6a00e6
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542983"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258850"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Aanbevolen procedures voor Azure Resource Manager sjabloon
 
@@ -169,13 +169,13 @@ De volgende informatie kan nuttig zijn wanneer u met [variabelen](resource-group
 
 ## <a name="resource-dependencies"></a>Bronafhankelijkheden
 
-Wanneer u wilt [](resource-group-define-dependencies.md) bepalen welke afhankelijkheden er moeten worden ingesteld, gebruikt u de volgende richt lijnen:
+Wanneer u wilt bepalen welke [afhankelijkheden](resource-group-define-dependencies.md) er moeten worden ingesteld, gebruikt u de volgende richt lijnen:
 
 * Gebruik de functie **Reference** en geef de naam van de resource door om een impliciete afhankelijkheid in te stellen tussen resources die een eigenschap moeten delen. Voeg geen expliciet `dependsOn` element toe wanneer u al een impliciete afhankelijkheid hebt gedefinieerd. Deze aanpak vermindert het risico van overbodige afhankelijkheden.
 
 * Stel een onderliggende bron in die afhankelijk is van de bovenliggende resource.
 
-* Resources waarvoor het [element voor waarde](resource-group-authoring-templates.md#condition) is ingesteld op ONWAAR, worden automatisch verwijderd uit de afhankelijkheids volgorde. Stel de afhankelijkheden zo in dat de resource altijd wordt geïmplementeerd.
+* Resources waarvoor het [element voor waarde](conditional-resource-deployment.md) is ingesteld op ONWAAR, worden automatisch verwijderd uit de afhankelijkheids volgorde. Stel de afhankelijkheden zo in dat de resource altijd wordt geïmplementeerd.
 
 * Zorg ervoor dat afhankelijkheden trapsgewijs worden ingesteld zonder ze expliciet in te stellen. Uw virtuele machine is bijvoorbeeld afhankelijk van een virtuele netwerk interface en de virtuele netwerk interface is afhankelijk van een virtueel netwerk en open bare IP-adressen. De virtuele machine wordt daarom geïmplementeerd na alle drie de resources, maar u hoeft de virtuele machine niet expliciet in te stellen als afhankelijk van alle drie de resources. Deze benadering verduidelijkt de afhankelijkheids volgorde en maakt het eenvoudiger om de sjabloon later te wijzigen.
 
@@ -222,7 +222,7 @@ De volgende informatie kan nuttig zijn wanneer u met [resources](resource-group-
    }
    ```
    
-   Als uw sjabloon andere waarden bevat die zijn geconfigureerd voor het gebruik van een open bare naam ruimte, wijzigt u deze waarden zodat deze overeenkomen met dezelfde verwijzings functie. U kunt bijvoorbeeld de eigenschap **storageUri** van het diagnostische Profiel van de virtuele machine instellen:
+   Als uw sjabloon andere waarden bevat die zijn geconfigureerd voor het gebruik van een open bare naam ruimte, wijzigt u deze waarden zodat deze overeenkomen met dezelfde **verwijzings** functie. U kunt bijvoorbeeld de eigenschap **storageUri** van het diagnostische Profiel van de virtuele machine instellen:
    
    ```json
    "diagnosticsProfile": {

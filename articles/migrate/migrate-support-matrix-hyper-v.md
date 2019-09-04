@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 00f222472a9b41c7f95ae90bdca57f13175b2b5d
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 26b7f185a05bcf50db3af6bd3b75d5e61d6ec84b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952126"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279571"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Ondersteuningsmatrix voor Hyper-V-evaluatie en -migratie
 
@@ -37,7 +37,7 @@ Migratie van Hyper-V-servers die met System Center Virtual Machine Manager (VMM)
 --- | ---
 Azure-machtigingen | U hebt machtigingen voor Inzender of eigenaar nodig in het abonnement om een Azure Migrate project te maken.
 Virtuele Hyper-V-machines | Evalueer Maxi maal 35.000 Hyper-V-Vm's in één project. U kunt meerdere projecten in een Azure-abonnement hebben. Een project kan zowel virtuele VMware-machines als virtuele Hyper-V-machines bevatten, tot aan de evaluatie limieten.
-Geografie | U kunt Azure Migrate projecten maken in een aantal geographs. Hoewel u projecten in specifieke ographies kunt maken, kunt u machines voor andere doel locaties evalueren of migreren. De Geografie van het project wordt alleen gebruikt om de gedetecteerde meta gegevens op te slaan.
+Geografie | U kunt Azure Migrate projecten maken in een aantal geographs. Hoewel u projecten in specifieke geografische grafieken kunt maken, kunt u machines voor andere doel locaties evalueren of migreren. De Geografie van het project wordt alleen gebruikt om de gedetecteerde meta gegevens op te slaan.
 
   **Geografie** | **Opslag locatie van meta gegevens**
   --- | ---
@@ -82,8 +82,13 @@ Voor evaluatie voert Azure Migrate een licht gewicht in voor de detectie van Hyp
 
 | **Ondersteuning**                | **Details**               
 | :-------------------       | :------------------- |
-| **Azure Migrate project**  |  Een apparaat kan worden gekoppeld aan een enkel project.<br/> U kunt Maxi maal 5000 virtuele Hyper-V-machines detecteren met één apparaat.
-| **Hyper-V**    |  U implementeert het apparaat als een Hyper-V-VM.<br/> De virtuele machine van het apparaat is Hyper-V VM versie 5,0.<br/> Op de VM-host moet Windows Server 2012 R2 of later worden uitgevoerd.<br/> Er is voldoende ruimte nodig om 16 GB RAM, 8 Vcpu's en 1 externe switch toe te wijzen voor de toestel-VM.<br/> Voor het apparaat is een statisch of dynamisch IP-adres en Internet toegang vereist.
+| **Implementatie van het apparaat**   |  U implementeert het apparaat als een Hyper-V-VM.<br/> De apparaat-VM van Azure Migrate is Hyper-V VM versie 5,0.<br/> Op de Hyper-V-host moet Windows Server 2012 R2 of later worden uitgevoerd.<br/> De host moet voldoende ruimte hebben om 16 GB RAM, 8 Vcpu's en 1 externe switch voor de apparaat-VM toe te wijzen.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en Internet toegang.
+| **Azure Migrate project**  |  Een apparaat kan worden gekoppeld aan een enkel project.<br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> U kunt Maxi maal 35.000 Vm's in een project evalueren.
+| **Hyper-V-hosts**          | Een apparaat kan verbinding maken met Maxi maal 300 Hyper-V-hosts.
+| **Detectie**              | Eén apparaat kan Maxi maal 5000 Vm's detecteren.
+| **Beoordelings groep**       | U kunt Maxi maal 35.000 computers in één groep toevoegen.
+| **Onderzoek**             | U kunt Maxi maal 35.000 Vm's in één evaluatie evalueren.
+
 
 
 ## <a name="assessment-appliance-url-access"></a>Beoordeling: toestel-URL-toegang
@@ -116,6 +121,9 @@ De volgende tabel bevat een overzicht van de poort vereisten voor evaluatie.
 --- | ---
 **Apparaat** | Binnenkomende verbindingen op TCP-poort 3389 om extern bureau blad-verbindingen met het apparaat toe te staan.<br/> Binnenkomende verbindingen op poort 44368 voor externe toegang tot de app voor het beheren van apparaten met behulp van de URL:``` https://<appliance-ip-or-name>:44368 ```<br/> Uitgaande verbindingen op de poorten 443, 5671 en 5672 voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
 **Hyper-V-host/cluster** | Binnenkomende verbindingen op WinRM-poorten 5985 (HTTP) en 5986 (HTTPS) voor het ophalen van meta gegevens over de configuratie en prestaties van de virtuele Hyper-V-machines met behulp van een Common Information Model (CIM)-sessie.
+
+## <a name="migration-limitations"></a>Migratie-beperkingen
+U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer machines wilt migreren, repliceert u in groepen van 10.
 
 ## <a name="migration-hyper-v-host-requirements"></a>Migratie-vereisten voor Hyper-V-host
 

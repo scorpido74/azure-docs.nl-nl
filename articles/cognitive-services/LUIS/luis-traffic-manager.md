@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 85f6be7a897908ef9198ac71ada809efb7c033bc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: c4ea9c5663755a4feb1693dd925d99b10c466140
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650545"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256609"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager gebruiken voor het beheer van eindpunt quotum voor sleutels
 Language Understanding (LUIS) biedt de mogelijkheid om het quotum van de aanvraag eindpunt meer dan één sleutel quotum te verhogen. Dit wordt gedaan door het maken van meer sleutels voor LUIS en deze toevoegen aan de LUIS-toepassing op de **publiceren** pagina in de **Resources en sleutels** sectie. 
@@ -48,7 +48,7 @@ New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![Schermopname van het Azure-portal met twee LUIS sleutels in de resourcegroep van luis-traffic-manager](./media/traffic-manager/luis-keys.png)
 
-2. Op de [Luis][LUIS] -website, in de sectie **beheren** op de pagina **sleutels en eind punten** , wijst u sleutels toe aan de app en publiceert u de app opnieuw door de knop **publiceren** te selecteren in het menu rechtsboven. 
+2. Op de [Luis][LUIS] -website, in de sectie **beheren** op de pagina **Azure-resources** , wijst u sleutels toe aan de app en publiceert u de app opnieuw door de knop **publiceren** te selecteren in het menu rechtsboven. 
 
     De voorbeeld-URL in de **eindpunt** kolom gebruikt een GET-aanvraag met de eindpuntsleutel als een queryparameter. Kopieer de twee nieuwe sleutels eindpunt-URL's. Ze worden gebruikt als onderdeel van de configuratie van Traffic Manager verderop in dit artikel.
 

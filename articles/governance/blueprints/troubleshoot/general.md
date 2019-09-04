@@ -7,12 +7,12 @@ ms.date: 12/11/2018
 ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 8cbefcbadc14c1249d2783f1539e40c99c3be66c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 14e957986df7a114b8c865ee82e2ac447683dc2c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231562"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257174"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Problemen met Azure-blauw drukken oplossen
 
@@ -24,7 +24,7 @@ Veel fouten worden veroorzaakt door het toewijzen van een blauw druk aan een ber
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer **toegewezen blauw drukken** op de pagina aan de linkerkant en gebruik het zoekvak om de opdrachten in de blauw druk te filteren om de mislukte toewijzing te vinden. U kunt ook de tabel met toewijzingen sorteren op de kolom inrichtings **status** om alle mislukte toewijzingen weer te geven die samen zijn gegroepeerd.
+1. Selecteer **toegewezen blauw drukken** op de pagina aan de linkerkant en gebruik het zoekvak om de opdrachten in de blauw druk te filteren om de mislukte toewijzing te vinden. U kunt ook de tabel met toewijzingen sorteren op de kolom **inrichtings status** om alle mislukte toewijzingen weer te geven die samen zijn gegroepeerd.
 
 1. Klik met de rechter muisknop op de blauw druk met de status _mislukt_ of klik met de linkermuisknop en selecteer **toewijzings details weer geven**.
 
@@ -63,7 +63,7 @@ Het door geven van een blauw druk-para meter die `[resourceGroup().tags.myTag]`g
 
 #### <a name="resolution"></a>Oplossing
 
-Als u een functie wilt door geven door middel van `[` een para meter, moet u de volledige teken reeks escapen, zodat de blauw druk-para meter `[[resourceGroup().tags.myTag]`eruit ziet. Het escape teken resulteert in blauw drukken om de waarde te behandelen als een teken reeks bij het verwerken van de blauw druk. Blauw drukken plaatst vervolgens de functie op het artefact, zodat deze dynamisch kan worden uitgevoerd. Zie voor meer informatie [sjabloon bestands structuur-syntaxis](../../../azure-resource-manager/resource-group-authoring-templates.md#syntax).
+Als u een functie wilt door geven door middel van `[` een para meter, moet u de volledige teken reeks escapen, zodat de blauw druk-para meter `[[resourceGroup().tags.myTag]`eruit ziet. Het escape teken resulteert in blauw drukken om de waarde te behandelen als een teken reeks bij het verwerken van de blauw druk. Blauw drukken plaatst vervolgens de functie op het artefact, zodat deze dynamisch kan worden uitgevoerd. Zie [syntaxis en expressies in azure Resource Manager-sjablonen](../../../azure-resource-manager/template-expressions.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

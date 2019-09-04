@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 841c55e9aa05e6b627716b084ad7685683f9faec
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 45eebe5bce819fa59f2ed6779e845afa6b3efaa5
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498358"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276844"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Aangepaste bewerkingen bijhouden met Application Insights .NET SDK
 
@@ -32,7 +32,7 @@ Dit document bevat richt lijnen voor het bijhouden van aangepaste bewerkingen me
 - Application Insights voor ASP.NET Core versie 2.1 +.
 
 ## <a name="overview"></a>Overzicht
-Een bewerking is een logisch gedeelte van het werk dat door een toepassing wordt uitgevoerd. Het heeft een naam, start tijd, duur, resultaat en een context van uitvoering zoals gebruikers naam, eigenschappen en resultaat. Als bewerking A werd geïnitieerd door bewerking B, wordt bewerking B ingesteld als een bovenliggend item voor een. Een bewerking kan slechts één bovenliggend element hebben, maar kan veel onderliggende bewerkingen hebben. Zie [Azure-toepassing Insights-correlatie](correlation.md)voor telemetrie voor meer informatie over bewerkingen en de correlatie tussen de telemetrie.
+Een bewerking is een logisch gedeelte van het werk dat door een toepassing wordt uitgevoerd. Het heeft een naam, start tijd, duur, resultaat en een context van uitvoering zoals gebruikers naam, eigenschappen en resultaat. Als bewerking A werd geïnitieerd door bewerking B, wordt bewerking B ingesteld als een bovenliggend item voor een. Een bewerking kan slechts één bovenliggend element hebben, maar kan veel onderliggende bewerkingen hebben. Zie [Azure-toepassing Insights-correlatie voor telemetrie](correlation.md)voor meer informatie over bewerkingen en de correlatie tussen de telemetrie.
 
 In de Application Insights .NET SDK wordt de bewerking beschreven door de abstracte klasse [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) en de bijbehorende descendanten [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) en [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs).
 
@@ -318,7 +318,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
     {
         // Update status code and success as appropriate.
         telemetry.Stop();
-        telemetryClient.Track(telemetry);
+        telemetryClient.TrackDependency(telemetry);
     }
 
     return null;
@@ -494,7 +494,7 @@ Elke Application Insights bewerking (aanvraag of afhankelijkheid) `Activity` omv
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Leer de basis beginselen van de [correlatie](correlation.md) tussen de telemetrie in Application Insights.
+- Leer de basis beginselen van de correlatie tussen de [telemetrie](correlation.md) in Application Insights.
 - Zie het [gegevens model](../../azure-monitor/app/data-model.md) voor Application Insights typen en het gegevens model.
 - Aangepaste [gebeurtenissen en metrische gegevens](../../azure-monitor/app/api-custom-events-metrics.md) rapporteren aan Application Insights.
 - Bekijk de standaard [configuratie](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) voor de verzameling context eigenschappen.

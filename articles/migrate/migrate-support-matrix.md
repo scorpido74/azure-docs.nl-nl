@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 99ef5c8a4a4291dd1b9d047da9006623dacd0b53
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 3fb36eb9b8507903d1aee00b82c375685a4dfa6c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147869"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279476"
 ---
 # <a name="azure-migrate-support-matrix"></a>Ondersteunings matrix Azure Migrate
 
@@ -56,7 +56,7 @@ CorentTech | Migratie | [Meer informatie](https://www.corenttech.com/).
 Subscription | U kunt meerdere Azure Migrate-projecten in een abonnement hebben.
 Azure-machtigingen | U hebt machtigingen voor Inzender of eigenaar nodig in het abonnement om een Azure Migrate project te maken.
 Virtuele VMware-machines  | Evalueer Maxi maal 35.000 VMware-Vm's in één project.
-Virtuele Hyper-V-machines | Evalueer Maxi maal 10.000 Hyper-V-Vm's in één project.
+Virtuele Hyper-V-machines | Evalueer Maxi maal 35.000 Hyper-V-Vm's in één project.
 
 Een project kan zowel virtuele VMware-machines als virtuele Hyper-V-machines bevatten, tot aan de evaluatie limieten.
 

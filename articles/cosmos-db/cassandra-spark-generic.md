@@ -7,13 +7,13 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: cc28cf590a1fd2c3fdfe8651f136526188801c04
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 09/01/2019
+ms.openlocfilehash: cb34ea44c069f067d13a6480531a94a1a515f380
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615641"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241246"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Verbinding maken met Azure Cosmos DB Cassandra-API vanuit Spark
 
@@ -29,7 +29,7 @@ Dit artikel is een reeks artikelen over Azure Cosmos DB Cassandra-API integratie
 
 * **Azure Cosmos DB helper-bibliotheek voor Cassandra-API:** Naast de Spark-connector hebt u een andere bibliotheek met de naam [Azure-Cosmos-Cassandra-Spark-helper]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) van Azure Cosmos DB nodig. Deze bibliotheek bevat een aangepaste Connection Factory en beleids klassen voor opnieuw proberen.
 
-  Het beleid voor opnieuw proberen in Azure Cosmos DB is geconfigureerd om de uitzonde ringen voor HTTP-status codes 429 (' hoge aanvraag frequentie ') te verwerken. Met de Azure Cosmos DB Cassandra-API worden deze uitzonde ringen omgezet in overbelaste fouten in het Cassandra native-protocol en kunt u het opnieuw proberen met behulp van back-ups. Omdat Azure Cosmos DB het ingerichte doorvoer model gebruikt, worden de aanvraag frequentie beperkingen uitzonde ringen veroorzaakt wanneer de ingangs-en uitlopende snelheid toeneemt. Met het beleid voor opnieuw proberen worden uw Spark-taken beschermd tegen gegevens pieken die de door Voer toegewezen voor uw verzameling overschrijden.
+  Het beleid voor opnieuw proberen in Azure Cosmos DB is geconfigureerd om de uitzonde ringen voor HTTP-status codes 429 (' hoge aanvraag frequentie ') te verwerken. Met de Azure Cosmos DB Cassandra-API worden deze uitzonde ringen omgezet in overbelaste fouten in het Cassandra native-protocol en kunt u het opnieuw proberen met behulp van back-ups. Omdat Azure Cosmos DB het ingerichte doorvoer model gebruikt, worden de aanvraag frequentie beperkingen uitzonde ringen veroorzaakt wanneer de ingangs-en uitlopende snelheid toeneemt. Met het beleid voor opnieuw proberen worden uw Spark-taken beschermd tegen gegevens pieken die de door Voer toegewezen aan uw container overschrijden.
 
   > [!NOTE] 
   > Het beleid voor opnieuw proberen kan uw Spark-taken alleen beveiligen tegen tijdelijke pieken. Als u onvoldoende RUs hebt geconfigureerd om uw werk belasting uit te voeren, is het beleid voor opnieuw proberen niet van toepassing en wordt de uitzonde ring opnieuw gegenereerd met de klasse beleid opnieuw proberen.

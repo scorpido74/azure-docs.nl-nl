@@ -10,22 +10,22 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f54643883028d93b56c7e122f43db95bb6d0b8c1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3bdada262df3778ab8781f967fdbd64a780009b2
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560875"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258293"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Quickstart: Een nieuwe app maken in de LUIS-Portal
 
-In deze Quick Start maakt u een nieuwe app in de [Luis-Portal](https://www.luis.ai). Eerst maakt u de basis onderdelen van een app, intenties en **entiteiten**. Vervolgens test u de app door een voor beeld van een gebruiker utterance in het interactieve test paneel op te geven om de voorspelde intentie te verkrijgen.
+In deze Quick Start maakt u een nieuwe app in de [Luis-Portal](https://www.luis.ai). Eerst maakt u de basis onderdelen van een app, **intenties**en **entiteiten**. Vervolgens test u de app door een voor beeld van een gebruiker utterance in het interactieve test paneel op te geven om de voorspelde intentie te verkrijgen.
 
 Het bouwen van een app is gratis en er is geen Azure-abonnement vereist. Wanneer u klaar bent om uw app te implementeren, raadpleegt u de [Snelstartgids voor het implementeren van een app](get-started-portal-deploy-app.md). U ziet hoe u een Azure cognitieve service-resource maakt en deze aan de app toewijst.
 
-## <a name="create-an-app"></a>Een app maken
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
-1. Open de [Luis-Portal](https://www.luis.ai) in een browser en meld u aan. Als het de eerste keer is dat u zich aanmeldt, moet u een gratis LUIS Portal-gebruikers account maken.
+## <a name="create-an-app"></a>Een app maken
 
 1. Selecteer **nieuwe app maken** in de context werkbalk.
 
@@ -49,7 +49,7 @@ Nadat de LUIS-app is gemaakt, moet u intenties maken. Met bedingen kunt u tekst 
  1. Taken zoeken en Toep assen
  1. Formulieren zoeken die moeten worden toegepast op taken
 
-De twee verschillende bedoelingen van de app worden uitgelijnd op de volgende intenties:
+De twee verschillende _bedoelingen_ van de app worden uitgelijnd op de volgende intenties:
 
 |Intentie|Voorbeeld tekst van gebruiker<br>ook wel bekend als een _utterance_|
 |--|--|
@@ -58,7 +58,7 @@ De twee verschillende bedoelingen van de app worden uitgelijnd op de volgende in
 
 Voer de volgende stappen uit om intenties te maken:
 
-1. Nadat de app is gemaakt, bevindt u  zich op de pagina intenties van de sectie **bouwen** . Selecteer **Create new intent**.
+1. Nadat de app is gemaakt, bevindt u zich op de pagina **intenties** van de sectie **bouwen** . Selecteer **Create new intent**.
 
    [![Knop nieuwe intentie maken selecteren](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
@@ -124,7 +124,7 @@ Het formulier moet worden gemarkeerd als een entiteit om het formulier nummer te
 
 De voor beeld-uitingen van **geen** intentie moet zich buiten uw client toepassings domein bevinden.
 
-1. Selecteer  intenties in het menu links en selecteer vervolgens **geen** in de lijst intenties.
+1. Selecteer **intenties** in het menu links en selecteer vervolgens **geen** in de lijst intenties.
 
 1. Voeg het volgende voor beeld uitingen toe aan de bedoeling:
 
@@ -142,7 +142,7 @@ Selecteer in het menu in de rechter bovenhoek de optie **Train** om het doel van
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Bekijk de entiteit reguliere expressie in het voor beeld uitingen
 
-1. Controleer of de entiteit is gevonden in de **FindForm** -intentie door  intenties te selecteren in het menu links. Selecteer vervolgens **FindForm** intentie.
+1. Controleer of de entiteit is gevonden in de **FindForm** -intentie door **intenties** te selecteren in het menu links. Selecteer vervolgens **FindForm** intentie.
 
    De entiteit is gemarkeerd waar deze wordt weer gegeven in het voor beeld uitingen. Als u de oorspronkelijke tekst wilt zien in plaats van de naam van de entiteit, schakelt u in de werk balk **weer gave entiteiten** in.
 

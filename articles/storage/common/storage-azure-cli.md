@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: d259ea02824937f0c496bb253fa4b6c1f5cea412
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 46ae70bf4f1c2fe0276a3327ff37650dd57341d0
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015640"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259390"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>De Azure CLI gebruiken met Azure Storage
 
@@ -25,9 +25,9 @@ In deze hand leiding wordt uitgelegd hoe u de [Azure cli](https://docs.microsoft
 
 In de voor beelden in de hand leiding wordt uitgegaan van het gebruik van de bash-shell op Ubuntu, maar andere platforms moeten op dezelfde manier worden uitgevoerd. 
 
-[!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
-
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
+[!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 In deze hand leiding wordt ervan uitgegaan dat u bekend bent met de basis concepten van Azure Storage. Er wordt ook van uitgegaan dat u voldoet aan de vereisten voor het maken van het account die hieronder zijn opgegeven voor Azure en de Storage-service.
@@ -267,7 +267,7 @@ Als u rechtstreeks wilt uploaden naar een map in de container in uw opslag accou
 
  De `blob upload` opdracht uploadt standaard *. VHD-bestanden naar pagina-blobs of blok-blobs. Als u een ander type wilt opgeven wanneer u een BLOB uploadt, `--type` kunt u het argument-- `append`toegestane `block`waarden gebruiken `page`, en.
 
- Zie voor meer informatie over de verschillende typen blobs ' [blok-blobs, toevoeg-blobs en pagina](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)-blobs '.
+ Zie voor meer informatie over de verschillende typen blobs ' [blok-blobs, toevoeg-blobs en pagina-blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)'.
 
 
 ### <a name="download-a-blob-from-a-container"></a>Een blob downloaden uit een container

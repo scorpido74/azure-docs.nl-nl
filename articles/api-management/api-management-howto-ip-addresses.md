@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 64bd71d89446a19d2afe56a32b0c7124e897cb48
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8d7346bb61fad09e3f7c9098809463285ef57e93
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072417"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242484"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>IP-adressen van Azure API Management
 
@@ -27,7 +27,9 @@ U kunt IP-adressen gebruiken om firewall regels te maken, het binnenkomende verk
 
 ## <a name="ip-addresses-of-api-management-service"></a>IP-adressen van API Management-service
 
-Als uw API Management-service een ontwikkelaar, Basic, Standard of Premium-laag service is, kunt u de IP-adressen ophalen uit het overzichts Dashboard van uw resource in de Azure Portal.
+Elk exemplaar van de API Management service in de laag ontwikkelaar, Basic, Standard of Premium heeft open bare IP-adressen, die uitsluitend voor dat service-exemplaar zijn bedoeld (ze worden niet gedeeld met andere resources). 
+
+U kunt de IP-adressen ophalen uit het overzichts Dashboard van uw resource in de Azure Portal.
 
 ![API Management IP-adres](media/api-management-howto-ip-addresses/public-ip.png)
 
@@ -98,7 +100,7 @@ U kunt het bereik van IP-adressen van Azure-Data Centers gebruiken voor het bepe
 In de lagen ontwikkelaar, basis, standaard en Premium van API Management zijn de open bare IP-adressen (VIP) statisch voor de levens duur van een service, met de volgende uitzonde ringen:
 
 * De service wordt verwijderd en vervolgens opnieuw gemaakt.
-* Het service abonnement wordt [opgeschort](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) of [](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) gewaarschuwd (bijvoorbeeld voor niet-betaling) en vervolgens opnieuw ingesteld.
+* Het service abonnement wordt [opgeschort](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) of [gewaarschuwd](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) (bijvoorbeeld voor niet-betaling) en vervolgens opnieuw ingesteld.
 * Azure Virtual Network wordt toegevoegd aan of verwijderd uit de service.
 
 In [meerdere regionale implementaties](api-management-howto-deploy-multi-region.md)verandert het regionale IP-adres als een regio leeg is en opnieuw wordt ingesteld.
