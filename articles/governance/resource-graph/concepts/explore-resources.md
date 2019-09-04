@@ -7,18 +7,16 @@ ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 58470dddafb29b6a2e5fa8ec0b474dd5da778799
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 148d69b96291737088a1472a9affd8bb9e43ab1b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231544"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241131"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Azure-resources verkennen met Resource Graph
 
 Azure resource Graph biedt de mogelijkheid om uw Azure-resources snel en op schaal te verkennen en te detecteren. Het is ontworpen voor snelle reacties en is een fantastische manier om meer te weten te komen over uw omgeving en over de eigenschappen van uw Azure-resources.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="explore-virtual-machines"></a>Virtuele machines verkennen
 

@@ -9,20 +9,20 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: af01c0c2586ce7df1902a0bcc502c6fd06a5215d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c7db2b4d49e3b9297c32d2e11ffe7c7702c17544
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697913"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274564"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Een Cognitive Services resource maken met behulp van de Azure Portal
 
-Gebruik deze Quick Start om aan de slag te gaan met Azure Cognitive Services met behulp van de Azure Portal. Cognitive Services worden vertegenwoordigd door Azure- [resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) die u in uw Azure-abonnement hebt gemaakt. Nadat u de resource hebt gemaakt, gebruikt u de sleutels en het eind punt dat u hebt gegenereerd voor het verifiëren van uw toepassingen. 
+Gebruik deze Quick Start om een Azure Cognitive Services-resource te maken met behulp van de Azure Portal. Nadat u een Cognitive Services resource hebt gemaakt, krijgt u een eind punt en een sleutel die u kunt gebruiken om uw toepassingen te verifiëren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een geldig Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/) .
+* Een geldig Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/).
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
@@ -34,35 +34,68 @@ Voordat u een Cognitive Services resource maakt, moet u een Azure-resource groep
 
     ![Cognitive Services-API's selecteren](media/cognitive-services-apis-create-account/azurePortalScreenMulti.png)
 
-2. U kunt op de volgende manieren beschik bare Cognitive Services vinden:
-    * Gebruik de zoek balk en voer de naam in van de service waarop u zich wilt abonneren.
-        * Als u een resource voor meerdere services wilt maken, voert u **Cognitive Services** in de zoek balk in en selecteert u de **Cognitive Services** resource.
+2. Zoals eerder is uitgelegd, kunt u op twee manieren een Cognitive Services resource maken, met behulp van een resource voor meerdere services of een resource met één service.
 
-        ![Zoeken naar Cognitive Services](media/cognitive-services-apis-create-account/azureCogServSearchMulti.png)
+    #### <a name="multi-service-resourcetabmultiservice"></a>[Resource met meerdere services](#tab/multiservice)
 
-    * Als u alle beschik bare cognitieve Services wilt weer geven, selecteert u **AI + machine learning**onder **Azure Marketplace**. Als u de service waarin u bent geïnteresseerd, niet ziet, klikt u op **alles weer geven** en bladert u naar **Cognitive Services**. Klik op **meer** om de volledige catalogus van Cognitive Services-API's weer te geven.
+    Als u een resource voor meerdere services wilt maken, voert u **Cognitive Services** in de zoek balk in.
+
+    ![Zoeken naar Cognitive Services](media/cognitive-services-apis-create-account/azureCogServSearchMulti.png)
+
+    Selecteer op de pagina Cognitive Services **maken**.
+
+    ![Cognitive Services account maken](media/cognitive-services-apis-create-account/azurecogservsearchmulti-2.png)
+
+    #### <a name="single-service-resourcetabsingleservice"></a>[Resource met één service](#tab/singleservice)
+
+    Als u alle beschik bare cognitieve Services wilt weer geven, selecteert u **AI + machine learning**onder **Azure Marketplace**. Als u de service waarin u bent geïnteresseerd, niet ziet, klikt u op **alles weer geven** en bladert u naar **Cognitive Services**. Klik op **meer** weer geven om de volledige catalogus met Cognitive services te bekijken.
+
+    Klik op **maken**wanneer u zich op de gewenste service bevindt.
     
-        ![Cognitive Services-API's selecteren](media/cognitive-services-apis-create-account/azureMarketplace.png)
+    ![Cognitive Services-API's selecteren](media/cognitive-services-apis-create-account/azureMarketplace.png)
 
+    ***
 3. Geef op de pagina **maken** de volgende informatie op:
 
-    > [!IMPORTANT]
-    > Onthoud uw Azure-locatie, omdat u deze mogelijk nodig hebt bij het aanroepen van de Azure Cognitive Services.
+    #### <a name="multi-service-resourcetabmultiservice"></a>[Resource met meerdere services](#tab/multiservice)
 
     |    |    |
     |--|--|
-    | **Name** | Een beschrijvende naam voor uw cognitieve Services-resource. Bijvoorbeeld *MyCognitiveServicesAccount*. |
+    | **Name** | Een beschrijvende naam voor uw cognitieve Services-resource. Bijvoorbeeld *MyCognitiveServicesResource*. |
     | **Abonnement** | Selecteer een van de beschik bare Azure-abonnementen. |
-    | **Location** | De locatie van uw cognitieve service-exemplaar. Verschillende locaties kunnen latentie introduceren, maar hebben geen invloed op de runtime-Beschik baarheid van uw resource. |
+    | **Location** | De locatie van uw cognitieve service-exemplaar. Verschillende locaties kunnen latentie introduceren, maar hebben geen invloed op de runtime-Beschik baarheid van uw resource. Onthoud uw Azure-locatie, omdat u deze mogelijk nodig hebt bij het aanroepen van de Azure Cognitive Services. |
     | **Prijscategorie** | De kosten van uw Cognitive Services-account zijn afhankelijk van de opties die u kiest en uw gebruik. Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/cognitive-services/)voor de API voor meer informatie.
-    | **Resourcegroep** | De [Azure-resource groep](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group) die uw Cognitive Services-resource bevat. U kunt een nieuwe groep maken of toevoegen aan een bestaande groep. |
+    | **Resourcegroep** | De Azure-resource groep die uw Cognitive Services-resource bevat. U kunt een nieuwe groep maken of toevoegen aan een bestaande groep. |
+
+    ![Scherm voor het maken van resources](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
+
+    Klik op **Create**.
+
+    #### <a name="single-service-resourcetabsingleservice"></a>[Resource met één service](#tab/singleservice)
+
+    |    |    |
+    |--|--|
+    | **Name** | Een beschrijvende naam voor uw cognitieve Services-resource. Bijvoorbeeld *TextAnalyticsResource*. |
+    | **Abonnement** | Selecteer een van de beschik bare Azure-abonnementen. |
+    | **Location** | De locatie van uw cognitieve service-exemplaar. Verschillende locaties kunnen latentie introduceren, maar hebben geen invloed op de runtime-Beschik baarheid van uw resource. Onthoud uw Azure-locatie, omdat u deze mogelijk nodig hebt bij het aanroepen van de Azure Cognitive Services. |
+    | **Prijscategorie** | De kosten van uw Cognitive Services-account zijn afhankelijk van de opties die u kiest en uw gebruik. Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/cognitive-services/)voor de API voor meer informatie.
+    | **Resourcegroep** | De Azure-resource groep die uw Cognitive Services-resource bevat. U kunt een nieuwe groep maken of toevoegen aan een bestaande groep. |
 
     ![Scherm voor het maken van resources](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
+    Klik op **Create**.
+
+    ***
 
 ## <a name="get-the-keys-for-your-resource"></a>De sleutels voor uw resource ophalen
 
-Nadat u de resource hebt gemaakt, kunt u deze openen vanuit het Azure-dash board als u deze hebt vastgemaakt. Als dat niet het geval is, kunt u het vinden in **resource groepen**. Nadat u uw resource hebt geselecteerd, kunt u de sleutels ophalen door **sleutels** te selecteren onder **resource beheer**.
+Nadat de resource is gemaakt, krijgt u een pop-upmelding in de rechter bovenhoek van het scherm. Klik in de melding op **Ga naar resource** om de cognitieve service resource te zien die u hebt gemaakt. 
+
+![Ga naar de cognitieve Service Resource](media/cognitive-services-apis-create-account/cog-serv-go-to-resource.png)
+
+In het deel venster Quick start dat wordt geopend, hebt u toegang tot het eind punt en de sleutel.
+
+![Sleutel en eind punt ophalen](media/cognitive-services-apis-create-account/get-cog-serv-keys.png)
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
 
@@ -71,7 +104,7 @@ Nadat u de resource hebt gemaakt, kunt u deze openen vanuit het Azure-dash board
 De prijs categorieën (en de hoeveelheid die u ontvangt) zijn gebaseerd op het aantal trans acties dat u verzendt met behulp van uw verificatie gegevens. Met elke prijs categorie geeft u het volgende op:
 * het maximum aantal toegestane trans acties per seconde (TPS).
 * Service functies zijn ingeschakeld in de prijs categorie.
-* De kosten voor een vooraf gedefinieerd bedrag aan trans acties. Boven deze hoeveelheid worden er extra kosten in rekening gebracht, zoals is opgegeven in de [prijs informatie](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) voor uw service.
+* De kosten voor een vooraf gedefinieerd aantal trans acties. Boven deze hoeveelheid worden er extra kosten in rekening gebracht, zoals is opgegeven in de [prijs informatie](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) voor uw service.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -86,6 +119,6 @@ Ga als volgt te werk om een resourcegroep te verwijderen in Azure Portal:
 ## <a name="see-also"></a>Zie ook
 
 * [Aanvragen verifiëren voor Azure Cognitive Services](authentication.md)
-* [Wat zijn Azure Cognitive Services?](Welcome.md)
+* [Wat is Azure Cognitive Services?](Welcome.md)
 * [Ondersteuning voor natuurlijke taal](language-support.md)
 * [Ondersteuning voor docker-container](cognitive-services-container-support.md)

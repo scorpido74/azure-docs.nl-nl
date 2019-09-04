@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 9ee0f4ccfcd75504be6bb636e7ee54a845a10280
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a20a901d5fde251fdc1a044795615acdc1d61c5b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966925"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277632"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Gegevens kopiëren van en naar ODBC-gegevens archieven met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -51,7 +51,7 @@ De volgende eigenschappen worden ondersteund voor ODBC-gekoppelde services:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **Odbc** | Ja |
+| Type | De eigenschap type moet worden ingesteld op: **Odbc** | Ja |
 | connectionString | De connection string het referentie gedeelte niet uitsluiten. U kunt de Connection String met een patroon `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`opgeven, of de systeem-DSN (gegevens bron naam) gebruiken die u hebt ingesteld op de Integration runtime machine met `"DSN=<name of the DSN on IR machine>;"` (u moet nog steeds het referentie deel opgeven in de gekoppelde service).<br>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md).| Ja |
 | authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met het ODBC-gegevens archief.<br/>Toegestane waarden zijn: **Basis** en **anoniem**. | Ja |
 | userName | Geef de gebruikers naam op als u basis verificatie gebruikt. | Nee |
@@ -114,13 +114,13 @@ De volgende eigenschappen worden ondersteund voor ODBC-gekoppelde services:
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel gegevenssets voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die door de ODBC-gegevensset worden ondersteund.
+Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. In deze sectie vindt u een lijst met eigenschappen die door de ODBC-gegevensset worden ondersteund.
 
-Als u gegevens wilt kopiëren van/naar een ODBC-compatibel gegevens archief, stelt u de eigenschap type van de gegevensset in op **RelationalTable**. De volgende eigenschappen worden ondersteund:
+Als u gegevens wilt kopiëren van/naar een ODBC-compatibel gegevens archief, worden de volgende eigenschappen ondersteund:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **RelationalTable** | Ja |
+| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **OdbcTable** | Ja |
 | tableName | De naam van de tabel in het ODBC-gegevens archief. | Nee voor bron (als "query" in activiteits bron is opgegeven);<br/>Ja voor Sink |
 
 **Voorbeeld**
@@ -129,7 +129,8 @@ Als u gegevens wilt kopiëren van/naar een ODBC-compatibel gegevens archief, ste
 {
     "name": "ODBCDataset",
     "properties": {
-        "type": "RelationalTable",
+        "type": "OdbcTable",
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<ODBC linked service name>",
             "type": "LinkedServiceReference"
@@ -141,17 +142,19 @@ Als u gegevens wilt kopiëren van/naar een ODBC-compatibel gegevens archief, ste
 }
 ```
 
+Als u getypte gegevensset gebruikt `RelationalTable` , wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
+
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
 Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. In deze sectie vindt u een lijst met eigenschappen die door de ODBC-bron worden ondersteund.
 
 ### <a name="odbc-as-source"></a>ODBC als bron
 
-Als u gegevens wilt kopiëren vanuit een ODBC-compatibel gegevens archief, stelt u het bron type in de Kopieer activiteit in op **RelationalSource**. De volgende eigenschappen worden ondersteund in de kopieeractiviteit **source** sectie:
+Als u gegevens wilt kopiëren vanuit een ODBC-compatibel gegevens archief, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **RelationalSource** | Ja |
+| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **OdbcSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**
@@ -175,7 +178,7 @@ Als u gegevens wilt kopiëren vanuit een ODBC-compatibel gegevens archief, stelt
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "OdbcSource",
                 "query": "SELECT * FROM MyTable"
             },
             "sink": {
@@ -186,13 +189,15 @@ Als u gegevens wilt kopiëren vanuit een ODBC-compatibel gegevens archief, stelt
 ]
 ```
 
+Als u getypte bron gebruikt `RelationalSource` , wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
+
 ### <a name="odbc-as-sink"></a>ODBC als Sink
 
 Als u gegevens wilt kopiëren naar een ODBC-compatibel gegevens archief, stelt u het sink-type in de Kopieer activiteit in op **OdbcSink**. De volgende eigenschappen worden ondersteund in de kopieeractiviteit **sink** sectie:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld op: **OdbcSink** | Ja |
+| Type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld op: **OdbcSink** | Ja |
 | writeBatchTimeout |Wacht tijd voordat de batch INSERT-bewerking is voltooid voordat er een time-out optreedt.<br/>Toegestane waarden zijn: time span. Voorbeeld: "00:30:00" (30 minuten). |Nee |
 | writeBatchSize |Hiermee worden gegevens in de SQL-tabel ingevoegd wanneer de buffer grootte writeBatchSize bereikt.<br/>Toegestane waarden zijn: geheel getal (aantal rijen). |Nee (standaard is 0-automatisch gedetecteerd) |
 | preCopyScript |Geef een SQL-query voor de Kopieer activiteit op die moet worden uitgevoerd voordat u gegevens naar het gegevens archief in elke run schrijft. U kunt deze eigenschap gebruiken om de vooraf geladen gegevens op te schonen. |Nee |

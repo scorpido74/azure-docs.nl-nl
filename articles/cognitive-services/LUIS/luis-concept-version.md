@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2e13efa70d0344defeb306a92ac405439635e929
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: c519b030aaee58397766ecb8658e7af08b5986e1
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619696"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256877"
 ---
 # <a name="understand-how-and-when-to-use-a-luis-version"></a>Meer informatie over hoe en wanneer u een LUIS-versie gebruikt
 
@@ -48,7 +48,7 @@ U kunt een versie importeren op het niveau van de app. Deze versie wordt de acti
 
 U kunt een versie exporteren op het niveau van de app of u kunt een versie exporteren op versie niveau. Het enige verschil is dat de geëxporteerde versie op app-niveau de momenteel actieve versie is op versie niveau, u kunt een wille keurige versie kiezen die u wilt exporteren op de pagina **[instellingen](luis-how-to-manage-versions.md)** . 
 
-Het geëxporteerde bestand bevat geen door de computer geleerde informatie omdat de app opnieuw wordt getraind nadat deze is geïmporteerd. Het geëxporteerde bestand bevat geen mede werkers--u moet deze terug toevoegen zodra de versie in de nieuwe app is geïmporteerd.
+Het geëxporteerde bestand bevat geen door de computer geleerde informatie omdat de app opnieuw wordt getraind nadat deze is geïmporteerd. Het geëxporteerde bestand bevat geen Inzender gegevens.
 
 ## <a name="export-each-version-as-app-backup"></a>Elke versie exporteren als app-back-up
 Als u een back-up van uw LUIS-app wilt maken, exporteert u elke versie op de pagina **[instellingen](luis-how-to-manage-versions.md)** .
@@ -59,11 +59,26 @@ U kunt alle versies, met uitzonde ring van de actieve versie, verwijderen uit de
 ## <a name="version-availability-at-the-endpoint"></a>Beschik baarheid van versie op het eind punt
 Getrainde versies zijn niet automatisch beschikbaar op het [eind punt](luis-glossary.md#endpoint)van uw app. U moet een versie [publiceren](luis-how-to-publish-app.md) of opnieuw publiceren zodat deze beschikbaar is op het eind punt van de app. U kunt publiceren naar **fase ring** en **productie**, zodat u Maxi maal twee versies van de app beschikbaar hebt op het eind punt. Als u meer versies van de app op een eind punt beschikbaar wilt stellen, moet u de versie exporteren en opnieuw importeren in een nieuwe app. De nieuwe app heeft een andere app-ID.
 
-## <a name="collaborators"></a>Samenwerkers
-De eigenaar en alle [](luis-how-to-collaborate.md) deel nemers hebben volledige toegang tot alle versies van de app.
+## <a name="manage-multiple-versions-inside-the-same-app"></a>Meerdere versies binnen dezelfde app beheren
+Beginnen met het [klonen](luis-how-to-manage-versions.md#clone-a-version), van een basisversie voor elke auteur maken. 
+
+Elke auteur brengt wijzigingen aan in hun eigen versie van de app. Wanneer elke auteur maken door het model is, moet u de nieuwe versies exporteren naar JSON-bestanden.  
+
+Geëxporteerde apps zijn JSON-indeling bestanden, die wijzigingen kunnen worden vergeleken. Combineer de bestanden voor het maken van een enkel JSON-bestand van de nieuwe versie. Wijzig de **versionId** eigenschap in de JSON om de nieuwe versie van de samengevoegde aan te geven. Die versie importeren in de oorspronkelijke app. 
+
+Deze methode kunt u een actieve versie, één fase-versie en een gepubliceerde versie hebben. U kunt de resultaten van de actieve versie vergelijken met een gepubliceerde versie (fase of productie) in het [interactieve test venster](luis-interactive-test.md).
+
+## <a name="manage-multiple-versions-as-apps"></a>Beheer van meerdere versies als apps
+[Exporteren](luis-how-to-manage-versions.md#export-version) de basisversie. Elke auteur importeert de-versie. De persoon die de invoer van de app is de eigenaar van de versie. Wanneer ze klaar zijn voor het wijzigen van de app, de versie exporteren. 
+
+Geëxporteerde apps zijn JSON-indeling bestanden, die kunnen worden vergeleken met de basis exporteren voor wijzigingen. Combineer de bestanden voor het maken van een enkel JSON-bestand van de nieuwe versie. Wijzig de **versionId** eigenschap in de JSON om de nieuwe versie van de samengevoegde aan te geven. Die versie importeren in de oorspronkelijke app.
+
+## <a name="contributions-from-collaborators"></a>Bijdragen van deel nemers
+
+Meer informatie over het ontwerpen van bijdragen van deel [nemers](luis-how-to-collaborate.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [versie beheer](luis-how-to-manage-versions.md) toevoegen op de pagina app-instellingen. 
 
-Meer informatie over het [](luis-concept-intent.md) ontwerpen van intenties in het model.
+Meer informatie over het ontwerpen van [intenties](luis-concept-intent.md) in het model.

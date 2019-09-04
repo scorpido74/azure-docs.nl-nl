@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 33ee006a704cec1fb0d75a953629aec68461a4f4
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 8bf83f483bb7680b71bf928430858240deb3d603
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165194"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278812"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Een ontwikkelomgeving configureren voor Azure Machine Learning
 
@@ -34,7 +34,7 @@ In de volgende tabel ziet u elke ontwikkel omgeving die in dit artikel wordt beh
 
 Dit artikel bevat ook extra tips voor het gebruik van de volgende hulpprogram ma's:
 
-* [Jupyter](#jupyter)-notebooks: Als u de Jupyter Notebook al gebruikt, heeft de SDK enkele extra's die u moet installeren.
+* [Jupyter-notebooks](#jupyter): Als u de Jupyter Notebook al gebruikt, heeft de SDK enkele extra's die u moet installeren.
 
 * [Visual Studio Code](#vscode): Als u Visual Studio code gebruikt, beschikt u over een aantal nuttige uitbrei dingen die u kunt installeren.
 
@@ -326,7 +326,7 @@ Zodra het cluster wordt uitgevoerd, [maakt u een bibliotheek](https://docs.datab
    * Selecteer niet **automatisch koppelen aan alle clusters**.
    * Selecteer **koppelen** naast de naam van uw cluster.
 
-1. Controleer op fouten totdat de status isgewijzigd in bijgevoegd. Dit kan enkele minuten duren.  Als deze stap mislukt, controleert u het volgende:
+1. Controleer op fouten totdat de status is gewijzigd in **bijgevoegd**. Dit kan enkele minuten duren.  Als deze stap mislukt, controleert u het volgende:
 
    Probeer het cluster opnieuw te starten door:
    1. Selecteer **clusters**in het linkerdeel venster.
@@ -411,5 +411,4 @@ U kunt het configuratie bestand op drie manieren maken:
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Een model](tutorial-train-models-with-aml.md) op Azure machine learning trainen met de MNIST-gegevensset
-- Naslag informatie over de [Azure machine learning SDK voor python](https://aka.ms/aml-sdk) weer geven
-- Meer informatie over het [gegevens prep-pakket voor Azure machine learning](https://aka.ms/data-prep-sdk)
+- Naslag informatie over de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) weer geven

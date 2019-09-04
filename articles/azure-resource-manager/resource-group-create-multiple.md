@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 09/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: dbacec6e8f91480996150e73f2a81dbcde67550b
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: b349576f5e9f5410afc29f48e40c38e12168252d
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494791"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258901"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Herhaling van resources, eigenschappen of variabelen in Azure Resource Manager sjablonen
 
@@ -43,13 +43,13 @@ Bij gebruik met een variabele of eigenschap heeft het object kopiëren de volgen
 
 Beide gebruiken worden uitgebreid beschreven in dit artikel. Zie [zelf studie: meerdere resource-instanties maken met behulp van Resource Manager-sjablonen](./resource-manager-tutorial-create-multiple-instances.md)voor een zelf studie.
 
-Zie [voor waarde-element](resource-group-authoring-templates.md#condition)als u wilt opgeven of een resource helemaal moet worden geïmplementeerd.
+Zie [voor waarde-element](conditional-resource-deployment.md)als u wilt opgeven of een resource helemaal moet worden geïmplementeerd.
 
 ## <a name="copy-limits"></a>Limieten kopiëren
 
 Als u het aantal iteraties wilt opgeven, geeft u een waarde op voor de eigenschap Count. De telling mag niet groter zijn dan 800.
 
-De telling kan geen negatief getal zijn. Als u een sjabloon implementeert met REST API versie **2019-05-10** of hoger, kunt u Count instellen op nul. Eerdere versies van de REST API bieden geen ondersteuning voor aantal nul. Momenteel ondersteunt Azure CLI of Power shell geen nul voor Count, maar deze ondersteuning wordt toegevoegd in een toekomstige release.
+De telling kan geen negatief getal zijn. Als u een sjabloon implementeert met Azure PowerShell 2,6 of hoger of REST API versie **2019-05-10** of hoger, kunt u Count instellen op nul. Eerdere versies van Power shell en het REST API bieden geen ondersteuning voor aantal nul. Op dit moment ondersteunt Azure CLI geen nul voor Count, maar deze ondersteuning wordt toegevoegd in een toekomstige release.
 
 Wees voorzichtig met het gebruik van de implementatie van de [volledige modus](deployment-modes.md) met Copy. Als u de volledige modus opnieuw implementeert naar een resource groep, worden alle resources verwijderd die niet zijn opgegeven in de sjabloon na het omzetten van de Kopieer bewerking.
 

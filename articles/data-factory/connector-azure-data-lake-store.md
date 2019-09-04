@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: e0626d847b22c11ce5acca5633c9b1291c03742d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: d64a8431cb0331b58afc635bf8cf9d0fe0f1f225
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839870"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276052"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Gegevens kopiëren naar of van Azure Data Lake Storage Gen1 met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Azure Data Factory die u gebruikt:"]
@@ -38,7 +38,7 @@ Deze Azure Data Lake Storage Gen1-connector wordt ondersteund voor de volgende a
 Met name met deze connector kunt u het volgende doen:
 
 - Kopieer bestanden met behulp van een van de volgende verificatie methoden: Service-Principal of beheerde identiteiten voor Azure-resources.
-- Kopieer bestanden als bestand of parser of Genereer bestanden met de [ondersteunde bestands indelingen en compressie](supported-file-formats-and-compression-codecs.md)-codecs.
+- Kopieer bestanden als bestand of parser of Genereer bestanden met de [ondersteunde bestands indelingen en compressie-codecs](supported-file-formats-and-compression-codecs.md).
 
 > [!IMPORTANT]
 > Als u gegevens kopieert met behulp van de zelf-hostende Integration runtime, moet u de bedrijfs firewall zodanig `<ADLS account name>.azuredatalakestore.net` configureren `login.microsoftonline.com/<tenant>/oauth2/token` dat uitgaand verkeer naar en op poort 443 wordt toegestaan. De laatste is de Azure-beveiligings token service waarmee de Integration runtime moet communiceren om het toegangs token op te halen.
@@ -58,7 +58,7 @@ De volgende eigenschappen worden ondersteund voor de Azure Data Lake Store gekop
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De `type` eigenschap moet worden ingesteld op **AzureDataLakeStore**. | Ja |
+| Type | De `type` eigenschap moet worden ingesteld op **AzureDataLakeStore**. | Ja |
 | dataLakeStoreUri | Informatie over de Azure Data Lake Store-account. Deze informatie wordt een van de volgende indelingen: `https://[accountname].azuredatalakestore.net/webhdfs/v1` of `adl://[accountname].azuredatalakestore.net/`. | Ja |
 | subscriptionId | De Azure-abonnements-ID waartoe het Data Lake Store-account behoort. | Vereist voor sink |
 | resourceGroupName | De naam van de Azure-resource groep waartoe het Data Lake Store-account behoort. | Vereist voor sink |
@@ -163,17 +163,17 @@ In Azure Data Factory hoeft u geen eigenschappen op te geven naast de algemene D
 
 Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. 
 
-- Raadpleeg voor **Parquet, tekst met scheidings tekens en binaire indeling**, de sectie [Parquet, tekst met scheidings tekens en gegevensset voor binaire indeling](#format-based-dataset) .
-- Raadpleeg voor andere indelingen, zoals de **Orc/Avro/JSON-indeling**, de sectie [andere indelings gegevensset](#other-format-dataset) .
+- Raadpleeg voor **Parquet, gescheiden tekst, AVRO en binaire indeling**, de sectie [Parquet, gescheiden tekst, AVRO en binaire indelings gegevensset](#format-based-dataset) .
+- Raadpleeg voor andere indelingen, zoals **Orc/JSON-indeling**, de sectie [andere indelings gegevensset](#other-format-dataset) .
 
-### <a name="format-based-dataset"></a>Parquet, gescheiden tekst en binaire indeling gegevensset
+### <a name="format-based-dataset"></a>Parquet, gescheiden tekst, AVRO en binaire indeling gegevensset
 
-Als u gegevens wilt kopiëren naar en van **Parquet, tekst met scheidings tekens of binaire indeling**, raadpleegt u de [Parquet-indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md) en het artikel [binaire indeling](format-binary.md) op op indeling gebaseerde gegevensset en ondersteunde instellingen.
+Als u gegevens wilt kopiëren naar en van **Parquet, tekst met scheidings tekens, AVRO of binaire indeling**, raadpleegt u [Parquet indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire-indeling](format-binary.md) op op indeling gebaseerde gegevensset en ondersteunde instellingen.
 De volgende eigenschappen worden ondersteund voor Azure data Lake Store gen1 onder `location` instellingen in de op indeling gebaseerde gegevensset:
 
 | Eigenschap   | Description                                                  | Vereist |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | De eigenschap type onder `location` in de gegevensset moet worden ingesteld op **AzureDataLakeStoreLocation**. | Ja      |
+| Type       | De eigenschap type onder `location` in de gegevensset moet worden ingesteld op **AzureDataLakeStoreLocation**. | Ja      |
 | folderPath | Het pad naar een map. Als u een Joker teken wilt gebruiken om mappen te filteren, slaat u deze instelling over en geeft u deze op in de activiteiten bron instellingen. | Nee       |
 | fileName   | De bestands naam onder de opgegeven folderPath. Als u een Joker teken wilt gebruiken om bestanden te filteren, slaat u deze instelling over en geeft u deze op in de activiteiten bron instellingen. | Nee       |
 
@@ -209,11 +209,11 @@ De volgende eigenschappen worden ondersteund voor Azure data Lake Store gen1 ond
 
 ### <a name="other-format-dataset"></a>Gegevensset voor andere indeling
 
-Als u gegevens wilt kopiëren naar en van Azure Data Lake Store gen1 in de **indeling Orc/Avro/JSON**, worden de volgende eigenschappen ondersteund:
+Als u gegevens wilt kopiëren naar en van Azure Data Lake Store gen1 in **Orc/JSON-indeling**, worden de volgende eigenschappen ondersteund:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de DataSet moet worden ingesteld op **AzureDataLakeStoreFile**. |Ja |
+| Type | De eigenschap type van de DataSet moet worden ingesteld op **AzureDataLakeStoreFile**. |Ja |
 | folderPath | Pad naar de map in Data Lake Store. Indien niet opgegeven, wordt deze verwijst naar de hoofdmap. <br/><br/>Het Joker teken filter wordt ondersteund. Toegestane joker tekens zijn `*` (komt overeen met nul of meer tekens `?` ) en (komt overeen met nul of één teken). Gebruik `^` om te escapen als uw werkelijke mapnaam een Joker teken of escape-teken bevat. <br/><br/>Bijvoorbeeld: root folder/submap/. Bekijk meer voor beelden in [map-en bestands filter voorbeelden](#folder-and-file-filter-examples). |Nee |
 | fileName | De naam of het Joker teken filter voor de bestanden onder het opgegeven folderPath. Als u een waarde voor deze eigenschap niet opgeeft, wordt de gegevensset verwijst naar alle bestanden in de map. <br/><br/>Voor het filter zijn `*` de toegestane joker tekens (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken).<br/>-Voorbeeld 1: `"fileName": "*.csv"`<br/>-Voorbeeld 2: `"fileName": "???20180427.txt"`<br/>Gebruik `^` om te escapen als uw werkelijke bestands naam een Joker teken of escape-teken bevat.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer-gegevensset en **preserveHierarchy** niet is opgegeven in de Sink van de activiteit, genereert de Kopieer activiteit automatisch de bestands naam met het volgende patroon: "*Gegevens. [GUID van run-ID van activiteit]. [GUID if FlattenHierarchy]. [indeling indien geconfigureerd]. [compressie indien geconfigureerd]* ', bijvoorbeeld ' data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt. gz '. Als u van een bron in tabel vorm kopieert met behulp van een tabel naam in plaats van een query, is het naam patroon ' *[tabel naam]. [ indeling]. [compressie indien geconfigureerd]* ', bijvoorbeeld ' mytable. csv '. |Nee |
 | modifiedDatetimeStart | Bestanden filteren op basis van het kenmerk dat het laatst is gewijzigd. De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het tijds bereik `modifiedDatetimeStart` ligt `modifiedDatetimeEnd`tussen en. De tijd wordt toegepast op de UTC-tijd zone in de notatie "2018-12-01T05:00:00Z". <br/><br/> De algehele prestaties van het verplaatsen van gegevens worden beïnvloed door deze instelling in te scha kelen wanneer u bestands filter wilt uitvoeren met enorme hoeveel heden bestanden. <br/><br/> De eigenschappen kunnen NULL zijn, wat betekent dat er geen bestands kenmerk filter op de gegevensset wordt toegepast. Wanneer `modifiedDatetimeStart` heeft een datum/tijd `modifiedDatetimeEnd` -waarde, maar null is, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is groter is dan of gelijk is aan de datum/tijd-waarde zijn geselecteerd. Wanneer `modifiedDatetimeEnd` heeft een datum/tijd `modifiedDatetimeStart` -waarde, maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is, kleiner zijn dan de waarde voor datum/tijd.| Nee |
@@ -261,16 +261,16 @@ Voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor 
 
 ### <a name="azure-data-lake-store-as-source"></a>Azure Data Lake Store als bron
 
-- Als u wilt kopiëren van **Parquet, tekst met scheidings tekens en binaire indeling**, raadpleegt u de sectie [Parquet, tekst met scheidings tekens en bron voor binaire indeling](#format-based-source) .
-- Als u wilt kopiëren van andere indelingen, zoals de **Orc/Avro/JSON-indeling**, raadpleegt u de sectie [andere indelings bron](#other-format-source) .
+- Als u wilt kopiëren van **Parquet, tekst met scheidings tekens, AVRO en binaire indeling**, raadpleegt u de sectie [Parquet, tekst met scheidings tekens, AVRO en binaire indelings bron](#format-based-source) .
+- Als u wilt kopiëren van andere indelingen, zoals de **Orc/JSON-indeling**, raadpleegt u de sectie [andere indelings bron](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, tekst met scheidings tekens en binaire indelings bron
+#### <a name="format-based-source"></a>Parquet, tekst met scheidings tekens, AVRO en binaire indelings bron
 
-Als u gegevens wilt kopiëren uit een **Parquet, een tekst met scheidings tekens of binaire indeling**, raadpleegt u de [Parquet-indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md) en het artikel [binaire indeling](format-binary.md) op op indeling gebaseerde Kopieer activiteit bron en ondersteunde instellingen.  De volgende eigenschappen worden ondersteund voor Azure data Lake Store gen1 onder `storeSettings` instellingen in de indelings-gebaseerde Kopieer Bron:
+Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens, een AVRO of binaire indeling**, raadpleegt u [Parquet indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire indeling](format-binary.md) artikel op op indeling gebaseerde Kopieer activiteit bron en ondersteunde instellingen .  De volgende eigenschappen worden ondersteund voor Azure data Lake Store gen1 onder `storeSettings` instellingen in de indelings-gebaseerde Kopieer Bron:
 
 | Eigenschap                 | Description                                                  | Vereist                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | De eigenschap type onder `storeSettings` moet worden ingesteld op **AzureDataLakeStoreReadSetting**. | Ja                                           |
+| Type                     | De eigenschap type onder `storeSettings` moet worden ingesteld op **AzureDataLakeStoreReadSetting**. | Ja                                           |
 | recursive                | Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen voor de opgegeven map. Als recursief is ingesteld op True en de Sink een archief op basis van bestanden is, wordt een lege map of submap niet gekopieerd of gemaakt bij de sink. Toegestane waarden zijn **waar** (standaard) en **false**. | Nee                                            |
 | wildcardFolderPath       | Het mappad met Joker tekens om de bron mappen te filteren. <br>Toegestane joker tekens zijn `*` (komt overeen met nul of meer tekens `?` ) en (komt overeen met nul of één teken). Gebruik `^` om te escapen als uw werkelijke mapnaam een Joker teken of escape-teken bevat. <br>Bekijk meer voor beelden in [map-en bestands filter voorbeelden](#folder-and-file-filter-examples). | Nee                                            |
 | wildcardFileName         | De naam van het bestand met Joker tekens onder de opgegeven folderPath/wildcardFolderPath voor het filteren van bron bestanden. <br>Toegestane joker tekens zijn `*` (komt overeen met nul of meer tekens `?` ) en (komt overeen met nul of één teken). Gebruik `^` om te escapen als uw werkelijke mapnaam een Joker teken of escape-teken bevat. Bekijk meer voor beelden in [map-en bestands filter voorbeelden](#folder-and-file-filter-examples). | Ja als `fileName` niet is opgegeven in de gegevensset |
@@ -324,11 +324,11 @@ Als u gegevens wilt kopiëren uit een **Parquet, een tekst met scheidings tekens
 
 #### <a name="other-format-source"></a>Andere indelings bron
 
-Als u gegevens wilt kopiëren uit Azure Data Lake Store gen1 in de **Orc-, AVRO-of JSON-indeling**, worden de volgende eigenschappen ondersteund in het gedeelte **bron** van de Kopieer activiteit:
+Als u gegevens wilt kopiëren uit Azure Data Lake Store gen1 in **Orc of JSON-indeling**, worden de volgende eigenschappen ondersteund in het gedeelte **bron** van de Kopieer activiteit:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De `type` eigenschap van de bron van de Kopieer activiteit moet worden ingesteld op **AzureDataLakeStoreSource**. |Ja |
+| Type | De `type` eigenschap van de bron van de Kopieer activiteit moet worden ingesteld op **AzureDataLakeStoreSource**. |Ja |
 | recursive | Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen voor de opgegeven map. Wanneer `recursive` is ingesteld op True en de Sink een archief op basis van bestanden is, wordt een lege map of submap niet gekopieerd of gemaakt bij de sink. Toegestane waarden zijn **waar** (standaard) en **false**. | Nee |
 | maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig verbinding maakt met het gegevens archief. Geef alleen op wanneer u de gelijktijdige verbinding met het gegevens archief wilt beperken. | Nee |
 
@@ -366,16 +366,16 @@ Als u gegevens wilt kopiëren uit Azure Data Lake Store gen1 in de **Orc-, AVRO-
 
 ### <a name="azure-data-lake-store-as-sink"></a>Azure Data Lake Store als sink
 
-- Als u wilt kopiëren naar **Parquet, tekst met scheidings tekens of binaire indeling**, raadpleegt u de sectie [Parquet, tekst met scheidings tekens en](#format-based-sink) het gedeelte voor de binaire indelings sink.
-- Als u wilt kopiëren naar andere indelingen, zoals de **Orc/Avro/JSON-indeling**, raadpleegt u de sectie [andere indelings Sink](#other-format-sink) .
+- Als u wilt kopiëren naar **Parquet, tekst met scheidings tekens, een AVRO of binaire indeling**, raadpleegt u de sectie [Parquet, gescheiden tekst, AVRO en binaire indelings Sink](#format-based-sink) .
+- Als u wilt kopiëren naar andere indelingen, zoals de **Orc/JSON-indeling**, raadpleegt u de sectie een [andere indelings Sink](#other-format-sink) .
 
-#### <a name="format-based-sink"></a>Parquet, tekst met scheidings tekens en de Sink voor binaire indeling
+#### <a name="format-based-sink"></a>Parquet, tekst met scheidings tekens, AVRO en binaire indelings Sink
 
-Als u gegevens wilt kopiëren naar **Parquet, tekst met scheidings tekens of binaire indeling**, raadpleegt u [Parquet-indeling](format-parquet.md), [scheidings teken voor tekst](format-delimited-text.md) en [binaire indeling](format-binary.md) op op indeling gebaseerde kopie van de Kopieer activiteit en ondersteunde instellingen.  De volgende eigenschappen worden ondersteund voor Azure data Lake Store gen1 onder `storeSettings` instellingen in het op indeling gebaseerde Kopieer-Sink:
+Als u gegevens wilt kopiëren naar **Parquet, tekst met scheidings tekens, een AVRO of binaire indeling**, raadpleegt u [Parquet-indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire-indeling](format-binary.md) artikel op op indeling gebaseerde sinks voor kopieer activiteiten en ondersteunde instellingen.  De volgende eigenschappen worden ondersteund voor Azure data Lake Store gen1 onder `storeSettings` instellingen in het op indeling gebaseerde Kopieer-Sink:
 
 | Eigenschap                 | Description                                                  | Vereist |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | De eigenschap type onder `storeSettings` moet worden ingesteld op **AzureDataLakeStoreWriteSetting**. | Ja      |
+| Type                     | De eigenschap type onder `storeSettings` moet worden ingesteld op **AzureDataLakeStoreWriteSetting**. | Ja      |
 | copyBehavior             | Definieert het gedrag kopiëren wanneer de bron bestanden vanuit een bestandsgebaseerde gegevensarchief is.<br/><br/>Toegestane waarden zijn:<br/><b>-PreserveHierarchy (standaard)</b>: Hiermee behoudt u de bestands hiërarchie in de doelmap. Het relatieve pad van het bron bestand naar de bronmap is identiek aan het relatieve pad van het doel bestand naar de doelmap.<br/><b>-FlattenHierarchy</b>: Alle bestanden van de bronmap bevinden zich in het eerste niveau van de doelmap. De doelbestanden hebben automatisch gegenereerde namen. <br/><b>-MergeFiles</b>: Alle bestanden van de bronmap worden samengevoegd met één bestand. Als de bestandsnaam is opgegeven, is de naam van het samengevoegde de opgegeven naam. Anders is de naam van een automatisch gegenereerde bestand. | Nee       |
 | maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig verbinding maakt met het gegevens archief. Geef alleen op wanneer u de gelijktijdige verbinding met het gegevens archief wilt beperken. | Nee       |
 
@@ -419,11 +419,11 @@ Als u gegevens wilt kopiëren naar **Parquet, tekst met scheidings tekens of bin
 
 #### <a name="other-format-sink"></a>Andere opmaak Sink
 
-Als u gegevens wilt kopiëren naar Azure Data Lake Store gen1 in de **Orc-, AVRO-of JSON-indeling**, worden de volgende eigenschappen ondersteund in de sectie **sink** :
+Als u gegevens wilt kopiëren naar Azure Data Lake Store gen1 in **Orc of JSON-indeling**, worden de volgende eigenschappen ondersteund in de sectie **sink** :
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De `type` eigenschap van de Sink voor kopieer activiteiten moet worden ingesteld op **AzureDataLakeStoreSink**. |Ja |
+| Type | De `type` eigenschap van de Sink voor kopieer activiteiten moet worden ingesteld op **AzureDataLakeStoreSink**. |Ja |
 | copyBehavior | Definieert het gedrag kopiëren wanneer de bron bestanden vanuit een bestandsgebaseerde gegevensarchief is.<br/><br/>Toegestane waarden zijn:<br/><b>-PreserveHierarchy (standaard)</b>: Hiermee behoudt u de bestands hiërarchie in de doelmap. Het relatieve pad van het bron bestand naar de bronmap is identiek aan het relatieve pad van het doel bestand naar de doelmap.<br/><b>-FlattenHierarchy</b>: Alle bestanden van de bronmap bevinden zich in het eerste niveau van de doelmap. De doelbestanden hebben automatisch gegenereerde namen. <br/><b>-MergeFiles</b>: Alle bestanden van de bronmap worden samengevoegd met één bestand. Als de bestandsnaam is opgegeven, is de naam van het samengevoegde de opgegeven naam. Anders wordt de bestands naam automatisch gegenereerd. | Nee |
 | maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig verbinding maakt met het gegevens archief. Geef alleen op wanneer u de gelijktijdige verbinding met het gegevens archief wilt beperken. | Nee |
 
@@ -463,7 +463,7 @@ Als u gegevens wilt kopiëren naar Azure Data Lake Store gen1 in de **Orc-, AVRO
 
 In deze sectie wordt het resulterende gedrag van het mappad en de bestands naam met Joker teken filters beschreven.
 
-| folderPath | fileName | recursive | De structuur van de bronmap en het filter resultaat (vetgedrukte bestanden worden opgehaald)|
+| folderPath | fileName | recursive | De structuur van de bronmap en het filter resultaat ( **vetgedrukte** bestanden worden opgehaald)|
 |:--- |:--- |:--- |:--- |
 | `Folder*` | (Leeg, standaard instelling gebruiken) | false | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*` | (Leeg, standaard instelling gebruiken) | true | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |

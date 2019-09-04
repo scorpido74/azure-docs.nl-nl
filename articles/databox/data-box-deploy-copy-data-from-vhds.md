@@ -1,28 +1,28 @@
 ---
-title: Zelfstudie voor het kopiëren van gegevens vanaf VHD's naar beheerde schijven met Azure Data Box | Microsoft Docs
-description: Leer hoe u gegevens kopiëren van VHD's van on-premises VM-workloads naar uw Azure Data Box
+title: Zelf studie voor het kopiëren van gegevens van Vhd's naar Managed disks met Azure Data Box | Microsoft Docs
+description: Meer informatie over het kopiëren van gegevens van Vhd's van on-premises VM-workloads naar uw Azure Data Box
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/27/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 3284821e0ec65a76b29d5195315136639304e411
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 4b7182d1fa70a146da1c01273ffe1032f2982546
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925464"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240466"
 ---
-# <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Zelfstudie: Gebruik Data Box voor het importeren van gegevens als beheerde schijven in Azure
+# <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Zelfstudie: Data Box gebruiken om gegevens te importeren als managed disks in azure
 
-Deze zelfstudie wordt beschreven hoe u on-premises VHD's migreren naar managed disks in Azure met Azure Data Box. De VHD's van de on-premises machines naar Data Box worden gekopieerd als pagina-blobs en zijn geüpload naar Azure als beheerde schijven. Deze beheerde schijven kunnen vervolgens worden gekoppeld aan Azure-VM's.
+In deze zelf studie wordt beschreven hoe u de Azure Data Box gebruikt voor het migreren van uw on-premises Vhd's naar Managed disks in Azure. De Vhd's van on-premises Vm's worden gekopieerd naar Data Box als pagina-blobs en als beheerde schijven in Azure worden geüpload. Deze beheerde schijven kunnen vervolgens worden gekoppeld aan virtuele Azure-machines.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Lees de voorwaarden
+> * Vereisten controleren
 > * Verbinding maken met Data Box
 > * Gegevens kopiëren naar Data Box
 
@@ -33,57 +33,57 @@ Zorg voordat u begint voor het volgende:
 
 1. U hebt de zelfstudie [ Azure Data Box instellen](data-box-deploy-set-up.md) voltooid.
 2. U hebt uw Data Box ontvangen en de bestelstatus in de portal is **Geleverd**.
-3. U bent verbonden met een netwerk met hoge snelheid. Het wordt aangeraden dat u beschikt over minstens één 10-GbE-verbinding. Als een 10 GbE-verbinding niet beschikbaar is, gebruikt u een gegevenskoppeling 1 GbE-, maar de kopie snelheden worden beïnvloed.
-4. U hebt bekeken de:
+3. U bent verbonden met een netwerk met hoge snelheid. Het wordt aangeraden dat u beschikt over minstens één 10-GbE-verbinding. Als er geen 10 GbE-verbinding beschikbaar is, gebruikt u een 1-GbE-gegevens koppeling, maar dit is van invloed op de Kopieer snelheden.
+4. U hebt het volgende gecontroleerd:
 
-    - Ondersteund [beheerd schijfgrootten in Azure-object groottelimieten](data-box-limits.md#azure-object-size-limits).
-    - [Inleiding tot Azure beheerde schijven](/azure/virtual-machines/windows/managed-disks-overview). 
+    - Ondersteunde [beheerde schijf grootten in azure-object grootte limieten](data-box-limits.md#azure-object-size-limits).
+    - [Inleiding tot Azure Managed disks](/azure/virtual-machines/windows/managed-disks-overview). 
 
 ## <a name="connect-to-data-box"></a>Verbinding maken met Data Box
 
-Data Box op basis van de resourcegroepen die is opgegeven, wordt één bestandsshare voor elke gekoppelde resource-groep gemaakt. Bijvoorbeeld, als `mydbmdrg1` en `mydbmdrg2` zijn gemaakt tijdens de bestelling plaatsen, de volgende shares worden gemaakt:
+Op basis van de opgegeven resource groepen, maakt Data Box één share voor elke gekoppelde resource groep. Als `mydbmdrg1` en`mydbmdrg2` bijvoorbeeld zijn gemaakt bij het plaatsen van de order, worden de volgende shares gemaakt:
 
 - `mydbmdrg1_MDisk`
 - `mydbmdrg2_MDisk`
 
-De volgende drie mappen worden gemaakt die overeenkomen met containers in uw opslagaccount in de share.
+Binnen elke share worden de volgende drie mappen gemaakt die overeenkomen met containers in uw opslag account.
 
-- Premium SSD
-- Standard HDD
+- Premium - SSD
+- Standard - HDD
 - Standard - SSD
 
-De volgende tabel bevat de UNC-paden naar de shares op uw Data Box.
+In de volgende tabel ziet u de UNC-paden naar de shares op uw Data Box.
  
-|        Verbindingsprotocol           |             UNC-pad naar de share                                               |
+|        Verbindings Protocol           |             UNC-pad naar de share                                               |
 |-------------------|--------------------------------------------------------------------------------|
-| SMB |`\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Premium SSD>\file1.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Standard HDD>\file2.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Standard SSD>\file3.vhd` |  
-| NFS |`//<DeviceIPAddress>/<ResourceGroup1_MDisk>/<Premium SSD>/file1.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<Standard HDD>/file2.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<Standard SSD>/file3.vhd` |
+| SMB |`\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<PremiumSSD>\file1.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<StandardHDD>\file2.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<StandardSSD>\file3.vhd` |  
+| NFS |`//<DeviceIPAddress>/<ResourceGroup1_MDisk>/<PremiumSSD>/file1.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<StandardHDD>/file2.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<StandardSSD>/file3.vhd` |
 
-De stappen om verbinding te maken zijn op basis van of u SMB- of NFS gebruiken om te verbinden met Data Box-shares, verschillend.
+De stappen om verbinding te maken, zijn afhankelijk van het feit of u SMB of NFS gebruikt om verbinding te maken met Data Box-shares.
 
 > [!NOTE]
-> Verbinding maken via de REST wordt niet ondersteund voor deze functie.
+> Verbinding maken via REST wordt niet ondersteund voor deze functie.
 
 ### <a name="connect-to-data-box-via-smb"></a>Verbinding maken met Data Box via SMB
 
 Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om verbinding met de Data Box te maken.
 
-1. U moet eerst een verificatie uitvoeren en een sessie starten. Ga naar **Verbinding maken en kopiëren**. Klik op **referenties ophalen** om op te halen van de referenties voor toegang voor de bestandsshares die zijn gekoppeld aan de resourcegroep. U krijgt ook de referenties voor toegang vanuit de **Apparaatdetails** in Azure portal.
+1. U moet eerst een verificatie uitvoeren en een sessie starten. Ga naar **Verbinding maken en kopiëren**. Klik op **referenties ophalen** om de toegangs referenties op te halen voor de shares die zijn gekoppeld aan uw resource groep. U kunt ook de toegangs referenties ophalen van de **apparaatgegevens** in de Azure Portal.
 
     > [!NOTE]
     > De referenties voor alle shares voor beheerde schijven zijn identiek.
 
     ![Sharereferenties 1 ophalen](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. Van de toegang delen en kopiëren in het dialoogvenster van gegevens, kopiëren de **gebruikersnaam** en de **wachtwoord** voor de share. Klik op **OK**.
+2. Kopieer de **gebruikers naam** en het **wacht woord** voor de share in het dialoog venster toegang delen en gegevens kopiëren. Klik op **OK**.
     
     ![Sharereferenties 1 ophalen](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
-3. Voor toegang tot de shares die zijn gekoppeld aan uw resource (*mydbmdrg1* in het volgende voorbeeld) vanaf uw hostcomputer, open een opdrachtvenster. Typ in de opdrachtprompt:
+3. Als u toegang wilt krijgen tot de shares die zijn gekoppeld aan uw resource (*mydbmdrg1* in het volgende voor beeld), opent u een opdracht venster. Typ in de opdrachtprompt:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
-    De UNC-share-paden in dit voorbeeld zijn er als volgt uit:
+    Uw UNC-share paden in dit voor beeld zijn als volgt:
 
     - `\\169.254.250.200\mydbmdrg1_MDisk`
     - `\\169.254.250.200\mydbmdrg2_MDisk`
@@ -101,7 +101,7 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
     
     ![Verbinding met de share maken via Verkenner 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
-    U ziet nu de volgende mappen in elke share precreated.
+    U ziet nu de volgende vooraf gemaakte mappen in elke share.
     
     ![Verbinding met de share maken via Verkenner 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer2.png)
 
@@ -131,33 +131,33 @@ Voer de volgende stappen uit om Data Box zo te configureren dat toegang tot NFS-
 
 ## <a name="copy-data-to-data-box"></a>Gegevens kopiëren naar Data Box
 
-Nadat u met de server verbonden bent, wordt de volgende stap is om gegevens te kopiëren. Het VHD-bestand wordt gekopieerd naar het tijdelijke opslagaccount dat als pagina-blob. De pagina-blob is vervolgens geconverteerd naar een beheerde schijf en verplaatst naar een resourcegroep.
+Nadat u verbinding hebt gemaakt met de gegevens server, is de volgende stap het kopiëren van gegevens. Het VHD-bestand wordt gekopieerd naar het staging Storage-account als pagina-blob. De pagina-BLOB wordt vervolgens geconverteerd naar een beheerde schijf en verplaatst naar een resource groep.
 
-Bekijk de volgende punten voordat u begint met het kopiëren van gegevens:
+Bekijk de volgende overwegingen voordat u begint met het kopiëren van gegevens:
 
-- Kopieer de VHD's altijd op een van de precreated mappen. Als u de VHD's buiten deze mappen of in een map die u hebt gemaakt kopieert, wordt de VHD's worden geüpload naar Azure Storage-account als pagina-blobs en schijven niet worden beheerd.
-- De vaste VHD's kunnen worden geüpload voor het maken van beheerde schijven. VHDX-bestanden of dynamische en differentiërende VHD's worden niet ondersteund.
-- U kunt slechts één beheerde schijf met een specifieke naam in een resourcegroep hebben in alle precreated mappen. Dit betekent dat de VHD's geüpload naar de precreated mappen moeten een unieke naam hebben. Zorg ervoor dat de opgegeven naam komt niet overeen met een al bestaande beheerde schijf in een resourcegroep.
-- Bekijk limieten van de beheerde schijf in [Omvangslimieten voor Azure-object](data-box-limits.md#azure-object-size-limits).
+- Kopieer de Vhd's altijd naar een van de voorgemaakte mappen. Als u de Vhd's buiten deze mappen of in een map die u hebt gemaakt kopieert, worden de Vhd's geüpload naar Azure Storage-account als pagina-blobs en niet-beheerde schijven.
+- Alleen de vaste Vhd's kunnen worden geüpload om beheerde schijven te maken. VHDX-bestanden of dynamische en differentiërende Vhd's worden niet ondersteund.
+- U kunt slechts één beheerde schijf met een opgegeven naam in een resource groep in alle voorgemaakte mappen hebben. Dit betekent dat de Vhd's die zijn geüpload naar de voorgemaakte mappen unieke namen moeten hebben. Zorg ervoor dat de opgegeven naam niet overeenkomt met een bestaande beheerde schijf in een resource groep.
+- Bekijk de limieten voor beheerde schijven in [Azure-object grootte limieten](data-box-limits.md#azure-object-size-limits).
 
-Afhankelijk van of u verbinding via SMB- of NFS maakt, kunt u het volgende gebruiken:
+Afhankelijk van of u verbinding maakt via SMB of NFS, kunt u het volgende gebruiken:
 
-- [Kopiëren van gegevens via SMB](data-box-deploy-copy-data.md#copy-data-to-data-box)
-- [Kopiëren van gegevens via NFS](data-box-deploy-copy-data-via-nfs.md#copy-data-to-data-box)
+- [Gegevens kopiëren via SMB](data-box-deploy-copy-data.md#copy-data-to-data-box)
+- [Gegevens kopiëren via NFS](data-box-deploy-copy-data-via-nfs.md#copy-data-to-data-box)
 
-Wacht tot de kopieertaken zijn voltooid. Zorg ervoor dat de taken kopiëren zonder fouten zijn voltooid voordat u met de volgende stap verdergaat.
+Wacht tot de kopieertaken zijn voltooid. Zorg ervoor dat de Kopieer taken zonder fouten zijn voltooid voordat u naar de volgende stap gaat.
 
 ![Geen fouten op de pagina **Verbinding maken en kopiëren**](media/data-box-deploy-copy-data-from-vhds/verify-no-errors-connect-and-copy.png)
 
-Als er fouten tijdens het kopiëren zijn, downloadt u de logboeken van de **verbinding maken en kopiëren** pagina.
+Als er fouten optreden tijdens het kopieer proces, downloadt u de logboeken van de pagina **verbinding maken en kopiëren** .
 
-- Als u een bestand dat zich niet in 512 bytes uitgelijnd hebt gekopieerd, wordt het bestand is niet geüpload als pagina-blob naar de staging storage-account. Hier ziet u een fout in de logboeken. Verwijder het bestand en kopieer een bestand dat is 512 bytes uitgelijnd.
+- Als u een bestand hebt gekopieerd dat niet 512 bytes is uitgelijnd, wordt het bestand niet geüpload als pagina-BLOB naar uw staging Storage-account. Er wordt een fout in de logboeken weer geven. Verwijder het bestand en kopieer een bestand dat 512 bytes is uitgelijnd.
 
-- Als u een VHDX (deze bestanden worden niet ondersteund) met een lange naam hebt gekopieerd, ziet u een fout in de logboeken.
+- Als u een VHDX hebt gekopieerd (deze bestanden worden niet ondersteund) met een lange naam, wordt een fout in de logboeken weer geven.
 
-    ![Fout in de logboeken van ** pagina verbinding maken en kopiëren **](media/data-box-deploy-copy-data-from-vhds/errors-connect-and-copy.png)
+    ![Fout in de logboeken van * * verbinding maken en kopiëren * * pagina](media/data-box-deploy-copy-data-from-vhds/errors-connect-and-copy.png)
 
-    Los de fouten voordat u met de volgende stap doorgaat.
+    Los de fouten op voordat u verdergaat met de volgende stap.
 
 Om de gegevensintegriteit te garanderen wordt de controlesom inline berekend terwijl de gegevens worden gekopieerd. Verifieer de gebruikte ruimte en vrije ruimte op uw apparaat na het kopiëren.
     
@@ -171,7 +171,7 @@ Wanneer de kopieertaak is voltooid, kunt u naar **Voorbereiding voor verzending*
 In deze zelfstudie bent u meer te weten gekomen over verschillende onderwerpen met betrekking tot Azure Data Box, zoals:
 
 > [!div class="checklist"]
-> * Lees de voorwaarden
+> * Vereisten controleren
 > * Verbinding maken met Data Box
 > * Gegevens kopiëren naar Data Box
 

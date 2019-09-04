@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: 096b6a13c85d04ebeb4f2ffae72acdd8629ae886
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: cdbb545e981e50e23bbbb011dc54577acf7974f7
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191748"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241753"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric cluster instellingen aanpassen
 In dit artikel worden de verschillende infrastructuur instellingen voor uw Service Fabric cluster beschreven die u kunt aanpassen. Voor clusters die worden gehost in azure, kunt u instellingen aanpassen via de [Azure Portal](https://portal.azure.com) of met behulp van een Azure Resource Manager sjabloon. Zie [de configuratie van een Azure-cluster upgraden](service-fabric-cluster-config-upgrade-azure.md)voor meer informatie. Voor zelfstandige clusters past u de instellingen aan door het bestand *ClusterConfig. json* bij te werken en een configuratie-upgrade uit te voeren op uw cluster. Zie [de configuratie van een zelfstandig cluster upgraden](service-fabric-cluster-config-upgrade-windows-server.md)voor meer informatie.
@@ -36,7 +36,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 | **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-|ApplicationCertificateValidationPolicy|teken reeks, standaard is ' geen '|Statisch| Hiermee wordt het server certificaat niet gevalideerd; de aanvraag is voltooid. Raadpleeg config ServiceCertificateThumbprints voor de door komma's gescheiden lijst met vinger afdrukken van de externe certificaten die de omgekeerde proxy kan vertrouwen. Raadpleeg config ServiceCommonNameAndIssuer voor de naam van de certificaat houder en de vinger afdruk van de verlener van de externe certificaten die de omgekeerde proxy kan vertrouwen. Zie voor meer informatie reverse [proxy beveiligde verbinding](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
+|ApplicationCertificateValidationPolicy|teken reeks, standaard is ' geen '|Statisch| Hiermee wordt het server certificaat niet gevalideerd; de aanvraag is voltooid. Raadpleeg config ServiceCertificateThumbprints voor de door komma's gescheiden lijst met vinger afdrukken van de externe certificaten die de omgekeerde proxy kan vertrouwen. Raadpleeg config ServiceCommonNameAndIssuer voor de naam van de certificaat houder en de vinger afdruk van de verlener van de externe certificaten die de omgekeerde proxy kan vertrouwen. Zie voor meer informatie [reverse proxy beveiligde verbinding](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 |BodyChunkSize |Uint, standaard waarde is 16384 |Dynamisch| Geeft de grootte van voor het segment in bytes dat wordt gebruikt om de hoofd tekst te lezen. |
 |CrlCheckingFlag|uint, de standaard waarde is 0x40000000 |Dynamisch| Vlaggen voor validatie van de certificaat keten van de toepassing/service; bijvoorbeeld CRL check 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY setting to 0 Hiermee schakelt u de volledige lijst met ondersteunde waarden voor CRL-controle uit, zoals beschreven door dwFlags of CertGetCertificateChain: https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |DefaultHttpRequestTimeout |Tijd in seconden. de standaard waarde is 120 |Dynamisch|Geef een tijds duur in seconden op.  Geeft de standaard time-out voor de aanvraag voor de HTTP-aanvragen die worden verwerkt in de http-app-gateway. |
@@ -53,13 +53,13 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |RemoveServiceResponseHeaders|teken reeks, standaard waarde is "date; Naam|Statisch|Punt komma/door komma's gescheiden lijst met antwoord koppen die worden verwijderd uit het antwoord van de service; voordat u deze naar de client doorstuurt. Als deze is ingesteld op een lege teken reeks; alle kopteksten die door de service zijn geretourneerd, worden door gegeven. dat wil zeggen de datum en server niet overschrijven |
 |ResolveServiceBackoffInterval |Tijd in seconden, standaard waarde is 5 |Dynamisch|Geef een tijds duur in seconden op.  Hiermee geeft u het standaard interval voor het maken van een mislukte omzetting van een service opnieuw. |
 |SecureOnlyMode|BOOL, default is FALSE|Dynamisch| SecureOnlyMode: True: Omgekeerde Proxy's worden alleen doorgestuurd naar services die beveiligde eind punten publiceren. terecht Omgekeerde proxy kan aanvragen door sturen naar beveiligde en niet-beveiligde eind punten. Zie voor meer informatie een [omgekeerde logica voor het selecteren van proxy-eind punten](service-fabric-reverseproxy-configure-secure-communication.md#endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints).  |
-|ServiceCertificateThumbprints|teken reeks, standaard instelling is|Dynamisch|De door komma's gescheiden lijst met vinger afdrukken van de externe certificaten die de omgekeerde proxy kan vertrouwen. Zie voor meer informatie reverse [proxy beveiligde verbinding](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
+|ServiceCertificateThumbprints|teken reeks, standaard instelling is|Dynamisch|De door komma's gescheiden lijst met vinger afdrukken van de externe certificaten die de omgekeerde proxy kan vertrouwen. Zie voor meer informatie [reverse proxy beveiligde verbinding](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 
 ## <a name="applicationgatewayhttpservicecommonnameandissuer"></a>ApplicationGateway/Http/ServiceCommonNameAndIssuer
 
 | **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, standaard instelling is geen|Dynamisch| De naam van de certificaat houder en de vinger afdruk van de verlener van het externe certificaat dat de reverse proxy kan vertrouwen. Zie voor meer informatie reverse [proxy beveiligde verbinding](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
+|PropertyGroup|X509NameMap, standaard instelling is geen|Dynamisch| De naam van de certificaat houder en de vinger afdruk van de verlener van het externe certificaat dat de reverse proxy kan vertrouwen. Zie voor meer informatie [reverse proxy beveiligde verbinding](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 
 ## <a name="backuprestoreservice"></a>BackupRestoreService
 
@@ -311,7 +311,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 | **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |EnableApplicationTypeHealthEvaluation |BOOL, default is False |Statisch|Cluster status evaluatie beleid: status evaluatie per toepassings type inschakelen. |
-|MaxSuggestedNumberOfEntityHealthReports|Int, standaard waarde is 500 |Dynamisch|Het maximum aantal status rapporten dat een entiteit kan hebben voordat de problemen met de status rapportage logica van de watchdog worden verhoogd. Elke status entiteit moet een relatief klein aantal status rapporten hebben. Als het aantal rapporten boven dit nummer komt; Er zijn mogelijk problemen met de implementatie van de watchdog. Een entiteit met te veel rapporten wordt via een waarschuwings status rapport gemarkeerd wanneer de entiteit wordt geëvalueerd. |
+|MaxSuggestedNumberOfEntityHealthReports|Int, standaard waarde is 100 |Dynamisch|Het maximum aantal status rapporten dat een entiteit kan hebben voordat de problemen met de status rapportage logica van de watchdog worden verhoogd. Elke status entiteit moet een relatief klein aantal status rapporten hebben. Als het aantal rapporten boven dit nummer komt; Er zijn mogelijk problemen met de implementatie van de watchdog. Een entiteit met te veel rapporten wordt via een waarschuwings status rapport gemarkeerd wanneer de entiteit wordt geëvalueerd. |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
 

@@ -1,26 +1,26 @@
 ---
-title: Zelfstudie om te filteren, gegevens analyseren met compute op Azure Data Box Edge | Microsoft Docs
+title: Zelf studie voor het filteren en analyseren van gegevens met Compute op Azure Data Box Edge | Microsoft Docs
 description: Leer hoe u een rekenprocesrol configureert in Data Box Edge en deze gebruikt om gegevens te transformeren voordat ze naar Azure worden verzonden.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/19/2019
+ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 7b3d725eb05c811d3fdd44516c1bde9a8dfbaaac
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b641ae62ba6e0cdacaeb46b1ffee2f02c7544763
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924344"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277122"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge"></a>Zelfstudie: Gegevens transformeren met Azure Data Box Edge
 
 In deze zelfstudie wordt beschreven hoe u een rekenprocesrol configureert op uw Azure Data Box Edge-apparaat. Wanneer u de rekenrol hebt geconfigureerd, kan Data Box Edge gegevens transformeren voordat deze naar Azure worden verzonden.
 
-Deze procedure kan ongeveer 10 tot 15 minuten duren om uit te voeren.
+Deze procedure kan ongeveer tien tot 15 minuten duren.
 
 In deze zelfstudie leert u het volgende:
 
@@ -40,41 +40,44 @@ Zorg dat aan deze voorwaarde wordt voldaan voordat u een rekenprocesrol configur
 
 ## <a name="configure-compute"></a>Rekenproces configureren
 
-Als u wilt configureren rekenkracht voor uw gegevens in het edge-apparaten, maakt u een IoT Hub-resource.
+Als u de reken kracht op uw Data Box Edge wilt configureren, maakt u een IoT Hub resource.
 
-1. In de Azure-portal van uw gegevens in het Edge-resource, gaat u naar het overzicht. In het rechterdeelvenster op de **Compute** tegel, selecteer **aan de slag**.
+1. Ga in de Azure Portal van uw Data Box Edge resource naar overzicht. Selecteer aan de **slag**in het rechterdeel venster op de tegel **Compute** .
 
-    ![Aan de slag met compute](./media/data-box-edge-deploy-configure-compute/configure-compute-1.png)
+    ![Aan de slag met Compute](./media/data-box-edge-deploy-configure-compute/configure-compute-1.png)
 
-2. Op de **configureren Edge Computing** tegel, selecteer **berekening configureren**.
-3. Op de **configureren Edge Computing** blade, het volgende invoeren:
+2. Selecteer op de tegel **Edge Compute** configureren de optie **reken kracht configureren**.
+3. Voer de volgende gegevens in op de Blade **Edge Compute configureren** :
 
    
     |Veld  |Value  |
     |---------|---------|
-    |IoT Hub     | Kies uit **nieuwe** of **bestaande**. <br> Standaard wordt een Standard-laag (S1) gebruikt om een IoT-resource te maken. Voor het gebruik van een gratis laag van IoT-resource, maakt u er een en selecteer vervolgens de bestaande resource. <br> In elk geval maakt gebruik van de IoT Hub-resource hetzelfde abonnement en resourcegroep die wordt gebruikt door de gegevens in het Edge-resource.     |
-    |Name     |Voer een naam voor uw IoT-Hub.         |
+    |IoT Hub     | Kies een **nieuwe** of **bestaande**. <br> Standaard wordt er een standaard-laag (S1) gebruikt voor het maken van een IoT-resource. Als u een IoT-resource in een gratis laag wilt gebruiken, maakt u er een en selecteert u vervolgens de bestaande resource. <br> In elk geval gebruikt de IoT Hub resource hetzelfde abonnement en dezelfde resource groep die wordt gebruikt door de Data Box Edge-resource.     |
+    |Name     |Voer een naam in voor de IoT Hub resource.         |
 
-    ![Aan de slag met compute](./media/data-box-edge-deploy-configure-compute/configure-compute-2.png)
+    ![Aan de slag met Compute](./media/data-box-edge-deploy-configure-compute/configure-compute-2.png)
 
-4. Selecteer **Maken**. Het maken van de IoT Hub-resource duurt enkele minuten duren. Nadat de IoT Hub-resource is gemaakt, de **berekening configureren** tegel updates om de rekenconfiguratie weer te geven. Om te bevestigen dat de Edge-compute-rol is geconfigureerd, selecteer **weergave Compute** op de **berekening configureren** tegel.
+4. Selecteer **Maken**. Het maken van de IoT Hub resource duurt enkele minuten. Nadat de IoT Hub bron is gemaakt, wordt de update tegel updates **configureren** om de compute-configuratie weer te geven. Als u wilt bevestigen dat de rol Edge Compute is geconfigureerd, selecteert u **Compute weer geven** op de tegel **Compute configureren** .
     
-    ![Aan de slag met compute](./media/data-box-edge-deploy-configure-compute/configure-compute-3.png)
+    ![Aan de slag met Compute](./media/data-box-edge-deploy-configure-compute/configure-compute-3.png)
 
-    Wanneer de Edge-rekenprocesrol wordt geconfigureerd op het Edge-apparaat, worden er twee apparaten aangemaakt: een IoT-apparaat en een IoT Edge-apparaat. Beide apparaten kunnen worden weergegeven in de IoT Hub-resource. Een IoT Edge-Runtime wordt ook uitgevoerd op dit apparaat IoT Edge. Op dit moment is alleen het Linux-platform beschikbaar voor uw IoT Edge-apparaat.
+    > [!NOTE]
+    > Als het dialoog venster **Compute configureren** wordt gesloten voordat de IOT hub is gekoppeld aan het data Box edge apparaat, wordt de IOT hub gemaakt, maar wordt deze niet weer gegeven in de compute-configuratie. 
+    
+    Wanneer de Edge-rekenprocesrol wordt geconfigureerd op het Edge-apparaat, worden er twee apparaten aangemaakt: een IoT-apparaat en een IoT Edge-apparaat. Beide apparaten kunnen worden weergegeven in de IoT Hub-resource. Er wordt ook een IoT Edge-runtime op dit IoT Edge apparaat uitgevoerd. Op dit moment is alleen het Linux-platform beschikbaar voor uw IoT Edge-apparaat.
 
 
 ## <a name="add-shares"></a>Shares toevoegen
 
-Voor de eenvoudige implementatie in deze zelfstudie, moet u twee shares: één Edge-share- en een andere lokale Edge-share.
+Voor de eenvoudige implementatie in deze zelf studie hebt u twee shares nodig: één rand share en een andere lokale share.
 
-1. Een Edge-share op het apparaat toevoegen aan de hand van de volgende stappen uit:
+1. Voeg een rand share op het apparaat toe door de volgende stappen uit te voeren:
 
-    1. In uw gegevens in het Edge-resource, gaat u naar **Edge compute > aan de slag**.
-    2. Op de **share (s) toevoegen** tegel, selecteer **toevoegen**.
-    3. Op de **toevoegen share** blade, geeft u de naam van de bestandsshare en selecteer het sharetype.
-    4. Voor het koppelen van de Edge-share, schakel het selectievakje voor **gebruik van de bestandsshare met Edge Computing**.
-    5. Selecteer de **opslagaccount**, **opslagservice**, een bestaande gebruiker en selecteer vervolgens **maken**.
+    1. Ga in uw Data Box Edge-resource naar **Edge compute >** aan de slag.
+    2. Selecteer **toevoegen**op de tegel **share (s) toevoegen** .
+    3. Geef op de Blade **share toevoegen** de share naam op en selecteer het share type.
+    4. Als u de Edge-share wilt koppelen, schakelt u het selectie vakje in voor **het gebruik van de share met Edge Compute**.
+    5. Selecteer het **opslag account**, de **opslag service**, een bestaande gebruiker en selecteer vervolgens **maken**.
 
         ![Een Edge-share toevoegen](./media/data-box-edge-deploy-configure-compute/add-edge-share-1.png) 
 
@@ -84,42 +87,42 @@ Voor de eenvoudige implementatie in deze zelfstudie, moet u twee shares: één E
 
     Zie de [Rsync-documentatie](https://www.computerhope.com/unix/rsync.htm) voor meer informatie over de opdracht rsync.
 
-    De Edge-share is gemaakt en u ontvangt een melding is gemaakt. De lijst shares wordt mogelijk bijgewerkt. U moet echter wachten tot het maken van de share is voltooid.
+    De Edge-share wordt gemaakt en u ontvangt een geslaagde melding. De lijst shares wordt mogelijk bijgewerkt. U moet echter wachten tot het maken van de share is voltooid.
 
-2. Toevoegen van een lokale share Edge op het Edge-apparaat door de stappen in de voorgaande stap te herhalen en selecteer daarbij het selectievakje voor **configureren als lokale share Edge**. De gegevens in de lokale share blijft van toepassing op het apparaat.
+2. Voeg een Edge-lokale share op het edge-apparaat toe door alle stappen in de vorige stap te herhalen en het selectie vakje voor **configureren als Edge-lokale share**in te scha kelen. De gegevens op de lokale share blijven op het apparaat.
 
-    ![Een Edge lokale share toevoegen](./media/data-box-edge-deploy-configure-compute/add-edge-share-2.png)
+    ![Een lokale share toevoegen aan de rand](./media/data-box-edge-deploy-configure-compute/add-edge-share-2.png)
 
   
-3. Selecteer **share (s) toevoegen** om te zien van de bijgewerkte lijst met shares.
+3. Selecteer **share (s) toevoegen** om de bijgewerkte lijst met shares weer te geven.
 
     ![Bijgewerkte lijst met shares](./media/data-box-edge-deploy-configure-compute/add-edge-share-3.png) 
  
 
 ## <a name="add-a-module"></a>Een module toevoegen
 
-U kunt een aangepaste of een vooraf samengestelde module toevoegen. Er zijn geen aangepaste modules op deze Edge-apparaat. Ga naar [Een C#-module ontwikkelen voor uw Data Box Edge-apparaat](data-box-edge-create-iot-edge-module.md) voor meer informatie over het maken van een aangepaste module.
+U kunt een aangepaste of vooraf gemaakte module toevoegen. Er zijn geen aangepaste modules op dit edge-apparaat. Ga naar [Een C#-module ontwikkelen voor uw Data Box Edge-apparaat](data-box-edge-create-iot-edge-module.md) voor meer informatie over het maken van een aangepaste module.
 
-In dit gedeelte voegt u een aangepaste module toe aan het IoT Edge-apparaat dat u hebt gemaakt in [Een C#-module ontwikkelen voor uw Data Box Edge](data-box-edge-create-iot-edge-module.md). Deze aangepaste module bestanden in een lokale share Edge op het Edge-apparaat gaat en verplaatst naar een bestandsshare Edge (cloud) op het apparaat. De cloudshare pusht de bestanden vervolgens naar het Azure-opslagaccount dat is gekoppeld aan de cloudshare.
+In dit gedeelte voegt u een aangepaste module toe aan het IoT Edge-apparaat dat u hebt gemaakt in [Een C#-module ontwikkelen voor uw Data Box Edge](data-box-edge-create-iot-edge-module.md). Deze aangepaste module neemt bestanden van een lokale share op het apparaat aan de rand en verplaatst deze naar een Edge-share (Cloud) op het apparaat. De cloudshare pusht de bestanden vervolgens naar het Azure-opslagaccount dat is gekoppeld aan de cloudshare.
 
-1. Ga naar **Edge compute > aan de slag**. Op de **modules toevoegen** tegel, selecteert u het scenariotype als **eenvoudige**. Selecteer **Toevoegen**.
-2. In de **configureren en voegt u de module** blade, voer de volgende waarden:
+1. Ga naar **Edge compute > aan de slag**. Selecteer op de tegel **modules toevoegen** het scenario type zo **eenvoudig**. Selecteer **Toevoegen**.
+2. Voer op de Blade **module configureren en toevoegen** de volgende waarden in:
 
     
     |Veld  |Value  |
     |---------|---------|
-    |Name     | Een unieke naam voor de module. Deze module is een docker-container die u kunt implementeren op het IoT Edge-apparaat dat is gekoppeld aan de rand van uw gegevens in.        |
-    |URI installatiekopie     | De afbeelding URI voor de bijbehorende containerinstallatiekopie voor de module.        |
-    |Referenties die nodig zijn     | Als dit selectievakje inschakelt, worden gebruikersnaam en wachtwoord gebruikt om op te halen van modules met een overeenkomende URL.        |
-    |Invoer delen     | Selecteer een invoer-share. De invoer share in de lokale share Edge in dit geval is. Hier wordt gebruikt in de module verplaatst bestanden vanaf de rand lokale share naar een share Edge waar ze worden geüpload naar de cloud.        |
-    |Uitvoer delen     | Selecteer een uitvoer-share. De Edge-share is in dit geval de uitvoer-share.        |
-    |Triggertype     | Selecteer een **bestand** of **planning**. Een bestand-trigger wordt geactiveerd wanneer een bestandgebeurtenis zich voordoet, zoals een bestand wordt geschreven naar de invoer-share. Een geplande trigger wordt geactiveerd om op basis van een door u gedefinieerde planning.         |
+    |Name     | Een unieke naam voor de module. Deze module is een docker-container die u kunt implementeren op het IoT Edge apparaat dat is gekoppeld aan uw Data Box Edge.        |
+    |URI installatiekopie     | De afbeeldings-URI voor de bijbehorende container installatie kopie voor de module.        |
+    |Referenties vereist     | Als u dit selectie vakje inschakelt, worden gebruikers naam en wacht woord gebruikt om modules op te halen met een overeenkomende URL.        |
+    |Invoer share     | Selecteer een invoer share. De rand van de lokale share is in dit geval de invoer share. De module die hier wordt gebruikt, verplaatst bestanden van de lokale Edge-share naar een Edge-share waarnaar ze in de cloud worden geüpload.        |
+    |Uitvoer share     | Selecteer een uitvoer share. De Edge-share is in dit geval de uitvoer share.        |
+    |Triggertype     | Selecteer een **bestand** of **schema**. Een bestands trigger wordt geactiveerd wanneer een bestands gebeurtenis plaatsvindt, zoals een bestand wordt geschreven naar de invoer share. Een geplande trigger wordt geactiveerd op basis van een schema dat door u is gedefinieerd.         |
     |Triggernaam     | Een unieke naam voor de trigger.         |
-    |Omgevingsvariabelen| Optionele informatie die wordt het definiëren van de omgeving waarin de module wordt uitgevoerd.   |
+    |Omgevingsvariabelen| Optionele informatie die helpt bij het definiëren van de omgeving waarin uw module wordt uitgevoerd.   |
 
-    ![Toevoegen en configureren van module](./media/data-box-edge-deploy-configure-compute/add-module-1.png)
+    ![Module toevoegen en configureren](./media/data-box-edge-deploy-configure-compute/add-module-1.png)
 
-3. Selecteer **Toevoegen**. De module wordt toegevoegd. De **toevoegen module** tegel updates om aan te geven dat de module wordt geïmplementeerd. 
+3. Selecteer **Toevoegen**. De module wordt toegevoegd. De tegel **module toevoegen** wordt bijgewerkt om aan te geven dat de module is geïmplementeerd. 
 
     ![Module geïmplementeerd](./media/data-box-edge-deploy-configure-compute/add-module-2.png)
 
@@ -129,11 +132,11 @@ De laatste stap is controleren of de module is verbonden en wordt uitgevoerd zoa
 
 Doe het volgende om te controleren of de module wordt uitgevoerd:
 
-1. Selecteer de **toevoegen module** tegel. Hiermee gaat u naar de **Modules** blade. Identificeer de module die u hebt geïmplementeerd in de lijst met modules. De runtimestatus van de module die u hebt toegevoegd moet *met*.
+1. Selecteer de tegel **module toevoegen** . Hiermee gaat u naar de Blade **modules** . Zoek in de lijst met modules de module die u hebt geïmplementeerd. De runtime status van de module die u hebt toegevoegd, moet worden *uitgevoerd*.
 
     ![Gegevenstransformatie controleren](./media/data-box-edge-deploy-configure-compute/verify-data-1.png)
  
-1.  In Windows Verkenner, verbinding maken met de lokale Edge en de Edge-shares die u eerder hebt gemaakt.
+1.  Maak in Verkenner verbinding met zowel de rand lokale als de Edge-shares die u eerder hebt gemaakt.
 
     ![Gegevenstransformatie controleren](./media/data-box-edge-deploy-configure-compute/verify-data-2.png) 
  

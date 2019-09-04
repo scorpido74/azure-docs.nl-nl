@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: c351ee8290b60c81add173bb927b0c12e37f5c7c
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 7fe2c39871f1cd512da7f9a2c5146e79abbe74a6
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018135"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279604"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Ondersteuningsmatrix voor VMware-evaluatie en -migratie
 
@@ -35,8 +35,7 @@ De tabel bevat een overzicht van de ondersteunde scenario's voor virtuele VMware
 **Ondersteuning** | **Details**
 --- | ---
 **Azure-machtigingen** | U hebt machtigingen voor Inzender of eigenaar nodig in het abonnement om een Azure Migrate project te maken.
-**VMware-beperkingen**  | Evalueer Maxi maal 35.000 VMware-Vm's in één project. U kunt meerdere projecten maken in een Azure-abonnement.
-**Project limieten** | Een project kan zowel virtuele VMware-machines als virtuele Hyper-V-machines bevatten, tot aan de evaluatie limieten.
+**VMware-beperkingen**  | Evalueer Maxi maal 35.000 VMware-Vm's in één project. U kunt meerdere projecten maken in een Azure-abonnement. Een project kan zowel virtuele VMware-machines als virtuele Hyper-V-machines bevatten, tot aan de evaluatie limieten.
 **Geografie** | U kunt een Azure Migrate project maken in een aantal geographs. Hoewel u alleen projecten in deze geografi kunt maken, kunt u machines voor andere doel locaties evalueren of migreren. De Geografie van het project wordt alleen gebruikt om de gedetecteerde meta gegevens op te slaan.
 
 **Geografie** | **Opslag locatie van meta gegevens**
@@ -70,14 +69,15 @@ Voor evaluatie hebt u een alleen-lezen-account nodig voor de vCenter Server.
 
 ## <a name="assessment-appliance-requirements"></a>Beoordeling-vereisten voor apparaten
 
-Het Azure Migrate-apparaat voor VMware wordt geïmplementeerd met behulp van een eicellen-sjabloon die in vCenter Server is geïmporteerd.
+Azure Migrate voert een licht gewicht apparaat uit om virtuele VMware-machines te detecteren en de meta gegevens en prestatie gegevens van de VM naar Azure Migrate te verzenden. Het apparaat voor VMware wordt geïmplementeerd met behulp van een eicellen-sjabloon die in vCenter Server is geïmporteerd. De volgende tabel bevat een overzicht van de vereisten voor het apparaat.
 
 **Ondersteuning** | **Details**
 --- | ---
-**vCenter Server** | U hebt voldoende resources op de vCenter Server nodig om een virtuele machine toe te wijzen met 32 GB RAM, 8 Vcpu's en een externe virtuele switch.<br/><br/> Voor het apparaat is toegang tot internet vereist, hetzij rechtstreeks hetzij via een proxy.
-**ESXi** | De toestel-VM moet worden geïmplementeerd op een ESXi-host waarop versie 5,5 of hoger wordt uitgevoerd.
-**Azure Migrate project** | Een apparaat kan worden gekoppeld aan een enkel project.
-**vCenter Server** | Een apparaat kan tot 10.000 VMware-Vm's detecteren op een vCenter Server.<br/> Een apparaat kan verbinding maken met één vCenter Server.
+**Implementatie van het apparaat** | U implementeert het apparaat als een virtuele VMware-machine. U hebt voldoende resources op de vCenter Server nodig om een virtuele machine toe te wijzen met 32 GB RAM, 8 Vcpu's en een externe virtuele switch.<br/><br/> Voor het apparaat is toegang tot internet vereist, hetzij rechtstreeks hetzij via een proxy.<br/> De toestel-VM moet worden geïmplementeerd op een ESXi-host waarop versie 5,5 of hoger wordt uitgevoerd. 
+**Azure Migrate project** | Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> U kunt Maxi maal 35.000 Vm's in een project evalueren.
+**Detectie** | Een apparaat kan tot 10.000 VMware-Vm's detecteren op een vCenter Server.<br/> Een apparaat kan verbinding maken met één vCenter Server.
+**Beoordelings groep** | U kunt Maxi maal 35.000 computers in één groep toevoegen.
+**Onderzoek** | U kunt Maxi maal 35.000 Vm's in één evaluatie evalueren.
 
 
 ## <a name="assessment-url-access-requirements"></a>Beoordeling-vereisten voor URL-toegang
@@ -107,6 +107,8 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 Apparaat | Binnenkomende verbindingen op TCP-poort 3389 om extern bureau blad-verbindingen met het apparaat toe te staan.<br/><br/> Binnenkomende verbindingen op poort 44368 voor externe toegang tot de app voor het beheren van apparaten met behulp van de URL:```https://<appliance-ip-or-name>:44368``` <br/><br/>Uitgaande verbindingen op poort 443, 5671 en 5672 voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
 vCenter-server | Binnenkomende verbindingen op TCP-poort 443 zodat het apparaat configuratie-en prestatie-meta gegevens voor evaluaties kan verzamelen. <br/><br/> Het apparaat maakt standaard verbinding met vCenter op poort 443. Als de vCenter-Server op een andere poort luistert, kunt u de poort wijzigen bij het instellen van detectie.
 
+## <a name="migration---limitations"></a>Migratie-beperkingen
+U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer machines wilt migreren, repliceert u in groepen van 10. Voor VMware-agentloze migratie kunt u Maxi maal 100 replicaties tegelijk uitvoeren.
 
 ## <a name="agentless-migration-vmware-server-requirements"></a>Migratie zonder agent-vereisten voor VMware-Server
 

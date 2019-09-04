@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: a8ab2039cde11876d853b411ca09a51e96e2ca0a
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: c9192a6d6b8cf122092963f2352af8bb6e5a6c21
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233044"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275910"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Gegevens kopiëren van of naar Azure SQL Database met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Azure Data Factory die u gebruikt:"]
@@ -234,7 +234,9 @@ De volgende eigenschappen worden ondersteund om gegevens te kopiëren van of naa
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
 | Type | De eigenschap **type** van de DataSet moet worden ingesteld op **AzureSqlTable**. | Ja |
-| tableName | De naam van de tabel of weer gave in het Azure SQL Database exemplaar waarnaar de gekoppelde service verwijst. | Nee voor bron, Ja voor sink |
+| schema | De naam van het schema. |Nee voor bron, Ja voor sink  |
+| table | De naam van de tabel/weer gave. |Nee voor bron, Ja voor sink  |
+| tableName | De naam van de tabel/weer gave met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en`table`voor nieuwe werk belasting. | Nee voor bron, Ja voor sink |
 
 #### <a name="dataset-properties-example"></a>Voorbeeld van de gegevensset-eigenschappen
 
@@ -250,7 +252,8 @@ De volgende eigenschappen worden ondersteund om gegevens te kopiëren van of naa
         },
         "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
-            "tableName": "MyTable"
+            "schema": "<schema_name>",
+            "table": "<table_name>"
         }
     }
 }
@@ -474,7 +477,7 @@ Het toevoegen van gegevens is het standaard gedrag van deze Azure SQL Database S
 **Optie 1:** Wanneer u een grote hoeveelheid gegevens hebt om te kopiëren, gebruikt u de volgende methode om een upsert te maken: 
 
 - U moet eerst een [Data Base-scoped tijdelijke tabel](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=azuresqldb-current#database-scoped-global-temporary-tables-azure-sql-database) gebruiken om alle records bulksgewijs te laden met behulp van de Kopieer activiteit. Omdat bewerkingen voor tijdelijke tabellen met een database bereik niet worden geregistreerd, kunt u miljoenen records in enkele seconden laden.
-- Voer een opgeslagen procedure-activiteit uit in Azure Data Factory om [](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) een instructie Merge of insert/update toe te passen. Gebruik de tijdelijke tabel als bron om alle updates uit te voeren of als één trans actie in te voegen. Op deze manier wordt het aantal Retouren en logboek bewerkingen gereduceerd. Aan het einde van de opgeslagen procedure-activiteit kan de tijdelijke tabel worden afgekapt zodat deze klaar is voor de volgende upsert-cyclus.
+- Voer een opgeslagen procedure-activiteit uit in Azure Data Factory om een instructie [Merge](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) of insert/update toe te passen. Gebruik de tijdelijke tabel als bron om alle updates uit te voeren of als één trans actie in te voegen. Op deze manier wordt het aantal Retouren en logboek bewerkingen gereduceerd. Aan het einde van de opgeslagen procedure-activiteit kan de tijdelijke tabel worden afgekapt zodat deze klaar is voor de volgende upsert-cyclus.
 
 In Azure Data Factory kunt u bijvoorbeeld een pijp lijn maken met een **Kopieer activiteit** die is gekoppeld aan een **opgeslagen procedure activiteit**. De eerste kopie kopieert gegevens uit uw bron archief naar een Azure SQL Database tijdelijke tabel, bijvoorbeeld **# #UpsertTempTable**, als de tabel naam in de gegevensset. Vervolgens roept de laatste een opgeslagen procedure aan om bron gegevens van de tijdelijke tabel samen te voegen in de doel tabel en de tijdelijke tabel op te schonen.
 

@@ -11,12 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 110040592474ec432912e7f545abad19ca3ae1ff
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: bc0455b34ebdcb080e0cd702e58d8163228b60ff
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991975"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278068"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Beheren en quota's voor Azure-resources aanvragen
 
@@ -78,7 +78,7 @@ Beschikbare resources:
 ### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning pijp lijnen
 Voor Azure Machine Learning pijp lijnen geldt een quotum limiet voor het aantal stappen in een pijp lijn en op basis van het aantal op schema's gebaseerde uitvoeringen van gepubliceerde pijp lijnen per regio in een abonnement.
 - Het maximum aantal stappen dat is toegestaan in een pijp lijn is 30.000
-- Het maximum aantal op schema's gebaseerde uitvoeringen van gepubliceerde pijp lijnen per abonnement per maand is 100.000
+- Maximum aantal uitgevoerde uitvoeringen op basis van een schema en BLOB-Pulls voor door een blog geactiveerde planning van gepubliceerde pijp lijnen per abonnement per maand is 100.000
 
 > [!NOTE]
 > Als u deze limiet wilt verhogen, neemt u contact op met [Microsoft ondersteuning](https://azure.microsoft.com/support/options/).

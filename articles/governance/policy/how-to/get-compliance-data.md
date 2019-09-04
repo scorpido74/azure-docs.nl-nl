@@ -7,12 +7,12 @@ ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 869be11639fd4e957a991cadb44f2714875ddf7e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: d9aadc477c3f39cfbb108d2f3eece0c9e0b06264
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232722"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239145"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Compatibiliteits gegevens van Azure-resources ophalen
 
@@ -27,8 +27,6 @@ Voordat u de methoden voor het rapporteren van naleving bekijkt, laten we kijken
 
 > [!WARNING]
 > Als de nalevings status wordt gerapporteerd als **niet geregistreerd**, controleert u of de resource provider **micro soft. PolicyInsights** is geregistreerd en of de gebruiker beschikt over de juiste machtigingen voor op rollen gebaseerde toegangs beheer (RBAC), zoals beschreven in [RBAC in Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
-
-[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="evaluation-triggers"></a>Evaluatie-triggers
 

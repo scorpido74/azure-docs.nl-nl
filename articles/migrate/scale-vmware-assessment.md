@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.author: hamusa
-ms.openlocfilehash: c9c57a07100f2ea6db86408826bf74d05c8df5aa
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 0d279781cdc27dbf2140c0100d84de5128c6a3d5
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868684"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279428"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Een groot aantal virtuele VMware-machines beoordelen voor migratie naar Azure
 
@@ -48,7 +48,8 @@ Gebruik de limieten in deze tabel voor de planning.
 **Planning** | **Limieten**
 --- | --- 
 **Azure Migrate projecten** | Evalueer Maxi maal 35.000 Vm's in een project.
-**Azure Migrate apparaat** | Een apparaat kan alleen verbinding maken met één vCenter Server.<br/><br/> Een apparaat kan alleen worden gekoppeld aan één Azure Migrate project.<br/> Een apparaat kan Maxi maal 10.000 Vm's op een vCenter Server detecteren.
+**Azure Migrate apparaat** | Een apparaat kan Maxi maal 10.000 Vm's op een vCenter Server detecteren.<br/> Een apparaat kan alleen verbinding maken met één vCenter Server.<br/> Een apparaat kan alleen worden gekoppeld aan één Azure Migrate project.<br/>  Een wille keurig aantal apparaten kan worden gekoppeld aan één Azure Migrate project. <br/><br/> 
+**Groep** | U kunt Maxi maal 35.000 Vm's toevoegen aan één groep.
 **Azure Migrate beoordeling** | U kunt Maxi maal 35.000 Vm's in één evaluatie evalueren.
 
 Hieronder volgen enkele voor beelden van implementaties:

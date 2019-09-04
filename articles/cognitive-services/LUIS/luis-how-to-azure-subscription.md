@@ -1,7 +1,7 @@
 ---
-title: Abonnements sleutels-LUIS
+title: Ontwerpen en runtime-sleutels gebruiken-LUIS
 titleSuffix: Azure Cognitive Services
-description: U hoeft geen abonnements sleutels te maken om uw gratis eerste-1000-eindpunt query's te gebruiken. Als u een fout melding ontvangt in de vorm van een HTTP 403 of 429, moet u een sleutel maken en deze toewijzen aan uw app.
+description: Wanneer u Language Understanding (LUIS) voor het eerst gebruikt, hoeft u geen ontwerp sleutel te maken. Wanneer u van plan bent om de app te publiceren, moet u het runtime-eind punt gebruiken om de runtime sleutel te maken en toe te wijzen aan de app.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,133 +9,106 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 1f8b84722c881cee1fe196e5a614b58cf3c19031
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 36d03e20c9a56d7b317b867f01c1c0b5767c802c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932863"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256995"
 ---
-# <a name="using-subscription-keys-with-your-luis-app"></a>Abonnementssleutels gebruiken met uw LUIS-app
+# <a name="using-authoring-and-runtime-resource-keys"></a>Resource sleutels voor ontwerpen en runtime gebruiken
 
-Wanneer u Language Understanding (LUIS) voor het eerst gebruikt, hoeft u geen abonnements sleutels te maken. U krijgt 1000 eindpunt query's te beginnen met. 
-
-Gebruik voor testen en prototype alleen de gratis laag van (F0). Gebruik voor productiesystemen, een [betaalde](https://aka.ms/luis-price-tier) laag. Gebruik niet de [ontwerpen sleutel](luis-concept-keys.md#authoring-key) voor eindpunt query's in de productieomgeving.
-
+Het ontwerpen en uitvoeren van runtime-resources bieden verificatie voor uw LUIS-app en Voorspellings eindpunt.
 
 <a name="create-luis-service"></a>
-<a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
+<a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>
 
-## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Een Voorspellings eindpunt runtime-resource maken in de Azure Portal
+Wanneer u zich aanmeldt bij de LUIS-Portal, kunt u het volgende doen:
 
-U maakt de [Voorspellings eindpunt resource](get-started-portal-deploy-app.md#create-the-endpoint-resource) in de Azure Portal. Deze bron mag alleen worden gebruikt voor eindpunt Voorspellings query's. Gebruik deze resource niet voor het ontwerpen van wijzigingen in de app.
+* een gratis [proef versie](#trial-key) : het maken van ontwerpen en enkele Voorspellings eindpunt query's.
+* een nieuwe Azure LUIS-ontwerp Bron: Maak een nieuwe resource. Dit is niet hetzelfde als een Voorspellings eindpunt resource. 
 
-U kunt een Language Understanding resource of een Cognitive Services resource maken. Als u een Language Understanding resource maakt, is het raadzaam om het resource type te postpend naar de resource naam. 
 
-<a name="programmatic-key" ></a>
-<a name="authoring-key" ></a>
-<a name="endpoint-key" ></a>
-<a name="use-endpoint-key-in-query" ></a>
-<a name="api-usage-of-ocp-apim-subscription-key" ></a>
-<a name="key-limits" ></a>
-<a name="key-limit-errors" ></a>
-<a name="key-concepts"></a>
-<a name="authoring-key"></a>
-<a name="create-and-use-an-endpoint-key"></a>
-<a name="assign-endpoint-key"></a>
-<a name="assign-resource"></a>
+<a name="starter-key"></a>
 
-### <a name="using-resource-from-luis-portal"></a>Resource uit LUIS Portal gebruiken
+## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>Meld u aan bij de LUIS-Portal en begin met ontwerpen
 
-Als u de resource uit de LUIS-Portal gebruikt, hoeft u uw sleutel en locatie niet te weten. In plaats daarvan moet u de resource-Tenant, het abonnement en de resource naam weten.
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai) en ga akkoord met de gebruiks voorwaarden.
+1. Start uw LUIS-app door het type van de LUIS-ontwerp sleutel te kiezen die u wilt gebruiken: gratis proef versie of nieuwe Azure LUIS-ontwerp sleutel. 
 
-Zodra u [](#assign-resource-key-to-luis-app-in-luis-portal) uw resource toewijst aan uw Luis-app in de Luis-Portal, worden de sleutel en locatie weer gegeven als onderdeel van de URL voor het Voorspellings eindpunt van de query op de sleutels van de sectie en de instellingen van het **eind punt** .
- 
-### <a name="using-resource-from-rest-api-or-sdk"></a>Resource uit REST API of SDK gebruiken
+    ![Een type Language Understanding-ontwerp bron kiezen](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
 
-Als u de resource uit de REST API (s) of SDK gebruikt, moet u uw sleutel en locatie kennen. Deze informatie wordt verstrekt als onderdeel van de URL voor het Voorspellings eindpunt van de query op de pagina sleutels van de sectie en de instellingen van het **eind punt** , en in de Azure Portal op de pagina's overzicht en sleutels van de resource.
+1. Wanneer u klaar bent met het resource selectie proces, [maakt u een nieuwe app](luis-how-to-start-new-app.md#create-new-app-in-luis). 
 
-## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>De resource sleutel toewijzen aan de LUIS-app in de LUIS-Portal
+## <a name="trial-key"></a>Proef sleutel
 
-Telkens wanneer u een nieuwe resource voor LUIS maakt, moet u [de resource toewijzen aan de Luis-app](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal). Nadat deze is toegewezen, hoeft u deze stap niet opnieuw uit te voeren tenzij u een nieuwe resource maakt. U kunt een nieuwe resource maken om de regio's van uw app uit te breiden of om een hoger aantal Voorspellings query's te ondersteunen.
+De proef versie (start) wordt voor u gegeven. Dit wordt gebruikt als uw verificatie sleutel voor het uitvoeren van een query op de prediction endpoint runtime, tot 1000 query's per maand. 
 
-<!-- content moved to luis-reference-regions.md, need replacement links-->
-<a name="regions-and-keys"></a>
-<a name="publishing-to-europe"></a>
-<a name="publishing-to-australia"></a>
+Deze wordt weer gegeven op de pagina **gebruikers instellingen** en op de pagina's **Manage-> Azure-resources** in de Luis-Portal. 
 
-### <a name="unassign-resource"></a>Resource verwijderen
-Wanneer u de toewijzing van de eindpuntsleutel, is het niet verwijderd uit Azure. Dit is alleen van LUIS ontkoppeld. 
+Wanneer u klaar bent om uw Voorspellings eindpunt te publiceren, maakt en wijst u ontwerp-en Voorspellings runtime sleutels toe om de functionaliteit van de start sleutel te vervangen. 
 
-Wanneer de eindpuntsleutel van een is niet-toegewezen of niet is toegewezen aan de app, een aanvraag naar het eindpunt van de URL wordt een fout geretourneerd: `401 This application cannot be accessed with the current subscription`. 
+## <a name="create-resources-in-the-azure-portal"></a>Resources maken in de Azure Portal
 
-### <a name="include-all-predicted-intent-scores"></a>Alle voorspelde intentie scores opnemen
-De **inclusief alle voorspelde scores intentie** selectievakje kan het eindpunt query-antwoord om op te nemen van de score voorspelling voor elk doel. 
+1. Meld u aan bij [Azure Portal](https://azure.microsoft.com/free/). 
+1. Selecteer **+ Een resource maken**.
+1. Typ `Language understanding` in het zoekvak.
+1. Selecteer **Maken** om te beginnen met het aanmaakproces. 
+1. Maak **beide** voor het maken van een ontwerp-en een Voorspellings eindpunt runtime sleutel. 
+1. Voer de vereiste gegevens in om de resource te maken en selecteer vervolgens **maken** om het proces te volt ooien.
 
-Deze instelling kunt uw chatbot of LUIS-aanroepen van toepassing op een programmatische beslissing nemen op basis van de scores van de geretourneerde intents. De eerste twee intenties zijn in het algemeen de meest interessante. Als de hoogste score is het geen intentie, dat uw chatbot kunt kiezen om een follow-up vraag te stellen die een definitieve keuze maakt tussen de intentie geen en de andere hoge score intentie. 
+    ![De Language Standing resource maken](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
-De intenties en hun scores zijn ook opgenomen van de eindpunt-Logboeken. U kunt [exporteren](luis-how-to-start-new-app.md#export-app) deze logboeken en analyseren van de scores. 
+    |Name|Doel|
+    |--|--|
+    |Resourcenaam| Een aangepaste naam die u kiest, die wordt gebruikt als onderdeel van de URL voor uw ontwerp-en Voorspellings eindpunt query's.|
+    |Abonnementsnaam| het abonnement dat wordt gefactureerd voor de resource.|
+    |Resource group| Een aangepaste naam voor de resource groep die u kiest of maakt. Met resource groepen kunt u Azure-resources groeperen voor toegang en beheer in dezelfde regio.|
+    |Locatie van ontwerpen|De regio die aan uw model is gekoppeld.|
+    |Prijs categorie ontwerpen|De prijs categorie bepaalt de maximale trans actie per seconde en maand.|
+    |Runtime-locatie|De regio die is gekoppeld aan de gepubliceerde Voorspellings eindpunt runtime.|
+    |Prijs categorie voor runtime|De prijs categorie bepaalt de maximale trans actie per seconde en maand.|
 
-```JSON
-{
-  "query": "book a flight to Cairo",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.5223427
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.5223427
-    },
-    {
-      "intent": "BookFlight",
-      "score": 0.372391433
-    }
-  ],
-  "entities": []
-}
-```
+    Zodra beide resources zijn gemaakt, wijst u de resources toe aan de LUIS-Portal.
 
-### <a name="enable-bing-spell-checker"></a>Inschakelen van de spellingcontrole van Bing 
-In de **eindpunt-url-instellingen**, wordt de **Bing spellingcontrole** schakelaar kunt u LUIS te corrigeren van verkeerd gespelde woorden voordat voorspelling. Maak een  **[sleutel Bing spellingcontrole](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)** . 
+## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>Een ontwerp bron toewijzen in de LUIS-portal voor alle apps
 
-Voeg de para meter **spelling controle = True** string en de **Bing-spelling check-Subscription-Key = {YOUR_BING_KEY_HERE}** toe. Vervang de `{YOUR_BING_KEY_HERE}` met de Bing spell checker sleutel.
+U kunt een ontwerp bron toewijzen voor één app of voor alle apps in LUIS. Met de volgende procedure worden alle apps aan één ontwerp bron toegewezen.
 
-```JSON
-{
-  "query": "Book a flite to London?",
-  "alteredQuery": "Book a flight to London?",
-  "topScoringIntent": {
-    "intent": "BookFlight",
-    "score": 0.780123
-  },
-  "entities": []
-}
-```
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai).
+1. Selecteer in de bovenste navigatie balk helemaal rechts uw gebruikers account en selecteer vervolgens **instellingen**.
+1. Selecteer op de pagina **gebruikers instellingen** de optie **ontwerp resource toevoegen** en selecteer vervolgens een bestaande ontwerp bron. Selecteer **Opslaan**. 
 
-### <a name="publishing-regions"></a>Publicatie-regio 's
+## <a name="assign-a-resource-to-an-app"></a>Een resource toewijzen aan een app
 
-Meer informatie over publiceren [regio's](luis-reference-regions.md) inclusief publicatie in [Europa](luis-reference-regions.md#publishing-to-europe), en [Australia](luis-reference-regions.md#publishing-to-australia). Publicatie-regio's wijken af van het ontwerpen van regio's. Een app maken in de ontwerphandleiding regio overeenkomt met de publicatie regio die u wilt gebruiken voor het eindpunt van de query.
+Met de volgende procedure kunt u een afzonderlijke resource, een ontwerp of Voorspellings eindpunt runtime toewijzen aan een app.
 
-## <a name="assign-resource-without-luis-portal"></a>Resource zonder LUIS portal toewijzen
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer vervolgens een app uit de lijst **mijn apps** .
+1. Ga naar de pagina **Manage-> Azure-resources** .
 
-Voor automation-doeleinden, zoals een CI/CD-pijplijn, kunt u de toewijzing van een LUIS-resource om een LUIS-app te automatiseren. Om dat te doen, moet u de volgende stappen uitvoeren:
+    ![Selecteer de Azure-resources Manage-> in de LUIS-Portal om een resource aan de app toe te wijzen.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
+
+1. Selecteer het tabblad voor spelling of ontwerp bron en selecteer vervolgens de knop **Voorspellings resource toevoegen** of maken van de resource **toevoegen** . 
+1. Selecteer de velden in het formulier om de juiste resource te zoeken en selecteer vervolgens **Opslaan**.  
+
+### <a name="assign-runtime-resource-without-using-luis-portal"></a>Een runtime resource toewijzen zonder de LUIS-portal te gebruiken
+
+Voor Automation-doel einden, zoals een CI/CD-pijp lijn, wilt u mogelijk de toewijzing van een LUIS-runtime resource automatiseren in een LUIS-app. Om dat te doen, moet u de volgende stappen uitvoeren:
 
 1. Een Azure Resource Manager-token ophalen uit deze [website](https://resources.azure.com/api/token?plaintext=true). Dit token verloopt dus direct gebruiken. De aanvraag retourneert een Azure Resource Manager-token.
 
     ![Azure Resource Manager token aanvragen en Azure Resource Manager token ontvangen](./media/luis-manage-keys/get-arm-token.png)
 
-1. Het token gebruiken om aan te vragen de LUIS-resources tussen abonnementen, vanuit de [ophalen LUIS azure API-accounts](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c), uw gebruikersaccount heeft toegang tot. 
+1. Gebruik het token om de LUIS-runtime resources voor meerdere abonnementen aan te vragen, van de [API Get Luis Azure accounts](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c), waartoe uw gebruikers account toegang heeft. 
 
     Deze POST-API moet de volgende instellingen:
 
     |Header|Waarde|
     |--|--|
     |`Authorization`|De waarde van `Authorization` is `Bearer {token}`. U ziet dat de waarde voor de token moet worden voorafgegaan door het woord `Bearer` en een spatie.| 
-    |`Ocp-Apim-Subscription-Key`|Uw [ontwerpen sleutel](luis-how-to-account-settings.md).|
+    |`Ocp-Apim-Subscription-Key`|Uw ontwerp sleutel.|
 
     Deze API retourneert een matrix met JSON-objecten van uw abonnements-ID, resourcegroep en resourcenaam, geretourneerd als de accountnaam waaronder LUIS-abonnementen. Het ene item niet vinden in de matrix die is de resource LUIS om toe te wijzen aan de LUIS-app. 
 
@@ -146,12 +119,34 @@ Voor automation-doeleinden, zoals een CI/CD-pijplijn, kunt u de toewijzing van e
     |Type|Instelling|Waarde|
     |--|--|--|
     |Header|`Authorization`|De waarde van `Authorization` is `Bearer {token}`. U ziet dat de waarde voor de token moet worden voorafgegaan door het woord `Bearer` en een spatie.|
-    |Header|`Ocp-Apim-Subscription-Key`|Uw [ontwerpen sleutel](luis-how-to-account-settings.md).|
+    |Header|`Ocp-Apim-Subscription-Key`|Uw ontwerp sleutel.|
     |Header|`Content-type`|`application/json`|
     |QueryString|`appid`|De id van de LUIS-app. 
     |Hoofdtekst||{"AzureSubscriptionId": "ddda2925-af7f-4b05-9ba1-2155c5fe8a8e"<br>'ResourceGroup': 'resourcegroup-2'<br>"AccountName": "luis-uswest-S0-2"}|
 
     Als deze API geslaagd is, wordt de status van een 201 - gemaakt. 
+
+## <a name="unassign-resource"></a>Resource verwijderen
+
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer vervolgens een app uit de lijst **mijn apps** .
+1. Ga naar de pagina **Manage-> Azure-resources** .
+1. Selecteer het tabblad voor spelling of ontwerp bron en selecteer vervolgens de knop **resource niet toewijzen** voor de resource. 
+
+Wanneer u de toewijzing van een resource ongedaan maakt, wordt deze niet verwijderd uit Azure. Dit is alleen van LUIS ontkoppeld. 
+
+## <a name="reset-authoring-key"></a>Het ontwerpen van de sleutel opnieuw instellen
+
+**Voor [gemigreerde](luis-migration-authoring.md) apps voor**het maken van een resource: als uw ontwerp sleutel is aangetast, moet u de sleutel opnieuw instellen in de Azure Portal op de pagina **sleutels** voor die ontwerp bron. 
+
+**Voor apps die nog niet zijn gemigreerd**: de sleutel wordt opnieuw ingesteld voor al uw apps in de Luis-Portal. Als u uw apps via de ontwerp-Api's maakt, moet u de waarde van OCP-APIM-Subscription-Key wijzigen in de nieuwe sleutel.
+
+## <a name="regenerate-azure-key"></a>Azure-sleutel opnieuw genereren
+
+Genereer de Azure-sleutels opnieuw vanuit de Azure Portal op de pagina **sleutels** .
+
+## <a name="delete-account"></a>Account verwijderen
+
+Zie [gegevensopslag en -verwijdering](luis-concept-data-storage.md#accounts) voor informatie over welke gegevens worden verwijderd wanneer u uw account verwijderen.
 
 ## <a name="change-pricing-tier"></a>Prijscategorie wijzigen
 
@@ -163,39 +158,16 @@ Voor automation-doeleinden, zoals een CI/CD-pijplijn, kunt u de toewijzing van e
     ![De betaling LUIS laag wijzigen](./media/luis-usage-tiers/plans.png)
 1.  Wanneer met de prijswijziging voltooid is, controleert de nieuwe prijscategorie of in een pop-upvenster. 
     ![Controleer of uw LUIS betaling-laag](./media/luis-usage-tiers/updated.png)
-1. Houd er rekening mee te [toewijzen van deze eindpuntsleutel](#assign-endpoint-key) op de **publiceren** pagina en deze gebruiken in alle endpoint-query's. 
+1. Houd er rekening mee te [toewijzen van deze eindpuntsleutel](#assign-a-resource-to-an-app) op de **publiceren** pagina en deze gebruiken in alle endpoint-query's. 
 
-## <a name="fix-http-status-code-403-and-429"></a>De HTTP-status code 403 en 429 herstellen
+## <a name="viewing-azure-resource-metrics"></a>Metrische gegevens van Azure-resource weer geven
 
-U krijgt de status codes 403 en 429 wanneer u de trans acties per seconde of trans acties per maand voor uw prijs categorie overschrijdt.
-
-### <a name="when-you-receive-an-http-403-error-status-code"></a>Wanneer u een HTTP 403-fout status code ontvangt
-
-Wanneer u al deze gratis 1000-eindpunt query's gebruikt of als u het quotum voor maandelijkse trans acties van uw prijs categorie overschrijdt, ontvangt u een HTTP 403-fout status code. 
-
-U kunt deze fout oplossen door [de prijs categorie te wijzigen](luis-how-to-azure-subscription.md#change-pricing-tier) in een hogere laag of door [een nieuwe resource te maken](get-started-portal-deploy-app.md#create-the-endpoint-resource) en [deze toe te wijzen aan uw app](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
-
-Oplossingen voor deze fout zijn onder andere:
-
-* Wijzig in de [Azure Portal](https://portal.azure.com), op uw language Understanding-resource, in de **prijs categorie resource management->** de prijs categorie in een hogere TPS-laag. U hoeft niets te doen in de Language Understanding portal als uw resource al is toegewezen aan uw Language Understanding app.
-*  Als uw gebruik de hoogste prijs categorie overschrijdt, voegt u meer Language Understanding resources toe met een load balancer. De [Language Understanding-container](luis-container-howto.md) met Kubernetes of docker-opstellen kan u hierbij helpen.
-
-### <a name="when-you-receive-an-http-429-error-status-code"></a>Wanneer u een HTTP 429-fout status code ontvangt
-
-Deze status code wordt geretourneerd wanneer uw trans acties per seconde uw prijs categorie overschrijden.  
-
-Oplossingen omvatten:
-
-* U kunt [de prijs categorie verhogen](#change-pricing-tier)als u niet de hoogste laag hebt.
-* Als uw gebruik de hoogste prijs categorie overschrijdt, voegt u meer Language Understanding resources toe met een load balancer. De [Language Understanding-container](luis-container-howto.md) met Kubernetes of docker-opstellen kan u hierbij helpen.
-* U kunt de aanvragen van uw client toepassing gateiseren met een [beleid voor opnieuw proberen](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) dat u zelf implementeert wanneer u deze status code ophaalt. 
-
-## <a name="viewing-summary-usage"></a>Overzicht gebruik weergeven
+### <a name="viewing-azure-resource-summary-usage"></a>Gebruik van Azure Resource Summary weer geven
 U kunt informatie over het gebruik van LUIS weergeven in Azure. De **overzicht** pagina toont recente samenvattende informatie, inclusief aanroepen en fouten. Als u een LUIS-aanvraag voor het claimeindpunt aanbrengt, klikt u vervolgens onmiddellijk volgen het **overzichtspagina**, leiden tot vijf minuten voor het gebruik worden weergegeven.
 
 ![Overzicht gebruik weergeven](./media/luis-usage-tiers/overview.png)
 
-## <a name="customizing-usage-charts"></a>Gebruik grafieken aanpassen
+### <a name="customizing-azure-resource-usage-charts"></a>Grafieken voor Azure resource usage aanpassen
 Metrische gegevens biedt meer inzicht in de gegevens.
 
 ![Standaard metrische gegevens](./media/luis-usage-tiers/metrics-default.png)
@@ -204,7 +176,7 @@ U kunt uw grafieken met metrische gegevens voor een bepaalde periode en type van
 
 ![Aangepaste metrische gegevens](./media/luis-usage-tiers/metrics-custom.png)
 
-## <a name="total-transactions-threshold-alert"></a>Totaal aantal transacties drempelwaarde voor waarschuwing
+### <a name="total-transactions-threshold-alert"></a>Totaal aantal transacties drempelwaarde voor waarschuwing
 Als u wilt weten wanneer u een bepaalde drempelwaarde in de transactie, bijvoorbeeld 10.000 transacties hebt bereikt, kunt u een waarschuwing maken. 
 
 ![Standaard-waarschuwingen](./media/luis-usage-tiers/alert-default.png)
@@ -213,4 +185,7 @@ Toevoegen van een waarschuwing voor metrische gegevens voor de **totaal aantal a
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het gebruik van [versies](luis-how-to-manage-versions.md) voor het beheren van wijzigingen in uw LUIS-app.
+* Meer informatie [over het gebruik van versies](luis-how-to-manage-versions.md) om de levens cyclus van uw app te beheren.
+* Inzicht in de concepten, waaronder de [ontwerp resource](/luis-concept-keys.md#authoring-key) en [inzenders](luis-concept-keys.md#contributions-from-other-authors) voor die bron.
+* Meer informatie [over het maken](luis-how-to-azure-subscription.md) van ontwerp-en runtime-resources
+* Migreren naar de nieuwe [ontwerp bron](luis-migration-authoring.md) 

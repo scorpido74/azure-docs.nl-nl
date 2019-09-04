@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 65b6eb07a866db405af3e5bc609a540c36f148a8
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 84109cf04588a5de6fb3fd946a89b5dfee4baa1b
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186443"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259157"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Informatie over het verwerken en extra heren van afbeeldingen in cognitieve Zoek scenario's
 
@@ -34,16 +34,15 @@ U kunt het normaliseren van afbeeldingen niet uitschakelen. Vaardig heden die ov
 | Configuratie parameter | Description |
 |--------------------|-------------|
 | imageAction   | Stel deze waarde in op geen als er geen actie moet worden ondernomen wanneer Inge sloten afbeeldingen of afbeeldings bestanden worden aangetroffen. <br/>Ingesteld op ' generateNormalizedImages ' om een matrix van genormaliseerde installatie kopieën te genereren als onderdeel van het kraken van documenten.<br/>Ingesteld op ' generateNormalizedImagePerPage ' om een matrix van genormaliseerde installatie kopieën te genereren, waarbij voor Pdf's in uw gegevens bron elke pagina wordt weer gegeven met één uitvoer afbeelding.  De functionaliteit is hetzelfde als ' generateNormalizedImages ' voor niet-PDF-bestands typen.<br/>Voor elke optie die niet ' geen ' is, worden de afbeeldingen weer gegeven in het veld *normalized_images* . <br/>De standaard waarde is geen. Deze configuratie is alleen relevant voor BLOB-gegevens bronnen, wanneer ' dataToExtract ' is ingesteld op ' contentAndMetadata '. <br/>Er worden Maxi maal 1000 installatie kopieën geëxtraheerd uit een bepaald document. Als er meer dan 1000 installatie kopieën in een document zijn, wordt de eerste 1000 geëxtraheerd en wordt er een waarschuwing gegenereerd. |
-|  normalizedImageMaxWidth | De maximum breedte (in pixels) voor genormaliseerde afbeeldingen die worden gegenereerd. De standaard waarde is 2000.|
-|  normalizedImageMaxHeight | De maximum hoogte (in pixels) voor genormaliseerde afbeeldingen die worden gegenereerd. De standaard waarde is 2000.|
+|  normalizedImageMaxWidth | De maximum breedte (in pixels) voor genormaliseerde afbeeldingen die worden gegenereerd. De standaard waarde is 2000. De toegestane maximum waarde is 10000. | 
+|  normalizedImageMaxHeight | De maximum hoogte (in pixels) voor genormaliseerde afbeeldingen die worden gegenereerd. De standaard waarde is 2000. De toegestane maximum waarde is 10000.|
 
 > [!NOTE]
 > Als u de eigenschap *imageAction* op een andere waarde dan ' geen ' instelt, kunt u de eigenschap *parsingMode* niet instellen op een andere waarde dan default.  U kunt slechts een van deze twee eigenschappen instellen op een niet-standaard waarde in de configuratie van de Indexeer functie.
 
 Stel de para meter parsingMode `json` in op (om elke BLOB als één document te indexeren `jsonArray` ) of (als uw blobs JSON-matrices bevatten en u wilt dat elk element van een matrix als een afzonderlijk document wordt behandeld).
 
-De standaard waarde van 2000 pixels voor de genormaliseerde afbeeldingen maximale breedte en hoogte is gebaseerd op de maximale grootte die wordt ondersteund door de [OCR-vaardigheid](cognitive-search-skill-ocr.md) en de vaardigheid van de [afbeeldings analyse](cognitive-search-skill-image-analysis.md). Als u de maximum limiet verhoogt, kan de verwerking mislukken voor de grotere installatie kopieën.
-
+De standaard waarde van 2000 pixels voor de genormaliseerde afbeeldingen maximale breedte en hoogte is gebaseerd op de maximale grootte die wordt ondersteund door de [OCR-vaardigheid](cognitive-search-skill-ocr.md) en de vaardigheid van de [afbeeldings analyse](cognitive-search-skill-image-analysis.md). De [OCR-vaardigheid](cognitive-search-skill-ocr.md) ondersteunt een maximale breedte en hoogte van 4200 voor niet-Engelse talen en 10000 voor Engels.  Als u de maximum limiet verhoogt, kan de verwerking op grotere afbeeldingen mislukken, afhankelijk van de definitie van uw vaardig heden en de taal van de documenten. 
 
 U geeft de imageAction op in de definitie van de [Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer) als volgt:
 
@@ -110,7 +109,7 @@ Een veelvoorkomend scenario bestaat uit het maken van een enkele teken reeks met
 
 1. [Normalized_images extra heren](#get-normalized-images)
 1. De OCR-vaardigheid uitvoeren `"/document/normalized_images"` met als invoer
-1. De tekst weergave van deze afbeeldingen samen voegen met de onbewerkte tekst uit het bestand. U kunt de [tekst](cognitive-search-skill-textmerger.md) samenvoegings vaardigheid gebruiken om beide tekst segmenten samen te voegen tot één grote teken reeks.
+1. De tekst weergave van deze afbeeldingen samen voegen met de onbewerkte tekst uit het bestand. U kunt de [tekst samenvoegings](cognitive-search-skill-textmerger.md) vaardigheid gebruiken om beide tekst segmenten samen te voegen tot één grote teken reeks.
 
 In het volgende voor beeld wordt een *merged_text* -veld gemaakt met daarin de tekstuele inhoud van uw document. Het bevat ook de OCRed-tekst van elk van de Inge sloten afbeeldingen. 
 

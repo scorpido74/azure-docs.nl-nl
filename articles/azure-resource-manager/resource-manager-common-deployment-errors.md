@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 08/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: df5362028a38a86ba8df46efae2e3c3109856463
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: fc6fdde4daa2d671b9d93673c2a78c2d9d85963c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194371"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275745"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Veelvoorkomende fouten bij Azure-implementatie met Azure Resource Manager oplossen
 
@@ -32,7 +32,7 @@ Als u op zoek bent naar informatie over een fout code en deze informatie niet in
 | AllocationFailed | Het cluster of de regio heeft geen resources beschikbaar of kan de aangevraagde VM-grootte niet ondersteunen. Voer de aanvraag op een later tijdstip opnieuw uit of vraag een andere VM-grootte aan. | [Problemen met inrichten en toewijzen voor Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [inrichting en toewijzing van problemen voor Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) en het [oplossen van toewijzings fouten](../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Wacht tot de gelijktijdige bewerking is voltooid. | |
 | AuthorizationFailed | Uw account of Service-Principal heeft onvoldoende toegangs rechten om de implementatie te volt ooien. Controleer de rol waartoe uw account behoort en de toegang tot het implementatie bereik.<br><br>Deze fout kan optreden wanneer een vereiste resource provider niet is geregistreerd. | [Access Control op basis van rollen in azure](../role-based-access-control/role-assignments-portal.md)<br><br>[Registratie oplossen](resource-manager-register-provider-errors.md) |
-| BadRequest | U hebt implementatie waarden verzonden die niet overeenkomen met wat er wordt verwacht door Resource Manager. Controleer het binnenste status bericht voor hulp bij het oplossen van problemen. | [Sjabloon verwijzing](/azure/templates/) en [ondersteunde locaties](resource-group-authoring-templates.md#resource-location) |
+| BadRequest | U hebt implementatie waarden verzonden die niet overeenkomen met wat er wordt verwacht door Resource Manager. Controleer het binnenste status bericht voor hulp bij het oplossen van problemen. | [Sjabloon verwijzing](/azure/templates/) en [ondersteunde locaties](resource-location.md) |
 | Conflict | U vraagt een bewerking aan die niet is toegestaan in de huidige status van de resource. Het wijzigen van de grootte van een schijf is bijvoorbeeld alleen toegestaan bij het maken van een virtuele machine of wanneer de toewijzing van de virtuele machine ongedaan wordt gemaakt. | |
 | DeploymentActive | Wacht tot de gelijktijdige implementatie naar deze resource groep is voltooid. | |
 | Heeft | De heeft-fout is een algemene fout die niet de details biedt die u nodig hebt om de fout op te lossen. Bekijk de fout Details voor een fout code die meer informatie bevat. | [Fout code zoeken](#find-error-code) |
@@ -53,7 +53,7 @@ Als u op zoek bent naar informatie over een fout code en deze informatie niet in
 | InvalidTemplateCircularDependency | Verwijder overbodige afhankelijkheden. | [Circulaire afhankelijkheden oplossen](resource-manager-invalid-template-errors.md#circular-dependency) |
 | LinkedAuthorizationFailed | Controleer of uw account deel uitmaakt van dezelfde Tenant als de resource groep die u implementeert. | |
 | LinkedInvalidPropertyId | De resource-ID voor een resource wordt niet correct opgelost. Controleer of u alle vereiste waarden opgeeft voor de resource-ID, inclusief de abonnements-ID, de naam van de resource groep, het resource type, de naam van de bovenliggende resource (indien nodig) en de resource naam. | |
-| LocationRequired | Geef een locatie op voor de resource. | [Locatie instellen](resource-group-authoring-templates.md#resource-location) |
+| LocationRequired | Geef een locatie op voor de resource. | [Locatie instellen](resource-location.md) |
 | MismatchingResourceSegments | Zorg ervoor dat geneste resources het juiste aantal segmenten in naam en type hebben. | [Resource segmenten omzetten](resource-manager-invalid-template-errors.md#incorrect-segment-lengths)
 | MissingRegistrationForLocation | Controleer de registratie status van de resource provider en de ondersteunde locaties. | [Registratie oplossen](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Registreer uw abonnement bij de resource provider. | [Registratie oplossen](resource-manager-register-provider-errors.md) |

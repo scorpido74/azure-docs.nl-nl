@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: heidist
-ms.openlocfilehash: 71fa4b590b41324536d740da5205977c0cefc448
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: d55a586d3dfb22b5dad377ff656b8d6a6c940bdb
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186499"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241836"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Vind Gegevens uit meerdere gegevens bronnen in één Azure Search-index combi neren
 
@@ -70,7 +70,7 @@ In dit voor beeld worden twee kleine sets gegevens gebruikt waarin zeven fictiev
 
 1. [Meld u aan bij de Azure Portal](https://portal.azure.com)en navigeer vervolgens naar de overzichts pagina van uw Azure Cosmos DB-account.
 
-1. Klik in de menu balk op container toevoegen. Geef ' nieuwe data base maken ' op en gebruik de naam **Hotel-ruimtes-DB**. Voer **Hotel-kamers** in voor de naam van de verzameling en **/HotelId** voor de partitie sleutel. Klik op **OK** om de data base en de container te maken.
+1. Klik in de menu balk op container toevoegen. Geef ' nieuwe data base maken ' op en gebruik de naam **Hotel-ruimtes-DB**. Voer **Hotels** in voor de naam van de verzameling en **/HotelId** voor de partitie sleutel. Klik op **OK** om de data base en de container te maken.
 
    ![Azure Cosmos DB container toevoegen](media/tutorial-multiple-data-sources/cosmos-add-container.png "Een Azure Cosmos DB-container toevoegen")
 
@@ -86,7 +86,7 @@ In dit voor beeld worden twee kleine sets gegevens gebruikt waarin zeven fictiev
 
 ## <a name="prepare-sample-blob-data"></a>Voor beeld van BLOB-gegevens voorbereiden
 
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com), navigeer naar uw Azure Storage-account, klik op blobs en klik vervolgens op **+ container**.
+1. [Meld u aan bij de Azure Portal](https://portal.azure.com), navigeer naar uw Azure Storage-account, klik op **blobs**en klik vervolgens op **+ container**.
 
 1. [Maak een BLOB-container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) met de naam **Hotel-kamers** voor het opslaan van de voor beeld-json-bestanden van de hotel kamer. U kunt het niveau van open bare toegang instellen op een van de geldige waarden.
 
@@ -328,7 +328,7 @@ Zodra de gegevens bron van de Blob-opslag en de Indexeer functie zijn gemaakt, i
 Omdat de index al is gevuld met Hotel gegevens uit de Azure Cosmos DB Data Base, werkt de BLOB-indexer de bestaande documenten in de index bij en worden de details van de ruimte toegevoegd.
 
 > [!NOTE]
-> Als u dezelfde niet-sleutel velden in beide gegevens bronnen hebt en de gegevens in deze velden niet overeenkomen, bevat de index de waarden van de meest recente meest recent uitgevoerde indexer. In ons voor beeld bevatten beide gegevens bronnen het veld hotelnaam. Als de gegevens in dit veld om de een of andere reden verschillend zijn, voor documenten met dezelfde sleutel waarde, wordt de waarde in de index opgeslagen in de gegevens bron die het meest recent is geïndexeerd.
+> Als u dezelfde niet-sleutel velden in beide gegevens bronnen hebt en de gegevens in deze velden niet overeenkomen, bevat de index de waarden van de meest recente meest recent uitgevoerde indexer. In ons voor beeld bevatten beide gegevens bronnen het veld **hotelnaam** . Als de gegevens in dit veld om de een of andere reden verschillend zijn, voor documenten met dezelfde sleutel waarde, **wordt de waarde** in de index opgeslagen in de gegevens bron die het meest recent is geïndexeerd.
 
 ## <a name="search-your-json-files"></a>Uw JSON-bestanden doorzoeken
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/07/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 5c310c1943eaf23423be873c6172e27c621fe109
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e9ecdad0fb4d02f160977fa28a484b2a3a5bb30
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564075"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257079"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Quickstart: Een app implementeren in de LUIS-Portal
 
@@ -38,7 +38,7 @@ U maakt de Voorspellings eindpunt resource in de Azure Portal. Deze bron mag all
 
 1. Configureer het abonnement met de volgende instellingen:
 
-   |Instelling|Waarde|Doel|
+   |Instelling|Value|Doel|
    |--|--|--|
    |Name|`my-cognitive-service-resource`|De naam van de Azure-resource. U hebt deze naam nodig wanneer u de resource aan de app toewijst in de LUIS-Portal.|
    |Subscription|Uw abonnement|Selecteer een van de abonnementen die zijn gekoppeld aan uw account.|
@@ -59,11 +59,11 @@ Telkens wanneer u een nieuwe resource voor LUIS maakt, moet u de resource toewij
 
 1. Meld u aan bij de [Luis-Portal](https://www.luis.ai) en kies de **myEnglishApp** -app in de lijst met apps.
 
-1. Selecteer **beheren** in het menu in de rechter bovenhoek en selecteer vervolgens **sleutels en eind punten**.
+1. Selecteer **beheren** in het menu in de rechter bovenhoek en selecteer vervolgens **Azure-resources**.
 
-1. Als u de LUIS wilt toevoegen, selecteert u **resource + toewijzen**.
+1. Als u de LUIS wilt toevoegen, selecteert u **Voorspellings bron toevoegen**.
 
-   [![Een resource toewijzen aan uw app](./media/get-started-portal-deploy-app/assign-resource-button.png)](./media/get-started-portal-deploy-app/assign-resource-button.png#lightbox)
+    <!-- TBD: get screenshot-->
 
 1. Selecteer uw Tenant, abonnement en resource naam. Selecteer **resource toewijzen**.
 

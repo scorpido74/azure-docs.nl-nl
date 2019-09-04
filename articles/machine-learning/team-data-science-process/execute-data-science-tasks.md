@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9d8ae3a95262b1554e7e97fac8375a44743bf4df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb792034e49b0f8f663eb9ee968ea6fac1372373
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60344662"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278610"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Datatechnologietaken uitvoeren: gegevensonderzoek, modelleren en implementatie
 
 Datatechnologietaken doorgaans bevatten gegevens gegevensonderzoek, modelleren en implementatie. In dit artikel ziet u hoe u de **interactieve Gegevensverkenning, analyse en rapportage (IDEAR)** en **geautomatiseerde modelleren en rapportage (AMAR)** hulpprogramma's voor verschillende algemene datatechnologietaken uitvoeren zoals interactieve gegevensverkenning, gegevensanalyse, rapportage en model maken. Ook biedt opties voor het implementeren van een model in een productieomgeving met behulp van een aantal gegevens en toolkits platformen, zoals het volgende:
 
-- [Azure Machine Learning](../service/index.yml)
+- [Azure Machine Learning](../index.yml)
 - [SQL-Server met ML-services](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
@@ -73,7 +73,7 @@ Zie voor meer informatie, [geautomatiseerde modelleren en hulpprogramma voor rap
 ### <a name="model-management"></a>Modelbeheer
 Nadat u meerdere modellen zijn gebouwd, moet u doorgaans een systeem voor het registreren en beheren van de modellen. Normaal gesproken moet u een combinatie van scripts of API's en een back-end-database of het versiebeheer systeem. Er zijn een aantal opties die u voor deze beheertaken overwegen kunt:
 
-1. [Azure Machine Learning - Modelbeheer-service](../service/index.yml)
+1. [Azure Machine Learning - Modelbeheer-service](../index.yml)
 2. [ModelDB van MIT](https://mitdbg.github.io/modeldb/) 
 3. [SQL-server als een model management-systeem](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)

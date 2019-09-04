@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/22/2019
-ms.openlocfilehash: f303e6ba30b8b68f1bed4c5bcacd746932cbe156
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 998318ad1418c1076676725af03bd7f33c963b3a
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873816"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279924"
 ---
 # <a name="choose-the-right-deployment-option-in-azure-sql"></a>Kies de juiste implementatie optie in Azure SQL
 
@@ -33,7 +33,7 @@ Een van de eerste belangrijke punten in een discussie over Azure ten opzichte va
 
 Zoals u in het diagram kunt zien, kan elke aanbieding worden gekenmerkt door het beheer niveau dat u over de infra structuur hebt en op de mate van kosten efficiëntie.
 
-In azure kunt u uw SQL Server-workloads uitvoeren als een gehoste service ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)) of een gehoste infra structuur ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)). Binnen PaaS hebt u meerdere implementatie opties en service lagen binnen elke implementatie optie. De belang rijke vraag die u moet stellen bij het kiezen tussen PaaS of IaaS is dat u uw Data Base wilt beheren, patches wilt Toep assen, back-ups wilt maken of u deze bewerkingen wilt delegeren naar Azure?
+In azure kunt u uw SQL Server-workloads uitvoeren als een gehoste service ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)) of een gehoste infra structuur ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)). Binnen PaaS hebt u meerdere implementatie opties en service lagen binnen elke implementatie optie. De belang rijke vraag die u moet stellen bij het kiezen tussen PaaS of IaaS is dat u uw Data Base wilt beheren, patches wilt Toep assen en back-ups wilt maken, of dat u deze bewerkingen wilt delegeren naar Azure?
 
 Afhankelijk van het antwoord hebt u de volgende opties:
 
@@ -43,7 +43,7 @@ Afhankelijk van het antwoord hebt u de volgende opties:
   Data bases bieden de volgende implementatie opties:
   - Als [***één data base***](sql-database-single-database.md) met een eigen set resources die worden beheerd via een database server. Een enkele data base is vergelijkbaar met een [Inge sloten data base](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) in SQL Server. Deze optie is geoptimaliseerd voor de ontwikkeling van moderne toepassingen van nieuwe Cloud toepassingen. Opties voor [grootschalige](sql-database-service-tier-hyperscale.md) en [serverloos](sql-database-serverless.md) zijn beschikbaar.
   - Een [***elastische pool***](sql-database-elastic-pool.md), een verzameling data bases met een gedeelde set resources die worden beheerd via een database server. U kunt afzonderlijke data bases naar en uit een elastische pool verplaatsen. Deze optie is geoptimaliseerd voor de ontwikkeling van moderne toepassingen van nieuwe Cloud toepassingen met behulp van het SaaS-toepassings patroon met meerdere tenants. Elastische Pools bieden een kosteneffectieve oplossing voor het beheren van de prestaties van meerdere data bases met variabele gebruiks patronen.
-  - Een [***database server***](sql-database-servers.md), die wordt gebruikt voor het beheren van groepen van afzonderlijke data bases en elastische Pools. Database servers fungeren als een centraal beheer punt voor meerdere data bases met één of [meer gegevens](sql-database-manage-logins.md)sets, aanmeldingen, [firewall regels](sql-database-firewall-configure.md), [controle regels](sql-database-auditing.md), [beleid voor detectie van dreigingen](sql-database-threat-detection.md)en failover- [groepen](sql-database-auto-failover-group.md).
+  - Een [***database server***](sql-database-servers.md), die wordt gebruikt voor het beheren van groepen van afzonderlijke data bases en elastische Pools. Database servers fungeren als een centraal beheer punt voor meerdere data bases met één of meer gegevens sets, [aanmeldingen](sql-database-manage-logins.md), [firewall regels](sql-database-firewall-configure.md), [controle regels](sql-database-auditing.md), [beleid voor detectie van dreigingen](sql-database-threat-detection.md)en failover- [groepen](sql-database-auto-failover-group.md).
 
 - [**SQL Managed instances**](sql-database-managed-instance.md): Het meest geschikt voor de meeste migraties naar de Cloud. Managed instance is een verzameling systeem-en gebruikers databases met een gedeelde set resources die gereed is voor lift-en SHIFT. Het meest geschikt voor nieuwe toepassingen of bestaande on-premises toepassingen die de nieuwste stabiele SQL Server functies willen gebruiken en die worden gemigreerd naar de Cloud met minimale wijzigingen. Een beheerd exemplaar is vergelijkbaar met een exemplaar van de [Microsoft SQL server data base-engine](https://docs.microsoft.com/sql/database-engine/sql-server-database-engine-overview) die gedeelde bronnen biedt voor data bases en aanvullende functies met een exemplaar bereik. Een beheerd exemplaar ondersteunt database migratie van on-premises met een minimale wijziging van de data base. Deze optie biedt alle PaaS-voor delen van Azure SQL Database, maar voegt mogelijkheden toe die eerder alleen beschikbaar waren in SQL-Vm's. Dit omvat een systeem eigen virtueel netwerk (VNet) en een bijna 100% compatibel met on-premises SQL Server. Beheerde instanties bieden volledige toegang tot SQL Server en functie compatibiliteit voor het migreren van SQL-servers naar Azure.
 
@@ -70,7 +70,7 @@ Aanvullende verschillen worden weer gegeven in de volgende tabel, maar ***zowel 
 Er zijn verschillende factoren die van invloed kunnen zijn op uw beslissing om te kiezen tussen de verschillende gegevens aanbiedingen:
 
 - [Kosten](#cost) : zowel de Paas-als de IaaS-optie zijn basis prijs die betrekking heeft op de onderliggende infra structuur en licenties. Met de optie IaaS moet u echter extra tijd en resources investeren om uw data base te beheren, terwijl u in PaaS deze beheer functies in de prijs hebt opgenomen. Met de optie IaaS kunt u uw resources afsluiten terwijl u ze niet gebruikt om de kosten te verlagen, terwijl PaaS-versie altijd wordt uitgevoerd, tenzij u uw resources verwijdert en opnieuw maakt wanneer dat nodig is.
-- [](#administration) Met PaaS-opties kunt u de hoeveelheid tijd beperken die u moet investeren om de data base te beheren. Het kan echter ook het bereik van aangepaste beheer taken en scripts beperken dat u kunt uitvoeren of uitvoeren. De CLR wordt bijvoorbeeld niet ondersteund met één of gegroepeerde Data Base, maar wordt wel ondersteund voor een beheerd exemplaar. Daarnaast bieden geen implementatie opties in PaaS ondersteuning voor het gebruik van tracerings vlaggen.
+- [Met PaaS-opties](#administration) kunt u de hoeveelheid tijd beperken die u moet investeren om de data base te beheren. Het kan echter ook het bereik van aangepaste beheer taken en scripts beperken dat u kunt uitvoeren of uitvoeren. De CLR wordt bijvoorbeeld niet ondersteund met één of gegroepeerde Data Base, maar wordt wel ondersteund voor een beheerd exemplaar. Daarnaast bieden geen implementatie opties in PaaS ondersteuning voor het gebruik van tracerings vlaggen.
 - [Service Level Agreement](#service-level-agreement-sla) : zowel IaaS als PaaS bieden een hoge, industrie standaard sla. De PaaS-optie garandeert een SLA van 99,99%, terwijl IaaS 99,95% SLA voor infra structuur garandeert, wat betekent dat u extra mechanismen moet implementeren om de beschik baarheid van uw data bases te garanderen. U kunt een oplossing met hoge Beschik baarheid implementeren op 99,99% door een extra SQL Server te maken in VM en AlwaysOn-beschikbaarheids groepen te configureren.
 - De [tijd om over te stappen op Azure](#market) -SQL Server in azure VM is het exacte resultaat van uw omgeving, dus migratie van on-premises naar Azure SQL VM is niet anders dan het verplaatsen van de data bases van een lokale server naar een andere. Managed instance biedt ook een zeer eenvoudige migratie. Er zijn echter enkele wijzigingen die u moet Toep assen voordat u migreert naar een beheerd exemplaar.
 

@@ -8,15 +8,15 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 30bd7c68ae1c88aba288b515d0ec32581f90b868
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b33f0dec9e6ec685b19e01ce82cfe4adec88b575
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088190"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258603"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Key Vault verwijzingen gebruiken voor App Service en Azure Functions (preview-versie)
 
@@ -48,7 +48,7 @@ Een Key Vault verwijzing is van het formulier `@Microsoft.KeyVault({referenceStr
 > | Verwijzings reeks                                                            | Description                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri=_secretUri_                                                       | De **SecretUri** moet de volledige gegevenslaag URI zijn van een geheim in Key Vault, met inbegrip van een versie, bijvoorbeeld https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
-> | Kluisnaam =_kluis_; Geheim =_geheim_; SecretVersion =_SecretVersion_ | De **kluisnaam** moet de naam van uw Key Vault-resource zijn. De naam van het doel geheim is. De **SecretVersion** moet de versie zijn van het geheim dat moet worden gebruikt. |
+> | Kluisnaam =_kluis_; Geheim =_geheim_; SecretVersion =_SecretVersion_ | De **kluisnaam** moet de naam van uw Key Vault-resource zijn. De **naam van het doel** geheim is. De **SecretVersion** moet de versie zijn van het geheim dat moet worden gebruikt. |
 
 > [!NOTE] 
 > In de huidige preview zijn versies vereist. Bij het draaien van geheimen moet u de versie in de configuratie van de toepassing bijwerken.
@@ -184,3 +184,27 @@ Een voor beeld van een psuedo-sjabloon voor een functie-app kan er als volgt uit
 
 > [!NOTE] 
 > In dit voor beeld is de bron beheer implementatie afhankelijk van de toepassings instellingen. Dit is normaal gesp roken onveilig gedrag, omdat het bijwerken van de app-instelling asynchroon werkt. Omdat we echter de `WEBSITE_ENABLE_SYNC_UPDATE_SITE` toepassings instelling hebben opgenomen, is de update synchroon. Dit betekent dat de implementatie van broncode beheer alleen begint zodra de instellingen van de toepassing volledig zijn bijgewerkt.
+
+## <a name="troubleshooting-key-vault-references"></a>Problemen met Key Vault verwijzingen oplossen
+
+Als een verwijzing niet correct wordt opgelost, wordt in plaats daarvan de referentie waarde gebruikt. Dit betekent dat voor toepassings instellingen een omgevings variabele wordt gemaakt waarvan de waarde de `@Microsoft.KeyVault(...)` syntaxis heeft. Dit kan ertoe leiden dat de toepassing fouten genereert, omdat er een geheim van een bepaalde structuur werd verwacht.
+
+Dit wordt meestal veroorzaakt door een onjuiste configuratie van het Key Vault- [toegangs beleid](#granting-your-app-access-to-key-vault). Het kan echter ook worden veroorzaakt door een geheim dat niet meer aanwezig is of een syntaxis fout in de verwijzing zelf.
+
+Als de syntaxis juist is, kunt u andere oorzaken voor fouten weer geven door de huidige oplossings status te controleren met behulp van een ingebouwde detector.
+
+### <a name="using-the-detector-for-app-service"></a>De detector voor App Service gebruiken
+
+1. Navigeer in de portal naar uw app.
+2. Selecteer **diagnosticeren en prolems oplossen**.
+3. Kies **Beschik baarheid en prestaties** en selecteer **Web-app lager.**
+4. Zoek **Key Vault diagnostische gegevens over toepassings instellingen** en klik op **meer informatie**.
+
+
+### <a name="using-the-detector-for-azure-functions"></a>De detector voor Azure Functions gebruiken
+
+1. Navigeer in de portal naar uw app.
+2. Navigeer naar **platform functies.**
+3. Selecteer **diagnosticeren en prolems oplossen**.
+4. Kies **Beschik baarheid en prestaties** en selecteer **functie-app omlaag of rapportage fouten.**
+5. Klik op **Key Vault diagnostische gegevens over toepassings instellingen.**

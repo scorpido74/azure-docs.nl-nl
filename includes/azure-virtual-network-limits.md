@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: e55b191e937b6c9f8183b3878b264eb50401b3f1
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: a37280fddf34221a9d08501ef55c6b069cd877a4
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69903883"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242637"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Netwerk limieten-Azure Resource Manager de volgende limieten gelden alleen voor netwerk resources die worden beheerd via **Azure Resource Manager** per regio per abonnement. Meer informatie over het [weer geven van uw huidige resource gebruik op basis van uw abonnements limieten](../articles/networking/check-usage-against-limits.md).
 
@@ -51,7 +51,7 @@ ms.locfileid: "69903883"
 | --- | --- | --- |
 | Open bare IP-adressen-dynamisch | 1\.000 voor Basic. |Neem contact op met ondersteuning. |
 | Open bare IP-adressen-statisch | 1\.000 voor Basic. |Neem contact op met ondersteuning. |
-| Open bare IP-adressen-statisch | 200 voor Standard.|Neem contact op met ondersteuning. |
+| Open bare IP-adressen-statisch | 1\.000 voor Standard.|Neem contact op met ondersteuning. |
 | Lengte van openbaar IP-voor voegsel | /28 | Neem contact op met ondersteuning. |
 
 #### <a name="load-balancer"></a>Limieten van Load Balancer

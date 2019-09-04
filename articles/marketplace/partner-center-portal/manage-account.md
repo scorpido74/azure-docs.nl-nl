@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 8c3b9523f6e6991723b0da721dbf7667ee340772
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: c28469e15841e2675c20868b74cf044159c4e9ca
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207967"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259180"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Uw commerciële Marketplace-account beheren in het partner centrum 
 
@@ -115,12 +115,12 @@ Meer [informatie over belasting gegevens voor Windows app/Game-ontwikkel aars en
 
 Micro soft verzendt standaard betalingen op maand basis. U hebt echter de mogelijkheid om uw uitbetalingen in de wacht te zetten, waardoor het verzenden van betalingen naar uw account wordt voor komen. Als u ervoor kiest om uw uitbetalingen in de wacht te zetten, blijven we de omzet die u behaalt vastleggen en de details in de **samen vatting**van de betaling opgeven. Er worden echter geen betalingen naar uw account verzonden totdat u de blok kering verwijdert. 
 
-Ga naar **account instellingen**om uw betalingen in de wacht te zetten. Onder **financiële details**, in de sectie status van uitbetalings **blokkering** , schakelt u de schuif regelaar in **op aan**. U kunt de status van uw uitbetalings blokkering op elk gewenst moment wijzigen, maar houd er rekening mee dat uw beslissing van invloed is op de volgende maandelijkse uitbetaling. Als u bijvoorbeeld de uitbetaling van april wilt bewaren, moet u ervoor zorgen dat u vóór het einde van maart de status van uw uitbetalings blokkering hebt ingesteld op aan.
+Ga naar **account instellingen**om uw betalingen in de wacht te zetten. Onder **financiële details**, in de sectie **status van uitbetalings blokkering** , schakelt u de schuif regelaar in **op aan**. U kunt de status van uw uitbetalings blokkering op elk gewenst moment wijzigen, maar houd er rekening mee dat uw beslissing van invloed is op de volgende maandelijkse uitbetaling. Als u bijvoorbeeld de uitbetaling van april wilt bewaren, moet u ervoor zorgen dat u vóór het einde van maart de status van uw uitbetalings blokkering hebt ingesteld **op aan.**
 
 Zodra u de status van de uitbetalings blokkering hebt ingesteld op **aan**, worden alle uitbetalingen in de wacht stand **gezet**totdat u de schuif regelaar weer inschakelt. Wanneer u dit doet, wordt u opgenomen in de volgende maandelijkse uitbetalings cyclus (op voor waarde dat er aan de toepasselijke betalings drempels is voldaan). Als u bijvoorbeeld uw uitbetalingen in wacht hebt, maar graag een toekenning wilt genereren die in juni is gegenereerd, moet u ervoor zorgen dat de status van de uitbetalings blokkering wordt **uitgeschakeld** voor het einde van mei.
 
 > [!NOTE]
-> De **status** selectie van uw uitbetalings blokkering geldt voor **alle** opbrengst bronnen die worden betaald via micro soft Partner Center, waaronder Azure Marketplace, AppSource, Microsoft Store, reclame, enzovoort. U kunt voor elke opbrengst bron niet verschillende wacht statussen selecteren.
+> De status selectie van uw **uitbetalings blokkering** geldt voor **alle** opbrengst bronnen die worden betaald via micro soft Partner Center, waaronder Azure Marketplace, AppSource, Microsoft Store, reclame, enzovoort. U kunt voor elke opbrengst bron niet verschillende wacht statussen selecteren.
 
 ### <a name="devices"></a>Apparaten
 
@@ -312,7 +312,7 @@ De gebruikers van uw bedrijf kunnen de volgende rollen en machtigingen toewijzen
   - Kan sommige uitgevers rapporten weer geven
 
 > [!NOTE]
-> De rol van globale beheerder, Inzender, financiële bijdrager en Marketer wordt niet gebruikt in het commerciële Marketplace-programma en heeft geen bijbehorende machtigingen.
+> Voor het programma voor commerciële Marketplace worden de rollen globale beheerder, zakelijke bijdrager, financiële bijdrager en markt beheerder niet gebruikt. Het toewijzen van deze rollen aan gebruikers heeft geen effect. Alleen de rollen Manager en ontwikkelaar verlenen machtigingen aan gebruikers.
 
 Zie gebruikers rollen toewijzen voor meer informatie over het beheren van rollen en machtigingen in andere gebieden van partner Center, zoals Azure Active Directory (AD), Cloud Solution Provider (CSP), de leverancier van het configuratie scherm (CPV), gast gebruikers of Microsoft Partner Network (MPN). [ en machtigingen in het partner centrum](https://docs.microsoft.com/partner-center/permissions-overview).
 
@@ -327,7 +327,7 @@ U kunt meerdere tenants instellen voor gebruik met partner Center. Elke gebruike
 
 Een andere Azure AD-Tenant koppelen aan uw partner centrum-account:
 
-1.  Selecteer op de pagina tenants (onder **account instellingen**) **een andere Azure AD-Tenant koppelen**.
+1.  Selecteer op de pagina **tenants** (onder **account instellingen**) **een andere Azure AD-Tenant koppelen**.
 2. Voer uw Azure AD-referenties in voor de Tenant die u wilt koppelen.
 3. Controleer de organisatie-en domein naam voor uw Azure AD-Tenant. Selecteer **bevestigen**om de koppeling te volt ooien.
 
@@ -337,7 +337,7 @@ Als de koppeling is geslaagd, kunt u account gebruikers toevoegen en beheren in 
 
 Een gloed nieuwe Azure AD-Tenant maken met uw partner centrum-account:
 
-1.  Selecteer op de pagina tenants (onder **account instellingen**) **een nieuwe Azure AD-Tenant maken**.
+1.  Selecteer op de pagina **tenants** (onder **account instellingen**) **een nieuwe Azure AD-Tenant maken**.
 2. Voer de Directory-informatie in voor uw nieuwe Azure AD:
     - **Domein naam**: De unieke naam die we gebruiken voor uw Azure AD-domein, samen met '. onmicrosoft.com '. Als u bijvoorbeeld ' voor beeld ' hebt ingevoerd, zou uw Azure AD-domein ' example.onmicrosoft.com ' zijn.
     - **E-mail adres van contact persoon**: Een e-mail adres waar wij contact met u kunnen opnemen over uw account, indien nodig.
@@ -349,7 +349,7 @@ Zie het artikel [een nieuwe Tenant maken in azure Active Directory](https://docs
 
 ### <a name="remove-a-tenant"></a>Een Tenant verwijderen
 
-Als u een Tenant uit uw partner centrum-account wilt verwijderen, zoekt u de naam op de pagina tenants (in **account instellingen**) en selecteert u vervolgens **verwijderen**. U wordt gevraagd om te bevestigen dat u de Tenant wilt verwijderen. Als u dit doet, kunnen gebruikers in die Tenant zich niet aanmelden bij het partner centrum-account en worden de machtigingen die u voor deze gebruikers hebt geconfigureerd, verwijderd.
+Als u een Tenant uit uw partner centrum-account wilt verwijderen, zoekt u de naam op de pagina **tenants** (in **account instellingen**) en selecteert u vervolgens **verwijderen**. U wordt gevraagd om te bevestigen dat u de Tenant wilt verwijderen. Als u dit doet, kunnen gebruikers in die Tenant zich niet aanmelden bij het partner centrum-account en worden de machtigingen die u voor deze gebruikers hebt geconfigureerd, verwijderd.
 
 Wanneer u een Tenant verwijdert, kunnen alle gebruikers die zijn toegevoegd aan het partner centrum-account van die Tenant, zich niet meer aanmelden bij het account.
 

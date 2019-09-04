@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: d03c5f66f760a2bea9f99501cec478831a347c5d
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 31243b5e9da55aafbc376fa416c1b00a4499c116
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668722"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242419"
 ---
 # <a name="feature-evaluation"></a>Functie-evaluatie
 
@@ -32,9 +32,9 @@ De belangrijkste functies hebben betere gewichten in het model. Omdat deze funct
 
 ## <a name="getting-feature-importance-evaluation"></a>Evaluatie van functie urgentie ophalen
 
-Als u de belang rijke resultaten van de functie wilt bekijken, moet u een evaluatie uitvoeren. De resulterende informatie over de functie urgentie is het huidige online model van Personaler. De evaluatie analyseert het functie belang van het model dat is opgeslagen op de eind datum van de evaluatie periode. 
+Als u de belang rijke resultaten van de functie wilt bekijken, moet u een evaluatie uitvoeren. De evaluatie maakt labels voor menselijke Lees bare onderdelen op basis van de functie namen die tijdens de evaluatie periode zijn waargenomen.
 
-De evaluatie maakt labels voor menselijke Lees bare onderdelen op basis van de functie namen die tijdens de evaluatie periode zijn waargenomen.
+De resulterende informatie over de functie urgentie is het huidige online model van Personaler. De evaluatie analyseert het belang van de functie van het model dat is opgeslagen op de eind datum van de evaluatie periode, nadat alle training tijdens de evaluatie is uitgevoerd, met het huidige online learning-beleid. 
 
 De belang rijke resultaten van de functie vertegenwoordigen geen andere beleids regels en modellen die tijdens de evaluatie zijn getest of gemaakt.  De evaluatie bevat geen functies die na het einde van de evaluatie periode naar Personaler worden verzonden.
 

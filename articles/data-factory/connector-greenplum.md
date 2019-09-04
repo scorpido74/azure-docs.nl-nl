@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 50b3b04170f3544017446613a46d4c2ed6537d95
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f0aa1fdb1377b44aee1689e5fdd0372e7cc1d943
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966528"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275061"
 ---
 # <a name="copy-data-from-greenplum-using-azure-data-factory"></a>Gegevens kopiëren van Greenplum met Azure Data Factory
 
@@ -45,7 +45,7 @@ De volgende eigenschappen worden ondersteund voor Greenplum gekoppelde service:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **Greenplum** | Ja |
+| Type | De eigenschap type moet worden ingesteld op: **Greenplum** | Ja |
 | connectionString | Een ODBC-verbindingsreeks Greenplum verbinden. <br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. U kunt ook wacht woord in azure Key Vault plaatsen en de `pwd` configuratie uit de Connection String halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja |
 | connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
 
@@ -107,8 +107,10 @@ Om gegevens te kopiëren van Greenplum, stel de eigenschap type van de gegevenss
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **GreenplumTable** | Ja |
-| tableName | Naam van de tabel. | Nee (als 'query' in de activiteitbron is opgegeven) |
+| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **GreenplumTable** | Ja |
+| schema | De naam van het schema. |Nee (als 'query' in de activiteitbron is opgegeven)  |
+| table | Naam van de tabel. |Nee (als 'query' in de activiteitbron is opgegeven)  |
+| tableName | De naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en`table` voor nieuwe werk belasting. | Nee (als 'query' in de activiteitbron is opgegeven) |
 
 **Voorbeeld**
 
@@ -117,11 +119,12 @@ Om gegevens te kopiëren van Greenplum, stel de eigenschap type van de gegevenss
     "name": "GreenplumDataset",
     "properties": {
         "type": "GreenplumTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Greenplum linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -136,7 +139,7 @@ Om gegevens te kopiëren van Greenplum, stelt u het brontype in de kopieeractivi
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **GreenplumSource** | Ja |
+| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **GreenplumSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**

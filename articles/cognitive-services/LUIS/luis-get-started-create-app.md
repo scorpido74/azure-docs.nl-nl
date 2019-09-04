@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/07/2019
+ms.date: 08/25/2019
 ms.author: diberry
-ms.openlocfilehash: e53f8d6e08b345d417ce54deacd658275cb1cd00
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 34978d552b2a5002906b65c06e0c8ad76f58761b
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563922"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258162"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Snelstartgids: Een vooraf gemaakte app voor huisautomatisering gebruiken
 
@@ -26,10 +26,10 @@ In deze snelstart maakt u een LUIS-app die gebruikmaakt van het vooraf gemaakte 
 
 Voor dit artikel hebt u een gratis LUIS-account nodig, dat u kunt maken in de LUIS-portal op [https://www.luis.ai](https://www.luis.ai). 
 
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
+
 ## <a name="create-a-new-app"></a>Een nieuwe app maken
 U kunt uw toepassingen maken en beheren in **Mijn apps**. 
-
-1. Meld u aan bij de LUIS-portal.
 
 2. Selecteer **Create new app**.
 
@@ -58,7 +58,7 @@ Wanneer het vooraf gemaakte domein is toegevoegd, wordt in het vak met vooraf ge
 
 Selecteer **Intents** in het navigatiedeelvenster aan de linkerkant om de intenties van het domein 'Home Automation' te controleren. Elke intentie bevat voorbeelden van utterances.
 
-![Scherm opname van de lijst met HomeAutomation intentie](media/luis-quickstart-new-app/home-automation-intents.png "Scherm afbeelding van de lijst HomeAutomation")intenties]
+![Scherm opname van de lijst met HomeAutomation intentie](media/luis-quickstart-new-app/home-automation-intents.png "Scherm afbeelding van de lijst HomeAutomation intenties")]
 
 > [!NOTE]
 > **None** is een intentie die door alle LUIS-apps wordt geboden. U kunt deze gebruiken voor het afhandelen van utterances die niet overeenkomen met de functionaliteit die uw app biedt. 

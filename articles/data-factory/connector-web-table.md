@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 09de2919b22ebb088b23c1ab59f60d182657a2f1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0ee573f26f717c0ed8ad36f1a06fe557d423e3c1
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720416"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274715"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Gegevens uit een webtabel kopiëren met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -54,7 +54,7 @@ De volgende eigenschappen worden ondersteund voor gekoppelde webtabelgegevens:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **Web** |Ja |
+| Type | De eigenschap type moet worden ingesteld op: **Web** |Ja |
 | url | URL naar de webbron |Ja |
 | authenticationType | Toegestane waarde is: **Anonymous**. |Ja |
 | connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Ja |
@@ -80,13 +80,13 @@ De volgende eigenschappen worden ondersteund voor gekoppelde webtabelgegevens:
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel gegevenssets voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de gegevensset van de webtabel.
+Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de gegevensset van de webtabel.
 
-Als u gegevens wilt kopiëren uit een webtabel, stelt u de eigenschap typevan de gegevensset in op webtabel. De volgende eigenschappen worden ondersteund:
+Als u gegevens wilt kopiëren uit een webtabel, stelt u de eigenschap type van de gegevensset in op **Webtabel**. De volgende eigenschappen worden ondersteund:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **WebTable** | Ja |
+| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **WebTable** | Ja |
 | path |Een relatieve URL naar de resource die de tabel bevat. |Nee. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van de gekoppelde service. |
 | index |De index van de tabel in de resource. Zie [index ophalen van een tabel in een sectie met een HTML-pagina](#get-index-of-a-table-in-an-html-page) voor de stappen voor het ophalen van index van een tabel in een HTML-pagina. |Ja |
 
@@ -116,7 +116,7 @@ Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zij
 
 ### <a name="web-table-as-source"></a>Webtabel als bron
 
-Als u gegevens wilt kopiëren uit een webtabel, stelt u het bron type inde Kopieer activiteit in op webbron. er worden geen aanvullende eigenschappen ondersteund.
+Als u gegevens wilt kopiëren uit een webtabel, stelt u het bron type in de Kopieer activiteit in op **webbron**. er worden geen aanvullende eigenschappen ondersteund.
 
 **Voorbeeld:**
 

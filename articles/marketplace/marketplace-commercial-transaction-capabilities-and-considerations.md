@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 6991ebfa58099a42b09e482d11c0d3c3983decce
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f6f409c42c7ffa5639315e71ff565f9c672e227c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535054"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279747"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Mogelijkheden en overwegingen voor commerciële Marketplace-trans acties
 
@@ -75,7 +75,7 @@ Bij het publiceren van een gratis of uw eigen licentie transactie aanbieding spe
 
 ### <a name="pay-as-you-go-and-subscription-site-based-pricing"></a>Prijzen voor betalen per gebruik en abonnementen (op site gebaseerd)
 
-WPay-as-u-go-en abonnements prijzen wanneer u een betalen per gebruik-of abonnements transactie aanbieding publiceert, biedt micro soft de technologie en services voor het verwerken van software licentie aankopen, retour neren en terugstortingen. In dit scenario wordt micro soft door de uitgever geautoriseerd om als agent te fungeren voor deze doel einden. De uitgever stelt micro soft in staat om de Software Licensing-trans actie te vergemakkelijken, waarbij de toewijzing wordt behouden als verkoper, provider, distributeur en licentie gever.
+Wanneer u een betalen per gebruik-of abonnements transactie aanbieding publiceert, biedt micro soft de technologie en services voor het verwerken van de aankopen, retour neren en terugstortingen van software licenties. In dit scenario wordt micro soft door de uitgever geautoriseerd om als agent te fungeren voor deze doel einden. De uitgever stelt micro soft in staat om de Software Licensing-trans actie te vergemakkelijken, waarbij de toewijzing wordt behouden als verkoper, provider, distributeur en licentie gever.
 
 Micro soft stelt klanten in staat om uitgever software te best Ellen, te bestemmen en te gebruiken, onder voor waarden van zowel de commerciële Marketplace van micro soft als de gebruiksrecht overeenkomst van de uitgever. Uitgevers moeten hun gebruiksrecht overeenkomst voor eind gebruikers opgeven of het [standaard contract](https://docs.microsoft.com/azure/marketplace/standard-contract) selecteren bij het maken van de aanbieding.
 

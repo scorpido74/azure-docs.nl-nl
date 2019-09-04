@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: edf475ac11168c33a6b11ccda3482ac44579e8d8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: bc914d27e9bea15a625dd2cd196401d733f8cfb8
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726224"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275935"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Gegevens kopiëren naar een Azure Search-index met behulp van Azure Data Factory
 
@@ -43,7 +43,7 @@ De volgende eigenschappen worden ondersteund voor Azure Search gekoppelde servic
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **AzureSearch** | Ja |
+| Type | De eigenschap type moet worden ingesteld op: **AzureSearch** | Ja |
 | url | De URL voor de Azure Search-service. | Ja |
 | key | De beheerders sleutel voor de Azure Search-service. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. U kunt Azure Integration Runtime of zelfgehoste Cloudintegratieruntime gebruiken (als het gegevensarchief bevindt zich in een particulier netwerk). Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
@@ -75,13 +75,13 @@ De volgende eigenschappen worden ondersteund voor Azure Search gekoppelde servic
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel gegevenssets voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. Deze sectie bevat een lijst met eigenschappen die door Azure Search DataSet worden ondersteund.
+Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die door Azure Search DataSet worden ondersteund.
 
 De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens naar Azure Search:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **AzureSearchIndex** | Ja |
+| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **AzureSearchIndex** | Ja |
 | indexName | De naam van de Azure Search index. Data Factory maakt de index niet. De index moet bestaan in Azure Search. | Ja |
 
 **Voorbeeld:**
@@ -113,7 +113,7 @@ Als u gegevens wilt kopiëren naar Azure Search, stelt u het bron type in de Kop
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **AzureSearchIndexSink** | Ja |
+| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **AzureSearchIndexSink** | Ja |
 | writeBehavior | Hiermee geeft u op of u wilt samen voegen of vervangen wanneer een document al aanwezig is in de index. Zie de [eigenschap WriteBehavior](#writebehavior-property).<br/><br/>Toegestane waarden zijn: **Samen voegen** (standaard) en **uploaden**. | Nee |
 | writeBatchSize | Hiermee worden gegevens geüpload naar de Azure Search-index wanneer de buffer grootte writeBatchSize bereikt. Zie de [eigenschap WriteBatchSize](#writebatchsize-property) voor meer informatie.<br/><br/>Toegestane waarden zijn: integer 1 tot 1.000; de standaard waarde is 1000. | Nee |
 

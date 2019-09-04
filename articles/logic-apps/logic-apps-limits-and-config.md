@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 891273a98c61b59e08b4a15f3b0892e6828a2a47
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 401b33c28e4ba91a0da5e4ab38f920e173302ea1
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099435"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242371"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limieten en configuratie-informatie voor Azure Logic Apps
 
@@ -81,7 +81,7 @@ Dit zijn de limieten voor het uitvoeren van een enkele logische app:
 | Maximum aantal wachtende uitvoeringen | Wanneer het gelijktijdigheids beheer is ingeschakeld, is het minimum aantal wachtende uitvoeringen 10 plus het aantal gelijktijdige uitvoeringen (gelijktijdigheid van triggers). U kunt het maximum aantal tot 100 wijzigen, inclusief. | Deze limiet beschrijft het hoogste aantal logische app-exemplaren dat kan worden uitgevoerd als het maximum aantal gelijktijdige exemplaren van de logische app al wordt uitgevoerd. <p><p>Zie de limiet voor het uitvoeren van een [wacht](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. |
 | Elementen van foreach-matrix | 100,000 | Deze limiet beschrijft het hoogste aantal matrix items dat voor elke lus kan worden verwerkt. <p><p>Als u grotere matrices wilt filteren, kunt u de [query actie](../connectors/connectors-native-query.md)gebruiken. |
 | Gelijktijdigheid van foreach | 20 is de standaard limiet wanneer het gelijktijdigheids beheer is uitgeschakeld. U kunt de standaard waarde van 1 tot en met 50 wijzigen. | Deze limiet is het hoogste aantal ' for each '-herhalingen die tegelijkertijd kunnen worden uitgevoerd, of parallel. <p><p>Als u de standaard limiet wilt wijzigen in een waarde tussen 1 en 50, raadpleegt u [wijzigen voor elke "gelijktijdige overschrijding](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) " of [voert u "voor elke" sequentieel uit](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
-| SplitOn items | 100,000 | Voor triggers die een matrix retour neren, kunt u een expressie opgeven die gebruikmaakt van een eigenschap SplitOn die de [matrix items in meerdere workflowexemplaren voor verwerking splitst of](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) opsplitst, in plaats van een foreach-lus te gebruiken. Deze expressie verwijst naar de matrix die moet worden gebruikt voor het maken en uitvoeren van een workflowexemplaar voor elk matrix item. |
+| SplitOn items | 100,000 | Voor triggers die een matrix retour neren, kunt u een expressie opgeven die gebruikmaakt van een eigenschap SplitOn die de [matrix items in meerdere workflowexemplaren voor verwerking splitst of opsplitst](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) , in plaats van een foreach-lus te gebruiken. Deze expressie verwijst naar de matrix die moet worden gebruikt voor het maken en uitvoeren van een workflowexemplaar voor elk matrix item. |
 | Tot iteraties | 5,000 | |
 ||||
 
@@ -258,13 +258,11 @@ Wanneer u een logische app verwijdert, worden geen nieuwe uitvoeringen gemaakt. 
 
 ## <a name="firewall-configuration-ip-addresses"></a>Firewallconfiguratie: IP-adressen
 
-Alle Logic apps in dezelfde regio gebruiken dezelfde IP-adresbereiken. Ter ondersteuning van de aanroepen die uw Logic apps rechtstreeks aanbrengt met [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)en andere HTTP-aanvragen, stelt u uw firewalls in met *alle* [inkomende](#inbound) *en* [uitgaande](#outbound) IP-adressen die worden gebruikt door de Logic apps-service op basis van de regio's waar uw Logic apps bestaan. Deze adressen worden weer gegeven onder de kopteksten binnenkomend en uitgaand in deze sectie en worden per regio gesorteerd. 
+Alle Logic apps in dezelfde regio gebruiken dezelfde IP-adresbereiken. Ter ondersteuning van de aanroepen die uw Logic apps rechtstreeks aanbrengt met [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)en andere HTTP-aanvragen, stelt u uw firewalls in met *alle* [inkomende](#inbound) *en* [uitgaande](#outbound) IP-adressen die worden gebruikt door de Logic apps-service op basis van de regio's waar uw Logic apps bestaan. Deze adressen worden weer gegeven onder de kopteksten **binnenkomend** en **uitgaand** in deze sectie en worden per regio gesorteerd. 
 
-Om de aanroepen te ondersteunen die door [micro soft beheerde connectors](../connectors/apis-list.md) worden gemaakt, stelt u uw firewall in met *alle* [uitgaande](#outbound) IP-adressen die door deze connectors worden gebruikt, op basis van de regio's waar uw Logic apps bestaan. Deze adressen worden weer gegeven onder de kop uitgaand in deze sectie en worden per regio gesorteerd.
+Om de aanroepen te ondersteunen die door [micro soft beheerde connectors](../connectors/apis-list.md) worden gemaakt, stelt u uw firewall in met *alle* [uitgaande](#outbound) IP-adressen die door deze connectors worden gebruikt, op basis van de regio's waar uw Logic apps bestaan. Deze adressen worden weer gegeven onder de kop **uitgaand** in deze sectie en worden per regio gesorteerd. Voor Logic apps die worden uitgevoerd in een Integration service Environment (ISE), moet u [deze poorten openen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
 
-Voor Logic apps die worden uitgevoerd in een Integration service Environment (ISE), moet u [deze poorten openen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
-
-Voor [Azure Government](../azure-government/documentation-government-overview.md) en [Azure China 21vianet](https://docs.microsoft.com/azure/china/)zijn gereserveerde IP-adressen voor connectors momenteel niet beschikbaar.
+Voor aangepaste connectors, [Azure Government](../azure-government/documentation-government-overview.md)en [Azure China 21vianet](https://docs.microsoft.com/azure/china/)zijn vaste of gereserveerde IP-adressen niet beschikbaar.
 
 > [!IMPORTANT]
 >

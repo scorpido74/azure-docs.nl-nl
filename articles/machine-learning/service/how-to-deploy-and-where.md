@@ -11,18 +11,18 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: e3c2c7e4f3bb6c4c06d2f445adc5056c854a7503
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 14ced5ed45bcc91e6b6c812f2d1cbb61e139cc4f
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138538"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278939"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Implementeer modellen met de Azure Machine Learning-service
 
 Meer informatie over het implementeren van uw machine learning model als een webservice in de Azure-Cloud of voor het IoT Edge van apparaten.
 
-De werk stroom is vergelijkbaar, ongeacht [waar u](#target) uw model implementeert:
+De werk stroom is vergelijkbaar, ongeacht [waar u uw model implementeert](#target) :
 
 1. Registreer het model.
 1. Voorbereiden op implementeren (assets opgeven, gebruik, reken doel).
@@ -37,7 +37,7 @@ Zie [modellen beheren, implementeren en bewaken met Azure machine learning-servi
 
 - Een model. Als u geen getraind model hebt, kunt u gebruikmaken van het model & afhankelijkheids bestanden in [deze zelf studie](https://aka.ms/azml-deploy-cloud).
 
-- De [Azure cli-extensie voor machine learning service](reference-azure-machine-learning-cli.md), [Azure machine learning python SDK](https://aka.ms/aml-sdk)of de [Azure machine learning Visual Studio code extension](how-to-vscode-tools.md).
+- De [Azure cli-extensie voor machine learning service](reference-azure-machine-learning-cli.md), [Azure machine learning python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)of de [Azure machine learning Visual Studio code extension](how-to-vscode-tools.md).
 
 ## <a name="connect-to-your-workspace"></a>Verbinding maken met uw werk ruimte
 
@@ -74,7 +74,7 @@ Machine learning-modellen worden geregistreerd in uw Azure Machine Learning-werk
 De code fragmenten in deze sectie demonstreren het registreren van een model van een trainings uitvoering:
 
 > [!IMPORTANT]
-> Deze fragmenten nemen aan dat u eerder een trainings uitvoering hebt uitgevoerd en toegang hebt tot het `run` object (SDK-voor beeld) of een run-id-waarde (CLI-voor beeld). Zie voor meer informatie over trainings modellen COMPUTE- [doelen maken en gebruiken voor model training](how-to-set-up-training-targets.md).
+> Deze fragmenten nemen aan dat u eerder een trainings uitvoering hebt uitgevoerd en toegang hebt tot het `run` object (SDK-voor beeld) of een run-id-waarde (CLI-voor beeld). Zie voor meer informatie over trainings modellen [Compute-doelen maken en gebruiken voor model training](how-to-set-up-training-targets.md).
 
 + **De SDK gebruiken**
 
@@ -178,7 +178,7 @@ Het implementeren van het model vereist verschillende dingen:
     > [!IMPORTANT]
     > De Azure Machine Learning SDK biedt geen manier voor het uitvoeren van de webservice of IoT Edge implementaties om toegang te krijgen tot uw Data Store-of gegevens sets. Als u het geïmplementeerde model nodig hebt om toegang te krijgen tot gegevens die buiten de implementatie zijn opgeslagen, zoals in een Azure Storage-account, moet u een oplossing voor aangepaste code ontwikkelen met behulp van de relevante SDK. Bijvoorbeeld de [Azure Storage SDK voor python](https://github.com/Azure/azure-storage-python).
     >
-    > Een ander alternatief dat kan worden gebruikt voor uw scenario is [batch](how-to-run-batch-predictions.md)voorspellingen. Dit biedt ook toegang tot gegevens opslag in de score.
+    > Een ander alternatief dat kan worden gebruikt voor uw scenario is [batch voorspellingen](how-to-run-batch-predictions.md). Dit biedt ook toegang tot gegevens opslag in de score.
 
 * **Afhankelijkheden**, zoals hulp scripts of python/Conda-pakketten die zijn vereist voor het uitvoeren van het script of model van de vermelding
 
@@ -562,7 +562,7 @@ Zie de referentie documentatie voor [LocalWebservice](https://docs.microsoft.com
 Als u wilt implementeren met behulp van de CLI, gebruikt u de volgende opdracht. Vervang `mymodel:1` door de naam en versie van het geregistreerde model:
 
 ```azurecli-interactive
-az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
+az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
 ```
 
 [!INCLUDE [aml-local-deploy-config](../../../includes/machine-learning-service-local-deploy-config.md)]
@@ -820,7 +820,7 @@ Beide pakketten kunnen worden gebruikt voor het ophalen van een lokale docker-in
 > Het maken van een pakket is vergelijkbaar met het implementeren van een model, omdat het een geregistreerd model en een Afleidings configuratie gebruikt.
 
 > [!IMPORTANT]
-> De functionaliteit, zoals het downloaden van een volledig samengestelde installatie kopie of het maken van [](https://www.docker.com) een installatie kopie, vereist een werkende docker-installatie in uw ontwikkel omgeving.
+> De functionaliteit, zoals het downloaden van een volledig samengestelde installatie kopie of het maken van een installatie kopie, vereist een werkende [docker](https://www.docker.com) -installatie in uw ontwikkel omgeving.
 
 ### <a name="download-a-packaged-model"></a>Een verpakt model downloaden
 
@@ -923,7 +923,7 @@ resp = requests.post(scoring_uri, input_data, headers=headers)
 print(resp.text)
 ```
 
-Zie [modellen gebruiken die zijn geïmplementeerd als](how-to-consume-web-service.md)webservices voor meer voor beelden van clients in andere programmeer talen.
+Zie [modellen gebruiken die zijn geïmplementeerd als webservices](how-to-consume-web-service.md)voor meer voor beelden van clients in andere programmeer talen.
 
 ### <a name="stop-the-docker-container"></a>De docker-container stoppen
 

@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: b80c32fea0d62bb5800a677ff30cb0787e83afa2
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7874a2bad63a4c5b47545c06a91228e64d523849
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945842"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258793"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Veelgestelde vragen over Language Understanding
 
@@ -68,7 +68,7 @@ Cortana vooraf gebouwde apps zijn afgeschaft in 2017. Ze worden niet meer onders
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Hoe ik het eigendom overdraagt van een LUIS-app?
 Als u wilt een LUIS-app overzetten naar een ander Azure-abonnement, de LUIS-app exporteren en importeren met behulp van een nieuw account. Werk de LUIS-app-ID in de clienttoepassing die wordt aangeroepen. De nieuwe app mogelijk enigszins LUIS scores geretourneerd uit de oorspronkelijke app.
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Een vooraf samengestelde entiteit is gelabeld in een voor beeld-utterance in plaats van mijn aangepaste entiteit. Hoe kan ik dit oplossen? 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Een vooraf samengestelde entiteit is gelabeld in een voor beeld-utterance in plaats van mijn aangepaste entiteit. Hoe kan ik dit probleem oplossen? 
 
 Zie [problemen met vooraf gemaakte entiteiten oplossen](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
 
@@ -78,7 +78,7 @@ Lees meer over fouten bij het [importeren van versies](luis-how-to-manage-versio
 
 <a name="luis-collaborating"></a>
 
-## <a name="collaborating"></a>Samen werken
+## <a name="collaborating-and-contributing"></a>Samen werken en bijdragen
 
 ### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Hoe kan ik deel nemers toegang geven tot LUIS met Azure Active Directory (Azure AD) of op rollen gebaseerd toegangs beheer (RBAC)?
 
@@ -87,6 +87,31 @@ Zie [Azure Active Directory resources](luis-how-to-collaborate.md#azure-active-d
 <a name="luis-endpoint"></a>
 
 ## <a name="endpoint"></a>Eindpunt
+
+### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>Ik heb een HTTP 403-fout status code ontvangen. Hoe herstel ik deze?
+
+U krijgt de status codes 403 en 429 wanneer u de trans acties per seconde of trans acties per maand voor uw prijs categorie overschrijdt. Verhoog uw prijs categorie of gebruik Language Understanding [containers](luis-container-howto.md).
+
+Wanneer u al deze gratis 1000-eindpunt query's gebruikt of als u het quotum voor maandelijkse trans acties van uw prijs categorie overschrijdt, ontvangt u een HTTP 403-fout status code. 
+
+U kunt deze fout oplossen door [de prijs categorie te wijzigen](luis-how-to-azure-subscription.md#change-pricing-tier) in een hogere laag of door [een nieuwe resource te maken](get-started-portal-deploy-app.md#create-the-endpoint-resource) en [deze toe te wijzen aan uw app](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
+
+Oplossingen voor deze fout zijn onder andere:
+
+* Wijzig in de [Azure Portal](https://portal.azure.com), op uw language Understanding-resource, in de **prijs categorie resource management->** de prijs categorie in een hogere TPS-laag. U hoeft niets te doen in de Language Understanding portal als uw resource al is toegewezen aan uw Language Understanding app.
+*  Als uw gebruik de hoogste prijs categorie overschrijdt, voegt u meer Language Understanding resources toe met een load balancer. De [Language Understanding-container](luis-container-howto.md) met Kubernetes of docker-opstellen kan u hierbij helpen.
+
+### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>Ik heb een HTTP 429-fout status code ontvangen. Hoe herstel ik deze?
+
+U krijgt de status codes 403 en 429 wanneer u de trans acties per seconde of trans acties per maand voor uw prijs categorie overschrijdt. Verhoog uw prijs categorie of gebruik Language Understanding [containers](luis-container-howto.md).
+
+Deze status code wordt geretourneerd wanneer uw trans acties per seconde uw prijs categorie overschrijden.  
+
+Oplossingen omvatten:
+
+* U kunt [de prijs categorie verhogen](luis-how-to-azure-subscription.md#change-pricing-tier)als u niet de hoogste laag hebt.
+* Als uw gebruik de hoogste prijs categorie overschrijdt, voegt u meer Language Understanding resources toe met een load balancer. De [Language Understanding-container](luis-container-howto.md) met Kubernetes of docker-opstellen kan u hierbij helpen.
+* U kunt de aanvragen van uw client toepassing gateiseren met een [beleid voor opnieuw proberen](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) dat u zelf implementeert wanneer u deze status code ophaalt. 
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Mijn query eindpunt heeft onverwachte resultaten geretourneerd. Wat moet ik doen?
 
@@ -102,7 +127,7 @@ Controleer de [aanbevolen procedures](luis-concept-best-practices.md) voor meer 
 LUIS [basis van woordgrenzen](luis-glossary.md#token) de utterance op basis van de [cultuur](luis-language-support.md#tokenization). Zowel de oorspronkelijke waarde en de waarde van de tokens zijn beschikbaar voor [gegevensextractie](luis-concept-data-extraction.md#tokenized-entity-returned).
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Hoe ik maken en toewijzen van een LUIS eindpuntsleutel?
-[Maken van de eindpuntsleutel](luis-how-to-azure-subscription.md) in Azure voor uw [service](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) niveau. [Toewijzen van de sleutel](luis-how-to-azure-subscription.md) op de **[sleutels en eindpunten](luis-how-to-azure-subscription.md)** pagina. Er is geen overeenkomende API voor deze actie. Vervolgens moet u de HTTP-aanvraag naar het eindpunt naar [gebruikt u de nieuwe eindpuntsleutel](luis-concept-keys.md#use-endpoint-key-in-query).
+[Maken van de eindpuntsleutel](luis-how-to-azure-subscription.md) in Azure voor uw [service](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) niveau. [Wijs de sleutel toe](luis-how-to-azure-subscription.md) op de pagina **[Azure-resources](luis-how-to-azure-subscription.md)** . Er is geen overeenkomende API voor deze actie. Vervolgens moet u de HTTP-aanvraag naar het eindpunt naar [gebruikt u de nieuwe eindpuntsleutel](luis-concept-keys.md).
 
 ### <a name="how-do-i-interpret-luis-scores"></a>Hoe ik LUIS scores worden geïnterpreteerd?
 Uw systeem moet de hoogste score intentie, ongeacht de waarde ervan gebruiken. Bijvoorbeeld, betekent een score lager (minder dan 50%) 0,5 niet noodzakelijkerwijs dat LUIS weinig vertrouwen heeft. Biedt meer training gegevens kunt verhogen de [score](luis-concept-prediction-score.md) van het meest waarschijnlijk doel.
@@ -123,10 +148,10 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Mijn app LUIS werkte gisteren, maar vandaag ik krijg 403 fouten. Kan ik niet hebt de app gewijzigd. Hoe herstel ik deze?
-Volg deze [instructies](#how-do-i-create-and-assign-a-luis-endpoint-key) voor het maken van een Luis-eindpunt sleutel en wijs deze toe aan de app. Vervolgens moet u de HTTP-aanvraag van de client toepassing wijzigen in het eind punt om [de nieuwe eindpunt sleutel te gebruiken](luis-concept-keys.md#use-endpoint-key-in-query). Als u een nieuwe resource hebt gemaakt in een andere regio, wijzigt u de regio van de aanvraag voor de HTTP-client.
+Volg deze [instructies](#how-do-i-create-and-assign-a-luis-endpoint-key) voor het maken van een Luis-eindpunt sleutel en wijs deze toe aan de app. Vervolgens moet u de HTTP-aanvraag van de client toepassing wijzigen in het eind punt om [de nieuwe eindpunt sleutel te gebruiken](luis-concept-keys.md). Als u een nieuwe resource hebt gemaakt in een andere regio, wijzigt u de regio van de aanvraag voor de HTTP-client.
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>Hoe beveilig ik mijn eindpunt LUIS?
-Zie [beveiligen van het eindpunt](luis-concept-security.md#securing-the-endpoint).
+Zie [beveiligen van het eindpunt](luis-concept-keys.md#securing-the-endpoint).
 
 ## <a name="working-within-luis-limits"></a>U werkt binnen de grenzen van LUIS
 
@@ -185,17 +210,15 @@ Als uw app bestond voordat LUIS is algemeen beschikbaar (GA), worden automatisch
 
 ### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Hoe kan ik weet welke sleutel ik nodig heb, waar ik deze vind? 
 
-Zie [ontwerp-en query Voorspellings eindpunt sleutels in Luis](luis-concept-keys.md) voor meer informatie over de verschillen tussen de [ontwerp sleutel](luis-how-to-account-settings.md) en de [eindpunt Voorspellings sleutel](luis-how-to-azure-subscription.md). 
+Zie [ontwerp-en query Voorspellings eindpunt sleutels in Luis](luis-concept-keys.md) voor meer informatie over de verschillen tussen de ontwerp sleutel en de Voorspellings runtime sleutel. 
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Ik heb een fout melding ontvangen over het verlopen van het quotum. Hoe herstel ik deze? 
 
-Zie [HTTP-status code 403 en 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) voor meer informatie.
+Zie HTTP-status code [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) en [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) voor meer informatie.
 
 ### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Ik moet meer eindpunt query's verwerken. Hoe kan ik doet u dat? 
 
-Zie [HTTP-status code 403 en 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) voor meer informatie.
-
-
+Zie HTTP-status code [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) en [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) voor meer informatie.
 
 ## <a name="app-management"></a>App-beheer
 

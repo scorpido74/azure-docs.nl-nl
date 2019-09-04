@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: b0bbfe973f18067284514e39d36442a63bd3efc8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 19c450a1832e725fa5fbf171b991a6b617291cfe
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60508895"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276694"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Gegevens kopiëren van Presto met Azure Data Factory (Preview)
 
@@ -44,12 +44,12 @@ De volgende eigenschappen worden ondersteund voor Presto gekoppelde service:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **Presto** | Ja |
+| Type | De eigenschap type moet worden ingesteld op: **Presto** | Ja |
 | host | Het IP-adres of de hostnaam naam van de Presto-server. (dat wil zeggen 192.168.222.160)  | Ja |
 | serverVersion | De versie van de Presto-server. (dat wil zeggen 0.148-t)  | Ja |
 | catalog | De cataloguscontext voor alle aanvragen voor de server.  | Ja |
 | port | De TCP-poort die de Presto server gebruikt om te luisteren naar clientverbindingen. De standaardwaarde is 8080.  | Nee |
-| authenticationType | Het verificatiemechanisme waarmee verbinding wordt gemaakt met de Presto-server. <br/>Toegestane waarden zijn: **Anonymous**, **LDAP** | Ja |
+| authenticationType | Het verificatiemechanisme waarmee verbinding wordt gemaakt met de Presto-server. <br/>Toegestane waarden zijn: **Anoniem**, **LDAP** | Ja |
 | username | De gebruikersnaam die wordt gebruikt voor verbinding met de Presto-server.  | Nee |
 | password | Het wachtwoord dat overeenkomt met de naam van de gebruiker. Dit veld markeren als een SecureString Bewaar deze zorgvuldig in Data Factory, of [verwijzen naar een geheim opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Nee |
 | enableSsl | Hiermee geeft u op of de verbindingen met de server zijn versleuteld met behulp van SSL. De standaardwaarde is false.  | Nee |
@@ -91,8 +91,10 @@ Om gegevens te kopiëren van Presto, stel de eigenschap type van de gegevensset 
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **PrestoObject** | Ja |
-| tableName | Naam van de tabel. | Nee (als 'query' in de activiteitbron is opgegeven) |
+| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **PrestoObject** | Ja |
+| schema | De naam van het schema. |Nee (als 'query' in de activiteitbron is opgegeven)  |
+| table | Naam van de tabel. |Nee (als 'query' in de activiteitbron is opgegeven)  |
+| tableName | De naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en`table` voor nieuwe werk belasting. | Nee (als 'query' in de activiteitbron is opgegeven) |
 
 **Voorbeeld**
 
@@ -101,11 +103,12 @@ Om gegevens te kopiëren van Presto, stel de eigenschap type van de gegevensset 
     "name": "PrestoDataset",
     "properties": {
         "type": "PrestoObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Presto linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -120,7 +123,7 @@ Om gegevens te kopiëren van Presto, stelt u het brontype in de kopieeractivitei
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron voor kopiëren-activiteit moet worden ingesteld op: **PrestoSource** | Ja |
+| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **PrestoSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**

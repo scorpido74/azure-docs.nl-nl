@@ -7,12 +7,12 @@ ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 988fc124a68ef07981c0f36334778be326fff3a2
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 1999a47d18fd3ce6388d6177be85c7debd3c1e97
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232270"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239188"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -66,8 +66,6 @@ De volgende JSON ziet u bijvoorbeeld een beleid dat beperkt welke resources zijn
 ```
 
 Alle Azure Policy-voor beelden zijn Azure Policy-voor [beelden](../samples/index.md).
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="mode"></a>Modus
 

@@ -13,22 +13,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 08/30/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f925a86504d68fd08b83c63e4da8b37b4aa25f85
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f7b6fab4a4a36691bbdeb11975c7a93b97ab86cb
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989905"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241571"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Vereisten voor toegang tot de API voor Azure Active Directory rapportage
 
-De [Azure Active Directory (Azure AD) rapportage-API's](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) bieden toegang tot de gegevens op programmeerniveau via een set op REST-gebaseerde API's. U kunt deze API's vanuit een groot aantal computertalen en hulpprogramma's aanroepen.
+De [Azure Active Directory (Azure AD) rapportage-API's](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) bieden toegang tot de gegevens op programmeerniveau via een set op REST-gebaseerde API's. U kunt deze Api's aanroepen vanuit programmeer talen en hulpprogram ma's.
 
-De rapportage-API maakt gebruik van [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) om toegang tot de Web-api's te verlenen.
+De rapportage-API maakt gebruik van [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) om toegang tot de Web-api's te verlenen.
 
 U moet het volgende doen om de toegang tot de rapportage-API voor te bereiden:
 
@@ -50,7 +50,7 @@ Als u toegang wilt krijgen tot de rapportage gegevens via de API, moet een van d
 
 ## <a name="register-an-application"></a>Een toepassing registreren
 
-U moet een toepassing registreren, zelfs als u gebruikmaakt van de rapportage-API met behulp van een script. Dit geeft u een **toepassings-id**die is vereist voor de autorisatie aanroepen en de code in staat stelt om tokens te ontvangen.
+Registratie is vereist, zelfs als u de rapportage-API opent met behulp van een script. De registratie geeft u een **toepassings-id**die is vereist voor de autorisatie aanroepen en de code in staat stelt om tokens te ontvangen.
 
 Als u uw Directory wilt configureren voor toegang tot de Azure AD Reporting-API, moet u zich aanmelden bij de [Azure Portal](https://portal.azure.com) met een Azure-beheerders account dat ook lid is van de rol **globale beheerder** in uw Azure AD-Tenant.
 
@@ -68,21 +68,21 @@ Als u uw Directory wilt configureren voor toegang tot de Azure AD Reporting-API,
 
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
 
-3. Selecteer op de pagina **app-registraties** de optie **nieuwe toepassing registreren**.
+3. Selecteer op de pagina **app-registraties** **nieuwe registratie**.
 
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/03.png)
 
-4. Voer de volgende stappen uit op de pagina **maken** :
+4. De pagina voor het **registreren van een toepassing** :
 
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
     a. Typ`Reporting API application`in het tekstvak **naam** .
 
-    b. Selecteer **Web-app/API**als **toepassings type**.
+    b. Voor het **type ondersteunde accounts**selecteert u **alleen accounts in deze organisatie**.
 
-    c. Typ`https://localhost`in het tekstvak **URL voor aanmelden** .
+    c. Typ`https://localhost`in de **OMleidings-URL** **webtekstvak selecteren** .
 
-    d. Selecteer **Maken**. 
+    d. Selecteer **Registreren**. 
 
 
 ## <a name="grant-permissions"></a>Machtigingen verlenen 
@@ -101,48 +101,26 @@ In de volgende sectie worden de stappen voor beide Api's vermeld. Als u geen toe
 
 **Uw toepassings machtigingen verlenen voor het gebruik van de Api's:**
 
-1. Selecteer uw toepassing op de pagina **app** -registraties en selecteer **instellingen**. 
+
+1. Selecteer **API-machtigingen** en **Voeg vervolgens een machtiging toe**. 
 
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-2. Selecteer op de pagina **instellingen** de optie **vereiste machtigingen**. 
+2. Zoek op de **pagina API-machtigingen voor aanvragen**naar **verouderde API** **Azure Active Directory Graph**. 
 
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-3. Klik op de pagina **vereiste machtigingen** in de lijst **API** op **Windows Azure Active Directory**. 
+3. Selecteer op de pagina **vereiste machtigingen** de optie **toepassings machtigingen**, vouw **Directory** -selectie vakje Directory **. ReadAll**.  Selecteer **machtigingen toevoegen**.
 
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
-4. Selecteer op de pagina **toegang inschakelen** de optie **Directory gegevens lezen** en Schakel **Aanmelden en gebruikers profiel lezen uit**. 
+4. Selecteer op de pagina **rapportage-API Application-API permissions** de optie **beheerder toestemming verlenen**. 
 
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
-5. Klik in de werk balk bovenaan op **Opslaan**.
+5. Opmerking: **Microsoft Graph** wordt standaard toegevoegd tijdens de API-registratie.
 
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/15.png)
-
-6. Klik op de pagina **vereiste machtigingen** in de werk balk aan de bovenkant op **toevoegen**.
-
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/32.png)
-
-7. Klik op de pagina **API-toegang toevoegen** op **een API selecteren**.
-
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/31.png)
-
-8. Klik op de pagina **een API selecteren** op **Microsoft Graph**en klik vervolgens op **selecteren**.
-
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/33.png)
-
-9. Selecteer op de pagina **toegang inschakelen** de optie **alle audit logboek gegevens lezen**en klik vervolgens op **selecteren**.  
-
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/34.png)
-
-10. Klik op de pagina **API-toegang toevoegen** op **gereed**.  
-
-11. Op de pagina **vereiste machtigingen** in de werk balk aan de bovenkant. Klik op **machtigingen verlenen**en klik vervolgens op **Ja**.
-
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/17.png)
-
 
 ## <a name="gather-configuration-settings"></a>Configuratie-instellingen verzamelen 
 
@@ -177,7 +155,7 @@ U hebt deze waarden nodig bij het configureren van aanroepen naar de rapportage-
    
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. Selecteer uw toepassing op de pagina **app** -registraties.
+2. Selecteer uw toepassing op de pagina **app-registraties** .
 
 3. Ga op de pagina toepassing naar **toepassings-id** en selecteer **klikken om te kopiëren**.
 
@@ -185,7 +163,7 @@ U hebt deze waarden nodig bij het configureren van aanroepen naar de rapportage-
 
 
 ### <a name="get-your-applications-client-secret"></a>Het client geheim van uw toepassing ophalen
-Als u het client geheim van uw toepassing wilt ophalen, moet u een nieuwe sleutel maken en de waarde ervan opslaan bij het opslaan van de nieuwe sleutel, omdat het niet mogelijk is om deze waarde later meer op te halen.
+ Voorkom fouten bij het openen van de controle Logboeken of het aanmelden met de API.
 
 **Het client geheim van uw toepassing ophalen:**
 
@@ -193,19 +171,13 @@ Als u het client geheim van uw toepassing wilt ophalen, moet u een nieuwe sleute
    
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2.  Selecteer uw toepassing op de pagina **app** -registraties.
+2.  Selecteer uw toepassing op de pagina **app-registraties** .
 
-3. Selecteer op de pagina toepassing in de werk balk bovenaan de optie **instellingen**. 
-
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/05.png)
-
-4. Klik op de pagina **instellingen** in de sectie **API-toegang** op **sleutels**. 
+3.  Selecteer **certificaten en geheimen** op de pagina **API-toepassing** , in de sectie **client geheimen** op **+ Nieuw client geheim**. 
 
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/12.png)
 
-5. Voer de volgende stappen uit op de pagina **sleutels** :
-
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/14.png)
+5. Voeg op de pagina **een geheim van client toevoegen** toe:
 
     a. Typ`Reporting API`in het tekstvak **Beschrijving** .
 
@@ -225,7 +197,7 @@ Het Microsoft Graph v2-eind punt wordt momenteel niet ondersteund. Zorg ervoor d
 
 ### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>Fout: Kan de gebruikers rollen niet ophalen uit de AD-grafiek
 
-Dit fout bericht kan worden weer gegeven wanneer u probeert toegang te krijgen tot aanmeldingen met Graph Explorer. Zorg ervoor dat u bent aangemeld bij uw account met behulp van beide aanmeld knoppen in de interface van Graph Verkenner, zoals wordt weer gegeven in de volgende afbeelding. 
+ Meld u aan bij uw account met behulp van de aanmeldings knoppen in de interface van Graph Explorer om te voor komen dat er een fout optreedt wanneer u zich aanmeldt met Graph Explorer. 
 
 ![Graph Explorer](./media/troubleshoot-graph-api/graph-explorer.png)
 
@@ -236,17 +208,15 @@ Als u in dit fout bericht wordt weer gegeven terwijl u probeert toegang te krijg
 ![Machtigingen voor gebruikers interface wijzigen](./media/troubleshoot-graph-api/modify-permissions.png)
 
 
-### <a name="error-neither-tenant-is-b2c-or-tenant-doesnt-have-premium-license"></a>Fout: Geen van de tenants is B2C of de Tenant heeft geen Premium-licentie
+### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>Fout: De Tenant is niet B2C of de Tenant heeft geen Premium-licentie
 
 Voor toegang tot aanmeldings rapporten is een licentie voor Azure Active Directory Premium 1 (P1) vereist. Als dit fout bericht wordt weer gegeven tijdens het openen van de aanmeldingen, moet u ervoor zorgen dat uw Tenant is gelicentieerd met een Azure AD P1-licentie.
 
-### <a name="error-user-is-not-in-the-allowed-roles"></a>Fout: De gebruiker bevindt zich niet in de toegestane rollen 
+### <a name="error-the-allowed-roles-does-not-include-user"></a>Fout: De toegestane rollen bevatten geen gebruiker. 
 
-Als dit fout bericht wordt weer gegeven tijdens het openen van controle Logboeken of-aanmeldingen met behulp van de API, moet u ervoor zorgen dat uw account deel uitmaakt van de rol **beveiligings lezer** of **rapport lezer** in uw Azure Active Directory Tenant. 
+ Voorkom fouten bij het openen van de controle Logboeken of het aanmelden met de API. Zorg ervoor dat uw account deel uitmaakt van de rol van **beveiligings lezer** of **rapport lezer** in uw Azure Active Directory-Tenant.
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>Fout: De machtiging voor het lezen van mapgegevens van de toepassing AAD ontbreekt 
-
-Volg de stappen in de [vereisten voor toegang tot de API voor Azure Active Directory rapportage](howto-configure-prerequisites-for-reporting-api.md) om ervoor te zorgen dat uw toepassing wordt uitgevoerd met de juiste set machtigingen. 
 
 ### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>Fout: MSGraph-API voor ontbrekende toepassing alle controle logboek gegevens lezen
 

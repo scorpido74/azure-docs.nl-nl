@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 8c7c8faad70022ba985a4041fd578becbaf70078
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 0bd97a6b1636d4b540c616958e5531c86362f597
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966869"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276625"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Gegevens kopiëren van een REST-eind punt met behulp van Azure Data Factory
 
@@ -25,7 +25,7 @@ In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factor
 
 Het verschil tussen deze REST-connector, de [http-connector](connector-http.md) en de [Web Table-connector](connector-web-table.md) zijn:
 
-- **Rest-connector** biedt specifiek ondersteuning voor het kopiëren van gegevens uit rest-api's; 
+- **Rest-connector** ondersteunt het kopiëren van gegevens uit rest-api's; 
 - **Http-connector** is algemeen om gegevens op te halen uit een http-eind punt, bijvoorbeeld om het bestand te downloaden. Voordat deze REST-connector beschikbaar komt, kunt u gebruikmaken van de HTTP-connector om gegevens te kopiëren van de REST-API, die wordt ondersteund, maar minder functioneel is vergeleken met de REST-connector.
 - Met **Web Table connector** wordt tabel inhoud geëxtraheerd van een HTML-webpagina.
 
@@ -59,9 +59,9 @@ De volgende eigenschappen worden ondersteund voor de REST-gekoppelde service:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** moet worden ingesteld op **RestService**. | Ja |
+| Type | De eigenschap **type** moet worden ingesteld op **RestService**. | Ja |
 | url | De basis-URL van de REST-service. | Ja |
-| enableServerCertificateValidation | Hiermee wordt aangegeven of het SSL-certificaat aan de server zijde moet worden gevalideerd bij het verbinden met het eind punt. | Nee<br /> (de standaard waarde is **True**) |
+| enableServerCertificateValidation | Hiermee wordt aangegeven of het SSL-certificaat aan de server zijde moet worden gevalideerd wanneer verbinding wordt gemaakt met het eind punt. | Nee<br /> (de standaard waarde is **True**) |
 | authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de REST-service. Toegestane waarden zijn **anoniem**, **Basic**, **AadServicePrincipal** en **ManagedServiceIdentity**. Raadpleeg de bijbehorende secties hieronder voor meer eigenschappen en voor beelden. | Ja |
 | connectVia | De [Integration Runtime](concepts-integration-runtime.md) gebruiken om te verbinden met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als deze eigenschap niet is opgegeven, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
@@ -173,52 +173,25 @@ Als u gegevens wilt kopiëren uit REST, worden de volgende eigenschappen onderst
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de DataSet moet worden ingesteld op **RestResource**. | Ja |
+| Type | De eigenschap **type** van de DataSet moet worden ingesteld op **RestResource**. | Ja |
 | relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Als deze eigenschap niet is opgegeven, wordt alleen de URL gebruikt die in de definitie van de gekoppelde service is opgegeven. | Nee |
-| requestMethod | De HTTP-methode. Toegestane waarden zijn **Get** (standaard) en **post**. | Nee |
-| additionalHeaders | Aanvullende HTTP-aanvraag headers. | Nee |
-| requestBody | De hoofd tekst van de HTTP-aanvraag. | Nee |
-| paginationRules | De paginerings regels voor het opstellen van volgende pagina-aanvragen. Raadpleeg de sectie [ondersteuning voor paginering](#pagination-support) voor meer informatie. | Nee |
 
-**Voor beeld 1: De methode Get gebruiken met paginering**
+Als u instelt `requestMethod`, `additionalHeaders`, `requestBody` en `paginationRules` in DataSet, wordt deze nog steeds ondersteund als-is, terwijl u het nieuwe model in activiteit bron gaat gebruiken.
+
+**Voorbeeld:**
 
 ```json
 {
     "name": "RESTDataset",
     "properties": {
         "type": "RestResource",
+        "typeProperties": {
+            "relativeUrl": "<relative url>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<REST linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "additionalHeaders": {
-                "x-user-defined": "helloworld"
-            },
-            "paginationRules": {
-                "AbsoluteUrl": "$.paging.next"
-            }
-        }
-    }
-}
-```
-
-**Voor beeld 2: De post-methode gebruiken**
-
-```json
-{
-    "name": "RESTDataset",
-    "properties": {
-        "type": "RestResource",
-        "linkedServiceName": {
-            "referenceName": "<REST linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "requestMethod": "Post",
-            "requestBody": "<body for POST REST request>"
         }
     }
 }
@@ -236,11 +209,15 @@ De volgende eigenschappen worden ondersteund in de kopieeractiviteit **source** 
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **RestSource**. | Ja |
+| Type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **RestSource**. | Ja |
+| requestMethod | De HTTP-methode. Toegestane waarden zijn **Get** (standaard) en **post**. | Nee |
+| additionalHeaders | Aanvullende HTTP-aanvraag headers. | Nee |
+| requestBody | De hoofd tekst van de HTTP-aanvraag. | Nee |
+| paginationRules | De paginerings regels voor het opstellen van volgende pagina-aanvragen. Raadpleeg de sectie [ondersteuning voor paginering](#pagination-support) voor meer informatie. | Nee |
 | httpRequestTimeout | De time-out (de time **span** -waarde) voor de HTTP-aanvraag om een antwoord te krijgen. Deze waarde is de time-out voor het verkrijgen van een reactie, niet de time-out voor het lezen van antwoord gegevens. De standaard waarde is **00:01:40**.  | Nee |
 | requestInterval | De tijd die moet worden gewacht voordat de aanvraag wordt verzonden naar de volgende pagina. De standaard waarde is **00:00:01** |  Nee |
 
-**Voorbeeld**
+**Voor beeld 1: De methode Get gebruiken met paginering**
 
 ```json
 "activities":[
@@ -262,6 +239,46 @@ De volgende eigenschappen worden ondersteund in de kopieeractiviteit **source** 
         "typeProperties": {
             "source": {
                 "type": "RestSource",
+                "additionalHeaders": {
+                    "x-user-defined": "helloworld"
+                },
+                "paginationRules": {
+                    "AbsoluteUrl": "$.paging.next"
+                },
+                "httpRequestTimeout": "00:01:00"
+            },
+            "sink": {
+                "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+**Voor beeld 2: De post-methode gebruiken**
+
+```json
+"activities":[
+    {
+        "name": "CopyFromREST",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<REST input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "RestSource",
+                "requestMethod": "Post",
+                "requestBody": "<body for POST REST request>",
                 "httpRequestTimeout": "00:01:00"
             },
             "sink": {
@@ -285,7 +302,7 @@ Deze algemene REST-connector ondersteunt de volgende paginerings patronen:
 * Header van volgende aanvraag = waarde van eigenschap in huidige antwoord tekst
 * Kop van volgende aanvraag = waarde van header in huidige antwoord headers
 
-**Paginerings regels** worden gedefinieerd als een woorden lijst in een gegevensset die een of meer hoofdletter gevoelige sleutel-waardeparen bevatten. De configuratie wordt gebruikt om de aanvraag te genereren vanaf de tweede pagina. De connector stopt met herhalen wanneer HTTP-status code 204 (geen inhoud) wordt opgehaald, of een van de JSONPath-expressies in paginationRules retourneert null.
+**Paginerings regels** worden gedefinieerd als een woorden lijst in een gegevensset die een of meer hoofdletter gevoelige sleutel-waardeparen bevat. De configuratie wordt gebruikt om de aanvraag te genereren vanaf de tweede pagina. De connector stopt met herhalen wanneer de HTTP-status code 204 (geen inhoud) wordt opgehaald, of een van de JSONPath-expressies in paginationRules retourneert null.
 
 **Ondersteunde sleutels** in de paginerings regels:
 
@@ -336,23 +353,19 @@ Facebook Graph API retourneert een antwoord in de volgende structuur, in dat gev
 }
 ```
 
-De bijbehorende configuratie van de rest- `paginationRules` gegevensset met name de is als volgt:
+De bijbehorende bron configuratie van de rest Copy- `paginationRules` activiteit met name de is als volgt:
 
 ```json
-{
-    "name": "MyFacebookAlbums",
-    "properties": {
-            "type": "RestResource",
-            "typeProperties": {
-                "relativeUrl": "albums",
-                "paginationRules": {
-                    "AbsoluteUrl": "$.paging.next"
-                }
-            },
-            "linkedServiceName": {
-                "referenceName": "MyRestService",
-                "type": "LinkedServiceReference"
-            }
+"typeProperties": {
+    "source": {
+        "type": "RestSource",
+        "paginationRules": {
+            "AbsoluteUrl": "$.paging.next"
+        },
+        ...
+    },
+    "sink": {
+        "type": "<sink type>"
     }
 }
 ```

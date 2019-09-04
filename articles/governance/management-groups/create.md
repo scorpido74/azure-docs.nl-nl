@@ -1,6 +1,6 @@
 ---
-title: Beheergroepen om in te delen van Azure-resources - Governance in Azure maken
-description: Informatie over het maken van Azure-beheergroepen voor het beheren van meerdere resources met behulp van de portal, Azure PowerShell en Azure CLI.
+title: Beheer groepen maken om Azure-resources te organiseren-Azure governance
+description: Meer informatie over het maken van Azure-beheer groepen voor het beheren van meerdere resources met behulp van de portal, Azure PowerShell en Azure CLI.
 author: rthorn17
 manager: rithorn
 ms.service: governance
@@ -10,84 +10,82 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 9e0a864019c2940ba7b5188ea43e9bbae484178d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f34efbbca1616c75c13ee3a8bf73bbee1e66dc92
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241986"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241163"
 ---
-# <a name="create-management-groups-for-resource-organization-and-management"></a>Beheergroepen voor resource organisatie en beheer maken
+# <a name="create-management-groups-for-resource-organization-and-management"></a>Beheer groepen maken voor resource organisatie en-beheer
 
-Beheergroepen zijn containers waarmee u toegang, beleid en naleving beheren voor meerdere abonnementen. Maken van deze containers voor het bouwen van een effectief en efficiënt-hiërarchie die kan worden gebruikt met [Azure Policy](../policy/overview.md) en [Azure rol-gebaseerd toegangsbeheer](../../role-based-access-control/overview.md). Zie voor meer informatie over beheergroepen [organiseren van uw resources met Azure-beheergroepen](overview.md).
+Beheer groepen zijn containers die u helpen bij het beheren van de toegang, het beleid en de naleving van meerdere abonnementen. Maak deze containers om een effectieve en efficiënte hiërarchie te maken die kan worden gebruikt met [Azure Policy](../policy/overview.md) en [toegangs beheer op basis van rollen in azure](../../role-based-access-control/overview.md). Zie [uw resources organiseren met Azure-beheer groepen](overview.md)voor meer informatie over beheer groepen.
 
-De eerste beheergroep die u hebt gemaakt in de map kan tot 15 minuten duren. Er zijn processen die worden uitgevoerd van de eerste keer voor het instellen van de beheerservice van groepen in Azure voor uw directory. U ontvangt een melding wanneer het proces voltooid is.
-
-[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
+Het kan tot vijf tien minuten duren voordat de eerste beheer groep die in de Directory is gemaakt, is voltooid. Er zijn processen die de eerste keer worden uitgevoerd om de service voor beheer groepen in te stellen in azure voor uw Directory. U ontvangt een melding wanneer het proces is voltooid.
 
 ## <a name="create-a-management-group"></a>Een beheergroep maken
 
-U kunt de beheergroep maken met behulp van de portal, PowerShell of Azure CLI. Op dit moment niet u Resource Manager-sjablonen gebruiken voor het maken van beheergroepen.
+U kunt de beheer groep maken met behulp van de portal, Power shell of Azure CLI. Op dit moment kunt u geen Resource Manager-sjablonen gebruiken om beheer groepen te maken.
 
-### <a name="create-in-portal"></a>In de portal maken
+### <a name="create-in-portal"></a>Maken in Portal
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer **alle services** > **beheergroepen**.
+1. Selecteer **alle services** > -**beheer groepen**.
 
-1. Selecteer op de hoofdpagina van **nieuwe beheergroep**.
+1. Selecteer **nieuwe beheer groep**op de hoofd pagina.
 
-   ![Pagina voor het werken met beheergroepen](./media/main.png)
+   ![Pagina voor het werken met beheer groepen](./media/main.png)
 
-1. Vul in het veld management groep-ID.
+1. Vul het veld beheer groep-ID in.
 
-   - De **beheergroep-ID** is de unieke id van map die wordt gebruikt voor het verzenden van opdrachten in deze beheergroep. Deze id is niet bewerkbaar na het maken van zoals het in het hele systeem Azure wordt gebruikt voor het identificeren van deze groep. De [hoofdmap beheergroep](index.md#root-management-group-for-each-directory) wordt automatisch gemaakt met een ID die de Azure Active Directory-ID. Voor alle overige beheergroepen toewijzen een unieke ID.
-   - Het weergavenaamveld is de naam die wordt weergegeven in Azure portal. Een afzonderlijke weergavenaam is een optioneel veld bij het maken van het beheer te groeperen en op elk gewenst moment kan worden gewijzigd.  
+   - De **beheer groep-ID** is de unieke id van de map die wordt gebruikt voor het verzenden van opdrachten in deze beheer groep. Deze id kan niet worden bewerkt nadat deze is gemaakt, omdat deze wordt gebruikt in het Azure-systeem om deze groep te identificeren. De [hoofd beheer groep](index.md#root-management-group-for-each-directory) wordt automatisch gemaakt met een id die de Azure Active Directory-id is. Wijs voor alle andere beheer groepen een unieke ID toe.
+   - Het veld weergave naam is de naam die wordt weer gegeven in de Azure Portal. Een afzonderlijke weergave naam is een optioneel veld bij het maken van de beheer groep en kan op elk gewenst moment worden gewijzigd.  
 
-   ![Deelvenster Opties voor het maken van een nieuwe beheergroep](./media/create_context_menu.png)  
+   ![Deel venster Opties voor het maken van een nieuwe beheer groep](./media/create_context_menu.png)  
 
 1. Selecteer **Opslaan**.
 
-### <a name="create-in-powershell"></a>Maken in PowerShell
+### <a name="create-in-powershell"></a>Maken in Power shell
 
-Gebruik voor PowerShell de [New-AzManagementGroup](/powershell/module/az.resources/new-azmanagementgroup) cmdlet voor het maken van een nieuwe beheergroep.
+Voor Power shell gebruikt u de cmdlet [New-AzManagementGroup](/powershell/module/az.resources/new-azmanagementgroup) om een nieuwe beheer groep te maken.
 
 ```azurepowershell-interactive
 New-AzManagementGroup -GroupName 'Contoso'
 ```
 
-De **GroupName** is een unieke id wordt gemaakt. Deze ID wordt gebruikt door andere opdrachten om te verwijzen naar deze groep en kan later worden gewijzigd.
+De **GroupName** is een unieke id die wordt gemaakt. Deze ID wordt gebruikt door andere opdrachten om te verwijzen naar deze groep en kan later niet worden gewijzigd.
 
-Als u wilt dat de beheergroep die u wilt weergeven van een andere naam in Azure portal, voegt u toe de **DisplayName** parameter. Bijvoorbeeld, voor het maken van een beheergroep met de groepsnaam van Contoso en de weergavenaam van 'Contoso groeperen', gebruikt u de volgende cmdlet:
+Als u wilt dat de beheer groep een andere naam weergeeft in de Azure Portal, voegt u de para meter **DisplayName** toe. Gebruik bijvoorbeeld de volgende cmdlet om een beheer groep te maken met de GroupName van Contoso en de weergave naam ' contoso Group ':
 
 ```azurepowershell-interactive
 New-AzManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group'
 ```
 
-In de voorgaande voorbeelden worden de nieuwe beheergroep wordt gemaakt onder de root management-groep. Als u een andere beheergroep als de bovenliggende, gebruikt de **ParentId** parameter.
+In de voor gaande voor beelden wordt de nieuwe beheer groep gemaakt in de hoofd beheer groep. Als u een andere beheer groep als bovenliggende wilt opgeven, gebruikt u de para meter **ParentId** .
 
 ```azurepowershell-interactive
 $parentGroup = Get-AzManagementGroup -GroupName Contoso
 New-AzManagementGroup -GroupName 'ContosoSubGroup' -ParentId $parentGroup.id
 ```
 
-### <a name="create-in-azure-cli"></a>Maken in Azure CLI
+### <a name="create-in-azure-cli"></a>Maken in azure CLI
 
-Voor Azure CLI, gebruikt u de [az account management-groep maken](/cli/azure/account/management-group?view=azure-cli-latest#az-account-management-group-create) opdracht voor het maken van een nieuwe beheergroep.
+Voor Azure CLI gebruikt u de opdracht [AZ Account Management-Group Create](/cli/azure/account/management-group?view=azure-cli-latest#az-account-management-group-create) om een nieuwe beheer groep te maken.
 
 ```azurecli-interactive
 az account management-group create --name Contoso
 ```
 
-De **naam** is een unieke id wordt gemaakt. Deze ID wordt gebruikt door andere opdrachten om te verwijzen naar deze groep en kan later worden gewijzigd.
+De **naam** is een unieke id die wordt gemaakt. Deze ID wordt gebruikt door andere opdrachten om te verwijzen naar deze groep en kan later niet worden gewijzigd.
 
-Als u wilt dat de beheergroep die u wilt weergeven van een andere naam in Azure portal, voegt u toe de **weergavenaam** parameter. Bijvoorbeeld, voor het maken van een beheergroep met de groepsnaam van Contoso en de weergavenaam van 'Contoso groeperen', gebruikt u de volgende opdracht uit:
+Als u wilt dat de beheer groep een andere naam weergeeft in de Azure Portal, voegt u de para meter voor de **weergave naam** toe. Gebruik bijvoorbeeld de volgende opdracht om een beheer groep te maken met de GroupName van Contoso en de weergave naam ' contoso-groep ':
 
 ```azurecli-interactive
 az account management-group create --name Contoso --display-name 'Contoso Group'
 ```
 
-In de voorgaande voorbeelden worden de nieuwe beheergroep wordt gemaakt onder de root management-groep. Als u een andere beheergroep als de bovenliggende, gebruikt de **bovenliggende** parameter en geef de naam van de bovenliggende groep.
+In de voor gaande voor beelden wordt de nieuwe beheer groep gemaakt in de hoofd beheer groep. Als u een andere beheer groep als bovenliggende wilt opgeven, gebruikt u de **bovenliggende** para meter en geeft u de naam van de bovenliggende groep op.
 
 ```azurecli-interactive
 az account management-group create --name ContosoSubGroup --parent Contoso

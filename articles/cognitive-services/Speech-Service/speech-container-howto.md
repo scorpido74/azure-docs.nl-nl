@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 14a360e7dc672266e8445a5ae5eb2168ae766af8
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 7708133fcba0d594ecd420afd8da1b2881055aa7
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741867"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241021"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Speech Service-containers installeren en uitvoeren
 
@@ -25,8 +25,8 @@ De twee spraak containers zijn **spraak-naar-tekst** en **tekst-naar-spraak**.
 
 |Function|Functies|Meest recent|
 |-|-|--|
-|Spraak-naar-tekst| <li>Transcribeert doorlopend realtime spraak of batch opnames in tekst met tussenliggende resultaten.|1.1.3|
-|Tekst naar spraak| <li>Converteert tekst naar natuurlijk klinkende spraak. met SSML (tekst zonder opmaak of spraak-synthese Markup Language). |1.1.0|
+|Spraak-naar-tekst| <li>Transcribeert doorlopend realtime spraak of batch opnames in tekst met tussenliggende resultaten.|1.2.0|
+|Tekst naar spraak| <li>Converteert tekst naar natuurlijk klinkende spraak. met SSML (tekst zonder opmaak of spraak-synthese Markup Language). |1.2.0|
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -34,7 +34,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 U moet voldoen aan de volgende vereisten voordat u spraak containers kunt gebruiken:
 
-|Verplicht|Doel|
+|Vereist|Doel|
 |--|--|
 |Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)en [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Zie voor een uitleg van de basisprincipes van Docker en containers, de [dockeroverzicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker moet worden geconfigureerd, zodat de containers om te verbinden met en facturering gegevens verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
 |Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker` opdrachten.| 
@@ -101,10 +101,10 @@ Alle tags, met uitzonde ring van voor `latest` , hebben de volgende indeling, wa
 De volgende code is een voor beeld van de indeling:
 
 ```
-1.1.3-amd64-en-us-preview
+1.2.0-amd64-en-us-preview
 ```
 
-De volgende tabel bevat de ondersteunde land instellingen voor **spraak naar tekst** in de 1.1.3-versie van de container:
+De volgende tabel bevat de ondersteunde land instellingen voor **spraak naar tekst** in de 1.2.0-versie van de container:
 
 |Taal instelling|Labels|
 |--|--|
@@ -129,10 +129,10 @@ Alle tags, met uitzonde ring van voor `latest` , hebben de volgende indeling, wa
 De volgende code is een voor beeld van de indeling:
 
 ```
-1.1.0-amd64-en-us-jessarus-preview
+1.2.0-amd64-en-us-jessarus-preview
 ```
 
-De volgende tabel bevat de ondersteunde land instellingen voor **tekst naar spraak** in de 1.1.0-versie van de container:
+De volgende tabel bevat de ondersteunde land instellingen voor **tekst naar spraak** in de 1.2.0-versie van de container:
 
 |Taal instelling|Labels|Ondersteunde stemmen|
 |--|--|--|
@@ -178,7 +178,7 @@ Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/comman
 
 **Tijdens de preview**moeten de facturerings instellingen geldig zijn voor het starten van de container, maar worden er geen kosten in rekening gebracht voor gebruik.
 
-| Tijdelijke aanduiding | Waarde |
+| Tijdelijke aanduiding | Value |
 |-------------|-------|
 |{API_KEY} | Deze sleutel wordt gebruikt om de container te starten en is beschikbaar op de pagina spraak sleutels van de Azure Portal.  |
 |{ENDPOINT_URI} | De waarde voor de URL van het facturerings eindpunt is beschikbaar op de overzichts pagina van het Azure Portal.|

@@ -16,12 +16,12 @@ ms.date: 08/28/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74e0539095701ec104495bf5a44dec668494d444
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: a17b64cbfffbe9cabd909bccb16d55c07bba8bb0
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207173"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241456"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Wat is Azure AD Identity Governance?
 
@@ -42,7 +42,7 @@ Het is met name bedoeld om organisaties te helpen bij het oplossen van deze vier
 
 ## <a name="identity-lifecycle"></a>Levens duur van identiteit
 
-Identiteits beheer helpt organisaties bij het verkrijgen van een evenwicht tussen *productiviteit* : hoe snel kan een persoon toegang krijgen tot de resources die ze nodig hebben, bijvoorbeeld wanneer ze lid worden van mijn organisatie? En hoe moet de toegang tot de tijd worden gewijzigd, bijvoorbeeld als gevolg van wijzigingen in de werk status van die persoon?  Het beheer van identiteits levenscyclus is de basis voor Identity governance, en effectief beheer op schaal vereist een modernisering van de infra structuur voor Identity Lifecycle Management voor toepassingen.
+Identiteits beheer helpt organisaties bij het verkrijgen van een evenwicht tussen *productiviteit* : hoe snel kan een persoon toegang krijgen tot de resources die ze nodig hebben, bijvoorbeeld wanneer ze lid worden van mijn organisatie? En *hoe* moet de toegang tot de tijd worden gewijzigd, bijvoorbeeld als gevolg van wijzigingen in de werk status van die persoon?  Het beheer van identiteits levenscyclus is de basis voor Identity governance, en effectief beheer op schaal vereist een modernisering van de infra structuur voor Identity Lifecycle Management voor toepassingen.
 
 ![Levens duur van identiteit](./media/identity-governance-overview/identity-lifecycle.png)
 
@@ -72,7 +72,7 @@ Azure AD Privileged Identity Management (PIM) biedt extra besturings elementen d
 
 ## <a name="least-privileged-roles"></a>Minst geprivilegieerde rollen
 
-Met behulp van PIM kunnen beheerders machtigingen van een gebruiker worden beperkt voor extra beveiliging. Hieronder vindt u de minst geprivilegieerde Directory rollen voor configuratie in azure AD Identity governance-functies: 
+Het is een best practice om de minst privileged Role te gebruiken voor het uitvoeren van beheer taken in Identity governance. We raden u aan Azure AD PIM te gebruiken om een rol zo nodig te activeren om deze taken uit te voeren. Hieronder vindt u de minst geprivilegieerde Directory rollen voor het configureren van Identity governance-functies: 
 
 | Functie | Minst geprivilegieerde rol |
 | ------- | --------------------- |
