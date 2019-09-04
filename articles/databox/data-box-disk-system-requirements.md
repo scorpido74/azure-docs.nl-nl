@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 20c27a3e4e9a96a19b347e5ef57ab9fb3c047140
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: f054d0665c49ee048451681a7cc34d2a648a6e9e
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194431"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240229"
 ---
 ::: zone target="docs"
 
@@ -30,7 +30,7 @@ De systeem vereisten omvatten de ondersteunde platforms voor clients die verbind
 
 # <a name="review-prerequisites"></a>Vereisten controleren
 
-1. U moet uw Data Box Disk hebben besteld met behulp van de zelf studie: Bestel uw Azure Data Box Disk. U hebt uw schijven en één verbindings kabel per schijf ontvangen.
+1. U moet uw data Box Disk hebben besteld [met behulp van de zelf studie: Bestel uw Azure Data Box Disk](data-box-disk-deploy-ordered.md). U hebt uw schijven en één verbindings kabel per schijf ontvangen.
 2. U hebt een clientcomputer beschikbaar van waaruit u de gegevens kunt kopiëren. De clientcomputer moet voldoen aan deze vereisten:
 
     - Een ondersteund besturings systeem uitvoeren.

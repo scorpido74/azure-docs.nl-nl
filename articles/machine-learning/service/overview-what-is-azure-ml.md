@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: a8e19c89cec00bba05eb74e752268e1da43a1ac0
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 822bbd004035d9745535942c508cae6702e5b99b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035860"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278115"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Wat is de Azure Machine Learning-service?
 
@@ -32,12 +32,15 @@ Azure Machine Learning Service biedt een omgeving in de cloud die u kunt gebruik
 
 Verken en bereid gegevens op, Train en test modellen en implementeer ze met uitgebreide hulpprogram ma's zoals:
 + Een [visuele interface](ui-tutorial-automobile-price-train-score.md) waarin u modules kunt slepen en neerzetten om uw experimenten te ontwikkelen en vervolgens modellen te implementeren
-+ [Jupyter](https://jupyter.org) -notebooks waarin u de [sdk's](https://docs.microsoft.com/azure/machine-learning/service/#reference) gebruikt om uw eigen code te schrijven, zoals [deze voor beelden van notitie blokken](https://aka.ms/aml-notebooks)
++ [Jupyter-notebooks](https://jupyter.org) waarin u de [sdk's](https://docs.microsoft.com/azure/machine-learning/service/#reference) gebruikt om uw eigen code te schrijven, zoals [deze voor beelden van notitie blokken](https://aka.ms/aml-notebooks)
 + [Visual Studio code-extensie](how-to-vscode-tools.md)
+
+
+> [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
 ## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Wat kan ik doen met de Azure Machine Learning-service?
 
-Gebruik de <a href="https://aka.ms/aml-sdk" target="_blank">Azure machine learning PYTHON SDK</a> met open source Python-pakketten, of gebruik de [visuele interface (preview)](ui-tutorial-automobile-price-train-score.md) om een zeer nauw keurige machine learning en diep gaande modellen te bouwen en te trainen in een Azure machine learning service Werk ruimte.
+Gebruik de <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure machine learning PYTHON SDK</a> met open source Python-pakketten, of gebruik de [visuele interface (preview)](ui-tutorial-automobile-price-train-score.md) om een zeer nauw keurige machine learning en diep gaande modellen te bouwen en te trainen in een Azure machine learning service Werk ruimte.
 
 U kunt kiezen uit veel machine learning onderdelen die beschikbaar zijn in open source Python-pakketten, zoals <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-Learn</a>, <a href="https://www.tensorflow.org" target="_blank">tensor flow</a>, <a href="https://pytorch.org" target="_blank">PyTorch</a>en <a href="https://mxnet.io" target="_blank">MXNet</a>.
 
@@ -45,7 +48,7 @@ Of u code schrijft of de visuele interface gebruikt, u kunt meerdere uitvoeringe
 
 ### <a name="code-first-experience"></a>Code-eerste ervaring
 
-Start training op uw lokale machine met behulp van de <a href="https://aka.ms/aml-sdk" target="_blank">Azure machine learning PYTHON SDK</a> en schaal vervolgens naar de Cloud. Dankzij de vele beschikbare [rekendoelen](how-to-set-up-training-targets.md) zoals Azure Machine Learning Compute en [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks), en [geavanceerde afstemmingsservices van hyperparameters](how-to-tune-hyperparameters.md), kunt u sneller betere modellen bouwen, met de kracht van de cloud.
+Start training op uw lokale machine met behulp van de <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure machine learning PYTHON SDK</a> en schaal vervolgens naar de Cloud. Dankzij de vele beschikbare [rekendoelen](how-to-set-up-training-targets.md) zoals Azure Machine Learning Compute en [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks), en [geavanceerde afstemmingsservices van hyperparameters](how-to-tune-hyperparameters.md), kunt u sneller betere modellen bouwen, met de kracht van de cloud.
 
 U kunt [model training en-aanpassing ook automatiseren](tutorial-auto-train-models.md) met de SDK.
 
@@ -63,7 +66,7 @@ Voor code-Free training kunt u het volgende proberen:
 
 Wanneer u het juiste model hebt, kunt u het eenvoudig gebruiken in een webservice, op een IoT-apparaat of in Power BI. Zie het artikel [Hoe implementeren en waar](how-to-deploy-and-where.md) voor meer informatie.
 
-Daarna kunt u uw geïmplementeerde modellen beheren met de [Azure Machine Learning SDK voor Python](https://aka.ms/aml-sdk) of [Azure Portal](https://portal.azure.com/).
+Daarna kunt u uw geïmplementeerde modellen beheren met de [Azure Machine Learning SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) of [Azure Portal](https://portal.azure.com/).
 
 Deze modellen kunnen worden gebruikt en voor spellingen in [realtime](how-to-consume-web-service.md) of [asynchroon](how-to-run-batch-predictions.md) in grote hoeveel heden gegevens worden geretourneerd.
 

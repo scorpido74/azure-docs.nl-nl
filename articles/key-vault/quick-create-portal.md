@@ -2,20 +2,20 @@
 title: 'Azure-snelstart: Een geheim uit Key Vault instellen en ophalen met Azure Portal | Microsoft Docs'
 description: Snelstart waarin wordt getoond hoe u een geheim uit Azure Key Vault instelt en ophaalt met behulp van de Azure Portal
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/14/2019
-ms.author: barclayn
-ms.openlocfilehash: e9b86a5fb0d9e24618cafffb5ca12e22d5394294
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 09/03/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 3c0b9ad774d336da9bc60d2ef9f7ff2645602b6c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730179"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259224"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Quickstart: Een geheim uit Azure Key Vault instellen en ophalen met behulp van de Azure Portal
 
@@ -68,9 +68,9 @@ Zodra u het bericht ontvangt dat het geheim met succes is gemaakt, kunt u erop k
 
 ![Geheimeigenschappen](./media/quick-create-portal/current-version-hidden.png)
 
-Op de knop 'Geheim waarde weergeven' in het rechter deelvenster klikt, ziet u de verborgen waarde. 
+Door op de knop geheime waarde weer geven in het rechterdeel venster te klikken, kunt u de verborgen waarde bekijken. 
 
-![Geheime waarde wordt weergegeven](./media/quick-create-portal/current-version-shown.png)
+![Geheime waarde leek](./media/quick-create-portal/current-version-shown.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -84,7 +84,9 @@ Als u die niet meer nodig hebt, verwijdert u de resourcegroep. Hierdoor worden o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u een sleutelkluis gemaakt en een geheim opgeslagen. Meer informatie over Key Vault en hoe u dat kunt gebruiken samen met uw toepassingen is te vinden in de zelfstudie voor webtoepassingen die geschikt zijn voor Key Vault.
+In deze Quick Start hebt u een Key Vault gemaakt en een geheim opgeslagen. Ga verder met de volgende artikelen voor meer informatie over Key Vault en hoe u deze integreert met uw toepassingen.
 
-> [!div class="nextstepaction"]
-> Ga door met de volgende zelfstudie [Een Azure-webtoepassing configureren om een Key Vault-geheim te lezen](quick-create-net.md) voor informatie over het lezen van een Key Vault-geheim van een webtoepassing met behulp van beheerde service-id's voor Azure-resources.
+- Een [overzicht van Azure Key Vault](key-vault-overview.md) lezen
+- Raadpleeg de [Azure Key Vault hand leiding voor ontwikkel aars](key-vault-developers-guide.md)
+- Meer informatie over [sleutels, geheimen en certificaten](about-keys-secrets-and-certificates.md)
+- [Azure Key Vault aanbevolen procedures](key-vault-best-practices.md) controleren

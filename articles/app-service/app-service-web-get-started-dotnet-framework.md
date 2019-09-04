@@ -11,133 +11,124 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 09/05/2018
+ms.date: 08/30/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 6c32415e750964e94129a4a6f9cf3812fe9117b5
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4f479ad60d74f1c7381b5fb776c5508aaa0785f1
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067279"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242149"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Een ASP.NET Framework-web-app maken in Azure
 
-[Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie.  In deze snelstartgids ziet u hoe u uw eerste ASP.NET-web-app implementeert naar Azure App Service. Als u klaar bent, hebt u een resourcegroep die bestaat uit een App Service-plan en een Azure Service-app met een geïmplementeerde webtoepassing.
+[Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie.
 
-![](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
+In deze snelstartgids ziet u hoe u uw eerste ASP.NET-web-app implementeert naar Azure App Service. Wanneer u klaar bent, hebt u een App Service plan. U hebt ook een App Service-app met een geïmplementeerde webtoepassing.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> met de **ASP.NET- en webontwikkelworkload** installeren om deze zelfstudie te doorlopen.
+Als u deze zelf studie wilt volt ooien, installeert u <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> met de **ASP.net-en Web Development** -werk belasting.
 
-Als u Visual Studio 2017 al hebt geïnstalleerd:
+Als u Visual Studio 2019 al hebt geïnstalleerd:
 
-- Installeer de nieuwste updates in Visual Studio door te klikken op **Help** > **Check for Updates**.
-- Voeg de workload toe door te klikken op **Tools** > **Get Tools and Features**.
+- Installeer de meest recente updates in Visual Studio door **Help** > **controleren op updates**te selecteren.
+- Voeg de werk belasting toe door **extra** > hulp middelen**en functies**te selecteren.
 
-## <a name="create-an-aspnet-web-app"></a>Een ASP.NET-web-app maken
+## Een ASP.NET-Web-app maken<a name="create-and-publish-the-web-app"></a>
 
-Maak in Visual Studio een project door **Bestand > Nieuw > Project** te selecteren. 
+Maak een ASP.NET-Web-app door de volgende stappen uit te voeren:
 
-Selecteer **Visual C# > Web > ASP.NET-webtoepassing (.NET Framework)** in het dialoogvenster **Nieuw project**.
+1. Open Visual Studio en selecteer vervolgens **een nieuw project maken**.
 
-Geef de toepassing de naam _myFirstAzureWebApp_ en selecteer vervolgens **OK**.
-   
-![Het dialoogvenster Nieuw project](./media/app-service-web-get-started-dotnet-framework/new-project.png)
+1. In **een nieuw project maken**, zoek en kies **ASP.net Web Application (.NET Framework)** voor C#en selecteer vervolgens **volgende**.
 
-U kunt elk type ASP.NET-web-app implementeren in Azure. Voor deze Quickstart selecteert u de sjabloon **MVC** en stelt u de verificatie in op **Geen verificatie**.
-      
-Selecteer **OK**.
+1. Geef in **uw nieuwe project een**naam voor de toepassing _myFirstAzureWebApp_en selecteer vervolgens **maken**.
 
-![Het dialoogvenster Nieuw ASP.NET-project](./media/app-service-web-get-started-dotnet-framework/select-mvc-template.png)
+   ![Uw web-app-project configureren](./media/app-service-web-get-started-dotnet-framework/configure-web-app-project-framework.png)
 
-Selecteer in het menu **Fouten opsporen > Starten zonder foutopsporing** om de web-app lokaal uit te voeren.
+1. U kunt elk type ASP.NET-web-app implementeren in Azure. Kies voor deze Quick Start de **MVC** -sjabloon. 
 
-![De app lokaal uitvoeren](./media/app-service-web-get-started-dotnet-framework/local-web-app.png)
+1. Zorg ervoor dat verificatie is ingesteld op **geen verificatie**. Selecteer **Maken**.
 
-## <a name="launch-the-publish-wizard"></a>Start de publicatiewizard
+   ![ASP.NET-webtoepassing maken](./media/app-service-web-get-started-dotnet-framework/select-mvc-template-vs2019.png)
 
-Klik in **Solution Explorer** met de rechtermuisknop op het project **myFirstAzureWebApp**-en selecteer **Publiceren**.
+1. Selecteer in het Visual Studio-menu de optie **fout opsporing** > **starten zonder fout opsporing** om de web-app lokaal uit te voeren.
 
-![Publiceren vanuit Solution Explorer](./media/app-service-web-get-started-dotnet-framework/solution-explorer-publish.png)
+   ![De app lokaal uitvoeren](./media/app-service-web-get-started-dotnet-framework/local-web-app.png)
 
-De publicatiewizard wordt automatisch gestart. Selecteer **App Service** > **Publish** om het dialoogvenster **Create App Service** te openen.
+## Uw web-app publiceren<a name="launch-the-publish-wizard"></a>
 
-![Publiceren vanaf de projectoverzichtspagina](./media/app-service-web-get-started-dotnet-framework/publish-to-app-service.png)
+1. Klik in **Solution Explorer**met de rechter muisknop op het project **MyFirstAzureWebApp** en selecteer **publiceren**.
 
-## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
+1. Kies **app service** en selecteer vervolgens **publiceren**.
 
-Selecteer **Een account toevoegen** in het dialoogvenster **App Service maken** en meld u vervolgens aan bij uw Azure-abonnement. Als u al bent aangemeld, selecteert u het account met het gewenste abonnement uit de vervolgkeuzelijst.
+   ![Publiceren vanaf de projectoverzichtspagina](./media/app-service-web-get-started-dotnet-framework/publish-app-framework-vs2019.png)
 
-> [!NOTE]
-> Als u al bent aangemeld, selecteert u **Maken** nog niet.
->
->
-   
-![Aanmelden bij Azure](./media/app-service-web-get-started-dotnet-framework/sign-in-azure.png)
+1. In **app service nieuwe maken**, zijn uw opties afhankelijk van of u al bent aangemeld bij Azure en of u een Visual Studio-account hebt gekoppeld aan een Azure-account. Selecteer **een account toevoegen** of **Aanmelden** om u aan te melden bij uw Azure-abonnement. Als u al bent aangemeld, selecteert u het gewenste account.
 
-## <a name="create-a-resource-group"></a>Een resourcegroep maken
+   > [!NOTE]
+   > Als u al bent aangemeld, selecteert u **Maken** nog niet.
+   >
+   >
 
-[!INCLUDE [resource group intro text](../../includes/resource-group.md)]
+   ![Aanmelden bij Azure](./media/app-service-web-get-started-dotnet-framework/sign-in-azure-framework-vs2019.png)
 
-Selecteer **Nieuw** naast **Resourcegroep**.
+   [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-Geef de resourcegroep de naam **myResourceGroup** en selecteer **OK**.
+1. Selecteer voor **resource groep**de optie **Nieuw**.
 
-## <a name="create-an-app-service-plan"></a>Een App Service-plan maken
+1. In **naam van nieuwe resource groep**voert u *myResourceGroup* in en selecteert u **OK**.
 
-[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
+   [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-Selecteer bij **Hostingabonnement** **Nieuw**. 
+1. Selecteer **Nieuw**voor het **hosting abonnement**.
 
-Gebruik in het dialoogvenster **Hostingabonnement configureren** de instellingen uit de tabel na de onderstaande schermafbeelding.
+1. Voer in het dialoog venster **hosting plan configureren** de waarden in van de volgende tabel en selecteer vervolgens **OK**.
 
-![Een App Service-plan maken](./media/app-service-web-get-started-dotnet-framework/configure-app-service-plan.png)
+   | Instelling | Voorgestelde waarde | Description |
+   |-|-|-|
+   |App Service-plan| myAppServicePlan | De naam van het App Service-plan. |
+   | Location | Europa -west | Het datacenter waar de web-app wordt gehost. |
+   | Size | Gratis | De [prijscategorie](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) bepaalt de hosting-functies. |
 
-| Instelling | Voorgestelde waarde | Description |
-|-|-|-|
-|App Service-plan| myAppServicePlan | De naam van het App Service-plan. |
-| Location | Europa -west | Het datacenter waar de web-app wordt gehost. |
-| Size | Gratis | De [prijscategorie](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) bepaalt de hosting-functies. |
+   ![Een App Service-plan maken](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)
 
-Selecteer **OK**.
+1. Voer **bij naam**een unieke app-naam in die alleen de `a-z`geldige tekens bevat: `A-Z` `0-9`,, en `-`. U kunt de automatisch gegenereerde unieke naam accepteren. De URL van de web-app is `http://<app_name>.azurewebsites.net`, waarbij `<app_name>` de naam van uw app is.
 
-## <a name="create-and-publish-the-web-app"></a>De web-app maken en publiceren
+   ![Uw app-naam configureren](./media/app-service-web-get-started-dotnet-framework/web-app-name-framework-vs2019.png)
 
-Voer bij **App-naam** een unieke appnaam in (geldige tekens zijn `a-z`, `0-9` en `-`) of accepteer de automatisch gegenereerde unieke naam. De URL van de web-app is `http://<app_name>.azurewebsites.net`, waarbij `<app_name>` de naam van uw app is.
-
-Selecteer **Maken** om de Azure-resources te gaan maken.
-
-![Uw app-naam configureren](./media/app-service-web-get-started-dotnet-framework/web-app-name.png)
+1. Selecteer **Maken** om de Azure-resources te gaan maken.
 
 Zodra de wizard is voltooid, wordt de ASP.NET-web-app naar Azure gepubliceerd. Daarna wordt de app gestart in de standaardbrowser.
 
 ![Gepubliceerde ASP.NET-web-app in Azure](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
-De naam van de app die is opgegeven in de [stap voor maken en publiceren](#create-and-publish-the-web-app), wordt gebruikt als URL-voorvoegsel in de indeling `http://<app_name>.azurewebsites.net`.
+De naam van de app die is opgegeven in de **app service nieuwe pagina maken** , wordt gebruikt als het `http://<app_name>.azurewebsites.net`URL-voor voegsel in de notatie.
 
-Gefeliciteerd, uw ASP.NET-web-app wordt live uitgevoerd in Azure App Service.
+**Gefeliciteerd!** Uw ASP.NET-Web-app wordt live uitgevoerd in Azure App Service.
 
 ## <a name="update-the-app-and-redeploy"></a>De app bijwerken en opnieuw implementeren
 
-Open vanuit de **Solution Explorer** _Views\Home\Index.cshtml_.
+1. Open **in Solution Explorer** **weer gaven** > **Start** > **index. cshtml**in het project.
 
-Zoek ergens bovenaan de HTML-tag `<div class="jumbotron">` en vervang het volledige element door de volgende code:
+1. Zoek ergens bovenaan de HTML-tag `<div class="jumbotron">` en vervang het volledige element door de volgende code:
 
-```HTML
-<div class="jumbotron">
-    <h1>ASP.NET in Azure!</h1>
-    <p class="lead">This is a simple app that we’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
-</div>
-```
+   ```HTML
+   <div class="jumbotron">
+       <h1>ASP.NET in Azure!</h1>
+       <p class="lead">This is a simple app that we’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
+   </div>
+   ```
 
-Als u opnieuw wilt implementeren naar Azure, klikt u in **Solution Explorer** met de rechtermuisknop op het project **myFirstAzureWebApp** en selecteert u **Publiceren**.
+1. Als u opnieuw wilt implementeren naar Azure, klikt u in **Solution Explorer** met de rechtermuisknop op het project **myFirstAzureWebApp** en selecteert u **Publiceren**.
 
-Selecteer **Publiceren** op de publicatiepagina.
-![Pagina samenvatting publiceren in Visual Studio](./media/app-service-web-get-started-dotnet-framework/publish-summary-page.png)
+1. Selecteer op de pagina samen vatting **publiceren** de optie **publiceren**.
+
+   ![Visual Studio-overzichts pagina voor publicatie](./media/app-service-web-get-started-dotnet-framework/publish-summary-page-framework-vs2019.png)
 
 Als het publiceren is voltooid, start Visual Studio een browser waarin de URL van de web-app wordt geladen.
 
@@ -145,17 +136,17 @@ Als het publiceren is voltooid, start Visual Studio een browser waarin de URL va
 
 ## <a name="manage-the-azure-app"></a>De Azure-app beheren
 
-Ga naar <a href="https://portal.azure.com" target="_blank">Azure Portal</a> om de web-app te beheren.
+1. Ga naar <a href="https://portal.azure.com" target="_blank">Azure Portal</a> om de web-app te beheren.
 
-Selecteer in het linkermenu **App Services** en selecteer de naam van uw Azure-app.
+1. Selecteer in het linkermenu **App Services** en selecteer de naam van uw Azure-app.
 
-![Navigatie naar Azure-app in de portal](./media/app-service-web-get-started-dotnet-framework/access-portal.png)
+   ![Navigatie naar Azure-app in de portal](./media/app-service-web-get-started-dotnet-framework/access-portal-framework-vs2019.png)
 
-De pagina Overzicht van uw web-app wordt weergegeven. Hier kunt u algemene beheertaken uitvoeren, zoals bladeren, stoppen, starten, opnieuw opstarten en verwijderen. 
+   De pagina Overzicht van uw web-app wordt weergegeven. Hier kunt u het basis beheer, zoals bladeren, stoppen, starten, opnieuw starten en verwijderen.
 
-![App Service-blade in Azure Portal](./media/app-service-web-get-started-dotnet-framework/web-app-blade.png)
+   ![App Service overzicht in Azure Portal](./media/app-service-web-get-started-dotnet-framework/web-app-general-framework-vs2019.png)
 
-Het linkermenu bevat een aantal pagina's voor het configureren van uw app. 
+   Het linkermenu bevat een aantal pagina's voor het configureren van uw app.
 
 ## <a name="video"></a>Video
 

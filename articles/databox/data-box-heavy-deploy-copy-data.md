@@ -8,12 +8,13 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 8cb763766ebb151ad1c59b63a33a63493a4f0069
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.localizationpriority: high
+ms.openlocfilehash: 4267b8299e13f1705b218e65b268c45bd5a658e2
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164377"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240304"
 ---
 ::: zone target = "docs"
 
@@ -54,7 +55,7 @@ Controleer in elk geval of de namen van de shares en mappen en de gegevens groot
 Zorg voordat u begint voor het volgende:
 
 1. U hebt de zelfstudie [ Azure Data Box Heavy](data-box-deploy-set-up.md)instellen.
-2. U hebt uw Data Box Heavy ontvangen en de status van de bestelling in dePortal is afgeleverd.
+2. U hebt uw Data Box Heavy ontvangen en de status van de bestelling in de portal is **afgeleverd**.
 3. U hebt een hostcomputer met de gegevens die u wilt kopiëren naar Data Box Heavy. Op uw hostcomputer moet
     - Een [ondersteund besturingssysteem](data-box-system-requirements.md) worden uitgevoerd.
     - Verbonden zijn met een netwerk met hoge snelheid. Voor de snelste Kopieer snelheden kunnen 2 40-GbE-verbindingen (één per knoop punt) parallel worden gebruikt. Als u niet beschikt over 40-GbE-verbinding, kunt u het beste ten minste 2 10 GbE-verbindingen (één per knoop punt) hebben.
@@ -152,7 +153,7 @@ Neem de volgende punten door voordat u gegevens gaat kopiëren:
 - Zorg dat u de gegevens kopieert naar shares die overeenkomen met de juiste gegevensindeling. U moet bijvoorbeeld de blok-blobgegevens naar de share voor blok-blobs kopiëren. Kopieer de VHD's naar pagina-blob.
 
     Als de gegevensindeling niet overeenkomt met het betreffende sharetype, zal het uploaden van gegevens naar Azure op een later tijdstip mislukken.
--  Zorg er bij het kopiëren van gegevens voor dat de gegevens grootte voldoet aan de grootte limieten die zijn beschreven in de [Azure Storage-en data Box Heavy](data-box-heavy-limits.md)-limieten.
+-  Zorg er bij het kopiëren van gegevens voor dat de gegevens grootte voldoet aan de grootte limieten die zijn beschreven in de [Azure Storage-en data Box Heavy-limieten](data-box-heavy-limits.md).
 - Als gegevens, die door Data Box Heavy worden geüpload, gelijktijdig worden geüpload door andere toepassingen buiten Data Box Heavy, kan dit leiden tot fouten bij het uploaden van taken en gegevens beschadiging.
 - We raden aan dat:
     - U niet zowel SMB als NFS tegelijkertijd gebruikt.

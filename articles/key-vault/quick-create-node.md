@@ -3,18 +3,18 @@ title: 'Quick Start: een geheim instellen en ophalen van Azure Key Vault met beh
 description: In deze Quick Start kunt u een geheim van Azure Key Vault instellen en ophalen met behulp van een node web app
 services: key-vault
 author: msmbaldwin
-manager: sumedhb
+manager: rkarlin
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 09/05/2018
-ms.author: barclayn
+ms.date: 09/03/2010
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 5ca6289b1af02a54d8c66d5a9835e24f61c58559
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4bea46e62f90a41b566781457a39718849ee0e15
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934464"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259230"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Quickstart: Een geheim van Azure Key Vault instellen en ophalen met behulp van een knoop punt web-app 
 
@@ -196,5 +196,9 @@ Wanneer u vervolgens naar `https://<app_name>.azurewebsites.net`bladert, kunt u 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [Azure SDK voor Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
+In deze Quick Start hebt u een Key Vault gemaakt en een geheim opgeslagen. Ga verder met de volgende artikelen voor meer informatie over Key Vault en hoe u deze integreert met uw toepassingen.
+
+- Een [overzicht van Azure Key Vault](key-vault-overview.md) lezen
+- Raadpleeg de [Azure Key Vault hand leiding voor ontwikkel aars](key-vault-developers-guide.md)
+- Meer informatie over [sleutels, geheimen en certificaten](about-keys-secrets-and-certificates.md)
+- [Azure Key Vault aanbevolen procedures](key-vault-best-practices.md) controleren

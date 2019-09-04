@@ -2,20 +2,20 @@
 title: Azure-snelstart - Een geheim uit Key Vault instellen en ophalen met Azure CLI | Microsoft Docs
 description: Snelstart waarin wordt getoond hoe u een geheim uit Azure Key Vault instelt en ophaalt met behulp van Azure CLI
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/08/2019
-ms.author: barclayn
-ms.openlocfilehash: e9537c158afad2877bb2df2650500ab218de676f
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.date: 09/03/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 37fc4003ba19e9e8f3d156a7fcb9bb84001d2e90
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66726743"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259321"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Quickstart: een geheim uit Azure Key Vault instellen en ophalen met behulp van Azure CLI
 
@@ -33,7 +33,7 @@ Als u zich wilt aanmelden bij Azure met behulp van de CLI, typt u:
 az login
 ```
 
-Zie [Aanmelden met Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) voor meer informatie over opties voor aanmelding via de CLI
+Zie [Aanmelden met Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) voor meer informatie over opties voor aanmelding via de CLI
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -93,7 +93,9 @@ az group delete --name ContosoResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u een sleutelkluis gemaakt en daar een geheim in opgeslagen. Meer informatie over Key Vault en hoe u dat kunt gebruiken samen met uw toepassingen is te vinden in de zelfstudie voor webtoepassingen die geschikt zijn voor Key Vault.
+In deze Quick Start hebt u een Key Vault gemaakt en een geheim opgeslagen. Ga verder met de volgende artikelen voor meer informatie over Key Vault en hoe u deze integreert met uw toepassingen.
 
-> [!div class="nextstepaction"]
-> Ga door met de volgende zelfstudie [Een Azure-webtoepassing configureren om een Key Vault-geheim te lezen](quick-create-net.md) voor informatie over het lezen van een Key Vault-geheim van een webtoepassing met behulp van beheerde service-id’s voor Azure-resources
+- Een [overzicht van Azure Key Vault](key-vault-overview.md) lezen
+- Zie de naslag informatie voor de [Azure cli AZ](/cli/azure/keyvault?view=azure-cli-latest) -sleutel kluis-opdrachten
+- Meer informatie over [sleutels, geheimen en certificaten](about-keys-secrets-and-certificates.md)
+- [Azure Key Vault aanbevolen procedures](key-vault-best-practices.md) controleren

@@ -9,7 +9,7 @@ metadata:
   ms.author: sngun
   ms.service: cosmos-db
   ms.topic: landing-page
-  ms.date: 05/20/2019
+  ms.date: 09/01/2019
 abstract:
   description: 'Azure Cosmos DB is een volledig beheerde databaseservice met een kant-en-klare wereldwijde distributie en transparante replicatie voor meerdere masters. U kunt voor transactiegegevens in uw database operationele workloads en analyseworkloads uitvoeren met wereldwijde distributie, lage latentie en AI-ondersteuning. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u Azure Cosmos DB gebruikt.'
   aside:

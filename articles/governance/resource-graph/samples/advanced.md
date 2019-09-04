@@ -7,12 +7,12 @@ ms.date: 08/29/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: f02a6917240fa9200167a244f7f93f895be3e63f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 33c67f77a26e2a4fc97d7f5483aad53c121e117b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232673"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239021"
 ---
 # <a name="advanced-resource-graph-queries"></a>Geavanceerde query's van Resource Graph
 
@@ -24,10 +24,9 @@ We nemen de volgende geavanceerde query's door:
 > - [De capaciteit en grootte van schaal sets voor virtuele machines ophalen](#vmss-capacity)
 > - [Een lijst weergeven van alle tagnamen](#list-all-tags)
 > - [Virtuele machines zoeken met reguliere expressies](#vm-regex)
+> - [De namen van de Tenant en het abonnement toevoegen met DisplayName](#displaynames)
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="language-support"></a>Taalondersteuning
 
@@ -101,7 +100,7 @@ Search-AzGraph -Query "where type =~ 'microsoft.compute/virtualmachines' and nam
 
 ## <a name="displaynames"></a>De namen van de Tenant en het abonnement toevoegen met DisplayName
 
-Deze query gebruikt de nieuwe para meter include met de optie _DisplayName_ om **subscriptionDisplayName** en **tenantDisplayName** toe te voegen aan de resultaten. Deze para meter is alleen beschikbaar voor Azure CLI en Azure PowerShell.
+Deze query gebruikt de nieuwe para meter **include** met de optie _DisplayName_ om **subscriptionDisplayName** en **tenantDisplayName** toe te voegen aan de resultaten. Deze para meter is alleen beschikbaar voor Azure CLI en Azure PowerShell.
 
 ```azurecli-interactive
 az graph query -q "limit 1" --include displayNames
@@ -113,7 +112,7 @@ Search-AzGraph -Query "limit 1" -Include DisplayNames
 
 > [!NOTE]
 > Als de query geen gebruik maakt van **project** om de geretourneerde eigenschappen op te geven, worden **subscriptionDisplayName** en **tenantDisplayName** automatisch opgenomen in de resultaten.
-> Als de query gebruikmaakt van **project**, moeten alle _DisplayName_ -velden expliciet worden opgenomen in het **project** of worden ze niet geretourneerd in de resultaten, zelfs niet wanneer de para meter include wordt gebruikt.
+> Als de query gebruikmaakt van **project**, moeten alle _DisplayName_ -velden expliciet worden opgenomen in het **project** of worden ze niet geretourneerd in de resultaten, zelfs niet wanneer de para meter **include** wordt gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

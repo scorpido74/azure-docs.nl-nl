@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/22/2019
+ms.date: 09/03/2019
 ms.author: jgao
-ms.openlocfilehash: b27caa3d91d67ad63bfbf5e7c549d690980cdd7b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 13ac8b9f6d82cc8b0060f87237ef3140cb245379
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934441"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259209"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Quickstart: Een geheim instellen en ophalen uit Azure Key Vault met behulp van Resource Manager-sjabloon
 
@@ -29,7 +29,7 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 * Uw Azure AD-gebruikersobject-id is in de sjabloon nodig om machtigingen te kunnen configureren. Met de volgende procedure wordt de object-id (GUID) opgehaald.
 
-    1. Voer de volgende Azure PowerShell of de Azure CLI-opdrachtuit door het te selecteren en vervolgens het script in het deel venster shell te plakken. Als u het script wilt plakken, klikt u met de rechter muisknop op de shell en selecteert u vervolgens **Plakken**. 
+    1. Voer de volgende Azure PowerShell of de Azure **cli-opdracht uit door het te**selecteren en vervolgens het script in het deel venster shell te plakken. Als u het script wilt plakken, klikt u met de rechter muisknop op de shell en selecteert u vervolgens **Plakken**. 
 
         ```azurecli-interactive
         echo "Enter your email address that is used to sign in to Azure:" &&
@@ -101,7 +101,9 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Startpagina van Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
-* [Documentatie voor Azure Key Vault](index.yml)
-* [Azure SDK voor Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
-* [Azure REST API-naslaginformatie](https://docs.microsoft.com/rest/api/keyvault/)
+In deze Snelstartgids hebt u een sleutel kluis en een geheim gemaakt met behulp van een Azure Resource Manager-sjabloon en de implementatie gevalideerd. Ga verder met de volgende artikelen voor meer informatie over Key Vault en Azure Resource Manager.
+
+- Een [overzicht van Azure Key Vault](key-vault-overview.md) lezen
+- Meer informatie over [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
+- Meer informatie over [sleutels, geheimen en certificaten](about-keys-secrets-and-certificates.md)
+- [Azure Key Vault aanbevolen procedures](key-vault-best-practices.md) controleren

@@ -10,21 +10,21 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 04/12/2019
+ms.date: 08/30/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 791017fffe96455157388fb43e0c1d65faba8933
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 230ff96aaf2c78827c7c4da92abe0f356cc2643e
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071526"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241929"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Een aangepaste Windows-container uitvoeren in Azure (Preview)
 
-[Azure App Service](overview.md) biedt vooraf gedefinieerde toepassingsstacks in Windows, zoals ASP.NET of Node.js, die worden uitgevoerd in IIS. Met de vooraf geconfigureerde Windows-omgeving wordt het besturingssysteem vergrendeld voor beheerderstoegang, software-installaties, wijzigingen aan de Global Assembly Cache, enzovoort. (Zie [Functionaliteit van besturingssystemen in Azure App Service](operating-system-functionality.md).) Als voor uw toepassing meer toegang is vereist dan is toegestaan in de vooraf geconfigureerde omgeving, kunt u in plaats hiervan een aangepaste Windows-container implementeren. Deze snelstart laat zien hoe u een ASP.NET-app in een Windows-installatiekopie implementeert naar [Docker Hub](https://hub.docker.com/) vanuit Visual Studio en de app uitvoert in een aangepaste container in Azure App Service.
+[Azure App Service](overview.md) biedt vooraf gedefinieerde toepassingsstacks in Windows, zoals ASP.NET of Node.js, die worden uitgevoerd in IIS. De vooraf geconfigureerde Windows-omgeving blokkeert het besturings systeem van beheerders toegang, software-installaties, wijzigingen in de Global Assembly Cache, enzovoort. Zie de [functionaliteit van het besturings systeem op Azure app service](operating-system-functionality.md)voor meer informatie. Als voor uw toepassing meer toegang is vereist dan is toegestaan in de vooraf geconfigureerde omgeving, kunt u in plaats hiervan een aangepaste Windows-container implementeren.
 
-![](media/app-service-web-get-started-windows-container/app-running-vs.png)
+In deze Quick start ziet u hoe u een ASP.NET-app, in een Windows-installatie kopie, implementeert op [docker hub](https://hub.docker.com/) vanuit Visual Studio. U voert de app uit in een aangepaste container in Azure App Service.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,101 +33,98 @@ Vereisten voor het voltooien van deze zelfstudie:
 - <a href="https://hub.docker.com/" target="_blank">Registreren voor een Docker Hub-account</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker voor Windows installeren</a>.
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Docker instellen voor het uitvoeren van Windows-containers</a>.
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 installeren</a> met de workloads **ASP.NET and web development** en **Azure development**. Als u Visual Studio 2017 al hebt geïnstalleerd:
-    - Installeer de nieuwste updates in Visual Studio door te klikken op **Help** > **Check for Updates**.
-    - Voeg de workloads toe in Visual Studio door te klikken op **Tools** > **Get Tools and Features**.
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">Installeer Visual Studio 2019</a> met de **ASP.net-en Web Development** -en **Azure-ontwikkel** werkbelastingen. Als u Visual Studio 2019 al hebt geïnstalleerd:
+
+    - Installeer de meest recente updates in Visual Studio door **Help** > **controleren op updates**te selecteren.
+    - Voeg de werk belastingen in Visual Studio toe door **extra** > hulp middelen**en functies**te selecteren.
 
 ## <a name="create-an-aspnet-web-app"></a>Een ASP.NET-web-app maken
 
-Maak in Visual Studio een project door **Bestand > Nieuw > Project** te selecteren. 
+Maak een ASP.NET-Web-app door de volgende stappen uit te voeren:
 
-Selecteer **Visual C# > Web > ASP.NET-webtoepassing (.NET Framework)** in het dialoogvenster **Nieuw project**.
+1. Open Visual Studio en selecteer vervolgens **een nieuw project maken**.
 
-Geef de toepassing de naam _myFirstAzureWebApp_ en selecteer vervolgens **OK**.
-   
-![Het dialoogvenster Nieuw project](./media/app-service-web-get-started-windows-container/new-project.png)
+1. In **een nieuw project maken**, zoek en kies **ASP.net Web Application (.NET Framework)** voor C#en selecteer vervolgens **volgende**.
 
-U kunt elk type ASP.NET-web-app implementeren in Azure. Voor deze Quickstart selecteert u de sjabloon **MVC** en stelt u de verificatie in op **Geen verificatie**.
+1. Geef in **uw nieuwe project een**naam voor de toepassing _myFirstAzureWebApp_en selecteer vervolgens **maken**.
 
-Selecteer **Enable Docker Compose support**.
+   ![Uw web-app-project configureren](./media/app-service-web-get-started-windows-container/configure-web-app-project-container.png)
 
-Selecteer **OK**.
+1. U kunt elk type ASP.NET-web-app implementeren in Azure. Kies voor deze Quick Start de **MVC** -sjabloon.
 
-![Het dialoogvenster Nieuw ASP.NET-project](./media/app-service-web-get-started-windows-container/select-mvc-template.png)
+1. Selecteer **docker-ondersteuning**en zorg ervoor dat verificatie is ingesteld op **geen verificatie**. Selecteer **Maken**.
 
-Als het bestand _Dockerfile_ niet automatisch wordt geopend, opent u het vanuit **Solution Explorer**.
+   ![ASP.NET-webtoepassing maken](./media/app-service-web-get-started-windows-container/select-mvc-template-for-container.png)
 
-U moet een [ondersteunde bovenliggende installatiekopie](#use-a-different-parent-image) gebruiken. Wijzig de bovenliggende installatiekopie door de regel `FROM` ​​te vervangen door de volgende code en het bestand op te slaan:
+1. Als het bestand _Dockerfile_ niet automatisch wordt geopend, opent u het vanuit **Solution Explorer**.
 
-```Dockerfile
-FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
-```
+1. U hebt een [ondersteunde bovenliggende installatie kopie](#use-a-different-parent-image)nodig. Wijzig de bovenliggende installatiekopie door de regel `FROM` ​​te vervangen door de volgende code en het bestand op te slaan:
 
-Selecteer in het menu **Fouten opsporen > Starten zonder foutopsporing** om de web-app lokaal uit te voeren.
+   ```Dockerfile
+   FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
+   ```
 
-![De app lokaal uitvoeren](./media/app-service-web-get-started-windows-container/local-web-app.png)
+1. Selecteer in het Visual Studio-menu de optie **fout opsporing** > **starten zonder fout opsporing** om de web-app lokaal uit te voeren.
+
+   ![De app lokaal uitvoeren](./media/app-service-web-get-started-windows-container/local-web-app.png)
 
 ## <a name="publish-to-docker-hub"></a>Publiceren naar Docker Hub
 
-Klik in **Solution Explorer** met de rechtermuisknop op het project **myFirstAzureWebApp**-en selecteer **Publiceren**.
+1. Klik in **Solution Explorer**met de rechter muisknop op het project **MyFirstAzureWebApp** en selecteer **publiceren**.
 
-![Publiceren vanuit Solution Explorer](./media/app-service-web-get-started-windows-container/solution-explorer-publish.png)
+1. Kies **app service** en selecteer vervolgens **publiceren**.
 
-De publicatiewizard wordt automatisch gestart. Selecteer **Container Registry** > **Docker Hub** > **Publish**.
+1. Selecteer in een **publicatie doel**kiezen de optie **container Registry** en **docker hub**en klik vervolgens op **publiceren**.
 
-![Publiceren vanaf de projectoverzichtspagina](./media/app-service-web-get-started-windows-container/publish-to-docker.png)
+   ![Publiceren vanaf de projectoverzichtspagina](./media/app-service-web-get-started-windows-container/publish-to-docker-vs2019.png)
 
-Geef de referenties voor uw Docker Hub-account op en klik op **Save**. 
+1. Geef de referenties van uw docker hub-account op en selecteer **Opslaan**.
 
-Wacht totdat de installatie is voltooid. Op de pagina **Publish** ziet u nu de naam van de opslagplaats die u later in App Service gaat gebruiken.
+   Wacht totdat de installatie is voltooid. Op de pagina **publiceren** wordt nu de naam van de opslag plaats weer gegeven die u later kunt gebruiken.
 
-![Publiceren vanaf de projectoverzichtspagina](./media/app-service-web-get-started-windows-container/published-docker-repository.png)
+   ![Publiceren vanaf de projectoverzichtspagina](./media/app-service-web-get-started-windows-container/published-docker-repository-vs2019.png)
 
-Kopieer deze naam van de opslagplaats later gebruik.
-
-## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
-
-Meld u aan bij Azure Portal op https://portal.azure.com.
+1. Kopieer deze naam van de opslagplaats later gebruik.
 
 ## <a name="create-a-windows-container-app"></a>Een Windows-container-app maken
 
+1. Meld u aan bij [Azure Portal]( https://portal.azure.com).
+
 1. Kies in de linkerbovenhoek van Azure Portal **Een resource maken**.
 
-2. Ga in het zoekvak boven de lijst met Azure Marketplace-resources naar **Web App for Containers** en selecteer dit.
+1. Zoek in het zoekvak boven de lijst met resources van Azure Marketplace naar **Web App for containers**en selecteer **maken**.
 
-3. Geef een app-naam op, zoals *win-container-demo*, accepteer de standaardwaarden om een nieuwe resourcegroep te maken en klik in de lijst **OS** op **Windows (Preview)** .
+1. Kies uw abonnement en een **resource groep**in **Web-app maken**. U kunt zo nodig een nieuwe resource groep maken.
 
-    ![](media/app-service-web-get-started-windows-container/portal-create-page.png)
+1. Geef een naam op voor de app, zoals *Win-container-demo* , en kies **Windows** voor het **besturings systeem**. Selecteer **Volgende: Docker** om door te gaan.
 
-4. Maak een App Service-plan door te klikken op **App Service-plan/-locatie** > **Nieuwe maken**. Geef het nieuwe plan een naam, accepteer de standaardwaarden en klik op **OK**.
+   ![Een Web App for Containers maken](media/app-service-web-get-started-windows-container/create-web-app-continer.png)
 
-    ![](media/app-service-web-get-started-windows-container/portal-create-plan.png)
+1. Voor **installatie kopie bron**kiest u **docker hub** en voor **afbeelding en label**voert u de naam in van de opslag plaats die u hebt gekopieerd in [publiceren naar docker hub](#publish-to-docker-hub).
 
-5. Klik op **Container configureren**. Gebruik voor **Image and optional tag** de naam van de opslagplaats die u hebt gekopieerd in [Publiceren naar Docker Hub](#publish-to-docker-hub) en klikt vervolgens op **OK**.
-
-    ![](media/app-service-web-get-started-windows-container/portal-configure-container-vs.png)
+   ![Configureer een Web App for Containers](media/app-service-web-get-started-windows-container/configure-web-app-continer.png)
 
     Als u elders een aangepaste installatiekopie voor de webtoepassing hebt, bijvoorbeeld in [Azure Container Registry](/azure/container-registry/) of in een andere privéopslagplaats, kunt u deze hier configureren.
 
-6. Klik op **Maken** en wacht tot de vereiste resources zijn gemaakt in Azure.
+1. Selecteer **controleren en maken** **en wacht** tot Azure de vereiste resources heeft gemaakt.
 
 ## <a name="browse-to-the-container-app"></a>Naar de container-app bladeren
 
 Als de bewerking in Azure is voltooid, wordt er een melding weergegeven.
 
-![](media/app-service-web-get-started-windows-container/portal-create-finished.png)
+![Implementatie is voltooid](media/app-service-web-get-started-windows-container/portal-create-finished.png)
 
 1. Klik op **Ga naar resource**.
 
-2. Klik op de app-pagina onder **URL** op de koppeling.
+1. In het overzicht van deze resource volgt u de koppeling naast **URL**.
 
-Er wordt een nieuwe browserpagina geopend met de volgende pagina:
+Er wordt een nieuwe browser pagina geopend op de volgende pagina:
 
-![](media/app-service-web-get-started-windows-container/app-starting.png)
+![Windows-container-app wordt gestart](media/app-service-web-get-started-windows-container/app-starting.png)
 
 Wacht enkele minuten en probeer het opnieuw totdat u de startpagina van ASP.NET ziet:
 
-![](media/app-service-web-get-started-windows-container/app-running-vs.png)
+![Windows-container-app wordt uitgevoerd](media/app-service-web-get-started-windows-container/app-running-vs.png)
 
 **Gefeliciteerd!** U voert nu uw eerste aangepaste Windows-container uit in Azure App Service.
 
@@ -150,24 +147,24 @@ De gestreamde logboeken zien er ongeveer als volgt uit:
 
 ## <a name="update-locally-and-redeploy"></a>Lokaal bijwerken en opnieuw implementeren
 
-Open vanuit de **Solution Explorer** _Views\Home\Index.cshtml_.
+1. Open in Visual Studio in **Solution Explorer** **weer gaven** > **Start** > **index. cshtml**.
 
-Zoek ergens bovenaan de HTML-tag `<div class="jumbotron">` en vervang het volledige element door de volgende code:
+1. Zoek ergens bovenaan de HTML-tag `<div class="jumbotron">` en vervang het volledige element door de volgende code:
 
-```HTML
-<div class="jumbotron">
-    <h1>ASP.NET in Azure!</h1>
-    <p class="lead">This is a simple app that we’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
-</div>
-```
+   ```HTML
+   <div class="jumbotron">
+       <h1>ASP.NET in Azure!</h1>
+       <p class="lead">This is a simple app that we’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
+   </div>
+   ```
 
-Als u opnieuw wilt implementeren naar Azure, klikt u in **Solution Explorer** met de rechtermuisknop op het project **myFirstAzureWebApp** en selecteert u **Publiceren**.
+1. Als u opnieuw wilt implementeren naar Azure, klikt u met de rechter muisknop op het **myFirstAzureWebApp** -project in **Solution Explorer** en kiest u **publiceren**.
 
-Selecteer op de pagina Publiceren de knop **Publiceren** en wacht tot het publiceren is voltooit.
+1. Selecteer op de pagina Publiceren de knop **Publiceren** en wacht tot het publiceren is voltooit.
 
-Als u wilt dat App Service de nieuwe installatiekopie ophaalt uit Docker Hub, moet u de app opnieuw starten. Klik als u terugbent in de app-pagina in de portal op **Opnieuw starten** > **Ja**.
+1. Als u wilt dat App Service de nieuwe installatiekopie ophaalt uit Docker Hub, moet u de app opnieuw starten. Klik als u terugbent in de app-pagina in de portal op **Opnieuw starten** > **Ja**.
 
-![Web-app opnieuw starten in Azure](./media/app-service-web-get-started-windows-container/portal-restart-app.png)
+   ![Web-app opnieuw starten in Azure](./media/app-service-web-get-started-windows-container/portal-restart-app.png)
 
 [Blader opnieuw naar de container-app](#browse-to-the-container-app). Nadat de webpagina is vernieuwd, moet de app eerst teruggaan naar de pagina 'Starting up' en dan na een paar minuten opnieuw de bijgewerkte webpagina weergeven.
 
@@ -175,7 +172,7 @@ Als u wilt dat App Service de nieuwe installatiekopie ophaalt uit Docker Hub, mo
 
 ## <a name="use-a-different-parent-image"></a>Een andere bovenliggende installatiekopie gebruiken
 
-U mag ook een andere aangepaste Docker-installatiekopie gebruiken om de app uit te voeren. Kies echter wel de juiste [bovenliggende installatiekopie](https://docs.docker.com/develop/develop-images/baseimages/) voor het gewenste framework: 
+U kunt een andere aangepaste docker-installatie kopie gebruiken om uw app uit te voeren. Kies echter wel de juiste [bovenliggende installatiekopie](https://docs.docker.com/develop/develop-images/baseimages/) voor het gewenste framework:
 
 - Als u .NET Framework-Apps wilt implementeren, gebruikt u een bovenliggende installatie kopie op basis van de versie van het Windows Server Core 2019 [-LTSC (Long-term Servicing Channel)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) . 
 - Als u .NET Core-Apps wilt implementeren, gebruikt u een bovenliggende installatie kopie op basis van de versie van het Windows Server nano 1809 [Semi-Annual-onderhouds kanaal (SAC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) . 
@@ -183,7 +180,7 @@ U mag ook een andere aangepaste Docker-installatiekopie gebruiken om de app uit 
 Het duurt enige tijd om een bovenliggende installatiekopie te downloaden tijdens het opstarten van de app. U kunt deze opstarttijd echter verminderen door een van de volgende bovenliggende installatiekopieën te gebruiken die al in cache zijn opgeslagen in Azure App Service:
 
 - [MCR.Microsoft.com/DOTNET/Framework/ASPNET](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/): 4.7.2-windowsservercore-ltsc2019
-- [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809-dit is de basis container die wordt gebruikt in micro soft [ASP.net core](https://hub.docker.com/_microsoft-dotnet-cores-aspnet) micro soft Windows nano server-installatie kopieën.
+- [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809-deze installatie kopie is de basis container die wordt gebruikt in micro soft [ASP.net core](https://hub.docker.com/_microsoft-dotnet-cores-aspnet) micro soft Windows nano server-installatie kopieën.
 
 ## <a name="next-steps"></a>Volgende stappen
 

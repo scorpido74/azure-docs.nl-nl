@@ -6,18 +6,18 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 08/21/2019
+ms.date: 09/03/2019
 ms.author: heidist
-ms.openlocfilehash: 204951f725c2885fe9f8bf33fffe83e55628dd34
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 3b0647c3a71e6ce242e7cbd0eedcca3d0fa30ded
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899688"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274057"
 ---
 # <a name="what-is-azure-search"></a>Wat is Azure Search?
 
-Azure Search is een Cloud oplossing op basis van een zoek opdracht als service die ontwikkel aars Api's en hulpprogram ma's biedt voor het toevoegen van een uitgebreide zoek ervaring via persoonlijke, heterogene inhoud in web-, mobiele en zakelijke toepassingen. Met uw aangepaste code wordt gegevens opname (indexering) aangeroepen om een index te maken en te laden. Aan de andere kant worden met de toepassings code query aanvragen aangevraagd en worden antwoorden verwerkt. De zoek ervaring wordt gedefinieerd in uw client met behulp van de functionaliteit van Azure Search, waarbij de query wordt uitgevoerd via een persistente index die u maakt, eigenaar en opslaat op Azure Search.
+Azure Search is een Cloud oplossing op basis van een zoek opdracht als service die ontwikkel aars Api's en hulpprogram ma's biedt voor het toevoegen van een uitgebreide zoek ervaring via persoonlijke, heterogene inhoud in web-, mobiele en zakelijke toepassingen. Met uw aangepaste code wordt gegevens opname (indexering) aangeroepen om een index te maken en te laden. Aan de andere kant worden met de toepassings code query aanvragen aangevraagd en worden antwoorden verwerkt. De zoek ervaring wordt gedefinieerd in uw client met behulp van de functionaliteit van Azure Search, waarbij de query wordt uitgevoerd via een persistente index die u maakt, eigenaar en opslaat in uw service.
 
 ![Azure Search architectuur](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Search architectuur")
 
@@ -90,7 +90,7 @@ Het push-model wordt geboden via de SDK of REST API’s, en gebruikt om bijgewer
 ### <a name="step-4-search"></a>Stap 4: Search
 Nadat u een index hebt gevuld, kunt u [Zoek query's](search-query-overview.md) naar uw service-eind punt verzenden met behulp van eenvoudige HTTP-aanvragen met [rest API](/rest/api/searchservice/Search-Documents) of de [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations).
 
-U kunt door gaan met [het maken van uw eerste Zoek-app](tutorial-csharp-create-first-app.md) om een webpagina te bouwen en vervolgens uit te breiden waarmee gebruikers invoer wordt verzameld en resultaten worden verwerkt. U kunt postman ook gebruiken [voor interactieve rest](search-get-started-postman.md) -aanroepen of de ingebouwde [zoek Verkenner](search-explorer.md) in azure Portal om een bestaande index op te vragen.
+U kunt door gaan met [het maken van uw eerste Zoek-app](tutorial-csharp-create-first-app.md) om een webpagina te bouwen en vervolgens uit te breiden waarmee gebruikers invoer wordt verzameld en resultaten worden verwerkt. U kunt [postman ook gebruiken voor interactieve rest](search-get-started-postman.md) -aanroepen of de ingebouwde [zoek Verkenner](search-explorer.md) in azure Portal om een bestaande index op te vragen.
 
 ## <a name="how-it-compares"></a>Vergelijking
 

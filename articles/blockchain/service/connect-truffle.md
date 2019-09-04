@@ -5,21 +5,21 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 07/31/2019
+ms.date: 08/29/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 6768c1e26435ace60b26adb46c9955d080029828
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 822402f548fe0fc866051a9c77adef6e37c3fa75
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705162"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240891"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-an-azure-blockchain-service-network"></a>Quickstart: Truffle gebruiken om verbinding te maken met een Azure Block Chain service-netwerk
+# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>Quickstart: Truffle gebruiken om verbinding te maken met een transactie knooppunt
 
-Truffle is een Block Chain-ontwikkel omgeving die u kunt gebruiken om verbinding te maken met een Azure Block Chain Service-knoop punt.
+Truffle is een Block Chain-ontwikkel omgeving die u kunt gebruiken om verbinding te maken met een Azure Block Chain Service Trans Action-knoop punt.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

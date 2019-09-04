@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: quickstart
 ms.date: 02/22/2019
-ms.openlocfilehash: 6c0abc20775e604f9ea1c6ba882e5a9ff1d89e90
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ac4b9b4d32d05083ceabd41207243eb483648baa
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195307"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278599"
 ---
 # <a name="quickstart-set-up-a-windows-data-science-virtual-machine-on-azure"></a>Quickstart: Een Windows-Data Science Virtual Machine in azure instellen
 
@@ -24,7 +24,7 @@ Micro soft Windows Data Science Virtual Machine (DSVM) is een installatie kopie 
 
 De volgende hulpprogram ma's zijn opgenomen in een DSVM:
 
-* Python-SDK voor de [Azure machine learning-service](../service/index.yml).
+* Python-SDK voor de [Azure machine learning-service](../index.yml).
 * [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/index) Developer edition.
 * Anaconda Python-distributie.
 * Jupyter-Notebook met R, Python en PySpark-kernels.
@@ -206,7 +206,7 @@ De Python-SDK is vooraf geïnstalleerd op de Microsoft Data Science Virtual Mach
 
 ## <a name="more-microsoft-development-tools"></a>Meer Microsoft-ontwikkelprogramma 's
 
-U kunt het [installatie programma van het micro soft](https://www.microsoft.com/web/downloads/platform.aspx) -webplatform gebruiken om andere ontwikkel Hulpprogramma's van micro soft te zoeken en te downloaden. Er is ook een snelkoppeling naar het hulp programma op het bureau blad van micro soft Data Science Virtual Machine.  
+U kunt het [installatie programma van het micro soft-webplatform](https://www.microsoft.com/web/downloads/platform.aspx) gebruiken om andere ontwikkel Hulpprogramma's van micro soft te zoeken en te downloaden. Er is ook een snelkoppeling naar het hulp programma op het bureau blad van micro soft Data Science Virtual Machine.  
 
 ## <a name="important-directories-on-the-vm"></a>Belangrijke mappen op de virtuele machine
 
@@ -228,7 +228,7 @@ U kunt het [installatie programma van het micro soft](https://www.microsoft.com/
 ## <a name="next-steps"></a>Volgende stappen
 
 * Bekijk de hulpprogram ma's op de DSVM door het menu **Start** te openen.
-* Meer informatie over de Azure Machine Learning-service vindt u in [Wat is Azure machine learning service? en hoe](../service/overview-what-is-azure-ml.md) u Quick starts [en zelf studies](../service/index.yml)probeert te lezen.
+* Lees meer over de Azure Machine Learning-service door te lezen [Wat is Azure machine learning service?](../service/overview-what-is-azure-ml.md) en [zelf studies](../index.yml)te proberen.
 * Ga in Verkenner naar C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts voor voor beelden die gebruikmaken van de RevoScaleR-bibliotheek in R die ondersteuning biedt voor gegevens analyse op ondernemings schaal. 
 * Lees het artikel [tien dingen die u op het data Science virtual machine kunt doen](https://aka.ms/dsvmtenthings).
 * Informatie over het bouwen van analytische oplossingen voor end-to-end systematisch met behulp van de [Team Data Science Process](../team-data-science-process/index.yml).

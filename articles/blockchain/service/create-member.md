@@ -1,65 +1,65 @@
 ---
-title: Maak een Azure Blockchain-Service met behulp van de Azure portal
-description: Azure Blockchain-service gebruiken voor het maken van een consortium lid.
+title: Een Block Chain-lid van de Azure Block Chain-service maken met behulp van de Azure Portal
+description: Gebruik de Azure Block Chain-service om een Block Chain-lid te maken.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/29/2019
+ms.date: 08/29/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 5cb236dc38ae41b202004b7e4806d8129378cfdb
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 9f58379acd88fd93a00edc11b73b41dc3d6226a5
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417509"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241046"
 ---
-# <a name="quickstart-create-an-azure-blockchain-service-using-the-azure-portal"></a>Quickstart: Maak een Azure Blockchain-Service met behulp van de Azure portal
+# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Quickstart: Een Block Chain-lid van de Azure Block Chain-service maken met behulp van de Azure Portal
 
-Azure Blockchain-Service is een blockchain-platform dat u uw bedrijfslogica binnen een slimme contract kunt uitvoeren. In deze Quick Start laat zien hoe u aan de slag met het maken van een beheerde grootboek met behulp van de Azure portal.
+De Azure Block Chain-service is een Block Chain-platform waarmee u uw bedrijfs logica binnen een slim contract kunt uitvoeren. In deze Snelstartgids ziet u hoe u aan de slag kunt met het maken van een Block Chain-lid met behulp van de Azure Portal.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-managed-ledger"></a>Maken van een beheerde grootboek
+## <a name="create-a-blockchain-member"></a>Een blockchain-lid maken
 
-Azure Blockchain-Service wordt gemaakt met een gedefinieerde set met reken- en opslagresources.
+Maak een Block Chain-lid dat het quorum grootboek protocol in een nieuw of bestaand consortium uitvoert.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken**.
-1. Selecteer **Blockchain** > **Azure Blockchain-Service**.
-1. Het sjabloon kunt aanvullen.
+1. Selecteer **Block Chain** > **Azure Block Chain-Service**.
+1. Voltooi de sjabloon.
 
     ![Service maken](./media/create-member/create-member.png)
 
     Instelling | Description
     --------|------------
-    Blockchain lid | Kies een unieke naam ter identificatie van uw Azure Blockchain Service lid. De naam van de blockchain-lid mag alleen kleine letters en cijfers. Het eerste teken moet een letter zijn. De waarde moet tussen 2 en 20 tekens lang zijn.
-    Abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw service. Als u meerdere abonnementen hebt, kiest u het abonnement waarin u wordt gefactureerd voor de resource.
-    Resourcegroep | Een nieuwe resourcegroepnaam of een bestaande naam uit uw abonnement.
-    Regio | Locatie moet hetzelfde zijn voor alle leden van het consortium.
-    Lid-accountwachtwoord | Het wachtwoord voor het lid wordt gebruikt voor het versleutelen van de persoonlijke sleutel voor het Ethereum-account dat is gemaakt voor het lid. U gebruikt de lidaccount en het wachtwoord van het account lid voor consortium management.
-    De naam van de Consortium | Voer een unieke naam voor een nieuwe consortium. Als u lid wordt van een consortium via een uitnodiging, is de waarde het consortium dat u samenvoegt.
+    Block Chain-lid | Kies een unieke naam die uw Azure Block Chain Service Block Chain-lid aanduidt. De naam van het block Chain-lid mag alleen kleine letters en cijfers bevatten. Het eerste teken moet een letter zijn. De waarde moet tussen 2 en 20 tekens lang zijn.
+    Subscription | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw service. Als u meerdere abonnementen hebt, kiest u het abonnement waarin u wordt gefactureerd voor de resource.
+    Resource group | Een nieuwe resourcegroepnaam of een bestaande naam uit uw abonnement.
+    Regio | De locatie moet hetzelfde zijn voor alle leden van het consortium.
+    Wacht woord voor leden account | Het wacht woord van het lid-account wordt gebruikt voor het versleutelen van de persoonlijke sleutel voor het Ethereum-account dat voor uw lid wordt gemaakt. U gebruikt het wacht woord voor het account en het lid van het account voor het beheer van consortiums.
+    Consortium naam | Voer een unieke naam in voor een nieuw consortium. Als u een consortium wilt toevoegen via een uitnodiging, is de waarde het consortium dat u wilt toevoegen.
     Description | Beschrijving van het consortium.
-    Protocol |  Preview-versie biedt ondersteuning voor het Quorum-protocol.
-    Prijzen | De configuratie van de knooppunten voor uw nieuwe service. selecteer **Standaard**. 2 validator knooppunten en 1 transactie-knooppunt zijn de standaardinstellingen.
-    Wachtwoord voor transactie-knooppunt | Het wachtwoord voor het lid van de standaard transactie knooppunt. Gebruik het wachtwoord voor basisverificatie wordt gebruikt bij het verbinden met blockchain adreslid standaard transactie openbare eindpunt van het knooppunt.
+    Protocol |  Preview ondersteunt het quorum protocol.
+    Prijzen | De knooppunt configuratie voor uw nieuwe service. selecteer **Standaard**. 2 validatie knooppunten en 1 transactie knooppunt zijn de standaard instellingen.
+    Wacht woord van transactie knooppunt | Het wacht woord voor het standaard transactie knooppunt van het lid. Gebruik het wacht woord voor basis verificatie bij het maken van verbinding met het open bare eind punt van het standaard transactie knooppunt van het block Chain-lid.
 
-1. Selecteer **maken** voor het inrichten van de service. De inrichting duurt ongeveer 10 minuten.
-1. Selecteer **meldingen** op de werkbalk om het implementatieproces te bewaken.
-1. Na de implementatie, gaat u naar uw blockchain-lid.
+1. Selecteer **maken** om de service in te richten. Het inrichten duurt ongeveer 10 minuten.
+1. Selecteer **meldingen** op de werk balk om het implementatie proces te bewaken.
+1. Ga na de implementatie naar het block Chain-lid.
 
-Selecteer **overzicht**, kunt u de algemene informatie bekijken over uw service, inclusief het RootContract adres en de lid-account.
+Selecteer **overzicht**, u kunt de basis informatie over uw service bekijken, met inbegrip van het RootContract-adres en het account van de gebruiker.
 
-![Overzicht van Blockchain-lid](./media/create-member/overview.png)
+![Overzicht van Block Chain-leden](./media/create-member/overview.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Voor de volgende quickstart of zelfstudie kunt u het lid dat u hebt gemaakt. Wanneer u niet meer nodig hebt, kunt u de resources verwijderen door het verwijderen van de `myResourceGroup` resourcegroep die u hebt gemaakt door de Azure Blockchain-Service.
+U kunt het lid gebruiken dat u hebt gemaakt voor de volgende Snelstartgids of zelf studie. Wanneer u deze niet meer nodig hebt, kunt u de resources verwijderen `myResourceGroup` door de resource groep te verwijderen die u hebt gemaakt door de Azure Block Chain-service.
 
-De resourcegroep verwijderen:
+De resource groep verwijderen:
 
 1. In de Azure-portal, gaat u naar **resourcegroep** in het navigatiedeelvenster links en selecteert u de resourcegroep die u wilt verwijderen.
 2. Selecteer **Resourcegroep verwijderen**. Bevestig de verwijdering door de naam van de resourcegroep in te voeren en selecteer **verwijderen**.
@@ -67,4 +67,4 @@ De resourcegroep verwijderen:
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [MetaMask gebruiken voor verbinding maken en implementeren van een slimme contract](connect-metamask.md)
+> [Een slim contract gebruiken om verbinding te maken en te implementeren](connect-metamask.md)

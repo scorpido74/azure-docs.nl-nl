@@ -7,12 +7,12 @@ ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: fb7e70e1593b9b312b8edbb7d1869f6e555e2da3
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 7c47b233e508c22ef7b380acfb7720ad763d8de3
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231493"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241107"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Quickstart: Uw eerste Resource Graph-query uitvoeren met Azure PowerShell
 
@@ -21,8 +21,6 @@ De eerste stap voor het gebruik van Azure Resource Graph bestaat uit het control
 Aan het einde van dit proces hebt u de module toegevoegd aan de Azure PowerShell-installatie van uw keuze en hebt u uw eerste Resource Graph-query uitgevoerd.
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
-
-[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="add-the-resource-graph-module"></a>De Resource Graph-module toevoegen
 

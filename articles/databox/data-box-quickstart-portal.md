@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 08/30/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 21e784320bc2b0785cdd28354947c0df6c35daf4
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.localizationpriority: high
+ms.openlocfilehash: 47b8fdbe48514665f40114c9820fdc5def38c778
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207990"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241369"
 ---
 ::: zone target="docs"
 
@@ -72,7 +73,7 @@ Voordat u begint:
 Voordat u begint, moet u ervoor zorgen dat u het volgende hebt gedaan:
 
 1. De [zelf studie is voltooid: Azure Data Box bestellen](data-box-deploy-ordered.md) voltooid.
-2. U hebt uw Data Box ontvangen en de status van de bestellingin de portal is afgeleverd. 
+2. U hebt uw Data Box ontvangen en de status van de bestelling in de portal is **afgeleverd**. 
 3. De [Data Box veiligheids richtlijnen](data-box-safety.md)zijn gecontroleerd.
 4. Er is één geaard stroom kabel ontvangen voor gebruik met uw opslag apparaat van 100 TB.
 5. Toegang tot een hostcomputer met de gegevens die u wilt kopiëren naar Data Box. Op uw hostcomputer moet

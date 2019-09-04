@@ -2,20 +2,20 @@
 title: 'Azure-snelstart: Een geheim uit Key Vault instellen en ophalen met PowerShell | Microsoft Docs'
 description: ''
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/07/2019
-ms.author: barclayn
-ms.openlocfilehash: 8d6260d462b4c244dfb41630e06710a1ce8baf6c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.date: 09/03/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 5753384d12d31016dff7a33175899835c8bd1fec
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66726784"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259261"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Quickstart: Een geheim uit Azure Key Vault instellen en ophalen met PowerShell
 
@@ -100,9 +100,9 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u een sleutelkluis gemaakt en daarin een softwaresleutel opgeslagen. Meer informatie over Key Vault en hoe u dat kunt gebruiken samen met uw toepassingen is te vinden in de zelfstudie voor webtoepassingen die geschikt zijn voor Key Vault.
+In deze Quick Start hebt u een Key Vault gemaakt en een geheim opgeslagen. Ga verder met de volgende artikelen voor meer informatie over Key Vault en hoe u deze integreert met uw toepassingen.
 
-Ga door met de volgende zelfstudie voor informatie over het lezen van een Key Vault-geheim van een webtoepassing met behulp van beheerde identiteiten voor Azure-resources
-
-> [!div class="nextstepaction"]
-> [Een Azure-webtoepassing configureren om een Key Vault-geheim te lezen](quick-create-net.md).
+- Een [overzicht van Azure Key Vault](key-vault-overview.md) lezen
+- Zie de naslag informatie voor de [Azure PowerShell Key Vault-cmdlets](/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault)
+- Meer informatie over [sleutels, geheimen en certificaten](about-keys-secrets-and-certificates.md)
+- [Azure Key Vault aanbevolen procedures](key-vault-best-practices.md) controleren

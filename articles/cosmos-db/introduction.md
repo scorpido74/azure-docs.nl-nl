@@ -4,14 +4,14 @@ description: Lees hier alles over Azure Cosmos DB. Deze wereldwijd gedistribueer
 author: rimman
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 07/23/2019
+ms.date: 09/01/2019
 ms.author: rimman
-ms.openlocfilehash: 5e53a671c866b9482296622d19d4ad6bec46829d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: f7396a747852e98b15c8c85e9b0d9a46326e6b25
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905292"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240691"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Welkom bij Azure Cosmos DB
 
@@ -53,7 +53,7 @@ Met Cosmos DB kunt u hoog-responsieve wereldwijde toepassingen bouwen. Dankzij h
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Nauwkeurig gedefinieerde, meerdere consistentiekeuzes
 
-Wanneer u wereld wijd gedistribueerde toepassingen in Cosmos DB bouwt, hoeft u geen extreme afweging te maken [tussen consistentie, Beschik baarheid, latentie en door Voer](consistency-levels-tradeoffs.md). Het replicatie protocol voor meerdere masters van Cosmos DB is zorgvuldig ontworpen om [vijf goed gedefinieerde consistentie opties](consistency-levels.md) - te bieden,*sterk*, *gebonden veroudering*, *sessie*, *consistent voor voegsel*en *uiteindelijk* — voor een intuïtief programmeer model met lage latentie en hoge Beschik baarheid voor uw wereld wijd gedistribueerde toepassing.
+Wanneer u wereld wijd gedistribueerde toepassingen in Cosmos DB bouwt, hoeft u geen extreme [afweging te maken tussen consistentie, Beschik baarheid, latentie en door Voer](consistency-levels-tradeoffs.md). Het replicatie protocol voor meerdere masters van Cosmos DB is zorgvuldig ontworpen om [vijf goed gedefinieerde consistentie opties](consistency-levels.md) - te bieden,*sterk*, *gebonden veroudering*, *sessie*, *consistent voor voegsel*en *uiteindelijk* — voor een intuïtief programmeer model met lage latentie en hoge Beschik baarheid voor uw wereld wijd gedistribueerde toepassing.
 
 ### <a name="no-schema-or-index-management"></a>Geen schema- of indexbeheer
 
@@ -81,7 +81,7 @@ Cosmos DB is de eerste en enige service die [toonaangevende SLA's](https://azure
 
 ### <a name="globally-distributed-operational-analytics-and-ai-with-natively-built-in-apache-spark"></a>Wereld wijd gedistribueerde operationele analyse en AI met ingebouwde Apache Spark
 
-U kunt [Spark](spark-connector.md) rechtstreeks uitvoeren op gegevens die zijn opgeslagen in Cosmos DB. Op deze manier kunt u op wereldwijde schaal operationele analyses met een lage latentie uitvoeren zonder dat dit gevolgen heeft voor transactionele workloads die rechtstreeks van Cosmos DB gebruikmaken. Zie globaal gedistribueerde [operationele analyses](lambda-architecture.md)voor meer informatie.
+U kunt [Spark](spark-connector.md) rechtstreeks uitvoeren op gegevens die zijn opgeslagen in Cosmos DB. Op deze manier kunt u op wereldwijde schaal operationele analyses met een lage latentie uitvoeren zonder dat dit gevolgen heeft voor transactionele workloads die rechtstreeks van Cosmos DB gebruikmaken. Zie [globaal gedistribueerde operationele analyses](lambda-architecture.md)voor meer informatie.
 
 ### <a name="develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis"></a>Toepassingen ontwikkelen op Cosmos DB met behulp van populaire OSS-Api's (open source software)
 

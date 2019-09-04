@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ae8f6854241240249cb3b7494872cbbd8fd41e6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: fc633780d8b816d8fc2e313bb1955a5719979efe
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823759"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240873"
 ---
-# <a name="what-is-passwordless"></a>Wat is een wacht woord?
+# <a name="what-is-passwordless"></a>Wat betekent zonder wachtwoord?
 
 Multi-factor Authentication (MFA) is een uitstekende manier om uw organisatie te beveiligen, maar gebruikers worden met de extra laag boven op de hoogte gehouden om hun wacht woord te onthouden. Verificatie methoden met een wacht woord zijn handiger omdat het wacht woord wordt verwijderd en vervangen door iets wat u hebt of iets dat u weet.
 
@@ -26,7 +26,7 @@ Multi-factor Authentication (MFA) is een uitstekende manier om uw organisatie te
 | --- | --- | --- |
 | Zonder wachtwoord | Telefoon of beveiligings sleutel | Biometrische of pincode |
 
-Elke organisatie heeft verschillende behoeften wanneer dit van toepassing is op verificatie. Micro soft biedt momenteel Windows Hello, onze voor Windows-Pc's. De Microsoft Authenticator app-en FIDO2-beveiligings sleutels worden toegevoegd aan de groep met wacht woorden.
+Elke organisatie heeft verschillende behoeften wanneer dit van toepassing is op verificatie. Micro soft biedt momenteel Windows hello voor onze Windows-Pc's. De Microsoft Authenticator app-en FIDO2-beveiligings sleutels worden toegevoegd aan de groep met wacht woorden.
 
 ## <a name="microsoft-authenticator-app"></a>App Microsoft Authenticator
 

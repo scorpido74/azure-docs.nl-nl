@@ -73,32 +73,6 @@
   items:
     - name: Bibliotheek met door de gebruiker gedefinieerde functies
       href: reference-user-defined-functions-client-library.md
-- name: Verwant
-  items:
-    - name: Oplossingen
-      items:
-        - name: IoT-oplossingsversnellers
-          href: /azure/iot-accelerators
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: Platformservices
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
-        - name: IoT Service-SDK's
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Kaarten
-          href: /azure/azure-maps
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Edge
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: IoT Device-SDK's
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Resources
   items:
     - name: 'Azure Digital Twins-voorbeelden voor C# (.NET)'

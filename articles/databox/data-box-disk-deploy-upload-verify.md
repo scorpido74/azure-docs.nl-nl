@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 ms.localizationpriority: high
-ms.date: 08/22/2019
+ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e36f009422307b3b70091775d2288ee710839172
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: a4d814ab5b1f26a6a2b871a850fd5e3153e256f5
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014179"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240280"
 ---
 ::: zone target="docs"
 
@@ -70,20 +70,40 @@ Controleer of uw gegevens zich in de opslagaccount(s) bevinden voordat u deze ui
       ![Resource groep voor beheerde schijven](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
 
   - Als u een VHDX of een dynamische/differentiërende VHD hebt gekopieerd, wordt de VHDX/VHD geüpload naar het opslag account voor staging als een blok-blob. Ga naar uw staging- **opslag account > blobs** en selecteer vervolgens de juiste container-StandardSSD, StandardHDD of PremiumSSD. De VHDX/Vhd's moeten worden weer gegeven als blok-blobs in uw staging Storage-account.
+  
+::: zone-end
 
-Om te controleren of de gegevens naar Azure zijn geüpload, dient u de volgende stappen uit te voeren:
+::: zone target="chromeless"
+
+# <a name="verify-data-upload-to-azure"></a>De gegevensupload naar Azure controleren
+
+Nadat de gegevens zijn geüpload naar Azure, controleert u of de gegevens zich in de opslag account (s) bevindt voordat u deze verwijdert uit de bron. Uw gegevens kunnen de volgende zijn:
+
+- Uw Azure Storage-account (s). Als u de gegevens naar Data Box kopieert, worden de gegevens naar een van de volgende paden in uw Azure Storage-account geüpload, afhankelijk van het gegevenstype.
+
+    - **Voor blok-blobs en pagina-blobs**: https://< storage_account_name >. blob. core. Windows.<containername>net//files/a.txt
+
+    - **Voor Azure files**: https://< storage_account_name >. file. core. Windows. net/<sharename>/files/a.txt
+
+- De resource groep (en) van de beheerde schijf. Bij het maken van beheerde schijven worden de Vhd's geüpload als pagina-blobs en vervolgens geconverteerd naar Managed disks. De beheerde schijven worden gekoppeld aan de resource groepen die zijn opgegeven op het moment dat de order wordt gemaakt.
+
+::: zone-end
+
+Voer de volgende stappen uit om te controleren of de gegevens zijn geüpload naar Azure:
 
 1. Ga naar het opslagaccount dat is gekoppeld aan uw schijforder.
 2. Ga naar **Blob-service > Blobs verkennen**. De lijst met containers wordt weergegeven. Er worden containers gemaakt in uw opslagaccount met dezelfde naam als die van de submappen die u hebt gemaakt onder de mappen *BlockBlob* en *PageBlob*.
     Als de mapnamen niet de naamgevingsregels van Azure volgen, mislukt het uploaden van gegevens naar Azure.
 
-4. Als u wilt controleren of de volledige gegevensset is geladen, kunt u Microsoft Azure Storage Explorer gebruiken. Koppel het opslagaccount dat overeenkomt met de schijfhuurorder en bekijk de lijst met blobcontainers. Selecteer een container, klikt u op **... Meer** en klik vervolgens op **Mapstatistieken**. De statistieken voor die map worden dan weergegeven in het deelvenster **Activiteiten**, waaronder het aantal blobs en de totale grootte van de blobs. De totale blobgrootte in bytes moet overeenkomen met de grootte van de gegevensset.
+3. Als u wilt controleren of de volledige gegevensset is geladen, kunt u Microsoft Azure Storage Explorer gebruiken. Koppel het opslag account dat overeenkomt met de Data Box Disk order en bekijk vervolgens de lijst met Blob-containers. Selecteer een container, klikt u op **... Meer** en klik vervolgens op **Mapstatistieken**. De statistieken voor die map worden dan weergegeven in het deelvenster **Activiteiten**, waaronder het aantal blobs en de totale grootte van de blobs. De totale blobgrootte in bytes moet overeenkomen met de grootte van de gegevensset.
 
     ![Mapstatistieken in Storage Explorer](media/data-box-disk-deploy-picked-up/folder-statistics-storage-explorer.png)
 
 ## <a name="erasure-of-data-from-data-box-disk"></a>Gegevens verwijderen van de Data Box Disk
 
 Nadat de kopie is voltooid en u hebt gecontroleerd of de gegevens zich in het Azure-opslag account bevinden, worden schijven veilig gewist volgens de NIST-standaard.
+
+::: zone target="docs"
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -101,22 +121,6 @@ Ga verder met de volgende handleiding voor meer informatie over het beheren van 
 
 ::: zone-end
 
-::: zone target="chromeless"
 
-# <a name="verify-data-upload-to-azure"></a>De gegevensupload naar Azure controleren
-
-Nadat de gegevens zijn geüpload naar Azure, controleert u of de gegevens zich in de opslag account (s) bevindt voordat u deze verwijdert uit de bron. Uw gegevens kunnen de volgende zijn:
-
-- Uw Azure Storage-account (s). Als u de gegevens naar Data Box kopieert, worden de gegevens naar een van de volgende paden in uw Azure Storage-account geüpload, afhankelijk van het gegevenstype.
-
-    - **Voor blok-blobs en pagina**-blobs: https://< storage_account_name >. blob. core. Windows.<containername>net//files/a.txt
-
-    - **Voor Azure files**: https://< storage_account_name >. file. core. Windows. net/<sharename>/files/a.txt
-
-    U kunt ook naar uw Azure-opslagaccount in de Azure-portal gaan en van daaruit navigeren.
-
-- De resource groep (en) van de beheerde schijf. Bij het maken van beheerde schijven worden de Vhd's geüpload als pagina-blobs en vervolgens geconverteerd naar Managed disks. De beheerde schijven worden gekoppeld aan de resource groepen die zijn opgegeven op het moment dat de order wordt gemaakt.
-
-::: zone-end
 
 

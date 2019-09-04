@@ -7,12 +7,12 @@ ms.date: 04/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: e5b204aab0dfde8dc6b5ea489de8a5cda15a7c83
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 688c591cbe94c69c73779843011cb24c3d2fd4cf
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232245"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241085"
 ---
 # <a name="starter-resource-graph-queries"></a>Starter query's van Resource Graph
 
@@ -35,8 +35,6 @@ We nemen de volgende starter query's door:
 > - [DISTINCT-waarden voor een specifieke alias weer geven](#distinct-alias-values)
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="language-support"></a>Taalondersteuning
 
@@ -256,7 +254,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where
 
 ## <a name="a-nameshow-aliasesshow-aliases-for-a-virtual-machine-resource"></a><a name="show-aliases"/>Aliassen weer geven voor een bron van een virtuele machine
 
-[Azure Policy](../../policy/concepts/definition-structure.md#aliases) -aliassen worden door Azure Policy gebruikt voor het beheren van de naleving van resources. Azure resource Graph kan de _aliassen_ van een resource type retour neren. Deze waarden zijn handig voor het vergelijken van de huidige waarde van aliassen bij het maken van een aangepaste beleids definitie. De _aliassen_ matrix is niet standaard opgenomen in de resultaten van een query. Gebruik `project aliases` dit om het expliciet toe te voegen aan de resultaten.
+[Azure Policy-aliassen](../../policy/concepts/definition-structure.md#aliases) worden door Azure Policy gebruikt voor het beheren van de naleving van resources. Azure resource Graph kan de _aliassen_ van een resource type retour neren. Deze waarden zijn handig voor het vergelijken van de huidige waarde van aliassen bij het maken van een aangepaste beleids definitie. De _aliassen_ matrix is niet standaard opgenomen in de resultaten van een query. Gebruik `project aliases` dit om het expliciet toe te voegen aan de resultaten.
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines'

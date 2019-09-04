@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/10/2019
+ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d93a20494886bb7d563439e2699f60bedb646dcd
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 0c99ee1987b592a2e8314d529b118fb26945271e
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032553"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241698"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>Wat is Azure AD-rechtenbeheer? (Preview-versie)
+# <a name="what-is-azure-ad-entitlement-management-preview"></a>Wat is Azure AD-rechtenbeheer? (Preview)
 
 > [!IMPORTANT]
 > Azure Active Directory (Azure AD)-rechts beheer is momenteel beschikbaar als open bare preview.
@@ -139,6 +139,18 @@ Bekijk de volgende voor waarden om het rechten beheer en de bijbehorende documen
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
 Gespecialiseerde Clouds, zoals Azure Government, Azure Duitsland en Azure China 21Vianet, zijn momenteel niet beschikbaar voor gebruik in deze preview-versie.
+
+### <a name="which-users-must-have-licenses"></a>Welke gebruikers moeten licenties hebben?
+
+Uw Tenant moet ten minste evenveel Azure AD Premium P2-licenties hebben als u actieve leden van de gebruiker hebt. Gebruikers van actieve leden in het recht op beheer zijn onder andere:
+
+- Een gebruiker die een aanvraag voor een toegangs pakket initieert of goedkeurt.
+- Een gebruiker aan wie een toegangs pakket is toegewezen. 
+- Een gebruiker die toegangs pakketten beheert.
+
+Als onderdeel van de licenties voor leden van gebruikers kunt u ook een aantal gast gebruikers toestaan om te communiceren met het rechten beheer. Zie [Azure Active Directory B2B Collaboration guidance](../b2b/licensing-guidance.md)(Engelstalig) voor meer informatie over het berekenen van het aantal gast gebruikers dat u kunt gebruiken.
+
+Voor informatie over het toewijzen van licenties aan uw gebruikers raadpleegt u [licenties toewijzen of verwijderen via de Azure Active Directory Portal](../fundamentals/license-users-groups.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
