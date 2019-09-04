@@ -290,12 +290,18 @@
               href: ../algorithm-module-reference/edit-metadata.md
             - name: Ontbrekende gegevens opschonen
               href: ../algorithm-module-reference/clean-missing-data.md
+            - name: Functie-hashing
+              href: ../algorithm-module-reference/feature-hashing.md
+            - name: N-Gram-functies uit tekst halen
+              href: ../algorithm-module-reference/extract-n-gram-features-from-text.md
             - name: Kolommen toevoegen
               href: ../algorithm-module-reference/add-columns.md
             - name: Rijen toevoegen
               href: ../algorithm-module-reference/add-rows.md
             - name: Dubbele rijen verwijderen
               href: ../algorithm-module-reference/remove-duplicate-rows.md
+            - name: Tekst voorverwerken
+              href: ../algorithm-module-reference/preprocess-text.md
             - name: Gegevens samenvoegen
               href: ../algorithm-module-reference/join-data.md
             - name: Gegevens splitsen
