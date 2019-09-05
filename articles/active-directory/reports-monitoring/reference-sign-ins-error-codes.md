@@ -17,16 +17,16 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c5f7e45a1e1daa5d8504db2506a79e88c28bcc1
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1b5aedd5c9bde7689df14c7efdf8d58692680c13
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989597"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383178"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fout codes voor aanmeldings activiteiten rapport 
 
-Met de informatie van het [rapport voor gebruikers](concept-sign-ins.md)aanmeldingen vindt u antwoorden op vragen zoals:
+Met de informatie van het [rapport voor gebruikers aanmeldingen](concept-sign-ins.md)vindt u antwoorden op vragen zoals:
 
 - Wie is aangemeld bij mijn toepassing?
 - In welke toepassingen is aangemeld?
@@ -36,7 +36,7 @@ Wanneer een aanmelding mislukt, wordt een fout code weer geven die overeenkomt m
 
 ## <a name="how-can-i-display-failed-sign-ins"></a>Hoe kan ik mislukte aanmeldingen weergeven? 
 
-Navigeer naar het [rapport](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns) aanmeldingen in de [Azure Portal](https://portal.azure.com).
+Navigeer naar het [rapport aanmeldingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns) in de [Azure Portal](https://portal.azure.com).
 
 ![Aanmeldingsactiviteit](./media/reference-sign-ins-error-codes/61.png "Aanmeldingsactiviteit")
 
@@ -153,6 +153,8 @@ U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp
 |70018|Ongeldige verificatiecode doordat gebruiker verkeerde gebruikerscode typt voor apparaatcodestroom. Autorisatie is niet goedgekeurd.|
 |70019|Verificatiecode verlopen. Laat de gebruiker de aanmelding opnieuw proberen.|
 |70037|Onjuist antwoord op verificatievraag. Externe verificatiesessie is geweigerd.|
+|70043|Het beheer van de voorwaardelijke toegang van Azure zorgt ervoor dat de sessie verloopt|
+|70044|Het beheer van de voorwaardelijke toegang van Azure zorgt ervoor dat de sessie verloopt|
 |75001|Er is een fout opgetreden tijdens de binding van SAML-bericht.|
 |75003|De toepassing heeft een fout met betrekking tot niet-ondersteunde binding geretourneerd (reactie van SAML-protocol kan niet worden verzonden via andere bindingen dan HTTP POST). Neem contact op met de eigenaar van de toepassing.|
 |75005|Azure AD biedt geen ondersteuning voor de SAML-aanvraag die door de toepassing is verzonden voor eenmalige aanmelding. Neem contact op met de eigenaar van de toepassing.|

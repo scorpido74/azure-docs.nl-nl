@@ -181,7 +181,7 @@ Het doelobject heeft de volgende eigenschappen:
 | Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | mediaType | string | Het MIME-type van het object waarnaar wordt verwezen. |
-| size | geheel getal | Het aantal bytes van de inhoud. Hetzelfde als het veld lengte. |
+| size | integer | Het aantal bytes van de inhoud. Hetzelfde als het veld lengte. |
 | digest | string | De samenvatting van de inhoud, zoals gedefinieerd door het register V2 HTTP API-specificatie. |
 | length | integer | Het aantal bytes van de inhoud. Hetzelfde als het veld grootte. |
 | repository | string | De naam van de opslagplaats. |

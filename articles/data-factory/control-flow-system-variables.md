@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: d932164f972169c93e368a41c09df039196341b5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b6c04edb3fc843dfe1b9176dc06bf312473591c3
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141639"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376430"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Systeem variabelen die door Azure Data Factory worden ondersteund
 In dit artikel worden de systeem variabelen beschreven die door Azure Data Factory worden ondersteund. U kunt deze variabelen gebruiken in expressies bij het definiëren van Data Factory entiteiten.
@@ -39,8 +39,8 @@ Naar deze systeem variabelen kan overal in de JSON van de trigger worden verweze
 
 | Naam variabele | Description |
 | --- | --- |
-| @trigger().scheduledTime |Tijdstip waarop de trigger is gepland voor het aanroepen van de pijplijn uitvoering. Bijvoorbeeld, voor een trigger die elke vijf minuten wordt geactiveerd, retourneert `2017-06-01T22:20:00Z` `2017-06-01T22:25:00Z` `2017-06-01T22:29:00Z` deze variabele respectievelijk.|
-| @trigger().startTime |Tijdstip waarop de trigger **daad werkelijk** is gestart om de pijplijn uitvoering aan te roepen. Voor een trigger die elke vijf minuten wordt geactiveerd, kan deze variabele bijvoorbeeld als volgt `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:29:00.9935483Z` worden `2017-06-01T22:25:00.7958577Z`geretourneerd. (Opmerking: De tijds tempel is standaard in ISO 8601-indeling)|
+| @trigger().scheduledTime |Tijdstip waarop de trigger is gepland voor het aanroepen van de pijplijn uitvoering. Bijvoorbeeld, voor een trigger die elke vijf minuten wordt geactiveerd, retourneert `2017-06-01T22:20:00Z` `2017-06-01T22:25:00Z` `2017-06-01T22:30:00Z` deze variabele respectievelijk.|
+| @trigger().startTime |Tijdstip waarop de trigger **daad werkelijk** is gestart om de pijplijn uitvoering aan te roepen. Voor een trigger die elke vijf minuten wordt geactiveerd, kan deze variabele bijvoorbeeld als volgt `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:30:00.9935483Z` worden `2017-06-01T22:25:00.7958577Z`geretourneerd. (Opmerking: De tijds tempel is standaard in ISO 8601-indeling)|
 
 ## <a name="tumbling-window-trigger-scope"></a>Tumblingvenstertriggers-venster trigger bereik
 Naar deze systeem variabelen kan overal in de JSON van de trigger worden verwezen als de trigger van het volgende type is: "TumblingWindowTrigger."

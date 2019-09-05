@@ -1,5 +1,5 @@
 ---
-title: Intentie, node. js-LUIS
+title: 'Quickstart: Intentie, node. js-LUIS'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart gebruikt u een beschikbare openbare LUIS-app om de intentie van een gebruiker te bepalen aan de hand van beschrijvende tekst. Gebruik Node.js om de intentie van de gebruiker als tekst naar het HTTP-voorspellingseindpunt van de openbare app te verzenden.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 084d717c1001604a7fb8ed60518777f956dec8b9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 78df1eb546d285b6b477a6dd53efa0d3dd9d7ce8
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563792"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375463"
 ---
 # <a name="quickstart-get-intent-using-nodejs"></a>Snelstart: Intentie ophalen met behulp van Node.js
 

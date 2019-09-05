@@ -1,6 +1,6 @@
 ---
-title: Een aangepaste roldefinitie maken in azure AD op rollen gebaseerd toegangs beheer-Azure Active Directory | Microsoft Docs
-description: Aangepaste Azure AD-rollen maken met een resource bereik op Azure Active Directory resources.
+title: Een aangepaste rol maken en toewijzen in azure AD-op rollen gebaseerd toegangs beheer-Azure Active Directory | Microsoft Docs
+description: Aangepaste Azure AD-rollen maken en toewijzen met resource bereik op Azure Active Directory resources.
 services: active-directory
 author: curtand
 manager: mtillman
@@ -8,25 +8,25 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 09/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1166839608c709db9aa052d6d0db5221fa15354
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f008cdf80e15e2737fea19f72ec6703932cf301f
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880754"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382808"
 ---
-# <a name="create-a-custom-role-and-assign-at-resource-scope-in-azure-active-directory"></a>Een aangepaste rol maken en toewijzen aan een resource bereik in Azure Active Directory
+# <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Een aangepaste rol maken en toewijzen in Azure Active Directory
 
-In dit artikel wordt beschreven hoe u nieuwe aangepaste rollen maakt in Azure Active Directory (Azure AD). U kunt aangepaste rollen maken op het tabblad [rollen en beheerders](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) op de overzichts pagina van Azure AD. De rol kan alleen worden toegewezen op het bereik van de directory-niveau of een bron bereik voor app-registratie.
+In dit artikel wordt beschreven hoe u nieuwe aangepaste rollen maakt in Azure Active Directory (Azure AD). Zie [overzicht van aangepaste functies](roles-custom-overview.md)voor de basis beginselen van aangepaste rollen. De rol kan alleen worden toegewezen op het bereik van de directory-niveau of een bron bereik voor app-registratie.
 
-Zie [overzicht van aangepaste functies](roles-custom-overview.md) voor de basis principes van aangepaste rollen voor meer informatie.
+U kunt aangepaste rollen maken op het tabblad [rollen en beheerders](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) op de overzichts pagina van Azure AD.
 
-## <a name="using-the-azure-ad-portal"></a>De Azure AD-Portal gebruiken
+## <a name="create-a-role-in-the-azure-portal"></a>Een rol maken in de Azure Portal
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Een nieuwe aangepaste rol maken voor het verlenen van toegang voor het beheren van app-registraties
 
@@ -39,7 +39,7 @@ Zie [overzicht van aangepaste functies](roles-custom-overview.md) voor de basis 
 
    ![Geef een naam en beschrijving op voor een aangepaste rol op het tabblad basis beginselen](./media/roles-create-custom/basics-tab.png)
 
-1. Selecteer op het tabblad **machtigingen** de machtigingen die nodig zijn voor het beheren van basis eigenschappen en referentie-eigenschappen van app-registraties. Zie subtypen voor [toepassings registratie en machtigingen in azure Active Directory](./roles-custom-available-permissions.md)voor een gedetailleerde beschrijving van elke machtiging.
+1. Selecteer op het tabblad **machtigingen** de machtigingen die nodig zijn voor het beheren van basis eigenschappen en referentie-eigenschappen van app-registraties. Zie [subtypen voor toepassings registratie en machtigingen in azure Active Directory](./roles-custom-available-permissions.md)voor een gedetailleerde beschrijving van elke machtiging.
    1. Voer eerst "referenties" in de zoek balk in en selecteer de `microsoft.directory/applications/credentials/update` machtiging.
 
       ![De machtigingen voor een aangepaste rol selecteren op het tabblad Machtigingen](./media/roles-create-custom/permissions-tab.png)
@@ -49,22 +49,7 @@ Zie [overzicht van aangepaste functies](roles-custom-overview.md) voor de basis 
 
 Uw aangepaste rol wordt weer gegeven in de lijst met beschik bare rollen die moeten worden toegewezen.
 
-## <a name="assign-a-role-scoped-to-a-resource"></a>Een rollen bereik toewijzen aan een resource
-
-Net als ingebouwde rollen kunnen aangepaste rollen worden toegewezen in het bereik van de hele organisatie om toegang te verlenen tot alle app-registraties. Maar aangepaste rollen kunnen ook worden toegewezen bij een resource bereik. Zo kunt u de toegewezen gebruiker de machtiging geven om referenties en basis eigenschappen van één app bij te werken zonder dat u een tweede aangepaste rol hoeft te maken.
-
-1. Als dat nog niet het geval is, meldt u zich aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met toepassings ontwikkelaars machtigingen in de Azure AD-organisatie.
-1. Selecteer **App-registraties**.
-1. Selecteer de app-registratie waaraan u toegang wilt verlenen. Mogelijk moet u **alle toepassingen** selecteren om de volledige lijst van app-registraties in uw Azure AD-organisatie weer te geven.
-
-    ![Selecteer de app-registratie als een resource bereik voor een roltoewijzing](./media/roles-create-custom/appreg-all-apps.png)
-
-1. Selecteer in de app-registratie **rollen en beheerders**. Als u er nog geen hebt gemaakt, vindt u de instructies in de [voor gaande procedure](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations).
-
-1. Selecteer de rol voor het openen van de pagina **toewijzingen** .
-1. Selecteer **toewijzing toevoegen** om een gebruiker toe te voegen. De gebruiker krijgt geen machtigingen voor een andere app-registratie dan het geselecteerde abonnement.
-
-## <a name="create-a-custom-role-using-azure-ad-powershell"></a>Een aangepaste rol maken met behulp van Azure AD Power shell
+## <a name="create-a-role-using-powershell"></a>Een rol maken met Power shell
 
 ### <a name="prepare-powershell"></a>Power shell voorbereiden
 
@@ -125,7 +110,7 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-## <a name="create-a-custom-role-using-microsoft-graph-api"></a>Een aangepaste rol maken met behulp van Microsoft Graph-API
+## <a name="create-a-role-with-graph-api"></a>Een rol maken met Graph API
 
 1. De roldefinitie maken.
 
@@ -175,6 +160,21 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
        "resourceScope":"/<GUID OF APPLICATION REGISTRATION>"
    }
     ```
+
+## <a name="assign-a-custom-role-scoped-to-a-resource"></a>Een aangepast rollen bereik toewijzen aan een resource
+
+Net als ingebouwde rollen worden aangepaste rollen standaard toegewezen op basis van het standaard organisatie bereik om toegangs machtigingen te verlenen voor alle app-registraties in uw organisatie. Maar in tegens telling tot ingebouwde rollen kunnen aangepaste rollen ook worden toegewezen in het bereik van één Azure AD-resource. Hierdoor kunt u de gebruiker toestemming geven om referenties en basis eigenschappen van één app bij te werken zonder dat u een tweede aangepaste rol hoeft te maken.
+
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met toepassings ontwikkelaars machtigingen in de Azure AD-organisatie.
+1. Selecteer **App-registraties**.
+1. Selecteer de app-registratie waaraan u toegang wilt verlenen. Mogelijk moet u **alle toepassingen** selecteren om de volledige lijst van app-registraties in uw Azure AD-organisatie weer te geven.
+
+    ![Selecteer de app-registratie als een resource bereik voor een roltoewijzing](./media/roles-create-custom/appreg-all-apps.png)
+
+1. Selecteer in de app-registratie **rollen en beheerders**. Als u er nog geen hebt gemaakt, vindt u de instructies in de [voor gaande procedure](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations).
+
+1. Selecteer de rol voor het openen van de pagina **toewijzingen** .
+1. Selecteer **toewijzing toevoegen** om een gebruiker toe te voegen. Aan de gebruiker worden alleen machtigingen verleend via de geselecteerde app-registratie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: zarhoads
-ms.openlocfilehash: 27d557ab12093223450fd7bc1b88c68e1f156947
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: bc74ac660c5bba0624416d0a1724d959a4c385a7
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135509"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305279"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Toepassingen installeren met helm in azure Kubernetes service (AKS)
 
@@ -70,10 +70,12 @@ Met een Kubernetes-cluster met RBAC kunt u het niveau van de toegangs Tiller beh
 
 ## <a name="configure-helm"></a>Helm configureren
 
-Als u een Basic-Tiller in een AKS-cluster wilt implementeren, gebruikt u de opdracht [helm init][helm-init] . Als op uw cluster geen RBAC is ingeschakeld, verwijdert `--service-account` u het argument en de waarde. Als u TLS/SSL hebt geconfigureerd voor Tiller en helm, kunt u deze eenvoudige initialisatie stap overs Laan en `--tiller-tls-` in plaats daarvan de vereiste opgeven, zoals wordt weer gegeven in het volgende voor beeld.
+Als u een Basic-Tiller in een AKS-cluster wilt implementeren, gebruikt u de opdracht [helm init][helm-init] . Als op uw cluster geen RBAC is ingeschakeld, verwijdert `--service-account` u het argument en de waarde. In de volgende voor beelden wordt ook de [geschiedenis ingesteld: Maxi maal][helm-history-max] 200.
+
+Als u TLS/SSL hebt geconfigureerd voor Tiller en helm, kunt u deze eenvoudige initialisatie stap overs Laan en `--tiller-tls-` in plaats daarvan de vereiste opgeven, zoals wordt weer gegeven in het volgende voor beeld.
 
 ```console
-helm init --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
+helm init --history-max 200 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
 Als u TLS/SSL hebt geconfigureerd tussen helm en Tiller, `--tiller-tls-*` geeft u de para meters en namen van uw eigen certificaten op, zoals wordt weer gegeven in het volgende voor beeld:
@@ -85,8 +87,9 @@ helm init \
     --tiller-tls-key tiller.key.pem \
     --tiller-tls-verify \
     --tls-ca-cert ca.cert.pem \
+    --history-max 200 \
     --service-account tiller \
-    --node-selectors "beta.kubernetes.io/os"="linux"
+    --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
 ## <a name="find-helm-charts"></a>Helm-grafieken zoeken
@@ -140,7 +143,7 @@ $ helm repo update
 Hold tight while we grab the latest from your chart repositories...
 ...Skip local chart repository
 ...Successfully got an update from the "stable" chart repository
-Update Complete. ⎈ Happy Helming!⎈
+Update Complete.
 ```
 
 ## <a name="run-helm-charts"></a>Helm-grafieken uitvoeren
@@ -217,6 +220,7 @@ Zie de helm-documentatie voor meer informatie over het beheren van Kubernetes-to
 [helm-install]: https://docs.helm.sh/using_helm/#installing-helm
 [helm-install-options]: https://github.com/kubernetes/helm/blob/master/docs/install.md
 [helm-list]: https://docs.helm.sh/helm/#helm-list
+[helm-history-max]: https://helm.sh/docs/using_helm/#initialize-helm-and-install-tiller
 [helm-rbac]: https://docs.helm.sh/using_helm/#role-based-access-control
 [helm-repo-update]: https://docs.helm.sh/helm/#helm-repo-update
 [helm-search]: https://docs.helm.sh/helm/#helm-search

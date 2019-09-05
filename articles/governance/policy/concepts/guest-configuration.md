@@ -3,23 +3,26 @@ title: Meer informatie over het controleren van de inhoud van een machine
 description: Meer informatie over hoe Azure Policy gast configuratie gebruikt voor het controleren van instellingen binnen een Azure-machine.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/18/2019
+ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 06a767af71f457273e0e20d1248d64c22b3563e7
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: bfa7f7486a9fa5ef62e8bf9e01dbe39d675d8d27
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274953"
+ms.locfileid: "70308560"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informatie over Azure Policy Gast-configuratie
 
-Naast het controleren en [herstellen](../how-to/remediate-resources.md) van Azure-resources, kunnen Azure Policy instellingen in een machine controleren. De validatie wordt uitgevoerd door de configuratie van de Gast-extensie en de client. De extensie, via de client, valideert instellingen zoals de configuratie van het besturingssysteem, Toepassingsconfiguratie of aanwezigheid en omgevingsinstellingen.
+Om Azure-resources te controleren en te [herstellen](../how-to/remediate-resources.md) , kunnen Azure Policy instellingen in een machine controleren. De validatie wordt uitgevoerd door de configuratie van de Gast-extensie en de client. De uitbrei ding, via de client, valideert instellingen zoals:
 
-Op dit moment voert Azure Policy-gast configuratie alleen een controle van de instellingen in de computer uit.
-Het is nog niet mogelijk om configuraties toe te passen.
+- De configuratie van het besturings systeem
+- Toepassings configuratie of-aanwezigheid
+- Omgevingsinstellingen
+
+Op dit moment Azure Policy de gast configuratie alleen de controle-instellingen binnen de computer. Configuraties worden niet toegepast.
 
 ## <a name="extension-and-client"></a>Extensie en client
 
@@ -27,8 +30,7 @@ Voor het controleren van instellingen binnen een machine is de extensie van de [
 
 ### <a name="limits-set-on-the-extension"></a>Limieten die zijn ingesteld voor de uitbrei ding
 
-De gast configuratie mag niet meer dan 5% van het CPU-gebruik overschrijden om de uitbrei ding te beperken van impact toepassingen die worden uitgevoerd op de computer.
-Dit geldt zowel voor configuraties die door micro soft zijn gegeven als ' ingebouwd ' en voor aangepaste configuraties die door klanten zijn gemaakt.
+Als u de uitbrei ding wilt beperken voor toepassingen die worden uitgevoerd op de computer, mag de gast configuratie niet meer dan 5% van het CPU-gebruik overschrijden. Deze beperking bestaat voor zowel ingebouwde als aangepaste definities.
 
 ## <a name="register-guest-configuration-resource-provider"></a>Configuratie van de Gast-resourceprovider registreren
 
@@ -68,7 +70,7 @@ De volgende tabel bevat een overzicht van de lokale hulpprogramma's die op elk o
 
 ### <a name="validation-frequency"></a>Validatie frequentie
 
-De gast configuratie client controleert elke vijf minuten op nieuwe inhoud. Zodra een gast toewijzing is ontvangen, worden de instellingen gecontroleerd met een interval van 15 minuten. Er worden resultaten verzonden naar de provider van de gast configuratie resource zodra de controle is voltooid. Wanneer er een beleids [evaluatie](../how-to/get-compliance-data.md#evaluation-triggers) wordt uitgevoerd, wordt de status van de machine naar de provider van de gast configuratie genoteerd. Dit zorgt ervoor Azure Policy de Azure Resource Manager eigenschappen te evalueren. Een Azure Policy evaluatie op aanvraag haalt de meest recente waarde op van de provider van de gast configuratie resource. Er wordt echter geen nieuwe controle van de configuratie op de computer geactiveerd.
+De gast configuratie client controleert elke vijf minuten op nieuwe inhoud. Zodra een gast toewijzing is ontvangen, worden de instellingen gecontroleerd met een interval van 15 minuten. Er worden resultaten verzonden naar de provider van de gast configuratie resource zodra de controle is voltooid. Wanneer er een beleids [evaluatie](../how-to/get-compliance-data.md#evaluation-triggers) wordt uitgevoerd, wordt de status van de machine naar de provider van de gast configuratie genoteerd. Deze update zorgt ervoor Azure Policy de Azure Resource Manager eigenschappen te evalueren. Een Azure Policy evaluatie op aanvraag haalt de meest recente waarde op van de provider van de gast configuratie resource. Er wordt echter geen nieuwe controle van de configuratie op de computer geactiveerd.
 
 ## <a name="supported-client-types"></a>Ondersteunde client-typen
 
@@ -93,7 +95,7 @@ Windows Server nano server wordt niet ondersteund in een versie.
 
 ## <a name="guest-configuration-extension-network-requirements"></a>Netwerk vereisten gast configuratie uitbreiding
 
-Voor de communicatie met de provider van de gast configuratie resource in azure, hebben computers uitgaande toegang tot Azure-data centers op poort **443**. Als u een particulier virtueel netwerk in azure gebruikt en uitgaand verkeer niet toestaat, moeten uitzonde ringen worden geconfigureerd met regels voor [netwerk beveiligings groepen](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) . Op dit moment bestaat er geen servicetag voor Azure Policy-gast configuratie.
+Voor de communicatie met de provider van de gast configuratie resource in azure, hebben computers uitgaande toegang tot Azure-data centers op poort **443**. Als u een particulier virtueel netwerk in azure gebruikt dat geen uitgaand verkeer toestaat, moet u uitzonde ringen configureren met de regels voor de [netwerk beveiligings groep](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) . Er bestaat momenteel geen servicetag voor Azure Policy-gast configuratie.
 
 Voor IP-adres lijsten kunt u de [IP-adresbereiken van Microsoft Azure Data Center](https://www.microsoft.com/download/details.aspx?id=41653)downloaden. Dit bestand wordt wekelijks bijgewerkt en heeft de huidige geïmplementeerde bereiken en eventuele toekomstige wijzigingen in de IP-bereiken. U hoeft alleen uitgaande toegang toe te staan voor de IP-adressen in de regio's waar uw Vm's worden geïmplementeerd.
 
@@ -113,16 +115,14 @@ De **DeployIfNotExists** beleidsdefinitie valideert en corrigeert de volgende it
 
 Als de **DeployIfNotExists** -toewijzing niet compatibel is, kan een [herstel taak](../how-to/remediate-resources.md#create-a-remediation-task) worden gebruikt.
 
-Zodra de **DeployIfNotExists** -toewijzing compatibel is, gebruikt de **AuditIfNotExists** -beleids toewijzing de lokale validatie hulpprogramma's om te bepalen of de configuratie toewijzing compatibel of niet-compatibel is.
-Het hulpprogramma voor het valideren biedt de resultaten naar de configuratie van de Gast-client. De client verzendt de resultaten naar de Gast-extensie, waardoor ze beschikbaar zijn via de configuratie van de Gast-resourceprovider.
+Zodra de **DeployIfNotExists** -toewijzing compatibel is, gebruikt de **AuditIfNotExists** -beleids toewijzing de lokale validatie hulpprogramma's om te bepalen of de configuratie toewijzing compatibel of niet-compatibel is. Het hulpprogramma voor het valideren biedt de resultaten naar de configuratie van de Gast-client. De client verzendt de resultaten naar de Gast-extensie, waardoor ze beschikbaar zijn via de configuratie van de Gast-resourceprovider.
 
 Azure Policy maakt gebruik van de configuratie van de Gast-resourceproviders **complianceStatus** eigenschap voor rapport naleving in de **naleving** knooppunt. Zie voor meer informatie, [ophalen van Nalevingsgegevens](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
-> Het **DeployIfNotExists** -beleid is vereist voor het **AuditIfNotExists** -beleid om resultaten te retour neren.
-> Zonder de **DeployIfNotExists**wordt met het **AuditIfNotExists** -beleid ' 0 van 0 ' resources weer gegeven als status.
+> Het **DeployIfNotExists** -beleid is vereist voor het **AuditIfNotExists** -beleid om resultaten te retour neren. Zonder de **DeployIfNotExists**wordt met het **AuditIfNotExists** -beleid ' 0 van 0 ' resources weer gegeven als status.
 
-Alle ingebouwde beleidsregels voor de configuratie van de Gast zijn opgenomen in een initiatief aan groep de definities voor gebruik in toewijzingen. Het ingebouwde initiatief met de naam *[Preview]: Instellingen voor wachtwoord beveiliging controleren binnen Linux-en* Windows-machines bevat 18 beleids regels. Er zijn zes **DeployIfNotExists** en **AuditIfNotExists** paren voor Windows en drie sets voor Linux. In elk geval wordt de logica in de definitie van de alleen het doel valideert besturingssysteem wordt geëvalueerd op basis van de [beleidsregel](definition-structure.md#policy-rule) definitie.
+Alle ingebouwde beleidsregels voor de configuratie van de Gast zijn opgenomen in een initiatief aan groep de definities voor gebruik in toewijzingen. Het ingebouwde initiatief met de naam *[Preview]: Instellingen voor wachtwoord beveiliging controleren binnen Linux-en* Windows-machines bevat 18 beleids regels. Er zijn zes **DeployIfNotExists** en **AuditIfNotExists** paren voor Windows en drie sets voor Linux. De [beleids definitie](definition-structure.md#policy-rule) logica valideert dat alleen het doel besturingssysteem wordt geëvalueerd.
 
 ### <a name="multiple-assignments"></a>Meerdere toewijzingen
 
@@ -130,7 +130,7 @@ Gast configuratie beleid biedt momenteel alleen ondersteuning voor het toewijzen
 
 ## <a name="built-in-resource-modules"></a>Ingebouwde resource modules
 
-Wanneer de uitbrei ding gast configuratie is geïnstalleerd, wordt de Power shell-module ' GuestConfiguration ' opgenomen in de meest recente versie van DSC-resource modules. Deze module kan vanuit de PowerShell Gallery worden gedownload met behulp van de koppeling hand matig downloaden van de module pagina [GuestConfiguration/](https://www.powershellgallery.com/packages/GuestConfiguration/).
+Bij de installatie van de gast configuratie-uitbrei ding is de Power shell-module ' GuestConfiguration ' opgenomen in de meest recente versie van DSC-resource modules. Deze module kan vanuit de PowerShell Gallery worden gedownload met behulp van de koppeling hand matig downloaden van de module pagina [GuestConfiguration/](https://www.powershellgallery.com/packages/GuestConfiguration/).
 De bestands indeling '. nupkg ' kan worden gewijzigd in '. zip ' om deze te decomprimeren en te controleren.
 
 ## <a name="client-log-files"></a>Client logboek bestanden
@@ -145,11 +145,12 @@ Waar `<version>` verwijst naar het huidige versie nummer.
 
 ### <a name="collecting-logs-remotely"></a>Logboeken extern verzamelen
 
-De eerste stap bij het oplossen van problemen met configuratie van gast configuraties of modules `Test-GuestConfigurationPackage` moet de cmdlet gebruiken volgens de stappen in [een gast configuratie pakket testen](../how-to/guest-configuration-create.md#test-a-guest-configuration-package).  Als dat niet lukt, kan het verzamelen van client logboeken helpen bij het vaststellen van problemen.
+De eerste stap bij het oplossen van problemen met configuratie van gast configuraties of modules `Test-GuestConfigurationPackage` moet de cmdlet gebruiken volgens de stappen in [een gast configuratie pakket testen](../how-to/guest-configuration-create.md#test-a-guest-configuration-package).
+Als dat niet lukt, kan het verzamelen van client logboeken helpen bij het vaststellen van problemen.
 
 #### <a name="windows"></a>Windows
 
-Als u de Azure VM-opdracht uitvoeren wilt gebruiken om gegevens vast te leggen van logboek bestanden op Windows-computers, kan het volgende Power shell-voorbeeld script nuttig zijn. Zie [Power shell-scripts uitvoeren in uw Windows-VM met de opdracht uitvoeren](../../../virtual-machines/windows/run-command.md)voor meer informatie over het uitvoeren van het script vanuit Azure portal of het gebruik van Azure PowerShell.
+Het volgende voor beeld van een Power shell-script kan nuttig zijn als u de Azure VM-opdracht uitvoeren wilt gebruiken om gegevens op te nemen uit logboek bestanden op Windows-computers. Zie [Power shell-scripts uitvoeren in uw Windows-VM met de opdracht uitvoeren](../../../virtual-machines/windows/run-command.md)voor meer informatie.
 
 ```powershell
 $linesToIncludeBeforeMatch = 0
@@ -160,7 +161,7 @@ Select-String -Path "$latestVersion\dsc\logs\dsc.log" -pattern 'DSCEngine','DSCM
 
 #### <a name="linux"></a>Linux
 
-Als u de Azure VM-opdracht uitvoeren wilt gebruiken om informatie vast te leggen van logboek bestanden in Linux-machines, kan het volgende voor beeld bash-script nuttig zijn. Zie voor meer informatie over het uitvoeren van het script vanuit Azure portal of het gebruik van Azure CLI [shell scripts uitvoeren in uw Linux-VM met de opdracht uitvoeren](../../../virtual-machines/linux/run-command.md)
+Het volgende voor beeld van een bash-script kan nuttig zijn als u de Azure VM-opdracht Run Command wilt gebruiken om gegevens op te nemen uit logboek bestanden in Linux-machines. Zie [shell scripts uitvoeren in uw Linux-VM met de opdracht uitvoeren](../../../virtual-machines/linux/run-command.md) voor meer informatie.
 
 ```Bash
 linesToIncludeBeforeMatch=0

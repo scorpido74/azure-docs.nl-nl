@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 1a799823a71fcbc4aebf4b869a3fd0dd9fc66de1
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: 8a9366005ceef5a99fd66f0ec0cd53c98b481ee1
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907859"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309322"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>Over het maken en beheren lezen-replica's in Azure Database for MySQL met behulp van de Azure CLI
 
 In dit artikel leert u hoe u kunt maken en beheren van meer replica's binnen dezelfde Azure-regio als het model in de Azure Database for MySQL-service met de Azure CLI.
-
-> [!IMPORTANT]
-> U kunt een lees replica maken in dezelfde regio als uw hoofd server of in andere Azure-regio's van uw keuze. Replicatie tussen regio's is momenteel beschikbaar als open bare preview.
 
 ## <a name="prerequisites"></a>Vereisten
 

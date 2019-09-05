@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 08/25/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 34978d552b2a5002906b65c06e0c8ad76f58761b
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1704b62cae6375d376fc43fb7a2940cd9c717072
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258162"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382511"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Snelstartgids: Een vooraf gemaakte app voor huisautomatisering gebruiken
 
@@ -65,7 +65,7 @@ Selecteer **Intents** in het navigatiedeelvenster aan de linkerkant om de intent
 
 Selecteer de intentie **HomeAutomation.TurnOff**. U kunt zien dat de intentie een lijst met utterances bevat die zijn gelabeld met entiteiten.
 
-[![Schermafbeelding van de intentie HomeAutomation.TurnOff bedoeling](media/luis-quickstart-new-app/home-automation-turnon.png "Schermafbeelding van de intentie HomeAutomation.TurnOff")](media/luis-quickstart-new-app/home-automation-turnon.png)
+[![Schermafbeelding van de intentie HomeAutomation.TurnOff bedoeling](media/luis-quickstart-new-app/home-automation-turnoff.png "Schermafbeelding van de intentie HomeAutomation.TurnOff")](media/luis-quickstart-new-app/home-automation-turnoff.png)
 
 ## <a name="train-the-luis-app"></a>LUIS-app trainen
 
@@ -80,10 +80,14 @@ Turn off the lights
 
 Controleer of de best scorende intentie overeenkomt met de intentie die u verwachtte voor elke test-utterance.
 
-In dit voorbeeld wordt 'Turn off the lights' correct geïdentificeerd als de best scorende intentie van 'HomeAutomation.TurnOff'.
+In dit voor beeld `Turn off the lights` is het goed geïdentificeerd als de bovenste Score intentie van **HomeAutomation. TurnOff**.
 
 [![Schermafbeelding van het testdeelvenster met een utterance gemarkeerd](media/luis-quickstart-new-app/test.png "Schermafbeelding van het testdeelvenster met een utterance gemarkeerd")](media/luis-quickstart-new-app/test.png)
 
+
+Selecteer **controleren** om meer informatie over de voor spelling te bekijken.
+
+![Scherm opname van het test paneel met utterance gemarkeerd](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
 Selecteer **Test** nogmaals om het deelvenster samen te vouwen. 
 
@@ -93,14 +97,134 @@ Selecteer **Test** nogmaals om het deelvenster samen te vouwen.
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>Eindpunt opvragen met een andere utterance
+## <a name="query-the-v2-api-prediction-endpoint"></a>Een query uitvoeren op het v2 API-Voorspellings eindpunt
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-2. Ga naar het einde van de URL in het adres, voer `turn off the living room light` in en druk op Enter. Het JSON-antwoord van uw HTTP-eindpunt wordt weergegeven in de browser.
+1. Ga naar het einde van de URL in het adres, voer `turn off the living room light` in en druk op Enter. In de browser wordt de **v2 API** -versie van het JSON-antwoord van uw http-eind punt weer gegeven.
 
-    [![Schermafbeelding van browser met JSON-resultaat: de intentie TurnOff is gedetecteerd](media/luis-quickstart-new-app/turn-off-living-room.png "Schermafbeelding van browser met JSON-resultaat: de intentie TurnOff is gedetecteerd")](media/luis-quickstart-new-app/turn-off-living-room.png)
+    ```json
+    {
+      "query": "turn off the living room light",
+      "topScoringIntent": {
+        "intent": "HomeAutomation.TurnOff",
+        "score": 0.9753089
+      },
+      "intents": [
+        {
+          "intent": "HomeAutomation.TurnOff",
+          "score": 0.9753089
+        },
+        {
+          "intent": "HomeAutomation.QueryState",
+          "score": 0.01027893
+        },
+        {
+          "intent": "HomeAutomation.TurnUp",
+          "score": 0.006881481
+        },
+        {
+          "intent": "HomeAutomation.SetDevice",
+          "score": 0.006786365
+        },
+        {
+          "intent": "HomeAutomation.TurnDown",
+          "score": 0.005145787
+        },
+        {
+          "intent": "HomeAutomation.TurnOn",
+          "score": 0.004114749
+        },
+        {
+          "intent": "None",
+          "score": 0.000598924
+        }
+      ],
+      "entities": [
+        {
+          "entity": "living room",
+          "type": "HomeAutomation.Location",
+          "startIndex": 13,
+          "endIndex": 23,
+          "score": 0.94558233
+        },
+        {
+          "entity": "living room light",
+          "type": "HomeAutomation.DeviceName",
+          "startIndex": 13,
+          "endIndex": 29,
+          "resolution": {
+            "values": [
+              "living room light"
+            ]
+          }
+        },
+        {
+          "entity": "light",
+          "type": "HomeAutomation.DeviceType",
+          "startIndex": 25,
+          "endIndex": 29,
+          "resolution": {
+            "values": [
+              "light"
+            ]
+          }
+        }
+      ]
+    }
+    ```
     
+## <a name="query-the-v3-api-prediction-endpoint"></a>Een query uitvoeren op het prediction-eind punt van de V3 API
+
+Voor een [v3 API-query](luis-migration-api-v3.md)wijzigt u in de browser de HTTPS-aanvraag van de methode Get, waarbij u de waarden van punt haken wijzigt voor uw eigen waarden. 
+
+**V2 URL met de methode Get**:
+
+https://\<Region >. API. cognitieve. Microsoft. com/Luis/**v 2.0**/apps/\<appID >? verbose = True & Subscription-Key =\<YOUR_KEY > &**q =\<gebruiker-utterance-text >**
+
+**V3 URL met de methode Get**:
+
+https://\<Region >. API. cognitieve. micro soft. com/Luis/**v 3.0-Preview**/apps/\<appID > **/sleuven**/**productie**/voor**speld**? uitgebreid = waar & abonnement-Key =\<YOUR_KEY > &**query =\<utterance-tekst >**
+
+In de browser wordt de **v3 API** -versie van het JSON-antwoord van uw http-eind punt weer gegeven.
+
+```json
+{
+    "query": "turn off the lights",
+    "prediction": {
+        "normalizedQuery": "turn off the lights",
+        "topIntent": "HomeAutomation.TurnOff",
+        "intents": {
+            "HomeAutomation.TurnOff": {
+                "score": 0.99649024
+            }
+        },
+        "entities": {
+            "HomeAutomation.DeviceType": [
+                [
+                    "light"
+                ]
+            ],
+            "$instance": {
+                "HomeAutomation.DeviceType": [
+                    {
+                        "type": "HomeAutomation.DeviceType",
+                        "text": "lights",
+                        "startIndex": 13,
+                        "length": 6,
+                        "modelTypeId": 5,
+                        "modelType": "List Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]

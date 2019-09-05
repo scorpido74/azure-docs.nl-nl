@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 09/04/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 458808f9d2c496ae4c29b05bd8a3531b94ba78c0
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9d4822d07a95fcdec32c0c4146562884302fa4f8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422683"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308322"
 ---
 # <a name="expressroute-routing-requirements"></a>Routeringsvereisten voor ExpressRoute
 Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-services, moet u routering instellen en beheren. Sommige connectiviteitsproviders bieden het instellen en beheren van routering aan als een beheerde service. Neem contact op met uw connectiviteitsprovider om na te gaan of ze deze service leveren. Als dat niet het geval is, moet u voldoen aan de volgende vereisten:
@@ -211,7 +211,7 @@ Alle routes die worden geadverteerd vanuit Microsoft, worden gemarkeerd met de j
 > 
 
 ### <a name="service-to-bgp-community-value"></a>Waarde van service naar BGP-Community
-Daarnaast worden voorvoegsels door Microsoft gemarkeerd op basis van de service waartoe ze behoren. Dit geldt alleen voor de Microsoft-peering. De volgende tabel bevat een toewijzing van services aan BGP-communitywaarden.
+Daarnaast worden voorvoegsels door Microsoft gemarkeerd op basis van de service waartoe ze behoren. Dit geldt alleen voor de Microsoft-peering. De volgende tabel bevat een toewijzing van services aan BGP-communitywaarden. U kunt de cmdlet ' Get-AzBgpServiceCommunity ' uitvoeren voor een volledige lijst met de meest recente waarden.
 
 | **Service** | **BGP-communitywaarde** |
 | --- | --- |

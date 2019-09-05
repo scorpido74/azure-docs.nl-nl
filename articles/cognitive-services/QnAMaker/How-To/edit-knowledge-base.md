@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1342616a0d32d8ac68965bc04f1fd3ca60146369
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 1450d6b41d9a193f8069509aacd3343ae646c6ac
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966773"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307025"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>Een kennisdatabase in QnA Maker bewerken
 
@@ -54,7 +54,7 @@ QnA Maker kunt u de inhoud van uw knowledge base beheren door op te geven van ee
 
 ## <a name="add-a-qna-pair"></a>Een QnA-set toevoegen
 
-Selecteer op de pagina **instellingen** de optie **QnA paar toevoegen** om een nieuwe rij toe te voegen aan de Knowledge Base-tabel.
+Selecteer op de pagina **bewerken** de optie **QnA paar toevoegen** om een nieuwe rij toe te voegen aan de Knowledge Base-tabel.
 
 ![QnA paar toevoegen](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 

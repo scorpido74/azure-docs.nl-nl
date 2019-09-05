@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: c84d457c51f71bdf315bbbcec674ff1186dd905f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: d914c020553bace7ea5ab8898ac4093fea30e6c9
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249020"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306995"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Waarschuwingen instellen voor diagnostische logboek gebeurtenissen van VPN Gateway
 
@@ -70,12 +70,17 @@ Met de volgende voorbeeld stappen wordt een waarschuwing gemaakt voor een verbin
 
    ![Selecties voor een aangepaste zoek opdracht in Logboeken](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Selecteer")
 
-10. Voer in het tekstvak **Zoekquery** te volgende query in. Vervang de waarden in < > naar wens.
+10. Voer in het tekstvak **Zoekquery** te volgende query in. Vervang de waarden in < > en TimeGenerated naar wens.
 
     ```
-    AzureDiagnostics |
-      where Category  == "TunnelDiagnosticLog" and ResourceId == toupper("<RESOURCEID OF GATEWAY>") and TimeGenerated > ago(5m) and
-      remoteIP_s == "<REMOTE IP OF TUNNEL>" and status_s == "Disconnected"
+    AzureDiagnostics
+    | where Category == "TunnelDiagnosticLog"
+    | where _ResourceId == tolower("<RESOURCEID OF GATEWAY>")
+    | where TimeGenerated > ago(5m) 
+    | where remoteIP_s == "<REMOTE IP OF TUNNEL>"
+    | where status_s == "Disconnected"
+    | project TimeGenerated, OperationName, instance_s, Resource, ResourceGroup, _ResourceId 
+    | sort by TimeGenerated asc
     ```
 
     Stel de drempel waarde in op 0 en selecteer **gereed**.

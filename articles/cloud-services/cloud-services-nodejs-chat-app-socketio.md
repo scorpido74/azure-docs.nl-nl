@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: gwallace
-ms.openlocfilehash: 251fd8ec3708ed154e12b0511be24eb776a48fbf
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: bbeaacd4c7028905e279dd5dc421414f4eafae54
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359073"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306763"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Een node. js-Chat toepassing maken met Socket.IO in een Azure-Cloud service
 
@@ -69,7 +69,7 @@ Voor dit project gebruiken we het voor beeld van chat uit de [socket.io github-o
 Voordat u de toepassing in de Azure-emulator test, moeten we enkele kleine wijzigingen aanbrengen. Voer de volgende stappen uit in het bestand server. js:
 
 1. Open het bestand **server. js** in Visual Studio of een tekst editor.
-2. Zoek de sectie **module** -afhankelijkheden aan het begin van server. js en wijzig de regel met **sio = vereist ('.. //.. lib//socket. io ')** op **sio = vereist (' socket. io ')** , zoals hieronder wordt weer gegeven:
+2. Zoek de sectie **module-afhankelijkheden** aan het begin van server. js en wijzig de regel met **sio = vereist ('.. //.. lib//socket. io ')** op **sio = vereist (' socket. io ')** , zoals hieronder wordt weer gegeven:
    
        var express = require('express')
          , stylus = require('stylus')
@@ -144,7 +144,7 @@ Uw toepassing wordt nu uitgevoerd op Azure en kan Chat berichten tussen verschil
 ## <a name="next-steps"></a>Volgende stappen
 In deze zelf studie hebt u geleerd hoe u een eenvoudige Chat toepassing maakt die wordt gehost in een Azure-Cloud service. Zie [een node. js-Chat toepassing bouwen met socket.io op een Azure][chatwebsite]-website voor meer informatie over het hosten van deze toepassing in een Azure-website.
 
-Zie ook het [node. js Developer Center](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest)voor meer informatie.
+Zie ook het [node. js Developer Center](https://docs.microsoft.com/azure/javascript/)voor meer informatie.
 
 [chatwebsite]: https://docs.microsoft.com/azure/cloud-services/cloud-services-nodejs-develop-deploy-app
 

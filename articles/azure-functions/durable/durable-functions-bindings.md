@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: fbd645ef9f5e687e71ce110fc84b8342e31defed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fbee98d64d37b2cdfc515eb733324902e238a768
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087538"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383112"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Bindingen voor Durable Functions (Azure Functions)
 
@@ -51,7 +51,7 @@ Hier volgen enkele opmerkingen over de Orchestration-trigger:
 * **Retour waarden** : retour waarden worden GESERIALISEERD in JSON en persistent gemaakt in de Orchestration-geschiedenis tabel in azure Table Storage. Deze retour waarden kunnen worden opgevraagd door de Orchestrator-client binding, die later wordt beschreven.
 
 > [!WARNING]
-> Orchestrator-functies mogen nooit alle invoer-of uitvoer bindingen gebruiken, behalve de Orchestration-trigger binding. Als u dit doet, is het mogelijk om problemen met de extensie duurzame taak te veroorzaken, omdat deze bindingen de enkelvoudige threading en I/O-regels niet kunnen navolgen.
+> Orchestrator-functies mogen nooit alle invoer-of uitvoer bindingen gebruiken, behalve de Orchestration-trigger binding. Als u dit doet, is het mogelijk om problemen met de extensie duurzame taak te veroorzaken, omdat deze bindingen de enkelvoudige threading en I/O-regels niet kunnen navolgen. Als u andere bindingen wilt gebruiken, voegt u deze toe aan een activiteit functie die wordt aangeroepen vanuit uw Orchestrator-functie.
 
 > [!WARNING]
 > Java script Orchestrator-functies mogen nooit worden `async`gedeclareerd.
@@ -240,6 +240,35 @@ public static async Task<dynamic> Mapper([ActivityTrigger] DurableActivityContex
         }
     };
 }
+```
+
+### <a name="using-input-and-output-bindings"></a>Invoer-en uitvoer bindingen gebruiken
+
+U kunt normale invoer-en uitvoer bindingen gebruiken naast de trigger voor het activeren van de activiteit. U kunt bijvoorbeeld de invoer naar uw activiteit binden en een bericht naar een EventHub verzenden met behulp van de EventHub-uitvoer binding:
+
+```json
+{
+  "bindings": [
+    {
+      "name": "message",
+      "type": "activityTrigger",
+      "direction": "in"
+    },
+    {
+      "type": "eventHub",
+      "name": "outputEventHubMessage",
+      "connection": "EventhubConnectionSetting",
+      "eventHubName": "eh_messages",
+      "direction": "out"
+  }
+  ]
+}
+```
+
+```javascript
+module.exports = async function (context) {
+    context.bindings.outputEventHubMessage = context.bindings.message;
+};
 ```
 
 ## <a name="orchestration-client"></a>Orchestration-client

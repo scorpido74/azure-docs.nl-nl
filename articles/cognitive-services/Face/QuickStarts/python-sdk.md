@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: d3128144a06f4faa46d18650c3dd2c21f72afc1c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 2a74dbe9c306c1bf2420fdaac78a9b9183cacab1
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164789"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376141"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Quickstart: Face client-bibliotheek voor python
 
@@ -26,6 +26,7 @@ Gebruik de face client-bibliotheek voor python voor het volgende:
 * Vergelijkbare gezichten zoeken
 * Een persoons groep maken en trainen
 * Een gezicht identificeren
+* Gezichten verifiëren
 * Een moment opname maken voor gegevens migratie
 
 [](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | PiPy-voor[beelden](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0) ([Source code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [package)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | voor referentie documentatie
@@ -77,7 +78,7 @@ De volgende klassen en interfaces verwerken enkele van de belangrijkste functies
 |[FaceOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Deze klasse verwerkt de basis taken voor detectie en herkenning die u met menselijke gezichten kunt uitvoeren. |
 |[DetectedFace](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.models.detectedface?view=azure-python)|Deze klasse vertegenwoordigt alle gegevens die zijn gedetecteerd van één gezicht in een afbeelding. U kunt deze gebruiken om gedetailleerde informatie over het gezicht op te halen.|
 |[FaceListOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.facelistoperations?view=azure-python)|Deze klasse beheert de in de cloud opgeslagen **FaceList** -constructies, waarin een geassorteerde set gezichten wordt opgeslagen. |
-|[PersonGroupPersonOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations?view=azure-python)| Deze klasse beheert de door de Cloud opgeslagen persoons constructies, waarin een set gezichten wordt opgeslagen die deel uitmaakt van één persoon.|
+|[PersonGroupPersonOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations?view=azure-python)| Deze klasse beheert de door de cloud opgeslagen **persoons** constructies, waarin een set gezichten wordt opgeslagen die deel uitmaakt van één persoon.|
 |[PersonGroupOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongroupoperations?view=azure-python)| Deze klasse beheert de in de cloud opgeslagen **PersonGroup** -constructies, die een set geassorteerde **persoons** objecten opslaan. |
 |[ShapshotOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.snapshotoperations?view=azure-python)|Deze klasse beheert de functionaliteit van de moment opname. u kunt deze gebruiken om al uw op de cloud gebaseerde gezichts gegevens tijdelijk op te slaan en deze gegevens te migreren naar een nieuw Azure-abonnement. |
 
@@ -90,6 +91,7 @@ Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de fa
 * [Vergelijk bare gezichten zoeken](#find-similar-faces)
 * [Een persoons groep maken en trainen](#create-and-train-a-person-group)
 * [Een gezicht identificeren](#identify-a-face)
+* [Gezichten verifiëren](#verify-faces)
 * [Een moment opname maken voor gegevens migratie](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
@@ -108,6 +110,14 @@ Met de volgende code wordt een gezicht gedetecteerd in een externe installatie k
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detect)]
 
 Zie de voorbeeld code op [github](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py) voor meer detectie scenario's.
+
+### <a name="display-and-frame-faces"></a>Weer gave-en frame gezichten
+
+Met de volgende code wordt de opgegeven afbeelding op het scherm weer gegeven en worden rechthoeken rond de gezichten getekend, met behulp van de eigenschap DetectedFace. faceRectangle.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_frame)]
+
+![Een jonge vrouw met een rode rechthoek rond haar gezicht](../images/face-rectangle-result.png)
 
 ## <a name="find-similar-faces"></a>Vergelijkbare gezichten zoeken
 
@@ -143,13 +153,13 @@ Nadat u uw installatie kopieën hebt ingesteld, definieert u een label boven aan
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroupvars)]
 
-Voeg vervolgens de volgende code toe aan de onderkant van het script. Deze code maakt een **PersongGroup** -en drie persoons-objecten.
+Voeg vervolgens de volgende code toe aan de onderkant van het script. Deze code maakt een **PersongGroup** -en drie **persoons** -objecten.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_create)]
 
 ### <a name="assign-faces-to-persons"></a>Gezichten toewijzen aan personen
 
-Met de volgende code worden uw afbeeldingen gesorteerd op basis van het voor voegsel, worden gezichten gedetecteerd en worden de gezichten aan elk persoons object toegewezen.
+Met de volgende code worden uw afbeeldingen gesorteerd op basis van het voor voegsel, worden gezichten gedetecteerd en worden de gezichten aan elk **persoons** object toegewezen.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_assign)]
 
@@ -177,6 +187,32 @@ De volgende code zoekt in de hoofdmap van het project naar een afbeelding _Test-
 De methode **Identify** gebruikt een matrix met gedetecteerde gezichten en vergelijkt deze met een **PersonGroup**. Als de app een gedetecteerd gezicht kan overeenkomen met een **persoon**, wordt het resultaat opgeslagen. Met deze code worden gedetailleerde resultaat resultaten in de-console afgedrukt.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify)]
+
+## <a name="verify-faces"></a>Gezichten verifiëren
+
+Bij de controle bewerking wordt een face-ID en een andere gezichts-ID of een **persoons** object gebruikt en wordt bepaald of deze deel uitmaken van dezelfde persoon.
+
+De volgende code detecteert gezichten in twee bron afbeeldingen en controleert deze vervolgens op een gezicht dat is gedetecteerd vanuit een doel installatie kopie.
+
+### <a name="get-test-images"></a>Test installatie kopieën ophalen
+
+De volgende code blokkeert het declareren van variabelen die verwijzen naar de bron-en doel installatie kopieën voor de verificatie bewerking.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_baseurl)]
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_photos)]
+
+### <a name="detect-faces-for-verification"></a>Gezichten voor verificatie detecteren
+
+De volgende code detecteert gezichten in de bron-en doel installatie kopieën en slaat ze op in variabelen.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_detect)]
+
+### <a name="get-verification-results"></a>Resultaten van de verificatie ophalen
+
+De volgende code vergelijkt elk van de bron installatie kopieën met de doel installatie kopie en drukt een bericht af dat aangeeft of ze tot dezelfde persoon behoren.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify)]
 
 ## <a name="take-a-snapshot-for-data-migration"></a>Een moment opname maken voor gegevens migratie
 

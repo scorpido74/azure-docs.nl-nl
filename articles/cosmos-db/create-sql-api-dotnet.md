@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/12/2019
-ms.openlocfilehash: cbf039a932c16269f703818e9f0ffef4ce852686
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 72e46ca55193bf79971818665a77be49ca5243e1
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018748"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382869"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Quickstart: Een .NET-console-app bouwen om Azure Cosmos DB SQL-API-resources te beheren
 
@@ -40,7 +40,6 @@ Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Mic
 
 * Azure-abonnement: [Maak een gratis versie](https://azure.microsoft.com/free/) of [Probeer gratis Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, gratis en toezeg gingen. 
 * De [.net Core 2,1 SDK of hoger](https://dotnet.microsoft.com/download/dotnet-core/2.1).
-* [Azure-CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ## <a name="setting-up"></a>Instellen
 
@@ -48,16 +47,22 @@ In deze sectie wordt uitgelegd hoe u een Azure Cosmos-account maakt en een proje
 
 ### <a id="create-account"></a>Een Azure Cosmos-account maken
 
-Met de volgende code wordt een Azure Cosmos-account gemaakt met consistentie van de sessie. Het account wordt gerepliceerd in `South Central US` en `North Central US`. Selecteer de knop **try it** en plak de code om deze uit te voeren in de Azure Cloud shell. 
+Als u de optie [probeer Azure Cosmos DB gratis voor](https://azure.microsoft.com/try/cosmosdb/) het maken van een Azure Cosmos-account gebruikt, moet u een Azure Cosmos DB account van het type **SQL API**maken. Er is al een Azure Cosmos DB test account voor u gemaakt. U hoeft het account niet expliciet te maken, dus u kunt deze sectie overs Laan en door gaan naar de volgende sectie.
+
+Als u uw eigen Azure-abonnement hebt of een gratis abonnement hebt gemaakt, moet u een Azure Cosmos-account expliciet maken. Met de volgende code wordt een Azure Cosmos-account gemaakt met consistentie van de sessie. Het account wordt gerepliceerd in `South Central US` en `North Central US`.  
+
+U kunt Azure Cloud Shell gebruiken om het Azure Cosmos-account te maken. Azure Cloud Shell is een interactieve, geverifieerde shell die toegankelijk is voor browsers voor het beheer van Azure-resources. Het biedt de flexibiliteit om de shell-ervaring te kiezen die het beste past bij de manier waarop u werkt, hetzij bash of Power shell. Kies voor deze Quick Start de modus **bash** . Azure Cloud Shell u ook een opslag account nodig hebt, kunt u er een maken wanneer u hierom wordt gevraagd.
+
+Selecteer de knop **try it** naast de volgende code, kies **bash** -modus Selecteer **een opslag account maken** en aanmelden bij Cloud shell. Kopieer vervolgens de volgende code en plak deze in azure Cloud shell en voer deze uit. De naam van het Azure Cosmos-account moet globaal uniek zijn. Zorg ervoor `mysqlapicosmosdb` dat u de waarde bijwerkt voordat u de opdracht uitvoert.
 
 ```azurecli-interactive
 
 # Set variables for the new SQL API account, database, and container
 resourceGroupName='myResourceGroup'
 location='southcentralus'
-accountName='mysqlapicosmosdb' 
-databaseName='FamilyDatabase'
-containerName='FamilyContainer'
+
+# The Azure Cosmos account name must be globally unique, make sure to update the `mysqlapicosmosdb` value before you run the command
+accountName='mysqlapicosmosdb'
 
 # Create a resource group
 az group create \
@@ -75,9 +80,11 @@ az cosmosdb create \
 
 ```
 
+Het maken van het Azure Cosmos-account neemt enige tijd in beslag, zodra de bewerking is voltooid, kunt u de uitvoer van de bevestiging bekijken. Nadat de opdracht is voltooid, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/) en controleert u of het Azure Cosmos-account met de opgegeven naam bestaat. U kunt het Azure Cloud Shell venster sluiten nadat de resource is gemaakt. 
+
 ### <a id="create-dotnet-core-app"></a>Een nieuwe .NET-app maken
 
-Maak een nieuwe .NET-toepassing in uw voorkeurs editor of IDE. Voer in een console venster de volgende DotNet-opdracht uit om een nieuwe app met de naam `todo`te maken.
+Maak een nieuwe .NET-toepassing in uw voorkeurs editor of IDE. Open de Windows-opdracht prompt of een Terminal venster op de lokale computer. Alle opdrachten in de volgende secties worden uitgevoerd vanaf de opdracht prompt of Terminal.  Voer de volgende DotNet nieuwe opdracht uit om een nieuwe app met de naam `todo`te maken. Met de para meter--langVersion stelt u de eigenschap LangVersion in het gemaakte project bestand in.
 
 ```console
 dotnet new console --langVersion 7.1 -n todo
@@ -118,7 +125,7 @@ De voorbeeld toepassing moet worden geverifieerd bij uw Azure Cosmos-account. Al
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-1. Navigeer naar uw Azure Cosmos-account. 
+1. Navigeer naar uw Azure Cosmos-account.
 
 1. Open het deel venster **sleutels** en kopieer de **URI** en de **primaire sleutel** van uw account. In de volgende stap voegt u de waarden voor de URI en sleutels toe aan een omgevings variabele.
 
@@ -136,15 +143,15 @@ setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 **Linux**
 
 ```bash
-export EndpointUrl "<Your_Azure_Cosmos_account_URI>"
-export PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
+export EndpointUrl = "<Your_Azure_Cosmos_account_URI>"
+export PrimaryKey = "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 ```
 
 **MacOS**
 
 ```bash
-export EndpointUrl "<Your_Azure_Cosmos_account_URI>"
-export PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
+export EndpointUrl = "<Your_Azure_Cosmos_account_URI>"
+export PrimaryKey = "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 ```
 
  ## <a id="object-model"></a>Object model
@@ -240,7 +247,7 @@ using System.Net;
 using Microsoft.Azure.Cosmos;
 ```
 
-Voeg aan `program.cs file`de de code toe om de omgevings variabelen te lezen die u in de vorige stap hebt ingesteld. Definieer de `CosmosClient`- `Database`,-en `Container` -objecten. Voeg vervolgens code toe aan de methode Main waarmee de `GetStartedDemoAsync` methode wordt aangeroepen waar u Azure Cosmos-account resources beheert. 
+Voeg aan het **Program.cs** -bestand code toe om de omgevings variabelen te lezen die u in de vorige stap hebt ingesteld. Definieer de `CosmosClient`- `Database`,-en `Container` -objecten. Voeg vervolgens code toe aan de methode Main waarmee de `GetStartedDemoAsync` methode wordt aangeroepen waar u Azure Cosmos-account resources beheert. 
 
 ```csharp
 namespace todo
@@ -355,7 +362,7 @@ private async Task AddItemsToContainerAsync()
         },
         Address = new Address { State = "WA", County = "King", City = "Seattle" },
         IsRegistered = false
- };
+    };
 
 try
 {
@@ -370,6 +377,7 @@ catch(CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
 
     // Note that after creating the item, we can access the body of the item with the Resource property off the ItemResponse. We can also access the RequestCharge property to see the amount of RUs consumed on this request.
     Console.WriteLine("Created item in database with id: {0} Operation consumed {1} RUs.\n", andersenFamilyResponse.Resource.Id, andersenFamilyResponse.RequestCharge);
+}
 }
 
 ```
@@ -429,14 +437,11 @@ Nadat u alle vereiste methoden hebt gedefinieerd, voert u deze uit met in `GetSt
 public async Task GetStartedDemoAsync()
 {
     // Create a new instance of the Cosmos Client
-    this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey);
+    this.cosmosClient = new CosmosClient(EndpointUrl, PrimaryKey);
     await this.CreateDatabaseAsync();
     await this.CreateContainerAsync();
     await this.AddItemsToContainerAsync();
     await this.QueryItemsAsync();
-    await this.ReplaceFamilyItemAsync();
-    await this.DeleteFamilyItemAsync();
-    //await this.DeleteDatabaseAndCleanupAsync();
 }
 ```
 
@@ -477,7 +482,7 @@ U kunt controleren of de gegevens zijn gemaakt door u aan te melden bij de Azure
 Wanneer u deze niet meer nodig hebt, kunt u de Azure CLI of Azure PowerShell gebruiken om het Azure Cosmos-account en de bijbehorende resource groep te verwijderen. De volgende opdracht laat zien hoe u de resource groep verwijdert met behulp van de Azure CLI:
 
 ```azurecli
-az group delete -g "myResourceGroup" -l "southcentralus"
+az group delete -g "myResourceGroup"
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

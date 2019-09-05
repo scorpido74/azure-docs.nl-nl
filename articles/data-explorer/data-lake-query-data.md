@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: ef4dfc4370c71eac1978a6f3535b571a5e6009b5
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: b0056df16dccaf1dc7e94aad1a2c6c262ffd89ee
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950139"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383363"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Query's uitvoeren op gegevens in Azure Data Lake met behulp van Azure Data Explorer (preview-versie)
 
@@ -50,6 +50,7 @@ Azure Data Explorer kan worden geïntegreerd met Azure Blob Storage en Azure Dat
     > * Er worden betere prestaties verwacht met een gedetailleerdere partitionering. Query's over externe tabellen met dagelijkse partities hebben bijvoorbeeld betere prestaties dan die query's met maandelijkse gepartitioneerde tabellen.
     > * Wanneer u een externe tabel met partities definieert, wordt de opslag structuur naar verwachting identiek.
 Als de tabel bijvoorbeeld is gedefinieerd met een DateTime-partitie in JJJJ/MM/DD-indeling (standaard), moet het pad naar het URI-opslag bestand *container1/jjjj/mm/dd/all_exported_blobs*zijn. 
+    > * Als de externe tabel is gepartitioneerd met een datum/tijd-kolom, neemt altijd een tijd filter op voor een gesloten bereik in uw query (bijvoorbeeld `ArchivedProducts | where Timestamp between (ago(1h) .. 10m)` : de query--moet beter worden uitgevoerd dan het geopende `ArchivedProducts | where Timestamp > ago(1h)` bereik) een-). 
 
 1. De externe tabel is zichtbaar in het linkerdeel venster van de Web-UI
 

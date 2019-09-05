@@ -1,5 +1,5 @@
 ---
-title: Reguliere expressie-entiteit-LUIS
+title: 'Zelfstudie: Reguliere expressie-entiteit-LUIS'
 titleSuffix: Azure Cognitive Services
 description: U kunt consistent opgemaakte gegevens uit een uiting extraheren met de reguliere-expressie-entiteit.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 958d880829e9524389a25f029415786231644c04
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: db60d87b441836f38309166318dd1778ce828483
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563588"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307588"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Zelfstudie: Correct opgemaakte gegevens ophalen uit utterances
 In deze zelfstudie maakt u een app voor het extraheren van consistent opgemaakte gegevens uit een utterance met behulp van de entiteit **Regular Expression (regex)** .

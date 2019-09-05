@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7591cefddd6e7217c885293a2f5c878d7a82e158
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: aa81f181c8d062e5fd68b0fbb2445f5c37540889
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015937"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309573"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 
@@ -82,7 +82,7 @@ Standaard bestands shares worden ondersteund door harde schijven (Hdd's). Standa
 Standaard bestands shares met een grootte van Maxi maal 5 TiB zijn beschikbaar als GA aanbieding. Grotere bestands shares zijn de shares die groter zijn dan 5 TiB, Maxi maal 100 TiB, zijn momenteel beschikbaar als preview-aanbieding.
 
 > [!IMPORTANT]
-> Zie de sectie onboarding [to large file shares (Standard-laag)](#onboard-to-larger-file-shares-standard-tier) voor de stappen die u kunt uitvoeren, evenals het bereik en de beperkingen van de preview-versie.
+> Zie de sectie [onboarding to large file shares (Standard-laag)](#onboard-to-larger-file-shares-standard-tier) voor de stappen die u kunt uitvoeren, evenals het bereik en de beperkingen van de preview-versie.
 
 ### <a name="premium-file-shares"></a>Premium-bestands shares
 
@@ -114,7 +114,7 @@ Shares moeten worden ingericht in 1 GiB-stappen. De minimale grootte is 100 GiB,
 >
 > Ingangs frequentie = 40 MiB/s + 0,04 * ingerichte GiB
 
-Share grootte kan op elk moment worden verhoogd, maar kan pas na 24 uur na de laatste toename worden verlaagd. Nadat u 24 uur hebt gewacht zonder een grotere grootte, kunt u de grootte van de share zo vaak verkleinen als u wilt, totdat u deze opnieuw verhoogt. Wijzigingen in IOPS/doorvoer schaal worden binnen een paar minuten na de grootte gewijzigd.
+De inrichtings share grootte wordt opgegeven door het share quotum. Share quotum kan op elk moment worden verhoogd, maar kan pas na 24 uur na de laatste toename worden verlaagd. Nadat u 24 uur hebt gewacht zonder een quota verhoging, kunt u het share quotum zo vaak als u wilt verlagen totdat u het opnieuw verhoogt. Wijzigingen in IOPS/doorvoer schaal worden binnen een paar minuten na de grootte gewijzigd.
 
 Het is mogelijk om de grootte van uw ingerichte share onder uw gebruikte GiB te verkleinen. Als u dit doet, verliest u geen gegevens, maar worden er nog steeds kosten in rekening gebracht voor de gebruikte grootte en worden de prestaties (de basis-IOPS, door Voer en burst IOPS) van de ingerichte share ontvangen, niet de gebruikte grootte.
 
@@ -136,7 +136,7 @@ In de volgende tabel ziet u enkele voor beelden van deze formules voor de ingeri
 
 #### <a name="bursting"></a>Toepassingen
 
-Premium-bestands shares kunnen de IOPS opbursten tot een factor van drie. Bursting wordt geautomatiseerd en werkt op basis van een tegoed systeem. Bursting werkt op basis van de beste inspanningen en de burst-limiet is geen garantie. bestands shares kunnen de limiet overschrijden.
+Premium-bestands shares kunnen de IOPS opbursten tot een factor van drie. Bursting wordt geautomatiseerd en werkt op basis van een tegoed systeem. Bursting werkt op basis van de beste inspanningen en de burst-limiet is geen garantie. bestands shares *kunnen de limiet* overschrijden.
 
 De tegoeden worden in een burst-Bucket verzameld wanneer het verkeer voor uw bestands share onder IOPS voor de basis lijn valt. Een GiB-share van 100 heeft bijvoorbeeld 100 Baseline IOPS. Als het werkelijke verkeer op de share 40 IOPS is voor een specifiek interval van 1 seconde, worden 60 de ongebruikte IOPS gecrediteerd op een burst-Bucket. Deze tegoeden worden vervolgens later gebruikt wanneer bewerkingen de basis lijn van IOPs overschrijden.
 

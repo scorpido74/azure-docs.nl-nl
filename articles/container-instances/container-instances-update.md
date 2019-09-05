@@ -6,26 +6,29 @@ author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/03/2019
 ms.author: danlep
-ms.openlocfilehash: d555ba6b8c2b32fc6ec56d6c51dda9626b6f0cb0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 3103fe7fbf7dcd587f43b673ef53f32893908ecb
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325550"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307714"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Containers in Azure Container Instances bijwerken
 
-Tijdens de normale werking van uw container instanties is het wellicht nood zakelijk dat u de containers in een container groep bijwerkt. U kunt bijvoorbeeld de versie van de installatie kopie bijwerken, een DNS-naam wijzigen, omgevings variabelen bijwerken of de status van een container vernieuwen waarvan de toepassing is gecrasht.
+Tijdens de normale werking van uw container instanties is het wellicht nood zakelijk om de actieve containers in een [container groep](container-instances-container-groups.md)bij te werken. U kunt bijvoorbeeld de versie van de installatie kopie bijwerken, een DNS-naam wijzigen, omgevings variabelen bijwerken of de status van een container vernieuwen waarvan de toepassing is gecrasht.
+
+> [!NOTE]
+> Beëindigde of verwijderde container groepen kunnen niet worden bijgewerkt. Als een container groep is beëindigd (heeft een geslaagde of mislukte status) of is verwijderd, moet de groep worden geïmplementeerd als nieuw.
 
 ## <a name="update-a-container-group"></a>Een container groep bijwerken
 
-Werk de containers in een container groep bij door een bestaande groep opnieuw te implementeren met ten minste één gewijzigde eigenschap. Wanneer u een container groep bijwerkt, worden alle actieve containers in de groep op locatie opnieuw gestart.
+Werk de containers in een actieve container groep bij door een bestaande groep opnieuw te implementeren met ten minste één gewijzigde eigenschap. Wanneer u een container groep bijwerkt, worden alle actieve containers in de groep op locatie opnieuw gestart, meestal op dezelfde onderliggende container host.
 
-Implementeer een bestaande container groep opnieuw door de opdracht Create uit te geven (of gebruik de Azure Portal) en geef de naam van een bestaande groep op. Wijzig ten minste één geldige eigenschap van de groep wanneer u de Create-opdracht geeft om de herimplementatie te activeren. Niet alle eigenschappen van de container groep zijn geldig voor opnieuw implementeren. Zie [eigenschappen waarvoor](#properties-that-require-container-delete) een lijst met niet-ondersteunde eigenschappen moet worden verwijderd.
+Implementeer een bestaande container groep opnieuw door de opdracht Create uit te geven (of gebruik de Azure Portal) en geef de naam van een bestaande groep op. Wijzig ten minste één geldige eigenschap van de groep wanneer u de opdracht maken gebruikt voor het activeren van de herimplementatie en laat de resterende eigenschappen ongewijzigd (of door gaan met het gebruik van de standaard waarden). Niet alle eigenschappen van de container groep zijn geldig voor opnieuw implementeren. Zie [eigenschappen waarvoor](#properties-that-require-container-delete) een lijst met niet-ondersteunde eigenschappen moet worden verwijderd.
 
-In het volgende voor beeld van Azure CLI wordt een container groep bijgewerkt met een nieuwe DNS-naam label. Omdat de eigenschap van het DNS-naam label van de groep is gewijzigd, wordt de container groep opnieuw geïmplementeerd en opnieuw gestart.
+In het volgende voor beeld van Azure CLI wordt een container groep bijgewerkt met een nieuwe DNS-naam label. Omdat de eigenschap van het DNS-naam label van de groep een kan worden bijgewerkt, wordt de container groep opnieuw geïmplementeerd en opnieuw gestart.
 
 Eerste implementatie met DNS-naam label *mijn toepassing-staging*:
 
@@ -35,10 +38,10 @@ az container create --resource-group myResourceGroup --name mycontainer \
     --image nginx:alpine --dns-name-label myapplication-staging
 ```
 
-De container groep bijwerken met een nieuwe DNS-naam label, *mijn toepassing*:
+Werk de container groep bij met een nieuwe DNS-naam label, *mijn toepassing*en laat de resterende eigenschappen ongewijzigd:
 
 ```azurecli-interactive
-# Update container group (restarts container)
+# Update DNS name label (restarts container), leave other properties unchanged
 az container create --resource-group myResourceGroup --name mycontainer \
     --image nginx:alpine --dns-name-label myapplication
 ```
@@ -65,7 +68,7 @@ Zoals eerder vermeld, kunnen niet alle eigenschappen van de container groep word
 
 Voor deze eigenschappen moet de container groep worden verwijderd voordat deze opnieuw kan worden geïmplementeerd:
 
-* Type besturings systeem
+* Type besturingssysteem
 * CPU
 * Geheugen
 * Beleid voor opnieuw opstarten
@@ -81,10 +84,10 @@ Dit artikel bevat meerdere keren de **container groep**. Elke container in Azure
 
 [Een groep met meerdere containers implementeren](container-instances-multi-container-group.md)
 
+[Containers in Azure Container Instances hand matig stoppen of starten](container-instances-stop-start.md)
+
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
-[az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
-[az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
 [azure-cli-install]: /cli/azure/install-azure-cli

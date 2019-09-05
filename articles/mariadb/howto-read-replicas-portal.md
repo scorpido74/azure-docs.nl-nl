@@ -6,19 +6,16 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: a7e7beb3cdef7551a1bce2a693b8044ea6ed8946
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 939097ccca844e505819f5aad405d6322941b526
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907685"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309167"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Lees replica's maken en beheren in Azure Database for MariaDB met behulp van de Azure Portal
 
 In dit artikel leert u hoe u in de Azure Database for MariaDB-service Lees replica's maakt en beheert met behulp van de Azure Portal.
-
-> [!IMPORTANT]
-> U kunt een lees replica maken in dezelfde regio als uw hoofd server of in andere Azure-regio's van uw keuze. Het lezen van replica's (dezelfde regio en kruis regio) bevindt zich momenteel in de open bare preview.
 
 ## <a name="prerequisites"></a>Vereisten
 

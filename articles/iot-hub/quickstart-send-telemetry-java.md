@@ -8,20 +8,20 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
-ms.custom: mvc, seo-java-august2019
+ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 4ef5c8c9defd0a5da4bc0579d457113f8f4c5e4d
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: a97081101df5199d3201a6ec47df4c2ac2747416
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172961"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309145"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>Quickstart: Telemetrie verzenden naar een Azure IoT hub en deze lezen met een Java-toepassing
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT Hub is een Azure-service waarmee grote hoeveelheden telemetrie van uw IoT-apparaten naar de cloud kunt opnemen voor opslag of verwerking. In deze snelstartgids verzendt u telemetrie vanuit een toepassing voor een gesimuleerd apparaat via IoT Hub naar een back-endtoepassing voor verwerking.
+De Quick Start laat zien hoe u telemetrie verzendt naar een Azure IoT hub en deze kunt lezen met een Java-toepassing. IoT Hub is een Azure-service waarmee grote hoeveelheden telemetrie van uw IoT-apparaten naar de cloud kunt opnemen voor opslag of verwerking. In deze snelstartgids verzendt u telemetrie vanuit een toepassing voor een gesimuleerd apparaat via IoT Hub naar een back-endtoepassing voor verwerking.
 
 In de snelstartgids worden twee vooraf geschreven Java-toepassingen gebruikt, één voor het verzenden van de telemetrie en één voor het lezen van de telemetrie van de hub. Voordat u deze twee toepassingen kunt uitvoeren, moet u een IoT-hub maken en een apparaat registreren bij de hub.
 

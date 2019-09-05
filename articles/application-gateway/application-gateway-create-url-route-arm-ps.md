@@ -1,31 +1,28 @@
 ---
-title: Een toepassingsgateway maken met URL-pad gebaseerde regels voor doorsturen - Azure PowerShell | Microsoft Docs
-description: Informatie over het maken van URL-pad op basis van routeringsregels voor een application gateway en de virtuele machine schaalset met behulp van Azure PowerShell.
+title: Maak een toepassings gateway met behulp van op URL-pad gebaseerde routerings regels-Azure PowerShell | Microsoft Docs
+description: Meer informatie over het maken van op URL-pad gebaseerde routerings regels voor een toepassings gateway en een schaalset voor virtuele machines met behulp van Azure PowerShell.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 01/26/2018
+ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: ef80ca290d2bd78ccdcd5e4109f9b1d7ecdab4f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ebe09e2c10bed1779d9189755f66bbea9bca1d43
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729694"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306257"
 ---
-# <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Een toepassingsgateway maken met URL-pad gebaseerde regels voor doorsturen met behulp van Azure PowerShell
+# <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Maak een toepassings gateway met behulp van op URL-pad gebaseerde routerings regels met Azure PowerShell
 
-U kunt Azure PowerShell gebruiken om te configureren [routeringsregels voor URL-pad gebaseerde](application-gateway-url-route-overview.md) bij het maken van een [toepassingsgateway](application-gateway-introduction.md). In deze zelfstudie maakt u back endpools met behulp van een [virtuele-machineschaalset](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Vervolgens maakt u regels voor doorsturen die zorg ervoor dat webverkeer aankomt op de juiste servers in de groepen.
+U kunt Azure PowerShell gebruiken om op [URL-pad gebaseerde routerings regels](application-gateway-url-route-overview.md) te configureren wanneer u een [toepassings gateway](application-gateway-introduction.md)maakt. In deze zelf studie maakt u back-end-Pools met behulp van een [schaalset voor virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Vervolgens maakt u routerings regels die ervoor zorgen dat webverkeer binnenkomt op de juiste servers in de groepen.
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 > * Het netwerk instellen
-> * Een toepassingsgateway maken met URL-kaart
+> * Een toepassings gateway met een URL-toewijzing maken
 > * Schaalsets voor virtuele machines maken met de back-endpools
 
 ![Voorbeeld van URL-routering](./media/application-gateway-create-url-route-arm-ps/scenario.png)
@@ -40,7 +37,7 @@ Als u PowerShell lokaal wilt installeren en gebruiken, is voor deze zelfstudie d
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een Azure-resource-groep met [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).  
+Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een Azure-resource groep met behulp van [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).  
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
@@ -48,7 +45,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Netwerkbronnen maken
 
-Maak de subnetconfiguraties *myAGSubnet* en *myBackendSubnet* met behulp van [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Maken van het virtuele netwerk met de naam *myVNet* met behulp van [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) met de subnetconfiguraties. En maak ten slotte het openbare IP-adres met de naam *myAGPublicIPAddress* met behulp van [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Deze resources worden gebruikt om de netwerkverbinding naar de toepassingsgateway en de bijbehorende bronnen te leveren.
+Maak de subnet-configuraties *myAGSubnet* en *myBackendSubnet* met behulp van [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Maak het virtuele netwerk met de naam *myVNet* met behulp van [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) met de subnet-configuraties. En ten slotte maakt u het open bare IP-adres met de naam *myAGPublicIPAddress* met behulp van [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Deze resources worden gebruikt om de netwerkverbinding naar de toepassingsgateway en de bijbehorende bronnen te leveren.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -74,7 +71,7 @@ $pip = New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP-configuraties en front-endpoort maken
 
-Koppelen *myAGSubnet* die u eerder hebt gemaakt met de application gateway via [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration). Toewijzen de *myAGPublicIPAddress* aan de application gateway met [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig).
+Koppel *myAGSubnet* die u eerder hebt gemaakt voor de toepassings gateway met behulp van [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration). Wijs de *myAGPublicIPAddress* toe aan de toepassings gateway met behulp van [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig).
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -97,7 +94,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-default-pool-and-settings"></a>De standaardpool en instellingen maken
 
-Maken van het standaard back-end-adresgroep met de naam *appGatewayBackendPool* voor de application gateway met [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Configureer de instellingen voor de back-end-pool met [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting).
+Maak de standaard back-end-groep met de naam *appGatewayBackendPool* voor de toepassings gateway met behulp van [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Configureer de instellingen voor de back-end [-groep met New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting).
 
 ```azurepowershell-interactive
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -114,7 +111,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 Als u de toepassingsgateway wilt inschakelen om het verkeer op de juiste manier naar de back-endpool te routeren, is een listener vereist. In deze zelfstudie maakt u twee listeners. De eerste basis-listener die u maakt, luistert naar verkeer op de basis-URL. De tweede listener die u maakt, luistert naar verkeer op specifieke URL's.
 
-Maken van de standaard-listener met de naam *myDefaultListener* met behulp van [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) met de front-end-configuratie en de frontend-poort die u eerder hebt gemaakt. Er is een regel vereist, zodat de listener weet welke back-endpool moet worden gebruikt voor binnenkomend verkeer. Maak een eenvoudige regel met de naam *rule1* met behulp van [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
+Maak de standaard-listener met de naam *myDefaultListener* met behulp van [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) met de front-end-configuratie en de frontend-poort die u eerder hebt gemaakt. Er is een regel vereist, zodat de listener weet welke back-endpool moet worden gebruikt voor binnenkomend verkeer. Maak een basis regel met de naam *firewallregel1* met behulp van [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -132,7 +129,7 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>De toepassingsgateway maken
 
-Nu dat u de benodigde ondersteunende netwerkbronnen gemaakt, Geef parameters op voor de application gateway met de naam *myAppGateway* met behulp van [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku), en maak vervolgens met behulp van [Nieuwe AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway).
+Nu u de nodige ondersteunende resources hebt gemaakt, geeft u para meters op voor de toepassings gateway met de naam *myAppGateway* met behulp van [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku)en maakt u deze met behulp van [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway).
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -155,7 +152,7 @@ $appgw = New-AzApplicationGateway `
 
 ### <a name="add-image-and-video-backend-pools-and-port"></a>Back-endpools en -poort voor afbeeldingen en video toevoegen
 
-U kunt back-end-adresgroepen met de naam toevoegen *imagesBackendPool* en *videoBackendPool* naar uw application gateway met behulp van [toevoegen AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool). Toevoegen van de frontend-poort voor de pools met behulp van [toevoegen AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport). Vervolgens dient u de wijzigingen aan de application gateway met [Set AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway).
+U kunt back-endservers met de naam *imagesBackendPool* en *videoBackendPool* toevoegen aan uw toepassings gateway met behulp van [add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool). U voegt de frontend-poort voor de Pools toe met [add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport). Vervolgens verzendt u de wijzigingen aan de toepassings gateway met behulp van [set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway).
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -176,7 +173,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-backend-listener"></a>Back-endlistener toevoegen
 
-Toevoegen van de back-end-listener met de naam *backendListener* die nodig is voor het routeren van verkeer met behulp van [toevoegen AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener).
+Voeg de backend-listener met de naam *backendListener* toe die nodig is om verkeer te routeren met [add-AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener).
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -198,7 +195,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-url-path-map"></a>Toewijzing van URL-pad toevoegen
 
-URL-padtoewijzingen zorgen ervoor dat specifieke URL's naar specifieke back-endpools worden omgeleid. U kunt maken met de naam URL-padtoewijzingen *imagePathRule* en *videoPathRule* met behulp van [New-AzApplicationGatewayPathRuleConfig](/powershell/module/az.network/new-azapplicationgatewaypathruleconfig) en [ Voeg AzApplicationGatewayUrlPathMapConfig](/powershell/module/az.network/add-azapplicationgatewayurlpathmapconfig).
+URL-padtoewijzingen zorgen ervoor dat specifieke URL's naar specifieke back-endpools worden omgeleid. U kunt URL-paden maken met de naam *imagePathRule* en *videoPathRule* met behulp van [New-AzApplicationGatewayPathRuleConfig](/powershell/module/az.network/new-azapplicationgatewaypathruleconfig) en [add-AzApplicationGatewayUrlPathMapConfig](/powershell/module/az.network/add-azapplicationgatewayurlpathmapconfig).
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -237,7 +234,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-routing-rule"></a>Routeringsregel toevoegen
 
-Met de routeringsregel koppelt u de URL-toewijzing aan de listener die u hebt gemaakt. U kunt de regel met de naam toevoegen **regel 2* met behulp van [toevoegen AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule).
+Met de routeringsregel koppelt u de URL-toewijzing aan de listener die u hebt gemaakt. U kunt de regel met de naam **firewallregel2* toevoegen met [add-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule).
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -306,6 +303,7 @@ for ($i=1; $i -le 3; $i++)
     -ImageReferenceOffer WindowsServer `
     -ImageReferenceSku 2016-Datacenter `
     -ImageReferenceVersion latest
+    -OsDiskCreateOption FromImage
   Set-AzVmssOsProfile $vmssConfig `
     -AdminUsername azureuser `
     -AdminPassword "Azure123456!" `
@@ -347,7 +345,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-U kunt [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) om op te halen van het openbare IP-adres van de toepassingsgateway. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Zoals `http://52.168.55.24`, `http://52.168.55.24:8080/images/test.htm`, of `http://52.168.55.24:8080/video/test.htm`.
+U kunt [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) gebruiken om het open bare IP-adres van de toepassings gateway op te halen. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Zoals, `http://52.168.55.24` `http://52.168.55.24:8080/images/test.htm`, of .`http://52.168.55.24:8080/video/test.htm`
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -355,11 +353,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Basis-URL testen in de toepassingsgateway](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest.png)
 
-Wijzig de URL in `http://<ip-address>:8080/video/test.htm`, vervangen door uw IP-adres voor `<ip-address>`, en u ziet er ongeveer als volgt:
+Wijzig de URL naar `http://<ip-address>:8080/video/test.htm`, vervang uw IP-adres voor `<ip-address>`en u ziet iets als het volgende voor beeld:
 
 ![Afbeeldingen-URL in toepassingsgateway testen](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
 
-Wijzig de URL in `http://<ip-address>:8080/video/test.htm` en u ziet er ongeveer als volgt:
+Wijzig de URL in `http://<ip-address>:8080/video/test.htm` en u ziet iets als in het volgende voor beeld:
 
 ![Video-URL testen in de toepassingsgateway](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-video.png)
 
@@ -369,7 +367,7 @@ In dit artikel hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Het netwerk instellen
-> * Een toepassingsgateway maken met URL-kaart
+> * Een toepassings gateway met een URL-toewijzing maken
 > * Schaalsets voor virtuele machines maken met de back-endpools
 
-Voor meer informatie over Toepassingsgateways en de bijbehorende resources, gaat u naar de artikelen met procedures.
+Als u meer wilt weten over toepassings gateways en de bijbehorende resources, gaat u door naar de artikelen met procedures.

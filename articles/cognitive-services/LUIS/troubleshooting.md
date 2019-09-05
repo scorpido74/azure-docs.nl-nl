@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 7874a2bad63a4c5b47545c06a91228e64d523849
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 3907a244bc2d85e7225f94b15150298fd80a032f
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258793"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382345"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Veelgestelde vragen over Language Understanding
 
@@ -265,7 +265,7 @@ Uw sleutel ontwerpen/starter is alleen toegestaan voor 1000 eindpunt query's per
 De eerste fout is het isoleren als het probleem betrekking heeft op LUIS of zich buiten de LUIS-middleware bevindt. 
 
 #### <a name="resolve-issue-in-luis"></a>Probleem oplossen in LUIS
-Geef dezelfde utterance door aan LUIS van het [Luis-eind punt](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance). Als u een fout bericht ontvangt, lost u het probleem op in LUIS totdat de fout niet meer wordt geretourneerd. Veelvoorkomende fouten zijn onder andere:
+Geef dezelfde utterance door aan LUIS van het [Luis-eind punt](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint). Als u een fout bericht ontvangt, lost u het probleem op in LUIS totdat de fout niet meer wordt geretourneerd. Veelvoorkomende fouten zijn onder andere:
 
 * `Out of call volume quota. Quota will be replenished in <time>.`: Dit probleem geeft aan dat u moet overschakelen van een ontwerp sleutel naar een [eindpunt sleutel](luis-how-to-azure-subscription.md) of dat u de [service lagen](luis-how-to-azure-subscription.md#change-pricing-tier)moet wijzigen. 
 

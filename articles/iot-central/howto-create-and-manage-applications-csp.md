@@ -8,14 +8,14 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 4d20256381eab155d4b7532591cea85e43080ec0
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: d7c538bd98b3924b422a93bc67cac405a6e4b7af
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019800"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383128"
 ---
-# <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Als CSP kunt u een Azure IoT Central-toepassing maken en beheren namens uw klant 
+# <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Als CSP kunt u een Azure IoT Central-toepassing maken en beheren namens uw klant
 
 Het programma voor de Microsoft Cloud Solution Provider (CSP) is een micro soft-programma voor wederverkopers. Het is de bedoeling om onze kanaal partners te voorzien van een programma met één stop om alle micro soft-commerciële online services door te verkopen. Meer informatie over het [programma Cloud Solution Provider](https://partner.microsoft.com/cloud-solution-provider).
 
@@ -72,6 +72,9 @@ Zie [Azure-abonnementen](https://docs.microsoft.com/azure/guides/developer/azure
 ## <a name="region"></a>Regio
 
 Kies de regio waar u de Azure IoT Central-toepassing wilt maken. Normaal gesp roken moet u de regio kiezen die het meest geschikt is voor uw apparaten om optimaal te kunnen profiteren van de prestaties.
+
+> [!NOTE]
+> De **Preview-toepassings** sjabloon is momenteel alleen beschikbaar in de regio's **Europa-Noord** en **Centraal VS** .
 
 Zie [Azure-regio's](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#azure-regions)voor meer informatie.
 

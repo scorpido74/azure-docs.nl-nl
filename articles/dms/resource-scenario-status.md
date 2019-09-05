@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 07/13/2019
-ms.openlocfilehash: 44ac290a471fd0099b6589f84fea604249818432
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.date: 09/05/2019
+ms.openlocfilehash: 9ea070ea86a4d0d5e7101e82450235a59c936d2d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868617"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376393"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Status van migratie scenario's die door Azure Database Migration Service worden ondersteund
 
@@ -35,7 +35,7 @@ De status van de migratie scenario's die door Azure Database Migration Service w
 In de volgende tabellen ziet u welke migratie scenario's worden ondersteund bij het gebruik van Azure Database Migration Service.
 
 > [!NOTE]
-> Als een scenario dat hieronder wordt weer gegeven, niet wordt weer gegeven in de gebruikers interface, neemt u contact op met de alias voor [Azure data base](mailto:AskAzureDatabaseMigrations@service.microsoft.com) -migraties voor aanvullende informatie.
+> Als een scenario dat hieronder wordt weer gegeven, niet wordt weer gegeven in de gebruikers interface, neemt u contact op met de alias voor [Azure data base-migraties](mailto:AskAzureDatabaseMigrations@service.microsoft.com) voor aanvullende informatie.
 
 > [!IMPORTANT]
 > Als u alle scenario's wilt weer geven die momenteel door Azure Database Migration Service worden ondersteund in de persoonlijke preview, raadpleegt u de [DMS preview-site](https://aka.ms/dms-preview).
@@ -79,7 +79,7 @@ De volgende tabel toont Azure Database Migration Service ondersteuning voor onli
 |   | RDS MySQL | ✔ | Algemene beschikbaarheid |
 | **Azure DB voor PostgreSQL** | PostgreSQL | ✔ | Algemene beschikbaarheid |
 |   | RDS PostgreSQL | ✔ | Algemene beschikbaarheid |
-|   | Oracle | ✔ | Persoonlijke preview |
+|   | Oracle | ✔ | Openbare preview |
 
 ## <a name="next-steps"></a>Volgende stappen
 

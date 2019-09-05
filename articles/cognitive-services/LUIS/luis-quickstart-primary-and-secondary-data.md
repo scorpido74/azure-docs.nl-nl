@@ -1,5 +1,5 @@
 ---
-title: Eenvoudige entiteit, woordgroepen lijst-LUIS
+title: 'Zelfstudie: Eenvoudige entiteit, woordgroepen lijst-LUIS'
 titleSuffix: Azure Cognitive Services
 description: In deze zelfstudie haalt u via machine learning verkregen gegevens over een functienaam op uit een utterance met behulp van de entiteit Simple. Als u de nauwkeurigheid van het extraheren wilt vergroten, voegt u een woordenlijst toe met termen die specifiek gekoppeld zijn aan de Simple-entiteit.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 1b731d8000e748813649ea32c91b9566a8bc245a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 87e4fe3671f419383cb342fdb7dca55a8d2eb45d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648608"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376270"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Zelfstudie: namen extraheren met de entiteit Simple en een woordenlijst
 

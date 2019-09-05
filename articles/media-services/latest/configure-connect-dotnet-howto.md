@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Azure Media Services v3 API - .NET
-description: Leer hoe u verbinding maken met Media Services v3 API met .NET.
+title: Verbinding maken met Azure Media Services v3 API-.NET
+description: Meer informatie over hoe u verbinding maakt met Media Services v3 API met .NET.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,61 +13,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: a256eb787d7e3dbd800ec2e630cac591b07ca0fc
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3ddf5a1ab37ac0af25379394b4513627139fcbd5
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444168"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307955"
 ---
-# <a name="connect-to-media-services-v3-api---net"></a>Verbinding maken met de API van Media Services v3 - .NET
+# <a name="connect-to-media-services-v3-api---net"></a>Verbinding maken met Media Services v3 API-.NET
 
-Dit artikel ziet u hoe u verbinding maken met de .NET-SDK van Azure Media Services v3 met behulp van de methode voor de principal-aanmelding.
+In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Services v3 .NET SDK met behulp van de Service-Principal-aanmeldings methode.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Een Azure Media Services-account maken](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resourcegroep en de naam van de Media Services-account
-- Installeer het hulpprogramma die u wilt gebruiken voor .NET-ontwikkeling. De stappen in dit artikel laten zien hoe u [Community Edition van Visual Studio 2019](https://www.visualstudio.com/downloads/). U kunt Visual Studio Code gebruikt, Zie [werken met C# ](https://code.visualstudio.com/docs/languages/csharp). Of u kunt een andere code-editor gebruiken.
+- [Een Azure Media Services-account maken](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet
+- Installeer een hulp programma dat u wilt gebruiken voor .NET-ontwikkeling. In de stappen in dit artikel ziet u hoe u [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)gebruikt. U kunt Visual Studio code gebruiken. Zie [werken met C# ](https://code.visualstudio.com/docs/languages/csharp). U kunt ook een andere code-editor gebruiken.
+
+> [!IMPORTANT]
+> Bekijk [naam conventies](media-services-apis-overview.md#naming-conventions).
 
 ## <a name="create-a-console-application"></a>Een consoletoepassing maken
 
 1. Start Visual Studio. 
-1. Uit de **bestand** menu, klikt u op **nieuw** > **Project**. 
-1. Maak een **.NET Core** consoletoepassing.
+1. Klik in het menu **bestand** op **Nieuw** > **project**. 
+1. Maak een **.net core** -console toepassing.
 
-De voorbeeldapp in dit onderwerp is gericht op `netcoreapp2.0`. De code maakt gebruik van 'asynchrone hoofd', dat beschikbaar is vanaf C# 7.1. Raadpleeg deze [blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) voor meer informatie.
+De voor beeld-app in dit onderwerp `netcoreapp2.0`streeft naar doelen. De code maakt gebruik van C# ' async Main ', dat vanaf 7,1 kan worden gebruikt. Raadpleeg dit [blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) voor meer informatie.
 
 ## <a name="add-required-nuget-packages"></a>Vereiste NuGet-pakketten toevoegen
 
-1. Selecteer in Visual Studio, **extra** > **NuGet Package Manager** > **NuGet Manager-Console**.
-2. In de **Package Manager Console** venster gebruik `Install-Package` opdracht voor het toevoegen van de volgende NuGet-pakketten. Bijvoorbeeld `Install-Package Microsoft.Azure.Management.Media`.
+1. Selecteer in Visual Studio **extra** > **NuGet package manager** > **NuGet Manager-console**.
+2. In het venster **Package Manager-console** gebruikt `Install-Package` u de opdracht om de volgende NuGet-pakketten toe te voegen. Bijvoorbeeld `Install-Package Microsoft.Azure.Management.Media`.
 
 |Pakket|Description|
 |---|---|
-|`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Controleer of u de meest recente pakket met Azure Media Services, [Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
-|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|Bibliotheek ADAL-verificatie voor Azure SDK voor NET|
-|`Microsoft.Extensions.Configuration.EnvironmentVariables`|Van configuratiewaarden van omgevingsvariabelen en lokale JSON-bestanden lezen|
-|`Microsoft.Extensions.Configuration.Json`|Van configuratiewaarden van omgevingsvariabelen en lokale JSON-bestanden lezen
-|`WindowsAzure.Storage`|Storage-SDK|
+|`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Om ervoor te zorgen dat u het meest recente Azure Media Services-pakket gebruikt, controleert u [micro soft. Azure. Management. Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
+|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|ADAL-verificatie bibliotheek voor Azure SDK voor NET|
+|`Microsoft.Extensions.Configuration.EnvironmentVariables`|Configuratie waarden lezen van omgevings variabelen en lokale JSON-bestanden|
+|`Microsoft.Extensions.Configuration.Json`|Configuratie waarden lezen van omgevings variabelen en lokale JSON-bestanden
+|`WindowsAzure.Storage`|Opslag-SDK|
 
-## <a name="create-and-configure-the-app-settings-file"></a>Maken en configureren van het bestand voor app-instellingen
+## <a name="create-and-configure-the-app-settings-file"></a>Het app-instellingen bestand maken en configureren
 
-### <a name="create-appsettingsjson"></a>Appsettings.json maken
+### <a name="create-appsettingsjson"></a>AppSettings. json maken
 
-1. Ga naar gebruik **algemene** > **tekstbestand**.
-1. Geef het de naam 'appsettings.json'.
-1. Stel de eigenschap 'Kopiëren naar uitvoermap' van het .json-bestand op 'Kopiëren indien nieuwer' (zodat de toepassing toegang tot het is wanneer gepubliceerd).
+1. Go-bestand voor **algemene** > **tekst**.
+1. Noem het bestand appSettings. json.
+1. Stel de eigenschap kopiëren naar uitvoermap van het JSON-bestand in op ' kopiëren indien nieuwer ' (zodat de toepassing toegang kan krijgen tot de map wanneer deze wordt gepubliceerd).
 
-### <a name="set-values-in-appsettingsjson"></a>Setwaarden in appsettings.json
+### <a name="set-values-in-appsettingsjson"></a>Waarden instellen in appSettings. json
 
-Voer de `az ams account sp create` zoals beschreven in de opdracht [toegang tot API's](access-api-cli-how-to.md). De opdracht retourneert json die u in uw "appsettings.json" te kopiëren.
+Voer de `az ams account sp create` opdracht uit zoals beschreven in [Access-api's](access-api-cli-how-to.md). De opdracht retourneert een JSON-bestand dat u moet kopiëren naar het bestand appSettings. json.
  
 ## <a name="add-configuration-file"></a>Een configuratiebestand toevoegen
 
-Voeg een configuratiebestand dat verantwoordelijk is voor het lezen van waarden uit "appsettings.json" voor het gemak.
+Voeg voor het gemak een configuratie bestand toe dat verantwoordelijk is voor het lezen van waarden van appSettings. json.
 
-1. Voeg een nieuwe .cs-klasse aan uw project. Noem deze `ConfigWrapper`. 
-1. Plak de volgende code in dit bestand (in dit voorbeeld wordt ervan uitgegaan dat u hebt de naamruimte is `ConsoleApp1`).
+1. Voeg een nieuwe. cs-klasse toe aan uw project. Noem deze `ConfigWrapper`. 
+1. Plak de volgende code in dit bestand (in dit voor beeld wordt ervan uitgegaan dat `ConsoleApp1`u de naam ruimte hebt).
 
 ```csharp
 using System;
@@ -140,7 +143,7 @@ namespace ConsoleApp1
 
 ## <a name="connect-to-the-net-client"></a>Verbinding maken met de .NET-client
 
-Als u wilt starten met Media Services API's met .NET, moet u een **AzureMediaServicesClient**-object maken. Als u het object wilt maken, moet u referenties opgeven die de client nodig heeft om verbinding te maken met Azure met behulp van Microsoft Azure Active Directory. De functie GetCredentialsAsync maakt in de onderstaande code, het ServiceClientCredentials-object op basis van de referenties die zijn opgegeven in het lokale configuratiebestand.
+Als u wilt starten met Media Services API's met .NET, moet u een **AzureMediaServicesClient**-object maken. Als u het object wilt maken, moet u referenties opgeven die de client nodig heeft om verbinding te maken met Azure met behulp van Microsoft Azure Active Directory. In de onderstaande code maakt de functie GetCredentialsAsync het ServiceClientCredentials-object op basis van de referenties die zijn opgegeven in het lokale configuratie bestand.
 
 1. Open `Program.cs`.
 1. Plak de volgende code:

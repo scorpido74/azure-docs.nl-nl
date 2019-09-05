@@ -8,20 +8,20 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
-ms.custom: mvc, seo-java-august2019
+ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 1f05e9916a87f7258dad358ac8fff91c5ba7f25e
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 9fb110eff1d498b2b20952048759c76a2dac39f2
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172940"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306491"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Quickstart: Een apparaat beheren dat is verbonden met een Azure IoT hub met Java
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT Hub is een Azure-service waarmee u grote hoeveelheden telemetrie van uw IoT-apparaten kunt overbrengen naar de cloud en uw apparaten kunt beheren vanuit de cloud. In deze snelstartgids gebruikt u een *directe methode* om een gesimuleerd apparaat te beheren dat met uw IoT-hub is verbonden. U kunt directe methoden gebruiken om het gedrag van een apparaat dat is verbonden met uw IoT-hub, op afstand te wijzigen.
+In deze Quick Start gebruikt u een *directe methode* voor het beheren van een gesimuleerd apparaat dat is verbonden met uw Azure IOT hub met een Java-toepassing. U kunt directe methoden gebruiken om het gedrag van een apparaat dat is verbonden met uw IoT-hub, op afstand te wijzigen. IoT Hub is een Azure-service waarmee u grote hoeveelheden telemetrie van uw IoT-apparaten kunt overbrengen naar de cloud en uw apparaten kunt beheren vanuit de cloud. 
 
 In de snelstartgids worden twee vooraf geschreven Java-toepassingen gebruikt:
 

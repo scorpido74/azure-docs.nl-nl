@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 09/05/2019
 ms.author: raynew
-ms.openlocfilehash: 5d746385a034fdf742b8958b3d1fe51ea2a3c5cf
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 00b424672b505a5bb3d576c0ca4d8e334e2a1753
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972181"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383210"
 ---
 # <a name="monitor-the-process-server"></a>De proces server bewaken
 
@@ -57,10 +57,12 @@ De proces server genereert een aantal status waarschuwingen die in de volgende t
 ![Waarschuwing][yellow] | CPU-gebruik > 80% gedurende de afgelopen 15 minuten
 ![Waarschuwing][yellow] | Geheugen gebruik > 80% gedurende de afgelopen 15 minuten
 ![Waarschuwing][yellow] | Beschik bare ruimte in de cachemap < 30% gedurende de afgelopen 15 minuten
+![Waarschuwing][yellow] | Site Recovery bewaakt elke vijf minuten in behandeling/uitgaande gegevens en schat dat de gegevens in de cache van de proces server niet binnen 30 minuten naar Azure kunnen worden geüpload.
 ![Waarschuwing][yellow] | Services van de proces server worden niet uitgevoerd in de afgelopen 15 minuten
 ![Kritiek][red] | CPU-gebruik > 95% gedurende de afgelopen 15 minuten
 ![Kritiek][red] | Geheugen gebruik > 95% gedurende de afgelopen 15 minuten
 ![Kritiek][red] | Beschik bare ruimte in de cachemap < 25% gedurende de afgelopen 15 minuten
+![Kritiek][red] | Site Recovery bewaakt elke vijf minuten in behandeling/uitgaande gegevens en schat dat de gegevens in de cache van de proces server niet binnen 45 minuten naar Azure kunnen worden geüpload.
 ![Kritiek][red] | Geen heartbeat van de proces server gedurende 15 minuten.
 
 ![Tabel sleutel](./media/vmware-physical-azure-monitor-process-server/table-key.png)

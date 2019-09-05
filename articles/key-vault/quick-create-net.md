@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c4f80c977ea56da14d90d4c0d1784bc379d3a5e9
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: c67b24d57117a248559424497939a04ce347658c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259275"
+ms.locfileid: "70308944"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Quickstart: Azure Key Vault-client bibliotheek voor .NET
 
@@ -98,7 +98,7 @@ De eenvoudigste manier om een op de cloud gebaseerde .NET-toepassing te verifië
 Maak een service-principal met behulp van de opdracht Azure CLI [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
 
 ```azurecli
-az ad sp create-for-rbac -n "mySP" --sdk-auth
+az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 ```
 
 Met deze bewerking wordt een reeks sleutel-waardeparen geretourneerd. 

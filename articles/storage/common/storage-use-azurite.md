@@ -1,22 +1,22 @@
 ---
-title: De Azurite open-source-emulator gebruiken voor het ontwikkelen en testen van Blob-opslag (preview)
-description: De Azurite open-source emulator (preview) biedt een gratis lokale omgeving voor het testen van uw Azure Blob-opslag toepassingen.
+title: De Azurite open-source-emulator gebruiken voor het ontwikkelen en testen van Azure Storage (preview)
+description: De Azurite open-source emulator (preview) biedt een gratis lokale omgeving voor het testen van uw Azure Storage-toepassingen.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 06/12/2019
+ms.date: 08/31/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: ebecd6cf9af5395e4da2b395ca9b2ff974a75409
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e611afd6f10154636eb2e0dd08437b4f7468d6b3
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721704"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309533"
 ---
-# <a name="use-the-azurite-open-source-emulator-for-blob-storage-development-and-testing-preview"></a>De Azurite open-source-emulator gebruiken voor het ontwikkelen en testen van Blob-opslag (preview)
+# <a name="use-the-azurite-open-source-emulator-for-azure-storage-development-and-testing-preview"></a>De Azurite open-source-emulator gebruiken voor het ontwikkelen en testen van Azure Storage (preview)
 
-De open source-emulator (preview) van Azurite versie 3 biedt een gratis lokale omgeving voor het testen van uw Azure Blob-opslag toepassingen. Wanneer u tevreden bent over de manier waarop uw toepassing lokaal werkt, schakelt u over naar het gebruik van een Azure Storage-account in de Cloud. De emulator biedt ondersteuning voor meerdere platforms voor Windows, Linux en MacOS. Azurite v3 ondersteunt Api's die door Azure Blob service worden geïmplementeerd.
+De Azurite-versie 3,2 open-source emulator (preview) biedt een gratis lokale omgeving voor het testen van uw Azure Blob-en Queue Storage-toepassingen. Wanneer u tevreden bent over de manier waarop uw toepassing lokaal werkt, schakelt u over naar het gebruik van een Azure Storage-account in de Cloud. De emulator biedt ondersteuning voor meerdere platforms voor Windows, Linux en MacOS. Azurite v3 ondersteunt Api's die door Azure Blob service worden geïmplementeerd.
 
 Azurite is het toekomstige opslag emulator-platform. Azurite vervangt de [Azure Storage-emulator](storage-use-emulator.md). Azurite zal nog steeds worden bijgewerkt ter ondersteuning van de nieuwste versies van Azure Storage-Api's.
 
@@ -35,18 +35,21 @@ Selecteer in Visual Studio code het deel venster **uitbrei dingen** en zoek naar
 
 U kunt ook naar de [VS code-uitbreidings markt](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) in uw browser navigeren. Selecteer de knop **installeren** om Visual Studio code te openen en direct naar de uitbrei ding pagina Azurite te gaan.
 
-U kunt Azurite snel starten of sluiten door te klikken op **Azurite BLOB service** op de status balk VS-code of door de volgende opdrachten uit te geven in het palet met de VS code-opdracht. Druk op **F1** in VS code om het opdracht palet te openen.
+U kunt Azurite snel starten of sluiten door te klikken op **[Azurite BLOB Service]** of **[Azurite Queue Service]** in de status balk VS-code of door de volgende opdrachten uit te geven in het palet met de VS code-opdracht. Druk op **F1** in VS code om het opdracht palet te openen.
 
 De extensie ondersteunt de volgende Visual Studio-code opdrachten:
 
    * **Azurite: Start** -alle Azurite-Services starten
    * **Azurite: Sluiten** -alle Azurite-Services sluiten
    * **Azurite: Schonen** : alle Azurite Services-opereren-gegevens opnieuw instellen
-   * **Azurite: Start** -BLOB start BLOB-service
-   * **Azurite: Sluiten** -Blob-Blob-service sluiten
-   * **Azurite: Schone** Blob-Blob-service opschonen
+   * **Azurite: BLOB-service** starten-BLOB-service starten
+   * **Azurite: BLOB service** sluiten-BLOB-service sluiten
+   * **Azurite: BLOB-service** opschonen-BLOB-service opschonen
+   * **Azurite: Queue-service** starten-wachtrij service starten
+   * **Azurite: Wachtrij service** sluiten-wachtrij service sluiten
+   * **Azurite: Schone wachtrij service** -wachtrij service opschonen
 
-Als u Azurite in Visual Studio code wilt configureren, selecteert u het deel venster uitbrei dingen en klikt u met de rechter muisknop op **Azurite**. Selecteer **extensie-instellingen configureren**.
+Als u Azurite in Visual Studio code wilt configureren, selecteert u het deel venster uitbrei dingen. Selecteer het pictogram **beheren** (vistuig) voor **Azurite**. Selecteer **extensie-instellingen configureren**.
 
 ![Azurite configureren](media/storage-use-azurite/azurite-configure-extension-settings.png)
 
@@ -56,6 +59,8 @@ De volgende instellingen worden ondersteund:
    * **Azurite: BLOB-** poort: de BLOB service Luister poort. De standaard poort is 10000.
    * **Azurite: Debug** : uitvoer het logboek voor fout opsporing naar het Azurite-kanaal. De standaardwaarde is **false**.
    * **Azurite: Locatie** : het pad naar de locatie van de werk ruimte. De standaard waarde is de werkmap Visual Studio-code.
+   * **Azurite: Wachtrij-** host: het Queue-service luisterende eind punt. De standaard instelling is 127.0.0.1.
+   * **Azurite: Wachtrij poort** : de Queue-service Luister poort. De standaard poort is 10001.
    * **Azurite:**  In de Stille modus wordt het toegangs logboek uitgeschakeld. De standaardwaarde is **false**.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>Azurite installeren en uitvoeren met behulp van NPM
@@ -81,15 +86,22 @@ docker pull mcr.microsoft.com/azure-storage/azurite
 Met de volgende opdracht wordt de Azurite docker-installatie kopie uitgevoerd. De `-p 10000:10000` para meter stuurt aanvragen van de poort 10000 van de hostcomputer door naar het docker-exemplaar.
 
 ```console
-docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
 ```
 
 **De locatie van de werk ruimte opgeven**:
 
-In het volgende voor beeld wordt `-v c:/azurite:/data` de para `c:/azurite` meter opgegeven als de Azurite permanente gegevens locatie.
+In het volgende voor beeld geeft `-v c:/azurite:/data` de para meter *c:/Azurite* op als de persistente gegevens locatie Azurite. De map, *c:/Azurite*, moet worden gemaakt voordat u de opdracht docker uitvoert.
 
 ```console
-docker run -p 10000:10000 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
+```
+
+**Alleen de BLOB-service uitvoeren**
+
+```console
+docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite
+    azurite-blob --blobHost 0.0.0.0 --blobPort 10000
 ```
 
 **Alle Azurite-para meters instellen**:
@@ -98,11 +110,14 @@ In dit voor beeld ziet u hoe u alle opdracht regel parameters kunt instellen. Al
 
 ```console
 docker run -p 8888:8888
+           -p 9999:9999
            -v c:/azurite:/workspace mcr.microsoft.com/azure-storage/azurite azurite
            -l /workspace
            -d /workspace/debug.log
            --blobPort 8888
            --blobHost 0.0.0.0
+           --queuePort 9999
+           --queueHost 0.0.0.0
 ```
 
 Zie [opdracht regel opties](#command-line-options) voor meer informatie over het configureren van Azurite bij het opstarten.
@@ -143,13 +158,15 @@ Met deze opdracht wordt Azurite om alle gegevens op te slaan in een bepaalde map
 In deze sectie vindt u meer informatie over de opdracht regel opties die beschikbaar zijn bij het starten van Azurite. Alle opdracht regel opties zijn optioneel.
 
 ```console
-C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>]
-    [-l | --location <workspace path>] [-s | --silent] [-d | --debug <log file path>]
+C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>] 
+    [-d | --debug <log file path>] [-l | --location <workspace path>]
+    [--queueHost <IP address>] [--queuePort <port address>]
+    [-s | --silent] [-h | --help]
 ```
 
-De **-l** -switch is een snelkoppeling voor de **locatie**, **-s** is een snelkoppeling voor **--Silent**en **-d** is een snelkoppeling voor **--debug**.
+De **-d** is een snelkoppeling voor **--** de schakel optie- **l** is een snelkoppeling voor **--locatie**, **-s** is een snelkoppeling voor **--Silent**en **-h** is een snelkoppeling voor **--Help**.
 
-### <a name="listening-host"></a>Luisterende host
+### <a name="blob-listening-host"></a>BLOB luistert host
 
 **Optioneel** Azurite wordt standaard naar 127.0.0.1 geluisterd als de lokale server. Gebruik de schakel optie **--blobHost** om het adres in te stellen op uw vereisten.
 
@@ -168,7 +185,7 @@ azurite --blobHost 0.0.0.0
 > [!CAUTION]
 > Het toestaan van externe aanvragen kan uw systeem kwetsbaar maken voor externe aanvallen.
 
-### <a name="listening-port-configuration"></a>Configuratie van luisterende poort
+### <a name="blob-listening-port-configuration"></a>Poort configuratie voor BLOB-Luister
 
 **Optioneel** Azurite luistert standaard naar de Blob service op poort 10000. Gebruik de schakel optie **--blobPort** om de luisterende poort op te geven die u nodig hebt.
 
@@ -185,6 +202,46 @@ Het systeem automatisch een beschik bare poort laten selecteren:
 
 ```console
 azurite --blobPort 0
+```
+
+De poort die in gebruik is, wordt weer gegeven tijdens het opstarten van Azurite.
+
+### <a name="queue-listening-host"></a>Luisterende host in wachtrij plaatsen
+
+**Optioneel** Azurite wordt standaard naar 127.0.0.1 geluisterd als de lokale server. Gebruik de schakel optie **--queueHost** om het adres in te stellen op uw vereisten.
+
+Alleen aanvragen op de lokale computer accepteren:
+
+```console
+azurite --queueHost 127.0.0.1
+```
+
+Externe aanvragen toestaan:
+
+```console
+azurite --queueHost 0.0.0.0
+```
+
+> [!CAUTION]
+> Het toestaan van externe aanvragen kan uw systeem kwetsbaar maken voor externe aanvallen.
+
+### <a name="queue-listening-port-configuration"></a>Poort configuratie voor Luis teren in wachtrij
+
+**Optioneel** Azurite luistert standaard naar de Queue-service op poort 10001. Gebruik de schakel optie **--queuePort** om de luisterende poort op te geven die u nodig hebt.
+
+> [!NOTE]
+> Nadat u een aangepaste poort hebt gebruikt, moet u de connection string of de bijbehorende configuratie bijwerken in uw Azure Storage-hulpprogram ma's of Sdk's.
+
+De Queue-service-Luister poort aanpassen:
+
+```console
+azurite --queuePort 8888
+```
+
+Het systeem automatisch een beschik bare poort laten selecteren:
+
+```console
+azurite --queuePort 0
 ```
 
 De poort die in gebruik is, wordt weer gegeven tijdens het opstarten van Azurite.
@@ -215,7 +272,7 @@ azurite -s
 
 ### <a name="debug-log"></a>Logboek voor fout opsporing
 
-**Optioneel** Het logboek voor fout opsporing bevat gedetailleerde informatie over elke aanvraag en uitzonderings Stack tracering. Schakel het logboek voor fout opsporing in door een geldig lokaal bestandspad op te geven bij de schakel optie voor het opsporen van **fouten** .
+**Optioneel** Het logboek voor fout opsporing bevat gedetailleerde informatie over elke aanvraag en uitzonderings Stack tracering. Schakel het logboek voor fout opsporing in door een geldig lokaal bestandspad op te geven bij de schakel optie voor het **opsporen van fouten** .
 
 ```console
 azurite --debug path/debug.log

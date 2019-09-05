@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/22/2019
+ms.date: 09/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37a527e8cd83d292d8af8af5acd0c903c63081f2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 709bf2e413ddb40ae1ed84672cea0c0b71be2ce6
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014074"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305941"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met harnas
 
@@ -74,7 +74,7 @@ Als u Azure AD SSO wilt configureren en testen met harnas, voltooit u de volgend
 
 Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina **harnas** toepassings integratie de sectie **beheren** en selecteer eenmalige **aanmelding**.
+1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina **harnas** toepassings integratie de sectie **beheren** en selecteer **eenmalige aanmelding**.
 1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
 1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
@@ -131,17 +131,25 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
 ## <a name="configure-harness-sso"></a>Harnas-SSO configureren
 
-1. Open een nieuw webbrowser venster en meld u aan bij uw harnas bedrijfs site als beheerder.
+1. Als u de configuratie binnen de harnas wilt automatiseren, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
 
-1. Klik in de rechter bovenhoek van de pagina op **continue beveiliging** > **toegangs beheer** > **verificatie-instellingen**.
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
+
+2. Nadat u een uitbrei ding aan de browser hebt toegevoegd, klikt u op de **installatie van harnas** wordt u naar de harnas-toepassing geleid. Geef de beheerders referenties op om u aan te melden bij harnas. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-6 geautomatiseerd.
+
+    ![Configuratie van Setup](common/setup-sso.png)
+
+3. Als u een harnas hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij uw harnas bedrijfs site als beheerder en voert u de volgende stappen uit:
+
+4. Klik in de rechter bovenhoek van de pagina op **continue beveiliging** > **toegangs beheer** > **verificatie-instellingen**.
 
     ![Harnas configuratie](./media/harness-tutorial/configure01.png)
 
-1. Klik in de sectie **SSO-providers** op **+ SSO-providers** >toevoegen **SAML**.
+5. Klik in de sectie **SSO-providers** op **+ SSO-providers** >toevoegen **SAML**.
 
     ![Harnas configuratie](./media/harness-tutorial/configure03.png)
 
-1. Voer de volgende stappen uit in het pop-upvenster van de **SAML-provider** :
+6. Voer de volgende stappen uit in het pop-upvenster van de **SAML-provider** :
 
     ![Harnas configuratie](./media/harness-tutorial/configure02.png)
 

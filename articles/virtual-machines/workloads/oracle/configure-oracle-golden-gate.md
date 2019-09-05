@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 40eaabb149e2e897ecd4e1109e0db7c42b990925
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 31137bba8c9b6b88c6a8b9569c02ae887e73e8d0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101549"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309591"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Oracle Golden-Gate implementeren op een Azure Linux-VM 
 
 De Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts. Deze hand leiding bevat informatie over het gebruik van de Azure CLI voor het implementeren van een Oracle 12c-data base vanuit de galerie met Azure Marketplace-installatie kopieën. 
 
-Dit document bevat stapsgewijze instructies voor het maken, installeren en configureren van Oracle Golden-Gate op een virtuele machine van Azure.
+Dit document bevat stapsgewijze instructies voor het maken, installeren en configureren van Oracle Golden-Gate op een virtuele machine van Azure. In deze zelf studie worden twee virtuele machines ingesteld in een beschikbaarheidsset in één regio. Dezelfde zelf studie kan worden gebruikt voor het instellen van OracleGolden-Gate voor virtuele machines in verschillende Beschikbaarheidszones in één Azure-regio of voor het instellen van Vm's in twee verschillende regio's.
 
 Voordat u begint, moet u controleren of de Azure-CLI is geïnstalleerd. Zie voor meer informatie de [Installatiehandleiding van de Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 

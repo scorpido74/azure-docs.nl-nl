@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 36cd9b560bd149fd837db09cba33ce6bb2199a20
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 07089def3290d6d64919ad2551de7584646cc681
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827738"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306622"
 ---
 # <a name="get-face-detection-data"></a>Detectie gegevens van het gezicht ophalen
 
@@ -29,7 +29,7 @@ In deze hand leiding wordt uitgelegd hoe u:
 
 ## <a name="setup"></a>Instellen
 
-In deze hand leiding wordt ervan uitgegaan dat [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) u al een FaceClient `faceClient`-object met de naam hebt gemaakt met een face-abonnements sleutel en eind punt-URL. Hier kunt u de functie voor gezichts herkenning gebruiken door het aanroepen van [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), dat wordt gebruikt in deze hand leiding of [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Zie voor instructies voor het instellen van deze functie de [Snelstartgids gezichten detecteren voor C# ](../quickstarts/csharp-detect-sdk.md).
+In deze hand leiding wordt ervan uitgegaan dat [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) u al een FaceClient `faceClient`-object met de naam hebt gemaakt met een face-abonnements sleutel en eind punt-URL. Hier kunt u de functie voor gezichts herkenning gebruiken door het aanroepen van [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), dat wordt gebruikt in deze hand leiding of [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Volg een van de Quick starts voor instructies over het instellen van deze functie.
 
 Deze hand leiding is gericht op de details van de detectie aanroep, zoals de argumenten die u kunt door geven en wat u met de geretourneerde gegevens kunt doen. U wordt aangeraden alleen een query uit te voeren voor de functies die u nodig hebt. Elke bewerking heeft meer tijd nodig om te volt ooien.
 

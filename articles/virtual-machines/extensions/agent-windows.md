@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: roiyz
-ms.openlocfilehash: ba82b026fe69bd22b3afa89ddb73373dfd194472
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6a845cad298e2aedbe68a11cd170120d1d229043
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092697"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382828"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Overzicht van de agent voor virtuele Azure-machines
 De Microsoft Azure-agent van de virtuele machine (VM-agent) is een veilig, licht gewicht proces dat interactie van de virtuele machine (VM) beheert met de Azure Fabric-controller. De VM-agent heeft een primaire rol bij het inschakelen en uitvoeren van extensies van virtuele Azure-machines. VM-extensies maken de configuratie van de na de implementatie van de VM mogelijk, zoals het installeren en configureren van software. VM-extensies bieden ook herstel functies, zoals het opnieuw instellen van het beheerders wachtwoord van een virtuele machine. Zonder de VM-agent van Azure kunnen VM-extensies niet worden uitgevoerd.
@@ -66,6 +66,9 @@ U kunt de VM-agent installeren door te dubbel klikken op het Windows Installer-b
 ```cmd
 msiexec.exe /i WindowsAzureVmAgent.2.7.1198.778.rd_art_stable.160617-1120.fre /quiet
 ```
+
+### <a name="prerequisites"></a>Vereisten
+De Windows VM-agent moet ten minste Windows Server 2008 R2 (64-bits) uitvoeren, met .NET Framework 4,0.
 
 ## <a name="detect-the-vm-agent"></a>De VM-agent detecteren
 

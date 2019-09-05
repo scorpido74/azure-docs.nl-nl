@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 9907bf49b99f3e8a09f2924c386c1f76891a8c15
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.date: 09/04/2019
+ms.openlocfilehash: f567eefee84cf6a01afad4e5245337dd92b8cc48
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232545"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309434"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Leesreplica's in Azure Database for MySQL
 
 Met de functie leesreplica kunt u gegevens van een Azure Database for MySQL-server repliceren naar een alleen-lezen server. U kunt van de hoofdserver naar maximaal vijf replica's repliceren. Replica's worden asynchroon bijgewerkt met behulp van de systeemeigen, op de positie van het binlog-bestand (binair logboekbestand) gebaseerde replicatietechnologie van het MySQL-systeem. Meer informatie over binlog-replicatie vindt u in het [overzicht van MySQL binlog-replicatie](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
-
-> [!IMPORTANT]
-> U kunt een lees replica maken in dezelfde regio als uw hoofd server of in andere Azure-regio's van uw keuze. Replicatie tussen regio's is momenteel beschikbaar als open bare preview.
 
 Replica's zijn nieuwe servers die u op dezelfde manier beheert als gewone Azure Database for MySQL servers. Voor elke Lees replica wordt u gefactureerd voor de ingerichte Compute in vCores en Storage in GB/maand.
 
@@ -36,9 +33,6 @@ De functie replica lezen maakt gebruik van MySQL-asynchrone replicatie. De funct
 
 ## <a name="cross-region-replication"></a>Replicatie tussen regio's
 U kunt een lees replica maken in een andere regio dan de hoofd server. Replicatie tussen regio's kan handig zijn voor scenario's zoals het plannen van herstel na nood gevallen of gegevens dichter bij uw gebruikers te brengen.
-
-> [!IMPORTANT]
-> Replicatie tussen regio's is momenteel beschikbaar als open bare preview.
 
 U kunt een hoofd server in een [Azure database for MySQL regio](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)hebben.  Een hoofd server kan een replica hebben in het gekoppelde gebied of in de universele replica regio's.
 

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/28/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: e80f852a48d7da9480e6c0eddc675e6bcf524eb7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ce8d0d669af93d4886b4bca25f67e9261e5af20a
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562960"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308128"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Antwoorden vinden op vragen met behulp van een knowledge base met Node.js
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Quickstart: Antwoorden vinden op vragen met behulp van een knowledge base met Node.js
 
 In deze quickstart wordt beschreven hoe u programmatisch een antwoord uit een gepubliceerde QnA Maker-knowledge base kunt ophalen. De Knowledge Base bevat vragen en antwoorden van [gegevens bronnen](../Concepts/data-sources-supported.md) , zoals Veelgestelde vragen. De [vraag](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) wordt verzonden naar de QnA Maker-service. Het [antwoord](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) bevat het meest voorspelde antwoord. 
 

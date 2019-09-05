@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 661adb755d076b0cc6114a287855482165ccb817
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 8c7680896507cd3738fa3bce0d30a516d08509c4
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208088"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383293"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Account migratie van Cloud Partner-portal naar het partner centrum
 
@@ -43,17 +43,17 @@ In het geval dat uw CPP-account geen Microsoft Partner Network-ID heeft of een c
 Migratie moet slechts één keer plaatsvinden voor een bepaald account. Zodra een gegeven partner de migratie voor het account heeft voltooid, zien alle eigen aren dit gedrag op hun Publisher-profiel pagina:
 
 1. U ziet de pagina partner instellingen in Microsoft Partner Network, waar u nu account instellingen kunt beheren. 
-2. Een geel span doek op de Publisher-profiel pagina in CPP wordt weer gegeven aan gebruikers die de rol eigenaar hebben, om hen te vragen hun account instellingen in het partner centrum te beheren. 
-3. De pagina account instellingen in CPP wordt geconverteerd naar de modus alleen-lezen. 
+2. Een geel span doek op de Publisher-profiel pagina in CPP wordt weer gegeven aan gebruikers die de rol eigenaar hebben, om hen te vragen hun account instellingen in het partner centrum te beheren.
+3. De pagina account instellingen in CPP wordt geconverteerd naar de modus alleen-lezen.
 
 ## <a name="move-dynamics-365-based-solutions-to-partner-center"></a>Op Dynamics 365 gebaseerde oplossingen verplaatsen naar het partner centrum
 
 Als u Dynamics 365 hebt gemaakt voor klant betrokkenheid of Dynamics 365 voor financiering en operationele oplossingen in de ene commerciële partner GTM-Portal, **moeten deze oplossingen nu worden beheerd in het partner centrum**.
 
-**Als u uw oplossingen niet op 31 augustus 2019 hebt verplaatst**, voert u de onderstaande stappen zo snel mogelijk uit. Totdat u dit doet: 
+**Als u uw oplossingen niet op 31 augustus 2019 hebt verplaatst**, voert u de onderstaande stappen zo snel mogelijk uit. Totdat u dit doet:
 - Isv's hebben geen toegang tot marketing voordelen
 - De prioriteit van gezamenlijk verkopen gaat verloren
-- Gebruikers die het insluiten van Clouds vereisen, zijn niet compatibel
+- Die vereisen dat het insluiten van Clouds na 15 oktober 2019 niet meer wordt nageleefd
 
 > [!NOTE]
 > Als uw MPN-lidmaatschaps account oorspronkelijk is gemaakt in het Partner Membership Center (PMC), meldt u zich aan bij het [partner centrum](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) om te bevestigen dat uw account is gemigreerd voordat u de onderstaande stappen hebt voltooid. Als er een profiel scherm met uw MPN-ID wordt weer gegeven, bent u klaar om door te gaan. Als dat niet het geval is, moet u uw account migratie starten door de prompts in het [Partner Membership Center](https://partners.microsoft.com/partnerprogram/Welcome.aspx)te volgen. Als u hulp nodig hebt, gaat u naar [ondersteuning](https://partner.microsoft.com/support?issueid=100-0077).

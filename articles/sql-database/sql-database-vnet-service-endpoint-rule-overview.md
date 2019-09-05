@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: 8948a0fe6112df0d29c0f04685dadbd379a4a382
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d924f0eb89984fbe77f94eff553d00a25b4b7a3a
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098911"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309621"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Service-eind punten en-regels voor virtuele netwerken gebruiken voor database servers
 
@@ -71,8 +71,6 @@ U hebt de mogelijkheid om op [rollen gebaseerd toegangs beheer (RBAC)][rbac-what
 ## <a name="limitations"></a>Beperkingen
 
 Voor Azure SQL Database heeft de functie regels voor virtuele netwerken de volgende beperkingen:
-
-- Een web-app kan worden toegewezen aan een persoonlijk IP-adres in een VNet/subnet. Zelfs als service-eind punten zijn ingeschakeld vanuit het opgegeven VNet/subnet, hebben verbindingen van de web-app naar de server een open bare IP-bron van Azure, niet een VNet/subnet-bron. Als u de verbinding van een web-app naar een server met VNet-firewall regels wilt inschakelen, moet u **Azure-Services toegang geven** tot de server op de server.
 
 - In de firewall voor uw SQL Database verwijst elke virtuele netwerk regel naar een subnet. Al deze subnetten waarnaar wordt verwezen, moeten worden gehost in dezelfde geografische regio die als host fungeert voor de SQL Database.
 
@@ -256,7 +254,7 @@ U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtu
 
     > [!TIP]
     > U moet het juiste **adres voorvoegsel** voor uw subnet toevoegen. U kunt de waarde vinden in de portal.
-    > Ga naar alle **resources** &gt; **alle typen** &gt; **virtuele netwerken**. Met het filter worden uw virtuele netwerken weer gegeven. Klik op uw virtuele netwerk en klik vervolgensop subnetten. De kolom **adres bereik** bevat het adres voorvoegsel dat u nodig hebt.
+    > Ga naar alle **resources** &gt; **alle typen** &gt; **virtuele netwerken**. Met het filter worden uw virtuele netwerken weer gegeven. Klik op uw virtuele netwerk en klik vervolgens op **subnetten**. De kolom **adres bereik** bevat het adres voorvoegsel dat u nodig hebt.
 
     ![Vul velden in voor nieuwe regel.][image-portal-firewall-create-update-vnet-rule-20-png]
 

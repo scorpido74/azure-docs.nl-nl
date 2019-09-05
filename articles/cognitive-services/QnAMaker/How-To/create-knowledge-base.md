@@ -1,5 +1,5 @@
 ---
-title: Knowledge Base maken-QnA Maker
+title: 'Quickstart: Knowledge Base maken-QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: U kunt de QnA Maker-API-service portal gebruiken om een kennis database maken toe te voegen met Chit-Chat. Hierdoor is uw app actief. Voeg een vooraf ingevulde set van de bovenste Chit toe aan uw KB als uitgangs punt voor de Chit van uw bot en bespaar uw tijd en kosten om ze volledig te schrijven.
 services: cognitive-services
@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: conceptual
-ms.date: 08/30/2019
+ms.topic: quickstart
+ms.date: 09/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 322a1d25ed434d8be674288b1b13d6ecf961590b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 798bbb725d4764c5ec7a1d69770e9508af0fdf5a
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193559"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376217"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Quickstart: Een kennis database maken met behulp van de QnA Maker-API-Service Portal
 
@@ -47,7 +47,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 1. Geef uw service een **naam** zoals `my first kb`. Dubbele namen en speciale tekens worden ondersteund.
 
-1. Voeg de pagina voor het oplossen van problemen QnA Maker `https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/troubleshooting`toe als URL `+ Add URL`: en selecteer deze. Zie voor meer informatie over de verschillende typen gegevensbronnen ondersteund [hier](../Concepts/data-sources-supported.md). Voor deze Snelstartgids uploadt u **geen bestanden** voor gegevens die u wilt extra heren. Zie de [informatie over de prijzen](https://aka.ms/qnamaker-pricing) om te zien hoeveel documenten kunnen toevoegen.
+1. Voeg de pagina voor het oplossen van problemen QnA Maker `https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/troubleshooting`toe als URL `+ Add URL`: en selecteer deze. Zie voor meer informatie over de verschillende typen gegevensbronnen ondersteund [hier](../Concepts/data-sources-supported.md). Voor deze Snelstartgids **uploadt u geen bestanden** voor gegevens die u wilt extra heren. Zie de [informatie over de prijzen](https://aka.ms/qnamaker-pricing) om te zien hoeveel documenten kunnen toevoegen.
 
 1. Voeg  **_professionele_ Chit-Chat** toe aan uw KB. 
 

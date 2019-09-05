@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 7fe2c39871f1cd512da7f9a2c5146e79abbe74a6
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ecceb1177d7b7015afc92f10284a9372d0cfb4a2
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279604"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375301"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Ondersteuningsmatrix voor VMware-evaluatie en -migratie
 
@@ -73,7 +73,7 @@ Azure Migrate voert een licht gewicht apparaat uit om virtuele VMware-machines t
 
 **Ondersteuning** | **Details**
 --- | ---
-**Implementatie van het apparaat** | U implementeert het apparaat als een virtuele VMware-machine. U hebt voldoende resources op de vCenter Server nodig om een virtuele machine toe te wijzen met 32 GB RAM, 8 Vcpu's en een externe virtuele switch.<br/><br/> Voor het apparaat is toegang tot internet vereist, hetzij rechtstreeks hetzij via een proxy.<br/> De toestel-VM moet worden geïmplementeerd op een ESXi-host waarop versie 5,5 of hoger wordt uitgevoerd. 
+**Implementatie van het apparaat** | U implementeert het apparaat als een virtuele VMware-machine. U hebt voldoende resources op de vCenter Server nodig om een virtuele machine toe te wijzen met 32 GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/><br/> Voor het apparaat is toegang tot internet vereist, hetzij rechtstreeks hetzij via een proxy.<br/> De toestel-VM moet worden geïmplementeerd op een ESXi-host waarop versie 5,5 of hoger wordt uitgevoerd. 
 **Azure Migrate project** | Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> U kunt Maxi maal 35.000 Vm's in een project evalueren.
 **Detectie** | Een apparaat kan tot 10.000 VMware-Vm's detecteren op een vCenter Server.<br/> Een apparaat kan verbinding maken met één vCenter Server.
 **Beoordelings groep** | U kunt Maxi maal 35.000 computers in één groep toevoegen.

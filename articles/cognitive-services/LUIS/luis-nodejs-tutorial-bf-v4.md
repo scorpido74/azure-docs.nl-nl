@@ -1,5 +1,5 @@
 ---
-title: Language Understanding bot-node. js v4
+title: 'Zelfstudie: Language Understanding bot-node. js v4'
 titleSuffix: Azure Cognitive Services
 description: Bouw met behulp van Node.js een chatbot met ingebouwd taalbegrip (LUIS). Deze chatbot maakt gebruik van de app Human Resources om snel een botoplossing te implementeren. De bot is gebouwd met Bot Framework versie 4 en de Azure-web-app-bot.
 services: cognitive-services
@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 08/30/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 8455a9c9ecff89643e090f1d763a44f97f5779f5
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 8227a7683c1333b21537630f7f074f624926f984
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70206893"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375775"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Zelfstudie: Een web-app-bot gebruiken die is ingeschakeld met Language Understanding in node. js 
 

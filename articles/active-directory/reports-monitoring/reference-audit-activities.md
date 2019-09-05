@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56a94ef3f6ea5737b629efe44bd3e1cc1f36a693
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: aaa60a7737b7781a21e23516d139332f10bdf448
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127131"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306017"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referentie voor auditactiviteiten van Azure AD
 
@@ -31,7 +31,7 @@ Met Azure Active Directory-rapporten (Azure AD) kunt u de gegevens ophalen die u
 De rapportstructuur in Azure AD bestaat uit de volgende onderdelen:
 
 - **Activiteitsrapporten** 
-    - [](concept-sign-ins.md) Aanmeldingen: bevat informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers
+    - [Aanmeldingen](concept-sign-ins.md) : bevat informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers
     - [Auditlogboeken](concept-audit-logs.md): traceerbaarheid via logboeken voor alle door diverse functies binnen Azure AD uitgevoerde wijzigingen. 
     
 - **Beveiligingsrapporten** 
@@ -408,6 +408,14 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 |Directory Management|IDP's voor een specifieke beheerstroom ophalen|
 |Directory Management|Lijst van alle beheerstromen ophalen|
 |Directory Management|Lijst met labels voor alle beheerstromen voor alle gebruikers ophalen|
+|Groepsbeheer|Groeps leden bulksgewijs downloaden-gestart|
+|Groepsbeheer|Groeps leden bulksgewijs downloaden-voltooid|
+|Groepsbeheer|Groeps leden voor bulk import-gestart|
+|Groepsbeheer|Groeps leden Bulk Import-voltooid|
+|Groepsbeheer|Groeps leden bulksgewijs verwijderen-gestart|
+|Groepsbeheer|Groeps leden bulksgewijs verwijderen-voltooid|
+|Groepsbeheer|Bulksgewijs downloaden van groepen-gestart|
+|Groepsbeheer|Groepen voor bulksgewijs downloaden-voltooid|
 |Groepsbeheer|Lijst met tenants voor een gebruiker ophalen|
 |Groepsbeheer|Zelf-gecontroleerde claims voor lokale accounts ophalen|
 |Groepsbeheer|Gelokaliseerde resource-json ophalen|
@@ -454,28 +462,42 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 |Rolbeheer|Apparaatconfiguratie verwijderen|
 |Rolbeheer|Apparaat niet meer conform|
 |Rolbeheer|Apparaat wordt niet meer beheerd|
-|Gebruikersbeheer|Geregistreerde eigenaar van apparaat verwijderen|
-|Gebruikersbeheer|Geregistreerde gebruikers van apparaat verwijderen|
-|Gebruikersbeheer|Apparaat bijwerken|
-|Gebruikersbeheer|Apparaatconfiguratie bijwerken|
-|Gebruikersbeheer|In aanmerking komend lid aan rol toevoegen|
-|Gebruikersbeheer|Lid aan rol toevoegen|
-|Gebruikersbeheer|Roltoewijzing aan roldefinitie toevoegen|
-|Gebruikersbeheer|Rol vanuit sjabloon toevoegen|
-|Gebruikersbeheer|Scoped lid aan rol toevoegen|
-|Gebruikersbeheer|In aanmerking komen lid uit rol verwijderen|
-|Gebruikersbeheer|Lid uit rol verwijderen|
-|Gebruikersbeheer|Roltoewijzing uit roldefinitie verwijderen|
-|Gebruikersbeheer|Scoped lid uit rol verwijderen|
-|Gebruikersbeheer|Rol bijwerken|
 |Gebruikersbeheer|AccessReview_Review|
 |Gebruikersbeheer|AccessReview_Update|
 |Gebruikersbeheer|ActivationAborted|
 |Gebruikersbeheer|ActivationApproved|
 |Gebruikersbeheer|ActivationCanceled|
 |Gebruikersbeheer|ActivationRequested|
+|Gebruikersbeheer|In aanmerking komend lid aan rol toevoegen|
+|Gebruikersbeheer|Lid aan rol toevoegen|
+|Gebruikersbeheer|Roltoewijzing aan roldefinitie toevoegen|
+|Gebruikersbeheer|Rol vanuit sjabloon toevoegen|
+|Gebruikersbeheer|Scoped lid aan rol toevoegen|
 |Gebruikersbeheer|Toegevoegd|
 |Gebruikersbeheer|Toewijzen|
+|Gebruikersbeheer|Bulksgewijs gemaakte gebruikers maken-gestart|
+|Gebruikersbeheer|Gebruikers bulksgewijs maken-voltooid|
+|Gebruikersbeheer|Gebruikers bulksgewijs verwijderen-gestart|
+|Gebruikersbeheer|Gebruikers bulksgewijs verwijderen-voltooid|
+|Gebruikersbeheer|Gebruikers met massale down load-gestart|
+|Gebruikersbeheer|Gebruikers bulksgewijs downloaden-voltooid|
+|Gebruikersbeheer|Verwijderde gebruikers bulksgewijs herstellen-gestart|
+|Gebruikersbeheer|Verwijderde gebruikers bulksgewijs herstellen-voltooid|
+|Gebruikersbeheer|Gebruikers met massale uitnodiging-gestart|
+|Gebruikersbeheer|Bulk-uitnodiging voor gebruikers-voltooid|
+|Gebruikersbeheer|Geregistreerde eigenaar van apparaat verwijderen|
+|Gebruikersbeheer|Geregistreerde gebruikers van apparaat verwijderen|
+|Gebruikersbeheer|In aanmerking komen lid uit rol verwijderen|
+|Gebruikersbeheer|Lid uit rol verwijderen|
+|Gebruikersbeheer|Roltoewijzing uit roldefinitie verwijderen|
+|Gebruikersbeheer|Scoped lid uit rol verwijderen|
+|Gebruikersbeheer|Apparaat bijwerken|
+|Gebruikersbeheer|Apparaatconfiguratie bijwerken|
+|Gebruikersbeheer|Rol bijwerken|
+
+
+
+
 
 
 ## <a name="identity-protection"></a>Identiteitsbeveiliging

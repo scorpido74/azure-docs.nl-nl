@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 63150b8924438df8d77fdd088811d9fbe3ec2d84
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: bff6268507c0d2ec0aa1eac0c7e2e9d2513ded58
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967312"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376127"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Virtuele Azure-machines verplaatsen tussen Azure Government en open bare regio's 
 
@@ -33,7 +33,7 @@ In deze zelf studie leert u hoe u virtuele Azure-machines tussen Azure Governmen
 > * De resources in de bronregio verwijderen
 
 > [!IMPORTANT]
-> In deze zelf studie ziet u hoe u virtuele Azure-machines verplaatst tussen Azure Government en open bare regio's, of tussen de paren van regio's die niet worden ondersteund door de reguliere oplossing voor herstel na nood gevallen voor Azure-Vm's. In het geval worden de paren van de bron-en doel regio's [ondersteund](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support). Raadpleeg dit [document](azure-to-azure-tutorial-migrate.md) voor de verplaatsing. Raadpleeg de zelf studie als u de beschik baarheid wilt verbeteren door Vm's in een beschikbaarheidsset te verplaatsen naar een zone vastgemaakte Vm's [](move-azure-VMs-AVset-Azone.md)in een andere regio.
+> In deze zelf studie ziet u hoe u virtuele Azure-machines verplaatst tussen Azure Government en open bare regio's, of tussen de paren van regio's die niet worden ondersteund door de reguliere oplossing voor herstel na nood gevallen voor Azure-Vm's. In het geval worden de paren van de bron-en doel regio's [ondersteund](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support). Raadpleeg dit [document](azure-to-azure-tutorial-migrate.md) voor de verplaatsing. Raadpleeg [de zelf studie](move-azure-VMs-AVset-Azone.md)als u de beschik baarheid wilt verbeteren door vm's in een beschikbaarheidsset te verplaatsen naar een zone vastgemaakte vm's in een andere regio.
 
 > [!IMPORTANT]
 > Het is niet raadzaam om deze methode te gebruiken voor het configureren van DR tussen de niet-ondersteunde regio paren, aangezien de paren worden gedefinieerd, wat van belang is voor een nood herstel scenario.
@@ -98,8 +98,8 @@ De Mobility-service moet worden geïnstalleerd op elke server die u wilt replice
      Raadpleeg de volgende documenten om de meest gebruikte netwerkresources te maken die relevant zijn voor u, op basis van de bron-VM-configuratie.
 
     - [Netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Load balancers](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
-    - [Openbare IP](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [Load balancers](https://docs.microsoft.com/azure/load-balancer)
+    - [Openbare IP](../virtual-network/virtual-network-public-ip-address.md)
     
     Voor andere netwerkonderdelen raadpleegt u de [netwerkondersteuningsdocumentatie.](https://docs.microsoft.com/azure/#pivot=products&panel=network) 
 
@@ -178,7 +178,7 @@ Selecteer en controleer doelbronnen.
     ![Replicatiebeleid](./media/physical-azure-disaster-recovery/replication-policy.png)
 
 
-Het beleid wordt automatisch gekoppeld aan de configuratieserver. Standaard wordt automatisch een bijbehorend beleid gemaakt voor failback. Als het replicatie beleid bijvoorbeeld **rep-Policy** is, wordt er een beleid voor failbackbeleid gemaakt. Dit beleid wordt pas gebruikt als u een failback initieert vanuit Azure.
+Het beleid wordt automatisch gekoppeld aan de configuratieserver. Standaard wordt automatisch een bijbehorend beleid gemaakt voor failback. Als het replicatie beleid bijvoorbeeld **rep-Policy** is **, wordt er een beleid voor** failbackbeleid gemaakt. Dit beleid wordt pas gebruikt als u een failback initieert vanuit Azure.
 
 ### <a name="enable-replication"></a>Replicatie inschakelen
 

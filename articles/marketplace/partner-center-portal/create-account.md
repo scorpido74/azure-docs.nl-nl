@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 07/05/2019
-ms.openlocfilehash: b1839316f8f11af7e4f365694fc017c262d00a86
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 71a74476bcec6cb2ab3dc5efabe1a550577f0107
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191740"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383249"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Een commercieel Marketplace-account maken in het partner centrum
 
@@ -20,7 +20,7 @@ Als u uw aanbiedingen wilt publiceren naar [Azure Marketplace](https://azuremark
 
 ## <a name="create-a-partner-center-account"></a>Een partner centrum-account maken
 
-In dit artikel wordt beschreven hoe u een partner centrum-account maakt, met inbegrip van het volgende: 
+In dit artikel wordt beschreven hoe u een partner centrum-account maakt, met inbegrip van het volgende:
 
 - [Registreren met behulp van de inschrijvings pagina van het partner centrum](#to-create-a-commercial-marketplace-account-in-partner-center)
 - [Aanmelden met een werk account](#sign-in-with-a-work-account)
@@ -56,11 +56,11 @@ U moet akkoord gaan met de voor waarden in de [Microsoft Marketplace Publisher-o
 
 #### <a name="provide-your-publisher-profile"></a>Uw Publisher-profiel opgeven
 
-Uw uitgevers profiel bevat uw bedrijfs naam en MPN-ID. Als u dit nog niet hebt gedaan, moet u lid worden van de [Microsoft Partner Network](https://partner.microsoft.com/commercial). Nadat u lid bent geworden van de Microsoft Partner Network, krijgt u een MPN-ID. 
+Uw uitgevers profiel bevat uw bedrijfs naam en MPN-ID. Als u dit nog niet hebt gedaan, moet u lid worden van de [Microsoft Partner Network](https://partner.microsoft.com/commercial). Nadat u lid bent geworden van de Microsoft Partner Network, krijgt u een MPN-ID.
 
-Een uitgevers-ID maken. Uw uitgevers-ID identificeert uw bedrijf en uw aanbiedingen op Marketplace en AppSource. 
+Een uitgevers-ID maken. Uw uitgevers-ID identificeert uw bedrijf en uw aanbiedingen op Marketplace en AppSource.
 
-Nadat u de profiel gegevens van uw uitgever hebt bevestigd, gaat u akkoord met de voor waarden en maakt u uw partner centrum-account door **accepteren en door gaan**te selecteren. 
+Nadat u de profiel gegevens van uw uitgever hebt bevestigd, gaat u akkoord met de voor waarden en maakt u uw partner centrum-account door **accepteren en door gaan**te selecteren.
 
 >[!Important]
 >*U moet gemachtigd zijn om namens uw bedrijf te handelen om deze voor waarden te accepteren.*
@@ -82,7 +82,7 @@ Nadat uw account gegevens zijn verplaatst van CPP naar partner Center, kunt u ni
 Een organisatie kan meerdere uitgevers koppelen aan een commerciële Marketplace-account. Een bestaande gebruiker kan meer uitgevers toevoegen na het aanmelden bij het partner centrum door **account instellingen** -> te selecteren**uitgevers** -> **uitgever toevoegen**.
 
 >[!Note]
->Voordat u een nieuwe uitgever toevoegt, kunt u uw bestaande uitgevers controleren door u aan te melden bij Partner Center en **account instellingen** -> te selecteren om een lijst met bestaande uitgevers weer te geven.
+>Voordat u een nieuwe uitgever toevoegt, kunt u uw bestaande uitgevers controleren door**u aan te** melden bij Partner Center en **account instellingen** -> te selecteren om een lijst met bestaande uitgevers weer te geven.
 
 Een andere gebruiker uit dezelfde Azure Active Directory-Tenant kan een nieuwe uitgever toevoegen door de volgende stappen uit te voeren:
 

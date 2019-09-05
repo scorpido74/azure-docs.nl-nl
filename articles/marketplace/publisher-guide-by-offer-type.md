@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 4864e2c040ad6771ad187269de43d5978fc6324f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 8a06573e6bcb2d5a6c6c97ad19e168f9c71aaa13
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876057"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308224"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Publicatiehandleiding op type aanbieding
 
@@ -34,7 +34,7 @@ Azure Marketplace-aanbiedings typen worden weer gegeven in de volgende tabel.
 | **Aanbiedings type**    | **Beschrijving**  |
 | :------------------- | :-------------------|
 | [**Virtuele machines**](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) | Gebruik het type virtuele machine-aanbieding wanneer u een virtueel apparaat implementeert op het abonnement dat is gekoppeld aan uw klant. |
-| [**Oplossings sjablonen**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | Gebruik het aanbiedings type voor de oplossings sjabloon wanneer voor uw oplossing extra implementatie-en configuratie automatisering is vereist dan een eenvoudige virtuele machine. |
+| [**Oplossings sjablonen**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | Gebruik de oplossings sjabloon (ook wel bekend als Azure Application)-aanbiedings type wanneer voor uw oplossing extra implementatie-en configuratie automatisering nodig is dan een eenvoudige virtuele machine. Oplossings sjablonen kunnen veel verschillende soorten Azure-resources gebruiken, inclusief, maar niet beperkt tot Vm's.  |
 | [**Beheerde toepassingen**](https://docs.microsoft.com/azure/marketplace/marketplace-managed-apps) | Gebruik het aanbiedings type Azure-app: beheerde app wanneer de volgende voor waarden zijn vereist: <br> <ul> <li> U implementeert een oplossing op basis van een abonnement voor uw klant met behulp van een virtuele machine of een volledige oplossing op basis van IaaS. </li> <li>U of uw klant vereisen dat de oplossing wordt beheerd door een partner. </li> <ul> |
 | [**SaaS-toepassingen**](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) | Gebruik het type SaaS-app-aanbieding om uw klant in staat te stellen uw SaaS-gebaseerde technische oplossing als een abonnement te kopen. |
 | [**Container aanbiedingen**](https://docs.microsoft.com/azure/marketplace/marketplace-containers) | Gebruik het type container aanbod wanneer uw oplossing een docker-container installatie kopie is ingericht als een op Kubernetes gebaseerde Azure-container service. |

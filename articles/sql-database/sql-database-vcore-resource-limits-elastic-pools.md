@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: aa35cb1ae0ad035bdef6ff8e19cf115188ba7f3a
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2a5190cada0ca834cada4e02bfe7549dc43da4b8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640863"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309521"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Resource limieten voor elastische Pools met behulp van de vCore inkoop model limieten
 
@@ -140,8 +140,8 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
 |Doel-IOPS (64 KB)|7000|7000|7000|7000|7000|7000|7000|
 |Frequentie limieten voor logboeken (MBps)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
-|Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) *|1680|1890|2100|2520|33600|4200|8400|
-|Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) *|1680|1890|2100|2520|33600|4200|8400|
+|Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) *|1680|1890|2100|2520|3360|4200|8400|
+|Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) *|1680|1890|2100|2520|3360|4200|8400|
 |Min/max vCore keuzen voor elastische pool per data base|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 16, 24, 32, 40|0, 0,25, 0,5, 1... 16, 24, 32, 40, 80|
 |Aantal replica's|1|1|1|1|1|1|1|
 |Multi-AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
@@ -284,7 +284,7 @@ De volgende tabel beschrijft de eigenschappen voor gepoolde data bases.
 
 - Zie [resource limieten voor afzonderlijke data bases met behulp van het op vCore gebaseerde inkoop model](sql-database-vcore-resource-limits-single-databases.md) voor vCore resource limieten voor één data base
 - Zie [resource limieten voor afzonderlijke data bases met behulp van het op DTU gebaseerde aankoop model](sql-database-dtu-resource-limits-single-databases.md) voor DTU-resource limieten voor één data base
-- Zie resource limieten voor elastische Pools [met behulp van het op DTU gebaseerde aankoop model voor de](sql-database-dtu-resource-limits-elastic-pools.md) limieten voor DTU-bronnen voor elastische Pools
+- Zie [resource limieten voor elastische Pools met behulp van het op DTU gebaseerde aankoop model voor de](sql-database-dtu-resource-limits-elastic-pools.md) limieten voor DTU-bronnen voor elastische Pools
 - Zie [resource limieten voor beheerde](sql-database-managed-instance-resource-limits.md)exemplaren voor resource limieten voor beheerde instanties.
 - Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-subscription-service-limits.md)voor meer informatie over algemene Azure-limieten.
 - Zie [overzicht van resource limieten op een SQL database server](sql-database-resource-limits-database-server.md) voor informatie over limieten op het niveau van de server en het abonnement voor meer informatie over de limieten voor bronnen op een database server.

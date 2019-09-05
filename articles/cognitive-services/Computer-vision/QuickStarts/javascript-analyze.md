@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/17/2019
+ms.date: 09/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: da2c13cd9213361846f2293764c6079eb09013cb
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 446558c88ee99cf61bd3591b687ebbd7e9710b76
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137852"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376229"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Quickstart: Een externe afbeelding analyseren met behulp van de REST API en JavaScript in Computer Vision
 
@@ -26,7 +26,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service- `COMPUTER_VISION_SUBSCRIPTION_KEY` eindpunt teken reeks, respectievelijk met de naam en. `COMPUTER_VISION_ENDPOINT`
+U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service- `COMPUTER_VISION_SUBSCRIPTION_KEY` eindpunt `COMPUTER_VISION_ENDPOINT`teken reeks, respectievelijk met de naam en.
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 

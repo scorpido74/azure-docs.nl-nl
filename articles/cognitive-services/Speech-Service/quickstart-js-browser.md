@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 69ec6062d0dba1f1044f9a7dcfbe75924887d2b4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7c1c616ec6ce36ee58f32dbcada8ead6fc339f2e
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559419"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306977"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Quickstart: gesproken tekst in JavaScript herkennen in een browser met behulp van de Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 In dit artikel leert u hoe u een website maakt met behulp van de JavaScript binding van de Cognitive Services Speech SDK om spraak om te zetten naar tekst.
-De toepassing is gebaseerd op de Speech SDK voor Java script ([down load version 1.5.0](https://aka.ms/csspeech/jsbrowserpackage)).
+De toepassing is gebaseerd op de Speech SDK voor Java script ([down load version 1.6.0](https://aka.ms/csspeech/jsbrowserpackage)).
 
 ## <a name="prerequisites"></a>Vereisten
 

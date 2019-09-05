@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 26fea4322df625b2e38028a3b7121fb41f2acf81
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 5558eeb4012ac563388ad47df61114534e9859ed
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311861"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308345"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Ontwikkelen met Media Services v3-Api's
 
@@ -76,6 +76,10 @@ Namen van Azure Media Services v3-resources (bijvoorbeeld activa, taken, transfo
 Namen van Media Services-resources mogen niet de volgende tekens bevatten: '<', '>', '%', '&', ':', '&#92;', '?', '/', '*', '+', '.', enkele aanhalingstekens of besturingstekens. Alle andere tekens zijn toegestaan. De maximale lengte van een resourcenaam is 260 tekens. 
 
 Zie [Naamvereisten](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) en [Naamconventies](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) voor meer informatie over Azure Resource Manager-naamgeving.
+
+### <a name="names-of-filesblobs-within-an-asset"></a>Namen van bestanden/blobs in een Asset
+
+De namen van bestanden/blobs in een Asset moeten de [vereisten voor de BLOB-naam](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) en de [NTFS-naam](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)volgen. De reden voor deze vereisten is dat de bestanden kunnen worden gekopieerd van Blob Storage naar een lokale NTFS-schijf voor verwerking.
 
 ## <a name="long-running-operations"></a>Langlopende bewerkingen
 

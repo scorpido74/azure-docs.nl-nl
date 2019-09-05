@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 1fc6c054b32c62fbebaa2af738e25ef0dec362ac
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 2e578c6bfdfb25eaba3d0c692ff33aa5b0572669
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981294"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305999"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database verkeer migratie naar nieuwere gateways
 
@@ -41,11 +41,11 @@ De eerste afronding van verkeer migratie naar nieuwere gateways is gepland voor 
 - Azië - oost
 
 Bij de migratie van verkeer wordt het open bare IP-adres gewijzigd dat DNS voor uw SQL Database verhelpt.
-U hebt de gevolgen
+U hebt de volgende gevolgen:
 - Het IP-adres voor een bepaalde gateway in uw on-premises firewall is vastgelegd.
 - Subnetten die gebruikmaken van micro soft. SQL als een service-eind punt, maar niet kunnen communiceren met de IP-adressen van de gateway
 
-U hebt geen invloed op 
+U hebt de volgende gevolgen:
 - Omleiding als verbindings beleid
 - Verbindingen met SQL Database van binnen Azure en met behulp van service Tags
 - Verbindingen die zijn gemaakt met ondersteunde versies van het JDBC-stuur programma voor SQL Server, zien geen invloed. Zie [micro soft JDBC-stuur programma voor SQL Server downloaden](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)voor een ondersteunde versie van JDBC.

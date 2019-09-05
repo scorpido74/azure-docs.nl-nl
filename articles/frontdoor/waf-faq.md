@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: c993e465bc439ff52cba3241dbff64b7655d1f12
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: f7d205920704ce8aedf3b2e3c07bd429b3c64964
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849182"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375351"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Veelgestelde vragen over Azure Web Application Firewall
 
@@ -53,12 +53,6 @@ Het implementeren van een WAF-beleid wordt doorgaans ongeveer 5 minuten in besla
 
 Wanneer het is geïntegreerd met de voor deur-service, is WAF een wereld wijde bron. Dezelfde configuratie is van toepassing op alle locaties van de voor deur.
  
-## <a name="how-do-i-limit-access-to-my-back-end-to-be-from-front-door-only"></a>Hoe kan ik de toegang tot mijn back-end beperken tot alleen de voor deur?
-
-U kunt de IP-Access Control lijst in uw back-end configureren om alleen uitgaande IP-adresbereiken voor de voor deur toe te staan en directe toegang vanaf internet te weigeren. Service tags worden ondersteund voor gebruik in uw virtuele netwerk. Daarnaast kunt u controleren of het veld X-doorgestuurd-host-HTTP-header geldig is voor uw webtoepassing.
-
-
-
 
 ## <a name="which-azure-waf-options-should-i-choose"></a>Welke opties voor Azure WAF moet ik kiezen?
 
@@ -72,6 +66,9 @@ Momenteel worden ModSec CRS 2.2.9 en CRS 3,0-regels alleen ondersteund met WAF b
 ## <a name="is-ddos-protection-integrated-with-front-door"></a>Is DDoS Protection geïntegreerd met de voor deur? 
 
 Wereld wijd gedistribueerd op Azure-netwerk randen kunnen grote volume aanvallen door de Azure front-deur worden geabsorbeerd en geografisch geïsoleerd. U kunt een aangepast WAF-beleid maken om te voor komen dat http (s)-aanvallen met bekende hand tekeningen automatisch worden geblokkeerd en beperkt. U kunt nog meer DDoS Protection Standard inschakelen op het VNet waar uw back-ends worden geïmplementeerd. Azure DDoS Protection Standard-klanten ontvangen extra voor delen, waaronder kosten beveiliging, SLA-garantie en toegang tot experts van DDoS Rapid Response-Team voor onmiddellijke ondersteuning tijdens een aanval. 
+
+We raden u aan om uw back-ends in productie omgeving te vergren delen om het DDoS-aanvals oppervlak te verminderen. Zie [Hoe kan ik de toegang tot mijn back-end alleen vergren delen voor een Azure front-deur?](https://docs.microsoft.com/en-us/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

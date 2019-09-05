@@ -1,27 +1,27 @@
 ---
 title: 'Quickstart: Aangepaste spraak-eerste virtuele assistent (preview), C# (UWP)-spraak service'
 titleSuffix: Azure Cognitive Services
-description: In dit artikel maakt u een C# universeel Windows-platform-toepassing (UWP) met behulp van de Cognitive Services speech Software Development Kit (SDK). U verbindt uw client toepassing met een eerder gemaakte bot-Framework-bot die is geconfigureerd voor gebruik van het directe lijn spraak kanaal. De toepassing is gemaakt met het Speech-SDK NuGet-pakket en Microsoft Visual Studio 2017.
+description: In dit artikel maakt u een C# universeel Windows-platform-toepassing (UWP) met behulp van de Cognitive Services speech Software Development Kit (SDK). U verbindt uw client toepassing met een eerder gemaakte bot-Framework-bot die is geconfigureerd voor gebruik van het directe lijn spraak kanaal. De toepassing is gebouwd met het Speech SDK NuGet-pakket en micro soft Visual Studio 2019.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 08/19/2019
 ms.author: travisw
-ms.openlocfilehash: 6d88bcc6d9d2c2e46ef3a3cb841c9268a544e37c
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: c676e98eb812a31d6fb8d7cc0f58929f803c868e
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609685"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382038"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Quickstart: Maak een virtuele assistent met spraak-eerste met de spraak-SDK, UWP
 
-Quick starts zijn ook beschikbaar voor [spraak naar tekst](quickstart-csharp-uwp.md), [tekst naar spraak](quickstart-text-to-speech-csharp-uwp.md) en [spraak omzetting](quickstart-translate-speech-uwp.md).
+Quick starts zijn ook beschikbaar voor [spraak herkenning](quickstart-csharp-uwp.md), [spraak synthese](quickstart-text-to-speech-csharp-uwp.md)en [spraak omzetting](quickstart-translate-speech-uwp.md).
 
-In dit artikel ontwikkelt u een C# universeel Windows-platform-toepassing (UWP) met behulp van de spraak- [SDK](speech-sdk.md). Het programma maakt verbinding met een eerder bestemde en geconfigureerde bot om in te scha kelen op het maken van een virtuele assistent van de eerste plaats van de client toepassing. De toepassing is gebouwd met het [Speech SDK NuGet-pakket](https://aka.ms/csspeech/nuget) en micro soft Visual Studio 2017 of hoger (alle edities).
+In dit artikel ontwikkelt u een C# universeel Windows-platform-toepassing (UWP) met behulp van de spraak- [SDK](speech-sdk.md). Het programma maakt verbinding met een eerder bestemde en geconfigureerde bot om in te scha kelen op het maken van een virtuele assistent van de eerste plaats van de client toepassing. De toepassing is gebouwd met het [Speech SDK NuGet-pakket](https://aka.ms/csspeech/nuget) en micro soft Visual Studio 2019 (alle edities).
 
 > [!NOTE]
 > Het Universal Windows Platform stelt u in staat om apps te ontwikkelen die kunnen worden uitgevoerd op elk apparaat dat ondersteuning biedt voor Windows 10, met inbegrip van pc's, Xbox, Surface Hub en andere apparaten.
@@ -30,16 +30,16 @@ In dit artikel ontwikkelt u een C# universeel Windows-platform-toepassing (UWP) 
 
 Voor deze snelstart zijn de volgende zaken vereist:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) of hoger
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * Een Azure-abonnements sleutel voor spraak Services. [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com).
-* Een eerder gemaakte bot die is geconfigureerd met het [directe lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+* Een eerder gemaakte bot die is geconfigureerd met het [directe lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
-    > [!NOTE]
-    > Direct line Speech (preview) is momenteel beschikbaar in een subset van de regio's met spraak Services. Raadpleeg [de lijst met ondersteunde regio's voor de eerste virtuele assistenten voor spraak](regions.md#voice-first-virtual-assistants) en zorg ervoor dat uw resources in een van deze regio's worden geïmplementeerd.
+  > [!NOTE]
+  > Direct line Speech (preview) is momenteel beschikbaar in een subset van de regio's met spraak Services. Raadpleeg [de lijst met ondersteunde regio's voor de eerste virtuele assistenten voor spraak](regions.md#voice-first-virtual-assistants) en zorg ervoor dat uw resources in een van deze regio's worden geïmplementeerd.
 
 ## <a name="optional-get-started-fast"></a>Optioneel: Snel aan de slag
 
-In deze Snelstartgids wordt stapsgewijs beschreven hoe u een eenvoudige client toepassing kunt maken om verbinding te maken met uw op spraak ingeschakelde bot. Als u voor het eerst wilt beginnen, is de volledige, kant-en-assembly-bron code die wordt gebruikt in deze Quick Start, beschikbaar in `quickstart` de voor [beelden van Speech SDK](https://aka.ms/csspeech/samples) onder de-map.
+In deze Snelstartgids wordt stapsgewijs beschreven hoe u een client toepassing kunt maken om verbinding te maken met uw op spraak ingeschakelde bot. Als u voor het eerst wilt beginnen, is de volledige, kant-en-assembly-bron code die wordt gebruikt in deze Quick Start, beschikbaar in `quickstart` de voor [beelden van Speech SDK](https://aka.ms/csspeech/samples) onder de-map.
 
 ## <a name="create-a-visual-studio-project"></a>Een Visual Studio-project maken
 
@@ -47,7 +47,15 @@ In deze Snelstartgids wordt stapsgewijs beschreven hoe u een eenvoudige client t
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. De gebruikersinterface van de toepassing wordt gedefinieerd met behulp van XAML. Open `MainPage.xaml` in Solution Explorer. Vervang in de XAML-weer gave van de ontwerp functie de volledige inhoud door de onderstaande.
+Voeg nu de XAML-code toe die de gebruikers interface van de toepassing definieert en voeg C# de code-behind-implementatie toe.
+
+### <a name="xaml-code"></a>XAML-code
+
+Eerst maakt u de gebruikers interface van de toepassing door de XAML-code toe te voegen:
+
+1. Open`MainPage.xaml`in **Solution Explorer**.
+
+1. Vervang in de XAML-weer gave van de ontwerp functie de volledige inhoud door het volgende code fragment:
 
     ```xml
     <Page
@@ -61,16 +69,30 @@ In deze Snelstartgids wordt stapsgewijs beschreven hoe u een eenvoudige client t
         Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <Grid>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center"  Margin="20,50,0,0" VerticalAlignment="Center" Width="800">
-                <Button x:Name="EnableMicrophoneButton" Content="Enable Microphone"  Margin="0,0,10,0" Click="EnableMicrophone_ButtonClicked" Height="35"/>
-                <Button x:Name="ListenButton" Content="Talk to your bot" Margin="0,10,10,0" Click="ListenButton_ButtonClicked" Height="35"/>
-                <StackPanel x:Name="StatusPanel" Orientation="Vertical" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
-                    <TextBlock x:Name="StatusLabel" Margin="0,10,10,0" TextWrapping="Wrap" Text="Status:" FontSize="20"/>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center"  
+                        Margin="20,50,0,0" VerticalAlignment="Center" Width="800">
+                <Button x:Name="EnableMicrophoneButton" Content="Enable Microphone"  
+                        Margin="0,0,10,0" Click="EnableMicrophone_ButtonClicked" 
+                        Height="35"/>
+                <Button x:Name="ListenButton" Content="Talk to your bot" 
+                        Margin="0,10,10,0" Click="ListenButton_ButtonClicked" 
+                        Height="35"/>
+                <StackPanel x:Name="StatusPanel" Orientation="Vertical" 
+                            RelativePanel.AlignBottomWithPanel="True" 
+                            RelativePanel.AlignRightWithPanel="True" 
+                            RelativePanel.AlignLeftWithPanel="True">
+                    <TextBlock x:Name="StatusLabel" Margin="0,10,10,0" 
+                               TextWrapping="Wrap" Text="Status:" FontSize="20"/>
                     <Border x:Name="StatusBorder" Margin="0,0,0,0">
-                        <ScrollViewer VerticalScrollMode="Auto"  VerticalScrollBarVisibility="Auto" MaxHeight="200">
-                            <!-- Use LiveSetting to enable screen readers to announce the status update. -->
-                            <TextBlock x:Name="StatusBlock" FontWeight="Bold" AutomationProperties.LiveSetting="Assertive"
-                    MaxWidth="{Binding ElementName=Splitter, Path=ActualWidth}" Margin="10,10,10,20" TextWrapping="Wrap"  />
+                        <ScrollViewer VerticalScrollMode="Auto"  
+                                      VerticalScrollBarVisibility="Auto" MaxHeight="200">
+                            <!-- Use LiveSetting to enable screen readers to announce 
+                                 the status update. -->
+                            <TextBlock 
+                                x:Name="StatusBlock" FontWeight="Bold" 
+                                AutomationProperties.LiveSetting="Assertive"
+                                MaxWidth="{Binding ElementName=Splitter, Path=ActualWidth}" 
+                                Margin="10,10,10,20" TextWrapping="Wrap"  />
                         </ScrollViewer>
                     </Border>
                 </StackPanel>
@@ -80,14 +102,24 @@ In deze Snelstartgids wordt stapsgewijs beschreven hoe u een eenvoudige client t
     </Page>
     ```
 
-1. Open het bron bestand `MainPage.xaml.cs`voor de code achter. U vindt deze gegroepeerd onder `MainPage.xaml`. Vervang de inhoud door de onderstaande code. Dit voor beeld omvat het volgende:
+De Ontwerpweergave is bijgewerkt om de gebruikers interface van de toepassing weer te geven.
 
-    * Instructies gebruiken voor de naam ruimten speech en speech. dialoog ruimtes
-    * Een eenvoudige implementatie om toegang tot de microfoon te garanderen, bekabeld tot een knop-handler
-    * Helpers van de Basic-gebruikers interface om berichten en fouten in de toepassing weer te geven
-    * Een overloop punt voor het pad van de initialisatie code dat later wordt ingevuld
-    * Een helper voor het afspelen van tekst naar spraak (zonder streaming-ondersteuning)
-    * Een lege knop-handler om te Luis teren die later wordt ingevuld
+### <a name="c-code-behind-source"></a>C#code-behind bron
+
+Vervolgens voegt u de bron code achter toe, zodat de toepassing werkt zoals verwacht. De bron code achter bevat:
+
+- `using`instructies voor de `Speech` en `Speech.Dialog` -naam ruimten
+- Een eenvoudige implementatie om toegang tot de microfoon te garanderen, bekabeld tot een knop-handler
+- Helpers van de Basic-gebruikers interface om berichten en fouten in de toepassing weer te geven
+- Een overloop punt voor het pad van de initialisatie code dat later wordt ingevuld
+- Een helper voor het afspelen van tekst naar spraak (zonder streaming-ondersteuning)
+- Een lege knop-handler om te Luis teren die later wordt ingevuld
+
+Voer de volgende stappen uit om de code-behind-bron toe te voegen:
+
+1. Open in **Solution Explorer**het bron bestand `MainPage.xaml.cs`voor de code achter. (Deze wordt gegroepeerd onder `MainPage.xaml`.)
+
+1. Vervang de inhoud van het bestand door het volgende code fragment:
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -120,14 +152,17 @@ In deze Snelstartgids wordt stapsgewijs beschreven hoe u een eenvoudige client t
                 this.InitializeComponent();
             }
 
-            private async void EnableMicrophone_ButtonClicked(object sender, RoutedEventArgs e)
+            private async void EnableMicrophone_ButtonClicked(
+                object sender, RoutedEventArgs e)
             {
                 bool isMicAvailable = true;
                 try
                 {
                     var mediaCapture = new Windows.Media.Capture.MediaCapture();
-                    var settings = new Windows.Media.Capture.MediaCaptureInitializationSettings();
-                    settings.StreamingCaptureMode = Windows.Media.Capture.StreamingCaptureMode.Audio;
+                    var settings = 
+                        new Windows.Media.Capture.MediaCaptureInitializationSettings();
+                    settings.StreamingCaptureMode = 
+                        Windows.Media.Capture.StreamingCaptureMode.Audio;
                     await mediaCapture.InitializeAsync(settings);
                 }
                 catch (Exception)
@@ -136,7 +171,8 @@ In deze Snelstartgids wordt stapsgewijs beschreven hoe u een eenvoudige client t
                 }
                 if (!isMicAvailable)
                 {
-                    await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-microphone"));
+                    await Windows.System.Launcher.LaunchUriAsync(
+                        new Uri("ms-settings:privacy-microphone"));
                 }
                 else
                 {
@@ -144,7 +180,8 @@ In deze Snelstartgids wordt stapsgewijs beschreven hoe u een eenvoudige client t
                 }
             }
 
-            private void NotifyUser(string strMessage, NotifyType type = NotifyType.StatusMessage)
+            private void NotifyUser(
+                string strMessage, NotifyType type = NotifyType.StatusMessage)
             {
                 // If called from the UI thread, then update immediately.
                 // Otherwise, schedule a task on the UI thread to perform the update.
@@ -154,7 +191,9 @@ In deze Snelstartgids wordt stapsgewijs beschreven hoe u een eenvoudige client t
                 }
                 else
                 {
-                    var task = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => UpdateStatus(strMessage, type));
+                    var task = Dispatcher.RunAsync(
+                        Windows.UI.Core.CoreDispatcherPriority.Normal, 
+                        () => UpdateStatus(strMessage, type));
                 }
             }
 
@@ -163,13 +202,16 @@ In deze Snelstartgids wordt stapsgewijs beschreven hoe u een eenvoudige client t
                 switch (type)
                 {
                     case NotifyType.StatusMessage:
-                        StatusBorder.Background = new SolidColorBrush(Windows.UI.Colors.Green);
+                        StatusBorder.Background = new SolidColorBrush(
+                            Windows.UI.Colors.Green);
                         break;
                     case NotifyType.ErrorMessage:
-                        StatusBorder.Background = new SolidColorBrush(Windows.UI.Colors.Red);
+                        StatusBorder.Background = new SolidColorBrush(
+                            Windows.UI.Colors.Red);
                         break;
                 }
-                StatusBlock.Text += string.IsNullOrEmpty(StatusBlock.Text) ? strMessage : "\n" + strMessage;
+                StatusBlock.Text += string.IsNullOrEmpty(StatusBlock.Text) 
+                    ? strMessage : "\n" + strMessage;
 
                 if (!string.IsNullOrEmpty(StatusBlock.Text))
                 {
@@ -181,18 +223,23 @@ In deze Snelstartgids wordt stapsgewijs beschreven hoe u een eenvoudige client t
                     StatusBorder.Visibility = Visibility.Collapsed;
                     StatusPanel.Visibility = Visibility.Collapsed;
                 }
-                // Raise an event if necessary to enable a screen reader to announce the status update.
+                // Raise an event if necessary to enable a screen reader 
+                // to announce the status update.
                 var peer = Windows.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.FromElement(StatusBlock);
                 if (peer != null)
                 {
-                    peer.RaiseAutomationEvent(Windows.UI.Xaml.Automation.Peers.AutomationEvents.LiveRegionChanged);
+                    peer.RaiseAutomationEvent(
+                        Windows.UI.Xaml.Automation.Peers.AutomationEvents.LiveRegionChanged);
                 }
             }
 
-            // Waits for accumulates all audio associated with a given PullAudioOutputStream and then plays it to the
-            // MediaElement. Long spoken audio will create extra latency and a streaming playback solution (that plays
-            // audio while it continues to be received) should be used -- see the samples for examples of this.
-            private void SynchronouslyPlayActivityAudio(PullAudioOutputStream activityAudio)
+            // Waits for and accumulates all audio associated with a given 
+            // PullAudioOutputStream and then plays it to the MediaElement. Long spoken 
+            // audio will create extra latency and a streaming playback solution 
+            // (that plays audio while it continues to be received) should be used -- 
+            // see the samples for examples of this.
+            private void SynchronouslyPlayActivityAudio(
+                PullAudioOutputStream activityAudio)
             {
                 var playbackStreamWithHeader = new MemoryStream();
                 playbackStreamWithHeader.Write(Encoding.ASCII.GetBytes("RIFF"), 0, 4); // ChunkID
@@ -219,9 +266,11 @@ In deze Snelstartgids wordt stapsgewijs beschreven hoe u een eenvoudige client t
                 }
                 while (lastRead == pullBuffer.Length);
 
-                var task = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                var task = Dispatcher.RunAsync(
+                    Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
-                    mediaElement.SetSource(playbackStreamWithHeader.AsRandomAccessStream(), "audio/wav");
+                    mediaElement.SetSource(
+                        playbackStreamWithHeader.AsRandomAccessStream(), "audio/wav");
                     mediaElement.Play();
                 });
             }
@@ -231,7 +280,8 @@ In deze Snelstartgids wordt stapsgewijs beschreven hoe u een eenvoudige client t
                 // New code will go here
             }
 
-            private async void ListenButton_ButtonClicked(object sender, RoutedEventArgs e)
+            private async void ListenButton_ButtonClicked(
+                object sender, RoutedEventArgs e)
             {
                 // New code will go here
             }
@@ -239,119 +289,138 @@ In deze Snelstartgids wordt stapsgewijs beschreven hoe u een eenvoudige client t
     }
     ```
 
-1. Vervolgens maakt u de `DialogServiceConnector` met uw abonnements gegevens. Voeg het volgende toe aan de methode hoofd `InitializeDialogServiceConnector`tekst van, vervang `YourChannelSecret`de `YourSpeechSubscriptionKey`teken reeksen `YourServiceRegion` , en met uw eigen waarden voor uw bot, spraak abonnement en [regio](regions.md).
-
-    > [!NOTE]
-    > Direct line Speech (preview) is momenteel beschikbaar in een subset van de regio's met spraak Services. Raadpleeg [de lijst met ondersteunde regio's voor de eerste virtuele assistenten voor spraak](regions.md#voice-first-virtual-assistants) en zorg ervoor dat uw resources in een van deze regio's worden geïmplementeerd.
-
-    > [!NOTE]
-    > Voor informatie over het configureren van uw bot en het ophalen van een kanaal geheim raadpleegt u de bot Framework-documentatie voor [het directe lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
+1. Voeg het volgende code fragment toe aan de methode hoofd `InitializeDialogServiceConnector`tekst van. Met deze code maakt `DialogServiceConnector` u de met uw abonnements gegevens.
 
     ```csharp
-    // create a DialogServiceConfig by providing a bot secret key and Cognitive Services subscription key
-    // the RecoLanguage property is optional (default en-US); note that only en-US is supported in Preview
+    // create a DialogServiceConfig by providing a bot secret key 
+    // and Cognitive Services subscription key
+    // the RecoLanguage property is optional (default en-US); 
+    // note that only en-US is supported in Preview
     const string channelSecret = "YourChannelSecret"; // Your channel secret
     const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
-    const string region = "YourServiceRegion"; // Your subscription service region. Note: only a subset of regions are currently supported
 
-    var botConfig = DialogServiceConfig.FromBotSecret(channelSecret, speechSubscriptionKey, region);
+    // Your subscription service region. 
+    // Note: only a subset of regions are currently supported
+    const string region = "YourServiceRegion"; 
+
+    var botConfig = DialogServiceConfig.FromBotSecret(
+        channelSecret, speechSubscriptionKey, region);
     botConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-US");
     connector = new DialogServiceConnector(botConfig);
     ```
 
-1. `DialogServiceConnector`is afhankelijk van verschillende gebeurtenissen om de bot-activiteiten, de resultaten van spraak herkenning en andere informatie te communiceren. U kunt handlers voor deze gebeurtenissen toevoegen door het volgende toe te voegen aan het einde van `InitializeDialogServiceConnector`de methode hoofd tekst van.
+   > [!NOTE]
+   > Direct line Speech (preview) is momenteel beschikbaar in een subset van de regio's met spraak Services. Raadpleeg [de lijst met ondersteunde regio's voor de eerste virtuele assistenten voor spraak](regions.md#voice-first-virtual-assistants) en zorg ervoor dat uw resources in een van deze regio's worden geïmplementeerd.
+
+   > [!NOTE]
+   > Voor informatie over het configureren van uw bot en het ophalen van een kanaal geheim raadpleegt u de bot Framework-documentatie voor [het directe lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
+
+1. Vervang de teken `YourChannelSecret`reeksen `YourSpeechSubscriptionKey`, en `YourServiceRegion` met uw eigen waarden voor uw bot, spraak abonnement en [regio](regions.md).
+
+1. Voeg het volgende code fragment toe aan het einde van de methode hoofd `InitializeDialogServiceConnector`tekst van. Met deze code worden handlers ingesteld voor gebeurtenissen die zijn vertrouwd `DialogServiceConnector` door om de bot-activiteiten, de resultaten van spraak herkenning en andere informatie te communiceren.
 
     ```csharp
-    // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities
+    // ActivityReceived is the main way your bot will communicate with the client 
+    // and uses bot framework activities
     connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
     {
-        NotifyUser($"Activity received, hasAudio={activityReceivedEventArgs.HasAudio} activity={activityReceivedEventArgs.Activity}");
+        NotifyUser(
+            $"Activity received, hasAudio={activityReceivedEventArgs.HasAudio} activity={activityReceivedEventArgs.Activity}");
 
         if (activityReceivedEventArgs.HasAudio)
         {
             SynchronouslyPlayActivityAudio(activityReceivedEventArgs.Audio);
         }
     };
+
     // Canceled will be signaled when a turn is aborted or experiences an error condition
     connector.Canceled += (sender, canceledEventArgs) =>
     {
         NotifyUser($"Canceled, reason={canceledEventArgs.Reason}");
         if (canceledEventArgs.Reason == CancellationReason.Error)
         {
-            NotifyUser($"Error: code={canceledEventArgs.ErrorCode}, details={canceledEventArgs.ErrorDetails}");
+            NotifyUser(
+                $"Error: code={canceledEventArgs.ErrorCode}, details={canceledEventArgs.ErrorDetails}");
         }
     };
-    // Recognizing (not 'Recognized') will provide the intermediate recognized text while an audio stream is being processed
+
+    // Recognizing (not 'Recognized') will provide the intermediate recognized text 
+    // while an audio stream is being processed
     connector.Recognizing += (sender, recognitionEventArgs) =>
     {
         NotifyUser($"Recognizing! in-progress text={recognitionEventArgs.Result.Text}");
     };
-    // Recognized (not 'Recognizing') will provide the final recognized text once audio capture is completed
+
+    // Recognized (not 'Recognizing') will provide the final recognized text 
+    // once audio capture is completed
     connector.Recognized += (sender, recognitionEventArgs) =>
     {
         NotifyUser($"Final speech-to-text result: '{recognitionEventArgs.Result.Text}'");
     };
+
     // SessionStarted will notify when audio begins flowing to the service for a turn
     connector.SessionStarted += (sender, sessionEventArgs) =>
     {
         NotifyUser($"Now Listening! Session started, id={sessionEventArgs.SessionId}");
     };
-    // SessionStopped will notify when a turn is complete and it's safe to begin listening again
+
+    // SessionStopped will notify when a turn is complete and 
+    // it's safe to begin listening again
     connector.SessionStopped += (sender, sessionEventArgs) =>
     {
         NotifyUser($"Listening complete. Session ended, id={sessionEventArgs.SessionId}");
     };
     ```
 
-1. Met de configuratie die is ingesteld en de gebeurtenis-handlers `DialogServiceConnector` die zijn geregistreerd, hoeft nu alleen te worden geluisterd. Voeg het volgende toe aan de hoofd tekst `ListenButton_ButtonClicked` van de methode `MainPage` in de klasse.
+1. Voeg het volgende code fragment toe aan de hoofd tekst `ListenButton_ButtonClicked` van de methode `MainPage` in de klasse. `DialogServiceConnector` Met deze code wordt geluisterd, omdat u de configuratie al hebt ingesteld en de gebeurtenis-handlers hebt geregistreerd.
 
     ```csharp
-    private async void ListenButton_ButtonClicked(object sender, RoutedEventArgs e)
+    if (connector == null)
     {
-        if (connector == null)
-        {
-            InitializeDialogServiceConnector();
-            // Optional step to speed up first interaction: if not called, connection happens automatically on first use
-            var connectTask = connector.ConnectAsync();
-        }
+        InitializeDialogServiceConnector();
+        // Optional step to speed up first interaction: if not called, 
+        // connection happens automatically on first use
+        var connectTask = connector.ConnectAsync();
+    }
 
-        try
-        {
-            // Start sending audio to your speech-enabled bot
-            var listenTask = connector.ListenOnceAsync();
+    try
+    {
+        // Start sending audio to your speech-enabled bot
+        var listenTask = connector.ListenOnceAsync();
 
-            // You can also send activities to your bot as JSON strings -- Microsoft.Bot.Schema can simplify this
-            string speakActivity = @"{""type"":""message"",""text"":""Greeting Message"", ""speak"":""Hello there!""}";
-            await connector.SendActivityAsync(speakActivity);
+        // You can also send activities to your bot as JSON strings -- 
+        // Microsoft.Bot.Schema can simplify this
+        string speakActivity = 
+            @"{""type"":""message"",""text"":""Greeting Message"", ""speak"":""Hello there!""}";
+        await connector.SendActivityAsync(speakActivity);
 
-        }
-        catch (Exception ex)
-        {
-            NotifyUser($"Exception: {ex.ToString()}", NotifyType.ErrorMessage);
-        }
+    }
+    catch (Exception ex)
+    {
+        NotifyUser($"Exception: {ex.ToString()}", NotifyType.ErrorMessage);
     }
     ```
 
-1. Sla alle wijzigingen in het project op.
+1. Kies in de menu balk de optie **bestand** > **Alles opslaan** om uw wijzigingen op te slaan.
 
-## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
+## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 
-1. Compileer de toepassing. Selecteer in de menu balk van Visual Studio **Build** > **Build Solution**. De code moet nu zonder fouten worden gecompileerd.
+U bent nu klaar om uw toepassing te bouwen en te testen.
 
-    ![Schermafbeelding van Visual Studio-toepassing met de optie Build Solution gemarkeerd](media/sdk/qs-csharp-uwp-08-build.png "Geslaagde build")
+1. Kies > build**Build Solution** in de menu balk om de toepassing **te bouwen.** De code moet nu zonder fouten worden gecompileerd.
 
-1. Start de toepassing. Selecteer in de menu balk van Visual Studio **fout** > **opsporing starten**of druk op **F5**.
+1. Kies **fout** > **opsporing starten** (of druk op **F5**) om de toepassing te starten. Het venster **HelloWorld** wordt weer gegeven.
 
-    ![Schermafbeelding van Visual Studio-toepassing met de optie Start Debugging gemarkeerd](media/sdk/qs-csharp-uwp-09-start-debugging.png "Start foutopsporing van de app")
+   ![Voor beeld van UWP Virtual assistent C# -toepassing in-Quick Start](media/sdk/qs-virtual-assistant-uwp-helloworld-window.png)
 
-1. Er verschijnt een venster. Selecteer in uw toepassing **microfoon inschakelen**en bevestig de machtigings aanvraag die wordt weer gegeven.
+1. Selecteer **microfoon inschakelen**en selecteer wanneer de toegangs machtigings aanvraag wordt weer gegeven, **Ja**.
 
-    ![Schermafbeelding van verzoek om toegang](media/sdk/qs-csharp-uwp-10-access-prompt.png "Start foutopsporing van de app")
+   ![Verzoek om toegang tot de microfoon](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
 1. Selecteer **praten met uw bot**en spreek een Engelse zin of zin in op de microfoon van uw apparaat. Uw spraak wordt verzonden naar het directe lijn spraak kanaal en naar tekst getranscribeerd, die wordt weer gegeven in het venster.
-
-    ![Scherm opname van een geslaagde bot](media/voice-first-virtual-assistants/quickstart-cs-uwp-bot-successful-turn.png "Een geslaagde bot draaien")
-
+<!--
+    ![Successful bot response](media/voice-first-virtual-assistants/quickstart-cs-uwp-bot-successful-turn.png)
+-->
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]

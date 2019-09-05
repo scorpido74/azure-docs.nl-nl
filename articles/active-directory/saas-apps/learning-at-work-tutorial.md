@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f04e6f8df55059e2aa2981f85f40e487c6f0f8b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3249957fa20c208d0fd06c676200753163d4bfc8
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823679"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376079"
 ---
 # <a name="tutorial-integrate-learning-at-work-with-azure-active-directory"></a>Zelfstudie: Leren integreren in het werk met Azure Active Directory
 
@@ -75,7 +75,7 @@ Als u Azure AD SSO wilt configureren en testen met leren op het werk, voltooit u
 
 Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina **leren op werk** toepassings integratie de sectie **beheren** en selecteer eenmalige **aanmelding**.
+1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina **leren op werk** toepassings integratie de sectie **beheren** en selecteer **eenmalige aanmelding**.
 1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
 1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
@@ -88,11 +88,11 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<subdomain>.sabacloud.com/Saba/saml/SSO/alias/<company name>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het ondersteunings [team van Learning op het werk](https://www.learninga-z.com/site/contact/support) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [ondersteunings team van Learning op het werk](https://www.learninga-z.com/site/contact/support) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Bij het leren van een werk toepassing worden de SAML-beweringen in een specifieke indeling verwacht. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. De volgende scherm afbeelding ziet u de lijst met standaard kenmerken, waarbij **nameidentifier** wordt toegewezen aan **User. userPrincipalName**.
+5. Bij het leren van een werk toepassing worden de SAML-beweringen in een specifieke indeling verwacht. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen aan **user.userprincipalname**.
 
-    U kunt de **nameidentifier** -waarde in azure AD bijwerken op basis van de instellingen van uw organisatie en deze waarde moet overeenkomen met de **gebruikers-id** in de Saba-Cloud, zodat u de kenmerk toewijzing moet bewerken door op het pictogram **bewerken** te klikken en wijzig de kenmerk toewijzing.
+    U kunt de **Nameidentifier** -waarde in azure AD bijwerken op basis van de instellingen van uw organisatie en deze waarde moet overeenkomen met de **gebruikers-id** in de Saba-Cloud, zodat u de kenmerk toewijzing moet bewerken door op het pictogram **bewerken** te klikken en de kenmerk toewijzing.
 
     ![image](common/edit-attribute.png)
 
@@ -106,7 +106,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 ### <a name="configure-learning-at-work-sso"></a>Learning op het werk configureren
 
-Als u eenmalige aanmelding wilt configureren op het **werk** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal om te [leren op](https://www.learninga-z.com/site/contact/support)het ondersteunings team voor werk. Met deze instelling wordt de SAML SSO-verbinding juist ingesteld op beide zijden
+Als u eenmalige aanmelding wilt configureren op het **werk** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal om te [leren op het ondersteunings team voor werk](https://www.learninga-z.com/site/contact/support). Met deze instelling wordt de SAML SSO-verbinding juist ingesteld op beide zijden
 
 ### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
 
@@ -140,7 +140,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ### <a name="create-learning-at-work-test-user"></a>Test gebruiker voor leren op het werk maken
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in Learning op het werk. Werk samen met [leren op](https://www.learninga-z.com/site/contact/support) het ondersteunings team om de gebruikers toe te voegen op het platform leren op het werk. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
+In deze sectie maakt u een gebruiker met de naam B. Simon in Learning op het werk. Werk samen met [leren op het ondersteunings team](https://www.learninga-z.com/site/contact/support) om de gebruikers toe te voegen op het platform leren op het werk. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
 
 ### <a name="test-sso"></a>SSO testen 
 

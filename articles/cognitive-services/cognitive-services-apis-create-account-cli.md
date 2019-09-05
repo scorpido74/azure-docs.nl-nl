@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: aahi
-ms.openlocfilehash: 8f3d30866ac6db0cdece9af8144fcfa266871172
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e57bb55f5bbeba9cb476672723511a4d19c46165
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697893"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383259"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Een Cognitive Services resource maken met behulp van de Azure-opdracht regel interface (CLI)
 
@@ -23,12 +23,12 @@ Gebruik deze Quick Start om aan de slag te gaan met Azure Cognitive Services met
 
 In deze Quick Start leert u hoe u zich kunt registreren voor Azure Cognitive Services en hoe u een account met een single-service of meerdere service-abonnement kunt maken met behulp van de [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Deze services worden vertegenwoordigd door Azure- [resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal), waarmee u verbinding kunt maken met een of meer van de azure-Cognitive Services-API's.
 
+[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
+
 ## <a name="prerequisites"></a>Vereisten
 
 * Een geldig Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/) .
 * De [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-
-[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>De Azure CLI installeren en aanmelden 
 

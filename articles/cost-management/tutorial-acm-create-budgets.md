@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/31/2019
+ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 7fd98c7bb2cd049da8f5f68a5d2401081822eb22
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 183030a063faa212d7d5788792aa525f530d18ef
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779216"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308396"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Zelfstudie: Azure-budgetten maken en beheren
 
 Met budgetten in Cost Management kunt u de verantwoordelijkheid in de organisatie beter plannen en stimuleren. Met budgetten kunt u de Azure-services die u gebruikt of waarop u zich abonneert voor een specifieke periode bijhouden. Ze helpen u anderen te informeren over hun uitgaven aan proactief kosten kunt beheren en controleren hoe uitgaven verloopt na verloop van tijd. Wanneer de budgetdrempels die u hebt gemaakt, worden overschreden, worden alleen meldingen worden geactiveerd. Geen van uw resources worden beïnvloed en uw verbruik is niet gestopt. U kunt budgetten gebruiken om te vergelijken en als u kosten analyseren uitgave bij te houden.
 
-Maandelijkse budgetten worden geëvalueerd op basis van elke vier uur. Gegevens en meldingen voor verbruikte resources zijn echter binnen acht uur beschikbaar.  
+Maandelijkse budgetten worden geëvalueerd op basis van elke vier uur. Gegevens voor verbruikte resources zijn echter binnen acht uur beschikbaar. Wanneer een budgetdrempelwaarde is bereikt, worden normaal gesproken e-mailmeldingen ontvangen in minder dan acht uur. 
 
 Budgetten automatisch opnieuw instellen aan het einde van een punt (maandelijks, per kwartaal of per jaar) voor hetzelfde budgetbedrag wanneer u een vervaldatum in de toekomst selecteert. Omdat ze opnieuw met hetzelfde budgetbedrag instelt, moet u afzonderlijke budgetten wanneer gebudgetteerde maken bedragen verschillen voor toekomstige perioden.
 
@@ -58,7 +58,7 @@ Zie voor meer informatie over het toewijzen van machtigingen aan gegevens van Co
 
 U kunt het budget van een Azure-abonnement maken voor een bepaalde maand, kwartaal of jaar. Uw navigatie-inhoud in de Azure Portal bepaalt of u een budget maakt voor een abonnement of voor een beheer groep.
 
-Als u een budget wilt maken of weer geven, opent u het gewenste bereik in de Azure Portal en selecteert u budgetten in het menu. Ga bijvoorbeeld naar **abonnementen**, selecteer een abonnement in de lijst en selecteer vervolgens budgetten in het menu. Gebruik het **bereik** Pill om over te scha kelen naar een ander bereik, zoals een beheer groep, in budgetten. Zie voor meer informatie over bereiken [begrijpen en werken met scopes](understand-work-scopes.md).
+Als u een budget wilt maken of weer geven, opent u het gewenste bereik in de Azure Portal en selecteert u **budgetten** in het menu. Ga bijvoorbeeld naar **abonnementen**, selecteer een abonnement in de lijst en selecteer vervolgens **budgetten** in het menu. Gebruik het **bereik** Pill om over te scha kelen naar een ander bereik, zoals een beheer groep, in budgetten. Zie voor meer informatie over bereiken [begrijpen en werken met scopes](understand-work-scopes.md).
 
 Nadat u budgetten maakt, worden ze een eenvoudige weergave van uw huidige uitgaven op basis hiervan weergegeven.
 
@@ -90,7 +90,7 @@ In het voorgaande voorbeeld, moet u een budget voor een abonnement gemaakt. U ku
 
 ## <a name="trigger-an-action-group"></a>Een actie groep activeren
 
-Wanneer u een budget voor een abonnement of een bereik van een resource groep maakt of bewerkt, kunt u dit configureren om een actie groep aan te roepen. De actie groep kan verschillende acties uitvoeren wanneer aan uw budget drempel wordt voldaan. Zie voor meer informatie over actie groepen [actie groepen maken en beheren in de Azure Portal](../azure-monitor/platform/action-groups.md). Zie [kosten beheren met Azure](../billing/billing-cost-management-budget-scenario.md)-budgetten voor meer informatie over het gebruik van automatisering op basis van een budget met actie groepen.
+Wanneer u een budget voor een abonnement of een bereik van een resource groep maakt of bewerkt, kunt u dit configureren om een actie groep aan te roepen. De actie groep kan verschillende acties uitvoeren wanneer aan uw budget drempel wordt voldaan. Zie voor meer informatie over actie groepen [actie groepen maken en beheren in de Azure Portal](../azure-monitor/platform/action-groups.md). Zie [kosten beheren met Azure-budgetten](../billing/billing-cost-management-budget-scenario.md)voor meer informatie over het gebruik van automatisering op basis van een budget met actie groepen.
 
 Als u actie groepen wilt maken of bijwerken, klikt u op **actie groepen beheren** terwijl u een budget maakt of bewerkt.
 

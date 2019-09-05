@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66dbfa40d5a19c7f15ed2772740b84652ae3e58c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 5559d30921ea44679b4ecd24c77e26be163c18fc
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231270"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375913"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: Uw hybride Azure Active Directory deelname-implementatie plannen
 
@@ -77,7 +77,7 @@ Hybride Azure AD-deelname wordt momenteel niet ondersteund als uw omgeving besta
 
 Hybride Azure AD-deelname wordt momenteel niet ondersteund bij het gebruik van VDI (Virtual Desktop Infrastructure).
 
-Hybride Azure AD-samen voeging wordt niet ondersteund voor FIPS-compatibele Tpm's. Als uw apparaten FIPS-compatibele Tpm's hebben, moet u ze uitschakelen voordat u verdergaat met hybride Azure AD-deelname. Micro soft biedt geen hulpprogram ma's voor het uitschakelen van de FIPS-modus voor Tpm's omdat deze afhankelijk is van de TPM-fabrikant. Neem contact op met uw OEM voor ondersteuning.
+Hybride Azure AD-deelname wordt ondersteund voor FIPS-compatibele TPM 2,0 en wordt niet ondersteund voor TPM 1,2. Als uw apparaten FIPS-compatibele TPM 1,2 hebben, moet u ze uitschakelen voordat u verdergaat met hybride Azure AD-deelname. Micro soft biedt geen hulpprogram ma's voor het uitschakelen van de FIPS-modus voor Tpm's omdat deze afhankelijk is van de TPM-fabrikant. Neem contact op met uw OEM voor ondersteuning.
 
 Hybride Azure AD-samen voeging wordt niet ondersteund voor Windows Server met de rol domein controller (DC).
 

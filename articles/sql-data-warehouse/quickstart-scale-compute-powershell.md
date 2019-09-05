@@ -10,16 +10,16 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 193aec8de2a6ee34da666a013dcb0d49d85c08b0
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 37b5f0a989bb76a9a40529cd11944de40a164156
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574855"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306233"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Quickstart: De schaal van rekenkracht vergroten in Azure SQL Data Warehouse in PowerShell
+# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-azure-powershell"></a>Quickstart: Schaal berekenen in Azure SQL Data Warehouse in Azure PowerShell
 
-De schaal van rekenkracht vergroten in Azure SQL Data Warehouse in PowerShell. [Vergroot de schaal van Compute](sql-data-warehouse-manage-compute-overview.md) voor betere prestaties of verklein de schaal juist om kosten te besparen.
+Schaal Compute in Azure SQL Data Warehouse met behulp van Azure PowerShell. [Vergroot de schaal van Compute](sql-data-warehouse-manage-compute-overview.md) voor betere prestaties of verklein de schaal juist om kosten te besparen.
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 

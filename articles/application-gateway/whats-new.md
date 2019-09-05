@@ -1,22 +1,22 @@
 ---
-title: Wat is er nieuw in Azure Application Gateway
-description: Ontdek wat er nieuw in Azure Application Gateway, zoals de meest recente release-opmerkingen worden bekende problemen, oplossingen voor problemen, afgeschafte functies en toekomstige wijzigingen.
+title: Wat is er nieuw in Azure-toepassing gateway
+description: Ontdek wat er nieuw is in Azure-toepassing gateway, zoals de nieuwste opmerkingen bij de release, bekende problemen, fout oplossingen, afgeschafte functionaliteit en aanstaande wijzigingen.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: 2a494b924107baeabbcf412af7e1bbdb1db0f753
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 6755825aa123b3d7d1eed23291790ff3dc477ac5
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752020"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382470"
 ---
-# <a name="whats-new-in-azure-application-gateway"></a>Wat is er nieuw in Azure Application Gateway?
+# <a name="whats-new-in-azure-application-gateway"></a>Wat is er nieuw in Azure-toepassing gateway?
 
-Azure Application Gateway wordt regelmatig bijgewerkt. Als u wilt bijhouden met de meest recente ontwikkelingen, vindt in dit artikel u informatie over:
+Azure-toepassing gateway wordt doorlopend bijgewerkt. Als u wilt bijhouden met de meest recente ontwikkelingen, vindt in dit artikel u informatie over:
 
 - De meest recente versies
 - Bekende problemen
@@ -27,16 +27,17 @@ Azure Application Gateway wordt regelmatig bijgewerkt. Als u wilt bijhouden met 
 
 |Functie  |Description  |Datum toegevoegd  |
 |---------|---------|---------|
-|Aangepaste WAF-regels |Applicaiton Gateway WAF_v2 now supports creating custom rules. Zie [aangepaste regels voor Application Gateway](custom-waf-rules-overview.md). |Juni 2019 |
-|Automatisch schalen, zoneredundantie, ondersteuning voor statische VIP algemeen beschikbaar |Algemene beschikbaarheid voor de v2-SKU die ondersteunt automatisch schalen, zoneredundantie, betere prestaties, statische VIP's, Key Vault, Header herschrijven. Zie [Application Gateway-documentatie voor automatisch schalen](application-gateway-autoscaling-zone-redundant.md). |April 2019 |
-|Key Vault-integratie |Application Gateway ondersteunt nu de integratie met Key Vault (in openbare preview) voor certificaten die zijn gekoppeld aan de HTTPS-functionaliteit listeners. Zie [SSL-beëindiging met Key Vault-certificaten](key-vault-certs.md). |April 2019 |
-|Koptekst CRUD/Regeneraties     |U kunt nu de HTTP-headers herschrijven. Zie [zelfstudie: Een toepassingsgateway maken en te herschrijven van HTTP-headers](tutorial-http-header-rewrite-powershell.md) voor meer informatie.|December 2018|
-|Lijst met de configuratie en uitsluiting van WAF     |Er is meer opties voor het configureren van uw WAF en fout-positieven toegevoegd. Zie [Web application firewall-aanvraaglimieten grootte en uitsluitingslijsten](application-gateway-waf-configuration.md) voor meer informatie.|December 2018|
-|Automatisch schalen, zoneredundantie, statische VIP-ondersteuning      |Er zijn veel verbeteringen, zoals automatisch schalen, verbeterde prestaties en meer met de v2-SKU. Zie [wat is Azure Application Gateway?](overview.md) voor meer informatie.|September 2018|
-|Verwerkingsstop voor verbindingen     |Verwerkingsstop voor verbindingen, kunt u probleemloos leden verwijderen uit uw back endpools. Zie voor meer informatie, [verwerkingsstop](overview.md#connection-draining).|September 2018|
-|Aangepaste foutpagina's     |Met aangepaste foutpagina's, kunt u een foutpagina weergegeven in de indeling van de rest van uw websites maken. U kunt deze inschakelen, Zie [Application Gateway maakt aangepaste foutpagina's](custom-error.md).|September 2018|
-|Verbeteringen van de metrische gegevens     |U kunt een beter beeld van de status van uw Application Gateway met uitgebreide metrische gegevens ophalen. Zie voor het inschakelen van metrische gegevens over uw Application Gateway [Back-endstatus, diagnostische logboeken en metrische gegevens voor Application Gateway](application-gateway-diagnostics.md).|Juni 2018|
+|Meer meet waarden |We hebben de volgende nieuwe metrische gegevens toegevoegd om u te helpen uw toepassing-gateway v2-SKU te bewaken: [Metrische gegevens met betrekking tot timing](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#timing-metrics), status van back-upantwoord, ontvangen bytes, verzonden bytes, TLS-protocol van client en huidige reken eenheden. Zie [metrische gegevens die worden ondersteund door de SKU van Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-supported-by-application-gateway-v2-sku). |2019 augustus |
+|Aangepaste WAF-regels |Toepassing gateway WAF_v2 ondersteunt nu het maken van aangepaste regels. Zie [Application Gateway aangepaste regels](custom-waf-rules-overview.md). |Juni 2019 |
+|Automatisch schalen, zone redundantie, statische VIP-ondersteuning GA |Algemene Beschik baarheid voor v2 SKU, die ondersteuning biedt voor automatisch schalen, zone redundantie, betere prestaties, statische Vip's, Key Vault, header herschrijven. Zie [Application Gateway documentatie](application-gateway-autoscaling-zone-redundant.md)voor automatisch schalen. |April 2019 |
+|Integratie van Key Vault |Application Gateway ondersteunt nu integratie met Key Vault (in open bare preview) voor server certificaten die zijn gekoppeld aan listeners waarvoor HTTPS is ingeschakeld. Zie [SSL-beëindiging met Key Vault certificaten](key-vault-certs.md). |April 2019 |
+|RUWE koptekst/herschrijf bewerkingen     |U kunt nu HTTP-headers herschrijven. Zie [zelf studie: Maak een toepassings gateway en herschrijf http-](tutorial-http-header-rewrite-powershell.md) headers voor meer informatie.|December 2018|
+|WAF-configuratie en uitsluitings lijst     |We hebben meer opties toegevoegd om u te helpen uw WAF te configureren en valse positieven te verminderen. Zie de limieten voor de grootte van de [Web Application firewall-aanvraag en uitsluitings lijsten](application-gateway-waf-configuration.md) voor meer informatie.|December 2018|
+|Automatisch schalen, zone redundantie, ondersteuning van statische VIP      |Met de v2-SKU zijn er veel verbeteringen, zoals automatisch schalen, betere prestaties en meer. Zie [Wat is Azure-toepassing gateway?](overview.md) voor meer informatie.|September 2018|
+|Verwerkingsstop voor verbindingen     |Met het verbreken van de verbinding kunt u leden zonder problemen verwijderen uit uw back-endservers. Zie [verbindings afvoer](overview.md#connection-draining)voor meer informatie.|September 2018|
+|Aangepaste foutpagina's     |Met aangepaste fout pagina's kunt u een fout pagina maken in de indeling van de rest van uw websites. Zie [Application Gateway aangepaste fout pagina's maken](custom-error.md)om dit in te scha kelen.|September 2018|
+|Verbeteringen voor metrische gegevens     |U kunt een beter beeld krijgen van de status van uw Application Gateway met uitgebreide metrische gegevens. Als u metrische gegevens op uw Application Gateway wilt inschakelen, raadpleegt u de status van de [back-end, Diagnostische logboeken en metrische gegevens voor Application Gateway](application-gateway-diagnostics.md).|Juni 2018|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over Azure Application Gateway [wat is Azure Application Gateway?](overview.md)
+Zie [Wat is Azure-toepassing gateway?](overview.md) voor meer informatie over Azure-toepassing gateway.

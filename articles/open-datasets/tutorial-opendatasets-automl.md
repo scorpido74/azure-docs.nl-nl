@@ -9,12 +9,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: 6f72daa4a601df0e3592910645c2f9b35ab64431
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0218221426351b0b508021fc74693557f200b4e8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845814"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309267"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>Zelfstudie: Een regressie model bouwen met automatische machine learning en gegevens sets openen
 
@@ -1246,7 +1246,7 @@ weather_df.head(10)
 
 Roep `pandas.Series.dt.normalize` opnieuw op het `datetime` veld in de weer gegevens zodat dit overeenkomt met de tijd `taxi_holidays_df`sleutel in. Verwijder de overbodige kolommen en filter de records waar de Tempe ratuur zich bevindt `NaN`.
 
-Groepeer vervolgens de weer gegeven gegevens zodat u dagelijks geaggregeerde weer waarden hebt. Definieer een dict `aggregations` om te definiëren hoe elk veld op een dagelijks niveau moet worden geaggregeerd. Voor `snowDepth` `precipTime` `precipDepth` en `temperature` nemen het gemiddelde en voor en de dagelijkse maximum waarde. Gebruik de `groupby()` functie samen met de aggregaties om de gegevens te groeperen. Bekijk een voor beeld van de gegevens om ervoor te zorgen dat er één record per dag is.
+Groepeer vervolgens de weer gegeven gegevens zodat u dagelijks geaggregeerde weer waarden hebt. Definieer een dict met `aggregations` de naam om te definiëren hoe elk veld op een dagelijks niveau moet worden geaggregeerd. Voor `snowDepth` `precipTime` `precipDepth` en `temperature` nemen het gemiddelde en voor en de dagelijkse maximum waarde. Gebruik de `groupby()` functie samen met de aggregaties om de gegevens te groeperen. Bekijk een voor beeld van de gegevens om ervoor te zorgen dat er één record per dag is.
 
 ```python
 weather_df["datetime"] = weather_df["datetime"].dt.normalize()

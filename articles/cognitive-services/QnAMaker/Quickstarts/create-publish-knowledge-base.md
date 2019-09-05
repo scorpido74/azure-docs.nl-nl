@@ -1,25 +1,25 @@
 ---
-title: Maken, trainen en publiceren van knowledge base - QnA Maker
+title: 'Quickstart: Knowledge Base-QnA Maker maken, trainen en publiceren'
 titleSuffix: Azure Cognitive Services
-description: U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelgestelde vragen of producthandleidingen. De QnA Maker knowledge base in dit voorbeeld is gemaakt op basis van een eenvoudige Veelgestelde vragen over webpagina om te beantwoorden vragen over herstel van BitLocker-sleutels.
+description: U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelgestelde vragen of producthandleidingen. De QnA Maker Knowledge Base in dit voor beeld wordt gemaakt op basis van een eenvoudige webpagina met veelgestelde vragen over het beantwoorden van vragen over BitLocker-sleutel herstel.
 author: diberry
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 03ce1047dd175ae4a676fa1461632a8e23122a8d
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 229956b41f7f26637e6a6aa62e341c4b06b8a429
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249735"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376366"
 ---
-# <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>Uw QnA Maker-knowledge base maken, trainen en publiceren
+# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Quickstart: Uw QnA Maker-knowledge base maken, trainen en publiceren
 
-U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelgestelde vragen of producthandleidingen. Dit artikel bevat een voorbeeld van het maken van een kennisdatabase QnA Maker van een eenvoudige Veelgestelde vragen over webpagina, om te beantwoorden van vragen over herstel van BitLocker-sleutels.
+U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelgestelde vragen of producthandleidingen. Dit artikel bevat een voor beeld van het maken van een QnA Maker Knowledge Base van een eenvoudige webpagina met veelgestelde vragen over het beantwoorden van vragen over BitLocker-sleutel herstel.
 
 ## <a name="prerequisite"></a>Vereiste
 
@@ -28,80 +28,80 @@ U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelge
 
 ## <a name="create-a-qna-maker-knowledge-base"></a>Een QnA Maker-knowledge base maken
 
-1. Aanmelden bij de [QnAMaker.ai](https://QnAMaker.ai) portal met uw Azure-referenties.
+1. Meld u aan bij de [QnAMaker.ai](https://QnAMaker.ai) -Portal met uw Azure-referenties.
 
-1. Selecteer op de portal QnA Maker **maken van een kennisdatabase**.
+1. Selecteer op de QnA Maker-Portal **een Knowledge Base maken**.
 
-   ![Schermafbeelding van de QnA Maker portal](../media/qna-maker-create-kb.png)
+   ![Scherm opname van QnA Maker Portal](../media/qna-maker-create-kb.png)
 
 1. Selecteer op de pagina **Create** (Maken) in stap 1 de optie **Create a QnA service** (Een QnA-service maken). U wordt omgeleid naar de [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) om een QnA Maker-service in te stellen in uw abonnement. Als er een time-out optreedt in de Azure Portal, selecteert u **Opnieuw proberen** op de site. Wanneer de verbinding is gemaakt, wordt uw Azure-dashboard weergegeven.
 
-1. Nadat u een nieuwe QnA Maker-service hebt gemaakt in Azure, gaat u terug naar qnamaker.ai/create. Selecteer de QnA Maker-service in de vervolgkeuzelijsten in stap 2. Als u een nieuwe QnA Maker-service hebt gemaakt, moet u de pagina te vernieuwen.
+1. Nadat u een nieuwe QnA Maker-service hebt gemaakt in Azure, gaat u terug naar qnamaker.ai/create. Selecteer uw QnA Maker-service in de vervolg keuzelijsten in stap 2. Als u een nieuwe QnA Maker-service hebt gemaakt, moet u ervoor zorgen dat u de pagina vernieuwt.
 
-   ![Schermafbeelding van het selecteren van een kennisdatabase QnA Maker-service](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
+   ![Scherm opname van het selecteren van een QnA Maker service Knowledge Base](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. In stap 3, naam op voor uw knowledge base **mijn voorbeeld QnA KB**.
+1. In stap 3 moet u de Knowledge Base het voor **beeld QnA KB**noemen.
 
-1. Selecteer drie soorten gegevensbronnen om inhoud toe aan uw knowledge base. Voeg in stap 4, onder **Populate your KB** (De KB vullen), de URL [Veelgestelde vragen over BitLocker-herstel](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview-and-requirements-faq) toe in het vak **URL**.
+1. Als u inhoud wilt toevoegen aan uw Knowledge Base, selecteert u drie typen gegevens bronnen. Voeg in stap 4, onder **Populate your KB** (De KB vullen), de URL [Veelgestelde vragen over BitLocker-herstel](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview-and-requirements-faq) toe in het vak **URL**.
 
-   ![Schermafbeelding van het toevoegen van gegevensbronnen](../media/qnamaker-quickstart-kb/add-datasources.png)
+   ![Scherm opname van het toevoegen van gegevens bronnen](../media/qnamaker-quickstart-kb/add-datasources.png)
 
 1. Selecteer in stap 5 **Create your KB** (De KB maken).
 
-1. Terwijl QnA Maker wordt gemaakt van de knowledge base, wordt er een pop-upvenster weergegeven. Tijdens het extractieproces, dat enkele minuten duurt, wordt de HTML-pagina gelezen en worden de vragen en antwoorden geïdentificeerd.
+1. Terwijl QnA Maker de Knowledge Base maakt, wordt er een pop-upvenster weer gegeven. Tijdens het extractieproces, dat enkele minuten duurt, wordt de HTML-pagina gelezen en worden de vragen en antwoorden geïdentificeerd.
 
-1. Nadat de QnA Maker is gemaakt de knowledge base, de **Knowledge base** pagina wordt geopend. U kunt de inhoud van de knowledge base op deze pagina kunt bewerken.
+1. Nadat QnA Maker de Knowledge Base hebt gemaakt, wordt de pagina **Knowledge Base** geopend. U kunt de inhoud van de Knowledge Base op deze pagina bewerken.
 
-## <a name="edit-the-knowledge-base"></a>De knowledge base bewerken
+## <a name="edit-the-knowledge-base"></a>De Knowledge Base bewerken
 
-1. In de QnA Maker-portal op de **bewerken** sectie, selecteer **QnA toevoegen paar** naar een nieuwe rij toevoegt aan de knowledge base. Typ onder **Question** (Vraag) **Hoi.** Typ onder **Answer** (Antwoord) **Hallo. Stel mij BitLocker vragen.**
+1. Selecteer in de QnA Maker Portal, in de sectie **bewerken** , **QnA paar toevoegen** om een nieuwe rij aan de Knowledge Base toe te voegen. Typ onder **Question** (Vraag) **Hoi.** Typ onder **Answer** (Antwoord) **Hallo. Vragen over BitLocker-vragen.**
 
-    ![Schermafbeelding van de QnA Maker portal](../media/qnamaker-quickstart-kb/add-qna-pair.png)
+    ![Scherm opname van QnA Maker Portal](../media/qnamaker-quickstart-kb/add-qna-pair.png)
 
 1. Selecteer in de rechterbovenhoek **Save and train** (Opslaan en trainen) om de wijzigingen op te slaan en het QnA Maker-model te trainen. Bewerkingen worden alleen bewaard als ze worden opgeslagen.
 
-## <a name="test-the-knowledge-base"></a>Testen van de knowledge base
+## <a name="test-the-knowledge-base"></a>De Knowledge Base testen
 
-1. Selecteer in de rechterbovenhoek van de portal QnA Maker **testen** om te testen of de wijzigingen van kracht. Typ `hi there` in het vak en selecteer Enter. Als het goed is, ziet u nu het antwoord dat u hebt gemaakt.
+1. Selecteer in de portal QnA Maker in de rechter bovenhoek de optie **testen** om te testen of de wijzigingen die u hebt aangebracht van kracht zijn geworden. Typ `hi there` in het vak en selecteer Enter. Als het goed is, ziet u nu het antwoord dat u hebt gemaakt.
 
-1. Selecteer **Inspect** (Inspecteren) om het antwoord gedetailleerder te onderzoeken. Het testvenster wordt gebruikt om uw wijzigingen in de knowledge base testen voordat ze worden gepubliceerd.
+1. Selecteer **Inspect** (Inspecteren) om het antwoord gedetailleerder te onderzoeken. Het venster test wordt gebruikt om uw wijzigingen in de Knowledge Base te testen voordat ze worden gepubliceerd.
 
-    ![Schermopname van het Configuratiescherm van de test](../media/qnamaker-quickstart-kb/inspect.png)
+    ![Scherm afbeelding van het test paneel](../media/qnamaker-quickstart-kb/inspect.png)
 
 1. Selecteer **Test** (Testen) nogmaals om de pop-up **Test** te sluiten.
 
 ## <a name="publish-the-knowledge-base"></a>De knowledge base publiceren
 
-Wanneer u een kennisdatabase publiceren, wordt de status van de vraag en antwoord inhoud van uw knowledge base verplaatst van de test-index naar een productie-index in Azure search.
+Wanneer u een kennis database publiceert, wordt de vraag en antwoord inhoud van uw kennis basis verplaatst van de test index naar een productie-index in azure Search.
 
-![Schermafbeelding van het verplaatsen van de inhoud van uw knowledge base](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
+![Scherm afbeelding van het verplaatsen van de inhoud van uw Knowledge Base](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
 
-1. In de portal QnA Maker, in het menu naast **bewerken**, selecteer **publiceren**. Selecteer vervolgens **Publish** (Publiceren) op de pagina om te bevestigen.
+1. Selecteer in de QnA Maker Portal in het menu naast **bewerken**de optie **publiceren**. Selecteer vervolgens **Publish** (Publiceren) op de pagina om te bevestigen.
 
 1. De QnA Maker-service is nu gepubliceerd. U kunt het eindpunt in uw toepassing of botcode gebruiken.
 
-    ![Schermopname van geslaagde publiceren](../media/qnamaker-quickstart-kb/publish-sucess.png)
+    ![Scherm opname van geslaagde publicatie](../media/qnamaker-quickstart-kb/publish-sucess.png)
 
-## <a name="create-a-bot"></a>Maken van een bot
+## <a name="create-a-bot"></a>Een bot maken
 
-Nadat deze is gepubliceerd, kunt u een bot uit de **publiceren** pagina: 
+Na het publiceren kunt u een bot maken op de pagina **publiceren** : 
 
-* U kunt verschillende bots snel, maken alle die verwijst naar de dezelfde knowledge base voor verschillende regio's of plannen voor de afzonderlijke bots prijzen. 
-* Als u wilt dat slechts één bot voor de knowledge base, gebruikt u de **weergeven van alle uw bots op de Azure-portal** koppeling om een lijst met uw huidige bots weer te geven. 
+* U kunt snel een aantal botsingen maken, die allemaal verwijzen naar dezelfde Knowledge Base voor verschillende regio's of prijs plannen voor het individuele bots. 
+* Als u slechts één bot wilt gebruiken voor de Knowledge Base, gebruikt u de **weer gave alles uw bots op de Azure Portal** koppeling om een lijst met uw huidige bots weer te geven. 
 
-Wanneer u wijzigingen in de knowledge base en opnieuw publiceren aanbrengt, moet u geen verdere actie met de bot te ondernemen. Er al geconfigureerd voor samenwerking met de knowledge base en werkt met alle toekomstige wijzigingen in de knowledge base. Telkens wanneer u een kennisdatabase publiceren, worden alle bots die zijn verbonden met het automatisch bijgewerkt.
+Wanneer u wijzigingen aanbrengt in de Knowledge Base en opnieuw publiceert, hoeft u geen verdere actie te ondernemen met de bot. Het is al geconfigureerd voor gebruik met de Knowledge Base en werkt met alle toekomstige wijzigingen in de kennis database. Telkens wanneer u een kennis database publiceert, worden alle botsen die met de Knowledge Base zijn verbonden, automatisch bijgewerkt.
 
-1. In de QnA Maker-portal op de **publiceren** weergeeft, schakelt **bot maken**. Deze knop wordt weergegeven nadat u de knowledge base hebt gepubliceerd.
+1. Selecteer in de QnA Maker Portal op de pagina **publiceren** de optie **bot maken**. Deze knop wordt alleen weer gegeven nadat u de Knowledge Base hebt gepubliceerd.
 
-    ![Schermopname van het maken van een bot](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
+    ![Scherm afbeelding van het maken van een bot](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
 
-1. Er wordt een nieuw browsertabblad geopend voor de Azure-portal, met de pagina voor het maken van de Azure Bot Service. De Azure botservice configureren. Zie voor meer informatie over deze configuratie-instellingen, [QnA Bot maken met Azure Bot Service v4](../tutorials/create-qna-bot.md).
+1. Er wordt een nieuw browser tabblad geopend voor de Azure Portal, met de pagina voor het maken van de Azure Bot Service. De Azure bot-service configureren. Zie [een QnA-bot maken met Azure bot service v4](../tutorials/create-qna-bot.md)voor meer informatie over deze configuratie-instellingen.
     
-    * De volgende instellingen in de Azure-portal niet te wijzigen bij het maken van de bot. Ze worden ingevuld voor uw bestaande knowledge base: 
-        * QnA verificatiesleutel
-        * App service-plan en de locatie
+    * Wijzig de volgende instellingen in de Azure Portal niet tijdens het maken van de bot. Ze zijn vooraf ingevuld voor uw bestaande Knowledge Base: 
+        * QnA-verificatie sleutel
+        * App service-plan en-locatie
         * Azure Storage
-    * De bot en de QnA Maker kunnen de web-app service-plan delen, maar de web-app niet delen. Dit betekent dat de **appnaam** moet verschillen van de naam van de app die u hebt gebruikt tijdens het maken van de QnA Maker-service. 
+    * De bot en QnA Maker kunnen het web app service-abonnement delen, maar kunnen de web-app niet delen. Dit betekent dat de naam van de **app** moet verschillen van de app-naam die u hebt gebruikt bij het maken van de QnA Maker service. 
 
 
 ## <a name="next-steps"></a>Volgende stappen

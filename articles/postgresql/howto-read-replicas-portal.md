@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: d0f29e2c01d6295935ac56cb19c37e1ad6bbd21b
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: bd1317242f84b4d8bd039da89d991a73f6cd3781
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907386"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309316"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Lees replica's maken en beheren in Azure Database for PostgreSQL-één server van de Azure Portal
 
 In dit artikel leert u hoe u in Azure Database for PostgreSQL Lees replica's maakt en beheert via de Azure Portal. Zie het [overzicht](concepts-read-replicas.md)voor meer informatie over het lezen van replica's.
-
-> [!IMPORTANT]
-> U kunt een lees replica maken in dezelfde regio als uw hoofd server of in andere Azure-regio's van uw keuze. Replicatie tussen regio's is momenteel beschikbaar als open bare preview.
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -47,7 +44,7 @@ Deze stappen moeten worden gebruikt om een hoofd server voor te bereiden in de l
 
    ![Bijgewerkte werk balk](./media/howto-read-replicas-portal/updated-toolbar.png)
    
-Het inschakelen van ondersteuning voor replicatie is een eenmalige bewerking per hoofd server. Er wordt een ondersteunings knop voor het uitschakelen van de **replicatie** voor uw gemak geboden. Het is niet raadzaam om replicatie ondersteuning uit te scha kelen, tenzij u zeker weet dat u nooit een replica maakt op deze hoofd server. U kunt ondersteuning voor replicatie niet uitschakelen als uw hoofd server bestaande replica's heeft.
+Het inschakelen van ondersteuning voor replicatie is een eenmalige bewerking per hoofd server. Er wordt een **ondersteunings** knop voor het uitschakelen van de replicatie voor uw gemak geboden. Het is niet raadzaam om replicatie ondersteuning uit te scha kelen, tenzij u zeker weet dat u nooit een replica maakt op deze hoofd server. U kunt ondersteuning voor replicatie niet uitschakelen als uw hoofd server bestaande replica's heeft.
 
 
 ## <a name="create-a-read-replica"></a>Maken van een replica lezen

@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: mlearned
-ms.openlocfilehash: 1f07581be8fc416f8aae5eec1460ca3d33bda8f9
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 3c11367945b74db9be20ade86c7bc26901440e4d
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114241"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305153"
 ---
 # <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Voor beeld: verifiëren met Azure Container Registry van de Azure Kubernetes-service
 
@@ -33,11 +33,11 @@ U moet het volgende hebben:
 
 * De rol van **eigenaar** of **Azure-account beheerder** voor het **Azure-abonnement**
 * U hebt ook de Azure CLI-versie 2.0.70 of hoger nodig en de AKS-Preview 0.4.8-extensie
-* Docker moet zijn [geïnstalleerd](https://docs.docker.com/install/) op de client en u moet toegang hebben tot [docker hub](https://hub.docker.com/)
+* [Docker](https://docs.docker.com/install/) moet zijn geïnstalleerd op de client en u moet toegang hebben tot [docker hub](https://hub.docker.com/)
 
 ## <a name="install-latest-aks-cli-preview-extension"></a>De meest recente AKS CLI-preview-extensie installeren
 
-U hebt de **AKS-Preview 0.4.8-** uitbrei ding of hoger nodig.
+U hebt de **AKS-Preview 0.4.13-** uitbrei ding of hoger nodig.
 
 ```azurecli
 az extension remove --name aks-preview 
@@ -46,25 +46,33 @@ az extension add -y --name aks-preview
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Een nieuw AKS-cluster maken met ACR-integratie
 
-U kunt AKS-en ACR-integratie instellen tijdens het maken van de eerste keer dat u uw AKS-cluster maakt.  Als u een AKS-cluster wilt toestaan om te communiceren met ACR, wordt een Azure Active Directory **Service-Principal** gebruikt. Met de volgende CLI-opdracht maakt u een ACR in de resource groep die u opgeeft en configureert u de juiste **ACRPull** -rol voor de Service-Principal. Als de *ACR-naam* niet bestaat in de resource groep die u opgeeft, `aks<resource-group>acr` wordt automatisch een standaard ACR-naam gemaakt.  Geef hieronder geldige waarden voor de para meters op.  De para meters tussen vier Kante haken zijn optioneel.
+U kunt AKS-en ACR-integratie instellen tijdens het maken van de eerste keer dat u uw AKS-cluster maakt.  Als u een AKS-cluster wilt toestaan om te communiceren met ACR, wordt een Azure Active Directory **Service-Principal** gebruikt. Met de volgende CLI-opdracht kunt u een bestaande ACR in uw abonnement autoriseren en de juiste **ACRPull** -rol configureren voor de Service-Principal. Geef hieronder geldige waarden voor de para meters op.  De para meters tussen vier Kante haken zijn optioneel.
 ```azurecli
 az login
-az aks create -n myAKSCluster -g myResourceGroup --enable-acr [--acr <acr-name-or-resource-id>]
+az acr create -n myContainerRegistry -g myContainerRegistryResourceGroup --sku basic [in case you do not have an existing ACR]
+az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resource-id>
 ```
 \* * Een ACR-resource-id heeft de volgende indeling: 
 
-/Subscriptions/<-abonnement: d >/resourceGroups/< Resource-Group-name >/providers/Microsoft.ContainerRegistry/registries/<name> 
+/Subscriptions/<-abonnement: d >/resourceGroups/< Resource-Group-name >/providers/Microsoft.ContainerRegistry/registries/{name} 
   
 Het kan enkele minuten duren voordat deze stap is voltooid.
 
-## <a name="create-acr-integration-for-existing-aks-clusters"></a>ACR-integratie maken voor bestaande AKS-clusters
+## <a name="configure-acr-integration-for-existing-aks-clusters"></a>ACR-integratie configureren voor bestaande AKS-clusters
 
 Integreer een bestaande ACR met bestaande AKS-clusters door geldige waarden op te geven voor de **ACR-naam** of **ACR-resource-id** zoals hieronder wordt beschreven.
 
 ```azurecli
-az aks update -n myAKSCluster -g myResourceGroup --enable-acr --acr <acrName>
-az aks update -n myAKSCluster -g myResourceGroup --enable-acr --acr <acr-resource-id>
+az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 ```
+
+U kunt ook de integratie tussen een ACR en een AKS-cluster verwijderen met het volgende
+```azurecli
+az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
+```
+
 
 ## <a name="log-in-to-your-acr"></a>Meld u aan bij uw ACR
 

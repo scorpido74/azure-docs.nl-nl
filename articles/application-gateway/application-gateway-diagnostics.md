@@ -7,14 +7,14 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: d9b0c551cdfb92b380a967aaa5bdce7c278fd39e
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 6df78a46e6bc8055f8cce89e199d01ad631e178e
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183573"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306192"
 ---
-# <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Back-end-status, Diagnostische logboeken en metrische gegevens voor Application Gateway
+# <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-end status-en Diagnostische logboeken voor Application Gateway
 
 Als u Azure-toepassing gateway gebruikt, kunt u resources op de volgende manieren controleren:
 
@@ -22,7 +22,7 @@ Als u Azure-toepassing gateway gebruikt, kunt u resources op de volgende maniere
 
 * [Logboeken](#diagnostic-logging): Met logboeken kunnen prestaties, toegang en andere gegevens worden opgeslagen of gebruikt voor bewakings doeleinden van een resource.
 
-* [Metrische gegevens](#metrics): Application Gateway heeft momenteel zeven metrische gegevens om prestatie meter items weer te geven.
+* [Metrische gegevens](application-gateway-metrics.md): Application Gateway heeft verschillende metrische gegevens waarmee u kunt controleren of uw systeem wordt uitgevoerd zoals verwacht.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -360,70 +360,9 @@ U kunt ook verbinding maken met uw opslagaccount en de JSON-logboekitems voor to
 
 We hebben een resource manager-sjabloon gepubliceerd waarmee de populaire [GoAccess](https://goaccess.io/) log analyzer voor Application Gateway Access-Logboeken wordt geïnstalleerd en uitgevoerd. GoAccess biedt waardevolle statistieken voor HTTP-verkeer, zoals unieke bezoekers, aangevraagde bestanden, hosts, besturings systemen, browsers, HTTP-status codes en meer. Raadpleeg het [Leesmij-bestand in de map Resource Manager-sjabloon in github](https://aka.ms/appgwgoaccessreadme)voor meer informatie.
 
-## <a name="metrics"></a>Metrische gegevens
-
-Metrische gegevens zijn een functie voor bepaalde Azure-resources waar u prestatie meter items kunt bekijken in de portal. De volgende metrische gegevens zijn beschikbaar voor Application Gateway:
-
-- **Huidige verbindingen**
-- **Mislukte aanvragen**
-- **Aantal goede hosts**
-
-   U kunt filteren op basis van een per back-end-groep om gezonde/beschadigde hosts in een specifieke back-end-groep weer te geven.
-
-
-- **Reactie status**
-
-   De antwoord status code distributie kan verder worden gecategoriseerd om antwoorden weer te geven in 2xx-, 3xx-, 4xx-en 5xx-categorieën.
-
-- **Doorvoer**
-- **Totaal aantal aanvragen**
-- **Aantal hosts met slechte status**
-
-   U kunt filteren op basis van een per back-end-groep om gezonde/beschadigde hosts in een specifieke back-end-groep weer te geven.
-
-Blader naar een toepassings gateway onder **bewaking** **metrische gegevens**selecteren. Om de beschikbare waarden te zien, selecteert u de vervolgkeuzelijst **METRISCH**.
-
-In de volgende afbeelding ziet u een voor beeld met drie metrische gegevens die gedurende de laatste 30 minuten worden weer gegeven:
-
-[![](media/application-gateway-diagnostics/figure5.png "Metrische weer gave")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
-
-Zie [ondersteunde metrische gegevens met Azure monitor](../azure-monitor/platform/metrics-supported.md)voor een actuele lijst met metrische gegevens.
-
-### <a name="alert-rules"></a>Waarschuwingsregels
-
-U kunt waarschuwings regels starten op basis van metrische gegevens voor een resource. Een waarschuwing kan bijvoorbeeld een webhook aanroepen of een beheerder e-mailen als de door Voer van de toepassings gateway boven, onder of met een drempel waarde voor een opgegeven periode.
-
-In het volgende voor beeld wordt stapsgewijs uitgelegd hoe u een waarschuwings regel maakt waarmee een e-mail wordt verzonden naar een beheerder na een drempel waarde voor de door Voer, bijvoorbeeld:
-
-1. Selecteer **waarschuwing voor metrische gegevens toevoegen** om de pagina **regel toevoegen** te openen. U kunt deze pagina ook bereiken via de pagina metrische gegevens.
-
-   ![Knop voor waarschuwing voor metrische gegevens toevoegen][6]
-
-2. Vul op de pagina **regel toevoegen** de naam, de voor waarde en de meldings secties in en selecteer **OK**.
-
-   * Selecteer een van de vier waarden in de **voor waarden** kiezer: **Groter dan**, **groter dan of gelijk**aan, **kleiner**dan of **kleiner dan of gelijk aan**.
-
-   * Selecteer in de **periode** kiezer een periode van vijf minuten tot zes uur.
-
-   * Als u **e-mail eigenaren, inzenders en lezers**selecteert, kan het e-mail bericht dynamisch zijn op basis van de gebruikers die toegang hebben tot de bron. Als dat niet het geval is, kunt u een door komma's gescheiden lijst met gebruikers opgeven in het vak **extra e-mail adres** van de beheerder.
-
-   ![Regel pagina toevoegen][7]
-
-Als de drempel waarde wordt geschonden, ontvangt u een e-mail bericht dat lijkt op dat van de volgende afbeelding:
-
-![E-mail voor drempel waarde voor schending][8]
-
-Er wordt een lijst met waarschuwingen weer gegeven nadat u een metrische waarschuwing hebt gemaakt. Het bevat een overzicht van alle waarschuwings regels.
-
-![Lijst met waarschuwingen en regels][9]
-
-Zie [waarschuwings meldingen ontvangen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)voor meer informatie over waarschuwings meldingen.
-
-Ga voor meer informatie over webhooks en hoe u deze kunt gebruiken met waarschuwingen, [een webhook configureren voor een Azure metric-waarschuwing](../azure-monitor/platform/alerts-webhooks.md).
-
 ## <a name="next-steps"></a>Volgende stappen
 
-* Visualiseer teller-en gebeurtenis logboeken met behulp van [Azure monitor](../azure-monitor/insights/azure-networking-analytics.md)-Logboeken.
+* Visualiseer teller-en gebeurtenis logboeken met behulp van [Azure monitor-logboeken](../azure-monitor/insights/azure-networking-analytics.md).
 * [Visualiseer uw Azure-activiteiten logboek met Power bi](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blog bericht.
 * [Bekijk en analyseer activiteiten logboeken van Azure in Power bi en meer](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blog berichten.
 

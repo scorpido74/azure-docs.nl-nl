@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
-ms.openlocfilehash: fd60923351970dfe5aa5705a0508dbd39941ef58
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 23c54a69f709ec97d895ed5965841e43ebdc560c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68254344"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306549"
 ---
 # <a name="specify-a-face-recognition-model"></a>Een model voor gezichtsherkenning opgeven
 
@@ -57,7 +57,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recog
 
 ## <a name="identify-faces-with-specified-model"></a>Gezichten identificeren met het opgegeven model
 
-De Face-API kan gezichts gegevens uit een afbeelding extra heren en koppelen aan  een persoons object (bijvoorbeeld via de aanroep face-API [toevoegen](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) ), en  meerdere persoons objecten kunnen samen worden opgeslagen in een **PersonGroup**. Vervolgens kan een nieuw gezicht worden vergeleken met een **PersonGroup** (met de aanroep voor het identificeren van het [Face - Identify] ) en kan de overeenkomende persoon binnen die groep worden geïdentificeerd.
+De Face-API kan gezichts gegevens uit een afbeelding extra heren en koppelen aan een **persoons** object (bijvoorbeeld via de aanroep [Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) -API toevoegen), en meerdere **persoons** objecten kunnen samen worden opgeslagen in een **PersonGroup**. Vervolgens kan een nieuw gezicht worden vergeleken met een **PersonGroup** (met de aanroep voor het identificeren van het [Face - Identify] ) en kan de overeenkomende persoon binnen die groep worden geïdentificeerd.
 
 Een **PersonGroup** moet één uniek herkennings model hebben voor alle **personen**en u kunt dit opgeven met behulp van de `recognitionModel` para meter bij het maken van de groep ([PersonGroup - Create] of [LargePersonGroup - Create]). Als u deze para meter niet opgeeft, wordt het `recognition_01` oorspronkelijke model gebruikt. Een groep maakt altijd gebruik van het herkennings model waarmee het is gemaakt, en nieuwe gezichten worden gekoppeld aan dit model wanneer ze eraan worden toegevoegd. Dit kan niet worden gewijzigd nadat het maken van een groep is gemaakt. Als u wilt zien welk model a **PersonGroup** is geconfigureerd met, gebruikt u de [PersonGroup-Get] API met de para meter _returnRecognitionModel_ ingesteld op **True**.
 
@@ -71,7 +71,7 @@ await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", 
 
 In deze code wordt een **PersonGroup** met id `mypersongroupid` gemaakt en ingesteld op het gebruik van het _recognition_02_ -model om gezichts functies te extra heren.
 
-U moet in dat geval opgeven welk model moet worden gebruikt bij het detecteren van gezichten om te vergelijken met deze **PersonGroup** (via de [Gezicht-detecteren] API voor het gezichts punt). Het model dat u gebruikt, moet altijd consistent zijn met de configuratie van de **PersonGroup**. anders mislukt de bewerking vanwege incompatibele modellen.
+U moet in dat geval opgeven welk model moet worden gebruikt bij het detecteren van gezichten om te vergelijken met deze **PersonGroup** (via de detectie-API voor het [Gezicht-detecteren] ). Het model dat u gebruikt, moet altijd consistent zijn met de configuratie van de **PersonGroup**. anders mislukt de bewerking vanwege incompatibele modellen.
 
 Er is geen wijziging in de [Face - Identify] API. u hoeft alleen de model versie op te geven in de detectie.
 
@@ -107,7 +107,8 @@ Als u normaal gesp roken een betrouwbaarheids drempel opgeeft (een waarde tussen
 
 In dit artikel hebt u geleerd hoe u het herkennings model kunt opgeven voor gebruik met verschillende face service-Api's. Volg vervolgens een Snelstartgids om aan de slag te gaan met gezichts detectie.
 
-* [Gezichten detecteren in een installatie kopie](../quickstarts/csharp-detect-sdk.md)
+* [Gezichts-.NET-SDK](../Quickstarts/csharp-sdk.md)
+* [Gezichts python-SDK](../Quickstarts/python-sdk.md)
 
 [Gezicht-detecteren]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Gezicht-zoek vergelijk bare]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

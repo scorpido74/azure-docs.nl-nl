@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 82c286ce60751775308d0f2c197d86785c4f0a14
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/04/2019
+ms.openlocfilehash: 75fcbdc20c1caf191d4a22672fc9641b36c263c5
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991587"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309348"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replica's lezen in Azure Database for PostgreSQL-één server
 
@@ -33,8 +33,6 @@ De functie voor het lezen van replica's maakt gebruik van asynchrone PostgreSQL-
 ## <a name="cross-region-replication"></a>Replicatie tussen regio's
 U kunt een lees replica maken in een andere regio dan de hoofd server. Replicatie tussen regio's kan handig zijn voor scenario's zoals het plannen van herstel na nood gevallen of gegevens dichter bij uw gebruikers te brengen.
 
-> [!IMPORTANT]
-> Replicatie tussen regio's is momenteel beschikbaar als open bare preview.
 
 U kunt een hoofd server in een [Azure database for PostgreSQL regio](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)hebben.  Een hoofd server kan een replica hebben in het gekoppelde gebied of in de universele replica regio's.
 
@@ -157,7 +155,7 @@ Er wordt een lees replica gemaakt als een nieuwe Azure Database for PostgreSQL-s
 Een replica wordt gemaakt met behulp van dezelfde berekenings-en opslag instellingen als de hoofd server. Nadat een replica is gemaakt, kunnen verschillende instellingen onafhankelijk van de hoofd server worden gewijzigd: generatie van compute, vCores, opslag en back-up van Bewaar periode. De prijs categorie kan ook onafhankelijk worden gewijzigd, met uitzonde ring van of van de Basic-laag.
 
 > [!IMPORTANT]
-> Voordat een Master-instelling wordt bijgewerkt naar een nieuwe waarde, moet u de replica configuratie bijwerken naar een gelijke of hogere waarde. Met deze actie zorgt u ervoor dat de replica alle wijzigingen kan aanbrengen die in de master zijn aangebracht.
+> Voordat een Master-instelling wordt bijgewerkt naar een nieuwe waarde, moet u de replica configuratie bijwerken naar een gelijke of hogere waarde. Met deze actie wordt ervoor gezorgd dat in de replica alle wijzigingen worden doorgevoerd die in de hoofdserver zijn aangebracht.
 
 PostgreSQL vereist dat de waarde van `max_connections` de para meter op de Lees replica groter dan of gelijk aan de Master waarde is. anders wordt de replica niet gestart. In azure database for PostgreSQL is de `max_connections` waarde van de para meter gebaseerd op de SKU. Zie [limieten in azure database for PostgreSQL](concepts-limits.md)voor meer informatie. 
 

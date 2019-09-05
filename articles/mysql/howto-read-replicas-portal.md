@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.openlocfilehash: 74f27f70c4a0752975a53b3889681d3910b1dd05
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: 275c7bc8127855712c191141ef681526da7c377b
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906427"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309489"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Lees replica's maken en beheren in Azure Database for MySQL met behulp van de Azure Portal
 
 In dit artikel leert u hoe u in de Azure Database for MySQL-service Lees replica's maakt en beheert met behulp van de Azure Portal.
-
-> [!IMPORTANT]
-> U kunt een lees replica maken in dezelfde regio als uw hoofd server of in andere Azure-regio's van uw keuze. Replicatie tussen regio's is momenteel beschikbaar als open bare preview.
 
 ## <a name="prerequisites"></a>Vereisten
 

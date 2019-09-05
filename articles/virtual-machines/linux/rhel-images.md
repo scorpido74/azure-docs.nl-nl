@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: e18f1db80b8fcb2c8846ce0c7294e1766cfa1ca3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: accc59ee31ddb7371774da3235cc9ccff24ad641
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091389"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309230"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Installatie kopieën Red Hat Enterprise Linux in azure
 In dit artikel worden beschik bare installatie kopieën van Red Hat Enterprise Linux (RHEL) in de Azure Marketplace beschreven, samen met beleids regels rondom hun naam en bewaar periode.
@@ -133,12 +133,12 @@ RHEL-SAP-HANA | 6.7      | RAW    | Linux-agent | RHEL 6,7 voor SAP HANA
 |             | 7.3      | LVM    | Linux-agent | RHEL 7,3 voor SAP HANA
 RHEL-SAP-APPS | 6.8      | RAW    | Linux-agent | RHEL 6,8 voor SAP Business Applications
 |             | 7.3      | LVM    | Linux-agent | RHEL 7,3 voor SAP Business Applications
-RHEL-HA       | 7.4      | RAW    | Linux-agent | RHEL 7,4 met HA-invoeg toepassing
-|             | 7.5      | RAW    | Linux-agent | RHEL 7,5 met HA-invoeg toepassing
-|             | 7,6      | RAW    | Linux-agent | RHEL 7,6 met HA-invoeg toepassing
-RHEL-SAP-HA   | 7.4      | RAW    | Linux-agent | RHEL 7,4 voor SAP met HA-invoeg toepassing
-|             | 7.5      | RAW    | Linux-agent | RHEL 7,5 voor SAP met HA-invoeg toepassing
-|             | 7,6      | RAW    | Linux-agent | RHEL 7,6 voor SAP met HA-invoeg toepassing
+RHEL-HA       | 7.4      | LVM    | Linux-agent | RHEL 7,4 met HA-invoeg toepassing
+|             | 7.5      | LVM    | Linux-agent | RHEL 7,5 met HA-invoeg toepassing
+|             | 7,6      | LVM    | Linux-agent | RHEL 7,6 met HA-invoeg toepassing
+RHEL-SAP-HA   | 7.4      | LVM    | Linux-agent | RHEL 7,4 voor SAP met HA-invoeg toepassing
+|             | 7.5      | LVM    | Linux-agent | RHEL 7,5 voor SAP met HA-invoeg toepassing
+|             | 7,6      | LVM    | Linux-agent | RHEL 7,6 voor SAP met HA-invoeg toepassing
 
 ### <a name="old-naming-convention"></a>Oude naam Conventie
 De RHEL 7-familie van installatie kopieën en de RHEL 6-familie van installatie kopieën gebruikte specifieke versies in hun Sku's tot de hierboven beschreven wijziging van de naamgevings Conventie.

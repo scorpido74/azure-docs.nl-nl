@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: f79fffe2117de77e4e44dcbbaa782b2ade81e04b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b89f4d2264924983aac93fb266efd71e46bea6bf
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164194"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305232"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een niet-Internet routeerbaar netwerk plaatsen waartoe u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Voor meer informatie over Azure Virtual Networks begint u met de informatie hier: [Overzicht van Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -25,7 +25,7 @@ Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een niet-Interne
 Azure API Management kan worden geïmplementeerd in het virtuele netwerk (VNET), zodat het toegang heeft tot back-end-services in het netwerk. De ontwikkelaars Portal en API-gateway kunnen zodanig worden geconfigureerd dat ze toegankelijk zijn vanaf internet of alleen binnen het virtuele netwerk.
 
 > [!NOTE]
-> Azure API Management ondersteunt zowel klassieke als Azure Resource Manager VNets.
+> De URL van het importeren van het API-document moet worden gehost op een openbaar toegankelijk Internet adres.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

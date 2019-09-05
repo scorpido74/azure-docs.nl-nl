@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: ellacroi
-ms.openlocfilehash: b8d0759d96b0b2566934f117f5dea32ec4ad015c
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 209905eaf90e006ded232be73ab2a3a428568eda
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68000008"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309026"
 ---
 # <a name="marketplace-faqs"></a>Veelgestelde vragen over Marketplace
 
@@ -36,7 +36,7 @@ Azure Marketplace biedt technische oplossingen en services van Microsoft en part
 
 * basis besturingssystemen
 * databases
-* security
+* beveiliging
 * identity
 * netwerken
 * Block Chain
@@ -205,7 +205,7 @@ MOSP: [micro soft online Subscription Program](https://azure.microsoft.com/suppo
 
 Hoewel de meeste micro soft-abonnementen eenvoudig kunnen worden omgezet naar een Enterprise Agreement, kunnen Azure Marketplace-aankopen binnen die abonnementen niet.
 
-Als u andere services die zijn gekocht op Azure Marketplace wilt migreren naar een EA-abonnement, annuleert u eerst de toepassingen vanuit het bestaande MOSP-abonnement en schaft u deze toepassingen opnieuw aan binnen het EA-abonnement. Als u dit doet, kunt u een krediet aanvraag indienen voor een teruggave tijdens de mogelijke maand van overlappende dekking tussen de Marketplace-service abonnementen. Maak een ondersteunings [ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+Als u andere services die zijn gekocht op Azure Marketplace wilt migreren naar een EA-abonnement, annuleert u eerst de toepassingen vanuit het bestaande MOSP-abonnement en schaft u deze toepassingen opnieuw aan binnen het EA-abonnement. Als u dit doet, kunt u een krediet aanvraag indienen voor een teruggave tijdens de mogelijke maand van overlappende dekking tussen de Marketplace-service abonnementen. Maak een [ondersteunings ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 **Wat is het verschil tussen de *prijs*, de *Software prijs*en de *totale prijs* in de kosten structuur voor aanbiedingen van virtuele machines in de Azure Marketplace?**
 
@@ -263,7 +263,7 @@ Azure Marketplace is ontworpen voor IT-professionals en Cloud ontwikkelaars die 
 
 **Waarom zou ik mijn toepassing op Azure Marketplace kunnen publiceren en hoe kan ik deze voor delen?**
 
-Azure Marketplace biedt een markt voor micro soft-partners om producten en services te promoten en verkopen aan Azure-klanten. Uitgevers hebben direct toegang tot de wereld wijde markten van 140, onze 300000 en partners en het netwerk van ondernemingen van het bedrijf.  De Marketplace bevat meer dan 90% aan Fortune 500-bedrijven en veel van de toonaangevende ontwikkel aars ter wereld. Nieuwe partners in azure Marketplace krijgen automatisch een reeks [gratis go-to-Market-voor delen](gtm-your-marketplace-benefits.md#go-to-market-gtm-benefits-in-the-marketplace) om het bewustzijn van hun aanbiedingen in de Marketplace van Azure te verg Roten.
+Azure Marketplace biedt een markt voor micro soft-partners om producten en services te promoten en verkopen aan Azure-klanten. Uitgevers hebben direct toegang tot de wereld wijde markten van 140, onze 300000 en partners en het netwerk van ondernemingen van het bedrijf.  De Marketplace bevat meer dan 90% aan Fortune 500-bedrijven en veel van de toonaangevende ontwikkel aars ter wereld. Nieuwe partners in azure Marketplace krijgen automatisch een reeks [gratis go-to-Market-voor delen](gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits) om het bewustzijn van hun aanbiedingen in de Marketplace van Azure te verg Roten.
 
 **Wat is de onderscheidings factor tussen Azure Marketplace en AppSource?**
 
@@ -319,7 +319,7 @@ Leads zijn klanten die uw producten implementeren via Marketplace. Of uw product
 
 **Waar kan ik hulp krijgen bij het instellen van mijn lead bestemming?**
 
-Meer informatie vindt u in [Cloud Partner-Portal-](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) documentatie over klanten leads of een ondersteunings ticket verzenden via [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) door uw aanbiedings type en Lead beheer te selecteren.
+Meer informatie vindt u in [Cloud Partner-Portal-documentatie over klanten leads](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) of een ondersteunings ticket verzenden via [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) door uw aanbiedings type en Lead beheer te selecteren.
 
 **Ben ik verplicht een lead bestemming te configureren voor het publiceren van een aanbieding op Marketplace?**
 
@@ -376,7 +376,7 @@ Ga naar [micro soft gtm Services](https://partner.microsoft.com/reach-customers/
 
 **Waar worden Azure Marketplace-oplossingen bevorderd in micro soft-webeigenschappen?**
 
-Azure Marketplace-oplossingen zijn beschikbaar op de website micro soft [Azure-portal]en [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). Cloud ontwikkelaars en IT-professionals die Azure gebruiken, hebben een risico op partner oplossingen wanneer ze zich aanmelden. Een subset van partner oplossingen wordt ook getoond en gedraaid op de [Azure Marketplace-start](https://azuremarketplace.microsoft.com/marketplace) pagina en de [Azure](https://azure.microsoft.com/solutions/)-oplossingenpagina.
+Azure Marketplace-oplossingen zijn beschikbaar op de website micro soft [Azure-portal]en [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). Cloud ontwikkelaars en IT-professionals die Azure gebruiken, hebben een risico op partner oplossingen wanneer ze zich aanmelden. Een subset van partner oplossingen wordt ook getoond en gedraaid op de [Azure Marketplace-start](https://azuremarketplace.microsoft.com/marketplace) pagina en de [Azure-oplossingenpagina](https://azure.microsoft.com/solutions/).
 
 ### <a name="billing-and-payments"></a>Facturering en betalingen
 

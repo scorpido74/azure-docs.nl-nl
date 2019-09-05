@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: af5b16448a39e0106dbc04724607ff603483484c
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: e1c206c329b491ec9f8d36a12e2b4bf8ed8107b3
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997742"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383020"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Wat is Azure IoT Central (preview-functies)?
 
@@ -62,7 +62,7 @@ Dit artikel bevat een overzicht van Azure IoT Central:
 - Matrix schema typen worden niet ondersteund.
 - Het exporteren van de toepassings sjabloon en het kopiëren van de toepassing worden niet ondersteund.
 - Alleen de C apparaat-SDK en het node. js-apparaat en de service-Sdk's worden ondersteund.
-- Deze optie is alleen beschikbaar in regio's selecteren.
+- Het is alleen beschikbaar in de regio's Noord-Europa en Centraal vs.
 
 ## <a name="personas"></a>Persona's
 

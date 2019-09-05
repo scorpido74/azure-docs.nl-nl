@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: gwallace
-ms.openlocfilehash: cb7f5a10169c8baaecae0fc1916a439d61bfbf7c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 98cb6d8eb665121e5991508056aa2fd9edc0629d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70170885"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376045"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Een door HTTP geactiveerde functie maken in azure
 
@@ -38,7 +38,7 @@ Voordat u begint, moet u het volgende hebben:
 
 ## <a name="create-and-activate-a-virtual-environment-optional"></a>Een virtuele omgeving maken en activeren (optioneel)
 
-Als u python-functies lokaal wilt ontwikkelen en testen, is het raadzaam een python 3,6-omgeving te gebruiken. Voer de volgende opdrachten uit om een virtuele omgeving met de naam `.venv` te maken.
+Als u python-functies lokaal wilt ontwikkelen en testen, is het raadzaam een python 3,6-omgeving te gebruiken. Voer de volgende opdrachten uit om een virtuele omgeving met de naam `.venv` te maken. Als u venv wilt installeren, volgt u de opdracht: sudo apt-get install python3-venv
 
 ### <a name="bash"></a>Bash
 

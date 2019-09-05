@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7785c6b5c575bf862b1ba0edccc75fc1c6031b08
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: b2cd7232bce674dfa5aa2c6f4b6d9386fa7a189b
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015644"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376450"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Herstel na nood gevallen en failover van het opslag account (preview) in Azure Storage
 
@@ -43,7 +43,7 @@ Andere Azure Storage redundantie opties zijn onder meer zone-redundante opslag (
 > [!WARNING]
 > Geografisch redundante opslag heeft een risico op gegevens verlies. Gegevens worden asynchroon gerepliceerd naar de secundaire regio, wat betekent dat er een vertraging is tussen het moment dat de gegevens die naar de primaire regio worden geschreven naar de secundaire regio worden geschreven. In het geval van een storing, gaan schrijf bewerkingen naar het primaire eind punt die nog niet zijn gerepliceerd naar het secundaire eind punt, verloren.
 
-## <a name="design-for-high-availability"></a>Ontwerpen voor hoge Beschik baarheid
+## <a name="design-for-high-availability"></a>Ontwerpen voor hoge beschikbaarheid
 
 Het is belang rijk om uw toepassing te ontwerpen voor hoge Beschik baarheid vanaf het begin. Raadpleeg deze Azure-bronnen voor hulp bij het ontwerpen van uw toepassing en het plannen van nood herstel:
 
@@ -168,7 +168,6 @@ Houd er wel bij dat alle gegevens die zijn opgeslagen op een tijdelijke schijf v
 De volgende functies of services worden niet ondersteund voor account-failover voor de preview-versie:
 
 - Azure File Sync biedt geen ondersteuning voor de failover van het opslag account. Er mag geen failover worden uitgevoerd voor opslag accounts met Azure-bestands shares die worden gebruikt als Cloud-eind punten in Azure File Sync. Als u dat wel doet, werkt de synchronisatie niet meer en kan dit leiden tot onverwachte gegevens verlies in het geval van nieuwe gelaagde bestanden.  
-- Er kan geen failover worden uitgevoerd voor opslag accounts die gebruikmaken van Azure Data Lake Storage Gen2 hiërarchische naam ruimte.
 - Er kan geen failover worden uitgevoerd voor een opslag account met gearchiveerde blobs. Bewaar gearchiveerde blobs in een afzonderlijk opslag account waarvan u niet van plan bent een failover uit te voeren.
 - Er kan geen failover worden uitgevoerd voor een opslag account met Premium-blok-blobs. Opslag accounts die ondersteuning bieden voor Premium-blok-blobs ondersteunen momenteel geen geo-redundantie.
 - Nadat de failover is voltooid, zullen de volgende functies niet meer werken als deze oorspronkelijk is ingeschakeld: [Gebeurtenis abonnementen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [levenscyclus beleid](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) [Opslaganalyse logboek registratie](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).

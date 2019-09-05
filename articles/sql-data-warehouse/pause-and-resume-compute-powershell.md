@@ -10,16 +10,16 @@ ms.subservice: manage
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 220d2aefd714cd3546fa4d5c2ac8852d2786b8ac
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: da9c3d42919bba6ce04fc54bafc2fb5d245379f5
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575416"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306091"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Quickstart: De compute in Azure SQL Data Warehouse onderbreken en hervatten met Power shell
+# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>Quickstart: De compute in Azure SQL Data Warehouse onderbreken en hervatten met Azure PowerShell
 
-Gebruik Power shell om de reken kracht in Azure SQL Data Warehouse te onderbreken om kosten op te slaan. [Hervat](sql-data-warehouse-manage-compute-overview.md) de compute wanneer u klaar bent om het Data Warehouse te gebruiken.
+Gebruik Power shell om de reken kracht in Azure SQL Data Warehouse te onderbreken om kosten op te slaan. [Hervat de compute](sql-data-warehouse-manage-compute-overview.md) wanneer u klaar bent om het Data Warehouse te gebruiken.
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 

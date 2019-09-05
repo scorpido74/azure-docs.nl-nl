@@ -16,12 +16,12 @@ ms.date: 08/19/2019
 ms.author: negoe
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 77a2e571b76044ff9114f6671b187118cf03c0ba
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: fe3ad29cfd113deba5824ce25721dc543c6267c0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135814"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305051"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>Uitzonde ringen en fouten afhandelen met MSAL
 Uitzonde ringen in micro soft Authentication Library (MSAL) zijn bedoeld voor app-ontwikkel aars om problemen op te lossen en niet voor het weer geven van eind gebruikers. Uitzonderings berichten zijn niet gelokaliseerd.
@@ -179,7 +179,7 @@ Als u het token interactief aanschaft, wordt de gebruiker gevraagd om te voldoen
 
 Wanneer u een API aanroept waarvoor voorwaardelijke toegang is vereist, kunt u een claim Challenge ontvangen in de fout van de API. In dit geval kunt u de geretourneerde claims in de fout `claimsRequest` door geven aan het veld van de `AuthenticationParameters.ts` klasse om aan het juiste beleid te voldoen. 
 
-Zie [aanvullende claims aanvragen]() voor meer informatie.
+Zie [aanvullende claims aanvragen](active-directory-optional-claims.md) voor meer informatie.
 
 ## <a name="retrying-after-errors-and-exceptions"></a>Opnieuw proberen na fouten en uitzonde ringen
 

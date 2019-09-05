@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 8cfda202e57dcee4f7a783de893fb712501dfd26
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/04/2019
+ms.openlocfilehash: db2457cc3e320ac413cb245f51810b654c63aa22
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992190"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308991"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Replica's in Azure Database for MariaDB lezen
 
 Met de functie replica lezen kunt u gegevens van een Azure Database for MariaDB server repliceren naar een alleen-lezen server. U kunt van de hoofdserver naar maximaal vijf replica's repliceren. Replica's worden asynchroon bijgewerkt met behulp van de MariaDB-engine van het binaire logboek bestand (binlog) met de globale trans actie-ID (GTID). Zie het [overzicht van binlog-replicatie](https://mariadb.com/kb/en/library/replication-overview/)voor meer informatie over binlog-replicatie.
-
-> [!IMPORTANT]
-> U kunt een lees replica maken in dezelfde regio als uw hoofd server of in andere Azure-regio's van uw keuze. Het lezen van replica's (dezelfde regio en kruis regio) bevindt zich momenteel in de open bare preview.
 
 Replica's zijn nieuwe servers die u op dezelfde manier beheert als gewone Azure Database for MariaDB servers. Voor elke Lees replica wordt u gefactureerd voor de ingerichte Compute in vCores en Storage in GB/maand.
 
@@ -37,9 +34,6 @@ De functie replica lezen maakt gebruik van asynchrone replicatie. De functie is 
 
 ## <a name="cross-region-replication"></a>Replicatie tussen regio's
 U kunt een lees replica maken in een andere regio dan de hoofd server. Replicatie tussen regio's kan handig zijn voor scenario's zoals het plannen van herstel na nood gevallen of gegevens dichter bij uw gebruikers te brengen.
-
-> [!IMPORTANT]
-> Replicatie tussen regio's is momenteel beschikbaar als open bare preview.
 
 U kunt een hoofd server in een [Azure database for MariaDB regio](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)hebben.  Een hoofd server kan een replica hebben in het gekoppelde gebied of in de universele replica regio's.
 
@@ -126,7 +120,7 @@ Er wordt een lees replica gemaakt als een nieuwe Azure Database for MariaDB-serv
 Een replica wordt gemaakt met behulp van dezelfde server configuratie als de Master. Nadat een replica is gemaakt, kunnen verschillende instellingen onafhankelijk van de hoofd server worden gewijzigd: generatie van compute, vCores, opslag, back-up van Bewaar periode en Engine versie van MariaDB. De prijs categorie kan ook onafhankelijk worden gewijzigd, met uitzonde ring van of van de Basic-laag.
 
 > [!IMPORTANT]
-> Voordat een configuratie van een hoofd server wordt bijgewerkt naar nieuwe waarden, moet u de replica configuratie bijwerken naar de waarden gelijk of hoger. Met deze actie zorgt u ervoor dat de replica alle wijzigingen kan aanbrengen die in de master zijn aangebracht.
+> Voordat een configuratie van een hoofdserver wordt bijgewerkt naar nieuwe waarden, moet u de configuratie van de replica bijwerken naar gelijke of hogere waarden. Met deze actie wordt ervoor gezorgd dat in de replica alle wijzigingen worden doorgevoerd die in de hoofdserver zijn aangebracht.
 
 ### <a name="stopped-replicas"></a>Gestopte replica's
 

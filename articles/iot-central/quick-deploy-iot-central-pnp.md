@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 0ae82f8980b995edab3419374e27a2cb905935d5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9d242c48068e96498a811f52dbc599abd32bc936
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099503"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383008"
 ---
 # <a name="create-an-azure-iot-central-application-preview-features"></a>Een Azure IoT Central-toepassing maken (preview-functies)
 
@@ -40,7 +40,7 @@ Voor het maken van een nieuwe Azure IoT Central-toepassing die preview-functies 
    - Voor **betalen naar gebruik** -toepassingen worden per apparaat in rekening gebracht, met de eerste vijf apparaten gratis. Als u een **betalen per gebruik** -toepassing maakt, moet u uw *Directory*, *Azure-abonnement*en *regio*selecteren:
       - *Directory* is de Azure Active Directory (AD) voor het maken van uw toepassing. Deze bevat gebruikers-id's, referenties en andere organisatiegegevens. Als u geen Azure AD hebt, wordt er een voor u gemaakt wanneer u een Azure-abonnement maakt.
       - Als u een *Azure-abonnement* hebt, kunt u instanties van Azure-services maken. IoT Central zorgt ervoor dat resources in uw abonnement worden ingericht. Als u geen Azure-abonnement hebt, kunt u er een maken via de [Azure-aanmeldingspagina](https://aka.ms/createazuresubscription). Nadat u het Azure-abonnement hebt gemaakt, gaat u terug naar de pagina **Toepassing maken**. Uw nieuwe abonnement wordt weergegeven in de vervolgkeuzelijst.**Azure-abonnement**.
-      - *Regio* is de fysieke locatie waar u de toepassing wilt maken. Normaal gesp roken kiest u de regio die zich het dichtst in de buurt bevindt van uw apparaten om optimaal te pres teren. U kunt de regio's bekijken waarin Azure IoT Central beschikbaar is op de pagina [beschik bare producten per regio](https://azure.microsoft.com/regions/services/) . Wanneer u een regio hebt gekozen, kunt u de toepassing later niet verplaatsen naar een andere regio.
+      - *Regio* is de fysieke locatie waar u de toepassing wilt maken. Tijdens de open bare preview zijn de enige beschik bare regio's voor een **Preview-toepassing** **Europa-Noord** en **centrale VS**.
 
       Lees meer over prijzen op de [prijzenpagina van IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 

@@ -12,12 +12,12 @@ ms.reviewer: klam, deli, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/05/2018
-ms.openlocfilehash: f0b568289a50b9883e6e0f1cba6b793c9e6e90e8
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: b9f9a402ecde09dd00c2b070f784858a141e556b
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051726"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309007"
 ---
 # <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>Quickstart: Geautomatiseerde werk stromen voor logische apps maken en beheren-Visual Studio code
 
@@ -41,7 +41,7 @@ Controleer voordat u begint of u deze items hebt:
 
 * Download en installeer deze hulpprogramma's als u ze nog niet hebt: 
 
-  * [Visual Studio code versie 1.25.1 of hoger]("https://code.visualstudio.com/), wat gratis is
+  * [Visual Studio code versie 1.25.1 of hoger](https://code.visualstudio.com/), wat gratis is
 
   * Visual Studio code Extension voor Azure Logic Apps
 

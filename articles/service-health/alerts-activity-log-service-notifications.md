@@ -1,111 +1,110 @@
 ---
-title: Waarschuwingen voor activiteitenlogboeken van Azure-service-meldingen ontvangen
-description: Ontvang een melding via SMS, e-mail of webhook als Azure-service optreedt.
+title: Waarschuwingen voor activiteiten logboeken ontvangen op Azure-service meldingen
+description: Ontvang een melding via SMS, e-mail of webhook wanneer de Azure-service wordt uitgevoerd.
 author: stephbaron
 ms.author: stbaron
 services: monitoring
 ms.service: service-health
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 1151eb8659c60cd71430c3dd971e73ec03a5545f
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 40ffe0b377a5cbb21f07c479097958d7c15a2879
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538274"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383150"
 ---
-# <a name="create-activity-log-alerts-on-service-notifications"></a>Waarschuwingen voor activiteitenlogboek maken voor servicemeldingen
+# <a name="create-activity-log-alerts-on-service-notifications"></a>Waarschuwingen voor activiteiten logboek maken voor service meldingen
 ## <a name="overview"></a>Overzicht
 
-In dit artikel leest u hoe u waarschuwingen voor activiteitenlogboeken voor servicestatusmeldingen instelt met behulp van de Azure-portal.  
+In dit artikel wordt beschreven hoe u waarschuwingen voor activiteiten logboeken instelt voor service status meldingen met behulp van de Azure Portal.  
 
-Servicestatusmeldingen worden opgeslagen in de [Azure-activiteitenlogboek](../azure-monitor/platform/activity-logs-overview.md) gezien de mogelijk grote hoeveelheid gegevens die zijn opgeslagen in het activiteitenlogboek, er is een afzonderlijke gebruikersinterface zodat u gemakkelijk weergeven en waarschuwingen over service health instellen meldingen. 
+Service status meldingen worden opgeslagen in het [Azure-activiteiten logboek](../azure-monitor/platform/activity-logs-overview.md) , gezien de mogelijk grote hoeveelheid informatie die is opgeslagen in het activiteiten logboek, is er een afzonderlijke gebruikers interface waarmee u waarschuwingen voor service status meldingen gemakkelijker kunt weer geven en instellen. 
 
-U kunt een waarschuwing ontvangt als Azure service health meldingen naar uw Azure-abonnement verzendt. U kunt de waarschuwing op basis van configureren:
+U kunt een waarschuwing ontvangen wanneer Azure service status meldingen verzendt naar uw Azure-abonnement. U kunt de waarschuwing configureren op basis van:
 
-- De klasse van de melding van de health service (serviceproblemen, gepland onderhoud, statusadvies).
-- Het abonnement dat is beïnvloed.
-- De (s) dat is beïnvloed.
-- De regio('s) beïnvloed.
+- De klasse van service status meldingen (Service problemen, gepland onderhoud, status advies).
+- Het abonnement is betrokken.
+- De betrokken service (s).
+- De betrokken regio (en).
 
 > [!NOTE]
-> Servicestatusmeldingen verzendt een waarschuwing met betrekking tot resource health-gebeurtenissen.
+> Met service status meldingen wordt geen waarschuwing verzonden over de resource status gebeurtenissen.
 
-Ook kunt u configureren die de waarschuwing moet worden verzonden naar:
+U kunt ook configureren naar wie de waarschuwing moet worden verzonden:
 
-- Selecteer een bestaande actiegroep.
-- Maak een nieuwe actiegroep (die kan worden gebruikt voor toekomstige waarschuwingen).
+- Selecteer een bestaande actie groep.
+- Een nieuwe actie groep maken (die kan worden gebruikt voor toekomstige waarschuwingen).
 
 Raadpleeg [Actiegroepen maken en beheren](../azure-monitor/platform/action-groups.md) voor meer informatie over actiegroepen.
 
-Zie voor meer informatie over het configureren van de statusmeldingen notification service met behulp van Azure Resource Manager-sjablonen [Resource Manager-sjablonen](../azure-monitor/platform/alerts-activity-log.md).
+Zie [Resource Manager-sjablonen](../azure-monitor/platform/alerts-activity-log.md)voor meer informatie over het configureren van waarschuwingen voor service status meldingen met behulp van Azure Resource Manager sjablonen.
 
-### <a name="watch-a-video-on-setting-up-your-first-azure-service-health-alert"></a>Bekijk een video over het instellen van uw eerste Azure Service Health-waarschuwing
+### <a name="watch-a-video-on-setting-up-your-first-azure-service-health-alert"></a>Bekijk een video over het instellen van uw eerste Azure Service Health waarschuwing
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
-## <a name="alert-and-new-action-group-using-azure-portal"></a>Waarschuwing en nieuwe actiegroep met behulp van Azure portal
-1. In de [portal](https://portal.azure.com), selecteer **servicestatus**.
+## <a name="alert-and-new-action-group-using-azure-portal"></a>Waarschuwing en nieuwe actie groep met Azure Portal
+1. Selecteer in de [portal](https://portal.azure.com) **service Health**.
 
-    ![De "Service" statusservice](media/alerts-activity-log-service-notifications/home-servicehealth.png)
+    ![De ' Service Health-Service](media/alerts-activity-log-service-notifications/home-servicehealth.png)
 
-1. In de **waarschuwingen** sectie, selecteer **statusmeldingen**.
+1. Selecteer in de sectie **waarschuwingen** **Health Alerts**.
 
-    ![Het tabblad 'Waarschuwingen voor Health'](media/alerts-activity-log-service-notifications/alerts-blades-sh.png)
+    ![Het tabblad status meldingen](media/alerts-activity-log-service-notifications/alerts-blades-sh.png)
 
-1. Selecteer **statuswaarschuwing voor de service maken** en vul de velden in.
+1. Selecteer **service status waarschuwing maken** en vul de velden in.
 
-    ![De opdracht 'Service-statusmelding maken'](media/alerts-activity-log-service-notifications/service-health-alert.png)
+    ![De opdracht ' service Health alert maken '](media/alerts-activity-log-service-notifications/service-health-alert.png)
 
-1. Selecteer de **abonnement**, **Services**, en **regio's** u wilt worden gewaarschuwd voor.
+1. Selecteer het **abonnement**, de **Services**en de **regio's** waarvoor u een waarschuwing wilt ontvangen.
 
-    ![In het dialoogvenster 'Waarschuwing voor activiteitenlogboek toevoegen'](media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)
+    ![Het dialoog venster waarschuwing voor activiteiten logboek toevoegen](media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)
 
-> [!NOTE]
-> Dit abonnement wordt gebruikt voor het opslaan van de waarschuwing voor activiteitenlogboek. De waarschuwing resource wordt geïmplementeerd voor dit abonnement en gebeurtenissen in het activiteitenlogboek voor bewaakt.
+    > [!NOTE]
+    > Dit abonnement wordt gebruikt om de waarschuwing voor activiteiten logboek op te slaan. De resource van de waarschuwing wordt geïmplementeerd voor dit abonnement en controleert gebeurtenissen in het activiteiten logboek.
 
-1. Kies de **gebeurtenistypen** u wilt worden gewaarschuwd voor: *Service-probleem*, *gepland onderhoud*, en *statusadvies* 
+1. Kies de **gebeurtenis typen** waarvoor u een waarschuwing wilt ontvangen: *Service probleem*, *gepland onderhoud*en *status adviezen* 
 
-1. De Waarschuwingsdetails definiëren door te voeren een **naam waarschuwingsregel** en **beschrijving**.
+1. Definieer uw waarschuwings Details door een naam en **Beschrijving**voor de **waarschuwings regel** in te voeren.
 
-1. Selecteer de **resourcegroep** waar u de waarschuwing moet worden opgeslagen.
+1. Selecteer de **resource groep** waar u de waarschuwing wilt opslaan.
 
-1. Een nieuwe actiegroep maken door te selecteren **nieuwe actiegroep**. Voer een naam in de **naam van de actiegroep** in en voert u een naam in de **afkorting** vak. De korte naam wordt verwezen in de meldingen die worden verzonden wanneer deze waarschuwing wordt geactiveerd.
+1. Maak een nieuwe actie groep door **nieuwe actie groep**te selecteren. Voer een naam in het vak Naam van de **actie groep** in en voer een naam in het vak **korte naam** in. Naar de korte naam wordt verwezen in de meldingen die worden verzonden wanneer deze waarschuwing wordt geactiveerd.
 
-    ![Een nieuwe actiegroep maken](media/alerts-activity-log-service-notifications/action-group-creation.png)
+    ![Een nieuwe actie groep maken](media/alerts-activity-log-service-notifications/action-group-creation.png)
 
-1. Een lijst met ontvangers definiëren door te geven van de ontvanger:
+1. Definieer een lijst met ontvangers door de ontvanger te voorzien van het volgende:
 
-    a. **Naam**: Voer de naam, alias of id van de ontvanger.
+    a. **Naam**: Voer de naam, alias of id van de ontvanger in.
 
-    b. **Actietype**: Selecteer SMS, e-mail, webhook, Azure-app en meer.
+    b. **Actie type**: Selecteer SMS, e-mail, webhook, Azure-app en meer.
 
-    c. **Details**: Op basis van het actietype is gekozen, voer een telefoonnummer, e-mailadres, webhook URI, enzovoort.
+    c. **Details**: Voer een telefoon nummer, e-mail adres, webhook-URI, enzovoort in op basis van het gekozen actie type.
 
-1. Selecteer **OK** de actiegroep maken en vervolgens **waarschuwingsregel maken** om uit te voeren van de waarschuwing.
+1. Selecteer **OK** om de actie groep te maken en maak vervolgens een **waarschuwings regel** om uw waarschuwing te volt ooien.
 
-Binnen een paar minuten, de waarschuwing is actief en begint met activeren op basis van de voorwaarden die u hebt opgegeven tijdens het maken van.
+Binnen een paar minuten is de waarschuwing actief en begint deze te activeren op basis van de voor waarden die u hebt opgegeven tijdens het maken.
 
-Meer informatie over het [configureren van de webhook-meldingen voor bestaande beheersystemen voor probleem](service-health-alert-webhook-guide.md). Zie voor meer informatie over de webhook-schema voor waarschuwingen voor activiteitenlogboeken [Webhooks voor Azure-activiteit waarschuwingen voor activiteitenlogboeken](../azure-monitor/platform/activity-log-alerts-webhook.md).
+Meer informatie over het [configureren van webhook-meldingen voor bestaande probleem beheersystemen](service-health-alert-webhook-guide.md). Zie [webhooks voor Azure-activiteiten logboek waarschuwingen](../azure-monitor/platform/activity-log-alerts-webhook.md)voor informatie over het webhook-schema voor waarschuwingen voor activiteiten Logboeken.
 
 >[!NOTE]
->De actiegroep die is gedefinieerd in deze stappen is herbruikbare als een bestaande actiegroep voor alle toekomstige definities van de waarschuwing.
+>De in deze stappen gedefinieerde actie groep kan opnieuw worden gebruikt als een bestaande actie groep voor alle toekomstige waarschuwings definities.
 >
->
 
-## <a name="alert-with-existing-action-group-using-azure-portal"></a>Waarschuwing met bestaande actiegroep met behulp van Azure portal
+## <a name="alert-with-existing-action-group-using-azure-portal"></a>Waarschuwing met bestaande actie groep met Azure Portal
 
-1. Volg de stappen 1 t/m 6 in de vorige sectie om te maken van de melding van de health service. 
+1. Volg de stappen 1 tot en met 6 in de vorige sectie om uw service status melding te maken. 
 
-1. Onder **actiegroep definiëren**, klikt u op de **actie selecteren groep** knop. Selecteer de juiste actie.
+1. Klik onder **actie groep definiëren**op de knop **actie groep selecteren** . Selecteer de juiste actie groep.
 
-1. Selecteer **toevoegen** om toe te voegen van de actiegroep en vervolgens **waarschuwingsregel maken** om uit te voeren van de waarschuwing.
+1. Selecteer **toevoegen** om de actie groep toe te voegen en maak vervolgens een **waarschuwings regel** om uw waarschuwing te volt ooien.
 
-Binnen een paar minuten, de waarschuwing is actief en begint met activeren op basis van de voorwaarden die u hebt opgegeven tijdens het maken van.
+Binnen een paar minuten is de waarschuwing actief en begint deze te activeren op basis van de voor waarden die u hebt opgegeven tijdens het maken.
 
-## <a name="alert-and-new-action-group-using-the-azure-resource-manager-templates"></a>Waarschuwing en nieuwe actiegroep met behulp van de Azure Resource Manager-sjablonen
+## <a name="alert-and-new-action-group-using-the-azure-resource-manager-templates"></a>Waarschuwing en nieuwe actie groep met behulp van de Azure Resource Manager sjablonen
 
-Hier volgt een voorbeeld waarin een actiegroep die u maakt met een e-doel en kan alle servicestatusmeldingen voor het doelabonnement.
+Hier volgt een voor beeld van het maken van een actie groep met een e-mail doel en het inschakelen van alle service status meldingen voor het doel abonnement.
 
 ```json
 {
@@ -195,18 +194,18 @@ Hier volgt een voorbeeld waarin een actiegroep die u maakt met een e-doel en kan
 
 ## <a name="manage-your-alerts"></a>De waarschuwingen beheren
 
-Nadat u een waarschuwing gemaakt, wordt het weergegeven in de **waarschuwingen** sectie van **Monitor**. Selecteer de waarschuwing die u wilt beheren:
+Nadat u een waarschuwing hebt gemaakt, wordt deze weer gegeven in de sectie **waarschuwingen** van de **monitor**. Selecteer de waarschuwing die u wilt beheren:
 
 * Deze bewerken.
-* Het verwijderen.
-* \- Of uitschakelen, als u wilt tijdelijk stoppen of doorgaan met het ontvangen van meldingen voor de waarschuwing.
+* Deze verwijderen.
+* Schakel deze optie uit of in als u de ontvangst van meldingen voor de waarschuwing tijdelijk wilt stoppen of hervatten.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [aanbevolen procedures voor het instellen van waarschuwingen van Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
-- Meer informatie over het [mobiele pushmeldingen te verzenden voor Azure Service Health instellen](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
-- Meer informatie over het [configureren van de webhook-meldingen voor bestaande beheersystemen voor probleem](service-health-alert-webhook-guide.md).
-- Meer informatie over [health servicemeldingen](service-notifications.md).
-- Meer informatie over [melding gelden enkele beperkingen](../azure-monitor/platform/alerts-rate-limiting.md).
-- Controleer de [activiteit log waarschuwing webhook-schema](../azure-monitor/platform/activity-log-alerts-webhook.md).
-- Krijgen een [overzicht van waarschuwingen voor activiteitenlogboeken](../azure-monitor/platform/alerts-overview.md), en leer hoe u waarschuwingen ontvangt.
-- Meer informatie over [actiegroepen](../azure-monitor/platform/action-groups.md).
+- Meer informatie over [Aanbevolen procedures voor het instellen van Azure service Health-waarschuwingen](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
+- Meer informatie over het [instellen van mobiele push meldingen voor Azure service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
+- Meer informatie over het [configureren van webhook-meldingen voor bestaande probleem beheersystemen](service-health-alert-webhook-guide.md).
+- Meer informatie over [service status meldingen](service-notifications.md).
+- Meer informatie over beperking van de [meldings frequentie](../azure-monitor/platform/alerts-rate-limiting.md).
+- Controleer het [webhook-schema](../azure-monitor/platform/activity-log-alerts-webhook.md)van de waarschuwing voor het activiteiten logboek.
+- Bekijk een [overzicht van waarschuwingen voor activiteiten logboeken](../azure-monitor/platform/alerts-overview.md)en meer informatie over het ontvangen van waarschuwingen.
+- Meer informatie over [actie groepen](../azure-monitor/platform/action-groups.md).

@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/28/2019
-ms.openlocfilehash: b1da94a2644c299447271b447f51ae4f7750774c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f1003324e9f4b3762b5d8eca703af4a1fbd4613a
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231077"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308823"
 ---
-# <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Zelfstudie: Aan de slag met het maken van uw eerste ML-experiment
+# <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Zelfstudie: Aan de slag met het maken van uw eerste ML-experiment met de python-SDK
 
 In deze zelf studie voltooit u de end-to-end-stappen om aan de slag te gaan met de Azure Machine Learning python SDK die wordt uitgevoerd in Jupyter-notebooks. Deze zelf studie maakt **deel uit van een tweedelige zelf studie reeks**, en omvat het instellen en configureren van python-omgevingen, en het maken van een werk ruimte voor het beheren van uw experimenten en machine learning modellen. [**Deel twee**](tutorial-1st-experiment-sdk-train.md) bouwt hier mee om meerdere machine learning modellen te trainen en het model beheer proces uit te voeren met behulp van zowel de Azure portal als de SDK.
 

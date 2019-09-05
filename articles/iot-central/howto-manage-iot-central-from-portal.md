@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 25751db785bf5d0b67195d1e1db660c0b9b5bf4e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d4d2a843248985c4fe17bf5401b261862d71fecf
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100951"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383029"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>IoT Central beheren via de Azure Portal
 
@@ -41,6 +41,9 @@ Selecteer nu **Maken**.
 
 Vul alle velden in het formulier in. Dit formulier is vergelijkbaar met het formulier dat u invult om toepassingen te maken op de [Azure IOT Central Application Manager](https://aka.ms/iotcentral) -website. Zie de Snelstartgids [een IOT Central-toepassing maken](quick-deploy-iot-central.md) voor meer informatie.
 
+> [!NOTE]
+> De **Preview-toepassings** sjabloon is momenteel alleen beschikbaar in de regio's **Europa-Noord** en **Centraal VS** .
+
 ![Beheer Portal: IoT Central-resource maken](media/howto-manage-iot-central-from-portal/image1a.png)  
 
 Nadat u alle velden hebt ingevuld, selecteert u **maken**.
@@ -64,7 +67,7 @@ Als u de toepassing wilt verplaatsen naar een andere resource groep, selecteert 
 
 ![Beheer Portal: resource beheer](media/howto-manage-iot-central-from-portal/image4a.png)
 
-Als u de toepassing naar een ander abonnement wilt verplaatsen, selecteert u de wijzigings koppeling naast het abonnement. Kies het abonnement waarnaar u deze toepassing wilt migreren in het dialoog venster dat wordt weer gegeven.
+Als u de toepassing naar een ander abonnement wilt verplaatsen, selecteert u de **wijzigings** koppeling naast het abonnement. Kies het abonnement waarnaar u deze toepassing wilt migreren in het dialoog venster dat wordt weer gegeven.
 
 ![Beheer Portal: resource beheer](media/howto-manage-iot-central-from-portal/image5a.png)
 

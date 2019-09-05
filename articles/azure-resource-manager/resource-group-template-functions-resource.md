@@ -4,14 +4,14 @@ description: Beschrijft de functies in een Azure Resource Manager-sjabloon gebru
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 09/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 85462e78b3660546bad80ef69f332522bf015549
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 43369131700681de5523043f414129a2e4169f44
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194806"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306928"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Functies van de resource voor Azure Resource Manager-sjablonen
 
@@ -61,7 +61,6 @@ Het mogelijke gebruik van lijst * wordt weer gegeven in de volgende tabel.
 | Microsoft.CognitiveServices/accounts | [listKeys](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Micro soft. ContainerRegistry/registers | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Micro soft. ContainerRegistry/registers | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
-| Micro soft. ContainerRegistry/registers | [listPolicies](/rest/api/containerregistry/registries/listpolicies) |
 | Micro soft. ContainerRegistry/registers | [listUsages](/rest/api/containerregistry/registries/listusages) |
 | Micro soft. ContainerRegistry/registers/webhooks | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
 | Microsoft.ContainerRegistry/registries/runs | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |
@@ -399,7 +398,7 @@ De referentie-functie kan alleen worden gebruikt in de eigenschappen van de reso
 
 U kunt de functie Reference niet gebruiken in de uitvoer van een [geneste sjabloon](resource-group-linked-templates.md#nested-template) om een resource te retour neren die u in de geneste sjabloon hebt geïmplementeerd. Gebruik in plaats daarvan een [gekoppelde sjabloon](resource-group-linked-templates.md#external-template-and-external-parameters).
 
-Als u de functie **Reference** gebruikt in een resource die voorwaardelijk wordt geïmplementeerd, wordt de functie geëvalueerd, zelfs als de resource niet is geïmplementeerd.  Er **wordt** een fout bericht weer geven als de verwijzings functie verwijst naar een resource die niet bestaat. Gebruik de functie **als** om te controleren of de functie alleen wordt geëvalueerd wanneer de resource wordt geïmplementeerd. Zie de [functie als](resource-group-template-functions-logical.md#if) voor een voorbeeld sjabloon die gebruikmaakt van if en verwijst naar een voorwaardelijk geïmplementeerde resource.
+Als u de functie **Reference** gebruikt in een resource die voorwaardelijk wordt geïmplementeerd, wordt de functie geëvalueerd, zelfs als de resource niet is geïmplementeerd.  Er wordt een fout bericht weer geven als de **verwijzings** functie verwijst naar een resource die niet bestaat. Gebruik de functie **als** om te controleren of de functie alleen wordt geëvalueerd wanneer de resource wordt geïmplementeerd. Zie de [functie als](resource-group-template-functions-logical.md#if) voor een voorbeeld sjabloon die gebruikmaakt van if en verwijst naar een voorwaardelijk geïmplementeerde resource.
 
 ### <a name="implicit-dependency"></a>Impliciete afhankelijkheid
 

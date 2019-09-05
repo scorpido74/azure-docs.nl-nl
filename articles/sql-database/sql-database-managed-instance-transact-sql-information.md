@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1bba5e91e3edda41b75a96d8b55495ca5d1c092b
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 9d99bb6db56a8db9d78952e4cf16465e386358cc
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70209633"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383144"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>T-SQL-verschillen in beheerde exemplaren, beperkingen en bekende problemen
 
@@ -27,9 +27,9 @@ In dit artikel vindt u een overzicht van de verschillen in de syntaxis en het ge
 Er zijn enkele beperkingen voor PaaS die in beheerde instantie worden geïntroduceerd en sommige wijzigingen in het gedrag vergeleken met SQL Server. De verschillen zijn onderverdeeld in de volgende categorieën:<a name="Differences"></a>
 
 - [Beschik baarheid](#availability) omvat de verschillen in [altijd](#always-on-availability) en [back-ups](#backup).
-- [Beveiliging](#security) omvat de verschillen in [controle](#auditing), [certificaten](#certificates), [referenties](#credential), [cryptografische providers](#cryptographic-providers), aanmeldingen [en gebruikers](#logins-and-users), en de [Service sleutel en service hoofd sleutel](#service-key-and-service-master-key).
-- [De configuratie](#configuration) bevat de verschillen [](#buffer-pool-extension)in de buffergroepuitbreiding, [sortering](#collation), [compatibiliteits niveaus](#compatibility-levels), [database spiegeling](#database-mirroring), [database opties](#database-options), [SQL Server Agent](#sql-server-agent)en [tabel opties](#tables).
-- De [functies](#functionalities) omvatten [Bulk Insert/](#bulk-insert--openrowset)OPENROWSET [, CLR](#clr), [DBCC](#dbcc), [Distributed trans actions](#distributed-transactions), [Extended Events](#extended-events), [externe bibliotheken](#external-libraries), [FileStream en bestands tabel](#filestream-and-filetable), [volledige tekst Semantisch zoeken](#full-text-semantic-search), [gekoppelde servers](#linked-servers), [poly base](#polybase), [replicatie](#replication), [herstel](#restore-statement), [Service Broker](#service-broker), [opgeslagen procedures, functies en triggers](#stored-procedures-functions-and-triggers).
+- [Beveiliging](#security) omvat de verschillen in [controle](#auditing), [certificaten](#certificates), [referenties](#credential), [cryptografische providers](#cryptographic-providers), [aanmeldingen en gebruikers](#logins-and-users), en de [Service sleutel en service hoofd sleutel](#service-key-and-service-master-key).
+- De [configuratie](#configuration) bevat de verschillen [in de buffergroepuitbreiding](#buffer-pool-extension), [sortering](#collation), [compatibiliteits niveaus](#compatibility-levels), [database spiegeling](#database-mirroring), [database opties](#database-options), [SQL Server Agent](#sql-server-agent)en [tabel opties](#tables).
+- De [functies](#functionalities) omvatten [Bulk Insert/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [Distributed trans actions](#distributed-transactions), [Extended Events](#extended-events), [externe bibliotheken](#external-libraries), [FileStream en bestands tabel](#filestream-and-filetable), [volledige tekst Semantisch zoeken](#full-text-semantic-search), [gekoppelde servers](#linked-servers), [poly base](#polybase), [replicatie](#replication), [herstel](#restore-statement), [Service Broker](#service-broker), [opgeslagen procedures, functies en triggers](#stored-procedures-functions-and-triggers).
 - [Omgevings instellingen](#Environment) , zoals VNets en subnet-configuraties.
 
 De meeste van deze functies zijn architectuur beperkingen en vertegenwoordigen service onderdelen.
@@ -328,7 +328,7 @@ Zie [Create Table](https://docs.microsoft.com/sql/t-sql/statements/create-table-
 Een beheerd exemplaar heeft geen toegang tot bestands shares en Windows-mappen. Daarom moeten de bestanden vanuit Azure Blob Storage worden geïmporteerd:
 
 - `DATASOURCE`is vereist in de `BULK INSERT` opdracht tijdens het importeren van bestanden vanuit Azure Blob-opslag. Zie [Bulk Insert](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
-- `DATASOURCE`is vereist in de `OPENROWSET` functie wanneer u de inhoud van een bestand leest uit Azure Blob-opslag. Zie [](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql)OPENROWSET.
+- `DATASOURCE`is vereist in de `OPENROWSET` functie wanneer u de inhoud van een bestand leest uit Azure Blob-opslag. Zie [OPENrowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
 
 ### <a name="clr"></a>-
 
@@ -396,9 +396,9 @@ Bewerkingen
 
 - Trans acties voor cross-instances worden niet ondersteund.
 - `sp_dropserver`wordt ondersteund voor het verwijderen van een gekoppelde server. Zie [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
-- De `OPENROWSET` functie kan worden gebruikt om alleen query's uit te voeren op SQL Server exemplaren. Ze kunnen worden beheerd, on-premises of in virtuele machines. Zie [](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql)OPENROWSET.
+- De `OPENROWSET` functie kan worden gebruikt om alleen query's uit te voeren op SQL Server exemplaren. Ze kunnen worden beheerd, on-premises of in virtuele machines. Zie [OPENrowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
 - De `OPENDATASOURCE` functie kan worden gebruikt om alleen query's uit te voeren op SQL Server exemplaren. Ze kunnen worden beheerd, on-premises of in virtuele machines. Alleen de `SQLNCLI`waarden `SQLNCLI11`, en `SQLOLEDB` worden ondersteund als een provider. Een voorbeeld is `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Zie [OPENDATA source](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql).
-- Gekoppelde servers kunnen niet worden gebruikt voor het lezen van bestanden (Excel, CSV) van de netwerk shares. Probeer [Bulk Insert](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) of OPENROWSET te gebruiken waarmee CSV-bestanden van Azure Blob Storage worden gelezen. [](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) Deze aanvragen bijhouden voor het feedback-item van het [beheerde exemplaar](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|
+- Gekoppelde servers kunnen niet worden gebruikt voor het lezen van bestanden (Excel, CSV) van de netwerk shares. Probeer [Bulk Insert](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) of [OpenRowSet](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) te gebruiken waarmee CSV-bestanden van Azure Blob Storage worden gelezen. Deze aanvragen bijhouden voor het feedback-item van het [beheerde exemplaar](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|
 
 ### <a name="polybase"></a>PolyBase
 
@@ -415,7 +415,7 @@ Externe tabellen die verwijzen naar de bestanden in HDFS of Azure Blob Storage, 
 Zie de [zelf studie over replicatie](replication-with-sql-database-managed-instance.md)voor meer informatie over het configureren van replicatie.
 
 
-Als replicatie is ingeschakeld voor een data base in [](sql-database-auto-failover-group.md)een failovergroep, moet de beheerder van het beheerde exemplaar alle publicaties opschonen op de oude primaire en opnieuw configureren op de nieuwe primaire versie nadat een failover is uitgevoerd. In dit scenario zijn de volgende activiteiten nodig:
+Als replicatie is ingeschakeld voor een data base in een [failovergroep](sql-database-auto-failover-group.md), moet de beheerder van het beheerde exemplaar alle publicaties opschonen op de oude primaire en opnieuw configureren op de nieuwe primaire versie nadat een failover is uitgevoerd. In dit scenario zijn de volgende activiteiten nodig:
 
 1. Stop alle replicatie taken die worden uitgevoerd op de data base, indien aanwezig.
 2. Voer het volgende script uit op de Publisher-data base om de meta gegevens van uw abonnement uit Publisher te verwijderen:
@@ -481,7 +481,7 @@ Beperkingen:
 - `.BAK`bestanden die meerdere logboek bestanden bevatten, kunnen niet worden hersteld.
 - Back-ups die data bases bevatten die groter zijn dan 8TB, Active in-memory OLTP Objects of meer dan 280 bestanden kunnen niet worden hersteld op een Algemeen-exemplaar. 
 - Back-ups die data bases bevatten die groter zijn dan 4 TB of in-memory OLTP objecten met de totale grootte die groter is dan de grootte die is beschreven in [resource limieten](sql-database-managed-instance-resource-limits.md) , kunnen niet worden hersteld op bedrijfskritiek exemplaar.
-Zie Restore statements ( [instructies herstellen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)) voor meer informatie over Restore-instructies.
+Zie [Restore statements (instructies herstellen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)) voor meer informatie over Restore-instructies.
 
 ### <a name="service-broker"></a>Service Broker
 
@@ -541,6 +541,14 @@ Een beheerd exemplaar plaatst uitgebreide informatie in fouten Logboeken. Er zij
 
 ## <a name="Issues"></a>Bekende problemen
 
+### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Resource Governor op Bedrijfskritiek servicelaag moet mogelijk opnieuw worden geconfigureerd na een failover
+
+**Vallen** Sep 2019
+
+[Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) functie waarmee u de resources die aan de werk belasting van de gebruiker zijn toegewezen, kunt beperken, kan de werk belasting van een bepaalde gebruiker onjuist worden geclassificeerd na een failover of door de gebruiker geïnitieerde wijziging van de servicelaag (bijvoorbeeld de wijziging van de maximale vCore of het maximale aantal exemplaren opslag grootte).
+
+**Tijdelijke oplossing**: Voer `ALTER RESOURCE GOVERNOR RECONFIGURE` regel matig of als onderdeel van de SQL-Agent taak uit die de SQL-taak uitvoert wanneer het exemplaar wordt gestart als u [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor)gebruikt.
+
 ### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Kan niet verificatie, naar externe e-mail servers met behulp van een beveiligde verbinding (SSL)
 
 **Vallen** Aug 2019
@@ -584,6 +592,12 @@ Als transactionele replicatie is ingeschakeld voor een data base in een groep me
 SQL Server Management Studio en SQL Server Data Tools niet fuly Azure-Acctive Directory-aanmeldingen en-gebruikers te ondersteunen.
 - Het gebruik van Azure AD server-principals (aanmeldingen) en gebruikers (open bare preview) met SQL Server Data Tools wordt momenteel niet ondersteund.
 - Scripts voor Azure AD server-principals (aanmeldingen) en gebruikers (open bare preview) worden niet ondersteund in SQL Server Management Studio.
+
+### <a name="temporary-database-is-used-during-restore-operation"></a>Er wordt een tijdelijke data base gebruikt tijdens de herstel bewerking
+
+Wanneer een Data Base wordt hersteld op een beheerd exemplaar, wordt door de Restore-service eerst een lege data base met de gewenste naam gemaakt om de naam van het exemplaar toe te wijzen. Na enige tijd wordt deze data base verwijderd en wordt het herstellen van de werkelijke data base gestart. De data base die zich in de *herstel* status bevindt, heeft tijdelijk een wille KEURige GUID-waarde in plaats van een naam. De tijdelijke naam wordt gewijzigd in de gewenste naam die in `RESTORE` de instructie is opgegeven nadat het herstel proces is voltooid. In de eerste fase heeft de gebruiker toegang tot de lege data base en kan zelfs tabellen worden gemaakt of gegevens worden geladen in deze data base. Deze tijdelijke data base wordt verwijderd wanneer de Restore-service de tweede fase start.
+
+**Tijdelijke oplossing**: Geen toegang tot de data base die u wilt herstellen, totdat u ziet dat de herstel bewerking is voltooid.
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB-structuur en-inhoud worden opnieuw gemaakt
 

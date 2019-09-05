@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: ee7e529593960c3a7c62021225122370c122b3c4
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4dd58f2542674633f2d5e2a1724adc7934d7f030
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240975"
+ms.locfileid: "70307050"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Azure Block Chain service beheren met Azure CLI
 
@@ -186,7 +186,7 @@ az role assignment create --role <role> --assignee <assignee> --scope /subscript
 |---------|-------------|
 | **rolvak** | De naam van de Azure AD-rol. |
 | **assignee** | Gebruikers-ID voor Azure AD. Bijvoorbeeld: `user@contoso.com` |
-| **ligt** | Het bereik van de roltoewijzing. Dit kan een Block Chain lid van het transactie knooppunt zijn. |
+| **ligt** | Het bereik van de roltoewijzing. Dit kan een Block Chain-lid of een transactie knooppunt zijn. |
 
 **Voorbeeld:**
 
@@ -219,7 +219,7 @@ az role assignment create --role <role> --assignee-object-id <assignee_object_id
 |---------|-------------|
 | **rolvak** | De naam van de Azure AD-rol. |
 | **assignee-object-id** | Groeps-ID of toepassings-ID van Azure AD. |
-| **ligt** | Het bereik van de roltoewijzing. Dit kan een Block Chain lid van het transactie knooppunt zijn. |
+| **ligt** | Het bereik van de roltoewijzing. Dit kan een Block Chain-lid of een transactie knooppunt zijn. |
 
 **Voorbeeld:**
 
@@ -242,7 +242,7 @@ az role assignment delete --role <myRole> --assignee <assignee> --scope /subscri
 |---------|-------------|
 | **rolvak** | De naam van de Azure AD-rol. |
 | **assignee** | Gebruikers-ID voor Azure AD. Bijvoorbeeld: `user@contoso.com` |
-| **ligt** | Het bereik van de roltoewijzing. Dit kan een Block Chain lid van het transactie knooppunt zijn. |
+| **ligt** | Het bereik van de roltoewijzing. Dit kan een Block Chain-lid of een transactie knooppunt zijn. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

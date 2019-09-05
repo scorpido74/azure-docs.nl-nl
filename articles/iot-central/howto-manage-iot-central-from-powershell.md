@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: bfda4f4ebe8990a16853bdfe40065a7501de5275
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 85afb69a7656e96e2f7163ded5cb23ac1b2560ea
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086895"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70380972"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>IoT Central beheren vanuit Azure PowerShell
 
@@ -80,6 +80,9 @@ Het script maakt eerst een resource groep in de regio VS-Oost voor de toepassing
 |iotc-default@1.0.0 |Hiermee maakt u een lege toepassing die u kunt vullen met uw eigen apparaatsjablonen en apparaten. |
 |iotc-demo@1.0.0    |Hiermee maakt u een toepassing die onder andere een vooraf gemaakte apparaatjabloon voor een gekoelde verkoopautomaat bevat. Gebruik deze sjabloon als u wilt beginnen met het verkennen van Azure IoT Central. |
 |iotc-devkit-sample@1.0.0 |Hiermee maakt u een toepassing met apparaatsjablonen die u in staat stelt verbinding te maken met een MXChip- of Raspberry Pi-apparaat. Gebruik deze sjabloon als u een ontwikkelaar van een apparaat wilt experimenteren met een van deze apparaten. |
+
+> [!NOTE]
+> De **Preview-toepassings** sjabloon is momenteel alleen beschikbaar in de regio's **Europa-Noord** en **Centraal VS** .
 
 ## <a name="view-your-iot-central-applications"></a>Uw IoT Central-toepassingen weer geven
 

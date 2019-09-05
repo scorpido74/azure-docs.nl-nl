@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: cfab883f9b9b063bd51b9fdb7306d45371449180
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 079f87dec67f98d502d135fc012b5523211d5957
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406093"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70381795"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Quickstart: Een Azure Data Explorer-cluster en -database maken
 
@@ -55,9 +55,9 @@ Maak een Azure Data Explorer-cluster met een gedefinieerde set met reken- en ops
     | Resource group | De resource groep | Gebruik een bestaande resourcegroep of maak een nieuwe. |
     | Clusternaam | Een unieke clusternaam | Kies een unieke naam die uw cluster identificeert. De domeinnaam *[regio].kusto.windows.net* wordt toegevoegd aan de clusternaam die u opgeeft. De naam mag alleen kleine letters en cijfers bevatten. De waarde moet tussen 4 en 22 tekens bevatten.
     | Regio | VS- *West* en VS-West *2* | Selecteer VS- *West* of *VS-West 2* (als u beschikbaarheids zones gebruikt) voor deze Quick Start. Selecteer voor een productiesysteem de regio die het beste voldoet aan uw behoeften.
-    | Beschikbaarheidszones | *1*, *2*en/of *3* | Voor zones die worden ondersteund door redundantie regio's, selecteert u in welke zones uw instanties worden opgeslagen (optioneel). De cluster knooppunten worden standaard gemaakt in hetzelfde Data Center. Gebruik [Azure-beschikbaarheidszones](/azure/availability-zones/az-overview) om de cluster exemplaren in verschillende beschikbaarheids zones in dezelfde regio te plaatsen. Als u verschillende beschikbaarheids zones selecteert, kunt u een Single Point of Failure elimineren en zorgen voor hoge Beschik baarheid. 
+    | Beschikbaarheidszones | *1*, *2*en/of *3* | Plaats de cluster exemplaren in verschillende beschikbaarheids zones in dezelfde regio (optioneel). [Azure-beschikbaarheidszones](/azure/availability-zones/az-overview) zijn unieke fysieke locaties binnen dezelfde Azure-regio. Ze beschermen een Azure Data Explorer-cluster en gegevens van een gedeeltelijke fout in de regio. De cluster knooppunten worden standaard gemaakt in hetzelfde Data Center. Als u verschillende beschikbaarheids zones selecteert, kunt u een Single Point of Failure elimineren en zorgen voor hoge Beschik baarheid. Implementatie in beschikbaarheids zones is alleen mogelijk tijdens het maken van het cluster en kan niet worden gewijzigd op een later tijdstip.
     | Specificaties voor rekenkracht | *D13_v2* | Selecteer de laagste prijsspecificatie voor deze snelstart. Selecteer voor een productiesysteem de specificatie die het beste voldoet aan uw behoeften.
-    | | |
+    | | | |
 
 1. Selecteer **Bekijken + maken** om de gegevens van uw cluster te controleren, en **Maken** voor het inrichten van het cluster. Het inrichten duurt doorgaans ongeveer 10 minuten.
 

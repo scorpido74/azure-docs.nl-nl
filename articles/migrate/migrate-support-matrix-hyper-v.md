@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 26b7f185a05bcf50db3af6bd3b75d5e61d6ec84b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 97972be655a6a03cfe29d8589a144d1e027b86fc
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279571"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376100"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Ondersteuningsmatrix voor Hyper-V-evaluatie en -migratie
 
@@ -82,7 +82,7 @@ Voor evaluatie voert Azure Migrate een licht gewicht in voor de detectie van Hyp
 
 | **Ondersteuning**                | **Details**               
 | :-------------------       | :------------------- |
-| **Implementatie van het apparaat**   |  U implementeert het apparaat als een Hyper-V-VM.<br/> De apparaat-VM van Azure Migrate is Hyper-V VM versie 5,0.<br/> Op de Hyper-V-host moet Windows Server 2012 R2 of later worden uitgevoerd.<br/> De host moet voldoende ruimte hebben om 16 GB RAM, 8 Vcpu's en 1 externe switch voor de apparaat-VM toe te wijzen.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en Internet toegang.
+| **Implementatie van het apparaat**   |  U implementeert het apparaat als een Hyper-V-VM.<br/> De apparaat-VM van Azure Migrate is Hyper-V VM versie 5,0.<br/> Op de Hyper-V-host moet Windows Server 2012 R2 of later worden uitgevoerd.<br/> De host moet voldoende ruimte hebben om 16 GB RAM-geheugen, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte toe te wijzen en een externe switch voor de apparaat-VM.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en Internet toegang.
 | **Azure Migrate project**  |  Een apparaat kan worden gekoppeld aan een enkel project.<br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> U kunt Maxi maal 35.000 Vm's in een project evalueren.
 | **Hyper-V-hosts**          | Een apparaat kan verbinding maken met Maxi maal 300 Hyper-V-hosts.
 | **Detectie**              | Eén apparaat kan Maxi maal 5000 Vm's detecteren.

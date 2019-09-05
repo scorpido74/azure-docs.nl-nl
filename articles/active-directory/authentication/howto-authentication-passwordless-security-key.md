@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a063891339a46366490447b7c7a7a1a14fd81be6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 316a523a6216354ae5b6166be55e183a4e050766
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828915"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305081"
 ---
 # <a name="enable-passwordless-security-key-sign-in-for-azure-ad-preview"></a>Aanmeldings wachtwoord zonder wacht woord inschakelen voor Azure AD (preview)
 
@@ -39,7 +39,7 @@ Organisaties kunnen ervoor kiezen om een of meer van de volgende methoden te geb
 ### <a name="enable-credential-provider-via-intune"></a>Referentie provider inschakelen via intune
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Blader naar **Microsoft intune** > **registratie van Windows** > **Hello voor bedrijven** > -inschrijvingvoorhet > apparaat.
+1. Blader naar **Microsoft intune** > **registratie van Windows** > **Hello voor bedrijven** > -inschrijving > voor het apparaat.
 1. Onder **instellingen** instellen **beveiligings sleutels gebruiken voor aanmelden** bij **ingeschakeld**.
 
 Configuratie van beveiligings sleutels voor aanmelden is niet afhankelijk van het configureren van Windows hello voor bedrijven.
@@ -54,11 +54,11 @@ Als u specifieke apparaatgroepen wilt instellen om de referentie provider in te 
    1. Naam: Beveiligings sleutels voor Windows-aanmelding
    1. Beschrijving: Hiermee kunnen FIDO-beveiligings sleutels worden gebruikt tijdens Windows-aanmelding
    1. Platform: Windows 10 en hoger
-   1. Platform type: Aanpassen
+   1. Profiel type: Aanpassen
    1. Aangepaste OMA-URI-instellingen:
       1. Naam: FIDO-beveiligings sleutels inschakelen voor Windows-aanmelding
       1. OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
-      1. Gegevens type: Geheel getal
+      1. Gegevens type: Integer
       1. Waarde: 1 
 1. Dit beleid kan worden toegewezen aan specifieke gebruikers, apparaten of groepen. Meer informatie vindt u in het artikel [gebruikers-en apparaatprofielen toewijzen in Microsoft intune](https://docs.microsoft.com/intune/device-profile-assign).
 
@@ -72,12 +72,12 @@ Voor apparaten die niet worden beheerd door intune, kan een inrichtings pakket w
 1. Selecteer **bestand** > **Nieuw project**.
 1. Geef uw project een naam en noteer het pad waar het project is gemaakt.
 1. Selecteer **Volgende**.
-1. Verlaat het inrichtings **pakket** dat is geselecteerd als de **geselecteerde project werk stroom** en selecteer **volgende**.
+1. Verlaat het **inrichtings pakket** dat is geselecteerd als de **geselecteerde project werk stroom** en selecteer **volgende**.
 1. Selecteer **alle Windows Desktop-edities** onder **Kies welke instellingen u wilt weer geven en configureren** en selecteer **volgende**.
 1. Selecteer **Finish**.
 1. Blader in het zojuist gemaakte project naar **runtime-instellingen** > **WindowsHelloForBusiness** > **SecurityKeys** > **UseSecurityKeyForSignIn**.
 1. Stel **UseSecurityKeyForSignIn** in op **ingeschakeld**.
-1. Inrichtings**pakket** **exporteren** > selecteren
+1. **Inrichtings pakket** **exporteren** > selecteren
 1. Accepteer de standaard waarden in het venster **Build** onder **Beschrijving van het inrichtings pakket** en selecteer **volgende**.
 1. Accepteer de standaard waarden in het venster **bouwen** onder **Selecteer beveiligings Details voor het inrichtings pakket** en selecteer **volgende**.
 1. Noteer of wijzig het pad in de **Build** -Vensters onder **selecteren waar het inrichtings pakket moet worden opgeslagen** en selecteer **volgende**.
@@ -118,8 +118,8 @@ Registratie functies voor verificatie methoden met een wacht woord zijn afhankel
 1. Ga naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com)
 1. Meld u aan als dat nog niet is gebeurd
 1. Klik op **beveiligings gegevens**
-   1. Als de gebruiker al ten minste één multi-factor Authentication-methode voor Azure heeft geregistreerd, kunnen ze onmiddellijk een FIDO2-beveiligings sleutel registreren.
-   1. Als er niet ten minste één Azure multi-factor Authentication-methode is geregistreerd, moeten ze er een toevoegen.
+   1. Als de gebruiker al ten minste één Azure Multi-Factor Authentication-methode heeft geregistreerd, kunnen ze onmiddellijk een FIDO2-beveiligings sleutel registreren.
+   1. Als er niet ten minste één Azure Multi-Factor Authentication-methode is geregistreerd, moeten deze er een worden toegevoegd.
 1. Voeg een FIDO2-beveiligings sleutel toe door te klikken op **methode toevoegen** en **beveiligings sleutel** kiezen
 1. **USB-apparaat** of **NFC-apparaat** kiezen
 1. Laat uw sleutel gereed en kies **volgende**
@@ -171,4 +171,4 @@ Er wordt gewerkt aan de ondersteuning van een functie waarmee UPN kan worden gew
 
 [Meer informatie over apparaatregistratie](../devices/overview.md)
 
-[Meer informatie over Azure multi-factor Authentication](../authentication/howto-mfa-getstarted.md)
+[Meer informatie over Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

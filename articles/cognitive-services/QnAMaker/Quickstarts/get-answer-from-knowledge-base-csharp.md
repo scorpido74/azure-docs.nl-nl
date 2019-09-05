@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: ba128f5ad87083f8d57c33011969756f3b3a8c93
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ead314e4c889b79892857eb07ecdd63377131b12
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559830"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376357"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Antwoorden vinden op vragen met behulp van een knowledge base met C#
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Quickstart: Antwoorden vinden op vragen met behulp van een knowledge base met C#
 
 In deze quickstart wordt beschreven hoe u programmatisch een antwoord uit een gepubliceerde QnA Maker-knowledge base kunt ophalen. De Knowledge Base bevat vragen en antwoorden van [gegevens bronnen](../Concepts/data-sources-supported.md) , zoals Veelgestelde vragen. De [vraag](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) wordt verzonden naar de QnA Maker-service. Het [antwoord](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) bevat het meest voorspelde antwoord. 
 

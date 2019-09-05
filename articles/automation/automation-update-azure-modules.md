@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 06/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a71eb00ce4d4ace6ccc17e050946b39debed929c
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 23475fb77210eeea0568bb996529c81458db9c6c
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034887"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382764"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Azure PowerShell-modules bijwerken in Azure Automation
 
@@ -48,10 +48,6 @@ Hier volgen enkele aandachtspunten waarmee u rekening moet houden wanneer u dit 
 
 * Als u een specifieke Azure PowerShell module versie wilt gebruiken in plaats van de meest recente beschik bare PowerShell Gallery, geeft u deze versies door `ModuleVersionOverrides` aan de optionele para meter van het **Update-AutomationAzureModulesForAccount** runbook. Zie het [runbook update-AutomationAzureModulesForAccount. ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1
 ) voor voor beelden. Azure PowerShell-modules die niet in de `ModuleVersionOverrides` para meter worden vermeld, worden bijgewerkt met de nieuwste module versies op de PowerShell Gallery. Als u niets doorgeeft aan `ModuleVersionOverrides` de para meter, worden alle modules bijgewerkt met de nieuwste module versies op het PowerShell Gallery. Dit gedrag is hetzelfde als de knop **Azure-modules bijwerken** .
-
-## <a name="known-issues"></a>Bekende problemen
-
-Er is een bekend probleem met het bijwerken van de AzureRM-modules in een Automation-account dat zich in een resource groep bevindt met een numerieke naam die begint met 0. Als u uw Azure-modules in uw Automation-account wilt bijwerken, moet deze zich in een resource groep betreden die een alfanumerieke naam heeft. Resource groepen met een numerieke naam die begint met 0, kunnen op dit moment geen AzureRM-modules bijwerken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

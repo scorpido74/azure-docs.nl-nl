@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: e28478d31a674d742870344b33eac6b84c3ae584
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 2705b42849922ce7e3650162b8f1ff78723685c2
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123845"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309245"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Opslag configuratie voor SQL Server Vm's
 
@@ -110,8 +110,7 @@ De andere optie voor het uitbreiden van opslag is het uitbreiden van het bestaan
 
 Deze sectie bevat een Naslag informatie over de opslag configuratie wijzigingen die Azure automatisch uitvoert tijdens het inrichten of configureren van een SQL-VM in de Azure Portal.
 
-* Als u minder dan twee TBs van opslag voor uw virtuele machine hebt geselecteerd, maakt Azure geen opslag groep.
-* Als u ten minste twee TBs van opslag voor uw virtuele machine hebt geselecteerd, configureert Azure een opslag groep. In de volgende sectie van dit onderwerp vindt u de details van de configuratie van de opslag groep.
+* Azure configureert een opslag groep van opslag die is geselecteerd op de VM. In de volgende sectie van dit onderwerp vindt u meer informatie over de configuratie van de opslag groep.
 * Automatische opslag configuratie maakt altijd gebruik van [Premium ssd's](../disks-types.md) P30-gegevens schijven. Daarom is er een 1:1-toewijzing tussen het geselecteerde aantal terabytes en het aantal gegevens schijven dat aan uw virtuele machine is gekoppeld.
 
 Zie de pagina [prijzen voor opslag](https://azure.microsoft.com/pricing/details/storage) op het tabblad **Disk Storage** voor prijs informatie.

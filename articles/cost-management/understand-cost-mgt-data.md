@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2019
+ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: e44acfc66a8faf76068af9c31233e89c45ee02f7
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: b50c7c0fbd2ef2c3825ba4c69232b69188d7ffbb
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953172"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308304"
 ---
 # <a name="understand-cost-management-data"></a>Inzicht in gegevens van Cost Management
 
@@ -25,7 +25,7 @@ Cost Management omvat alle gebruik en aankopen, inclusief reserve ringen en aanb
 
 ## <a name="supported-microsoft-azure-offers"></a>Ondersteunde Microsoft Azure aanbiedingen
 
-De volgende informatie bevat de momenteel ondersteunde [Microsoft Azure aanbiedingen](https://azure.microsoft.com/support/legal/offer-details/) in azure Cost Management. Een Azure-aanbieding is het type Azure-abonnement dat u hebt. Gegevens zijn beschikbaar in Cost Management vanaf de datum **van de beschik bare gegevens** . Als een abonnement wordt gewijzigd, zijn de kosten voor de wijzigings datum van de aanbieding niet beschikbaar. 
+De volgende informatie bevat de momenteel ondersteunde [Microsoft Azure aanbiedingen](https://azure.microsoft.com/support/legal/offer-details/) in azure Cost Management. Een Azure-aanbieding is het type Azure-abonnement dat u hebt. Gegevens zijn beschikbaar in Cost Management vanaf de datum **van de beschik bare gegevens** . Als een abonnement wordt gewijzigd, zijn de kosten voor de wijzigings datum van de aanbieding niet beschikbaar.
 
 | **Categorie**  | **Naam van aanbieding** | **Quotum-ID** | **Aanbiedings nummer** | **Beschik bare gegevens van** |
 | --- | --- | --- | --- | --- |
@@ -41,7 +41,6 @@ De volgende informatie bevat de momenteel ondersteunde [Microsoft Azure aanbiedi
 | **Pay-As-You-Go** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p)      | MPN_2014-09-01 | MS-AZR-0025P | 2 oktober 2018<sup>2</sup> |
 | **Pay-As-You-Go** | [Gratis proef versie](https://azure.microsoft.com/offers/ms-azr-0044p) <sup>4</sup>         | FreeTrial_2014-09-01 | MS-AZR-0044P | 2 oktober 2018<sup>2</sup> |
 | **Pay-As-You-Go** | [Azure in open](https://azure.microsoft.com/offers/ms-azr-0111p) <sup>4</sup>      | AzureInOpen_2014-09-01 | MS-AZR-0111P | 2 oktober 2018<sup>2</sup> |
-| **Pay-As-You-Go** | [Azure for students](https://azure.microsoft.com/offers/ms-azr-0170p) <sup>4</sup> | AzureForStudents_2018-01-01 | MS-AZR-0170P | 2 oktober 2018<sup>2</sup> |
 | **Pay-As-You-Go** | Azure Pass<sup>4</sup>                                                            | AzurePass_2014-09-01 | MS-AZR-0120P, MS-AZR-0122P-MS-AZR-0125P, MS-AZR-0128P-MS-AZR-0130P | 2 oktober 2018<sup>2</sup> |
 | **Visual Studio** | [Visual Studio Enter prise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p) <sup>4</sup>     | MPN_2014-09-01 | MS-AZR-0029P | 2 oktober 2018<sup>2</sup> |
 | **Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p)<sup>4</sup>         | MSDN_2014-09-01 | MS-AZR-0059P | 2 oktober 2018<sup>2</sup> |
@@ -66,14 +65,15 @@ De volgende aanbiedingen worden nog niet ondersteund:
 | **Cloud Solution Provider (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **Cloud Solution Provider (CSP)** | Azure Duitsland in CSP voor Microsoft Cloud Duitsland   | CSP_2015-05-01 | MS-AZR-DE-0145P |
 | **Pay-As-You-Go**                 | Azure for Students Starter | DreamSpark_2015-02-01 | MS-AZR-0144P |
+| **Pay-As-You-Go** | [Azure for students](https://azure.microsoft.com/offers/ms-azr-0170p) <sup>4</sup> | AzureForStudents_2018-01-01 | MS-AZR-0170P |
 | **Pay-As-You-Go**                 | [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/) | Sponsored_2016-01-01 | MS-AZR-0036P |
-| **Ondersteunings abonnementen** | Standard Support                    | Default_2014-09-01 | MS-AZR-0041P |
-| **Ondersteunings abonnementen** | Ondersteuning voor Professional Direct         | Default_2014-09-01 | MS-AZR-0042P |
-| **Ondersteunings abonnementen** | Ondersteuning voor ontwikkel aars                   | Default_2014-09-01 | MS-AZR-0043P |
-| **Ondersteunings abonnementen** | Duitsland-ondersteunings plan                | Default_2014-09-01 | MS-AZR-DE-0043P |
-| **Ondersteunings abonnementen** | Azure Government Standard Support   | Default_2014-09-01 | MS-AZR-USGOV-0041P |
-| **Ondersteunings abonnementen** | Azure Government Pro-direct-ondersteuning | Default_2014-09-01 | MS-AZR-USGOV-0042P |
-| **Ondersteunings abonnementen** | Azure Government Developer Support  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
+| **Ondersteuningsplannen** | Standard Support                    | Default_2014-09-01 | MS-AZR-0041P |
+| **Ondersteuningsplannen** | Ondersteuning voor Professional Direct         | Default_2014-09-01 | MS-AZR-0042P |
+| **Ondersteuningsplannen** | Ondersteuning voor ontwikkel aars                   | Default_2014-09-01 | MS-AZR-0043P |
+| **Ondersteuningsplannen** | Duitsland-ondersteunings plan                | Default_2014-09-01 | MS-AZR-DE-0043P |
+| **Ondersteuningsplannen** | Azure Government Standard Support   | Default_2014-09-01 | MS-AZR-USGOV-0041P |
+| **Ondersteuningsplannen** | Azure Government Pro-direct-ondersteuning | Default_2014-09-01 | MS-AZR-USGOV-0042P |
+| **Ondersteuningsplannen** | Azure Government Developer Support  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
 ## <a name="determine-your-offer-type"></a>Uw aanbiedings type bepalen
 Als u geen gegevens voor een abonnement ziet en u wilt bepalen of uw abonnement onder de ondersteunde aanbiedingen valt, kunt u controleren of uw abonnement wordt ondersteund. Als u wilt valideren dat een Azure-abonnement wordt ondersteund, meldt u zich aan bij de [Azure Portal](https://portal.azure.com). Selecteer vervolgens **alle services** in het linkerdeel venster. Selecteer in de lijst met Services **abonnementen**. Klik in het menu abonnements lijst op het abonnement dat u wilt controleren. Uw abonnement wordt weer gegeven op het tabblad Overzicht en u kunt de ID van de **aanbieding** en de **aanbieding**bekijken. In de volgende afbeelding ziet u een voorbeeld.

@@ -8,23 +8,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 09/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf45d45481712e30d40bacec9a3c4d80d1ed56b6
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 7e21bd2b20ac48d3719e41b1e93a82cbe5a864b7
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707550"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382586"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Aangepaste roltoewijzingen in Azure Active Directory weer geven
 
-In dit artikel wordt beschreven hoe u aangepaste rollen kunt weer geven die u hebt toegewezen in Azure Active Directory (Azure AD). In Azure Active Directory (Azure AD) kunnen rollen worden toegewezen op mapniveau of met een bereik van één toepassing. Roltoewijzingen in het bereik van de map worden toegevoegd aan de lijst met toewijzingen voor afzonderlijke toepassings rollen, maar roltoewijzingen in het enkele toepassings bereik worden niet toegevoegd aan de lijst met toewijzingen op mapniveau.
+In dit artikel wordt beschreven hoe u aangepaste rollen kunt weer geven die u hebt toegewezen in Azure Active Directory (Azure AD). In Azure Active Directory (Azure AD) kunnen rollen worden toegewezen in een organisatie bereik of met een bereik met één toepassing.
 
-## <a name="view-the-assignments-of-a-role-with-directory-scope-using-the-azure-ad-portal"></a>De toewijzingen van een rol met een directory bereik weer geven met behulp van de Azure AD-Portal
+- Roltoewijzingen voor het bereik van de organisatie worden toegevoegd aan en kunnen worden weer gegeven in de lijst met toewijzingen voor afzonderlijke toepassings rollen.
+- Roltoewijzingen in het bereik met één toepassing worden niet toegevoegd aan en kunnen niet worden weer gegeven in de lijst met bereik toewijzingen in de organisatie.
+
+## <a name="view-role-assignments-in-the-azure-portal"></a>Roltoewijzingen weer geven in de Azure Portal
+
+In deze procedure wordt beschreven hoe u toewijzingen van een rol met bereik voor de hele organisatie weergeeft.
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
 1. Selecteer **Azure Active Directory**, selecteer **rollen en beheerders**en selecteer vervolgens een rol om deze te openen en de eigenschappen ervan weer te geven.
@@ -32,9 +37,9 @@ In dit artikel wordt beschreven hoe u aangepaste rollen kunt weer geven die u he
 
     ![Roltoewijzingen en-machtigingen weer geven bij het openen van een rol in de lijst](./media/roles-view-assignments/role-assignments.png)
 
-## <a name="view-the-assignments-of-a-role-with-directory-scope-using-azure-ad-powershell"></a>De toewijzingen van een rol met een directory bereik weer geven met behulp van Azure AD Power shell
+## <a name="view-role-assignments-using-azure-ad-powershell"></a>Roltoewijzingen weer geven met behulp van Azure AD Power shell
 
-U kunt automatiseren hoe u Azure AD-beheerders rollen toewijst aan gebruikers met behulp van Azure PowerShell. In dit artikel wordt gebruikgemaakt van de [Azure Active Directory module Power shell versie 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) .
+In deze sectie wordt beschreven hoe u toewijzingen van een rol met bereik voor de hele organisatie weergeeft. In dit artikel wordt gebruikgemaakt van de [Azure Active Directory module Power shell versie 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) . Als u Scope toewijzingen met één toepassing wilt weer geven met behulp van Power shell, kunt u de cmdlets gebruiken in [aangepaste rollen toewijzen met Power shell](roles-assign-powershell.md).
 
 ### <a name="prepare-powershell"></a>Power shell voorbereiden
 
@@ -71,7 +76,9 @@ $role = Get-AzureADDirectoryRole -ObjectId "5b3fe201-fa8b-4144-b6f1-875829ff7543
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
 ```
 
-## <a name="view-the-assignments-of-a-role-with-directory-scope-using-microsoft-graph-api"></a>De toewijzingen van een rol met een directory bereik weer geven met behulp van Microsoft Graph-API
+## <a name="view-role-assignments-using-microsoft-graph-api"></a>Roltoewijzingen weer geven met behulp van Microsoft Graph-API
+
+In deze sectie wordt beschreven hoe u toewijzingen van een rol met bereik voor de hele organisatie weergeeft.  Als u Scope toewijzingen met één toepassing wilt weer geven met behulp van Graph API, kunt u de bewerkingen gebruiken in [aangepaste rollen toewijzen met Graph API](roles-assign-graph.md).
 
 HTTP-aanvraag voor het ophalen van een roltoewijzing voor een bepaalde roldefinitie.
 
@@ -93,18 +100,20 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="view-the-assignments-of-a-role-with-single-application-scope-using-the-azure-ad-portal-preview"></a>De toewijzingen van een rol met een bereik met één toepassing weer geven met behulp van de Azure AD-Portal (preview)
+## <a name="view-assignments-of-a-role-with-single-application-scope-preview"></a>Toewijzingen van een rol met een bereik met één toepassing weer geven (preview)
+
+In deze sectie wordt beschreven hoe u toewijzingen van een rol met een bereik met één toepassing weergeeft.
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
-1. Selecteer Azure Active Directory, selecteer **app-registraties**en selecteer vervolgens de app-registratie om de eigenschappen ervan weer te geven. Mogelijk moet u **alle toepassingen** selecteren om de volledige lijst van app-registraties in uw Azure AD-organisatie weer te geven.
+1. Selecteer **app-registraties**en selecteer vervolgens de app-registratie om de eigenschappen ervan weer te geven. Mogelijk moet u **alle toepassingen** selecteren om de volledige lijst van app-registraties in uw Azure AD-organisatie weer te geven.
 
     ![App-registraties maken of bewerken op de App-registraties pagina](./media/roles-create-custom/appreg-all-apps.png)
 
-1. Selecteer **rollen en beheerders**en selecteer vervolgens een rol om de eigenschappen ervan weer te geven.
+1. Selecteer in de app-registratie **rollen en beheerders**, en selecteer vervolgens een rol om de eigenschappen ervan weer te geven.
 
     ![Roltoewijzingen van de app-registratie weer geven op de pagina App-registraties](./media/roles-view-assignments/appreg-assignments.png)
 
-1. Selecteer **toewijzingen** om de toewijzingen voor de rol weer te geven.
+1. Selecteer **toewijzingen** om de toewijzingen voor de rol weer te geven. Als u de weer gave toewijzingen in de app-registratie opent, ziet u de toewijzingen die zijn afgestemd op deze Azure AD-resource.
 
     ![Roltoewijzingen van de app-registratie weer geven vanuit de eigenschappen van een app-registratie](./media/roles-view-assignments/appreg-assignments-2.png)
 

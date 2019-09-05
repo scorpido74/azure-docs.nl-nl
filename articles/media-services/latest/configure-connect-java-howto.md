@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Azure Media Services v3 API - Java
-description: Leer hoe u verbinding maken met Media Services v3 API met Java.
+title: Verbinding maken met Azure Media Services v3 API-Java
+description: Meer informatie over het maken van verbinding met Media Services v3 API met Java.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,49 +13,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2019
 ms.author: juliako
-ms.openlocfilehash: b7ee54c852ce3332415b69ca6105b472dab0ab8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f89e5cc434403e4edc3501d24ce2e94664d13ae9
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480269"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307848"
 ---
-# <a name="connect-to-media-services-v3-api---java"></a>Verbinding maken met de API van Media Services v3 - Java
+# <a name="connect-to-media-services-v3-api---java"></a>Verbinding maken met Media Services v3 API-Java
 
-Dit artikel ziet u hoe u verbinding maakt met de SDK van Azure Media Services v3 Java met behulp van de service principal-aanmelding in de methode.
+Dit artikel laat u zien hoe u verbinding kunt maken met de Azure Media Services v3 Java SDK met behulp van de aanmeldings methode voor de Service-Principal.
 
-In dit artikel wordt de Visual Studio Code gebruikt voor het ontwikkelen van de voorbeeld-app.
+In dit artikel wordt de Visual Studio-code gebruikt voor het ontwikkelen van de voor beeld-app.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Ga als volgt [Java met Visual Studio Code schrijven](https://code.visualstudio.com/docs/java/java-tutorial) te installeren:
+- Volg het [schrijven van Java met Visual Studio code](https://code.visualstudio.com/docs/java/java-tutorial) om te installeren:
 
    - JDK
    - Apache Maven
-   - Java Extension Pack
-- Zorg ervoor dat ingesteld `JAVA_HOME` en `PATH` omgevingsvariabelen.
-- [Een Azure Media Services-account maken](create-account-cli-how-to.md). Moet u om te onthouden naam van de resourcegroep en de naam van de Media Services-account.
-- Volg de stappen in de [Acces-API's](access-api-cli-how-to.md) onderwerp. Noteer de abonnements-ID, toepassings-ID (client-ID), de verificatiesleutel (geheim genoemd) en de tenant-ID die u nodig hebt in een latere stap.
+   - Java-uitbreidings pakket
+- Zorg ervoor dat u `JAVA_HOME` - `PATH` en omgevings variabelen hebt ingesteld.
+- [Een Azure Media Services-account maken](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet.
+- Volg de stappen in het onderwerp [toegangs-api's](access-api-cli-how-to.md) . Noteer de abonnements-ID, toepassings-ID (client-ID), de verificatie sleutel (geheim) en de Tenant-ID die u in een latere stap nodig hebt.
 
-Bekijk ook:
+Ook controleren:
 
-- [Java in Visual Studio Code](https://code.visualstudio.com/docs/languages/java)
-- [Beheer van de Java-Project in VS Code](https://code.visualstudio.com/docs/java/java-project)
+- [Java in Visual Studio code](https://code.visualstudio.com/docs/languages/java)
+- [Java-project beheer in VS code](https://code.visualstudio.com/docs/java/java-project)
 
-## <a name="create-a-maven-project"></a>Maak een Maven-project
+> [!IMPORTANT]
+> Bekijk [naam conventies](media-services-apis-overview.md#naming-conventions).
 
-Open een opdrachtregel-hulpprogramma en `cd` naar een map waar u het project te maken.
+## <a name="create-a-maven-project"></a>Een Maven-project maken
+
+Open een opdracht regel programma en `cd` naar een map waar u het project wilt maken.
     
 ```
 mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 ```
 
-Wanneer u de opdracht uitvoert de `pom.xml`, `App.java`, en andere bestanden worden gemaakt. 
+Wanneer u de opdracht uitvoert, worden `pom.xml`de `App.java`-, en andere bestanden gemaakt. 
 
 ## <a name="add-dependencies"></a>Afhankelijkheden toevoegen
 
-1. Open de map waarin het project is in Visual Studio Code
-1. Zoek en open de `pom.xml`
+1. Open in Visual Studio code de map waar uw project zich bevindt
+1. Zoek en open de`pom.xml`
 1. De vereiste afhankelijkheden toevoegen
 
     ```xml
@@ -78,12 +81,12 @@ Wanneer u de opdracht uitvoert de `pom.xml`, `App.java`, en andere bestanden wor
 
 ## <a name="connect-to-the-java-client"></a>Verbinding maken met de Java-client
 
-1. Open de `App.java` bestand onder `src\main\java\com\azure\ams` en zorg ervoor dat het pakket is toegevoegd aan de bovenkant:
+1. Open het `App.java` bestand onder `src\main\java\com\azure\ams` en controleer of het pakket aan de bovenkant is opgenomen:
 
     ```java
     package com.azure.ams;
     ```
-1. Voeg deze onder de pakketinstructie importeren van instructies:
+1. Voeg onder de instructie package de volgende import instructies toe:
    
    ```java
    import com.microsoft.azure.AzureEnvironment;
@@ -91,7 +94,7 @@ Wanneer u de opdracht uitvoert de `pom.xml`, `App.java`, en andere bestanden wor
    import com.microsoft.azure.management.mediaservices.v2018_07_01.implementation.MediaManager;
    import com.microsoft.rest.LogLevel;
    ```
-1. De volgende code toevoegen aan de belangrijkste methode van de App-klasse voor het maken van de Active Directory-referenties die u nodig hebt om aan te vragen, en stel de waarden die u hebt verkregen via [Acces-API's](access-api-cli-how-to.md):
+1. Als u de Active Directory referenties wilt maken die u nodig hebt om aanvragen te doen, voegt u de volgende code toe aan de methode Main van de app-klasse en stelt u de waarden in die u hebt ontvangen van [Access-api's](access-api-cli-how-to.md):
    
    ```java
    final String clientId = "00000000-0000-0000-0000-000000000000";
@@ -114,15 +117,15 @@ Wanneer u de opdracht uitvoert de `pom.xml`, `App.java`, en andere bestanden wor
       System.out.println(e.toString());
    }
    ```
-1. De app uitvoeren.
+1. Voer de app uit.
 
 ## <a name="see-also"></a>Zie ook
 
-- [Media Services-concepten](concepts-overview.md)
+- [Media Services concepten](concepts-overview.md)
 - [Java SDK](https://aka.ms/ams-v3-java-sdk)
 - [Naslaginformatie over Java](https://aka.ms/ams-v3-java-ref)
 - [com.microsoft.azure.mediaservices.v2018_07_01:azure-mgmt-media](https://search.maven.org/artifact/com.microsoft.azure.mediaservices.v2018_07_01/azure-mgmt-media/1.0.0-beta/jar)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt nu opnemen `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` en manipuleren van entiteiten te starten.
+U kunt nu entiteiten `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` toevoegen en bewerken.

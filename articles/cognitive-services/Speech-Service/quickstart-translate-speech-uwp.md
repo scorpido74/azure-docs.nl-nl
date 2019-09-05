@@ -1,27 +1,27 @@
 ---
 title: 'Quickstart: Vertaal spraak, C# (UWP)-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart maakt u een eenvoudige UWP-toepassing (Universeel Windows-platform) om spraak van gebruikers vast te leggen, deze om te zetten in een andere taal en de tekst uit te voeren naar de opdrachtregel. Deze handleiding is bedoeld voor Windows-gebruikers.
+description: In deze Quick Start maakt u een Universeel Windows-platform (UWP)-toepassing voor het vastleggen van gebruikers spraak, het vertalen ervan naar een andere taal en het uitvoeren van de tekst naar de opdracht regel. Deze handleiding is bedoeld voor Windows-gebruikers.
 services: cognitive-services
 author: lisaweixu
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 07/23/2019
+ms.date: 08/19/2019
 ms.author: erhopf
 ms.topic: quickstart
-ms.openlocfilehash: 813edbea0548a5cac9532750a450de08bd238028
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e513cbbc615965ef196a830351aab8ac241c3f20
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640033"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382615"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c-uwp"></a>Quickstart: Spraak omzetten met de Speech SDK voor C# (UWP)
 
-Quick starts zijn ook beschikbaar voor de virtuele assistent [spraak naar tekst](quickstart-csharp-uwp.md), [tekst naar spraak](quickstart-text-to-speech-csharp-uwp.md) en spraak [-eerste](quickstart-virtual-assistant-csharp-uwp.md).
+Quick starts zijn ook beschikbaar voor [spraak herkenning](quickstart-csharp-uwp.md), [spraak synthese](quickstart-text-to-speech-csharp-uwp.md)en de [eerste virtuele assistent met stem](quickstart-virtual-assistant-csharp-uwp.md).
 
-In deze quickstart maakt u een eenvoudige UWP-toepassing (Universeel Windows-platform) waarmee spraak van gebruikers via de microfoon van de computer wordt vastgelegd, waarna de spraak wordt omgezet en de omgezette tekst in realtime wordt getranscribeerd naar de opdrachtregel. Deze toepassing is ontworpen om te worden uitgevoerd op 64-bits Windows en is gebouwd met het [Speech SDK NuGet-pakket](https://aka.ms/csspeech/nuget) en micro soft Visual Studio 2017 of hoger.
+In deze Quick Start maakt u een Universeel Windows-platform-toepassing (UWP) die de gebruikers spraak van de microfoon van uw computer vastlegt, de spraak vertaalt en de omgezette tekst in realtime overschakelt naar de opdracht regel. Deze toepassing is ontworpen om te worden uitgevoerd op 64-bits Windows en is gebouwd met het [Speech SDK NuGet-pakket](https://aka.ms/csspeech/nuget) en micro soft Visual Studio 2019.
 
 Zie [Taalondersteuning](language-support.md) voor een volledige lijst met talen die voor spraakomzetting beschikbaar zijn.
 
@@ -32,7 +32,7 @@ Zie [Taalondersteuning](language-support.md) voor een volledige lijst met talen 
 
 Voor deze snelstart zijn de volgende zaken vereist:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) of hoger
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * Een Azure-abonnementssleutel voor de Spraakservice. [Gratis downloaden](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Een Visual Studio-project maken
@@ -41,37 +41,43 @@ Voor deze snelstart zijn de volgende zaken vereist:
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. De gebruikersinterface van de toepassing wordt gedefinieerd met behulp van XAML. Open `MainPage.xaml` in Solution Explorer. Voeg in de XAML-weergave van de ontwerpfunctie het volgende XAML-fragment toe (tussen `<Grid>` en `</Grid>`).
+Voeg nu de XAML-code toe die de gebruikers interface van de toepassing definieert en voeg C# de code-behind-implementatie toe.
 
-    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-uwp/helloworld/MainPage.xaml#StackPanel)]
+1. Open`MainPage.xaml`in **Solution Explorer**.
 
-1. Open het code-behind-bronbestand `MainPage.xaml.cs` (u vindt dit gegroepeerd onder `MainPage.xaml`). Vervang alle code in het bestand door de volgende code.
+1. In de XAML-weer gave van de ontwerp functie plaatst u het volgende XAML-fragment in `<Grid>` de `</Grid>` **grid** -tag (tussen en):
 
-    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-uwp/helloworld/MainPage.xaml.cs#code)]
+   [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-uwp/helloworld/MainPage.xaml#StackPanel)]
 
-1. Vervang de tekenreeks `YourSubscriptionKey` in de handler `SpeechTranslationFromMicrophone_ButtonClicked` in dit bestand door uw abonnementssleutel.
+1. Open in **Solution Explorer**het bron bestand `MainPage.xaml.cs`voor de code achter. (Deze wordt gegroepeerd onder `MainPage.xaml`.)
 
-1. Vervang in de handler `SpeechTranslationFromMicrophone_ButtonClicked` de tekenreeks `YourServiceRegion` door de [regio](regions.md) die is gekoppeld aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang alle code hierin door het volgende fragment:
 
-1. Sla alle wijzigingen in het project op.
+   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-uwp/helloworld/MainPage.xaml.cs#code)]
 
-## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
+1. Zoek in `SpeechTranslationFromMicrophone_ButtonClicked` de handler in dit bestand naar de teken `YourSubscriptionKey`reeks en vervang deze door de sleutel van uw abonnement.
 
-1. Compileer de toepassing. Selecteer in de menubalk **Build** > **Build Solution**. De code moet nu zonder fouten worden gecompileerd.
+1. Zoek de `SpeechTranslationFromMicrophone_ButtonClicked` teken reeks `YourServiceRegion`in de handler en vervang deze door de [regio](regions.md) die aan uw abonnement is gekoppeld. (Gebruik `westus` bijvoorbeeld voor het gratis proef abonnement.)
 
-    ![Schermafbeelding van Visual Studio-toepassing met de optie Build Solution gemarkeerd](media/sdk/qs-csharp-uwp-08-build.png "Geslaagde build")
+1. Kies in de menu balk de optie **bestand** > **Alles opslaan** om uw wijzigingen op te slaan.
 
-1. Start de toepassing. Selecteer in de menubalk **Debug** > **Start Debugging** of druk op **F5**.
+## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 
-    ![Schermafbeelding van Visual Studio-toepassing met de optie Start Debugging gemarkeerd](media/sdk/qs-csharp-uwp-09-start-debugging.png "Start foutopsporing van de app")
+U bent nu klaar om uw toepassing te bouwen en te testen.
 
-1. Er verschijnt een venster. Selecteer **Enable Microphone** en bevestig dat de app toegang mag hebben tot de microfoon.
+1. Selecteer > in de menu balk build**Build Solution** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
 
-    ![Schermafbeelding van verzoek om toegang](media/sdk/qs-csharp-uwp-10-access-prompt.png "Start foutopsporing van de app")
+1. Kies **fout** > **opsporing starten** (of druk op **F5**) om de toepassing te starten. Het venster **HelloWorld** wordt weer gegeven.
 
-1. Selecteer **Speech recognition with microphone input** en zeg een Engelse woordgroep of zin in de microfoon van uw apparaat. Uw gesproken tekst wordt verzonden naar de Speech-service en getranscribeerd naar tekst, die in hetzelfde venster wordt weergegeven.
+   ![Voor beeld van een UWP C# -Vertaal toepassing in-Quick Start](media/sdk/qs-translate-speech-uwp-helloworld-window.png)
 
-    ![Schermafbeelding van gebruikersinterface voor spraakherkenning](media/sdk/qs-translate-csharp-uwp-ui-result.png)
+1. Selecteer **microfoon inschakelen**en selecteer wanneer de toegangs machtigings aanvraag wordt weer gegeven, **Ja**.
+
+   ![Verzoek om toegang tot de microfoon](media/sdk/qs-csharp-uwp-10-access-prompt.png)
+
+1. Selecteer **spraak vertalen van de microfoon invoer**en spreek een Engelse zin of zin uit in de microfoon van uw apparaat. De toepassing stuurt uw spraak naar de spraak service, waarmee de spraak wordt omgezet in tekst in een andere taal (in dit geval Duits). De speech-service verzendt de vertaalde tekst terug naar de toepassing, waarin de vertaling in het venster wordt weer gegeven.
+
+   ![Gebruikers interface voor spraak omzetting](media/sdk/qs-translate-csharp-uwp-ui-result.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -80,5 +86,4 @@ Voor deze snelstart zijn de volgende zaken vereist:
 
 ## <a name="see-also"></a>Zie ook
 
-- [Akoestische modellen aanpassen](how-to-customize-acoustic-models.md)
-- [Taalmodellen aanpassen](how-to-customize-language-model.md)
+- [Een model trainen voor Custom Speech](how-to-custom-speech-train-model.md)

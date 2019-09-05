@@ -1,36 +1,33 @@
 ---
 title: 'Quickstart: Vertaal spraak, C++ (Windows)-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart maakt u een eenvoudige C++-toepassing om spraak van gebruikers vast te leggen, deze om te zetten in een andere taal en de tekst uit te voeren naar de opdrachtregel. Deze handleiding is bedoeld voor Windows-gebruikers.
+description: In deze Quick Start maakt u een C++ toepassing voor het vastleggen van gebruikers spraak, het vertalen ervan naar een andere taal en het uitvoeren van de tekst naar de opdracht regel. Deze handleiding is bedoeld voor Windows-gebruikers.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 08/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 379087ca94eee6ce3d45bfd97b4771c5f08d6333
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 6ba4e44efc7ff24aa48f9f16840b2248423f7241
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607697"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382686"
 ---
-# <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>Quickstart: Spraak omzetten met de Speech SDK voor C++
+# <a name="quickstart-translate-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Quickstart: Spraak in C++ Windows vertalen met behulp van de Speech SDK
 
-Quick starts zijn ook beschikbaar voor [spraak herkenning](quickstart-cpp-windows.md) en [tekst naar spraak](quickstart-text-to-speech-cpp-windows.md).
+Quick starts zijn ook beschikbaar voor [spraak herkenning](quickstart-cpp-windows.md) en [spraak synthese](quickstart-text-to-speech-cpp-windows.md).
 
-In deze quickstart maakt u een eenvoudige C++-toepassing waarmee spraak van gebruikers via de microfoon van de computer wordt vastgelegd, waarna de spraak wordt omgezet en de omgezette tekst in realtime wordt getranscribeerd naar de opdrachtregel. Deze toepassing is ontworpen om te worden uitgevoerd op 64-bits Windows en is gebouwd met het [Speech SDK NuGet-pakket](https://aka.ms/csspeech/nuget) en micro soft Visual Studio 2017 of hoger.
+In deze Quick Start maakt u een C++ toepassing die de gebruikers spraak van de microfoon van uw computer vastlegt, de spraak vertaalt en de omgezette tekst in realtime overschakelt naar de opdracht regel. Deze toepassing is gebouwd met het [Speech SDK NuGet-pakket](https://aka.ms/csspeech/nuget) en micro soft Visual Studio 2019 (alle edities).
 
 Zie [Taalondersteuning](language-support.md) voor een volledige lijst met talen die voor spraakomzetting beschikbaar zijn.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor deze snelstart zijn de volgende zaken vereist:
-
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) of hoger
-* Een Azure-abonnementssleutel voor de Spraakservice. [Gratis downloaden](get-started.md).
+U hebt een abonnement op spraak services nodig om deze Quick Start te volt ooien. U kunt er gratis een krijgen. Zie [de spraak services gratis uitproberen](get-started.md) voor meer informatie.
 
 ## <a name="create-a-visual-studio-project"></a>Een Visual Studio-project maken
 
@@ -38,38 +35,35 @@ Voor deze snelstart zijn de volgende zaken vereist:
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. Open het bronbestand *helloworld.cpp*. Vervang alle code onder de eerste include-instructie (`#include "stdafx.h"` of `#include "pch.h"`) door het volgende:
+1. Open het bronbestand **helloworld.cpp**.
 
-    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/cpp-windows/helloworld/helloworld.cpp#code)]
+1. Vervang alle code door het volgende fragment:
+
+   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/cpp-windows/helloworld/helloworld.cpp?range=2-#code)]
 
 1. Vervang in hetzelfde bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](regions.md) die gekoppeld is aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
-1. Sla de wijzigingen in het project op.
+1. Kies in de menu balk de optie **bestand** > **Opslaan**.
 
-## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
+## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 
-1. Compileer de toepassing. Kies in de menubalk **Build** > **Build Solution**. De code moet zonder fouten worden gecompileerd.
+1. Selecteer > in de menu balk build**Build Solution** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
 
-   ![Schermafbeelding van Visual Studio-toepassing met de optie Build Solution gemarkeerd](media/sdk/qs-cpp-windows-06-build.png)
+1. Kies **debug** > **Start Debugging** (of druk op **F5**) om de toepassing **HelloWorld** te starten.
 
-1. Start de toepassing. Kies in de menubalk **Debug** > **Start Debugging** of druk op **F5**.
+1. Spreek een Engelse woordgroep of zin in. De toepassing stuurt uw spraak naar de spraak Services, die worden vertaald naar tekst (in dit geval naar Frans en Duits). De spraak Services verzenden de tekst vervolgens terug naar de toepassing om weer te geven.
 
-   ![Schermafbeelding van Visual Studio-toepassing met de optie Start Debugging gemarkeerd](media/sdk/qs-cpp-windows-07-start-debugging.png)
-
-1. Er wordt een consolevenster weergegeven waarin u wordt gevraagd iets te zeggen. Spreek een Engelse woordgroep of zin in. De gesproken tekst wordt verzonden naar de spraakservice, omgezet en getranscribeerd naar tekst, die in hetzelfde venster wordt weergegeven.
-
-   ![Schermafbeelding van console-uitvoer na geslaagde omzetting](media/sdk/qs-translate-cpp-windows-output.png)
+   ![Console-uitvoer na geslaagde spraak omzetting](media/sdk/qs-translate-cpp-windows-output.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Op GitHub vindt u aanvullende voorbeelden, zoals hoe u spraak kunt lezen vanuit een audiobestand en omgezette tekst als kunstmatige spraak kunt uitvoeren.
+Aanvullende voor beelden, zoals het lezen van spraak van een audio bestand of het omzetten van tekst in gesynthesizerde spraak, zijn beschikbaar op GitHub.
 
 > [!div class="nextstepaction"]
 > [C++-voorbeelden op GitHub bekijken](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Zie ook
 
-- [Akoestische modellen aanpassen](how-to-customize-acoustic-models.md)
-- [Taalmodellen aanpassen](how-to-customize-language-model.md)
+- [Een model trainen voor Custom Speech](how-to-custom-speech-train-model.md)

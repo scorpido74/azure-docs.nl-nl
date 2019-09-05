@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 63a8acad3c393a4c4d9c6a3b6750f1f934dad43d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: 5946c74d0075e04112e840d78dd9f5f57bec7475
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907425"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309399"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Lees replica's maken en beheren vanuit de Azure CLI
 
 In dit artikel leert u hoe u met de Azure CLI Lees replica's maakt en beheert in Azure Database for PostgreSQL. Zie het [overzicht](concepts-read-replicas.md)voor meer informatie over het lezen van replica's.
-
-> [!IMPORTANT]
-> U kunt een lees replica maken in dezelfde regio als uw hoofd server of in andere Azure-regio's van uw keuze. Replicatie tussen regio's is momenteel beschikbaar als open bare preview.
 
 ## <a name="prerequisites"></a>Vereisten
 - Een [Azure database for postgresql-server](quickstart-create-server-up-azure-cli.md) als de hoofd server.

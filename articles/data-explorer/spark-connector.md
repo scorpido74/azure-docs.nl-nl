@@ -7,12 +7,12 @@ ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 4/29/2019
-ms.openlocfilehash: 0fe81926327bcccac56718cc0d06e336e1af17fe
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 6a95cbad161906bd12a608880ac694d6bdf1ed27
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165090"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383056"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark-preview"></a>Azure Data Explorer connector voor Apache Spark (preview-versie)
 
@@ -21,7 +21,7 @@ ms.locfileid: "70165090"
 Azure Data Explorer connector voor Spark implementeert gegevens bron en gegevens Sink voor het verplaatsen van gegevens tussen Azure Data Explorer en Spark-clusters om beide mogelijkheden te gebruiken. Met Azure Data Explorer en Apache Spark kunt u snelle en schaal bare toepassingen bouwen die gericht zijn op gegevensgestuurde scenario's, zoals machine learning (ML), uitpak-Transform-load (ETL) en Log Analytics. Schrijven naar Azure Data Explorer kan worden uitgevoerd in de batch-en streaming-modus.
 Het lezen van Azure Data Explorer ondersteunt het weghalen van kolommen en predikaten pushdown, waarmee het volume van de overgedragen gegevens wordt beperkt door gegevens in azure Data Explorer te filteren.
 
-Azure Data Explorer Spark-connector is een [open-source project](https://github.com/Azure/azure-kusto-spark) dat kan worden uitgevoerd op elk Spark-cluster.
+Azure Data Explorer Spark-connector is een [open-source project](https://github.com/Azure/azure-kusto-spark) dat kan worden uitgevoerd op elk Spark-cluster. De Azure Data Explorer Spark-connector maakt Azure Data Explorer een geldige gegevens opslag voor standaard Spark-bron-en Sink-bewerkingen, zoals schrijven, lezen en writeStream. 
 
 > [!NOTE]
 > Hoewel sommige van de onderstaande voor beelden verwijzen naar een [Azure Databricks](https://docs.azuredatabricks.net/) Spark-cluster, nemen Azure Data Explorer Spark-connector geen rechtstreekse afhankelijkheden op Databricks of andere Spark-distributie.
@@ -30,7 +30,7 @@ Azure Data Explorer Spark-connector is een [open-source project](https://github.
 
 * [Een Azure Data Explorer-cluster en-data base maken](/azure/data-explorer/create-cluster-database-portal) 
 * Een Spark-cluster maken
-* Installeer de Azure Data Explorer-connector bibliotheek en de bibliotheken [](https://github.com/Azure/azure-kusto-spark#dependencies) die worden vermeld in afhankelijkheden, waaronder de volgende [Kusto Java SDK](/azure/kusto/api/java/kusto-java-client-library) -bibliotheken:
+* Installeer de Azure Data Explorer-connector bibliotheek en de bibliotheken die worden vermeld in [afhankelijkheden](https://github.com/Azure/azure-kusto-spark#dependencies) , waaronder de volgende [Kusto Java SDK](/azure/kusto/api/java/kusto-java-client-library) -bibliotheken:
     * [Kusto data-client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
     * [Kusto opname-client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
 * Vooraf ontwikkelde bibliotheken voor [Spark 2,4, Scala 2,11](https://github.com/Azure/azure-kusto-spark/releases)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 7ec731c6b75ff556c9e00f7041fea32f807fe5f4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: ecb840d97a45479d32079766807b4f2788cc29ec
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69892028"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382907"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Virtual Network
 
@@ -66,7 +66,7 @@ Elk IP-adres bereik dat is gedefinieerd in [RFC 1918](https://tools.ietf.org/htm
 Ja. Zie [een virtueel netwerk maken](manage-virtual-network.md#create-a-virtual-network)voor meer informatie over open bare IP-adresbereiken. Openbare IP-adressen zijn niet rechtstreeks toegankelijk via internet.
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Geldt er een limiet voor het aantal subnetten in mijn VNet?
-Ja. Zie [Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) -limieten voor meer informatie. De adres ruimten van het subnet mogen elkaar niet overlappen.
+Ja. Zie [Azure-limieten](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) voor meer informatie. De adres ruimten van het subnet mogen elkaar niet overlappen.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Zijn er beperkingen voor het gebruik van IP-adressen in deze subnetten?
 Ja. In Azure worden vijf IP-adressen gereserveerd in elk subnet. Dit zijn x. x. x. 0-x. x. x. 3 en het laatste adres van het subnet. x. x. x. 1-x. x. x. 3 is gereserveerd in elk subnet voor Azure-Services.   
@@ -116,7 +116,7 @@ Nee. Een VNet is beperkt tot één regio. Een virtueel netwerk omvat echter besc
 
 ### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>Kan ik een VNet verbinden met een ander VNet in azure?
 Ja. U kunt verbinding maken met een VNet met een ander VNet met behulp van:
-- **Peering op virtueel netwerk**: Zie [overzicht van VNet](virtual-network-peering-overview.md) -peering voor meer informatie
+- **Peering op virtueel netwerk**: Zie [overzicht van VNet-peering](virtual-network-peering-overview.md) voor meer informatie
 - **Een Azure-VPN gateway**: Zie [een vnet-naar-VNet-verbinding configureren](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie. 
 
 ## <a name="name-resolution-dns"></a>Naam omzetting (DNS)
@@ -128,7 +128,7 @@ Gebruik de tabel beslissing op de pagina [naam omzetting voor vm's en rolinstant
 Ja. U kunt IP-adressen van de DNS-server opgeven in de VNet-instellingen. De instelling wordt toegepast als de standaard DNS-server (s) voor alle virtuele machines in het VNet.
 
 ### <a name="how-many-dns-servers-can-i-specify"></a>Hoeveel DNS-servers kan ik opgeven?
-Referentie [Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)-limieten.
+Referentie [Azure-limieten](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
 
 ### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Kan ik mijn DNS-servers wijzigen nadat ik het netwerk heb gemaakt?
 Ja. U kunt de DNS-server lijst voor uw VNet op elk gewenst moment wijzigen. Als u de lijst met DNS-servers wijzigt, moet u elk van de virtuele machines in uw VNet opnieuw opstarten om de nieuwe DNS-server op te halen.
@@ -241,7 +241,7 @@ Met VNet-peering (of peering op virtueel netwerk) kunt u verbinding maken met vi
 Ja. Met wereld wijde VNet-peering kunt u VNets in verschillende regio's. Wereld wijde VNet-peering is beschikbaar in alle open bare Azure-regio's, China-Cloud regio's en overheids Cloud regio's. U kunt geen wereld wijde peer van open bare Azure-regio's naar nationale Cloud regio's.
 
 ### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>Wat zijn de beperkingen met betrekking tot globaal VNet-peering en load balancers?
-Als de twee virtuele netwerken zich in een andere regio (globale VNet-peering) bevinden, kunt u geen verbinding maken met resources die gebruikmaken van basis Load Balancer. U kunt verbinding maken met resources die gebruikmaken van Standard Load Balancer.
+Als de twee virtuele netwerken zich in verschillende regio's (globale VNet-peering) bevinden, kunt u geen verbinding maken met resources die gebruikmaken van basis Load Balancer. U kunt verbinding maken met resources die gebruikmaken van Standard Load Balancer.
 De volgende resources maken gebruik van elementaire load balancers. Dit betekent dat u niet kunt communiceren over globale VNet-peering:
 - Vm's achter Basic load balancers
 - Schaal sets voor virtuele machines met Basic load balancers 
@@ -257,16 +257,16 @@ De volgende resources maken gebruik van elementaire load balancers. Dit betekent
 - AKS
 - App Service Environment
 
-U kunt via VNet-gateways verbinding maken met deze resource via ExpressRoute of VNet-naar-VNet.
+U kunt via VNet-gateways verbinding maken met deze resources via ExpressRoute of VNet-naar-VNet.
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Kan ik VNet-peering inschakelen als mijn virtuele netwerken deel uitmaken van abonnementen binnen verschillende Azure Active Directory tenants?
 Ja. Het is mogelijk om VNet-peering (lokaal of globaal) tot stand te brengen als uw abonnementen deel uitmaken van verschillende Azure Active Directory tenants. U kunt dit doen via Power shell of CLI. De portal wordt nog niet ondersteund.
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>Mijn VNet-peering-verbinding heeft de status *gestart* , waarom kan ik geen verbinding maken?
-Als uw peering-verbinding een geïnitieerde status heeft, betekent dit dat u slechts één koppeling hebt gemaakt. Er moet een bidirectionele koppeling worden gemaakt om een geslaagde verbinding te kunnen maken. Voor bijvoorbeeld een peer VNet A naar VNet B, moet er een koppeling worden gemaakt van VNetA naar VNetB en van VNetB naar VNetA. Als u beide koppelingen maakt, wordt de status gewijzigd in *verbonden.*
+Als uw peering-verbinding een *geïnitieerde* status heeft, betekent dit dat u slechts één koppeling hebt gemaakt. Er moet een bidirectionele koppeling worden gemaakt om een geslaagde verbinding te kunnen maken. Voor bijvoorbeeld een peer VNet A naar VNet B, moet er een koppeling worden gemaakt van VNetA naar VNetB en van VNetB naar VNetA. Als u beide koppelingen maakt, wordt de status gewijzigd in *verbonden*.
 
 ### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>Mijn VNet-peering-verbinding heeft de status niet *verbonden* , waarom kan ik geen peering-verbinding maken?
-Als uw VNet-peering-verbinding de status verbroken heeft, betekent dit dat een van de gemaakte koppelingen is verwijderd. Als u een peering-verbinding wilt herstellen, moet u de koppeling verwijderen en opnieuw maken.
+Als uw VNet-peering-verbinding de status *verbroken* heeft, betekent dit dat een van de gemaakte koppelingen is verwijderd. Als u een peering-verbinding wilt herstellen, moet u de koppeling verwijderen en opnieuw maken.
 
 ### <a name="can-i-peer-my-vnet-with-a-vnet-in-a-different-subscription"></a>Kan ik mijn VNet koppelen aan een VNet in een ander abonnement?
 Ja. U kunt VNets op verschillende abonnementen en in verschillende regio's.
@@ -280,7 +280,7 @@ Er worden geen kosten in rekening gebracht voor het maken van een VNet-peering-v
 ### <a name="is-vnet-peering-traffic-encrypted"></a>Is het VNet-peering verkeer versleuteld?
 Nee. Verkeer tussen bronnen in peered VNets is privé en geïsoleerd. Het blijft volledig op de micro soft-backbone.
 
-### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Waarom is mijn peering-verbinding met een verbroken status?
+### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Waarom is mijn peering-verbinding met een *verbroken* status?
 VNet-peering-verbindingen gaan in de status *verbroken* wanneer één VNet-peering koppeling wordt verwijderd. U moet beide koppelingen verwijderen om een succes volle peering-verbinding tot stand te brengen.
 
 ### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>Als ik VNetA naar VNetB en ik VNetB aan VNetC, betekent dat VNetA en VNetC dan ook gelijkwaardig?
@@ -301,7 +301,7 @@ Het voor beeld van een virtueel netwerk Tik is beschikbaar in alle Azure-regio's
 Filter functies worden niet ondersteund met het virtuele netwerk Tik op Preview. Wanneer een tik-configuratie wordt toegevoegd aan een netwerk interface, wordt een diepe kopie van alle binnenkomend en uitgaand verkeer op de netwerk interface gestreamd naar het kraan doel.
 
 ### <a name="can-multiple-tap-configurations-be-added-to-a-monitored-network-interface"></a>Kunnen meerdere tikken configuraties worden toegevoegd aan een bewaakte netwerk interface?
-Een bewaakte netwerk interface kan slechts één tik-configuratie hebben. Neem contact op met de afzonderlijke [partner oplossingen](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions) voor de mogelijkheid om meerdere exemplaren van het tikte verkeer naar de analyse hulpprogramma's van uw keuze te streamen.
+Een bewaakte netwerk interface kan slechts één tik-configuratie hebben. Neem contact op met de individuele [partner oplossing](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions) voor de mogelijkheid om meerdere exemplaren van het tikte verkeer naar de analyse hulpprogramma's van uw keuze te streamen.
 
 ### <a name="can-the-same-virtual-network-tap-resource-aggregate-traffic-from-monitored-network-interfaces-in-more-than-one-virtual-network"></a>Kan hetzelfde virtuele netwerk het aggregatie verkeer van de resource van bewaakte netwerk interfaces in meer dan één virtueel netwerk hebben?
 Ja. U kunt hetzelfde virtuele netwerk op Resource gebruiken om gespiegeld verkeer van bewaakte netwerk interfaces in gekoppelde virtuele netwerken in hetzelfde abonnement of een ander abonnement samen te voegen. Het virtuele netwerk Tik op resource en de doel-load balancer of de doelnet-netwerk interface moeten zich in hetzelfde abonnement bevallen. Alle abonnementen moeten onder hetzelfde Azure Active Directory Tenant staan.
@@ -330,13 +330,13 @@ Bepaalde services (zoals SQL en CosmosDB) maken uitzonde ringen op de bovenstaan
 
 ### <a name="do-all-azure-services-reside-in-the-azure-virtual-network-provided-by-the-customer-how-does-vnet-service-endpoint-work-with-azure-services"></a>Bevinden alle Azure-Services zich in het virtuele Azure-netwerk van de klant? Hoe werkt het VNet-service-eind punt met Azure-Services?
 
-Nee, niet alle Azure-Services bevinden zich in het virtuele netwerk van de klant. De meeste Azure-gegevens Services, zoals Azure Storage, Azure SQL en Azure Cosmos DB, zijn multi tenant-services die toegankelijk zijn via open bare IP-adressen. [Hier](virtual-network-for-azure-services.md)vindt u meer informatie over de integratie van virtuele netwerken voor Azure-Services. 
+Nee, niet alle Azure-Services bevinden zich in het virtuele netwerk van de klant. Het meren deel van Azure Data Services, zoals Azure Storage, Azure SQL en Azure Cosmos DB, zijn multi tenant-services die toegankelijk zijn via open bare IP-adressen. [Hier](virtual-network-for-azure-services.md)vindt u meer informatie over de integratie van virtuele netwerken voor Azure-Services. 
 
 Wanneer u de functie voor de VNet-service-eind punten gebruikt (het VNet-service-eind punt op de netwerk zijde inschakelt en de juiste VNet-Acl's instelt op de Azure-service kant), is toegang tot een Azure-service beperkt van een toegestaan VNet en subnet.
 
 ### <a name="how-does-vnet-service-endpoint-provide-security"></a>Hoe biedt VNet-service-eind punten beveiliging?
 
-De functie van het VNet-service-eind punt (door het VNet-service-eind punt in te scha kelen op de netwerk zijde en de juiste VNet-Acl's in te stellen op de Azure-service zijde) beperkt de toegang tot de Azure-service tot toegestane VNet en subnetten, waardoor de beveiliging en isolatie van het netwerk niveau het verkeer van de Azure-service. Al het verkeer met behulp van VNet-service-eind punten stromen over micro soft-backbone, waardoor een andere laag van isolatie van het open bare Internet wordt geboden. Daarnaast kunnen klanten de open bare Internet toegang tot de Azure-service bronnen volledig verwijderen en alleen verkeer vanaf hun virtuele netwerk toestaan via een combi natie van IP-firewall-en VNet-Acl's, waardoor de Azure-service bronnen worden beschermd tegen onbevoegd Access.      
+De functie van het VNet-service-eind punt (door het VNet-service-eind punt in te scha kelen op de netwerk zijde en de juiste VNet-Acl's in te stellen op de Azure-service zijde) beperkt de toegang tot de Azure-service tot het toegestane VNet en subnet, waardoor er een beveiliging op netwerk niveau en isolatie van het Azure-service verkeer. Al het verkeer met behulp van VNet-service-eind punten stromen over micro soft-backbone, waardoor een andere laag van isolatie van het open bare Internet wordt geboden. Daarnaast kunnen klanten de open bare Internet toegang tot de Azure-service bronnen volledig verwijderen en alleen verkeer vanaf hun virtuele netwerk toestaan via een combi natie van IP-firewall-en VNet-Acl's, waardoor de Azure-service bronnen worden beschermd tegen onbevoegd Access.      
 
 ### <a name="what-does-the-vnet-service-endpoint-protect---vnet-resources-or-azure-service"></a>Wat is de VNet-service Endpoint beveiligen-VNet-bronnen of Azure-service?
 Met de VNet-service-eind punten kunt u Azure-service resources beveiligen. VNet-bronnen worden beveiligd door netwerk beveiligings groepen (Nsg's).
@@ -352,34 +352,34 @@ Ja, dat is mogelijk. Virtuele netwerken en Azure-service resources kunnen zich i
 ### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>Kan ik VNet-service-eind punten inschakelen en VNet-Acl's instellen als het virtuele netwerk en de Azure-service bronnen deel uitmaken van verschillende AD-tenants?
 Nee, VNet-service-eind punten en VNet-Acl's worden niet ondersteund in AD-tenants.
 
-### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-express-route-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Kan een on-premises IP-adres van het apparaat zijn dat is verbonden via Azure Virtual Network gateway (VPN) of Express route gateway toegang Azure PaaS service via VNet-service-eind punten?
+### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Kan een on-premises IP-adres van het apparaat zijn dat is verbonden via Azure Virtual Network gateway (VPN) of ExpressRoute gateway toegang Azure PaaS service via VNet-service-eind punten?
 Standaard zijn Azure-serviceresources die zijn beveiligd naar virtuele netwerken, niet bereikbaar vanaf on-premises netwerken. Als u verkeer van on-premises wilt toestaan, moet u ook open bare (doorgaans NAT) IP-adressen van uw on-premises of ExpressRoute toestaan. Deze IP-adressen kunnen worden toegevoegd via de IP-firewall configuratie voor de Azure-service resources.
 
-### <a name="can-i-use-vnet-service-endpoint-feature-to-secure-azure-service-to-multiple-subnets-with-in-a-virtual-network-or-across-multiple-virtual-networks"></a>Kan ik de functie van het VNet-service-eind punt gebruiken voor het beveiligen van de Azure-service naar meerdere subnetten met in een virtueel netwerk of via meerdere virtuele netwerken?
-Als u Azure-Services wilt beveiligen voor meerdere subnetten binnen een virtueel netwerk of meerdere virtuele netwerken, moet u service-eind punten aan de netwerk zijde afzonderlijk op elk van de subnetten inschakelen en vervolgens de Azure-service resources naar alle subnetten beveiligen door in te stellen toepasselijke VNet-Acl's op de Azure-service kant.
+### <a name="can-i-use-vnet-service-endpoint-feature-to-secure-azure-service-to-multiple-subnets-within-a-virtual-network-or-across-multiple-virtual-networks"></a>Kan ik de functie van het VNet-service-eind punt gebruiken om de Azure-service te beveiligen voor meerdere subnetten binnen een virtueel netwerk of over meerdere virtuele netwerken?
+Als u Azure-Services wilt beveiligen voor meerdere subnetten binnen een virtueel netwerk of meerdere virtuele netwerken, schakelt u service-eind punten in op het netwerk onafhankelijk van elk van de subnetten en vervolgens de Azure-service resources op alle subnets beveiligen door in te stellen de juiste VNet-Acl's aan de Azure-service kant.
  
 ### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>Hoe kan ik uitgaand verkeer van een virtueel netwerk filteren naar Azure-Services en nog steeds service-eind punten gebruiken?
 Als u het verkeer dat is bestemd voor een Azure-service vanaf het virtuele netwerk, wilt controleren of filteren, kunt u een virtueel netwerkapparaat implementeren binnen het virtuele netwerk. U kunt vervolgens service-eind punten Toep assen op het subnet waar het virtuele netwerk apparaat wordt geïmplementeerd en Azure-service resources alleen naar dit subnet worden gedistribueerd via VNet-Acl's. Dit scenario kan ook nuttig zijn als u de toegang tot Azure-Services vanuit uw virtuele netwerk wilt beperken tot specifieke Azure-resources met behulp van het filteren van virtuele netwerk apparaten. Zie [Egress with network virtual appliances](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha) (Uitgaand verkeer met virtueel-netwerkapparaten) voor meer informatie.
 
-### <a name="what-happens-when-you-access-an-azure-service-account-that-has-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Wat gebeurt er wanneer u toegang hebt tot een Azure-service account waarvoor de toegangs beheer lijst (ACL) van het virtuele netwerk van buiten het VNet is ingeschakeld?
+### <a name="what-happens-when-you-access-an-azure-service-account-that-has-a-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Wat gebeurt er wanneer u toegang hebt tot een Azure-service account met een toegangs beheer lijst (ACL) voor virtuele netwerken die buiten het VNet is ingeschakeld?
 De HTTP-fout 403 of HTTP 404 wordt geretourneerd.
 
 ### <a name="are-subnets-of-a-virtual-network-created-in-different-regions-allowed-to-access-an-azure-service-account-in-another-region"></a>Zijn er subnetten van een virtueel netwerk die in verschillende regio's zijn gemaakt, toegang tot een Azure-service account in een andere regio toegestaan? 
 Ja, voor de meeste Azure-Services hebben virtuele netwerken die in verschillende regio's zijn gemaakt toegang tot Azure-Services in een andere regio via de VNet-service-eind punten. Als een Azure Cosmos DB-account bijvoorbeeld staat vs-West of VS-Oost en virtuele netwerken zich in meerdere regio's bevinden, heeft het virtuele netwerk toegang tot Azure Cosmos DB. Opslag en SQL zijn uitzonde ringen en zijn in de regionale aard en zowel het virtuele netwerk als de Azure-service moeten zich in dezelfde regio bevinden.
   
-### <a name="can-an-azure-service-have-both-vnet-acl-and-an-ip-firewall"></a>Kan een Azure-service zowel een VNet-ACL als een IP-firewall hebben?
-Ja, VNet-ACL en een IP-firewall kunnen naast elkaar bestaan. Beide functies vormen een aanvulling op elkaar om te zorgen voor isolatie en beveiliging.
+### <a name="can-an-azure-service-have-both-a-vnet-acl-and-an-ip-firewall"></a>Kan een Azure-service een VNet-ACL en een IP-firewall hebben?
+Ja, een VNet-ACL en een IP-firewall kunnen naast elkaar bestaan. Beide functies vormen een aanvulling op elkaar om te zorgen voor isolatie en beveiliging.
  
 ### <a name="what-happens-if-you-delete-a-virtual-network-or-subnet-that-has-service-endpoint-turned-on-for-azure-service"></a>Wat gebeurt er als u een virtueel netwerk of subnet verwijdert waarvoor service-eind punt is ingeschakeld voor de Azure-service?
-Het verwijderen van VNets en subnetten zijn onafhankelijke bewerkingen en worden ondersteund, zelfs wanneer service-eind punten zijn ingeschakeld voor Azure-Services. In gevallen waarin de Azure-Services VNet-Acl's hebben ingesteld voor die VNets en subnetten, worden de VNet-Acl's-gegevens die aan die Azure-service zijn gekoppeld, uitgeschakeld wanneer een VNet of subnet waarvoor VNet-service-eind punt is ingeschakeld, wordt verwijderd.
+Het verwijderen van VNets en subnetten zijn onafhankelijke bewerkingen en worden ondersteund, zelfs wanneer service-eind punten zijn ingeschakeld voor Azure-Services. In gevallen waarin de Azure-Services VNet-Acl's hebben ingesteld voor die VNets en subnetten, wordt de VNet-ACL-informatie die is gekoppeld aan die Azure-service uitgeschakeld wanneer een VNet of subnet waarvoor VNet-service-eind punt is ingeschakeld, wordt verwijderd.
  
-### <a name="what-happens-if-azure-service-account-that-has-vnet-service-endpoint-enabled-is-deleted"></a>Wat gebeurt er als Azure-service account waarvoor VNet-service-eind punt is ingeschakeld, is verwijderd?
+### <a name="what-happens-if-an-azure-service-account-that-has-a-vnet-service-endpoint-enabled-is-deleted"></a>Wat gebeurt er als een Azure-service account waarvoor een VNet-service-eind punt is ingeschakeld, is verwijderd?
 Het verwijderen van een Azure-service account is een onafhankelijke bewerking en wordt ondersteund, zelfs wanneer het service-eind punt is ingeschakeld op de netwerk-en VNet-Acl's worden ingesteld op de service kant van Azure. 
 
 ### <a name="what-happens-to-the-source-ip-address-of-a-resource-like-a-vm-in-a-subnet-that-has-vnet-service-endpoint-enabled"></a>Wat gebeurt er met het bron-IP-adres van een bron (zoals een virtuele machine in een subnet) waarvoor het VNet-service-eind punt is ingeschakeld?
-Wanneer service-eind punten van het virtuele netwerk zijn ingeschakeld, worden de bron-IP-adressen van de resources in het subnet van het virtuele netwerk gewijzigd van het gebruik van open bare IPV4-adressen naar de privé-IP-adressen van het virtuele Azure-netwerk voor verkeer naar de Azure-service. Houd er rekening mee dat dit kan leiden tot een specifieke IP-firewall die eerder is ingesteld op open bare IPV4-adressen op de Azure-Services. 
+Wanneer service-eind punten van het virtuele netwerk zijn ingeschakeld, worden de bron-IP-adressen van de resources in het subnet van het virtuele netwerk gewijzigd van het gebruik van open bare IPV4-adressen naar de privé-IP-adressen van het virtuele Azure-netwerk voor verkeer naar de Azure-service. Houd er rekening mee dat dit kan leiden tot specifieke IP-firewalls die eerder op de Azure-Services zijn ingesteld op openbaar IPV4-adres. 
 
-### <a name="does-service-endpoint-route-always-take-precedence"></a>Heeft de route van het service-eind punt altijd voor rang?
+### <a name="does-the-service-endpoint-route-always-take-precedence"></a>Heeft de route van het service-eind punt altijd voor rang?
 Service-eind punten voegen een systeem route toe die voor rang heeft boven BGP-routes en een optimale route ring biedt voor het verkeer van service-eind punten. Service-eind punten nemen altijd direct service verkeer van uw virtuele netwerk naar de service in het backbone-netwerk Microsoft Azure. Voor meer informatie over hoe Azure een route selecteert, Zie [route ring van virtueel netwerk verkeer van Azure](virtual-networks-udr-overview.md).
  
 ### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>Hoe werkt NSG op een subnet met Service-eind punten?
@@ -398,7 +398,7 @@ Met de beleids regels voor het beheer van virtuele netwerken (VNet) kunt u virtu
 Azure Active Directory (Azure AD) biedt geen ondersteuning voor service-eind punten systeem eigen. Volledige lijst met Azure-Services die de VNet-service-eind punten ondersteunen, is [hier](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)te zien. Houd er rekening mee dat de tag ' micro soft. AzureActiveDirectory ' onder Services die service-eind punten ondersteunen wordt gebruikt voor het ondersteunen van service-eind punten voor ADLS gen 1. Voor ADLS gen 1 maakt de integratie van virtuele netwerken voor Azure Data Lake Storage Gen1 gebruik van de eindpunt beveiliging van het virtuele netwerk tussen uw virtuele netwerk en Azure Active Directory (Azure AD) voor het genereren van extra beveiligings claims in het toegangs token. Deze claims worden vervolgens gebruikt om het virtuele netwerk te verifiëren bij het Data Lake Storage Gen1-account en toegang toe te staan. Meer informatie over [Azure Data Lake Store VNet-integratie van de gen 1] (.. /Data-Lake-store/data-Lake-Store-Network-Security.MD? TOC =% 2fazure% 2fvirtual-Network% 2ftoc. json
 
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Gelden er limieten voor het aantal VNet-service-eind punten dat ik kan instellen vanuit mijn VNet?
-Er is geen limiet voor het totale aantal VNet-service-eind punten in een virtueel netwerk. Voor een Azure-serviceresource (zoals een Azure Storage-account) kunnen services beperkingen hebben met betrekking tot het aantal subnetten dat wordt gebruikt voor het koppelen van de resource. In de volgende tabel ziet u enkele voor beelden van limieten: 
+Er is geen limiet voor het totale aantal VNet-service-eind punten in een virtueel netwerk. Voor een Azure-service resource (zoals een Azure Storage account) kunnen services beperkingen afdwingen voor het aantal subnetten dat wordt gebruikt voor het beveiligen van de bron. In de volgende tabel ziet u enkele voor beelden van limieten: 
 
 |||
 |---|---|

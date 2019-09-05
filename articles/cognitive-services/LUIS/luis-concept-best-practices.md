@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 7a2802bd4daa1a009c610688120c9a56583b054f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 91ff99f674439580d369aad1490ded85d39d377c
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639271"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382883"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Aanbevolen procedures voor het bouwen van een language understanding-app met Cognitive Services
 Gebruik het ontwerp proces voor apps om uw LUIS-app te bouwen: 
@@ -40,7 +40,7 @@ De volgende lijst bevat aanbevolen procedures voor LUIS apps:
 |[Een plek sweet tussen te algemeen en te specifiek voor elke doel vinden](#do-find-sweet-spot-for-intents)|[LUIS gebruiken als platform voor training](#dont-use-luis-as-a-training-platform)|
 |[Bouw uw app iteratief](#do-build-the-app-iteratively)|[Toevoegen van veel voorbeeld uitingen van dezelfde indeling, andere indelingen worden genegeerd](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
 |[Woordgroep lijsten en patronen in latere iteraties toevoegen](#do-add-phrase-lists-and-patterns-in-later-iterations)|[Combineer de definitie van de intenties en entiteiten](#dont-mix-the-definition-of-intents-and-entities)|
-|[U hoeft uw uitingen te verdelen over alle](#balance-your-utterances-across-all-intents) intenties, met uitzonde ring van de geen intentie.<br>[Voorbeeld utterances toevoegen op None intentie](#do-add-example-utterances-to-none-intent)|[Woordgroep lijsten maken met alle mogelijke waarden](#dont-create-phrase-lists-with-all-the-possible-values)|
+|[U hoeft uw uitingen te verdelen over alle intenties](#balance-your-utterances-across-all-intents) , met uitzonde ring van de geen intentie.<br>[Voorbeeld utterances toevoegen op None intentie](#do-add-example-utterances-to-none-intent)|[Woordgroep lijsten maken met alle mogelijke waarden](#dont-create-phrase-lists-with-all-the-possible-values)|
 |[Maak gebruik van de functie voor suggesties voor actief leren](#do-leverage-the-suggest-feature-for-active-learning)|[Te veel patronen toevoegen](#dont-add-many-patterns)|
 |[De prestaties van uw app controleren](#do-monitor-the-performance-of-your-app)|[Trainen en publiceren met elk één voorbeeld utterance toegevoegd](#dont-train-and-publish-with-every-single-example-utterance)|
 |[Versies voor elke app-iteratie gebruiken](#do-use-versions-for-each-app-iteration)||
@@ -84,7 +84,7 @@ Wanneer u begrijpt hoe uw app zich gedraagt zonder deze, voegt u elk van deze fu
 
 Er zijn geen kwaad werkers toe te voegen aan het begin van uw model ontwerp, maar het is eenvoudiger om te zien hoe elke functie de resultaten wijzigt nadat het model is getest met uitingen. 
 
-Een best practice is om te testen via het [eind punt](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) , zodat u het toegevoegde voor deel van [actieve lessen](luis-concept-review-endpoint-utterances.md)krijgt. Het [deel venster interactieve test](luis-interactive-test.md) is ook een geldige test methodologie. 
+Een best practice is om te testen via het [eind punt](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) , zodat u het toegevoegde voor deel van [actieve lessen](luis-concept-review-endpoint-utterances.md)krijgt. Het [deel venster interactieve test](luis-interactive-test.md) is ook een geldige test methodologie. 
  
 
 ### <a name="phrase-lists"></a>Woordgroepenlijsten
@@ -131,7 +131,7 @@ Voor meer informatie:
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>De prestaties van uw app controleren
 
-Bewaak de nauw keurigheid van de voor spelling met behulp van een [batch](luis-concept-batch-test.md) -testset. 
+Bewaak de nauw keurigheid van de voor spelling met behulp van een [batch-testset](luis-concept-batch-test.md) . 
 
 ## <a name="dont-add-many-example-utterances-to-intents"></a>Veel voorbeeld uitingen aan intents niet toevoegen
 

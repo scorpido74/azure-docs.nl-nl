@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 04/17/2019
+ms.date: 09/04/2019
 ms.author: pafarley
-ms.openlocfilehash: c125941414c73b14138f2b2fc15e470d9ed2d905
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8ecf5fb7d54e7c9411c1153610d3a637477285bf
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137543"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382992"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Zelfstudie: Computer Vision gebruiken voor het genereren van afbeeldingsmetagegevens te genereren in Azure Storage
 
@@ -42,7 +42,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 U moet een Computer Vision-resource maken voor uw Azure-account. Deze resource beheert uw toegang tot de Azure Computer Vision-service. 
 
-1. Volg de instructies in [een Azure Cognitive Services-resource maken](../../cognitive-services-apis-create-account.md#single-service-resource) om een computer vision resource te maken.
+1. Volg de instructies in [een Azure Cognitive Services-resource maken](../../cognitive-services-apis-create-account.md) om een computer vision resource te maken.
 
 1. Ga vervolgens naar het menu voor de resource groep en klik op het Computer Vision-API abonnement dat u zojuist hebt gemaakt. Kopieer de URL onder **Eindpunt** naar een plaats waar u de URL eenvoudig en snel weer kunt ophalen. Klik vervolgens op **Toegangssleutels weergeven**.
 

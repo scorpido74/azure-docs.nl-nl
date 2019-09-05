@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 388583b42d36a21ceb53a59e7c37392bf0eb8333
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: bfbe3d6aac6e97f3568c3c0ce3643bb215726a0b
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534298"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376182"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>Quickstart: Een virtuele-machineschaalset in Windows maken met een Azure-sjabloon
 
@@ -35,7 +35,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 ## <a name="define-a-scale-set-in-a-template"></a>Een schaalset definiëren in een sjabloon
 Met Azure Resource Manager-sjablonen kunt u groepen gerelateerde resources implementeren. Sjablonen zijn geschreven in JSON (JavaScript Object Notation). Deze definiëren de hele omgeving van de Azure-infrastructuur voor uw toepassing. In één sjabloon kunt u de virtuele-machineschaalset maken, toepassingen installeren en regels voor automatisch schalen configureren. Met behulp van variabelen en parameters kan deze sjabloon opnieuw worden gebruikt voor het bijwerken van bestaande schaalsets, of om extra schaalsets te maken. U kunt sjablonen implementeren via de Azure-portal, Azure CLI of Azure PowerShell of via CI/CD-pijplijnen (Continuous Integration/Continuous Delivery).
 
-Zie [Overzicht van Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) voor meer informatie over sjablonen. Zie de sjabloonverwijzing [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) voor de JSON-syntaxis en eigenschappen.
+Zie [Overzicht van Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) voor meer informatie over sjablonen. Zie de sjabloonverwijzing [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) voor de JSON-syntaxis en eigenschappen.
 
 Met een sjabloon wordt de configuratie voor elk resourcetype gedefinieerd. Een resourcetype voor een virtuele-machineschaalset is vergelijkbaar met een afzonderlijke VM. De basisonderdelen van het resourcetype voor de virtuele-machineschaalset zijn:
 

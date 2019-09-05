@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 99750971e11171c0b315cac38089c216d42c7ba6
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 7e77a5a6891335139737ba3ef377c55b6694f043
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663671"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383394"
 ---
 # <a name="what-is-personalizer"></a>Wat is Personalizer?
 
@@ -29,7 +29,7 @@ Azure Personalizer is een op de cloud gebaseerde API-service waarmee u de beste 
 
 ## <a name="how-does-personalizer-work"></a>Hoe werkt Personaler?
 
-Personaler gebruikt machine learning modellen om te ontdekken welke actie het hoogst in een context kan worden gerangschikt. Uw client toepassing bevat een lijst met mogelijke acties, met informatie over de activiteiten; en informatie over de context, die informatie kan bevatten over de gebruiker, het apparaat, enzovoort. Personaler bepaalt welke actie moet worden ondernomen. Zodra uw client toepassing de gekozen actie gebruikt, geeft deze aan de persoonlijke voor keuren de vorm van een belonings Score. Nadat de feedback is ontvangen, wordt door Personaler automatisch een eigen model bijgewerkt dat wordt gebruikt voor toekomstige classificaties.
+Personaler gebruikt machine learning modellen om te ontdekken welke actie het hoogst in een context kan worden gerangschikt. Uw client toepassing bevat een lijst met mogelijke acties, met informatie over de activiteiten; en informatie over de context, die informatie kan bevatten over de gebruiker, het apparaat, enzovoort. Personaler bepaalt welke actie moet worden ondernomen. Zodra uw client toepassing de gekozen actie gebruikt, geeft deze aan de persoonlijke voor keuren de vorm van een belonings Score. Nadat de feedback is ontvangen, wordt door Personaler automatisch een eigen model bijgewerkt dat wordt gebruikt voor toekomstige classificaties. In de loop van de tijd zal Personaler een model trainen waarmee de beste actie kan worden voorgesteld in elke context op basis van hun functies.
 
 ## <a name="how-do-i-use-the-personalizer"></a>De Personaler Hoe kan ik gebruiken?
 
@@ -37,7 +37,7 @@ Personaler gebruikt machine learning modellen om te ontdekken welke actie het ho
 
 1. Kies een ervaring in uw app om deze aan te passen.
 1. Maak en configureer een exemplaar van de personalisatie service in de Azure Portal. Elk exemplaar is een aangepaste lus.
-1. Gebruik SDK om uw persoonlijke voor keur aan te __ roepen met informatie over uw gebruikers en de inhoud (_acties_). U hoeft geen schone, gelabelde gegevens op te geven voordat u personaliseren gebruikt. 
+1. Gebruik SDK om uw persoonlijke voor keur aan te roepen met informatie over uw gebruikers en de inhoud (_acties_ _)._ U hoeft geen schone, gelabelde gegevens op te geven voordat u personaliseren gebruikt. 
 1. Geef in de client toepassing de gebruiker de actie weer die door Personaler is geselecteerd.
 1. Gebruik SDK om uw persoonlijke voor keuren aan te bieden om aan te geven of de gebruiker de gekozen actie voor persoonlijke instellingen heeft geselecteerd. Dit is een _belonings Score_, doorgaans tussen-1 en 1.
 1. Bekijk de analyse in de Azure Portal om te evalueren hoe het systeem werkt en hoe uw gegevens personalisatie helpen.
@@ -53,6 +53,8 @@ Uw client toepassing kan bijvoorbeeld persoonlijker toevoegen aan:
 * Kies een reactie op een chat-bot om de gebruikers intentie te verduidelijken of om een actie te suggereren.
 * Volg prioriteiten voor suggesties van wat een gebruiker moet doen als de volgende stap in een bedrijfs proces.
 
+Personaler is geen service voor het persistent maken en beheren van gebruikers profiel gegevens, of voor het vastleggen van de voor keuren of geschiedenis van afzonderlijke gebruikers. Personaler leert van de functies van elke interactie in de actie een context voor één model dat maximale beloningen kan verkrijgen wanneer vergelijk bare functies optreden. 
+
 ## <a name="personalization-for-developers"></a>Personalisatie voor ontwikkel aars
 
 Personaler service heeft twee Api's:
@@ -65,4 +67,8 @@ Personaler service heeft twee Api's:
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Snelstart: Een feedback-lus maken inC#](csharp-quickstart-commandline-feedback-loop.md)
+* [Snelstart: Een feedback-lus maken in node. js](quickstart-command-line-feedback-loop-nodejs-sdk.md)
+* [Snelstart: Een feedback-lus maken in python](python-quickstart-commandline-feedback-loop.md)
+* [Meer informatie over de functies en acties voor de rang aanvraag](concepts-features.md)
+* [Meer informatie over het bepalen van de score voor de belonings aanvraag](concept-rewards.md)
 * [De interactieve demo gebruiken](https://personalizationdemo.azurewebsites.net/)

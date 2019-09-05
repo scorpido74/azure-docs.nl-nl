@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: f46757b97fb2dd38be36459e5aafb70f5b5a3bf6
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 3b1b31da68d821ff27fa30e75ec1522b9d4875c8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932700"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307443"
 ---
 # <a name="language-and-region-support-for-luis"></a>Ondersteuning voor LUIS taal en regio
 
@@ -38,6 +38,7 @@ LUIS begrijpt uitingen in de volgende talen:
 | Frans (Frankrijk) |`fr-FR` |-| ✔ |✔ |✔|
 | Frans (Canada) |`fr-CA` |-|   -   |-|✔|
 | Duits |`de-DE` |-| ✔ |✔ |✔|
+| Hindi | `hi-IN`|-|-|-|-|
 | Italiaans |`it-IT` |-| ✔ |✔|✔|
 | *[Japans](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|Alleen sleuteluitdrukkingen|
 | Koreaans |`ko-KR` |-|   -   |-|Alleen sleuteluitdrukkingen|
@@ -88,6 +89,7 @@ Als u machine learning, LUIS een utterance opgesplitst in [tokens](luis-glossary
 |Frans (fr-FR)|✔||||
 |Frans (fr-CA)|✔||||
 |Duits|||✔|✔|
+| Hindi |✔|-|-|-|-|
 |Italiaans|✔||||
 |Japans||||✔|
 |Koreaans||✔||✔|

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2019
 ms.author: magoedte
 ms.openlocfilehash: f395ba5d63463aa177b453d187d025a4461eff28
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 09/05/2019
 ms.locfileid: "69905579"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Overzicht van Azure Monitor voor VM's inschakelen (preview)
@@ -101,7 +101,7 @@ De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen di
 <sup>1</sup> prestaties van de functie van Azure Monitor voor virtuele machines is alleen beschikbaar via Azure Monitor. Het is niet rechtstreeks beschikbaar vanuit het linkerdeel venster van de Azure-VM.
 
 >[!NOTE]
->De functie status van Azure Monitor voor VM's biedt geen ondersteuning [](../../virtual-machines/windows/nested-virtualization.md) voor geneste virtualisatie in een Azure-VM.
+>De functie status van Azure Monitor voor VM's biedt geen ondersteuning voor [geneste virtualisatie](../../virtual-machines/windows/nested-virtualization.md) in een Azure-VM.
 >
 
 >[!NOTE]

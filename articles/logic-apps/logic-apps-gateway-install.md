@@ -9,16 +9,16 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 61a9b319b9ea44f766bc6f014b76bc48d15efc57
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 36fb40dcee010ab68dc87eb6f81c0b2fb8977914
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598451"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376385"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevens gateway voor Azure Logic Apps installeren
 
-Voordat u verbinding kunt maken met on-premises gegevens bronnen vanuit Azure Logic Apps, downloadt en installeert u de on-premises gegevens gateway op een lokale computer. De gateway werkt als een brug die snelle gegevens overdracht en versleuteling biedt tussen gegevens bronnen op locatie (niet in de Cloud) en uw Logic apps. In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downloaden, installeren en instellen. 
+Voordat u verbinding kunt maken met on-premises gegevens bronnen vanuit Azure Logic Apps, downloadt en installeert u de on-premises gegevens gateway op een lokale computer. De gateway werkt als een brug die snelle gegevens overdracht en versleuteling biedt tussen gegevens bronnen op locatie (niet in de Cloud) en uw Logic apps. In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downloaden, installeren en instellen.
 
 U kunt dezelfde Gateway-installatie gebruiken met andere services, zoals Power BI, Microsoft Flow, PowerApps en Azure Analysis Services. Meer informatie over [de werking van de gegevens gateway](#gateway-cloud-service).
 
@@ -26,19 +26,18 @@ U kunt dezelfde Gateway-installatie gebruiken met andere services, zoals Power B
 
 De gateway ondersteunt [on-premises connectors](../connectors/apis-list.md#on-premises-connectors) in azure Logic apps voor deze gegevens bronnen:
 
-*   BizTalk Server 2016
-*   Bestandssysteem
-*   IBM DB2  
-*   IBM Informix
-*   IBM MQ
-*   MySQL
-*   Oracle Database
-*   PostgreSQL
-*   SAP Application Server 
-*   SAP Message Server
-*   SharePoint Server
-*   SQL Server
-*   Teradata
+* BizTalk Server 2016
+* Bestandssysteem
+* IBM DB2  
+* IBM Informix
+* IBM MQ
+* MySQL
+* Oracle Database
+* PostgreSQL
+* SAP
+* SharePoint Server
+* SQL Server
+* Teradata
 
 Zie de volgende artikelen voor meer informatie over het gebruik van de gateway met andere services:
 
@@ -51,11 +50,9 @@ Zie de volgende artikelen voor meer informatie over het gebruik van de gateway m
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een [werk-of school account](../active-directory/fundamentals/sign-up-organization.md) met een [Azure-abonnement](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access) 
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-  Tijdens de installatie van de gateway meldt u zich aan bij dit account zodat u de gateway-installatie kunt koppelen aan uw Azure-abonnement. 
-  U kunt ook hetzelfde account gebruiken wanneer u een Azure-resource maakt voor uw gateway-installatie in de Azure Portal. 
-  Als u nog geen Azure-abonnement hebt, <a href="https://azure.microsoft.com/free/" target="_blank">meldt u zich aan voor een gratis Azure-account</a>.
+  Tijdens de installatie van de gateway meldt u zich aan bij dit account zodat u de gateway-installatie kunt koppelen aan uw Azure-abonnement. U kunt ook hetzelfde account gebruiken wanneer u een Azure-resource maakt voor uw gateway-installatie in de Azure Portal.
 
 * Hier vindt u de vereisten voor uw lokale computer:
 
@@ -70,6 +67,9 @@ Zie de volgende artikelen voor meer informatie over het gebruik van de gateway m
   * 8 GB geheugen
   * 64-bits versie van Windows Server 2012 R2 (of hoger)
 
+  > [!NOTE]
+  > De gateway biedt geen ondersteuning voor Windows Server 2016 core.
+
 * **Belang rijke overwegingen**
 
   * U kunt de on-premises gegevens gateway alleen installeren op een lokale computer, niet op een domein controller. U hoeft de gateway echter niet te installeren op dezelfde computer als uw gegevens bron. Daarnaast hebt u slechts één gateway nodig voor al uw gegevens bronnen. u hoeft de gateway dus niet te installeren voor elke gegevens bron.
@@ -77,13 +77,9 @@ Zie de volgende artikelen voor meer informatie over het gebruik van de gateway m
     > [!TIP]
     > Als u de latentie wilt minimaliseren, kunt u de gateway zo dicht mogelijk bij de gegevens bron of op dezelfde computer installeren, ervan uitgaande dat u over de juiste machtigingen beschikt.
 
-  * Installeer de gateway op een computer die is verbonden met internet, altijd ingeschakeld en *niet* naar de slaap stand. Anders kan de gateway niet worden uitgevoerd. 
-  De prestaties kunnen ook hoger zijn dan een draadloos netwerk.
+  * Installeer de gateway op een computer die is verbonden met internet, altijd ingeschakeld en *niet* naar de slaap stand. Anders kan de gateway niet worden uitgevoerd. De prestaties kunnen ook hoger zijn dan een draadloos netwerk.
 
-  * Tijdens de installatie kunt u zich alleen aanmelden met een [werk-of school account](../active-directory/sign-up-organization.md) dat wordt beheerd door Azure Active Directory (Azure AD), bijvoorbeeld @contoso.onmicrosoft.comen geen Azure B2B-account (gast) of persoonlijke @hotmail.com Microsoft-account, zoals of @outlook.com. 
-  Zorg ervoor dat u hetzelfde aanmeldings account gebruikt wanneer u uw gateway-installatie registreert in de Azure Portal door een gateway resource te maken. 
-  U kunt deze gateway bron vervolgens selecteren wanneer u de verbinding maakt vanuit uw logische app naar uw on-premises gegevens bron. 
-  [Waarom moet ik een werk-of school account voor Azure AD gebruiken?](#why-azure-work-school-account)
+  * Tijdens de installatie kunt u zich alleen aanmelden met een [werk-of school account](../active-directory/sign-up-organization.md) dat wordt beheerd door Azure Active Directory (Azure AD), bijvoorbeeld @contoso.onmicrosoft.comen geen Azure B2B-account (gast) of persoonlijke @hotmail.com Microsoft-account, zoals of @outlook.com. Zorg ervoor dat u hetzelfde aanmeldings account gebruikt wanneer u uw gateway-installatie registreert in de Azure Portal door een gateway resource te maken. U kunt deze gateway bron vervolgens selecteren wanneer u de verbinding maakt vanuit uw logische app naar uw on-premises gegevens bron. [Waarom moet ik een werk-of school account voor Azure AD gebruiken?](#why-azure-work-school-account)
 
   > [!TIP]
   > Als u zich hebt geregistreerd voor een Office 365-aanbieding en uw werkelijke werk-e-mail niet hebt geleverd, hebt u mogelijk een aanmeldings adres dat lijkt op dit voor beeld:`username@domain.onmicrosoft.com` 
@@ -92,8 +88,7 @@ Zie de volgende artikelen voor meer informatie over het gebruik van de gateway m
   > Voeg een gebruiker met een wacht woord toe aan de map en geef die gebruiker vervolgens toegang tot uw abonnement. 
   > U kunt zich vervolgens aanmelden tijdens de installatie van de gateway met deze gebruikers naam en dit wacht woord.
 
-  * De regio die u voor de gateway-installatie selecteert, bepaalt de locatie waar u later uw gateway in azure registreert door een Azure-resource te maken. 
-  Wanneer u deze gateway bron in azure maakt, moet u *dezelfde* locatie selecteren als voor de gateway-installatie. De standaard regio is dezelfde locatie als uw Azure AD-Tenant, waarmee uw Azure-account wordt beheerd, maar u kunt de locatie wijzigen tijdens de installatie van de gateway.
+  * De regio die u voor de gateway-installatie selecteert, bepaalt de locatie waar u later uw gateway in azure registreert door een Azure-resource te maken. Wanneer u deze gateway bron in azure maakt, moet u *dezelfde* locatie selecteren als voor de gateway-installatie. De standaard regio is dezelfde locatie als uw Azure AD-Tenant, waarmee uw Azure-account wordt beheerd, maar u kunt de locatie wijzigen tijdens de installatie van de gateway.
 
   * Als u al een gateway hebt die u hebt ingesteld met een installatie programma dat ouder is dan versie 14.16.6317.4, kunt u de locatie van de gateway niet wijzigen door het nieuwste installatie programma uit te voeren. U kunt echter het meest recente installatie programma gebruiken om een nieuwe gateway in te stellen met de gewenste locatie.
   
@@ -105,12 +100,11 @@ De on-premises gegevens gateway biedt ondersteuning voor hoge Beschik baarheid w
 
 Als u de on-premises gegevens gateway wilt gebruiken, raadpleegt u deze vereisten en overwegingen:
 
-* U moet al ten minste één gateway installatie hebben binnen hetzelfde Azure-abonnement als de primaire gateway en de herstel sleutel voor die installatie. 
+* U moet al ten minste één gateway installatie hebben binnen hetzelfde Azure-abonnement als de primaire gateway en de herstel sleutel voor die installatie.
 
 * Op uw primaire gateway moet de gateway-update van november 2017 of hoger worden uitgevoerd.
 
-Wanneer u de volgende gateway hebt aan deze vereisten voldoet, selecteert u **toevoegen aan een bestaand gateway cluster**, selecteert u de primaire gateway voor uw cluster en geeft u de herstel sleutel voor de primaire gateway op.
-Zie [clusters met hoge Beschik baarheid voor on-premises gegevens gateway](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters)voor meer informatie.
+Wanneer u de volgende gateway hebt aan deze vereisten voldoet, selecteert u **toevoegen aan een bestaand gateway cluster**, selecteert u de primaire gateway voor uw cluster en geeft u de herstel sleutel voor de primaire gateway op. Zie [clusters met hoge Beschik baarheid voor on-premises gegevens gateway](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters)voor meer informatie.
 
 <a name="install-gateway"></a>
 
@@ -118,63 +112,61 @@ Zie [clusters met hoge Beschik baarheid voor on-premises gegevens gateway](https
 
 1. [Het installatie programma voor de gateway downloaden, opslaan en uitvoeren op een lokale computer](https://aka.ms/on-premises-data-gateway-installer).
 
-2. Accepteer het standaardpad voor de installatie of geef de locatie op van de computer waarop u de gateway wilt installeren.
+1. Accepteer het standaardpad voor de installatie of geef de locatie op van de computer waarop u de gateway wilt installeren.
 
-3. Bekijk en accepteer de gebruiksrecht overeenkomst en de privacyverklaring en klik vervolgens op **installeren**.
+1. Bekijk en accepteer de gebruiksrecht overeenkomst en de privacyverklaring en klik vervolgens op **installeren**.
 
    ![Gebruiks voorwaarden en privacyverklaring accepteren](./media/logic-apps-gateway-install/accept-terms.png)
 
-4. Nadat de gateway is geïnstalleerd, geeft u het e-mail adres voor uw werk-of school account op en kiest u **Aanmelden**.
+1. Nadat de gateway is geïnstalleerd, geeft u het e-mail adres voor uw werk-of school account op en kiest u **Aanmelden**.
 
    ![Aanmelden met een werk-of school account](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
-5. Kies **een nieuwe gateway registreren op deze computer** > **volgende**, waarmee de gateway-installatie wordt geregistreerd bij de [Gateway-Cloud service](#gateway-cloud-service). 
+1. Kies **een nieuwe gateway registreren op deze computer** > **volgende**, waarmee de gateway-installatie wordt geregistreerd bij de [Gateway-Cloud service](#gateway-cloud-service).
 
    ![Gateway registreren](./media/logic-apps-gateway-install/register-new-gateway.png)
 
-6. Geef deze informatie op voor de gateway-installatie:
+1. Geef deze informatie op voor de gateway-installatie:
 
-   * De naam die u wilt voor de installatie 
+   * De naam die u wilt voor de installatie
 
    * De herstel sleutel die u wilt maken, die ten minste acht tekens moet bevatten
 
      > [!IMPORTANT]
      > Bewaar uw herstel sleutel op een veilige plaats. U hebt deze sleutel nodig bij het wijzigen van de locatie van de gateway of bij het migreren, herstellen of overnemen van een bestaande gateway.
 
-   * Bevestiging van uw herstel sleutel 
+   * Bevestiging van uw herstel sleutel
 
      ![Gateway instellen](./media/logic-apps-gateway-install/set-up-gateway.png)
 
-7. Controleer de regio die is geselecteerd voor de gateway-Cloud service en Azure Service Bus die wordt gebruikt door de installatie van de gateway. 
+1. Controleer de regio die is geselecteerd voor de gateway-Cloud service en Azure Service Bus die wordt gebruikt door de installatie van de gateway.
 
    ![Controle regio](./media/logic-apps-gateway-install/check-region.png)
 
    > [!IMPORTANT]
    > Als u deze regio wilt wijzigen nadat u de installatie van de gateway hebt voltooid, hebt u de herstel sleutel voor die Gateway-installatie nodig. U moet ook de gateway verwijderen en opnieuw installeren. Zie voor meer informatie [locatie wijzigen, migreren, herstellen of overnemen van bestaande gateways](#update-gateway-installation).
 
-   *Waarom wijzigt u de regio voor de installatie van de gateway?* 
+   *Waarom wijzigt u de regio voor de installatie van de gateway?*
 
-   Als u bijvoorbeeld de latentie wilt beperken, kunt u de regio van de gateway wijzigen in dezelfde regio als uw logische app. 
-   U kunt ook de regio selecteren die het dichtst bij uw on-premises gegevens bron ligt. 
-   Uw *Gateway bron in azure* en uw logische app kunnen verschillende locaties hebben.
+   Als u bijvoorbeeld de latentie wilt beperken, kunt u de regio van de gateway wijzigen in dezelfde regio als uw logische app. U kunt ook de regio selecteren die het dichtst bij uw on-premises gegevens bron ligt.    Uw *Gateway bron in azure* en uw logische app kunnen verschillende locaties hebben.
 
-8. Als u de standaard regio wilt accepteren, kiest **u configureren**. Als u de standaard regio wilt wijzigen, voert u de volgende stappen uit:
+1. Als u de standaard regio wilt accepteren, kiest **u configureren**. Als u de standaard regio wilt wijzigen, voert u de volgende stappen uit:
 
-   1. Selecteer **regio wijzigen**naast de huidige regio. 
+   1. Selecteer **regio wijzigen**naast de huidige regio.
 
       ![Regio wijzigen](./media/logic-apps-gateway-install/change-region.png)
 
-   2. Open de lijst **regio selecteren** op de volgende pagina, selecteer de gewenste regio en kies **gereed**.
+   1. Open de lijst **regio selecteren** op de volgende pagina, selecteer de gewenste regio en kies **gereed**.
 
       ![Selecteer een andere regio](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
-9. Wanneer de pagina bevestiging wordt weer gegeven, kiest u **sluiten**. 
+1. Wanneer de pagina bevestiging wordt weer gegeven, kiest u **sluiten**.
 
    Het installatie programma bevestigt dat uw gateway nu online is en gereed is voor gebruik.
 
    ![Voltooide gateway](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
-10. Registreer uw gateway nu in azure door [een Azure-resource te maken voor uw gateway-installatie](../logic-apps/logic-apps-gateway-connection.md). 
+1. Registreer uw gateway nu in azure door [een Azure-resource te maken voor uw gateway-installatie](../logic-apps/logic-apps-gateway-connection.md).
 
 <a name="update-gateway-installation"></a>
 
@@ -184,27 +176,27 @@ Als u de locatie van de gateway moet wijzigen, de installatie van de gateway naa
 
 1. Ga in het **configuratie scherm**van uw computer naar **Program ma's en onderdelen**. Selecteer in de lijst Program ma's de optie **on-premises gegevens gateway**en kies vervolgens **verwijderen**.
 
-2. [Installeer de on-premises gegevens Gateway opnieuw](https://aka.ms/on-premises-data-gateway-installer).
+1. [Installeer de on-premises gegevens Gateway opnieuw](https://aka.ms/on-premises-data-gateway-installer).
 
-3. Nadat het installatie programma is geopend, meldt u zich aan met hetzelfde werk-of school account dat eerder werd gebruikt voor het installeren van de gateway.
+1. Nadat het installatie programma is geopend, meldt u zich aan met hetzelfde werk-of school account dat eerder werd gebruikt voor het installeren van de gateway.
 
-4. Selecteer **een bestaande gateway migreren, herstellen of overnemen**en klik vervolgens op **volgende**.
+1. Selecteer **een bestaande gateway migreren, herstellen of overnemen**en klik vervolgens op **volgende**.
 
    ![Selecteer een bestaande gateway migreren, herstellen of overnemen](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 
-5. Selecteer onder **beschik bare gateways** of beschik **bare gateway clusters**de gateway-installatie die u wilt wijzigen. Voer de herstel sleutel in voor de installatie van de gateway. 
+1. Selecteer onder **beschik bare gateways** of **beschik bare gateway clusters**de gateway-installatie die u wilt wijzigen. Voer de herstel sleutel in voor de installatie van de gateway.
 
    ![Primaire gateway selecteren](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
-6. Als u de regio wilt wijzigen, selecteert u **regio wijzigen** en de nieuwe regio.
+1. Als u de regio wilt wijzigen, selecteert u **regio wijzigen** en de nieuwe regio.
 
-7. Wanneer u klaar bent, kiest **u configureren**.
+1. Wanneer u klaar bent, kiest **u configureren**.
 
 ## <a name="configure-proxy-or-firewall"></a>Proxy of firewall configureren
 
-De on-premises gegevens gateway maakt een uitgaande verbinding met [Azure service bus](https://azure.microsoft.com/services/service-bus/). Als uw werk omgeving vereist dat verkeer via een proxy wordt uitgevoerd voor toegang tot internet, kan deze beperking ertoe leiden dat de gegevens gateway geen verbinding kan maken met de Cloud service van de gateway. Als u wilt bepalen of uw netwerk gebruikmaakt van een proxy, raadpleegt u dit artikel op superuser.com: 
+De on-premises gegevens gateway maakt een uitgaande verbinding met [Azure service bus](https://azure.microsoft.com/services/service-bus/). Als uw werk omgeving vereist dat verkeer via een proxy wordt uitgevoerd voor toegang tot internet, kan deze beperking ertoe leiden dat de gegevens gateway geen verbinding kan maken met de Cloud service van de gateway. Als u wilt bepalen of uw netwerk gebruikmaakt van een proxy, raadpleegt u dit artikel op superuser.com:
 
-[Hoe kan ik weet ik welke proxy server Ik gebruik? (SuperUser.com)](https://superuser.com/questions/346372/how-do-i-know-what-proxy-server-im-using) 
+[Hoe kan ik weet ik welke proxy server Ik gebruik? (SuperUser.com)](https://superuser.com/questions/346372/how-do-i-know-what-proxy-server-im-using)
 
 Zie [proxy-instellingen configureren](https://docs.microsoft.com/power-bi/service-gateway-proxy)om proxy gegevens voor uw gateway op te geven. Als u wilt controleren of uw proxy of firewall verbindingen kan blok keren, controleert u of de computer verbinding kan maken met internet en de [Azure service bus](https://azure.microsoft.com/services/service-bus/). Voer de volgende opdracht uit vanaf een Power shell-prompt:
 
@@ -238,33 +230,32 @@ De gateway maakt een uitgaande verbinding met [Azure service bus](https://azure.
 
 De gateway maakt gebruik van de volgende volledig gekwalificeerde domein namen:
 
-| Domeinnamen | Uitgaande poorten | Description | 
-| ------------ | -------------- | ----------- | 
-| *.analysis.windows.net | 443 | HTTPS | 
-| *.core.windows.net | 443 | HTTPS | 
-| *.frontend.clouddatahub.net | 443 | HTTPS | 
-| *.login.windows.net | 443 | HTTPS | 
-| *.microsoftonline-p.com | 443 | Wordt gebruikt voor verificatie, afhankelijk van de configuratie. | 
-| *.msftncsi.com | 443 | Wordt gebruikt om de Internet verbinding te testen wanneer de gateway onbereikbaar is voor de Power BI-service. | 
-| *.servicebus.windows.net | 443, 9350-9354 | Listeners op Service Bus Relay via TCP (vereist 443 voor de aanschaf van Access Control-token) | 
-| *.servicebus.windows.net | 5671-5672 | Advanced Message Queuing Protocol (AMQP) | 
-| login.microsoftonline.com | 443 | HTTPS | 
+| Domeinnamen | Uitgaande poorten | Description |
+| ------------ | -------------- | ----------- |
+| *.analysis.windows.net | 443 | HTTPS |
+| *.core.windows.net | 443 | HTTPS |
+| *.frontend.clouddatahub.net | 443 | HTTPS |
+| *.login.windows.net | 443 | HTTPS |
+| *.microsoftonline-p.com | 443 | Wordt gebruikt voor verificatie, afhankelijk van de configuratie. |
+| *.msftncsi.com | 443 | Wordt gebruikt om de Internet verbinding te testen wanneer de gateway onbereikbaar is voor de Power BI-service. |
+| *.servicebus.windows.net | 443, 9350-9354 | Listeners op Service Bus Relay via TCP (vereist 443 voor de aanschaf van Access Control-token) |
+| *.servicebus.windows.net | 5671-5672 | Advanced Message Queuing Protocol (AMQP) |
+| login.microsoftonline.com | 443 | HTTPS |
 ||||
 
-In sommige gevallen worden er Azure Service Bus verbindingen gemaakt met IP-adressen in plaats van volledig gekwalificeerde domein namen. Daarom kunt u IP-adressen voor uw gegevens regio white list in uw firewall. Als u IP-adressen wilt white list in plaats van domeinen, kunt u de [lijst met IP-adresbereiken van Microsoft Azure Data Center](https://www.microsoft.com/download/details.aspx?id=41653)downloaden en gebruiken. De IP-adressen in deze lijst bevinden zich in een [CIDR-notatie (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
+In sommige gevallen worden er Azure Service Bus verbindingen gemaakt met IP-adressen in plaats van volledig gekwalificeerde domein namen. Daarom wilt u de IP-adressen voor uw gegevens regio in uw firewall blok keren. Als u toegang wilt verlenen voor IP-adressen in plaats van domeinen, kunt u de [lijst met IP-adresbereiken van Microsoft Azure Data Center](https://www.microsoft.com/download/details.aspx?id=41653)downloaden en gebruiken. De IP-adressen in deze lijst bevinden zich in een [CIDR-notatie (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
 ### <a name="force-https-communication-with-azure-service-bus"></a>HTTPS-communicatie met Azure Service Bus forceren
 
-Sommige proxy's laten verkeer via poort 80 en 443. Communicatie met Azure Service Bus vindt standaard plaats op andere poorten dan 443.
-U kunt afdwingen dat de gateway communiceert met de Azure Service Bus via HTTPS in plaats van rechtstreeks TCP, maar dit kan de prestaties aanzienlijk verminderen. Ga als volgt te werk om deze taak uit te voeren:
+Sommige proxy's laten verkeer via poort 80 en 443. Communicatie met Azure Service Bus vindt standaard plaats op andere poorten dan 443. U kunt afdwingen dat de gateway communiceert met de Azure Service Bus via HTTPS in plaats van rechtstreeks TCP, maar dit kan de prestaties aanzienlijk verminderen. Ga als volgt te werk om deze taak uit te voeren:
 
 1. Blader naar de locatie van de on-premises gegevens Gateway-client, die u hier doorgaans kunt vinden:```C:\Program Files\On-premises data gateway\Microsoft.PowerBI.EnterpriseGateway.exe```
 
    Als u de client locatie wilt vinden, opent u de Services-console op dezelfde computer, zoekt u de **on-premises gegevens Gateway Service**en bekijkt **u het pad naar de eigenschap voor het uitvoer bare bestand** .
 
-2. Dit *configuratie* bestand openen: **Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config**
+1. Dit *configuratie* bestand openen: **Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config**
 
-3. Wijzig de waarde voor **ServiceBusSystemConnectivityModeString** van **Automatische detectie** in **https**:
+1. Wijzig de waarde voor **ServiceBusSystemConnectivityModeString** van **Automatische detectie** in **https**:
 
    ```html
    <setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
@@ -278,7 +269,7 @@ U kunt afdwingen dat de gateway communiceert met de Azure Service Bus via HTTPS 
 
 Op de computer waarop u de on-premises gegevens gateway installeert, wordt de gateway uitgevoerd als een Windows-Service account met de naam ' on-premises gegevens Gateway-Service '. De gateway gebruikt echter de naam ' NT SERVICE\PBIEgwService ' voor de account referenties ' Aanmelden als '. De gateway heeft standaard de machtigingen ' Aanmelden als service ' op de computer waarop u de gateway installeert. Het Windows-Service account voor de gateway verschilt doorgaans van het account dat u gebruikt om verbinding te maken met on-premises gegevens bronnen en van het werk-of school account dat u gebruikt om u aan te melden bij Cloud Services.
 
-Als u de gateway wilt maken en onderhouden in de Azure Portal, moet dit Windows-Service account mini maal **Inzender** machtigingen hebben. Zie [toegang beheren met RBAC en de Azure Portal](../role-based-access-control/role-assignments-portal.md)om deze machtigingen te controleren. 
+Als u de gateway wilt maken en onderhouden in de Azure Portal, moet dit Windows-Service account mini maal **Inzender** machtigingen hebben. Zie [toegang beheren met RBAC en de Azure Portal](../role-based-access-control/role-assignments-portal.md)om deze machtigingen te controleren.
 
 <a name="restart-gateway"></a>
 
@@ -294,15 +285,15 @@ De gegevens gateway wordt uitgevoerd als een venster Service, net zoals elke and
   
   `net start PBIEgwService`
 
-## <a name="tenant-level-administration"></a>Beheer op Tenant niveau 
+## <a name="tenant-level-administration"></a>Beheer op Tenant niveau
 
-Er is momenteel geen enkele locatie waar Tenant beheerders alle gateways kunnen beheren die andere gebruikers hebben geïnstalleerd en geconfigureerd. Als u een Tenant beheerder bent, wilt u mogelijk de gebruikers in uw organisatie als beheerder toevoegen voor elke gateway die ze installeren. Op deze manier kunt u alle gateways in uw organisatie beheren via de pagina gateway-instellingen of via [Power shell-opdrachten](/data-integration/gateway/service-gateway-powershell-support). 
+Er is momenteel geen enkele locatie waar Tenant beheerders alle gateways kunnen beheren die andere gebruikers hebben geïnstalleerd en geconfigureerd. Als u een Tenant beheerder bent, wilt u mogelijk de gebruikers in uw organisatie als beheerder toevoegen voor elke gateway die ze installeren. Op deze manier kunt u alle gateways in uw organisatie beheren via de pagina gateway-instellingen of via [Power shell-opdrachten](/data-integration/gateway/service-gateway-powershell-support).
 
 <a name="gateway-cloud-service"></a>
 
 ## <a name="how-does-the-gateway-work"></a>Hoe werkt de gateway?
 
-De gegevens gateway vereenvoudigt snelle en veilige communicatie tussen uw logische app, de gateway-Cloud service en uw on-premises gegevens bron. De gateway-Cloud service versleutelt en slaat uw referenties voor de gegevens bron en de gateway gegevens op. De service routeert ook query's en de bijbehorende resultaten tussen uw logische app, de on-premises gegevens gateway en uw gegevens bron on-premises. 
+De gegevens gateway vereenvoudigt snelle en veilige communicatie tussen uw logische app, de gateway-Cloud service en uw on-premises gegevens bron. De gateway-Cloud service versleutelt en slaat uw referenties voor de gegevens bron en de gateway gegevens op. De service routeert ook query's en de bijbehorende resultaten tussen uw logische app, de on-premises gegevens gateway en uw gegevens bron on-premises.
 
 De gateway werkt met firewalls en maakt gebruik van alleen uitgaande verbindingen. Al het verkeer is afkomstig van het beveiligde uitgaande verkeer van de gateway-agent. De gateway doorstuurt gegevens van on-premises bronnen op versleutelde kanalen via de Azure Service Bus. Met deze service bus wordt een kanaal gemaakt tussen de gateway en de aanroepende service, maar worden er geen gegevens opgeslagen. Alle gegevens die via de gateway worden uitgewisseld, worden versleuteld.
 
@@ -312,15 +303,15 @@ In deze stappen wordt beschreven wat er gebeurt wanneer een gebruiker in de Clou
 
 1. De gateway-Cloud service maakt een query, samen met de versleutelde referenties voor de gegevens bron, en verzendt de query naar de wachtrij om de gateway te verwerken.
 
-2. De gateway-Cloud service analyseert de query en duwt de aanvraag naar het Azure Service Bus.
+1. De gateway-Cloud service analyseert de query en duwt de aanvraag naar het Azure Service Bus.
 
-3. De on-premises gegevens gateway pollt de Azure Service Bus voor in behandeling zijnde aanvragen.
+1. De on-premises gegevens gateway pollt de Azure Service Bus voor in behandeling zijnde aanvragen.
 
-4. De gateway haalt de query op, ontsleutelt de referenties en maakt verbinding met de gegevens bron met deze referenties.
+1. De gateway haalt de query op, ontsleutelt de referenties en maakt verbinding met de gegevens bron met deze referenties.
 
-5. De Gateway verzendt de query naar de gegevens bron voor uitvoering.
+1. De Gateway verzendt de query naar de gegevens bron voor uitvoering.
 
-6. De resultaten worden vanuit de gegevens bron teruggezonden naar de gateway en vervolgens naar de gateway-Cloud service. De gateway-Cloud service gebruikt vervolgens de resultaten.
+1. De resultaten worden vanuit de gegevens bron teruggezonden naar de gateway en vervolgens naar de gateway-Cloud service. De gateway-Cloud service gebruikt vervolgens de resultaten.
 
 <a name="faq"></a>
 
@@ -381,8 +372,7 @@ In deze sectie worden enkele veelvoorkomende problemen besproken die u mogelijk 
 **V**: Waarom zie ik mijn Gateway-installatie niet bij het maken van de gateway bron in azure? <br/>
 **A**: Dit probleem kan de volgende oorzaken hebben:
 
-* De installatie van de gateway is al geregistreerd en geclaimd door een andere gateway bron in Azure. Gateway-installaties worden niet weer gegeven in de lijst instanties nadat er gateway bronnen voor zijn gemaakt.
-Als u uw gateway registraties wilt controleren in de Azure Portal, controleert u alle Azure-resources met het type **on-premises gegevens gateways** voor *alle* Azure-abonnementen. 
+* De installatie van de gateway is al geregistreerd en geclaimd door een andere gateway bron in Azure. Gateway-installaties worden niet weer gegeven in de lijst instanties nadat er gateway bronnen voor zijn gemaakt. Als u uw gateway registraties wilt controleren in de Azure Portal, controleert u alle Azure-resources met het type **on-premises gegevens gateways** voor *alle* Azure-abonnementen.
 
 * De Azure AD-identiteit voor de persoon die de gateway heeft geïnstalleerd, verschilt van de persoon die zich heeft aangemeld bij de Azure Portal. Controleer of u bent aangemeld met dezelfde identiteit waarmee de gateway is geïnstalleerd.
 
@@ -408,30 +398,34 @@ Deze fout kan optreden als u probeert de gateway te installeren op een domein co
 
 ### <a name="logs"></a>Logboeken
 
-Om u te helpen problemen op te lossen, moet u altijd eerst de gateway-logboeken verzamelen en controleren. U kunt de logboeken op verschillende manieren verzamelen, maar de eenvoudigste optie na de installatie van de gateway is via de gebruikers interface van het gateway-installatie programma. 
+Om u te helpen problemen op te lossen, moet u altijd eerst de gateway-logboeken verzamelen en controleren. U kunt de logboeken op verschillende manieren verzamelen, maar de eenvoudigste optie na de installatie van de gateway is via de gebruikers interface van het gateway-installatie programma.
 
 1. Open het installatie programma van de on-premises gegevens gateway op uw computer.
-2. Selecteer in het menu links de optie **Diagnostische gegevens**.
-3. Onder **Gateway logboeken**selecteert u **Logboeken exporteren**.
+
+1. Selecteer in het menu links de optie **Diagnostische gegevens**.
+
+1. Onder **Gateway logboeken**selecteert u **Logboeken exporteren**.
 
    ![Logboeken exporteren vanuit het installatie programma van de gateway](./media/logic-apps-gateway-install/export-logs.png)
 
 Hier vindt u andere locaties waar u verschillende logboeken kunt vinden:
 
-| Logboektype | Location | 
-|----------|----------| 
-| **Installatie logboeken** | %localappdata%\Temp\On-premises_data_gateway_<*yyyymmdd*>.<*number*>.log | 
-| **Configuratie logboeken** | C:\Users\<*gebruikers naam*> \AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator <*jjjmmdd*>. <*nummer*>. log | 
-| **Service logboeken van de Enter prise gateway** | C:\Users\PBIEgwService\AppData\Local\Microsoft\On-premises data gateway\Gateway <*jjjmmdd*>. <*nummer*>. log | 
-||| 
+| Logboektype | Location |
+|----------|----------|
+| **Installatie logboeken** | %localappdata%\Temp\On-premises_data_gateway_<*yyyymmdd*>.<*number*>.log |
+| **Configuratie logboeken** | C:\Users\<*gebruikers naam*> \AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator <*jjjmmdd*>. <*nummer*>. log |
+| **Service logboeken van de Enter prise gateway** | C:\Users\PBIEgwService\AppData\Local\Microsoft\On-premises data gateway\Gateway <*jjjmmdd*>. <*nummer*>. log |
+|||
 
 **Gebeurtenis logboeken**
 
 Voer de volgende stappen uit om de gebeurtenis logboeken voor de gateway te vinden:
 
-1. Open de **Logboeken**op de computer met de gateway installatie. 
-2. Vouw **Logboeken** > -**Logboeken toepassingen en services**uit. 
-3. Selecteer de **on-premises gegevens Gateway Service**.
+1. Open de **Logboeken**op de computer met de gateway installatie.
+
+1. Vouw **Logboeken** > -**Logboeken toepassingen en services**uit.
+
+1. Selecteer de **on-premises gegevens Gateway Service**.
 
    ![Gebeurtenis logboeken voor de gateway weer geven](./media/logic-apps-gateway-install/event-viewer.png)
 
@@ -445,11 +439,11 @@ Voer de volgende stappen uit om de duur van een query te bepalen:
 
    Als u de client locatie wilt vinden, opent u de Services-console op dezelfde computer, zoekt u de **on-premises gegevens Gateway Service**en bekijkt **u het pad naar de eigenschap voor het uitvoer bare bestand** .
 
-2. Deze configuratie bestanden openen en bewerken, zoals wordt beschreven:
+1. Deze configuratie bestanden openen en bewerken, zoals wordt beschreven:
 
    * **Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config**
 
-     Wijzig de **waarde van** **EmitQueryTraces** in dit bestand in **waar** , zodat uw gateway query's kan registreren die vanaf de gateway worden verzonden naar een gegevens Bron:
+     Wijzig de waarde van **EmitQueryTraces** in dit **bestand in** **waar** , zodat de gateway query's kan registreren die vanaf de gateway worden verzonden naar een gegevens Bron:
 
      ```html
      <setting name="EmitQueryTraces" serializeAs="String">
@@ -458,13 +452,13 @@ Voer de volgende stappen uit om de duur van een query te bepalen:
      ```
 
      > [!IMPORTANT]
-     > Als u de instelling EmitQueryTraces inschakelt, kan de logboek grootte aanzienlijk toenemen op basis van het gebruik van de gateway. Nadat u klaar bent met het controleren van de logboeken, moet u EmitQueryTraces opnieuw instellen op ONWAAR, in plaats van deze instelling op de lange termijn te laten staan.
+     > Als u de instelling EmitQueryTraces inschakelt, kan de logboek grootte aanzienlijk toenemen op basis van het gebruik van de gateway. Nadat u klaar bent met het controleren van de logboeken, moet u EmitQueryTraces opnieuw instellen op **Onwaar** , in plaats van deze instelling op de lange termijn te laten staan.
 
    * **Microsoft.PowerBI.DataMovement.Pipeline.Diagnostics.dll.config**
 
-     Als u wilt dat uw gateway logboek uitgebreide vermeldingen bevat, inclusief vermeldingen die de duur tonen, wijzigt u de **traceverbosity** -waarde van **4** in **5** door een van de volgende stappen uit te voeren: 
+     Als u wilt dat uw gateway logboek uitgebreide vermeldingen bevat, inclusief vermeldingen die de duur tonen, wijzigt u de **traceverbosity** -waarde van **4** in **5** door een van de volgende stappen uit te voeren:
 
-     * Wijzig in dit configuratie bestand de **traceverbosity** -waarde van **4** in **5** 
+     * Wijzig in dit configuratie bestand de **traceverbosity** -waarde van **4** in **5**
 
        ```html
        <setting name="TracingVerbosity" serializeAs="String">
@@ -479,29 +473,28 @@ Voer de volgende stappen uit om de duur van een query te bepalen:
      > [!IMPORTANT]
      > Als u de instelling Traceverbosity inschakelt, kan de logboek grootte aanzienlijk toenemen op basis van het gebruik van de gateway. Nadat u klaar bent met het controleren van de logboeken, moet u **extra logboek registratie** uitschakelen in het installatie programma van de gateway of traceverbosity opnieuw instellen op **4** in het configuratie bestand, in plaats van deze instelling op de lange termijn te laten staan.
 
-3. Voer de volgende stappen uit om de duur van een query te zoeken:
+1. Voer de volgende stappen uit om de duur van een query te zoeken:
 
    1. [Exporteer](#logs) het gateway logboek en open het.
 
-   2. Als u een query wilt zoeken, zoekt u naar een type activiteit, bijvoorbeeld: 
+   1. Als u een query wilt zoeken, zoekt u naar een type activiteit, bijvoorbeeld:
 
-      | Type activiteit | Description | 
-      |---------------|-------------| 
-      | MGEQ | Query's die worden uitgevoerd via ADO.NET. | 
-      | MGEO | Query's die worden uitgevoerd via OLEDB. | 
-      | MGEM | Query's die worden uitgevoerd vanuit de mashup-engine. | 
-      ||| 
+      | Type activiteit | Description |
+      |---------------|-------------|
+      | MGEQ | Query's die worden uitgevoerd via ADO.NET |
+      | MGEO | Query's die worden uitgevoerd via OLEDB |
+      | MGEM | Query's die worden uitgevoerd vanuit de mashup-engine |
+      |||
 
-   3. Let op de tweede GUID, de aanvraag-ID.
+   1. Let op de tweede GUID, de aanvraag-ID.
 
-   4. Ga verder met zoeken naar het activiteitstype totdat u een vermelding met de naam ' FireActivityCompletedSuccessfullyEvent ' hebt gevonden met een duur in milliseconden. 
-   Bevestig dat de invoer dezelfde aanvraag-ID heeft, bijvoorbeeld:
+   1. Ga verder met zoeken naar het activiteitstype totdat u een vermelding met de naam ' FireActivityCompletedSuccessfullyEvent ' hebt gevonden met een duur in milliseconden. Bevestig dat de invoer dezelfde aanvraag-ID heeft, bijvoorbeeld:
 
-      ```text 
+      ```text
       DM.EnterpriseGateway Verbose: 0 : 2016-09-26T23:08:56.7940067Z DM.EnterpriseGateway    baf40f21-2eb4-4af1-9c59-0950ef11ec4a    5f99f566-106d-c8ac-c864-c0808c41a606    MGEQ    21f96cc4-7496-bfdd-748c-b4915cb4b70c    B8DFCF12 [DM.Pipeline.Common.TracingTelemetryService] Event: FireActivityCompletedSuccessfullyEvent (duration=5004)
       ```
 
-      > [!NOTE] 
+      > [!NOTE]
       > De vermelding ' FireActivityCompletedSuccessfullyEvent ' is een uitgebreide vermelding en wordt niet geregistreerd tenzij de instelling ' Traceverbosity ' zich op niveau 5 bevindt.
 
 ### <a name="trace-traffic-with-fiddler"></a>Verkeer traceren met Fiddler
@@ -509,7 +502,7 @@ Voer de volgende stappen uit om de duur van een query te bepalen:
 [Fiddler](https://www.telerik.com/fiddler) is een gratis hulp programma van Telerik dat http-verkeer bewaakt. U kunt dit verkeer bekijken met de Power BI-service van de client computer. Deze service kan fouten en andere gerelateerde informatie weer geven.
 
 ## <a name="next-steps"></a>Volgende stappen
-    
+
 * [Verbinding maken met on-premises gegevens vanuit Logic apps](../logic-apps/logic-apps-gateway-connection.md)
 * [Functies voor ondernemings integratie](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * [Connectors voor Azure Logic Apps](../connectors/apis-list.md)

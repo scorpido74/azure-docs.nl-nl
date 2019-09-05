@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 42c6671479c299c3229a3769a0410223274bc87f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 22f9ff8c493e850152e1fd74c8787e2cde507685
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279074"
+ms.locfileid: "70308852"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Wat is er gebeurd met Azure Machine Learning Workbench?
 
@@ -100,7 +100,7 @@ Ga voor meer informatie naar deze artikelen:
 
 ## <a name="what-about-the-old-sdk-and-cli"></a>Hoe zit het met de oude SDK en CLI?
 
-Ja, deze blijven gewoon werken tot januari. Zie de voorgaande [tijdlijn](#timeline). Het is raadzaam om uw nieuwe experimenten en modellen met de meest recente SDK of CLI te maken.
+Zie de voorgaande [tijdlijn](#timeline). Het is raadzaam om uw nieuwe experimenten en modellen met de meest recente SDK of CLI te maken.
 
 Met de nieuwe Python-SDK in de nieuwste versie kunt u met Azure Machine Learning Service in elke Python-omgeving communiceren. Informatie over het installeren van de meest recente <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>. U kunt ook de bijgewerkte [Azure Machine Learning CLI-extensie](reference-azure-machine-learning-cli.md) gebruiken met de uitgebreide set `az ml`-opdrachten om in elke opdrachtregelomgeving met de service te communiceren, waaronder Azure Cloud Shell.
 

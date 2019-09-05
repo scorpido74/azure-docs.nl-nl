@@ -10,21 +10,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 09/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e15fa8c79663fc2517039124f9be8c1ecd57b8a8
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 8b5479bc7f4e65f23a2e2dcf7deb91742fe50610
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837875"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382492"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Machtigingen voor app-registratie in Azure Active Directory delegeren
 
-In dit artikel wordt beschreven hoe u met behulp van app-machtigingen in aangepaste rollen in Azure Active Directory (Azure AD) uw behoeften voor toepassings beheer kunt aanpakken. Met Azure Active Directory (Azure AD) kunt u de machtigingen voor het maken en beheren van toepassingen op de volgende manieren delegeren:
+In dit artikel wordt beschreven hoe u machtigingen kunt gebruiken die worden verleend door aangepaste rollen in Azure Active Directory (Azure AD) om uw behoeften op het gebied van toepassings beheer te verhelpen. In azure AD kunt u de machtigingen voor het maken en beheren van toepassingen op de volgende manieren delegeren:
 
 - [Beperken wie toepassingen kan maken](#restrict-who-can-create-applications) en de toepassingen kan beheren die ze maken. In azure AD kunnen alle gebruikers standaard toepassings registraties registreren en alle aspecten beheren van de toepassingen die ze hebben gemaakt. Dit kan worden beperkt zodat alleen geselecteerde personen deze machtiging kunnen toestaan.
 - [Een of meer eigen aren toewijzen aan een toepassing](#assign-application-owners). Dit is een eenvoudige manier om iemand de mogelijkheid te geven alle aspecten van de Azure AD-configuratie voor een specifieke toepassing te beheren.
@@ -40,10 +40,10 @@ In azure AD kunnen alle gebruikers standaard toepassings registraties registrere
 ### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>De standaard instelling voor het maken van toepassings registraties of toestemming voor toepassingen uitschakelen
 
 1. Meld u aan bij uw Azure AD-organisatie met een account dat in aanmerking komt voor de rol globale beheerder in uw Azure AD-organisatie.
-1. Wanneer u voldoende machtigingen hebt verkregen, stelt u een of beide van de volgende opties in:
+1. Stel een of beide van de volgende opties in:
 
     - Stel op de [pagina gebruikers instellingen voor uw organisatie](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)de instelling **gebruikers kunnen toepassingen registreren** in op Nee. Hiermee wordt de standaard mogelijkheid voor gebruikers om toepassings registraties te maken uitgeschakeld.
-    - Stel de gebruikers in de [gebruikers instellingen voor zakelijke toepassingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)in om **toestemming te geven aan toepassingen die toegang hebben tot Bedrijfs gegevens** , namens de instelling Nee. Hiermee wordt de standaard mogelijkheid voor gebruikers om toestemming te geven voor het verkrijgen van toegang tot Bedrijfs gegevens in hun naam uitgeschakeld.
+    - Stel de gebruikers in de [gebruikers instellingen voor zakelijke toepassingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)in om **toestemming te geven aan toepassingen die toegang hebben tot Bedrijfs gegevens, namens** de instelling Nee. Hiermee wordt de standaard mogelijkheid voor gebruikers om toestemming te geven voor het verkrijgen van toegang tot Bedrijfs gegevens in hun naam uitgeschakeld.
 
 ### <a name="grant-individual-permissions-to-create-and-consent-to-applications-when-the-default-ability-is-disabled"></a>Afzonderlijke machtigingen verlenen om toepassingen te maken en ermee toestemming te geven wanneer de standaard mogelijkheid is uitgeschakeld
 

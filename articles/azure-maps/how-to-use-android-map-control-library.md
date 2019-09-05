@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a3423635ab226693e0b3b057e2c2cb441861ea1b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 9abe9eb9cdad6351f49fba2dace64095783455cf
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839426"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376010"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Aan de slag met Azure Maps Android SDK
 
@@ -109,7 +109,18 @@ De volgende stap bij het bouwen van uw toepassing is het installeren van de Azur
     * uw Azure Maps-verificatie-informatie instellen
     * het kaart besturings exemplaar ophalen in de methode **onCreate**
 
-    Als u de verificatie gegevens voor de klasse AzureMaps globaal instelt met behulp van de setSubscriptionKey-of setAadProperties-methoden, is het dus niet nodig om uw verificatie gegevens toe te voegen aan elke weer gave. Het kaart besturings element bevat eigen levenscyclus methoden voor het beheren van de OpenGL-levens duur van Android, die rechtstreeks vanuit de insluitende activiteit moet worden aangeroepen. Als uw app correct is, roept u de levenscyclus methoden van het kaart besturings element aan. u moet de volgende levenscyclus methoden in de activiteit die het kaart besturings element bevat, overschrijven en de desbetreffende kaart beheer methode aanroepen. 
+    Als u de verificatie gegevens voor `AzureMaps` de klasse globaal instelt `setSubscriptionKey` met `setAadProperties` behulp van de-of-methoden, hoeft u uw verificatie gegevens niet op elke weer gave toe te voegen. 
+
+    Het kaart besturings element bevat eigen levenscyclus methoden voor het beheren van de OpenGL-levens duur van Android, die rechtstreeks vanuit de insluitende activiteit moet worden aangeroepen. Als uw app correct is, roept u de levenscyclus methoden van het kaart besturings element aan. u moet de volgende levenscyclus methoden in de activiteit die het kaart besturings element bevat, overschrijven en de desbetreffende kaart beheer methode aanroepen. 
+
+    * onCreate (bundel) 
+    * onstart () 
+    * onResume() 
+    * onPause () 
+    * onStop () 
+    * onDestroy() 
+    * onSaveInstanceState (bundel) 
+    * onLowMemory() 
 
     Bewerk het bestand **MainActivity. java** als volgt:
     
@@ -140,13 +151,24 @@ De volgende stap bij het bouwen van uw toepassing is het installeren van de Azur
             mapControl = findViewById(R.id.mapcontrol);
 
             mapControl.onCreate(savedInstanceState);
-
+    
+            //Wait until the map resources are ready.
+            mapControl.onReady(map -> {
+                //Add your post map load code here.
+    
+            });
         }
 
         @Override
         public void onResume() {
             super.onResume();
             mapControl.onResume();
+        }
+
+        @Override
+        protected void onStart(){
+            super.onStart();
+            mapControl.onStart();
         }
 
         @Override
@@ -178,7 +200,6 @@ De volgende stap bij het bouwen van uw toepassing is het installeren van de Azur
             super.onSaveInstanceState(outState);
             mapControl.onSaveInstanceState(outState);
         }
-
     }
 
     ```

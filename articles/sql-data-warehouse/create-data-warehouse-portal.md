@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: sqlfreshmay19
-ms.openlocfilehash: b7b7d4cfe699ffdef3a8f736f5656d0b0067453a
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 83475af3cfdd83e718243d80b84599d53716a5d5
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575195"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375842"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Quickstart: Een Azure SQL Data Warehouse in het Azure Portal maken en er query's op uitvoeren
 
@@ -98,7 +98,7 @@ De SQL Data Warehouse-service maakt een firewall op server niveau. Deze firewall
 > SQL Database Warehouse communiceert via poort 1433. Als u verbinding wilt maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 1433 openstelt.
 
 1. Nadat de implementatie is voltooid, selecteert u **alle services** in het linkermenu. Selecteer **data bases**, selecteer de ster naast **SQL data warehouses** om SQL data warehouses toe te voegen aan uw favorieten.
-1. Selecteer **SQL data warehouses** in het menu aan de linkerkant en klik vervolgens op **mySampleDatabase** op de pagina **SQL data warehouses** . De overzichts pagina voor de data base wordt geopend, met de volledig gekwalificeerde server naam (zoals **mynewserver-20180430.database.Windows.net**) en biedt opties voor verdere configuratie.
+1. Selecteer **SQL data warehouses** in het menu aan de linkerkant en klik vervolgens op **mySampleDataWarehouse** op de pagina **SQL data warehouses** . De overzichts pagina voor de data base wordt geopend, met de volledig gekwalificeerde server naam (zoals **mynewserver-20180430.database.Windows.net**) en biedt opties voor verdere configuratie.
 1. Kopieer deze volledig gekwalificeerde server naam om te gebruiken om verbinding te maken met uw server en de bijbehorende data bases in deze en andere Quick starts. Klik op de servernaam om de serverinstellingen te openen.
 
    ![servernaam zoeken](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)

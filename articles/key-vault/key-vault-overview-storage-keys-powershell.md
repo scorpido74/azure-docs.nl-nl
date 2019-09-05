@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 21b046a54c2fbe309113222f54dbad4405fc409d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 530f38289afb3fce85bbb025e7b699862eedbadc
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136566"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382702"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Beheerd opslag account Azure Key Vault-Power shell
 
@@ -111,7 +111,7 @@ Werk met dezelfde Power shell-sessie het Key Vault toegangs beleid voor beheerde
 ```azurepowershell-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
 
-Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userId -PermissionsToStorage get, list, listsas, delete, set, update, regeneratekey, recover, backup, restore, purge
+Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userId -PermissionsToStorage get, list, delete, set, update, regeneratekey, getsas, listsas, deletesas, setsas, recover, backup, restore, purge
 ```
 
 Houd er rekening mee dat machtigingen voor opslag accounts niet beschikbaar zijn op de pagina toegangs beleid van het opslag account in de Azure Portal.

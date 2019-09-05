@@ -1,5 +1,5 @@
 ---
-title: Contextuele gegevens met rollen-LUIS
+title: 'Zelfstudie: Contextuele gegevens met rollen-LUIS'
 titleSuffix: Azure Cognitive Services
 description: Zoek gerelateerde gegevens op basis van de context. Een bestemmings- en doellocatie voor de fysieke verhuizing tussen twee gebouwen zijn bijvoorbeeld aan elkaar gerelateerd.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 2eac05712dc7b3deceba52681195101f9bf2b40c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2af35e08b523d782418ab356bf148e038f397f83
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560016"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308042"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Zelfstudie: Contextueel gerelateerde gegevens ophalen uit een utterance
 
@@ -91,7 +91,7 @@ De vooraf samengestelde entiteit, geographyV2, extraheert locatie-informatie, in
 1. Voeg twee rollen toe `Origin`, en `Destination`. 
 
     ![Rollen toevoegen aan vooraf samengestelde entiteit](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
-1. Selecteer  intenties in de navigatie aan de linkerkant en selecteer vervolgens de **MoveEmployeeToCity** intentie. U ziet dat de namen van steden worden aangeduid met de vooraf samengestelde entiteit **geographyV2**.
+1. Selecteer **intenties** in de navigatie aan de linkerkant en selecteer vervolgens de **MoveEmployeeToCity** intentie. U ziet dat de namen van steden worden aangeduid met de vooraf samengestelde entiteit **geographyV2**.
 1. Selecteer de oorspronkelijke locatie in de eerste utterance van de lijst. Er wordt een vervolg keuzelijst weer gegeven. Selecteer **geographyV2** in de lijst en volg vervolgens het menu om de **oorsprong**te selecteren.
 1. Gebruik de methode uit de vorige stap om alle rollen van locaties in alle uitingen te markeren. 
 
@@ -120,32 +120,32 @@ De vooraf samengestelde entiteit, geographyV2, extraheert locatie-informatie, in
       "query": "Please move Carl Chamerlin from Tampa to Portland",
       "topScoringIntent": {
         "intent": "MoveEmployeeToCity",
-        "score": 0.979823351
+        "score": 0.9706451
       },
       "intents": [
         {
           "intent": "MoveEmployeeToCity",
-          "score": 0.979823351
+          "score": 0.9706451
         },
         {
           "intent": "None",
-          "score": 0.0156363435
+          "score": 0.0307451729
         }
       ],
       "entities": [
         {
-          "entity": "geographyV2",
-          "role": "Destination",
-          "startIndex": 41,
-          "endIndex": 48,
-          "score": 0.6044041
-        },
-        {
-          "entity": "geographyV2",
-          "role": "Origin",
+          "entity": "tampa",
+          "type": "builtin.geographyV2.city",
           "startIndex": 32,
           "endIndex": 36,
-          "score": 0.739491045
+          "role": "Origin"
+        },
+        {
+          "entity": "portland",
+          "type": "builtin.geographyV2.city",
+          "startIndex": 41,
+          "endIndex": 48,
+          "role": "Destination"
         }
       ]
     }
