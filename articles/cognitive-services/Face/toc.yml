@@ -9,12 +9,8 @@
   items:
     - name: De client-SDK gebruiken
       items:
-        - name: Gezichten in een afbeelding detecteren
-          items:
-            - name: 'C#'
-              href: QuickStarts/csharp-detect-sdk.md
-            - name: Python
-              href: Tutorials/FaceAPIinPythonTutorial.md
+        - name: .NET SDK
+          href: Quickstarts/csharp-sdk.md
         - name: Python-SDK
           href: QuickStarts/python-sdk.md
     - name: Met behulp van de REST API
