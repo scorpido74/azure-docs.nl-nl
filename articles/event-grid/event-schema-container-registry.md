@@ -183,7 +183,7 @@ Het doelobject heeft de volgende eigenschappen:
 | mediaType | string | Het MIME-type van het object waarnaar wordt verwezen. |
 | size | geheel getal | Het aantal bytes van de inhoud. Hetzelfde als het veld lengte. |
 | digest | string | De samenvatting van de inhoud, zoals gedefinieerd door het register V2 HTTP API-specificatie. |
-| length | geheel getal | Het aantal bytes van de inhoud. Hetzelfde als het veld grootte. |
+| length | integer | Het aantal bytes van de inhoud. Hetzelfde als het veld grootte. |
 | repository | string | De naam van de opslagplaats. |
 | tag | string | De naam van de tag. |
 | name | string | De naam van de grafiek. |
