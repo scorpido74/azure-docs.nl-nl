@@ -1,18 +1,19 @@
 ---
 title: Power shell gebruiken om een back-up te maken van Windows Server naar Azure
 description: Meer informatie over het implementeren en beheren van Azure Backup met behulp van Power shell
-author: pvrk
-manager: shivamg
+ms.reviewer: shivamg
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 5/24/2018
-ms.author: shivamg
-ms.openlocfilehash: 5533b52ab984510b0e860f7fdfded8ac9005e5a8
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.date: 08/20/2019
+ms.author: dacurwin
+ms.openlocfilehash: d65da05ea2b24e3820d9a6fde31b3d4a5c72dbd1
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465244"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656737"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Met behulp van PowerShell back-ups implementeren en beheren in Azure voor een Windows-server/Windows-client
 
@@ -135,6 +136,18 @@ Nadat u de Recovery Services kluis hebt gemaakt, downloadt u de nieuwste agent e
 ```powershell
 $CredsPath = "C:\downloads"
 $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault1 -Path $CredsPath
+```
+
+### <a name="registering-using-the-ps-az-module"></a>Registreren met de PS AZ-module
+
+In de nieuwste AZ-module van Power shell, vanwege de beperkingen van het onderliggende platform, is voor het downloaden van de kluis referenties een zelfondertekend certificaat vereist. In het volgende voor beeld ziet u hoe u een zelfondertekend certificaat kunt opgeven en de kluis referenties kunt downloaden.
+
+```powershell
+$Vault = Get-AzRecoveryServicesVault -ResourceGroupName $rgName -Name $VaultName
+$cert = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname xxxxxxxxxxxxx
+$certificate =[System.Convert]::ToBase64String($cert.RawData)
+$CredsPath = "C:\downloads"
+$CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Certificate $certificate -Vault $vault -Backup -Path $CredsPath
 ```
 
 Voer op de Windows Server-of Windows-client computer de cmdlet [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) uit om de computer bij de kluis te registreren.

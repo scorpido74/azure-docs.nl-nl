@@ -1,6 +1,6 @@
 ---
 title: Azure SQL-aanmeldingen en -gebruikers | Microsoft Docs
-description: Meer informatie over SQL-Database en SQL Data Warehouse-beveiligingsbeheer, informatie over het beheer van de database en de aanmeldingsbeveiliging beveiliging via het hoofdaccount op serverniveau.
+description: Meer informatie over SQL Database en SQL Data Warehouse beveiligings beheer, in het bijzonder hoe u de beveiliging van database toegang en-aanmelding kunt beheren via het hoofd account op server niveau.
 keywords: sql-databasebeveiliging,beheer databasebeveiliging,aanmeldingsbeveiliging,databasebeveiliging,databasetoegang
 services: sql-database
 ms.service: sql-database
@@ -11,66 +11,65 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 03/26/2019
-ms.openlocfilehash: af6cec22ae455e6a6ead4c45fead2d7ff5b708d2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 3a59e276c3ec9717634c8f0f3634b7337ebc47d8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070512"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567706"
 ---
-# <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Beheren en het verlenen van toegang tot de database met SQL Database en SQL Data Warehouse
+# <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Database toegang beheren en verlenen aan SQL Database en SQL Data Warehouse
 
-Na de configuratie van firewall-regels, kunt u verbinding met Azure [SQL-Database](sql-database-technical-overview.md) en [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) als een van de beheerdersaccounts, als de database-eigenaar of als databasegebruiker in de database.  
+Nadat de configuratie van de firewall regels is geconfigureerd, kunt u verbinding maken met Azure [SQL database](sql-database-technical-overview.md) en [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) als een van de beheerders accounts, als de eigenaar van de data base of als database gebruiker in de data base.  
 
 > [!NOTE]  
-> In dit onderwerp is van toepassing op Azure SQL-server en SQL-Database en SQL Data Warehouse-databases op de Azure SQL-server gemaakt. Voor het gemak wordt de term 'SQL Database' gebruikt wanneer er wordt verwezen naar zowel SQL Database als SQL Data Warehouse. 
+> Dit onderwerp is van toepassing op Azure SQL Server en SQL Database en SQL Data Warehouse data bases die zijn gemaakt op de Azure SQL-Server. Voor het gemak wordt de term 'SQL Database' gebruikt wanneer er wordt verwezen naar zowel SQL Database als SQL Data Warehouse. 
 > [!TIP]
-> Zie voor een zelfstudie [beveiligen van uw Azure SQL Database](sql-database-security-tutorial.md). In deze zelfstudie geldt niet voor **Azure SQL Database Managed Instance**.
+> Zie [uw Azure SQL database beveiligen](sql-database-security-tutorial.md)voor een zelf studie. Deze zelf studie is niet van toepassing op **Azure SQL database beheerde instantie**.
 
 ## <a name="unrestricted-administrative-accounts"></a>Onbeperkte beheerdersaccounts
 
-Er zijn twee beheerdersaccounts (**serverbeheerder** en **Active Directory-beheerder**) die als beheerder fungeren. Voor het identificeren van deze beheerdersaccounts voor uw SQL-server, opent u Azure portal en navigeer naar het tabblad Eigenschappen van uw SQL server of SQL-Database.
+Er zijn twee beheerdersaccounts (**serverbeheerder** en **Active Directory-beheerder**) die als beheerder fungeren. Als u deze beheerders accounts voor uw SQL Server wilt identificeren, opent u de Azure Portal en navigeert u naar het tabblad Eigenschappen van uw SQL-Server of SQL Database.
 
 ![SQL Server-beheerders](media/sql-database-manage-logins/sql-admins.png)
 
-- **Serverbeheerder**
+- **Server beheerder**
 
   Wanneer u een Azure SQL-server maakt, moet u de **aanmeldgegevens van de serverbeheerder** opgeven. De SQL-server maakt het account vervolgens als een aanmelding in de hoofddatabase. Dit account maakt verbinding met behulp van SQL Server-verificatie (gebruikersnaam en wachtwoord). Er kan slechts één van deze accounts bestaan.
 
   > [!NOTE]
-  > Als u het wachtwoord voor de serverbeheerder herstellen, gaat u naar de [Azure-portal](https://portal.azure.com), klikt u op **SQL-Servers**, selecteert u de server in de lijst en klik vervolgens op **wachtwoord opnieuw instellen**.
+  > Als u het wacht woord voor de server beheerder opnieuw wilt instellen, gaat u naar de [Azure Portal](https://portal.azure.com), klikt u op **SQL-servers**, selecteert u de server in de lijst en klikt u vervolgens op **wacht woord opnieuw instellen**.
 
-- **Azure Active Directory-beheerder**
+- **Azure Active Directory beheerder**
 
-  Ook één Azure Active Directory-account (een afzonderlijk account of het account van een beveiligingsgroep) kan als beheerder worden geconfigureerd. Dit is optioneel het configureren van een Azure AD-beheerder echter een Azure AD-beheerder **moet** worden geconfigureerd als u wilt gebruiken van Azure AD-accounts verbinding maken met SQL-Database. Voor meer informatie over het configureren van toegang tot Azure Active Directory raadpleegt u [Verbinding maken met SQL Database of SQL Data Warehouse met behulp van Azure Active Directory-verificatie](sql-database-aad-authentication.md) en [SSMS-ondersteuning voor Azure AD MFA met SQL Database en SQL Data Warehouse](sql-database-ssms-mfa-authentication.md).
+  Ook één Azure Active Directory-account (een afzonderlijk account of het account van een beveiligingsgroep) kan als beheerder worden geconfigureerd. Het is optioneel een Azure AD-beheerder te configureren, maar er **moet** een Azure AD-beheerder worden geconfigureerd als u Azure AD-accounts wilt gebruiken om verbinding te maken met SQL database. Voor meer informatie over het configureren van toegang tot Azure Active Directory raadpleegt u [Verbinding maken met SQL Database of SQL Data Warehouse met behulp van Azure Active Directory-verificatie](sql-database-aad-authentication.md) en [SSMS-ondersteuning voor Azure AD MFA met SQL Database en SQL Data Warehouse](sql-database-ssms-mfa-authentication.md).
 
 De accounts van de **serverbeheerder** en de **Azure AD-beheerder** hebben de volgende kenmerken:
 
-- Zijn de enige accounts die automatisch verbinding met elke SQL-Database op de server maken kunnen. (Andere accounts die verbinding willen maken met een gebruikersdatabase, moeten eigenaar van de database zijn of een gebruikersaccount in de database hebben.)
+- Zijn de enige accounts die automatisch verbinding kunnen maken met een wille keurige SQL Database op de server. (Andere accounts die verbinding willen maken met een gebruikersdatabase, moeten eigenaar van de database zijn of een gebruikersaccount in de database hebben.)
 - Deze accounts worden in gebruikersdatabases beschouwd als de `dbo`-gebruiker en beschikken over alle machtigingen. (De eigenaar van een gebruikersdatabase wordt in de database ook als `dbo`-gebruiker beschouwd.) 
-- Voer niet de `master` database als de `dbo` gebruiker, en hebben beperkte machtigingen in master. 
-- Zijn **niet** leden van de standaard SQL Server `sysadmin` vaste serverrol die niet beschikbaar in SQL-database.  
-- Kan maken, wijzigen en verwijderen van databases, aanmeldingen en gebruikers in de hoofddatabase, en op serverniveau IP-firewallregels.
-- Kunnen toevoegen en verwijderen van leden aan de `dbmanager` en `loginmanager` rollen.
-- Vindt de `sys.sql_logins` systeemtabel voorkomt.
+- Voer de `master` data base niet in als `dbo` de gebruiker en heeft beperkte machtigingen in de Master. 
+- Zijn **geen** leden van de standaard SQL Server `sysadmin` vaste serverrol, die niet beschikbaar is in SQL database.  
+- Kan data bases, aanmeldingen, gebruikers in Master en IP-firewall regels op server niveau maken, wijzigen en verwijderen.
+- Kan leden toevoegen aan en verwijderen uit `dbmanager` de `loginmanager` en-rollen.
+- Kan de `sys.sql_logins` systeem tabel weer geven.
 
 ### <a name="configuring-the-firewall"></a>De firewall configureren
 
-Als de firewall op serverniveau is geconfigureerd voor een afzonderlijk IP-adres of -bereik, kunnen de **SQL-serverbeheerder** en de **Azure Active Directory-beheerder** verbinding maken met de hoofddatabase en alle gebruikersdatabases. De eerste firewall op serverniveau kan worden geconfigureerd via [Azure Portal](sql-database-single-database-get-started.md) met behulp van [PowerShell](sql-database-powershell-samples.md) of de [REST-API](https://msdn.microsoft.com/library/azure/dn505712.aspx). Zodra een verbinding wordt gemaakt, extra op serverniveau IP-firewall-regels kunnen worden geconfigureerd met behulp [Transact-SQL](sql-database-configure-firewall-settings.md).
+Als de firewall op serverniveau is geconfigureerd voor een afzonderlijk IP-adres of -bereik, kunnen de **SQL-serverbeheerder** en de **Azure Active Directory-beheerder** verbinding maken met de hoofddatabase en alle gebruikersdatabases. De eerste firewall op serverniveau kan worden geconfigureerd via [Azure Portal](sql-database-single-database-get-started.md) met behulp van [PowerShell](sql-database-powershell-samples.md) of de [REST-API](https://msdn.microsoft.com/library/azure/dn505712.aspx). Als er een verbinding tot stand is gebracht, kunnen extra IP-firewall regels op server niveau ook worden geconfigureerd met behulp van [Transact-SQL](sql-database-configure-firewall-settings.md).
 
 ### <a name="administrator-access-path"></a>Toegangspad beheerder
 
 Als de firewall op serverniveau correct is geconfigureerd, kunnen de **SQL-serverbeheerder** en de **Azure Active Directory-beheerder** verbinding maken met clienthulpprogramma's zoals SQL Server Management Studio en SQL Server Data Tools. Alleen de nieuwste hulpprogramma's bieden alle functies en mogelijkheden. Het volgende diagram toont een standaardconfiguratie voor de twee beheerdersaccounts.
 
-![configuratie van de twee beheer-accounts](./media/sql-database-manage-logins/1sql-db-administrator-access.png)
+![configuratie van de twee beheer accounts](./media/sql-database-manage-logins/1sql-db-administrator-access.png)
 
 Wanneer u een open poort in de firewall op serverniveau gebruikt, kunnen beheerders verbinding maken met elke SQL-database.
 
 ### <a name="connecting-to-a-database-by-using-sql-server-management-studio"></a>Verbinding maken met een database via SQL Server Management Studio
 
-Zie voor stapsgewijze instructies voor het maken van een server, een database, de IP-firewallregels op serverniveau en het gebruik van SQL Server Management Studio om op te vragen van een database, [aan de slag met Azure SQL Database-servers, databases en firewallregels met behulp van Azure portal en SQL Server Management Studio](sql-database-single-database-get-started.md).
+Zie [aan de slag met Azure SQL database servers, data bases en firewall regels met behulp van de Azure Portal en SQL voor een overzicht van het maken van een server, een Data Base, IP-firewall regels op server niveau en het gebruik van SQL Server Management Studio om een query uit te voeren op een Data Base. Server Management Studio](sql-database-single-database-get-started.md).
 
 > [!IMPORTANT]
 > Het wordt aanbevolen om altijd de nieuwste versie van Management Studio te gebruiken, zodat uw versie gesynchroniseerd blijft met updates voor Microsoft Azure en SQL Database. [SQL Server Management Studio bijwerken](https://msdn.microsoft.com/library/mt238290.aspx).
@@ -78,16 +77,16 @@ Zie voor stapsgewijze instructies voor het maken van een server, een database, d
 ## <a name="additional-server-level-administrative-roles"></a>Aanvullende beheerdersrollen op serverniveau
 
 >[!IMPORTANT]
->In deze sectie geldt niet voor **Azure SQL Database Managed Instance** als deze rollen zijn specifiek voor **Azure SQL Database**.
+>Deze sectie is niet van toepassing op **Azure SQL database beheerde instantie** omdat deze rollen specifiek zijn voor **Azure SQL database**.
 
 Naast de beheerdersrollen op serverniveau die eerder zijn besproken, biedt SQL Database ook twee beperkte beheerdersrollen in de hoofddatabase waaraan gebruikersaccounts kunnen worden toegevoegd. Deze twee beheerdersrollen verlenen machtigingen voor het maken van databases of voor het beheren van aanmeldingen.
 
 ### <a name="database-creators"></a>Databasemakers
 
-Een van deze beheerdersrollen is de rol **dbmanager**. Leden van deze rol kunnen nieuwe databases maken. Voor het gebruik van deze rol maakt u een gebruiker in de `master`-database en voegt u deze gebruiker vervolgens toe aan de databaserol **dbmanager**. Voor het maken van een database, moet de gebruiker een gebruiker op basis van een SQL Server-aanmelding in de `master` database of een ingesloten databasegebruiker op basis van een Azure Active Directory-gebruiker.
+Een van deze beheerdersrollen is de rol **dbmanager**. Leden van deze rol kunnen nieuwe databases maken. Voor het gebruik van deze rol maakt u een gebruiker in de `master`-database en voegt u deze gebruiker vervolgens toe aan de databaserol **dbmanager**. Als u een Data Base wilt maken, moet de gebruiker een gebruiker zijn op basis van een `master` SQL Server-aanmelding in de data base of de Inge sloten database gebruiker op basis van een Azure Active Directory gebruiker.
 
-1. Verbinding met een administrator-account maken met de `master` database.
-2. Maak een aanmelding SQL Server-verificatie met behulp van de [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) instructie. Voorbeeldinstructie:
+1. Verbinding maken met de `master` data base met behulp van een beheerders account.
+2. Maak een SQL Server-verificatie aanmelding met behulp van de instructie [Create login](https://msdn.microsoft.com/library/ms189751.aspx) . Voorbeeldinstructie:
 
    ```sql
    CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
@@ -98,7 +97,7 @@ Een van deze beheerdersrollen is de rol **dbmanager**. Leden van deze rol kunnen
 
    Voor betere prestaties worden aanmeldingen (principals op serverniveau) tijdelijk in het cachegeheugen op databaseniveau opgeslagen. Zie [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx) als u de verificatiecache wilt vernieuwen.
 
-3. In de `master` database, het maken van een gebruiker met behulp van de [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) instructie. De gebruiker kan een ingesloten databasegebruiker op basis van Azure Active Directory-verificatie zijn (als u uw omgeving hebt geconfigureerd voor Azure AD-verificatie), maar ook een ingesloten databasegebruiker op basis van SQL Server-verificatie of een gebruiker op basis van SQL Server-verificatie met aanmelding voor SQL Server-verificatie (gemaakt in de vorige stap). Voorbeeldinstructies:
+3. Maak een `master` gebruiker in de-data base met behulp van de instructie [Create User](https://msdn.microsoft.com/library/ms173463.aspx) . De gebruiker kan een ingesloten databasegebruiker op basis van Azure Active Directory-verificatie zijn (als u uw omgeving hebt geconfigureerd voor Azure AD-verificatie), maar ook een ingesloten databasegebruiker op basis van SQL Server-verificatie of een gebruiker op basis van SQL Server-verificatie met aanmelding voor SQL Server-verificatie (gemaakt in de vorige stap). Voorbeeldinstructies:
 
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
@@ -106,7 +105,7 @@ Een van deze beheerdersrollen is de rol **dbmanager**. Leden van deze rol kunnen
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. De nieuwe gebruiker toevoegen de **dbmanager** databaserol in `master` met behulp van de [ALTER ROLE](https://msdn.microsoft.com/library/ms189775.aspx) instructie. Voorbeeldinstructies:
+4. Voeg de nieuwe gebruiker toe aan de databaserol **DBManager** in met `master` behulp van de instructie [ALTER Role](https://msdn.microsoft.com/library/ms189775.aspx) . Voorbeeldinstructies:
 
    ```sql
    ALTER ROLE dbmanager ADD MEMBER Mary; 
@@ -118,7 +117,7 @@ Een van deze beheerdersrollen is de rol **dbmanager**. Leden van deze rol kunnen
 
 5. U kunt zo nodig een firewallregel configureren, zodat de nieuwe gebruiker verbinding kan maken. (De nieuwe gebruiker kan worden gedekt door een bestaande firewallregel.)
 
-Nu de gebruiker verbinding met maken kan de `master` database en kunnen nieuwe databases maken. Het account dat de database maakt, wordt eigenaar van de database.
+De gebruiker kan nu verbinding maken met `master` de data base en kan nieuwe data bases maken. Het account dat de database maakt, wordt eigenaar van de database.
 
 ### <a name="login-managers"></a>Aanmelding managers
 
@@ -141,22 +140,22 @@ In eerste instantie kan slechts een van de beheerders of de eigenaar van de data
 GRANT ALTER ANY USER TO Mary;
 ```
 
-Als u wilt geven extra gebruikers volledig beheer van de database, zodat ze lid zijn van de **db_owner** vaste databaserol.
+Als u meer gebruikers volledige controle over de Data Base wilt geven, maakt u ze lid van de vaste **databaserol db_owner** .
 
-In Azure SQL Database met de `ALTER ROLE` instructie.
+Gebruik de `ALTER ROLE` instructie in Azure SQL database.
 
 ```sql
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-In Azure SQL Data Warehouse gebruik [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql).
+Gebruik [exec sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)in Azure SQL Data Warehouse.
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
 ```
 
 
 > [!NOTE]
-> Een veelvoorkomende reden waarom het maken van een databasegebruiker op basis van een SQL Database server-aanmelding is voor gebruikers die toegang tot meerdere databases nodig hebben. Omdat ingesloten databasegebruikers zijn individuele entiteiten, elke database houdt een eigen gebruikersnaam en het eigen wachtwoord. Hierdoor kan overhead als de gebruiker moet vervolgens elk wachtwoord voor elke database op en het untenable worden kan bij een meerdere wachtwoorden voor veel databases te wijzigen. Echter, wanneer u SQL Server-aanmeldingen en hoge beschikbaarheid (actieve geo-replicatie en failover-groepen), de SQL Server-aanmeldingen moeten worden ingesteld handmatig op elke server. Anders wordt worden de gebruiker van de database niet meer toegewezen aan de aanmelding op serverniveau na een failover optreedt, en pas weer toegang tot de database na failover. Zie voor meer informatie over het configureren van aanmeldingen voor geo-replicatie [configureren en beheren van Azure SQL Database-beveiliging voor geo-herstel en failovers](sql-database-geo-replication-security-config.md).
+> Een veelvoorkomende reden voor het maken van een database gebruiker op basis van een SQL Database Server-aanmelding is voor gebruikers die toegang nodig hebben tot meerdere data bases. Aangezien de Inge sloten database gebruikers afzonderlijke entiteiten zijn, houdt elke Data Base zijn eigen gebruiker en eigen wacht woord. Dit kan overhead veroorzaken, omdat de gebruiker vervolgens elk wacht woord moet onthouden voor elke Data Base en het untenable kan worden wanneer meerdere wacht woorden voor veel data bases moeten worden gewijzigd. Wanneer u echter SQL Server aanmeldingen en hoge Beschik baarheid (actieve geo-replicatie en failover-groepen) gebruikt, moeten de SQL Server-aanmeldingen hand matig worden ingesteld op elke server. Anders wordt de database gebruiker niet meer toegewezen aan de Server aanmelding nadat een failover is uitgevoerd en heeft deze geen toegang tot de data base na failover. Zie [Azure SQL database beveiliging configureren en beheren voor geo-herstel of failover](sql-database-geo-replication-security-config.md)voor meer informatie over het configureren van aanmeldingen voor geo-replicatie.
 
 ### <a name="configuring-the-database-level-firewall"></a>De firewall op databaseniveau configureren
 
@@ -214,13 +213,13 @@ Bij het beheren van aanmeldingen en gebruikers in SQL Database, moet u het volge
 - Bij het uitvoeren van de `CREATE USER`-instructie met de optie `FOR/FROM LOGIN` moet deze de enige instructie in een Transact-SQL-batch zijn.
 - Bij het uitvoeren van de `ALTER USER`-instructie met de optie `WITH LOGIN` moet deze de enige instructie in een Transact-SQL-batch zijn.
 - Voor `CREATE/ALTER/DROP` heeft een gebruiker de `ALTER ANY USER`-machtiging voor de database nodig.
-- Wanneer de eigenaar van een databaserol probeert toevoegen of verwijderen van een andere databasegebruiker toe uit die databaserol, kan de volgende fout optreden: **Gebruiker of rol 'Naam' bestaat niet in deze database.** Deze fout treedt op omdat de gebruiker niet zichtbaar is voor de eigenaar. Om dit probleem op te lossen, verleent u de roleigenaar de `VIEW DEFINITION`-machtiging voor de gebruiker. 
+- Wanneer de eigenaar van een databaserol probeert een andere database gebruiker toe te voegen aan of te verwijderen uit die databaserol, kan de volgende fout optreden: **De gebruiker of rol ' name ' bestaat niet in deze data base.** Deze fout treedt op omdat de gebruiker niet zichtbaar is voor de eigenaar. Om dit probleem op te lossen, verleent u de roleigenaar de `VIEW DEFINITION`-machtiging voor de gebruiker. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [Azure SQL Database-firewall](sql-database-firewall-configure.md) voor meer informatie over firewallregels.
 - Zie [SQL security overview](sql-database-security-overview.md) (SQL-beveiligingsoverzicht) voor een overzicht van alle beveiligingsfuncties van SQL Database.
-- Zie voor een zelfstudie [beveiligen van uw Azure SQL Database](sql-database-security-tutorial.md).
+- Zie [uw Azure SQL database beveiligen](sql-database-security-tutorial.md)voor een zelf studie.
 - Zie [Weergaven en opgeslagen procedures maken](https://msdn.microsoft.com/library/ms365311.aspx) voor meer informatie over weergaven en opgeslagen procedures.
 - Zie [Toegang verlenen tot een databaseobject](https://msdn.microsoft.com/library/ms365327.aspx) voor meer informatie over het verlenen van toegang tot een databaseobject.

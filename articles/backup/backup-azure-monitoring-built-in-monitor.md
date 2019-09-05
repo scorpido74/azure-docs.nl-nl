@@ -1,20 +1,21 @@
 ---
 title: 'Azure Backup: Azure Backup beveiligde werk belastingen bewaken'
 description: Azure Backup workloads bewaken met behulp van Azure Portal
-author: pvrk
-manager: shivamg
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
 keywords: Azure Backup; Berichten
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/05/2019
-ms.author: pullabhk
+ms.author: dacurwin
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: b41b32943aa0113a7653c8d2eb74fd04afb2e080
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
-ms.translationtype: MT
+ms.openlocfilehash: 5fde581f322504c7e329da7fa153671b8a91183d
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465832"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688364"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Bewaking Azure Backup werk belastingen
 

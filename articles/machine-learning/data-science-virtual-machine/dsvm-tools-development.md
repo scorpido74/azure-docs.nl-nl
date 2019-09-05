@@ -4,7 +4,7 @@ description: Meer informatie over de hulpprogramma's en geïntegreerde ontwikkel
 keywords: hulpprogramma's voor datatechnologie, virtuele machine voor datatechnologie, hulpprogramma voor datatechnologie, linux-datatechnologie
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: gokuma
-ms.openlocfilehash: c4e101e45dc1641c5731e246f7fdeeb37ebc0823
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.author: vijetaj
+ms.openlocfilehash: 3b8eaae63f0e316d82dd5a1238a802eefd756d9e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65864406"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68557798"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Ontwikkelhulpprogramma's op de Data Science Virtual Machine
 
@@ -46,7 +46,7 @@ De Data Science Virtual Machine (DSVM) biedt een productieve omgeving voor het o
 | Ondersteunde DSVM-versies      | Windows, Linux     |
 | Wordt doorgaans gebruikt      | Code-editor en Git-integratie   |
 | Hoe kan ik gebruik / uitvoeren?      | Snelkoppeling op het bureaublad (`C:\Program Files (x86)\Microsoft VS Code\Code.exe`) in Windows, de snelkoppeling op het bureaublad of terminal (`code`) in Linux    |
-| Meer hulpprogramma's op de DSVM      |     2019 in Visual Studio, RStudio, Juno  |
+| Meer hulpprogramma's op de DSVM      |     Visual Studio 2019, RStudio, Juno  |
 
 ## <a name="rstudio--desktop"></a>RStudio Desktop 
 
@@ -56,7 +56,7 @@ De Data Science Virtual Machine (DSVM) biedt een productieve omgeving voor het o
 | Ondersteunde DSVM-versies      | Windows, Linux      |
 | Wordt doorgaans gebruikt      |  R-ontwikkeling     |
 | Hoe kan ik gebruik / uitvoeren?      | Snelkoppeling op het bureaublad (`C:\Program Files\RStudio\bin\rstudio.exe`) op Windows, snelkoppeling op het bureaublad (`/usr/bin/rstudio`) op Linux      |
-| Meer hulpprogramma's op de DSVM      |   2019 van Visual Studio, Visual Studio Code, Juno      |
+| Meer hulpprogramma's op de DSVM      |   Visual Studio 2019, Visual Studio code, Juno      |
 
 ## <a name="rstudio--server"></a>RStudio Server 
 
@@ -65,7 +65,7 @@ De Data Science Virtual Machine (DSVM) biedt een productieve omgeving voor het o
 | Wat is het?   | Webgebaseerde IDE voor R    |
 | Ondersteunde DSVM-versies      | Linux      |
 | Wordt doorgaans gebruikt      |  R-ontwikkeling     |
-| Hoe kan ik gebruik / uitvoeren?      | Schakel de service met _systemctl inschakelen rstudio server_, start u de service met _systemctl start rstudio server_. U kunt vervolgens aanmelden bij RStudio Server http:\// uw-vm-ip:8787.       |
+| Hoe kan ik gebruik / uitvoeren?      | Schakel de service met _systemctl inschakelen rstudio server_, start u de service met _systemctl start rstudio server_. U kunt zich vervolgens aanmelden bij de RStudio-server op\/http:/Your-VM-IP: 8787.       |
 | Meer hulpprogramma's op de DSVM      |   Visual Studio 2019, Visual Studio Code, RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 
@@ -98,5 +98,5 @@ De Data Science Virtual Machine (DSVM) biedt een productieve omgeving voor het o
 | Ondersteunde DSVM-versies      | Windows  |
 | Wordt doorgaans gebruikt      |  Gegevensvisualisatie en het bouwen van Dashboards   |
 | Hoe kan ik gebruik / uitvoeren?      | Snelkoppeling op het bureaublad (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
-| Meer hulpprogramma's op de DSVM      |   2019 van Visual Studio, Visual Studio Code, Juno      |
+| Meer hulpprogramma's op de DSVM      |   Visual Studio 2019, Visual Studio code, Juno      |
 

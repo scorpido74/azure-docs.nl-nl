@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen voor Azure Kubernetes Service (AKS)
-description: Vind antwoorden op enkele veelgestelde vragen over Azure Kubernetes Service (AKS).
+title: Veelgestelde vragen over Azure Kubernetes service (AKS)
+description: Vind antwoorden op enkele veelgestelde vragen over Azure Kubernetes service (AKS).
 services: container-service
 author: mlearned
 manager: jeconnoc
@@ -8,86 +8,86 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: mlearned
-ms.openlocfilehash: 495f182ed450d0fac69b31ea2996bacc60863fea
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 54a95186a297cf3604858341fb8f5aba3702bf5a
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672778"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241782"
 ---
-# <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Veelgestelde vragen over Azure Kubernetes Service (AKS)
+# <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Veelgestelde vragen over Azure Kubernetes service (AKS)
 
-In dit artikel adressen regelmatig vragen over Azure Kubernetes Service (AKS).
+Dit artikel behandelt Veelgestelde vragen over Azure Kubernetes service (AKS).
 
 ## <a name="which-azure-regions-currently-provide-aks"></a>Welke Azure-regio's bieden momenteel AKS?
 
-Zie voor een volledige lijst van beschikbare regio's, [AKS regio's en beschikbaarheid][aks-regions].
+Zie [AKS-regio's en beschik baarheid][aks-regions]voor een volledige lijst met beschik bare regio's.
 
-## <a name="does-aks-support-node-autoscaling"></a>Biedt ondersteuning voor AKS knooppunt automatisch schalen?
+## <a name="does-aks-support-node-autoscaling"></a>Biedt AKS ondersteuning voor automatisch schalen van knoop punten?
 
-Ja, de mogelijkheid automatisch agentknooppunten om horizontaal te schalen in AKS is momenteel beschikbaar in preview. Zie [automatisch schalen van een cluster om te voldoen aan de eisen van de toepassing in AKS][aks-cluster-autoscaler] for instructions. AKS autoscaling is based on the [Kubernetes autoscaler][auto-scaler].
+Ja, de mogelijkheid om agent knooppunten horizon taal automatisch te schalen in AKS is momenteel beschikbaar als preview-versie. Zie [een cluster automatisch schalen om te voldoen aan de toepassings vereisten in AKS][aks-cluster-autoscaler] voor instructies. AKS automatisch schalen is gebaseerd op de [Kubernetes autoscaler][auto-scaler].
 
-## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Kan ik AKS implementeren in mijn bestaand virtueel netwerk?
+## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Kan ik AKS implementeren in mijn bestaande virtuele netwerk?
 
-Ja, u een AKS-cluster in een bestaand virtueel netwerk kunt implementeren met behulp van de [geavanceerde netwerken functie][aks-advanced-networking].
+Ja, u kunt een AKS-cluster implementeren in een bestaand virtueel netwerk met behulp van de [geavanceerde netwerk functie][aks-advanced-networking].
 
-## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Kan ik beperken wie toegang heeft tot de Kubernetes API-server?
+## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Kan ik de toegang tot de Kubernetes-API-server beperken?
 
-Ja, kunt u toegang tot de Kubernetes API-server met beperken [API Server gemachtigd IP-adresbereiken][api-server-authorized-ip-ranges], deze bevindt zich momenteel in preview.
+Ja, u kunt de toegang tot de Kubernetes API-server beperken met behulp van de door de [API server geautoriseerde IP-bereiken][api-server-authorized-ip-ranges], die momenteel als preview-versie beschikbaar is.
 
-## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Kan ik de Kubernetes API-server toegankelijk maken alleen binnen het virtuele netwerk?
+## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Kan ik de Kubernetes API-server alleen toegankelijk maken binnen mijn virtuele netwerk?
 
-Op dit moment niet, maar dit is gepland. U kunt de voortgang volgen op de [AKS GitHub-opslagplaats][private-clusters-github-issue].
+Op dit moment, maar dit is gepland. U kunt de voortgang volgen op de [AKS github opslag plaats][private-clusters-github-issue].
 
 ## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>Kan ik verschillende VM-grootten in één cluster hebben?
 
-Ja, kunt u verschillende VM-grootten in uw AKS-cluster met het maken van [meerdere knooppuntgroepen][multi-node-pools], deze bevindt zich momenteel in preview.
+Ja, u kunt verschillende groottes van virtuele machines in uw AKS-cluster gebruiken door [meerdere knooppunt groepen][multi-node-pools]te maken, die momenteel als preview-versie beschikbaar zijn.
 
-## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Gelden er beveiligingsupdates voor AKS agentknooppunten?
+## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Worden beveiligings updates toegepast op agent knooppunten van AKS?
 
-Azure wordt automatisch beveiligingspatches geldt voor de Linux-knooppunten in uw cluster volgens een schema 's nachts. U bent echter verantwoordelijk om ervoor te zorgen dat deze knooppunten worden opnieuw opgestart als Linux vereist. U hebt verschillende mogelijkheden voor het opnieuw opstarten van knooppunten:
+Azure past automatisch beveiligings patches toe op de Linux-knoop punten in uw cluster volgens een nacht planning. U bent echter verantwoordelijk om ervoor te zorgen dat deze Linux-knoop punten zo nodig opnieuw worden opgestart. U hebt verschillende opties voor het opnieuw opstarten van knoop punten:
 
-- Handmatig via de Azure portal of de Azure CLI.
-- Voer een upgrade uw AKS-cluster. Het upgraden van clusters [cordon en leegmaken van knooppunten][cordon-drain] automatically and then bring a new node online with the latest Ubuntu image and a new patch version or a minor Kubernetes version. For more information, see [Upgrade an AKS cluster][aks-upgrade].
-- Met behulp van [Kured](https://github.com/weaveworks/kured), een open-source opnieuw opstarten-daemon voor Kubernetes. Kured wordt uitgevoerd als een [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) en bewaakt elk knooppunt op de aanwezigheid van een bestand dat aangeeft dat een herstart vereist is. In de cluster OS opnieuw wordt opgestart worden beheerd door dezelfde [cordon en proces leegmaken][cordon-drain] als de clusterupgrade van een.
+- Hand matig, via de Azure Portal of de Azure CLI.
+- Door uw AKS-cluster bij te werken. Met het cluster worden automatisch de [Cordon-en afvoer knooppunten][cordon-drain] bijgewerkt en vervolgens een nieuw knoop punt online met de meest recente Ubuntu-installatie kopie en een nieuwe patch versie of een secundaire Kubernetes-versie. Zie [een AKS-cluster upgraden][aks-upgrade]voor meer informatie.
+- Met behulp van [Kured](https://github.com/weaveworks/kured), een open source-daemon voor opnieuw opstarten voor Kubernetes. Kured wordt uitgevoerd als een [daemonset](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) en bewaakt elk knoop punt voor de aanwezigheid van een bestand dat aangeeft dat de computer opnieuw moet worden opgestart. In het hele cluster worden het besturings systeem opnieuw opgestart en wordt het proces voor het uitvoeren van een cluster upgrade uitgevoerd door hetzelfde [Cordon en een afwaterproces][cordon-drain] .
 
-Zie voor meer informatie over het gebruik van kured [beveiligings- en -kernel-updates toepassen op knooppunten in AKS][node-updates-kured].
+Zie [beveiliging en kernel-updates Toep assen op knoop punten in AKS][node-updates-kured]voor meer informatie over het gebruik van kured.
 
-### <a name="windows-server-nodes"></a>Windows Server-knooppunten
+### <a name="windows-server-nodes"></a>Windows Server-knoop punten
 
-Windows Update niet automatisch voor Windows Server-knooppunten (momenteel in preview in AKS), uitvoeren en de meest recente updates toepassen. Een regelmatige rond de releasecyclus van Windows Update en uw eigen validatieproces, moet u een upgrade op de Windows Server-knooppunt pool(s) uitvoeren in uw AKS-cluster. Met dit upgradeproces knooppunten met de meest recente Windows Server-installatiekopie en patches maakt en vervolgens verwijdert u de oudere knooppunten. Zie voor meer informatie over dit proces [een knooppuntgroep in AKS Upgrade][nodepool-upgrade].
+Voor Windows Server-knoop punten (momenteel in de preview-versie van AKS) wordt Windows Update niet automatisch uitgevoerd en worden de nieuwste updates toegepast. U moet een upgrade uitvoeren op het cluster en de Windows Server-knooppunt groep (en) in uw AKS-cluster, volgens een regel matige planning rond de Windows Update release cyclus en uw eigen validatie proces. Dit upgrade proces maakt knoop punten waarop de nieuwste installatie kopie en patches van Windows Server worden uitgevoerd, waarna de oudere knoop punten worden verwijderd. Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor meer informatie over dit proces.
 
-## <a name="why-are-two-resource-groups-created-with-aks"></a>Waarom zijn er twee resourcegroepen gemaakt met AKS?
+## <a name="why-are-two-resource-groups-created-with-aks"></a>Waarom zijn er twee resource groepen gemaakt met AKS?
 
-Elke AKS-implementatie omvat twee resourcegroepen:
+Elke AKS-implementatie omvat twee resource groepen:
 
-1. U maken de eerste resourcegroep. Deze groep bevat alleen de bron van de Kubernetes-service. De tweede resourcegroep de AKS-resourceprovider automatisch gemaakt tijdens de implementatie. Een voorbeeld van de tweede resourcegroep is *MC_myResourceGroup_myAKSCluster_eastus*. Zie de volgende sectie voor meer informatie over hoe u de naam van de tweede resourcegroep op te geven.
-1. De tweede resourcegroep, ook wel de *knooppunt resourcegroep*, bevat alle van de infrastructuurresources die zijn gekoppeld aan het cluster. Deze bronnen omvatten de Kubernetes-knooppunt virtuele machines, virtuele netwerken en opslag. De resourcegroep knooppunt heeft standaard een naam, zoals *MC_myResourceGroup_myAKSCluster_eastus*. AKS verwijdert automatisch de resource knooppunt wanneer het cluster wordt verwijderd, zodat deze alleen voor resources die delen van de levenscyclus van het cluster moet worden gebruikt.
+1. U maakt de eerste resource groep. Deze groep bevat alleen de Kubernetes-service resource. De resource provider AKS maakt automatisch de tweede resource groep tijdens de implementatie. Een voor beeld van de tweede resource groep is *MC_myResourceGroup_myAKSCluster_eastus*. Zie de volgende sectie voor meer informatie over het opgeven van de naam van deze tweede resource groep.
+1. De tweede resource groep, ook wel de *resource groep knoop punt*genoemd, bevat alle infrastructuur resources die zijn gekoppeld aan het cluster. Deze resources omvatten de Kubernetes-knoop punt-Vm's, virtuele netwerken en opslag. De resource groep van het knoop punt heeft standaard een naam zoals *MC_myResourceGroup_myAKSCluster_eastus*. AKS verwijdert automatisch de knooppunt resource wanneer het cluster wordt verwijderd. dit moet daarom alleen worden gebruikt voor resources die de levens cyclus van het cluster delen.
 
-## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Kan ik mijn eigen naam op voor de resourcegroep van de AKS-knooppunten bieden?
+## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Kan ik mijn eigen naam opgeven voor de resource groep van het AKS-knoop punt?
 
-Ja. Standaard AKS de knooppunt-resourcegroep noemen *MC_clustername_resourcegroupname_location*, maar u kunt ook uw eigen naam opgeven.
+Ja. AKS krijgt standaard de naam van de resource groep van het knoop punt *MC_resourcegroupname_clustername_location*, maar u kunt ook uw eigen naam opgeven.
 
-Als u uw eigen Resourcegroepnaam, installeert de [aks-preview][aks-preview-cli] versie van de Azure CLI-extensie *0.3.2* of hoger. Wanneer u een AKS-cluster maakt met behulp van de [az aks maken][az-aks-create] opdracht, gebruikt u de *--knooppunt-resource-group* parameter en geef een naam voor de resourcegroep. Als u [u een Azure Resource Manager-sjabloon][aks-rm-template] voor het implementeren van een AKS-cluster, kunt u de naam van de resource met behulp van de *nodeResourceGroup* eigenschap.
+Als u de naam van uw eigen resource groep wilt opgeven, installeert u de [AKS-preview][aks-preview-cli] Azure cli-extensie versie *0.3.2* of hoger. Wanneer u een AKS-cluster maakt met behulp van de opdracht [AZ AKS Create][az-aks-create] , gebruikt u de para meter *--node-Resource-Group* en geeft u een naam op voor de resource groep. Als u [een Azure Resource Manager-sjabloon gebruikt][aks-rm-template] om een AKS-cluster te implementeren, kunt u de naam van de resource groep definiëren met behulp van de eigenschap *nodeResourceGroup* .
 
-* De secundaire resourcegroep wordt automatisch gemaakt door de provider van de Azure-resource in uw eigen abonnement.
-* Alleen wanneer u het cluster maakt, kunt u de naam van een aangepaste resource-groep opgeven.
+* De secundaire resource groep wordt automatisch gemaakt door de Azure-resource provider in uw eigen abonnement.
+* U kunt alleen een aangepaste resource groeps naam opgeven wanneer u het cluster maakt.
 
-Als u met de resourcegroep van het knooppunt werkt, houd er rekening mee dat u kunt geen:
+Houd er bij het werken met de knooppunt resource groep voor dat u niet:
 
-* Geef een bestaande resourcegroep voor de resourcegroep van het knooppunt.
-* Geef een ander abonnement voor de resourcegroep van het knooppunt.
-* Naam van de resourcegroep knooppunt wijzigen nadat het cluster is gemaakt.
-* Namen voor de beheerde resources binnen de resourcegroep van knooppunt opgeven.
-* Wijzigen of verwijderen van tags van beheerde resources binnen de resourcegroep van het knooppunt. (Zie aanvullende informatie in de volgende sectie.)
+* Geef een bestaande resource groep op voor de knooppunt resource groep.
+* Geef een ander abonnement op voor de knooppunt resource groep.
+* Wijzig de naam van de resource groep van het knoop punt nadat het cluster is gemaakt.
+* Geef namen voor de beheerde resources op in de resource groep van het knoop punt.
+* Labels wijzigen of verwijderen van beheerde resources binnen de resource groep van het knoop punt. (Zie de volgende sectie voor meer informatie.)
 
-## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Kan ik labels en andere eigenschappen van de AKS-resources in de resourcegroep van het knooppunt wijzigen?
+## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Kan ik tags en andere eigenschappen van de AKS-resources in de knooppunt resource groep wijzigen?
 
-Als u wijzigt of Azure gemaakte tags en andere resource-eigenschappen in de resourcegroep van het knooppunt verwijdert, krijgt u kan onverwachte resultaten, zoals schalen en upgraden van fouten. AKS kunt u maken en wijzigen van de aangepaste labels. U kunt maken of wijzigen van aangepaste labels, bijvoorbeeld, om toe te wijzen een zakelijke eenheid of kosten center. Door het wijzigen van de resources onder de resourcegroep knooppunt in het AKS-cluster, verbreekt u de service level objective (SLO). Zie voor meer informatie, [AKS is een service level agreement bieden?](#does-aks-offer-a-service-level-agreement)
+Als u door Azure gemaakte Tags en andere bron eigenschappen in de knooppunt resource groep wijzigt of verwijdert, kunt u onverwachte resultaten krijgen, zoals het schalen en upgraden van fouten. Met AKS kunt u aangepaste tags maken en wijzigen. Het is raadzaam om aangepaste labels te maken of te wijzigen, bijvoorbeeld om een bedrijfs eenheid of kosten plaats toe te wijzen. Door de resources in de resource groep node te wijzigen in het AKS-cluster, verbreekt u de serviceniveau doelstelling (SLO). Zie voor meer informatie [AKS biedt een service overeenkomst?](#does-aks-offer-a-service-level-agreement)
 
-## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Welke Kubernetes toelating controllers biedt ondersteuning voor AKS? Kunnen worden toelating controllers toegevoegd of verwijderd?
+## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Welke Kubernetes-toegangs controllers ondersteunt AKS? Kunnen Admission controllers worden toegevoegd of verwijderd?
 
-AKS ondersteunt de volgende [toelating controllers][admission-controllers]:
+AKS ondersteunt de volgende [toegangs controllers][admission-controllers]:
 
 - *NamespaceLifecycle*
 - *LimitRanger*
@@ -100,38 +100,92 @@ AKS ondersteunt de volgende [toelating controllers][admission-controllers]:
 - *DenyEscalatingExec*
 - *AlwaysPullImages*
 
-U kunt de lijst met domeincontrollers in AKS toelating op dit moment niet wijzigen.
+Op dit moment kunt u de lijst met toegangs controllers in AKS niet wijzigen.
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Is Azure Key Vault geïntegreerd met AKS?
 
-AKS niet is momenteel geïntegreerd met Azure Key Vault. Echter, de [Azure Key Vault FlexVolume voor Kubernetes project][keyvault-flexvolume] kunnen directe integratie van Kubernetes-schillen tot de Key Vault-geheimen.
+AKS is momenteel niet ingebouwd met Azure Key Vault. Met de [Azure Key Vault FlexVolume for Kubernetes-project][keyvault-flexvolume] kunt u echter rechtstreeks integratie van Kubernetes van Peul maken op Key Vault geheimen.
 
-## <a name="can-i-run-windows-server-containers-on-aks"></a>Kan ik Windows Server-containers in AKS uitvoeren?
+## <a name="can-i-run-windows-server-containers-on-aks"></a>Kan ik Windows Server-containers op AKS uitvoeren?
 
-Ja, Windows Server-containers zijn beschikbaar in preview. Voor Windows Server-containers in AKS uitvoert, moet u een knooppuntgroep waarop Windows Server wordt uitgevoerd als het gastbesturingssysteem maken. Windows Server-containers kunnen alleen Windows Server 2019 gebruiken. Als u wilt beginnen, Zie [een AKS-cluster maken met een Windows Server-knooppuntgroep][aks-windows-cli].
+Ja, Windows Server-containers zijn beschikbaar als preview-versie. Als u Windows Server-containers in AKS wilt uitvoeren, maakt u een knooppunt groep die Windows Server als het gast besturingssysteem uitvoert. Windows Server-containers kunnen alleen Windows Server 2019 gebruiken. Zie [een AKS-cluster maken met een Windows Server-knooppunt groep][aks-windows-cli]om aan de slag te gaan.
 
-Ondersteuning voor Windows Server voor de knooppuntgroep bevat enkele beperkingen die deel van de upstream-Windows-Server in een Kubernetes-project uitmaken. Zie voor meer informatie over deze beperkingen [Windows Server-containers in AKS beperkingen][aks-windows-limitations].
+Windows Server-ondersteuning voor de knooppunt groep bevat enkele beperkingen die deel uitmaken van de upstream-Windows-Server in Kubernetes-project. Zie [Windows Server-containers in AKS-beperkingen][aks-windows-limitations]voor meer informatie over deze beperkingen.
 
-## <a name="does-aks-offer-a-service-level-agreement"></a>Biedt AKS een service level agreement?
+## <a name="does-aks-offer-a-service-level-agreement"></a>Biedt AKS een service overeenkomst?
 
-In een service-level agreement (SLA) stemt de provider in met het betalen van de klant voor de kosten van de service als het niveau van de gepubliceerde service niet wordt voldaan. Omdat AKS gratis is, is gratis beschikbaar om te betalen, zodat AKS geen formeel SLA heeft. Richt zich echter AKS voor beschikbaarheid van ten minste bij minder dan 99,5% voor de Kubernetes API-server.
+In een Service Level Agreement (SLA) stemt de provider ermee in om de kosten van de service te vergoeden als niet aan het gepubliceerde service niveau wordt voldaan. Omdat AKS gratis is, zijn er geen kosten beschikbaar voor schadeloosstelling, dus AKS heeft geen formele SLA. AKS zoekt echter de beschik baarheid van ten minste 99,5 procent voor de Kubernetes-API-server.
 
-## <a name="why-cant-i-set-maxpods-below-30"></a>Waarom kan ik maxPods hieronder 30 niet instellen?
+Het is belang rijk dat u het onderscheid herkent tussen de beschik baarheid van de AKS-service, die verwijst naar de uptime van het Kubernetes-besturings vlak en de beschik baarheid van uw specifieke werk belasting die wordt uitgevoerd op Azure Virtual Machines. Hoewel het besturings vlak mogelijk niet beschikbaar is als het besturings element niet gereed is, kunnen de werk belastingen van uw cluster die worden uitgevoerd op virtuele machines van Azure, nog steeds functioneren. De gegeven Azure-Vm's zijn betaalde bronnen die door een financiële SLA worden ondersteund. Lees [hier meer informatie](https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_8/) over de sla van de Azure-VM en hoe u deze Beschik baarheid kunt verg Roten met functies als [Beschikbaarheidszones][availability-zones].
 
-In AKS, stelt u de `maxPods` waarde wanneer u het cluster maakt met behulp van de Azure CLI en Azure Resource Manager-sjablonen. Echter Kubenet zowel Azure CNI vereist een *minimumwaarde* (gevalideerd tijdens de aanmaak):
+## <a name="why-cant-i-set-maxpods-below-30"></a>Waarom kan ik maxPods minder dan 30 instellen?
+
+In AKS kunt u de `maxPods` waarde instellen wanneer u het cluster maakt met behulp van de Azure CLI-en Azure Resource Manager-sjablonen. Zowel Kubenet als Azure CNI vereisen echter een *minimum waarde* (gevalideerd tijdens de aanmaak):
 
 | Netwerken | Minimum | Maximum |
 | -- | :--: | :--: |
-| Azure CNI | 30 | 250 |
+| Azure-CNI | 30 | 250 |
 | Kubenet | 30 | 110 |
 
-Omdat AKS een beheerde service is, we implementeren en beheren-invoegtoepassingen en schillen als onderdeel van het cluster. In het verleden gebruikers kunnen definieert een `maxPods` waarde lager is dan de waarde die de beheerde schillen vereist om uit te voeren (bijvoorbeeld, 30). Het minimale aantal schillen in AKS nu worden berekend op basis van deze formule: ((maxPods of (maxPods * vm_count)) > beheerde invoegtoepassingen schillen minimum.
+Omdat AKS een beheerde service is, implementeren en beheren we invoeg toepassingen en peulen als onderdeel van het cluster. In het verleden kunnen gebruikers een `maxPods` waarde opgeven die lager is dan de waarde die het beheerde vereiste is om uit te voeren (bijvoorbeeld 30). AKS berekent nu het minimum aantal van het hoogste getal door gebruik te maken van de volgende formule: ((maxPods of (maxPods * vm_count)) > beheerde invoeg toepassing voor het gehele minimum.
 
-De minimale kunnen gebruikers niet overschrijven `maxPods` validatie.
+Gebruikers kunnen de minimale `maxPods` validatie niet overschrijven.
 
-## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Kan ik Azure-reservering kortingen toepassen op mijn agentknooppunten AKS?
+## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Kan ik Azure-reserverings kortingen Toep assen op mijn AKS-agent knooppunten?
 
-AKS-agent-knooppunten worden in rekening gebracht als standaard Azure virtual machines, dus als u hebt aangeschaft [Azure reserveringen][reservation-discounts] voor de VM-grootte die u in AKS gebruikt deze kortingen automatisch worden toegepast.
+AKS-agent knooppunten worden gefactureerd als standaard virtuele machines van Azure, dus als u [Azure-reserve ringen][reservation-discounts] hebt aangeschaft voor de VM-grootte die u in AKS gebruikt, worden deze kortingen automatisch toegepast.
+
+## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Kan ik mijn cluster verplaatsen/migreren tussen Azure-tenants?
+
+De `az aks update-credentials` opdracht kan worden gebruikt om een AKS-cluster te verplaatsen tussen Azure-tenants. Volg de instructies in [kiezen om een service-principal bij te werken of te maken](https://docs.microsoft.com/azure/aks/update-credentials) en [werk vervolgens AKS-cluster bij met nieuwe referenties](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials).
+
+## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Kan ik mijn cluster verplaatsen/migreren tussen abonnementen?
+
+Het verplaatsen van clusters tussen abonnementen wordt momenteel niet ondersteund.
+
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>Kan ik mijn AKS-clusters van het huidige Azure-abonnement naar een andere verplaatsen? 
+
+Het verplaatsen van uw AKS-cluster en de bijbehorende resources tussen Azure-abonnementen wordt niet ondersteund.
+
+## <a name="why-is-my-cluster-delete-taking-so-long"></a>Waarom duurt het verwijderen van een cluster? 
+
+De meeste clusters worden verwijderd bij de gebruikers aanvraag; in sommige gevallen, met name waarbij klanten hun eigen resource groep halen of het verwijderen van cross-RG taken, kan het langer duren of mislukken. Als u een probleem met verwijderingen ondervindt, controleert u of er geen vergren delingen zijn op de RG, waardoor bronnen buiten de RG worden ontkoppeling van de RG, enzovoort.
+
+## <a name="if-i-have-pod--deployments-in-state-nodelost-or-unknown-can-i-still-upgrade-my-cluster"></a>Als ik pod/Deployments heb in de status NodeLost of Unknown, kan ik mijn cluster nog steeds bijwerken?
+
+Dit kan, maar AKS wordt dit niet aanbevolen. Upgrades moeten in het ideale geval worden uitgevoerd wanneer de status van het cluster bekend en in orde is.
+
+## <a name="if-i-have-a-cluster-with-one-or-more-nodes-in-an-unhealthy-state-or-shut-down-can-i-perform-an-upgrade"></a>Als ik een cluster met een of meer knoop punten met een slechte status of computer heb afgesloten, kan ik dan een upgrade uitvoeren?
+
+Nee, verwijder alle knoop punten met de status mislukt of verwijder deze uit het cluster voordat u een upgrade uitvoert.
+
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Ik heb een cluster verwijderd, maar zie de fout`[Errno 11001] getaddrinfo failed` 
+
+Dit wordt meestal veroorzaakt door gebruikers die een of meer netwerk beveiligings groepen (Nsg's) nog in gebruik hebben en aan het cluster zijn gekoppeld.  Verwijder ze en probeer opnieuw te verwijderen.
+
+## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>Ik heb een upgrade uitgevoerd, maar nu zijn mijn peulen in de loop van een crash, en mislukt de gereedheids tests?
+
+Controleer of uw Service-Principal niet is verlopen.  Ga naar: [AKS-Service-Principal](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) -en [AKS-update referenties](https://docs.microsoft.com/azure/aks/update-credentials).
+
+## <a name="my-cluster-was-working-but-suddenly-can-not-provision-loadbalancers-mount-pvcs-etc"></a>Mijn cluster werkte, maar kan plotseling geen LoadBalancers, Mount-Pvc's, enzovoort inrichten? 
+
+Controleer of uw Service-Principal niet is verlopen.  Ga naar: [AKS-Service-Principal](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) -en [AKS-update referenties](https://docs.microsoft.com/azure/aks/update-credentials).
+
+## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Kan ik de Api's voor de schaalset van de virtuele machine gebruiken om hand matig te schalen?
+
+Nee, schaal bewerkingen met behulp van de virtuele-machine Scale set-Api's worden niet ondersteund. Gebruik de AKS-Api's`az aks scale`().
+
+## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>Kan ik de schaal sets van virtuele machines gebruiken om hand matig te schalen naar 0 knoop punten?
+
+Nee, schaal bewerkingen met behulp van de virtuele-machine Scale set-Api's worden niet ondersteund.
+
+## <a name="can-i-stop-or-de-allocate-all-my-vms"></a>Kan ik al mijn Vm's stoppen of de toewijzing ervan ongedaan maken?
+
+Hoewel AKS de mechanismen voor flexibiliteit heeft om een dergelijke configuratie te verkrijgen en te herstellen, is dit geen aanbevolen configuratie.
+
+## <a name="can-i-use-custom-vm-extensions"></a>Kan ik aangepaste VM-extensies gebruiken?
+
+Geen AKS is een beheerde service en het bewerken van de IaaS-resources wordt niet ondersteund. Om aangepaste onderdelen, enzovoort, te installeren. Maak gebruik van de kubernetes-Api's en-mechanismen. Gebruik bijvoorbeeld DaemonSets om de vereiste onderdelen te installeren.
 
 <!-- LINKS - internal -->
 
@@ -152,6 +206,7 @@ AKS-agent-knooppunten worden in rekening gebracht als standaard Azure virtual ma
 [reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md
 [api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
 [multi-node-pools]: ./use-multiple-node-pools.md
+[availability-zones]: ./availability-zones.md
 
 <!-- LINKS - external -->
 

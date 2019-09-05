@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: eb96b60593dc660682c6376c0e0133be8f371176
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
-ms.translationtype: MT
+ms.openlocfilehash: b6414ac41b1bb43e3fe1470a7ae2b1358126003a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348678"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569672"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Azure Active Directory verificatie met SQL configureren en beheren
 
@@ -203,7 +202,7 @@ Cmdlets die worden gebruikt voor het inrichten en beheren van Azure AD-beheerder
 
 Gebruik de Power shell-opdracht Get-Help om voor elk van deze opdrachten ``get-help Set-AzSqlServerActiveDirectoryAdministrator``meer informatie te bekijken.
 
-Met het volgende script wordt een Azure AD-beheerders  groep met de naam `40b79501-b343-44ed-9ce7-da4c8cc7353f`DBA_Group (object-id) ingericht voor de **demo_server** -server in een resource groep met de naam **groep-23**:
+Met het volgende script wordt een Azure AD-beheerders groep met de naam `40b79501-b343-44ed-9ce7-da4c8cc7353f`DBA_Group (object-id) ingericht voor de **demo_server** -server in een resource groep met de naam **groep-23**:
 
 ```powershell
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"

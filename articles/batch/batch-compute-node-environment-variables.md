@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 04/23/2019
+ms.date: 08/13/2019
 ms.author: lahugh
-ms.openlocfilehash: 2b9d6832422b98c1064a4e9e99774c4788e801e5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 916dceb7c5e4314df98407b4e8fa4ed75cdb308c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323660"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095285"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Omgevings variabelen Azure Batch-runtime
 
@@ -51,7 +50,7 @@ De opdracht regels die door taken op reken knooppunten worden uitgevoerd, worden
 | AZ_BATCH_ACCOUNT_URL            | De URL van het batch-account. | Alle taken. | `https://myaccount.westus.batch.azure.com` |
 | AZ_BATCH_APP_PACKAGE            | Een voor voegsel van alle omgevings variabelen voor het app-pakket. Als bijvoorbeeld toepassing "foo" versie "1" is geïnstalleerd op een groep, is de omgevings variabele AZ_BATCH_APP_PACKAGE_FOO_1. AZ_BATCH_APP_PACKAGE_FOO_1 verwijst naar de locatie waar het pakket is gedownload (een map). | Elke taak met een gekoppeld app-pakket. Ook beschikbaar voor alle taken als het knoop punt zelf toepassings pakketten heeft. | AZ_BATCH_APP_PACKAGE_FOO_1 |
 | AZ_BATCH_AUTHENTICATION_TOKEN   | Een verificatie token dat toegang verleent tot een beperkt aantal batch-service bewerkingen. Deze omgevings variabele is alleen aanwezig als de [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) worden ingesteld wanneer de [taak wordt toegevoegd](/rest/api/batchservice/task/add#request-body). De token waarde wordt in de batch-Api's gebruikt als referenties voor het maken van een batch-client, zoals in de [.net API BatchClient. Open ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_). | Alle taken. | OAuth2-toegangs token |
-| AZ_BATCH_CERTIFICATES_DIR       | Een map in de [werkmap][files_dirs] van de taak waarin certificaten worden opgeslagen voor Linux-reken knooppunten. Houd er rekening mee dat deze omgevings variabele niet van toepassing is op Windows Compute-knoop punten.                                                  | Alle taken.   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
+| AZ_BATCH_CERTIFICATES_DIR       | Een map in de [werkmap][files_dirs] van de taak waarin certificaten worden opgeslagen voor Linux-reken knooppunten. Deze omgevings variabele is niet van toepassing op Windows-reken knooppunten.                                                  | Alle taken.   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_HOST_LIST              | De lijst met knoop punten die worden toegewezen aan een [taak met meerdere instanties][multi_instance] in de `nodeIP,nodeIP`indeling. | Primaire en subtaken voor meerdere instanties. | `10.0.0.4,10.0.0.5` |
 | AZ_BATCH_IS_CURRENT_NODE_MASTER | Hiermee geeft u op of het huidige knoop punt het hoofd knooppunt is voor een [taak met meerdere exemplaren][multi_instance]. Mogelijke waarden zijn `true` en `false`.| Primaire en subtaken voor meerdere instanties. | `true` |
 | AZ_BATCH_JOB_ID                 | De ID van de job waartoe de taak behoort. | Alle taken behalve taak starten. | batchjob001 |
@@ -61,13 +60,14 @@ De opdracht regels die door taken op reken knooppunten worden uitgevoerd, worden
 | AZ_BATCH_NODE_ID                | De ID van het knoop punt waaraan de taak is toegewezen. | Alle taken. | tvm-1219235766_3-20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | Als `true`het huidige knoop punt een toegewezen knoop punt is. Als `false`is het een [knoop punt met een lage prioriteit](batch-low-pri-vms.md). | Alle taken. | `true` |
 | AZ_BATCH_NODE_LIST              | De lijst met knoop punten die worden toegewezen aan een [taak met meerdere instanties][multi_instance] in de `nodeIP;nodeIP`indeling. | Primaire en subtaken voor meerdere instanties. | `10.0.0.4;10.0.0.5` |
+| AZ_BATCH_NODE_MOUNTS_DIR        | Het volledige pad van de [bestandssysteem koppelings](virtual-file-mount.md) locatie op knooppunt niveau waar alle koppelings directory's zich bevinden. Windows-bestands shares maken gebruik van een stationsletter, dus voor Windows is het koppel station onderdeel van apparaten en stations.  |  Alle taken met inbegrip van een begin taak hebben toegang tot de gebruiker, op voor hand dat de gebruiker op de hoogte is van de koppelings machtigingen voor de gekoppelde map. | In Ubuntu is de locatie bijvoorbeeld:`/mnt/batch/tasks/fsmounts` |
 | AZ_BATCH_NODE_ROOT_DIR          | Het volledige pad naar de hoofdmap van alle [batch-mappen][files_dirs] op het knoop punt. | Alle taken. | C:\user\tasks |
 | AZ_BATCH_NODE_SHARED_DIR        | Het volledige pad naar de [gedeelde map][files_dirs] in het knoop punt. Alle taken die worden uitgevoerd op een knoop punt hebben lees-en schrijf toegang tot deze map. Taken die op andere knoop punten worden uitgevoerd, hebben geen externe toegang tot deze map (dit is geen gedeelde netwerkmap). | Alle taken. | C:\user\tasks\shared |
 | AZ_BATCH_NODE_STARTUP_DIR       | Het volledige pad van de [map][files_dirs] voor het starten van de taak in het knoop punt. | Alle taken. | C:\user\tasks\startup |
 | AZ_BATCH_POOL_ID                | De ID van de pool waarin de taak wordt uitgevoerd. | Alle taken. | batchpool001 |
 | AZ_BATCH_TASK_DIR               | Het volledige pad naar de [map met taken][files_dirs] op het knoop punt. Deze map bevat de `stdout.txt` en `stderr.txt` voor de taak en de AZ_BATCH_TASK_WORKING_DIR. | Alle taken. | C:\user\tasks\workitems\batchjob001\job-1\task001 |
 | AZ_BATCH_TASK_ID                | De id van de huidige taak. | Alle taken behalve taak starten. | task001 |
-| AZ_BATCH_TASK_SHARED_DIR | Een mappad dat identiek is voor de primaire taak en elke subtaak van een [taak][multi_instance] . The path exists on every node on which the multi-instance task runs, and is read/write accessible to the task commands running on that node (both the [coordination command][coord_cmd] met meerdere instanties en de [toepassings opdracht][app_cmd]). Subtaken of een primaire taak die op andere knoop punten wordt uitgevoerd, hebben geen externe toegang tot deze map (dit is geen gedeelde netwerkmap). | Primaire en subtaken voor meerdere instanties. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
+| AZ_BATCH_TASK_SHARED_DIR | Een mappad dat identiek is voor de primaire taak en elke subtaak van een [taak met meerdere exemplaren][multi_instance]. Het pad bestaat op elk knoop punt waarop de taak met meerdere exemplaren wordt uitgevoerd en is lezen/schrijven toegankelijk voor de taak opdrachten die worden uitgevoerd op dat knoop punt (zowel de [coördinatie opdracht][coord_cmd] als de [toepassing opdracht][app_cmd]). Subtaken of een primaire taak die op andere knoop punten wordt uitgevoerd, hebben geen externe toegang tot deze map (dit is geen gedeelde netwerkmap). | Primaire en subtaken voor meerdere instanties. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
 | AZ_BATCH_TASK_WORKING_DIR       | Het volledige pad naar de [werkmap][files_dirs] van de taak op het knoop punt. De taak die momenteel wordt uitgevoerd, heeft lees-en schrijf toegang tot deze map. | Alle taken. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
 | CCP_NODES                       | De lijst met knoop punten en het aantal kernen per knoop punt dat is toegewezen aan een [taak met meerdere exemplaren][multi_instance]. Knoop punten en kernen worden weer gegeven in de indeling`numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, waarbij het aantal knoop punten wordt gevolgd door een of meer IP-adressen van knoop punten en het aantal kern geheugens voor beide. |  Primaire en subtaken voor meerdere instanties. |`2 10.0.0.4 1 10.0.0.5 1` |
 

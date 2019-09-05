@@ -4,7 +4,7 @@ description: Meer informatie over de machine learning-hulpprogramma's en framewo
 keywords: hulpprogramma's voor datatechnologie, virtuele machine voor datatechnologie, hulpprogramma voor datatechnologie, linux-datatechnologie
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: e8876306e4ffbd0fa9a8aafc6d5d757fd3c9c614
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.author: vijetaj
+ms.openlocfilehash: 3b05d076a61593e8c34ce642f2fe2fd137e07109
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502084"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565243"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Machine learning en data science-hulpprogramma 's
 Azure Data Science Virtual Machines is een uitgebreide set hulpprogramma's en bibliotheken voor machine learning (ML) beschikbaar in populaire talen, zoals Python, R en Julia. 
@@ -32,7 +32,7 @@ Hier volgen enkele van de hulpprogramma's voor ML en -bibliotheken op virtuele M
 |    |           |
 | ------------- | ------------- |
 | Wat is het?   |   Azure Machine Learning is een cloudservice die u gebruiken kunt om te ontwikkelen en implementeren van ML-modellen. Als u bouwen, trainen, schalen en beheren met behulp van de Python-SDK, kunt u uw modellen bijhouden. Modellen als containers implementeren en deze in de cloud, on-premises of in Azure IoT Edge uitvoeren.   |
-| Ondersteunde versies     | Windows (conda-omgeving: AzureML), Linux (conda-omgeving: py36)    |
+| Ondersteunde versies     | Windows (Conda-omgeving: AzureML), Linux (Conda-omgeving: py36)    |
 | Wordt doorgaans gebruikt      | Algemene ML-platform      |
 | Hoe wordt deze geconfigureerd of geïnstalleerd?      |  Geïnstalleerd met GPU-ondersteuning   |
 | Over het gebruik of uit te voeren      | Als Python SDK en Azure CLI. Activeren naar het conda-omgeving `AzureML` op Windows-editie *of* naar `py36` op Linux-editie.      |

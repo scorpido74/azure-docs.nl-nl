@@ -1,6 +1,6 @@
 ---
-title: Een upgrade uitvoeren naar de meest recente clientbibliotheek van elastische database | Microsoft Docs
-description: Gebruik Nuget om te upgraden elastische database-clientbibliotheek.
+title: Upgrade uitvoeren naar de meest recente client bibliotheek voor Elastic data base | Microsoft Docs
+description: Gebruik Nuget om de client bibliotheek voor Elastic data base bij te werken.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,52 +10,51 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 02c09e5a2ad0c3e23fe641bf445a646477f7db2c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 3d10814858d38d61e5346a4eb0dfb3d3d24ad4c0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60335046"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568322"
 ---
-# <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Een app voor het gebruik van de meest recente-clientbibliotheek voor elastic database upgraden
+# <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Een app bijwerken voor het gebruik van de meest recente Elastic data base-client bibliotheek
 
-Nieuwe versies van de [Elastic Database-clientbibliotheek](sql-database-elastic-database-client-library.md) zijn beschikbaar via de interface NuGetPackage beheer in Visual Studio NuGetand. Upgrades bevatten oplossingen voor problemen en ondersteuning voor nieuwe mogelijkheden van de clientbibliotheek.
+Nieuwe versies van de [Elastic database-client bibliotheek](sql-database-elastic-database-client-library.md) zijn beschikbaar via NuGetand de NuGetPackage Manager-interface in Visual Studio. Upgrades bevatten oplossingen voor fouten en ondersteuning voor nieuwe mogelijkheden van de client bibliotheek.
 
-**Voor de meest recente versie:** Ga naar [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
+**Voor de meest recente versie:** Ga naar [micro soft. Azure. SqlDatabase. ElasticScale. client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 
-Opnieuw opbouwen van uw toepassing met de nieuwe-bibliotheek, evenals wijzigen van uw bestaande Shard-Toewijzingsbeheer metagegevens die zijn opgeslagen in uw Azure SQL-databases voor de ondersteuning van nieuwe functies.
+Bouw uw toepassing opnieuw op met de nieuwe bibliotheek en wijzig uw bestaande meta gegevens voor Shard-toewijzings beheer die zijn opgeslagen in uw Azure SQL-data bases ter ondersteuning van nieuwe functies.
 
-Deze stappen uitvoert in volgorde zorgt ervoor dat oude versies van de clientbibliotheek niet meer aanwezig in uw omgeving zijn wanneer de van metagegevensobjecten zijn bijgewerkt, wat betekent dat de van de oude versie metagegevensobjecten na de upgrade wordt niet worden gemaakt.
+Door deze stappen uit te voeren, zorgt u ervoor dat oude versies van de client bibliotheek niet meer aanwezig zijn in uw omgeving wanneer meta gegevens objecten worden bijgewerkt. Dit betekent dat meta gegevens objecten van de oude versie niet worden gemaakt na de upgrade.
 
-## <a name="upgrade-steps"></a>Upgradestappen
+## <a name="upgrade-steps"></a>Upgrade stappen
 
-**1. Upgrade uw toepassingen.** In Visual Studio downloaden en te verwijzen naar de meest recente versie van de client-bibliotheek in al uw ontwikkelingsprojecten die gebruikmaken van de bibliotheek; vervolgens opnieuw maken en implementeren.
+**1. Upgrade uw toepassingen.** In Visual Studio downloadt en verwijst u naar de meest recente versie van de client bibliotheek in al uw ontwikkelings projecten die gebruikmaken van de bibliotheek. bouw en implementeer vervolgens opnieuw.
 
-* Selecteer in uw Visual Studio-oplossing **extra** --> **NuGet Package Manager** -->  **NuGet-pakketten beheren voor oplossing**.
-* (Visual Studio 2013) Selecteer in het linkerdeelvenster **Updates**, en selecteer vervolgens de **Update** knop op het pakket **Azure SQL Database-clientbibliotheek met elastische schaal** die wordt weergegeven in het venster.
-* (Visual Studio 2015) Stel in het vak filteren op **Upgrade beschikbaar**. Selecteer het pakket bijwerken en klik op de **bijwerken** knop.
-* (Visual Studio 2017) Aan de bovenkant van het dialoogvenster, selecteer **Updates**. Selecteer het pakket bijwerken en klik op de **bijwerken** knop.
-* Bouw en implementeer.
+* Selecteer in uw Visual Studio-oplossing **extra** --> **NuGet package manager** -->  **NuGet-pakketten beheren voor oplossing**.
+* (Visual Studio 2013) Selecteer **updates**in het linkerdeel venster en selecteer vervolgens de knop **bijwerken** op het pakket **Azure SQL database Elastic Scale-client bibliotheek** die wordt weer gegeven in het venster.
+* (Visual Studio 2015) Stel het filter in op **upgrade beschikbaar**. Selecteer het pakket dat u wilt bijwerken en klik op de knop **bijwerken** .
+* (Visual Studio 2017) Selecteer boven in het dialoog venster **updates**. Selecteer het pakket dat u wilt bijwerken en klik op de knop **bijwerken** .
+* Bouwen en implementeren.
 
-**2. Upgrade uw scripts.** Als u **PowerShell** scripts voor het beheren van shards, [downloaden van de nieuwe versie van de bibliotheek](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) en kopieer deze in de map waarin u scripts uit te voeren.
+**2. Voer een upgrade uit voor uw scripts.** Als u **Power shell** -scripts gebruikt om Shards te beheren, [downloadt u de nieuwe bibliotheek versie](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) en kopieert u deze naar de map van waaruit u scripts uitvoert.
 
-**3. Upgrade uw service voor splitsen en samenvoegen.** Als u de elastic database-hulpprogramma voor splitsen en samenvoegen met opnieuw indelen van gedeelde gegevens [downloaden en implementeren van de meest recente versie van het hulpprogramma](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/). Upgradestappen voor de Service vindt u gedetailleerde [hier](sql-database-elastic-scale-overview-split-and-merge.md).
+**3. Upgrade uw service voor splitsen en samen voegen.** Als u het Elastic data base-hulp programma voor splitsen en samen voegen gebruikt om Shard-gegevens opnieuw in te delen, [downloadt en implementeert u de meest recente versie van het hulp programma](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/). Gedetailleerde upgrade stappen voor de service vindt u [hier](sql-database-elastic-scale-overview-split-and-merge.md).
 
-**4. Upgrade van uw databases Shard-Toewijzingsbeheer**. De metagegevens van de ondersteuning van de Shard-toewijzingen in Azure SQL Database een upgrade uitvoert.  Er zijn twee manieren die u kunt dit doen met behulp van PowerShell of C#. Beide opties worden hieronder weergegeven.
+**4. Voer een upgrade uit voor uw**data bases van Shard map Manager. Voer een upgrade uit voor de meta gegevens die uw Shard-kaarten ondersteunen in Azure SQL Database.  U kunt dit op twee manieren doen met behulp van Power C#shell of. Beide opties worden hieronder weer gegeven.
 
-***Optie 1: Metagegevens met behulp van PowerShell bijwerken***
+***Optie 1: Meta gegevens bijwerken met Power shell***
 
-1. Download de meest recente opdrachtregel-hulpprogramma voor NuGet van [hier](https://nuget.org/nuget.exe) en op te slaan naar een map.
-2. Open een opdrachtprompt en navigeer naar dezelfde map met de opdracht: `nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
-3. Navigeer naar de submap met de nieuwe client-dll-versie die u hebt zojuist hebt gedownload, bijvoorbeeld: `cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
-4. Downloaden van de elastic database client upgrade-script uit de [Script Center](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9), en sla deze op in dezelfde map met de DLL-bestand.
-5. 'PowerShell.\upgrade.ps1' uitvoeren vanaf de opdrachtprompt en volg de aanwijzingen van die map.
+1. Down load [hier](https://nuget.org/nuget.exe) het meest recente opdracht regel programma voor NuGet en sla het op in een map.
+2. Open een opdracht prompt, navigeer naar dezelfde map en geef de volgende opdracht:`nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
+3. Ga naar de submap met de nieuwe client-DLL-versie die u zojuist hebt gedownload, bijvoorbeeld:`cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
+4. Down load het client upgrade script voor Elastic data base uit het [script centrum](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)en sla het op in dezelfde map die de dll bevat.
+5. Vanuit die map voert u Power shell .\upgrade.ps1 uit vanaf de opdracht prompt en volgt u de aanwijzingen.
 
-***Optie 2: Met behulp van de metagegevens van een upgrade uitvoertC#***
+***Optie 2: Meta gegevens bijwerken metC#***
 
-U kunt ook Visual Studio een toepassing maken die wordt geopend uw ShardMapManager, alle shards te herhalen en voert de upgrade van de metagegevens door het aanroepen van de methoden [UpgradeLocalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore) en [UpgradeGlobalStore ](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore) zoals in dit voorbeeld:
+U kunt ook een Visual Studio-toepassing maken waarmee uw ShardMapManager wordt geopend, alle Shards worden herhaald en de upgrade van de meta gegevens wordt uitgevoerd door de methoden [UpgradeLocalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore) en [UpgradeGlobalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore) aan te roepen, zoals in dit voor beeld:
 
     ShardMapManager smm =
        ShardMapManagerFactory.GetSqlShardMapManager
@@ -68,13 +67,13 @@ U kunt ook Visual Studio een toepassing maken die wordt geopend uw ShardMapManag
        smm.UpgradeLocalStore(loc);
     }
 
-Deze technieken voor upgrades van de metagegevens kunnen meerdere keren worden toegepast zonder schade. Bijvoorbeeld, als een oudere versie van de client per ongeluk een shard maakt nadat u al hebt bijgewerkt, kunt u uitvoeren upgrade opnieuw over alle shards om ervoor te zorgen dat de meest recente metagegevensversie in uw infrastructuur aanwezig is.
+Deze technieken voor het bijwerken van meta gegevens kunnen meerdere keren worden toegepast zonder beschadiging. Als bijvoorbeeld een oudere client versie per ongeluk een Shard maakt nadat u al een update hebt uitgevoerd, kunt u de upgrade opnieuw uitvoeren over alle Shards om ervoor te zorgen dat de meest recente versie van de meta gegevens aanwezig is in uw infra structuur.
 
-**Opmerking:**  Nieuwe versies van de clientbibliotheek gepubliceerd tot heden blijven werken met eerdere versies van de metagegevens van de Shard-Toewijzingsbeheer op Azure SQL DB, en vice versa.   Maar om te profiteren van enkele van de nieuwe functies in de meest recente client, metagegevens moet worden bijgewerkt.   Houd er rekening mee dat metagegevens upgrades heeft geen invloed op alle gegevens van de gebruiker of toepassingsspecifieke gegevens, alleen objecten die zijn gemaakt en gebruikt door de Shard-toewijzing.  En toepassingen blijven functioneren door de updatevolgorde die hierboven worden beschreven.
+**Opmerking:**  Nieuwe versies van de client bibliotheek gepubliceerd op datum blijven werken met eerdere versies van de meta gegevens van het Shard-toewijzings beheer op Azure SQL DB en vice versa.   Als u echter wilt profiteren van een aantal nieuwe functies in de meest recente client, moeten meta gegevens worden bijgewerkt.   Houd er rekening mee dat meta gegevens upgrades geen invloed hebben op gebruikers gegevens of toepassingsspecifieke gegevens, alleen objecten die worden gemaakt en gebruikt door Shard-toewijzings beheer.  En toepassingen blijven actief door de hierboven beschreven upgrade volgorde.
 
-## <a name="elastic-database-client-version-history"></a>Versiegeschiedenis van elastic database client
+## <a name="elastic-database-client-version-history"></a>Geschiedenis van client versie voor Elastic data base
 
-Versiegeschiedenis, gaat u naar [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)
+Ga voor versie geschiedenis naar [micro soft. Azure. SqlDatabase. ElasticScale. client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

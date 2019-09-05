@@ -10,19 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70f9264357ca1a0c1a612481f4254e86f05e41d8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 8db3baf9fa4c0d054e743d0b52964847b37ec281
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479182"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078294"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -304,7 +303,7 @@ Als u een scale-out bestands share wilt gebruiken, moet uw systeem voldoen aan d
 
 * Ten minste twee cluster knooppunten voor een scale-out bestands share.
 * Elk knoop punt moet ten minste twee lokale schijven hebben.
-* Om prestatie redenen moet u de *tolerantie*voor mirroring gebruiken:
+* Om prestatie redenen moet u de *tolerantie voor mirroring*gebruiken:
     * Twee richtings spiegeling voor een scale-out bestands share met twee cluster knooppunten.
     * Mirroring in drie richtingen voor een scale-out bestands share met drie (of meer) cluster knooppunten.
 * We raden u aan drie (of meer) cluster knooppunten voor een scale-out bestands share te gebruiken met mirroring in drie richtingen.
@@ -312,11 +311,11 @@ Als u een scale-out bestands share wilt gebruiken, moet uw systeem voldoen aan d
 * U moet Azure Premium-schijven gebruiken.
 * U wordt aangeraden Azure Managed Disks te gebruiken.
 * U wordt aangeraden volumes te Format teren met behulp van een ReFS-bestands systeem.
-    * Voor meer informatie raadpleegt u [SAP Note 1869038-SAP-ondersteuning voor][1869038] and the [Choosing the file system][planning-volumes-s2d-choosing-filesystem] het hoofd stuk van het artikel een planning van volumes in opslagruimten direct.
+    * Zie [SAP Note 1869038-SAP-ondersteuning voor ReFs-bestands][1869038] systeem en de [keuze van het bestandssysteem][planning-volumes-s2d-choosing-filesystem] in het artikel de volumes in opslagruimten direct plannen voor meer informatie.
     * Zorg ervoor dat u de [cumulatieve update van micro soft KB4025334][kb4025334]installeert.
 * U kunt Azure VM-grootten van de DS-serie of de DSv2-serie gebruiken.
 * Gebruik voor goede netwerk prestaties tussen virtuele machines, die nodig zijn voor Opslagruimten Direct schijf synchronisatie, een VM-type met ten minste een ' hoge ' netwerk bandbreedte.
-    Zie de specificaties van de [DSv2-serie][dv2-series] and [DS-Series][ds-series] voor meer informatie.
+    Zie de specificaties van de [DSv2-serie][dv2-series] en de [DS-serie][ds-series] voor meer informatie.
 * U wordt aangeraden enkele niet-toegewezen capaciteit in de opslag groep te reserveren. Als er sprake is van een niet-toegewezen capaciteit in de opslag groep, kan de schijf ruimte in beschik bare volumes herstellen als een station mislukt. Dit verbetert de veiligheid en prestaties van uw gegevens.  Zie [volume grootte kiezen][choosing-the-size-of-volumes-s2d]voor meer informatie.
 * U hoeft de interne Azure-Load Balancer niet te configureren voor de scale-out bestands share netwerk naam, zoals voor \<SAP Global host\>. Dit wordt gedaan voor de \<virtuele\> ASCS/SCS van het SAP ASCS/SCS-exemplaar of voor het DBMS. Een scale-out bestands share verg root de belasting over alle cluster knooppunten. \<SAP Global host\> gebruikt het lokale IP-adres voor alle cluster knooppunten.
 
