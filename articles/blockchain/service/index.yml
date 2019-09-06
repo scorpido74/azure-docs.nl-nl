@@ -1,57 +1,81 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure Blockchain Service
+summary: Informatie over het maken van blockchain-toepassingen. Zelfstudies, API-referentiematerialen en andere documentatie beschrijven hoe u met Azure Blockchain Service blockchain-toepassingen in Azure kunt maken, ontwikkelen en beheren.
 metadata:
-  title: 'Documentatie voor Azure Blockchain Service - zelfstudies, API-referentiemateriaal'
-  description: 'Informatie over het maken van blockchain-toepassingen. Zelfstudies, API-referentiematerialen en andere documentatie beschrijven hoe u met Azure Blockchain Service blockchain-toepassingen in Azure kunt maken, ontwikkelen en beheren.'
+  title: Documentatie voor Azure Blockchain Service - zelfstudies, API-referentiemateriaal
+  description: Informatie over het maken van blockchain-toepassingen. Zelfstudies, API-referentiematerialen en andere documentatie beschrijven hoe u met Azure Blockchain Service blockchain-toepassingen in Azure kunt maken, ontwikkelen en beheren.
   services: azure-blockchain
-  author: patricka
-  manager: femila
   ms.service: azure-blockchain
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/13/2019
+  author: PatAltimore
   ms.author: patricka
-abstract:
-  description: 'Informatie over het maken van blockchain-toepassingen. Zelfstudies, API-referentiematerialen en andere documentatie beschrijven hoe u met Azure Blockchain Service blockchain-toepassingen in Azure kunt maken, ontwikkelen en gebruiken.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Meer informatie over het maken van en verbinding maken met consortiumleden in Azure.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/deploy.svg
-            text: Consortiumleden maken
-            href: /azure/blockchain/service/create-member
-          - image:
-              src: ./media/index/multi-connect.svg
-            text: Verbinding maken met behulp van MetaMask
-            href: /azure/blockchain/service/connect-metamask
-          - image:
-              src: ./media/index/cligeneric.svg
-            text: Verbinding maken met behulp van Geth
-            href: /azure/blockchain/service/connect-geth
-          - image:
-              src: ./media/index/code-blocks.svg
-            text: Verbinding maken met behulp van Truffle
-            href: /azure/blockchain/service/connect-truffle
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Meer informatie over het maken, configureren en ontwikkelen van blockchain-toepassingen in Azure.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/blockchain/service/send-transaction">Een Azure Blockchain Service-lid maken en een transactie verzenden</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/blockchain">REST API</a></p>'
+  ms.date: 08/29/2019
+  ms.openlocfilehash: c5816bb2278c138a8df07c5c289d53a818614d86
+  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70240842"
+landingContent:
+- title: Over Azure Blockchain Service
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Blockchain Service?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Blockchain-netwerken van privé-consortiums
+      url: consortium.md
+    - text: Gegevenstoegang en -beveiliging
+      url: data-security.md
+    - text: Ontwikkelhulpprogramma’s
+      url: develop.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Een blockchain-lid maken - portal
+      url: create-member.md
+    - text: Een blockchain-lid maken - CLI
+      url: create-member-cli.md
+  - linkListType: quickstart
+    links:
+    - text: MetaMask gebruiken om verbinding te maken en Remix om een slim contract te implementeren
+      url: connect-metamask.md
+    - text: Geth gebruiken om verbinding te maken met een transactieknooppunt
+      url: connect-geth.md
+    - text: Truffle gebruiken om verbinding te maken met een transactieknooppunt
+      url: connect-truffle.md
+  - linkListType: tutorial
+    links:
+    - text: Slimme contracten gebruiken in Azure Blockchain Service
+      url: send-transaction.md
+  - linkListType: video
+    links:
+    - text: Uw netwerk implementeren en configureren
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
+    - text: Slimme contracten schrijven en testen met VS Code
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-II-Write-and-test-smart-contracts-with-VS-Code
+    - text: Gegevens naar het grootboek verzenden
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-III-Send-data-to-the-ledger
+    - text: Gebeurtenissen en grootboekgegevens publiceren
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-IV-Publish-events-and-ledger-data
+- title: Beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Blockchain-leden beheren - CLI
+      url: manage-cli.md
+    - text: Consortiumleden beheren - PowerShell
+      url: manage-consortium-powershell.md
+    - text: Transactieknooppunten configureren
+      url: configure-transaction-nodes.md
+    - text: Active Directory-toegang configureren
+      url: configure-aad.md
+- title: API
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST-API
+      url: https://docs.microsoft.com/rest/api/blockchain

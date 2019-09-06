@@ -1,85 +1,139 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie voor Azure Database voor PostgreSQL
+### YamlMime:Landing
+title: Documentatie voor Azure Database for PostgreSQL
+summary: "Azure Database for PostgreSQL is een relationele databaseservice op basis van de open-source PostgreSQL-database-engine. Deze volledig beheerde Database as a Service kan bedrijfskritieke workloads verwerken met voorspelbare prestaties, beveiliging, hoge beschikbaarheid en dynamische schaalbaarheid. De service is beschikbaar in twee implementatieopties: enkele server en Hyperscale (Citus) (preview). De optie Hyperscale (Citus) schaalt query's horizontaal op meerdere machines met behulp van sharding en is geschikt voor toepassingen die betere schaalbaarheid en prestaties vereisen. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u Azure Database voor PostgreSQL gebruikt."
 metadata:
-  document_id: c0fe8cd3-35da-e3e5-718e-8f3cf2f87f34
-  title: 'Documentatie voor Azure PostgreSQL - zelfstudies, API-verwijzing'
   description: Azure Database voor PostgreSQL is een relationele databaseservice in de Microsoft Cloud die is gebouwd voor ontwikkelaars op basis van de open-source PostgreSQL-database-engine.
   author: rachel-msft
   ms.author: raagyema
+  ms.date: 08/30/2019
   ms.service: postgresql
   ms.topic: landing-page
-  ms.date: 04/26/2019
-abstract:
-  description: 'Azure Database for PostgreSQL is een relationele databaseservice op basis van de open-source PostgreSQL-database-engine.  Deze volledig beheerde Database as a Service kan bedrijfskritieke workloads verwerken met voorspelbare prestaties, beveiliging, hoge beschikbaarheid en dynamische schaalbaarheid. De service is beschikbaar in twee implementatieopties: enkele server en Hyperscale (Citus) (preview). De optie Hyperscale (Citus) schaalt query''s horizontaal op meerdere machines met behulp van sharding en is geschikt voor toepassingen die betere schaalbaarheid en prestaties vereisen. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u Azure Database voor PostgreSQL gebruikt.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Lees hoe u een PostgreSQL-database maakt met:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Enkele server via Azure-portal
-            href: /azure/postgresql/quickstart-create-server-database-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/cli.svg'
-            text: Enkele server via Azure-CLI
-            href: /azure/postgresql/quickstart-create-server-database-azure-cli
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Hyperscale (Citus) via Azure-portal
-            href: /azure/postgresql/quickstart-create-hyperscale-portal
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Voor enkele server:'
-      - type: list
-        style: ordered
-        items:
-          - html: 'Een database ontwerpen: <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>'
-          - html: <a href="/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Een webtoepassing maken met Python en de CLI</a>
-          - html: <a href="/azure/postgresql/tutorial-monitor-and-tune">De service controleren en afstemmen</a>
-      - type: paragraph
-        text: 'Voor Hyperscale (Citus) (preview):'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/postgresql/tutorial-design-database-hyperscale-multi-tenant">Een multitenant-database ontwerpen</a>
-          - html: <a href="/azure/postgresql/tutorial-design-database-hyperscale-realtime">Een realtime-database ontwerpen</a>
-  - title: Uw vaardigheden ontwikkelen met Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Een Azure-database voor PostgreSQL-server maken
-            href: /learn/modules/create-azure-db-for-postgresql-server/
-            image:
-              src: /learn/achievements/create-azure-db-for-postgresql-server.svg
-              href: /learn/modules/create-azure-db-for-postgresql-server/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure">Meer interactief leren...</a>
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: Zoek scripts om algemene taken te beheren.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/postgresql/sample-scripts-azure-cli">Azure-CLI</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: <p><a href="/cli/azure/postgres">Azure-CLI</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/postgresql">REST API</a></p>
-          - title: Azure Resource Manager
-            html: <p><a href="/azure/templates/microsoft.dbforpostgresql/allversions">Resource Manager-sjablonen</a></p>
+  ms.openlocfilehash: 6d35798d5e87945656acb298ec6fa06518487f3e
+  ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70259162"
+landingContent:
+- title: Algemene informatie over Azure Database for PostgreSQL
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Database for PostgreSQL?
+      url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: Bekijk ons blog
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
+- title: Eén server maken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een server maken met de Azure-portal
+      url: quickstart-create-server-database-portal.md
+    - text: Een server maken met Azure CLI
+      url: quickstart-create-server-database-azure-cli.md
+  - linkListType: learn
+    links:
+    - text: 'Trainingsmodule: Een Azure-database voor PostgreSQL-server maken'
+      url: /learn/modules/create-azure-db-for-postgresql-server/
+  - linkListType: concept
+    links:
+    - text: Prijscategorieën
+      url: concepts-pricing-tiers.md
+    - text: Limieten
+      url: concepts-limits.md
+    - text: PostgreSQL-versies
+      url: concepts-supported-versions.md
+    - text: PostgreSQL-extensies - één server
+      url: concepts-extensions.md
+  - linkListType: tutorial
+    links:
+    - text: Een database ontwerpen met de Azure-portal
+      url: tutorial-design-database-using-azure-portal.md
+    - text: Een database ontwerpen met Azure CLI
+      url: tutorial-design-database-using-azure-cli.md
+    - text: Een web-app maken met Python en de CLI
+      url: /azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json
+    - text: De service controleren en afstemmen
+      url: tutorial-monitor-and-tune.md
+- title: Een Hyperscale (Citus)-cluster maken (preview)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een Hyperscale (Citus)-cluster (preview) maken in de Azure-portal
+      url: quickstart-create-hyperscale-portal.md
+  - linkListType: tutorial
+    links:
+    - text: Een multitenant-database ontwerpen
+      url: tutorial-design-database-hyperscale-multi-tenant.md
+    - text: Een realtime-database ontwerpen
+      url: tutorial-design-database-hyperscale-realtime.md
+  - linkListType: concept
+    links:
+    - text: PostgreSQL-extensies - Hyperscale
+      url: concepts-hyperscale-extensions.md
+    - text: Informatie over knooppunten
+      url: concepts-hyperscale-nodes.md
+    - text: Informatie over gedistribueerde gegevens
+      url: concepts-hyperscale-distributed-data.md
+    - text: Prestatieopties configureren
+      url: concepts-hyperscale-configuration-options.md
+- title: Verbinding maken met één server
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Informatie over de firewall
+      url: concepts-firewall-rules.md
+    - text: Firewall-regels maken
+      url: howto-manage-firewall-using-portal.md
+    - text: SSL configureren
+      url: concepts-ssl-connection-security.md
+  - linkListType: get-started
+    links:
+    - text: Verbinding maken met behulp van Python
+      url: connect-python.md
+    - text: Verbinding maken met behulp van Node.js
+      url: connect-nodejs.md
+    - text: Verbinding maken met behulp van Java
+      url: connect-java.md
+    - text: Verbinding maken met behulp van Ruby
+      url: connect-ruby.md
+    - text: Verbinding maken met behulp van PHP
+      url: connect-php.md
+    - text: Verbinding maken met behulp van .NET
+      url: connect-csharp.md
+    - text: Verbinding maken met behulp van Go
+      url: connect-go.md
+- title: Coderen met programmeer-API's
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure CLI-scripts voor algemene taken
+      url: /azure/postgresql/sample-scripts-azure-cli
+  - linkListType: reference
+    links:
+    - text: Naslaginformatie voor Azure CLI-ontwikkelaars
+      url: /rest/api/postgresql/
+    - text: Naslaginformatie voor REST API-ontwikkelaars
+      url: /cli/azure/postgres
+    - text: Azure Resource Manager-sjablonen
+      url: /azure/templates/microsoft.dbforpostgresql/allversions
+- title: Back-up maken van gegevens en gegevens migreren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Back-ups maken en herstellen op één server
+      url: concepts-backup.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een server herstellen met de Azure-portal
+      url: howto-restore-server-portal.md
+    - text: Een server herstellen met Azure CLI
+      url: howto-restore-server-cli.md
+    - text: Een database migreren met behulp van dump en herstel
+      url: howto-migrate-using-dump-and-restore.md
+    - text: Een database migreren met behulp van exporteren en importeren
+      url: howto-migrate-using-export-and-import.md
+    - text: Migraties met minimale downtime
+      url: howto-migrate-online.md

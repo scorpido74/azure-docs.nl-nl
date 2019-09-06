@@ -12,14 +12,16 @@
       href: virtual-wan-expressroute-portal.md
 - name: Concepten
   items:
-    - name: Over locaties en partners
+    - name: Locaties en partners
       href: virtual-wan-locations-partners.md
-    - name: Over wereldwijde architectuur voor doorvoernetwerk
-      href: virtual-wan-global-transit-network-architecture.md
-    - name: Over Office 365-controlelaag in Virtual WAN
-      href: virtual-wan-office365-overview.md
-    - name: Over IPSec-beleid
+    - name: IPSec-beleid
       href: virtual-wan-ipsec.md
+    - name: Architectuur
+      items:
+        - name: Wereldwijde architectuur voor doorvoernetwerk
+          href: virtual-wan-global-transit-network-architecture.md
+        - name: Office 365-controlelaag in Virtual WAN
+          href: virtual-wan-office365-overview.md
 - name: Handleidingen
   items:
     - name: Verkeer routeren van een virtuele hub naar een NVA

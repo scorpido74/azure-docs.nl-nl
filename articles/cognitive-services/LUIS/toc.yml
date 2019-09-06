@@ -124,13 +124,13 @@
     - name: Uw app plannen
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
-    - name: Author-app
+    - name: Ontwerp- en runtimesleutels
+      displayName: 'shared, transfer, ownership, author, access, import'
+      href: luis-concept-keys.md
+    - name: App-model ontwerpen
       items:
         - name: Ontwerpcyclus
           href: luis-concept-app-iteration.md
-        - name: Samenwerking
-          displayName: 'shared, transfer, ownership, author, access, import'
-          href: luis-concept-collaborator.md
         - name: Versiebeheer
           href: luis-concept-version.md
           displayName: import
@@ -141,10 +141,10 @@
         - name: Entiteiten
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
+        - name: Entiteitsrollen
+          href: luis-concept-roles.md
         - name: Utterances
           href: luis-concept-utterance.md
-        - name: Rollen
-          href: luis-concept-roles.md
         - name: Vooraf gemaakte modellen
           href: luis-concept-prebuilt-model.md
     - name: App-prestaties verbeteren
@@ -180,13 +180,6 @@
         - name: Ontwerpstrategieën
           href: luis-concept-enterprise.md
           displayName: import
-    - name: Beveiliging
-      items:
-        - name: App-toegang
-          displayName: 'public, public app, AAD, compliance, ISO, certification, trust center, import'
-          href: luis-concept-security.md
-        - name: Ontwerp- en eindpuntsleutels
-          href: luis-concept-keys.md
 - name: Handleidingen
   items:
     - name: Een nieuwe app starten
@@ -248,18 +241,22 @@
       href: luis-how-to-publish-app.md
     - name: Een app beheren
       items:
-        - name: Abonnementssleutels gebruiken met uw LUIS-app
-          displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription'
+        - name: Ontwerp- en runtimesleutels
+          displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
-        - name: Versies beheren
-          href: luis-how-to-manage-versions.md
-          diplayName: 'import, export, container'
-        - name: Auteurs en samenwerkers beheren
+        - name: Migreren naar ontwerpsleutel
+          items:
+            - name: Overzicht
+              href: luis-migration-authoring.md
+            - name: Migreren
+              href: luis-migration-authoring-steps.md
+        - name: Auteurs en samenwerkers
           displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
           href: luis-how-to-collaborate.md
-        - name: Ontwerpsleutel beheren
-          href: luis-how-to-account-settings.md
-        - name: Eindpuntquota over sleutels verdelen met Traffic Manager
+        - name: Met versies
+          href: luis-how-to-manage-versions.md
+          diplayName: 'import, export, container'
+        - name: Met Traffic Manager
           href: luis-traffic-manager.md
     - name: API migreren
       items:

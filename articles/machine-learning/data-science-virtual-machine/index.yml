@@ -1,55 +1,57 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie over Azure Data Science Virtual Machine
+summary: Azure Data Science Virtual Machine (DSVM) is een aangepaste VM-installatiekopie met hulpprogramma's voor gegevenswetenschap en ML. Gebruik deze VM om intelligente toepassingen te bouwen voor geavanceerde analyse.
 metadata:
   title: Documentatie over Data Science Virtual Machine - Azure
-  description: 'Informatie over hoe u Data Science Virtual Machine gebruikt, een experimentele omgeving in de Azure-cloud die voor gegevenswetenschap is gebouwd. Populaire hulpprogramma''s voor gegevenswetenschap en machine learning zijn vooraf geïnstalleerd en vooraf geconfigureerd. Dit ontwerp geeft u een voorsprong bij het bouwen van intelligente toepassingen voor geavanceerde analyse.'
+  description: Data Science Virtual Machine is een experimentele omgeving in de Azure-cloud die voor gegevenswetenschap is gebouwd. Populaire hulpprogramma's voor gegevenswetenschap en ML zijn vooraf geïnstalleerd.
   services: machine-learning
-  author: vijetajo
   ms.service: machine-learning
   ms.subservice: data-science-vm
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 08/19/2019
-  ms.author: vijetaj
-abstract:
-  description: Azure Data Science Virtual Machine (DSVM) is een aangepaste VM-installatiekopie met gegevenswetenschap en machine learning-hulpprogramma's. U kunt deze VM gebruiken om intelligente toepassingen te bouwen voor geavanceerde analyse. <a href="overview.md">Meer informatie</a>.
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Informatie over het instellen van een op Windows of Linux gebaseerde Data Science Virtual Machine:'
-      - type: paragraph
-        text: <b>Windows DSVM</b>
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="provision-vm">Een Windows-DSVM instellen</a>
-          - html: <a href="vm-do-ten-things">Een Windows-DSVM gebruiken</a>
-      - type: paragraph
-        text: <b>Linux-DSVM (Ubuntu | CentOS)</b>
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="linux-dsvm-intro">Een Linux CentOS-DSVM instellen</a>
-          - html: <a href="dsvm-ubuntu-intro">Een Linux Ubuntu-DSVM instellen</a>
-          - html: <a href="linux-dsvm-walkthrough">Een Linux-DSVM gebruiken</a>
-  - title: Meer Azure Machine Learning-technologieën
-    items:
-      - type: paragraph
-        text: 'Andere technologieën in Azure Machine Learning:'
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure Machine Learning-service
-            href: /azure/machine-learning/service/
-            image:
-              src: media/index/i_machine-learning.svg
-              href: /azure/machine-learning/service/
-          - title: Azure Machine Learning Studio
-            href: /azure/machine-learning/studio/
-            image:
-              src: media/index/machine-learning-studio.svg
-              href: /azure/machine-learning/studio/
+  ms.collection: collection
+  author: j-martens
+  ms.author: jmartens
+  ms.date: 09/03/2019
+  ms.openlocfilehash: c33504124bdef2edf44842581143a8468cbb1e20
+  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70308796"
+landingContent:
+- title: Aan de slag met uw DSVM
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure DSVM?
+      url: overview.md
+    - text: Wat is Geo AI DSVM?
+      url: geo-ai-dsvm-overview.md
+  - linkListType: get-started
+    links:
+    - text: Een Windows-DSVM maken
+      url: provision-vm.md
+    - text: Een Ubuntu-DSVM maken
+      url: dsvm-ubuntu-intro.md
+    - text: Een CentOS-DSVM maken
+      url: linux-dsvm-intro.md
+    - text: Een Geo AI-DSVM maken
+      url: provision-geo-ai-dsvm.md
+- title: Uw DSVM beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Automatisch geschaalde DSVM-pools maken
+      url: dsvm-pools.md
+    - text: Integratie met Active Directory
+      url: dsvm-common-identity.md
+    - text: Referenties voor resourcetoegang beveiligen
+      url: dsvm-secure-access-keys.md
+- title: Meer Azure Machine Learning-technologieën
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Machine Learning-service
+      url: /azure/machine-learning/
+    - text: Onze ML-producten vergelijken
+      url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context

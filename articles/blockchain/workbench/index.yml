@@ -1,36 +1,99 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure Blockchain Workbench
+summary: Informatie over het maken van blockchain-toepassingen. Zelfstudies, API-verwijzingen en andere documentatie beschrijven hoe u Azure Blockchain Workbench kunt implementeren en blockchain-toepassingen in Azure kunt maken en beheren.
 metadata:
-  title: 'Documentatie voor Azure Blockchain Workbench - zelfstudies, API-verwijzing | Microsoft Docs'
-  description: 'Informatie over het maken van blockchain-toepassingen. Zelfstudies, API-verwijzingen en andere documentatie beschrijven hoe u Azure Blockchain Workbench kunt implementeren en blockchain-toepassingen in Azure kunt maken en beheren.'
-  services: blockchain-workbench
-  author: patricka
-  manager: femila
-  ms.service: blockchain-workbench
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  title: Documentatie voor Azure Blockchain Workbench - zelfstudies, API-naslag
+  description: Informatie over het maken van blockchain-toepassingen. Zelfstudies, API-verwijzingen en andere documentatie beschrijven hoe u Azure Blockchain Workbench kunt implementeren en blockchain-toepassingen in Azure kunt maken en beheren.
+  services: azure-blockchain
+  ms.service: azure-blockchain
   ms.topic: landing-page
-  ms.date: 04/17/2018
+  author: PatAltimore
   ms.author: patricka
-abstract:
-  description: 'Informatie over het maken van blockchain-toepassingen. Zelfstudies, API-verwijzingen en andere documentatie beschrijven hoe u Azure Blockchain Workbench kunt implementeren om blockchain-toepassingen in Azure te maken en te gebruiken.'
-sections:
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Informatie over het implementeren, maken en gebruiken van blockchain-toepassingen in Azure.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/blockchain-workbench/blockchain-workbench-deploy">Azure Blockchain Workbench implementeren</a>
-          - html: <a href="/azure/blockchain-workbench/blockchain-workbench-create-app">Een blockchain-app maken</a>
-          - html: <a href="/azure/blockchain-workbench/blockchain-workbench-use">Een blockchain-app gebruiken</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/azure-blockchain-workbench">REST API</a></p>'
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 515e269619f7efa5c00071794e41fff83b81ed60
+  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70240819"
+landingContent:
+- title: Over Azure Blockchain Workbench
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Blockchain Workbench?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Architectuur
+      url: architecture.md
+  - linkListType: video
+    links:
+    - text: Kennismaking met Azure Blockchain Workbench
+      url: https://channel9.msdn.com/Shows/Blocktalk/Introduction-to-Azure-Blockchain-Workbench
+- title: Aan de slag
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Azure Blockchain Workbench implementeren
+      url: deploy.md
+  - linkListType: tutorial
+    links:
+    - text: Een Blockchain Workbench-toepassing maken
+      url: create-app.md
+    - text: Een Blockchain Workbench-toepassing gebruiken
+      url: use.md
+  - linkListType: video
+    links:
+    - text: Uw eerste Azure Blockchain Workbench-toepassing maken
+      url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
+- title: Voorbeeldcontracten
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Simple marketplace
+      url: https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/simple-marketplace
+    - text: Basic provenance
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/basic-provenance
+    - text: Digital Locker
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/digital-locker
+    - text: Refrigerated Transportation
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation
+    - text: Asset Transfer
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer
+    - text: Geavanceerde marketplace met verschillende werkstromen
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/bazaar-item-listing
+- title: Beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Toepassingsgebruikers beheren
+      url: manage-users.md
+    - text: Toepassingsconfiguratie
+      url: configuration.md
+    - text: Versiebeheer toepassingen
+      url: version-app.md
+- title: Integreren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Integratiepatronen voor slimme contracten
+      url: integration-patterns.md
+  - linkListType: how-to-guide
+    links:
+    - text: Verbinding maken met database buiten blockchain
+      url: getdb-details.md
+    - text: Gegevens in Excel gebruiken
+      url: data-excel.md
+    - text: Gegevens in Power BI gebruiken
+      url: data-powerbi.md
+    - text: Gegevens in SQL Management Studio gebruiken
+      url: data-sql-management-studio.md
+  - linkListType: reference
+    links:
+    - text: REST-API
+      url: use-api.md
+    - text: Berichten-API
+      url: messages-overview.md
+    - text: Databaseweergaven
+      url: database-views.md

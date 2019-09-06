@@ -1,57 +1,57 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie voor Machine Learning Studio
+### YamlMime:Landing
+title: Documentatie voor Azure Machine Learning Studio
+summary: Machine Learning Studio is een hulpprogramma met functionaliteit op basis van slepen en neerzetten waarmee u oplossingen voor predictive analytics kunt ontwikkelen, testen en implementeren.
 metadata:
-  title: 'Documentatie voor Azure Machine Learning Studio - zelfstudies, verwijzing | Microsoft Docs'
-  description: 'Azure Machine Learning Studio is een hulpprogramma met functionaliteit op basis van slepen en neerzetten, waarmee u in samenwerkingsverband predictive analytics-oplossingen voor uw gegevens kunt ontwikkelen, testen en implementeren. Zelfstudies, video''s en voorbeeldmodellen laten zien hoe u Machine Learning-modellen kunt maken en implementeren met behulp van Studio.'
+  title: Documentatie voor Machine Learning Studio - Azure
+  description: Machine Learning Studio is een hulpprogramma met functionaliteit op basis van slepen en neerzetten waarmee u oplossingen voor predictive analytics kunt ontwikkelen, testen en implementeren.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: studio
   ms.topic: landing-page
+  ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.date: 02/24/2019
-abstract:
-  description: 'Azure Machine Learning Studio is een hulpprogramma met functionaliteit op basis van slepen en neerzetten, waarmee u in samenwerkingsverband predictive analytics-oplossingen voor uw gegevens kunt ontwikkelen, testen en implementeren. Zelfstudies, video''s en voorbeeldmodellen laten zien hoe u Machine Learning-modellen kunt maken en implementeren met behulp van Studio.'
-sections:
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Volg uitgebreide zelfstudies die u stap voor stap helpen bij het maken en implementeren van modellen:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="create-experiment">Uw eerste Studio-experiment opzetten</a>
-          - html: <a href="tutorial-part1-credit-risk">Een voorspellende oplossing voor kredietrisico maken en implementeren</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: <p><a href="powershell-module">PowerShell-modules</a></p>
-          - title: Modules
-            html: '<p><a href="https://msdn.microsoft.com/library/azure/dn905974.aspx">Naslaginformatie over algoritmen en modules</a></p>'
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/machinelearning/">API''s voor REST-beheer</a></p><p><a href="web-service-error-codes">Foutcodes voor webservices</a></p>'
-  - title: Meer Azure Machine Learning-technologieën
-    items:
-      - type: paragraph
-        text: 'Andere technologieën in Azure Machine Learning:'
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure Machine Learning-service
-            href: /azure/machine-learning/service/
-            image:
-              src: media/index/i_machine-learning.svg
-              href: /azure/machine-learning/service/
-          - title: Data Science Virtual Machine
-            href: /azure/machine-learning/data-science-virtual-machine/
-            image:
-              src: media/index/virtual-machines.svg
-              href: /azure/machine-learning/data-science-virtual-machine/
+  ms.date: 09/03/2019
+  ms.openlocfilehash: 774c63e1df815b509a88b9de25b8199b53bfafa1
+  ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70278013"
+landingContent:
+- title: Informatie over Machine Learning Studio
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Studio?
+      url: what-is-ml-studio.md
+    - text: Onze ML-producten vergelijken
+      url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
+- title: Aan de slag met Studio
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Uw eerste ML-experiment opzetten
+      url: create-experiment.md
+    - text: Een voorspellende oplossing maken
+      url: tutorial-part1-credit-risk.md
+- title: Verwijzingen
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Opdrachtregelmodules van PowerShell
+      url: powershell-module.md
+    - text: Naslaginformatie over algoritmen en modules
+      url: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/index
+    - text: API's voor REST-beheer
+      url: https://docs.microsoft.com/rest/api/machinelearning/
+    - text: Foutcodes voor webservices
+      url: web-service-error-codes.md
+- title: Meer Azure Machine Learning-technologieën
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Machine Learning-service
+      url: /azure/machine-learning/
+    - text: Azure Data Science Virtual Machine
+      url: /azure/machine-learning/data-science-virtual-machine

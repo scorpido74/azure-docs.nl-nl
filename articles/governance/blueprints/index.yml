@@ -1,49 +1,103 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie voor de Azure Blueprints-service
+### YamlMime:Landing
+title: Documentatie over Azure Blueprints
+summary: Vereenvoudig implementaties door artefacten, zoals Resource Manager-sjablonen, toegangsbeheer op basis van rollen en beleidsregels, in één blauwdrukdefinitie in te pakken.
 metadata:
-  title: 'Documentatie voor Azure Blueprints - zelfstudies, API-naslag'
-  description: 'Azure Blueprints is een service in Azure waarmee u artefacten kunt maken, definiëren en implementeren in uw Azure-omgeving.'
-  author: DCtheGeek
-  manager: carmonm
+  title: Documentatie over Azure Blueprints
+  description: Vereenvoudig implementaties door artefacten, zoals Resource Manager-sjablonen, toegangsbeheer op basis van rollen en beleidsregels, in één blauwdrukdefinitie in te pakken.
   ms.service: blueprints
   ms.topic: landing-page
-  ms.date: 06/14/2019
+  ms.collection: collection
+  author: DCtheGeek
   ms.author: dacoulte
-abstract:
-  description: 'Met Azure Blueprints kunt u cloudomgevingen op een herhaalbare manier implementeren en bijwerken met behulp van samenstelbare artefacten (zoals Azure Resource Manager-sjablonen) om resources, op rollen gebaseerd toegangsbeheer en beleid te implementeren.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Lees meer informatie over hoe u in Azure blauwdrukdefinities maakt, toewijst en beheert.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              alt: Azure-portal
-              src: ./media/portal.svg
-            text: Azure-portal
-            href: create-blueprint-portal.md
-          - image:
-              alt: Azure PowerShell
-              src: ./media/powershell.svg
-            text: Azure PowerShell
-            href: create-blueprint-powershell.md
-          - image:
-              alt: REST
-              src: ./media/rest.svg
-            text: REST
-            href: create-blueprint-rest-api.md
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: '<p><a href="/powershell/module/az.blueprint/#blueprint">Azure PowerShell</a></p>'
-          - title: Talen
-            html: <p><a href="/dotnet/api/overview/azure/blueprints/management">Azure-SDK voor .NET</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/blueprints/">API-naslaginformatie</a></p>
+  ms.date: 09/01/2019
+  ms.openlocfilehash: 44d21c07a81dc3fe5912137691b67af1a3e910e2
+  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70239204"
+landingContent:
+- title: Azure Blueprints
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Blueprints?
+      url: ./overview.md
+    - text: Implementatiefasen
+      url: ./concepts/deployment-stages.md
+    - text: Levenscyclus van een blauwdruk
+      url: ./concepts/lifecycle.md
+  - linkListType: video
+    links:
+    - text: Azure Friday - Overzicht van Azure Blueprints
+      url: https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een nieuwe blauwdruk maken (portal)
+      url: ./create-blueprint-portal.md
+    - text: Een nieuwe blauwdruk maken (PowerShell)
+      url: ./create-blueprint-powershell.md
+    - text: Een nieuwe blauwdruk maken (REST API)
+      url: ./create-blueprint-rest-api.md
+  - linkListType: tutorial
+    links:
+    - text: Een blauwdrukvoorbeeld gebruiken
+      url: ./tutorials/create-from-sample.md
+  - linkListType: deploy
+    links:
+    - text: Index van blauwdrukvoorbeelden
+      url: ./samples/index.md
+- title: Blauwdrukken aanpassen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Dynamische parameters
+      url: ./concepts/parameters.md
+    - text: Sequentie-artefacten
+      url: ./concepts/sequencing-order.md
+    - text: Geïmplementeerde resources vergrendelen
+      url: ./concepts/resource-locking.md
+  - linkListType: tutorial
+    links:
+    - text: Nieuwe resources beveiligen met vergrendelingen
+      url: ./tutorials/protect-new-resources.md
+- title: Ontwikkelen naar 'op schaal'
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Bestaande blauwdrukken bijwerken
+      url: ./how-to/update-existing-assignments.md
+    - text: Toewijzingen beheren met PowerShell
+      url: ./how-to/manage-assignments-ps.md
+    - text: Importeren en exporteren met PowerShell
+      url: ./how-to/import-export-ps.md
+    - text: Blauwdrukoperatoren implementeren
+      url: ./how-to/configure-for-blueprint-operator.md
+    - text: Blauwdrukken beheren als code
+      url: https://github.com/Azure/azure-blueprints/blob/master/README.md
+- title: Doe mee
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: YouTube-kanaal over Azure Governance
+      url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
+    - text: Productfunctie aanvragen
+      url: https://feedback.azure.com/forums/915958-azure-governance
+    - text: Technische community voor Azure Governance
+      url: https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Specifieke functies voor blauwdrukken
+      url: ./reference/blueprint-functions.md
+    - text: PowerShell-module (PSGallery)
+      url: https://www.powershellgallery.com/packages/Az.Blueprint
+    - text: Azure PowerShell
+      url: /powershell/module/az.blueprint/#blueprint
+    - text: REST-API
+      url: /rest/api/blueprints/
+    - text: .NET
+      url: /dotnet/api/overview/azure/blueprints/management

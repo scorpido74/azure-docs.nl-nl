@@ -60,9 +60,6 @@
   items:
     - name: Sjabloonimplementaties
       href: template-deployment-overview.md
-    - name: Sjabloonbestandstructuur
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: resource-group-authoring-templates.md
     - name: Best practices voor sjablonen
       href: template-best-practices.md
     - name: Sjablonen voor de consistentie van de cloud
@@ -85,26 +82,38 @@
   items:
     - name: Sjablonen maken
       items:
-        - name: Hulpprogramma - VS Code
+        - name: VS Code gebruiken
           href: resource-manager-tools-vs-code.md
-        - name: Sjabloon maken
-          href: how-to-create-template.md
-        - name: Naam en type van onderliggende resource
-          href: child-resource-name-type.md
-        - name: Resourcegroepen en resources in het abonnement maken
-          displayName: subscription level deployment
-          href: deploy-to-subscription.md
-        - name: Bronafhankelijkheden definiëren
-          href: resource-group-define-dependencies.md
+        - name: Sjabloonexpressies schrijven
+          href: template-expressions.md
+        - name: Parameters
+          href: template-parameters.md
+        - name: Variabelen
+          href: template-variables.md
+        - name: Door de gebruiker gedefinieerde functies
+          href: template-user-defined-functions.md
+        - name: Resources
+          items:
+            - name: Naam en type van onderliggende resource
+              href: child-resource-name-type.md
+            - name: Voorwaardelijke implementatie
+              href: conditional-resource-deployment.md
+            - name: Resourceafhankelijkheden instellen
+              href: resource-group-define-dependencies.md
+            - name: Resourcelocatie instellen
+              href: resource-location.md
+            - name: Sjabloonextensies gebruiken
+              href: resource-manager-use-extensions.md
+        - name: Uitvoer
+          href: template-outputs.md
         - name: Sjablonen modulair maken
           displayName: 'linked templates, nested templates'
           href: resource-group-linked-templates.md
         - name: Meerdere exemplaren maken
           href: resource-group-create-multiple.md
-        - name: Sjabloonextensies gebruiken
-          href: resource-manager-use-extensions.md
-        - name: Resources bijwerken
-          href: /azure/architecture/building-blocks/extending-templates/update-resource
+        - name: Resourcegroepen en resources in het abonnement maken
+          displayName: subscription level deployment
+          href: deploy-to-subscription.md
     - name: Sjablonen implementeren
       items:
         - name: Implementeren - portal
@@ -244,6 +253,9 @@
       href: resource-manager-async-operations.md
 - name: Naslaginformatie
   items:
+    - name: Sjabloonbestandstructuur
+      displayName: 'parameters,variables,resources,outputs,condition'
+      href: resource-group-authoring-templates.md
     - name: Sjabloonverwijzing
       href: /azure/templates/
     - name: Sjabloonfuncties

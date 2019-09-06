@@ -219,10 +219,16 @@
       items:
         - name: Documentatie voor beheerde exemplaren
           href: sql-database-managed-instance-index.yml
-        - name: Mogelijkheden van beheerde exemplaren
+        - name: Overzicht beheerd exemplaar
           href: sql-database-managed-instance.md
         - name: Veelgestelde vragen over beheerdere exemplaren
           href: sql-database-managed-instance-faq.md
+        - name: Exemplaargroepen
+          items:
+            - name: Overzicht van exemplaargroepen
+              href: sql-database-instance-pools.md
+            - name: Instructies voor exemplaargroepen
+              href: sql-database-instance-pools-how-to.md
         - name: Beheer API-referentiemateriaal
           href: sql-database-managed-instance-create-manage.md
         - name: Bronlimieten
