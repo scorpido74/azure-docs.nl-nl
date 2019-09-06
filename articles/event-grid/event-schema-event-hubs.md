@@ -75,10 +75,10 @@ Het gegevensobject heeft de volgende eigenschappen:
 | fileUrl | string | Het pad naar het bestand vastleggen. |
 | fileType | string | Het bestandstype van het bestand vastleggen. |
 | partitionId | string | De shard-ID. |
-| sizeInBytes | geheel getal | De bestandsgrootte. |
-| eventCount | geheel getal | Het aantal gebeurtenissen in het bestand. |
-| firstSequenceNumber | geheel getal | Het kleinste volgnummer uit de wachtrij. |
-| lastSequenceNumber | geheel getal | Het laatste volgnummer uit de wachtrij. |
+| sizeInBytes | integer | De bestandsgrootte. |
+| eventCount | integer | Het aantal gebeurtenissen in het bestand. |
+| firstSequenceNumber | integer | Het kleinste volgnummer uit de wachtrij. |
+| lastSequenceNumber | integer | Het laatste volgnummer uit de wachtrij. |
 | firstEnqueueTime | string | De eerste keer uit de wachtrij. |
 | lastEnqueueTime | string | De laatste keer uit de wachtrij. |
 
