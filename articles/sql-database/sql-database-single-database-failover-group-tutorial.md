@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: d11dd72c65ea32fb5a262f325bdcad0b5a8ab863
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: a80dc8ccaa72a57986ed6c64f7ab7050ab4c7de5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566661"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099048"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Zelfstudie: Een Azure SQL Database afzonderlijke data base aan een failovergroep toevoegen
 
@@ -29,20 +29,20 @@ Configureer een failovergroep voor een Azure SQL Database afzonderlijke data bas
 
 ## <a name="prerequisites"></a>Vereisten
 
-# <a name="azure-portaltabazure-portal"></a>[Azure-portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien: 
 
 - Een Azure-abonnement. [Maak een gratis account](https://azure.microsoft.com/free/) als u er nog geen hebt.
 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Zorg ervoor dat u over de volgende items beschikt om de zelf studie te volt ooien:
 
 - Een Azure-abonnement. [Maak een gratis account](https://azure.microsoft.com/free/) als u er nog geen hebt.
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 Zorg ervoor dat u over de volgende items beschikt om de zelf studie te volt ooien:
 
 - Een Azure-abonnement. [Maak een gratis account](https://azure.microsoft.com/free/) als u er nog geen hebt.
@@ -55,42 +55,41 @@ Zorg ervoor dat u over de volgende items beschikt om de zelf studie te volt ooie
 [!INCLUDE [sql-database-create-single-database](includes/sql-database-create-single-database.md)]
 
 ## <a name="2---create-the-failover-group"></a>2-de groep failover maken 
-In deze stap maakt u een failovergroep [](sql-database-auto-failover-group.md) tussen een bestaande Azure SQL-Server en een nieuwe Azure SQL-Server in een andere regio. Voeg vervolgens de voorbeeld database toe aan de failovergroep. 
+In deze stap maakt u een [failovergroep](sql-database-auto-failover-group.md) tussen een bestaande Azure SQL-Server en een nieuwe Azure SQL-Server in een andere regio. Voeg vervolgens de voorbeeld database toe aan de failovergroep. 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure-portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Maak uw failovergroep en voeg uw afzonderlijke data base toe met behulp van de Azure Portal. 
 
 
-1. Selecteer **alle services** in de linkerbovenhoek van de [Azure Portal](https://portal.azure.com). 
-1. Typ `sql servers` in het zoekvak. 
-1. Beschrijving Selecteer het ster pictogram naast SQL-servers naar favoriete **SQL-servers** en voeg deze toe aan het navigatie deel venster aan de linkerkant. 
-    
-    ![SQL-servers zoeken](media/sql-database-single-database-create-failover-group-tutorial/all-services-sql-servers.png)
+1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
+1. Selecteer de afzonderlijke Data Base die u hebt gemaakt in de sectie `mySampleDatbase`2, zoals. 
+1. Selecteer de naam van de server onder **Server naam** om de instellingen voor de server te openen.
 
-1. Selecteer **SQL-servers** en kies de server die u hebt gemaakt in sectie 1 `mysqlserver`, zoals.
+   ![Server openen voor één data base](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
+
 1. Selecteer **failover-groepen** in het deel venster **instellingen** en selecteer vervolgens **groep toevoegen** om een nieuwe failovergroep te maken. 
 
-    ![Nieuwe failovergroep toevoegen](media/sql-database-single-database-create-failover-group-tutorial/sqldb-add-new-failover-group.png)
+    ![Nieuwe failovergroep toevoegen](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
 1. Voer op de pagina **failover-groep** de volgende waarden in of Selecteer deze en selecteer vervolgens **maken**:
-    - **Naam**van failovergroep: Typ een unieke naam voor de failovergroep, zoals `failovergrouptutorial`. 
+    - **Naam van failovergroep**: Typ een unieke naam voor de failovergroep, zoals `failovergrouptutorial`. 
     - **Secundaire server**: Selecteer de optie voor het configureren van de *vereiste instellingen* en kies vervolgens **een nieuwe server maken**. U kunt ook een al bestaande server kiezen als de secundaire server. Nadat u de volgende waarden hebt ingevoerd, selecteert u **selecteren**. 
         - **Servernaam**: Typ een unieke naam voor de secundaire server, zoals `mysqlsecondary`. 
         - **Aanmeldgegevens van serverbeheerder**: Voert`azureuser`
         - **Wachtwoord**: Typ een complex wacht woord dat voldoet aan de wachtwoord vereisten.
-        - **Locatie**: Kies een locatie in de vervolg keuzelijst, zoals VS-Oost 2. Deze locatie mag niet dezelfde locatie zijn als de primaire server.
+        - **Locatie**: Kies een locatie in de vervolg keuzelijst, zoals `East US`. Deze locatie mag niet dezelfde locatie zijn als de primaire server.
 
     > [!NOTE]
     > De aanmeldings-en Firewall instellingen van de server moeten overeenkomen met die van de primaire server. 
     
-      ![Een secundaire server maken voor de failovergroep](media/sql-database-single-database-create-failover-group-tutorial/create-secondary-failover-server.png)
+      ![Een secundaire server maken voor de failovergroep](media/sql-database-single-database-failover-group-tutorial/create-secondary-failover-server.png)
 
    - **Data bases in de groep**: Wanneer een secundaire server is geselecteerd, wordt deze optie ontgrendeld. Selecteer deze optie om **data bases te selecteren die u wilt toevoegen** en kies vervolgens de data base die u hebt gemaakt in sectie 1. Als u de data base aan de groep failover toevoegt, wordt het proces voor geo-replicatie automatisch gestart. 
         
-    ![SQL-data base toevoegen aan failovergroep](media/sql-database-single-database-create-failover-group-tutorial/add-sqldb-to-failover-group.png)
+    ![SQL-data base toevoegen aan failovergroep](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
         
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Maak uw failovergroep en voeg uw afzonderlijke data base toe met behulp van Power shell. 
 
    > [!NOTE]
@@ -99,12 +98,12 @@ Maak uw failovergroep en voeg uw afzonderlijke data base toe met behulp van Powe
    ```powershell-interactive
    # $subscriptionId = '<SubscriptionID>'
    # $resourceGroupName = "myResourceGroup-$(Get-Random)"
-   # $location = "West US 2"
+   # $location = "West US"
    # $adminLogin = "azureuser"
    # $password = "PWD27!"+(New-Guid).Guid
    # $serverName = "mysqlserver-$(Get-Random)"
    # $databaseName = "mySampleDatabase"
-   $drLocation = "East US 2"
+   $drLocation = "East US"
    $drServerName = "mysqlsecondary-$(Get-Random)"
    $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
 
@@ -146,7 +145,7 @@ Maak uw failovergroep en voeg uw afzonderlijke data base toe met behulp van Powe
    Write-host "Successfully added the database to the failover group..." 
    ```
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 Maak uw failovergroep en voeg uw afzonderlijke data base toe met behulp van AZ CLI. 
 
    > [!NOTE]
@@ -182,6 +181,7 @@ Maak uw failovergroep en voeg uw afzonderlijke data base toe met behulp van AZ C
       --partner-server $drServerName \
       --resource-group $resourceGroupName \
       --server $serverName \
+      --add-db $databaseName
       --failover-policy Automatic
    ```
 
@@ -190,24 +190,29 @@ Maak uw failovergroep en voeg uw afzonderlijke data base toe met behulp van AZ C
 ## <a name="3---test-failover"></a>3-testfailover 
 In deze stap wordt uw failover-groep overschreven naar de secundaire server en wordt er een failback uitgevoerd met behulp van de Azure Portal. 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure-portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Testfailover met behulp van de Azure Portal. 
 
-1. Navigeer naar uw **SQL** server-server binnen het [Azure Portal](https://portal.azure.com). 
+1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
+1. Selecteer de afzonderlijke Data Base die u hebt gemaakt in de sectie `mySampleDatbase`2, zoals. 
+1. Selecteer de naam van de server onder **Server naam** om de instellingen voor de server te openen.
+
+   ![Server openen voor één data base](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
+
 1. Selecteer **failover-groepen** in het deel venster **instellingen** en kies vervolgens de failovergroep die u hebt gemaakt in sectie 2. 
   
-   ![De groep failover selecteren in de portal](media/sql-database-single-database-create-failover-group-tutorial/select-failover-group.png)
+   ![De groep failover selecteren in de portal](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
 
 1. Controleer welke server primair is en welke server secundair is. 
 1. Selecteer **failover** in het taak venster om een failover uit te laten uw failover-groep met uw voor beeld-afzonderlijke data base. 
 1. Selecteer **Ja** in de waarschuwing waarmee u wordt gewaarschuwd dat TDS-sessies worden losgekoppeld. 
 
-   ![Failover van de failovergroep met uw SQL database](media/sql-database-single-database-create-failover-group-tutorial/failover-sql-db.png)
+   ![Failover van de failovergroep met uw SQL database](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
 
 1. Controleer welke server nu primair is en welke server secundair is. Als failover is geslaagd, moeten de twee servers omgewisselde rollen hebben. 
 1. Selecteer **failover** opnieuw om de oorspronkelijke rollen van de servers te herstellen. 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Testfailover met behulp van Power shell. 
 
 
@@ -262,7 +267,7 @@ Herstel de failovergroep terug naar de primaire server:
    Write-host "Failed failover group to successfully to back to" $serverName
    ```
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 Testfailover met de AZ CLI. 
 
 
@@ -319,7 +324,7 @@ Herstel de failovergroep terug naar de primaire server:
 ## <a name="clean-up-resources"></a>Resources opschonen 
 Resources opschonen door de resource groep te verwijderen. 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure-portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Verwijder de resource groep met behulp van de Azure Portal. 
 
 
@@ -327,7 +332,7 @@ Verwijder de resource groep met behulp van de Azure Portal.
 1. Selecteer **resource groep verwijderen** om alle resources in de groep en de resource groep zelf te verwijderen. 
 1. Typ de naam van de resource groep, `myResourceGroup`in het tekstvak en selecteer vervolgens **verwijderen** om de resource groep te verwijderen.  
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Verwijder de resource groep met behulp van Power shell. 
 
 
@@ -341,7 +346,7 @@ Verwijder de resource groep met behulp van Power shell.
    Write-host "Resource group removed =" $resourceGroupName
    ```
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 Verwijder de resource groep met behulp van AZ CLI. 
 
 
@@ -361,15 +366,15 @@ Verwijder de resource groep met behulp van AZ CLI.
 
 ## <a name="full-scripts"></a>Volledige scripts
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-ps.ps1 "Add single database to a failover group")]
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [!code-azurecli-interactive[main](../../cli_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-cli.sh "Create SQL Database")]
 
-# <a name="azure-portaltabazure-portal"></a>[Azure-portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Er zijn geen scripts beschikbaar voor de Azure Portal.
  
 ---

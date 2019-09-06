@@ -712,6 +712,8 @@
       items:
         - name: Power BI gebruiken
           href: powerbi-visualize.md
+        - name: Een live weersdashboard maken
+          href: create-real-time-weather-dashboard-powerbi.md
         - name: Qlik Sense gebruiken
           href: visualize-qlik-sense.md
     - name: Integreren met andere Azure-services

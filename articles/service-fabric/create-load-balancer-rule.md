@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: atsenthi
-ms.openlocfilehash: 440d5e37e03e58a39275e715ebce4fa07961cc84
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
-ms.translationtype: HT
+ms.openlocfilehash: 2e730ae8ecf6f1fab12aff23cab0ac3aa246233a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598579"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173366"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Poorten openen voor een Service Fabric cluster
 
@@ -111,4 +110,4 @@ Met betrekking `New-AzLoadBalancerRuleConfig` tot de opdracht `-FrontendPort` ve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [netwerken in service Fabric](service-fabric-patterns-networking.md). rvice-Fabric-Patterns-Networking.MD).
+Meer informatie over [netwerken in service Fabric](service-fabric-patterns-networking.md).

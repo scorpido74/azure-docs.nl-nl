@@ -1,60 +1,145 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie voor Azure Database voor MySQL
+### YamlMime:Landing
+title: Documentatie voor Azure Database for MySQL
+summary: Azure Database for MySQL is een relationele database op basis van de MySQL-communityversie.  Deze volledig beheerde Database as a Service kan bedrijfskritische workloads verwerken met voorspelbare prestaties en dynamische schaalbaarheid. Ontwikkel toepassingen met Azure Database for MySQL met behulp van open-source hulpprogramma's en een platform naar keuze. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u Azure Database voor MySQL gebruikt.
 metadata:
-  document_id: 8d915ae6-9101-ad37-0736-3eaa59c2dd34
-  title: 'Documentatie voor Azure MySQL - zelfstudies, API-verwijzing | Microsoft Docs'
-  description: Azure Database for MySQL is een relationele databaseservice in de Microsoft-cloud die is gebouwd voor ontwikkelaars op basis van de open-source MySQL-database-engine.
+  description: Azure Database for MySQL is een relationele databaseservice in de Microsoft-cloud die is gebouwd voor ontwikkelaars op basis van de MySQL-communityversie.
   author: ajlam
   ms.author: andrela
+  ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.date: 02/25/2019
-abstract:
-  description: 'Azure Database for MySQL is een relationele databaseservice op basis van de open-source MySQL-serverengine.  Deze volledig beheerde Database as a Service kan bedrijfskritische workloads verwerken met voorspelbare prestaties en dynamische schaalbaarheid. Ontwikkel toepassingen met Azure Database for MySQL met behulp van open-source hulpprogramma''s en een platform naar keuze. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u Azure Database voor MySQL gebruikt.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Lees hoe u een MySQL Database on Azure maakt met behulp van:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/virtual-machines/linux/media/index/portal.svg
-            text: Azure-portal
-            href: /azure/mysql/quickstart-create-mysql-server-database-using-azure-portal
-          - image:
-              src: /azure/virtual-machines/linux/media/index/cli.svg
-            text: Azure-CLI
-            href: /azure/mysql/quickstart-create-mysql-server-database-using-azure-cli
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Lees hoe u een database ontwerpt en apps ontwikkelt:'
-      - type: list
-        style: ordered
-        items:
-          - html: 'Een database ontwerpen: <a href="/azure/mysql/tutorial-design-database-using-portal">Azure Portal</a> | <a href="/azure/mysql/tutorial-design-database-using-cli">Azure CLI</a>'
-          - html: 'Een webtoepassing maken: <a href="https://portal.azure.com/#create/hub">WordPress - portal</a> | <a href="../app-service-web/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json">PHP - Azure CLI</a>'
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: Zoek scripts om algemene taken te beheren.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/mysql/sample-scripts-azure-cli">Azure-CLI</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: <p><a href="/cli/azure/mysql">Azure-CLI</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/mysql">REST API</a></p>
-          - title: Azure Resource Manager
-            html: <p><a href="/azure/templates/microsoft.dbformysql/allversions">Resource Manager-sjablonen</a></p>
+  ms.openlocfilehash: 6ccf544b524ad1ccd45b0aa814610902d54c0fd9
+  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70309289"
+landingContent:
+- title: Over Azure Database for MySQL
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Database for MySQL?
+      url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: Bekijk ons blog
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
+- title: Een server maken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een server maken met de Azure-portal
+      url: quickstart-create-mysql-server-database-using-azure-portal.md
+    - text: Een server maken met Azure CLI
+      url: quickstart-create-mysql-server-database-using-azure-cli.md
+  - linkListType: concept
+    links:
+    - text: Prijscategorieën begrijpen
+      url: concepts-pricing-tiers.md
+    - text: Limieten begrijpen
+      url: concepts-limits.md
+    - text: Ondersteunde MySQL-versies begrijpen
+      url: concepts-supported-versions.md
+    - text: Parameters van de server configureren
+      url: howto-server-parameters.md
+    - text: Plannen voor hoge beschikbaarheid
+      url: concepts-high-availability.md
+  - linkListType: tutorial
+    links:
+    - text: Een database ontwerpen met de Azure-portal
+      url: tutorial-design-database-using-portal.md
+    - text: Een database ontwerpen met Azure CLI
+      url: tutorial-design-database-using-cli.md
+    - text: WordPress implementeren in containers
+      url: ../app-service/containers/tutorial-multi-container-app.md?toc=%2fazure%2fmysql%2ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json
+    - text: Een web-app bouwen met PHP in Azure CLI
+      url: ../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json
+- title: Back-up maken van gegevens en gegevens migreren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Back-up en herstel
+      url: concepts-backup.md
+    - text: Migreren met behulp van dump en herstel
+      url: concepts-migrate-dump-restore.md
+    - text: Migreren met behulp van importeren en exporteren
+      url: concepts-migrate-import-export.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een server herstellen met de Azure-portal
+      url: howto-restore-server-portal.md
+    - text: Een server herstellen met Azure CLI
+      url: howto-restore-server-cli.md
+    - text: Migraties met minimale downtime
+      url: howto-migrate-online.md
+- title: Verbinding maken met Azure Database for MySQL
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: De firewall begrijpen
+      url: concepts-firewall-rules.md
+    - text: SSL begrijpen
+      url: concepts-ssl-connection-security.md
+    - text: Virtuele netwerken begrijpen
+      url: concepts-data-access-and-security-vnet.md
+  - linkListType: how-to-guide
+    links:
+    - text: Firewall-regels maken
+      url: howto-manage-firewall-using-portal.md
+    - text: SSL-connectiviteit configureren
+      url: howto-configure-ssl.md
+    - text: Een bestaande Azure App Service verbinden
+      url: howto-connect-webapp.md
+    - text: Verbindingsreeksen
+      url: howto-connection-string.md
+    - text: Verbindingsproblemen oplossen
+      url: howto-troubleshoot-common-connection-issues.md
+  - linkListType: get-started
+    links:
+    - text: Verbinding maken met MySQL Workbench
+      url: connect-workbench.md
+    - text: Verbinding maken met PHP
+      url: connect-php.md
+    - text: Verbinding maken met Java
+      url: connect-java.md
+    - text: Verbinding maken met .NET
+      url: connect-csharp.md
+    - text: Verbinding maken met Python
+      url: connect-python.md
+    - text: Verbinding maken met Node.js
+      url: connect-nodejs.md
+    - text: Verbinding maken met Ruby
+      url: connect-ruby.md
+    - text: Verbinding maken met C++
+      url: connect-cpp.md
+    - text: Verbinding maken met Go
+      url: connect-go.md
+- title: Gegevens repliceren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Replicatie van inkomende gegevens begrijpen
+      url: concepts-data-in-replication.md
+    - text: Meer informatie over leesreplica's
+      url: concepts-read-replicas.md
+  - linkListType: how-to-guide
+    links:
+    - text: Replicatie van binnenkomende gegevens configureren
+      url: howto-data-in-replication.md
+    - text: Een leesreplica maken met de Azure-portal
+      url: howto-read-replicas-portal.md
+- title: Code met programmeer-API's
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure CLI-scripts voor algemen taken
+      url: /azure/mysql/sample-scripts-azure-cli
+  - linkListType: reference
+    links:
+    - text: Azure CLI-ontwikkelaarsreferentie
+      url: /rest/api/mysql/
+    - text: REST API-ontwikkelaarsreferentie
+      url: /cli/azure/mysql
+    - text: Azure Resource Manager-sjablonen
+      url: /azure/templates/microsoft.dbformysql/allversions

@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 3d10814858d38d61e5346a4eb0dfb3d3d24ad4c0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: 286fa60fef8de5240fb2ccd0f14ced0c4e38ff73
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568322"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981359"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Een app bijwerken voor het gebruik van de meest recente Elastic data base-client bibliotheek
 
-Nieuwe versies van de [Elastic database-client bibliotheek](sql-database-elastic-database-client-library.md) zijn beschikbaar via NuGetand de NuGetPackage Manager-interface in Visual Studio. Upgrades bevatten oplossingen voor fouten en ondersteuning voor nieuwe mogelijkheden van de client bibliotheek.
+Nieuwe versies van de [Elastic database-client bibliotheek](sql-database-elastic-database-client-library.md) zijn beschikbaar via NuGet en de NuGet Package Manager-interface in Visual Studio. Upgrades bevatten oplossingen voor fouten en ondersteuning voor nieuwe mogelijkheden van de client bibliotheek.
 
 **Voor de meest recente versie:** Ga naar [micro soft. Azure. SqlDatabase. ElasticScale. client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 

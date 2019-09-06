@@ -1,43 +1,39 @@
 ---
-title: Machine learning en data science-hulpprogramma's - Azure | Microsoft Docs
+title: Machine learning-& data Science-hulpprogram ma's
+titleSuffix: Azure Data Science Virtual Machine
 description: Meer informatie over de machine learning-hulpprogramma's en frameworks die vooraf zijn geïnstalleerd op de Data Science Virtual Machine.
 keywords: hulpprogramma's voor datatechnologie, virtuele machine voor datatechnologie, hulpprogramma voor datatechnologie, linux-datatechnologie
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: 3b05d076a61593e8c34ce642f2fe2fd137e07109
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: f97412bc3f8d8b046df1324c7e1a0ad568f5db52
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565243"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278783"
 ---
-# <a name="machine-learning-and-data-science-tools"></a>Machine learning en data science-hulpprogramma 's
+# <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Machine learning-en data Science-hulpprogram ma's op Azure data Science Virtual Machines
 Azure Data Science Virtual Machines is een uitgebreide set hulpprogramma's en bibliotheken voor machine learning (ML) beschikbaar in populaire talen, zoals Python, R en Julia. 
 
 Hier volgen enkele van de hulpprogramma's voor ML en -bibliotheken op virtuele Machines voor Datatechnologie. 
 
-## <a name="azure-machine-learninghttpsdocsmicrosoftcomazuremachine-learningserviceoverview-what-is-azure-ml-sdk"></a>[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml) SDK
+## <a name="azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK voor python
+Zie de volledige referentie voor de [Azure machine learning SDK voor python](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml).
+
 |    |           |
 | ------------- | ------------- |
-| Wat is het?   |   Azure Machine Learning is een cloudservice die u gebruiken kunt om te ontwikkelen en implementeren van ML-modellen. Als u bouwen, trainen, schalen en beheren met behulp van de Python-SDK, kunt u uw modellen bijhouden. Modellen als containers implementeren en deze in de cloud, on-premises of in Azure IoT Edge uitvoeren.   |
-| Ondersteunde versies     | Windows (Conda-omgeving: AzureML), Linux (Conda-omgeving: py36)    |
-| Wordt doorgaans gebruikt      | Algemene ML-platform      |
-| Hoe wordt deze geconfigureerd of geïnstalleerd?      |  Geïnstalleerd met GPU-ondersteuning   |
-| Over het gebruik of uit te voeren      | Als Python SDK en Azure CLI. Activeren naar het conda-omgeving `AzureML` op Windows-editie *of* naar `py36` op Linux-editie.      |
-| Koppeling naar voorbeelden      | Voorbeeld van Jupyter notebooks zijn opgenomen in de `AzureML` map onder notitieblokken.  |
-| Meer hulpprogramma 's      | Visual Studio Code, Jupyter   |
+| Wat is het? |   Azure Machine Learning is een cloudservice die u gebruiken kunt om te ontwikkelen en implementeren van ML-modellen. Als u bouwen, trainen, schalen en beheren met behulp van de Python-SDK, kunt u uw modellen bijhouden. Modellen als containers implementeren en deze in de cloud, on-premises of in Azure IoT Edge uitvoeren. |
+| Ondersteunde versies  | Windows (Conda-omgeving: AzureML), Linux (Conda-omgeving: py36) |
+| Wordt doorgaans gebruikt      | Algemene ML-platform  |
+| Hoe wordt deze geconfigureerd of geïnstalleerd? |  Geïnstalleerd met GPU-ondersteuning |
+| Over het gebruik of uit te voeren | Als Python SDK en Azure CLI. Activeren naar het conda-omgeving `AzureML` op Windows-editie *of* naar `py36` op Linux-editie.  |
+| Koppeling naar voorbeelden | Voorbeeld van Jupyter notebooks zijn opgenomen in de `AzureML` map onder notitieblokken.  |
+| Meer hulpprogramma 's  | Visual Studio Code, Jupyter   |
 
 ## <a name="xgboost"></a>XGBoost 
 |    |           |

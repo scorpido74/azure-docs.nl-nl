@@ -1,6 +1,6 @@
 ---
 title: Release opmerkingen voor Microsoft Azure Backup Server v3
-description: In dit artikel vindt u informatie over bekende problemen en tijdelijke oplossingen voor MABS v3.
+description: In dit artikel vindt u informatie over bekende problemen en tijdelijke oplossingen voor Microsoft Azure Backup Server v3 (MABS).
 ms.reviewer: v-jysur
 author: dcurwin
 manager: carmonm
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/22/2018
 ms.author: dacurwin
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: a80a5ac64b58d93bb0d4e4b799cb7424805c9baa
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
-ms.translationtype: HT
+ms.openlocfilehash: 5ca3305dd96ad9f14f028c88520368ae5a49016c
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698376"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019026"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Release opmerkingen voor Microsoft Azure Backup Server
 In dit artikel vindt u de bekende problemen en tijdelijke oplossingen voor Microsoft Azure Backup Server v3 (MABS).
@@ -25,7 +25,7 @@ In dit artikel vindt u de bekende problemen en tijdelijke oplossingen voor Micro
 
 **Tijdelijke oplossing:** Als u dit wilt voor komen, opent u SQL Server Management Studio (SSMS)) en voert u het volgende SQL-script uit op de DPM-Data Base:
 
-
+```sql
     IF EXISTS (SELECT * FROM dbo.sysobjects
         WHERE id = OBJECT_ID(N'[dbo].[tbl_PRM_DatasourceLastActiveServerMap]')
         AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
@@ -50,6 +50,7 @@ In dit artikel vindt u de bekende problemen en tijdelijke oplossingen voor Micro
             0
         ) FOR [IsGCed]
     GO
+```
 
 
 ##  <a name="upgrade-to-mabs-v3-fails-in-russian-locale"></a>Upgrade uitvoeren naar MABS v3 mislukt in Russische land instelling
@@ -66,11 +67,11 @@ In dit artikel vindt u de bekende problemen en tijdelijke oplossingen voor Micro
 6.  [Installeren](backup-azure-microsoft-azure-backup.md) MABS V3.
 7. [Herstellen](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL met behulp van SSMS en voer het hulp programma DPM-Sync uit, zoals [hier](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2010/ff634215(v=technet.10))wordt beschreven.
 8.  Werk de eigenschap ' DataBaseVersion ' in dbo. tbl _DLS_GlobalSetting-tabel bij met de volgende opdracht:
-
+```sql
         UPDATE dbo.tbl_DLS_GlobalSetting
         set PropertyValue = '13.0.415.0'
         where PropertyName = 'DatabaseVersion'
-
+```
 
 9.  Start de MSDPM-service.
 

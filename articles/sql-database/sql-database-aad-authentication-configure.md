@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: b6414ac41b1bb43e3fe1470a7ae2b1358126003a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: a14926dea576e0331cb8c0f8010f060f47faa3e7
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569672"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991167"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Azure Active Directory verificatie met SQL configureren en beheren
 
@@ -327,7 +327,7 @@ Als u wilt controleren of de Azure AD-beheerder juist is ingesteld, maakt u verb
 Als u een Inge sloten database gebruiker op basis van Azure AD wilt inrichten (met uitzonde ring van de server beheerder die eigenaar is van de data base), maakt u verbinding met de data base met een Azure AD-identiteit die toegang heeft tot de data base.
 
 > [!IMPORTANT]
-> Ondersteuning voor Azure Active Directory-verificatie is beschikbaar met [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) en [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) in Visual Studio 2015. De release van versie 2016 augustus van SSMS bevat ook ondersteuning voor Active Directory universele verificatie, waarmee beheerders multi-factor Authentication kunnen vereisen met behulp van een telefoon oproep, tekst bericht, Smart Cards met een pincode of een melding voor mobiele apps.
+> Ondersteuning voor Azure Active Directory-verificatie is beschikbaar met [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) en [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) in Visual Studio 2015. De release van de 2016 van de augustus van SSMS bevat ook ondersteuning voor Active Directory universele verificatie, waarmee beheerders Multi-Factor Authentication kunnen vereisen met behulp van een telefoon gesprek, tekst bericht, Smart Cards met een pincode of een melding voor mobiele apps.
 
 ## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>Een Azure AD-identiteit gebruiken om verbinding te maken met behulp van SSMS of SSDT
 
@@ -412,6 +412,9 @@ Zie [SQL Server Security Blog](https://blogs.msdn.microsoft.com/sqlsecurity/20..
 ### <a name="sqlcmd"></a>sqlcmd
 
 De volgende instructies zijn een verbinding met versie 13,1 van Sqlcmd, die beschikbaar is via het [Download centrum](https://go.microsoft.com/fwlink/?LinkID=825643).
+
+> [!NOTE]
+> `sqlcmd`met de `-G` opdracht werkt niet met systeem identiteiten en is een gebruikers-principal-aanmelding vereist.
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  

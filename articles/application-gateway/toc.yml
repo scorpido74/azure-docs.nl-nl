@@ -81,8 +81,10 @@
       items:
         - name: Statustest
           href: application-gateway-probe-overview.md
-        - name: Diagnostiek
+        - name: Diagnostische logboeken en back-endstatus
           href: application-gateway-diagnostics.md
+        - name: Metrische gegevens
+          href: application-gateway-metrics.md
     - name: App Service-web-app en ondersteuning voor meerdere tenants
       href: application-gateway-web-app-overview.md
     - name: Ondersteuning voor WebSocket
@@ -225,6 +227,8 @@
           href: resource-health-overview.md
         - name: Log Analytics gebruiken
           href: log-analytics.md
+        - name: Problemen met de back-endstatus
+          href: application-gateway-backend-health-troubleshooting.md
     - name: Migreren van v1 naar v2
       href: migrate-v1-v2.md
 - name: Naslaginformatie

@@ -125,6 +125,14 @@
               href: map-events.md
             - name: Uw app toegankelijk maken
               href: map-accessibility.md
+        - name: Tekenprogramma's
+          items:
+            - name: Tekenwerkbalk toevoegen
+              href: map-add-drawing-toolbar.md
+            - name: Tekenopties instellen
+              href: set-drawing-options.md
+            - name: Vormgegevens ophalen
+              href: map-get-shape-data.md
         - name: Services-module
           items:
             - name: De services-module gebruiken
@@ -198,7 +206,7 @@
 - name: Resources
   items:
     - name: Azure Maps-gebruiksvoorwaarden
-      href: 'https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31'
+      href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure Maps-prijzen
       href: 'https://azure.microsoft.com/pricing/details/azure-maps'
     - name: Prijscalculator
@@ -209,6 +217,8 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Azure Maps-video's
       href: 'https://aka.ms/AzureMapsVideos'
+    - name: Azure Maps-casestudy's
+      href: 'https://aka.ms/AzureMapsCaseStudies'
     - name: Azure Maps-woordenlijst
       href: glossary.md
     - name: Service-updates
