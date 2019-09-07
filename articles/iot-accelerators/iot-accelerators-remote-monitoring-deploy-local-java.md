@@ -1,6 +1,6 @@
 ---
-title: Implementeer de oplossing voor externe controle lokaal (via IntelliJ IDE) - Azure | Microsoft Docs
-description: In deze gebruiksaanwijzing laat zien hoe de oplossingsverbetering voor externe bewaking implementeren naar uw lokale computer met behulp van IntelliJ voor testen en ontwikkeling.
+title: Implementeer de externe bewakings oplossing lokaal (via IntelliJ IDE)-Azure | Microsoft Docs
+description: In deze hand leiding wordt uitgelegd hoe u de oplossing voor externe controle kunt implementeren op uw lokale computer met behulp van IntelliJ voor testen en ontwikkeling.
 author: v-krghan
 manager: dominicbetts
 ms.author: v-krghan
@@ -8,226 +8,232 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2b55fea69fe1affb6cab5d360f1e8355c3bb720d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2f3c11763bb2f406caf9d33275fc29b0d140da9a
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66015433"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "70743327"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>De bewaking op afstand oplossingsversnellers implementeren lokaal - IntelliJ
+# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>De externe controle oplossings versneller implementeren lokaal-IntelliJ
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-In dit artikel leest u hoe de oplossingsverbetering voor externe bewaking implementeren naar uw lokale computer voor het testen en ontwikkeling. Leert u hoe u de microservices in IntelliJ uitvoert. Een lokale microservices-implementatie maakt gebruik van de volgende cloudservices: IoT Hub, Cosmos DB, Azure stream Analytics en Azure Time Series Insights-services in de cloud.
+In dit artikel wordt beschreven hoe u de oplossing voor externe controle op uw lokale computer implementeert voor testen en ontwikkeling. U leert hoe u de micro Services in IntelliJ uitvoert. Een lokale implementatie van micro Services maakt gebruik van de volgende Cloud Services: IoT Hub, Azure Cosmos DB, Azure streaming Analytics en Azure Time Series Insights.
 
-Als u wilt dat de oplossingsverbetering voor externe controle uitvoeren in Docker op uw lokale computer, raadpleegt u [Remote Monitoring solution accelerator lokaal - Docker implementeren](iot-accelerators-remote-monitoring-deploy-local-docker.md).
+Als u de oplossings versneller voor externe controle in docker op uw lokale computer wilt uitvoeren, raadpleegt u [de externe controle oplossings versneller lokaal-docker implementeren](iot-accelerators-remote-monitoring-deploy-local-docker.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het implementeren van de Azure-services die worden gebruikt door de oplossingsverbetering voor externe controle, moet u een actief Azure-abonnement.
+Als u de Azure-Services wilt implementeren die worden gebruikt door de oplossings versneller voor externe bewaking, hebt u een actief Azure-abonnement nodig.
 
 Als u geen account hebt, kunt u binnen een paar minuten een account voor de gratis proefversie maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.
 
-### <a name="machine-setup"></a>Machine-instellingen
+### <a name="machine-setup"></a>Machine instellen
 
-Voor het voltooien van de lokale implementatie, moet u de volgende hulpprogramma's geïnstalleerd op uw lokale ontwikkelcomputer:
+Als u de lokale implementatie wilt volt ooien, moet u de volgende hulpprogram ma's installeren op uw lokale ontwikkel computer:
 
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [IntelliJ Community-editie](https://www.jetbrains.com/idea/download/)
-* [IntelliJ Plugin Scala](https://plugins.jetbrains.com/plugin/1347-scala)
-* [IntelliJ Plugin SBT](https://plugins.jetbrains.com/plugin/5007-sbt)
-* [Invoegtoepassing voor IntelliJ SBT Executor](https://plugins.jetbrains.com/plugin/7247-sbt-executor)
+* [IntelliJ scala-invoeg toepassing](https://plugins.jetbrains.com/plugin/1347-scala)
+* [IntelliJ SBT-invoeg toepassing](https://plugins.jetbrains.com/plugin/5007-sbt)
+* [IntelliJ SBT uitvoerder-invoeg toepassing](https://plugins.jetbrains.com/plugin/7247-sbt-executor)
 * [Nginx](https://nginx.org/en/download.html)
-* [Node.js v8](https://nodejs.org/) -deze software is een vereiste voor de CLI PCS die de scripts gebruiken voor het maken van Azure-resources. Gebruik geen Node.js v10.
+* [Node. js V8](https://nodejs.org/)
+
+Node. js V8 is een vereiste voor de PC'S CLI die de scripts gebruiken om Azure-resources te maken. Gebruik node. js V10 toevoegen niet.
 
 > [!NOTE]
 > IntelliJ IDE is beschikbaar voor Windows en Mac.
 
-## <a name="download-the-source-code"></a>De broncode downloaden
+## <a name="download-the-source-code"></a>De bron code downloaden
 
-De bewaking op afstand broncodeopslagplaatsen bevatten de broncode en de Docker-configuratiebestanden die u nodig hebt voor het uitvoeren van de microservices Docker-installatiekopieën.
+De opslag plaatsen voor de bron code voor externe controle zijn de bron code en de docker-configuratie bestanden die u nodig hebt om de micro Services docker-installatie kopieën uit te voeren.
 
-Klonen en maken van een lokale versie van de opslagplaats, uw opdrachtregel omgeving te gebruiken om te navigeren naar een geschikte map op uw lokale computer. Voer vervolgens een van de volgende sets opdrachten om de java-opslagplaats te klonen:
+Als u een lokale versie van de opslag plaats wilt klonen en maken, gebruikt u de opdracht regel omgeving om naar een geschikte map op uw lokale computer te gaan. Voer vervolgens een van de volgende sets opdrachten uit om de Java-opslag plaats te klonen:
 
-Voor het downloaden van de meest recente versie van de java-microservices-implementaties, voert u de volgende uit:
+* Voer de volgende opdracht uit om de nieuwste versie van de Java micro service-implementaties te downloaden:
 
+  ```cmd/sh
+  git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
+  ```
 
-```cmd/sh
-git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
+* Voer de volgende opdrachten uit om de meest recente submodules op te halen:
 
-# To retrieve the latest submodules, run the following command:
-
-cd azure-iot-pcs-remote-monitoring-java
-git submodule foreach git pull origin master
-```
+   ```cmd/sh
+   cd azure-iot-pcs-remote-monitoring-java
+   git submodule foreach git pull origin master
+    ```
 
 > [!NOTE]
-> Deze opdrachten download de broncode voor de microservices naast de scripts die u kunt de microservices lokaal uitvoeren. Hoewel u niet de broncode voor het uitvoeren van de microservices in Docker nodig hebt, is de broncode is handig als u later wilt wijzigen van de oplossingsversnellers en uw wijzigingen lokaal testen.
+> Met deze opdrachten wordt de bron code voor alle micro Services gedownload naast de scripts die u gebruikt om de micro services lokaal uit te voeren. U hebt de bron code niet nodig om de micro services uit te voeren in docker. Maar de bron code is handig als u later van plan bent om de oplossings versneller te wijzigen en uw wijzigingen lokaal te testen.
 
-## <a name="deploy-the-azure-services"></a>De Azure-services implementeren
+## <a name="deploy-the-azure-services"></a>De Azure-Services implementeren
 
-Hoewel dit artikel u hoe u de microservices lokaal uitvoert leest, worden ze vertrouwen op Azure-services die worden uitgevoerd in de cloud. Het volgende script gebruiken voor het implementeren van de Azure-services. Het volgende scriptvoorbeelden wordt ervan uitgegaan dat u de java-opslagplaats op een Windows-machine. Als u in een andere omgeving werkt, aanpassen op de juiste wijze de paden, bestandsextensies en padscheidingstekens.
+Hoewel in dit artikel wordt uitgelegd hoe u de micro services lokaal kunt uitvoeren, zijn ze afhankelijk van Azure-Services die in de cloud worden uitgevoerd. Gebruik het volgende script om de Azure-Services te implementeren. In de script voorbeelden wordt ervan uitgegaan dat u de Java-opslag plaats op een Windows-computer gebruikt. Als u in een andere omgeving werkt, past u de paden, bestands extensies en pad scheidings tekens op de juiste wijze aan.
 
 ### <a name="create-new-azure-resources"></a>Nieuwe Azure-resources maken
 
-Als u de vereiste Azure-resources is nog niet hebt gemaakt, volgt u deze stappen:
+Als u de vereiste Azure-resources nog niet hebt gemaakt, voert u de volgende stappen uit:
 
-1. In de opdrachtregel-omgeving, gaat u naar de **\services\scripts\local\launch** map in de gekloonde kopie van de opslagplaats.
+1. In uw opdracht regel omgeving gaat u naar de map **\services\scripts\local\launch** in de gekloonde kopie van de opslag plaats.
 
-1. Voer de volgende opdrachten voor het installeren van de **pc's** CLI-hulpprogramma en meld u aan bij uw Azure-account:
+1. Voer de volgende opdrachten uit om het hulp programma **pc's** CLI te installeren en u aan te melden bij uw Azure-account:
 
     ```cmd
     npm install -g iot-solutions
     pcs login
     ```
 
-1. Voer de **start.cmd** script. Het script vraagt u om de volgende informatie:
+1. Voer het script **Start. cmd** uit. Het script vraagt u om de volgende informatie:
+
    * De naam van een oplossing.
    * Het te gebruiken Azure-abonnement.
-   * De locatie van het Azure-datacenter te gebruiken.
+   * De locatie van het Azure-Data Center dat moet worden gebruikt.
 
-     Het script wordt de resourcegroep gemaakt in Azure met de naam van uw oplossing. Deze resourcegroep bevat de Azure-resources die maakt gebruik van de solution accelerator. Nadat u de bijbehorende resources niet meer nodig hebt, kunt u deze resourcegroep verwijderen.
+   Met het script maakt u een resource groep in azure met de naam van de oplossing. Deze resource groep bevat de Azure-resources die door de oplossings versneller worden gebruikt. U kunt deze resource groep verwijderen nadat u de bijbehorende resources niet meer nodig hebt.
 
-     Het script wordt ook een set van omgevingsvariabelen met een voorvoegsel toegevoegd **pc's** naar uw lokale computer. Deze omgevingsvariabelen Geef de details voor externe bewaking om u te kunnen worden gelezen uit een Azure Key Vault-resource. Deze Key Vault-resource is waar bewaking op afstand de configuratiewaarden van wordt gelezen.
+   Het script voegt ook een set omgevings variabelen toe aan uw lokale machine. De naam van elke variabele heeft de voor voegsel- **pc's**. Deze omgevings variabelen bieden Details waarmee externe controle de configuratie waarden van een Azure Key Vault bron kan lezen.
 
-     > [!TIP]
-     > Wanneer het script is voltooid, ook wordt opgeslagen in de omgevingsvariabelen van een bestand met de naam  **\<uw basismap\>\\.pcs\\\<oplossingsnaam\>.env** . U kunt deze gebruiken voor toekomstige solution accelerator-implementaties. Houd er rekening mee dat omgevingsvariabelen instellen op uw lokale computer, overschrijven de waarden in de **services\\scripts\\lokale\\.env** tijdens het uitvoeren van het bestand **docker-compose**.
+   > [!TIP]
+   > Wanneer het script is voltooid, worden de omgevings variabelen opgeslagen in een bestand  **\<met\<\>\\de naam basismap.\\PC-\>oplossing naam. env**. U kunt deze gebruiken voor toekomstige implementaties van oplossings versnelling. Houd er rekening mee dat alle omgevings variabelen die op uw lokale computer zijn ingesteld, de waarden in het **lokale\\\\. env\\** -bestand van Services-scripts overschrijven wanneer u **docker-opstellen**uitvoert.
 
-1. Afsluiten van uw opdrachtregelomgeving.
+1. Sluit uw opdracht regel omgeving.
 
-### <a name="use-existing-azure-resources"></a>Bestaande Azure-bronnen
+### <a name="use-existing-azure-resources"></a>Bestaande Azure-resources gebruiken
 
-Als u de vereiste Azure-resources al hebt gemaakt, maakt u de bijbehorende omgevingsvariabelen op uw lokale computer.
-Stel de omgevingsvariabelen voor het volgende:
-* **PCS_KEYVAULT_NAME** -naam van de Azure Key Vault-resource
-* **PCS_AAD_APPID** -de AAD-toepassing-ID
-* **PCS_AAD_APPSECRET** -geheim van de AAD-toepassing
+Als u de vereiste Azure-resources al hebt gemaakt, stelt u de bijbehorende omgevings variabelen in op uw lokale computer:
+* **PCS_KEYVAULT_NAME**: De naam van de Key Vault resource.
+* **PCS_AAD_APPID**: De toepassings-ID van de Azure Active Directory (Azure AD).
+* **PCS_AAD_APPSECRET**: Het Azure AD-toepassings geheim.
 
-Configuratiewaarden worden gelezen uit de Azure Key Vault-resource. Deze omgevingsvariabelen kunnen worden opgeslagen de  **\<uw basismap\>\\.pcs\\\<oplossingsnaam\>.env** -bestand van de implementatie. Houd er rekening mee dat omgevingsvariabelen instellen op uw lokale computer, overschrijven de waarden in de **services\\scripts\\lokale\\.env** tijdens het uitvoeren van het bestand **docker-compose**.
+Configuratie waarden worden gelezen uit deze Key Vault bron. Deze omgevings variabelen kunnen worden opgeslagen in het  **\<bestand\<\>\\uw basismap.\\PC Solution\>naam. env** van de implementatie. Houd er rekening mee dat omgevings variabelen die op uw lokale computer zijn ingesteld, waarden in het bestand **Local\\\\. env van\\Services-scripts** worden vervangen wanneer u **docker-opstellen**uitvoert.
 
-Bepaalde onderdelen van de configuratie die nodig zijn voor de microservices is opgeslagen in een exemplaar van **Key Vault** die is gemaakt op de eerste implementatie. De bijbehorende variabelen in Key Vault moeten worden gewijzigd, indien nodig.
+Een deel van de configuratie die nodig is voor de micro service, wordt opgeslagen in een exemplaar van Key Vault dat is gemaakt tijdens de eerste implementatie. De bijbehorende variabelen in de sleutel kluis moeten naar behoefte worden gewijzigd.
 
-## <a name="run-the-microservices"></a>Voer de microservices
+## <a name="run-the-microservices"></a>De micro Services uitvoeren
 
-In deze sectie maakt uitvoeren u de microservices bewaking op afstand. U hebt de web-UI systeemeigen uitgevoerd, de Apparaatsimulatie Auth en ASA Manager-service in Docker en de microservices in IntelliJ.
+In deze sectie voert u de externe bewakings service uit. U voert de volgende handelingen uit:
 
-### <a name="run-the-device-simulation-service"></a>Uitvoeren van de service van de simulatie van apparaat
+* De webgebruikersinterface zelf.
+* De Azure IoT Device simulatie-, auth-en Azure Stream Analytics Manager-services in docker.
+* De micro Services in IntelliJ.
 
-Open een nieuw opdrachtpromptvenster om er zeker van te zijn dat u toegang hebt tot de omgevingsvariabelen ingesteld door de **start.cmd** script in de vorige sectie.
+### <a name="run-the-device-simulation-service"></a>De Device simulatie service uitvoeren
 
-Voer de volgende opdracht voor het starten van de Docker-container voor de service van de simulatie apparaat. De service simuleert apparaten voor de oplossing voor externe controle.
+Open een nieuw opdracht prompt venster. Controleer of u toegang hebt tot de omgevings variabelen die zijn ingesteld door het script **Start. cmd** in de vorige sectie.
+
+Voer de volgende opdracht uit om de docker-container voor de Device simulatie service te openen. De service simuleert apparaten voor de oplossing voor externe controle.
 
 ```cmd
 <path_to_cloned_repository>\services\device-simulation\scripts\docker\run.cmd
 ```
 
-### <a name="run-the-auth-service"></a>Uitvoeren van de service Auth
+### <a name="run-the-auth-service"></a>De auth-service uitvoeren
 
-Open een nieuwe opdrachtprompt-venster en voer de volgende opdracht om te starten van de Docker-container voor de Authentication service. De service kunnen voor het beheren van de gebruikers die zijn gemachtigd voor toegang tot Azure IoT-oplossingen.
+Open een nieuw opdracht prompt venster en voer de volgende opdracht uit om de docker-container voor de auth-service te openen. Met deze service kunt u de gebruikers beheren die zijn gemachtigd om toegang te krijgen tot Azure IoT-oplossingen.
 
 ```cmd
 <path_to_cloned_repository>\services\auth\scripts\docker\run.cmd
 ```
 
-### <a name="run-the-asa-manager-service"></a>De ASA-Manager-service wordt uitgevoerd
+### <a name="run-the-stream-analytics-manager-service"></a>De Stream Analytics Manager-service uitvoeren
 
-Open een nieuwe opdrachtprompt-venster en voer de volgende opdracht om te starten van de Docker-container voor de ASA-Manager-service. De service kunt het beheer van Azure Stream Analytics (ASA)-taken, met inbegrip van de configuratie van de instelling en starten, stoppen en hun status controleren.
+Open een nieuw opdracht prompt venster en voer de volgende opdracht uit om de docker-container voor de Stream Analytics Manager-service te openen. Met deze service kunt u Stream Analytics taken beheren. Dit beheer omvat het instellen van de taak configuratie en het starten, stoppen en bewaken van de taak status.
 
 ```cmd
 <path_to_cloned_repository>\services\asa-manager\scripts\docker\run.cmd
 ```
 
-### <a name="deploy-all-other-microservices-on-local-machine"></a>Implementatie van alle andere microservices op lokale computer
+### <a name="deploy-all-other-microservices-on-your-local-machine"></a>Alle andere micro Services op uw lokale computer implementeren
 
-De volgende stappen laten zien hoe u de bewaking op afstand microservices in IntelliJ uitvoeren:
+De volgende stappen laten zien hoe u micro Services voor externe controle uitvoert in IntelliJ.
 
-#### <a name="import-project"></a>Project importeren
+#### <a name="import-a-project"></a>Een project importeren
 
-1. IntelliJ IDE starten
-1. Selecteer **Project importeren** en kies **azure-iot-pcs-remote-monitoring-java\services\build.sbt**
+1. Open de IntelliJ IDE.
+1. Selecteer **project importeren**.
+1. Kies **Azure-IOT-PCs-Remote-Monitoring-java\services\build.SBT**.
 
-#### <a name="create-run-configurations"></a>Voer configuraties maken
+#### <a name="create-run-configurations"></a>Uitvoerings configuraties maken
 
-1. Selecteer **uitvoeren > configuraties bewerken**
-1. Selecteer **nieuwe configuratie toevoegen > sbt taak** 
-1. Voer **naam** en voer **taken** uitvoeren 
-1. Selecteer de **werkmap** op basis van de service die u wilt uitvoeren
-1. Klik op **toepassen > Ok** om op te slaan, uw keuzes.
-1. Maak uitvoeren configuraties voor de volgende services:
+1. Selecteer**bewerkings configuraties** **uitvoeren** > .
+1. Selecteer **nieuwe configuratie** > **SBT taak**toevoegen.
+1. Voer een **naam**in en voer vervolgens **taken** in als **Run**.
+1. Selecteer de **werkmap** op basis van de service die u wilt uitvoeren.
+1. Selecteer**OK** **Toep assen** > om uw keuzes op te slaan.
+1. Uitvoerings configuraties maken voor de volgende webservices:
     * WebService (services\config)
-    * WebService (services\device-telemetrie)
-    * WebService (services\iothub-manager)
+    * WebService (services\device-Telemetry)
+    * WebService (services\iothub-Manager)
     * WebService (services\storage-adapter)
 
-Als u bijvoorbeeld de volgende afbeelding toont de configuratie voor een service toevoegen:
+In de volgende afbeelding ziet u een voor beeld van het toevoegen van een configuratie voor een service:
 
-[![Add-Configuration](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
+[![Scherm opname van het venster IntelliJ IDE run/debug-configuratie, met de optie storageAdapter gemarkeerd in de taken lijst SBT in het linkerdeel venster en de vermeldingen in de vakken naam, taken, werkmap en VM-para meters in het rechterdeel venster.](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
 
+#### <a name="create-a-compound-configuration"></a>Een samengestelde configuratie maken
 
-#### <a name="create-compound-configuration"></a>Samengestelde configuratie maken
+1. Als u alle services tegelijk wilt uitvoeren, selecteert u **nieuwe configuratie** > **verbinding**toevoegen.
+1. Voer een **naam**in en selecteer vervolgens **SBT-taken toevoegen**.
+1. Selecteer**OK** **Toep assen** > om uw keuzes op te slaan.
 
-1. Als u wilt alle Services worden uitgevoerd, selecteert u samen **nieuwe configuratie toevoegen > samengestelde**
-1. Voer de **naam** en **sbt taken toevoegen**
-1. Klik op **toepassen > Ok** om op te slaan, uw keuzes.
+De volgende afbeelding laat bijvoorbeeld zien hoe u alle SBT-taken aan één configuratie toevoegt:
 
-Als u bijvoorbeeld de volgende afbeelding toont alle sbt taken toe te voegen aan één configuratie:
+[![Scherm opname van het venster IntelliJ IDE run/debug-configuraties, met de optie AllServices gemarkeerd in de samengestelde lijst in het linkerdeel venster en de optie voor de SBT-taak ' deviceTelemetry ' gemarkeerd in het rechterdeel venster.](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
 
-[![Add-All-Services](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
+Selecteer **uitvoeren** om de webservices op de lokale computer te bouwen en uit te voeren.
 
-Klik op **uitvoeren** wilt bouwen en uitvoeren van de webservices op de lokale computer.
+Elke webservice opent een opdracht prompt venster en webbrowser venster. Bij de opdracht prompt wordt de uitvoer van de actieve service weer gegeven. In het browser venster kunt u de status controleren. Sluit de opdracht prompt Vensters of webpagina's niet, omdat deze acties de webservice stoppen.
 
-Elke webservice wordt een opdrachtprompt en web-browservenster geopend. Bij de opdrachtprompt, ziet u uitvoer van de service en het browservenster kunt u de status controleren. Sluit niet de opdracht prompts of webpagina's, met deze actie wordt de web-service gestopt.
+Als u toegang wilt krijgen tot de status van de services, gaat u naar de volgende Url's:
 
-
-Voor toegang tot de status van de services, kunt u navigeren naar de volgende URL's:
-* IoT-Hub Manager [http://localhost:9002/v1/status](http://localhost:9002/v1/status)
-* Telemetrie van apparaten  [http://localhost:9004/v1/status](http://localhost:9004/v1/status)
-* configuratie [http://localhost:9005/v1/status](http://localhost:9005/v1/status)
-* opslag-adapter [http://localhost:9022/v1/status](http://localhost:9022/v1/status)
-
+* IoT-hub-beheer:[http://localhost:9002/v1/status](http://localhost:9002/v1/status)
+* Telemetrie van apparaat:[http://localhost:9004/v1/status](http://localhost:9004/v1/status)
+* configuraties[http://localhost:9005/v1/status](http://localhost:9005/v1/status)
+* opslag adapter:[http://localhost:9022/v1/status](http://localhost:9022/v1/status)
 
 ### <a name="start-the-stream-analytics-job"></a>De Stream Analytics-taak starten
 
-Volg deze stappen voor het starten van de Stream Analytics-taak:
+Volg deze stappen om de Stream Analytics taak te starten:
 
-1. Navigeer naar [Azure Portal](https://portal.azure.com).
-1. Navigeer naar de **resourcegroep** gemaakt voor uw oplossing. De naam van de resourcegroep is de naam die u voor uw oplossing hebt gekozen bij het uitvoeren van de **start.cmd** script.
-1. Klik op de **Stream Analytics-taak** in de lijst met resources.
-1. Op de Stream Analytics-taak **overzicht** pagina, klikt u op de **Start** knop. Klik vervolgens op **Start** de taak om nu te starten.
+1. Ga naar de [Azure Portal](https://portal.azure.com).
+1. Ga naar de **resource groep** die voor uw oplossing is gemaakt. De naam van de resource groep is de naam die u voor uw oplossing hebt gekozen toen u het script **Start. cmd** hebt uitgevoerd.
+1. Selecteer de **Stream Analytics taak** in de lijst met resources.
+1. Selecteer op de pagina **overzicht** van stream Analytics-taak de knop **Start** en selecteer vervolgens **Start** om de taak te starten.
 
-### <a name="run-the-web-ui"></a>Uitvoeren van de web-UI
+### <a name="run-the-web-ui"></a>De Web-UI uitvoeren
 
-In deze stap start u de web-UI. Open een nieuw opdrachtpromptvenster om er zeker van te zijn dat u toegang hebt tot de omgevingsvariabelen ingesteld door de **start.cmd** script. Navigeer naar de **webinterface** map in uw lokale exemplaar van de opslagplaats en voer de volgende opdrachten uit:
+In deze stap start u de Web-UI. Open een nieuw opdracht prompt venster. Controleer of u toegang hebt tot de omgevings variabelen die zijn ingesteld door het script **Start. cmd** . Ga naar de map **webui** in uw lokale kopie van de opslag plaats en voer de volgende opdrachten uit:
 
 ```cmd
 npm install
 npm start
 ```
 
-Wanneer het begin voltooid is, wordt de pagina in uw browser weergegeven **http:\//localhost:3000 / dashboard**. De fouten op deze pagina worden verwacht. Als u de toepassing zonder fouten, voer de volgende stap.
+Wanneer de **Start** opdracht is voltooid, wordt de pagina op het adres [http://localhost:3000/dashboard](http://localhost:3000/dashboard)weer gegeven in de browser. De fouten op deze pagina worden verwacht. Voer de volgende stappen uit om de toepassing zonder fouten weer te geven.
 
-### <a name="configure-and-run-nginx"></a>Configureren en uitvoeren van NGINX
+### <a name="configure-and-run-nginx"></a>Nginx configureren en uitvoeren
 
-Instellen van een reverse proxy-server om de web-App en microservices die worden uitgevoerd op uw lokale computer te koppelen:
+Stel een omgekeerde proxy server in die de webtoepassing koppelt aan de micro services die worden uitgevoerd op uw lokale computer:
 
-* Kopieer de **nginx.conf** -bestand uit de **webui\scripts\localhost** map in de lokale kopie van de opslagplaats naar de **nginx\conf** directory installeren.
-* Voer **nginx**.
+1. Kopieer het bestand **nginx. conf** vanuit de map **webui\scripts\localhost** in uw lokale kopie van de opslag plaats naar de map **nginx\conf** installatiemap.
+1. Voer nginx uit.
 
-Voor meer informatie over het uitvoeren **nginx**, Zie [nginx voor Windows](https://nginx.org/en/docs/windows.html).
+Zie [nginx voor Windows](https://nginx.org/en/docs/windows.html)voor meer informatie over het uitvoeren van nginx.
 
-### <a name="connect-to-the-dashboard"></a>Verbinding maken met het dashboard
+### <a name="connect-to-the-dashboard"></a>Verbinding maken met het dash board
 
-Voor toegang tot het oplossingsdashboard voor externe controle, gaat u naar http:\//localhost:9000 in uw browser.
+Ga http://localhost:9000 naar in uw browser om toegang te krijgen tot het dash board van de oplossing voor externe controle.
 
 ## <a name="clean-up"></a>Opruimen
 
-Om te voorkomen dat onnodige verwijderen kosten, wanneer u klaar bent met de test cloudservices uit uw Azure-abonnement. Als u wilt verwijderen van de services, gaat u naar de [Azure-portal](https://ms.portal.azure.com) en verwijder de resource-groep die de **start.cmd** script dat is gemaakt.
+Verwijder de Cloud Services uit uw Azure-abonnement nadat u klaar bent met testen om onnodige kosten te voor komen. Als u de services wilt verwijderen, gaat u naar de [Azure Portal](https://ms.portal.azure.com)en verwijdert u de resource groep waarin het script **Start. cmd** is gemaakt.
 
-U kunt ook de lokale kopie van de bewaking op afstand opslagplaats gemaakt wanneer u de broncode van GitHub gekloond verwijderen.
+U kunt ook de lokale kopie van de externe bewakings opslagplaats verwijderen die is gemaakt bij het klonen van de bron code van GitHub.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat u de oplossing voor externe controle hebt geïmplementeerd, wordt de volgende stap is het [verkennen van de mogelijkheden van het oplossingsdashboard](quickstart-remote-monitoring-deploy.md).
+Nu u de oplossing voor controle op afstand hebt geïmplementeerd, is de volgende stap het [verkennen van de mogelijkheden van het dash board van de oplossing](quickstart-remote-monitoring-deploy.md).
