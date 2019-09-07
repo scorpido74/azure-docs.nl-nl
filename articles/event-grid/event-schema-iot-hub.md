@@ -180,9 +180,9 @@ Voor **Apparaattelemetrie** IoT Hub-gebeurtenis, de gegevensobject bevat het ber
 
 | Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
-| De hoofdtekst | string | De inhoud van het bericht van het apparaat. |
+| body | string | De inhoud van het bericht van het apparaat. |
 | properties | string | Eigenschappen voor de toepassing zijn zelfgedefinieerde tekenreeksen die kunnen worden toegevoegd aan het bericht. Deze velden zijn optioneel. |
-| Systeemeigenschappen | string | [Systeemeigenschappen](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties) helpen bij het identificeren van de inhoud en de bron van de berichten. Apparaat telemetrie bericht moet een geldige JSON-indeling hebben met de contentType instellen in JSON en beperking contentEncoding ingesteld op UTF-8 in de eigenschappen van het bericht. Als dit niet is ingesteld, kunnen de IoT Hub wordt de berichten in de base 64 gecodeerde indeling schrijven.  |
+| system properties | string | [Systeemeigenschappen](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties) helpen bij het identificeren van de inhoud en de bron van de berichten. Apparaat telemetrie bericht moet een geldige JSON-indeling hebben met de contentType instellen in JSON en beperking contentEncoding ingesteld op UTF-8 in de eigenschappen van het bericht. Als dit niet is ingesteld, kunnen de IoT Hub wordt de berichten in de base 64 gecodeerde indeling schrijven.  |
 
 Voor **apparaat gemaakt** en **apparaat verwijderd** IoT Hub-gebeurtenissen, het gegevensobject bevat de volgende eigenschappen:
 
