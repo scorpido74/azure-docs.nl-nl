@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e303fe5ca1869249d57373aab9c60a5f92b7ea9c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60238056"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735103"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Configuratie schema voor Azure Diagnostics 1,3 en hoger
 > [!NOTE]
@@ -27,13 +27,11 @@ ms.locfileid: "60238056"
 >
 > Deze pagina is alleen relevant als u een van deze services gebruikt.
 
-Deze pagina is geldig voor versie 1,3 en hoger (Azure SDK 2,4 en hoger). Nieuwere configuratie secties zijn een opmerking die wordt weer gegeven in de versie die ze hebben toegevoegd.  
+Deze pagina is geldig voor versie 1,3 en hoger (Azure SDK 2,4 en hoger). Nieuwere configuratie secties zijn een opmerking die wordt weer gegeven in de versie die ze hebben toegevoegd. Versie 1,0 en 1,2 van het schema zijn gearchiveerd en zijn niet meer beschikbaar. 
 
 Het configuratie bestand dat hier wordt beschreven, wordt gebruikt om diagnostische configuratie-instellingen in te stellen wanneer de diagnostische monitor wordt gestart.  
 
 De uitbrei ding wordt gebruikt in combi natie met andere micro soft Diagnostics-producten, zoals Azure Monitor, waaronder Application Insights en Log Analytics.
-
-
 
 Down load de schema definitie van het open bare configuratie bestand door de volgende Power shell-opdracht uit te voeren:  
 
@@ -482,7 +480,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Onderliggende elementen|Description|  
 |--------------------|-----------------|  
-|**CrashDumpConfiguration**|Vereist. Definieert configuratie waarden voor elk proces.<br /><br /> Het volgende kenmerk is ook vereist:<br /><br /> naam verwerkings proces: de namen van de processen die u Azure Diagnostics wilt voor het verzamelen van een crash dump voor.|  
+|**CrashDumpConfiguration**|Vereist. Definieert configuratie waarden voor elk proces.<br /><br /> Het volgende kenmerk is ook vereist:<br /><br /> naam **verwerkings** proces: de namen van de processen die u Azure Diagnostics wilt voor het verzamelen van een crash dump voor.|  
 
 ## <a name="directories-element"></a>Element directory's
  *Hardwarestructuur Root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-Directory's*

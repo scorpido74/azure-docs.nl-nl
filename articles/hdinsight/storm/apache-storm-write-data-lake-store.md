@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: Apache Storm gebruiken om te schrijven naar opslag/Data Lake Storage-Azure HDInsight'
+title: Zelf studie-Apache Storm schrijf bewerkingen naar opslag/Data Lake Storage-Azure HDInsight
 description: Zelf studie-informatie over het gebruik van Apache Storm om te schrijven naar de HDFS-compatibele opslag voor Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 17cb1091d34c8c0800d0b4dd1f9044fee0ef313f
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 752bf1919634d29221a00d983b4e88fefaf628d5
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946457"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736337"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Zelfstudie: Schrijven naar Apache Hadoop HDFS van Apache Storm in azure HDInsight
 
@@ -114,7 +114,7 @@ Storm op HDInsight bevat standaard geen onderdelen die `HdfsBolt` worden gebruik
 
 | Eigenschap | Value |
 |---|---|
-|Scripttype |- Aangepast|
+|Scripttype |-Aangepast|
 |Bash-script-URI |`https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`|
 |Knooppunt type (n) |Nimbus, Supervisor|
 |Parameters |Geen|
@@ -160,7 +160,7 @@ Zie het document [HDInsight-clusters aanpassen met script acties](./../hdinsight
     hdfs.url: wasbs:///
     ```
 
-    Gebruik __CTRL + X__ , vervolgens __Y__ en tenslotte __Enter__ om het bestand op te slaan. De waarden in dit bestand instellen de opslag-URL en de naam van de map waarnaar gegevens worden geschreven.
+    Gebruik __CTRL + X__, vervolgens __Y__en tenslotte __Enter__om het bestand op te slaan. De waarden in dit bestand instellen de opslag-URL en de naam van de map waarnaar gegevens worden geschreven.
 
 1. Gebruik de volgende opdracht om de topologie te starten:
 

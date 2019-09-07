@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 361dc10aad6f65230e1e0f4c563534d44b45f902
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: d34f3a03e1bcd35c270d13c4dda57d0394a36e4b
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697816"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387793"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Voorbeeld: Taal met Text Analytics detecteren
 
@@ -69,7 +69,7 @@ Zie [de Text Analytics-API aanroepen](text-analytics-how-to-call-api.md)voor mee
 
 + Maak een POST-aanvraag. Als u de API-documentatie voor deze aanvraag wilt bekijken, raadpleegt u de [taaldetectie-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-+ Het HTTP-eindpunt voor taaldetectie instellen. Gebruik een Text Analytics resource in azure of een geïnstantieerd [Text Analytics container](text-analytics-how-to-install-containers.md). Het moet de `/languages` resource bevatten: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`.
++ Het HTTP-eindpunt voor taaldetectie instellen. Gebruik een Text Analytics resource in azure of een geïnstantieerd [Text Analytics container](text-analytics-how-to-install-containers.md). U moet in `/text/analytics/v2.1/languages` de URL toevoegen. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`.
 
 + Stel een aanvraag header in voor het toevoegen van de [toegangs sleutel](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) voor Text Analytics bewerkingen.
 

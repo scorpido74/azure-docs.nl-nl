@@ -1,5 +1,5 @@
 ---
-title: QnA bot - Azure Bot Service - QnA Maker
+title: 'Zelfstudie: QnA bot - Azure Bot Service - QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Maak een QnA-chat-bot op de pagina publiceren voor een bestaande kennis database. Deze bot maakt gebruik van de bot Framework SDK v4. U hoeft geen code te schrijven om de bot samen te stellen, maar alle code wordt voor u gegeven.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 07/31/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 4bb987a5a091871bec2c0cc8cec6d9ab804bb244
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: ea6e0d266c181d930f3d18171b09d222e53da7ab
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697998"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390909"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Zelfstudie: Een QnA-bot maken met Azure Bot Service v4
 
@@ -57,7 +57,7 @@ Maak een bot als een client toepassing voor de Knowledge Base.
     |App-naam|`my-tutorial-kb-bot-app`|Dit is een web-app ter ondersteuning van uw bot. Dit mag niet dezelfde app-naam zijn als uw QnA Maker-service al gebruikt. Het delen van de Web-App van QnA Maker met een andere resource wordt niet ondersteund.|
     |SDK-taal|C#|Dit is de onderliggende programmeer taal die wordt gebruikt door de bot Framework SDK. Uw keuzes zijn [C#](https://github.com/Microsoft/botbuilder-dotnet) of [node. js](https://github.com/Microsoft/botbuilder-js).|
     |QnA-verificatie sleutel|**Niet wijzigen**|Deze waarde wordt voor u ingevuld.|
-    |App Service-plan/-locatie|**Niet wijzigen**|Voor deze zelf studie is de locatie niet belang rijk.|
+    |App service-plan/-locatie|**Niet wijzigen**|Voor deze zelf studie is de locatie niet belang rijk.|
     |Azure Storage|**Niet wijzigen**|Gespreks gegevens worden opgeslagen in Azure Storage tabellen.|
     |Application Insights|**Niet wijzigen**|Logboek registratie wordt verzonden naar Application Insights.|
     |Micro soft App-ID|**Niet wijzigen**|Active Directory-gebruiker en-wacht woord zijn vereist.|

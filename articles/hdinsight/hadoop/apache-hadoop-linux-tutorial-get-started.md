@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Apache Hadoop clusters maken met Resource Manager-Azure HDInsight'
+title: 'Quickstart: Apache Hadoop cluster resource manager maken-Azure HDInsight'
 description: In deze Quick Start maakt u Apache Hadoop cluster in azure HDInsight met behulp van Resource Manager-sjabloon
 keywords: aan de slag met hadoop, hadoop linux, hadoop quickstart, aan de slag met hive, hive quickstart
 ms.service: hdinsight
@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 420a5bb4cec6101f3db36212a9b8fd6690e0e077
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: b65e642e19a9dd34c0f64f2d311fda0c70d4af72
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207258"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736153"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Quickstart: Apache Hadoop cluster maken in azure HDInsight met behulp van Resource Manager-sjabloon
 

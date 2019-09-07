@@ -11,24 +11,27 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0685b65ce9204221e93a1ea4aa47a5e09eaac9f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 51bfcc47961e870fb7fb87b26a78aea0f1564d46
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932984"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390308"
 ---
 # <a name="what-is-project-acoustics"></a>Wat is Project Acoustics?
-Project akoestische is een golf akoestische engine voor 3D-interactieve ervaringen. De IT-modellen zijn wave-effecten zoals Diffraction, portaling en galm effecten in complexe scènes zonder hand matige zone markeringen te vereisen. Het omvat ook Game-Engine en integratie van de audio-middleware. De "filosofie van het project" is vergelijkbaar met statische belichting: maken gedetailleerde fysieke fysica offline om een fysieke basis lijn te bieden en gebruik een licht gewicht runtime met duidelijke ontwerp besturings elementen om te voldoen aan uw artistieke doelen.
+Project akoestische is een golf akoestische engine voor 3D-interactieve ervaringen. De IT-modellen zijn wave-effecten zoals bedekking, obstructie, portaling en reverberation-effecten in complexe scènes zonder hand matige zone markeringen of CPU-intensieve raytracing. Het omvat ook Game-Engine en integratie van de audio-middleware. De "filosofie van het project" is vergelijkbaar met de statische belichting: maken gedetailleerde fysieke fysica offline om een fysieke basis lijn te bieden en gebruik een licht gewicht runtime met duidelijke ontwerp besturings elementen om te voldoen aan uw artistieke doelen voor de akoestische van uw virtuele wereld.
 
 ![Scherm afbeelding van het vistuig van War 4 met akoestische voxels](media/gears-with-voxels.jpg)
 
 ## <a name="using-wave-physics-for-interactive-acoustics"></a>Golf fysica gebruiken voor interactieve akoestische
-Op Ray gebaseerde akoestische methoden kunnen controleren op bedekking met behulp van één bron-naar-Luister-Ray-cast of een galm van het lokale scène volume met een paar stralen. Deze technieken kunnen echter onbetrouwbaar zijn omdat een Pebble occludes net zo groot is als een Boulder. Stralen hebben geen rekening met de manier waarop geluid rond objecten wordt gebocht, een verschijnsel bekend als Diffraction. Met de simulatie project akoestische wordt deze effecten vastgelegd met behulp van een simulatie op basis van een golf. Het resultaat is meer voorspelbaar en betrouwbaar.
+Op Ray gebaseerde akoestische methoden kunnen controleren op bedekking met behulp van één bron-naar-Luister-Ray-cast of een galm van het lokale scène volume met een paar stralen. Deze technieken kunnen echter onbetrouwbaar zijn omdat een Pebble occludes net zo groot is als een Boulder. Stralen hebben geen rekening met de manier waarop geluid rond objecten wordt gebocht, een verschijnsel bekend als Diffraction. Met de simulatie project akoestische wordt deze effecten vastgelegd met behulp van een simulatie op basis van een golf. De akoestische informatie is voorspelbaarer, nauw keurig en naadloos.
 
-De belangrijkste innovatie van een project is het koppelen van akoestische simulatie met traditionele ontwerp concepten. Het zet simulatie resultaten om in traditionele para meters van de audio-DSP voor bedekking, portaling en galm. De ontwerp functie maakt gebruik van besturings elementen voor dit vertaal proces. Ga naar de [pagina onderzoek project](https://www.microsoft.com/en-us/research/project/project-triton/)voor meer informatie over de belangrijkste technologieën achter de project akoestische.
+De sleutel innovatie van een project is het koppelen van echte geluids simulatie op basis van geluid met traditionele ontwerp concepten. Het zet simulatie resultaten om in traditionele para meters van de audio-DSP voor bedekking, portaling en galm. De ontwerp functie maakt gebruik van besturings elementen voor dit vertaal proces. Ga naar de [pagina onderzoek project](https://www.microsoft.com/en-us/research/project/project-triton/)voor meer informatie over de belangrijkste technologieën achter de project akoestische.
 
 ![Animatie waarin een horizon taal 2D-segment met een golf door een scène wordt weer gegeven](media/wave-simulation.gif)
+
+## <a name="video-presentation-from-gdc-2019-30-min"></a>Video presentatie van GDC 2019 (~ 30 minuten)
+Video over project akoestische(https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Klik hier om de video af te spelen") [ ![]
 
 ## <a name="setup"></a>Instellen
 De integratie van de unit van het [project](unity-integration.md) is slepen en neerzetten en bevat een invoeg toepassing voor eenheids audio-engine. Breid de besturings elementen voor unit-audio bron toe door een onderdeel C# van een project akoestische controles toe te voegen aan elk audio object.

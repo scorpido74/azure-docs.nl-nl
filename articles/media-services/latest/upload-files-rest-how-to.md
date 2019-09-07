@@ -1,6 +1,6 @@
 ---
 title: Bestanden uploaden naar een Azure Media Services-account met behulp van REST | Microsoft Docs
-description: Informatie over het verkrijgen van media-inhoud in Media Services door te maken en uploaden van activa.
+description: Meer informatie over het verkrijgen van media-inhoud in Media Services door het maken en uploaden van assets.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,53 +13,53 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: a6f872880b61a5bd9510abda2f15e2edea16e940
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 78c07330558241c889f284bcaf7302ce1327b5b8
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703882"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389807"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Bestanden uploaden naar een Media Services-account met behulp van REST
 
-In Media Services uploadt u uw digitale bestanden naar een blob-container die zijn gekoppeld aan een asset. De [Asset](https://docs.microsoft.com/rest/api/media/operations/asset) entiteit kan video, audio, afbeeldingen, verzamelingen van miniaturen, tekst tekstsporen en ondertitelingsbestanden bestanden (en de metagegevens over deze bestanden) bevatten. Zodra de bestanden zijn geüpload naar de container van de asset, wordt uw inhoud veilig opgeslagen in de cloud voor verdere verwerking en streaming.
+In Media Services uploadt u uw digitale bestanden naar een BLOB-container die is gekoppeld aan een Asset. De [Asset](https://docs.microsoft.com/rest/api/media/operations/asset) -entiteit kan video, audio, afbeeldingen, miniatuur verzamelingen, tekst sporen en ondertitelings bestanden (en de meta gegevens over deze bestanden) bevatten. Zodra de bestanden in de container van het activum zijn geüpload, wordt uw inhoud veilig opgeslagen in de Cloud voor verdere verwerking en streaming.
 
-Dit artikel ziet u hoe u een lokaal bestand met behulp van REST te uploaden.
+In dit artikel wordt beschreven hoe u een lokaal bestand kunt uploaden met behulp van REST.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u wilt de in dit onderwerp beschreven stappen hebt voltooid, hebt u naar:
 
-- Beoordeling [Asset concept](assets-concept.md).
+- Bekijk het [concept over activa](assets-concept.md).
 - [Postman configureren voor Azure Media Services REST API-aanroepen](media-rest-apis-with-postman.md).
     
-    Zorg ervoor dat u de laatste stap in het onderwerp [Azure AD Token ophalen](media-rest-apis-with-postman.md#get-azure-ad-token). 
+    Zorg ervoor dat u de laatste stap in het onderwerp [Azure AD-Token ophalen](media-rest-apis-with-postman.md#get-azure-ad-token)volgt. 
 
-## <a name="create-an-asset"></a>Maak een asset
+## <a name="create-an-asset"></a>Een Asset maken
 
-Deze sectie wordt beschreven hoe u een nieuwe Asset maken.
+In deze sectie wordt beschreven hoe u een nieuwe Asset maakt.
 
-1. Selecteer **activa** -> **maken of bijwerken van een Asset**.
+1. Activa -> selecteren om**activa te maken of bij te werken**.
 2. Druk op **Verzenden**.
 
-    ![Maak een asset](./media/upload-files/postman-create-asset.png)
+    ![Een Asset maken](./media/upload-files/postman-create-asset.png)
 
-U ziet de **antwoord** met de informatie over de zojuist gemaakte asset.
+U ziet het **antwoord** met de informatie over nieuw gemaakte activa.
 
-## <a name="get-a-sas-url-with-read-write-permissions"></a>Ophalen van een SAS-URL met machtigingen voor lezen / schrijven 
+## <a name="get-a-sas-url-with-read-write-permissions"></a>Een SAS-URL ophalen met de machtigingen lezen/schrijven 
 
-Deze sectie wordt beschreven hoe u een SAS-URL die is gegenereerd voor de gemaakte asset. De SAS-URL is gemaakt met machtigingen voor lezen / schrijven en kan worden gebruikt om de digitale bestanden uploaden naar de container Asset.
+In deze sectie wordt uitgelegd hoe u een SAS-URL kunt ophalen die is gegenereerd voor de gemaakte Asset. De SAS-URL is gemaakt met lees-en schrijf machtigingen en kan worden gebruikt voor het uploaden van digitale bestanden in de Asset-container.
 
-1. Selecteer **activa** -> **de URL van de Asset**.
+1. **Activa** -> selecteren**lijst van de Asset-url's**.
 2. Druk op **Verzenden**.
 
-    ![Bestand uploaden](./media/upload-files/postman-create-sas-locator.png)
+    ![Een bestand uploaden](./media/upload-files/postman-create-sas-locator.png)
 
-U ziet de **antwoord** met de informatie over asset van URL's. De eerste URL kopiëren en deze gebruiken om uw bestand te uploaden.
+U ziet het **antwoord** met de informatie over de url's van de Asset. Kopieer de eerste URL en gebruik deze om uw bestand te uploaden.
 
-## <a name="upload-a-file-to-blob-storage-using-the-upload-url"></a>Een bestand uploaden naar blob-opslag met de upload-URL
+## <a name="upload-a-file-to-blob-storage-using-the-upload-url"></a>Een bestand uploaden naar Blob Storage met behulp van de upload-URL
 
-Gebruik de Azure Storage-API's of de SDK's (bijvoorbeeld de [REST API voor Storage](../../storage/common/storage-rest-api-auth.md), [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md), of [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
+Gebruik de Azure Storage Api's of Sdk's (bijvoorbeeld de [opslag rest API](../../storage/common/storage-rest-api-auth.md) of de [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

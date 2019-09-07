@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: quickstart
 ms.date: 07/09/2019
 ms.author: heidist
-ms.openlocfilehash: a4654e5895e9c7768b9fa6b975ef848294bcc8cc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 72546e6327fc3286455482943dcaedbd5a8e2943
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648909"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744733"
 ---
 # <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Quickstart: Een AI-indexerings pijplijn maken met behulp van cognitieve vaardig heden in Azure Search
 
@@ -45,7 +45,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) levert de AI. In deze Quick Start vindt u de stappen voor het toevoegen van deze resources, wanneer u de pijp lijn opgeeft. Het is niet nodig om accounts vooraf in te stellen.
 
-Azure-Services zijn vereist voor het leveren van de invoer voor de indexerings pijplijn. U kunt alle gegevens bronnen gebruiken die worden ondersteund door [Azure Search-Indexeer functies](search-indexer-overview.md) , met uitzonde ring van Azure Table Storage. dit wordt niet ondersteund voor AI-indexering. Deze Snelstartgids maakt gebruik van [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) als een container voor brongegevens bestanden. 
+Azure-Services zijn vereist voor het leveren van de invoer voor de indexerings pijplijn. U kunt elke gegevens bron die wordt ondersteund door [Azure Search Indexeer functies](search-indexer-overview.md)gebruiken. Deze Snelstartgids maakt gebruik van [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) als een container voor brongegevens bestanden. 
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Azure Blob service instellen en voorbeeldgegevens laden
 

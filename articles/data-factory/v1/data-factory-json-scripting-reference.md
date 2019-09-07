@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f94d3cdbbd1683b20dbe1d370bcac43817458f44
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 69218cedcd5d775fe6e499086663aa124f6bfe25
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139387"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736010"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Naslag informatie voor JSON-script Azure Data Factory
 > [!NOTE]
@@ -461,7 +461,7 @@ Als u een Azure Blob-gegevensset wilt definiëren, stelt u het **type** van de g
 | fileName |De naam van de blob. Bestands naam is optioneel en hoofdletter gevoelig.<br/><br/>Als u een bestands naam opgeeft, werkt de activiteit (inclusief kopie) voor de specifieke blob.<br/><br/>Als er geen bestands naam is opgegeven, wordt met Copy alle blobs in de folderPath voor invoer gegevensset opgenomen.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben `Data.<Guid>.txt` : (bijvoorbeeld:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nee |
 | partitionedBy |partitionedBy is een optionele eigenschap. U kunt deze gebruiken om een dynamische folderPath en een bestands naam op te geven voor time series-gegevens. Zo kan folderPath voor elk uur aan gegevens worden para meters. |Nee |
 | format | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Stel de **type** eigenschap onder indeling op een van deze waarden. Zie voor meer informatie, [tekstindeling](data-factory-supported-file-and-compression-formats.md#text-format), [Json-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-indeling](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format), en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) secties. <br><br> Als u wilt **bestanden als kopiëren-is** overslaan tussen op basis van bestanden (binaire kopie), het gedeelte indeling in beide definities van de gegevensset voor invoer en uitvoer. |Nee |
-| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **Gzip**,Deflate, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
+| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **Gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -597,7 +597,7 @@ Als u een Azure Data Lake Store gekoppelde service wilt definiëren, stelt u het
 | servicePrincipalId | Opgeven van de toepassing client-ID. | Ja (voor Service-Principal-verificatie) |
 | servicePrincipalKey | Geef de sleutel van de toepassing. | Ja (voor Service-Principal-verificatie) |
 | tenant | De tenantgegevens (domain name of tenant-ID) opgeven in uw toepassing zich bevindt. U kunt het ophalen van de muis in de rechterbovenhoek van de Azure-portal. | Ja (voor Service-Principal-verificatie) |
-| authorization | Klik op de knop machtigen in de **Data Factory editor** en voer uw referenties in waarmee de automatisch GEGENEREERDe autorisatie-URL wordt toegewezen aan deze eigenschap. | Ja (voor verificatie van de gebruikers referenties)|
+| authorization | Klik op de knop **machtigen** in de **Data Factory editor** en voer uw referenties in waarmee de automatisch GEGENEREERDe autorisatie-URL wordt toegewezen aan deze eigenschap. | Ja (voor verificatie van de gebruikers referenties)|
 | sessionId | OAuth-sessie-id van de OAuth-autorisatie sessie. Elke sessie-id is uniek en kan slechts één keer worden gebruikt. Deze instelling wordt automatisch gegenereerd wanneer u Data Factory editor gebruikt. | Ja (voor verificatie van de gebruikers referenties) |
 
 #### <a name="example-using-service-principal-authentication"></a>Voor beeld: Service-Principal-verificatie gebruiken
@@ -644,7 +644,7 @@ Als u een Azure Data Lake Store gegevensset wilt definiëren, stelt u het **type
 | fileName |De naam van het bestand in het Azure Data Lake-archief. Bestands naam is optioneel en hoofdletter gevoelig. <br/><br/>Als u een bestands naam opgeeft, werkt de activiteit (inclusief kopie) voor het specifieke bestand.<br/><br/>Als er geen bestands naam is opgegeven, kopiëren bevat alle bestanden in de folderPath voor invoer gegevensset.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben `Data.<Guid>.txt` : (bijvoorbeeld:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nee |
 | partitionedBy |partitionedBy is een optionele eigenschap. U kunt deze gebruiken om een dynamische folderPath en een bestands naam op te geven voor time series-gegevens. Zo kan folderPath voor elk uur aan gegevens worden para meters. |Nee |
 | format | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Stel de **type** eigenschap onder indeling op een van deze waarden. Zie voor meer informatie, [tekstindeling](data-factory-supported-file-and-compression-formats.md#text-format), [Json-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-indeling](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format), en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) secties. <br><br> Als u wilt **bestanden als kopiëren-is** overslaan tussen op basis van bestanden (binaire kopie), het gedeelte indeling in beide definities van de gegevensset voor invoer en uitvoer. |Nee |
-| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **Gzip**,Deflate, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
+| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **Gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
 
 #### <a name="example"></a>Voorbeeld
 ```json
@@ -3097,7 +3097,7 @@ Als u gegevens uit MongoDB kopieert, stelt u het **bron type** van de Kopieer ac
 
 | Eigenschap | Description | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| query |Gebruik de aangepaste query om gegevens te lezen. |SQL-92-query teken reeks. Bijvoorbeeld: `select * from MyTable`. |Nee (als de verzamelings- **DataSet** is opgegeven) |
+| query |Gebruik de aangepaste query om gegevens te lezen. |SQL-92-query teken reeks. Bijvoorbeeld: `select * from MyTable`. |Nee (als de **verzamelings** - **DataSet** is opgegeven) |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -3180,7 +3180,7 @@ Als u een Amazon S3-gegevensset wilt definiëren, stelt u het **type** van de ge
 | prefix |Voorvoegsel voor de sleutel S3-object. Objecten waarvan sleutels met dit voorvoegsel beginnen worden geselecteerd. Is alleen van toepassing als de sleutel leeg is. |String |Nee |
 | version |De versie van het S3-object als S3-versie beheer is ingeschakeld. |Tekenreeks |Nee |
 | format | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Stel de **type** eigenschap onder indeling op een van deze waarden. Zie voor meer informatie, [tekstindeling](data-factory-supported-file-and-compression-formats.md#text-format), [Json-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-indeling](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format), en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) secties. <br><br> Als u wilt **bestanden als kopiëren-is** overslaan tussen op basis van bestanden (binaire kopie), het gedeelte indeling in beide definities van de gegevensset voor invoer en uitvoer. |Nee | |
-| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **Gzip**,Deflate, **bzip2**en **ZipDeflate**. De ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee | |
+| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **Gzip**, **Deflate**, **bzip2**en **ZipDeflate**. De ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee | |
 
 
 > [!NOTE]
@@ -3375,7 +3375,7 @@ Als u een bestands systeem-gegevensset wilt definiëren, stelt u het **type** va
 | File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de folderPath in plaats van alle bestanden te selecteren. <br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beeld 1: "file filter": "*. log"<br/>Voor beeld 2: ' file filter ': 2016-1-?.txt"<br/><br/>File filter is van toepassing op een invoer-file share-gegevensset. |Nee |
 | partitionedBy |U kunt partitionedBy gebruiken om een dynamische folderPath/fileName op te geven voor gegevens van een tijd reeks. Een voor beeld is folderPath para meters voor elk uur aan gegevens. |Nee |
 | format | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Stel de **type** eigenschap onder indeling op een van deze waarden. Zie voor meer informatie, [tekstindeling](data-factory-supported-file-and-compression-formats.md#text-format), [Json-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-indeling](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format), en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) secties. <br><br> Als u wilt **bestanden als kopiëren-is** overslaan tussen op basis van bestanden (binaire kopie), het gedeelte indeling in beide definities van de gegevensset voor invoer en uitvoer. |Nee |
-| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **Gzip**,Deflate, **bzip2**en **ZipDeflate**; en ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nee |
+| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **Gzip**, **Deflate**, **bzip2**en **ZipDeflate**; en ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nee |
 
 > [!NOTE]
 > U kunt fileName en file filter niet tegelijkertijd gebruiken.
@@ -3641,7 +3641,7 @@ Als u een FTP-gegevensset wilt definiëren, stelt u het **type** gegevensset in 
 | File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de folderPath in plaats van alle bestanden te selecteren.<br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beelden 1:`"fileFilter": "*.log"`<br/>Voorbeeld 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> File filter is van toepassing op een invoer-file share-gegevensset. Deze eigenschap wordt niet ondersteund met HDFS. |Nee |
 | partitionedBy |partitionedBy kan worden gebruikt om een dynamische folderPath op te geven, filename voor time series-gegevens. Bijvoorbeeld folderPath para meters voor elk uur aan gegevens. |Nee |
 | format | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Stel de **type** eigenschap onder indeling op een van deze waarden. Zie voor meer informatie, [tekstindeling](data-factory-supported-file-and-compression-formats.md#text-format), [Json-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-indeling](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format), en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) secties. <br><br> Als u wilt **bestanden als kopiëren-is** overslaan tussen op basis van bestanden (binaire kopie), het gedeelte indeling in beide definities van de gegevensset voor invoer en uitvoer. |Nee |
-| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **Gzip**,Deflate, **bzip2**en **ZipDeflate**; en ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
+| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **Gzip**, **Deflate**, **bzip2**en **ZipDeflate**; en ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
 | useBinaryTransfer |Opgeven of binaire overdrachts modus moet worden gebruikt. True voor binaire modus en ONWAAR ASCII. Standaard waarde: Echte. Deze eigenschap kan alleen worden gebruikt wanneer het gekoppelde type gekoppelde service van het type is: FtpServer. |Nee |
 
 > [!NOTE]
@@ -3782,7 +3782,7 @@ Als u een HDFS-gegevensset wilt definiëren, stelt u het **type** van de gegeven
 | fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt`(bijvoorbeeld:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nee |
 | partitionedBy |partitionedBy kan worden gebruikt om een dynamische folderPath op te geven, filename voor time series-gegevens. Voor beeld: folderPath para meters voor elk uur aan gegevens. |Nee |
 | format | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Stel de **type** eigenschap onder indeling op een van deze waarden. Zie voor meer informatie, [tekstindeling](data-factory-supported-file-and-compression-formats.md#text-format), [Json-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-indeling](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format), en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) secties. <br><br> Als u wilt **bestanden als kopiëren-is** overslaan tussen op basis van bestanden (binaire kopie), het gedeelte indeling in beide definities van de gegevensset voor invoer en uitvoer. |Nee |
-| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **Gzip**,Deflate, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
+| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **Gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
 
 > [!NOTE]
 > bestands naam en file filter kunnen niet tegelijkertijd worden gebruikt.
@@ -3983,7 +3983,7 @@ Als u een SFTP-gegevensset wilt definiëren, stelt u het **type** van de gegeven
 | File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de folderPath in plaats van alle bestanden te selecteren.<br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beelden 1:`"fileFilter": "*.log"`<br/>Voorbeeld 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> File filter is van toepassing op een invoer-file share-gegevensset. Deze eigenschap wordt niet ondersteund met HDFS. |Nee |
 | partitionedBy |partitionedBy kan worden gebruikt om een dynamische folderPath op te geven, filename voor time series-gegevens. Bijvoorbeeld folderPath para meters voor elk uur aan gegevens. |Nee |
 | format | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Stel de **type** eigenschap onder indeling op een van deze waarden. Zie voor meer informatie, [tekstindeling](data-factory-supported-file-and-compression-formats.md#text-format), [Json-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-indeling](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format), en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) secties. <br><br> Als u wilt **bestanden als kopiëren-is** overslaan tussen op basis van bestanden (binaire kopie), het gedeelte indeling in beide definities van de gegevensset voor invoer en uitvoer. |Nee |
-| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **Gzip**,Deflate, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
+| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **Gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
 | useBinaryTransfer |Opgeven of binaire overdrachts modus moet worden gebruikt. True voor binaire modus en ONWAAR ASCII. Standaard waarde: Echte. Deze eigenschap kan alleen worden gebruikt wanneer het gekoppelde type gekoppelde service van het type is: FtpServer. |Nee |
 
 > [!NOTE]
@@ -4164,7 +4164,7 @@ Als u een HTTP-gegevensset wilt definiëren, stelt u het **type** van de gegeven
 | additionalHeaders | Aanvullende HTTP-aanvraag headers. | Nee |
 | requestBody | Hoofd tekst voor HTTP-aanvraag. | Nee |
 | format | Als u **de gegevens van het HTTP-eind punt net als-** als wilt ophalen zonder deze te parseren, slaat u deze indelings instellingen over. <br><br> Als u de inhoud van het HTTP-antwoord tijdens het kopiëren wilt parseren, worden de volgende indelings typen ondersteund: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Zie voor meer informatie, [tekstindeling](data-factory-supported-file-and-compression-formats.md#text-format), [Json-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-indeling](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format), en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) secties. |Nee |
-| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **Gzip**,Deflate, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
+| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **Gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
 
 #### <a name="example-using-the-get-default-method"></a>Voor beeld: de methode GET (standaard) gebruiken
 
@@ -4273,7 +4273,7 @@ Als u een gekoppelde OData-service wilt definiëren, stelt u het **type** van de
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de OData-bron. <br/><br/> Voor Cloud OData zijn mogelijke waarden anoniem, basis en OAuth (Opmerking Azure Data Factory momenteel alleen op Azure Active Directory gebaseerde OAuth). <br/><br/> Voor on-premises OData zijn mogelijke waarden anoniem, basis en Windows. |Ja |
 | username |Geef de gebruikers naam op als u basis verificatie gebruikt. |Ja (alleen als u basis verificatie gebruikt) |
 | password |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Ja (alleen als u basis verificatie gebruikt) |
-| authorizedCredential |Als u OAuth gebruikt, klikt u op de knop machtigen in de wizard Data Factory kopiëren of de editor en voert u uw referenties in. vervolgens wordt de waarde van deze eigenschap automatisch gegenereerd. |Ja (alleen als u OAuth-verificatie gebruikt) |
+| authorizedCredential |Als u OAuth gebruikt, klikt u op de knop **machtigen** in de wizard Data Factory kopiëren of de editor en voert u uw referenties in. vervolgens wordt de waarde van deze eigenschap automatisch gegenereerd. |Ja (alleen als u OAuth-verificatie gebruikt) |
 | gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises OData-service. Geef alleen op als u gegevens kopieert uit on-premises OData-bron. |Nee |
 
 #### <a name="example---using-basic-authentication"></a>Voor beeld-basis verificatie gebruiken
@@ -4739,7 +4739,7 @@ Als u een gekoppelde web-service wilt definiëren, stelt u het **type** van de g
 Zie het artikel [Web Table connector](data-factory-web-table-connector.md#linked-service-properties) (Engelstalig) voor meer informatie.
 
 ### <a name="dataset"></a>Gegevensset
-Als u een web-gegevensset wilt definiëren, stelt u het **type** gegevensset in op Webtabel en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
+Als u een web-gegevensset wilt definiëren, stelt u het **type** gegevensset in op **Webtabel**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
@@ -4771,7 +4771,7 @@ Als u een web-gegevensset wilt definiëren, stelt u het **type** gegevensset in 
 Zie het artikel [Web Table connector](data-factory-web-table-connector.md#dataset-properties) (Engelstalig) voor meer informatie.
 
 ### <a name="web-source-in-copy-activity"></a>Webbron in Kopieer activiteit
-Als u gegevens uit een webtabel kopieert, stelt u het **bron type** van de Kopieer activiteit inop webbron. Wanneer de bron in de Kopieer activiteit van het type **websource**is, worden er op dit moment geen aanvullende eigenschappen ondersteund.
+Als u gegevens uit een webtabel kopieert, stelt u het **bron type** van de Kopieer activiteit in op **webbron**. Wanneer de bron in de Kopieer activiteit van het type **websource**is, worden er op dit moment geen aanvullende eigenschappen ondersteund.
 
 #### <a name="example"></a>Voorbeeld
 
@@ -4826,7 +4826,7 @@ De volgende tabel geeft een lijst van de reken omgevingen die worden ondersteund
 | [Azure Batch](#azure-batch) |[.NET aangepaste activiteit](#net-custom-activity) |
 | [Azure Machine Learning](#azure-machine-learning) | [Machine learning activiteit voor het uitvoeren van batches](#machine-learning-batch-execution-activity) [machine learning resource activiteit bijwerken](#machine-learning-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) |
-| [Azure SQL Database](#azure-sql-database-1), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-1), [SQL Server](#sql-server-1) |[Opgeslagen procedure](#stored-procedure-activity) |
+| [Azure SQL Database](#azure-sql-database), [Azure SQL Data Warehouse](#azure-sql-data-warehouse), [SQL Server](#sql-server-1) |[Opgeslagen procedure](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>Azure HDInsight-cluster op aanvraag
 De Azure Data Factory-service kan automatisch een HDInsight-cluster op basis van Windows/Linux maken voor het verwerken van gegevens. Het cluster wordt gemaakt in dezelfde regio als het opslag account (linkedServiceName-eigenschap in de JSON) die aan het cluster is gekoppeld. U kunt de volgende transformatie activiteiten uitvoeren op deze gekoppelde service: [aangepaste .net-activiteit](#net-custom-activity), [Hive](#hdinsight-hive-activity)-activiteit, [Pig-activiteit](#hdinsight-pig-activity), [MapReduce activiteit](#hdinsight-mapreduce-activity), Hadoop streaming-activiteit, [Spark-activiteit](#hdinsight-spark-activity).
@@ -4864,7 +4864,7 @@ De volgende JSON definieert een gekoppelde HDInsight-service op aanvraag van Lin
 }
 ```
 
-Zie het artikel COMPUTE [linked Services](data-factory-compute-linked-services.md) (Engelstalig) voor meer informatie.
+Zie het artikel [Compute linked Services](data-factory-compute-linked-services.md) (Engelstalig) voor meer informatie.
 
 ## <a name="existing-azure-hdinsight-cluster"></a>Bestaand Azure HDInsight-cluster
 U kunt een gekoppelde Azure HDInsight-service maken om uw eigen HDInsight-cluster te registreren bij Data Factory. U kunt de volgende gegevens transformatie activiteiten uitvoeren op deze gekoppelde service: [.net aangepaste activiteit](#net-custom-activity), [Hive](#hdinsight-hive-activity)-activiteit, [Pig-activiteit](#hdinsight-pig-activity), [MapReduce activiteit](#hdinsight-mapreduce-activity), Hadoop streaming-activiteit, [Spark-activiteit](#hdinsight-spark-activity).
@@ -4970,7 +4970,7 @@ De volgende tabel bevat beschrijvingen voor de eigenschappen die worden gebruikt
 | type |De eigenschap type moet worden ingesteld op: **AzureDataLakeAnalytics**. |Ja |
 | accountName |Azure Data Lake Analytics account naam. |Ja |
 | dataLakeAnalyticsUri |Azure Data Lake Analytics-URI. |Nee |
-| authorization |De autorisatie code wordt automatisch opgehaald nadat u op de knop machtigen in de Data Factory editor hebt geklikt en de OAuth-aanmelding hebt voltooid. |Ja |
+| authorization |De autorisatie code wordt automatisch opgehaald nadat u op de knop **machtigen** in de Data Factory editor hebt geklikt en de OAuth-aanmelding hebt voltooid. |Ja |
 | subscriptionId |Azure-abonnements-id |Nee (als dit niet wordt opgegeven, wordt het abonnement van de data factory gebruikt). |
 | resourceGroupName |Naam van Azure-resourcegroep |Nee (als dit niet is opgegeven, wordt de resource groep van de data factory gebruikt). |
 | sessionId |sessie-id van de OAuth-autorisatie sessie. Elke sessie-id is uniek en kan slechts één keer worden gebruikt. Wanneer u de Data Factory editor gebruikt, wordt deze ID automatisch gegenereerd. |Ja |
@@ -4995,58 +4995,6 @@ In het volgende voor beeld wordt een JSON-definitie geboden voor een Azure Data 
     }
 }
 ```
-
-## <a name="azure-sql-database"></a>Azure SQL Database
-U maakt een gekoppelde Azure SQL-service en gebruikt deze met de [opgeslagen procedure activiteit](#stored-procedure-activity) om een opgeslagen procedure vanuit een Data Factory pijp lijn aan te roepen.
-
-### <a name="linked-service"></a>Gekoppelde service
-Als u een Azure SQL Database gekoppelde service wilt definiëren, stelt u het **type** van de gekoppelde service in op **AzureSqlDatabase**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
-
-| Eigenschap | Description | Vereist |
-| --- | --- | --- |
-| connectionString |Geef de gegevens op die nodig zijn om verbinding te maken met het Azure SQL Database-exemplaar voor de Connections Tring-eigenschap. |Ja |
-
-#### <a name="json-example"></a>JSON-voor beeld
-
-```json
-{
-    "name": "AzureSqlLinkedService",
-    "properties": {
-        "type": "AzureSqlDatabase",
-        "typeProperties": {
-            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-        }
-    }
-}
-```
-
-Zie het artikel over [Azure SQL connector](data-factory-azure-sql-connector.md#linked-service-properties) voor meer informatie over deze gekoppelde service.
-
-## <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-U maakt een Azure SQL Data Warehouse gekoppelde service en gebruikt deze met de [opgeslagen procedure activiteit](data-factory-stored-proc-activity.md) om een opgeslagen procedure vanuit een Data Factory pijp lijn aan te roepen.
-
-### <a name="linked-service"></a>Gekoppelde service
-Als u een Azure SQL Data Warehouse gekoppelde service wilt definiëren, stelt u het **type** van de gekoppelde service in op **AzureSqlDW**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
-
-| Eigenschap | Description | Vereist |
-| --- | --- | --- |
-| connectionString |Geef de gegevens op die nodig zijn om verbinding te maken met het Azure SQL Data Warehouse-exemplaar voor de Connections Tring-eigenschap. |Ja |
-
-#### <a name="json-example"></a>JSON-voor beeld
-
-```json
-{
-    "name": "AzureSqlDWLinkedService",
-    "properties": {
-        "type": "AzureSqlDW",
-        "typeProperties": {
-            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-        }
-    }
-}
-```
-
-Zie [Azure SQL Data Warehouse connector](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties) -artikel voor meer informatie.
 
 ## <a name="sql-server"></a>SQL Server
 U maakt een SQL Server gekoppelde service en gebruikt deze met de [opgeslagen procedure activiteit](data-factory-stored-proc-activity.md) om een opgeslagen procedure vanuit een Data Factory pijp lijn aan te roepen.
@@ -5293,7 +5241,7 @@ U kunt de volgende eigenschappen opgeven in een Hadoop streaming-activiteit JSON
 | getDebugInfo | Een optioneel element. Als deze is ingesteld op fout, worden de Logboeken alleen gedownload bij fout. Als deze is ingesteld op alle, worden logboeken altijd gedownload, ongeacht de uitvoerings status. |
 
 > [!NOTE]
-> U moet een uitvoer gegevensset opgeven voor de activiteit Hadoop streaming voor de eigenschap outputs. Deze gegevensset kan alleen een dummy-gegevensset zijn die is vereist om de pijplijn planning (elk uur, dagelijks, enzovoort) te kunnen bezorgen. Als de activiteit geen invoer heeft, kunt u het opgeven van een invoer gegevensset voor de activiteit voor de eigenschap inputs overs Laan.
+> U moet een uitvoer gegevensset opgeven voor de activiteit Hadoop streaming voor de eigenschap **outputs** . Deze gegevensset kan alleen een dummy-gegevensset zijn die is vereist om de pijplijn planning (elk uur, dagelijks, enzovoort) te kunnen bezorgen. Als de activiteit geen invoer heeft, kunt u het opgeven van een invoer gegevensset voor de activiteit voor de eigenschap **inputs** overs Laan.
 
 ## <a name="json-example"></a>JSON-voor beeld
 
@@ -5393,7 +5341,7 @@ Houd rekening met de volgende punten:
 
     > [!IMPORTANT]
     > U wordt aangeraden deze eigenschap niet in te stellen op altijd in een productie omgeving, tenzij u een probleem oplost.
-- De sectie outputs heeft één uitvoer gegevensset. U moet een uitvoer gegevensset opgeven, zelfs als het Spark-programma geen uitvoer produceert. De uitvoer gegevensset verstuurt het schema voor de pijp lijn (elk uur, dagelijks, enzovoort).
+- De sectie **outputs** heeft één uitvoer gegevensset. U moet een uitvoer gegevensset opgeven, zelfs als het Spark-programma geen uitvoer produceert. De uitvoer gegevensset verstuurt het schema voor de pijp lijn (elk uur, dagelijks, enzovoort).
 
 Zie artikel [Spark-activiteit](data-factory-spark.md) voor meer informatie over de activiteit.
 

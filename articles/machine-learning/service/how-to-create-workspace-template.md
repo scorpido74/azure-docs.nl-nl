@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 89c24512e50dedbf10d145088ec77c2e6e303d1e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 34522c9a672de51cfa53ce52c5a6a6506fcd5454
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873155"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390515"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Een Azure Resource Manager sjabloon gebruiken om een werk ruimte voor Azure Machine Learning service te maken
 
@@ -55,6 +55,11 @@ De voorbeeld sjabloon heeft twee para meters:
 * De **naam van de werk ruimte**, de beschrijvende naam van de werk ruimte Azure machine learning.
 
     De namen van de andere services worden wille keurig gegenereerd.
+
+> [!TIP]
+> Terwijl de sjabloon die aan dit document is gekoppeld, een nieuwe Azure Container Registry maakt, kunt u ook een nieuwe werk ruimte maken zonder container register te maken. Als het container register in de werk ruimte aanwezig is, wordt er een gemaakt wanneer u een bewerking uitvoert waarvoor een container register vereist is. Bijvoorbeeld training of implementatie van een model.
+>
+> U kunt ook verwijzen naar een bestaand container register of opslag account in de Azure Resource Manager-sjabloon in plaats van een nieuwe te maken.
 
 Zie de volgende artikelen voor meer informatie over sjablonen:
 

@@ -15,12 +15,12 @@ ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 70a8e4cd694a90e83bf78e00a7c725a8c887b2eb
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: fcb5d74305375c9883f2d601a2ab7d2d9a50b9cb
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324076"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743938"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Snelstart: Azure Cache voor Redis met Python gebruiken
 
@@ -111,13 +111,13 @@ Als u niet verder wilt met de voorbeeldtoepassing uit de snelstart, kunt u de Az
 > Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle bijbehorende resources worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via hun respectievelijke blade.
 >
 
-Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen**.
+Meld u aan bij [Azure Portal](https://portal.azure.com) en selecteer **Resourcegroepen**.
 
-Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...** . In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
+Voer in het tekstvak **filteren op naam...** de naam van de resource groep in. In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Selecteer in de lijst met resultaten van de resource groep de optie **...** en vervolgens de **resource groep verwijderen**.
 
 ![Verwijderen](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
-U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resourcegroep om te bevestigen en klik op **Verwijderen**.
+U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Voer de naam van de resource groep in om te bevestigen en selecteer **verwijderen**.
 
 Na enkele ogenblikken worden de resourcegroep en alle resources in de groep verwijderd.
 

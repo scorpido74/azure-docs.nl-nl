@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0b15c9730f7e469fde8fabd1bc4cbcd28efa66c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5949f57a87f324dc2e6651611574f4b66215c8a8
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953017"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389761"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wachtwoordbeveiliging in Azure AD implementeren
 
-Nu u begrijpt [hoe u Azure AD-wachtwoord beveiliging voor Windows Server Active Directory](concept-password-ban-bad-on-premises.md)afdwingt, is de volgende stap het plannen en uitvoeren van uw implementatie.
+Nu u begrijpt [hoe u Azure AD-wachtwoord beveiliging voor Windows Server Active Directory afdwingt](concept-password-ban-bad-on-premises.md), is de volgende stap het plannen en uitvoeren van uw implementatie.
 
 ## <a name="deployment-strategy"></a>Implementatie strategie
 
@@ -38,7 +38,7 @@ Het is ook mogelijk om uw bestaande Active Directory domein controller implement
 * [De replica promotie van de domein controller is mislukt vanwege een zwak wacht woord voor de herstel modus van de Directory Services](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
 * [De degradatie van de domein controller is mislukt vanwege een zwak lokaal beheerders wachtwoord](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
-Nadat de functie gedurende een redelijke periode in de controle modus is uitgevoerd, kunt u de configuratie van de *controle* wijzigen naar afdwingen om veiligere wacht woorden te vereisen. Het is een goed idee om te controleren of er momenteel gerichte bewaking is.
+Nadat de functie gedurende een redelijke periode in de controle modus is uitgevoerd, kunt u de configuratie van de *controle* wijzigen naar *afdwingen* om veiligere wacht woorden te vereisen. Het is een goed idee om te controleren of er momenteel gerichte bewaking is.
 
 ## <a name="deployment-requirements"></a>Implementatievereisten
 
@@ -142,7 +142,7 @@ Er zijn twee vereiste installatie Programma's voor Azure AD-wachtwoord beveiligi
         ```
 
         > [!NOTE]
-        > Deze modus mislukt als Azure multi-factor Authentication is vereist voor uw account. In dat geval gebruikt u een van de twee voor gaande verificatie modi, of gebruikt u in plaats daarvan een ander account waarvoor MFA niet vereist is.
+        > Deze modus mislukt als Azure Multi-Factor Authentication is vereist voor uw account. In dat geval gebruikt u een van de twee voor gaande verificatie modi, of gebruikt u in plaats daarvan een ander account waarvoor MFA niet vereist is.
         >
         > U ziet misschien ook MFA vereist als registratie van Azure-apparaten (die wordt gebruikt onder de voor vallen van Azure AD-wachtwoord beveiliging), is geconfigureerd om wereld wijd MFA te vereisen. U kunt dit probleem omzeilen door een ander account te gebruiken dat MFA ondersteunt met een van de twee vorige verificatie modi, of u kunt ook tijdelijk de MFA-vereiste voor de Azure Device Registration versoepelen. Ga hiervoor naar de Azure-beheer Portal en ga vervolgens naar Azure Active Directory, vervolgens op apparaten, vervolgens op Apparaatinstellingen en stel ' multi-factor Authentication vereisen voor het samen voegen van apparaten ' in op Nee. Zorg ervoor dat u deze instelling opnieuw configureert op Ja zodra de registratie is voltooid.
         >
@@ -186,7 +186,7 @@ Er zijn twee vereiste installatie Programma's voor Azure AD-wachtwoord beveiligi
         ```
 
         > [!NOTE]
-        > Deze modus mislukt als Azure multi-factor Authentication is vereist voor uw account. In dat geval gebruikt u een van de twee voor gaande verificatie modi, of gebruikt u in plaats daarvan een ander account waarvoor MFA niet vereist is.
+        > Deze modus mislukt als Azure Multi-Factor Authentication is vereist voor uw account. In dat geval gebruikt u een van de twee voor gaande verificatie modi, of gebruikt u in plaats daarvan een ander account waarvoor MFA niet vereist is.
         >
         > U ziet misschien ook MFA vereist als registratie van Azure-apparaten (die wordt gebruikt onder de voor vallen van Azure AD-wachtwoord beveiliging), is geconfigureerd om wereld wijd MFA te vereisen. U kunt dit probleem omzeilen door een ander account te gebruiken dat MFA ondersteunt met een van de twee vorige verificatie modi, of u kunt ook tijdelijk de MFA-vereiste voor de Azure Device Registration versoepelen. Ga hiervoor naar de Azure-beheer Portal en ga vervolgens naar Azure Active Directory, vervolgens op apparaten, vervolgens op Apparaatinstellingen en stel ' multi-factor Authentication vereisen voor het samen voegen van apparaten ' in op Nee. Zorg ervoor dat u deze instelling opnieuw configureert op Ja zodra de registratie is voltooid.
         >
@@ -295,7 +295,7 @@ Wanneer er een nieuwere versie van de Azure AD-proxy software voor wachtwoord be
 
 Het is niet vereist om de huidige versie van de proxy software te verwijderen. het installatie programma voert een in-place upgrade uit. U hoeft niet opnieuw op te starten om de proxy software bij te werken. De software-upgrade kan worden geautomatiseerd met behulp van standaard `AzureADPasswordProtectionProxySetup.exe /quiet`MSI-procedures, bijvoorbeeld:.
 
-De proxy-agent ondersteunt automatische upgrades. Automatische upgrade maakt gebruik van de Microsoft Azure AD connect agent Updater-service die naast de proxy service is geïnstalleerd. Automatische upgrade is standaard ingeschakeld en kan worden in-of uitgeschakeld met de cmdlet Set-AzureADPasswordProtectionProxyConfiguration. De huidige instelling kan worden opgevraagd met behulp van de cmdlet Get-AzureADPasswordProtectionProxyConfiguration. Micro soft raadt aan dat de automatische upgrade ingeschakeld blijft.
+De proxy-agent ondersteunt automatische upgrades. Automatische upgrade maakt gebruik van de Microsoft Azure AD connect agent Updater-service die naast de proxy service is geïnstalleerd. Automatische upgrade is standaard ingeschakeld en kan worden in-of uitgeschakeld met de `Set-AzureADPasswordProtectionProxyConfiguration` cmdlet. De huidige instelling kan worden opgevraagd met behulp `Get-AzureADPasswordProtectionProxyConfiguration` van de cmdlet. Micro soft raadt aan dat de automatische upgrade ingeschakeld blijft.
 
 De `Get-AzureADPasswordProtectionProxy` cmdlet kan worden gebruikt om de software versie van alle geïnstalleerde proxy agenten in een forest op te vragen.
 

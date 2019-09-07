@@ -1,6 +1,6 @@
 ---
 title: Spark-instellingen configureren-Azure HDInsight
-description: Spark configureren voor een Azure HDInsight-cluster.
+description: Apache Spark-instellingen voor een Azure HDInsight-cluster weer geven en configureren
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: eb948aa2b683f426831e1b0d34b44f814eab6b9f
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 2d369af7c11473d811677f33f9112d41260fcecf
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441917"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736025"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark-instellingen configureren
 
@@ -61,7 +61,7 @@ Controleer de huidige configuratie-instellingen voor het HDInsight-cluster voord
 
 De Apache Ambari-webgebruikersinterface wordt weer gegeven met een dashboard weergave met metrische gegevens over het resource gebruik van het belangrijkste cluster.  Het Ambari-dash board toont u de Apache Spark configuratie en andere services die u hebt geïnstalleerd. Het dash board bevat een tabblad **configuratie geschiedenis** , waar u configuratie-informatie kunt weer geven voor alle geïnstalleerde services, waaronder Spark.
 
-Als u de configuratie waarden voor Apache Spark wilt bekijken, selecteert u **configuratie geschiedenis**en selecteert u **Spark2**.  Selecteer het  tabblad configuraties en selecteer vervolgens de `Spark` koppeling ( `Spark2`of, afhankelijk van uw versie) in de lijst met Services.  U ziet een lijst met configuratie waarden voor het cluster:
+Als u de configuratie waarden voor Apache Spark wilt bekijken, selecteert u **configuratie geschiedenis**en selecteert u **Spark2**.  Selecteer het tabblad **configuraties** en selecteer vervolgens de `Spark` koppeling ( `Spark2`of, afhankelijk van uw versie) in de lijst met Services.  U ziet een lijst met configuratie waarden voor het cluster:
 
 ![Spark-configuraties](./media/apache-spark-settings/spark-config.png)
 
@@ -91,13 +91,13 @@ Drie belang rijke para meters die vaak worden aangepast aan het afstemmen van Sp
 > [!NOTE]  
 > Deze drie configuratie parameters kunnen worden geconfigureerd op cluster niveau (voor alle toepassingen die in het cluster worden uitgevoerd) en ook zijn opgegeven voor elke afzonderlijke toepassing.
 
-Een andere bron van informatie over de resources die worden gebruikt door de Spark-uitvoerders is de gebruikers interface van de Spark-toepassing.  Selecteer in de Spark-gebruikers interface het tabblad **uitvoerende** resources om samen vatting-en detail weergaven weer te geven van de configuratie en resources die worden verbruikt door de uitvoerender.  Met deze weer gaven kunt u bepalen of u standaard waarden voor Spark-uitvoerendeers wilt wijzigen voor het hele cluster of een bepaalde set taak uitvoeringen.
+Een andere informatiebron over de resources die worden gebruikt door de Spark-uitvoerders, is de gebruikersinterface van de Spark-toepassing.  Selecteer in de Spark-gebruikers interface het tabblad **uitvoerende** resources om samen vatting-en detail weergaven weer te geven van de configuratie en resources die worden verbruikt door de uitvoerender.  Met deze weergaven kunt u bepalen of u de standaardwaarden voor Spark-uitvoerders voor het hele cluster wilt wijzigen, of alleen voor een bepaalde reeks taakuitvoeringen.
 
 ![Spark-Uitvoerendeers](./media/apache-spark-settings/spark-executors.png)
 
 U kunt ook de Ambari-REST API gebruiken om de configuratie-instellingen voor HDInsight-en Spark-clusters programmatisch te controleren.  Meer informatie vindt u op de [AMBARI API-referentie van Apache op github](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
-Afhankelijk van uw Spark-werk belasting, kunt u bepalen dat een niet-standaard Spark-configuratie meer geoptimaliseerde Spark-taak uitvoeringen biedt.  U moet benchmark tests uitvoeren met voorbeeld werkbelastingen om niet-standaard cluster configuraties te valideren.  Enkele van de algemene para meters die u kunt aanpassen, zijn:
+Afhankelijk van de Spark-workload kunt u bepalen dat een Spark-configuratie die niet-standaard is, meer geoptimaliseerde uitvoeringen van Spark-taken biedt.  U moet benchmarktests uitvoeren met voorbeeldworkloads om niet-standaard-clusterconfiguraties te valideren.  Suggesties voor algemene parameters die u kunt aanpassen:
 
 * `--num-executors`Hiermee stelt u het aantal uitvoerders in.
 * `--executor-cores`Hiermee stelt u het aantal kernen in voor elke uitvoerder. We raden u aan om middelste uitvoerders uit te voeren, omdat andere processen een deel van het beschik bare geheugen verbruiken.

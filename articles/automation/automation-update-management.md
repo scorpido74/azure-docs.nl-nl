@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5d607809b6e0356c8807879962927e99f2bd12fd
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 2a2b62cc0548b0bbedae35f6a0d72ac327723e60
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382725"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743842"
 ---
 # <a name="update-management-solution-in-azure"></a>Updatebeheer oplossing in azure
 
@@ -75,8 +75,7 @@ In de volgende tabel ziet u een lijst met ondersteunde besturings systemen:
 
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
-|Windows Server 2008, Windows Server 2008 R2 RTM    | Ondersteunt alleen update-evaluaties.         |
-|Windows Server 2019 (Data Center/Data Center core/Standard)<br><br>Windows Server 2016 (Data Center/Data Center core/Standard)<br><br>Windows Server 2012 R2 (Data Center/Standard)<br><br>Windows Server 2008 R2 (RTM en SP1 Standard)|.NET Framework 4.5.1 of hoger is vereist. ([Down load .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Windows Power Shell 4,0 of hoger is vereist. ([WMF 4,0 downloaden](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows Power shell 5,1 wordt aanbevolen voor een betere betrouw baarheid.  ([WMF 5,1 downloaden](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2019 (Data Center/Data Center core/Standard)<br><br>Windows Server 2016 (Data Center/Data Center core/Standard)<br><br>Windows Server 2012 R2 (Data Center/Standard)<br><br>Windows Server 2008 R2 (RTM en SP1 Standard)|**Update-evaluaties**: Ondersteund<br><br>**Patching**: Vereist Hybrid Runbook Worker. Zie [Hybrid Runbook worker vereisten](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)|
 |CentOS 6 (x86/x64) en 7 (x64)      | Linux-agents moeten toegang hebben tot een opslagplaats voor updates. Voor op classificatie gebaseerde patches moet ' yum ' worden geretourneerd om beveiligings gegevens te retour neren die geen deel uitmaakt van het CentOS. Zie [Update classificaties in Linux](#linux-2) voor meer informatie over op CentOS gebaseerde patches op basis van classificaties.          |
 |Red Hat Enterprise 6 (x86/x64) en 7 (x64)     | Linux-agents moeten toegang hebben tot een opslagplaats voor updates.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) en 12 (x64)     | Linux-agents moeten toegang hebben tot een opslagplaats voor updates.        |

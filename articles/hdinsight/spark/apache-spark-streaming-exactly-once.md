@@ -1,73 +1,73 @@
 ---
-title: Taken met Spark Streaming precies maken-eenmaal gebeurtenis verwerken - Azure HDInsight
-description: Over het instellen van Spark Streaming voor het verwerken van een gebeurtenis slechts eenmaal.
+title: Spark-streaming-taken met precies één keer per gebeurtenis verwerking-Azure HDInsight
+description: Spark-streaming instellen om een gebeurtenis één keer en één keer te verwerken.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 388723624fde73899809b95ff8ae4ee23cf49a9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce676031e0cace3f3dffc77fcd71159337938661
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705099"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735980"
 ---
-# <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Taken met Apache Spark Streaming precies maken-eenmaal gebeurtenis verwerken
+# <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Apache Spark streaming-taken maken met precies één keer per gebeurtenis verwerking
 
-Stream-toepassingen voor batchverwerking worden verschillende benaderingen hoe ze opnieuw verwerken om berichten te na een storing in het systeem verwerken:
+Toepassingen voor het verwerken van streams hebben verschillende benaderingen van het verwerken van berichten na een storing in het systeem:
 
-* Ten minste één keer: Elk bericht wordt gegarandeerd moeten worden verwerkt, maar het kan meer dan één keer verwerkt.
-* Maximaal eenmaal: Elk bericht kan of kan niet worden verwerkt. Als een bericht is verwerkt, wordt slechts één keer wordt verwerkt.
-* Exact één keer: Elk bericht is gegarandeerd slechts eenmaal worden verwerkt.
+* Ten minste één keer: Elk bericht wordt gegarandeerd verwerkt, maar kan meer dan één keer worden verwerkt.
+* Maxi maal eenmaal: Elk bericht kan of kan niet worden verwerkt. Als een bericht wordt verwerkt, wordt het slechts eenmaal verwerkt.
+* Slechts eenmaal: Elk bericht wordt gegarandeerd maar één keer verwerkt.
 
-In dit artikel leest u hoe het configureren van Spark Streaming te bereiken exact-één keer worden verwerkt.
+In dit artikel leest u hoe u Spark streaming kunt configureren om precies één keer te verwerken.
 
-## <a name="exactly-once-semantics-with-apache-spark-streaming"></a>Precies-once-semantiek met Apache Spark-Streaming
+## <a name="exactly-once-semantics-with-apache-spark-streaming"></a>Exact eenmaal semantiek met Apache Spark streaming
 
-Eerst, houd rekening met hoe alle system Point of failure start opnieuw op nadat er een probleem en hoe kunt u voorkomen dat gegevens verloren gaan. Er is een toepassing voor Spark Streaming:
+Bedenk eerst hoe alle systeem punten van de fout opnieuw moeten worden opgestart na een probleem en hoe u gegevens verlies kunt voor komen. Een Spark-streaming-toepassing heeft:
 
-* Een invoerbron.
-* Een of meer ontvanger processen die gegevens van de invoerbron ophalen.
-* Taken die de gegevens te verwerken.
-* Een uitvoer-sink.
-* Een stuurprogramma-proces dat de taak langlopende beheert.
+* Een invoer bron.
+* Een of meer ontvanger processen die gegevens uit de invoer bron ophalen.
+* Taken die de gegevens verwerken.
+* Een uitvoer sink.
+* Een stuur programma dat de langlopende taak beheert.
 
-Precies-zodra semantiek vereisen dat er geen gegevens verloren gegaan op elk gewenst moment zijn en die verwerking van berichten kan opnieuw worden gestart, ongeacht waar de fout zich voordoet.
+Als er sprake is van een nauw keurige semantiek, moeten er op geen enkele wijze gegevens verloren gaan en kan de bericht verwerking opnieuw worden gestart, ongeacht waar de fout optreedt.
 
-### <a name="replayable-sources"></a>Replayable bronnen
+### <a name="replayable-sources"></a>Replaybare bronnen
 
-De bron die uw toepassing Spark Streaming van de gebeurtenissen van lezen moet zijn *replayable*. Dit betekent dat in gevallen waarin het bericht opgehaald, maar vervolgens het systeem is mislukt voordat het bericht kan worden bewaard of verwerkt, de bron moet hetzelfde bericht opnieuw opgeven.
+De bron die door uw Spark-streaming-toepassing wordt gelezen, moet opnieuw worden *afgespeeld*. Dit betekent dat in gevallen waarin het bericht is opgehaald, maar dat het systeem is mislukt voordat het bericht persistent kon worden gemaakt of verwerkt. de bron moet hetzelfde bericht opnieuw opgeven.
 
-In Azure, zowel Azure Event Hubs en [Apache Kafka](https://kafka.apache.org/) op HDInsight bieden replayable bronnen. Een ander voorbeeld van een replayable bron is een fouttolerante bestandssysteem, zoals [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), Azure Storage-blobs of Azure Data Lake-opslag, waarbij alle gegevens definitief worden bewaard en op elk gewenst moment kunt u de gegevens in zijn geheel opnieuw lezen.
+In azure bieden zowel Azure Event Hubs als [Apache Kafka](https://kafka.apache.org/) op HDInsight replayable-bronnen. Een ander voor beeld van een replayable-bron is een fout tolerant bestands systeem zoals [Apache HADOOP HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), Azure Storage blobs of Azure data Lake Storage, waarbij alle gegevens permanent worden bewaard en op elk gewenst moment de gegevens volledig opnieuw kunnen worden gelezen.
 
-### <a name="reliable-receivers"></a>Betrouwbare ontvangers
+### <a name="reliable-receivers"></a>Betrouw bare ontvangers
 
-Gegevensbronnen in de Spark Streaming, zoals Event Hubs en Kafka *betrouwbare ontvangers*, waarbij elke ontvanger van wordt bijgehouden de voortgang lezen van de bron. Een betrouwbare ontvanger zich blijft voordoen de status in fouttolerante opslag, hetzij in [Apache ZooKeeper](https://zookeeper.apache.org/) of in Spark Streaming controlepunten die worden geschreven naar HDFS. Als deze een ontvanger mislukt en later wordt opnieuw is opgestart, het verder kan gaan waar het afgebroken.
+In Spark streaming hebben bronnen als Event Hubs en Kafka *betrouw bare ontvangers*, waarbij elke ontvanger de voortgang van het lezen van de bron bijhoudt. Een betrouw bare ontvanger persistent is de status van fout tolerante opslag, hetzij binnen [Apache ZooKeeper](https://zookeeper.apache.org/) , hetzij in de controle punten voor Spark-streaming, geschreven naar HDFS. Als een dergelijke ontvanger mislukt en later opnieuw wordt gestart, kan deze de locatie ophalen waar deze wordt verlaten.
 
-### <a name="use-the-write-ahead-log"></a>Gebruik de Write-Ahead van logboek
+### <a name="use-the-write-ahead-log"></a>Het Write-Ahead logboek gebruiken
 
-Spark Streaming ondersteunt het gebruik van een Write-Ahead van logboek, waarbij elke ontvangen gebeurtenis eerst naar van Spark controlepunt directory in de fouttolerante opslag geschreven en vervolgens opgeslagen in een flexibele gedistribueerd gegevensset (RDD). In Azure is de fouttolerantie opslag ondersteund door Azure Storage of Azure Data Lake Storage HDFS. In uw toepassing Spark Streaming de Write-Ahead van logboek is ingeschakeld voor alle ontvangers door in te stellen de `spark.streaming.receiver.writeAheadLog.enable` configuratie-instelling op `true`. De Write-Ahead van logboek biedt fouttolerantie voor fouten van zowel de Executor als het stuurprogramma.
+Spark streaming ondersteunt het gebruik van een write-Ahead logboek waarbij elke ontvangen gebeurtenis eerst wordt geschreven naar de map met het controle punt van Spark in fout tolerante opslag en vervolgens wordt opgeslagen in een flexibele, gedistribueerde gegevensset (RDD). In azure wordt de fout tolerante opslag ondersteund door een Azure Storage of Azure Data Lake Storage. In uw Spark-streaming-toepassing wordt het Write-Ahead logboek ingeschakeld voor alle ontvangers door de `spark.streaming.receiver.writeAheadLog.enable` configuratie-instelling in te stellen op. `true` Het Write-Ahead logboek biedt fout tolerantie voor fouten van zowel het stuur programma als de uitvoerder.
 
-Voor werknemers met het uitvoeren van taken in de gebeurtenisgegevens, is elke RDD per definitie beide gerepliceerd en verdeeld over meerdere werknemers. Als een taak is mislukt omdat de werknemer die wordt uitgevoerd, is vastgelopen, de taak opnieuw wordt gestart op een andere werknemer die een replica van gegevens van de gebeurtenis heeft, zodat de gebeurtenis is niet verloren gaan.
+Voor werk nemers die taken uitvoeren op basis van de gebeurtenis gegevens, wordt elke RDD per definitie gerepliceerd en gedistribueerd over meerdere werk rollen. Als een taak mislukt omdat het uitvoeren van de werk nemer is vastgelopen, wordt de taak opnieuw gestart op een andere werk nemer die een replica van de gebeurtenis gegevens heeft, waardoor de gebeurtenis niet verloren gaat.
 
-### <a name="use-checkpoints-for-drivers"></a>Gebruik van controlepunten voor stuurprogramma 's
+### <a name="use-checkpoints-for-drivers"></a>Controle punten gebruiken voor Stuur Programma's
 
-De taak stuurprogramma's moeten opnieuw worden gestart. Als het uitvoeren van uw toepassing Spark Streaming stuurprogramma vastloopt, duurt het naar beneden ermee alle actieve ontvangers, taken en eventuele rdd's bij het opslaan van gebeurtenisgegevens. In dit geval moet u mogelijk om op te slaan van de voortgang van de taak, zodat u deze later kunt hervatten. Dit wordt bereikt door het plaatsen van controlepunten de omgeleid Acyclic Graph (DAG) van de DStream regelmatig te fouttolerante opslag. De metagegevens van de DAG bevat de configuratie die is gebruikt voor het maken van de streaming-toepassing, de bewerkingen die de toepassing definiëren en batches die in de wachtrij geplaatst, maar nog niet voltooid. Deze metagegevens kan opnieuw worden gestart vanuit de controlepunt-gegevens van een stuurprogramma is mislukt. Wanneer het stuurprogramma opnieuw wordt opgestart, wordt het nieuwe ontvangers dat zelf de gebeurtenisgegevens naar rdd's van de Write-Ahead van logboek herstellen gestart.
+De taak Stuur Programma's moeten opnieuw worden gestart. Als het stuur programma dat uw Spark-streaming-toepassing uitvoert crasht, worden alle actieve ontvangers, taken en eventuele Rdd's opgeslagen. In dit geval moet u de voortgang van de taak kunnen opslaan, zodat u deze later kunt hervatten. Dit wordt bereikt door de gerichte acyclische grafiek (DAG) van de DStream periodiek te plaatsen op fout tolerante opslag. De DAG-meta gegevens bevatten de configuratie die wordt gebruikt voor het maken van de streaming-toepassing, de bewerkingen die de toepassing definiëren en alle batches die in de wachtrij staan, maar nog niet zijn voltooid. Met deze meta gegevens kan een defect stuur programma opnieuw worden gestart vanuit de controlepunt gegevens. Wanneer het stuur programma opnieuw wordt opgestart, worden nieuwe ontvangers gestart waarbij de gebeurtenis gegevens in het Rdd's worden hersteld.
 
-Controlepunten zijn ingeschakeld in Spark Streaming in twee stappen. 
+Controle punten worden in twee stappen ingeschakeld in Spark-streaming. 
 
-1. In het object StreamingContext het opslagpad voor de controlepunten te configureren:
+1. Configureer het opslagpad voor de controle punten in het StreamingContext-object:
 
     ```Scala
     val ssc = new StreamingContext(spark, Seconds(1))
     ssc.checkpoint("/path/to/checkpoints")
     ```
 
-    In HDInsight, moeten deze controlepunten worden opgeslagen op de standaardopslag die is gekoppeld aan het cluster, Azure Storage of Azure Data Lake-opslag.
+    In HDInsight moeten deze controle punten worden opgeslagen in de standaard opslag die aan uw cluster is gekoppeld, hetzij Azure Storage als Azure Data Lake Storage.
 
-2. Geef vervolgens een controlepunt-interval (in seconden) op de DStream. Tijdens een interval, de gegevens van de gebruikersstatus is afgeleid van de invoer gebeurtenis persistent gemaakt met storage. Gegevens van de permanente status kunnen de berekening die nodig zijn tijdens het opnieuw opbouwen van de status van de bron-gebeurtenis verminderen.
+2. Geef vervolgens een controlepunt interval (in seconden) op voor de DStream. De status gegevens die zijn afgeleid van de invoer gebeurtenis worden bij elk interval opgeslagen in de opslag. Blijvende status gegevens kunnen de reken kracht verminderen die nodig is om de status van de bron gebeurtenis opnieuw samen te stellen.
 
     ```Scala
     val lines = ssc.socketTextStream("hostname", 9999)
@@ -76,17 +76,17 @@ Controlepunten zijn ingeschakeld in Spark Streaming in twee stappen.
     ssc.awaitTermination()
     ```
 
-### <a name="use-idempotent-sinks"></a>Gebruik idempotent sinks
+### <a name="use-idempotent-sinks"></a>Idempotent-sinks gebruiken
 
-De doel-sink waarnaar uw taak resultaten schrijft moet mogelijk zijn voor het afhandelen van de situatie waarin deze meer dan één keer hetzelfde resultaat wordt gegeven. De sink moet kunnen dergelijke dubbele resultaten detecteren en te negeren. Een *idempotent* sink kan meerdere keren worden aangeroepen met dezelfde gegevens met geen wijziging van de status.
+De doel-Sink waarnaar de taak de resultaten schrijft, moet de situatie kunnen afhandelen wanneer deze hetzelfde resultaat meermaals krijgt. De Sink moet in staat zijn om dergelijke dubbele resultaten te detecteren en te negeren. Een *idempotent* -Sink kan meermaals worden aangeroepen met dezelfde gegevens zonder wijziging van de status.
 
-U kunt idempotent sinks maken door het implementeren van logica die eerst controleert op de aanwezigheid van het binnenkomende resultaat in het gegevensarchief. Als het resultaat al bestaat, wordt het schrijven moet worden weergegeven te voltooien vanuit het perspectief van de Spark-taak, maar in werkelijkheid uw data store de dubbele gegevens genegeerd. Als het resultaat niet bestaat, kunnen de sink moet dit nieuwe resultaat invoegen in de opslag. 
+U kunt idempotent-sinks maken door logica te implementeren die eerst controleert op het bestaan van het binnenkomende resultaat in de gegevens opslag. Als het resultaat al bestaat, wordt de schrijf actie in het perspectief van uw Spark-taak weer gegeven, maar in werkelijkheid worden de dubbele gegevens door de gegevens opslag genegeerd. Als het resultaat niet bestaat, moet de Sink dit nieuwe resultaat invoegen in de opslag. 
 
-U kunt bijvoorbeeld een opgeslagen procedure gebruiken met Azure SQL Database die gebeurtenissen in een tabel invoegen. Deze opgeslagen procedure zoekt eerst naar de gebeurtenis die door de velden voor sleutels, en alleen als er geen overeenkomende gebeurtenis gevonden is de record ingevoegd in de tabel.
+U kunt bijvoorbeeld een opgeslagen procedure gebruiken met Azure SQL Database waarmee gebeurtenissen in een tabel worden ingevoegd. Deze opgeslagen procedure zoekt eerst naar de gebeurtenis op basis van sleutel velden en alleen wanneer er geen overeenkomende gebeurtenis is gevonden, wordt de record ingevoegd in de tabel.
 
-Een ander voorbeeld is het gebruik van een gepartitioneerde bestandssysteem, zoals Azure Storage-blobs of Azure Data Lake-opslag. Uw logica sink hoeft in dit geval niet te controleren of er sprake van een bestand. Als het bestand voor de gebeurtenis bestaat, wordt het eenvoudig met dezelfde gegevens overschreven. Anders wordt wordt een nieuw bestand gemaakt in de berekende pad.
+Een ander voor beeld is het gebruik van een gepartitioneerd bestands systeem, zoals Azure Storage blobs of Azure Data Lake Storage. In dit geval hoeft de Sink-logica niet te controleren op het bestaan van een bestand. Als het bestand dat de gebeurtenis bevat, al bestaat, wordt dit eenvoudigweg overschreven met dezelfde gegevens. Anders wordt er een nieuw bestand gemaakt op het berekende pad.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Apache Spark-Streaming-overzicht](apache-spark-streaming-overview.md)
-* [Het maken van maximaal beschikbare Apache Spark Streaming taken in Apache Hadoop YARN](apache-spark-streaming-high-availability.md)
+* [Overzicht van Apache Spark streaming](apache-spark-streaming-overview.md)
+* [Maxi maal beschik bare Apache Spark streaming-taken maken in Apache Hadoop GARENs](apache-spark-streaming-high-availability.md)

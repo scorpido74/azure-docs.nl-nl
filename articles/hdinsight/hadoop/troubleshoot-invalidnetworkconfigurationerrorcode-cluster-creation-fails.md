@@ -1,17 +1,17 @@
 ---
-title: Het maken van een cluster mislukt met InvalidNetworkConfigurationErrorCode in azure HDInsight
+title: InvalidNetworkConfigurationErrorCode uit het maken van een cluster in azure HDInsight
 description: Verschillende redenen voor mislukte cluster creaties met InvalidNetworkConfigurationErrorCode in azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/05/2019
-ms.openlocfilehash: 9d55041e05101c610a050574f2e940c40dac991a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 1f60ef5e267b0ee3233f9adb9dc9e8ccd3ac1c65
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817145"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734781"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Het maken van een cluster mislukt met InvalidNetworkConfigurationErrorCode in azure HDInsight
 
@@ -59,7 +59,7 @@ Azure Storage en SQL hebben geen vaste IP-adressen, dus moeten uitgaande verbind
 
 * Als uw cluster gebruikmaakt van een [netwerk beveiligings groep (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md).
 
-    Ga naar de Azure Portal en Identificeer de NSG die is gekoppeld aan het subnet waar het cluster wordt geïmplementeerd. Geef in de sectie **uitgaande beveiligings regels** uitgaande toegang tot internet zonder enige beperking (Houd er rekening mee dat een kleiner prioriteits nummer een hogere prioriteit heeft). Controleer ook in het gedeelte subnets of deze NSG wordt toegepast op het subnet van het cluster.
+    Ga naar de Azure Portal en Identificeer de NSG die is gekoppeld aan het subnet waar het cluster wordt geïmplementeerd. Geef in de sectie **uitgaande beveiligings regels** uitgaande toegang tot internet zonder enige beperking (Houd er rekening mee dat een kleiner **prioriteits** nummer een hogere prioriteit heeft). Controleer ook in het gedeelte **subnets** of deze NSG wordt toegepast op het subnet van het cluster.
 
 * Als uw cluster gebruikmaakt van een door de [gebruiker gedefinieerde routes (UDR)](../../virtual-network/virtual-networks-udr-overview.md).
 
@@ -77,4 +77,4 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de ondersteunings [abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

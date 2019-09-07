@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 93b3c7671a5beb4b3a451fe0efd13b9f48e00436
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6e0c1419e5656f184d27dce8d185a86bea71d173
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941806"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389954"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Een gedeelde galerie met installatiekopieën configureren in Azure DevTest Labs
 DevTest Labs ondersteunt nu de functie [gedeelde installatie kopie galerie](../virtual-machines/windows/shared-image-galleries.md) . Hiermee kunnen labgebruikers toegang krijgen tot installatiekopieën vanaf een gedeelde locatie terwijl ze labresources maken. Het zorgt ook voor structuur en organisatie in uw aangepaste, beheerde VM-installatiekopieën. De functie Gedeelde afbeeldingen galerie ondersteunt:
@@ -32,6 +32,9 @@ DevTest Labs ondersteunt nu de functie [gedeelde installatie kopie galerie](../v
 Zie de documentatie van de [Galerie met gedeelde afbeeldingen](../virtual-machines/windows/shared-image-galleries.md)voor meer informatie. 
  
 Als u een groot aantal beheerde installatiekopieën hebt dat u moet onderhouden en deze beschikbaar wilt maken binnen uw bedrijf, kunt u een gedeelde installatiekopiegalerie gebruiken als een opslagplaats waar u uw installatiekopieën eenvoudig kunt bijwerken en delen. Als labeigenaar kunt u een bestaande gedeelde installatiekopiegalerie koppelen aan uw lab. Zodra deze galerie is gekoppeld, kunnen labgebruikers machines maken met deze nieuwste installatiekopieën. Een groot voordeel van deze functie is dat DevTest Labs nu kunnen profiteren van het delen van installatiekopieën in labs, in abonnementen en in regio's. 
+
+> [!NOTE]
+> Zie voor meer informatie over de kosten die zijn gekoppeld aan de service voor de galerie met gedeelde afbeeldingen [facturering voor de galerie gedeelde afbeeldingen](../virtual-machines/windows/shared-image-galleries.md#billing).
 
 ## <a name="considerations"></a>Overwegingen
 - U kunt slechts één gedeelde installatie kopie galerie tegelijk aan een Lab koppelen. Als u een andere galerie wilt koppelen, moet u de bestaande Gallery loskoppelen en er een toevoegen. 
@@ -53,7 +56,7 @@ Als u een groot aantal beheerde installatiekopieën hebt dat u moet onderhouden 
     ![Koppelen](./media/configure-shared-image-gallery/attach-options.png)
 1. Ga naar de gekoppelde galerie en configureer uw galerie om gedeelde installatie kopieën voor het maken van VM'S in **of uit** te scha kelen. Selecteer een galerie met installatie kopieën in de lijst om deze te configureren. 
 
-    Standaard **toestaan dat alle installatie kopieën worden gebruikt als basis van de virtuele machine** is ingesteld op **Ja**. Dit betekent dat alle beschik bare installatie kopieën in de galerie met gedeelde installatie kopieën beschikbaar zijn voor een test gebruiker bij het maken van een nieuwe VM van het lab. Als toegang tot bepaalde installatie kopieën moet worden beperkt, wijzigt u **alle installatie kopieën die moeten worden gebruikt als** basis voorde virtuele machine, en selecteert u de installatie kopieën die u wilt toestaan bij het maken van vm's en selecteert u vervolgens de knop **Opslaan** .
+    Standaard **toestaan dat alle installatie kopieën worden gebruikt als basis van de virtuele machine** is ingesteld op **Ja**. Dit betekent dat alle beschik bare installatie kopieën in de galerie met gedeelde installatie kopieën beschikbaar zijn voor een test gebruiker bij het maken van een nieuwe VM van het lab. Als toegang tot bepaalde installatie kopieën moet worden beperkt, wijzigt u **alle installatie kopieën die moeten worden gebruikt als** **basis voor de**virtuele machine, en selecteert u de installatie kopieën die u wilt toestaan bij het maken van vm's en selecteert u vervolgens de knop **Opslaan** .
 
     ![In-of uitschakelen](./media/configure-shared-image-gallery/enable-disable.png)
 1. Gebruikers met een Lab kunnen vervolgens een virtuele machine maken met behulp van de ingeschakelde installatie kopieën door op **+ toevoegen** te klikken en de installatie kopie te zoeken in de pagina **Kies uw basis** .

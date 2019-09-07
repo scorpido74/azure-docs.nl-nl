@@ -5,28 +5,28 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 05/17/2019
+ms.date: 09/04/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0486b595bffd18b06d54e8377b24deab04e2aa93
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4604616cd4f2d6c75c272586df1331fc405061cb
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176103"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70737488"
 ---
-## <a name="error-conditionheadersnotsupported-from-a-web-application-using-azure-files-from-browser"></a>Fout ConditionHeadersNotSupported vanuit een webtoepassing met Azure Files in Browser
+## <a name="error-conditionheadersnotsupported-from-a-web-application-using-azure-files-from-browser"></a>Fout ConditionHeadersNotSupported vanuit een webtoepassing met behulp van Azure Files vanuit de browser
 
-Wanneer u toegang tot inhoud die wordt gehost in Azure Files via een toepassing die maakt gebruik van voorwaardelijke kopteksten, zoals een webbrowser toegang is mislukt, waarbij een ConditionHeadersNotSupported-fout optreedt.
+De ConditionHeadersNotSupported-fout treedt op wanneer toegang tot inhoud die wordt gehost in Azure Files via een toepassing die gebruikmaakt van voorwaardelijke kopteksten, zoals een webbrowser, niet kan worden geopend. De fout geeft aan dat de conditie headers niet worden ondersteund.
 
-![ConditionHeaderNotSupported fout](media/storage-files-condition-headers/conditionalerror.png)
+![Fout met voorwaardelijke koptekst Azure Files](media/storage-files-condition-headers/conditionalerror.png)
 
 ### <a name="cause"></a>Oorzaak
 
-Voorwaardelijke headers zijn nog niet ondersteund. Toepassingen kunnen implementeren moet het volledige bestand aanvragen telkens als het bestand wordt geopend.
+Voorwaardelijke kopteksten worden nog niet ondersteund. Toepassingen die ze implementeren, moeten het volledige bestand aanvragen wanneer het bestand wordt geopend.
 
 ### <a name="workaround"></a>Tijdelijke oplossing
 
-Wanneer een nieuw bestand wordt geüpload, wordt de cache-control-eigenschap standaard "no-cache". Als u wilt afdwingen van de toepassing naar het bestand aan te vragen moet telkens wanneer cache-control-eigenschap van het bestand worden bijgewerkt van 'no-cache' naar 'no-cache, no-store, moet-revalidate'. Dit kan worden bereikt met behulp van [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
+Wanneer een nieuw bestand wordt geüpload, is de eigenschap Cache-Control standaard ingesteld op ' no-cache '. Om ervoor te zorgen dat de toepassing het bestand elke keer kan aanvragen, moet de eigenschap Cache-Control van het bestand worden bijgewerkt van ' no-cache ' in ' no-cache ', no-Store, moet opnieuw worden gevalideerd '. Dit kan worden bereikt met behulp van [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
-![Storage explorer inhoud van een cache wijzigen](media/storage-files-condition-headers/storage-explorer-cache.png)
+![Wijzigingen in de inhoud van de opslag Verkenner voor Azure Files voorwaardelijke kopteksten](media/storage-files-condition-headers/storage-explorer-cache.png)

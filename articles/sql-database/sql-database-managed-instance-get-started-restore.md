@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 8a3a325cbfced13b6e2ac4cb842b5d5f4f764750
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2aae0ce7bbf5c8804dcaab90fcb60a66dfe59cf0
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567467"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744410"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Quickstart: Een database herstellen naar een beheerd exemplaar
 
@@ -37,6 +37,7 @@ Voor deze snelstartgids geldt het volgende:
 - Er moet gebruik worden gemaakt van SSMS voor verbinding met uw beheerde exemplaar. Raadpleeg de volgende snelstart voor het maken van verbinding:
   - [Verbinding maken met een Azure SQL Database Managed Instance vanaf een Azure-VM](sql-database-managed-instance-configure-vm.md)
   - [Een punt-naar-site-verbinding configureren naar een beheerd exemplaar voor Azure SQL Database van on-premises ](sql-database-managed-instance-configure-p2s.md).
+- Vereist een Azure Blob Storage-account (bijvoorbeeld Standard_LRS v2) op **openbaar IP-adres** dat is `rw` beveiligd met een **SAS-referentie** met een machtiging. [Privé IP-adressen voor Blob-opslag die wordt beveiligd door Firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security) -en Azure Blob Storage service-eind punten worden momenteel niet ondersteund.
 
 > [!NOTE]
 > Zie [Back-up van SQL Server naar URL](sql-database-managed-instance-get-started-restore.md) voor meer informatie over het maken van een back-up van een SQL Server-database met behulp van Azure Blob Storage en een [SAS-sleutel (Shared Access Signature)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) en het herstellen van de back-up.

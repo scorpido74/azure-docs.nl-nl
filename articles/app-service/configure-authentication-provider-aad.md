@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 8b4b6549f9553773cc44c311f49befbb3eec9dc9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8de464a00867dd397f28de1dc35cf264244f6905
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233091"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743260"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>Uw App Service-app configureren voor het gebruik van Azure Active Directory aanmelden
 
@@ -57,7 +57,7 @@ Wanneer u hand matig een app-registratie maakt, noteert u drie stukjes informati
 1. Ga in het [Azure-portal]naar uw app service app en noteer de **URL**van uw app. U gebruikt deze om de registratie van uw Azure Active Directory-app te configureren.
 1. Selecteer in de [Azure-portal]in het menu links **Active Directory** > **app-registraties** > **nieuwe registratie**. 
 1. Voer op de pagina **een toepassing registreren** een **naam** in voor de registratie van uw app.
-1. In omleidings- **URI**selecteert u **Web** en typt u de URL van uw app service- `/.auth/login/aad/callback`app en voegt u het pad toe. Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Selecteer vervolgens **Maken**.
+1. In **omleidings-URI**selecteert u **Web** en typt u de URL van uw app service- `/.auth/login/aad/callback`app en voegt u het pad toe. Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Selecteer vervolgens **Maken**.
 1. Nadat de app-registratie is gemaakt, kopieert u de **toepassings-id** en de **Directory (Tenant)-ID** voor later.
 1. Selecteer **huis stijl**. Typ in de URL van de **Start pagina**de URL van uw app service-app en selecteer **Opslaan**.
 1. Selecteer **een API** > -**set**beschikbaar maken. Plak de URL van uw App Service-app en selecteer **Opslaan**.
@@ -81,6 +81,9 @@ Wanneer u hand matig een app-registratie maakt, noteert u drie stukjes informati
     |ID van de verlener| Gebruik `https://login.microsoftonline.com/<tenant-id>`en  *Vervang\<Tenant-id >* met de **Directory-id (Tenant)** van de app-registratie. |
     |Client geheim (optioneel)| Gebruik het client geheim dat u hebt gegenereerd in de app-registratie.|
     |Toegestane tokendoelgroep| Als dit een *back-end-* app is en u verificatie tokens van een front-end-app wilt toestaan, voegt u de URI van de **toepassings-id** van de *front-end* toe. |
+
+    > [!NOTE]
+    > De geconfigureerde **client-id** wordt *altijd* impliciet beschouwd als een toegestane doel groep, ongeacht hoe u de **toegestane token doel groepen**hebt geconfigureerd.
 1. Selecteer **OK**en selecteer vervolgens **Opslaan**.
 
 U bent nu klaar om Azure Active Directory te gebruiken voor verificatie in uw App Service-app.
@@ -90,7 +93,7 @@ U kunt systeem eigen clients registreren als u aanmeldingen wilt uitvoeren met b
 
 1. Selecteer in de [Azure-portal]in het menu links **Active Directory** > **app-registraties** > **nieuwe registratie**. 
 1. Voer op de pagina **een toepassing registreren** een **naam** in voor de registratie van uw app.
-1. In omleidings- **URI**selecteert u **open bare client (mobiele & bureau blad)** en typt u de URL van uw `/.auth/login/aad/callback`app service app en voegt u het pad toe. Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Selecteer vervolgens **Maken**.
+1. In **omleidings-URI**selecteert u **open bare client (mobiele & bureau blad)** en typt u de URL van uw `/.auth/login/aad/callback`app service app en voegt u het pad toe. Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Selecteer vervolgens **Maken**.
 
     > [!NOTE]
     > Voor een Windows-toepassing gebruikt u in plaats daarvan de SID van het [pakket](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) als de URI.

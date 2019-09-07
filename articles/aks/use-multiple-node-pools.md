@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 675d3e2f0dc27e70af497284ce273e87d005a2e1
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2a18362546ae3c31b06fc5294495d8f5ac5f0be3
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241072"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389945"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Voor beeld: meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
@@ -47,14 +47,13 @@ az extension update --name aks-preview
 
 ### <a name="register-multiple-node-pool-feature-provider"></a>De functie provider voor meerdere knooppunt groepen registreren
 
-Als u een AKS-cluster wilt maken dat meerdere knooppunt groepen kan gebruiken, moet u eerst twee functie vlaggen inschakelen voor uw abonnement. Groeps clusters met meerdere knoop punten gebruiken een virtuele-machine Scale set (VMSS) voor het beheren van de implementatie en configuratie van de Kubernetes-knoop punten. Registreer de functie vlaggen *MultiAgentpoolPreview* en *VMSSPreview* met behulp van de opdracht [AZ feature REGI ster][az-feature-register] , zoals weer gegeven in het volgende voor beeld:
+Als u een AKS-cluster wilt maken dat meerdere knooppunt groepen kan gebruiken, moet u eerst een functie vlag voor uw abonnement inschakelen. Registreer de functie vlag *MultiAgentpoolPreview* met behulp van de opdracht [AZ feature REGI ster][az-feature-register] , zoals wordt weer gegeven in het volgende voor beeld:
 
 > [!CAUTION]
 > Wanneer u een functie op een abonnement registreert, kunt u de registratie van die functie op dit moment niet ongedaan maken. Nadat u enkele preview-functies hebt ingeschakeld, kunnen standaard waarden worden gebruikt voor alle AKS-clusters die vervolgens in het abonnement zijn gemaakt. Schakel geen preview-functies in voor productie abonnementen. Gebruik een afzonderlijk abonnement om Preview-functies te testen en feedback te verzamelen.
 
 ```azurecli-interactive
 az feature register --name MultiAgentpoolPreview --namespace Microsoft.ContainerService
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
 > [!NOTE]
@@ -64,7 +63,6 @@ Het duurt enkele minuten voordat de status is *geregistreerd*. U kunt de registr
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MultiAgentpoolPreview')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
 Als u klaar bent, vernieuwt u de registratie van de resource provider *micro soft. container service* met de opdracht [AZ provider REGI ster][az-provider-register] :
@@ -77,7 +75,7 @@ az provider register --namespace Microsoft.ContainerService
 
 De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en beheert die ondersteuning bieden voor meerdere knooppunt groepen:
 
-* Meerdere knooppunt groepen zijn alleen beschikbaar voor clusters die zijn gemaakt nadat u de *MultiAgentpoolPreview* -en *VMSSPreview* -functies voor uw abonnement hebt geregistreerd. U kunt geen knooppunt groepen toevoegen of beheren met een bestaand AKS-cluster dat is gemaakt voordat deze onderdelen zijn geregistreerd.
+* Meerdere knooppunt groepen zijn alleen beschikbaar voor clusters die zijn gemaakt nadat u de *MultiAgentpoolPreview* -functie hebt geregistreerd voor uw abonnement. U kunt geen knooppunt groepen toevoegen of beheren met een bestaand AKS-cluster dat is gemaakt voordat deze functie is geregistreerd.
 * U kunt de eerste knooppunt groep niet verwijderen.
 * De invoeg toepassing voor het routeren van HTTP-toepassingen kan niet worden gebruikt.
 * U kunt knooppunt groepen niet toevoegen/bijwerken/verwijderen met behulp van een bestaande resource manager-sjabloon, net als bij de meeste bewerkingen. In plaats daarvan [kunt u een afzonderlijke resource manager-sjabloon gebruiken](#manage-node-pools-using-a-resource-manager-template) om wijzigingen aan te brengen in knooppunt groepen in een AKS-cluster.
@@ -86,7 +84,7 @@ Hoewel deze functie in preview is, zijn de volgende extra beperkingen van toepas
 
 * Het AKS-cluster kan Maxi maal acht knooppunt groepen bevatten.
 * Het AKS-cluster kan Maxi maal 400 knoop punten in deze acht knooppunt groepen hebben.
-* Alle knooppunt groepen moeten zich in hetzelfde subnet bevinden
+* Alle knooppunt groepen moeten zich in hetzelfde subnet bevinden.
 
 ## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken
 

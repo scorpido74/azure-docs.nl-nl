@@ -1,71 +1,71 @@
 ---
-title: On-premises Apache Hadoop-clusters migreren naar Azure HDInsight - opslag aanbevolen procedures
-description: Informatie over aanbevolen procedures van de opslagruimte voor migratie on-premises Hadoop-clusters op Azure HDInsight.
+title: On-premises Apache Hadoop clusters migreren naar Azure HDInsight-Storage
+description: Meer informatie over best practices voor opslag voor het migreren van on-premises Hadoop-clusters naar Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: c62a5384edf66fd9309bc7afcb50ada48e3fca7d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2fd8dd09da8080e9eff60bcec7d595476243cd02
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64691524"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736124"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>On-premises Apache Hadoop-clusters migreren naar Azure HDInsight - opslag aanbevolen procedures
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>On-premises Apache Hadoop clusters migreren naar Azure HDInsight
 
-In dit artikel biedt aanbevelingen voor de opslag van gegevens in Azure HDInsight-systemen. Het onderdeel van een serie die biedt best practices om u te helpen migreren on-premises Apache Hadoop-systemen tot Azure HDInsight.
+Dit artikel bevat aanbevelingen voor gegevens opslag in azure HDInsight-systemen. Het is onderdeel van een serie die aanbevolen procedures biedt voor het migreren van on-premises Apache Hadoop systemen naar Azure HDInsight.
 
-## <a name="choose-right-storage-system-for-hdinsight-clusters"></a>Kies de juiste opslagsysteem voor HDInsight-clusters
+## <a name="choose-right-storage-system-for-hdinsight-clusters"></a>Kies het juiste opslag systeem voor HDInsight-clusters
 
-De mapstructuur van de on-premises Apache Hadoop File System (HDFS) kan opnieuw worden gemaakt in Azure Storage of Azure Data Lake-opslag. U kunt het HDInsight-clusters die worden gebruikt voor berekeningen zonder verlies van gebruikersgegevens vervolgens veilig verwijderen. Beide services kunnen worden gebruikt als zowel een extra bestandssysteem als het standaardbestandssysteem voor een HDInsight-cluster. Het HDInsight-cluster en het opslagaccount dat moeten worden gehost in dezelfde regio.
+De mapstructuur van on-premises Apache Hadoop bestands systeem (HDFS) kan opnieuw worden gemaakt in Azure Storage of Azure Data Lake Storage. U kunt vervolgens HDInsight-clusters die worden gebruikt voor berekeningen, veilig verwijderen zonder dat er gebruikers gegevens verloren gaan. Beide services kunnen worden gebruikt als het standaard bestandssysteem en een extra bestands systeem voor een HDInsight-cluster. Het HDInsight-cluster en het opslag account moeten worden gehost in dezelfde regio.
 
 ### <a name="azure-storage"></a>Azure Storage
 
-HDInsight-clusters kunnen de blob-container in Azure Storage gebruiken als het standaardbestandssysteem of een extra bestandssysteem. De prijscategorie Standard storage-account wordt ondersteund voor gebruik met HDInsight-clusters. De Premier laag wordt niet ondersteund. In de standaard blobcontainer worden clusterspecifieke gegevens opgeslagen, zoals taakgeschiedenis en logboeken. Het delen van een blobcontainer als het standaardbestandssysteem voor meerdere clusters wordt niet ondersteund.
+HDInsight-clusters kunnen de BLOB-container in Azure Storage gebruiken als het standaard bestandssysteem of een extra bestands systeem. Het opslag account voor de standaard laag wordt ondersteund voor gebruik met HDInsight-clusters. De premier-laag wordt niet ondersteund. In de standaard blobcontainer worden clusterspecifieke gegevens opgeslagen, zoals taakgeschiedenis en logboeken. Het delen van een blobcontainer als het standaardbestandssysteem voor meerdere clusters wordt niet ondersteund.
 
-De storage-accounts die zijn gedefinieerd in het proces voor het maken en de bijbehorende sleutels worden opgeslagen in `%HADOOP_HOME%/conf/core-site.xml` op de clusterknooppunten. Ze kunnen ook toegankelijk in de sectie 'Aangepaste core site' in HDFS-configuratie in de Ambari-UI. De opslagaccountsleutel standaard is versleuteld en een aangepaste ontsleuteling-script wordt gebruikt voor het ontsleutelen van de sleutels voordat het wordt doorgegeven aan de Hadoop-daemons. De taken, zoals Hive, MapReduce, Hadoop-streaming en Pig, voert een beschrijving van opslagaccounts en metagegevens bevatten.
+De opslag accounts die zijn gedefinieerd in het aanmaak proces en de bijbehorende sleutels worden opgeslagen `%HADOOP_HOME%/conf/core-site.xml` op de cluster knooppunten. Ze zijn ook toegankelijk via de sectie ' aangepaste kern site ' in de Ambari-gebruikers interface. De sleutel van het opslag account wordt standaard versleuteld en er wordt een aangepast ontsleutelings script gebruikt om de sleutels te ontsleutelen voordat deze wordt door gegeven aan Hadoop-daemons. De taken, waaronder Hive, MapReduce, Hadoop streaming en Pig, bevatten een beschrijving van opslag accounts en meta gegevens.
 
-Azure-opslag kan geografisch worden gerepliceerd. Hoewel geo-replicatie geografisch herstel en gegevensredundantie biedt, een failover naar de geografisch gerepliceerde locatie grote invloed zijn op de prestaties en het mogelijk extra kosten in rekening. De aanbeveling is het kiezen van de geo-replicatie goed te overwegen en alleen als de waarde van de gegevens de extra kosten waard.
+Azure Storage kan geografisch worden gerepliceerd. Hoewel geo-replicatie geografisch herstel en gegevens redundantie biedt, heeft een failover naar de geo-gerepliceerde locatie ernstige gevolgen voor de prestaties en kunnen er extra kosten in rekening worden gebracht. Het is raadzaam om de geo-replicatie goed en alleen te kiezen als de waarde van de gegevens de extra kosten waard is.
 
-Een van de volgende indelingen kan worden gebruikt voor toegang tot gegevens die zijn opgeslagen in Azure Storage:
+Een van de volgende indelingen kan worden gebruikt om toegang te krijgen tot gegevens die zijn opgeslagen in Azure Storage:
 
 |Data Access-indeling |Description |
 |---|---|
-|`wasb:///`|Standaardopslag met leestoegang met behulp van niet-versleutelde communicatie.|
-|`wasbs:///`|Standaardopslag met leestoegang met behulp van gecodeerde communicatie.|
-|`wasb://<container-name>@<account-name>.blob.core.windows.net/`|Gebruikt bij het communiceren met een niet-standaard-storage-account. |
+|`wasb:///`|Toegang tot standaard opslag met niet-versleutelde communicatie.|
+|`wasbs:///`|Toegang tot de standaard opslag met behulp van gecodeerde communicatie.|
+|`wasb://<container-name>@<account-name>.blob.core.windows.net/`|Wordt gebruikt bij de communicatie met een niet-standaard-opslag account. |
 
 
-[Azure Storage Scalability and Performance Targets](../../storage/common/storage-scalability-targets.md) bevat de huidige limieten van Azure storage-accounts. Als de behoeften van de toepassing groter is dan de schaalbaarheidsdoelen van een enkel opslagaccount, kan de toepassing worden gemaakt voor het gebruik van meerdere opslagaccounts en vervolgens partitie-gegevensobjecten voor deze opslagaccounts.
+[Azure Storage schaal baarheid en prestatie doelen](../../storage/common/storage-scalability-targets.md) bevat de huidige limieten voor Azure Storage-accounts. Als de behoeften van de toepassing de schaalbaarheids doelen van één opslag account overschrijden, kan de toepassing worden gebouwd voor het gebruik van meerdere opslag accounts en vervolgens gegevens objecten in die opslag accounts partitioneren.
 
-[Azure Storage Analytics](../../storage/storage-analytics.md) biedt metrische gegevens voor alle storage-services en Azure portal kunnen geconfigureerde verzamelen metrische gegevens moeten worden gevisualiseerd via grafieken. Waarschuwingen kunnen worden gemaakt om u te waarschuwen wanneer drempels voor metrische gegevens van storage resource is bereikt.
+[Azure Opslaganalyse biedt metrische](../../storage/storage-analytics.md)gegevens voor alle opslag Services en Azure portal kunnen worden geconfigureerd om metrische gegevens over verzamelen te visualiseren via grafieken.  Waarschuwingen kunnen worden gemaakt om te melden wanneer de drempel waarden voor de metrische gegevens van de opslag resource zijn bereikt.
 
-Azure Storage biedt [voorlopig verwijderen voor blob-objecten](../../storage/blobs/storage-blob-soft-delete.md) voor het herstellen van gegevens wanneer deze per ongeluk wordt gewijzigd of verwijderd door een toepassing of de gebruiker van andere storage-account.
+Azure Storage biedt een [zacht verwijderen voor blob-objecten](../../storage/blobs/storage-blob-soft-delete.md) om gegevens te herstellen wanneer het per ongeluk is gewijzigd of verwijderd door een toepassing of een andere gebruiker van het opslag account.
 
-U kunt maken [blob-momentopnamen](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob). Een momentopname is een alleen-lezen versie van een blob die moet worden uitgevoerd op een punt in tijd en biedt een manier om back-up van een blob. Nadat een momentopname is gemaakt, kan deze worden gelezen, gekopieerd, of verwijderd, maar niet gewijzigd.
+U kunt [BLOB-moment opnamen](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)maken. Een moment opname is een alleen-lezen versie van een blob die op een bepaald moment wordt gemaakt en biedt een manier om een back-up van een BLOB te maken. Zodra een moment opname is gemaakt, kan deze worden gelezen, gekopieerd of verwijderd, maar niet worden gewijzigd.
 
 > [!Note]
-> Voor oudere versies van on-premises Hadoop-distributies die het certificaat 'wasbs' geen hebben, moeten ze worden geïmporteerd in het archief van de vertrouwensrelatie van Java.
+> Voor oudere versies van on-premises Hadoop-distributies die geen ' wasbs-certificaat hebben, moeten ze worden geïmporteerd in het Archief voor Java-vertrouwens relaties.
 
-De volgende methoden kunnen worden gebruikt voor het importeren van certificaten in het archief van de vertrouwensrelatie Java:
+De volgende methoden kunnen worden gebruikt voor het importeren van certificaten in het archief Java-vertrouwens relaties:
 
-Het ssl-certificaat van het Azure-Blob naar een bestand downloaden
+Het Azure Blob SSL-certificaat naar een bestand downloaden
 
 ```bash
 echo -n | openssl s_client -connect <storage-account>.blob.core.windows.net:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > Azure_Storage.cer
 ```
 
-Het bovenstaande bestand importeren in de Java-vertrouwensarchief op alle knooppunten
+Importeer het bovenstaande bestand naar het archief met de Java-vertrouwens relatie op alle knoop punten
 
 ```bash
 keytool -import -trustcacerts -keystore /path/to/jre/lib/security/cacerts -storepass changeit -noprompt -alias blobtrust -file Azure_Storage.cer
 ```
 
-Controleer of het certificaat toegevoegd in het vertrouwensarchief met
+Controleer of het toegevoegde certificaat zich in het vertrouwens archief bevindt
 
 ```bash
 keytool -list -v -keystore /path/to/jre/lib/security/cacerts
@@ -77,58 +77,58 @@ Raadpleeg voor meer informatie de volgende artikelen:
 - [Schaalbaarheids- en Prestatiedoelen voor Azure Storage](../../storage/common/storage-scalability-targets.md)
 - [Controlelijst voor prestaties en schaalbaarheid van Microsoft Azure Storage](../../storage/common/storage-performance-checklist.md)
 - [Monitor, diagnose, and troubleshoot Microsoft Azure Storage](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md) (Bewaken, diagnosticeren en problemen oplossen in Microsoft Azure Storage)
-- [Een opslagaccount in Azure portal controleren](../../storage/common/storage-monitor-storage-account.md)
+- [Een Storage-account bewaken in de Azure-portal](../../storage/common/storage-monitor-storage-account.md)
 
 ### <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
 
-Azure Data Lake Storage implementeert HDFS en POSIX stijl model voor toegangsbeheer. Het biedt eerste-klas integratie met AAD voor goed korrelig toegangsbeheer. Er zijn geen beperkingen aan de grootte van gegevens die kunnen worden opgeslagen of de mogelijkheid voor het uitvoeren van enorme parallelle analyses.
+Azure Data Lake Storage implementeert de Access Control model van HDFS en POSIX-stijl. Het biedt de eerste klasse-integratie met AAD voor fijn gekorreld toegangs beheer. Er zijn geen limieten voor de grootte van gegevens die kunnen worden opgeslagen of de mogelijkheid om een enorm parallelle analyse uit te voeren.
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
-- [Maken van HDInsight-clusters met Data Lake Storage met behulp van Azure portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+- [Maak HDInsight-clusters met Data Lake Storage met behulp van de Azure Portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Data Lake Storage gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-data-lake-store.md)
 
 ### <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 is de meest recente opslag bieden. Het verenigt de belangrijkste mogelijkheden van de eerste generatie van Azure Data Lake-opslag met een Hadoop-compatibel bestand system eindpunt, rechtstreeks geïntegreerd in Azure Blob Storage. Deze uitbreiding combineert de voordelen van het schalen en kosten van opslag van objecten met de betrouwbaarheid en prestaties meestal alleen met on-premises bestandssystemen die zijn gekoppeld.
+Azure Data Lake Storage Gen2 is de meest recente opslag aanbieding. Het combineert de kern mogelijkheden van de eerste generatie Azure Data Lake Storage met een Hadoop-compatibel bestandssysteem dat rechtstreeks is geïntegreerd in Azure Blob Storage. Deze uitbrei ding combineert de schaal en kosten voor delen van object opslag met de betrouw baarheid en prestaties die doorgaans alleen worden gekoppeld aan on-premises bestands systemen.
 
-ADLS Gen 2 is gebouwd boven [Azure Blob-opslag](../../storage/blobs/storage-blobs-introduction.md) en kunt u samenwerken met gegevens met behulp van beide beschermingsparadigma in het systeem en de object-opslag. Functies van [Azure Data Lake Storage Gen1](../../data-lake-store/index.md), zoals de semantiek van het bestandssysteem, op bestandsniveau beveiliging en schaal worden gecombineerd met lage kosten, gelaagde opslag, mogelijkheden voor hoge beschikbaarheid/noodherstel herstel en een grote SDK/hulpprogramma's -ecosysteem van [Azure Blob-opslag](../../storage/blobs/storage-blobs-introduction.md). In Data Lake Storage Gen2 blijven alle kenmerken van de opslag van objecten tijdens het toevoegen van de voordelen van een interface file system geoptimaliseerd voor analytics werkbelastingen.
+ADLS gen 2 is gebaseerd op [Azure Blob-opslag](../../storage/blobs/storage-blobs-introduction.md) en biedt u de mogelijkheid om met gegevens te werken met behulp van zowel bestands systeem-als object opslag-modellen. Functies van [Azure data Lake Storage gen1](../../data-lake-store/index.md), zoals bestandssysteem semantiek, beveiliging op bestands niveau en schaal, worden gecombineerd met goedkope, gelaagde opslag, hoge Beschik baarheid/herstel na nood gevallen en een groot ecosysteem voor SDK/hulpprogram Ma's van [Azure Blob-opslag](../../storage/blobs/storage-blobs-introduction.md). In Data Lake Storage Gen2 blijven alle kwaliteiten van object opslag aanwezig terwijl de voor delen van een bestandssysteem interface die is geoptimaliseerd voor analysewerk belastingen worden toegevoegd.
 
-Een fundamenteel onderdeel van de Data Lake Storage Gen2 is de toevoeging van een [hiërarchische naamruimte](../../storage/data-lake-storage/namespace.md) naar de Blob storage-service organiseert die objecten/bestanden in een hiërarchie van mappen voor toegang tot gegevens voor prestaties. De hiërarchische structuur kan bewerkingen, zoals naam wijzigen of verwijderen van een directory om te worden van één atomic metagegevens worden uitgevoerd op de map in plaats van inventariseren en verwerken van alle objecten die delen van het voorvoegsel van de naam van de map.
+Een fundamenteel onderdeel van data Lake Storage Gen2 is het toevoegen van een [hiërarchische naam ruimte](../../storage/data-lake-storage/namespace.md) aan de Blob Storage-service, waarmee objecten/bestanden worden ingedeeld in een hiërarchie van mappen voor uitvoering van gegevens toegang. De hiërarchische structuur maakt bewerkingen, zoals het wijzigen van de naam of het verwijderen van een map voor één atomische meta gegevens, in de Directory in plaats van het inventariseren en verwerken van alle objecten die het voor voegsel van de directory delen.
 
-In het verleden had cloudanalyses te boeten op het gebied van prestaties, beheer en beveiliging. De sleutel-functies van Azure Data Lake Storage (ADLS) Gen2 zijn als volgt:
+In het verleden had cloudanalyses te boeten op het gebied van prestaties, beheer en beveiliging. De belangrijkste functies van Azure Data Lake Storage (ADLS) Gen2 zijn als volgt:
 
-- **Hadoop-compatibele toegang**: Azure Data Lake Storage Gen2 kunt u beheren en toegang tot gegevens, net zoals u zou met doen een [Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). De nieuwe [ABFS stuurprogramma](../../storage/data-lake-storage/abfs-driver.md) is beschikbaar in alle Apache Hadoop-omgevingen die zijn opgenomen in [Azure HDInsight](../index.yml). Dit stuurprogramma kunt u toegang tot gegevens die zijn opgeslagen in Data Lake Storage Gen2.
+- **Hadoop-compatibele toegang**: Met Azure Data Lake Storage Gen2 kunt u gegevens beheren en openen, net zoals u dat zou doen met een [Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Het nieuwe [ABFS-stuur programma](../../storage/data-lake-storage/abfs-driver.md) is beschikbaar in alle Apache Hadoop omgevingen die zijn opgenomen in [Azure HDInsight](../index.yml). Met dit stuur programma kunt u toegang krijgen tot gegevens die zijn opgeslagen in Data Lake Storage Gen2.
 
-- **Een hoofdverzameling van POSIX-machtigingen**: Het beveiligingsmodel voor Data Lake Gen2 biedt volledige ondersteuning voor ACL en POSIX-machtigingen, samen met enkele extra granulariteit die specifiek zijn voor Data Lake Storage Gen2. Instellingen kunnen worden geconfigureerd via de beheerhulpprogramma's of frameworks, zoals Hive- en Spark.
+- **Een superset van POSIX-machtigingen**: Het beveiligings model voor Data Lake Gen2 biedt volledige ondersteuning van ACL-en POSIX-machtigingen samen met een extra granulatie specifiek voor Data Lake Storage Gen2. Instellingen kunnen worden geconfigureerd via beheer hulpprogramma's of via Frameworks als Hive en Spark.
 
-- **Voordelige**: Data Lake Storage Gen2 is uitgerust met lage kosten voor de opslagcapaciteit en transacties. Als de overgang van de gegevens via de volledige levenscyclus, factureringstarieven wijzigen om te minimaliseren kosten via de ingebouwde functies zoals [Azure Blob storage-levenscyclus](../../storage/common/storage-lifecycle-management-concepts.md).
+- **Kosten effectief**: Data Lake Storage Gen2 biedt goedkope opslag capaciteit en-trans acties. Naarmate de volledige levens cyclus van gegevens overgaat, worden de facturerings tarieven gewijzigd om de kosten te minimaliseren via ingebouwde functies, zoals [Azure Blob Storage-levens cyclus](../../storage/common/storage-lifecycle-management-concepts.md).
 
-- **Werkt met Blob storage-hulpprogramma's, frameworks en -apps**: Data Lake Storage Gen2 blijft gewoon werken met een breed scala aan hulpprogramma's, frameworks en -toepassingen die vandaag beschikbaar zijn voor Blob-opslag.
+- **Werkt met Blob Storage-hulpprogram ma's,-frameworks en-apps**: Data Lake Storage Gen2 blijft werken met een breed scala aan hulpprogram ma's, frameworks en toepassingen die momenteel bestaan voor Blob Storage.
 
-- **Geoptimaliseerde stuurprogramma**: Het stuurprogramma van de Azure Blob-bestandssysteem (ABFS) is [speciaal geoptimaliseerd](../../storage/data-lake-storage/abfs-driver.md) voor analyse van big data. De bijbehorende REST-API's zijn opgehaald via het eindpunt van de DFS-dfs.core.windows.net.
+- **Geoptimaliseerd stuur programma**: Het Azure Blob-bestandssysteem stuur programma (ABFS) is [speciaal](../../storage/data-lake-storage/abfs-driver.md) voor Big Data Analytics geoptimaliseerd. De bijbehorende REST Api's worden opgehaald via het DFS-eind punt, dfs.core.windows.net.
 
-Een van de volgende indelingen kan worden gebruikt voor toegang tot gegevens die zijn opgeslagen in ADLS Gen2:
+Een van de volgende indelingen kan worden gebruikt om toegang te krijgen tot gegevens die zijn opgeslagen in ADLS Gen2:
 - `abfs:///`: Toegang tot de standaard Data Lake Storage voor het cluster.
-- `abfs[s]://file_system@account_name.dfs.core.windows.net`: Bij het communiceren met een niet-standaard Data Lake-opslag gebruikt.
+- `abfs[s]://file_system@account_name.dfs.core.windows.net`: Wordt gebruikt bij de communicatie met een niet-standaard Data Lake Storage.
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
 - [Inleiding tot Azure Data Lake Storage Gen2](../../storage/data-lake-storage/introduction.md)
-- [Het bestandssysteem van Azure Blob-stuurprogramma (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
+- [Het Azure Blob-bestandssysteem stuur programma (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
 - [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
-## <a name="secure-azure-storage-keys-within-on-premises-hadoop-cluster-configuration"></a>Azure Storage-sleutels in configuratie van de on-premises Hadoop-cluster beveiligen
+## <a name="secure-azure-storage-keys-within-on-premises-hadoop-cluster-configuration"></a>Azure Storage sleutels beveiligen in de configuratie van een on-premises Hadoop-cluster
 
-De Azure storage-sleutels die zijn toegevoegd aan de Hadoop-configuratiebestanden, stel de verbinding in tussen op de lokale HDFS- en Azure Blob-opslag. Deze sleutels kunnen worden beveiligd door ze te versleutelen met het referentieproviderframework van Hadoop. Als versleuteld, kunnen worden opgeslagen en de toegang tot.
+De Azure-opslag sleutels die worden toegevoegd aan de Hadoop-configuratie bestanden, maken van connectiviteit tussen on-premises HDFS en Azure Blob-opslag. Deze sleutels kunnen worden beveiligd door ze te versleutelen met het Hadoop-referentie provider Framework. Nadat deze zijn versleuteld, kunnen ze veilig worden opgeslagen en geopend.
 
-**Voor het inrichten van de referenties:**
+**De referenties inrichten:**
 
 ```bash
 hadoop credential create fs.azure.account.key.account.blob.core.windows.net -value <storage key> -provider jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks/file
 ```
 
-**De bovenstaande providerpad toevoegen aan de core-site.xml of aan de configuratie van de Ambari onder aangepaste core-site:**
+**Om het bovenstaande pad naar de provider toe te voegen aan de bestand core-site. XML of aan de Ambari-configuratie onder aangepaste kern-site:**
 
 ```xml
 <property>
@@ -141,88 +141,88 @@ hadoop credential create fs.azure.account.key.account.blob.core.windows.net -val
 ```
 
 > [!Note]
-> De eigenschap provider pad kan ook worden toegevoegd aan de opdrachtregel van de opdracht distcp in plaats van sleutel op niveau van het cluster op core-site.xml als volgt:
+> De eigenschap van het provider pad kan ook worden toegevoegd aan de distcp-opdracht regel in plaats van de sleutel op cluster niveau op bestand core-site. XML als volgt op te slaan:
 
 ```bash
 hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks /user/user1/ wasb:<//yourcontainer@youraccount.blob.core.windows.net/>user1
 ```
 
-## <a name="restrict-azure-storage-data-access-using-sas"></a>Beperken van toegang tot gegevens Azure storage met behulp van SAS
+## <a name="restrict-azure-storage-data-access-using-sas"></a>Toegang tot Azure Storage-gegevens beperken met behulp van SAS
 
-HDInsight standaard heeft volledige toegang tot gegevens in de Azure Storage-accounts die zijn gekoppeld aan het cluster. Gedeelde Access Signatures (SAS) op de blob-container kan worden gebruikt om te beperken van toegang tot de gegevens, zoals gebruikers voorzien van alleen-lezen toegang tot de gegevens.
+HDInsight heeft standaard volledige toegang tot de gegevens in de Azure Storage accounts die aan het cluster zijn gekoppeld. Shared Access signatures (SAS) op de BLOB-container kunnen worden gebruikt om de toegang tot de gegevens te beperken, zoals gebruikers met alleen-lezen toegang tot de gegevens geven.
 
-### <a name="using-the-sas-token-created-with-python"></a>Met behulp van de SAS-token dat is gemaakt met python
+### <a name="using-the-sas-token-created-with-python"></a>Het SAS-token gebruiken dat is gemaakt met python
 
-1. Open de [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) bestands- en wijzigt u de volgende waarden:
+1. Open het [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) -bestand en wijzig de volgende waarden:
 
     |Token eigenschap|Description|
     |---|---|
-    |Naam_van_beleid|De naam moet worden gebruikt voor het opgeslagen beleid te maken.|
+    |policy_name|De naam die moet worden gebruikt om het opgeslagen beleid te maken.|
     |storage_account_name|De naam van uw opslagaccount.|
-    |storage_account_key|De sleutel voor het opslagaccount.|
-    |storage_container_name|De container in het opslagaccount dat u wilt toegang te beperken.|
-    |example_file_path|Het pad naar een bestand dat is geüpload naar de container.|
+    |storage_account_key|De sleutel voor het opslag account.|
+    |storage_container_name|De container in het opslag account waartoe u de toegang wilt beperken.|
+    |example_file_path|Het pad naar een bestand dat naar de container wordt geüpload.|
 
-2. Het bestand SASToken.py wordt geleverd met de `ContainerPermissions.READ + ContainerPermissions.LIST` machtigingen en kan worden aangepast op basis van de use-case.
+2. Het SASToken.py-bestand wordt geleverd `ContainerPermissions.READ + ContainerPermissions.LIST` met de machtigingen en kan worden aangepast op basis van de use-case.
 
-3. Voer het script als volgt uit: `python SASToken.py`
+3. Voer het script als volgt uit:`python SASToken.py`
 
-4. Wanneer het script is voltooid, wordt de SAS-token die vergelijkbaar is met de volgende tekst weergegeven: `sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14`
+4. Hier wordt de SAS-token weer gegeven die vergelijkbaar is met de volgende tekst wanneer het script is voltooid:`sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14`
 
-5. Als u wilt beperken van toegang tot een container met Shared Access Signature, moet u een aangepaste vermelding toevoegen aan de core-site-configuratie voor het cluster onder Ambari HDFS configuraties geavanceerde aangepaste eigenschap van de core-site toevoegen.
+5. Als u de toegang tot een container met Shared Access Signature wilt beperken, voegt u een aangepaste vermelding toe aan de configuratie van de kern site voor het cluster onder Ambari HDFS configs geavanceerde aangepaste kern-site toevoegen eigenschap.
 
-6. Gebruik de volgende waarden voor de **sleutel** en **waarde** velden:
+6. Gebruik de volgende waarden voor de velden **sleutel** en **waarde** :
 
-    **sleutel**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **Waarde**: De SAS-sleutel wordt geretourneerd door de Python-toepassing vanaf stap 4 hierboven.
+    **Sleutel**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net`**Waarde**: De SAS-sleutel die wordt geretourneerd door de python-toepassing, uit stap 4 hierboven.
 
-7. Klik op de **toevoegen** klikken om deze sleutel en waarde opslaan en klik vervolgens op de **opslaan** om op te slaan van de configuratiewijzigingen. Wanneer u hierom wordt gevraagd, een beschrijving van de wijziging ('toe te voegen toegang tot de SAS-opslag' bijvoorbeeld) toevoegen en klik vervolgens op **opslaan**.
+7. Klik op de knop **toevoegen** om deze sleutel en waarde op te slaan en klik vervolgens op de knop **Opslaan** om de configuratie wijzigingen op te slaan. Als u hierom wordt gevraagd, voegt u een beschrijving van de wijziging toe (bijvoorbeeld het toevoegen van SAS-opslag toegang) en klikt u vervolgens op **Opslaan**.
 
-8. In de Ambari-webgebruikersinterface, HDFS Selecteer in de lijst aan de linkerkant en selecteer vervolgens **start opnieuw op alle betrokken** Vervolgkeuzelijst lijst aan de rechterkant van de Service-acties. Wanneer u hierom wordt gevraagd, selecteert u **alle opnieuw starten bevestigen**.
+8. Selecteer in de Ambari-webgebruikersinterface de optie HDFS in de lijst aan de linkerkant en selecteer vervolgens **alle betrokken** onderdelen opnieuw opstarten in de vervolg keuzelijst service acties aan de rechter kant. Selecteer **Bevestig opnieuw opstarten**als dit wordt gevraagd.
 
-9. Herhaal dit proces voor MapReduce2 en YARN.
+9. Herhaal dit proces voor MapReduce2 en GARENs.
 
-Er zijn drie belangrijke dingen om te weten over het gebruik van SAS-Tokens in Azure:
+Er zijn drie belang rijke zaken die u moet onthouden met betrekking tot het gebruik van SAS-tokens in Azure:
 
-1. Wanneer de SAS-tokens worden gemaakt met de machtigingen 'Lezen + LIST', ' schrijven en verwijderen ' gebruikers die toegang hebben tot de Blob-container met deze SAS-token niet mogelijk gegevens. Gebruikers die toegang tot de Blob-container met deze SAS-token en probeer het een schrijven of verwijderen van de bewerking ontvangt een bericht als `"This request is not authorized to perform this operation"`.
+1. Wanneer SAS-tokens worden gemaakt met de machtigingen lezen en lijst, kunnen gebruikers die toegang hebben tot de BLOB-container met die SAS-token geen gegevens schrijven en verwijderen. Gebruikers die toegang hebben tot de BLOB-container met die SAS-token en een schrijf-of verwijder bewerking proberen, `"This request is not authorized to perform this operation"`ontvangen een bericht zoals.
 
-2. Wanneer de SAS-tokens worden gegenereerd met `READ + LIST + WRITE` machtigingen (om te beperken `DELETE` alleen), opdrachten, zoals `hadoop fs -put` eerst schrijven naar een `\_COPYING\_` -bestand en probeer het vervolgens naar de naam van het bestand. Met deze bewerking HDFS wordt toegewezen aan een `copy+delete` voor WASB. Omdat de `DELETE` machtiging is niet opgegeven, de 'put"mislukken. De `\_COPYING\_` bewerking is een Hadoop-functie die bestemd zijn voor sommige gelijktijdigheidsbeheer. Er is momenteel geen manier om te beperken van alleen de bewerking 'DELETE' zonder dat ' "schrijfbewerkingen ook.
+2. Wanneer de SAS-tokens worden gegenereerd `READ + LIST + WRITE` met machtigingen (alleen `DELETE` om te beperken), `hadoop fs -put` opdrachten als eerste schrijven `\_COPYING\_` naar een bestand en vervolgens proberen de naam van het bestand te wijzigen. Deze HDFS-bewerking is gekoppeld `copy+delete` aan een for WASB. Omdat de `DELETE` machtiging niet is gegeven, mislukt de "put". De `\_COPYING\_` bewerking is een Hadoop-functie die is bedoeld om een gelijktijdigheids beheer te bieden. Er is momenteel geen manier om alleen de bewerking ' DELETE ' te beperken zonder dat dit gevolgen heeft voor schrijf bewerkingen.
 
-3. Helaas, de hadoop Referentieprovider en de belangrijkste provider voor ontsleutelen (ShellDecryptionKeyProvider) op dit moment werken niet met de SAS-tokens en dus het momenteel niet worden beveiligd vanaf zichtbaarheid.
+3. Helaas werken de provider van de Hadoop-referentie provider en de ontsleutelingssleutel (ShellDecryptionKeyProvider) momenteel niet met de SAS-tokens, zodat deze momenteel niet kan worden beveiligd tegen zicht baarheid.
 
-Zie voor meer informatie, [gebruikt Azure Storage handtekeningen voor gedeelde toegang te beperken van toegang tot gegevens in HDInsight](../hdinsight-storage-sharedaccesssignature-permissions.md).
+Zie [Azure Storage-hand tekeningen voor gedeelde toegang gebruiken om de toegang tot gegevens in HDInsight te beperken](../hdinsight-storage-sharedaccesssignature-permissions.md)voor meer informatie.
 
-## <a name="use-data-encryption-and-replication"></a>Gebruik gegevensversleuteling en replicatie
+## <a name="use-data-encryption-and-replication"></a>Gegevens versleuteling en-replicatie gebruiken
 
-Alle gegevens die zijn geschreven naar Azure Storage automatisch versleuteld met behulp van [Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md). De gegevens in de Azure storage-account worden altijd gerepliceerd voor hoge beschikbaarheid. Wanneer u een opslagaccount maakt, kunt u een van de volgende replicatieopties kiezen:
+Alle gegevens die naar Azure Storage worden geschreven, worden automatisch versleuteld met behulp van [Storage service Encryption (SSE)](../../storage/common/storage-service-encryption.md). De gegevens in het Azure Storage-account worden altijd gerepliceerd voor hoge Beschik baarheid. Wanneer u een opslag account maakt, kunt u een van de volgende replicatie opties kiezen:
 
 - [Lokaal redundante opslag (LRS)](../../storage/common/storage-redundancy-lrs.md)
 - [Zone-redundante opslag (ZRS)](../../storage/common/storage-redundancy-zrs.md)
 - [Geografisch redundante opslag (GRS)](../../storage/common/storage-redundancy-grs.md)
 - [Geografisch redundante opslag met leestoegang (RA-GRS)](../../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
 
-Azure Data Lake Storage biedt lokaal redundante opslag (LRS), maar u moet ook kritieke gegevens kopiëren naar een ander Data Lake Storage-account in een andere regio met een frequentie die is afgestemd op de behoeften van het noodherstelplan. Er zijn verschillende methoden om te kopiëren van gegevens, waaronder [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), DistCp, [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md), of [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md). Het is ook raadzaam om af te dwingen van het toegangsbeleid van Data Lake Storage-account om te voorkomen dat per ongeluk verwijderen.
+Azure Data Lake Storage biedt lokaal redundante opslag (LRS), maar u moet ook essentiële gegevens kopiëren naar een andere Data Lake Storage account in een andere regio met een frequentie die is afgestemd op de behoeften van het nood herstel plan. Er zijn verschillende methoden om gegevens te kopiëren, waaronder [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), DistCp, [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)of [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md). Het wordt ook aanbevolen om toegangs beleid af te dwingen voor Data Lake Storage account om onbedoelde verwijdering te voor komen.
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
 - [Azure storage-replicatie](../../storage/common/storage-redundancy.md)
-- [Richtlijnen voor noodherstel voor Azure Data Lake Storage (ADLS)](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
+- [Hulp bij nood gevallen voor Azure Data Lake Storage (ADLS)](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
-## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>Aanvullende Azure storage-accounts aan het cluster toevoegen
+## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>Extra Azure Storage-accounts aan cluster koppelen
 
-Een Azure Storage-account of Azure Data Lake storage-account tijdens het maakproces HDInsight wordt gekozen als het standaardbestandssysteem. Naast dit standaardopslagaccount kunnen extra opslagaccounts in hetzelfde Azure-abonnement of andere Azure-abonnementen worden toegevoegd tijdens het maken van het cluster, of nadat een cluster is gemaakt.
+Tijdens het maken van het HDInsight-proces wordt een Azure Storage account of Azure Data Lake-opslag account gekozen als het standaard bestandssysteem. Naast dit standaard opslag account kunnen extra opslag accounts worden toegevoegd uit hetzelfde Azure-abonnement of verschillende Azure-abonnementen tijdens het proces voor het maken van het cluster of nadat een cluster is gemaakt.
 
-Extra storage-account kan worden toegevoegd in een op de volgende manieren:
-- Ambari HDFS Config geavanceerde aangepaste core-site toevoegen van de opslag accountnaam en sleutel van de services opnieuw starten
-- Met behulp van [Script actie](../hdinsight-hadoop-add-storage.md) door door te geven van het storage-accountnaam en de sleutel
+U kunt op de volgende manieren een extra opslag account toevoegen:
+- Ambari HDFS config geavanceerde aangepaste kern-site de naam en sleutel van het opslag account toevoegen de services opnieuw starten
+- [Script actie](../hdinsight-hadoop-add-storage.md) gebruiken door de naam en sleutel van het opslag account door te geven
 
 > [!Note]
-> In geldige use cases, de limieten voor de Azure-opslag kunnen worden verhoogd via een aanvraag aan [ondersteuning voor Azure](https://azure.microsoft.com/support/faq/).
+> In geldige gebruiks gevallen kunnen de limieten voor de Azure-opslag worden verhoogd via een aanvraag voor [ondersteuning van Azure](https://azure.microsoft.com/support/faq/).
 
 Raadpleeg voor meer informatie de volgende artikelen:
-- [Extra opslagaccounts toevoegen aan HDInsight](../hdinsight-hadoop-add-storage.md)
+- [Extra opslag accounts toevoegen aan HDInsight](../hdinsight-hadoop-add-storage.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees het volgende artikel in deze reeks:
+Lees het volgende artikel in deze serie:
 
-- [Gegevens migreren best practices voor on-premises naar Azure HDInsight Hadoop-migratie](apache-hadoop-on-premises-migration-best-practices-data-migration.md)
+- [Aanbevolen procedures voor het migreren van gegevens voor on-premises naar Azure HDInsight Hadoop migratie](apache-hadoop-on-premises-migration-best-practices-data-migration.md)

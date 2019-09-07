@@ -1,19 +1,19 @@
 ---
-title: 'Zelf studie-Azure-toolkit voor IntelliJ: Spark-toepassingen maken voor een HDInsight-cluster'
+title: 'Zelf studie-Azure-toolkit voor IntelliJ: Spark-toepassing voor HDInsight-cluster'
 description: 'Zelf studie: gebruik de Azure-toolkit voor IntelliJ voor het ontwikkelen van Spark-toepassingen die zijn geschreven in scala en verzend deze naar een HDInsight Spark-cluster.'
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 06/26/2019
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 32f5ff2ebc9d938b1936d7f2929af83d552a543d
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: dac72cee62a3bd4cc4c315e15ace784bf24deff3
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489866"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736479"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Zelfstudie: Azure-toolkit voor IntelliJ gebruiken om Apache Spark-toepassingen voor een HDInsight-cluster te maken
 
@@ -187,7 +187,7 @@ U kunt een HDInsight-cluster koppelen met behulp van de Apache Ambari Managed us
         |----|----|
         |Resource type voor koppeling|Selecteer **HDInsight-cluster** in de vervolg keuzelijst.|
         |Cluster naam/URL| Voer de cluster naam in.|
-        |Verificatietype| Als **basis verificatie** laten staan|
+        |Authenticatietype| Als **basis verificatie** laten staan|
         |Naam van gebruiker| Voer de gebruikers naam van het cluster in, de standaard instelling is admin.|
         |Wachtwoord| Voer het wacht woord in voor de gebruikers naam.|
     
@@ -201,7 +201,7 @@ U kunt een HDInsight-cluster koppelen met behulp van de Apache Ambari Managed us
         |Livy-eind punt| Livy-eind punt invoeren|
         |Clusternaam| Voer de cluster naam in.|
         |Eind punt van garen|Optioneel.|
-        |Verificatietype| Als **basis verificatie** laten staan|
+        |Authenticatietype| Als **basis verificatie** laten staan|
         |Naam van gebruiker| Voer de gebruikers naam van het cluster in, de standaard instelling is admin.|
         |Wachtwoord| Voer het wacht woord in voor de gebruikers naam.|
 
@@ -304,7 +304,7 @@ U kunt een lokale Spark-console (scala) uitvoeren of een Spark livy-console (sca
 
 Zorg ervoor dat u tevreden bent over de WINUTILS. EXE-vereiste.
 
-1. Navigeer in de menu balk naar bewerkings configuraties **uitvoeren** >  **...** .
+1. Navigeer in de menu balk naar**bewerkings configuraties** **uitvoeren** > ....
 
 2. Ga in het linkerdeel venster van het venster **configuraties voor uitvoeren/fout opsporing** naar **Apache Spark op hdinsight** >  **[Spark op hdinsight] Mijntoep**.
 
@@ -312,7 +312,7 @@ Zorg ervoor dat u tevreden bent over de WINUTILS. EXE-vereiste.
 
 4. Geef de volgende waarden op en selecteer **OK**:
 
-    |Eigenschap |Waarde |
+    |Eigenschap |Value |
     |----|----|
     |Hoofd klasse van taak|De standaard waarde is de hoofd klasse van het geselecteerde bestand. U kunt de klasse wijzigen door het weglatings teken ( **...** ) te selecteren.  en kies een andere klasse.|
     |Omgevingsvariabelen|Zorg ervoor dat de waarde voor HADOOP_HOME juist is.|
@@ -338,7 +338,7 @@ Zorg ervoor dat u tevreden bent over de WINUTILS. EXE-vereiste.
 
 Het wordt alleen ondersteund op IntelliJ 2018,2 en 2018,3.
 
-1. Navigeer in de menu balk naar bewerkings configuraties **uitvoeren** >  **...** .
+1. Navigeer in de menu balk naar**bewerkings configuraties** **uitvoeren** > ....
 
 2. Ga in het linkerdeel venster van het venster **configuraties voor uitvoeren/fout opsporing** naar **Apache Spark op hdinsight** >  **[Spark op hdinsight] Mijntoep**.
 

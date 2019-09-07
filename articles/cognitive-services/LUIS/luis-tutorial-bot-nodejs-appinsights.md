@@ -1,5 +1,5 @@
 ---
-title: Application Insights, node. js-LUIS
+title: 'Zelfstudie: Application Insights, node. js-LUIS'
 titleSuffix: Azure Cognitive Services
 description: In deze zelf studie worden bot en Language Understanding informatie toegevoegd voor het Application Insights van telemetriegegevens.
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/16/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 72ce681b6b0e4109151b987a5f8cc4bc050aafa0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f488cfaf1e55edd8ae0d2bfd177553deb2677f8b
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563287"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387908"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-bot-in-nodejs"></a>LUIS-resultaten toevoegen aan Application Insights vanuit een bot in node. js
+# <a name="tutorial-add-luis-results-to-application-insights-from-a-bot-in-nodejs"></a>Zelfstudie: LUIS-resultaten toevoegen aan Application Insights vanuit een bot in node. js
 In deze zelf studie worden bot en Language Understanding informatie toegevoegd voor het [Application Insights](https://azure.microsoft.com/services/application-insights/) van telemetriegegevens. Wanneer u deze gegevens hebt, kunt u deze zoeken in de Kusto-taal of Power BI voor het analyseren, samen voegen en rapporteren van de intenties en entiteiten van de utterance in realtime. Met deze analyse kunt u bepalen of u moet toevoegen of bewerken van de intenties en entiteiten van uw LUIS-app.
 
 In deze zelfstudie leert u het volgende:
@@ -94,9 +94,9 @@ Voor het vastleggen van de LUIS-informatie **[Application Insights](https://www.
     module.exports.appInsightsLog = appInsightsLog;
     ```
 
-    In dit bestand worden de bot-context en het Luis-antwoord gebruikt, worden beide objecten afgevlakt en  ingevoegd in een tracerings gebeurtenis in Application Insights. De naam van de gebeurtenis is **Luis**. 
+    In dit bestand worden de bot-context en het Luis-antwoord gebruikt, worden beide objecten afgevlakt en ingevoegd in een **tracerings** gebeurtenis in Application Insights. De naam van de gebeurtenis is **Luis**. 
 
-1. Open de  map dialogen en vervolgens het bestand **luisHelper. js** . Voeg het nieuwe **appInsightsLog. js** toe als een vereist bestand en leg de bot-context en het Luis-antwoord vast. De volledige code voor dit bestand is: 
+1. Open de map **dialogen** en vervolgens het bestand **luisHelper. js** . Voeg het nieuwe **appInsightsLog. js** toe als een vereist bestand en leg de bot-context en het Luis-antwoord vast. De volledige code voor dit bestand is: 
 
     ```javascript
     // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -199,7 +199,7 @@ Als u gegevens wilt toevoegen aan Application Insights, hebt u de instrumentatie
 Open Application Insights om te zien van de LUIS-vermeldingen. Het kan enkele minuten duren voordat de gegevens in Application Insights worden weer gegeven.
 
 1. Open in de [Azure Portal](https://portal.azure.com)de Application Insights resource van de bot. 
-1. Wanneer de resource wordt geopend, selecteert u **zoeken** en zoekt u naar alle gegevens in de afgelopen **30 minuten** met het gebeurtenis type tracering. Selecteer de tracering met de naam **Luis**. 
+1. Wanneer de resource wordt geopend, selecteert u **zoeken** en zoekt u naar alle gegevens in de afgelopen **30 minuten** met het gebeurtenis type **tracering**. Selecteer de tracering met de naam **Luis**. 
 1. De bot-en LUIS-informatie is beschikbaar onder **aangepaste eigenschappen**. 
 
     ![Aangepaste eigenschappen van LUIS controleren die zijn opgeslagen in Application Insights](./media/luis-tutorial-appinsights/application-insights-luis-trace-custom-properties-nodejs.png)

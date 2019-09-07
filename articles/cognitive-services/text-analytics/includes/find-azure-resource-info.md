@@ -9,16 +9,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/07/2019
 ms.author: aahi
-ms.openlocfilehash: 93d2af6d011c28d1f7f0495b49a732401d62a184
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 221bcdf3a98a48646bab5abf780dc2a69c8e10f2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881012"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387485"
 ---
 > [!TIP]
 > U kunt als volgt uw sleutel en eind punt vinden op het Azure Portal:
 > 1. Navigeer naar uw Azure-resource https://portal.azure.com/ op.
 > 2. Klik op **snel starten**onder **resource beheer**.
->
-> Zorg ervoor dat u het `/text/analytics/<version>` achtervoegsel van het eind punt verwijdert, als dit er een bevat. Dit achtervoegsel is niet nodig voor gebruik met de client bibliotheken.

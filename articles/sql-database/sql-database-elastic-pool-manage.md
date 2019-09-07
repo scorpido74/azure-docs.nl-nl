@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 6b2a2029dec917672d6f4ee8db24aed60e4f5bc5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ca00326d5704d3dd26027d90a3e48bfc52ec5653
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568653"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744449"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Elastische Pools beheren in Azure SQL Database
 
@@ -42,7 +42,7 @@ Hier kunt u een combi natie van de volgende wijzigingen maken en deze allemaal i
 > [!IMPORTANT]
 > De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek.
 
-Gebruik de volgende Power shell-cmdlets om SQL Database elastische Pools en gegroepeerde Data bases te maken en te beheren met Azure PowerShell. Als u Power shell wilt installeren of upgraden, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Zie [SQL database-servers maken en beheren](sql-database-servers.md)voor het maken en beheren van de SQL database servers voor een elastische pool. Zie [firewall regels maken en beheren met Power shell](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-azure-powershell)voor meer informatie over het maken en beheren van firewall regels.
+Gebruik de volgende Power shell-cmdlets om SQL Database elastische Pools en gegroepeerde Data bases te maken en te beheren met Azure PowerShell. Als u Power shell wilt installeren of upgraden, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Zie [SQL database-servers maken en beheren](sql-database-servers.md)voor het maken en beheren van de SQL database servers voor een elastische pool. Zie [firewall regels maken en beheren met Power shell](sql-database-firewall-configure.md#use-powershell-to-manage-server-level-ip-firewall-rules)voor meer informatie over het maken en beheren van firewall regels.
 
 > [!TIP]
 > Zie voor voor beelden van Power shell-scripts [elastische Pools maken en data bases verplaatsen tussen Pools en uit een pool met Power shell](scripts/sql-database-move-database-between-pools-powershell.md) en [Power shell gebruiken om een elastische SQL-groep in Azure SQL database te controleren en te schalen](scripts/sql-database-monitor-and-scale-pool-powershell.md).
@@ -82,7 +82,7 @@ Als u SQL Database elastische Pools wilt maken en beheren met de [Azure cli](/cl
 
 ## <a name="transact-sql-manage-pooled-databases"></a>Transact-SQL: Gegroepeerde Data bases beheren
 
-Gebruik de volgende T-SQL-opdrachten om data bases te maken en te verplaatsen binnen bestaande elastische Pools of om informatie over een SQL Database elastische pool te retour neren met Transact-SQL. U kunt deze opdrachten geven met behulp van de Azure Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio code](https://code.visualstudio.com/docs)of een ander programma dat verbinding kan maken met een Azure SQL database server en Transact-SQL-opdrachten kan passeren. Zie [firewall regels beheren met behulp van Transact-SQL](sql-database-firewall-configure.md#manage-ip-firewall-rules-using-transact-sql)om firewall regels te maken en beheren met behulp van T-SQL.
+Gebruik de volgende T-SQL-opdrachten om data bases te maken en te verplaatsen binnen bestaande elastische Pools of om informatie over een SQL Database elastische pool te retour neren met Transact-SQL. U kunt deze opdrachten geven met behulp van de Azure Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio code](https://code.visualstudio.com/docs)of een ander programma dat verbinding kan maken met een Azure SQL database server en Transact-SQL-opdrachten kan passeren. Zie [firewall regels beheren met behulp van Transact-SQL](sql-database-firewall-configure.md#use-transact-sql-to-manage-ip-firewall-rules)om firewall regels te maken en beheren met behulp van T-SQL.
 
 > [!IMPORTANT]
 > Het is niet mogelijk om een Azure SQL Database elastische pool te maken, bij te werken of te verwijderen met behulp van Transact-SQL. U kunt data bases toevoegen aan of verwijderen uit een elastische pool en u kunt Dmv's gebruiken om informatie over bestaande elastische Pools te retour neren.

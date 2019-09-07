@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Extraheren, transformeren, laden (ETL)-bewerkingen op Azure HDInsight met behulp van interactieve Query uitvoeren'
-description: 'Zelfstudie: Lees hoe u gegevens ophalen uit een gegevensset met onbewerkte CSV, transformeren met behulp van interactieve Query in HDInsight en vervolgens de getransformeerde gegevens laden in Azure SQL-database met behulp van Apache Sqoop.'
+title: "Zelfstudie: ETL-bewerkingen uitvoeren met interactieve Query's in azure HDInsight"
+description: "Zelf studie: informatie over het extra heren van gegevens uit een onbewerkte CSV-gegevensset, deze transformeren met interactieve Query's op HDInsight en vervolgens de getransformeerde gegevens in Azure SQL database laden met behulp van Apache Sqoop."
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,31 +8,31 @@ ms.topic: tutorial
 ms.date: 07/02/2019
 ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: fbab8502c088c2ae7a4b8e87285d7e4cac1de4c0
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 9ff215bb687ea2b6aa32ecb01dba7a61385b15a4
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807391"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735836"
 ---
-# <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Zelfstudie: Uitpakken, transformeren en laden van gegevens met behulp van interactieve query's in Azure HDInsight
+# <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Zelfstudie: Gegevens uitpakken, transformeren en laden met interactieve Query's in azure HDInsight
 
-In deze zelfstudie een onbewerkte CSV-gegevensbestand van vluchtgegevens van openbaar beschikbare nemen, importeren in de opslag voor HDInsight-cluster en klikt u vervolgens de gegevens transformeren met Interactive Query in Azure HDInsight. Als de gegevens zijn getransformeerd, laadt u die gegevens met behulp van [Apache Sqoop](https://sqoop.apache.org/) in een Azure SQL-database.
+In deze zelf studie maakt u een onbewerkt CSV-gegevens bestand met openbaar beschik bare vlucht gegevens, importeert u het in HDInsight-cluster opslag en transformeert u de gegevens met behulp van interactieve Query's in azure HDInsight. Als de gegevens zijn getransformeerd, laadt u die gegevens met behulp van [Apache Sqoop](https://sqoop.apache.org/) in een Azure SQL-database.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
 > * De voorbeeldbestanden met vluchtgegevens downloaden
 > * Gegevens uploaden naar een HDInsight-cluster
-> * De gegevens transformeren met Interactive Query
-> * Een tabel maken in een Azure SQL database
-> * Sqoop gebruiken om gegevens te exporteren naar een Azure SQL database
+> * De gegevens transformeren met behulp van interactieve Query's
+> * Een tabel maken in een Azure-SQL database
+> * Sqoop gebruiken om gegevens te exporteren naar een Azure-SQL database
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een interactieve Query-cluster in HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **Interactive Query** voor **clustertype**.
+* Een interactief query cluster op HDInsight. Zie [Apache Hadoop clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en **interactieve query** voor **cluster type**selecteren.
 
-* An Azure SQL Database. U gebruikt een Azure SQL-database als doelgegevensopslag. Als u geen SQL-database hebt, raadpleegt u [Een Azure SQL-database maken in Azure Portal](/azure/sql-database/sql-database-single-database-get-started).
+* Een Azure SQL Database. U gebruikt een Azure SQL-database als doelgegevensopslag. Als u geen SQL-database hebt, raadpleegt u [Een Azure SQL-database maken in Azure Portal](/azure/sql-database/sql-database-single-database-get-started).
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -40,13 +40,13 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 1. Blader naar [Research and Innovative Technology Administration, Bureau of Transportation Statistics](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
 
-2. Op de pagina, schakel alle velden en selecteer vervolgens de volgende waarden:
+2. Wis alle velden op de pagina en selecteer vervolgens de volgende waarden:
 
    | Name | Waarde |
    | --- | --- |
    | Filterjaar |2019 |
    | Filterperiode |Januari |
-   | Velden |Jaar, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, oorsprong, OriginCityName, OriginState, DestAirportID, doel, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   | Velden |Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, doel, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
 
 3. Selecteer **Download**. U krijgt een ZIP-bestand met de gegevensvelden die u hebt geselecteerd.
 
@@ -54,21 +54,21 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 Er zijn veel manieren om gegevens te uploaden naar de opslag die is gekoppeld aan een HDInsight-cluster. In dit gedeelte gebruikt u `scp` om gegevens te uploaden. Zie [Gegevens uploaden naar HDInsight](../hdinsight-upload-data.md) voor informatie over andere manieren om gegevens te uploaden.
 
-1. Upload het ZIP-bestand naar het hoofdknooppunt van HDInsight-cluster. De onderstaande opdracht bewerken door te vervangen `FILENAME` met de naam van het ZIP-bestand en `CLUSTERNAME` met de naam van het HDInsight-cluster. Open een opdrachtprompt, instellen van uw werkmap naar de locatie van het bestand en voer vervolgens de opdracht.
+1. Upload het zip-bestand naar het hoofd knooppunt van het HDInsight-cluster. Bewerk de onderstaande opdracht door de `FILENAME` naam van het zip-bestand en `CLUSTERNAME` de naam van het HDInsight-cluster te vervangen. Open vervolgens een opdracht prompt, stel uw werkmap in op de bestands locatie en voer de opdracht in.
 
     ```cmd
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
     ```
 
-    Als u wordt gevraagd om in te voeren Ja of Nee als u wilt doorgaan, typt u Ja bij de opdrachtprompt en druk op enter. De tekst is niet zichtbaar in het venster terwijl u typt.
+    Als u wordt gevraagd ja of Nee in te voeren om door te gaan, typt u Ja bij de opdracht prompt en drukt u op ENTER. De tekst wordt niet weer gegeven in het venster terwijl u typt.
 
-2. Nadat het uploaden is voltooid, maakt u via SSH verbinding met het cluster. De onderstaande opdracht bewerken door te vervangen `CLUSTERNAME` met de naam van het HDInsight-cluster. Voer vervolgens de volgende opdracht in:
+2. Nadat het uploaden is voltooid, maakt u via SSH verbinding met het cluster. Bewerk de onderstaande opdracht door de `CLUSTERNAME` naam van het HDInsight-cluster te vervangen. Voer vervolgens de volgende opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. Omgevingsvariabele instellen wanneer een SSH-verbinding tot stand is gebracht. Vervang `FILE_NAME`, `SQL_SERVERNAME`, `SQL_DATABASE`, `SQL_USER`, en `SQL_PASWORD` met de juiste waarden. Voer de opdracht:
+3. Stel de omgevings variabele in zodra een SSH-verbinding tot stand is gebracht. Vervang `FILE_NAME` ,`SQL_SERVERNAME` ,,`SQL_PASWORD` en door de juiste waarden. `SQL_DATABASE` `SQL_USER` Voer vervolgens de volgende opdracht in:
 
     ```bash
     export FILENAME=FILE_NAME
@@ -78,13 +78,13 @@ Er zijn veel manieren om gegevens te uploaden naar de opslag die is gekoppeld aa
     export SQLPASWORD='SQL_PASWORD'
     ```
 
-4. Pak het ZIP-bestand met de onderstaande opdracht:
+4. Pak het zip-bestand uit door de volgende opdracht in te voeren:
 
     ```bash
     unzip $FILENAME.zip
     ```
 
-5. Maak een map op HDInsight-opslag, en vervolgens het CSV-bestand kopiëren naar de map met de onderstaande opdracht:
+5. Maak een map in HDInsight-opslag en kopieer het CSV-bestand naar de map door de volgende opdracht in te voeren:
 
     ```bash
     hdfs dfs -mkdir -p /tutorials/flightdelays/data
@@ -97,7 +97,7 @@ Er zijn veel manieren om een Hive-taak uit te voeren in een HDInsight-cluster. I
 
 Als onderdeel van de Hive-taak, importeert u de gegevens uit het CSV-bestand naar een Hive-tabel met de naam **Delays**.
 
-1. De SSH-opdrachtprompt die u al voor het HDInsight-cluster hebt en gebruik de volgende opdracht uit om te maken en bewerken van een nieuw bestand met de naam **flightdelays.hql**:
+1. Gebruik de volgende opdracht om een nieuw bestand met de naam **flightdelays. HQL**te maken op basis van de SSH-prompt die u al hebt voor het HDInsight-cluster:
 
     ```bash
     nano flightdelays.hql
@@ -165,7 +165,7 @@ Als onderdeel van de Hive-taak, importeert u de gegevens uit het CSV-bestand naa
     FROM delays_raw;
     ```
 
-3. Om het bestand hebt opgeslagen, drukt u op **Ctrl + X**, klikt u vervolgens **y**, voert u.
+3. Als u het bestand wilt opslaan, drukt u op **CTRL + X**, vervolgens op **j**en voert u vervolgens ENTER.
 
 4. Gebruik de volgende opdracht om Hive te starten en het bestand **flightdelays.hql** uit te voeren:
 
@@ -199,7 +199,7 @@ Als onderdeel van de Hive-taak, importeert u de gegevens uit het CSV-bestand naa
 
 Er zijn veel manieren om verbinding te maken met SQL Database en een tabel te maken. In de volgende stappen wordt [FreeTDS](http://www.freetds.org/) gebruikt vanuit het HDInsight-cluster.
 
-1. Als u wilt installeren FreeTDS, gebruik de volgende opdracht uit de open SSH-verbinding met het cluster:
+1. Als u FreeTDS wilt installeren, gebruikt u de volgende opdracht van de open SSH-verbinding met het cluster:
 
     ```bash
     sudo apt-get --assume-yes install freetds-dev freetds-bin
@@ -232,7 +232,7 @@ Er zijn veel manieren om verbinding te maken met SQL Database en een tabel te ma
     GO
     ```
 
-    Wanneer u de instructie `GO` invoert, worden de vorige instructies geëvalueerd. Deze instructie maakt een tabel met de naam **vertragingen**, met een geclusterde index.
+    Wanneer u de instructie `GO` invoert, worden de vorige instructies geëvalueerd. Met deze instructie maakt u een tabel met de naam **vertragingen**, met een geclusterde index.
 
     Gebruik de volgende query om te controleren of de tabel is gemaakt:
 
@@ -254,23 +254,23 @@ Er zijn veel manieren om verbinding te maken met SQL Database en een tabel te ma
 
 In de vorige gedeelten hebt u de getransformeerde gegevens op `/tutorials/flightdelays/output` gekopieerd. In deze sectie gebruikt u Sqoop om de gegevens in `/tutorials/flightdelays/output` te exporteren naar de tabel die u hebt gemaakt in Azure SQL-database.
 
-1. Controleren of Sqoop uw SQL-database zien kan door te voeren van de volgende opdracht:
+1. Controleer of Sqoop uw SQL database kan zien door de volgende opdracht in te voeren:
 
     ```bash
     sqoop list-databases --connect jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433 --username $SQLUSER --password $SQLPASWORD
     ```
 
-    Met deze opdracht retourneert een lijst van databases, met inbegrip van de database waarin u gemaakt de `delays` eerdere tabel.
+    Met deze opdracht wordt een lijst met data bases geretourneerd, met inbegrip van `delays` de Data Base waarin u de tabel eerder hebt gemaakt.
 
-2. Gegevens exporteren uit `/tutorials/flightdelays/output` naar de `delays` tabel met de onderstaande opdracht:
+2. Exporteer gegevens uit `/tutorials/flightdelays/output` naar de `delays` tabel door de volgende opdracht in te voeren:
 
     ```bash
     sqoop export --connect "jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433;database=$DATABASE" --username $SQLUSER --password $SQLPASWORD --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
 
-    Sqoop maakt verbinding met de database bevat de `delays` tabel en exporteert u gegevens uit de `/tutorials/flightdelays/output` map naar de `delays` tabel.
+    Sqoop maakt verbinding met de data base die `delays` de tabel bevat en exporteert gegevens uit `/tutorials/flightdelays/output` de Directory naar `delays` de tabel.
 
-3. Nadat de sqoop-opdracht is voltooid, moet u de tsql-hulpprogramma gebruiken om te verbinden met de database met de onderstaande opdracht:
+3. Nadat de sqoop-opdracht is voltooid, gebruikt u het hulp programma TSQL om verbinding te maken met de data base door de volgende opdracht in te voeren:
 
     ```bash
     TDSVER=8.0 tsql -H $SQLSERVERNAME.database.windows.net -U $SQLUSER -p 1433 -D $DATABASE -P $SQLPASWORD
@@ -291,11 +291,11 @@ In de vorige gedeelten hebt u de getransformeerde gegevens op `/tutorials/flight
 
 Nadat u de zelfstudie hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
 
-Als u wilt verwijderen van een cluster, Zie [verwijderen van een HDInsight-cluster met behulp van uw browser, PowerShell of Azure CLI](../hdinsight-delete-cluster.md).
+Als u een cluster wilt verwijderen, raadpleegt u [een HDInsight-cluster verwijderen met behulp van uw browser, Power shell of de Azure cli](../hdinsight-delete-cluster.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie maakt u een onbewerkte duurde CSV-bestand importeren in de opslag van een HDInsight-cluster en vervolgens verwerkt de gegevens met behulp van interactieve query's in Azure HDInsight.  Ga naar de volgende zelfstudie voor meer informatie over de Apache Hive-Warehouse-Connector.
+In deze zelf studie hebt u een onbewerkt CSV-gegevens bestand gemaakt, in een HDInsight-cluster opslag geïmporteerd en vervolgens de gegevens getransformeerd met behulp van interactieve Query's in azure HDInsight.  Ga naar de volgende zelf studie voor meer informatie over de Apache Hive Warehouse-connector.
 
 > [!div class="nextstepaction"]
->[Integratie van Apache Spark en Apache Hive met de Hive-Warehouse-Connector](./apache-hive-warehouse-connector.md)
+>[Apache Spark en Apache Hive integreren met de Hive-Warehouse connector](./apache-hive-warehouse-connector.md)

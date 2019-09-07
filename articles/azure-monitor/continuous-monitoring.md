@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: ab633ca47f684688019b1313de61571252760a20
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f101a8885d9bf67e8bd589d7cf932b0d35cdfe32
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967755"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744506"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Doorlopende bewaking met Azure Monitor
 
@@ -32,7 +32,7 @@ In dit artikel worden specifieke stappen beschreven voor het gebruik van Azure M
 U moet bewaking inschakelen voor al uw webtoepassingen en-services om de beschikbaarheid van uw hele omgeving te verkrijgen. Op deze manier kunt u eenvoudig end-to-end-trans acties en verbindingen over alle onderdelen visualiseren.
 
 - [Azure DevOps projects](../devops-project/overview.md) bieden u een vereenvoudigde ervaring met uw bestaande code en git-opslag plaats, of u kunt kiezen uit een van de voorbeeld toepassingen om een doorlopende integratie (CI) en continue levering (cd)-pijp lijn te maken naar Azure.
-- Door doorlopende [bewaking in uw DevOps-release pijplijn](../azure-monitor/app/continuous-monitoring.md) kunt u uw implementatie op basis van bewakings gegevens dekoppelen of terugdraaien.
+- Door [doorlopende bewaking in uw DevOps-release pijplijn](../azure-monitor/app/continuous-monitoring.md) kunt u uw implementatie op basis van bewakings gegevens dekoppelen of terugdraaien.
 - Met [status monitor](../azure-monitor/app/monitor-performance-live-website-now.md) kunt u een live .net-app op Windows met Azure-toepassing inzichten instrumenteren zonder dat u uw code hoeft te wijzigen of opnieuw te implementeren.
 - Als u toegang hebt tot de code voor uw toepassing, schakelt u volledige controle in met [Application Insights](../azure-monitor/app/app-insights-overview.md) door de Azure monitor Application Insights SDK voor [.net](../azure-monitor/learn/quick-monitor-portal.md), [Java](../azure-monitor/app/java-get-started.md), [node. js](../azure-monitor/learn/nodejs-quick-start.md)of [een andere programmeer programma te installeren talen](../azure-monitor/app/platforms.md). Hiermee kunt u aangepaste gebeurtenissen, metrische gegevens of pagina weergaven opgeven die relevant zijn voor uw toepassing en uw bedrijf.
 
@@ -56,7 +56,7 @@ Toepassingen zijn alleen betrouwbaar als de onderliggende infra structuur. Als u
 ##  <a name="combine-resources-in-azure-resource-groups"></a>Resources in azure-resource groepen combi neren
 Een typische toepassing op Azure bevat nu meerdere resources, zoals Vm's en App Services of micro services die worden gehost op Cloud Services, AKS-clusters of Service Fabric. Deze toepassingen maken vaak gebruik van afhankelijkheden zoals Event Hubs, opslag, SQL en Service Bus.
 
-- Combi neer resources van inazure-resource groepen voor een volledige zicht baarheid van alle resources die deel uitmaken van uw verschillende toepassingen. [Azure monitor voor resource groepen](../azure-monitor/insights/resource-group-insights.md) biedt een eenvoudige manier om de status en prestaties van uw volledige toepassing met volledige stacks bij te houden en in te zoomen op de verschillende onderdelen voor onderzoek of fout opsporing.
+- Combi neer resources in azure-resource groepen voor een volledige zicht baarheid van alle resources die deel uitmaken van uw verschillende toepassingen. [Azure monitor voor resource groepen](../azure-monitor/insights/resource-group-insights.md) biedt een eenvoudige manier om de status en prestaties van uw volledige toepassing met volledige stacks bij te houden en in te zoomen op de verschillende onderdelen voor onderzoek of fout opsporing.
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>Gegarandeerde kwaliteit door doorlopende implementatie
 Continue integratie/continue implementatie biedt u de mogelijkheid om automatisch code wijzigingen in uw toepassing te integreren en te implementeren op basis van de resultaten van geautomatiseerd testen. Het zorgt voor het stroom lijnen van het implementatie proces en garandeert de kwaliteit van eventuele wijzigingen voordat ze in de productie omgeving worden verplaatst.
@@ -72,7 +72,7 @@ Een kritiek aspect van bewaking is het proactief om beheerders op de hoogte te s
 
 - Maak [waarschuwingen in azure monitor](../azure-monitor/platform/alerts-overview.md) op basis van Logboeken en metrische gegevens om voorspel bare fout statussen te identificeren. Het is belang rijk om ervoor te zorgen dat alle waarschuwingen kunnen betekenen dat ze werkelijke kritieke voor waarden vertegenwoordigen en om te voor komen dat er valse positieven worden gereduceerd. Gebruik [Dynamische drempel waarden](platform/alerts-dynamic-thresholds.md) voor het automatisch berekenen van basis lijnen op metrische gegevens in plaats van uw eigen statische drempels te definiëren. 
 - Definieer acties voor waarschuwingen voor het gebruik van de meest efficiënte manier om uw beheerders op de hoogte te stellen. Beschik bare [acties voor meldingen](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) zijn SMS, e-mails, Push meldingen of telefoon gesprekken.
-- Gebruik geavanceerde acties om [verbinding te maken met uw ITSM-hulp programma](platform/itsmc-overview.md) of andere systemen [](platform/activity-log-alerts-webhook.md)voor waarschuwings beheer via webhooks.
+- Gebruik geavanceerde acties om [verbinding te maken met uw ITSM-hulp programma](platform/itsmc-overview.md) of andere systemen voor waarschuwings beheer via [webhooks](platform/activity-log-alerts-webhook.md).
 - Scenario's herstellen die in waarschuwingen zijn geïdentificeerd, evenals [Azure Automation runbooks](../automation/automation-webhooks.md) of [Logic apps](/connectors/custom-connectors/create-webhook-trigger) die vanuit een waarschuwing kunnen worden gestart met behulp van webhooks. 
 - Gebruik automatisch [schalen](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md) om uw reken resources dynamisch te verhogen en te verlagen op basis van de verzamelde metrische gegevens.
 

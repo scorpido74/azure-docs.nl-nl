@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: ea7d3f56aa512b8f5998d710451ff3b37659ca13
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 93d5b3de47ec0b3c0494589da0baf87f91a0233a
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697847"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390262"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Benoemde entiteits herkenning gebruiken in Text Analytics
 
@@ -52,14 +52,14 @@ Voor het gebruik van entiteits koppeling in verschillende talen moet u in elke t
 | Hoeveelheid      | Currency      | $ 10,99     |
 | Hoeveelheid      | Dimensie     | 10 mijl, 40 cm     |
 | Hoeveelheid      | Temperatuur   | 32 graden    |
-| Datetime      | N.V.T.\*         | 18:30 uur, 4 februari 2012      |
-| Datetime      | Date          | 2 mei 2017, 05-02-2017   |
-| Datetime      | Time          | "8 a.m.", "8:00"  |
-| Datetime      | DateRange     | 2 mei tot 5 mei    |
-| Datetime      | TimeRange     | 18.00 uur tot 19.00 uur     |
-| Datetime      | Duration      | 1 minuut en 45 seconden   |
-| Datetime      | Set           | elke dinsdag     |
-| Datetime      | Tijdzone      |    |
+| DateTime      | N.V.T.\*         | 18:30 uur, 4 februari 2012      |
+| DateTime      | Date          | 2 mei 2017, 05-02-2017   |
+| DateTime      | Time          | "8 a.m.", "8:00"  |
+| DateTime      | DateRange     | 2 mei tot 5 mei    |
+| DateTime      | TimeRange     | 18.00 uur tot 19.00 uur     |
+| DateTime      | Duration      | 1 minuut en 45 seconden   |
+| DateTime      | Set           | elke dinsdag     |
+| DateTime      | Tijdzone      |    |
 | URL           | N.V.T.\*         | "https:\//www.bing.com"    |
 | Email         | N.V.T.\*         | "support@contoso.com" |
 
@@ -98,7 +98,7 @@ Meer informatie over de definitie van de aanvraag kunt u vinden in [De Text Anal
 
 + Maak een **POST**-aanvraag. Bekijk de API-documentatie voor deze aanvraag: [API voor entiteiten](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Stel het HTTP-eind punt in voor het uitpakken van de entiteit. Deze moet de `/entities`-resource: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1/entities` bevatten
++ Stel het HTTP-eind punt voor de extractie van sleutel woordgroepen in met behulp van een Text Analytics bron in azure of een geïnstantieerd [Text Analytics container](text-analytics-how-to-install-containers.md). U moet het `/text/analytics/v2.1/entities`volgende toevoegen. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
 
 + Stel een aanvraag header in voor [het toevoegen van de toegangs sleutel](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) voor Text Analytics bewerkingen.
 
@@ -281,7 +281,7 @@ Een voor beeld van de uitvoer voor entiteits koppeling wordt volgende weer gegev
 
 In dit artikel hebt u concepten en werk stromen geleerd voor het koppelen van entiteiten met behulp van Text Analytics in Cognitive Services. Samenvatting:
 
-+ Er is een entiteits- [API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) beschikbaar voor geselecteerde talen.
++ Er is een [entiteits-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) beschikbaar voor geselecteerde talen.
 + JSON-documenten in de hoofd tekst van de aanvraag bevatten een ID, tekst en taal code.
 + POST-aanvraag is een `/entities`-eindpunt die een persoonlijke [toegangssleutel en een eindpunt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) gebruikt die geldig zijn voor uw abonnement.
 + De antwoord uitvoer, die bestaat uit gekoppelde entiteiten (inclusief betrouwbaarheids scores, verschuivingen en webkoppelingen, voor elke document-ID), kan worden gebruikt in elke toepassing

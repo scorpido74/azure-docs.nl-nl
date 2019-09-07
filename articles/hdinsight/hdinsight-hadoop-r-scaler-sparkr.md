@@ -1,22 +1,22 @@
 ---
 title: Schaalr en Spark gebruiken met Azure HDInsight
-description: Gebruik Scaleer en Spark met ML Services in HDInsight
+description: Gebruik Scaleer en Spark voor het bewerken van gegevens en het ontwikkelen van modellen met ML-Services in azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: b96779a0a37602b6d114c9baf517df2637f734a2
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a91d2d569b4900e3d5b787145c242a75b928d822
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231120"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733368"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Schaalr en Spark in HDInsight combi neren
 
-In dit document wordt beschreven hoe u vertragingen in de vlucht kunt voors pellen met behulp van een schaalbaar logistiek-regressie model. In het voor beeld worden vlucht vertraging en weers gegevens gebruikt, gekoppeld met behulp van **Spark**.
+In dit document wordt beschreven hoe u vertragingen in de vlucht kunt voors pellen met behulp van een **schaalbaar** logistiek-regressie model. In het voor beeld worden vlucht vertraging en weers gegevens gebruikt, gekoppeld met behulp van **Spark**.
 
 Hoewel beide pakketten worden uitgevoerd op de Spark-uitvoerings engine van Apache Hadoop, worden ze geblokkeerd voor het delen van gegevens in het geheugen omdat ze elk hun eigen respectievelijk Spark-sessies vereisen. Totdat dit probleem is opgelost in een toekomstige versie van ML Server, is de tijdelijke oplossing het onderhouden van niet-overlappende Spark-sessies en het uitwisselen van gegevens via tussenliggende bestanden. In deze instructies ziet u dat deze vereisten eenvoudig zijn te verzorgen.
 
@@ -24,7 +24,7 @@ Dit voor beeld is in eerste instantie gedeeld in een gesprek op Strata 2016 door
 
 De code is oorspronkelijk geschreven voor ML Server die worden uitgevoerd op Spark in een HDInsight-cluster in Azure. Maar het combi neren van het gebruik van Spark en schalen in één script is ook geldig in de context van on-premises omgevingen.
 
-Bij de stappen in dit document wordt ervan uitgegaan dat u een tussenliggend niveau van de kennis van [](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) R hebt en de scaleer-bibliotheek van ml server. Tijdens het door lopen [](https://spark.apache.org/docs/2.1.0/sparkr.html) van dit scenario gaat u naar sparker.
+Bij de stappen in dit document wordt ervan uitgegaan dat u een tussenliggend niveau van de kennis van R hebt en de [scaleer](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) -bibliotheek van ml server. Tijdens het door lopen van dit scenario gaat u naar [sparker](https://spark.apache.org/docs/2.1.0/sparkr.html) .
 
 ## <a name="the-airline-and-weather-datasets"></a>De luchtvaart maatschappij en weer gegevens sets
 

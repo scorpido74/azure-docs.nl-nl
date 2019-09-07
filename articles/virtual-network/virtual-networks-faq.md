@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: ecb840d97a45479d32079766807b4f2788cc29ec
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 836a9fd0b441ff9669c224dc41537e3c177d7dde
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382907"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389709"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Virtual Network
 
@@ -42,7 +42,7 @@ Ga naar de documentatie van het [virtuele netwerk](https://docs.microsoft.com/az
 Ja. U kunt een VNet gebruiken zonder het aan uw locatie te koppelen. U kunt bijvoorbeeld micro soft Windows Server Active Directory domein controllers en share point-Farms alleen uitvoeren in een Azure-VNet.
 
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>Kan ik WAN-optimalisatie uitvoeren tussen VNets of een VNet en mijn on-premises Data Center?
-Ja. U kunt een [WAN-optimalisatie netwerk virtueel apparaat](https://azure.microsoft.com/marketplace/?term=wan+optimization) van verschillende leveranciers implementeren via Azure Marketplace.
+Ja. U kunt een [WAN-optimalisatie netwerk virtueel apparaat](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization) van verschillende leveranciers implementeren via Azure Marketplace.
 
 ## <a name="configuration"></a>Configuratie
 
@@ -245,7 +245,7 @@ Als de twee virtuele netwerken zich in verschillende regio's (globale VNet-peeri
 De volgende resources maken gebruik van elementaire load balancers. Dit betekent dat u niet kunt communiceren over globale VNet-peering:
 - Vm's achter Basic load balancers
 - Schaal sets voor virtuele machines met Basic load balancers 
-- Redis-cache 
+- Redis Cache 
 - Application Gateway (v1) SKU
 - Service Fabric
 - SQL MI

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: a5c60a4c7d4f1b441ec5e8444b10594a1e67d7db
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 22e187bba3782e485685354c203a6273d5bcc618
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932723"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735059"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Het dash board gebruiken om uw app te verbeteren
 
@@ -68,7 +68,7 @@ Elk probleem gebied heeft intenties die moeten worden opgelost. Wanneer u de naa
 
 ### <a name="compare-changes-across-versions"></a>Wijzigingen in versies vergelijken
 
-Maak een nieuwe versie voordat u wijzigingen aanbrengt in de app. In de nieuwe versie maakt u de voorgestelde wijzigingen in het voor beeld van het intentie uitingen en traint u het opnieuw. Op de kaart van de dashboard pagina kunt u de wijzigingen **weer geven van** de getrainde versie gebruiken. 
+Maak een nieuwe versie voordat u wijzigingen aanbrengt in de app. In de nieuwe versie maakt u de voorgestelde wijzigingen in het voor beeld van het intentie uitingen en traint u het opnieuw. Op **de kaart van de dashboard** pagina kunt u de wijzigingen **weer geven van de getrainde versie** gebruiken. 
 
 ![Wijzigingen in versies vergelijken](./media/luis-how-to-use-dashboard/compare-improvement-across-versions.png)
 
@@ -78,9 +78,9 @@ De primaire methode voor het herstellen van uw app is het toevoegen of bewerken 
 
 Het toevoegen van voor beeld-uitingen moet worden uitgevoerd door iemand die:
 
-* heeft een hoge mate van meer informatie over wat uitingen in verschillende intenties zijn
-* weet hoe uitingen in één intentie kan worden verward met een ander doel
-* kan worden besloten of twee intenten, die veelvuldig met elkaar worden verward, moeten worden samengevouwen in één intentie en de verschillende gegevens die met entiteiten zijn opgetrokken
+* heeft een hoge mate van meer informatie over wat uitingen in de verschillende doel stellingen zijn.
+* weet hoe uitingen in één intentie kan worden verward met een ander doel.
+* kan bepalen of twee intenten, die veelvuldig met elkaar worden verward, in één intentie moeten worden samengevouwen. Als dit het geval is, moeten de verschillende gegevens worden opgehaald met entiteiten.
 
 ### <a name="patterns-and-phrase-lists"></a>Lijsten met patronen en zinsdelen
 
@@ -90,7 +90,7 @@ De Analytics-pagina geeft niet aan wanneer [patronen](luis-concept-patterns.md) 
 
 Begin met dit probleem: het kan de hoofd oorzaak van de andere problemen zijn.
 
-De lijst met intenties van **gegevens** onevenwichtigheden bevat intenties die meer uitingen nodig hebben om het onevenwicht van de gegevens te corrigeren. 
+De lijst met intenties van **gegevens onevenwichtigheden** bevat intenties die meer uitingen nodig hebben om het onevenwicht van de gegevens te corrigeren. 
 
 **U kunt dit probleem als volgt oplossen**:
 
@@ -104,7 +104,7 @@ Voeg geen uitingen toe aan de geen intentie, tenzij dit wordt voorgesteld op het
 
 ### <a name="review-incorrect-predictions"></a>Bekijk onjuiste voor spellingen
 
-In de lijst met **onjuiste** Voorspellings intentie worden intenties met uitingen weer gegeven die als voor beeld voor een specifiek doel worden gebruikt, maar worden voor speld voor verschillende doel stellingen. 
+In de lijst met **onjuiste Voorspellings** intentie worden intenties met uitingen weer gegeven die als voor beeld voor een specifiek doel worden gebruikt, maar worden voor speld voor verschillende doel stellingen. 
 
 **U kunt dit probleem als volgt oplossen**:
 
@@ -113,7 +113,7 @@ In de lijst met **onjuiste** Voorspellings intentie worden intenties met uitinge
 
 ### <a name="review-unclear-predictions"></a>Onduidelijke voor spellingen controleren
 
-De lijst met onduidelijke Voorspellings intentie bevat intenties met uitingen met Voorspellings scores die niet ver genoeg zijn vanaf hun dichtstbijzijnde gegelijke manier, waardoor de beste intentie voor de utterance kan worden gewijzigd in de volgende training vanwege [negatieve steek proeven](luis-how-to-train.md#train-with-all-data).
+De lijst met **onduidelijke Voorspellings** intentie bevat intenties met uitingen met Voorspellings scores die niet ver genoeg zijn vanaf hun dichtstbijzijnde gegelijke manier, waardoor de beste intentie voor de utterance kan worden gewijzigd in de volgende training vanwege [negatieve steek proeven](luis-how-to-train.md#train-with-all-data).
 
 **Om dit probleem op te lossen**;
 
@@ -163,7 +163,7 @@ Met het filter kunt u intenties met een specifiek probleem zoeken:
 
 ### <a name="correct-prediction-threshold"></a>Drempel waarde voor voor spellingen corrigeren
 
-Wat is een vertrouw bare Voorspellings score voor u? Aan het begin van de ontwikkeling van apps kan 60% uw doel zijn. Gebruik de **onderstaande juiste** voor spellingen met het percentage van 60% om te zoeken naar uitingen in de geselecteerde intentie die moeten worden opgelost.
+Wat is een vertrouw bare Voorspellings score voor u? Aan het begin van de ontwikkeling van apps kan 60% uw doel zijn. Gebruik de **onderstaande juiste voor spellingen** met het percentage van 60% om te zoeken naar uitingen in de geselecteerde intentie die moeten worden opgelost.
 
 ### <a name="unclear-or-incorrect-prediction-threshold"></a>Onduidelijke of onjuiste Voorspellings drempel
 

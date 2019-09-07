@@ -7,20 +7,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: tutorial
-ms.date: 07/29/2019
+ms.topic: conceptual
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 979cbe16653c09ea1b019310d820b070be4a5a91
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a722ce39a679fa13e1fe849c46b44f786ea5ee42
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946056"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390277"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Een lijst met entiteit gebruiken voor het verhogen van detectie van entiteit 
-Deze zelfstudie ziet u het gebruik van een [entiteit lijst](luis-concept-entity-types.md) te verhogen van de detectie van de entiteit. Lijst met entiteiten hoeft te worden gelabeld als ze exact overeenkomen met de voorwaarden zijn.  
+In dit artikel wordt het gebruik van een [lijst entiteit](luis-concept-entity-types.md) gedemonstreerd om de entiteits detectie te verg Roten. Lijst met entiteiten hoeft te worden gelabeld als ze exact overeenkomen met de voorwaarden zijn.  
 
-In deze zelfstudie leert u het volgende:
+In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 > * Een lijst met entiteit maken 
@@ -37,7 +37,7 @@ In deze zelfstudie leert u het volgende:
 > [!Tip]
 > Als u nog geen een abonnement, kunt u zich registreren voor een [gratis account](https://azure.microsoft.com/free/).
 
-Alle code in deze zelf studie is beschikbaar in de [github-opslag plaats Azure-samples](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity). 
+Alle code in dit artikel is beschikbaar in de [github-opslag plaats Azure-samples](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity). 
 
 ## <a name="use-homeautomation-app"></a>HomeAutomation app gebruiken
 De app HomeAutomation geeft u controle over apparaten zoals lichten, entertainmentsystemen en omgeving van besturingselementen, zoals verwarming en koeling. Deze systemen zijn diverse verschillende namen die de fabrikant van namen, bijnamen acroniemen en slang kunnen opnemen. 
@@ -59,7 +59,7 @@ De entiteit HomeAutomation.Device is erg handig voor een klein aantal apparaten 
 
 Een **entiteit lijst** is een goede keuze voor dit scenario omdat de set voorwaarden voor een apparaat in een gebouw of campus een bekende set is, zelfs als het een grote set. Met behulp van een entiteit lijst, LUIS ontvangen van een mogelijke waarde in de verzameling van de thermostaat, en naar alleen de één apparaat "thermostaat" oplossen. 
 
-In deze zelfstudie gaat maken van een lijst met entiteiten met de thermostaat. De alternatieve namen voor een thermostaat in deze zelfstudie zijn: 
+Dit artikel gaat over het maken van een entiteits lijst met de Thermo staat. De alternatieve namen voor een thermo staat in dit artikel zijn: 
 
 |alternatieve namen voor thermostaat|
 |--|

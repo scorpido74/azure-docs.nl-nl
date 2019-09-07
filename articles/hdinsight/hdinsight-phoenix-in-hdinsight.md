@@ -1,52 +1,52 @@
 ---
-title: Apache Phoenix in HDInsight - Azure HDInsight
-description: ''
+title: Apache Phoenix in HDInsight-Azure HDInsight
+description: Overzicht van Apache Phoenix
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 09/05/2019
 ms.author: ashishth
-ms.openlocfilehash: 7d9aafeb920eab7f6a87061a135bf2e464add436
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f07c7b7a6b1eea05ba41a875e9e78f31404c5f32
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64697996"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733208"
 ---
 # <a name="apache-phoenix-in-hdinsight"></a>Apache Phoenix in HDInsight
 
-[Apache Phoenix](https://phoenix.apache.org/) is een open source, uiterst parallelle relationele databaselaag die is gebouwd op [Apache HBase](hbase/apache-hbase-overview.md). Phoenix kunt u gebruikmaken van SQL-achtige query's over HBase. Phoenix maakt gebruik van JDBC-stuurprogramma's onder zodat gebruikers kunnen maken, verwijderen, SQL-tabellen, indexen, weergaven en reeksen en upsert rijen afzonderlijk en bulksgewijs wijzigen. Phoenix maakt gebruik van systeemeigen compilatie noSQL in plaats van MapReduce gebruiken voor het compileren van query's, waardoor het maken van toepassingen van de lage latentie op basis van HBase. Phoenix coprocessors ter ondersteuning van de uitvoering van code client wordt geleverd in de adresruimte van de server uitvoeren van de code geplaatst met de gegevens wordt toegevoegd. Deze aanpak minimaliseert de overdracht van client/server-gegevens.
+[Apache Phoenix](https://phoenix.apache.org/) is een open-source, enorm parallelle relationele data base-laag die is gebouwd op [Apache HBase](hbase/apache-hbase-overview.md). Met Phoenix kunt u SQL-achtige query's gebruiken via HBase. Phoenix maakt gebruik van JDBC-Stuur Programma's onder om gebruikers in staat te stellen SQL-tabellen, indexen, weer gaven en reeksen en upsert te maken, verwijderen, wijzigen en meerdere rijen tegelijk en in bulk. Phoenix gebruikt noSQL systeem eigen compilatie in plaats van MapReduce te gebruiken voor het compileren van query's, waardoor toepassingen met lage latentie op HBase kunnen worden gemaakt. Phoenix voegt coprocessoren toe ter ondersteuning van het uitvoeren van de door de client geleverde code in de adres ruimte van de server, waarbij de code wordt uitgevoerd die zich in de gegevens bevindt. Deze aanpak minimaliseert de client/server-gegevens overdracht.
 
-Apache Phoenix opent u big data-query's voor niet-ontwikkelaars die een SQL-achtige syntaxis kunnen gebruiken in plaats van programmeren. Phoenix is geoptimaliseerd voor HBase, in tegenstelling tot andere hulpprogramma's zoals [Apache Hive](hadoop/hdinsight-use-hive.md) en Apache Spark SQL. Het voordeel voor ontwikkelaars is zeer goed presterende query's met veel minder code te schrijven.
+Apache Phoenix opent big data query's naar niet-ontwikkel aars die een SQL-achtige syntaxis kunnen gebruiken in plaats van Program meren. Phoenix is zeer geoptimaliseerd voor HBase, in tegens telling tot andere hulpprogram ma's, zoals [Apache Hive](hadoop/hdinsight-use-hive.md) en Apache Spark SQL. Het voor deel van ontwikkel aars is het schrijven van zeer krachtige query's met veel minder code.
 <!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
-Wanneer u een SQL-query verzendt, wordt Phoenix compileert de query op HBase systeemeigen aanroepen en de scan (of plan) voor optimalisatie parallel wordt uitgevoerd. Deze laag van abstractie kan de ontwikkelaar van het schrijven van MapReduce-taken, in plaats daarvan richten op de bedrijfslogica en de werkstroom van hun toepassing rond Phoenix van big data-opslag.
+Wanneer u een SQL-query verzendt, compileert Phoenix de query om systeem eigen HBase-aanroepen uit te voeren en wordt de scan (of het plan) parallel uitgevoerd voor Optima Lise ring. Deze laag van abstractie maakt de ontwikkelaar de mogelijkheid om MapReduce-taken te schrijven, om in plaats daarvan zich te richten op de bedrijfs logica en de werk stroom van hun toepassing rond de big data opslag van Phoenix.
 
-## <a name="query-performance-optimization-and-other-features"></a>Optimalisatie van prestaties van query's en andere functies
+## <a name="query-performance-optimization-and-other-features"></a>Optimalisatie van query prestaties en andere functies
 
-Apache Phoenix voegt verschillende verbeterde prestaties en functies op HBase-query's.
+Apache Phoenix voegt diverse prestatie verbeteringen en-functies toe aan HBase query's.
 
 ### <a name="secondary-indexes"></a>Secundaire indexen
 
-HBase is een één-index die is lexicographically gesorteerd op de primaire rijsleutel. Deze records kunnen alleen worden geopend via de rijsleutel. Records openen via een andere kolom dan de rijsleutel moet scannen van alle gegevens die tijdens het toepassen van de vereiste filter. In een secundaire index, de kolommen of expressies die geïndexeerd formulier zijn scant een alternatieve rijsleutel, zodat zoekopdrachten en het bereik van die index.
+HBase heeft een enkele index die lexicographically is gesorteerd op de primaire rij. Deze records zijn alleen toegankelijk via de rij met rijen. Voor het verkrijgen van toegang tot records via een andere kolom dan de rij, moeten alle gegevens worden gescand tijdens het Toep assen van het vereiste filter. In een secundaire index vormen de kolommen of expressies die worden geïndexeerd een alternatieve rijdefinitie, waardoor lookups en bereik scans voor die index mogelijk zijn.
 
-Maken van een secundaire index met de `CREATE INDEX` opdracht:
+Maak een secundaire index met de `CREATE INDEX` opdracht:
 
 ```sql
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
 ```
 
-Deze benadering kan een aanzienlijke prestatieverbetering worden verkregen via het uitvoeren van query's één geïndexeerd. Dit type secundaire index is een **die betrekking hebben op index**, met alle van de kolommen die zijn opgenomen in de query. Daarom de zoekopdracht in de tabel is niet vereist en de index voldoet aan de query.
+Deze aanpak kan leiden tot een aanzienlijke prestatie verhoging voor het uitvoeren van query's met één geïndexeerde waarde. Dit type secundaire index is een **bedekte index**die alle kolommen bevat die in de query zijn opgenomen. Daarom is de zoek opdracht naar tabellen niet vereist en de index voldoet aan de volledige query.
 
 ### <a name="views"></a>Weergaven
 
-Phoenix-weergaven bieden een manier om te strijden tegen een HBase-beperking, waar de prestaties verslechteren bij het maken van meer dan ongeveer 100 fysieke tabellen begint. Phoenix weergaven kan meerdere *virtuele tabellen* voor het delen van één onderliggende fysieke HBase-tabel.
+Phoenix-weer gaven bieden een manier om een HBase-beperking te overwinnen, waarbij de prestaties beginnen te verminderen wanneer u meer dan ongeveer 100 fysieke tabellen maakt. In Phoenix-weer gaven kunnen meerdere *virtuele tabellen* één onderliggende fysieke HBase-tabel delen.
 
-Het maken van een weergave Phoenix is vergelijkbaar met het gebruik van de standaard SQL-weergave-syntaxis. Een verschil is dat u de kolommen voor de weergave, naast de kolommen die zijn overgenomen van de basistabel kunt definiëren. U kunt ook nieuwe toevoegen `KeyValue` kolommen.
+Het maken van een Phoenix-weer gave is vergelijkbaar met de standaard syntaxis van SQL-weer gave. Het enige verschil is dat u kolommen voor uw weer gave kunt definiëren, naast de kolommen die zijn overgenomen van de basis tabel. U kunt ook nieuwe `KeyValue` kolommen toevoegen.
 
-Dit is bijvoorbeeld een fysieke tabel met de naam `product_metrics` met de definitie van de volgende:
+Dit is bijvoorbeeld een fysieke tabel met de naam `product_metrics` met de volgende definitie:
 
 ```sql
 CREATE  TABLE product_metrics (
@@ -57,7 +57,7 @@ CREATE  TABLE product_metrics (
     CONSTRAINT pk PRIMARY KEY (metric_type, created_by, created_date, metric_id));
 ```
 
-Een weergave definiëren voor deze tabel, met extra kolommen:
+Definieer een weer gave over deze tabel, met aanvullende kolommen:
 
 ```sql
 CREATE VIEW mobile_product_metrics (carrier VARCHAR, dropped_calls BIGINT) AS
@@ -65,42 +65,42 @@ SELECT * FROM product_metrics
 WHERE metric_type = 'm';
 ```
 
-U kunt meer kolommen later toevoegen met de `ALTER VIEW` instructie.
+Gebruik de `ALTER VIEW` instructie om later meer kolommen toe te voegen.
 
-### <a name="skip-scan"></a>Scan overslaan
+### <a name="skip-scan"></a>Scan overs Laan
 
-Overslaan scan maakt gebruik van een of meer kolommen van een samengestelde index zoeken naar afzonderlijke waarden. In tegenstelling tot een scan bereik overslaan scan intra-rij scannen, wordt vrijgegeven implementeert [verbeterde prestaties](https://phoenix.apache.org/performance.html#Skip-Scan). Tijdens het zoeken naar, wordt de eerste overeenkomende waarde overgeslagen samen met de index tot de volgende waarde is gevonden.
+Scan overs Laan gebruikt een of meer kolommen van een samengestelde index om verschillende waarden te vinden. In tegens telling tot een bereik scan, wordt de functie voor het scannen van de intra-rij door lopen verbeterd, wat leidt tot [betere prestaties](https://phoenix.apache.org/performance.html#Skip-Scan). Tijdens het scannen wordt de eerste overeenkomende waarde overgeslagen samen met de index totdat de volgende waarde wordt gevonden.
 
-Maakt gebruik van een scan overslaan de `SEEK_NEXT_USING_HINT` inventarisatie van het HBase-filter. Met behulp van `SEEK_NEXT_USING_HINT`, de scan overslaan van wordt bijgehouden welke set sleutels of bereiken van sleutels, zijn in elke kolom wordt gezocht. De overslaan scannen en heeft een sleutel die is doorgegeven aan deze tijdens de evaluatie van filter en bepaalt of het is een van de combinaties. Als dat niet het geval is, wordt de scan overslaan evalueert de hoogste op een toets om naar te gaan.
+Bij een scan overs `SEEK_NEXT_USING_HINT` Laan wordt gebruikgemaakt van de opsomming van het HBase-filter. Met `SEEK_NEXT_USING_HINT`behulp van de overgeslagen scan houdt u bij welke set sleutels of bereiken van sleutels worden gezocht in elke kolom. De scan overs Laan gaat vervolgens naar een sleutel die werd door gegeven tijdens de filter evaluatie en bepaalt of het een van de combi Naties is. Als dat niet het geval is, evalueert de scan overs Laan de volgende hoogste sleutel om naar te gaan.
 
 ### <a name="transactions"></a>Transacties
 
-HBase biedt u beveiliging op rijniveau transacties, Phoenix kan worden geïntegreerd met [Tephra](https://tephra.io/) om toe te voegen cross-rij- en cross-tabel transactieondersteuning met volledige [ACID](https://en.wikipedia.org/wiki/ACID) semantiek.
+Hoewel HBase voorziet in trans acties op rijniveau, kan Phoenix worden geïntegreerd met [tephra](https://tephra.io/) om ondersteuning voor meerdere rijen en cross-Table trans acties toe te voegen met volledige [acid](https://en.wikipedia.org/wiki/ACID) -semantiek.
 
-Als met traditionele SQL-transacties kunnen transacties die worden geleverd via de transactiebeheerder Phoenix u om te controleren of een atomische eenheid van gegevens is upserted, terugdraaien van de transactie als de upsert-bewerking is mislukt op een willekeurige tabel transactie is ingeschakeld.
+Net als bij traditionele SQL-trans acties, kunt u met trans acties die via de Phoenix-transactie beheerder worden ontvangen, ervoor zorgen dat een atomische eenheid van gegevens wordt upserted, waarbij de trans actie wordt teruggedraaid als de upsert-bewerking mislukt voor een tabel die is ingeschakeld voor trans acties.
 
-Zie voor het inschakelen van Phoenix transacties de [Apache Phoenix transactie documentatie](https://phoenix.apache.org/transactions.html).
+Raadpleeg de [documentatie over de Apache Phoenix-trans actie](https://phoenix.apache.org/transactions.html)om Phoenix-trans acties in te scha kelen.
 
-Als u een nieuwe tabel met transacties die zijn ingeschakeld, stelt u de `TRANSACTIONAL` eigenschap `true` in een `CREATE` instructie:
+Als u een nieuwe tabel wilt maken waarvoor trans acties zijn `TRANSACTIONAL` ingeschakeld, `true` stelt u `CREATE` de eigenschap in op een instructie:
 
 ```sql
 CREATE TABLE my_table (k BIGINT PRIMARY KEY, v VARCHAR) TRANSACTIONAL=true;
 ```
 
-Als u wilt een bestaande tabel om te worden transactionele wijzigen, gebruikt u de dezelfde eigenschap in een `ALTER` instructie:
+Als u een bestaande tabel transactioneel wilt wijzigen, gebruikt u dezelfde eigenschap in een `ALTER` instructie:
 
 ```sql
 ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 ```
 
 > [!NOTE]  
-> U kunt niet een transactionele tabel overstappen terug naar de niet-transactionele wordt.
+> U kunt een transactionele tabel niet weer omzetten naar een niet-transactionele bewerking.
 
-### <a name="salted-tables"></a>Gezouten tabellen
+### <a name="salted-tables"></a>Gezouteerde tabellen
 
-*Regio server hotspotting* kan zich voordoen bij het schrijven van records met opeenvolgende sleutels naar HBase. Hoewel u meerdere regioservers in uw cluster hebt, worden de schrijfbewerkingen op slechts één is optreden. Deze concentratie maakt het hotspotting probleem waarbij, in plaats van uw write-werkbelasting wordt verdeeld over alle beschikbare regioservers, is slechts een de belasting verwerken. Omdat elke regio een vooraf gedefinieerde maximumgrootte heeft heeft als een regio die maximale grootte bereikt, wordt dit verdeeld in twee kleine gebieden. Wanneer dit gebeurt, neemt een van deze nieuwe regio's alle nieuwe records, worden de nieuwe hotspot.
+De *regio server hotspotting* kan zich voordoen wanneer u records met opeenvolgende sleutels naar HBase schrijft. Hoewel u meerdere regio servers in uw cluster hebt, zijn uw schrijf bewerkingen allemaal op slechts één. Met deze concentratie wordt het hotspotting-probleem gemaakt waarbij in plaats van uw schrijf werk belasting wordt gedistribueerd over alle beschik bare regio servers, maar één de belasting verwerkt. Aangezien elke regio een vooraf gedefinieerde maximum grootte heeft, wordt deze in twee kleine regio's gesplitst wanneer een regio die maximale grootte bereikt. Als dat gebeurt, neemt een van deze nieuwe regio's alle nieuwe records, waardoor de nieuwe hotspot wordt.
 
-Dit probleem te verhelpen en betere prestaties, vooraf splitsen tabellen zodat alle regioservers evenredig worden gebruikt. Phoenix bevat *tabellen gezouten*, transparant de salting byte toe te voegen aan de rijsleutel voor een bepaalde tabel. De tabel is vooraf op de salt byte grenzen bevinden om ervoor te zorgen gelijke verdeling van de belasting tussen regioservers tijdens de eerste fase van de tabel splitsen. Deze methode wordt de werkbelasting schrijven verspreid over alle beschikbare regioservers, verbeteren de schrijven en lezen van de prestaties. Als u wilt een tabel salt, geef de `SALT_BUCKETS` eigenschap tabel wanneer de tabel is gemaakt:
+Om dit probleem te verhelpen en de prestaties te verbeteren, kunt u tabellen vooraf splitsen, zodat alle regio servers gelijkelijk worden gebruikt. Phoenix biedt *gezouten tabellen*, waarmee de zout byte op transparante wijze kan worden toegevoegd aan de rij voor een bepaalde tabel. De tabel is vooraf gesplitst op de grens van de Salt-byte om te zorgen voor gelijke belasting distributie tussen regio servers tijdens de eerste fase van de tabel. Met deze aanpak wordt de schrijf belasting gedistribueerd over alle beschik bare regio servers, waardoor de schrijf-en lees prestaties worden verbeterd. Als u een tabel wilt Salt, `SALT_BUCKETS` geeft u de eigenschap Table op wanneer de tabel wordt gemaakt:
 
 ```sql
 CREATE TABLE Saltedweblogs (
@@ -121,20 +121,20 @@ CREATE TABLE Saltedweblogs (
     shippingamount DOUBLE NULL) SALT_BUCKETS=4;
 ```
 
-## <a name="enable-and-tune-phoenix-with-apache-ambari"></a>Inschakelen en af te stemmen Phoenix met Apache Ambari
+## <a name="enable-and-tune-phoenix-with-apache-ambari"></a>Phoenix met Apache Ambari inschakelen en afstemmen
 
-Een HDInsight HBase-cluster bevat de [Ambari UI](hdinsight-hadoop-manage-ambari.md) voor het aanbrengen van wijzigingen in de configuratie.
+An HDInsight HBase-cluster bevat de [Ambari-gebruikers interface](hdinsight-hadoop-manage-ambari.md) voor het maken van configuratie wijzigingen.
 
-1. Phoenix uit te schakelen, en voor het beheren van Phoenix query-time-outinstellingen, meld u aan bij de Ambari-Webgebruikersinterface (`https://YOUR_CLUSTER_NAME.azurehdinsight.net`) met de referenties van uw Hadoop-gebruiker.
+1. Als u Phoenix wilt in-of uitschakelen en de time-outinstellingen voor de service van Phoenix wilt beheren, meldt u zich aan bij de Ambari-webgebruikersinterface (`https://YOUR_CLUSTER_NAME.azurehdinsight.net`) met behulp van uw Hadoop-gebruikers referenties.
 
-2. Selecteer **HBase** uit de lijst met services in het menu links, selecteer de **Peeringconfiguraties** tabblad.
+2. Selecteer **HBase** in de lijst met Services in het menu aan de linkerkant en selecteer vervolgens het tabblad **configuratie** .
 
-    ![Ambari HBase-configuratie](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config.png)
+    ![Ambari HBase config](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config.png)
 
-3. Zoek de **Phoenix SQL** configuratiesectie inschakelen of uitschakelen phoenix en stel de time-out van de query.
+3. Zoek de sectie SQL-configuratie in **Breda** om Phoenix in of uit te scha kelen en de querytime-out in te stellen.
 
-    ![De configuratiesectie Ambari Phoenix SQL](./media/hdinsight-phoenix-in-hdinsight/ambari-phoenix.png)
+    ![Ambari Phoenix SQL-configuratie sectie](./media/hdinsight-phoenix-in-hdinsight/ambari-phoenix.png)
 
 ## <a name="see-also"></a>Zie ook
 
-* [Apache Phoenix gebruiken met HBase op basis van Linux-clusters in HDInsight](hbase/apache-hbase-phoenix-squirrel-linux.md)
+* [Apache Phoenix gebruiken met HBase-clusters op basis van Linux in HDInsight](hbase/apache-hbase-phoenix-squirrel-linux.md)

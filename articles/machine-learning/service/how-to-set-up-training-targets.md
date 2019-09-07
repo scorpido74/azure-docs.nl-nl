@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 07176fbe22e70658856dd266687a15d719e78e9f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 27361017241ba6529b93c24ce7fb95b2c1b22a62
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231083"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389900"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Reken doelen voor model training instellen en gebruiken 
 
@@ -92,7 +92,7 @@ Nu u de reken kracht hebt gekoppeld en de uitvoering hebt geconfigureerd, is de 
 
 ### <a id="amlcompute"></a>Azure Machine Learning-Computing
 
-Azure Machine Learning Compute is een infra structuur voor beheerde berekeningen waarmee de gebruiker eenvoudig een reken proces met één of meerdere knoop punten kan maken. De berekening wordt binnen uw werkruimte regio gemaakt als een resource die kan worden gedeeld met andere gebruikers in uw werk ruimte. De berekening wordt automatisch omhoog geschaald wanneer een taak wordt verzonden en kan in een Azure-Virtual Network worden geplaatst. De berekening wordt uitgevoerd in een omgeving met containers en verpakt uw model afhankelijkheden in een docker- [container](https://www.docker.com/why-docker).
+Azure Machine Learning Compute is een infra structuur voor beheerde berekeningen waarmee de gebruiker eenvoudig een reken proces met één of meerdere knoop punten kan maken. De berekening wordt binnen uw werkruimte regio gemaakt als een resource die kan worden gedeeld met andere gebruikers in uw werk ruimte. De berekening wordt automatisch omhoog geschaald wanneer een taak wordt verzonden en kan in een Azure-Virtual Network worden geplaatst. De berekening wordt uitgevoerd in een omgeving met containers en verpakt uw model afhankelijkheden in een [docker-container](https://www.docker.com/why-docker).
 
 U kunt Azure Machine Learning-Computing gebruiken voor het distribueren van het trainingsproces in een cluster van de CPU of GPU-computerknooppunten in de cloud. Zie [grootten geoptimaliseerd voor virtuele machines](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)voor meer informatie over de VM-grootten die GPU bevatten.
 
@@ -154,7 +154,7 @@ Gebruik Azure Data Science Virtual Machine (DSVM) als de Azure-VM van de keuze v
     > [!WARNING]
     > Azure Machine Learning ondersteunt alleen virtuele machines waarop Ubuntu wordt uitgevoerd. Wanneer u een virtuele machine maakt of een bestaande virtuele machine kiest, moet u een virtuele machine selecteren die gebruikmaakt van Ubuntu.
 
-1. Bijvoegen: Als u een bestaande virtuele machine als een reken doel wilt koppelen, moet u de Fully Qualified Domain Name (FQDN), de gebruikers naam en het wacht woord voor de virtuele machine opgeven. Vervang \<in het voor beeld FQDN-> door de open bare FQDN van de virtuele machine of het open bare IP-adres. Vervang \<username > en \<wacht woord > door de gebruikers naam en het wacht woord van de SSH-gebruiker voor de virtuele machine.
+1. **Bijvoegen**: Als u een bestaande virtuele machine als een reken doel wilt koppelen, moet u de Fully Qualified Domain Name (FQDN), de gebruikers naam en het wacht woord voor de virtuele machine opgeven. Vervang \<in het voor beeld FQDN-> door de open bare FQDN van de virtuele machine of het open bare IP-adres. Vervang \<username > en \<wacht woord > door de gebruikers naam en het wacht woord van de SSH-gebruiker voor de virtuele machine.
 
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
@@ -198,7 +198,7 @@ Azure HDInsight is een populair platform voor Big data-analyses. Het platform bi
     
     Nadat het cluster is gemaakt, maakt u een verbinding met de \<hostnaam clustername >-ssh.azurehdinsight.net, waarbij \<clustername > de naam is die u voor het cluster hebt ingesteld. 
 
-1. Bijvoegen: Als u een HDInsight-cluster als een reken doel wilt koppelen, moet u de hostnaam, de gebruikers naam en het wacht woord voor het HDInsight-cluster opgeven. Het volgende voorbeeld wordt de SDK te koppelen van een cluster aan uw werkruimte. Vervang \<in het voor beeld clustername > door de naam van uw cluster. Vervang \<username > en \<wacht woord > door de gebruikers naam en het wacht woord van de SSH voor het cluster.
+1. **Bijvoegen**: Als u een HDInsight-cluster als een reken doel wilt koppelen, moet u de hostnaam, de gebruikers naam en het wacht woord voor het HDInsight-cluster opgeven. Het volgende voorbeeld wordt de SDK te koppelen van een cluster aan uw werkruimte. Vervang \<in het voor beeld clustername > door de naam van uw cluster. Vervang \<username > en \<wacht woord > door de gebruikers naam en het wacht woord van de SSH voor het cluster.
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -403,11 +403,20 @@ Hetzelfde experiment wisselen om uit te voeren in een ander reken doel door gebr
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
+> [!TIP]
+> In dit voor beeld wordt standaard slechts één knoop punt gebruikt van het berekenings doel voor de training. Als u meer dan één knoop punt wilt gebruiken `node_count` , stelt u de uitvoerings configuratie in op het gewenste aantal knoop punten. Met de volgende code wordt bijvoorbeeld het aantal knoop punten ingesteld dat wordt gebruikt voor de training naar vier:
+>
+> ```python
+> src.run_config.node_count = 4
+> ```
+
 U kunt ook het volgende doen:
 
 * Dien het experiment in met `Estimator` een object zoals wordt weer gegeven in de [trein ml-modellen met schattingen](how-to-train-ml-models.md).
-* Verzend een HyperDrive-uitvoering voor [afstemming](how-to-tune-hyperparameters.md)-afstemming.
+* Verzend een HyperDrive-uitvoering voor [afstemming-afstemming](how-to-tune-hyperparameters.md).
 * Een experiment verzenden via de [VS code-extensie](how-to-vscode-tools.md#train-and-tune-models).
+
+Zie de documentatie voor [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) en [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) voor meer informatie.
 
 ## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Voer een configuratie uit en voer run uit met Azure Machine Learning CLI
 
@@ -501,7 +510,7 @@ Bekijk deze notebooks voor voor beelden van training met verschillende Compute-d
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Zelfstudie: Voor het trainen](tutorial-train-models-with-aml.md) van een model wordt gebruikgemaakt van een beheerd reken doel om een model te trainen.
-* Meer informatie over hoe u [Hyper parameters efficiënt](how-to-tune-hyperparameters.md) kunt afstemmen om betere modellen te bouwen.
+* Meer informatie over hoe u [Hyper parameters efficiënt kunt afstemmen](how-to-tune-hyperparameters.md) om betere modellen te bouwen.
 * Wanneer u een getraind model hebt, leert u [hoe en waar u modellen kunt implementeren](how-to-deploy-and-where.md).
 * Bekijk de [RunConfiguration class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK-referentie.
 * [Azure Machine Learning-service gebruiken met virtuele Azure-netwerken](how-to-enable-virtual-network.md)

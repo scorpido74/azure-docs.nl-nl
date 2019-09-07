@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7033c7bd3e783157280709b2c7e889473166ac84
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 330b02e3db6af90fcfeb962e78b043b04090116e
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879232"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743243"
 ---
-# <a name="deploy-azure-ad-self-service-password-reset"></a>Azure AD self-service voor wachtwoord herstel implementeren
+# <a name="deploy-azure-ad-self-service-password-reset"></a>Self-service voor wachtwoordherstel van Azure AD implementeren
 
 Self-service voor wachtwoord herstel (SSPR) is een Azure Active Directory functie waarmee werk nemers hun wacht woord opnieuw kunnen instellen zonder contact op te nemen met IT-personeel. Werk nemers moeten zich registreren voor de selfservice voor het opnieuw instellen van het wacht woord voordat ze de service kunnen gebruiken. Tijdens de registratie kiest de werk nemer een of meer authenticatie methoden die worden ingeschakeld door hun organisatie.
 
@@ -37,7 +37,7 @@ Voor het implementeren van SSPR kunnen organisaties bepalen hoeveel wacht woorde
 
 ## <a name="licensing-considerations"></a>Licentie overwegingen
 
-Azure Active Directory is een licentie per gebruiker, wat betekent dat elke gebruiker over een juiste licentie beschikt voor de functies die ze gebruiken.
+Azure Active Directory is gelicentieerd per gebruiker, wat betekent dat elke gebruiker over een juiste licentie beschikt voor de functies die ze gebruiken.
 
 Meer informatie over licentie verlening vindt u op de [pagina met Azure Active Directory prijzen](https://azure.microsoft.com/pricing/details/active-directory/) .
 
@@ -47,7 +47,7 @@ Micro soft raadt organisaties aan de gecombineerde registratie-ervaring voor SSP
 
 ![Registratie van gecombineerde beveiligings gegevens](./media/howto-sspr-deployment/combined-security-info.png)
 
-Voor de gecombineerde registratie-ervaring hoeven organisaties niet zowel SSPR als Azure multi-factor Authentication in te scha kelen. De gecombineerde registratie-ervaring biedt organisaties een betere gebruikers ervaring in vergelijking met de traditionele afzonderlijke onderdelen. Meer informatie over gecombineerde registratie en hoe u kunt inschakelen, vindt u in het artikel [registratie van gecombineerde beveiligings gegevens (preview)](concept-registration-mfa-sspr-combined.md)
+De gecombineerde registratie-ervaring vereist niet dat organisaties zowel SSPR als Azure Multi-Factor Authentication kunnen gebruiken. De gecombineerde registratie-ervaring biedt organisaties een betere gebruikers ervaring in vergelijking met de traditionele afzonderlijke onderdelen. Meer informatie over gecombineerde registratie en hoe u kunt inschakelen, vindt u in het artikel [registratie van gecombineerde beveiligings gegevens (preview)](concept-registration-mfa-sspr-combined.md)
 
 ## <a name="plan-the-configuration"></a>De configuratie plannen
 
@@ -59,7 +59,7 @@ De volgende instellingen zijn vereist om SSPR samen met aanbevolen waarden in te
 | **Verificatiemethoden** | Verificatie methoden die nodig zijn om te registreren | Altijd 1 meer dan vereist voor opnieuw instellen |
 |   | Verificatie methoden die nodig zijn om opnieuw in te stellen | Een of twee |
 | **Registratie** | Vereisen dat gebruiker zich bij aanmelding registreren | Ja |
-|   | Aantal dagen voordat gebruikers wordt gevraagd hun verificatiegegevens opnieuw te bevestigen | 90 – 180 dagen |
+|   | Aantal dagen waarna gebruikers wordt gevraagd om de verificatie gegevens opnieuw te bevestigen | 90 – 180 dagen |
 | **Meldingen** | Gebruikers een melding tonen over het opnieuw instellen van hun wachtwoord | Ja |
 |   | Alle beheerders waarschuwen wanneer andere beheerders hun wachtwoord opnieuw instellen | Ja |
 | **Aanpassing** | Helpdeskkoppeling aanpassen | Ja |

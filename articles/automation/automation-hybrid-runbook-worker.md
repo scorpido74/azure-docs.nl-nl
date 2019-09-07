@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5573eea4e7a5322c762665d2db8e3fbed1f585a1
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: c10905c283619e6008dbe6ab8c4e721888b8b786
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69970446"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743806"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Resources in uw Data Center of Cloud automatiseren met behulp van Hybrid Runbook Worker
 
@@ -24,7 +24,7 @@ In de volgende afbeelding ziet u deze functionaliteit:
 
 ![Overzicht van Hybrid Runbook Worker](media/automation-hybrid-runbook-worker/automation.png)
 
-Elke Hybrid Runbook Worker is lid van een Hybrid Runbook Worker groep die u opgeeft wanneer u de Agent installeert. Een groep kan één agent bevatten, maar u kunt meerdere agents in een groep installeren voor een hoge Beschik baarheid.
+Elke Hybrid Runbook Worker is lid van een Hybrid Runbook Worker groep die u opgeeft wanneer u de Agent installeert. Een groep kan één agent bevatten, maar u kunt meerdere agents in een groep installeren voor een hoge Beschik baarheid. Elke machine kan één Hybrid Worker melden aan één Automation-account.
 
 Wanneer u een runbook op een Hybrid Runbook Worker start, geeft u de groep op waarop deze wordt uitgevoerd. Elke werk nemer in de groep pollt Azure Automation om te zien of er taken beschikbaar zijn. Als een taak beschikbaar is, haalt de eerste werk nemer de taak op. De verwerkings tijd van de taken wachtrij is afhankelijk van het hardwareprofiel en de belasting van de Hybrid Worker. U kunt een bepaalde werk nemer niet opgeven. Hybrid Runbook Workers delen niet veel van de limieten die Azure-sandboxes hebben. Ze hebben niet dezelfde limieten op schijf ruimte, geheugen of netwerk sockets. Hybrid Runbook Workers worden alleen beperkt door de resources op het Hybrid Runbook Worker zelf. Daarnaast delen Hybrid Runbook Workers de 180 minuut [fair share](automation-runbook-execution.md#fair-share) tijd limiet die Azure-sandboxes wel hebben. Zie de pagina met taak [limieten](../azure-subscription-service-limits.md#automation-limits) voor meer informatie over de service limieten voor Azure-sandboxes en Hybrid Runbook Workers.
 
@@ -40,7 +40,7 @@ Als u een Windows-Hybrid Runbook Worker wilt installeren en configureren, kunt u
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
 > [!NOTE]
-> Als u de configuratie wilt beheren van uw servers die ondersteuning bieden voor de Hybrid Runbook Worker rol met behulp van desired state Configuration (DSC), moet u deze toevoegen als DSC-knoop punten. Voor meer informatie over het onboarden van deze voor beheer met DSC raadpleegt u onboarding [machines voor beheer door Azure Automation DSC](automation-dsc-onboarding.md).
+> Als u de configuratie wilt beheren van uw servers die ondersteuning bieden voor de Hybrid Runbook Worker rol met behulp van desired state Configuration (DSC), moet u deze toevoegen als DSC-knoop punten. Voor meer informatie over het onboarden van deze voor beheer met DSC raadpleegt u [onboarding machines voor beheer door Azure Automation DSC](automation-dsc-onboarding.md).
 >
 >Als u de [updatebeheer oplossing](automation-update-management.md)inschakelt, wordt elke computer die is verbonden met uw Azure log Analytics-werk ruimte automatisch geconfigureerd als een Hybrid Runbook worker voor de ondersteuning van runbooks die in deze oplossing zijn opgenomen. De computer is echter niet geregistreerd bij Hybrid Worker groepen die al zijn gedefinieerd in uw Automation-account. De computer kan worden toegevoegd aan een Hybrid Runbook Worker groep in uw Automation-account ter ondersteuning van Automation-runbooks zolang u hetzelfde account gebruikt voor zowel de oplossing als het lidmaatschap van de Hybrid Runbook Worker-groep. Deze functionaliteit is toegevoegd aan versie 7.2.12024.0 van Hybrid Runbook Worker.
 

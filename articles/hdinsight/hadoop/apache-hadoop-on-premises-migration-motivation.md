@@ -1,5 +1,5 @@
 ---
-title: On-premises Apache Hadoop clusters migreren naar Azure HDInsight-motivatie en voor delen
+title: On-premises Apache Hadoop migreren naar Azure HDInsight-motivatie en voor delen
 description: Meer informatie over de motivatie en voor delen voor het migreren van on-premises Hadoop-clusters naar Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: f886cb71d4dbc191dae317e8ea72d8c896f37c03
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 3c122a68e9f28772be4e3a17a21e5457aa187ce6
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442077"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736102"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>On-premises Apache Hadoop clusters migreren naar Azure HDInsight-motivatie en voor delen
 

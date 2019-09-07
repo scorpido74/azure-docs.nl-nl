@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus messaging-entiteiten met automatisch doorsturen | Microsoft Docs
-description: Klik hier voor meer informatie over het koppelen van een Service Bus-wachtrij of abonnement naar een andere wachtrij of onderwerp.
+title: Azure Service Bus Messa ging-entiteiten automatisch door sturen | Microsoft Docs
+description: Een Service Bus wachtrij of-abonnement koppelen aan een andere wachtrij of een onderwerp.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 86fa7f62230c0ae0530b67ff2384942c876083d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d7b76a58a427b687d0dc36d13cfc00f32196853
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686142"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390136"
 ---
-# <a name="chaining-service-bus-entities-with-autoforwarding"></a>Service Bus-entiteiten met autoforwarding-koppeling
+# <a name="chaining-service-bus-entities-with-autoforwarding"></a>Service Bus entiteiten koppelen met autoforwarding
 
-De Service Bus *autoforwarding* functie kunt u een wachtrij of abonnement naar een andere wachtrij of onderwerp die deel uitmaakt van dezelfde naamruimte keten. Wanneer autoforwarding is ingeschakeld, wordt Service Bus automatisch worden berichten die worden geplaatst in de eerste wachtrij of abonnement (bron) verwijderd en worden de tegels in de tweede wachtrij of onderwerp (doel). Het is nog steeds mogelijk rechtstreeks een bericht verzenden naar de doelentiteit.
+Met de functie voor het *door sturen* van service bus kunt u een wachtrij of abonnement koppelen aan een andere wachtrij of een onderwerp dat deel uitmaakt van dezelfde naam ruimte. Wanneer automatisch door sturen is ingeschakeld, verwijdert Service Bus berichten die in de eerste wachtrij of dit abonnement (bron) worden geplaatst en worden deze in de tweede wachtrij of het onderwerp (bestemming) geplaatst. Het is nog steeds mogelijk om rechtstreeks een bericht naar de doel entiteit te verzenden.
 
-## <a name="using-autoforwarding"></a>Met behulp van autoforwarding
+## <a name="using-autoforwarding"></a>Autoforwarden gebruiken
 
-U kunt autoforwarding inschakelen door in te stellen de [QueueDescription.ForwardTo] [ QueueDescription.ForwardTo] of [SubscriptionDescription.ForwardTo] [ SubscriptionDescription.ForwardTo] Eigenschappen van de [QueueDescription] [ QueueDescription] of [SubscriptionDescription] [ SubscriptionDescription] objecten voor de bron, zoals in de bijvoorbeeld:
+U kunt autoforwarding inschakelen door de eigenschappen [QueueDescription. ForwardTo][QueueDescription.ForwardTo] of [SubscriptionDescription. ForwardTo][SubscriptionDescription.ForwardTo] in te stellen voor de [QueueDescription][QueueDescription] -of [SubscriptionDescription][SubscriptionDescription] -objecten voor de bron, zoals in de volgende voor beeld:
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);
@@ -35,44 +35,46 @@ srcSubscription.ForwardTo = destTopic;
 namespaceManager.CreateSubscription(srcSubscription));
 ```
 
-De doelentiteit moet bestaan op het moment dat de bron-entiteit wordt gemaakt. Als de doelentiteit niet bestaat, retourneert de Service Bus een uitzondering wanneer u wordt gevraagd om te maken van de bronentiteit.
+De doel entiteit moet bestaan op het moment dat de bron entiteit wordt gemaakt. Als de doel entiteit niet bestaat, retourneert Service Bus een uitzonde ring wanneer u wordt gevraagd om de bron entiteit te maken.
 
-U kunt autoforwarding gebruiken om uit een onderwerp te schalen. Limieten voor Service Bus de [aantal abonnementen op een bepaald onderwerp](service-bus-quotas.md) tot 2.000. Door het maken van onderwerpen op het tweede niveau, kunt u gebruikmaken van aanvullende abonnementen. Zelfs als u niet door de Service Bus-beperking op het aantal abonnementen zijn gebonden, kunt toevoegen van een tweede niveau van de onderwerpen over de algemene doorvoer van uw onderwerp verbeteren.
+U kunt automatisch door sturen gebruiken om een afzonderlijk onderwerp uit te schalen. Service Bus beperkt het [aantal abonnementen op een bepaald onderwerp](service-bus-quotas.md) tot 2.000. U kunt extra abonnementen bieden door onderwerpen van het tweede niveau te maken. Zelfs als u niet gebonden bent aan de Service Bus beperking van het aantal abonnementen, kan het toevoegen van een tweede niveau aan onderwerpen de algehele door Voer van uw onderwerp verbeteren.
 
-![Automatisch doorsturen scenario][0]
+![Scenario voor automatisch door sturen][0]
 
-U kunt ook autoforwarding afzenders van berichten van ontvangers van los te koppelen. Neem bijvoorbeeld een ERP-systeem dat uit drie modules bestaat: order verwerking, voorraadbeheer en beheer van klantrelaties. Elk van deze modules worden berichten die in de wachtrij in een corresponderende onderwerp zijn gegenereerd. Alice en Bob zijn vertegenwoordigers die zijn geïnteresseerd in alle berichten die gerelateerd aan hun klanten zijn. Voor het ontvangen van deze berichten, maken Els en Bob van een persoonlijke wachtrij en een abonnement op elk van de ERP-onderwerpen die automatisch alle berichten naar de wachtrij doorsturen.
+U kunt ook autoforwarding gebruiken om de bericht afzenders van ontvangers te loskoppelen. Denk bijvoorbeeld aan een ERP-systeem dat bestaat uit drie modules: order verwerking, voorraad beheer en beheer van klant relaties. Elk van deze modules genereert berichten die in een bijbehorend onderwerp in de wachtrij worden geplaatst. Anne en Robert zijn verkoop medewerkers die geïnteresseerd zijn in alle berichten die betrekking hebben op hun klanten. Als u deze berichten wilt ontvangen, maakt Anne en Bob elk een persoonlijke wachtrij en een abonnement op elk van de ERP-onderwerpen waarmee automatisch alle berichten worden doorgestuurd naar de wachtrij.
 
-![Automatisch doorsturen scenario][1]
+![Scenario voor automatisch door sturen][1]
 
-Als Els op vakantie, haar persoonlijke wachtrij, in plaats van het onderwerp ERP gaat, gevuld. In dit scenario, omdat een verkoopmedewerker niet van berichten ontvangen is, bereiken geen van de onderwerpen ERP ooit quotum.
+Als Anne op vakantie gaat, wordt de persoonlijke wachtrij in plaats van het ERP-onderwerp opgevuld. In dit scenario, omdat een vertegenwoordiger geen berichten heeft ontvangen, hebben geen van de ERP-onderwerpen het quotum bereikt.
 
 > [!NOTE]
-> Wanneer autoforwarding ingesteld is, wordt de waarde voor AutoDeleteOnIdle op de doelcomputer automatisch ingesteld op de maximale waarde van het gegevenstype.
-> Dit wordt gedaan om ervoor te zorgen dat er altijd een doel voor het doorsturen van het bericht dat wordt.
+> Als de functie voor automatisch door sturen is ingesteld, wordt de waarde voor AutoDeleteOnIdle op **zowel de bron-als de bestemming** automatisch op de maximum waarde van het gegevens type geconfigureerd.
+> 
+>   - Op de bron zijde fungeert autoforwarding als een ontvangst bewerking. De bron waarvoor het instellen van de instellingen voor het door sturen van de computer is, is nooit echt ' inactief '.
+>   - Aan de kant van de bestemming wordt dit gedaan om ervoor te zorgen dat er altijd een bestemming is om het bericht door te sturen naar.
 
-## <a name="autoforwarding-considerations"></a>Overwegingen voor Autoforwarding
+## <a name="autoforwarding-considerations"></a>Aandachtspunten voor het door sturen van fouten
 
-Als de doelentiteit worden te veel berichten bij elkaar opgeteld en het quotum overschrijdt of als de doelentiteit is uitgeschakeld, de bron-entiteit wordt toegevoegd de berichten naar de [dead-letter-wachtrij](service-bus-dead-letter-queues.md) totdat er ruimte in de bestemming (of de entiteit is opnieuw ingeschakeld). Deze berichten blijven bevinden zich in de wachtrij voor onbestelbare berichten, zodat u moet expliciet ontvangt en verwerkt door ze uit de wachtrij voor onbestelbare berichten.
+Als de doel entiteit te veel berichten verzamelt en het quotum overschrijdt, of als de doel entiteit is uitgeschakeld, voegt de bron entiteit de berichten toe aan de [wachtrij met onbestelbare](service-bus-dead-letter-queues.md) meldingen totdat er ruimte is in het doel (of als de entiteit opnieuw is ingeschakeld). Deze berichten blijven Live in de wachtrij met onbestelbare meldingen, dus u moet ze expliciet ontvangen en verwerken vanuit de wachtrij voor onbestelbare brieven.
 
-Het verdient de voorkeur dat u een gemiddeld aantal abonnementen op het eerste niveau onderwerp en het aantal abonnementen op de onderwerpen op het tweede niveau hebt voor het koppelen van afzonderlijke onderwerpen voor het verkrijgen van een samengestelde onderwerp met veel abonnementen. Bijvoorbeeld kunt een onderwerp van het eerste niveau met 20-abonnementen, elk van deze gekoppeld aan een onderwerp op het tweede niveau met 200 abonnementen, u hogere doorvoer dan een onderwerp van het eerste niveau met 200 abonnementen, elk gekoppeld aan een onderwerp op het tweede niveau met 20 abonnementen.
+Wanneer u afzonderlijke onderwerpen koppelt aan een samengesteld onderwerp met veel abonnementen, is het raadzaam dat u over een beperkt aantal abonnementen beschikt op het onderwerp van het eerste niveau en veel abonnementen op de onderwerpen van het tweede niveau. Een voor beeld: een onderwerp van het hoogste niveau met 20 abonnementen, dat elk wordt gekoppeld aan een onderwerp van het tweede niveau met 200-abonnementen, voor een hogere door voer dan een onderwerp van het hoogste niveau met 200-abonnementen, is elk gekoppeld aan een onderwerp op het tweede niveau met 20 abonnementen.
 
-Service Bus kosten in rekening gebracht één bewerking voor elk bericht dat wordt doorgestuurd. Bijvoorbeeld, een bericht verzenden naar een onderwerp met 20 abonnementen, elk van deze geconfigureerd autoforward berichten naar een andere wachtrij of onderwerp, wordt in rekening gebracht als 21 bewerkingen als alle abonnementen van het eerste niveau een kopie van het bericht ontvangt.
+Service Bus één bewerking per doorgestuurd bericht. Bijvoorbeeld: een bericht verzenden naar een onderwerp met 20 abonnementen, dat elk is geconfigureerd voor het door sturen van berichten naar een andere wachtrij of een ander onderwerp, wordt gefactureerd als 21 bewerkingen als alle abonnementen op het eerste niveau een kopie van het bericht ontvangen.
 
-Voor het maken van een abonnement dat is gekoppeld aan een andere wachtrij of onderwerp, de maker van het abonnement moet hebben **beheren** machtigingen voor zowel de bron- als de doelentiteit. Alleen berichten verzenden naar het onderwerp van de bron nodig **verzenden** machtigingen op de bron-onderwerp.
+Als u een abonnement wilt maken dat is gekoppeld aan een andere wachtrij of een ander onderwerp, moet de maker van het abonnement over **beheer** machtigingen beschikken voor zowel de bron-als de doel entiteit. Voor het verzenden van berichten naar het bron onderwerp zijn alleen **Verzend** machtigingen vereist voor het bron onderwerp.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende onderwerpen met naslaginformatie voor gedetailleerde informatie over autoforwarding:
+Zie de volgende onderwerpen voor gedetailleerde informatie over het door sturen van gegevens:
 
 * [ForwardTo][QueueDescription.ForwardTo]
 * [QueueDescription][QueueDescription]
 * [SubscriptionDescription][SubscriptionDescription]
 
-Zie voor meer informatie over Service Bus voor verbeterde prestaties 
+Zie voor meer informatie over het verbeteren van de prestaties van Service Bus. 
 
 * [Best Practices voor prestatieverbeteringen met Service Bus Messaging](service-bus-performance-improvements.md)
-* [Gepartitioneerde berichtentiteiten][Partitioned messaging entities].
+* [Gepartitioneerde bericht entiteiten][Partitioned messaging entities].
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
 [SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.forwardto#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo

@@ -6,15 +6,15 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 09/20/2018
+ms.date: 09/04/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e8ea8ea749243821e5382fc285e3c38f05d4c6b5
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60527314"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735094"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Versie en geschiedenis van het configuratie schema van Azure Diagnostics-extensie
 Deze pagina indexeert Azure Diagnostics extensie schema versies die als onderdeel van de Microsoft Azure SDK worden geleverd.  
@@ -54,13 +54,7 @@ De uitbrei ding Azure Diagnostics wordt gebruikt met andere micro soft Diagnosti
  Vanaf SDK 2,5 (diagnostische gegevens van versie 1,2) is Azure Diagnostics naar een uitbreidings model gegaan. De hulpprogram ma's voor het gebruik van nieuwe functies zijn alleen beschikbaar in nieuwere Azure-Sdk's, maar bij elke service die Azure diagnosticeert, wordt de meest recente verzend versie rechtstreeks vanuit Azure opgehaald. Iedereen die nog steeds gebruikmaakt van SDK 2,5, laadt bijvoorbeeld de meest recente versie die wordt weer gegeven in de vorige tabel, ongeacht of de nieuwe functies worden gebruikt.  
 
 ## <a name="schemas-index"></a>Index schema's  
-Verschillende versies van Azure Diagnostics gebruiken verschillende configuratie schema's.
-
-[Configuratie schema voor diagnostische gegevens 1,0](diagnostics-extension-schema-1dot0.md)  
-
-[Configuratie schema voor diagnostische gegevens 1,2](diagnostics-extension-schema-1dot2.md)  
-
-[Diagnostische gegevens over het configuratie schema van 1,3 en hoger](diagnostics-extension-schema-1dot3.md)  
+Verschillende versies van Azure Diagnostics gebruiken verschillende configuratie schema's. Schema 1,0 en 1,2 zijn afgeschaft. Voor meer informatie over versie 1,3 en hoger raadpleegt u [Diagnostische gegevens 1,3 en later configuratie schema](diagnostics-extension-schema-1dot3.md)  
 
 ## <a name="version-history"></a>Versiegeschiedenis
 

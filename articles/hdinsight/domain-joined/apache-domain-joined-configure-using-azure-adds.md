@@ -1,5 +1,5 @@
 ---
-title: Enterprise Security Package configuratie met behulp van Azure Active Directory Domain Services-Azure HDInsight
+title: Enterprise Security Package met Azure Active Directory in HDInsight
 description: Meer informatie over het instellen en configureren van een HDInsight-Enterprise Security Package cluster met behulp van Azure Active Directory Domain Services.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 1165cbeff1144567e43f408c0866c0b8a571882d
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 76f95e74c8150ac797d20c3166c0e8d6ea085bf9
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125595"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734955"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Een HDInsight-cluster met Enterprise Security Package configureren met behulp van Azure Active Directory Domain Services
 
@@ -80,7 +80,7 @@ Wijzig de configuratie van de DNS-servers in azure AD-DS VNET voor gebruik van d
 
 ![De VNET DNS-configuratie bijwerken](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
 
-Het is eenvoudiger om zowel het Azure AD-DS-exemplaar als het HDInsight-cluster in hetzelfde virtuele Azure-netwerk te plaatsen. Als u van plan bent verschillende VNETs te gebruiken, moet u deze virtuele netwerken peeren zodat de domein controller zichtbaar is voor virtuele machines van HDI. Zie peering van [virtuele netwerken](../../virtual-network/virtual-network-peering-overview.md)voor meer informatie. 
+Het is eenvoudiger om zowel het Azure AD-DS-exemplaar als het HDInsight-cluster in hetzelfde virtuele Azure-netwerk te plaatsen. Als u van plan bent verschillende VNETs te gebruiken, moet u deze virtuele netwerken peeren zodat de domein controller zichtbaar is voor virtuele machines van HDI. Zie [peering van virtuele netwerken](../../virtual-network/virtual-network-peering-overview.md)voor meer informatie. 
 
 Nadat de VNETs zijn gekoppeld, configureert u de HDInsight VNET voor het gebruik van een aangepaste DNS-server en voert u de persoonlijke Ip's van Azure AD-DS in als de DNS-server adressen. Wanneer beide VNETs dezelfde DNS-servers gebruiken, wordt uw aangepaste domein naam omgezet in het juiste IP-adres en is deze bereikbaar vanaf HDInsight. Als uw domein naam bijvoorbeeld na deze `contoso.com` stap valt, `ping contoso.com` moet u de juiste oplossing voor Azure AD-DS-IP-adres.
 

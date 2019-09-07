@@ -1,20 +1,20 @@
 ---
-title: Zelfstudie - beleid voor Apache HBase in HDInsight met Enterprise-beveiligingspakket - Azure configureren
-description: 'Zelfstudie: informatie over het configureren van Apache Ranger-beleidsregels voor HBase in Azure HDInsight met Enterprise-beveiligingspakket.'
+title: Zelf studie-Apache HBase configureren met Enterprise Security Package-Azure
+description: 'Zelf studie: informatie over het configureren van Apache zwerver-beleids regels voor HBase in azure HDInsight met Enterprise Security Package.'
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 06/18/2019
-ms.openlocfilehash: 04592ba307cd696c20778d4a79f03be2eb0ac987
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 09/04/2019
+ms.openlocfilehash: 39b87347212aef36bcced1a5b297f2f9e89bcc47
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274392"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734918"
 ---
-# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Zelfstudie: Apache HBase-beleid configureren in HDInsight met Enterprise-beveiligingspakket
+# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Zelfstudie: Apache HBase-beleid in HDInsight configureren met Enterprise Security Package
 
 Leer hoe u Apache Ranger-beleidsregels configureert voor Apache HBase-clusters met ESP (Enterprise Security Package). ESP-clusters worden verbonden met een domein zodat gebruikers zich kunnen verifiëren met domeinreferenties. In deze zelfstudie maakt u twee Ranger-beleidsregels om de toegang tot verschillende kolomfamilies in een HBase-tabel te beperken.
 
@@ -111,7 +111,7 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
    |HBase Column-family   |  Name, Contact |
    |HBase Column   |  * |
    |Select Group  | |
-   |Select User  | sales_user1 |
+   |Gebruiker selecteren  | sales_user1 |
    |Machtigingen  | Lezen |
 
    U kunt de volgende jokertekens gebruiken in de onderwerpnaam:
@@ -132,10 +132,10 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
    |---------|---------|
    |Beleidsnaam  |  marketing_customers_contact   |
    |HBase Table   |  Customers |
-   |HBase Column-family   |  Contactpersoon |
+   |HBase Column-family   |  Neem contact op met |
    |HBase Column   |  * |
    |Select Group  | |
-   |Select User  | marketing_user1 |
+   |Gebruiker selecteren  | marketing_user1 |
    |Machtigingen  | Lezen |
 
    ![De pagina Create Policy in de beheerinterface van Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
@@ -146,7 +146,7 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
 
 **sales_user1** kan, op basis van de geconfigureerde Ranger-beleidsregels, alle gegevens bekijken in de kolommen van de kolomfamilies `Name` en `Contact`. De **marketing_user1** kan alleen gegevens bekijken in de kolomfamilie `Contact`.
 
-### <a name="access-data-as-salesuser1"></a>Toegang tot gegevens als sales_user1
+### <a name="access-data-as-sales_user1"></a>Toegang tot gegevens als sales_user1
 
 1. Open een nieuwe SSH-verbinding met het cluster. Gebruik de volgende opdracht om u aan te melden bij het cluster:
 
@@ -160,7 +160,7 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
    kinit sales_user1
    ```
 
-2. Open de HBase-shell en scannen van de tabel `Customers`.
+2. Open de HBase-shell en scan de `Customers`tabel.
 
    ```hbaseshell
    hbase shell
@@ -188,7 +188,7 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
     2 row(s) in 0.1000 seconds
     ```
 
-### <a name="access-data-as-marketinguser1"></a>Toegang tot gegevens als marketing_user1
+### <a name="access-data-as-marketing_user1"></a>Toegang tot gegevens als marketing_user1
 
 1. Open een nieuwe SSH-verbinding met het cluster. Gebruik de volgende opdracht om u aan te melden als **marketing_user1**:
 
@@ -202,7 +202,7 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
    kinit marketing_user1
    ```
 
-2. Open de HBase-shell en scannen van de tabel `Customers`:
+2. Open de HBase-shell en scan de `Customers`tabel:
 
     ```hbaseshell
     hbase shell

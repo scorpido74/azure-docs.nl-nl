@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 7ba85d74f9126f4586313dc4e2b365d1e11f3798
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 251a7c21b671052a23f6ee18cb4278737464b25c
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934185"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744873"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Sleutels voor opslag accounts beheren met Azure Key Vault en de Azure CLI 
 
@@ -48,7 +48,7 @@ Key Vault is een micro soft-toepassing die vooraf is geregistreerd in alle Azure
 | Tenants | Cloud | Toepassings-id |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
-| Azure AD | Azure openbaar | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Azure AD | Open bare Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | Overige  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 <!-- Add closing sentences to summarize what the user accomplished in this section. -->
@@ -67,7 +67,7 @@ Er zijn vier basis stappen voor het gebruik van Key Vault voor het beheren van s
 
 1. Een bestaand opslag account ophalen.
 1. Een bestaande sleutel kluis ophalen.
-1. Voeg een Key Vault beheerd opslag account toe aan de kluis. Stel `key1` in als de actieve sleutel met een regeneratieperiode van 180 dagen.
+1. Voeg een Key Vault beheerd opslag account toe aan de kluis. Stel `key1` in als de actieve sleutel met een regeneratieperiode van 90 dagen.
 1. Gebruiken `key1` om een opslag context in te stellen voor het opgegeven opslag account.
 
 > [!NOTE]

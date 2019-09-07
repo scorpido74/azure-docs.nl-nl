@@ -1,6 +1,6 @@
 ---
-title: "Zelfstudie: Gegevens laden en query's uitvoeren in een Apache Spark-cluster in Azure HDInsight "
-description: "Zelfstudie: informatie over het laden van gegevens en interactieve query's uitvoeren op Spark clusters in Azure HDInsight."
+title: "Zelfstudie: Gegevens laden en query's uitvoeren op Apache Spark cluster in azure HDInsight"
+description: "Zelf studie: informatie over het laden van gegevens en het uitvoeren van interactieve query's op Spark-clusters in azure HDInsight."
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
 ms.date: 05/16/2019
-ms.openlocfilehash: e4ed8bb2631b4dc2f760dc4d92247377db591160
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 109ed1a2ef22e498c2d19fd2e4f1848f289e9b55
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295693"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735279"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Zelfstudie: Gegevens laden en query's uitvoeren in een Apache Spark-cluster in Azure HDInsight
 
@@ -26,19 +26,19 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Een Apache Spark-cluster in HDInsight. Zie [maken van een Apache Spark-cluster](./apache-spark-jupyter-spark-sql-use-portal.md).
+Een Apache Spark-cluster in HDInsight. Zie [een Apache Spark-cluster maken](./apache-spark-jupyter-spark-sql-use-portal.md).
 
 ## <a name="create-a-jupyter-notebook"></a>Een Jupyter-notebook maken
 
 Jupyter Notebook is een interactieve notitieblokomgeving die ondersteuning biedt voor verschillende programmeertalen. Via het notitieblok kunt u interactie hebben met uw gegevens, code combineren met markdown-tekst en eenvoudige visualisaties uitvoeren. 
 
-1. Bewerk de URL `https://SPARKCLUSTER.azurehdinsight.net/jupyter` door te vervangen `SPARKCLUSTER` met de naam van uw Spark-cluster. Voer vervolgens de bewerkte URL in een webbrowser. Voer de aanmeldingsreferenties voor het cluster in als u daarom wordt gevraagd.
+1. Bewerk de URL `https://SPARKCLUSTER.azurehdinsight.net/jupyter` door de `SPARKCLUSTER` naam van uw Spark-cluster te vervangen. Voer vervolgens de bewerkte URL in een webbrowser in. Voer de aanmeldingsreferenties voor het cluster in als u daarom wordt gevraagd.
 
-2. Selecteer in de webpagina Jupyter **nieuw** > **PySpark** om een notitieblok te maken. 
+2. Selecteer op de webpagina Jupyter **nieuwe** > **PySpark** om een notitie blok te maken. 
 
    ![Jupyter Notebook maken om de interactieve Spark SQL-query uit te voeren](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter Notebook maken om de interactieve Apache Spark SQL-query uit te voeren")
 
-   Een nieuwe notebook gemaakt en geopend met de naam Naamloos (`Untitled.ipynb`).
+   Er wordt een nieuw notitie blok gemaakt en geopend met de naam Naamloos (`Untitled.ipynb`).
 
     > [!NOTE]  
     > Door de PySpark-kernel te gebruiken voor het maken van een notebook, wordt de `spark`-sessie automatisch voor u gemaakt wanneer u de eerste cel met code uitvoert. U hoeft de sessie dus niet expliciet te maken.
@@ -49,7 +49,7 @@ Toepassingen kunnen dataframes rechtstreeks maken vanuit bestanden of mappen op 
     
 ![Momentopname van gegevens voor interactieve Spark SQL-query](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Momentopname van gegevens voor interactieve Spark SQL-query")
 
-1. Plak de volgende code in een lege cel van de Jupyter-notebook en druk vervolgens op **SHIFT + ENTER** de code uit te voeren. Met de code importeert u de typen die voor dit scenario zijn vereist:
+1. Plak de volgende code in een lege cel van het Jupyter-notitie blok en druk op **SHIFT + ENTER** om de code uit te voeren. Met de code importeert u de typen die voor dit scenario zijn vereist:
 
     ```python
     from pyspark.sql import *
@@ -87,9 +87,9 @@ Zodra de tabel is gemaakt, kunt u een interactieve query uitvoeren op de gegeven
 
     ![Gebiedsgrafiek van resultaat van interactieve Spark-query](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Gebiedsgrafiek van resultaat van interactieve Spark-query")
 
-3. Navigeer in de menubalk van de notebook naar **bestand** > **opslaan en controlepunt**.
+3. Navigeer in de menu balk van de notebook naar **bestand** > **opslaan en controle punt**.
 
-4. Als u direct verdergaat met de [volgende zelfstudie](apache-spark-use-bi-tools.md), laat u het notebook open. Als dit niet het geval is, sluit het notitieblok om de clusterresources vrij te geven: vanuit het notitieblok in de menubalk, navigeert u naar **bestand** >  **sluiten en stoppen**.
+4. Als u direct verdergaat met de [volgende zelfstudie](apache-spark-use-bi-tools.md), laat u het notebook open. Als dat niet het geval is, sluit u het notitie blok om de cluster bronnen vrij te geven: Navigeer in de menu balk van het notitie blok naar **bestand** >  **sluiten en stoppen**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -103,7 +103,7 @@ U kunt ook de naam van de resourcegroep selecteren om de pagina van de resourceg
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd over het maken van een dataframe uit een csv-bestand en het uitvoeren van interactieve Spark SQL-query's op basis van een Apache Spark-cluster in Azure HDInsight. Ga naar het volgende artikel om te zien hoe de gegevens die u hebt geregistreerd in Apache Spark kunnen worden overgebracht naar een BI-hulpprogramma voor analyse zoals Power BI.
+In deze zelf studie hebt u geleerd hoe u een data frame maakt op basis van een CSV-bestand en hoe u interactieve Spark SQL-query's uitvoert op een Apache Spark cluster in azure HDInsight. Ga naar het volgende artikel om te zien hoe de gegevens die u hebt geregistreerd in Apache Spark kunnen worden overgebracht naar een BI-hulpprogramma voor analyse zoals Power BI.
 
 > [!div class="nextstepaction"]
 > [Gegevens analyseren met BI-tools](apache-spark-use-bi-tools.md)

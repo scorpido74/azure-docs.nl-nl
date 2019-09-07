@@ -1,6 +1,6 @@
 ---
 title: Problemen met een trage of mislukte taak in een HDInsight-cluster oplossen-Azure HDInsight
-description: Diagnose en probleem oplossing voor een langzaam of mislukt HDInsight-cluster.
+description: Een trage of mislukte taak in een Azure HDInsight-cluster diagnosticeren en problemen oplossen.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: b7afeee554a1faee9507f0a891803024f3bc11e4
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8c50068914c1519a5522372310bd0f5863a94b39
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69573617"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735792"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problemen oplossen met een trage of mislukte taak in een HDInsight-cluster
 
@@ -90,7 +90,7 @@ HDInsight is afhankelijk van verschillende Azure-Services. Hiermee worden virtue
 
 #### <a name="check-azure-service-usage-limits"></a>Gebruiks limieten van Azure-service controleren
 
-Als u een groot cluster start of meerdere clusters tegelijkertijd hebt gestart, kan een cluster mislukken als u een limiet van Azure-Services hebt overschreden. Service limieten variëren, afhankelijk van uw Azure-abonnement. Zie [Azure-abonnement en service limieten, quota's en beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits)voor meer informatie.
+Als u een groot cluster start of meerdere clusters tegelijkertijd hebt gestart, kan een cluster mislukken als u een limiet van Azure-Services hebt overschreden. Service limieten variëren, afhankelijk van uw Azure-abonnement. Zie [Azure-abonnement en servicelimieten, quota en beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits) voor meer informatie.
 U kunt aanvragen dat micro soft het aantal HDInsight-resources dat beschikbaar is (zoals VM-kernen en VM-exemplaren), verg Roten met een aanvraag voor het verhogen van de [kern quota van Resource Manager](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 #### <a name="check-the-release-version"></a>De release versie controleren

@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een Scala Maven-toepassing maken voor Apache Spark in Azure HDInsight met behulp van IntelliJ'
+title: 'Zelfstudie: Scala maven-toepassing voor Spark met IntelliJ-Azure HDInsight'
 description: 'Zelf studie: een Spark-toepassing maken die is geschreven in scala met Apache Maven als het build-systeem en een bestaande maven archetype voor scala van IntelliJ-ideeën.'
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.openlocfilehash: 263eea88182a947eccc8a57450432fce8d2fcfc9
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 3b9001b9c7fa81b86c70d5c07a33a54bae539add
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839712"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736452"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Zelfstudie: Een Scala Maven-toepassing maken voor Apache Spark in HDInsight met behulp van IntelliJ
 

@@ -10,17 +10,17 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 06/28/2019
-ms.openlocfilehash: 29776c1a49161daf9cf972c43c1378e52f5c3069
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/06/2019
+ms.openlocfilehash: 5888555e93c28c96445bed1936deda022b0a4b94
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141505"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734589"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Zelfstudie: PostgreSQL migreren naar Azure Database for PostgreSQL online met behulp van DMS
 
-U kunt Azure Database Migration Service gebruiken om de data bases van een on-premises PostgreSQL-exemplaar te migreren naar [Azure database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) met minimale downtime. Met andere woorden, migratie kan worden gerealiseerd met minimale downtime voor de toepassing. In deze zelf studie migreert u de gehuurde voorbeeld database van de **DVD** van een on-premises exemplaar van postgresql 9,6 naar Azure database for PostgreSQL met behulp van de online migratie activiteit in azure database Migration service.
+U kunt Azure Database Migration Service gebruiken om de data bases van een on-premises PostgreSQL-exemplaar te migreren naar [Azure database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) met minimale downtime. Met andere woorden, migratie kan worden gerealiseerd met minimale downtime voor de toepassing. In deze zelf studie migreert u de **gehuurde** voorbeeld database van de DVD van een on-premises exemplaar van postgresql 9,6 naar Azure database for PostgreSQL met behulp van de online migratie activiteit in azure database Migration service.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -44,9 +44,6 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 * Download en installeer [PostgreSQL Community Edition](https://www.postgresql.org/download/) 9.5, 9.6 of 10. De bronversie van PostgreSQL Server moet versie 9.5.11, 9.6.7, 10 of hoger zijn. Zie voor meer informatie het artikel [Supported PostgreSQL Database Versions](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions) (Ondersteunde versies van de PostgreSQL-database).
 
     Bovendien moet de on-premises versie van PostgreSQL overeenkomen met de versie van Azure Database for PostgreSQL. PostgreSQL 9.5.11.5 kan bijvoorbeeld alleen migreren naar Azure Database for PostgreSQL 9.5.11 en niet naar versie 9.6.7.
-
-    > [!NOTE]
-    > Voor PostgreSQL versie 10 ondersteunt DMS alleen de migratie van versie 10,3 naar Azure Database for PostgreSQL.
 
 * [Een exemplaar maken in Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).  
 * Een Azure Virtual Network (VNet) maken voor Azure Database Migration Service met behulp van het Azure Resource Manager implementatie model, dat site-naar-site-connectiviteit met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Voor meer informatie over het maken van een VNet raadpleegt u de [documentatie van Virtual Network](https://docs.microsoft.com/azure/virtual-network/)en met name de Quick Start-artikelen met stapsgewijze Details.
@@ -79,7 +76,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 * Schakel logische replicatie in het bestand postgresql.config in en stel de volgende parameters in:
 
   * wal_level = **logical**
-  * max_replication_slots = [aantal sleuven], aanbevolen instelling is **5 sleuven**
+  * max_replication_slots = [aantal sleuven], aanbeveling voor **vijf sleuven** instellen
   * max_wal_senders = [aantal gelijktijdige taken]: met de parameter max_wal_senders stelt u het aantal taken in dat gelijktijdig kan worden uitgevoerd. De aanbevolen instelling is **10 taken**
 
 ## <a name="migrate-the-sample-schema"></a>Het voorbeeldschema migreren

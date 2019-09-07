@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 43369131700681de5523043f414129a2e4169f44
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9e50a2705982a022284e1c54bd5ed7360a2d1663
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306928"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390694"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Functies van de resource voor Azure Resource Manager-sjablonen
 
@@ -42,6 +42,10 @@ De syntaxis voor deze functie is afhankelijk van de naam van de lijst bewerkinge
 | resourceName of resourceIdentifier |Ja |string |De unieke id voor de resource. |
 | apiVersion |Ja |string |API-versie van de runtimestatus van de resource. Normaal gesproken in de indeling, **jjjj-mm-dd**. |
 | functionValues |Nee |object | Een object met waarden voor de functie. Geef alleen dit object voor functies die ondersteuning bieden voor ontvangst van een object met parameterwaarden, zoals **listAccountSas** op een storage-account. In dit artikel wordt een voor beeld gegeven van het door geven van functie waarden. | 
+
+### <a name="valid-uses"></a>Geldige toepassingen
+
+De functies List kunnen alleen worden gebruikt in de eigenschappen van een resource definitie en de sectie outputs van een sjabloon of implementatie. In combi natie met [eigenschaps herhaling](resource-group-create-multiple.md#property-iteration)kunt u de functies lijst gebruiken `input` voor omdat de expressie wordt toegewezen aan de eigenschap resource. U kunt deze `count` niet gebruiken omdat het aantal moet worden bepaald voordat de lijst functie wordt opgelost.
 
 ### <a name="implementations"></a>Implementaties
 

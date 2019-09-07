@@ -1,7 +1,6 @@
 ---
-title: Machine learning-& data Science-hulpprogram ma's
-titleSuffix: Azure Data Science Virtual Machine
-description: Meer informatie over de machine learning-hulpprogramma's en frameworks die vooraf zijn geïnstalleerd op de Data Science Virtual Machine.
+title: Machine learning en data science-hulpprogramma 's
+description: Meer informatie over de hulpprogram ma's voor machine learning en frameworks die vooraf zijn geïnstalleerd op de Data Science Virtual Machine.
 keywords: hulpprogramma's voor datatechnologie, virtuele machine voor datatechnologie, hulpprogramma voor datatechnologie, linux-datatechnologie
 services: machine-learning
 ms.service: machine-learning
@@ -10,39 +9,39 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: f97412bc3f8d8b046df1324c7e1a0ad568f5db52
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: dec1589898cf6cc239dbe737519e078f1c4bc7b1
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278783"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744926"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Machine learning-en data Science-hulpprogram ma's op Azure data Science Virtual Machines
-Azure Data Science Virtual Machines is een uitgebreide set hulpprogramma's en bibliotheken voor machine learning (ML) beschikbaar in populaire talen, zoals Python, R en Julia. 
+Azure data Science Virtual Machines (Dsvm) beschikt over een uitgebreide set hulpprogram ma's en bibliotheken voor machine learning die beschikbaar zijn in populaire talen, zoals python, R en Julia.
 
-Hier volgen enkele van de hulpprogramma's voor ML en -bibliotheken op virtuele Machines voor Datatechnologie. 
+Hier volgen enkele van de machine learning-hulpprogram ma's en-bibliotheken op Dsvm.
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK voor python
 Zie de volledige referentie voor de [Azure machine learning SDK voor python](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml).
 
 |    |           |
 | ------------- | ------------- |
-| Wat is het? |   Azure Machine Learning is een cloudservice die u gebruiken kunt om te ontwikkelen en implementeren van ML-modellen. Als u bouwen, trainen, schalen en beheren met behulp van de Python-SDK, kunt u uw modellen bijhouden. Modellen als containers implementeren en deze in de cloud, on-premises of in Azure IoT Edge uitvoeren. |
-| Ondersteunde versies  | Windows (Conda-omgeving: AzureML), Linux (Conda-omgeving: py36) |
-| Wordt doorgaans gebruikt      | Algemene ML-platform  |
-| Hoe wordt deze geconfigureerd of geïnstalleerd? |  Geïnstalleerd met GPU-ondersteuning |
-| Over het gebruik of uit te voeren | Als Python SDK en Azure CLI. Activeren naar het conda-omgeving `AzureML` op Windows-editie *of* naar `py36` op Linux-editie.  |
-| Koppeling naar voorbeelden | Voorbeeld van Jupyter notebooks zijn opgenomen in de `AzureML` map onder notitieblokken.  |
-| Meer hulpprogramma 's  | Visual Studio Code, Jupyter   |
+| Wat is het?   |   Azure Machine Learning is een Cloud service die u kunt gebruiken om machine learning-modellen te ontwikkelen en te implementeren. Als u bouwen, trainen, schalen en beheren met behulp van de Python-SDK, kunt u uw modellen bijhouden. Modellen als containers implementeren en deze in de cloud, on-premises of in Azure IoT Edge uitvoeren.   |
+| Ondersteunde versies     | Windows (Conda-omgeving: AzureML), Linux (Conda-omgeving: py36)    |
+| Wordt doorgaans gebruikt      | Algemeen machine learning-platform      |
+| Hoe wordt deze geconfigureerd of geïnstalleerd?      |  Geïnstalleerd met GPU-ondersteuning   |
+| Over het gebruik of uit te voeren      | Als een python-SDK en in de Azure CLI. Activeren naar het conda-omgeving `AzureML` op Windows-editie *of* naar `py36` op Linux-editie.      |
+| Koppeling naar voorbeelden      | Voorbeeld van Jupyter notebooks zijn opgenomen in de `AzureML` map onder notitieblokken.  |
+| Meer hulpprogramma 's      | Visual Studio Code, Jupyter   |
 
 ## <a name="xgboost"></a>XGBoost 
 |    |           |
 | ------------- | ------------- |
-| Wat is het?   |    XGBoost is een snelle, draagbare en gedistribueerde verloop versterking (GBDT, GBRT of GBM)-bibliotheek voor Python, R, Java, Scala, C++ en meer. Deze wordt uitgevoerd op een enkele machine, Hadoop en Spark.    |
+| Wat is het?   |   Een snelle, draag bare en gedistribueerde GBDT-, GBRT-of GBM-bibliotheek voor python, R, Java, scala, C++enzovoort. Deze wordt uitgevoerd op één computer en op Apache Hadoop en Spark.    |
 | Ondersteunde versies     | Windows, Linux     |
-| Wordt doorgaans gebruikt      | Algemene ML-bibliotheek      |
+| Wordt doorgaans gebruikt      | Algemene machine-learning-bibliotheek      |
 | Hoe wordt deze geconfigureerd of geïnstalleerd?      |  Geïnstalleerd met GPU-ondersteuning   |
-| Over het gebruik of uit te voeren      | Als Python-bibliotheek (2.7 en 3.5), R-pakket en de pad-opdrachtregelprogramma (`C:\dsvm\tools\xgboost\bin\xgboost.exe` voor Windows, `/dsvm/tools/xgboost/xgboost` voor Linux)    |
+| Over het gebruik of uit te voeren      | Als een python-bibliotheek (2,7 en 3,5), R-pakket en het opdracht regel programma op het pad`C:\dsvm\tools\xgboost\bin\xgboost.exe` (voor Windows `/dsvm/tools/xgboost/xgboost` en voor Linux)    |
 | Koppelingen naar voorbeelden      | Voorbeelden zijn opgenomen op de virtuele machine, in `/dsvm/tools/xgboost/demo` op Linux, en `C:\dsvm\tools\xgboost\demo` op Windows.   |
 | Meer hulpprogramma 's      | LightGBM, MXNet   |
 
@@ -51,10 +50,10 @@ Zie de volledige referentie voor de [Azure machine learning SDK voor python](htt
 ## <a name="vowpal-wabbit"></a>Vowpal Wabbit
 |    |           |
 | ------------- | ------------- |
-| Wat is het?   |   Vowpal Wabbit (ook wel bekend als ' VW") is een open-source, snelle, out-van-core learning-bibliotheek.    |
+| Wat is het?   |   Een snelle, open-source, out-of-Core-learning systeem bibliotheek    |
 | Ondersteunde versies     | Windows, Linux     |
-| Wordt doorgaans gebruikt      | Algemene ML-bibliotheek      |
-| Hoe wordt deze geconfigureerd of geïnstalleerd?      |  Windows - msi-installatieprogramma, Linux--apt-get |
+| Wordt doorgaans gebruikt      | Algemene machine-learning-bibliotheek      |
+| Hoe wordt deze geconfigureerd of geïnstalleerd?      |  Windows: MSI-installatie programma<br/>Linux: apt-get |
 | Over het gebruik of uit te voeren      | Als een opdrachtregelprogramma voor het pad (`C:\Program Files\VowpalWabbit\vw.exe` op Windows, `/usr/bin/vw` op Linux)    |
 | Koppeling naar voorbeelden      | [VowPal Wabbit-voorbeelden](https://github.com/JohnLangford/vowpal_wabbit/wiki/Examples) |
 | Meer hulpprogramma 's      |LightGBM, MXNet, XGBoost   |
@@ -63,42 +62,42 @@ Zie de volledige referentie voor de [Azure machine learning SDK voor python](htt
 ## <a name="weka"></a>Weka
 |    |           |
 | ------------- | ------------- |
-| Wat is het?   |  Weka is een verzameling van ML-algoritmes voor datamining taken. De algoritmen kunnen worden toegepast op een set gegevens rechtstreeks of met de naam van uw eigen Java-code. Weka bevat hulpprogramma's voor het vooraf verwerken van gegevens, classificatie, regressie, clustering, koppelingsregels voor en visualisatie. |
+| Wat is het?   |  Een verzameling machine learning-algoritmen voor gegevens analyse taken. De algoritmen kunnen worden toegepast op een set gegevens rechtstreeks of met de naam van uw eigen Java-code. Weka bevat hulpprogramma's voor het vooraf verwerken van gegevens, classificatie, regressie, clustering, koppelingsregels voor en visualisatie. |
 | Ondersteunde versies     | Windows, Linux     |
-| Wordt doorgaans gebruikt      | Algemene ML-hulpprogramma     |
-| Over het gebruik of uit te voeren      | Zoeken op Windows, Weka in het menu Start. Meld u aan met X2Go op Linux, en ga vervolgens naar **toepassingen** > **ontwikkeling** > **Weka**. |
+| Wordt doorgaans gebruikt      | Algemeen hulp programma voor machine learning     |
+| Over het gebruik of uit te voeren      | Zoek in Windows naar Fridge in het menu **Start** . Meld u aan met X2Go op Linux, en ga vervolgens naar **toepassingen** > **ontwikkeling** > **Weka**. |
 | Koppeling naar voorbeelden      | [Voorbeelden van weka](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | Meer hulpprogramma 's      |LightGBM, ratel, XGBoost   |
 
 ## <a name="rattle"></a>Rammelaar
 |    |           |
 | ------------- | ------------- |
-| Wat is het?   |   Rammelaar is een grafische gebruikersinterface voor data-gegevensanalyse met behulp van R.   |
+| Wat is het?   |   Een Graphical User Interface voor gegevens analyse met behulp van R.   |
 | Ondersteunde versies     | Windows, Linux     |
-| Wordt doorgaans gebruikt      | Hulpprogramma voor algemene UI datamining voor R    |
-| Over het gebruik of uit te voeren      | UI-hulpprogramma. Op Windows, start u een opdrachtprompt, R uitvoeren en voer vervolgens in R `rattle()`. Op Linux, verbinding maken met X2Go, start een terminal, R uitvoeren en voer vervolgens in R `rattle()`. |
+| Wordt doorgaans gebruikt      | Algemeen UI-hulp programma voor gegevens analyse voor R    |
+| Over het gebruik of uit te voeren      | Als een hulp programma voor de gebruikers interface. Start in Windows een opdracht prompt, voer R uit en voer `rattle()`vervolgens in r uit. Op Linux maakt u verbinding met X2Go, start u een Terminal, voert u R uit en voert u `rattle()`vervolgens in r uit. |
 | Koppeling naar voorbeelden      | [Rammelaar](https://togaware.com/onepager/) |
 | Meer hulpprogramma 's      |LightGBM, Weka, XGBoost   |
 
 ## <a name="lightgbm"></a>LightGBM
 |    |           |
 | ------------- | ------------- |
-| Wat is het?   | LightGBM is een snelle, gedistribueerde, hoogwaardige verloop versterking (GBDT, GBRT, GBM of DATAMART) framework op basis van algoritmen voor een beslissingsstructuur. Het wordt gebruikt voor classificatie, classificatie en vele andere ML-taken uitvoeren.    |
+| Wat is het?   | Een snel, gedistribueerd verloop van de kleur overgang-Boosting (GBDT, GBRT, GBM of MART Framework) op basis van de beslissings structuur-algoritmen. Dit wordt gebruikt voor classificatie, classificatie en veel andere taken voor machine learning.    |
 | Ondersteunde versies      | Windows, Linux    |
-| Wordt doorgaans gebruikt      | Voor algemene doeleinden kleurovergang Gradient boosting-framework      |
+| Wordt doorgaans gebruikt      | Algemeen gebruik van kleur overgang-Boosting Framework      |
 | Hoe wordt deze geconfigureerd of geïnstalleerd?      | LightGBM is geïnstalleerd op Windows, als een Python-pakket. Op Linux, uitvoerbare bestand van de opdrachtregel wordt `/opt/LightGBM/lightgbm`, het R-pakket is geïnstalleerd en Python-pakketten zijn geïnstalleerd.     |
-| Koppeling naar voorbeelden      | [Handleiding voor LightGBM](https://github.com/Microsoft/LightGBM/tree/master/examples/python-guide)   |
+| Koppeling naar voorbeelden      | [LightGBM-hand leiding](https://github.com/Microsoft/LightGBM/tree/master/examples/python-guide)   |
 | Meer hulpprogramma 's      | MXNet, XgBoost  |
 
 ## <a name="h2o"></a>H2O
 |    |           |
 | ------------- | ------------- |
-| Wat is het?   | H2O is een open-source AI-platform die ondersteuning biedt voor in het geheugen, gedistribueerde, snelle en schaalbare ML.  |
+| Wat is het?   | Een open-source AI-platform dat ondersteuning biedt voor in-Memory, gedistribueerde, snelle en schaal bare machine learning.  |
 | Ondersteunde versies      | Linux   |
-| Wordt doorgaans gebruikt      | Voor algemeen gebruik gedistribueerde, schaalbare ML   |
+| Wordt doorgaans gebruikt      | Gedistribueerde, schaal bare machine learning voor algemeen gebruik   |
 | Hoe wordt deze geconfigureerd of geïnstalleerd?      | H2O is geïnstalleerd in `/dsvm/tools/h2o`.      |
 | Over het gebruik of uit te voeren      | Verbinding maken met de virtuele machine met behulp van X2Go. Start een nieuwe terminal en voer `java -jar /dsvm/tools/h2o/current/h2o.jar`. Vervolgens start u een webbrowser en maak verbinding met `http://localhost:54321`.      |
 | Koppeling naar voorbeelden      | Voorbeelden zijn beschikbaar op de virtuele machine in Jupyter onder de `h2o` directory.      |
 | Meer hulpprogramma 's      | Apache Spark, MXNet, XGBoost, mousserende Water, Deep Water    |
 
-Er zijn verschillende andere ML-bibliotheken op virtuele Machines voor Datatechnologie, zoals het populaire `scikit-learn` pakket dat wordt geleverd als onderdeel van de Anaconda Python-distributie die geïnstalleerd op virtuele Machines voor Datatechnologie. Om te zien wat de lijst met pakketten die beschikbaar zijn in Python, voert R en Julia, u de respectieve Pakketbeheer.
+Er zijn verschillende andere machine learning-bibliotheken op dsvm, zoals het populaire `scikit-learn` pakket dat deel uitmaakt van de Anaconda python-distributie voor dsvm. Om te zien wat de lijst met pakketten die beschikbaar zijn in Python, voert R en Julia, u de respectieve Pakketbeheer.

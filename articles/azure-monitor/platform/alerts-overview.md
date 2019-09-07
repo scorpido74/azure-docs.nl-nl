@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 67318fee540195fc913739d78e80649100c54e70
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
-ms.translationtype: MT
+ms.openlocfilehash: defc317618dfffd0e2b28c75b6168ec1dbda36b7
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034820"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735116"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Overzicht van waarschuwingen in Microsoft Azure 
 
@@ -53,12 +53,13 @@ De belangrijkste kenmerken van een waarschuwings regel zijn:
 **Beschrijving van waarschuwing** : een beschrijving voor de waarschuwings regel die door de gebruiker is geconfigureerd
 
 **Ernst** : de ernst van de waarschuwing wanneer aan de criteria die zijn opgegeven in de waarschuwings regel wordt voldaan. Ernst kan variëren van 0 tot 4.
+Ernst 0 = kritiek Ernst 1 = fout Ernst 2 = waarschuwing Ernst 3 = informatieve Ernst 4 = verbose
 
 **Actie** -een specifieke actie die wordt uitgevoerd wanneer de waarschuwing wordt geactiveerd. Zie [actie groepen](../../azure-monitor/platform/action-groups.md)voor meer informatie.
 
 ## <a name="what-you-can-alert-on"></a>Wat u kunt waarschuwen voor
 
-U kunt een waarschuwing ontvangen over metrische gegevens en Logboeken, zoals beschreven bij het bewaken van [data bronnen](../../azure-monitor/platform/data-sources-reference.md). Deze omvatten, maar zijn niet beperkt tot:
+U kunt een waarschuwing ontvangen over metrische gegevens en Logboeken, zoals beschreven bij het [bewaken van data bronnen](../../azure-monitor/platform/data-sources-reference.md). Deze omvatten, maar zijn niet beperkt tot:
 - Metrische waarden
 - Zoek query's in Logboeken
 - Activiteiten logboek gebeurtenissen
@@ -70,7 +71,7 @@ Voorheen hadden Azure Monitor meet gegevens, Application Insights, Log Analytics
 | **Bron bewaken** | **Signaal type**  | **Beschrijving** | 
 |-------------|----------------|-------------|
 | Servicestatus | Activiteitenlogboek  | Wordt niet ondersteund. Zie [waarschuwingen voor activiteiten logboek maken op service meldingen](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
-| Application Insights | Tests voor Internet beschikbaarheid | Wordt niet ondersteund. Zie [waarschuwingen](../../azure-monitor/app/monitor-web-app-availability.md)voor webtests. Beschikbaar voor alle websites die zijn instrumenteel om gegevens naar Application Insights te verzenden. Ontvang een melding wanneer de beschik baarheid of reactie tijd van een website onder de verwachtingen ligt. |
+| Application Insights | Tests voor Internet beschikbaarheid | Wordt niet ondersteund. Zie [waarschuwingen voor webtests](../../azure-monitor/app/monitor-web-app-availability.md). Beschikbaar voor alle websites die zijn instrumenteel om gegevens naar Application Insights te verzenden. Ontvang een melding wanneer de beschik baarheid of reactie tijd van een website onder de verwachtingen ligt. |
 
 ## <a name="manage-alerts"></a>Waarschuwingen beheren
 U kunt de status van een waarschuwing instellen om op te geven waar deze zich in het oplossings proces bevindt. Wanneer aan de criteria die zijn opgegeven in de waarschuwings regel wordt voldaan, wordt er een waarschuwing gemaakt of geactiveerd. deze heeft de status *Nieuw*. U kunt de status wijzigen wanneer u een waarschuwing bevestigt en wanneer u deze sluit. Alle status wijzigingen worden opgeslagen in de geschiedenis van de waarschuwing.
@@ -173,7 +174,7 @@ De pagina waarschuwings Details bevat de volgende secties.
 |:---|:---|
 | Samenvatting | Hiermee worden de eigenschappen en andere belang rijke informatie over de waarschuwing weer gegeven. |
 | Geschiedenis | Een lijst met alle acties die worden uitgevoerd door de waarschuwing en eventuele wijzigingen aan de waarschuwing. Momenteel beperkt tot status wijzigingen. |
-| Diagnostiek | Informatie over de Smart-groep waarin de waarschuwing is opgenomen. Het aantal meldingen verwijst naar het aantal waarschuwingen dat is opgenomen in de slimme groep. Bevat ook andere waarschuwingen in dezelfde slimme groep die in de afgelopen 30 dagen zijn gemaakt, ongeacht het tijd filter op de lijst pagina met waarschuwingen. Selecteer een waarschuwing om de details ervan weer te geven. |
+| Diagnostiek | Informatie over de Smart-groep waarin de waarschuwing is opgenomen. Het *aantal meldingen verwijst naar* het aantal waarschuwingen dat is opgenomen in de slimme groep. Bevat ook andere waarschuwingen in dezelfde slimme groep die in de afgelopen 30 dagen zijn gemaakt, ongeacht het tijd filter op de lijst pagina met waarschuwingen. Selecteer een waarschuwing om de details ervan weer te geven. |
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Op rollen gebaseerd toegangs beheer (RBAC) voor uw waarschuwings instanties
 

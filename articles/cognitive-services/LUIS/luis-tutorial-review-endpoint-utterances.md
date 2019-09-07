@@ -1,5 +1,5 @@
 ---
-title: Endpoint uitingen-LUIS controleren
+title: 'Zelfstudie: Endpoint uitingen-LUIS controleren'
 titleSuffix: Azure Cognitive Services
 description: Verbeter de voorspellingen van de app door de uitingen die worden ontvangen via het LUIS-HTTP-eindpunt (en waar LUIS niet zeker over is) te controleren of corrigeren. Bij sommige uitingen moet mogelijk de intentie worden gecontroleerd en bij andere de entiteit.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: dd5c0012bad567623fdfc0a70760f692aafe0e3e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f81066ed21702dfe94ad7897adc3b82ed5a49f4d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563327"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387521"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Zelfstudie: Onzekere voorspellingen herstellen door eindpuntuitingen te controleren
 In deze zelfstudie leert u de voorspellingen van de app te verbeteren door de uitingen die worden ontvangen via het LUIS-HTTP-eindpunt (en waar LUIS niet zeker over is) te controleren of corrigeren. Bij sommige uitingen moet mogelijk de intentie worden gecontroleerd en bij andere de entiteit. Controleer de eindpuntuitingen regelmatig als onderdeel van uw geplande LUIS-onderhoud. 
@@ -85,15 +85,17 @@ Voer de volgende stappen uit:
     |:--|:--|:--|
     |`I'm looking for a job with Natural Language Processing`|GetJobInfo|Taak - 'Natuurlijke taalverwerking'|
 
+    Als u `natural language processing` van een woordgroepen entiteit wilt overschakelen naar een taak entiteit, selecteert u de woord groep en selecteert u vervolgens **taak** in de lijst. Als u slechts een deel van de tekst van de woordgroep voor een andere entiteit wilt selecteren, moet u de woordgroep verwijderen als een entiteit, een label met een andere entiteit en vervolgens de entiteit met de superwoord groep opnieuw Toep assen op de app. 
+
     Als u de utterance toevoegt, wordt de utterance van het **eind punt van de beoordeling uitingen** naar de **GetJobInformation** -intentie verplaatst. De eindpuntuiting is nu een voorbeelduiting voor deze intentie. 
 
     Naast het correct uitlijnen van deze utterance, moeten er meer uitingen worden toegevoegd aan de **GetJobInformation** intentie. Deze stappen kunt u bij wijze van oefening zelf uitvoeren. Alle intenties, met uitzondering van de intentie **None**, zouden ongeveer hetzelfde aantal voorbeelduitingen moeten bevatten. De intentie **None** zou 10% van het totale aantal uitingen in de app moeten bevatten. 
 
-1. Beoordeel de resterende uitingen in deze intentie, waarbij u de uitingen van een label kunt voorzien en de **Uitgelijnde intentie** kunt corrigeren als deze onjuist zijn.
+    Beoordeel de resterende uitingen in deze intentie, waarbij u de uitingen van een label kunt voorzien en de **Uitgelijnde intentie** kunt corrigeren als deze onjuist zijn.
 
-1. Deze uitingen zouden nu niet meer op de lijst moeten staan. Als meer uitingen worden weergegeven, dient u de lijst af te blijven gaan, de intenties waar nodig te corrigeren en eventuele ontbrekende entiteiten van een label te voorzien, tot de lijst leeg is. 
+    De uitingen-lijst van het **controle-eind punt** mag niet langer deze uitingen hebben. Als meer uitingen worden weergegeven, dient u de lijst af te blijven gaan, de intenties waar nodig te corrigeren en eventuele ontbrekende entiteiten van een label te voorzien, tot de lijst leeg is. 
 
-1. Selecteer de volgende intentie in de filterlijst en blijf vervolgens uitingen corrigeren en entiteiten van labels voorzien. Vergeet niet voor iedere intentie als laatste stap ofwel **Toevoegen aan uitgelijnde intentie** te selecteren op de rij van die uiting of het selectievakje te selecteren bij die intentie en boven de tabel op **Selectie toevoegen** te klikken.
+    Selecteer de volgende intentie in de filterlijst en blijf vervolgens uitingen corrigeren en entiteiten van labels voorzien. Vergeet niet voor iedere intentie als laatste stap ofwel **Toevoegen aan uitgelijnde intentie** te selecteren op de rij van die uiting of het selectievakje te selecteren bij die intentie en boven de tabel op **Selectie toevoegen** te klikken.
 
     Ga door totdat alle intenties en entiteiten in de filterlijst over een lege lijst beschikken. Dit is een hele kleine app. Het beoordelingsproces duurt slechts een paar minuten. 
 

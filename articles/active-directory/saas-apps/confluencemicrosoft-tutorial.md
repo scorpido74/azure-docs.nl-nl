@@ -1,10 +1,10 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Confluence SAML SSO by Microsoft | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory SSO-integratie (single sign-on) met confluence SAML SSO door micro soft | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Confluence SAML SSO by Microsoft configureert.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 1ad1cf90-52bc-4b71-ab2b-9a5a1280fb2d
 ms.service: active-directory
@@ -13,31 +13,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/28/2019
+ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d35aebb1ec7b2b4eb1753e6b4aa79d583483d0c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1384a8c9cfc4da9e8757c26bdb3e92defdb73708
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105067"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743665"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Zelfstudie: Azure Active Directory-integratie met Confluence SAML SSO by Microsoft
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Zelfstudie: Azure Active Directory SSO-integratie (single sign-on) met confluence SAML SSO door micro soft
 
-In deze zelfstudie leert u hoe u Confluence SAML SSO by Microsoft kunt integreren met Azure Active Directory (Azure AD).
-De integratie van Confluence SAML SSO by Microsoft met Azure AD biedt de volgende voordelen:
+In deze zelf studie leert u hoe u confluence SAML SSO door micro soft integreert met Azure Active Directory (Azure AD). Wanneer u confluence SAML SSO door micro soft integreert met Azure AD, kunt u het volgende doen:
 
-* U kunt in Azure AD bepalen wie er toegang heeft tot Confluence SAML SSO by Microsoft.
-* U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Confluence SAML SSO by Microsoft (eenmalige aanmelding).
-* U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
+* Controle in azure AD die toegang heeft tot confluence SAML SSO door micro soft.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld voor confluence SAML SSO door micro soft met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="description"></a>Beschrijving:
 
-Gebruik uw Microsoft Azure Active Directory-account met Confluence Server van Atlassian om eenmalige aanmelding mogelijk te maken. Op deze manier alle gebruikers in uw organisatie kunnen de Azure AD-referenties aan te melden bij de toepassing samenloop gebruiken. Deze invoegtoepassing gebruikt SAML 2.0 voor federatie.
+Gebruik uw Microsoft Azure Active Directory-account met Confluence Server van Atlassian om eenmalige aanmelding mogelijk te maken. Op die manier kunnen alle gebruikers van uw organisatie de Azure AD-referenties gebruiken om zich aan te melden bij de confluence-toepassing. Deze invoegtoepassing gebruikt SAML 2.0 voor federatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -55,10 +53,11 @@ Om Azure AD-integratie te configureren met Confluence SAML SSO by Microsoft hebt
 > [!NOTE]
 > Als u de stappen in deze zelfstudie wilt testen, is het raadzaam niet een productieomgeving van Confluence te gebruiken. Test de integratie eerst in een ontwikkel- of faseringsomgeving van de toepassing en gebruik dan pas de productieomgeving.
 
-Als u wilt testen van de stappen in deze zelfstudie, moet u deze aanbevelingen volgen:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-- Gebruik uw productie-omgeving, niet als dat nodig is.
-- Als u niet beschikt over een evaluatieomgeving in Azure AD, kunt u hier een gratis proefversie van één maand krijgen: [Proefversie](https://azure.microsoft.com/pricing/free-trial/).
+* Gebruik uw productie-omgeving, niet als dat nodig is.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Confluence SAML SSO door micro soft SSO (single sign-on) ingeschakeld abonnement.
 
 ## <a name="supported-versions-of-confluence"></a>Ondersteunde versies van Confluence
 
@@ -81,11 +80,11 @@ Vanaf dit moment worden de volgende versies van Confluence ondersteund:
 - Confluence: 6.15.3
 
 > [!NOTE]
-> Houd er rekening mee dat onze samenloop-invoegtoepassing ook kan worden gebruikt op Ubuntu-16.04-versie
+> Houd er rekening mee dat onze confluence-invoeg toepassing ook werkt op Ubuntu versie 16,04
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
 * Confluence SAML SSO by Microsoft ondersteunt door **SP** geïnitieerde eenmalige aanmelding (SSO)
 
@@ -93,59 +92,37 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 Om de integratie van Confluence SAML SSO by Microsoft te configureren in Azure AD, moet u Confluence SAML SSO by Microsoft vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om Confluence SAML SSO by Microsoft vanuit de galerie toe te voegen:**
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ **CONFLUENCE SAML SSO door micro soft** in het zoekvak van de sectie **toevoegen vanuit de galerie** .
+1. Selecteer **CONFLUENCE SAML SSO by micro soft** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-confluence-saml-sso-by-microsoft"></a>Eenmalige aanmelding van Azure AD configureren en testen voor confluence SAML SSO door micro soft
 
-    ![De knop Azure Active Directory](common/select-azuread.png)
+Azure AD SSO met confluence SAML SSO van micro soft configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in confluence SAML SSO door micro soft.
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+Als u Azure AD SSO wilt configureren en testen met confluence SAML SSO van micro soft, voltooit u de volgende bouw stenen:
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[CONFLUENCE SAML SSO configureren met micro soft SSO](#configure-confluence-saml-sso-by-microsoft-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    1. **[Maak CONFLUENCE SAML SSO door micro soft test User](#create-confluence-saml-sso-by-microsoft-test-user)** : als u een equivalent van B. Simon in CONFLUENCE SAML SSO wilt door micro soft dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-3. Als u de nieuwe toepassing wilt toevoegen, klikt u op de knop **Nieuwe toepassing** boven aan het dialoogvenster.
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
-    ![De knop Nieuwe toepassing](common/add-new-app.png)
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-4. Typ **Confluence SAML SSO by Microsoft** in het zoekvak, selecteer **Confluence SAML SSO by Microsoft** in het deelvenster met resultaten en klik op de knop **Toevoegen** om de toepassing toe te voegen.
+1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **confluence SAML SSO per micro soft** Application Integration de sectie **beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
-    ![Confluence SAML SSO by Microsoft toevoegen vanuit de galerie](common/search-new-app.png)
+   ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
-
-In dit gedeelte configureert en test u eenmalige aanmelding van Azure AD met Confluence SAML SSO by Microsoft op basis van een testgebruiker met de naam **Britta Simon**.
-Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Confluence SAML SSO by Microsoft tot stand is gebracht.
-
-Om eenmalige aanmelding van Azure AD met Confluence SAML SSO by Microsoft te configureren en testen, moet u de volgende procedures voltooien:
-
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Eenmalige aanmelding voor Confluence SAML SSO by Microsoft configureren](#configure-confluence-saml-sso-by-microsoft-single-sign-on)** : de instellingen voor eenmalige aanmelding aan de clientzijde configureren.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Testgebruiker voor Confluence SAML SSO by Microsoft maken](#create-confluence-saml-sso-by-microsoft-test-user)** : als u een tegenhanger van Britta Simon in Confluence SAML SSO by Microsoft wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
-
-In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
-
-Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configureren met Confluence SAML SSO by Microsoft:
-
-1. Ga in de [ Azure-portal](https://portal.azure.com/) naar de pagina van de integratie van **Confluence SAML SSO by Microsoft** en selecteer **Eenmalige aanmelding**.
-
-    ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
-
-2. In het dialoogvenster **Een methode voor eenmalige aanmelding selecteren** selecteert u de modus **SAML/WS-Federation** om eenmalige aanmelding in te schakelen.
-
-    ![De modus Eenmalige aanmelding selecteren](common/select-saml-option.png)
-
-3. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u op het pictogram **Bewerken** om het dialoogvenster **Standaard SAML-configuratie** te openen.
-
-    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
-
-4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
-
-    ![Gegevens van domein en URL's voor eenmalige aanmelding van Confluence SAML SSO by Microsoft](common/sp-identifier-reply.png)
+1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<domain:port>/plugins/servlet/saml/auth`
 
@@ -156,27 +133,72 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id, antwoord-URL en aanmeldings-URL. 'Port' is optioneel als het een benoemde URL betreft. Deze waarden krijgt u tijdens de configuratie van Confluence, wat later in de zelfstudie wordt uitgelegd.
 
-4. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** op de knop kopiëren om de URL van de **app Federation-meta gegevens** te kopiëren en op uw computer op te slaan.
 
-    ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
+    ![De downloadkoppeling certificaat](common/copy-metadataurl.png)
 
-### <a name="configure-confluence-saml-sso-by-microsoft-single-sign-on"></a>Eenmalige aanmelding configureren voor Confluence SAML SSO by Microsoft
+### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
 
-1. In een ander browservenster aanmelden met uw exemplaar samenloop als beheerder.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-2. Wijs het tandwiel aan met de muisaanwijzer en klik op **Add-ons**.
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
+
+### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
+
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan confluence SAML SSO door micro soft.
+
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer **Confluence SAML SSO by Microsoft** in de lijst met toepassingen.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+
+   ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
+
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+
+## <a name="configure-confluence-saml-sso-by-microsoft-sso"></a>Confluence SAML SSO configureren met micro soft SSO
+
+1. Meld u in een ander browser venster aan bij uw confluence-exemplaar als beheerder.
+
+1. Wijs het tandwiel aan met de muisaanwijzer en klik op **Add-ons**.
 
     ![Eenmalige aanmelding configureren](./media/confluencemicrosoft-tutorial/addon1.png)
 
-3. Download de invoegtoepassing uit het [Microsoft Downloadcentrum](https://www.microsoft.com/download/details.aspx?id=56503). Upload de invoegtoepassing van Microsoft handmatig via het menu **Upload add-on**. Het downloaden van invoegtoepassingen valt onder de [Microsoft-serviceovereenkomst](https://www.microsoft.com/servicesagreement/).
+1. Download de invoegtoepassing uit het [Microsoft Downloadcentrum](https://www.microsoft.com/download/details.aspx?id=56503). Upload de invoegtoepassing van Microsoft handmatig via het menu **Upload add-on**. Het downloaden van invoegtoepassingen valt onder de [Microsoft-serviceovereenkomst](https://www.microsoft.com/servicesagreement/).
 
     ![Eenmalige aanmelding configureren](./media/confluencemicrosoft-tutorial/addon12.png)
 
-4. Zodra de invoegtoepassing is geïnstalleerd, wordt deze weergegeven bij **User Installed** in de sectie **Manage add-ons**. Klik op **Configure** om de nieuwe invoegtoepassing te configureren.
+1. Voer de volgende stappen uit om het confluence reverse proxy-scenario of load balancer scenario uit te voeren:
+
+    > [!NOTE]
+    > U moet de server eerst configureren met de onderstaande instructies en vervolgens de invoegtoepassing installeren.
+
+    a. Voeg het onderstaande kenmerk toe in de **connector**-poort in het bestand **server.xml** van de JIRA-servertoepassing.
+
+    `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
+
+    ![Eenmalige aanmelding configureren](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
+
+    b. Wijzig **Base URL** in **System Settings** overeenkomstig de proxy/load balancer.
+
+    ![Eenmalige aanmelding configureren](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
+
+1. Zodra de invoegtoepassing is geïnstalleerd, wordt deze weergegeven bij **User Installed** in de sectie **Manage add-ons**. Klik op **Configure** om de nieuwe invoegtoepassing te configureren.
 
     ![Eenmalige aanmelding configureren](./media/confluencemicrosoft-tutorial/addon13.png)
 
-5. Voer de volgende stappen uit op de configuratiepagina:
+1. Voer de volgende stappen uit op de configuratiepagina:
 
     ![Eenmalige aanmelding configureren](./media/confluencemicrosoft-tutorial/addon53.png)
 
@@ -189,109 +211,59 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
     1. Typ bij **Login Button Name** de naam van de knop die gebruikers van uw organisatie moeten zien op het aanmeldingsscherm.
 
-    1. Selecteer bij **SAML User ID Location** het keuzerondje **User ID is in the NameIdentifier element of the Subject statement** of **User ID is in an Attribute element**.  Deze ID is de samenloop gebruikers-ID. Als de gebruikers-ID niet overeen komt, klikt u vervolgens system niet toestaan dat gebruikers zich aanmelden. 
+    1. Selecteer bij **SAML User ID Location** het keuzerondje **User ID is in the NameIdentifier element of the Subject statement** of **User ID is in an Attribute element**.  Deze ID moet de confluence-gebruikers-ID zijn. Als de gebruikers-ID niet overeenkomt, kunnen gebruikers zich niet aanmelden met het systeem. 
 
        > [!Note]
        > De gebruikers-id in de standaard SAML-configuratie is de NameIdentifier. U kunt dit wijzigen in een kenmerkoptie en de juiste kenmerknaam invoeren.
-    
-    1. Als u selecteert **gebruikers-ID is in een kenmerkelement** optie, klikt u vervolgens in **kenmerknaam** tekstvak typt u de naam van het kenmerk waar gebruikers-ID wordt verwacht. 
+
+    1. Als u **gebruikers-id in een kenmerk element** optie selecteert, typt u in het tekstvak **kenmerk naam** de naam van het kenmerk waarin de gebruikers-id wordt verwacht. 
 
     1. Als u het federatieve domein (zoals ADFS, enzovoort) gebruikt met Azure AD, selecteert u de optie **Enable Home Realm Discovery** en geeft u een naam op voor **Domain Name**.
-    
+
     1. Typ bij **Domain Name** de domeinnaam als het aanmelding op basis van ADFS betreft.
 
-    1. Controleer **eenmalige aanmelding inschakelen om** als u zich wilt afmelden bij Azure AD wanneer een gebruiker zich afmeldt van samenloop. 
+    1. Schakel **eenmalige aanmelding inschakelen** in als u zich wilt afmelden bij Azure AD wanneer een gebruiker zich afmeldt bij confluence. 
 
-    1. Schakel **Force Azure aanmelding** selectievakje, als u zich wilt aanmelden via Azure AD-referenties alleen.
-    
+    1. Schakel het selectie vakje inschakelen van **Azure-aanmelding** in als u zich alleen wilt aanmelden via Azure AD-referenties.
+
        > [!Note]
-       > Toevoegen als u wilt het standaardformulier voor aanmelding voor de beheerdersaanmelding bij op de aanmeldingspagina inschakelen wanneer de kracht van azure-aanmelding is ingeschakeld, de queryparameter in de browser-URL.
+       > Als u het standaard aanmeldings formulier wilt inschakelen voor beheerders aanmelding op de aanmeldings pagina wanneer de geforceerde Azure-aanmelding is ingeschakeld, voegt u de query parameter toe aan de browser-URL.
        > `https://<domain:port>/login.action?force_azure_login=false`
-    
+
     1. Klik op **Save** om de instellingen op te slaan.
 
        > [!NOTE]
-       > Voor meer informatie over de installatie en probleemoplossing, gaat u naar [MS samenloop SSO-Connector-beheerdershandleiding](../ms-confluence-jira-plugin-adminguide.md). Er is ook een [Veelgestelde vragen over](../ms-confluence-jira-plugin-faq.md) voor uw hulp.
-
-### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
-
-Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
-
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
-
-    ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
-
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-
-    ![Knop Nieuwe gebruiker](common/new-user.png)
-
-3. In Gebruikerseigenschappen voert u de volgende stappen uit.
-
-    ![Het dialoogvenster Gebruiker](common/user-properties.png)
-
-    a. Voer in het veld **Naam** **Britta Simon**in.
-  
-    b. In de **gebruikersnaam** veldtype `brittasimon\@yourcompanydomain.extension`. Bijvoorbeeld BrittaSimon@contoso.com.
-
-    c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
-
-    d. Klik op **Create**.
-
-### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
-
-In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot Confluence SAML SSO by Microsoft.
-
-1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **Confluence SAML SSO by Microsoft**.
-
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
-
-2. Selecteer **Confluence SAML SSO by Microsoft** in de lijst met toepassingen.
-
-    ![De koppeling Confluence SAML SSO by Microsoft in de lijst met toepassingen](common/all-applications.png)
-
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
-
-    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
-
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
-
-    ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
-
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
-
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
-
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+       > Ga voor meer informatie over installatie en probleem oplossing naar de [Beheerders handleiding voor MS CONFLUENCE SSO connector](../ms-confluence-jira-plugin-adminguide.md). Er is ook een [Veelgestelde vragen](../ms-confluence-jira-plugin-faq.md) over uw hulp.
 
 ### <a name="create-confluence-saml-sso-by-microsoft-test-user"></a>Confluence SAML SSO by Microsoft-testgebruiker maken
 
-Als u wilt dat Azure AD-gebruikers kunnen zich aanmelden met samenloop on-premises server, moeten deze in samenloop SAML SSO worden ingericht door Microsoft. In het geval van Confluence SAML SSO by Microsoft is dat een handmatige taak.
+Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij confluence on-premises server, moeten ze worden ingericht in confluence SAML SSO van micro soft. In het geval van Confluence SAML SSO by Microsoft is dat een handmatige taak.
 
 **Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
 
-1. Meld u met uw on-premises samenloop server aan als beheerder.
+1. Meld u aan bij uw confluence on-premises server als beheerder.
 
-2. Wijs het tandwiel aan met de muisaanwijzer en klik op **User management**.
+1. Wijs het tandwiel aan met de muisaanwijzer en klik op **User management**.
 
-    ![Werknemer toevoegen](./media/confluencemicrosoft-tutorial/user1.png) 
+    ![Werknemer toevoegen](./media/confluencemicrosoft-tutorial/user1.png)
 
-3. Klik onder de sectie Users op het tabblad **Add Users**. Voer de volgende stappen uit in het dialoogvenster **Add a User**:
+1. Klik onder de sectie Users op het tabblad **Add Users**. Voer de volgende stappen uit in het dialoogvenster **Add a User**:
 
-    ![Werknemer toevoegen](./media/confluencemicrosoft-tutorial/user2.png) 
+    ![Werknemer toevoegen](./media/confluencemicrosoft-tutorial/user2.png)
 
-    a. Typ in het tekstvak **Username** het e-mailadres van de gebruiker, zoals Britta Simon.
+    a. Typ in het tekstvak **username** het e-mail adres van de gebruiker zoals B. Simon.
 
-    b. Typ in het tekstvak **Full Name** de volledige naam van de gebruiker, zoals Britta Simon.
+    b. Typ in het tekstvak **volledige naam** de volledige naam van de gebruiker zoals B. Simon.
 
-    c. Typ in het tekstvak **Email** het e-mailadres van de gebruiker, bijvoorbeeld Brittasimon@contoso.com.
+    c. Typ in het tekstvak **Email** het e-mailadres van de gebruiker, bijvoorbeeld B.Simon@contoso.com.
 
-    d. Typ in het tekstvak **Password** het wachtwoord van Britta Simon.
+    d. Typ in het tekstvak **wacht woord** het wacht woord voor B. Simon.
 
     e. Typ het wachtwoord ter bevestiging in het vak **Confirm Password**.
 
-    f. Klik op de knop **Add**.
+    f. Klik op **toevoegen** knop.
 
-### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
+## <a name="test-sso"></a>SSO testen
 
 In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
 
@@ -299,9 +271,10 @@ Als u in het toegangsvenster op de tegel Confluence SAML SSO by Microsoft klikt,
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Probeer confluence SAML SSO van micro soft met Azure AD](https://aad.portal.azure.com/)

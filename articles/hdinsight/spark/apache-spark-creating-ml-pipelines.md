@@ -1,6 +1,6 @@
 ---
 title: Een Apache Spark machine learning pijp lijn maken-Azure HDInsight
-description: Gebruik de Apache Spark machine learning bibliotheek om gegevens pijplijnen te maken.
+description: Gebruik de Apache Spark machine learning bibliotheek om gegevens pijplijnen te maken in azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 4ad68ef33eb469c7949c3f3efcd55d6765da4158
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 22583d82d8e422d8176fdb7cd70a98d229e8b6bb
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441869"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736386"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Een machine learning-pijplijn in Apache Spark maken
 

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 09/06/2019
 ms.author: helohr
-ms.openlocfilehash: cd80ed3c3db2453a333c87ed706dd358ba248b47
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 66441e852ebe0a391a5807b90eeadae230130815
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516181"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734451"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Zelfstudie: Een Tenant maken in Windows virtueel bureau blad preview
 
@@ -49,7 +49,7 @@ De service machtigingen verlenen:
    >https://login.microsoftonline.com/{tenant}/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
    >```
 
-2. Meld u aan bij de Windows-pagina toestemming voor virtueel bureau blad met een algemeen beheerders account. Als u bijvoorbeeld met de contoso-organisatie zou doen, is uw account mogelijk admin@contoso.com of admin@contoso.onmicrosoft.com.  
+2. Meld u aan bij de Windows-pagina toestemming voor virtueel bureau blad met een algemeen beheerders account. Als u bijvoorbeeld met de contoso-organisatie zou doen, is uw account mogelijk admin@contoso.com of admin@contoso.onmicrosoft.com.
 3. Selecteer **Accepteren**.
 4. Wacht één minuut zodat Azure AD toestemming kan geven.
 5. Open een browser en start de beheerder toestemming Flow naar de [Windows-client-app voor virtueel bureau blad](https://login.microsoftonline.com/common/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback).
@@ -78,6 +78,7 @@ De toepassingsrol van de TenantCreator toewijzen:
    ![Een scherm opname van de gebruikers en groepen die zijn toegewezen voor het beheren van de bedrijfs toepassing Windows Virtual Desktop. In de scherm opname ziet u slechts één toewijzing, die is ingesteld op standaard toegang.](media/tenant-default-access.png)
 5. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** op de Blade **toewijzing toevoegen** .
 6. Zoek naar een gebruikers account dat uw Windows Virtual Desktop-Tenant maakt. Voor de eenvoud kan dit het account van de globale beheerder zijn.
+   - Als u een micro soft-identiteits provider contosoadmin@live.com gebruikt contosoadmin@outlook.com, zoals of, kunt u zich mogelijk niet aanmelden bij Windows virtueel bureau blad. U kunt het beste een domein-specifiek account admin@contoso.com gebruiken admin@contoso.onmicrosoft.com , zoals in de plaats.
 
    ![Een scherm opname van het selecteren van een gebruiker om toe te voegen als ' TenantCreator '.](media/tenant-assign-user.png)
 

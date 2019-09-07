@@ -1,5 +1,5 @@
 ---
-title: Migreren naar granulaire toegang op basis van rollen voor cluster configuraties-Azure HDInsight
+title: Migreren naar granulaire op rollen gebaseerde toegang-Azure HDInsight-cluster configuraties
 description: Meer informatie over de wijzigingen die zijn vereist als onderdeel van de migratie naar gedetailleerde op rollen gebaseerde toegang voor HDInsight-cluster configuraties.
 author: tylerfox
 ms.author: tyfox
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 03bea7b9df929914e25ca97b382dc5c120b5a769
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 9eb77b3e4066712aecebee4660d50baf45957cb8
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69983021"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733234"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migreren naar gedetailleerde, op rollen gebaseerde toegang voor clusterconfiguraties
 

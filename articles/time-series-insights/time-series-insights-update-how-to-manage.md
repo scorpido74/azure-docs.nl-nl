@@ -1,6 +1,6 @@
 ---
-title: Inrichten en beheren van Azure Time Series-Preview | Microsoft Docs
-description: Informatie over hoe u kunt inrichten en beheren van Azure Time Series Insights Preview.
+title: Azure time series preview inrichten en beheren | Microsoft Docs
+description: Meer informatie over het inrichten en beheren van Azure Time Series Insights preview.
 author: ashannon7
 ms.author: dpalled
 ms.workload: big-data
@@ -8,92 +8,92 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 09/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: f626ce2e009a18afcb4d04b7caa6850ea58c7483
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a84c587a2666982e862f0640b30d2d6bef3b9a42
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446819"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744670"
 ---
-# <a name="provision-and-manage-azure-time-series-insights-preview"></a>Inrichten en beheren van Azure Time Series Insights Preview
+# <a name="provision-and-manage-azure-time-series-insights-preview"></a>Azure Time Series Insights preview inrichten en beheren
 
-In dit artikel wordt beschreven hoe u maken en beheren van een Azure Time Series Insights Preview-omgeving met behulp van de [Azure-portal](https://portal.azure.com/).
+In dit artikel wordt beschreven hoe u een Azure Time Series Insights voorbeeld omgeving maakt en beheert met behulp van de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="overview"></a>Overzicht
 
-Azure Time Series Insights Preview-omgevingen worden betalen naar gebruik (betalen per gebruik)-omgevingen.
+Azure Time Series Insights voorbeeld omgevingen zijn PAYG-omgevingen (betalen per gebruik).
 
-Als u een Azure Time Series Insights Preview-omgeving inricht, kunt u twee Azure-resources maken:
+Wanneer u een Azure Time Series Insights voorbeeld omgeving inricht, maakt u twee Azure-resources:
 
-* Een Azure Time Series Insights Preview-omgeving  
-* Een Azure Storage-account voor algemeen gebruik v1
+* Een Azure Time Series Insights preview-omgeving  
+* Een Azure Storage v1-account voor algemeen gebruik
   
-Informatie over [hoe u uw omgeving plannen](./time-series-insights-update-plan.md).
+Meer informatie [over het plannen van uw omgeving](./time-series-insights-update-plan.md).
 
 >[!IMPORTANT]
-> Voor de Preview-versie, zorg ervoor dat u een Azure-opslag voor algemeen gebruik v1 (GPv1)-account.
+> Zorg ervoor dat u een Azure Storage-account voor algemeen gebruik (GPv1) gebruikt voor de preview-versie.
 
-Desgewenst kunt u elke Azure Time Series Insights Preview-omgeving koppelen aan een gebeurtenisbron. Lees voor meer informatie, [een event hub-bron toevoegen](./time-series-insights-how-to-add-an-event-source-eventhub.md) en [een IoT hub-bron toevoegen](./time-series-insights-how-to-add-an-event-source-iothub.md). U opgeven een eigenschap Timestamp-ID en een unieke consumergroep tijdens deze stap. Hiermee zorgt u ervoor dat de omgeving toegang tot de bijbehorende gebeurtenissen heeft.
+U kunt eventueel elke Azure Time Series Insights-voorbeeld omgeving koppelen aan een gebeurtenis bron. Lees [een event hub bron toevoegen](./time-series-insights-how-to-add-an-event-source-eventhub.md) en [een IOT-hub-bron toevoegen](./time-series-insights-how-to-add-an-event-source-iothub.md)voor meer informatie. Tijdens deze stap geeft u een time stamp-ID-eigenschap en een unieke gebruikers groep op. Dit zorgt ervoor dat de omgeving toegang heeft tot de juiste gebeurtenissen.
 
-Nadat het inrichten is voltooid, kunt u het beleid voor toegang en andere kenmerken van de omgeving op basis van uw zakelijke vereisten.
+Nadat het inrichten is voltooid, kunt u uw toegangs beleid en andere omgevings kenmerken aanpassen aan uw bedrijfs vereisten.
 
 ## <a name="create-the-environment"></a>De omgeving maken
 
-De volgende stappen wordt beschreven hoe u een Azure Time Series Insights Preview-omgeving maken:
+In de volgende stappen wordt beschreven hoe u een Azure Time Series Insights-voorbeeld omgeving maakt:
 
-1. Selecteer de **PAYG** knop onder de **SKU** menu. Geef de omgevingsnaam van een, en kies welke abonnementsgroep en welke resourcegroep waarin u wilt gebruiken. Selecteer een ondersteunde locatie voor de omgeving worden gehost.
+1. Selecteer de knop **payg** onder het menu **SKU** . Geef een omgevings naam op en kies welke abonnements groep en welke resource groep u wilt gebruiken. Selecteer vervolgens een ondersteunde locatie voor de omgeving die u wilt hosten.
 
    [![Maak een Azure Time Series Insights-exemplaar.](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
-1. Voer een Time Series-id.
+1. Voer een tijd reeks-ID in.
 
     >[!NOTE]
-    > * De ID van de reeks tijd is hoofdlettergevoelig en is onveranderbaar. Worden (deze kan niet gewijzigd nadat deze ingesteld.)
-    > * Time Series-id mag maximaal drie sleutels.
-    > * Lees voor meer informatie over het selecteren van een Time Series-ID [Kies een Time Series-ID](./time-series-insights-update-how-to-id.md).
+    > * De tijd reeks-ID is hoofdletter gevoelig en onveranderbaar. (Deze kan niet worden gewijzigd nadat deze is ingesteld.)
+    > * Time Series-Id's kunnen Maxi maal drie sleutels hebben.
+    > * Lees voor meer informatie over het selecteren van een tijd reeks-ID [een tijd reeks-id kiezen](./time-series-insights-update-how-to-id.md).
 
-1. Maak een Azure storage-account door de naam van een opslagaccount selecteren en het toewijzen van een replicatie-optie. Hiermee maakt u dan automatisch een Azure Storage-account voor algemeen gebruik v1. Deze wordt gemaakt in dezelfde regio als de Azure Time Series Insights Preview-omgeving die u eerder hebt geselecteerd.
+1. Maak een Azure Storage-account door de naam van een opslag account te selecteren en een replicatie keuze aan te wijzen. Als u dit doet, wordt er automatisch een Azure Storage algemeen v1-account gemaakt. Deze wordt gemaakt in dezelfde regio als de Azure Time Series Insights voorbeeld omgeving die u eerder hebt geselecteerd.
 
-    [![Een Azure storage-account voor uw exemplaar maken](media/v2-update-manage/manage-five.png)](media/v2-update-manage/manage-five.png#lightbox)
+    [![Een Azure Storage-account maken voor uw exemplaar](media/v2-update-manage/manage-five.png)](media/v2-update-manage/manage-five.png#lightbox)
 
-1. U kunt eventueel een gebeurtenisbron toevoegen.
+1. U kunt desgewenst een gebeurtenis bron toevoegen.
 
-   * Time Series Insights ondersteunt [Azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md) en [Azure Event Hubs](./time-series-insights-how-to-add-an-event-source-eventhub.md) als opties. Hoewel u alleen de bron van een enkelvoudige gebeurtenis tijdens de aanmaak van de omgeving toevoegen kunt, kunt u een andere bron van gebeurtenis later toevoegen. Het is raadzaam om te maken van een unieke consumergroep om ervoor te zorgen dat alle gebeurtenissen zichtbaar voor uw exemplaar van Azure Time Series Insights Preview zijn. U kunt een bestaande consumergroep selecteert of maakt u een nieuwe consumentengroep bij het toevoegen van de bron van de gebeurtenis.
+   * Time Series Insights ondersteunt [azure IOT hub](./time-series-insights-how-to-add-an-event-source-iothub.md) en [Azure Event hubs](./time-series-insights-how-to-add-an-event-source-eventhub.md) als opties. Hoewel u slechts één gebeurtenis bron kunt toevoegen tijdens het maken van de omgeving, kunt u later een andere gebeurtenis bron toevoegen. Het is raadzaam om een unieke consumenten groep te maken om ervoor te zorgen dat alle gebeurtenissen zichtbaar zijn voor uw Azure Time Series Insights preview-exemplaar. U kunt een bestaande consumenten groep selecteren of een nieuwe Consumer groep maken bij het toevoegen van de gebeurtenis bron.
 
-   * Ook moet u de juiste tijdstempeleigenschap kiezen. Azure Time Series Insights gebruikt standaard de wachtrijduur van het bericht voor elke bron van gebeurtenis.
+   * U moet ook de juiste tijds tempel eigenschap kiezen. Azure Time Series Insights gebruikt standaard het bericht tijd in gebruik voor elke bron van de gebeurtenis.
 
      > [!TIP]
-     > De wachtrijduur van bericht mogelijk niet de beste geconfigureerde instelling wilt gebruiken in batch gebeurtenis of historische gegevens uploaden scenario's. Zorg ervoor dat uw beslissing om te gebruiken of een eigenschap Timestamp niet gebruiken in dergelijke gevallen controleren.
+     > De tijd waarop het bericht in gebruik is, is mogelijk niet de beste geconfigureerde instelling voor het gebruik van de scenario's voor het uploaden van gebeurtenissen in batch-of historische gegevens Zorg ervoor dat u uw beslissing hebt gecontroleerd of u in dergelijke gevallen geen tijds tempel eigenschap wilt gebruiken.
 
-     [![Tabblad voor bron van gebeurtenis](media/v2-update-manage/manage-two.png)](media/v2-update-manage/manage-two.png#lightbox)
+     [![Tabblad gebeurtenis bron](media/v2-update-manage/manage-two.png)](media/v2-update-manage/manage-two.png#lightbox)
 
-1. Bevestig dat uw omgeving is ingericht met de gewenste instellingen.
+1. Controleer of uw omgeving is ingericht met de gewenste instellingen.
 
-    [![Beoordelen en tabblad maken](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
+    [![Tabblad controleren en maken](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
 ## <a name="manage-the-environment"></a>De omgeving beheren
 
-U kunt uw Azure Time Series Insights Preview-omgeving beheren met behulp van de Azure-portal. Hier volgen de belangrijkste verschillen bij het beheren van een betalen per gebruik Azure Time Series Insights Preview-omgeving, in plaats van een S1 of S2-omgeving, met behulp van de Azure-portal:
+U kunt uw Azure Time Series Insights-voorbeeld omgeving beheren door gebruik te maken van de Azure Portal. Dit zijn de belangrijkste verschillen bij het beheren van een PAYG-Azure Time Series Insights, in tegens telling tot een S1-of S2-omgeving, met behulp van de Azure Portal:
 
-* De Azure-portal **overzicht** blade ongewijzigd in Azure Time Series Insights, behalve in de volgende manieren:
-  * Capaciteit wordt verwijderd, omdat dit concept niet relevant zijn voor omgevingen met betalen per gebruik is.
-  * De Time Series-ID-eigenschap is toegevoegd. Hiermee bepaalt u hoe uw gegevens zijn gepartitioneerd.
-  * Sets van verwijzingsgegevens worden verwijderd.
-  * De weergegeven URL zorgt ervoor dat u de [Azure Time Series Insights Preview explorer](./time-series-insights-update-explorer.md).
-  * De naam van uw Azure storage-account wordt vermeld.
+* De Blade **overzicht** van de Azure Portal is ongewijzigd in azure time series Insights, behalve op de volgende manieren:
+  * De capaciteit wordt verwijderd omdat dit concept niet relevant is voor PAYG-omgevingen.
+  * De ID-eigenschap van de tijd reeks is toegevoegd. Hiermee wordt bepaald hoe uw gegevens worden gepartitioneerd.
+  * Verwijzings gegevens sets worden verwijderd.
+  * Met de weer gegeven URL wordt u omgeleid naar de [Azure time series Insights preview Explorer](./time-series-insights-update-explorer.md).
+  * De naam van uw Azure Storage-account wordt vermeld.
 
-* De Azure-portal **configureren** blade in Azure Time Series Insights Preview is verwijderd omdat het betalen per gebruik-omgevingen zijn niet configureerbaar.
+* De Blade **configureren** van de Azure Portal is in azure time series Insights preview verwijderd, omdat payg-omgevingen niet kunnen worden geconfigureerd.
 
-* De Azure-portal **verwijzen naar gegevens** blade in Azure Time Series Insights Preview is verwijderd omdat de referentiegegevens is geen onderdeel van betalen per gebruik-omgevingen.
+* De Blade **referentie gegevens** van de Azure Portal is verwijderd in azure time series Insights preview omdat referentie gegevens geen onderdeel zijn van payg-omgevingen.
 
-[![Time Series Insights-Preview-omgeving in Azure portal](media/v2-update-manage/manage-four.png)](media/v2-update-manage/manage-four.png#lightbox)
+[![Time Series Insights voorbeeld omgeving in het Azure Portal](media/v2-update-manage/manage-four.png)](media/v2-update-manage/manage-four.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lezen [uw omgeving plannen](./time-series-insights-update-plan.md).
+- [Plan uw omgeving](./time-series-insights-update-plan.md).
 
-- Meer informatie over het [een event hub-bron toevoegen](./time-series-insights-how-to-add-an-event-source-eventhub.md).
+- Meer informatie over het [toevoegen van een event hub bron](./time-series-insights-how-to-add-an-event-source-eventhub.md).
 
-- Configureer [een IoT hub-bron](./time-series-insights-how-to-add-an-event-source-iothub.md).
+- [Een IOT hub-bron](./time-series-insights-how-to-add-an-event-source-iothub.md)configureren.

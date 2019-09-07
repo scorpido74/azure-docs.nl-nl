@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 11ae418ddbe007c6fd5aa44ef22ed7fddec9c702
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b34fd30b8e43e674b0b346672366d680d99ebd5c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087273"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734275"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>HTTP-Api's in Durable Functions (Azure Functions)
 
@@ -33,7 +33,11 @@ Elk van deze HTTP-Api's is een webhook-bewerking die rechtstreeks door de extens
 
 De klasse [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) toont een [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_) -API die kan worden gebruikt voor het genereren van een nettolading van http-antwoorden die koppelingen bevat naar alle ondersteunde bewerkingen. Hier volgt een voor beeld van een HTTP-activerings functie die laat zien hoe u deze API gebruikt:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
+
+### <a name="c-script"></a>C# Script
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/HttpStart/run.csx)]
 
@@ -75,7 +79,7 @@ Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d84
 
 ## <a name="async-operation-tracking"></a>Asynchrone bewerkingen bijhouden
 
-Het HTTP-antwoord dat eerder is vermeld, is ontworpen om te helpen met het implementeren van langlopende HTTP async-Api's met Durable Functions. Dit wordt soms ook wel het polling Consumer- *patroon*genoemd. De client/server-stroom werkt als volgt:
+Het HTTP-antwoord dat eerder is vermeld, is ontworpen om te helpen met het implementeren van langlopende HTTP async-Api's met Durable Functions. Dit wordt soms ook wel het *polling Consumer-patroon*genoemd. De client/server-stroom werkt als volgt:
 
 1. De client geeft een HTTP-aanvraag voor het starten van een langlopend proces, zoals een Orchestrator-functie.
 2. De http-trigger van het doel retourneert een http 202 `Location` -antwoord met `statusQueryGetUri` een header met de waarde.

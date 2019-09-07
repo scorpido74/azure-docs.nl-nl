@@ -1,6 +1,6 @@
 ---
 title: Cluster capaciteit plannen in azure HDInsight
-description: Een HDInsight-cluster opgeven voor capaciteit en prestaties.
+description: Bepaal de belangrijkste vragen voor capaciteit en prestaties plannen van een Azure HDInsight-cluster.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3d82846c02754f23b4a2e86a7881c952e503b36f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 608d097f1ebad9e4e1092c7ec54a573ccb58ad81
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207151"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734669"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Capaciteits planning voor HDInsight-clusters
 
@@ -47,7 +47,7 @@ Als u al een opslag account of Data Lake Storage hebt met uw gegevens en deze op
 
 Nadat u een HDInsight-cluster hebt geïmplementeerd, kunt u aanvullende Azure Storage accounts koppelen of andere Data Lake Storage gebruiken. Al uw opslag accounts moeten zich op dezelfde locatie bevinden als uw cluster. Een Data Lake Storage kan zich op een andere locatie bevinden, hoewel dit een latentie voor lezen/schrijven van gegevens kan veroorzaken.
 
-Azure Storage heeft een [](../azure-subscription-service-limits.md#storage-limits)aantal capaciteits limieten, terwijl data Lake Storage gen1 vrijwel onbeperkt is.
+Azure Storage heeft een aantal [capaciteits limieten](../azure-subscription-service-limits.md#storage-limits), terwijl data Lake Storage gen1 vrijwel onbeperkt is.
 
 Een cluster kan toegang krijgen tot een combi natie van verschillende opslag accounts. Typische voor beelden zijn:
 
@@ -74,7 +74,7 @@ De grootte en het type van de virtuele machine zijn afhankelijk van CPU-verwerki
 
 * RAM: De VM-grootte bepaalt ook de hoeveelheid RAM-geheugen dat beschikbaar is in de virtuele machine. Voor werk belastingen waarbij gegevens in het geheugen worden opgeslagen voor verwerking, in plaats van de schijf te lezen, moet u ervoor zorgen dat uw worker-knoop punten voldoende geheugen hebben om de gegevens te passen.
 
-* Netwerk Voor de meeste cluster typen worden de gegevens die door het cluster worden verwerkt, niet op de lokale schijf opgeslagen, maar in een externe opslag service, zoals Data Lake Storage of Azure Storage. Houd rekening met de netwerk bandbreedte en door Voer tussen de VM van het knoop punt en de opslag service. De netwerk bandbreedte die beschikbaar is voor een virtuele machine neemt doorgaans toe met grotere grootten. Zie [overzicht van VM](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)-grootten voor meer informatie.
+* Netwerk Voor de meeste cluster typen worden de gegevens die door het cluster worden verwerkt, niet op de lokale schijf opgeslagen, maar in een externe opslag service, zoals Data Lake Storage of Azure Storage. Houd rekening met de netwerk bandbreedte en door Voer tussen de VM van het knoop punt en de opslag service. De netwerk bandbreedte die beschikbaar is voor een virtuele machine neemt doorgaans toe met grotere grootten. Zie [overzicht van VM-grootten](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)voor meer informatie.
 
 ## <a name="choose-the-cluster-scale"></a>De cluster schaal kiezen
 

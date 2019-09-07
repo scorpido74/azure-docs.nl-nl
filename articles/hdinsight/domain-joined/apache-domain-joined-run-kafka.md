@@ -1,18 +1,18 @@
 ---
-title: Zelfstudie - beleid van Apache Kafka in HDInsight met Enterprise-beveiligingspakket - Azure configureren
-description: 'Zelfstudie: informatie over het configureren van Apache Ranger-beleidsregels voor Kafka in Azure HDInsight met Enterprise-beveiligingspakket.'
+title: Zelf studie-Apache Kafka met Enterprise Security Package in azure HDInsight
+description: 'Zelf studie: informatie over het configureren van Apache zwerver-beleids regels voor Kafka in azure HDInsight met Enterprise Security Package.'
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 06/24/2019
-ms.openlocfilehash: ba16a975aa3b1e60393006ef49a7e422c572931e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 09/04/2019
+ms.openlocfilehash: 6be97e3a94a10097e53863577da5bf9c6cde5ea0
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441376"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734908"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Zelfstudie: Apache Kafka-beleidsregels configureren in HDInsight met Enterprise Security Package (preview)
 
@@ -28,7 +28,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisite"></a>Vereiste
 
-Een [HDInsight Kafka-cluster met Enterprise-beveiligingspakket](./apache-domain-joined-configure-using-azure-adds.md).
+Een [HDInsight Kafka-cluster met Enterprise Security Package](./apache-domain-joined-configure-using-azure-adds.md).
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Verbinding maken met de beheerinterface van Apache Ranger
 
@@ -48,9 +48,9 @@ Maak een Ranger-beleid voor **sales_user** en **marketing_user**.
 
 1. Open de **beheerinterface van Ranger**.
 
-2. Selecteer  **\<ClusterName > _kafka** onder **Kafka**. Er kan één vooraf geconfigureerd beleid worden weergegeven.
+2. **Selecteer\<clustername > _kafka** onder **Kafka**. Er kan één vooraf geconfigureerd beleid worden weergegeven.
 
-3. Selecteer **nieuw beleid toevoegen** en voer de volgende waarden:
+3. Selecteer **Nieuw beleid toevoegen** en voer de volgende waarden in:
 
    |Instelling  |Voorgestelde waarde  |
    |---------|---------|
@@ -68,9 +68,9 @@ Maak een Ranger-beleid voor **sales_user** en **marketing_user**.
 
    Als er niet automatisch een domeingebruiker wordt ingevuld bij **Select User**, wacht u even totdat Ranger is gesynchroniseerd met AAD.
 
-4. Selecteer **toevoegen** het beleid op te slaan.
+4. Selecteer **toevoegen** om het beleid op te slaan.
 
-5. Selecteer **nieuw beleid toevoegen** en voer de volgende waarden:
+5. Selecteer **Nieuw beleid toevoegen** en voer de volgende waarden in:
 
    |Instelling  |Voorgestelde waarde  |
    |---------|---------|
@@ -81,7 +81,7 @@ Maak een Ranger-beleid voor **sales_user** en **marketing_user**.
 
    ![De pagina Create Policy in de beheerinterface van Apache Ranger](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
 
-6. Selecteer **toevoegen** het beleid op te slaan.
+6. Selecteer **toevoegen** om het beleid op te slaan.
 
 ## <a name="create-topics-in-a-kafka-cluster-with-esp"></a>Onderwerpen maken in een Kafka-cluster met ESP
 
@@ -108,7 +108,7 @@ Twee onderwerpen, `salesevents` en `marketingspend`, maken:
    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
    ```
 
-   Voordat u doorgaat moet u mogelijk uw ontwikkelomgeving instellen als u hebt nog niet gedaan. U moet-onderdelen, zoals de Java JDK, Apache Maven en een SSH-client met scp. Zie voor meer informatie, [installatie-instructies](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
+   Voordat u doorgaat, moet u mogelijk uw ontwikkel omgeving instellen als u dat nog niet hebt gedaan. U hebt onderdelen nodig zoals Java JDK, Apache Maven en een SSH-client met SCP. Zie [Setup-instructies](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)voor meer informatie.
 
 1. Download de [voorbeelden voor aan een domein gekoppelde Apache Kafka voor producer/consumer](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 
@@ -187,7 +187,7 @@ Op basis van de geconfigureerde Ranger-beleidsregels kan **sales_user** het onde
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u niet verder om door te gaan om deze toepassing te gebruiken, verwijdert u de Kafka-cluster die u hebt gemaakt met de volgende stappen uit:
+Als u deze toepassing niet wilt blijven gebruiken, verwijdert u het Kafka-cluster dat u hebt gemaakt met de volgende stappen:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Typ **HDInsight** in het **Zoekvak** bovenaan.

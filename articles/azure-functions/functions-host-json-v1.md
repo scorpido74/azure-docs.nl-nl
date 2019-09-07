@@ -1,20 +1,18 @@
 ---
 title: host. json-verwijzing voor Azure Functions 1. x
 description: Referentie documentatie voor het Azure Functions host. JSON-bestand met de V1-runtime.
-services: functions
 author: ggailey777
-manager: jeconnoc
-keywords: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: c169d9cc774a2c6264ba1520240005f13ba9d2da
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b373afc9b5a60abee7a587fc405320fe3c583369
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096460"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735158"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>host. json-verwijzing voor Azure Functions 1. x
 
@@ -46,6 +44,13 @@ Voor de volgende voor beeld- *JSON* -bestanden zijn alle mogelijke opties opgege
         "sampling": {
           "isEnabled": true,
           "maxTelemetryItemsPerSecond" : 5
+        }
+    },
+    "documentDB": {
+        "connectionMode": "Gateway",
+        "protocol": "Https",
+        "leaseOptions": {
+            "leasePrefix": "prefix"
         }
     },
     "eventHub": {
@@ -86,6 +91,9 @@ Voor de volgende voor beeld- *JSON* -bestanden zijn alle mogelijke opties opgege
       "maxDequeueCount": 5,
       "newBatchThreshold": 8
     },
+    "sendGrid": {
+        "from": "Contoso Group <admin@contoso.com>"
+    },
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
@@ -116,13 +124,35 @@ In de volgende secties van dit artikel wordt elke eigenschap op het hoogste nive
 
 [!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
 
+## <a name="documentdb"></a>Documentdatabase
+
+Configuratie-instellingen voor de [Azure Cosmos DB trigger en bindingen](functions-bindings-cosmosdb.md).
+
+```json
+{
+    "documentDB": {
+        "connectionMode": "Gateway",
+        "protocol": "Https",
+        "leaseOptions": {
+            "leasePrefix": "prefix1"
+        }
+    }
+}
+```
+
+|Eigenschap  |Standaard | Description |
+|---------|---------|---------|
+|GatewayMode|Gateway|De verbindings modus die wordt gebruikt door de functie bij het maken van verbinding met de Azure Cosmos DB-service. Opties zijn `Direct` en`Gateway`|
+|Protocol|Https|Het verbindings protocol dat door de functie wordt gebruikt bij het verbinden met de Azure Cosmos DB-service.  Lees [hier voor een uitleg van beide modi](../cosmos-db/performance-tips.md#networking)|
+|leasePrefix|N.v.t.|Het lease voorvoegsel dat moet worden gebruikt voor alle functies in een app.|
+
 ## <a name="durabletask"></a>durableTask
 
 [!INCLUDE [durabletask](../../includes/functions-host-json-durabletask.md)]
 
 ## <a name="eventhub"></a>eventHub
 
-Configuratie-instellingen voor [Event hub-triggers en](functions-bindings-event-hubs.md)-bindingen.
+Configuratie-instellingen voor [Event hub-triggers en-bindingen](functions-bindings-event-hubs.md).
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
@@ -217,7 +247,7 @@ Hiermee wordt gefilterd op Logboeken die zijn geschreven door een [ILogger-objec
 
 ## <a name="queues"></a>Bestel
 
-Configuratie-instellingen voor [opslag wachtrij-Triggers en](functions-bindings-storage-queue.md)-bindingen.
+Configuratie-instellingen voor [opslag wachtrij-Triggers en-bindingen](functions-bindings-storage-queue.md).
 
 ```json
 {
@@ -238,6 +268,21 @@ Configuratie-instellingen voor [opslag wachtrij-Triggers en](functions-bindings-
 |batchSize|16|Het aantal wachtrij berichten dat door de functions-runtime gelijktijdig wordt opgehaald en processen parallel. Wanneer het nummer dat wordt verwerkt, naar de `newBatchThreshold`wordt Verwerk, wordt er door de runtime een andere batch opgehaald en worden deze berichten verwerkt. Het maximum aantal gelijktijdige berichten dat per functie wordt verwerkt, is `batchSize` plus `newBatchThreshold`. Deze limiet geldt afzonderlijk voor elke door de wachtrij geactiveerde functie. <br><br>Als u een parallelle uitvoering wilt voor komen voor berichten die worden ontvangen op één wachtrij, `batchSize` kunt u instellen op 1. Met deze instelling elimineert u echter alleen gelijktijdigheid, zolang uw functie-app wordt uitgevoerd op één virtuele machine (VM). Als de functie-app wordt geschaald naar meerdere Vm's, kan elke virtuele machine één exemplaar van elke door de wachtrij geactiveerde functie uitvoeren.<br><br>De maximum `batchSize` waarde is 32. | 
 |maxDequeueCount|5|Het aantal keren dat een bericht moet worden verwerkt voordat het naar de verontreinigde wachtrij wordt verplaatst.| 
 |newBatchThreshold|batchSize/2|Telkens wanneer het aantal berichten dat gelijktijdig wordt verwerkt, naar dit nummer wordt opgehaald, haalt de runtime een andere batch op.| 
+
+## <a name="sendgrid"></a>SendGrid
+
+Configuratie-instelling voor de [SendGrind-uitvoer binding](functions-bindings-sendgrid.md)
+
+```json
+{
+    "sendGrid": {
+        "from": "Contoso Group <admin@contoso.com>"
+    }
+```
+
+|Eigenschap  |Standaard | Description |
+|---------|---------|---------| 
+|from|N.v.t.|Het e-mail adres van de afzender over alle functies.| 
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -287,7 +332,7 @@ Configuratie-instellingen voor het gedrag van Singleton-vergren deling. Zie [git
 
 *Versie 1. x*
 
-Configuratie-instellingen voor logboeken die u maakt met `TraceWriter` behulp van een-object. Zie [ C# ](functions-reference-csharp.md#logging) logboek registratie en [node. js-logboek registratie](functions-reference-node.md#writing-trace-output-to-the-console).
+Configuratie-instellingen voor logboeken die u maakt met `TraceWriter` behulp van een-object. Zie [ C# logboek registratie en](functions-reference-csharp.md#logging) [node. js-logboek registratie](functions-reference-node.md#writing-trace-output-to-the-console).
 
 ```json
 {

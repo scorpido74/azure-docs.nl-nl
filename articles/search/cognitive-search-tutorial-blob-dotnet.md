@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: ad0710a3492eeecd56989e627211da5d4a5e0e0a
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 260f6a6141903ea1fd7edcfe2e031091bba322be
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186253"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744758"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Vind Cognitive Services-API's aanroepen in een Azure Search Indexing-pijp lijn
 
@@ -66,9 +66,9 @@ Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de
 
 ## <a name="prepare-sample-data"></a>Voorbeeld gegevens voorbereiden
 
-De verrijkingspijplijn haalt gegevens uit Azure-gegevensbronnen. Brongegevens moeten afkomstig zijn van een ondersteund type gegevensbron van een [Azure Search-indexeerfunctie](search-indexer-overview.md). Azure Table Storage wordt niet ondersteund voor cognitieve Zoek opdrachten. In dit voorbeeld gebruiken we blobopslag om meerdere inhoudstypen te laten zien.
+De verrijkingspijplijn haalt gegevens uit Azure-gegevensbronnen. Brongegevens moeten afkomstig zijn van een ondersteund type gegevensbron van een [Azure Search-indexeerfunctie](search-indexer-overview.md). In dit voorbeeld gebruiken we blobopslag om meerdere inhoudstypen te laten zien.
 
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com), navigeer naar uw Azure Storage-account, klik op blobs en klik vervolgens op **+ container**.
+1. [Meld u aan bij de Azure Portal](https://portal.azure.com), navigeer naar uw Azure Storage-account, klik op **blobs**en klik vervolgens op **+ container**.
 
 1. [Maak een BLOB-container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) om voorbeeld gegevens te bevatten. U kunt het niveau van open bare toegang instellen op een van de geldige waarden. In deze zelf studie wordt ervan uitgegaan dat de container naam ' Basic-demo-data-PR ' is.
 
@@ -299,7 +299,7 @@ LanguageDetectionSkill languageDetectionSkill = new LanguageDetectionSkill(
 
 ### <a name="text-split-skill"></a>Vaardigheid tekst splitsen
 
-Met de onderstaande vaardigheid splitsen worden tekst op pagina's gesplitst en wordt de pagina lengte beperkt tot 4.000 tekens zoals `String.Length`gemeten door. Het algoritme probeert de tekst te splitsen in segmenten die de meeste `maximumPageLength` grootte hebben. In dit geval is het algoritme het beste om de zin op een zin te kraken, zodat de grootte van het segment enigszins kleiner is dan `maximumPageLength`.
+Met de **onderstaande vaardigheid splitsen worden** tekst op pagina's gesplitst en wordt de pagina lengte beperkt tot 4.000 tekens zoals `String.Length`gemeten door. Het algoritme probeert de tekst te splitsen in segmenten die de meeste `maximumPageLength` grootte hebben. In dit geval is het algoritme het beste om de zin op een zin te kraken, zodat de grootte van het segment enigszins kleiner is dan `maximumPageLength`.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();

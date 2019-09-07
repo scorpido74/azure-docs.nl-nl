@@ -1,5 +1,5 @@
 ---
-title: RESTful API met CORS hosten - Azure App Service | Microsoft Docs
+title: 'Zelfstudie: REST-API hosten met CORS-Azure App Service'
 description: Informatie over hoe u met Azure App Service uw RESTful API's met CORS-ondersteuning kunt hosten.
 services: app-service\api
 documentationcenter: dotnet
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/21/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b8c1130a45f60b9caaacd365cd1c256f50ed7675
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 137b569820ea7394b6a3beb24129c905a2efd123
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66138653"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743863"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Zelfstudie: RESTful API hosten met CORS in Azure App Service
 
@@ -98,7 +98,7 @@ In deze stap implementeert u de met SQL Database verbonden .NET Core-app met App
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
-### <a name="create-a-web-app"></a>Een webtoepassing maken
+### <a name="create-a-web-app"></a>Een web-app maken
 
 [!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-dotnetcore-win-no-h.md)] 
 

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 828bcaa8c93454ba845c30c03c76144310891123
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe3000181ed02e3640e7af48fa492f4a7db55191
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098259"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734573"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Durable Functions patronen en technische concepten (Azure Functions)
 
@@ -37,6 +37,25 @@ In het patroon functie koppeling wordt een reeks functies in een specifieke volg
 
 U kunt Durable Functions gebruiken om het patroon van de functie koppeling beknopt te implementeren, zoals wordt weer gegeven in het volgende voor beeld:
 
+#### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
+
+```csharp
+public static async Task<object> Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    try
+    {
+        var x = await context.CallActivityAsync<object>("F1");
+        var y = await context.CallActivityAsync<object>("F2", x);
+        var z = await context.CallActivityAsync<object>("F3", y);
+        return  await context.CallActivityAsync<object>("F4", z);
+    }
+    catch (Exception)
+    {
+        // Error handling or compensation goes here.
+    }
+}
+```
+
 #### <a name="c-script"></a>C#-script
 
 ```csharp
@@ -57,7 +76,7 @@ public static async Task<object> Run(DurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> Er zijn subtiele verschillen tussen het schrijven van een vooraf gecompileerde, duurzame functie in C# en het schrijven van C# een vooraf gecompileerde, duurzame functie in het script dat in het voor beeld wordt weer gegeven. In een C# vooraf gecompileerde functie moeten duurzame para meters worden gedecoreerd met de betreffende kenmerken. Een voor beeld is `[OrchestrationTrigger]` het kenmerk voor `DurableOrchestrationContext` de para meter. Als de C# para meters in een vooraf gecompileerde, duurzame functie niet op de juiste wijze zijn gebundeld, kunnen de variabelen niet worden geïnjecteerd in de functie en treedt er een fout op. Zie voor meer voor beelden de [Azure-functions-duurzame extensie voorbeelden op github](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples).
+> Er zijn subtiele verschillen tussen het schrijven van een vooraf gecompileerde, duurzame functie in C# en het schrijven C# van een vooraf gecompileerde, duurzame functie in een script. In een C# vooraf gecompileerde functie moeten duurzame para meters worden gedecoreerd met de betreffende kenmerken. Een voor beeld is `[OrchestrationTrigger]` het kenmerk voor `DurableOrchestrationContext` de para meter. Als de C# para meters in een vooraf gecompileerde, duurzame functie niet op de juiste wijze zijn gebundeld, kunnen de variabelen niet worden geïnjecteerd in de functie en treedt er een fout op. Zie voor meer voor beelden de [Azure-functions-duurzame extensie voorbeelden op github](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples).
 
 #### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
@@ -88,6 +107,29 @@ In het patroon uitwaaieren/ventilatoren voert u meerdere functies parallel uit e
 Met normale functies kunt u uitwaaieren door de functie meerdere berichten naar een wachtrij te verzenden. Fanning weer in is veel lastiger. Als u in een normale functie wilt inwaaieren, schrijft u code om bij te houden wanneer de functies die door de wachtrij worden geactiveerd, eindigen en vervolgens de functie-uitvoer op te slaan. 
 
 Met de extensie Durable Functions wordt dit patroon afgehandeld met relatief eenvoudige code:
+
+#### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
+
+```csharp
+public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    var parallelTasks = new List<Task<int>>();
+
+    // Get a list of N work items to process in parallel.
+    object[] workBatch = await context.CallActivityAsync<object[]>("F1");
+    for (int i = 0; i < workBatch.Length; i++)
+    {
+        Task<int> task = context.CallActivityAsync<int>("F2", workBatch[i]);
+        parallelTasks.Add(task);
+    }
+
+    await Task.WhenAll(parallelTasks);
+
+    // Aggregate all N outputs and send the result to F3.
+    int sum = parallelTasks.Sum(t => t.Result);
+    await context.CallActivityAsync("F3", sum);
+}
+```
 
 #### <a name="c-script"></a>C#-script
 
@@ -177,7 +219,29 @@ De uitbrei ding Durable Functions heeft ingebouwde webhooks waarmee langlopende 
 
 Hier volgen enkele voor beelden van het gebruik van het HTTP API-patroon:
 
-#### <a name="c"></a>C#
+#### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
+
+```csharp
+// An HTTP-triggered function starts a new orchestrator function instance.
+[FunctionName("StartNewOrchestration")]
+public static async Task<HttpResponseMessage> Run(
+    [HttpTrigger] HttpRequestMessage req,
+    [OrchestrationClient] DurableOrchestrationClient starter,
+    string functionName,
+    ILogger log)
+{
+    // The function name comes from the request URL.
+    // The function input comes from the request content.
+    dynamic eventData = await req.Content.ReadAsAsync<object>();
+    string instanceId = await starter.StartNewAsync(functionName, eventData);
+
+    log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
+
+    return starter.CreateCheckStatusResponse(req, instanceId);
+}
+```
+
+#### <a name="c-script"></a>C#-script
 
 ```csharp
 // An HTTP-triggered function starts a new orchestrator function instance.
@@ -233,6 +297,35 @@ Een voor beeld van het monitor patroon is het terugdraaien van het eerdere async
 In een paar regels code kunt u Durable Functions gebruiken om meerdere monitors te maken die wille keurige eind punten observeren. De monitors kunnen de uitvoering beëindigen wanneer aan een voor waarde wordt voldaan, of de [DurableOrchestrationClient](durable-functions-instance-management.md) kan de monitors beëindigen. U kunt het interval van `wait` een monitor wijzigen op basis van een specifieke voor waarde (bijvoorbeeld exponentiële uitstel.) 
 
 Met de volgende code wordt een basis monitor geïmplementeerd:
+
+#### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
+
+```csharp
+[FunctionName("Orchestrator")]
+public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    int jobId = context.GetInput<int>();
+    int pollingInterval = GetPollingInterval();
+    DateTime expiryTime = GetExpiryTime();
+
+    while (context.CurrentUtcDateTime < expiryTime)
+    {
+        var jobStatus = await context.CallActivityAsync<string>("GetJobStatus", jobId);
+        if (jobStatus == "Completed")
+        {
+            // Perform an action when a condition is met.
+            await context.CallActivityAsync("SendAlert", machineId);
+            break;
+        }
+
+        // Orchestration sleeps until this time.
+        var nextCheck = context.CurrentUtcDateTime.AddSeconds(pollingInterval);
+        await context.CreateTimer(nextCheck, CancellationToken.None);
+    }
+
+    // Perform more work here, or let the orchestration end.
+}
+```
 
 #### <a name="c-script"></a>C#-script
 
@@ -304,6 +397,32 @@ U kunt het patroon in dit voor beeld implementeren met behulp van een Orchestrat
 
 In deze voor beelden wordt een goedkeurings proces voor het voor beeld van het menselijke interactie patroon gemaakt:
 
+#### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
+
+```csharp
+[FunctionName("Orchestrator")]
+public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    await context.CallActivityAsync("RequestApproval");
+    using (var timeoutCts = new CancellationTokenSource())
+    {
+        DateTime dueTime = context.CurrentUtcDateTime.AddHours(72);
+        Task durableTimeout = context.CreateTimer(dueTime, timeoutCts.Token);
+
+        Task<bool> approvalEvent = context.WaitForExternalEvent<bool>("ApprovalEvent");
+        if (approvalEvent == await Task.WhenAny(approvalEvent, durableTimeout))
+        {
+            timeoutCts.Cancel();
+            await context.CallActivityAsync("ProcessApproval", approvalEvent.Result);
+        }
+        else
+        {
+            await context.CallActivityAsync("Escalate");
+        }
+    }
+}
+```
+
 #### <a name="c-script"></a>C#-script
 
 ```csharp
@@ -355,6 +474,20 @@ Voor het maken van de duurzame timer `context.CreateTimer` , aanroep (.net `cont
 
 Een externe client kan de gebeurtenis melding verzenden naar een wacht functie die gebruikmaakt van de [ingebouwde http-api's](durable-functions-http-api.md#raise-event) of met behulp van de [DurableOrchestrationClient. RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) -API van een andere functie:
 
+#### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
+
+```csharp
+public static async Task Run(
+  [HttpTrigger] string instanceId,
+  [OrchestrationClient] DurableOrchestrationClient client)
+{
+    bool isApproved = true;
+    await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
+}
+```
+
+#### <a name="c-script"></a>C# Script
+
 ```csharp
 public static async Task Run(string instanceId, DurableOrchestrationClient client)
 {
@@ -362,6 +495,8 @@ public static async Task Run(string instanceId, DurableOrchestrationClient clien
     await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
 }
 ```
+
+#### <a name="javascript"></a>Javascript
 
 ```javascript
 const df = require("durable-functions");

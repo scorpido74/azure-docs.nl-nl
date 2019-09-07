@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Een R-script uitvoeren op een cluster ML-Services in Azure HDInsight met behulp van R-console'
-description: In de Quick Start, kunt u een R-script uitvoeren op een ML-Services-cluster in Azure HDInsight met behulp van R-console.
+title: 'Quickstart: R-script uitvoeren op ML-Services met behulp van R-console-Azure HDInsight'
+description: In de Quick Start voert u een R-script uit op een cluster met MILLILITER Services in azure HDInsight met behulp van de R-console.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,29 +8,29 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 682ee4f44dcdd2619668645fa7a8aa22cb645273
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 44bc90a4c556108b4b6874a2d1297a6467413824
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450924"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736364"
 ---
-# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Quickstart: Een R-script uitvoeren op een cluster ML-Services in Azure HDInsight met behulp van R-console
+# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Quickstart: Een R-script uitvoeren op een ML Services-cluster in azure HDInsight met behulp van de R-console
 
-ML-Services op Azure HDInsight kunnen R-scripts met Apache Spark en Apache Hadoop MapReduce gedistribueerde berekeningen kunt uitvoeren. ML-Services wordt bepaald hoe aanroepen zijn uitgevoerd door de instelling van de compute-context. Het edge-knooppunt van een cluster biedt een handige locatie verbinding maken met het cluster en uw R-scripts uit te voeren. Met een edge-knooppunt hebt u de mogelijkheid van het uitvoeren van de geparallelliseerde gedistribueerde functies van RevoScaleR over de kernen van het edge-knooppunt-server. U kunt ook ze uitvoeren op de knooppunten van het cluster met behulp van RevoScaleR Hadoop-Mapreduce of Apache Spark compute-context.
+Met ML-Services op Azure HDInsight kunnen R-scripts Apache Spark en Apache Hadoop MapReduce gebruiken om gedistribueerde berekeningen uit te voeren. MILLILITERs services bepalen hoe aanroepen worden uitgevoerd door de compute-context in te stellen. Het Edge-knoop punt van een cluster biedt een handige plaats om verbinding te maken met het cluster en om uw R-scripts uit te voeren. Met een Edge-knoop punt hebt u de mogelijkheid om de geparallel gedistribueerde functies van RevoScaleR uit te voeren op de kernen van de server met het Edge-knoop punt. U kunt ze ook uitvoeren op de knoop punten van het cluster met behulp van de Hadoop-toewijzing van RevoScaleR of Apache Spark reken contexten.
 
-In deze snelstartgids leert u hoe u een R-script uitvoeren met R-console waarin wordt gedemonstreerd hoe Spark voor gedistribueerde R-berekeningen. U definieert een compute-context voor het uitvoeren van berekeningen lokaal op een edge-knooppunt en opnieuw worden verdeeld over de knooppunten in het HDInsight-cluster.
+In deze Quick Start leert u hoe u een R-script kunt uitvoeren met R-console waarin wordt getoond dat Spark wordt gebruikt voor gedistribueerde R-berekeningen. U definieert een compute-context om berekeningen lokaal uit te voeren op een Edge-knoop punt en wordt opnieuw gedistribueerd over de knoop punten in het HDInsight-cluster.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een ML-Services-cluster in HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **ML-Services** voor **clustertype**.
+* Een cluster met MILLILITERs Services op HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **ml Services** voor het **cluster type**.
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
 ## <a name="connect-to-r-console"></a>Verbinding maken met R-console
 
-1. Verbinding maken met het edge-knooppunt van een ML-Services HDInsight-cluster via SSH. De onderstaande opdracht bewerken door te vervangen `CLUSTERNAME` met de naam van het cluster, en voer vervolgens de opdracht:
+1. Maak met SSH verbinding met het Edge-knoop punt van een HDInsight-cluster van ML. Bewerk de onderstaande opdracht door de `CLUSTERNAME` naam van uw cluster te vervangen en voer de volgende opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ed-ssh.azurehdinsight.net
@@ -47,7 +47,7 @@ In deze snelstartgids leert u hoe u een R-script uitvoeren met R-console waarin 
 
 ## <a name="use-a-compute-context"></a>Een compute-context gebruiken
 
-1. U kunt de R-code invoeren vanuit de `>`-prompt. Gebruik de volgende code om voorbeeldgegevens te laden in de standaardopslag voor HDInsight:
+1. U kunt de R-code invoeren vanuit de `>`-prompt. Gebruik de volgende code om voorbeeld gegevens te laden in de standaard opslag voor HDInsight:
 
     ```R
     # Set the HDFS (WASB) location of example data
@@ -82,9 +82,9 @@ In deze snelstartgids leert u hoe u een R-script uitvoeren met R-console waarin 
      rxHadoopCopyFromLocal(source, bigDataDirRoot)
     ```
 
-    Deze stap kan ongeveer 10 minuten duren om uit te voeren.
+    Het kan ongeveer tien minuten duren voordat deze stap is voltooid.
 
-1. Maak enkele gegevens en definieer twee gegevensbronnen. Voer de volgende code in de R-console:
+1. Maak enkele gegevens informatie en Definieer twee gegevens bronnen. Voer de volgende code in in de R-console:
 
     ```R
     # Define the HDFS (WASB) file system
@@ -111,7 +111,7 @@ In deze snelstartgids leert u hoe u een R-script uitvoeren met R-console waarin 
      formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
     ```
 
-1. Voer logistic regression via de via de **lokale** compute-context. Voer de volgende code in de R-console:
+1. Voer een logistiek regressie uit op basis van de gegevens met behulp van de **lokale** Compute-context. Voer de volgende code in in de R-console:
 
     ```R
     # Set a local compute context
@@ -126,7 +126,7 @@ In deze snelstartgids leert u hoe u een R-script uitvoeren met R-console waarin 
      summary(modelLocal)
     ```
 
-    De berekeningen moeten in ongeveer 7 minuten voltooid. Hier ziet u uitvoer die met regels die vergelijkbaar is met het volgende codefragment eindigt:
+    De berekeningen moeten in ongeveer 7 minuten worden voltooid. U ziet dat er uitvoer wordt weer gegeven die eindigt op regels die vergelijkbaar zijn met het volgende code fragment:
 
     ```output
     Data: airOnTimeDataLocal (RxTextData Data Source)
@@ -156,7 +156,7 @@ In deze snelstartgids leert u hoe u een R-script uitvoeren met R-console waarin 
       Number of iterations: 7
     ```
 
-1. Uitvoeren van de dezelfde logistic regression met behulp van de **Spark** context. De Spark-context distribueert de verwerking over alle werkknooppunten in het HDInsight-cluster. Voer de volgende code in de R-console:
+1. Voer dezelfde logistiek regressie uit met behulp van de **Spark** -context. De Spark-context distribueert de verwerking over alle werkknooppunten in het HDInsight-cluster. Voer de volgende code in in de R-console:
 
     ```R
     # Define the Spark compute context
@@ -174,7 +174,7 @@ In deze snelstartgids leert u hoe u een R-script uitvoeren met R-console waarin 
      summary(modelSpark)
     ```
 
-    De berekeningen moeten in circa 5 minuten voltooid.
+    De berekeningen moeten in ongeveer 5 minuten worden voltooid.
 
 1. Gebruik de volgende opdracht om de R-console af te sluiten:
 
@@ -184,13 +184,13 @@ In deze snelstartgids leert u hoe u een R-script uitvoeren met R-console waarin 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Nadat u de Quick Start hebt voltooid, kunt u het cluster verwijdert. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
+Nadat u de Snelstartgids hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
 
-Als u wilt verwijderen van een cluster, Zie [verwijderen van een HDInsight-cluster met behulp van uw browser, PowerShell of Azure CLI](../hdinsight-delete-cluster.md).
+Als u een cluster wilt verwijderen, raadpleegt u [een HDInsight-cluster verwijderen met behulp van uw browser, Power shell of de Azure cli](../hdinsight-delete-cluster.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u geleerd hoe u een R-script uitvoeren met R-console die gedemonstreerd met behulp van Spark voor gedistribueerde R-berekeningen.  Ga naar het volgende artikel voor meer informatie over de opties die beschikbaar zijn om op te geven of en hoe de uitvoering is geparallelliseerd over kernen van het edge-knooppunt of de HDInsight-cluster.
+In deze Quick Start hebt u geleerd hoe u een R-script kunt uitvoeren met R-console die Spark gebruikt voor gedistribueerde R-berekeningen.  Ga naar het volgende artikel voor meer informatie over de opties die beschikbaar zijn om op te geven of en hoe uitvoering wordt geevenwijdigd over kernen van het Edge-knoop punt of HDInsight-cluster.
 
 > [!div class="nextstepaction"]
->[Opties voor COMPUTE context voor ML-Services op HDInsight](./r-server-compute-contexts.md)
+>[Opties voor Compute-context voor MILLILITERs Services in HDInsight](./r-server-compute-contexts.md)

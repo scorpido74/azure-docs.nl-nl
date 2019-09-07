@@ -1,5 +1,5 @@
 ---
-title: Werk ruimten maken en beheren
+title: Azure ML-werk ruimten maken in de portal
 titleSuffix: Azure Machine Learning service
 description: Informatie over het maken, weergeven en verwijderen van Azure Machine Learning-service toegang tot werkruimten in Azure portal.
 services: machine-learning
@@ -11,14 +11,14 @@ ms.author: shipatel
 author: shivp950
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: f103bde99eb5b21d06988f11ac6f17fcf50ceb31
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: df015df3c20cdb99512167e3dc3e455da2762c52
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278280"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744792"
 ---
-# <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Maken en beheren van Azure Machine Learning-service werkruimten
+# <a name="create-and-manage-azure-machine-learning-service-workspaces-in-the-azure-portal"></a>Azure Machine Learning service-werk ruimten maken en beheren in de Azure Portal
 
 In dit artikel, zult u maken, weergeven en verwijderen [ **Azure Machine Learning-service werkruimten** ](concept-workspace.md) in Azure portal voor [Azure Machine Learning-service](overview-what-is-azure-ml.md).  De portal is de eenvoudigste manier om aan de slag te gaan met werk ruimten, maar als uw behoeften wijzigen of vereisten voor automatisering verhogen, kunt u ook werk ruimten maken en verwijderen [met behulp van de CLI](reference-azure-machine-learning-cli.md), [met Python-code](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) of [via de VS code-extensie](how-to-vscode-tools.md#get-started-with-azure-machine-learning).
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 4c2058072df4fcb068257c3e265dfe365c6d7e65
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 690d22eadf37a24b4679ce10838074533ac65fcb
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033150"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390073"
 ---
 # <a name="preview---create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Voor beeld: een Azure Kubernetes service-cluster (AKS) maken dat gebruikmaakt van Beschikbaarheidszones
 
@@ -34,7 +34,7 @@ U moet de Azure CLI-versie 2.0.66 of hoger hebben geïnstalleerd en geconfiguree
 
 ### <a name="install-aks-preview-cli-extension"></a>AKS-preview CLI-extensie installeren
 
-Als u AKS-clusters wilt maken die gebruikmaken van beschikbaarheids zones, hebt u de *AKS-preview cli-* extensie versie 0.4.1 of hoger nodig. Installeer de Azure CLI *-extensie AKS-preview* met behulp van de opdracht [AZ extension add][az-extension-add] en controleer vervolgens of er beschik bare updates zijn met behulp van de opdracht [AZ extension update][az-extension-update] ::
+Als u AKS-clusters wilt maken die gebruikmaken van beschikbaarheids zones, hebt u de *AKS-preview cli-* extensie versie 0.4.1 of hoger nodig. Installeer de Azure CLI *-extensie AKS-preview* met behulp van de opdracht [AZ extension add][az-extension-add] en controleer vervolgens of er beschik bare updates zijn met behulp van de opdracht [AZ extension update][az-extension-update] :
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -44,25 +44,21 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="register-feature-flags-for-your-subscription"></a>Functie vlaggen voor uw abonnement registreren
+### <a name="register-the-availabilityzonepreview-feature-flag-for-your-subscription"></a>De functie vlag AvailabilityZonePreview voor uw abonnement registreren
 
-Als u een AKS-cluster wilt maken dat beschikbaarheids zones zijn, moet u eerst sommige functie vlaggen inschakelen voor uw abonnement. Clusters gebruiken een schaalset voor virtuele machines om de implementatie en configuratie van de Kubernetes-knoop punten te beheren. De *standaard* -SKU van Azure Load Balancer is ook vereist om tolerantie te bieden voor de netwerk onderdelen om verkeer naar uw cluster te routeren. Registreer de functie vlaggen *AvailabilityZonePreview*, *AKSAzureStandardLoadBalancer*en *VMSSPreview* met de opdracht [AZ feature REGI ster][az-feature-register] , zoals weer gegeven in het volgende voor beeld:
+Als u een AKS-cluster wilt maken dat beschikbaarheids zones zijn, moet u eerst de functie vlag *AvailabilityZonePreview* inschakelen voor uw abonnement. Registreer de functie vlag *AvailabilityZonePreview* met behulp van de opdracht [AZ feature REGI ster][az-feature-register] , zoals wordt weer gegeven in het volgende voor beeld:
 
 > [!CAUTION]
 > Wanneer u een functie op een abonnement registreert, kunt u de registratie van die functie op dit moment niet ongedaan maken. Nadat u enkele preview-functies hebt ingeschakeld, kunnen standaard waarden worden gebruikt voor alle AKS-clusters die vervolgens in het abonnement zijn gemaakt. Schakel geen preview-functies in voor productie abonnementen. Gebruik een afzonderlijk abonnement om Preview-functies te testen en feedback te verzamelen.
 
 ```azurecli-interactive
 az feature register --name AvailabilityZonePreview --namespace Microsoft.ContainerService
-az feature register --name AKSAzureStandardLoadBalancer --namespace Microsoft.ContainerService
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
 Het duurt enkele minuten voordat de status is *geregistreerd*. U kunt de registratie status controleren met de opdracht [AZ Feature List][az-feature-list] :
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AvailabilityZonePreview')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAzureStandardLoadBalancer')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
 Als u klaar bent, vernieuwt u de registratie van de resource provider *micro soft. container service* met de opdracht [AZ provider REGI ster][az-provider-register] :
@@ -90,7 +86,7 @@ De volgende beperkingen zijn van toepassing wanneer u een AKS-cluster maakt met 
 * Voor clusters waarvoor beschikbaarheids zones zijn ingeschakeld, moet Azure Standard load balancers worden gebruikt voor distributie in meerdere zones.
 * U moet Kubernetes-versie 1.13.5 of hoger gebruiken om standaard load balancers te kunnen implementeren.
 
-AKS-clusters die gebruikmaken van beschikbaarheids zones, moeten gebruikmaken van de Azure load balancer *Standard* -SKU. De standaard -SKU van Azure Load Balancer biedt geen ondersteuning voor distributie over beschikbaarheids zones. Zie voor meer informatie en de beperkingen van de standaard load balancer de [beperkingen voor Azure Load Balancer Standard sku's preview][standard-lb-limitations].
+AKS-clusters die gebruikmaken van beschikbaarheids zones, moeten gebruikmaken van de Azure load balancer *Standard* -SKU. De standaard *-SKU van* Azure Load Balancer biedt geen ondersteuning voor distributie over beschikbaarheids zones. Zie [Azure Load Balancer Standard SKU-beperkingen][standard-lb-limitations]voor meer informatie en de beperkingen van de standaard Load Balancer.
 
 ### <a name="azure-disks-limitations"></a>Beperkingen voor Azure-schijven
 

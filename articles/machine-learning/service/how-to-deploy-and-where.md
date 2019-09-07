@@ -1,7 +1,7 @@
 ---
 title: Hoe en waar modellen moeten worden geïmplementeerd
 titleSuffix: Azure Machine Learning service
-description: 'Meer informatie over hoe en waar u uw Azure Machine Learning service modellen kunt implementeren, met inbegrip van: Azure Container Instances, Azure Kubernetes-service, Azure IoT Edge en veld-Programmeer bare poort matrices.'
+description: Meer informatie over hoe en waar u uw Azure Machine Learning-service modellen kunt implementeren, waaronder Azure Container Instances, de Azure Kubernetes-service, Azure IoT Edge en Programmeer bare poort matrices voor velden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,21 +11,21 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 14ced5ed45bcc91e6b6c812f2d1cbb61e139cc4f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: cf72a83035e318d3a937176bbaaebd8e298d3ad2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278939"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390596"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Implementeer modellen met de Azure Machine Learning-service
 
-Meer informatie over het implementeren van uw machine learning model als een webservice in de Azure-Cloud of voor het IoT Edge van apparaten.
+Meer informatie over het implementeren van uw machine learning model als een webservice in de Azure-Cloud of het Azure IoT Edge van apparaten.
 
-De werk stroom is vergelijkbaar, ongeacht [waar u uw model implementeert](#target) :
+De werk stroom is vergelijkbaar, [waar u uw model implementeert](#target) :
 
 1. Registreer het model.
-1. Voorbereiden op implementeren (assets opgeven, gebruik, reken doel).
+1. Voorbereiden op implementeren. (Assets opgeven, gebruik, reken doel.)
 1. Implementeer het model op het Compute-doel.
 1. Test het geïmplementeerde model, ook wel webservice genoemd.
 
@@ -35,50 +35,50 @@ Zie [modellen beheren, implementeren en bewaken met Azure machine learning-servi
 
 - Een werkruimte van Azure Machine Learning-service. Zie [een Azure machine learning service-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
 
-- Een model. Als u geen getraind model hebt, kunt u gebruikmaken van het model & afhankelijkheids bestanden in [deze zelf studie](https://aka.ms/azml-deploy-cloud).
+- Een model. Als u geen getraind model hebt, kunt u het model en de afhankelijkheids bestanden van [deze zelf studie](https://aka.ms/azml-deploy-cloud)gebruiken.
 
-- De [Azure cli-extensie voor machine learning service](reference-azure-machine-learning-cli.md), [Azure machine learning python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)of de [Azure machine learning Visual Studio code extension](how-to-vscode-tools.md).
+- De [Azure cli-extensie voor de machine learning-service](reference-azure-machine-learning-cli.md), de [Azure machine learning SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)of de [Azure machine learning Visual Studio code extension](how-to-vscode-tools.md).
 
 ## <a name="connect-to-your-workspace"></a>Verbinding maken met uw werk ruimte
 
 De volgende code laat zien hoe u verbinding maakt met een Azure Machine Learning service-werk ruimte met behulp van informatie in cache naar de lokale ontwikkel omgeving:
 
-**De SDK gebruiken**
++ **De SDK gebruiken**
 
-```python
-from azureml.core import Workspace
-ws = Workspace.from_config(path=".file-path/ws_config.json")
-```
+   ```python
+   from azureml.core import Workspace
+   ws = Workspace.from_config(path=".file-path/ws_config.json")
+   ```
 
-Zie de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace)voor meer informatie over het gebruik van de SDK om verbinding te maken met een werk ruimte.
+  Zie de documentatie van [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) voor meer informatie over het gebruik van de SDK om verbinding te maken met een werk ruimte.
 
-**De CLI gebruiken**
++ **De CLI gebruiken**
 
-Gebruik `-w` de para meter of `--workspace-name` voor het opgeven van de werk ruimte voor de opdracht wanneer u de CLI gebruikt.
+   Gebruik `-w` de para meter of `--workspace-name` voor het opgeven van de werk ruimte voor de opdracht wanneer u de CLI gebruikt.
 
-**VS code gebruiken**
++ **VS code gebruiken**
 
-Wanneer u VS code gebruikt, wordt de werk ruimte geselecteerd met een grafische interface. Zie [modellen implementeren en beheren](how-to-vscode-tools.md#deploy-and-manage-models) in de documentatie over de VS code-extensie voor meer informatie.
+   Wanneer u VS code gebruikt, selecteert u de werk ruimte met behulp van een grafische interface. Zie [modellen implementeren en beheren](how-to-vscode-tools.md#deploy-and-manage-models) in de documentatie over de VS code-extensie voor meer informatie.
 
 ## <a id="registermodel"></a>Uw model registreren
 
-Een geregistreerd model is een logische container voor een of meer bestanden die het model vormen. Als u bijvoorbeeld een model hebt dat is opgeslagen in meerdere bestanden, kunt u ze registreren als één model in de werk ruimte. Na de registratie kunt u het geregistreerde model downloaden of implementeren en alle geregistreerde bestanden ontvangen.
+Een geregistreerd model is een logische container voor een of meer bestanden die het model vormen. Als u bijvoorbeeld een model hebt dat is opgeslagen in meerdere bestanden, kunt u ze registreren als één model in de werk ruimte. Nadat u de bestanden hebt geregistreerd, kunt u het geregistreerde model downloaden of implementeren en alle bestanden ontvangen die u hebt geregistreerd.
 
 > [!TIP]
-> Bij het registreren van een model geeft u een pad op naar een Cloud locatie (vanuit een training-uitvoering) of een lokale map. Dit pad is alleen bedoeld voor het vinden van de bestanden die worden geüpload als onderdeel van het registratie proces. het hoeft niet overeen te komen met het pad dat wordt gebruikt in het vermeldings script. Zie [Wat is get_model_path](#what-is-get_model_path)voor meer informatie.
+> Wanneer u een model registreert, geeft u het pad op naar een Cloud locatie (van een trainings uitvoering) of van een lokale map. Dit pad is alleen bedoeld voor het vinden van de bestanden die worden geüpload als onderdeel van het registratie proces. Het hoeft niet overeen te komen met het pad dat wordt gebruikt in het vermeldings script. Zie [Wat is get_model_path?](#what-is-get_model_path)voor meer informatie.
 
-Machine learning-modellen worden geregistreerd in uw Azure Machine Learning-werk ruimte. Het model kan afkomstig zijn van Azure Machine Learning of van ergens anders afkomstig zijn. De volgende voor beelden laten zien hoe u een model kunt registreren:
+Machine learning-modellen worden geregistreerd in uw Azure Machine Learning-werk ruimte. Het model kan afkomstig zijn van Azure Machine Learning of van een andere locatie. De volgende voor beelden laten zien hoe u een model kunt registreren.
 
 ### <a name="register-a-model-from-an-experiment-run"></a>Een model registreren vanuit een experiment
 
-De code fragmenten in deze sectie demonstreren het registreren van een model van een trainings uitvoering:
+De code fragmenten in deze sectie laten zien hoe u een model kunt registreren bij een trainings uitvoering:
 
 > [!IMPORTANT]
-> Deze fragmenten nemen aan dat u eerder een trainings uitvoering hebt uitgevoerd en toegang hebt tot het `run` object (SDK-voor beeld) of een run-id-waarde (CLI-voor beeld). Zie voor meer informatie over trainings modellen [Compute-doelen maken en gebruiken voor model training](how-to-set-up-training-targets.md).
+> Als u deze fragmenten wilt gebruiken, moet u eerder een trainings programma hebben uitgevoerd en moet u toegang hebben tot het `Run` object (SDK-voor beeld) of de waarde run id (CLI-voor beeld). Zie [Compute-doelen voor model training instellen](how-to-set-up-training-targets.md)voor meer informatie over trainings modellen.
 
 + **De SDK gebruiken**
 
-  Wanneer u de SDK gebruikt voor het trainen van een model, kunt u een [Run](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master) -of [AutoMLRun](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master) -object ontvangen, afhankelijk van hoe u het model hebt getraind. Elk object kan worden gebruikt voor het registreren van een model dat is gemaakt door een experiment.
+  Wanneer u de SDK gebruikt voor het trainen van een model, kunt u een [uitvoerings](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master) object of een [AutoMLRun](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master) -object ontvangen, afhankelijk van hoe u het model hebt getraind. Elk object kan worden gebruikt voor het registreren van een model dat is gemaakt door een experiment.
 
   + Een model van een `azureml.core.Run` object registreren:
  
@@ -87,7 +87,7 @@ De code fragmenten in deze sectie demonstreren het registreren van een model van
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    De `model_path` verwijst naar de locatie van de cloud van het model. In dit voor beeld wordt het pad naar één bestand gebruikt. Als u meerdere bestanden wilt toevoegen aan de model registratie `model_path` , stelt u deze in op de map die de bestanden bevat. Zie de referentie [Run. register_model](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none----kwargs-) voor meer informatie.
+    De `model_path` para meter verwijst naar de locatie van de cloud van het model. In dit voor beeld wordt het pad van één bestand gebruikt. Als u meerdere bestanden wilt toevoegen aan de model registratie `model_path` , stelt u het pad in naar een map die de bestanden bevat. Zie de documentatie van [Run. register_model](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none----kwargs-) voor meer informatie.
 
   + Een model van een `azureml.train.automl.run.AutoMLRun` object registreren:
 
@@ -98,9 +98,9 @@ De code fragmenten in deze sectie demonstreren het registreren van een model van
         print(run.model_id)
     ```
 
-    In dit voor beeld worden `metric` de `iteration` para meters en niet opgegeven. Dit zorgt ervoor dat de iteratie met de beste primaire metriek wordt geregistreerd. De `model_id` waarde die wordt geretourneerd door de uitvoering, wordt gebruikt in plaats van een model naam.
+    In dit voor beeld worden `metric` de `iteration` para meters en niet opgegeven, zodat de iteratie met de beste primaire metriek wordt geregistreerd. De `model_id` waarde die wordt geretourneerd door de uitvoering, wordt gebruikt in plaats van een model naam.
 
-    Zie de naslag gids voor [AutoMLRun. register_model](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master#register-model-description-none--tags-none--iteration-none--metric-none-) voor meer informatie.
+    Zie de documentatie van [AutoMLRun. register_model](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master#register-model-description-none--tags-none--iteration-none--metric-none-) voor meer informatie.
 
 + **De CLI gebruiken**
 
@@ -110,19 +110,19 @@ De code fragmenten in deze sectie demonstreren het registreren van een model van
 
   [!INCLUDE [install extension](../../../includes/machine-learning-service-install-extension.md)]
 
-  De `--asset-path` verwijst naar de locatie van de cloud van het model. In dit voor beeld wordt het pad naar één bestand gebruikt. Als u meerdere bestanden wilt toevoegen aan de model registratie `--asset-path` , stelt u deze in op de map die de bestanden bevat.
+  De `--asset-path` para meter verwijst naar de locatie van de cloud van het model. In dit voor beeld wordt het pad van één bestand gebruikt. Als u meerdere bestanden wilt toevoegen aan de model registratie `--asset-path` , stelt u het pad in naar een map die de bestanden bevat.
 
 + **VS code gebruiken**
 
-  Registreer modellen met behulp van model bestanden of-mappen met de [VS code](how-to-vscode-tools.md#deploy-and-manage-models) -extensie.
+  Registreer modellen met behulp van een of meer model bestanden of mappen met de [VS code](how-to-vscode-tools.md#deploy-and-manage-models) -extensie.
 
 ### <a name="register-a-model-from-a-local-file"></a>Een model registreren vanuit een lokaal bestand
 
-U kunt een model registreren door een **lokaal pad** naar het model op te geven. U kunt een map of één bestand opgeven. U kunt deze methode gebruiken om beide modellen te registreren die zijn getraind met Azure Machine Learning service en vervolgens te downloaden, of modellen die buiten Azure Machine Learning zijn getraind.
+U kunt een model registreren door het lokale pad van het model op te geven. U kunt het pad naar een map of één bestand opgeven. U kunt deze methode gebruiken om modellen te registreren die zijn getraind met de Azure Machine Learning-service en deze vervolgens te downloaden. U kunt deze methode ook gebruiken voor het registreren van modellen die buiten Azure Machine Learning worden getraind.
 
 [!INCLUDE [trusted models](../../../includes/machine-learning-service-trusted-model.md)]
 
-+ **ONNX-voor beeld met de python-SDK:**
++ **De SDK en ONNX gebruiken**
 
     ```python
     import os
@@ -140,7 +140,7 @@ U kunt een model registreren door een **lokaal pad** naar het model op te geven.
                             description = "MNIST image classification CNN from ONNX Model Zoo",)
     ```
 
-  Als u meerdere bestanden wilt toevoegen aan de model registratie `model_path` , stelt u deze in op de map die de bestanden bevat.
+  Als u meerdere bestanden wilt toevoegen aan de model registratie `model_path` , stelt u het pad in naar een map die de bestanden bevat.
 
 + **De CLI gebruiken**
 
@@ -148,64 +148,63 @@ U kunt een model registreren door een **lokaal pad** naar het model op te geven.
   az ml model register -n onnx_mnist -p mnist/model.onnx
   ```
 
-  Als u meerdere bestanden wilt toevoegen aan de model registratie `-p` , stelt u deze in op de map die de bestanden bevat.
+  Als u meerdere bestanden wilt toevoegen aan de model registratie `-p` , stelt u het pad in naar een map die de bestanden bevat.
 
 **Geschatte tijd**: Ongeveer 10 seconden.
 
-Zie voor meer informatie de documentatie bij de [Modelklasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
+Zie de documentatie voor de [model klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)voor meer informatie.
 
-Zie [een bestaand model implementeren](how-to-deploy-existing-model.md)voor meer informatie over het werken met modellen die zijn getraind buiten Azure machine learning service.
+Zie [een bestaand model implementeren](how-to-deploy-existing-model.md)voor meer informatie over het werken met modellen die buiten de Azure machine learning-service zijn getraind.
 
 <a name="target"></a>
 
 ## <a name="choose-a-compute-target"></a>Een reken doel kiezen
 
-De volgende Compute-doelen of reken bronnen kunnen worden gebruikt voor het hosten van de implementatie van de webservice. 
+U kunt de volgende Compute-doelen of reken resources gebruiken om de implementatie van de webservice te hosten:
 
 [!INCLUDE [aml-compute-target-deploy](../../../includes/aml-compute-target-deploy.md)]
 
 ## <a name="prepare-to-deploy"></a>Implementatie voorbereiden
 
-Het implementeren van het model vereist verschillende dingen:
+Voor het implementeren van het model hebt u de volgende items nodig:
 
-* Een __invoer script__. Met dit script worden aanvragen geaccepteerd, wordt de aanvraag met het model gescoord en worden de resultaten geretourneerd.
-
-    > [!IMPORTANT]
-    > Het invoer script is specifiek voor uw model. het moet inzicht krijgen in de indeling van de gegevens van de inkomende aanvraag, de indeling van de gegevens die worden verwacht door uw model en de indeling van de gegevens die aan clients worden geretourneerd.
-    >
-    > Als de gegevens van de aanvraag een indeling hebben die niet kan worden gebruikt door uw model, kan het script deze omzetten in een acceptabele indeling. Het kan ook de reactie transformeren voordat deze naar de client wordt teruggekeerd.
+* **Een invoer script**. Met dit script worden aanvragen geaccepteerd, worden de aanvragen met behulp van het model gescoord en worden de resultaten geretourneerd.
 
     > [!IMPORTANT]
-    > De Azure Machine Learning SDK biedt geen manier voor het uitvoeren van de webservice of IoT Edge implementaties om toegang te krijgen tot uw Data Store-of gegevens sets. Als u het geïmplementeerde model nodig hebt om toegang te krijgen tot gegevens die buiten de implementatie zijn opgeslagen, zoals in een Azure Storage-account, moet u een oplossing voor aangepaste code ontwikkelen met behulp van de relevante SDK. Bijvoorbeeld de [Azure Storage SDK voor python](https://github.com/Azure/azure-storage-python).
+    > * Het invoer script is specifiek voor uw model. Het moet inzicht krijgen in de indeling van de gegevens van de inkomende aanvraag, de indeling van de gegevens die worden verwacht door uw model en de indeling van de gegevens die aan clients worden geretourneerd.
     >
-    > Een ander alternatief dat kan worden gebruikt voor uw scenario is [batch voorspellingen](how-to-run-batch-predictions.md). Dit biedt ook toegang tot gegevens opslag in de score.
+    >   Als de gegevens van de aanvraag een indeling hebben die niet kan worden gebruikt door uw model, kan het script deze omzetten in een acceptabele indeling. Het kan ook de reactie transformeren voordat deze wordt geretourneerd naar de client.
+    >
+    > * De SDK van Azure Machine Learning biedt geen manier voor webservices of IoT Edge implementaties om toegang te krijgen tot uw gegevens archief of data sets. Als uw geïmplementeerde model toegang moet hebben tot gegevens die buiten de implementatie zijn opgeslagen, zoals gegevens in een Azure Storage-account, moet u een aangepaste code oplossing ontwikkelen met behulp van de relevante SDK. Bijvoorbeeld de [Azure Storage SDK voor python](https://github.com/Azure/azure-storage-python).
+    >
+    >   Een alternatief dat kan worden gebruikt voor uw scenario is [batch voorspelling](how-to-run-batch-predictions.md), waarmee tijdens de Score toegang wordt geboden tot gegevens archieven.
 
-* **Afhankelijkheden**, zoals hulp scripts of python/Conda-pakketten die zijn vereist voor het uitvoeren van het script of model van de vermelding
+* **Afhankelijkheden**, zoals helper-scripts of python/Conda-pakketten die zijn vereist voor het uitvoeren van het script of model van de vermelding.
 
-* De __implementatie configuratie__ voor het reken doel dat als host fungeert voor het geïmplementeerde model. In deze configuratie worden de vereisten voor geheugen en CPU beschreven die nodig zijn om het model uit te voeren.
+* **De implementatie configuratie** voor het reken doel dat als host fungeert voor het geïmplementeerde model. In deze configuratie worden de vereisten voor geheugen en CPU beschreven die nodig zijn om het model uit te voeren.
 
-Deze entiteiten worden ingekapseld in een Afleidings __configuratie__en een __implementatie configuratie__. De configuratie voor afwijzen verwijst naar het script voor de vermelding en andere afhankelijkheden. Deze configuraties worden programmatisch gedefinieerd wanneer u de SDK gebruikt en als JSON-bestanden wanneer u de CLI gebruikt om de implementatie uit te voeren.
+Deze items worden ingekapseld in een Afleidings *configuratie* en een *implementatie configuratie*. De configuratie voor afwijzen verwijst naar het script voor de vermelding en andere afhankelijkheden. U definieert deze configuraties programmatisch wanneer u de SDK gebruikt om de implementatie uit te voeren. U definieert ze in JSON-bestanden wanneer u de CLI gebruikt.
 
-### <a id="script"></a> 1. & Afhankelijkheden van uw invoer script definiëren
+### <a id="script"></a> 1. Uw invoer script en afhankelijkheden definiëren
 
-Het item script ontvangt gegevens die zijn verzonden naar een geïmplementeerde webservice en geeft deze door aan het model. Vervolgens wordt het antwoord opgehaald dat door het model is geretourneerd en wordt dat naar de client geretourneerd. **Het script is specifiek voor uw model**. het moet inzicht hebben in de gegevens die het model verwacht en retourneert.
+Het item script ontvangt gegevens die zijn verzonden naar een geïmplementeerde webservice en door gegeven aan het model. Vervolgens wordt het antwoord opgehaald dat door het model is geretourneerd en wordt dat naar de client geretourneerd. *Het script is specifiek voor uw model*. Het moet inzicht hebben in de gegevens die het model verwacht en retourneert.
 
 Het script bevat twee functies die het model laden en uitvoeren:
 
-* `init()`: Deze functie laadt meestal het model in een globaal object. Deze functie wordt slechts één keer uitgevoerd wanneer de docker-container voor uw web service wordt gestart.
+* `init()`: Deze functie laadt meestal het model in een globaal object. Deze functie wordt slechts één keer uitgevoerd wanneer de docker-container voor uw webservice wordt gestart.
 
-* `run(input_data)`: Deze functie maakt gebruik van het model voor het voors pellen van een waarde op basis van de invoer gegevens. Invoer en uitvoer van de run worden meestal JSON gebruikt voor serialisatie en deserialisatie. U kunt ook werken met onbewerkte binaire gegevens. U kunt de gegevens transformeren voordat u deze naar het model verzendt, of voordat u terugkeert naar de client.
+* `run(input_data)`: Deze functie maakt gebruik van het model voor het voors pellen van een waarde op basis van de invoer gegevens. Invoer en uitvoer van de run worden meestal JSON gebruikt voor serialisatie en deserialisatie. U kunt ook werken met onbewerkte binaire gegevens. U kunt de gegevens transformeren voordat u deze naar het model verzendt of voordat u deze naar de client stuurt.
 
 #### <a name="what-is-get_model_path"></a>Wat is get_model_path?
 
-Wanneer u een model registreert, geeft u een model naam op die wordt gebruikt voor het beheren van het model in het REGI ster. U gebruikt deze naam voor het [model. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) om het pad van het model bestand (en) op het lokale bestands systeem op te halen. Als u een map of een verzameling bestanden registreert, retourneert deze API het pad naar de map waarin zich de bestanden bevinden.
+Wanneer u een model registreert, geeft u een model naam op die wordt gebruikt voor het beheren van het model in het REGI ster. U gebruikt deze naam met de methode [model. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) om het pad van het model bestand of de bestanden op het lokale bestands systeem op te halen. Als u een map of een verzameling bestanden registreert, retourneert deze API het pad van de map die de bestanden bevat.
 
-Wanneer u een model registreert, geeft u het een naam die overeenkomt met waar het model lokaal of tijdens de service-implementatie wordt geplaatst.
+Wanneer u een model registreert, geeft u het een naam. De naam komt overeen met de locatie waar het model lokaal of tijdens de service-implementatie wordt geplaatst.
 
 > [!IMPORTANT]
-> Als u een model hebt getraind met behulp van geautomatiseerde machine learning, wordt een `model_id` waarde gebruikt als de naam van het model. Zie [https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment)voor een voor beeld van het registreren en implementeren van een model dat is getraind met automatische milliliters.
+> Als u automatische machine learning hebt gebruikt voor het trainen van een `model_id` model, wordt een waarde gebruikt als de naam van het model. Zie [Azure-MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment) op github voor een voor beeld van het registreren en implementeren van een model dat is getraind met automatische machine learning.
 
-In het onderstaande voor beeld wordt een pad geretourneerd naar één bestand `sklearn_mnist_model.pkl` (dat is geregistreerd met de naam `sklearn_mnist`):
+In het volgende voor beeld wordt een pad geretourneerd naar één bestand `sklearn_mnist_model.pkl` (dat is geregistreerd met de naam `sklearn_mnist`):
 
 ```python
 model_path = Model.get_model_path('sklearn_mnist')
@@ -215,9 +214,9 @@ model_path = Model.get_model_path('sklearn_mnist')
 
 #### <a name="optional-automatic-schema-generation"></a>Beschrijving Automatisch schema genereren
 
-Als u automatisch een schema voor uw webservice wilt genereren, geeft u een voor beeld van de invoer en/of uitvoer in de constructor voor een van de gedefinieerde type-objecten. het type en het voor beeld wordt gebruikt om automatisch het schema te maken. Azure Machine Learning-service maakt vervolgens een [OpenAPI](https://swagger.io/docs/specification/about/) -specificatie (Swagger) voor de webservice tijdens de implementatie.
+Als u automatisch een schema voor uw webservice wilt genereren, geeft u een voor beeld van de invoer en/of uitvoer in de constructor voor een van de gedefinieerde type-objecten. Het type en het voor beeld worden gebruikt voor het automatisch maken van het schema. De Azure Machine Learning-service maakt vervolgens een [OpenAPI](https://swagger.io/docs/specification/about/) -specificatie (Swagger) voor de webservice tijdens de implementatie.
 
-De volgende typen worden momenteel ondersteund:
+Deze typen worden momenteel ondersteund:
 
 * `pandas`
 * `numpy`
@@ -240,16 +239,16 @@ dependencies:
     - inference-schema[numpy-support]
 ```
 
-Als u automatische schema generatie wilt gebruiken, **moet** uw invoer script de `inference-schema` pakketten importeren.
+Als u automatische schema generatie wilt gebruiken, moet uw invoer script de `inference-schema` pakketten importeren.
 
-Definieer de voorbeeld indelingen voor invoer en uitvoer in `input_sample` de `output_sample` variabelen en, die de aanvraag-en antwoord indelingen voor de webservice vertegenwoordigen. Gebruik deze voor beelden in de functie voor invoer en uitvoer op de `run()` functie. Het scikit-voor beeld hieronder maakt gebruik van schema generatie.
+Definieer de voorbeeld indelingen voor invoer en uitvoer in `input_sample` de `output_sample` variabelen en, die de aanvraag-en antwoord indelingen voor de webservice vertegenwoordigen. Gebruik deze voor beelden in de functie voor invoer en uitvoer op de `run()` functie. Het volgende voor beeld van scikit maakt gebruik van schema generatie.
 
 ##### <a name="example-entry-script"></a>Voorbeeld script
 
 In het volgende voor beeld ziet u hoe u JSON-gegevens kunt accepteren en retour neren:
 
 ```python
-#example: scikit-learn and Swagger
+#Example: scikit-learn and Swagger
 import json
 import numpy as np
 from sklearn.externals import joblib
@@ -262,10 +261,10 @@ from inference_schema.parameter_types.numpy_parameter_type import NumpyParameter
 
 def init():
     global model
-    # note here "sklearn_regression_model.pkl" is the name of the model registered under
-    # this is a different behavior than before when the code is run locally, even though the code is the same.
+    # Note that here "sklearn_regression_model.pkl" is the name of the model registered under.
+    # This is a different behavior than before when the code is run locally, even though the code is the same.
     model_path = Model.get_model_path('sklearn_regression_model.pkl')
-    # deserialize the model file back into a sklearn model
+    # Deserialize the model file back into a sklearn model.
     model = joblib.load(model_path)
 
 
@@ -278,14 +277,14 @@ output_sample = np.array([3726.995])
 def run(data):
     try:
         result = model.predict(data)
-        # you can return any datatype as long as it is JSON-serializable
+        # You can return any data type, as long as it is JSON serializable.
         return result.tolist()
     except Exception as e:
         error = str(e)
         return error
 ```
 
-In het volgende voor beeld ziet u hoe u de invoer gegevens definieert `<key: value>` als een woorden lijst, met behulp van een data frame. Deze methode wordt ondersteund voor het gebruiken van de geïmplementeerde webservice van Power BI (meer[informatie over het gebruik van de webservice van Power bi](https://docs.microsoft.com/power-bi/service-machine-learning-integration)):
+In het volgende voor beeld ziet u hoe u de invoer gegevens definieert `<key: value>` als een woorden lijst met behulp van een data frame. Deze methode wordt ondersteund voor het gebruik van de geïmplementeerde webservice van Power BI. (Meer[informatie over het gebruik van de webservice van Power bi](https://docs.microsoft.com/power-bi/service-machine-learning-integration).)
 
 ```python
 import json
@@ -303,22 +302,22 @@ from inference_schema.parameter_types.pandas_parameter_type import PandasParamet
 
 def init():
     global model
-    # replace model_name with your actual model name, if needed
+    # Replace model_name with your actual model name, if necessary.
     model_path = Model.get_model_path('model_name')
-    # deserialize the model file back into a sklearn model
+    # Deserialize the model file back into a sklearn model.
     model = joblib.load(model_path)
 
 
 input_sample = pd.DataFrame(data=[{
-    # This is a decimal type sample. Use the data type that reflects this column in your data
+    # This is a decimal type sample. Use the data type that reflects this column in your data.
     "input_name_1": 5.1,
-    # This is a string type sample. Use the data type that reflects this column in your data
+    # This is a string type sample. Use the data type that reflects this column in your data.
     "input_name_2": "value2",
-    # This is a integer type sample. Use the data type that reflects this column in your data
+    # This is an integer type sample. Use the data type that reflects this column in your data.
     "input_name_3": 3
 }])
 
-# This is a integer type sample. Use the data type that reflects the expected result
+# This is an integer type sample. Use the data type that reflects the expected result.
 output_sample = np.array([0])
 
 
@@ -327,25 +326,25 @@ output_sample = np.array([0])
 def run(data):
     try:
         result = model.predict(data)
-        # you can return any datatype as long as it is JSON-serializable
+        # You can return any data type, as long as it is JSON serializable.
         return result.tolist()
     except Exception as e:
         error = str(e)
         return error
 ```
 
-Zie de volgende voor beelden voor meer voorbeeld scripts:
+Zie de volgende scripts voor meer voor beelden:
 
-* Pytorch[https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
-* Tensor flow[https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
-* Keras[https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
-* ONNX[https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
+* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
+* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
+* [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
+* [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
 
 <a id="binary"></a>
 
 #### <a name="binary-data"></a>Binaire gegevens
 
-Als uw model binaire gegevens, zoals een afbeelding accepteert, moet u wijzigen de `score.py` bestand dat wordt gebruikt voor uw implementatie om onbewerkte HTTP-aanvragen te accepteren. Als u onbewerkte gegevens wilt `AMLRequest` accepteren, gebruikt u de klasse in uw `@rawhttp` invoer script en `run()` voegt u de decorator toe aan de functie.
+Als uw model binaire gegevens accepteert, zoals een afbeelding, moet u het `score.py` bestand wijzigen dat wordt gebruikt voor uw implementatie om onbewerkte HTTP-aanvragen te accepteren. Als u onbewerkte gegevens wilt `AMLRequest` accepteren, gebruikt u de klasse in uw `@rawhttp` invoer script en `run()` voegt u de decorator toe aan de functie.
 
 Hier volgt een voor beeld van `score.py` een waarmee binaire gegevens worden geaccepteerd:
 
@@ -363,13 +362,13 @@ def run(request):
     print("This is run()")
     print("Request: [{0}]".format(request))
     if request.method == 'GET':
-        # For this example, just return the URL for GETs
+        # For this example, just return the URL for GETs.
         respBody = str.encode(request.full_path)
         return AMLResponse(respBody, 200)
     elif request.method == 'POST':
         reqBody = request.get_data(False)
-        # For a real world solution, you would load the data from reqBody
-        # and send to the model. Then return the response.
+        # For a real-world solution, you would load the data from reqBody
+        # and send it to the model. Then return the response.
 
         # For demonstration purposes, this example just returns the posted data as the response.
         return AMLResponse(reqBody, 200)
@@ -378,7 +377,7 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> De `AMLRequest` klasse bevindt `azureml.contrib` zich in de naam ruimte. Items in deze naam ruimte worden regel matig gewijzigd, terwijl we werken om de service te verbeteren. Als zodanig moeten alle in deze naam ruimte worden beschouwd als een preview en niet volledig worden ondersteund door micro soft.
+> De `AMLRequest` klasse bevindt `azureml.contrib` zich in de naam ruimte. Entiteiten in deze naam ruimte worden regel matig gewijzigd, terwijl we werken om de service te verbeteren. Alles in deze naam ruimte moet worden beschouwd als een preview-versie die niet volledig wordt ondersteund door micro soft.
 >
 > Als u dit in uw lokale ontwikkel omgeving moet testen, kunt u de onderdelen installeren met behulp van de volgende opdracht:
 >
@@ -390,7 +389,7 @@ def run(request):
 
 #### <a name="cross-origin-resource-sharing-cors"></a>Cross-Origin-resource delen (CORS)
 
-Cross-Origin-resource delen is een manier om te voor komen dat resources op een webpagina worden aangevraagd vanuit een ander domein. CORS werkt op basis van HTTP-headers die worden verzonden met de client aanvraag en geretourneerd met de service reactie. Zie [Cross-Origin-resource delen](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) op Wikipedia voor meer informatie over CORS en geldige headers.
+Cross-Origin-resource delen is een manier om te voor komen dat resources op een webpagina worden aangevraagd vanuit een ander domein. CORS werkt via HTTP-headers die worden verzonden met de aanvraag van de client en worden geretourneerd met de service reactie. Zie [Cross-Origin-resource delen](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) in Wikipedia voor meer informatie over CORS en geldige headers.
 
 Als u uw model implementatie wilt configureren voor de ondersteuning van `AMLResponse` CORS, gebruikt u de-klasse in uw invoer script. Met deze klasse kunt u de headers op het antwoord object instellen.
 
@@ -406,16 +405,16 @@ def run(request):
     print("This is run()")
     print("Request: [{0}]".format(request))
     if request.method == 'GET':
-        # For this example, just return the URL for GETs
+        # For this example, just return the URL for GETs.
         respBody = str.encode(request.full_path)
         return AMLResponse(respBody, 200)
     elif request.method == 'POST':
         reqBody = request.get_data(False)
-        # For a real world solution, you would load the data from reqBody
-        # and send to the model. Then return the response.
+        # For a real-world solution, you would load the data from reqBody
+        # and send it to the model. Then return the response.
 
         # For demonstration purposes, this example
-        # adds a header and returns the request body
+        # adds a header and returns the request body.
         resp = AMLResponse(reqBody, 200)
         resp.headers['Access-Control-Allow-Origin'] = "http://www.example.com"
         return resp
@@ -424,7 +423,7 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> De `AMLResponse` klasse bevindt `azureml.contrib` zich in de naam ruimte. Items in deze naam ruimte worden regel matig gewijzigd, terwijl we werken om de service te verbeteren. Als zodanig moeten alle in deze naam ruimte worden beschouwd als een preview en niet volledig worden ondersteund door micro soft.
+> De `AMLResponse` klasse bevindt `azureml.contrib` zich in de naam ruimte. Entiteiten in deze naam ruimte worden regel matig gewijzigd, terwijl we werken om de service te verbeteren. Alles in deze naam ruimte moet worden beschouwd als een preview-versie die niet volledig wordt ondersteund door micro soft.
 >
 > Als u dit in uw lokale ontwikkel omgeving moet testen, kunt u de onderdelen installeren met behulp van de volgende opdracht:
 >
@@ -434,7 +433,7 @@ def run(request):
 
 ### <a name="2-define-your-inferenceconfig"></a>2. Uw InferenceConfig definiëren
 
-De configuratie voor afnemen beschrijft hoe u het model configureert om voor spellingen te maken. Deze configuratie maakt geen deel uit van het script voor de invoer. het verwijst naar uw invoer script en wordt gebruikt voor het zoeken van alle resources die vereist zijn voor de implementatie. Dit wordt later gebruikt bij het implementeren van het model.
+De configuratie voor afnemen beschrijft hoe u het model configureert om voor spellingen te maken. Deze configuratie maakt geen deel uit van uw invoer script. Het verwijst naar uw invoer script en wordt gebruikt voor het zoeken van alle resources die vereist zijn voor de implementatie. Het wordt later gebruikt wanneer u het model implementeert.
 
 De configuratie voor het afwijzen van een Dede ring kan gebruikmaken van Azure Machine Learning omgevingen om de vereiste software afhankelijkheden voor uw implementatie te definiëren. Met omgevingen kunt u de software-afhankelijkheden maken, beheren en opnieuw gebruiken die zijn vereist voor training en implementatie. In het volgende voor beeld ziet u hoe u een omgeving laadt vanuit uw werk ruimte en deze vervolgens gebruikt met de configuratie voor inschakeling:
 
@@ -459,9 +458,9 @@ inference_config = InferenceConfig(runtime="python",
                                    conda_file="env/myenv.yml")
 ```
 
-Zie voor meer informatie de [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) -klasse verwijzing.
+Zie de documentatie van de [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) -klasse voor meer informatie.
 
-Zie [een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)voor informatie over het gebruik van een aangepaste docker-installatie kopie met behulp van de configuratie voor inhalen.
+Zie [een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)voor informatie over het gebruik van een aangepaste docker-installatie kopie met een afnemende configuratie.
 
 ### <a name="cli-example-of-inferenceconfig"></a>CLI-voor beeld van InferenceConfig
 
@@ -473,29 +472,29 @@ De volgende opdracht laat zien hoe u een model implementeert met behulp van de C
 az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 ```
 
-In dit voor beeld bevat de configuratie de volgende items:
+In dit voor beeld geeft de configuratie de volgende instellingen aan:
 
-* Dat dit model python vereist
-* Het [invoer script](#script), dat wordt gebruikt voor het afhandelen van webaanvragen die worden verzonden naar de geïmplementeerde service
-* Het Conda-bestand met een beschrijving van de Python-pakketten die nodig zijn om aan te doen
+* Dat het model python vereist.
+* Het [invoer script](#script), dat wordt gebruikt voor het afhandelen van webaanvragen die worden verzonden naar de geïmplementeerde service.
+* Het Conda-bestand waarin de Python-pakketten worden beschreven die nodig zijn voor de.
 
-Zie [een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)voor informatie over het gebruik van een aangepaste docker-installatie kopie met behulp van de configuratie voor inhalen.
+Zie [een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)voor informatie over het gebruik van een aangepaste docker-installatie kopie met een afnemende configuratie.
 
 ### <a name="3-define-your-deployment-configuration"></a>3. Uw implementatie configuratie definiëren
 
-Voordat u implementeert, moet u de implementatie configuratie definiëren. __De implementatie configuratie is specifiek voor het reken doel dat als host fungeert voor de webservice__. Wanneer u bijvoorbeeld lokaal implementeert, moet u de poort opgeven waar de service aanvragen accepteert. De implementatie configuratie maakt geen deel uit van het invoer script. Het wordt gebruikt voor het definiëren van de kenmerken van het reken doel dat als host fungeert voor het model en het invoer script.
+Voordat u uw model implementeert, moet u de implementatie configuratie definiëren. *De implementatie configuratie is specifiek voor het reken doel dat als host fungeert voor de webservice.* Wanneer u bijvoorbeeld een model lokaal implementeert, moet u de poort opgeven waar de service aanvragen accepteert. De implementatie configuratie maakt geen deel uit van het invoer script. Het wordt gebruikt voor het definiëren van de kenmerken van het Compute-doel die als host dienen voor het model en het script.
 
-Mogelijk moet u ook de reken resource maken. Bijvoorbeeld, als u nog geen Azure Kubernetes-service hebt die aan uw werk ruimte is gekoppeld.
+Mogelijk moet u ook de reken resource maken, als u bijvoorbeeld nog geen AKS-instantie (Azure Kubernetes service) hebt die aan uw werk ruimte is gekoppeld.
 
 De volgende tabel bevat een voor beeld van het maken van een implementatie configuratie voor elk reken doel:
 
 | COMPUTE-doel | Implementatie configuratie-voor beeld |
 | ----- | ----- |
 | Lokaal | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
-| Azure Container Instance | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
+| Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
-Elk van deze klassen voor lokale, ACI-en AKS-webservices kan worden `azureml.core.webservice`geïmporteerd vanuit:
+De klassen voor lokale, Azure Container Instances-en AKS-webservices kunnen worden `azureml.core.webservice`geïmporteerd uit:
 
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
@@ -503,10 +502,10 @@ from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservic
 
 #### <a name="profiling"></a>Profileren
 
-Voordat u uw model als een service implementeert, kunt u het beste een profiel gebruiken om de optimale CPU-en geheugen vereisten te bepalen. U kunt uw model profileren met behulp van de SDK of CLI. In de volgende voor beelden ziet u hoe u profileren kunt gebruiken vanuit de SDK:
+Voordat u uw model als een service implementeert, kunt u het beste een profiel voor het bepalen van de optimale CPU-en geheugen vereisten gebruiken. U kunt de SDK of de CLI gebruiken om uw model te profileren. In de volgende voor beelden ziet u hoe u een model kunt profielen met behulp van de SDK.
 
 > [!IMPORTANT]
-> Bij het gebruik van profileren, kan de configuratie van de deinterferentie die u opgeeft niet verwijzen naar een Azure Machine Learning omgeving. Definieer in plaats daarvan de software afhankelijkheden `conda_file` met behulp `InferenceConfig` van de para meter van het object.
+> Wanneer u profileren gebruikt, kan de configuratie voor het afwijzen van de deinterferentie niet verwijzen naar een Azure Machine Learning omgeving. Definieer in plaats daarvan de software afhankelijkheden met `conda_file` behulp van `InferenceConfig` de para meter van het object.
 
 ```python
 import json
@@ -520,7 +519,7 @@ profiling_results = profile.get_results()
 print(profiling_results)
 ```
 
-Met deze code wordt een resultaat weer gegeven dat vergelijkbaar is met de volgende tekst:
+Met deze code wordt een resultaat weer gegeven dat vergelijkbaar is met de volgende uitvoer:
 
 ```python
 {'cpu': 1.0, 'memoryInGB': 0.5}
@@ -530,7 +529,7 @@ Model profilerings resultaten worden verzonden als een `Run` object.
 
 Zie [AZ ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile)(Engelstalig) voor meer informatie over het gebruik van profile ring van de cli.
 
-Zie de volgende naslag documenten voor meer informatie:
+Zie de volgende documenten voor meer informatie:
 
 * [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
 * [Profiel ()](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
@@ -538,11 +537,11 @@ Zie de volgende naslag documenten voor meer informatie:
 
 ## <a name="deploy-to-target"></a>Implementeren naar doel
 
-Implementatie maakt gebruik van de configuratie-implementatie configuratie voor innemen om de modellen te implementeren. Het implementatie proces is vergelijkbaar, ongeacht het berekenings doel. Implementeren naar AKS is iets anders, omdat u een verwijzing naar het AKS-cluster moet opgeven.
+Implementatie maakt gebruik van de configuratie-implementatie configuratie voor innemen om de modellen te implementeren. Het implementatie proces is vergelijkbaar, ongeacht het berekenings doel. Implementeren naar AKS is iets anders omdat u een verwijzing naar het AKS-cluster moet opgeven.
 
 ### <a id="local"></a>Lokale implementatie
 
-Als u lokaal wilt implementeren, moet docker op uw lokale computer zijn geïnstalleerd.
+Als u een model lokaal wilt implementeren, moet docker op uw lokale computer zijn geïnstalleerd.
 
 #### <a name="using-the-sdk"></a>De SDK gebruiken
 
@@ -555,11 +554,11 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-Zie de referentie documentatie voor [LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py), [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-)en [webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py)voor meer informatie.
+Zie de documentatie voor [LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py), [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-)en [webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py)voor meer informatie.
 
 #### <a name="using-the-cli"></a>De CLI gebruiken
 
-Als u wilt implementeren met behulp van de CLI, gebruikt u de volgende opdracht. Vervang `mymodel:1` door de naam en versie van het geregistreerde model:
+Als u een model wilt implementeren met behulp van de CLI, gebruikt u de volgende opdracht. Vervang `mymodel:1` door de naam en versie van het geregistreerde model:
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
@@ -567,27 +566,28 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 
 [!INCLUDE [aml-local-deploy-config](../../../includes/machine-learning-service-local-deploy-config.md)]
 
-Zie voor meer informatie de referentie [AZ ml model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) .
+Zie voor meer informatie de documentatie van [AZ ml model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) .
 
-### <a id="notebookvm"></a>NotebookVM-webservice (DEVTEST)
+### <a id="notebookvm"></a>VM van notebook-webservice (dev/test)
 
 Zie [een model implementeren op laptop-vm's](how-to-deploy-local-container-notebook-vm.md).
 
-### <a id="aci"></a>Azure Container Instances (DEVTEST)
+### <a id="aci"></a>Azure Container Instances (dev/test)
 
 Zie [implementeren naar Azure container instances](how-to-deploy-azure-container-instance.md).
 
-### <a id="aks"></a>Azure Kubernetes-service (DEVTEST & productie)
+### <a id="aks"></a>Azure Kubernetes-service (ontwikkelen/testen en productie)
 
 Zie [implementeren naar Azure Kubernetes service](how-to-deploy-azure-kubernetes-service.md).
 
 ## <a name="consume-web-services"></a>Webservices gebruiken
 
-Elke geïmplementeerde webservice biedt een REST API, zodat u client toepassingen kunt maken in verschillende programmeer talen. Als u sleutel verificatie voor uw service hebt ingeschakeld, moet u een service sleutel opgeven als een token in de aanvraag header.
+Elke geïmplementeerde webservice biedt een REST API, zodat u client toepassingen kunt maken in verschillende programmeer talen.
+Als u de sleutel verificatie voor uw service hebt ingeschakeld, moet u een service sleutel opgeven als een token in de aanvraag header.
 Als u token verificatie voor uw service hebt ingeschakeld, moet u een Azure Machine Learning JWT-token opgeven als Bearer-token in de aanvraag header.
 
 > [!TIP]
-> Nadat de service is geïmplementeerd, kunt u het JSON-document van het schema ophalen. Gebruik de [eigenschap swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) van de geïmplementeerde webservice, zoals `service.swagger_uri`, om de URI naar het Swagger-bestand van de lokale webservice op te halen.
+> U kunt het schema-JSON-document ophalen nadat u de service hebt geïmplementeerd. Gebruik de [eigenschap swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) van de geïmplementeerde webservice (bijvoorbeeld `service.swagger_uri`) om de URI naar het Swagger-bestand van de lokale webservice op te halen.
 
 ### <a name="request-response-consumption"></a>Aanvraag-antwoord verbruik
 
@@ -621,7 +621,7 @@ Zie [client toepassingen maken om webservices te gebruiken](how-to-consume-web-s
 
 ### <a name="web-service-schema-openapi-specification"></a>Web Service-schema (OpenAPI-specificatie)
 
-Als u het automatisch genereren van schema's met de implementatie hebt gebruikt, kunt u het adres van de OpenAPI-specificatie voor de service ophalen met behulp van de [eigenschap swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri). Bijvoorbeeld `print(service.swagger_uri)`. Gebruik een GET-aanvraag (of open de URI in een browser) om de specificatie op te halen.
+Als u automatische schema generatie hebt gebruikt met uw implementatie, kunt u het adres van de OpenAPI-specificatie voor de service ophalen met behulp van de [eigenschap swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri). (Bijvoorbeeld `print(service.swagger_uri)`.) Gebruik een GET-aanvraag of open de URI in een browser om de specificatie op te halen.
 
 Het volgende JSON-document is een voor beeld van een schema (OpenAPI-specificatie) dat is gegenereerd voor een implementatie:
 
@@ -757,120 +757,125 @@ Het volgende JSON-document is een voor beeld van een schema (OpenAPI-specificati
 }
 ```
 
-Zie voor meer informatie over de specificatie de [open API-specificatie](https://swagger.io/specification/).
+Zie [OpenAPI Specification](https://swagger.io/specification/)(Engelstalig) voor meer informatie.
 
 Zie [Swagger-CodeGen](https://github.com/swagger-api/swagger-codegen)voor een hulp programma waarmee client bibliotheken kunnen worden gemaakt op basis van de specificatie.
 
 ### <a id="azuremlcompute"></a>Batch-deinterferentie
 Azure Machine Learning Compute-doelen worden gemaakt en beheerd door de Azure Machine Learning-service. Ze kunnen worden gebruikt voor batch voorspelling van Azure Machine Learning pijp lijnen.
 
-Lees voor een overzicht van batch deinterferentie met Azure Machine Learning Compute het artikel [batch voorspellingen uitvoeren](how-to-run-batch-predictions.md) .
+Zie [batch voorspellingen uitvoeren](how-to-run-batch-predictions.md)voor een overzicht van batch deinterferentie met Azure machine learning compute.
 
 ### <a id="iotedge"></a>IoT Edge afleiding
-Ondersteuning voor het implementeren naar de rand is in preview. Zie voor meer informatie het artikel [Deploy Azure machine learning als IOT Edge module](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning) .
+Ondersteuning voor het implementeren naar de rand is in preview. Zie [Deploy Azure machine learning als een IOT Edge-module](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning)voor meer informatie.
 
 
 ## <a id="update"></a>Webservices bijwerken
 
 [!INCLUDE [aml-update-web-service](../../../includes/machine-learning-update-web-service.md)]
 
-## <a name="continuous-model-deployment"></a>Continue model implementatie 
+## <a name="continuously-deploy-models"></a>Continu implementeren van modellen
 
-U kunt met behulp van de Machine Learning-extensie voor [Azure DevOps](https://azure.microsoft.com/services/devops/)continu modellen implementeren. Door de Machine Learning-extensie voor Azure DevOps te gebruiken, kunt u een implementatie pijplijn activeren wanneer een nieuw machine learning model wordt geregistreerd in Azure Machine Learning service-werk ruimte. 
+U kunt modellen voortdurend implementeren met behulp van de Machine Learning-extensie voor [Azure DevOps](https://azure.microsoft.com/services/devops/). U kunt de Machine Learning extensie voor Azure DevOps gebruiken om een implementatie pijplijn te activeren wanneer een nieuw machine learning model wordt geregistreerd in een Azure Machine Learning service-werk ruimte.
 
-1. Meld u aan voor [Azure-pijp lijnen](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops), wat een continue integratie en levering van uw toepassing naar elk platform/elke Cloud mogelijk maakt. Azure-pijp lijnen [wijken af van ml-pijp lijnen](concept-ml-pipelines.md#compare). 
+1. Meld u aan voor [Azure-pijp lijnen](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops), wat een continue integratie en levering van uw toepassing naar elk platform of Cloud mogelijk maakt. (Houd er rekening mee dat Azure-pijp lijnen niet hetzelfde zijn als [machine learning pijp lijnen](concept-ml-pipelines.md#compare).)
 
 1. [Een Azure DevOps-project maken.](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
 
-1. De [uitbrei ding voor de machine learning voor Azure-pijp lijnen](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml&targetId=6756afbe-7032-4a36-9cb6-2771710cadc2&utm_source=vstsproduct&utm_medium=ExtHubManageList) installeren 
+1. Installeer de [machine learning extensie voor Azure-pijp lijnen](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml&targetId=6756afbe-7032-4a36-9cb6-2771710cadc2&utm_source=vstsproduct&utm_medium=ExtHubManageList).
 
-1. Gebruik __service verbindingen__ om een Service-Principal-verbinding met uw Azure machine learning service-werk ruimte in te stellen voor toegang tot al uw artefacten. Ga naar project instellingen, klik op service verbindingen en selecteer Azure Resource Manager.
+1. Gebruik service verbindingen om een Service-Principal-verbinding in te stellen voor uw Azure Machine Learning service-werk ruimte, zodat u toegang hebt tot uw artefacten. Ga naar project instellingen, selecteer **service verbindingen**en selecteer vervolgens **Azure Resource Manager**:
 
-    [![weer gave-service-verbinding](media/how-to-deploy-and-where/view-service-connection.png)](media/how-to-deploy-and-where/view-service-connection-expanded.png) 
+    [![Azure Resource Manager selecteren](media/how-to-deploy-and-where/view-service-connection.png)](media/how-to-deploy-and-where/view-service-connection-expanded.png)
 
-1. Definieer AzureMLWorkspace als __Scope niveau__ en vul de volgende para meters in.
+1. Selecteer **AzureMLWorkspace**in de lijst **bereik niveau** en voer de rest van de waarden in:
 
-    ![view-azure-resource-manager](media/how-to-deploy-and-where/resource-manager-connection.png)
+    ![AzureMLWorkspace selecteren](media/how-to-deploy-and-where/resource-manager-connection.png)
 
-1. Ga vervolgens als u uw machine learning model continu wilt implementeren met behulp van de Azure-pijp lijnen, onder pijp lijnen de optie __release__. Voeg een nieuw artefact toe, selecteer een model artefact voor AzureML en de service verbinding die in de vorige stap is gemaakt. Selecteer het model en de versie om een implementatie te activeren. 
+1. Als u uw machine learning model continu wilt implementeren met behulp van Azure-pijp lijnen, selecteert u onder pijp lijnen de optie **release**. Voeg een nieuw artefact toe en selecteer vervolgens het **model** artefact voor AzureML en de service verbinding die u eerder hebt gemaakt. Selecteer het model en de versie om een implementatie te activeren:
 
-    [![Select-AzureMLmodel-artefact](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)](media/how-to-deploy-and-where/enable-modeltrigger-artifact-expanded.png)
+    [![AzureML-model selecteren](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)](media/how-to-deploy-and-where/enable-modeltrigger-artifact-expanded.png)
 
-1. Schakel de model trigger in voor uw model artefact. Door de trigger in te scha kelen, elke keer dat de opgegeven versie (bijvoorbeeld de nieuwste versie) van het model is geregistreerd in uw werk ruimte, een Azure DevOps release-pijp lijn wordt geactiveerd. 
+1. Schakel de model trigger in voor uw model artefact. Wanneer u de trigger inschakelt, wordt elke keer dat de opgegeven versie (dat wil zeggen, de nieuwste versie) van het model geregistreerd in uw werk ruimte, een Azure DevOps release-pijp lijn geactiveerd.
 
-    [![Enable-model-trigger](media/how-to-deploy-and-where/set-modeltrigger.png)](media/how-to-deploy-and-where/set-modeltrigger-expanded.png)
+    [![De model trigger inschakelen](media/how-to-deploy-and-where/set-modeltrigger.png)](media/how-to-deploy-and-where/set-modeltrigger-expanded.png)
 
-Voor meer voorbeeld projecten en voor beelden raadpleegt u de volgende voorbeeld opslag plaatsen:
+Voor meer voorbeeld projecten en voor beelden raadpleegt u deze voor beeld-opslag plaatsen in GitHub:
 
-* [https://github.com/Microsoft/MLOps](https://github.com/Microsoft/MLOps)
-* [https://github.com/Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
+* [Micro soft-MLOps](https://github.com/Microsoft/MLOps)
+* [Micro soft-MLOpsPython](https://github.com/microsoft/MLOpsPython)
 
 ## <a name="package-models"></a>Pakket modellen
 
-In sommige gevallen wilt u mogelijk een docker-installatie kopie maken zonder het model te implementeren. Bijvoorbeeld wanneer u van plan bent [om te implementeren in azure app service](how-to-deploy-app-service.md). Of u wilt de installatie kopie downloaden en uitvoeren op een lokale docker-installatie. Mogelijk wilt u de bestanden die worden gebruikt om de installatie kopie te maken, ook downloaden, bekijken, wijzigen en hand matig bouwen.
+In sommige gevallen wilt u mogelijk een docker-installatie kopie maken zonder het model te implementeren (als u bijvoorbeeld van plan bent [om te implementeren naar Azure app service](how-to-deploy-app-service.md)). Of misschien wilt u de installatie kopie downloaden en uitvoeren op een lokale docker-installatie. Mogelijk wilt u de bestanden die worden gebruikt om de installatie kopie te maken, ook downloaden, bekijken, wijzigen en de installatie kopie hand matig bouwen.
 
-Met model pakketten kunt u beide doen. Alle assets die nodig zijn om een model als een webservice te hosten, worden verpakt en u kunt een volledig gebouwde docker-installatie kopie of de bestanden die nodig zijn om er een te maken. Er zijn twee manieren om model pakketten te gebruiken:
+Met model pakketten kunt u deze dingen doen. Alle assets die nodig zijn om een model als een webservice te hosten, worden verpakt en u kunt een volledig gebouwde docker-installatie kopie of de bestanden die nodig zijn om er een te maken. Er zijn twee manieren om model pakketten te gebruiken:
 
-* __Pakket model downloaden__: U downloadt een docker-installatie kopie die het model en andere bestanden bevat die nodig zijn om het als een webservice te hosten.
-* __Dockerfile genereren__: U downloadt het dockerfile, model, het invoer script en andere assets die nodig zijn om een docker-installatie kopie te bouwen. U kunt de bestanden vervolgens controleren of wijzigingen aanbrengen voordat u de installatie kopie lokaal bouwt.
+**Een verpakt model downloaden:** Down load een docker-installatie kopie die het model en andere bestanden bevat die nodig zijn om deze als webservice te hosten.
 
-Beide pakketten kunnen worden gebruikt voor het ophalen van een lokale docker-installatie kopie. 
+**Een Dockerfile genereren:** Down load het Dockerfile, model, het invoer script en andere assets die nodig zijn om een docker-installatie kopie te bouwen. U kunt de bestanden vervolgens controleren of wijzigingen aanbrengen voordat u de installatie kopie lokaal bouwt.
+
+Beide pakketten kunnen worden gebruikt voor het ophalen van een lokale docker-installatie kopie.
 
 > [!TIP]
-> Het maken van een pakket is vergelijkbaar met het implementeren van een model, omdat het een geregistreerd model en een Afleidings configuratie gebruikt.
+> Het maken van een pakket is vergelijkbaar met het implementeren van een model. U gebruikt een geregistreerd model en een interferentie configuratie.
 
 > [!IMPORTANT]
-> De functionaliteit, zoals het downloaden van een volledig samengestelde installatie kopie of het maken van een installatie kopie, vereist een werkende [docker](https://www.docker.com) -installatie in uw ontwikkel omgeving.
+> Als u een volledig gemaakte installatie kopie wilt downloaden of een installatie kopie wilt bouwen, moet u [docker](https://www.docker.com) hebben geïnstalleerd in uw ontwikkel omgeving.
 
 ### <a name="download-a-packaged-model"></a>Een verpakt model downloaden
 
-In het volgende voor beeld ziet u hoe u een installatie kopie bouwt die is geregistreerd in de Azure Container Registry voor uw werk ruimte:
+In het volgende voor beeld wordt een installatie kopie gebouwd die is geregistreerd in het Azure container Registry voor uw werk ruimte:
 
 ```python
 package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Nadat u een pakket hebt gemaakt, kunt `package.pull()` u gebruiken om de installatie kopie naar uw lokale docker-omgeving te halen. Met de uitvoer van deze opdracht wordt de naam van de afbeelding weer gegeven. Bijvoorbeeld `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. Na het downloaden gebruikt u `docker images` de opdracht om de lokale installatie kopieën weer te geven:
+Nadat u een pakket hebt gemaakt, kunt u `package.pull()` gebruiken om de installatie kopie naar uw lokale docker-omgeving te halen. Met de uitvoer van deze opdracht wordt de naam van de afbeelding weer gegeven. Bijvoorbeeld: 
+
+`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
+
+Nadat u het model hebt gedownload, gebruikt `docker images` u de opdracht om de lokale installatie kopieën weer te geven:
 
 ```text
 REPOSITORY                               TAG                 IMAGE ID            CREATED             SIZE
 myworkspacef78fd10.azurecr.io/package    20190822181338      7ff48015d5bd        4 minutes ago       1.43GB
 ```
 
-Als u een lokale container wilt starten met behulp van deze installatie kopie, gebruikt u de volgende opdracht om een benoemde container te starten vanuit de shell of de opdracht regel. Vervang de `<imageid>` waarde door de afbeeldings-id die `docker images` wordt geretourneerd door de opdracht:
+Als u een lokale container wilt starten op basis van deze installatie kopie, gebruikt u de volgende opdracht om een benoemde container te starten vanuit de shell of de opdracht regel. Vervang de `<imageid>` waarde door de afbeeldings-id die `docker images` wordt geretourneerd door de opdracht.
 
 ```bash
 docker run -p 6789:5001 --name mycontainer <imageid>
 ```
 
-Met deze opdracht start u de nieuwste versie van de `myimage`installatie kopie met de naam. De lokale poort 6789 wordt toegewezen aan de poort in de container waarnaar de webservice luistert (5001). De naam `mycontainer` wordt ook toegewezen aan de container, waardoor het eenvoudiger wordt om te stoppen. Zodra het is gestart, kunt u aanvragen `http://localhost:6789/score`verzenden naar.
+Met deze opdracht start u de nieuwste versie van de `myimage`installatie kopie met de naam. De lokale poort 6789 wordt toegewezen aan de poort in de container waarop de webservice luistert (5001). De naam `mycontainer` wordt ook toegewezen aan de container, waardoor de container eenvoudiger kan worden gestopt. Nadat de container is gestart, kunt u aanvragen verzenden naar `http://localhost:6789/score`.
 
-### <a name="generate-dockerfile-and-dependencies"></a>Dockerfile en afhankelijkheden genereren
+### <a name="generate-a-dockerfile-and-dependencies"></a>Een Dockerfile en afhankelijkheden genereren
 
-In het volgende voor beeld ziet u hoe u het dockerfile, model en andere assets downloadt die nodig zijn om de installatie kopie lokaal te bouwen. De `generate_dockerfile=True` para meter geeft aan dat de bestanden, niet een volledig gebouwde installatie kopie, moeten worden gemaakt:
+In het volgende voor beeld ziet u hoe u het Dockerfile, model en andere assets downloadt die nodig zijn om een installatie kopie lokaal te maken. De `generate_dockerfile=True` para meter geeft aan dat u de bestanden, niet een volledig samengestelde afbeelding, wilt.
 
 ```python
 package = Model.package(ws, [model], inference_config, generate_dockerfile=True)
 package.wait_for_creation(show_output=True)
-# Download the package
+# Download the package.
 package.save("./imagefiles")
-# Get the Azure Container Registry that the model/dockerfile uses
+# Get the Azure container registry that the model/Dockerfile uses.
 acr=package.get_container_registry()
 print("Address:", acr.address)
 print("Username:", acr.username)
 print("Password:", acr.password)
 ```
 
-Met deze code worden de bestanden gedownload die nodig zijn om de `imagefiles` installatie kopie te bouwen in de Directory. De dockerfile die zijn opgenomen in de opslag bestanden verwijzen naar een basis installatie kopie die is opgeslagen in een Azure Container Registry. Wanneer u de installatie kopie op uw lokale docker-installatie bouwt, moet u het adres, de gebruikers naam en het wacht woord voor verificatie bij dit REGI ster gebruiken. Gebruik de volgende stappen om de installatie kopie te bouwen met een lokale docker-installatie:
+Met deze code worden de bestanden gedownload die nodig zijn om de `imagefiles` installatie kopie te bouwen in de Directory. De Dockerfile die in de opgeslagen bestanden zijn opgenomen, verwijst naar een basis installatie kopie die is opgeslagen in een Azure container Registry. Wanneer u de installatie kopie op uw lokale docker-installatie bouwt, moet u het adres, de gebruikers naam en het wacht woord gebruiken om u te verifiëren bij het REGI ster. Gebruik de volgende stappen om de installatie kopie met behulp van een lokale docker-installatie te maken:
 
-1. Gebruik vanuit een shell of opdracht regel sessie de volgende opdracht om docker te verifiëren met de Azure Container Registry. Vervang `<address>`, `<username>`, `package.get_container_registry()`en `<password>` door de waarden die zijn opgehaald met:
+1. Gebruik vanuit een shell of opdracht regel sessie de volgende opdracht om docker te verifiëren met het Azure container Registry. Vervang `<address>`, `<username>`, `package.get_container_registry()`en `<password>` door de waarden die zijn opgehaald door.
 
     ```bash
     docker login <address> -u <username> -p <password>
     ```
 
-2. Gebruik de volgende opdracht om de installatie kopie te maken. Vervang `<imagefiles>` door het pad naar de map waarin `package.save()` de bestanden zijn opgeslagen:
+2. Gebruik de volgende opdracht om de installatie kopie te maken. Vervang `<imagefiles>` door het pad van de map waarin `package.save()` de bestanden zijn opgeslagen.
 
     ```bash
     docker build --tag myimage <imagefiles>
@@ -892,7 +897,7 @@ Als u een nieuwe container wilt starten op basis van deze installatie kopie, geb
 docker run -p 6789:5001 --name mycontainer myimage:latest
 ```
 
-Met deze opdracht start u de nieuwste versie van de `myimage`installatie kopie met de naam. De lokale poort 6789 wordt toegewezen aan de poort in de container waarnaar de webservice luistert (5001). De naam `mycontainer` wordt ook toegewezen aan de container, waardoor het eenvoudiger wordt om te stoppen. Zodra het is gestart, kunt u aanvragen `http://localhost:6789/score`verzenden naar.
+Met deze opdracht start u de nieuwste versie van de `myimage`installatie kopie met de naam. De lokale poort 6789 wordt toegewezen aan de poort in de container waarop de webservice luistert (5001). De naam `mycontainer` wordt ook toegewezen aan de container, waardoor de container eenvoudiger kan worden gestopt. Nadat de container is gestart, kunt u aanvragen verzenden naar `http://localhost:6789/score`.
 
 ### <a name="example-client-to-test-the-local-container"></a>Voor beeld-client om de lokale container te testen
 
@@ -902,28 +907,28 @@ De volgende code is een voor beeld van een python-client die met de container ka
 import requests
 import json
 
-# URL for the web service
+# URL for the web service.
 scoring_uri = 'http://localhost:6789/score'
 
-# Two sets of data to score, so we get two results back
+# Two sets of data to score, so we get two results back.
 data = {"data":
         [
             [ 1,2,3,4,5,6,7,8,9,10 ],
             [ 10,9,8,7,6,5,4,3,2,1 ]
         ]
         }
-# Convert to JSON string
+# Convert to JSON string.
 input_data = json.dumps(data)
 
-# Set the content type
+# Set the content type.
 headers = {'Content-Type': 'application/json'}
 
-# Make the request and display the response
+# Make the request and display the response.
 resp = requests.post(scoring_uri, input_data, headers=headers)
 print(resp.text)
 ```
 
-Zie [modellen gebruiken die zijn geïmplementeerd als webservices](how-to-consume-web-service.md)voor meer voor beelden van clients in andere programmeer talen.
+Zie voor beelden van clients in andere programmeer talen [modellen gebruiken die zijn geïmplementeerd als webservices](how-to-consume-web-service.md).
 
 ### <a name="stop-the-docker-container"></a>De docker-container stoppen
 
@@ -938,13 +943,13 @@ docker kill mycontainer
 Als u wilt verwijderen van een geïmplementeerde webservice, gebruikt u `service.delete()`.
 Als u wilt een geregistreerde model verwijderen, gebruikt u `model.delete()`.
 
-Zie de referentie documentatie voor [webservice. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--)en [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)voor meer informatie.
+Zie de documentatie voor [webservice. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) en [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)
 * [Problemen met implementatie oplossen](how-to-troubleshoot-deployment.md)
 * [Azure Machine Learning-webservices met SSL beveiligde](how-to-secure-web-service.md)
-* [Een ML-Model dat is geïmplementeerd als een webservice gebruiken](how-to-consume-web-service.md)
+* [Een Azure Machine Learning model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)
 * [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)
 

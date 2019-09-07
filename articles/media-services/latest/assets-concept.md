@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2f2dea922b7a3ba45ad6493ce94f0c52649dfa68
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 3dc1866a3c0339bca0c27fb53894a14581e88490
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70230991"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390501"
 ---
 # <a name="assets"></a>Assets
 
@@ -48,7 +48,7 @@ Nadat de digitale bestanden zijn geüpload naar de opslag en zijn gekoppeld aan 
     az storage blob upload -f /path/to/file -c MyContainer -n MyBlob
     ```
 2. Haal een SAS-URL op met lees-/schrijfmachtigingen die wordt gebruikt voor het uploaden van digitale bestanden in de asset-container. U kunt de Media Services-API gebruiken voor het [vermelden van de URL's voor de asset-container](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
-3. Gebruik de Azure Storage-API's of SDK's (bijvoorbeeld de [Storage REST API](../../storage/common/storage-rest-api-auth.md), [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md) of [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) voor het uploaden van bestanden in de asset-container. 
+3. Gebruik de Azure Storage Api's of Sdk's (bijvoorbeeld de [Storage rest API](../../storage/common/storage-rest-api-auth.md) of [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) om bestanden te uploaden naar de-container van de Asset. 
 4. Gebruik Media Services v3-API's om een transformatie en een taak te maken om uw 'invoer'-asset te verwerken. Zie [Transformaties en taken](transform-concept.md) voor meer informatie.
 5. De inhoud van de Asset ' output ' streamen.
 

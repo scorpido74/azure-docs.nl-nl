@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 40144fb50a01a64bbd67d541562b4fe0842fbf10
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b0a58251530467d788710b0584b15715a207e20f
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097803"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734329"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Taak hubs in Durable Functions (Azure Functions)
 
@@ -101,6 +101,8 @@ De naam van de taak-hub wordt ingesteld op de waarde `MyTaskHub` van de app-inst
 
 Hier volgt een vooraf gecompileerd C# voor beeld van hoe u een functie schrijft die gebruikmaakt van een [OrchestrationClientBinding](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) om te werken met een task hub die is geconfigureerd als een app-instelling:
 
+### <a name="c"></a>C#
+
 ```csharp
 [FunctionName("HttpStart")]
 public static async Task<HttpResponseMessage> Run(
@@ -119,8 +121,9 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-En hieronder is de vereiste configuratie voor Java script. De eigenschap task hub in het `function.json` bestand is ingesteld via de app-instelling:
+### <a name="javascript"></a>JavaScript
 
+De eigenschap task hub in het `function.json` bestand is ingesteld via de app-instelling:
 ```json
 {
     "name": "input",

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: 078a29fc1ab66151aa41c3901bb6a3af6479a0ba
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: dd3b68d600edcbbae73fff542e677d3ebc6b16ee
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233267"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390821"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Een FSLogix-profiel container maken voor een hostgroep met Azure NetApp Files
 
@@ -195,11 +195,11 @@ Deze sectie is gebaseerd op het [maken van een profiel container voor een hostgr
 4. Voer de volgende cmdlets uit om een gebruiker toe te wijzen aan een Extern bureaublad groep:
 
    ```powershell
-   $tenant = "<your-wvd-tenant>"
-   $pool1 = "<wvd-pool>"
-   $appgroup = "Desktop Application Group"
-   $user1 = "<user-principal>"
-   Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
+   $wvdTenant = "<your-wvd-tenant>"
+   $hostPool = "<wvd-pool>"
+   $appGroup = "Desktop Application Group"
+   $user = "<user-principal>"
+   Add-RdsAppGroupUser $wvdTenant $hostPool $appGroup $user
    ```
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Zorg ervoor dat gebruikers toegang hebben tot de bestands share van Azure NetApp

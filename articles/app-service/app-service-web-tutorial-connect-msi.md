@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 8a0b974e9b64d477e53c37757b4f2fa952befba2
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 09e9a89fc79763eee5d154ba589b599fe8a180b2
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061863"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743387"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Zelfstudie: Azure SQL Database-verbinding vanuit App Service beveiligen met een beheerde identiteit
 
@@ -46,7 +46,7 @@ Wat u leert:
 > * Verbinding maken met SQL Database vanuit Visual Studio met behulp van Azure AD-verificatie
 
 > [!NOTE]
->Azure AD-verificatie _wijkt af_ van [geïntegreerde Windows](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) -authenticatie in on-premises Active Directory (AD DS). AD DS en Azure AD gebruiken volledig verschillende verificatie protocollen. Zie [Documentatie voor Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) voor meer informatie.
+>Azure AD-verificatie _wijkt af_ van [geïntegreerde Windows-authenticatie](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) in on-premises Active Directory (AD DS). AD DS en Azure AD gebruiken volledig verschillende verificatie protocollen. Zie [Documentatie voor Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) voor meer informatie.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -54,7 +54,7 @@ Wat u leert:
 
 Dit artikel gaat verder waar u bent gebleven in [Zelfstudie: Bouw een ASP.net-app in azure met](app-service-web-tutorial-dotnet-sqldatabase.md) SQL database [of zelf studie: Bouw een ASP.NET Core-en SQL Database-app](app-service-web-tutorial-dotnetcore-sqldb.md)in azure app service. Als u dat nog niet hebt gedaan, volgt u eerst een van de twee zelf studies. U kunt de stappen voor uw eigen .NET-app ook aanpassen met SQL Database.
 
-Als u fouten wilt opsporen in uw app met SQL Database als de back-end, zorgt u ervoor dat de client verbinding van uw computer is toegestaan. Als dat niet het geval is, voegt u het IP-adres van de client toe aan de hand van de stappen in [IP-firewall regels op server niveau beheren met de Azure Portal](../sql-database/sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal).
+Als u fouten wilt opsporen in uw app met SQL Database als de back-end, zorgt u ervoor dat de client verbinding van uw computer is toegestaan. Als dat niet het geval is, voegt u het IP-adres van de client toe aan de hand van de stappen in [IP-firewall regels op server niveau beheren met de Azure Portal](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

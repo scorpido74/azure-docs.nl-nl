@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: 2cde1fe258d2caf7e7dc9d8ede582364f42c676b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: c21b4d525e395dfb032a89631eb34156fe3e5b23
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648874"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744722"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Python-zelf studie: Cognitive Services-API's aanroepen in een Azure Search Indexing-pijp lijn
 
@@ -67,9 +67,9 @@ Voor alle aanvragen is een API-sleutel vereist voor elke aanvraag die naar uw se
 
 ## <a name="prepare-sample-data"></a>Voorbeeld gegevens voorbereiden
 
-De verrijkingspijplijn haalt gegevens uit Azure-gegevensbronnen. Brongegevens moeten afkomstig zijn van een ondersteund type gegevensbron van een [Azure Search-indexeerfunctie](search-indexer-overview.md). Azure Table Storage wordt niet ondersteund voor cognitieve Zoek opdrachten. In dit voorbeeld gebruiken we blobopslag om meerdere inhoudstypen te laten zien.
+De verrijkingspijplijn haalt gegevens uit Azure-gegevensbronnen. Brongegevens moeten afkomstig zijn van een ondersteund type gegevensbron van een [Azure Search-indexeerfunctie](search-indexer-overview.md). In dit voorbeeld gebruiken we blobopslag om meerdere inhoudstypen te laten zien.
 
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com), navigeer naar uw Azure Storage-account, klik op blobs en klik vervolgens op **+ container**.
+1. [Meld u aan bij de Azure Portal](https://portal.azure.com), navigeer naar uw Azure Storage-account, klik op **blobs**en klik vervolgens op **+ container**.
 
 1. [Maak een BLOB-container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) om voorbeeld gegevens te bevatten. U kunt het niveau van open bare toegang instellen op een van de geldige waarden.
 
@@ -473,7 +473,8 @@ De resultaten moeten er ongeveer uitzien als in het volgende voor beeld. In de s
 Herhaal dit voor aanvullende velden: inhoud, language code, zinsdelen en organisaties in deze oefening. U kunt meerdere velden retourneren via `$select` met behulp van een door komma's gescheiden lijst.
 
 U kunt GET of POST gebruiken, afhankelijk van de complexiteit en lengte van de queryreeks. Zie [Query using the REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Query's uitvoeren met de REST API) voor meer informatie.
-,<a name="reset"></a>
+
+<a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>Opnieuw instellen en uitvoeren
 

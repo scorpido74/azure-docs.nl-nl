@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: ae25ffdf3f819c30fdfb1d3110042579f0b197b9
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: d0b2c9c7450b8a44ca93a9d9fa8770b7ab3d9282
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70381764"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743857"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Een Cognitive Services resource maken met behulp van de Azure Portal
 
@@ -32,12 +32,17 @@ Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een c
 1. Een resource maken.
 
     #### <a name="multi-service-resourcetabmultiservice"></a>[Resource met meerdere services](#tab/multiservice)
-
+    
     De resource met meerdere services heeft de naam **Cognitive Services** in de portal. [Maak een Cognitive Services resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne).
     
-    Op dit moment kunnen deze services **niet** worden aangeroepen met behulp van een multi-service-sleutel: QnA Maker, spraak Services, Custom Vision en anomalie detectie.
+    Op dit moment biedt de resource met meerdere services toegang tot de volgende Cognitive Services:
     
-
+    |                  |                                                      |                    |                               |                  |
+    |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
+    | Computer Vision  | Content Moderator                                    | Face               | Language Understanding (LUIS) | Tekstanalyse   |
+    | Translator Text  | Bing Search v7 <br>(Web, afbeelding, nieuws, video, visueel element) | Bing Custom Search | Bing Entity Search            | Bing Automatische suggesties |
+    | Bing Spellingcontrole |                                                      |                    |                               |                  |
+    
     #### <a name="single-service-resourcetabsingleservice"></a>[Resource met één service](#tab/singleservice)
 
     Gebruik de onderstaande koppelingen om een resource te maken voor de beschik bare Cognitive Services:
@@ -85,13 +90,13 @@ Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een c
 
 ## <a name="get-the-keys-for-your-resource"></a>De sleutels voor uw resource ophalen
 
-Nadat de implementatie van de resource is voltooid, klikt u in de **volgende stappen**op **Ga naar resource** .
+1. Nadat de implementatie van de resource is voltooid, klikt u in de **volgende stappen**op **Ga naar resource** .
 
-![Zoeken naar Cognitive Services](media/cognitive-services-apis-create-account/resource-next-steps.png)
+    ![Zoeken naar Cognitive Services](media/cognitive-services-apis-create-account/resource-next-steps.png)
 
-In het deel venster Quick start dat wordt geopend, kunt u toegang krijgen tot uw sleutel en eind punt.
+2. In het deel venster Quick start dat wordt geopend, kunt u toegang krijgen tot uw sleutel en eind punt.
 
-![Sleutel en eind punt ophalen](media/cognitive-services-apis-create-account/get-cog-serv-keys.png)
+    ![Sleutel en eind punt ophalen](media/cognitive-services-apis-create-account/get-cog-serv-keys.png)
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
 

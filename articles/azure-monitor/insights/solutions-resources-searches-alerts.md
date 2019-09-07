@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2e32fb57a5ee34da8c342649cc1740d111723ec
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
-ms.translationtype: MT
+ms.openlocfilehash: 7ec30e2445a5ed6008256f7abcef496247922968
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662908"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744481"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics opgeslagen Zoek opdrachten en waarschuwingen toevoegen aan beheer oplossing (preview)
 
@@ -38,7 +38,7 @@ In dit artikel wordt ervan uitgegaan dat u al bekend bent met het [maken van een
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics-werkruimte
-Alle resources in Log Analytics zijn opgenomen in een [werk ruimte](../../azure-monitor/platform/manage-access.md). Zoals beschreven in [log Analytics werk ruimte en](solutions.md#log-analytics-workspace-and-automation-account)het Automation-account, is de werk ruimte niet opgenomen in de beheer oplossing, maar moet deze bestaan voordat de oplossing wordt geïnstalleerd. Als deze niet beschikbaar is, mislukt de installatie van de oplossing.
+Alle resources in Log Analytics zijn opgenomen in een [werk ruimte](../../azure-monitor/platform/manage-access.md). Zoals beschreven in [log Analytics werk ruimte en het Automation-account](solutions.md#log-analytics-workspace-and-automation-account), is de werk ruimte niet opgenomen in de beheer oplossing, maar moet deze bestaan voordat de oplossing wordt geïnstalleerd. Als deze niet beschikbaar is, mislukt de installatie van de oplossing.
 
 De naam van de werk ruimte bevindt zich in de naam van elke Log Analytics resource. Dit gebeurt in de oplossing met de **werkruimte** parameter, zoals in het volgende voor beeld van een SavedSearch-resource.
 
@@ -83,10 +83,10 @@ Elke eigenschap van een opgeslagen zoek opdracht wordt beschreven in de volgende
 | query | De query die moet worden uitgevoerd. |
 
 > [!NOTE]
-> U moet mogelijk escape tekens in de query gebruiken als deze tekens bevat die als JSON kunnen worden geïnterpreteerd. Als uw query bijvoorbeeld **AzureActivity | Operationname: ' micro soft. Compute/informatie/write '** , moet worden geschreven in het oplossings bestand als **AzureActivity | Operationname:/\"micro soft. Compute/informatie/\"write**.
+> U moet mogelijk escape tekens in de query gebruiken als deze tekens bevat die als JSON kunnen worden geïnterpreteerd. Als uw query bijvoorbeeld **AzureActivity | Operationname: ' micro soft. Compute/informatie/write '** , moet worden geschreven in het oplossings bestand als **AzureActivity | Operationname\":/micro soft. Compute/informatie/\"write**.
 
 ## <a name="alerts"></a>Waarschuwingen
-[Waarschuwingen voor Azure](../../azure-monitor/platform/alerts-unified-log.md) -logboeken worden gemaakt door Azure-waarschuwings regels die regel matig opgegeven logboek query's uitvoeren. Als de resultaten van de query overeenkomen met opgegeven criteria, wordt een waarschuwings record gemaakt en worden een of meer acties uitgevoerd met [actie groepen](../../azure-monitor/platform/action-groups.md).
+[Waarschuwingen voor Azure-logboeken](../../azure-monitor/platform/alerts-unified-log.md) worden gemaakt door Azure-waarschuwings regels die regel matig opgegeven logboek query's uitvoeren. Als de resultaten van de query overeenkomen met opgegeven criteria, wordt een waarschuwings record gemaakt en worden een of meer acties uitgevoerd met [actie groepen](../../azure-monitor/platform/action-groups.md).
 
 Voor gebruikers die waarschuwingen naar Azure uitbreiden, worden de acties nu beheerd in Azure-Actiegroepen. Wanneer een werk ruimte en de bijbehorende waarschuwingen worden uitgebreid naar Azure, kunt u acties ophalen of toevoegen met behulp van de [actie groep-Azure Resource Manager sjabloon](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 Waarschuwings regels in verouderde beheer oplossingen bestaan uit de volgende drie verschillende bronnen.
@@ -169,30 +169,30 @@ Waarschuwings acties hebben de volgende structuur. Dit omvat algemene variabelen
 
 De eigenschappen van resources voor waarschuwings acties worden beschreven in de volgende tabellen.
 
-| De naam van element | Vereist | description |
+| De naam van element | Vereist | Description |
 |:--|:--|:--|
-| type | Ja | Het type van de actie.  Dit is een **waarschuwing** voor waarschuwings acties. |
-| name | Ja | Weergavenaam voor de waarschuwing.  Dit is de naam die wordt weer gegeven in de console voor de waarschuwings regel. |
-| description | Nee | Optionele beschrijving van de waarschuwing. |
-| Severity | Ja | Ernst van de waarschuwings record van de volgende waarden:<br><br> **critical**<br>**waarschuwing**<br>**informatief**
+| `Type` | Ja | Het type van de actie.  Dit is een **waarschuwing** voor waarschuwings acties. |
+| `Name` | Ja | Weergavenaam voor de waarschuwing.  Dit is de naam die wordt weer gegeven in de console voor de waarschuwings regel. |
+| `Description` | Nee | Optionele beschrijving van de waarschuwing. |
+| `Severity` | Ja | Ernst van de waarschuwings record van de volgende waarden:<br><br> **critical**<br>**waarschuwing**<br>**informatief**
 
 
 #### <a name="threshold"></a>Drempelwaarde
 Deze sectie is vereist. Hiermee worden de eigenschappen van de waarschuwings drempel gedefinieerd.
 
-| De naam van element | Vereist | description |
+| De naam van element | Vereist | Description |
 |:--|:--|:--|
-| Operator | Ja | Operator voor de vergelijking van de volgende waarden:<br><br>**gt = groter dan<br>lt = kleiner dan** |
-| Waarde | Ja | De waarde waarmee de resultaten worden vergeleken. |
+| `Operator` | Ja | Operator voor de vergelijking van de volgende waarden:<br><br>**gt = groter dan<br>lt = kleiner dan** |
+| `Value` | Ja | De waarde waarmee de resultaten worden vergeleken. |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Deze sectie is optioneel. Neem deze op voor een waarschuwing voor metrische metingen.
 
-| De naam van element | Vereist | description |
+| De naam van element | Vereist | Description |
 |:--|:--|:--|
-| TriggerCondition | Ja | Hiermee geeft u op of de drempel waarde is voor het totale aantal schendingen of opeenvolgende schendingen van de volgende waarden:<br><br>**Totaal<br>aantal opeenvolgende** |
-| Operator | Ja | Operator voor de vergelijking van de volgende waarden:<br><br>**gt = groter dan<br>lt = kleiner dan** |
-| Waarde | Ja | Aantal keer dat aan de criteria moet worden voldaan om de waarschuwing te activeren. |
+| `TriggerCondition` | Ja | Hiermee geeft u op of de drempel waarde is voor het totale aantal schendingen of opeenvolgende schendingen van de volgende waarden:<br><br>**Totaal<br>aantal opeenvolgende** |
+| `Operator` | Ja | Operator voor de vergelijking van de volgende waarden:<br><br>**gt = groter dan<br>lt = kleiner dan** |
+| `Value` | Ja | Aantal keer dat aan de criteria moet worden voldaan om de waarschuwing te activeren. |
 
 
 #### <a name="throttling"></a>Beperken

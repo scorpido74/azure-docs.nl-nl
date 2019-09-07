@@ -1,6 +1,6 @@
 ---
-title: Indeling van de Geofence GeoJSON-gegevens in Azure Maps | Microsoft Docs
-description: Meer informatie over de indeling van de Geofence GeoJSON-gegevens in Azure-kaarten
+title: Geojson-gegevens indeling voor geofence in Azure Maps | Microsoft Docs
+description: Meer informatie over de geojson-gegevens indeling van geofence in Azure Maps
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/14/2019
@@ -8,41 +8,41 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: d4b6c8289ae7c22521fc433c928f2b25a56c87ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5946180c161a38a30f44e235ce0b626fd70a5400
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723566"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735144"
 ---
-# <a name="geofencing-geojson-data"></a>Met Geofencing GeoJSON-gegevens
+# <a name="geofencing-geojson-data"></a>Geojson-gegevens geoomheining
 
-De Azure-kaarten [ophalen Geofence](/rest/api/maps/spatial/getgeofence) en [POST Geofence](/rest/api/maps/spatial/postgeofence) API kunt u de nabijheid van een coördinaat ten opzichte van een opgegeven geofence of set fences ophalen. In dit artikel wordt uitgelegd hoe het voorbereiden van de gegevens van de geofence die kunnen worden gebruikt in de Azure Maps ophalen en de POST-API.
+Met de Azure Maps [geofence ophalen](/rest/api/maps/spatial/getgeofence) en [post geofence](/rest/api/maps/spatial/postgeofence) -api's kunt u de nabijheid van een coördinaat ophalen ten opzichte van een opgegeven geofence of set omheiningen. In dit artikel wordt beschreven hoe u de geofence-gegevens voorbereidt die kunnen worden gebruikt in de Azure Maps GET en POST-API.
 
-De gegevens voor de geofence bevindt of een set van geofences wordt vertegenwoordigd door `Feature` Object en `FeatureCollection` van het Object in `GeoJSON` -indeling, die is gedefinieerd in [rfc7946](https://tools.ietf.org/html/rfc7946). Naast het volgende:
+De gegevens voor geofence of set geofences `Feature` worden vertegenwoordigd door object en `FeatureCollection` object in `GeoJSON` indeling, dat is gedefinieerd in [rfc7946](https://tools.ietf.org/html/rfc7946). Naast het volgende:
 
-* De GeoJSON-objecttype mag een `Feature` Object of een `FeatureCollection` Object.
-* Het type Geometry Object kan worden een `Point`, `MultiPoint`, `LineString`, `MultiLineString`, `Polygon`, `MultiPolygon`, en `GeometryCollection`.
-* Alle eigenschappen van de functie moeten bevatten een `geometryId`, die wordt gebruikt voor het identificeren van de geofence bevindt.
-* Met functie `Point`, `MultiPoint`, `LineString`, `MultiLineString` moet bevatten `radius` in de eigenschappen. `radius` waarde wordt gemeten in meters, de `radius` varieert van 1 tot 10000-waarde.
-* Met functie `polygon` en `multipolygon` geometrie-type heeft geen een radius-eigenschap.
-* `validityTime` een optionele eigenschap waarmee de gebruiker is ingesteld verlopen tijd en de geldigheid periode voor de gegevens van de geofence bevindt. Indien niet opgegeven, worden de gegevens nooit verloopt en is altijd geldig.
-* De `expiredTime` wordt de vervaldatum en -tijd van geofencing gegevens. Als de waarde van `userTime` in de aanvraag is hoger dan deze waarde, de bijbehorende geofence gegevens wordt beschouwd als verlopen gegevens en is geen query wordt uitgevoerd. Waarop, de geometryId van deze gegevens worden opgenomen in geofence `expiredGeofenceGeometryId` matrix in het antwoord van de geofence bevindt.
-* De `validityPeriod` is een lijst van de geldigheidsduur tijdsduur van de geofence bevindt. Als de waarde van `userTime` in de aanvraag valt buiten de geldigheidsperiode, de bijbehorende gegevens van de geofence wordt beschouwd als ongeldig en wordt niet worden opgevraagd. De geometryId van deze gegevens van de geofence is opgenomen in `invalidPeriodGeofenceGeometryId` matrix in de reactie van de geofence bevindt. De volgende tabel ziet u de eigenschappen van validityPeriod element.
+* Het geojson-object type kan een `Feature` object of een `FeatureCollection` object zijn.
+* Het object type `Point`Geometry kan een, `MultiPoint`, `LineString` `MultiLineString` `Polygon`,,, en`GeometryCollection`zijn. `MultiPolygon`
+* Alle functie-eigenschappen moeten een `geometryId`bevatten, die wordt gebruikt om de geofence te identificeren.
+* De functie `Point`met `MultiPoint`, `LineString`, ,`MultiLineString` moet `radius` in eigenschappen bevatten. `radius`waarde wordt gemeten in meters, `radius` de waarde ligt tussen 1 en 10000.
+* De functie `polygon` met `multipolygon` en het type geometrie heeft geen RADIUS-eigenschap.
+* `validityTime`is een optionele eigenschap waarmee de gebruiker een verlopen tijd en geldigheids periode voor de geofence-gegevens kan instellen. Als u niets opgeeft, verlopen de gegevens nooit en zijn ze altijd geldig.
+* De `expiredTime` is de verloop datum en-tijd van geoomheinings gegevens. Als de waarde van `userTime` in de aanvraag later is dan deze waarde, worden de bijbehorende geofence-gegevens beschouwd als verlopen gegevens en wordt er geen query uitgevoerd. Wanneer de geometryId van deze geofence-gegevens worden opgenomen in `expiredGeofenceGeometryId` de matrix binnen de geofence-respons.
+* De `validityPeriod` is een lijst met de geldigheids periode van de geofence. Als de waarde van `userTime` in de aanvraag buiten de geldigheids periode valt, worden de bijbehorende geofence-gegevens als ongeldig beschouwd en wordt er geen query uitgevoerd. Het geometryId van deze geofence-gegevens is opgenomen `invalidPeriodGeofenceGeometryId` in de matrix binnen de geofence-respons. In de volgende tabel worden de eigenschappen van het element validityPeriod weer gegeven.
 
-| Name | Type | Vereist  | Description |
+| Name | type | Vereist  | Description |
 | :------------ |:------------: |:---------------:| :-----|
-| startTime | DateTime  | true | Het begin van datum-tijd van de geldigheid periode. |
-| endTime   | DateTime  | true |  De einddatum /-tijd van de geldigheid periode. |
-| recurrenceType | string | false |   Het type terugkeerpatroon van de periode. De waarde kan zijn `Daily`, `Weekly`, `Monthly`, of `Yearly`. Standaardwaarde is `Daily`.|
-| businessDayOnly | Boolean | false |  Geeft aan of de gegevens alleen geldig tijdens de werkdagen is. Standaardwaarde is `false`.|
+| startTime | Datetime  | true | De begin datum en-tijd van de geldigheids periode. |
+| endTime   | Datetime  | true |  De eind datum van de geldigheids periode. |
+| recurrenceType | string | false |   Het terugkeer type van de periode. De `Daily`waarde kan `Weekly` ,`Monthly`, of`Yearly`zijn. De standaard waarde `Daily`is.|
+| businessDayOnly | Boolean-waarde | false |  Geef aan of de gegevens alleen geldig zijn tijdens werk dagen. De standaard waarde `false`is.|
 
 
-* Alle coördinaat waarden worden weergegeven als [breedtegraad, lengtegraad] gedefinieerd in `WGS84`.
-* Voor elke functie die bevat `MultiPoint`, `MultiLineString`, `MultiPolygon` , of `GeometryCollection`, de eigenschappen worden toegepast op alle elementen. Bijvoorbeeld: Alle punten in `MultiPoint` dezelfde radius gebruikt om te vormen een meerdere cirkel geofence bevindt.
-* In-punt cirkel scenario wordt een cirkel geometry kan worden gebruikt, met behulp van een `Point` geometrieobject met eigenschappen die zijn opgesteld [GeoJSON uitbreiden geometrie](https://docs.microsoft.com/azure/azure-maps/extend-geojson).      
+* Alle coördinaat waarden worden weer gegeven als [lengte graad, breedte graad `WGS84`] gedefinieerd in.
+* Voor elke functie `MultiPoint`, met `MultiPolygon` , `MultiLineString`,, of `GeometryCollection`, worden de eigenschappen toegepast op alle elementen. bijvoorbeeld: Alle punten in `MultiPoint` zullen dezelfde RADIUS gebruiken om een geofence van meerdere cirkels te vormen.
+* In het scenario van een punt kan de geometrie van een cirkel worden weer `Point` gegeven met behulp van een Geometry-object met eigenschappen die zijn opgenomen in de [uitbrei ding van geojson-geometrie](https://docs.microsoft.com/azure/azure-maps/extend-geojson).      
 
-Hieronder volgt een voorbeeld-aanvraagtekst voor een geofence wordt weergegeven als een cirkel geofence geometrie in `GeoJSON` met behulp van een centraal punt en een radius. De geldige periode van de gegevens van de geofence wordt gestart van 2018-10-22, 9: 00 op 17: 00 uur, dagelijks, met uitzondering van het weekend herhaald. `expiredTime` Geeft aan dat deze gegevens van de geofence wordt beschouwd als verlopen, als `userTime` in de aanvraag wordt later zijn dan `2019-01-01`.  
+Hieronder volgt een voor beeld van een aanvraag tekst voor een geofence die wordt weer gegeven als `GeoJSON` een cirkel geofence-geometrie in met behulp van een middel punt en een RADIUS. De geldigheids periode van de geofence-gegevens begint van 2018-10-22, 9:00 tot tot 17:00 uur, die elke dag wordt herhaald, met uitzonde ring van het weekend. `expiredTime`Hiermee wordt aangegeven dat deze geofence-gegevens als verlopen `userTime` worden beschouwd als de aanvraag later `2019-01-01`is dan.  
 
 ```json
 {

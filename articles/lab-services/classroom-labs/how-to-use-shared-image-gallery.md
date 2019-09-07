@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 5ce0a81f6c9c886fcbe9186dd7363c38170ca580
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 65cc2d9ac2b96822f2c1b740f3180ba1d9eaf98c
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382955"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389983"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Een galerie met gedeelde afbeeldingen gebruiken in Azure Lab Services
 In dit artikel wordt uitgelegd hoe docenten/Lab-beheerder een installatie kopie van een virtuele machine van een sjabloon kan opslaan, zodat deze door anderen opnieuw kan worden gebruikt. Deze installatie kopieën worden opgeslagen in een [Galerie met gedeelde installatie kopieën](../../virtual-machines/windows/shared-image-galleries.md)van Azure. Als eerste stap koppelt de testlab-beheerder een bestaande galerie met gedeelde afbeeldingen aan het lab-account. Zodra de galerie met gedeelde installatie kopieën is gekoppeld, kunnen Labs die in het lab-account is gemaakt, afbeeldingen opslaan in de galerie met gedeelde afbeeldingen. Andere docenten kunnen deze afbeelding selecteren in de galerie met gedeelde afbeeldingen om een sjabloon voor hun klassen te maken. 
@@ -40,8 +40,11 @@ Nadat een galerie met gedeelde installatie kopieën is gekoppeld, kan een Lab-ac
 3. Controleer de status van de Lab-tegel. 
 
     ![Status van de bewerking voor het opslaan van de afbeelding](../media/how-to-use-shared-image-gallery/save-image-status.png)
+4. Controleer of de bewerking is gelukt.
 
- U kunt ook een installatie kopie uploaden naar de galerie met gedeelde afbeeldingen buiten de context van een lab. Zie overzicht van de [Galerie met gedeelde afbeeldingen](../../virtual-machines/windows/shared-images.md)voor meer informatie. 
+    ![De bewerking voor het opslaan van de afbeelding is voltooid](../media/how-to-use-shared-image-gallery/save-image-successful.png)
+
+U kunt ook een installatie kopie uploaden naar de galerie met gedeelde afbeeldingen buiten de context van een lab. Zie overzicht van de [Galerie met gedeelde afbeeldingen](../../virtual-machines/windows/shared-images.md)voor meer informatie. 
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>Een installatie kopie uit de galerie met gedeelde afbeeldingen gebruiken
 Een docent/docent kan een aangepaste afbeelding kiezen die beschikbaar is in de galerie met gedeelde afbeeldingen voor de sjabloon tijdens het maken van een nieuwe lab.

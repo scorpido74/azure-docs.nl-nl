@@ -10,17 +10,17 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 8712af60df2454b29c0691602260c8b826eae75c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 98e6b515d5e9d60f95873016ad1cb06a13799bb2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164995"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390111"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Verbinding maken met SAP-systemen via Azure Logic Apps
 
 > [!IMPORTANT]
-> De eerdere SAP-toepassings server en SAP Message server-connectors zijn gepland voor afschaffing. De huidige SAP-connector consolideert deze vorige SAP-connectors zodat u het verbindings type niet hoeft te wijzigen, is volledig compatibel met eerdere connectors, biedt veel extra mogelijkheden en blijft de SAP .net-connector bibliotheek gebruiken ( SAP NCo).
+> De eerdere SAP-toepassings server en SAP Message server-connectors zijn gepland voor afschaffing op 30 november 2019. De huidige SAP-connector consolideert deze vorige SAP-connectors zodat u het verbindings type niet hoeft te wijzigen, is volledig compatibel met eerdere connectors, biedt veel extra mogelijkheden en blijft de SAP .net-connector bibliotheek gebruiken ( SAP NCo).
 >
 > Voor Logic apps die gebruikmaken van de oudere connectors, [migreert u naar de nieuwste connector](#migrate) vóór de datum van afschaffing. Als dat niet het geval is, kunnen deze Logic apps uitvoerings fouten ondervinden en kan er geen berichten naar uw SAP-systeem worden verzonden.
 
@@ -190,7 +190,7 @@ Voeg nu een reactie actie toe aan de werk stroom van uw logische app en neem de 
 1. Selecteer **uitvoeren**op de werk balk van de ontwerp functie. Met deze stap wordt de logische app hand matig gestart.
 
 1. Activeer uw logische app door een HTTP POST-aanvraag te verzenden naar de URL in uw HTTP-aanvraag trigger.
-Neem uw bericht inhoud op met uw aanvraag. U kunt een hulp programma zoals postman gebruiken om de aanvraag te [](https://www.getpostman.com/apps)verzenden.
+Neem uw bericht inhoud op met uw aanvraag. U kunt een hulp programma zoals [postman](https://www.getpostman.com/apps)gebruiken om de aanvraag te verzenden.
 
    Voor dit artikel verzendt de aanvraag een IDoc-bestand, dat moet de XML-indeling hebben en de naam ruimte bevatten voor de SAP-actie die u gebruikt, bijvoorbeeld:
 
@@ -506,7 +506,7 @@ Wanneer berichten worden verzonden met een **veilig type** ingeschakeld, ziet he
 
 ### <a name="confirm-transaction-explicitly"></a>Trans actie expliciet bevestigen
 
-Wanneer u trans acties verzendt naar SAP vanuit Logic Apps, vindt deze uitwisseling plaats in twee stappen zoals beschreven in het SAP-document, transactionele [RFC server-Program ma's](https://help.sap.com/doc/saphelp_nwpi71/7.1/en-US/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true). De actie **verzenden naar SAP** verwerkt standaard zowel de stappen voor de functie overdracht als voor de transactie bevestiging in één aanroep. De SAP-connector biedt u de mogelijkheid om deze stappen uit te voeren. U kunt een IDOC verzenden en in plaats van de trans actie automatisch te bevestigen, kunt u de actie voor de expliciete **trans actie-id bevestigen** gebruiken.
+Wanneer u trans acties verzendt naar SAP vanuit Logic Apps, vindt deze uitwisseling plaats in twee stappen zoals beschreven in het SAP-document, [transactionele RFC server-Program ma's](https://help.sap.com/doc/saphelp_nwpi71/7.1/en-US/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true). De actie **verzenden naar SAP** verwerkt standaard zowel de stappen voor de functie overdracht als voor de transactie bevestiging in één aanroep. De SAP-connector biedt u de mogelijkheid om deze stappen uit te voeren. U kunt een IDOC verzenden en in plaats van de trans actie automatisch te bevestigen, kunt u de actie voor de expliciete **trans actie-id bevestigen** gebruiken.
 
 Deze mogelijkheid om de trans actie-ID-bevestiging te ontkoppelen is handig wanneer u trans acties niet wilt dupliceren in SAP, bijvoorbeeld in scenario's waarin storingen optreden vanwege oorzaken van problemen met het netwerk. Door de trans actie-ID afzonderlijk te bevestigen, wordt de trans actie slechts één keer in uw SAP-systeem uitgevoerd.
 
@@ -542,4 +542,4 @@ Raadpleeg de [referentie pagina van de connector](/connectors/sap/)voor technisc
 
 * [Verbinding maken met on-premises systemen](../logic-apps/logic-apps-gateway-connection.md) vanuit Azure Logic apps.
 * Meer informatie over het valideren, transformeren en gebruiken van andere bericht bewerkingen met de [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md).
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md)-connectors.
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md).

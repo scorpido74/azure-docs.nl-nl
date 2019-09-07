@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1645e97e5648032a1281e7cb410c42f0a28b6767
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4f0cffbb65192a3698df0c658742147aea354b70
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559660"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744537"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Transcripties met menselijke labels maken
 
@@ -74,7 +74,7 @@ Hier volgen enkele voor beelden van normalisatie automatisch uitgevoerd op de tr
 | Ga naar Get-Em! | Ga naar em |
 | Ik ben dubbel gepaard | Ik ben dubbel gepaard |
 | 104 Elm straat | 1 0 4 Elm straat |
-| Afstemmen op 102,7 | afstemmen op 1 0 2 7 |
+| Afstemmen op 102,7 | afstemmen op 1 0 2 punt 7 |
 | Pi is ongeveer 3,14 | Pi is ongeveer drie punt 1 4 |
 IT-kosten $3,14| IT-kosten 3 14 |
 

@@ -2,15 +2,15 @@
 author: msmbaldwin
 ms.service: security
 ms.topic: include
-ms.date: 07/23/2019
+ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4aea8c1d1d7112ac1f9ff9042ff01d173ed986c5
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: b7881d38e04f9b5793f61110e0e3e4c76baeddf2
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68440886"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743786"
 ---
-Een beveiligings kenmerk is een kwaliteit of functie van een Azure-service. Het draagt bij aan de mogelijkheid van de service om beveiligings problemen te voor komen, te detecteren en op te lossen.
+Een beveiligings controle is een kwaliteit of functie van een Azure-service die bijdraagt aan de mogelijkheid van de service om beveiligings problemen te voor komen, te detecteren en op te lossen.
 
-In elke categorie worden Ja of Nee weer gegeven om aan te geven of een kenmerk wordt gebruikt. Voor sommige Services wordt ' N.v.t. ' weer gegeven voor een kenmerk dat niet van toepassing is. We kunnen ook een notitie of een koppeling naar meer informatie over een kenmerk geven.
+Voor elk besturings element gebruiken we "ja" of "nee" om aan te geven of deze momenteel aanwezig is voor de service, "N.v.t." voor een besturings element dat niet van toepassing is op de service. We kunnen ook een notitie of koppelingen naar meer informatie over een kenmerk geven.

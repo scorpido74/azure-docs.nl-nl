@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 6548b84f9599116aaa5055324bfa4625ea621ec3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3db0cd3dd01e3f5f6af6b4b668d1ccac094624a2
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087250"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735178"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Instanties in Durable Functions in azure beheren
 
@@ -43,7 +43,9 @@ De para meters voor [StartNewAsync](https://azure.github.io/azure-functions-dura
 * **Invoer**: Alle JSON-serialiseerbare gegevens die moeten worden door gegeven als invoer voor de Orchestrator-functie.
 * **InstanceId**: Beschrijving De unieke ID van het exemplaar. Als u deze para meter niet opgeeft, gebruikt de methode een wille keurige ID.
 
-Hier volgt een eenvoudig C# voor beeld:
+Hier volgen enkele voorbeelden:
+
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("HelloWorldManualStart")]
@@ -532,7 +534,7 @@ modules.exports = async function(context, ctx) {
 
 ## <a name="rewind-instances-preview"></a>Instanties terugspoelen (preview-versie)
 
-Als u een indelings fout hebt om een onverwachte reden, kunt u het exemplaar terugspoelen naar een eerder gezonde status door gebruik te maken van een API die hiervoor is gemaakt.
+Als u een indelings fout hebt om een onverwachte reden, kunt u het exemplaar *terugspoelen* naar een eerder gezonde status door gebruik te maken van een API die hiervoor is gemaakt.
 
 > [!NOTE]
 > Deze API is niet bedoeld als vervanging voor het correct afhandelen van fouten en het beleid voor opnieuw proberen. In plaats daarvan is het alleen bedoeld om te worden gebruikt in gevallen waarin indelings instanties om onverwachte redenen mislukken. Zie het onderwerp [fout afhandeling](durable-functions-error-handling.md) voor meer informatie over het verwerken van fouten en het opnieuw proberen van het beleid.
@@ -542,7 +544,7 @@ Gebruik de API van [RewindAsync](https://azure.github.io/azure-functions-durable
 Stel bijvoorbeeld dat u een werk stroom hebt met een reeks [Human goed keuringen](durable-functions-concepts.md#human). Stel dat er een reeks activiteit functies zijn die iemand verwittigen dat hun goed keuring nodig is, en wacht de realtime respons. Wanneer alle goedkeurings activiteiten antwoorden hebben ontvangen of een time-out hebben, wordt ervan uitgegaan dat een andere activiteit mislukt als gevolg van een onjuiste configuratie van een toepassing, zoals een ongeldige data base connection string. Het resultaat is een indelings fout diep in de werk stroom. Met de `RewindAsync` API (.net) `rewindAsync` of (Java script) kan een toepassings beheerder de configuratie fout herstellen en de mislukte indeling terugspoelen naar de status direct vóór de fout. Geen van de stappen voor menselijke interactie moet opnieuw worden goedgekeurd en de indeling kan nu worden voltooid.
 
 > [!NOTE]
-> De functie rewenteling biedt geen ondersteuning voor het terugspoelen van indelings instanties die gebruikmaken van duurzame timers.
+> De functie *rewenteling* biedt geen ondersteuning voor het terugspoelen van indelings instanties die gebruikmaken van duurzame timers.
 
 ### <a name="c"></a>C#
 
@@ -592,6 +594,8 @@ Als u alle gegevens wilt verwijderen die zijn gekoppeld aan een indeling, kunt u
 
  De methode heeft twee Overloads. De eerste keer dat de geschiedenis wordt gewist met de ID van het Orchestrator-exemplaar:
 
+### <a name="c"></a>C#
+
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
 public static Task Run(
@@ -603,6 +607,8 @@ public static Task Run(
 ```
 
 In het tweede voor beeld ziet u een door een timer geactiveerde functie die de geschiedenis van alle Orchestration-instanties die zijn voltooid na het opgegeven tijds interval verwijdert. In dit geval worden gegevens verwijderd voor alle exemplaren die 30 of meer dagen geleden zijn voltooid. Het is gepland om één keer per dag uit te voeren, om 12 uur:
+
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]

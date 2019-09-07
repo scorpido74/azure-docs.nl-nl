@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 71c166b9c596c3c8628f943ae5c7dbebd9c2d51c
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 227ecb57b125264e7d0eba56e634966d677e0f58
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384136"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387287"
 ---
 # <a name="user-defined-functions-in-azure-resource-manager-template"></a>Door de gebruiker gedefinieerde functies in Azure Resource Manager sjabloon
 
@@ -73,7 +73,7 @@ Bij het definiëren van een gebruikers functie gelden enkele beperkingen:
 * De functie heeft geen toegang tot variabelen.
 * De functie kan alleen para meters gebruiken die in de functie zijn gedefinieerd. Wanneer u de functie [para meters](resource-group-template-functions-deployment.md#parameters) in een door de gebruiker gedefinieerde functie gebruikt, bent u beperkt tot de para meters voor die functie.
 * De functie kan geen andere door de gebruiker gedefinieerde functies aanroepen.
-* De functie kan geen [verwijzing](resource-group-template-functions-resource.md#reference) of [lijst](resource-group-template-functions-resource.md#list) functies gebruiken.
+* De functie kan de functie [Reference](resource-group-template-functions-resource.md#reference) of een van de [lijst](resource-group-template-functions-resource.md#list) functies niet gebruiken.
 * Para meters voor de functie kunnen geen standaard waarden hebben.
 
 

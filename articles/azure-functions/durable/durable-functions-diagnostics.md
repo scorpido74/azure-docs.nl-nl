@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 2cc60ee2c73aa6858f68d6b13a895a0188bb5735
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7c02d4dfde7869da7985817b06f6de398bbef38d
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098141"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734495"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostische gegevens in Durable Functions in azure
 
@@ -28,7 +28,7 @@ De Azure Functions duurzame extensie levert ook *gebeurtenissen* op waarmee u de
 
 ### <a name="tracking-data"></a>Gegevens bijhouden
 
-Elke levens cyclus gebeurtenis van een indelings instantie zorgt ervoor dat een tracerings gebeurtenis wordt geschreven naar de verzameling traces in Application Insights. Deze gebeurtenis bevat een **customDimensions** -nettolading met verschillende velden.  Veld namen zijn allemaal voor `prop__`.
+Elke levens cyclus gebeurtenis van een indelings instantie zorgt ervoor dat een tracerings gebeurtenis wordt geschreven naar de verzameling **traces** in Application Insights. Deze gebeurtenis bevat een **customDimensions** -nettolading met verschillende velden.  Veld namen zijn allemaal voor `prop__`.
 
 * **hubName**: De naam van de taak hub waarin uw Orchestrations worden uitgevoerd.
 * **AppName**: De naam van de functie-app. Dit is handig wanneer u meerdere functie-apps hebt die hetzelfde Application Insights exemplaar delen.
@@ -39,7 +39,7 @@ Elke levens cyclus gebeurtenis van een indelings instantie zorgt ervoor dat een 
 * **status**: De uitvoerings status van de levens cyclus van het exemplaar. Geldige waarden zijn:
   * **Gepland**: De functie is gepland om te worden uitgevoerd, maar is nog niet gestart.
   * **Gestart**: De functie is gestart, maar is nog niet gewacht of voltooid.
-  * In afwachting: De Orchestrator heeft een aantal werk gepland en wacht tot het is voltooid.
+  * In **afwachting**: De Orchestrator heeft een aantal werk gepland en wacht tot het is voltooid.
   * **Luis teren**: De Orchestrator luistert naar een externe gebeurtenis melding.
   * **Voltooid**: De functie is voltooid.
   * **Mislukt**: De functie is mislukt met een fout.
@@ -158,9 +158,26 @@ Het resultaat is een lijst met exemplaar-Id's en de huidige runtime status.
 
 Het is belang rijk om ervoor te zorgen dat het Orchestrator-gedrag voor het opnieuw afspelen van een logboeken rechtstreeks vanuit een Orchestrator-functie wordt geschreven. Denk bijvoorbeeld aan de volgende Orchestrator-functie:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
 
-```cs
+```csharp
+public static async Task Run(
+    [OrchestrationTrigger] DurableOrchestrationContext context,
+    ILogger log)
+{
+    log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
+### <a name="c-script"></a>C# Script
+
+```csharp
 public static async Task Run(
     DurableOrchestrationContext context,
     ILogger log)
@@ -207,9 +224,26 @@ Done!
 ```
 
 > [!NOTE]
-> Houd er rekening mee dat de logboeken van de claim F1, F2 en F3 worden aangeroepen. deze functies worden alleen de eerste keer dat ze worden aangetroffen. Volgende aanroepen die tijdens het herhalen plaatsvinden, worden overgeslagen en de uitvoer wordt opnieuw afgespeeld naar de Orchestrator-logica.
+> Houd er rekening mee dat de logboeken van de claim F1, F2 en F3 worden aangeroepen. deze functies *worden alleen de* eerste keer dat ze worden aangetroffen. Volgende aanroepen die tijdens het herhalen plaatsvinden, worden overgeslagen en de uitvoer wordt opnieuw afgespeeld naar de Orchestrator-logica.
 
 Als u zich alleen wilt aanmelden voor een niet-replay-uitvoering, kunt u een voorwaardelijke expressie schrijven om alleen `IsReplaying` te `false`registreren als dat zo is. Bekijk het bovenstaande voor beeld, maar deze keer met replay controles.
+
+#### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
+
+```csharp
+public static async Task Run(
+    [OrchestrationTrigger] DurableOrchestrationContext context,
+    ILogger log)
+{
+    if (!context.IsReplaying) log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    if (!context.IsReplaying) log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    if (!context.IsReplaying) log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
 
 #### <a name="c"></a>C#
 
@@ -257,7 +291,7 @@ Done!
 
 Met de aangepaste indelings status kunt u een aangepaste status waarde instellen voor uw Orchestrator-functie. Deze status wordt weer gegeven via de HTTP-status query- `DurableOrchestrationClient.GetStatusAsync` API of de API. De aangepaste indelings status maakt uitgebreide bewaking mogelijk voor Orchestrator-functies. De functie code van Orchestrator kan bijvoorbeeld aanroepen bevatten `DurableOrchestrationContext.SetCustomStatus` om de voortgang voor een langlopende bewerking bij te werken. Een-client, zoals een webpagina of een ander extern systeem, kan vervolgens periodiek query's uitvoeren op de HTTP-status query Api's voor informatie over rijkere voortgang. Hieronder vindt u `DurableOrchestrationContext.SetCustomStatus` een voor beeld van het gebruik:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext context)
@@ -316,7 +350,7 @@ Clients ontvangen het volgende antwoord:
 Azure Functions ondersteunt functie code voor fout opsporing rechtstreeks en dezelfde ondersteuning gaat naar Durable Functions, ongeacht of deze wordt uitgevoerd in azure of lokaal. Er zijn echter enkele gedragingen waarmee u rekening moet houden bij fout opsporing:
 
 * Opnieuw **afspelen**: Orchestrator-functies worden regel matig herhaald wanneer er nieuwe invoer wordt ontvangen. Dit betekent dat een enkele *logische* uitvoering van een Orchestrator-functie kan leiden tot hetzelfde onderbrekings punt meerdere keren, vooral als het vroegtijdig is ingesteld in de functie code.
-* **Wacht**op: Wanneer er `await` een fout optreedt, wordt het besturings element teruggebracht naar de verzender van het duurzame taak raamwerk. Als dit de eerste keer is dat een `await` bepaald is aangetroffen, wordt de bijbehorende taak *nooit* hervat. Omdat de taak nooit wordt hervat, is het niet mogelijk om door te lopen (F10 in Visual Studio). Alleen uitvoeren werkt wanneer een taak wordt herhaald.
+* **Wacht**op: Wanneer er `await` een fout optreedt, wordt het besturings element teruggebracht naar de verzender van het duurzame taak raamwerk. Als dit de eerste keer is dat een `await` bepaald is aangetroffen, wordt de bijbehorende taak *nooit* hervat. Omdat de taak nooit wordt hervat, is *het niet* mogelijk om door te lopen (F10 in Visual Studio). Alleen uitvoeren werkt wanneer een taak wordt herhaald.
 * **Time-outs van berichten**: Durable Functions intern gebruikt wachtrij berichten om de uitvoering van Orchestrator-functies en-activiteit functies te verzorgen. In een omgeving met meerdere VM'S kan de fout opsporing voor langere Peri Oden ertoe leiden dat een andere virtuele machine het bericht ophaalt, wat resulteert in dubbele uitvoering. Dit gedrag bestaat ook voor normale functies van de wachtrij-trigger, maar is belang rijk om in deze context te wijzen, omdat de wacht rijen een implementatie detail zijn.
 
 > [!TIP]

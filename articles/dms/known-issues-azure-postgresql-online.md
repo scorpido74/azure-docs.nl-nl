@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 08/06/2019
-ms.openlocfilehash: 0b1632ab943026578eb753014575ab53d151c33f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 56758e2962adb41c9876171c89b37263a70ed0e4
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855019"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743545"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Bekende problemen/migratie beperkingen met online migraties naar Azure DB voor PostgreSQL
 
@@ -89,6 +89,8 @@ Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van Pos
 
     **Tijdelijke oplossing**: Stel tijdelijk een primaire sleutel voor de tabel in voor de migratie om door te gaan. U kunt de primaire sleutel verwijderen nadat de gegevens migratie is voltooid.
 
+- **Beperking**: Het gegevens type JSONB wordt niet ondersteund voor migratie.
+
 ## <a name="lob-limitations"></a>LOB-beperkingen
 
 Large Object LOB-kolommen zijn kolommen die groot kunnen groeien. Voor PostgreSQL zijn voor beelden van LOB-gegevens typen XML, JSON, afbeelding, tekst, enzovoort.
@@ -103,7 +105,7 @@ Large Object LOB-kolommen zijn kolommen die groot kunnen groeien. Voor PostgreSQ
     SELECT max(length(cast(body as text))) as body FROM customer_mail
     ```
 
-    **Tijdelijke oplossing**: Als u een LOB-object hebt dat groter is dan 32 KB, neemt u contact op met het technische team om [Azure data base](mailto:AskAzureDatabaseMigrations@service.microsoft.com)-migraties te vragen.
+    **Tijdelijke oplossing**: Als u een LOB-object hebt dat groter is dan 32 KB, neemt u contact op met het technische team om [Azure data base-migraties te vragen](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
 - **Beperking**: Als er sprake is van LOB-kolommen in de tabel en er geen primaire sleutel is ingesteld voor de tabel, kunnen de gegevens niet worden gemigreerd voor deze tabel.
 

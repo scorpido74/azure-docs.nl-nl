@@ -1,5 +1,5 @@
 ---
-title: Application Insights, C# -Luis
+title: 'Zelfstudie: Application Insights, C# -Luis'
 titleSuffix: Azure Cognitive Services
 description: In deze zelf studie worden bot en Language Understanding informatie toegevoegd voor het Application Insights van telemetriegegevens.
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/16/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: bc8cf9973ed6889b0820e5ada5565d0541532fa3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: MT
+ms.openlocfilehash: 93a75945025b2ab98541f1e1cf678145ddff0123
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560053"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70388002"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-bot-in-c"></a>LUIS resultaten toevoegen aan Application Insights vanuit een bot inC#
+# <a name="tutorial-add-luis-results-to-application-insights-from-a-bot-in-c"></a>Zelfstudie: LUIS resultaten toevoegen aan Application Insights vanuit een bot inC#
 
 In deze zelf studie worden bot en Language Understanding informatie toegevoegd voor het [Application Insights](https://azure.microsoft.com/services/application-insights/) van telemetriegegevens. Wanneer u deze gegevens hebt, kunt u deze zoeken in de Kusto-taal of Power BI voor het analyseren, samen voegen en rapporteren van de intenties en entiteiten van de utterance in realtime. Met deze analyse kunt u bepalen of u moet toevoegen of bewerken van de intenties en entiteiten van uw LUIS-app.
 
@@ -167,7 +167,7 @@ Als u gegevens wilt toevoegen aan Application Insights, hebt u de instrumentatie
 Open Application Insights om te zien van de LUIS-vermeldingen. Het kan enkele minuten duren voordat de gegevens in Application Insights worden weer gegeven.
 
 1. Open in de [Azure Portal](https://portal.azure.com)de Application Insights resource van de bot. 
-1. Wanneer de resource wordt geopend, selecteert u **zoeken** en zoekt u naar alle gegevens in de afgelopen **30 minuten** met het gebeurtenis type tracering. Selecteer de tracering met de naam **Luis**. 
+1. Wanneer de resource wordt geopend, selecteert u **zoeken** en zoekt u naar alle gegevens in de afgelopen **30 minuten** met het gebeurtenis type **tracering**. Selecteer de tracering met de naam **Luis**. 
 1. De bot-en LUIS-informatie is beschikbaar onder **aangepaste eigenschappen**. 
 
     ![Aangepaste eigenschappen van LUIS controleren die zijn opgeslagen in Application Insights](./media/luis-tutorial-appinsights/application-insights-luis-trace-custom-properties-csharp.png)

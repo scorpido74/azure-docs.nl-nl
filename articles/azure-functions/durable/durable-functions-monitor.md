@@ -9,16 +9,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ae6c2bd27e9192966ecffb4d4296063201fca970
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 992e3f7aa53fdd006d29c06113cd30b07a406f3b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098022"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734338"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Het scenario bewaken in het Durable Functions-weers Watcher-voor beeld
 
-Het monitor patroon verwijst naar een flexibel terugkerend proces in een werk stroom, bijvoorbeeld polling totdat aan bepaalde voor waarden wordt voldaan. In dit artikel vindt u een voor beeld waarin [Durable functions](durable-functions-overview.md) wordt gebruikt voor het implementeren van bewaking.
+Het monitor patroon verwijst naar een flexibel *terugkerend* proces in een werk stroom, bijvoorbeeld polling totdat aan bepaalde voor waarden wordt voldaan. In dit artikel vindt u een voor beeld waarin [Durable functions](durable-functions-overview.md) wordt gebruikt voor het implementeren van bewaking.
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -31,7 +31,7 @@ In dit voor beeld worden de huidige weers omstandigheden van een locatie bewaakt
 * Monitors kunnen worden beëindigd als aan een bepaalde voor waarde is voldaan of door een ander proces wordt beëindigd.
 * Monitors kunnen para meters hebben. In het voor beeld ziet u hoe hetzelfde proces voor weer bewaking kan worden toegepast op elke aangevraagde locatie en telefoon nummer.
 * Monitors zijn schaalbaar. Omdat elke monitor een indelings exemplaar is, kunnen er meerdere monitors worden gemaakt zonder nieuwe functies te maken of meer code te definiëren.
-* Monitors kunnen eenvoudig worden geïntegreerd in grotere werk stromen. Een monitor kan één sectie van een complexere Orchestration-functie of een subindeling [](durable-functions-sub-orchestrations.md)zijn.
+* Monitors kunnen eenvoudig worden geïntegreerd in grotere werk stromen. Een monitor kan één sectie van een complexere Orchestration-functie of een subindeling [zijn.](durable-functions-sub-orchestrations.md)
 
 ## <a name="configuring-twilio-integration"></a>Twilio-integratie configureren
 
@@ -67,7 +67,7 @@ De functie **E3_Monitor** maakt gebruik van de standaard *functie. json* voor Or
 
 Hier volgt de code voor het implementeren van de functie:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C# Script
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
@@ -103,7 +103,7 @@ Net als bij andere voor beelden zijn de functies van de Help-activiteit regulier
 
 En dit is de implementatie. Net als de POCOs die wordt gebruikt voor gegevens overdracht, is logica voor het afhandelen van de API-aanroep en het parseren C#van de reactie-json in een gedeelde klasse in. U kunt het vinden als onderdeel van de [Visual Studio-voorbeeld code](#run-the-sample).
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C# Script
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
@@ -117,7 +117,7 @@ De functie **E3_SendGoodWeatherAlert** maakt gebruik van de Twilio-binding voor 
 
 En dit is de code die het SMS-bericht verzendt:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C# Script
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 

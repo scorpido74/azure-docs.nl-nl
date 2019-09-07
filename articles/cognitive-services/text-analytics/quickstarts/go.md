@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 9d04d00be52619d220a698697459376e4937942d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 5c97648bd11a506d3c818584ed7d82d0a12d2e2c
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134966"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387496"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Quickstart: Go gebruiken om de Text Analytics Cognitive Service aan te roepen 
 <a name="HOLTop"></a>
@@ -28,7 +28,8 @@ Raadpleeg de [API-definities](//go.microsoft.com/fwlink/?LinkID=759346) voor tec
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-U moet ook de [eindpunt- en toegangssleutel](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) hebben die voor u is gegenereerd tijden de registratie.
+[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
+
 
 <a name="Detect"></a>
 
@@ -289,7 +290,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Sleuteltermen ophalen
+## <a name="extract-key-phrases"></a>Belangrijke woordgroepen herkennen
 
 Met de Key Phrase Extraction-API worden sleuteltermen opgehaald uit een tekstdocument met behulp van de [methode Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). In het volgende voorbeeld worden sleuteltermen opgehaald voor zowel de Engelse als Spaanse documenten.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f2b26e3418e264c2613a183570c7e27f75ab5d63
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 1a48088d0d7ef1e14614629340ee477833535861
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208235"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390398"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Gegevens opslaan aan de rand met Azure Blob Storage op IoT Edge
 
@@ -173,7 +173,6 @@ De documentatie voor Azure Blob Storage bevat voorbeeld code van Quick Start in 
 De volgende Quick start-voor beelden gebruiken talen die ook door IoT Edge worden ondersteund, zodat u deze kunt implementeren als IoT Edge modules naast de module Blob Storage:
 
 - [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [Java](../storage/blobs/storage-quickstart-blobs-java-v10.md)
 - [Python](../storage/blobs/storage-quickstart-blobs-python.md)
     - Er is een bekend probleem opgetreden bij het gebruik van deze SDK, omdat deze versie van de module geen blob-aanmaak tijd retourneert. Daarom werken er weinig methoden als lijst-blobs. Als tijdelijke oplossing wordt expliciete API-versie op de BLOB-client ingesteld op ' 2017-04-17 '. <br>Hierbij`block_blob_service._X_MS_VERSION = '2017-04-17'`
 - [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)

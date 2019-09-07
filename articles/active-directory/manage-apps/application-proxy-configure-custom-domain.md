@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82b8dcfa02d21183a06fa510adb774338e72cb4e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8a1914b7cf79287831e0e94c19c50107c2ac216d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851711"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390780"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Werken met aangepaste domeinen in Azure AD-toepassingsproxy
 
@@ -40,7 +40,7 @@ U wordt aangeraden dat instellen van aangepaste domeinen voor uw toepassingen zo
 
 Voordat u een aangepast domein configureren, zorg ervoor dat u de volgende vereisten voorbereid hebt: 
 - Een [geverifieerd domein is toegevoegd aan Azure Active Directory](../fundamentals/add-custom-domain.md).
-- Een aangepaste certificaat voor het domein, in de vorm van een PFX-bestand. 
+- Een aangepaste certificaat voor het domein, in de vorm van een PFX-bestand.
 - Een on-premises app [gepubliceerd via toepassingsproxy](application-proxy-add-on-premises-application.md).
 
 ### <a name="configure-your-custom-domain"></a>Uw aangepaste domein configureren
@@ -72,6 +72,8 @@ Wanneer u deze drie vereisten klaar hebt, volgt u deze stappen voor het instelle
 Er is geen beperking voor het certificaat handtekening-methoden. Alle worden Elliptic Curve Cryptography (ECC), SAN Subject Alternative Name () en andere algemene typen certificaten ondersteund. 
 
 U kunt een certificaat met jokertekens gebruiken, zolang het jokerteken komt overeen met de gewenste externe URL.
+
+Het certificaat moet de persoonlijke sleutel bevatten.
 
 Certificaten die zijn uitgegeven door uw eigen open bare-sleutel infrastructuur (PKI) kunnen worden gebruikt als de certificaat keten is geïnstalleerd op uw client apparaten. InTune kan worden gebruikt om deze certificaten te implementeren op beheerde apparaten. Voor niet-beheerde apparaten moeten deze certificaten hand matig worden geïnstalleerd.
 

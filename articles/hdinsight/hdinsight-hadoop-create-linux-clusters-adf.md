@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Apache Hadoop clusters op aanvraag maken in azure HDInsight met behulp van Data Factory '
+title: 'Zelfstudie: Apache Hadoop clusters op aanvraag in azure HDInsight-Data Factory'
 description: Zelf studie-informatie over het maken van on-demand Apache Hadoop clusters in HDInsight met behulp van Azure Data Factory.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: 7af70de91a7f7696be3b003fec11390d6db9ba60
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: de12725952a2bac6a0b86b1d2e239428c0eaa709
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854986"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736169"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Zelfstudie: Apache Hadoop clusters op aanvraag maken in HDInsight met behulp van Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -153,7 +153,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 2. Selecteer **resource groepen** in het linkerdeel venster.
 3. Selecteer de naam van de resource groep die u in uw Power shell-script hebt gemaakt. Gebruik het filter als er te veel resource groepen worden weer gegeven.
 4. Op de tegel **resources** ziet u een resource die wordt weer gegeven, tenzij u de resource groep deelt met andere projecten. Deze resource is het opslag account met de naam die u eerder hebt opgegeven. Selecteer de naam van het opslagaccount.
-5. Selecteer de tegels voor blobs.
+5. Selecteer de tegels voor **blobs** .
 6. Selecteer de **adfgetstarted** -container. U ziet een map met de naam **hivescripts**.
 7. Open de map en zorg ervoor dat deze het voorbeeld script bestand, **partitionweblogs. HQL**bevat.
 
@@ -187,7 +187,7 @@ In dit artikel configureert u de Hive-activiteit voor het maken van een Hadoop-c
 
 3. Typ of selecteer de volgende waarden voor de tegel **nieuw Data Factory** :
 
-    |Eigenschap  |Waarde  |
+    |Eigenschap  |Value  |
     |---------|---------|
     |Name | Voer een naam in voor de data factory. Deze naam moet wereldwijd uniek zijn.|
     |Subscription | Selecteer uw Azure-abonnement. |
@@ -290,7 +290,7 @@ In deze sectie maakt u twee gekoppelde services in uw data factory.
 
     1. Voor **gekoppelde script service**selecteert u **HDIStorageLinkedService** in de vervolg keuzelijst. Deze waarde is de gekoppelde opslag service die u eerder hebt gemaakt.
 
-    1. Selecteervoor bestandspad bladeren in **opslag** en navigeer naar de locatie waar het script van de voorbeeld Hive beschikbaar is. Als u het Power shell-script eerder hebt uitgevoerd, is `adfgetstarted/hivescripts/partitionweblogs.hql`deze locatie.
+    1. Selecteer **voor bestandspad**bladeren in **opslag** en navigeer naar de locatie waar het script van de voorbeeld Hive beschikbaar is. Als u het Power shell-script eerder hebt uitgevoerd, is `adfgetstarted/hivescripts/partitionweblogs.hql`deze locatie.
 
         ![Details van Hive-script voor de pijp lijn opgeven](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "Details van Hive-script voor de pijp lijn opgeven")
 
@@ -308,7 +308,7 @@ In deze sectie maakt u twee gekoppelde services in uw data factory.
 
 ## <a name="trigger-a-pipeline"></a>Een pijp lijn activeren
 
-1. Selecteer **trigger** > trigger toevoegen op de werk balk van het ontwerp oppervlak.
+1. Selecteer **trigger** > trigger toevoegen op de werk balk van het ontwerp**oppervlak.**
 
     ![De Azure Data Factory pijp lijn activeren](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png "De Azure Data Factory pijp lijn activeren")
 

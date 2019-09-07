@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: a173272600bab71264ed3b85ce5141814c0a6aed
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: ee798ba624aaf9f21886edab36185fb1b6ae67f2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147209"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387340"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Voor beeld: een Windows Server-container maken op een Azure Kubernetes service (AKS)-cluster met behulp van de Azure CLI
 
@@ -79,7 +79,7 @@ az provider register --namespace Microsoft.ContainerService
 
 De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en beheert die ondersteuning bieden voor meerdere knooppunt groepen:
 
-* Er zijn meerdere knooppunt groepen beschikbaar voor clusters die zijn gemaakt nadat u de *WindowsPreview*hebt geregistreerd. Er zijn ook meerdere knooppunt groepen beschikbaar als u de *MultiAgentpoolPreview* -en *VMSSPreview* -functies voor uw abonnement registreert. U kunt geen knooppunt groepen toevoegen of beheren met een bestaand AKS-cluster dat is gemaakt voordat deze onderdelen zijn geregistreerd.
+* Er zijn meerdere knooppunt groepen beschikbaar voor clusters die zijn gemaakt nadat u de *WindowsPreview*hebt geregistreerd. Er zijn ook meerdere knooppunt groepen beschikbaar als u de *MultiAgentpoolPreview* -functie voor uw abonnement registreert. U kunt geen knooppunt groepen toevoegen of beheren met een bestaand AKS-cluster dat is gemaakt voordat deze functie is geregistreerd.
 * U kunt de eerste knooppunt groep niet verwijderen.
 
 Hoewel deze functie in preview is, zijn de volgende extra beperkingen van toepassing:
@@ -165,7 +165,7 @@ az aks nodepool add \
     --kubernetes-version 1.14.6
 ```
 
-Met de bovenstaande opdracht maakt u een nieuwe knooppunt groep met de naam *npwin* en voegt u deze toe aan de *myAKSCluster*. Bij het maken van een knooppunt groep voor het uitvoeren van Windows Server-containers, is de standaard waarde voor de *grootte van knoop punt-VM* *Standard_D2s_v3*. Als u de para meter van het *knoop punt-VM-grootte* wilt instellen, controleert u de lijst met [beperkte VM][restricted-vm-sizes]-grootten. De minimale aanbevolen grootte is *Standard_D2s_v3*. De bovenstaande opdracht gebruikt ook het standaard-subnet in de standaard-vnet dat `az aks create`is gemaakt tijdens het uitvoeren.
+Met de bovenstaande opdracht maakt u een nieuwe knooppunt groep met de naam *npwin* en voegt u deze toe aan de *myAKSCluster*. Bij het maken van een knooppunt groep voor het uitvoeren van Windows Server-containers, is de standaard waarde voor de *grootte van knoop punt-VM* *Standard_D2s_v3*. Als u de para meter van het *knoop punt-VM-grootte* wilt instellen, controleert u de lijst met [beperkte VM-grootten][restricted-vm-sizes]. De minimale aanbevolen grootte is *Standard_D2s_v3*. De bovenstaande opdracht gebruikt ook het standaard-subnet in de standaard-vnet dat `az aks create`is gemaakt tijdens het uitvoeren.
 
 ## <a name="connect-to-the-cluster"></a>Verbinding maken met het cluster
 
@@ -302,7 +302,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een Kubernetes-cluster geïmplementeerd en een ASP.NET-voorbeeld toepassing in een Windows Server-container geïmplementeerd. [Open het Kubernetes][kubernetes-dashboard] -webdashboard voor het cluster dat u zojuist hebt gemaakt.
+In dit artikel hebt u een Kubernetes-cluster geïmplementeerd en een ASP.NET-voorbeeld toepassing in een Windows Server-container geïmplementeerd. [Open het Kubernetes-webdashboard][kubernetes-dashboard] voor het cluster dat u zojuist hebt gemaakt.
 
 Voor meer informatie over AKS en een volledig stapsgewijs voorbeeld van code tot implementatie gaat u naar de zelfstudie over Kubernetes-clusters.
 

@@ -8,63 +8,62 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 21e2d3f75028d239175effa7a3608cc18ccfc95c
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 5d0c43fbcc1c59c3281f412aad96a3942a5c79b1
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67305272"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70392938"
 ---
-**Verzameling gegevensvolume en retentie** 
+**Volume en retentie van gegevens verzameling** 
 
-| Laag | Beperken per dag | Bewaartijd van gegevens | Opmerking |
+| Laag | Limiet per dag | Bewaartijd van gegevens | Opmerking |
 |:---|:---|:---|:---|
-| Huidige Per GB-prijscategorie<br>(Zie April 2018) | Geen limiet | 30 - 730 dagen | Bewaren van gegevens langer dan 31 dagen is beschikbaar voor extra kosten in rekening gebracht. Meer informatie over prijzen van Azure Monitor. |
-| Oude gratis laag<br>(Zie April 2016) | 500 MB | 7 dagen | Als uw werkruimte het 500 MB per daglimiet is bereikt, worden de opname van gegevens gestopt en wordt aan het begin van de volgende dag hervat. Een dag is gebaseerd op UTC. Gegevens die zijn verzameld door Azure Security Center wordt niet opgenomen in deze 500 MB per daglimiet en moeten worden verzameld boven deze limiet blijven.  |
-| Verouderde zelfstandige Per GB-laag<br>(Zie April 2016) | Geen limiet | 30-730 dagen | Bewaren van gegevens langer dan 31 dagen is beschikbaar voor extra kosten in rekening gebracht. Meer informatie over prijzen van Azure Monitor. |
-| Verouderde Per knooppunt (OMS)<br>(Zie April 2016) | Geen limiet | 30-730 dagen | Bewaren van gegevens langer dan 31 dagen is beschikbaar voor extra kosten in rekening gebracht. Meer informatie over prijzen van Azure Monitor. |
-| Verouderde Standard-laag | Geen limiet | 30 dagen  | Retentie kan niet worden aangepast |
-| Verouderde Premium-laag | Geen limiet | 365 dagen  | Retentie kan niet worden aangepast |
+| Prijs categorie huidige per GB<br>(geïntroduceerd in april 2018) | Geen limiet | 30-730 dagen | Het bewaren van gegevens is meer dan 31 dagen beschikbaar voor extra kosten. Meer informatie over Azure Monitor prijzen. |
+| Verouderde gratis lagen<br>(geïntroduceerd in april 2016) | 500 MB | 7 dagen | Als uw werk ruimte de limiet van 500 MB per dag bereikt, worden gegevens opname gestopt en hervat aan het begin van de volgende dag. Een dag is gebaseerd op UTC. Houd er rekening mee dat de gegevens die worden verzameld door Azure Security Center, niet zijn opgenomen in de limiet van 500 MB per dag en nog steeds worden verzameld boven deze limiet.  |
+| Verouderde standalone per GB-laag<br>(geïntroduceerd in april 2016) | Geen limiet | 30 tot 730 dagen | Het bewaren van gegevens is meer dan 31 dagen beschikbaar voor extra kosten. Meer informatie over Azure Monitor prijzen. |
+| Verouderd per knoop punt (OMS)<br>(geïntroduceerd in april 2016) | Geen limiet | 30 tot 730 dagen | Het bewaren van gegevens is meer dan 31 dagen beschikbaar voor extra kosten. Meer informatie over Azure Monitor prijzen. |
+| Verouderde Standard-laag | Geen limiet | 30 dagen  | Bewaren kan niet worden aangepast |
+| Verouderde Premium-laag | Geen limiet | 365 dagen  | Bewaren kan niet worden aangepast |
 
-**Het aantal werkruimten per abonnement.**
+**Aantal werk ruimten per abonnement.**
 
-| Prijscategorie    | Limiet voor werkruimte | Opmerkingen
+| Prijscategorie    | Limiet van de werk ruimte | Opmerkingen
 |:---|:---|:---|
-| Gratis laag  | 10 | Deze limiet kan niet worden verhoogd. |
-| Alle andere lagen | Geen limiet | U bent beperkt door het aantal resources binnen een resourcegroep en het aantal resourcegroepen per abonnement. |
+| Free-laag  | 10 | Deze limiet kan niet worden verhoogd. |
+| Alle andere lagen | Geen limiet | U bent beperkt tot het aantal resources in een resource groep en het aantal resource groepen per abonnement. |
 
-**Azure Portal**
+**Azure-portal**
 
-| Category | Limits | Opmerkingen |
+| Categorie | Limieten | Opmerkingen |
 |:---|:---|:---|
-| Maximum aantal records geretourneerd door een logboekquery | 10.000 | Minder resultaten met behulp van querybereik, tijdsbereik en filters in de query. |
+| Maximum aantal records geretourneerd door een logboek query | 10.000 | Verminder de resultaten met behulp van het query bereik, het tijds bereik en filters in de query. |
 
 
-**Gegevensverzamelaar-API**
+**Data Collector-API**
 
-| Category | Limits | Opmerkingen |
+| Categorie | Limieten | Opmerkingen |
 |:---|:---|:---|
-| Maximale grootte voor een enkel bericht | 30 MB | Grotere volumes splitsen in meerdere berichten. |
-| Maximumgrootte voor veldwaarden  | 32 KB | Velden die langer zijn dan 32 KB worden afgebroken. |
+| Maximum grootte voor één bericht | 30 MB | Grotere volumes in meerdere berichten splitsen. |
+| Maximale grootte voor veld waarden  | 32 KB | Velden die langer zijn dan 32 KB worden afgebroken. |
 
-**Zoeken-API**
+**Zoek-API**
 
-| Category | Limits | Opmerkingen |
+| Categorie | Limieten | Opmerkingen |
 |:---|:---|:---|
-| Maximum aantal records geretourneerd voor niet-samengevoegde gegevens | 5,000 | |
-| Maximum aantal records voor samengevoegde gegevens | 500,000 | Samengevoegde gegevens is een zoekopdracht met de `summarize` opdracht. |
-| Maximale grootte van gegevens die worden geretourneerd | 64,000,000 bytes (~ 61 MiB)| |
-| Maximale query uitgevoerd tijd | 10 minuten | Zie [time-outs](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) voor meer informatie.  |
-| Maximale aantal aanvragen | 200 aanvragen per 30 seconden per AAD gebruiker of -client IP-adres | Zie [frequentielimieten](https://dev.loganalytics.io/documentation/Using-the-API/Limits) voor meer informatie. |
+| Maximum aantal records dat wordt geretourneerd in één query | 500,000 | |
+| Maximale grootte van geretourneerde gegevens | 64.000.000 bytes (~ 61 MiB)| |
+| Maximale uitvoerings tijd van de query | 10 minuten | Zie [time-outs](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) voor meer informatie.  |
+| Maximum aantal aanvragen | 200 aanvragen per 30 seconden per AAD-gebruiker of IP-adres van de client | Zie [frequentie limieten](https://dev.loganalytics.io/documentation/Using-the-API/Limits) voor meer informatie. |
 
-**Algemene werkruimte limieten**
+**Algemene limieten voor werk ruimten**
 
-| Category | Limits | Opmerkingen |
+| Categorie | Limieten | Opmerkingen |
 |:---|:---|:---|
 | Maximum aantal kolommen in een tabel         | 500 | |
-| Maximum aantal tekens in voor de naam van kolom | 500 | |
-| Regio's op capaciteit | US - west-centraal | U kan niet op dit moment een nieuwe werkruimte maken in deze regio, omdat deze capaciteitslimiet bereikt tijdelijke is. Deze limiet is gepland om te worden verholpen door de einde van September 2019. |
-| Gegevens exporteren | Momenteel niet beschikbaar | Azure-functie of logische App gebruiken om te aggregeren en exporteren van gegevens. | 
+| Maximum aantal tekens voor de kolom naam | 500 | |
+| Regio's op capaciteit | US - west-centraal | U kunt momenteel geen nieuwe werk ruimte maken in deze regio, omdat deze de limiet voor tijdelijke capaciteit heeft. Deze limiet is gepland voor eind oktober 2019. |
+| Gegevensexport | Momenteel niet beschikbaar | Gebruik Azure function-of Logic-app om gegevens samen te voegen en te exporteren. | 
 
 >[!NOTE]
->Afhankelijk van hoe lang u hebt gebruikt Log Analytics, wellicht u toegang tot de oudere Prijscategorieën. Meer informatie over [Log Analytics oudere Prijscategorieën](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers). 
+>Afhankelijk van hoe lang u Log Analytics hebt gebruikt, hebt u mogelijk toegang tot verouderde prijs categorieën. Meer informatie over [log Analytics verouderde prijs categorieën](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers). 

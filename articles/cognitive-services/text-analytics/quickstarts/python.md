@@ -10,17 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 669cd43b73bc66289a355f7fbf9c4498d8a7b99a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: e763c1a5bebddcb76647b4ecff02506fc41f6a47
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135027"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387378"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Quickstart: De python-REST API gebruiken om de Text Analytics cognitieve service aan te roepen 
 <a name="HOLTop"></a>
 
-Gebruik deze Quick Start om de taal te analyseren met de Text Analytics REST API en python. In dit artikel leest u hoe u [taal kunt detecteren](#Detect), sentiment kunt [analyseren](#SentimentAnalysis), [sleutel zinnen kunt extra heren](#KeyPhraseExtraction)en [gekoppelde entiteiten](#Entities)aanduidt.
+Gebruik deze Quick Start om de taal te analyseren met de Text Analytics REST API en python. In dit artikel leest u hoe u [taal kunt detecteren](#Detect), sentiment kunt [analyseren](#SentimentAnalysis), [sleutel zinnen kunt extra heren](#KeyPhraseExtraction)en [gekoppelde entiteiten aanduidt](#Entities).
 
 Raadpleeg de [API-definities](//go.microsoft.com/fwlink/?LinkID=759346) voor technische documentatie voor de API's.
 
@@ -71,7 +71,7 @@ In de volgende secties wordt beschreven hoe u de functies van de API aanroept.
 
 ## <a name="detect-languages"></a>Talen detecteren
 
-Voeg `languages` toe aan het Text Analytics basis-eind punt om de URL voor de taal detectie op te maken. Bijvoorbeeld: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
+Voeg `/text/analytics/v2.1/languages` toe aan het Text Analytics basis-eind punt om de URL voor de taal detectie op te maken. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
     
 ```python
 language_api_url = endpoint + "/text/analytics/v2.1/languages"
@@ -140,7 +140,7 @@ pprint(languages)
 
 ## <a name="analyze-sentiment"></a>Stemming analyseren
 
-Als u de sentiment (tussen positieve of negatieve) van een set documenten wilt detecteren, voegt `sentiment` u toe aan het Text Analytics base-eind punt om de taal detectie-URL op te maken. Bijvoorbeeld: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
+Als u de sentiment (tussen positieve of negatieve) van een set documenten wilt detecteren, voegt `/text/analytics/v2.1/sentiment` u toe aan het Text Analytics base-eind punt om de taal detectie-URL op te maken. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
     
 ```python
 sentiment_url = endpoint + "/text/analytics/v2.1/sentiment"
@@ -202,7 +202,7 @@ De sentiment-score voor een document ligt tussen 0,0 en 1,0, met een hogere scor
 
 ## <a name="extract-key-phrases"></a>Sleuteltermen ophalen
  
-Als u de sleutel zinnen uit een reeks documenten wilt extra heren `keyPhrases` , voegt u toe aan het Text Analytics basis-eind punt om de URL voor de taal detectie op te maken. Bijvoorbeeld: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
+Als u de sleutel zinnen uit een reeks documenten wilt extra heren `/text/analytics/v2.1/keyPhrases` , voegt u toe aan het Text Analytics basis-eind punt om de URL voor de taal detectie op te maken. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
     
 ```python
 keyphrase_url = endpoint + "/text/analytics/v2.1/keyphrases"
@@ -278,7 +278,7 @@ pprint(key_phrases)
 
 ## <a name="identify-entities"></a>Entiteiten identificeren
 
-Als u bekende entiteiten (personen, plaatsen en dingen) in tekst documenten wilt identificeren, voegt `entities` u toe aan het Text Analytics base-eind punt om de URL voor de taal detectie te vormen. Bijvoorbeeld: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
+Als u bekende entiteiten (personen, plaatsen en dingen) in tekst documenten wilt identificeren, voegt `/text/analytics/v2.1/entities` u toe aan het Text Analytics base-eind punt om de URL voor de taal detectie te vormen. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
     
 ```python
 entities_url = endpoint + "/text/analytics/v2.1/entities"

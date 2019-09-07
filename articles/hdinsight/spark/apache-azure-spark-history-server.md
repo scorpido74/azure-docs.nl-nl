@@ -1,19 +1,19 @@
 ---
-title: Uitgebreide Spark-geschiedenis server gebruiken om fouten op te sporen en op te sporen in Spark-toepassingen-Azure HDInsight
+title: Uitgebreide Spark-geschiedenis server voor het opsporen van fouten in Spark-toepassingen-Azure HDInsight
 description: Uitgebreide Spark-geschiedenis server gebruiken voor het opsporen en diagnosticeren van Spark-toepassingen-Azure HDInsight.
 ms.service: hdinsight
-author: jejiang
-ms.author: jejiang
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 09/14/2018
-ms.openlocfilehash: 641fc41c25746a67b4b1fe3d5316df17f14f113c
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.date: 09/04/2019
+ms.openlocfilehash: 9ba03f6b1e658e08c3d07d7ccb5e2a99e96fe69c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377259"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736457"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Uitgebreide Apache Spark geschiedenis server gebruiken om fouten op te sporen en op te sporen Apache Spark toepassingen
 
@@ -57,7 +57,7 @@ Selecteer taak-ID en klik vervolgens op **gegevens** in het menu van het hulp pr
 
     ![Gegevens opslaan](./media/apache-azure-spark-history-server/sparkui-data-save.png)
 
-+ Zoek door tref woorden in zoeken **in velden in**te voeren, wordt het Zoek resultaat onmiddellijk weer gegeven.
++ Zoek door tref woorden **in zoeken in velden in**te voeren, wordt het Zoek resultaat onmiddellijk weer gegeven.
 
     ![Gegevens zoeken](./media/apache-azure-spark-history-server/sparkui-data-search.png)
 
@@ -180,7 +180,7 @@ Klik op het tabblad **gegevens scheef trekken** , de overeenkomstige scheefende 
 ### <a name="time-skew"></a>Tijd verschil
 Op het tabblad **tijd verschil** worden scheefe taken weer gegeven op basis van de uitvoerings tijd van de taak. 
 
-+ **Para meters opgeven** : in de eerste sectie worden de para meters weer gegeven die worden gebruikt voor het detecteren van tijd scheefheid. De standaard criteria voor het detecteren van tijd verschil is: de uitvoerings tijd van de taak is groter dan drie keer van de gemiddelde uitvoerings tijd en de uitvoerings tijd van de taak is langer dan 30 seconden. U kunt de para meters wijzigen op basis van uw behoeften. In de **grafiek** scheefe **fase** en scheefheid worden de bijbehorende fasen en taak gegevens weer gegeven, net als het tabblad **gegevens scheefheid** hierboven.
++ **Para meters opgeven** : in de eerste sectie worden de para meters weer gegeven die worden gebruikt voor het detecteren van tijd scheefheid. De standaard criteria voor het detecteren van tijd verschil is: de uitvoerings tijd van de taak is groter dan drie keer van de gemiddelde uitvoerings tijd en de uitvoerings tijd van de taak is langer dan 30 seconden. U kunt de para meters wijzigen op basis van uw behoeften. In de grafiek **scheefe fase** en **scheefheid** worden de bijbehorende fasen en taak gegevens weer gegeven, net als het tabblad **gegevens scheefheid** hierboven.
 
 + Klik op **tijd scheefheid**en vervolgens gefilterd resultaat wordt weer gegeven in de sectie **scheefgetrokken fase** volgens de para meters die zijn ingesteld in **para meters opgeven**. Klik op een item in de sectie **scheefgetrokken stage** en vervolgens op de bijbehorende grafiek is geschetst in section3, en de taak Details worden weer gegeven in het rechter paneel.
 
@@ -208,7 +208,7 @@ Voer de volgende stappen uit om de Community-versie terug te zetten:
 2. Klik op het tabblad **configuratie** .
 3. Vouw de groep **aangepaste spark2-standaard instellingen**uit.
 4. Klik op **eigenschap toevoegen**, Voeg **Spark. UI. Enhancement. Enabled = False**, opslaan.
-5. De eigenschap wordt nu  ingesteld op ONWAAR.
+5. De eigenschap wordt nu ingesteld op **Onwaar** .
 6. Klik op **Opslaan** om de configuratie op te slaan.
 
     ![functie wordt uitgeschakeld](./media/apache-azure-spark-history-server/sparkui-turn-off.png)

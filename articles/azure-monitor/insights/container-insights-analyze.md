@@ -11,21 +11,21 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/22/2019
+ms.date: 09/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 154848c33960cb78b10c58e7a39ddec669d4fae0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c63feb02712447d2427061cbfabc525622107043
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872995"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744579"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Inzicht in prestaties in een AKS-cluster met Azure Monitor voor containers
 Met Azure Monitor voor containers kunt u de prestatie diagrammen en de status gebruiken om de werk belasting van uw AKS-clusters (Azure Kubernetes service) van twee perspectieven te bewaken. U kunt rechtstreeks vanuit een AKS-cluster bewaken of u kunt alle AKS-clusters in een abonnement bewaken vanuit Azure Monitor. Het weer geven van Azure Container Instances is ook mogelijk wanneer u een specifiek AKS-cluster bewaken.
 
 Dit artikel helpt u bij het begrijpen van de twee perspectieven en hoe Azure Monitor u helpt om gedetecteerde problemen snel te evalueren, te onderzoeken en op te lossen.
 
-Voor informatie over het inschakelen van Azure Monitor voor containers raadpleegt u onboarding [Azure monitor voor containers](container-insights-onboard.md).
+Voor informatie over het inschakelen van Azure Monitor voor containers raadpleegt u [Onboarding Azure monitor voor containers](container-insights-onboard.md).
 
 Azure Monitor biedt een weer gave met meerdere clusters waarin de status van alle bewaakte AKS-clusters met Linux-en Windows Server 2019-implementaties in uw abonnementen worden weer gegeven. Er worden AKS-clusters weer gegeven die niet worden bewaakt door de oplossing. U kunt de cluster status direct begrijpen en u kunt hier inzoomen op de prestaties van het knoop punt en de controller of navigeren om prestatie grafieken voor het cluster weer te geven. Voor AKS-clusters die zijn gedetecteerd en geïdentificeerd als niet-bewaakt, kunt u op elk gewenst moment de bewaking inschakelen. 
 
@@ -118,18 +118,18 @@ Azure Monitor voor containers biedt ook ondersteuning voor Azure Monitor [Metric
 
 In Metrics Explorer kunt u geaggregeerde gegevens over knoop punt-en pod-gebruik weer geven van Azure Monitor voor containers. De volgende tabel bevat een overzicht van de Details om u te helpen begrijpen hoe u de metrische grafieken kunt gebruiken voor het visualiseren van metrische gegevens over containers.
 
-|Naamruimte | Gegevens |
-|----------|--------|
+|Naamruimte | Gegevens | Description | 
+|----------|--------|-------------|
 | insights.container/nodes | |
-| | cpuUsageMillicores |
-| | cpuUsagePercentage |
-| | memoryRssBytes |
-| | memoryRssPercentage |
-| | memoryWorkingSetBytes |
-| | memoryWorkingSetPercentage |
-| | nodesCount |
+| | cpuUsageMillicores | Cumulatieve meting van het CPU-gebruik in het cluster. Het is een CPU-kern die is gesplitst in 1000 eenheden (milli = 1000). Wordt gebruikt om het gebruik van kern geheugens in een container te bepalen waar veel toepassingen één kern geheugen gebruiken.| 
+| | cpuUsagePercentage | Samengevoegd gemiddeld CPU-gebruik gemeten als percentage in het cluster.|
+| | memoryRssBytes | RSS-geheugen van container gebruikt in bytes.| 
+| | memoryRssPercentage | Het RSS-geheugen van de container wordt gebruikt als percentage.|
+| | memoryWorkingSetBytes | Gebruikte geheugen voor container werkset.| 
+| | memoryWorkingSetPercentage | Werkset geheugen voor de container wordt gebruikt als percentage. | 
+| | nodesCount | Een aantal knoop punten van Kubernetes.|
 | insights.container/pods | |
-| | PodCount |
+| | PodCount | Een pod aantal van Kubernetes.|
 
 U kunt een metriek [splitsen](../platform/metrics-charts.md#apply-splitting-to-a-chart) om deze per dimensie weer te geven en te visualiseren hoe verschillende segmenten van de IT met elkaar worden vergeleken. Voor een knoop punt kunt u de grafiek door de dimensie *host* segmenteren. Vanuit een pod kunt u deze segmenteren op basis van de volgende dimensies:
 
@@ -170,7 +170,7 @@ Vanuit een uitgevouwen knoop punt kunt u inzoomen op de Pod of container die op 
 
 Selecteer controllers of containers boven aan de pagina om de status en het resource gebruik voor die objecten te controleren. Als u het geheugen gebruik wilt controleren, selecteert u in de vervolg keuzelijst **metriek** de optie **geheugen RSS** of **Geheugen werkset**. **Geheugen RSS** wordt alleen ondersteund voor Kubernetes versie 1.8 en hoger. Anders wordt het weergeven van waarden voor **Min&nbsp; %**  als *NaN&nbsp;%* , dit is een waarde voor het type van numerieke gegevens die een niet-gedefinieerde vertegenwoordigt of Sjabloontaal waarde.
 
-De **werkset geheugen** bevat zowel het residente geheugen als het virtuele geheugen (cache) en is in totaal wat de toepassing gebruikt. In het **geheugen RSS** wordt alleen het hoofd geheugen weer gegeven. Dit is het residente geheugen. Met deze metriek wordt de werkelijke capaciteit van het beschik bare geheugen weer gegeven.
+De **werkset geheugen** bevat zowel het residente geheugen als het virtuele geheugen (cache) en is in totaal wat de toepassing gebruikt. In het **geheugen RSS** wordt alleen het hoofd geheugen weer gegeven (dit is niets, maar het residente geheugen met andere woorden). Met deze metriek wordt de werkelijke capaciteit van het beschik bare geheugen weer gegeven.
 
 ![Prestatieweergave container-knooppunten](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 

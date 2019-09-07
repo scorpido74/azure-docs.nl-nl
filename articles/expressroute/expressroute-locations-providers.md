@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5469bd835b189df66c22a3fc13e91c435b4be73f
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 43f858f0e08b622bcd198be3ed0166076a4f0d54
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257703"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734291"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute
 
@@ -83,7 +83,7 @@ De volgende tabel geeft de connectiviteitslocaties en de serviceproviders voor e
 | **Location** | **Eigenaar en adres** | **Lokale Azure-regio's** | **Serviceproviders** |
 | --- | --- | --- | --- |
 | **Amsterdam** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | Europa -west | Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Interxion, KPN, IX Reach, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Telia Carrier, Verizon, Zayo |
-| **Amsterdam2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | Europa -west | CenturyLink Cloud Connect, DE-CIX, Interxion, Vodafone |
+| **Amsterdam2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | Europa -west | CenturyLink Cloud Connect, DE-CIX, Colt, Interxion, Vodafone |
 | **Atlanta** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | N.v.t. | Equinix, Megaport |
 | **Auckland** | [Vocus groep NZ Albany](https://www.vocus.co.nz/business/cloud-data-centres) | N.v.t. | Devoli, Kordia, Mega Port, Spark NZ, Vocus groep NZ |
 | **Busan** | [LG CNS](https://datacenter.lgcns.com/Contents/En/Menu_1/Locations_1.aspx) | Korea - zuid | LG CNS |

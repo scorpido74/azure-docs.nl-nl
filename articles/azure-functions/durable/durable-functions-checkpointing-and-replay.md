@@ -3,18 +3,17 @@ title: Controle punten en herhaling in Durable Functions-Azure
 description: Meer informatie over het werken met controle punten en antwoorden in de Durable Functions extensie voor Azure Functions.
 services: functions
 author: ggailey777
-manager: jeconnoc
-keywords: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1e6d3b78887c9d195fdf0137553860c141bdaaba
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 5d0527de556c25a1d369d7b22c3f62579bc508f0
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241060"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735251"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Controle punten en opnieuw afspelen in Durable Functions (Azure Functions)
 
@@ -128,17 +127,9 @@ Het gedrag voor opnieuw afspelen maakt beperkingen voor het type code dat kan wo
 
   Als Orchestrator code de huidige datum/tijd moet verkrijgen, moet deze gebruikmaken van de API [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.net) of `currentUtcDateTime` (Java script), die veilig is voor replay.
 
-  Als de Orchestrator-code een wille keurige GUID moet genereren, moet deze de [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.net) API gebruiken, die veilig is voor opnieuw afspelen of de GUID-generatie delegeren naar een activiteit functie (Java script), zoals in dit voor beeld:
+  Als Orchestrator-code een wille keurige GUID moet genereren, moet deze gebruikmaken van de [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.net) `newGuid` of de (Java script) API, die veilig is voor replay.
 
-  ```javascript
-  const uuid = require("uuid/v1");
-
-  module.exports = async function(context) {
-    return uuid();
-  }
-  ```
-
-  Niet-deterministische bewerkingen moeten worden uitgevoerd in de activiteit functies. Dit omvat alle interactie met andere invoer-of uitvoer bindingen. Dit zorgt ervoor dat alle niet-deterministische waarden eenmaal worden gegenereerd bij de eerste uitvoering en worden opgeslagen in de uitvoerings geschiedenis. Volgende uitvoeringen gebruiken de opgeslagen waarde vervolgens automatisch.
+   Met uitzonde ring van deze speciale gevallen moeten niet-deterministische bewerkingen worden uitgevoerd in de activiteit functies. Dit omvat alle interactie met andere invoer-of uitvoer bindingen. Dit zorgt ervoor dat alle niet-deterministische waarden eenmaal worden gegenereerd bij de eerste uitvoering en worden opgeslagen in de uitvoerings geschiedenis. Volgende uitvoeringen gebruiken de opgeslagen waarde vervolgens automatisch.
 
 * Orchestrator-code moet **niet worden geblokkeerd**. Dit betekent bijvoorbeeld dat er geen I/O-en geen- `Thread.Sleep` aanroepen naar (.net) of equivalente api's zijn.
 
@@ -165,7 +156,7 @@ Hoewel deze beperkingen op het eerste gezicht lijken te zijn, kan het voor komen
 
 Taken die veilig kunnen worden gewacht in Orchestrator-functies, worden af en toe aangeduid als *duurzame taken*. Dit zijn taken die door het duurzame taak raamwerk worden gemaakt en beheerd. Voor beelden zijn de taken die `CallActivityAsync`worden `WaitForExternalEvent`geretourneerd door `CreateTimer`, en.
 
-Deze *duurzame taken* worden intern beheerd met behulp van `TaskCompletionSource` een lijst met objecten. Tijdens het opnieuw afspelen worden deze taken gemaakt als onderdeel van de uitvoering van de Orchestrator-code en worden ze voltooid als de dispatcher de corresponderende geschiedenis gebeurtenissen inventariseert. Dit wordt allemaal synchroon uitgevoerd met één thread totdat alle geschiedenis is herhaald. Duurzame taken, die niet worden voltooid door het einde van de replay van de geschiedenis, hebben de juiste acties uitgevoerd. Zo kan een bericht in de wachtrij worden geplaatst om een activiteit functie aan te roepen.
+Deze *duurzame taken* worden intern beheerd met behulp van `TaskCompletionSource` een lijst met objecten. Tijdens het opnieuw afspelen worden deze taken gemaakt als onderdeel van de uitvoering van de Orchestrator-code en worden ze voltooid als de dispatcher de corresponderende geschiedenis gebeurtenissen inventariseert. Dit wordt allemaal synchroon uitgevoerd met één thread totdat alle geschiedenis is herhaald. Duurzame taken die niet zijn voltooid door het einde van de replay van de geschiedenis, hebben de juiste acties uitgevoerd. Zo kan een bericht in de wachtrij worden geplaatst om een activiteit functie aan te roepen.
 
 Het uitvoerings gedrag dat hier wordt beschreven, dient u te begrijpen waarom de functie code `await` van Orchestrator nooit een niet-duurzame taak mag hebben: de dispatcher-thread kan niet wachten totdat deze is voltooid en eventuele retour aanroepen voor deze taak kunnen het volgen mogelijk beschadigen de status van de Orchestrator-functie. Sommige runtime controles zijn aanwezig om dit te voor komen.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
-ms.openlocfilehash: 11c3ded45e87e815b6c694f0a3f9c0ccb96f8750
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a34faeb42fce0a1ee7960f71ffce176492495f9c
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813920"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744516"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Logboek gegevens naar Azure Monitor verzenden met de HTTP-gegevens verzamelaar-API (open bare preview)
 In dit artikel leest u hoe u de HTTP data collector API kunt gebruiken om logboek gegevens te verzenden naar Azure Monitor van een REST API-client.  Hierin wordt beschreven hoe u gegevens opmaakt die worden verzameld door uw script of toepassing, deze toevoegen aan een aanvraag en die aanvraag hebben toegestaan door Azure Monitor.  Er zijn voor beelden van Power C#shell, en python.
@@ -59,7 +59,7 @@ Als u de HTTP data collector API wilt gebruiken, maakt u een POST-aanvraag die d
 | Header | Description |
 |:--- |:--- |
 | Authorization |De autorisatie handtekening. Verderop in dit artikel vindt u meer informatie over het maken van een HMAC-SHA256-header. |
-| Log-Type |Geef het record type op van de gegevens die worden verzonden. De maximale grootte voor deze para meter is 100 tekens. |
+| Log-Type |Geef het record type op van de gegevens die worden verzonden. Mag alleen letters, cijfers en onderstrepings tekens (_) bevatten en mag niet langer zijn dan 100. |
 | x-ms-date |De datum waarop de aanvraag is verwerkt, in RFC 1123-indeling. |
 | x-ms-AzureResourceId | Resource-ID van de Azure-resource waaraan de gegevens moeten worden gekoppeld. Hiermee wordt de eigenschap [_ResourceId](log-standard-properties.md#_resourceid) ingevuld en kunnen de gegevens worden opgenomen in [resource-context](design-logs-deployment.md#access-mode) query's. Als dit veld niet wordt opgegeven, worden de gegevens niet opgenomen in resource-context query's. |
 | gegenereerde tijd-veld | De naam van een veld in de gegevens die de tijds tempel van het gegevens item bevat. Als u een veld opgeeft, wordt de inhoud ervan gebruikt voor **TimeGenerated**. Als dit veld niet is opgegeven, is de standaard waarde voor **TimeGenerated** het tijdstip waarop het bericht wordt opgenomen. De inhoud van het veld bericht moet de ISO 8601-notatie JJJJ-MM-DDTuu: mm: ssZ hebben. |
@@ -100,7 +100,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 De voor beelden in de volgende secties bevatten voorbeeld code om u te helpen bij het maken van een autorisatie-header.
 
 ## <a name="request-body"></a>Aanvraagbody
-De hoofd tekst van het bericht moet JSON zijn. Het moet een of meer records bevatten met de eigenschaps naam en waardeparen in deze indeling:
+De hoofd tekst van het bericht moet JSON zijn. Het moet een of meer records bevatten met de eigenschaps naam en waardeparen in de volgende notatie. De naam van de eigenschap mag alleen letters, cijfers en onderstrepings tekens (_) bevatten.
 
 ```json
 [
@@ -141,7 +141,7 @@ Als u het gegevens type van een eigenschap wilt identificeren, voegt Azure Monit
 
 | Eigenschaps gegevens type | Achtervoegsel |
 |:--- |:--- |
-| Reeks |_s |
+| Tekenreeks |_s |
 | Boolean-waarde |_b |
 | Double |_d |
 | Datum en tijd |_t |
@@ -202,7 +202,7 @@ Deze tabel bevat de volledige set met status codes die de service kan retour ner
 | 403 |Verboden |InvalidAuthorization |De service kan de aanvraag niet verifiëren. Controleer of de werk ruimte-ID en de verbindings sleutel geldig zijn. |
 | 404 |Niet gevonden | | De gegeven URL is onjuist of de aanvraag is te groot. |
 | 429 |Te veel aanvragen | | De service ondervindt een groot aantal gegevens van uw account. Voer de aanvraag later opnieuw uit. |
-| 500 |Interne serverfout |UnspecifiedError |De service heeft een interne fout aangetroffen. Voer de aanvraag opnieuw uit. |
+| 500 |Interne serverfout |UnspecifiedError |Er is een interne fout opgetreden in de service. Voer de aanvraag opnieuw uit. |
 | 503 |Service niet beschikbaar |ServiceUnavailable |De service is momenteel niet beschikbaar voor het ontvangen van aanvragen. Probeer de aanvraag opnieuw uit te voeren. |
 
 ## <a name="query-data"></a>Querygegevens
@@ -482,6 +482,6 @@ Terwijl de Data Collector-API het meren deel van uw behoeften voor het verzamele
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Gebruik de [API voor zoeken](../log-query/log-query-overview.md) in Logboeken om gegevens op te halen uit de log Analytics-werk ruimte.
+- Gebruik de [API voor zoeken in Logboeken](../log-query/log-query-overview.md) om gegevens op te halen uit de log Analytics-werk ruimte.
 
 - Meer informatie over hoe u [een gegevens pijplijn maakt met de Data Collector-API](create-pipeline-datacollector-api.md) met behulp van Logic apps werk stroom tot Azure monitor.

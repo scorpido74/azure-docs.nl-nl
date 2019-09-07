@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: eeabb4547e3c02ebf540e6d156df97954e612fbc
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: edda6dffa04bfc0492b7336893c5b167ccc42ca5
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208332"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743920"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Een SQL Server virtuele machine registreren in azure met de resource provider van de SQL-VM
 
@@ -188,7 +188,7 @@ U kunt de huidige modus van uw SQL Server IaaS-agent weer geven met behulp van P
      $sqlvm.Properties.sqlManagement
   ```
 
-SQL Server Vm's waarop de IaaS -uitbrei ding is geïnstalleerd, kunnen de modus naar _volledig_ bijwerken met behulp van de Azure Portal. SQL Server Vm's in de modus voor _niet-agents_ kunnen worden bijgewerkt naar _volledig_ nadat het besturings systeem is bijgewerkt naar Windows 2008 R2 of hoger. Het is niet mogelijk om te downgradeen: u moet de SQL IaaS-extensie volledig verwijderen en opnieuw installeren. 
+SQL Server Vm's waarop *de IaaS-* uitbrei ding is geïnstalleerd, kunnen de modus naar _volledig_ bijwerken met behulp van de Azure Portal. SQL Server Vm's in de modus voor _niet-agents_ kunnen worden bijgewerkt naar _volledig_ nadat het besturings systeem is bijgewerkt naar Windows 2008 R2 of hoger. Het is niet mogelijk om te downgradeen: u moet de SQL IaaS-extensie volledig verwijderen en opnieuw installeren. 
 
 De agent modus bijwerken naar Full: 
 
@@ -338,7 +338,7 @@ Ja. Het bijwerken van de beheer baarheids modus van Lightweight naar Full wordt 
 
 Nee. Het downgradeen van de SQL Server IaaS-extensie modus wordt niet ondersteund. De beheer baarheids modus kan niet worden gedowngraded van de volledige modus naar de modus Lightweight of no-agent, en kan niet worden gedowngraded van de modus voor niet-agent naar de No-modus. 
 
-Als u de beheer baarheids modus wilt wijzigen van volledig beheer, verwijdert u de SQL Server IaaS-extensie. Vervolgens verwijdert u de resource Micorsoft. SqlVirtualMachine en registreert u de SQL Server VM opnieuw bij de resource provider van de SQL-VM.
+Als u de beheer baarheids modus wilt wijzigen van volledig beheer, verwijdert u de SQL Server IaaS-extensie. Vervolgens verwijdert u de resource van micro soft. SqlVirtualMachine en registreert u de SQL Server VM opnieuw bij de resource provider van de SQL-VM.
 
 **Kan ik bij de Azure Portal van de resource provider van de SQL-VM registreren?**
 
@@ -346,7 +346,7 @@ Nee. Registreren met de resource provider van de SQL-VM is niet beschikbaar in d
 
 **Kan ik een virtuele machine registreren bij de resource provider van de SQL-VM voordat SQL Server is geïnstalleerd?**
 
-Nee. Een virtuele machine moet ten minste één SQL Server-exemplaar hebben om te kunnen worden geregistreerd bij de resource provider van de SQL-VM. Als er geen SQL Server-exemplaar op de VM aanwezig is, heeft de nieuwe Micosoft. SqlVirtualMachine-resource de status mislukt.
+Nee. Een virtuele machine moet ten minste één SQL Server-exemplaar hebben om te kunnen worden geregistreerd bij de resource provider van de SQL-VM. Als er geen SQL Server-exemplaar op de VM aanwezig is, heeft de nieuwe resource micro soft. SqlVirtualMachine de status mislukt.
 
 **Kan ik een virtuele machine met de resource provider van de SQL-VM registreren als er meerdere exemplaren van SQL Server zijn?**
 

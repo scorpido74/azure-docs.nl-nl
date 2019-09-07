@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: e57427fbb7e0d3c67fc4fcbab1a50f14ef8c9501
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5cc033787e1045926ff4fece6826e41f430d48fd
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569339"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744470"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Overzicht van bedrijfscontinuïteit met Azure SQL Database
 
@@ -61,7 +61,7 @@ Als de maximale ondersteunde Bewaar periode voor back-ups voor PITR (Point-in-ti
 
 Met [groepen voor automatische failover](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) worden de implementatie en het gebruik van [geo-replicatie](sql-database-active-geo-replication.md) vereenvoudigd en worden de extra mogelijkheden toegevoegd, zoals beschreven in de volgende tabel:
 
-|                                              | Geo-replicatie | Failovergroepen  |
+|                                              | Geo-replicatie | Failover-groepen  |
 |:---------------------------------------------| :-------------- | :----------------|
 | Automatische failover                           |     Nee          |      Ja         |
 | Gelijktijdige failover van meerdere data bases  |     Nee          |      Ja         |
@@ -87,8 +87,8 @@ Verschillende herstel methoden bieden verschillende niveaus van RPO en RTO. U ku
 
 | Herstel methode | RTO | RPO |
 | --- | --- | --- | 
-| Geo-herstel van geo-gerepliceerde back-ups | 12 uur | 1 u |
-| Automatische failover-groepen | 1 u | 5 s |
+| Geo-herstel van geo-gerepliceerde back-ups | 12 uur | 1 uur |
+| Automatische failover-groepen | 1 uur | 5 s |
 | Hand matige data base-failover | 30 s | 5 s |
 
 > [!NOTE]
@@ -140,7 +140,7 @@ Als u gebruikmaakt van de automatische back-ups met geografisch redundante opsla
 Na herstel via een van beide herstelmechanismen moet u de volgende aanvullende taken uitvoeren voordat uw gebruikers en toepassingen opnieuw actief zijn:
 
 - Clients en clienttoepassingen omleiden naar de nieuwe server en herstelde database
-- Zorg ervoor dat de juiste IP-firewall regels op server niveau zijn ingesteld voor gebruikers om verbinding te maken met firewalls op [database niveau](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal) om de juiste regels in te scha kelen.
+- Zorg ervoor dat de juiste IP-firewall regels op server niveau zijn ingesteld voor gebruikers om verbinding te maken met [firewalls op database niveau](sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) om de juiste regels in te scha kelen.
 - Ervoor zorgen dat er geschikte aanmeldingen en machtigingen op hoofddatabaseniveau aanwezig zijn (of [ingesloten gebruikers](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) gebruiken)
 - Controles configureren, indien van toepassing
 - Waarschuwingen configureren, indien van toepassing

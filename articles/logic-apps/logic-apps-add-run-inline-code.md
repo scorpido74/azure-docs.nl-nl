@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: derek1ee, LADocs
 ms.topic: article
 ms.date: 05/14/2019
-ms.openlocfilehash: 76b3807727f4b5c9ab0a2c2bc21c45af1f713b83
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 3b51215e0cf48df2d3cd9df85a3d4c5641a17215
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242451"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390809"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Code fragmenten toevoegen en uitvoeren met inline code in Azure Logic Apps
 
@@ -23,6 +23,7 @@ Als u een stukje code in uw logische app wilt uitvoeren, kunt u de ingebouwde **
 * Wordt uitgevoerd in Java script. Meer talen binnenkort beschikbaar.
 * De uitvoering binnen vijf seconden of minder is voltooid.
 * Verwerkt gegevens tot 50 MB groot.
+* Is niet vereist voor het werken met [ **variabelen** acties](../logic-apps/logic-apps-create-variables-store-values.md), die nog niet worden ondersteund.
 * Maakt gebruik van node. js versie 8.11.1. Zie [standaard ingebouwde objecten](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)voor meer informatie. 
 
   > [!NOTE]

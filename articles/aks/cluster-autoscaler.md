@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 6ed50380b47040793e9826b64297bacf6ab12c71
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 7dd3c3904115db4fa3978f39b86023bf9fb0805c
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533588"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390050"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Voor beeld: een cluster automatisch schalen om te voldoen aan de toepassings vereisten van de Azure Kubernetes-service (AKS)
 
@@ -40,29 +40,6 @@ az extension add --name aks-preview
 
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
-```
-
-### <a name="register-scale-set-feature-provider"></a>Functie provider voor het registreren van schaal sets
-
-Als u een AKS wilt maken die gebruikmaakt van schaal sets, moet u ook een functie vlag inschakelen in uw abonnement. Als u de functie vlag *VMSSPreview* wilt registreren, gebruikt u de opdracht [AZ feature REGI ster][az-feature-register] , zoals weer gegeven in het volgende voor beeld:
-
-> [!CAUTION]
-> Wanneer u een functie op een abonnement registreert, kunt u de registratie van die functie op dit moment niet ongedaan maken. Nadat u enkele preview-functies hebt ingeschakeld, kunnen standaard waarden worden gebruikt voor alle AKS-clusters die vervolgens in het abonnement zijn gemaakt. Schakel geen preview-functies in voor productie abonnementen. Gebruik een afzonderlijk abonnement om Preview-functies te testen en feedback te verzamelen.
-
-```azurecli-interactive
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
-```
-
-Het duurt enkele minuten voordat de status is *geregistreerd*. U kunt de registratie status controleren met de opdracht [AZ Feature List][az-feature-list] :
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
-```
-
-Als u klaar bent, vernieuwt u de registratie van de resource provider *micro soft. container service* met de opdracht [AZ provider REGI ster][az-provider-register] :
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
 ```
 
 ## <a name="limitations"></a>Beperkingen
@@ -93,11 +70,11 @@ De automatische schaal functie van het cluster maakt gebruik van opstart paramet
 Het cluster en de horizontale pod kunnen samen worden gebruikt en worden vaak samen in een cluster geïmplementeerd. In combi natie met de horizontale Pod is de automatische schaal aanpassing gericht op het uitvoeren van het aantal vereiste aantallen dat nodig is om te voldoen aan de vraag van de toepassing. De cluster automatisch schalen is gericht op het uitvoeren van het aantal knoop punten dat vereist is voor de ondersteuning van de geplande peulen.
 
 > [!NOTE]
-> Hand matig schalen is uitgeschakeld wanneer u de automatische schaal functie van het cluster gebruikt. Laat de cluster automatisch schalen het vereiste aantal knoop punten bepalen. Als u de schaal van het cluster hand matig wilt aanpassen, schakelt u de automatische clustering van [clusters uit](#disable-the-cluster-autoscaler).
+> Hand matig schalen is uitgeschakeld wanneer u de automatische schaal functie van het cluster gebruikt. Laat de cluster automatisch schalen het vereiste aantal knoop punten bepalen. Als u de schaal van het cluster hand matig wilt aanpassen, [schakelt u de automatische clustering van clusters uit](#disable-the-cluster-autoscaler).
 
 ## <a name="create-an-aks-cluster-and-enable-the-cluster-autoscaler"></a>Een AKS-cluster maken en de cluster automatisch schalen inschakelen
 
-Als u een AKS-cluster moet maken, gebruikt u de opdracht [AZ AKS Create][az-aks-create] . Als u de cluster-automatische schaal functie wilt inschakelen en configureren voor de knooppunt groep voor het cluster, gebruikt u de para meter *--Enable-cluster-* autoscaler en geeft u een knoop punt *--Min-aantal* en *--maximum-aantal*op.
+Als u een AKS-cluster moet maken, gebruikt u de opdracht [AZ AKS Create][az-aks-create] . Als u de cluster-automatische schaal functie wilt inschakelen en configureren voor de knooppunt groep voor het cluster, gebruikt u de para meter *--Enable-cluster-autoscaler* en geeft u een knoop punt *--Min-aantal* en *--maximum-aantal*op.
 
 > [!IMPORTANT]
 > De automatische schaal functie van het cluster is een Kubernetes-onderdeel. Hoewel het AKS-cluster gebruikmaakt van een schaalset voor virtuele machines voor de knoop punten, kunt u de instellingen voor het automatisch schalen van schaal sets niet hand matig inschakelen of bewerken in de Azure Portal of de Azure CLI gebruiken. Laat de Kubernetes voor cluster automatisch schalen de vereiste schaal instellingen beheren. Zie [kan ik de AKS-resources in de knooppunt resource groep wijzigen?](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group) voor meer informatie.
@@ -151,7 +128,7 @@ Bewaak de prestaties van uw toepassingen en services en pas het aantal knoop pun
 
 ## <a name="disable-the-cluster-autoscaler"></a>De automatische schaal functie van het cluster uitschakelen
 
-Als u de cluster automatisch schalen niet meer wilt gebruiken, kunt u dit uitschakelen met de opdracht [AZ AKS update][az-aks-update] , waarbij u de para meter *--Disable-cluster-* auto Scaler opgeeft. Knoop punten worden niet verwijderd wanneer de automatische schaal functie van het cluster is uitgeschakeld.
+Als u de cluster automatisch schalen niet meer wilt gebruiken, kunt u dit uitschakelen met de opdracht [AZ AKS update][az-aks-update] , waarbij u de para meter *--Disable-cluster-auto Scaler* opgeeft. Knoop punten worden niet verwijderd wanneer de automatische schaal functie van het cluster is uitgeschakeld.
 
 ```azurecli-interactive
 az aks update \
@@ -164,7 +141,7 @@ U kunt het cluster hand matig schalen na het uitschakelen van de automatische cl
 
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>Een uitgeschakelde cluster automatisch schalen opnieuw inschakelen
 
-Als u de automatisch schalen van het cluster opnieuw wilt inschakelen op een bestaand cluster, kunt u het opnieuw inschakelen met de opdracht [AZ AKS update][az-aks-update] , waarbij u de para meter *--Enable-cluster-* auto Scaler opgeeft.
+Als u de automatisch schalen van het cluster opnieuw wilt inschakelen op een bestaand cluster, kunt u het opnieuw inschakelen met de opdracht [AZ AKS update][az-aks-update] , waarbij u de para meter *--Enable-cluster-auto Scaler* opgeeft.
 
 ## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>De automatische clustering van clusters gebruiken met meerdere knooppunt Pools ingeschakeld
 

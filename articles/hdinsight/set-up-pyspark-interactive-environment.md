@@ -1,47 +1,47 @@
 ---
-title: Hulpprogramma's voor Azure HDInsight - instellen interactieve PySpark-omgeving voor Visual Studio Code
-description: Informatie over het gebruik van de Azure HDInsight Tools voor Visual Studio Code maken en verzenden van query's en scripts.
-keywords: VScode, Azure HDInsight-hulpprogramma's, Hive, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, Interactive Hive, Interactive Query
+title: Azure HDInsight-Hulpprogram Ma's-PySpark Interactive Environment for Visual Studio code
+description: Meer informatie over het gebruik van de Azure HDInsight-Hulpprogram Ma's voor Visual Studio code voor het maken en verzenden van query's en scripts.
+keywords: VScode, Azure HDInsight tools, Hive, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, Interactive Hive, interactieve query
 ms.service: hdinsight
 author: jejiang
 ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 0e993577bda59ae4fda51d17dc175ec0b0fcd4f5
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 54adb2ec61d77ea429f7da1b88aa9347c1addfe0
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137126"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736418"
 ---
-# <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>De interactieve PySpark-omgeving instellen voor Visual Studio Code
+# <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>De PySpark Interactive Environment instellen voor Visual Studio code
 
-De volgende stappen laten zien hoe u de interactieve PySpark-omgeving in VS Code instelt.
+De volgende stappen laten zien hoe u de PySpark Interactive environment in VS code kunt instellen.
 
-We gebruiken **python/pip** opdracht voor het bouwen van virtuele omgeving in het pad voor de startpagina. Als u een andere versie gebruiken wilt, moet u wijzigen standaardversie van **python/pip** handmatig opdracht. Meer informatie Zie [update alternatieven](https://linux.die.net/man/8/update-alternatives).
+We gebruiken **python/pip-** opdracht voor het maken van een virtuele omgeving in uw start traject. Als u een andere versie wilt gebruiken, moet u de standaard versie van de opdracht **python/pip** hand matig wijzigen. Zie [update-alternatieven](https://linux.die.net/man/8/update-alternatives)voor meer informatie.
 
-1. Installeer [Python](https://www.python.org/downloads/) en [pip](https://pip.pypa.io/en/stable/installing/).
+1. Installeer [python](https://www.python.org/downloads/) en [PIP](https://pip.pypa.io/en/stable/installing/).
    
-   + Installeer Python van [ https://www.python.org/downloads/ ](https://www.python.org/downloads/).
-   + Instalovat modul pip uit [ https://pip.pypa.io/en/stable/installing ](https://pip.pypa.io/en/stable/installing/). (Als geen van de Python-installatie geïnstalleerd)
-   + Valideren van Python en pip zijn geïnstalleerd met behulp van de volgende opdrachten. (Optioneel)
+   + Installeer python vanuit [https://www.python.org/downloads/](https://www.python.org/downloads/).
+   + Installeer PIP vanuit [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/). (Als dit niet wordt geïnstalleerd vanuit de python-installatie)
+   + Controleer of python en PIP zijn geïnstalleerd met behulp van de volgende opdrachten. Beschrijving
  
-        ![Python-pip-versie](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
+        ![Python pip-versie](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
      > [!NOTE]
-     > Het verdient aanbeveling om handmatig te installeren Python in plaats van de standaard-Mac OS-versie.
+     > Het is raadzaam python hand matig te installeren in plaats van de standaard versie MacOS te gebruiken.
 
 
-2. Installeer **virtualenv** door het uitvoeren van de onderstaande opdracht.
+2. Installeer **virtualenv** door de onderstaande opdracht uit te voeren.
    
    ```
    pip install virtualenv
    ```
 
-3. Voor Linux, de vereiste pakketten te installeren door het uitvoeren van de onderstaande opdrachten als u het foutbericht.
+3. Alleen voor Linux installeert u de vereiste pakketten door opdrachten onderstaande uit te voeren als het fout bericht wordt weer gegeven.
    
-    ![Python-pip-versie](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
+    ![Python pip-versie](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
        
    ```
    sudo apt-get install libkrb5-dev 
@@ -51,21 +51,21 @@ We gebruiken **python/pip** opdracht voor het bouwen van virtuele omgeving in he
    sudo apt-get install python-dev
    ```
 
-4. Start VS Code opnieuw op en gaat u terug naar de script-editor die wordt uitgevoerd **HDInsight: Interactieve PySpark**.
+4. Start VS code opnieuw en ga terug naar de script editor waarop HDInsight wordt uitgevoerd **: PySpark Interactive**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 ### <a name="demo"></a>Demo
-* HDInsight voor VS Code: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
+* HDInsight voor VS code: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>Tools en uitbreidingen
-* [Azure HDInsight-hulpprogramma voor Visual Studio Code gebruiken](hdinsight-for-vscode.md)
-* [Azure Toolkit voor IntelliJ gebruiken om te maken en verzenden van Apache Spark Scala-toepassingen](spark/apache-spark-intellij-tool-plugin.md)
-* [Azure Toolkit voor IntelliJ gebruiken voor foutopsporing van Apache Spark-toepassingen op afstand via SSH](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [Azure Toolkit voor IntelliJ voor foutopsporing van Apache Spark-toepassingen op afstand via VPN-verbinding gebruiken](spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight-hulpprogramma's in Azure Toolkit voor Eclipse gebruiken voor het maken van Apache Spark-toepassingen](spark/apache-spark-eclipse-tool-plugin.md)
+* [Azure HDInsight-hulp programma voor Visual Studio code gebruiken](hdinsight-for-vscode.md)
+* [Azure-toolkit voor IntelliJ gebruiken om Apache Spark scala-toepassingen te maken en in te dienen](spark/apache-spark-intellij-tool-plugin.md)
+* [Azure-toolkit voor IntelliJ gebruiken om fouten op te lossen Apache Spark toepassingen op afstand via SSH](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Azure-toolkit voor IntelliJ gebruiken om fouten op te lossen Apache Spark toepassingen op afstand via VPN](spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Gebruik HDInsight-Hulpprogram Ma's in Azure-toolkit voor Eclipse om Apache Spark-toepassingen te maken](spark/apache-spark-eclipse-tool-plugin.md)
 * [Apache Zeppelin-notebooks gebruiken met een Apache Spark-cluster in HDInsight](spark/apache-spark-zeppelin-notebook.md)
-* [Beschikbare kernels voor Jupyter-notebook in een Apache Spark-cluster voor HDInsight](spark/apache-spark-jupyter-notebook-kernels.md)
+* [Kernels die beschikbaar zijn voor Jupyter notebook in een Apache Spark-cluster voor HDInsight](spark/apache-spark-jupyter-notebook-kernels.md)
 * [Externe pakketten gebruiken met Jupyter-notebooks](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter op uw computer installeren en verbinding maken met een HDInsight Spark-cluster](spark/apache-spark-jupyter-notebook-install-locally.md)
 * [Apache Hive-gegevens visualiseren met Microsoft Power BI in Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md)

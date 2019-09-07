@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/23/2019
+ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0d5a87d4723bcc21b75db1b31ada72823abdf02
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5f9d727154adf0a2099d7a9144c109cef9c91238
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171411"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743971"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met zoomen
 
@@ -44,7 +44,8 @@ U hebt de volgende items nodig om aan de slag te gaan:
 
 In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* Zoom ondersteunt door **SP** geïnitieerde eenmalige aanmelding
+* Zoomen ondersteunt door **SP** geïnitieerde SSO en 
+* Zoomen ondersteunt [ **geautomatiseerde** gebruikers inrichting](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial).
 
 ## <a name="adding-zoom-from-the-gallery"></a>Zoom toevoegen vanuit de galerie
 
@@ -54,7 +55,7 @@ Voor het configureren van de integratie van Zoom in Azure AD moet u Zoom uit de 
 1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
 1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
 1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in het gedeelte **toevoegen vanuit de galerie** de tekst inzoomen in het zoekvak.
+1. Typ in het gedeelte **toevoegen vanuit de galerie** de tekst **Inzoomen** in het zoekvak.
 1. Selecteer **zoomen** in het deel venster resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-zoom"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor inzoomen
@@ -87,7 +88,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `<companyname>.zoom.us`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [Zoom-ondersteuningsteam](https://support.zoom.us/hc/en-us) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [Zoom-ondersteuningsteam](https://support.zoom.us/hc/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
@@ -101,7 +102,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 > Zie voor meer informatie over het configureren van de rol in azure AD [de claim configureren die is uitgegeven in het SAML-token voor zakelijke toepassingen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
 
 > [!NOTE]
-> In inzoomen kan een groepclaim worden verwacht in de SAML-nettolading. Als u groepen hebt gemaakt, neemt u contact op met het ondersteunings [team voor client ondersteuning](https://support.zoom.us/hc/en-us) met de groeps informatie zodat de groeps informatie aan hun einde kan worden geconfigureerd. U moet ook de object-ID opgeven om het [client ondersteunings team](https://support.zoom.us/hc/en-us) te zoomen zodat de object-id aan hun einde kan worden geconfigureerd. Zie [zoomen met Azure configureren](https://support.zoom.us/hc/en-us/articles/115005887566)om de object-id op te halen.
+> In inzoomen kan een groepclaim worden verwacht in de SAML-nettolading. Als u groepen hebt gemaakt, neemt u contact op met het [ondersteunings team voor client ondersteuning](https://support.zoom.us/hc/) met de groeps informatie zodat de groeps informatie aan hun einde kan worden geconfigureerd. U moet ook de object-ID opgeven om het [client ondersteunings team te zoomen](https://support.zoom.us/hc/) zodat de object-id aan hun einde kan worden geconfigureerd. Zie [zoomen met Azure configureren](https://support.zoom.us/hc/articles/115005887566)om de object-id op te halen.
 
 ### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
 
@@ -120,7 +121,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen voor inzoomen.
 
 1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen deoptie Inzoomen.
+1. Selecteer in de lijst toepassingen de optie **Inzoomen**.
 1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
     ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
@@ -149,7 +150,7 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
     a. Plak in het tekstvak **Aanmeldingspagina-URL** de waarde van **Aanmeldings-URL** die u hebt gekopieerd uit Azure Portal.
 
-    b. Voor de **URL-** waarde van de afmeldings pagina moet u naar de Azure portal gaan en op **Azure Active Directory** aan de linkerkant klikken en vervolgens naar **app-registraties**navigeren.
+    b. Voor de URL-waarde van de **Afmeldings pagina** moet u naar de Azure portal gaan en op **Azure Active Directory** aan de linkerkant klikken en vervolgens naar **app-registraties**navigeren.
 
     ![De Azure Active Directory-knop](./media/zoom-tutorial/appreg.png)
 
@@ -157,7 +158,7 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
     ![De knop eind punt](./media/zoom-tutorial/endpoint.png)
 
-    d. Kopieer het **SAML-P-AFmeldings eindpunt** en plak het in het tekstvak URL voor de afmeldings **pagina** .
+    d. Kopieer het **SAML-P-AFmeldings eindpunt** en plak het in het tekstvak URL voor de **afmeldings pagina** .
 
     ![De knop eind punt kopiëren](./media/zoom-tutorial/endpoint1.png)
 
@@ -172,30 +173,10 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
 ### <a name="create-zoom-test-user"></a>Zoom-testgebruiker maken
 
-Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij inzoomen, moeten ze worden in-/uitzoomen. In het geval van Zoom is inrichten een handmatige taak.
-
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:
-
-1. Meld u aan bij uw inzoom-bedrijfs site als beheerder.
-
-2. Klik op het tabblad **Accountbeheer** en klik vervolgens op **Gebruikersbeheer**.
-
-3. Klik in de sectie Gebruikersbeheer op **Gebruikers toevoegen**.
-
-    ![Gebruikersbeheer](./media/zoom-tutorial/ic784703.png "Gebruikersbeheer")
-
-4. Voer op de pagina **Gebruikers toevoegen** de volgende stappen uit:
-
-    ![Gebruikers toevoegen](./media/zoom-tutorial/ic784704.png "Gebruikers toevoegen")
-
-    a. Selecteer als **Gebruikerstype**, **Standaard**.
-
-    b. Typ in het tekstvak **E-mails** het e-mailadres van een geldig Azure AD-account dat u wilt inrichten.
-
-    c. Klik op **Toevoegen**.
+Het doel van deze sectie is het maken van een gebruiker met de naam B. Simon in zoom. Zoomen ondersteunt automatische gebruikers inrichting, die standaard is ingeschakeld. U kunt [hier](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial) meer informatie vinden over het configureren van het automatisch inrichten van gebruikers.
 
 > [!NOTE]
-> U kunt alle andere hulpprogramma's of API's voor het maken van Zoom-gebruikersaccounts gebruiken die worden geleverd door Zoom voor het inrichten van Azure Active Directory-gebruikersaccounts.
+> Als u hand matig een gebruiker moet maken, moet u contact opnemen met het [ondersteunings team](https://support.zoom.us/hc/) van de client
 
 ## <a name="test-sso"></a>SSO testen 
 

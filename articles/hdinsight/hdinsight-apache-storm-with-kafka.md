@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Apache Storm gebruiken om gegevens te lezen en schrijven met Apache Kafka - Azure HDInsight'
+title: 'Zelfstudie: Apache Storm lezen, schrijven met Apache Kafka-Azure HDInsight'
 description: Lees hoe u in HDInsight een streaming-pijplijn maakt met Apache Storm en Apache Kafka. In deze zelfstudie gebruikt u de componenten KafkaBolt en KafkaSpout om gegevens te streamen vanuit Kafka.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 181d052501b9c418fad10a2069dde928a7ff9f38
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 62452937d51c80a59e24e6d254d29337552b1af2
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840250"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734737"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Zelfstudie: Apache Storm gebruiken met Apache Kafka in HDInsight
 
@@ -471,9 +471,9 @@ Gebruik de volgende stappen om eerst een virtueel Azure-netwerk te maken en verv
 
     De geretourneerde waarde ziet er ongeveer zo uit:
 
-        ```output
-        wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
-        ```
+    ```output
+    wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+     ```
 
     > [!IMPORTANT]  
     > Hoewel een cluster meer dan twee broker-hosts kan hebben, hoeft u niet een volledige lijst van alle hosts te leveren aan de clients. Een of twee is voldoende.

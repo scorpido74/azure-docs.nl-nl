@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 09/05/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a82571260f5da679202e96f5e6f72aa2db6788a
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7c2e80f80ea5d7e7d5ee26eee8b26506386a6e2f
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834686"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389779"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Toegang tot webtoepassingen toestaan met OpenID Connect Connect en Azure Active Directory
 
@@ -92,14 +92,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parameter |  | Description |
 | --- | --- | --- |
-| tenant |vereist |De `{tenant}` waarde in het pad van de aanvraag kan worden gebruikt om te bepalen wie zich kan aanmelden bij de toepassing. De toegestane waarden zijn Tenant-id's, bijvoorbeeld `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` `common` of `contoso.onmicrosoft.com` voor Tenant-onafhankelijke tokens |
-| client_id |vereist |De toepassings-ID die is toegewezen aan uw app wanneer u deze hebt geregistreerd bij Azure AD. U kunt dit vinden in de Azure Portal. Klik op **Azure Active Directory**, klik op **app**-registraties, kies de toepassing en zoek de toepassings-id op de toepassings pagina. |
-| response_type |vereist |Moet zijn `id_token` inbegrepen voor OpenID Connect Connect-aanmelding. Het kan ook andere response_types omvatten, zoals `code` of. `token` |
+| tenant |Vereist |De `{tenant}` waarde in het pad van de aanvraag kan worden gebruikt om te bepalen wie zich kan aanmelden bij de toepassing. De toegestane waarden zijn Tenant-id's, bijvoorbeeld `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` `common` of `contoso.onmicrosoft.com` voor Tenant-onafhankelijke tokens |
+| client_id |Vereist |De toepassings-ID die is toegewezen aan uw app wanneer u deze hebt geregistreerd bij Azure AD. U kunt dit vinden in de Azure Portal. Klik op **Azure Active Directory**, klik op **app-registraties**, kies de toepassing en zoek de toepassings-id op de toepassings pagina. |
+| response_type |Vereist |Moet zijn `id_token` inbegrepen voor OpenID Connect Connect-aanmelding. Het kan ook andere response_types omvatten, zoals `code` of. `token` |
 | bereik | aanbevelingen | De OpenID Connect Connect-specificatie vereist de `openid`Scope, die wordt omgezet in de machtiging ' Meld u aan ' in de gebruikers interface van de toestemming. Deze en andere OIDC-bereiken worden genegeerd op het eind punt van de v 1.0, maar is nog steeds een best practice voor clients die voldoen aan de standaarden. |
-| nonce |vereist |Een waarde die is opgenomen in de aanvraag, gegenereerd door de app, die is opgenomen in `id_token` het resultaat als een claim. De app kan vervolgens deze waarde verifiëren om token replay-aanvallen te verhelpen. De waarde is doorgaans een wille keurige, unieke teken reeks of GUID die kan worden gebruikt om de oorsprong van de aanvraag te identificeren. |
+| nonce |Vereist |Een waarde die is opgenomen in de aanvraag, gegenereerd door de app, die is opgenomen in `id_token` het resultaat als een claim. De app kan vervolgens deze waarde verifiëren om token replay-aanvallen te verhelpen. De waarde is doorgaans een wille keurige, unieke teken reeks of GUID die kan worden gebruikt om de oorsprong van de aanvraag te identificeren. |
 | redirect_uri | aanbevelingen |De redirect_uri van uw app, waar verificatie reacties kunnen worden verzonden en ontvangen door uw app. Het moet exact overeenkomen met een van de redirect_uris die u in de portal hebt geregistreerd, behalve het moet een URL-code ring zijn. Als dit niet het geval is, wordt de gebruikers agent teruggestuurd naar een van de omleidings-Uri's die wille keurig zijn geregistreerd voor de app. De maximale lengte is 255 bytes |
 | response_mode |optioneel |Hiermee geeft u de methode op die moet worden gebruikt om de resulterende authorization_code terug te sturen naar uw app. Ondersteunde waarden zijn `form_post` voor een *http-formulier post* en `fragment` voor het *URL-fragment*. Voor webtoepassingen raden `response_mode=form_post` we u aan om te zorgen voor de veiligste overdracht van tokens naar uw toepassing. De standaard waarde voor elke stroom, `fragment`met inbegrip van een id_token.|
-| toestand |aanbevelingen |Een waarde die is opgenomen in de aanvraag die wordt geretourneerd in de token reactie. Dit kan een teken reeks zijn van alle inhoud die u wilt. Een wille keurig gegenereerde unieke waarde wordt doorgaans gebruikt om [vervalsing van aanvragen op meerdere sites](https://tools.ietf.org/html/rfc6749#section-10.12)te voor komen. De status wordt ook gebruikt voor het coderen van informatie over de status van de gebruiker in de app voordat de verificatie aanvraag is uitgevoerd, zoals de pagina of weer gave waarin ze zich bevonden. |
+| state |aanbevelingen |Een waarde die is opgenomen in de aanvraag die wordt geretourneerd in de token reactie. Dit kan een teken reeks zijn van alle inhoud die u wilt. Een wille keurig gegenereerde unieke waarde wordt doorgaans gebruikt om [vervalsing van aanvragen op meerdere sites](https://tools.ietf.org/html/rfc6749#section-10.12)te voor komen. De status wordt ook gebruikt voor het coderen van informatie over de status van de gebruiker in de app voordat de verificatie aanvraag is uitgevoerd, zoals de pagina of weer gave waarin ze zich bevonden. |
 | verschijnt |optioneel |Hiermee wordt het type gebruikers interactie aangegeven dat vereist is. Op dit moment zijn de enige geldige waarden aanmelding, none en instemming. `prompt=login`Hiermee wordt de gebruiker gedwongen om hun referenties in te voeren voor die aanvraag, waarbij eenmalige aanmelding wordt genegeerd. `prompt=none`is het tegenovergestelde: Hiermee zorgt u ervoor dat de gebruiker niet in een interactieve prompt wordt weer gegeven. Als de aanvraag niet op de achtergrond kan worden voltooid via eenmalige aanmelding, retourneert het eind punt een fout. `prompt=consent`Hiermee wordt het dialoog venster OAuth-toestemming geactiveerd nadat de gebruiker zich heeft aangemeld, waarin de gebruiker wordt gevraagd om machtigingen te verlenen aan de app. |
 | login_hint |optioneel |Kan worden gebruikt om het veld gebruikers naam/e-mail adres vooraf in te vullen op de aanmeldings pagina voor de gebruiker, als u de gebruikers naam van tevoren kent. Vaak gebruiken apps deze para meter tijdens de herauthenticatie, waarbij de gebruikers naam al is geëxtraheerd van een eerdere aanmelding `preferred_username` met de claim. |
 
@@ -120,7 +120,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 | Parameter | Description |
 | --- | --- |
 | id_token |De `id_token` aanvraag die de app heeft aangevraagd. U kunt de `id_token` gebruiken om de identiteit van de gebruiker te verifiëren en een sessie met de gebruiker te starten. |
-| toestand |Een waarde die in de aanvraag is opgenomen en die ook wordt geretourneerd in de token reactie. Een wille keurig gegenereerde unieke waarde wordt doorgaans gebruikt om [vervalsing van aanvragen op meerdere sites](https://tools.ietf.org/html/rfc6749#section-10.12)te voor komen. De status wordt ook gebruikt voor het coderen van informatie over de status van de gebruiker in de app voordat de verificatie aanvraag is uitgevoerd, zoals de pagina of weer gave waarin ze zich bevonden. |
+| state |Een waarde die in de aanvraag is opgenomen en die ook wordt geretourneerd in de token reactie. Een wille keurig gegenereerde unieke waarde wordt doorgaans gebruikt om [vervalsing van aanvragen op meerdere sites](https://tools.ietf.org/html/rfc6749#section-10.12)te voor komen. De status wordt ook gebruikt voor het coderen van informatie over de status van de gebruiker in de app voordat de verificatie aanvraag is uitgevoerd, zoals de pagina of weer gave waarin ze zich bevonden. |
 
 ### <a name="error-response"></a>Fout bericht
 
@@ -181,7 +181,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | Parameter |  | Description |
 | --- | --- | --- |
-| post_logout_redirect_uri |aanbevelingen |De URL waarnaar de gebruiker wordt omgeleid na een geslaagde afmelding. Als dat niet het geval is, wordt de gebruiker een algemeen bericht weer gegeven. |
+| post_logout_redirect_uri |aanbevelingen |De URL waarnaar de gebruiker wordt omgeleid na een geslaagde afmelding.  Deze URL moet overeenkomen met een van de omleidings-Uri's die zijn geregistreerd voor uw toepassing in de app-registratie Portal.  Als *post_logout_redirect_uri* niet is opgenomen, wordt de gebruiker een algemeen bericht weer gegeven. |
 
 ## <a name="single-sign-out"></a>Eenmalige afmelding
 
@@ -190,7 +190,7 @@ Wanneer u de gebruiker omleidt naar `end_session_endpoint`de, wordt de sessie va
 1. Navigeer naar [Azure Portal](https://portal.azure.com).
 2. Kies uw Active Directory door te klikken op uw account in de rechter bovenhoek van de pagina.
 3. Kies in het navigatie deel venster links de optie **Azure Active Directory**en kies vervolgens **app-registraties** en selecteer uw toepassing.
-4. Klik op **instellingen**en vervolgens op **Eigenschappen** en zoek het tekstvak afmeldings- **URL** . 
+4. Klik op **instellingen**en vervolgens op **Eigenschappen** en zoek het tekstvak **afmeldings-URL** . 
 
 ## <a name="token-acquisition"></a>Tokens ophalen
 Veel web-apps moeten de gebruiker niet alleen kunnen ondertekenen in, maar hebben ook toegang tot een webservice namens die gebruiker met behulp van OAuth. Dit scenario bevat een combi natie van OpenID Connect Connect voor gebruikers verificatie bij `authorization_code` het tegelijkertijd ophalen van een dat `access_tokens` kan worden gebruikt om de [OAuth-autorisatie code stroom](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)te gebruiken.
@@ -230,7 +230,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 | --- | --- |
 | id_token |De `id_token` aanvraag die de app heeft aangevraagd. U kunt de `id_token` gebruiken om de identiteit van de gebruiker te verifiëren en een sessie met de gebruiker te starten. |
 | code |De authorization_code die door de app is aangevraagd. De app kan de autorisatie code gebruiken om een toegangs token aan te vragen voor de doel bron. Authorization_codes zijn korte tijd en verlopen normaal gesp roken na ongeveer 10 minuten. |
-| toestand |Als een para meter State is opgenomen in de aanvraag, moet dezelfde waarde in het antwoord worden weer gegeven. De app moet controleren of de status waarden in de aanvraag en het antwoord identiek zijn. |
+| state |Als een para meter State is opgenomen in de aanvraag, moet dezelfde waarde in het antwoord worden weer gegeven. De app moet controleren of de status waarden in de aanvraag en het antwoord identiek zijn. |
 
 ### <a name="error-response"></a>Fout bericht
 

@@ -1,80 +1,80 @@
 ---
-title: Prestaties van Apache Spark-workloads met Azure HDInsight i/o-Cache (Preview)
-description: Meer informatie over Azure HDInsight i/o-Cache en het gebruik van het Apache Spark-prestaties te verbeteren.
+title: Prestaties van Apache Spark workloads met Azure HDInsight IO-cache (preview-versie)
+description: Meer informatie over de Azure HDInsight i/o-cache en hoe u deze kunt gebruiken om de prestaties van Apache Spark te verbeteren.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: b77e7e9d5a68439e7f336ecb26e91031d80a7606
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a078fc205403983f4f6484f6a7ccde7f99c4dd58
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695210"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734551"
 ---
-# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>Prestaties van Apache Spark-workloads met Azure HDInsight i/o-Cache (Preview)
+# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>Verbeter de prestaties van Apache Spark werk belastingen met behulp van de Azure HDInsight IO-cache (preview)
 
-I/o-Cache is een service voor Azure HDInsight, waardoor de prestaties van Apache Spark-taken voor het opslaan in cache van gegevens. I/o-Cache werkt ook met [Apache TEZ](https://tez.apache.org/) en [Apache Hive](https://hive.apache.org/) werkbelastingen, die kunnen worden uitgevoerd op [Apache Spark](https://spark.apache.org/) clusters. I/o-Cache maakt gebruik van een open-source-component opslaan in cache RubiX genoemd. RubiX is een lokale schijf-cache voor gebruik met big data analytics-engines met toegang gegevens van cloudopslagsystemen tot. RubiX is uniek zijn in de cache-systemen, omdat hierbij Solid-State stations (SSD's) in plaats van de operationele geheugen reserveren voor cachedoeleinden. De i/o-Cache-service wordt gestart en RubiX metagegevens Servers op elke worker-knooppunt van het cluster beheert. Het ook configureert alle services van het cluster voor transparante gebruik van RubiX cache.
+I/o-cache is een service voor gegevens cache voor Azure HDInsight waarmee de prestaties van Apache Spark taken worden verbeterd. I/o-cache werkt ook met [Apache TEZ](https://tez.apache.org/) en [Apache Hive](https://hive.apache.org/) workloads, die op [Apache Spark](https://spark.apache.org/) -clusters kunnen worden uitgevoerd. I/o-cache maakt gebruik van een open-source cache onderdeel met de naam RubiX. RubiX is een lokale schijf cache voor gebruik met big data Analytics-engines die toegang hebben tot gegevens van opslag systemen in de Cloud. RubiX is uniek voor caching-systemen, omdat het gebruik maakt van Ssd's (Solid-state drives) in plaats van dat het besturings geheugen wordt gereserveerd voor cache doeleinden. De i/o-cache service start en beheert RubiX-meta gegevens servers op elk worker-knoop punt van het cluster. Ook worden alle services van het cluster geconfigureerd voor transparant gebruik van RubiX-cache.
 
-De meeste SSD's bieden meer dan 1 GB per seconde van de bandbreedte. Deze bandbreedte, aangevuld met de besturingssysteem-bestand in-memory-cache, biedt voldoende bandbreedte voor het laden van big compute verwerking gegevensengines, zoals Apache Spark. Het operationele geheugen is beschikbaar voor Apache Spark voor het verwerken van veel geheugen-afhankelijke taken, zoals shuffles van links. Exclusief gebruik van het besturingssysteem van geheugen met kunt Apache Spark voor optimaal Resourcegebruik.  
+De meeste Ssd's bieden meer dan 1 GByte per seconde band breedte. Deze band breedte, aangevuld met de bestands cache van het besturings systeem, biedt voldoende band breedte om te laden big data engines voor reken verwerking, zoals Apache Spark. Het besturings geheugen is beschikbaar voor Apache Spark voor het verwerken van sterk geheugen afhankelijke taken, zoals wille keurige volg orde. Als u exclusief gebruikt voor het gebruik van het geheugen, kunt u met Apache Spark optimaal gebruik van resources krijgen.  
 
 >[!Note]  
->I/o-Cache gebruikt momenteel RubiX als onderdeel van een cache, maar dit kan veranderen in toekomstige versies van de service. Gebruik van i/o-Cache-interfaces en eventuele afhankelijkheden rechtstreeks op de implementatie RubiX niet uitvoeren.
+>I/o-cache maakt momenteel gebruik van RubiX als een cache onderdeel, maar dit kan worden gewijzigd in toekomstige versies van de service. Gebruik de i/o-cache interfaces en neem geen afhankelijkheden op de RubiX-implementatie.
 
-## <a name="benefits-of-azure-hdinsight-io-cache"></a>Voordelen van Azure HDInsight i/o-Cache
+## <a name="benefits-of-azure-hdinsight-io-cache"></a>Voor delen van de Azure HDInsight IO-cache
 
-Gebruik van i/o-Cache, biedt een toename van de prestaties voor taken die gegevens uit Azure Blob Storage lezen.
+Het gebruik van een i/o-cache biedt een prestatie verhoging voor taken die gegevens van Azure Blob Storage lezen.
 
-U hebt geen wijzigingen aanbrengen in uw Spark-taken om te zien van prestaties bij het gebruik van i/o-Cache. Als i/o-Cache is uitgeschakeld, deze Spark-code zou lezen van gegevens op afstand van Azure Blob Storage: `spark.read.load('wasbs:///myfolder/data.parquet').count()`. Als i/o-Cache is geactiveerd, wordt de dezelfde regel code in de cache lezen via de i/o-Cache. Op de volgende leest de gegevens lokaal gelezen uit SSD. Worker-knooppunten op HDInsight-cluster zijn uitgerust met lokaal aangesloten, toegewezen SSD-stations. HDInsight i/o-Cache gebruikt deze lokale SSD's voor de cache, biedt de laagste niveau van de latentie en maximaliseert de bandbreedte.
+U hoeft geen wijzigingen aan te brengen in uw Spark-taken om de prestatie verhogingen te bekijken wanneer u een i/o-cache gebruikt. Als i/o-cache is uitgeschakeld, zou deze Spark-code gegevens op afstand `spark.read.load('wasbs:///myfolder/data.parquet').count()`van Azure Blob Storage kunnen lezen:. Als i/o-cache is geactiveerd, veroorzaakt dezelfde regel code een lees-IO-cache door de cache. Bij de volgende Lees bewerkingen worden de gegevens lokaal van SSD gelezen. Worker-knoop punten in HDInsight-cluster zijn uitgerust met lokaal gekoppelde SSD-stations. De HDInsight IO-cache maakt gebruik van deze lokale Ssd's voor caching, wat een laag latentie niveau biedt en de band breedte maximaliseert.
 
 ## <a name="getting-started"></a>Aan de slag
 
-Azure HDInsight i/o-Cache is standaard ingeschakeld in de Preview-versie gedeactiveerd. I/o-Cache is beschikbaar op Azure HDInsight 3.6 + Spark-clusters, welke Apache Spark 2.3 worden uitgevoerd.  Voor het activeren van i/o-Cache, het volgende doen:
+De Azure HDInsight IO-cache is standaard uitgeschakeld in de preview-versie. I/o-cache is beschikbaar in azure HDInsight 3.6 + Spark-clusters, die Apache Spark 2,3 worden uitgevoerd.  Ga als volgt te werk om de i/o-cache te activeren:
 
-1. Selecteer uw HDInsight-cluster in [de Azure-portal](https://portal.azure.com).
+1. Selecteer uw HDInsight-cluster in [de Azure Portal](https://portal.azure.com).
 
-1. In de **overzicht** pagina (standaard geopend wanneer u het cluster selecteert) Selecteer **Ambari Home** onder **Clusterdashboards**.
+1. Selecteer op de pagina **overzicht** (standaard geopend wanneer u het cluster selecteert) **Ambari start** onder **cluster dashboards**.
 
-1. Selecteer de **i/o-Cache** service aan de linkerkant.
+1. Selecteer de **i/o-cache** service aan de linkerkant.
 
 1. Selecteer **acties** en **activeren**.
 
-    ![Het inschakelen van de i/o-Cache-service in Ambari](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "inschakelen van de i/o-Cache-service in Ambari")
+    ![De i/o-cache service inschakelen in Ambari](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "De i/o-cache service inschakelen in Ambari")
 
-1. Controleer of de betrokken services op het cluster opnieuw gestart.
+1. Opnieuw opstarten bevestigen van alle betrokken services op het cluster.
 
 >[!NOTE]  
-> Hoewel de voortgangsbalk geactiveerd wordt, wordt niet daadwerkelijk i/o-Cache ingeschakeld totdat u de betrokken services opnieuw starten.
+> Hoewel de voortgangs balk geactiveerd wordt weer gegeven, wordt de i/o-cache niet daad werkelijk ingeschakeld totdat u de andere betrokken services opnieuw opstart.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
   
-U krijgt mogelijk ruimte schijffouten Spark taken uitgevoerd na het inschakelen van i/o-Cache. Deze fouten optreden met Spark lokale schijfopslag wordt ook wordt gebruikt voor het opslaan van gegevens tijdens de volgorde wijzigen van bewerkingen. Spark kan SSD-ruimte te weinig als i/o-Cache is ingeschakeld en de ruimte voor Spark-opslag wordt verminderd. De hoeveelheid ruimte die wordt gebruikt door de i/o-Cache standaard ingesteld op de helft van de totale SSD-ruimte. Het gebruik van schijfruimte voor i/o-Cache kan worden geconfigureerd in Ambari. Als er schijffouten ruimte, de SSD-ruimte die wordt gebruikt voor i/o-Cache te verminderen en de service opnieuw. Als u wilt wijzigen van de ruimte die is ingesteld voor i/o-Cache, voer de volgende stappen uit:
+Er kunnen schijf ruimte fouten optreden bij het uitvoeren van Spark-taken na het inschakelen van i/o-cache. Deze fouten treden op omdat Spark ook gebruikmaakt van lokale schijf opslag voor het opslaan van gegevens tijdens het volg orde van bewerkingen. Spark kan geen SSD-ruimte meer gebruiken nadat de i/o-cache is ingeschakeld en de ruimte voor Spark-opslag is beperkt. De hoeveelheid ruimte die wordt gebruikt door de i/o-cache is standaard de helft van de totale SSD-ruimte. Het schijfruimte gebruik voor de i/o-cache kan worden geconfigureerd in Ambari. Als u schijf ruimte fouten krijgt, vermindert u de hoeveelheid SSD-ruimte die wordt gebruikt voor de i/o-cache en start u de service opnieuw. Voer de volgende stappen uit om de ingestelde ruimte voor de i/o-cache te wijzigen:
 
-1. Selecteer in de Apache Ambari, de **HDFS** service aan de linkerkant.
+1. Selecteer in Apache Ambari de **HDFS** -service aan de linkerkant.
 
-1. Selecteer de **Peeringconfiguraties** en **Geavanceerd** tabbladen.
+1. Selecteer de tabbladen **configuratie** en **Geavanceerd** .
 
-    ![Geavanceerde configuratie van HDFS bewerken](./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png "HDFS geavanceerde configuratie bewerken")
+    ![Geavanceerde HDFS-configuratie bewerken](./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png "Geavanceerde HDFS-configuratie bewerken")
 
-1. Schuif naar beneden en vouw de **aangepaste core-site** gebied.
+1. Schuif omlaag en vouw het gebied **aangepaste kern site** uit.
 
-1. Zoek de eigenschap **hadoop.cache.data.fullness.percentage**.
+1. Zoek de eigenschap **Hadoop. cache. data. vol. percentage**.
 
 1. Wijzig de waarde in het vak.
 
-    ![I/o-Cache volheid Percentage bewerken](./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png "i/o-Cache volheid Percentage bewerken")
+    ![Percentage van de volledige i/o-cache bewerken](./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png "Percentage van de volledige i/o-cache bewerken")
 
-1. Selecteer **opslaan** in de rechterbovenhoek.
+1. Selecteer **Opslaan** in de rechter bovenhoek.
 
-1. Selecteer **opnieuw** > **opnieuw alle betrokken**.
+1. Selecteer **opnieuw opstarten** > **alle beïnvloed**.
 
-    ![Opnieuw opstarten alle betrokken](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "alle betrokken opnieuw opstarten")
+    ![Alle betrokken software opnieuw opstarten](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Alle betrokken software opnieuw opstarten")
 
-1. Selecteer **opnieuw starten bevestigen alle**.
+1. Selecteer **Bevestig opnieuw opstarten**.
 
-Als dit niet werkt, schakelt u i/o-Cache.
+Als dat niet werkt, schakelt u de i/o-cache uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over i/o-Cache, met inbegrip van prestatiestandaarden in dit blogbericht: [Apache Spark-taken toegang tot 9 x versnellen met HDInsight i/o-Cache](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)
+- Lees meer over i/o-cache, inclusief de benchmarks voor prestaties in dit blog bericht: [Apache Spark-taken krijgen een snelheid van Maxi maal 9x met HDInsight IO-cache](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)

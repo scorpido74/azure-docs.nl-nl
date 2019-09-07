@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Gegevens uit Azure Event Hubs verwerken met Apache Spark in azure HDInsight '
+title: 'Zelfstudie: Gegevens verwerken van Azure Event Hubs met Apache Spark in HDInsight'
 description: 'Zelf studie: Apache Spark in azure HDInsight verbinden met Azure Event Hubs en de streaminggegevens verwerken.'
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
-ms.openlocfilehash: 0d47c3f0838e22ad8c5185a42f5f0c748335dfa8
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 2483ba22d3d502479e87ae385bcc837ec87a103c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049494"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735337"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Zelfstudie: Tweets verwerken met Azure Event Hubs en Apache Spark in HDInsight
 
@@ -88,7 +88,7 @@ U gebruikt deze Event Hub om tweets op te slaan.
     |Resource group|Selecteer een bestaande resource groep in de vervolg keuzelijst of selecteer **nieuwe maken** om een nieuwe resource groep te maken.|
     |Location|Selecteer dezelfde **locatie** als uw Apache Spark-cluster in HDInsight om de latentie en kosten te verminderen.|
     |Automatisch verg Roten inschakelen (optioneel) |Automatisch verg Roten: Hiermee wordt het aantal doorvoer eenheden dat aan uw Event Hubs naam ruimte is toegewezen, geschaald wanneer uw verkeer de capaciteit van de toegewezen doorvoer eenheden overschrijdt.  |
-    |Maximum aantal doorvoer eenheden automatisch verg Roten (optioneel)|Deze schuif regelaar wordt alleen weer gegeven als u **automatisch verg Roten inschakelen**inschakelt.  |
+    |Maximum aantal doorvoer eenheden automatisch verg Roten (optioneel)|Deze schuif regelaar wordt alleen weer gegeven als u **automatisch verg Roten inschakelen inschakelt**.  |
 
     ![Een event hub naam opgeven voor het voor beeld van Spark-streaming](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Een event hub naam opgeven voor het voor beeld van Spark-streaming")
 

@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.custom: seo-java-august2019
-ms.openlocfilehash: 110c4a343909a81e092b147b79ed69d6bd5c2d9c
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.custom: seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: a34cb8e13d32cbeb6d289869dca3a8cb1391d68f
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981755"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390856"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Quickstart: Een Java-app maken voor het beheren van Azure Cosmos DB SQL-API-gegevens
 
@@ -26,7 +26,7 @@ ms.locfileid: "69981755"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-In deze quickstart wordt getoond hoe u resources van een Azure Cosmos DB [SQL API](sql-api-introduction.md)-account met behulp van een Java-toepassing kunt maken en beheren. Eerst maakt u een Azure Cosmos DB SQL API-account via de Azure-portal, dan maakt u een Java-app met behulp van de [SQL Java SDK](sql-api-sdk-async-java.md) en voegt u met de Java-toepassing resources toe aan uw Cosmos DB-account. De instructies in deze snelstartgids kunnen worden uitgevoerd in elk besturingssysteem waarmee Java kan worden uitgevoerd. Nadat u deze Snelstartgids hebt voltooid, weet u hoe u Cosmos-data bases kunt maken en wijzigen, containers in de gebruikers interface of via een programma, afhankelijk van uw voor keur.
+In deze Quick start ziet u hoe u een Java-toepassing gebruikt om een document database te maken en te beheren vanuit uw Azure Cosmos DB SQL-API-account. Eerst maakt u een Azure Cosmos DB SQL-API-account met behulp van de Azure Portal, maakt u een Java-app met behulp van de SQL Java SDK en voegt u vervolgens resources toe aan uw Cosmos DB-account met behulp van de Java-toepassing. De instructies in deze snelstartgids kunnen worden uitgevoerd in elk besturingssysteem waarmee Java kan worden uitgevoerd. Nadat u deze Snelstartgids hebt voltooid, weet u hoe u Cosmos DB-data bases kunt maken en wijzigen, containers in de gebruikers interface of via een programma, afhankelijk van uw voor keur.
 
 ## <a name="prerequisites"></a>Vereisten
 

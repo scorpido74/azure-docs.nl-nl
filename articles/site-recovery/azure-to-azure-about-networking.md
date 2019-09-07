@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: b549e8bf53ca7728b18e04542c7291f0ce720cb0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 9c65d6055807ee2735f1915e8ca289dc0754535b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876460"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736397"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Over netwerken in azure naar Azure-replicatie
 
@@ -113,7 +113,11 @@ Site Recovery IP-adresbereiken zijn als volgt:
    China - noord 2 | 40.73.35.193 | 40.73.33.230
    China - oost | 42.159.205.45 | 42.159.132.40
    China - oost 2 | 40.73.118.52| 40.73.100.125
-  
+   Duitsland - noord| 51.116.208.58| 51.116.58.128
+   Duitsland - west-centraal | 51.116.156.176 | 51.116.154.192
+   Zwitserland - west | 51.107.231.223| 51.107.154.128
+   Zwitserland - noord | 51.107.68.31| 51.107.58.128
+
 ## <a name="example-nsg-configuration"></a>Voor beeld van NSG-configuratie
 
 In dit voor beeld ziet u hoe u NSG-regels configureert voor replicatie van een virtuele machine.
@@ -170,7 +174,7 @@ U kunt een netwerk service-eind punt in uw virtuele netwerk maken voor ' opslag 
 
 ### <a name="forced-tunneling"></a>Geforceerde tunneling
 
-U kunt de standaard systeem route van Azure voor het adres voorvoegsel 0.0.0.0/0 vervangen door een [aangepaste route](../virtual-network/virtual-networks-udr-overview.md#custom-routes) en VM-verkeer omleiden naar een on-premises netwerk virtueel apparaat (NVA), maar deze configuratie wordt niet aanbevolen voor replicatie van site Recovery. Als u aangepaste routes gebruikt, moet u [een service-eind punt voor een virtueel netwerk maken](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) in het virtuele netwerk voor "opslag" zodat het replicatie verkeer de Azure-grens niet verlaat.
+U kunt de standaard systeem route van Azure voor het adres voorvoegsel 0.0.0.0/0 vervangen door een aangepaste route en VM-verkeer [omleiden](../virtual-network/virtual-networks-udr-overview.md#custom-routes) naar een on-premises netwerk virtueel apparaat (NVA), maar deze configuratie wordt niet aanbevolen voor replicatie van site Recovery. Als u aangepaste routes gebruikt, moet u [een service-eind punt voor een virtueel netwerk maken](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) in het virtuele netwerk voor "opslag" zodat het replicatie verkeer de Azure-grens niet verlaat.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Begin met het beveiligen van uw workloads door [Azure virtual machines te repliceren](site-recovery-azure-to-azure.md).
