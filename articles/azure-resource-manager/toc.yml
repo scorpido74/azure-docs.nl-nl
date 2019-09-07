@@ -4,6 +4,8 @@
   items:
     - name: Wat is Resource Manager?
       href: resource-group-overview.md
+    - name: Overzicht van sjablonen
+      href: template-deployment-overview.md
 - name: Snelstartgidsen
   expanded: true
   items:
@@ -58,8 +60,6 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager'
 - name: Concepten
   items:
-    - name: Sjabloonimplementaties
-      href: template-deployment-overview.md
     - name: Best practices voor sjablonen
       href: template-best-practices.md
     - name: Sjablonen voor de consistentie van de cloud
