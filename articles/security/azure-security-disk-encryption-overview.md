@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 07/29/2019
+ms.date: 09/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dfcc69d90daae5869c3b69c922e99eab3585e14
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 7855b1048826a9146e206226ae7326661e4609cb
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164621"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764403"
 ---
 # <a name="azure-disk-encryption-overview"></a>Overzicht van Azure Disk Encryption
 
@@ -72,6 +72,7 @@ Azure Disk Encryption werkt niet voor de volgende scenario's, functies en techno
 * Azure-bestanden (gedeelde bestandssysteem).
 * Network File System (NFS).
 * Dynamische volumes.
+* Windows Server-containers, waarmee dynamische volumes worden gemaakt voor elke container.
 * Tijdelijke OS-schijven.
 * Versleuteling van gedeelde/gedistribueerde bestands systemen zoals (maar niet beperkt tot): DFS, GFS, DRDB, CephFS, etc
 
@@ -93,8 +94,8 @@ Azure Disk Encryption voor Vm's voor Windows en Linux omvat:
 * [De schijf versleutelings extensie voor Windows](../virtual-machines/extensions/azure-disk-enc-windows.md).
 * [De schijf versleutelings extensie voor Linux](../virtual-machines/extensions/azure-disk-enc-linux.md).
 * [De Power shell-cmdlets voor schijf versleuteling](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.2.0).
-* [De Azure cli-schijf](/cli/azure/vm/encryption?view=azure-cli-latest)versleutelings-cmdlets.
-* [De Azure Resource Manager sjabloon voor het](azure-security-disk-encryption-appendix.md#resource-manager-templates)versleutelen van schijven.
+* [De Azure cli-schijf versleutelings-cmdlets](/cli/azure/vm/encryption?view=azure-cli-latest).
+* [De Azure Resource Manager sjabloon voor het versleutelen van schijven](azure-security-disk-encryption-appendix.md#resource-manager-templates).
 
 > [!NOTE]
 > Er zijn geen extra kosten voor het versleutelen van VM-schijven met Azure Disk Encryption. Standard [prijzen voor Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) is van toepassing op de sleutelkluis die wordt gebruikt voor het opslaan van de versleutelingssleutels. 

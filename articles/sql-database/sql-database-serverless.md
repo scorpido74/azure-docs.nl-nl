@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 08/26/2019
-ms.openlocfilehash: 418ca6f8d6258b826bb126252d7cf7b1c5fee299
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 09/06/2019
+ms.openlocfilehash: 5b13c3c93f8b2d6f3eed5a32c49baf1b9d1b201e
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035724"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773345"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database serverloze (preview-versie)
 
@@ -31,7 +31,7 @@ De compute-laag zonder server voor één data base is vastgelegd door een bereik
 ### <a name="performance-configuration"></a>Prestaties configureren
 
 - De **minimale vCores** -en **maximum vCores** zijn Configureer bare para meters die het bereik van berekenings capaciteit bepalen dat voor de data base beschikbaar is. Geheugen-en i/o-limieten zijn evenredig met het opgegeven vCore-bereik.  
-- De **vertraging** voor automatische onderbrekingen is een Configureer bare para meter waarmee de periode wordt gedefinieerd die de data base inactief moet zijn voordat deze automatisch wordt onderbroken. De data base wordt automatisch hervat wanneer de volgende aanmelding of andere activiteit plaatsvindt.  Het is ook mogelijk om autopauzes uit te scha kelen.
+- De **vertraging voor automatische onderbrekingen** is een Configureer bare para meter waarmee de periode wordt gedefinieerd die de data base inactief moet zijn voordat deze automatisch wordt onderbroken. De data base wordt automatisch hervat wanneer de volgende aanmelding of andere activiteit plaatsvindt.  Het is ook mogelijk om autopauzes uit te scha kelen.
 
 ### <a name="cost"></a>Kosten
 
@@ -115,7 +115,8 @@ De volgende functies bieden geen ondersteuning voor het autopauzeren.  Dat wil z
 
 - Geo-replicatie (actieve groepen met geo-replicatie en automatische failover).
 - Lange termijn retentie van back-ups (LTR).
-- De gesynchroniseerde data base die wordt gebruikt in SQL Data Sync.
+- De gesynchroniseerde data base die wordt gebruikt in SQL Data Sync.  In tegens telling tot synchronisatie databases ondersteunen de data bases van hubs en leden automatische onderbrekingen.
+- De taak database die wordt gebruikt in elastische taken.
 
 Autopauzeren wordt tijdelijk voor komen tijdens de implementatie van sommige service-updates waarvoor de data base online is.  In dergelijke gevallen wordt automatisch onderbreken opnieuw toegestaan zodra de service-update is voltooid.
 
@@ -281,7 +282,7 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>Bronlimieten
 
-Zie Serverloze COMPUTE- [laag](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)voor resource limieten.
+Zie [serverloze Compute-laag](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)voor resource limieten.
 
 ## <a name="billing"></a>Billing
 
@@ -324,4 +325,4 @@ De compute-laag zonder server is wereld wijd beschikbaar, met uitzonde ring van 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Als u aan de slag [wilt gaan, raadpleegt u Quick Start: Maak met behulp van de Azure Portal](sql-database-single-database-get-started.md)een enkele data base in Azure SQL database.
-- Zie resource limieten voor [serverloze Compute-lagen](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)voor resource limieten.
+- Zie [resource limieten voor serverloze Compute-lagen](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)voor resource limieten.

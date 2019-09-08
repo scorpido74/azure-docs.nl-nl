@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 22cf2be8eaed47a9440c6798acfb4383bd84c916
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: cf36c233df9f8aaf76333b0add8b1ffce869156b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611717"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773237"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Eventhubs - Geo-noodherstel 
 
@@ -110,13 +110,19 @@ De [op GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Dot
 
 Houd rekening met de volgende punten moet rekening houden met deze release:
 
-1. In de planning van failover moet u ook rekening houden met de tijd van meerdere factoren. Als u langer dan 15-20 minuten-connectiviteit verliest, wilt u mogelijk de failover te initiëren. 
+1. Event Hubs met geo-nood herstel worden geen gegevens gerepliceerd, waardoor u de oude offset waarde van uw primaire Event Hub niet opnieuw kunt gebruiken op uw secundaire Event Hub. U wordt aangeraden om de ontvanger van uw gebeurtenis opnieuw te starten met een van de volgende:
+
+- *EventPosition. FromStart ()* : als u alle gegevens op de secundaire Event hub wilt lezen.
+- *EventPosition. FromEnd ()* : als u alle nieuwe gegevens wilt lezen vanaf het moment van verbinding met uw secundaire Event hub.
+- *EventPosition. FromEnqueuedTime (datetime)* : als u alle ontvangen gegevens in uw secundaire Event hub wilt lezen vanaf een bepaalde datum en tijd.
+
+2. In de planning van failover moet u ook rekening houden met de tijd van meerdere factoren. Als u langer dan 15-20 minuten-connectiviteit verliest, wilt u mogelijk de failover te initiëren. 
  
-2. Het feit dat er geen gegevens worden gerepliceerd, betekent dat momenteel actieve sessies worden niet gerepliceerd. Detectie van duplicaten en geplande berichten mag bovendien niet werken. Nieuwe sessies, geplande berichten en nieuwe duplicaten werkt. 
+3. Het feit dat er geen gegevens worden gerepliceerd, betekent dat momenteel actieve sessies worden niet gerepliceerd. Detectie van duplicaten en geplande berichten mag bovendien niet werken. Nieuwe sessies, geplande berichten en nieuwe duplicaten werkt. 
 
-3. Failover wordt uitgevoerd een complexe gedistribueerde infrastructuur moet [uitgetest](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) ten minste één keer. 
+4. Failover wordt uitgevoerd een complexe gedistribueerde infrastructuur moet [uitgetest](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) ten minste één keer. 
 
-4. Synchroniseren van entiteiten kan enige tijd duren, ongeveer 50-100 entiteiten per minuut.
+5. Synchroniseren van entiteiten kan enige tijd duren, ongeveer 50-100 entiteiten per minuut.
 
 ## <a name="availability-zones"></a>Beschikbaarheidszones 
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 8c6f13f85b692d2405928fe06605d8b2ac0ec8e7
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 36d24e798e73ef336324eedadee1ba3fec4c0e1d
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012717"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773036"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions Power shell-ontwikkelaars handleiding
 
@@ -92,7 +92,7 @@ Elk trigger type heeft een andere set meta gegevens. Bijvoorbeeld `$TriggerMetad
 
 ## <a name="bindings"></a>Bindingen
 
-In Power shell [](functions-triggers-bindings.md) worden bindingen geconfigureerd en gedefinieerd in de functie Function. json van een functie. Functies werken op een aantal manieren met bindingen.
+In Power shell worden [bindingen](functions-triggers-bindings.md) geconfigureerd en gedefinieerd in de functie Function. json van een functie. Functies werken op een aantal manieren met bindingen.
 
 ### <a name="reading-trigger-and-input-data"></a>Trigger-en invoer gegevens lezen
 
@@ -381,7 +381,7 @@ param([string] $myBlob)
 
 ## <a name="powershell-profile"></a>Power shell-profiel
 
-In Power shell is het concept van een Power shell-profiel. Zie [about](/powershell/module/microsoft.powershell.core/about/about_profiles)Profiles (Engelstalig) als u niet bekend bent met Power shell-profielen.
+In Power shell is het concept van een Power shell-profiel. Zie [about Profiles](/powershell/module/microsoft.powershell.core/about/about_profiles)(Engelstalig) als u niet bekend bent met Power shell-profielen.
 
 In Power shell-functies wordt het profiel script uitgevoerd wanneer de functie-app wordt gestart. Functie-apps worden gestart wanneer deze voor het eerst worden geïmplementeerd en na een inactiviteit van het systeem ([koude start](#cold-start)).
 
@@ -403,14 +403,18 @@ U kunt de huidige versie bekijken door af `$PSVersionTable` te drukken vanuit ee
 
 ## <a name="dependency-management"></a>Beheer van afhankelijkheden
 
-Power shell-functies ondersteunen het beheer van Azure-modules door de service. Door het wijzigen van de host. json en het instellen van de eigenschap managedDependency enabled op True, wordt het bestand requirements. psd1 verwerkt. De meest recente Azure-modules worden automatisch gedownload en beschikbaar gesteld voor de functie.
+Power shell-functies ondersteunen het downloaden en beheren van [Power shell Gallery](https://www.powershellgallery.com) -modules door de service. Door het wijzigen van de host. json en het instellen van de eigenschap managedDependency enabled op True, wordt het bestand requirements. psd1 verwerkt. De opgegeven modules worden automatisch gedownload en beschikbaar gesteld voor de functie. 
+
+Het maximum aantal ondersteunde modules is 10. De ondersteunde syntaxis is MajorNumber. * of de exacte module versie zoals hieronder wordt weer gegeven. De Azure AZ-module is standaard opgenomen wanneer een nieuwe Power shell-functie-app wordt gemaakt.
+
+De werk nemer van de taal haalt bijgewerkte modules op die opnieuw moeten worden opgestart.
 
 host. json
 ```json
 {
-    "managedDependency": {
-        "enabled": true
-    }
+  "managedDependency": {
+          "enabled": true
+       }
 }
 ```
 
@@ -419,10 +423,11 @@ requirements.psd1
 ```powershell
 @{
     Az = '1.*'
+    SqlServer = '21.1.18147'
 }
 ```
 
-Het gebruik van uw eigen aangepaste modules of modules van de [PowerShell Gallery](https://powershellgallery.com) is iets anders dan normaal.
+Het gebruik van uw eigen aangepaste modules wijkt af van de manier waarop u het normaal zou doen.
 
 Wanneer u de module op uw lokale computer installeert, wordt deze in een van de wereld wijd beschik bare `$env:PSModulePath`mappen in uw weer. Omdat uw functie wordt uitgevoerd in azure, hebt u geen toegang tot de modules die op uw computer zijn geïnstalleerd. Hiervoor moet de `$env:PSModulePath` for a Power shell-functie-app afwijken `$env:PSModulePath` van een normaal Power shell-script.
 
@@ -433,16 +438,19 @@ In functions `PSModulePath` bevat twee paden:
 
 ### <a name="function-app-level-modules-folder"></a>Functie app-niveau `Modules` -map
 
-Als u aangepaste modules of Power shell-modules van de PowerShell Gallery wilt gebruiken, kunt u modules plaatsen waarvoor uw functies `Modules` afhankelijk zijn van een map. Vanuit deze map zijn modules automatisch beschikbaar voor de functions-runtime. Elke functie in de functie-app kan deze modules gebruiken.
+Als u aangepaste modules wilt gebruiken, kunt u modules plaatsen waarvoor uw functies afhankelijk zijn `Modules` van een map. Vanuit deze map zijn modules automatisch beschikbaar voor de functions-runtime. Elke functie in de functie-app kan deze modules gebruiken. 
 
-Als u deze functie wilt gebruiken, maakt u `Modules` een map in de hoofdmap van de functie-app. Sla de modules op die u wilt gebruiken in uw functies op deze locatie.
+> [!NOTE]
+> Modules die zijn opgegeven in het bestand requirements. psd1, worden automatisch gedownload en opgenomen in het pad, zodat u ze niet hoeft op te nemen in de map modules. Deze worden lokaal opgeslagen in de map $env: LOCALAPPDATA/AzureFunctions en in de map/data/ManagedDependencies wanneer ze worden uitgevoerd in de Cloud.
+
+Als u wilt profiteren van de functie aangepaste module, maakt `Modules` u een map in de hoofdmap van de functie-app. Kopieer de modules die u wilt gebruiken in uw functies naar deze locatie.
 
 ```powershell
 mkdir ./Modules
-Save-Module MyGalleryModule -Path ./Modules
+Copy-Item -Path /mymodules/mycustommodule -Destination ./Modules -Recurse
 ```
 
-Gebruik `Save-Module` dit om alle modules op te slaan die uw functies gebruiken of uw eigen aangepaste modules naar de `Modules` map te kopiëren. Met een modules-map moet uw functie-app de volgende mapstructuur hebben:
+Met een modules-map moet uw functie-app de volgende mapstructuur hebben:
 
 ```
 PSFunctionApp
@@ -450,11 +458,12 @@ PSFunctionApp
  | | - run.ps1
  | | - function.json
  | - Modules
- | | - MyGalleryModule
- | | - MyOtherGalleryModule
- | | - MyCustomModule.psm1
+ | | - MyCustomModule
+ | | - MyOtherCustomModule
+ | | - MySpecialModule.psm1
  | - local.settings.json
  | - host.json
+ | - requirements.psd1
 ```
 
 Wanneer u de functie-app start, voegt de Power shell- `Modules` taal werk nemer `$env:PSModulePath` deze map toe aan de zodat u kunt vertrouwen op het automatisch laden van module, net zoals u dat zou doen in een gewoon Power shell-script.
@@ -503,17 +512,7 @@ U stelt deze omgevings variabele in de [app-instellingen](functions-app-settings
 
 ### <a name="considerations-for-using-concurrency"></a>Overwegingen voor het gebruik van gelijktijdigheid
 
-Power shell is standaard een script taal met _één thread_ . Gelijktijdigheid kan echter worden toegevoegd met behulp van meerdere Power shell-runspaces in hetzelfde proces. Deze functie is de manier waarop de Azure Functions Power shell-runtime werkt.
-
-Deze aanpak bevat enkele nadelen.
-
-#### <a name="concurrency-is-only-as-good-as-the-machine-its-running-on"></a>Gelijktijdigheid is slechts net zo goed als de machine waarop deze wordt uitgevoerd
-
-Als uw functie-app wordt uitgevoerd op een [app service-abonnement](functions-scale.md#app-service-plan) dat alleen ondersteuning biedt voor één kern, is het niet veel meer. Dat komt omdat er geen extra kernen zijn om de belasting te verdelen. In dit geval kan de prestaties variëren wanneer de enkelvoudige kern een context schakelaar heeft tussen runspaces.
-
-Het [verbruiks abonnement](functions-scale.md#consumption-plan) wordt uitgevoerd met slechts één kern, zodat u geen gelijktijdigheid kunt gebruiken. Als u optimaal gebruik wilt maken van gelijktijdigheid, kunt u in plaats daarvan uw functies implementeren in een functie-app die wordt uitgevoerd op een speciaal App Service plan met voldoende kern geheugens.
-
-#### <a name="azure-powershell-state"></a>Azure PowerShell status
+Power shell is standaard een script taal met _één thread_ . Gelijktijdigheid kan echter worden toegevoegd met behulp van meerdere Power shell-runspaces in hetzelfde proces. De hoeveelheid runspaces die wordt gemaakt, komt overeen met de instelling van de PSWorkerInProcConcurrencyUpperBound-toepassing. De door Voer wordt beïnvloed door de hoeveelheid CPU en het geheugen die beschikbaar is in het geselecteerde abonnement.
 
 Azure PowerShell maakt gebruik van bepaalde contexten op _proces niveau_ en de status om u te helpen bij het besparen van het overschrijven van typen. Als u echter gelijktijdig gebruik in uw functie-app inschakelt en acties aanroept die de status wijzigen, kunt u de timing van race problemen beëindigen. Deze race voorwaarden zijn moeilijk te debuggen omdat een aanroep afhankelijk is van een bepaalde status en de andere aanroep de status heeft gewijzigd.
 

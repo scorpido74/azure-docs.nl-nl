@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7ec30e2445a5ed6008256f7abcef496247922968
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
-ms.translationtype: HT
+ms.openlocfilehash: d5372ac8b31db91aaac018b203ee8868fa313fd8
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744481"
+ms.locfileid: "70772992"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics opgeslagen Zoek opdrachten en waarschuwingen toevoegen aan beheer oplossing (preview)
 
@@ -171,11 +171,10 @@ De eigenschappen van resources voor waarschuwings acties worden beschreven in de
 
 | De naam van element | Vereist | Description |
 |:--|:--|:--|
-| `Type` | Ja | Het type van de actie.  Dit is een **waarschuwing** voor waarschuwings acties. |
-| `Name` | Ja | Weergavenaam voor de waarschuwing.  Dit is de naam die wordt weer gegeven in de console voor de waarschuwings regel. |
-| `Description` | Nee | Optionele beschrijving van de waarschuwing. |
-| `Severity` | Ja | Ernst van de waarschuwings record van de volgende waarden:<br><br> **critical**<br>**waarschuwing**<br>**informatief**
-
+| `type` | Ja | Het type van de actie.  Dit is een **waarschuwing** voor waarschuwings acties. |
+| `name` | Ja | Weergavenaam voor de waarschuwing.  Dit is de naam die wordt weer gegeven in de console voor de waarschuwings regel. |
+| `description` | Nee | Optionele beschrijving van de waarschuwing. |
+| `severity` | Ja | Ernst van de waarschuwings record van de volgende waarden:<br><br> **critical**<br>**waarschuwing**<br>**informatief**
 
 #### <a name="threshold"></a>Drempelwaarde
 Deze sectie is vereist. Hiermee worden de eigenschappen van de waarschuwings drempel gedefinieerd.

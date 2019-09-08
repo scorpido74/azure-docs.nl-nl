@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/24/2018
+ms.date: 09/06/2019
 ms.author: atsenthi
-ms.openlocfilehash: 49c733c475f401b0e8c9329e2e5d7b463175f81a
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 73e02b4482f69ec0c9d5a602f30cefea77279778
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599741"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764727"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Een Service Fabric cluster implementeren dat de algemene certificaat naam gebruikt in plaats van een vinger afdruk
 Er kunnen niet twee certificaten dezelfde vinger afdruk hebben, waardoor de rollover van het cluster certificaat of het beheer lastig wordt. Meerdere certificaten kunnen echter dezelfde algemene naam of hetzelfde onderwerp hebben.  Een cluster met behulp van algemene namen van certificaten maakt certificaat beheer veel eenvoudiger. In dit artikel wordt beschreven hoe u een Service Fabric cluster implementeert voor het gebruik van de algemene naam van het certificaat in plaats van de vinger afdruk van het certificaat.
@@ -62,7 +62,7 @@ $resourceId = $newKeyVault.ResourceId
 
 # Add the certificate to the key vault.
 $PasswordSec = ConvertTo-SecureString -String $Password -AsPlainText -Force
-$KVSecret = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
+$KVSecret = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
 
 $CertificateThumbprint = $KVSecret.Thumbprint
 $CertificateURL = $KVSecret.SecretId
@@ -224,7 +224,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFi
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over [cluster beveiliging](service-fabric-cluster-security.md).
-* Meer informatie over het overkantelen van [een cluster certificaat](service-fabric-cluster-rollover-cert-cn.md)
+* Meer informatie over het [overkantelen van een cluster certificaat](service-fabric-cluster-rollover-cert-cn.md)
 * [Cluster certificaten bijwerken en beheren](service-fabric-cluster-security-update-certs-azure.md)
 * Vereenvoudig het beheer van certificaten door [het cluster te wijzigen van de vinger afdruk van het certificaat in de algemene naam](service-fabric-cluster-change-cert-thumbprint-to-cn.md)
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: ad619ad965cf4b7d94b781818c658152f71250a7
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cb5a3b8572cebfd6c0731a9e572e966fda280be6
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594999"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772788"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text-API v 3.0
 
@@ -99,7 +99,7 @@ Wanneer u een geheime sleutel van meerdere services gebruikt, moet u twee verifi
 
 De regio is vereist voor het multi-service-tekst-API-abonnement. De regio die u selecteert, is de enige regio die u voor tekst omzetting kunt gebruiken wanneer u de sleutel voor meerdere services gebruikt en moet dezelfde regio zijn die u hebt geselecteerd toen u zich registreerde voor uw abonnement op meerdere services via de Azure Portal.
 
-Beschik bare `australiaeast`regio's `brazilsouth`zijn `canadacentral`, `centralindia`, `centraluseuap`,,, `eastasia`, ,,,`japaneast`,, ,`southeastasia` `northeurope` `eastus2` `eastus` `southcentralus` `uksouth`, `westcentralus`, ,en.`westus` `westeurope` `westus2`
+Beschik bare `australiaeast`regio's `brazilsouth`zijn `canadacentral`, `centralindia`, `centralus`,,, `centraluseuap`, ,,,`eastus2`,, ,`japanwest` `francecentral` `eastus` `eastasia` `japaneast` `koreacentral`, `northcentralus` ,`southcentralus` ,,`westus2`,, ,,`westus`,en .`southafricanorth` `southeastasia` `northeurope` `uksouth` `westcentralus` `westeurope`
 
 Als u de geheime sleutel in de query teken reeks doorgeeft met `Subscription-Key`de para meter, moet u de regio met de `Subscription-Region`query parameter opgeven.
 

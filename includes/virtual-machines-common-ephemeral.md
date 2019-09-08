@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0e59a28ce1fb3c562bf76420a5e62e347230e964
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c3a7fb14dbd22730d95a5aaed146b59ad790ce6b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68669614"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70775842"
 ---
 Tijdelijke besturingssysteem schijven worden gemaakt op de lokale virtuele machine (VM) en worden niet opgeslagen op de externe Azure Storage. Tijdelijke besturingssysteem schijven werken goed voor stateless workloads, waarbij toepassingen tolerant zijn voor afzonderlijke VM-fouten, maar die meer worden beïnvloed door de implementatie tijd van de VM of het opnieuw maken van de afzonderlijke VM-exemplaren. Met een kortstondige besturingssysteem schijf krijgt u een lagere latentie voor lezen/schrijven naar de besturingssysteem schijf en een snellere installatie kopie van de virtuele machine. 
  
@@ -46,7 +46,7 @@ Belangrijkste verschillen tussen permanente en tijdelijke besturingssysteem schi
 
 U kunt installatie kopieën van VM'S en instanties implementeren tot de grootte van de VM-cache. Standaard installatie kopieën van Windows Server van de Marketplace hebben bijvoorbeeld ongeveer 127 GiB. Dit betekent dat u een VM-grootte nodig hebt die een cache heeft die groter is dan 127 GiB. In dit geval heeft de [Standard_DS2_v2](/azure/virtual-machines/windows/sizes-general#dsv2-series) een cache grootte van 86 GiB, die niet groot genoeg is. De Standard_DS3_v2 heeft een cache grootte van 172 GiB, die groot genoeg is. In dit geval is de Standard_DS3_v2 de kleinste grootte in de DSv2-serie die u kunt gebruiken met deze afbeelding. Basis-Linux-installatie kopieën in de Marketplace en Windows Server-installatie kopieën die `[smallsize]` worden aangeduid met ongeveer 30 GiB en kunnen de meeste van de beschik bare VM-grootten gebruiken.
 
-Voor tijdelijke schijven is het ook vereist dat de VM-grootte Premium-opslag ondersteunt. De grootten zijn `s` meestal (maar niet altijd) met de naam, zoals DSv2 en EsV3. Zie [Azure VM](../articles/virtual-machines/linux/sizes.md) -grootten voor meer informatie over welke grootten Premium-opslag worden ondersteund.
+Voor tijdelijke schijven is het ook vereist dat de VM-grootte Premium-opslag ondersteunt. De grootten zijn `s` meestal (maar niet altijd) met de naam, zoals DSv2 en EsV3. Zie [Azure VM-grootten](../articles/virtual-machines/linux/sizes.md) voor meer informatie over welke grootten Premium-opslag worden ondersteund.
 
 ## <a name="powershell"></a>PowerShell
 
@@ -175,7 +175,7 @@ U kunt een virtuele machine met een tijdelijke besturingssysteem schijf implemen
 
 
 ## <a name="reimage-a-vm-using-rest"></a>Installatie kopie van een virtuele machine terugzetten met behulp van REST
-Op dit moment is de enige methode om de installatie kopie van een exemplaar van een virtuele machine met een tijdelijke besturingssysteem schijf te vervangen door gebruik te maken van REST API. Voor schaal sets is reimaging al beschikbaar via Power shell, CLI en de portal.
+U kunt een installatie kopie van een exemplaar van een virtuele machine met behulp van REST API, zoals hieronder beschreven en via Azure Portal, naar het overzichts venster van de VM. Voor schaal sets is reimaging al beschikbaar via Power shell, CLI en de portal.
 
 ```
 POST https://management.azure.com/subscriptions/{sub-

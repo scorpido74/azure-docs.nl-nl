@@ -15,22 +15,22 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: 1a62a4d5f06856ca0fe6356ca388047679097e3f
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: ccc418cd3af14c0468ab8d669ad2e2e11a0b6d57
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68004473"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772260"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Overzicht van DNS-zones en records
 
 Op deze pagina worden de belangrijkste concepten van domeinen, DNS-zones, DNS-records en-record sets uitgelegd en hoe deze worden ondersteund in Azure DNS.
 
-## <a name="domain-names"></a>Domein namen
+## <a name="domain-names"></a>Domeinnamen
 
 Het Domain Name System is een hiërarchie van domeinen. De hiërarchie start vanaf het hoofddomein. De naam van dit domein is eenvoudigweg ' **.** '.  Hieronder komen de topleveldomeinen, zoals com, net, org, uk of nl.  Onder de topleveldomeinen komen de secondleveldomeinen, zoals org.uk of co.jp. De domeinen in de DNS-hiërarchie zijn wereld wijd gedistribueerd, gehost door DNS-naam servers over de hele wereld.
 
-Een domein naam registratie is een organisatie waarmee u een domein naam kunt kopen, zoals ' contoso.com '.  Als u een domein naam aanschaft, kunt u de DNS-hiërarchie onder die naam beheren, bijvoorbeeld zodat u de naam ' www.contoso.com ' kunt door sturen naar de website van uw bedrijf. De registratie van het domein kan in eigen naam servers worden gehost of u kunt alternatieve naam servers opgeven.
+Een domein naam registratie is een organisatie waarmee u een domein naam kunt kopen, zoals ' contoso.com '.  Als u een domein naam aanschaft, kunt u de DNS-hiërarchie onder die naam beheren, bijvoorbeeld zodat u de naam www.contoso.com kunt door sturen naar de website van uw bedrijf. De registratie van het domein kan in eigen naam servers worden gehost of u kunt alternatieve naam servers opgeven.
 
 Azure DNS biedt een wereld wijd gedistribueerde naam server infrastructuur met hoge Beschik baarheid, die u kunt gebruiken om uw domein te hosten. Door uw domeinen in Azure DNS te hosten, kunt u uw DNS-records met dezelfde referenties, Api's, hulpprogram ma's, facturering en ondersteuning als uw andere Azure-Services beheren.
 

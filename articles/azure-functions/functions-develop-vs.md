@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 10c356afc235494b00777561259190ae78b65482
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: ebc900735dfbb25206c4b22e3d20da62d85c61df
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905686"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773150"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Azure Functions ontwikkelen met Visual Studio  
 
@@ -41,10 +41,12 @@ Andere resources die u nodig hebt, zoals een Azure Storage account, worden tijde
 
 > [!NOTE]
 > In Visual Studio 2017 installeert de werk belasting Azure Development de Azure Functions-Hulpprogram Ma's als een afzonderlijke extensie. Wanneer u uw Visual Studio 2017 bijwerkt, moet u er ook voor zorgen dat u de [meest recente versie](#check-your-tools-version) van de Azure functions-hulpprogram ma's gebruikt. In de volgende secties ziet u hoe u de extensie van de Azure Functions-Hulpprogram Ma's in Visual Studio 2017 kunt controleren en (indien nodig) bijwerken. 
+>
+> U kunt deze sectie overs Laan wanneer u Visual Studio 2019 gebruikt.
 
 ### <a name="check-your-tools-version"></a>Controleer de versie van uw hulpprogram ma's in Visual Studio 2017
 
-1. Uit de **extra** menu, kiest u **extensies en Updates**. Vouw **geïnstalleerde** > **hulpprogram ma's** uit en kies **Azure functions en hulpprogram ma's**voor webjobs.
+1. Uit de **extra** menu, kiest u **extensies en Updates**. Vouw **geïnstalleerde** > **hulpprogram ma's** uit en kies **Azure functions en hulpprogram ma's voor webjobs**.
 
     ![De versie van de functie hulpprogramma's controleren](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
@@ -54,7 +56,7 @@ Andere resources die u nodig hebt, zoals een Azure Storage account, worden tijde
 
 ### <a name="update-your-tools-in-visual-studio-2017"></a>Werk uw hulpprogram ma's bij in Visual Studio 2017
 
-1. Vouw in het dialoog venster **extensies en updates** het onderdeel **updates** > **Visual Studio Marketplace**uit, kies **Azure functions en hulpprogram ma's** voor webjobs en selecteer **bijwerken**.
+1. Vouw in het dialoog venster **extensies en updates** het onderdeel **updates** > **Visual Studio Marketplace**uit, kies **Azure functions en hulpprogram ma's voor webjobs** en selecteer **bijwerken**.
 
     ![De functie hulpprogram ma's-versie bijwerken](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
 
@@ -84,7 +86,7 @@ Zie voor meer informatie [functions Class Library project](functions-dotnet-clas
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-De instellingen in Local. settings. json worden niet automatisch geüpload wanneer u het project publiceert. Om ervoor te zorgen dat deze instellingen ook in uw functie-app in azure aanwezig zijn, moet u deze uploaden nadat u uw project hebt gepubliceerd. Zie functie-app- [instellingen](#function-app-settings)voor meer informatie.
+Instellingen in Local. settings. json worden niet automatisch geüpload wanneer u het project publiceert. Om ervoor te zorgen dat deze instellingen ook in uw functie-app in azure aanwezig zijn, moet u deze uploaden nadat u uw project hebt gepubliceerd. Zie functie-app- [instellingen](#function-app-settings)voor meer informatie.
 
 Waarden in **Connections Tring** worden nooit gepubliceerd.
 
@@ -148,7 +150,7 @@ Net als bij triggers worden de invoer-en uitvoer bindingen aan uw functie toegev
 
 1. Zorg ervoor dat u [het project hebt geconfigureerd voor lokale ontwikkeling](#configure-the-project-for-local-development).
 
-2. Voeg het juiste NuGet-extensie pakket toe voor de specifieke binding. Zie voor meer informatie [lokale C# ontwikkeling met Visual Studio](./functions-bindings-register.md#local-csharp) in het artikel triggers en bindingen. De binding-specifieke NuGet-pakket vereisten vindt u in het referentie artikel voor de binding. U kunt bijvoorbeeld pakket vereisten voor de trigger Event Hubs vinden in het [artikel over het event hubs binden](functions-bindings-event-hubs.md)van bindingen.
+2. Voeg het juiste NuGet-extensie pakket toe voor de specifieke binding. Zie voor meer informatie [lokale C# ontwikkeling met Visual Studio](./functions-bindings-register.md#local-csharp) in het artikel triggers en bindingen. De binding-specifieke NuGet-pakket vereisten vindt u in het referentie artikel voor de binding. U kunt bijvoorbeeld pakket vereisten voor de trigger Event Hubs vinden in het [artikel over het event hubs binden van bindingen](functions-bindings-event-hubs.md).
 
 3. Als er app-instellingen zijn die aan de binding moeten worden toegevoegd, voegt u deze toe aan de verzameling **waarden** in het [lokale instellings bestand](functions-run-local.md#local-settings-file). Deze waarden worden gebruikt wanneer de functie lokaal wordt uitgevoerd. Wanneer de functie wordt uitgevoerd in de functie-app in azure, worden de instellingen van de [functie-app](#function-app-settings) gebruikt.
 

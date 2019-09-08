@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/25/2019
-ms.openlocfilehash: c46913f24deffc7c4db95d8a77db1c49ae54b6ae
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 09/06/2019
+ms.openlocfilehash: 03f16987941f79f9161ccbc172bb2ca1a7139384
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566680"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773211"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Service lagen in het op DTU gebaseerde aankoop model
 
@@ -37,7 +37,7 @@ Een servicelaag kiezen afhankelijk is voornamelijk van zakelijke continuïteit-,
 |SLA voor actieve tijdsduur|99,99%|99,99%|99,99%|
 |Retentie van back-ups|7 dagen|35 dagen|35 dagen|
 |CPU|Laag|Laag, Gemiddeld, hoog|Gemiddeld, hoog|
-|I/o-doorvoer (bij benadering) |2.5 IOP's per DTU| 2.5 IOP's per DTU | 48 IOP's per DTU|
+|I/o-doorvoer (bij benadering) |1-5 IOPS per DTU| 1-5 IOPS per DTU | 25 IOPS per DTU|
 |I/o-latentie (bij benadering)|5 ms (lezen), 10 ms (schrijven)|5 ms (lezen), 10 ms (schrijven)|2 ms (lezen/schrijven)|
 |Columnstore-indexering |N/A|S3 en hoger|Ondersteund|
 |In-memory OLTP|N/A|N/A|Ondersteund|

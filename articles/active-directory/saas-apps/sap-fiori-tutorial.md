@@ -1,10 +1,10 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met SAP Fiori | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en SAP Fiori.
+title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met SAP Fiori | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en SAP Fiori.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 77ad13bf-e56b-4063-97d0-c82a19da9d56
 ms.service: active-directory
@@ -13,91 +13,77 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 897685eb967e03cfd30182eec6b237e27386496c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 50d1875ce2529222e8ff7472c48bf6d4dd878667
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092150"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772877"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sap-fiori"></a>Zelfstudie: Azure Active Directory-integratie met SAP Fiori
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met SAP-Fiori
 
-In deze zelfstudie leert u hoe u SAP Fiori integreren met Azure Active Directory (Azure AD).
+In deze zelf studie leert u hoe u SAP Fiori integreert met Azure Active Directory (Azure AD). Wanneer u SAP Fiori integreert met Azure AD, kunt u het volgende doen:
 
-SAP Fiori integreren met Azure AD biedt u de volgende voordelen:
+* Controle in azure AD die toegang heeft tot SAP-Fiori.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld bij SAP Fiori met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-* U kunt Azure AD om te bepalen wie toegang tot SAP Fiori heeft gebruiken.
-* Gebruikers kunnen worden automatisch aangemeld bij SAP Fiori met hun Azure AD-accounts (eenmalige aanmelding).
-* U kunt uw accounts vanaf één locatie beheren, de Azure-portal.
-
-Zie voor meer informatie over software als een service (SaaS)-app-integratie met Azure AD, [eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met SAP Fiori, moet u de volgende items:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u een Azure AD-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
-* Een abonnement op SAP Fiori met eenmalige aanmelding ingeschakeld.
-* SAP Fiori 7.20 of hoger is vereist.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* SAP Fiori-abonnement met eenmalige aanmelding (SSO) ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie hebt u configureert en Azure AD eenmalige aanmelding testen in een testomgeving en SAP Fiori integreren met Azure AD.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-SAP Fiori ondersteunt de volgende functies:
+* SAP Fiori ondersteunt door **SP** GEÏNITIEERDe SSO
 
-* **Serviceprovider geïnitieerde eenmalige aanmelding**
+> [!NOTE]
+> Voor SAP Fiori heeft iFrame-verificatie gestart, kunt u het beste de para meter **IsPassive** gebruiken in het SAML-AuthnRequest voor Silent-verificatie. Raadpleeg de informatie over [eenmalige aanmelding voor Azure AD SAML](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol) voor meer informatie over de para meter **IsPassive** .
 
-## <a name="add-sap-fiori-in-the-azure-portal"></a>SAP Fiori toevoegen in Azure portal
+## <a name="adding-sap-fiori-from-the-gallery"></a>SAP Fiori toevoegen vanuit de galerie
 
-Als u wilt SAP Fiori integreren met Azure AD, moet u SAP Fiori toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van SAP Fiori wilt configureren in azure AD, moet u SAP Fiori toevoegen vanuit de galerie aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **toevoegen vanuit de galerie** **SAP Fiori** in het zoekvak.
+1. Selecteer **SAP Fiori** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-1. Selecteer in het menu links **Azure Active Directory**.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-fiori"></a>Eenmalige aanmelding van Azure AD voor SAP Fiori configureren en testen
 
-    ![De Azure Active Directory-optie](common/select-azuread.png)
+Azure AD SSO met SAP Fiori configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in SAP Fiori.
 
-1. Selecteer **Bedrijfstoepassingen** > **Alle toepassingen**.
+Als u Azure AD SSO wilt configureren en testen met SAP Fiori, voltooit u de volgende bouw stenen:
 
-    ![Het deelvenster Bedrijfstoepassingen](common/enterprise-applications.png)
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[SAP Fiori SSO configureren](#configure-sap-fiori-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    1. Een **[SAP Fiori-test gebruiker maken](#create-sap-fiori-test-user)** : als u een tegen hanger wilt hebben van B. Simon in SAP Fiori dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-1. Als u wilt een toepassing hebt toegevoegd, selecteert u **nieuwe toepassing**.
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
-    ![De nieuwe optie voor de App](common/add-new-app.png)
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Voer in het zoekvak **SAP Fiori**. Selecteer in de lijst met zoekresultaten **SAP Fiori**, en selecteer vervolgens **toevoegen**.
+1. Open een nieuw webbrowser venster en meld u als beheerder aan bij uw SAP Fiori-bedrijfs site.
 
-    ![SAP Fiori in de lijst met resultaten](common/search-new-app.png)
+1. Zorg ervoor dat de **http-** en **https** -Services actief zijn en dat de relevante poorten zijn toegewezen aan de **SMICM**.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
+1. Meld u aan bij de SAP Business-client voor SAP System **T01**, waarbij eenmalige aanmelding is vereist. Activeer vervolgens het beheer van de HTTP-beveiligings sessie.
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met SAP Fiori op basis van een testgebruiker met de naam **Britta Simon**. Voor eenmalige aanmelding om te werken, moet u een gekoppelde relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker maken in SAP Fiori.
-
-Als u wilt configureren en Azure AD eenmalige aanmelding met SAP Fiori testen, moet u de volgende bouwstenen uitvoeren:
-
-| Taak | Description |
-| --- | --- |
-| **[Azure AD eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** | Hiermee kunnen uw gebruikers deze functie wilt gebruiken. |
-| **[Configureren van eenmalige aanmelding SAP Fiori](#configure-sap-fiori-single-sign-on)** | Hiermee configureert u de instellingen voor eenmalige aanmelding in de toepassing. |
-| **[Maak een testgebruiker Azure AD](#create-an-azure-ad-test-user)** | Met de naam Britta Simon tests Azure AD eenmalige aanmelding voor een gebruiker. |
-| **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** | Hiermee kunt Britta Simon gebruik van Azure AD eenmalige aanmelding. |
-| **[Maak een testgebruiker SAP Fiori](#create-an-sap-fiori-test-user)** | Hiermee maakt u een equivalent van Britta Simon in SAP Fiori die is gekoppeld aan de Azure AD-weergave van de gebruiker. |
-| **[Eenmalige aanmelding testen](#test-single-sign-on)** | Hiermee wordt gecontroleerd of de configuratie werkt. |
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
-
-In deze sectie configureert u Azure AD eenmalige aanmelding met SAP Fiori in Azure portal.
-
-1. Open een nieuw browservenster en meld u aan de site van het bedrijf SAP Fiori als beheerder.
-
-1. Zorg ervoor dat **http** en **https** services actief zijn en dat de relevante poorten zijn toegewezen aan de transactiecode **SMICM**.
-
-1. Voor SAP-systeem aanmelden bij de SAP Business Client **T01**, waarbij eenmalige aanmelding is vereist. Vervolgens activeert u HTTP-sessie beveiligingsbeheer.
-
-    1. Ga naar de transactiecode **SICF_SESSIONS**. Alle relevante profiel parameters met de huidige waarden worden weergegeven. Ze zien eruit als in het volgende voorbeeld:
+    1. Ga naar transactie code **SICF_SESSIONS**. Alle relevante profiel parameters met de huidige waarden worden weer gegeven. Ze zien eruit als in het volgende voor beeld:
 
         ```
         login/create_sso2_ticket = 2
@@ -112,15 +98,15 @@ In deze sectie configureert u Azure AD eenmalige aanmelding met SAP Fiori in Azu
         ```
 
         >[!NOTE]
-        > Pas de parameters op basis van de organisatievereisten van uw. De bovenstaande parameters krijgt alleen als voorbeeld.
+        > Pas de para meters aan op basis van de vereisten van uw organisatie. De voor gaande para meters worden alleen als voor beeld gegeven.
 
-    1. Indien nodig, aanpassen van de parameters in het profiel van de instantie (standaard) van de SAP-systeem en het SAP-systeem opnieuw opstarten.
+    1. Indien nodig wijzigt u de para meters in het exemplaar (standaard profiel) van het SAP-systeem en start u het SAP-systeem opnieuw op.
 
-    1. Dubbelklik op de relevante client om in te schakelen van een HTTP-security-sessie.
+    1. Dubbel klik op de relevante client om een HTTP-beveiligings sessie in te scha kelen.
 
-        ![De huidige waarden van de relevante profiel pagina Parameters in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-profileparameter.png)
+        ![De huidige waarden van de pagina met relevante profiel parameters in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-profileparameter.png)
 
-    1. De volgende SICF-services te activeren:
+    1. Activeer de volgende SICF-Services:
 
         ```
         /sap/public/bc/sec/saml2
@@ -129,249 +115,218 @@ In deze sectie configureert u Azure AD eenmalige aanmelding met SAP Fiori in Azu
         /sap/bc/webdynpro/sap/sec_diag_tool (This is only to enable / disable trace)
         ```
 
-1. Ga naar de transactiecode **SAML2** in Business-Client voor SAP-systeem [**T01/122**]. De configuratie van de gebruikersinterface wordt geopend in een nieuw browservenster. In dit voorbeeld gebruiken we Business Client voor SAP-systeem 122.
+1. Ga naar transactie code **SAML2** in Business client voor SAP System [**T01/122**]. De configuratie-UI wordt geopend in een nieuw browser venster. In dit voor beeld gebruiken we Business client voor SAP System 122.
 
-    ![De aanmeldingspagina van SAP Fiori Business Client](./media/sapfiori-tutorial/tutorial-sapnetweaver-sapbusinessclient.png)
+    ![De aanmeldings pagina van de SAP Fiori-client](./media/sapfiori-tutorial/tutorial-sapnetweaver-sapbusinessclient.png)
 
-1. Voer uw gebruikersnaam en wachtwoord en selecteer vervolgens **aanmelden**.
+1. Voer uw gebruikers naam en wacht woord in en selecteer **Aanmelden**.
 
-    ![De pagina SAML 2.0 configuratie van ABAP System T01/122 in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-userpwd.png)
+    ![De SAML 2,0-configuratie van de ABAP System T01/122-pagina in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-userpwd.png)
 
-1. In de **providernaam** vak, Vervang **T01122** met **http:\//T01122**, en selecteer vervolgens **opslaan**.
-
-    > [!NOTE]
-    > Naam van de provider is standaard in de indeling \<sid >\<client >. Azure AD wordt verwacht dat de naam in de indeling \<protocol > ://\<naam >. Het is raadzaam dat u de naam van de provider als https behoudt\://\<sid >\<client > zodat u meerdere SAP Fiori ABAP-engines in Azure AD configureren kunt.
-
-    ![De naam van de bijgewerkte provider op de pagina SAML 2.0 configuratie van ABAP System T01/122 in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-providername.png)
-
-1. Selecteer **tabblad lokale Provider** > **metagegevens**.
-
-1. In de **SAML 2.0-metagegevens** dialoogvenster vak, downloaden de gegenereerde metagegevens-XML-bestand en sla deze op uw computer.
-
-    ![De koppeling metagegevens downloaden in het dialoogvenster SAP SAML 2.0-metagegevens](./media/sapfiori-tutorial/tutorial-sapnetweaver-generatesp.png)
-
-1. In de [Azure-portal](https://portal.azure.com/), in de **SAP Fiori** toepassing integratie venster **eenmalige aanmelding**.
-
-    ![De optie voor eenmalige aanmelding](common/select-sso.png)
-
-1. In de **selecteert u een methode voor eenmalige aanmelding** deelvenster Selecteer **SAML** of **SAML/WS-Federation** modus voor eenmalige aanmelding inschakelen.
-
-    ![De modus Eenmalige aanmelding selecteren](common/select-saml-option.png)
-
-1. In de **instellen van eenmalige aanmelding met SAML** venster **bewerken** (het potloodpictogram) te openen de **SAML-basisconfiguratie** deelvenster.
-
-    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
-
-1. Voer in de sectie **Standaard SAML-configuratie** de volgende stappen uit:
-
-    1. Selecteer **metagegevensbestand uploaden**.
-
-        ![De optie-Metagegevens uploaden](common/upload-metadata.png)
-
-   1. Selecteer het bestand met metagegevens, selecteer het mappictogram en selecteer vervolgens **uploaden**.
-
-       ![Selecteer het bestand met metagegevens en selecteer vervolgens de knop voor uploaden](common/browse-upload-metadata.png)
-
-1. Wanneer het bestand met metagegevens is geüpload, de **id** en **antwoord-URL** waarden worden automatisch ingevuld de **SAML-basisconfiguratie** deelvenster. In de **aanmeldings-URL** voert u een URL met de volgende indeling: https:\//\<uw exemplaar van het bedrijf van SAP Fiori\>.
-
-    ![SAP Fiori domein en URL's, eenmalige aanmelding informatie](common/sp-identifier-reply.png)
+1. Vervang **T01122** door **http:\//T01122**in het vak **naam van provider** en selecteer vervolgens **Opslaan**.
 
     > [!NOTE]
-    > Enkele klanten rapportfouten met betrekking tot foutief geconfigureerde **antwoord-URL** waarden. Als u deze fout ziet, kunt u het volgende PowerShell-script om in te stellen van de juiste antwoord-URL voor uw exemplaar:
+    > De naam van de provider bevindt zich standaard \<in de\<indeling sid > client >. Azure AD verwacht de naam in de notatie \<protocol >://\<name >. U wordt aangeraden de provider naam als HTTPS\://\<-sid >\<client > te behouden, zodat u meerdere SAP Fiori ABAP-engines kunt configureren in azure AD.
+
+    ![De bijgewerkte provider naam in de SAML 2,0-configuratie van de ABAP System T01/122-pagina in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-providername.png)
+
+1. Selecteer de**meta gegevens**van het **lokale provider tabblad** > .
+
+1. Down load in het dialoog venster **SAML 2,0 meta data** het GEGENEREERDE XML-bestand met meta gegevens en sla het op uw computer op.
+
+    ![De koppeling meta gegevens downloaden in het dialoog venster SAP SAML 2,0-meta gegevens](./media/sapfiori-tutorial/tutorial-sapnetweaver-generatesp.png)
+
+1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **SAP Fiori** Application Integration de sectie **Manage** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+
+   ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
+
+1. Voer in de sectie **Standaard SAML-configuratie** de volgende stappen uit als u beschikt over een **bestand met metagegevens van de serviceprovider**:
+
+    a. Klik op **Metagegevensbestand uploaden**.
+
+    ![Metagegevensbestand uploaden](common/upload-metadata.png)
+
+    b. Klik op het **mappictogram** om het metagegevensbestand te selecteren en klik op **Uploaden**.
+
+    ![Metagegevensbestand kiezen](common/browse-upload-metadata.png)
+
+    c. Wanneer het meta gegevensbestand is geüpload, worden de **id** -en **antwoord-URL** -waarden automatisch ingevuld in het **basis configuratie** venster voor SAML. Voer in het vak **AANMELDINGS URL** een URL in die het volgende patroon heeft: `https:\//\<your company instance of SAP Fiori\>`.
+
+    > [!NOTE]
+    > Een aantal klanten rapporteren fouten met betrekking tot onjuiste geconfigureerde **antwoord-URL** -waarden. Als u deze fout ziet, kunt u het volgende Power shell-script gebruiken om de juiste antwoord-URL voor uw exemplaar in te stellen:
     >
     > ```
     > Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls "<Your Correct Reply URL(s)>"
     > ``` 
     > 
-    > U kunt instellen dat de `ServicePrincipal` object-ID zelf voordat het script is uitgevoerd, of u kunt deze hier doorgeven.
+    > U kunt de `ServicePrincipal` object-id zelf instellen voordat u het script uitvoert, of u kunt dit hier door geven.
 
-1. De SAP Fiori-toepassing wordt verwacht dat de SAML-asserties ondertekend zijn in een specifieke indeling. Configureer de volgende claims voor deze toepassing. Voor het beheren van deze kenmerkwaarden de **instellen van eenmalige aanmelding met SAML** venster **bewerken**.
+1. De SAP Fiori-toepassing verwacht dat de SAML-bevestigingen een specifieke indeling hebben. Configureer de volgende claims voor deze toepassing. Als u deze kenmerk waarden wilt beheren, selecteert u in het deel venster **eenmalige aanmelding met SAML instellen** de optie **bewerken**.
 
-    ![De gebruiker-deelvenster kenmerken](common/edit-attribute.png)
+    ![Het deel venster gebruikers kenmerken](common/edit-attribute.png)
 
-1. In de **gebruikerskenmerken en Claims** in het deelvenster de kenmerken van SAML-token configureren zoals wordt weergegeven in de voorgaande afbeelding. Voer de volgende stappen uit:
+1. Configureer in het deel venster **gebruikers kenmerken & claims** de SAML-token kenmerken, zoals wordt weer gegeven in de vorige afbeelding. Voer de volgende stappen uit:
 
-    1. Selecteer **bewerken** openen de **gebruikersclaims beheren** deelvenster.
+    1. Selecteer **bewerken** om het deel venster **gebruikers claims beheren** te openen.
 
-    1. In de **transformatie** in de lijst met **ExtractMailPrefix()** .
+    1. Selecteer in de lijst **trans formatie** de optie **ExtractMailPrefix ()** .
 
-    1. In de **Parameter 1** in de lijst met **user.userprinicipalname**.
+    1. Selecteer in de lijst **para meter 1** de optie **User. userprinicipalname**.
 
     1. Selecteer **Opslaan**.
 
-       ![Het deelvenster beheren gebruiker claims](./media/sapfiori-tutorial/nameidattribute.png)
+       ![Het deel venster gebruikers claims beheren](./media/sapfiori-tutorial/nameidattribute.png)
 
-       ![De transformatie-sectie in het deelvenster beheren gebruiker claims](./media/sapfiori-tutorial/nameidattribute1.png)
+       ![De sectie trans formatie in het deel venster gebruikers claims beheren](./media/sapfiori-tutorial/nameidattribute1.png)
+    
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
+    ![De downloadkoppeling certificaat](common/metadataxml.png)
 
-1. In de **instellen van eenmalige aanmelding met SAML** deelvenster in de **SAML-handtekeningcertificaat** sectie, selecteer **downloaden** naast **voorfederatievemetagegevens-XML**. Selecteer een optie voor downloaden op basis van uw vereisten. Sla het certificaat op uw computer.
-
-    ![De optie voor het downloaden van certificaat](common/metadataxml.png)
-
-1. In de **instellen op SAP Fiori** sectie, kopieert u de volgende URL's op basis van uw vereisten:
-
-    * Aanmeldings-URL
-    * Azure AD-id
-    * Afmeldings-URL
+1. Op de sectie **SAP Fiori instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="configure-sap-fiori-single-sign-on"></a>Configureren van eenmalige aanmelding SAP Fiori
+### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
 
-1. Meld u aan met de SAP-systeem en Ga naar de transactiecode **SAML2**. Er wordt een nieuw browservenster geopend met de pagina van het SAML-configuratie.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. Voor het configureren van eindpunten voor een vertrouwde id-provider (Azure AD), selecteer de **vertrouwde Providers** tabblad.
-
-    ![Het tabblad vertrouwde Providers in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-samlconfig.png)
-
-1. Selecteer **toevoegen**, en selecteer vervolgens **metagegevensbestand uploaden** in het contextmenu.
-
-    ![De opties toevoegen en metagegevensbestand uploaden in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-uploadmetadata.png)
-
-1. Upload het bestand met metagegevens die u hebt gedownload in de Azure-portal. Selecteer **Next**.
-
-    ![Selecteer het bestand met metagegevens uploaden in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-metadatafile.png)
-
-1. Op de volgende pagina in de **Alias** voert u de aliasnaam. Bijvoorbeeld, **aadsts**. Selecteer **Next**.
-
-    ![Het vak Alias in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-aliasname.png)
-
-1. Zorg ervoor dat de waarde in de **Digest-algoritme** vak is **SHA-256**. Selecteer **Next**.
-
-    ![Controleer de waarde Digest-algoritme in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-identityprovider.png)
-
-1. Onder **Single Sign-On eindpunten**, selecteer **HTTP POST**, en selecteer vervolgens **volgende**.
-
-    ![Opties voor eenmalige aanmelding-eindpunten in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-httpredirect.png)
-
-1. Onder **eenmalige afmelding eindpunten**, selecteer **HTTP-omleiding**, en selecteer vervolgens **volgende**.
-
-    ![Opties voor eenmalige afmelding eindpunten in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-httpredirect1.png)
-
-1. Onder **artefact eindpunten**, selecteer **volgende** om door te gaan.
-
-    ![Opties voor artefact-eindpunten in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-artifactendpoint.png)
-
-1. Onder **verificatievereisten**, selecteer **voltooien**.
-
-    ![Opties voor verificatie vereisten en de optie voltooien in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-authentication.png)
-
-1. Selecteer **vertrouwde Provider** > **identiteitsfederatie** (aan de onderkant van de pagina). Selecteer **Bewerken**.
-
-    ![De vertrouwde Provider en identiteitsfederatie tabbladen in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-trustedprovider.png)
-
-1. Selecteer **Toevoegen**.
-
-    ![De optie toevoegen op het tabblad identiteitsfederatie](./media/sapfiori-tutorial/tutorial-sapnetweaver-addidentityprovider.png)
-
-1. In de **NameID-indelingen ondersteund** in het dialoogvenster, selecteer **niet opgegeven**. Selecteer **OK**.
-
-    ![De opties in SAP en NameID-indelingen ondersteund in het dialoogvenster](./media/sapfiori-tutorial/tutorial-sapnetweaver-nameid.png)
-
-    De waarden voor **gebruiker-ID bron** en **toewijzing gebruikersmodus ID** bepalen van de koppeling tussen de SAP-gebruiker en de Azure AD-claim.  
-
-    **Scenario 1**: SAP-gebruiker toewijzing van de Azure AD-gebruiker
-
-    1. In SAP onder **Details van NameID-indeling 'Onbekend'** , noteert u de details:
-
-        ![De Details van NameID-indeling 'Onbekende' dialoogvenster in SAP](./media/sapfiori-tutorial/nameiddetails.png)
-
-    1. In de Azure-portal onder **gebruikerskenmerken en Claims**, houd er rekening mee de vereiste claims van Azure AD.
-
-        ![Het dialoogvenster gebruikerskenmerken en Claims in de Azure-portal](./media/sapfiori-tutorial/claimsaad1.png)
-
-    **Scenario 2**: Selecteer de gebruikers-ID van SAP op basis van de geconfigureerde e-mailadres in SU01. In dit geval moet de e-mail-ID in SU01 worden geconfigureerd voor elke gebruiker die eenmalige aanmelding is vereist.
-
-    1.  In SAP onder **Details van NameID-indeling 'Onbekend'** , noteert u de details:
-
-        ![De Details van NameID-indeling 'Onbekende' dialoogvenster in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-nameiddetails1.png)
-
-    1. In de Azure-portal onder **gebruikerskenmerken en Claims**, houd er rekening mee de vereiste claims van Azure AD.
-
-       ![Het dialoogvenster gebruikerskenmerken en Claims in de Azure-portal](./media/sapfiori-tutorial/claimsaad2.png)
-
-1. Selecteer **opslaan**, en selecteer vervolgens **inschakelen** om in te schakelen van de id-provider.
-
-    ![Opties voor het opslaan en inschakelen in SAP](./media/sapfiori-tutorial/configuration1.png)
-
-1. Selecteer **OK** wanneer hierom wordt gevraagd.
-
-    ![De optie OK in het dialoogvenster configuratie van SAML 2.0 in SAP](./media/sapfiori-tutorial/configuration2.png)
-
-### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
-
-In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azure-portal.
-
-1. Selecteer in de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers**.
-
-    ![De gebruikers en alle opties voor gebruikers](common/users.png)
-
-1. Selecteer **Nieuwe gebruiker**.
-
-    ![De nieuwe Gebruikersoptie](common/new-user.png)
-
-1. Voer in het deelvenster **Gebruiker** de volgende stappen uit:
-
-    1. Voer in het vak **Naam** **Britta Simon**in.
-  
-    1. In de **gebruikersnaam** Voer **brittasimon\@\<uw-bedrijfsdomein >.\< extensie >** . Bijvoorbeeld, **brittasimon\@contoso.com**.
-
-    1. Selecteer de **Show wachtwoord** selectievakje. Noteer de waarde die wordt weergegeven in de **wachtwoord** vak.
-
-    1. Selecteer **Maken**.
-
-    ![De gebruiker-deelvenster](common/user-properties.png)
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt u Britta Simon toegang verlenen aan SAP Fiori, zodat ze Azure eenmalige aanmelding kan gebruiken.
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan SAP Fiori.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen** > **alle toepassingen** > **SAP Fiori**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer **SAP Fiori**in de lijst toepassingen.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-    ![Het deelvenster Bedrijfstoepassingen](common/enterprise-applications.png)
+   ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
 
-1. Selecteer in de lijst met toepassingen, **SAP Fiori**.
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-    ![SAP Fiori in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer **Gebruikers en groepen** in het menu.
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-    ![De optie gebruikers en groepen](common/users-groups-blade.png)
+## <a name="configure-sap-fiori-sso"></a>SAP Fiori SSO configureren
 
-1. Selecteer **Gebruiker toevoegen**. Selecteer vervolgens **Gebruikers en groepen** in het deelvenster **Toewijzing toevoegen**.
+1. Meld u aan bij het SAP-systeem en ga naar transactie code **SAML2**. Er wordt een nieuw browser venster geopend met de configuratie pagina voor SAML.
 
-    ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
+1. Als u eind punten voor een vertrouwde id-provider (Azure AD) wilt configureren, selecteert u het tabblad **vertrouwde providers** .
 
-1. In de **gebruikers en groepen** venster **Britta Simon** in de lijst met gebruikers. Kies **Selecteren**.
+    ![Het tabblad Vertrouwde providers in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-samlconfig.png)
 
-1. Als u een waarde voor de rol in het SAML-verklaring verwacht de **rol selecteren** deelvenster, selecteer de relevante functieservices voor de gebruiker in de lijst. Kies **Selecteren**.
+1. Selecteer **toevoegen**en selecteer vervolgens **META gegevensbestand uploaden** in het context menu.
 
-1. In de **toevoegen toewijzing** venster **toewijzen**.
+    ![De opties voor het meta gegevensbestand toevoegen en uploaden in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-uploadmetadata.png)
 
-### <a name="create-an-sap-fiori-test-user"></a>Maak een testgebruiker SAP Fiori
+1. Upload het meta gegevensbestand dat u hebt gedownload in de Azure Portal. Selecteer **Volgende**.
 
-In deze sectie maakt u een gebruiker met de naam Britta Simon in SAP Fiori. Werken met uw interne SAP-team van experts of uw organisatie SAP-partner om toe te voegen van de gebruiker in de SAP Fiori-platform.
+    ![Het meta gegevensbestand selecteren dat in SAP moet worden geüpload](./media/sapfiori-tutorial/tutorial-sapnetweaver-metadatafile.png)
 
-### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
+1. Voer op de volgende pagina in het vak **alias** de alias naam in. Bijvoorbeeld **aadsts**. Selecteer **Volgende**.
 
-1. Nadat de identiteitsprovider Azure AD is geactiveerd in SAP Fiori, probeert u toegang tot een van de volgende URL's voor het testen van eenmalige aanmelding (u mag niet worden gevraagd een gebruikersnaam en wachtwoord):
+    ![Het vak alias in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-aliasname.png)
 
-    * https:\//\<sapurl\>/sap/bc/bsp/sap/it00/default.htm
-    * https:\//\<sapurl\>/sap/bc/bsp/sap/it00/default.htm
+1. Zorg ervoor dat de waarde in het vak **Digest** -algoritme **SHA-256**is. Selecteer **Volgende**.
+
+    ![De waarde van het Digest-algoritme controleren in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-identityprovider.png)
+
+1. Selecteer **http post**onder **eenmalige aanmelding**en selecteer vervolgens **volgende**.
+
+    ![Opties voor eenmalige aanmelding in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-httpredirect.png)
+
+1. Selecteer onder **eenmalige Afmeldings eindpunten** **HTTP-omleiding**en selecteer vervolgens **volgende**.
+
+    ![Opties voor eenmalige afmeldings eindpunten in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-httpredirect1.png)
+
+1. Onder **artefact eindpunten**selecteert u **volgende** om door te gaan.
+
+    ![Opties voor artefact eindpunten in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-artifactendpoint.png)
+
+1. Selecteer **volt ooien**onder **verificatie vereisten**.
+
+    ![Opties voor verificatie vereisten en de optie volt ooien in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-authentication.png)
+
+1. Selecteer**identiteits Federatie** van **vertrouwde provider** > (onder aan de pagina). Selecteer **Bewerken**.
+
+    ![De tabbladen vertrouwde provider en identiteits Federatie in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-trustedprovider.png)
+
+1. Selecteer **Toevoegen**.
+
+    ![De optie toevoegen op het tabblad identiteits Federatie](./media/sapfiori-tutorial/tutorial-sapnetweaver-addidentityprovider.png)
+
+1. In het dialoog venster **ondersteunde NameID-indelingen** selecteert u niet **opgegeven**. Selecteer **OK**.
+
+    ![Het dialoog venster ondersteunde NameID-indelingen en opties in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-nameid.png)
+
+    De waarden voor de modus **gebruikers-ID-bron** en **gebruikers-id toewijzen** bepalen de koppeling tussen de SAP-gebruiker en de Azure AD-claim.  
+
+    **Scenario 1**: SAP-gebruiker naar Azure AD-gebruikers toewijzing
+
+    1. In SAP, onder **Details van de NameID-indeling niet opgegeven**, noteert u de details:
+
+        ![De details van het dialoog venster voor de NameID-indeling niet opgegeven in SAP](./media/sapfiori-tutorial/nameiddetails.png)
+
+    1. In het Azure Portal noteert u onder **gebruikers kenmerken & claims**de vereiste claims van Azure AD.
+
+        ![Het dialoog venster gebruikers kenmerken & claims in de Azure Portal](./media/sapfiori-tutorial/claimsaad1.png)
+
+    **Scenario 2**: Selecteer de SAP-gebruikers-ID op basis van het geconfigureerde e-mail adres in SU01. In dit geval moet de e-mail-ID worden geconfigureerd in SU01 voor elke gebruiker die SSO vereist.
+
+    1.  In SAP, onder **Details van de NameID-indeling niet opgegeven**, noteert u de details:
+
+        ![De details van het dialoog venster voor de NameID-indeling niet opgegeven in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-nameiddetails1.png)
+
+    1. In het Azure Portal noteert u onder **gebruikers kenmerken & claims**de vereiste claims van Azure AD.
+
+       ![Het dialoog venster gebruikers kenmerken & claims in de Azure Portal](./media/sapfiori-tutorial/claimsaad2.png)
+
+1. Selecteer **Opslaan**en selecteer vervolgens **inschakelen** om de ID-provider in te scha kelen.
+
+    ![De opties opslaan en inschakelen in SAP](./media/sapfiori-tutorial/configuration1.png)
+
+1. Selecteer **OK** wanneer u hierom wordt gevraagd.
+
+    ![De optie OK in het dialoog venster SAML 2,0-configuratie in SAP](./media/sapfiori-tutorial/configuration2.png)
+
+### <a name="create-sap-fiori-test-user"></a>SAP Fiori-test gebruiker maken
+
+In deze sectie maakt u een gebruiker met de naam Julia Simon in SAP Fiori. Werk samen met uw interne SAP-team van experts of uw SAP-partner van uw organisatie om de gebruiker toe te voegen in het SAP Fiori-platform.
+
+## <a name="test-sso"></a>SSO testen
+
+1. Nadat de ID-provider Azure AD is geactiveerd in SAP Fiori, probeert u een van de volgende Url's te openen om eenmalige aanmelding te testen (u moet niet worden gevraagd naar een gebruikers naam en wacht woord):
+
+    * https:\//sapurl\>/SAP/BC/BSP/SAP/it00/default.htm\<
+    * https:\//sapurl\>/SAP/BC/BSP/SAP/it00/default.htm\<
 
     > [!NOTE]
-    > Vervang *sapurl* met de werkelijke naam van de SAP-host.
+    > Vervang *sapurl* door de naam van de werkelijke SAP-hostnaam.
 
-1. De URL van de test moet rekening houden u op naar de volgende pagina van de toepassing test in SAP. Als de pagina wordt geopend, is Azure AD eenmalige aanmelding ingesteld.
+1. Met de test-URL gaat u naar de volgende pagina van de test toepassing in SAP. Als de pagina wordt geopend, is de eenmalige aanmelding van Azure AD ingesteld.
 
-    ![De standaard toepassingspagina in SAP testen](./media/sapfiori-tutorial/testingsso.png)
+    ![De pagina standaard test toepassing in SAP](./media/sapfiori-tutorial/testingsso.png)
 
-1. Als u wordt gevraagd een gebruikersnaam en wachtwoord, schakelt u traceren om het probleem vast te stellen. Gebruik de volgende URL voor de tracering: https:\//\<sapurl\>/sap/bc/webdynpro/sap/sec_diag_tool? sap-client = 122 & sap-taal = EN #.
+1. Als u wordt gevraagd om een gebruikers naam en wacht woord, schakelt u traceren in om het probleem te diagnosticeren. Gebruik de volgende URL voor de tracering: https\/:\>/\<sapurl/SAP/BC/webdynpro/SAP/sec_diag_tool? SAP-client = 122 & SAP-language = en #.
 
-## <a name="next-steps"></a>Volgende stappen
+## <a name="additional-resources"></a>Aanvullende resources
 
-Lees deze artikelen voor meer informatie:
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [Lijst met zelfstudies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Eenmalige aanmelding bij toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [SAP-Fiori proberen met Azure AD](https://aad.portal.azure.com/)

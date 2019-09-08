@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b45105501e238f918b8b3d3a6aa95a0d7b6116d9
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: c26e77fdf6e10e53f5acc0271986700c98fa690d
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382800"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772554"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Aangepaste beheerders rollen in Azure Active Directory (preview-versie)
 
@@ -76,4 +76,4 @@ Een bereik is de beperking van toegestane acties voor een bepaalde Azure AD-reso
 ## <a name="next-steps"></a>Volgende stappen
 
 - Aangepaste roltoewijzingen maken met behulp van [de Azure Portal, Azure AD Power shell en Graph API](roles-create-custom.md)
-- [De toewijzingen voor een aangepaste rol weer geven](roles-view-assignments.md#view-assignments-of-a-role-with-single-application-scope-preview)
+- [De toewijzingen voor een aangepaste rol weer geven](roles-view-assignments.md#view-assignments-of-single-application-scope)

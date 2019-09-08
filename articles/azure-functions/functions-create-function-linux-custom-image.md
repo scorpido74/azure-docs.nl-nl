@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: 80f7185b69a7953656235d3bd622b7f61611de1a
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 1865b1b96b5b8794f1518d639825ccd2f1dcd090
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210173"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773139"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Een functie in Linux maken met behulp van een aangepaste installatie kopie
 
@@ -143,9 +143,8 @@ Met de aangepaste installatiekopie die wordt uitgevoerd in een lokale Docker-con
 
 ![Test de functie-app lokaal.](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
-U kunt eventueel uw functie op dit moment opnieuw testen in de lokale container met behulp van de volgende URL:
-
-`http://localhost:8080/api/myhttptrigger?name=<yourname>`
+> [!NOTE]
+> Wanneer u op dit moment probeert om uw specifieke HTTP-functie aan te roepen, ontvangt u een HTTP 401-fout melding. Dit komt doordat de functie in de lokale container wordt uitgevoerd zoals in azure, wat betekent dat de functie sleutel vereist is. Omdat de container nog niet is gepubliceerd naar een functie-app, is er geen functie sleutel beschikbaar. U ziet later dat wanneer u de basis Hulpprogramma's gebruikt voor het publiceren van uw container, de functie toetsen worden weer gegeven. Als u de functie die wordt uitgevoerd in de lokale container wilt testen, kunt u de [autorisatie sleutel](functions-bindings-http-webhook.md#authorization-keys) wijzigen `anonymous`in. 
 
 Nadat u de functie-app in de container hebt geverifieerd, stopt u de uitvoering. U kunt nu de aangepaste installatiekopie naar uw Docker Hub-account pushen.
 
@@ -159,7 +158,7 @@ Voordat u een installatiekopie kunt pushen, moet u zich aanmelden bij Docker Hub
 docker login --username <docker-id>
 ```
 
-Een bericht 'aanmelding geslaagd' bevestigt dat u bent aangemeld. Nadat u zich hebt aangemeld, pusht u de installatiekopie naar Docker Hub met behulp van de [docker push](https://docs.docker.com/engine/reference/commandline/push/)-opdracht.
+Bij een bericht dat de aanmelding is geslaagd, wordt bevestigd dat u bent aangemeld. Nadat u zich hebt aangemeld, pusht u de installatiekopie naar Docker Hub met behulp van de [docker push](https://docs.docker.com/engine/reference/commandline/push/)-opdracht.
 
 ```bash
 docker push <docker-id>/mydockerimage:v1.0.0
@@ -209,7 +208,7 @@ De _deployment-container-image-name_-parameter geeft aan dat de afbeelding die w
 
 ## <a name="configure-the-function-app"></a>De functie-app configureren
 
-De functie heeft de verbindingsreeks nodig om verbinding te maken met het standaardopslagaccount. Als u uw aangepaste installatiekopie naar een persoonlijk containeraccount publiceert, moet u de instellingen voor deze toepassing instellen als omgevingsvariabelen in het Dockerfile met de [ENV-instructie](https://docs.docker.com/engine/reference/builder/#env) of iets soortgelijks.
+De functie heeft de verbindingsreeks nodig om verbinding te maken met het standaardopslagaccount. Wanneer u uw aangepaste installatie kopie publiceert naar een persoonlijk container account, moet u deze toepassings instellingen instellen als omgevings variabelen in de Dockerfile met behulp van de [env-instructie](https://docs.docker.com/engine/reference/builder/#env)of iets dergelijks.
 
 In dit geval is `<storage_name>` de naam van het opslagaccount dat u hebt gemaakt. Haal de verbindingsreeks op met de opdracht [az storage account show-connection-string](/cli/azure/storage/account). Voeg deze toepassingsinstellingen toe aan de functie-app met de opdracht [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set).
 
@@ -247,7 +246,7 @@ az functionapp deployment container config --enable-cd \
 
 Met deze opdracht wordt de URL van de implementatie-webhook geretourneerd nadat de continue implementatie is ingeschakeld. U kunt ook de opdracht [AZ functionapp Deployment container show-cd-URL](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) gebruiken om deze URL te retour neren. 
 
-Kopieer de implementatie-URL en blader naar uw DockerHub opslag plaats, kies het tabblad webhooks, typ de **naam** van de webhook voor de webhook, plak uw URL in de webhook- **URL**en kies vervolgens **+** het plus teken ().
+Kopieer de implementatie-URL en blader naar uw DockerHub opslag plaats, kies het tabblad **webhooks** , typ de **naam** van de webhook voor de webhook, plak uw URL in de **webhook-URL**en kies vervolgens **+** het plus teken ().
 
 ![De webhook in uw DockerHub opslag plaats toevoegen](media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 

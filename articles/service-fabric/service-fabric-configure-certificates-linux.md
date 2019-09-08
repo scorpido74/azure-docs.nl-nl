@@ -11,14 +11,14 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/26/2018
+ms.date: 09/06/2019
 ms.author: chackdan
-ms.openlocfilehash: 3816fb56b806029d7a23b67741197e32de6a6ff3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9599d59f7f23de4e54ce323aa4a2ad837d8ed074
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102992"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773255"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Certificaten en beveiliging op Linux-clusters
 
@@ -30,7 +30,7 @@ Service Fabric verwacht in het algemeen dat X. 509-certificaten aanwezig zijn in
 
 Voor Linux-clusters wordt Service Fabric verwacht dat certificaten aanwezig zijn als een. pem-bestand dat zowel het certificaat als de persoonlijke sleutel bevat, of als een. crt-bestand dat het certificaat en een. key-bestand bevat dat de persoonlijke sleutel bevat. Alle bestanden moeten de indeling PEM hebben. 
 
-Als u uw certificaat van Azure Key Vault installeert met behulp van een [Resource Manager-sjabloon](./service-fabric-cluster-creation-create-template.md) of [Power shell](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/?view=latest#service_fabric) -opdrachten, wordt het certificaat geïnstalleerd in de juiste indeling in de map */var/lib/sfcerts* op elk knoop punt. Als u een certificaat installeert via een andere methode, moet u ervoor zorgen dat het certificaat correct is geïnstalleerd op cluster knooppunten.
+Als u uw certificaat van Azure Key Vault installeert met behulp van een [Resource Manager-sjabloon](./service-fabric-cluster-creation-create-template.md) of [Power shell](https://docs.microsoft.com/powershell/module/az.servicefabric/?view=azps-2.6.0) -opdrachten, wordt het certificaat geïnstalleerd in de juiste indeling in de map */var/lib/sfcerts* op elk knoop punt. Als u een certificaat installeert via een andere methode, moet u ervoor zorgen dat het certificaat correct is geïnstalleerd op cluster knooppunten.
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>Certificaten waarnaar wordt verwezen in het toepassings manifest
 
@@ -42,7 +42,7 @@ Voor sommige services kunt u X. 509-certificaten configureren in [ConfigPackage]
 
 ### <a name="using-x509-securitycredentialstype"></a>X509-SecurityCredentialsType gebruiken
 
-Met de .NET-of Java-Sdk's kunt u **x509** opgeven voor de **SecurityCredentialsType**. Dit komt overeen met `X509Credentials` het[(.net](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials))- `SecurityCredentials` type[](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/(.net java).[](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)
+Met de .NET-of Java-Sdk's kunt u **x509** opgeven voor de **SecurityCredentialsType**. Dit komt overeen met `X509Credentials` het ([.net](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials))- `SecurityCredentials` type[(](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/.net java).[](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)
 
 De **x509** -verwijzing zoekt naar het certificaat in een certificaat archief. Het volgende XML-bestand toont de para meters die worden gebruikt om de locatie van het certificaat op te geven:
 
@@ -73,7 +73,7 @@ In het volgende XML-bestand wordt een **TransportSettings** -sectie weer gegeven
 
 ### <a name="using-x509_2-securitycredentialstype"></a>Using X509_2 SecurityCredentialsType
 
-Met de Java-SDK kunt u **X509_2** opgeven voor de **SecurityCredentialsType**. Dit komt overeen met `X509Credentials2` het ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2))- `SecurityCredentials` type[](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)(Java). 
+Met de Java-SDK kunt u **X509_2** opgeven voor de **SecurityCredentialsType**. Dit komt overeen met `X509Credentials2` het ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2))- `SecurityCredentials` type[(Java)](https://docs.microsoft.com/java/api/system.fabric.securitycredentials). 
 
 Met een **X509_2** -verwijzing geeft u een pad-para meter op, zodat u het certificaat in een andere map dan */var/lib/sfcerts*kunt vinden.  Het volgende XML-bestand toont de para meters die worden gebruikt om de locatie van het certificaat op te geven: 
 

@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: 63a0717e615ff85dbc5cfc06567f83cb9aa83a30
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
-ms.translationtype: HT
+ms.openlocfilehash: 8f0438ab015f9d16fd3776421b8d0032fc0a0639
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735043"
+ms.locfileid: "70772908"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Zelfstudie: Een web-app-bot gebruiken die is ingeschakeld met Language Understanding in node. js 
 
@@ -101,7 +101,7 @@ Als u de code van de web-app-bot verder wilt ontwikkelen, downloadt u de code en
 
     [![Download de broncode van de web-app-bot voor de basisbot](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-1. Wanneer het pop-updialoogvenster de **app-instellingen in het gedownloade zip-bestand**opvraagt, selecteert u **Ja**.
+1. Wanneer het pop-updialoogvenster de **app-instellingen in het gedownloade zip-bestand**opvraagt, selecteert u **Ja**. Dit biedt de LUIS-instellingen. 
 
 1. Als de broncode is ingepakt, ziet u een bericht met een link voor het downloaden van de code. Selecteer de link. 
 
@@ -134,6 +134,13 @@ Als u de code van de web-app-bot verder wilt ontwikkelen, downloadt u de code en
 
     ````javascript
     class MainDialog extends ComponentDialog {
+
+        constructor(luisRecognizer, bookingDialog) {
+            ...
+            this.luisRecognizer = luisRecognizer;
+            ...
+        }
+
 
         ...
 
@@ -185,40 +192,6 @@ Als u de code van de web-app-bot verder wilt ontwikkelen, downloadt u de code en
 
     }
     ````
-
-
-## <a name="install-dependencies-and-start-the-bot-code-in-visual-studio"></a>Afhankelijkheden installeren en de bot-code starten in Visual Studio
-
-1. In VSCode kunt u vanuit de geïntegreerde Terminal afhankelijkheden installeren met behulp van de opdracht `npm install`.
-1. U kunt ook vanaf de geïntegreerde Terminal de bot starten met de `npm start`opdracht. Hiermee wordt een web-app voor uw bot gestart met een HTTP-eind punt. De-console geeft de URL en het poort nummer voor toegang tot de actieve website. U hebt het poort nummer nodig in de volgende sectie van deze zelf studie.
-
-    ```console
-    > core-bot@1.0.0 start C:\Users\diberry\repos\bots\2019-bot-nodejs-basic
-    > node ./index.js
-    
-    
-    restify listening to http://[::]:3978
-    
-    Get Bot Framework Emulator: https://aka.ms/botframework-emulator
-    ```
-
-## <a name="create-an-environment-file-and-add-luis-values"></a>Een omgevings bestand maken en LUIS-waarden toevoegen
-
-De bot-emulator moet toegang hebben tot uw LUIS-resource om gedetailleerde LUIS-resultaten te kunnen bieden.
-
-1. Maak in de hoofdmap van het project een bestand met de `.env` naam en voeg de volgende omgevings variabelen toe:
-
-    ```console
-    LuisAppId= 
-    LuisAPIKey=
-    LuisAPIHostName=
-    ```
-
-1. Open vanuit de Azure Portal voor uw bot-resource de configuratie-instellingen van de App Service voor de toepassing.
-1. Open **Geavanceerde bewerkingen**om de waarde voor elke instelling te bekijken.
-
-    ![Open * * Geavanceerd bewerken * * om de waarde voor elke instelling weer te geven.](./media/bfv4-nodejs/environment-settings-for-luis-app.png)
-
 <a name="ask-bot-a-question-for-the-book-flight-intent"></a>
 
 ## <a name="use-the-bot-emulator-to-test-the-bot"></a>De bot-emulator gebruiken om de bot te testen
@@ -227,6 +200,7 @@ Vraag bot een vraag voor de bedoeling van de Book-vlucht.
 
 1. Start de bot-emulator en selecteer **Open bot**.
 1. Voer in het pop-upvenster **een bot openen** uw bot-URL in, bijvoorbeeld `http://localhost:3978/api/messages`. De `/api/messages` route is het webadres voor de bot.
+1. Voer de **micro soft app-id** en het **micro soft app-wacht woord**in die u in het **. env** -bestand hebt gevonden in de hoofdmap van de bot-code die u hebt gedownload.
 
 1. Voer `Book a flight from Seattle to Berlin tomorrow` in de bot-emulator hetzelfde antwoord in voor de Basic-bot die u hebt ontvangen tijdens de **test in Web Chat**.
 

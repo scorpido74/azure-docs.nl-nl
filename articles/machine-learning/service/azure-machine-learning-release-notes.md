@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0880b5706f2621971a4e5c82a6db03cdd22ce4d6
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 78d16e8e6fc43644cdb318f8e402c2e8bbe0363e
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278297"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772496"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Releaseopmerkingen Azure Machine Learning-service
 
@@ -70,6 +70,12 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informa
   + **azureml-train-core**
     + Vroegtijdige uitval van sommige afstemming definitie fouten rechtstreeks in de SDK in plaats van aan de server zijde.
 
+### <a name="azure-machine-learning-data-prep-sdk-v1114"></a>Azure Machine Learning data prep SDK v 1.1.14
++ **Oplossingen en verbeteringen voor oplossingen**
+  + Schrijven naar ADLS/ADLSGen2 is ingeschakeld met onbewerkte paden en referenties.
+  + Er is een fout opgelost `include_path=True` die ervoor heeft gezorgd `read_parquet`dat deze niet werkt.
+  + De `to_pandas_dataframe()` vaste fout is veroorzaakt door een uitzonde ring "ongeldige eigenschaps waarde: hostSecret".
+  + Er is een fout opgelost waarbij bestanden niet kunnen worden gelezen op DBFS in de modus Spark.
   
 ## <a name="2019-08-19"></a>2019-08-19
 

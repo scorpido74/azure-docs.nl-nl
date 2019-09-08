@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 07/16/2019
 ms.author: shvija
-ms.openlocfilehash: 013200295f3a6a48d6d96663f98bce506808cd70
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 312800482405530d57ce7b0b1e77b91c2ad069ce
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277362"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772162"
 ---
 # <a name="event-processor-host"></a>Gebeurtenisprocessorhost
 
@@ -141,7 +141,7 @@ Standaard [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.e
 
 ## <a name="shut-down-gracefully"></a>Zonder problemen worden afgesloten
 
-Ten slotte [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) foutloos sluiten van alle partitie lezers kunnen en moet altijd worden aangeroepen wanneer een exemplaar van afgesloten [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Dit niet doet, kan dit vertraging veroorzaken bij het starten van andere exemplaren van **EventProcessorHost** vanwege de verlooptijd van de lease en epoche conflicten. Het epoche-beheer wordt uitvoerig besproken [](#epoch) in de sectie epoche van het artikel. 
+Ten slotte [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) foutloos sluiten van alle partitie lezers kunnen en moet altijd worden aangeroepen wanneer een exemplaar van afgesloten [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Dit niet doet, kan dit vertraging veroorzaken bij het starten van andere exemplaren van **EventProcessorHost** vanwege de verlooptijd van de lease en epoche conflicten. Het epoche-beheer wordt uitvoerig besproken in de sectie [epoche](#epoch) van het artikel. 
 
 ## <a name="lease-management"></a>Lease-management
 Registreren van een klasse event processor met een exemplaar van EventProcessorHost start gebeurtenisverwerking. De instantie van de host haalt leases op aantal partities van de Event Hub, mogelijk gegevens uit formulieren sommige vanuit andere exemplaren hosten op een manier die convergeert wel op een gelijkmatige verdeling van partities voor alle instanties van de host ligt. Voor elke partitie geleased de instantie van de host maakt een exemplaar van de klasse opgegeven event processor, klikt u vervolgens ontvangt gebeurtenissen van deze partitie en geeft deze door aan de event processor-instantie. Als u meer instanties zijn toegevoegd en meer leases afkomstig zijn, verdeelt EventProcessorHost uiteindelijk de belasting tussen alle gebruikers.
@@ -184,6 +184,10 @@ Het gebruik van de toepassing wordt niet aanbevolen, waarbij u een ontvanger maa
 - Als er al een ontvanger is gemaakt met epoche E1 en actief gebeurtenissen ontvangt en er een nieuwe ontvanger wordt gemaakt zonder epoche, mislukt het maken van een nieuwe ontvanger. Epoche-ontvangers hebben altijd voor rang op het systeem.
 - Als er al een ontvanger is gemaakt met epoche E1 en de verbinding is verbroken, en er een nieuwe ontvanger wordt gemaakt zonder epoche op een nieuwe MessagingFactory, zal het maken van een nieuwe ontvanger slagen. Er wordt hier een voor behoud weer gegeven dat ons systeem na ongeveer 10 minuten de verbinding van de ontvanger moet detecteren.
 - Als er een of meer ontvangers zijn gemaakt zonder epoche, en er een nieuwe ontvanger wordt gemaakt met epoche E1, worden alle oude ontvangers losgekoppeld van elkaar.
+
+
+> [!NOTE]
+> We raden u aan verschillende consumenten groepen te gebruiken voor toepassingen die gebruikmaken van epoches en voor gebruikers die geen epoches gebruiken om fouten te voor komen. 
 
 
 ## <a name="next-steps"></a>Volgende stappen

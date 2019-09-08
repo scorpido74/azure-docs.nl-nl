@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: accc59ee31ddb7371774da3235cc9ccff24ad641
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c11ce31913baa8c638e94bdf92ef622cd8899e03
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309230"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764306"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Installatie kopieën Red Hat Enterprise Linux in azure
 In dit artikel worden beschik bare installatie kopieën van Red Hat Enterprise Linux (RHEL) in de Azure Marketplace beschreven, samen met beleids regels rondom hun naam en bewaar periode.
@@ -114,18 +114,19 @@ De volgende aanbiedingen zijn Sku's die momenteel beschikbaar zijn voor algemeen
 
 Aanbieding| SKU | Partitionering | Inrichten | Opmerkingen
 :----|:----|:-------------|:-------------|:-----
-RHEL          | 7-RAW    | RAW    | Linux-agent | RHEL 7-familie van installatie kopieën. <br> Niet standaard gekoppeld aan EUS-opslag plaatsen.
-|             | 7-LVM    | LVM    | Linux-agent | RHEL 7-familie van installatie kopieën. <br> Niet standaard gekoppeld aan EUS-opslag plaatsen.
-|             | 7-RAW-CI | RAW-CI | Cloud-init  | RHEL 7-familie van installatie kopieën. <br> Niet standaard gekoppeld aan EUS-opslag plaatsen.
-|             | 6.7      | RAW    | Linux-agent | RHEL 6,7-installatie kopieën, oude naamgevings Conventie
-|             | 6.8      | RAW    | Linux-agent | Hetzelfde als hierboven voor RHEL 6,8
-|             | 6.9      | RAW    | Linux-agent | Hetzelfde als hierboven voor RHEL 6,9
-|             | 6.10     | RAW    | Linux-agent | Hetzelfde als hierboven voor RHEL 6,10
-|             | 7.2      | RAW    | Linux-agent | Hetzelfde als hierboven voor RHEL 7,2
-|             | 7.3      | RAW    | Linux-agent | Hetzelfde als hierboven voor RHEL 7,3
-|             | 7.4      | RAW    | Linux-agent | Hetzelfde als hierboven voor RHEL 7,4. <br> Is vanaf april 2019 standaard gekoppeld aan EUS-opslag plaatsen
-|             | 7.5      | RAW    | Linux-agent | Hetzelfde als hierboven voor RHEL 7,5. <br> Gekoppeld aan EUS-opslag plaatsen standaard vanaf juni 2019
-|             | 7,6      | RAW    | Linux-agent | Hetzelfde als hierboven voor RHEL 7,6. <br> Gekoppeld aan EUS-opslag plaatsen standaard vanaf mei 2019
+RHEL          | 7-RAW    | RAW    | Linux-agent | RHEL 7. x-familie van installatie kopieën. <br> Niet standaard gekoppeld aan EUS-opslag plaatsen.
+|             | 7-LVM    | LVM    | Linux-agent | RHEL 7. x-familie van installatie kopieën. <br> Niet standaard gekoppeld aan EUS-opslag plaatsen.
+|             | 7-RAW-CI | RAW-CI | Cloud-init  | RHEL 7. x-familie van installatie kopieën. <br> Niet standaard gekoppeld aan EUS-opslag plaatsen.
+|             | 6.7      | RAW    | Linux-agent |
+|             | 6.8      | RAW    | Linux-agent |
+|             | 6.9      | RAW    | Linux-agent |
+|             | 6.10     | RAW    | Linux-agent |
+|             | 7.2      | RAW    | Linux-agent |
+|             | 7.3      | RAW    | Linux-agent |
+|             | 7.4      | RAW    | Linux-agent | Is vanaf april 2019 standaard gekoppeld aan EUS-opslag plaatsen.
+|             | 7.5      | RAW    | Linux-agent | Is vanaf juni 2019 standaard gekoppeld aan EUS-opslag plaatsen.
+|             | 7,6      | RAW    | Linux-agent | Gekoppeld aan EUS-opslag plaatsen standaard vanaf mei 2019.
+|             | 7,7      | LVM    | Linux-agent | Standaard gekoppeld aan EUS-opslag plaatsen.
 RHEL-SAP      | 7.4      | LVM    | Linux-agent | RHEL 7,4 voor SAP HANA en zakelijke apps
 |             | 7.5      | LVM    | Linux-agent | RHEL 7,5 voor SAP HANA en zakelijke apps
 RHEL-SAP-HANA | 6.7      | RAW    | Linux-agent | RHEL 6,7 voor SAP HANA

@@ -1,18 +1,27 @@
 ---
-ms.openlocfilehash: fe9879f9574fe1496ebdf20ac76fe5b759d4ea6a
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+title: Container opslagplaatsen en installatie kopieën
+services: cognitive-services
+author: IEvangelist
+manager: nitinme
+description: Twee tabellen die de container registers, opslag plaatsen en namen van installatie kopieën vertegenwoordigen voor alle cognitieve service aanbiedingen.
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 09/06/2019
+ms.author: dapine
+ms.openlocfilehash: 600c01fc2a273141b06996369231c2389c5d6d57
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051236"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70775844"
 ---
 ### <a name="container-repositories-and-images"></a>Container opslagplaatsen en installatie kopieën
 
 In de onderstaande tabellen vindt u een uitgebreid overzicht van de beschik bare container installatie kopieën die door Azure Cognitive Services worden aangeboden.
 
-#### <a name="public-container-registry-mcrmicrosoftcom"></a>Openbaar (container register: `mcr.microsoft.com`)
+#### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Openbaar "niet-degateeerd" (container `mcr.microsoft.com`register:)
 
-De micro soft-Container Registry host alle algemene Beschik baarheid (GA)-containers voor Cognitive Services.
+De micro soft-Container Registry host alle openbaar beschik bare containers voor Cognitive Services.
 
 | Service | Container | Container Registry/opslagplaats/naam van installatie kopie |
 |--|--|--|
@@ -21,9 +30,9 @@ De micro soft-Container Registry host alle algemene Beschik baarheid (GA)-contai
 | [Tekstanalyse](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Taaldetectie | `mcr.microsoft.com/azure-cognitive-services/language` |
 | [Tekstanalyse](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Sentimentanalyse | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
-#### <a name="public-preview-container-registry-containerpreviewazurecrio"></a>Open bare Preview (container register `containerpreview.azurecr.io`:)
+#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Open bare preview-versie van ' gated ' `containerpreview.azurecr.io`(container Registry:)
 
-Het REGI ster van de container voorbeeld bevat alle containers voor de open bare preview-versie voor Cognitive Services die nog niet zijn uitgevoerd op algemene Beschik baarheid (GA). Voor deze containers is een formele aanvraag voor toegang vereist om ze te kunnen gebruiken.
+Het voor beeld-container register host alle openbaar beschik bare ' gated '-containers voor Cognitive Services. Voor deze containers is een formele aanvraag voor toegang vereist om ze te kunnen gebruiken.
 
 | Service | Container | Container Registry/opslagplaats/naam van installatie kopie |
 |--|--|--|

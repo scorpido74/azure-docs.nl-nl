@@ -1,61 +1,61 @@
 ---
-title: Query Store-gebruiksscenario's in Azure Database for PostgreSQL - één Server
-description: In dit artikel worden enkele scenario's voor de Query Store in Azure Database voor PostgreSQL - één Server beschreven.
+title: Gebruiks scenario's voor query Store in Azure Database for PostgreSQL-één server
+description: In dit artikel worden enkele scenario's beschreven voor het query archief in Azure Database for PostgreSQL-één-server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 029c595ba983d3b758568fbacaf6577014d893db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3cdb0d4e00e667b0369cdf612662830f18dc5fb8
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067295"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764276"
 ---
-# <a name="usage-scenarios-for-query-store"></a>Gebruiksscenario's voor Query Store
+# <a name="usage-scenarios-for-query-store"></a>Gebruiks scenario's voor query Store
 
-**Van toepassing op:** Azure Database for PostgreSQL - servergegevens 9.6 en 10
+**Van toepassing op:** Azure Database for PostgreSQL-één server versie 9,6, 10, 11
 
-U kunt Query Store in een groot aantal scenario's waarin bij te houden en beheren van voorspelbare werkbelasting prestaties is van essentieel belang. Houd rekening met de volgende voorbeelden: 
-- Identificeren van en het afstemmen van de bovenste dure query 's 
+U kunt query Store gebruiken in een groot aantal scenario's waarin de prestaties van voorspel bare werk belastingen kritiek zijn. Bekijk de volgende voor beelden: 
+- Best dure query's identificeren en afstemmen 
 - A / B-tests 
-- Prestaties stabiel te houden tijdens upgrades 
-- Identificeren van en het verbeteren van de ad-hoc workloads 
+- Prestaties stabiel houden tijdens upgrades 
+- Ad hoc-workloads identificeren en verbeteren 
 
-## <a name="identify-and-tune-expensive-queries"></a>Identificeren en dure query's af te stemmen 
+## <a name="identify-and-tune-expensive-queries"></a>Dure query's identificeren en afstemmen 
 
-### <a name="identify-longest-running-queries"></a>Langste uitvoeren van query's identificeren 
-Gebruik de [Query Performance Insight](concepts-query-performance-insight.md) weergave in de Azure portal de langste uitvoeren van query's snel identificeren. Deze query's vaak meestal een aanzienlijke hoeveelheid resources gebruiken. Optimaliseren van uw langst lopende vragen, kan de prestaties verbeteren door het vrijmaken van resources voor gebruik door andere query's die worden uitgevoerd op uw systeem. 
+### <a name="identify-longest-running-queries"></a>Langst actieve query's identificeren 
+Gebruik de weer gave [query Performance Insight](concepts-query-performance-insight.md) in de Azure Portal om snel de langste query's te identificeren. Deze query's gebruiken meestal vaak een aanzienlijke hoeveelheid resources. Het optimaliseren van uw langste vragen kan de prestaties verbeteren door resources vrij te maken voor gebruik door andere query's die op uw systeem worden uitgevoerd. 
 
-### <a name="target-queries-with-performance-deltas"></a>Doel-query's waarvan prestaties delta 's 
-Query Store worden de gegevens van segmenten in tijdvensters, zodat u kunt de prestaties van query's gedurende een periode bijhouden. Hiermee kunt u identificeren precies welke query's leveren tot een toename van de totale tijd besteed aan het. Als gevolg hiervan kunt u doen gerichte oplossen van problemen met uw workload.
+### <a name="target-queries-with-performance-deltas"></a>Doel query's met prestatie Deltas 
+Met query Store worden de prestatie gegevens in tijd Vensters gesegmenteerd, zodat u de prestaties van een query in de loop van de tijd kunt volgen. Zo kunt u precies zien welke query's bijdragen aan een toename van de totale bestede tijd. Als gevolg hiervan kunt u de problemen met de werk belasting richten.
 
-### <a name="tuning-expensive-queries"></a>Afstemming van dure query 's 
-De actie die u bij het bepalen van een query met niet-optimale prestaties zijn afhankelijk van de aard van het probleem: 
-- Gebruik [aanbevelingen voor prestaties](concepts-performance-recommendations.md) om te bepalen of er een voorgestelde indexen. Zo ja, de index maken en vervolgens Query Store gebruiken om te evalueren van prestaties van query's na het maken van de index. 
-- Zorg ervoor dat de statistieken bijgewerkt voor de onderliggende tabellen die worden gebruikt door de query zijn.
-- Houd rekening met het herschrijven van dure query's. Bijvoorbeeld, profiteren van queryparameterisering en gebruik van dynamic SQL beperken. Optimale logica implementeren bij het lezen van gegevens, zoals het toepassen van de gegevens filteren op database, gaf niet aan de kant van de toepassing. 
+### <a name="tuning-expensive-queries"></a>Dure query's afstemmen 
+Wanneer u een query met optimale prestaties identificeert, is de actie die u uitvoert afhankelijk van de aard van het probleem: 
+- Gebruik [aanbevelingen voor prestaties](concepts-performance-recommendations.md) om te bepalen of er aanbevolen indexen zijn. Als dat het geval is, maakt u de index en gebruikt u query Store om de query prestaties te evalueren nadat u de index hebt gemaakt. 
+- Zorg ervoor dat de statistieken zijn bijgewerkt voor de onderliggende tabellen die worden gebruikt door de query.
+- Overweeg duurste query's te herschrijven. U kunt bijvoorbeeld gebruikmaken van query parameterisering en het gebruik van dynamische SQL verminderen. Implementeer optimale logica bij het lezen van gegevens, zoals het Toep assen van gegevens filtering aan de data base en niet aan de kant van de toepassing. 
 
 
 ## <a name="ab-testing"></a>A / B-tests 
-Gebruik Query Store kunnen werkbelasting prestaties vóór en na de wijziging van een toepassing die u van plan bent om te introduceren. Voorbeelden van scenario's voor het gebruik van de Query Store te beoordelen wat de impact van de omgeving of de toepassing wijzigen op de prestaties van de workload: 
-- Een nieuwe versie van een toepassing geïmplementeerd. 
-- Aanvullende bronnen toevoegen aan de server. 
-- Ontbrekende indexen op tabellen waarnaar wordt verwezen door dure query's te maken. 
+Gebruik query Store om de prestaties van de werk belasting te vergelijken vóór en na de wijziging van een toepassing die u wilt introduceren. Voor beelden van scenario's voor het gebruik van query Store voor het beoordelen van de impact van de omgeving of de toepassing die wordt gewijzigd voor de prestaties van de werk belasting: 
+- Een nieuwe versie van een toepassing uit te vouwen. 
+- Extra resources toevoegen aan de server. 
+- Ontbrekende indexen maken voor tabellen waarnaar wordt verwezen door dure query's. 
  
-In elk van deze scenario's kunt toepassing de volgende werkstroom: 
-1. Uw workload uitvoeren met Query Store vóór de geplande wijziging voor het genereren van een basislijn van prestaties. 
-2. Toepassing wijziging(en) gecontroleerde momenteel in de tijd van toepassing. 
-3. De werkbelasting lang genoeg actief voor het genereren van afbeelding van de prestaties van het systeem na de wijziging blijven. 
-4. Vergelijk de resultaten van vóór en na de wijziging. 
-5. Bepaal of het wijzigen of terugdraaien. 
+Pas in een van deze scenario's de volgende werk stroom toe: 
+1. Voer de werk belasting uit met het query archief vóór de geplande wijziging om een basis lijn voor prestaties te genereren. 
+2. Toepassings wijziging (en) Toep assen op het tijdstip van controle. 
+3. De werk belasting lang genoeg blijven uitvoeren om de prestatie kopie van het systeem te genereren na de wijziging. 
+4. Vergelijk de resultaten van voor en na de wijziging. 
+5. Bepaal of u de wijziging of het terugdraaien wilt behouden. 
 
 
-## <a name="identify-and-improve-ad-hoc-workloads"></a>Identificeren en ad hoc-workloads te verbeteren 
-Sommige werkbelastingen geen dominante query's die u afstemmen kunt om algehele prestaties te verbeteren. Deze werkbelastingen worden doorgaans gekenmerkt met een relatief groot aantal unieke query's, elk van hen een gedeelte van het systeemresources verbruikt. Elke unieke query wordt uitgevoerd niet regelmatig worden, dus afzonderlijk dat hun gebruik van de runtime is niet kritiek. Aan de andere kant, gezien het feit dat de toepassing nieuwe query's voortdurend genereert, is een aanzienlijk deel van systeemresources die besteed aan query-compilatie niet optimaal is. Deze situatie gebeurt meestal, als uw toepassing query's genereert (in plaats van met opgeslagen procedures of geparameteriseerde query's) of als er wordt gebruikgemaakt van object-relationele gegevens frameworks die query's standaard genereren. 
+## <a name="identify-and-improve-ad-hoc-workloads"></a>Ad hoc-workloads identificeren en verbeteren 
+Sommige werk belastingen hebben geen dominante query's die u kunt afstemmen om de algehele prestaties van toepassingen te verbeteren. Deze werk belastingen worden meestal gekenmerkt met een relatief groot aantal unieke query's, die allemaal een deel van de systeem bronnen gebruiken. Elke unieke query wordt niet regel matig uitgevoerd, zodat het runtime verbruik van de afzonderlijke activiteiten niet kritiek is. Aan de andere kant, op voor hand dat de toepassing steeds nieuwe query's genereert, wordt een aanzienlijk deel van de systeem bronnen aan het compileren van query's gespendeerd. Dit is niet optimaal. Deze situatie treedt meestal op als uw toepassing query's genereert (in plaats van opgeslagen procedures of query's met para meters) of als deze afhankelijk zijn van object-relationele toewijzings raamwerken die standaard query's genereren. 
  
-Als u controle over de code van de toepassing, kunt u overwegen de Gegevenstoegangslaag voor het gebruik van opgeslagen procedures of geparameteriseerde query's te herschrijven. Maar kan deze situatie worden ook verbeterd zonder wijzigingen in de toepassing door af te dwingen queryparameterisering voor de gehele database (alle query's) of voor de sjablonen voor afzonderlijke query's met dezelfde queryhash. 
+Als u controle hebt over de toepassings code, kunt u overwegen de Gegevenstoegangslaag te herschrijven om opgeslagen procedures of query's met para meters te gebruiken. Deze situatie kan echter ook worden verbeterd zonder toepassings wijzigingen door het afdwingen van de query parameterisering voor de gehele data base (alle query's) of voor de afzonderlijke query sjablonen met dezelfde query-hash. 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over de [aanbevolen procedures voor het gebruik van de Query Store](concepts-query-store-best-practices.md)
+- Meer informatie over de [Aanbevolen procedures voor het gebruik van query Store](concepts-query-store-best-practices.md)

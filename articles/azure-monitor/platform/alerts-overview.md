@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: defc317618dfffd0e2b28c75b6168ec1dbda36b7
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
-ms.translationtype: HT
+ms.openlocfilehash: 3ac6ec9fe55e901e593f201b5ff71668d80d66e3
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735116"
+ms.locfileid: "70773013"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Overzicht van waarschuwingen in Microsoft Azure 
 
@@ -53,7 +53,11 @@ De belangrijkste kenmerken van een waarschuwings regel zijn:
 **Beschrijving van waarschuwing** : een beschrijving voor de waarschuwings regel die door de gebruiker is geconfigureerd
 
 **Ernst** : de ernst van de waarschuwing wanneer aan de criteria die zijn opgegeven in de waarschuwings regel wordt voldaan. Ernst kan variëren van 0 tot 4.
-Ernst 0 = kritiek Ernst 1 = fout Ernst 2 = waarschuwing Ernst 3 = informatieve Ernst 4 = verbose
+   - Ernst 0 = kritiek
+   - Ernst 1 = fout
+   - Ernst 2 = waarschuwing
+   - Ernst 3 = informatief
+   - Ernst 4 = uitgebreid 
 
 **Actie** -een specifieke actie die wordt uitgevoerd wanneer de waarschuwing wordt geactiveerd. Zie [actie groepen](../../azure-monitor/platform/action-groups.md)voor meer informatie.
 

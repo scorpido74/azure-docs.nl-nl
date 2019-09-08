@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: 333eecb11f0bd20c747bc44419fea26765f886c5
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f7e34d2bbad5f5d8e6b063269b7e87c314fdce90
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509111"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70770703"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatisch schalen van Azure HDInsight-clusters (preview-versie)
 
@@ -31,7 +31,7 @@ In de volgende tabel worden de cluster typen en versies beschreven die compatibe
 | HDInsight 3,6 zonder ESP | Ja | Ja | Nee | Nee | Nee | Nee | Nee |
 | HDInsight 4,0 zonder ESP | Ja | Ja | Nee | Nee | Nee | Nee | Nee |
 | HDInsight 3,6 met ESP | Ja | Ja | Nee | Nee | Nee | Nee | Nee |
-| HDInsight 3,6 met ESP | Ja | Ja | Nee | Nee | Nee | Nee | Nee |
+| HDInsight 4,0 met ESP | Ja | Ja | Nee | Nee | Nee | Nee | Nee |
 
 ## <a name="how-it-works"></a>Hoe werkt het?
 
@@ -109,7 +109,7 @@ Het aantal knoop punten moet tussen 1 en het aantal worker-knoop punten zijn dat
 
 ### <a name="final-creation-steps"></a>Laatste aanmaak stappen
 
-Voor zowel op de werk belasting als op schema gebaseerd schalen selecteert u het VM-type voor worker-knoop punten door te klikken op de grootte van het worker- **knoop punt** en de grootte van het **hoofd knooppunt**. Nadat u het VM-type voor elk knooppunt type hebt gekozen, ziet u het geschatte kosten bereik voor het hele cluster. Pas de VM-typen aan uw budget aan.
+Voor zowel op de werk belasting als op schema gebaseerd schalen selecteert u het VM-type voor worker-knoop punten door te klikken op de grootte van het **worker-knoop punt** en de grootte van het **hoofd knooppunt**. Nadat u het VM-type voor elk knooppunt type hebt gekozen, ziet u het geschatte kosten bereik voor het hele cluster. Pas de VM-typen aan uw budget aan.
 
 ![Optie voor automatisch schalen op basis van worker-knoop punten inschakelen](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-node-size-selection.png)
 

@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 8524a315228601adbb30a5def383f7b54a8f1495
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f021ac0a7c9c46592f7969dd0df10f76aec88cb7
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076106"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773226"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Optie voor co-sell in Partner Center
 
@@ -47,10 +47,10 @@ Oplossings gebieden helpen u bij het bepalen van de scenario's die uw aanbieding
 
 | **Faxdocumenten**    | **Beschrijving**  |
 | :------------------- | :-------------------|
-| *Klant met één pager* | Voor de klant geschikte beschrijving van uw aanbieding. Micro soft verkoop teams kunnen deze informatie delen met klanten om te helpen bepalen of uw aanbieding goed kan worden aangepast en om ervoor te zorgen dat de klant klaar is. <br> <br> Gebruik een van de volgende relevante sjablonen: <br> <ul> <li> [Microsoft Azure sjabloon met één pager](https://aka.ms/Customer-One-Pager_MicrosoftAzure) </li> <li> [Micro soft Dynamics 365 1-pager sjabloon](https://aka.ms/Customer-One-Pager_MicrosoftDynamics365) </li> <li> [Office 365 1-pager sjabloon](https://aka.ms/Customer-One-Pager_MicrosoftOffice365) </li> <li> [Windows 10 1-pager sjabloon](https://aka.ms/Customer-One-Pager_Windows) </li> </ul>
+| *Klant met één pager* | Voor de klant geschikte beschrijving van uw aanbieding. Micro soft verkoop teams kunnen deze informatie delen met klanten om te helpen bepalen of uw aanbieding goed kan worden aangepast en om ervoor te zorgen dat de klant klaar is. <br> <br> Gebruik een van de relevante sjablonen die beschikbaar zijn in Partner Center: <br> <ul> <li> Microsoft Azure sjabloon met één pager </li> <li> Micro soft Dynamics 365 1-pager sjabloon </li> <li> Office 365 1-pager sjabloon </li> <li> Windows 10 1-pager sjabloon </li> </ul>
  |
-| *Presentatie van de klant* | Schuif in het diamodel om uw oplossing te verkopen en de toegevoegde waarde. Nadat u hebt gecontroleerd of uw aanbieding klaar is voor de klant, delen micro soft verkoop teams de presentatie mogelijk met klanten om de waarde te geleeren die beide bedrijven meebrengen bij het implementeren van een gemeen schappelijke oplossing. De presentatie moet betrekking hebben op de werking van uw oplossing, hoe deze kan helpen klanten, welke branches de oplossing is voor en hoe deze worden vergeleken met concurrerende oplossingen. <br> <br> Zie voor meer informatie [klant presentatie sjabloon](https://aka.ms/GTMServices_CustomerPresentation).|
-| *Casestudy van de klant* | Deze informatie toont een mogelijke klant hoe u en micro soft deze oplossing in eerdere gevallen hebben geïmplementeerd. <br> <br> Zie voor meer informatie [sjabloon casestudy](https://aka.ms/GTM_Case_Study_Template). |
+| *Presentatie van de klant* | Schuif in het diamodel om uw oplossing te verkopen en de toegevoegde waarde. Nadat u hebt gecontroleerd of uw aanbieding klaar is voor de klant, delen micro soft verkoop teams de presentatie mogelijk met klanten om de waarde te geleeren die beide bedrijven meebrengen bij het implementeren van een gemeen schappelijke oplossing. De presentatie moet betrekking hebben op de werking van uw oplossing, hoe deze kan helpen klanten, welke branches de oplossing is voor en hoe deze worden vergeleken met concurrerende oplossingen. <br> <br> Gebruik de sjabloon die beschikbaar is in Partner Center.|
+| *Casestudy van de klant* | Deze informatie toont een mogelijke klant hoe u en micro soft deze oplossing in eerdere gevallen hebben geïmplementeerd. <br> <br> Gebruik de sjabloon die beschikbaar is in Partner Center. |
 | *Verifieer bare klant-WINS (optioneel)* | Specifieke voor beelden van klant successen nadat uw oplossing is geïmplementeerd. |
 | *Channel pitch-dek (optioneel)* | Een diapresentatie met informatie waarmee de wederverkopers van het kanaal kunnen leren om meer te weten te komen over uw oplossing en om de verkoop teams gereed te stellen om uw aanbieding te verkopen. Dit omvat doorgaans een lift, informatie over doel klanten, vragen om klanten, pratende punten en koppelingen naar Video's, documentatie en ondersteunings informatie te vragen. |
 | *Diagrammen voor referentie architectuur* | Een document waarin het model wordt weer gegeven dat staat voor het IP-adres dat is gemaakt door de partner, samen met de relatie met micro soft-Cloud Services, en hoe het kan voldoen aan de technische vereisten van het programma voor het Program meren van de IP. |

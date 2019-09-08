@@ -1,6 +1,6 @@
 ---
-title: Een Azure Service Fabric-cluster certificaat overkantelen | Microsoft Docs
-description: Meer informatie over het overschakelen van een Service Fabric cluster certificaat dat wordt geïdentificeerd door de algemene naam van het certificaat.
+title: Over een Azure Service Fabric cluster certificaat rollen | Microsoft Docs
+description: Meer informatie over het oprollen van een Service Fabric cluster certificaat dat wordt geïdentificeerd door de algemene naam van het certificaat.
 services: service-fabric
 documentationcenter: .net
 author: athinanthny
@@ -11,14 +11,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/24/2018
+ms.date: 09/06/2019
 ms.author: atsenthi
-ms.openlocfilehash: 5d11054ca8eb684f1f25a25ddeac1b53e82b3775
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d6ead6aaa5d4c0e864126bf63d4cc0e9339464f2
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599917"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773353"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Hand matig overschakelen op een Service Fabric cluster certificaat
 Wanneer een Service Fabric cluster certificaat bijna verloopt, moet u het certificaat bijwerken.  Certificaat overschakeling is eenvoudig als het cluster is ingesteld op het [gebruik van certificaten op basis van algemene naam](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (in plaats van een vinger afdruk).  Vraag een nieuw certificaat aan bij een certificerings instantie met een nieuwe verval datum.  Zelfondertekende certificaten bieden geen ondersteuning voor productie Service Fabric clusters, om certificaten op te nemen die zijn gegenereerd tijdens de werk stroom voor het maken van een Azure Portal cluster. Het nieuwe certificaat moet dezelfde algemene naam hebben als het oudere certificaat. 
@@ -53,7 +53,7 @@ $resourceId = $keyVault.ResourceId
 
 # Add the certificate to the key vault.
 $PasswordSec = ConvertTo-SecureString -String $Password -AsPlainText -Force
-$KVSecret = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
+$KVSecret = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
 
 $CertificateThumbprint = $KVSecret.Thumbprint
 $CertificateURL = $KVSecret.SecretId
@@ -83,7 +83,7 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -Virtual
 >[!NOTE]
 > Reken bewerkingen voor virtuele-machine schaal sets ondersteunen niet dezelfde resource-id voor twee afzonderlijke geheimen, omdat elk geheim een unieke versie van een bron is. 
 
-Lees voor meer informatie het volgende:
+## <a name="next-steps"></a>Volgende stappen
+
 * Meer informatie over [cluster beveiliging](service-fabric-cluster-security.md).
 * [Cluster certificaten bijwerken en beheren](service-fabric-cluster-security-update-certs-azure.md)
-

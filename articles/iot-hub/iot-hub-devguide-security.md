@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 618f118ceedb7d55caefc5e2bebceb08c1d732ac
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: fa1aa8c560f4b9cc48c7a6a761abe4d69d5d0265
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018192"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773179"
 ---
 # <a name="control-access-to-iot-hub"></a>Toegang tot IoT Hub regelen
 
@@ -363,13 +363,13 @@ Zie voor meer informatie over verificatie met behulp van certificerings instanti
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Een X. 509-certificaat voor een apparaat registreren
 
-De [Azure IOT Service SDK voor C# ](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/service) (versie 1.0.8 +) ondersteunt het registreren van een apparaat dat gebruikmaakt van een X. 509-certificaat voor verificatie. Andere Api's, zoals import/export van apparaten ondersteunen ook X. 509-certificaten.
+De [Azure IOT Service SDK voor C# ](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) (versie 1.0.8 +) ondersteunt het registreren van een apparaat dat gebruikmaakt van een X. 509-certificaat voor verificatie. Andere Api's, zoals import/export van apparaten ondersteunen ook X. 509-certificaten.
 
 U kunt ook de CLI-extensie opdracht [AZ IOT hub apparaat-Identity](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) gebruiken om X. 509-certificaten voor apparaten te configureren.
 
 ### <a name="c-support"></a>C\# -ondersteuning
 
-De **RegistryManager** -klasse biedt een programmatische manier om een apparaat te registreren. Met name de methoden **AddDeviceAsync** en **UpdateDeviceAsync** bieden u de mogelijkheid om een apparaat te registreren en bij te werken in het IOT hub identiteits register. Deze twee methoden maken een **apparaatinstantie** als invoer. De apparaatklasse bevat een **verificatie** -eigenschap waarmee u de primaire en secundaire X. 509-certificaat vingerafdrukken kunt opgeven. De vinger afdruk vertegenwoordigt een SHA256-hash van het X. 509-certificaat (opgeslagen met binaire en andere code ring). U kunt een primaire vinger afdruk of een secundaire vinger afdruk of beide opgeven. Primaire en secundaire vinger afdrukken worden ondersteund voor het afhandelen van certificaat overschakel scenario's.
+De **RegistryManager** -klasse biedt een programmatische manier om een apparaat te registreren. Met name de methoden **AddDeviceAsync** en **UpdateDeviceAsync** bieden u de mogelijkheid om een apparaat te registreren en bij te werken in het IOT hub identiteits register. Deze twee methoden maken een **apparaatinstantie** als invoer. De **apparaatklasse** bevat een **verificatie** -eigenschap waarmee u de primaire en secundaire X. 509-certificaat vingerafdrukken kunt opgeven. De vinger afdruk vertegenwoordigt een SHA256-hash van het X. 509-certificaat (opgeslagen met binaire en andere code ring). U kunt een primaire vinger afdruk of een secundaire vinger afdruk of beide opgeven. Primaire en secundaire vinger afdrukken worden ondersteund voor het afhandelen van certificaat overschakel scenario's.
 
 Hier volgt een voor beeld\# van een C-code fragment om een apparaat te registreren met behulp van een X. 509-certificaat vingerafdruk:
 
@@ -390,7 +390,7 @@ await registryManager.AddDeviceAsync(device);
 
 ### <a name="use-an-x509-certificate-during-run-time-operations"></a>Een X. 509-certificaat gebruiken tijdens runtime-bewerkingen
 
-De [Azure IOT Device SDK voor .net](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device) (versie 1.0.11 +) ondersteunt het gebruik van X. 509-certificaten.
+De [Azure IOT Device SDK voor .net](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device) (versie 1.0.11 +) ondersteunt het gebruik van X. 509-certificaten.
 
 ### <a name="c-support"></a>C\# -ondersteuning
 
@@ -406,7 +406,7 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 ## <a name="custom-device-and-module-authentication"></a>Aangepaste apparaat-en module verificatie
 
-U kunt het [REGI ster](iot-hub-devguide-identity-registry.md) van de IOT hub-id gebruiken voor het configureren van beveiligings referenties per apparaat/ [](iot-hub-devguide-security.md#security-tokens)module en toegangs beheer met behulp van tokens. Als een IoT-oplossing al een aangepast identiteits register en/of verificatie schema heeft, kunt u overwegen een *token service* te maken voor de integratie van deze infra structuur met IOT hub. Op deze manier kunt u andere IoT-functies in uw oplossing gebruiken.
+U kunt het [REGI ster](iot-hub-devguide-identity-registry.md) van de IOT hub-id gebruiken voor het configureren van beveiligings referenties per apparaat/module en toegangs beheer met behulp van [tokens](iot-hub-devguide-security.md#security-tokens). Als een IoT-oplossing al een aangepast identiteits register en/of verificatie schema heeft, kunt u overwegen een *token service* te maken voor de integratie van deze infra structuur met IOT hub. Op deze manier kunt u andere IoT-functies in uw oplossing gebruiken.
 
 Een token service is een aangepaste Cloud service. Er wordt gebruikgemaakt van een IoT Hub *beleid voor gedeelde toegang* met **DeviceConnect** -of **ModuleConnect** -machtigingen voor het maken van tokens in *het bereik* van een apparaat of *module-bereik* . Met deze tokens kunnen apparaten en modules verbinding maken met uw IoT-hub.
 
