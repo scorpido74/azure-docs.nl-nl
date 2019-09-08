@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aa81f181c8d062e5fd68b0fbb2445f5c37540889
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 163c3cbaeed1526f08d047c3bf357232ccb534a3
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309573"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802386"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 
@@ -206,14 +206,17 @@ Deze sectie is alleen van toepassing op de standaard bestands shares. Alle Premi
 
 Standaard bestands shares zijn beschikbaar in alle regio's tot 5 TiB. In bepaalde regio's is deze beschikbaar met een limiet van 100 TiB. deze regio's worden in de volgende tabel weer gegeven:
 
-|Regio |Ondersteunde redundantie |Ondersteunt bestaande opslag accounts |Portal ondersteuning *   |
+|Regio |Ondersteunde redundantie |Ondersteunt bestaande opslag accounts |Portal ondersteuning * |
 |-------|---------|---------|---------|
-|Australië - oost  |LRS     |Nee    |Ja|
-|Frankrijk - centraal  |LRS     |Nee    |Nog niet|
-|Frankrijk - zuid    |LRS     |Nee    |Nog niet|
-|Zuidoost-Azië  |LRS, ZRS|Nee    |Ja|
-|Europa -west     |LRS, ZRS|Nee    |Ja|
-|US - west 2       |LRS, ZRS|Nee    |Ja|
+|Australië - oost |LRS     |Nee    |Ja|
+|Australië - zuidoost|LRS     |Nee    |Nog niet|
+|India - centraal  |LRS     |Nee    |Nog niet|
+|Frankrijk - centraal  |LRS, ZRS|Nee    |LRS-Ja, ZRS-nog niet|
+|India - zuid    |LRS     |Nee    |Nog niet|
+|Azië - zuidoost |LRS, ZRS|Nee    |Ja|
+|US - west-centraal|LRS     |Nee    |Nog niet|
+|Europa -west    |LRS, ZRS|Nee    |Ja|
+|US - west 2      |LRS, ZRS|Nee    |Ja|
 
 \* Voor regio's zonder ondersteuning van de portal kunt u Power shell of de Azure-opdracht regel interface (CLI) nog steeds gebruiken om meer dan 5 TiB-shares te maken. U kunt ook een nieuwe share maken via de Portal zonder een quotum op te geven. Hiermee wordt een share gemaakt met de standaard grootte van 100 TiB, die later kan worden bijgewerkt via Power shell of Azure CLI.
 

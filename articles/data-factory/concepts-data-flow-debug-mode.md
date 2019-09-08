@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: 71e08f00600bebcc21eba32d991353c9bcaeaa97
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/06/2019
+ms.openlocfilehash: 7d1023f6c46c15b6f982193350923f5c91cdc4b9
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991926"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801702"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Fout opsporings modus gegevens stroom toewijzen
 
@@ -20,16 +20,17 @@ ms.locfileid: "69991926"
 
 ## <a name="overview"></a>Overzicht
 
-De fout opsporings modus van de gegevens stroom van Azure Data Factory koppelen kan worden ingeschakeld met de knop ' fout opsporing van gegevens stromen ' boven aan het ontwerp oppervlak. Bij het ontwerpen van gegevens stromen kunt u met de modus fout opsporing de gegevensshape transformeren tijdens het maken en opsporen van fouten in uw gegevens stromen interactief bekijken. De foutopsporingssessie kan worden gebruikt in combi natie met data flow-ontwerp sessies en tijdens het opsporen van fouten in de pipeline voor het uitvoeren van gegevens stromen.
+Met de modus fout opsporing van gegevens stroom van Azure Data Factory-toewijzing kunt u de transformatie van de gegevensshape interactief bekijken terwijl u uw gegevens stromen bouwt en oplost. De foutopsporingssessie kan worden gebruikt in combi natie met data flow-ontwerp sessies en tijdens het opsporen van fouten in de pipeline voor het uitvoeren van gegevens stromen. Als u de foutopsporingsmodus wilt inschakelen, gebruikt u de knop ' fout opsporing voor gegevens stromen ' boven aan het ontwerp oppervlak.
 
-![Knop fout opsporing](media/data-flow/debugbutton.png "Knop fout opsporing")
+![Schuif regelaar voor fout opsporing](media/data-flow/debugbutton.png "Schuif regelaar voor fout opsporing")
+
+Zodra u de schuif regelaar hebt ingeschakeld, wordt u gevraagd om te selecteren welke configuratie voor de integratie-runtime u wilt gebruiken. Als AutoResolveIntegrationRuntime is gekozen, wordt een cluster met acht kernen van algemene berekeningen met een tijd van 60 minuten voor Live. Zie [prestaties van gegevens stroom](concepts-data-flow-performance.md#increase-size-of-your-compute-engine-in-azure-integration-runtime)voor meer informatie over data flow Integration-Runtimes.
+
+![Fout opsporing IR-selectie](media/data-flow/debugbutton2.png "Fout opsporing IR-selectie")
 
 Wanneer de foutopsporingsmodus is ingeschakeld, bouwt u interactief uw gegevens stroom met een actief Spark-cluster. De sessie wordt gesloten zodra u debug uitschakelt in Azure Data Factory. U moet rekening houden met de kosten per uur die zijn gemaakt door Azure Databricks gedurende de periode dat de foutopsporingssessie is ingeschakeld.
 
 In de meeste gevallen is het een goed idee om uw gegevens stromen te bouwen in de foutopsporingsmodus, zodat u uw bedrijfs logica kunt valideren en uw gegevens transformaties weer geven voordat u uw werk in Azure Data Factory publiceert. Gebruik de knop ' fout opsporing ' in het deel venster pijplijn om uw gegevens stroom in een pijp lijn te testen.
-
-> [!NOTE]
-> Terwijl het lampje van de foutopsporingsmodus groen is op de Data Factory-werk balk, worden er kosten in rekening gebracht voor het fout opsporingsprogramma voor gegevens stromen van 8 kernen/uur van een algemene reken kracht met een tijd van 60 minuten-naar-Live 
 
 ## <a name="cluster-status"></a>Clusterstatus
 
@@ -72,7 +73,7 @@ Wanneer u een wijziging hebt geselecteerd, wordt de preview van de gegevens dire
 
 ![Snelle acties](media/data-flow/quick-actions2.png "Snelle acties")
 
-Met **typecast** en **Modify** wordt een afgeleide kolom transformatie gegenereerd en wordt er een selectie transformatie gegenereerd.
+Met **typecast** en **Modify** wordt een afgeleide kolom transformatie **gegenereerd en wordt** er een selectie transformatie gegenereerd.
 
 ![Snelle acties](media/data-flow/quick-actions3.png "Snelle acties")
 
@@ -81,7 +82,7 @@ Met **typecast** en **Modify** wordt een afgeleide kolom transformatie gegeneree
 
 ### <a name="data-profiling"></a>Gegevens profilering
 
-Als u een kolom selecteert op het tabblad voor beeld van gegevens en op **Statistieken** klikt in de werk balk voor data-preview, wordt aan de rechter kant van het gegevens raster een grafiek weer gegeven met gedetailleerde statistieken over elk veld. Azure Data Factory maakt een bepaling op basis van de gegevens bemonstering van welk type grafiek moet worden weer gegeven. Velden met hoge kardinaliteit worden standaard ingesteld op NULL/niet-NULL-grafieken terwijl categorische en numerieke gegevens met lage kardinaliteit balk diagrammen weer geven met een frequentie van gegevens waarden. U ziet ook de Max/len lengte van teken reeks velden, min/max-waarden in numerieke velden, standaard dev, percentielen, tellingen en gemiddelde.
+Als u een kolom selecteert op het tabblad voor beeld van gegevens en op **Statistieken** klikt in de werk balk voor data-preview, wordt in de rechter kant van het gegevens raster een grafiek weer gegeven met gedetailleerde statistieken over elk veld. Azure Data Factory maakt een bepaling op basis van de gegevens bemonstering van welk type grafiek moet worden weer gegeven. Velden met hoge kardinaliteit worden standaard ingesteld op NULL/niet-NULL-grafieken terwijl categorische en numerieke gegevens met lage kardinaliteit balk diagrammen weer geven met een frequentie van gegevens waarden. U ziet ook de Max/len lengte van teken reeks velden, min/max-waarden in numerieke velden, standaard dev, percentielen, tellingen en gemiddelde.
 
 ![Kolom statistieken](media/data-flow/stats.png "Kolom statistieken")
 

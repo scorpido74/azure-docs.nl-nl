@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: c8533f79dd2bf02a03ff4a37283359f3b3a5bf39
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b145b341a4db503a00d517decf6406e26f23c3cd
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066041"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802469"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Aan de slag met SQL Database Auditing
 
@@ -42,7 +42,7 @@ U kunt SQL database controle gebruiken voor het volgende:
 - Rapporten **analyseren** . U vindt verdachte gebeurtenissen, ongebruikelijke activiteiten en trends.
 
 > [!IMPORTANT]
-> Audit logboeken worden geschreven om **blobs toe** te voegen in Azure Blob-opslag in uw Azure-abonnement.
+> Audit logboeken worden geschreven om **blobs toe te voegen** in Azure Blob-opslag in uw Azure-abonnement.
 >
 > - Alle opslag typen (v1, v2, blob) worden ondersteund.
 > - Alle configuraties voor opslag replicatie worden ondersteund.
@@ -58,7 +58,7 @@ Er kan een controle beleid worden gedefinieerd voor een specifieke data base of 
 
 - Als de controle van de *Server-blob is ingeschakeld*, *is deze altijd van toepassing op de data base*. De data base wordt gecontroleerd, ongeacht de controle-instellingen voor de data base.
 
-- Het inschakelen van BLOB auditing in de data base of het Data Warehouse, behalve het inschakelen op de server, overschrijft of wijzigt geen van de instellingen van de controle van de server-blob. Beide controles bestaan naast elkaar. Met andere woorden, de data base wordt twee keer parallel gecontroleerd. eenmaal door het Server beleid en eenmaal door het database beleid.
+- Het inschakelen van BLOB auditing in de data base of het Data Warehouse, behalve het inschakelen op de server, *overschrijft of wijzigt geen van* de instellingen van de controle van de server-blob. Beide controles bestaan naast elkaar. Met andere woorden, de data base wordt twee keer parallel gecontroleerd. eenmaal door het Server beleid en eenmaal door het database beleid.
 
    > [!NOTE]
    > Vermijd het inschakelen van zowel de controle van de server-BLOB als de samen voeging van de data base-blob, tenzij:
@@ -106,7 +106,7 @@ In de volgende sectie wordt de configuratie van de controle met behulp van de Az
     ![Event Hub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
 9. Klik op **Opslaan**.
-10. Als u de gecontroleerde gebeurtenissen wilt aanpassen, kunt u dit doen via [Power shell](#subheading-7) -cmdlets of de [rest API](#subheading-9).
+10. Als u de gecontroleerde gebeurtenissen wilt aanpassen, kunt u dit doen via [Power shell-cmdlets](#subheading-7) of de [rest API](#subheading-9).
 11. Nadat u de controle-instellingen hebt geconfigureerd, kunt u de nieuwe functie voor het detecteren van bedreigingen inschakelen en e-mail berichten configureren voor het ontvangen van beveiligings waarschuwingen. Wanneer u detectie van dreigingen gebruikt, ontvangt u proactieve waarschuwingen over afwijkende database activiteiten die kunnen wijzen op mogelijke beveiligings dreigingen. Zie aan de slag [met detectie van bedreigingen](sql-database-threat-detection-get-started.md)voor meer informatie.
 
 > [!IMPORTANT]
@@ -139,7 +139,7 @@ Als u ervoor hebt gekozen om audit logboeken naar Azure Monitor-logboeken te sch
  
 
 - U kunt ook toegang krijgen tot de audit logboeken vanuit Log Analytics Blade. Open uw Log Analytics-werk ruimte en klik onder **algemene** sectie op **Logboeken**. U kunt beginnen met een eenvoudige query, bijvoorbeeld: *Zoek naar SQLSecurityAuditEvents* om de audit logboeken weer te geven.
-    Hier kunt u ook [Azure monitor](../log-analytics/log-analytics-log-search.md) -Logboeken gebruiken om geavanceerde zoek opdrachten uit te voeren in uw audit logboek gegevens. Met Azure Monitor-Logboeken kunt u in realtime operationeel inzicht krijgen met behulp van geïntegreerde Zoek-en aangepaste Dash boards waarmee u miljoenen records in al uw workloads en servers eenvoudig kunt analyseren. Zie voor aanvullende nuttige informatie over Azure Monitor Zoek taal en-opdrachten in Logboeken [Azure monitor logboeken zoeken](../log-analytics/log-analytics-log-search.md).
+    Hier kunt u ook [Azure monitor-logboeken](../log-analytics/log-analytics-log-search.md) gebruiken om geavanceerde zoek opdrachten uit te voeren in uw audit logboek gegevens. Met Azure Monitor-Logboeken kunt u in realtime operationeel inzicht krijgen met behulp van geïntegreerde Zoek-en aangepaste Dash boards waarmee u miljoenen records in al uw workloads en servers eenvoudig kunt analyseren. Zie voor aanvullende nuttige informatie over Azure Monitor Zoek taal en-opdrachten in Logboeken [Azure monitor logboeken zoeken](../log-analytics/log-analytics-log-search.md).
 
 Als u ervoor hebt gekozen om audit logboeken naar Event hub te schrijven:
 
@@ -201,8 +201,6 @@ Bij geo-gerepliceerde data bases, wanneer u controle inschakelt voor de hoofd da
 
     >[!IMPORTANT]
     >Bij het controleren op database niveau zijn de opslag instellingen voor de secundaire data base gelijk aan die van de primaire data base, waardoor Kruis regionale verkeer wordt veroorzaakt. U wordt aangeraden alleen controle op server niveau in te scha kelen en de controle op database niveau uitgeschakeld te laten voor alle data bases.
-    > [!WARNING]
-    > Het gebruik van Event Hub-of Azure Monitor-Logboeken als doelen voor audit logboeken op server niveau wordt momenteel niet ondersteund voor secundaire geo-gerepliceerde data bases.
 
 ### <a id="subheading-6">Opnieuw genereren van de opslag sleutel</a>
 
@@ -224,7 +222,7 @@ In productie zult u uw opslag sleutels waarschijnlijk periodiek vernieuwen. Wann
     > [!IMPORTANT]
     > Met Azure SQL Database audit worden 4000 tekens gegevens opgeslagen voor teken velden in een controle record. Wanneer de **instructie** of de **data_sensitivity_information** -waarden die zijn geretourneerd door een Controleer bare actie meer dan 4000 tekens bevatten, worden alle gegevens na de eerste 4000 tekens **afgekapt en niet gecontroleerd**.
 
-- Audit logboeken worden geschreven om **blobs toe** te voegen in een Azure Blob-opslag op uw Azure-abonnement:
+- Audit logboeken worden geschreven om **blobs toe te voegen** in een Azure Blob-opslag op uw Azure-abonnement:
   - **Premium Storage** wordt momenteel **niet ondersteund** door toevoeg-blobs.
   - **Opslag in VNet** wordt momenteel **niet ondersteund**.
 

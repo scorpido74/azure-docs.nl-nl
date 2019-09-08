@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fad0fada4d9dd888b0b2a37b59e4eac1e016aec4
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: b18e1b755b4e1339bf00380d8228fc28e355d3e1
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663600"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802511"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Gegevens voorbereiden voor Custom Speech
 
@@ -35,7 +35,7 @@ Bestanden moeten worden gegroepeerd door te typen in een gegevensset en worden g
 
 ## <a name="upload-data"></a>Gegevens uploaden
 
-Wanneer u klaar bent om uw gegevens te uploaden, klikt u op **gegevens uploaden** om de wizard te starten en uw eerste gegevensset te maken. U wordt gevraagd een type spraak gegevens voor uw gegevensset te selecteren voordat u uw gegevens kunt uploaden.
+Wanneer u klaar bent om uw gegevens te uploaden, gaat u naar de [Custom speech Portal](https://speech.microsoft.com/customspeech)en klikt u vervolgens op **gegevens uploaden** om de wizard te starten en uw eerste gegevensset te maken. U wordt gevraagd een type spraak gegevens voor uw gegevensset te selecteren voordat u uw gegevens kunt uploaden.
 
 ![Audio selecteren in de spraak Portal](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -73,7 +73,7 @@ Als uw audio niet voldoet aan deze eigenschappen of als u wilt controleren of di
 
 Als u de nauw keurigheid van de spraak-naar-tekst nauwkeurigheid van micro soft tijdens het verwerken van uw audio bestanden wilt meten, moet u transcripties (woord voor woord) van de mens voorzien voor vergelijking. Hoewel menselijke labels transcriptie vaak tijdrovend zijn, is het nood zakelijk om nauw keurigheid te evalueren en het model te trainen voor uw gebruiks voorbeelden. Houd er rekening mee dat de verbeteringen in de herkenning alleen van belang zijn voor de gegevens. Daarom is het belang rijk dat alleen transcripten van hoogwaardige kwaliteit worden geüpload.  
 
-| Eigenschap | Waarde |
+| Eigenschap | Value |
 |----------|-------|
 | Bestands indeling | RIFF (WAV) |
 | Steekproeffrequentie | 8\.000 Hz of 16.000 Hz |
@@ -96,7 +96,7 @@ Voor het oplossen van problemen zoals het verwijderen of vervangen van woorden, 
 
 De tekst van de transcripties wordt genormaliseerd zodat ze door het systeem kunnen worden verwerkt. Er zijn echter enkele belangrijke normalisaties die door de gebruiker moeten worden uitgevoerd _voordat_ de gegevens worden geüpload naar de Custom Speech Service. Voor de juiste taal die moet worden gebruikt wanneer u uw transcripties voorbereidt, Zie [How to Create a Human-gelabeld transcriptie](how-to-custom-speech-human-labeled-transcriptions.md)
 
-Nadat u de audio bestanden en de bijbehorende transcripties hebt verzameld, moeten ze worden ingepakt als één ZIP-bestand voordat ze naar de Custom Speech-portal kunnen worden geüpload. Dit is een voor beeld van een gegevensset met drie audio bestanden en een transcriptie-bestand met menselijke Labels:
+Nadat u de audio bestanden en de bijbehorende transcripties hebt verzameld, moeten ze worden ingepakt als één ZIP-bestand voordat ze naar de [Custom speech-Portal](https://speech.microsoft.com/customspeech)kunnen worden geüpload. Dit is een voor beeld van een gegevensset met drie audio bestanden en een transcriptie-bestand met menselijke Labels:
 
 ![Audio selecteren in de spraak Portal](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
@@ -109,7 +109,7 @@ Als u product namen of-onderdelen hebt die uniek zijn, en u ervoor wilt zorgen d
 | Uitingen en/of zinnen | Deze kunnen nauw keuriger worden bij het herkennen van product namen of branchespecifieke vocabulaire in de context van een zin. |
 | Uitspraak | Dit kan de uitspraak van ongebruikelijke termen, acroniemen of andere woorden met niet-gedefinieerde uitspraak verbeteren. |
 
-Uitingen kan worden gegeven als één of meer tekst bestanden. Hoe dichter de tekst gegevens zijn voor wat wordt gesp roken, des te groter is de kans dat de nauw keurigheid is verbeterd. Uitspraak moet worden gegeven als één tekst bestand. Alles kan worden verpakt als één ZIP-bestand en worden geüpload naar de Custom Speech Portal.
+Uitingen kan worden gegeven als één of meer tekst bestanden. Hoe dichter de tekst gegevens zijn voor wat wordt gesp roken, des te groter is de kans dat de nauw keurigheid is verbeterd. Uitspraak moet worden gegeven als één tekst bestand. Alles kan worden verpakt als één ZIP-bestand en worden geüpload naar de [Custom speech Portal](https://speech.microsoft.com/customspeech).
 
 ### <a name="guidelines-to-create-an-utterances-file"></a>Richt lijnen voor het maken van een uitingen-bestand
 

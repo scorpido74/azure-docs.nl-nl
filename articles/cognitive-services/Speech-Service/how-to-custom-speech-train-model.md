@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b5893b4f07444b07bf142971a5df4776e549d307
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 21a0cd5e257f57a9371a30c6fe57afb88e174b53
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562818"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801442"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Een model trainen voor Custom Speech
 
@@ -37,13 +37,14 @@ Als u herkennings problemen ondervindt met uw model, kunt u de nauw keurigheid v
 
 De eerste stap voor het trainen van een model is het uploaden van trainings gegevens. Gebruik voor [bereiding en test uw gegevens](how-to-custom-speech-test-data.md) voor stapsgewijze instructies voor het voorbereiden van transcripties en gerelateerde tekst met menselijke labels (uitingen en uitspraak). Nadat u de trainings gegevens hebt geüpload, volgt u deze instructies om te beginnen met het trainen van uw model:
 
-1. Navigeer naar **spraak-naar-tekst > Custom Speech > training**.
-2. Klik op **model trainen**.
-3. Geef vervolgens uw training een **naam** en **Beschrijving**.
-4. Selecteer in de vervolg keuzelijst **scenario en basislijn model** het scenario dat het meest geschikt is voor uw domein. Als u niet zeker weet welk scenario u moet kiezen, selecteert u **Algemeen**. Het basis model is het begin punt voor training. Als u geen voor keur hebt, kunt u de nieuwste gebruiken.
-5. Kies op de pagina **trainings gegevens selecteren** een of meer transcriptie-gegevens sets met audio en menselijke labels die u wilt gebruiken voor de training.
-6. Zodra de training is voltooid, kunt u ervoor kiezen om nauw keuriger tests uit te voeren op het nieuwe getrainde model. Deze stap is optioneel.
-7. Selecteer **maken** om uw aangepaste model te maken.
+1. Meld u aan bij de [Custom speech Portal](https://speech.microsoft.com/customspeech).
+2. Navigeer naar **spraak-naar-tekst > Custom Speech > training**.
+3. Klik op **model trainen**.
+4. Geef vervolgens uw training een **naam** en **Beschrijving**.
+5. Selecteer in de vervolg keuzelijst **scenario en basislijn model** het scenario dat het meest geschikt is voor uw domein. Als u niet zeker weet welk scenario u moet kiezen, selecteert u **Algemeen**. Het basis model is het begin punt voor training. Als u geen voor keur hebt, kunt u de nieuwste gebruiken.
+6. Kies op de pagina **trainings gegevens selecteren** een of meer transcriptie-gegevens sets met audio en menselijke labels die u wilt gebruiken voor de training.
+7. Zodra de training is voltooid, kunt u ervoor kiezen om nauw keuriger tests uit te voeren op het nieuwe getrainde model. Deze stap is optioneel.
+8. Selecteer **maken** om uw aangepaste model te maken.
 
 In de tabel training wordt een nieuw item weer gegeven dat overeenkomt met dit nieuwe model. In de tabel wordt ook de status weer gegeven:  De verwerking is voltooid, is mislukt.
 

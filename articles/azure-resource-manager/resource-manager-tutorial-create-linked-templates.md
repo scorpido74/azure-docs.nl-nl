@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 11eae0e3bae501cdf39d7fe1d5d39524c1f83e6c
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c5399f46106d94d593a15530ee0c223a3f5f3eaf
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035996"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802059"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Zelfstudie: Gekoppelde Azure Resource Manager-sjablonen maken
 
@@ -287,7 +287,7 @@ Zoals u weet uit [Zelfstudie: Azure Resource Manager-sjablonen met afhankelijke 
 
 Omdat het opslagaccount nu is gedefinieerd in de gekoppelde sjabloon, moet u de volgende twee elementen van de `Microsoft.Compute/virtualMachines`-resource bijwerken.
 
-* Configureer het `dependOn`-element opnieuw. De definitie van het opslagaccount is verplaatst naar de gekoppelde sjabloon.
+* Configureer het `dependsOn`-element opnieuw. De definitie van het opslagaccount is verplaatst naar de gekoppelde sjabloon.
 * Configureer het `properties/diagnosticsProfile/bootDiagnostics/storageUri`-element opnieuw. In [De gekoppelde sjabloon maken](#create-the-linked-template) hebt u een uitvoerwaarde toegevoegd:
 
     ```json

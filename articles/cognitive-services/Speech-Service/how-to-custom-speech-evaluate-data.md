@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: bd8bbc28247ecd924db25cb4b916d1d466065606
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 77dc50df7b46aeb6ddfddf92710d576f85492471
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562869"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801542"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Nauw keurigheid van Custom Speech evalueren
 
@@ -51,11 +51,12 @@ Als u de kwaliteit van het spraak-naar-tekst basislijn model van micro soft of e
 
 Modellen naast elkaar evalueren:
 
-1. Navigeer naar **> voor spraak naar tekst Custom Speech > tests**uit te voeren.
-2. Klik op **test toevoegen**.
-3. Selecteer **nauw keurigheid evalueren**. Geef een naam en beschrijving op voor de test en selecteer uw transcriptie-gegevensset voor audio + met Human label.
-4. Selecteer Maxi maal twee modellen die u wilt testen.
-5. Klik op **Create**.
+1. Meld u aan bij de [Custom speech Portal](https://speech.microsoft.com/customspeech).
+2. Navigeer naar **> voor spraak naar tekst Custom Speech > tests**uit te voeren.
+3. Klik op **test toevoegen**.
+4. Selecteer **nauw keurigheid evalueren**. Geef een naam en beschrijving op voor de test en selecteer uw transcriptie-gegevensset voor audio + met Human label.
+5. Selecteer Maxi maal twee modellen die u wilt testen.
+6. Klik op **Create**.
 
 Nadat de test is gemaakt, kunt u de resultaten naast elkaar vergelijken.
 

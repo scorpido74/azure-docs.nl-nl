@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 06/07/2019
+ms.date: 09/06/2019
 ms.author: juliako
-ms.openlocfilehash: f4a859f1e63866a50167031569dca05de3e9af27
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 618aa58fe8553789c831ca933ae6be73843b93dd
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856315"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801386"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
@@ -34,6 +34,10 @@ Als u wilt bijhouden met de meest recente ontwikkelingen, vindt in dit artikel u
 
 Zie voor meer informatie [migratie richtlijnen voor het overstappen van Media Services versie 2 tot v3](migrate-from-v2-to-v3.md#known-issues).
 
+## <a name="september-2019"></a>September 2019
+
+Media Services v3 kondigt de preview van 24 uur x 365 dagen aan live lineaire code ring van Live Events aan.
+ 
 ## <a name="august-2019"></a>2019 augustus
 
 ### <a name="south-africa-regional-pair-is-open-for-media-services"></a>Zuid-Afrika regionale paar is geopend voor Media Services 
@@ -46,7 +50,7 @@ Zie [Clouds en regio's waarin Media Services v3 bestaat](azure-clouds-regions.md
 
 ### <a name="content-protection"></a>Inhoudsbeveiliging
 
-Wanneer inhoud die wordt beveiligd met token beperking wordt gestreamd, moeten eind gebruikers een token verkrijgen dat wordt verzonden als onderdeel van de aanvraag voor de sleutel levering. Met de functie voor het voor *komen* van tokens kunnen Media Services klanten een limiet instellen voor het aantal keren dat hetzelfde token kan worden gebruikt om een sleutel of licentie aan te vragen. Zie token replay voor [komen](content-protection-overview.md#token-replay-prevention)voor meer informatie.
+Wanneer inhoud die wordt beveiligd met token beperking wordt gestreamd, moeten eind gebruikers een token verkrijgen dat wordt verzonden als onderdeel van de aanvraag voor de sleutel levering. Met de functie voor het voor *komen van tokens* kunnen Media Services klanten een limiet instellen voor het aantal keren dat hetzelfde token kan worden gebruikt om een sleutel of licentie aan te vragen. Zie [token replay voor komen](content-protection-overview.md#token-replay-prevention)voor meer informatie.
 
 Deze functie is momenteel beschikbaar in VS Centraal en VS-West-centraal.
 
@@ -89,7 +93,7 @@ Zie [Clouds en regio's waarin Media Services v3 bestaat](azure-clouds-regions.md
 Er zijn updates toegevoegd die Media Services prestatie verbeteringen bevatten.
 
 * De maximale bestands grootte die wordt ondersteund voor de verwerking, is bijgewerkt. Zie, [quota's en beperkingen](limits-quotas-constraints.md).
-* De versleutelings [snelheid wordt verbeterd](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
+* De [versleutelings snelheid wordt verbeterd](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
 
 ## <a name="april-2019"></a>April 2019
 
@@ -143,7 +147,7 @@ De CLI 2,0-module is nu beschikbaar voor [Azure Media Services v3 ga](https://do
 - [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
 - [AZ AMS streaming-Endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
 - [AZ AMS streaming-Locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [AZ AMS account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) -Hiermee kunt u gereserveerde media-eenheden beheren. Zie gereserveerde media- [eenheden schalen](media-reserved-units-cli-how-to.md)voor meer informatie.
+- [AZ AMS account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) -Hiermee kunt u gereserveerde media-eenheden beheren. Zie [gereserveerde media-eenheden schalen](media-reserved-units-cli-how-to.md)voor meer informatie.
 
 ### <a name="new-features-and-breaking-changes"></a>Nieuwe functies en belang rijke wijzigingen
 
@@ -255,7 +259,7 @@ Als u activa of account filters hebt gemaakt tussen 09/28 en 10/12 met Media Ser
 De volgende functies zijn aanwezig in de .NET SDK:
 
 * **Trans formaties** en **taken** voor het coderen of analyseren van media-inhoud. Zie voor voor beelden [stroom bestanden](stream-files-tutorial-with-api.md) en [analyseren](analyze-videos-tutorial-with-api.md).
-* **Streaming** -Locators voor het publiceren en streamen van inhoud op apparaten van eind gebruikers
+* **Streaming-Locators** voor het publiceren en streamen van inhoud op apparaten van eind gebruikers
 * **Stroomsgewijze beleids regels** en **beleids regels voor inhouds sleutels** voor het configureren van key delivery and Content Protection (DRM) bij het leveren van inhoud.
 * **Live Events** en **Live outputs** voor het configureren van de opname en het archiveren van inhoud voor live streamen.
 * **Activa** voor het opslaan en publiceren van media-inhoud in azure Storage. 

@@ -4,19 +4,19 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: b6ea8c7b3a6374572c8bd31e3c62b788efbafcbc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 7f7dc1483002c2bdfe3227a8aade8dbf2a8da417
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176689"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70803003"
 ---
 ## <a name="obtain-an-azure-resource-manager-token"></a>Een Azure Resource Manager-token verkrijgen
-Alle taken die u uitvoert op resources met behulp van Azure Resource Manager moeten worden geverifieerd door Azure Active Directory. In het voorbeeld hieronder wordt wachtwoordverificatie gebruikt, gebruikt voor andere methoden raadpleegt [verificatie van Azure Resource Manager-aanvragen][lnk-authenticate-arm].
+Azure Active Directory moet alle taken verifiëren die u uitvoert op resources met behulp van de Azure Resource Manager. In het voor beeld dat hier wordt weer gegeven, wordt wachtwoord verificatie gebruikt voor andere benaderingen Zie [verifiëren Azure Resource Manager aanvragen][lnk-authenticate-arm].
 
-1. Voeg de volgende code aan de **Main** methode in Program.cs om op te halen van een token uit Azure AD met behulp van de toepassings-id en het wachtwoord.
+1. Voeg de volgende code toe aan de methode **Main** in Program.CS om een token op te halen uit Azure AD met behulp van de toepassings-id en het wacht woord.
    
-    ```
+    ```csharp
     var authContext = new AuthenticationContext(string.Format  
       ("https://login.microsoftonline.com/{0}", tenantId));
     var credential = new ClientCredential(applicationId, password);
@@ -29,16 +29,16 @@ Alle taken die u uitvoert op resources met behulp van Azure Resource Manager moe
       return;
     }
     ```
-2. Maak een **ResourceManagementClient** -object dat het token wordt gebruikt door de volgende code toe te voegen aan het einde van de **Main** methode:
+2. Maak een **ResourceManagementClient** -object dat gebruikmaakt van het token door de volgende code toe te voegen aan het einde van de methode **Main** :
    
-    ```
+    ```csharp
     var creds = new TokenCredentials(token.AccessToken);
     var client = new ResourceManagementClient(creds);
     client.SubscriptionId = subscriptionId;
     ```
-3. Maken of verkrijgen van een verwijzing naar de resourcegroep die u gebruikt:
+3. Maak of verkrijg een verwijzing naar de resource groep die u gebruikt:
    
-    ```
+    ```csharp
     var rgResponse = client.ResourceGroups.CreateOrUpdate(rgName,
         new ResourceGroup("East US"));
     if (rgResponse.Properties.ProvisioningState != "Succeeded")

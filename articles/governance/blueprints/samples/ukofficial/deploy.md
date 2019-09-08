@@ -8,12 +8,12 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 10d1e2fc607df205ea8922a81a1322d4121f30f7
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 21c5ad69a5e2b09e973b7b348690f554fca5dbe2
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232292"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802326"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>De NHS blauw drukken-voor beelden van het Verenigd Konink rijk en UK gebruiken
 
@@ -30,7 +30,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk in uw omgeving te maken met behulp van het voor beeld als een starter.
 
-1. Selecteer **alle services** , zoek naar en selecteer **beleid** in het linkerdeel venster. Selecteer **blauw drukken**op de pagina **beleid** .
+1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
 1. Op de pagina **aan** de slag aan de linkerkant selecteert u de knop **maken** onder _een blauw druk maken_.
 
@@ -41,7 +41,7 @@ Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk i
    - **Naam blauw druk**: Geef een naam op voor uw kopie van het voor beeld van de blauw druk.
    - **Locatie van definitie**: Gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
 
-1. Selecteer het tabblad artefacten boven aan de pagina of **volgende:**  Artefacten aan de onderkant van de pagina.
+1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende:**  Artefacten aan de onderkant van de pagina.
 
 1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. Veel van de artefacten hebben para meters die later worden gedefinieerd. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
 
@@ -49,7 +49,7 @@ Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk i
 
 Uw kopie van het voor beeld van de blauw druk is nu in uw omgeving gemaakt. Deze wordt gemaakt in de **concept** modus en moet worden **gepubliceerd** voordat deze kan worden toegewezen en geïmplementeerd. De kopie van het voor beeld van de blauw druk kan worden aangepast aan uw omgeving en behoeften, maar deze wijziging kan worden verplaatst van de standaard waarde.
 
-1. Selecteer **alle services** , zoek naar en selecteer **beleid** in het linkerdeel venster. Selecteer **blauw drukken**op de pagina **beleid** .
+1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
 1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om uw kopie van het voor beeld van de blauw druk te vinden en selecteer deze.
 
@@ -59,7 +59,7 @@ Uw kopie van het voor beeld van de blauw druk is nu in uw omgeving gemaakt. Deze
 
 Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan deze worden toegewezen aan een abonnement in de beheer groep waarop het is opgeslagen. In deze stap worden para meters opgegeven om elke implementatie van de kopie van het voor beeld van de blauw druk te maken.
 
-1. Selecteer **alle services** , zoek naar en selecteer **beleid** in het linkerdeel venster. Selecteer **blauw drukken**op de pagina **beleid** .
+1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
 1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om uw kopie van het voor beeld van de blauw druk te vinden en selecteer deze.
 
@@ -98,7 +98,7 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 
 Naam van het artefact|Type artefact|Parameternaam|Description|
 |-|-|-|-|
-|De blauw druk-initiatief voor de officiële of UK NHS|Beleidstoewijzing |Bron typen voor het controleren van Diagnostische logboeken (beleid: Blauw druk-initiatief voor UK-officiële of UK NHS) |Lijst met resource typen om te controleren of de instelling voor Diagnostische logboeken is ingeschakeld.  Zie [ondersteunde services, schema's en categorieën voor Azure Diagnostic](../../../../azure-monitor/platform/diagnostic-logs-schema.md)-logboeken voor acceptabele waarden. |
+|De blauw druk-initiatief voor de officiële of UK NHS|Beleidstoewijzing |Bron typen voor het controleren van Diagnostische logboeken (beleid: Blauw druk-initiatief voor UK-officiële of UK NHS) |Lijst met resource typen om te controleren of de instelling voor Diagnostische logboeken is ingeschakeld.  Zie [ondersteunde services, schema's en categorieën voor Azure Diagnostic-logboeken](../../../../azure-monitor/platform/diagnostic-logs-schema.md)voor acceptabele waarden. |
 |\[Voor\]beeld: Log Analytics-agent voor Linux-Vm's implementeren |Beleidstoewijzing |Optioneel: Lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik (beleid: \[Voor\]beeld: Log Analytics-agent voor Linux Vm's implementeren) |Beschrijving De standaard waarde is _geen_. Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
 |\[Voor\]beeld: Log Analytics-agent voor Windows-Vm's implementeren |Beleidstoewijzing |Optioneel: Lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik (beleid: \[Voor\]beeld: Log Analytics-agent voor Windows-Vm's implementeren) |Beschrijving De standaard waarde is _geen_. Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
 
@@ -112,7 +112,7 @@ Nu u de stappen voor het implementeren van de voor beelden van de UK-officiële 
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
-- Meer informatie over de [levens duur van de blauw druk](../../concepts/lifecycle.md).
+- Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.
 - Meer informatie over hoe u de [blauwdrukvolgorde](../../concepts/sequencing-order.md) aanpast.
 - Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](../../concepts/resource-locking.md).

@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services LiveEvent typen | Microsoft Docs
-description: In dit artikel bevat een uitgebreide tabel waarin LiveEvent typen vergeleken.
+title: LiveEvent-typen Azure Media Services | Microsoft Docs
+description: Dit artikel bevat een gedetailleerde tabel waarin LiveEvent-typen worden vergeleken.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,63 +13,63 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 93f01513841d1174fea796f1615ab05df0a41af4
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 884cf8d913cec038df3b38c8af2ed0a67bd8060d
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150387"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802247"
 ---
-# <a name="live-event-types-comparison"></a>Vergelijking van de typen Live gebeurtenis
+# <a name="live-event-types-comparison"></a>Vergelijking van live gebeurtenis typen
 
-In Azure Media Services, een [Live gebeurtenis](https://docs.microsoft.com/rest/api/media/liveevents) kan bestaan uit een van de twee typen: live codering en Pass Through-query. 
+In Azure Media Services kan een [live-gebeurtenis](https://docs.microsoft.com/rest/api/media/liveevents) een van de volgende twee typen zijn: Live encoding en Pass through. 
 
 ## <a name="types-comparison"></a>Typen vergelijking 
 
-De volgende tabel vergelijkt de functies van de Live gebeurtenis typen. De typen zijn ingesteld tijdens het maken met behulp van [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype):
+In de volgende tabel worden de functies van de live-gebeurtenis typen vergeleken. De typen worden tijdens het maken ingesteld met behulp van [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype):
 
-* **LiveEventEncodingType.None** - An on-premises live encoder sends a multiple bitrate stream. De opgenomen streams wordt doorgegeven via de Live gebeurtenis zonder verdere verwerking. 
-* **LiveEventEncodingType.Standard** : een on-premises live codering verzendt een single-bitrate stream aan de Live gebeurtenis en Media Services wordt gemaakt van meerdere bitrate streams. Als de feed van de bijdrage van 720p of hogere resolutie, is de **Default720p** definitie wordt een set 6 resolutie/bitrate paren (meer informatie volgt later in dit artikel) coderen.
-* **LiveEventEncodingType.Premium1080p** : een on-premises live codering verzendt een single-bitrate stream aan de Live gebeurtenis en Media Services wordt gemaakt van meerdere bitrate streams. De definitie Default1080p Hiermee geeft u de uitvoer set resolutie/bitrate paren (meer informatie volgt later in dit artikel). 
+* **LiveEventEncodingType. none** : een on-premises Live coderings programma verzendt een stream met meerdere bitrates. De opgenomen streams passeren de live-gebeurtenis zonder verdere verwerking. 
+* **LiveEventEncodingType. Standard** : een on-premises Live coderings programma verzendt een stream met één bitsnelheid naar de live-gebeurtenis en Media Services maakt meerdere bitrate-streams. Als de bijdrage-feed van 720p of hoger is, wordt met de voor instelling **Default720p** een set van 6 omzetting/bitrate-paren gecodeerd (Details worden verderop in het artikel beschreven).
+* **LiveEventEncodingType. Premium1080p** : een on-premises Live coderings programma verzendt een stream met één bitsnelheid naar de live-gebeurtenis en Media Services maakt meerdere bitrate-streams. Met de Default1080p-voor instelling wordt de uitvoerset met omzettingen/bitrate-paren opgegeven (verderop in dit artikel vindt u meer informatie). 
 
-| Functie | Pass Through-Live-gebeurtenis | Standard of Premium1080p Live-gebeurtenis |
+| Functie | Pass-through live-gebeurtenis | Standard-of Premium1080p live-gebeurtenis |
 | --- | --- | --- |
-| Single-bitrate-invoer is gecodeerd in meerdere bitsnelheden in de cloud |Nee |Ja |
-| Maximale beeldschermresolutie voor bijdrage feed |4K (4096 x 2160 op 60 frames per seconde) |1080p (1920 x 1088 op 30 frames per seconde)|
-| Aanbevolen maximale lagen in bijdrage feed|Maximaal 12|Een audio|
-| Maximum aantal lagen in de uitvoer| Hetzelfde als invoer|Maximaal 6 (Zie onderstaande systeemwaarden)|
-| Maximale cumulatieve bandbreedte van de bijdrage van feed|60 Mbps|N/A|
-| Maximale bitrate voor één laag van de bijdrage |20 Mbps|20 Mbps|
-| Ondersteuning voor meerdere talen audionummers|Ja|Nee|
-| Ondersteunde invoer videocodecs |H.264/AVC en H.265/HEVC|H.264/AVC|
-| Ondersteunde uitvoer videocodecs|Hetzelfde als invoer|H.264/AVC|
-| Ondersteunde diepte van de video bits, invoer en uitvoer|Maximaal 10-bits inclusief Kopregel 10/HLG|8-bit|
-| Ondersteunde invoer audio-codecs|AAC-LC, hij AAC v1, v2 HE-AAC|AAC-LC, hij AAC v1, v2 HE-AAC|
-| Ondersteunde uitvoer audio-codecs|Hetzelfde als invoer|AAC-LC|
-| Maximale beeldschermresolutie van uitvoervideo|Hetzelfde als invoer|Standard - 720p, Premium1080p - 1080p|
-| Maximale framesnelheid van invoervideo|60 frames per seconde|Standard of Premium1080p - 30 frames per seconde|
-| Invoer-protocollen|RTMP, gefragmenteerde MP4 (Smooth Streaming)|RTMP, gefragmenteerde MP4 (Smooth Streaming)|
-| Prijs|Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/media-services/) en klik op het tabblad "Live Video"|Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/media-services/) en klik op het tabblad "Live Video"|
-| Maximale uitvoeringstijd| 24 uur x 365 dagen live lineaire | Maximaal 24 uur|
-| Mogelijkheid om door te geven tot en met ingesloten CEA 608/708 bijschriften gegevens|Ja|Ja|
-| Ondersteuning voor slates invoegen|Nee|Nee|
-| Ondersteuning voor ad via de API-signalering| Nee|Nee|
-| Ondersteuning voor ad-signalering via SCTE 35 in-band-berichten|Ja|Ja|
-| Mogelijkheid om te herstellen van korte vertragingen in bijdrage feed|Ja|Gedeeltelijke|
-| Ondersteuning voor niet-uniforme invoer GOPs|Ja|Nee – invoer GOP duur moet opgelost|
-| Ondersteuning voor variabele frame tarief invoer|Ja|Nee – moet dat invoer framesnelheid worden opgelost. Kleine variaties zijn toegestaan, bijvoorbeeld tijdens hoge beweging schermen. Maar de feed bijdrage kan de framesnelheid niet verwijderen (bijvoorbeeld tot en met 15 frames per seconde).|
-| Automatisch-signalen van Live gebeurtenis als invoer-kanaal is verbroken|Nee|Na 12 uur, als er geen LiveOutput uitgevoerd|
+| Invoer met één bitsnelheid wordt gecodeerd in meerdere bitrates in de Cloud |Nee |Ja |
+| Maximale video resolutie voor invoer van contributie |4\.000 (4096x2160 bij 60 frames per seconde) |1080p (1920x1088 bij 30 frames per seconde)|
+| Aanbevolen maximum aantal lagen in de invoer van bijdragen|Maxi maal 12|Eén audio|
+| Maximum aantal lagen in uitvoer| Hetzelfde als invoer|Maxi maal 6 (zie onderstaande systeem instellingen)|
+| Maximale cumulatieve band breedte van invoer voor bijdragen|60 Mbps|N/A|
+| Maximale bitrate voor één laag in de bijdrage |20 Mbps|20 Mbps|
+| Ondersteuning voor audio tracks met meerdere talen|Ja|Nee|
+| Ondersteunde video-codecs voor invoer |H. 264/AVC en H. 265/HEVC|H.264/AVC|
+| Ondersteunde video-codecs voor uitvoer|Hetzelfde als invoer|H.264/AVC|
+| Ondersteunde bitdiepte, invoer en uitvoer van video|Maxi maal 10 bits inclusief HDR 10/HLG|8-bits|
+| Ondersteunde codecs voor audio-invoer|AAC-LC, hij-AAC v1, HE-AAC v2|AAC-LC, hij-AAC v1, HE-AAC v2|
+| Ondersteunde codecs voor uitvoer audio|Hetzelfde als invoer|AAC-LC|
+| Maximale video resolutie van uitvoer video|Hetzelfde als invoer|Standard-720p, Premium1080p-1080p|
+| Maximale frame frequentie van invoer video|60 frames per seconde|Standard-of Premium1080p-30-frames per seconde|
+| Invoer protocollen|RTMP, gefragmenteerd-MP4 (Smooth Streaming)|RTMP, gefragmenteerd-MP4 (Smooth Streaming)|
+| Prijs|Bekijk de [pagina met prijzen](https://azure.microsoft.com/pricing/details/media-services/) en klik op het tabblad live video|Bekijk de [pagina met prijzen](https://azure.microsoft.com/pricing/details/media-services/) en klik op het tabblad live video|
+| Maximale uitvoerings tijd| 24 uur x 365 dagen, Live lineair | 24 uur x 365 dagen, Live lineair (preview-versie)|
+| De mogelijkheid om gegevens van Inge sloten CEA 608/708-bijschriften door te geven|Ja|Ja|
+| Ondersteuning voor het invoegen van pastels|Nee|Nee|
+| Ondersteuning voor AD-Signa lering via API| Nee|Nee|
+| Ondersteuning voor AD-Signa lering via SCTE-35 in-band-berichten|Ja|Ja|
+| Mogelijkheid om te herstellen van korte hokjes in een bijdrager|Ja|Gedeeltelijke|
+| Ondersteuning voor niet-uniforme invoer GOPs|Ja|Nee: de duur van de invoer moet een vaste GOP terug hebben|
+| Ondersteuning voor variabele frame-rate invoer|Ja|Nee – invoer moet een vaste frame frequentie zijn. Kleine variaties zijn toegestaan, bijvoorbeeld tijdens hoge bewegende scènes. Maar de bijdrage feed kan de frame frequentie niet verwijderen (bijvoorbeeld op 15 frames per seconde).|
+| Automatische shutoff van live gebeurtenis wanneer invoer toevoer verloren gaat|Nee|Na 12 uur, als er geen LiveOutput wordt uitgevoerd|
 
-## <a name="system-presets"></a>Systeemwaarden
+## <a name="system-presets"></a>Systeem instellingen
 
-De oplossingen en bitrates die is opgenomen in de uitvoer van het live coderingsprogramma worden bepaald door de [presetName](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencoding). Als een **Standard** live coderingsprogramma (LiveEventEncodingType.Standard), dan zal de *Default720p* vooraf ingestelde geeft een reeks van 6 resolutie/bitrate-paren die hieronder worden beschreven. Als u met behulp van een **Premium1080p** live coderingsprogramma (LiveEventEncodingType.Premium1080p), dan zal de *Default1080p* definitie Hiermee geeft u de uitvoer set van oplossing/bitrate-paren.
+De resoluties en bitrates die zijn opgenomen in de uitvoer van het Live coderings programma, worden bepaald door de [standaard instelling](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencoding). Als u gebruikmaakt van een **standaard** Live coderings programma (LiveEventEncodingType. Standard), geeft de *Default720p* -voor instelling een set van 6 omzetting/bitrate-paren die hieronder worden beschreven. Als u een **Premium1080p** Live-coderings programma (LiveEventEncodingType. Premium1080p) gebruikt, geeft de *Default1080p* -voor instelling de uitvoerset van de combi natie van Resolution/bitrate op.
 
 > [!NOTE]
-> U kunt de Default1080p vooraf ingesteld op een Live gebeurtenis als deze is ingesteld voor live codering standaard: u een foutmelding krijgt niet toepassen. U krijgt een foutmelding als u probeert toe te passen van de vooraf ingesteld op een live coderingsprogramma Premium1080p Default720p.
+> U kunt de voor instelling Default1080p niet Toep assen op een live gebeurtenis als deze is ingesteld voor standaard Live encoding. er wordt een fout bericht weer geven. Er wordt ook een fout bericht weer geven als u probeert de Default720p-voor instelling toe te passen op een Premium1080p-Live coderings programma.
 
-### <a name="output-video-streams-for-default720p"></a>Video aan de uitvoerstromen voor Default720p
+### <a name="output-video-streams-for-default720p"></a>Video stromen uitvoeren voor Default720p
 
-Als de feed van de bijdrage van 720p of hogere resolutie, is de **Default720p** definitie wordt de feed in de volgende 6 lagen coderen. In de onderstaande tabel is de Bitrate in kbps, MaxFPS vertegenwoordigt die maximale toegestane framesnelheid (in frames per seconde), profiel vertegenwoordigt de H.264-profiel dat wordt gebruikt.
+Als de bijdrager is van 720p of hoger, wordt de feed door de voor instelling **Default720p** in de volgende 6 lagen gecodeerd. In de onderstaande tabel is de bitsnelheid in kbps, MaxFPS staat voor de Maxi maal toegestane frame frequentie (in frames/seconde), het profiel vertegenwoordigt het H. 264-profiel dat wordt gebruikt.
 
 | Bitrate | Breedte | Hoogte | MaxFPS | Profiel |
 | --- | --- | --- | --- | --- |
@@ -81,12 +81,12 @@ Als de feed van de bijdrage van 720p of hogere resolutie, is de **Default720p** 
 | 200 |340 |192 |30 |Hoog |
 
 > [!NOTE]
-> Als u nodig hebt om aan te passen van de live voorinstelling voor encoding, opent u een ondersteuningsticket via Azure Portal. Geef de gewenste tabel met resoluties en bitrates op. Controleer of er slechts één laag is op 720 p, en maximaal zes lagen. Ook moet u opgeven dat u hebt een vooraf ingestelde aangevraagd voor een live codering-standaard.
-> De specifieke waarden van de bitsnelheden en oplossingen kunnen worden aangepast na verloop van tijd
+> Als u de voor instelling voor Live encoding wilt aanpassen, opent u een ondersteunings ticket via Azure Portal. Geef de gewenste tabel met resoluties en bitrates op. Controleer of er slechts één laag is op 720 p, en maximaal zes lagen. U kunt ook opgeven dat u een voor instelling voor een Standard-coderings programma aanvraagt.
+> De specifieke waarden van de bitsnelheden en resoluties kunnen na verloop van tijd worden aangepast
 
-### <a name="output-video-streams-for-default1080p"></a>Video aan de uitvoerstromen voor Default1080p
+### <a name="output-video-streams-for-default1080p"></a>Video stromen uitvoeren voor Default1080p
 
-Als de feed van de bijdrage van 1080p resolutie, is de **Default1080p** definitie wordt de feed in de volgende 6 lagen coderen.
+Als de bijdrage-feed van de 1080p-resolutie is, wordt de feed door de voor instelling **Default1080p** in de volgende 6 lagen gecodeerd.
 
 | Bitrate | Breedte | Hoogte | MaxFPS | Profiel |
 | --- | --- | --- | --- | --- |
@@ -98,35 +98,35 @@ Als de feed van de bijdrage van 1080p resolutie, is de **Default1080p** definiti
 | 200 |320 |180 |30 |Hoog |
 
 > [!NOTE]
-> Als u nodig hebt om aan te passen van de live voorinstelling voor encoding, opent u een ondersteuningsticket via Azure Portal. Geef de gewenste tabel met resoluties en bitrates op. Controleer of er slechts één laag bij 1080p en maximaal 6 lagen. Ook moet u opgeven dat u een definitie voor een live coderingsprogramma Premium1080p aanvraagt.
-> De specifieke waarden van de bitsnelheden en oplossingen kunnen na verloop van tijd worden aangepast.
+> Als u de voor instelling voor Live encoding wilt aanpassen, opent u een ondersteunings ticket via Azure Portal. Geef de gewenste tabel met resoluties en bitrates op. Controleer of er slechts één laag is op 1080p en Maxi maal 6 lagen. U kunt ook opgeven dat u een voor instelling voor een Premium1080p Live-coderings programma aanvraagt.
+> De specifieke waarden van de bitsnelheden en resoluties kunnen na verloop van tijd worden aangepast.
 
-### <a name="output-audio-stream-for-default720p-and-default1080p"></a>Uitvoer Audio Stream voor Default720p en Default1080p
+### <a name="output-audio-stream-for-default720p-and-default1080p"></a>Audio stroom voor uitvoer voor Default720p en Default1080p
 
-Voor beide *Default720p* en *Default1080p* presets, audio naar stereo AAC-LC op 128 k is gecodeerd. De samplefrequentie volgt die van het audiospoor in de bijdrage van de feed.
+Voor zowel *Default720p* -als *Default1080p* -voor instellingen wordt audio gecodeerd naar stereo AAC-LC om 128 kbps. De sampling frequentie volgt die van het audio spoor in de bijdrager.
 
-## <a name="implicit-properties-of-the-live-encoder"></a>Impliciete eigenschappen van het live coderingsprogramma
+## <a name="implicit-properties-of-the-live-encoder"></a>Impliciete eigenschappen van het Live coderings programma
 
-De vorige sectie beschrijft de eigenschappen van het live coderingsprogramma die expliciet, kunnen worden beheerd via de definitie -, zoals het aantal lagen, oplossingen en bitrates. In deze sectie wordt uitleg gegeven over de impliciete eigenschappen.
+In de vorige sectie worden de eigenschappen beschreven van het Live coderings programma dat expliciet kan worden beheerd via de vooraf ingestelde waarde, zoals het aantal lagen, resoluties en bitrates. In deze sectie worden de impliciete eigenschappen verduidelijkt.
 
-### <a name="group-of-pictures-gop-duration"></a>Groep van de duur van de afbeeldingen (GOP)
+### <a name="group-of-pictures-gop-duration"></a>De duur van de groep afbeeldingen (GOP terug)
 
-Het live coderingsprogramma volgt de [GOP](https://en.wikipedia.org/wiki/Group_of_pictures) structuur van de bijdrage feed - wat betekent dat de uitvoer-lagen hebben dezelfde GOP duur. Daarom is het aanbevolen dat u de on-premises coderingsprogramma te produceren van een bijdrage feed vaste GOP duur (meestal 2 seconden) configureren. Dit zorgt ervoor dat de uitgaande HLS en MPEG-DASH-streams van de service is verholpen, ook GOP duur. Kleine variaties faciliteren voor de duur van GOP waarschijnlijk worden toegestaan door de meeste apparaten.
+In het Live coderings programma wordt de [GOP terug](https://en.wikipedia.org/wiki/Group_of_pictures) -structuur van de contributie feed gevolgd, wat betekent dat de uitvoer lagen dezelfde GOP terug-duur hebben. Daarom is het raadzaam om de on-premises encoder te configureren voor het produceren van een contributie met vaste duur van de GOP terug (meestal 2 seconden). Dit zorgt ervoor dat de uitgaande HLS-en MPEG-streep stromen van de service ook een vaste GOP terug-duur hebben. Kleine variaties in GOP terug-duur worden waarschijnlijk door de meeste apparaten toegestaan.
 
 ### <a name="frame-rate"></a>Framesnelheid
 
-Het live coderingsprogramma volgt ook de duur van de afzonderlijke videoframes in de feed - bijdrage wat betekent dat de uitvoer-lagen heeft frames met de dezelfde duur. Daarom wordt aanbevolen dat u de on-premises coderingsprogramma te produceren van een bijdrage feed vaste framesnelheid configureert (maximaal 30 frames per seconde). Dit zorgt ervoor dat de uitgaande HLS en MPEG-DASH-streams van de service ook is verholpen, frame tarieven duur. Kleine variaties in framesnelheden kunnen worden toegestaan door de meeste apparaten, maar er is geen garantie dat het live coderingsprogramma levert een uitvoer die worden afgespeeld. Uw on-premises live coderingsprogramma moet niet worden beelden (bv. voorwaarden van de batterij laag) of de framesnelheid op geen enkele manier wijzigen.
+De Live coderings Programma's volgen ook de duur van de afzonderlijke video frames in de bijdrage-invoer, wat betekent dat de uitvoer lagen frames met dezelfde duur hebben. Daarom is het raadzaam om de on-premises encoder te configureren voor het maken van een contributie met een vaste frame snelheid (Maxi maal 30 frames per seconde). Dit zorgt ervoor dat de uitgaande HLS-en MPEG-streep stromen van de service ook de duur van een vaste frame snelheid hebben. Kleine variaties in de frame snelheid kunnen worden toegestaan door de meeste apparaten, maar er is geen garantie dat de Live Encoder een uitvoer produceert die correct wordt afgespeeld. Uw on-premises Live Encoder mag geen frames verwijderen (bijvoorbeeld onder lage accu omstandigheden) of de frame frequentie op een wille keurige manier te variëren.
 
-### <a name="resolution-of-contribution-feed-and-output-layers"></a>Resolutie van de bijdrage van invoer en uitvoer lagen
+### <a name="resolution-of-contribution-feed-and-output-layers"></a>Oplossing voor invoer van bijdragen en uitvoer lagen
 
-Het live coderingsprogramma is geconfigureerd om te voorkomen dat upconverting bijdrage van de feed. Als gevolg hiervan de maximale resolutie van de uitvoer-lagen wordt niet langer zijn dan die van de bijdrage feed.
+Het Live coderings programma is geconfigureerd om te voor komen dat de contributie wordt geconverteerd. Als gevolg hiervan is de maximale resolutie van de uitvoer lagen niet groter dan die van de contributie feed.
 
-Bijvoorbeeld, als u een bijdrage op 720p-kanaal verzenden een Live gebeurtenis geconfigureerd voor Default1080p live codering, de uitvoer heeft alleen 5 lagen, beginnend met 720p op 3 Mbps, Ga omlaag naar 1080 p op 200 kbps. Of als u een bijdrage aan 360p-kanaal verzenden in een Live gebeurtenis geconfigureerd voor Standard live codering, de uitvoer bevat 3 lagen (met een resolutie van 288p, 216p en 192p). In het geval losstaande als u een bijdrage-feed van 160 x 90 pixels bijvoorbeeld naar een live codering-standaard, stuurt bevat de uitvoer één laag resolutie van 160 x 90 op de dezelfde bitrate als die van de bijdrage van de feed.
+Als u bijvoorbeeld een contributie verzendt op 720p naar een live-gebeurtenis die is geconfigureerd voor Default1080p Live encoding, heeft de uitvoer slechts vijf lagen, beginnend met 720p op 3Mbps, tot 1080p om 200 kbps. Of als u een contributie verzendt naar 360p in een live-gebeurtenis die is geconfigureerd voor standaard Live-code ring, bevat de uitvoer 3 lagen (bij resoluties van 288p, 216p en 192p). Als u in de aanvraag voor het decoderen een bijdrage verzendt naar een 160x90 van een standaard-Live Encoder, bevat de uitvoer één laag bij 160x90 resolutie op dezelfde bitrate als die van de bijdrage toevoer.
 
-### <a name="bitrate-of-contribution-feed-and-output-layers"></a>Bitrate van de bijdrage van invoer en uitvoer lagen
+### <a name="bitrate-of-contribution-feed-and-output-layers"></a>Bitrate voor invoer van bijdragen en uitvoer lagen
 
-Het live coderingsprogramma is geconfigureerd om te voldoen aan de bitrate-instellingen in de vooraf gedefinieerde instellingen, ongeacht de bitrate van de bijdrage feed. Als gevolg hiervan de bitrate van de uitvoer-lagen kan groter zijn dan die van de bijdrage feed. Bijvoorbeeld, als u in een feed met een resolutie van 720p met 1 Mbps bijdrage verzendt, de uitvoer-lagen blijven hetzelfde als in de [tabel](live-event-types-comparison.md#output-video-streams-for-default720p) hierboven.
+Het Live coderings programma is zo geconfigureerd dat de instellingen voor de bitrate in de voor instelling worden nageleefd, ongeacht de bitsnelheid van de contributie. Als gevolg hiervan kan de bitrate van de uitvoer lagen groter zijn dan die van de contributie feed. Als u bijvoorbeeld een contributie verzendt met een oplossing van 720p met 1 Mbps, blijft de uitvoer lagen hetzelfde als in de bovenstaande [tabel](live-event-types-comparison.md#output-video-streams-for-default720p) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Overzicht van live streaming](live-streaming-overview.md)
+[Overzicht van live streamen](live-streaming-overview.md)

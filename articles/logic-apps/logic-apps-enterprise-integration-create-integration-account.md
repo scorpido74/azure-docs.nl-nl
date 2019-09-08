@@ -11,16 +11,16 @@ manager: carmonm
 ms.assetid: d3ad9e99-a9ee-477b-81bf-0881e11e632f
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 55843f9acaafa0c5963cfac735fdb92eeeacdc02
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: be0f534e6770cde561f18bfcb310524a7c506416
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982935"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801284"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-by-using-azure-logic-apps"></a>Integratie accounts voor B2B-oplossingen maken en beheren met behulp van Azure Logic Apps
 
-Voordat u [bedrijfs integratie-en B2B-oplossingen](../logic-apps/logic-apps-enterprise-integration-overview.md) kunt bouwen met behulp van [Azure Logic apps](../logic-apps/logic-apps-overview.md), moet u een integratie account maken. Dit is een afzonderlijke Azure-resource die een veilige, schaal bare en beheersbare container biedt voor de integratie artefacten die u definieert en gebruikt met uw logische app-werk stromen.
+Voordat u [bedrijfsintegratie en B2B-oplossingen](../logic-apps/logic-apps-enterprise-integration-overview.md) kunt bouwen met behulp van [Azure Logic Apps](../logic-apps/logic-apps-overview.md), moet u een integratieaccount maken. Dit is een afzonderlijke Azure-resource die een veilige, schaalbare en beheerbare container biedt voor de integratieartefacten die u definieert en gebruikt met de werkstromen in uw logische app.
 
 U kunt B2B-artefacten bijvoorbeeld maken, opslaan en beheren, zoals handels partners, overeenkomsten, kaarten, schema's, certificaten en batch configuraties. Voordat uw logische app met deze artefacten kan werken en de Logische apps B2B-connectors gebruikt, moet u ook [uw integratie account koppelen](#link-account) aan uw logische app. Het integratie account en de logische app moeten zich op *dezelfde* locatie of regio bevinden.
 
@@ -80,7 +80,7 @@ Voor deze taak kunt u de Azure Portal gebruiken door de stappen in deze sectie, 
 
 ## <a name="link-to-logic-app"></a>Koppeling naar logische app
 
-Om uw Logic apps toegang te geven tot een integratie account dat uw B2B-artefacten bevat, moet u eerst uw integratie account koppelen aan uw logische app. Zowel de logische app als het integratie account moeten zich in dezelfde regio bevinden. Voor deze taak kunt u de Azure Portal gebruiken door de stappen in deze sectie te volgen.
+Om uw Logic apps toegang te geven tot een integratie account dat uw B2B-artefacten bevat, moet u eerst uw integratie account koppelen aan uw logische app. Zowel de logische app als het integratie account moeten zich in dezelfde regio bevinden. U kunt de Azure Portal gebruiken om deze taak te volt ooien. Als u Visual Studio gebruikt en uw logische app zich in een [Azure-resource groeps project](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)bevindt, kunt u [uw logische app koppelen aan een integratie account met behulp van Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md#link-integration-account).
 
 1. Zoek en open uw logische app in de Azure Portal.
 

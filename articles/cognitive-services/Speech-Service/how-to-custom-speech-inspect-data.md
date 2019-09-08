@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b58f9c17995128091b5c4badd228356dbacc6ae9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0b5f064204c5bca35ccb1a628cb06978180c318c
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562851"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801460"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech gegevens controleren
 
 > [!NOTE]
 > Op deze pagina wordt ervan uitgegaan dat u [test gegevens voorbereiden voor Custom speech](how-to-custom-speech-test-data.md) hebt gelezen en een gegevensset hebt geüpload voor inspectie.
 
-Custom Speech biedt hulp middelen waarmee u de herkennings kwaliteit van een model visueel kunt controleren door audio gegevens te vergelijken met het bijbehorende herkennings resultaat. Vanuit de Custom Speech Portal kunt u geüploade audio afspelen en bepalen of het gegeven herkennings resultaat juist is. Met dit hulp programma kunt u snel de kwaliteit van het spraak-naar-tekst model van micro soft of een getraind aangepast model controleren zonder dat u audio gegevens hoeft te transcriberen.
+Custom Speech biedt hulp middelen waarmee u de herkennings kwaliteit van een model visueel kunt controleren door audio gegevens te vergelijken met het bijbehorende herkennings resultaat. Vanuit de [Custom speech Portal](https://speech.microsoft.com/customspeech)kunt u geüploade audio afspelen en bepalen of het gegeven herkennings resultaat juist is. Met dit hulp programma kunt u snel de kwaliteit van het spraak-naar-tekst model van micro soft of een getraind aangepast model controleren zonder dat u audio gegevens hoeft te transcriberen.
 
 In dit document leert u hoe u de kwaliteit van een model visueel kunt controleren met behulp van de trainings gegevens die u eerder hebt geüpload.
 
@@ -32,11 +32,12 @@ Op deze pagina leert u hoe u de kwaliteit van het spraak-naar-tekst model van mi
 
 Volg deze instructies om een test te maken:
 
-1. Navigeer naar **> voor spraak naar tekst Custom Speech > tests**uit te voeren.
-2. Klik op **test toevoegen**.
-3. Selecteer **kwaliteit controleren (alleen audio gegevens)** . Geef de test een naam, beschrijving en selecteer uw audio gegevensset.
-4. Selecteer Maxi maal twee modellen die u wilt testen.
-5. Klik op **Create**.
+1. Meld u aan bij de [Custom speech Portal](https://speech.microsoft.com/customspeech).
+2. Navigeer naar **> voor spraak naar tekst Custom Speech > tests**uit te voeren.
+3. Klik op **test toevoegen**.
+4. Selecteer **kwaliteit controleren (alleen audio gegevens)** . Geef de test een naam, beschrijving en selecteer uw audio gegevensset.
+5. Selecteer Maxi maal twee modellen die u wilt testen.
+6. Klik op **Create**.
 
 Nadat een test is gemaakt, kunt u de modellen naast elkaar vergelijken.
 

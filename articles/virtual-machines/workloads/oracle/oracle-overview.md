@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
-ms.openlocfilehash: e9e37c54668ec0343cbfd45e51e90216955b46c4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d8fed68d9b830df359f8129d55f1b9911f69e8f1
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100026"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802255"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Overzicht van Oracle-toepassingen en-oplossingen op Azure
 
@@ -26,13 +26,13 @@ Dit artikel bevat een inleiding tot het uitvoeren van Oracle-oplossingen met beh
 
 ## <a name="oracle-databases-on-azure-infrastructure"></a>Oracle-data bases in azure-infra structuur
 
-Voer Oracle-data bases uit op de Azure-infra structuur met behulp van Linux-installatie kopieën die beschikbaar zijn in
+Voer Oracle-data bases uit op de Azure-infra structuur met Oracle Database op Oracle Linux installatie kopieën die beschikbaar zijn in azure Marketplace:
 
 * Oracle Database 12,1, 12,2 en 18,3 Enter prise Edition 
 
 * Oracle Database 12,1, 12,2 en 18,3 Standard Edition 
 
-U kunt er ook voor kiezen om een oplossing te baseren op een aangepaste installatie kopie die u helemaal zelf maakt in azure of een aangepaste installatie kopie uploadt vanuit uw on-premises omgeving.
+U kunt er ook voor kiezen om Oracle Database in te stellen op een niet-Oracle Linux installatie kopie die beschikbaar is in azure, een oplossing baseren op een aangepaste installatie kopie die u helemaal zelf maakt in azure of een aangepaste installatie kopie uit uw on-premises omgeving kunt uploaden.
 
 Optioneel configureren met meerdere gekoppelde schijven en de database prestaties verbeteren door het installeren van Oracle Automated Storage Management (ASM).
 
@@ -46,11 +46,17 @@ Voer bedrijfs toepassingen uit in azure op ondersteunde Oracle-besturings system
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>Opties voor hoge Beschik baarheid en herstel na nood gevallen
 
-* Configureer Oracle Data Guard, Active Data Guard of Golden Gate op Azure Infrastructure in combi natie met [Beschikbaarheidszones](../../../availability-zones/az-overview.md) voor hoge Beschik baarheid.
+* Configureer [Oracle Data Guard](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956), [Active Data Guard met FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html), [sharding](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html) of [Golden Gate](https://www.oracle.com/middleware/technologies/goldengate.html) op Azure Infrastructure in combi natie met [Beschikbaarheidszones](../../../availability-zones/az-overview.md) voor hoge Beschik baarheid in de regio. U kunt deze configuraties ook instellen in meerdere Azure-regio's voor extra Beschik baarheid en herstel na nood gevallen.
 
 * Gebruik [Azure site Recovery](../../../site-recovery/site-recovery-overview.md) om herstel na nood gevallen voor uw Oracle Linux Vm's in Azure en uw on-premises of fysieke servers te organiseren en te beheren. 
 
-* Maak Oracle Real Application Clusters (RAC) in azure met behulp van [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/).
+* Gebruik [Azure VMware-oplossing](https://docs.azure.cloudsimple.com/oracle-rac/) of [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)om Oracle Real Application Clusters (RAC) in Azure in te scha kelen.
+
+## <a name="backup-oracle-workloads"></a>Back-ups van Oracle-workloads
+
+* Maak een back-up van uw Oracle-Vm's met [Azure backup](https://docs.microsoft.com/en-us/azure/backup/backup-overview)
+
+* Maak een back-up van uw Oracle Database met behulp van Oracle RMAN en gebruik eventueel [Azure Blob-zekering](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-how-to-mount-container-linux) om een [zeer redudant Azure Blob Storage-account](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy) te koppelen en uw rman-back-ups ernaar te schrijven voor extra tolerantie.
 
 ## <a name="integration-of-azure-with-oci-preview"></a>Integratie van Azure met OCI (preview-versie)
 
