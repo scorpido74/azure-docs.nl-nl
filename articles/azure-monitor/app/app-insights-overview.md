@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: d702b2f76531bad53e3fd98645d2b6bbf0582c54
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 7c4a0aa01b1895ece2e77bed5ee4837704546b4b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774728"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773075"
 ---
 # <a name="what-is-application-insights"></a>Wat is Application Insights?
 Application Insights is een uitbreidbare APM-service (Application Performance Management) voor webontwikkelaars op meerdere platforms. Hiermee kunt u uw livewebtoepassing controleren. Afwijkende prestaties worden automatisch gedetecteerd. De service bevat krachtige analysehulpmiddelen om u te helpen bij het vaststellen van problemen en te begrijpen wat gebruikers daadwerkelijk doen met uw app.  De service is bedoeld om u te helpen de prestaties en bruikbaarheid van uw apps continu te verbeteren. Het werkt voor apps op uiteenlopende platforms, waaronder .NET, Node.js en Java EE, on-premises, of in een hybride of openbare cloud gehost. De service kan ook worden geïntegreerd met uw DevOps-proces en bevat verbindingspunten naar verschillende hulpmiddelen voor ontwikkelaars. Gebruik de service voor het controleren en analyseren van telemetrie van mobiele apps door Application Insights te integreren met Visual Studio App Center.
@@ -139,12 +139,6 @@ Gebruik tijdens het ontwikkelen:
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)
 * Blog:
   * [Application Insights-blog](https://azure.microsoft.com/blog/tag/application-insights)
-
-## <a name="videos"></a>Video's
-
-- Externe video: [Application Insights configureren met een ASP.NET-toepassing](https://www.youtube.com/watch?v=blnGAVgMAfA).
-- Externe video: [Application Insights configureren met ASP.net core en Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t).
-- Externe video: [Application Insights configureren met ASP.net core en Visual Studio code](https://youtu.be/ygGt84GDync).
 
 <!--Link references-->
 

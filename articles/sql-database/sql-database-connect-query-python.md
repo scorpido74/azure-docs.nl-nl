@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 89e67fd58f6cfc54e21406e9385e7ca5e5bc1d17
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 659f6333d16f84cc35be45c45b7a7119e53fd0d0
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569158"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764288"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Snelstartgids: Python gebruiken om een query uit te voeren voor een Azure SQL-database
 
@@ -56,7 +56,7 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Az
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-2. Navigeer naar de pagina **SQL-database** of **Met SQL beheerde exemplaren**.
+2. Ga naar de pagina **SQL-data bases** of **SQL Managed instances** .
 
 3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een individuele database, of de volledig gekwalificeerde servernaam naast **Host** voor een beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erboven en selecteert u het pictogram **Kopiëren**.
 

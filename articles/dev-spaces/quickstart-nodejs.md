@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Snelle Kubernetes ontwikkeling met containers, micro Services en node. js op Azure
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 4ee11b4bebe32ff4a9af38a0789823178f388e10
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 8148f7858ac9de458daa1c15220507b0de1bad19
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725771"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772626"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Quickstart: Fouten opsporen en herhalen met Visual Studio code en node. js op Kubernetes met behulp van Azure dev Spaces
 
@@ -38,7 +38,7 @@ U moet een AKS-cluster maken in een [ondersteunde regio][supported-regions]. Met
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Azure dev Spaces inschakelen op uw AKS-cluster

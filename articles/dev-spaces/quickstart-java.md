@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Snelle Kubernetes ontwikkeling met containers, micro Services en Java op Azure
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, Java, helm, Service-Mesh, Service-Mesh-route ring, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 146812a5553643d3cbe3b308d6b7d7bed1e66dad
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 28b6a2ecff756c878bb3bc0a69976e7cede5f7ee
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725855"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772664"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-java-on-kubernetes-using-azure-dev-spaces"></a>Quickstart: Fouten opsporen en herhalen met Visual Studio code en Java op Kubernetes met behulp van Azure dev Spaces
 
@@ -40,7 +40,7 @@ U moet een AKS-cluster maken in een [ondersteunde regio][supported-regions]. Met
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Azure dev Spaces inschakelen op uw AKS-cluster
@@ -145,7 +145,7 @@ Terwijl de service wordt uitgevoerd in de foutopsporingsmodus, werkt u regel 19 
 return "Hello from webfrontend in Azure while debugging!";
 ```
 
-Sla het bestand op. Klik *op fouten opsporen* en vervolgens op fout *opsporing opnieuw starten* of Klik in de *werk balk fout opsporing*op de knop *fout opsporing opnieuw opstarten* .
+Sla het bestand op. Klik op *fouten opsporen* en vervolgens op fout *opsporing opnieuw starten* of Klik in de *werk balk fout opsporing*op de knop *fout opsporing opnieuw opstarten* .
 
 ![Fout opsporing vernieuwen](media/common/debug-action-refresh.png)
 
