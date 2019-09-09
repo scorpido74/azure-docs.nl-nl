@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 00982ea837783a7e7a9dca257f04c77d48aceef2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6f1a0485dbae3234d476ba5df62126f05d52f435
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103105"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813339"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Een Azure-SQL database herstellen met behulp van automatische database back-ups
 
@@ -27,7 +27,7 @@ SQL Database back-ups worden standaard opgeslagen in Blob-opslag met geo-replica
 - Maak een nieuwe Data Base op een SQL Database Server in dezelfde regio die is hersteld naar het punt van de meest recente back-ups.
 - Maak een nieuwe Data Base op een SQL Database Server in een andere regio die is hersteld naar het punt van de meest recente gerepliceerde back-ups.
 
-Als u [back-up lange termijn](sql-database-long-term-retention.md)retentie hebt geconfigureerd, kunt u ook een nieuwe data base maken van een LTR-back-up op een SQL database server.
+Als u [back-up lange termijn retentie](sql-database-long-term-retention.md)hebt geconfigureerd, kunt u ook een nieuwe data base maken van een LTR-back-up op een SQL database server.
 
 > [!IMPORTANT]
 > U kunt een bestaande data base niet overschrijven tijdens het terugzetten.
@@ -127,10 +127,7 @@ Herstel naar een bepaald tijdstip op een geo-secundair wordt momenteel niet onde
 
 ### <a name="geo-restore-using-the-azure-portal"></a>Geo-herstel met behulp van de Azure Portal
 
-Als u geografisch een Data Base wilt herstellen met behulp van de Azure Portal, opent u de pagina SQL-data bases en klikt u vervolgens op **toevoegen**. Selecteer in het tekstvak **bron selecteren** de optie **back-up**. Geef de back-up op van waaruit het herstel moet worden uitgevoerd in de regio en op de server van uw keuze.
-
-> [!Note]
-> Geo-Restore met behulp van de Azure Portal is niet beschikbaar in een beheerd exemplaar. Gebruik in plaats daarvan Power shell.
+Als u geografisch een Data Base wilt herstellen met behulp van de Azure Portal, opent u de pagina SQL-data bases en klikt u vervolgens op **toevoegen**. Selecteer in het tekstvak **bron selecteren** de optie **back-up**. Geef de back-up op van waaruit het herstel moet worden uitgevoerd in de regio en op de server van uw keuze. 
 
 ## <a name="programmatically-performing-recovery-using-automated-backups"></a>Programmatisch herstel uitvoeren met behulp van automatische back-ups
 
@@ -184,5 +181,5 @@ Met automatische back-ups worden uw data bases beschermd tegen gebruikers-en toe
 
 - Zie [overzicht van bedrijfs continuïteit](sql-database-business-continuity.md)voor een overzicht en scenario's voor bedrijfs continuïteit.
 - Zie [SQL database automatische back-ups](sql-database-automated-backups.md)voor meer informatie over Azure SQL database automatische back-ups.
-- Zie [lange termijn](sql-database-long-term-retention.md)retentie voor meer informatie over lange termijn retentie.
+- Zie [lange termijn retentie](sql-database-long-term-retention.md)voor meer informatie over lange termijn retentie.
 - Zie [actieve geo-replicatie](sql-database-active-geo-replication.md) of [groepen voor automatische failover](sql-database-auto-failover-group.md)voor meer informatie over snellere herstel opties.

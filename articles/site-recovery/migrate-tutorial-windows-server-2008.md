@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c449b74a9d6185b0616f62d31926feb6ff218cbb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: d0d5c482e2faf5e4a2c2918a64bd56e4aa814323
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400081"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814494"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Servers waarop Windows Server 2008 wordt uitgevoerd, naar Azure migreren
 
@@ -28,6 +28,9 @@ In deze zelfstudie leert u hoe u on-premises servers waarop Windows Server 2008 
 > * Failover uitvoeren voor Azure en migratie voltooien
 
 In de sectie over beperkingen en bekende problemen worden enkele beperkingen en tijdelijke oplossingen vermeldt voor bekende problemen die u kunt tegenkomen tijdens de migratie van Windows Server 2008-machines naar Azure. 
+
+> [!NOTE]
+> U kunt nu migreren van on-premises naar Azure met behulp van de Azure Migrate-service. [Meer informatie](../migrate/migrate-services-overview.md).
 
 
 ## <a name="supported-operating-systems-and-environments"></a>Ondersteunde besturingssystemen en omgevingen
@@ -51,7 +54,7 @@ Voor het migreren van virtuele Hyper-V-machines waarop Windows Server 2008 of Wi
 
 In het vervolg van deze zelfstudie kunt u zien hoe u on-premises virtuele VMware-machines en fysieke servers kunt migreren waarop Windows Server 2008 of 2008 R2 wordt uitgevoerd.
 > [!TIP]
-> Zoek naar een zonder agent manier voor het migreren van virtuele VMware-machines naar Azure? [Klik hier](https://aka.ms/migrateVMs-signup)
+> Bent u op zoek naar een agentloze manier om virtuele VMware-machines naar Azure te migreren? [Klik hier](https://aka.ms/migrateVMs-signup)
 
 
 ## <a name="limitations-and-known-issues"></a>Beperkingen en bekende problemen
@@ -144,7 +147,7 @@ U kunt een testfailover van de replicatieservers uitvoeren als de initiële repl
 
 Voer een [testfailover](tutorial-dr-drill-azure.md) naar Azure uit om te controleren of alles goed werkt.
 
-   ![Testfailover](media/migrate-tutorial-windows-server-2008/testfailover.png)
+   ![Failover testen](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
 ## <a name="migrate-to-azure"></a>Migreren naar Azure

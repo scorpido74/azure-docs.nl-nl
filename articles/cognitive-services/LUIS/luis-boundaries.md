@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/9/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 3fd593ff199ff87b1c69e1097852a81a21adc1dd
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ff267a524001802f8bcd0903fcb7119bab16ef11
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883963"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813328"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Grenzen voor uw LUIS-model en-sleutels
 LUIS heeft verschillende gebieden van de grens. De eerste is de [model grens](#model-boundaries), welke besturingselementen intents, entiteiten en functies van LUIS. Het tweede gedeelte [quotalimieten](#key-limits) op basis van het type sleutel. Is van een derde deel van de grenzen van de [combinatie op het toetsenbord](#keyboard-controls) voor het beheren van de website van LUIS. Een vierde gebied is de [world regiotoewijzing](luis-reference-regions.md) tussen de LUIS website ontwerpen en de LUIS [eindpunt](luis-glossary.md#endpoint) API's. 
@@ -29,6 +29,7 @@ Als uw app de limieten en grenzen van het LUIS-model overschrijdt, kunt u overwe
 |Onderwerp|Limiet|
 |--|:--|
 | [Naam van app][luis-get-started-create-app] | \* Standaard teken max |
+| Toepassingen| 500-toepassingen per Azure-resource |
 | [Batch testen][batch-testing]| 10 gegevenssets, 1000 uitingen per gegevensset|
 | Expliciete lijst | 50 per toepassing|
 | Externe entiteiten | geen limieten |
@@ -44,7 +45,7 @@ Als uw app de limieten en grenzen van het LUIS-model overschrijdt, kunt u overwe
 | [Rollen](luis-concept-roles.md)|300 rollen per toepassing. 10 rollen per entiteit|
 | [Utterance][utterances] | 500 tekens bevatten|
 | [Uitingen][utterances] | 15.000 per toepassing: er is geen limiet voor het aantal uitingen per intentie|
-| [Versies](luis-concept-version.md)| geen limiet |
+| [Versies](luis-concept-version.md)| 100 versies per toepassing |
 | [Versie naam][luis-how-to-manage-versions] | beperkt tot alleen alfanumerieke tekens en periode 10 tekens (.) |
 
 \* Standaard teken maximaal is 50 tekens. 
@@ -68,6 +69,8 @@ Taal kennis heeft afzonderlijke sleutels, één type voor ontwerpen en één typ
 
 De ontwerphandleiding sleutel heeft verschillende beperkingen bij het ontwerpen en -eindpunt. De sleutel van LUIS-service-eindpunt is alleen geldig voor eindpunt query's.
 
+* 500-toepassingen per Azure-resource 
+* 100 versies per toepassing
 
 |Sleutel|Ontwerpen|Eindpunt|Doel|
 |--|--|--|--|

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: 161539aaec4d3b7162405f437b7fb3dd1f6a00e6
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 361fcc6b60e863ee43d348cedd6b1571f3f563a2
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258850"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812901"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Aanbevolen procedures voor Azure Resource Manager sjabloon
 
@@ -192,7 +192,7 @@ De volgende informatie kan nuttig zijn wanneer u met [resources](resource-group-
      {
          "name": "[variables('storageAccountName')]",
          "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2016-01-01",
+         "apiVersion": "2019-06-01",
          "location": "[resourceGroup().location]",
          "comments": "This storage account is used to store the VM disks.",
          ...
@@ -203,43 +203,32 @@ De volgende informatie kan nuttig zijn wanneer u met [resources](resource-group-
 * Als u een *openbaar eind punt* in uw sjabloon gebruikt (zoals een openbaar eind punt voor Azure Blob-opslag), hoeft u de naam ruimte *niet vast te coderen* . Gebruik de functie **Reference** om de naam ruimte dynamisch op te halen. U kunt deze methode gebruiken om de sjabloon te implementeren in verschillende open bare naam ruimte omgevingen zonder het eind punt in de sjabloon hand matig te wijzigen. Stel de API-versie in op de versie die u gebruikt voor het opslag account in uw sjabloon:
    
    ```json
-   "osDisk": {
-       "name": "osdisk",
-       "vhd": {
-           "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob, variables('vmStorageAccountContainerName'), '/',variables('OSDiskName'),'.vhd')]"
+   "diagnosticsProfile": {
+       "bootDiagnostics": {
+           "enabled": "true",
+           "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
        }
    }
    ```
    
-   Als het opslag account is geïmplementeerd in dezelfde sjabloon die u maakt, hoeft u de naam ruimte van de provider niet op te geven als u verwijst naar de resource. In het volgende voor beeld ziet u de vereenvoudigde syntaxis:
-   
-   ```json
-   "osDisk": {
-       "name": "osdisk",
-       "vhd": {
-           "uri": "[concat(reference(variables('storageAccountName'), '2016-01-01').primaryEndpoints.blob, variables('vmStorageAccountContainerName'), '/',variables('OSDiskName'),'.vhd')]"
-       }
-   }
-   ```
-   
-   Als uw sjabloon andere waarden bevat die zijn geconfigureerd voor het gebruik van een open bare naam ruimte, wijzigt u deze waarden zodat deze overeenkomen met dezelfde **verwijzings** functie. U kunt bijvoorbeeld de eigenschap **storageUri** van het diagnostische Profiel van de virtuele machine instellen:
+   Als het opslag account wordt geïmplementeerd in dezelfde sjabloon die u maakt en de naam van het opslag account niet wordt gedeeld met een andere resource in de sjabloon, hoeft u de naam ruimte van de provider of de apiVersion niet op te geven wanneer u naar de resource verwijst. In het volgende voor beeld ziet u de vereenvoudigde syntaxis:
    
    ```json
    "diagnosticsProfile": {
        "bootDiagnostics": {
            "enabled": "true",
-           "storageUri": "[reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob]"
+           "storageUri": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
        }
    }
    ```
-   
+     
    U kunt ook verwijzen naar een bestaand opslag account dat zich in een andere resource groep bevindt:
 
    ```json
-   "osDisk": {
-       "name": "osdisk", 
-       "vhd": {
-           "uri":"[concat(reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts/', parameters('existingStorageAccountName')), '2016-01-01').primaryEndpoints.blob,  variables('vmStorageAccountContainerName'), '/', variables('OSDiskName'),'.vhd')]"
+   "diagnosticsProfile": {
+       "bootDiagnostics": {
+           "enabled": "true",
+           "storageUri": "[reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('existingStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
        }
    }
    ```

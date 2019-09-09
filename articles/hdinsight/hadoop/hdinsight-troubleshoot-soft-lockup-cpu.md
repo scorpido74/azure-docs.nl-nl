@@ -1,17 +1,17 @@
 ---
 title: bewakings fout van de lockup-CPU van een Azure HDInsight-cluster
-description: Er wordt een tijdelijke Lockup-CPU voor een watchdog-fout weer gegeven in kernel syslogs
+description: Er wordt een tijdelijke Lockup-CPU voor een watchdog-fout weer gegeven in kernel syslogs van Azure HDInsight-cluster
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/05/2019
-ms.openlocfilehash: 9278c174d96cb6b1823c8dbfdcba197b7a3c05cc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 618a871bee762900d4c99700cde42d759506b4b9
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68829175"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810580"
 ---
 # <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Scenario: ' watchdog: BUG: zachte Lockup-CPU-fout van een Azure HDInsight-cluster
 
@@ -35,7 +35,7 @@ Kernel-patch Toep assen. In het onderstaande script wordt de Linux-kernel bijgew
 
 1. Selecteer **nieuwe verzenden** en voer de invoer als volgt in
 
-    | Eigenschap | Waarde |
+    | Eigenschap | Value |
     | --- | --- |
     | Scripttype | -Aangepast |
     | Name |Oplossing voor een probleem met de kernel-zachte vergrendeling |
@@ -61,4 +61,4 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de ondersteunings [abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

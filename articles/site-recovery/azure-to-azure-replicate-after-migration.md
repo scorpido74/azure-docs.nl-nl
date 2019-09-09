@@ -1,87 +1,87 @@
 ---
-title: Instellen van herstel na noodgevallen voor Azure-VM's na de migratie naar Azure met Azure Site Recovery | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u machines voor het instellen van herstel na noodgevallen tussen Azure-regio's na de migratie naar Azure met Azure Site Recovery voorbereiden.
+title: Herstel na nood geval instellen voor virtuele Azure-machines na de migratie naar Azure met Azure Site Recovery
+description: In dit artikel wordt beschreven hoe u machines voorbereidt voor het instellen van herstel na nood gevallen tussen Azure-regio's na de migratie naar Azure met Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 4b764c8e7c3d97ff521add05033265f705c4136f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff35c5e23c5d8a448d62a3eeb8d15ba8d5a531e4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399521"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814534"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Herstel na noodgevallen instellen voor virtuele Azure-machines na migratie naar Azure 
 
 
-In dit artikel volgen als u hebt [on-premises machines hebt gemigreerd naar Azure VM's](tutorial-migrate-on-premises-to-azure.md) met behulp van de [Site Recovery](site-recovery-overview.md) service, en u nu wilt ophalen van de virtuele machines instellen voor herstel na noodgevallen naar een secundaire Azure-regio. Het artikel wordt beschreven hoe u om ervoor te zorgen dat de Azure VM-agent is geïnstalleerd op de gemigreerde virtuele machines en het verwijderen van de Site Recovery Mobility service die niet meer nodig na de migratie is.
+Volg dit artikel als u [on-premises machines naar Azure-vm's hebt gemigreerd](tutorial-migrate-on-premises-to-azure.md) met behulp van de [site Recovery](site-recovery-overview.md) -service. u wilt nu de vm's ophalen die zijn ingesteld voor herstel na nood geval naar een secundaire Azure-regio. In het artikel wordt beschreven hoe u ervoor zorgt dat de Azure VM-agent is geïnstalleerd op gemigreerde Vm's en hoe u de Site Recovery Mobility-service verwijdert die niet meer nodig is na de migratie.
 
 
 
-## <a name="verify-migration"></a>Migratie controleren
+## <a name="verify-migration"></a>Migratie verifiëren
 
-Voordat u herstel na noodgevallen instelt, zorg ervoor dat de migratie is voltooid zoals verwacht. Als u wilt een migratie voltooid, na de failover, moet u de **volledige migratie** optie voor elke machine die u wilt migreren. 
+Voordat u herstel na nood gevallen instelt, controleert u of de migratie is voltooid zoals verwacht. Als u de migratie wilt volt ooien, moet u na de failover de optie **volledige migratie** selecteren voor elke computer die u wilt migreren. 
 
-## <a name="verify-the-azure-vm-agent"></a>Controleer of de Azure VM-agent
+## <a name="verify-the-azure-vm-agent"></a>De Azure VM-agent controleren
 
-Elke Azure-VM moet de [Azure VM-agent](../virtual-machines/extensions/agent-windows.md) geïnstalleerd. Als u wilt repliceren van virtuele Azure-machines, installeert Site Recovery van een uitbreiding op de agent.
+Op elke virtuele machine van Azure moet de [Azure VM-agent](../virtual-machines/extensions/agent-windows.md) zijn geïnstalleerd. Als u virtuele Azure-machines wilt repliceren, wordt door Site Recovery een uitbrei ding op de agent geïnstalleerd.
 
-- Als de machine versie 9.7.0.0 wordt uitgevoerd of hoger van de Site Recovery Mobility-service, wordt de Azure VM-agent wordt automatisch geïnstalleerd door de Mobility-service op Windows-VM's. In eerdere versies van de Mobility-service moet u de agent automatisch installeren.
-- Voor virtuele Linux-machines, moet u de Azure VM-agent handmatig installeren. U hoeft alleen te installeren van de Azure VM-agent als de Mobility-service geïnstalleerd op de gemigreerde machine v9.6 of eerder.
+- Als op de machine versie 9.7.0.0 of hoger van de Site Recovery Mobility-service wordt uitgevoerd, wordt de Azure VM-agent automatisch geïnstalleerd door de Mobility-service op Windows-Vm's. In eerdere versies van de Mobility-service moet u de agent automatisch installeren.
+- Voor virtuele Linux-machines moet u de Azure VM-agent hand matig installeren. U hoeft alleen de Azure VM-agent te installeren als de Mobility-service op de gemigreerde machine v 9.6 of eerder is geïnstalleerd.
 
 
-### <a name="install-the-agent-on-windows-vms"></a>Installeer de agent op Windows-VM 's
+### <a name="install-the-agent-on-windows-vms"></a>De agent installeren op Windows-Vm's
 
-Als u een versie van de Site Recovery-mobiliteitsservice ouder is dan 9.7.0.0 uitvoert, of u sommige andere hoeft de agent handmatig installeert, dient u het volgende:  
+Als u een versie van de Site Recovery Mobility-service hebt die ouder is dan 9.7.0.0 of als u de agent hand matig moet installeren, gaat u als volgt te werk:  
 
-1. Zorg ervoor dat u beheerdersmachtigingen hebben op de virtuele machine.
-2. Download de [VM-Agent-installatieprogramma](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
-3. Voer het installatiebestand.
+1. Zorg ervoor dat u beschikt over beheerders machtigingen voor de virtuele machine.
+2. Down load het [installatie programma](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)van de VM-agent.
+3. Voer het installatie bestand uit.
 
 #### <a name="validate-the-installation"></a>De installatie valideren
-Om te controleren of de agent is geïnstalleerd:
+Controleren of de agent is geïnstalleerd:
 
-1. Op de virtuele machine van Azure, in de map C:\WindowsAzure\Packages, ziet u het bestand WaAppAgent.exe.
-2. Met de rechtermuisknop op het bestand, en in **eigenschappen**, selecteer de **Details** tabblad.
-3. Controleer de **productversie** veld bevat 2.6.1198.718 of hoger.
+1. Op de virtuele machine van Azure, in de map C:\WindowsAzure\Packages, ziet u het bestand WaAppAgent. exe.
+2. Klik met de rechter muisknop op het bestand en selecteer in **Eigenschappen**het tabblad **Details** .
+3. Controleer of in het veld **product versie** 2.6.1198.718 of hoger wordt weer gegeven.
 
-[Meer informatie](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) over de installatie van de agent voor Windows.
+Meer [informatie](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) over de installatie van de agent voor Windows.
 
-### <a name="install-the-agent-on-linux-vms"></a>Installeer de agent op Linux-VM 's
+### <a name="install-the-agent-on-linux-vms"></a>De agent installeren op virtuele Linux-machines
 
-Installeer de [Azure Linux VM](../virtual-machines/extensions/agent-linux.md) agent handmatig als volgt te werk:
+Installeer de [Azure Linux VM](../virtual-machines/extensions/agent-linux.md) -agent als volgt hand matig:
 
-1. Zorg ervoor dat u beheerdersmachtigingen hebben op de machine.
-2. Het is raadzaam dat u de Linux-VM-agent met behulp van een RPM- of DEB-pakket uit de opslagplaats voor uw distributie van pakket installeert. Alle de [distributie-providers die zijn goedgekeurd](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) het pakket van Azure Linux agent integreren in hun opslagplaatsen en installatiekopieën.
-    - Het is raadzaam dat u de agent alleen via de opslagplaats van een distributiepunt bijwerken.
-    - Wordt niet aanbevolen voor het installeren van de Linux-VM-agent rechtstreeks vanuit GitHub en bijwerkt.
-    -  Als de meest recente agent voor uw distributie geen distributiepunt beschikbaar is, contact op met ondersteuning voor instructies over hoe u deze installeert is. 
+1. Zorg ervoor dat u beschikt over beheerders machtigingen op de computer.
+2. We raden u ten zeerste aan de Linux VM-agent te installeren met behulp van een RPM-of een DEB-pakket vanuit de pakket opslagplaats van uw distributie. Alle [gewaarmerkte distributie providers](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integreren het Azure Linux-agent pakket in hun installatie kopieën en opslag plaatsen.
+    - We raden u ten zeerste aan de agent alleen bij te werken via een distributie opslagplaats.
+    - Het wordt niet aanbevolen om de Linux-VM-agent rechtstreeks vanuit GitHub te installeren en bij te werken.
+    -  Als de meest recente agent voor uw distributie niet beschikbaar is, neemt u contact op met de distributie ondersteuning voor instructies over het installeren ervan. 
 
 #### <a name="validate-the-installation"></a>De installatie valideren 
 
-1. Voer deze opdracht uit: **ps -e** om ervoor te zorgen dat de Azure-agent wordt uitgevoerd op de Linux-VM.
-2. Als het proces niet wordt uitgevoerd, start u deze opnieuw met behulp van de volgende opdrachten:
-    - Voor Ubuntu: **walinuxagent start-service**
-    - Voor andere distributies: **start in waagent-service**
+1. Voer deze opdracht uit: **PS-e** om ervoor te zorgen dat de Azure-agent wordt uitgevoerd op de virtuele Linux-machine.
+2. Als het proces niet wordt uitgevoerd, start u het opnieuw met behulp van de volgende opdrachten:
+    - Voor Ubuntu: **service walinuxagent start**
+    - Voor andere distributies: **waagent van service starten**
 
 
-## <a name="uninstall-the-mobility-service"></a>Verwijder de Mobility-service
+## <a name="uninstall-the-mobility-service"></a>De Mobility-service verwijderen
 
-1. De Mobility-service handmatig verwijderen van de Azure-VM met behulp van een van de volgende methoden. 
-    - Voor Windows, in het Configuratiescherm > **programma's toevoegen/verwijderen**, verwijder **Microsoft Azure Site Recovery Mobility Service/Master Target server**. Voer bij een opdrachtprompt met verhoogde bevoegdheid:
+1. Verwijder de Mobility-service hand matig van de virtuele Azure-machine met behulp van een van de volgende methoden. 
+    - Voor Windows kunt u in het configuratie scherm > **Program Ma's toevoegen/verwijderen** **Microsoft Azure site Recovery Mobility service/Master doel server**verwijderen. Voer vanaf een opdracht prompt met verhoogde bevoegdheid het volgende uit:
         ```
         MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
         ```
-    - Voor Linux, moet u zich aanmelden als een hoofdgebruiker. Ga in een terminal naar **/user/local/ASR**, en voer de volgende opdracht uit:
+    - Voor Linux meldt u zich aan als hoofd gebruiker. In een Terminal gaat u naar **/user/Local/ASR**en voert u de volgende opdracht uit:
         ```
         ./uninstall.sh -Y
         ```
-2. Start de virtuele machine opnieuw op voordat u replicatie configureert.
+2. Start de VM opnieuw op voordat u de replicatie configureert.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Het oplossen van controle](site-recovery-extension-troubleshoot.md) voor de Site Recovery-extensie op de Azure VM-agent.
-[Snel repliceren](azure-to-azure-quickstart.md) een Azure-VM naar een secundaire regio.
+[Bekijk de probleem oplossing](site-recovery-extension-troubleshoot.md) voor de uitbrei ding van de site Recovery op de Azure VM-agent.
+Een Azure-VM [snel repliceren](azure-to-azure-quickstart.md) naar een secundaire regio.

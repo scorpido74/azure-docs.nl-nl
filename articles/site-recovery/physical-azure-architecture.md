@@ -1,35 +1,35 @@
 ---
-title: Architectuur voor noodherstel van de fysieke server naar Azure met Azure Site Recovery | Microsoft Docs
-description: Dit artikel bevat een overzicht van de onderdelen en architectuur die worden gebruikt tijdens het herstel na noodgevallen van on-premises fysieke servers naar Azure met de Azure Site Recovery-service.
+title: Architectuur voor herstel na nood geval voor fysieke server naar Azure met behulp van Azure Site Recovery | Microsoft Docs
+description: Dit artikel bevat een overzicht van de onderdelen en architectuur die worden gebruikt tijdens nood herstel van on-premises fysieke servers naar Azure met de Azure Site Recovery-service.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 354a68d7d4d07657baa7044566dde8b7ed77ca63
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5d3dfe6457c4b70f0b23c2d8aa7ac5e58e68dc7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66400076"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814467"
 ---
-# <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Fysieke server naar Azure disaster recovery-architectuur
+# <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Architectuur van fysieke server naar Azure voor herstel na nood gevallen
 
-Dit artikel beschrijft de architectuur en processen die worden gebruikt bij het repliceren, failover en fysieke Windows- en Linux-servers tussen een on-premises site en Azure, herstellen met behulp van de [Azure Site Recovery](site-recovery-overview.md) service.
+In dit artikel worden de architectuur en processen beschreven die worden gebruikt bij replicatie, failover en herstel van fysieke Windows-en Linux-servers tussen een on-premises site en Azure, met behulp van de [Azure site Recovery](site-recovery-overview.md) -service.
 
 
 ## <a name="architectural-components"></a>Architectuuronderdelen
 
-De volgende tabel en afbeelding vindt een weergave op hoog niveau van de onderdelen die worden gebruikt voor fysieke servers repliceren naar Azure.  
+De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onderdelen die worden gebruikt voor de replicatie van de fysieke server naar Azure.  
 
 **Onderdeel** | **Vereiste** | **Details**
 --- | --- | ---
-**Azure** | Een Azure-abonnement en een Azure-netwerk. | Gerepliceerde gegevens van on-premises fysieke machines zijn opgeslagen in Azure beheerde schijven. Azure-VM's worden gemaakt met de gerepliceerde gegevens wanneer u een failover van on-premises naar Azure uitvoert. De Azure-VM's maken verbinding met het virtuele Azure-netwerk wanneer ze worden gemaakt.
-**Configuratieserver** | Een enkele on-premises fysieke machine of VMware-VM is geïmplementeerd om uit te voeren alle van de on-premises Site Recovery-onderdelen. De virtuele machine wordt uitgevoerd voor de configuratieserver, processerver en hoofddoelserver. | De configuratieserver coördineert de communicatie tussen on-premises en Azure, en beheert de gegevensreplicatie.
- **Processerver**:  | Standaard samen met de configuratieserver is geïnstalleerd. | Fungeert als replicatiegateway. Dit onderdeel ontvangt replicatiegegevens, optimaliseert de gegevens met caching, compressie en codering, en verzendt ze naar de Azure-opslag.<br/><br/> De processerver installeert ook de Mobility-service op servers die u wilt repliceren.<br/><br/> Naarmate uw implementatie groeit, kunt u extra, afzonderlijk processervers voor het afhandelen van grotere hoeveelheden replicatieverkeer kunt toevoegen.
- **Hoofddoelserver** | Standaard samen met de configuratieserver is geïnstalleerd. | Hier worden de replicatiegegevens tijdens de failback vanuit Azure afgehandeld.<br/><br/> U kunt een afzonderlijke hoofddoelserver voor failback toevoegen voor grote implementaties.
-**Gerepliceerde servers** | De Mobility-service is geïnstalleerd op elke server die u wilt repliceren. | U wordt aangeraden dat u automatische installatie van de processerver toestaan. U kunt ook de service handmatig installeren of gebruiken van een methode geautomatiseerde implementatie, zoals System Center Configuration Manager.
+**Azure** | Een Azure-abonnement en een Azure-netwerk. | Gerepliceerde gegevens van on-premises fysieke machines worden opgeslagen in azure Managed disks. Azure-Vm's worden gemaakt met de gerepliceerde gegevens wanneer u een failover van on-premises naar Azure uitvoert. De Azure-VM's maken verbinding met het virtuele Azure-netwerk wanneer ze worden gemaakt.
+**Configuratieserver** | Er wordt één on-premises fysieke machine of VMware-VM geïmplementeerd om alle on-premises Site Recovery onderdelen uit te voeren. De VM voert de configuratie server, de proces server en de hoofddoel server uit. | De configuratieserver coördineert de communicatie tussen on-premises en Azure, en beheert de gegevensreplicatie.
+ **Processerver**:  | Standaard geïnstalleerd in combi natie met de configuratie server. | Fungeert als replicatiegateway. Dit onderdeel ontvangt replicatiegegevens, optimaliseert de gegevens met caching, compressie en codering, en verzendt ze naar de Azure-opslag.<br/><br/> De proces server installeert ook de Mobility-service op servers die u wilt repliceren.<br/><br/> Naarmate uw implementatie groeit, kunt u extra, afzonderlijke proces servers toevoegen om grotere volumes van replicatie verkeer af te handelen.
+ **Hoofddoelserver** | Standaard geïnstalleerd in combi natie met de configuratie server. | Hier worden de replicatiegegevens tijdens de failback vanuit Azure afgehandeld.<br/><br/> Voor grote implementaties kunt u een extra, afzonderlijke Master doel server toevoegen voor failback.
+**Gerepliceerde servers** | De Mobility-service wordt geïnstalleerd op elke server die u repliceert. | U wordt aangeraden automatische installatie vanaf de proces server toe te staan. U kunt de service ook hand matig installeren of een geautomatiseerde implementatie methode gebruiken, zoals System Center Configuration Manager.
 
 **Fysiek naar Azure-architectuur**
 
@@ -37,41 +37,41 @@ De volgende tabel en afbeelding vindt een weergave op hoog niveau van de onderde
 
 ## <a name="replication-process"></a>Replicatieproces
 
-1. Instellen van de implementatie, met inbegrip van on-premises en Azure-onderdelen. In de Recovery Services-kluis geeft u de replicatiebron en het doel, instellen van de configuratieserver maken van beleid voor replicatie en replicatie inschakelen.
-2. Machines repliceren in overeenstemming met het replicatiebeleid en een initiële kopie van de server-gegevens wordt gerepliceerd naar Azure storage.
-3. Nadat de initiële replicatie is voltooid, begint de replicatie van deltaverschillen naar Azure. Bijgehouden wijzigingen voor een machine worden opgeslagen in een .hrl-bestand.
-    - Machines communiceren met de configuratieserver op poort 443 voor HTTPS inkomende, voor het replicatiebeheer van.
-    - Machines verzenden replicatiegegevens naar de processerver op HTTPS-poort 9443 Inkomend (kan worden gewijzigd).
+1. U stelt de implementatie in, met inbegrip van on-premises en Azure-onderdelen. In de Recovery Services kluis geeft u de replicatie bron en het doel op, stelt u de configuratie server in, maakt u een replicatie beleid en schakelt u replicatie in.
+2. Computers repliceren op basis van het replicatie beleid en een eerste kopie van de server gegevens wordt gerepliceerd naar Azure Storage.
+3. Wanneer de initiële replicatie is voltooid, begint de replicatie van Delta wijzigingen naar Azure. Bijgehouden wijzigingen voor een machine worden opgeslagen in een .hrl-bestand.
+    - Computers communiceren met de configuratie server op poort HTTPS 443 inkomend voor replicatie beheer.
+    - Computers verzenden replicatie gegevens naar de proces server op poort HTTPS 9443 inkomend (kan worden gewijzigd).
     - De configuratieserver coördineert het replicatiebeheer met Azure via de uitgaande HTTPS-poort 443.
     - De processerver ontvangt gegevens van de bronmachines, optimaliseert en versleutelt deze gegevens en verzendt ze naar Azure Storage via de uitgaande poort 443.
     - Als u multi-VM-consistentie inschakelt, communiceren machines in de replicatiegroep met elkaar via poort 20004. Meerdere VM’s worden gebruikt als u meerdere machines groepeert in de replicatiegroepen die crashconsistent en app-consistent herstelpunten delen bij failover. Dit is handig als machines dezelfde workload gebruiken en consistent moeten zijn.
 4. Verkeer wordt via internet gerepliceerd naar de openbare eindpunten van Azure Storage. U kunt ook [openbare peering](../expressroute/expressroute-circuit-peerings.md#publicpeering) van Azure ExpressRoute gebruiken. Het repliceren van verkeer via een site-naar-site-VPN van een on-premises site naar Azure wordt niet ondersteund.
 
 
-**Fysiek naar Azure replicatieproces**
+**Fysiek naar Azure-replicatie proces**
 
 ![Replicatieproces](./media/physical-azure-architecture/v2a-architecture-henry.png)
 
 ## <a name="failover-and-failback-process"></a>Failover- en failbackproces
 
-Nadat replicatie is ingesteld en hebt u een Dr-herstelanalyse (testfailover) om te controleren of dat alles werkt zoals verwacht uitgevoerd, kunt u failover en failback uitvoeren als u wilt. Houd rekening met het volgende:
+Nadat de replicatie is ingesteld en u een herstel analyse voor nood gevallen (testfailover) hebt uitgevoerd om te controleren of alles werkt zoals verwacht, kunt u failover en failback uitvoeren zoals u dat nodig hebt. Houd rekening met het volgende:
 
 - Geplande failover wordt niet ondersteund.
-- U moet een failback naar een on-premises virtuele VMware-machine. Dit betekent dat u een on-premises VMware-infrastructuur nodig hebt, zelfs wanneer u on-premises fysieke servers naar Azure repliceren.
-- U een enkele machine, of het maken van plannen voor herstel, op meerdere machines samen een failover.
-- Wanneer u een failover uitvoert, worden de Azure-VM's gemaakt van gerepliceerde gegevens in Azure storage.
-- Na de initiële failover wordt geactiveerd, wijst u het toe om toegang tot de workload via de Azure-VM.
+- U moet een failback uitvoeren naar een on-premises virtuele VMware-machine. Dit betekent dat u een on-premises VMware-infra structuur nodig hebt, zelfs wanneer u on-premises fysieke servers naar Azure repliceert.
+- U kunt een failover uitvoeren voor een enkele machine of herstel plannen maken om meerdere computers samen te werken.
+- Wanneer u een failover uitvoert, worden Azure-Vm's gemaakt op basis van gerepliceerde gegevens in azure Storage.
+- Nadat u de eerste failover hebt geactiveerd, voert u deze uit om toegang te krijgen tot de workload vanuit de Azure-VM.
 - Als uw primaire on-premises site weer beschikbaar is, kunt u een failback uitvoeren.
-- U moet voor het instellen van een infrastructuur voor failback, met inbegrip van:
-    - **Tijdelijke processerver in Azure**: Failback van Azure, voor het instellen van een Azure-VM om te fungeren als een processerver, voor het afhandelen van replicatie van Azure. U kunt deze virtuele machine verwijderen wanneer de failback is voltooid.
-    - **VPN-verbinding**: Als u wilt uitvoeren van een failback, moet u een VPN-verbinding (of Azure ExpressRoute) van het Azure-netwerk de on-premises site.
-    - **Afzonderlijke hoofddoelserver**: De hoofddoelserver die is geïnstalleerd met de configuratieserver op de on-premises virtuele VMware-machine, wordt standaard de failback afgehandeld. Echter, als u back grote hoeveelheden verkeer mislukken wilt, u moet instellen een afzonderlijke on-premises hoofddoelserver voor dit doel.
-    - **Failbackbeleid**: Als u wilt repliceren naar uw on-premises site, moet u een beleid voor failback. Dit is automatisch gemaakt tijdens het maken van uw beleid voor replicatie van on-premises naar Azure.
-    - **VMware-infrastructuur**: U moet een VMware-infrastructuur voor failback. U kunt geen failback uitvoeren naar een fysieke server.
-- Nadat de onderdelen in plaats daarvan failback vindt plaats in drie fasen zijn:
-    - Fase 1: De Azure VM's opnieuw beveiligen zodat ze van Azure worden gerepliceerd naar de on-premises VMware-machines.
-    - Fase 2: Een failover uitvoeren naar de on-premises site.
-    - Fase 3: Nadat workloads failback, maar u opnieuw inschakelen replicatie.
+- U moet een infra structuur voor failback instellen, waaronder:
+    - **Tijdelijke proces server in azure**: Als u een failback van Azure wilt uitvoeren, stelt u een Azure VM in om te fungeren als een proces server voor het afhandelen van replicatie vanuit Azure. U kunt deze virtuele machine verwijderen wanneer de failback is voltooid.
+    - **VPN-verbinding**: Als u failback wilt uitvoeren, hebt u een VPN-verbinding (of Azure ExpressRoute) nodig van het Azure-netwerk naar de on-premises site.
+    - **Afzonderlijke hoofddoel server**: De Master doel server die is geïnstalleerd met de configuratie server, op de on-premises VMware-VM, verwerkt standaard failback. Als u echter grote hoeveel heden verkeer wilt herstellen, moet u een afzonderlijke on-premises hoofddoel server voor dit doel instellen.
+    - **Failbackbeleid**: Als u terug wilt repliceren naar uw on-premises site, hebt u een failbackbeleid nodig. Deze is automatisch gemaakt bij het maken van uw replicatie beleid van on-premises naar Azure.
+    - **VMware-infra structuur**: U hebt een VMware-infra structuur nodig voor failback. U kunt geen failback uitvoeren naar een fysieke server.
+- Nadat de onderdelen zijn geïmplementeerd, vindt failback plaats in drie fasen:
+    - Fase 1: Beveilig de Azure Vm's opnieuw, zodat ze worden gerepliceerd van Azure naar de on-premises VMware-Vm's.
+    - Fase 2: Voer een failover uit naar de on-premises site.
+    - Fase 3: Nadat de workloads weer zijn hersteld, schakelt u de replicatie opnieuw in.
 
 **VMware-failback van Azure**
 
@@ -80,4 +80,4 @@ Nadat replicatie is ingesteld en hebt u een Dr-herstelanalyse (testfailover) om 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga als volgt [in deze zelfstudie](physical-azure-disaster-recovery.md) fysieke server naar Azure-replicatie inschakelen.
+Volg [deze zelf studie om de](physical-azure-disaster-recovery.md) replicatie van de fysieke server naar Azure in te scha kelen.

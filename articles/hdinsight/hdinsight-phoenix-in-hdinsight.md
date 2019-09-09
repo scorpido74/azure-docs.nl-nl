@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: ashishth
-ms.openlocfilehash: f07c7b7a6b1eea05ba41a875e9e78f31404c5f32
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 8ba27261f5ba505c37ef4cc82d06b314471440bc
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733208"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811893"
 ---
-# <a name="apache-phoenix-in-hdinsight"></a>Apache Phoenix in HDInsight
+# <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix in azure HDInsight
 
 [Apache Phoenix](https://phoenix.apache.org/) is een open-source, enorm parallelle relationele data base-laag die is gebouwd op [Apache HBase](hbase/apache-hbase-overview.md). Met Phoenix kunt u SQL-achtige query's gebruiken via HBase. Phoenix maakt gebruik van JDBC-Stuur Programma's onder om gebruikers in staat te stellen SQL-tabellen, indexen, weer gaven en reeksen en upsert te maken, verwijderen, wijzigen en meerdere rijen tegelijk en in bulk. Phoenix gebruikt noSQL systeem eigen compilatie in plaats van MapReduce te gebruiken voor het compileren van query's, waardoor toepassingen met lage latentie op HBase kunnen worden gemaakt. Phoenix voegt coprocessoren toe ter ondersteuning van het uitvoeren van de door de client geleverde code in de adres ruimte van de server, waarbij de code wordt uitgevoerd die zich in de gegevens bevindt. Deze aanpak minimaliseert de client/server-gegevens overdracht.
 

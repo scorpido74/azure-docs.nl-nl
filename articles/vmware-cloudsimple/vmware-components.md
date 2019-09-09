@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 51a19d867b4906aacfe58cb4fdfd08f32a16e5f3
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: bd83cff243c94ed62014ff95f6ca7c4e878f6af7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972344"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814567"
 ---
 # <a name="private-cloud-vmware-components"></a>VMware-onderdelen van de privécloud
 
@@ -30,10 +30,10 @@ Een VMware-stack in de Privécloud wordt geïmplementeerd met de volgende softwa
 
 | Onderdeel | Version | Versie met licentie |
 |-----------|---------|------------------|
-| ESXi | 6,7 U1 | Enter prise plus |
-| vCenter | 6,7 U1 | vCenter-standaard |
+| ESXi | 6,7 U2 | Enter prise plus |
+| vCenter | 6,7 U2 | vCenter-standaard |
 | vSAN | 6.7 | Zakelijk |
-| NSX Data Center | 2.3 | Geavanceerd |
+| NSX Data Center | 2.4.1 | Geavanceerd |
 
 ## <a name="esxi"></a>ESXi
 

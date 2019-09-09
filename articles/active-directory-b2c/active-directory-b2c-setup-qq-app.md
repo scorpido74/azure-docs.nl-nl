@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 11fc41374089c0ab7258dd191a255387713836eb
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 55e4b04814daaaff5bc217a561e9045d313d9675
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622307"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811420"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Stel registratie in en meld u aan met een QQ-account met behulp van Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Als u een QQ-account wilt gebruiken als een id-provider in Azure Active Director
 ### <a name="register-for-the-qq-developer-program"></a>Registreren voor het QQ-ontwikkelaars programma
 
 1. Meld u aan bij de [QQ-ontwikkelaars Portal](http://open.qq.com) met uw QQ-account referenties.
-1. Nadat u zich hebt aangemeld, [http://open.qq.com/reg](http://open.qq.com/reg) gaat u naar om uzelf te registreren als ontwikkelaar.
+1. Nadat u zich hebt aangemeld, [https://open.qq.com/reg](https://open.qq.com/reg) gaat u naar om uzelf te registreren als ontwikkelaar.
 1. Selecteer**个人**(afzonderlijke ontwikkelaar).
 1. Voer de vereiste gegevens in en selecteer**下一步**(volgende stap).
 1. Voltooi het e-mail verificatie proces. Nadat u zich hebt geregistreerd als ontwikkelaar, moet u een paar dagen wachten.

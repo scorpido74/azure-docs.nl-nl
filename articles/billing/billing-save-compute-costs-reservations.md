@@ -5,18 +5,20 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 2122b6bd5fbd6b15bd5a2e411898d957708bf4c9
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: bb90a9dec161746356b8c13df448718c53626684
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558868"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806341"
 ---
 # <a name="what-are-azure-reservations"></a>Wat zijn Azure-reserveringen?
 
-Azure Reservations helpt u geld te besparen door vooraf te betalen voor virtuele machines van één of drie jaar, SQL Database reken capaciteit, Azure Cosmos DB door Voer of andere Azure-resources. Door vooraf te betalen krijgt u korting op de resources die u gebruikt. Met reserve ringen kunt u uw virtuele machine aanzienlijk verlagen, SQL database reken-, Azure Cosmos DB-of andere resource kosten tot 72% op prijzen voor betalen per gebruik. Reserve ringen bieden een facturerings korting en zijn niet van invloed op de runtime status van uw resources.
+Met Azure Reservations kunt u geld besparen door over te slaan naar een virtuele machine van één of drie jaar, SQL Database reken capaciteit, Azure Cosmos DB door Voer of andere Azure-resources. Door door te voeren kunt u een korting krijgen op de resources die u gebruikt. Met reserve ringen kunt u uw virtuele machine aanzienlijk verlagen, SQL database reken-, Azure Cosmos DB-of andere resource kosten tot 72% op prijzen voor betalen per gebruik. Reserve ringen bieden een facturerings korting en zijn niet van invloed op de runtime status van uw resources.
+
+U kunt een reserve ring vooraf of maandelijks betalen. De totale kosten vooraf en maandelijkse reserve ringen zijn hetzelfde en u betaalt geen extra kosten wanneer u maandelijks betaalt. Maandelijkse betaling is beschikbaar voor Azure-reserve ringen, niet voor producten van derden.
 
 U kunt een reserve ring kopen in de [Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
 
@@ -31,6 +33,8 @@ Service plannen:
 - **Gereserveerde virtuele machine-instantie** : een reserve ring geldt alleen voor de reken kosten van de virtuele machine. Dit geldt niet voor extra software-, netwerk-of opslag kosten.
 - **Gereserveerde capaciteit Azure Cosmos DB** : een reserve ring dekt de door Voer ingericht voor uw resources. Dit geldt niet voor de kosten voor opslag en netwerken.
 - **SQL database gereserveerde vCore** : alleen de reken kosten zijn opgenomen in een reserve ring. De licentie wordt afzonderlijk in rekening gebracht.
+- **SQL Data Warehouse** : een reserve ring geldt voor het cDWU-gebruik. Dit geldt niet voor opslag-of netwerk kosten die zijn gekoppeld aan het SQL Data Warehouse gebruik.
+- **Kosten voor app service stempel** : een reserve ring dekt het stempel gebruik. Het is niet van toepassing op werk nemers, dus alle andere resources die aan de stempel zijn gekoppeld, worden afzonderlijk in rekening gebracht.
 
 Voor virtuele Windows-machines en SQL Database, kunt u de licentie kosten met [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)bedekking.
 
@@ -92,17 +96,17 @@ Een reserverings bereik wordt niet automatisch bijgewerkt als u de resource groe
 
 ## <a name="discounted-subscription-and-offer-types"></a>Abonnements-en aanbiedings typen met korting
 
-Reserverings kortingen zijn van toepassing op de volgende in aanmerking komende abonnementen en aanbiedings typen.
+Reserveringskortingen zijn van toepassing op de volgende in aanmerking komende typen abonnementen en aanbiedingen.
 
-- Enter prise Agreement (aantal aanbiedingen: MS-AZR-0017P of MS-AZR-0148P)
-- Afzonderlijke abonnementen met betalen naar gebruik-tarieven (aanbiedings nummers: MS-AZR-0003P of MS-AZR-0023P)
+- Enterprise Agreement (aanbiedingsnummers: MS-AZR-0017P of MS-AZR-0148P)
+- Afzonderlijke abonnementen met tarieven voor betalen naar gebruik (aanbiedingsnummers: MS-AZR-0003P of MS-AZR-0023P)
 - CSP-abonnementen
 
-Resources die worden uitgevoerd in een abonnement met andere typen aanbiedingen, ontvangen geen reserverings korting.
+Voor resources die voor een abonnement met andere typen aanbiedingen worden uitgevoerd, wordt geen reserveringskorting verkregen.
 
 ## <a name="how-is-a-reservation-billed"></a>Hoe wordt een reserve ring gefactureerd?
 
-De reserve ring wordt in rekening gebracht op de betalings wijze die aan het abonnement is gekoppeld. Als u een Enter prise-abonnement hebt, worden de kosten voor de reserve ring afgetrokken van uw monetaire toezeggings saldo. Als uw monetaire toezeggings saldo niet de kosten van de reserve ring dekt, factureert u de overschrijding. Als u een abonnement hebt van een afzonderlijke abonnement met betalen per gebruik-tarieven, wordt de credit card die u op uw account hebt, onmiddellijk gefactureerd. Wanneer u per factuur factureert, ziet u de kosten op uw volgende factuur.
+De reserve ring wordt in rekening gebracht op de betalings wijze die aan het abonnement is gekoppeld. Als u een Enter prise-abonnement hebt, worden de kosten voor de reserve ring afgetrokken van uw monetaire toezeggings saldo. Als uw monetaire toezeggings saldo niet de kosten van de reserve ring dekt, factureert u de overschrijding. Als u een abonnement hebt van een afzonderlijke abonnement met betalen per gebruik-tarieven, wordt de credit card die u op uw account hebt, direct in rekening gebracht voor aankopen vooraf. Maandelijkse betalingen worden weer gegeven op uw factuur en de kosten voor uw credit card worden maandelijks in rekening gebracht. Wanneer u per factuur factureert, ziet u de kosten op uw volgende factuur.
 
 ## <a name="how-reservation-discount-is-applied"></a>De manier waarop de reserverings korting wordt toegepast
 
@@ -116,7 +120,7 @@ U kunt bijvoorbeeld later een resource maken en een overeenkomende reserve ring 
 
 Als de virtuele machines worden uitgevoerd in verschillende abonnementen binnen uw registratie/account, selecteert u het bereik als gedeeld. Met een gedeeld bereik kan de reserverings korting worden toegepast op meerdere abonnementen. U kunt het bereik wijzigen nadat u een reserve ring hebt gekocht. Zie [Manage Azure Reservations](billing-manage-reserved-vm-instance.md)voor meer informatie.
 
-Een reserverings korting geldt alleen voor resources die zijn gekoppeld aan Enter prise, CSP of abonnementen met betalen naar gebruik-tarieven. Resources die worden uitgevoerd in een abonnement met andere typen aanbiedingen, ontvangen geen reserverings korting.
+Een reserverings korting geldt alleen voor resources die zijn gekoppeld aan Enter prise, CSP of abonnementen met betalen naar gebruik-tarieven. Voor resources die voor een abonnement met andere typen aanbiedingen worden uitgevoerd, wordt geen reserveringskorting verkregen.
 
 ## <a name="when-the-reservation-term-expires"></a>Wanneer de reserverings termijn verloopt
 
@@ -163,7 +167,7 @@ Als u vragen hebt of hulp nodig hebt, kunt u [een ondersteunings aanvraag maken]
 - Meer informatie over Azure Reservations met de volgende artikelen:
     - [Azure-reserveringen beheren](billing-manage-reserved-vm-instance.md)
     - [Meer informatie over reserverings gebruik voor uw abonnement met betalen per gebruik-tarieven](billing-understand-reserved-instance-usage.md)
-    - [Het gebruik van de reserve ring begrijpen voor uw Enter prise-inschrijving](billing-understand-reserved-instance-usage-ea.md)
+    - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](billing-understand-reserved-instance-usage-ea.md)
     - [Windows-software kosten niet inbegrepen bij reserve ringen](billing-reserved-instance-windows-software-costs.md)
     - [Azure Reservations in het Partner Center-programma van de Cloud Solution Provider (CSP)](/partner-center/azure-reservations)
 

@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: robinsh
-ms.openlocfilehash: 1c1921391048fc59f03070d4753f422d9cfc5237
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: dd12f974b9b02d919752dcb932c9ce1709d7315b
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883487"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813787"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Azure IoT Device SDK voor C
 
@@ -41,7 +41,7 @@ De meest recente versie van de bibliotheken vindt u in de **hoofd** vertakking v
 
 * De kern implementatie van de SDK bevindt zich in de **\_iothub-client** map die de implementatie van de laagste API-laag in de SDK bevat: de **IoTHubClient** -bibliotheek. De **IoTHubClient** -bibliotheek bevat api's die RAW Messa ging implementeren voor het verzenden van berichten naar IOT hub en het ontvangen van berichten van IOT hub. Wanneer u deze bibliotheek gebruikt, bent u verantwoordelijk voor het implementeren van bericht serialisatie, maar andere details van het communiceren met IoT Hub worden voor u afgehandeld.
 
-* De map serializer bevat hulp functies en voor beelden die laten zien hoe u gegevens kunt serialiseren voordat u deze naar Azure IOT hub verzendt met de-client bibliotheek. Het gebruik van de serialisatiefunctie is niet verplicht en is als gebruiks gemak opgegeven. Als u de **serialisatiefunctie** -bibliotheek wilt gebruiken, definieert u een model dat de gegevens bevat die moeten worden verzonden naar IOT hub en de berichten die u verwacht te ontvangen. Zodra het model is gedefinieerd, biedt de SDK u een API-Opper vlak waarmee u eenvoudig kunt werken met apparaat-naar-Cloud-en Cloud-naar-apparaat-berichten zonder dat u zich zorgen hoeft te maken over de details van de serialisatie. De bibliotheek is afhankelijk van andere open-source-bibliotheken die Trans Port implementeren met behulp van protocollen zoals MQTT en AMQP.
+* De map **serializer** bevat hulp functies en voor beelden die laten zien hoe u gegevens kunt serialiseren voordat u deze naar Azure IOT hub verzendt met de-client bibliotheek. Het gebruik van de serialisatiefunctie is niet verplicht en is als gebruiks gemak opgegeven. Als u de **serialisatiefunctie** -bibliotheek wilt gebruiken, definieert u een model dat de gegevens bevat die moeten worden verzonden naar IOT hub en de berichten die u verwacht te ontvangen. Zodra het model is gedefinieerd, biedt de SDK u een API-Opper vlak waarmee u eenvoudig kunt werken met apparaat-naar-Cloud-en Cloud-naar-apparaat-berichten zonder dat u zich zorgen hoeft te maken over de details van de serialisatie. De bibliotheek is afhankelijk van andere open-source-bibliotheken die Trans Port implementeren met behulp van protocollen zoals MQTT en AMQP.
 
 * De **IoTHubClient** -bibliotheek is afhankelijk van andere open-source-bibliotheken:
 
@@ -144,7 +144,7 @@ In de volgende stappen wordt deze voorbeeld toepassing gebruikt om u te helpen b
 ### <a name="initialize-the-library"></a>De bibliotheek initialiseren
 
 > [!NOTE]
-> Voordat u aan de slag gaat met de Bibliotheken, moet u mogelijk bepaalde platformspecifieke initialisaties uitvoeren. Als u bijvoorbeeld van plan bent AMQP in Linux te gebruiken, moet u de OpenSSL-bibliotheek initialiseren. De voor beelden in de [github-opslag plaats](https://github.com/Azure/azure-iot-sdk-c) roepen de functie **\_platform init** van het hulp programma aan wanneer de client wordt gestart en roept de functie voor het deinit van het **platform\_** aan voordat deze wordt afgesloten. Deze functies worden gedeclareerd in het bestand platform. h header. Bekijk de definities van deze functies voor uw doel platform in de [opslag plaats](https://github.com/Azure/azure-iot-sdk-c) om te bepalen of u een platformspecifieke initialisatie code moet gebruiken in uw-client.
+> Voordat u aan de slag gaat met de Bibliotheken, moet u mogelijk bepaalde platformspecifieke initialisaties uitvoeren. Als u bijvoorbeeld van plan bent AMQP in Linux te gebruiken, moet u de OpenSSL-bibliotheek initialiseren. De voor beelden in de [github-opslag plaats](https://github.com/Azure/azure-iot-sdk-c) roepen de functie **platform\_init** van het hulp programma aan wanneer de client wordt gestart en roept de functie voor het **deinit van het platform\_** aan voordat deze wordt afgesloten. Deze functies worden gedeclareerd in het bestand platform. h header. Bekijk de definities van deze functies voor uw doel platform in de [opslag plaats](https://github.com/Azure/azure-iot-sdk-c) om te bepalen of u een platformspecifieke initialisatie code moet gebruiken in uw-client.
 
 Wijs eerst een IoT Hub client ingang toe om te gaan werken met de bibliotheken:
 
@@ -217,7 +217,7 @@ Telkens wanneer u een bericht verzendt, geeft u een verwijzing op naar een call 
 static void SendConfirmationCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback)
 {
     EVENT_INSTANCE* eventInstance = (EVENT_INSTANCE*)userContextCallback;
-    (void)printf("Confirmation[%d] received for message tracking id = %zu with result = %s\r\n", callbackCounter, eventInstance->messageTrackingId, ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
+    (void)printf("Confirmation[%d] received for message tracking id = %zu with result = %s\r\n", callbackCounter, eventInstance->messageTrackingId, MU_ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
     /* Some device specific action code goes here... */
     callbackCounter++;
     IoTHubMessage_Destroy(eventInstance->messageHandle);
@@ -332,9 +332,9 @@ De **IoTHubClient** -bibliotheek biedt ook een nauw keurige controle over het se
 
 ## <a name="use-the-serializer-library"></a>De serialisatiefunctie-bibliotheek gebruiken
 
-De serializer -bibliotheek bevindt zich boven aan de **IoTHubClient** -bibliotheek in de SDK. Er wordt gebruikgemaakt van de **IoTHubClient** -bibliotheek voor de onderliggende communicatie met IOT hub, maar er worden model functies toegevoegd waarmee de belasting van de verwerking van de bericht serialisatie van de ontwikkelaar wordt verwijderd. Hoe deze tape wisselaar het beste kan worden gedemonstreerd door een voor beeld.
+De **serializer** -bibliotheek bevindt zich boven aan de **IoTHubClient** -bibliotheek in de SDK. Er wordt gebruikgemaakt van de **IoTHubClient** -bibliotheek voor de onderliggende communicatie met IOT hub, maar er worden model functies toegevoegd waarmee de belasting van de verwerking van de bericht serialisatie van de ontwikkelaar wordt verwijderd. Hoe deze tape wisselaar het beste kan worden gedemonstreerd door een voor beeld.
 
-In de map serializer in de [Azure-IOT-SDK-c-opslag plaats](https://github.com/Azure/azure-iot-sdk-c)is een map met voor **beelden** die een toepassing bevat met de naam **simple sample\_mqtt**. De Windows-versie van dit voor beeld bevat de volgende Visual Studio-oplossing:
+In de map **serializer** in de [Azure-IOT-SDK-c-opslag plaats](https://github.com/Azure/azure-iot-sdk-c)is een map met voor **beelden** die een toepassing bevat met de naam **simple sample\_mqtt**. De Windows-versie van dit voor beeld bevat de volgende Visual Studio-oplossing:
 
   ![Visual Studio-oplossing voor mqtt-voor beeld](./media/iot-hub-device-sdk-c-intro/simplesample_mqtt.png)
 
@@ -357,7 +357,7 @@ In de volgende secties vindt u een overzicht van de belangrijkste onderdelen van
 
 ### <a name="initialize-the-library"></a>De bibliotheek initialiseren
 
-Roep de initialisatie-Api's aan om te gaan werken met de serializer-bibliotheek:
+Roep de initialisatie-Api's aan om te gaan werken met de **serializer** -bibliotheek:
 
 ```c
 if (serializer_init(NULL) != SERIALIZER_OK)
@@ -386,13 +386,13 @@ else
 ...
 ```
 
-De aanroep van de **\_serialisatiefunctie serializer init** -functie is een eenmalige aanroep en initialiseert de onderliggende bibliotheek. Vervolgens roept u de **IoTHubClient\_ll\_API createfromconnectionstring** -functie aan. Dit is dezelfde API als in het **IoTHubClient** -voor beeld. Met deze aanroep wordt het apparaat ingesteld connection string (deze aanroep is ook het protocol dat u wilt gebruiken). In dit voor beeld wordt MQTT gebruikt als het Trans Port, maar kan AMQP of HTTPS gebruiken.
+De aanroep van de **serialisatiefunctie serializer\_init** -functie is een eenmalige aanroep en initialiseert de onderliggende bibliotheek. Vervolgens roept u de **IoTHubClient\_ll\_API createfromconnectionstring** -functie aan. Dit is dezelfde API als in het **IoTHubClient** -voor beeld. Met deze aanroep wordt het apparaat ingesteld connection string (deze aanroep is ook het protocol dat u wilt gebruiken). In dit voor beeld wordt MQTT gebruikt als het Trans Port, maar kan AMQP of HTTPS gebruiken.
 
 Roep tot slot de **functie\_model\_exemplaar maken** aan. **WeatherStation** is de naam ruimte van het model en de **ContosoAnemometer** is de name van het model. Zodra het model exemplaar is gemaakt, kunt u het gebruiken om berichten te verzenden en te ontvangen. Het is echter belang rijk om te begrijpen wat een model is.
 
 ### <a name="define-the-model"></a>Het model definiëren
 
-Een model in de **serialisatiefunctie** -bibliotheek definieert de berichten die uw apparaat naar IOT hub kan verzenden en de berichten, *acties* genoemd in de model taal, die kunnen worden ontvangen. U definieert een model met behulp van een set C-macro's, zoals in de voorbeeld toepassing **\_iothub_client samples\_iothub_convenience_sample** :
+Een model in de **serialisatiefunctie** -bibliotheek definieert de berichten die uw apparaat naar IOT hub kan verzenden en de berichten, *acties* genoemd in de model taal, die kunnen worden ontvangen. U definieert een model met behulp van een set C-macro's, zoals in de voorbeeld toepassing **iothub_client\_samples\_iothub_convenience_sample** :
 
 ```c
 BEGIN_NAMESPACE(WeatherStation);
@@ -475,7 +475,7 @@ void sendCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCal
 
     (void)printf("Message Id: %u Received.\r\n", messageTrackingId);
 
-    (void)printf("Result Call Back Called! Result is: %s \r\n", ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
+    (void)printf("Result Call Back Called! Result is: %s \r\n", MU_ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
 }
 ```
 

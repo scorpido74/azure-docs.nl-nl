@@ -7,12 +7,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: eb6df3bfda131f00c04499dc80c47482229195a5
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: b21847d27dc7f444afaf1b73efa19b0b0087cfe4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623907"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811678"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Oozie met Apache Hadoop gebruiken om een werk stroom te definiëren en uit te voeren op Azure HDInsight op basis van Linux
 
@@ -65,7 +65,7 @@ De werk stroom die in dit document wordt gebruikt, bevat twee acties. Acties zij
 
 Oozie verwacht u dat alle resources die vereist zijn voor een taak, worden opgeslagen in dezelfde map. In dit voor `wasbs:///tutorials/useoozie`beeld wordt gebruikt. Voer de volgende stappen uit om deze map te maken:
 
-1. Bewerk de code hieronder om te `sshuser` vervangen door de SSH-gebruikers naam voor het cluster en `clustername` Vervang door de naam van het cluster.  Voer vervolgens de code in om verbinding te maken met het HDInsight-cluster met behulp van [SSH](hdinsight-hadoop-linux-use-ssh-unix.md).  
+1. Bewerk de code hieronder om te `sshuser` vervangen door de SSH-gebruikers naam voor het cluster en `clustername` Vervang door de naam van het cluster.  Voer vervolgens de code in om verbinding te maken met het HDInsight-cluster met [behulp van SSH](hdinsight-hadoop-linux-use-ssh-unix.md).  
 
     ```bash
     ssh sshuser@clustername-ssh.azurehdinsight.net
@@ -504,7 +504,7 @@ U kunt ook de details van de acties in een taak bekijken.
 
 Voer de volgende stappen uit om toegang te krijgen tot de Oozie-webgebruikersinterface:
 
-1. Een SSH-tunnel maken naar het HDInsight-cluster. Zie SSH-tunneling [gebruiken met HDInsight](hdinsight-linux-ambari-ssh-tunnel.md)voor meer informatie.
+1. Een SSH-tunnel maken naar het HDInsight-cluster. Zie [ssh-tunneling gebruiken met HDInsight](hdinsight-linux-ambari-ssh-tunnel.md)voor meer informatie.
 
 2. Nadat u een tunnel hebt gemaakt, opent u de Ambari-web-gebruikers interface in `http://headnodehost:8080`uw webbrowser met behulp van URI.
 
@@ -643,7 +643,7 @@ U kunt de coördinator gebruiken om een start, een eind en de frequentie van het
     > [!NOTE]  
     > In deze afbeelding worden alleen geslaagde uitvoeringen van de taak weer gegeven, niet de afzonderlijke acties binnen de geplande werk stroom. Als u de afzonderlijke acties wilt zien, selecteert u een van de **actie** vermeldingen.
 
-    ![Actie-informatie](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
+    ![Actie-informatie coördinator](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 

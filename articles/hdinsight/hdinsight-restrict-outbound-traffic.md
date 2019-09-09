@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 63e23275a68ddde9385bb252dcb872d02c5cea08
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 829f3e730b4993a6a7f32a9224d3c6c38bd4c06e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405971"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811956"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Uitgaand netwerk verkeer voor Azure HDInsight-clusters configureren met behulp van Firewall (preview-versie)
 
@@ -48,7 +48,7 @@ Maak een toepassings regel verzameling waarmee het cluster belang rijke communic
 
 Selecteer de nieuwe firewall **test-FW01** van de Azure Portal. Klik op **regels** onder **instellingen** > **toepassings regel verzameling** > **toepassings regel verzameling toevoegen**.
 
-![Titel: Verzameling met toepassingsregels toevoegen](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
+![Hoofd Verzameling met toepassingsregels toevoegen](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
 Voer de volgende stappen uit op het scherm **toepassings regel toevoegen** :
 
@@ -67,7 +67,7 @@ Voer de volgende stappen uit op het scherm **toepassings regel toevoegen** :
 
 1. Klik op **Toevoegen**.
 
-   ![Titel: Details van toepassings regel verzameling invoeren](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
+   ![Hoofd Details van toepassings regel verzameling invoeren](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
 ### <a name="configure-the-firewall-with-network-rules"></a>De firewall met netwerk regels configureren
 
@@ -93,7 +93,7 @@ Maak de netwerk regels om uw HDInsight-cluster correct te configureren.
 
 1. Klik op **toevoegen** om het maken van de netwerk regel verzameling te volt ooien.
 
-   ![Titel: Details van toepassings regel verzameling invoeren](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+   ![Hoofd Toepassings regel verzameling invoeren](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
 ### <a name="create-and-configure-a-route-table"></a>Een route tabel maken en configureren
 
@@ -124,7 +124,7 @@ Gebruik bijvoorbeeld de volgende stappen om de route tabel te configureren voor 
 
 De configuratie van de route tabel volt ooien:
 
-1. Wijs de route tabel die u hebt gemaakt in uw HDInsight-  subnet toe door te klikken op subnetten onder **instellingen** en vervolgens te **koppelen**.
+1. Wijs de route tabel die u hebt gemaakt in uw HDInsight-subnet toe door te klikken op **subnetten** onder **instellingen** en vervolgens te **koppelen**.
 1. Selecteer in het scherm **subnet koppelen** het virtuele netwerk waarin het cluster is gemaakt en het Hdinsight- **subnet** dat u hebt gebruikt voor uw HDInsight-cluster.
 1. Klik op **OK**.
 

@@ -1,45 +1,45 @@
 ---
 title: HDInsight-cluster upgraden naar een nieuwere versie-Azure
-description: Meer informatie over het upgraden van HDInsight-cluster naar een nieuwere versie.
+description: Meer informatie over richt lijnen voor het bijwerken van uw Azure HDInsight-cluster naar een nieuwere versie.
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 4d391c095495a3d0e34a2111d7b4564e6f4f2b8d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f4458b33edb9d55c30de8c5168668743abb33161
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071999"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811639"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>HDInsight-cluster upgraden naar een nieuwere versie
-Als u wilt profiteren van de nieuwste functies voor HDInsight, is het raadzaam dat HDInsight-clusters worden bijgewerkt naar de meest recente versie. Volg de onderstaande richtlijnen om te upgraden van uw HDInsight-cluster versies.
+Als u gebruik wilt maken van de nieuwste HDInsight-functies, raden we aan dat HDInsight-clusters worden bijgewerkt naar de nieuwste versie. Volg de onderstaande richt lijnen om de versies van uw HDInsight-cluster bij te werken.
 
 > [!NOTE]  
-> Zie voor meer informatie over de ondersteunde versies van HDInsight [HDInsight onderdeel versies](hdinsight-component-versioning.md#supported-hdinsight-versions).
+> Zie [HDInsight-onderdeel versies](hdinsight-component-versioning.md#supported-hdinsight-versions)voor meer informatie over ondersteunde versies van hdinsight.
 
-## <a name="upgrade-tasks"></a>Upgrade uitvoeren van taken
-De werkstroom om HDInsight-Cluster te upgraden is als volgt.
+## <a name="upgrade-tasks"></a>Upgrade taken
+De werk stroom voor het upgraden van een HDInsight-cluster is als volgt.
 
-![Diagram van werkstroom bijwerken](./media/hdinsight-upgrade-cluster/upgrade-workflow.png)
+![Werk stroom diagram bijwerken](./media/hdinsight-upgrade-cluster/upgrade-workflow.png)
 
-1. Lees elke sectie van dit document om te begrijpen van wijzigingen die mogelijk vereist bij het upgraden van uw HDInsight-cluster.
-2. Maak een cluster als een test/kwaliteit assurance-omgeving. Zie voor meer informatie over het maken van een cluster [informatie over het maken van HDInsight op basis van Linux-clusters](hdinsight-hadoop-provision-linux-clusters.md)
-3. Bestaande taken, gegevensbronnen en sinks kopiëren naar de nieuwe omgeving.
-4. Voer validatietests om ervoor te zorgen dat uw taken werken zoals verwacht op het nieuwe cluster.
+1. Lees elke sectie van dit document voor meer informatie over wijzigingen die mogelijk vereist zijn bij het upgraden van uw HDInsight-cluster.
+2. Maak een cluster als test-of kwaliteits borgings omgeving. Zie [informatie over het maken van HDInsight-clusters op basis van Linux](hdinsight-hadoop-provision-linux-clusters.md) voor meer informatie over het maken van een cluster.
+3. Kopieer bestaande taken, gegevens bronnen en sinks naar de nieuwe omgeving.
+4. Voer validatie tests uit om ervoor te zorgen dat uw taken werken zoals verwacht op het nieuwe cluster.
 
-Nadat u hebt gecontroleerd dat alles werkt zoals verwacht, plant u uitvaltijd voor de migratie. Tijdens deze uitval, moet u de volgende acties uitvoeren:
+Zodra u hebt gecontroleerd of alles werkt zoals verwacht, kunt u de downtime voor de migratie plannen. Voer tijdens deze downtime de volgende acties uit:
 
-1.  Back-up van alle tijdelijke gegevens die lokaal zijn opgeslagen op de clusterknooppunten. Bijvoorbeeld, als u gegevens hebt opgeslagen rechtstreeks op een hoofdknooppunt.
-2.  Het bestaande cluster verwijderen.
-3.  Een cluster maken in hetzelfde VNET-subnet met de meest recente (of ondersteunde) HDI-versie met behulp van de dezelfde standaard-gegevensarchief die het voorgaande cluster gebruikt. Hiermee wordt het nieuwe cluster om door te gaan werken met uw bestaande productiegegevens.
-4.  Importeer geen tijdelijke gegevens die u back-up gemaakt.
-5.  Start taken/doorgaan met het verwerken met behulp van het nieuwe cluster.
+1.  Maak een back-up van tijdelijke gegevens die lokaal zijn opgeslagen op de cluster knooppunten. Bijvoorbeeld als u gegevens rechtstreeks op een hoofd knooppunt hebt opgeslagen.
+2.  Verwijder het bestaande cluster.
+3.  Maak een cluster in hetzelfde VNET-subnet met de nieuwste (of ondersteunde) HDI-versie met behulp van hetzelfde standaard gegevens archief dat het vorige cluster gebruikt. Hierdoor kan het nieuwe cluster blijven werken met uw bestaande productie gegevens.
+4.  Importeer alle tijdelijke gegevens waarvan u een back-up hebt gemaakt.
+5.  Start taken/Ga door met de verwerking met het nieuwe cluster.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Meer informatie over het maken van HDInsight op basis van Linux-clusters](hdinsight-hadoop-provision-linux-clusters.md)
+* [Meer informatie over het maken van HDInsight-clusters op basis van Linux](hdinsight-hadoop-provision-linux-clusters.md)
 * [Verbinding maken met HDInsight via SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
-* [Een cluster op basis van Linux met behulp van Apache Ambari beheren](hdinsight-hadoop-manage-ambari.md)
+* [Een op Linux gebaseerd cluster beheren met Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 

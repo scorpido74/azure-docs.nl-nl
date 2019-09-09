@@ -11,12 +11,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 34c8c49166ea13d67c1f3d51805671c63dbb352b
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: d13e0b95d57e3063292319961d5e1138f994076e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312296"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812274"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Gegevens transformeren in de cloud met behulp van een Spark-activiteit in Azure Data Factory
 In deze zelfstudie gebruikt u Azure Portal om een pijplijn voor Azure Data Factory te maken. Deze pijplijn transformeert gegevens met behulp van een Spark-activiteit en een gekoppelde Azure HDInsight-service op aanvraag. 
@@ -81,7 +81,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 1. Maak in de map **spark** een submap met de naam **inputfiles**. 
 1. Upload het bestand **minecraftstory.txt** naar de submap **inputfiles**. 
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Data factory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
 1. Selecteer **Nieuw** in het menu links, selecteer **Gegevens en analyses** en selecteer vervolgens **Data Factory**. 
@@ -147,13 +147,13 @@ In deze sectie maakt u twee gekoppelde services:
    
    b. Controleer of **On-demand HDInsight** is geselecteerd bij **Type**.
    
-   c. Voor **gekoppelde Azure Storage-Service**, selecteer **AzureBlobStorage1**. U hebt deze gekoppelde service al eerder gemaakt. Als u een andere naam hebt gebruikt, geeft u hier de juiste naam op. 
+   c. Selecteer **AzureBlobStorage1**voor **Azure Storage gekoppelde service**. U hebt deze gekoppelde service al eerder gemaakt. Als u een andere naam hebt gebruikt, geeft u hier de juiste naam op. 
    
    d. Selecteer **spark** bij **Clustertype**.
    
    e. Voer bij **Service-principal-id** de id in van de service-principal die gemachtigd is om een HDInsight-cluster te maken. 
    
-      Deze service-principal moet lid zijn van de rol Inzender van het abonnement of de resourcegroep waarin het cluster is gemaakt. Zie [Een Azure Active Directory-toepassing en service-principal maken](../active-directory/develop/howto-create-service-principal-portal.md) voor meer informatie.
+      Deze service-principal moet lid zijn van de rol Inzender van het abonnement of de resourcegroep waarin het cluster is gemaakt. Zie [Een Azure Active Directory-toepassing en service-principal maken](../active-directory/develop/howto-create-service-principal-portal.md) voor meer informatie. De **Service-Principal-id** is gelijk aan de *toepassings-id*en een **Service-Principal-sleutel** is gelijk aan de waarde voor een *client geheim*.
    
    f. Geef bij **Sleutel van service-principal** de sleutel op. 
    
@@ -189,7 +189,7 @@ In deze sectie maakt u twee gekoppelde services:
    ![De gekoppelde HDInsight-service opgeven](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
 1. Ga naar het tabblad **Script/Jar** en voer de volgende stappen uit: 
 
-   a. Voor **taak gekoppelde Service**, selecteer **AzureBlobStorage1**.
+   a. Selecteer voor **taak gekoppelde service** **AzureBlobStorage1**.
    
    b. Selecteer **In opslag bladeren**.
 
@@ -206,7 +206,7 @@ In deze sectie maakt u twee gekoppelde services:
 
 
 ## <a name="trigger-a-pipeline-run"></a>Een pijplijnuitvoering activeren
-Selecteer **Trigger toevoegen** op de werkbalk en selecteer vervolgens **nu activeren**. 
+Selecteer **trigger toevoegen** op de werk balk en selecteer **nu activeren**. 
 
 ![De knoppen Activeren en Nu activeren](./media/tutorial-transform-data-spark-portal/trigger-now-menu.png)
 
@@ -222,7 +222,7 @@ Selecteer **Trigger toevoegen** op de werkbalk en selecteer vervolgens **nu acti
 
    ![Status pijplijnuitvoering](./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png) 
 
-   U kunt wilt terugkeren naar de vorige weergave, selecteren de **alle Pijplijnuitvoeringen** koppelen aan de bovenkant.
+   U kunt teruggaan naar de weer gave pijplijn uitvoeringen door de koppeling **alle pijplijn uitvoeringen** bovenaan te selecteren.
 
    ![Uitvoering van activiteiten weergeven](./media/tutorial-transform-data-spark-portal/activity-runs.png)
 

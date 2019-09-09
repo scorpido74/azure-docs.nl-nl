@@ -1,9 +1,9 @@
 ---
-title: Licentie-vereisten voor het gebruik van PIM - Azure Active Directory | Microsoft Docs
-description: Beschrijft de licentievereisten duidelijk zijn Azure AD Privileged Identity Management (PIM) gebruiken.
+title: Licentie vereisten voor het gebruik van PIM-Azure Active Directory | Microsoft Docs
+description: Beschrijft de licentie vereisten voor het gebruik van Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: markwahl-msft
 ms.assetid: 34367721-8b42-4fab-a443-a2e55cdbf33d
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
 ms.date: 01/16/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40e16209a185623b6e15650f70141edd6394e337
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 83c31c2731a8e872dfd2750fced8b91d283d0892
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60437453"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804073"
 ---
-# <a name="license-requirements-to-use-pim"></a>Licentievereisten PIM gaat gebruiken
+# <a name="license-requirements-to-use-pim"></a>Licentie vereisten voor het gebruik van PIM
 
-Een directory moet een geldige licentie hebben voor het gebruik van Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Bovendien moeten licenties worden toegewezen aan de beheerders en gebruikers. Dit artikel beschrijft de licentievereisten PIM gaat gebruiken.
+Als u Azure Active Directory (Azure AD) Privileged Identity Management (PIM) wilt gebruiken, moet een directory een geldige licentie hebben. Daarnaast moeten de licenties aan de beheerders en relevante gebruikers worden toegewezen. In dit artikel worden de licentie vereisten voor het gebruik van PIM beschreven.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het gebruik van PIM, moet uw directory een van de volgende betaalde of proeflicenties hebben:
+Voor het gebruik van PIM moet uw Directory een van de volgende betaalde of proef licenties hebben:
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
@@ -40,31 +40,31 @@ Zie [Wat is Azure Active Directory?](../fundamentals/active-directory-whatis.md)
 
 ## <a name="which-users-must-have-licenses"></a>Welke gebruikers moeten licenties hebben?
 
-Elke beheerder of gebruiker die de interactie met of ontvangt een van de voordelen van PIM moet een licentie hebben. Voorbeelden zijn:
+Elke beheerder of gebruiker die met PIM communiceert of een voor deel ontvangt, moet een licentie hebben. Voorbeelden zijn:
 
-- Beheerders met Azure AD-rollen beheerd met PIM
-- Beheerders met Azure-resourcerollen beheerd met PIM
-- Beheerders die zijn toegewezen aan de rol beheerder met bevoorrechte rol
-- Gebruikers die zijn toegewezen als in aanmerking voor Azure AD-rollen beheerd met PIM
-- Gebruikers kunnen aanvragen in PIM goedkeuren/afwijzen
-- Gebruikers die zijn toegewezen aan een Azure-resource-rol met just-in-time- of direct toewijzingen voor (op basis van tijd)  
-- Gebruikers die zijn toegewezen aan een toegangsbeoordeling
-- Gebruikers die toegangsbeoordelingen uitvoeren
+- Beheerders met Azure AD-rollen die worden beheerd met PIM
+- Beheerders met Azure-resource rollen die worden beheerd met PIM
+- Beheerders die zijn toegewezen aan de rol beheerder privileged Role
+- Gebruikers die in aanmerking komen voor Azure AD-rollen die worden beheerd met PIM
+- Gebruikers kunnen aanvragen goed keuren of afwijzen in PIM
+- Gebruikers die zijn toegewezen aan een Azure-resource functie met Just-in-time-of directe (op tijd gebaseerde) toewijzingen  
+- Gebruikers die zijn toegewezen aan een toegangs beoordeling
+- Gebruikers die toegangs beoordelingen uitvoeren
 
-Zie voor meer informatie over het toewijzen van licenties aan uw gebruikt [toewijzen of verwijderen met behulp van de Azure Active Directory-portal licenties](../fundamentals/license-users-groups.md).
+Zie [licenties toewijzen of verwijderen met behulp van de Azure Active Directory Portal](../fundamentals/license-users-groups.md)voor informatie over het toewijzen van licenties aan uw gebruik.
 
-## <a name="what-happens-when-a-license-expires"></a>Wat gebeurt er wanneer een licentie is verlopen?
+## <a name="what-happens-when-a-license-expires"></a>Wat gebeurt er wanneer een licentie verloopt?
 
-Als een Azure AD Premium P2, EMS E5 of proeflicentie is verlopen, is PIM-functies niet langer beschikbaar in de map:
+Als een Azure AD Premium P2, EMS E5 of een proef licentie verloopt, zullen PIM-functies niet meer beschikbaar zijn in uw Directory:
 
-- Permanente roltoewijzingen aan Azure AD-rollen niet worden gewijzigd.
-- De PIM-service in Azure portal, evenals de Graph API-cmdlets en PowerShell-interfaces met PIM, wordt niet langer beschikbaar voor gebruikers bevoorrechte rollen activeren, het beheren van bevoegde toegang of het uitvoeren van beoordelingen van bevoorrechte rollen.
-- In aanmerking komende roltoewijzingen van Azure AD-rollen worden verwijderd, omdat gebruikers wordt niet meer kunnen bevoorrechte rollen activeren.
-- Alle actieve toegangsbeoordelingen van Azure AD-rollen wordt beëindigd en PIM-configuratie-instellingen worden verwijderd.
-- PIM wordt niet meer e-mailberichten verzenden op wijzigingen aan toewijzingen van rol.
+- Permanente roltoewijzingen aan Azure AD-rollen worden niet beïnvloed.
+- De PIM-service in de Azure Portal, evenals de Graph API-cmdlets en Power shell-interfaces van PIM, is niet langer beschikbaar voor gebruikers om geprivilegieerde rollen te activeren, bevoorrechte toegang te beheren of toegangs beoordelingen van geprivilegieerde rollen uit te voeren.
+- De in aanmerking komende roltoewijzingen van Azure AD-rollen worden verwijderd omdat gebruikers geen bevoegde rollen meer kunnen activeren.
+- Alle doorlopende toegangs beoordelingen van Azure AD-rollen worden beëindigd en PIM-configuratie-instellingen worden verwijderd.
+- PIM verzendt geen e-mail berichten meer over roltoewijzings wijzigingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [PIM implementeren](pim-deployment-plan.md)
 - [Beginnen met PIM](pim-getting-started.md)
-- [Rollen die in PIM kunt u niet beheren](pim-roles.md)
+- [Rollen die u niet kunt beheren in PIM](pim-roles.md)

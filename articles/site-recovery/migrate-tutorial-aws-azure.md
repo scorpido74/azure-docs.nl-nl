@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bb60fa216c10b11b6a47c029fbef3698c6f7bd6d
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 15ce85385662ba186f8434285130099054e52c05
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663504"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814458"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>AWS-VM’s (Amazon Web Services) migreren naar Azure
 
@@ -30,6 +30,10 @@ In deze zelfstudie leert u hoe u AWS-VM’s (Amazon Web Services) naar Azure mig
 > * Een eenmalige failover uitvoeren naar Azure
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/pricing/free-trial/) aan voordat u begint.
+
+
+> [!NOTE]
+    > U kunt nu de Azure Migrate-service gebruiken om AWS-exemplaren naar Azure te migreren. [Meer informatie](../migrate/tutorial-migrate-physical-virtual-machines.md).
 
 ## <a name="prerequisites"></a>Vereisten
 - Zorg ervoor dat de VM’s die u wilt migreren, worden uitgevoerd met een ondersteunde versie van het besturingssysteem. Ondersteunde versies zijn onder andere: 

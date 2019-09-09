@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: 6e8f8e7d8324f23a81cd6ae3284bd6d7cff24117
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 87ac2283e96081297fdd54c1c131aa5b78a5973a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489838"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814260"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure-toolkit voor Eclipse gebruiken om Apache Spark-toepassingen voor een HDInsight-cluster te maken
 
@@ -61,7 +61,7 @@ De gebruiker kan [zich aanmelden bij het Azure-abonnement](#sign-in-to-your-azur
    ![Het dialoog venster abonnementen selecteren](./media/apache-spark-eclipse-tool-plugin/Select-Subscriptions.png)
 1. Vouw op het tabblad **Azure Explorer** **hdinsight** uit om de hdinsight Spark-clusters onder uw abonnement te zien.
    
-   ![HDInsight Spark-clusters in azure Verkenner](./media/apache-spark-eclipse-tool-plugin/view-explorer-3.png)
+   ![HDInsight Spark-clusters in azure Explorer3](./media/apache-spark-eclipse-tool-plugin/view-explorer-3.png)
 1. U kunt een cluster naam knooppunt verder uitbreiden om de bronnen (bijvoorbeeld opslag accounts) te zien die zijn gekoppeld aan het cluster.
    
    ![Een cluster naam uitbreiden om de resources te bekijken](./media/apache-spark-eclipse-tool-plugin/view-explorer-4.png)
@@ -235,16 +235,16 @@ Wanneer gebruikers een taak verzenden naar een cluster met de machtiging alleen 
        
 2. Vouw in **Azure Verkenner** **HDInsight** uit om hdinsight-clusters in uw abonnement weer te geven. De gemarkeerde clusters **"Role: Reader"** hebben alleen de rol alleen-lezen.
 
-    ![HDInsight Spark-clusters in azure Verkenner](./media/apache-spark-eclipse-tool-plugin/view-explorer-6.png)
+    ![HDInsight Spark-clusters in de functie lezer van Azure Explorer](./media/apache-spark-eclipse-tool-plugin/view-explorer-6.png)
 
 3. Klik met de rechter muisknop op het cluster met de machtiging alleen lezer. Selecteer **dit cluster koppelen in het** context menu om het cluster te koppelen. Voer de Ambari-gebruikers naam en het wacht woord in.
 
-    ![HDInsight Spark-clusters in azure Verkenner](./media/apache-spark-eclipse-tool-plugin/view-explorer-7.png)
+    ![HDInsight Spark-clusters in azure Explorer-koppeling](./media/apache-spark-eclipse-tool-plugin/view-explorer-7.png)
 
 4. Als het cluster is gekoppeld, wordt HDInsight vernieuwd.
    De fase van het cluster wordt gekoppeld.
   
-    ![HDInsight Spark-clusters in azure Verkenner](./media/apache-spark-eclipse-tool-plugin/view-explorer-8.png)
+    ![HDInsight Spark-clusters in azure Verkenner gekoppeld](./media/apache-spark-eclipse-tool-plugin/view-explorer-8.png)
 
 
 
@@ -254,7 +254,7 @@ Wanneer gebruikers een taak verzenden naar een cluster met de machtiging alleen 
    
 2. Klik op **dit cluster koppelen om het** cluster te koppelen.
    
-    ![HDInsight Spark-clusters in azure Verkenner](./media/apache-spark-eclipse-tool-plugin/view-explorer-9.png)
+    ![HDInsight Spark-clusters in azure Explorer9](./media/apache-spark-eclipse-tool-plugin/view-explorer-9.png)
 
 ### <a name="link-cluster-from-spark-submission-window"></a>Het cluster koppelen vanuit het venster verzen ding van Spark
 
@@ -262,23 +262,23 @@ Wanneer gebruikers een taak verzenden naar een cluster met de machtiging alleen 
 
 2. Klik met de rechter muisknop op het pakket. Selecteer vervolgens **verzenden Spark-toepassing naar HDInsight**.
    
-   ![HDInsight Spark-clusters in azure Verkenner](./media/apache-spark-eclipse-tool-plugin/view-explorer-11.png)
+   ![HDInsight Spark-clusters in azure Verkenner verzenden](./media/apache-spark-eclipse-tool-plugin/view-explorer-11.png)
 
 3. Selecteer een cluster met een machtiging voor alleen-lezen rollen voor de **cluster naam**. Er wordt een waarschuwings bericht weer gegeven. U kunt klikken op **dit cluster koppelen om het** cluster te koppelen.
    
-   ![HDInsight Spark-clusters in azure Verkenner](./media/apache-spark-eclipse-tool-plugin/view-explorer-15.png)
+   ![Koppeling van HDInsight Spark-clusters in azure Explorer](./media/apache-spark-eclipse-tool-plugin/view-explorer-15.png)
    
 ### <a name="view-storage-accounts"></a>Opslag accounts weer geven
 
 * Voor clusters met de machtiging alleen lezer, klikt u op het knoop punt **opslag accounts** , het venster **opslag toegang geweigerd** verschijnt. 
      
-   ![HDInsight Spark-clusters in azure Verkenner](./media/apache-spark-eclipse-tool-plugin/view-explorer-13.png)
+   ![HDInsight Spark-clusters in azure Verkenner-opslag](./media/apache-spark-eclipse-tool-plugin/view-explorer-13.png)
 
-   ![HDInsight Spark-clusters in azure Verkenner](./media/apache-spark-eclipse-tool-plugin/view-explorer-12.png)
+   ![HDInsight Spark-clusters in azure Verkenner geweigerd](./media/apache-spark-eclipse-tool-plugin/view-explorer-12.png)
 
 * Voor gekoppelde clusters klikt u op het knoop punt **opslag accounts** , het venster **opslag toegang geweigerd** verschijnt. 
      
-   ![HDInsight Spark-clusters in azure Verkenner](./media/apache-spark-eclipse-tool-plugin/view-explorer-14.png)
+   ![HDInsight Spark-clusters in azure Explorer denied2](./media/apache-spark-eclipse-tool-plugin/view-explorer-14.png)
 
 ## <a name="known-problems"></a>Bekende problemen
 Wanneer u een cluster koppelt, kunt u de referenties van de opslag opgeven.
@@ -287,9 +287,9 @@ Wanneer u een cluster koppelt, kunt u de referenties van de opslag opgeven.
 
 Er zijn twee modi voor het verzenden van de taken. Als opslag referentie is verstrekt, wordt de batch modus gebruikt voor het verzenden van de taak. Anders wordt de interactieve modus gebruikt. Als het cluster bezet is, wordt mogelijk de volgende fout weer gegeven.
 
-![fout bij het ophalen van de eclips wanneer het cluster bezet is](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png)
+fout bij het ophalen van de ![eclips wanneer het cluster bezet] is fout bij het ophalen van de (./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png "eclips wanneer het cluster bezet") is
 
-![fout bij het ophalen van de eclips wanneer het cluster bezet is](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png)
+fout bij het ophalen van de ![eclips als cluster bezet-garens] fout bij het ophalen van de (./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "eclips als cluster bezet-garens")
 
 ## <a name="seealso"></a>Zie ook
 * [Krijgt Apache Spark in azure HDInsight](apache-spark-overview.md)

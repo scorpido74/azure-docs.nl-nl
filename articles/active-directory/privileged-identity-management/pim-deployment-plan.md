@@ -1,9 +1,9 @@
 ---
-title: Privileged Identity Management (PIM) - Azure Active Directory implementeren | Microsoft Docs
-description: Beschrijft hoe u van plan bent de implementatie van Azure AD Privileged Identity Management (PIM).
+title: Privileged Identity Management implementeren (PIM)-Azure Active Directory | Microsoft Docs
+description: Hierin wordt beschreven hoe u de implementatie van Azure AD Privileged Identity Management (PIM) plant.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,52 +11,52 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 02/08/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7413fcf7992195753cba86a50b7d53a144b36023
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 4ff46a693766ab12b53baba1ad8e4a56e174a076
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476430"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804485"
 ---
-# <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) implementeren
+# <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management implementeren (PIM)
 
-Deze stapsgewijze handleiding wordt beschreven hoe u de implementatie van Azure Active Directory (Azure AD) Privileged Identity Management (PIM) in uw organisatie van plan bent.
+In deze stapsgewijze hand leiding wordt beschreven hoe u de implementatie van Azure Active Directory (Azure AD) Privileged Identity Management (PIM) in uw organisatie plant.
 
 > [!TIP]
-> In dit document ziet u de items die zijn gemarkeerd als:
+> In dit document ziet u items die zijn gemarkeerd als:
 > 
-> :heavy_check_mark: **Microsoft raadt aan**
+> :heavy_check_mark: **Micro soft raadt aan**
 > 
-> Dit zijn algemene aanbevelingen en moet u alleen implementeren als ze van toepassing op uw specifieke zakelijke behoeften zijn.
+> Dit zijn algemene aanbevelingen en u moet alleen implementeren als ze van toepassing zijn op uw specifieke bedrijfs behoeften.
 
 ## <a name="step-1-learn-about-pim"></a>Stap 1. Meer informatie over PIM
 
-Azure AD Privileged Identity Management (PIM) helpt u bij het beheren van bevoegde beheerdersrollen in Azure AD, Azure-resources en andere Microsoft Online Services. In een wereld waar bevoegde identiteiten zijn toegewezen en bent vergeten, biedt PIM oplossingen zoals just-in-time-toegang, aanvraag goedkeuringswerkstromen en volledig geïntegreerde toegang beoordelingen, zodat u identificeren kunt, ontdekken en te voorkomen dat schadelijke activiteiten van bevoegdheden rollen in realtime. PIM voor het beheren van uw bevoorrechte rollen binnen uw organisatie implementeert, wordt risico aanzienlijk verlagen terwijl u waardevolle inzichten over de activiteiten van uw bevoorrechte rollen zichtbaar te maken.
+Azure AD Privileged Identity Management (PIM) helpt u bij het beheren van geprivilegieerde beheerders rollen in azure AD, Azure-resources en andere online services van micro soft. In een wereld waar bevoorrechte identiteiten zijn toegewezen en zijn verg eten, biedt PIM oplossingen zoals just-in-time-toegang, werk stromen voor aanvragen en volledig geïntegreerde toegangs beoordelingen zodat u schadelijke activiteiten van geprivilegieerd kunt identificeren, detecteren en voor komen. rollen in realtime. Het implementeren van PIM voor het beheren van uw geprivilegieerde rollen in uw organisatie vermindert een aanzienlijk risico terwijl halen waardevol inzicht heeft in de activiteiten van uw geprivilegieerde rollen.
 
-### <a name="business-value-of-pim"></a>Bedrijfswaarde van PIM
+### <a name="business-value-of-pim"></a>Bedrijfs waarde van PIM
 
-**Risico's beheren** -uw organisatie beveiligen door af te dwingen van het principe van [minimale bevoegdheden toegang](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) en just-in-time-toegang. Door het minimaliseren van het aantal permanente toewijzingen van gebruikers aan bevoorrechte rollen en het afdwingen van goedkeuringen en MFA voor uitbreiding van bevoegdheden, kunt u beveiligingsrisico's met betrekking tot bevoorrechte toegang in uw organisatie aanzienlijk verminderen. Afdwingen van minimale bevoegdheden en just-in-time-toegang ook kunt u een overzicht van de toegang tot bevoorrechte rollen bekijken en te volgen op beveiligingsproblemen met zich mee wanneer deze zich voordoen.
+**Beheer Risico's** : Beveilig uw organisatie door het principe van [minimale bevoegdheden toegang](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) en just-in-time-toegang af te dwingen. Door het aantal permanente toewijzingen van gebruikers aan bevoorrechte rollen en het afdwingen van goed keuringen en MFA voor uitbrei ding te minimaliseren, kunt u de beveiligings Risico's die betrekking hebben op bevoorrechte toegang in uw organisatie, aanzienlijk verminderen. Als u de minimale bevoegdheden afdwingt en just-in-time-toegang, kunt u ook een overzicht van de toegang tot geprivilegieerde rollen bekijken en beveiligings problemen volgen wanneer deze zich voordoen.
 
-**Naleving en governance** -PIM implementeren maakt u een omgeving voor continue identity governance. Just-in-time-uitbreiding van bevoorrechte identiteiten biedt een manier voor PIM voor het bijhouden van activiteiten van bevoegde toegang in uw organisatie. U wordt ook mogelijk om te bekijken en te ontvangen van meldingen voor alle toewijzingen van permanente en in aanmerking komende rollen binnen uw organisatie. Via toegangsbeoordeling, kunt u regelmatig controleren en verwijderen van onnodige bevoegde identiteiten en zorgt ervoor dat uw organisatie compatibel zijn met de meest strikte standaarden voor identiteit, toegang en beveiliging.
+De **naleving en het governance** -gebruik van Pim maken een omgeving voor een on-continue identiteits bestuur. Just-in-time-verhoging van geprivilegieerde identiteiten biedt een manier om PIM te controleren op privileged Access-activiteiten in uw organisatie. U kunt ook meldingen weer geven en ontvangen voor alle toewijzingen van permanente en in aanmerking komende rollen binnen uw organisatie. U kunt met behulp van toegangs controle regel matig de niet-gemachtigde identiteiten controleren en verwijderen en ervoor zorgen dat uw organisatie voldoet aan de meest uitgebreide identiteits-, toegangs-en beveiligings vereisten.
 
-**Kosten verlagen** -kosten verlagen door het elimineren van inefficiëntie, menselijke fouten en beveiligingsproblemen met zich mee door PIM correct te implementeren. Het resultaat is een vermindering van cyber crimes die zijn gekoppeld aan bevoorrechte identiteiten die zijn duur en moeilijk te herstellen. PIM helpt ook uw organisatie verminderen de kosten die gepaard gaan met de controle van toegang tot informatie als het gaat om te voldoen aan regelgeving en standaarden.
+**Kosten verlagen** : kosten verlagen door inefficiëntie, menselijke fout en beveiligings problemen te elimineren door op de juiste manier PIM te implementeren. Het netto resultaat is een vermindering van Cyber-misdrijven die zijn gekoppeld aan bevoorrechte identiteiten, die kostbaar en moeilijk te herstellen zijn. PIM helpt uw organisatie ook om de kosten te verlagen die zijn gekoppeld aan het controleren van toegangs gegevens, wanneer het gaat om te voldoen aan de regels en standaarden.
 
 Zie voor meer informatie, [wat is Azure AD Privileged Identity Management?](pim-configure.md).
 
-### <a name="licensing-requirements"></a>Vereisten voor licentieverlening
+### <a name="licensing-requirements"></a>Licentie vereisten
 
-Voor het gebruik van PIM, moet uw directory een van de volgende betaalde of proeflicenties hebben:
+Voor het gebruik van PIM moet uw Directory een van de volgende betaalde of proef licenties hebben:
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
 - Microsoft 365 M5
 
-Zie voor meer informatie, [licentie-vereisten voor het gebruik van PIM](subscription-requirements.md).
+Zie [licentie vereisten voor het gebruik van Pim](subscription-requirements.md)voor meer informatie.
 
-### <a name="key-pim-terminology"></a>Sleutel PIM-terminologie
+### <a name="key-pim-terminology"></a>Belangrijkste PIM-terminologie
 
 | Term of concept | Description |
 | --- | --- |
@@ -65,351 +65,351 @@ Zie voor meer informatie, [licentie-vereisten voor het gebruik van PIM](subscrip
 | Just-in-time-toegang (JIT) | Een model waarbij gebruikers tijdelijke machtigingen ontvangen om bepaalde taken uit te mogen voeren, waardoor kwaadwillende of onbevoegde gebruikers geen toegang kunnen krijgen na het verlopen van deze machtigingen. Toegang wordt alleen verleend wanneer gebruikers deze nodig hebben. |
 | Principe van toegang met minimale bevoegdheden | Een aanbevolen beveiligingsprocedure waarbij alle gebruikers enkel de minimale bevoegdheden krijgt toegewezen die nodig zijn om de taken uit te voeren waarvoor ze bevoegd zijn. Met deze procedure wordt het aantal globale beheerders tot het minimum beperkt en worden er specifieke beheerdersrollen gebruikt voor bepaalde scenario's. |
 
-Zie voor meer informatie, [terminologie](pim-configure.md#terminology).
+Zie [terminologie](pim-configure.md#terminology)voor meer informatie.
 
 ### <a name="high-level-overview-of-how-pim-works"></a>Overzicht op hoog niveau van de werking van PIM
 
-1. PIM is ingesteld zodat gebruikers in aanmerking voor bevoorrechte rollen komen.
-1. Wanneer een in aanmerking komende gebruiker moet het gebruik van hun bevoegde rol, activeren ze de rollen in PIM.
-1. Afhankelijk van de PIM-instellingen voor de rol is geconfigureerd, moet de gebruiker bepaalde stappen (zoals meervoudige verificatie, ze goedkeuring, of een reden op te geven.) uitvoeren.
-1. Zodra de gebruiker is de rol activeert, krijgt deze de rol voor een vooraf geconfigureerde periode.
-1. Beheerders kunnen een geschiedenis van alle PIM-activiteiten bekijken in het auditlogboek. Ze kunnen ook hun tenants beveiligen en voldoen aan nalevingsvereisten met PIM-functies, zoals beoordelingen en waarschuwingen.
+1. PIM is zo ingesteld dat gebruikers in aanmerking komen voor bevoegde rollen.
+1. Wanneer een in aanmerking komende gebruiker hun bevoorrechte rol moet gebruiken, activeren ze de rol in PIM.
+1. Afhankelijk van de PIM-instellingen die voor de rol zijn geconfigureerd, moet de gebruiker bepaalde stappen volt ooien (zoals het uitvoeren van multi-factor Authentication, het goed keuren of het opgeven van een reden).
+1. Zodra de gebruiker zijn of haar rol heeft geactiveerd, krijgt deze de rol voor een vooraf geconfigureerde tijds periode.
+1. Beheerders kunnen een geschiedenis van alle PIM-activiteiten bekijken in het audit logboek. Ze kunnen ook hun tenants verder beveiligen en voldoen aan de naleving met behulp van PIM-functies, zoals toegangs beoordelingen en waarschuwingen.
 
 Zie voor meer informatie, [wat is Azure AD Privileged Identity Management?](pim-configure.md).
 
 ### <a name="roles-that-can-be-managed-by-pim"></a>Rollen die kunnen worden beheerd door PIM
 
-**Azure AD-rollen** – deze rollen bevinden zich allemaal in Azure Active Directory (zoals globale beheerder, Exchange-beheerder en Beveiligingsbeheerder). U kunt meer lezen over de functies en hun functionaliteit in [rol beheerdersmachtigingen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md). Zie voor hulp bij het bepalen van welke rollen u wilt uw beheerders toewijst aan [minste bevoorrechte rollen door taak](../users-groups-roles/roles-delegate-by-task.md).
+**Azure AD-rollen** : deze rollen bevinden zich allemaal in azure Active Directory (zoals globale beheerder, Exchange-beheerder en beveiligings beheerder). Meer informatie over de rollen en hun functionaliteit vindt u in de [beheerders bevoegdheden in azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md). Zie [minst geprivilegieerde rollen per taak](../users-groups-roles/roles-delegate-by-task.md)voor hulp bij het bepalen van de rollen die aan uw beheerders worden toegewezen.
 
-**Azure-resourcerollen** – deze rollen zijn gekoppeld aan een Azure-resource, resourcegroep, abonnement of beheergroep. PIM biedt just-in-time-toegang tot zowel ingebouwde rollen, zoals eigenaar, beheerder van gebruikerstoegang en Inzender, evenals [aangepaste rollen](../../role-based-access-control/custom-roles.md). Zie voor meer informatie over Azure-resourcerollen [op rollen gebaseerd toegangsbeheer (RBAC)](../../role-based-access-control/overview.md).
+**Azure-resource rollen** : deze rollen zijn gekoppeld aan een Azure-resource, resource groep, abonnement of beheer groep. PIM biedt just-in-time-toegang tot zowel ingebouwde rollen als eigenaar, beheerder van gebruikers toegang en Inzender, evenals [aangepaste rollen](../../role-based-access-control/custom-roles.md). Zie [op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md)voor meer informatie over Azure-resource rollen.
 
-Zie voor meer informatie, [rollen in PIM kunt u niet beheren](pim-roles.md).
+Zie [rollen die u niet kunt beheren in PIM](pim-roles.md)voor meer informatie.
 
 ## <a name="step-2-plan-your-deployment"></a>Stap 2. Uw implementatie plannen
 
-Deze sectie richt zich op wat u doen moet voordat u PIM implementeert in uw organisatie. Het is essentieel voor de instructies en informatie over de concepten in deze sectie als ze leidt u om de beste plan die is ontworpen voor bevoorrechte identiteiten van uw organisatie te maken.
+In deze sectie wordt aandacht besteed aan wat u moet doen voordat u PIM in uw organisatie implementeert. Het is essentieel om de instructies te volgen en inzicht te krijgen in de concepten in deze sectie, omdat ze u helpen bij het maken van het beste plan dat is afgestemd op de bevoegde identiteiten van uw organisatie.
 
-### <a name="identify-your-stakeholders"></a>Uw belanghebbenden identificeren
+### <a name="identify-your-stakeholders"></a>Identificeer uw belanghebbenden
 
-De volgende sectie helpt u identificeren van de betrokkenen die bij het project betrokken zijn en wilt afmelden, bekijken of blijf op de hoogte. Het bevat verschillende tabellen voor het implementeren van PIM voor Azure AD-rollen en PIM voor Azure-resource-rollen. Belanghebbenden toevoegen aan de volgende tabel als geschikt is voor uw organisatie.
+De volgende sectie helpt u bij het identificeren van alle belanghebbenden die betrokken zijn bij het project en die moeten worden afgemeld, beoordeeld of op de hoogte moeten blijven. Het bevat afzonderlijke tabellen voor het implementeren van PIM voor Azure AD-rollen en PIM voor Azure-resource rollen. Voeg belanghebbenden toe aan de volgende tabel die geschikt is voor uw organisatie.
 
-- Meld u zo = uit op dit project
-- R = Review dit project en gegevens opgeven
-- Ik = geïnformeerde van dit project
+- SO = afmelden voor dit project
+- R = dit project controleren en een invoer opgeven
+- Ik = op de hoogte van dit project
 
-#### <a name="stakeholders-pim-for-azure-ad-roles"></a>Belanghebbenden: PIM voor Azure AD-rollen
+#### <a name="stakeholders-pim-for-azure-ad-roles"></a>Belanghebbenden PIM voor Azure AD-rollen
 
-| Name | Role | Bewerking |
+| Name | Role | Action |
 | --- | --- | --- |
-| Naam en e-mailadres | **Identiteit architect of globale beheerder van Azure**<br/>Een vertegenwoordiger van het identity management-team verantwoordelijk definiëren hoe deze wijziging wordt uitgelijnd met de kerninfrastructuur voor het beheer van identiteit in uw organisatie. | SO/R/I |
-| Naam en e-mailadres | **Service-eigenaar / manager regel**<br/>Een vertegenwoordiger van de IT-eigenaren van een service of een groep services. Deze zijn sleutel in het nemen van beslissingen en helpt bij de implementatie van PIM voor hun team. | SO/R/I |
-| Naam en e-mailadres | **De eigenaar van de beveiliging**<br/>Een vertegenwoordiger van het beveiligingsteam die het plan uit die kan zich voldoet aan de beveiligingsvereisten van uw organisatie. | SO/R |
-| Naam en e-mailadres | **IT manager ondersteuning / Helpdesk**<br/>Een vertegenwoordiger van de IT-ondersteuning voor organisatie die gegevens over de ondersteuning van deze wijziging vanuit het oogpunt van de helpdesk kunt opgeven. | R/I |
-| Naam en e-mailadres voor testgebruikers | **Gebruikers in bevoorrechte rollen**<br/>De groep gebruikers waarvoor privileged identity management is geïmplementeerd. Ze moeten wilt weten hoe hun rollen activeren nadat het PIM is geïmplementeerd. | I |
+| Naam en e-mail adres | **Identiteits architect of Azure Global-beheerder**<br/>Een vertegenwoordiger van het team voor identiteits beheer dat verantwoordelijk is voor het bepalen van de manier waarop deze wijziging wordt afgestemd op de infra structuur voor identiteits beheer in uw organisatie. | SO/R/I |
+| Naam en e-mail adres | **Eigenaar van service/regel beheer**<br/>Een vertegenwoordiger van de IT-eigen aars van een service of een groep services. Ze zijn belang rijk voor het nemen van beslissingen en het helpen bij de implementatie van PIM voor hun team. | SO/R/I |
+| Naam en e-mail adres | **Eigenaar van beveiliging**<br/>Een vertegenwoordiger van het beveiligings team dat zich kan afmelden dat het plan voldoet aan de beveiligings vereisten van uw organisatie. | SO/R |
+| Naam en e-mail adres | **IT-ondersteunings Manager/Help Desk**<br/>Een vertegenwoordiger van de IT-ondersteunings organisatie die in het perspectief van de Help Desk invoer kan bieden over de ondersteuning van deze wijziging. | R/I |
+| Naam en e-mail adres voor pilot gebruikers | **Gebruikers met geprivilegieerde rollen**<br/>De groep gebruikers waarvoor privileged Identity Management is geïmplementeerd. Ze moeten weten hoe ze hun rollen kunnen activeren zodra PIM is geïmplementeerd. | I |
 
-#### <a name="stakeholders-pim-for-azure-resource-roles"></a>Belanghebbenden: PIM voor Azure-resourcerollen
+#### <a name="stakeholders-pim-for-azure-resource-roles"></a>Belanghebbenden PIM voor Azure-resource rollen
 
-| Name | Role | Bewerking |
+| Name | Role | Action |
 | --- | --- | --- |
-| Naam en e-mailadres | **Abonnement / Resource-eigenaar**<br/>Een vertegenwoordiger van de IT-eigenaren van elk abonnement en de resource die u wilt implementeren PIM voor | SO/R/I |
-| Naam en e-mailadres | **De eigenaar van de beveiliging**<br/>Een vertegenwoordiger van het beveiligingsteam die het plan uit die kan zich voldoet aan de beveiligingsvereisten van uw organisatie. | SO/R |
-| Naam en e-mailadres | **IT manager ondersteuning / Helpdesk**<br/>Een vertegenwoordiger van de IT-ondersteuning voor organisatie die gegevens over de ondersteuning van deze wijziging vanuit het oogpunt van de helpdesk kunt opgeven. | R/I |
-| Naam en e-mailadres voor testgebruikers | **Gebruikers van RBAC-rol**<br/>De groep gebruikers waarvoor privileged identity management is geïmplementeerd. Ze moeten wilt weten hoe hun rollen activeren nadat het PIM is geïmplementeerd. | I |
+| Naam en e-mail adres | **Eigenaar van abonnement/resource**<br/>Een vertegenwoordiger van de IT-eigen aars van elk abonnement of resource dat u PIM wilt implementeren | SO/R/I |
+| Naam en e-mail adres | **Eigenaar van beveiliging**<br/>Een vertegenwoordiger van het beveiligings team dat zich kan afmelden dat het plan voldoet aan de beveiligings vereisten van uw organisatie. | SO/R |
+| Naam en e-mail adres | **IT-ondersteunings Manager/Help Desk**<br/>Een vertegenwoordiger van de IT-ondersteunings organisatie die in het perspectief van de Help Desk invoer kan bieden over de ondersteuning van deze wijziging. | R/I |
+| Naam en e-mail adres voor pilot gebruikers | **RBAC-rollen gebruikers**<br/>De groep gebruikers waarvoor privileged Identity Management is geïmplementeerd. Ze moeten weten hoe ze hun rollen kunnen activeren zodra PIM is geïmplementeerd. | I |
 
 ### <a name="enable-pim"></a>PIM inschakelen
 
-Als onderdeel van het planningsproces, moet u eerst toestemming geven en PIM inschakelen door onze [starten met PIM-document](pim-getting-started.md). PIM inschakelen, geeft u toegang tot sommige functies die speciaal zijn ontworpen om te helpen bij uw implementatie.
+Als onderdeel van het plannings proces moet u eerst toestemming geven en PIM inschakelen door het [gebruik van Pim-documenten](pim-getting-started.md)te volgen. Het inschakelen van PIM biedt u toegang tot bepaalde functies die specifiek zijn ontworpen om u te helpen bij uw implementatie.
 
-Als het doel is om te implementeren PIM voor Azure-resources, moet u onze [detecteren van Azure-resources te beheren in PIM-document](pim-resource-roles-discover-resources.md). Alleen eigenaars van elke resource, resourcegroep en abonnement zich voor het detecteren van deze in PIM. Als u een globale beheerder bent bij het PIM implementeren voor uw Azure-resources, kunt u [toegangsrechten voor het beheren van alle Azure-abonnementen](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) zelf toegang geven tot alle Azure-resources in de map voor detectie. Echter, we adviseren dat u goedkeuring van elk van de eigenaars van uw abonnementen voordat hun resources beheren met PIM ophalen.
+Als uw doel is om PIM voor Azure-resources te implementeren, moet u onze [Azure-resources ontdekken om te beheren in PIM-documenten](pim-resource-roles-discover-resources.md). Alleen eigen aren van elke resource, resource groep en abonnement kunnen deze in PIM ontdekken. Als u een globale beheerder bent voor het implementeren van PIM voor uw Azure-resources, kunt u toegang tot het [beheer van alle Azure-abonnementen verhogen](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) om uzelf toegang te geven tot alle Azure-resources in de Directory voor detectie. Er wordt echter wel geadviseerd om goed keuring te krijgen van elk van uw abonnements eigenaren voordat u hun resources met PIM beheert.
 
-### <a name="enforce-principle-of-least-privilege"></a>Principe van minimale bevoegdheden afdwingen
+### <a name="enforce-principle-of-least-privilege"></a>Principe van minimale bevoegdheid afdwingen
 
-Het is belangrijk om ervoor te zorgen dat u het principe van minimale bevoegdheden hebben afgedwongen in uw organisatie voor uw Azure AD en uw Azure-resource-rollen.
+Het is belang rijk om ervoor te zorgen dat u het principe van minimale bevoegdheden in uw organisatie hebt afgedwongen voor zowel uw Azure AD-als uw Azure-resource rollen.
 
 #### <a name="azure-ad-roles"></a>Azure AD-rollen
 
-Voor Azure AD-rollen is het gebruikelijk voor organisaties die de rol globale beheerder een groot aantal beheerders wanneer de meeste beheerders slechts één hoeft of twee specifieke beheerdersrollen toewijzen. Niet-bevoorrechte rol toewijzingen doorgaans ook worden beheerd.
+Voor Azure AD-rollen is het gebruikelijk voor organisaties om de rol van globale beheerder toe te wijzen aan een groot aantal beheerders als de meeste beheerders slechts één of twee specifieke beheerders rollen nodig hebben. Ook de toewijzingen van geprivilegieerde rollen blijven onbeheerd.
 
 > [!NOTE]
-> Veelvoorkomende valkuilen in delegatie van de rol:
+> Veelvoorkomende Valk uilen in Role delegering:
 >
-> - De beheerder die verantwoordelijk zijn voor Exchange wordt de rol Algemeen beheerder gegeven, ondanks dat ze hoeven alleen de rol Exchange-beheerder om uit te voeren hun dagelijkse werk.
-> - De globale beheerdersrol is toegewezen aan een beheerder van Office omdat de beheerder moet het beveiligings- en SharePoint-beheerdersrollen en het is gemakkelijker om slechts één rol delegeren.
-> - De beheerder een rol Beveiligingsbeheerder voor het uitvoeren van een taak lang geleden is toegewezen, maar is nooit verwijderd.
+> - De beheerder die verantwoordelijk is voor Exchange, krijgt de rol globale beheerder, zelfs als ze alleen de rol Exchange-beheerder nodig hebben om hun dag-naar-dag-taak uit te voeren.
+> - De rol van de globale beheerder wordt toegewezen aan een Office-beheerder omdat de beheerder zowel beveiligings-als share point-beheerders rollen nodig heeft en het is gemakkelijker om één rol te delegeren.
+> - De beheerder heeft een rol van beveiligings beheerder toegewezen om een taak lang geleden uit te voeren, maar is nooit verwijderd.
 
-Volg deze stappen om af te dwingen van het principe van minimale bevoegdheden voor uw Azure AD-rollen.
+Volg deze stappen om het principe van minimale bevoegdheden voor uw Azure AD-rollen af te dwingen.
 
-1. Inzicht in de granulatie van de rollen door te lezen en inzicht krijgen in de [beschikbaar Azure AD-beheerdersrollen](../users-groups-roles/directory-assign-admin-roles.md#available-roles). U en uw team moeten ook verwijzen naar [door de taak identiteit in Azure AD-beheerdersrollen](../users-groups-roles/roles-delegate-by-task.md), waarin de minste bevoorrechte rol voor specifieke taken wordt uitgelegd.
+1. Inzicht in de granulatie van de rollen door de [beschik bare Azure AD-beheerders rollen](../users-groups-roles/directory-assign-admin-roles.md#available-roles)te lezen en begrijpen. U en uw team moeten ook verwijzen naar [beheerders rollen per identiteits taak in azure AD](../users-groups-roles/roles-delegate-by-task.md), waarin de minst privileged Role voor specifieke taken wordt uitgelegd.
 
-1. De lijst die is bevoorrechte rollen in uw organisatie. U kunt de [PIM wizard](pim-security-wizard.md#run-the-wizard) naar een pagina als volgt te gaan.
+1. Lijst met geprivilegieerde rollen in uw organisatie. U kunt de [PIM-wizard](pim-security-wizard.md#run-the-wizard) gebruiken om naar een pagina te gaan zoals de volgende.
 
-    ![Bevoorrechte rollen deelvenster weergegeven die is bevoorrechte rollen detecteren](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![Deel venster met geprivilegieerde rollen detecteren met wie privileged roles](./media/pim-deployment-plan/discover-privileged-roles-users.png)
 
-1. Voor alle globale beheerders in uw organisatie, ontdek waarom ze de rol nodig hebben. Op basis van de vorige documentatie lezen als de persoon die de taak kan worden uitgevoerd door een of meer gedetailleerde beheerdersrollen, moet u deze verwijderen uit de rol globale beheerder en dienovereenkomstig toewijzingen maken in Azure Active Directory (als uitgangspunt: Microsoft is momenteel alleen ongeveer 10 beheerders met de rol globale beheerder. Meer informatie over [hoe Microsoft PIM gebruikt](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)).
+1. Voor alle globale beheerders in uw organisatie, Lees waarom ze de rol nodig hebben. Als de taak van de persoon kan worden uitgevoerd door een of meer gedetailleerde beheerders rollen, moet u op basis van het lezen van de vorige documentatie de taken van de rol globale beheerder verwijderen en de toewijzingen dienovereenkomstig in Azure Active Directory maken (als referentie: Micro soft heeft momenteel alleen ongeveer 10 beheerders met de rol van globale beheerder. Meer informatie over [hoe micro soft PIM gebruikt](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access).
 
-1. Bekijk de lijst met toewijzingen, identificeren beheerders die de rol niet langer nodig hebt en verwijderen uit de toewijzingen voor alle andere Azure AD-rollen.
+1. Voor alle andere Azure AD-rollen bekijkt u de lijst met toewijzingen, identificeert u beheerders die de rol niet meer nodig hebben en verwijdert u deze uit hun toewijzingen.
 
-U kunt de functie voor het controleren van toegang tot in PIM gebruiken voor het automatiseren van stap 3 en 4. De stappen in [een toegangscontrole voor Azure AD-rollen in PIM starten](pim-how-to-start-security-review.md), kunt u een toegangscontrole voor elke Azure AD-rol die een of meer leden heeft ingesteld.
+Als u stap 3 en 4 wilt automatiseren, kunt u de functie voor de toegangs beoordeling gebruiken in PIM. Volg de stappen in [een toegangs beoordeling starten voor Azure AD-rollen in PIM](pim-how-to-start-security-review.md), u kunt een toegangs beoordeling instellen voor elke Azure AD-rol die een of meer leden heeft.
 
-![Een deelvenster voor het controleren van toegang voor Azure AD-rollen maken](./media/pim-deployment-plan/create-access-review.png)
+![Een toegangs beoordelings venster maken voor Azure AD-rollen](./media/pim-deployment-plan/create-access-review.png)
 
-U moet de revisoren ingesteld op **leden (zelf)** . Hiermee wordt een e-mail verzonden op alle leden in de rol aan om ze om te bevestigen of ze de toegang nodig hebben. U moet ook inschakelen **reden vereisen bij goedkeuring** in de geavanceerde instellingen zodat gebruikers kunnen aangeven waarom ze moeten de rol. Op basis van deze informatie, kunt u zich gebruikers verwijderen van onnodige rollen en het delegeren van gedetailleerdere beheerdersrollen in het geval van globale beheerders.
+U moet de revisoren instellen op **leden (zelf)** . Hiermee wordt een e-mail verzonden naar alle leden van de rol om hen te vragen om te bevestigen of ze toegang nodig hebben. U moet ook een **reden voor goed keuring vereisen** inschakelen in de geavanceerde instellingen, zodat gebruikers kunnen aangeven waarom ze de rol nodig hebben. Op basis van deze informatie kunt u gebruikers verwijderen uit overbodige rollen en meer gedetailleerde beheerders rollen delegeren in het geval van globale Administrators.
 
-Toegangsbeoordelingen zijn afhankelijk van e-mailberichten mensen om te controleren van hun toegang tot de rollen te laten weten. Als u accounts waarvoor geen e-mails die zijn gekoppeld uitgebreide, moet u voor het vullen van het veld secundaire e-mailadres op deze accounts. Zie voor meer informatie, [proxyAddresses-kenmerk in Azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
+Toegangs beoordelingen zijn gebaseerd op e-mail berichten om personen te melden hun toegang tot de rollen te controleren. Als u privileged accounts hebt waaraan geen e-mail berichten zijn gekoppeld, vult u het tweede veld voor e-mail op deze accounts in. Zie [proxyAddresses-kenmerk in azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)voor meer informatie.
 
 #### <a name="azure-resource-roles"></a>Azure-resourcerollen
 
-Voor Azure-abonnementen en resources, kunt u een soortgelijk proces uit Access controle instellen om te controleren van de rollen in elk abonnement of resourcegroep. Het doel van dit proces is om te minimaliseren, eigenaar en beheerder van gebruikerstoegang toewijzingen die zijn gekoppeld aan elk abonnement en de bron evenals garantie voor verwijderen van onnodige toewijzingen. Echter, organisaties vaak dergelijke taken delegeren aan de eigenaar van elk abonnement of resourcegroep omdat ze hebben een beter begrip van de specifieke rollen (met name aangepaste rollen).
+Voor Azure-abonnementen en-resources kunt u een soortgelijk toegangs beoordelings proces instellen om de rollen in elk abonnement of elke resource te controleren. Het doel van dit proces is het minimaliseren van de toewijzingen voor eigenaar en gebruikers toegang die zijn gekoppeld aan elk abonnement of resource en voor het verwijderen van overbodige toewijzingen. Organisaties delegeren echter vaak dergelijke taken aan de eigenaar van elk abonnement of resource, omdat ze een beter inzicht hebben in de specifieke rollen (met name aangepaste rollen).
 
-Als u een IT-beheerder met de rol globale beheerder bij het PIM voor Azure-resources in uw organisatie implementeert, kunt u [toegangsrechten voor het beheren van alle Azure-abonnementen](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) toegang te krijgen tot elk abonnement. U kunt vervolgens de eigenaar van elk abonnement vinden en werken met ze voor het verwijderen van onnodige toewijzingen en roltoewijzing eigenaar minimaliseren.
+Als u een IT-beheerder bent met de rol van globale beheerder voor het implementeren van PIM voor Azure-resources in uw organisatie, kunt u toegang tot het [beheer van alle Azure-abonnementen verhogen](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) om toegang te krijgen tot elk abonnement. U kunt vervolgens elke eigenaar van het abonnement zoeken en ermee werken om overbodige toewijzingen te verwijderen en de roltoewijzing van de eigenaar te minimaliseren.
 
-Gebruikers met de rol van eigenaar voor een Azure-abonnement kunnen ook gebruikmaken van [toegangsbeoordelingen voor Azure-resources](pim-resource-roles-start-access-review.md) controleren en verwijderen van onnodige roltoewijzingen die vergelijkbaar is met het proces dat eerder is beschreven voor Azure AD-rollen.
+Gebruikers met de rol eigenaar voor een Azure-abonnement kunnen ook [toegangs Beoordelingen voor Azure-resources](pim-resource-roles-start-access-review.md) gebruiken om onnodige roltoewijzingen te controleren en te verwijderen, vergelijkbaar met het proces dat eerder voor Azure AD-rollen is beschreven.
 
-### <a name="decide-which-role-assignments-should-be-protected-by-pim"></a>Bepalen welke roltoewijzingen moeten worden beveiligd door PIM
+### <a name="decide-which-role-assignments-should-be-protected-by-pim"></a>Bepalen welke roltoewijzingen moeten worden beveiligd met PIM
 
-Na het opschonen van bevoorrechte rollen zijn toegewezen in uw organisatie, moet u beslissen welke rollen u wilt beveiligen met PIM.
+Na het opschonen van geprivilegieerde roltoewijzingen in uw organisatie, moet u bepalen welke rollen u met PIM wilt beveiligen.
 
-Als een rol wordt beveiligd door PIM, moeten in aanmerking komende gebruikers zijn toegewezen met verhoogde bevoegdheden om de bevoegdheden verleend door de rol te gebruiken. Het proces van uitbreiding van bevoegdheden mogelijk ook het verkrijgen van goedkeuring, uitvoeren van meervoudige verificatie en/of die een reden op waarom ze wilt activeren. PIM kunt ook hoogten via meldingen volgen en logboeken voor controle uitvoeren op de PIM- en Azure AD.
+Als een rol wordt beveiligd door PIM, moeten in aanmerking komende gebruikers die hieraan zijn toegewezen, de bevoegdheden verhogen die worden verleend door de rol. Het verhogings proces kan ook het verkrijgen van goed keuring, het uitvoeren van multi-factor Authentication en/of een reden geven waarom ze worden geactiveerd. PIM kan ook verhogingen volgen via meldingen en de audit gebeurtenis logboeken PIM en Azure AD.
 
-Kiezen welke rollen u wilt beveiligen met PIM kunnen lastig zijn en zijn verschillend voor elke organisatie. Deze sectie bevat onze beste adviezen voor Azure AD en Azure-resource-rollen.
+Het kan lastig zijn om te kiezen welke rollen u wilt beveiligen met PIM en voor elke organisatie een andere. Deze sectie bevat onze best practice-advies voor Azure AD-en Azure-resource rollen.
 
 #### <a name="azure-ad-roles"></a>Azure AD-rollen
 
-Het is belangrijk om te prioriteren beveiligen van Azure AD-rollen die het hoogste aantal machtigingen hebben. Op basis van gebruikspatronen onder alle PIM-klanten, zijn de top 10 Azure AD-rollen die worden beheerd door PIM:
+Het is belang rijk om de beveiliging van Azure AD-rollen met het grootste aantal machtigingen te bepalen. Op basis van gebruiks patronen voor alle PIM-klanten, zijn de belangrijkste 10 Azure AD-rollen die worden beheerd door PIM:
 
 1. Globale beheerder
 1. Beveiligingsbeheerder
-1. Gebruikerbeheerder
+1. Gebruikersbeheerder
 1. Exchange-beheerder
 1. SharePoint-beheerder
 1. Intune-beheerder
 1. Beveiligingslezer
 1. Servicebeheerder
 1. Factureringsbeheerder
-1. Skype voor bedrijven-beheerder
+1. Skype voor Bedrijven-beheerder
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft raadt aan** u beheert alle globale beheerders en Beveiligingsbeheerders PIM gebruiken als eerste stap als ze degene die de meeste schade zijn als geknoeid kunnen doen.
+> :heavy_check_mark: **Micro soft raadt** u aan om al uw globale beheerders en beveiligings beheerders te beheren met behulp van Pim als een eerste stap, aangezien ze het meest schadelijk kunnen zijn wanneer ze worden aangetast.
 
-Het is belangrijk te bedenken welke gegevens en de machtiging meest gevoelig zijn voor uw organisatie zijn. Een voorbeeld: sommige organisaties mogelijk wilt beveiligen hun Power BI-beheerdersrol of de beheerdersrol van Teams met PIM zoals ze de mogelijkheid hebben om toegang tot gegevens en/of core-werkstromen wijzigen.
+Het is belang rijk om te bepalen welke gegevens en machtigingen het meest gevoelig zijn voor uw organisatie. Een voor beeld hiervan is het mogelijk dat sommige organisaties hun Power BI beheerdersrol of hun rol teams moeten beveiligen met behulp van PIM, omdat ze de mogelijkheid hebben om toegang te krijgen tot gegevens en/of kern werk stromen te wijzigen.
 
-Als er geen rollen met gastgebruikers die zijn toegewezen zijn, worden ze met name kwetsbaar voor aanvallen.
+Als er rollen zijn waaraan gast gebruikers zijn toegewezen, zijn ze met name kwetsbaar voor aanvallen.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft raadt aan** u alle rollen beheren met gastgebruikers met PIM te verkleinen van risico's die zijn gekoppeld aan de gebruikersaccounts waarmee is geknoeid Gast.
+> :heavy_check_mark: **Micro soft raadt** aan dat u alle rollen beheert met gast gebruikers met behulp van Pim om het risico te verminderen dat is gekoppeld aan gast gebruikers accounts.
 
-Rol van beveiligingslezer, zoals de lezer van de Directory, Message Center lezer en Beveiligingslezer zijn soms lijkt te zijn minder belangrijke in vergelijking met andere rollen, omdat ze geen schrijftoegang hebben. Soms echter enkele klanten ook deze rollen worden beveiligd omdat het is mogelijk dat kwaadwillende gebruikers die toegang tot deze accounts hebben opgedaan kunnen gevoelige gegevens, zoals persoonlijk identificeerbare informatie (PII) lezen. U moet deze in overweging nemen wanneer u beslist of rol van beveiligingslezer in uw organisatie moeten worden beheerd met PIM.
+Lees functies zoals de Directory Reader, Message Center Reader en Security Reader worden soms minder belang rijk vergeleken met andere rollen, aangezien ze geen schrijf machtiging hebben. Er zijn echter ook enkele klanten die deze rollen beschermen, omdat aanvallers die toegang tot deze accounts hebben verkregen, mogelijk gevoelige gegevens kunnen lezen, zoals persoonlijk identificeer bare informatie (PII). Houd rekening met het volgende wanneer u wilt bepalen of lezer-rollen in uw organisatie moeten worden beheerd met behulp van PIM.
 
 #### <a name="azure-resource-roles"></a>Azure-resourcerollen
 
-Wanneer u bepaalt welke roltoewijzingen moeten worden beheerd met behulp van PIM voor Azure-resource, moet u eerst de abonnementen/resources die het meest essentieel voor uw organisatie zijn identificeren. Voorbeelden van dergelijke abonnementen/resources zijn:
+Wanneer u besluit welke roltoewijzingen moeten worden beheerd met behulp van PIM voor Azure-resource, moet u eerst de abonnementen/resources identificeren die het belangrijkst zijn voor uw organisatie. Voor beelden van dergelijke abonnementen/resources zijn:
 
-- Resources die als host de meest gevoelige gegevens fungeren
-- Bronnen die core, klantgerichte toepassingen afhankelijk zijn van
+- Resources die de meest gevoelige gegevens hosten
+- Bronnen waarvan de kern, klant gerichte toepassingen afhankelijk zijn
 
-Als u een globale beheerder bent met problemen bij het bepalen van welke abonnementen/resources het belangrijkst zijn, moet u contact opnemen voor eigenaars van abonnementen in uw organisatie voor het verzamelen van een lijst met bronnen die worden beheerd door elk abonnement. Vervolgens moet u samenwerken met de abonnementseigenaren aan de groep van de resources op basis van ernst in het geval dat ze zijn aangetast (laag, Gemiddeld, hoog). U moet de prioriteit van resources worden beheerd met PIM op basis van dit ernstniveau te geven.
-
-> [!TIP]
-> :heavy_check_mark: **Microsoft raadt aan** u werkt met eigenaren van kritieke services voor het instellen van de PIM-werkstroom voor alle rollen binnen gevoelige abonnementen/resources/resourcegroep.
-
-PIM voor Azure-resources biedt ondersteuning voor tijdsgebonden service-accounts. U moet behandelen serviceaccounts exact dezelfde manier waarop u zou een normaal gebruikersaccount behandelen.
-
-Voor bronnen of abonnementen die niet als kritiek, hoeft u PIM instellen voor alle rollen. U moet echter nog steeds de rollen eigenaar en beheerder van gebruikerstoegang met PIM beveiligen.
+Als u een globale beheerder bent die problemen ondervindt bij het bepalen welke abonnementen/resources het belangrijkst zijn, moet u contact opnemen met de eigen aren van het abonnement in uw organisatie voor het verzamelen van een lijst met resources die worden beheerd door elk abonnement. Vervolgens moet u samen met de eigen aars van het abonnement de resources groeperen op basis van het Ernst niveau, in het geval dat ze zijn aangetast (laag, gemiddeld, hoog). U moet de prioriteit van resources beheren met PIM op basis van dit Ernst niveau.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft raadt aan** u de eigenaar van rollen en functies van de Administrator voor gebruikerstoegang van alle abonnementen/resources met PIM beheren.
+> :heavy_check_mark: **Micro soft raadt** u aan om te werken met abonnements-en resource-eigen aren van essentiële services voor het instellen van een PIM-werk stroom voor alle rollen binnen gevoelige abonnementen/resources.
 
-### <a name="decide-which-role-assignments-should-be-permanent-or-eligible"></a>Bepalen welke roltoewijzingen moet permanente of in aanmerking komende
+PIM voor Azure-resources ondersteunt tijdgebonden service accounts. U dient service accounts precies hetzelfde te behandelen als hoe u een normaal gebruikers account zou behandelen.
 
-Nadat u hebt besloten de lijst met rollen worden beheerd door PIM, moet u bepalen welke gebruikers de in aanmerking komende rol ten opzichte van de rol permanent actief moeten krijgen. Permanent actief rollen zijn de normale rollen toegewezen via Azure Active Directory en Azure-resources, terwijl in aanmerking komende rollen kunnen alleen worden toegewezen in PIM.
-
-> [!TIP]
-> :heavy_check_mark: **Microsoft raadt aan** hebt u de toewijzingen van nul permanent actief voor zowel Azure AD-rollen en functies van Azure-resource dan de aanbevolen [twee break om toegang in noodgevallen geldt](../users-groups-roles/directory-emergency-access.md), die moet hebben de permanente rol globale beheerder.
-
-Hoewel u wordt aangeraden geen permanente beheerder, is het soms moeilijk voor organisaties om dit te realiseren meteen. Hier volgen aandachtspunten bij deze beslissing:
-
-- Frequentie van de uitbreiding van bevoegdheden – als de gebruiker slechts één keer, de bevoegde toewijzing hoeft hebben ze al dan niet mogen de permanente toewijzing. Anderzijds, als de gebruiker de rol voor hun dagelijkse werk moet en met behulp van PIM, zouden hun productiviteit aanzienlijk beperkt, ze kunnen worden beschouwd als voor de permanente rol.
-- Aanvragen die specifiek zijn voor uw organisatie – als de persoon die wordt gegeven van de in aanmerking komende rol afkomstig is van een zeer verafgelegen team of een Topfunctionarissen executive op het moment dat communicatie en afdwingen van het proces van uitbreiding van bevoegdheden is het lastig om deze kunnen worden overwogen voor de permanente rol.
+Voor abonnementen/resources die niet zo belang rijk zijn, hoeft u geen PIM in te stellen voor alle rollen. U moet echter wel de beheerders rollen eigenaar en gebruikers toegang beveiligen met PIM.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft raadt aan** u het instellen van terugkerende toegang beoordeelt voor gebruikers met permanente roltoewijzingen (moet u een hebt). Meer informatie over terugkerende toegangsbeoordeling in de laatste sectie van dit plan voor de implementatie
+> :heavy_check_mark: **Micro soft raadt** u aan om eigenaars rollen en beheerders rollen van alle abonnementen/resources met behulp van Pim te beheren.
 
-### <a name="draft-your-pim-settings"></a>Ontwerp van uw instellingen voor PIM
+### <a name="decide-which-role-assignments-should-be-permanent-or-eligible"></a>Beslissen welke roltoewijzingen permanent of in aanmerking komen
 
-Voordat u de PIM-oplossing implementeert, is het raadzaam om de PIM-instellingen voor elke bevoorrechte rol die uw organisatie gebruikmaakt van concept. Deze sectie bevat enkele voorbeelden van PIM-instellingen voor bepaalde rollen (ze zijn alleen ter referentie en kunnen afwijken voor uw organisatie). Elk van deze instellingen wordt uitvoerig besproken met de aanbevelingen van Microsoft na de tabellen.
+Wanneer u de lijst met rollen die door PIM moeten worden beheerd, hebt vastgesteld, moet u bepalen welke gebruikers de in aanmerking komende rol en de permanent actieve rol moeten krijgen. Permanente actieve rollen zijn de normale rollen die worden toegewezen via Azure Active Directory en Azure-resources, terwijl in aanmerking komende rollen alleen kunnen worden toegewezen in PIM.
+
+> [!TIP]
+> :heavy_check_mark: **Micro soft raadt** u aan om permanent actieve toewijzingen te hebben voor zowel Azure AD-rollen als Azure-resource rollen, met uitzonde ring van de aanbevolen [toegangs accounts voor afbreek glazen](../users-groups-roles/directory-emergency-access.md), die de permanente globale beheerder moeten hebben rolvak.
+
+Hoewel we de permanente beheerder aanraden, is het soms moeilijk voor organisaties om dit meteen te bereiken. Hier volgen enkele dingen die u moet overwegen bij het nemen van deze beslissing:
+
+- De frequentie van uitbrei ding van bevoegdheden: als de gebruiker de privileged slechts eenmaal nodig heeft, hoeft deze niet permanent te worden toegewezen. Aan de andere kant, als de gebruiker de rol voor de dagelijkse taak nodig heeft en met behulp van PIM de productiviteit aanzienlijk vermindert, kunnen ze worden overwogen voor de permanente rol.
+- Specifieke aanvragen voor uw organisatie: als de persoon die de in aanmerking komende rol heeft gekregen van een zeer onenig team of een leidinggevende Executive naar het punt dat het verhogings proces communiceert en afdwingt lastig is, kunnen ze worden overwogen voor de permanente rol.
+
+> [!TIP]
+> :heavy_check_mark: **Micro soft raadt** u aan om terugkerende toegangs beoordelingen in te stellen voor gebruikers met permanente roltoewijzingen (indien van toepassing). Meer informatie over terugkerende toegangs beoordeling vindt u in de laatste sectie van dit implementatie plan
+
+### <a name="draft-your-pim-settings"></a>Uw PIM-instellingen ontwerpen
+
+Voordat u uw PIM-oplossing implementeert, is het een goed idee om uw PIM-instellingen te ontwerpen voor elke geprivilegieerde rol die uw organisatie gebruikt. Deze sectie bevat enkele voor beelden van PIM-instellingen voor bepaalde rollen (ze zijn alleen ter informatie en zijn mogelijk anders voor uw organisatie). Elk van deze instellingen wordt gedetailleerd uitgelegd met de aanbevelingen van micro soft na de tabellen.
 
 #### <a name="pim-settings-for-azure-ad-roles"></a>PIM-instellingen voor Azure AD-rollen
 
-| Role | MFA vereisen | Melding | Incident ticket | Goedkeuring vereisen | Goedkeurder | Duur van rolactivering | Permanent beheerder |
+| Role | MFA vereisen | Melding | Incident ticket | Goedkeuring vereisen | Goedkeurder | Activerings duur | Permanente beheerder |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Globale beheerder | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andere globale beheerders | 1 uur | Accounts voor toegang in noodgevallen |
-| Exchange-beheerder | :heavy_check_mark: | :heavy_check_mark: | : x:. | : x:. | Geen | 2 uur | Geen |
-| Helpdesk-beheerder | : x:. | : x:. | :heavy_check_mark: | : x:. | Geen | 8 uur | Geen |
+| Globale beheerder | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andere globale beheerders | 1 uur | Accounts voor toegang in nood gevallen |
+| Exchange-beheerder | :heavy_check_mark: | :heavy_check_mark: | BxDxH | BxDxH | Geen | 2 uur | Geen |
+| Helpdeskbeheerder | BxDxH | BxDxH | :heavy_check_mark: | BxDxH | Geen | 8 uur | Geen |
 
-#### <a name="pim-settings-for-azure-resource-roles"></a>PIM-instellingen voor Azure-resourcerollen
+#### <a name="pim-settings-for-azure-resource-roles"></a>PIM-instellingen voor Azure-resource rollen
 
-| Role | MFA vereisen | Melding | Goedkeuring vereisen | Goedkeurder | Duur van rolactivering | Actieve beheerder | Actieve verlopen | In aanmerking komende verlopen |
+| Role | MFA vereisen | Melding | Goedkeuring vereisen | Goedkeurder | Activerings duur | Actieve beheerder | Actieve verval datum | Verval datum in aanmerking komend |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Eigenaar van kritieke abonnementen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andere eigenaren van het abonnement | 1 uur | Geen | N.v.t. | drie maanden |
-| Administrator voor gebruikerstoegang van minder belangrijke abonnementen | :heavy_check_mark: | :heavy_check_mark: | : x:. | Geen | 1 uur | Geen | N.v.t. | drie maanden |
-| Inzender voor virtuele machines | : x:. | :heavy_check_mark: | : x:. | Geen | 3 uur | Geen | N.v.t. | 6 maanden |
+| Eigenaar van kritieke abonnementen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andere eigen aars van het abonnement | 1 uur | Geen | N.v.t. | 3 maand |
+| Gebruikers toegangs beheerder van minder kritieke abonnementen | :heavy_check_mark: | :heavy_check_mark: | BxDxH | Geen | 1 uur | Geen | N.v.t. | 3 maand |
+| Inzender voor virtuele machines | BxDxH | :heavy_check_mark: | BxDxH | Geen | 3 uur | Geen | N.v.t. | 6 maanden |
 
-De volgende tabel beschrijft elke van de instellingen.
+In de volgende tabel worden de instellingen beschreven.
 
 | Instelling | Description |
 | --- | --- |
-| Role | Naam van de rol die u definieert de instellingen voor. |
-| MFA vereisen | De in aanmerking komende gebruiker moet of MFA uitvoeren voordat u de rol activeert.<br/><br/> :heavy_check_mark: **Microsoft raadt aan** u MFA afdwingen voor alle beheerdersrollen, met name als de rollen gastgebruikers ook kunnen hebben. |
-| Melding | Indien ingesteld op true, globale beheerder, beheerder met bevoorrechte rol en Beveiligingsbeheerder in de organisatie een e-mailmelding ontvangt wanneer een in aanmerking komende gebruiker de rol activeert.<br/><br/>**Opmerking:** Sommige organisaties geen een e-mailadres dat is gekoppeld aan de administrator-accounts, naar deze e-mailmeldingen hebt, moet u gaat u een alternatieve e-mailadres instellen, zodat beheerders deze e-mailberichten ontvangen. |
-| Incident ticket | De in aanmerking komende gebruiker moet of om vast te leggen van een incident Ticketnummer bij het activeren van hun rol. Deze instelling kan een organisatie die bij elke activering met een interne incident nummer om ongewenste activeringen identificeren.<br/><br/> :heavy_check_mark: **Microsoft raadt aan** profiteren van een incident ticket getallen PIM verbinden met uw interne systeem. Dit is vooral handig voor het goedkeurders die context voor de activering nodig hebben. |
-| Goedkeuring vereisen | Of moet de in aanmerking komende gebruiker om goedkeuring om de rol te activeren.<br/><br/> :heavy_check_mark: **Microsoft raadt aan** u goedkeuring voor rollen met machtiging voor de meeste instellen. Op basis van patronen in het gebruik van alle PIM-klanten, zijn globale beheerder, beheerder van de gebruiker, Exchange-beheerder, Beveiligingsbeheerder en wachtwoordbeheerder de meest voorkomende rollen met de installatie van de goedkeuring. |
-| Goedkeurder | Als goedkeuring vereist voor het activeren van de in aanmerking komende rol, lijst van de mensen die de aanvraag goedkeuren is moet. PIM wordt standaard de fiatteur naar alle gebruikers die een beheerder met bevoorrechte rol zowel permanente als in aanmerking komende worden ingesteld.<br/><br/>**Opmerking:** Als een gebruiker zowel in aanmerking voor een Azure AD-rol en een goedkeurder van de rol is, is ze niet mogelijk om goed te keuren zelf.<br/><br/> :heavy_check_mark: **Microsoft raadt aan** goedkeurders zijn personen die het meest bekend over de specifieke rol en de frequente gebruikers in plaats van een globale beheerder bent te kiezen. |
-| Duur van rolactivering | De hoeveelheid tijd die een gebruiker worden geactiveerd in de rol voordat deze verloopt. |
-| Permanent beheerder | Lijst met gebruikers die een permanente beheerder is voor de rol (nooit meer hoeft te activeren).<br/><br/> :heavy_check_mark: **Microsoft raadt aan** u hebt geen permanente beheerder voor alle rollen, met uitzondering van globale beheerders. Lees meer over in de die moeten worden aangebracht in aanmerking komende en die permanent actief sectie van dit plan moet zijn. |
-| Actieve beheerder | Actieve beheerder is voor Azure-resources, de lijst met gebruikers die nooit meer hoeft wordt te activeren voor het gebruik van de rol. Dit wordt niet genoemd, zoals in Azure AD-rollen permanente beheerder omdat u een verlooptijd voor de gebruiker wanneer deze rol verliest kunt instellen. |
-| Actieve verlopen | Een actieve roltoewijzing voor Azure-resourcerollen verloopt na deze periode geconfigureerd. U kunt kiezen uit 15 dagen, 1 maand, drie maanden, 6 maanden, 1 jaar of permanent actief. |
-| In aanmerking komende verlopen | Een in aanmerking komende roltoewijzing voor Azure-resourcerollen verloopt na deze periode geconfigureerd. U kunt kiezen uit 15 dagen, 1 maand, drie maanden, 6 maanden, 1 jaar permanent in aanmerking komen. |
+| Role | De naam van de rol waarvoor u de instellingen wilt definiëren. |
+| MFA vereisen | Of de in aanmerking komende gebruiker MFA moet uitvoeren voordat de rol wordt geactiveerd.<br/><br/> :heavy_check_mark: **Micro soft raadt** u aan MFA af te dwingen voor alle beheerders rollen, met name als de rollen gast gebruikers hebben. |
+| Melding | Als deze eigenschap is ingesteld op True, wordt een e-mail melding door de beheerder van de bevoegde rol en de beveiligings beheerder in de organisatie ontvangen wanneer een in aanmerking komende gebruiker de rol activeert.<br/><br/>**Opmerking:** Sommige organisaties hebben geen e-mail adres dat is gekoppeld aan hun beheerders accounts. Als u deze e-mail meldingen wilt ontvangen, moet u een alternatief e-mail adres instellen, zodat beheerders deze e-mail berichten ontvangen. |
+| Incident ticket | Hiermee wordt aangegeven of de in aanmerking komende gebruiker een incident ticket nummer moet vastleggen wanneer hun rol wordt geactiveerd. Deze instelling helpt een organisatie bij het identificeren van elke activering met een intern incident nummer om ongewenste activeringen te beperken.<br/><br/> :heavy_check_mark: **Micro soft raadt** aan om te profiteren van incident ticket nummers om PIM te koppelen aan uw interne systeem. Dit is met name handig voor goed keurders die context nodig hebben voor de activering. |
+| Goedkeuring vereisen | Hiermee wordt aangegeven of de in aanmerking komende gebruiker goed keuring moet krijgen om de rol te activeren.<br/><br/> :heavy_check_mark: **Micro soft raadt** u aan om goed keuring in te stellen voor rollen met de meeste machtigingen. Op basis van gebruiks patronen van alle PIM-klanten, de globale beheerder, gebruikers beheerder, Exchange-beheerder, beveiligings beheerder en wachtwoord beheerder zijn de meest voorkomende rollen met goedkeurings instellingen. |
+| Goedkeurder | Als goed keuring is vereist voor het activeren van de in aanmerking komende rol, vermeldt u de personen die de aanvraag moeten goed keuren. Standaard stelt PIM de goed keurder in op alle gebruikers die een bevoegde rol beheerder zijn, ongeacht of ze permanent of in aanmerking komen.<br/><br/>**Opmerking:** Als een gebruiker in aanmerking komt voor een Azure AD-rol en een goed keurder van de rol, kunnen ze zichzelf niet goed keuren.<br/><br/> :heavy_check_mark: **Micro soft adviseert** dat u goed keurders kiest voor degenen die het belangrijkst zijn voor de specifieke rol en de frequente gebruikers in plaats van een globale beheerder. |
+| Activerings duur | De tijds duur dat een gebruiker wordt geactiveerd in de rol voordat deze verloopt. |
+| Permanente beheerder | Lijst met gebruikers die een permanente beheerder voor de rol worden (nooit hoeven te activeren).<br/><br/> :heavy_check_mark: **Micro soft adviseert** dat u geen permanente beheerder hebt voor alle rollen, met uitzonde ring van globale beheerders. Meer informatie hierover vindt u in de sectie wie moet worden gemaakt en die permanent actief moeten zijn in dit plan. |
+| Actieve beheerder | Voor Azure-resources is de actieve beheerder de lijst met gebruikers die nooit moeten worden geactiveerd om de rol te gebruiken. Dit wordt niet aangeduid als een permanente beheerder zoals in azure AD-rollen omdat u een verloop tijd kunt instellen voor wanneer de gebruiker deze rol gaat verliezen. |
+| Actieve verval datum | Een actieve roltoewijzing voor Azure-resource rollen verlopen na deze geconfigureerde tijds periode. U kunt kiezen uit 15 dagen, 1 maand, 3 maanden, 6 maanden, 1 jaar of permanent actief. |
+| Verval datum in aanmerking komend | Een in aanmerking komende roltoewijzing voor Azure-resource rollen verlopen na deze geconfigureerde tijds periode. U kunt kiezen uit 15 dagen, 1 maand, 3 maanden, 6 maanden, 1 jaar of permanent in aanmerking komen. |
 
 ## <a name="step-3-implement-your-solution"></a>Stap 3. Uw oplossing implementeren
 
-De basis van de juiste planning vormt de basis waarop u een toepassing is met Azure Active Directory kunt implementeren.  Het biedt intelligent beveiligings- en integratie van onboarding vereenvoudigt tijdens de tijd voor geslaagde implementaties.  Deze combinatie zorgt ervoor dat uw toepassing is geïntegreerd met gemak bij het oplossen van uitvaltijd voor uw eindgebruikers.
+De kern van de juiste planning is de basis waarop u een toepassing kunt implementeren met Azure Active Directory.  Het biedt intelligente beveiliging en integratie die het onboarding vereenvoudigt tijdens het verkorten van de tijd voor geslaagde implementaties.  Met deze combi natie zorgt u ervoor dat uw toepassing is geïntegreerd met gemak en de tijd voor de eind gebruikers verkleint.
 
-### <a name="identify-test-users"></a>Testgebruikers identificeren
+### <a name="identify-test-users"></a>Test gebruikers identificeren
 
-Gebruik deze sectie voor het identificeren van een set van gebruikers en groepen van gebruikers voor het valideren van de implementatie. Op basis van de instellingen die u hebt geselecteerd in de sectie planning, identificatie van de gebruikers die u wilt testen voor elke rol.
+Gebruik deze sectie om een set gebruikers en of groepen gebruikers te identificeren om de implementatie te valideren. Op basis van de instellingen die u hebt geselecteerd in het gedeelte planning, identificeert u de gebruikers die u wilt testen voor elke rol.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft raadt aan** u service-eigenaars van elke Azure AD-rol moet de testgebruikers zodat ze kunnen met het proces raken en worden van een interne advocator voor de implementatie.
+> :heavy_check_mark: **Micro soft raadt** u aan om service-eigen aren van elke Azure AD-rol de test gebruikers te maken, zodat ze vertrouwd kunnen raken met het proces en een interne advocator worden voor de implementatie.
 
-In deze tabel is de testgebruikers controleren of de instellingen voor elke rol werkt te identificeren.
+In deze tabel identificeert u de test gebruikers waarmee wordt gecontroleerd of de instellingen voor elke rol werken.
 
 | Rolnaam | Gebruikers testen |
 | --- | --- |
-| &lt;Rolnaam&gt; | &lt;Gebruikers voor het testen van de rol&gt; |
-| &lt;Rolnaam&gt; | &lt;Gebruikers voor het testen van de rol&gt; |
+| &lt;Rolnaam&gt; | &lt;Gebruikers om de rol te testen&gt; |
+| &lt;Rolnaam&gt; | &lt;Gebruikers om de rol te testen&gt; |
 
-### <a name="test-implementation"></a>Test-implementatie
+### <a name="test-implementation"></a>Implementatie testen
 
-Nu dat u hebt vastgesteld dat de testgebruikers, gebruikt u deze stap PIM configureren voor uw testgebruikers. Als uw organisatie wil PIM-werkstroom opnemen in uw eigen interne toepassing in plaats van de PIM-gebruikersinterface in Azure portal, de bewerkingen in PIM worden ook ondersteund via onze [graph API](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-root).
+Nu u de test gebruikers hebt geïdentificeerd, gebruikt u deze stap voor het configureren van PIM voor uw test gebruikers. Als uw organisatie PIM-werk stroom wil opnemen in uw eigen interne toepassing in plaats van de gebruikers interface van PIM te gebruiken binnen de Azure Portal, worden alle bewerkingen in PIM ook ondersteund via onze [Graph API](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-root).
 
-#### <a name="configure-pim-for-azure-ad-roles"></a>PIM voor Azure AD-rollen configureren
+#### <a name="configure-pim-for-azure-ad-roles"></a>PIM configureren voor Azure AD-rollen
 
-1. [Configureer de instellingen van de rol van Azure AD](pim-how-to-change-default-settings.md) op basis van wat u van plan.
+1. [Configureer de functie-instellingen van Azure AD](pim-how-to-change-default-settings.md) op basis van wat u hebt gepland.
 
-1. Navigeer naar **Azure AD-rollen**, klikt u op **rollen**, en selecteer vervolgens de rol die u zojuist hebt geconfigureerd.
+1. Navigeer naar **Azure AD-rollen**, klik op **rollen**en selecteer vervolgens de functie die u zojuist hebt geconfigureerd.
 
-1. Voor de groep testgebruikers, als ze al een permanente beheerder bent, kunt u ze in aanmerking komende door ze zoeken en deze te converteren van permanente in aanmerking komende door te klikken op de drie punten op de rij. Als ze niet beschikken over de roltoewijzingen hebt, u kunt [maken van een nieuwe in aanmerking komende toewijzing](pim-how-to-add-role-to-user.md#make-a-user-eligible-for-a-role).
+1. Als ze voor de groep test gebruikers al een permanente beheerder zijn, kunt u ze in aanmerking komen door ernaar te zoeken en ze te converteren van permanent naar in aanmerking komend door te klikken op de drie puntjes in hun rij. Als ze nog geen roltoewijzingen hebben, kunt u [een nieuwe in aanmerking komende toewijzing maken](pim-how-to-add-role-to-user.md#make-a-user-eligible-for-a-role).
 
-1. Herhaal stappen 1-3 voor alle functies die u wilt testen.
+1. Herhaal stap 1-3 voor alle rollen die u wilt testen.
 
-1. Nadat u de testgebruikers hebt ingesteld, u moet verzend de koppeling voor informatie over het [hun Azure AD-rol activeren](pim-how-to-activate-role.md).
+1. Zodra u de test gebruikers hebt ingesteld, moet u ze de koppeling sturen voor het activeren van [hun Azure AD-rol](pim-how-to-activate-role.md).
 
-#### <a name="configure-pim-for-azure-resource-roles"></a>PIM configureren voor Azure-resourcerollen
+#### <a name="configure-pim-for-azure-resource-roles"></a>PIM configureren voor Azure-resource rollen
 
-1. [Configureer de instellingen van de rol van Azure-resource](pim-resource-roles-configure-role-settings.md) voor een rol in een abonnement of een resource die u wilt testen.
+1. [Configureer de instellingen van de Azure-resource functie](pim-resource-roles-configure-role-settings.md) voor een rol binnen een abonnement of resource die u wilt testen.
 
-1. Navigeer naar **Azure-resources** voor dit abonnement en klik op **rollen**, selecteer de rol die u zojuist hebt geconfigureerd.
+1. Navigeer naar **Azure-resources** voor dat abonnement en klik op **rollen**, selecteer de rol die u zojuist hebt geconfigureerd.
 
-1. Voor de groep testgebruikers, als ze al een actieve beheerder bent, kunt u ze in aanmerking komende door te zoeken naar deze en [hun roltoewijzing bijwerken](pim-resource-roles-assign-roles.md#update-or-remove-an-existing-role-assignment). Als ze zich niet de rol hoeven hebt, u kunt [een nieuwe rol toewijzen](pim-resource-roles-assign-roles.md#assign-a-role).
+1. Als de groep test gebruikers al een actieve beheerder is, kunt u deze in aanmerking komen door ernaar te zoeken en [hun roltoewijzing](pim-resource-roles-assign-roles.md#update-or-remove-an-existing-role-assignment)bij te werken. Als ze nog geen rol hebben, kunt u [een nieuwe rol toewijzen](pim-resource-roles-assign-roles.md#assign-a-role).
 
-1. Herhaal stappen 1-3 voor alle functies die u wilt testen.
+1. Herhaal stap 1-3 voor alle rollen die u wilt testen.
 
-1. Nadat u de testgebruikers hebt ingesteld, u moet verzend de koppeling voor informatie over het [hun Azure-resource-rol activeren](pim-resource-roles-activate-your-roles.md).
+1. Zodra u de test gebruikers hebt ingesteld, moet u ze de koppeling sturen om [hun Azure-resource functie te activeren](pim-resource-roles-activate-your-roles.md).
 
-Deze fase moet u controleren dat of de configuratie die u heeft ingesteld voor de rollen die goed werkt. Gebruik de volgende tabel om te documenteren van uw tests uit. U moet deze fase ook gebruiken voor het optimaliseren van de communicatie met betrokken gebruikers.
+Gebruik deze fase om te controleren of alle configuratie die u voor de rollen hebt ingesteld, correct werkt. Gebruik de volgende tabel om uw tests te documenteren. U moet deze fase ook gebruiken om de communicatie met de betrokken gebruikers te optimaliseren.
 
-| Role | Normaal tijdens de activering | De werkelijke resultaten |
+| Role | Verwacht gedrag tijdens de activering | Werkelijke resultaten |
 | --- | --- | --- |
-| Globale beheerder | (1) MFA vereisen<br/>(2) goedkeuring vereisen<br/>(3) fiatteur melding ontvangt en kan goedkeuren<br/>(4) rol verloopt na vooraf ingestelde tijd |  |
-| Eigenaar van het abonnement *X* | (1) MFA vereisen<br/>(2) in aanmerking komende toewijzing verloopt na de geconfigureerde periode |  |
+| Globale beheerder | (1) MFA vereisen<br/>(2) goed keuring vereisen<br/>(3) fiatteur ontvangt een melding en kan goed keuren<br/>(4) rol verloopt na vooraf ingestelde tijd |  |
+| Eigenaar van abonnement *X* | (1) MFA vereisen<br/>(2) de in aanmerking komende toewijzing verloopt na de geconfigureerde tijds periode |  |
 
-### <a name="communicate-pim-to-affected-stakeholders"></a>PIM betrokken belanghebbenden communiceren
+### <a name="communicate-pim-to-affected-stakeholders"></a>PIM communiceren met betrokken belanghebbenden
 
-PIM implementeren vindt aanvullende stappen voor gebruikers van bevoorrechte rollen. Hoewel beveiligingsproblemen die zijn gekoppeld aan bevoorrechte identiteiten aanzienlijk wordt beperkt door PIM, moet de wijziging effectief worden gecommuniceerd voordat u de tenant-brede implementatie. Afhankelijk van het aantal betrokken beheerders kiezen organisaties vaak te maken van een intern document, een video of een e-mailbericht van de wijziging. Vaak is opgenomen in deze berichten opnemen:
+Met het implementeren van PIM worden extra stappen geïntroduceerd voor gebruikers van geprivilegieerde rollen. Hoewel PIM veel beveiligings problemen verlaagt die zijn gekoppeld aan bevoorrechte identiteiten, moet de wijziging effectief worden gecommuniceerd vóór de implementatie op basis van de Tenant. Afhankelijk van het aantal betrokken beheerders, selecteren organisaties vaak een intern document, een video of een e-mail bericht over de wijziging. Deze communicatie bevat vaak de volgende informatie:
 
-- Wat is PIM
-- Wat is het voordeel voor de organisatie
+- Wat is PIM?
+- Wat is het voor deel voor de organisatie?
 - Die worden beïnvloed
-- Wanneer PIM worden bekendgemaakt
-- Extra stappen zijn vereist voor gebruikers om hun rol te activeren
-    - U moet de koppelingen naar onze documentatie verzenden:
+- Wanneer moet PIM worden getotaliseerd
+- Welke extra stappen zijn vereist voor gebruikers om hun rol te activeren
+    - U moet koppelingen naar onze documentatie verzenden:
     - [Azure AD-rollen activeren](pim-how-to-activate-role.md)
-    - [Azure-resource-rollen activeren](pim-resource-roles-activate-your-roles.md)
-- Contactgegevens of helpdeskkoppeling voor eventuele problemen die zijn gekoppeld aan PIM
+    - [Azure-resource rollen activeren](pim-resource-roles-activate-your-roles.md)
+- Contact gegevens of koppeling naar Help Desk voor problemen met PIM
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft raadt aan** u tijd met uw helpdesk/ondersteuningsteam instellen om te zien hoe ze de PIM-werkstroom (als uw organisatie een interne IT-ondersteuning heeft team). Geef ze de juiste documentatie, evenals uw contactgegevens.
+> :heavy_check_mark: **Micro soft raadt** u aan om met uw Help Desk/ondersteunings team een tijd te bepalen voor het door lopen van de PIM-werk stroom (als uw organisatie een intern it-ondersteunings team heeft). Geef ze de juiste documenten en uw contact gegevens.
 
 ### <a name="move-to-production"></a>Verplaatsen naar productie
 
-Zodra de test voltooid en geslaagd is, verplaatst u PIM naar productie door te herhalen van alle de stappen in de testfase voor alle gebruikers van elke rol die u hebt gedefinieerd in de PIM-configuratie. Voor PIM voor Azure AD-rollen, organisaties vaak test en implementeer PIM voor globale beheerders voor testen en PIM uitrollen voor andere rollen. In de tussentijd zorgen voor Azure-resource, organisaties normaal test en implementeer PIM één Azure-abonnement op een tijdstip.
+Wanneer het testen is voltooid en geslaagd, verplaatst u PIM naar productie door alle stappen in de test fasen te herhalen voor alle gebruikers van elke rol die u in uw PIM-configuratie hebt gedefinieerd. Voor PIM voor Azure AD-rollen, testen en implementeren organisaties vaak PIM voor globale beheerders voordat ze PIM testen en implementeren voor andere rollen. In de tussen tijd voor Azure resource testen en implementeren organisaties normaal gesp roken één Azure-abonnement tegelijk.
 
-### <a name="in-the-case-a-rollback-is-needed"></a>In het geval is een terugdraaiactie vereist
+### <a name="in-the-case-a-rollback-is-needed"></a>Als er een terugdraai actie nodig is
 
-Als PIM is mislukt om te werken naar wens in de productieomgeving, kunnen de volgende stappen uit voor terugdraaien u helpen bij het terugkeren naar een bekende goede status voordat u PIM instelt:
+Als PIM niet naar wens werkt in de productie omgeving, kunnen de volgende terugdraai stappen u helpen om terug te keren naar een bekende goede staat voordat u PIM kunt instellen:
 
 #### <a name="azure-ad-roles"></a>Azure AD-rollen
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-1. Open **Azure AD Privileged Identity Management**.
+1. Open **Azure AD privileged Identity Management**.
 1. Klik op **Azure AD-rollen** en klik vervolgens op **rollen**.
-1. Voor elke rol die u hebt geconfigureerd, klikt u op het weglatingsteken ( **...** ) voor alle gebruikers met een in aanmerking komende toewijzing.
-1. Klik op de **permanent maken** optie de roltoewijzing om permanent te maken.
+1. Voor elke rol die u hebt geconfigureerd, klikt u op het weglatings teken ( **...** ) voor alle gebruikers met een in aanmerking komende toewijzing.
+1. Klik op de optie **permanent maken** om de roltoewijzing permanent te maken.
 
 #### <a name="azure-resource-roles"></a>Azure-resourcerollen
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-1. Open **Azure AD Privileged Identity Management**.
-1. Klik op **Azure-resources** en klik vervolgens op een abonnement of een resource die u wilt terugdraaien.
+1. Open **Azure AD privileged Identity Management**.
+1. Klik op **Azure-resources** en klik vervolgens op een abonnement of resource die u wilt terugzetten.
 1. Klik op **rollen**.
-1. Voor elke rol die u hebt geconfigureerd, klikt u op het weglatingsteken ( **...** ) voor alle gebruikers met een in aanmerking komende toewijzing.
-1. Klik op de **permanent maken** optie de roltoewijzing om permanent te maken.
+1. Voor elke rol die u hebt geconfigureerd, klikt u op het weglatings teken ( **...** ) voor alle gebruikers met een in aanmerking komende toewijzing.
+1. Klik op de optie **permanent maken** om de roltoewijzing permanent te maken.
 
-## <a name="step-4-next-steps-after-deploying-pim"></a>Stap 4. Vervolgstappen na de implementatie van PIM
+## <a name="step-4-next-steps-after-deploying-pim"></a>Stap 4. Volgende stappen na de implementatie van PIM
 
-PIM is in productie implementeert, is een belangrijke stap voorwaarts wat betreft het beveiligen van uw organisatie de bevoegde identiteiten. Met de implementatie van PIM komt extra PIM-functies die u voor beveiliging en naleving gebruiken moet.
+Het implementeren van PIM in productie is een belang rijke stap voor het beveiligen van de bevoegde identiteiten van uw organisatie. Met de implementatie van PIM beschikt u over extra PIM-functies die u moet gebruiken voor beveiliging en naleving.
 
-### <a name="use-pim-alerts-to-safeguard-your-privileged-access"></a>PIM-waarschuwingen gebruikt ter bescherming van uw privileged access
+### <a name="use-pim-alerts-to-safeguard-your-privileged-access"></a>PIM-waarschuwingen gebruiken om uw privileged Access te beschermen
 
-U moet de PIM ingebouwde waarschuwingen functionaliteit voor betere beveiliging gebruikmaken van uw tenant. Zie voor meer informatie, [beveiligingswaarschuwingen](pim-how-to-configure-security-alerts.md#security-alerts). Deze waarschuwingen bevatten: bevoorrechte rollen wordt niet gebruikt voor beheerders, rollen worden toegewezen buiten PIM, rollen te vaak worden geactiveerd en nog veel meer. Om volledig te beveiligen van uw organisatie, moet u regelmatig via uw lijst met waarschuwingen en los de problemen. U kunt weergeven en oplossen van uw waarschuwingen de volgende manier:
+Gebruik de ingebouwde waarschuwings functionaliteit van PIM om uw Tenant beter te beveiligen. Zie [Security Alerts](pim-how-to-configure-security-alerts.md#security-alerts)(Engelstalig) voor meer informatie. Deze waarschuwingen zijn onder andere: beheerders die geen geprivilegieerde rollen gebruiken, rollen worden toegewezen buiten PIM, rollen worden te vaak geactiveerd en meer. Als u uw organisatie volledig wilt beveiligen, moet u de lijst met waarschuwingen regel matig door lopen en de problemen oplossen. U kunt uw waarschuwingen op de volgende manier weer geven en herstellen:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-1. Open **Azure AD Privileged Identity Management**.
+1. Open **Azure AD privileged Identity Management**.
 1. Klik op **Azure AD-rollen** en klik vervolgens op **waarschuwingen**.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft raadt aan** u omgaat met alle waarschuwingen die zijn gemarkeerd met hoge urgentie onmiddellijk. Voor waarschuwingen met gemiddeld en laag urgentie, moet u op de hoogte blijven en wijzigingen aanbrengen, als u denkt dat er een beveiligingsrisico.
+> :heavy_check_mark: **Micro soft raadt** aan dat u alle waarschuwingen die zijn gemarkeerd met hoge urgentie onmiddellijk wilt afhandelen. Voor gemiddeld en lage Ernst waarschuwingen moet u op de hoogte blijven en wijzigingen aanbrengen als u denkt dat er sprake is van een beveiligings risico.
 
-Als een van de specifieke waarschuwingen niet handig of niet voor uw organisatie geldt, kunt u altijd de waarschuwing op de pagina met waarschuwingen sluiten. Deze ontslag verderop in de pagina Azure AD-instellingen kunt u altijd terugkeren.
+Als een van de specifieke waarschuwingen niet nuttig is of niet van toepassing is op uw organisatie, kunt u de waarschuwing altijd negeren op de pagina waarschuwingen. U kunt deze instelling altijd later op de pagina Azure AD-instellingen herstellen.
 
-### <a name="set-up-recurring-access-reviews-to-regularly-audit-your-organizations-privileged-identities"></a>Terugkerende toegangsbeoordelingen instellen voor regelmatige controle van bevoorrechte identiteiten van uw organisatie
+### <a name="set-up-recurring-access-reviews-to-regularly-audit-your-organizations-privileged-identities"></a>Terugkerende toegangs beoordelingen instellen om de bevoegde identiteiten van uw organisatie regel matig te controleren
 
-Toegangsbeoordelingen zijn de beste manier om aan te vragen van gebruikers die zijn toegewezen met bevoorrechte rollen of specifieke revisoren of elke gebruiker moet de privileged identity. Toegangsbeoordelingen zijn ideaal als u wilt verminderen van kwetsbaarheid voor aanvallen en dit blijft voldoen aan het beleid. Zie voor meer informatie over het starten van een toegangscontrole [toegangsbeoordelingen voor Azure AD-rollen](pim-how-to-start-security-review.md) en [toegangsbeoordelingen voor Azure-resourcerollen](pim-resource-roles-start-access-review.md). Voor sommige organisaties voeren periodieke toegangsbeoordeling is vereist om te blijven voldoen aan wetten en voorschriften terwijl voor andere, toegangsbeoordeling is de beste manier om af te dwingen de principal van minimale bevoegdheden binnen uw organisatie.
-
-> [!TIP]
-> :heavy_check_mark: **Microsoft raadt aan** instellen van elk kwartaal toegangsbeoordelingen voor uw Azure AD en Azure-resource-rollen.
-
-In de meeste gevallen is de revisor voor Azure AD-rollen de gebruikers zelf terwijl de revisor voor Azure-resourcerollen de eigenaar van het abonnement, dat de rol is is in. Het is echter vaak het geval waarbij bedrijven hebben van beschermde accounts die niet zijn gekoppeld met een bepaalde persoon e-mailadres. In deze gevallen niemand leest en de toegang beoordeelt.
+Toegangs beoordelingen zijn de beste manier om gebruikers te vragen die zijn toegewezen aan geprivilegieerde rollen of specifieke revisoren, ongeacht of elke gebruiker de bevoorrechte identiteit nodig heeft. Toegangs beoordelingen zijn handig als u de kwets baarheid wilt beperken en wilt blijven voldoen aan het beleid. Voor meer informatie over het starten van een toegangs beoordeling raadpleegt u [Azure AD-rollen toegangs beoordelingen](pim-how-to-start-security-review.md) en [toegangs Beoordelingen voor Azure-resource rollen](pim-resource-roles-start-access-review.md). Voor sommige organisaties is het uitvoeren van periodieke toegangs beoordeling vereist om aan de wetten en voor Schriften te blijven voldoen en voor anderen, is toegangs beoordeling de beste manier om de principal van minimale bevoegdheden in uw organisatie af te dwingen.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft raadt aan** u een secundaire e-mailadres voor alle accounts met toewijzingen van bevoorrechte rollen die niet zijn gekoppeld aan een regelmatig gemarkeerde e-mailadres toevoegen
+> :heavy_check_mark: **Micro soft raadt** u aan om per kwar taal toegangs beoordelingen in te stellen voor al uw Azure AD-en Azure-resource rollen.
 
-### <a name="get-the-most-out-of-your-audit-log-to-improve-security-and-compliance"></a>Optimaal te profiteren van uw auditlogboek ophalen voor het verbeteren van beveiliging en naleving
-
-Het controlelogboek is de plek waar u kunt op de hoogte blijven en moeten voldoen aan regelgeving. PIM wordt momenteel opgeslagen voor een 30-daagse geschiedenis van de geschiedenis van uw organisatie in de audit log inclusief:
-
-- Activeren/deactiveren van in aanmerking komende rollen
-- Rol toewijzing activiteiten binnen en buiten PIM
-- Wijzigingen in de rolinstellingen
-- Activiteiten voor rolactivering met Goedkeuringsinstellingen aanvraag/goedkeuren/weigeren
-- Op waarschuwingen bijwerken
-
-U hebt toegang tot deze auditlogboeken als u een globale beheerder of een beheerder met bevoorrechte rol. Zie voor meer informatie, [controlegeschiedenis voor Azure AD-rollen](pim-how-to-use-audit-log.md) en [controlegeschiedenis voor Azure-resourcerollen](azure-pim-resource-rbac.md).
+In de meeste gevallen is de revisor voor Azure AD-rollen de gebruikers zelf, terwijl de revisor voor Azure-resource rollen de eigenaar is van het abonnement waarin de rol zich bevindt. Het is echter vaak het geval wanneer bedrijven geprivilegieerde accounts hebben die niet zijn gekoppeld aan het e-mail adres van een bepaalde persoon. In deze gevallen wordt er geen lees-en-beoordeling van de toegang gegeven.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft raadt aan** u hebt ten minste één beheerder lezen door alle gebeurtenissen wekelijks controleren en exporteren van uw controlegebeurtenissen op maandbasis.
+> :heavy_check_mark: **Micro soft raadt** u aan om een secundair e-mail adres toe te voegen voor alle accounts met geprivilegieerde roltoewijzingen die niet zijn gekoppeld aan een regel matig gecontroleerd e-mail adres
 
-Als u wilt voor het automatisch opslaan van de controlegebeurtenissen voor een langere periode, wordt de PIM-controlelogboek automatisch gesynchroniseerd naar de [Azure AD-auditlogboeken](../reports-monitoring/concept-audit-logs.md).
+### <a name="get-the-most-out-of-your-audit-log-to-improve-security-and-compliance"></a>Het maximale uit uw audit logboek halen om de beveiliging en naleving te verbeteren
+
+Het audit logboek is de plek waar u up-to-date kunt blijven en voldoen aan de voor Schriften. In het audit logboek van PIM wordt momenteel een geschiedenis van 30 dagen opgeslagen voor de geschiedenis van uw organisatie, inclusief:
+
+- Activering/deactivering van in aanmerking komende rollen
+- Roltoewijzings activiteiten binnen en buiten PIM
+- Wijzigingen in rolinstellingen
+- Activiteiten voor activering van rollen met goedkeurings instellingen aanvragen/goed keuren/weigeren
+- Bijwerken naar waarschuwingen
+
+U kunt deze controle Logboeken openen als u een globale beheerder of een beheerder van een bevoegde rol bent. Zie de [controle geschiedenis voor Azure AD-rollen](pim-how-to-use-audit-log.md) en de [controle geschiedenis voor Azure-resource rollen](azure-pim-resource-rbac.md)voor meer informatie.
 
 > [!TIP]
-> :heavy_check_mark: **Microsoft raadt aan** u om in te stellen [Azure log bewaking](../reports-monitoring/concept-activity-logs-azure-monitor.md) voor het archiveren van gebeurtenissen voor beveiligingscontrole in Azure storage-account voor de behoeften van de beveiliging en naleving.
+> :heavy_check_mark: **Micro soft raadt** u aan ten minste één beheerder te laten door alle controle gebeurtenissen wekelijks te lezen en uw controle gebeurtenissen maandelijks te exporteren.
+
+Als u uw audit gebeurtenissen automatisch wilt opslaan gedurende een langere periode, wordt het controle logboek van PIM automatisch gesynchroniseerd naar de [audit logboeken van Azure AD](../reports-monitoring/concept-audit-logs.md).
+
+> [!TIP]
+> :heavy_check_mark: **Micro soft raadt** u aan [Azure-logboek bewaking](../reports-monitoring/concept-activity-logs-azure-monitor.md) in te stellen voor het archiveren van controle gebeurtenissen in een Azure-opslag account voor de nood zaak van beveiliging en naleving.

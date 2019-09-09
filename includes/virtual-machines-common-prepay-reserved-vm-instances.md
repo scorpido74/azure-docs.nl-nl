@@ -3,17 +3,17 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 08/02/2019
-ms.openlocfilehash: 5c300cb7d5416ada435811872e2cea8865e3c657
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/29/2019
+ms.openlocfilehash: 99263b7c7efee54381c9a7f624429b343dba49d0
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781276"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806097"
 ---
-# <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>Vooruitbetalen voor Virtual Machines met Azure Reserved VM Instances (RI)
+# <a name="save-costs-with-azure-reserved-vm-instances"></a>Bespaar kosten met Azure Reserved VM Instances
 
-Vooruitbetalen voor virtuele machines en bespaar geld met Azure reserved virtual machine-exemplaren (VM). De reserverings korting wordt automatisch toegepast op het aantal actieve virtuele machines die overeenkomen met het reserverings bereik en de kenmerken. U hoeft geen reserve ring aan een virtuele machine toe te wijzen om de kortingen te krijgen. Voor een gereserveerde instantie aankoop geldt alleen het reken onderdeel van uw VM-gebruik. Voor virtuele Windows-machines wordt de gebruiks meter gesplitst in twee afzonderlijke meters. Er is een compute-meter, die gelijk is aan de Linux meter en een Windows IP-meter. De kosten die u ziet wanneer u de aankoop uitvoert, zijn alleen voor de reken kosten. Kosten zijn niet van toepassing op Windows-software. Zie [software kosten die niet zijn opgenomen in azure reserved VM instances](../articles/billing/billing-reserved-instance-windows-software-costs.md)voor meer informatie over software kosten.
+Wanneer u een gereserveerde VM-instantie voor Azure doorvoert, kunt u geld besparen. De reserverings korting wordt automatisch toegepast op het aantal actieve virtuele machines die overeenkomen met het reserverings bereik en de kenmerken. U hoeft geen reserve ring aan een virtuele machine toe te wijzen om de kortingen te krijgen. Voor een gereserveerde instantie aankoop geldt alleen het reken onderdeel van uw VM-gebruik. Voor virtuele Windows-machines wordt de gebruiks meter gesplitst in twee afzonderlijke meters. Er is een compute-meter, die gelijk is aan de Linux meter en een Windows IP-meter. De kosten die u ziet wanneer u de aankoop uitvoert, zijn alleen voor de reken kosten. Kosten zijn niet van toepassing op Windows-software. Zie [software kosten die niet zijn opgenomen in azure reserved VM instances](../articles/billing/billing-reserved-instance-windows-software-costs.md)voor meer informatie over software kosten.
 
 ## <a name="determine-the-right-vm-size-before-you-buy"></a>Bepaal de juiste VM-grootte voordat u koopt
 
@@ -80,7 +80,7 @@ Gereserveerde VM-instanties zijn beschikbaar voor de meeste VM-grootten met enke
 
 ## <a name="buy-a-reserved-vm-instance"></a>Een gereserveerde VM-instantie kopen
 
-U kunt een gereserveerde VM-instantie kopen in de [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D).
+U kunt een gereserveerde VM-instantie kopen in de [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). Betaal voor de reserve ring [vóór of met maandelijkse betalingen](../articles/billing/billing-monthly-payments-reservations.md).
 
 Deze vereisten zijn van toepassing op het kopen van een gereserveerde VM-instantie:
 
@@ -97,7 +97,7 @@ Een exemplaar kopen:
 
 | Veld      | Description|
 |------------|--------------|
-|Subscription|Het abonnement dat wordt gebruikt om te betalen voor de reserve ring. Voor de betalings wijze voor het abonnement worden de kosten vooraf in rekening gebracht voor de reserve ring. Het abonnements type moet een Enter prise Agreement zijn (nummers van aanbiedingen: MS-AZR-0017P of MS-AZR-0148P) of een afzonderlijk abonnement met betalen naar gebruik-tarieven (aanbiedings nummers: MS-AZR-0003P of MS-AZR-0023P). Voor een Enterprise-abonnement worden de kosten in mindering gebracht op het toezeggingsbedrag of ze worden in rekening gebracht als overschrijding. Voor een abonnement met betalen per gebruik-tarieven worden de kosten in rekening gebracht op basis van de credit card-of factuur betalings methode voor het abonnement.|    
+|Subscription|Het abonnement dat wordt gebruikt om te betalen voor de reserve ring. De betalings wijze voor het abonnement wordt in rekening gebracht voor de kosten voor de reserve ring. Het abonnements type moet een Enter prise Agreement zijn (nummers van aanbiedingen: MS-AZR-0017P of MS-AZR-0148P) of een afzonderlijk abonnement met betalen naar gebruik-tarieven (aanbiedings nummers: MS-AZR-0003P of MS-AZR-0023P). Voor een Enterprise-abonnement worden de kosten in mindering gebracht op het toezeggingsbedrag of ze worden in rekening gebracht als overschrijding. Voor een abonnement met betalen per gebruik-tarieven worden de kosten in rekening gebracht op basis van de credit card-of factuur betalings methode voor het abonnement.|    
 |Scope       |Het bereik van de reserve ring kan betrekking hebben op één abonnement of meerdere abonnementen (gedeeld bereik). Als u het volgende selecteert: <ul><li>**Bereik van één resource groep** : past de reserverings korting alleen toe op de overeenkomende resources in de geselecteerde resource groep.</li><li>**Bereik van één abonnement** : past de reserverings korting toe op de overeenkomende resources in het geselecteerde abonnement.</li><li>**Gedeeld bereik** : past de reserverings korting toe op overeenkomende resources in in aanmerking komende abonnementen in de facturerings context. Voor EA-klanten is de facturerings context de inschrijving. Voor afzonderlijke abonnementen met betalen per gebruik-tarieven geldt het facturerings bereik uit alle in aanmerking komende abonnementen die zijn gemaakt door de account beheerder.</li></ul>|
 |Regio    |De Azure-regio die wordt gedekt door de reserve ring.|    
 |VM-grootte     |De grootte van de VM-exemplaren.|
@@ -148,6 +148,6 @@ Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://
     - [Reserve ringen in azure beheren](../articles/billing/billing-manage-reserved-vm-instance.md)
     - [Begrijpen hoe de reserverings korting wordt toegepast](../articles/billing/billing-understand-vm-reservation-charges.md)
     - [Meer informatie over reserverings gebruik voor een abonnement met betalen per gebruik-tarieven](../articles/billing/billing-understand-reserved-instance-usage.md)
-    - [Het gebruik van de reserve ring begrijpen voor uw Enter prise-inschrijving](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
+    - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
     - [Windows-software kosten niet inbegrepen bij reserve ringen](../articles/billing/billing-reserved-instance-windows-software-costs.md)
     - [Azure Reservations in het Partner Center-programma van de Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)

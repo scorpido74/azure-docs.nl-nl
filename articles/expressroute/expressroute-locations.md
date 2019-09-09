@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2019
+ms.date: 09/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7df117dbb071081473a5651a953927cee8ddaa03
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: e758707511989cca64fdef45b1c673dd3d96d6d2
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801481"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812136"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute
 
@@ -161,7 +161,7 @@ De volgende tabel toont de locaties per serviceprovider. Als u alle beschikbare 
 | **[Vocus groep NZ](https://www.vocus.co.nz/business/cloud-data-centres)** | Ondersteund | Ondersteund | Auckland, Sydney |
 | **[Vodafone](https://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |Ondersteund |Ondersteund |Amsterdam2, Londen, Singapore |
 | **Vodafone Idea** | Ondersteund | Ondersteund | Mumbai, Mumbai2 |
-| **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |Ondersteund |Ondersteund |Amsterdam, Chicago, Amsterdam, Denver, Londen, Los Angeles, Montreal, New York, Parijs, Seattle, silicone dal, Toronto, Washington DC |
+| **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |Ondersteund |Ondersteund |Amsterdam, Chicago, Amsterdam, Denver, Londen, Los Angeles, Montreal, New York, Parijs, Seattle, Silicon dal, Toronto, Washington DC, Washington DC2 |
 
  **+** betekent binnenkort beschikbaar
 
@@ -216,7 +216,14 @@ Als uw connectiviteitsprovider niet wordt vermeld in de vorige secties, kunt u a
 * Vraag een ExpressRoute-circuit aan met het exchange-punt wanneer uw connectiviteitsprovider verbinding maakt met Microsoft.
   * Volg de stappen in [Create an ExpressRoute circuit](expressroute-howto-circuit-classic.md) (Een ExpressRoute-circuit maken) om connectiviteit in te stellen.
 
-## <a name="connectivity-through-additional-service-providers"></a>Connectiviteit via additionele serviceproviders
+## <a name="connectivity-through-satellite-operators"></a>Connectiviteit via satelliet operators
+Als u extern bent en geen glasvezel connectiviteit hebt of als u andere connectiviteits opties wilt verkennen, kunt u de volgende satelliet-Opera tors controleren. 
+
+* Intelsat
+* SES
+* Viasat
+
+## <a name="connectivity-through-additional-service-providers"></a>Connectiviteit via aanvullende service providers
 
 | **Connectiviteitsprovider** | **Exchange** | **Locaties** |
 | --- | --- | --- |
@@ -278,7 +285,7 @@ Als uw connectiviteitsprovider niet wordt vermeld in de vorige secties, kunt u a
 | **[Zertia](https://www.zertia.es)**| Level 3 | Madrid |
 | **[Zirro](https://zirro.com/services/)**| Cologix, Equinix | Montreal, Toronto |
 
-## <a name="connectivity-through-datacenter-providers"></a>Connectiviteit via datacenterproviders
+## <a name="connectivity-through-datacenter-providers"></a>Connectiviteit via datacenter providers
 
 | **Provider** | **Exchange** |
 | --- | --- |
@@ -295,7 +302,7 @@ Als uw connectiviteitsprovider niet wordt vermeld in de vorige secties, kunt u a
 | **[vXchnge](https://www.vxchnge.com/colocation-services/interconnection)** | IX REACH, Mega Port |
 | **[T5 Datacenters](https://t5datacenters.com/network-cloud-connect/)** | IX Reach |
 
-## <a name="connectivity-through-national-research-and-education-networks-nren"></a>Connectiviteit via nationale onderzoeks- en onderwijsnetwerken (NREN)
+## <a name="connectivity-through-national-research-and-education-networks-nren"></a>Connectiviteit via National Research en Education Networks (NREN)
 
 | **Provider**|
 | --- |

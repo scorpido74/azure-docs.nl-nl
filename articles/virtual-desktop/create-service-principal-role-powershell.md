@@ -1,54 +1,50 @@
 ---
-title: Windows virtuele bureaublad Preview-service-principals en roltoewijzingen maken met behulp van PowerShell - Azure
-description: Over het maken van service-principals en rollen toewijzen met behulp van PowerShell in Windows Virtual Desktop Preview.
+title: Service-principals en roltoewijzingen voor virtuele Windows-Bureau bladen maken met Power shell-Azure
+description: Service-principals maken en rollen toewijzen met behulp van Power shell in Windows virtueel bureau blad preview.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 44c823653ecbad1c4dd1fd35b676c8a6d8bd1620
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 3e9ee3f5dd04ef838f78b9731885b7ea48e6c99d
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206665"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811320"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Zelfstudie: Service-principals en roltoewijzingen maken met behulp van PowerShell
 
-Service-principals zijn identiteiten die u in Azure Active Directory maken kunt voor het toewijzen van rollen en machtigingen voor een specifiek doel. In Windows Virtual Desktop Preview, kunt u een service principal te maken:
+Service-principals zijn identiteiten die u in Azure Active Directory kunt maken om rollen en machtigingen voor een bepaald doel toe te wijzen. In Windows virtueel bureau blad preview kunt u een service-principal maken voor het volgende:
 
-- Specifieke virtuele Windows-bureaublad-beheertaken automatiseren.
-- Als de referenties in plaats van gebruikers MFA vereist gebruiken bij het uitvoeren van een Azure Resource Manager-sjabloon voor virtuele Windows-bureaublad.
+- Specifieke Windows-beheer taken voor virtueel bureau blad automatiseren.
+- Als referenties gebruiken in plaats van MFA-vereiste gebruikers bij het uitvoeren van een Azure Resource Manager sjabloon voor Windows virtueel bureau blad.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een serviceprincipal maken in Azure Active Directory.
-> * Maak een roltoewijzing in virtuele Windows-bureaublad.
-> * Meld u aan virtuele Windows-bureaublad met behulp van de service-principal.
+> * Maak een Service-Principal in Azure Active Directory.
+> * Een roltoewijzing maken in virtuele Windows-bureau blad.
+> * Meld u aan bij Windows Virtual Desktop met behulp van de Service-Principal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u service-principals en roltoewijzingen maken kunt, moet u drie dingen doen:
+Voordat u service-principals en roltoewijzingen kunt maken, moet u drie dingen doen:
 
-1. Installeer de module AzureAD. Voor het installeren van de module PowerShell ook uitvoeren als beheerder en voer de volgende cmdlet uit:
+1. Installeer de AzureAD-module. Als u de module wilt installeren, voert u Power shell uit als beheerder en voert u de volgende cmdlet uit:
 
     ```powershell
     Install-Module AzureAD
     ```
 
-2. Voer de volgende cmdlets met de waarden in de aanhalingstekens vervangen door de waarden die relevant zijn voor uw sessie.
+2. [De Power shell-module voor virtueel bureau blad van Windows downloaden en importeren](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)
 
-    ```powershell
-    $myTenantName = "<my-tenant-name>"
-    ```
-
-3. Volg alle instructies in dit artikel in dezelfde PowerShell-sessie. U werkt deze mogelijk niet als u het venster sluiten en terug naar het later opnieuw.
+3. Volg alle instructies in dit artikel in dezelfde Power shell-sessie. Het werkt mogelijk niet als u het venster sluit en later terugkeert.
 
 ## <a name="create-a-service-principal-in-azure-active-directory"></a>Een service-principal maken in Azure Active Directory
 
-Nadat u de vereisten hebt voldaan in de PowerShell-sessie, voert u de volgende PowerShell-cmdlets voor het maken van een multitenant service principal in Azure.
+Nadat u de vereisten in uw Power shell-sessie hebt vervuld, voert u de volgende Power shell-cmdlets uit om een service-principal voor meerdere tenants in azure te maken.
 
 ```powershell
 Import-Module AzureAD
@@ -57,37 +53,13 @@ $svcPrincipal = New-AzureADApplication -AvailableToOtherTenants $true -DisplayNa
 $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrincipal.ObjectId
 ```
 
-## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Een roltoewijzing maken in Windows Virtual Desktop Preview
+## <a name="view-your-credentials-in-powershell"></a>Uw referenties weer geven in Power shell
 
-Nu dat u een service principal gemaakt hebt, kunt u het aanmelden bij virtuele Windows-bureaublad. Zorg ervoor dat u zich aanmelden met een account met machtigingen voor het maken van de roltoewijzing.
+Voordat u uw Power shell-sessie beëindigt, bekijkt u uw referenties en schrijft u deze naar beneden zodat u ze later kunt raadplegen. Het wacht woord is vooral belang rijk omdat u het niet kunt ophalen nadat u deze Power shell-sessie hebt gesloten.
 
-Eerste, [downloaden en importeren van de Windows virtuele bureaublad PowerShell-module](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) te gebruiken in uw PowerShell-sessie als u dat nog niet gedaan hebt.
+Hier volgen de drie referenties die u moet noteren en de cmdlets die u moet uitvoeren om ze te verkrijgen:
 
-Voer de volgende PowerShell-cmdlets voor de verbinding met virtuele Windows-bureaublad en een roltoewijzing voor de service-principal maken.
-
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
-```
-
-## <a name="sign-in-with-the-service-principal"></a>Meld u aan met de service-principal
-
-Nadat u een roltoewijzing voor de service principal gemaakt, zorg er dan voor dat de service-principal kan zich aanmelden bij virtuele Windows-bureaublad door de volgende cmdlet:
-
-```powershell
-$creds = New-Object System.Management.Automation.PSCredential($svcPrincipal.AppId, (ConvertTo-SecureString $svcPrincipalCreds.Value -AsPlainText -Force))
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $creds -ServicePrincipal -AadTenantId $aadContext.TenantId.Guid
-```
-
-Nadat u zich hebt aangemeld, zorg er dan voor dat alles werkt door een paar Windows virtuele bureaublad PowerShell-cmdlets met de service-principal te testen.
-
-## <a name="view-your-credentials-in-powershell"></a>Uw referenties in PowerShell weergeven
-
-Voordat u de PowerShell-sessie beëindigen, weergeven van uw referenties en schrijf ze op voor toekomstig gebruik. Het wachtwoord is vooral belangrijk omdat u niet meer ophalen nadat u deze PowerShell-sessie sluit.
-
-Dit zijn de drie referenties die te noteren en de cmdlets die u moet uitvoeren om op te halen ze:
-
-- Wachtwoord:
+- Wacht woord
 
     ```powershell
     $svcPrincipalCreds.Value
@@ -105,9 +77,37 @@ Dit zijn de drie referenties die te noteren en de cmdlets die u moet uitvoeren o
     $svcPrincipal.AppId
     ```
 
+## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Een roltoewijzing maken in Windows virtueel bureau blad preview
+
+Vervolgens maakt u een functie toewijzing voor RDS in het virtuele bureau blad van Windows voor de Service-Principal, waarmee de Service-Principal zich kan aanmelden bij Windows virtueel bureau blad. Zorg ervoor dat u een account gebruikt dat machtigingen heeft voor het maken van RDS-roltoewijzingen.
+
+Voer de volgende Power shell-cmdlets uit om verbinding te maken met het virtuele bureau blad van Windows en uw RDS-tenants weer te geven.
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+Get-RdsTenant | FL
+```
+
+Gebruik de Tenantnaam voor de juiste Tenant en voer de volgende Power shell-cmdlets uit om een roltoewijzing voor de Service-Principal in de opgegeven Tenant te maken.
+
+```powershell
+New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName "<my-rds-tenantname>"
+```
+
+## <a name="sign-in-with-the-service-principal"></a>Meld u aan met de Service-Principal
+
+Nadat u een roltoewijzing voor de Service-Principal hebt gemaakt, moet u ervoor zorgen dat de Service-Principal zich kan aanmelden bij Windows virtueel bureau blad door de volgende cmdlet uit te voeren:
+
+```powershell
+$creds = New-Object System.Management.Automation.PSCredential($svcPrincipal.AppId, (ConvertTo-SecureString $svcPrincipalCreds.Value -AsPlainText -Force))
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $creds -ServicePrincipal -AadTenantId $aadContext.TenantId.Guid
+```
+
+Nadat u zich hebt aangemeld, controleert u of alles werkt door enkele virtuele Windows Power shell-cmdlets te testen met behulp van de Service-Principal.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u hebt gemaakt van de service-principal en een rol in uw tenant virtuele Windows-bureaublad toegewezen, kunt u het maken van een groep host. Voor meer informatie over pools host, verder met de zelfstudie voor het maken van een host van toepassingen in virtuele Windows-bureaublad.
+Nadat u de Service-Principal hebt gemaakt en hieraan een rol hebt toegewezen in uw Windows Virtual Desktop-Tenant, kunt u deze gebruiken voor het maken van een hostgroep. Voor meer informatie over hostgroepen gaat u verder met de zelf studie voor het maken van een hostgroep in het virtuele bureau blad van Windows.
 
  > [!div class="nextstepaction"]
- > [Zelfstudie voor virtuele Windows-bureaublad host pool](./create-host-pools-azure-marketplace.md)
+ > [Zelf studie voor hosten in Windows Virtual Desktop](./create-host-pools-azure-marketplace.md)

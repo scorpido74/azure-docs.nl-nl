@@ -8,12 +8,12 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 54adb2ec61d77ea429f7da1b88aa9347c1addfe0
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 8e90be5a38ff40b748c11539e1d5c6558d198b62
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736418"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814230"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>De PySpark Interactive Environment instellen voor Visual Studio code
 
@@ -24,13 +24,13 @@ We gebruiken **python/pip-** opdracht voor het maken van een virtuele omgeving i
 1. Installeer [python](https://www.python.org/downloads/) en [PIP](https://pip.pypa.io/en/stable/installing/).
    
    + Installeer python vanuit [https://www.python.org/downloads/](https://www.python.org/downloads/).
-   + Installeer PIP vanuit [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/). (Als dit niet wordt geïnstalleerd vanuit de python-installatie)
+   + PIP installeren vanaf [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) (als deze niet is geïnstalleerd vanuit de python-installatie).
    + Controleer of python en PIP zijn geïnstalleerd met behulp van de volgende opdrachten. Beschrijving
  
         ![Python pip-versie](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
      > [!NOTE]
-     > Het is raadzaam python hand matig te installeren in plaats van de standaard versie MacOS te gebruiken.
+     > Het is raadzaam python hand matig te installeren in plaats van de standaard versie macOS te gebruiken.
 
 
 2. Installeer **virtualenv** door de onderstaande opdracht uit te voeren.
@@ -39,19 +39,21 @@ We gebruiken **python/pip-** opdracht voor het maken van een virtuele omgeving i
    pip install virtualenv
    ```
 
-3. Alleen voor Linux installeert u de vereiste pakketten door opdrachten onderstaande uit te voeren als het fout bericht wordt weer gegeven.
-   
-    ![Python pip-versie](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
-       
-   ```
-   sudo apt-get install libkrb5-dev 
-   ```
+## <a name="other-packages"></a>Andere pakketten
 
-   ```
-   sudo apt-get install python-dev
-   ```
+Als er een fout bericht wordt weer gegeven, installeert u de vereiste pakketten door de volgende opdrachten uit te voeren:
 
-4. Start VS code opnieuw en ga terug naar de script editor waarop HDInsight wordt uitgevoerd **: PySpark Interactive**.
+   ![Python pip-versie](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
+
+```
+sudo apt-get install libkrb5-dev
+```
+
+```
+sudo apt-get install python-dev
+```
+
+Start VS code opnieuw en ga terug naar de script editor waarop HDInsight wordt uitgevoerd **: PySpark Interactive**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

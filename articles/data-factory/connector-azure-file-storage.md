@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 05182b42be232ade4c4206abb9c68e632ad31c03
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 9aa9caca103efb138ca6e188f8dcb6a377e06f3a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275985"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813264"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Gegevens kopiëren van of naar Azure File Storage met behulp van Azure Data Factory
 
@@ -85,12 +85,12 @@ De volgende eigenschappen worden ondersteund voor Azure File Storage gekoppelde 
 
 Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. 
 
-- Raadpleeg voor **Parquet, gescheiden tekst, AVRO en binaire indeling**, de sectie [Parquet, gescheiden tekst, AVRO en binaire indelings gegevensset](#format-based-dataset) .
-- Raadpleeg voor andere indelingen, zoals **Orc/JSON-indeling**, de sectie [andere indelings gegevensset](#other-format-dataset) .
+- Raadpleeg voor **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, de sectie [Parquet, gescheiden tekst, JSON, AVRO en binaire indeling gegevensset](#format-based-dataset) .
+- Raadpleeg de sectie [andere indelings gegevensset](#other-format-dataset) voor andere indelingen, zoals **Orc-indeling**.
 
-### <a name="format-based-dataset"></a>Parquet, gescheiden tekst, AVRO en binaire indeling gegevensset
+### <a name="format-based-dataset"></a>Parquet, gescheiden tekst, JSON, AVRO en binaire indeling gegevensset
 
-Als u gegevens wilt kopiëren naar en van **Parquet, tekst met scheidings tekens, AVRO of binaire indeling**, raadpleegt u [Parquet indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire-indeling](format-binary.md) op op indeling gebaseerde gegevensset en ondersteunde instellingen. De volgende eigenschappen worden ondersteund voor Azure-File Storage `location` onder instellingen in gegevensset op basis van indeling:
+Als u gegevens wilt kopiëren naar en van **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, raadpleegt u [Parquet-indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire-indelings](format-binary.md) artikel op op indeling gebaseerde gegevensset en ondersteunde instellingen . De volgende eigenschappen worden ondersteund voor Azure-File Storage `location` onder instellingen in gegevensset op basis van indeling:
 
 | Eigenschap   | Description                                                  | Vereist |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -130,7 +130,7 @@ Als u gegevens wilt kopiëren naar en van **Parquet, tekst met scheidings tekens
 
 ### <a name="other-format-dataset"></a>Gegevensset voor andere indeling
 
-Als u gegevens wilt kopiëren van en naar Azure File Storage in de **Orc/JSON-indeling**, worden de volgende eigenschappen ondersteund:
+De volgende eigenschappen worden ondersteund om gegevens te kopiëren van en naar Azure File Storage in de **Orc-indeling**:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
@@ -184,12 +184,12 @@ Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zij
 
 ### <a name="azure-file-storage-as-source"></a>Azure File Storage als bron
 
-- Als u wilt kopiëren van **Parquet, tekst met scheidings tekens, AVRO en binaire indeling**, raadpleegt u de sectie [Parquet, tekst met scheidings tekens, AVRO en binaire indelings bron](#format-based-source) .
-- Als u wilt kopiëren van andere indelingen, zoals de **Orc/JSON-indeling**, raadpleegt u de sectie [andere indelings bron](#other-format-source) .
+- Als u wilt kopiëren van **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, raadpleegt u de sectie [Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indelings bron](#format-based-source) .
+- Als u wilt kopiëren van andere indelingen, zoals de **indeling Orc**, raadpleegt u de sectie [andere indelings bron](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, tekst met scheidings tekens, AVRO en binaire indelings bron
+#### <a name="format-based-source"></a>Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indelings bron
 
-Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens, een AVRO of binaire indeling**, raadpleegt u [Parquet indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire indeling](format-binary.md) artikel op op indeling gebaseerde Kopieer activiteit bron en ondersteunde instellingen . De volgende eigenschappen worden ondersteund voor Azure-File Storage `storeSettings` onder instellingen in een op indeling gebaseerde kopie bron:
+Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, raadpleegt u [Parquet-indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire indeling](format-binary.md) artikel op op indeling gebaseerde Kopieer activiteit bron en ondersteund Instellingen. De volgende eigenschappen worden ondersteund voor Azure-File Storage `storeSettings` onder instellingen in een op indeling gebaseerde kopie bron:
 
 | Eigenschap                 | Description                                                  | Vereist                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -247,7 +247,7 @@ Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens, een AV
 
 #### <a name="other-format-source"></a>Andere indelings bron
 
-Als u gegevens wilt kopiëren uit Azure File Storage in de **Orc/JSON-indeling**, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
+Als u gegevens wilt kopiëren uit Azure File Storage in de **Orc-indeling**, worden de volgende eigenschappen ondersteund in het gedeelte **bron** van de Kopieer activiteit:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
@@ -289,12 +289,12 @@ Als u gegevens wilt kopiëren uit Azure File Storage in de **Orc/JSON-indeling**
 
 ### <a name="azure-file-storage-as-sink"></a>Azure File Storage als sink
 
-- Als u wilt kopiëren naar **Parquet, tekst met scheidings tekens, een AVRO of binaire indeling**, raadpleegt u de sectie [Parquet, gescheiden tekst, AVRO en binaire indelings Sink](#format-based-sink) .
-- Als u wilt kopiëren naar andere indelingen, zoals de **Orc/JSON-indeling**, raadpleegt u de sectie een [andere indelings Sink](#other-format-sink) .
+- Als u wilt kopiëren naar **Parquet, tekst met scheidings tekens, JSON, AVRO en binary**, verwijzen wij u naar [Parquet, gescheiden tekst, JSON, AVRO en de sectie Sink voor binaire indeling](#format-based-sink) .
+- Als u wilt kopiëren naar andere indelingen, zoals de **Orc-indeling**, raadpleegt u de sectie [andere indelings Sink](#other-format-sink) .
 
-#### <a name="format-based-sink"></a>Parquet, tekst met scheidings tekens, AVRO en binaire indelings Sink
+#### <a name="format-based-sink"></a>Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indelings Sink
 
-Als u gegevens wilt kopiëren naar **Parquet, tekst met scheidings tekens, een AVRO of binaire indeling**, raadpleegt u [Parquet-indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire-indeling](format-binary.md) artikel op op indeling gebaseerde sinks voor kopieer activiteiten en ondersteunde instellingen. De volgende eigenschappen worden ondersteund voor Azure-File Storage `storeSettings` onder instellingen in op indeling gebaseerde kopie-Sink:
+Als u gegevens wilt kopiëren naar **Parquet, tekst met scheidings tekens, JSON-, AVRO-en binaire indeling**, raadpleegt u [Parquet-indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire-indeling](format-binary.md) artikel op op indeling gebaseerde kopie van de Kopieer activiteit en wordt ondersteund Instellingen. De volgende eigenschappen worden ondersteund voor Azure-File Storage `storeSettings` onder instellingen in op indeling gebaseerde kopie-Sink:
 
 | Eigenschap                 | Description                                                  | Vereist |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -342,7 +342,7 @@ Als u gegevens wilt kopiëren naar **Parquet, tekst met scheidings tekens, een A
 
 #### <a name="other-format-sink"></a>Andere opmaak Sink
 
-Als u gegevens wilt kopiëren naar Azure File Storage in de **Orc/JSON-indeling**, worden de volgende eigenschappen ondersteund in de sectie **sink** :
+Als u gegevens wilt kopiëren naar Azure File Storage in de **Orc-indeling**, worden de volgende eigenschappen ondersteund in de sectie **sink** :
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |

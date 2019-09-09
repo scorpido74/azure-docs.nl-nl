@@ -1,9 +1,9 @@
 ---
-title: De activiteit en audit geschiedenis weergeven voor Azure-resource-rollen in PIM - Azure Active Directory | Microsoft Docs
-description: Activiteiten bekijken en controlegeschiedenis voor Azure-resource-rollen in Azure AD Privileged Identity Management (PIM).
+title: Activiteiten en controle geschiedenis voor Azure-resource rollen weer geven in PIM-Azure Active Directory | Microsoft Docs
+description: Bekijk de activiteiten-en controle geschiedenis voor Azure-resource rollen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.assetid: ''
@@ -14,103 +14,103 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84bd491d992ed15df288d9226b58bfe832e0692a
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 40e1ed018f66d4f5eefd02d587504cf64969f47b
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476503"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804044"
 ---
-# <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>Activiteiten bekijken en controlegeschiedenis voor Azure-resource-rollen in PIM
+# <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>Activiteiten en controle geschiedenis voor Azure-resource rollen weer geven in PIM
 
-Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM), kunt u activiteit, activeringen en controlegeschiedenis voor Azure-resources-rollen weergeven binnen uw organisatie. Dit omvat abonnementen, resourcegroepen en zelfs virtuele machines. Elke resource in Azure portal die gebruikmaakt van de toegang van Azure op rollen gebaseerd beheer (RBAC)-functionaliteit kunt profiteren van de beveiliging en de levenscyclus van beheermogelijkheden in PIM.
+Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kunt u activiteiten, activeringen en controle geschiedenis voor Azure-resource rollen in uw organisatie weer geven. Dit omvat abonnementen, resource groepen en zelfs virtuele machines. Alle resources binnen de Azure Portal die gebruikmaken van de functionaliteit voor het beheer van op rollen gebaseerde toegangs beheer (RBAC), kunnen profiteren van de mogelijkheden voor beveiliging en levens cyclus in PIM.
 
-## <a name="view-activity-and-activations"></a>Activiteiten weergeven en activeringen
+## <a name="view-activity-and-activations"></a>Activiteiten en activeringen weer geven
 
-Als u wilt zien welke acties die een specifieke gebruiker in verschillende resources heeft, kunt u de activiteit Azure-resource die is gekoppeld aan een bepaalde activeringsperiode weergeven.
+Als u wilt zien welke acties een specifieke gebruiker heeft uitgevoerd in verschillende resources, kunt u de Azure-resource activiteit bekijken die is gekoppeld aan een bepaalde activerings periode.
 
-1. Open **Azure AD Privileged Identity Management**.
+1. Open **Azure AD privileged Identity Management**.
 
 1. Klik op **Azure-resources**.
 
-1. Klik op de resource die u wilt weergeven van de activiteit en activeringen voor.
+1. Klik op de resource waarvoor u activiteiten en activeringen wilt weer geven.
 
-1. Klik op **rollen** of **leden**.
+1. Klik op **functies** of **leden**.
 
 1. Klik op een gebruiker.
 
-    U ziet een grafische weergave van acties van de gebruiker in Azure-resources op datum. U ziet ook de recente rolactiveringen diezelfde periode van tijd.
+    U ziet een grafische weer gave van de acties van de gebruiker in azure-resources op datum. U ziet ook de recente functie activeringen over diezelfde periode.
 
-    ![Gebruikersdetails met de resource activiteit samenvatting en de rol activeringen](media/azure-pim-resource-rbac/rbac-user-details.png)
+    ![Gebruikers gegevens met overzicht van resource activiteiten en rollen activeringen](media/azure-pim-resource-rbac/rbac-user-details.png)
 
-1. Klik op een specifieke rol moet worden geactiveerd om te zien van gegevens en de bijbehorende Azure-resource-activiteit die is opgetreden bij die gebruiker actief is.
+1. Klik op een specifieke functie activering om details en bijbehorende Azure-resource activiteit te bekijken die is opgetreden terwijl de gebruiker actief was.
 
-    ![Rolactivering is geselecteerd en de details van computeractiviteit weergegeven op datum](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
+    ![Activering van functie geselecteerd en Details van activiteit op datum weer geven](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
 
-## <a name="export-role-assignments-with-children"></a>De roltoewijzing met onderliggende items exporteren
+## <a name="export-role-assignments-with-children"></a>Roltoewijzingen met onderliggende items exporteren
 
-U hebt een nalevingsvereiste waarin u een volledige lijst van roltoewijzingen te auditors moet opgeven. PIM kunt u de roltoewijzingen query op een specifieke bron, waaronder roltoewijzingen voor alle onderliggende resources. Voorheen was het moeilijk voor beheerders om een volledige lijst van roltoewijzingen voor een abonnement en ze had roltoewijzingen voor elke specifieke resource te exporteren. PIM gebruiken, kunt u zoeken naar alle actieve en in aanmerking komende roltoewijzingen in een abonnement met inbegrip van roltoewijzingen voor alle resourcegroepen en resources.
+Mogelijk hebt u een nalevings vereiste waarbij u een volledige lijst met roltoewijzingen aan Audi tors moet geven. Met PIM kunt u een query uitvoeren op Roltoewijzingen voor een specifieke resource, die roltoewijzingen bevat voor alle onderliggende resources. Voorheen was het moeilijk voor beheerders om een volledige lijst met roltoewijzingen voor een abonnement te krijgen en ze moest roltoewijzingen voor elke specifieke resource exporteren. Met behulp van PIM kunt u een query uitvoeren voor alle actieve en in aanmerking komende roltoewijzingen in een abonnement, inclusief roltoewijzingen voor alle resource groepen en resources.
 
-1. Open **Azure AD Privileged Identity Management**.
+1. Open **Azure AD privileged Identity Management**.
 
 1. Klik op **Azure-resources**.
 
-1. Klik op de resource die u wilt exporteren roltoewijzingen voor, zoals een abonnement.
+1. Klik op de resource waarvoor u roltoewijzingen wilt exporteren, zoals een abonnement.
 
 1. Klik op **leden**.
 
-1. Klik op **exporteren** om de uitvoer lidmaatschap deelvenster te openen.
+1. Klik op **exporteren** om het deel venster lidmaatschap exporteren te openen.
 
-    ![Lidmaatschap van deelvenster voor het exporteren van alle leden exporteren](media/azure-pim-resource-rbac/export-membership.png)
+    ![Deel venster lidmaatschap exporteren om alle leden te exporteren](media/azure-pim-resource-rbac/export-membership.png)
 
-1. Klik op **exporteren van alle leden** alle roltoewijzingen in een CSV-bestand exporteren.
+1. Klik op **alle leden exporteren** om alle roltoewijzingen in een CSV-bestand te exporteren.
 
-    ![Roltoewijzingen in CSV fil zoals weergeven in Excel wordt geëxporteerd](media/azure-pim-resource-rbac/export-csv.png)
+    ![Geëxporteerde roltoewijzingen in CSV-fil als weer gave in Excel](media/azure-pim-resource-rbac/export-csv.png)
 
-## <a name="view-resource-audit-history"></a>Resource-Controlegeschiedenis weergeven
+## <a name="view-resource-audit-history"></a>Controle geschiedenis van resources weer geven
 
-Resourcecontrole geeft u een overzicht van alle activiteiten van de rol voor een resource.
+Resource controle geeft u een overzicht van alle functie activiteiten voor een resource.
 
-1. Open **Azure AD Privileged Identity Management**.
-
-1. Klik op **Azure-resources**.
-
-1. Klik op de resource die u wilt weergeven van controlegeschiedenis voor.
-
-1. Klik op **resourcecontrole**.
-
-1. De geschiedenis met behulp van een vooraf gedefinieerde datum of aangepast datumbereik filteren.
-
-    ![Lijst met resources controleren met filters](media/azure-pim-resource-rbac/rbac-resource-audit.png)
-
-1. Voor **controletype**, selecteer **activeren (toegewezen + geactiveerd)** .
-
-    ![Lijst van de resource-controle die wordt gefilterd op activeren audit-type](media/azure-pim-resource-rbac/rbac-audit-activity.png)
-
-1. Onder **actie**, klikt u op **(activiteit)** voor een gebruiker om te zien van de gegevens van de activiteit van die gebruiker in Azure-resources.
-
-    ![Details van computeractiviteit gebruiker voor een bepaalde actie](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
-
-## <a name="view-my-audit"></a>Mijn controle weergeven
-
-Mijn controle kunt u om uw persoonlijke rol activiteit weer te geven.
-
-1. Open **Azure AD Privileged Identity Management**.
+1. Open **Azure AD privileged Identity Management**.
 
 1. Klik op **Azure-resources**.
 
-1. Klik op de resource die u wilt weergeven van controlegeschiedenis voor.
+1. Klik op de resource waarvoor u de controle geschiedenis wilt weer geven.
+
+1. Klik op **resource audit**.
+
+1. Filter de geschiedenis met een vooraf gedefinieerde datum of aangepast bereik.
+
+    ![Resource audit lijst met filters](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+
+1. Selecteer **activeren (toegewezen + geactiveerd)** bij **controle type**.
+
+    ![Resource controle lijst die wordt gefilterd door audit type activeren](media/azure-pim-resource-rbac/rbac-audit-activity.png)
+
+1. Klik onder **actie**op **(activiteit)** voor een gebruiker om de activiteit Details van die gebruiker in azure-resources te bekijken.
+
+    ![Details van de gebruikers activiteit voor een bepaalde actie](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
+
+## <a name="view-my-audit"></a>Mijn controle weer geven
+
+Met mijn controle kunt u uw activiteiten voor persoonlijke rollen weer geven.
+
+1. Open **Azure AD privileged Identity Management**.
+
+1. Klik op **Azure-resources**.
+
+1. Klik op de resource waarvoor u de controle geschiedenis wilt weer geven.
 
 1. Klik op **mijn controle**.
 
-1. De geschiedenis met behulp van een vooraf gedefinieerde datum of aangepast datumbereik filteren.
+1. Filter de geschiedenis met een vooraf gedefinieerde datum of aangepast bereik.
 
-    ![Controlelijst voor de huidige gebruiker](media/azure-pim-resource-rbac/my-audit-time.png)
+    ![Controle lijst voor de huidige gebruiker](media/azure-pim-resource-rbac/my-audit-time.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure-resource-rollen in PIM toewijzen](pim-resource-roles-assign-roles.md)
-- [Goedkeuren of weigeren van aanvragen voor Azure-resource-rollen in PIM](pim-resource-roles-approval-workflow.md)
-- [Controlegeschiedenis voor Azure AD-rollen in PIM weergeven](pim-how-to-use-audit-log.md)
+- [Azure-resource rollen toewijzen in PIM](pim-resource-roles-assign-roles.md)
+- [Aanvragen voor Azure-resource rollen in PIM goed keuren of weigeren](pim-resource-roles-approval-workflow.md)
+- [De controle geschiedenis voor Azure AD-rollen in PIM weer geven](pim-how-to-use-audit-log.md)

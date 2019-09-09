@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cf5b6d4cadf4592fbaa19c89a969b20e9eb69b6
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 7be9a17bed2a39d16f813332c2d6effc03393264
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424270"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812727"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Oplossen van problemen met Application Proxy- en foutberichten
 
-Bij het oplossen van problemen met toepassings proxy raden we u aan om te beginnen met het controleren van de stroom voor probleem oplossing, problemen met de connector van de [toepassings proxy](application-proxy-debug-connectors.md)op te lossen, om te bepalen of toepassings proxy connectors correct zijn Als u nog steeds problemen hebt met het maken van verbinding met de toepassing, volgt u de stroom problemen oplossen in toepassings [problemen met toepassings proxy](application-proxy-debug-apps.md).
+Bij het oplossen van problemen met toepassings proxy raden we u aan om te beginnen met het controleren van de stroom voor probleem oplossing, problemen met de connector van de [toepassings proxy op te lossen](application-proxy-debug-connectors.md), om te bepalen of toepassings proxy connectors correct zijn Als u nog steeds problemen hebt met het maken van verbinding met de toepassing, volgt u de stroom problemen oplossen in toepassings [problemen met toepassings proxy](application-proxy-debug-apps.md).
 
 Als er fouten optreden bij het openen van een gepubliceerde toepassing of in de publicatie van toepassingen, controleert u de volgende opties om te zien of Microsoft Azure AD Application Proxy correct werkt:
 
@@ -82,7 +82,7 @@ Deze lijst bevat informatie over fouten die uw eindgebruikers tegenkomen kunt wa
 | De website kan de pagina niet weergeven. | De gebruiker kan deze foutmelding krijgt bij het openen van de app die u als de toepassing een OWA-toepassing is hebt gepubliceerd. Dit wordt mogelijk veroorzaakt door een van de volgende:<br><li>De opgegeven SPN-naam voor deze toepassing is onjuist. Zorg ervoor dat de SPN-naam geconfigureerd voor deze toepassing juist is.</li><li>De gebruiker die toegang probeert te krijgen van de toepassing gebruikmaakt van een Microsoft-account in plaats van het juiste bedrijfsaccount aan te melden bij, of de gebruiker een gastgebruiker is. Zorg ervoor dat de gebruiker zich aanmeldt met een bedrijfsaccount die overeenkomt met het domein van de gepubliceerde toepassing. Gebruikers van Microsoft-Account en de Gast geen toegang tot IWA-toepassingen.</li><li>De gebruiker die de toepassing probeerde te openen, is niet op de juiste wijze gedefinieerd voor deze toepassing aan de on-premises kant. Zorg ervoor dat deze gebruiker de juiste machtigingen heeft, zoals gedefinieerd voor deze back-end-toepassing op de on-premises computer. |
 | Deze zakelijke app kan niet worden geopend. U bent niet gemachtigd voor toegang tot deze toepassing. Autorisatie is mislukt. Zorg ervoor dat de gebruiker met toegang toewijzen aan deze toepassing. | Uw gebruiker krijgt deze fout mogelijk bij het openen van de app die u hebt gepubliceerd als ze micro soft-accounts gebruiken in plaats van hun bedrijfs account om zich aan te melden. Gastgebruikers kunnen deze fout ook krijgen. Gebruikers van Microsoft-Account en gasten geen toegang tot IWA-toepassingen. Zorg ervoor dat de gebruiker zich aanmeldt met een bedrijfsaccount die overeenkomt met het domein van de gepubliceerde toepassing.<br><br>U hebt mogelijk de gebruiker voor deze toepassing niet toegewezen. Ga naar de **toepassing** tabblad, en klikt u onder **gebruikers en groepen**, deze gebruiker of groep toewijzen aan deze toepassing. |
 | Deze zakelijke app momenteel niet toegankelijk. Probeer het later opnieuw... Er is een time-out opgetreden voor de connector. | Uw gebruiker krijgt deze fout mogelijk bij het openen van de app die u hebt gepubliceerd als deze niet op de juiste wijze is gedefinieerd voor deze toepassing. Zorg ervoor dat uw gebruikers over de juiste machtigingen beschikken die zijn gedefinieerd voor deze back-end-toepassing op de on-premises computer. |
-| Deze zakelijke app kan niet worden geopend. U bent niet gemachtigd voor toegang tot deze toepassing. Autorisatie is mislukt. Zorg ervoor dat de gebruiker een licentie voor Azure Active Directory Premium of Basic heeft. | De gebruiker krijgt deze fout mogelijk bij het openen van de app die u hebt gepubliceerd als deze niet expliciet is toegewezen aan een Premium/Basic-licentie door de beheerder van de abonnee. Ga naar de Active Directory van de abonnee **licenties** tabblad en zorg ervoor dat deze gebruiker of groep een Premium of Basic-licentie is toegewezen. |
+| Deze zakelijke app kan niet worden geopend. U bent niet gemachtigd voor toegang tot deze toepassing. Autorisatie is mislukt. Zorg ervoor dat de gebruiker een licentie voor Azure Active Directory Premium heeft. | De gebruiker krijgt deze fout mogelijk bij het openen van de app die u hebt gepubliceerd als deze niet expliciet is toegewezen aan een Premium-licentie door de beheerder van de abonnee. Ga naar het tabblad Active Directory **licenties** van de abonnee en controleer of aan deze gebruiker of gebruikers groep een Premium-licentie is toegewezen. |
 | Een server met de opgegeven hostnaam is niet gevonden. | De gebruiker krijgt deze fout mogelijk bij het openen van de app die u hebt gepubliceerd als het aangepaste domein van de toepassing niet juist is geconfigureerd. Zorg ervoor dat u een certificaat voor het domein hebt geüpload en de DNS-record correct hebt geconfigureerd door de stappen te volgen in [werken met aangepaste domeinen in Azure AD-toepassingsproxy](application-proxy-configure-custom-domain.md) |
 
 ## <a name="my-error-wasnt-listed-here"></a>Hieronder vindt u de fout is niet

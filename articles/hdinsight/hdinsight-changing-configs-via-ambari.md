@@ -1,6 +1,6 @@
 ---
-title: Configuraties van clusters met Apache Ambari - Azure HDInsight optimaliseren
-description: Gebruik Apache Ambari-Webinterface voor het configureren en optimaliseren van HDInsight-clusters.
+title: Cluster configuraties optimaliseren met Apache Ambari-Azure HDInsight
+description: Gebruik de Apache Ambari Web-UI om Azure HDInsight-clusters te configureren en te optimaliseren.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,450 +8,450 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: f0db36fa380d0d1bb7f2b581c4bf8fa1abfaadaf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57e5eef8563bca0e27024d6ff5a46b983273df07
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60698634"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810656"
 ---
-# <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Apache Ambari gebruiken om de configuraties van HDInsight-clusters optimaliseren
+# <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Apache Ambari gebruiken om configuraties van HDInsight-clusters te optimaliseren
 
-HDInsight biedt [Apache Hadoop](https://hadoop.apache.org/) clusters voor toepassingen voor grootschalige gegevensverwerking. Beheer, controle en optimaliseren van deze complexe clusters met meerdere knooppunten kunnen lastig zijn. [Apache Ambari](https://ambari.apache.org/) is een webinterface voor het beheren en controleren van HDInsight Linux-clusters.  Voor Windows-clusters, gebruikt u de [Ambari REST-API](hdinsight-hadoop-manage-ambari-rest-api.md).
+HDInsight biedt [Apache Hadoop](https://hadoop.apache.org/) clusters voor grootschalige toepassingen voor gegevens verwerking. Het beheren, bewaken en optimaliseren van deze complexe clusters met meerdere knoop punten kan lastig zijn. [Apache Ambari](https://ambari.apache.org/) is een webinterface voor het beheren en controleren van HDInsight Linux-clusters.  Voor Windows-clusters gebruikt u de [Ambari-rest API](hdinsight-hadoop-manage-ambari-rest-api.md).
 
-Zie voor een inleiding tot het gebruik van de Ambari-Webgebruikersinterface, [beheren HDInsight-clusters met behulp van de Apache Ambari-Webinterface](hdinsight-hadoop-manage-ambari.md)
+Zie [HDInsight-clusters beheren met behulp van de Apache Ambari-webgebruikersinterface](hdinsight-hadoop-manage-ambari.md) voor een inleiding tot het gebruik van de Ambari-webgebruikersinterface.
 
-Meld u aan bij de Ambari op `https://CLUSTERNAME.azurehdidnsight.net` met de clusterreferenties van uw. Het eerste scherm bevat een dashboard met een.
+Meld u aan bij Ambari `https://CLUSTERNAME.azurehdidnsight.net` met uw cluster referenties. In het eerste scherm wordt een overzichts dashboard weer gegeven.
 
-![Ambari-dashboard](./media/hdinsight-changing-configs-via-ambari/ambari-dashboard.png)
+![Ambari-dash board](./media/hdinsight-changing-configs-via-ambari/ambari-dashboard.png)
 
-De Ambari-Webgebruikersinterface kan worden gebruikt voor het beheren van hosts, services, waarschuwingen, configuraties en weergaven. Ambari kan niet worden gebruikt om een HDInsight-cluster maken, bijwerken van services, stacks en versies beheren, buiten gebruik stellen of recommission hosts of services toevoegen aan het cluster.
+De Ambari-webgebruikersinterface kan worden gebruikt voor het beheren van hosts, services, waarschuwingen, configuraties en weer gaven. Ambari kan niet worden gebruikt voor het maken van een HDInsight-cluster, het upgraden van services, het beheren van stacks en versies, het buiten gebruik stellen of de hergebruik van hosts of het toevoegen van services aan het cluster.
 
-## <a name="manage-your-clusters-configuration"></a>Configuratie van uw cluster beheren
+## <a name="manage-your-clusters-configuration"></a>De configuratie van uw cluster beheren
 
-Configuratie-instellingen kunnen een bepaalde service af te stemmen. Als u wilt wijzigen van een service-configuratie-instellingen, selecteert u de service van de **Services** zijbalk (aan de linkerkant), en navigeer vervolgens naar de **configuraties** tabblad in de detailpagina van de service.
+Met configuratie-instellingen kunt u een bepaalde service afstemmen. Als u de configuratie-instellingen van een service wilt wijzigen, selecteert u de service in de zijbalk van **Services** (aan de linkerkant) en navigeert u vervolgens naar het tabblad **configuratie** van de detail pagina van de service.
 
-![Zijbalk voor services](./media/hdinsight-changing-configs-via-ambari/services-sidebar.png)
+![Services-zijbalk](./media/hdinsight-changing-configs-via-ambari/services-sidebar.png)
 
-### <a name="modify-namenode-java-heap-size"></a>NameNode Java heap-grootte wijzigen
+### <a name="modify-namenode-java-heap-size"></a>Grootte van NameNode Java-heap wijzigen
 
-De NameNode Java heap-grootte is afhankelijk van veel factoren zoals de belasting van het cluster, het aantal bestanden en de nummers van blokken. De standaardgrootte van 1 GB werkt goed samen met de meeste clusters, hoewel sommige werkbelastingen kunnen meer of minder geheugen vereisen. 
+De grootte van de NameNode Java-heap is afhankelijk van veel factoren, zoals de belasting van het cluster, het aantal bestanden en het aantal blokken. De standaard grootte van 1 GB werkt goed voor de meeste clusters, maar sommige werk belastingen kunnen meer of minder geheugen vereisen. 
 
-De NameNode Java heap-grootte wijzigen:
+De grootte van de NameNode Java-heap wijzigen:
 
-1. Selecteer **HDFS** in de zijbalk Services en navigeer naar de **Peeringconfiguraties** tabblad.
+1. Selecteer **HDFS** in de services-zijbalk en navigeer naar het tabblad **configuratie** .
 
     ![HDFS-configuratie](./media/hdinsight-changing-configs-via-ambari/hdfs-config.png)
 
-1. Ga naar de instelling **NameNode Java heap-grootte**. U kunt ook de **filter** in het tekstvak te typen en een bepaalde instelling te vinden. Selecteer de **pen** pictogram naast de naam van de instelling.
+1. Zoek de instelling **NameNode Java Heap-grootte**. U kunt ook het tekstvak **filteren** gebruiken om een bepaalde instelling te typen en te zoeken. Selecteer het pictogram met de **pen** naast de naam van de instelling.
 
-    ![NameNode Java heap-grootte](./media/hdinsight-changing-configs-via-ambari/java-heap-size.png)
+    ![Grootte van NameNode Java-heap](./media/hdinsight-changing-configs-via-ambari/java-heap-size.png)
 
-1. Typ de nieuwe waarde in het tekstvak in en druk vervolgens op **Enter** de wijziging op te slaan.
+1. Typ de nieuwe waarde in het tekstvak en druk vervolgens op **Enter** om de wijziging op te slaan.
 
-    ![NameNode Java heap-grootte bewerken](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
+    ![NameNode Java-heap size1 bewerken](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
 
-1. De NameNode Java heap-grootte is gewijzigd in 1 GB van 2 GB.
+1. De grootte van de NameNode Java-heap is gewijzigd van 1 GB van 2 GB.
 
-    ![Bewerkt NameNode Java heap-grootte](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
+    ![Bewerkte NameNode Java-heap size2](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
 
-1. Sla de wijzigingen door te klikken op de groene **opslaan** knop boven aan het Configuratiescherm.
+1. Sla uw wijzigingen op door te klikken op de groene knop **Opslaan** boven aan het configuratie scherm.
 
     ![Wijzigingen opslaan](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
 
-## <a name="apache-hive-optimization"></a>Apache Hive-optimalisatie
+## <a name="apache-hive-optimization"></a>Apache Hive optimalisatie
 
-De volgende secties beschrijven de configuratieopties voor het optimaliseren van de algehele prestaties van de Apache Hive.
+In de volgende secties worden de configuratie opties beschreven voor het optimaliseren van algemene Apache Hive prestaties.
 
-1. Voor het wijzigen van Hive-configuratieparameters, selecteer **Hive** in de zijbalk Services.
-1. Navigeer naar de **Peeringconfiguraties** tabblad.
+1. Als u Hive-configuratie parameters wilt wijzigen, selecteert u **Hive** van de services-zijbalk.
+1. Navigeer naar het tabblad **configuratie** .
 
-### <a name="set-the-hive-execution-engine"></a>De engine voor het uitvoeren van Hive instellen
+### <a name="set-the-hive-execution-engine"></a>De engine voor het uitvoeren van de Hive instellen
 
-Hive biedt twee motoren van de uitvoering: [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) en [Apache TEZ](https://tez.apache.org/). Tez is veel sneller dan MapReduce. HDInsight Linux-clusters hebben Tez als de standaard-uitvoeringsengine. Wijzigen van de engine voor het uitvoeren:
+Hive bevat twee uitvoerings engines: [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) en [Apache TEZ](https://tez.apache.org/). TEZ is sneller dan MapReduce. HDInsight Linux-clusters hebben TEZ als de standaard uitvoerings engine. De uitvoerings engine wijzigen:
 
-1. In de component **Peeringconfiguraties** tabblad, typt u **-uitvoeringsengine** in het filtervak.
+1. Typ **Execution Engine** in het vak Filter op het tabblad **configuratie** van Hive.
 
-    ![Engine voor het uitvoeren van Search](./media/hdinsight-changing-configs-via-ambari/search-execution.png)
+    ![Takenreeksuitvoeringsengine doorzoeken](./media/hdinsight-changing-configs-via-ambari/search-execution.png)
 
-1. De **optimalisatie** is de standaardwaarde van de eigenschap **Tez**.
+1. De standaard waarde van de **optimalisatie** -eigenschap is **TEZ**.
 
-    ![Optimalisatie - Tez](./media/hdinsight-changing-configs-via-ambari/optimization-tez.png)
+    ![Optimalisatie-TEZ](./media/hdinsight-changing-configs-via-ambari/optimization-tez.png)
 
-### <a name="tune-mappers"></a>Mappers afstemmen
+### <a name="tune-mappers"></a>Toewijzings toewijzingen afstemmen
 
-Hadoop probeert te splitsen (*kaart*) één bestand in meerdere bestanden en de resulterende proces parallel-bestanden. Het aantal mappers is afhankelijk van het aantal splitsingen. De volgende twee configuratieparameters station het aantal splitsingen voor de Tez-uitvoeringsengine:
+Hadoop probeert één bestand te splitsen (*toewijzen*) aan meerdere bestanden en de resulterende bestanden parallel te verwerken. Het aantal mappers is afhankelijk van het aantal splitsingen. Met de volgende twee configuratie parameters wordt het aantal splitsingen voor de TEZ-uitvoerings engine gebrand:
 
-* `tez.grouping.min-size`: De ondergrens van de grootte van een gegroepeerde splitsing, met een standaardwaarde van 16 MB (16,777,216 bytes).
-* `tez.grouping.max-size`: De bovengrens van de grootte van een gegroepeerde splitsing, met een standaardwaarde van 1 GB (1,073,741,824 bytes).
+* `tez.grouping.min-size`: De ondergrens van de grootte van een gegroepeerde splitsing, met een standaard waarde van 16 MB (16.777.216 bytes).
+* `tez.grouping.max-size`: De bovengrens voor de grootte van een gegroepeerde splitsing, met een standaard waarde van 1 GB (1.073.741.824 bytes).
 
-Als een vuistregel prestaties afnemen beide van deze parameters latentie verbeteren, te verhogen voor hogere doorvoer.
+Als prestatie regel voor de vuist verlaagt u beide para meters om de latentie te verbeteren, verg root u voor meer door voer.
 
-Bijvoorbeeld, om in te stellen vier mapper-taken voor een gegevensgrootte van 128 MB, stelt u beide parameters op 32 MB elk (33,554,432 bytes).
+Als u bijvoorbeeld vier toewijzings taken wilt instellen voor een gegevens grootte van 128 MB, stelt u beide para meters in op 32 MB elke (33.554.432 bytes).
 
-1. Als u wilt de parameters van de limiet wijzigen, gaat u naar de **Peeringconfiguraties** tabblad van de Tez-service. Vouw de **algemene** deelvenster en zoek de `tez.grouping.max-size` en `tez.grouping.min-size` parameters.
+1. Als u de limiet parameters wilt wijzigen, gaat u naar het tabblad **configuratie** van de TEZ-service. Vouw het deel venster **Algemeen** uit en zoek `tez.grouping.max-size` de `tez.grouping.min-size` para meters en.
 
-1. Beide parameters ingesteld op **33,554,432** bytes (32 MB).
+1. Stel beide para meters in op **33.554.432** bytes (32 MB).
 
-    ![Tez groepering grootten](./media/hdinsight-changing-configs-via-ambari/tez-grouping-size.png)
+    ![TEZ](./media/hdinsight-changing-configs-via-ambari/tez-grouping-size.png)
  
-Deze wijzigingen hebben invloed op alle Tez-taken op de server. Als u een optimale resultaten, kies juiste parameterwaarden.
+Deze wijzigingen zijn van invloed op alle TEZ-taken op de server. Kies de juiste parameter waarden om optimaal resultaat te krijgen.
 
-### <a name="tune-reducers"></a>Reducers tegelijkertijd afstemmen
+### <a name="tune-reducers"></a>Verkleiners afstemmen
 
-[Apache ORC](https://orc.apache.org/) en [Snappy](https://google.github.io/snappy/) bieden hoge prestaties. Hive hebben echter te weinig reducers tegelijkertijd standaard, waardoor knelpunten.
+[Apache Orc](https://orc.apache.org/) en [Snappy](https://google.github.io/snappy/) bieden hoge prestaties. Hive kan echter te weinig vertragers hebben, waardoor er knel punten ontstaan.
 
-Stel dat u hebt een grootte van de invoergegevens van 50 GB. Gegevens in ORC-indeling met Snappy compressie is 1 GB. Hive maakt een schatting van het aantal benodigde reducers tegelijkertijd: (aantal bytes invoer voor mappers / `hive.exec.reducers.bytes.per.reducer`).
+Stel, u hebt een grootte van 50 GB voor de invoer gegevens. De gegevens in de ORC-indeling met Snappy-compressie is 1 GB. Hive schat het aantal verminderers dat nodig is als: (aantal bytes invoer voor mappers `hive.exec.reducers.bytes.per.reducer`/).
 
-In dit voorbeeld wordt met de standaardinstellingen 4 reducers tegelijkertijd.
+Met de standaard instellingen is dit voor beeld 4 verminderingen.
 
-De `hive.exec.reducers.bytes.per.reducer` parameter geeft u het aantal bytes dat per reducer wordt verwerkt. De standaardwaarde is 64 MB. Deze waarde afstemmen omlaag verhoogt de parallelle uitvoering en de prestaties mogelijk verbeterd. Afstemmen te laag kan ook resulteren in te veel reducers tegelijkertijd, mogelijk negatieve die betrekking hebben op prestaties. Deze parameter is gebaseerd op uw specifieke vereisten, compressie-instellingen en andere omgevingsfactoren.
+Met `hive.exec.reducers.bytes.per.reducer` de para meter wordt het aantal verwerkte bytes per verminderr opgegeven. De standaard waarde is 64 MB. Het afstemmen van deze waarde is groter, en kan de prestaties verbeteren. Als u het apparaat te laag afstemt, kunnen er ook te veel vertraagden worden geproduceerd, waardoor de prestaties mogelijk nadelig worden beïnvloed. Deze para meter is gebaseerd op uw specifieke gegevens vereisten, compressie-instellingen en andere omgevings factoren.
 
-1. Als u wilt wijzigen met de parameter, gaat u naar de component **Peeringconfiguraties** tabblad en zoek de **gegevens per Reducer** parameter op de pagina instellingen.
+1. Als u de para meter wilt wijzigen, gaat u naar het tabblad **configuratie** van Hive en zoekt u de para meter **gegevens per verkorter** op de pagina instellingen.
 
-    ![Gegevens per Reducer](./media/hdinsight-changing-configs-via-ambari/data-per-reducer.png)
+    ![Gegevens per verminderr](./media/hdinsight-changing-configs-via-ambari/data-per-reducer.png)
  
-1. Selecteer **bewerken** wijzigen van de waarde van 128 MB (134,217,728 bytes) en druk vervolgens op **Enter** om op te slaan.
+1. Selecteer **bewerken** om de waarde te wijzigen in 128 MB (134.217.728 bytes) en druk vervolgens op **Enter** om op te slaan.
 
-    ![Gegevens per Reducer - bewerkt](./media/hdinsight-changing-configs-via-ambari/data-per-reducer-edited.png)
+    ![Gegevens per verkleinings bewerking](./media/hdinsight-changing-configs-via-ambari/data-per-reducer-edited.png)
   
-    Gegeven een invoergrootte van 1024 MB, met 128 MB aan gegevens per reducer, er 8 reducers tegelijkertijd zijn (1024/128).
+    Op basis van een invoer grootte van 1.024 MB, met 128 MB aan gegevens per reduceerere, zijn er 8 verminderers (1024/128).
 
-1. Een onjuiste waarde voor de **gegevens per Reducer** parameter kan leiden tot een groot aantal reducers tegelijkertijd, nadelige invloed heeft op de prestaties van query's. Instellen om te beperken het maximum aantal reducers tegelijkertijd, `hive.exec.reducers.max` naar een geschikte waarde. De standaardwaarde is 1009.
+1. Een onjuiste waarde voor de **gegevens per reduceerere** para meter kan leiden tot een groot aantal verminderers, wat een negatieve invloed heeft op de prestaties van query's. Als u het maximum aantal verminderers wilt beperken `hive.exec.reducers.max` , stelt u een geschikte waarde in. De standaard waarde is 1009.
 
-### <a name="enable-parallel-execution"></a>Inschakelen van parallelle uitvoering
+### <a name="enable-parallel-execution"></a>Parallelle uitvoering inschakelen
 
-Een Hive-query wordt uitgevoerd in een of meer fasen. Als de onafhankelijke fasen kunnen parallel worden uitgevoerd, wordt die prestaties van query's vergroten.
+Een Hive-query wordt uitgevoerd in een of meer fasen. Als de onafhankelijke fasen parallel kunnen worden uitgevoerd, worden de query prestaties verbeterd.
 
-1.  Als u wilt uitvoeren van parallelle query's inschakelen, gaat u naar de component **Config** tabblad en zoek de `hive.exec.parallel` eigenschap. De standaardwaarde is false. Wijzig de waarde true en druk vervolgens op **Enter** om op te slaan de waarde.
+1.  Als u parallelle query uitvoering wilt inschakelen, gaat u naar het tabblad **configuratie** van Hive `hive.exec.parallel` en zoekt u naar de eigenschap. De standaardwaarde is false. Wijzig de waarde in True en druk vervolgens op **Enter** om de waarde op te slaan.
  
-1.  Als u wilt beperken het aantal taken parallel uitvoeren, wijzigen de `hive.exec.parallel.thread.number` eigenschap. De standaardwaarde is 8.
+1.  Als u het aantal taken dat parallel moet worden uitgevoerd, wilt beperken `hive.exec.parallel.thread.number` , wijzigt u de eigenschap. De standaard waarde is 8.
 
-    ![Exec parallelle hive](./media/hdinsight-changing-configs-via-ambari/hive-exec-parallel.png)
+    ![Component exec parallel](./media/hdinsight-changing-configs-via-ambari/hive-exec-parallel.png)
 
 
-### <a name="enable-vectorization"></a>Schakel vectorisatie in
+### <a name="enable-vectorization"></a>Vectorization inschakelen
 
-Hive verwerkt gegevens per rij. Vectorisatie in stuurt Hive om gegevens te verwerken in blokken van 1024 rijen in plaats van één rij tegelijk. Vectorisatie in is alleen van toepassing op het ORC-bestandsindeling.
+Hive verwerkt gegevens rijen per rij. Vectorization-doorstuur component voor het verwerken van gegevens in blokken van 1.024 rijen in plaats van één rij tegelijk. Vectorization is alleen van toepassing op de ORC-bestands indeling.
 
-1. Als u wilt een vectorized queryuitvoering inschakelen, gaat u naar de component **Peeringconfiguraties** tabblad en zoek de `hive.vectorized.execution.enabled` parameter. De standaardwaarde is true voor Hive 0.13.0 of hoger.
+1. Als u een vector query-uitvoering wilt inschakelen, gaat u naar het tabblad **configuratie** van Hive en `hive.vectorized.execution.enabled` zoekt u naar de para meter. De standaard waarde is True voor Hive 0.13.0 of hoger.
  
-1. Om in te schakelen vectorized voor het uitvoeren van de kant van het verminderen van de query, stel de `hive.vectorized.execution.reduce.enabled` parameter op waar. De standaardwaarde is false.
+1. Als u een vector uitvoering wilt inschakelen voor de reductie van de query, stelt `hive.vectorized.execution.reduce.enabled` u de para meter in op waar. De standaardwaarde is false.
 
-    ![Het uitvoeren van hive vectorized](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
+    ![Hive vector-uitvoering](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
 
-### <a name="enable-cost-based-optimization-cbo"></a>Kosten op basis van optimalisatie (CBO) inschakelen
+### <a name="enable-cost-based-optimization-cbo"></a>Optimalisatie op basis van kosten inschakelen (CBO)
 
-Hive volgt standaard een set regels om te vinden van een optimale queryplan voor uitvoering. Kosten op basis van optimalisatie (CBO) meerdere abonnementen voor het uitvoeren van een query wordt geëvalueerd en kosten toegewezen aan elk abonnement en vervolgens bepaalt de goedkoopste plan een query uit te voeren.
+Hive volgt standaard een set regels om één optimaal query-uitvoerings plan te vinden. Met CBO (cost-based Optimization) worden meerdere plannen geëvalueerd voor het uitvoeren van een query en worden er kosten aan elk plan toegewezen. vervolgens wordt het goedkoopste-plan bepaald voor het uitvoeren van een query.
 
-Om in te schakelen CBO, gaat u naar de component **Peeringconfiguraties** tabblad en zoek naar de `parameter hive.cbo.enable`, schakelt u de wisselknop voor **op**.
+Om CBO in te scha kelen, gaat u naar het tabblad **configuratie** van `parameter hive.cbo.enable`Hive en **zoekt u naar**de wissel knop naar aan.
 
-![CBO config](./media/hdinsight-changing-configs-via-ambari/cbo.png)
+![CBO-configuratie](./media/hdinsight-changing-configs-via-ambari/cbo.png)
 
-De volgende aanvullende configuratieparameters verhogen Hive-queryprestaties als CBO is ingeschakeld:
+De volgende aanvullende configuratie parameters verhogen Hive-query prestaties wanneer CBO is ingeschakeld:
 
 * `hive.compute.query.using.stats`
 
-    Wanneer is ingesteld op true, Hive statistieken die zijn opgeslagen in de metastore gebruikt om te beantwoorden van eenvoudige query's zoals `count(*)`.
+    Als deze eigenschap is ingesteld op True, gebruikt Hive statistieken die zijn opgeslagen in de meta Store `count(*)`om eenvoudige query's te beantwoorden, zoals.
 
-    ![CBO statistieken](./media/hdinsight-changing-configs-via-ambari/hive-compute-query-using-stats.png)
+    ![CBO-statistieken](./media/hdinsight-changing-configs-via-ambari/hive-compute-query-using-stats.png)
 
 * `hive.stats.fetch.column.stats`
 
-    Kolomstatistieken worden gemaakt wanneer CBO is ingeschakeld. Kolomstatistieken, die zijn opgeslagen in metastore, het optimaliseren van query's maakt gebruik van hive. Ophalen van de kolomstatistieken voor elke kolom duurt langer als het aantal kolommen hoog is. Deze instelling is ingesteld op false, schakelt ophalen kolomstatistieken met de metastore.
+    Kolom statistieken worden gemaakt wanneer CBO is ingeschakeld. Hive maakt gebruik van kolom statistieken, die zijn opgeslagen in de meta Store, voor het optimaliseren van query's. Het ophalen van kolom statistieken voor elke kolom duurt langer wanneer het aantal kolommen hoog is. Als deze instelling is ingesteld op False, wordt het ophalen van kolom statistieken uit de meta Store uitgeschakeld.
 
-    ![Hive-statistieken set kolomstatistieken](./media/hdinsight-changing-configs-via-ambari/hive-stats-fetch-column-stats.png)
+    ![Statistische statistieken voor Hive instellen kolom statistieken](./media/hdinsight-changing-configs-via-ambari/hive-stats-fetch-column-stats.png)
 
 * `hive.stats.fetch.partition.stats`
 
-    Standaard-partitie-statistieken, zoals het aantal rijen, de gegevensgrootte en de grootte worden opgeslagen in metastore. Wanneer ingesteld op true, de partitie statistieken van metastore worden opgehaald. Als deze eigenschap ONWAAR is, de grootte van het bestandssysteem wordt opgehaald en het aantal rijen wordt opgehaald uit het schema van de rij.
+    Standaard partitie statistieken, zoals het aantal rijen, de grootte van de gegevens en de bestands grootte, worden opgeslagen in de meta Store. Als deze eigenschap is ingesteld op True, worden de partitie statistieken opgehaald uit de meta Store. Als false is ingesteld, wordt de bestands grootte opgehaald uit het bestands systeem en wordt het aantal rijen opgehaald uit het schema van de rij.
 
-    ![Hive-statistieken set partitie statistieken](./media/hdinsight-changing-configs-via-ambari/hive-stats-fetch-partition-stats.png)
+    ![Statistieken voor de Hive-partitie instellen](./media/hdinsight-changing-configs-via-ambari/hive-stats-fetch-partition-stats.png)
 
 ### <a name="enable-intermediate-compression"></a>Tussenliggende compressie inschakelen
 
-Kaart taken maken tussenliggende bestanden die worden gebruikt door de taken reducer. Tussenliggende compressie Hiermee verkleint u de grootte van het tussenliggende.
+Met toewijzings taken maakt u tussenliggende bestanden die worden gebruikt door de verkorter taken. Tussenliggende compressie verkleint de tussenliggende bestands grootte.
 
-Hadoop-taken zijn meestal i/o knelpunt. Het comprimeren van gegevens sneller kan i/o en algemene netwerkoverdracht.
+Hadoop-taken zijn meestal I/O-knel punten. Het comprimeren van gegevens kan I/O en de algehele netwerk overdracht versnellen.
 
-De beschikbare compressietypen zijn:
+De beschik bare compressie typen zijn:
 
-| Indeling | Hulpprogramma | Algoritme | Bestandsextensie | Splitsbare? |
+| Indeling | Hulpprogramma | Algoritme | Bestands extensie | Splitsbaar? |
 | -- | -- | -- | -- | -- |
 | Gzip | Gzip | DEFLATE | .gz | Nee |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | Ja |
-| LZO | Lzop | LZO | .lzo | Ja, als geïndexeerd |
+| LZO | Lzop | LZO | .lzo | Ja, indien geïndexeerd |
 | Snappy | N/A | Snappy | Snappy | Nee |
 
-Als een regel met de compressiemethode splitsbare is belangrijk, anders heel weinig mappers wordt gemaakt. Als de invoergegevens tekst, `bzip2` is de beste optie. Snappy is de snelste compressieoptie voor ORC-indeling.
+Een algemene regel is dat de compressie methode splitsbaar belang rijk is, anders worden enkele toewijzingen gemaakt. Als de invoer gegevens tekst is, `bzip2` is de beste optie. Voor de indeling ORC is Snappy de snelste compressie optie.
 
-1. Om in te schakelen tussenliggende compressie, gaat u naar de component **Peeringconfiguraties** tabblad en stel vervolgens de `hive.exec.compress.intermediate` parameter op waar. De standaardwaarde is false.
+1. Als u tussenliggende compressie wilt inschakelen, gaat u naar het tabblad **configuratie** van Hive en stelt `hive.exec.compress.intermediate` u de para meter in op True. De standaardwaarde is false.
 
-    ![Hive exec comprimeren tussenliggende](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
+    ![Component exec-compressie tussen onderdelen](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
     > [!NOTE]  
-    > Voor het comprimeren van tussenliggende bestanden, kiest u een compressiecodec met lagere CPU kosten, zelfs als de codec beschikt niet over een hoge mate van compressie-uitvoer.
+    > Als u tussenliggende bestanden wilt comprimeren, kiest u een compressie-codec met lagere CPU-kosten, zelfs als de codec geen hoge compressie-uitvoer heeft.
 
-1. De aangepaste eigenschap toevoegen om in te stellen de tussenliggende compressiecodec, `mapred.map.output.compression.codec` naar de `hive-site.xml` of `mapred-site.xml` bestand.
+1. Als u de tussenliggende compressie-codec wilt instellen, voegt `mapred.map.output.compression.codec` u de `hive-site.xml` aangepaste `mapred-site.xml` eigenschap toe aan het bestand of.
 
 1. Een aangepaste instelling toevoegen:
 
-    a. Navigeer naar de component **Peeringconfiguraties** tabblad en selecteer de **Geavanceerd** tabblad.
+    a. Ga naar het tabblad **configuratie** van Hive en selecteer het tabblad **Geavanceerd** .
 
-    b. Onder de **Geavanceerd** tabblad, zoeken en vouw de **aangepaste hive-site** deelvenster.
+    b. Ga naar het tabblad **Geavanceerd** en vouw het deel venster **aangepaste Hive-site** uit.
 
-    c. Klik op de koppeling **eigenschap toevoegen** onderaan in het deelvenster met aangepaste hive-site.
+    c. Klik op de **eigenschap koppeling toevoegen** onder aan het deel venster aangepaste Hive-site.
 
-    d. Voer in het venster eigenschap toevoegen `mapred.map.output.compression.codec` als de sleutel en `org.apache.hadoop.io.compress.SnappyCodec` als de waarde.
+    d. Voer `mapred.map.output.compression.codec` in het venster Eigenschappen toevoegen als sleutel en `org.apache.hadoop.io.compress.SnappyCodec` als de waarde in.
 
     e. Klik op **Toevoegen**.
 
-    ![De aangepaste eigenschap hive](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
+    ![Aangepaste eigenschap van Hive](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
 
-    Hiermee wordt het tijdelijke bestand met behulp van Snappy compressie comprimeren. Zodra de eigenschap is toegevoegd, wordt deze weergegeven in het deelvenster met aangepaste hive-site.
+    Hiermee wordt het tussenliggende bestand gecomprimeerd met Snappy-compressie. Zodra de eigenschap is toegevoegd, wordt deze weer gegeven in het deel venster aangepaste Hive-site.
 
     > [!NOTE]  
-    > Hiermee wijzigt u deze procedure de `$HADOOP_HOME/conf/hive-site.xml` bestand.
+    > Met deze procedure wordt het `$HADOOP_HOME/conf/hive-site.xml` bestand gewijzigd.
 
-### <a name="compress-final-output"></a>Comprimeren van de uiteindelijke uitvoer
+### <a name="compress-final-output"></a>Laatste uitvoer comprimeren
 
-De uiteindelijke uitvoer van Hive kan ook worden gecomprimeerd.
+De uiteindelijke Hive-uitvoer kan ook worden gecomprimeerd.
 
-1. Voor het comprimeren van de uiteindelijke uitvoer van Hive, gaat u naar de component **Peeringconfiguraties** tabblad en stel vervolgens de `hive.exec.compress.output` parameter op waar. De standaardwaarde is false.
+1. Als u de laatste Hive-uitvoer wilt comprimeren, gaat u naar het tabblad **configuratie** van Hive en `hive.exec.compress.output` stelt u de para meter in op waar. De standaardwaarde is false.
 
-1. Als u de compressiecodec uitvoer, voeg de `mapred.output.compression.codec` aangepaste eigenschap aan het aangepaste hive-site deelvenster, zoals beschreven in de vorige sectie stap 3.
+1. Als u de compressie-codec voor uitvoer wilt `mapred.output.compression.codec` kiezen, voegt u de aangepaste eigenschap toe aan het deel venster aangepaste Hive-site, zoals wordt beschreven in stap 3 van de vorige sectie.
 
-    ![De aangepaste eigenschap hive](./media/hdinsight-changing-configs-via-ambari/hive-custom-property2.png)
+    ![Aangepaste eigenschap van Hive](./media/hdinsight-changing-configs-via-ambari/hive-custom-property2.png)
 
 ### <a name="enable-speculative-execution"></a>Speculatieve uitvoering inschakelen
 
-Speculatieve uitvoering wordt gestart voor een bepaald aantal dubbele taken om te detecteren en het vastleggen van de taak trage zwarte bij het verbeteren van de algehele taak kan worden uitgevoerd door een afzonderlijke Taakresultaten te optimaliseren.
+Met een speculatieve uitvoering wordt een bepaald aantal dubbele taken gestart om het langzame taak traceren te detecteren en op te lossen, terwijl de algehele taak wordt uitgevoerd door afzonderlijke taak resultaten te optimaliseren.
 
-Speculatieve uitvoering mag niet worden ingeschakeld voor langlopende MapReduce-taken met grote hoeveelheden invoer.
+Speculatieve uitvoering moet niet worden ingeschakeld voor langlopende MapReduce-taken met grote hoeveel heden invoer.
 
-* Om in te schakelen speculatieve uitvoering, gaat u naar de component **Peeringconfiguraties** tabblad en stel vervolgens de `hive.mapred.reduce.tasks.speculative.execution` parameter op waar. De standaardwaarde is false.
+* Als u speculatieve uitvoering wilt inschakelen, gaat u naar het tabblad **configuratie** van Hive en stelt `hive.mapred.reduce.tasks.speculative.execution` u de para meter in op True. De standaardwaarde is false.
 
-    ![Hive mapred taken speculatieve uitvoering beperken](./media/hdinsight-changing-configs-via-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
+    ![Hive-mapred beperken taken speculatieve uitvoering](./media/hdinsight-changing-configs-via-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
 
 ### <a name="tune-dynamic-partitions"></a>Dynamische partities afstemmen
 
-Hive kunt u dynamische partities maken bij het invoegen van records in een tabel, zonder vooraf elke partitie te definiëren. Dit is een krachtige functie, maar dit tot het maken van een groot aantal partities en een groot aantal bestanden voor elke partitie leiden kan.
+Hive maakt het mogelijk om dynamische partities te maken bij het invoegen van records in een tabel, zonder dat elke partitie vooraf wordt gedefinieerd. Dit is een krachtige functie, hoewel dit kan leiden tot het maken van een groot aantal partities en een groot aantal bestanden voor elke partitie.
 
-1. Voor Hive dynamische partities, doet de `hive.exec.dynamic.partition` parameterwaarde moet ' True ' (de standaardinstelling).
+1. Voor Hive kunnen dynamische partities worden uitgevoerd, `hive.exec.dynamic.partition` de parameter waarde moet True zijn (de standaard instelling).
 
-1. De partitiemodus dynamische te wijzigen *strikte*. In de strikte modus moet ten minste één partitie niet statisch zijn. Dit voorkomt dat query's zonder dat het filter partitie in de WHERE-component, dat wil zeggen, *strikte* voorkomt dat query's die scannen van alle partities. Navigeer naar de component **configuraties** tabblad en stel vervolgens `hive.exec.dynamic.partition.mode` naar **strikte**. De standaardwaarde is **nonstrict**.
+1. Wijzig de dynamische partitie modus in *strict*. In de strikte modus moet ten minste één partitie statisch zijn. Zo wordt voor komen dat query's zonder het partitie filter in de component WHERE, dat wil zeggen, *strikte* query's die alle partities scannen, worden voor komen. Ga naar het tabblad **configuratie** van Hive en stel `hive.exec.dynamic.partition.mode` in op **strikt**. De standaard waarde is niet **strikt**.
  
-1. Als u wilt beperken het aantal dynamische partities wilt maken, wijzigen de `hive.exec.max.dynamic.partitions` parameter. De standaardwaarde is 5000.
+1. Wijzig de `hive.exec.max.dynamic.partitions` para meter om het aantal dynamische partities te beperken dat moet worden gemaakt. De standaard waarde is 5000.
  
-1. Als u wilt beperken het totale aantal dynamische partities per knooppunt, wijzigen `hive.exec.max.dynamic.partitions.pernode`. De standaardwaarde is 2000.
+1. Als u het totale aantal dynamische partities per knoop punt wilt beperken `hive.exec.max.dynamic.partitions.pernode`, wijzigt u. De standaard waarde is 2000.
 
-### <a name="enable-local-mode"></a>De lokale modus inschakelen
+### <a name="enable-local-mode"></a>Lokale modus inschakelen
 
-Lokale-modus kunnen Hive voor alle taken van een taak op één computer, of soms in een enkel proces. Dit verbetert de prestaties van query's als de ingevoerde gegevens klein is en de overhead van het starten van taken voor query's maakt gebruik van een aanzienlijk deel van de algemene queryuitvoering.
+Met de lokale modus kan Hive alle taken van een taak uitvoeren op één computer of soms in één proces. Dit verbetert de query prestaties als de invoer gegevens klein zijn en de overhead van het starten van taken voor query's een aanzienlijk percentage van de algehele query uitvoering verbruikt.
 
-Lokale modus wilt activeren, voeg de `hive.exec.mode.local.auto` parameter aan de aangepaste hive-site Configuratiescherm, zoals wordt beschreven in stap 3 van de [tussenliggende compressie inschakelen](#enable-intermediate-compression) sectie.
+Als u de lokale modus wilt inschakelen `hive.exec.mode.local.auto` , voegt u de para meter toe aan het aangepaste Hive-site paneel, zoals wordt beschreven in stap 3 van de sectie [tussenliggende compressie inschakelen](#enable-intermediate-compression) .
 
-![Hive exec modus lokale automatisch](./media/hdinsight-changing-configs-via-ambari/hive-exec-mode-local-auto.png)
+![Modus van Hive-exec lokale auto](./media/hdinsight-changing-configs-via-ambari/hive-exec-mode-local-auto.png)
 
-### <a name="set-single-mapreduce-multigroup-by"></a>Set één MapReduce MultiGROUP door
+### <a name="set-single-mapreduce-multigroup-by"></a>Eén MapReduce instellen op meerdere groepen
 
-Als deze eigenschap is ingesteld op true, een query MultiGROUP door met de algemene groep door sleutels genereert een enkel MapReduce-taak.  
+Als deze eigenschap is ingesteld op True, genereert een query met meerdere groepen met algemene groep-op sleutels één MapReduce-taak.  
 
-Als u wilt inschakelen dit gedrag, toevoegen de `hive.multigroupby.singlereducer` parameter voor de aangepaste hive-site in het deelvenster, zoals wordt beschreven in stap 3 van de [tussenliggende compressie inschakelen](#enable-intermediate-compression) sectie.
+Als u dit gedrag wilt inschakelen, `hive.multigroupby.singlereducer` voegt u de para meter toe aan het deel venster aangepaste Hive-site, zoals wordt beschreven in stap 3 van de sectie [tussenliggende compressie inschakelen](#enable-intermediate-compression) .
 
-![Hive ingesteld één MapReduce MultiGROUP door](./media/hdinsight-changing-configs-via-ambari/hive-multigroupby-singlereducer.png)
+![Hive-set met één MapReduce meerdere groepen op](./media/hdinsight-changing-configs-via-ambari/hive-multigroupby-singlereducer.png)
 
-### <a name="additional-hive-optimizations"></a>Aanvullende optimaliseringen voor Hive
+### <a name="additional-hive-optimizations"></a>Aanvullende Hive-optimalisaties
 
-De volgende secties beschrijven aanvullende Hive-gerelateerde optimalisaties die u kunt instellen.
+In de volgende secties worden extra optimalisaties voor onderdelen beschreven die u kunt instellen.
 
-#### <a name="join-optimizations"></a>Optimalisaties toevoegen
+#### <a name="join-optimizations"></a>Deelname aan optimalisaties
 
-Het jointype in component is een *shuffle join*. In Hive, speciale mappers Lees de invoer- en verzenden van een join-sleutel/waarde-paar naar een tussenliggende-bestand. Hadoop worden gesorteerd en worden deze paren samengevoegd in de fase van een willekeurige volgorde. Deze fase shuffle is kostbaar. De juiste join op basis van uw gegevens te selecteren, kan de prestaties aanzienlijk verbeteren.
+Het standaard type voor samen voegen in Hive is een *wille keurige samen voeging*. In Hive leest speciale mappers de invoer en wordt een koppelings sleutel/-waardepaar naar een tussenliggend bestand verzenden. Hadoop sorteert en voegt deze paren samen in een wille keurige fase. Deze fase in wille keurige volg orde is duur. Het selecteren van de juiste koppeling op basis van uw gegevens kan de prestaties aanzienlijk verbeteren.
 
-| Type join | Wanneer | Hoe | Hive-instellingen | Opmerkingen |
+| Jointype | Wanneer | Werking | Hive-instellingen | Opmerkingen |
 | -- | -- | -- | -- | -- |
-| Shuffle Join | <ul><li>Standaardoptie</li><li>Altijd werkt</li></ul> | <ul><li>Leest uit deel uitmaakt van een van de tabellen</li><li>Buckets en gesorteerd op Join-sleutel</li><li>Verzendt een bucket naar elke verminderen</li><li>Join is uitgevoerd op de zijde verminderen</li></ul> | Er is geen aanzienlijke Hive benodigde instellen | Elke keer werkt |
-| Lid worden van kaart | <ul><li>Een tabel past in het geheugen</li></ul> | <ul><li>Kleine tabel leest in geheugen hash-tabel</li><li>Stromen via deel van de grote bestanden</li><li>Lid wordt van elke record van hash-tabel</li><li>Moeten worden samengevoegd door het toewijzen van de alleen</li></ul> | `hive.auto.confvert.join=true` | Zeer snelle maar beperkte |
-| Bucket voor het samenvoegen van sorteren | Als beide tabellen zijn: <ul><li>Dezelfde gesorteerd</li><li>Dezelfde bucketed</li><li>Op de gesorteerd/gerangschikte kolom toevoegen</li></ul> | Elk proces: <ul><li>Leest een bucket uit elke tabel</li><li>De rij met de laagste waarde verwerkt</li></ul> | `hive.auto.convert.sortmerge.join=true` | Zeer efficiënt |
+| In wille keurige volg orde | <ul><li>Standaard keuze</li><li>Werkt altijd</li></ul> | <ul><li>Lees bewerkingen van een deel van een van de tabellen</li><li>Buckets en sorteren op koppelings sleutel</li><li>Hiermee wordt één Bucket naar elke reductie verzonden</li><li>De deelname aan de minder kant wordt uitgevoerd</li></ul> | Er is geen belang rijke Hive-instelling vereist | Werkt elke keer |
+| Kaart toevoegen | <ul><li>Een tabel kan in het geheugen passen</li></ul> | <ul><li>Hiermee wordt een kleine tabel in de hash-tabel van het geheugen gelezen</li><li>Streamt via een deel van het grote bestand</li><li>Koppelt elke record uit een hash-tabel</li><li>Samen voegingen zijn alleen door de Mapper</li></ul> | `hive.auto.confvert.join=true` | Zeer snel, maar beperkt |
+| Bucket voor samen voegen sorteren | Als beide tabellen zijn: <ul><li>Op dezelfde manier gesorteerd</li><li>Hetzelfde gebuckd</li><li>Deel nemen aan de gesorteerde/gebuckeerde kolom</li></ul> | Elk proces: <ul><li>Hiermee wordt een Bucket uit elke tabel gelezen</li><li>De rij met de laagste waarde verwerkt</li></ul> | `hive.auto.convert.sortmerge.join=true` | Zeer efficiënt |
 
-#### <a name="execution-engine-optimizations"></a>Optimalisaties voor uitvoering van engine
+#### <a name="execution-engine-optimizations"></a>Optimalisaties van uitvoerings engine
 
-Extra aanbevelingen voor het optimaliseren van de engine voor het uitvoeren van Hive:
+Aanvullende aanbevelingen voor het optimaliseren van de engine voor het uitvoeren van de Hive:
 
-| Instelling | Aanbevolen | HDInsight-standaard |
+| Instelling | Aanbevolen | Standaard HDInsight |
 | -- | -- | -- |
-| `hive.mapjoin.hybridgrace.hashtable` | = True veiliger, langzamer; False = sneller | false |
-| `tez.am.resource.memory.mb` | Bovengrens van 4 GB voor de meeste | Automatisch zijn afgestemd |
+| `hive.mapjoin.hybridgrace.hashtable` | Waar = veiliger, langzamer; ONWAAR = sneller | false |
+| `tez.am.resource.memory.mb` | 4-GB bovengrens voor de meeste | Automatisch afgestemd |
 | `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
-| `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10\.000 |
+| `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10.000 |
 | `tez.am.container.idle.release-timeout-max.millis` | 40000+ | 20000 |
 
-## <a name="apache-pig-optimization"></a>Apache Pig-optimalisatie
+## <a name="apache-pig-optimization"></a>Naoptimalisatie van Apache-varkens
 
-[Apache Pig](https://pig.apache.org/) eigenschappen kunnen worden gewijzigd via de Ambari-webgebruikersinterface om af te stemmen Pig-query's. Pig-eigenschappen van Ambari rechtstreeks wijzigen wijzigt u de Pig-eigenschappen in de `/etc/pig/2.4.2.0-258.0/pig.properties` bestand.
+[Apache varken](https://pig.apache.org/) -eigenschappen kunnen worden gewijzigd in de Ambari-webgebruikersinterface om Pig-query's af te stemmen. Als u de Pig-eigenschappen van Ambari wijzigt, worden de Pig `/etc/pig/2.4.2.0-258.0/pig.properties` -eigenschappen in het bestand direct gewijzigd.
 
-1. Pig om eigenschappen te wijzigen, gaat u naar de Pig **Peeringconfiguraties** tabblad uit en vouw vervolgens de **geavanceerde pig-eigenschappen** deelvenster.
+1. Als u de eigenschappen van varken wilt wijzigen, gaat u naar het tabblad Pig- **configuratie** en vouwt u het deel venster **Geavanceerde Pig-eigenschappen** uit.
 
-1. Zoeken, verwijder de opmerkingen en wijzig de waarde van de eigenschap die u wilt wijzigen.
+1. Zoek, verwijder de opmerking en wijzig de waarde van de eigenschap die u wilt wijzigen.
 
-1. Selecteer **opslaan** aan de rechterbovenhoek van het venster om op te slaan van de nieuwe waarde. Sommige eigenschappen is mogelijk een service opnieuw is gestart.
+1. Selecteer **Opslaan** in de rechter bovenhoek van het venster om de nieuwe waarde op te slaan. Voor sommige eigenschappen is het opnieuw opstarten van de service vereist.
 
-    ![Geavanceerde pig-eigenschappen](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
+    ![Geavanceerde varkens-eigenschappen](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
  
 > [!NOTE]  
-> Sessie-niveau instellingen overschrijven eigenschapswaarden in het `pig.properties` bestand.
+> Alle instellingen op sessie niveau overschrijven eigenschaps waarden in `pig.properties` het bestand.
 
-### <a name="tune-execution-engine"></a>Engine voor het uitvoeren van stemmen
+### <a name="tune-execution-engine"></a>Uitvoerings engine afstemmen
 
-Twee motoren van de uitvoering zijn beschikbaar voor Pig-scripts uit te voeren: MapReduce en Tez. Tez is een engine voor geoptimaliseerde en is veel sneller dan MapReduce.
+Er zijn twee uitvoerings engines beschikbaar voor het uitvoeren van Pig-scripts: MapReduce en TEZ. TEZ is een geoptimaliseerde engine en is veel sneller dan MapReduce.
 
-1. Wijzigen van de engine voor het uitvoeren, in de **geavanceerde pig-eigenschappen** in het deelvenster Zoeken van de eigenschap `exectype`.
+1. Als u de uitvoerings Engine wilt wijzigen, gaat u naar het deel venster **Geavanceerde Pig-eigenschappen** en gaat u naar de eigenschap `exectype`.
 
-1. De standaardwaarde is **MapReduce**. Wijzig dit in **Tez**.
-
-
-### <a name="enable-local-mode"></a>De lokale modus inschakelen
-
-Net als bij Hive, lokale modus wordt gebruikt om de snelheid van taken met relatief kleinere hoeveelheden gegevens.
-
-1. De lokale modus wilt activeren, stel `pig.auto.local.enabled` naar **waar**. De standaardwaarde is false.
-
-1. Taken met een grootte van invoergegevens kleiner is dan de `pig.auto.local.input.maxbytes` eigenschapswaarde worden beschouwd als kleine taken. De standaardwaarde is 1 GB.
+1. De standaard waarde is **MapReduce**. Wijzig deze in **TEZ**.
 
 
-### <a name="copy-user-jar-cache"></a>Cache van de gebruiker jar kopiëren
+### <a name="enable-local-mode"></a>Lokale modus inschakelen
 
-Pig kopieert de JAR-bestanden vereist voor UDF's aan een gedistribueerde cache zodat ze beschikbaar zijn voor de knooppunten van de taak. Deze JAR-bestanden wijzigen niet vaak. Indien ingeschakeld, de `pig.user.cache.enabled` beleidsinstelling JAR-bestanden in een cache te hergebruiken voor taken die worden uitgevoerd door dezelfde gebruiker worden geplaatst. Dit resulteert in een kleine toename in de prestaties van de taak.
+Net als bij Hive wordt de lokale modus gebruikt om taken te versnellen met relatief kleinere hoeveel heden gegevens.
 
-1. Instellen om in te schakelen, `pig.user.cache.enabled` op ' True '. De standaardwaarde is false.
+1. Als u de lokale modus wilt inschakelen `pig.auto.local.enabled` , stelt u in op **waar**. De standaardwaarde is false.
 
-1. Om in te stellen het basispad van de JAR-bestanden in de cache `pig.user.cache.location` aan het basispad. De standaardwaarde is `/tmp`.
+1. Taken met een grootte van invoer gegevens die kleiner `pig.auto.local.input.maxbytes` zijn dan de waarde van de eigenschap, worden beschouwd als kleine taken. De standaard waarde is 1 GB.
 
 
-### <a name="optimize-performance-with-memory-settings"></a>Optimaliseer de prestaties met instellingen voor het geheugen
+### <a name="copy-user-jar-cache"></a>Gebruiker jar-cache kopiëren
 
-De volgende instellingen voor het geheugen kunnen helpen Pig-script-prestaties te optimaliseren.
+Varken kopieert de JAR-bestanden die zijn vereist door Udf's naar een gedistribueerde cache om ze beschikbaar te maken voor taak knooppunten. Deze potten veranderen niet regel matig. Als deze `pig.user.cache.enabled` optie is ingeschakeld, kunnen potten in een cache worden geplaatst om ze opnieuw te gebruiken voor taken die door dezelfde gebruiker worden uitgevoerd. Dit resulteert in een kleine toename van de taak prestaties.
 
-* `pig.cachedbag.memusage`: De hoeveelheid geheugen toegewezen aan een eigenschappenverzameling. Een eigenschappenverzameling is een verzameling van tuples. Een tuple is een geordende reeks velden en een veld is een hoeveelheid gegevens. Als de gegevens in een eigenschappenverzameling buiten het toegewezen geheugen valt, is het een zich verspreid naar schijf. De standaardwaarde is 0.2, waarvan 20 procent van het beschikbare geheugen vertegenwoordigt. Dit geheugen wordt gedeeld tussen alle zakken in een toepassing.
+1. Stel `pig.user.cache.enabled` in op waar om in te scha kelen. De standaard waarde is False.
 
-* `pig.spill.size.threshold`: Zakken groter is dan deze drempelwaarde worden gelekt (in bytes) zijn zich verspreid naar schijf. De standaardwaarde is 5 MB.
+1. Als u het basispad van de in de cache geplaatste `pig.user.cache.location` potten wilt instellen, stelt u het pad naar het basispad in. De standaardwaarde is `/tmp`.
+
+
+### <a name="optimize-performance-with-memory-settings"></a>Prestaties optimaliseren met geheugen instellingen
+
+De volgende geheugen instellingen kunnen helpen de prestaties van het Pig-script te optimaliseren.
+
+* `pig.cachedbag.memusage`: De hoeveelheid geheugen die aan een Bag is toegewezen. Een Bag is verzameling Tuples. Een tuple is een geordende set velden en een veld is een stukje gegevens. Als de gegevens in een Bag zich buiten het toegewezen geheugen bevindt, wordt deze overgelopen op schijf. De standaard waarde is 0,2. Dit is 20 procent van het beschik bare geheugen. Dit geheugen wordt gedeeld in alle strafpot van een toepassing.
+
+* `pig.spill.size.threshold`: Zakken die groter zijn dan deze drempel waarde voor de grootte van overloop (in bytes) worden overgelopen naar schijf. De standaard waarde is 5 MB.
 
 
 ### <a name="compress-temporary-files"></a>Tijdelijke bestanden comprimeren
 
-Pig genereert tijdelijke bestanden tijdens het uitvoeren van taak. De tijdelijke bestanden te comprimeren resulteert in een toename van de prestaties bij het lezen of schrijven van bestanden naar de schijf. De volgende instellingen kunnen worden gebruikt voor het comprimeren van tijdelijke bestanden.
+Pig genereert tijdelijke bestanden tijdens het uitvoeren van taken. Het comprimeren van de tijdelijke bestanden resulteert in een prestatie verhoging bij het lezen of schrijven van bestanden naar schijf. De volgende instellingen kunnen worden gebruikt voor het comprimeren van tijdelijke bestanden.
 
-* `pig.tmpfilecompression`: Als deze eigenschap waar is, kunt tijdelijk bestandscompressie. De standaardwaarde is false.
+* `pig.tmpfilecompression`: Indien true, wordt tijdelijke bestands compressie ingeschakeld. De standaardwaarde is false.
 
-* `pig.tmpfilecompression.codec`: De compressiecodec moet worden gebruikt voor de tijdelijke bestanden te comprimeren. De aanbevolen compressiecodecs zijn [LZO](https://www.oberhumer.com/opensource/lzo/) en Snappy voor lagere CPU-gebruik.
+* `pig.tmpfilecompression.codec`: De compressie-codec die moet worden gebruikt voor het comprimeren van de tijdelijke bestanden. De aanbevolen compressie-codecs zijn [lzo](https://www.oberhumer.com/opensource/lzo/) en Snappy voor het lagere CPU-gebruik.
 
-### <a name="enable-split-combining"></a>Inschakelen van split combineren
+### <a name="enable-split-combining"></a>Splitsen combi neren inschakelen
 
-Wanneer dit is ingeschakeld, worden kleine bestanden worden gecombineerd voor minder taken van de kaart. Dit verbetert de efficiëntie van taken met veel kleine bestanden. Instellen om in te schakelen, `pig.noSplitCombination` op ' True '. De standaardwaarde is false.
-
-
-### <a name="tune-mappers"></a>Mappers afstemmen
-
-Het aantal mappers wordt bepaald door het wijzigen van de eigenschap `pig.maxCombinedSplitSize`. Hiermee geeft u de grootte van de gegevens moeten worden verwerkt door een taak één kaart. De standaardwaarde is de Standaardblokgrootte van het bestandssysteem. Deze waarde resulteert in een afname van het aantal taken toewijzen te vergroten.
+Wanneer deze functie is ingeschakeld, worden kleine bestanden gecombineerd voor minder toewijzings taken. Dit verbetert de efficiëntie van taken met veel kleine bestanden. Stel `pig.noSplitCombination` in op waar om in te scha kelen. De standaardwaarde is false.
 
 
-### <a name="tune-reducers"></a>Reducers tegelijkertijd afstemmen
+### <a name="tune-mappers"></a>Toewijzings toewijzingen afstemmen
 
-Het aantal reducers tegelijkertijd wordt berekend op basis van de parameter `pig.exec.reducers.bytes.per.reducer`. De parameter geeft u het aantal bytes dat per reducer wordt verwerkt, standaard 1 GB. Om te beperken het maximum aantal reducers tegelijkertijd, stel de `pig.exec.reducers.max` eigenschap standaard 999.
+Het aantal mappers wordt bepaald door het wijzigen van de `pig.maxCombinedSplitSize`eigenschap. Hiermee geeft u de grootte van de gegevens die moeten worden verwerkt door een enkele toewijzings taak. De standaard waarde is de standaard blok grootte van het bestands systeem. Het verhogen van deze waarde resulteert in een afname van het aantal toewijzings taken.
 
 
-## <a name="apache-hbase-optimization-with-the-ambari-web-ui"></a>Apache HBase-optimalisatie met de Ambari-Webinterface
+### <a name="tune-reducers"></a>Verkleiners afstemmen
 
-[Apache HBase](https://hbase.apache.org/) configuratie is gewijzigd vanuit de **HBase Configs** tabblad. De volgende secties beschrijven enkele van de belangrijke configuratie-instellingen die invloed hebben op prestaties van HBase.
+Het aantal verminderers wordt berekend op basis van de `pig.exec.reducers.bytes.per.reducer`para meter. De para meter bepaalt het aantal bytes dat per vermindering is verwerkt, standaard 1 GB. Als u het maximum aantal verminderers wilt beperken, `pig.exec.reducers.max` stelt u de eigenschap standaard in op 999.
 
-### <a name="set-hbaseheapsize"></a>Set HBASE_HEAPSIZE
 
-De HBase-heap-grootte geeft de maximale hoeveelheid opslagruimte moet worden gebruikt in megabytes aangegeven door *regio* en *master* servers. De standaardwaarde is 1000 MB. Dit moet zijn afgestemd op voor de clusterwerkbelasting van het.
+## <a name="apache-hbase-optimization-with-the-ambari-web-ui"></a>Apache HBase Optimization with the Ambari Web UI
 
-1. Als u wilt wijzigen, gaat u naar de **geavanceerde HBase-env** deelvenster in de HBase **Peeringconfiguraties** tabblad en gaat u naar de `HBASE_HEAPSIZE` instelling.
+De [Apache HBase](https://hbase.apache.org/) -configuratie wordt gewijzigd op het tabblad **HBase configs** . In de volgende secties worden enkele belang rijke configuratie-instellingen beschreven die van invloed zijn op de prestaties van HBase.
 
-1. Wijzig de standaardwaarde in 5000 MB.
+### <a name="set-hbase_heapsize"></a>Set HBASE_HEAPSIZE
+
+De HBase-Heap-grootte geeft de maximale hoeveelheid heap op die in mega bytes per *regio* en op de *hoofd* servers moet worden gebruikt. De standaard waarde is 1.000 MB. Dit moet worden afgestemd op de werk belasting van het cluster.
+
+1. Als u wilt wijzigen, gaat u naar het deel venster **Geavanceerde HBase-env** op het tabblad HBase **configs** en `HBASE_HEAPSIZE` zoekt u de instelling.
+
+1. Wijzig de standaard waarde in 5.000 MB.
 
     ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/hbase-heapsize.png)
 
 
-### <a name="optimize-read-heavy-workloads"></a>Leesintensief workloads optimaliseren
+### <a name="optimize-read-heavy-workloads"></a>Lees zware workloads optimaliseren
 
-De volgende configuraties zijn belangrijk om de prestaties van leesintensief werkbelastingen te verbeteren.
+De volgende configuraties zijn belang rijk voor het verbeteren van de prestaties van lees-en zware werk belastingen.
 
-#### <a name="block-cache-size"></a>Grootte van blok-cache
+#### <a name="block-cache-size"></a>Grootte van blok cache
 
-De blokcache is de leescache. De grootte wordt bepaald door de `hfile.block.cache.size` parameter. De standaardwaarde is 0.4, 40 procent van de totale regio server-geheugen. Hoe groter de cache blokgrootte, hoe sneller de willekeurige leesbewerkingen zijn.
+De blok cache is de Lees cache. De grootte wordt bepaald door de `hfile.block.cache.size` para meter. De standaard waarde is 0,4, 40 procent van het totale server geheugen van de regio. Hoe groter de grootte van de blok cache, hoe sneller de wille keurige Lees bewerkingen worden uitgevoerd.
 
-1. Als u wilt deze parameter wijzigen, gaat u naar de **instellingen** tabblad in de HBase **Peeringconfiguraties** tabblad en zoek vervolgens **% van de RegionServer toegewezen aan de lezen Buffers**.
+1. Als u deze para meter wilt wijzigen, gaat u naar het tabblad **instellingen** op het tabblad HBase- **configuratie** en zoekt u vervolgens **% van RegionServer die zijn toegewezen aan lees buffers**.
 
-    ![Blokgrootte van HBase voor cache](./media/hdinsight-changing-configs-via-ambari/hbase-block-cache-size.png)
+    ![Grootte van HBase-blok cache](./media/hdinsight-changing-configs-via-ambari/hbase-block-cache-size.png)
  
-1. De waarde wilt wijzigen, selecteert u de **bewerken** pictogram.
+1. Als u de waarde wilt wijzigen, selecteert u het **bewerkings** pictogram.
 
 
-#### <a name="memstore-size"></a>Grootte van de geheugenopslag
+#### <a name="memstore-size"></a>Grootte van geheugen opslag
 
-Alle wijzigingen worden opgeslagen in het geheugen voor buffer, met de naam een *setSize()* . Dit verhoogt de totale hoeveelheid gegevens die kunnen worden geschreven naar de schijf in één bewerking, en het daaropvolgende toegang versnelt naar de recente wijzigingen. De grootte van de geheugenopslag is gedefinieerd door de volgende twee parameters:
+Alle bewerkingen worden opgeslagen in de geheugen buffer, een *geheugen opslag*genoemd. Dit verhoogt de totale hoeveelheid gegevens die in één bewerking naar de schijf kan worden geschreven en versnelt de volgende toegang tot de recente bewerkingen. De grootte van de geheugen opslag wordt gedefinieerd door de volgende twee para meters:
 
-* `hbase.regionserver.global.memstore.UpperLimit`: Hiermee definieert u het maximale percentage van de regioserver die setSize() gecombineerd kunt gebruiken.
+* `hbase.regionserver.global.memstore.UpperLimit`: Hiermee definieert u het maximale percentage van de regio server dat door geheugen opslag gecombineerd kan worden gebruikt.
 
-* `hbase.regionserver.global.memstore.LowerLimit`: Hiermee definieert u het minimumpercentage van de regioserver die setSize() gecombineerd kunt gebruiken.
+* `hbase.regionserver.global.memstore.LowerLimit`: Hiermee definieert u het minimum percentage van de regio server die door geheugen opslag gecombineerd kunnen worden gebruikt.
 
-Om te optimaliseren voor willekeurige lees, kunt u de geheugenopslag hogere en lagere limieten te verminderen.
+Als u wilt optimaliseren voor wille keurige Lees bewerkingen, kunt u de geheugen opslag boven-en ondergrenzen verlagen.
 
 
-#### <a name="number-of-rows-fetched-when-scanning-from-disk"></a>Aantal rijen als resultaat bij het scannen van schijf
+#### <a name="number-of-rows-fetched-when-scanning-from-disk"></a>Aantal opgehaalde rijen bij scannen vanaf schijf
 
-De `hbase.client.scanner.caching` instelling bepaalt het aantal rijen lezen van schijf wanneer de `next` methode wordt aangeroepen op een scanner.  De standaardwaarde is 100. Hoe hoger het getal, minder externe oproepen gemaakt van de client naar de regioserver, wat resulteert in een snellere scans. Dit wordt echter ook geheugendruk op de client verhogen.
+De `hbase.client.scanner.caching` instelling bepaalt het aantal rijen dat van de schijf wordt gelezen `next` wanneer de methode wordt aangeroepen op een scanner.  De standaardwaarde is 100. Hoe hoger het aantal, hoe minder de externe aanroepen van de client naar de regio server, wat resulteert in snellere scans. Hierdoor wordt er echter ook meer geheugen belasting op de client.
 
-![Het aantal rijen als resultaat HBase](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
+![HBase aantal opgehaalde rijen](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
 
 > [!IMPORTANT]  
-> Stel de waarde niet, zodat de tijd tussen de aanroep van de volgende methode op een scanner groter dan de time-out van de scanner is. De duur van de scanner time-out wordt gedefinieerd door de `hbase.regionserver.lease.period` eigenschap.
+> Stel de waarde zo in dat de tijd tussen het aanroepen van de volgende methode op een scanner groter is dan de time-out van de scanner. De duur van de time-out voor `hbase.regionserver.lease.period` de scanner wordt gedefinieerd door de eigenschap.
 
 
-### <a name="optimize-write-heavy-workloads"></a>Schrijfintensief workloads optimaliseren
+### <a name="optimize-write-heavy-workloads"></a>Schrijf zware workloads optimaliseren
 
-De volgende configuraties zijn belangrijk om de prestaties van schrijfintensief workloads te verbeteren.
+De volgende configuraties zijn belang rijk voor het verbeteren van de prestaties van write-zware workloads.
 
 
-#### <a name="maximum-region-file-size"></a>De regio van de maximale bestandsgrootte
+#### <a name="maximum-region-file-size"></a>Maximale bestands grootte van regio
 
-HBase-gegevens opslaat in een interne bestandsindeling, met de naam *HFile*. De eigenschap `hbase.hregion.max.filesize` bepaalt de grootte van een enkele HFile voor een regio.  Een regio is gesplitst in twee regio's als de som van alle HFiles in een regio groter is dan deze instelling.
+HBase slaat gegevens op in een interne bestands indeling met de naam *HFile*. De eigenschap `hbase.hregion.max.filesize` definieert de grootte van één HFile voor een regio.  Een regio wordt in twee regio's gesplitst als de som van alle HFiles in een regio groter is dan deze instelling.
  
-![HBase HRegion maximale bestandsgrootte](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-max-filesize.png)
+![HBase HRegion Max bestands grootte](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-max-filesize.png)
 
-Hoe groter de regio bestandsgrootte, hoe kleiner het aantal splitsingen. U kunt de bestandsgrootte om te bepalen van een waarde resulteert in het maximum schrijfvaardigheden verhogen.
-
-
-#### <a name="avoid-update-blocking"></a>Vermijd update blokkeren
-
-* De eigenschap `hbase.hregion.memstore.flush.size` bepaalt de grootte waarmee setSize() worden leeggemaakt op schijf. De standaardgrootte is 128 MB.
-
-* De Hbase-regio blok vermenigvuldiger wordt gedefinieerd door `hbase.hregion.memstore.block.multiplier`. De standaardwaarde is 4. De maximaal toegestane aantal is 8.
-
-* HBase updates als de geheugenopslag is geblokkeerd (`hbase.hregion.memstore.flush.size` * `hbase.hregion.memstore.block.multiplier`) bytes.
-
-    Met de standaardwaarden van leegmaken grootte en hetzelfde blok vermenigvuldiger, worden de updates worden geblokkeerd wanneer de geheugenopslag is 128 * 4 = 512 MB in grootte. Verhoog de waarde van de update aantal blokkeren, verminderen `hbase.hregion.memstore.block.multiplier`.
-
-![Vermenigvuldiger voor het blokkeren van HBase-regio](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-block-multiplier.png)
+Hoe groter de grootte van het regio bestand, hoe kleiner het aantal splitsingen is. U kunt de bestands grootte verg Roten om een waarde te bepalen die resulteert in de maximale schrijf prestaties.
 
 
-### <a name="define-memstore-size"></a>Grootte van de geheugenopslag definiëren
+#### <a name="avoid-update-blocking"></a>Voor komen dat updates worden geblokkeerd
 
-Grootte van de geheugenopslag is gedefinieerd door de `hbase.regionserver.global.memstore.UpperLimit` en `hbase.regionserver.global.memstore.LowerLimit` parameters. Als u deze waarden gelijk zijn die aan elke andere wordt onderbroken tijdens vermindert schrijfbewerkingen (ook waardoor vaker leegmaken) en resulteert in betere schrijven prestaties.
+* De eigenschap `hbase.hregion.memstore.flush.size` definieert de grootte waarmee geheugen opslag wordt leeg gemaakt op de schijf. De standaard grootte is 128 MB.
+
+* De Hbase regio Block multiplier wordt gedefinieerd door `hbase.hregion.memstore.block.multiplier`. De standaardwaarde is 4. Het Maxi maal toegestane aantal is 8.
+
+* HBase blokkeert updates als de geheugen opslag (`hbase.hregion.memstore.flush.size` * `hbase.hregion.memstore.block.multiplier`) bytes is.
+
+    Met de standaard waarden voor flush grootte en blok-multiplier worden updates geblokkeerd wanneer de geheugen opslag 128 * 4 = 512 MB groot is. Als u het aantal blokkerende updates wilt verminderen, verhoogt `hbase.hregion.memstore.block.multiplier`u de waarde van.
+
+![HBase regio blok-multiplier](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-block-multiplier.png)
 
 
-### <a name="set-memstore-local-allocation-buffer"></a>SetSize() lokale toewijzing buffer ingesteld
+### <a name="define-memstore-size"></a>Grootte van geheugen opslag definiëren
 
-Gebruik van setSize() lokale toewijzing buffer wordt bepaald door de eigenschap `hbase.hregion.memstore.mslab.enabled`. Wanneer dit is ingeschakeld (waar) of zo wordt voorkomen dat heapfragmentatie van de tijdens zware schrijfbewerking. De standaardwaarde is true.
+De grootte van de geheugen opslag wordt `hbase.regionserver.global.memstore.UpperLimit` gedefinieerd `hbase.regionserver.global.memstore.LowerLimit` door de para meters en. Als u deze waarden instelt op elkaar, vermindert het aantal pauzes tijdens het schrijven (dit leidt ook tot meer frequente leegmaak acties) en resulteert dit in betere schrijf prestaties.
+
+
+### <a name="set-memstore-local-allocation-buffer"></a>Lokale toewijzings buffer voor geheugen opslag instellen
+
+Het gebruik van de lokale toewijzings buffer voor geheugen opslag `hbase.hregion.memstore.mslab.enabled`wordt bepaald door de eigenschap. Wanneer deze optie is ingeschakeld (waar), voor komt u dat heap-fragmentatie tijdens een zware schrijf bewerking. De standaardwaarde is true.
  
-![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
+![hbase. hregion. geheugen opslag. mslab. enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [HDInsight-clusters met de Apache Ambari-Webinterface beheren](hdinsight-hadoop-manage-ambari.md)
+* [HDInsight-clusters beheren met de Web-UI van Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)

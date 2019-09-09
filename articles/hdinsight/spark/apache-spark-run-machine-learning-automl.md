@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: aaea8a1af7ad6df89d41dc0e39d13bafbb610224
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 599fa62d253eda7992d7d7db4f5178d3ce428a9c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736053"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814039"
 ---
-# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Azure Machine Learning workloads met geautomatiseerde machine learning (AutoML) uitvoeren op Apache Spark in azure HDInsight
+# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Azure Machine Learning werk belastingen uitvoeren met geautomatiseerde machine learning op Apache Spark in HDInsight
 
 Azure Machine Learning vereenvoudigt en versnelt het bouwen, trainen en implementeren van machine learning modellen. In automatische machine learning (AutoML) begint u met trainings gegevens met een gedefinieerde doel functie en herhaalt u vervolgens combi Naties van algoritmen en functie selecties om automatisch het beste model voor uw gegevens te selecteren op basis van de trainings scores. Met HDInsight kunnen klanten clusters met honderden knoop punten inrichten. Met AutoML die op Spark in een HDInsight-cluster wordt uitgevoerd, kunnen gebruikers reken capaciteit op deze knoop punten gebruiken om trainings taken op een schaal bare manier uit te voeren en om meerdere trainings taken parallel uit te voeren. Hiermee kunnen gebruikers AutoML experimenten uitvoeren tijdens het delen van de reken kracht met hun andere big data workloads.
  

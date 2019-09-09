@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ff795bbbd3cf136735499b571367cf5b8a6ec170
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 5cb5c5813bff8c0df5b119ea1cadf4f2e7c1696a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622154"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811390"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Registratie instellen en aanmelden met een Twitter-account met behulp van Azure Active Directory B2C
 
@@ -27,10 +27,10 @@ Als u Twitter als een id-provider in Azure AD B2C wilt gebruiken, moet u een Twi
 1. Selecteer **een app maken**.
 1. Voer een **app-naam** en een **toepassings beschrijving**in.
 1. Voer`https://your-tenant.b2clogin.com`in **website-URL**in. Vervang `your-tenant` door de naam van uw Tenant. Bijvoorbeeld https://contosob2c.b2clogin.com.
-1. Voer`https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`in voor de **call back-URL**. Vervang `your-tenant` door de naam van uw Tenant naam en `your-user-flow-Id` met de id van uw gebruikers stroom. Bijvoorbeeld `b2c_1A_signup_signin_twitter`. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant, zelfs als de Tenant is gedefinieerd met hoofd letters in Azure AD B2C.
+1. Voer`https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`in voor de **call back-URL**. Vervang `your-tenant` door de naam van uw Tenant naam en `your-user-flow-Id` met de id van uw gebruikers stroom. Bijvoorbeeld `b2c_1A_signup_signin_twitter`. U moet alle kleine letters gebruiken wanneer u uw Tenant naam en gebruikers stroom-ID invoert, zelfs als ze zijn gedefinieerd met hoofd letters in Azure AD B2C.
 1. Lees en accepteer de voor waarden aan de onderkant van de pagina en selecteer vervolgens **maken**.
 1. Op de **pagina app-Details** selecteert u **Bewerken > Details bewerken**, schakelt u het selectie vakje **Aanmelden met Twitter inschakelen in**en selecteert u vervolgens **Opslaan**.
-1. Selecteer **sleutels en tokens** en noteer de **CONSUMer-API-sleutel** en de **geheime sleutel** waarden voor de Consumer-API die u later wilt gebruiken.
+1. Selecteer **sleutels en tokens** en noteer de **CONSUMer-API-sleutel** en de geheime sleutel waarden voor de **Consumer-API** die u later wilt gebruiken.
 
 ## <a name="configure-twitter-as-an-identity-provider-in-your-tenant"></a>Twitter configureren als een id-provider in uw Tenant
 

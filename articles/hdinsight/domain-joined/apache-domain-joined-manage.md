@@ -1,6 +1,6 @@
 ---
 title: HDInsight-clusters beheren met Enter prise Security Enter prise-Azure
-description: Meer informatie over het beheren van HDInsight-clusters met Enterprise Security Package.
+description: Meer informatie over het beheren van Azure HDInsight-clusters met Enterprise Security Package.
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: 7fa215f843fd025d26ba0f583b96f3bb7e63c9ed
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: acf11b8107855c6f087f63f592cdbbad3766795e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488728"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811019"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight-clusters beheren met Enterprise Security Package
 Meer informatie over de gebruikers en de rollen in HDInsight Enterprise Security Package (ESP) en hoe u ESP-clusters beheert.
@@ -34,7 +34,7 @@ U kunt een normaal cluster koppelen met behulp van Apache Ambari Managed usernam
    
 3. U kunt een gekoppeld cluster zien met behulp van de opdracht **lijst cluster**. U kunt nu een script verzenden naar dit gekoppelde cluster.
 
-   ![gekoppeld cluster](./media/apache-domain-joined-manage/linked-cluster.png)
+   ![gekoppeld cluster](./media/apache-domain-joined-manage/linked-cluster.png "gekoppeld cluster")
 
 4. U kunt ook de koppeling van een cluster met behulp van **HDInsight ontkoppelen: Een cluster** ontkoppelen van het opdracht palet.
 
@@ -43,11 +43,11 @@ U kunt een normaal cluster koppelen met behulp van Apache Ambari Managed usernam
 U kunt een normaal cluster koppelen met behulp van Ambari Managed username, ook een beveiligings-Hadoop-cluster koppelen met behulp `user1@contoso.com`van domein gebruikers naam (zoals:). 
 1. Klik op **een cluster koppelen** vanuit **Azure Verkenner**.
 
-   ![context menu voor koppelings cluster](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+   ![IntelliJ van het context menu van het cluster koppelen](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. Voer de **cluster naam**, de **gebruikers naam** en het **wacht woord**in. U moet de gebruikers naam en het wacht woord controleren als u de verificatie fout hebt ontvangen. Optioneel kunt u een opslag account, opslag sleutel toevoegen en vervolgens een container uit de opslag container selecteren. Opslag gegevens zijn voor opslag Verkenner in de linker boom structuur
    
-   ![dialoog venster cluster koppelen](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
+   ![dialoog venster cluster koppelen IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
 
    > [!NOTE]  
    > We gebruiken de gekoppelde opslag sleutel, gebruikers naam en wacht woord als het cluster beide zijn aangemeld bij het Azure-abonnement en een cluster heeft gekoppeld.
@@ -56,22 +56,22 @@ U kunt een normaal cluster koppelen met behulp van Ambari Managed username, ook 
    
 3. U kunt een gekoppeld cluster in het **HDInsight** -knoop punt zien als de invoer gegevens het juiste zijn. U kunt nu een toepassing verzenden naar dit gekoppelde cluster.
 
-   ![gekoppeld cluster](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![IntelliJ gekoppelde cluster](./media/apache-domain-joined-manage/linked-cluster-intellij.png "IntelliJ gekoppelde cluster]")
 
 4. U kunt ook een cluster ontkoppelen van **Azure Explorer**.
    
-   ![niet-gekoppeld cluster](./media/apache-domain-joined-manage/unlink.png)
+   ![niet-gekoppelde cluster-IntelliJ](./media/apache-domain-joined-manage/unlink.png)
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Gebruik Eclipse om een koppeling te maken met een cluster dat aan een domein is toegevoegd
 
 U kunt een normaal cluster koppelen met behulp van Ambari Managed username, ook een beveiligings-Hadoop-cluster koppelen met behulp `user1@contoso.com`van domein gebruikers naam (zoals:).
 1. Klik op **een cluster koppelen** vanuit **Azure Verkenner**.
 
-   ![context menu voor koppelings cluster](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+   ![intereclips in het context menu van het cluster koppelen](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. Voer de **cluster naam**, de **gebruikers naam** en het **wacht woord**in en klik vervolgens op de knop OK om het cluster te koppelen. Voer optioneel het opslag account en de opslag sleutel in en selecteer vervolgens opslag container voor Storage Explorer om in de linkernavigatiebalk te werken
    
-   ![dialoog venster cluster koppelen](./media/apache-domain-joined-manage/link-cluster-dialog.png)
+   ![dialoog eclips voor het koppelen van een cluster](./media/apache-domain-joined-manage/link-cluster-dialog.png)
    
    > [!NOTE]  
    > We gebruiken de gekoppelde opslag sleutel, gebruikers naam en wacht woord als het cluster beide zijn aangemeld bij het Azure-abonnement en een cluster heeft gekoppeld.
@@ -79,11 +79,11 @@ U kunt een normaal cluster koppelen met behulp van Ambari Managed username, ook 
 
 3. U kunt een gekoppeld cluster in **HDInsight** -knoop punt bekijken nadat u op de knop OK hebt geklikt, als de invoer gegevens rechts zijn. U kunt nu een toepassing verzenden naar dit gekoppelde cluster.
 
-   ![gekoppeld cluster](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![aan een gekoppelde cluster-eclips](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
 
 4. U kunt ook een cluster ontkoppelen van **Azure Explorer**.
    
-   ![niet-gekoppeld cluster](./media/apache-domain-joined-manage/unlink.png)
+   ![niet-gekoppelde cluster-eclips](./media/apache-domain-joined-manage/unlink.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>Toegang tot de clusters met Enterprise Security Package.
 

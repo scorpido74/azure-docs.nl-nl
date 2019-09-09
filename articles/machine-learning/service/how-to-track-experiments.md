@@ -12,21 +12,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b14ed2c18c1106477e21062afaa4cc8f672c203
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 0630ca28652b48b3632dbae94c5e16d6adb462c4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946391"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812298"
 ---
-# <a name="log-metrics-during-training-runs"></a>Metrische gegevens vastleggen tijdens trainings uitvoeringen
+# <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>machine learning trainings metrieken bijhouden met Azure Machine Learning
 
-Verbeter het proces voor het maken van het model door de metrische gegevens voor experimenten en controles bij te houden. In dit artikel vindt u informatie over het toevoegen van logboek registratie aan uw trainings script, het verzenden van een experiment, het bewaken van de uitvoering en het weer geven van de resultaten van een uitvoering in Azure Machine Learning service.
+Verbeter het proces voor het maken van het model door de metrische gegevens voor experimenten en controles bij te houden. In dit artikel leert u hoe u logboek registratie code kunt toevoegen aan uw trainings script, een experiment moet verzenden, de uitvoering ervan kunt controleren en de resultaten kunt controleren in Azure Machine Learning-service.
 
 > [!NOTE]
-> Azure Machine Learning-service kan ook gegevens van andere bronnen tijdens de training registreren, zoals AutoML of de docker-container waarop de trainings taak wordt uitgevoerd. Deze logboeken worden niet gedocumenteerd. Als u problemen ondervindt en contact opneemt met micro soft ondersteuning, kunnen ze deze logboeken gebruiken tijdens het oplossen van problemen.
+> Azure Machine Learning-service kan ook gegevens van andere bronnen tijdens de training registreren, zoals geautomatiseerde machine learning uitvoeringen, of de docker-container die de trainings taak uitvoert. Deze logboeken worden niet gedocumenteerd. Als u problemen ondervindt en contact opneemt met micro soft ondersteuning, kunnen ze deze logboeken gebruiken tijdens het oplossen van problemen.
 
-## <a name="list-of-training-metrics"></a>Overzicht van metrische gegevens voor training 
+## <a name="available-metrics-to-track"></a>Beschik bare metrische gegevens om bij te houden
 
 De volgende metrische gegevens kunnen worden toegevoegd aan een run tijdens het trainen van een experiment. Voor een meer gedetailleerd overzicht van wat er op een uitvoering kunnen worden bijgehouden, raadpleegt u de [uitvoeren van de klasse referentiedocumentatie voor](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
 
@@ -43,7 +43,7 @@ De volgende metrische gegevens kunnen worden toegevoegd aan een run tijdens het 
 > [!NOTE]
 > Metrische gegevens voor hoeken, een lijst met rijen en tabellen kunt type hebben: float, geheel getal of tekenreeks.
 
-## <a name="start-logging-metrics"></a>Logboekregistratie van metrische gegevens starten
+## <a name="choose-a-logging-option"></a>Kies een optie voor logboek registratie
 
 Als u wilt bijhouden of bewaken van uw experiment, moet u code om te starten wanneer u de uitvoering verzendt logboekregistratie toevoegen. De volgende zijn manieren voor het activeren van het verzenden van de uitvoering:
 * __Run.start_logging__ - logboekregistratiefuncties toevoegen aan uw trainingsscript en een interactieve sessie te starten in de opgegeven experiment. **start_logging** maakt u een interactieve uitvoeren voor gebruik in scenario's zoals laptops. Alle metrische gegevens die zijn vastgelegd tijdens de sessie worden toegevoegd aan de uitvoerregistratie in het experiment.

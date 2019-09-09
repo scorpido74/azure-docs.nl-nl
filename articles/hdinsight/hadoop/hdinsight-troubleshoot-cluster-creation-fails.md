@@ -1,6 +1,6 @@
 ---
 title: Problemen met het maken van clusters oplossen met Azure HDInsight
-description: Meer informatie over het oplossen van problemen met het maken van clusters voor Azure HDInsight.
+description: Meer informatie over het oplossen van problemen met het maken van Apache-clusters voor Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: 84dc0115edcab07036b43d5fa19310918f7a2408
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 607eacc531166d9d770f31cc64825e8ffea9ca76
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035971"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810672"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Problemen met het maken van clusters oplossen met Azure HDInsight
 
@@ -29,7 +29,7 @@ De volgende problemen zijn de meest voorkomende oorzaken voor het maken van een 
 
 ## <a name="permissions-issues"></a>Problemen met machtigingen
 
-Als u Azure data Lake Storage Gen2 gebruikt en de fout ```AmbariClusterCreationFailedErrorCode``` ```Internal server error occurred while processing the request. Please retry the request or contact support.```ontvangt, opent u de Azure Portal, gaat u naar uw opslag account en controleert u onder Access Control (IAM) of de BLOB- **gegevens bijdrager** of de opslag- **BLOB** De rol van gegevens eigenaar heeft toegang toegewezen aan de door de **gebruiker toegewezen beheerde identiteit** voor het abonnement. Zie [machtigingen voor de beheerde identiteit instellen op het data Lake Storage Gen2-account](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) voor gedetailleerde instructies.
+Als u Azure data Lake Storage Gen2 gebruikt en de fout ```AmbariClusterCreationFailedErrorCode``` ```Internal server error occurred while processing the request. Please retry the request or contact support.```ontvangt, opent u de Azure Portal, gaat u naar uw opslag account en controleert u onder Access Control (IAM) of de BLOB- **gegevens bijdrager** of de opslag- **BLOB** De rol van gegevens eigenaar heeft toegang toegewezen aan de door de **gebruiker toegewezen beheerde identiteit** voor het abonnement. Zie [Machtigingen voor de beheerde identiteit instellen in het Data Lake Storage Gen2-account](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) voor gedetailleerde instructies.
 
 Als u Azure Data Lake Storage Gen1 gebruikt, raadpleegt u de installatie-en configuratie-instructies [hier](../hdinsight-hadoop-use-data-lake-store.md). Data Lake Storage Gen1 wordt niet ondersteund voor HBase-clusters en wordt niet ondersteund in HDInsight-versie 4,0.
 
@@ -64,7 +64,7 @@ Zie [een virtueel netwerk plannen voor Azure HDInsight-verbinding maken met meer
 
 ## <a name="resources-locks"></a>Resources vergren delen  
 
-Zorg ervoor dat [het virtuele netwerk en de resource groep](../../azure-resource-manager/resource-group-lock-resources.md)geen vergren delingen hebben.  
+Zorg ervoor dat [het virtuele netwerk en de resource groep geen vergren delingen](../../azure-resource-manager/resource-group-lock-resources.md)hebben.  
 
 ## <a name="unsupported-component-versions"></a>Niet-ondersteunde onderdeel versies
 

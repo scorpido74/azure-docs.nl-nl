@@ -1,18 +1,18 @@
 ---
 title: Apache Kafka op HDInsight instellen met behulp van Azure Resource Manager-Quick Start
-description: In deze quickstart leert u hoe u met Azure Portal een Apache Kafka-cluster maakt in Azure HDInsight. Er wordt ook aandacht besteed aan Kafka-onderwerpen, -abonnees en -consumenten.
+description: In deze Quick Start leert u hoe u met Azure Resource Manager sjabloon een Apache Kafka cluster maakt in azure HDInsight. Er wordt ook aandacht besteed aan Kafka-onderwerpen, -abonnees en -consumenten.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 75b774a59d3a2a94f1f1132a79c26dcca7b4b6f7
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 399d1146dc71f4670ee0c9bfa497f34911ade638
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780786"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811463"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Quickstart: Apache Kafka cluster maken in azure HDInsight met behulp van Resource Manager-sjabloon
 

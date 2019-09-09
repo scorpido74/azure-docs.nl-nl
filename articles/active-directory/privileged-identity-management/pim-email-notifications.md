@@ -1,9 +1,9 @@
 ---
-title: E-mailmeldingen in PIM - Azure Active Directory | Microsoft Docs
-description: Beschrijving van e-mailmeldingen in Azure AD Privileged Identity Management (PIM).
+title: E-mail meldingen in PIM-Azure Active Directory | Microsoft Docs
+description: Beschrijft e-mail meldingen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
@@ -12,94 +12,94 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
 ms.date: 01/05/2019
-ms.author: rolyon
+ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aa9da83a7a6e97f5b721dad550831fe2645ffd3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0db4828ef7a6d3392ce53b2f2f95b0f7f014d65
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60289148"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804542"
 ---
-# <a name="email-notifications-in-pim"></a>E-mailmeldingen in PIM
+# <a name="email-notifications-in-pim"></a>E-mail meldingen in PIM
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) laat u weten wanneer belangrijke gebeurtenissen zoals wanneer een rol is toegewezen of geactiveerd. PIM blijft u op de hoogte door te sturen dat u en andere deelnemers aan de e-mailmeldingen. Deze e-mailberichten kunnen ook koppelingen naar relevante taken, zoals activeren of vernieuwen van een rol bevatten. Dit artikel wordt beschreven hoe deze e-mailberichten eruit zien en wie deze ontvangt wanneer ze worden verzonden.
+Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kunt u zien wanneer er belang rijke gebeurtenissen optreden, zoals wanneer een rol is toegewezen of geactiveerd. PIM houdt u op de hoogte door u en andere deel nemers e-mail meldingen te sturen. Deze e-mail berichten kunnen ook koppelingen naar relevante taken bevatten, zoals het activeren of vernieuwen van een rol. In dit artikel wordt beschreven hoe deze e-mails eruitzien wanneer ze worden verzonden en wie ze ontvangt.
 
-## <a name="sender-email-address-and-subject-line"></a>Afzender e-mailadres en onderwerp regel
+## <a name="sender-email-address-and-subject-line"></a>E-mail adres van afzender en onderwerpregel
 
-E-mailberichten verzonden uit PIM voor zowel Azure AD en Azure-resourcerollen hebben de volgende e-mailadres van afzender:
+E-mails die zijn verzonden vanuit PIM voor zowel Azure AD-als Azure-resource rollen, hebben het volgende e-mail adres van de afzender:
 
-- E-mailadres: **azure noreply\@microsoft.com**
-- Weergavenaam: Microsoft Azure
+- E-mail adres: **Azure-\@Microsoft.com-antwoord**
+- Weergave naam: Microsoft Azure
 
-Deze e-mailberichten bevatten een **PIM** voorvoegsel in de onderwerpregel. Hier volgt een voorbeeld:
+Deze e-mail berichten bevatten een **PIM** -voor voegsel in de onderwerpregel. Hier volgt een voorbeeld:
 
-- PIM: Alain Charon is permanent toegewezen aan de rol van lezer van de back-up
+- PIM: De rol van back-uplezer is permanent toegewezen aan Alain Charon
 
-## <a name="pim-emails-for-azure-ad-roles"></a>PIM-e-mailberichten voor Azure AD-rollen
+## <a name="pim-emails-for-azure-ad-roles"></a>PIM-e-mails voor Azure AD-rollen
 
-PIM verzonden e-mailberichten wanneer de volgende voor Azure AD-rollen gebeurtenissen:
+PIM verzendt e-mails wanneer de volgende gebeurtenissen optreden voor Azure AD-rollen:
 
-- Wanneer een activering van bevoorrechte rollen is in afwachting van goedkeuring
-- Wanneer een aanvraag voor activering van bevoorrechte rol is voltooid
+- Wanneer de activering van een bevoorrechte rol in behandeling is
+- Wanneer een aanvraag voor het activeren van een bevoorrechte rol is voltooid
 - Wanneer Azure AD PIM is ingeschakeld
 
-Wie deze e-mailberichten voor Azure AD-rollen ontvangt is afhankelijk van uw rol, de gebeurtenis en de meldingen instellen:
+Wie deze e-mails voor Azure AD-rollen ontvangt, is afhankelijk van uw rol, de gebeurtenis en de instelling voor meldingen:
 
-| Gebruiker | Rolactivering is in afwachting van goedkeuring | De aanvraag voor rolactivering is voltooid | PIM is ingeschakeld |
+| Gebruiker | Activering van rol is in behandeling | De activerings aanvraag voor de rol is voltooid | PIM is ingeschakeld |
 | --- | --- | --- | --- |
-| Beheerder met bevoorrechte rol</br>(Geactiveerd/geschikte) | Ja</br>(alleen als er geen expliciete goedkeurders zijn opgegeven) | Ja* | Ja |
-| Beveiligingsbeheerder</br>(Geactiveerd/geschikte) | Nee | Ja* | Ja |
-| Globale beheerder</br>(Geactiveerd/geschikte) | Nee | Ja* | Ja |
+| Beheerder met bevoorrechte rol</br>(Geactiveerd/in aanmerking komend) | Ja</br>(alleen als er geen expliciete goed keurders zijn opgegeven) | Ja* | Ja |
+| Beveiligingsbeheerder</br>(Geactiveerd/in aanmerking komend) | Nee | Ja* | Ja |
+| Globale beheerder</br>(Geactiveerd/in aanmerking komend) | Nee | Ja* | Ja |
 
-\* Als de [ **meldingen** instelling](pim-how-to-change-default-settings.md#notifications) is ingesteld op **inschakelen**.
+\*Als de [instelling **meldingen** ](pim-how-to-change-default-settings.md#notifications) is ingesteld op **inschakelen**.
 
-Hieronder ziet u een voorbeeld van de e-mailbericht wordt verzonden wanneer een gebruiker een Azure AD-rol voor het fictieve bedrijf Contoso-organisatie activeert.
+Hieronder ziet u een voor beeld van een e-mail bericht dat wordt verzonden wanneer een gebruiker een Azure AD-rol activeert voor de fictieve Contoso-organisatie.
 
-![Nieuwe PIM-e-mailadres voor Azure AD-rollen](./media/pim-email-notifications/email-directory-new.png)
+![Nieuwe PIM-e-mail voor Azure AD-rollen](./media/pim-email-notifications/email-directory-new.png)
 
-### <a name="weekly-pim-digest-email-for-azure-ad-roles"></a>Wekelijkse e-mail met PIM de samenvatting voor Azure AD-rollen
+### <a name="weekly-pim-digest-email-for-azure-ad-roles"></a>Wekelijks PIM-Digest-e-mail adres voor Azure AD-rollen
 
-Een wekelijkse samenvatting PIM-e-mail voor Azure AD-rollen wordt verzonden Privileged Role Administrators, Beveiligingsbeheerders en globale beheerders die PIM ingeschakeld. Dit wekelijkse e-mailbericht bevat een momentopname van de PIM-activiteiten voor de week, evenals de toewijzing van bevoorrechte rollen. Het is alleen beschikbaar voor tenants in de openbare cloud. Hier volgt een voorbeeld van de e-mailbericht:
+Een wekelijks PIM-overzichts-e-mail voor Azure AD-rollen wordt verzonden naar bevoegde beheerdersrol, beveiligings beheerders en globale beheerders die PIM hebben ingeschakeld. Deze wekelijkse e-mail bevat een moment opname van PIM-activiteiten voor de week, evenals privileged Role Assignments. Het is alleen beschikbaar voor tenants in de open bare Cloud. Hier volgt een voor beeld van een e-mail bericht:
 
-![Wekelijkse e-mail met PIM de samenvatting voor Azure AD-rollen](./media/pim-email-notifications/email-directory-weekly.png)
+![Wekelijks PIM-Digest-e-mail adres voor Azure AD-rollen](./media/pim-email-notifications/email-directory-weekly.png)
 
-De e-mailbericht bevat vier tegels:
+Het e-mail bericht bevat vier tegels:
 
-| tegel | Description |
+| Naast elkaar | Description |
 | --- | --- |
-| **Gebruikers die zijn geactiveerd** | Aantal keren dat gebruikers hun in aanmerking komende rol binnen de tenant geactiveerd. |
-| **Gebruikers permanent gemaakt** | Aantal keren dat gebruikers met een in aanmerking komende toewijzing is permanent gemaakt worden. |
-| **Roltoewijzingen in PIM** | Aantal keren dat gebruikers een in aanmerking komende rol binnen PIM zijn toegewezen. |
-| **Roltoewijzingen buiten PIM** | Aantal keren dat gebruikers een permanente rol buiten PIM (binnen Azure AD) is toegewezen. |
+| **Geactiveerde gebruikers** | Aantal keren dat gebruikers hun in aanmerking komende rol in de Tenant hebben geactiveerd. |
+| **Gebruikers die permanent zijn gemaakt** | Aantal keren dat gebruikers met een in aanmerking komende toewijzing permanent worden gemaakt. |
+| **Roltoewijzingen in PIM** | Aantal keren dat gebruikers een in aanmerking komende rol in PIM hebben toegewezen. |
+| **Roltoewijzingen buiten PIM** | Aantal keren dat gebruikers een permanente rol hebben toegewezen buiten PIM (binnen Azure AD). |
 
-De **overzicht van de belangrijkste functies** sectie vindt u de top vijf functies in uw tenant op basis van totaal aantal permanente en in aanmerking komende beheerders voor elke rol. De **actie ondernemen** koppeling wordt geopend de [PIM wizard](pim-security-wizard.md) waar u permanente beheerders kunt converteren naar in aanmerking komende beheerders in batches.
+In het gedeelte **overzicht van uw belangrijkste rollen** worden de vijf meest voorkomende rollen in uw Tenant vermeld, op basis van het totale aantal permanente en in aanmerking komende beheerders voor elke rol. Met de koppeling **actie ondernemen** opent u de [PIM-wizard](pim-security-wizard.md) waarin u permanente beheerders kunt converteren naar in aanmerking komende beheerders in batches.
 
-## <a name="pim-emails-for-azure-resource-roles"></a>PIM-e-mailberichten voor Azure-resourcerollen
+## <a name="pim-emails-for-azure-resource-roles"></a>PIM-e-mails voor Azure-resource rollen
 
-Als de volgende gebeurtenissen voor Azure-resourcerollen plaatsvinden, PIM e-mailberichten verzendt naar eigenaars en beheerders van de gebruiker toegang:
+PIM verzendt e-mails naar eigen aars en beheerders van gebruikers toegang wanneer de volgende gebeurtenissen optreden voor Azure-resource rollen:
 
-- Wanneer een roltoewijzing is in afwachting van goedkeuring
-- Wanneer een rol wordt toegewezen
-- Wanneer een rol is binnenkort verlopen
-- Wanneer een rol komt in aanmerking om uit te breiden
-- Wanneer een rol door een eindgebruiker wordt vernieuwd
-- Wanneer een aanvraag voor rolactivering is voltooid
+- Wanneer een roltoewijzing in afwachting is van goed keuring
+- Wanneer een rol is toegewezen
+- Wanneer een rol binnenkort verloopt
+- Wanneer een rol in aanmerking komt voor uitbrei ding
+- Wanneer een rol wordt vernieuwd door een eind gebruiker
+- Wanneer een aanvraag voor het activeren van een rol is voltooid
 
-Als de volgende gebeurtenissen voor Azure-resourcerollen plaatsvinden, PIM e-mailberichten verzendt voor eindgebruikers:
+PIM verzendt e-mail berichten naar eind gebruikers wanneer de volgende gebeurtenissen optreden voor Azure-resource rollen:
 
-- Wanneer een rol wordt toegewezen aan de gebruiker
+- Wanneer een rol aan de gebruiker is toegewezen
 - Wanneer de rol van een gebruiker is verlopen
 - Wanneer de rol van een gebruiker wordt uitgebreid
-- Wanneer een gebruiker de aanvraag voor rolactivering is voltooid
+- Wanneer de activerings aanvraag van een gebruiker is voltooid
 
-Hieronder ziet u een voorbeeld van de e-mailbericht wordt verzonden wanneer een gebruiker de rol van een Azure-resource voor het fictieve bedrijf Contoso-organisatie is toegewezen.
+Hieronder ziet u een voor beeld van een e-mail bericht dat wordt verzonden wanneer aan een gebruiker een Azure-resource functie is toegewezen voor de fictieve Contoso-organisatie.
 
-![Nieuwe PIM-e-mailadres voor Azure-resourcerollen](./media/pim-email-notifications/email-resources-new.png)
+![Nieuwe PIM-e-mail voor Azure-resource rollen](./media/pim-email-notifications/email-resources-new.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure AD-rolinstellingen in PIM configureren](pim-how-to-change-default-settings.md)
-- [Goedkeuren of weigeren van aanvragen voor Azure AD-rollen in PIM](azure-ad-pim-approval-workflow.md)
+- [Instellingen voor Azure AD-rollen configureren in PIM](pim-how-to-change-default-settings.md)
+- [Aanvragen voor Azure AD-rollen in PIM goed keuren of weigeren](azure-ad-pim-approval-workflow.md)

@@ -1,9 +1,9 @@
 ---
-title: Controlegeschiedenis voor Azure AD-rollen in PIM - Azure Active Directory weergeven | Microsoft Docs
-description: Informatie over het weergeven van de controlegeschiedenis voor Azure AD-rollen in Azure AD Privileged Identity Management (PIM).
+title: De controle geschiedenis voor Azure AD-rollen in PIM-Azure Active Directory weer geven | Microsoft Docs
+description: Meer informatie over het weer geven van de controle geschiedenis voor Azure AD-rollen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,64 +11,64 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 06/10/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8061cff8d39db66cb22a5650c7688657aa8b3554
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3547ff218e9a15151e4abe2ceff53292d3f01ac0
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053925"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804323"
 ---
-# <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>Controlegeschiedenis voor Azure AD-rollen in PIM weergeven
+# <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>De controle geschiedenis voor Azure AD-rollen in PIM weer geven
 
-U kunt de controlegeschiedenis voor Azure Active Directory (Azure AD) Privileged Identity Management (PIM) gebruiken om te zien van alle roltoewijzingen en activeringen binnen de afgelopen 30 dagen voor alle bevoorrechte rollen. Als u zien van de volledige controlegeschiedenis van activiteit in uw directory wilt, met inbegrip van de beheerder, eindgebruikers en synchronisatieactiviteit, kunt u de [Azure Active Directory-beveiliging en activiteit rapporten](../reports-monitoring/overview-reports.md).
+U kunt de controle geschiedenis van de Azure Active Directory (Azure AD) Privileged Identity Management (PIM) gebruiken om alle roltoewijzingen en activeringen in de afgelopen 30 dagen voor alle bevoegde rollen weer te geven. Als u de volledige controle geschiedenis van de activiteiten in uw Directory wilt zien, met inbegrip van Administrator-, eind gebruikers-en synchronisatie activiteiten, kunt u de [Azure Active Directory beveiligings-en activiteiten rapporten](../reports-monitoring/overview-reports.md)gebruiken.
 
 ## <a name="view-audit-history"></a>Controlegeschiedenis weergeven
 
-Volg deze stappen om de controlegeschiedenis voor Azure AD-rollen weer te geven.
+Volg deze stappen om de controle geschiedenis voor Azure AD-rollen weer te geven.
 
-1. Aanmelden bij [Azure-portal](https://portal.azure.com/) met een gebruiker die lid is van de [beheerder met bevoorrechte rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) rol.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met een gebruiker die lid is van de beheerdersrol [privileged Role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 
-1. Open **Azure AD Privileged Identity Management**.
+1. Open **Azure AD privileged Identity Management**.
 
 1. Klik op **Azure AD-rollen**.
 
-1. Klik op **controlegeschiedenis van de adreslijstrollen**.
+1. Klik op **controle geschiedenis van Directory rollen**.
 
-    Afhankelijk van de controlegeschiedenis wordt een kolomdiagram weergegeven samen met de totale activeringen, max activeringen per dag en gemiddelde activeringen per dag.
+    Afhankelijk van de controle geschiedenis wordt een kolom diagram samen met de totale activeringen, maximum aantal activeringen per dag en gemiddeld aantal activeringen per dag weer gegeven.
 
     ![Controlegeschiedenis van de adreslijstrollen](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
-    Aan de onderkant van de pagina wordt een tabel met informatie over elke actie in de beschikbare controlegeschiedenis weergegeven. De kolommen hebben de volgende betekenis:
+    Onder aan de pagina wordt een tabel weer gegeven met informatie over elke actie in de beschik bare controle geschiedenis. De kolommen hebben de volgende betekenissen:
 
     | Kolom | Description |
     | --- | --- |
-    | Time | Wanneer de actie is opgetreden. |
-    | Aanvrager | De gebruiker die heeft aangevraagd van de rolactivering of wijzigen. Als de waarde **Azure System**, controleert u de controlegeschiedenis voor Azure voor meer informatie. |
-    | Bewerking | Acties die door de aanvrager. Acties kunnen toewijzen, toewijzing verwijderen, activeren, uitschakelen of AddedOutsidePIM opnemen. |
-    | Lid | De gebruiker die is geactiveerd of toegewezen aan een rol. |
-    | Rol | De rol toegewezen of geactiveerd door de gebruiker. |
-    | Redeneren | De tekst die in het veld reden is ingevoerd tijdens de activering. |
-    | vervaldatum | Wanneer een geactiveerde rol is verlopen. Geldt alleen voor in aanmerking komende roltoewijzingen. |
+    | Time | Wanneer de actie is uitgevoerd. |
+    | Aanvrager | Gebruiker die de functie activeert of wijzigt. Als de waarde **Azure System**is, controleert u de controle geschiedenis van Azure voor meer informatie. |
+    | Action | Acties die door de aanvrager worden uitgevoerd. Acties kunnen toewijzen, intrekken, activeren, deactiveren of AddedOutsidePIM bevatten. |
+    | Lid | Gebruiker die een rol activeert of toewijst. |
+    | Role | De rol die is toegewezen of geactiveerd door de gebruiker. |
+    | Redenen geven | Tekst die tijdens de activering is ingevoerd in het veld reden. |
+    | Verlooptijd | Wanneer een geactiveerde rol verloopt. Is alleen van toepassing op in aanmerking komende roltoewijzingen. |
 
-1. Als u wilt de controlegeschiedenis sorteren, klikt u op de **tijd**, **actie**, en **rol** knoppen.
+1. Als u de controle geschiedenis wilt sorteren, klikt u op de knoppen **tijd**, **actie**en **rol** .
 
-## <a name="filter-audit-history"></a>Controlegeschiedenis filteren
+## <a name="filter-audit-history"></a>Controle geschiedenis filteren
 
-1. Aan de bovenkant van de pagina controle van geschiedenis weergegeven, klikt u op de **Filter** knop.
+1. Klik boven aan de pagina controle geschiedenis op de knop **filteren** .
 
-    De **Grafiekparameters bijwerken** deelvenster wordt weergegeven.
+    Het deel venster **grafiek parameters bijwerken** wordt weer gegeven.
 
-1. In **tijdsbereik**, selecteer een tijdsbereik.
+1. Selecteer een tijds bereik in **tijds bereik**.
 
-1. In **rollen**, toevoegen markeringstekens voor de functies die u wilt weergeven.
+1. Voeg in **rollen**het selectie vakjes toe voor de rollen die u wilt weer geven.
 
-    ![Bijwerken van het deelvenster parameters van grafiek](media/pim-how-to-use-audit-log/update-chart-parameters.png)
+    ![Deel venster grafiek parameters bijwerken](media/pim-how-to-use-audit-log/update-chart-parameters.png)
 
-1. Klik op **gedaan** om de gefilterde controlegeschiedenis weer te geven.
+1. Klik op **gereed** om de gefilterde controle geschiedenis weer te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Activiteiten bekijken en controlegeschiedenis voor Azure-resource-rollen in PIM](azure-pim-resource-rbac.md)
+- [Activiteiten en controle geschiedenis voor Azure-resource rollen weer geven in PIM](azure-pim-resource-rbac.md)

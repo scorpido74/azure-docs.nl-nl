@@ -7,12 +7,12 @@ ms.author: nakhanha
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 98b97abf9fe0d8e71f93022dcbfeff0a5339d5a1
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 068dc76112db39ad8db118062656013e20cfc2ab
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69983087"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811656"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Apache Spark en Apache Hive integreren met de Hive-Warehouse connector
 
@@ -72,7 +72,7 @@ Volg deze stappen om de Hive-Warehouse connector in te stellen tussen een Spark 
         ```
 
     1. Ingesteld `spark.security.credentials.hiveserver2.enabled` op`false` voor de garen-client implementatie modus.
-    1. Stel `spark.hadoop.hive.zookeeper.quorum` in op het Zookeeper-quorum van uw LLAP-cluster. Als u het Zookeeper-quorum voor uw LLAP-cluster wilt vinden, zoekt u naar de eigenschap **Hive. Zookeeper. quorum** in de Ambari- > gebruikers interface voor uw LLAP-cluster onder Hive**Geavanceerde** > **Geavanceerde component-site**. De waarde ziet er ongeveer als volgt uit:
+    1. Stel `spark.hadoop.hive.zookeeper.quorum` in op het Zookeeper-quorum van uw LLAP-cluster. Als u het Zookeeper-quorum voor uw LLAP-cluster wilt vinden, zoekt u naar de eigenschap **Hive. Zookeeper. quorum** in de Ambari-gebruikers interface voor uw LLAP- **cluster onder** > Hive**Geavanceerde** > **Geavanceerde component-site**. De waarde ziet er ongeveer als volgt uit:
 
         ```
         zk1-nkhvne.0iv2nyrmse1uvp2caa4e34jkmf.cx.internal.cloudapp.net:2181,
@@ -229,10 +229,10 @@ Volg de onderstaande stappen om een component Warehouse connector-voor beeld te 
 1. Pas een kolom maskerings beleid toe dat alleen de laatste vier tekens van de kolom bevat.  
     1. Ga naar de gebruikers interface van Zwerver `https://CLUSTERNAME.azurehdinsight.net/ranger/`op.
     1. Klik onder **Hive**op de component service voor uw cluster.
-        ![demo tabel vóór het Toep assen van het beleid voor Zwerver](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
-    1. Klik op het tabblad maskeren en vervolgens op **nieuwe beleids** ![beleids lijst toevoegen](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
+        ![zwerver Service Manager](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
+    1. Klik op het tabblad **maskeren** en **Voeg vervolgens nieuwe beleids** ![Hive-beleids lijst toe](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
     1. Geef een gewenste beleids naam op. Data base selecteren: **Standaard**, Hive-tabel: **demo**, Hive-kolom: **naam**, gebruiker: **Rsadmin2**, toegangs typen: **selecteren**en **gedeeltelijk masker: weer geven laatste 4** van het menu **optie masker selecteren** . Klik op **Toevoegen**.
-                ![lijst met beleids regels](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
+                ![beleid maken](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Bekijk de inhoud van de tabel opnieuw. Na het Toep assen van het beleid voor zwerver, kunnen we alleen de laatste vier tekens van de kolom zien.
 
     ![demo tabel na toepassing van het beleid van zwerver](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)

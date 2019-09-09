@@ -1,61 +1,61 @@
 ---
-title: Failover en failback-Hyper-V-machines gerepliceerd naar een secundair Datacenter tijdens herstel na noodgeval met Azure Site Recovery | Microsoft Docs
-description: Leer hoe u Hyper-V virtuele machines een failover naar uw secundaire on-premises site en een failback naar primaire site tijdens herstel na noodgeval met Azure Site Recovery.
+title: Failover uitvoeren en failback uitvoeren van Hyper-V-Vm's die zijn gerepliceerd naar een secundair Data Center tijdens nood herstel met Azure Site Recovery | Microsoft Docs
+description: Meer informatie over het uitvoeren van een failover van virtuele Hyper-V-machines naar uw secundaire on-premises site en failback naar de primaire site, tijdens nood herstel met Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 39b2e4f37abe77439410fa4a83e06a0ca7941787
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f93c9bd679272f76665a6c8e4a0c611327699839
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66398002"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813698"
 ---
-# <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Failover en failback-Hyper-V-machines gerepliceerd naar de secundaire on-premises site
+# <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Failover en failback uitvoeren van Hyper-V-Vm's die zijn gerepliceerd naar uw secundaire on-premises site
 
-De [Azure Site Recovery](site-recovery-overview.md) service beheert en orkestreert replicatie, failover en failback van on-premises machines en virtuele Azure-machines (VM's).
+De [Azure site Recovery](site-recovery-overview.md) -service beheert en organiseert de replicatie, failover en failback van on-premises machines en virtuele Azure-machines (vm's).
 
-Dit artikel wordt beschreven hoe u een failover uitvoert voor een Hyper-V-virtuele machine beheerd in een cloud System Center Virtual Machine Manager (VMM) naar een secundaire VMM-site. Nadat u een failover hebt uitgevoerd, valt u terug op uw on-premises site wanneer deze beschikbaar is. In dit artikel leert u het volgende:
+In dit artikel wordt beschreven hoe u een failover van een Hyper-V-VM in een System Center Virtual Machine Manager (VMM)-Cloud, naar een secundaire VMM-site. Nadat u een failover hebt uitgevoerd, valt u terug op uw on-premises site wanneer deze beschikbaar is. In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Failover van een Hyper-V virtuele machine uit een primaire VMM-cloud naar een secundaire VMM-cloud
+> * Failover van een Hyper-V-VM vanuit een primaire VMM-Cloud naar een secundaire VMM-Cloud
 > * Opnieuw beveiligen van de secundaire site naar de primaire en failback
-> * U kunt desgewenst starten die opnieuw van de primaire naar secundaire
+> * U kunt eventueel ook beginnen met repliceren van primair naar secundair
 
 ## <a name="failover-and-failback"></a>Failover en failback
 
-Failover en failback bestaat uit drie fasen:
+Failover en failback hebben drie fasen:
 
-1. **Failover naar een secundaire site**: Failover machines van de primaire site naar de secundaire server.
-2. **Failback van de secundaire site**: Virtuele machines repliceren van de secundaire naar primaire en een geplande failover naar een failback uitgevoerd.
-3. Na de geplande failover, optioneel beginnen met het repliceren van de primaire site naar de secundaire opnieuw.
+1. **Failover naar secundaire site**: Computers kunnen niet van de primaire site naar de secundaire worden gewerkt.
+2. **Failback van de secundaire site**: Repliceer Vm's van secundair naar primair en voer een geplande failover uit om een failback uit te voeren.
+3. Na de geplande failover begint optioneel met het repliceren van de primaire site naar de secundaire locatie.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Zorg ervoor dat u hebt een [Dr-herstelanalyse](hyper-v-vmm-test-failover.md) om te controleren of alles werkt zoals verwacht.
-- Zorg ervoor dat de primaire en secundaire VMM-servers zijn verbonden met Site Recovery voor het voltooien van failback.
+- Zorg ervoor dat u een [nood herstel analyse](hyper-v-vmm-test-failover.md) hebt uitgevoerd om te controleren of alles werkt zoals verwacht.
+- Zorg ervoor dat de primaire en secundaire VMM-servers zijn verbonden met Site Recovery om failback te volt ooien.
 
 
 
-## <a name="run-a-failover-from-primary-to-secondary"></a>Een failover van primaire naar secundaire uitvoeren
+## <a name="run-a-failover-from-primary-to-secondary"></a>Een failover uitvoeren van de primaire naar de secundaire
 
-U kunt een regelmatig of geplande failover uitvoeren voor Hyper-V-machines.
+U kunt een regel matige of geplande failover uitvoeren voor virtuele Hyper-V-machines.
 
-- Gebruik een normale failover voor onverwachte storingen. Wanneer u deze failover uitvoert, Site Recovery maakt u een virtuele machine op de secundaire site en deze wordt gebruikt door omhoog. Verlies van gegevens kan optreden, afhankelijk van in afwachting van gegevens die nog niet is gesynchroniseerd.
-- Een geplande failover kan worden gebruikt voor onderhoud, hetzij tijdens de verwachte uitval. Deze optie heeft geen gegevens verloren gaan. Wanneer een geplande failover wordt geactiveerd, worden de bron-VM's afsluiten. Niet-gesynchroniseerde gegevens worden gesynchroniseerd en de failover wordt geactiveerd. 
+- Gebruik een reguliere failover voor onverwachte storingen. Wanneer u deze failover uitvoert, maakt Site Recovery een virtuele machine in de secundaire site en voert deze uit. Er kunnen gegevens verloren gaan, afhankelijk van de in behandeling zijnde gegevens die niet zijn gesynchroniseerd.
+- Een geplande failover kan worden gebruikt voor onderhoud of tijdens de verwachte uitval. Deze optie zorgt ervoor dat er geen gegevens verloren gaan. Wanneer een geplande failover wordt geactiveerd, worden de bron-Vm's afgesloten. Niet-gesynchroniseerde gegevens worden gesynchroniseerd en de failover wordt geactiveerd. 
 - 
-  Deze procedure wordt beschreven hoe u een reguliere failover uitvoert.
+  In deze procedure wordt beschreven hoe u een regel matige failover uitvoert.
 
 
 1. Klik in **Instellingen** > **Gerepliceerde items** op de VM > **Failover**.
-1. Selecteer **sluit de computer voordat u begint met failover** als u wilt dat Site Recovery probeert een afsluiten van de bron-VM's voordat de failover wordt geactiveerd. Site Recovery wordt ook proberen om te synchroniseren van on-premises gegevens die nog niet nog naar de secundaire site, verzonden voordat de failover wordt geactiveerd. Houd er rekening mee dat de failover wordt voortgezet zelfs als afsluiten is mislukt. U kunt de voortgang van de failover volgen op de pagina **Taken**.
-2. U zou nu moeten kunnen zien van de virtuele machine in de secundaire VMM-cloud.
-3. Nadat u hebt gecontroleerd dat de virtuele machine, **doorvoeren** de failover. Hiermee verwijdert u alle beschikbare herstelpunten.
+1. Selecteer **computer afsluiten voordat u de failover uitvoert** als u wilt dat site Recovery probeert om een afsluiting van de bron-vm's uit te voeren voordat de failover wordt geactiveerd. Site Recovery probeert ook on-premises gegevens te synchroniseren die nog niet zijn verzonden naar de secundaire site voordat de failover wordt geactiveerd. De failover wordt voortgezet, zelfs als het afsluiten mislukt. U kunt de voortgang van de failover volgen op de pagina **Taken**.
+2. Nu moet u de virtuele machine in de secundaire VMM-Cloud kunnen zien.
+3. Nadat u de virtuele machine hebt gecontroleerd, voert u de failover **door** . Hiermee verwijdert u alle beschikbare herstelpunten.
 
 > [!WARNING]
 > **Annuleer nooit een failover die in uitvoering is**: De VM-replicatie wordt gestopt voordat de failover is gestart. Als u een failover die in voortgang is annuleert, wordt de failover gestopt, maar de VM wordt niet meer gerepliceerd.  
@@ -63,14 +63,14 @@ U kunt een regelmatig of geplande failover uitvoeren voor Hyper-V-machines.
 
 ## <a name="reverse-replicate-and-failover"></a>Omgekeerde replicatie en failover
 
-Beginnen met het repliceren van de secundaire site naar de primaire en een failback uitvoeren naar de primaire site. Wanneer virtuele machines worden uitgevoerd op de primaire site opnieuw, kunt u ze kunt repliceren naar de secundaire site.  
+Begin met het repliceren van de secundaire site naar de primaire site en failback naar de primaire locatie. Nadat Vm's weer actief zijn op de primaire site, kunt u ze repliceren naar de secundaire site.  
 
  
-1. Klik op de virtuele machine > Klik op **omgekeerde repliceren**.
-2. Nadat de taak voltooid is, klikt u op de virtuele machine > In **Failover**, Controleer of de failoverrichting (van secundaire VMM-cloud) en selecteert u de bron- en doellocaties. 
+1. Klik op de VM > Klik op **omgekeerd repliceren**.
+2. Zodra de taak is voltooid, klikt u op de virtuele machine > in **failover**, controleert u de failover-richting (vanuit de secundaire VMM-Cloud) en selecteert u de bron-en doel locatie. 
 4. Start de failover. U kunt de voortgang van de failover volgen op het tabblad **Taken**.
-5. Controleer of de virtuele machine beschikbaar is in de primaire VMM-cloud.
-6. Als u beginnen met het repliceren van de primaire virtuele machine terug naar de secundaire site opnieuw wilt, klikt u op **omgekeerde repliceren**.
+5. Controleer in de primaire VMM-Cloud of de virtuele machine beschikbaar is.
+6. Als u opnieuw wilt beginnen met het repliceren van de primaire virtuele machine naar de secundaire site, klikt u op **omgekeerd repliceren**.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Bekijk de stap](hyper-v-vmm-disaster-recovery.md) voor Hyper-V-machines repliceren naar een secundaire site.
+[Bekijk de stap voor het](hyper-v-vmm-disaster-recovery.md) repliceren van virtuele Hyper-V-machines naar een secundaire site.

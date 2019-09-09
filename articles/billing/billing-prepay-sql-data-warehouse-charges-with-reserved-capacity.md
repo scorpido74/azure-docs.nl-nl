@@ -1,33 +1,33 @@
 ---
-title: Kosten voor vooruitbetalen voor SQL Data Warehouse met gereserveerde capaciteit van Azure
-description: Meer informatie over hoe u kunt betalen voor SQL Data Warehouse kosten met gereserveerde capaciteit om geld te besparen.
+title: Bespaar kosten voor SQL Data Warehouse kosten met gereserveerde Azure-capaciteit
+description: Meer informatie over hoe u kosten bespaart voor SQL Data Warehouse kosten met gereserveerde capaciteit om geld te besparen.
 services: billing
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/02/2019
+ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 6ee7a661434bb756c6cf196937229db19d06b373
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 381a709c74f5fcf6bb1f89f07ad84d5e3af0c5e0
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779984"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806276"
 ---
-# <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Kosten voor vooruitbetalen voor SQL Data Warehouse met gereserveerde capaciteit
+# <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Bespaar kosten voor SQL Data Warehouse kosten met gereserveerde capaciteit
 
-U kunt geld besparen met Azure SQL Data Warehouse door gedurende een periode van één of drie jaar voor uw cDWU-gebruik te betalen. Als u SQL Data Warehouse gereserveerde capaciteit wilt kopen, moet u de Azure-regio en de periode kiezen. Voeg vervolgens de SQL Data Warehouse SKU toe aan uw winkel wagen en kies het aantal cDWU-eenheden dat u wilt kopen.
+U kunt geld besparen met Azure SQL Data Warehouse door door te voeren naar een reserve ring voor uw cDWU-gebruik gedurende een periode van één of drie jaar. Als u SQL Data Warehouse gereserveerde capaciteit wilt kopen, moet u de Azure-regio en de periode kiezen. Voeg daarna de SQL Data Warehouse-SKU toe aan uw winkelwagen en kies de hoeveelheid cDWU-eenheden die u wilt aanschaffen.
 
-Wanneer u een reserve ring koopt, wordt het SQL Data Warehouse gebruik dat overeenkomt met de reserverings kenmerken niet meer in rekening gebracht tegen de betalen naar gebruik-tarieven.
+Wanneer u een reservering aanschaft, wordt het gebruik van SQL Data Warehouse dat met de reserveringskenmerken overeenkomt niet meer tegen het tarief voor betalen per gebruik in rekening gebracht.
 
-Een reserve ring dekt geen opslag-of netwerk kosten die zijn gekoppeld aan het SQL Data Warehouse gebruik.
+Een reservering omvat geen opslag- en netwerkkosten die samenhangen met het gebruik van SQL Data Warehouse.
 
-Wanneer de gereserveerde capaciteit verloopt, worden SQL Data Warehouse exemplaren blijven worden uitgevoerd, maar worden er kosten in rekening gebracht op basis van het tarief voor betalen naar gebruik. Reserve ringen worden niet automatisch verlengd.
+Wanneer de gereserveerde capaciteit vervalt, blijven de SQL Data Warehouse-exemplaren actief, maar wordt u gefactureerd tegen het tarief betalen per gebruik. Reserveringen worden niet automatisch vernieuwd.
 
 Voor prijs informatie raadpleegt u de [SQL Data Warehouse gereserveerde capaciteits aanbieding](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/).
 
-U kunt Azure SQL Data Warehouse gereserveerde capaciteit kopen in de [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade). Gereserveerde capaciteit kopen:
+U kunt Azure SQL Data Warehouse gereserveerde capaciteit kopen in de [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade). Betaal voor de reserve ring [vóór of met maandelijkse betalingen](billing-monthly-payments-reservations.md). Gereserveerde capaciteit kopen:
 
 - U moet de rol van eigenaar hebben voor ten minste één Enter prise-of betalen per gebruik-abonnement.
 - Voor ondernemings abonnementen moet de optie **gereserveerde instanties toevoegen** zijn ingeschakeld in de [EA-Portal](https://ea.azure.com/). Als de instelling is uitgeschakeld, moet u een EA-beheerder zijn.
@@ -45,7 +45,7 @@ Stel bijvoorbeeld dat uw totale verbruik van SQL Data Warehouse DW3000c is. U wi
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Selecteer **alle services** > -**reserve ringen**.
-3. Selecteer een abonnement. Gebruik de lijst met abonnementen om het abonnement te kiezen dat wordt gebruikt om te betalen voor de gereserveerde capaciteit. Voor de betalings wijze van het abonnement worden de kosten vooraf in rekening gebracht voor de gereserveerde capaciteit. Het abonnements type moet een Enter prise Agreement zijn (nummers van aanbiedingen: MS-AZR-0017P of MS-AZR-0148P) of betalen naar gebruik (aantal aanbiedingen: MS-AZR-0003P of MS-AZR-0023P).
+3. Selecteer een abonnement. Gebruik de lijst met abonnementen om het abonnement te kiezen dat wordt gebruikt om te betalen voor de gereserveerde capaciteit. De betalings wijze van het abonnement wordt in rekening gebracht op de kosten voor de gereserveerde capaciteit. Het abonnements type moet een Enter prise Agreement zijn (nummers van aanbiedingen: MS-AZR-0017P of MS-AZR-0148P) of betalen naar gebruik (aantal aanbiedingen: MS-AZR-0003P of MS-AZR-0023P).
    - Voor een Enterprise-abonnement worden de kosten in mindering gebracht op het toezeggingsbedrag of ze worden in rekening gebracht als overschrijding.
    - Voor een Betalen per gebruik-abonnement worden de kosten in rekening gebracht op de creditcard of de factuurbetalingswijze van het abonnement.
 4. Selecteer een bereik. Gebruik de scope lijst om een abonnements bereik te kiezen.
@@ -79,5 +79,5 @@ Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://
   - [Wat zijn Azure Reservations?](billing-save-compute-costs-reservations.md)
   - [Azure-reserveringen beheren](billing-manage-reserved-vm-instance.md)
   - [Azure Reservations korting begrijpen](billing-understand-reservation-charges.md)
-  - [Het gebruik van de reserve ring begrijpen voor uw abonnement voor betalen naar gebruik](billing-understand-reserved-instance-usage.md)
-  - [Het gebruik van de reserve ring begrijpen voor uw Enter prise-inschrijving](billing-understand-reserved-instance-usage-ea.md)
+  - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](billing-understand-reserved-instance-usage.md)
+  - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](billing-understand-reserved-instance-usage-ea.md)

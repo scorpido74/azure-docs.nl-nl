@@ -1,95 +1,94 @@
 ---
-title: Over netwerkkoppeling voor noodherstel Hyper-V-VM (met VMM) naar Azure met Site Recovery | Microsoft Docs
-description: Beschrijft hoe u voor het instellen van netwerktoewijzing voor herstel na noodgevallen van Hyper-V-machines (beheerd in VMM-clouds) naar Azure met Azure Site Recovery.
-services: site-recovery
+title: Over netwerk toewijzing voor Hyper-V-VM (met VMM) nood herstel voor Azure met Site Recovery
+description: Hierin wordt beschreven hoe u netwerk toewijzing instelt voor herstel na nood gevallen van virtuele Hyper-V-machines (beheerd in VMM-Clouds) naar Azure, met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 05/30/2019
+ms.topic: conceptual
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: d2f7f83654f397cc6b93adbbebc25193155bcedb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 637f327b40341ac04f37baf9e43f136a0315b17f
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399376"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813672"
 ---
-# <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Netwerktoewijzing voorbereiden voor noodherstel van Hyper-V-VM naar Azure
+# <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Netwerk toewijzing voorbereiden voor herstel na nood geval voor Hyper-V-VM naar Azure
 
 
-Dit artikel helpt u om te begrijpen en voorbereiden op netwerktoewijzing wanneer u Hyper-V-machines in System Center Virtual Machine Manager (VMM)-clouds naar Azure of naar een secundaire site repliceren met behulp van de [Azure Site Recovery](site-recovery-overview.md) service.
+Dit artikel helpt u bij het begrijpen en voorbereiden van netwerk toewijzing wanneer u virtuele Hyper-V-machines in System Center Virtual Machine Manager-Clouds (VMM) repliceert naar Azure of naar een secundaire site met behulp van de [Azure site Recovery](site-recovery-overview.md) -service.
 
 
-## <a name="prepare-network-mapping-for-replication-to-azure"></a>Netwerktoewijzing voorbereiden voor replicatie naar Azure
+## <a name="prepare-network-mapping-for-replication-to-azure"></a>Netwerk toewijzing voorbereiden voor replicatie naar Azure
 
-Als u repliceert naar Azure, koppelingen van Netwerktoewijzingen tussen VM-netwerken op een bron-VMM-server en virtuele netwerken van Azure als doel. Bij toewijzing gebeurt het volgende:
--  **Netwerkverbinding**, zorgt u ervoor dat de gerepliceerde Azure-VM's zijn verbonden met het toegewezen netwerk. Alle machines die failover wordt uitgevoerd in hetzelfde netwerk kunnen verbinding maken met elkaar worden verbonden, zelfs als ze in verschillende herstelplan een failover.
-- **Netwerkgateway**: als een netwerkgateway is ingesteld op de doel-Azure-netwerk, virtuele machines worden verbonden met andere on-premises virtuele machines.
+Wanneer u repliceert naar Azure, worden netwerk toewijzingen toegewezen tussen VM-netwerken op een Bron-VMM-server en doel-Azure virtuele netwerken. Bij toewijzing gebeurt het volgende:
+-  **Netwerk verbinding**: zorgt ervoor dat gerepliceerde Azure-vm's zijn verbonden met het toegewezen netwerk. Alle computers die een failover op hetzelfde netwerk uitvoeren, kunnen met elkaar worden verbonden, zelfs als ze zijn opgetreden in verschillende herstel plannen.
+- **Netwerk gateway**: als er een netwerk gateway is ingesteld op het doel-Azure-netwerk, kunnen vm's verbinding maken met andere on-premises virtuele machines.
 
-Netwerktoewijzing werkt als volgt:
+Netwerk toewijzing werkt als volgt:
 
-- U een bron-VMM VM-netwerk worden toegewezen aan een Azure-netwerk.
-- Na een failover van virtuele Azure-machines in de bron netwerk verbonden met het toegewezen virtuele netwerk.
-- Nieuwe virtuele machines die zijn toegevoegd aan de bron-VM-netwerk zijn verbonden met het toegewezen Azure-netwerk wanneer replicatie plaatsvindt.
+- U wijst een Bron-VMM VM-netwerk toe aan een virtueel Azure-netwerk.
+- Na failover van virtuele machines in het bron netwerk wordt er verbinding gemaakt met het toegewezen virtuele netwerk.
+- Nieuwe Vm's die worden toegevoegd aan het bron-VM-netwerk, worden verbonden met het toegewezen Azure-netwerk wanneer replicatie plaatsvindt.
 - Als het doelnetwerk meerdere subnetten bevat en een van deze subnetten dezelfde naam heeft als het subnet waarin de virtuele bronmachine zich bevindt, wordt de gerepliceerde virtuele machine na een failover verbonden met dat doelsubnet.
 - Als er geen doelsubnet met een overeenkomende naam bestaat, wordt de virtuele machine verbonden met het eerste subnet in het netwerk.
 
-## <a name="prepare-network-mapping-for-replication-to-a-secondary-site"></a>Netwerktoewijzing voorbereiden voor replicatie naar een secundaire site
+## <a name="prepare-network-mapping-for-replication-to-a-secondary-site"></a>Netwerk toewijzing voorbereiden voor replicatie naar een secundaire site
 
-Als u naar een secundaire site repliceert, wijst de netwerktoewijzing tussen VM-netwerken op een bron-VMM-server en de VM-netwerken op een VMM-server. Bij toewijzing gebeurt het volgende:
+Wanneer u repliceert naar een secundaire site, worden netwerk toewijzingen toegewezen tussen VM-netwerken op een Bron-VMM-server en VM-netwerken op een doel-VMM-server. Bij toewijzing gebeurt het volgende:
 
-- **Netwerkverbinding**: VM's het juiste netwerk na een failover verbinding maakt. De replica-VM verbonden met het netwerk dat toegewezen aan het Bronnetwerk.
-- **Optimale VM-plaatsing**: optimaal plaatst de replica virtuele machines op Hyper-V-hostservers. Replica-VM's worden geplaatst op hosts die toegang hebben tot de toegewezen VM-netwerken.
-- **Er is geen netwerktoewijzing**— als u geen netwerktoewijzing configureert, replica-VM's niet verbonden met een VM-netwerken na een failover.
+- **Netwerk verbinding**: Hiermee worden virtuele machines verbonden met de juiste netwerken na een failover. De replica-VM wordt verbonden met het doelnet doel netwerk dat is toegewezen aan het bron netwerk.
+- **Optimale VM-plaatsing**: de virtuele replica-Vm's op Hyper-V-hostservers worden optimaal geplaatst. Replica-Vm's worden geplaatst op hosts die toegang hebben tot de toegewezen VM-netwerken.
+- **Geen netwerk toewijzing**: als u geen netwerk toewijzing configureert, worden replica-vm's na een failover niet verbonden met VM-netwerken.
 
-Netwerktoewijzing werkt als volgt:
+Netwerk toewijzing werkt als volgt:
 
-- Netwerktoewijzing kan worden geconfigureerd tussen VM-netwerken op twee VMM-servers of op een enkele VMM-server als twee sites worden beheerd door dezelfde server.
-- Wanneer toewijzing correct is geconfigureerd en replicatie is ingeschakeld, wordt een virtuele machine op de primaire locatie worden verbonden met een netwerk, en de replica op de doellocatie worden verbonden met het toegewezen netwerk.
-- Wanneer u een doel-VM-netwerk tijdens netwerktoewijzing in Site Recovery selecteert, wordt de VMM-bron-clouds die gebruikmaken van de bron-VM-netwerk weergegeven, samen met de beschikbare doelservers VM-netwerken op de doel-clouds die worden gebruikt voor beveiliging.
-- Als het doelnetwerk meerdere subnetten bevat en een van deze subnetten dezelfde naam heeft als het subnet waarop de virtuele bronmachine zich bevindt, wordt klikt u vervolgens de replica-VM verbonden met dat Doelsubnet na een failover. Als er geen Doelsubnet met een overeenkomende naam, de virtuele machine verbonden met het eerste subnet in het netwerk.
+- Netwerk toewijzing kan worden geconfigureerd tussen VM-netwerken op twee VMM-servers of op één VMM-server als twee sites door dezelfde server worden beheerd.
+- Wanneer toewijzing correct is geconfigureerd en replicatie is ingeschakeld, wordt een virtuele machine op de primaire locatie verbonden met een netwerk en wordt de replica op de doel locatie verbonden met het toegewezen netwerk.
+- Wanneer u tijdens het netwerk toewijzing in Site Recovery een doel-VM-netwerk selecteert, worden de VMM-bron Clouds weer gegeven die gebruikmaken van het bron-VM-netwerk, samen met de beschik bare VM-netwerken die worden gebruikt voor de beveiliging van de doel Clouds.
+- Als het doelnet werk meerdere subnetten heeft en een van deze subnetten dezelfde naam heeft als het subnet waarop de virtuele bron machine zich bevindt, wordt de replica-VM na een failover verbonden met het betreffende doel-subnet. Als er geen doel-subnet met een overeenkomende naam is, wordt de virtuele machine verbonden met het eerste subnet in het netwerk.
 
 ## <a name="example"></a>Voorbeeld
 
-Hier volgt een voorbeeld ter illustratie van dit mechanisme. We gaan een organisatie met twee locaties in New York en Chicago.
+Hier volgt een voor beeld om dit mechanisme te illustreren. We nemen een organisatie met twee locaties in New York en Chicago.
 
 **Location** | **VMM-server** | **VM-netwerken** | **Toegewezen aan**
 ---|---|---|---
-New York | VMM-NewYork| VMNetwork1-NewYork | Toegewezen aan VMNetwork1 Chicago
+New York | VMM-NewYork| VMNetwork1-NewYork | Toegewezen aan VMNetwork1-Chicago
  |  | VMNetwork2-NewYork | Niet toegewezen
-Chicago | VMM-Chicago| VMNetwork1-Chicago | Toegewezen aan VMNetwork1 NewYork
+Chicago | VMM-Chicago| VMNetwork1-Chicago | Toegewezen aan VMNetwork1-NewYork
  | | VMNetwork2-Chicago | Niet toegewezen
 
 In dit voorbeeld:
 
-- Wanneer een replica die virtuele machine is gemaakt voor elke virtuele machine die verbonden met VMNetwork1 NewYork, wordt het verbonden zijn met VMNetwork1 Chicago.
-- Wanneer een replica die virtuele machine is gemaakt voor VMNetwork2 NewYork of VMNetwork2 Chicago, kunt u deze niet verbonden met een netwerk.
+- Wanneer een replica-VM wordt gemaakt voor een virtuele machine die is verbonden met VMNetwork1-NewYork, wordt deze verbonden met VMNetwork1-Chicago.
+- Wanneer een replica-VM is gemaakt voor VMNetwork2-NewYork of VMNetwork2-Chicago, wordt deze niet verbonden met een netwerk.
 
-Hier ziet hoe de VMM-clouds zijn ingesteld in ons van de voorbeeldorganisatie en de logische netwerken die zijn gekoppeld aan de clouds.
+Hier ziet u hoe VMM-Clouds worden ingesteld in de voor beeld-organisatie en welke logische netwerken aan de Clouds zijn gekoppeld.
 
-### <a name="cloud-protection-settings"></a>Instellingen voor cloud-beveiliging
+### <a name="cloud-protection-settings"></a>Instellingen voor Cloud beveiliging
 
-**Beveiligde cloud** | **Cloud beveiligen** | **Logisch netwerk (New York)**  
+**Beveiligde Cloud** | **Cloud beveiligen** | **Logisch netwerk (New York)**  
 ---|---|---
 GoldCloud1 | GoldCloud2 |
 SilverCloud1| SilverCloud2 |
-GoldCloud2 | <p>N.V.T.</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
-SilverCloud2 | <p>N.V.T.</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
+GoldCloud2 | <p>N.v.t.</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
+SilverCloud2 | <p>N.v.t.</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
 
-### <a name="logical-and-vm-network-settings"></a>Instellingen voor logische en VM-netwerk
+### <a name="logical-and-vm-network-settings"></a>Logische en VM-netwerk instellingen
 
-**Location** | **Logisch netwerk** | **Gekoppelde VM-netwerk**
+**Location** | **Logisch netwerk** | **Gekoppeld VM-netwerk**
 ---|---|---
 New York | LogicalNetwork1-NewYork | VMNetwork1-NewYork
 Chicago | LogicalNetwork1-Chicago | VMNetwork1-Chicago
  | LogicalNetwork2Chicago | VMNetwork2-Chicago
 
-### <a name="target-network-settings"></a>Instellingen van het doelnetwerk
+### <a name="target-network-settings"></a>Instellingen van het doelnet netwerk
 
-Op basis van deze instellingen wanneer u het doel-VM-netwerk selecteert, ziet de volgende tabel u de opties die beschikbaar zijn.
+Op basis van deze instellingen, wanneer u het doel-VM-netwerk selecteert, worden in de volgende tabel de opties weer gegeven die beschikbaar zullen zijn.
 
-**Selecteren** | **Beveiligde cloud** | **Cloud beveiligen** | **Doelnetwerk beschikbaar**
+**Selecteren** | **Beveiligde Cloud** | **Cloud beveiligen** | **Doelnet netwerk beschikbaar**
 ---|---|---|---
 VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | Beschikbaar
  | GoldCloud1 | GoldCloud2 | Beschikbaar
@@ -97,31 +96,31 @@ VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Niet beschikbaar
  | GoldCloud1 | GoldCloud2 | Beschikbaar
 
 
-Als het doelnetwerk meerdere subnetten bevat en een van deze subnetten dezelfde naam heeft als het subnet waarop de virtuele bronmachine zich bevindt, klikt u vervolgens de replica virtuele machine verbonden met dat Doelsubnet na een failover. Als er geen doelsubnet met een overeenkomende naam bestaat, wordt de virtuele machine verbonden met het eerste subnet in het netwerk.
+Als het doelnet werk meerdere subnetten heeft en een van deze subnetten dezelfde naam heeft als het subnet waarop de virtuele bron machine zich bevindt, wordt de replica virtuele machine na een failover verbonden met het betreffende doel-subnet. Als er geen doelsubnet met een overeenkomende naam bestaat, wordt de virtuele machine verbonden met het eerste subnet in het netwerk.
 
 
-### <a name="failback-behavior"></a>Gedrag voor failback
+### <a name="failback-behavior"></a>Failback-gedrag
 
-Als u wilt zien wat er gebeurt in het geval van een failback (omgekeerde replicatie), gaan we ervan uit dat VMNetwork1 NewYork is toegewezen aan VMNetwork1-Chicago, met de volgende instellingen.
+Als u wilt zien wat er gebeurt in het geval van een failback (omgekeerde replicatie), gaan we ervan uit dat VMNetwork1-NewYork is toegewezen aan VMNetwork1-Chicago, met de volgende instellingen.
 
 
-**VM** | **Verbonden met de VM-netwerk**
+**VM** | **Verbonden met het VM-netwerk**
 ---|---
 VM1 | VMNetwork1-netwerk
 VM2 (replica van VM1) | VMNetwork1-Chicago
 
-Met deze instellingen, laten we bekijken wat er gebeurt in een aantal mogelijke scenario's.
+Met deze instellingen gaan we kijken wat er gebeurt in een aantal mogelijke scenario's.
 
-**Scenario** | **Resultaat**
+**Scenario** | **Daarvan**
 ---|---
-Er is geen wijziging in de netwerkeigenschappen van de VM-2 na een failover. | VM-1, blijft gekoppeld aan het Bronnetwerk.
-Netwerkeigenschappen van VM-2 zijn gewijzigd na een failover en niet is verbonden. | VM-1 wordt verbroken.
-Netwerkeigenschappen van VM-2 worden gewijzigd na een failover en is verbonden met VMNetwork2 Chicago. | Als VMNetwork2 Chicago niet is toegewezen, kunt u VM-1 wordt verbroken.
-Netwerktoewijzing van VMNetwork1 Chicago wordt gewijzigd. | VM-1 worden, verbonden met het netwerk dat is nu toegewezen aan VMNetwork1 Chicago.
+Geen wijziging in de netwerk eigenschappen van VM-2 na een failover. | VM-1 blijft verbonden met het bron netwerk.
+De netwerk eigenschappen van VM-2 worden na de failover gewijzigd en de verbinding is verbroken. | De verbinding met VM-1 is verbroken.
+De netwerk eigenschappen van VM-2 worden na een failover gewijzigd en zijn verbonden met VMNetwork2-Chicago. | Als VMNetwork2-Chicago niet is toegewezen, wordt de verbinding met VM-1 verbroken.
+De netwerk toewijzing van VMNetwork1-Chicago wordt gewijzigd. | VM-1 wordt nu verbonden met het netwerk toegewezen aan VMNetwork1-Chicago.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie over](hyper-v-vmm-networking.md) IP-adressering na een failover naar een secundaire VMM-site.
-- [Meer informatie over](concepts-on-premises-to-azure-networking.md) IP-adressering na een failover naar Azure.
+- [Meer informatie over](hyper-v-vmm-networking.md) IP-adres Sering na een failover naar een secundaire VMM-site.
+- [Meer informatie over](concepts-on-premises-to-azure-networking.md) IP-adres Sering na failover naar Azure.

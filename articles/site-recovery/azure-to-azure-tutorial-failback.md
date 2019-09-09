@@ -1,20 +1,19 @@
 ---
 title: Failback van virtuele Azure-Vm's naar een secundaire Azure-regio voor herstel na nood gevallen met de Azure Site Recovery-service.
 description: Meer informatie over het uitvoeren van back-ups van virtuele Azure-machines met de Azure Site Recovery-service.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 3910336efe50131fbd5df72039af345eb7346385
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: c8be547790452774992b9226ca8010532263aaff
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383220"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814513"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Een Azure-VM tussen Azure-regio's herstellen
 

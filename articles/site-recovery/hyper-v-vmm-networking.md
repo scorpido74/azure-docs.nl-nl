@@ -1,84 +1,83 @@
 ---
-title: IP-adressen voor de verbinding met een secundaire on-premises site na een failover met Azure Site Recovery instellen | Microsoft Docs
-description: Beschrijft hoe u voor het instellen van het IP-adressen voor de verbinding met virtuele machines in een secundaire on-premises site na herstel na noodgevallen en failover met Azure Site Recovery.
-services: site-recovery
+title: IP-adres Sering instellen om verbinding te maken met een secundaire on-premises site na een failover met Azure Site Recovery
+description: Hierin wordt beschreven hoe u IP-adres Sering instelt voor het maken van verbinding met Vm's op een secundaire on-premises site na herstel na nood gevallen en failover met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 8e4dca61016adce209bdce356ea4280fee525c05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f158c6b71bb53d6b683577401e625e24808eb7eb
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66397971"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813680"
 ---
-# <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Instellen van IP-adressen voor de verbinding met een secundaire on-premises site na een failover
+# <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>IP-adres Sering instellen om verbinding te maken met een secundaire on-premises site na een failover
 
-Nadat u Hyper-V virtuele machines in System Center Virtual Machine Manager (VMM)-clouds naar een secundaire site een failover, moet u kunnen verbinding maken met de replica-VM's. Dit artikel helpt u om dit te doen. 
+Nadat u een failover hebt uitgevoerd voor virtuele Hyper-V-machines in System Center Virtual Machine Manager-Clouds (VMM) naar een secundaire site, moet u verbinding kunnen maken met de replica-Vm's. Dit artikel helpt u om dit te doen. 
 
-## <a name="connection-options"></a>Opties voor verbinding
+## <a name="connection-options"></a>Verbindings opties
 
-Na een failover, moet u er een aantal manieren voor het afhandelen van IP-adressering voor replica-VM's zijn: 
+Na een failover zijn er een aantal manieren om IP-adres Sering te verwerken voor replica-Vm's: 
 
-- **Hetzelfde IP-adres behouden na een failover**: In dit scenario heeft de gerepliceerde virtuele machine hetzelfde IP-adres als de primaire virtuele machine. Dit vereenvoudigt het netwerk gerelateerde problemen na een failover, maar sommige infrastructuurtaken vereist.
-- **Gebruik een ander IP-adres na een failover**: In dit scenario wordt de virtuele machine een nieuwe IP-adres na een failover. 
+- **Hetzelfde IP-adres behouden na failover**: In dit scenario heeft de gerepliceerde VM hetzelfde IP-adres als de primaire virtuele machine. Dit vereenvoudigt netwerk problemen na een failover, maar vereist een goed functioneren van de infra structuur.
+- **Gebruik een ander IP-adres na een failover**: In dit scenario krijgt de VM na een failover een nieuw IP-adres. 
  
 
-## <a name="retain-the-ip-address"></a>De IP-adres behouden
+## <a name="retain-the-ip-address"></a>Het IP-adres behouden
 
-Als u behouden van de IP-adressen van de primaire site, na een failover naar de secundaire site wilt, kunt u het volgende doen:
+Als u de IP-adressen van de primaire site wilt behouden na een failover naar de secundaire site, kunt u het volgende doen:
 
-- Implementeer een gespreide subnet tussen de primaire en secundaire sites.
-- Voer een failover van de volledige subnet uit de primaire naar secundaire site. U moet bijwerken van routes om aan te geven van de nieuwe locatie van de IP-adressen.
+- Implementeer een uitgerekt subnet tussen de primaire en secundaire sites.
+- Voer een volledige subnet-failover uit vanaf de primaire naar de secundaire site. U moet routes bijwerken om de nieuwe locatie van de IP-adressen aan te geven.
 
 
-### <a name="deploy-a-stretched-subnet"></a>Een gespreide subnet implementeren
+### <a name="deploy-a-stretched-subnet"></a>Een uitgerekt subnet implementeren
 
-In een stretch-configuratie is het subnet beschikbaar tegelijkertijd in de primaire en secundaire sites. In een stretch-subnet, wanneer u een virtuele machine en de (laag-3) IP-adresconfiguratie naar de secundaire site verplaatst, het netwerk automatisch het verkeer routeert naar de nieuwe locatie. 
+In een uitgerekte configuratie is het subnet tegelijkertijd beschikbaar op zowel de primaire als de secundaire site. Wanneer u in een uitgerekt subnet een machine en de IP-adres configuratie (laag 3) naar de secundaire site verplaatst, stuurt het netwerk het verkeer automatisch naar de nieuwe locatie. 
 
-- Vanuit een perspectief Layer 2 (data link-laag) moet u netwerkapparatuur die een gespreide VLAN kunt beheren.
-- Door het VLAN rekken, vergroot de potentiële foutdomein voor beide sites. Dit is een single point of failure. Hoewel dit onwaarschijnlijk, in een dergelijk scenario u niet mogelijk om te isoleren van een incident, zoals een broadcast-storm. 
+- Vanuit een perspectief van laag 2 (Data Link Layer) hebt u netwerk apparatuur nodig waarmee een uitgerekt VLAN kan worden beheerd.
+- Door het VLAN te spreiden, wordt het mogelijke fout domein uitgebreid naar beide sites. Dit wordt een Single Point of Failure. Het kan voor komen dat u in een dergelijk scenario mogelijk geen incidenten kunt isoleren zoals een uitzend Storm. 
 
 
 ### <a name="fail-over-a-subnet"></a>Failover van een subnet
 
-U kunt voor het hele subnet om op te halen van de voordelen van de gespreide subnet, zonder deze daadwerkelijk stretching failover. In deze oplossing maakt een subnet is beschikbaar in de bron- of doelabonnements-site, maar niet in beide tegelijkertijd.
+U kunt een failover uitvoeren voor het hele subnet om de voor delen van het uitgerekte subnet te verkrijgen, zonder dat u het werkelijk uitrekt. In deze oplossing is een subnet beschikbaar op de bron-of doel site, maar niet in beide tegelijk.
 
-- Als u wilt behouden de IP-adresruimte in het geval van een failover, kunt u via een programma voor de infrastructuur router subnetten verplaatsen van de ene site naar een andere rangschikken.
-- Wanneer er een failover optreedt, wordt de subnetten met hun bijbehorende virtuele machines verplaatst.
-- Het grootste nadeel van deze benadering is dat er een storing optreedt, moet u het hele subnet verplaatsen.
+- Als u de IP-adres ruimte in het geval van een failover wilt behouden, kunt u de router-infra structuur via een programma rangschikken om subnetten van de ene site naar de andere te verplaatsen.
+- Wanneer een failover optreedt, worden subnetten verplaatst met de bijbehorende Vm's.
+- Het belangrijkste nadeel van deze benadering is dat in het geval van een storing het hele subnet moet worden verplaatst.
 
 #### <a name="example"></a>Voorbeeld
 
-Hier volgt een voorbeeld van volledige subnet voor failover. 
+Hier volgt een voor beeld van een volledige subnet-failover. 
 
-- De primaire site heeft voordat de failover, toepassingen die worden uitgevoerd in een subnet 192.168.1.0/24.
-- Tijdens de failover, alle van de virtuele machines in dit subnet kan niet op de secundaire site en behouden hun IP-adressen. 
-- Routes tussen alle sites moeten worden gewijzigd naar aanleiding van het feit dat alle virtuele machines in subnet 192.168.1.0/24 nu naar de secundaire site verplaatst zijn.
+- Voor failover heeft de primaire site toepassingen die worden uitgevoerd in subnet 192.168.1.0/24.
+- Tijdens de failover worden alle virtuele machines in dit subnet overgeschakeld naar de secundaire site en blijven ze hun IP-adressen behouden. 
+- Routes tussen alle sites moeten worden aangepast om aan te geven dat alle virtuele machines in subnet 192.168.1.0/24 nu zijn verplaatst naar de secundaire site.
 
-De volgende afbeeldingen illustreren de subnetten voor en na de failover.
+De volgende afbeeldingen illustreren de subnetten voor en na een failover.
 
 
-**Voordat de failover**
+**Voor failover**
 
-![Voordat de failover](./media/hyper-v-vmm-networking/network-design2.png)
+![Voor failover](./media/hyper-v-vmm-networking/network-design2.png)
 
 **Na een failover**
 
 ![Na een failover](./media/hyper-v-vmm-networking/network-design3.png)
 
-Site Recovery wordt na een failover, een IP-adres toegewezen voor elke netwerkinterface op de virtuele machine. Het adres wordt toegewezen vanuit de statische IP-adresgroep in het betreffende netwerk, voor elk VM-exemplaar.
+Na een failover wijst Site Recovery een IP-adres toe voor elke netwerk interface op de VM. Het adres wordt toegewezen vanuit de groep met vaste IP-adressen in het relevante netwerk, voor elk VM-exemplaar.
 
-- Als de IP-adresgroep op de secundaire site hetzelfde als die op de bronsite is, Site Recovery hetzelfde IP-adres (van de bron-VM), toegewezen aan de replica-VM. Het IP-adres is gereserveerd in VMM, maar het is niet ingesteld als het failover-IP-adres op de Hyper-V-host. De failover-IP-adres op een Hyper-v-host is ingesteld op net vóór de failover.
-- Als hetzelfde IP-adres beschikbaar is, wijst nog een beschikbaar IP-adres toe uit de groep van Site Recovery.
-- Als VM's gebruik van DHCP, beheren niet de IP-adressen in Site Recovery. U moet controleren of de DHCP-server op de secundaire site adressen uit hetzelfde bereik als de bronsite toewijzen kunt.
+- Als de IP-adres groep op de secundaire site gelijk is aan die op de bron site, Site Recovery het hetzelfde IP-adres (van de bron-VM) toewijzen aan de replica-VM. Het IP-adres is gereserveerd in VMM, maar dit is niet ingesteld als het IP-adres van de failover op de Hyper-V-host. Het IP-adres van de failover op een hyper-v-host is ingesteld net vóór de failover.
+- Als hetzelfde IP-adres niet beschikbaar is, wijst Site Recovery een andere beschik bare IP-adres uit de groep toe.
+- Als Vm's DHCP gebruiken, beheert Site Recovery de IP-adressen niet. U moet controleren of de DHCP-server op de secundaire site adressen kan toewijzen van hetzelfde bereik als de bron site.
 
-### <a name="validate-the-ip-address"></a>Valideren van het IP-adres
+### <a name="validate-the-ip-address"></a>Het IP-adres valideren
 
-Nadat u beveiliging voor een virtuele machine inschakelt, kunt u de volgende voorbeeldscript gebruiken om te controleren of het adres toegewezen aan de virtuele machine. Dit IP-adres is ingesteld als het failover-IP-adres en toegewezen aan de virtuele machine op het moment van failover:
+Wanneer u de beveiliging voor een virtuele machine inschakelt, kunt u het volgende voorbeeld script gebruiken om het adres te controleren dat is toegewezen aan de virtuele machine. Dit IP-adres wordt ingesteld als het failover-IP-adres en wordt toegewezen aan de virtuele machine op het moment van de failover:
 
     ```
     $vm = Get-SCVirtualMachine -Name <VM_NAME>
@@ -87,12 +86,12 @@ Nadat u beveiliging voor een virtuele machine inschakelt, kunt u de volgende voo
     $ip.address 
     ```
 
-## <a name="use-a-different-ip-address"></a>Gebruik een ander IP-adres
+## <a name="use-a-different-ip-address"></a>Een ander IP-adres gebruiken
 
-In dit scenario, zijn de IP-adressen van virtuele machines die fungeren als failover gewijzigd. Het nadeel van deze oplossing is het onderhoud vereist.  DNS- en cache vermeldingen moeten mogelijk worden bijgewerkt. Dit kan resulteren in uitvaltijd kunt als volgt worden verholpen:
+In dit scenario worden de IP-adressen van Vm's waarvoor een failover is uitgevoerd, gewijzigd. Het nadeel van deze oplossing is het vereiste onderhoud.  DNS-en cache vermeldingen moeten mogelijk worden bijgewerkt. Dit kan leiden tot uitval tijd, die als volgt kan worden verholpen:
 
-- Lage TTL-waarden gebruiken voor intranettoepassingen kunt maken.
-- Gebruik het volgende script in een plan voor Site Recovery-herstel voor een tijdige update van de DNS-server. U hoeft geen het script als u dynamische DNS-registratie.
+- Gebruik lage TTL-waarden voor intranet toepassingen.
+- Gebruik het volgende script in een Site Recovery herstel plan voor een tijdige update van de DNS-server. U hebt het script niet nodig als u dynamische DNS-registratie gebruikt.
 
     ```
     param(
@@ -108,22 +107,22 @@ In dit scenario, zijn de IP-adressen van virtuele machines die fungeren als fail
     
 ### <a name="example"></a>Voorbeeld 
 
-In dit voorbeeld hebben we verschillende IP-adressen tussen primaire en secundaire sites en er is een derde site uit welke toepassingen die worden gehost op de primaire of herstel de site kan worden geopend.
+In dit voor beeld hebben we verschillende IP-adressen voor de primaire en secundaire sites, en is er een derde site van waaruit toepassingen worden gehost op de primaire of herstel site.
 
-- Apps zijn voordat de failover, gehoste subnet 192.168.1.0/24 op de primaire site.
-- Apps worden na een failover geconfigureerd in subnet 172.16.1.0/24 op de secundaire site.
-- Alle drie sites hebben toegang tot elkaar.
-- Na een failover wordt apps in het subnet herstel worden hersteld.
-- In dit scenario is het niet nodig voor failover van het gehele subnet en er zijn geen wijzigingen nodig zijn om te configureren van routes voor VPN of het netwerk. De failover, en sommige DNS-updates en ervoor te zorgen dat toepassingen toegankelijk blijven.
-- Als DNS is geconfigureerd voor dynamische updates toestaan, klikt u vervolgens de virtuele machines, wordt geregistreerd zelf met behulp van het nieuwe IP-adres wanneer ze na een failover worden gestart.
+- Voor failover worden apps gehost subnet 192.168.1.0/24 op de primaire site.
+- Na een failover worden apps geconfigureerd in subnet 172.16.1.0/24 op de secundaire site.
+- Alle drie de sites hebben toegang tot elkaar.
+- Na een failover worden apps teruggezet in het herstel subnet.
+- In dit scenario is het niet nodig om een failover uit te brengen voor het hele subnet. er zijn geen wijzigingen nodig om VPN-of netwerk routes opnieuw te configureren. De failover en enkele DNS-updates, zorg ervoor dat toepassingen toegankelijk blijven.
+- Als DNS is geconfigureerd voor het toestaan van dynamische updates, registreert de Vm's zichzelf met het nieuwe IP-adres wanneer ze worden gestart na een failover.
 
-**Voordat de failover**
+**Voor failover**
 
-![Verschillende IP-adres - voordat de failover](./media/hyper-v-vmm-networking/network-design10.png)
+![Ander IP-adres-vóór failover](./media/hyper-v-vmm-networking/network-design10.png)
 
 **Na een failover**
 
-![Verschillende IP-adres - na een failover](./media/hyper-v-vmm-networking/network-design11.png)
+![Ander IP-adres-na failover](./media/hyper-v-vmm-networking/network-design11.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen

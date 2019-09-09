@@ -1,6 +1,6 @@
 ---
 title: 'Fout bij het opsporen van Spark-taken met Azure-toolkit voor IntelliJ (preview-versie) '
-description: Stapsgewijze richt lijnen voor het gebruik van HDInsight-Hulpprogram Ma's in Azure-toolkit voor IntelliJ voor het opsporen van fouten op externe toepassingen op HDInsight-clusters via SSH
+description: Richt lijnen voor het gebruik van HDInsight-Hulpprogram Ma's in Azure-toolkit voor IntelliJ voor fout opsporing in toepassingen
 keywords: fout opsporing op afstand IntelliJ, externe fout opsporing IntelliJ, SSH, IntelliJ, hdinsight, debug IntelliJ, fout opsporing
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: aff9f0f70377ebc6e741618b22ff82bc06251521
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: a07dcd58263674aa6fd360e138c0b9c999ea644e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295915"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814149"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Fout bij het opsporen van Spark-taken met Azure-toolkit voor IntelliJ (preview-versie)
 
@@ -83,7 +83,7 @@ Maak een Spark scala/Java-toepassing en voer de toepassing uit op een Spark-clus
 
 6. U kunt de toepassings-ID controleren vanuit het venster uitvoer.
    
-   ![Knop voor uitvoering op afstand](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)   
+   ![Resultaat van externe uitvoering](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)   
 
 ## <a name="download-failed-job-profile"></a>Het taak profiel kan niet worden gedownload
 
@@ -91,9 +91,9 @@ Als het verzenden van de taak mislukt, kunt u het mislukte taak profiel download
 
 1. Open **Microsoft Azure Storage Explorer**, zoek het HDInsight-account van het cluster voor de mislukte taak, down load de mislukte taak resources van de overeenkomstige locatie: **\hdp\spark2-events\\. Spark\\ -Failurestoepassings\<-id >** naar een lokale map. In het venster **activiteiten** wordt de voortgang van het downloaden weer gegeven.
 
-   ![fout bestand downloaden](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
+   ![fout bij het downloaden van bestand1](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
-   ![fout bestand downloaden](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)   
+   ![fout bestand2 downloaden](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)   
 
 ## <a name="configure-local-debugging-environment-and-debug-on-failure"></a>Lokale debugging omgeving configureren en fout opsporing bij fout
 
@@ -101,13 +101,13 @@ Als het verzenden van de taak mislukt, kunt u het mislukte taak profiel download
 
 2. In IntelliJ-idee maakt u een configuratie bestand voor fout **opsporing van Spark-fouten** , selecteert u het bestand FTD van de eerder gedownloade mislukte taak resources voor het veld Locatie van Spark- **taak fout context** .
    
-   ![Knop voor uitvoering op afstand](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
+   ![configuratie van Crete-fout](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
 
 4. Klik op de knop lokaal uitvoeren op de werk balk, de fout wordt weer gegeven in het venster uitvoeren.
    
-   ![Knop voor uitvoering op afstand](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
+   ![Run-failure-configuration1](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
 
-   ![Knop voor uitvoering op afstand](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
+   ![Run-failure-configuration2](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
 
 5. Stel het afbreek punt in als het logboek aangeeft en klik vervolgens op lokale debug-knop om lokale fout opsporing uit te voeren, net als uw normale scala/Java-projecten in IntelliJ.
 

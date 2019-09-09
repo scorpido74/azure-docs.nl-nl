@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: a20c6e90f38e6443597fdf50edd3d4766dc71096
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 98c13287e6e549f1fbcab710adc12cdf5416e814
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275294"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813165"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Gegevens kopiëren van een FTP-server met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -122,12 +122,12 @@ De volgende eigenschappen worden ondersteund voor aan FTP gekoppelde service:
 
 Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. 
 
-- Raadpleeg voor **Parquet, gescheiden tekst, AVRO en binaire indeling**, de sectie [Parquet, gescheiden tekst, AVRO en binaire indelings gegevensset](#format-based-dataset) .
-- Raadpleeg voor andere indelingen, zoals **Orc/JSON-indeling**, de sectie [andere indelings gegevensset](#other-format-dataset) .
+- Raadpleeg voor **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, de sectie [Parquet, gescheiden tekst, JSON, AVRO en binaire indeling gegevensset](#format-based-dataset) .
+- Raadpleeg de sectie [andere indelings gegevensset](#other-format-dataset) voor andere indelingen, zoals **Orc-indeling**.
 
-### <a name="format-based-dataset"></a>Parquet, gescheiden tekst, AVRO en binaire indeling gegevensset
+### <a name="format-based-dataset"></a>Parquet, gescheiden tekst, JSON, AVRO en binaire indeling gegevensset
 
-Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens of binaire indeling**, raadpleegt u de [Parquet-indeling](format-parquet.md), de [tekst indeling met scheidings tekens](format-delimited-text.md), de [Avro-indeling](format-avro.md) en het artikel [binaire indeling](format-binary.md) op op indeling gebaseerde gegevensset en ondersteunde instellingen. De volgende eigenschappen worden ondersteund voor FTP onder `location` instellingen in gegevensset op basis van indeling:
+Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, raadpleegt u [Parquet-indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire indeling](format-binary.md) voor een op indeling gebaseerde gegevensset en ondersteunde instellingen. De volgende eigenschappen worden ondersteund voor FTP onder `location` instellingen in gegevensset op basis van indeling:
 
 | Eigenschap   | Description                                                  | Vereist |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -166,7 +166,7 @@ Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens of bina
 
 ### <a name="other-format-dataset"></a>Gegevensset voor andere indeling
 
-Als u gegevens wilt kopiëren vanuit FTP in de **Orc/JSON-indeling**, worden de volgende eigenschappen ondersteund:
+Als u gegevens wilt kopiëren vanuit FTP in de **Orc-indeling**, worden de volgende eigenschappen ondersteund:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
@@ -217,12 +217,12 @@ Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zij
 
 ### <a name="ftp-as-source"></a>FTP als bron
 
-- Als u wilt kopiëren van **Parquet, tekst met scheidings tekens, AVRO en binaire indeling**, raadpleegt u de sectie [Parquet, tekst met scheidings tekens, AVRO en binaire indelings bron](#format-based-source) .
-- Als u wilt kopiëren van andere indelingen, zoals de **Orc/JSON-indeling**, raadpleegt u de sectie [andere indelings bron](#other-format-source) .
+- Als u wilt kopiëren van **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, raadpleegt u de sectie [Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indelings bron](#format-based-source) .
+- Als u wilt kopiëren van andere indelingen, zoals de **indeling Orc**, raadpleegt u de sectie [andere indelings bron](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, tekst met scheidings tekens, AVRO en binaire indelings bron
+#### <a name="format-based-source"></a>Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indelings bron
 
-Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens, een AVRO of binaire indeling**, raadpleegt u [Parquet indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire indeling](format-binary.md) artikel op op indeling gebaseerde Kopieer activiteit bron en ondersteunde instellingen . De volgende eigenschappen worden ondersteund voor FTP onder `storeSettings` instellingen in op indeling gebaseerde Kopieer Bron:
+Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, raadpleegt u [Parquet-indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire indeling](format-binary.md) artikel op op indeling gebaseerde Kopieer activiteit bron en ondersteund Instellingen. De volgende eigenschappen worden ondersteund voor FTP onder `storeSettings` instellingen in op indeling gebaseerde Kopieer Bron:
 
 | Eigenschap                 | Description                                                  | Vereist                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -281,7 +281,7 @@ Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens, een AV
 
 #### <a name="other-format-source"></a>Andere indelings bron
 
-Als u gegevens wilt kopiëren vanuit FTP in de **Orc/JSON-indeling**, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
+Als u gegevens wilt kopiëren vanuit FTP in de **Orc-indeling**, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |

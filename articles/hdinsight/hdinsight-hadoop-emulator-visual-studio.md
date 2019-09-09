@@ -1,6 +1,6 @@
 ---
-title: Data Lake tools voor Visual Studio met Hortonworks Sandbox - Azure HDInsight
-description: Informatie over het gebruik van de Azure Data Lake-tools voor Visual Studio met de Hortonworks sandbox die worden uitgevoerd in een lokale virtuele machine. Met deze hulpprogramma's, kunt u maken en uitvoeren van Hive en Pig-taken op de sandbox, en de taakuitvoer weergeven en de geschiedenis.
+title: Data Lake-hulpprogram ma's voor Visual Studio met Hortonworks sandbox-Azure HDInsight
+description: Meer informatie over het gebruik van de Azure Data Lake-hulpprogram ma's voor Visual Studio met de sandbox Hortonworks die wordt uitgevoerd op een lokale VM. Met deze hulpprogram ma's kunt u Hive-en Pig-taken in de sandbox maken en uitvoeren en taak uitvoer en-geschiedenis weer geven.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,133 +8,133 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3286ca3b9c85236ff322eb19324bc5ac7a904e22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 580712c4d1815b1c994fd62be78e8d7f3f1c9a01
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65605447"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70809422"
 ---
-# <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Gebruik de Azure Data Lake-tools voor Visual Studio met de Hortonworks Sandbox
+# <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>De Azure Data Lake-hulpprogram ma's voor Visual Studio gebruiken met de sandbox Hortonworks
 
-Azure Data Lake bevat hulpprogramma's voor het werken met algemene Apache Hadoop-clusters. Dit document bevat de stappen die nodig zijn voor gebruik van de Data Lake-hulpprogramma's met de Hortonworks Sandbox uitgevoerd op een lokale virtuele machine.
+Azure Data Lake bevat hulpprogram ma's voor het werken met algemene Apache Hadoop-clusters. Dit document bevat de stappen die nodig zijn voor het gebruik van de Data Lake-hulpprogram ma's met de sandbox Hortonworks die op een lokale virtuele machine wordt uitgevoerd.
 
-Met behulp van de Hortonworks Sandbox, kunt u werken met Hadoop lokaal op uw ontwikkelomgeving. Nadat u hebt een oplossing ontwikkeld en wilt implementeren op schaal, kunt u vervolgens verplaatsen naar een HDInsight-cluster.
+Met de Hortonworks sandbox kunt u lokaal met Hadoop in uw ontwikkel omgeving werken. Nadat u een oplossing hebt ontwikkeld en deze op schaal wilt implementeren, kunt u vervolgens naar een HDInsight-cluster gaan.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De Hortonworks Sandbox uitgevoerd in een virtuele machine op uw ontwikkelomgeving. Dit document is geschreven en getest met de sandbox die worden uitgevoerd in Oracle VirtualBox. Zie voor meer informatie over het instellen van de sandbox de [aan de slag met de Hortonworks sandbox.](hadoop/apache-hadoop-emulator-get-started.md) document.
+* De Hortonworks sandbox, die wordt uitgevoerd op een virtuele machine in uw ontwikkel omgeving. Dit document is geschreven en getest met de sandbox die wordt uitgevoerd in Oracle VirtualBox. Zie [aan de slag met de sandbox Hortonworks](hadoop/apache-hadoop-emulator-get-started.md) voor meer informatie over het instellen van de sandbox. document.
 
 * Visual Studio.
 
-* De [Azure SDK voor .NET](https://azure.microsoft.com/downloads/) 2.7.1 of hoger.
+* De [Azure SDK voor .net](https://azure.microsoft.com/downloads/) 2.7.1 of hoger.
 
-* De [Azure Data Lake tools voor Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504).
+* De [Azure data Lake-hulpprogram ma's voor Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504).
 
-## <a name="configure-passwords-for-the-sandbox"></a>Wachtwoorden voor de sandbox configureren
+## <a name="configure-passwords-for-the-sandbox"></a>Wacht woorden voor de sandbox configureren
 
-Zorg ervoor dat de Hortonworks Sandbox wordt uitgevoerd. Volg de stappen in de [aan de slag in de Hortonworks Sandbox](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) document. Deze stappen configureert u het wachtwoord voor de SSH `root` -account en de Apache Ambari `admin` account. Deze wachtwoorden worden gebruikt wanneer u verbinding met de sandbox vanuit Visual Studio maken.
+Zorg ervoor dat de Hortonworks sandbox wordt uitgevoerd. Volg vervolgens de stappen in het [Hortonworks aan de slag in het sandbox-document van de module](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) . Met deze stappen configureert u het wacht woord `root` voor het SSH-account en `admin` het Apache Ambari-account. Deze wacht woorden worden gebruikt wanneer u verbinding maakt met de sandbox vanuit Visual Studio.
 
-## <a name="connect-the-tools-to-the-sandbox"></a>Verbinding maken met de hulpprogramma's naar de sandbox
+## <a name="connect-the-tools-to-the-sandbox"></a>De hulpprogram ma's verbinden met de sandbox
 
-1. Open Visual Studio, selecteer **weergave**, en selecteer vervolgens **Server Explorer**.
+1. Open Visual Studio, selecteer **weer gave**en selecteer vervolgens **Server Explorer**.
 
-2. Van **Server Explorer**, met de rechtermuisknop op de **HDInsight** , en selecteert u vervolgens **verbinding maken met HDInsight Emulator**.
+2. Klik vanuit **Server Explorer**met de rechter muisknop op het **HDInsight** -item en selecteer vervolgens **verbinding maken met HDInsight-emulator**.
 
-    ![Schermafbeelding van de Server Explorer, met verbinding maken met HDInsight Emulator gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/connect-emulator.png)
+    ![Scherm opname van Server Explorer, waarbij Connect to HDInsight emulator is gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/connect-emulator.png)
 
-3. Uit de **verbinding maken met HDInsight Emulator** dialoogvenster vak, voer het wachtwoord die u hebt geconfigureerd voor Ambari.
+3. Voer in het dialoog venster **verbinding maken met HDInsight-emulator** het wacht woord in dat u hebt geconfigureerd voor Ambari.
 
-    ![Schermopname van dialoogvenster met wachtwoord tekstvak gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
-
-    Selecteer **Volgende** om door te gaan.
-
-4. Gebruik de **wachtwoord** veld dat u het wachtwoord die u hebt geconfigureerd voor de `root` account. Laat de andere velden op de standaardwaarde.
-
-    ![Schermopname van dialoogvenster met wachtwoord tekstvak gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password.png)
+    ![Scherm afbeelding van het dialoog venster met het tekstvak ambari password is gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
 
     Selecteer **Volgende** om door te gaan.
 
-5. Wachttijd voor het valideren van de services te voltooien. In sommige gevallen kan validatie mislukt en vraagt u de configuratie bij te werken. Als validatie mislukt, selecteert u **Update**, en wacht tot de configuratie en controle voor de service om te voltooien.
+4. Gebruik het veld **wacht woord** om het wacht woord in te voeren `root` dat u voor het account hebt geconfigureerd. De overige velden op de standaard waarde laten staan.
 
-    ![Schermopname van dialoogvenster met bijwerkknop gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
+    ![Scherm afbeelding van het dialoog venster met het tekstvak basis wachtwoord gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password.png)
+
+    Selecteer **Volgende** om door te gaan.
+
+5. Wacht tot validatie van de Services is voltooid. In sommige gevallen kan de validatie mislukken en wordt u gevraagd om de configuratie bij te werken. Als de validatie mislukt, selecteert u **bijwerken**en wacht u totdat de configuratie en verificatie voor de service is voltooid.
+
+    ![Scherm afbeelding van het dialoog venster met de knop bijwerken gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
 
     > [!NOTE]  
-    > Het updateproces gebruikt Ambari om te wijzigen van de configuratie van Hortonworks Sandbox wat er wordt verwacht door de Data Lake-tools voor Visual Studio.
+    > Het update proces maakt gebruik van Ambari om de configuratie van de Hortonworks-sandbox te wijzigen in wat er wordt verwacht door de Data Lake-hulpprogram ma's voor Visual Studio.
 
-6. Nadat de validatie is voltooid, schakelt u **voltooien** configuratie wilt voltooien.
-    ![Schermopname van dialoogvenster met de knop Voltooien gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect.png)
+6. Nadat de validatie is voltooid, selecteert u **volt ooien** om de configuratie te volt ooien.
+    ![Scherm afbeelding van het dialoog venster met de knop volt ooien gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect.png)
 
      >[!NOTE]  
-     > Het kan enkele minuten om te configureren en valideren van de services duren, afhankelijk van de snelheid van uw ontwikkelomgeving en de hoeveelheid geheugen toegewezen aan de virtuele machine.
+     > Afhankelijk van de snelheid van uw ontwikkel omgeving en de hoeveelheid geheugen die aan de virtuele machine is toegewezen, kan het enkele minuten duren om de services te configureren en valideren.
 
-Nadat u deze stappen te volgen, hebt u nu een **lokale HDInsight-cluster** vermelding in Server Explorer, onder de **HDInsight** sectie.
+Nadat u deze stappen hebt uitgevoerd, hebt u nu een **lokale HDInsight-cluster** vermelding in Server Explorer onder het gedeelte **HDInsight** .
 
 ## <a name="write-an-apache-hive-query"></a>Een Apache Hive-query schrijven
 
-Hive biedt een SQL-achtige querytaal (HiveQL) voor het werken met gestructureerde gegevens. Gebruik de volgende stappen uit om te leren hoe u on-demand-query's uitvoeren op het lokale cluster.
+Hive biedt een SQL-achtige query taal (HiveQL) voor het werken met gestructureerde gegevens. Gebruik de volgende stappen om te leren hoe u query's op aanvraag kunt uitvoeren op het lokale cluster.
 
-1. In **Server Explorer**, met de rechtermuisknop op de vermelding voor het lokale cluster die u eerder hebt toegevoegd, en selecteer vervolgens **een Hive-Query schrijven**.
+1. Klik in **Server Explorer**met de rechter muisknop op de vermelding voor het lokale cluster dat u eerder hebt toegevoegd en selecteer vervolgens **een Hive-query schrijven**.
 
-    ![Schermopname van de Server Explorer en schrijven naar een Hive-Query is gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/write-hive-query.png)
+    ![Scherm opname van Server Explorer, waarbij een Hive-query is gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/write-hive-query.png)
 
-    Er wordt een nieuw queryvenster geopend. Hier kunt u snel schrijven en verzenden van een query met het lokale cluster.
+    Er wordt een nieuw queryvenster geopend. Hier kunt u snel een query schrijven en verzenden naar het lokale cluster.
 
-2. Voer in het nieuwe queryvenster de volgende opdracht:
+2. Voer in het venster nieuwe query de volgende opdracht in:
 
         select count(*) from sample_08;
 
-    De query wilt uitvoeren, selecteert u **indienen** aan de bovenkant van het venster. Laat de andere waarden (**Batch** en servernaam) op de standaardwaarden.
+    Als u de query wilt uitvoeren, selecteert u **verzenden** boven aan het venster. Zorg dat de andere waarden (**batch** -en server naam) op de standaard waarden staan.
 
-    ![Schermafbeelding van de query-venster met de verzendknop gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/submit-hive.png)
+    ![Scherm afbeelding van query venster met de knop verzenden gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/submit-hive.png)
 
-    U kunt ook de vervolgkeuzelijst naast gebruiken **indienen** selecteren **Geavanceerd**. Geavanceerde opties kunt u extra opties te bieden bij het verzenden van de taak.
+    U kunt ook de vervolg keuzelijst naast **verzenden** gebruiken om **Geavanceerd**te selecteren. Met geavanceerde opties kunt u extra opties opgeven wanneer u de taak verzendt.
 
-    ![Schermafbeelding van Submit Script-dialoogvenster](./media/hdinsight-hadoop-emulator-visual-studio/advanced-hive.png)
+    ![Scherm afbeelding van het dialoog venster script indienen](./media/hdinsight-hadoop-emulator-visual-studio/advanced-hive.png)
 
-3. Nadat u de query hebt ingediend, wordt de taakstatus wordt weergegeven. Status van de taak geeft informatie weer over de taak terwijl deze wordt verwerkt door Hadoop. **Taakstatus** bevat informatie over de status van de taak. De status wordt regelmatig bijgewerkt of kunt u het vernieuwingspictogram op de status handmatig vernieuwen.
+3. Nadat u de query hebt verzonden, wordt de taak status weer gegeven. De taak status bevat informatie over de taak, zoals deze wordt verwerkt door Hadoop. **Taak status** geeft de status van de taak. De status wordt regel matig bijgewerkt of u kunt het vernieuwings pictogram gebruiken om de status hand matig te vernieuwen.
 
-    ![Schermafbeelding van de weergave van de taak in het dialoogvenster met de status van de taak is gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/job-state.png)
+    ![Scherm afbeelding van het dialoog venster taak weergave, met de taak status gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/job-state.png)
 
-    Na de **taakstatus** wordt gewijzigd in **voltooid**, een omgeleid Acyclic Graph (DAG) wordt weergegeven. In dit diagram beschrijft het uitvoeringspad die is bepaald door de Tez bij het verwerken van de Hive-query. Tez is de standaard-uitvoeringsengine voor Hive op het lokale cluster.
-
-    > [!NOTE]  
-    > Apache Tez is ook de standaardwaarde als u van HDInsight op basis van Linux-clusters gebruikmaakt. Het is niet de standaard op HDInsight op basis van Windows. Om deze te gebruiken, u moet de regel toevoegen `set hive.execution.engine = tez;` aan het begin van uw Hive-query.
-
-    Gebruik de **Taakuitvoer** koppeling om de uitvoer weer te geven. In dit geval is het 823, het aantal rijen in de tabel sample_08. U kunt diagnostische gegevens over de taak weergeven met behulp van de **taaklogboek** en **YARN-logboek downloaden** koppelingen.
-
-4. U kunt Hive-taken ook interactief uitvoeren met het wijzigen van de **Batch** veld **interactief**. Selecteer vervolgens **Execute**.
-
-    ![Schermafbeelding van interactieve uitvoeren met de knoppen en gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/interactive-query.png)
-
-    Een interactieve query streams het uitvoerlogboek voor gegenereerd tijdens de verwerking naar de **HiveServer2 uitvoer** venster.
+    Nadat de **taak status** is gewijzigd in **voltooid**, wordt een gerichte acyclische grafiek (dag) weer gegeven. Dit diagram beschrijft het pad voor uitvoering dat door TEZ is bepaald tijdens het verwerken van de Hive-query. TEZ is de standaard engine voor het uitvoeren van een component op het lokale cluster.
 
     > [!NOTE]  
-    > De informatie is hetzelfde die beschikbaar is in de **taaklogboek** koppelen nadat een taak is voltooid.
+    > Apache TEZ is ook de standaard instelling wanneer u gebruikmaakt van HDInsight-clusters op basis van Linux. Dit is niet de standaard waarde op HDInsight op basis van Windows. Als u deze wilt gebruiken, moet u de regel `set hive.execution.engine = tez;` toevoegen aan het begin van de Hive-query.
 
-    ![Schermafbeelding van het uitvoerlogboek](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output.png)
+    Gebruik de koppeling **taak uitvoer** om de uitvoer weer te geven. In dit geval is dit 823, het aantal rijen in de tabel sample_08. U kunt Diagnostische gegevens over de taak weer geven met behulp van het **taak logboek** en het downloaden van koppelingen tussen **garens** .
+
+4. U kunt Hive-taken ook interactief uitvoeren door het **batch** -veld te wijzigen in **Interactive**. Selecteer vervolgens **uitvoeren**.
+
+    ![Scherm opname van interactieve en uitvoer knoppen gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/interactive-query.png)
+
+    Met een interactieve query wordt het uitvoer logboek dat tijdens de verwerking is gegenereerd, gestreamd naar het **uitvoer venster HiveServer2** .
+
+    > [!NOTE]  
+    > De informatie is hetzelfde als die vanaf de koppeling van het **taak logboek** beschikbaar is nadat een taak is voltooid.
+
+    ![Scherm afbeelding van uitvoer logboek](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output.png)
 
 ## <a name="create-a-hive-project"></a>Een Hive-project maken
 
-U kunt ook een project met meerdere Hive-scripts maken. Een project gebruiken wanneer u met scripts gerelateerde of wilt opslaan van scripts in een versie van besturingssysteem.
+U kunt ook een project maken dat meerdere Hive-scripts bevat. Gebruik een project wanneer u gerelateerde scripts hebt of scripts wilt opslaan in een versie beheersysteem.
 
-1. Selecteer in Visual Studio, **bestand**, **nieuw**, en vervolgens **Project**.
+1. Selecteer in Visual Studio **File**, **New**en **project**.
 
-2. Vouw in de lijst met projecten **sjablonen**, vouw **Azure Data Lake**, en selecteer vervolgens **HIVE (HDInsight)** . Selecteer in de lijst met sjablonen **Hive voorbeeld**. Voer een naam en locatie, en selecteer vervolgens **OK**.
+2. Vouw in de lijst met projecten het item **sjablonen**uit, vouw **Azure data Lake**uit en selecteer vervolgens **Hive (HDInsight)** . Selecteer in de lijst met sjablonen Hive-voor **beeld**. Voer een naam en locatie in en selecteer **OK**.
 
-    ![Schermopname van nieuw Project-venster met Azure Data Lake, HIVE, Hive-voorbeeld en OK gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
+    ![Scherm afbeelding van het nieuwe project venster met Azure Data Lake, HIVE, Hive-voor beeld en OK gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
 
-De **Hive voorbeeld** -project bevat twee scripts **WebLogAnalysis.hql** en **SensorDataAnalysis.hql**. U kunt deze scripts indienen met behulp van dezelfde **indienen** knop aan de bovenkant van het venster.
+Het **Hive-voorbeeld** project bevat twee scripts: **WebLogAnalysis. HQL** en **SensorDataAnalysis. HQL**. U kunt deze scripts verzenden met behulp van dezelfde knop **verzenden** bovenaan het venster.
 
 ## <a name="create-an-apache-pig-project"></a>Een Apache Pig-project maken
 
-Hoewel Hive een SQL-achtige taal biedt voor het werken met gestructureerde gegevens, wordt Pig werkt door het uitvoeren van transformaties op gegevens. Pig biedt een taal (Pig Latin) waarmee u voor het ontwikkelen van een pijplijn van transformaties. Als u wilt Pig gebruiken met het lokale cluster, de volgende stappen uit:
+De component biedt een SQL-achtige taal voor het werken met gestructureerde gegevens en werkt met trans formaties voor gegevens. Varken biedt een taal (Latijn) waarmee u een pijp lijn van trans formaties kunt ontwikkelen. Als u Pig wilt gebruiken met het lokale cluster, voert u de volgende stappen uit:
 
-1. Open Visual Studio en selecteer **bestand**, **nieuw**, en vervolgens **Project**. Vouw in de lijst met projecten **sjablonen**, vouw **Azure Data Lake**, en selecteer vervolgens **Pig (HDInsight)** . Selecteer in de lijst met sjablonen **Pig toepassing**. Voer een naam en locatie, en selecteer vervolgens **OK**.
+1. Open Visual Studio en selecteer **bestand**, **Nieuw**en **project**. Vouw in de lijst met projecten het item **sjablonen**uit, vouw **Azure data Lake**uit en selecteer vervolgens **varken (HDInsight)** . Selecteer in de lijst met sjablonen de optie **varken Application**. Voer een naam en locatie in en selecteer **OK**.
 
-    ![Schermopname van nieuw Project-venster met Azure Data Lake, Pig, Pig-toepassing en OK gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/new-pig.png)
+    ![Scherm opname van het nieuwe project venster met Azure Data Lake, Pig, Pig-toepassing en OK gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/new-pig.png)
 
-2. Voer de volgende tekst als de inhoud van de **script.pig** -bestand dat is gemaakt met dit project.
+2. Voer de volgende tekst in als de inhoud van het bestand **script. Pig** dat met dit project is gemaakt.
 
         a = LOAD '/demo/data/Website/Website-Logs' AS (
             log_id:int,
@@ -147,57 +147,57 @@ Hoewel Hive een SQL-achtige taal biedt voor het werken met gestructureerde gegev
         c = GROUP b BY ip_address;
         DUMP c;
 
-    Hoe u de taken worden uitgevoerd terwijl de Pig met een andere taal dan Hive, consistent tussen beide talen, is via de **indienen** knop. Selecteer de vervolgkeuzelijst naast **indienen** wordt een dialoogvenster Geavanceerd verzenden voor Pig.
+    Omdat Pig gebruikmaakt van een andere taal dan Hive, is de manier waarop u de taken uitvoert, consistent tussen beide talen, met de knop **verzenden** . Als u de vervolg keuzelijst naast **verzenden** selecteert, wordt het dialoog venster Geavanceerd verzenden voor Pig weer gegeven.
 
-    ![Schermafbeelding van Submit Script-dialoogvenster](./media/hdinsight-hadoop-emulator-visual-studio/advanced-pig.png)
+    ![Scherm afbeelding van het dialoog venster voor het verzenden van scripts](./media/hdinsight-hadoop-emulator-visual-studio/advanced-pig.png)
 
-3. De taakstatus en uitvoer wordt ook weergegeven, gelijk zijn aan een Hive-query.
+3. De taak status en uitvoer worden ook weer gegeven, net als bij een Hive-query.
 
-    ![Schermafbeelding van een voltooide Pig-taak](./media/hdinsight-hadoop-emulator-visual-studio/completed-pig.png)
+    ![Scherm afbeelding van een voltooide Pig-taak](./media/hdinsight-hadoop-emulator-visual-studio/completed-pig.png)
 
-## <a name="view-jobs"></a>Taken weergeven
+## <a name="view-jobs"></a>Taken weer geven
 
-Data Lake-tools kunnen u eenvoudig informatie weergeven over taken die zijn uitgevoerd op Hadoop. Gebruik de volgende stappen uit om te zien van de taken die zijn uitgevoerd op het lokale cluster.
+Met Data Lake-hulpprogram ma's kunt u eenvoudig informatie bekijken over taken die zijn uitgevoerd op Hadoop. Gebruik de volgende stappen om de taken weer te geven die zijn uitgevoerd op het lokale cluster.
 
-1. Van **Server Explorer**, met de rechtermuisknop op het lokale cluster en selecteer vervolgens **taken weergeven**. Een lijst met taken die zijn verzonden naar het cluster wordt weergegeven.
+1. Klik vanuit **Server Explorer**met de rechter muisknop op het lokale cluster en selecteer vervolgens **taken weer geven**. Er wordt een lijst met taken weer gegeven die zijn verzonden naar het cluster.
 
-    ![Schermopname van Server Explorer met de weergave taken die zijn gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/view-jobs.png)
+    ![Scherm opname van Server Explorer, met gemarkeerde weergave taken](./media/hdinsight-hadoop-emulator-visual-studio/view-jobs.png)
 
-2. Selecteer in de lijst met taken, een om de taakdetails weer te geven.
+2. Selecteer in de lijst met taken één om de taak details weer te geven.
 
-    ![Schermopname van Job Browser, met een van de taken die zijn gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/view-job-details.png)
+    ![Scherm opname van de taak browser, met een van de gemarkeerde taken](./media/hdinsight-hadoop-emulator-visual-studio/view-job-details.png)
 
-    De weergegeven informatie is vergelijkbaar met wat u ziet na het uitvoeren van een query Hive of Pig, inclusief koppelingen naar de weergave van de uitvoer en logboekgegevens.
+    De informatie die wordt weer gegeven, is vergelijkbaar met wat u ziet nadat u een Hive-of Pig-query hebt uitgevoerd, inclusief koppelingen om de uitvoer-en logboek gegevens weer te geven.
 
-3. U kunt ook wijzigen en de taak hier opnieuw indienen.
+3. U kunt de taak ook wijzigen en opnieuw verzenden.
 
-## <a name="view-hive-databases"></a>Hive-databases weergeven
+## <a name="view-hive-databases"></a>Hive-data bases weer geven
 
-1. In **Server Explorer**, vouw de **lokale HDInsight-cluster** item, en vouw vervolgens **Hive-Databases**. De **standaard** en **xademo** databases op het lokale cluster worden weergegeven. Uitbreiden van een database, ziet u de tabellen in de database.
+1. Vouw in **Server Explorer**de vermelding **HDInsight Local cluster** uit en vouw vervolgens **Hive-data bases**uit. De **standaard** -en **xademo** -data bases op het lokale cluster worden weer gegeven. Als u een Data Base uitbreidt, worden de tabellen in de Data Base weer gegeven.
 
-    ![Schermafbeelding van de Server Explorer, met databases uitgevouwen](./media/hdinsight-hadoop-emulator-visual-studio/expanded-databases.png)
+    ![Scherm opname van Server Explorer, met uitgevouwen data bases](./media/hdinsight-hadoop-emulator-visual-studio/expanded-databases.png)
 
-2. Uitbreiden van een tabel, worden de kolommen voor die tabel weergegeven. Als u wilt snel de gegevens bekijken, met de rechtermuisknop op een tabel en selecteer **View Top 100 rijen**.
+2. Als u een tabel uitbreidt, worden de kolommen voor die tabel weer gegeven. Als u de gegevens snel wilt weer geven, klikt u met de rechter muisknop op een tabel en selecteert u **bovenste 100 rijen weer geven**.
 
-    ![Schermopname van Server Explorer met de tabel uitgevouwen en View Top 100 rijen geselecteerd](./media/hdinsight-hadoop-emulator-visual-studio/view-100.png)
+    ![Scherm opname van Server Explorer, waarbij de tabel is uitgevouwen en de bovenste 100 rijen weer geven geselecteerd](./media/hdinsight-hadoop-emulator-visual-studio/view-100.png)
 
-### <a name="database-and-table-properties"></a>Eigenschappen van de database en tabel
+### <a name="database-and-table-properties"></a>Data Base-en tabel eigenschappen
 
-U kunt de eigenschappen van een database of tabel weergeven. Selecteren **eigenschappen** worden details weergegeven voor het geselecteerde item in het eigenschappenvenster. Bijvoorbeeld, Zie de informatie die wordt weergegeven in de volgende schermafbeelding:
+U kunt de eigenschappen van een Data Base of tabel weer geven. Als u **Eigenschappen** selecteert, worden details weer gegeven voor het geselecteerde item in het venster Eigenschappen. Zie bijvoorbeeld de informatie in de volgende scherm afbeelding:
 
-![Schermafbeelding van eigenschappenvenster](./media/hdinsight-hadoop-emulator-visual-studio/properties.png)
+![Scherm opname van venster Eigenschappen](./media/hdinsight-hadoop-emulator-visual-studio/properties.png)
 
 ### <a name="create-a-table"></a>Een tabel maken
 
-Voor het maken van een tabel met de rechtermuisknop op een database en selecteer vervolgens **Create Table**.
+Als u een tabel wilt maken, klikt u met de rechter muisknop op een Data Base en selecteert u vervolgens **tabel maken**.
 
-![Schermopname van de Server Explorer met Create Table gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/create-table.png)
+![Scherm opname van Server Explorer, met de markering tabel maken gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/create-table.png)
 
-Vervolgens kunt u de tabel met behulp van een formulier maken. Aan de onderkant van de volgende schermafbeelding ziet u de onbewerkte HiveQL die wordt gebruikt om de tabel te maken.
+U kunt de tabel vervolgens maken met behulp van een formulier. Onder aan de volgende scherm afbeelding ziet u de onbewerkte HiveQL die wordt gebruikt om de tabel te maken.
 
-![Schermopname van het formulier dat wordt gebruikt om een tabel te maken](./media/hdinsight-hadoop-emulator-visual-studio/create-table-form.png)
+![Scherm afbeelding van het formulier dat wordt gebruikt om een tabel te maken](./media/hdinsight-hadoop-emulator-visual-studio/create-table-form.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Leren werken met de kabels van de Hortonworks Sandbox](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-* [Apache Hadoop-zelfstudie - aan de slag met HDP](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
+* [De kabels van de Hortonworks-sandbox leren](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [Apache Hadoop zelf studie-aan de slag met HDP](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

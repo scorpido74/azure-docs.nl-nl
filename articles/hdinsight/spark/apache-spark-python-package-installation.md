@@ -1,91 +1,92 @@
 ---
-title: Script action - pakketten voor Python installeren met Jupyter op Azure HDInsight
-description: Stapsgewijze instructies over het gebruik van scriptactie Jupyter-notebooks met HDInsight Spark-clusters configureren om te gebruiken externe python-pakketten.
+title: Script actie-Python-pakketten installeren met Jupyter in azure HDInsight
+description: Stapsgewijze instructies voor het gebruik van script actie voor het configureren van Jupyter-notebooks die beschikbaar zijn met HDInsight Spark-clusters voor het gebruik van externe Python-pakketten.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: c07326cc3a4334f1873eef2dc23da05156a93577
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da871a1fed0663c5654ebcfd61f4189bf2267026
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574662"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814059"
 ---
-# <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Scriptactie gebruiken voor het installeren van externe Python-pakketten voor Jupyter-notebooks in Apache Spark-clusters in HDInsight
-> [!div class="op_single_selector"]
-> * [Met behulp van Magic-pakket voor cellen](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [Met behulp van scriptacties](apache-spark-python-package-installation.md)
+# <a name="script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-on-hdinsight"></a>Script actie voor het installeren van externe Python-pakketten voor Jupyter-notebooks in Apache Spark in HDInsight
 
-Meer informatie over het gebruik scriptacties om te configureren van een [Apache Spark](https://spark.apache.org/) -cluster in HDInsight gebruiken voor externe, door de community geleverde **python** pakketten die niet zijn opgenomen out-of-the-box in het cluster.
+> [!div class="op_single_selector"]
+> * [Cell Magic gebruiken](apache-spark-jupyter-notebook-use-external-packages.md)
+> * [Script actie gebruiken](apache-spark-python-package-installation.md)
+
+Meer informatie over het gebruik van script acties voor het configureren van een [Apache Spark](https://spark.apache.org/) cluster op HDInsight voor het gebruik van externe, door de Community bijgedragen **python** -pakketten die niet zijn opgenomen in het cluster.
 
 > [!NOTE]  
-> U kunt ook een Jupyter-notebook configureren met behulp van `%%configure` Magic-pakket naar externe pakketten gebruiken. Zie voor instructies [externe pakketten gebruiken met Jupyter-notebooks in Apache Spark-clusters in HDInsight](apache-spark-jupyter-notebook-use-external-packages.md).
+> U kunt ook een Jupyter-notebook configureren door `%%configure` gebruik te maken van Magic om externe pakketten te gebruiken. Zie voor instructies [externe pakketten met Jupyter-notebooks gebruiken in Apache Spark clusters op HDInsight](apache-spark-jupyter-notebook-use-external-packages.md).
 
-U kunt zoeken naar de [package index](https://pypi.python.org/pypi) voor de volledige lijst met pakketten die beschikbaar zijn. U kunt ook een lijst met beschikbare pakketten ophalen uit andere bronnen. U kunt bijvoorbeeld pakketten beschikbaar gesteld via installeren [conda-forge](https://conda-forge.org/feedstocks/).
+U kunt de [pakket index](https://pypi.python.org/pypi) doorzoeken voor de volledige lijst met pakketten die beschikbaar zijn. U kunt ook een lijst met beschik bare pakketten uit andere bronnen ophalen. U kunt bijvoorbeeld pakketten installeren die beschikbaar worden gesteld via [Conda-vervalsing](https://conda-forge.org/feedstocks/).
 
-In dit artikel leert u hoe u voor het installeren van de [TensorFlow](https://www.tensorflow.org/) verpakt met Script Action op het cluster en deze via de Jupyter-notebook gebruiken als voorbeeld.
+In dit artikel leert u hoe u het [tensor flow](https://www.tensorflow.org/) -pakket kunt installeren met behulp van script acties op uw cluster en dit te gebruiken via de Jupyter-notebook als voor beeld.
 
 ## <a name="prerequisites"></a>Vereisten
-U hebt het volgende:
+U moet het volgende hebben:
 
 * Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure HDInsight](apache-spark-jupyter-spark-sql.md) voor instructies.
 
    > [!NOTE]  
-   > Als u een Spark-cluster in HDInsight Linux niet al hebt, kunt u scriptacties uitvoeren tijdens het maken van een cluster. Ga naar de documentatie op [over het gebruik van aangepaste scriptacties](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+   > Als u nog geen Spark-cluster in HDInsight Linux hebt, kunt u script acties uitvoeren tijdens het maken van het cluster. Raadpleeg de documentatie over [het gebruik van aangepaste script acties](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
    
-## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Ondersteuning voor open source-software die wordt gebruikt op HDInsight-clusters
+## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Ondersteuning voor open-source software die wordt gebruikt in HDInsight-clusters
 
-De Microsoft Azure HDInsight-service maakt gebruik van een ecosysteem van open-source-technologieën die zijn gevormd rond Apache Hadoop. Microsoft Azure biedt een algemeen niveau van ondersteuning voor open-source technologieën. Zie voor meer informatie de **reikwijdte van ondersteuning** sectie van de [ondersteuning Veelgestelde vragen over Azure-website](https://azure.microsoft.com/support/faq/). De HDInsight-service biedt een extra beveiligingsniveau van ondersteuning voor ingebouwde onderdelen.
+De Microsoft Azure HDInsight-service gebruikt een ecosysteem van open-source technologieën die zijn gevormd rond Apache Hadoop. Microsoft Azure biedt een algemeen ondersteunings niveau voor open-source technologieën. Zie de sectie **support Scope** van de [website met veelgestelde vragen over Azure-ondersteuning](https://azure.microsoft.com/support/faq/)voor meer informatie. De HDInsight-service biedt een extra ondersteunings niveau voor ingebouwde componenten.
 
-Er zijn twee typen van open source-componenten die beschikbaar in de HDInsight-service zijn:
+Er zijn twee soorten open source-onderdelen die beschikbaar zijn in de HDInsight-service:
 
-* **Ingebouwde onderdelen** -deze onderdelen vooraf zijn geïnstalleerd op HDInsight-clusters en bieden de kernfunctionaliteit van het cluster. Bijvoorbeeld, behoren Apache Hadoop YARN ResourceManager, de taal in Apache Hive-query (HiveQL) en de Mahout-bibliotheek tot deze categorie. Een volledige lijst van clusteronderdelen van het is beschikbaar in [wat is er nieuw in het Apache Hadoop-clusterversies geleverd door HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
-* **Aangepaste onderdelen** -u, als een gebruiker van het cluster kunt installeren of gebruiken in uw werkbelasting een onderdeel is beschikbaar in de community of door u gemaakte.
+* **Ingebouwde onderdelen** : deze onderdelen zijn vooraf geïnstalleerd op HDInsight-clusters en bieden kern functionaliteit van het cluster. Bijvoorbeeld Apache Hadoop GARENs Resource Manager, de Apache Hive query language (HiveQL) en de mahout-bibliotheek behoren tot deze categorie. Een volledige lijst met cluster onderdelen is beschikbaar in [Wat is er nieuw in de Apache Hadoop cluster versies van HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
+* **Aangepaste onderdelen** : u kunt als gebruiker van het cluster elk onderdeel dat beschikbaar is in de Community installeren of gebruiken, of door u gemaakt.
 
 > [!IMPORTANT]   
-> Onderdelen van het HDInsight-cluster worden volledig ondersteund. Microsoft Support helpt bij het opsporen en oplossen van problemen met betrekking tot deze onderdelen.
+> Onderdelen die worden meegeleverd met het HDInsight-cluster, worden volledig ondersteund. Microsoft Ondersteuning helpt bij het isoleren en oplossen van problemen met betrekking tot deze onderdelen.
 >
-> Aangepaste onderdelen commercieel redelijke ondersteuning om het probleem verder oplossen met u te helpen te ontvangen. Microsoft-ondersteuning kan mogelijk zijn om het probleem te verhelpen of ze kunnen vragen, moet u contact opnemen met beschikbare kanalen voor de open source-technologieën waar uitgebreide expertise voor deze technologie kan worden gevonden. Er zijn bijvoorbeeld veel communitysites die kunnen worden gebruikt, zoals: [MSDN-forum voor HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Ook Apache-projecten project-sites hebben op [ https://apache.org ](https://apache.org), bijvoorbeeld: [Hadoop](https://hadoop.apache.org/).
+> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Micro soft ondersteuning kan het probleem mogelijk oplossen of u wordt gevraagd beschik bare kanalen te betrekken voor de open source-technologieën waar diep gaande expertise voor die technologie wordt gevonden. Er zijn bijvoorbeeld veel community-sites die kunnen worden gebruikt, zoals: [MSDN-forum voor HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Ook Apache-projecten hebben project sites [https://apache.org](https://apache.org)op, bijvoorbeeld: [Hadoop](https://hadoop.apache.org/).
 
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Externe pakketten gebruiken met Jupyter-notebooks
 
-1. Uit de [Azure-portal](https://portal.azure.com/), gaat u naar het cluster.  
+1. Navigeer vanuit het [Azure Portal](https://portal.azure.com/)naar uw cluster.  
 
-2. Met uw cluster is geselecteerd, in het linkerdeelvenster onder **instellingen**, selecteer **scriptacties**.
+2. Als uw cluster is geselecteerd, selecteert u in het linkerdeel venster onder **instellingen**de optie **script acties**.
 
-3. Selecteer **+ nieuwe indienen**.
+3. Selecteer **+ Nieuw verzenden**.
 
-4. Voer de volgende waarden voor de **scriptactie verzenden** venster:  
+4. Voer de volgende waarden in voor het venster **actie script verzenden** :  
 
 
     |Parameter | Value |
     |---|---|
-    |Scripttype | Selecteer **: aangepaste** uit de vervolgkeuzelijst.|
+    |Scripttype | Selecteer **-aangepast** in de vervolg keuzelijst.|
     |Name |Voer `tensorflow` in het tekstvak in.|
     |Bash-script-URI |Voer `https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh` in het tekstvak in. |
-    |Knooppunttype(n) | Selecteer de **Head**, en **Worker** selectievakjes. |
+    |Knooppunt type (n) | Schakel de selectie vakjes **Head**en **worker** in. |
 
-    `tensorflowinstall.sh` bevat de volgende opdrachten:
+    `tensorflowinstall.sh`bevat de volgende opdrachten:
 
     ```bash
     #!/usr/bin/env bash
     /usr/bin/anaconda/bin/conda install --yes tensorflow
     ```
 
-5. Selecteer **Maken**.  Ga naar de documentatie op [over het gebruik van aangepaste scriptacties](../hdinsight-hadoop-customize-cluster-linux.md).
+5. Selecteer **Maken**.  Raadpleeg de documentatie over [het gebruik van aangepaste script acties](../hdinsight-hadoop-customize-cluster-linux.md).
 
-6. Wacht tot het script te voltooien.  De **scriptacties** deelvenster wordt status **nieuwe scriptacties kunnen worden verzonden nadat de huidige Clusterbewerking is voltooid** terwijl het script wordt uitgevoerd.  Een voortgangsbalk kan worden bekeken via de UI Ambari **bewerkingen op de achtergrond** venster.
+6. Wacht totdat het script is voltooid.  In het deel venster **script acties** worden **nieuwe script acties vermeld, die kunnen worden verzonden nadat de huidige cluster bewerking is voltooid** terwijl het script wordt uitgevoerd.  Een voortgangs balk kan worden weer gegeven vanuit het venster Ambari gebruikers interface- **achtergrond bewerkingen** .
 
-7. Open een PySpark-Jupyter-notebook.  Zie [maken van een Jupyter-notebook in Spark HDInsight](./apache-spark-jupyter-notebook-kernels.md#create-a-jupyter-notebook-on-spark-hdinsight) voor stappen.
+7. Open een PySpark Jupyter-notebook.  Zie [een Jupyter-notebook maken in Spark HDInsight](./apache-spark-jupyter-notebook-kernels.md#create-a-jupyter-notebook-on-spark-hdinsight) voor instructies.
 
     ![Een nieuwe Jupyter-notebook maken](./media/apache-spark-python-package-installation/hdinsight-spark-create-notebook.png "Een nieuwe Jupyter-notebook maken")
 
-8. U wordt nu `import tensorflow` en een hello world-voorbeeld uitvoeren. Voer de volgende code in:
+8. U gaat nu `import tensorflow` een Hello World-voor beeld uitvoeren. Voer de volgende code in:
 
     ```
     import tensorflow as tf
@@ -94,32 +95,32 @@ Er zijn twee typen van open source-componenten die beschikbaar in de HDInsight-s
     print(sess.run(hello))
     ```
 
-    Het resultaat ziet er zo uit:
+    Het resultaat ziet er als volgt uit:
     
-    ![Uitvoering van code TensorFlow](./media/apache-spark-python-package-installation/execution.png "TensorFlow uitvoeren van code")
+    ![Tensor flow code-uitvoering](./media/apache-spark-python-package-installation/execution.png "Tensor flow-code uitvoeren")
 
 > [!NOTE]  
-> Er zijn twee python-installaties in het cluster. Spark gebruiken de Anaconda python-installatie zich bevindt in `/usr/bin/anaconda/bin` en standaard op de omgeving voor Python 2.7. Aan de pakketten voor Python 3.x en installeren in de kernel PySpark3, gebruikt u het pad naar de `conda` uitvoerbare voor die omgeving en gebruik de `-n` parameter opgeven voor de omgeving. Bijvoorbeeld, de opdracht `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`, installeert de `ggplot` pakket met de Python 3.5-omgeving via het `conda-forge` kanaal.
+> Er zijn twee python-installaties in het cluster. Spark maakt gebruik van de Anaconda python-installatie `/usr/bin/anaconda/bin` die zich bevindt in en is standaard ingesteld op de python 2,7-omgeving. Als u python 3. x wilt gebruiken en pakketten in de PySpark3-kernel wilt installeren, gebruikt `conda` u het pad naar het uitvoer bare `-n` bestand voor die omgeving en gebruikt u de para meter om de omgeving op te geven. Met de opdracht `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`wordt bijvoorbeeld het `ggplot` pakket geïnstalleerd op de python 3,5-omgeving met behulp van het `conda-forge` kanaal.
 
 ## <a name="seealso"></a>Zie ook
-* [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
+* [Krijgt Apache Spark in azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenario's
-* [Apache Spark met BI: Interactieve gegevensanalyses met behulp van Spark in HDInsight met BI-hulpprogramma's uitvoeren](apache-spark-use-bi-tools.md)
-* [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouwtemperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor de resultaten van voedingsinspectie voorspellen](apache-spark-machine-learning-mllib-ipython.md)
-* [Websitelogboekanalyse met Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
+* [Apache Spark met BI: Interactieve gegevens analyse uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
+* [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](apache-spark-machine-learning-mllib-ipython.md)
+* [Analyse van website logboeken met Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Toepassingen maken en uitvoeren
 * [Een zelfstandige toepassing maken met behulp van Scala](apache-spark-create-standalone-application.md)
 * [Apache Livy gebruiken om taken op afstand uit te voeren in een Apache Spark-cluster](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Tools en uitbreidingen
-* [Externe pakketten gebruiken met Jupyter-notebooks in Apache Spark-clusters in HDInsight](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Externe pakketten met Jupyter-notebooks gebruiken in Apache Spark clusters in HDInsight](apache-spark-jupyter-notebook-use-external-packages.md)
 * [De invoegtoepassing HDInsight Tools for IntelliJ IDEA gebruiken om Spark Scala-toepassingen te maken en in te dienen](apache-spark-intellij-tool-plugin.md)
-* [De invoegtoepassing HDInsight Tools for IntelliJ IDEA gebruiken om op te sporen Apache Spark-toepassingen op afstand](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [De invoeg toepassing HDInsight tools for IntelliJ-idee gebruiken om op afstand fouten in Apache Spark toepassingen op te sporen](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Apache Zeppelin-notebooks gebruiken met een Apache Spark-cluster in HDInsight](apache-spark-zeppelin-notebook.md)
-* [Beschikbare kernels voor Jupyter-notebook in Apache Spark-cluster voor HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Kernels die beschikbaar zijn voor Jupyter notebook in Apache Spark cluster voor HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter op uw computer installeren en verbinding maken met een HDInsight Spark-cluster](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Resources beheren

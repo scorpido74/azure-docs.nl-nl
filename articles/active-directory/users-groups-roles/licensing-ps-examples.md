@@ -1,6 +1,6 @@
 ---
-title: Voorbeelden van PowerShell en Graph voor groepen - Azure Active Directory-licentieverlening | Microsoft Docs
-description: PowerShell en Graph-voorbeelden en scenario's voor Azure Active Directory-groep op basis van licentieverlening
+title: Power shell en Graph-voor beelden voor licentie groepen-Azure Active Directory | Microsoft Docs
+description: Power shell + Graph-voor beelden en-scenario's voor Azure Active Directory op groep gebaseerde licentie verlening
 services: active-directory
 keywords: Azure AD-licenties
 documentationcenter: ''
@@ -14,26 +14,26 @@ ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f95c0596d7a2b55867cdb7ed9355006500e89242
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2e6ac548a4b7599857b116e8059acc51c21fdf4e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065500"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812253"
 ---
-# <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>PowerShell en Graph-voorbeelden voor Groepslicenties in Azure AD
+# <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Power shell en Graph-voor beelden voor op groepen gebaseerde licentie verlening in azure AD
 
-Volledige functionaliteit voor Groepslicenties is beschikbaar via de [Azure-portal](https://portal.azure.com), en ondersteuning voor PowerShell en Microsoft Graph is momenteel beperkt tot alleen-lezen bewerkingen. Er zijn echter enkele nuttige taken die kunnen worden uitgevoerd met behulp van de bestaande [MSOnline PowerShell-cmdlets](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) en Microsoft Graph. Dit document bevat voorbeelden van wat er mogelijk is.
+De volledige functionaliteit voor op groepen gebaseerde licentie verlening is beschikbaar via de [Azure Portal](https://portal.azure.com), en de ondersteuning voor Power shell en Microsoft Graph is beperkt tot alleen-lezen bewerkingen. Er zijn echter enkele nuttige taken die kunnen worden uitgevoerd met behulp van de bestaande [MSOnline Power shell-cmdlets](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) en Microsoft Graph. In dit document vindt u voor beelden van wat er mogelijk is.
 
 > [!NOTE]
-> Voordat u cmdlets uitvoert, zorg ervoor dat u eerst verbinding met uw organisatie, door het uitvoeren van de `Connect-MsolService`  cmdlet.
+> Voordat u begint met het uitvoeren van cmdlets, moet u eerst verbinding maken met uw organisatie door `Connect-MsolService`de  cmdlet uit te voeren.
 
 > [!WARNING]
-> Deze code wordt geleverd als een voorbeeld voor demonstratiedoeleinden te gebruiken. Als u van plan bent te gebruiken in uw omgeving, kunt u overwegen eerst testen op kleine schaal of in een afzonderlijke testtenant. U moet de code om te voldoen aan de specifieke behoeften van uw omgeving aanpassen.
+> Deze code wordt als voor beeld gegeven voor demonstratie doeleinden. Als u het wilt gebruiken in uw omgeving, kunt u overwegen deze eerst op een kleine schaal te testen of in een afzonderlijke test Tenant. Mogelijk moet u de code aanpassen om te voldoen aan de specifieke behoeften van uw omgeving.
 
-## <a name="view-product-licenses-assigned-to-a-group"></a>Weergave-productlicenties die is toegewezen aan een groep
+## <a name="view-product-licenses-assigned-to-a-group"></a>Product licenties weer geven die aan een groep zijn toegewezen
 
-De [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) cmdlet kan worden gebruikt voor het ophalen van het groepsobject en controleer de *licenties* eigenschap: geeft een lijst van alle productlicenties momenteel toegewezen aan de groep.
+De cmdlet [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) kan worden gebruikt om het groeps object op te halen en de eigenschap *licenties* te controleren: hier worden alle product licenties vermeld die momenteel aan de groep zijn toegewezen.
 
 ```powershell
 (Get-MsolGroup -ObjectId 99c4216a-56de-42c4-a4ac-e411cd8c7c41).Licenses
@@ -48,12 +48,12 @@ EMSPREMIUM
 ```
 
 > [!NOTE]
-> De gegevens zijn beperkt tot informatie over het product (SKU). Het is niet mogelijk om de service-plannen uitgeschakeld in de licentie weer te geven.
+> De gegevens zijn beperkt tot product gegevens (SKU). Het is niet mogelijk om de service abonnementen weer te geven die zijn uitgeschakeld in de licentie.
 
-Gebruik het volgende voorbeeld de dezelfde gegevens ophalen uit Microsoft Graph.
+Gebruik het volgende voor beeld om dezelfde gegevens op te halen uit Microsoft Graph.
 
 ```
-GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41$select=assignedLicenses
+GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41?$select=assignedLicenses
 ```
 Uitvoer:
 ```
@@ -78,13 +78,13 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="get-all-groups-with-licenses"></a>Ophalen van alle groepen met licenties
+## <a name="get-all-groups-with-licenses"></a>Alle groepen met licenties ophalen
 
-Hier vindt u alle groepen met een licentie is toegewezen door het uitvoeren van de volgende opdracht uit:
+U kunt alle groepen met een licentie die is toegewezen, vinden door de volgende opdracht uit te voeren:
 ```powershell
 Get-MsolGroup | Where {$_.Licenses}
 ```
-Meer informatie u kunt weergeven over welke producten zijn toegewezen:
+Meer informatie kan worden weer gegeven over welke producten worden toegewezen:
 ```powershell
 Get-MsolGroup | Where {$_.Licenses} | Select `
     ObjectId, `
@@ -102,8 +102,8 @@ cf41f428-3b45-490b-b69f-a349c8a4c38e PowerBi - Licensed users POWER\_BI\_STANDAR
 c2652d63-9161-439b-b74e-fcd8228a7074 EMSandOffice             {ENTERPRISEPREMIUM,EMSPREMIUM}
 ```
 
-## <a name="get-statistics-for-groups-with-licenses"></a>Statistieken voor groepen met licenties ophalen
-U kunt rapporten van basisstatistieken voor groepen met licenties. Het script in het volgende voorbeeld wordt een lijst met het aantal totale aantal gebruikers, het aantal gebruikers met licenties die zijn al toegewezen door de groep en de telling van gebruikers voor wie kunnen geen licenties van de groep worden toegewezen.
+## <a name="get-statistics-for-groups-with-licenses"></a>Statistieken ophalen voor groepen met licenties
+U kunt basis statistieken voor groepen met licenties rapporteren. In het volgende voor beeld wordt in het script het totale aantal gebruikers vermeld, het aantal gebruikers met licenties die al door de groep zijn toegewezen, en het aantal gebruikers voor wie de licenties niet kunnen worden toegewezen door de groep.
 
 ```powershell
 #get all groups with licenses
@@ -161,7 +161,7 @@ Access to Offi... 11151866-5419-4d93-9141-0603bbf78b42 STANDARDPACK             
 ```
 
 ## <a name="get-all-groups-with-license-errors"></a>Alle groepen met licentie fouten ophalen
-Om groepen te vinden die bevatten sommige gebruikers voor wie de licenties niet kunnen worden toegewezen:
+Groepen zoeken die een aantal gebruikers bevatten voor wie de licenties niet konden worden toegewezen:
 ```powershell
 Get-MsolGroup -HasLicenseErrorsOnly $true
 ```
@@ -171,7 +171,7 @@ ObjectId                             DisplayName             GroupType Descripti
 --------                             -----------             --------- -----------
 11151866-5419-4d93-9141-0603bbf78b42 Access to Office 365 E1 Security  Users who should have E1 licenses
 ```
-De volgende gebruik dezelfde gegevens ophalen uit Microsoft Graph
+Gebruik de volgende om dezelfde gegevens op te halen uit Microsoft Graph
 ```
 GET https://graph.microsoft.com/v1.0/groups?$filter=hasMembersWithLicenseErrors+eq+true
 ```
@@ -199,9 +199,9 @@ HTTP/1.1 200 OK
 ```
 
 
-## <a name="get-all-users-with-license-errors-in-a-group"></a>Alle gebruikers met licentie fouten ophalen voor een groep
+## <a name="get-all-users-with-license-errors-in-a-group"></a>Alle gebruikers met licentie fouten in een groep ophalen
 
-Een groep met enkele fouten met betrekking tot licentie worden gegeven, kunt u nu weergeven alle gebruikers die worden beïnvloed door deze fouten. Een gebruiker kan fouten van andere groepen te hebben. Echter, in dit voorbeeld dat we resultaten alleen op fouten die relevant zijn voor de betreffende groep beperken door het controleren van de **ReferencedObjectId** eigenschap van elk **IndirectLicenseError** vermelding op de gebruiker.
+Aan de hand van een groep die enkele licentie fouten bevat, kunt u nu alle gebruikers weer geven waarop deze fouten betrekking hebben. Een gebruiker kan ook fouten van andere groepen bevatten. In dit voor beeld beperken we echter alleen de resultaten van fouten die relevant zijn voor de betreffende groep door de eigenschap **ReferencedObjectId** van elke **IndirectLicenseError** -vermelding voor de gebruiker te controleren.
 
 ```powershell
 #a sample group with errors
@@ -227,7 +227,7 @@ ObjectId                             DisplayName      License Error
 6d325baf-22b7-46fa-a2fc-a2500613ca15 Catherine Gibson MutuallyExclusiveViolation
 ```
 
-Gebruik de volgende dezelfde gegevens ophalen uit Microsoft Graph:
+Gebruik de volgende om dezelfde gegevens op te halen uit Microsoft Graph:
 
 ```powershell
 GET https://graph.microsoft.com/v1.0/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors
@@ -251,12 +251,12 @@ HTTP/1.1 200 OK
 
 ```
 
-## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>Alle gebruikers met licentie fouten in de gehele tenant ophalen
+## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>Alle gebruikers met licentie fouten in de volledige Tenant ophalen
 
-Het volgende script kan worden gebruikt om op te halen van alle gebruikers met licentie-fouten van een of meer groepen. Het script wordt één rij per gebruiker per licentiefout, zodat u kunt de bron van elke fout duidelijk identificeren afgedrukt.
+Het volgende script kan worden gebruikt om alle gebruikers op te halen die licentie fouten van een of meer groepen hebben. Het script drukt één rij per gebruiker, per licentie fout, waarmee u de bron van elke fout duidelijk kunt identificeren.
 
 > [!NOTE]
-> Met dit script worden alle gebruikers in de tenant, die misschien niet optimaal voor grote tenants opgesomd.
+> Met dit script worden alle gebruikers in de Tenant geïnventariseerd, wat mogelijk niet optimaal is voor grote tenants.
 
 ```powershell
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
@@ -282,7 +282,7 @@ Catherine Gibson 6d325baf-22b7-46fa-a2fc-a2500613ca15 11151866-5419-4d93-9141-06
 Drew Fogarty     f2af28fc-db0b-4909-873d-ddd2ab1fd58c 1ebd5028-6092-41d0-9668-129a3c471332 MutuallyExclusiveViolation
 ```
 
-Hier volgt een andere versie van het script dat wordt alleen in groepen met licentie fouten gezocht. Deze mogelijk meer worden geoptimaliseerd voor scenario's waarin u verwacht dat bepaalde groepen met problemen hebben.
+Hier volgt een andere versie van het script dat alleen zoekt via groepen die licentie fouten bevatten. Het is mogelijk geoptimaliseerd voor scenario's waarbij u slechts enkele groepen met problemen verwacht.
 
 ```powershell
 $groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
@@ -297,11 +297,11 @@ $groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
     } 
 ``` 
 
-## <a name="check-if-user-license-is-assigned-directly-or-inherited-from-a-group"></a>Controleer of de gebruikerslicentie is rechtstreeks toegewezen of van een groep overgenomen
+## <a name="check-if-user-license-is-assigned-directly-or-inherited-from-a-group"></a>Controleren of de gebruikers licentie rechtstreeks is toegewezen of overgenomen van een groep
 
-Voor een object is het mogelijk om te controleren of een bepaald product-licentie is toegewezen uit een groep of als het rechtstreeks is toegewezen.
+Voor een gebruikers object is het mogelijk om te controleren of een bepaalde product licentie is toegewezen vanuit een groep of dat deze rechtstreeks is toegewezen.
 
-De onderstaande twee Voorbeeldfuncties kunnen worden gebruikt voor het analyseren van het type van de toewijzing aan een afzonderlijke gebruiker:
+De twee onderstaande voorbeeld functies kunnen worden gebruikt om het type toewijzing voor een afzonderlijke gebruiker te analyseren:
 
 ```powershell
 #Returns TRUE if the user has the license assigned directly
@@ -364,7 +364,7 @@ function UserHasLicenseAssignedFromGroup
 }
 ```
 
-Dit script wordt uitgevoerd die functies op elke gebruiker in de tenant, met behulp van de SKU-ID als invoer: in dit voorbeeld zijn we geïnteresseerd in de licentie voor *Enterprise Mobility + Security*, die in onze tenant wordt weergegeven met de ID  *Contoso:EMS*:
+Met dit script worden deze functies uitgevoerd op elke gebruiker in de Tenant, met behulp van de SKU-ID als invoer: in dit voor beeld zijn we geïnteresseerd in de licentie voor *Enterprise Mobility + Security*, die in onze Tenant wordt weer gegeven met de id *contoso: EMS*:
 
 ```powershell
 #the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your tenant
@@ -388,7 +388,7 @@ ObjectId                             SkuId       AssignedDirectly AssignedFromGr
 240622ac-b9b8-4d50-94e2-dad19a3bf4b5 contoso:EMS             True              True
 ```
 
-Grafiek beschikt niet over een eenvoudige manier om het resultaat weer te geven, maar dit kunt u zien door deze API:
+Graph heeft geen eenvoudige manier om het resultaat weer te geven, maar kan worden weer gegeven vanuit deze API:
 
 ```powershell
 GET https://graph.microsoft.com/v1.0/users/e61ff361-5baf-41f0-b2fd-380a6a5e406a?$select=licenseAssignmentStates
@@ -443,11 +443,11 @@ HTTP/1.1 200 OK
 
 ```
 
-## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>Verwijder direct licenties voor gebruikers met Groepslicenties
+## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>Directe licenties voor gebruikers met groeps licenties verwijderen
 
-Het doel van dit script is Verwijder onnodige direct licenties van gebruikers die al de dezelfde licentie overnemen van een groep. bijvoorbeeld, als onderdeel van een [overstappen naar Groepslicenties](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal).
+Het doel van dit script is om onnodige directe licenties te verwijderen van gebruikers die al dezelfde licentie van een groep overnemen. bijvoorbeeld als onderdeel van een [overgang naar groeps-gebaseerde licentie verlening](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal).
 > [!NOTE]
-> Het is belangrijk voor het eerst valideren dat de directe licenties moeten worden verwijderd niet de mogelijkheid meer servicefunctionaliteit dan de overgenomen licenties. Verwijderen van de directe licentie kan anders toegang tot services en gegevens voor gebruikers uitschakelen. Het is momenteel niet mogelijk om te controleren via PowerShell welke services zijn ingeschakeld via directe overgenomen licenties voor Visual Studio. In het script geven we het minimale niveau van services die we weten dat worden overgenomen van groepen en controleer tegen om ervoor te zorgen dat gebruikers niet onverwacht toegang tot services verliezen.
+> Het is belang rijk om eerst te valideren dat de direct te verwijderen licenties geen meer service functionaliteit bieden dan de overgenomen licenties. Anders kan het verwijderen van de rechtstreekse licentie de toegang tot services en gegevens voor gebruikers uitschakelen. Het is momenteel niet mogelijk om via Power shell te controleren welke services zijn ingeschakeld via overgenomen licenties versus direct. In het script geven we het minimale service niveau aan dat wordt overgenomen van groepen en om ervoor te zorgen dat gebruikers niet onverwacht de toegang tot services verliezen.
 
 ```powershell
 #BEGIN: Helper functions used by the script
@@ -617,13 +617,13 @@ UserId                               OperationResult
 aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipping.
 ```
 > [!NOTE]
-> Werk de waarden voor de variabelen `$skuId` en `$groupId`  die wordt benaderd voor het verwijderen van licenties voor Direct aan de hand van uw testomgeving voordat u het bovenstaande script is uitgevoerd. 
+> Werk de waarden voor de variabelen `$skuId` bij en `$groupId`  die worden bedoeld voor het verwijderen van directe licenties conform uw test omgeving voordat u het bovenstaande script uitvoert. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de functieset voor Licentiebeheer via groepen, de volgende artikelen:
+Zie de volgende artikelen voor meer informatie over de functies die zijn ingesteld voor licentie beheer via groepen:
 
-* [Wat is licentieverlening in Azure Active Directory op basis van groep?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+* [Wat is op een groep gebaseerde licentie verlening in Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 * [Licenties toewijzen aan een groep in Azure Active Directory](licensing-groups-assign.md)
 * [Licentieproblemen voor een groep vaststellen en oplossen in Azure Active Directory](licensing-groups-resolve-problems.md)
 * [Gebruikers met een afzonderlijke licentie migreren naar licenties op basis van groepen in Azure Active Directory](licensing-groups-migrate-users.md)

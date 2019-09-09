@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 386c2fa23e8d01f696ef3cf6078bac5fcec58f05
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 4e13e6f86e9ddc494378e35f85962658d3fe5b25
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050136"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806496"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>Quickstart: Een mogelijkheidsprofiel gebruiken om een IoT Plug en Play-apparaat te maken
 
@@ -49,6 +49,9 @@ Als u zich aanmeldt met een micro soft-werk-of school account, of uw micro soft-
 ## <a name="prepare-an-iot-hub"></a>Een IoT-hub voorbereiden
 
 U hebt ook een Azure IoT hub in uw Azure-abonnement nodig om deze Quick Start te volt ooien. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+
+> [!NOTE]
+> Tijdens de open bare preview zijn IoT-Plug en Play-functies alleen beschikbaar voor IoT-hubs die zijn gemaakt in de regio's **VS-centraal**, **Europa-Noord**en **Japan-Oost** .
 
 Voeg de Microsoft Azure IoT-extensie voor Azure CLI toe:
 
@@ -208,7 +211,7 @@ Als u de apparaatcode met **Azure IOT Explorer**wilt valideren, moet u de bestan
 
 1. Vouw de interface met de ID **urn: azureiot: EnvironmentalSensor: 1** uit om de IOT Plug en Play-primitieven-eigenschappen, opdrachten en telemetrie weer te geven.
 
-1. Selecteer de telemetrie-pagina om de telemetriegegevens weer te geven die het apparaat verzendt.
+1. Selecteer de **telemetrie** -pagina om de telemetriegegevens weer te geven die het apparaat verzendt.
 
 1. Selecteer de pagina **Eigenschappen (niet-schrijfbaar)** om de niet-Beschrijf bare eigenschappen weer te geven die door het apparaat worden gerapporteerd.
 

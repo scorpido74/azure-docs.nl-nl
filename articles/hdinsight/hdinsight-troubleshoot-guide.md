@@ -6,12 +6,12 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
-ms.openlocfilehash: 096a8f221313b9dfa3e0fe804a10fc12246177ff
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 6c0dc61cac96037406b165d7ebee693bfe709c5d
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575723"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811743"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>Problemen oplossen met Azure HDInsight
 
@@ -32,3 +32,13 @@ ms.locfileid: "69575723"
 | Logboeken en dumps | - [Toegang tot Apache Hadoop GARENs van toepassings Logboeken in Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)<br>- [Heap-dumps inschakelen voor Apache Hadoop Services in Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)<br>- [HDInsight-logboeken analyseren](hdinsight-debug-jobs.md)|
 | Fouten | - [WebHCat-fouten begrijpen en oplossen](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>- [Apache Hive-instellingen voor het oplossen van OutofMemory-fout](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
 | Hulpprogramma's | - [Apache Hive query's optimaliseren](hdinsight-hadoop-optimize-hive-query.md)<br>- [HDInsight IntelliJ-hulp programma](./spark/apache-spark-intellij-tool-plugin.md)<br>- [Het hulp programma HDInsight-eclips](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [HDInsight VSCode-hulp programma](hdinsight-for-vscode.md)<br>- [HDInsight Visual Studio-hulp programma](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |
+
+## <a name="next-steps"></a>Volgende stappen
+
+Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
+
+* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
+
+* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

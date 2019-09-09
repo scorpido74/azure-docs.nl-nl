@@ -1,9 +1,9 @@
 ---
-title: Rollen in PIM - Azure Active Directory kunt u niet beheren | Microsoft Docs
-description: Beschrijving van de rollen die u niet in Azure AD Privileged Identity Management (PIM beheren).
+title: Rollen die u niet kunt beheren in PIM-Azure Active Directory | Microsoft Docs
+description: Hierin worden de functies beschreven die u niet kunt beheren in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,38 +11,38 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 01/18/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa5fb632ee5fd9c18bde7443e81fe2ef6e5335e4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d66d433d9de537358777e54e3c7d5489c25c849b
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60437270"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804082"
 ---
-# <a name="roles-you-cannot-manage-in-pim"></a>Rollen die in PIM kunt u niet beheren
+# <a name="roles-you-cannot-manage-in-pim"></a>Rollen die u niet kunt beheren in PIM
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kunt u voor het beheren van alle [Azure AD-rollen](../users-groups-roles/directory-assign-admin-roles.md) en alle [Azure-resourcerollen](../../role-based-access-control/built-in-roles.md). Deze rollen bevatten ook uw aangepaste rollen die zijn gekoppeld aan uw beheergroepen, abonnementen, resourcegroepen en resources. Er zijn echter enkele functies die u niet kunt beheren. Dit artikel beschrijft de rollen die in PIM kunt u niet beheren.
+Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kunt u alle [Azure AD-rollen](../users-groups-roles/directory-assign-admin-roles.md) en alle [Azure-resource rollen](../../role-based-access-control/built-in-roles.md)beheren. Deze rollen omvatten ook uw aangepaste rollen die zijn gekoppeld aan uw beheer groepen, abonnementen, resource groepen en resources. Er zijn echter enkele rollen die u niet kunt beheren. In dit artikel worden de functies beschreven die u niet in PIM kunt beheren.
 
-## <a name="classic-subscription-administrator-roles"></a>Klassieke abonnementsbeheerdersrollen
+## <a name="classic-subscription-administrator-roles"></a>Klassieke abonnementsbeheerrollen
 
-U kunt de volgende klassiek abonnement beheerdersrollen in PIM niet beheren:
+U kunt de volgende klassieke abonnements beheerders rollen niet beheren in PIM:
 
 - Accountbeheerder
 - Servicebeheerder
 - Medebeheerder
 
-Zie voor meer informatie over de beheerdersrollen klassiek abonnement [klassiek abonnement beheerder functies, Azure RBAC-rollen en Azure AD-beheerdersrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+Zie voor meer informatie over de beheerders rollen van klassieke abonnementen [klassieke abonnements beheerders rollen, Azure RBAC-rollen en Azure AD-beheerders rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="what-about-office-365-admin-roles"></a>Hoe zit het met Office 365-beheerdersrollen?
+## <a name="what-about-office-365-admin-roles"></a>Hoe zit het met Office 365-beheerders rollen?
 
-Rollen in Exchange Online of SharePoint Online, met uitzondering van de beheerder van Exchange en SharePoint-beheerder, worden niet weergegeven in Azure AD en dus kunnen niet worden beheerd in PIM. Zie voor meer informatie over deze Office 365-services, [Office 365-beheerdersrollen](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles).
+Rollen in Exchange Online of share point online, met uitzonde ring van Exchange-beheerder en share point-beheerder, worden niet weer gegeven in azure AD en kunnen dus niet worden beheerd in PIM. Zie voor meer informatie over deze Office 365-Services [office 365-beheerders rollen](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles).
 
 > [!NOTE]
-> SharePoint-beheerder heeft beheerderstoegang tot SharePoint Online via de SharePoint Online-beheercentrum, en bijna alle taken kunt uitvoeren in SharePoint Online. In aanmerking komende gebruikers kunnen met behulp van deze rol in SharePoint na het activeren van in PIM vertragingen optreden.
+> Share point-beheerder heeft beheerders toegang tot share point online via het share point online-beheer centrum en kan bijna elke taak uitvoeren in share point online. In aanmerking komende gebruikers kunnen vertragingen ondervinden bij het gebruik van deze rol in share point na het activeren van PIM.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure AD-rollen in PIM toewijzen](pim-how-to-add-role-to-user.md)
-- [Azure-resource-rollen in PIM toewijzen](pim-resource-roles-assign-roles.md)
+- [Azure AD-rollen toewijzen in PIM](pim-how-to-add-role-to-user.md)
+- [Azure-resource rollen toewijzen in PIM](pim-resource-roles-assign-roles.md)

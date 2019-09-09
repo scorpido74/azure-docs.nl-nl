@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7b569454696717913c325581ca1f00479a371984
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 8bd1bee82941953e96eed1defa04c9fddef3e293
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183185"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70809214"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Veelgestelde vragen
 
@@ -124,9 +124,9 @@ Nee, Azure AD B2C biedt geen ondersteuning voor dezelfde set rapporten als Azure
 
 Ja.  Meer informatie over [taal aanpassing](active-directory-b2c-reference-language-customization.md), die in open bare preview is. We bieden vertalingen voor 36 talen en u kunt alle teken reeksen aanpassen aan uw behoeften.
 
-### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Kan ik mijn eigen Url's gebruiken op mijn registratie-en aanmeldings pagina's die worden bediend door Azure AD B2C? Bijvoorbeeld, kan ik de URL wijzigen van login.microsoftonline.com in login.contoso.com?
+### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Kan ik mijn eigen Url's gebruiken op mijn registratie-en aanmeldings pagina's die worden bediend door Azure AD B2C? Bijvoorbeeld, kan ik de URL wijzigen van contoso.b2clogin.com in login.contoso.com?
 
-Momenteel niet. Deze functie is op ons plan. Als u uw domein verifieert op het tabblad **domeinen** in de Azure Portal dit doel niet wordt bereikt.
+Momenteel niet. Deze functie is op ons plan. Als u uw domein verifieert op het tabblad **domeinen** in de Azure Portal dit doel niet wordt bereikt. Met b2clogin.com bieden we echter een [neutraal domein op het hoogste niveau](b2clogin.md), waardoor de externe weer gave kan worden geïmplementeerd zonder de vermelding van micro soft.
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Mijn Azure AD B2C Tenant Hoe kan ik verwijderen?
 

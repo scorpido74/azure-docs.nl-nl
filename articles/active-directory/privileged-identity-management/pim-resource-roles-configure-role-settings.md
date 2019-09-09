@@ -1,9 +1,9 @@
 ---
-title: Azure-resource rolinstellingen in PIM - Azure Active Directory configureren | Microsoft Docs
-description: Informatie over het configureren van instellingen voor de sitesysteemrol Azure-resource in Azure AD Privileged Identity Management (PIM).
+title: Instellingen voor Azure-resource rollen configureren in PIM-Azure Active Directory | Microsoft Docs
+description: Meer informatie over het configureren van instellingen voor Azure-resource rollen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,112 +12,112 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6da92ccd50707e676a1f5d583fe22ae8b3d8b73
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 88645d07ff213b0b7a56f2b081f0aaed01fd2929
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476322"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804197"
 ---
-# <a name="configure-azure-resource-role-settings-in-pim"></a>Azure-resource rolinstellingen in PIM configureren
+# <a name="configure-azure-resource-role-settings-in-pim"></a>Instellingen voor Azure-resource rollen configureren in PIM
 
-Wanneer u Azure-resource serverfunctie-instellingen configureert, definieert u de standaardinstellingen die worden toegepast op Azure-resource-roltoewijzingen in Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Gebruik de volgende procedures voor het configureren van de werkstroom voor goedkeuring en opgeven wie kan goedkeuren of weigeren.
+Wanneer u instellingen voor Azure-resource functies configureert, definieert u de standaard instellingen die worden toegepast op toewijzingen van Azure-resource rollen in Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Gebruik de volgende procedures om de goedkeurings werk stroom te configureren en op te geven wie aanvragen kan goed keuren of weigeren.
 
 ## <a name="open-role-settings"></a>Rolinstellingen openen
 
-Volg deze stappen om de instellingen voor de rol van een Azure-resource te openen.
+Volg deze stappen om de instellingen voor een Azure-resource functie te openen.
 
-1. Aanmelden bij [Azure-portal](https://portal.azure.com/) met een gebruiker die lid is van de [beheerder met bevoorrechte rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) rol.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met een gebruiker die lid is van de beheerdersrol [privileged Role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 
-1. Open **Azure AD Privileged Identity Management**.
+1. Open **Azure AD privileged Identity Management**.
 
 1. Klik op **Azure-resources**.
 
-1. Klik op de resource die u beheren wilt, zoals een abonnement of beheergroep-groep.
+1. Klik op de resource die u wilt beheren, zoals een abonnement of beheer groep.
 
-    ![Pagina weergegeven van de resources die kunnen worden beheerd met Azure-resources](./media/pim-resource-roles-configure-role-settings/resources-list.png)
+    ![Pagina met Azure-resources met resources die kunnen worden beheerd](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
 1. Klik op **rolinstellingen**.
 
-    ![Rolinstellingen pagina aanbieding Azure-resourcerollen](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Pagina rolinstellingen met een lijst met Azure-resource rollen](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
-1. Klik op de rol waarvan u de instellingen u wilt configureren.
+1. Klik op de rol waarvan u de instellingen wilt configureren.
 
-    ![Pagina rol instelling details weergeven van verschillende instellingen voor toewijzing en activering](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![Pagina Details van de functie-instelling met een lijst met verschillende toewijzings-en activerings instellingen](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
-1. Klik op **bewerken** om de rol instellingen deelvenster te openen.
+1. Klik op **bewerken** om het deel venster functie-instellingen te openen.
 
-    ![Pagina van de functie-instellingen met opties voor het bijwerken van de toewijzing en activering instellingen bewerken](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![Pagina Rolinstellingen bewerken met opties voor het bijwerken van de toewijzings-en activerings instellingen](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
 
-    Voor elke rol in het deelvenster van de instelling rol zijn er enkele instellingen die u kunt configureren.
+    In het instellingen deel venster voor elke rol zijn er verschillende instellingen die u kunt configureren.
 
-## <a name="assignment-duration"></a>Duur van de toewijzing
+## <a name="assignment-duration"></a>Toewijzings duur
 
-U kunt kiezen uit twee opties voor toewijzing duur voor elk toewijzingstype (in aanmerking komende en actieve) bij het configureren van instellingen voor een rol. Deze opties worden de standaard maximale duur voor wanneer een lid is toegewezen aan de rollen in PIM.
+U kunt kiezen uit twee opties voor de toewijzings duur voor elk toewijzings type (in aanmerking komend en actief) wanneer u instellingen voor een rol configureert. Deze opties worden de standaard maximale duur wanneer een lid wordt toegewezen aan de rol in PIM.
 
-U kunt een van deze **in aanmerking komende** duur toewijzingsopties:
-
-| | |
-| --- | --- |
-| **Permanent in aanmerking komende toewijzing toestaan** | Resource-beheerders kunnen permanent in aanmerking komende lidmaatschap toewijzen. |
-| **In aanmerking komende toewijzing na verlopen** | Resource-beheerders kunnen vereisen dat voor dat alle in aanmerking komende toewijzingen van een opgegeven begin- en datum hebben. |
-
-En u kunt een van deze **active** duur toewijzingsopties:
+U kunt kiezen uit een van **deze opties** voor de gewenste duur van de toewijzing:
 
 | | |
 | --- | --- |
-| **Permanente actieve toewijzing toestaan** | Resource-beheerders kunnen permanent actief MSDN toewijzen. |
-| **Actieve toewijzing na verlopen** | Resource-beheerders kunnen vereisen dat voor dat alle actieve toewijzingen van een opgegeven begin- en datum hebben. |
+| **Permanente toewijzing in aanmerking komend toestaan** | Resource beheerders kunnen permanent in aanmerking komend lidmaatschap toewijzen. |
+| **In aanmerking komende toewijzing laten verlopen na** | Resource beheerders kunnen vereisen dat alle in aanmerking komende toewijzingen een opgegeven begin-en eind datum hebben. |
+
+En u kunt een van deze **actieve** toewijzings duur opties kiezen:
+
+| | |
+| --- | --- |
+| **Permanente actieve toewijzing toestaan** | Resource beheerders kunnen permanent actief lidmaatschap toewijzen. |
+| **Actieve toewijzing laten verlopen na** | Resource beheerders kunnen vereisen dat alle actieve toewijzingen een opgegeven begin-en eind datum hebben. |
 
 > [!NOTE] 
-> Alle toewijzingen van met een opgegeven datum kunnen worden vernieuwd door beheerders van de resource. Bovendien leden Self-service aanvragen om te kunnen initiëren [verlengen of vernieuwen van roltoewijzingen](pim-resource-roles-renew-extend.md).
+> Alle toewijzingen met een opgegeven eind datum kunnen worden vernieuwd door resource beheerders. Leden kunnen ook selfservice aanvragen initiëren om roltoewijzingen uit te [breiden of te vernieuwen](pim-resource-roles-renew-extend.md).
 
-## <a name="require-multi-factor-authentication"></a>Meervoudige verificatie vereisen
+## <a name="require-multi-factor-authentication"></a>Multi-factor Authentication vereisen
 
-PIM biedt optionele afdwinging van Azure multi-factor Authentication (MFA) voor twee verschillende scenario's.
+PIM biedt een optionele afdwinging van Azure Multi-Factor Authentication (MFA) voor twee verschillende scenario's.
 
-### <a name="require-multi-factor-authentication-on-active-assignment"></a>Meervoudige verificatie vereisen bij actieve toewijzing
+### <a name="require-multi-factor-authentication-on-active-assignment"></a>Multi-Factor Authentication vereisen voor actieve toewijzing
 
-In sommige gevallen is het raadzaam om toe te wijzen een lid aan een rol voor een korte periode (bijvoorbeeld één dag). In dit geval hoeft ze niet de toegewezen leden aan de aanvraag voor activering. In dit scenario kan geen PIM MFA afdwingen wanneer het lid maakt gebruik van hun roltoewijzing, omdat ze al actief zijn in de rol vanaf het moment dat ze zijn toegewezen.
+In sommige gevallen wilt u mogelijk een lid toewijzen aan een rol voor een korte duur (bijvoorbeeld één dag). In dit geval zijn de toegewezen leden niet nodig om activering aan te vragen. In dit scenario kan PIM geen MFA afdwingen wanneer het lid gebruik maakt van de roltoewijzing, omdat ze al actief zijn in de rol vanaf het moment dat ze worden toegewezen.
 
-Om ervoor te zorgen dat de beheerder van de resource die voldoen aan de toewijzing is wie ze beweren te zijn, kunt u MFA afdwingen op actieve toewijzing door het controleren van de **multi-factor Authentication vereisen bij actieve toewijzing** vak.
+Als u er zeker van wilt zijn dat de resource beheerder die aan de toewijzing voldoet, weet wie ze zijn, kunt u MFA afdwingen voor actieve toewijzing door het selectie vakje **vereisen multi-factor Authentication op actieve toewijzing** in te scha kelen.
 
-### <a name="require-multi-factor-authentication-on-activation"></a>Meervoudige verificatie vereisen bij activering
+### <a name="require-multi-factor-authentication-on-activation"></a>Multi-Factor Authentication vereisen bij activering
 
-U kunt vereisen dat in aanmerking komende leden van een rol om uit te voeren van MFA voor ze kunnen activeren. Dit proces zorgt ervoor dat de gebruiker die vraagt om de activering is wie ze beweren te zijn met redelijke zekerheid. Afdwingen van deze optie worden beveiligd op kritieke resources in situaties wanneer het gebruikersaccount dat mogelijk is aangetast.
+U kunt vereisen dat in aanmerking komende leden van een rol MFA uitvoeren voordat ze kunnen activeren. Dit proces zorgt ervoor dat de gebruiker die de activering aanvraagt, een redelijke zekerheid krijgt. Het afdwingen van deze optie beschermt kritieke resources in situaties waarin het gebruikers account mogelijk is aangetast.
 
-Om te vereisen dat een in aanmerking komend lid om uit te voeren van MFA voor activering, Controleer de **overeenkomende multi-factor Authentication bij activering** vak.
+Als u wilt dat een in aanmerking komend lid verplicht is MFA uit te voeren vóór activering, schakelt u het selectie vakje **multi-factor Authentication vereisen bij activering** in.
 
-Zie voor meer informatie, [multi-factor authentication (MFA) en PIM](pim-how-to-require-mfa.md).
+Zie [multi-factor Authentication (MFA) en PIM](pim-how-to-require-mfa.md)voor meer informatie.
 
 ## <a name="activation-maximum-duration"></a>Maximale activeringsduur
 
-Gebruik de **maximale activeringsduur** schuifregelaar om in te stellen de maximale tijd in uren, die een rol actief blijft voordat het verloopt. Deze waarde kan liggen tussen 1 en 24 uur.
+Gebruik de schuif regelaar **maximale duur activering** om de maximum tijd in uren in te stellen dat een rol actief blijft voordat deze verloopt. Deze waarde kan tussen 1 en 24 uur liggen.
 
 ## <a name="require-justification"></a>Reden vereisen
 
-U kunt vereisen dat leden een reden op actieve toewijzing of wanneer ze activeren invoeren. Om te vereisen dat reden, Controleer de **reden vereisen bij actieve toewijzing** vak of de **reden vereisen bij activering** vak.
+U kunt vereisen dat leden een reden voor een actieve toewijzing invoeren of wanneer ze worden geactiveerd. Als u dit wilt doen, schakelt u het selectie vakje **uitvulling vereist op actieve toewijzing** of het vakje **uitvulling vereisen bij activering** in.
 
-## <a name="require-approval-to-activate"></a>Goedkeuring vereisen voor activeren
+## <a name="require-approval-to-activate"></a>Goedkeuring vereisen om deze rol te activeren
 
-Als u wilt de goedkeuring van een rol wilt activeren, volgt u deze stappen.
+Als u wilt dat goed keuring vereist is om een rol te activeren, voert u de volgende stappen uit.
 
-1. Controleer de **goedkeuring vereisen voor het activeren** selectievakje.
+1. Controleer het selectie vakje **goed keuring vereisen om te activeren** .
 
-1. Klik op **fiatteurs selecteren** Selecteer een lid of een groep om deelvenster te openen.
+1. Klik op **fiatteurs selecteren** om het deel venster lid of groep selecteren te openen.
 
-    ![Selecteer een lid of een groep deelvenster fiatteurs selecteren](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+    ![Een lid of groeps deel venster selecteren voor het selecteren van goed keurders](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. Selecteer ten minste één lid of de groep en klik vervolgens op **Selecteer**. U kunt een willekeurige combinatie van leden en groepen toevoegen. U moet ten minste één goedkeurder selecteren. Er zijn geen Standaard fiatteurs.
+1. Selecteer ten minste één lid of groep en klik vervolgens op **selecteren**. U kunt elke wille keurige combi natie van leden en groepen toevoegen. U moet ten minste één fiatteur selecteren. Er zijn geen standaard fiatteurs.
 
-    Kies de gewenste opties wordt weergegeven in de lijst met geselecteerde goedkeurders.
+    Uw selecties worden weer gegeven in de lijst met geselecteerde goed keurders.
 
-1. Nadat u uw al uw functie-instellingen hebt opgegeven, klikt u op **Update** uw wijzigingen op te slaan.
+1. Wanneer u de instellingen van uw rol hebt opgegeven, klikt u op **bijwerken** om uw wijzigingen op te slaan.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure-resource-rollen in PIM toewijzen](pim-resource-roles-assign-roles.md)
-- [Beveiligingswaarschuwingen voor Azure resource-rollen in PIM configureren](pim-resource-roles-configure-alerts.md)
+- [Azure-resource rollen toewijzen in PIM](pim-resource-roles-assign-roles.md)
+- [Beveiligings waarschuwingen configureren voor Azure-resource rollen in PIM](pim-resource-roles-configure-alerts.md)

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/30/2019
-ms.openlocfilehash: 65a75bc3a2e7ab2361ee8ae53d11ba1604c1d1ef
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 09/06/2019
+ms.openlocfilehash: a80e1d0e4aa243d46efa79173af3fc5d774eb46f
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208356"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806609"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 
@@ -191,6 +191,9 @@ Als uw toepassing gebruikmaakt van een beheerd exemplaar als gegevenslaag, volgt
 
   Om ervoor te zorgen dat een niet-onderbroken connectiviteit met het primaire exemplaar na een failover wordt gegarandeerd, moeten de primaire en secundaire exemplaren zich in dezelfde DNS-zone bevindt. Hiermee wordt gegarandeerd dat hetzelfde multi-Domain (SAN)-certificaat kan worden gebruikt voor het verifiëren van de client verbindingen met een van de twee exemplaren in de failovergroep. Wanneer uw toepassing gereed is voor productie-implementatie, maakt u een secundair exemplaar in een andere regio en zorgt u ervoor dat de DNS-zone wordt gedeeld met het primaire exemplaar. U kunt dit doen door een `DNS Zone Partner` optionele para meter op te geven met behulp van de Azure Portal, Power shell of de rest API. 
 
+> [!IMPORTANT]
+> Het eerste exemplaar dat in het subnet wordt gemaakt, bepaalt de DNS-zone voor alle volgende instanties in hetzelfde subnet. Dit betekent dat twee exemplaren van hetzelfde subnet geen deel kunnen uitmaken van verschillende DNS-zones.   
+
   Zie [een secundaire beheerde instantie maken](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance)voor meer informatie over het maken van het secundaire exemplaar in dezelfde DNS-zone als het primaire exemplaar.
 
 - **Replicatie verkeer tussen twee instanties inschakelen**
@@ -237,6 +240,10 @@ Als uw toepassing gebruikmaakt van een beheerd exemplaar als gegevenslaag, volgt
 
   > [!IMPORTANT]
   > Gebruik hand matige failover van groep om Primaries terug te zetten naar de oorspronkelijke locatie. Wanneer de storing die de failover veroorzaakte, wordt verholpen, kunt u de primaire data bases naar de oorspronkelijke locatie verplaatsen. Als u dit wilt doen, moet u de hand matige failover van de groep initiëren.
+
+- **Bekende beperkingen van failover-groepen erkennen**
+
+  Het wijzigen van de naam van de data base en het wijzigen van exemplaren worden niet ondersteund voor instanties in een failovergroep. U moet de failovergroep tijdelijk verwijderen om deze acties te kunnen uitvoeren.
 
 ## <a name="failover-groups-and-network-security"></a>Failover-groepen en netwerk beveiliging
 
@@ -316,7 +323,7 @@ Zie Point-in-time [herstel (PITR)](sql-database-recovery-using-backups.md#point-
 
 ## <a name="programmatically-managing-failover-groups"></a>Programmatisch beheer van failover-groepen
 
-Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-replicatie ook programmatisch worden beheerd met behulp van Azure PowerShell en de REST API. De volgende tabellen bevatten een beschrijving van de beschik bare opdrachten. Actieve geo-replicatie bevat een set Azure Resource Manager Api's voor beheer, met inbegrip van de [Azure SQL database-rest API](https://docs.microsoft.com/rest/api/sql/) en [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)-cmdlets. Deze Api's vereisen het gebruik van resource groepen en bieden beveiliging op basis van rollen (RBAC). Zie [Access Control op basis van rollen](../role-based-access-control/overview.md)voor meer informatie over het implementeren van toegangs rollen.
+Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-replicatie ook programmatisch worden beheerd met behulp van Azure PowerShell en de REST API. De volgende tabellen bevatten een beschrijving van de beschik bare opdrachten. Actieve geo-replicatie bevat een set Azure Resource Manager Api's voor beheer, met inbegrip van de [Azure SQL database-rest API](https://docs.microsoft.com/rest/api/sql/) en [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/overview). Deze Api's vereisen het gebruik van resource groepen en bieden beveiliging op basis van rollen (RBAC). Zie [Access Control op basis van rollen](../role-based-access-control/overview.md)voor meer informatie over het implementeren van toegangs rollen.
 
 ### <a name="powershell-manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>PowerShell: SQL database failover beheren met afzonderlijke data bases en elastische Pools
 

@@ -1,5 +1,5 @@
 ---
-title: Vooruitbetalen voor Azure SQL Database vCores om geld te besparen | Microsoft Docs
+title: Bespaar kosten voor Azure SQL Database vCores | Microsoft Docs
 description: Meer informatie over het kopen van Azure SQL Database gereserveerde capaciteit om uw reken kosten op te slaan.
 services: sql-database
 ms.service: sql-database
@@ -10,22 +10,22 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 08/02/2019
-ms.openlocfilehash: 61b646ca1ec5a4826ac6418c1b80b88a89266012
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.date: 08/29/2019
+ms.openlocfilehash: 5ab5481a89f7bb9c74133487b01879b00b7def32
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972553"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806590"
 ---
-# <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Vooruitbetalen voor het SQL Database Compute-resources met Azure SQL Database gereserveerde capaciteit
+# <a name="save-costs-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Bespaar kosten voor SQL Database Compute-resources met Azure SQL Database gereserveerde capaciteit
 
-Bespaar geld met Azure SQL Database door vooraf te betalen voor reken resources vergeleken met de prijzen voor betalen per gebruik. Met Azure SQL Database gereserveerde capaciteit maakt u vooraf een toezeg ging voor SQL Database gedurende een periode van één of drie jaar om een aanzienlijke korting op de reken kosten te krijgen. Als u SQL Database gereserveerde capaciteit wilt kopen, moet u de Azure-regio, het implementatie type, de prestatie-laag en de periode opgeven.
+Bespaar geld met Azure SQL Database door door te gaan naar een reserve ring voor reken resources vergeleken met de prijzen voor betalen per gebruik. Met Azure SQL Database gereserveerde capaciteit neemt u een toezeg ging voor SQL Database gebruik gedurende een periode van één of drie jaar om een aanzienlijke korting op de reken kosten te krijgen. Als u SQL Database gereserveerde capaciteit wilt kopen, moet u de Azure-regio, het implementatie type, de prestatie-laag en de periode opgeven.
 
 
-U hoeft de reserve ring niet toe te wijzen aan specifieke SQL Database instanties (afzonderlijke data bases, elastische Pools of beheerde exemplaren). Overeenkomende SQL Database-exemplaren die al worden uitgevoerd of die nieuw zijn geïmplementeerd, krijgen automatisch het voor deel. Als u een reserve ring aanschaft, betaalt u de reken kosten vooraf voor een periode van één of drie jaar. Zodra u een reserve ring koopt, worden de kosten voor de SQL Database berekeningen die overeenkomen met de reserverings kenmerken niet meer in rekening gebracht tegen de betalen naar gebruik-tarieven. Een reserve ring geldt niet voor software-, netwerk-of opslag kosten die zijn gekoppeld aan het SQL Database exemplaar. Aan het einde van de reserverings termijn verloopt het factuur voordeel en worden de SQL-data bases gefactureerd op basis van de betalen naar gebruik-prijs. Reserve ringen worden niet automatisch vernieuwd. Voor prijs informatie raadpleegt u de [SQL database gereserveerde capaciteits aanbieding](https://azure.microsoft.com/pricing/details/sql-database/managed/).
+U hoeft de reserve ring niet toe te wijzen aan specifieke SQL Database instanties (afzonderlijke data bases, elastische Pools of beheerde exemplaren). Overeenkomende SQL Database-exemplaren die al worden uitgevoerd of die nieuw zijn geïmplementeerd, krijgen automatisch het voor deel. Door een reserve ring te kopen, moet u het gebruik van de reken kosten voor een periode van één of drie jaar door voeren. Zodra u een reserve ring koopt, worden de kosten voor de SQL Database berekeningen die overeenkomen met de reserverings kenmerken niet meer in rekening gebracht tegen de betalen naar gebruik-tarieven. Een reserve ring geldt niet voor software-, netwerk-of opslag kosten die zijn gekoppeld aan het SQL Database exemplaar. Aan het einde van de reserverings termijn verloopt het factuur voordeel en worden de SQL-data bases gefactureerd op basis van de betalen naar gebruik-prijs. Reserve ringen worden niet automatisch vernieuwd. Voor prijs informatie raadpleegt u de [SQL database gereserveerde capaciteits aanbieding](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
-U kunt Azure SQL Database gereserveerde capaciteit kopen in de [Azure Portal](https://portal.azure.com). SQL Database gereserveerde capaciteit kopen:
+U kunt Azure SQL Database gereserveerde capaciteit kopen in de [Azure Portal](https://portal.azure.com). Betaal voor de reserve ring [vóór of met maandelijkse betalingen](../billing/billing-monthly-payments-reservations.md). SQL Database gereserveerde capaciteit kopen:
 
 - U moet de rol van eigenaar zijn voor minstens één bedrijf of een afzonderlijk abonnement met betalen per gebruik-tarieven.
 - Voor ondernemings abonnementen moet u **gereserveerde instanties toevoegen** inschakelen in de [EA-Portal](https://ea.azure.com). Als deze instelling is uitgeschakeld, moet u een EA-beheerder zijn voor het abonnement.
@@ -90,6 +90,6 @@ Raadpleeg de volgende artikelen voor meer informatie over Azure Reservations:
 - [Wat zijn Azure Reservations?](../billing/billing-save-compute-costs-reservations.md)
 - [Azure-reserveringen beheren](../billing/billing-manage-reserved-vm-instance.md)
 - [Azure Reservations korting begrijpen](../billing/billing-understand-reservation-charges.md)
-- [Het gebruik van de reserve ring begrijpen voor uw abonnement voor betalen naar gebruik](../billing/billing-understand-reserved-instance-usage.md)
-- [Het gebruik van de reserve ring begrijpen voor uw Enter prise-inschrijving](../billing/billing-understand-reserved-instance-usage-ea.md)
+- [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](../billing/billing-understand-reserved-instance-usage.md)
+- [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](../billing/billing-understand-reserved-instance-usage-ea.md)
 - [Azure Reservations in het Partner Center-programma van de Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)

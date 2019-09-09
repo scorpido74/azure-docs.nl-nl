@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: hrasheed
-ms.openlocfilehash: 28f30270ab0a6c057ee583ccebc2a8540980c6cc
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: f5052d7e35c3d1c81a3d958bd6e340b9a6a5a244
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442173"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810693"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Gebruikers machtigen voor Apache Ambari-weergaven
 
@@ -28,7 +28,7 @@ Als u dit nog niet hebt gedaan, volgt u [deze instructies](./domain-joined/apach
 
 ## <a name="access-the-ambari-management-page"></a>Toegang tot de Ambari-beheer pagina
 
-Als u naar de **Ambari-beheer pagina** van de [Apache AMBARI](hdinsight-hadoop-manage-ambari.md)-webgebruikersinterface wilt **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** gaan, bladert u naar. Voer de gebruikers naam en het wacht woord in van de Cluster beheerder die u hebt gedefinieerd bij het maken van het cluster. Selecteer vervolgens in het Ambari-dash board de optie **Ambari beheren** onder het menu **beheerder** :
+Als u naar de **Ambari-beheer pagina** van de [Apache AMBARI-webgebruikersinterface](hdinsight-hadoop-manage-ambari.md)wilt **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** gaan, bladert u naar. Voer de gebruikers naam en het wacht woord in van de Cluster beheerder die u hebt gedefinieerd bij het maken van het cluster. Selecteer vervolgens in het Ambari-dash board de optie **Ambari beheren** onder het menu **beheerder** :
 
 ![Ambari beheren](./media/hdinsight-authorize-users-to-ambari/manage-ambari.png)
 
@@ -95,9 +95,9 @@ Als u rollen wilt beheren, gaat u naar de **pagina beheer van Ambari**en selecte
 
 ![Koppeling naar menu rollen](./media/hdinsight-authorize-users-to-ambari/roles-link.png)
 
-Als u de lijst met machtigingen wilt zien die aan elke rol zijn gegeven, klikt u op het blauwe vraag teken naast de **tabelkop tabel op** de pagina rollen.
+Als u de lijst met machtigingen wilt zien die aan elke rol zijn gegeven, klikt u op het blauwe vraag teken naast de **tabelkop tabel op de pagina rollen.**
 
-![Koppeling naar menu rollen](./media/hdinsight-authorize-users-to-ambari/roles-permissions.png)
+![Koppelings machtigingen menu rollen](./media/hdinsight-authorize-users-to-ambari/roles-permissions.png "Koppelings machtigingen menu rollen")
 
 Op deze pagina zijn er twee verschillende weer gaven die u kunt gebruiken voor het beheren van rollen voor gebruikers en groepen: Blok en lijst.
 

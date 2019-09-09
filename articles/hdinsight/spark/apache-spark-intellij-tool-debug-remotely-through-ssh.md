@@ -9,14 +9,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 0bca6c16124f886d9df9e88e651f3f7450f51a1a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 9690e114f9ae01c4aee71145525fdda2eff4701c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876353"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814176"
 ---
-# <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Fouten opsporen Apache Spark toepassingen lokaal of op afstand op een HDInsight-cluster met Azure-toolkit voor IntelliJ via SSH
+# <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Fouten opsporen Apache Spark toepassingen op een HDInsight-cluster met Azure-toolkit voor IntelliJ via SSH
 
 In dit artikel vindt u stapsgewijze richt lijnen voor het gebruik van HDInsight-Hulpprogram Ma's in [Azure-Toolkit voor IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) voor het op afstand opsporen van toepassingen op een HDInsight-cluster. Als u fouten wilt opsporen in uw project, kunt u ook de [fout opsporing HDInsight Spark-toepassingen met Azure-Toolkit voor IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ) video bekijken.
 
@@ -118,7 +118,7 @@ U kunt deze fout oplossen door [het uitvoer bare bestand te downloaden](https://
 
 1. Klik op de knop **verbinding verbreken** als de inzendings logboeken niet worden weer gegeven in het linkerdeel venster. Het is echter nog steeds actief op de back-end.
 
-   ![Knop voor uitvoering op afstand](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
+   ![Resultaat van externe uitvoering](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
 
 
 

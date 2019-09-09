@@ -1,9 +1,9 @@
 ---
-title: Een toegangscontrole van Azure AD-rollen in PIM - Azure Active Directory voltooien | Microsoft Docs
-description: Meer informatie over het voltooien van een toegangscontrole van Azure AD-rollen in Azure AD Privileged Identity Management (PIM) en de resultaten bekijken
+title: Een toegangs beoordeling van Azure AD-rollen in PIM-Azure Active Directory volt ooien | Microsoft Docs
+description: Meer informatie over het uitvoeren van een toegangs beoordeling van Azure AD-rollen in Azure AD Privileged Identity Management (PIM) en het weer geven van de resultaten
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,49 +11,49 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 06/06/2017
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a7fa3bfe159620130bc0962b470cea8e7422646
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e50ccc208219896e89bcc80f40c846f69c759f9b
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602159"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804414"
 ---
-# <a name="complete-an-access-review-of-azure-ad-roles-in-pim"></a>Een toegangscontrole van Azure AD-rollen in PIM voltooien
-Beheerders met bevoegdheid kunnen eenmaal bevoegde toegang beoordelen een [toegangsbeoordeling is gestart](pim-how-to-start-security-review.md). Azure Active Directory (Azure AD) Privileged Identity Management (PIM) ontvangt automatisch een e-mailbericht waarin wordt gevraagd de gebruikers kunnen hun toegang beoordelen. Als een gebruiker niet een e-mailbericht ontvangt is, kunt u ze de instructies in verzenden [hoe u een toegangscontrole uitvoeren](pim-how-to-perform-security-review.md).
+# <a name="complete-an-access-review-of-azure-ad-roles-in-pim"></a>Een toegangs beoordeling van Azure AD-rollen in PIM volt ooien
+Beheerders met bevoegde rollen kunnen bevoorrechte toegang controleren zodra een [toegangs beoordeling is gestart](pim-how-to-start-security-review.md). Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM) wordt automatisch een e-mail bericht verzonden om gebruikers te vragen hun toegang te controleren. Als een gebruiker geen e-mail bericht heeft ontvangen, kunt u de instructies [voor het uitvoeren van een toegangs beoordeling](pim-how-to-perform-security-review.md)verzenden.
 
-Nadat de periode van de toegangsbeoordeling verlopen is of alle gebruikers hun zelf bekijken hebt, volgt u de stappen in dit artikel voor het beheren van de beoordeling en bekijkt de resultaten.
+Volg de stappen in dit artikel om de controle te beheren en de resultaten te bekijken nadat de toegangs beoordelings periode is afgelopen of als alle gebruikers hun eigen beoordeling hebben voltooid.
 
-## <a name="manage-access-reviews"></a>Toegangsbeoordelingen beheren
-1. Ga naar de [Azure-portal](https://portal.azure.com/) en selecteer de **Azure AD Privileged Identity Management** toepassingen op uw dashboard.
-2. Selecteer de **Toegangsbeoordelingen** gedeelte van het dashboard.
-3. Selecteer de toegangsbeoordeling die u wilt beheren.
+## <a name="manage-access-reviews"></a>Toegangs beoordelingen beheren
+1. Ga naar de [Azure Portal](https://portal.azure.com/) en selecteer de **Azure AD privileged Identity Management** toepassing op uw dash board.
+2. Selecteer de sectie **toegangs beoordelingen** van het dash board.
+3. Selecteer de toegangs beoordeling die u wilt beheren.
 
-Op de blade van de details van de toegangsbeoordeling zijn er een aantal opties voor het beheren van deze evaluatie.
+Op de Blade Details van toegangs beoordeling vindt u een aantal opties voor het beheren van die beoordeling.
 
-![PIM-knoppen voor het controleren van toegang - schermafbeelding](./media/pim-how-to-complete-review/review-buttons.png)
+![PIM-toegangs beoordelings knoppen-scherm afbeelding](./media/pim-how-to-complete-review/review-buttons.png)
 
-### <a name="remind"></a>Herinnering
-Als een toegangsbeoordeling is ingesteld zodat de gebruikers zelf, Controleer de **herinnering sturen** knop verstuurt een melding. 
+### <a name="remind"></a>Herinneren
+Als er een toegangs beoordeling is ingesteld zodat gebruikers zichzelf kunnen bekijken, verzendt de knop **herinneren** een melding. 
 
 ### <a name="stop"></a>Stoppen
-Alle beoordelingen voor toegang tot een einddatum hebben, maar u kunt de **stoppen** knop vroeg voltooid. Als gebruikers nog niet hebt op dit moment zijn gecontroleerd, ze niet mogelijk om te na het stoppen van de beoordeling. U kunt een evaluatie kan niet opnieuw starten nadat deze gestopt.
+Alle toegangs beoordelingen hebben een eind datum, maar u kunt de knop **stoppen** gebruiken om deze te volt ooien. Als een of meer gebruikers nog niet zijn gecontroleerd, kunnen ze niet meer nadat u de beoordeling hebt gestopt. U kunt een beoordeling niet opnieuw starten nadat deze is gestopt.
 
 ### <a name="apply"></a>Toepassen
-Wanneer een toegangsbeoordeling is voltooid, omdat u de einddatum is bereikt of handmatig gestopt omdat de **toepassen** knop implementeert de uitkomst van de beoordeling. Als een gebruiker de toegang is geweigerd in de evaluatie, is dit de stap die hun roltoewijzing wordt verwijderd.  
+Wanneer een toegangs beoordeling is voltooid, omdat u de eind datum hebt bereikt of hand matig hebt gestopt, implementeert de knop **Toep assen** het resultaat van de controle. Als de toegang van een gebruiker bij de controle is geweigerd, is dit de stap die de roltoewijzing verwijdert.  
 
 ### <a name="export"></a>Exporteren
-Als u de resultaten van de toegangsbeoordeling handmatig toepassen wilt, kunt u de evaluatie exporteren. De **exporteren** knop downloaden van een CSV-bestand wordt gestart. U kunt de resultaten in Excel of andere programma's die CSV-bestanden open beheren.
+Als u de resultaten van de toegangs beoordeling hand matig wilt Toep assen, kunt u de controle exporteren. Met de knop **exporteren** wordt nu een CSV-bestand gedownload. U kunt de resultaten beheren in Excel of andere Program ma's waarmee CSV-bestanden worden geopend.
 
 ### <a name="delete"></a>Verwijderen
-Als u niet geïnteresseerd in de beoordeling verdere bent, het verwijderen. De **verwijderen** knop verwijdert u de controle van de PIM-toepassing.
+Als u niet meer wilt weten over de beoordeling, verwijdert u deze. De knop **verwijderen** verwijdert de beoordeling van de PIM-toepassing.
 
 > [!IMPORTANT]
-> U wordt niet ontvangt een waarschuwing voordat de verwijdering plaatsvindt, dus wees zeker dat u wilt verwijderen van deze evaluatie. 
+> Er wordt geen waarschuwing weer gegeven voordat het verwijderen wordt uitgevoerd. Zorg er dus voor dat u deze beoordeling wilt verwijderen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een toegangscontrole voor Azure AD-rollen in PIM starten](pim-how-to-start-security-review.md)
-- [Een toegangscontrole van mijn Azure AD-rollen in PIM uitvoeren](pim-how-to-perform-security-review.md)
+- [Een toegangs beoordeling starten voor Azure AD-rollen in PIM](pim-how-to-start-security-review.md)
+- [Een toegangs beoordeling van mijn Azure AD-rollen uitvoeren in PIM](pim-how-to-perform-security-review.md)

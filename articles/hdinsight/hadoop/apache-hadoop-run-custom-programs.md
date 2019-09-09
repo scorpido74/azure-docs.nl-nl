@@ -1,6 +1,6 @@
 ---
-title: Uitvoeren van aangepaste MapReduce-programma's - Azure HDInsight
-description: Wanneer en hoe u aangepaste MapReduce-programma's uitvoeren in HDInsight.
+title: Aangepaste MapReduce-Program ma's uitvoeren-Azure HDInsight
+description: Wanneer en hoe u aangepaste Apache MapReduce-Program ma's uitvoert op Azure HDInsight-clusters.
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,71 +8,71 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: 5ed82fc21aedc9af394922059859f81cfba1867e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 305eefbaa674e414ab8134986e6cd526abe8208e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713103"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810741"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Aangepaste MapReduce-programma's uitvoeren
 
-Apache Hadoop gebaseerde big data-systemen, zoals HDInsight inschakelen gegevens verwerken met behulp van een breed scala aan hulpprogramma's en technologieën. De volgende tabel beschrijft de belangrijkste voordelen en overwegingen voor elk adres.
+Op Apache Hadoop gebaseerde big data systemen zoals HDInsight kunnen gegevens worden verwerkt met behulp van een breed scala aan hulpprogram ma's en technologieën. In de volgende tabel worden de belangrijkste voor delen en overwegingen voor elk item beschreven.
 
-| Query-mechanisme | Voordelen | Overwegingen |
+| Query mechanisme | Voordelen | Overwegingen |
 | --- | --- | --- |
-| **Apache Hive HiveQL gebruiken** | <ul><li>Een uitstekende oplossing voor batch-verwerking en analyse van grote hoeveelheden gegevens onveranderbare, overzichten, en voor op aanvraag uitvoeren van query's. Het maakt gebruik van een bekende SQL-achtige syntaxis.</li><li>Het kan worden gebruikt voor het produceren van permanente tabellen met gegevens die eenvoudig kunnen worden gepartitioneerd en geïndexeerd.</li><li>Meerdere externe tabellen en weergaven kunnen worden gemaakt via dezelfde gegevens.</li><li>Deze biedt ondersteuning voor een eenvoudige datawarehouse-implementatie enorme mogelijkheden voor scale-out en fouttolerantie voor gegevensopslag en verwerking biedt.</li></ul> | <ul><li>Hiervoor de brongegevens die moeten ten minste enkele identificeerbare structuur hebben.</li><li>Het is niet geschikt voor realtime query's uitvoeren en de rij op updates. Het wordt beste voor batch-taken via grote gegevenssets gebruikt.</li><li>Het is mogelijk niet sommige typen van complexe verwerkingstaken uitvoeren.</li></ul> |
-| **Apache Pig Latin voor Pig gebruiken** | <ul><li>Een uitstekende oplossing voor het bewerken van gegevens, zoals ingesteld, samenvoegen en gegevenssets, toepassen van functies op records of groepen records, filteren en voor de herstructurering van gegevens door te geven kolommen, door de groeperingswaarden of door de kolommen omzetten in rijen.</li><li>Als een reeks bewerkingen op gegevens kan het een werkstroom gebaseerde benadering gebruiken.</li></ul> | <ul><li>SQL-gebruikers wellicht dat pig Latin is minder bekende en moeilijker te gebruiken dan HiveQL.</li><li>De standaarduitvoer is meestal een tekstbestand en dus kan worden te gebruiken met gegevensvisualisatieprogramma's zoals Excel. U wordt doorgaans een Hive-tabel laag via de uitvoer.</li></ul> |
-| **Aangepaste/mapreduce** | <ul><li>Het biedt volledige controle over de kaart en verminder fasen en kan worden uitgevoerd.</li><li>Hiermee kunt query's om te worden geoptimaliseerd voor maximale prestaties van het cluster en om de belasting op de servers en het netwerk.</li><li>De onderdelen kunnen worden geschreven in een reeks bekende talen.</li></ul> | <ul><li>Het is moeilijker dan het gebruik van Pig of Hive omdat u moet uw eigen map maken en onderdelen te verminderen.</li><li>Processen waarvoor lid worden van gegevenssets zijn moeilijker te implementeren.</li><li>Hoewel er testframeworks beschikbaar zijn, is foutopsporing van code complexer dan een normale toepassing omdat de code wordt uitgevoerd als een batch-taak onder het beheer van de Taakplanner van Hadoop.</li></ul> |
-| **Apache HCatalog** | <ul><li>Deze isoleert de details van het pad van de opslag en beheer eenvoudiger maken en verwijderen van de noodzaak voor gebruikers om te weten waar de gegevens zijn opgeslagen.</li><li>Hiermee kunt meldingen van gebeurtenissen, zoals de beschikbaarheid van gegevens, zodat andere hulpprogramma's zoals Oozie om te detecteren wanneer bewerkingen hebben plaatsgevonden.</li><li>Het wordt aangegeven dat een relationele weergave van gegevens, met inbegrip van partitioneren met sleutel, en maakt de gegevens gemakkelijk toegankelijk.</li></ul> | <ul><li>Azureondersteunt RCFile, CSV-tekst, JSON-tekst, SequenceFile en ORC bestandsindelingen standaard, maar mogelijk moet u een aangepaste serde-schrijfbewerking voor andere indelingen schrijven.</li><li>HCatalog is niet thread-veilig.</li><li>Er zijn enkele beperkingen voor de gegevenstypen voor kolommen bij het gebruik van het laadprogramma HCatalog in Pig-scripts. Zie voor meer informatie, [HCatLoader gegevenstypen](https://cwiki.apache.org/confluence/display/Hive/HCatalog%20LoadStore#HCatalogLoadStore-HCatLoaderDataTypes) in de documentatie van Apache HCatalog.</li></ul> |
+| **Apache Hive met behulp van HiveQL** | <ul><li>Een uitstekende oplossing voor batch verwerking en analyse van grote hoeveel heden onveranderbare gegevens, voor gegevens samenvatting en voor query's op aanvraag. Er wordt een bekende SQL-achtige syntaxis gebruikt.</li><li>Het kan worden gebruikt voor het produceren van permanente tabellen met gegevens die eenvoudig kunnen worden gepartitioneerd en geïndexeerd.</li><li>Meerdere externe tabellen en weer gaven kunnen worden gemaakt over dezelfde gegevens.</li><li>Het biedt ondersteuning voor een eenvoudige data warehouse-implementatie die enorme mogelijkheden voor uitschalen en fout tolerantie biedt voor gegevens opslag en-verwerking.</li></ul> | <ul><li>De bron gegevens moeten ten minste een bepaalde Identificeer bare structuur hebben.</li><li>Het is niet geschikt voor realtime query's en updates op rijniveau. Het wordt het beste gebruikt voor batch taken via grote gegevens sets.</li><li>Het kan zijn dat sommige typen complexe verwerkings taken niet kunnen worden uitgevoerd.</li></ul> |
+| **Apache-Pig met behulp van de Latijnse** | <ul><li>Een uitstekende oplossing voor het bewerken van gegevens als sets, samen voegen en filteren, en het Toep assen van functies op records of groepen records, en voor herstructurering van gegevens door het definiëren van kolommen, het groeperen van waarden of het converteren van kolommen naar rijen.</li><li>Het kan een op werk stroom gebaseerde aanpak gebruiken als een reeks bewerkingen op gegevens.</li></ul> | <ul><li>SQL-gebruikers kunnen de waarde van Pig Latijn minder kennen en moeilijker te gebruiken dan HiveQL.</li><li>De standaard uitvoer is doorgaans een tekst bestand en kan moeilijker worden gebruikt met visualisatie hulpprogramma's zoals Excel. Doorgaans maakt u een Hive-tabel op de uitvoer laag.</li></ul> |
+| **Aangepaste kaart/verminderen** | <ul><li>Het biedt volledige controle over de kaart en vermindert fasen en uitvoering.</li><li>Hiermee kunnen query's worden geoptimaliseerd voor maximale prestaties van het cluster, of om de belasting van de servers en het netwerk tot een minimum te beperken.</li><li>De onderdelen kunnen worden geschreven in een bereik van bekende talen.</li></ul> | <ul><li>Het is moeilijker dan het gebruik van Pig of Hive, omdat u een eigen kaart moet maken en onderdelen kunt verminderen.</li><li>Processen waarvoor het samen voegen van gegevens sets is moeilijker te implementeren.</li><li>Hoewel er test raamwerken beschikbaar zijn, is de fout opsporings code complexer dan een normale toepassing omdat de code wordt uitgevoerd als een batch-taak onder het beheer van de Hadoop-taak planner.</li></ul> |
+| **Apache HCatalog** | <ul><li>Het bevat de details van de opslag, waardoor het beheer gemakkelijker wordt en het verwijderen van de nood zaak van gebruikers om te weten waar de gegevens zijn opgeslagen.</li><li>Hiermee wordt een melding van gebeurtenissen, zoals de beschik baarheid van gegevens, ingeschakeld, zodat andere hulpprogram ma's, zoals Oozie, kunnen detecteren wanneer er bewerkingen hebben plaatsgevonden.</li><li>Het biedt een relationele weer gave van gegevens, inclusief partitioneren op basis van de sleutel, en maakt de gegevens eenvoudig toegankelijk.</li></ul> | <ul><li>Het biedt standaard ondersteuning voor RCFile, CSV-tekst, JSON-tekst, SequenceFile en ORC-bestands indelingen, maar u moet mogelijk een aangepaste SerDe schrijven voor andere indelingen.</li><li>HCatalog is niet thread-veilig.</li><li>Er gelden enkele beperkingen voor de gegevens typen voor kolommen wanneer u de HCatalog-lader in Pig-scripts gebruikt. Zie [HCatLoader-gegevens typen](https://cwiki.apache.org/confluence/display/Hive/HCatalog%20LoadStore#HCatalogLoadStore-HCatLoaderDataTypes) in de Apache HCatalog-documentatie voor meer informatie.</li></ul> |
 
-Meestal gebruikt u de meest eenvoudige van deze methoden die de resultaten die u nodig hebt. Bijvoorbeeld, kunt u mogelijk die resultaten bereiken met behulp van alleen Hive, maar voor complexere scenario's mogelijk moet u Pig, gebruiken of zelfs uw eigen map schrijven en onderdelen te verminderen. U kunt ook besluiten, na te experimenteren met Hive of Pig, die aangepaste kaart en verminderen onderdelen zorgen voor betere prestaties doordat u verder kunt afstemmen en optimaliseren van de verwerking.
+Normaal gesp roken gebruikt u de eenvoudigste van deze benaderingen waarmee u de gewenste resultaten krijgt. Het is bijvoorbeeld mogelijk dat u een dergelijke resultaten kunt bedenken met behulp van gewoon Hive, maar voor complexere scenario's moet u wellicht Pig gebruiken of zelfs uw eigen kaart schrijven en onderdelen verminderen. U kunt er ook voor kiezen om, na het experimenteren met hive of varken, dat aangepaste kaart en het verminderen van onderdelen betere prestaties te bieden omdat u de verwerking nauw keuriger en optimaliseert.
 
-## <a name="custom-mapreduce-components"></a>Aangepaste/mapreduce-onderdelen
+## <a name="custom-mapreduce-components"></a>Aangepaste kaart/onderdelen verminderen
 
-Code mapreduce/bestaat uit twee afzonderlijke functies geïmplementeerd als **kaart** en **verminderen** onderdelen. De **kaart** onderdeel wordt parallel uitgevoerd op meerdere clusterknooppunten, elk knooppunt de toewijzing toe te passen op de subset van het knooppunt van de gegevens. De **verminderen** onderdeel worden gesorteerd en bevat een overzicht van de resultaten van alle functies van de kaart. Zie voor meer informatie over deze twee onderdelen [MapReduce gebruiken in Hadoop op HDInsight](hdinsight-use-mapreduce.md).
+Kaart/reductie code bestaat uit twee afzonderlijke functies die zijn geïmplementeerd als **kaart** en **verminderen** onderdelen. Het **overzichts** onderdeel wordt parallel uitgevoerd op meerdere cluster knooppunten, elk knoop punt dat de toewijzing toepast op de eigen subset van de gegevens van het knoop punt. Met het onderdeel **verminderen** worden de resultaten van alle kaart functies gesorteerd en samenvatten. Zie [MapReduce gebruiken in Hadoop op HDInsight](hdinsight-use-mapreduce.md)voor meer informatie over deze twee onderdelen.
 
-In de meeste scenario's voor verwerking van HDInsight is het eenvoudiger en efficiënter gebruik van een hoger niveau abstractie zoals Pig of Hive. U kunt ook aangepaste kaart maakt en beperken van onderdelen voor gebruik in Hive-scripts meer geavanceerde verwerking uit te voeren.
+In de meeste HDInsight-verwerkings scenario's is het eenvoudiger en efficiënter om een abstracte abstractie op een hoger niveau, zoals varken of Hive, te gebruiken. U kunt ook een aangepaste kaart maken en onderdelen beperken voor gebruik in Hive-scripts om geavanceerde verwerking uit te voeren.
 
-Aangepaste/mapreduce-onderdelen zijn meestal geschreven in Java. Hadoop wordt gebruikt om een streaming-interface waarmee ook onderdelen moet worden gebruikt die zijn ontwikkeld in andere talen zoals C#, F#, Visual Basic, Python en JavaScript.
+Aangepaste kaart-en reductie onderdelen worden meestal geschreven in Java. Hadoop biedt een streaming-interface waarmee u ook onderdelen kunt gebruiken die zijn ontwikkeld in andere talen, zoals C#, F#, Visual Basic, python en Java script.
 
-* Zie voor een overzicht over het ontwikkelen van aangepaste Java MapReduce-programma's, [ontwikkel Java MapReduce-programma's voor Hadoop op HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md).
+* Zie [Java MapReduce-Program Ma's ontwikkelen voor Hadoop in HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)voor een overzicht van het ontwikkelen van aangepaste Java MapReduce-Program ma's.
 
-Houd rekening met het maken van uw eigen kaart en beperken van onderdelen voor de volgende voorwaarden:
+Overweeg het maken van uw eigen kaart en verminder de onderdelen voor de volgende voor waarden:
 
-* U moet voor het verwerken van gegevens die op het parseren van de gegevens en met aangepaste logica op te halen van gestructureerde gegevens uit het volledig ongestructureerde is.
-* U wilt uitvoeren van complexe taken die zijn moeilijk (of zelfs onmogelijk) om uit te drukken in Pig of Hive-zonder het maken van een UDF. Bijvoorbeeld, als u wilt gebruiken van externe geocoderingservice breedtegraad en lengtegraad coördinaten of IP-adressen in de brongegevens converteren naar namen van de geografische locatie.
-* Wilt u uw bestaande .NET, Python of JavaScript-code in mapreduce /-onderdelen opnieuw met behulp van de Hadoop-streaming-interface.
+* U moet gegevens verwerken die volledig niet zijn gestructureerd door de gegevens te parseren en aangepaste logica te gebruiken voor het verkrijgen van gestructureerde informatie.
+* U wilt complexe taken uitvoeren die moeilijk (of onmogelijk) zijn om te worden uitdrukken in varken of Hive zonder een UDF te maken. U moet bijvoorbeeld een externe geocoderings service gebruiken om de coördinaten van de breedte-en lengte graad of IP-adressen in de bron gegevens te converteren naar geografische locatie namen.
+* U wilt uw bestaande .NET-, python-of Java script-code opnieuw gebruiken in kaart-en reductie onderdelen door gebruik te maken van de Hadoop streaming-interface.
 
-## <a name="upload-and-run-your-custom-mapreduce-program"></a>Uploaden en uw aangepaste MapReduce-programma uitvoeren
+## <a name="upload-and-run-your-custom-mapreduce-program"></a>Uw aangepaste MapReduce-programma uploaden en uitvoeren
 
-De meest voorkomende MapReduce-programma's zijn geschreven in Java en gecompileerd naar een jar-bestand.
+De meest voorkomende MapReduce-Program ma's zijn geschreven in Java en gecompileerd naar een jar-bestand.
 
-1. Nadat u hebt ontwikkeld, gecompileerd en getest uw MapReduce-programma, gebruikt u de `scp` opdracht voor het uploaden van de jar-bestand met het hoofdknooppunt.
+1. Nadat u uw MapReduce-programma hebt ontwikkeld, gecompileerd en getest, gebruikt u `scp` de opdracht om het jar-bestand naar de hoofd knooppunt te uploaden.
 
     ```bash
     scp mycustomprogram.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    Vervang **gebruikersnaam** met de SSH-gebruikersaccount voor uw cluster. Vervang **CLUSTERNAME** met de naam van het cluster. Als u een wachtwoord gebruikt om de SSH-account te beveiligen, wordt u gevraagd het wachtwoord invoeren. Als u een certificaat gebruikt, moet u mogelijk gebruik van de `-i` parameter opgeven voor het persoonlijke sleutelbestand.
+    Vervang de **gebruikers naam** door het SSH-gebruikers account voor uw cluster. Vervang **clustername** door de naam van het cluster. Als u een wacht woord hebt gebruikt om het SSH-account te beveiligen, wordt u gevraagd het wacht woord in te voeren. Als u een certificaat hebt gebruikt, moet u mogelijk de `-i` para meter gebruiken om het bestand met de persoonlijke sleutel op te geven.
 
-2. Verbinding maken met het cluster met behulp [SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+2. Maak verbinding met het cluster via [SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
     ```bash
     ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. Uitvoeren van de SSH-sessie, uw MapReduce-programma via YARN.
+3. Voer vanuit de SSH-sessie uw MapReduce-programma uit via GARENs.
 
     ```bash
     yarn jar mycustomprogram.jar mynamespace.myclass /example/data/sample.log /example/data/logoutput
     ```
 
-    Met deze opdracht verzendt de MapReduce-taak op YARN. Het invoerbestand is `/example/data/sample.log`, en de uitvoermap is `/example/data/logoutput`. Het bestand voor invoer en uitvoerbestanden worden opgeslagen naar de standaardopslag voor het cluster.
+    Met deze opdracht wordt de MapReduce-taak naar GARENs verzonden. Het invoer bestand is `/example/data/sample.log`en de uitvoermap. `/example/data/logoutput` Het invoer bestand en uitvoer bestanden worden opgeslagen in de standaard opslag voor het cluster.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gebruik C# met MapReduce, streaming van Apache Hadoop in HDInsight](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
-* [Java MapReduce-programma's ontwikkelen voor Apache Hadoop op HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-* [Azure Toolkit voor Eclipse gebruiken voor het maken van Apache Spark-toepassingen voor een HDInsight-cluster](../spark/apache-spark-eclipse-tool-plugin.md)
-* [Gebruik Python-gebruiker gedefinieerde functies (UDF's) met Apache Hive en Apache Pig in HDInsight](python-udf-hdinsight.md)
+* [Gebruiken C# met MapReduce streaming op Apache Hadoop in HDInsight](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
+* [Java MapReduce-Program ma's ontwikkelen voor Apache Hadoop op HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [Azure-toolkit voor Eclipse gebruiken om Apache Spark-toepassingen voor een HDInsight-cluster te maken](../spark/apache-spark-eclipse-tool-plugin.md)
+* [Met python door de gebruiker gedefinieerde functies (UDF) met Apache Hive en Apache varken in HDInsight gebruiken](python-udf-hdinsight.md)

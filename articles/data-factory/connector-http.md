@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: cdd7cfcb9d835c2ccac1dc367b9a1b34b509e8cf
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 880f5624af03e08e3a91ec5b230e593025d979a5
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276431"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813013"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Gegevens kopiëren van een HTTP-eind punt met behulp van Azure Data Factory
 
@@ -166,12 +166,12 @@ Als u **certThumbprint** gebruikt voor verificatie en het certificaat is geïnst
 
 Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. 
 
-- Raadpleeg voor **Parquet, gescheiden tekst, AVRO en binaire indeling**, de sectie [Parquet, gescheiden tekst, AVRO en binaire indelings gegevensset](#format-based-dataset) .
-- Raadpleeg voor andere indelingen, zoals de **Orc/Avro/JSON-indeling**, de sectie [andere indelings gegevensset](#other-format-dataset) .
+- Raadpleeg voor **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, de sectie [Parquet, gescheiden tekst, JSON, AVRO en binaire indeling gegevensset](#format-based-dataset) .
+- Raadpleeg de sectie [andere indelings gegevensset](#other-format-dataset) voor andere indelingen, zoals **Orc-indeling**.
 
-### <a name="format-based-dataset"></a>Parquet, gescheiden tekst, AVRO en binaire indeling gegevensset
+### <a name="format-based-dataset"></a>Parquet, gescheiden tekst, JSON, AVRO en binaire indeling gegevensset
 
-Als u gegevens wilt kopiëren naar en van **Parquet, tekst met scheidings tekens of binaire indeling**, raadpleegt u de [Parquet-indeling](format-parquet.md), de [tekst indeling met scheidings tekens](format-delimited-text.md), de [Avro-indeling](format-avro.md) en het artikel [binaire indeling](format-binary.md) op op indeling gebaseerde gegevensset en ondersteunde instellingen. De volgende eigenschappen worden ondersteund voor http onder `location` instellingen in gegevensset op basis van indeling:
+Als u gegevens wilt kopiëren naar en van **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, raadpleegt u [Parquet-indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire-indelings](format-binary.md) artikel op op indeling gebaseerde gegevensset en ondersteunde instellingen . De volgende eigenschappen worden ondersteund voor http onder `location` instellingen in gegevensset op basis van indeling:
 
 | Eigenschap    | Description                                                  | Vereist |
 | ----------- | ------------------------------------------------------------ | -------- |
@@ -212,7 +212,7 @@ Als u gegevens wilt kopiëren naar en van **Parquet, tekst met scheidings tekens
 
 ### <a name="other-format-dataset"></a>Gegevensset voor andere indeling
 
-De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens uit HTTP in de **Orc/JSON-indeling**:
+De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens uit HTTP in de **Orc-indeling**:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
@@ -274,12 +274,12 @@ Zie voor een volledige lijst van eigenschappen die beschikbaar zijn voor het def
 
 ### <a name="http-as-source"></a>HTTP als bron
 
-- Als u wilt kopiëren van **Parquet, tekst met scheidings tekens, AVRO en binaire indeling**, raadpleegt u de sectie [Parquet, tekst met scheidings tekens, AVRO en binaire indelings bron](#format-based-source) .
-- Als u wilt kopiëren van andere indelingen, zoals de **Orc/Avro/JSON-indeling**, raadpleegt u de sectie [andere indelings bron](#other-format-source) .
+- Als u wilt kopiëren van **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, raadpleegt u de sectie [Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indelings bron](#format-based-source) .
+- Als u wilt kopiëren van andere indelingen, zoals de **indeling Orc**, raadpleegt u de sectie [andere indelings bron](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, tekst met scheidings tekens, AVRO en binaire indelings bron
+#### <a name="format-based-source"></a>Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indelings bron
 
-Als u gegevens wilt kopiëren uit een **Parquet, een tekst met scheidings tekens of binaire indeling**, raadpleegt u de [Parquet-indeling](format-parquet.md), de [tekst indeling met scheidings tekens](format-delimited-text.md), de [Avro-indeling](format-avro.md) en het artikel [binaire indeling](format-binary.md) op op indeling gebaseerde Kopieer activiteit en ondersteunde instellingen. De volgende eigenschappen worden ondersteund voor http onder `storeSettings` instellingen in een op indeling gebaseerde kopie bron:
+Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, raadpleegt u [Parquet-indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire indeling](format-binary.md) artikel op op indeling gebaseerde Kopieer activiteit bron en ondersteund Instellingen. De volgende eigenschappen worden ondersteund voor http onder `storeSettings` instellingen in een op indeling gebaseerde kopie bron:
 
 | Eigenschap                 | Description                                                  | Vereist |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -336,7 +336,7 @@ Als u gegevens wilt kopiëren uit een **Parquet, een tekst met scheidings tekens
 
 #### <a name="other-format-source"></a>Andere indelings bron
 
-Als u gegevens wilt kopiëren van HTTP in de **Orc/JSON-indeling**, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
+Als u gegevens wilt kopiëren uit HTTP in de **Orc-indeling**, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |

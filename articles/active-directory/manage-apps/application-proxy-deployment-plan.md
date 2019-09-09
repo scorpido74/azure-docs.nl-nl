@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: cd19d1e0cdfa1b160734b23d7f50310948ded80d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 04a2a3f2557ccef510a831a5c9fbf89bb62cb9a7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879916"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812831"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Een Azure AD-toepassingsproxy-implementatie plannen
 
@@ -62,7 +62,7 @@ U moet voldoen aan de volgende vereisten voordat u begint met de implementatie. 
 
 Als u Azure AD-toepassingsproxy wilt configureren en implementeren, moet aan de volgende kern vereisten worden voldaan.
 
-*  **Azure**-onboarding: Voordat u een toepassings proxy implementeert, moeten gebruikers identiteiten worden gesynchroniseerd vanuit een on-premises Directory of rechtstreeks worden gemaakt in uw Azure AD-tenants. Met Identiteitssynchronisatie kan Azure AD vooraf gebruikers verifiëren voordat ze toegang krijgen tot toepassingen die zijn gepubliceerd met app proxy en de benodigde gebruikers-id hebben om eenmalige aanmelding (SSO) uit te voeren.
+*  **Azure-onboarding**: Voordat u een toepassings proxy implementeert, moeten gebruikers identiteiten worden gesynchroniseerd vanuit een on-premises Directory of rechtstreeks worden gemaakt in uw Azure AD-tenants. Met Identiteitssynchronisatie kan Azure AD vooraf gebruikers verifiëren voordat ze toegang krijgen tot toepassingen die zijn gepubliceerd met app proxy en de benodigde gebruikers-id hebben om eenmalige aanmelding (SSO) uit te voeren.
 
 * **Vereisten voor voorwaardelijke toegang**: Het is niet raadzaam om toepassings proxy te gebruiken voor toegang tot het intranet, omdat hierdoor latentie wordt toegevoegd die van invloed is op gebruikers. U kunt het beste toepassings proxy gebruiken met pre-authenticatie en beleid voor voorwaardelijke toegang voor externe toegang vanaf het internet.  Een benadering voor het bieden van voorwaardelijke toegang voor intranet gebruik is het moderniseren van toepassingen, zodat deze diretly kunnen worden geverifieerd met AAD. Raadpleeg [bronnen voor het migreren van toepassingen naar Aad](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) voor meer informatie. 
 
@@ -85,7 +85,7 @@ Zie [KCD voor eenmalige aanmelding](application-proxy-configure-single-sign-on-w
 
    * Voor het **publiceren en beheren van toepassingen** is de rol *toepassings beheerder* vereist. Toepassings beheerders kunnen alle toepassingen in de map beheren, met inbegrip van registraties, SSO-instellingen, gebruikers-en groeps toewijzingen en licenties, toepassings proxy-instellingen en toestemming. De functie voor het beheren van voorwaardelijke toegang wordt niet door deze service verleend. De rol van de beheerder van de *Cloud toepassing* heeft alle mogelijkheden van de toepassings beheerder, behalve dat het beheer van de toepassings proxy-instellingen niet is toegestaan.
 
-* **Licentie verlening**: Toepassings proxy is beschikbaar via het Azure AD Basic-abonnement. Raadpleeg de [pagina met prijzen voor Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/) voor een volledige lijst met licentie opties en-functies.  
+* **Licentie verlening**: Toepassings proxy is beschikbaar via een Azure AD Premium-abonnement. Raadpleeg de [pagina met prijzen voor Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/) voor een volledige lijst met licentie opties en-functies.  
 
 ### <a name="application-discovery"></a>Toepassings detectie
 
@@ -300,13 +300,13 @@ Deze logboeken bevatten gedetailleerde informatie over aanmeldingen bij toepassi
 
 #### <a name="application-proxy-connector-monitoring"></a>Bewaking toepassings proxy connector
 
-De connectors en de service zorgen van alle taken die hoge beschikbaarheid. U kunt de status van uw connectors controleren vanaf de pagina Toepassings proxy in de Azure AD-Portal. Zie [Wat is Azure AD-toepassingsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#maintenance)-connectors? voor meer informatie over connector maintainence.
+De connectors en de service zorgen van alle taken die hoge beschikbaarheid. U kunt de status van uw connectors controleren vanaf de pagina Toepassings proxy in de Azure AD-Portal. Zie [Wat is Azure AD-toepassingsproxy-connectors](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#maintenance)? voor meer informatie over connector maintainence.
 
 ![Voorbeeld: Azure AD-toepassingsproxy-connectors](./media/application-proxy-connectors/app-proxy-connectors.png)
 
 #### <a name="windows-event-logs-and-performance-counters"></a>Windows-gebeurtenis logboeken en prestatie meter items
 
-Connectors hebben zowel beheer-als sessie Logboeken. De beheerder-logboeken bevatten belangrijke gebeurtenissen en hun fouten. De sessielogboeken bevatten alle transacties en de bijbehorende verwerkingsgegevens. Logboeken en prestatie meter items bevinden zich in de Windows-gebeurtenis logboeken Zie [informatie over Azure AD-toepassingsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#under-the-hood)-connectors voor meer informatie. Volg deze [zelf studie voor het configureren van gegevens bronnen voor gebeurtenis Logboeken in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events).
+Connectors hebben zowel beheer-als sessie Logboeken. De beheerder-logboeken bevatten belangrijke gebeurtenissen en hun fouten. De sessielogboeken bevatten alle transacties en de bijbehorende verwerkingsgegevens. Logboeken en prestatie meter items bevinden zich in de Windows-gebeurtenis logboeken Zie [informatie over Azure AD-toepassingsproxy-connectors](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#under-the-hood)voor meer informatie. Volg deze [zelf studie voor het configureren van gegevens bronnen voor gebeurtenis Logboeken in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events).
 
 ### <a name="troubleshooting-guide-and-steps"></a>Gids voor probleem oplossing en stappen
 

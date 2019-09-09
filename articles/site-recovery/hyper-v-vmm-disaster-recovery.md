@@ -1,20 +1,19 @@
 ---
-title: Herstel na noodgevallen instellen voor Hyper-V-VM's tussen on-premises sites met Azure Site Recovery | Microsoft Docs
+title: Herstel na nood geval instellen voor virtuele Hyper-V-machines tussen on-premises sites met Azure Site Recovery
 description: Informatie over het instellen van herstel na noodgevallen voor Hyper-V-VM's tussen uw on-premises sites met Azure Site Recovery.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 067040349a5d435860492497dddbf39aad2635eb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: a2eb8bf10454ee01953ddd37025f0c0048d00a0a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66398408"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813754"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Herstel na noodgevallen instellen voor Hyper-V-VM's naar een secundaire on-premises site
 
@@ -96,7 +95,7 @@ Installeer de Azure Site Recovery-provider op de VMM-servers en detecteer en reg
 5. Wanneer de installatie is voltooid, klikt u op **Registreren** om de server in de kluis te registreren.
 
     ![Installatielocatie](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
-6. Controleer in **Kluisnaam** de naam van de kluis waarin de server wordt geregistreerd. Klik op **volgende**.
+6. Controleer in **Kluisnaam** de naam van de kluis waarin de server wordt geregistreerd. Klik op **Volgende**.
 7. Geef bij **Proxyverbinding** op hoe de provider die wordt uitgevoerd op de VMM-server verbinding maakt met Azure.
    - U kunt opgeven dat de provider rechtstreeks met internet of via een proxyserver verbinding moet maken. Geef indien nodig proxyinstellingen op.
    - Als u een proxy gebruikt, wordt er automatisch een VMM RunAs-account (DRAProxyAccount) gemaakt met de opgegeven proxyreferenties. Configureer de proxyserver zodanig dat dit account kan worden geverifieerd. De VMM RunAs-accountinstellingen kunnen worden gewijzigd in de VMM-console > **Instellingen** > **Beveiliging** > **Uitvoeren als-accounts**.
@@ -139,7 +138,7 @@ Controleer voordat u begint of alle hosts die het beleid gebruiken hetzelfde bes
 5. Selecteer **Gerepliceerde VM verwijderen** om op te geven dat de gerepliceerde virtuele machine moet worden verwijderd als u de beveiliging voor de bron-VM uitschakelt. Als u deze instelling inschakelt, wordt deze als u de beveiliging voor de bron-VM uitschakelt uit de Site Recovery-console verwijderd, worden Site Recovery-instellingen voor de VMM verwijderd uit de VMM-console en wordt de replica verwijderd.
 6. Geef, als u via het netwerk repliceert, bij **Initiële replicatiemethode** op of de initiële replicatie moet worden gestart of plan deze in. Om netwerkbandbreedte te besparen, wilt u deze mogelijk buiten de drukste tijden plannen. Klik vervolgens op **OK**.
 
-     ![Beleid voor replicatie](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
+     ![Replicatiebeleid](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
      
 7. Het nieuwe beleid wordt automatisch gekoppeld aan de VMM-cloud. Klik bij **Replicatiebeleid** op **OK**. 
 

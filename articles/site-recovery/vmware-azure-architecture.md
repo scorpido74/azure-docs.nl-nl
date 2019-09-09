@@ -1,34 +1,34 @@
 ---
-title: VMware naar Azure disaster recovery-architectuur in Azure Site Recovery | Microsoft Docs
-description: In dit artikel biedt een overzicht van de onderdelen en architectuur die worden gebruikt bij het instellen van herstel na noodgevallen van on-premises VMware-machines naar Azure met Azure Site Recovery
+title: Architectuur van VMware naar Azure voor herstel na nood gevallen in Azure Site Recovery
+description: Dit artikel bevat een overzicht van de onderdelen en architectuur die worden gebruikt bij het instellen van herstel na nood gevallen van on-premises virtuele VMware-machines naar Azure met Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: f1fdbd143093beb9736e86b24b76843ad82b89f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c21b8d7a4a2723ddf10c4ac88f8b1ce4a5d6b47
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418367"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814583"
 ---
-# <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware naar Azure disaster recovery-architectuur
+# <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architectuur voor nood herstel van VMware naar Azure
 
-Dit artikel beschrijft de architectuur en processen die worden gebruikt wanneer u disaster recovery-replicatie, failover en herstel van virtuele VMware-machines (VM's) implementeert tussen een on-premises VMware-site en Azure met de [Azure Site Recovery](site-recovery-overview.md) service.
+In dit artikel worden de architectuur en processen beschreven die worden gebruikt bij het implementeren van herstel na nood gevallen, failover en herstel van virtuele VMware-machines (Vm's) tussen een on-premises VMware-site en Azure met behulp van de [Azure site Recovery](site-recovery-overview.md) -service.
 
 
 ## <a name="architectural-components"></a>Architectuuronderdelen
 
-De volgende tabel en afbeelding vindt een weergave op hoog niveau van de onderdelen die worden gebruikt voor noodherstel van VMware naar Azure.
+De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onderdelen die worden gebruikt voor VMware-herstel na nood gevallen naar Azure.
 
 **Onderdeel** | **Vereiste** | **Details**
 --- | --- | ---
-**Azure** | Een Azure-abonnement, Azure Storage-account voor cache, beheerde schijf en Azure-netwerk. | Gerepliceerde gegevens van on-premises VM's worden opgeslagen in Azure storage. Azure VM's worden gemaakt met de gerepliceerde gegevens wanneer u een failover van on-premises naar Azure uitvoert. De Azure-VM's maken verbinding met het virtuele Azure-netwerk wanneer ze worden gemaakt.
-**Configuratie van server-machine** | Een enkele on-premises computer. Het is raadzaam dat u uitvoert als een VMware-VM die kan worden geïmplementeerd vanaf een gedownloade OVF-sjabloon.<br/><br/> De machine wordt uitgevoerd van alle on-premises Site Recovery-onderdelen, waaronder de configuratieserver, processerver en hoofddoelserver. | **Configuratieserver**: Coördineert de communicatie tussen on-premises en Azure, en beheert de gegevensreplicatie.<br/><br/> **Processerver**: standaard geïnstalleerd op de configuratieserver. Deze ontvangt replicatiegegevens; Met caching, compressie en versleuteling, optimaliseert en verzendt dit naar Azure Storage. De processerver installeert ook Azure Site Recovery Mobility Service op virtuele machines die u repliceren wilt, en wordt automatische detectie van on-premises machines uitgevoerd. Naarmate uw implementatie groeit, kunt u extra, afzonderlijk processervers voor het afhandelen van grotere hoeveelheden replicatieverkeer kunt toevoegen.<br/><br/> **Hoofddoelserver**: standaard geïnstalleerd op de configuratieserver. Replicatiegegevens worden verwerkt tijdens de failback vanuit Azure. U kunt een afzonderlijke hoofddoelserver voor failback toevoegen voor grote implementaties.
-**VMware-servers** | Virtuele VMware-machines worden gehost op on-premises vSphere ESXi-servers. U wordt aangeraden een vCenter-server voor het beheren van de hosts. | Tijdens de implementatie van Site Recovery kunt u VMware-servers toevoegen aan de Recovery Services-kluis.
-**Gerepliceerde machines** | Mobility-Service is geïnstalleerd op elke VMware-VM die u wilt repliceren. | Het is raadzaam dat u de automatische installatie van de processerver toestaan. U kunt ook de service handmatig installeren of gebruiken van een methode geautomatiseerde implementatie, zoals System Center Configuration Manager.
+**Azure** | Een Azure-abonnement, Azure Storage account voor cache, Managed disk en Azure Network. | Gerepliceerde gegevens van on-premises Vm's worden opgeslagen in azure Storage. Virtuele Azure-machines worden gemaakt met de gerepliceerde gegevens wanneer u een failover van on-premises naar Azure uitvoert. De Azure-VM's maken verbinding met het virtuele Azure-netwerk wanneer ze worden gemaakt.
+**Computer van de configuratie server** | Één on-premises computer. We raden u aan deze uit te voeren als een VMware-VM die kan worden geïmplementeerd vanuit een gedownloade OVF-sjabloon.<br/><br/> Op de computer worden alle on-premises Site Recovery onderdelen uitgevoerd, waaronder de configuratie server, de proces server en de hoofddoel server. | **Configuratie server**: Coördineert de communicatie tussen on-premises en Azure, en beheert de gegevens replicatie.<br/><br/> **Processerver**: standaard geïnstalleerd op de configuratieserver. Het ontvangt replicatie gegevens; optimaliseert het met caching, compressie en versleuteling. en verzendt deze naar Azure Storage. De processerver installeert ook Azure Site Recovery Mobility Service op VM's die u wilt repliceren, en detecteert automatisch on-premises computers. Naarmate uw implementatie groeit, kunt u extra, afzonderlijke proces servers toevoegen om grotere volumes van replicatie verkeer af te handelen.<br/><br/> **Hoofddoel server**: standaard geïnstalleerd op de configuratieserver. De replicatie gegevens worden verwerkt tijdens de failback vanuit Azure. Voor grote implementaties kunt u een extra, afzonderlijke Master doel server toevoegen voor failback.
+**VMware-servers** | VMware-Vm's worden gehost op on-premises vSphere ESXi-servers. We raden aan dat een vCenter-Server de hosts beheert. | Tijdens Site Recovery implementatie voegt u VMware-servers toe aan de Recovery Services kluis.
+**Gerepliceerde machines** | Mobility service is geïnstalleerd op elke virtuele VMware-machine die u repliceert. | U wordt aangeraden automatische installatie vanaf de proces server toe te staan. U kunt de service ook hand matig installeren of een geautomatiseerde implementatie methode gebruiken, zoals System Center Configuration Manager.
 
 **VMware naar Azure-architectuur**
 
@@ -38,49 +38,49 @@ De volgende tabel en afbeelding vindt een weergave op hoog niveau van de onderde
 
 ## <a name="replication-process"></a>Replicatieproces
 
-1. Wanneer u replicatie voor een virtuele machine inschakelt, begint initiële replicatie naar Azure-opslag, met behulp van het opgegeven replicatiebeleid. Houd rekening met het volgende:
-    - Voor virtuele VMware-machines is de replicatie op blokniveau, in de buurt van continue, met behulp van de Mobility-service-agent die wordt uitgevoerd op de virtuele machine.
-    - De replicatie-beleidsinstellingen worden toegepast:
-        - **RPO-drempelwaarde**. Deze instelling heeft geen invloed op de replicatie. Dit helpt bij de bewaking. Een gebeurtenis geactiveerd en eventueel een e-mailbericht verzonden, als de huidige RPO overschrijdt de drempelwaarde die u opgeeft.
-        - **Bewaarperiode voor herstelpunten**. Deze instelling bepaalt hoe ver terug in de tijd die u gaan wilt wanneer er een onderbreking optreedt. Maximum bewaartermijn op premium storage is 24 uur. Op de standard-opslag is dit 72 uur. 
-        - **App-consistente momentopnamen**. App-consistente momentopname tilt elke 1 tot 12 uur, afhankelijk van de behoeften van uw app. Momentopnamen zijn standaard Azure blob-momentopnamen. De Mobility-agent die wordt uitgevoerd op een virtuele machine vraagt een VSS-momentopname in overeenstemming met deze instelling en bladwijzers die point-in-time als een toepassing die consistent punt in de stream van replicatie.
+1. Wanneer u replicatie voor een virtuele machine inschakelt, begint de initiële replicatie naar Azure Storage met behulp van het opgegeven replicatie beleid. Houd rekening met het volgende:
+    - Voor virtuele VMware-machines is de replicatie op blok niveau, bijna continu, met behulp van de Mobility Service-agent die op de virtuele machine wordt uitgevoerd.
+    - Alle instellingen voor het replicatie beleid worden toegepast:
+        - **RPO-drempel waarde**. Deze instelling heeft geen invloed op replicatie. Het helpt bij de bewaking. Er wordt een gebeurtenis gegenereerd en optioneel een e-mail verzonden als de huidige RPO de drempel waarde overschrijdt die u opgeeft.
+        - **Bewaar periode van het herstel punt**. Met deze instelling geeft u op hoe ver terug in de tijd die u wilt door gaan wanneer er een onderbreking optreedt. De maximale Bewaar periode voor Premium-opslag is 24 uur. In de standaard opslag is 72 uur. 
+        - **App-consistente moment opnamen**. De app-consistente moment opname kan elke 1 tot 12 uur duren, afhankelijk van de behoeften van uw app. Moment opnamen zijn standaard Azure Blob-moment opnamen. De Mobility-agent die wordt uitgevoerd op een VM, verzoekt een VSS-moment opname in overeenstemming met deze instelling en blad wijzers die als een toepassings consistent punt in de replicatie stroom wordt genoemd.
 
-2. Verkeer repliceert naar Azure storage-openbare eindpunten via internet. U kunt ook kunt u Azure ExpressRoute met [Microsoft-peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering). Het repliceren van verkeer via een site-naar-site virtueel particulier netwerk (VPN) van een on-premises site naar Azure wordt niet ondersteund.
-3. Nadat de initiële replicatie is voltooid, begint de replicatie van deltaverschillen naar Azure. Bijgehouden wijzigingen voor een virtuele machine worden verzonden naar de processerver.
-4. Communicatie gebeurt er als volgt uit:
+2. Verkeer wordt gerepliceerd naar open bare eind punten van Azure Storage via internet. U kunt ook Azure ExpressRoute gebruiken met [micro soft-peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering). Het repliceren van verkeer via een site-naar-site virtueel particulier netwerk (VPN) van een on-premises site naar Azure wordt niet ondersteund.
+3. Wanneer de initiële replicatie is voltooid, begint de replicatie van Delta wijzigingen naar Azure. Bijgehouden wijzigingen voor een machine worden verzonden naar de proces server.
+4. Communicatie gebeurt als volgt:
 
-    - Virtuele machines communiceren met de on-premises configuratieserver op poort 443 voor HTTPS inkomende, voor het replicatiebeheer van.
-    - De configuratieserver coördineert de replicatie met Azure via HTTPS-poort 443 uitgaande.
-    - Virtuele machines verzenden replicatiegegevens naar de processerver (die wordt uitgevoerd op de server configuration) op HTTPS-poort 9443 inkomende. Deze poort kan worden gewijzigd.
-    - De processerver ontvangt replicatiegegevens, optimaliseert en versleutelt deze en verzendt ze naar Azure storage via poort 443 uitgaande.
-5. De replicatiegegevens registreert eerste land in een cache-opslagaccount in Azure. Deze logboeken worden verwerkt en de gegevens worden opgeslagen in een door Azure beheerde schijf (met de naam als asr seed-schijf). De herstelpunten worden gemaakt op deze schijf.
-
-
+    - Vm's communiceren met de on-premises configuratie server op poort HTTPS 443 inkomend voor replicatie beheer.
+    - De configuratie Server organiseert de replicatie met Azure via poort HTTPS 443 uitgaand.
+    - Vm's verzenden replicatie gegevens naar de proces server (die wordt uitgevoerd op de computer van de configuratie server) op poort HTTPS 9443-binnenkomend. Deze poort kan worden gewijzigd.
+    - De proces server ontvangt replicatie gegevens, optimaliseert en versleutelt deze en verzendt deze naar Azure Storage via poort 443 uitgaand.
+5. De replicatie gegevens melden het eerste land in een cache-opslag account in Azure. Deze logboeken worden verwerkt en de gegevens worden opgeslagen in een Azure Managed disk (ook wel ASR-Seed-schijf genoemd). De herstel punten worden op deze schijf gemaakt.
 
 
-**VMware naar Azure replicatieproces**
+
+
+**Replicatie proces van VMware naar Azure**
 
 ![Replicatieproces](./media/vmware-azure-architecture/v2a-architecture-henry.png)
 
 ## <a name="failover-and-failback-process"></a>Failover- en failbackproces
 
-Nadat replicatie is ingesteld en u een Dr-herstelanalyse (testfailover) om te controleren of alles werkt zoals verwacht worden uitgevoerd, kunt u failover en failback uitvoeren als u wilt.
+Nadat de replicatie is ingesteld en u een nood herstel analyse (testfailover) uitvoert om te controleren of alles werkt zoals verwacht, kunt u failover en failback uitvoeren zoals u dat nodig hebt.
 
-1. U mislukt voor één machine uitvoeren of plannen om meerdere virtuele machines op hetzelfde moment een failover van een herstelpunt maken. Het voordeel van een plan voor herstel in plaats van één machine failover zijn onder andere:
-    - U kunt app-afhankelijkheden model door alle virtuele machines in de app in één herstelplan.
-    - U kunt scripts, Azure-runbooks, toevoegen en onderbreken voor de handmatige acties.
-2. Na de initiële failover wordt geactiveerd, wijst u het toe om toegang tot de workload via de Azure-VM.
-3. Als uw primaire on-premises site weer beschikbaar is, kunt u voorbereiden voor failback. Als u wilt uitvoeren van een failback, moet u voor het instellen van een infrastructuur voor failback, met inbegrip van:
+1. U voert een failover uit voor één computer of u maakt een herstel plan om meerdere Vm's tegelijk uit te voeren. Het voor deel van een herstel plan in plaats van de failover van één machine omvat:
+    - U kunt app-afhankelijkheden model leren door alle virtuele machines in de app in één herstel plan op te nemen.
+    - U kunt scripts, Azure-runbooks en pauzes voor hand matige acties toevoegen.
+2. Nadat u de eerste failover hebt geactiveerd, voert u deze uit om toegang te krijgen tot de workload vanuit de Azure-VM.
+3. Als uw primaire on-premises site weer beschikbaar is, kunt u voor bereidingen voor failback. Als u een failback wilt uitvoeren, moet u een failover-infra structuur instellen, waaronder:
 
-    * **Tijdelijke processerver in Azure**: Failback van Azure, voor het instellen van een Azure-VM om te fungeren als een processerver voor het afhandelen van replicatie van Azure. U kunt deze virtuele machine verwijderen wanneer de failback is voltooid.
-    * **VPN-verbinding**: Als u wilt uitvoeren van een failback, moet u een VPN-verbinding (of ExpressRoute) van het Azure-netwerk de on-premises site.
-    * **Afzonderlijke hoofddoelserver**: De hoofddoelserver die is geïnstalleerd met de configuratieserver op de on-premises virtuele VMware-machine wordt standaard de failback afgehandeld. Als u back grote hoeveelheden verkeer mislukt wilt, kunt u instellen van een afzonderlijke on-premises hoofddoelserver voor dit doel.
-    * **Failbackbeleid**: Als u wilt repliceren naar uw on-premises site, moet u een beleid voor failback. Dit beleid wordt automatisch gemaakt wanneer u een beleid voor replicatie van on-premises naar Azure maakt.
-4. Nadat de onderdelen in plaats daarvan de failback in drie acties zijn:
+    * **Tijdelijke proces server in azure**: Als u een failback van Azure wilt uitvoeren, stelt u een virtuele machine van Azure in om te fungeren als proces server voor het afhandelen van replicatie vanuit Azure. U kunt deze virtuele machine verwijderen wanneer de failback is voltooid.
+    * **VPN-verbinding**: Als u een failback wilt uitvoeren, hebt u een VPN-verbinding (of ExpressRoute) van het Azure-netwerk nodig naar de on-premises site.
+    * **Afzonderlijke hoofddoel server**: De Master doel server die is geïnstalleerd met de configuratie server op de on-premises virtuele VMware-machine, verwerkt standaard failback. Als u grote hoeveel heden verkeer wilt herstellen, moet u voor dit doel een afzonderlijke on-premises Master doel server instellen.
+    * **Failbackbeleid**: Als u terug wilt repliceren naar uw on-premises site, hebt u een failbackbeleid nodig. Dit beleid wordt automatisch gemaakt wanneer u een replicatie beleid maakt op basis van on-premises naar Azure.
+4. Nadat de onderdelen zijn geïmplementeerd, vindt failback plaats in drie acties:
 
-    - Fase 1: De Azure VM's opnieuw beveiligen zodat ze van Azure worden gerepliceerd naar de on-premises VMware-machines.
-    -  Fase 2: Een failover uitvoeren naar de on-premises site.
-    - Fase 3: Nadat de werkbelastingen terug zijn mislukt, opnieuw u replicatie voor de on-premises VM's inschakelen.
+    - Fase 1: Beveilig de Azure Vm's opnieuw, zodat ze worden gerepliceerd van Azure naar de on-premises VMware-Vm's.
+    -  Fase 2: Voer een failover uit naar de on-premises site.
+    - Fase 3: Nadat de workloads weer zijn hersteld, schakelt u de replicatie voor de on-premises Vm's opnieuw in.
     
  
 **VMware-failback van Azure**
@@ -90,4 +90,4 @@ Nadat replicatie is ingesteld en u een Dr-herstelanalyse (testfailover) om te co
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga als volgt [in deze zelfstudie](vmware-azure-tutorial.md) om in te schakelen van VMware naar Azure-replicatie.
+Volg [deze zelf studie om de](vmware-azure-tutorial.md) replicatie van VMware naar Azure in te scha kelen.

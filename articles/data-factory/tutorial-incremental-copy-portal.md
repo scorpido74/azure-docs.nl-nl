@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: e9284d34d3c5bc51c7d0648b24877a051df423d9
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3626e68c8cedfdd2d22f47cd92d6e7c4b8b5d180
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140708"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806444"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Stapsgewijs gegevens uit een Azure SQL-database laden in Azure Blob Storage
 In deze zelfstudie maakt u een Azure-gegevensfactory met een pijplijn waarmee deltagegevens uit een tabel in een Azure SQL-database worden geladen naar Azure Blob Storage. 
@@ -149,34 +149,28 @@ END
 ## <a name="create-a-data-factory"></a>Data factory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
-1. Selecteer in het menu links de optie **een resource** > maken**gegevens en analyses** > **Data Factory**: 
+2. Selecteer in het menu links de optie **een resource** > **Analytics** > -**Data Factory**maken: 
    
-   ![Selectie van Data Factory in het deelvenster Nieuw](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+   ![Selectie van Data Factory in het deelvenster Nieuw](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-2. Voer op de pagina **Nieuwe gegevensfactory** **ADFTutorialBulkCopyDF** in als de **naam**. 
-      
-     ![De pagina Nieuwe data factory](./media/tutorial-incremental-copy-portal/new-azure-data-factory.png)
+3. Voer op de pagina **Nieuwe gegevensfactory** **ADFTutorialBulkCopyDF** in als de **naam**. 
  
    De naam van de Azure-gegevensfactory moet **wereldwijd uniek** zijn. Als u een rood uitroepteken ziet met het volgende foutbericht, wijzigt u de naam van de gegevensfactory (bijvoorbeeld uwnaamADFIncCopyTutorialDF) en probeert u het opnieuw. Zie het artikel [Data factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
   
        `Data factory name "ADFIncCopyTutorialDF" is not available`
-3. Selecteer het Azure-**abonnement** waarin u de gegevensfactory wilt maken. 
-4. Voer een van de volgende stappen uit voor de **Resourcegroep**:
+4. Selecteer het Azure-**abonnement** waarin u de gegevensfactory wilt maken. 
+5. Voer een van de volgende stappen uit voor de **Resourcegroep**:
      
       - Selecteer **Bestaande gebruiken** en selecteer een bestaande resourcegroep in de vervolgkeuzelijst. 
       - Selecteer **Nieuwe maken** en voer de naam van een resourcegroep in.   
          
         Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/resource-group-overview.md) voor meer informatie.  
-4. Selecteer **V2** als de **versie**.
-5. Selecteer de **locatie** voor de gegevensfactory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
-6. Selecteer **Vastmaken aan dashboard**.     
-7. Klik op **Create**.      
-8. Op het dashboard ziet u de volgende tegel met de status: **Gegevensfactory implementeren**. 
-
-    ![tegel met de status 'gegevensfactory implementeren'](media/tutorial-incremental-copy-portal/deploying-data-factory.png)
+6. Selecteer **V2** als de **versie**.
+7. Selecteer de **locatie** voor de gegevensfactory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
+8. Klik op **Create**.      
 9. Na het aanmaken ziet u de pagina **Data Factory** zoals weergegeven in de afbeelding.
    
-   ![Startpagina van de gegevensfactory](./media/tutorial-incremental-copy-portal/data-factory-home-page.png)
+   ![Startpagina van de gegevensfactory](./media/doc-common-process/data-factory-home-page.png)
 10. Klik op de tegel **Author & Monitor** om de gebruikersinterface (UI) van Azure Data Factory te openen in een afzonderlijk tabblad.
 
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
@@ -184,58 +178,43 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
 
 1. Klik op de pagina **Aan de slag** van de Data Factory-UI op de tegel **Pijplijn maken**. 
 
-   ![Pagina Aan de slag van de Data Factory-UI](./media/tutorial-incremental-copy-portal/get-started-page.png)    
+   ![Pagina Aan de slag van de Data Factory-UI](./media/doc-common-process/get-started-page.png)    
 3. Voer op de pagina **Algemeen** in het venster **Eigenschappen** voor de pijplijn de naam **IncrementalCopyPipeline** in. 
 
-   ![Naam pijplijn](./media/tutorial-incremental-copy-portal/pipeline-name.png)
 4. We gaan de eerste opzoekactiviteit gebruiken om de oudste grenswaarde op te halen. Vouw in de **Activiteiten**-werkset de optie **Algemeen** uit. Gebruik vervolgens slepen-en-neerzetten om de **opzoekactiviteit** te verplaatsen naar het ontwerpoppervlak voor pijplijnen. Wijzig de naam van de activiteit in **LookupOldWaterMarkActivity**.
 
    ![Eerst opzoekactiviteit - naam](./media/tutorial-incremental-copy-portal/first-lookup-name.png)
 5. Ga naar het tabblad **Instellingen** en klik op **+ Nieuw** voor **Brongegevensset**. In deze stap maakt u een gegevensset die de gegevens in de **grenswaardetabel** vertegenwoordigt. Deze tabel bevat de oude grenswaarde die is gebruikt in de vorige kopieerbewerking. 
 
-   ![Menu Nieuwe gegevensset - oude grenswaarde](./media/tutorial-incremental-copy-portal/new-dataset-old-watermark.png)
-6. Selecteer in het venster **Nieuwe gegevensset** de optie **Azure SQL-database** en klik op **Voltooien**. Er wordt nu een nieuw tabblad geopend voor de gegevensset. 
+6. Selecteer in het venster **nieuwe gegevensset** de optie **Azure SQL database**en klik op **door gaan**. Er wordt een nieuw venster weer gegeven dat voor de gegevensset is geopend. 
 
-   ![Azure SQL-database selecteren](./media/tutorial-incremental-copy-portal/select-azure-sql-database-old-watermark.png)
-7. Voer in het venster Eigenschappen voor de gegevensset **WatermarkDataset** in als **Naam**.
+7. Voer in het venster **set-eigenschappen** voor de gegevensset **water Mark dataset** in als **naam**.
 
-   ![Grenswaardegegevensset - naam](./media/tutorial-incremental-copy-portal/watermark-dataset-name.png)
-8. Ga naar het tabblad **Verbinding** en klik op **+ Nieuw** om verbinding te maken met (een gekoppelde service te maken voor) uw Azure SQL-database. 
-
-   ![Knop Nieuwe gekoppelde service](./media/tutorial-incremental-copy-portal/watermark-dataset-new-connection-button.png)
-9. Voer in het venster **Nieuwe gekoppelde service** de volgende stappen uit:
+8. Voor **gekoppelde service**selecteert u **Nieuw**en voert u de volgende stappen uit:
 
     1. Voer **AzureSqlDatabaseLinkedService** in als **Naam**. 
     2. Selecteer uw Azure SQL-server als **Servernaam**
-    3. Voer de **naam van de gebruiker** in voor toegang tot de Azure SQL-server. 
-    4. Voer het **wachtwoord** voor de gebruiker in. 
+    3. Selecteer de **naam van uw data base** in de vervolg keuzelijst. 
+    4. Voer het**wacht woord**voor de **gebruikers naam** & in. 
     5. Als u de verbinding met de Azure SQL-database wilt testen, klikt u op **Verbinding testen**.
-    6. Klik op **Opslaan**.
-    7. Open het tabblad **Verbinding** en controleer of **AzureSqlDatabaseLinkedService** is geselecteerd als **Gekoppelde service**.
+    6. Klik op **Voltooien**.
+    7. Controleer of **AzureSqlDatabaseLinkedService** is geselecteerd voor de **gekoppelde service**.
        
         ![Venster Nieuwe gekoppelde service](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
-10. Selecteer **[dbo].[watermarktable]** als **Tabel**. Klik op **Gegevens vooraf bekijken** om een voorbeeld van de gegevens in de tabel te bekijken.
+    8. Selecteer **Finish**.
+9. Selecteer [dbo] op het tabblad **verbinding** **. [ watermarktable]** voor de **tabel**. Klik op **Gegevens vooraf bekijken** om een voorbeeld van de gegevens in de tabel te bekijken.
 
     ![Grenswaardegegevensset - verbindingsinstellingen](./media/tutorial-incremental-copy-portal/watermark-dataset-connection-settings.png)
-11. Ga naar de pijplijneditor door op het pijplijntabblad bovenaan te klikken of door in de structuurweergave aan de linkerkant op de naam van de pijplijn te klikken. Bevestig in het venster Eigenschappen voor de **opzoekactiviteit** dat **WatermarkDataset** is geselecteerd in het veld **Brongegevensset**. 
+10. Ga naar de pijplijneditor door op het pijplijntabblad bovenaan te klikken of door in de structuurweergave aan de linkerkant op de naam van de pijplijn te klikken. Bevestig in het venster Eigenschappen voor de **opzoekactiviteit** dat **WatermarkDataset** is geselecteerd in het veld **Brongegevensset**. 
 
-    ![Pijplijn - oude grenswaardegegevensset](./media/tutorial-incremental-copy-portal/pipeline-old-watermark-dataset-selected.png)
-12. Vouw in de **Activiteiten**-werkset de optie **Algemeen** uit. Gebruik vervolgens slepen-en-neerzetten om nog een **opzoekactiviteit** te verplaatsen naar het ontwerpoppervlak voor pijplijnen. Stel de naam op het tabblad **Algemeen** in het venster Eigenschappen in op **LookupNewWaterMarkActivity**. Met deze opzoekactiviteit wordt de nieuwe grenswaarde opgehaald uit de tabel met de brongegevens die moeten worden gekopieerd naar de bestemming. 
+11. Vouw in de **Activiteiten**-werkset de optie **Algemeen** uit. Gebruik vervolgens slepen-en-neerzetten om nog een **opzoekactiviteit** te verplaatsen naar het ontwerpoppervlak voor pijplijnen. Stel de naam op het tabblad **Algemeen** in het venster Eigenschappen in op **LookupNewWaterMarkActivity**. Met deze opzoekactiviteit wordt de nieuwe grenswaarde opgehaald uit de tabel met de brongegevens die moeten worden gekopieerd naar de bestemming. 
 
-    ![Tweede opzoekactiviteit - naam](./media/tutorial-incremental-copy-portal/second-lookup-activity-name.png)
-13. Ga in het venster Eigenschappen voor de tweede **opzoekactiviteit** naar het tabblad **Instellingen** en klik op **Nieuw**. U maakt een gegevensset om te verwijzen naar de brontabel met de nieuwe grenswaarde (maximumwaarde van LastModifyTime). 
+12. Ga in het venster Eigenschappen voor de tweede **opzoekactiviteit** naar het tabblad **Instellingen** en klik op **Nieuw**. U maakt een gegevensset om te verwijzen naar de brontabel met de nieuwe grenswaarde (maximumwaarde van LastModifyTime). 
 
-    ![Tweede opzoekactiviteit - nieuwe gegevensset](./media/tutorial-incremental-copy-portal/second-lookup-activity-settings-new-button.png)
-14. Selecteer in het venster **Nieuwe gegevensset** de optie **Azure SQL-database** en klik op **Voltooien**. Er wordt nu een nieuw tabblad geopend voor deze gegevensset. Ook ziet u de gegevensset in de structuurweergave. 
-15. Voer op het tabblad **Algemeen** in het venster Eigenschappen **SourceDataset** in als **Naam**. 
-
-    ![Brongegevensset - naam](./media/tutorial-incremental-copy-portal/source-dataset-name.png)
-16. Ga naar het tabblad **Verbinding** en voer de volgende stappen uit: 
-
-    1. Selecteer **AzureSqlDatabaseLinkedService** als **Gekoppelde service**.
-    2. Selecteer **[dbo].[data_source_table]** als Tabel. Verderop in de zelfstudie geeft u een query op voor deze gegevensset. De query heeft voorrang op de tabel die u in deze stap opgeeft. 
-
-        ![Tweede opzoekactiviteit - nieuwe gegevensset](./media/tutorial-incremental-copy-portal/source-dataset-connection.png)
+13. Selecteer in het venster **nieuwe gegevensset** de optie **Azure SQL database**en klik op **door gaan**. 
+14. Voer in het venster **set Properties** **Source dataset** in als **name**. Selecteer **AzureSqlDatabaseLinkedService** als **Gekoppelde service**.
+15. Selecteer **[dbo].[data_source_table]** als Tabel. Verderop in de zelfstudie geeft u een query op voor deze gegevensset. De query heeft voorrang op de tabel die u in deze stap opgeeft.
+16. Selecteer **Finish**. 
 17. Ga naar de pijplijneditor door op het pijplijntabblad bovenaan te klikken of door in de structuurweergave aan de linkerkant op de naam van de pijplijn te klikken. Bevestig in het venster Eigenschappen voor de **opzoekactiviteit** dat **SourceDataset** is geselecteerd in het veld **Brongegevensset**. 
 18. Selecteer **Query** in het veld **Query gebruiken** en voer de volgende query in: u selecteert alleen de maximumwaarde van **LastModifytime** uit **data_source_table**. Zorg ervoor dat u ook alleen de **eerste rij**hebt ingeschakeld.
 
@@ -244,15 +223,13 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     ```
 
     ![Tweede opzoekactiviteit - query](./media/tutorial-incremental-copy-portal/query-for-new-watermark.png)
-19. Vouw in de **Activiteiten**-werkset de optie **Gegevensstroom** uit. Gebruik vervolgens slepen-en-neerzetten om de **kopieeractiviteit** uit de Activiteiten-werkset te verplaatsen, en stel de naam in op **IncrementalCopyActivity**. 
+19. Vouw in de werkset **activiteiten** de optie **& trans formatie verplaatsen**uit en sleep de **Kopieer** activiteit uit de werkset activiteiten en stel de naam in op **IncrementalCopyActivity**. 
 
-    ![Kopieeractiviteit - naam](./media/tutorial-incremental-copy-portal/copy-activity-name.png)
 20. **Verbind beide opzoekactiviteiten met de kopieeractiviteit** door de **groene knop** die is gekoppeld aan de opzoekactiviteiten, naar de kopieeractiviteit te slepen. Laat de muisknop los als u ziet dat de randkleur van de kopieeractiviteit is gewijzigd in blauw. 
 
     ![Opzoekactiviteiten verbinden met kopieeractiviteit](./media/tutorial-incremental-copy-portal/connection-lookups-to-copy.png)
 21. Selecteer de **kopieeractiviteit** en controleer of de eigenschappen voor de activiteit worden weergegeven in het venster **Eigenschappen**. 
 
-    ![Eigenschappen van de kopieeractiviteit](./media/tutorial-incremental-copy-portal/back-to-copy-activity-properties.png)
 22. Ga naar het tabblad **Bron** in het venster **Eigenschappen** en voer de volgende stappen uit:
 
     1. Selecteer **SourceDataset** in het veld **Brongegevensset**. 
@@ -266,40 +243,27 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
         ![Kopieeractiviteit - bron](./media/tutorial-incremental-copy-portal/copy-activity-source.png)
 23. Ga naar het tabblad **Sink** en klik op **+ Nieuw** voor het veld **Sink-gegevensset**. 
 
-    ![Knop Nieuwe gegevensset](./media/tutorial-incremental-copy-portal/new-sink-dataset-button.png)
-24. In deze zelfstudie is het sink-gegevensexemplaar van het type Azure Blob-opslag. Selecteer daarom **Azure Blob-opslag** en klik in het venster **Nieuwe gegevensset** op **Voltooien**. 
-
-    ![Azure Blob-opslag selecteren](./media/tutorial-incremental-copy-portal/select-azure-blob-storage.png)
-25. Voer op het tabblad **Algemeen** in het venster Eigenschappen voor de gegevensset **SinkDataset** in als **Naam**. 
-
-    ![Sink-gegevensset - naam](./media/tutorial-incremental-copy-portal/sink-dataset-name.png)
-26. Ga naar het tabblad **Verbinding** en klik op **+ Nieuw**. In deze stap maakt u een verbinding (gekoppelde service) voor uw **Azure Blob-opslag**.
-
-    ![Sink-gegevensset - nieuwe verbinding](./media/tutorial-incremental-copy-portal/sink-dataset-new-connection.png)
-26. Voer in het venster **Nieuwe gekoppelde service** de volgende stappen uit: 
+24. In deze zelfstudie is het sink-gegevensexemplaar van het type Azure Blob-opslag. Selecteer daarom **Azure Blob Storage**en klik op **door gaan** in het venster **nieuwe gegevensset** . 
+25. Selecteer in het venster **indeling selecteren** het notatie type van uw gegevens en klik op **door gaan**.
+25. Voer in het venster **set Properties** **SinkDataset** in als **name**. Voor **gekoppelde service**selecteert u **+ Nieuw**. In deze stap maakt u een verbinding (gekoppelde service) voor uw **Azure Blob-opslag**.
+26. Voer de volgende stappen uit in het venster **nieuwe gekoppelde service (Azure Blob Storage)** : 
 
     1. Voer **AzureStorageLinkedService** in als **Naam**. 
     2. Selecteer uw Azure Storage-account bij **Storage account name**.
-    3. Klik op **Opslaan**. 
+    3. Test de verbinding en klik vervolgens op **volt ooien**. 
 
-        ![Gekoppelde Azure Storage-service - instellingen](./media/tutorial-incremental-copy-portal/azure-storage-linked-service-settings.png)
-27. Voer op het tabblad **Verbinding** de volgende stappen uit:
+27. Controleer in het venster **set Properties** of **AzureStorageLinkedService** is geselecteerd voor **gekoppelde service**. Selecteer vervolgens **Voltooien**.
+28. Ga naar het tabblad **verbinding** van SinkDataset en voer de volgende stappen uit:
+    1. Voer voor **het veld bestandspad** **adftutorial/incrementalcopy**in. **adftutorial** is de naam van de blob-container en **incrementalcopy** is de naam van de map. In dit fragment wordt ervan uitgegaan dat u een blobcontainer hebt met de naam adftutorial in uw Blob-opslag. Maak de container als deze bestaat niet of stel deze in op de naam van een bestaande container. Als de uitvoermap **incrementalcopy** niet bestaat, wordt deze automatisch gemaakt in Azure Data Factory. U kunt ook de knop **Bladeren** voor het **bestandspad** gebruiken om naar een map in een blob-container te navigeren.
+    2. Voor het **bestand** gedeelte van het **veld bestandspad** selecteert u **dynamische inhoud toevoegen [Alt + P]** en voert `@CONCAT('Incremental-', pipeline().RunId, '.txt')`u vervolgens in het geopende venster in. Selecteer vervolgens **Voltooien**. De bestandsnaam wordt dynamisch gegenereerd met behulp van de expressie. Elke pijplijnuitvoering heeft een unieke id. De kopieeractiviteit gebruikt de run-id om de bestandsnaam te genereren. 
 
-    1. Controleer of **AzureStorageLinkedService** is geselecteerd als **Gekoppelde service**. 
-    2. Voer **adftutorial/incrementalcopy** in als het **mapgedeelte** van het **bestandspad**. **adftutorial** is de naam van de blob-container en **incrementalcopy** is de naam van de map. In dit fragment wordt ervan uitgegaan dat u een blobcontainer hebt met de naam adftutorial in uw Blob-opslag. Maak de container als deze bestaat niet of stel deze in op de naam van een bestaande container. Als de uitvoermap **incrementalcopy** niet bestaat, wordt deze automatisch gemaakt in Azure Data Factory. U kunt ook de knop **Bladeren** voor het **bestandspad** gebruiken om naar een map in een blob-container te navigeren. .RunId, '.txt')`.
-    3. Voer `@CONCAT('Incremental-', pipeline().RunId, '.txt')` in voor het **bestandsnaamgedeelte** van het **bestandspad**. De bestandsnaam wordt dynamisch gegenereerd met behulp van de expressie. Elke pijplijnuitvoering heeft een unieke id. De kopieeractiviteit gebruikt de run-id om de bestandsnaam te genereren. 
-
-        ![Sink-gegevensset - verbindingsinstellingen](./media/tutorial-incremental-copy-portal/sink-dataset-connection-settings.png)
 28. Ga naar de **pijplijneditor** door op het pijplijntabblad bovenaan te klikken of door in de structuurweergave aan de linkerkant op de naam van de pijplijn te klikken. 
 29. Vouw in de **Activiteiten**-werkset de optie **Algemeen** uit. Gebruik vervolgens slepen-en-neerzetten om de **opgeslagen-procedureactiviteit** uit de **Activiteiten**-werkset te verplaatsen naar het ontwerpoppervlak voor pijplijnen. **Verbind** de groene uitvoer (geslaagd) van de **kopieeractiviteit** met de **opgeslagen-procedureactiviteit**. 
-    
-    ![Kopieeractiviteit - bron](./media/tutorial-incremental-copy-portal/connect-copy-to-stored-procedure-activity.png)
+
 24. Selecteer **Opgeslagen procedureactiviteit** in de pijplijnontwerper en verander de naam ervan in **StoredProceduretoWriteWatermarkActivity**. 
 
-    ![Opgeslagen-procedureactiviteit - naam](./media/tutorial-incremental-copy-portal/stored-procedure-activity-name.png)
-25. Ga naar het tabblad **SQL-account** en selecteer *AzureSqlDatabaseLinkedService*\* als **Gekoppelde service**. 
+25. Ga naar het tabblad **SQL-account** en selecteer **AzureSqlDatabaseLinkedService** voor **gekoppelde service**. 
 
-    ![Opgeslagen-procedureactiviteit - SQL-account](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. Ga naar het tabblad **Opgeslagen procedure** en voer de volgende stappen uit: 
 
     1. Selecteer **usp_write_watermark** als naam van de **opgeslagen procedure**. 
@@ -313,25 +277,20 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     ![Opgeslagen-procedureactiviteit - instellingen voor de opgeslagen procedure](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. Klik in de werkbalk op **Valideren** om de instellingen voor de pijplijn te valideren. Controleer of er geen validatiefouten zijn. Klik om >> om het venster **Pijplijnvalidatierapport** te sluiten.   
 
-    ![Pijplijn valideren](./media/tutorial-incremental-copy-portal/validate-pipeline.png)
 28. Publiceer entiteiten (gekoppelde services, gegevenssets en pijplijnen) naar de Azure Data Factory-service door op de knop **Alles publiceren** te klikken. Wacht tot u een bericht ziet waarin staat dat het publiceren is voltooid. 
 
-    ![De knop Publiceren](./media/tutorial-incremental-copy-portal/publish-button.png)
 
 ## <a name="trigger-a-pipeline-run"></a>Een pijplijnuitvoering activeren
-1. Klik in de werkbalk op **Activeren** en klik op **Nu activeren**. 
+1. Klik op **trigger toevoegen** op de werk balk en klik op **nu activeren**. 
 
-    ![Knop Nu activeren](./media/tutorial-incremental-copy-portal/trigger-now.png)
 2. Selecteer in het venster **Pijplijnuitvoering** de optie **Voltooien**. 
 
 ## <a name="monitor-the-pipeline-run"></a>De pijplijnuitvoering controleren.
 
 1. Ga naar het tabblad **Controleren** aan de linkerkant. U kunt de status van de pijplijnuitvoering zien die is geactiveerd met de handmatige trigger. Klik op de knop **Vernieuwen** om de lijst te vernieuwen. 
     
-    ![Pijplijnuitvoeringen](./media/tutorial-incremental-copy-portal/pipeline-runs.png)
 2. Klik op de eerste koppeling (**Uitvoeringen van activiteit weergeven**) in de kolom **Acties** om de uitvoeringen van activiteit weer te geven die zijn gekoppeld aan deze pijplijnuitvoering. Als u wilt terugkeren naar de vorige weergave, klikt u bovenaan op **Pijplijnen**. Klik op de knop **Vernieuwen** om de lijst te vernieuwen.
 
-    ![Uitvoeringen van activiteit](./media/tutorial-incremental-copy-portal/activity-runs.png)
 
 ## <a name="review-the-results"></a>De resultaten bekijken
 1. Maak verbinding met uw Azure Storage-account met behulp van hulpprogramma's zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/). Controleer of er een uitvoerbestand is gemaakt in de map **incrementalcopy** in de container **adftutorial**.
@@ -388,19 +347,15 @@ PersonID | Name | LastModifytime
 ## <a name="trigger-another-pipeline-run"></a>Een andere pijplijnuitvoering activeren
 1. Ga naar het tabblad **Bewerken**. Klik op de pijplijn in de structuurweergave als deze niet is geopend in de ontwerper. 
 
-    ![Knop Nu activeren](./media/tutorial-incremental-copy-portal/edit-tab.png)
-2. Klik in de werkbalk op **Activeren** en klik op **Nu activeren**. 
+2. Klik op **trigger toevoegen** op de werk balk en klik op **nu activeren**. 
 
-    ![Knop Nu activeren](./media/tutorial-incremental-copy-portal/trigger-now.png)
 
 ## <a name="monitor-the-second-pipeline-run"></a>Controleer de tweede pijplijnuitvoering.
 
 1. Ga naar het tabblad **Controleren** aan de linkerkant. U kunt de status van de pijplijnuitvoering zien die is geactiveerd met de handmatige trigger. Klik op de knop **Vernieuwen** om de lijst te vernieuwen. 
     
-    ![Pijplijnuitvoeringen](./media/tutorial-incremental-copy-portal/pipeline-runs-2.png)
 2. Klik op de eerste koppeling (**Uitvoeringen van activiteit weergeven**) in de kolom **Acties** om de uitvoeringen van activiteit weer te geven die zijn gekoppeld aan deze pijplijnuitvoering. Als u wilt terugkeren naar de vorige weergave, klikt u bovenaan op **Pijplijnen**. Klik op de knop **Vernieuwen** om de lijst te vernieuwen.
 
-    ![Uitvoeringen van activiteit](./media/tutorial-incremental-copy-portal/activity-runs-2.png)
 
 ## <a name="verify-the-second-output"></a>De tweede uitvoer controleren
 

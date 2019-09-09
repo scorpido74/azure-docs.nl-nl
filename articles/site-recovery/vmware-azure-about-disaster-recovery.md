@@ -1,125 +1,125 @@
 ---
-title: Over herstel na noodgevallen van virtuele VMware-machines naar Azure met behulp van Azure Site Recovery | Microsoft Docs
-description: Dit artikel bevat een overzicht van herstel na noodgevallen van virtuele VMware-machines naar Azure met behulp van de Azure Site Recovery-service.
+title: Over nood herstel van virtuele VMware-machines naar Azure met behulp van Azure Site Recovery | Microsoft Docs
+description: Dit artikel bevat een overzicht van nood herstel van virtuele VMware-machines naar Azure met behulp van de Azure Site Recovery-service.
 author: raynew
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 5/30/2019
+ms.date: 9/09/2019
 ms.author: raynew
-ms.openlocfilehash: a00c129126886bd71c82940aa340a8db29cf7a0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dca8174caabf4799c338d780a78ba58f1af5a2f1
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417789"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814323"
 ---
-# <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Over herstel na noodgevallen van virtuele VMware-machines naar Azure
+# <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Over nood herstel van virtuele VMware-machines naar Azure
 
-In dit artikel biedt een overzicht van herstel na noodgevallen voor on-premises VMware-machines naar Azure met de [Azure Site Recovery](site-recovery-overview.md) service.
+Dit artikel bevat een overzicht van herstel na nood gevallen voor on-premises virtuele VMware-machines naar Azure met behulp van de [Azure site Recovery](site-recovery-overview.md) -service.
 
 ## <a name="what-is-bcdr"></a>Wat is BCDR?
 
-Een strategie voor zakelijke continuïteit en noodherstel (BCDR) recovery helpt uw bedrijf bij te houden. BCDR gegevens veilig en beschikbaar houdt en zorgt ervoor dat apps actief blijven tijdens geplande uitvaltijd en onverwachte storingen. Naast platform BCDR-functies, zoals regioparen en opslag met hoge beschikbaarheid biedt Azure Recovery Services als een integraal onderdeel van uw BCDR-oplossing. Recovery services omvatten: 
+Een strategie voor bedrijfs continuïteit en herstel na nood gevallen (BCDR) zorgt ervoor dat uw bedrijf actief blijft. Tijdens geplande uitval tijd en onverwachte storingen houdt BCDR gegevens veilig en beschikbaar en zorgt u ervoor dat apps blijven werken. Naast platform BCDR-functies, zoals regionale koppeling en opslag met hoge Beschik baarheid, biedt Azure Recovery Services als een integraal onderdeel van uw BCDR-oplossing. Recovery Services omvatten: 
 
-- [Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) back-ups van uw on-premises en Azure VM-gegevens. U kunt back-up van een bestand en mappen, specifieke werkbelastingen of een hele virtuele machine. 
-- [Azure Site Recovery](site-recovery-overview.md) biedt tolerantie en herstel na noodgevallen voor apps en workloads die worden uitgevoerd op on-premises virtuele machines of Azure IaaS VM's. Site Recovery deelt replicatie en failover naar Azure worden verwerkt als er uitval optreedt. Ook verwerkt deze herstel van Azure naar uw primaire site. 
+- [Azure backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) maakt back-ups van uw on-premises en Azure VM-gegevens. U kunt een back-up maken van een bestand en mappen, specifieke workloads of een volledige VM. 
+- [Azure site Recovery](site-recovery-overview.md) biedt flexibiliteit en herstel na een nood geval voor apps en workloads die worden uitgevoerd op on-premises machines of Azure IaaS-vm's. Site Recovery organiseert de replicatie en verwerkt de failover naar Azure wanneer er storingen optreden. Ook wordt het herstel van Azure naar uw primaire site verwerkt. 
 
-## <a name="how-does-site-recovery-do-disaster-recovery"></a>Hoe doet Site Recovery herstel na noodgevallen?
+## <a name="how-does-site-recovery-do-disaster-recovery"></a>Hoe werkt Site Recovery herstel na nood gevallen?
 
-1. Na het voorbereiden van Azure en uw on-premises site, die u kunt instellen en replicatie inschakelen voor uw on-premises machines.
-2. Site Recovery coördineert de initiële replicatie van de virtuele machine, in overeenstemming met de beleidsinstellingen van uw.
-3. Site Recovery worden na de initiële replicatie deltawijzigingen gerepliceerd naar Azure. 
-4. Als alles wordt replicatie uitgevoerd zoals verwacht, kunt u een Dr-herstelanalyse uitvoeren.
-    - De analyse zorgt ervoor dat de failover werkt zoals verwacht wanneer een echte noodzaak daartoe zich voordoet.
-    - De analyse voert een testfailover zonder enige impact op uw productieomgeving.
-5. Als er een storing optreedt, moet u een volledige failover naar Azure uitvoert. Kunt u een failover uitgevoerd voor een enkele machine, of u een herstelplan waarin meerdere virtuele machines op hetzelfde moment een failover kunt maken.
-6. Bij failover worden virtuele Azure-machines gemaakt vanuit de VM-gegevens in de beheerde schijven of storage-accounts. Gebruikers kunnen doorgaan met het openen van toepassingen en workloads van de Azure VM
-7. Als uw on-premises site weer beschikbaar is, schakelt u van Azure.
-8. Nadat u een failback uitvoeren en vanaf uw primaire locatie zodra er meer werken, start u voor het repliceren van on-premises machines naar Azure is het opnieuw.
-
-
-## <a name="how-do-i-know-if-my-environment-is-suitable-for-disaster-recovery-to-azure"></a>Hoe weet ik of Mijn omgeving geschikt voor herstel na noodgevallen naar Azure is?
-
-Site Recovery kan elke workload die worden uitgevoerd op een ondersteunde VMware-VM of een fysieke server gerepliceerd. Hier volgen de dingen die u in uw omgeving nodig hebt om te controleren:
-
-- Als u virtuele VMware-machines repliceert, voert u de juiste versies van VMware-servers voor virtualisatie? [Kom hier](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers).
-- Zijn de machines die u wilt repliceren met een ondersteund besturingssysteem? [Kom hier](vmware-physical-azure-support-matrix.md#replicated-machines).
-- Voor herstel na noodgevallen Linux, worden computers een ondersteunde bestandsopslag met system/Gast uitgevoerd? [Kom hier](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)
-- De machines die u wilt repliceren voldoen aan de vereisten voor Azure? [Kom hier](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
-- Wordt uw netwerkconfiguratie ondersteund? [Kom hier](vmware-physical-azure-support-matrix.md#network).
-- Wordt de opslagconfiguratie ondersteund? [Kom hier](vmware-physical-azure-support-matrix.md#storage).
+1. Nadat u Azure en uw on-premises site hebt voor bereid, kunt u replicatie voor uw on-premises machines instellen en inschakelen.
+2. Site Recovery is de initiële replicatie van de computer in overeenstemming met uw beleids instellingen.
+3. Na de eerste replicatie repliceert Site Recovery Delta wijzigingen naar Azure. 
+4. Wanneer alles naar verwachting wordt gerepliceerd, voert u een nood herstel analyse uit.
+    - De analyse helpt ervoor te zorgen dat failover werkt zoals verwacht, wanneer er echt behoefte ontstaat.
+    - De analyse voert een testfailover uit zonder dat dit van invloed is op uw productie omgeving.
+5. Als er een storing optreedt, voert u een volledige failover uit naar Azure. U kunt een failover uitvoeren voor een afzonderlijke computer of u kunt een herstel plan maken dat op hetzelfde moment een failover voor meerdere machines tot gevolg heeft.
+6. Bij failover worden virtuele Azure-machines gemaakt op basis van de VM-gegevens in beheerde schijven of opslag accounts. Gebruikers kunnen apps en workloads van de Azure-VM blijven gebruiken
+7. Als uw on-premises site weer beschikbaar is, kunt u een failback uitvoeren van Azure.
+8. Nadat u eenmaal een failback hebt uitgevoerd en vanaf uw primaire site hebt gewerkt, kunt u de on-premises Vm's opnieuw repliceren naar Azure.
 
 
-## <a name="what-do-i-need-to-set-up-in-azure-before-i-start"></a>Wat heb ik nodig om in te stellen in Azure voordat ik beginnen?
+## <a name="how-do-i-know-if-my-environment-is-suitable-for-disaster-recovery-to-azure"></a>Hoe kan ik weet of mijn omgeving geschikt is voor herstel na nood gevallen naar Azure?
 
-U moet de volgende voorbereidingen in Azure:
+Site Recovery kunt elke werk belasting repliceren die wordt uitgevoerd op een ondersteunde VMware-VM of fysieke server. Hier vindt u de dingen die u nodig hebt om uw omgeving te controleren:
 
-1. Controleer of uw Azure-account heeft machtigingen voor het maken van virtuele machines in Azure.
-2. Maak een Azure-netwerk dat Azure-VM's deel uitmaken gaan wanneer ze na een failover uit storage-accounts of beheerde schijven worden gemaakt.
-3. Instellen van een Azure Recovery Services-kluis voor Site Recovery. De kluis zich bevindt in de Azure-portal en wordt gebruikt om te implementeren, configureren, beheren, controleren en oplossen van uw implementatie van Site Recovery.
+- Als u virtuele VMware-machines repliceert, voert u de juiste versies van VMware Virtualization-servers uit? [Hier controleren](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers).
+- Zijn de machines die u wilt repliceren met een ondersteund besturings systeem? [Hier controleren](vmware-physical-azure-support-matrix.md#replicated-machines).
+- Voor Linux-herstel na nood gevallen zijn machines met een ondersteund bestands systeem/gast opslag? [Hier controleren](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)
+- Moeten de computers die u wilt repliceren voldoen aan de vereisten van Azure? [Hier controleren](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
+- Wordt de netwerk configuratie ondersteund? [Hier controleren](vmware-physical-azure-support-matrix.md#network).
+- Wordt uw opslag configuratie ondersteund? [Hier controleren](vmware-physical-azure-support-matrix.md#storage).
+
+
+## <a name="what-do-i-need-to-set-up-in-azure-before-i-start"></a>Wat moet ik instellen in azure voordat ik start?
+
+In azure moet u het volgende voorbereiden:
+
+1. Controleer of uw Azure-account machtigingen heeft voor het maken van Vm's in Azure.
+2. Maak een Azure-netwerk waaraan Azure Vm's worden toegevoegd wanneer ze na een failover vanuit opslag accounts of beheerde schijven worden gemaakt.
+3. Stel een Azure Recovery Services kluis in voor Site Recovery. De kluis bevindt zich in de Azure Portal en wordt gebruikt om uw Site Recovery-implementatie te implementeren, te configureren, te organiseren, te controleren en problemen op te lossen.
 
 *Meer hulp nodig?*
 
-Meer informatie over het instellen van Azure door [verificatie van uw account](tutorial-prepare-azure.md#verify-account-permissions), maken een [netwerk](tutorial-prepare-azure.md#set-up-an-azure-network), en [instellen van een kluis](tutorial-prepare-azure.md#create-a-recovery-services-vault).
+Meer informatie over het instellen van Azure door [uw account te verifiëren](tutorial-prepare-azure.md#verify-account-permissions), een [netwerk](tutorial-prepare-azure.md#set-up-an-azure-network)te maken en [een kluis](tutorial-prepare-azure.md#create-a-recovery-services-vault)in te stellen.
 
 
 
-## <a name="what-do-i-need-to-set-up-on-premises-before-i-start"></a>Wat heb ik nodig voor het instellen van on-premises voordat ik beginnen?
+## <a name="what-do-i-need-to-set-up-on-premises-before-i-start"></a>Wat moet ik on-premises instellen voordat ik aan het begin ben?
 
-On-premises dit is wat u nodig hebt om te doen:
+On-premises is wat u moet doen:
 
 1. U moet een aantal accounts instellen:
 
-    - Als u virtuele VMware-machines repliceert, is een account voor Site Recovery voor toegang tot vCenter-Server of vSphere ESXi-hosts nodig voor het automatisch detecteren van virtuele machines.
-    - Er is een account nodig voor het installeren van de Site Recovery Mobility service-agent op elke fysieke computer of de virtuele machine die u wilt repliceren.
+    - Als u virtuele VMware-machines repliceert, is er een account nodig om Site Recovery toegang te krijgen tot vCenter Server-of vSphere ESXi-hosts om Vm's automatisch te detecteren.
+    - Er is een account nodig om de Site Recovery Mobility Service-agent te installeren op elke fysieke machine of VM die u wilt repliceren.
 
-2. U moet de compatibiliteit van uw VMware-infrastructuur controleren als u die eerder niet hebt gedaan.
-3. Zorg ervoor dat u verbinding met virtuele Azure-machines na een failover maken kunt. Instellen van RDP voor on-premises Windows-computers of SSH op Linux-machines.
+2. Als u dit nog niet hebt gedaan, moet u de compatibiliteit van uw VMware-infra structuur controleren.
+3. Zorg ervoor dat u na een failover verbinding kunt maken met virtuele Azure-machines. U kunt RDP instellen op on-premises Windows-computers of SSH op Linux-machines.
 
 *Meer hulp nodig?*
-- Accounts voor te bereiden [automatische detectie](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) en voor [installatie van de Mobility-service](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-mobility-service-installation).
-- [Controleer of](vmware-azure-tutorial-prepare-on-premises.md#check-vmware-requirements) uw VMware-instellingen die compatibel zijn.
-- [Voorbereiden](vmware-azure-tutorial-prepare-on-premises.md#prepare-to-connect-to-azure-vms-after-failover) zodat u verbinding in Azure na een failover maken.
-- Als u meer gedetailleerde informatie over het instellen van het IP-adressen voor virtuele Azure-machines na een failover wilt [Lees dit artikel](concepts-on-premises-to-azure-networking.md).
+- Accounts voorbereiden voor [Automatische detectie](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) en voor [de installatie van de Mobility-service](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-mobility-service-installation).
+- [Controleer of](vmware-azure-tutorial-prepare-on-premises.md#check-vmware-requirements) uw VMware-instellingen compatibel zijn.
+- [Bereid](vmware-azure-tutorial-prepare-on-premises.md#prepare-to-connect-to-azure-vms-after-failover) u voor op om verbinding te maken in azure na een failover.
+- [Lees dit artikel](concepts-on-premises-to-azure-networking.md)als u meer gedetailleerde informatie wilt over het instellen van IP-adres sering voor Azure-vm's na een failover.
 
-## <a name="how-do-i-set-up-disaster-recovery"></a>Hoe stel ik u herstel na noodgevallen?
+## <a name="how-do-i-set-up-disaster-recovery"></a>Hoe kan ik herstel na nood gevallen instellen?
 
-Nadat u uw infrastructuur van Azure en on-premises geïmplementeerd hebt, kunt u herstel na noodgevallen instellen.
+Nadat u uw Azure-en on-premises infra structuur hebt geïmplementeerd, kunt u herstel na nood gevallen instellen.
 
-1. Voor informatie over de onderdelen die u moet implementeren, raadpleegt de [VMware naar Azure-architectuur](vmware-azure-architecture.md), en de [fysiek naar Azure-architectuur](physical-azure-architecture.md). Er zijn een aantal onderdelen, dus is het belangrijk om te begrijpen hoe ze allemaal bij elkaar passen.
-2. **Bronomgeving**: Als een eerste stap in de implementatie, moet u uw replicatiebronomgeving instellen. U opgeven wat u wilt repliceren en waar u naar wilt repliceren.
-3. **Configuratieserver**: U moet een configuratieserver in uw on-premises bron-omgeving instellen:
-    - De configuratieserver is een één on-premises machine. Voor herstel na noodgevallen VMware, wordt u aangeraden als een VMware-VM die kunnen worden geïmplementeerd vanaf een downloadbare OVF-sjabloon te implementeren.
-    - De configuratieserver coördineert de communicatie tussen on-premises en Azure
-    - Een aantal andere onderdelen die worden uitgevoerd op de servercomputer van de configuratie.
-        - De processerver ontvangt, optimaliseert en replicatiegegevens naar de cache-opslagaccount in Azure worden verzonden. Ook verwerkt deze automatische installatie van de Mobility-service op computers die u repliceren wilt, en voert automatische detectie van virtuele machines op VMware-servers.
+1. Bekijk de [architectuur van VMware naar Azure](vmware-azure-architecture.md)en de [fysieke naar Azure-architectuur](physical-azure-architecture.md)om inzicht te krijgen in de onderdelen die u moet implementeren. Er zijn een aantal onderdelen, dus is het belang rijk om te begrijpen hoe deze allemaal bij elkaar passen.
+2. **Bron omgeving**: Als eerste stap in de implementatie stelt u de replicatie bron omgeving in. U geeft op wat u wilt repliceren en waar u naar wilt repliceren.
+3. **Configuratie server**: U moet een configuratie server instellen in uw on-premises bron omgeving:
+    - De configuratie server is één on-premises computer. Voor nood herstel van VMware raden wij aan dat u deze implementeert als een VMware-VM die kan worden geïmplementeerd vanuit een download bare OVF-sjabloon.
+    - De configuratie server coördineert de communicatie tussen on-premises en Azure
+    - Een aantal andere onderdelen wordt uitgevoerd op de computer van de configuratie server.
+        - De proces server ontvangt, optimaliseert en verzendt replicatie gegevens naar het cache-opslag account in Azure. Het behandelt ook de automatische installatie van de Mobility-service op computers die u wilt repliceren en voert automatische detectie van Vm's op VMware-servers uit.
         - Op de hoofddoelserver worden de replicatiegegevens tijdens de failback vanuit Azure afgehandeld.
-    - Instellen bevat de configuratieserver registreren in de kluis, MySQL-Server en VMware PowerCLI, downloaden en op te geven de accounts die zijn gemaakt voor automatische detectie en installatie van de Mobility-service.
-4. **Doelomgeving**: Instellen van het doel-Azure-omgeving door uw Azure-abonnement en de netwerkinstellingen op te geven.
-5. **Beleid voor wachtwoordreplicatie**: U opgeven hoe replicatie moet worden uitgevoerd. Instellingen omvatten onder meer hoe vaak herstelpunten worden gemaakt en opgeslagen, en of u toepassingsconsistente momentopnamen moeten worden gemaakt.
-6. **Replicatie inschakelen**. U schakelt replicatie voor on-premises computers. Als u een account voor het installeren van de Mobility-service hebt gemaakt, wordt wordt deze geïnstalleerd wanneer u replicatie voor een machine inschakelt. 
+    - Instellen omvat het registreren van de configuratie server in de kluis, het downloaden van MySQL-server en VMware-PowerCLI en het opgeven van de accounts die zijn gemaakt voor de automatische detectie en de installatie van de Mobility-service.
+4. **Doel omgeving**: U stelt uw doel-Azure-omgeving in door uw Azure-abonnement en netwerk instellingen op te geven.
+5. **Replicatie beleid**: U geeft op hoe replicatie moet plaatsvinden. Instellingen omvatten hoe vaak herstel punten worden gemaakt en opgeslagen, en of er app-consistente moment opnamen moeten worden gemaakt.
+6. **Schakel replicatie in**. U schakelt replicatie in voor on-premises machines. Als u een account hebt gemaakt voor het installeren van de Mobility-service, wordt deze geïnstalleerd wanneer u replicatie voor een machine inschakelt. 
 
 *Meer hulp nodig?*
 
-- Voor een snel overzicht van deze stappen, u kunt uitproberen onze [VMware zelfstudie](vmware-azure-tutorial.md), en [fysieke server scenario](physical-azure-disaster-recovery.md).
-- [Meer informatie](vmware-azure-set-up-source.md) over het instellen van uw bronomgeving.
-- [Meer informatie over](vmware-azure-deploy-configuration-server.md) configuratievereisten voor de server, en het instellen van de configuratieserver met behulp van een OVF-sjabloon voor VMware-replicatie. Als voor een of andere reden niet kan u een sjabloon, of u fysieke servers repliceert, [Volg deze instructies](physical-azure-set-up-source.md#set-up-the-source-environment).
-- [Meer informatie](vmware-azure-set-up-target.md) over doelinstellingen.
-- [Meer informatie](vmware-azure-set-up-replication.md) over het instellen van beleid voor replicatie.
-- [Informatie over](vmware-azure-enable-replication.md) inschakelen replicatie en [uitsluiten](vmware-azure-exclude-disk.md) schijven van replicatie.
+- Voor een kort overzicht van deze stappen kunt u onze [VMware-zelf studie](vmware-azure-tutorial.md)en [fysieke server-stapsgewijze instructies](physical-azure-disaster-recovery.md)uitproberen.
+- Meer [informatie](vmware-azure-set-up-source.md) over het instellen van uw bron omgeving.
+- [Meer informatie over](vmware-azure-deploy-configuration-server.md) de vereisten voor de configuratie server en het instellen van de configuratie server met een OVF-sjabloon voor VMware-replicatie. Als u om een of andere reden geen sjabloon kunt gebruiken of als u fysieke servers wilt repliceren, [gebruikt u deze instructies](physical-azure-set-up-source.md#set-up-the-source-environment).
+- Meer [informatie](vmware-azure-set-up-target.md) over doel instellingen.
+- [Meer informatie](vmware-azure-set-up-replication.md) over het instellen van een replicatie beleid.
+- [Meer informatie](vmware-azure-enable-replication.md) over het inschakelen van replicatie en het [uitsluiten](vmware-azure-exclude-disk.md) van schijven van replicatie.
 
 
-## <a name="something-went-wrong-how-do-i-troubleshoot"></a>Er is iets misgegaan hoe los ik?
+## <a name="something-went-wrong-how-do-i-troubleshoot"></a>Er is iets fout gegaan, hoe kan ik problemen oplossen?
 
-- Als een eerste stap probeer [controleren van uw implementatie](site-recovery-monitor-and-troubleshoot.md) om te controleren of de status van gerepliceerde items, taken en problemen met infrastructuur en eventuele fouten te identificeren.
-- Als u om de initiële replicatie te voltooien, of continue replicatie werkt niet zoals verwacht, [raadpleegt u dit artikel](vmware-azure-troubleshoot-replication.md) voor veelvoorkomende fouten en tips voor probleemoplossing.
-- Als er problemen zijn met de automatische installatie van de Mobility-service op computers die u wilt repliceren, raadpleegt u veelvoorkomende fouten in [in dit artikel](vmware-azure-troubleshoot-push-install.md).
-- Als failover werkt niet zoals verwacht, controleert u veelvoorkomende fouten [in dit artikel](site-recovery-failover-to-azure-troubleshoot.md).
-- Als u failback niet werkt, controleert u of uw probleem wordt weergegeven [in dit artikel](vmware-azure-troubleshoot-failback-reprotect.md).
+- Als eerste stap kunt u [de implementatie](site-recovery-monitor-and-troubleshoot.md) controleren om de status van gerepliceerde items, taken en infrastructuur problemen te controleren en eventuele fouten te identificeren.
+- [Raadpleeg dit artikel](vmware-azure-troubleshoot-replication.md) voor veelvoorkomende fouten en tips voor probleem oplossing als u de initiële replicatie niet kunt volt ooien of de doorlopende replicatie werkt niet zoals verwacht.
+- Als u problemen ondervindt met de automatische installatie van de Mobility-service op de computers die u wilt repliceren, raadpleegt u veelvoorkomende fouten in [dit artikel](vmware-azure-troubleshoot-push-install.md).
+- Als failover niet werkt zoals verwacht, controleert u veelvoorkomende fouten in [dit artikel](site-recovery-failover-to-azure-troubleshoot.md).
+- Als failback niet werkt, controleert u of het probleem in [dit artikel](vmware-azure-troubleshoot-failback-reprotect.md)wordt weer gegeven.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bij replicatie nu op locatie, moet u [een Dr-herstelanalyse uitvoeren](tutorial-dr-drill-azure.md) om ervoor te zorgen dat de failover werkt zoals verwacht. 
+Nu de replicatie is uitgevoerd, moet u [een nood herstel analyse uitvoeren](tutorial-dr-drill-azure.md) om ervoor te zorgen dat failover werkt zoals verwacht. 

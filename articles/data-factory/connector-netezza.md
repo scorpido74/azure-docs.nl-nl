@@ -12,16 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 7664c2f4fd08e06b51734b5508871b67d1a1b7c9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 20e5e23e2000095a95913964673ce90a72b87e59
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231400"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813538"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Gegevens kopiëren van Netezza met behulp van Azure Data Factory
 
 In dit artikel bevat een overzicht over het gebruik van de Kopieeractiviteit in Azure Data Factory om gegevens te kopiëren van Netezza. Het artikel is gebaseerd op [Kopieeractiviteit in Azure Data Factory](copy-activity-overview.md), die een algemeen overzicht van Kopieeractiviteit geeft.
+
+>[!TIP]
+>Voor het scenario voor gegevens migratie van Netezza naar Azure leert u meer over [het gebruik van Azure Data Factory voor het migreren van gegevens van een on-premises Netezza-server naar Azure](data-migration-guidance-netezza-azure-sqldw.md).
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 

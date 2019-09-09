@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 09/09/2019
 ms.author: diberry
-ms.openlocfilehash: b29fdf4e5b3f2719865820695f659df7e75e19b5
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 3a32499a85b1cd782c808166c516be7ad9c78913
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256426"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813277"
 ---
 # <a name="whats-new-in-language-understanding"></a>Wat is er nieuw in Language Understanding
 
@@ -27,6 +27,8 @@ Meer informatie over wat er nieuw is in de service. Bij deze items kunnen opmerk
 ### <a name="september-3-2019"></a>3 september 2019
 
 * Azure authoring resource- [nu migreren](luis-migration-authoring.md).
+    * 500-apps per Azure-resource
+    * 100-versies per app
 * Turkse ondersteuning voor vooraf gemaakte entiteiten
 * Italiaanse ondersteuning voor datetimeV2
 

@@ -1,80 +1,79 @@
 ---
-title: Een Dr-herstelanalyse uitvoeren naar Azure met behulp van Azure Site Recovery | Microsoft Docs
-description: Meer informatie over het uitvoeren van een Dr-herstelanalyse van on-premises naar Azure met behulp van de Azure Site Recovery-service.
+title: Een nood herstel analyse uitvoeren op Azure met behulp van Azure Site Recovery
+description: Meer informatie over het uitvoeren van een nood herstel analyse van on-premises naar Azure met behulp van de Azure Site Recovery-service.
 author: rayne-wiselman
 manager: carmonm
-services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 67cbd37becb1fe87a7f4f554f574b6e5219c9243
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8342f60d8a0f91cc4807d25307510c1cbe7ee5c8
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399939"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814367"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Noodherstelanalyse uitvoeren in Azure 
 
 
-In dit artikel wordt beschreven hoe u een Dr-herstelanalyse uitvoeren naar Azure met behulp van een testfailover van Site Recovery.  
+In dit artikel wordt beschreven hoe u een nood herstel analyse uitvoert op Azure met behulp van een Site Recovery testfailover.  
 
-U voert een testfailover uit voor het valideren van de replicatie en de strategie voor noodherstel, zonder verlies van gegevens of downtime. Een testfailover niet invloed hebben op de doorlopende replicatie of uw productieomgeving. U kunt een testfailover uitvoeren op een specifieke virtuele machine (VM), of op een [herstelplan](site-recovery-create-recovery-plans.md) met meerdere VM's.
+U voert een testfailover uit om uw strategie voor replicatie en herstel na nood gevallen te valideren, zonder dat er gegevens verloren gaan of downtime. Een testfailover heeft geen invloed op de continue replicatie of uw productie omgeving. U kunt een testfailover uitvoeren op een specifieke virtuele machine (VM) of in een [herstel plan](site-recovery-create-recovery-plans.md) met meerdere vm's.
 
 
 ## <a name="run-a-test-failover"></a>Een testfailover uitvoeren
-Deze procedure wordt beschreven hoe u een testfailover uitvoeren voor een herstelplan uitvoeren. Als u een testfailover uitvoeren voor een enkele virtuele machine wilt, volgt u de stappen die worden beschreven [hier](tutorial-dr-drill-azure.md#run-a-test-failover-for-a-single-vm)
+In deze procedure wordt beschreven hoe u een testfailover uitvoert voor een herstel plan. Als u een testfailover wilt uitvoeren voor één virtuele machine, volgt u de stappen die [hier](tutorial-dr-drill-azure.md#run-a-test-failover-for-a-single-vm) worden beschreven
 
 ![Failover testen](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
 
-1. In Site Recovery in Azure portal, klikt u op **herstelplannen** > *recoveryplan_name* > **Testfailover**.
-2. Selecteer een **herstelpunt** waarnaar u failover wilt uitvoeren. U kunt een van de volgende opties gebruiken:
-    - **Laatst verwerkt**: Deze optie wordt over alle virtuele machines in het plan naar het meest recente herstelpunt dat is verwerkt door Site Recovery. Raadpleeg het meest recente herstelpunt voor een specifieke virtuele machine, **laatste herstelpunten** in de instellingen van de virtuele machine. Deze optie heeft een lage RTO (Recovery Time Objective), omdat er geen tijd wordt besteed aan het verwerken van niet-verwerkte gegevens.
-    - **Laatste toepassingsconsistente punt**: Deze optie wordt op alle virtuele machines in het plan naar de meest recente toepassingsconsistente herstelpunt verwerkt door Site Recovery. Raadpleeg het meest recente herstelpunt voor een specifieke virtuele machine, **laatste herstelpunten** in de instellingen van de virtuele machine.
-    - **Laatste**: Deze optie worden eerst alle gegevens die is verzonden naar Site Recovery-service te maken van een herstelpunt voor elke virtuele machine voordat de failover wordt uitgevoerd naar het verwerkt. Deze optie biedt het laagste RPO (Recovery Point Objective), omdat de virtuele machine gemaakt nadat de failover heeft de gegevens die zijn gerepliceerd naar de Site Recovery wanneer de failover werd geactiveerd.
-    - **Meest recente verwerkte multi-VM**: Deze optie is beschikbaar voor herstelplannen met een of meer VM's die multi-VM's is ingeschakeld. Virtuele machines met de instelling is ingeschakeld, schakelt over naar de meest recente algemene multi-VM toepassingsconsistente herstelpunt uitgevoerd. Andere VM's een failover naar de meest recente verwerkte herstelpunt.  
-    - **Nieuwste multi-VM-app-consistente**: Deze optie is beschikbaar voor herstelplannen met een of meer VM's die multi-VM's is ingeschakeld. Virtuele machines die deel van een replicatiegroep uitmaken schakelt over naar de meest recente algemene multi-VM toepassingsconsistente herstelpunt. Andere VM's een failover naar de meest recente toepassingsconsistente herstelpunt.
-    - **Aangepast**: Gebruik deze optie voor failover van een specifieke virtuele machine naar een bepaald herstelpunt.
-3. Selecteer een Azure-netwerk waarin de test-VM's worden gemaakt.
+1. Klik in site Recovery in het Azure Portal op **herstel plannen** > *recoveryplan_name* > -**testfailover.**
+2. Selecteer een **herstel punt** waarvoor u een failover wilt uitvoeren. U kunt een van de volgende opties gebruiken:
+    - **Laatst verwerkt**: Met deze optie wordt een failover uitgevoerd voor alle virtuele machines in het plan naar het laatste herstel punt dat is verwerkt door Site Recovery. Als u het meest recente herstel punt voor een specifieke virtuele machine wilt zien, controleert u de **meest recente herstel punten** in de VM-instellingen. Deze optie heeft een lage RTO (Recovery Time Objective), omdat er geen tijd wordt besteed aan het verwerken van niet-verwerkte gegevens.
+    - **Laatste toepassingsconsistente punt**: Met deze optie wordt een failover uitgevoerd voor alle virtuele machines in het plan naar het nieuwste toepassings consistente herstel punt dat door Site Recovery wordt verwerkt. Als u het meest recente herstel punt voor een specifieke virtuele machine wilt zien, controleert u de **meest recente herstel punten** in de VM-instellingen.
+    - **Laatste**: Met deze optie worden eerst alle gegevens verwerkt die zijn verzonden naar Site Recovery service, om een herstel punt te maken voor elke virtuele machine voordat er een failover wordt uitgevoerd. Deze optie biedt de laagste RPO (beoogd herstel punt), omdat de VM die is gemaakt na de failover, alle gegevens die worden gerepliceerd naar Site Recovery wanneer de failover werd geactiveerd.
+    - **Laatste verwerkte multi-VM**: Deze optie is beschikbaar voor herstel plannen met een of meer Vm's waarvoor multi-VM-consistentie is ingeschakeld. Vm's waarvoor de instelling is ingeschakeld, kunnen failover uitvoeren naar het meest recente, veelvoorkomende herstel punt met meerdere VM'S. Er wordt een failover uitgevoerd voor andere Vm's naar het meest recente verwerkte herstel punt.  
+    - **Nieuwste multi-VM-app-consistent**: Deze optie is beschikbaar voor herstel plannen met een of meer Vm's waarvoor multi-VM-consistentie is ingeschakeld. Voor virtuele machines die deel uitmaken van een replicatie groep, wordt een failover uitgevoerd naar het meest recente algemene herstel punt van een toepassings consistente multi-VM. Er wordt een failover uitgevoerd voor andere Vm's naar het nieuwste toepassings consistente herstel punt.
+    - **Aangepast**: Gebruik deze optie voor het uitvoeren van een failover van een specifieke virtuele machine naar een bepaald herstel punt.
+3. Selecteer een virtueel Azure-netwerk waarin u de test-Vm's wilt maken.
 
-    - Site Recovery probeert te maken van test-VM's in een subnet met dezelfde naam en hetzelfde IP-adres als die beschikbaar is in de **berekening en netwerk** instellingen van de virtuele machine.
-    - Als een subnet met dezelfde naam is niet beschikbaar in de Azure-netwerk gebruikt voor test-failover, klikt u vervolgens de test virtuele machine wordt gemaakt in het eerste subnet op alfabetische volgorde.
-    - Als hetzelfde IP-adres is niet beschikbaar in het subnet, ontvangt de virtuele machine nog een beschikbaar IP-adres in het subnet. [Meer informatie](#create-a-network-for-test-failover).
-4. Als u bent Failover-overschakeling uitvoeren naar Azure en gegevensversleuteling is ingeschakeld, in **versleutelingssleutel**, selecteer het certificaat dat is uitgegeven wanneer u versleuteling tijdens de installatie van de Provider ingeschakeld. U kunt deze stap overslaan als versleuteling is niet ingeschakeld.
-5. Voortgang van de failover volgen op de **taken** tabblad. U zou het mogelijk om te zien van de test replica-machine in Azure portal.
-6. Als u wilt een RDP-verbinding met de Azure-VM hebt gestart, moet u [een openbaar IP-adres toevoegen](https://aka.ms/addpublicip) op de netwerkinterface van de failover VM.
-7. Als alles werkt zoals verwacht, klikt u op **failovertest**. Hiermee verwijdert u de virtuele machines die zijn gemaakt tijdens de testfailover.
+    - Site Recovery probeert test-Vm's te maken in een subnet met dezelfde naam en hetzelfde IP-adres als in de **reken-en netwerk** instellingen van de virtuele machine.
+    - Als een subnet met dezelfde naam niet beschikbaar is in het virtuele netwerk van Azure dat wordt gebruikt voor de testfailover, wordt de test-VM in het eerste subnet alfabetisch gemaakt.
+    - Als hetzelfde IP-adres niet beschikbaar is in het subnet, ontvangt de virtuele machine een ander beschikbaar IP-adres in het subnet. [Meer informatie](#create-a-network-for-test-failover).
+4. Als er een failover wordt uitgevoerd naar Azure en gegevens versleuteling is ingeschakeld, selecteert u in **versleutelings sleutel**het certificaat dat is uitgegeven bij het inschakelen van versleuteling tijdens de installatie van de provider. U kunt deze stap negeren als versleuteling niet is ingeschakeld.
+5. Volg de voortgang van de failover op het tabblad **taken** . U moet de test replica-machine in de Azure Portal kunnen zien.
+6. Als u een RDP-verbinding met de Azure-VM wilt initiëren, moet u [een openbaar IP-adres toevoegen](https://aka.ms/addpublicip) aan de netwerk interface van de virtuele machine waarvoor een failover is uitgevoerd.
+7. Wanneer alles werkt zoals verwacht, klikt u op **testfailover opschonen**. Hiermee verwijdert u de Vm's die zijn gemaakt tijdens de testfailover.
 8. Leg in **Notities** eventuele opmerkingen over de testfailover vast en sla deze op.
 
 
 ![Failover testen](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
 
-Wanneer een test-failover wordt geactiveerd, gebeurt het volgende:
+Wanneer een testfailover wordt geactiveerd, gebeurt het volgende:
 
-1. **Vereisten**: Een controle uitgevoerd om ervoor te zorgen dat alle vereiste voorwaarden voor failover wordt voldaan.
-2. **Failover**: De failover verwerkt en de gegevens voorbereid, zodat een Azure-VM kan worden gemaakt op basis van deze.
-3. **Laatste**: Als u de meest recente herstelpunt hebt gekozen, wordt een herstelpunt wordt gemaakt van de gegevens die zijn verzonden naar de service.
-4. **Start**: Deze stap maakt u een virtuele machine van Azure met behulp van de gegevens verwerkt in de vorige stap.
+1. **Vereisten**: Er wordt een controle uitgevoerd om ervoor te zorgen dat aan alle voor waarden voor failover is voldaan.
+2. **Failover**: Met de failover worden de gegevens verwerkt en voor bereid, zodat er een virtuele machine van Azure kan worden gemaakt.
+3. **Laatste**: Als u het meest recente herstel punt hebt gekozen, wordt een herstel punt gemaakt op basis van de gegevens die naar de service zijn verzonden.
+4. **Starten**: Met deze stap maakt u een virtuele Azure-machine met behulp van de gegevens die in de vorige stap zijn verwerkt.
 
 ### <a name="failover-timing"></a>Timing van failover
 
-In de volgende scenario's vereist de failover een extra tussenstap die meestal ongeveer 8 tot en met 10 minuten duurt om te voltooien:
+In de volgende scenario's vereist failover een extra tussenliggende stap die doorgaans ongeveer 8 tot 10 minuten duurt:
 
-* Virtuele VMware-machines met een versie van de Mobility-service die ouder zijn dan 9,8
+* VMware-Vm's met een versie van Mobility service ouder dan 9,8
 * Fysieke servers
-* VMware Linux-VM 's
-* Hyper-V-VM beveiligd als fysieke servers
-* VMware-VM waarbij opstartstuurprogramma's zijn niet in de volgende stuurprogramma's:
+* Virtuele VMware Linux-machines
+* Hyper-V-VM die wordt beveiligd als fysieke servers
+* VMware-VM waarbij de volgende Stuur Programma's geen opstart Stuur Programma's zijn:
     * storvsc
     * vmbus
     * storflt
-    * intelide
-    * atapi
-* VMware-VM die geen DHCP ingeschakeld hebben, ongeacht of ze zijn gebruikmaakt van DHCP- of statische IP-adressen.
+    * Intelide
+    * ATAPI
+* VMware-VM waarvoor DHCP niet is ingeschakeld, ongeacht of ze DHCP of statische IP-adressen gebruiken.
 
-In alle andere gevallen, geen tussenstap is niet vereist en failover aanzienlijk minder tijd in beslag neemt.
+In alle andere gevallen is geen tussen stap vereist en neemt de failover aanzienlijk minder tijd in beslag.
 
 
 ## <a name="create-a-network-for-test-failover"></a>Een netwerk maken voor failovertest
@@ -86,32 +85,32 @@ Het wordt aangeraden om voor het testen van failover een netwerk te kiezen dat i
 - Werk het DNS van het testnetwerk bij met het IP-adres dat voor de DNS-VM is opgegeven in de instellingen voor **Berekening en netwerk**. Lees [Testfailover-overwegingen voor Active Directory](site-recovery-active-directory.md#test-failover-considerations) voor meer informatie.
 
 
-## <a name="test-failover-to-a-production-network-in-the-recovery-site"></a>Een failovertest uitvoeren naar een productienetwerk in de site recovery
+## <a name="test-failover-to-a-production-network-in-the-recovery-site"></a>Testfailover naar een productie netwerk op de herstel site
 
-Hoewel het wordt aangeraden dat u een testnetwerk gescheiden van uw productienetwerk gebruiken als u wilt testen van een Dr-herstelanalyse naar uw productienetwerk, Let op het volgende:
+We raden u echter aan om een ander test netwerk dan het productie netwerk te gebruiken. Als u een nood herstel analyse in uw productie netwerk wilt testen, moet u rekening houden met het volgende:
 
-- Zorg ervoor dat de primaire virtuele machine wordt afgesloten wanneer u de testfailover uitvoert. Anders zullen er twee virtuele machines met dezelfde identiteit, in hetzelfde netwerk wordt uitgevoerd op hetzelfde moment. Dit kan leiden tot onverwachte gevolgen.
-- Eventuele wijzigingen in virtuele machines die zijn gemaakt voor test-failover gaan verloren als u de failover opschonen. Deze wijzigingen worden niet gerepliceerd naar de primaire virtuele machine.
-- Testen in uw productieomgeving leidt tot een uitvaltijd van uw productietoepassing. Gebruikers al dan niet mogen gebruiken apps die op virtuele machines worden uitgevoerd wanneer de testfailover uitgevoerd wordt.  
+- Zorg ervoor dat de primaire virtuele machine wordt afgesloten wanneer u de testfailover uitvoert. Anders worden er twee virtuele machines met dezelfde identiteit, die tegelijkertijd in hetzelfde netwerk worden uitgevoerd. Dit kan leiden tot onverwachte gevolgen.
+- Eventuele wijzigingen aan Vm's die zijn gemaakt voor een testfailover, gaan verloren wanneer u de failover opschoont. Deze wijzigingen worden niet gerepliceerd naar de primaire virtuele machine.
+- Testen in uw productie omgeving leidt tot uitval tijd van uw productie toepassing. Gebruikers mogen geen apps gebruiken die worden uitgevoerd op Vm's wanneer de testfailover wordt uitgevoerd.  
 
 
 
-## <a name="prepare-active-directory-and-dns"></a>Voorbereiden van Active Directory en DNS
+## <a name="prepare-active-directory-and-dns"></a>Active Directory en DNS voorbereiden
 
-Als u wilt uitvoeren van een testfailover uitvoeren voor de toepassing testen, moet u een kopie van uw Active Directory-omgeving voor productie in uw testomgeving. Lezen [testfailover-overwegingen voor Active Directory](site-recovery-active-directory.md#test-failover-considerations) voor meer informatie.
+Als u een testfailover wilt uitvoeren voor het testen van toepassingen, hebt u een kopie nodig van uw productie Active Directory omgeving in uw test omgeving. Lees de [overwegingen voor testfailover voor Active Directory voor](site-recovery-active-directory.md#test-failover-considerations) meer informatie.
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Voorbereiden op het verbinden met virtuele Azure-machines na een failover
 
-Als u verbinding maken met virtuele Azure-machines met behulp van RDP/SSH na een failover wilt, volgt u de vereisten die worden samengevat in de tabel.
+Als u na een failover verbinding wilt maken met virtuele Azure-machines met behulp van RDP/SSH, volgt u de vereisten in de tabel.
 
 **Failover** | **Location** | **Acties**
 --- | --- | ---
-**Virtuele Azure-machine waarop Windows wordt uitgevoerd** | On-premises computer voordat de failover | Voor toegang tot de Azure-VM via internet, schakelt u RDP in en zorg ervoor dat TCP en UDP-regels zijn toegevoegd voor **openbare**, en die RDP is toegestaan voor alle profielen in **Windows Firewall**  >  **Toegestane Apps**.<br/><br/> Voor toegang tot de Azure-VM via een site-naar-site-verbinding, schakelt u RDP in op de machine en zorg ervoor dat RDP is toegestaan in de **Windows Firewall** -> **toegestane apps en functies**, voor **Domein en privé** netwerken.<br/><br/>  Zorg ervoor dat het besturingssysteem SAN-beleid is ingesteld op **OnlineAll**. [Meer informatie](https://support.microsoft.com/kb/3031135).<br/><br/> Zorg ervoor dat er geen Windows-updates in behandeling zijn op de virtuele machine wanneer u een failover activeert. Windows update kan worden gestart wanneer u een failover uitvoert, en kunt u zich niet aanmelden bij de virtuele machine totdat de update is voltooid.
-**Virtuele Azure-machine waarop Windows wordt uitgevoerd** | Virtuele Azure-machine na een failover |  [Voeg een openbaar IP-adres toe](https://aka.ms/addpublicip) voor de VM.<br/><br/> De regels voor netwerkbeveiligingsgroepen op de virtuele machine (en de Azure-subnet waarmee deze is verbonden) moeten binnenkomende verbindingen met de RDP-poort worden toegestaan.<br/><br/> Controleer **diagnostische gegevens over opstarten** om te controleren of een schermopname van de virtuele machine.<br/><br/> Als u geen verbinding kunt maken, controleert u dat de virtuele machine wordt uitgevoerd, en bekijk deze [tips voor probleemoplossing](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
-**Virtuele Azure-machine waarop Linux wordt uitgevoerd** | On-premises computer voordat de failover | Zorg ervoor dat de Secure Shell-service op de virtuele machine is ingesteld op automatisch wordt gestart bij het opstarten van het systeem.<br/><br/> Controleer of er in de firewallregels is ingesteld dat SSH-verbindingen zijn toegestaan.
-**Virtuele Azure-machine waarop Linux wordt uitgevoerd** | Virtuele Azure-machine na een failover | De regels voor netwerkbeveiligingsgroepen op de virtuele machine (en de Azure-subnet waarmee deze is verbonden) moeten binnenkomende verbindingen aan de SSH-poort worden toegestaan.<br/><br/> [Voeg een openbaar IP-adres toe](https://aka.ms/addpublicip) voor de VM.<br/><br/> Controleer **diagnostische gegevens over opstarten** voor een schermopname van de virtuele machine.<br/><br/>
+**Virtuele Azure-machine met Windows** | On-premises machine vóór een failover | Voor toegang tot de Azure-VM via internet schakelt u RDP in en zorgt u ervoor dat de TCP-en UDP-regels voor **openbaar**worden toegevoegd en dat RDP is toegestaan voor alle profielen in **Windows Firewall** > **toegestane apps**.<br/><br/> Als u toegang wilt krijgen tot de Azure-VM via een site-naar-site-verbinding, schakelt u RDP in op de machine en zorgt u ervoor dat RDP is toegestaan in de **Windows Firewall** -> **toegestane apps en functies**voor **domein-en particuliere** netwerken.<br/><br/>  Zorg ervoor dat het SAN-beleid van het besturings systeem is ingesteld op **OnlineAll**. [Meer informatie](https://support.microsoft.com/kb/3031135).<br/><br/> Zorg ervoor dat er geen Windows-updates in behandeling zijn op de virtuele machine wanneer u een failover triggert. Windows Update kan worden gestart wanneer u een failover uitvoert. u kunt zich pas aanmelden bij de VM als de update is voltooid.
+**Virtuele Azure-machine met Windows** | Virtuele Azure-machine na een failover |  [Voeg een openbaar IP-adres toe](https://aka.ms/addpublicip) voor de VM.<br/><br/> De regels voor de netwerk beveiligings groep op de virtuele machine waarvoor een failover is uitgevoerd (en het Azure-subnet waarmee deze is verbonden) moeten binnenkomende verbindingen met de RDP-poort toestaan.<br/><br/> Controleer de **Diagnostische gegevens over opstarten** om een scherm opname van de virtuele machine te controleren.<br/><br/> Als u geen verbinding kunt maken, controleert u of de virtuele machine wordt uitgevoerd en raadpleegt u deze [Tips voor probleem oplossing](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+**Azure-VM met Linux** | On-premises machine vóór een failover | Zorg ervoor dat de Secure shell-service op de VM is ingesteld om automatisch te starten bij het opstarten van het systeem.<br/><br/> Controleer of er in de firewallregels is ingesteld dat SSH-verbindingen zijn toegestaan.
+**Azure-VM met Linux** | Virtuele Azure-machine na een failover | De regels voor de netwerk beveiligings groep op de virtuele machine waarvoor een failover is uitgevoerd (en het Azure-subnet waarmee deze is verbonden) moeten binnenkomende verbindingen met de SSH-poort toestaan.<br/><br/> [Voeg een openbaar IP-adres toe](https://aka.ms/addpublicip) voor de VM.<br/><br/> Controleer de **Diagnostische gegevens over opstarten** voor een scherm opname van de virtuele machine.<br/><br/>
 
 Volg de stappen die [hier](site-recovery-failover-to-azure-troubleshoot.md) worden beschreven om eventuele verbindingsproblemen na een failover op te lossen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Nadat u een Dr-herstelanalyse hebt voltooid, meer informatie over andere typen [failover](site-recovery-failover.md).
+Nadat u een nood herstel analyse hebt voltooid, kunt u meer informatie over andere typen [failover](site-recovery-failover.md)vinden.

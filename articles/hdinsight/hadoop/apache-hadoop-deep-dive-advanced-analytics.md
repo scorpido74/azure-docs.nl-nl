@@ -1,6 +1,6 @@
 ---
-title: Deep dive - advanced analytics - Azure HDInsight
-description: Informatie over hoe u met geavanceerde analyse worden algoritmen gebruikt voor het verwerken van big data.
+title: Grondige kennis-geavanceerde analyses-Azure HDInsight
+description: Meer informatie over hoe geavanceerde analyse algoritmen gebruikt voor het verwerken van big data in azure HDInsight.
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,129 +8,129 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: ac0edf2de4337154b665b8f3898134a7c2fd1f4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 973ac928900cc02f176931ffa3865c2997e552f2
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712391"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810843"
 ---
-# <a name="deep-dive---advanced-analytics"></a>Deep dive - geavanceerde analyses
+# <a name="deep-dive---advanced-analytics"></a>Diep gaande kennis-geavanceerde analyse
 
-## <a name="what-is-advanced-analytics-for-hdinsight"></a>Wat is analytics geavanceerde voor HDInsight?
+## <a name="what-is-advanced-analytics-for-hdinsight"></a>Wat is geavanceerde analyse voor HDInsight?
 
-HDInsight biedt de mogelijkheid om waardevolle inzichten van grote hoeveelheden gestructureerde, ongestructureerde en ontdekt gegevens te verkrijgen. Geavanceerde analyses, is het gebruik van zeer schaalbare architecturen, statistische en machine learning-modellen en intelligente dashboards om te voorzien van bruikbare inzichten. Machine learning, of *Voorspellend*, gebruikt algoritmen die identificeren en leer van relaties in uw gegevens voor voorspellingen en uw beslissingen voor de handleiding.
+HDInsight biedt de mogelijkheid om waardevol inzicht te krijgen in grote hoeveel heden gestructureerde, ongestructureerde en snel bewegende gegevens. Geavanceerde analyses zijn het gebruik van uiterst schaal bare architecturen, statistische en machine learning modellen, en intelligente Dash boards om u te voorzien van duidelijke inzichten. Machine learning, of *Predictive Analytics*, gebruikt algoritmen voor het identificeren en leren van relaties in uw gegevens om voor spellingen te maken en uw beslissingen te begeleiden.
 
-## <a name="advanced-analytics-process"></a>Geavanceerde analyse-proces
+## <a name="advanced-analytics-process"></a>Geavanceerd analyse proces
 
 ![Process](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
 
-Nadat u het zakelijke probleem hebt geïdentificeerd en zijn begonnen met het verzamelen en verwerken van uw gegevens, die u wilt maken van een model dat staat voor de vraag die u wilt voorspellen. Uw model gebruikt een of meer machine learning-algoritmen voor het maken van het type voorspelling die het beste past bij de behoeften van uw bedrijf.  Het merendeel van uw gegevens moet worden gebruikt om uw model te trainen met de rest gebruikt om te testen of evalueren ervan. 
+Nadat u het bedrijfs probleem hebt geïdentificeerd en de gegevens hebt verzameld en verwerkt, moet u een model maken dat de vraag vertegenwoordigt die u wilt voors pellen. In uw model worden een of meer machine learning algoritmen gebruikt om het type voor spelling te maken dat het beste bij uw bedrijfs behoeften past.  Het meren deel van uw gegevens moet worden gebruikt om het model te trainen, met de rest die wordt gebruikt om het te testen of te evalueren. 
 
-Nadat u maken, laden, testen en evalueren van uw model, wordt de volgende stap is het uw model implementeert zodat deze begint met het leveren van antwoorden op uw vragen. De laatste stap is om te controleren van de prestaties van uw model en af te stemmen indien nodig. 
+Nadat u uw model hebt gemaakt, geladen, getest en geëvalueerd, is de volgende stap het implementeren van uw model, zodat het begint met het leveren van antwoorden op uw vragen. De laatste stap bestaat uit het bewaken van de prestaties van uw model en het afstemmen hiervan. 
 
 ## <a name="common-types-of-algorithms"></a>Algemene typen algoritmen
 
-Geavanceerde analyse-oplossingen bieden een set van machine learning-algoritmen. Hier volgt een overzicht van de categorieën van algoritmen en de bijbehorende algemene zakelijke gebruiksvoorbeelden.
+Geavanceerde analyse oplossingen bieden een reeks machine learning-algoritmen. Hier volgt een samen vatting van de categorie algoritmen en de bijbehorende veelvoorkomende cases voor bedrijfs gebruik.
 
-![Machine Learning-Use-Cases](./media/apache-hadoop-deep-dive-advanced-analytics/ml-use-cases.png)
+![Machine Learning use cases](./media/apache-hadoop-deep-dive-advanced-analytics/ml-use-cases.png)
 
-Samen met de best passende verifiëringsalgoritme (s) selecteren, moet u overwegen of u moet gegevens opgeven voor training. Machine learning-algoritmen zijn als volgt onderverdeeld:
+Samen met het selecteren van de beste algoritme (s), moet u overwegen of u gegevens moet opgeven voor de training. Machine learning-algoritmen worden als volgt gecategoriseerd:
 
-* Onder supervisie - moet algoritme worden getraind op een set met gelabelde gegevens voordat deze resultaten kan opgeven
-* Semi onder supervisie - algoritme kan worden uitgebreid door extra doelen via interactieve query door een trainer, die niet beschikbaar tijdens de eerste fase van de training waren
-* Niet onder supervisie - is algoritme niet vereist Traininggegevens 
-* Leren met bekrachtigingen beschikt - algoritme maakt gebruik van softwareagents om te bepalen het gedrag van de ideale binnen een specifieke context (vaak gebruikt in robotiek)
+* Super visie: algoritme moet worden getraind voor een set met gelabelde gegevens voordat er resultaten kunnen worden opgegeven
+* Een semi-Super visie: algoritme kan worden uitgebreid door extra doelen via interactieve query's door een trainer, die tijdens de eerste trainings fase niet beschikbaar was.
+* Niet onder Super visie: algoritme vereist geen trainings gegevens 
+* Versterking-algoritme maakt gebruik van software-agents om het ideale gedrag binnen een specifieke context te bepalen (vaak gebruikt in Robotics)
 
 
-| Algoritme voor categorie| Gebruiken | Learning-Type | Algoritmen |
+| Categorie Algorithm| Gebruiken | Type training | Algoritmen |
 | --- | --- | --- | -- |
-| Classificatie | Personen of dingen classificeren in groepen | Onder supervisie | Beslissingsstructuren, logistieke regressie, neurale netwerken |
-| Clustering | Delen van een reeks voorbeelden in homogene groepen | Niet onder supervisie | K-means clustering |
-| Detectie van het patroon | Frequente koppelingen in de gegevens identificeren | Niet onder supervisie | Koppelingsregels voor |
-| Regressie | Numerieke resultaten voorspellen | Onder supervisie | Lineaire regressie, neurale netwerken |
-| Leren met bekrachtigingen beschikt | Optimale gedrag voor robots bepalen | Leren met bekrachtigingen beschikt | Monte Carlo-simulaties, DeepMind |
+| Classificatie | Mensen of dingen classificeren in groepen | Onder Super visie | Beslissings structuren, logistiek regressie, Neural netwerken |
+| Clustering | Een reeks voor beelden delen in homogene groepen | Zonder super visie | k-means clustering |
+| Patroon detectie | Veelgebruikte koppelingen in de gegevens identificeren | Zonder super visie | Koppelings regels |
+| Regressie | Numerieke resultaten voors pellen | Onder Super visie | Lineaire regressie, Neural netwerken |
+| Bekrachtigingen | Optimale werking van robots bepalen | Bekrachtigingen | Monte Carlo-simulaties, DeepMind |
 
-## <a name="machine-learning-on-hdinsight"></a>Machine learning in HDInsight
+## <a name="machine-learning-on-hdinsight"></a>Machine learning op HDInsight
 
-HDInsight heeft meerdere machine learning-opties voor een geavanceerde analysewerkstroom:
+HDInsight heeft verschillende machine learning opties voor een geavanceerde analyse werk stroom:
 
 * Machine Learning en Apache Spark
-* R- en ML-Services
+* R-en ML-Services
 * Azure Machine Learning en Apache Hive
-* Apache Spark- en Deep learning
+* Apache Spark en diep gaande lessen
 
 ### <a name="machine-learning-and-apache-spark"></a>Machine Learning en Apache Spark
 
 
-[HDInsight Spark](../spark/apache-spark-overview.md) is een aanbieding wordt gehost op Azure van [Apache Spark](https://spark.apache.org/), een uniforme, open source, een framework voor parallelle gegevensverwerking die gebruikmaakt van in-memory verwerking om analyse van Big Data te verbeteren. De Spark-verwerkingsengine is gebouwd voor snelheid, gebruiksgemak, en geavanceerde analyses. Gedistribueerde berekening in-memory-mogelijkheden van Spark kunnen u een goede keuze voor de zich herhalende algoritmen in machine learning- en grafiekberekeningen gebruikt. 
+[HDInsight Spark](../spark/apache-spark-overview.md) is een door Azure gehoste aanbieding van [Apache Spark](https://spark.apache.org/), een gecombineerd, open source, parallel data processing framework dat gebruikmaakt van in-Memory verwerking om de analyse van Big data te stimuleren. De Spark-verwerkingsengine is gebouwd voor snelheid, gebruiksgemak, en geavanceerde analyses. Gedistribueerde berekening in-memory-mogelijkheden van Spark kunnen u een goede keuze voor de zich herhalende algoritmen in machine learning- en grafiekberekeningen gebruikt. 
 
 
-Er zijn drie schaalbare machine learning-bibliotheken die algoritmische modellering naar deze gedistribueerde omgeving meenemen:
+Er zijn drie schaal bare machine learning bibliotheken die algoritmen model leren met deze gedistribueerde omgeving:
 
-* [**MLlib** ](https://spark.apache.org/docs/latest/ml-guide.html) -MLlib de oorspronkelijke API gebouwd boven op Spark rdd's bevat.
-* [**SparkML** ](https://spark.apache.org/docs/1.2.2/ml-guide.html) -SparkML is een nieuwere pakket dat een hoger niveau API gebouwd boven op Spark DataFrames biedt voor het maken van ML-pijplijnen.
-* [**MMLSpark** ](https://github.com/Azure/mmlspark) - Microsoft Machine Learning-bibliotheek voor Apache Spark (MMLSpark) is zodanig ontworpen dat gegevenswetenschappers productiever op Spark, te verhogen de snelheid van experimenten en gebruikmaken van geavanceerde machine learning technieken, met inbegrip van deep learning, op zeer grote gegevenssets. De MMLSpark-bibliotheek vereenvoudigt algemene modellering van taken voor het ontwikkelen van modellen in PySpark. 
+* [**MLlib**](https://spark.apache.org/docs/latest/ml-guide.html) -MLlib bevat de oorspronkelijke API die boven op Spark-rdd's is gebouwd.
+* [**SparkML**](https://spark.apache.org/docs/1.2.2/ml-guide.html) -SparkML is een nieuwer pakket met een op Spark-DataFrames gebouwde API met een hoger niveau voor het bouwen van ml-pijp lijnen.
+* [**MMLSpark**](https://github.com/Azure/mmlspark) : de micro soft machine learning-bibliotheek voor Apache Spark (MMLSpark) is ontworpen om gegevens wetenschappers productiever te maken op Spark, om het aantal experimenten te verhogen en te profiteren van geavanceerde machine learning technieken, waaronder diep gaande informatie over zeer grote gegevens sets. De MMLSpark-bibliotheek vereenvoudigt veelvoorkomende model taken voor het bouwen van modellen in PySpark. 
 
-### <a name="r-and-ml-services"></a>R- en ML-Services
+### <a name="r-and-ml-services"></a>R-en ML-Services
 
-Als onderdeel van HDInsight, kunt u een HDInsight-cluster met [ML-Services](../r-server/r-server-overview.md) klaar om te worden gebruikt met grote gegevenssets en -modellen. Deze nieuwe mogelijkheid biedt gegevenswetenschappers en statistici met een bekend R-interface die kunnen worden geschaald op aanvraag via HDInsight, zonder de overhead van het cluster instellen en beheren.
+Als onderdeel van HDInsight kunt u een HDInsight-cluster maken met [ml Services](../r-server/r-server-overview.md) die klaar zijn voor gebruik met enorme gegevens sets en modellen. Deze nieuwe mogelijkheid biedt gegevens wetenschappers en statistici met een vertrouwde R-interface die op aanvraag kan worden geschaald via HDInsight, zonder de overhead van het instellen en onderhouden van het cluster.
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning en Apache Hive
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) biedt hulpprogramma's waarmee Voorspellend model, evenals een volledig beheerde service die u kunt gebruiken voor het implementeren van uw voorspellende modellen als webservices gereed om te gebruiken. Azure Machine Learning bevat hulpprogramma's voor het maken van volledige predictive analytics-oplossingen in de cloud snel maken, testen, operationeel maken en beheren van voorspellende modellen. Selecteer in een grote bibliotheek met algoritmen, een webgebaseerde studio gebruiken voor het ontwikkelen van modellen en eenvoudig uw modellen vervolgens als een webservice implementeren.
+[Azure machine learning Studio](https://studio.azureml.net/) voorziet in hulpprogram ma's om Predictive Analytics te model leren en een volledig beheerde service die u kunt gebruiken om uw voorspellende modellen te implementeren als kant-en-klare webservices. Azure Machine Learning voorziet in hulpprogram ma's voor het maken van volledige predictive analytics-oplossingen in de cloud om snel voorspellende modellen te maken, te testen, te operationeel maken en te beheren. Maak een keuze uit een grote algoritme bibliotheek, gebruik een webgebaseerde Studio voor het ontwikkelen van modellen en implementeer uw model eenvoudig als een webservice.
 
-### <a name="apache-spark-and-deep-learning"></a>Apache Spark- en Deep learning
+### <a name="apache-spark-and-deep-learning"></a>Apache Spark en diep gaande lessen
 
-[Deep learning](https://www.microsoft.com/research/group/dltc/) wordt er een vertakking van machine learning die gebruikmaakt van *deep neural networks* (dnn's), laat u inspireren door de biologische processen van het menselijk brein moeite heeft. Deep learning zien veel onderzoekers als een veelbelovende benadering voor kunstmatige intelligentie. Enkele voorbeelden van diepteleren zijn gesproken taal vertalers, image recognition systemen en machine redenering. Ga een eigen werk in deep learning, zodat Microsoft de gratis, eenvoudig te gebruiken, open-source heeft ontwikkeld [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/). De toolkit wordt intensief gebruikt door een groot aantal Microsoft-producten, bedrijven over de hele wereld met een hoeft te implementeren van deep learning op schaal, en door studenten die geïnteresseerd zijn in de meest recente algoritmen en technieken. 
+[Grondige kennis](https://www.microsoft.com/research/group/dltc/) is een vertakking van machine learning die gebruikmaakt van *diepe Neural Networks* (DNNs), die zijn geïnspireerd op de biologische processen van het menselijk gebruik. Veel onderzoekers zien een diep gaande leer proces als een toezeggings benadering voor kunst matige intelligentie. Enkele voor beelden van diep gaande lessen zijn gesp roken taal vertalers, systemen voor afbeeldings herkenning en de reden van de computer. Micro soft heeft de gratis, gebruiks vriendelijke, open-source [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/)ontwikkeld om haar eigen werk in het uitgebreid leren te helpen. De Toolkit wordt uitgebreid gebruikt door een groot aantal verschillende micro soft-producten, door bedrijven wereld wijd, met een nood zaak om diep gaande lessen op schaal te implementeren en door studenten die geïnteresseerd zijn in de nieuwste algoritmen en technieken. 
 
-## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>Scenario - Score installatiekopieën om patronen in stedelijke ontwikkeling te identificeren
+## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>Scenario-Score afbeeldingen om patronen in stedelijke ontwikkeling te identificeren
 
-Laten we bekijken een voorbeeld van een geavanceerde analyse-machine learning-pijplijn met HDInsight.
+Laten we een voor beeld bekijken van een geavanceerde analyse machine learning pijp lijn met behulp van HDInsight.
 
-In dit scenario ziet u hoe dnn's gemaakt in een deep learning-frameworks, Microsoft Cognitive Toolkit (CNTK), van kunt operationaliseren voor het scoren van grote afbeelding verzamelingen die zijn opgeslagen in een Azure Blob Storage-account met behulp van de PySpark op een HDInsight Spark-cluster. Deze methode wordt toegepast op een algemene DNN use case, afbeeldingsclassificatie, en kan worden gebruikt om recente patronen in stedelijke ontwikkeling te identificeren.  U gebruikt een classificeringsmodel vooraf getrainde afbeeldingen. Het model is vooraf getrainde op de [CIFAR-10-gegevensset](https://www.cs.toronto.edu/~kriz/cifar.html) en tot 10.000 ingehouden installatiekopieën is toegepast.
+In dit scenario ziet u hoe DNNs geproduceerd in een diep Learning Framework, micro soft-Cognitive Toolkit (CNTK), kan worden gebruikt voor het scoren van grote afbeeldings verzamelingen die zijn opgeslagen in een Azure Blob Storage-account met behulp van PySpark in een HDInsight Spark-cluster. Deze aanpak wordt toegepast op een gemeen schappelijk DNN use-case, een foto-afbeeldings classificatie en kan worden gebruikt om recente patronen in stedelijke ontwikkeling te identificeren.  U gebruikt een vooraf getraind afbeeldings classificatie model. Het model is vooraf getraind op de [CIFAR-10-gegevensset](https://www.cs.toronto.edu/~kriz/cifar.html) en is toegepast op 10.000 Inge houden installatie kopieën.
 
-Er zijn drie belangrijke taken in dit scenario voor geavanceerde analyse:
+Er zijn drie belang rijke taken in dit geavanceerde analyse scenario:
 
-1. Maak een Azure HDInsight Hadoop-cluster met een Apache Spark 2.1.0-distributie. 
-2. Een aangepast script voor het installeren van Microsoft Cognitive Toolkit op alle knooppunten van een Azure HDInsight Spark-cluster worden uitgevoerd. 
-3. Een vooraf gemaakte Jupyter-notebook uploaden naar uw HDInsight Spark-cluster om toe te passen een getrainde Microsoft Cognitive Toolkit deep learning-model tot bestanden in een Azure Blob Storage-Account met behulp van de Spark-Python-API (PySpark). 
+1. Maak een Azure HDInsight Hadoop cluster met een Apache Spark 2.1.0-distributie. 
+2. Voer een aangepast script uit om Microsoft Cognitive Toolkit te installeren op alle knoop punten van een Azure HDInsight Spark cluster. 
+3. Upload een vooraf ontwikkelde Jupyter-notebook naar uw HDInsight Spark-cluster om een getraind Microsoft Cognitive Toolkit diep Learning model toe te passen op bestanden in een Azure Blob Storage-account met behulp van de Spark python API (PySpark). 
 
-Dit voorbeeld wordt de installatiekopie van het CIFAR-10 gecompileerde en gedistribueerd door Alex Krizhevsky, Vinod Nair en Geoffrey Hinton instellen. De CIFAR-10-gegevensset bevat 60.000 32 x 32 kleur installatiekopieën die behoren tot 10 sluiten elkaar wederzijds uit klassen:
+In dit voor beeld wordt de CIFAR-10-installatie kopieset gebruikt die is gecompileerd en gedistribueerd door Alex Krizhevsky, wijnbouw Nair en Geoffrey Hinton,. De CIFAR-10-gegevensset bevat 60.000 32 × 32 kleuren afbeeldingen die deel uitmaken van tien wederzijds exclusieve klassen:
 
 ![Installatiekopieën](./media/apache-hadoop-deep-dive-advanced-analytics/ml-images.png)
 
-Zie voor meer informatie over de gegevensset van Alex Krizhevsky [Learning meerdere lagen van de functies van kleine afbeeldingen](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
+Voor meer informatie over de gegevensset raadpleegt u het leer proces van Alex Krizhevsky [meerdere lagen van functies van kleine afbeeldingen](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
 
-De gegevensset is in een trainingsset van 50.000 installatiekopieën en een test reeks 10.000 afbeeldingen gepartitioneerd. De eerste set is gebruikt voor het trainen van een 20-laag-deep convolutional resterende netwerk (ResNet)-model met behulp van Microsoft Cognitive Toolkit door [in deze zelfstudie](https://github.com/Microsoft/CNTK/tree/master/Examples/Image/Classification/ResNet) van de Cognitive Toolkit-GitHub-opslagplaats. De resterende 10.000 afbeeldingen zijn gebruikt voor het testen van de nauwkeurigheid van het model. Dit is waar gedistribueerde gegevensverwerking geleverd aan de orde: de taak van het vooraf verwerken en de afbeeldingen scoren is maximaal worden opgestart. Met de opgeslagen getrainde model in voorraad, we hebben gebruikt:
+De gegevensset is gepartitioneerd in een Trainingsset van 50.000 installatie kopieën en een testset van 10.000 installatie kopieën. De eerste set is gebruikt om een ResNet-model (20-Layer-diepe convolutional rerest Network) te trainen met Microsoft Cognitive Toolkit door [deze zelf studie](https://github.com/Microsoft/CNTK/tree/master/Examples/Image/Classification/ResNet) te volgen vanuit de Cognitive Toolkit github-opslag plaats. De resterende 10.000 installatie kopieën zijn gebruikt voor het testen van de nauw keurigheid van het model. Dit is de plaats waar gedistribueerde computing speelt: de taak van voor bereiding en het scoren van de afbeeldingen is zeer kan worden opgestart. We hebben het opgeslagen getrainde model hand matig gebruikt:
 
-* PySpark om de afbeeldingen en het getrainde model op de worker-knooppunten van het cluster te distribueren.
-* Python voor het vooraf verwerken van de afbeeldingen op elk knooppunt van het HDInsight Spark-cluster.
-* Cognitive Toolkit laden van het model en score de vooraf verwerkte afbeeldingen op elk knooppunt.
-* Jupyter-Notebooks om uit te voeren van de PySpark-script, samenvoegen van de resultaten en gebruik [Matplotlib](https://matplotlib.org/) voor het visualiseren van de modelprestaties.
+* PySpark voor het distribueren van de afbeeldingen en het getrainde model naar de worker-knoop punten van het cluster.
+* Python voor het vooraf verwerken van de installatie kopieën op elk knoop punt van het HDInsight Spark-cluster.
+* Cognitive Toolkit het model te laden en de vooraf verwerkte installatie kopieën op elk knoop punt te scoren.
+* Jupyter-notebooks om het PySpark-script uit te voeren, de resultaten te aggregeren en [matplotlib](https://matplotlib.org/) te gebruiken om de model prestaties te visualiseren.
 
-Voor het hele voorverwerking/scoren van 10.000 afbeeldingen, duurt minder dan één minuut op een cluster met 4 worker-knooppunten. Het model voorspelt nauwkeurig de labels van ~ 9,100 (91%) afbeeldingen. Een verwarringsmatrix ziet u de meest voorkomende classificatiefouten. De matrix ziet u bijvoorbeeld dat honden als katten en vice versa etikettering optreedt meer vaak dan voor andere paren met een label.
+De volledige voor verwerking/Score van de 10.000-installatie kopieën duurt minder dan één minuut op een cluster met 4 worker-knoop punten. Het model voor spelt nauw keurig de labels van ~ 9.100 (91%) installatie kopieën. Een Verwar ring matrix illustreert de meest voorkomende classificatie fouten. De matrix laat bijvoorbeeld zien dat het labelen van honden als katten ongedaan wordt gemaakt en omgekeerd meer dan voor andere label paren plaatsvindt.
 
 ![Resultaten](./media/apache-hadoop-deep-dive-advanced-analytics/ml-results.png)
 
-### <a name="try-it-out"></a>Probeer het nu!
+### <a name="try-it-out"></a>Probeer het eens!
 
-Ga als volgt [in deze zelfstudie](../spark/apache-spark-microsoft-cognitive-toolkit.md) voor het implementeren van deze oplossing voor end-to-end: een HDInsight Spark-cluster instellen, Cognitive Toolkit installeren en uitvoeren van de Jupyter-Notebook die 10.000 CIFAR afbeeldingen beoordeelt.
+Volg [deze zelf studie](../spark/apache-spark-microsoft-cognitive-toolkit.md) voor het implementeren van deze oplossing end-to-end: een HDInsight Spark-cluster instellen, cognitive Toolkit installeren en de Jupyter notebook uitvoeren die 10.000 CIFAR-installatie kopieën afbeelden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Apache Hive en Azure Machine Learning
 
 * [Apache Hive en Azure Machine Learning end-to-end](../../machine-learning/team-data-science-process/hive-walkthrough.md)
-* [Met behulp van een Azure HDInsight Hadoop-Cluster op een gegevensset van 1 TB](../../machine-learning/team-data-science-process/hive-criteo-walkthrough.md)
+* [Een Azure HDInsight Hadoop cluster gebruiken op een gegevensset van 1 TB](../../machine-learning/team-data-science-process/hive-criteo-walkthrough.md)
 
-Apache Spark and MLLib
+Apache Spark en MLLib
 
-* [Machine learning met Apache Spark in HDInsight](../../machine-learning/team-data-science-process/spark-overview.md)
-* [Apache Spark met Machine Learning: Apache Spark in HDInsight gebruiken voor het analyseren van de gebouwtemperatuur met behulp van HVAC-gegevens](../spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark met Machine Learning: Apache Spark in HDInsight gebruiken voor de resultaten van voedingsinspectie voorspellen](../spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Machine learning met Apache Spark op HDInsight](../../machine-learning/team-data-science-process/spark-overview.md)
+* [Apache Spark met Machine Learning: Apache Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](../spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark met Machine Learning: Apache Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](../spark/apache-spark-machine-learning-mllib-ipython.md)
 
-Deep Learning, Cognitive Toolkit en anderen
+Diep leren, Cognitive Toolkit en anderen
 
-* [Data Science virtuele Machine van Azure](../../machine-learning/data-science-virtual-machine/overview.md)
-* [Maak kennis met H2O.ai op Azure HDInsight](https://azure.microsoft.com/blog/introducing-h2o-ai-with-on-azure-hdinsight-to-bring-the-most-robust-ai-platform-for-enterprises/)
+* [Azure virtual machine voor data technologie](../../machine-learning/data-science-virtual-machine/overview.md)
+* [Introductie van H2O.ai op Azure HDInsight](https://azure.microsoft.com/blog/introducing-h2o-ai-with-on-azure-hdinsight-to-bring-the-most-robust-ai-platform-for-enterprises/)

@@ -6,14 +6,14 @@ ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/31/2019
-ms.openlocfilehash: 09fcb963ed036dd56c5f9b501b9daf929c12c2ea
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 66796b2510e9d07ebfe78f6d083c935f498d7870
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735760"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810650"
 ---
-# <a name="scenario-converting-service-principal-certificate-contents-to-base-64-encoded-string-format-in-azure-hdinsight"></a>Scenario: De inhoud van een Service-Principal-certificaat converteren naar een met base 64 gecodeerde teken reeks indeling in azure HDInsight
+# <a name="converting-service-principal-certificate-contents-to-base-64-encoded-string-format-in-hdinsight"></a>De inhoud van een Service-Principal-certificaat converteren naar een met base 64 gecodeerde teken reeks notatie in HDInsight
 
 In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
 

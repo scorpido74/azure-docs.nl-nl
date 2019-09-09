@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 246d3eac8f9d8aff6d603ea8686e430ce0f772ea
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: a082e4b7896b317bf2b28971d3693bada95a3445
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878248"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806555"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution"></a>Quickstart: Interactie met een IoT Plug en Play preview-apparaat dat is verbonden met uw oplossing
 
@@ -28,6 +28,9 @@ Down load en installeer node. js vanuit [nodejs.org](https://nodejs.org).
 ## <a name="prepare-an-iot-hub"></a>Een IoT-hub voorbereiden
 
 U hebt ook een Azure IoT hub in uw Azure-abonnement nodig om deze Quick Start te volt ooien. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+
+> [!NOTE]
+> Tijdens de open bare preview zijn IoT-Plug en Play-functies alleen beschikbaar voor IoT-hubs die zijn gemaakt in de regio's **VS-centraal**, **Europa-Noord**en **Japan-Oost** .
 
 Voeg de Microsoft Azure IoT-extensie voor Azure CLI toe:
 

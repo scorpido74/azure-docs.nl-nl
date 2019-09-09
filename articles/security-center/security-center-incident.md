@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/27/2019
 ms.author: rkarlin
-ms.openlocfilehash: df487b5d16568605544fb69111579bd4a9fb045f
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 9f757d5fb2c8d3a807e325068d386e16a7d6caa7
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047593"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806570"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Beveiligings incidenten beheren in Azure Security Center
 
@@ -41,7 +41,7 @@ In het Beveiligingscentrum is een beveiligingsincident een samenloop van alle wa
 
     ![Reageren op beveiligings incidenten in Azure Security Center](./media/security-center-managing-and-responding-alerts/security-center-alert-incident.png)
 
-1. Klik op een waarschuwing om meer informatie over elke waarschuwing te krijgen. Het herstel dat door Security Center wordt voorgesteld, verschilt per beveiligingswaarschuwing. Het herstel dat door Security Center wordt voorgesteld, verschilt per beveiligingswaarschuwing. 
+1. Klik op een waarschuwing om meer informatie over elke waarschuwing te krijgen. Het herstel dat door Security Center wordt voorgesteld, verschilt per beveiligingswaarschuwing.
 
    > [!NOTE]
    > Dezelfde waarschuwing kan bestaan als onderdeel van een incident, en als een zelfstandige waarschuwing worden weer gegeven.

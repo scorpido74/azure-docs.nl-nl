@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5559d30921ea44679b4ecd24c77e26be163c18fc
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 53900bcade3f7a283309f5ee1c624c742a62ad3f
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375913"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812454"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: Uw hybride Azure Active Directory deelname-implementatie plannen
 
@@ -149,7 +149,7 @@ De onderstaande tabel bevat gedetailleerde informatie over de ondersteuning voor
 | ----- | ----- | ----- | ----- |
 | Bare | Federatief | Van 1703 release | Algemeen beschikbaar |
 | Niet-routeerbaar | Federatief | Van 1803 release | Algemeen beschikbaar |
-| Bare | Beheerd | Niet ondersteund | |
+| Bare | Beheerd | Van 1803 release | Azure AD SSPR op Windows-vergrendelings scherm is algemeen beschikbaar. |
 | Niet-routeerbaar | Beheerd | Niet ondersteund | |
 
 ## <a name="next-steps"></a>Volgende stappen

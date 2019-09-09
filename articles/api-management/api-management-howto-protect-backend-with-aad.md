@@ -12,16 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 344613c50f46337ffbd7e786f6753e8030c2af22
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 653089042c87b3223b3de048b6f12056d04b0f3c
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072249"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806325"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Een API beveiligen met behulp van OAuth 2,0 met Azure Active Directory en API Management
 
 In deze hand leiding wordt beschreven hoe u uw Azure API Management-exemplaar configureert om een API te beveiligen met behulp van het OAuth 2,0-protocol met Azure Active Directory (Azure AD). 
+
+> [!NOTE]
+> Deze functie is beschikbaar in de lagen voor **ontwikkel aars**, **Standard** en **Premium** van API management.
 
 ## <a name="prerequisites"></a>Vereisten
 Als u de stappen in dit artikel wilt volgen, hebt u het volgende nodig:
@@ -77,7 +80,7 @@ Elke client toepassing die de API aanroept, moet ook worden geregistreerd als ee
     - Voer in de sectie **Naam** een beschrijvende toepassingsnaam. Deze wordt zichtbaar voor gebruikers van de app. Bijvoorbeeld: `client-app`. 
     - Selecteer in de sectie **ondersteunde account typen** de optie **accounts in elke organisatie Directory**. 
 
-1. Selecteer`Web` en voer de URL in het gedeelte omleidings- **URI** in.`https://contoso5.portal.azure-api.net/signin`
+1. Selecteer`Web` en voer de URL in het gedeelte **omleidings-URI** in.`https://contoso5.portal.azure-api.net/signin`
 
 1. Selecteer **Registreren** om de toepassing te maken. 
 

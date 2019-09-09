@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/08/2019
 ms.author: diberry
-ms.openlocfilehash: bfd11254ffccd5085701071fcdb2116ca368bc82
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: ee185ca5d2e2cdda89945f0fc1e7aae32030c1be
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801440"
+ms.locfileid: "70803889"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migreren naar een Azure-resource bewerkings sleutel
 
@@ -91,7 +91,7 @@ U kunt ervoor kiezen om een app waarvoor u een samen werker bent te exporteren, 
 
 ### <a name="after-the-app-is-migrated"></a>Nadat de app is gemigreerd
 
-Na het migratie proces moet u worden toegevoegd aan de Azure-ontwerp bron door de eigenaar van de app.  
+Als u na het migratie proces toegang tot de oorspronkelijke app nodig hebt, moet u deze toevoegen aan de Azure-ontwerp bron als samen werker door de eigenaar van de app.  
 
 ## <a name="next-steps"></a>Volgende stappen
 

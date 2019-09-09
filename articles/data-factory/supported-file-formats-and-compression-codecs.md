@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: b9d853cc0de08b64f2e0f5530e153724d9eeddda
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 2c8983b5d6a44834d0c9659877c857fd73805ce6
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277082"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812303"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Ondersteunde indelingen en codecs voor de compressie in Azure Data Factory
 
@@ -87,6 +87,9 @@ Gebruik een `escapeChar` in plaats van `quoteChar`, vervang de regel door `quote
 * U wilt kopiëren uit een tekstbestand en wilt een paar regels aan het begin overslaan die geen gegevens of headerinformatie bevatten. Geef `skipLineCount` op om aan te geven hoeveel regels er moeten worden overgeslagen. Als de rest van het bestand een headerregel bevat, kunt u ook `firstRowAsHeader` opgeven. Als zowel `skipLineCount` als `firstRowAsHeader` is opgegeven, worden de regels eerst overgeslagen en wordt de headerinformatie gelezen uit het invoerbestand
 
 ## <a name="json-format"></a>JSON-indeling
+
+>[!NOTE]
+>Zie [JSON](format-json.md) article with Details (engelstalig) Data Factory nieuwe GEGEVENSSET voor json-indeling hebt geïntroduceerd. De volgende configuraties voor gegevens opslag gegevensset op basis van een bestand worden nog steeds ondersteund als-is voor achterwaartse compabitility. U wordt aangeraden het nieuwe model verder te gebruiken.
 
 Naar **importeren/exporteren als een JSON-bestand-in / uit Azure Cosmos DB**, Zie de sectie van de Import/export-JSON-documenten in [gegevens verplaatsen naar/van Azure Cosmos DB](connector-azure-cosmos-db.md) artikel.
 

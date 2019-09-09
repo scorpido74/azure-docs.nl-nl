@@ -1,9 +1,9 @@
 ---
-title: Azure AD-rollen beveiligingswizard in PIM - Azure Active Directory | Microsoft Docs
-description: Beschrijving van de beveiligingswizard die u kunt gebruiken voor Azure AD-roltoewijzingen voor permanente bevoegde converteren naar in aanmerking komende met behulp van Azure AD Privileged Identity Management (PIM).
+title: Wizard Beveiliging van Azure AD-rollen in PIM-Azure Active Directory | Microsoft Docs
+description: Hierin wordt de wizard Beveiliging beschreven waarmee u permanente privileged Azure AD-roltoewijzingen kunt converteren naar kwalificeren met Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,63 +11,63 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa4fd850ac2116dc7f353eea87845501fff020bb
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 0d6d94df29ba16ecee06d70f5edac15a96a4299d
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476222"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804011"
 ---
-# <a name="azure-ad-roles-security-wizard-in-pim"></a>Azure AD-rollen beveiligingswizard in PIM
+# <a name="azure-ad-roles-security-wizard-in-pim"></a>Wizard Beveiliging van Azure AD-rollen in PIM
 
-Als u de eerste persoon om uit te voeren van Azure Active Directory (Azure AD) Privileged Identity Management (PIM) voor uw organisatie bent, u krijgt een wizard. De wizard helpt u inzicht in de beveiligingsrisico's van bevoegde identiteiten en hoe u PIM gaat gebruiken om te beperken die risico's. U hoeft te wijzigingen aanbrengt in bestaande roltoewijzingen in de wizard, als u liever later doen.
+Als u de eerste persoon bent die Azure Active Directory (Azure AD) Privileged Identity Management (PIM) voor uw organisatie wilt uitvoeren, wordt er een wizard weer gegeven. De wizard helpt u bij het begrijpen van de beveiligings Risico's van bevoorrechte identiteiten en het gebruik van PIM om deze Risico's te verminderen. U hoeft geen wijzigingen aan te brengen in bestaande roltoewijzingen in de wizard, als u dat liever later doet.
 
-## <a name="wizard-overview"></a>De wizard-overzicht
+## <a name="wizard-overview"></a>Wizard-overzicht
 
-Voordat uw organisatie wordt gestart met behulp van PIM, alle roltoewijzingen zijn permanent: de gebruikers zich altijd in deze rollen, zelfs als ze geen momenteel hun bevoegdheden nodig. De eerste stap van de wizard ziet u een lijst met hoge bevoegdheden rollen en hoeveel gebruikers zijn momenteel in deze rollen. U kunt inzoomen op een bepaalde rol voor meer informatie over gebruikers als er een of meer van deze niet bekend bent.
+Voordat uw organisatie begint met het gebruik van PIM, zijn alle roltoewijzingen permanent: de gebruikers zijn altijd in deze rollen, zelfs als ze hun bevoegdheden niet op dat moment nodig hebben. In de eerste stap van de wizard ziet u een lijst met zeer privilegede rollen en het aantal gebruikers dat momenteel deel uitmaken van deze rollen. U kunt inzoomen op een bepaalde rol om meer te weten te komen over gebruikers als een of meer hiervan niet bekend zijn.
 
-De tweede stap van de wizard hebt u de mogelijkheid om te wijzigen van roltoewijzingen van beheerder.  
+De tweede stap van de wizard biedt u de mogelijkheid om de roltoewijzingen van de beheerder te wijzigen.  
 
 > [!WARNING]
-> Het is belangrijk dat u ten minste één globale beheerder, en meer dan één beheerder met bevoorrechte rol met een organisatieaccount (niet een Microsoft-account hebt). Als er slechts één beheerder met bevoorrechte rol, zich de organisatie niet kunnen PIM beheren als dit account wordt verwijderd.
-> Houd er ook roltoewijzingen permanente als een gebruiker een Microsoft-account (een account dat ze gebruiken om aan te melden heeft bij Microsoft-services zoals Skype en Outlook.com). Als u van plan bent om MFA te vereisen voor activering voor die rol, wordt die gebruiker worden vergrendeld.
+> Het is belang rijk dat u ten minste één globale beheerder hebt en dat er meer dan één geprivilegieerde rol beheerder is met een organisatie account (geen Microsoft-account). Als er slechts één rol beheerder met beheerders rechten is, kan de organisatie geen PIM beheren als dat account wordt verwijderd.
+> Zorg er ook voor dat de roltoewijzingen permanent blijven als een gebruiker een Microsoft-account heeft (een account dat wordt gebruikt om u aan te melden bij micro soft-services zoals Skype en Outlook.com). Als u MFA wilt vereisen voor activering voor die rol, wordt die gebruiker vergrendeld.
 
 ## <a name="run-the-wizard"></a>De wizard uitvoeren
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-1. Open **Azure AD Privileged Identity Management**.
+1. Open **Azure AD privileged Identity Management**.
 
-1. Klik op **Azure AD-rollen** en klik vervolgens op **Wizard**.
+1. Klik op **Azure AD-rollen** en klik vervolgens op **wizard**.
 
-    ![Azure AD-rollen - pagina van de Wizard met de 3 stappen voor het uitvoeren van de wizard](./media/pim-security-wizard/wizard-start.png)
+    ![Azure AD-rollen: wizard pagina met de drie stappen voor het uitvoeren van de wizard](./media/pim-security-wizard/wizard-start.png)
 
-1. Klik op **1 ontdekken bevoorrechte rollen**.
+1. Klik op **1 geprivilegieerde rollen detecteren**.
 
-1. Bekijk de lijst met bevoorrechte rollen om te zien welke gebruikers zijn permanente of die in aanmerking komen.
+1. Bekijk de lijst met geprivilegieerde rollen om te zien welke gebruikers permanent of in aanmerking komen.
 
-    ![Bevoorrechte rollen - rol van het deelvenster waarin permanente en komen in aanmerking leden detecteren](./media/pim-security-wizard/discover-privileged-roles-users.png)
+    ![Geprivilegieerde rollen detecteren: deel venster met permanente en in aanmerking komende leden](./media/pim-security-wizard/discover-privileged-roles-users.png)
 
-1. Klik op **volgende** om te selecteren van de leden die u wilt maken die in aanmerking komen.
+1. Klik op **volgende** om de leden te selecteren die u in aanmerking wilt stellen.
 
-    ![Leden converteren naar in aanmerking komende pagina met opties voor leden die u wilt maken die in aanmerking komen voor rollen selecteren](./media/pim-security-wizard/convert-members-eligible.png)
+    ![Leden converteren naar een in aanmerking komende pagina met opties om leden te selecteren die u in aanmerking wilt stellen voor rollen](./media/pim-security-wizard/convert-members-eligible.png)
 
-1. Nadat u de leden hebt geselecteerd, klikt u op **volgende**.
+1. Zodra u de leden hebt geselecteerd, klikt u op **volgende**.
 
-    ![De pagina wijzigingen controleren met leden met permanente roltoewijzingen die wordt geconverteerd](./media/pim-security-wizard/review-changes.png)
+    ![Pagina wijzigingen bekijken met leden met permanente roltoewijzingen die worden geconverteerd](./media/pim-security-wizard/review-changes.png)
 
-1. Klik op **OK** de permanente toewijzingen converteren naar in aanmerking komende.
+1. Klik op **OK** om de permanente toewijzingen naar in aanmerking te converteren.
 
     Wanneer de conversie is voltooid, ziet u een melding.
 
-    ![Melding weergegeven dat de status van een conversie](./media/pim-security-wizard/notification-completion.png)
+    ![Melding waarin de status van een conversie wordt weer gegeven](./media/pim-security-wizard/notification-completion.png)
 
-Als u omzetten in andere toewijzingen van bevoorrechte rollen die in aanmerking komen wilt, kunt u de wizard opnieuw uitvoeren. Als u de PIM-interface gebruiken in plaats van de wizard wilt, Zie [toewijzen van Azure AD-rollen in PIM](pim-how-to-add-role-to-user.md).
+Als u andere geprivilegieerde roltoewijzingen wilt converteren naar in aanmerking komende toewijzingen, kunt u de wizard opnieuw uitvoeren. Zie [Azure AD-rollen toewijzen in PIM](pim-how-to-add-role-to-user.md)als u de PIM-interface wilt gebruiken in plaats van de wizard.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure AD-rollen in PIM toewijzen](pim-how-to-add-role-to-user.md)
-- [Toegang verlenen aan andere beheerders voor het beheren van PIM](pim-how-to-give-access-to-pim.md)
+- [Azure AD-rollen toewijzen in PIM](pim-how-to-add-role-to-user.md)
+- [Toegang verlenen aan andere beheerders om PIM te beheren](pim-how-to-give-access-to-pim.md)

@@ -9,12 +9,12 @@ ms.date: 03/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: abbd436e5d1c88c53af95fd8ba9add20fa67c8e4
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 8d19724883e6c2b3630de6100b1b4ca9fd9250a1
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640896"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813366"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>De Azure Portal gebruiken om toegang te krijgen tot BLOB-of wachtrij gegevens
 
@@ -22,7 +22,7 @@ Wanneer u toegang hebt tot BLOB-of wachtrij gegevens met behulp van het [Azure P
 
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>Benodigde machtigingen voor toegang tot BLOB-of wachtrij gegevens
 
-Afhankelijk van hoe u toegangs-blobs of wachtrij gegevens in de Azure Portal wilt autoriseren, hebt u specifieke machtigingen nodig. In de meeste gevallen worden deze machtigingen gegeven via op rollen gebaseerd toegangs beheer (RBAC). Zie [Wat is op rollen gebaseerd toegangs beheer (RBAC)?](../../role-based-access-control/overview.md)voor meer informatie over RBAC.
+Afhankelijk van hoe u toegang wilt verlenen tot BLOB-of wachtrij gegevens in de Azure Portal, hebt u specifieke machtigingen nodig. In de meeste gevallen worden deze machtigingen gegeven via op rollen gebaseerd toegangs beheer (RBAC). Zie [Wat is op rollen gebaseerd toegangs beheer (RBAC)?](../../role-based-access-control/overview.md)voor meer informatie over RBAC.
 
 ### <a name="account-access-key"></a>Toegangs sleutel voor account
 

@@ -1,6 +1,6 @@
 ---
-title: Gegevens transformeren met Databricks-Jar - Azure | Microsoft Docs
-description: Meer informatie over verwerken of transformeren door het uitvoeren van een Databricks-Jar.
+title: Gegevens transformeren met Databricks jar-Azure | Microsoft Docs
+description: Meer informatie over het verwerken of transformeren van gegevens door een Databricks jar uit te voeren.
 services: data-factory
 documentationcenter: ''
 ms.assetid: ''
@@ -12,24 +12,24 @@ ms.date: 03/15/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: d299a785d50657ef40c0c49cb2dce33b8939fd02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 924367c6bb85b64bafbcb8feb546eeb490e07a34
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60860981"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812785"
 ---
-# <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Gegevens transformeren met behulp van een Jar-activiteit in Azure Databricks
+# <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Gegevens transformeren door een jar-activiteit uit te voeren in Azure Databricks
 
-De Azure Databricks Jar-activiteit in een [Data Factory-pijplijn](concepts-pipelines-activities.md) wordt uitgevoerd een Spark-Jar in uw Azure Databricks-cluster. In dit artikel is gebaseerd op de [activiteiten voor gegevenstransformatie](transform-data.md) artikel een algemeen overzicht van de gegevenstransformatie van en de ondersteunde transformatieactiviteiten geeft. Azure Databricks is een beheerd platform voor het uitvoeren van Apache Spark.
+De Azure Databricks jar-activiteit in een [Data Factory pijp lijn](concepts-pipelines-activities.md) voert een Spark jar in uw Azure Databricks-cluster uit. In dit artikel vindt u een overzicht van het artikel over de [activiteiten](transform-data.md) voor gegevens transformatie, dat een algemene informatie bevat over de gegevens transformatie en de ondersteunde transformatie activiteiten. Azure Databricks is een beheerd platform voor het uitvoeren van Apache Spark.
 
 Bekijk de volgende video voor een inleiding en demonstratie van deze functie van 11 minuten:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Execute-Jars-and-Python-scripts-on-Azure-Databricks-using-Data-Factory/player]
 
-## <a name="databricks-jar-activity-definition"></a>De definitie van de Databricks-Jar-activiteit
+## <a name="databricks-jar-activity-definition"></a>Definitie van Databricks jar-activiteit
 
-Hier volgt de voorbeeld-JSON-definitie van een Databricks Jar-activiteit:
+Hier volgt een voor beeld van de JSON-definitie van een Databricks jar-activiteit:
 
 ```json
 {
@@ -52,23 +52,26 @@ Hier volgt de voorbeeld-JSON-definitie van een Databricks Jar-activiteit:
 
 ```
 
-## <a name="databricks-jar-activity-properties"></a>Databricks-Jar activiteitseigenschappen
+## <a name="databricks-jar-activity-properties"></a>Eigenschappen van Databricks jar-activiteit
 
-De volgende tabel beschrijft de JSON-eigenschappen die in de JSON-definitie gebruikt:
+In de volgende tabel worden de JSON-eigenschappen beschreven die in de JSON-definitie worden gebruikt:
 
 |Eigenschap|Description|Vereist|
 |:--|---|:-:|
-|name|Naam van de activiteit in de pijplijn.|Ja|
+|name|De naam van de activiteit in de pijp lijn.|Ja|
 |description|Tekst die beschrijft wat de activiteit doet.|Nee|
-|type|Voor Databricks Jar-activiteit is het activiteitstype DatabricksSparkJar.|Ja|
-|linkedServiceName|De naam van de Databricks gekoppelde Service waarop de Jar-activiteit wordt uitgevoerd. Zie voor meer informatie over deze gekoppelde service, [gekoppelde services berekenen](compute-linked-services.md) artikel.|Ja|
-|mainClassName|De volledige naam van de klasse met de belangrijkste methode moet worden uitgevoerd. Deze klasse moet worden opgenomen in een JAR opgegeven als een bibliotheek.|Ja|
-|parameters|De parameters die worden doorgegeven aan de belangrijkste methode.  Dit is een matrix met tekenreeksen.|Nee|
-|Bibliotheken|Een lijst met bibliotheken die u moet worden geïnstalleerd op het cluster dat de taak wordt uitgevoerd. Kan het zijn een reeks < string, object >|Ja (ten minste één met de methode mainClassName)|
+|Type|Voor Databricks jar-activiteit is het type activiteit DatabricksSparkJar.|Ja|
+|linkedServiceName|De naam van de gekoppelde Databricks-service waarop de jar-activiteit wordt uitgevoerd. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service.|Ja|
+|mainClassName|De volledige naam van de klasse die de hoofd methode bevat die moet worden uitgevoerd. Deze klasse moet zich bevinden in een JAR die als bibliotheek is opgenomen.|Ja|
+|parameters|Para meters die worden door gegeven aan de methode Main.  Dit is een matrix met teken reeksen.|Nee|
+|Library|Een lijst met bibliotheken die op het cluster moeten worden geïnstalleerd waarmee de taak wordt uitgevoerd. Dit kan een matrix zijn met < teken reeks, object >|Ja (ten minste één met de methode mainClassName)|
 
-## <a name="supported-libraries-for-databricks-activities"></a>Ondersteunde-bibliotheken voor databricks-activiteiten
+> [!NOTE]
+> **Bekend probleem** : wanneer u hetzelfde [interactieve cluster](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks) gebruikt voor het uitvoeren van gelijktijdige Databricks jar-activiteiten (zonder dat het cluster opnieuw hoeft te worden opgestart), is er een bekend probleem in Databricks waar in de para meters van de eerste activiteit wordt gebruikt door de volgende activiteiten ook. Daarom ontstaan er onjuiste para meters die worden door gegeven aan de volgende taken. Als u dit wilt beperken, moet u in plaats daarvan een [taak cluster](compute-linked-services.md#example---using-new-job-cluster-in-databricks) gebruiken. 
 
-In de bovenstaande definitie van de activiteit Databricks geeft u deze typen bibliotheek: *jar*, *ei*, *maven*, *pypi*,  *cran*.
+## <a name="supported-libraries-for-databricks-activities"></a>Ondersteunde bibliotheken voor databricks-activiteiten
+
+In de bovenstaande definitie van de Databricks-activiteit geeft u deze typen tape wisselaars op: *jar*, *ei*, *maven*, *pypi*, *krans*.
 
 ```json
 {
@@ -102,19 +105,19 @@ In de bovenstaande definitie van de activiteit Databricks geeft u deze typen bib
 
 ```
 
-Raadpleeg voor meer informatie [documentatie voor Databricks](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) voor bibliotheek typen.
+Raadpleeg de Databricks- [documentatie](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) voor bibliotheek typen voor meer informatie.
 
-## <a name="how-to-upload-a-library-in-databricks"></a>Over het uploaden van een bibliotheek in Databricks
+## <a name="how-to-upload-a-library-in-databricks"></a>Een bibliotheek uploaden in Databricks
 
-#### <a name="using-databricks-workspace-uihttpsdocsazuredatabricksnetuser-guidelibrarieshtmlcreate-a-library"></a>[Met behulp van de gebruikersinterface van de Databricks-werkruimte](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
+#### <a name="using-databricks-workspace-uihttpsdocsazuredatabricksnetuser-guidelibrarieshtmlcreate-a-library"></a>[De gebruikers interface van Databricks werk ruimte gebruiken](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
 
-Als u het pad dbfs van de bibliotheek toegevoegd met behulp van de gebruikersinterface, kunt u [Databricks CLI (installatie)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
+Als u het pad naar de dbfs van de bibliotheek wilt ophalen die via de gebruikers interface is toegevoegd, kunt u [DATABRICKS cli (installatie)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli)gebruiken. 
 
-Normaal gesproken de Jar-bibliotheken worden opgeslagen onder dbfs: / FileStore/jars tijdens het gebruik van de gebruikersinterface. U kunt een lijst alle via de CLI: *databricks fs ls dbfs: / FileStore/taak-JAR-bestanden* 
+De jar-bibliotheken worden meestal opgeslagen onder dbfs:/File Store/potten tijdens het gebruik van de gebruikers interface. U kunt alle weer geven via de CLI: *databricks FS ls dbfs:/File Store/job-Jars* 
 
 
 
-#### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[Tapewisselaar voor kopiëren met behulp van Databricks CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
-Databricks CLI gebruiken [(installatiestappen)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
+#### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[Bibliotheek kopiëren met behulp van Databricks CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+Gebruik Databricks CLI [(installatie stappen)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 
-Voorbeeld - JAR kopiëren naar dbfs: *dbfs cp SparkPi-assembly-0.1.jar dbfs:/docs/sparkpi.jar*
+Voor beeld-kopiëren JAR naar dbfs: *dbfs CP sparkpi-assembly-0.1. jar dbfs:/docs/SparkPi. jar*

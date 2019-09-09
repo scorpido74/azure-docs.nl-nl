@@ -1,6 +1,6 @@
 ---
 title: Automatisch schalen van Azure HDInsight-clusters (preview-versie)
-description: De functie voor automatisch schalen met HDInsight gebruiken om clusters te schalen
+description: De functie voor automatisch schalen van Azure HDInsight gebruiken om clusters Apache Hadoop schalen
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: f7e34d2bbad5f5d8e6b063269b7e87c314fdce90
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 877fc3a4e29fc1753d7b4f92091b34d4b2537846
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70770703"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810325"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatisch schalen van Azure HDInsight-clusters (preview-versie)
 
@@ -85,7 +85,7 @@ Als u de functie voor automatisch schalen wilt inschakelen met schalen op basis 
     * **Minimum** aantal worker-knoop punten.  
     * **Maximum** aantal worker-knoop punten.  
 
-    ![Optie voor automatisch schalen op basis van werk knooppunten inschakelen](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
+    ![Automatisch schalen op basis van werk knooppunten inschakelen](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
 
 Het eerste aantal worker-knoop punten moet liggen tussen het minimum en het maximum, inclusief. Met deze waarde wordt de oorspronkelijke grootte van het cluster gedefinieerd wanneer het wordt gemaakt. Het minimum aantal worker-knoop punten moet groter zijn dan nul.
 
@@ -103,7 +103,7 @@ Als u de functie voor automatisch schalen wilt inschakelen met schalen op basis 
 1. Bewerk het tijdstip waarop de voor waarde van kracht moet zijn en het aantal knoop punten waaraan het cluster moet worden geschaald.
 1. Voeg indien nodig meer voor waarden toe.
 
-    ![Optie voor automatisch schalen op basis van worker-knoop punten inschakelen](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
+    ![Maken van werk knooppunt plannen toestaan](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
 
 Het aantal knoop punten moet tussen 1 en het aantal worker-knoop punten zijn dat u hebt ingevoerd voordat voor waarden worden toegevoegd.
 
@@ -111,7 +111,7 @@ Het aantal knoop punten moet tussen 1 en het aantal worker-knoop punten zijn dat
 
 Voor zowel op de werk belasting als op schema gebaseerd schalen selecteert u het VM-type voor worker-knoop punten door te klikken op de grootte van het **worker-knoop punt** en de grootte van het **hoofd knooppunt**. Nadat u het VM-type voor elk knooppunt type hebt gekozen, ziet u het geschatte kosten bereik voor het hele cluster. Pas de VM-typen aan uw budget aan.
 
-![Optie voor automatisch schalen op basis van worker-knoop punten inschakelen](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-node-size-selection.png)
+![Knooppunt grootte voor automatisch schalen van werk knooppunten inschakelen](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-node-size-selection.png)
 
 Uw abonnement heeft een capaciteits quotum voor elke regio. Het totale aantal kernen van uw hoofd knooppunten in combi natie met het maximum aantal worker-knoop punten mag het capaciteits quotum niet overschrijden. Dit quotum is echter een zachte limiet; u kunt altijd een ondersteunings ticket maken om het probleem te verhelpen.
 
@@ -189,7 +189,7 @@ U kunt een HDInsight-cluster maken met behulp van een Azure Resource Manager `au
 #### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
 Selecteer **cluster grootte** onder **instellingen**om automatisch schalen in te scha kelen op een actief cluster. Klik vervolgens op **automatisch schalen inschakelen**. Selecteer het gewenste type automatisch schalen en voer de opties in voor schalen op basis van de belasting of op basis van een planning. Klik ten slotte op **Opslaan**.
 
-![Optie voor automatisch schalen op basis van worker-knoop punten inschakelen](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
+![Op schema gebaseerde automatische schaal aanpassing van werk knooppunten inschakelen](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
 
 #### <a name="using-the-rest-api"></a>Met behulp van de REST API
 Als u automatisch schalen op een actief cluster wilt in-of uitschakelen met behulp van de REST API, maakt u een POST-aanvraag naar het eind punt voor automatisch schalen, zoals wordt weer gegeven in het code fragment hieronder:
@@ -231,7 +231,7 @@ De actieve taken blijven worden uitgevoerd en voltooid. De taken die in behandel
 
 De cluster status die in de Azure Portal wordt weer gegeven, kan u helpen bij het controleren van de activiteiten voor automatisch schalen.
 
-![Optie voor automatisch schalen op basis van werk knooppunten inschakelen](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
+![De cluster status automatisch schalen van werk knooppunten inschakelen](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
 
 Alle cluster status berichten die u mogelijk ziet, worden beschreven in de onderstaande lijst.
 
@@ -251,7 +251,7 @@ U kunt de geschiedenis van het cluster omhoog en omlaag schalen als onderdeel va
 
 Selecteer **metrische gegevens** onder **bewaking**. Klik vervolgens op **metrische gegevens** en **aantal actieve werk** rollen toevoegen in de vervolg keuzelijst **metriek** . Klik op de knop in de rechter bovenhoek om het tijds bereik te wijzigen.
 
-![Optie voor automatisch schalen op basis van worker-knoop punten inschakelen](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
+![Metriek voor automatisch schalen op basis van worker-knoop punten inschakelen](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
