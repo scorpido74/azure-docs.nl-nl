@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2019
-ms.openlocfilehash: 9b58d6e189c891d0dd2917d7d150f133dc35f917
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: b938d55749373711ddf2a19df12b987276b224ca
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019103"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376302"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Trainings uitvoeringen in python starten, controleren en annuleren
 
@@ -226,7 +226,7 @@ Als u veel onderliggende items efficiënt wilt maken, [`create_children()`](http
 
 Onderliggende uitvoeringen kunnen ook worden verzonden vanuit een bovenliggende run. Hierdoor kunt u hiërarchieën van bovenliggende en onderliggende uitvoeringen maken, die elk worden uitgevoerd op verschillende Compute-doelen, verbonden door de gemeen schappelijke run-ID.
 
-Gebruik de methode [submit_child ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-count-none--tag-key-none--tag-values-none-) voor het verzenden van een onderliggende uitvoering vanuit een bovenliggende run. Als u dit wilt doen in het bovenliggende run script, haalt u de uitvoerings context op en verzendt u de onderliggende run met de methode ' ' submit_child ' ' van het context exemplaar.
+Gebruik de methode [submit_child ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) voor het verzenden van een onderliggende uitvoering vanuit een bovenliggende run. Als u dit wilt doen in het bovenliggende run script, haalt u de uitvoerings context op en verzendt u de onderliggende run met de methode ' ' submit_child ' ' van het context exemplaar.
 
 ```python
 ## In parent run script

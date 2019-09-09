@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: b33f0dec9e6ec685b19e01ce82cfe4adec88b575
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 9c7f920c6b66995d53ef742a9faf574286a51d69
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258603"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390449"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Key Vault verwijzingen gebruiken voor App Service en Azure Functions (preview-versie)
 
@@ -38,7 +38,8 @@ Als u geheimen van Key Vault wilt lezen, moet er een kluis zijn gemaakt en moet 
 
 1. Maak een [toegangs beleid in Key Vault](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) voor de toepassings-id die u eerder hebt gemaakt. Schakel de geheime machtiging ' Get ' in voor dit beleid. Configureer de "geautoriseerde toepassing" of `applicationId` instellingen niet, omdat deze niet compatibel is met een beheerde identiteit.
 
-    Het verlenen van toegang tot een toepassings-id in de sleutel kluis is een eenmalige-bewerking. deze blijft hetzelfde voor alle Azure-abonnementen. U kunt deze gebruiken om zoveel certificaten te implementeren als u wilt. 
+    > [!NOTE]
+    > Key Vault verwijzingen zijn niet in staat om geheimen op te lossen die zijn opgeslagen in een sleutel kluis met [netwerk beperkingen](../key-vault/key-vault-overview-vnet-service-endpoints.md).
 
 ## <a name="reference-syntax"></a>Verwijzings syntaxis
 
