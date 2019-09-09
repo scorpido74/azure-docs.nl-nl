@@ -159,7 +159,7 @@
               href: configure-azure-cni.md
         - name: Een interne load balancer maken
           href: internal-lb.md
-        - name: Een load balancer van het type Standard gebruiken (preview)
+        - name: Een Standard Load Balancer gebruiken
           href: load-balancer-standard.md
         - name: Een statisch IP-adres gebruiken
           href: static-ip.md

@@ -450,8 +450,6 @@
           href: control-flow-webhook-activity.md
     - name: Gegevensstroomtransformaties
       items:
-        - name: Bestand met vaste breedte
-          href: how-to-fixed-width.md
         - name: Samenvoegen
           href: data-flow-aggregate.md
         - name: Rij wijzigen
@@ -610,6 +608,10 @@
           href: data-migration-guidance-hdfs-azure-storage.md
         - name: Gegevens migreren van een on-premises Netezza-server naar Azure
           href: data-migration-guidance-netezza-azure-sqldw.md
+    - name: Transformatie met toewijzingsgegevensstroom
+      items:
+        - name: Tekstbestanden met een vaste breedte verwerken
+          href: how-to-fixed-width.md
 - name: Naslaginformatie
   items:
     - name: .NET

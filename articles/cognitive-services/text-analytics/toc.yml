@@ -12,7 +12,7 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Client
+    - name: Clientbibliotheek
       items:
         - name: 'C#'
           href: quickstarts/csharp.md
@@ -54,13 +54,13 @@
   items:
     - name: De Tekstanalyse-API aanroepen
       href: How-tos/text-analytics-how-to-call-api.md
-    - name: Taal detecteren
+    - name: Taaldetectie
       href: How-tos/text-analytics-how-to-language-detection.md
-    - name: Stemming analyseren
+    - name: Sentimentanalyse
       href: How-tos/text-analytics-how-to-sentiment-analysis.md
-    - name: Belangrijke woordgroepen herkennen
+    - name: Sleuteltermextractie
       href: How-tos/text-analytics-how-to-keyword-extraction.md
-    - name: Named-entity recognition aanroepen
+    - name: Herkenning van tekeneenheden
       href: How-tos/text-analytics-how-to-entity-linking.md
     - name: Containers gebruiken
       items:

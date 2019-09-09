@@ -113,11 +113,13 @@
       href: concept-deep-learning-vs-machine-learning.md
 - name: Handleidingen
   items:
-    - name: Werkruimten beheren
+    - name: Werkruimten maken en beheren
       items:
-        - name: De portal voor werkruimten gebruiken
+        - name: Azure Portal gebruiken
           href: how-to-manage-workspace.md
-        - name: Een Resource Manager-sjabloon gebruiken
+        - name: Azure CLI gebruiken
+          href: how-to-manage-workspace-cli.md
+        - name: Resource Manager-sjabloon gebruiken
           displayName: arm
           href: how-to-create-workspace-template.md
     - name: "De ontwikkelomgeving instellen\_"

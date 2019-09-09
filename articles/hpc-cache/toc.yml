@@ -1,0 +1,34 @@
+- name: Documentatie over Azure HPC Cache
+  href: index.yml
+- name: Overzicht
+  items:
+    - name: Wat is Azure HPC Cache?
+      href: hpc-cache-overview.md
+- name: Concepten
+  items:
+    - name: De geaggregeerde naamruimte gebruiken
+      href: hpc-cache-namespace.md
+    - name: Nieuwe Blob-opslag vullen
+      href: hpc-cache-ingest.md
+    - name: Alternatieve methoden voor gegevensopname
+      items:
+        - name: De cache met een parallelle kopie vullen
+          href: hpc-cache-ingest-parallelcp.md
+        - name: De cache met msrsync vullen
+          href: hpc-cache-ingest-msrsync.md
+        - name: De cache met een handmatige bestandskopie vullen
+          href: hpc-cache-ingest-manual.md
+- name: Handleidingen
+  items:
+    - name: Vereisten
+      href: hpc-cache-prereqs.md
+    - name: De cache maken
+      href: hpc-cache-create.md
+    - name: Opslag toevoegen
+      href: hpc-cache-add-storage.md
+    - name: Verbinding maken met de cache
+      href: hpc-cache-mount.md
+- name: Resources
+  items:
+    - name: Een ondersteuningsticket openen
+      href: hpc-cache-support-ticket.md

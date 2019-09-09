@@ -22,6 +22,11 @@
       href: how-to/move-account.md
     - name: Onboarden van Automation Services automatiseren
       href: /azure/architecture/cloud-adoption/operations/azure-server-management/onboarding-automation
+    - name: Ondersteunde regio's voor Log Analytics-werkruimtetoewijzingen
+      href: how-to/region-mappings.md
+    - name: Azure Automation-gegevens beheren
+      href: automation-managing-data.md
+      displayName: backup
 - name: Procesautomatisering
   items:
     - name: Overzicht van Hybrid Runbook Worker
@@ -39,16 +44,10 @@
       items:
         - name: Een runbook maken
           href: automation-quickstart-create-runbook.md
-    - name: Onboarding
-      items:
-        - name: Onboarding van meerdere virtuele machines vanuit de portal
-          href: automation-onboard-solutions-from-browse.md
-        - name: Onboarding vanuit een Azure-VM
-          href: automation-onboard-solutions-from-vm.md
-        - name: Onboarding vanuit een Automation-account
-          href: automation-onboard-solutions-from-automation-account.md
     - name: Handleidingen
       items:
+        - name: Virtuele machines starten/stoppen buiten kantooruren
+          href: automation-solution-vm-management.md
         - name: Runbooks beheren
           href: manage-runbooks.md
         - name: Runbooks maken
@@ -86,8 +85,6 @@
               href: automation-child-runbooks.md
             - name: Een JSON-object doorgeven aan een Azure Automation-runbook
               href: automation-pass-json-string.md
-            - name: Virtuele machines starten/stoppen buiten kantooruren
-              href: automation-solution-vm-management.md
         - name: Runbooks bewaken
           items:
             - name: Runbook-uitvoer
@@ -98,15 +95,6 @@
               displayName: 'fair share, activity log'
             - name: Foutafhandeling in grafische runbooks
               href: automation-runbook-graphical-error-handling.md
-            - name: Integratie van bronbeheer
-              href: source-control-integration.md
-              displayName: 'github, vsts, azure devops, personal access token'
-            - name: Integratie van bronbeheer - verouderd
-              href: automation-source-control-integration-legacy.md
-              displayname: github
-            - name: Azure Automation-gegevens beheren
-              href: automation-managing-data.md
-              displayName: backup
         - name: Hybrid Runbook Worker
           items:
             - name: Hybrid Runbook Worker in Windows implementeren
@@ -120,6 +108,19 @@
             - name: Bijgewerkte bestanden volgen met watcher-taken
               href: automation-watchers-tutorial.md
               displayName: 'hybrid runbook worker, hybrid worker, trigger'
+        - name: Integratie van bronbeheer
+          items:
+            - name: Integratie van bronbeheer
+              href: source-control-integration.md
+              displayName: 'github, vsts, azure devops, personal access token'
+            - name: Integratie van bronbeheer - verouderd
+              href: automation-source-control-integration-legacy.md
+              displayname: github
+            - name: Integratie van broncodebeheer met GitHub Enterprise
+              href: automation-scenario-source-control-integration-with-github-ent.md
+              displayName: 'CI, runbooks'
+            - name: Integratie van broncodebeheer met Azure DevOps
+              href: automation-scenario-source-control-integration-with-VSTS.md
     - name: Problemen oplossen
       items:
         - name: Problemen met Hybrid Runbook Worker oplossen
@@ -297,7 +298,7 @@
       href: automation-connections.md
     - name: Referenties
       href: automation-credentials.md
-    - name: Integratiemodules
+    - name: Modules
       href: automation-integration-modules.md
     - name: Planningen
       href: automation-schedules.md
@@ -321,11 +322,6 @@
       displayName: 'Monitor, Azure Monitor'
     - name: Een Amazon Web Service-VM maken
       href: automation-scenario-aws-deployment.md
-    - name: Integratie van broncodebeheer met GitHub Enterprise
-      href: automation-scenario-source-control-integration-with-github-ent.md
-      displayName: 'CI, runbooks'
-    - name: Integratie van broncodebeheer met Azure DevOps
-      href: automation-scenario-source-control-integration-with-VSTS.md
       displayName: 'VSTS, CI, runbooks'
     - name: Een Azure Resource Manager-sjabloon implementeren in een Azure Automation-PowerShell-runbook
       href: automation-deploy-template-runbook.md
@@ -348,14 +344,10 @@
   items:
     - name: Azure PowerShell
       href: /powershell/module/azurerm.automation
-    - name: Azure PowerShell (klassiek)
-      href: /powershell/module/azure/?view=azuresmps-3.7.0
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.automation
     - name: REST
       href: /rest/api/automation
-    - name: REST (klassiek)
-      href: 'https://msdn.microsoft.com/library/azure/mt163781'
 - name: Resources
   items:
     - name: Introductievideo over Automation

@@ -250,6 +250,8 @@
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Eindpunt van HTTP-functie aanpassen
           href: functions-create-serverless-api.md
+        - name: On-premises resources beheren
+          href: functions-hybrid-powershell.md
     - name: Problemen oplossen
       items:
         - name: Problemen met opslag oplossen

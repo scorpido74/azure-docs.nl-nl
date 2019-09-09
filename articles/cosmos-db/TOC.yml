@@ -455,6 +455,10 @@
           items:
             - name: 1 - Query's uitvoeren op gegevens
               href: tutorial-query-graph.md
+        - name: Naslaginformatie
+          items:
+            - name: Antwoordheaders
+              href: gremlin-headers.md
         - name: Handleidingen
           items:
             - name: Grafiekgegevens modelleren

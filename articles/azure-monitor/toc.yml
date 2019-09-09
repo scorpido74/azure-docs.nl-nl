@@ -97,20 +97,12 @@
       items:
         - name: Overzicht
           href: platform/alerts-overview.md
-        - name: Klassieke waarschuwingen
-          href: platform/alerts-classic.overview.md
         - name: Metrische waarschuwingen
           href: platform/alerts-metric-overview.md
         - name: Waarschuwingen voor logboeken
           href: platform/alerts-unified-log.md
         - name: Waarschuwingen voor activiteitenlogboeken
           href: platform/activity-log-alerts.md
-        - name: Algemeen waarschuwingsschema
-          href: platform/alerts-common-schema.md
-        - name: Actieregels
-          href: platform/alerts-action-rules.md
-        - name: Slimme groepen
-          href: platform/alerts-smartgroups-overview.md
         - name: Wijzigingsanalyse
           href: app/change-analysis.md
     - name: Gegevens visualiseren
@@ -516,11 +508,7 @@
                   href: insights/container-insights-troubleshoot.md
             - name: Docker- en Windows-containers bewaken
               href: insights/containers.md
-        - name: Storage
-          items:
-            - name: Azure Monitor voor Storage
-              href: insights/storage-insights-overview.md
-        - name: Virtuele machines
+        - name: Besturingssysteem (VM's en meer)
           items:
             - name: Agents
               items:
@@ -530,26 +518,38 @@
                   items:
                     - name: Overzicht
                       href: platform/diagnostics-extension-overview.md
-                    - name: Verzenden naar Azure Storage
-                      href: platform/diagnostics-extension-to-storage.md
-                    - name: Verzenden naar Application Insights
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: Verzenden naar Event Hubs
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: Problemen oplossen
-                      href: platform/diagnostics-extension-troubleshooting.md
-                    - name: Voorbereiden op JSON Lines-indeling voor diagnostische logboeken
-                      href: platform/diagnostic-logs-append-blobs.md
-                    - name: VM-gast naar metrische gegevens
-                      href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
-                    - name: GuestOS naar metrische gegevens in Linux-VM (Telegraf)
-                      href: platform/collect-custom-metrics-linux-telegraf.md
-                    - name: Virtuele-machineschaalsetgast naar metrische gegevens
-                      href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
-                    - name: Klassieke VM-gast naar metrische gegevens
-                      href: platform/collect-custom-metrics-guestos-vm-classic.md
-                    - name: Cloudservice-gast naar metrische gegevens
-                      href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                    - name: Windows
+                      items:
+                        - name: Versiegeschiedenis
+                          href: platform/diagnostics-extension-schema.md
+                        - name: Schema
+                          href: platform/diagnostics-extension-schema-1dot3.md
+                        - name: Verzenden naar Azure Storage
+                          href: platform/diagnostics-extension-to-storage.md
+                        - name: Verzenden naar Application Insights
+                          href: platform/diagnostics-extension-to-application-insights.md
+                        - name: Verzenden naar Event Hubs
+                          href: platform/diagnostics-extension-stream-event-hubs.md
+                        - name: Verzenden naar Azure Monitor als aangepaste metrische gegevens
+                          items:
+                            - name: Virtuele machine
+                              href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
+                            - name: VM-schaalset
+                              href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
+                            - name: Klassieke VM
+                              href: platform/collect-custom-metrics-guestos-vm-classic.md
+                            - name: Cloudservice
+                              href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                        - name: JSON Lines-indeling voor diagnostische logboeken
+                          href: platform/diagnostic-logs-append-blobs.md
+                        - name: Problemen oplossen
+                          href: platform/diagnostics-extension-troubleshooting.md
+                    - name: Linux
+                      items:
+                        - name: Gebruiken met VM's
+                          href: ../virtual-machines/extensions/diagnostics-linux.md
+                        - name: Aangepaste metrische gegevens met Telegraf
+                          href: platform/collect-custom-metrics-linux-telegraf.md
                 - name: Log Analytics-agents
                   items:
                     - name: Overzicht
@@ -645,13 +645,21 @@
               href: platform/computer-groups.md
             - name: Configuratiebeheer
               href: platform/collect-sccm.md
-        - name: Databases
-          items:
-            - name: Azure SQL
-              href: insights/azure-sql.md
-            - name: SQL Server
-              href: insights/sql-assessment.md
         - name: Azure-resources
+          items:
+            - name: Diagnostische logboeken
+              items:
+                - name: Overzicht
+                  href: platform/diagnostic-logs-overview.md
+                - name: Verzamelen in Logboeken
+                  href: platform/diagnostic-logs-stream-log-store.md
+                - name: Verzamelen van Azure Storage
+                  href: platform/azure-storage-iis-table.md
+                - name: Archiveren naar opslag
+                  href: platform/archive-diagnostic-logs.md
+                - name: Inschakelen met Resource Manager-sjablonen
+                  href: platform/diagnostic-logs-stream-template.md
+        - name: Azure-abonnement
           items:
             - name: Activiteitenlogboek
               items:
@@ -667,20 +675,6 @@
                   href: platform/activity-log-export.md
                 - name: Schema
                   href: platform/activity-log-schema.md
-            - name: Diagnostische logboeken
-              items:
-                - name: Overzicht
-                  href: platform/diagnostic-logs-overview.md
-                - name: Verzamelen in Logboeken
-                  href: platform/diagnostic-logs-stream-log-store.md
-                - name: Verzamelen van Azure Storage
-                  href: platform/azure-storage-iis-table.md
-                - name: Archiveren naar opslag
-                  href: platform/archive-diagnostic-logs.md
-                - name: Gegevens streamen naar Event Hubs
-                  href: platform/diagnostic-logs-stream-event-hubs.md
-                - name: Inschakelen met Resource Manager-sjablonen
-                  href: platform/diagnostic-logs-stream-template.md
             - name: Gegevens streamen naar Event Hubs
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault-analyse
@@ -689,6 +683,16 @@
               href: ../service-fabric/service-fabric-diagnostics-oms-agent.md
             - name: Resourcegroepen controleren
               href: insights/resource-group-insights.md
+        - name: Storage
+          items:
+            - name: Azure Monitor voor Storage
+              href: insights/storage-insights-overview.md
+        - name: Databases
+          items:
+            - name: Azure SQL
+              href: insights/azure-sql.md
+            - name: SQL Server
+              href: insights/sql-assessment.md
         - name: Netwerken
           items:
             - name: Networking Analytics
@@ -729,18 +733,20 @@
           items:
             - name: Aangepaste metrische gegevens
               href: platform/metrics-custom-overview.md
+            - name: REST-API voor metrische gegevens
+              href: platform/metrics-store-custom-rest-api.md
             - name: API voor Log Analytics-gegevensverzamelaar
               href: platform/data-collector-api.md
             - name: Pijplijnvoorbeeld voor API voor Log Analytics-gegevensverzamelaar
               href: platform/create-pipeline-datacollector-api.md
-            - name: REST-API voor metrische gegevens
-              href: platform/metrics-store-custom-rest-api.md
         - name: System Center gebruiken
           items:
             - name: Operations Manager koppelen
               href: platform/om-agents.md
             - name: Operations Manager evalueren
               href: insights/scom-assessment.md
+        - name: Gegevens streamen naar Event Hubs
+          href: platform/diagnostic-logs-stream-event-hubs.md
     - name: Gegevens analyseren
       items:
         - name: Metrische gegevens
@@ -873,7 +879,7 @@
               href: app/monitor-web-app-availability.md
             - name: Metrische waarschuwingen
               href: app/alerts.md
-        - name: Waarschuwingsregels voor metrische platformgegevens
+        - name: Regels voor metrische waarschuwingen
           items:
             - name: Metrische waarschuwingen beheren
               href: platform/alerts-metric.md
@@ -899,28 +905,40 @@
               href: platform/alerts-activity-log.md
             - name: Beheergebeurtenissen migreren naar waarschuwingen voor activiteitenlogboeken
               href: platform/migrate-management-alerts.md
-        - name: Actiegroepen
+        - name: Servicestatuswaarschuwingen in het activiteitenlogboek
           items:
+            - name: Meldingen weergeven
+              href: platform/service-notifications.md
+            - name: Waarschuwingen voor meldingsgebeurtenissen configureren
+              href: platform/alerts-activity-log-service-notifications.md
+        - name: Meldingen en acties
+          items:
+            - name: Actieregels (preview)
+              href: platform/alerts-action-rules.md
             - name: Een actiegroep maken
               href: platform/action-groups.md
-            - name: Webhook-schema
-              href: platform/activity-log-alerts-webhook.md
+            - name: Algemeen waarschuwingsschema
+              href: platform/alerts-common-schema.md
             - name: Definitie van algemeen waarschuwingsschema
               href: platform/alerts-common-schema-definitions.md
+            - name: Het algemene waarschuwingsschema integreren met Logic Apps
+              href: platform/alerts-common-schema-integrations.md
+            - name: Webhook-schema
+              href: platform/activity-log-alerts-webhook.md
             - name: Gedrag van sms-waarschuwingen
               href: platform/alerts-sms-behavior.md
-            - name: Beperking waarschuwingsaantallen
+            - name: Limiet voor meldingssnelheid
               href: platform/alerts-rate-limiting.md
             - name: Actiegroepen maken met Resource Manager
               href: platform/action-groups-create-resource-manager-template.md
             - name: Een actie voor een Logische app implementeren
               href: platform/action-groups-logic-app.md
-            - name: Het algemene waarschuwingsschema integreren met Logic Apps
-              href: platform/alerts-common-schema-integrations.md
         - name: Waarschuwingenbeheeroplossing
           href: platform/alert-management-solution.md
         - name: Gebruikersinterface van waarschuwingen
           items:
+            - name: Over slimme groepen
+              href: platform/alerts-smartgroups-overview.md
             - name: Waarschuwingsexemplaren beheren
               href: platform/alerts-managing-alert-instances.md
             - name: Slimme groepen beheren
@@ -931,6 +949,8 @@
               href: platform/alerts-managing-nagios-zabbix-scom.md
         - name: Klassieke waarschuwingsregels migreren
           items:
+            - name: Over klassieke waarschuwingen
+              href: platform/alerts-classic.overview.md
             - name: Voorbereiden op migratie
               href: platform/alerts-prepare-migration.md
             - name: Over het hulpprogramma voor migratie
@@ -945,12 +965,6 @@
               href: platform/alerts-enable-template.md
             - name: Een klassieke metrische waarschuwing die een webhook aanroept
               href: platform/alerts-webhooks.md
-        - name: Servicestatusmeldingen in het activiteitenlogboek
-          items:
-            - name: Meldingen weergeven
-              href: platform/service-notifications.md
-            - name: Waarschuwingen voor meldingsgebeurtenissen configureren
-              href: platform/alerts-activity-log-service-notifications.md
         - name: Waarschuwings-API
           href: platform/api-alerts.md
         - name: IT Service Management
@@ -1057,6 +1071,18 @@
               href: app/data-model-metric-telemetry.md
             - name: Context
               href: app/data-model-context.md
+            - name: Integratie met Azure Functions
+              href: app/azure-functions-supported-features.md
+    - name: Metrische gegevens
+      items:
+        - name: Ondersteunde metrische gegevens
+          href: platform/metrics-supported.md
+        - name: Ondersteunde metrische gegevens voor nieuwere waarschuwingen
+          href: platform/alerts-metric-near-real-time.md
+    - name: Diagnostische logboeken
+      items:
+        - name: 'Services, categorieën en schema''s voor diagnostische logboeken'
+          href: platform/diagnostic-logs-schema.md
     - name: Azure-CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Azure CLI - Application Insights (preview)
@@ -1081,25 +1107,6 @@
           href: /azure/templates/microsoft.insights/allversions
         - name: Logboeken
           href: /azure/templates/microsoft.operationalinsights/allversions
-    - name: Metrische gegevens
-      items:
-        - name: Ondersteunde metrische gegevens
-          href: platform/metrics-supported.md
-        - name: Ondersteunde metrische gegevens voor nieuwere waarschuwingen
-          href: platform/alerts-metric-near-real-time.md
-    - name: Diagnostische logboeken
-      items:
-        - name: 'Services, categorieën en schema''s voor diagnostische logboeken'
-          href: platform/diagnostic-logs-schema.md
-        - name: Extensieschema voor Azure Diagnostics
-          href: platform/diagnostics-extension-schema.md
-          items:
-            - name: 1.3 en hoger
-              href: platform/diagnostics-extension-schema-1dot3.md
-            - name: 1.2
-              href: platform/diagnostics-extension-schema-1dot2.md
-            - name: 1
-              href: platform/diagnostics-extension-schema-1dot0.md
     - name: Buitengebruikstelling van functies en API
       items:
         - name: API voor klassieke automatische schaalaanpassing en metrische gegevens

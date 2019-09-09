@@ -1,0 +1,49 @@
+### YamlMime:Landing
+title: Documentatie over Azure HPC Cache-preview
+summary: Azure HPC Cache gebruiken om bestandstoegang te versnellen voor leesintensieve HPC-werkbelastingen (High Performance Computing)
+metadata:
+  title: Microsoft Azure HPC Cache
+  description: Meer informatie over het maken en gebruiken van Azure HPC Cache om het latentieprobleem tussen uw rekenresources en opslag op te lossen. Azure HPC Cache is bedoeld voor op bestanden gebaseerde leesintensieve werkbelastingen en kan een geaggregeerd virtueel bestandssysteem maken dat Azure Blob-opslag en on-premises hardware-filers omvat.
+  ms.service: hpc-cache
+  ms.topic: landing-page
+  ms.collection: collection
+  author: ekpgh
+  ms.author: v-erkell
+  ms.date: 08/30/2019
+  ms.openlocfilehash: 4d5935646c3266624395b3b29a34d9cf8d446de7
+  ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/06/2019
+  ms.locfileid: "70774552"
+landingContent:
+- title: Over Azure HPC Cache
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure HPC Cache?
+      url: hpc-cache-overview.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vereisten voor Azure HPC Cache configureren
+      url: hpc-cache-prereqs.md
+    - text: De cache maken
+      url: hpc-cache-create.md
+    - text: Opslag toevoegen
+      url: hpc-cache-add-storage.md
+    - text: Clients koppelen
+      url: hpc-cache-mount.md
+  - linkListType: concept
+    links:
+    - text: Een geaggregeerde naamruimte configureren
+      url: hpc-cache-namespace.md
+    - text: Nieuwe Blob-opslag vullen
+      url: hpc-cache-ingest.md
+- title: Problemen oplossen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een ondersteuningsticket openen
+      url: hpc-cache-support-ticket.md
