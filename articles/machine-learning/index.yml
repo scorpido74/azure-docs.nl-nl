@@ -12,20 +12,20 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 09/03/2019
-  ms.openlocfilehash: e2c5e592c2330f1e5514c5c59c92ff5c8a3a62b2
-  ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+  ms.openlocfilehash: 58afd4ab8576b78fc3138861c13ac39ae343b04d
+  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
   ms.translationtype: HT
   ms.contentlocale: nl-NL
   ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70278319"
+  ms.locfileid: "70308776"
 landingContent:
 - title: Aan de slag met Azure ML
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Experimenteren met notebooks
+    - text: Experimenteren in Python-notebooks
       url: service/tutorial-1st-experiment-sdk-setup.md
-    - text: Experimenteren in visuele interface
+    - text: Experimenteren met slepen en neerzetten
       url: service/ui-tutorial-automobile-price-train-score.md
     - text: Uw eerste experiment automatiseren
       url: service/tutorial-first-experiment-automated-ml.md
@@ -37,17 +37,17 @@ landingContent:
       url: service/concept-azure-machine-learning-architecture.md
   - linkListType: how-to-guide
     links:
-    - text: Ontwikkelomgevingen instellen
+    - text: Uw omgeving instellen
       url: service/how-to-configure-environment.md
     - text: Rekendoelen voor training instellen
       url: service/how-to-set-up-training-targets.md
-- title: Trainen met Python
+- title: 'Experiment: Python-SDK'
   linkLists:
   - linkListType: tutorial
     links:
     - text: Uw eerste ML-experiment opzetten
       url: service/tutorial-1st-experiment-sdk-setup.md
-    - text: Modellen voor de classificatie van afbeeldingen trainen
+    - text: Installatiekopieën classificeren
       url: service/tutorial-train-models-with-aml.md
     - text: Taxitarieven voorspellen met geautomatiseerde ML
       url: service/tutorial-auto-train-models.md
@@ -61,23 +61,21 @@ landingContent:
       url: service/how-to-train-pytorch.md
     - text: Trainen met Keras
       url: service/how-to-train-keras.md
-- title: Trainen in visuele interface
+- title: 'Experiment: visuele interface'
   linkLists:
-  - linkListType: get-started
+  - linkListType: tutorial
     links:
-    - text: Geautomatiseerd ML-experiment trainen
+    - text: Geautomatiseerde ML gebruiken om abonnementen te voorspellen
       url: service/tutorial-first-experiment-automated-ml.md
-    - text: Trainen in de visuele interface
+    - text: Lineaire regressie gebruiken om prijzen te voorspellen
       url: service/ui-tutorial-automobile-price-train-score.md
   - linkListType: how-to-guide
     links:
-    - text: 'Visuele interface: autoprijzen voorspellen'
-      url: service/ui-sample-regression-predict-automobile-price-basic.md
-    - text: 'Visuele interface: kredietrisico voorspellen'
+    - text: Kredietrisico voorspellen
       url: service/ui-sample-classification-predict-credit-risk-cost-sensitive.md
-    - text: 'Visuele interface: vertragingen voorspellen'
+    - text: Vertragingen voorspellen
       url: service/ui-sample-classification-predict-flight-delay.md
-    - text: 'Visuele interface: verloop voorspellen'
+    - text: Verloop voorspellen
       url: service/ui-sample-classification-predict-churn.md
 - title: Modellen implementeren en beheren
   linkLists:
