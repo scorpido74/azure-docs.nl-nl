@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met Azure metrics explorer
-description: Informatie over het maken van uw eerste grafiek met metrische gegevens met metrische gegevens van Azure explorer.
+title: Aan de slag met de Azure Metrics Explorer
+description: Meer informatie over het maken van uw eerste metrieke grafiek met Azure Metrics Explorer.
 author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,66 +8,69 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 3306e888970d99132d17d4ccf967f074302412ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ceaefffaf04a3ab266cde300e8c4b93a5e804796
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595453"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861078"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Aan de slag met Azure Metrics Explorer
 
-## <a name="where-do-i-start"></a>Waar moet ik beginnen
-Azure Monitor metrics explorer is een onderdeel van de Microsoft Azure-portal kunt plotting grafieken, visueel correleren van trends en onderzoeken van pieken en dalen in de metrische waarden. U kunt de metrics explorer gebruiken als u voor het onderzoeken van de status en het gebruik van uw resources. Start in de volgende volgorde:
+## <a name="where-do-i-start"></a>Waar kan ik beginnen
+Azure Monitor Metrics Explorer is een onderdeel van de Microsoft Azure-portal waarmee grafieken kunnen worden getekend, trends visueel worden gecorreleerd en pieken en spannings dips in metrische waarden worden onderzocht. Gebruik metrische gegevens Verkenner om de status en het gebruik van uw resources te onderzoeken. Begin in de volgende volg orde:
 
-1. [Kies een resource en een metrische waarde](#create-your-first-metric-chart) en ziet u een eenvoudige grafiek. Vervolgens [Selecteer een tijdsbereik](#select-a-time-range) die relevant is voor uw onderzoek.
+1. [Kies een resource en metrische gegevens](#create-your-first-metric-chart) en u ziet een eenvoudige grafiek. [Selecteer vervolgens een tijds bereik](#select-a-time-range) dat relevant is voor uw onderzoek.
 
-1. Probeer [dimensiefilters zijn toegepast en splitsen](#apply-dimension-filters-and-splitting). De filters en splitsen kunt u voor het analyseren van welke segmenten van de metrische gegevens van bijdragen aan de algemene metrische waarde en mogelijke uitbijters te identificeren.
+1. Probeer [dimensie filters toe te passen en te splitsen](#apply-dimension-filters-and-splitting). Met filters en splitsen kunt u analyseren welke segmenten van de metrische gegevens bijdragen aan de algemene metrische waarde en mogelijke uitschieters identificeren.
 
-1. Gebruik [geavanceerde instellingen](#advanced-chart-settings) om aan te passen van de grafiek voordat u kunt vastmaken aan dashboards. [Waarschuwingen configureren](alerts-metric-overview.md) meldingen ontvangen wanneer de metrische waarde groter is dan of onder een drempelwaarde komt.
+1. Gebruik [Geavanceerde instellingen](#advanced-chart-settings) om de grafiek aan te passen voordat u aan dash boards vastmaakt. [Waarschuwingen configureren](alerts-metric-overview.md) voor het ontvangen van meldingen wanneer de waarde van de metriek groter of kleiner dan een drempel overschrijdt.
 
-## <a name="create-your-first-metric-chart"></a>Uw eerste grafiek met metrische gegevens maken
+## <a name="create-your-first-metric-chart"></a>Uw eerste metrieke grafiek maken
 
-Voor het maken van een grafiek met metrische gegevens van uw resource, resourcegroep, abonnement of Azure Monitor weergeven, opent u de **metrische gegevens** tabblad en volg deze stappen:
+Als u een metrische grafiek wilt maken, vanuit uw resource, resource groep, abonnement of Azure Monitor weer gave, opent u het tabblad **metrische gegevens** en volgt u deze stappen:
 
-1. Met behulp van de objectkiezer, selecteer de resource waarvoor u wenst te metrische gegevens te verzamelen. (De resource is vooraf geselecteerd als u hebt geopend **metrische gegevens** in de context van een specifieke resource).
+1. Selecteer de resource waarvoor u de metrische gegevens wilt weer geven met behulp van de resource kiezer. (De resource wordt vooraf geselecteerd als u **metrische gegevens** in de context van een specifieke resource hebt geopend).
 
     > ![Een resource selecteren](./media/metrics-getting-started/resource-picker.png)
 
-2. Voor sommige resources, moet u een naamruimte kiezen. De naamruimte is een manier om te organiseren van metrische gegevens, zodat u ze eenvoudig kunt terugvinden. Storage-accounts hebben bijvoorbeeld afzonderlijke naamruimten voor het opslaan van bestanden, tabellen, Blobs en wachtrijen metrische gegevens. Veel resourcetypen slechts hebben één naamruimte.
+2. Voor sommige resources moet u een naam ruimte kiezen. De naam ruimte is een manier om metrische gegevens te organiseren, zodat u ze gemakkelijk kunt vinden. Zo hebben opslag accounts afzonderlijke naam ruimten voor het opslaan van bestanden, tabellen, blobs en wacht rijen. Veel resource typen hebben slechts één naam ruimte.
 
-3. Selecteer een metrische waarde uit een lijst met beschikbare metrische gegevens.
+3. Selecteer een metrische waarde in een lijst met beschik bare metrische gegevens.
 
-    > ![Selecteer een metrische waarde](./media/metrics-getting-started/metric-picker.png)
+    > ![Een metrische waarde selecteren](./media/metrics-getting-started/metric-picker.png)
 
-4. U kunt eventueel de metrische aggregatie wijzigen. Bijvoorbeeld, kunt u de grafiek om minimale, maximale en gemiddelde waarden van de metrische gegevens weer te geven.
+4. U kunt desgewenst de metrische aggregatie wijzigen. U kunt bijvoorbeeld aangeven dat de grafiek minimum-, maximum-of gemiddelde waarden van de metriek moet weer geven.
 
 > [!NOTE]
-> Gebruik de **metrische waarde toevoegen** knop en Herhaal deze stappen als u wilt zien van meerdere metrische gegevens in dezelfde grafiek getekend. Voor meerdere diagrammen in één weergave, selecteert u de **toevoegen grafiek** bovenaan op de knop.
+> Gebruik de knop **metriek toevoegen** en herhaal deze stappen als u meerdere metrische gegevens wilt zien die in dezelfde grafiek zijn getekend. Voor meerdere grafieken in één weer gave selecteert u de knop **grafiek toevoegen** bovenaan.
 
-## <a name="select-a-time-range"></a>Selecteer een tijdsbereik
+## <a name="select-a-time-range"></a>Een tijdsbereik selecteren
 
-De grafiek toont standaard de meest recente 24 uur van metrische gegevens. Gebruik de **tijdkiezer** Configuratiescherm om het tijdsbereik wijzigen, Inzoomen of uitzoomen op uw grafiek. 
+In de grafiek worden standaard de meest recente 24 uur aan metrische gegevens weer gegeven. Gebruik het deel venster **tijd kiezer** om het tijds bereik te wijzigen, in te zoomen of uit te zoomen op de grafiek. 
 
-![Paneel voor waardenbereik wijzigen-tijd](./media/metrics-getting-started/time-picker.png)
+![Deel venster tijds bereik wijzigen](./media/metrics-getting-started/time-picker.png)
 
-## <a name="apply-dimension-filters-and-splitting"></a>Dimensiefilters en splitsing van toepassing
+> [!NOTE]
+> Gebruik het **tijd penseel** om een interessant gebied van de grafiek (Prikker of een DIP) te onderzoeken. Plaats de muis aanwijzer aan het begin van het gebied, klik op de linkermuisknop en houd de muis knop ingedrukt, sleep naar de andere kant van het gebied en laat de knop los. De grafiek wordt in dat tijds bereik ingezoomd. 
 
-[Filteren](metrics-charts.md#apply-filters-to-charts) en [splitsen](metrics-charts.md#apply-splitting-to-a-chart) zijn krachtige diagnostische hulpprogramma's voor de metrische gegevens die dimensies hebben. Deze functies laten zien hoe verschillende metrische segmenten ("dimensiewaarden") impact de totale waarde van de metrische gegevens en kunnen u mogelijke uitbijters te identificeren.
+## <a name="apply-dimension-filters-and-splitting"></a>Dimensie filters toep assen en splitsen
 
-- **Filteren** Hiermee kunt u opgeven welke dimensiewaarden zijn opgenomen in de grafiek. U wilt bijvoorbeeld weergeven van geslaagde aanvragen bij het uitzetten van de *serverreactietijd* metrische gegevens. U moet het filter toepassen op de *succes van aanvraag* dimensie. 
+[Filteren](metrics-charts.md#apply-filters-to-charts) en [splitsen](metrics-charts.md#apply-splitting-to-a-chart) zijn krachtige diagnostische hulpprogram ma's voor metrische gegevens die dimensies hebben. Deze functies laten zien hoe diverse metrische gegevens segmenten ("dimensie waarden") van invloed zijn op de algemene waarde van de metrische gegevens en waarmee u mogelijke uitbijtingen kunt identificeren.
 
-- **Splitsen** besturingselementen of het diagram toont de afzonderlijke regels voor elke waarde van een dimensie of waarden samen tot één regel. U kunt bijvoorbeeld zien van één regel voor een gemiddelde reactietijd voor alle serverinstanties of Zie afzonderlijke regels voor elke server. U moet toepassen splitsen op de *server-exemplaar* dimensie om te zien van afzonderlijke regels.
+- Met **filters** kunt u kiezen welke dimensie waarden in de grafiek worden opgenomen. U kunt bijvoorbeeld geslaagde aanvragen weer geven bij het grafieken van de waarde voor de *reactie tijd* van de server. U moet het filter Toep assen op het *succes van de aanvraag* dimensie. 
 
-Zie [voorbeelden van de grafieken](metric-chart-samples.md) dat hebt filteren en te splitsen toegepast. Het artikel bevat dat de stappen zijn gebruikt voor het configureren van de grafieken.
+- **Splitsen** bepaalt of het diagram afzonderlijke regels voor elke waarde van een dimensie weergeeft of de waarden in één regel samenvoegt. U kunt bijvoorbeeld één regel weer geven voor een gemiddelde reactie tijd voor alle Server exemplaren, of afzonderlijke regels voor elke server weer geven. U moet splitsen Toep assen op de dimensie van het *Server exemplaar* om afzonderlijke regels te bekijken.
 
-## <a name="advanced-chart-settings"></a>Geavanceerde instellingen
+Bekijk [voor beelden van de grafieken](metric-chart-samples.md) waarop filters en splitsingen zijn toegepast. In het artikel worden de stappen beschreven die zijn gebruikt om de grafieken te configureren.
 
-U kunt de grafiekstijl van de, titel, aanpassen en geavanceerde instellingen te wijzigen. Wanneer u klaar bent met aanpassingen, deze vastmaken aan een dashboard aan uw werk op te slaan. U kunt ook waarschuwingen voor metrische gegevens configureren. Ga als volgt [productdocumentatie](metrics-charts.md) voor meer informatie over deze en andere geavanceerde functies van Azure Monitor metrics explorer.
+## <a name="advanced-chart-settings"></a>Geavanceerde instellingen voor grafieken
+
+U kunt de instellingen voor grafiek stijl, titel en geavanceerde grafiek aanpassen. Wanneer u klaar bent met aanpassing, kunt u deze vastmaken aan een dash board om uw werk op te slaan. U kunt ook waarschuwingen voor metrische gegevens configureren. Volg de [product documentatie](metrics-charts.md) voor meer informatie over deze en andere geavanceerde functies van Azure monitor Metrics Explorer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Meer informatie over geavanceerde functies van Metrics Explorer](metrics-charts.md)
-* [Het oplossen van Metrics Explorer](metrics-troubleshoot.md)
-* [Een lijst met beschikbare metrische gegevens voor Azure-services](metrics-supported.md)
-* [Zie de voorbeelden van geconfigureerde grafieken](metric-chart-samples.md)
+* [Problemen met Metrics Explorer oplossen](metrics-troubleshoot.md)
+* [Een lijst met beschikbare metrische gegevens voor Azure-services zien](metrics-supported.md)
+* [Voorbeelden van geconfigureerde grafieken zien](metric-chart-samples.md)

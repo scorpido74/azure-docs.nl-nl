@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
 ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68698288"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-abonnement en servicelimieten, quota's en beperkingen
@@ -85,7 +85,7 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
 * [Netwerken](#networking-limits)
   * [Application Gateway](#application-gateway-limits)
   * [Azure DNS](#azure-dns-limits)
-  * [Azure front-deur service](#azure-front-door-service-limits)
+  * [Azure Front Door Service](#azure-front-door-service-limits)
   * [Azure Firewall](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
   * [Load balancer](#load-balancer)
@@ -106,7 +106,7 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
 * [Stream Analytics](#stream-analytics-limits)
 * [Abonnement](#subscription-limits)
 * [Virtuele machines](#virtual-machines-limits)
-* [Schaal sets voor virtuele machines](#virtual-machine-scale-sets-limits)
+* [Virtuele-machineschaalsets](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>Abonnementslimieten
 #### <a name="subscription-limits---azure-service-management-classic-deployment-model"></a>Abonnements limieten-Azure Service Management (klassiek implementatie model)
@@ -212,7 +212,7 @@ Zie [Azure files schaal baarheid en prestatie doelen](storage/files/storage-file
 #### <a name="virtual-machine-disk-limits"></a>Schijf limieten van virtuele machine
 [!INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
-Zie grootten van [virtuele machines](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie.
+Zie [grootten van virtuele machines](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie.
 
 #### <a name="managed-virtual-machine-disks"></a>Beheerde schijven van virtuele machines
 
@@ -372,7 +372,7 @@ Zie [service limieten in azure Search](search/search-limits-quotas-capacity.md)v
 ### <a name="key-vault-limits"></a>Key Vault limieten
 [!INCLUDE [key-vault-limits](../includes/key-vault-limits.md)]
 
-### <a name="multi-factor-authentication-limits"></a>Multi-factor Authentication-limieten
+### <a name="multi-factor-authentication-limits"></a>Multi-Factor Authentication limieten
 [!INCLUDE [azure-mfa-service-limits](../includes/azure-mfa-service-limits.md)]
 
 ### <a name="automation-limits"></a>Automatiserings limieten

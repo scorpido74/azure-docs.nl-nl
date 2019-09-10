@@ -1,6 +1,6 @@
 ---
-title: Web-app die aanroepen van web-API's (een token voor de app ophalen) - Microsoft identity-platform
-description: Informatie over het bouwen van een Web-app die aanroepen van web-API's (ophalen van een token voor de app)
+title: Web-app die web-Api's aanroept (Schaf een token voor de app aan)-micro soft Identity-platform
+description: Meer informatie over het bouwen van een web-app die web-Api's aanroept (een token voor de app ophalen)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,27 +11,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 653db995000308bb3ef78a9183696cd9d8ed1056
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3aa144c76fb0a8e479658efdb5d43361fbbc085c
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074798"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860621"
 ---
-# <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web-app die web-API's aanroept: een token verkrijgen voor de app.
+# <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web-app die web-Api's aanroept-een Token ophalen voor de app
 
-Nu u hebt u gebouwd toepassingsobject client, gebruikt u deze om een token dat u vervolgens gebruiken voor het aanroepen van een web-API's te verkrijgen. In ASP.NET of ASP.NET Core, moet u een web-API wordt vervolgens uitgevoerd in de netwerkcontroller aanroept. Dit gaat over:
+Nu u het client toepassings object hebt gemaakt, gebruikt u dit om een token te verkrijgen om een web-API aan te roepen. In ASP.NET of ASP.NET Core wordt het aanroepen van een web-API uitgevoerd in de controller. Het gaat ongeveer als volgt:
 
-- Ophalen van een token voor de web-API met behulp van de tokencache. Voor deze, die u aanroept `AcquireTokenSilent`
-- Aanroepen van de beveiligde API met het toegangstoken
+- Er wordt een token voor de Web-API opgehaald met de token cache. Als u dit token wilt ophalen, `AcquireTokenSilent`neemt u contact op.
+- De beveiligde API met het toegangs token aan te roepen.
 
 ## <a name="aspnet-core"></a>ASP.NET Core
 
-De controllermethoden worden beveiligd door een `[Authorize]` kenmerk die ervoor zorgt gebruikers dat uit voor het gebruik van de Web-App die wordt geverifieerd. Hier is de code die Microsoft Graph aanroepen
+De controller methoden worden beveiligd door een `[Authorize]` kenmerk dat ervoor zorgt dat gebruikers worden geauthenticeerd om de web-app te gebruiken. Dit is de code die Microsoft Graph aanroept.
 
 ```CSharp
 [Authorize]
@@ -41,7 +41,7 @@ public class HomeController : Controller
 }
 ```
 
-Dit is een vereenvoudigde code van de actie van de HomeController Hiermee haalt u een token voor het aanroepen van de Microsoft Graph.
+Hier volgt een vereenvoudigde code van de actie van de HomeController, waarmee een token wordt opgehaald om de Microsoft Graph aan te roepen.
 
 ```CSharp
 public async Task<IActionResult> Profile()
@@ -69,23 +69,23 @@ public async Task<IActionResult> Profile()
 }
 ```
 
-Als u weten in details van het totaal van de code die is vereist voor dit scenario wilt, raadpleegt u de fase 2 [2-1-Web App aanroepen van Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph) stap van de [ms-identity-aspnetcore-Web-App-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) zelfstudie
+Zie de stap 2 ([2-1-Web-app-aanroepen Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)) van de zelf studie [MS-Identity-aspnetcore-zelf studie](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) voor meer informatie over de code die is vereist voor dit scenario.
 
-Er zijn talrijke extra complexiteit zoals:
+Er zijn veel extra complexer, zoals:
 
-- implementeren van een token cache voor de Web-App (de zelfstudie presenteren verschillende implementaties)
-- Het account is verwijderd uit de cache als de gebruiker zich aanmeldt-out
-- Aanroepen van verschillende API's, met inbegrip van wie incrementele toestemming heeft gegeven
+- Een token cache implementeren voor de web-app (de zelf studie bevat verschillende implementaties)
+- Het account wordt uit de cache verwijderd wanneer de gebruiker zich afmeldt
+- Meerdere Api's aanroepen, waaronder incrementele toestemming
 
 ## <a name="aspnet"></a>ASP.NET
 
-Wat zijn vergelijkbaar in ASP.NET:
+Dingen zijn vergelijkbaar in ASP.NET:
 
-- Een controller actie beveiligd door een kenmerk [autoriseren] wordt opgehaald door de tenant-ID en gebruikers-ID van de `ClaimsPrincipal` lid van de controller (maakt gebruik van ASP.NET `HttpContext.User`)
-- van daaruit bouwt Hiermee u een MSAL.NET `IConfidentialClientApplication`
-- IT-aanroep de `AcquireTokenSilent` -methode van de toepassing vertrouwelijke client 
+- Een controller actie die wordt beveiligd door een kenmerk [autoriseren], extraheert de Tenant-id `ClaimsPrincipal` en gebruikers-id van het lid van de controller. (ASP.NET gebruikt `HttpContext.User`.)
+- Vanaf daar bouwt het een MSAL.NET `IConfidentialClientApplication`.
+- Ten slotte wordt de `AcquireTokenSilent` methode van de vertrouwelijke client toepassing aangeroepen.
 
-de code is vergelijkbaar met de code die wordt weergegeven voor ASP.NET Core
+De code is vergelijkbaar met de code die wordt weer gegeven voor ASP.NET Core.
 
 ## <a name="next-steps"></a>Volgende stappen
 

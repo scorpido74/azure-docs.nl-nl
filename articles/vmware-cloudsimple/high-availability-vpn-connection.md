@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ea8ad80d8d12ae9ecac88bd6a3d661ca895d67f4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0b40c15956dc03209dcab49641af66bc8ae24187
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972777"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845321"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Een verbinding met hoge Beschik baarheid van on-premises naar CloudSimple VPN-gateway configureren
 
@@ -50,7 +50,7 @@ Standaard worden CloudSimple VPN-gateways geconfigureerd in de IKEv1-modus samen
 
 Voer de volgende taken uit voordat u de on-premises firewall configureert.
 
-1. Controleer of uw organisatie de vereiste knoop punten heeft [aangeschaft](create-nodes.md) en ten minste één CloudSimple-privécloud heeft gemaakt.
+1. Controleer of uw organisatie de vereiste knoop punten heeft [ingericht](create-nodes.md) en ten minste één CloudSimple-privécloud heeft gemaakt.
 2. [Configureer een site-naar-site-VPN-gateway](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) tussen uw on-premises netwerk en uw CloudSimple-privécloud.
 
 ## <a name="configure-on-premises-cisco-asa-firewall"></a>On-premises Cisco ASA-Firewall configureren
@@ -216,7 +216,7 @@ Selecteer **netwerk** > **uitbreiden netwerk profielen** > **IKE crypto** > **to
 
 Geef IKE-gateways op om communicatie tot stand te brengen tussen de peers aan elk einde van de VPN-tunnel.
 
-Selecteer **netwerk** >  > uitvouwen**netwerk profielen** **IKE**-gatewaystoevoegen,Configureerdevolgendeveldenenklikop >  **OK**.
+Selecteer **netwerk** > **uitvouwen netwerk profielen** > **IKE-gateways**toevoegen,Configureerdevolgendeveldenenklikop > OK.
 
 Tabblad Algemeen:
 
@@ -247,7 +247,7 @@ Herhaal de vorige stappen om de secundaire IKE-gateway te maken.
 
 ### <a name="5-define-ipsec-crypto-profiles"></a>5. IPSEC-crypto profielen definiëren
 
-Selecteer **netwerk** > netwerk profielen >  > uitvouwen**IPSec crypto**toevoegen, Configureer de volgende velden en klik op **OK**.
+ > Selecteer **netwerk** > netwerk**profielen** > uitvouwen**IPSec crypto** **toevoegen**, Configureer de volgende velden en klik op **OK**.
 
 * Naam. Voer een naam in voor het IPsec-crypto profiel.
 * IPsec-protocol. Selecteer **ESP**.

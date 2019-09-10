@@ -1,21 +1,21 @@
 ---
 title: Firewall voor SQL-database van Azure Blockchain Workbench configureren
-description: Leer hoe u een firewall voor de SQL-database van Azure Blockchain Workbench configureert.
+description: Meer informatie over het configureren van de Azure Block Chain Workbench preview SQL DB-firewall.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/09/2019
+ms.date: 09/09/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: d56e7f4750510dc7bb50dbb316dce320b8e8d12b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0153065ca0ccd6cf34456d630d7437d5ea7c5b48
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510013"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845233"
 ---
 # <a name="configure-the-azure-blockchain-workbench-database-firewall"></a>Firewall voor database van Azure Blockchain Workbench configureren
 
@@ -25,7 +25,7 @@ In dit artikel wordt uitgelegd hoe u een firewallregel configureert met Azure Po
 
 Verbinding maken met de database waar u een regel wilt configureren:
 
-1. Meld u aan bij Azure Portal met een account met **Eigenaar**-machtigingen voor de resources van Azure Blockchain Workbench.
+1. Meld u aan bij de Azure Portal met een account met **eigenaars** machtigingen voor de Azure Block Chain Workbench-Resources.
 2. Kies **Resourcegroepen** in het linkernavigatievenster.
 3. Kies de naam van de resourcegroep voor uw implementatie van Blockchain Workbench.
 4. Selecteer **Type** om de lijst met resources te sorteren en kies vervolgens uw **SQL-server**.

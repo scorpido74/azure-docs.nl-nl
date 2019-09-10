@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/10/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b562ccf81a80219caa9f80bec82f64f7d2510626
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 4b5f85aa99876ef6c3c9193612051085f3e0ffc0
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194608"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872182"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschaps regels voor groepen in Azure Active Directory
 
@@ -96,7 +96,7 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 | properties | Toegestane waarden | Gebruik |
 | --- | --- | --- |
 | city |Een wille keurige teken reeks waarde of *Null* |(User. City-EQ "waarde") |
-| regio |Een wille keurige teken reeks waarde of *Null* |(User. country-EQ "waarde") |
+| Regio |Een wille keurige teken reeks waarde of *Null* |(User. country-EQ "waarde") |
 | companyName | Een wille keurige teken reeks waarde of *Null* | (user.companyName -eq "value") |
 | Afdeling |Een wille keurige teken reeks waarde of *Null* |(User. Department-EQ "waarde") |
 | displayName |Wille keurige teken reeks waarde |(User. displayName-EQ "waarde") |
@@ -178,7 +178,7 @@ De waarden die in een expressie worden gebruikt, kunnen bestaan uit verschillend
 
 * Tekenreeksen
 * Boolean – True, False
-* Rijnummers
+* rijnummers
 * Matrices – nummer matrix, teken reeks matrix
 
 Wanneer u een waarde in een expressie opgeeft, is het belang rijk dat u de juiste syntaxis gebruikt om fouten te voor komen. Enkele syntaxis tips zijn:
@@ -358,6 +358,11 @@ De naam van de aangepaste eigenschap kan worden gevonden in de map door de eigen
 ## <a name="rules-for-devices"></a>Regels voor apparaten
 
 U kunt ook een regel maken waarmee objecten worden geselecteerd voor lidmaatschap van een groep. U kunt niet zowel gebruikers als groeps leden hebben. Het kenmerk **organizationalUnit** wordt niet meer weer gegeven en mag niet worden gebruikt. Deze teken reeks wordt in specifieke gevallen door intune ingesteld, maar wordt niet herkend door Azure AD, zodat er geen apparaten worden toegevoegd aan groepen op basis van dit kenmerk.
+
+> [!NOTE]
+> systemlabels is een alleen-lezen kenmerk dat niet kan worden ingesteld met intune.
+>
+> Voor Windows 10 is de juiste indeling van het kenmerk deviceOSVersion als volgt: (Device. deviceOSVersion-EQ "10,0 (17763)"). De opmaak kan worden gevalideerd met de Power shell-cmdlet Get-MsolDevice.
 
 De volgende kenmerken van apparaten kunnen worden gebruikt.
 

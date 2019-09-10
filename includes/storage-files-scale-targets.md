@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.openlocfilehash: 9f259c3e403e933c847ac56000b1db2cd594caf5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67449946"
 ---
-| Resource | Standard-bestandsshares | Premium-bestandsshares |
+| Resource | Standaard bestands shares | Premium-bestands shares |
 |----------|---------------|------------------------------------------|
-| Minimale grootte van een bestandsshare | Geen minimum; betalen naar gebruik | 100 giB; ingericht |
-| Maximale grootte van een bestandsshare | 5 TiB (GA), 100 TiB (preview) | 100 TiB |
-| Maximale grootte van een bestand in een bestandsshare | 1 TiB | 1 TiB |
-| Maximum aantal bestanden in een bestandsshare | Geen limiet | Geen limiet |
-| Maximale IOPS per share | 1000 IOPS (GA), 10.000 IOPS (preview) | 100.000 IOPS |
-| Maximum aantal opgeslagen toegangsbeleid per bestand delen | 5 | 5 |
-| Doeldoorvoer voor het delen van één bestand | Maximaal 60 MiB per seconde (GA), maximaal 300 MiB per seconde (preview) | Premium-bestand delen inkomend en uitgaand verkeer waarden|
-| Maximum aantal uitgaande voor het delen van één bestand | Zie doeldoorvoer van standaard-bestand delen | Tot 6,204 MiB/s |
-| Maximale ingangslimiet voor het delen van één bestand | Zie doeldoorvoer van standaard-bestand delen | Tot 4,136 MiB/s |
-| Maximum aantal open ingangen per bestand | 2000 open ingangen | 2000 open ingangen |
-| Maximum aantal momentopnamen van shares | 200 momentopnamen | 200 momentopnamen |
-| Lengte van maximaal object (mappen en bestanden) | 2\.048 tekens | 2\.048 tekens |
-| Maximale pathname onderdeel (in het pad \A\B\C\D, elke letter is een onderdeel) | 255 tekens | 255 tekens |
+| Minimale grootte van een bestands share | Geen minimum; betalen naar gebruik | 100 GiB; ingericht |
+| Maximale grootte van een bestands share | 5 TiB (GA), 100 TiB (preview-versie) | 100 TiB |
+| Maximale grootte van een bestand in een bestands share | 1 TiB | 1 TiB |
+| Maximum aantal bestanden in een bestands share | Geen limiet | Geen limiet |
+| Maximum aantal IOPS per share | 1\.000 IOPS (GA), 10.000 IOPS (preview-versie) | 100.000 IOPS |
+| Maximum aantal opgeslagen toegangs beleid per bestands share | 5 | 5 |
+| Doel doorvoer voor één bestands share | Maxi maal 60 MiB per seconde (GA), Maxi maal 300 MiB per seconde (preview) | Bekijk de ingangs-en uitgangs waarden voor Premium file share|
+| Maximum aantal uitgangen voor één bestands share | Bekijk de standaard doel doorvoer voor bestands shares | Maxi maal 6.204 MiB/s |
+| Maxi maal aantal binnenkomend verkeer voor één bestands share | Bekijk de standaard doel doorvoer voor bestands shares | Maxi maal 4.136 MiB/s |
+| Maximum aantal open ingangen per bestand | 2\.000 open ingangen | 2\.000 open ingangen |
+| Maximum aantal moment opnamen van shares | 200 share-moment opnamen | 200 share-moment opnamen |
+| Maximum lengte van de naam van het object (directory's en bestanden) | 2\.048 tekens | 2\.048 tekens |
+| Maximum pathname-onderdeel (in het pad \A\B\C\D is elke letter een onderdeel) | 255 tekens | 255 tekens |

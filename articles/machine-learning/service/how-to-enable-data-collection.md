@@ -11,12 +11,12 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81ffe8618e07f2e49e4439ea57e254e5d37974f9
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 16fac492fe4c193ecd7ffa7eeff1e884acb742ae
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227950"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860516"
 ---
 # <a name="collect-data-for-models-in-production"></a>Verzamelen van gegevens voor modellen in productie
 
@@ -109,7 +109,7 @@ Als u wilt inschakelen, moet u naar:
 
 Als u al een service met de afhankelijkheden die zijn geïnstalleerd hebt uw **omgevingsbestand** en **scoring-bestand**, verzamelen van gegevens door inschakelen:
 
-1. Ga naar [Azure-Portal](https://portal.azure.com).
+1. Ga naar [Azure Portal](https://portal.azure.com).
 
 1. Open de werkruimte.
 
@@ -144,6 +144,8 @@ U kunt stoppen met het verzamelen van gegevens elk gewenst moment. Python-code o
 
   1. Selecteer **Update** de wijziging toepassen.
 
+  U kunt deze instellingen ook gebruiken op de [landings pagina van de werk ruimte (preview)](https://ml.azure.com).
+
 + Optie 2: Python gebruiken om te verzamelen van gegevens uitschakelen:
 
   ```python 
@@ -172,7 +174,7 @@ Snel toegang krijgt tot de gegevens van uw blob:
 
 ### <a name="analyzing-model-data-through-power-bi"></a>Modelgegevens via Power BI analyseren
 
-1. Downloaden en openen [Power BI Desktop](https://www.powerbi.com)
+1. [Power bi Desktop](https://www.powerbi.com) downloaden en openen
 
 1. Selecteer **gegevens ophalen** en klikt u op [ **Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
 

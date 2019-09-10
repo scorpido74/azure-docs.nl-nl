@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fdf1fc14eb4ab1458c25b484bae6cd84ecec6d7f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: bbb5b90ffac4a89c14a4a6df51022bb61b10fbb0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575502"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845493"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Snelstartgids-een Privécloud configureren
 
@@ -23,7 +23,7 @@ In dit artikel leert u hoe u een CloudSimple-Privécloud maakt en uw Privécloud
 
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-private-cloud"></a>Een Privécloud maken
+## <a name="create-a-private-cloud"></a>Een privécloud maken
 
 Een Privécloud is een geïsoleerde VMware-stack die ondersteuning biedt voor ESXi-hosts, vCenter, vSAN en NSX.
 
@@ -46,7 +46,7 @@ Persoonlijke Clouds worden beheerd via de CloudSimple-Portal. Ze hebben hun eige
 9. Klik op **Next: Geavanceerde opties**.
 10. Voer het CIDR-bereik in voor vSphere/vSAN-subnetten. Zorg ervoor dat het CIDR-bereik niet overlapt met een van uw on-premises of andere Azure-subnetten (virtuele netwerken) of met het gateway-subnet.
 
-    **Opties voor het CIDR-bereik:** /24,/23,/22 of/21. Een/24 CIDR-bereik ondersteunt Maxi maal negen knoop punten, een/23 CIDR-bereik ondersteunt Maxi maal 41 knoop punten en een/22-en/21 CIDR-bereik ondersteunt Maxi maal 64 knoop punten (het maximum aantal knoop punten in een Privécloud).
+    **Opties voor het CIDR-bereik:** /24,/23,/22 of/21. Een/24 CIDR-bereik ondersteunt Maxi maal 26 knoop punten, een/23 CIDR-bereik ondersteunt Maxi maal 58 knoop punten en een/22-en/21 CIDR-bereik ondersteunt 64-knoop punten (het maximum aantal knoop punten in een Privécloud).  Zie voor meer informatie en VLAN'S en subnetten het [overzicht van vlan's en subnetten](cloudsimple-vlans-subnets.md).
 
       > [!IMPORTANT]
       > IP-adressen in het vSphere/vSAN CIDR-bereik zijn gereserveerd voor gebruik door de infra structuur van de Privécloud.  Gebruik het IP-adres in dit bereik op geen enkele virtuele machine.

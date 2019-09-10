@@ -1,6 +1,6 @@
 ---
-title: Desktop-app dat aanroepen van web-API's (app-registratie) - Microsoft identity-platform
-description: Informatie over het bouwen van een bureaublad-app dat aanroepen van web-API's (app-registratie)
+title: Bureau blad-app die web-Api's aanroept (app-registratie)-micro soft Identity-platform
+description: Meer informatie over het bouwen van een bureau blad-app die web-Api's aanroept (app-registratie)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -13,54 +13,54 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2019
+ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ab2701a82da0b8f7bc4e23a3d947be905593e85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b996b2387e324c7e318536c2a13bdc9de39a7a5e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057214"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860874"
 ---
-# <a name="desktop-app-that-calls-web-apis---app-registration"></a>Desktop-app dat aanroepen van web-API's - app-registratie
+# <a name="desktop-app-that-calls-web-apis---app-registration"></a>Bureau blad-app die web-Api's aanroept-app-registratie
 
-In dit artikel bevat de app-registratie van specifieke kenmerken voor een bureaubladtoepassing.
+Dit artikel bevat de specifieke app-registraties voor een bureaublad toepassing.
 
-## <a name="supported-accounts-types"></a>Typen ondersteunde accounts
+## <a name="supported-accounts-types"></a>Ondersteunde account typen
 
-De accounttypen worden ondersteund in bureaubladtoepassing, is afhankelijk van de ervaring die u licht wilt-up, en daarom op de stromen u wilt gebruiken.
+De account typen die worden ondersteund in bureaublad toepassing, zijn afhankelijk van de ervaring die u wilt oplichten. Vanwege deze relatie zijn de ondersteunde account typen afhankelijk van de stromen die u wilt gebruiken.
 
-### <a name="audience-for-interactive-token-acquisition"></a>Voor interactieve ophalen van tokens
+### <a name="audience-for-interactive-token-acquisition"></a>Doel groep voor het verkrijgen van interactief tokens
 
-Als uw bureaubladtoepassing interactieve verificatie gebruikt, kunt u zich in de gebruikers uit een [accounttype](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)
+Als uw bureaublad toepassing interactieve verificatie gebruikt, kunt u gebruikers van elk [account type](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)aanmelden.
 
-### <a name="audience-for-desktop-app-silent-flows"></a>De doelgroep voor desktop-app op de achtergrond stromen
+### <a name="audience-for-desktop-app-silent-flows"></a>Doel groep voor desktop-app Silent flows
 
-- Als u van plan bent om geïntegreerde Windows-verificatie of gebruikersnaam en wachtwoord te gebruiken, moet uw toepassing aan te melden bij gebruikers in uw eigen tenant (LOB-ontwikkelaars), of in Azure Active directory-organisaties (ISV-scenario). Deze verificatiestromen worden niet ondersteund voor persoonlijke Microsoft-accounts
-- Als u de stroom van het apparaat gebruikt wilt, u kunt zich niet in de gebruikers met hun persoonlijke Microsoft-account nog
-- Als u gebruikers met sociale identiteiten doorgeven van een B2C-instantie en het beleid voor aanmelden, kunt u alleen de verificatie van de interactieve en gebruikersnaam-wachtwoord.
+- Als u geïntegreerde Windows-verificatie of gebruikers naam/wacht woord wilt gebruiken, moet uw toepassing zich aanmelden bij uw eigen Tenant (LOB-ontwikkelaar) of in azure Active Directory-organisaties (ISV-scenario). Deze verificatie stromen worden niet ondersteund voor persoonlijke micro soft-accounts.
+- Als u de code stroom van het apparaat wilt gebruiken, kunt u zich nog niet aanmelden bij gebruikers met hun persoonlijke micro soft-accounts.
+- Als u gebruikers aanmeldt met sociale identiteiten die een B2C-instantie en-beleid door geven, kunt u alleen de interactieve verificatie en gebruikers naam-wacht woord gebruiken.
 
-## <a name="redirect-uris"></a>Omleidings-URI 's
+## <a name="redirect-uris"></a>Omleidings-URI's
 
-Opnieuw afhankelijk de omleidings-URI's in desktop toepassing van de stroom die u wilt gebruiken.
+De omleidings-Uri's voor gebruik in een bureaublad toepassing zijn afhankelijk van de stroom die u wilt gebruiken.
 
-- Als u de **interactieve verificatie** of **apparaat Code Flow**, wilt u gebruiken `https://login.microsoftonline.com/common/oauth2/nativeclient`. U kunt deze configuratie bereiken door te klikken op de bijbehorende URL in de **verificatie** sectie voor uw toepassing
+- Als u de **interactieve verificatie** of de **code stroom**van het apparaat gebruikt, wilt u deze `https://login.microsoftonline.com/common/oauth2/nativeclient`gebruiken. U verkrijgt deze configuratie door te klikken op de bijbehorende URL in het gedeelte **verificatie** voor uw toepassing.
   
   > [!IMPORTANT]
-  > Vandaag MSAL.NET maakt gebruik van een andere omleidings-URI in die wordt uitgevoerd op Windows-bureaubladtoepassingen standaard (`urn:ietf:wg:oauth:2.0:oob`). In de toekomst we willen u kunt deze standaardwaarde wijzigen en daarom raden wij aan dat u `https://login.microsoftonline.com/common/oauth2/nativeclient`
+  > Vandaag MSAL.NET maakt standaard gebruik van een andere omleidings-URI in bureaublad`urn:ietf:wg:oauth:2.0:oob`toepassingen die worden uitgevoerd op Windows (). In de toekomst wilt u deze standaard instelling wijzigen. u kunt daarom het beste`https://login.microsoftonline.com/common/oauth2/nativeclient`
 
-- Als uw app alleen van geïntegreerde Windows-verificatie, gebruikersnaam en wachtwoord gebruikmaakt, moet u niet een omleidings-URI voor uw toepassing registreren. Inderdaad, deze stromen doen een retour naar het v2.0-eindpunt van Microsoft identity-platform en uw toepassing wordt niet terug worden aangeroepen op een specifieke URI. 
-- Om u te onderscheiden van de stroom van apparaat, geïntegreerde Windows-verificatie en de gebruikersnaam en wachtwoord van een vertrouwelijke clientstroom toepassing, dat niet beschikt over omleidings-URI's beide (de referentie stroom gebruikt in toepassingen daemon), moet u express dat uw toepassing een openbare client-toepassing is. Deze configuratie wordt bereikt door te gaan naar de **verificatie** sectie voor uw toepassing en in de **geavanceerde instellingen** subsectie, kiest u **Ja**, op de vraag **Toepassing behandelen als een openbare client** (in de **standaard clienttype** lid)
+- Als uw app alleen gebruikmaakt van geïntegreerde Windows-verificatie of gebruikers naam/wacht woord, hoeft u geen omleidings-URI voor uw toepassing te registreren. Deze stromen maken een afronding van het micro soft Identity platform v 2.0-eind punt en uw toepassing wordt niet terugaangeroepen op een specifieke URI.
+- Voor het onderscheiden van de apparaatcode stroom, geïntegreerde Windows-verificatie en gebruikers naam/wacht woord van een vertrouwelijke client toepassings stroom die geen omleidings-Uri's heeft (de client referentie stroom die wordt gebruikt in de daemon-toepassingen), moet u uitdrukkelijk bepalen dat uw de toepassing is een open bare client toepassing. Voor deze configuratie gaat u naar het gedeelte **verificatie** voor uw toepassing. Klik in de Subsectie **Geavanceerde instellingen** in het standaard- **client type** op **Ja** als **een open bare client**om de vraag te behandelen.
 
-  ![Openbare client toestaan](media/scenarios/default-client-type.png)
+  ![Open bare client toestaan](media/scenarios/default-client-type.png)
 
 ## <a name="api-permissions"></a>API-machtigingen
 
-Bureaubladtoepassingen aanroepen van API's namens de aangemelde gebruiker. Ze moeten overgedragen machtigingen aanvragen. Deze machtigingen van de toepassing geen aanvragen (die alleen worden verwerkt in [daemon toepassingen](scenario-daemon-overview.md))
+Bureau blad-Apps bellen Api's voor de aangemelde gebruiker. Ze moeten gedelegeerde machtigingen aanvragen. Ze kunnen echter geen toepassings machtigingen aanvragen, die alleen worden verwerkt in [daemon-toepassingen](scenario-daemon-overview.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Desktop-app - app-configuratie](scenario-desktop-app-configuration.md)
+> [Bureau blad-app-app-configuratie](scenario-desktop-app-configuration.md)

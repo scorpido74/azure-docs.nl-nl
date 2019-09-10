@@ -1,29 +1,29 @@
 ---
-title: Details van Azure Blockchain Workbench-database opvragen
-description: Leer hoe u gegevens van een Azure Blockchain Workbench-database en -server kunt opvragen.
+title: Details van de preview-data base van Azure Block Chain Workbench ophalen
+description: Meer informatie over het ophalen van de voorbeeld database en database server gegevens voor Azure Block Chain Workbench.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/09/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 42d119acd8880458eadc1760a7cb9713f91e3f6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4a4eaab9a03aeed27e29eb645b6e22a028b243b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65509994"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845072"
 ---
-# <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Informatie opvragen over uw Azure Blockchain Workbench-database
+# <a name="get-information-about-your-azure-blockchain-workbench-preview-database"></a>Informatie over de preview-data base van Azure Block Chain Workbench ophalen
 
-In dit artikel ziet u hoe u gedetailleerde informatie kunt opvragen over een Azure Blockchain Workbench-database.
+In dit artikel wordt uitgelegd hoe u gedetailleerde informatie krijgt over de preview-versie van uw Azure Block Chain Workbench-data base.
 
 ## <a name="overview"></a>Overzicht
 
-Informatie over toepassingen, werkstromen en de uitvoering van slimme contracten kunt u opvragen met behulp views in de SQL-database van Blockchain Workbench. Ontwikkelaars kunnen deze informatie gebruiken bij het gebruik van hulpprogramma's, zoals Microsoft Excel, Power BI, Visual Studio en SQL Server Management Studio.
+Informatie over toepassingen, werkstromen en de uitvoering van slimme contracten kunt u opvragen met behulp views in de SQL-database van Blockchain Workbench. Ontwikkel aars kunnen deze informatie gebruiken bij het gebruik van hulpprogram ma's zoals micro soft Excel, Power BI, Visual Studio en SQL Server Management Studio.
 
 Ontwikkelaars hebben het volgende nodig om verbinding te kunnen maken met de database:
 
@@ -34,7 +34,7 @@ Ontwikkelaars hebben het volgende nodig om verbinding te kunnen maken met de dat
 
 Verbinding maken met de database:
 
-1. Meld u aan bij Azure portal met een account met **eigenaar** machtigingen voor de resources die Azure Blockchain Workbench.
+1. Meld u aan bij de Azure Portal met een account met **eigenaars** machtigingen voor de Azure Block Chain Workbench-Resources.
 2. Kies **Resourcegroepen** in het linkernavigatievenster.
 3. Kies de naam van de resourcegroep voor uw implementatie van Blockchain Workbench.
 4. Selecteer **Type** om de lijst met resources te sorteren en kies vervolgens uw **SQL-server**. De gesorteerde lijst in de volgende schermafbeelding bevat twee SQL-databases, 'master' en een database die 'lhgn' gebruikt als de waarde voor **Voorvoegsel resource**.

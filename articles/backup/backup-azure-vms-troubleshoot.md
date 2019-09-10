@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: f053cc9bf6b08b9cf76b6e992c3d8cbdf5f759da
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1b3d02d5cfdae2f196f2f35f075dd8c250b5ece1
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258987"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860342"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten op virtuele machines van Azure oplossen
 
@@ -25,7 +25,7 @@ In deze sectie wordt de back-upbewerking voor de virtuele machine van Azure besc
 
 ### <a name="basic-troubleshooting"></a>Eenvoudige probleemoplossing
 
-* Zorg ervoor dat de VM-agent (WA-agent) de [meest recente versie](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent-on-the-virtual-machine)is.
+* Zorg ervoor dat de VM-agent (WA-agent) de [meest recente versie](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)is.
 * Zorg ervoor dat de versie van het Windows-of Linux-VM-besturings systeem wordt ondersteund. Raadpleeg de [IaaS VM backup-ondersteunings matrix](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas).
 * Controleer of er geen andere back-upservice wordt uitgevoerd.
    * Om ervoor te zorgen dat er geen problemen zijn met de uitbrei ding van de moment opname, [verwijdert u de uitbrei dingen om opnieuw te laden](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-backup-extension-fails-to-update-or-load).

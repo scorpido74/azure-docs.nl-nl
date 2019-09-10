@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 1e30650f932d15d23d7ffe7bd9b9fe07e9872511
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 64062aeab9a807d2aee7f4bca05d4019a3d9b736
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891622"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858629"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Zelfstudie: Een machine learning model met de visuele interface implementeren
 
@@ -33,15 +33,15 @@ Voltooi [deel één van de zelf studie](ui-tutorial-automobile-price-train-score
 
 ## <a name="prepare-for-deployment"></a>Voorbereiden voor implementatie
 
-Voordat u uw experiment als een webservice implementeert, moet u uw *trainings experiment* eerst omzetten in een voorspellend *experiment*.
+Voordat u uw experiment als een webservice implementeert, moet u uw *trainings experiment* eerst omzetten in een *voorspellend experiment*.
 
 1. Selecteer **Predictive experiment*** onder aan het canvas voor experimenteren.
 
     ![GIF-animatie waarin de automatische conversie van een trainings experiment naar een voorspellend experiment wordt weer gegeven](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
 
-    Wanneer u voorspellend **experiment maken**selecteert, gebeuren er diverse dingen:
+    Wanneer u **voorspellend experiment maken**selecteert, gebeuren er diverse dingen:
     
-    * Het getrainde model wordt opgeslagen als een getrainde **model** module in het palet van de module. U kunt deze vinden onder **getrainde modellen**.
+    * Het getrainde model wordt opgeslagen als een **getrainde model** module in het palet van de module. U kunt deze vinden onder **getrainde modellen**.
     * Modules die zijn gebruikt voor trainingen, worden verwijderd; met name:
       * Model trainen
       * Gegevens splitsen
@@ -75,9 +75,9 @@ Uw experiment moet er nu als volgt uitzien:
 
 ## <a name="test-the-web-service"></a>De webservice testen
 
-U kunt de webservices van uw Visual Interface testen en beheren door te navigeren naar het tabblad webservices.
+U kunt de webservices van uw Visual Interface testen en beheren door te navigeren naar het tabblad **webservices** .
 
-1. Ga naar de sectie web service. U ziet de webservice die u hebt geïmplementeerd met de zelf studie voor het voors pellen van een **Auto Mobile-prijs [voorspellend exp]** .
+1. Ga naar de sectie web service. U ziet de webservice die u hebt geïmplementeerd met de zelf studie voor het voors **pellen van een auto Mobile-prijs [voorspellend exp]** .
 
      ![Scherm opname van het tabblad webservice waarop de zojuist gemaakte webservice is gemarkeerd](./media/ui-tutorial-automobile-price-deploy/web-services.png)
 
@@ -118,6 +118,8 @@ De modellen en web service-implementaties die u in de visuele interface maakt, k
 1. Selecteer **implementaties**, hierin worden alle webservices weer geven die gebruikmaken van het model. Selecteer de naam van de webservice. deze gaat naar de detail pagina van de webservice. Op deze pagina kunt u meer gedetailleerde informatie over de webservice ophalen.
 
     [![Rapport voor gedetailleerde uitvoer van scherm afbeelding](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
+
+U kunt deze modellen en implementaties ook vinden in de secties **modellen** en **eind punten** van de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

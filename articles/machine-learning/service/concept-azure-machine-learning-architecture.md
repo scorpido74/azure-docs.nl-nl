@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7cb4f1a106d8caa2c43f5f17c5efa16a3ee6df2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 4e953ad732852f9ee99c7830997e2d1dc29b8f84
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011632"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845005"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>De werking van Azure Machine Learning-service: Architectuur en concepten
 
@@ -129,7 +129,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 
 ### <a name="datasets-and-datastores"></a>Gegevens sets en gegevens opslag
 
-**Azure machine learning gegevens sets** (preview) maakt het gemakkelijker om uw gegevens te benaderen en ermee te werken. Gegevens sets worden in verschillende scenario's beheerd, zoals model training en het maken van pijp lijnen. Met de Azure Machine Learning SDK hebt u toegang tot de onderliggende opslag, de gegevens te verkennen en voor te bereiden, de levens cyclus van verschillende gegevensset-definities te beheren en te vergelijken tussen gegevens sets die worden gebruikt in training en productie.
+**Azure machine learning gegevens sets** (preview) maakt het gemakkelijker om uw gegevens te benaderen en ermee te werken. Gegevens sets worden in verschillende scenario's beheerd, zoals model training en het maken van pijp lijnen. Met de Azure Machine Learning SDK hebt u toegang tot de onderliggende opslag, gegevens te verkennen en de levens cyclus van verschillende gegevensset-definities te beheren.
 
 Gegevens sets bieden methoden voor het werken met in populaire indelingen, zoals het `from_delimited_files()` gebruik `to_pandas_dataframe()`van of.
 

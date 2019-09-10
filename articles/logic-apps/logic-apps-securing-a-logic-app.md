@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: 15ec46511f1269606e0b0416c7c4a25f93012bec
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 6c16b38cce31c45158a5871c10dbd01339da9203
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736901"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845430"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -440,7 +440,7 @@ Deze voorbeeld sjabloon met meerdere beveiligde parameter definities die gebruik
 | Parameternaam | Description |
 |----------------|-------------|
 | `TemplatePasswordParam` | Een sjabloon parameter die vervolgens een wacht woord accepteert dat vervolgens wordt door gegeven aan de `basicAuthPasswordParam` para meter van de werk stroom definitie |
-| `TemplatePasswordParam` | Een sjabloon parameter die vervolgens een gebruikers naam accepteert die vervolgens wordt door gegeven aan de `basicAuthUserNameParam` para meter van de werk stroom definitie |
+| `TemplateUsernameParam` | Een sjabloon parameter die vervolgens een gebruikers naam accepteert die vervolgens wordt door gegeven aan de `basicAuthUserNameParam` para meter van de werk stroom definitie |
 | `basicAuthPasswordParam` | Een para meter voor de werk stroom definitie die het wacht woord voor basis verificatie in een HTTP-actie accepteert |
 | `basicAuthUserNameParam` | Een para meter voor de werk stroom definitie die de gebruikers naam voor basis verificatie in een HTTP-actie accepteert |
 |||

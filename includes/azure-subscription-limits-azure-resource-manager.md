@@ -9,10 +9,10 @@ ms.date: 07/22/2019
 ms.author: jroth
 ms.custom: include file
 ms.openlocfilehash: f85605610727ef2c1e1987b7ef93a41ce2417a25
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "69626318"
 ---
 | Resource | Standaardlimiet | Maximumaantal |
@@ -20,7 +20,7 @@ ms.locfileid: "69626318"
 | Virtuele machines [per abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |25.000<sup>1</sup> per regio. |25.000 per regio. |
 | Totaal aantal VM-cores per [abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> per regio. | Neem contact op met ondersteuning. |
 | VM per serie, zoals dv2 en F, kernen per [abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> per regio. | Neem contact op met ondersteuning. |
-| [](../articles/billing-add-change-azure-subscription-administrator.md) Cobeheerders per abonnement |Limited. |Limited. |
+| [Cobeheerders](../articles/billing-add-change-azure-subscription-administrator.md) per abonnement |Limited. |Limited. |
 | [Opslag accounts](../articles/storage/common/storage-quickstart-create-account.md) per regio per abonnement |250 |250 |
 | [Resource groepen](../articles/azure-resource-manager/resource-group-overview.md) per abonnement |980 |980 |
 | [Beschikbaarheids sets](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) per abonnement |2\.000 per regio. |2\.000 per regio. |

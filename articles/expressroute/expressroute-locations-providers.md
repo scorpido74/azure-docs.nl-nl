@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 84dff3c4948109654cf08fa1390ac4e6bf2717dc
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: HT
+ms.openlocfilehash: f3bae365692b2165e4944becbe5081bb69bef98b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812155"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70846110"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute
 
@@ -189,7 +189,7 @@ Als uw connectiviteitsprovider niet wordt vermeld in de vorige secties, kunt u a
 Als u extern bent en geen glasvezel connectiviteit hebt of als u andere connectiviteits opties wilt verkennen, kunt u de volgende satelliet-Opera tors controleren. 
 
 * Intelsat
-* SES
+* [SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)
 * Viasat
 
 ## <a name="c1partners"></a>Connectiviteit via aanvullende service providers

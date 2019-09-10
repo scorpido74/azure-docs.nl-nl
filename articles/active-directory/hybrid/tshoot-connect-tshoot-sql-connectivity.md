@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: SQL-verbindingsproblemen oplossen | Microsoft Docs'
-description: Wordt uitgelegd hoe u problemen oplossen met SQL-connectiviteit met Azure AD Connect.
+title: 'Azure AD Connect: Problemen met SQL-connectiviteit oplossen | Microsoft Docs'
+description: In dit artikel wordt uitgelegd hoe u problemen met SQL-connectiviteit kunt oplossen die zich voordoen met Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -14,41 +14,41 @@ ms.date: 05/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dea88951682c24d2a470d5bd7646722481e4db2f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cde94dce13eeb7536f72fb0dcd937265960c7314
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60381330"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842689"
 ---
-# <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>SQL-verbindingsproblemen met Azure AD Connect oplossen
-In dit artikel wordt uitgelegd hoe u problemen met connectiviteit tussen Azure AD Connect en SQL Server. 
+# <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>Problemen met SQL-connectiviteit met Azure AD Connect oplossen
+In dit artikel wordt uitgelegd hoe u verbindings problemen tussen Azure AD Connect en SQL Server kunt oplossen. 
 
-De volgende schermafbeelding ziet u een veelvoorkomende fout als de SQL-Server kan niet worden gevonden.
+In de volgende scherm afbeelding ziet u een typische fout als de SQL Server niet kan worden gevonden.
 
 ![SQL-fout](./media/tshoot-connect-tshoot-sql-connectivity/sql1.png)
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
-Open een powershell-venster en importeert u de ADSyncTools Powershell-module
+Open een Power shell-venster en importeer de ADSyncTools Power shell-module
 
 ``` powershell
 Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\AdSyncTools.psm1" 
 ```
 
 >[!NOTE]
->Install-Module moet worden bijgewerkt naar [PowerShell 5.0 (WMF 5.0)](https://www.microsoft.com/download/details.aspx?id=50395) of hoger.  
-Of installeer [PackageManagement PowerShell-Modules Preview - maart 2016 voor PowerShell 3.0/4.0](https://www.microsoft.com/download/details.aspx?id=51451) 
+>Install-module vereist het bijwerken van [Power shell 5,0 (WMF 5,0)](https://www.microsoft.com/download/details.aspx?id=50395) of hoger;  
+Of Installeer [Package Management Power shell-modules preview-maart 2016 voor Power Shell 3.0/4.0](/powershell/module/PackageManagement) 
 
-- **Alle opdrachten weergeven**: `Get-Command -Module AdSyncTools` 
-- **Uitvoeren van de powershell-functie**: `Connect-ADSyncDatabase` met de volgende parameters
-    - De server. De naam van de SQL Server.
-    - Het exemplaar. (Optioneel) De naam van de SQL Server-exemplaar en (optioneel) poortnummer, die u wilt gebruiken. Geef deze parameter voor het gebruik van het standaardexemplaar plaatst.
-    - UserName. (Optioneel) Het gebruikersaccount dat verbinding kan maken met. Als deze optie leeg wordt de momenteel aangemelde gebruiker worden gebruikt. Als u verbinding met een externe SQL-Server dit moet de aangepaste service-account dat u hebt gemaakt voor Azure ADConnect SQL-verbinding maakt. Azure AD Connect maakt gebruik van de Azure AD Connect sync-serviceaccount te verifiëren met een externe SQL-server.
-    - Het wachtwoord. (Optioneel) Wachtwoord voor de opgegeven gebruikersnaam.
+- **Alle opdrachten weer geven**:`Get-Command -Module AdSyncTools` 
+- **De Power shell-functie uitvoeren**: `Connect-ADSyncDatabase` met de volgende para meters
+    - Naam. De naam van de SQL Server.
+    - Exemplaar. Beschrijving De naam van het SQL Server exemplaar en optioneel poort nummer dat u wilt gebruiken. Geef deze para meter niet op als u het standaard exemplaar wilt gebruiken.
+    - Gebruikers. Beschrijving Het gebruikers account waarmee verbinding moet worden gemaakt. Als u niets opgeeft, wordt de gebruiker die momenteel is aangemeld, gebruikt. Als u verbinding maakt met een externe SQL Server moet dit het aangepaste service account zijn dat u hebt gemaakt voor Azure ADConnect SQL-connectiviteit. Azure AD Connect gebruikt het Azure AD Connect synchronisatie service-account als verificatie bij een externe SQL-Server.
+    - Wacht woord. Beschrijving Wacht woord voor de opgegeven gebruikers naam.
 
-In dit powershell-functie wordt te binden aan de opgegeven SQL Server en exemplaar met behulp van de doorgegeven referenties of de referenties van de huidige gebruiker gebruiken. Als de SQL-Server kan het script probeert verbinding maken met de SQL Browser-service om te bepalen ingeschakelde protocollen en poorten worden gevonden.
+Deze Power shell-functie probeert verbinding te maken met de opgegeven SQL Server en het exemplaar met behulp van de referenties die zijn door gegeven of de referenties van de huidige gebruiker worden gebruikt. Als de SQL Server niet kan worden gevonden, probeert het script verbinding te maken met de SQL Browser-service om ingeschakelde protocollen en poorten te bepalen.
 
-Voorbeeld met behulp van alleen de servernaam van een:
+Voor beeld van het gebruik van alleen een server naam:
 ```
 PS C:\Program Files\Microsoft Azure Active Directory Connect\Tools> import-module .\AdSyncTools.psm1
 
@@ -85,7 +85,7 @@ Container                        :
 PS C:\Program Files\Microsoft Azure Active Directory Connect\Tools> 
 ```
 
-Voorbeeld met behulp van een exemplaar en het poortnummer dat die niet bestaan:
+Voor beeld van het gebruik van een exemplaar en poort nummer:
 
 ```
 PS C:\Program Files\Microsoft Azure Active Directory Connect\tools> Connect-AdSyncDatabase -Server SQL1 -Instance "INSTANCE1"

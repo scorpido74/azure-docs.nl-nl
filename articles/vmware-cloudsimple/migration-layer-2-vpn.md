@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 55401ca498f06aa0b959c3926f2a07f40e7fb638
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 9e0afd26b46fc6249b697c38983b9c219c42b1a0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972620"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845486"
 ---
-# <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Werk belastingen migreren met laag 2 uitgerekte netwerken
+# <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Workloads migreren met behulp van uitgerekte netwerken van Laag 2
 
 In deze hand leiding wordt beschreven hoe u Layer 2 VPN (L2VPN) kunt gebruiken om een laag 2-netwerk uit te breiden van uw on-premises omgeving naar uw CloudSimple-Privécloud. Met deze oplossing wordt de migratie van werk belastingen die worden uitgevoerd in uw on-premises VMware-omgeving naar de Privécloud in azure binnen dezelfde subnet-adres ruimte, zonder dat u uw werk belastingen hoeft te herschrijven.
 
@@ -108,7 +108,7 @@ Zie voor meer informatie [virtuele particuliere netwerken](https://docs.vmware.c
 
 De volgende stappen laten zien hoe u de logische router-ID van de Tier0 DR-routerings instantie voor de IPsec-en L2VPN-Services kunt ophalen. De ID van de logische router is later nodig bij het implementeren van de L2VPN.
 
-1. Meld u aan bij NSX-T- https://nsx-t-manager-ip-address) beheer (en selecteer **netwerk** > **routers** > **provider-LR** > **overzicht**. Voor de **modus hoge Beschik baarheid**selecteert u **actief/stand-by**. Met deze actie wordt een pop-upvenster geopend waarin de Edge-VM wordt weer gegeven waarop de Tier0-router momenteel actief is.
+1. Meld u aan bij NSX-t Manager https://*NSX-t-Manager-IP-Address* en **Selecteer Network** > **routers** > **provider-LR** > **Overview**. Voor de **modus hoge Beschik baarheid**selecteert u **actief/stand-by**. Met deze actie wordt een pop-upvenster geopend waarin de Edge-VM wordt weer gegeven waarop de Tier0-router momenteel actief is.
 
     ![Selecteer actief/stand-by](media/l2vpn-fetch01.png)
 
@@ -137,7 +137,7 @@ De volgende stappen laten zien hoe u de logische router-ID van de Tier0 DR-route
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>De ID van de logische switch ophalen die nodig is voor L2VPN
 
 1. Meld u aan bij [NSX-T-beheer](https://nsx-t-manager-ip-address).
-2. Selecteer switches van **Network** > **switching** > > * * < switch \Logical > \ * * > **Overview**.
+2. Selecteer switches van **Network** > **switching** >  **> *** * < switch \Logical > \ * * > **Overview**.
 3. Noteer de UUID van de logische switch Stretch, die vereist is voor het configureren van de L2VPN.
 
     ![logische-router uitvoer ophalen](media/l2vpn-fetch-switch01.png)

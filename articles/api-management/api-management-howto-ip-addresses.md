@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 8d7346bb61fad09e3f7c9098809463285ef57e93
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 6e12a16b221a8f31d82a002fbc93b090d6f0c577
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242484"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861249"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>IP-adressen van Azure API Management
 
@@ -102,5 +102,6 @@ In de lagen ontwikkelaar, basis, standaard en Premium van API Management zijn de
 * De service wordt verwijderd en vervolgens opnieuw gemaakt.
 * Het service abonnement wordt [opgeschort](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) of [gewaarschuwd](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) (bijvoorbeeld voor niet-betaling) en vervolgens opnieuw ingesteld.
 * Azure Virtual Network wordt toegevoegd aan of verwijderd uit de service.
+* API Management-service wordt overgeschakeld tussen de externe en interne Vnet-implementatie modus.
 
 In [meerdere regionale implementaties](api-management-howto-deploy-multi-region.md)verandert het regionale IP-adres als een regio leeg is en opnieuw wordt ingesteld.

@@ -8,12 +8,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/08/2019
-ms.openlocfilehash: acfcee6e8308bc508bd709c40bd1794beab3130f
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 5a6aebd276ef8658da9ca763be7da5c38a9c772a
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804728"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873429"
 ---
 # <a name="use-azure-data-factory-template-for-bulk-copy-from-database-to-azure-data-explorer"></a>Azure Data Factory sjabloon gebruiken voor bulksgewijs kopiëren van de Data Base naar Azure Data Explorer
 
@@ -38,19 +38,19 @@ De **ControlTableDataset** geeft aan welke gegevens worden gekopieerd van de bro
 
 Voor beeld van SQL Server indeling van de bron tabel:
     
-    ```sql   
-    CREATE TABLE control_table (
-        PartitionId int,
-        SourceQuery varchar(255),
-        ADXTableName varchar(255)
-    );
-    ```
+```sql   
+CREATE TABLE control_table (
+PartitionId int,
+SourceQuery varchar(255),
+ADXTableName varchar(255)
+);
+```
     
-        |Eigenschap  |Description  | Voorbeeld
-        |---------|---------| ---------|
-        |PartitionId   |   bestelling Kopiëren | 1  |  
-        |SourceQuery   |   query die aangeeft welke gegevens tijdens de pijplijn runtime worden gekopieerd | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
-        |ADXTableName  |  doel tabel naam | MyAdxTable       |  
+|Eigenschap  |Description  | Voorbeeld
+|---------|---------| ---------|
+|PartitionId   |   bestelling Kopiëren | 1  |  
+|SourceQuery   |   query die aangeeft welke gegevens tijdens de pijplijn runtime worden gekopieerd | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
+|ADXTableName  |  doel tabel naam | MyAdxTable       |  
 
 Als uw **ControlTableDataset** zich in een andere indeling bevindt, maakt u een vergelijk bare **ControlTableDataset** voor uw indeling.
 

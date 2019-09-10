@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
 ms.openlocfilehash: d00af77a2d502cb534a4ab4a0db9231e5e8748b7
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "69636459"
 ---
 | Resource | [Verbruiks abonnement](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium-abonnement](../articles/azure-functions/functions-scale.md#premium-plan) | [App service plan](../articles/azure-functions/functions-scale.md#app-service-plan) <sup>1</sup> |
 | --- | --- | --- | --- |
 | Uitschalen | Gestuurde gebeurtenis | Gestuurde gebeurtenis | [Hand matig/automatisch schalen](../articles/app-service/manage-scale-up.md) | 
 | Max. exemplaren | 200 | 20 | 10-20 |
-|Standaard [time](../articles/azure-functions/functions-scale.md#timeout) -outduur (min) |5 | 30 |30<sup>2</sup> |
-|Maximale [time](../articles/azure-functions/functions-scale.md#timeout) -outduur (min.) |10 | unbounded | niet-gebonden<sup>3</sup> |
+|Standaard [time-outduur](../articles/azure-functions/functions-scale.md#timeout) (min) |5 | 30 |30<sup>2</sup> |
+|Maximale [time-outduur](../articles/azure-functions/functions-scale.md#timeout) (min.) |10 | unbounded | niet-gebonden<sup>3</sup> |
 | Maximum aantal uitgaande verbindingen (per instantie) | 600 actief (1200 totaal) | unbounded | unbounded |
 | Maximale aanvraag grootte (MB)<sup>4</sup> | 100 | 100 | 100 |
 | Maximale lengte van de query teken reeks<sup>4</sup> | 4096 | 4096 | 4096 |

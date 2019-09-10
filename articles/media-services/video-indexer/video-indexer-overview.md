@@ -1,25 +1,25 @@
 ---
-title: Wat is Video Indexer?
-titlesuffix: Azure Media Services
-description: Dit onderwerp geeft een overzicht van de service Video Indexer.
+title: Wat is Azure Media Services Video Indexer?
+titleSuffix: Azure Media Services
+description: In dit onderwerp vindt u een overzicht van de Azure Media Services Video Indexer-service.
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 09/06/2019
 ms.author: juliako
-ms.openlocfilehash: b0d0df5d113b1d75602022085b8bb17133f07333
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e3f60b5fb0693e40c9db040f7b14f487fce8f68e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422980"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860256"
 ---
 # <a name="what-is-video-indexer"></a>Wat is Video Indexer?
 
-Azure Video Indexer is een cloudtoepassing die is gebouwd met behulp van Azure Media Analytics, Azure Search, Cognitive Services (zoals de Face-API, Microsoft Translator, de Computer Vision-API en Custom Speech Service). U kunt de inzichten uit uw Video's extra heren met Video Indexer video-en audio modellen die hieronder worden beschreven:
+Azure Media Services Video Indexer is een cloudtoepassing die is gebouwd met behulp van Azure Media Analytics, Azure Search en Cognitive Services (zoals de Face-API, Microsoft Translator, de Computer Vision-API en Custom Speech Service). U kunt de inzichten uit uw Video's extra heren met Video Indexer video-en audio modellen die hieronder worden beschreven:
   
 ## <a name="video-insights"></a>Video inzichten
 
@@ -35,12 +35,15 @@ Azure Video Indexer is een cloudtoepassing die is gebouwd met behulp van Azure M
 - **Black frame-detectie**: Identificeert zwarte frames die in de video worden weer gegeven.
 - **Extractie van keyframe**: Detecteert stabiele keyframes in een video.
 - **Rollend tegoed**: Identificeer het begin en het einde van de roulerende tegoeden aan het einde van TV-Program ma's en films.
+- **Detectie van animatie tekens** (preview): detectie, groepering en herkenning van tekens in inhoud met animatie via integratie met [Cognitive Services aangepast gezichts vermogen](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Zie voor meer informatie [tekst detectie met animatie](animated-characters-recognition.md).
+- **Redactionele afbeeldings type detectie**: Tags maken op basis van het type (zoals grote opname, middel grote opnamen, close-up, bijna sluiten, twee Foto's, meerdere personen, buiten en binnen, enzovoort). Zie [redactionele shot type Detection](scenes-shots-keyframes.md#editorial-shot-type-detection)(Engelstalig) voor meer informatie.
 
 ## <a name="audio-insights"></a>Audio inzichten
 
 - **Automatische taal detectie**: Identificeert automatisch de taal voor de dominante spraak. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Chinees (vereenvoudigd), Japans, Russisch en Portugees (Brazilië). Als de taal niet met vertrouwen kan worden geïdentificeerd Video Indexer, wordt ervan uitgegaan dat de gesp roken taal Engels is. Zie [Language Identification model (Engelstalig)](language-identification-model.md)voor meer informatie.
+- **Meertalige spraak-identificatie en transcriptie** (preview-versie): Identificeert automatisch de gesp roken taal in verschillende segmenten van de audio, waarbij elk segment van het Media bestand dat moet worden getranscribeerd, wordt verzonden en de transcriptie opnieuw kan worden gecombineerd tot één Unified transcriptie. Zie voor meer informatie [automatisch inhoud identificeren en transcriberen in meerdere talen](multi-language-identification-transcription.md).
 - **Audio-transcriptie**: Hiermee converteert u spraak naar tekst in 12 talen en kunt u uitbrei dingen toestaan. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Chinees (vereenvoudigd), Japans, Arabisch, Russisch, Braziliaans Portugees, Hindi en Koreaans.
-- Ondertiteling: Hiermee maakt u ondertiteling in drie indelingen: VTT, TTML, SRT.
+- **Ondertiteling**: Hiermee maakt u ondertiteling in drie indelingen: VTT, TTML, SRT.
 - **Verwerking van twee kanalen**: Automatische detectie, afzonderlijke transcripten en samen voegingen op één tijd lijn.
 - **Ruis reductie**: Hiermee wist u audio-of ruis opnamen van telefonie (op basis van Skype-filters).
 - **Transcript aanpassing** (CRI'S): Traint aangepaste spraak naar tekst modellen om branchespecifieke transcripten te maken. Zie [een taal model aanpassen van de video indexer website](customize-language-model-with-website.md) en [een taal model aanpassen met de video indexer-api's](customize-language-model-with-api.md)voor meer informatie.
@@ -56,7 +59,7 @@ Azure Video Indexer is een cloudtoepassing die is gebouwd met behulp van Azure M
 Wanneer het indexeren per kanaal gedeeltelijk resultaat voor deze modellen beschikbaar is
 
 - **Extractie van tref woorden**: Extraheert tref woorden uit spraak en visuele tekst.
-- **Brands extractie**: Hiermee worden Brands geëxtraheerd uit spraak-en visuele tekst.
+- **Extractie van benoemde entiteiten**: Pakt merken, locaties en mensen uit vanuit spraak en visuele tekst via natuurlijke taal verwerking (NLP).
 - **Onderwerp**voor demijnren: Hiermee maakt u de belangrijkste onderwerpen van transcripten onduidelijker. De IPTC-taxonomie op 1e niveau is opgenomen.
 - **Artefacten**: Extraheert een uitgebreide set met artefacten van "volgende niveau Details" voor elk model.
 - **Sentiment analyse**: Geeft positieve, negatieve en neutrale gevoel aan vanuit spraak-en visuele tekst.

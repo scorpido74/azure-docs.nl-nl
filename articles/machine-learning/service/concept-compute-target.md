@@ -1,7 +1,7 @@
 ---
-title: 'COMPUTE-doelen: waar u trainen en modellen implementeren'
+title: 'Compute-doelen: voor het trainen en implementeren van modellen'
 titleSuffix: Azure Machine Learning service
-description: Opgeven waar u wilt trainen of implementeren van uw model met Azure Machine Learning-service.
+description: Bepaal waar u uw model wilt trainen of implementeren met Azure Machine Learning service.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,60 +9,60 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/10/2019
-ms.openlocfilehash: a7944b284a9c1c0424af54874554d05d49ad4b20
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: b2e4c9160ccad66b04dd30979f0568da68836d76
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806059"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860584"
 ---
-#  <a name="what-are-compute-targets-in-azure-machine-learning-service"></a>Wat zijn de compute-doelen in Azure Machine Learning-service? 
+#  <a name="what-are-compute-targets-in-azure-machine-learning-service"></a>Wat zijn Compute-doelen in Azure Machine Learning service? 
 
-Een **compute-doel** is een aangewezen compute-resource/omgeving waarin u uw service-implementatie uw trainingsscript of de host uitvoeren. Deze locatie mogelijk op uw lokale computer of een cloud-gebaseerde compute-resource. Met behulp van compute-doelen kunnen u eenvoudig voor u later uw compute-omgeving wijzigen zonder uw code te wijzigen.  
+Een **Compute-doel** is een aangewezen reken resource/omgeving waar u uw trainings script uitvoert of uw service-implementatie host. Deze locatie kan uw lokale machine of een cloud-gebaseerde reken resource zijn. Met Compute-doelen kunt u op een later tijdstip uw berekenings omgeving wijzigen zonder dat u de code hoeft te wijzigen.  
 
-U kunt in de levenscyclus van een typische model-ontwikkeling:
-1. Ontwikkelen en te experimenteren op een kleine hoeveelheid gegevens starten. In deze fase wordt aangeraden uw lokale omgeving bevinden als uw compute-doel (lokale computer of cloud-gebaseerde VM). 
-2. Opschalen naar grotere hoeveelheden gegevens of training over het gebruik van een van de volgende gedistribueerd [training van compute-doelen](#train).  
-3. Als uw model klaar is, deze implementeren in een web-hosten van de omgeving of IoT-apparaat met een van deze [implementatie van compute-doelen](#deploy).
+In een typische levens cyclus voor model ontwikkeling kunt u het volgende doen:
+1. Begin met het ontwikkelen en experimenteren van een kleine hoeveelheid gegevens. In deze fase raden wij uw lokale omgeving (lokale computer of Cloud-VM) aan als uw reken doel. 
+2. Schaal omhoog naar grotere gegevens of voer gedistribueerde training uit met behulp van een van deze [trainings Compute-doelen](#train).  
+3. Zodra uw model klaar is, implementeert u het in een webhost of IoT-apparaat met een van deze doelen voor de [implementatie](#deploy).
 
-De rekenresources die u voor uw compute-doelen gebruikt zijn gekoppeld aan een [werkruimte](concept-workspace.md). COMPUTE-resources dan de lokale computer worden gedeeld door gebruikers van de werkruimte.
+De reken resources die u voor uw reken doelen gebruikt, worden aan een [werk ruimte](concept-workspace.md)gekoppeld. Andere reken bronnen dan de lokale computer worden gedeeld door gebruikers van de werk ruimte.
 
-## <a name="train"></a> Training compute-doelen
+## <a name="train"></a>Doelen van de trainings compute
 
-Azure Machine Learning-service heeft verschillende ondersteuning voor andere compute-resources.  U kunt ook uw eigen compute-resource koppelen Hoewel ondersteuning voor verschillende scenario's kunnen variëren.
+Azure Machine Learning-service heeft verschillende ondersteunings bronnen.  U kunt ook uw eigen reken resource toevoegen, maar ondersteuning voor verschillende scenario's kan variëren.
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
-Meer informatie over [instellen en gebruiken van een compute-doel voor modeltraining](how-to-set-up-training-targets.md).
+Meer informatie over [het instellen en gebruiken van een berekenings doel voor model training](how-to-set-up-training-targets.md).
 
-## <a name="deploy"></a>Implementatiedoelen
+## <a name="deploy"></a>Implementatie doelen
 
-De volgende rekenresources kunnen worden gebruikt voor het hosten van de implementatie van uw model.
+De volgende reken bronnen kunnen worden gebruikt voor het hosten van uw model implementatie.
 
 [!INCLUDE [aml-compute-target-deploy](../../../includes/aml-compute-target-deploy.md)]
 
-Informatie over [waar en hoe u uw model implementeert naar een compute-doel](how-to-deploy-and-where.md).
+Meer informatie over [waar en hoe u uw model implementeert in een compute-doel](how-to-deploy-and-where.md).
 
 <a name="amlcompute"></a>
-## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning-Computing (beheerd)
+## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning Compute (beheerd)
 
-Een beheerde compute-resource is gemaakt en beheerd door Azure Machine Learning-service. Deze compute is geoptimaliseerd voor workloads van machine learning. Azure Machine Learning-Computing is de enige beheerde compute vanaf 30 mei 2019. Aanvullende beheerde rekenbronnen kunnen in de toekomst worden toegevoegd.
+Een beheerde Compute-resource wordt gemaakt en beheerd door Azure Machine Learning service. Deze berekening is geoptimaliseerd voor machine learning workloads. Azure Machine Learning Compute is de enige beheerde reken kracht vanaf 30 mei 2019. Extra beheerde reken bronnen kunnen in de toekomst worden toegevoegd.
 
-U kunt Azure Machine Learning-Computing kunt gebruiken voor training en inferentietaken batch (Preview).  Met deze compute-resource hebt:
+U kunt Azure machine learning Compute for training en voor batch-(preview-versie) gebruiken.  Met deze reken resource hebt u het volgende:
 
-* Één of meerdere node cluster
-* Automatisch wordt geschaald telkens wanneer die u een uitvoering verzenden 
-* Automatische Clusterbeheer en taakplanning 
-* Ondersteuning voor zowel CPU en GPU
+* Cluster met één of meerdere knoop punten
+* Automatisch schalen elke keer dat u een uitvoering verzendt 
+* Automatische Cluster beheer en taak planning 
+* Ondersteuning voor zowel CPU-als GPU-resources
 
-U kunt Azure Machine Learning-Computing-exemplaren maken in Azure portal, met de SDK of met de CLI. Wanneer deze is automatisch onderdeel van uw werkruimte in tegenstelling tot andere soorten compute-doelen.
+U kunt Azure Machine Learning Compute-instanties maken in Azure Portal of de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com), met de SDK of met de cli. Wanneer het wordt gemaakt, maakt het automatisch deel uit van uw werk ruimte, in tegens telling tot andere soorten Compute-doelen.
 
-## <a name="unmanaged-compute"></a>Niet-beheerde compute
+## <a name="unmanaged-compute"></a>Onbeheerde compute
 
-Een niet-beheerde compute-doel is *niet* beheerd door Azure Machine Learning-service. U maakt dit type compute-doel buiten Azure Machine Learning en deze koppelen aan uw werkruimte. Niet-beheerde compute-resources kunnen extra stappen moeten worden voor u te houden of om de prestaties voor machine learning-workloads te verbeteren.
+Een niet-beheerd reken doel wordt *niet* beheerd door Azure machine learning service. U maakt dit type reken doel buiten Azure Machine Learning en koppelt het vervolgens aan uw werk ruimte. Onbeheerde reken resources kunnen extra stappen vereisen om de prestaties van machine learning werk belastingen te hand haven of te verbeteren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Leer hoe u het volgende doet:
-* [Een compute-doel instellen voor uw model te trainen](how-to-set-up-training-targets.md)
-* [Uw model implementeert naar een compute-doel](how-to-deploy-and-where.md)
+* [Een reken doel instellen om uw model te trainen](how-to-set-up-training-targets.md)
+* [Uw model implementeren naar een berekenings doel](how-to-deploy-and-where.md)

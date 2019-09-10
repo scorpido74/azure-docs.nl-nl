@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: aac328806e2570bd124626e916c250d481a11311
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d539bd569eee613eb43947e5fd0e3b0614ca5d79
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567592"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858618"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Connectiviteits architectuur voor een beheerd exemplaar in Azure SQL Database
 
@@ -238,4 +238,4 @@ Als het virtuele netwerk een aangepaste DNS bevat, moet de aangepaste DNS-server
   - Van de [Azure Portal](sql-database-managed-instance-get-started.md).
   - Met behulp van [Power shell](scripts/sql-database-create-configure-managed-instance-powershell.md).
   - Met behulp van [een Azure Resource Manager sjabloon](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).
-  - Met behulp van [een Azure Resource Manager sjabloon (met behulp van JumpBox, met SSMS inbegrepen)](https://portal.azure.com/). 
+  - Met behulp van [een Azure Resource Manager sjabloon (met behulp van JumpBox, met SSMS inbegrepen)](https://azure.microsoft.com/en-us/resources/templates/201-sqlmi-new-vnet-w-jumpbox/). 

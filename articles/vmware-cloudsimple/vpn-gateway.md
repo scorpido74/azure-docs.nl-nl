@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a61e789bb40d8263d293c70a67567ea61d5d2652
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972607"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845357"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>VPN-gateways instellen op het CloudSimple-netwerk
 
@@ -56,7 +56,7 @@ Met een punt-naar-site-VPN-gateway kunt u een beleid voor automatische toevoegin
     > [!WARNING]
     > Als u maximale Beschik baarheid wilt inschakelen, moet uw on-premises VPN-apparaat verbinding maken met twee IP-adressen. Deze optie kan niet worden uitgeschakeld als de VPN-gateway is geïmplementeerd.
 
-5. Maak de eerste verbinding van uw on-premises netwerk en klik op **volgende**
+5. Maak de eerste verbinding van uw on-premises netwerk en klik op **volgende**.
 
     * Voer een naam in om de verbinding aan te duiden.
     * Voer het open bare IP-adres van uw on-premises VPN-gateway in voor de peer-IP.

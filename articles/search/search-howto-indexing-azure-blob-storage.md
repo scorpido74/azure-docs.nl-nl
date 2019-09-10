@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 902887c2a765fa50c7075cbdcb835f53e84f583f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 03f828be603720871672b9b5d90eb87dd283c002
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208264"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842539"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Documenten in Azure Blob Storage indexeren met Azure Search
 In dit artikel wordt beschreven hoe u Azure Search kunt gebruiken voor het indexeren van documenten (zoals Pdf's, Microsoft Office documenten en enkele andere algemene indelingen) die zijn opgeslagen in Azure Blob Storage. Eerst worden de basis principes uitgelegd van het instellen en configureren van een BLOB-indexer. Vervolgens biedt het een uitgebreidere onderzoek van gedrag en scenario's die u waarschijnlijk zult tegen komen.
@@ -123,7 +123,7 @@ Zie [Indexeer functies plannen voor Azure Search](search-howto-schedule-indexers
 Afhankelijk van de configuratie van de [Indexeer](#PartsOfBlobToIndex)functie kan de BLOB-indexer alleen opslag meta gegevens indexeren (handig als u alleen de meta gegevens gebruikt en de inhoud van blobs niet hoeft te indexeren), meta gegevens van opslag en inhoud, of meta gegevens en tekst inhoud. Standaard haalt de Indexeer functie zowel de meta gegevens als de inhoud op.
 
 > [!NOTE]
-> Standaard worden blobs met gestructureerde inhoud, zoals JSON of CSV, geïndexeerd als één tekst segment. Zie [JSON-blobs indexeren](search-howto-index-json-blobs.md) en CSV- [blobs indexeren](search-howto-index-csv-blobs.md) voor meer informatie als u JSON-en CSV-blobs op een gestructureerde manier wilt indexeren.
+> Standaard worden blobs met gestructureerde inhoud, zoals JSON of CSV, geïndexeerd als één tekst segment. Zie [JSON-blobs indexeren](search-howto-index-json-blobs.md) en [CSV-blobs indexeren](search-howto-index-csv-blobs.md) voor meer informatie als u JSON-en CSV-blobs op een gestructureerde manier wilt indexeren.
 >
 > Een samengesteld of Inge sloten document (zoals een ZIP-archief of een Word-document met Inge sloten Outlook-e-mail met bijlagen) wordt ook als één document geïndexeerd.
 
@@ -337,7 +337,7 @@ Het indexeren van blobs kan een tijdrovend proces zijn. In gevallen waarin u mil
 
 Mogelijk wilt u documenten uit meerdere bronnen in uw index assembleren. U kunt bijvoorbeeld tekst uit blobs samen voegen met andere meta gegevens die zijn opgeslagen in Cosmos DB. U kunt zelfs de push-indexerings-API samen met de verschillende Indexeer functies gebruiken om Zoek documenten uit meerdere delen op te bouwen. 
 
-Om dit te laten werken, moeten alle Indexeer functies en andere onderdelen overeenkomen met de document sleutel. Zie dit externe artikel voor gedetailleerde instructies: [Documenten combi neren met andere gegevens in azure Search](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
+Om dit te laten werken, moeten alle Indexeer functies en andere onderdelen overeenkomen met de document sleutel. Zie [meerdere Azure-gegevens bronnen indexeren](https://docs.microsoft.com/azure/search/tutorial-multiple-data-sources)voor meer informatie over dit onderwerp. Zie dit externe artikel voor gedetailleerde instructies: [Documenten combi neren met andere gegevens in azure Search](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>Tekst zonder opmaak indexeren 

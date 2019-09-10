@@ -1,21 +1,21 @@
 ---
-title: 'Zelf studie: verificatie inschakelen in een toepassing met één pagina-Azure Active Directory B2C'
+title: 'Zelfstudie: Verificatie inschakelen in een toepassing met één pagina-Azure Active Directory B2C'
 description: Meer informatie over het gebruik van Azure Active Directory B2C om gebruikers aanmelding te bieden voor een toepassing met één pagina (Java script).
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
 ms.date: 07/24/2019
-ms.custom: mvc
+ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8683169e0f8464cdcf52600968f67f3622e61445
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 06ac81105ad8871c934715c18cd5f78fc3ea05f5
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509590"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858512"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>Zelfstudie: Verificatie inschakelen in een webtoepassing met één pagina met behulp van Azure Active Directory B2C
 

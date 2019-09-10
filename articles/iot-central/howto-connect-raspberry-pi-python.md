@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 3f91e09e35eec0685cb4333802b860fb08412cb6
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 5c6e99c62d199c36081113011845a3bf2607bcb3
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019749"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842554"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Een Raspberry Pi verbinden met uw Azure IoT Central-toepassing (python)
 
@@ -70,13 +70,13 @@ In de volgende stappen wordt beschreven hoe u de voor beeld-python-toepassing do
 
 1. Voer de volgende opdracht uit om de IoT Central python-client te installeren:
 
-    ```sh
+    ```bash
     pip install iotc
     ```
 
 1. Down load de voor beeld-python-code:
 
-    ```sh
+    ```bash
     curl -O https://raw.githubusercontent.com/Azure/iot-central-firmware/master/RaspberryPi/app.py
     ```
 
@@ -87,7 +87,7 @@ In de volgende stappen wordt beschreven hoe u de voor beeld-python-toepassing do
 
 1. Gebruik de volgende opdracht om het voor beeld uit te voeren:
 
-    ```sh
+    ```bash
     python app.py
     ```
 

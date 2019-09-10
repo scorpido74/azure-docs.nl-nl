@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/09/2019
 ms.author: diberry
-ms.openlocfilehash: 36d03e20c9a56d7b317b867f01c1c0b5767c802c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 5c2e81cd11826a0325cd78384a22ec7eefb3a565
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256995"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844861"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Resource sleutels voor ontwerpen en runtime gebruiken
 
@@ -72,6 +72,38 @@ Wanneer u klaar bent om uw Voorspellings eindpunt te publiceren, maakt en wijst 
     |Prijs categorie voor runtime|De prijs categorie bepaalt de maximale trans actie per seconde en maand.|
 
     Zodra beide resources zijn gemaakt, wijst u de resources toe aan de LUIS-Portal.
+
+## <a name="create-resources-in-azure-cli"></a>Resources maken in azure CLI
+
+Gebruik de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) om elke resource afzonderlijk te maken. 
+
+Resource `kind`:
+
+* Ontwerp`LUIS.Authoring`
+* Voorspellings`LUIS` 
+
+1. Meld u aan bij de Azure CLI:
+
+    ```console
+    az login
+    ```
+
+    Hiermee opent u een browser waarmee u het juiste account en verificatie kunt selecteren.
+
+1. Maak een **Luis-ontwerp bron**, van de `LUIS.Authoring`soort, `my-luis-authoring-resource` met de naam in de _bestaande_ resource groep `westus` met de naam `my-resource-group` voor de regio. 
+
+    ```console
+    az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
+    ```
+
+1. Maak een **Luis-Voorspellings eindpunt bron**, van `LUIS`het type `my-luis-prediction-resource` , met de naam in de `my-resource-group` bestaande resource `westus` groep met de naam voor de regio. Als u een hogere door voer wilt dan de gratis laag, `F0` wijzigt `S0`u in. Meer informatie over [prijs categorieën en door Voer](luis-boundaries.md#key-limits).
+
+    ```console
+    az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
+    ```
+
+    > [!Note] 
+    > Deze sleutels worden **niet** gebruikt door de Luis-Portal totdat ze zijn toegewezen in de Luis-Portal op de **Azure-resources voor beheer >** .
 
 ## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>Een ontwerp bron toewijzen in de LUIS-portal voor alle apps
 
@@ -186,6 +218,6 @@ Toevoegen van een waarschuwing voor metrische gegevens voor de **totaal aantal a
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie [over het gebruik van versies](luis-how-to-manage-versions.md) om de levens cyclus van uw app te beheren.
-* Inzicht in de concepten, waaronder de [ontwerp resource](/luis-concept-keys.md#authoring-key) en [inzenders](luis-concept-keys.md#contributions-from-other-authors) voor die bron.
+* Inzicht in de concepten, waaronder de [ontwerp resource](luis-concept-keys.md#authoring-key) en [inzenders](luis-concept-keys.md#contributions-from-other-authors) voor die bron.
 * Meer informatie [over het maken](luis-how-to-azure-subscription.md) van ontwerp-en runtime-resources
 * Migreren naar de nieuwe [ontwerp bron](luis-migration-authoring.md) 

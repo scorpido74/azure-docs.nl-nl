@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 63f9112696156f2192669913bb15a82b9a7eede7
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 2d23b2b39844d48c6414d269f8d69d7b96fff272
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657461"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860302"
 ---
 # <a name="publishing-integrated-solutions"></a>Oplossingen die zijn geïntegreerd met publiceren
 
@@ -88,6 +88,6 @@ Hoewel er vijf service typen beschikbaar zijn voor advies Services, moet een ge�
 
 ## <a name="going-to-market-with-your-integrated-solution"></a>Ga naar de markt met uw geïntegreerde oplossing 
 
-Zodra uw oplossing in azure Marketplace of AppSource is opgenomen, kunt u de generatie van bewustzijn en vraag via marketing activiteiten doen. Bekijk de activiteiten die worden vermeld in het [Project plan en de tijd lijn](https://aka.ms/AA5qiuc), inclusief activiteiten die partners kunnen aansturen binnen hun eigen teams en met elkaar. Vervolgens krijgt u toegang tot de [voor delen](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#how-to-access-microsoft-resources) van de partners die zijn gepubliceerd op de Marketplace. Alle geïntegreerde oplossingen bieden in aanmerking voor voor delen op proef niveau.
+Zodra uw oplossing in azure Marketplace of AppSource is opgenomen, kunt u de generatie van bewustzijn en vraag via marketing activiteiten doen. Bekijk de activiteiten die worden vermeld in het [Project plan en de tijd lijn](https://aka.ms/AA5qiuc), inclusief activiteiten die partners kunnen aansturen binnen hun eigen teams en met elkaar. Vervolgens krijgt u toegang tot de [voor delen](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) van de partners die zijn gepubliceerd op de Marketplace. Alle geïntegreerde oplossingen bieden in aanmerking voor voor delen op proef niveau.
 
 ---

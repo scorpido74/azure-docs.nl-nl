@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: b716cbf3efb044da68d4dd1dcb724369855d1ed1
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5aa2d694c2c74b493a7fd1a2a89d39866928d1d4
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173649"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843874"
 ---
 # <a name="streaming-ingestion-preview"></a>Stroom opname (preview-versie)
 
@@ -28,7 +28,7 @@ Gebruik de klassieke opname in (bulk) in plaats van het opnemen van opname wanne
 ## <a name="prerequisites"></a>Vereisten
 
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
-* Meld u aan bij [](https://dataexplorer.azure.com/)de webgebruikersinterface.
+* Meld u aan bij de [webgebruikersinterface](https://dataexplorer.azure.com/).
 * [Een Azure Data Explorer-cluster en-data base](create-cluster-database-portal.md) maken
 
 ## <a name="enable-streaming-ingestion-on-your-cluster"></a>Opname van streaming op uw cluster inschakelen
@@ -39,12 +39,12 @@ Gebruik de klassieke opname in (bulk) in plaats van het opnemen van opname wanne
  
     ![opname van streaming op](media/ingest-data-streaming/streaming-ingestion-on.png)
  
-1. Definieer in [](https://dataexplorer.azure.com/)de webgebruikersinterface het [beleid](/azure/kusto/concepts/streamingingestionpolicy) voor het opnemen van gegevens stromen op tabel (len) of data base (s) die streaminggegevens zullen ontvangen. 
+1. Definieer in de [webgebruikersinterface](https://dataexplorer.azure.com/)het [beleid](/azure/kusto/concepts/streamingingestionpolicy) voor het opnemen van gegevens stromen op tabel (len) of data base (s) die streaminggegevens zullen ontvangen. 
 
     > [!TIP]
     > Als het beleid is gedefinieerd op database niveau, worden alle tabellen in de data base ingeschakeld voor streaming-opname.
 
-## <a name="supported-streaming-ingestion-types"></a>Ondersteunde typen streaming-opname
+## <a name="use-streaming-ingestion-to-ingest-data-to-your-cluster"></a>Stroom opname gebruiken om gegevens op te nemen in uw cluster
 
 Er zijn twee ondersteunde typen streaming-opname:
 
@@ -72,7 +72,7 @@ Er zijn twee ondersteunde typen streaming-opname:
 
 ## <a name="limitations"></a>Beperkingen
 
-* Het streamen van opname prestaties en capaciteits schaal met verhoogde VM-en cluster groottes. Voor één D11-knoop punt is de aanbevolen belasting Maxi maal 20 aanvragen per seconde. Voor één D14-knoop punt is de aanbevolen belasting Maxi maal 150 aanvragen per seconde.
+* Het streamen van opname prestaties en capaciteits schaal met verhoogde VM-en cluster groottes. Voor één D14-knoop punt is de aanbevolen belasting Maxi maal 150 aanvragen per seconde.
 * Momenteel is ondersteuning alleen voor 8-en 16-core-Sku's (D13, D14, N8 en L16).
 * De limiet voor de gegevens grootte per opname aanvraag is 4 MB.
 * Schema-updates, zoals het maken en wijzigen van tabellen en opname toewijzingen, kunnen tot vijf minuten duren voor de service streaming-opname.
