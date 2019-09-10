@@ -9,19 +9,19 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 56a73449c69010bc97122023f7dcbc9e3a9df154
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 27063702729d8a61ab8919c2685fcfc6f743ce09
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048001"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858985"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>Wat is IoT Plug en Play preview?
 
 Met IoT Plug en Play Preview kunnen ontwikkel aars van oplossingen apparaten met hun oplossingen integreren zonder Inge sloten code te hoeven schrijven. De kern van IoT Plug en Play is een schema voor het _capaciteits model_ van het apparaat dat de mogelijkheden van apparaten beschrijft. Dit schema is een JSON-document dat is gestructureerd als een reeks interfaces die definities bevatten van:
 
 - _Eigenschappen_ die de status alleen-lezen en lezen/schrijven van een apparaat of andere entiteit vertegenwoordigen. Een serie nummer van een apparaat kan bijvoorbeeld een alleen-lezen eigenschap zijn en een doel temperatuur op een thermo staat kan een lezen/schrijven-eigenschap zijn.
-- Telemetrie die de gegevens is die door een apparaat worden verzonden, ongeacht of de gegevens een gewone stroom van sensor leesingen, incidentele fout of informatie bericht zijn.
+- _Telemetrie_ die de gegevens is die door een apparaat worden verzonden, ongeacht of de gegevens een gewone stroom van sensor leesingen, incidentele fout of informatie bericht zijn.
 - _Opdrachten_ die een functie of bewerking beschrijven die op een apparaat kan worden uitgevoerd. Een opdracht kan bijvoorbeeld een gateway opnieuw opstarten of een foto nemen met een externe camera.
 
 U kunt interfaces hergebruiken over hulp modellen voor apparaten om samen werking eenvoudiger te maken en de ontwikkeling te versnellen.
@@ -35,7 +35,7 @@ Dit artikel geeft een overzicht van:
 - De typische rollen die zijn gekoppeld aan een project dat IoT-Plug en Play gebruikt.
 - IoT Plug en Play-apparaten gebruiken in uw toepassing.
 - Het ontwikkelen van een IoT-Device-toepassing die ondersteuning biedt voor IoT Plug en Play.
-- Een IoT Plug en Play-apparaat certificeren en publiceren naar de certificerings instantie [voor IOT-apparaten](https://catalog.azureiotsolutions.com/).
+- Een IoT Plug en Play-apparaat certificeren en publiceren naar de [certificerings instantie voor IOT-apparaten](https://catalog.azureiotsolutions.com/).
 
 ## <a name="user-roles"></a>Gebruikersrollen
 
@@ -63,7 +63,7 @@ Als ontwikkelaar van apparaten kunt u een IoT-hardware-product ontwikkelen dat I
 
 1. De software of firmware van het apparaat ontwerpen die de mogelijkheden implementeert die zijn gedeclareerd in het mogelijkheidsprofiel en de interfaces van het apparaat. De Azure IoT SDK bevat Api's voor het implementeren van Capability-modellen.
 
-De [IOT Device Workbench voor VS code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) -extensie biedt veel functies om u te helpen. Als ontwikkel aars van apparaten kunt u bijvoorbeeld de uitbrei ding gebruiken om een skelet C-project te genereren op basis van een bekwaamheids model. U kunt echter een IDE gebruiken om hulp modellen voor apparaten te ontwerpen en implementeren.
+De [Azure IOT-Hulpprogram ma's voor VS code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) -uitbreidings pakket biedt veel functies om u te helpen. Als ontwikkel aars van apparaten kunt u bijvoorbeeld een uitbrei ding gebruiken om een skelet C-project uit een mogelijkheidsprofiel te genereren. U kunt echter een IDE gebruiken om hulp modellen voor apparaten te ontwerpen en implementeren.
 
 ## <a name="certify-an-iot-plug-and-play-device"></a>Een IoT Plug en Play-apparaat certificeren
 
@@ -76,6 +76,7 @@ Als ontwikkelaar van apparaten kunt u IoT-hardwareproducten verzenden voor certi
 - Publiceer naar de catalogus met gecertificeerde voor IoT-apparaten.
 
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
+
 Tijdens de open bare preview is IoT Plug en Play beschikbaar in de regio's Europa-noord, centraal, VS en Japan Oost. Zorg ervoor dat u uw hub in een van deze regio's maakt.
 
 ## <a name="message-quotas-in-iot-hub"></a>Bericht quota's in IoT Hub

@@ -9,24 +9,24 @@ ms.date: 12/12/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: dd5c0782e1132f8592d9c6381b541c6f1a7d84cd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67176026"
 ---
-**Harde schijf van Standard beheerde schijven**
+**Beheerde schijven Standard-HDD**
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
-**Standard-SSD-beheerde schijven**
+**Beheerde schijven Standard-SSD**
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-**Premium SSD beheerde schijven: Limieten per schijf**
+**Beheerde schijven Premium-SSD: Limieten per schijf**
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-**Premium SSD beheerde schijven: De limieten per VM**
+**Beheerde schijven Premium-SSD: Limieten per VM**
 
 | Resource | Standaardlimiet |
 | --- | --- |
-| Maximale IOPS Per VM |80.000 IOP's met GS5-VM 's |
-| Maximale doorvoer per VM |2000 MB/s met GS5-VM 's |
+| Maximum aantal IOPS per VM |80.000 IOPS met GS5 VM |
+| Maximale door Voer per VM |2\.000 MB/s met GS5 VM |

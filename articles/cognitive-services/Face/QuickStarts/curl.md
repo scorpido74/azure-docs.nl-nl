@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 68cdd147977294954051735d70307305aa5dc0cb
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: da929744922f8653bc293b68dbbadb9347a447e9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603315"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859154"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Quickstart: Gezichten in een afbeelding detecteren met de Face REST API en cURL
 
@@ -29,10 +29,10 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="write-the-command"></a>De opdracht schrijven
  
-U gebruikt een opdracht als volgt aanroepen van de Face-API en face kenmerkgegevens ophalen uit een afbeelding. Kopieer eerst de code in een teksteditor&mdash;u moet wijzigingen aanbrengen in bepaalde gedeelten van de opdracht voordat u deze kunt uitvoeren.
+U gebruikt een opdracht als de volgende om de Face-API aan te roepen en face-kenmerk gegevens op te halen uit een installatie kopie. Kopieer eerst de code in een teksteditor&mdash;u moet wijzigingen aanbrengen in bepaalde gedeelten van de opdracht voordat u deze kunt uitvoeren.
 
 ```shell
-curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
+curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://<My Endpoint String>.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
 ```
 
 ### <a name="subscription-key"></a>Abonnementssleutel
@@ -40,7 +40,9 @@ Vervang `<Subscription Key>` door een geldige Face-abonnementssleutel.
 
 ### <a name="face-endpoint-url"></a>Eindpunt-URL voor Face
 
-De URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` geeft het Azure Face-eindpunt aan waarvoor een query moet worden uitgevoerd. Mogelijk moet u het eerste deel van deze URL zodat deze overeenkomen met de regio die overeenkomt met de abonnementssleutel van uw wijzigen. Zie de [Face-API-documenten](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) voor een lijst van alle eindpunten voor de regio.
+De URL `https://<My Endpoint String>.com/face/v1.0/detect` geeft het Azure Face-eindpunt aan waarvoor een query moet worden uitgevoerd. Mogelijk moet u het eerste deel van deze URL wijzigen zodat deze overeenkomt met het eind punt dat overeenkomt met uw abonnements sleutel.
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ### <a name="url-query-string"></a>Queryreeks voor URL
 
@@ -51,7 +53,7 @@ De queryreeks van de Face-eindpunt-URL geeft op welke gezichtskenmerken moeten w
 ```
 
 ### <a name="image-source-url"></a>Bron-URL van afbeelding
-De bron-URL geeft aan welke afbeelding moet worden gebruikt als invoer. U kunt dit om te verwijzen naar een andere afbeelding die u wilt analyseren wijzigen.
+De bron-URL geeft aan welke afbeelding moet worden gebruikt als invoer. U kunt dit wijzigen zodat deze verwijst naar een wille keurige afbeelding die u wilt analyseren.
 
 ```
 https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg

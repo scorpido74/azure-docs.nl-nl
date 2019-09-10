@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 09/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa0ec97683fe8597ced234fe4b7251a4daeed49f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 00cbb5ff4b9354d0d1702161460b2646669f34c2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173495"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844365"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ms-azure-sso-access-for-ethidex-compliance-office"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met MS Azure SSO Access voor Ethidex-naleving Office™
 
@@ -74,14 +74,20 @@ Als u Azure AD SSO wilt configureren en testen met MS Azure SSO-toegang voor Eth
 
 Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina **MS Azure SSO Access for Ethidex compliance Office™** Application Integration de sectie **Manage (beheren** ) en selecteer eenmalige **aanmelding**.
+1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina **MS Azure SSO Access for Ethidex compliance Office™** Application Integration de sectie **Manage (beheren** ) en selecteer **eenmalige aanmelding**.
 1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
 1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. In de sectie **basis configuratie van SAML** is de toepassing vooraf geconfigureerd en de benodigde url's zijn al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de knop **Opslaan** .
+1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
 
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `com.ethidex.prod.<CLIENTID>`
+
+    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://www.ethidex.com/saml2/sp/acs/<CLIENTID>`
+
+    > [!NOTE]
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met [MS Azure SSO Access voor het ondersteunings team van Ethidex-naleving Office™](mailto:support@ethidex.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 1. MS Azure SSO-toegang voor Ethidex-naleving Office™ toepassings toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen aan **user.userprincipalname**. MS Azure SSO-toegang voor Ethidex-naleving Office™ toepassing verwacht dat **nameidentifier** moet worden toegewezen aan **User. mail**, dus u moet de kenmerk toewijzing bewerken door op het pictogram **bewerken** te klikken en de kenmerk toewijzing te wijzigen.
 
@@ -131,7 +137,7 @@ Voor het configureren van eenmalige aanmelding op **MS Azure SSO-toegang voor Et
 
 ### <a name="create-ms-azure-sso-access-for-ethidex-compliance-office-test-user"></a>MS Azure-SSO-toegang voor Ethidex-naleving Office-test gebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in MS Azure SSO Access voor Ethidex-naleving Office™. Werk met [MS Azure SSO Access voor Ethidex-naleving office™](mailto:support@ethidex.com) -ondersteunings team om de gebruikers toe te voegen aan de MS Azure SSO-toegang voor Ethidex-naleving Office™ platform. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
+In deze sectie maakt u een gebruiker met de naam B. Simon in MS Azure SSO Access voor Ethidex-naleving Office™. Werk met [MS Azure SSO Access voor Ethidex-naleving office™-ondersteunings team](mailto:support@ethidex.com) om de gebruikers toe te voegen aan de MS Azure SSO-toegang voor Ethidex-naleving Office™ platform. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
 
 ## <a name="test-sso"></a>SSO testen 
 

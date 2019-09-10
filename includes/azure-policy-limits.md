@@ -9,22 +9,22 @@ ms.date: 06/05/2019
 ms.author: dacoulte
 ms.custom: include file
 ms.openlocfilehash: ea87e51e66985f860cd6d10595a32facde1dc639
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67133184"
 ---
-Er is een maximum aantal exemplaren voor elk objecttype voor Azure Policy. De vermelding _Bereik_ slaat op het abonnement of op de [beheergroep](../articles/governance/management-groups/overview.md).
+Er is een maximum aantal voor elk object type voor Azure Policy. De vermelding _Bereik_ slaat op het abonnement of op de [beheergroep](../articles/governance/management-groups/overview.md).
 
 | Waar | Wat | Maximum |
 |---|---|---|
 | Scope | Beleidsdefinities | 500 |
 | Scope | Initiatiefdefinities | 100 |
 | Tenant | Initiatiefdefinities | 1000 |
-| Scope | Toewijzingen van beleid of initiatief | 100 |
+| Scope | Toewijzing van beleid of initiatief | 100 |
 | Beleidsdefinitie | Parameters | 20 |
 | Initiatiefdefinitie | Beleidsregels | 100 |
 | Initiatiefdefinitie | Parameters | 100 |
-| Toewijzingen van beleid of initiatief | Uitzonderingen (geen bereiken) | 400 |
-| Beleidsregel | Geneste voorwaarden | 512 |
+| Toewijzing van beleid of initiatief | Uitzonderingen (geen bereiken) | 400 |
+| Beleidsregel | Geneste voor waarden | 512 |

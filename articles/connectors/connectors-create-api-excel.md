@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 5d0d276096441c780dee4f8b1e95442a1d7e7b25
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d3c6395f7fd66e1b89fc49536e228249bc4ed2a9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050907"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859253"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Excel online-gegevens beheren met Azure Logic Apps
 
@@ -53,6 +53,9 @@ Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?]
 1. Kies **nieuwe stap**onder de trigger.
 
 1. Voer in het zoekvak ' Excel ' in als uw filter. Selecteer in de lijst acties de gewenste actie.
+
+   > [!NOTE]
+   > Met de ontwerp functie voor logische apps kunnen geen tabellen worden geladen die 100 of meer kolommen hebben. Als dat mogelijk is, vermindert u het aantal kolommen in de geselecteerde tabel zodat de ontwerper de tabel kan laden.
 
 1. Meld u aan bij uw Office 365-account als u hierom wordt gevraagd.
 
