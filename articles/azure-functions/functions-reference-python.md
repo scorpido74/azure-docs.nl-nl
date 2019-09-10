@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 88d9ab0063b6cf2803332d7af50190c659b3e6fe
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 7922f07cfe08d0bd58827b59337b86387c624778
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207209"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844681"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions python-ontwikkelaars handleiding
 
@@ -94,6 +94,7 @@ De mapstructuur voor een python functions-project ziet eruit als in het volgende
  | - MyFirstFunction
  | | - __init__.py
  | | - function.json
+ | | - example.py
  | - MySecondFunction
  | | - __init__.py
  | | - function.json
@@ -110,6 +111,12 @@ Gedeelde code moet in een afzonderlijke map worden bewaard. Als u wilt verwijzen
 
 ```
 from __app__.SharedCode import myFirstHelperFunction
+```
+
+Als u verwijst naar modules die lokaal zijn voor een functie, kunt u de relatieve import syntaxis als volgt gebruiken:
+
+```
+from . import example
 ```
 
 Wanneer u een functie project implementeert in uw functie-app in azure, moet de volledige inhoud van de map *FunctionApp* worden opgenomen in het pakket, maar niet in de map zelf.
@@ -394,7 +401,7 @@ There was an error restoring dependencies.ERROR: cannot install <package name - 
 The terminal process terminated with exit code: 1
 ```
 
-Als u lokaal wilt maken en de vereiste binaire bestanden wilt configureren, [installeert](https://docs.docker.com/install/) u docker op uw lokale computer en voert u de volgende opdracht uit om te publiceren met behulp van de [Azure functions core tools](functions-run-local.md#v2) (func). Vervang `<app name>` door de naam van uw functie-app in Azure. 
+Als u lokaal wilt maken en de vereiste binaire bestanden wilt configureren, [installeert u docker](https://docs.docker.com/install/) op uw lokale computer en voert u de volgende opdracht uit om te publiceren met behulp van de [Azure functions core tools](functions-run-local.md#v2) (func). Vervang `<app name>` door de naam van uw functie-app in Azure. 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps

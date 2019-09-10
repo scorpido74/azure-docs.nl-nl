@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 01025acfa2fd939db8134a1e61c7902034a1d2c3
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: b78a1b250f46c2ddd2b36e19590c4a94ca3ab3fb
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424216"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844699"
 ---
 # <a name="azure-data-share-preview-concepts"></a>Azure data share preview-concepten 
 
@@ -53,7 +53,9 @@ Een gegevens verbruiker heeft de mogelijkheid om zich aan te melden bij dit mome
 
 Een gegevens provider kan meerdere ontvangers uitnodigen voor hun gegevens share. Ze kunnen dit doen door ontvangers toe te voegen aan de gegevens share. Uitnodigingen kunnen ook worden toegevoegd nadat een gegevens share is gemaakt. 
 
-Een gegevens provider kan een uitnodiging verwijderen nadat deze is verzonden. Houd er rekening mee dat als een gegevens provider een uitnodiging verwijdert nadat deze is geaccepteerd, de gegevens verbruiker nog steeds een actief share-abonnement kan hebben. Als de gegevens provider een uitnodiging verwijdert en deze nog niet is geaccepteerd, kan de gebruiker de gegevens niet accepteren. 
+Een gegevens provider kan een uitnodiging verwijderen nadat deze is verzonden als deze nog niet is geaccepteerd. Als de gegevens provider een uitnodiging verwijdert en deze nog niet is geaccepteerd, kan de gebruiker de gegevens niet accepteren. 
+
+Uitnodigingen kunnen Maxi maal vijf keer per dag worden verzonden. 
 
 ## <a name="recipient"></a>Geadresseerde
 

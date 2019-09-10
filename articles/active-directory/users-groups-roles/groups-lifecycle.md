@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 074b9ec06818363a97253a587ac451a38999832f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 56bfe92de24b9386252ee8719af66cc658948565
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837935"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844312"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Het verloop beleid voor Office 365-groepen configureren
 
@@ -35,7 +35,7 @@ Zodra u een groep hebt ingesteld op verlopen:
 Momenteel kan slechts één verloopbeleid worden geconfigureerd voor Office 365-groepen in een tenant.
 
 > [!NOTE]
-> Voor het configureren en gebruiken van het verloop beleid voor Office 365-groepen moet u beschikken over Azure AD Premium licenties voor de leden van alle groepen waarop het verloop beleid wordt toegepast.
+> Voor het configureren en gebruiken van het verloop beleid voor Office 365-groepen moet u echter wel beschikken over Azure AD Premium licenties voor de leden van alle groepen waarop het verloop beleid wordt toegepast.
 
 Zie [Azure Active Directory Power shell for graph 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)voor meer informatie over het downloaden en installeren van de Azure AD Power shell-cmdlets.
 
@@ -69,8 +69,11 @@ Zie [een verwijderde Office 365-groep herstellen in azure Active Directory](grou
   - Sla de instellingen op wanneer u klaar bent door **Opslaan**te selecteren.
 
 > [!NOTE]
-> Wanneer u de verval datum voor het eerst instelt, worden groepen die ouder zijn dan het verloop interval ingesteld op 30 dagen tot de verval datum. De eerste e-mail met de verlengings melding wordt binnen een dag verzonden. Bijvoorbeeld: groep A is 400 dagen geleden gemaakt en het verloop interval is ingesteld op 180 dagen. Wanneer u verloop beleid toepast, heeft groep A 30 dagen voordat het wordt verwijderd, tenzij de eigenaar het vernieuwt.
+> Wanneer u de verval datum voor het eerst instelt, worden groepen die ouder zijn dan het verloop interval ingesteld op 30 dagen tot de verval datum, tenzij de eigenaar de groep vernieuwt. De eerste e-mail met de verlengings melding wordt binnen een dag verzonden.
+>
 > Wanneer een dynamische groep wordt verwijderd en teruggezet, wordt deze weer gegeven als een nieuwe groep en op basis van de regel opnieuw ingevuld. Dit proces kan Maxi maal 24 uur duren.
+>
+> Verloop meldingen voor groepen die worden gebruikt in teams, worden weer gegeven in de team eigen aren van teams.
 
 ## <a name="email-notifications"></a>E-mailwaarschuwingen
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 6583db5b1403f70593d586a610f4d06be15c729b
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e043d9bf0e87304868b2c573600578c911134856
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603360"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859187"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Quickstart: Gezichten in een afbeelding detecteren met de REST API en Ruby
 
@@ -28,15 +28,13 @@ In deze quickstart gebruikt u de Azure Face REST API met Ruby om menselijke gezi
 
 ## <a name="write-the-script"></a>Het script schrijven
 
-Maak een nieuw bestand _faceDetection.rb_, en voeg de volgende code toe. Deze code roept de Face-API voor een bepaalde afbeeldings-URL.
+Maak een nieuw bestand _faceDetection.rb_, en voeg de volgende code toe. Deze code roept de Face-API op voor een opgegeven afbeeldings-URL.
 
 ```ruby
 require 'net/http'
 
-# You must use the same location in your REST call as you used to get your
-# subscription keys. For example, if you got your subscription keys from  westus,
-# replace "westcentralus" in the URL below with "westus".
-uri = URI('https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect')
+# replace <My Endpoint String> in the URL below with the string from your endpoint.
+uri = URI('https://<My Endpoint String>.com/face/v1.0/detect')
 uri.query = URI.encode_www_form({
     # Request parameters
     'returnFaceId' => 'true',
@@ -62,9 +60,11 @@ end
 puts response.body
 ```
 
-U moet het veld `request['Ocp-Apim-Subscription-Key']` bijwerken met uw abonnementssleutel en mogelijk moet u de tekenreeks `uri` wijzigen, zodat deze de juiste regio-id bevat (zie de [Face-API-documentatie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) voor een lijst met alle regio-eindpunten). 
+U moet de `request['Ocp-Apim-Subscription-Key']` waarde bijwerken met de abonnements sleutel en de `uri` teken reeks wijzigen zodat deze het juiste eind punt bevat.
 
-Desgewenst kunt u ook het veld `imageUri` zo wijzigen dat het verwijst naar uw eigen invoerafbeelding. Ook mogelijk wilt u wijzigt de `returnFaceAttributes` veld, die aangeeft welke face kenmerken om op te halen.
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
+Desgewenst kunt u ook het veld `imageUri` zo wijzigen dat het verwijst naar uw eigen invoerafbeelding. Het is ook mogelijk dat u het `returnFaceAttributes` veld wilt wijzigen, waarmee wordt aangegeven welke gezichts kenmerken moeten worden opgehaald.
 
 ## <a name="run-the-script"></a>Het script uitvoeren
 
@@ -74,7 +74,7 @@ Voer het Ruby-script uit met de volgende opdracht:
 ruby faceDetection.rb
 ```
 
-Er wordt een JSON-tekenreeks van gedetecteerde gezichtsgegevens weergegeven op de console. De volgende tekst is een voorbeeld van een geslaagde JSON-antwoord.
+Er wordt een JSON-tekenreeks van gedetecteerde gezichtsgegevens weergegeven op de console. De volgende tekst is een voor beeld van een geslaagde JSON-reactie.
 
 ```json
 [

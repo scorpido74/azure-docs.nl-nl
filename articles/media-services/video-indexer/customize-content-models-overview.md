@@ -1,6 +1,6 @@
 ---
 title: Inhouds modellen aanpassen in Azure Media Services Video Indexer
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: In dit artikel vindt u koppelingen naar de conceptuele artikelen waarin de voor delen van elk type aanpassing worden uitgelegd. Dit artikel bevat ook koppelingen naar hand leidingen die laten zien hoe u de aanpassing van elk model kunt implementeren.
 services: media-services
 author: anikaz
@@ -10,19 +10,23 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: anzaman
-ms.openlocfilehash: 8499e816f60b9d6605bdbdc392f6d2b3e134b863
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 9abf9b791cc986bcce49bbd0cf8136a573a149a3
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878819"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860199"
 ---
 # <a name="customizing-content-models-in-video-indexer"></a>Inhouds modellen aanpassen in Video Indexer
 
 Met Video Indexer kunt u sommige modellen aanpassen zodat deze aan uw specifieke use-case kunnen worden aangepast. Deze modellen zijn onder andere [Brands](customize-brands-model-overview.md), [taal](customize-language-model-overview.md)en [persoon](customize-person-model-overview.md). U kunt deze modellen eenvoudig aanpassen met behulp van de Video Indexer website of API.
 
-In dit artikel vindt u koppelingen naar de conceptuele artikelen waarin de voor delen van elk type aanpassing worden uitgelegd. Dit artikel bevat ook koppelingen naar hand leidingen die laten zien hoe u de aanpassing van elk model kunt implementeren.
- 
+Dit artikel bevat koppelingen naar artikelen waarin de voor delen van elk type aanpassing worden uitgelegd. Het artikel bevat ook koppelingen naar hand leidingen die laten zien hoe u de aanpassing van elk model kunt implementeren.
+
+## <a name="animated-characters"></a>Animatie tekens
+
+* [Detectie van animatie tekens](animated-characters-recognition.md)
+
 ## <a name="brands-model"></a>Brands model
 
 * [Het model overzicht van de Brands aanpassen](customize-brands-model-overview.md)

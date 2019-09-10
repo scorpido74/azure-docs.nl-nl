@@ -6,14 +6,14 @@ ms.service: hpc-cache
 ms.topic: overview
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: da853cd92797c6ec778043ddc39c7854d8f5e832
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d772f66d14e0c0ab5ac73603e8faeb7e31e9891f
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70774719"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843773"
 ---
-# <a name="what-is-azure-hpc-cache"></a>Wat is Azure HPC cache?
+# <a name="what-is-azure-hpc-cache"></a>Wat is Azure HPC Cache?
 
 De Azure HPC-cache versnelt de toegang tot uw gegevens voor HPC-taken (High-Performance Computing). Door bestanden in Azure in de cache op te slaan, is de schaal baarheid van Cloud Computing ook beschikbaar voor werk stromen waarbij uw gegevens worden opgeslagen op WAN-koppelingen, zoals in uw lokale Datacenter omgeving (Network-Attached Storage).
 
@@ -56,10 +56,10 @@ De Azure HPC-cache is beschikbaar in de volgende Azure-regio's:
 * Azië - zuidoost
 * US - west 2
 
-Controleer de [product pagina van de Azure HPC-cache](<https://azure.microsoft.com/services/hpc-cache>) voor de meest recente beschikbaarheids gegevens.
+Controleer de [product pagina van de Azure HPC-cache](https://azure.microsoft.com/services/hpc-cache) voor de meest recente beschikbaarheids gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees de [product pagina van de Azure HPC-cache](<https://azure.microsoft.com/services/hpc-cache>) voor meer informatie over de mogelijkheden
+* Lees de [product pagina van de Azure HPC-cache](https://azure.microsoft.com/services/hpc-cache) voor meer informatie over de mogelijkheden
 * Meer informatie over product [vereisten](hpc-cache-prereqs.md)
 * [Een HPC-cache van Azure maken](hpc-cache-create.md) op basis van de Azure Portal

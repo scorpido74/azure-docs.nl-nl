@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 2ed1a20bf47771d927c0d58730fa0eb4471572af
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a0704f9e9a77eba2eb0d4f00bc1d880011e767de
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603374"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859211"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Quickstart: Gezichten in een afbeelding detecteren met de REST API en PHP
 
@@ -24,9 +24,9 @@ In deze quickstart gebruikt u de Azure Face REST API met PHP om menselijke gezic
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Face-API-abonnementssleutel. U kunt een abonnementssleutel voor een gratis proefversie downloaden van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op de Face-API-service en uw sleutel op te halen.
-- Een code-editor, zoals [Visual Studio Code](https://code.visualstudio.com/download).
-- De PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) pakket.
-- Een PHP-webbrowser is ingeschakeld. Als u hebt niet ingesteld dit, u kunt doen door te installeren en instellen van [XAMPP](https://www.apachefriends.org/) op uw computer.
+- Een code-editor, zoals [Visual Studio code](https://code.visualstudio.com/download).
+- Het PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) -pakket.
+- Een webbrowser met PHP-functionaliteit. Als u dit niet hebt ingesteld, kunt u dit doen door [XAMPP](https://www.apachefriends.org/) op uw computer te installeren en in te stellen.
 
 ## <a name="initialize-the-html-file"></a>Het HTML-bestand initialiseren
 
@@ -43,17 +43,15 @@ Maak een nieuw HTML-bestand, *detectFaces.html*, en voeg de volgende code toe.
 
 ## <a name="write-the-php-script"></a>Het PHP-script schrijven
 
-Voeg de volgende code toe in het element `body` van het document. Deze code stelt u een eenvoudige gebruikersinterface met een URL-veld een **analyseren face** knop, een antwoord venster en een installatiekopie van weergeven deelvenster.
+Voeg de volgende code toe in het element `body` van het document. Met deze code wordt een basis gebruikers interface ingesteld met een URL-veld, een knop **vlak analyseren** , een antwoord venster en een afbeeldings weergave deel venster.
 
 ```php
 <?php
 // Replace <Subscription Key> with a valid subscription key.
 $ocpApimSubscriptionKey = '<Subscription Key>';
 
-// You must use the same location in your REST call as you used to obtain
-// your subscription keys. For example, if you obtained your subscription keys
-// from westus, replace "westcentralus" in the URL below with "westus".
-$uriBase = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/';
+// Replace <My Endpoint String> with the string in your endpoint URL.
+$uriBase = 'https:/<My Endpoint String>.com/face/v1.0/';
 
 $imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
@@ -101,7 +99,9 @@ catch (HttpException $ex)
 ?>
 ```
 
-U moet het veld `subscriptionKey` bijwerken met de waarde van de abonnementssleutel en mogelijk moet u de tekenreeks `uriBase` wijzigen, zodat deze de juiste regio-id bevat (zie de [Face API-documentatie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) voor een lijst met alle regio-eindpunten). Het veld `returnFaceAttributes` geeft op welke gezichtskenmerken moeten worden opgehaald. U kunt deze queryreeks wijzigen afhankelijk van het beoogde gebruik.
+U moet het `subscriptionKey` veld bijwerken met de waarde van uw abonnements sleutel en u moet de `uriBase` teken reeks wijzigen zodat deze de juiste eindpunt teken reeks bevat. Het veld `returnFaceAttributes` geeft op welke gezichtskenmerken moeten worden opgehaald. U kunt deze queryreeks wijzigen afhankelijk van het beoogde gebruik.
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="run-the-script"></a>Het script uitvoeren
 

@@ -326,8 +326,8 @@ De opdrachten in deze sectie zijn voor uw IoT Edge apparaat, niet voor uw ontwik
 In deze zelf studie stelt u Visual Studio code in op uw ontwikkel computer en implementeert u uw eerste IoT Edge-module. Nu u de basis concepten kent, kunt u de functionaliteit toevoegen aan een module, zodat de gegevens kunnen worden geanalyseerd die worden door gegeven. Kies de taal van uw voor keur: 
 
 > [!div class="nextstepaction"] 
-> [C](tutorial-c-module.md)[C#](tutorial-csharp-module.md)[](tutorial-python-module.md) [](tutorial-java-module.md)[](tutorial-node-module.md)Java node. jspython
-> 
-> 
-> 
-> 
+> [C](tutorial-c-module.md)
+> [C#](tutorial-csharp-module.md)
+> [Java](tutorial-java-module.md)
+> [Node.js](tutorial-node-module.md)
+> [Python](tutorial-python-module.md)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 00fadd8a98ec4f58783ed8b407e2621a7c107149
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 50bb26aa1a29dc8b1454fadec416aceea76405b2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533518"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844255"
 ---
 # <a name="aks-troubleshooting"></a>AKS problemen oplossen
 
@@ -132,3 +132,12 @@ Op basis van de uitvoer van de cluster status:
 * Als het cluster zich in een andere inrichtings status bevindt dan *geslaagd* of *mislukt*, wacht u totdat de bewerking (*bijwerken/bijwerken/maken/schalen/verwijderen/migreren*) is beëindigd. Wanneer de vorige bewerking is voltooid, moet u de meest recente cluster bewerking opnieuw proberen.
 
 * Als de upgrade van het cluster is mislukt, volgt u de stappen [die worden beschreven waarbij ik fouten ontvang dat mijn cluster de status Mislukt heeft en dat de upgrade of schaal aanpassing pas werkt als het probleem is opgelost](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
+
+## <a name="im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one"></a>Er wordt een fout melding ontvangen dat mijn Service-Principal niet is gevonden bij het maken van een nieuw cluster zonder dat dit wordt door gegeven.
+
+Bij het maken van een AKS-cluster is een Service-Principal vereist om namens u resources te maken. AKS biedt de mogelijkheid om een nieuwe te maken op het moment dat het cluster wordt gemaakt, maar dit vereist dat Azure Active Directory de nieuwe Service-Principal in een redelijke tijd volledig moet door geven om het cluster te kunnen maken. Wanneer deze doorgifte te lang duurt, mislukt de validatie van het cluster om te worden gemaakt omdat er hiervoor geen beschik bare service-principal kan worden gevonden. 
+
+Gebruik de volgende tijdelijke oplossingen:
+1. Gebruik een bestaande service-principal die al is door gegeven in meerdere regio's en die bestaat voor AKS tijdens het maken van een cluster.
+2. Als u automatiserings scripts gebruikt, voegt u vertragingen toe tussen het maken van service-principals en het maken van AKS-clusters.
+3. Als u Azure Portal gebruikt, keert u terug naar de cluster instellingen tijdens het maken en voert u de validatie pagina na een paar minuten opnieuw uit.

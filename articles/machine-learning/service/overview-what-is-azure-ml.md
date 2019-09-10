@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 822bbd004035d9745535942c508cae6702e5b99b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 99514002f0a259b7e981c2db498e72865d4f1bd4
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278115"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858647"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Wat is de Azure Machine Learning-service?
 
@@ -32,7 +32,7 @@ Azure Machine Learning Service biedt een omgeving in de cloud die u kunt gebruik
 
 Verken en bereid gegevens op, Train en test modellen en implementeer ze met uitgebreide hulpprogram ma's zoals:
 + Een [visuele interface](ui-tutorial-automobile-price-train-score.md) waarin u modules kunt slepen en neerzetten om uw experimenten te ontwikkelen en vervolgens modellen te implementeren
-+ [Jupyter-notebooks](https://jupyter.org) waarin u de [sdk's](https://docs.microsoft.com/azure/machine-learning/service/#reference) gebruikt om uw eigen code te schrijven, zoals [deze voor beelden van notitie blokken](https://aka.ms/aml-notebooks)
++ [Jupyter-notebooks](https://jupyter.org) waarin u de [sdk's](https://docs.microsoft.com/azure/machine-learning) gebruikt om uw eigen code te schrijven, zoals [deze voor beelden van notitie blokken](https://aka.ms/aml-notebooks)
 + [Visual Studio code-extensie](how-to-vscode-tools.md)
 
 
@@ -66,7 +66,7 @@ Voor code-Free training kunt u het volgende proberen:
 
 Wanneer u het juiste model hebt, kunt u het eenvoudig gebruiken in een webservice, op een IoT-apparaat of in Power BI. Zie het artikel [Hoe implementeren en waar](how-to-deploy-and-where.md) voor meer informatie.
 
-Daarna kunt u uw geïmplementeerde modellen beheren met de [Azure Machine Learning SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) of [Azure Portal](https://portal.azure.com/).
+Vervolgens kunt u uw geïmplementeerde modellen beheren met behulp van de [Azure machine learning SDK voor python](https://aka.ms/aml-sdk), de [Azure Portal](https://portal.azure.com/) of de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com).
 
 Deze modellen kunnen worden gebruikt en voor spellingen in [realtime](how-to-consume-web-service.md) of [asynchroon](how-to-run-batch-predictions.md) in grote hoeveel heden gegevens worden geretourneerd.
 
@@ -93,7 +93,7 @@ Hier volgt een snelle vergelijking.
 |Modules voor Interface| Allerlei | Initiële set populaire modules|
 |Doelen van de trainings compute| Eigen reken doel, alleen CPU-ondersteuning| Ondersteunt Azure Machine Learning compute, GPU of CPU.<br/>(Andere reken processen die worden ondersteund in SDK)|
 |Doelen voor implementatie compute| De indeling van de oorspronkelijke webservice, niet aanpasbaar | Beveiligings opties voor ondernemingen & Azure Kubernetes-service. <br/>([Andere reken](how-to-deploy-and-where.md) processen die worden ondersteund in SDK) |
-|Automatische model training en afstemming tuning | Nee | Nog niet in de visuele interface. <br/> (Ondersteund in de SDK en Azure Portal.) |
+|Automatische model training en afstemming tuning | Nee | Nog niet in de visuele interface. <br/> (Ondersteund op de lands pagina SDK en Azure Portal/Workspace.) |
 
 Probeer de Visual Interface (preview) uit met [de zelf studie: Prijs voor auto Mobile voor speld met](ui-tutorial-automobile-price-train-score.md)de visuele interface.
 

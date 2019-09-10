@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 4/20/2019
 ms.author: tamram
 ms.openlocfilehash: aab17966862c57a52f252b3c4e9b757673078b0a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67176247"
 ---
 | Resource | Doel        |
 |----------|---------------|
-| Maximale grootte van één blob-container | Hetzelfde als de maximale capaciteit-account |
-| Maximum aantal blokken in een blok-blob of toevoeg-blob | 50.000 blokken |
-| Maximale grootte van een blok in een blok-blob | 100 MiB |
-| Maximale grootte van een blok-blob | 50.000 x 100 MiB (ongeveer 4.75 TiB) |
-| Maximale grootte van een blok in een toevoeg-blob | 4 MiB |
-| Maximale grootte van een toevoeg-blob | 50.000 x 4 MiB (ongeveer 195 GiB) |
-| Maximale grootte van een pagina-blob | 8 TiB |
-| Maximum aantal opgeslagen toegangsbeleid per blob-container | 5 |
-|Doeldoorvoer van één blob |Maximaal Inkomend/uitgaand verkeer opslagaccountlimieten<sup>1</sup> |
+| Maximale grootte van één BLOB-container | Hetzelfde als de maximale capaciteit van het opslag account |
+| Maximum aantal blokken in een blok-BLOB of toevoeg-BLOB | 50.000 blokken |
+| Maximale grootte van een blok in een blok-BLOB | 100 MiB |
+| Maximale grootte van een blok-BLOB | 50.000 X 100 MiB (ongeveer 4,75 TiB) |
+| Maximale grootte van een blok in een toevoeg-BLOB | 4 MiB |
+| Maximale grootte van een toevoeg-BLOB | 50.000 x 4-MiB (ongeveer 195 GiB) |
+| Maximale grootte van een pagina-BLOB | 8 TiB |
+| Maximum aantal opgeslagen toegangs beleid per BLOB-container | 5 |
+|Doel doorvoer voor één BLOB |Tot Maxi maal limieten voor opslag accounts/uitgaand verkeer<sup>1</sup> |
 
-<sup>1</sup> enkel object doorvoer is afhankelijk van verschillende factoren, waaronder, maar niet beperkt tot: gelijktijdigheid, aanvraaggrootte, prestatielaag, snelheid van de bron voor uploads en bestemming voor het downloaden. Om te profiteren van [hoge doorvoer blok-blob](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) prestatieverbeteringen, gebruikt u een grootte van de aanvraag Blob plaatsen of Put-blokken van > 4 MiB (> 256 KiB voor premium-prestaties blok-blobopslag of voor Data Lake Storage Gen2).
+<sup>1</sup> door Voer van één object is afhankelijk van verschillende factoren, waaronder, maar niet beperkt tot: gelijktijdigheid, aanvraag grootte, prestatie-laag, snelheid van bron voor uploads en bestemming voor down loads. Als u gebruik wilt maken van de prestaties van een [blok-blob met hoge door Voer](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) , gebruikt u een put-BLOB of een put-aanvraag grootte van > 4 MiB (> 256 KiB voor Premium-performance Block Blob Storage of voor data Lake Storage Gen2).

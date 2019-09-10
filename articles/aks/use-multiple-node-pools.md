@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 2a18362546ae3c31b06fc5294495d8f5ac5f0be3
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 8edb361000110da16ce2a230d8768b204076ad21
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389945"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844281"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Voor beeld: meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
@@ -169,14 +169,14 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ## <a name="upgrade-a-node-pool"></a>Een knooppunt groep upgraden
  
 > [!NOTE]
-> Upgrade-en schaal bewerkingen op een cluster of knooppunt groep sluiten elkaar wederzijds uit. U kunt geen cluster-of knooppunt groep tegelijkertijd bijwerken en schalen. In plaats daarvan moet elk bewerkings type worden voltooid voor de doel resource vóór de volgende aanvraag op dezelfde resource. Meer informatie hierover vindt u in onze [probleemoplossings handleiding](https://aka.ms/aks-pending-upgrade).
+> Upgrade-en schaal bewerkingen op een cluster of knooppunt groep kunnen niet tegelijkertijd plaatsvinden, als er een fout wordt geretourneerd. In plaats daarvan moet elk bewerkings type worden voltooid voor de doel resource vóór de volgende aanvraag op dezelfde resource. Meer informatie hierover vindt u in onze [probleemoplossings handleiding](https://aka.ms/aks-pending-upgrade).
 
-Als uw AKS-cluster in de eerste stap is gemaakt, `--kubernetes-version` is er een van *1.13.10* opgegeven. Hiermee stelt u de Kubernetes-versie in voor zowel het besturings vlak als de eerste knooppunt groep. Er zijn verschillende opdrachten voor het bijwerken van de Kubernetes-versie van het besturings vlak en de knooppunt groep die [hieronder](#upgrade-a-cluster-control-plane-with-multiple-node-pools)wordt uitgelegd.
+Als uw AKS-cluster in de eerste stap is gemaakt, is `--kubernetes-version` er een van *1.13.10* opgegeven. Hiermee stelt u de Kubernetes-versie in voor zowel het besturings vlak als de standaard knooppunt groep. Met de opdrachten in deze sectie wordt uitgelegd hoe u één specifieke knooppunt groep bijwerkt. De relatie tussen het upgraden van de Kubernetes-versie van het besturings vlak en de knooppunt groep wordt uitgelegd in de [volgende sectie](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 > [!NOTE]
 > De versie van de installatie kopie van het besturings systeem van de knooppunt groep is gekoppeld aan de Kubernetes-versie van het cluster. U kunt upgrades van de installatie kopie van het besturings systeem downloaden na een upgrade van een cluster.
 
-We gaan de *mynodepool* upgraden naar Kubernetes *1.13.10*. Gebruik de opdracht [AZ AKS node pool upgrade][az-aks-nodepool-upgrade] om de knooppunt groep bij te werken, zoals wordt weer gegeven in het volgende voor beeld:
+Omdat er in dit voor beeld twee knooppunt groepen zijn, moeten we [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] gebruiken om een knooppunt groep bij te werken. We gaan de *mynodepool* upgraden naar Kubernetes *1.13.10*. Gebruik de opdracht [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] om de knooppunt groep bij te werken, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -239,16 +239,14 @@ Als best practice moet u alle knooppunt groepen in een AKS-cluster upgraden naar
 Een AKS-cluster heeft twee cluster resource-objecten. De eerste is een Kubernetes-versie van besturings vlak. De tweede is een agent groep met een Kubernetes-versie. Een besturings vlak wordt toegewezen aan een of meer knooppunt groepen en heeft elk een eigen Kubernetes-versie. Het gedrag voor een upgrade bewerking is afhankelijk van welke resource is gericht en welke versie van de onderliggende API wordt aangeroepen.
 
 1. Voor het bijwerken van het besturings vlak is het vereist`az aks upgrade`
-   * Als het cluster één agent groep heeft, worden zowel het besturings vlak als de groep met één agent tegelijk bijgewerkt
-   * Als het cluster meerdere agent groepen heeft, wordt alleen het besturings vlak bijgewerkt
+   * Hiermee worden alle knooppunt Pools in het cluster ook bijgewerkt
 1. Upgraden met`az aks nodepool upgrade`
    * Hiermee wordt alleen de doel knooppunt groep met de opgegeven Kubernetes-versie bijgewerkt
 
 De relatie tussen de Kubernetes-versies van knooppunt Pools moet ook volgen op een set regels.
 
-1. U kunt de Kubernetes-versie van het besturings vlak of de groep van het knoop punt niet verlagen.
-1. Als er geen Kubernetes-versie van het besturings element is opgegeven, is de standaard waarde de huidige bestaande versie van het besturings element.
-1. Als er geen Kubernetes-versie van een knooppunt groep is opgegeven, wordt de standaard versie van het besturings element.
+1. U kunt het besturings vlak of de Kubernetes-versie van de knooppunt groep niet opdowngradeen.
+1. Als er geen Kubernetes-versie van een knooppunt groep wordt opgegeven, wordt de gebruikte standaard waarde teruggestuurd naar de versie van het besturings vlak.
 1. U kunt een besturings vlak of knooppunt groep op een bepaald moment bijwerken of schalen, u kunt beide bewerkingen niet tegelijkertijd verzenden.
 1. Een Kubernetes-versie van een knooppunt groep moet dezelfde primaire versie zijn als het besturings vlak.
 1. Een Kubernetes-versie van een knooppunt groep kan Maxi maal twee (2) secundaire versies kleiner zijn dan het besturings vlak, nooit meer.

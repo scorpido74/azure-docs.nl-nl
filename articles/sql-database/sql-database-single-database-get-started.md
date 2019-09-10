@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
-ms.date: 07/29/2019
-ms.openlocfilehash: f9c2ed77075affdfdf464dbf8a468629fc2e610d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 09/09/2019
+ms.openlocfilehash: 831ebbd3f85ffa9b78ac3e97a6ec68a8c41bceb5
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640039"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845288"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Quickstart: Een enkele data base in Azure SQL Database maken met behulp van de Azure Portal, Power shell en Azure CLI
 
@@ -30,8 +30,8 @@ Voor alle stappen in deze snelstartgids moet u zich aanmelden bij [Azure Portal]
 
 U kunt één data base maken in de bewerkings laag ingericht of serverloos (preview).
 
-- Een enkele data base in de ingerichte Compute-laag heeft een gedefinieerde hoeveelheid vooraf toegewezen reken resources plus een set geheugen-en opslag resources met behulp van een van twee [aankoop modellen](sql-database-purchase-models.md).
-- Een enkele data base in de compute-laag zonder server heeft een bereik van reken resources die automatisch worden geschaald plus een opgegeven hoeveelheid geheugen per kern, en een opgegeven hoeveelheid opslag bronnen en is alleen beschikbaar in de [op vCore gebaseerde inkoop modellen](sql-database-service-tiers-vcore.md).
+- Een enkele data base in de ingerichte Compute-laag is vooraf toegewezen een vaste hoeveelheid reken resources, inclusief CPU en geheugen, met behulp van een van twee [aankoop modellen](sql-database-purchase-models.md).
+- Eén data base in de compute-laag zonder server heeft een bereik van reken resources, inclusief CPU en geheugen die automatisch worden geschaald en alleen beschikbaar is in de [vCore-gebaseerde aankoop modellen](sql-database-service-tiers-vcore.md).
 
 Wanneer u een individuele database maakt, definieert u ook een [SQL Database-server](sql-database-servers.md) om die te beheren en in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) in een opgegeven regio te plaatsen.
 

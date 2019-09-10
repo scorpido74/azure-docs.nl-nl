@@ -10,12 +10,12 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 290753b866f15e09a52572fdd7a43a60fc2812d6
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: ebdeaf21253e89a9a14e3a56ca7be0f6e8adceb0
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575540"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859229"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Verbindings problemen oplossen
 
@@ -57,7 +57,7 @@ Neem anders contact op met uw IT-beheerder om te controleren of dit onderhoud ge
 
 ## <a name="check-your-firewall-settings"></a>Controleer de firewall instellingen
 
-SQL Database Warehouse communiceert via poort 1433.   Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database Server, tenzij uw IT-afdeling poort 1433 opent. Meer informatie over Firewall configuraties vindt u [hier](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-the-azure-portal).
+SQL Database Warehouse communiceert via poort 1433.   Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database Server, tenzij uw IT-afdeling poort 1433 opent. Meer informatie over Firewall configuraties vindt u [hier](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Controleer de instellingen van uw VNet/service-eind punt
 

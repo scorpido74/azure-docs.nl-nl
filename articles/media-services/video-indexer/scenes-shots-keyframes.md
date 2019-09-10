@@ -1,6 +1,6 @@
 ---
-title: Video Indexer scènes, afbeeldingen en keyframes-Azure
-titlesuffix: Azure Media Services
+title: Video Indexer scènes, afbeeldingen en keyframes
+titleSuffix: Azure Media Services
 description: In dit onderwerp vindt u een overzicht van de Video Indexer scènes, afbeeldingen en keyframes.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: cdabc1b6bfed519098f656710ef49a946e676cf2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b24778434596f583be44572612c856fa4e0cecde
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815653"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860241"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Scènes, opnamen en sleutelframes
 
@@ -39,6 +39,30 @@ Video Indexer bepaalt wanneer een foto in de video wordt gewijzigd op basis van 
 Selecteert de frames die het beste de afdruk vertegenwoordigen. Keyframes zijn de representatieve frames die zijn geselecteerd uit de volledige video op basis van esthetische eigenschappen (bijvoorbeeld contrast en stabiele gegevens). Video Indexer haalt een lijst met hoofd frame-Id's op als onderdeel van de meta gegevens van de opname, op basis waarvan klanten de hoofd frame miniatuur kunnen uitpakken. 
 
 Keyframes zijn gekoppeld aan opnamen in de uitvoer-JSON. 
+
+## <a name="editorial-shot-type-detection"></a>Detectie van redactionele type
+
+Het bewerkings type dat is gekoppeld aan een afzonderlijke opname in de JSON van Insights vertegenwoordigt het redactionele type. U kunt deze kenmerken van de afbeeldings typen nuttig vinden bij het bewerken van Video's in clips, Trailers of bij het zoeken naar een specifieke stijl van keyframe voor artistieke doel einden. De verschillende typen worden bepaald op basis van de analyse van het eerste keyframe van elke opname. Foto's worden geïdentificeerd aan de hand van de schaal, de grootte en de locatie van de gezichten die in het eerste keyframe worden weer gegeven. 
+
+De grootte en schaal van de afbeelding worden bepaald op basis van de afstand tussen de camera en de gezichten die in het kader worden weer gegeven. Als u deze eigenschappen gebruikt, detecteert Video Indexer de volgende afbeeldings typen:
+
+* Breed: toont de hoofd tekst van de hele persoon.
+* Gemiddeld: toont de hoofd tekst en het gezicht van een persoon.
+* Sluiten: voornamelijk toont het gezicht van een persoon.
+* Extreem close: toont het gezicht van een persoon die het scherm vult. 
+
+Opname typen kunnen ook worden bepaald door locatie van de onderwerps tekens ten opzichte van het midden van het kader. Deze eigenschap definieert de volgende afbeeldings typen in Video Indexer:
+
+* Links gezicht: er wordt een persoon weer gegeven aan de linkerkant van het kader.
+* Midden gezicht: een persoon wordt weer gegeven in de centrale regio van het kader.
+* Rechts gezicht: een persoon wordt weer gegeven aan de rechter kant van het kader.
+* Buiten: een persoon wordt weer gegeven in een instelling voor buitenste.
+* Binnen: een persoon wordt weer gegeven in een instelling in de binnenshuis.
+
+Aanvullende kenmerken:
+
+* Twee opnamen: toont twee personen van de gemiddelde grootte.
+* Meerdere gezichten: meer dan twee personen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

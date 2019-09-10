@@ -9,28 +9,28 @@ ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 3f94481e6a8550479788d92c744327e1dc3b58c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "66376923"
 ---
-De volgende limieten gelden voor Azure Event Grid-onderwerpen voor systeem- en aangepaste onderwerpen *niet* gebeurtenis domeinen.
+De volgende limieten gelden voor Azure Event Grid systeem onderwerpen en aangepaste onderwerpen, *niet* voor gebeurtenis domeinen.
 
 | Resource | Limiet |
 | --- | --- |
 | Aangepaste onderwerpen per Azure-abonnement | 100 |
-| Abonnementen op gebeurtenissen per onderwerp | 500 |
-| Publiceren-tarief voor een aangepast onderwerp (inkomend) | 5000 gebeurtenissen per seconde per onderwerp |
-| Publiceren van aanvragen | 250 per seconde |
-| Gebeurtenisgrootte | Ondersteuning voor 64 KB in het algemeen beschikbaar is (GA). Ondersteuning voor 1 MB is momenteel in preview. |
+| Gebeurtenis abonnementen per onderwerp | 500 |
+| Publicatie frequentie voor een aangepast onderwerp (ingangs) | 5\.000 gebeurtenissen per seconde per onderwerp |
+| Aanvragen publiceren | 250 per seconde |
+| Grootte van gebeurtenis | Ondersteuning voor 64 KB in algemene Beschik baarheid (GA). Ondersteuning voor 1 MB is momenteel beschikbaar als preview-versie. |
 
-De volgende limieten gelden voor alleen gebeurtenis domeinen.
+De volgende limieten gelden alleen voor gebeurtenis domeinen.
 
 | Resource | Limiet |
 | --- | --- |
-| Onderwerpen per domein van de gebeurtenis | 1000 tijdens de openbare preview |
-| Abonnementen op gebeurtenissen per onderwerp binnen een domein | 50 tijdens de openbare preview |
-| Domein omvang gebeurtenisabonnementen | 50 tijdens de openbare preview |
-| Publiceren-tarief voor een gebeurtenis-domein (inkomend) | 5000 gebeurtenissen per seconde tijdens de openbare preview |
-| Publiceren van aanvragen | 250 per seconde |
+| Onderwerpen per gebeurtenis domein | 1\.000 tijdens de open bare preview |
+| Gebeurtenis abonnementen per onderwerp binnen een domein | 50 tijdens de open bare preview |
+| Gebeurtenis abonnementen voor domein bereik | 50 tijdens de open bare preview |
+| Publicatie frequentie voor een gebeurtenis domein (ingangs punt) | 5\.000 gebeurtenissen per seconde tijdens de open bare preview |
+| Aanvragen publiceren | 250 per seconde |
