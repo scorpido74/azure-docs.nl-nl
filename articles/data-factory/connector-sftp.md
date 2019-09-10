@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: f51e93ff164c0ec2352c1a57eb698a4374fbe5c9
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 1bb9ec02fdba93d26b7060c080b68f05298dbd6b
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276912"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812994"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Gegevens kopiëren van een SFTP-server met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -177,12 +177,12 @@ Als u verificatie via een open bare SSH-sleutel wilt gebruiken, stelt u de eigen
 
 Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. 
 
-- Raadpleeg voor **Parquet, gescheiden tekst, AVRO en binaire indeling**, de sectie [Parquet, gescheiden tekst, AVRO en binaire indelings gegevensset](#format-based-dataset) .
-- Raadpleeg voor andere indelingen, zoals **Orc/JSON-indeling**, de sectie [andere indelings gegevensset](#other-format-dataset) .
+- Raadpleeg voor **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, de sectie [Parquet, gescheiden tekst, JSON, AVRO en binaire indeling gegevensset](#format-based-dataset) .
+- Raadpleeg de sectie [andere indelings gegevensset](#other-format-dataset) voor andere indelingen, zoals **Orc-indeling**.
 
-### <a name="format-based-dataset"></a>Parquet, gescheiden tekst, AVRO en binaire indeling gegevensset
+### <a name="format-based-dataset"></a>Parquet, gescheiden tekst, JSON, AVRO en binaire indeling gegevensset
 
-Als u gegevens wilt kopiëren naar en van **Parquet, tekst met scheidings tekens of binaire indeling**, raadpleegt u de [Parquet-indeling](format-parquet.md), de [tekst indeling met scheidings tekens](format-delimited-text.md), de [Avro-indeling](format-avro.md) en het artikel [binaire indeling](format-binary.md) op op indeling gebaseerde gegevensset en ondersteunde instellingen. De volgende eigenschappen worden ondersteund voor SFTP onder `location` instellingen in gegevensset op basis van indeling:
+Als u gegevens wilt kopiëren naar en van **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, raadpleegt u [Parquet-indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire-indelings](format-binary.md) artikel op op indeling gebaseerde gegevensset en ondersteunde instellingen . De volgende eigenschappen worden ondersteund voor SFTP onder `location` instellingen in gegevensset op basis van indeling:
 
 | Eigenschap   | Description                                                  | Vereist |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -221,7 +221,7 @@ Als u gegevens wilt kopiëren naar en van **Parquet, tekst met scheidings tekens
 
 ### <a name="other-format-dataset"></a>Gegevensset voor andere indeling
 
-Als u gegevens wilt kopiëren vanuit SFTP in **Orc/JSON-indeling**, worden de volgende eigenschappen ondersteund:
+Als u gegevens wilt kopiëren vanuit SFTP in **Orc-indeling**, worden de volgende eigenschappen ondersteund:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
@@ -276,12 +276,12 @@ Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zij
 
 ### <a name="sftp-as-source"></a>SFTP als bron
 
-- Als u wilt kopiëren van **Parquet, tekst met scheidings tekens, AVRO en binaire indeling**, raadpleegt u de sectie [Parquet, tekst met scheidings tekens, AVRO en binaire indelings bron](#format-based-source) .
-- Als u wilt kopiëren van andere indelingen, zoals de **Orc/JSON-indeling**, raadpleegt u de sectie [andere indelings bron](#other-format-source) .
+- Als u wilt kopiëren van **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, raadpleegt u de sectie [Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indelings bron](#format-based-source) .
+- Als u wilt kopiëren van andere indelingen, zoals de **indeling Orc**, raadpleegt u de sectie [andere indelings bron](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, tekst met scheidings tekens, AVRO en binaire indelings bron
+#### <a name="format-based-source"></a>Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indelings bron
 
-Als u gegevens wilt kopiëren uit een **Parquet, een tekst met scheidings tekens of binaire indeling**, raadpleegt u de [Parquet-indeling](format-parquet.md), de [tekst indeling met scheidings tekens](format-delimited-text.md), de [Avro-indeling](format-avro.md) en het artikel [binaire indeling](format-binary.md) op op indeling gebaseerde Kopieer activiteit en ondersteunde instellingen. De volgende eigenschappen worden ondersteund voor SFTP onder `storeSettings` instellingen in op indeling gebaseerde Kopieer Bron:
+Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, raadpleegt u [Parquet-indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire indeling](format-binary.md) artikel op op indeling gebaseerde Kopieer activiteit bron en ondersteund Instellingen. De volgende eigenschappen worden ondersteund voor SFTP onder `storeSettings` instellingen in op indeling gebaseerde Kopieer Bron:
 
 | Eigenschap                 | Description                                                  | Vereist                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -339,7 +339,7 @@ Als u gegevens wilt kopiëren uit een **Parquet, een tekst met scheidings tekens
 
 #### <a name="other-format-source"></a>Andere indelings bron
 
-Als u gegevens wilt kopiëren vanuit SFTP in **Orc/JSON-indeling**, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
+Als u gegevens wilt kopiëren vanuit SFTP in **Orc-indeling**, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |

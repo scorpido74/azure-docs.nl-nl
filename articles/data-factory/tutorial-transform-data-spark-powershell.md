@@ -11,12 +11,12 @@ ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: f273237431373aa69423ba244d4e7c509ffe7bfe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c7b2b75bdf8aa2be0ea9dd2b60453c2480fc1d2
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60335450"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813431"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Gegevens transformeren in de cloud met behulp van Spark-activiteit in Azure Data Factory
 In deze zelfstudie gebruikt u Azure PowerShell om een Data Factory-pijplijn te maken waarmee gegevens worden getransformeerd met behulp van Spark-activiteit en een gekoppelde HDInsight-service op aanvraag. In deze zelfstudie voert u de volgende stappen uit:
@@ -137,7 +137,7 @@ Werk de waarden voor de volgende eigenschappen bij in de definitie van de gekopp
 
 - **hostSubscriptionId**. Vervang &lt;subscriptionID&gt; door de id van uw Azure-abonnement. Het HDInsight-cluster op aanvraag wordt gemaakt in dit abonnement. 
 - **tenant**. Vervang &lt;tenantID&gt; door de id van uw Azure-tenant. 
-- **servicePrincipalId**, **servicePrincipalKey**. Vervang &lt;servicePrincipalID&gt; en &lt;servicePrincipalKey&gt; door de id en de sleutel van de service-pincipal in de Azure Active-directory. Deze service-principal moet lid zijn van de rol Inzender van het abonnement of de resourcegroep waarin het cluster is gemaakt. Zie [Een Azure Active Directory-toepassing en service-principal maken](../active-directory/develop/howto-create-service-principal-portal.md) voor details. 
+- **servicePrincipalId**, **servicePrincipalKey**. Vervang &lt;servicePrincipalID&gt; en &lt;servicePrincipalKey&gt; door de id en de sleutel van de service-pincipal in de Azure Active-directory. Deze service-principal moet lid zijn van de rol Inzender van het abonnement of de resourcegroep waarin het cluster is gemaakt. Zie [Een Azure Active Directory-toepassing en service-principal maken](../active-directory/develop/howto-create-service-principal-portal.md) voor details. De **Service-Principal-id** is gelijk aan de *toepassings-id* en een **Service-Principal-sleutel** is gelijk aan de waarde voor een *client geheim*.
 - **clusterResourceGroup**. Vervang &lt;resourceGroupOfHDICluster&gt; door de naam van de resourcegroep waarin de HDInsight-cluster moet worden gemaakt. 
 
 > [!NOTE]
@@ -182,7 +182,7 @@ Houd rekening met de volgende punten:
 - entryFilePath verwijst naar het bestand WordCount_Spark.py in de submap script van de map spark. 
 
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken 
+## <a name="create-a-data-factory"></a>Data factory maken 
 U hebt een gekoppelde service en pijplijndefinities gemaakt in JSON-bestanden. Nu gaan we een gegevensfactory maken en de gekoppelde service en JSON-pijplijnbestanden implementeren met behulp van PowerShell-cmdlets. Voer de volgende PowerShell-opdrachten één voor één: 
 
 1. Stel één voor één de variabelen in.

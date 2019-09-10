@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: d3365f0a893c80043c93091c3e4e91382bdcd67e
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 0c8c2f2adb11a30b438fb41dca07519b2f74baf7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275863"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813583"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens kopiëren naar of van Azure SQL Data Warehouse met behulp van Azure Data Factory 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -382,6 +382,7 @@ Om gegevens te kopiëren naar Azure SQL Data Warehouse, stelt u het sink-type in
 | writeBatchSize    | Het aantal rijen dat in de SQL-tabel **per batch**moet worden ingevoegd. Geldt alleen wanneer PolyBase wordt niet gebruikt.<br/><br/>De toegestane waarde is **geheel getal** (aantal rijen). Standaard bepaalt Data Factory de juiste Batch grootte dynamisch bepalen op basis van de Rijgrootte. | Nee                                            |
 | writeBatchTimeout | Wachttijd voor de bewerking voor het invoegen van batch worden voltooid voordat er een optreedt time-out. Geldt alleen wanneer PolyBase wordt niet gebruikt.<br/><br/>De toegestane waarde is **timespan**. Voorbeeld: "00:30:00" (30 minuten). | Nee                                            |
 | preCopyScript     | Geef een SQL-query voor de Kopieeractiviteit om uit te voeren voordat het schrijven van gegevens in Azure SQL Data Warehouse in elke uitvoering. Gebruik deze eigenschap voor het opschonen van de vooraf geladen gegevens. | Nee                                            |
+| tableOption | Hiermee wordt aangegeven of de Sink-tabel automatisch moet worden gemaakt als deze niet bestaat op basis van het bron schema. Het automatisch maken van tabellen wordt niet ondersteund wanneer de gefaseerde kopie is geconfigureerd in de Kopieer activiteit. Toegestane waarden zijn: `none` (standaard), `autoCreate`. |Nee |
 | disableMetricsCollection | Data Factory verzamelt metrische gegevens, zoals SQL Data Warehouse Dwu's voor het optimaliseren van Kopieer prestaties en aanbevelingen. Als u zich zorgen maakt over dit gedrag, `true` geeft u op dat u deze functie wilt uitschakelen. | Nee (standaard instelling `false`) |
 
 #### <a name="sql-data-warehouse-sink-example"></a>SQL Data Warehouse sink-voorbeeld
