@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 151f6609375063a68a848f4c799af0b459124f23
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 019b2ba0fd87610195ca9e6c7cb749be9542bd72
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047906"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858853"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Een IoT Plug en Play preview-apparaat bouwen dat gereed is voor certificering
 
@@ -33,7 +33,7 @@ De certificerings tests controleren of:
 Voor deze zelfstudie hebt u het volgende nodig:
 
 - [Visual Studio Code](https://code.visualstudio.com/download)
-- [Azure IoT Workbench-uitbrei ding voor VS code](https://github.com/Azure/Azure-IoT-PnP-Preview/blob/master/VSCode/README.md#installation)
+- [Azure IOT-Hulpprogram ma's voor VS code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) -uitbreidings pakket
 
 U hebt ook het IOT Plug en Play-apparaat nodig dat u in [de Quick Start maakt: Gebruik een mogelijkheidsprofiel voor het maken van een apparaat](quickstart-create-pnp-device.md).
 
@@ -51,7 +51,7 @@ Op dit moment moeten de bestanden worden opgeslagen in uw bedrijfs model opslagp
 
 ## <a name="include-the-required-interfaces"></a>De vereiste interfaces toevoegen
 
-Als u het certificerings proces wilt door geven, moet u de apparaatgegevens interface in uw mogelijkheidsprofiel toevoegen en implementeren. Deze interface heeft de volgende identificatie:
+Als u het certificerings proces wilt door geven, moet u de **apparaatgegevens** interface in uw mogelijkheidsprofiel toevoegen en implementeren. Deze interface heeft de volgende identificatie:
 
 ```json
 "@id": "urn:azureiot:DeviceManagement:DeviceInformation:1"
@@ -75,13 +75,13 @@ Als u de **apparaatgegevens** interface wilt toevoegen aan het model van uw appa
 }
 ```
 
-De interface van de apparaatgegevens in VS code weer geven:
+De interface van de **apparaatgegevens** in VS code weer geven:
 
 1. Gebruik **CTRL + SHIFT + P** om het opdracht palet te openen.
 
 1. Voer **Plug en Play** in en selecteer de opdracht **IOT Plug en Play open model opslagplaats** . Kies **opslag voor open bare model openen**. De open bare model opslagplaats wordt geopend in VS code.
 
-1. In de open bare model opslagplaats selecteert u het tabblad **interfaces** , selecteert u het filter pictogram en voert u apparaatgegevens in het filter veld in.
+1. In de open bare model opslagplaats selecteert u het tabblad **interfaces** , selecteert u het filter pictogram en voert u **apparaatgegevens** in het filter veld in.
 
 1. Als u een lokale kopie van de **apparaatgegevens** interface wilt maken, selecteert u deze in de gefilterde lijst en selecteert u **downloaden**. VS code geeft het interface bestand weer.
 

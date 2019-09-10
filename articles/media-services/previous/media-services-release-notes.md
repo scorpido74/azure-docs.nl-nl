@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: ff85638a05855d0b755a7b1812ee7025274b559c
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 6fea7b7d3d3ef3b1a46aeeff0bab8fef2a9bf3ad
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019299"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860353"
 ---
 # <a name="azure-media-services-release-notes"></a>Opmerkingen bij de release Azure Media Services
 
@@ -29,7 +29,7 @@ In deze release opmerkingen voor Azure Media Services worden wijzigingen in eerd
 
 We horen graag van onze klanten, zodat we zich kunnen richten op het oplossen van problemen die van invloed zijn op u. Als u een probleem wilt melden of vragen wilt stellen, verzendt u een bericht in het [Azure Media Services MSDN Forum]. 
 
-## <a name="a-idissuescurrently-known-issues"></a><a id="issues"/>Bekende problemen
+## <a name="a-idissuesknown-issues"></a><a id="issues"/>Bekende problemen
 ### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Algemene problemen Media Services
 
 | Probleem | Description |
@@ -41,6 +41,7 @@ We horen graag van onze klanten, zodat we zich kunnen richten op het oplossen va
 | Wanneer u een query uitvoert op entiteiten, wordt een limiet van 1.000 entiteiten tegelijk geretourneerd, omdat de open bare REST versie 2 de query resultaten beperkt tot 1.000 resultaten. |Gebruik overs Laan en ondernemen (.NET)/top (REST) zoals beschreven in [dit .net-voor beeld](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) en [Dit rest API voor beeld](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
 | Sommige clients kunnen een herhaald label probleem hebben in het Smooth Streaming-manifest. |Zie [deze sectie](media-services-deliver-content-overview.md#known-issues)voor meer informatie. |
 | Media Services .NET SDK-objecten kunnen niet worden geserialiseerd en werken daarom niet met Azure cache voor redis. |Als u probeert het SDK AssetCollection-object te serialiseren om het toe te voegen aan Azure-cache voor redis, wordt er een uitzonde ring gegenereerd. |
+|De REST API reageert met een fout bericht met de melding dat het filter niet kan worden geopend door deze versie van REST API wanneer wordt geprobeerd een filter op activa-of account niveau op te halen.|Het filter is gemaakt of gewijzigd met een nieuwere API-versie dan wordt gebruikt om het filter op te halen. Dit kan gebeuren als er twee API-versies worden gebruikt door code of hulpprogram ma's die door de klant worden gebruikt.  De beste oplossing is hier om de code of hulpprogram ma's bij te werken voor het gebruik van de nieuwere of de twee API-versies.|
 
 ## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>Geschiedenis van REST API-versie
 Zie de [Naslag informatie over Azure Media Services REST API]voor informatie over de versie geschiedenis van Media Services rest API.
@@ -142,7 +143,7 @@ Zie [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/str
 
 ## <a name="december-2016-release"></a>Release van december 2016
 
- U kunt Media Services nu gebruiken voor toegang tot gegevens over telemetrie/metrieken voor de services. U kunt de huidige versie van Media Services gebruiken om telemetriegegevens te verzamelen voor Live Channel, streaming-eind punt en archief entiteiten. Zie [Media Services](media-services-telemetry-overview.md)telemetrie voor meer informatie.
+ U kunt Media Services nu gebruiken voor toegang tot gegevens over telemetrie/metrieken voor de services. U kunt de huidige versie van Media Services gebruiken om telemetriegegevens te verzamelen voor Live Channel, streaming-eind punt en archief entiteiten. Zie [Media Services telemetrie](media-services-telemetry-overview.md)voor meer informatie.
 
 ## <a name="a-idjuly_changes16july-2016-release"></a><a id="july_changes16"/>Release van juli 2016
 ### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>Updates voor het manifest bestand (*. ISM) gegenereerd door coderings taken
@@ -195,7 +196,7 @@ De gereserveerde eenheden Basic, Standard en Premium encoding hebben respectieve
  Media Encoder wordt vanaf ongeveer 12 maanden na de release van Media Encoder Standard verouderd.
 
 ### <a name="azure-sdk-for-php"></a>Azure SDK voor PHP
-Het Azure SDK-team heeft een nieuwe release gepubliceerd van het pakket [Azure SDK voor php](https://github.com/Azure/azure-sdk-for-php) met updates en nieuwe functies voor Media Services. Met name de Media Services SDK voor PHP ondersteunt nu de nieuwste functies voor [inhouds beveiliging](media-services-content-protection-overview.md) . Deze functies zijn dynamische versleuteling met AES en DRM (PlayReady en Widevine) met en zonder token beperkingen. Het biedt ook ondersteuning voor het schalen van coderings [eenheden](media-services-dotnet-encoding-units.md).
+Het Azure SDK-team heeft een nieuwe release gepubliceerd van het pakket [Azure SDK voor php](https://github.com/Azure/azure-sdk-for-php) met updates en nieuwe functies voor Media Services. Met name de Media Services SDK voor PHP ondersteunt nu de nieuwste functies voor [inhouds beveiliging](media-services-content-protection-overview.md) . Deze functies zijn dynamische versleuteling met AES en DRM (PlayReady en Widevine) met en zonder token beperkingen. Het biedt ook ondersteuning voor het schalen van [coderings eenheden](media-services-dotnet-encoding-units.md).
 
 Zie voor meer informatie:
 
@@ -264,7 +265,7 @@ De Media Services .NET SDK is nu versie 3.3.0.0. De volgende updates zijn uitgev
 
 Als u een id-provider gebruikt die een OpenID Connect Connect-detectie document (als Azure AD, Google en Sales Force) beschikbaar maakt, kunt u Media Services de opdracht geven om handtekening sleutels te verkrijgen voor de validatie van JSON-webtokens (JWTs) van de OpenID Connect Connect Discovery-specificatie. 
 
-Zie JSON-websleutels [van de OpenID Connect Connect Discovery-specificatie gebruiken om te werken met JWT-verificatie in Media Services](http://gtrifonov.com/2015/06/07/using-json-web-keys-from-openid-connect-discovery-spec-to-work-with-jwt-token-authentication-in-azure-media-services/)voor meer informatie.
+Zie [JSON-websleutels van de OpenID Connect Connect Discovery-specificatie gebruiken om te werken met JWT-verificatie in Media Services](http://gtrifonov.com/2015/06/07/using-json-web-keys-from-openid-connect-discovery-spec-to-work-with-jwt-token-authentication-in-azure-media-services/)voor meer informatie.
 
 ## <a id="may_changes_15"></a>Kan 2015-release
 De volgende nieuwe functies zijn aangekondigd:
@@ -324,7 +325,7 @@ In deze release is de standaard micro soft. WindowsAzure. Media Services. client
 De [Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) is nu versie 3.1.0.0. De volgende updates zijn uitgevoerd:
 
 * De .NET SDK-afhankelijkheid is bijgewerkt naar het .NET 4,5-Framework.
-* Er is een nieuwe API toegevoegd die u kunt gebruiken om gereserveerde encoding-eenheden bij te werken. Zie gereserveerde- [eenheids typen bijwerken en gereserveerde encoding-eenheden verhogen](media-services-dotnet-encoding-units.md)met behulp van .net voor meer informatie.
+* Er is een nieuwe API toegevoegd die u kunt gebruiken om gereserveerde encoding-eenheden bij te werken. Zie [gereserveerde-eenheids typen bijwerken en gereserveerde encoding-eenheden verhogen met behulp van .net](media-services-dotnet-encoding-units.md)voor meer informatie.
 * JWT-ondersteuning voor token verificatie is toegevoegd. Zie [JWT-token verificatie in Media Services en dynamische versleuteling](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)voor meer informatie.
 * Relatieve verschuivingen voor BeginDate en ExpirationDate in de PlayReady-licentie sjabloon zijn toegevoegd.
 
@@ -377,7 +378,7 @@ De Media Services SDK voor .NET is nu versie 3.0.0.7
 * PlayReady-service voor het leveren van licenties. 
 * PlayReady dynamische versleuteling. 
 * Media Services PlayReady-licentie sjabloon. Zie het overzicht van de [Overzicht van sjablonen voor Media Services PlayReady-licentie]voor meer informatie.
-* Opslag-versleutelde assets streamen. Zie opslag van versleutelde [inhoud streamen](https://msdn.microsoft.com/library/azure/dn783451.aspx)voor meer informatie.
+* Opslag-versleutelde assets streamen. Zie [opslag van versleutelde inhoud streamen](https://msdn.microsoft.com/library/azure/dn783451.aspx)voor meer informatie.
 
 ## <a id="august_changes_14"></a>Release van augustus 2014
 Wanneer u een Asset codeert, wordt een uitvoer activum geproduceerd wanneer de coderings taak is voltooid. Tot deze release heeft de Media Services encoder meta gegevens over uitvoer assets geproduceerd. Vanaf deze release produceert het coderings programma ook meta gegevens over invoer assets. Zie [Invoermetagegevens] en uitvoer van meta [Uitvoermetagegevens]voor meer informatie.

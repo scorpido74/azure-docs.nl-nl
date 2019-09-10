@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: baf694fbc3176732d43094c8d20ee112af927f16
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b890fe1a9ef30e18a54ced9f48015bed39298807
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186474"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858879"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Zelfstudie: Een mogelijkheidsprofiel maken en testen met Visual Studio code
 
@@ -35,10 +35,10 @@ In deze zelfstudie leert u het volgende:
 Als u in deze zelf studie wilt werken met het mogelijkheidsprofiel, hebt u het volgende nodig:
 
 * [Visual Studio Code](https://code.visualstudio.com/download): VS code is beschikbaar voor meerdere platforms
-* Azure IoT Device Workbench-uitbrei ding in VS code. Gebruik de volgende stappen om de Azure IoT Device Workbench-extensie in VS code te installeren:
+* [Azure IOT-Hulpprogram ma's voor VS code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) -uitbreidings pakket. Gebruik de volgende stappen om het uitbreidings pakket in VS code te installeren:
 
     1. Selecteer in VS code het tabblad **extensies** .
-    1. Zoek naar **Azure IOT Device Workbench**.
+    1. Zoek naar **Azure IOT-Hulpprogram ma's**.
     1. Selecteer **Installeren**.
 
 Als u in deze zelf studie de gegenereerde C-code in Windows wilt maken, hebt u het volgende nodig:
@@ -61,7 +61,7 @@ Als u uw apparaatcode in deze zelf studie wilt testen, hebt u het volgende nodig
 
 ## <a name="model-your-device"></a>Uw apparaat model leren
 
-U gebruikt de _Digital-dubbele definitie taal_ om een mogelijkheidsprofiel te maken. Een model bestaat meestal uit meerdere _Interface_ definitie bestanden en één model bestand. De **Azure IOT Device Workbench-extensie voor VS code** bevat hulpprogram ma's waarmee u deze json-bestanden kunt maken en bewerken.
+U gebruikt de _Digital-dubbele definitie taal_ om een mogelijkheidsprofiel te maken. Een model bestaat meestal uit meerdere _Interface_ definitie bestanden en één model bestand. De **Azure IOT-Hulpprogram ma's voor VS code** bevat hulpprogram ma's waarmee u deze json-bestanden kunt maken en bewerken.
 
 ### <a name="create-the-interface-file"></a>Het interface bestand maken
 
@@ -298,7 +298,7 @@ Uw bestanden worden nu opgeslagen in de opslag plaats van uw bedrijf.
 
 ## <a name="generate-code"></a>Code genereren
 
-U kunt de **Azure IOT Device Workbench-extensie voor VS code** gebruiken om de code van een skelet C uit uw model te genereren. De skelet code in VS code genereren:
+U kunt de **Azure IOT-Hulpprogram ma's voor VS code** gebruiken voor het genereren van een skelet C-code van uw model. De skelet code in VS code genereren:
 
 1. Gebruik **CTRL + SHIFT + P** om het opdracht palet te openen.
 

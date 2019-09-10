@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: d626a7768e7070360a6f0249486bfa83407fe998
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 60ecd71419bbf65cceab257cb97a96929d24ec08
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70192067"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860557"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Automatische machine learning resultaten begrijpen
 
@@ -30,10 +30,10 @@ Meer informatie over:
 
 * Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer nog vandaag de [gratis of betaalde versie van de Azure Machine Learning Service](https://aka.ms/AMLFree).
 
-* Maak een geautomatiseerd machine learning experiment, hetzij met de SDK, hetzij in de Azure Portal.
+* Maak een geautomatiseerd machine learning experiment, hetzij met de SDK, in de Azure Portal of op de landings pagina van uw werk ruimte (preview).
 
     * De SDK gebruiken om een [classificatie model](how-to-auto-train-remote.md) of [regressie model](tutorial-auto-train-models.md) te bouwen
-    * Gebruik de [Azure Portal](how-to-create-portal-experiments.md) om een classificatie of regressie model te maken door de juiste gegevens te uploaden.
+    * Gebruik de [Azure portal of de landings pagina van uw werk ruimte (preview)](how-to-create-portal-experiments.md) om een classificatie of regressie model te maken door de juiste gegevens te uploaden.
 
 ## <a name="view-the-run"></a>De uitvoering weer geven
 

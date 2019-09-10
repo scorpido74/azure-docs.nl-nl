@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: d9d70444adee26eab77c0e3d256cd8f340a1b4c8
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 1d70c5d86221213ae3f9a2d31fdf40857cb516be
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981167"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845631"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Grootschalige-servicelaag voor Maxi maal 100 TB
 
@@ -186,7 +186,7 @@ De mogelijkheid om grootschalige-data bases te maken in niet-vermelde regio's aa
 
 2. Klik op [ **nieuwe ondersteunings aanvraag**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
-    ![De Blade Help en ondersteuning van Azure](media/sql-database-service-tier-hyperscale/whitelist-request-screen-1.png)
+    ![De Blade Help en ondersteuning van Azure](media/sql-database-service-tier-hyperscale/request-screen-1.png)
 
 3. Selecteer voor **probleem type** **service-en abonnements limieten (quota's)**
 
@@ -198,13 +198,13 @@ De mogelijkheid om grootschalige-data bases te maken in niet-vermelde regio's aa
 
 1. Klik op **Details opgeven**
 
-    ![Probleemdetails](media/sql-database-service-tier-hyperscale/whitelist-request-screen-2.png)
+    ![Probleemdetails](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
 8. **SQL database quotum type**kiezen: **Andere quotum aanvraag**
 
 9. Vul de volgende sjabloon in:
 
-    ![Quotumgegevens](media/sql-database-service-tier-hyperscale/whitelist-request-screen-3.png)
+    ![Quotumgegevens](media/sql-database-service-tier-hyperscale/request-screen-3.png)
 
     Geef de volgende informatie op in de sjabloon
 

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Bonusly configureren voor het automatisch gebruikers inrichten met Azure Active Directory | Microsoft Docs'
-description: Informatie over het configureren van Azure Active Directory voor het automatisch inrichten en inrichting ongedaan maken-gebruikersaccounts met Bonusly.
+title: 'Zelfstudie: Configureer een bonus voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts tot een bonus.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,36 +16,36 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8368fc5369ee6cd93bbf472d4904cd647d66058d
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 692eff26dbbc2289ec589a327dbe58958b414a56
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673025"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842724"
 ---
-# <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>Zelfstudie: Bonusly configureren voor het automatisch inrichten van gebruikers
+# <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>Zelfstudie: Een bonus configureren voor het automatisch inrichten van gebruikers
 
-Het doel van deze zelfstudie is ter illustratie van de stappen om te worden uitgevoerd in de Bonusly en Azure Active Directory (Azure AD) naar Azure AD configureren voor automatisch inrichten en verwijdering van gebruikers en/of groepen aan Bonusly.
+Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in een bonus en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen tot een bonus.
 
 > [!NOTE]
-> Deze zelfstudie beschrijft een connector die is gebaseerd op de Provisioning-Service van Azure AD-gebruiker. Zie voor belangrijke informatie over wat deze service biedt, hoe het werkt en veelgestelde vragen [automatiseren van gebruikersinrichting en -opheffing in SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md).
+> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario in deze zelfstudie wordt ervan uitgegaan dat u al het volgende hebt:
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u het volgende al hebt:
 
-* Een Azure AD-tenant
-* Een [Bonusly tenant](https://bonus.ly/pricing)
-* Een gebruikersaccount in Bonusly met beheerdersmachtigingen
+* Een Azure AD-Tenant
+* Een [bonus Tenant](https://bonus.ly/pricing)
+* Een gebruikers account in een bonus met beheerders machtigingen
 
 > [!NOTE]
-> De integratie wordt ingericht op Azure AD is afhankelijk van de [Bonusly Rest-API](https://bonusly.gelato.io/reference), die voor Bonusly ontwikkelaars beschikbaar is.
+> De integratie van Azure AD-inrichting is afhankelijk van de [bonus rest API](https://konghq.com/solutions/gateway/), die beschikbaar is voor een bonus ontwikkelaar.
 
-## <a name="adding-bonusly-from-the-gallery"></a>Bonusly uit de galerie toe te voegen
+## <a name="adding-bonusly-from-the-gallery"></a>Een bonus toevoegen vanuit de galerie
 
-Voordat u Bonusly configureert voor het automatisch gebruikers inrichten met Azure AD, moet u Bonusly uit de galerie met Azure AD toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Voordat u een bonus configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u een bonus van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**Als u wilt toevoegen Bonusly uit de galerie met Azure AD, moet u de volgende stappen uitvoeren:**
+**Als u een bonus wilt toevoegen vanuit de Azure AD-toepassings galerie, voert u de volgende stappen uit:**
 
 1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
 
@@ -59,111 +59,111 @@ Voordat u Bonusly configureert voor het automatisch gebruikers inrichten met Azu
 
     ![De knop nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Bonusly**, selecteer **Bonusly** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Typ in het zoekvak een **bonus**, selecteer een **bonus** uit het paneel resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-    ![Bonusly in de lijst met resultaten](common/search-new-app.png)
+    ![Bonus in de lijst met resultaten](common/search-new-app.png)
 
-## <a name="assigning-users-to-bonusly"></a>Gebruikers toewijzen aan Bonusly
+## <a name="assigning-users-to-bonusly"></a>Gebruikers toewijzen aan een bonus
 
-Azure Active Directory maakt gebruik van een concept genaamd "toewijzingen" om te bepalen welke gebruikers krijgen toegang tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers, worden alleen de gebruikers en/of groepen die '' aan een toepassing in Azure AD toegewezen zijn gesynchroniseerd. 
+Azure Active Directory gebruikt een concept met de naam ' toewijzingen ' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers, worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd. 
 
-Voordat u configureren en inschakelen van automatische inrichten van gebruikers, moet u bepalen welke gebruikers en/of groepen in Azure AD toegang hebben tot Bonusly moeten. Wanneer u beslist, kunt u deze gebruikers en/of groepen toewijzen aan Bonusly door de instructies hier:
+Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD zich op een bonus hebben moeten aanmelden. Nadat u hebt besloten, kunt u deze gebruikers en/of groepen aan een bonus toewijzen door de volgende instructies te volgen:
 
-* [Een gebruiker of groep toewijzen aan een enterprise-app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [Een gebruiker of groep toewijzen aan een bedrijfs-app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-bonusly"></a>Belangrijke tips voor het toewijzen van gebruikers aan Bonusly
+### <a name="important-tips-for-assigning-users-to-bonusly"></a>Belang rijke tips voor het toewijzen van gebruikers aan een bonus
 
-* Het wordt aanbevolen dat één Azure AD-gebruiker is toegewezen aan Bonusly voor het testen van de configuratie van de automatische gebruikersinrichting. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+* Het is raadzaam om een enkele Azure AD-gebruiker toe te wijzen om de configuratie van automatische gebruikers inrichting in een bonus te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer een gebruiker aan Bonusly toewijzen, moet u alle geldige toepassingsspecifieke rollen (indien beschikbaar) selecteren in het dialoogvenster toewijzing. Gebruikers met de **standaardtoegang** rol worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan een bonus, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
 
-## <a name="configuring-automatic-user-provisioning-to-bonusly"></a>Automatisch gebruikers inrichten voor Bonusly configureren
+## <a name="configuring-automatic-user-provisioning-to-bonusly"></a>Automatische gebruikers inrichting configureren voor een bonus
 
-Deze sectie helpt u bij de stappen voor het configureren van de Azure AD-inrichtingsservice als u wilt maken, bijwerken en uitschakelen van gebruikers en/of groepen in Bonusly op basis van gebruiker en/of groep toewijzingen in Azure AD.
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in een bonus te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om in te schakelen op SAML gebaseerde eenmalige aanmelding voor Bonusly, vindt u de instructies te volgen in de [Bonusly eenmalige aanmelding zelfstudie](bonus-tutorial.md). Eenmalige aanmelding kan worden geconfigureerd onafhankelijk van automatisch gebruikers inrichten, hoewel deze twee functies een fraaie aanvulling in elkaar.
+> U kunt ook op SAML gebaseerde eenmalige aanmelding inschakelen voor een bonus, volgens de instructies in de [zelf studie voor eenmalige aanmelding](bonus-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
 
-### <a name="to-configure-automatic-user-provisioning-for-bonusly-in-azure-ad"></a>Het configureren van automatisch gebruikers inrichten voor Bonusly in Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-bonusly-in-azure-ad"></a>Automatische gebruikers inrichting voor een bonus configureren in azure AD:
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com) en selecteer **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Bonusly**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en selecteer **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **bonus**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Bonusly**.
+2. Selecteer in de lijst toepassingen de optie **bonus**.
 
-    ![De Bonusly koppelen in de lijst met toepassingen](common/all-applications.png)
+    ![De bonus koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer de **Provisioning** tabblad.
+3. Selecteer het tabblad **inrichten** .
 
-    ![Bonusly inrichten](./media/bonusly-provisioning-tutorial/ProvisioningTab.png)
+    ![Gratificatie inrichten](./media/bonusly-provisioning-tutorial/ProvisioningTab.png)
 
-4. Stel de **Inrichtingsmodus** naar **automatische**.
+4. Stel de **inrichtings modus** in op **automatisch**.
 
-    ![Bonusly inrichten](./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png)
+    ![Gratificatie inrichten](./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png)
 
-5. Onder de **beheerdersreferenties** sectie, voer de **geheim Token** van uw Bonusly-account, zoals beschreven in stap 6.
+5. Voer in het gedeelte **beheerders referenties** het **geheime token** van uw bonus account in, zoals beschreven in stap 6.
 
-    ![Bonusly inrichten](./media/bonusly-provisioning-tutorial/secrettoken.png)
+    ![Gratificatie inrichten](./media/bonusly-provisioning-tutorial/secrettoken.png)
 
-6. De **geheim Token** voor uw Bonusly account zich bevindt in **Admin > bedrijfsportal > integraties**. In de **als u code wilt** sectie, klikt u op **API > maken nieuwe API toegangstoken** om een nieuw geheim Token te maken.
+6. Het **geheime token** voor uw bonus account bevindt zich in de **beheer > bedrijfs > integraties**. In de sectie **Als u code wilt** gebruiken, klikt u op **API > nieuw token voor API-toegang maken** om een nieuw geheim token te maken.
 
-    ![Bonusly inrichten](./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png)
+    ![Gratificatie inrichten](./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png)
 
-    ![Bonusly inrichten](./media/bonusly-provisioning-tutorial/BonsulyRestApi.png)
+    ![Gratificatie inrichten](./media/bonusly-provisioning-tutorial/BonsulyRestApi.png)
 
-    ![Bonusly inrichten](./media/bonusly-provisioning-tutorial/CreateToken.png)
+    ![Gratificatie inrichten](./media/bonusly-provisioning-tutorial/CreateToken.png)
 
-7. Typ in het volgende scherm een naam voor het toegangstoken in de opgegeven tekstvak, drukt u vervolgens op **Api-sleutel maken**. Het nieuwe toegangstoken wordt voor een paar seconden in een pop-upvenster weergegeven.
+7. Typ in het volgende scherm een naam voor het toegangs token in het tekstvak en druk vervolgens op API- **sleutel maken**. Het nieuwe toegangs token wordt een paar seconden weer gegeven in een pop-up.
 
-    ![Bonusly inrichten](./media/bonusly-provisioning-tutorial/Token01.png)
+    ![Gratificatie inrichten](./media/bonusly-provisioning-tutorial/Token01.png)
 
-    ![Bonusly inrichten](./media/bonusly-provisioning-tutorial/Token02.png)
+    ![Gratificatie inrichten](./media/bonusly-provisioning-tutorial/Token02.png)
 
-8. Bij het invullen van de velden die in stap 5 wordt weergegeven, klikt u op **testverbinding** om te controleren of Azure AD kunt verbinden met Bonusly. Als de verbinding is mislukt, zorg ervoor dat uw Bonusly account beheerdersmachtigingen heeft en probeer het opnieuw.
+8. Klik bij het invullen van de velden die worden weer gegeven in stap 5 op **verbinding testen** om ervoor te zorgen dat Azure AD op een bonus verbinding kan maken. Als de verbinding mislukt, zorg er dan voor dat uw bonus account beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![Bonusly inrichten](./media/bonusly-provisioning-tutorial/TestConnection.png)
+    ![Gratificatie inrichten](./media/bonusly-provisioning-tutorial/TestConnection.png)
 
-9. In de **e-mailmelding** en voer het e-mailadres van een persoon of groep die u moet de inrichting fout ontvangen en schakel het selectievakje in **een e-mailmelding verzenden wanneer een foutoptreedt**.
+9. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje **e-mail melding verzenden als er een fout optreedt**.
 
-    ![Bonusly inrichten](./media/bonusly-provisioning-tutorial/EmailNotification.png)
+    ![Gratificatie inrichten](./media/bonusly-provisioning-tutorial/EmailNotification.png)
 
 10. Klik op **Opslaan**.
 
-11. Onder de **toewijzingen** sectie, selecteer **synchroniseren Azure Active Directory: gebruikers aan Bonusly**.
+11. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers op een bonus te synchroniseren**.
 
-    ![Bonusly inrichten](./media/bonusly-provisioning-tutorial/UserMappings.png)
+    ![Gratificatie inrichten](./media/bonusly-provisioning-tutorial/UserMappings.png)
 
-12. Controleer de kenmerken van de gebruiker die van Azure AD worden gesynchroniseerd naar Bonusly in de **kenmerk toewijzing** sectie. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt zodat deze overeenkomen met de gebruikersaccounts in Bonusly voor update-bewerkingen. Selecteer de **opslaan** knop wijzigingen doorvoeren.
+12. Controleer de gebruikers kenmerken die vanuit Azure AD worden gesynchroniseerd naar een bonus in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om de gebruikers accounts in een bonus te vergelijken voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Bonusly inrichten](./media/bonusly-provisioning-tutorial/UserAttributeMapping.png)
+    ![Gratificatie inrichten](./media/bonusly-provisioning-tutorial/UserAttributeMapping.png)
 
-13. Als u wilt configureren bereikfilters, raadpleegt u de volgende instructies in de [Scoping filter zelfstudie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+13. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
-14. Wijzigen zodat de Azure AD-inrichtingsservice voor Bonusly de **Inrichtingsstatus** naar **op** in de **instellingen** sectie.
+14. Als u de Azure AD-inrichtings service voor een **bonus wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
-    ![Bonusly inrichten](./media/bonusly-provisioning-tutorial/ProvisioningStatus.png)
+    ![Gratificatie inrichten](./media/bonusly-provisioning-tutorial/ProvisioningStatus.png)
 
-15. De gebruikers en/of groepen die u wilt definiëren voor het inrichten van Bonusly door het kiezen van de gewenste waarden in **bereik** in de **instellingen** sectie.
+15. Definieer de gebruikers en/of groepen die u wilt inrichten op een bonus door de gewenste waarden in het **bereik** in de sectie **instellingen** te kiezen.
 
-    ![Bonusly inrichten](./media/bonusly-provisioning-tutorial/ScopeSync.png)
+    ![Gratificatie inrichten](./media/bonusly-provisioning-tutorial/ScopeSync.png)
 
-16. Wanneer u klaar om in te richten bent, klikt u op **opslaan**.
+16. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Bonusly inrichten](./media/bonusly-provisioning-tutorial/SaveProvisioning.png)
+    ![Gratificatie inrichten](./media/bonusly-provisioning-tutorial/SaveProvisioning.png)
 
-Met deze bewerking wordt gestart voor de initiële synchronisatie van alle gebruikers en/of groepen die zijn gedefinieerd **bereik** in de **instellingen** sectie. De eerste synchronisatie langer duren om uit te voeren dan het volgende wordt gesynchroniseerd, die ongeveer elke 40 minuten optreden als de Azure AD-inrichtingsservice wordt uitgevoerd. U kunt de **synchronisatiedetails** sectie voortgang en koppelingen volgen voor het inrichten van rapport van de activiteit, die alle acties die worden uitgevoerd door de Azure AD-inrichtingsservice op Bonusly beschrijft.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen. hierin worden alle acties beschreven die door de Azure AD Provisioning-Service op een bonus worden uitgevoerd.
 
 Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* [Het inrichten van gebruikersaccounts voor bedrijfs-Apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en rapporten over het inrichten van activiteit ophalen](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/bonusly-provisioning-tutorial/tutorial_general_01.png

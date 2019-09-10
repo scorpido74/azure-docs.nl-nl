@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: cb1fd8e98a5eba350774ff6ccb8f86dcd3e4d734
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ef060c083109a7096b62ebb35f2b49bb37a371b8
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856199"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860513"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>Wat is een Azure Machine Learning service-werk ruimte?
 
@@ -36,7 +36,7 @@ In het diagram worden de volgende onderdelen van een werk ruimte weer gegeven:
 + Wanneer u de werk ruimte maakt, worden er ook [gekoppelde resources](#resources) voor u gemaakt.
 + [Experimenten](concept-azure-machine-learning-architecture.md#experiments) zijn trainings uitvoeringen die u gebruikt om uw modellen te bouwen.  U kunt experimenten maken en uitvoeren met
     + De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
-    + De sectie [geautomatiseerde machine learning experimenten (preview)](how-to-create-portal-experiments.md) in de Azure Portal.
+    + De sectie [geautomatiseerde machine learning experimenten (preview)](how-to-create-portal-experiments.md) in de Azure portal of de landings pagina van uw werk ruimte (preview).
     + De [visuele interface (preview-versie)](ui-concept-visual-interface.md).
 + [Pijp lijnen](concept-azure-machine-learning-architecture.md#ml-pipelines) zijn herbruikbare werk stromen voor trainingen en trainingen van uw model.
 + Gegevens [sets](concept-azure-machine-learning-architecture.md#datasets-and-datastores) bieden ondersteuning bij het beheer van de data die u gebruikt voor model training en het maken van pijp lijnen.
@@ -49,6 +49,7 @@ U kunt op de volgende manieren met uw werk ruimte werken:
 
 + Op het web:
     + [Azure Portal](https://portal.azure.com)
+    + De [landings pagina van uw werk ruimte (preview-versie)](https://ml.azure.com)
     + De [visuele interface (preview-versie)](ui-concept-visual-interface.md)
 + In python met Azure Machine Learning [SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 + Op de opdracht regel met behulp van de Azure Machine Learning [cli-extensie](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)

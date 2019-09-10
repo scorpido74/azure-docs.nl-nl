@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2ea124ecf6786142ac1703dab1e267b225751079
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 14962b936d1c09a6c50daa7bec460ce11dbefe5d
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035947"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860390"
 ---
 # <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Azure Machine Learning-Service verkennen met Jupyter-notebooks
 
@@ -27,7 +27,6 @@ In dit artikel wordt beschreven hoe u toegang kunt krijgen tot de opslag plaats 
 - [VM van Azure Machine Learning-notebook](#notebookvm)
 - [Uw eigen notebook server meenemen](#byo)
 - [Data Science Virtual Machine](#dsvm)
-- [Azure Notebooks](#aznb)
 
 > [!NOTE]
 > Zodra u de opslag plaats hebt gekloond, vindt u de notitie blokken voor zelf **studies** in de mappen map en specifieke notitie blokken in de map **How-to-use-azureml** .
@@ -53,13 +52,6 @@ In deze instructies worden de basis-SDK-pakketten geïnstalleerd die nodig zijn 
 De Data Science Virtual Machine (DSVM) is een aangepaste VM-installatie kopie die speciaal is gebouwd voor het uitvoeren van data Science. Als u [een DSVM maakt](how-to-configure-environment.md#dsvm), worden de SDK-en notebook server geïnstalleerd en geconfigureerd voor u. U moet echter nog steeds een werk ruimte maken en de voorbeeld opslagplaats klonen.
 
 [!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
-
-<a name="aznb"></a>
-## <a name="get-samples-on-azure-notebooks"></a>Voor beelden van Azure Notebooks ophalen
-
-Op [Azure notebooks](https://notebooks.azure.com/)zijn de SDK-en notebook server geïnstalleerd en geconfigureerd voor u. Azure Notebooks biedt een volledig beheerde, licht gewicht laptop omgeving waarmee u kunt verkennen.
-
-Om toegang te krijgen tot de voorbeeld opslagplaats op Azure Notebooks, navigeert u naar uw Azure Machine Learning-werk ruimte via de [Azure Portal](https://portal.azure.com). Selecteer in de sectie **overzicht** de optie **aan de slag in azure notebooks**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

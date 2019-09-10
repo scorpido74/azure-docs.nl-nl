@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 349ae3450b5817b5cfe9c95c41d159e3daca7a39
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f7e1507289d3c21d51a0ec8529598e5eeb089d37
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603391"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859005"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Quickstart: Gezichten in een afbeelding detecteren met de Face REST API en C#
 
@@ -51,8 +51,9 @@ using System.Text;
 
 ### <a name="add-essential-fields"></a>Essentiële velden toevoegen
 
-Voeg de **programma** klasse die de volgende velden bevat. Met deze gegevens wordt aangegeven hoe de Face-service moet worden verbonden en waar de invoergegevens kunnen worden opgehaald. U moet het veld `subscriptionKey` bijwerken met de waarde van de abonnementssleutel en mogelijk moet u de tekenreeks `uriBase` wijzigen, zodat deze de juiste regio-id bevat (zie de [Face API-documentatie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) voor een lijst met alle regio-eindpunten).
+Voeg de **programma** klasse met de volgende velden toe. Met deze gegevens wordt aangegeven hoe de Face-service moet worden verbonden en waar de invoergegevens kunnen worden opgehaald. U moet het `subscriptionKey` veld bijwerken met de waarde van uw abonnements sleutel en u moet mogelijk de `uriBase` teken reeks wijzigen zodat deze de teken reeks voor het resource-eind punt bevat.
 
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```csharp
 namespace DetectFace
@@ -62,22 +63,15 @@ namespace DetectFace
 
         // Replace <Subscription Key> with your valid subscription key.
         const string subscriptionKey = "<Subscription Key>";
-
-        // NOTE: You must use the same region in your REST call as you used to
-        // obtain your subscription keys. For example, if you obtained your
-        // subscription keys from westus, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change
-        // this region.
+        
+        // replace <myresourcename> with the string found in your endpoint URL
         const string uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+            "https://<myresourcename>.cognitive.microsoft.com/face/v1.0/detect";
 ```
 
 ### <a name="receive-image-input"></a>Invoer van de afbeelding ontvangen
 
-Voeg de volgende code toe aan de methode **Main** in de klasse **Program**. Deze code schrijft een prompt in de console waarin de gebruiker een afbeeldings-URL invoeren. Vervolgens wordt een andere methode, **MakeAnalysisRequest**, aangeroepen om de afbeelding op die locatie te verwerken.
+Voeg de volgende code toe aan de methode **Main** in de klasse **Program**. Deze code schrijft een prompt naar de console waarin de gebruiker wordt gevraagd een afbeeldings-URL in te voeren. Vervolgens wordt een andere methode, **MakeAnalysisRequest**, aangeroepen om de afbeelding op die locatie te verwerken.
 
 ```csharp
         static void Main(string[] args)
@@ -162,7 +156,7 @@ In de volgende stappen definieert u de hulpmethoden.
 
 ### <a name="process-the-input-image-data"></a>De invoergegevens van de afbeelding verwerken
 
-Voeg de volgende methode toe aan de klasse **Program**. Deze methode converteert de afbeelding op de opgegeven URL naar een matrix van bytes.
+Voeg de volgende methode toe aan de klasse **Program**. Met deze methode wordt de installatie kopie op de opgegeven URL naar een byte matrix geconverteerd.
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -179,7 +173,7 @@ Voeg de volgende methode toe aan de klasse **Program**. Deze methode converteert
 
 ### <a name="parse-the-json-response"></a>Het JSON-antwoord parseren
 
-Voeg de volgende methode toe aan de klasse **Program**. Deze methode maakt de JSON-invoer zijn gemakkelijker te lezen. Met uw app worden deze tekenreeksgegevens naar de console geschreven. Vervolgens kunt u sluiten de klasse en de naamruimte.
+Voeg de volgende methode toe aan de klasse **Program**. Met deze methode wordt de JSON-invoer zodanig opgemaakt dat deze eenvoudiger leesbaar is. Met uw app worden deze tekenreeksgegevens naar de console geschreven. Vervolgens kunt u de klasse en de naam ruimte sluiten.
 
 ```csharp
         // Formats the given JSON string by adding line breaks and indents.

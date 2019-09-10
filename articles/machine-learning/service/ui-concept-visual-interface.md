@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 1cb56386f52d1c7b1ec357b912c648c1961b4c1d
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 70141e3ad438ff7ff6d4486e6c27ff4163416e95
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677988"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860412"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Wat is de visuele interface voor Azure Machine Learning service? 
 
@@ -40,7 +40,7 @@ De visuele interface biedt u een interactief, visueel canvas om snel een model t
 + Verbind de modules samen om een [experiment](#experiment)te vormen.
 + Voer het experiment uit met behulp van de reken resource van de werk ruimte Machine Learning service.
 + Herhaal het ontwerp van het model door het experiment te bewerken en het opnieuw uit te voeren.
-+ Wanneer u klaar bent, kunt u uw **trainings experiment** converteren naar een voorspellend **experiment**.
++ Wanneer u klaar bent, kunt u uw **trainings experiment** converteren naar een **voorspellend experiment**.
 + [Implementeer](#deployment) het voorspellende experiment als een webservice, zodat het model door anderen kan worden geopend.
 
 ## <a name="experiment"></a>Experiment
@@ -81,7 +81,7 @@ Gebruik reken resources van uw werk ruimte om uw experiment uit te voeren of uw 
 | Azure Machine Learning-Computing | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-Reken doelen zijn gekoppeld aan uw Machine Learning- [werk ruimte](concept-workspace.md). U beheert uw reken doelen in uw werk ruimte in de [Azure Portal](https://portal.azure.com).
+Reken doelen zijn gekoppeld aan uw Machine Learning- [werk ruimte](concept-workspace.md). U beheert uw reken doelen in uw werk ruimte in de [Azure Portal](https://portal.azure.com) of in de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com).
 
 ## <a name="deployment"></a>Implementatie
 

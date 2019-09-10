@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: d7c538bd98b3924b422a93bc67cac405a6e4b7af
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 818285e089ab01c2c603f2b0181fbd6d9179eba1
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383128"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873465"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Als CSP kunt u een Azure IoT Central-toepassing maken en beheren namens uw klant
 
@@ -71,14 +71,14 @@ Zie [Azure-abonnementen](https://docs.microsoft.com/azure/guides/developer/azure
 
 ## <a name="region"></a>Regio
 
-Kies de regio waar u de Azure IoT Central-toepassing wilt maken. Normaal gesp roken moet u de regio kiezen die het meest geschikt is voor uw apparaten om optimaal te kunnen profiteren van de prestaties.
+Kies de regio of [geografische](https://azure.microsoft.com/global-infrastructure/geographies/) locatie waar u de Azure IOT Central-toepassing wilt maken. Normaal gesp roken moet u de regio kiezen die het meest geschikt is voor uw apparaten om optimaal te kunnen profiteren van de prestaties.
 
 > [!NOTE]
 > De **Preview-toepassings** sjabloon is momenteel alleen beschikbaar in de regio's **Europa-Noord** en **Centraal VS** .
 
-Zie [Azure-regio's](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#azure-regions)voor meer informatie.
+Zie [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/) en [Azure-geografi](https://azure.microsoft.com/global-infrastructure/geographies/)voor meer informatie.
 
-U kunt de regio's bekijken waarin Azure IoT Central beschikbaar is op de pagina [beschik bare producten per regio](https://azure.microsoft.com/regions/services/) .
+U kunt de regio's bekijken waarin Azure IoT Central beschikbaar is op de pagina [beschik bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central) .
 
 > [!Note]
 > Als u eenmaal een regio hebt gekozen, kunt u de toepassing later niet naar een andere regio verplaatsen.

@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: c654da71a0c060a9344ef7d7d42b30263a7fb2db
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 319871280b94f54b99f7a9957f671ec50122ebf3
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165215"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860908"
 ---
 # <a name="what-is-automated-machine-learning"></a>Wat is geautomatiseerde machine learning?
 
@@ -47,7 +47,7 @@ Met behulp van **Azure machine learning-service**kunt u uw automatische ml-exper
 
 1. **Configureer het reken doel voor model training**, zoals uw [lokale computer, Azure machine learning reken processen, externe vm's of Azure Databricks](how-to-set-up-training-targets.md).  Meer informatie over geautomatiseerde training [op een externe bron](how-to-auto-train-remote.md).
 
-1. **Configureer de para meters voor automatische machine learning** die bepalen hoeveel iteraties boven verschillende modellen, afstemming-instellingen, geavanceerde preverwerking/parametrisatie en welke metrische gegevens er moeten worden weer gegeven bij het bepalen van het beste model.  U kunt de instellingen voor automatische studie experiment configureren [in azure Portal](how-to-create-portal-experiments.md) of [met de SDK](how-to-configure-auto-train.md).
+1. **Configureer de para meters voor automatische machine learning** die bepalen hoeveel iteraties boven verschillende modellen, afstemming-instellingen, geavanceerde preverwerking/parametrisatie en welke metrische gegevens er moeten worden weer gegeven bij het bepalen van het beste model.  U kunt de instellingen voor automatische studie experiment configureren in [Azure Portal](how-to-create-portal-experiments.md), [de landings pagina voor de werk ruimte (preview)](https://ml.azure.com)of [met de SDK](how-to-configure-auto-train.md). 
 
 1. **Verzend de trainings uitvoering.**
 
@@ -88,7 +88,7 @@ In elk automatisch machine learning experiment worden uw gegevens automatisch ge
 
 Er zijn ook aanvullende geavanceerde preverwerkings-en parametrisatie beschikbaar, zoals ontbrekende waarden, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-create-portal-experiments.md#preprocess). Schakel deze instelling in met:
 
-+ Azure Portal: Selecteer het selectie vakje preprocess in de **Geavanceerde instellingen** [met de volgende stappen](how-to-create-portal-experiments.md).
++ Azure Portal: Selecteer het selectie vakje **preprocess** in de **Geavanceerde instellingen** [met de volgende stappen](how-to-create-portal-experiments.md).
 
 + Python-SDK: Opgeven `"preprocess": True` voor [ de`AutoMLConfig` klasse](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
@@ -133,7 +133,7 @@ Bekijk voor beelden en leer hoe u modellen bouwt met geautomatiseerde machine le
 + Volg de [zelf studie: Een regressie model automatisch trainen met geautomatiseerde Machine Learning van Azure](tutorial-auto-train-models.md)
 
 + De instellingen voor automatische training-experiment configureren:
-  + Gebruik in Azure Portal interface [deze stappen](how-to-create-portal-experiments.md).
+  + [Gebruik de volgende stappen](how-to-create-portal-experiments.md)in azure Portal interface of de lands pagina voor de werk ruimte (preview).
   + Gebruik de python-SDK om de [volgende stappen uit te voeren](how-to-configure-auto-train.md).
 
 + Meer informatie over het automatisch trainen van Time Series-gegevens met behulp van [deze stappen](how-to-auto-train-forecast.md).

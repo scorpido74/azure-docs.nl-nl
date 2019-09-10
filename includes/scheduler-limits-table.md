@@ -9,29 +9,29 @@ ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
 ms.openlocfilehash: b3788ede23a423bebf96661ea88b227bfb5fdf4c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67176411"
 ---
-De volgende tabel beschrijft elke van de belangrijkste quota's, limieten, standaardwaarden en vertragingen in Azure Scheduler.
+In de volgende tabel worden de belangrijkste quota's, limieten, standaard waarden en beperkingen in azure scheduler beschreven.
 
-| Resource | Beschrijving van de limiet |
+| Resource | Limiet beschrijving |
 | -------- | ----------------- |
-| **Grootte van de taak** | De maximale grootte is 16.000. Als een PUT of PATCH-bewerking in een groter is dan deze limiet taakgrootte resulteert, wordt een statuscode 400 Ongeldige aanvraag geretourneerd. | 
-| **Taakcollecties** | Het maximum aantal taakcollecties per Azure-abonnement is 200.000. | 
-| **Taken per verzameling** | Standaard is het maximale aantal taken vijf taken in een gratis taakverzameling en 50 taken in een standard taakcollectie. <p>U kunt het maximum aantal taken op een taakverzameling wijzigen. Alle taken in een jobverzameling is beperkt tot de waarde voor de taakverzameling is ingesteld. Als u probeert te maken van meer taken dan het maximum aantal taken quotum, wordt de aanvraag mislukt met statuscode 409 Conflict. | 
-| **Tijd tot tijd** | Het maximum 'time begintijd' is 18 maanden. |
-| **Bereik van terugkeerpatroon** | Het maximale terugkeerpatroon dat bereik is 18 maanden. | 
-| **Frequentie** | Het quotum maximale frequentie is standaard één uur in een gratis taakverzameling en één minuut in een standard taakcollectie. <p>U kunt de maximale frequentie maken op een taakverzameling lager is dan het maximum. Alle taken in de taakverzameling is beperkt tot de waarde voor de taakverzameling is ingesteld. Als u probeert te maken van een taak met een hogere frequentie dan de maximale frequentie voor de taakverzameling, wordt de aanvraag mislukt met statuscode 409 Conflict. | 
-| **Grootte van standaardberichthoofdtekst** | De hoofdtekst van de maximale grootte voor een aanvraag is 8192 tekens. |
-| **Grootte van de aanvraag-URL** | De maximale grootte voor een aanvraag-URL is 2048 tekens. |
-| **Header-aantal** | Het aantal maximale header is 50 headers. | 
-| **Cumulatieve header-grootte** | De maximale cumulatieve header-grootte is 4096 tekens. |
-| **Timeout** | Time-out van de aanvraag is statisch, dat wil zeggen, niet worden geconfigureerd. en is 60 seconden voor HTTP-acties. Voor meer actieve bewerkingen, gaat u als volgt de asynchrone HTTP-protocollen. Bijvoorbeeld, een 202 onmiddellijk resultaten retourneerde, maar blijven werken op de achtergrond. | 
-| **Jobgeschiedenis** | De maximale antwoordtekst die zijn opgeslagen in de taakgeschiedenis is 2048 bytes. |
-| **Geschiedenis vasthouden** | Taakgeschiedenis wordt opgeslagen voor maximaal twee maanden of tot de laatste 1000 uitvoeringen. | 
-| **Voltooide en mislukte taak bewaren** | Voltooide en mislukte jobs worden bewaard gedurende 60 dagen. |
+| **Taak grootte** | De maximale taak grootte is 16.000. Als een PUT-of een PATCH-bewerking resulteert in een grootte van een taak die groter is dan deze limiet, wordt de status code van een ongeldige aanvraag van 400 geretourneerd. | 
+| **Taak verzamelingen** | Het maximum aantal taak verzamelingen per Azure-abonnement is 200.000. | 
+| **Taken per verzameling** | Het maximum aantal taken is standaard vijf taken in een gratis taak verzameling en 50-taken in een standaard taak verzameling. <p>U kunt het maximum aantal taken voor een taak verzameling wijzigen. Alle taken in een taak verzameling zijn beperkt tot de waarde die is ingesteld voor de taak verzameling. Als u probeert meer taken te maken dan het quotum voor het maximum aantal taken, mislukt de aanvraag met een status code van 409-conflicten. | 
+| **Tijd tot begin tijd** | De maximum tijd voor het starten van is 18 maanden. |
+| **Herhalings bereik** | De maximale terugkeer patroon is 18 maanden. | 
+| **Frequentie** | Het maximum frequentie quotum is standaard één uur in een gratis taak verzameling en één minuut in een standaard taak verzameling. <p>U kunt de maximum frequentie voor een taak verzameling lager maken dan het maximum. Alle taken in de taak verzameling zijn beperkt tot de waarde die is ingesteld voor de taak verzameling. Als u probeert een taak te maken met een hogere frequentie dan de maximum frequentie voor de taak verzameling, mislukt de aanvraag met een status code van 409-conflicten. | 
+| **Hoofdtekst grootte** | De maximale hoofdtekst grootte voor een aanvraag is 8.192 tekens. |
+| **Grootte van aanvraag-URL** | De maximale grootte voor een aanvraag-URL is 2.048 tekens. |
+| **Aantal headers** | Het maximum aantal headers is 50 kopteksten. | 
+| **Cumulatieve header grootte** | De maximale cumulatieve header grootte is 4.096 tekens. |
+| **Timeout** | De time-out van de aanvraag is statisch, dat wil zeggen, niet configureerbaar. en is 60 seconden voor HTTP-acties. Volg de asynchrone HTTP-protocollen voor meer bewerkingen. U kunt bijvoorbeeld een 202 direct retour neren, maar op de achtergrond blijven werken. | 
+| **Jobgeschiedenis** | De maximale tekst van het antwoord dat is opgeslagen in de taak geschiedenis is 2.048 bytes. |
+| **Taak geschiedenis retentie** | De taak geschiedenis wordt Maxi maal twee maanden of tot de laatste 1.000 uitvoeringen bewaard. | 
+| **Voltooide en mislukte taak behoud** | Voltooide en mislukte taken worden 60 dagen bewaard. |
 ||| 
 

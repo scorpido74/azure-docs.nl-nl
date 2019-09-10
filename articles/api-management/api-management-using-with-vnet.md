@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 09/09/2019
 ms.author: apimpm
-ms.openlocfilehash: b89f4d2264924983aac93fb266efd71e46bea6bf
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 44fd3f0381c25f2fe0a3e9dc4cf5b8c685486ae0
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305232"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861151"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een niet-Internet routeerbaar netwerk plaatsen waartoe u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Voor meer informatie over Azure Virtual Networks begint u met de informatie hier: [Overzicht van Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -79,7 +79,7 @@ Voor het uitvoeren van de stappen die in dit artikel worden beschreven, hebt u h
 >
 
 > [!IMPORTANT]
-> Als u API Management uit een VNET verwijdert of als u de implementatie wijzigt in, kan het eerder gebruikte VNET vergrendeld blijven gedurende Maxi maal twee uur. Tijdens deze periode is het niet mogelijk om het VNET te verwijderen of om een nieuwe resource te implementeren.
+> Als u API Management uit een VNET verwijdert of als u de implementatie wijzigt in, kan het eerder gebruikte VNET vergrendeld blijven tot zes uur. Tijdens deze periode is het niet mogelijk om het VNET te verwijderen of om een nieuwe resource te implementeren. Dit gedrag geldt voor clients die gebruikmaken van API-versie 2018-01-01 en eerder. Clients die gebruikmaken van API-versie 2019-01-01 en hoger, het VNET wordt vrijgegeven zodra de bijbehorende API Management service wordt verwijderd.
 
 ## <a name="enable-vnet-powershell"> </a>VNET-verbinding inschakelen met Power shell-cmdlets
 U kunt de VNET-connectiviteit ook inschakelen met de Power shell-cmdlets

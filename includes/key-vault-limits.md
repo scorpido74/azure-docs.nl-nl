@@ -5,40 +5,40 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: 0b9d87fd7929607da8407ae5bbfb2f6dd6d69dab
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67176440"
 ---
-#### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Sleutel transacties (maximum aantal transacties die zijn toegestaan in 10 seconden kluis per regio<sup>1</sup>):
+#### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Belangrijkste trans acties (Maxi maal 10 seconden toegestane trans acties per kluis per regio<sup>1</sup>):
 
-|Type sleutel|HSM-sleutel<br>Sleutel maken|HSM-sleutel<br>Alle andere transacties|Softwaresleutel<br>Sleutel maken|Softwaresleutel<br>Alle andere transacties|
+|Sleuteltype|HSM-sleutel<br>Sleutel maken|HSM-sleutel<br>Alle andere trans acties|Softwaresleutel<br>Sleutel maken|Softwaresleutel<br>Alle andere trans acties|
 |:---|---:|---:|---:|---:|
-|RSA 2048-bits|5|1000|10|2,000|
+|RSA 2.048-bits|5|1000|10|2,000|
 |RSA 3.072-bits|5|250|10|500|
 |RSA 4.096-bits|5|125|10|250|
 |ECC P-256|5|1000|10|2,000|
 |ECC P-384|5|1000|10|2,000|
 |ECC P-521|5|1000|10|2,000|
-|ECC SECP256K1|5|1000|10|2,000|
+|ECC-SECP256K1|5|1000|10|2,000|
 
 > [!NOTE]
-> In de vorige tabel ziet u dat voor RSA 2048-bits softwaresleutels, 2000 GET transacties per 10 seconden zijn toegestaan. Voor RSA 2048-bits HSM-sleutels, zijn 1000 GET transacties per 10 seconden toegestaan.
+> In de vorige tabel zien we dat voor RSA 2.048-bits software sleutels, 2.000 GET trans acties per 10 seconden zijn toegestaan. Voor RSA 2.048-bits HSM-sleutels, 1.000 GET trans acties per 10 seconden zijn toegestaan.
 >
-> De drempelwaarden voor regeling worden gewogen en afdwingen op hun som is. Bijvoorbeeld, zoals weergegeven in de vorige tabel is wanneer u GET-bewerkingen op RSA HSM-sleutels, het acht keer duurder 4.096-bits sleutels in vergelijking met 2048-bits sleutels te gebruiken. Dat komt doordat 1.000/125 = 8.
+> De drempel waarden voor beperking worden gewogen en afdwinging ligt op de som. Wanneer u bijvoorbeeld in de vorige tabel GET-bewerkingen uitvoert op RSA HSM-sleutels, is het acht maal duurder voor het gebruik van 4.096-bits sleutels vergeleken met 2.048-bits sleutels. Dat komt doordat 1000/125 = 8.
 >
-> In een bepaald interval van 10 seconden, een Azure Key Vault-client kunt doen *slechts één* van de volgende bewerkingen voordat er een `429` beperking van HTTP-statuscode:
-> - 2000 RSA 2048-bits softwaresleutel GET-transacties
-> - 1\.000 transacties van RSA 2048-bits HSM-sleutel ophalen
-> - Transacties van 125 4.096 RSA-bits HSM-sleutel ophalen
-> - 124 4.096 RSA-bits-HSM-sleutel GET-transacties en transacties van 8 RSA 2048-bits HSM-sleutel ophalen
+> In een gegeven interval van 10 seconden kan een Azure Key Vault-client *slechts een* van de volgende bewerkingen uitvoeren voordat er een `429` HTTP-status code voor beperking wordt aangetroffen:
+> - 2\.000 RSA 2.048-bits software sleutel GET trans acties
+> - 1\.000 RSA 2.048-bits HSM-sleutel GET-trans acties
+> - 125 RSA 4.096-bits HSM-sleutel GET-trans acties
+> - 124 RSA 4.096-bits HSM-Key GET-trans acties en 8 RSA 2.048-bits HSM-sleutel GET-trans acties
 
-#### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Geheimen, door beheerde opslagaccountsleutels en vault-transacties:
-| Type transacties | Maximum aantal transacties die zijn toegestaan in 10 seconden kluis per regio<sup>1</sup> |
+#### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Geheimen, sleutels voor beheerde opslag accounts en kluis transacties:
+| Transactie type | Maxi maal aantal toegestane trans acties in 10 seconden per kluis per regio<sup>1</sup> |
 | --- | --- |
 | Alle transacties |2,000 |
 
-Zie voor meer informatie over het verwerken van beperkingen wanneer deze limieten worden overschreden [Azure Key Vault-beperkingsrichtlijnen](../articles/key-vault/key-vault-ovw-throttling.md).
+Zie [Azure Key Vault Throttle-instructies](../articles/key-vault/key-vault-ovw-throttling.md)voor meer informatie over het afhandelen van beperking wanneer deze limieten worden overschreden.
 
-<sup>1</sup> een limiet voor brede, door het abonnement voor alle transactietypen is vijf keer per sleutelkluis limiet. HSM-andere transacties per abonnement zijn bijvoorbeeld beperkt tot 5000 transacties over 10 seconden per abonnement.
+<sup>1</sup> een limiet voor het hele abonnement voor alle transactie typen is vijf keer per sleutel kluis limiet. HSM-andere trans acties per abonnement zijn bijvoorbeeld beperkt tot 5.000 trans acties in tien seconden per abonnement.

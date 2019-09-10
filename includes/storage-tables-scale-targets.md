@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 06/20/2019
 ms.author: tamram
 ms.openlocfilehash: 5ab03b682dd0ed1dc7b198e89c86e7a74c6275cd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67457305"
 ---
 | Resource | Doel |
 |----------|---------------|
 | Maximale grootte van één tabel | 500 TiB |
-| Maximale grootte van een tabel-entiteit | 1 MiB |
-| Maximum aantal eigenschappen in een tabel-entiteit | 255, waaronder drie Systeemeigenschappen: PartitionKey en RowKey Timestamp |
-| Maximale totale grootte van de waarden van de eigenschap in een entiteit | 1 MiB |
-| Maximale totale grootte van een afzonderlijke eigenschap in een entiteit | Is afhankelijk van de eigenschap van het type. Zie voor meer informatie, **eigenschaptypen** in [inzicht in het Table Service Data Model](/rest/api/storageservices/understanding-the-table-service-data-model). |
-| Maximum aantal opgeslagen toegangsbeleid per tabel | 5 |
-| Maximale aantal aanvragen per opslagaccount | 20.000 transacties per seconde, waarbij ervan wordt uitgegaan van een grootte van 1-KiB entiteit |
-| Doeldoorvoer van een met één tabelpartitie (1 KiB-entiteiten) | Maximaal 2000 entiteiten per seconde |
+| Maximale grootte van een tabel entiteit | 1 MiB |
+| Maximum aantal eigenschappen in een tabel entiteit | 255, dat drie systeem eigenschappen bevat: PartitionKey, RowKey en Time Stamp |
+| Maximale totale grootte van eigenschaps waarden in een entiteit | 1 MiB |
+| Maximale totale grootte van een afzonderlijke eigenschap in een entiteit | Is afhankelijk van het eigenschaps type. Zie **eigenschaps typen** voor meer informatie over [het tabel service gegevens model](/rest/api/storageservices/understanding-the-table-service-data-model). |
+| Maximum aantal opgeslagen toegangs beleid per tabel | 5 |
+| Maximum aantal aanvragen per opslag account | 20.000 trans acties per seconde, waarbij een 1-KiB entiteits grootte wordt aangenomen |
+| Doel doorvoer voor één tabel partitie (1 KiB-entiteiten) | Maxi maal 2.000 entiteiten per seconde |

@@ -10,37 +10,37 @@ ms.date: 03/22/2018
 ms.author: vlvinogr
 ms.custom: include file
 ms.openlocfilehash: fc945a7e9389c8aec48a6a1dba969fbf92002d3a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67176438"
 ---
 | Resource | Limiet |
 | --- | --- |
-| Maximum aantal schaaleenheden | 10 per regio<sup>1</sup> |
+| Maximum aantal schaal eenheden | 10 per regio<sup>1</sup> |
 | Cachegrootte | 5 GB per eenheid<sup>2</sup> |
-| Gelijktijdige verbindingen voor back-end<sup>3</sup> per HTTP-instantie | 2048 per eenheid<sup>4</sup> |
-| Maximumgrootte van antwoorden in de cache | 2 MB |
-| Beleid voor maximale documentgrootte | 256 KB<sup>5</sup> | 
+| Gelijktijdige back-end-verbindingen<sup>3</sup> per http-instantie | 2\.048 per eenheid<sup>4</sup> |
+| Maximum grootte van antwoord in cache | 2 MB |
+| Maximale grootte van beleids document | 256 KB<sup>5</sup> | 
 | Maximum aantal aangepaste gateway domeinen per service-exemplaar<sup>6</sup> | 20 |
-| Maximum aantal van CA-certificaten per service-exemplaar | 10 | 
-| Maximum aantal exemplaren van de service per abonnement<sup>7</sup> | 20 | 
+| Maximum aantal CA-certificaten per service-exemplaar | 10 | 
+| Maximum aantal service-exemplaren per abonnement<sup>7</sup> | 20 | 
 | Maximum aantal abonnementen per service-exemplaar<sup>7</sup> | 500 |
-| Maximum aantal clientcertificaten per service-exemplaar<sup>7</sup> | 50 | 
-| Maximum aantal API's per service-exemplaar<sup>7</sup> | 50 | 
+| Maximum aantal client certificaten per service-exemplaar<sup>7</sup> | 50 | 
+| Maximum aantal Api's per service-exemplaar<sup>7</sup> | 50 | 
 | Maximum aantal API-bewerkingen per service-exemplaar<sup>7</sup> | 1000 | 
-| Voor maximale totale aanvraagduur<sup>7</sup> | 30 seconden | 
-| Maximale pakketgrootte gebufferde<sup>7</sup> | 2 MB | 
+| Maximum totale aanvraag duur<sup>7</sup> | 30 seconden | 
+| Maximale grootte van de gebufferde nettolading<sup>7</sup> | 2 MB | 
 
 
-<sup>1</sup>limieten voor schalen, is afhankelijk van de prijscategorie. Zie voor de Prijscategorieën en hun limieten voor schalen [API Management-prijzen](https://azure.microsoft.com/pricing/details/api-management/).<br/>
-<sup>2</sup>per eenheid cache grootte is afhankelijk van de prijscategorie. Zie voor de Prijscategorieën en hun limieten voor schalen [API Management-prijzen](https://azure.microsoft.com/pricing/details/api-management/).<br/>
-<sup>3</sup>verbindingen zijn gegroepeerd en opnieuw gebruikt, tenzij expliciet gesloten door de back-end.<br/>
-<sup>4</sup>deze limiet is per eenheid van de lagen Basic, Standard en Premium. De Developer-laag is beperkt tot 1024. Deze limiet niet van toepassing op de laag verbruik.<br/> 
-<sup>5</sup>deze limiet geldt voor de lagen Basic, Standard en Premium. In de laag verbruik is documentgrootte beleid beperkt tot 4 KB.<br/>
-<sup>6</sup>deze resource is beschikbaar in de laag Premium.<br/>
-<sup>7</sup>deze resource is van toepassing op het verbruik alleen in de laag.<br/>
+<sup>1</sup> De schaal limieten zijn afhankelijk van de prijs categorie. Zie [API Management prijzen](https://azure.microsoft.com/pricing/details/api-management/)voor een overzicht van de prijs categorieën en hun schaal limieten.<br/>
+<sup>2</sup> De grootte van de cache per eenheid is afhankelijk van de prijs categorie. Zie [API Management prijzen](https://azure.microsoft.com/pricing/details/api-management/)voor een overzicht van de prijs categorieën en hun schaal limieten.<br/>
+<sup>3</sup> Verbindingen worden gegroepeerd en opnieuw gebruikt, tenzij dit expliciet is gesloten door de back-end.<br/>
+<sup>4</sup> Deze limiet geldt per eenheid van de lagen Basic, Standard en Premium. De Developer-laag is beperkt tot 1.024. Deze limiet is niet van toepassing op de laag verbruik.<br/> 
+<sup>5</sup> Deze limiet is van toepassing op de lagen Basic, Standard en Premium. In de laag verbruik is de document grootte van het beleid beperkt tot 4 KB.<br/>
+<sup>6</sup> Deze resource is alleen beschikbaar in de laag Premium.<br/>
+<sup>7</sup> Deze resource is alleen van toepassing op de laag verbruik.<br/>
 
 
 

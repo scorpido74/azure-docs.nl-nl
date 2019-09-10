@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 09/06/2019
 ms.author: lewlu
-ms.openlocfilehash: 886e0ff353ab270bb823629d2068508531c14fc2
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 49b92037fed6436d28f777761b18cf5f66e03025
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516866"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859156"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Uw gezichts gegevens migreren naar een ander gezichts abonnement
 
-In deze hand leiding wordt beschreven hoe u gezichts gegevens, zoals een opgeslagen PersonGroup-object met gezichten, kunt verplaatsen naar een ander Azure Cognitive Services Face-API-abonnement. Als u de gegevens wilt verplaatsen, gebruikt u de functie snap shot. Zo voor komt u dat u een PersonGroup-of FaceList-object herhaaldelijk kunt bouwen en trainen wanneer u uw bewerkingen verplaatst of uitbreidt. Mogelijk hebt u bijvoorbeeld een PersonGroup-object gemaakt met behulp van een gratis proef abonnement en wilt u het nu migreren naar uw betaalde abonnement. Het is ook mogelijk dat u gezichts gegevens moet synchroniseren tussen regio's voor een grote bedrijfs activiteit.
+In deze hand leiding wordt beschreven hoe u gezichts gegevens, zoals een opgeslagen PersonGroup-object met gezichten, kunt verplaatsen naar een ander Azure Cognitive Services Face-API-abonnement. Als u de gegevens wilt verplaatsen, gebruikt u de functie snap shot. Zo voor komt u dat u een PersonGroup-of FaceList-object herhaaldelijk kunt bouwen en trainen wanneer u uw bewerkingen verplaatst of uitbreidt. Mogelijk hebt u bijvoorbeeld een PersonGroup-object gemaakt met behulp van een gratis proef abonnement en wilt u het nu migreren naar uw betaalde abonnement. Of u moet mogelijk gezichts gegevens synchroniseren tussen abonnementen in verschillende regio's voor een grote bedrijfs activiteit.
 
 Deze migratie strategie is ook van toepassing op LargePersonGroup-en LargeFaceList-objecten. Als u niet bekend bent met de concepten in deze hand leiding, raadpleegt u de definities hiervan in de hand leiding voor de [gezichts herkennings concepten](../concepts/face-recognition.md) . In deze hand leiding wordt gebruikgemaakt van de C#face-API .net-client bibliotheek met.
 
@@ -41,7 +41,9 @@ In deze hand leiding wordt gebruikgemaakt van een eenvoudige console-app voor he
 
 ## <a name="create-face-clients"></a>Face-clients maken
 
-Maak in de methode **Main** in *Program.cs*twee [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) -instanties voor uw bron-en doel abonnementen. In dit voor beeld wordt een gezichts abonnement in de regio Azië-oost als bron en een West US-abonnement als doel gebruikt. In dit voor beeld ziet u hoe u gegevens migreert van de ene Azure-regio naar een andere. Als uw abonnementen zich in verschillende regio's bevinden, `Endpoint` wijzigt u de teken reeksen.
+Maak in de methode **Main** in *Program.cs*twee [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) -instanties voor uw bron-en doel abonnementen. In dit voor beeld wordt een gezichts abonnement in de regio Azië-oost als bron en een West US-abonnement als doel gebruikt. In dit voor beeld ziet u hoe u gegevens migreert van de ene Azure-regio naar een andere. 
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```csharp
 var FaceClientEastAsia = new FaceClient(new ApiKeyServiceClientCredentials("<East Asia Subscription Key>"))
@@ -79,7 +81,7 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 ```
 
 > [!NOTE]
-> Het proces van het nemen en Toep assen van moment opnamen verstoort geen normale aanroepen naar de bron-of doel-PersonGroups of-FaceLists. Maak geen gelijktijdige aanroepen waarmee het bron object wordt gewijzigd, zoals [FaceList-beheer aanroepen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet) of de oproep van de PersonGroup- [training](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet) . De momentopname bewerking kan worden uitgevoerd vóór of na deze bewerkingen of kan fouten tegen komen.
+> Het proces van het nemen en Toep assen van moment opnamen verstoort geen normale aanroepen naar de bron-of doel-PersonGroups of-FaceLists. Maak geen gelijktijdige aanroepen waarmee het bron object wordt gewijzigd, zoals [FaceList-beheer aanroepen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet) of de oproep van de [PersonGroup-training](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet) . De momentopname bewerking kan worden uitgevoerd vóór of na deze bewerkingen of kan fouten tegen komen.
 
 ## <a name="retrieve-the-snapshot-id"></a>De moment opname-ID ophalen
 

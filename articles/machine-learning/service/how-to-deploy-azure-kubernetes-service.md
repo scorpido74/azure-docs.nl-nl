@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 7afa96c3c4d1a163e323aa0bb50ec361ff74aac3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 302fad84a2f0443fb639e57d7bb0cfddef4c3443
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278694"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858744"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Een model implementeren in een Azure Kubernetes service-cluster
 
@@ -30,7 +30,7 @@ Meer informatie over het gebruik van de Azure Machine Learning-service voor het 
 
 Wanneer u implementeert in azure Kubernetes service, implementeert u naar een AKS-cluster dat is __verbonden met uw werk ruimte__. Er zijn twee manieren om een AKS-cluster te verbinden met uw werk ruimte:
 
-* Maak het AKS-cluster met behulp van de SDK van de Azure Machine Learning-service, de Machine Learning CLI of de Azure Portal. Dit proces verbindt automatisch het cluster met de werk ruimte.
+* Maak het AKS-cluster met behulp van de SDK van de Azure Machine Learning-service, de Machine Learning CLI, de [Azure Portal](https://portal.azure.com) of de [pagina voor het land van de werk ruimte (preview)](https://ml.azure.com). Dit proces verbindt automatisch het cluster met de werk ruimte.
 * Koppel een bestaand AKS-cluster aan uw Azure Machine Learning service-werk ruimte. Een cluster kan worden gekoppeld met behulp van de Azure Machine Learning Service SDK, Machine Learning CLI of de Azure Portal.
 
 > [!IMPORTANT]

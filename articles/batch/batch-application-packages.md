@@ -15,10 +15,10 @@ ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9c9d6d13efaa07bff2a1eaabe05725a3257cf895
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "70095679"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Toepassingen implementeren op reken knooppunten met batch-toepassings pakketten
@@ -308,7 +308,7 @@ Als een bestaande pool al is geconfigureerd met een toepassings pakket, kunt u e
 * Reken knooppunten die zich al in de groep bevinden wanneer u de pakket verwijzingen bijwerkt, installeren het nieuwe toepassings pakket niet automatisch. Deze reken knooppunten moeten opnieuw worden opgestart of worden geimageeerd om het nieuwe pakket te ontvangen.
 * Wanneer een nieuw pakket wordt geïmplementeerd, worden de nieuwe toepassings pakket verwijzingen door de gemaakte omgevings variabelen weer gegeven.
 
-In dit voor beeld heeft de bestaande pool versie 2,7 van de toepassing voor Blender die is geconfigureerd als een van de [CloudPool][net_cloudpool]. [ApplicationPackageReferences][net_cloudpool_pkgref]. Als u de knoop punten van de pool wilt bijwerken met versie 2.76 b, geeft u een nieuwe [ApplicationPackageReference][net_pkgref] op met de nieuwe versie en voert u de wijziging door.
+In dit voor beeld heeft de bestaande pool versie 2,7 van de toepassing voor *blender* die is geconfigureerd als een van de [CloudPool][net_cloudpool]. [ApplicationPackageReferences][net_cloudpool_pkgref]. Als u de knoop punten van de pool wilt bijwerken met versie 2.76 b, geeft u een nieuwe [ApplicationPackageReference][net_pkgref] op met de nieuwe versie en voert u de wijziging door.
 
 ```csharp
 string newVersion = "2.76b";

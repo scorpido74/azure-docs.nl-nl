@@ -9,20 +9,20 @@ ms.date: 07/19/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: d5ce4c094da3a411168c7fe4c282b15ceac7bb86
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "70036692"
 ---
-In de volgende tabel worden de standaard limieten voor v1-, v2-en Blob Storage-accounts voor Azure voor algemeen gebruik beschreven. De *ingangs* limiet verwijst naar alle gegevens van aanvragen die worden verzonden naar een opslag account. De limiet voor uitgaand verkeer verwijst naar alle gegevens van antwoorden die worden ontvangen van een opslag account.
+In de volgende tabel worden de standaard limieten voor v1-, v2-en Blob Storage-accounts voor Azure voor algemeen gebruik beschreven. De *ingangs* limiet verwijst naar alle gegevens van aanvragen die worden verzonden naar een opslag account. De *limiet* voor uitgaand verkeer verwijst naar alle gegevens van antwoorden die worden ontvangen van een opslag account.
 
 | Resource | Standaardlimiet |
 | --- | --- |
 | Aantal opslag accounts per regio per abonnement, inclusief standaard-en Premium-accounts | 250 |
 | Maximale capaciteit van opslag account | 2 PB voor VS en Europa, en 500 TB voor alle andere regio's (inclusief het Verenigd Konink rijk)<sup>1</sup>|
 | Maximum aantal BLOB-containers, blobs, bestands shares, tabellen, wacht rijen, entiteiten of berichten per opslag account | Geen limiet |
-| Maximum aantal aanvragen<sup></sup> per opslag account | aantal aanvragen per seconde voor 20.000 |
+| Maximum aantal aanvragen<sup>per opslag</sup> account | aantal aanvragen per seconde voor 20.000 |
 | Maximum aantal binnenkomend<sup>1</sup> per opslag account (VS, Europa Regio's) | 25 Gbps |
 | Maximum aantal ingangen<sup>1</sup> per opslag account (andere REGIO'S dan VS en Europa) | 5 Gbps als RA-GRS/GRS is ingeschakeld, 10 Gbps voor LRS/ZRS<sup>2</sup> |
 | Maximale uitgaand verkeer voor de v2-en Blob Storage-accounts voor algemeen gebruik (alle regio's) | 50 Gbps |

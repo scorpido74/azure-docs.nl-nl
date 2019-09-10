@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78d16e8e6fc43644cdb318f8e402c2e8bbe0363e
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 6aca340994f10bd546a25e577258d90d7b7b1368
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772496"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860941"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Releaseopmerkingen Azure Machine Learning-service
 
@@ -23,12 +23,42 @@ In dit artikel meer informatie over de versies van de Azure Machine Learning-ser
 
 Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informatie over bekende problemen en oplossingen.
 
+## <a name="2019-09-09"></a>2019-09-09
+
+### <a name="new-web-experience-for-azure-machine-learning-workspaces-preview"></a>Nieuwe Webervaring voor Azure Machine Learning werk ruimten (preview-versie)
+Met de nieuwe webervaring kunnen gegevens wetenschappers en gegevens technici hun end-to-end machine learning levenscyclus volt ooien van bereidt en gegevens visualiseren om modellen op één locatie te trainen en te implementeren. 
+
+![Gebruikers interface van Azure Machine Learning werk ruimte (preview)](./media/azure-machine-learning-release-notes/new-ui-for-workspaces.jpg)
+
+**Belangrijkste functies:**
+
+Met deze nieuwe Azure Machine Learning interface kunt u nu het volgende doen:
++ Uw notitie blokken beheren of een koppeling naar Jupyter
++ Automatische ML experimenten uitvoeren
++ [Gegevens sets maken op basis van lokale bestanden, gegevens opslag, &-Webbe standen](how-to-create-register-datasets.md)
++ Gegevens sets verkennen & voorbereiden voor het maken van modellen
++ Gegevens drift voor uw modellen bewaken 
++ Recente resources van een dash board weer geven
+
+Op het moment van deze release worden de volgende browsers ondersteund: Chrome, Firefox, Safari en micro soft Edge Preview.
+
+**Bekende problemen:**
+
+1. Vernieuw uw browser als u ziet dat er iets mis is gegaan. Fout bij het laden van segment bestanden wanneer de implementatie wordt uitgevoerd.  
+
+1. Kan het bestand in notitie blokken en bestanden niet verwijderen of een andere naam geven. Tijdens de open bare preview kunt u de Jupyter-gebruikers interface of-terminal in de notebook-VM gebruiken om update Bestands bewerkingen uit te voeren. Omdat het een gekoppeld netwerk bestands systeem is, worden alle wijzigingen die u aanbrengt op de VM van het notebook direct weer gegeven in de werk ruimte notebook. 
+
+1. SSH in de VM van het notebook:
+   1. De SSH-sleutels zoeken die zijn gemaakt tijdens de installatie van de virtuele machine. U kunt ook de sleutels in het dialoog venster Azure ML Azure Portal > open Compute vinden > zoek naar de VM van het notebook in de lijst > de eigenschappen ervan te openen
+   1. Importeer deze open bare en persoonlijke SSH-sleutels op uw lokale machine.
+   1. Gebruik ze om te SSHen in de VM van het notebook. 
+
 ## <a name="2019-09-03"></a>2019-09-03
 ### <a name="azure-machine-learning-sdk-for-python-v1060"></a>Azure Machine Learning SDK voor python v-1.0.60
 
 + **Nieuwe functies**
   + Geïntroduceerde FileDataset, die verwijst naar één of meer bestanden in uw gegevens opslag of open bare url's. De bestanden kunnen elk een wille keurige indeling hebben. FileDataset biedt u de mogelijkheid om de bestanden te downloaden of te koppelen aan uw compute. Ga voor meer informatie over FileDataset naar https://aka.ms/file-dataset.
-  + Ondersteuning voor pijplijn yaml toegevoegd voor PythonScript stap, Adla stap, Databrick stap, DataTransferStep en AzureBatch stap
+  + Ondersteuning voor pijplijn yaml toegevoegd voor PythonScript stap, Adla stap, Databricks stap, DataTransferStep en AzureBatch stap
 
 + **Oplossingen en verbeteringen voor oplossingen**
   + **azureml-automl-core**
@@ -39,7 +69,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informa
     + AutoML-modellen retour neren nu AutoMLExceptions
     + Met deze release worden de uitvoerings prestaties van automatische machine learning lokale uitvoeringen verbeterd.
   + **azureml-core**
-    + Introduce `Dataset.get_all()` waarin een woorden lijst `TabularDataset` en `FileDataset` objecten worden geretourneerd op basis van de registratie naam. 
+    + Maak een gegevensset. Get _all (werk ruimte), die een woorden `TabularDataset` boek `FileDataset` van en objecten retourneert op basis van hun registratie naam. 
     
     ```py 
     workspace = Workspace.from_config() 
@@ -47,7 +77,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informa
     mydata = all_datasets['my-data'] 
     ```
     
-    + Als `parition_format` argument inintroducen `Dataset.Tabular.from_parquet.files`voor `Dataset.Tabular.from_delimited_files` en. De partitie gegevens van elk gegevenspad worden geëxtraheerd in kolommen op basis van de opgegeven indeling. {COLUMN_NAME} maakt een teken reeks kolom, en ' {COLUMN_NAME: JJJJ/MM/DD/uu/mm/SS} ' maakt een date time kolom, waarbij ' jjjj ', ' MM ', ' DD ', ' HH ', ' mm ' en ' ss ' worden gebruikt voor het extra heren van jaar, maand, dag, uur, minuut en seconde voor het datum type De partition_format moet beginnen met de positie van de eerste partitie sleutel tot het einde van het bestandspad. Bijvoorbeeld, op basis van het pad '.. /USA/2019/01/01/data.csv ' waarbij de partitie op land en tijd staat, partition_format = '/{Country}/{PartitionDate: JJJJ/MM/DD}/data. csv ' maakt teken reeks kolom ' land ' met de waarde ' USA ' en datetime column ' PartitionDate ' met de waarde ' 2019-01-01 '.
+    + Als `parition_format` argument inintroducen `Dataset.Tabular.from_parquet.files`voor `Dataset.Tabular.from_delimited_files` en. De partitie gegevens van elk gegevenspad worden geëxtraheerd in kolommen op basis van de opgegeven indeling. {COLUMN_NAME} maakt een teken reeks kolom en ' {COLUMN_NAME: JJJJ/MM/DD/uu/mm/SS} ' maakt de kolom datetime, waarbij ' jjjj ', ' MM ', ' DD ', ' HH ', ' mm ' en ' ss ' worden gebruikt voor het ophalen van jaar, maand, dag, uur, minuut en seconde voor het type datum/tijd. De partition_format moet beginnen met de positie van de eerste partitie sleutel tot het einde van het bestandspad. Bijvoorbeeld, op basis van het pad '.. /USA/2019/01/01/data.csv ' waarbij de partitie op land en tijd staat, partition_format = '/{Country}/{PartitionDate: JJJJ/MM/DD}/data. csv ' maakt teken reeks kolom ' land ' met de waarde ' USA ' en datetime column ' PartitionDate ' met de waarde ' 2019-01-01 '.
     + `to_csv_files`en `to_parquet_files` er zijn methoden toegevoegd aan `TabularDataset`. Met deze methoden wordt de conversie `TabularDataset` tussen a `FileDataset` en a ingeschakeld door de gegevens te converteren naar bestanden met de opgegeven indeling.
     + Automatisch aanmelden bij het REGI ster van de basis installatie kopie bij het opslaan van een Dockerfile die is gegenereerd door model. pakket ().
     + ' gpu_support ' is niet langer nodig; Nu wordt de NVIDIA docker-extensie automatisch gedetecteerd en gebruikt wanneer deze beschikbaar is. Deze wordt in een toekomstige release verwijderd.
@@ -66,7 +96,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informa
   + **azureml-pipeline-core**
     + Er is ondersteuning toegevoegd om PipelineDrafts te maken, bij te werken en te gebruiken-kan worden gebruikt om onveranderlijke pijplijn definities te onderhouden en ze interactief te gebruiken om uit te voeren
   + **azureml-train-automl**
-    + Er is een functie gemaakt voor het installeren van specifieke versies van GPU-capable pytorch v 1.1.0, CUDA Toolkit 9,0, pytorch-trans formaties die vereist zijn om BERT/XLNet in te scha kelen in de externe python-runtime omgeving.
+    + Er is een functie gemaakt voor het installeren van specifieke versies van GPU-capable pytorch v 1.1.0, CUDA Toolkit 9,0, pytorch-trans formaties, die vereist zijn om BERT/XLNet in te scha kelen in de externe python-runtime omgeving.
   + **azureml-train-core**
     + Vroegtijdige uitval van sommige afstemming definitie fouten rechtstreeks in de SDK in plaats van aan de server zijde.
 
@@ -87,7 +117,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informa
   + **automl-client-core-nativeclient**
     + Er is een fout opgelost die optreedt wanneer training en/of validerings labels (y en y_valid) zijn opgenomen in de vorm van Pandas data frame, maar niet als numpy-matrix.
     + De interface voor het maken `RawDataContext` van een kan alleen worden gemaakt als `AutoMLBaseSettings` de gegevens en het object zijn vereist.
-    +  Sta AutoML-gebruikers toe om trainings reeksen te verwijderen die niet lang genoeg zijn bij het voors pellen. -Sta AutoML-gebruikers toe om korrels te verwijderen uit de testset die niet voor komen in de Trainingsset tijdens het voors pellen.
+    +  Sta AutoML-gebruikers toe om trainings reeksen te verwijderen die niet lang genoeg zijn bij het voors pellen. -Sta AutoML-gebruikers toe om korrels te verwijderen uit de testset die niet voor komt in de Trainingsset tijdens het maken van prognoses.
   + **azure-cli-ml**
     + U kunt nu het SSL-certificaat voor het Score-eind punt dat is geïmplementeerd op het AKS-cluster bijwerken voor zowel het micro soft-certificaat dat is gegenereerd door een klant.
   + **azureml-automl-core**
@@ -98,7 +128,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informa
     + Bij het uitvoeren van een ensemble-iteratie voor het multi validatie type training, als we de modellen die zijn getraind op de hele gegevensset niet kunnen downloaden, hebben we een inconsistentie aangetroffen tussen de model gewichten en de modellen die in de stemming werden ingevoerd dienen.
     + Er is een fout opgelost die optreedt wanneer training en/of validerings labels (y en y_valid) zijn opgenomen in de vorm van Pandas data frame, maar niet als numpy-matrix.
     + Het probleem is opgelost met de prognose taken wanneer er geen is aangetroffen in de Boole-kolommen van de invoer tabellen.
-    + Sta AutoML-gebruikers toe om trainings reeksen te verwijderen die niet lang genoeg zijn bij het voors pellen. -Sta AutoML-gebruikers toe om korrels te verwijderen uit de testset die niet voor komen in de Trainingsset tijdens het voors pellen.
+    + Sta AutoML-gebruikers toe om trainings reeksen te verwijderen die niet lang genoeg zijn bij het voors pellen. -Sta AutoML-gebruikers toe om korrels te verwijderen uit de testset die niet voor komt in de Trainingsset tijdens het maken van prognoses.
   + **azureml-core**
     + Probleem opgelost met het rangschikken van de blob_cache_timeout-para meter.
     + De uitzonderings typen voor externe aanpassing en trans formatie zijn toegevoegd aan systeem fouten.
@@ -116,9 +146,9 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informa
     + Er zijn extra onderdrukkings parameters toegevoegd voor verzenden-Hyperdrive CLI-opdracht.
     + Verbeter de betrouw baarheid van API-aanroepen om nieuwe pogingen uit te breiden naar algemene aanvragen bibliotheek uitzonderingen.
     + Voeg ondersteuning toe voor het verzenden van uitvoeringen vanuit een ingediende uitvoering.
-    + Er is een vast verlopen SAS-token probleem opgetreden in FileWatcher dat ertoe heeft geleid dat bestanden niet meer worden geüpload nadat het oorspronkelijke token is verlopen.
+    + Probleem met een vast verlopen SAS-token in FileWatcher, waardoor bestanden niet meer worden geüpload nadat het oorspronkelijke token is verlopen.
     + Ondersteunde HTTP CSV/TSV-bestanden importeren in dataset python SDK.
-    + De methode Workspace. Setup () is afgeschaft. Er wordt een waarschuwings bericht weer gegeven dat gebruikers Create () of Get ()/from_config () gebruiken.
+    + De methode Workspace. Setup () is afgeschaft. Er wordt een waarschuwings bericht weer gegeven aan gebruikers met de suggesties Create () of Get ()/from_config ().
     + Er is een omgeving toegevoegd. Voeg _private_pip_wheel () toe, waarmee u persoonlijke aangepaste Python-pakketten (. WHL) kunt uploaden naar de werk ruimte en deze veilig met behulp van ze kunt gebruiken om de omgeving te bouwen/te realiseren.
     + U kunt nu het SSL-certificaat voor het Score-eind punt dat is geïmplementeerd op het AKS-cluster bijwerken voor zowel het micro soft-certificaat dat is gegenereerd door een klant.
   + **azureml-explain-model**
@@ -152,7 +182,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informa
   + De prestaties van `read_parquet` zijn aanzienlijk verbeterd wanneer ze in Spark worden uitgevoerd.
   + Er is een probleem `column_type_builder` opgelost waarbij een fout is opgetreden in een enkele kolom met dubbel zinnige datum notaties.
 
-### <a name="azure-portal"></a>Azure-portal
+### <a name="azure-portal"></a>Azure Portal
 + **Preview-functie**
   + Logboek-en uitvoer bestands streaming is nu beschikbaar voor pagina's met details van de uitvoering. De bestanden streamen updates in realtime wanneer de schakel optie voor preview is ingeschakeld.
   + De mogelijkheid om een quotum op een werkruimte niveau in te stellen, wordt vrijgegeven in de preview-versie. AmlCompute quota worden toegewezen op abonnements niveau, maar we bieden u de mogelijkheid om dat quotum tussen werk ruimten te verdelen en toe te wijzen voor eerlijk delen en governance. Klik op de Blade gebruiks namen en **quota's** in de linkernavigatiebalk van uw werk ruimte en selecteer het tabblad **quota's configureren** . Houd er rekening mee dat u een abonnements beheerder moet zijn om quota's op het niveau van de werk ruimte te kunnen instellen, omdat dit een bewerking in meerdere werk ruimten is.
@@ -274,9 +304,9 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informa
   + **azureml-explain-model**
     + Argument voor vaste trans formaties voor de licht gewicht uitleg van de onbewerkte functie in het contrib-uitleg-model pakket
     + scipy sparse-ondersteuning voor LimeExplainer toevoegen
-    + Er is een Shap-lineaire uitleg weergave toegevoegd, evenals een ander niveau voor de uitleg van lineaire modellen in tabel vorm
+    + vorm van lineaire uitleg weergave is toegevoegd, evenals een ander niveau voor de uitleg over lineaire modellen in tabel vorm
     + voor een gesimuleerde uitleg van de uitleg model bibliotheek is een vaste fout opgetreden wanneer include_local = False voor de sparse gegevens invoer
-    + verwachte waarden toevoegen aan automl-uitvoer
+    + Verwachte waarden toevoegen aan automl-uitvoer
     + het is belang rijk dat het probleem is opgelost door het argument van de transformaties van de functie RAW te verkrijgen
     + batch_size toevoegen om uitleg te geven wanneer include_local = False voor het streamen van globale toelichtingen in batches om de uitvoerings tijd van DecisionTreeExplainableModel te verbeteren
     + voor de model verklarende bibliotheek is een vast blackbox-uitleg waarbij Pandas data frame invoer vereist is voor de voor spelling
@@ -299,7 +329,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informa
   + **azureml-train-automl**
     + Bijgewerkte documentatie op get_output om het werkelijke retour type weer te geven en aanvullende notities te geven over het ophalen van de sleutel eigenschappen.
     + NimbusML-afhankelijkheid bijwerken naar 1.2.0-versie (meest recent).
-    + verwachte waarden toevoegen aan automl-uitvoer
+    + Verwachte waarden toevoegen aan automl-uitvoer
   + **azureml-train-core**
     + Teken reeksen worden nu geaccepteerd als Compute target voor automatische afstemming-afstemming
     + De niet-gebruikte RunConfiguration-instelling auto_prepare_environment is gemarkeerd als afgeschaft.
@@ -323,7 +353,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informa
 
 + **Nieuwe functies**
   + **azureml-opendatasets**
-    + **azureml-contrib-opengegevenssets** is nu beschikbaar als **azureml-opendatasets**. Het oude pakket kan nog steeds werken, maar we raden u aan om gebruik te maken van **azureml-opengegevenssets** voor geavanceerde mogelijkheden en verbeteringen.
+    + **azureml-contrib-** opengegevenssets is nu beschikbaar als **azureml-** opendatasets. Het oude pakket kan nog steeds werken, maar we raden u aan om gebruik te maken van **azureml-** opengegevenssets voor geavanceerde mogelijkheden en verbeteringen.
     + Met dit nieuwe pakket kunt u open gegevens sets als gegevensset registreren in de AML-werk ruimte en gebruikmaken van de functies die door gegevensset worden geboden.
     + Het omvat ook bestaande mogelijkheden, zoals het gebruik van open gegevens sets als Panda-en SPARK-dataframes en de locatie koppeling voor een bepaalde gegevensset, zoals weer.
 
@@ -411,7 +441,7 @@ Er is een wijziging doorgegaan die de prestaties verbeterd, omdat deze problemen
 + **Oplossingen en verbeteringen voor oplossingen**
   + De paramiko-afhankelijkheid is verwijderd uit de azureml-kern. Waarschuwingen voor afschaffing zijn toegevoegd voor verouderde methoden voor het koppelen van het doel.
   + Verbeter de prestaties van run. create_children
-  + In de gesimuleerde uitleg met een binaire classificatie kunt u de volg orde van kansen vaststellen wanneer de kans op docenten wordt gebruikt voor het schalen van Shap-waarden
+  + In de gesimuleerde uitleg met een binaire classificatie kunt u de volg orde van kansen oplossen wanneer de kans op docenten wordt gebruikt voor het schalen van vorm waarden.
   + Verbeterde fout afhandeling en-berichten voor automatische machine learning. 
   + Het probleem met de herhalings fout is opgelost voor automatische machine learning.
   + De trans formatie prestaties van de tijd reeks zijn verbeterd voor automatische machine learning.
@@ -445,7 +475,7 @@ Er is een wijziging doorgegaan die de prestaties verbeterd, omdat deze problemen
   + AmlCompute quota goedkeuringen zijn nog sneller geworden. We hebben nu het proces voor het goed keuren van uw quotum aanvragen binnen een drempel waarde geautomatiseerd. Meer informatie over de werking van quota's vindt [u in het beheren van quota's](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
 
 + **Preview-functies**
-    + Integratie met [MLflow](https://mlflow.org) 1.0.0 tracking via het MLflow-pakket ([voor beeld-notebooks](https://aka.ms/azureml-mlflow-examples)).
+    + Integratie met [MLflow](https://mlflow.org) 1.0.0 tracking via het MLflow-pakket ([voor beeld](https://aka.ms/azureml-mlflow-examples)-notebooks).
     + Verzend Jupyter notebook als een run. [API-referentie documentatie](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
     + Open bare preview-versie van de [gegevens drift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift?view=azure-ml-py) via het contrib-datadrift-pakket ([voorbeeld notitieblokken](https://aka.ms/azureml-datadrift-example)). Data gradatie is een van de belangrijkste redenen waarbij de nauw keurigheid van het model in de loop van de tijd verloopt. Het gebeurt wanneer gegevens die worden geleverd aan model in productie verschillen van de gegevens waarop het model is getraind. AML data drift detector helpt klanten bij het bewaken van gegevens drift en bij het verzenden van een waarschuwing wanneer er een drift wordt gedetecteerd. 
 

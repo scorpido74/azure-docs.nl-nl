@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: c6c4d1d4da3679eaefacb5aa0c91fcf64afc2a6b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7d47b74d4fef3676101f3f624dcacb832dcedc3a
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128281"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858702"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Gegevens drift (preview) detecteren voor modellen die zijn geïmplementeerd in azure Kubernetes service (AKS)
 
@@ -40,7 +40,7 @@ Met Azure Machine Learning-service kunt u de invoer bewaken in een model dat is 
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Hoe gegevens drift wordt bewaakt in Azure Machine Learning-service
 
-Met behulp van Azure Machine Learning-service wordt data drift bewaakt via gegevens sets of implementaties. Als u wilt controleren op gegevens drift, een basislijn gegevensset, meestal de trainings gegevensset voor een model, is opgegeven. Een tweede gegevensset-meestal model invoer gegevens die zijn verzameld van een implementatie, wordt getest op basis van de gegevensset van de basislijn planning. Beide gegevens sets worden profileeerd en ingevoerd in de data drift-bewakings service. Een machine learning model wordt getraind om verschillen tussen de twee gegevens sets te detecteren. De prestaties van het model worden geconverteerd naar de snelheids coëfficiënt, die de grootte van de gegevens in de twee data sets meet. Het gebruik van [model](machine-learning-interpretability-explainability.md)interpreteert de functies die bijdragen aan de snelheids coëfficiënt worden berekend. Vanuit het profiel gegevensset wordt statistische informatie over elke functie bijgehouden. 
+Met behulp van Azure Machine Learning-service wordt data drift bewaakt via gegevens sets of implementaties. Als u wilt controleren op gegevens drift, een basislijn gegevensset, meestal de trainings gegevensset voor een model, is opgegeven. Een tweede gegevensset-meestal model invoer gegevens die zijn verzameld van een implementatie, wordt getest op basis van de gegevensset van de basislijn planning. Beide gegevens sets worden profileeerd en ingevoerd in de data drift-bewakings service. Een machine learning model wordt getraind om verschillen tussen de twee gegevens sets te detecteren. De prestaties van het model worden geconverteerd naar de snelheids coëfficiënt, die de grootte van de gegevens in de twee data sets meet. Het gebruik van [model interpreteert](machine-learning-interpretability-explainability.md)de functies die bijdragen aan de snelheids coëfficiënt worden berekend. Vanuit het profiel gegevensset wordt statistische informatie over elke functie bijgehouden. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -134,6 +134,7 @@ Er zijn meerdere manieren om gegevens over de drift weer te geven:
 * Gebruik de `RunDetails` [widget Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py).
 * Gebruik de [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) functie voor elk `datadrift` run-object.
 * Bekijk de metrische gegevens in het Azure Portal van uw model.
+* De metrische gegevens weer geven in het gedeelte **modellen** van de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com).
 
 In het volgende python-voor beeld ziet u hoe u relevante gegevens waarden kunt tekenen. U kunt de geretourneerde metrische gegevens gebruiken om aangepaste visualisaties te maken:
 
@@ -158,7 +159,7 @@ datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-De configuratie van de gegevens drift-detectie kan worden weer gegeven op de pagina model Details in het Azure Portal.
+De configuratie van de data drift-detectie kan worden weer gegeven op de pagina model Details in de Azure Portal of de landings pagina van uw werk ruimte (preview).
 
 ![Configuratie van gegevens-drift Azure Portal](media/how-to-monitor-data-drift/drift_config.png)
 
@@ -167,6 +168,8 @@ De configuratie van de gegevens drift-detectie kan worden weer gegeven op de pag
 Als u de resultaten in uw werk ruimte in [Azure Portal](https://portal.azure.com)wilt weer geven, gaat u naar de model pagina. Op het tabblad Details van het model wordt de data-drift configuratie weer gegeven. Een tabblad ' gegevens drift (preview-versie) ' is nu beschikbaar voor het visualiseren van de metrische gegevens waarden. 
 
 ![Gegevens drift Azure Portal](media/how-to-monitor-data-drift/drift_ui.png)
+
+De resultaten zijn ook beschikbaar in de details van het model op de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com).
 
 ## <a name="receiving-drift-alerts"></a>Ontvangst van drijf signalen
 

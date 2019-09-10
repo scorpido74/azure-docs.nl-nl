@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 79b57a9c9f12c6014b9002b0688beae334af3587
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 7b37912c58312644059f3990b4776514e081a4bb
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806510"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858848"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Verklarende woorden lijst voor de preview-versie van IoT Plug en Play
 
@@ -46,9 +46,9 @@ Azure IoT Central is een volledig beheerde software-as-a-service-oplossing waarm
 
 De Azure IoT-certificerings service voert een reeks certificerings tests uit wanneer u een [IoT Plug en Play-apparaat](#iot-plug-and-play-device) verzendt voor certificering via de [Azure Certified voor IOT-Portal](#azure-certified-for-iot-portal). Voordat u een apparaat kunt toevoegen aan de [certificerings catalogus voor IOT-apparaten](#certified-for-iot-device-catalog), moet het apparaat worden gecertificeerd.
 
-## <a name="azure-iot-device-workbench-extension"></a>Uitbrei ding Azure IoT Device workbench
+## <a name="azure-iot-tools-extension"></a>Uitbrei ding Azure IoT-Hulpprogram Ma's
 
-Het Workbench apparaat van Azure IoT is een [Visual Studio code](#visual-studio-code) -extensie die een geïntegreerde omgeving biedt voor het volgende:
+Azure IoT-Hulpprogram Ma's is een verzameling van uitbrei dingen in [Visual Studio code](#visual-studio-code) die u helpen bij het werken met IOT hub en IOT-apparaten te ontwikkelen. Voor IoT Plug en Play Device Development kunt u het volgende doen:
 
 - [Hulp modellen](#device-capability-model) en [interfaces](#interface)voor het ontwikkelen van apparaten.
 - Publiceren naar [model opslagplaatsen](#model-repository).
@@ -200,4 +200,4 @@ Telemetrie-velden die in een [Interface](#interface) zijn gedefinieerd, vertegen
 
 ## <a name="visual-studio-code"></a>Visual Studio code
 
-Visual Studio code is een moderne code-editor die beschikbaar is voor meerdere platforms. Uitbrei dingen, zoals de [Azure IOT Device Workbench-extensie](#azure-iot-device-workbench-extension) , bieden u de mogelijkheid om deze aan te passen om een breed scala aan ontwikkel scenario's te ondersteunen.
+Visual Studio code is een moderne code-editor die beschikbaar is voor meerdere platforms. Uitbrei dingen, zoals die in het [Azure IOT tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Pack, bieden u de mogelijkheid om de editor aan te passen ter ondersteuning van een breed scala aan ontwikkelings scenario's.

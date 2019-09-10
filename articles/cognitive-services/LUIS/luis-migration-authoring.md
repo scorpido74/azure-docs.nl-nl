@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/08/2019
 ms.author: diberry
-ms.openlocfilehash: ee185ca5d2e2cdda89945f0fc1e7aae32030c1be
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
-ms.translationtype: HT
+ms.openlocfilehash: 5828d4f453afeccfaac206195f064e43a20d1ba0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70803889"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844764"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migreren naar een Azure-resource bewerkings sleutel
 
@@ -43,7 +43,7 @@ De eigenaar kan geen subset van te migreren apps kiezen en het proces kan niet o
 De migratie is niet: 
 
 * Een proces waarmee samen werkers worden verzameld en automatisch worden verplaatst of toegevoegd aan de Azure-ontwerp bron. Als eigenaar van de app moet u deze stap volt ooien. Voor deze stap zijn machtigingen vereist voor de juiste resource.
-* Een proces voor het maken en toewijzen van een Voorspellings runtime-resource. Als u een Voorspellings runtime-resource nodig hebt, is dat [een afzonderlijk proces](luis-how-to-azure-subscription.md##create-resources-in-the-azure-portal) en is deze ongewijzigd. 
+* Een proces voor het maken en toewijzen van een Voorspellings runtime-resource. Als u een Voorspellings runtime-resource nodig hebt, is dat [een afzonderlijk proces](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) en is deze ongewijzigd. 
 
 ## <a name="how-are-the-apps-migrating"></a>Hoe worden de apps gemigreerd?
 
@@ -62,7 +62,9 @@ U kunt het migratie proces vertragen door het venster te annuleren. U wordt rege
 
 * U **kunt ook**een back-up maken van de apps uit de lijst met apps van de Luis-portal door elke app te exporteren of de export- [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)te gebruiken.
 * U **kunt desgewenst**de collaborator's-lijst van elke app opslaan. Deze e-mail lijst wordt aangeboden als onderdeel van het migratie proces.
-* **Vereist**, u moet een Azure- [abonnement](https://azure.microsoft.com/free/)hebben. Voor een deel van het abonnements proces zijn facturerings gegevens vereist. U kunt echter gratis (F0) prijs categorieën gebruiken wanneer u LUIS gebruikt. Mogelijk hebt u uiteindelijk een betaalde laag nodig, omdat uw gebruik toeneemt. 
+* **Vereist**, u moet een Azure- [abonnement](https://azure.microsoft.com/free/)hebben. Voor een deel van het abonnements proces zijn facturerings gegevens vereist. U kunt echter de prijs categorie gratis (`F0`) gebruiken wanneer u Luis gebruikt. 
+
+Het **ontwerpen van uw Luis-app is gratis**, wat `F0` wordt aangegeven door de laag. Meer informatie [over prijs categorieën](luis-boundaries.md#key-limits).
 
 Als u geen Azure-abonnement hebt, [meldt u zich](https://azure.microsoft.com/free/)aan. 
 

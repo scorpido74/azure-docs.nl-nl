@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ed20dd9068ccdea1fb9cd04801eb0096fed2c922
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 929c923fda8c1c2bddd96d0b4d4e4b6ce6d29de9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972436"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845303"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>DNS configureren voor naam omzetting voor Private Cloud vCenter-toegang vanaf on-premises werk stations
 
@@ -56,18 +56,24 @@ zone “cloudsimple.io”
 
 ### <a name="create-a-zone-on-a-microsoft-windows-dns-server"></a>Een zone maken op een micro soft Windows DNS-server
 
-1. Klik met de rechter muisknop op de DNS-server en selecteer **nieuwe zone**.  
-![Nieuwe zone](media/DNS01.png)
+1. Klik met de rechter muisknop op de DNS-server en selecteer **nieuwe zone**. 
+  
+    ![Nieuwe zone](media/DNS01.png)
 2. Selecteer **stub-zone** en klik op **volgende**.
-![Nieuwe zone](media/DNS02.png)
+
+    ![Nieuwe zone](media/DNS02.png)
 3. Selecteer de gewenste optie, afhankelijk van uw omgeving en klik op **volgende**.
-![Nieuwe zone](media/DNS03.png)
+
+    ![Nieuwe zone](media/DNS03.png)
 4. Selecteer **zone** voor forward lookup en klik op **volgende**.
-![Nieuwe zone](media/DNS01.png)
+
+    ![Nieuwe zone](media/DNS01.png)
 5. Voer de zone naam in en klik op **volgende**.
-![Nieuwe zone](media/DNS05.png)
+
+    ![Nieuwe zone](media/DNS05.png)
 6. Voer de IP-adressen in van de DNS-servers voor uw Privécloud die u hebt verkregen via de CloudSimple-Portal.
-![Nieuwe zone](media/DNS06.png)
+
+    ![Nieuwe zone](media/DNS06.png)
 7. Klik op **volgende** als dat nodig is om de installatie van de wizard te volt ooien.
 
 ## <a name="create-a-conditional-forwarder"></a>Een voorwaardelijke doorstuur server maken
@@ -91,5 +97,6 @@ zone “cloudsimple.io” {
 
 1. Open DNS-beheer op de DNS-server.
 2. Klik met de rechter muisknop op **voorwaardelijke doorstuur servers** en selecteer de optie om een nieuwe voorwaardelijke doorstuur server toe te voegen.
-![Voorwaardelijke doorstuur server 1 Windows DNS](media/DNS08.png)
+
+    ![Voorwaardelijke doorstuur server 1 Windows DNS](media/DNS08.png)
 3. Voer het DNS-domein en het IP-adres van de DNS-servers in de Privécloud in en klik op **OK**.

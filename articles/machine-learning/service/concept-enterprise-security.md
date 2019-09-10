@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: 81e8601ac83d43bde0767e38eb387f489d76125b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e1029ad34a05d342e5aed5bb30407dee7c914f3c
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165241"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873556"
 ---
 # <a name="enterprise-security-for-the-azure-machine-learning-service"></a>Enter prise Security voor de Azure Machine Learning-service
 
@@ -132,7 +132,7 @@ Zie [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azur
 
 Het is niet raadzaam om beheerders de toegang tot de beheerde identiteit in te trekken voor de resources die in de voor gaande tabel worden vermeld. U kunt de toegang herstellen met behulp van de bewerking voor het opnieuw synchroniseren van sleutels.
 
-De Azure machine learning-service maakt een extra toepassing (de naam begint `aml-`met) met toegang op Inzender niveau in uw abonnement voor elke werkruimte regio. Als u bijvoorbeeld één werk ruimte hebt in VS-Oost en een andere werk ruimte in Europa-noord in hetzelfde abonnement, ziet u twee van deze toepassingen. Deze toepassingen bieden de Azure Machine Learning-service de mogelijkheid om reken resources te beheren.
+De Azure machine learning-service maakt een extra toepassing (de naam begint `aml-` met `Microsoft-AzureML-Support-App-`of) met toegang op Inzender niveau in uw abonnement voor elke werkruimte regio. Als u bijvoorbeeld één werk ruimte hebt in VS-Oost en een andere werk ruimte in Europa-noord in hetzelfde abonnement, ziet u twee van deze toepassingen. Deze toepassingen bieden de Azure Machine Learning-service de mogelijkheid om reken resources te beheren.
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 

@@ -9,20 +9,20 @@ ms.date: 10/11/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: a2729af6a689daa551fc01f585324d53a8770a9b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67176398"
 ---
 | Resource | Standaardlimiet |
 | --- | :--- |
 | Maximum aantal clusters per abonnement | 100 |
-| Maximum aantal knooppunten per cluster | 100 |
-| Maximale schillen per knooppunt: [basisnetwerken][basic-networking] met Kubenet | 110 |
-| Maximale schillen per knooppunt: [Geavanceerde netwerken] [ advanced-networking] met Azure Container-VPN-Interface | Implementatie van Azure CLI: 30<sup>1</sup><br />Azure Resource Manager-sjabloon: 30<sup>1</sup><br />Portal-implementatie: 30 |
+| Maximum aantal knoop punten per cluster | 100 |
+| Maximum aantal per knoop punt: [Basis netwerken][basic-networking] met Kubenet | 110 |
+| Maximum aantal per knoop punt: [Geavanceerde netwerken][advanced-networking] met Azure container Networking-interface | Implementatie van Azure CLI: 30<sup>1</sup><br />Azure Resource Manager sjabloon: 30<sup>1</sup><br />Portal-implementatie: 30 |
 
-<sup>1</sup>wanneer u een cluster Azure Kubernetes Service (AKS) met de Azure CLI of een Resource Manager-sjabloon implementeert, deze waarde kan worden geconfigureerd maximaal 250 schillen per knooppunt. U kunt maximaal schillen per knooppunt niet configureren nadat u al een AKS-cluster hebt geïmplementeerd, of als u een cluster implementeren met behulp van de Azure-portal.<br />
+<sup>1</sup> Wanneer u een Azure Kubernetes service-cluster (AKS) implementeert met de Azure CLI of een resource manager-sjabloon, kan deze waarde worden geconfigureerd tot 250 per knoop punt. U kunt het maximum aantal per knoop punt niet configureren nadat u al een AKS-cluster hebt geïmplementeerd of als u een cluster implementeert met behulp van de Azure Portal.<br />
 
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/concepts-network.md#kubenet-basic-networking

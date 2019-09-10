@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/9/2019
+ms.date: 09/09/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: ff267a524001802f8bcd0903fcb7119bab16ef11
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: HT
+ms.openlocfilehash: afa6c5e40918906eb9fe0e40ed633715e3f2741d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813328"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844797"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Grenzen voor uw LUIS-model en-sleutels
 LUIS heeft verschillende gebieden van de grens. De eerste is de [model grens](#model-boundaries), welke besturingselementen intents, entiteiten en functies van LUIS. Het tweede gedeelte [quotalimieten](#key-limits) op basis van het type sleutel. Is van een derde deel van de grenzen van de [combinatie op het toetsenbord](#keyboard-controls) voor het beheren van de website van LUIS. Een vierde gebied is de [world regiotoewijzing](luis-reference-regions.md) tussen de LUIS website ontwerpen en de LUIS [eindpunt](luis-glossary.md#endpoint) API's. 
@@ -29,7 +29,7 @@ Als uw app de limieten en grenzen van het LUIS-model overschrijdt, kunt u overwe
 |Onderwerp|Limiet|
 |--|:--|
 | [Naam van app][luis-get-started-create-app] | \* Standaard teken max |
-| Toepassingen| 500-toepassingen per Azure-resource |
+| Toepassingen| 500-toepassingen per Azure-ontwerp bron |
 | [Batch testen][batch-testing]| 10 gegevenssets, 1000 uitingen per gegevensset|
 | Expliciete lijst | 50 per toepassing|
 | Externe entiteiten | geen limieten |
@@ -65,21 +65,24 @@ Gebruik niet de volgende tekens in de volgende namen.
 
 Taal kennis heeft afzonderlijke sleutels, één type voor ontwerpen en één type voor het uitvoeren van query's op het Voorspellings eindpunt. Zie voor meer informatie over de verschillen tussen sleutel typen [ontwerpen en query prediction-eindpunt sleutels in Luis](luis-concept-keys.md).
 
-## <a name="key-limits"></a>Limieten
+<a name="key-limits"></a>
 
-De ontwerphandleiding sleutel heeft verschillende beperkingen bij het ontwerpen en -eindpunt. De sleutel van LUIS-service-eindpunt is alleen geldig voor eindpunt query's.
+## <a name="resource-key-limits"></a>Limieten voor de resource sleutel
 
-* 500-toepassingen per Azure-resource 
-* 100 versies per toepassing
+De resource sleutels hebben verschillende limieten voor ontwerpen en eind punten. De eindpunt sleutel van de LUIS-Voorspellings query is alleen geldig voor eindpunt query's. 
+
+* 500-toepassingen per Azure-ontwerp bron 
 
 |Sleutel|Ontwerpen|Eindpunt|Doel|
 |--|--|--|--|
-|Language Understanding ontwerpen/starter|1 miljoen/maand, 5 per seconde|1-1000/maand, 5 per seconde|Uw LUIS-app ontwerpen|
-|Language Understanding [abonnement][pricing] -F0-Free-laag |ongeldig|10 duizend/maand, 5 per seconde|Uitvoeren van query's uw LUIS-eindpunt|
-|Language Understanding [abonnement][pricing] : S0-Basic-laag|ongeldig|50 per seconde|Uitvoeren van query's uw LUIS-eindpunt|
-|Cognitieve service- [abonnement][pricing] -S0-Standard-laag|ongeldig|50 per seconde|Uitvoeren van query's uw LUIS-eindpunt|
-|[Integratie van sentiment-analyse](luis-how-to-publish-app.md#enable-sentiment-analysis)|ongeldig|Er zijn geen kosten in rekening gebracht|Sentiment informatie, inclusief gegevens sleuteltermextractie toe te voegen |
-|[Spraak integratie](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|ongeldig|$5,50 USD/1 duizend eindpunt aanvragen|Gesproken utterance converteren naar tekst utterance en LUIS resultaten geretourneerd|
+|Starter|1 miljoen/maand, 5 per seconde|1-1000/maand, 5 per seconde|Uw LUIS-app ontwerpen|
+|F0-gratis laag |1 miljoen/maand, 5 per seconde|10 duizend/maand, 5 per seconde|Uitvoeren van query's uw LUIS-eindpunt|
+|S0-Basic-laag|-|50 per seconde|Uitvoeren van query's uw LUIS-eindpunt|
+|S0-Standard-laag|-|50 per seconde|Uitvoeren van query's uw LUIS-eindpunt|
+|[Integratie van sentiment-analyse](luis-how-to-publish-app.md#enable-sentiment-analysis)|-|-|Het toevoegen van sentiment-informatie, inclusief sleutel woordgroepen gegevens extractie, wordt verstrekt zonder dat er een andere Azure-resource nodig is. |
+|[Spraak integratie](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|-|1000 eindpunt aanvragen per eenheids kosten|Gesproken utterance converteren naar tekst utterance en LUIS resultaten geretourneerd|
+
+[Meer informatie over prijzen.][pricing]
 
 ## <a name="keyboard-controls"></a>Toetsenbord
 

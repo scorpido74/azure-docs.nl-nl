@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 09/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0882be0419cbbbc7d94cb8d517e27bdb06a780
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: e7d0810c393cf9b6060f456c5ff01d03673b62a9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014137"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861300"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Zelfstudie: Azure Active Directory SSO-integratie (single sign-on) met bekijken op kleuren
 
@@ -57,7 +57,6 @@ Als u de integratie van bewakings kleuren wilt configureren in azure AD, moet u 
 1. Typ in het gedeelte **toevoegen vanuit de galerie** de tekst **volgen op kleuren** in het zoekvak.
 1. Selecteer **bekijken op kleuren** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-watch-by-colors"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor controle op kleuren
 
 Azure AD SSO configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in bekijken op kleuren.
@@ -75,7 +74,7 @@ Als u Azure AD SSO wilt configureren en testen met bekijken op kleuren, voltooit
 
 Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina **bekijken op kleuren** van de toepassing de sectie **beheren** en selecteer eenmalige **aanmelding**.
+1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina **bekijken op kleuren** van de toepassing de sectie **beheren** en selecteer **eenmalige aanmelding**.
 1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
 1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
@@ -123,13 +122,21 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-watch-by-colors-sso"></a>Eenmalige aanmelding via de kleuren configureren
 
-1. Open een nieuw webbrowser venster en meld u aan bij de site controle op kleuren bedrijf als beheerder en voer de volgende stappen uit:
+1. Als u de configuratie wilt automatiseren met behulp van kleuren, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
 
-1. Klik in de rechter bovenhoek van de pagina op **profiel** > **account instellingen** > **SSO (eenmalige aanmelding)** .
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
+
+2. Nadat u een uitbrei ding aan de browser hebt toegevoegd, klikt u op de **instelling controle op kleuren** om u te leiden naar de toepassing controleren op kleuren. Geef de beheerders referenties op om u aan te melden bij controle op kleuren. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-5 geautomatiseerd.
+
+    ![Configuratie van Setup](common/setup-sso.png)
+
+3. Als u controle op kleuren hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij uw controle op kleuren bedrijfs site als beheerder en voert u de volgende stappen uit:
+
+4. Klik in de rechter bovenhoek van de pagina op **profiel** > **account instellingen** > **SSO (eenmalige aanmelding)** .
 
     ![Configuratie bekijken op kleuren](./media/watch-by-colors-tutorial/config01.png)
 
-1. Voer de volgende stappen uit op de pagina **SSO (eenmalige aanmelding)** :
+5. Voer de volgende stappen uit op de pagina **SSO (eenmalige aanmelding)** :
 
     ![Configuratie bekijken op kleuren](./media/watch-by-colors-tutorial/config02.png)
 
@@ -183,5 +190,5 @@ Wanneer u op de tegel bekijken op kleuren in het toegangs venster klikt, wordt u
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer vertraging met Azure AD](https://aad.portal.azure.com/)
+- [Kijk op kleuren met Azure AD](https://aad.portal.azure.com/)
 

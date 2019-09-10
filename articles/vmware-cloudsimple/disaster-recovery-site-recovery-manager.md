@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7af6abefd132df7980bdc6e485734a996761653b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 151058f23bed674883da57e0b728dc1df4b698d9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972784"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70846139"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Een Privécloud instellen als een nood herstel doel met VMware Site Recovery Manager
 
@@ -33,6 +33,8 @@ Voor de CloudSimple-oplossing moet u het volgende doen:
 * Geef uw eigen licenties voor de beveiligings-en-website op als de Privécloud de beveiligde site is. U hebt geen extra-CloudSimple-licenties nodig voor de site van de website die als herstel site wordt gebruikt.
 
 Met deze oplossing hebt u volledige controle over vSphere-replicatie en-de-veel-------- De vertrouwde interface-, API-en CLI-interfaces maken gebruik van uw bestaande scripts en hulpprogram ma's mogelijk.
+
+![Site Recovery Manager-implementatie](media/srm-deployment.png)
 
 U kunt alle versies van vRA en een-runtime-versie gebruiken die compatibel zijn met uw persoonlijke Cloud-en on-premises omgevingen. In de voor beelden in deze hand leiding wordt gebruikgemaakt van vRA 6,5 en 6,5. Deze versies zijn compatibel met vSphere 6,5, die wordt ondersteund door CloudSimple.
 
@@ -162,7 +164,7 @@ Voordat u begint, controleert u het volgende:
 
 * het vSphere-replicatie apparaat is geïnstalleerd in uw on-premises en particuliere cloud omgevingen.
 * De vSphere-replicatie apparaten op beide sites zijn met elkaar verbonden.
-* U hebt de VMware-informatie beoordeeld op vereisten en aanbevolen procedures. Voor de 6,5 van uw document kunt u verwijzen naar de vereisten voor VMware-documenten [en best practices voor](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)de oplossings-6,5.
+* U hebt de VMware-informatie beoordeeld op vereisten en aanbevolen procedures. Voor de 6,5 van uw document kunt u verwijzen naar de vereisten voor VMware-documenten [en best practices voor de oplossings-6,5](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html).
 
 Volg de VMware-documentatie voor het uitvoeren van de installatie van een server met twee sites in het implementatie model met één vCenter-exemplaar per platform Services-controller, zoals beschreven in dit [VMware-document](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html). De installatie-instructies voor de 6,5 is beschikbaar in het VMware-document [installatie van site Recovery Manager](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html).
 

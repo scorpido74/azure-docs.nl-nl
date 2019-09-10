@@ -1,19 +1,18 @@
 ---
-title: Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure | Microsoft Docs
+title: Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 description: Een overzicht van de ondersteunde onderdelen en vereisten voor herstel na nood gevallen voor Hyper-V-VM'S naar Azure met Azure Site Recovery
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 09/10/2019
 ms.author: raynew
-ms.openlocfilehash: b4f9c0ab3ca50b0ce8c9ba27d8773c58a72dcfa9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 5d7ac7cf00ee59a06a914d312fd58de00515a0b4
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70230960"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873334"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 
@@ -134,6 +133,7 @@ Versleuteling op rest (SSE)| Ja | Ja
 Premium Storage | Ja | Ja
 Import/export-service | Nee | Nee
 Azure Storage firewalls voor virtuele netwerken die zijn geconfigureerd op de doel opslag/cache-opslag account (gebruikt voor het opslaan van replicatie gegevens) | Nee | Nee
+Opslag account wijzigen | Nee. Het Azure Storage-doel account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Als u wilt wijzigen, schakelt u herstel na nood geval uit en vervolgens opnieuw in. | Nee
 
 
 ## <a name="azure-compute-features"></a>Azure Compute-functies

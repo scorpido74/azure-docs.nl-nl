@@ -1,6 +1,6 @@
 ---
-title: Azure SignalR Service beperkt tabel
-description: Beschrijving van systeemlimieten voor Azure SignalR Service.
+title: Tabel met limieten voor Azure signalerings service
+description: Beschrijft systeem limieten voor de Azure signalerings service.
 services: signalr
 documentationcenter: signalr
 author: sffamily
@@ -14,21 +14,21 @@ ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: zhshang
 ms.openlocfilehash: 1d87439b7afeb946fd37c468a0853adcb674ee5a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67176436"
 ---
 | Resource | Standaardlimiet | Maximumaantal | 
 | --- | --- | --- |
-| Azure SignalR Service-eenheden per exemplaar gratis laag |1 |1 |
-| Azure SignalR Service-eenheden per exemplaar voor de Standard-laag |100 |100 |
-| Azure SignalR Service-eenheden per abonnement per regio gratis laag|5 |5 |
-| Totaal Azure SignalR Service-eenheid geteld per abonnement per regio |150 |Onbeperkt |
-| Verbindingen per eenheid per dag voor een gratis laag |20 |20 |
+| Service-eenheden van Azure signalering per instantie voor de gratis laag |1 |1 |
+| Service-eenheden van Azure signalering per instantie voor de Standard-laag |100 |100 |
+| Azure signalerings service-eenheden per abonnement per regio voor de gratis laag|5 |5 |
+| Totaal aantal Azure Signalr-service-eenheden per abonnement per regio |150 |Onbeperkt |
+| Verbindingen per eenheid per dag voor gratis laag |20 |20 |
 | Verbindingen per eenheid per dag voor de Standard-laag |1000 |1000|
-| Opgenomen berichten per eenheid per dag gratis laag|20,000 |20,000 |
-| Opgenomen berichten per eenheid per dag voor de Standard-laag|1\.000.000 |1\.000.000 |
+| Inbegrepen berichten per eenheid per dag voor gratis laag|20,000 |20,000 |
+| Inbegrepen berichten per eenheid per dag voor de Standard-laag|1\.000.000 |1\.000.000 |
 
-Om aan te vragen een update van uw abonnement standaardlimieten, door een ondersteuningsticket te openen. 
+Als u een update wilt aanvragen voor de standaard limieten van uw abonnement, opent u een ondersteunings ticket. 

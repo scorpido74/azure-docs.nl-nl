@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 553118486d1148f63e79ca25c32ed7dd8a3b7414
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a756f0d9fe3669ab9d0f2b4576a35be5d2112a87
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736803"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872213"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Een niet-beheerde Directory als beheerder overnemen in Azure Active Directory
 
@@ -102,13 +102,15 @@ De ondersteunde service plannen zijn onder andere:
 - Microsoft Stream
 - Dynamics 365 gratis proef versie
 
-Externe beheerder overname wordt niet ondersteund voor een service met service plannen die share point, OneDrive of Skype voor bedrijven bevatten. bijvoorbeeld via een gratis Office-abonnement. U kunt eventueel de [optie **ForceTakeover** ](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) gebruiken om de domein naam uit de niet-beheerde Tenant te verwijderen en deze te verifiëren op de gewenste Tenant. Deze ForceTakeover optie gaat niet over gebruikers of behoudt de toegang tot het abonnement. In plaats daarvan verplaatst deze optie alleen de domein naam. 
+Externe beheerder overname wordt niet ondersteund voor een service met service plannen die share point, OneDrive of Skype voor bedrijven bevatten. bijvoorbeeld via een gratis Office-abonnement. 
+
+U kunt eventueel de [optie **ForceTakeover** ](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) gebruiken om de domein naam uit de niet-beheerde Tenant te verwijderen en deze te verifiëren op de gewenste Tenant. **De optie ForceTakeover gaat niet over gebruikers, of behoudt de toegang tot het abonnement. Met deze optie wordt alleen de domein naam verplaatst.**
 
 #### <a name="more-information-about-rms-for-individuals"></a>Meer informatie over RMS voor personen
 
-Wanneer de onbeheerde Tenant zich in dezelfde regio bevindt als de Tenant waarvan u de eigenaar bent, worden de automatisch gemaakte [Azure Information Protection-Tenant sleutel](/azure/information-protection/plan-implement-tenant-key) en de [standaard beveiligings sjablonen](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) ook verplaatst voor [RMS voor personen](/azure/information-protection/rms-for-individuals)met de domein naam. 
+Wanneer de onbeheerde Tenant zich in dezelfde regio bevindt als de Tenant waarvan u de eigenaar bent, worden de automatisch gemaakte [Azure Information Protection-Tenant sleutel](/azure/information-protection/plan-implement-tenant-key) en de [standaard beveiligings sjablonen](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) ook verplaatst voor [RMS voor personen](/azure/information-protection/rms-for-individuals)met de domein naam.
 
-De sleutel en sjablonen worden niet verplaatst wanneer de onbeheerde Tenant zich in een andere regio bevindt. De onbeheerde Tenant bevindt zich bijvoorbeeld in Europa en de Tenant die u bezit, bevindt zich in Noord-Amerika. 
+De sleutel en sjablonen worden niet verplaatst wanneer de onbeheerde Tenant zich in een andere regio bevindt. Als de onbeheerde Tenant zich bijvoorbeeld in Europa bevindt en de organisatie waarvan u de eigenaar bent, bevindt zich in Noord-Amerika.
 
 Hoewel RMS voor individuen is ontworpen ter ondersteuning van Azure AD-verificatie om beveiligde inhoud te openen, voor komt u dat gebruikers ook inhoud beveiligen. Als gebruikers inhoud met het abonnement voor RMS voor personen hebben beveiligd en de sleutel en sjablonen niet zijn verplaatst, is deze inhoud niet toegankelijk na de domein overname.
 
@@ -119,8 +121,7 @@ Wanneer u een externe overname uitvoert, wordt Power BI inhoud die is gemaakt vo
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Azure AD Power shell-cmdlets voor de ForceTakeover-optie
 U kunt deze cmdlets zien die in [Power shell-voor beeld](#powershell-example)worden gebruikt.
 
-
-cmdlet | Gebruik 
+cmdlet | Gebruik
 ------- | -------
 `connect-msolservice` | Meld u aan bij uw beheerde Tenant wanneer u hierom wordt gevraagd.
 `get-msoldomain` | Hier worden uw domein namen weer gegeven die zijn gekoppeld aan de huidige Tenant.
@@ -129,6 +130,9 @@ cmdlet | Gebruik
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Bevat informatie die u kunt opnemen in een nieuwe DNS TXT-record voor het domein (MS = xxxxx). Verificatie vindt mogelijk niet onmiddellijk plaats omdat het even duurt voordat de TXT-record is door gegeven. wacht daarom een paar minuten voordat u de optie **-ForceTakeover** overweegt. 
 `confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Als uw domein naam nog niet is geverifieerd, kunt u door gaan met de optie **-ForceTakeover** . Er wordt gecontroleerd of de TXT-record is gemaakt en het overname proces is afgebroken.<li>De optie **-ForceTakeover** moet alleen worden toegevoegd aan de cmdlet wanneer een externe beheerder een overname afdwingt, bijvoorbeeld wanneer de onbeheerde tenant Office 365-Services heeft die de overname blokkeert.
 `get-msoldomain` | In de lijst domein wordt nu de domein naam weer gegeven als **geverifieerd**.
+
+> [!NOTE]
+> De onbeheerde Azure AD-organisatie wordt 10 dagen verwijderd nadat u de optie voor externe overname forceren hebt uitgeoefend.
 
 ### <a name="powershell-example"></a>PowerShell-voorbeeld
 

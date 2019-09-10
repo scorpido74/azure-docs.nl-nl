@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 08ceb5d795465a5759d0130618eafdccdc8c3c91
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3113ad050ec6040d4f7964e940c507024bcf002d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011523"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844980"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Een diep leer model implementeren voor demijnen met GPU
 
@@ -24,7 +24,7 @@ In dit artikel leert u hoe u de Azure Machine Learning-service kunt gebruiken om
 Detrainer of model Score is de fase waarin het geïmplementeerde model wordt gebruikt voor het maken van voor spellingen. Het gebruik van Gpu's in plaats van Cpu's biedt prestatie voordelen voor een zeer kan worden opgestart berekening.
 
 > [!IMPORTANT]
-> GPU-demijnen worden alleen ondersteund in de Azure Kubernetes-service.
+> Voor implementaties van webservices wordt GPU-declienting alleen ondersteund in de Azure Kubernetes-service. Voor demijnen met behulp van een __machine learning pijp lijn__worden gpu's alleen ondersteund op Azure machine learning compute. Zie [batch voorspellingen uitvoeren](how-to-run-batch-predictions.md)voor meer informatie over het gebruik van ml-pijp lijnen. 
 
 > [!TIP]
 > Hoewel de code fragmenten in dit artikel een tensor flow-model usee, kunt u de gegevens Toep assen op elk machine learning Framework dat Gpu's ondersteunt.

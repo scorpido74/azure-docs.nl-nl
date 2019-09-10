@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 5345bbf2514c8b06ab80d4563227725a398f9407
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7c3f72c3ce6acfb63e682b479519dba02a9900eb
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898346"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844908"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Een IoT-ruimtelijke analyse implementeren met behulp van Azure Maps
 
@@ -41,10 +41,10 @@ In onze use-case zijn de huur auto's uitgerust met IoT-apparaten die regel matig
 ```JSON
 {
     "data": {
-         "properties": {
+        "properties": {
             "Engine": "ON"
-         },
-         "systemProperties": {
+        },
+        "systemProperties": {
             "iothub-content-type": "application/json",
             "iothub-content-encoding": "utf-8",
             "iothub-connection-device-id": "ContosoRentalDevice",
@@ -52,13 +52,13 @@ In onze use-case zijn de huur auto's uitgerust met IoT-apparaten die regel matig
             "iothub-connection-auth-generation-id": "636959817064335548",
             "iothub-enqueuedtime": "2019-06-18T00:17:20.608Z",
             "iothub-message-source": "Telemetry"
-         },
-         "body": { 
-                    "location": { 
-                        "type": "Point",
-                        "coordinates": [ -77.025988698005662, 38.9015330523316 ]
-                     } 
-                 } 
+        },
+        "body": { 
+            "location": { 
+                "type": "Point",
+                "coordinates": [ -77.025988698005662, 38.9015330523316 ]
+            } 
+        } 
     }
 }
 ```
@@ -113,7 +113,7 @@ Om gebeurtenis gegevens vast te leggen, maken we een **v2storage** -account voor
 
 1. Navigeer in uw opslag account naar blobs.
 
-    ![blobs](./media/tutorial-iot-hub-maps/blobs.png)
+    ![Blobs](./media/tutorial-iot-hub-maps/blobs.png)
 
 2. Klik op de knop container linksboven en noem uw container "Contoso-verhuur-logs" en klik op OK.
 
@@ -151,7 +151,7 @@ Als u verbinding wilt maken met de IoT Hub, moet u een apparaat registreren. Vol
 
 ## <a name="upload-geofence"></a>Geofence uploaden
 
-We gebruiken de Postman- [toepassing](https://www.getpostman.com) om [de geofence te uploaden](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) naar de Azure Maps-service met behulp van de Azure Maps Data upload-API. Elke gebeurtenis wanneer de auto zich buiten deze geofence bevindt, wordt geregistreerd.
+We gebruiken de [postman-toepassing](https://www.getpostman.com) om [de geofence te uploaden](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) naar de Azure Maps-service met behulp van de Azure Maps Data upload-API. Elke gebeurtenis wanneer de auto zich buiten deze geofence bevindt, wordt geregistreerd.
 
 Open de Postman-app en voer de onderstaande stappen uit om de geofence te uploaden met behulp van de Azure Maps Data upload-API.  
 
@@ -171,7 +171,7 @@ Open de Postman-app en voer de onderstaande stappen uit om de geofence te upload
    
     ![Key-Value-parameters in Postman](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 
-4. Klik op **Body** , Selecteer onbewerkte invoer indeling en kies **JSON (toepassing/tekst)** als invoer indeling in de vervolg keuzelijst. Open het JSON-gegevens bestand [hier](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)en kopieer de JSON naar het gedeelte hoofd tekst in het bericht postman als de gegevens die moeten worden geüpload en klik op **verzenden**.
+4. Klik op **Body** , selecteer **onbewerkte** invoer indeling en kies **JSON (toepassing/tekst)** als invoer indeling in de vervolg keuzelijst. Open het JSON-gegevens bestand [hier](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)en kopieer de JSON naar het gedeelte hoofd tekst in het bericht postman als de gegevens die moeten worden geüpload en klik op **verzenden**.
     
     ![Post gegevens](./media/tutorial-iot-hub-maps/post-json-data.png)
     
@@ -207,7 +207,7 @@ Azure Functions is een serverloze compute-service waarmee u code op aanvraag kun
 
     ![maken-resource](./media/tutorial-iot-hub-maps/create-resource.png)
 
-2. Geef op de pagina functie-app maken een naam op voor de functie-app, onder **resource groep** Selecteer **bestaande gebruiken**en selecteer ' ContosoRental ' in de vervolg keuzelijst. Selecteer .NET Core als runtime stack, selecteer **bestaande gebruiken** en Selecteer ' contosorentaldata ' in de vervolg keuzelijst en klik op **maken**.
+2. Geef op de pagina functie-app maken een naam op voor de functie-app, onder **resource groep** Selecteer **bestaande gebruiken**en selecteer ' ContosoRental ' in de vervolg keuzelijst. Selecteer .NET Core als runtime stack, selecteer **bestaande gebruiken** en **Selecteer '** contosorentaldata ' in de vervolg keuzelijst en klik op **maken**.
     
     ![maken-app](./media/tutorial-iot-hub-maps/rental-app.png)
 
@@ -232,7 +232,7 @@ Azure Functions is een serverloze compute-service waarmee u code op aanvraag kun
     
     ![Add-Event-grid](./media/tutorial-iot-hub-maps/add-egs.png)
 
-11. Vul de abonnements gegevens in, onder DETAILS van het **gebeurtenis abonnement** naam van uw abonnement en kies voor het gebeurtenis schema Event grid schema. Selecteer onder **Details van onderwerp** ' Azure IOT hub-accounts ' als onderwerp type, Kies hetzelfde abonnement dat u hebt gebruikt voor het maken van de resource groep, selecteer ' ContosoRental ' als de resource groep en kies de IOT hub die u hebt gemaakt als een resource. Kies **apparaat** -telemetrie als gebeurtenis type. Nadat u deze opties hebt gekozen, ziet u dat het onderwerp type wordt gewijzigd in automatisch IoT Hub.
+11. Vul de abonnements gegevens in, onder DETAILS van het **gebeurtenis abonnement** naam van uw abonnement en kies voor het gebeurtenis schema Event grid schema. Selecteer onder **Details van onderwerp** ' Azure IOT hub-accounts ' als onderwerp type, Kies hetzelfde abonnement dat u hebt gebruikt voor het maken van de resource groep, selecteer ' ContosoRental ' als de resource groep en kies de IOT hub die u hebt gemaakt als een resource. Kies **apparaat-telemetrie** als gebeurtenis type. Nadat u deze opties hebt gekozen, ziet u dat het onderwerp type wordt gewijzigd in automatisch IoT Hub.
 
     ![Event-grid-abonnement](./media/tutorial-iot-hub-maps/af-egs.png)
  

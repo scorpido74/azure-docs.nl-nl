@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a73d048a66c70eaf22caf6b33c4a495df6d730dd
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 9a2b030185c821ec9bd577ecdabbc929766f2d14
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997921"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858899"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatische ML experimenten configureren in python
 
@@ -34,7 +34,7 @@ Configuratie-opties zijn beschikbaar in geautomatiseerde machine learning:
 * Model metrische gegevens verkennen
 * Registreer en implementeer model
 
-Als u liever geen code hebt, kunt u ook [uw geautomatiseerde machine learning experimenten maken in de Azure Portal](how-to-create-portal-experiments.md).
+Als u liever geen code hebt, kunt u ook [uw geautomatiseerde machine learning experimenten in azure portal maken](how-to-create-portal-experiments.md).
 
 ## <a name="select-your-experiment-type"></a>Selecteer het type experiment
 
@@ -219,7 +219,7 @@ Meer informatie over de specifieke definities van deze in [inzicht in geautomati
 
 ### <a name="data-preprocessing--featurization"></a>& Voor verwerking van gegevens parametrisatie
 
-In elk automatisch machine learning experiment worden uw gegevens [automatisch geschaald en](concept-automated-ml.md#preprocess) genormaliseerd om de Help-algoritmen goed uit te voeren.  U kunt echter ook aanvullende voor verwerking/parametrisatie inschakelen, zoals ontbrekende waarden, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-create-portal-experiments.md#preprocess).
+In elk automatisch machine learning experiment worden uw gegevens [automatisch geschaald en genormaliseerd](concept-automated-ml.md#preprocess) om de Help-algoritmen goed uit te voeren.  U kunt echter ook aanvullende voor verwerking/parametrisatie inschakelen, zoals ontbrekende waarden, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-create-portal-experiments.md#preprocess).
 
 Als u deze parametrisatie wilt inschakelen `"preprocess": True` , geeft u voor de [ `AutoMLConfig` klasse](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)op.
 
@@ -553,13 +553,13 @@ Er zijn twee manieren voor het genereren van functie belang.
     print(per_class_summary)
     ```
 
-De grafiek voor het belang van functie in uw werkruimte in de Azure-portal, kunt u visualiseren. De URL weer geven met het object run:
+De URL weer geven om de functie urgentie te bekijken met het object uitvoeren:
 
 ```
 automl_run.get_portal_url()
 ```
 
-De grafiek voor het belang van functie in uw werkruimte in de Azure-portal, kunt u visualiseren. De grafiek wordt ook weer gegeven wanneer u `RunDetails` de [Jupyter-widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) in een notitie blok gebruikt. Zie voor meer informatie over de grafieken [automatische machine learning resultaten](how-to-understand-automated-ml.md).
+U kunt het grafiek onderdeel urgentie in uw werk ruimte visualiseren in de Azure Portal of op de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com). De grafiek wordt ook weer gegeven wanneer u `RunDetails` de [Jupyter-widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) in een notitie blok gebruikt. Zie voor meer informatie over de grafieken [automatische machine learning resultaten](how-to-understand-automated-ml.md).
 
 ```Python
 from azureml.widgets import RunDetails

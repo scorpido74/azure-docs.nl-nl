@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: df9e60c8d517c35029e425d50dba81a18c2f1114
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: da987b5e841824dc62f3b740cae2961de9d7b293
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617349"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872903"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteunings matrix voor Azure VM-back-up
 U kunt de [Azure backup-service](backup-overview.md) gebruiken voor het maken van een back-up van on-premises machines en werk belastingen, en virtuele machines van Azure (vm's). Dit artikel bevat een overzicht van de ondersteunings instellingen en beperkingen bij het maken van back-ups van virtuele Azure-machines met Azure Backup.
@@ -103,7 +103,7 @@ Herstelpunten op DPM-/MABS-schijf | 64 voor bestands servers en 448 voor app-ser
 
 **Herstel methode** | **Details**
 --- | ---
-Een nieuwe virtuele machine maken | U kunt tijdens het herstel proces een virtuele machine maken. <br/><br/> Met deze optie wordt een virtuele standaard-VM actief. U kunt de VM-naam, de resource groep, het virtuele netwerk, het subnet en de opslag opgeven.  
+Een nieuwe VM maakt | U kunt tijdens het herstel proces een virtuele machine maken. <br/><br/> Met deze optie wordt een virtuele standaard-VM actief. U kunt de VM-naam, de resource groep, het virtuele netwerk, het subnet en de opslag opgeven.  
 Een schijf terugzetten | U kunt een schijf herstellen en gebruiken om een virtuele machine te maken.<br/><br/> Wanneer u deze optie selecteert Azure Backup, worden gegevens uit de kluis gekopieerd naar een opslag account dat u selecteert. Met de herstel taak wordt een sjabloon gegenereerd. U kunt deze sjabloon downloaden, gebruiken om aangepaste VM-instellingen op te geven en een virtuele machine te maken.<br/><br/> Met deze optie kunt u meer instellingen opgeven die de vorige optie heeft voor het maken van een virtuele machine.<br/><br/>
 Een bestaande schijf vervangen | U kunt een schijf herstellen en vervolgens de herstelde schijf gebruiken om een schijf te vervangen die zich op een virtuele machine bevindt.
 Bestanden herstellen | U kunt bestanden herstellen vanaf een geselecteerd herstel punt. U downloadt een script om de VM-schijf van het herstel punt te koppelen. Vervolgens bladert u door de schijf volumes om te zoeken naar de bestanden/mappen die u wilt herstellen en ontkoppelen van de schijf wanneer u klaar bent.
@@ -151,6 +151,7 @@ Back-ups maken van virtuele machines die zijn gemigreerd naar Azure  | Ondersteu
 Back-up van multi-VM-consistentie | Azure Backup biedt geen consistentie van gegevens en toepassingen op meerdere Vm's.
 Back-up met [Diagnostische instellingen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | Niet-ondersteunde. <br/><br/> Als het herstellen van de virtuele machine van Azure met Diagnostische instellingen wordt geactiveerd met de optie [nieuwe maken](backup-azure-arm-restore-vms.md#create-a-vm) , mislukt de herstel bewerking.
 Herstellen van op zones vastgemaakte Vm's | Ondersteund (voor VM waarvan een back-up is gemaakt na 2019 januari en waar de [beschikbaarheids zone](https://azure.microsoft.com/global-infrastructure/availability-zones/) beschikbaar is).<br/><br/>We ondersteunen momenteel het herstellen naar dezelfde zone die is vastgemaakt in Vm's. Als de zone echter niet beschikbaar is, mislukt de herstel bewerking.
+Gen2 Vm's | Ondersteund <br> Azure Backup ondersteunt het maken van back-ups en het herstellen van [Gen2-vm's](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/). Wanneer deze Vm's worden hersteld vanaf het herstel punt, worden ze teruggezet als [Gen2 vm's](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/).
 
 
 ## <a name="vm-storage-support"></a>Ondersteuning voor VM-opslag

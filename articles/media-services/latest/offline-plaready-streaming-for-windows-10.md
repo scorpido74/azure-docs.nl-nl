@@ -1,8 +1,8 @@
 ---
-title: Uw account voor het streamen van offline PlayReady beveiligde inhoud - Azure configureren
-description: In dit artikel laat zien hoe het configureren van Azure Media Services-account voor offline PlayReady voor Windows 10-streaming.
+title: Uw account configureren voor offline streaming van met PlayReady beveiligde inhoud-Azure
+description: In dit artikel wordt uitgelegd hoe u uw Azure Media Services-account voor streaming PlayReady voor Windows 10 offline kunt configureren.
 services: media-services
-keywords: DASH, DRM, Widevine Offline Mode, ExoPlayer, Android
+keywords: DASH, DRM, Widevine offline modus, ExoPlayer, Android
 documentationcenter: ''
 author: willzhan
 manager: steveng
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: ae5fdd51d9bc1a3e7e2521c6ca1ff64d884c96f8
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 25559c7a6f66a1092007054c72f601b428fa4e7b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341767"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845511"
 ---
-# <a name="offline-playready-streaming-for-windows-10"></a>Offline PlayReady Streaming voor Windows 10
+# <a name="offline-playready-streaming-for-windows-10"></a>Offline PlayReady streaming voor Windows 10
 
-Azure Media Services ondersteunt offline downloaden/afspelen met DRM-beveiliging. In dit artikel bevat informatie over offline ondersteuning van Azure Media Services voor Windows 10/PlayReady-clients. U kunt lezen over de offlinemodus-ondersteuning voor iOS/FairPlay- en Android/Widevine-apparaten in de volgende artikelen:
+Azure Media Services offline downloaden/afspelen met DRM-beveiliging ondersteunen. In dit artikel wordt Inge gaan op offline ondersteuning van Azure Media Services voor Windows 10/PlayReady-clients. Raadpleeg de volgende artikelen voor meer informatie over de ondersteuning voor offline modus voor iOS-FairPlay en Android-Widevine-apparaten:
 
 - [Offline FairPlay-streaming voor iOS](offline-fairplay-for-ios.md)
-- [Offline Widevine Streaming voor Android](offline-widevine-for-android.md)
+- [Offline Widevine streaming voor Android](offline-widevine-for-android.md)
 
 > [!NOTE]
-> Offline DRM wordt alleen in rekening gebracht voor het maken van een enkele aanvraag voor een licentie wanneer u de inhoud downloaden. Eventuele fouten worden niet in rekening gebracht.
+> Offline DRM wordt alleen gefactureerd voor het maken van één aanvraag voor een licentie wanneer u de inhoud downloadt. Er worden geen fouten in rekening gebracht.
 
 ## <a name="overview"></a>Overzicht
 
-In deze sectie biedt enige ervaring in offlinemodus afspelen, met name waarom:
+Deze sectie bevat een achtergrond voor het afspelen van offline modus, met name waarom:
 
-* Beschikbaarheid van Internet en/of bandbreedte is nog steeds beperkt in bepaalde landen/regio's. Gebruikers kunnen ervoor kiezen voor het eerst downloaden als u wilt bekijken van inhoud in hoog genoeg oplossing voor goede weergavemogelijkheden. In dit geval vaker, het probleem is niet beschikbaarheid van het netwerk, in plaats van het beperkte netwerkbandbreedte is. OTT/OVP providers vragen stellen voor ondersteuning van de offline modus.
-* Zoals vermeld in Netflix 2016 Q3 aandeelhouders conferentie, downloaden van inhoud is een 'zake aangevraagd functie"en"we zijn geopend voor het"gezegd door Reed Hastings, CEO van Netflix.
-* Sommige inhoud providers kunnen DRM-licentielevering buiten een land/regio rand weigeren. Als een gebruiker moet in het buitenland reizen en wil nog steeds de inhoud bekijken, offline downloaden nodig.
+* In sommige landen/regio's is Internet Beschik baarheid en/of band breedte nog steeds beperkt. Gebruikers kunnen ervoor kiezen om eerst te downloaden om inhoud te kunnen bekijken met een hoge resolutie voor een goede weergave ervaring. In dit geval is het probleem vaak niet het netwerk beschikbaar, maar is de netwerk bandbreedte beperkt. OTT/OVP-providers vragen om ondersteuning voor de offline modus.
+* Als vermeld bij de Netflix 2016 Q3-aandeel houder, is het downloaden van inhoud een ' oft-aangevraagde functie ', en ' We zijn er open mee ' zei door Reed Hastings, Netflix CEO.
+* Sommige inhouds providers kunnen geen DRM-licentie levering toestaan buiten de rand van een land/regio. Als een gebruiker in het buiten land moet reizen en nog steeds inhoud wil bekijken, is offline downloaden vereist.
  
-We de uitdaging bij de uitvoering van de offlinemodus bevindt, is het volgende:
+De uitdaging voor het implementeren van de offline modus is het volgende:
 
-* MP4 wordt ondersteund door een groot aantal spelers, hulpprogramma's voor codering, maar er is geen binding tussen MP4-container en DRM;
-* Op de lange termijn is CFF met CENC de manier om te gaan. Maar vandaag de dag is het ecosysteem van hulpprogramma's / player-ondersteuning er nog niet. We hebben nodig een oplossing vandaag nog.
+* MP4 wordt ondersteund door veel spelers, coderings Programma's, maar er is geen binding tussen MP4-container en DRM;
+* Op de lange termijn is CFF met CENC de manier om te gaan. Momenteel is het ecosysteem van de hulpprogram ma's/speler echter nog niet aanwezig. We hebben vandaag een oplossing nodig.
  
-Het idee is: smooth streaming ([PIFF](https://go.microsoft.com/?linkid=9682897)) bestandsindeling met H264/AAC heeft een binding met PlayReady (AES-128 CTR). Afzonderlijke smooth streaming .ismv-bestand (ervan uitgaande dat audio is gemengde in de video) is zelf een fMP4 en kan worden gebruikt om te worden afgespeeld. Als een smooth streaming inhoud via PlayReady-versleuteling gaat, elk bestand .ismv verandert in een beveiligd PlayReady-gefragmenteerde MP4. We kunnen een .ismv-bestand met de gewenste bitrate kiezen en wijzig de naam als MP4 voor downloaden.
+Het idee is: smooth streaming-bestands indeling ([piff](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) met H264/AAC heeft een binding met PLAYREADY (AES-128-afdeling). Het afzonderlijke smooth streaming. ismv-bestand (ervan uitgaande dat audio Muxed in video is), is zelf een fMP4 en kan worden gebruikt voor het afspelen. Als een smooth streaming inhoud via PlayReady-versleuteling, wordt elk. ismv-bestand een met PlayReady beschermde gefragmenteerde MP4. We kunnen een. ismv-bestand kiezen met de voorkeurs bitrate en de naam wijzigen als. MP4 voor downloaden.
 
-Er zijn twee opties voor de MP4 voor het progressief downloaden die als host fungeert voor de PlayReady beveiligd:
+Er zijn twee opties voor het hosten van de PlayReady beveiligde MP4 voor progressief downloaden:
 
-* Een kan deze MP4 in dezelfde container/media-asset te plaatsen en gebruikmaken van Azure Media Services streaming-eindpunt voor het progressief downloaden;
-* Een kunt SAS-locator gebruiken voor het progressief downloaden rechtstreeks vanuit Azure Storage, Azure Media Services negeren.
+* Eén kan deze MP4 in hetzelfde container/medium-service-activum plaatsen en Azure Media Services streaming-eind punt gebruiken voor progressieve down loads.
+* Eén kan gebruikmaken van de SAS-Locator voor progressief downloaden rechtstreeks vanuit Azure Storage, waarbij Azure Media Services worden omzeild.
  
-U kunt twee soorten levering van PlayReady-licentie gebruiken:
+U kunt twee typen PlayReady-licentie levering gebruiken:
 
-* Leveringsservice voor PlayReady-licentie in Azure Media Services.
-* PlayReady-licentieservers die overal worden gehost.
+* PlayReady-service voor het leveren van licenties in Azure Media Services;
+* PlayReady-licentie servers die overal worden gehost.
 
-Hieronder vindt u twee sets met test-activa, de eerste record met behulp van levering van PlayReady-licentie in AMS terwijl de tweede waarde met behulp van mijn PlayReady-licentie-server die wordt gehost op een Azure-VM:
+Hieronder vindt u twee sets test assets, de eerste met PlayReady-licentie levering in AMS, terwijl de tweede een mijn PlayReady-licentie server gebruikt die wordt gehost op een virtuele machine van Azure:
 
-Asset #1:
+Activa #1:
 
-* Progressieve download-URL: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
+* URL voor progressieve down load:[https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
 * PlayReady LA_URL (AMS): [https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
 
-Asset #2:
+Activa #2:
 
-* Progressieve download-URL: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA_URL (on premises): [https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
+* URL voor progressieve down load:[https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* PlayReady LA_URL (on-premises):[https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
 
-Voor het testen van afspelen, hebben we een universele Windows-toepassing op Windows 10 gebruikt. In [Windows 10 Universal-voorbeelden](https://github.com/Microsoft/Windows-universal-samples), er is een eenvoudige player-voorbeeld met de naam [adaptieve Streaming voorbeeld](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming). We moeten doen, is de code voor ons gedownloade video ophalen en deze gebruiken als de bron, in plaats van adaptieve streaming gegevensbron toevoegen. De wijzigingen zijn in de knop klikt u op gebeurtenis-handler:
+Voor het testen van afspelen hebben we een universele Windows-toepassing in Windows 10 gebruikt. In [Windows 10 Universal](https://github.com/Microsoft/Windows-universal-samples)-voor beelden is er een basis speler-voor beeld met de naam [adaptief stream](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming)-voor beeld. U hoeft alleen maar de code toe te voegen om de gedownloade video te selecteren en deze als bron te gebruiken in plaats van een adaptieve streaming-bron. De wijzigingen bevinden zich in de knop gebeurtenis-handler klikken:
 
 ```csharp
 private async void LoadUri_Click(object sender, RoutedEventArgs e)
@@ -111,17 +111,17 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 }
 ```
 
-![Offlinemodus afspelen van PlayReady beveiligde fMP4](./media/offline-playready-for-windows/offline-playready1.jpg)
+![Offline modus voor het afspelen van PlayReady beveiligde fMP4](./media/offline-playready-for-windows/offline-playready1.jpg)
 
 
-Aangezien de video onder PlayReady-bescherming is, wordt de schermafbeelding niet mogelijk om op te nemen van de video.
+Omdat de video zich onder PlayReady-beveiliging bevindt, kan de scherm opname niet worden toegevoegd aan de video.
 
-Kortom, hebben we offlinemodus op Azure Media Services bereikt:
+In samen vatting hebben we de offline modus op Azure Media Services bereikt:
 
-* Inhoud transcodering en PlayReady-versleuteling kunnen worden uitgevoerd in Azure Media Services of andere hulpprogramma's;
-* Inhoud kan worden gehost in Azure Media Services of Azure Storage voor het progressief downloaden;
-* Levering van PlayReady-licentie kan worden van Azure Media Services of elders;
-* De voorbereide smooth streaming inhoud nog kunnen worden gebruikt voor het streamen van online via DASH of smooth met PlayReady als de DRM.
+* Versleuteling van inhoud en PlayReady kan worden uitgevoerd in Azure Media Services of andere hulpprogram ma's.
+* Inhoud kan worden gehost in Azure Media Services of Azure Storage voor progressief downloaden.
+* De levering van PlayReady-licenties kan van Azure Media Services of elders zijn.
+* De voor bereide smooth streaming inhoud kan nog steeds worden gebruikt voor online streamen met behulp van een streepje of Smooth met PlayReady als DRM.
 
 ## <a name="next-steps"></a>Volgende stappen
 

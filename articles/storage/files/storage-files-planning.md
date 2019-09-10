@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dc532ed33fca5120736dfb9503d012b2877e675e
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
-ms.translationtype: HT
+ms.openlocfilehash: 4dfcde96957bb8fce3731e38eee62554795d795f
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806614"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844889"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 
@@ -82,7 +82,7 @@ Standaard bestands shares worden ondersteund door harde schijven (Hdd's). Standa
 Standaard bestands shares met een grootte van Maxi maal 5 TiB zijn beschikbaar als GA aanbieding. Grotere bestands shares zijn de shares die groter zijn dan 5 TiB, Maxi maal 100 TiB, zijn momenteel beschikbaar als preview-aanbieding.
 
 > [!IMPORTANT]
-> Zie de sectie [onboarding to large file shares (Standard-laag)](#onboard-to-larger-file-shares-standard-tier) voor de stappen die u kunt uitvoeren, evenals het bereik en de beperkingen van de preview-versie.
+> Zie de sectie onboarding [to large file shares (Standard-laag)](#onboard-to-larger-file-shares-standard-tier) voor de stappen die u kunt uitvoeren, evenals het bereik en de beperkingen van de preview-versie.
 
 ### <a name="premium-file-shares"></a>Premium-bestands shares
 
@@ -211,7 +211,8 @@ Standaard bestands shares zijn beschikbaar in alle regio's tot 5 TiB. In bepaald
 |Australië - oost |LRS     |Nee    |Ja|
 |Australië - zuidoost|LRS     |Nee    |Nog niet|
 |India - centraal  |LRS     |Nee    |Nog niet|
-|Frankrijk - centraal  |LRS, ZRS|Nee    |LRS-Ja, ZRS-nog niet|
+|Frankrijk - centraal |LRS, ZRS|Nee    |LRS-Ja, ZRS-nog niet|
+|Frankrijk - zuid   |LRS     |Nee    |Ja|
 |India - zuid    |LRS     |Nee    |Nog niet|
 |Azië - zuidoost |LRS, ZRS|Nee    |Ja|
 |US - west-centraal|LRS     |Nee    |Nog niet|

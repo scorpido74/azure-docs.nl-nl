@@ -10,12 +10,12 @@ ms.topic: conceptual
 description: Gebruik een aangepaste NuGet feed te openen en gebruiken van NuGet-pakketten in een Azure Dev Space.
 keywords: Docker, Kubernetes, azure, AKS, Azure Container Service, containers
 manager: gwallace
-ms.openlocfilehash: 44a87491d276e09e1fa8fed3f5e6803648c3e4a2
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 9df095011c1ff66ff0c85993c7c85dffe62623b8
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305388"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873248"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Gebruik een aangepaste NuGet-feed in een Azure Dev Space
 
@@ -33,7 +33,7 @@ Voeg een [pakket verwijzing](https://docs.microsoft.com/nuget/consume-packages/p
 </ItemGroup>
 ```
 
-Maak een [NuGet. config](https://docs.microsoft.com/nuget/reference/nuget-config-file) -bestand in de projectmap en stel de `packageSources` secties `packageSourceCredentials` en in voor uw NuGet-feed. De `packageSources` sectie bevat de feed-URL, die openbaar toegankelijk moet zijn. De `packageSourceCredentials` zijn de referenties voor toegang tot de feed. Bijvoorbeeld:
+Maak een [NuGet. config](https://docs.microsoft.com/nuget/reference/nuget-config-file) -bestand in de projectmap en stel de `packageSources` secties `packageSourceCredentials` en in voor uw NuGet-feed. De `packageSources` sectie bevat de feed-URL, die toegankelijk moet zijn vanuit uw AKS-cluster. De `packageSourceCredentials` zijn de referenties voor toegang tot de feed. Bijvoorbeeld:
 
 ```xml
 <packageSources>

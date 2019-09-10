@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 8e45c8924bbc5cf50877e6c7656dacd7971f59b2
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a00ec77148433d64f2980b1bb47d753d70a5ec20
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606789"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859032"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Quickstart: Gezichten in een afbeelding detecteren met de Face REST API en Python
 
@@ -38,12 +38,12 @@ U kunt deze snelstart als Jupyter-notebook uitvoeren op [MyBinder](https://mybin
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
-U kunt ook deze Quick Start uitvoeren vanaf de opdrachtregel met de volgende stappen uit:
+U kunt deze Snelstartgids ook uitvoeren vanaf de opdracht regel met de volgende stappen:
 
 1. Kopieer de volgende code naar een teksteditor.
 1. Breng waar nodig de volgende wijzigingen in code aan:
     1. Vervang de waarde van `subscription_key` door uw abonnementssleutel.
-    1. Vervang de waarde van `face_api_url` met de eindpunt-URL voor de Face-API-resource in de Azure-regio waar u uw abonnementssleutels hebt verkregen, indien nodig.
+    1. Bewerk de waarde van `face_api_url` om de eind punt-URL voor uw face-API-resource op te neemt.
     1. Vervang eventueel de waarde van `image_url` door de URL van een andere afbeelding die u wilt analyseren.
 1. Sla de code op als een bestand met de extensie `.py`. Bijvoorbeeld `detect-face.py`.
 1. Open een opdrachtpromptvenster.
@@ -53,10 +53,12 @@ U kunt ook deze Quick Start uitvoeren vanaf de opdrachtregel met de volgende sta
 import requests
 import json
 
+# set to your own subscription key value
 subscription_key = None
 assert subscription_key
 
-face_api_url = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect'
+# replace <My Endpoint String> with the string from your endpoint URL
+face_api_url = 'https://<My Endpoint String>.com/face/v1.0/detect'
 
 image_url = 'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg'
 

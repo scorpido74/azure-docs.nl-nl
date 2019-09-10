@@ -1,6 +1,6 @@
 ---
-title: Met behulp van de Azure Cloud Shell-venster | Microsoft Docs
-description: Overzicht van het gebruik van de Azure Cloud Shell-venster.
+title: Het Azure Cloud Shell venster gebruiken | Microsoft Docs
+description: Overzicht van het gebruik van het Azure Cloud Shell-venster.
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -14,79 +14,79 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
-ms.openlocfilehash: 2511f2c8fb706e232cde9ee4c02c7f8114bd3a2b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60200609"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860316"
 ---
-# <a name="using-the-azure-cloud-shell-window"></a>Met behulp van de Azure Cloud Shell-venster
+# <a name="using-the-azure-cloud-shell-window"></a>Het Azure Cloud Shell venster gebruiken
 
-Dit document wordt uitgelegd hoe u met behulp van de Cloud Shell-venster.
+In dit document wordt uitgelegd hoe u het Cloud Shell-venster gebruikt.
 
-## <a name="swap-between-bash-and-powershell-environments"></a>Wisselen tussen omgevingen met Bash en PowerShell
+## <a name="swap-between-bash-and-powershell-environments"></a>Wisselen tussen bash-en Power shell-omgevingen
 
-De omgevingsselectie in de Cloud Shell-werkbalk gebruiken om te schakelen tussen omgevingen met Bash en PowerShell.  
+Gebruik de omgevings kiezer op de Cloud Shell werk balk om te wisselen tussen de bash-en Power shell-omgevingen.  
 ![Omgeving selecteren](media/using-the-shell-window/env-selector.png)
 
-## <a name="restart-cloud-shell"></a>Cloudshell opnieuw starten
-Klik op het pictogram opnieuw opstarten in de Cloud Shell-werkbalk MACHINESTATUS opnieuw instellen.  
-![Cloudshell opnieuw starten](media/using-the-shell-window/restart.png)
+## <a name="restart-cloud-shell"></a>Cloud Shell opnieuw starten
+Klik op het pictogram opnieuw opstarten op de werk balk Cloud Shell om de machine status opnieuw in te stellen.  
+![Cloud Shell opnieuw starten](media/using-the-shell-window/restart.png)
 > [!WARNING]
-> Cloud Shell opnieuw start, wordt de status van machine opnieuw ingesteld en de bestanden niet-persistent door uw Azure-bestandsshare, gaan verloren.
+> Als Cloud Shell opnieuw wordt gestart, wordt de machine status opnieuw ingesteld en worden alle bestanden die niet worden bewaard door de Azure-bestands share, verloren gegaan.
 
-## <a name="change-the-text-size"></a>De tekengrootte wijzigen
-Klik op het Instellingenpictogram in de rechterbovenhoek van het venster links en vervolgens Beweeg de muisaanwijzer over de optie ' Text ' en selecteer de gewenste tekengrootte. Uw selectie wordt in verschillende sessies worden vastgehouden.
-![Tekengrootte](media/using-the-shell-window/text-size.png)
+## <a name="change-the-text-size"></a>De teken grootte wijzigen
+Klik op het pictogram instellingen in de linkerbovenhoek van het venster, plaats de muis aanwijzer op de optie tekst grootte en selecteer de gewenste tekst grootte. Uw selectie wordt opgeslagen in alle sessies.
+![Teken grootte](media/using-the-shell-window/text-size.png)
 
-## <a name="change-the-font"></a>Het lettertype wijzigen
-Klik op het Instellingenpictogram in de rechterbovenhoek van het venster links en vervolgens Beweeg de muisaanwijzer over de optie 'Lettertype' en selecteer de gewenste lettertype.  Uw selectie wordt in verschillende sessies worden vastgehouden.
-![Lettertype](media/using-the-shell-window/text-font.png)
+## <a name="change-the-font"></a>Het letter type wijzigen
+Klik op het pictogram instellingen in de linkerbovenhoek van het venster, beweeg de muis aanwijzer over de optie letter type en selecteer het gewenste letter type.  Uw selectie wordt opgeslagen in alle sessies.
+![Lettertyperasterizer](media/using-the-shell-window/text-font.png)
 
 ## <a name="upload-and-download-files"></a>Bestanden uploaden en downloaden
-Klik op het pictogram uploaden/downloaden van bestanden in de rechterbovenhoek van het venster links, selecteer vervolgens uploaden of downloaden.  
+Klik op het pictogram bestanden uploaden/downloaden in de linkerbovenhoek van het venster en selecteer vervolgens uploaden of downloaden.  
 ![Bestanden uploaden/downloaden](media/using-the-shell-window/uploaddownload.png)
-* Gebruik voor het uploaden van bestanden, het pop-upvenster bladeren naar het bestand op uw lokale computer, selecteert u het gewenste bestand en klik op de knop 'Geopend'.  Het bestand wordt geüpload naar de `/home/user` directory.
-* Voor het downloaden van bestanden, de volledig gekwalificeerde pad naar aangaan met het pop-upvenster en selecteer de knop 'Downloaden'.  
+* Voor het uploaden van bestanden gebruikt u de pop-up om naar het bestand op uw lokale computer te bladeren, selecteert u het gewenste bestand en klikt u op de knop openen.  Het bestand wordt geüpload naar de `/home/user` map.
+* Voor het downloaden van het bestand voert u het volledig gekwalificeerde bestandspad in het pop-upvenster in (dat wil zeggen, in `/home/user` principe een pad in de map die standaard wordt weer gegeven) en selecteert u de knop downloaden.  
 > [!NOTE] 
-> Bestanden en paden zijn hoofdlettergevoelig in Cloud Shell. Controleer uw hoofdlettergebruik in het bestandspad.
+> Bestanden en bestands paden zijn hoofdletter gevoelig in Cloud Shell. Controleer uw behuizing in het bestandspad.
 
-## <a name="open-another-cloud-shell-window"></a>Een andere Cloud Shell-venster openen
-Cloudshell biedt meerdere gelijktijdige sessies voor browsertabbladen doordat elke sessie bestaat als een afzonderlijk proces.
-Als u een sessie afsluit, zorg er dan voor dat elke sessievenster afsluiten terwijl elk proces wordt onafhankelijk uitgevoerd, hoewel ze op dezelfde computer worden uitgevoerd.  
-Klik op het pictogram van de nieuwe sessie openen in de rechterbovenhoek van het venster links. Een nieuw tabblad geopend met een andere sessie verbinding met de bestaande container.
+## <a name="open-another-cloud-shell-window"></a>Een ander Cloud Shell venster openen
+Met Cloud Shell kunt u meerdere gelijktijdige sessies over browser tabbladen door toestaan dat elke sessie als een afzonderlijk proces bestaat.
+Als u een sessie afsluit, moet u ervoor zorgen dat elk sessie venster wordt afgesloten, hoewel elk proces onafhankelijk wordt uitgevoerd op dezelfde computer.  
+Klik op het pictogram nieuwe sessie openen in de linkerbovenhoek van het venster. Er wordt een nieuw tabblad geopend met een andere sessie die is verbonden met de bestaande container.
 ![Nieuwe sessie openen](media/using-the-shell-window/newsession.png)
 
-## <a name="cloud-shell-editor"></a>Cloud Shell-editor
-* Raadpleeg de [met behulp van de Azure Cloud Shell-editor](using-cloud-shell-editor.md) pagina.
+## <a name="cloud-shell-editor"></a>Cloud Shell editor
+* Raadpleeg de pagina [met de Azure Cloud shell-editor](using-cloud-shell-editor.md) .
 
 ## <a name="web-preview"></a>Web-preview
-Klik op het pictogram van de Preview-versie web-bovenaan links van het venster, selecteert u 'Configureren', geef de gewenste poort te openen.  Selecteer een van beide 'Open poort' alleen de poort te openen of 'Open en blader' de poort te openen en bekijken van de poort in een nieuw tabblad.  
-![Web-preview](media/using-the-shell-window/preview.png)  
+Klik op het pictogram webvoorbeeld in de linkerbovenhoek van het venster, selecteer configureren, geef de gewenste poort op om te openen.  Selecteer ' poort openen ' om de poort alleen te openen, of open en bladeren om de poort te openen en een voor beeld van de poort op een nieuw tabblad te bekijken.  
+![Web preview](media/using-the-shell-window/preview.png)  
 <br>
 ![Poort configureren](media/using-the-shell-window/preview-configure.png)  
-Klik op het pictogram van de Preview-versie web-bovenaan links van het venster selecteren 'Preview poort...' om een voorbeeld van een open poort in een nieuw tabblad. Klik op het pictogram van de Preview-versie web-bovenaan links van het venster selecteert u 'Sluit poort...' de open poort sluiten.  
-![Preview-versie/sluiten poort](media/using-the-shell-window/preview-options.png)
+Klik op het pictogram webvoorbeeld in de linkerbovenhoek van het venster, selecteer ' poort voorvertonen... ' voor een voor beeld van een open poort op een nieuw tabblad. Klik op het pictogram webvoorbeeld in de linkerbovenhoek van het venster en selecteer poort sluiten... om de open poort te sluiten.  
+![Poort bekijken/sluiten](media/using-the-shell-window/preview-options.png)
 
-## <a name="minimize--maximize-cloud-shell-window"></a>Minimaliseren & Cloud Shell-venster maximaliseren
-Klik op het pictogram minimaliseren in de rechterbovenhoek van het venster om deze te verbergen. Klik op het pictogram van de Cloud Shell opnieuw te zichtbaar maken.
-Klik op het pictogram maximaliseren om het venster maximale hoogte instellen. Als u wilt herstellen venster vorige formaat, klik op herstellen.  
-![Minimaliseren of het venster maximaliseren](media/using-the-shell-window/minmax.png)
+## <a name="minimize--maximize-cloud-shell-window"></a>Cloud Shell venster minimaliseren & maximaliseren
+Klik op het pictogram minimaliseren in de rechter bovenhoek van het venster om het te verbergen. Klik nogmaals op het pictogram Cloud Shell om het weer zichtbaar te maken.
+Klik op het pictogram maximaliseren om het venster in te stellen op maximum hoogte. Als u de vorige grootte van het venster wilt herstellen, klikt u op herstellen.  
+![Het venster minimaliseren of maximaliseren](media/using-the-shell-window/minmax.png)
 
 ## <a name="copy-and-paste"></a>Kopiëren en plakken
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-## <a name="resize-cloud-shell-window"></a>Het formaat van Cloud Shell-venster
-Klik en sleep de bovenrand van de werkbalk omhoog of omlaag naar de Cloud Shell-venster formaat.
+## <a name="resize-cloud-shell-window"></a>Venster formaat wijzigen Cloud Shell
+Klik en sleep de bovenrand van de werk balk omhoog of omlaag om het formaat van het Cloud Shell venster te wijzigen.
 
-## <a name="scrolling-text-display"></a>Schuiven tekst weer te geven
-Schuiven met de muis of het touchpad om terminal tekst te verplaatsen.
+## <a name="scrolling-text-display"></a>Lichtkrant tekst weer geven
+Schuif door de muis of touchpad om Terminal tekst te verplaatsen.
 
-## <a name="exit-command"></a>Afsluitopdracht
-Met `exit` de actieve sessie wordt beëindigd. Dit gedrag is echter standaard na 20 minuten zonder tussenkomst van de.
+## <a name="exit-command"></a>Opdracht Afsluiten
+De `exit` actieve sessie wordt beëindigd. Dit gedrag treedt standaard na 20 minuten zonder interactie op.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Bash in Cloud Shell-snelstartgids](quickstart.md) <br>
-[PowerShell in Cloud Shell-snelstartgids](quickstart-powershell.md)
+[Bash in Cloud Shell Quick Start](quickstart.md) <br>
+[Power shell in Cloud Shell Quick Start](quickstart-powershell.md)

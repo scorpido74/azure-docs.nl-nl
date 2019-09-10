@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 04/12/2019
+ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: 3e9ee3f5dd04ef838f78b9731885b7ea48e6c99d
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: HT
+ms.openlocfilehash: a9b5eecd97b078c9446e28d971f900c4cf65130f
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811320"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845526"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Zelfstudie: Service-principals en roltoewijzingen maken met behulp van PowerShell
 
@@ -38,9 +38,9 @@ Voordat u service-principals en roltoewijzingen kunt maken, moet u drie dingen d
     Install-Module AzureAD
     ```
 
-2. [De Power shell-module voor virtueel bureau blad van Windows downloaden en importeren](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)
+2. [Down load en importeer de Windows-module virtueel bureau blad Power shell](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview).
 
-3. Volg alle instructies in dit artikel in dezelfde Power shell-sessie. Het werkt mogelijk niet als u het venster sluit en later terugkeert.
+3. Volg alle instructies in dit artikel in dezelfde Power shell-sessie. Het proces werkt mogelijk niet als u de Power shell-sessie onderbreekt door het venster te sluiten en later opnieuw te openen.
 
 ## <a name="create-a-service-principal-in-azure-active-directory"></a>Een service-principal maken in Azure Active Directory
 
@@ -52,10 +52,9 @@ $aadContext = Connect-AzureAD
 $svcPrincipal = New-AzureADApplication -AvailableToOtherTenants $true -DisplayName "Windows Virtual Desktop Svc Principal"
 $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrincipal.ObjectId
 ```
-
 ## <a name="view-your-credentials-in-powershell"></a>Uw referenties weer geven in Power shell
 
-Voordat u uw Power shell-sessie beëindigt, bekijkt u uw referenties en schrijft u deze naar beneden zodat u ze later kunt raadplegen. Het wacht woord is vooral belang rijk omdat u het niet kunt ophalen nadat u deze Power shell-sessie hebt gesloten.
+Voordat u de roltoewijzing voor uw Service-Principal maakt, bekijkt u uw referenties en noteert u deze voor toekomstige referentie. Het wacht woord is vooral belang rijk omdat u het niet kunt ophalen nadat u deze Power shell-sessie hebt gesloten.
 
 Hier volgen de drie referenties die u moet noteren en de cmdlets die u moet uitvoeren om ze te verkrijgen:
 
@@ -79,19 +78,21 @@ Hier volgen de drie referenties die u moet noteren en de cmdlets die u moet uitv
 
 ## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Een roltoewijzing maken in Windows virtueel bureau blad preview
 
-Vervolgens maakt u een functie toewijzing voor RDS in het virtuele bureau blad van Windows voor de Service-Principal, waarmee de Service-Principal zich kan aanmelden bij Windows virtueel bureau blad. Zorg ervoor dat u een account gebruikt dat machtigingen heeft voor het maken van RDS-roltoewijzingen.
+Vervolgens moet u een roltoewijzing maken zodat de Service-Principal zich kan aanmelden bij Windows virtueel bureau blad. Zorg ervoor dat u zich aanmeldt met een account dat machtigingen heeft om roltoewijzingen te maken.
 
-Voer de volgende Power shell-cmdlets uit om verbinding te maken met het virtuele bureau blad van Windows en uw RDS-tenants weer te geven.
+[Down load en Importeer eerst de Windows Virtual Desktop Power shell-module](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan.
+
+Voer de volgende Power shell-cmdlets uit om verbinding te maken met het virtuele bureau blad van Windows en uw tenants weer te geven.
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-Get-RdsTenant | FL
+Get-RdsTenant
 ```
 
-Gebruik de Tenantnaam voor de juiste Tenant en voer de volgende Power shell-cmdlets uit om een roltoewijzing voor de Service-Principal in de opgegeven Tenant te maken.
+Wanneer u de Tenant naam voor de Tenant vindt waarvoor u een roltoewijzing wilt maken, gebruikt u die naam in de volgende cmdlet:
 
 ```powershell
-New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName "<my-rds-tenantname>"
+New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
 ```
 
 ## <a name="sign-in-with-the-service-principal"></a>Meld u aan met de Service-Principal

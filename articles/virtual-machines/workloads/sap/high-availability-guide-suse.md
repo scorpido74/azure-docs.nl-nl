@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: sedusch
 ms.openlocfilehash: 534a3e349faaa3a6ef5b6e01082564eda51936c1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "70101040"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server voor SAP-toepassingen
@@ -53,7 +53,7 @@ ms.locfileid: "70101040"
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
 In dit artikel wordt beschreven hoe u de virtuele machines implementeert, hoe u de virtuele machines configureert, het cluster raamwerk installeert en een Maxi maal beschikbaar SAP NetWeaver 7,50-systeem installeert.
-In de voorbeeld configuraties, installatie opdrachten, enzovoort. Het ASCS-exemplaar nummer 00, het ERS-exemplaar nummer 02 en de SAP-systeem-ID NW1 wordt gebruikt. De namen van de bronnen (bijvoorbeeld virtuele machines, virtuele netwerken) in het voor beeld aannemen dat u de geconvergeerde [sjabloon][template-converged] met SAP System ID NW1 hebt gebruikt om de resources te maken.
+In de voorbeeld configuraties, installatie opdrachten, enzovoort. Het ASCS-exemplaar nummer 00, het ERS-exemplaar nummer 02 en de SAP-systeem-ID NW1 wordt gebruikt. De namen van de bronnen (bijvoorbeeld virtuele machines, virtuele netwerken) in het voor beeld aannemen dat u de [geconvergeerde sjabloon][template-converged] met SAP System ID NW1 hebt gebruikt om de resources te maken.
 
 Lees eerst de volgende SAP-opmerkingen en-documenten
 

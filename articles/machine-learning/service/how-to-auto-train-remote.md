@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: 3c3205b64803ac4ee67997ef546ffd64c89f23b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 5918cc3835d00536845a96ed81ef663867291e29
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624822"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858812"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trainen van modellen met geautomatiseerde machine learning in de cloud
 
@@ -278,7 +278,7 @@ Afdrukken via de `best_run` uitleg samenvatting variabelen resultaten in de volg
 
 ![Model explainability console-uitvoer](./media/how-to-auto-train-remote/expl-print.png)
 
-Urgentie van de functie via de gebruikersinterface van de widget, evenals de web-UI in Azure portal kunt u ook visualiseren in uw werkruimte.
+U kunt het belang van de functie ook visualiseren via de gebruikers interface van de widget, de webgebruikersinterface op Azure Portal of de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com). 
 
 ![Model explainability UI](./media/how-to-auto-train-remote/model-exp.png)
 

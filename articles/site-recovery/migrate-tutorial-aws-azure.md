@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 15ce85385662ba186f8434285130099054e52c05
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 1f5f2dc6babbca219f0efbb1d7013d4e6e3270e6
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814458"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873301"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>AWS-VM’s (Amazon Web Services) migreren naar Azure
 
@@ -95,11 +95,11 @@ Wanneer Azure-VM’s zijn gemaakt na de migratie (failover), worden ze gekoppeld
 1. Selecteer in [Azure Portal](https://portal.azure.com) achtereenvolgens **Een resource maken** > **Netwerken** >
    **Virtueel netwerk**.
 3. Voer bij **Naam** in **myMigrationNetwork**.
-4. Laat de standaardwaarde die is ingesteld voor **Adresruimte**.
+4. De standaard waarde voor de **adres ruimte** behouden (moet een waarde invoeren).
 5. Selecteer bij **Abonnement** het abonnement dat u wilt gebruiken.
 6. Selecteer bij **Resourcegroep** de optie **Bestaande gebruiken** en selecteer vervolgens **migrationRG**.
 7. Selecteer bij **Locatie** de optie **Europa - west**.
-8. Laat onder **Subnet** de standaardwaarden staan bij **Naam** en **IP-bereik**.
+8. Behoud onder **subnet**de standaard waarden voor **naam** en **IP-bereik (moet waarde invoeren)** .
 9. Voeg instructies toe voor DDoS-beveiligings instellingen.
 10. Laat de optie **Service-eindpunten** uitgeschakeld.
 11. Instructies toevoegen voor Firewall instellingen.

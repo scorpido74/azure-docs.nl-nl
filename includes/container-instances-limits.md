@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/13/2019
 ms.author: danlep
 ms.openlocfilehash: f8821060b98ebfc954a6e59abad60350e6779b76
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67176400"
 ---
 | Resource | Standaardlimiet |
@@ -17,15 +17,15 @@ ms.locfileid: "67176400"
 | Aantal containers per containergroep | 60 |
 | Aantal volumes per containergroep | 20 |
 | Poorten per IP-adres | 5 |
-| Container exemplaar logboekgrootte - instantie wordt uitgevoerd | 4 MB |
-| Container exemplaar logboekgrootte - gestopte instantie | 16 KB of 1000 regels |
+| Grootte van het container exemplaar logboek-exemplaar wordt uitgevoerd | 4 MB |
+| Logboek grootte van container exemplaar-gestopt exemplaar | 16 KB of 1.000 regels |
 | Aangemaakte containers per uur |300<sup>1</sup> |
 | Aangemaakte containers per 5 minuten | 100<sup>1</sup> |
 | Verwijderde containers per uur | 300<sup>1</sup> |
 | Verwijderde containers per 5 minuten | 100<sup>1</sup> |
 
 
-<sup>1</sup>maken om aan te vragen een hogere limiet, een [Azure-ondersteuningsaanvraag][azure-support].<br />
+<sup>1</sup> Als u een verhoging van een limiet wilt aanvragen, maakt u een [Azure-ondersteuningsaanvraag][azure-support].<br />
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

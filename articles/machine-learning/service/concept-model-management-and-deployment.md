@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 270ebb6247e812d42ac84698d0073b41c639cb9a
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 2f3c3532637bef041ad1983b7573837dd0f29211
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011593"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860609"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>MLOps: Beheren, implementeren en bewaken van modellen met Azure Machine Learning-Service
 
@@ -25,7 +25,7 @@ In dit artikel vindt u informatie over het gebruik van Azure Machine Learning-se
 Azure Machine Learning-service biedt de volgende MLOps mogelijkheden:
 
 - **ML projecten vanaf elke locatie implementeren**
-- Bewaak de bewakende **toepassingen voor operationele en ml gerelateerde problemen** -vergelijkt model invoer tussen training en interferentie, verken specifieke metrische gegevens en geef bewaking en waarschuwingen op uw ml-infra structuur.
+- **Bewaak de bewakende toepassingen voor operationele en ml gerelateerde problemen** -vergelijkt model invoer tussen training en interferentie, verken specifieke metrische gegevens en geef bewaking en waarschuwingen op uw ml-infra structuur.
 - **Leg de gegevens vast die nodig zijn voor het tot stand brengen van een end-to-end-audittrail van de milliliters levenscyclus**, waaronder het publiceren van modellen, waarom wijzigingen worden aangebracht en wanneer modellen zijn geïmplementeerd of gebruikt voor productie.
 - **Automatiseer de end-to-end ml-levens cyclus met Azure machine learning en Azure DevOps** voor vaak bijgewerkte modellen, test nieuwe modellen en implementeer voortdurend nieuwe ml-modellen naast uw andere toepassingen en services.
 

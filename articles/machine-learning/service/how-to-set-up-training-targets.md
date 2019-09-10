@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 27361017241ba6529b93c24ce7fb95b2c1b22a62
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 0a34ccf5201b81a2c74c2eccd0ec3f311a1158ab
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389900"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860534"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Reken doelen voor model training instellen en gebruiken 
 
 Met Azure Machine Learning-service kunt u uw model trainen op diverse resources of omgevingen en gezamenlijk ook [__reken doelen__](concept-azure-machine-learning-architecture.md#compute-targets)genoemd. Een compute-doel kan een lokale machine of een Cloud resource zijn, zoals een Azure Machine Learning compute, Azure HDInsight of een externe virtuele machine.  U kunt ook reken doelen voor model implementatie maken, zoals wordt beschreven in [' waar en hoe u uw modellen implementeert '](how-to-deploy-and-where.md).
 
-U kunt een compute-doel maken en beheren met behulp van de Azure Machine Learning SDK, Azure Portal, Azure CLI of Azure Machine Learning VS code extension. Als u de compute-doelen die zijn gemaakt via een andere service (bijvoorbeeld: een HDInsight-cluster) hebt, kunt u ze kunt gebruiken door ze te koppelen aan uw werkruimte van Azure Machine Learning-service.
+U kunt een reken doel maken en beheren met behulp van de Azure Machine Learning SDK, Azure Portal, de landings pagina voor de werk ruimte (preview), de Azure CLI of de Azure Machine Learning VS code-extensie. Als u de compute-doelen die zijn gemaakt via een andere service (bijvoorbeeld: een HDInsight-cluster) hebt, kunt u ze kunt gebruiken door ze te koppelen aan uw werkruimte van Azure Machine Learning-service.
  
 In dit artikel leert u hoe u verschillende reken doelen kunt gebruiken voor model training.  De stappen voor alle Compute-doelen volgen dezelfde werk stroom:
 1. __Maak__ een reken doel als u er nog geen hebt.
@@ -45,9 +45,9 @@ Azure Machine Learning-service heeft verschillende ondersteuning voor verschille
 
 ## <a name="whats-a-run-configuration"></a>Wat is een uitvoerings configuratie?
 
-Bij het trainen is het gebruikelijk om te beginnen op de lokale computer en dat trainings script later uit te voeren op een ander reken doel. Met Azure Machine Learning-service kunt u uw script uitvoeren op verschillende reken doelen zonder dat u het script hoeft te wijzigen. 
+Bij het trainen is het gebruikelijk om te beginnen op de lokale computer en dat trainings script later uit te voeren op een ander reken doel. Met Azure Machine Learning-service kunt u uw script uitvoeren op verschillende reken doelen zonder dat u het script hoeft te wijzigen.
 
-Alles wat u hoeft te doen, is het definiëren van de omgeving voor elk reken doel in een **uitvoerings configuratie**.  Wanneer u uw trainings experiment wilt uitvoeren op een ander Compute-doel, geeft u de uitvoerings configuratie op voor die reken kracht. Zie [omgevingen maken en beheren voor training en implementatie](how-to-use-environments.md) voor meer informatie over het opgeven van een omgeving en het binden ervan voor het uitvoeren van een configuratie.
+Alles wat u hoeft te doen, is het definiëren van de omgeving voor elk reken doel in een **uitvoerings configuratie**.  Wanneer u uw trainings experiment wilt uitvoeren op een ander Compute-doel, geeft u de uitvoerings configuratie op voor die reken kracht. Zie [omgevingen maken en beheren voor training en implementatie](how-to-use-environments.md)voor meer informatie over het opgeven van een omgeving en het binden ervan voor het uitvoeren van een configuratie.
 
 Meer informatie over het [verzenden van experimenten](#submit) aan het einde van dit artikel.
 
@@ -278,6 +278,7 @@ U kunt toegang krijgen tot de reken doelen die zijn gekoppeld aan uw werk ruimte
 * [Een compute-doel](#portal-create) in uw werk ruimte maken
 * [Een reken doel toevoegen](#portal-reuse) dat buiten de werk ruimte is gemaakt
 
+
 Nadat een doel is gemaakt en aan uw werk ruimte is gekoppeld, gebruikt u dit in uw uitvoerings configuratie met `ComputeTarget` een-object: 
 
 ```python
@@ -290,7 +291,8 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 Als u de reken doelen voor uw werk ruimte wilt zien, gebruikt u de volgende stappen:
 
-1. Ga naar het [Azure Portal](https://portal.azure.com) en open uw werk ruimte. 
+1. Ga naar het [Azure Portal](https://portal.azure.com) en open uw werk ruimte. U kunt dezelfde stappen ook gebruiken op de [landings pagina van de werk ruimte (preview)](https://ml.azure.com), hoewel de onderstaande afbeeldingen de Azure portal weer geven.
+ 
 1. Selecteer __berekenen__onder __toepassingen__.
 
     [![Tabblad Compute weer geven](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)

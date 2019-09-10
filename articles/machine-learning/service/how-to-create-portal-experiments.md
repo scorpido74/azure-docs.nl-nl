@@ -11,18 +11,19 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/02/2019
-ms.openlocfilehash: 0286c82c0b4378e24fa46d0327bd6a5b26037496
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 79632a2b5862538ef702cec01a60aada14d8dbce
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813656"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860486"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Automatische machine learning experimenten maken, verkennen en implementeren in de Azure Portal (preview-versie)
 
  In dit artikel leert u hoe u geautomatiseerde machine learning experimenten kunt maken, verkennen en implementeren in de Azure Portal zonder één regel code. Automatische machine learning automatiseert het proces van het selecteren van het beste algoritme dat voor uw specifieke gegevens moet worden gebruikt, zodat u snel een machine learning model kunt genereren. Meer [informatie over automatische machine learning](concept-automated-ml.md).
 
  Als u de voor keur geeft aan een meer op code gebaseerde ervaring, kunt u ook [uw geautomatiseerde machine learning experimenten in python configureren](how-to-configure-auto-train.md) met de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -39,6 +40,8 @@ Navigeer naar het linkerdeel venster van uw werk ruimte. Selecteer Automatische 
  Als dit de eerste keer is dat er experimenten worden uitgevoerd, ziet u het scherm **Welkom bij automatisch machine learning** . 
 
 Anders ziet u uw **geautomatiseerde machine learning** -dash board met een overzicht van al uw geautomatiseerde machine learning experimenten, met inbegrip van de proeven die zijn gemaakt met de SDK. Hier kunt u uw uitvoeringen filteren en verkennen op datum, naam van het experiment en uitvoerings status.
+
+U kunt ook automatische Machine Learning openen via de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com).
 
 ## <a name="create-an-experiment"></a>Een experiment maken
 

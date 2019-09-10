@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: d479a568ddeac29be88d0709b7544ba645274afa
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: cd1c6cf0ff5a963720df7420a5d983d24e7b4d3e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875662"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861390"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Veelgestelde vragen: Herstel na noodgevallen van Azure naar Azure
 
@@ -41,7 +41,15 @@ Het Site Recovery-team werkt samen met het Azure capacity management-team om vol
 ## <a name="replication"></a>Replicatie
 
 ### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>Kan ik Vm's die zijn ingeschakeld via Azure Disk Encryption repliceren?
-Ja, u kunt ze repliceren. Zie het artikel [Azure Disk Encryption ingeschakelde virtuele machines repliceren naar een andere Azure-regio](azure-to-azure-how-to-enable-replication-ade-vms.md). Momenteel ondersteunt Azure Site Recovery alleen virtuele Azure-machines waarop een Windows-besturings systeem wordt uitgevoerd en die zijn ingeschakeld voor versleuteling met apps van Azure Active Directory (Azure AD).
+
+Ja, Site Recovery ondersteunt nood herstel van Vm's met behulp van de functie voor Azure Disk Encryption (ADE) ingeschakeld. Wanneer u replicatie inschakelt, worden alle vereiste schijf versleutelings sleutels en-geheimen gekopieerd van de bron regio naar de doel regio in de gebruikers context. Als u niet de juiste machtiging hebt, kan een kant-en-klaar script aan de beveiligings beheerder worden door gegeven om de sleutels en geheimen te kopiëren.
+
+- Site Recovery ondersteunt ADE voor virtuele Azure-machines waarop Windows wordt uitgevoerd.
+- Site Recovery biedt ondersteuning voor ADE versie 0,1, met een schema met Azure Active Directory (AAD) en versie 1,1, zonder AAD. [Meer informatie](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata).
+- ADE versie 1,1, de virtuele Windows-machines moeten worden gebruikt voor beheerde schijven.
+- [Meer informatie](azure-to-azure-how-to-enable-replication-ade-vms.md) over het inschakelen van replicatie voor versleutelde vm's.
+
+
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>Kan ik Vm's repliceren naar een ander abonnement?
 Ja, u kunt virtuele Azure-machines repliceren naar een ander abonnement binnen dezelfde Azure AD-Tenant.
@@ -81,7 +89,7 @@ Nee, Site Recovery vereist geen Internet verbinding. Maar hiervoor is toegang to
 Ja, u kunt de toepassing repliceren en de configuratie voor herstel na nood gevallen ook in een afzonderlijke resource groep laten staan.
 Als u bijvoorbeeld een toepassing met elke lagen-app, DB en web in een afzonderlijke resource groep hebt, klikt u op de [wizard replicatie](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) drie keer per om alle lagen te beveiligen. Site Recovery worden deze drie lagen in drie verschillende resource groepen gerepliceerd.
 
-## <a name="replication-policy"></a>Beleid voor replicatie
+## <a name="replication-policy"></a>Replicatiebeleid
 
 ### <a name="what-is-a-replication-policy"></a>Wat is een replicatie beleid?
 Hiermee worden de instellingen voor de Bewaar geschiedenis van herstel punten en de frequentie van app-consistente moment opnamen gedefinieerd. Azure Site Recovery maakt standaard een nieuw replicatie beleid met de standaard instellingen van:
@@ -195,7 +203,7 @@ U kunt een failover activeren na de storing. Site Recovery hebt geen verbinding 
 ### <a name="what-is-a-rto-of-a-vm-failover-"></a>Wat is een RTO van een VM-failover?
 Site Recovery heeft een [RTO-sla van twee uur](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). De meeste tijd Site Recovery failover van virtuele machines binnen enkele minuten. U kunt de RTO berekenen door te gaan naar de failover-taken die de tijd weer geven die nodig is om de virtuele machine te openen. Raadpleeg de sectie voor het herstel plan RTO.
 
-## <a name="recovery-plans"></a>Herstel plannen
+## <a name="recovery-plans"></a>Herstelplannen
 
 ### <a name="what-is-a-recovery-plan"></a>Wat is een herstel plan?
 Een herstel plan in Site Recovery is het herstel van failover van Vm's. Zo kunt u de herstel bewerking consistent maken, herhaalbaar en geautomatiseerd. Een herstel plan heeft betrekking op de volgende behoeften voor de gebruiker:

@@ -1,33 +1,33 @@
 ---
-title: 'Zelfstudie: een cluster in Azure HDInsight met behulp van Ansible configureren | Microsoft Docs'
-description: Leer hoe u Ansible gebruikt om te maken en het formaat van een Azure HDInsight
-keywords: ansible, azure, devops, bash, playbook, apache hadoop en hdinsight
+title: 'Zelf studie: een cluster configureren in azure HDInsight met behulp van Ansible | Microsoft Docs'
+description: Meer informatie over het gebruik van Ansible voor het maken en wijzigen van een Azure HDInsight
+keywords: ansible, azure, devops, bash, Playbook, Apache Hadoop, hdinsight
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: d6b6dd333d04457a68c3f2452d3cc538a32b61f6
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: ff135473443589650d90bfb7f3e5aa248f72e821
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230277"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861271"
 ---
-# <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Zelfstudie: Een cluster in Azure HDInsight met behulp van Ansible configureren
+# <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Zelfstudie: Een cluster configureren in azure HDInsight met behulp van Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Azure HDInsight](/azure/hdinsight/) is een Hadoop-gebaseerde Analyseservice voor het verwerken van gegevens. HDInsight is een hulpprogramma ETL (extract, transform, load) voor het werken met big data - gestructureerde of ongestructureerde. HDInsight biedt ondersteuning voor diverse [clustertypen](/azure/hdinsight/hadoop/apache-hadoop-introduction#cluster-types-in-hdinsight) waar elk type biedt ondersteuning voor een andere set onderdelen. 
+[Azure HDInsight](/azure/hdinsight/) is een Hadoop-gebaseerde analyse service voor het verwerken van gegevens. HDInsight is een ETL-hulp programma (extract, trans formatie, Load) dat wordt gebruikt om te werken met big data: gestructureerd of ongestructureerde. HDInsight ondersteunt verschillende [cluster typen](/azure/hdinsight/hadoop/apache-hadoop-introduction) waarbij elk type een andere set componenten ondersteunt. 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> * Maak een opslagaccount voor HDInsight
-> * Configureer een [HDInsight Spark-cluster](/azure/hdinsight/spark/apache-spark-overview).
-> * Grootte van een cluster wijzigen
+> * Een opslag account maken voor HDInsight
+> * Een [HDInsight Spark-cluster](/azure/hdinsight/spark/apache-spark-overview)configureren.
+> * Het formaat van een cluster wijzigen
 > * Een cluster verwijderen
 
 ## <a name="prerequisites"></a>Vereisten
@@ -35,9 +35,9 @@ ms.locfileid: "65230277"
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
 
-## <a name="create-a-random-postfix"></a>Maken van een willekeurig achtervoegsel
+## <a name="create-a-random-postfix"></a>Een wille keurige achtervoegsel maken
 
-De code playbook in deze sectie maakt u een willekeurig achtervoegsel te gebruiken als onderdeel van de naam van het Azure HDInsight-cluster.
+Met de Playbook-code in deze sectie maakt u een wille keurige achtervoegsel die moet worden gebruikt als onderdeel van de Azure HDInsight-cluster naam.
 
 ```yml
 - hosts: localhost
@@ -50,11 +50,11 @@ De code playbook in deze sectie maakt u een willekeurig achtervoegsel te gebruik
       run_once: yes
 ```
 
-## <a name="create-resource-group"></a>Resourcegroep maken
+## <a name="create-resource-group"></a>Een resourcegroep maken
 
-Een Azure-resourcegroep is een logische container waarin Azure resources worden geïmplementeerd en beheerd.
+Een Azure-resource groep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
-De code playbook in deze sectie maakt u een resourcegroep.
+Met de Playbook-code in deze sectie maakt u een resource groep.
 
 
 ```yml
@@ -65,11 +65,11 @@ De code playbook in deze sectie maakt u een resourcegroep.
         location: "{{ location }}"
 ```
 
-## <a name="create-a-storage-account-and-retrieve-key"></a>Maak een opslagaccount en sleutel ophalen
+## <a name="create-a-storage-account-and-retrieve-key"></a>Een opslag account maken en de sleutel ophalen
 
-Een Azure storage-account wordt gebruikt als de standaardopslag voor het HDInsight-cluster. 
+Een Azure-opslag account wordt gebruikt als de standaard opslag voor het HDInsight-cluster. 
 
-De code playbook in deze sectie worden opgehaald van de sleutel die wordt gebruikt voor toegang tot het opslagaccount.
+De Playbook-code in deze sectie haalt de sleutel op die wordt gebruikt voor toegang tot het opslag account.
 
 ```yml
 - name: Create storage account
@@ -97,7 +97,7 @@ De code playbook in deze sectie worden opgehaald van de sleutel die wordt gebrui
 
 ## <a name="create-an-hdinsight-spark-cluster"></a>Een HDInsight Spark-cluster maken
 
-De code playbook in deze sectie maakt u de Azure HDInsight-cluster.
+Met de Playbook-code in deze sectie wordt het Azure HDInsight-cluster gemaakt.
 
 ```yml
 - name: Create instance of Cluster
@@ -138,13 +138,13 @@ De code playbook in deze sectie maakt u de Azure HDInsight-cluster.
           password: MuABCPassword!!@123
 ```
 
-Het maken van de instantie kan enkele minuten duren.
+Het kan enkele minuten duren voordat het maken van het exemplaar is voltooid.
 
 ## <a name="resize-the-cluster"></a>Het formaat van het cluster wijzigen
 
-Na het maken van een cluster is de enige instelling die kunt u het aantal worker-knooppunten. 
+Nadat het cluster is gemaakt, is de enige instelling die u kunt wijzigen het aantal worker-knoop punten. 
 
-De code playbook in deze sectie wordt het aantal worker-knooppunten verhoogd door bij te werken `target_instance_count` binnen `workernode`.
+De Playbook-code in deze sectie verhoogt het aantal worker-knoop punten `target_instance_count` door `workernode`de update binnen te passen.
 
 ```yml
 - name: Resize cluster
@@ -188,11 +188,11 @@ De code playbook in deze sectie wordt het aantal worker-knooppunten verhoogd doo
   register: output
 ```
 
-## <a name="delete-the-cluster-instance"></a>Verwijder het clusterexemplaar
+## <a name="delete-the-cluster-instance"></a>Het cluster exemplaar verwijderen
 
-Voor HDInsight-clusters worden pro rata per minuut. 
+De facturering voor HDInsight-clusters wordt per minuut in rekening geprijsd. 
 
-De playbook-code in deze sectie wordt het cluster verwijderd.
+Met de Playbook-code in deze sectie wordt het cluster verwijderd.
 
 ```yml
 - name: Delete instance of Cluster
@@ -202,11 +202,11 @@ De playbook-code in deze sectie wordt het cluster verwijderd.
     state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>De voorbeeld-playbook ophalen
+## <a name="get-the-sample-playbook"></a>De voor beeld-Playbook ophalen
 
-Er zijn twee manieren om de playbook compleet voorbeeld:
-- [Download de playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml) en sla deze op `hdinsight_create.yml`.
-- Maak een nieuw bestand met de naam `hdinsight_create.yml` en kopieer naar het de volgende inhoud:
+Er zijn twee manieren om de volledige voorbeeld Playbook te verkrijgen:
+- [Down load de Playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml) en sla deze `hdinsight_create.yml`op.
+- Maak een nieuw bestand met `hdinsight_create.yml` de naam en kopieer het naar de volgende inhoud:
 
 ```yml
 ---
@@ -348,14 +348,14 @@ Er zijn twee manieren om de playbook compleet voorbeeld:
         state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>De voorbeeld-playbook uitvoeren
+## <a name="run-the-sample-playbook"></a>De voorbeeld Playbook uitvoeren
 
-In deze sectie kunt u de playbook als u wilt testen van verschillende functies die worden weergegeven in dit artikel uitvoeren.
+In deze sectie voert u de Playbook uit om verschillende functies te testen die in dit artikel worden weer gegeven.
 
-Voordat u de playbook uitvoert, moet u de volgende wijzigingen aanbrengen:
-- In de `vars` sectie, vervangt de `{{ resource_group_name }}` tijdelijke aanduiding door de naam van uw resourcegroep.
+Voordat u de Playbook uitvoert, moet u de volgende wijzigingen aanbrengen:
+- Vervang in `vars` de sectie de `{{ resource_group_name }}` tijdelijke aanduiding door de naam van uw resource groep.
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met `ansible-playbook` behulp van de opdracht:
 
 ```bash
 ansible-playbook hdinsight.yml
@@ -363,9 +363,9 @@ ansible-playbook hdinsight.yml
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer het niet meer nodig hebt, verwijdert u de resources die in dit artikel is gemaakt. 
+Als u deze niet meer nodig hebt, verwijdert u de resources die u in dit artikel hebt gemaakt. 
 
-Sla de volgende code als `cleanup.yml`:
+Sla de volgende code op `cleanup.yml`als:
 
 ```yml
 - hosts: localhost
@@ -379,7 +379,7 @@ Sla de volgende code als `cleanup.yml`:
         state: absent
 ```
 
-Voer de playbook met behulp de `ansible-playbook` opdracht:
+Voer de Playbook uit met `ansible-playbook` behulp van de opdracht:
 
 ```bash
 ansible-playbook cleanup.yml

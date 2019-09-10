@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 906f2fc8cdac31922e6e93526f65577fe76c4b9c
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 054033c0fc9f1138ef9ecf7eaceca626f6f53423
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532356"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872842"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Xamarin iOS-specifieke overwegingen met MSAL.NET
 Op Xamarin iOS zijn er verschillende overwegingen die u moet meenemen bij het gebruik van MSAL.NET
@@ -104,13 +104,23 @@ Als u deze cache wilt delen, moet u de methode ' WithIosKeychainSecurityGroup ()
 
 Voorheen werd vermeld dat MSAL $ (AppIdentifierPrefix) heeft toegevoegd wanneer u de `WithIosKeychainSecurityGroup()` API gebruikt. Dit komt doordat de AppIdentifierPrefix of de ' team-ID ' wordt gebruikt om ervoor te zorgen dat alleen toepassingen die door dezelfde uitgever zijn gemaakt, de sleutel van het toegangs rechten kunnen delen.
 
-#### <a name="note-keychainsecuritygroup-property-deprecated"></a>Opmerking: Eigenschap KeychainSecurityGroup afgeschaft
+> [!NOTE]
+> **De `KeychainSecurityGroup` eigenschap is afgeschaft.**
+> 
+> Voorheen waren de ontwikkel aars van MSAL 2. x gedwongen het TeamId-voor voegsel toe te voegen bij het gebruik van de `KeychainSecurityGroup` eigenschap.
+>
+>  Bij het gebruik van de nieuwe `iOSKeychainSecurityGroup` eigenschap van MSAL 2.7. x wordt het TeamId-voor voegsel tijdens runtime opgelost door MSAL. Wanneer u deze eigenschap gebruikt, mag de waarde niet het TeamId-voor voegsel bevatten.
+>  Gebruik de nieuwe `iOSKeychainSecurityGroup` eigenschap, waarvoor u niet de TeamId hoeft op te geven, omdat de vorige `KeychainSecurityGroup` eigenschap nu verouderd is.
 
-Voorheen waren de ontwikkel aars van MSAL 2. x gedwongen het TeamId-voor voegsel toe te voegen bij het gebruik van de `KeychainSecurityGroup` eigenschap
+### <a name="use-microsoft-authenticator"></a>Microsoft Authenticator gebruiken
 
-Bij het gebruik van de nieuwe `iOSKeychainSecurityGroup` eigenschap van MSAL 2.7. x wordt het TeamId-voor voegsel tijdens runtime opgelost door MSAL. Wanneer u deze eigenschap gebruikt, mag de waarde niet het TeamId-voor voegsel bevatten.
+Uw toepassing kan Microsoft Authenticator (een Broker) gebruiken om het volgende in te scha kelen:
 
-Gebruik de nieuwe `iOSKeychainSecurityGroup` eigenschap, die ontwikkel aars niet nodig heeft om de TeamId op te geven, `KeychainSecurityGroup` omdat de vorige eigenschap nu verouderd is.
+- Eenmalige aanmelding (SSO). Uw gebruikers hoeven zich niet aan te melden bij elke toepassing.
+- Apparaat-id. Door toegang te krijgen tot het certificaat van het apparaat, dat is gemaakt op het apparaat toen het is gekoppeld aan de werk plek. Uw toepassing is gereed als de Tenant beheerders voorwaardelijke toegang met betrekking tot de apparaten inschakelen.
+- Verificatie van de toepassings-id. Wanneer een toepassing de Broker aanroept, wordt de omleidings-URL door gegeven en wordt deze door de Broker gecontroleerd.
+
+Zie voor meer informatie over het inschakelen van de Broker [Microsoft Authenticator gebruiken of Microsoft intune bedrijfs portal in Xamarin IOS-en Android-toepassingen](msal-net-use-brokers-with-xamarin-apps.md).
 
 ### <a name="sample-illustrating-xamarin-ios-specific-properties"></a>Voor beeld van het illustreren van specifieke eigenschappen van Xamarin iOS
 

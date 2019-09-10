@@ -1,5 +1,5 @@
 ---
-title: De Azure CLI gebruiken om een werk ruimte te maken
+title: Werk ruimten maken met Azure CLI
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de Azure CLI om een nieuwe Azure Machine Learning service-werk ruimte te maken.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: 1213e9bc3b27b8d5f6f6ef93b6eefa5a8c32be57
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f398eb8124f45562ebc3c4238c641a6638811394
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70392673"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873492"
 ---
-# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Een Azure Resource Manager sjabloon gebruiken om een werk ruimte voor Azure Machine Learning service te maken
+# <a name="create-a-workspace-for-azure-machine-learning-service-with-azure-cli"></a>Een werk ruimte voor Azure Machine Learning service maken met Azure CLI
 
 In dit artikel leert u hoe u een Azure Machine Learning service-werk ruimte maakt met behulp van de Azure CLI. De Azure CLI bevat opdrachten voor het beheer van Azure-resources. De machine learning-extensie voor de CLI biedt opdrachten voor het werken met Azure Machine Learning-service resources.
 

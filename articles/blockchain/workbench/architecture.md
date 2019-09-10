@@ -1,27 +1,27 @@
 ---
-title: Azure Blockchain Workbench-architectuur
-description: Overzicht van Azure Blockchain Workbench-architectuur en de bijbehorende onderdelen.
+title: Architectuur van Azure Block Chain Workbench preview
+description: Overzicht van de architectuur van Azure Block Chain Workbench preview en de bijbehorende onderdelen.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/20/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 5333f02edd6a4ff888e28ed36c2b78f75309f4d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d50ee0fa06f34167cd4be9e787f6e351d3ef7e3b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060902"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845207"
 ---
-# <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench-architectuur
+# <a name="azure-blockchain-workbench-preview-architecture"></a>Architectuur van Azure Block Chain Workbench preview
 
-Azure Blockchain Workbench vereenvoudigt de ontwikkeling van blockchain-toepassingen door het aanbieden van een oplossing die gebruikmaakt van verschillende Azure-onderdelen. Blockchain Workbench kan worden geïmplementeerd met behulp van een oplossingssjabloon in de Azure Marketplace. De sjabloon stelt u in staat te kiezen voor modules en -onderdelen om te implementeren met inbegrip van een blockchain-stack, type van de clienttoepassing, en ondersteuning voor IoT-integratie. Eenmaal geïmplementeerd biedt Blockchain Workbench toegang tot een web-app, iOS-app, en Android-app.
+Azure Block Chain Workbench preview vereenvoudigt de ontwikkeling van Block Chain toepassingen door een oplossing te bieden met behulp van verschillende Azure-onderdelen. Blockchain Workbench kan worden geïmplementeerd met behulp van een oplossingssjabloon in de Azure Marketplace. De sjabloon stelt u in staat te kiezen voor modules en -onderdelen om te implementeren met inbegrip van een blockchain-stack, type van de clienttoepassing, en ondersteuning voor IoT-integratie. Eenmaal geïmplementeerd biedt Blockchain Workbench toegang tot een web-app, iOS-app, en Android-app.
 
-![Blockchain Workbench-architectuur](./media/architecture/architecture.png)
+![Architectuur van Block Chain workbench](./media/architecture/architecture.png)
 
 ## <a name="identity-and-authentication"></a>Identiteit en verificatie
 
@@ -45,7 +45,7 @@ In de webtoepassing hebben bevoegde gebruikers toegang tot de beheerdersconsole.
 * Upload en implementeer eigen smart contracts.
 * Wijs gebruikerstoegang toe aan het smart contract in de context van een specifieke rol.
 
-Zie voor meer informatie de [clienttoepassingen van Azure Blockchain Workbench-voorbeeld op GitHub](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile).
+Zie de voor [beelden van Azure Block Chain Workbench-client toepassingen op github](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile)voor meer informatie.
 
 ## <a name="gateway-service-api"></a>Gateway service API
 

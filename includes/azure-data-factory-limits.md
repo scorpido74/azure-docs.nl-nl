@@ -9,10 +9,10 @@ ms.date: 5/30/2019
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: c92bb8b2adb3e91e691e9fd1c17a7ee43e84fd11
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68362495"
 ---
 Azure Data Factory is een service met meerdere tenants met de volgende standaard limieten om ervoor te zorgen dat klant abonnementen worden beschermd tegen de werk belastingen van elkaar. Neem contact op met de ondersteuning als u de limieten wilt verhogen tot het maximum voor uw abonnement.
@@ -75,7 +75,7 @@ Azure Data Factory is een service met meerdere tenants met de volgende standaard
 
 <sup>2</sup> HDInsight-kernen op aanvraag worden toegewezen uit het abonnement dat de Data Factory bevat. Als gevolg hiervan is de vorige limiet de Data Factory afgedwongen kern limiet voor HDInsight-kernen op aanvraag. Het verschilt van de kern limiet die is gekoppeld aan uw Azure-abonnement.
 
-<sup>3</sup> de Cloud gegevens verplaatsings eenheid (DMU) voor versie 1 wordt gebruikt in een kopie bewerking in de Cloud naar de Cloud, lees meer uit de gegevens verplaatsings eenheden voor de [Cloud (versie 1)](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units). Zie voor meer informatie over facturering [Azure Data Factory prijzen](https://azure.microsoft.com/pricing/details/data-factory/).
+<sup>3</sup> de Cloud gegevens verplaatsings eenheid (DMU) voor versie 1 wordt gebruikt in een kopie bewerking in de Cloud naar de Cloud, lees meer uit de [gegevens verplaatsings eenheden voor de Cloud (versie 1)](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units). Zie voor meer informatie over facturering [Azure Data Factory prijzen](https://azure.microsoft.com/pricing/details/data-factory/).
 
 | **Resource** | **Standaard ondergrens** | **Minimum limiet** |
 | --- | --- | --- |
@@ -84,4 +84,4 @@ Azure Data Factory is een service met meerdere tenants met de volgende standaard
 | Time-outwaarde opnieuw proberen |1 seconde |1 seconde |
 
 #### <a name="web-service-call-limits"></a>Oproep limieten voor webservices
-Azure Resource Manager heeft limieten voor API-aanroepen. U kunt API-aanroepen maken met een snelheid binnen de [Azure Resource Manager API](../articles/azure-subscription-service-limits.md#resource-group-limits)-limieten.
+Azure Resource Manager heeft limieten voor API-aanroepen. U kunt API-aanroepen maken met een snelheid binnen de [Azure Resource Manager API-limieten](../articles/azure-subscription-service-limits.md#resource-group-limits).

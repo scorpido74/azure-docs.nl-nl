@@ -1,29 +1,26 @@
 ---
-title: Replicatie configureren voor Vm's met Azure Disk Encryption ingeschakeld in Azure Site Recovery | Microsoft Docs
+title: Replicatie configureren voor Vm's met Azure Disk Encryption ingeschakeld in Azure Site Recovery
 description: In dit artikel wordt beschreven hoe u replicatie kunt configureren voor Azure Disk Encryption Vm's van een Azure-regio naar een andere met behulp van Site Recovery.
-services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 1bb94b70510be30d676ad707ab2fbfbbcbf50833
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: bf0ee89bb091a13560a7a7d8d9e77c74827d94a2
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884130"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861327"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Virtuele machines die met Azure Disk Encryption zijn ingeschakeld repliceren naar een andere Azure-regio
 
-In dit artikel wordt beschreven hoe u Azure Disk Encryption-Vm's van de ene Azure-regio naar de andere repliceert.
+In dit artikel wordt beschreven hoe u virtuele Azure-machines repliceert Azure Disk Encryption met behulp van de ene Azure-regio naar de andere.
 
 >[!NOTE]
->Azure Site Recovery ondersteunt momenteel alleen Azure Disk Encryption-ingeschakelde Vm's waarop een Windows-besturings systeem wordt uitgevoerd. Vm's met Azure Disk Encryption ingeschakeld zonder Azure AD-App worden alleen ondersteund als ze beheerde schijven gebruiken. Vm's met niet-beheerde schijven worden niet ondersteund.
+> Site Recovery biedt momenteel ondersteuning voor ADE, met en zonder Azure Active Directory (AAD) voor virtuele machines waarop Windows wordt uitgevoerd.  Voor computers met ADE 1,1 (zonder AAD) moeten de Windows-Vm's beheerde schijven gebruiken. Vm's met niet-beheerde schijven worden niet ondersteund. Als u overschakelt van ADE 0,1 (met AAD) naar 1,1, moet u replicatie uitschakelen en replicatie inschakelen voor een VM na het inschakelen van 1,1.
 
->[!NOTE]
->Als u overschakelt van ADE v1 (met Azure AD-app) naar ADE versie 2 (zonder Azure AD-app), moet u replicatie uitschakelen en de replicatie inschakelen nadat u ADE v2 hebt ingeschakeld.
 
 ## <a id="required-user-permissions"></a>Vereiste gebruikers machtigingen
 Site Recovery vereist dat de gebruiker gemachtigd is om de sleutel kluis te maken in de doel regio en sleutels te kopiëren van de sleutel kluis van het bron gebied naar de sleutel kluis met de doel regio.
@@ -119,7 +116,7 @@ Volg deze stappen om de Site Recovery standaard doel instellingen te wijzigen.
 
 2. Selecteer **aanpassen** naast versleutelings instellingen om de volgende standaard instellingen te wijzigen:
    - Selecteer voor de **doel schijf versleutelings sleutel**kluis de doel schijf versleutelings sleutel kluis in de lijst met sleutel kluizen op de doel locatie van het abonnement.
-   - Selecteerde sleutel kluis van de doel sleutel versleutelen in de lijst met sleutel kluizen op de doel locatie van het abonnement.
+   - Selecteer de sleutel kluis van **de doel sleutel**versleutelen in de lijst met sleutel kluizen op de doel locatie van het abonnement.
 
 3. Selecteer **doel bron** > maken**replicatie inschakelen**.
 4. Nadat de Vm's zijn ingeschakeld voor replicatie, kunt u de status van de virtuele machines controleren onder **gerepliceerde items**.

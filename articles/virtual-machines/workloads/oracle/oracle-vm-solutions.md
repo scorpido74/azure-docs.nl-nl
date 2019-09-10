@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 3d3805fe5a574d3e6ecd9a6fa8f95dd28f308d25
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4480819a08ef9a7a4ad7257f75a94c5d10a3d312
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101397"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858573"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle-VM-installatie kopieën en hun implementatie op Microsoft Azure
 
@@ -58,11 +58,8 @@ Deze installatie kopieën worden beschouwd als ' uw eigen licentie nemen ' en al
 
 Gebruikers kunnen er ook voor kiezen om hun oplossingen te baseren op een aangepaste installatie kopie die ze helemaal zelf maken in azure of een aangepaste installatie kopie uploaden vanuit hun on-premises omgeving.
 
-## <a name="support-for-jd-edwards"></a>Ondersteuning voor JD Edwards
-Volgens Oracle-ondersteunings nota [doc id 2178595,1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4), JD Edwards EnterpriseOne versie 9,2 en hoger, worden ondersteund in **een open bare Cloud** die `Minimum Technical Requirements` voldoet aan hun specifieke (MTR).  U moet aangepaste installatie kopieën maken die voldoen aan de MTR-specificaties voor de compatibiliteit van besturings systemen en software toepassingen. 
-
 ## <a name="oracle-database-vm-images"></a>VM-installatie kopieën van Oracle data base
-Oracle biedt ondersteuning voor het uitvoeren van Oracle DB 12,1 Standard-en Enter prise-edities in azure op installatie kopieën van virtuele machines op basis van Oracle Linux.  Voor de beste prestaties voor productie werkbelastingen van Oracle DB op Azure, moet u de grootte van de VM-installatie kopie op juiste wijze aanpassen en Managed Disks gebruiken die door Premium Storage worden ondersteund. Meer informatie over hoe u snel een Oracle DB in azure kunt krijgen met behulp van de Oracle-installatie kopie van het gepubliceerde virtuele systeem, [kunt u Oracle DB Snelstartgids](oracle-database-quick-create.md).
+Oracle biedt ondersteuning voor het uitvoeren van Oracle DB 12,1 en hogere Standard-en Enter prise-edities in azure op installatie kopieën van virtuele machines op basis van Oracle Linux.  Voor de beste prestaties voor productie werkbelastingen van Oracle DB op Azure, moet u de grootte van de VM-installatie kopie op de juiste wijze aanpassen en Premium-SSD of Ultra-SSD Managed Disks gebruiken. Meer informatie over hoe u snel een Oracle DB in azure kunt krijgen met behulp van de Oracle-installatie kopie van het gepubliceerde virtuele systeem, [kunt u Oracle DB Snelstartgids](oracle-database-quick-create.md).
 
 ### <a name="attached-disk-configuration-options"></a>Opties voor de schijf configuratie zijn gekoppeld
 
@@ -80,6 +77,13 @@ Azure NetApp Files is ontworpen om te voldoen aan de belangrijkste vereisten voo
 Deze mogelijkheden zijn mogelijk omdat Azure NetApp Files is gebaseerd op NetApp® ONTAP® alle-Flash systemen die worden uitgevoerd in een Azure Data Center-omgeving, als een systeem eigen Azure-service. Het resultaat is een ideale database opslag technologie die net als andere opties voor Azure Storage kan worden ingericht en verbruikt. Zie [Azure NetApp files-documentatie](https://docs.microsoft.com/azure/azure-netapp-files/) voor meer informatie over het implementeren en gebruiken van Azure NetApp files NFS-volumes. Zie de [Best practices-hand leiding voor Oracle in azure met behulp van Azure NetApp files](https://www.netapp.com/us/media/tr-4780.pdf) voor Best Practice aanbevelingen voor het werken met een Oracle-data base op Azure NetApp files.
 
 
+## <a name="licensing-oracle-database--software-on-azure"></a>Licentie Oracle Database & software op Azure
+Microsoft Azure is een geautoriseerde cloud omgeving voor het uitvoeren van Oracle Database. De Oracle core factor Table is niet van toepassing op Oracle-data bases in de Cloud. Bij het gebruik van Vm's met Hyper-Threading-technologie die is ingeschakeld voor Enter prise Edition-data bases, telt u twee Vcpu's als gelijkwaardig aan één Oracle-processor licentie als hyperthreading is ingeschakeld (zoals vermeld in het beleids document). De details van het beleid vindt u [hier](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf).
+Oracle-data bases vereisen over het algemeen meer geheugen en IO. Daarom worden [Vm's geoptimaliseerd voor geheugen](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-memory) aanbevolen voor deze werk belastingen. Om uw workloads verder te optimaliseren, worden [beperkte kern vcpu's](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/constrained-vcpu) aanbevolen voor Oracle DB workloads die hoge geheugen, opslag ruimte en I/O-band breedte nodig hebben, maar geen hoog aantal kernen.
+
+Wanneer Oracle-software en-workloads van on-premises naar Microsoft Azure worden gemigreerd, biedt Oracle licentie mobiliteit zoals vermeld in de [Veelgestelde vragen over Oracle op Azure](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)
+
+
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
 Oracle RAC is ontworpen om het mislukken van één knoop punt in een on-premises cluster configuratie met meerdere knoop punten te verminderen. Het is afhankelijk van twee on-premises technologieën die niet standaard zijn voor het maken van open bare Cloud omgevingen: netwerk multi cast en gedeelde schijven. Als uw database oplossing Oracle RAC vereist in azure, hebt u de software van derden nodig om deze technologieën in te scha kelen. Zie de [pagina FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)voor meer informatie over Oracle RAC.
 
@@ -88,13 +92,18 @@ Wanneer u Oracle-data bases in azure gebruikt, bent u verantwoordelijk voor het 
 
 Hoge Beschik baarheid en herstel na nood gevallen voor Oracle Database Enterprise Edition (zonder vertrouwen op Oracle RAC) kunnen worden bereikt op Azure met behulp van [Data Guard, Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html)of [Oracle Golden Gate](https://www.oracle.com/technetwork/middleware/goldengate), met twee data bases op twee afzonderlijke virtuele apparaten. Beide virtuele machines moeten zich in hetzelfde [virtuele netwerk](https://azure.microsoft.com/documentation/services/virtual-network/) bevinden om ervoor te zorgen dat ze toegang hebben tot elkaar via het permanente IP-adres van de privé.  Daarnaast is het raadzaam om de virtuele machines in dezelfde beschikbaarheidsset te plaatsen zodat Azure deze kan plaatsen in afzonderlijke fout domeinen en upgrade domeinen. Als u geo-redundantie wilt instellen, stelt u de twee data bases in voor replicatie tussen twee verschillende regio's en verbindt u de twee exemplaren met een VPN Gateway.
 
-Met de zelf studie implementeert u [Oracle Data Guard in azure](configure-oracle-dataguard.md) met behulp van de basis installatie procedure van Azure.  
+Met de zelf studie [implementeert u Oracle Data Guard in azure](configure-oracle-dataguard.md) met behulp van de basis installatie procedure van Azure.  
 
 Met Oracle Data Guard kan hoge Beschik baarheid worden bereikt met een primaire data base in één virtuele machine, een secundaire (standby)-data base in een andere virtuele machine en een eenrichtings replicatie tussen deze. Het resultaat is lees toegang tot de kopie van de data base. Met Oracle Golden Gate kunt u bidirectionele replicatie tussen de twee data bases configureren. Zie de documentatie over [Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html) en [Golden Gate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html) op de Oracle-website voor meer informatie over het instellen van een oplossing voor hoge Beschik baarheid voor uw data bases met behulp van deze hulpprogram ma's. Als u lees-/schrijftoegang tot de kopie van de data base nodig hebt, kunt u [Oracle Active Data Guard](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)gebruiken.
 
 In de zelf studie wordt [Oracle Golden Gate in azure geïmplementeerd](configure-oracle-golden-gate.md) , wordt u begeleid bij de basis installatie procedure van Azure.
 
 Naast een oplossing van HA en DR in azure, moet u een back-upstrategie hebben om uw data base te herstellen. In de zelf studie [back-up en herstellen van een Oracle database](oracle-backup-recovery.md) wordt u begeleid bij de basis procedure voor het instellen van een consistente back-up.
+
+
+## <a name="support-for-jd-edwards"></a>Ondersteuning voor JD Edwards
+Volgens Oracle-ondersteunings nota [doc id 2178595,1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4), JD Edwards EnterpriseOne versie 9,2 en hoger, worden ondersteund in **een open bare Cloud** die `Minimum Technical Requirements` voldoet aan hun specifieke (MTR).  U moet aangepaste installatie kopieën maken die voldoen aan de MTR-specificaties voor de compatibiliteit van besturings systemen en software toepassingen. 
+
 
 ## <a name="oracle-weblogic-server-virtual-machine-images"></a>Installatie kopieën van virtuele Oracle WebLogic-Server
 
