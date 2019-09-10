@@ -1,106 +1,105 @@
 ---
-title: Systeem vereisten voor Microsoft Azure Data Box Disk | Microsoft Docs
-description: Meer informatie over de software-en netwerk vereisten voor uw Azure Data Box Disk
+title: Systeemvereisten voor Microsoft Azure Data Box Disk | Microsoft Docs
+description: Lees meer over de software- en netwerkvereisten voor uw Azure Data Box Disk
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: f054d0665c49ee048451681a7cc34d2a648a6e9e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.openlocfilehash: fb2fd89664517e44cf5128a5c82e583f03087061
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240229"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70307687"
 ---
 ::: zone target="docs"
 
-# <a name="azure-data-box-disk-system-requirements"></a>Systeem vereisten voor Azure Data Box Disk
+# <a name="azure-data-box-disk-system-requirements"></a>Systeemvereisten voor Azure Data Box Disk
 
-In dit artikel worden de belangrijkste systeem vereisten beschreven voor uw Microsoft Azure Data Box Disk oplossing en voor de clients die verbinding maken met de Data Box Disk. We raden u aan de informatie zorgvuldig te bekijken voordat u uw Data Box Disk implementeert en vervolgens naar de gewenste gegevens te verwijzen tijdens de implementatie en de volgende bewerking.
+In dit artikel worden de belangrijkste systeemvereisten beschreven voor uw oplossing met Microsoft Azure Data Box Disk en voor de clients die verbinding maken met de Data Box Disk. We adviseren om de informatie zorgvuldig door te nemen voordat u uw Data Box Disk implementeert. Als u tijdens de implementatie en daaropvolgende bewerkingen nog vragen hebt, kunt u de informatie er altijd nog even bij pakken.
 
-De systeem vereisten omvatten de ondersteunde platforms voor clients die verbinding maken met schijven, ondersteunde opslag accounts en opslag typen.
+De systeemvereisten omvatten de ondersteunde platforms voor clients die verbinding maken met schijven, ondersteunde opslagaccounts en opslagtypen.
 
 ::: zone-end
 
 ::: zone target="chromeless"
 
-# <a name="review-prerequisites"></a>Vereisten controleren
+## <a name="review-prerequisites"></a>Vereisten controleren
 
-1. U moet uw data Box Disk hebben besteld [met behulp van de zelf studie: Bestel uw Azure Data Box Disk](data-box-disk-deploy-ordered.md). U hebt uw schijven en één verbindings kabel per schijf ontvangen.
+1. U moet uw Data Box Disk hebben besteld met behulp van [Zelfstudie: Azure Data Box Disk bestellen](data-box-disk-deploy-ordered.md). U hebt de schijven en één aansluitkabel per schijf ontvangen.
 2. U hebt een clientcomputer beschikbaar van waaruit u de gegevens kunt kopiëren. De clientcomputer moet voldoen aan deze vereisten:
 
-    - Een ondersteund besturings systeem uitvoeren.
+    - Er is een ondersteund besturingssysteem geïnstalleerd.
     - Andere vereiste software is geïnstalleerd.
 
 ::: zone-end
 
-## <a name="supported-operating-systems-for-clients"></a>Ondersteunde besturings systemen voor clients
+## <a name="supported-operating-systems-for-clients"></a>Ondersteunde besturingssystemen voor clients
 
-Hier volgt een lijst met de ondersteunde besturings systemen voor het ontgrendelen van de schijf en het kopiëren van gegevens via de clients die zijn verbonden met de Data Box Disk.
+Hier volgt een lijst met de ondersteunde besturingssystemen voor het ontgrendelen van de schijf en het kopiëren van gegevens via de clients die zijn verbonden met de Data Box Disk.
 
 | **Besturingssysteem** | **Geteste versies** |
 | --- | --- |
 | Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 |
-| Windows (64 bits) |7, 8, 10 |
-|Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04, 16.04, 18.04 <br> 8,11, 9 <br> 7.0 <br> 6.5, 6.9, 7.0, 7.5 |  
+| Windows (64-bits) |7, 8, 10 |
+|Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04, 16.04, 18.04 <br> 8.11, 9 <br> 7.0 <br> 6.5, 6.9, 7.0, 7.5 |  
 
 ## <a name="other-required-software-for-windows-clients"></a>Andere vereiste software voor Windows-clients
 
-Voor Windows-clients moet de volgende ook worden geïnstalleerd.
+Voor Windows-clients moet de volgende software ook zijn geïnstalleerd.
 
 | **Software**| **Versie** |
 | --- | --- |
-| Windows PowerShell |5.0 |
+| Windows Powershell |5.0 |
 | .NET Framework |4.5.1 |
 | Windows Management Framework |5.0|
 | BitLocker| - |
 
 ## <a name="other-required-software-for-linux-clients"></a>Andere vereiste software voor Linux-clients
 
-Voor Linux-client installeert de Data Box Disk toolset de volgende vereiste software:
+Voor Linux-clients wordt de volgende vereiste software geïnstalleerd door de Data Box Disk-werkset:
 
-- vergren deling
+- dislocker
 - OpenSSL
-
-::: zone target="docs"
 
 ## <a name="supported-connection"></a>Ondersteunde verbinding
 
-De client computer met de gegevens moet een USB 3,0-poort of hoger hebben. De schijven maken verbinding met deze client met behulp van de meegeleverde kabel.
+De clientcomputer met de gegevens moet een USB 3.0-poort of hoger hebben. De schijven maken verbinding met deze client met behulp van de meegeleverde kabel.
 
 ## <a name="supported-storage-accounts"></a>Ondersteunde opslagaccounts
 
-Hier volgt een lijst met de ondersteunde opslag typen voor de Data Box Disk.
+Hier volgt een lijst met de ondersteunde opslagtypen voor de Data Box Disk.
 
 | **Opslagaccount** | **Opmerkingen** |
 | --- | --- |
 | Klassiek | Standard |
-| Algemeen doel  |Standaard zowel v1 als v2 worden ondersteund. Zowel warme als coole lagen worden ondersteund. |
-| Blob-opslag account | |
+| Algemeen gebruik  |Standard; zowel V1 als V2 wordt ondersteund. Zowel dynamische als statische servicelagen worden ondersteund. |
+| Blob-opslagaccount | |
 
 >[!NOTE]
-> Azure Data Lake Storage gen 2-accounts worden niet ondersteund.
+> Gen 2-accounts van Azure Data Lake Storage worden niet ondersteund.
 
 
-## <a name="supported-storage-types-for-upload"></a>Ondersteunde opslag typen voor uploaden
+## <a name="supported-storage-types-for-upload"></a>Ondersteunde opslagtypen voor uploaden
 
-Hier volgt een lijst met de opslag typen die worden ondersteund voor geüpload naar Azure met behulp van Data Box Disk.
+Hier volgt een lijst met de opslagtypen die worden ondersteund voor uploaden naar Azure met behulp van Data Box Disk.
 
-| **Bestands indeling** | **Opmerkingen** |
+| **Bestandsindeling** | **Opmerkingen** |
 | --- | --- |
-| Azure-blok-BLOB | |
-| Azure-pagina-BLOB  | |
+| Azure-blok-blob | |
+| Azure-pagina-blob  | |
 | Azure Files  | |
 | Beheerde schijven | |
 
+::: zone target="docs"
 
 ## <a name="next-step"></a>Volgende stap
 
-* [Uw Azure Data Box Disk implementeren](data-box-disk-deploy-ordered.md)
+* [Azure Data Box Disk implementeren](data-box-disk-deploy-ordered.md)
 
 ::: zone-end
 

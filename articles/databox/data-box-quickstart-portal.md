@@ -10,10 +10,10 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 47b8fdbe48514665f40114c9820fdc5def38c778
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 09/05/2019
 ms.locfileid: "70241369"
 ---
 ::: zone target="docs"
@@ -24,7 +24,7 @@ ms.locfileid: "70241369"
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box"></a>Aan de slag met Azure Data Box 
+# <a name="get-started-with-azure-data-box"></a>Aan de slag met de Azure Data Box 
 
 ::: zone-end
 
@@ -32,13 +32,13 @@ ms.locfileid: "70241369"
 
 In deze quickstart wordt beschreven hoe u de Azure Data Box implementeert met behulp van de Azure-portal. De stappen omvatten het aansluiten van de kabels, het configureren en het kopiëren van gegevens naar de Data Box, zodat deze kunnen worden geüpload naar Azure. De quickstart wordt uitgevoerd in de Azure-portal en op de lokale webgebruikersinterface van het apparaat.
 
-Ga voor gedetailleerde stapsgewijze instructies voor implementatie en tracering naar [Zelfstudie: Azure Data Box volgorde](data-box-deploy-ordered.md)
+Ga voor gedetailleerde stapsgewijze instructies voor implementatie en tracering naar [Zelfstudie: Azure Data Box bestellen](data-box-deploy-ordered.md)
 
 ::: zone-end 
 
 ::: zone target="chromeless"
 
-In deze hand leiding wordt beschreven hoe u de Azure Data Box implementeert met behulp van de Azure Portal. De stappen omvatten het controleren van de vereisten, de kabel en de verbinding van uw apparaat en het kopiëren van gegevens naar het apparaat, zodat deze naar Azure worden geüpload.
+In deze handleiding wordt beschreven hoe u de Azure Data Box implementeert met behulp van de Azure-portal. De stappen omvatten het controleren van de vereisten, bekabelen en verbinding maken met het apparaat, en het kopiëren van gegevens naar het apparaat, zodat deze naar Azure worden geüpload.
 
 ::: zone-end
 
@@ -70,18 +70,18 @@ Voordat u begint:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, moet u ervoor zorgen dat u het volgende hebt gedaan:
+Zorg voordat u begint dat u de volgende zaken hebt uitgevoerd:
 
-1. De [zelf studie is voltooid: Azure Data Box bestellen](data-box-deploy-ordered.md) voltooid.
-2. U hebt uw Data Box ontvangen en de status van de bestelling in de portal is **afgeleverd**. 
-3. De [Data Box veiligheids richtlijnen](data-box-safety.md)zijn gecontroleerd.
-4. Er is één geaard stroom kabel ontvangen voor gebruik met uw opslag apparaat van 100 TB.
-5. Toegang tot een hostcomputer met de gegevens die u wilt kopiëren naar Data Box. Op uw hostcomputer moet
+1. U hebt [Zelfstudie: Azure Data Box bestellen](data-box-deploy-ordered.md) voltooid.
+2. U hebt uw Data Box ontvangen en de bestelstatus in de portal is **Geleverd**. 
+3. U hebt de [veiligheidsrichtlijnen voor de Data Box](data-box-safety.md) bekeken.
+4. U hebt één geaard netsnoer ontvangen voor gebruik met uw opslagapparaat van 100 TB.
+5. U hebt toegang tot een hostcomputer waarop de gegevens staan die u naar Data Box wilt kopiëren. Op uw hostcomputer moet
     - Een [ondersteund besturingssysteem](data-box-system-requirements.md) worden uitgevoerd.
     - Een verbinding bestaan met een netwerk met hoge snelheid. Het wordt aangeraden dat u beschikt over minstens één 10-GbE-verbinding. Als er geen 10-GbE-verbinding beschikbaar is, kan een 1-GbE-gegevensverbinding worden gebruikt. Dit heeft echter wel invloed op de kopieersnelheid. 
-6. Toegang tot een plat Opper vlak om de Data Box te plaatsen. Als u het apparaat plat of rechtop wilt plaatsen in een standaard rack plank, hebt u een 7U-sleuf nodig in uw rek.
-7. U hebt de volgende kabels aangeschaft om uw Data Box aan de hostcomputer te koppelen.
-    - Een of meer koperen 10-GbE-kabels van het type SFP+ Twinax of glasvezelkabels van het type SFP+ (te gebruiken met de netwerkinterfaces DATA 1 en DATA 2). Zie de [lijst met ondersteunde kabels en switches van Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf) die compatibel zijn met Mellanox connectx®-3 Pro en Dual-Port 10Gbase-T adapters met een PCI Express 3,0-netwerk interface voor meer informatie.
+6. Toegang tot een vlakke ondergrond om de Data Box te plaatsen. Als u het apparaat plat of rechtop in een standaardrek wilt plaatsen, moet het rek beschikken over een 7U-sleuf.
+7. U hebt de volgende kabels aangeschaft om de Data Box aan te sluiten op de hostcomputer.
+    - Een of meer koperen 10-GbE-kabels van het type SFP+ Twinax of glasvezelkabels van het type SFP+ (te gebruiken met de netwerkinterfaces DATA 1 en DATA 2). Zie voor meer informatie de [lijst met ondersteunde kabels en switches van Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf) die compatibel zijn met Mellanox ConnectX®-3 Pro en Dual-Port 10GBASE-T-adapters met een PCI Express 3.0-netwerkinterface.
     - Eén RJ-45-netwerkkabel van het type CAT 6 (gebruiken met de MGMT-netwerkinterface)
     - Eén RJ-45-netwerkkabel van het type CAT 6A OF CAT 6 (gebruiken met DATA 3-netwerkinterface die is geconfigureerd als respectievelijk 10 Gbps of 1 Gbps)
 
@@ -132,7 +132,7 @@ Als u de Data Box hebt ontvangen, voert u de volgende stappen uit om de kabels a
     4. Schakel het apparaat in. De Aan/uit-knop bevindt zich op het voorpaneel van het apparaat.
 
 
-## <a name="connect"></a>Verbinden
+## <a name="connect"></a>Verbinding maken
 
 Deze stap neemt ongeveer 5 tot 7 minuten in beslag.
 

@@ -6,18 +6,18 @@ ms.topic: include
 ms.date: 05/28/2019
 ms.author: alkohli
 ms.openlocfilehash: f5b60d862be0d71f71f770c47d88ad39f2fc6ac7
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
-ms.translationtype: MT
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 09/05/2019
 ms.locfileid: "66419571"
 ---
 De laatste stap is de voorbereiding van het apparaat voor verzending. In deze stap worden alle shares van apparaten offline geplaatst. De shares zijn niet toegankelijk als u dit proces hebt gestart.
 
 > [!IMPORTANT]
-> Voorbereiding voor verzending is vereist omdat gegevens die niet aan de naamgevingsregels van Azure voldoen, worden gemarkeerd. Deze stap overslaan kan leiden tot mogelijke gegevens uploaden storingen als gevolg van niet-conforme gegevens.
+> Voorbereiding voor verzending is vereist omdat gegevens die niet aan de naamgevingsregels van Azure voldoen, worden gemarkeerd. Als u deze stap overslaat, kan dit leiden tot fouten bij het uploaden van gegevens vanwege gegevens die niet voldoen.
 
-1. Ga naar **Voorbereiden voor verzending** en klik op **Voorbereiden starten**. Standaard worden controlesommen worden berekend terwijl gegevens worden gekopieerd. Voorbereiding voor verzending het berekenen van controlesom is voltooid en wordt de lijst met bestanden wordt gemaakt (ook wel bekend als *stuklijst bestanden* of het manifest). Het berekenen van de controlesom kan, afhankelijk van de grootte van uw gegevens, uren tot dagen duren.
+1. Ga naar **Voorbereiden voor verzending** en klik op **Voorbereiden starten**. Standaard worden er controlesommen berekend tijdens het kopiëren van gegevens. Deze berekening wordt afgerond tijdens de stap Voorbereiding voor verzending, waarna er een lijst met bestanden (ook wel *stuklijst* of manifest genoemd) wordt opgesteld. Het berekenen van de controlesom kan, afhankelijk van de grootte van uw gegevens, uren tot dagen duren.
    
     ![Voorbereiding voor verzending 1](media/data-box-heavy-prepare-to-ship/prepare-to-ship1.png)
 
@@ -35,19 +35,19 @@ De laatste stap is de voorbereiding van het apparaat voor verzending. In deze st
 
     Als u meer gegevens naar het apparaat wilt kopiëren, kunt u het apparaat ontgrendelen, meer gegevens kopiëren en de voorbereiding voor verzending opnieuw uitvoeren.
 
-    Als er fouten in deze stap, downloadt u het foutenlogboek en los de fouten. Nadat de fouten zijn opgelost, voert u **Voorbereiding voor verzending** uit.
+    Als deze stap fouten bevat, downloadt u het foutenlogboek en verhelpt u de fouten. Nadat de fouten zijn opgelost, voert u **Voorbereiding voor verzending** uit.
 
-4. Nadat de voorbereiding voor verzending is met succes voltooid (waarbij er geen fouten), downloaden de lijst met bestanden (ook wel bekend als *stuklijst bestanden* of het manifest) in dit proces hebt gekopieerd. 
+4. Nadat de stap Voorbereiding voor verzending is voltooid (zonder fouten), downloadt u de lijst met bestanden (ook wel bekend als het *manifest*) die in dit proces zijn gekopieerd. 
 
-    ![Lijst van bestanden of stuklijst bestanden downloaden](media/data-box-heavy-prepare-to-ship/download-list-of-files.png)
+    ![Lijst met bestanden of stuklijst downloaden](media/data-box-heavy-prepare-to-ship/download-list-of-files.png)
 
-   U kunt deze lijst later gebruiken om de bestanden te verifiëren die naar Azure zijn geüpload. Zie voor meer informatie, [inspecteren stuklijst bestanden tijdens de voorbereiding voor verzending](../articles/databox/data-box-logs.md#inspect-bom-during-prepare-to-ship).
+   U kunt deze lijst later gebruiken om de bestanden te verifiëren die naar Azure zijn geüpload. Zie [Stuklijst controleren tijdens voorbereiding voor verzending](../articles/databox/data-box-logs.md#inspect-bom-during-prepare-to-ship) voor meer informatie.
         
-    ![Stuklijst-voorbeeldbestand](media/data-box-heavy-prepare-to-ship/sample-bom-file.png)
+    ![Voorbeeld van stuklijst](media/data-box-heavy-prepare-to-ship/sample-bom-file.png)
 
 5. Schakel het apparaat uit. Ga naar de pagina **Uitschakelen of opnieuw opstarten** en klik op **Afsluiten**. Klik op **OK** om verder te gaan als u om bevestiging wordt gevraagd.
 
-    ![Eerste apparaatknooppunt afsluiten](media/data-box-heavy-prepare-to-ship/shut-down-device-node.png)
+    ![Eerste knooppunt van apparaat afsluiten](media/data-box-heavy-prepare-to-ship/shut-down-device-node.png)
 
-6. Herhaal de bovenstaande stappen voor het andere knooppunt.
-7. Zodra het apparaat volledig is afgesloten, wordt alle LED's aan het einde van het apparaat hebt uitgeschakeld. De volgende stap is het verwijderen van alle kabels en het apparaat naar Microsoft verzenden.
+6. Herhaal alle bovenstaande stappen voor het andere knooppunt van het apparaat.
+7. Het apparaat volledig is volledig uitgeschakeld als alle led's op de achterkant van het apparaat niet meer branden. De volgende stap is het verwijderen van alle kabels en het apparaat verzenden naar Microsoft.
