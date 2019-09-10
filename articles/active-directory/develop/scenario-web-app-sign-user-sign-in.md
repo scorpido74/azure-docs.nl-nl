@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be7801515355452306cd5e7afa709a0681c7c314
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: 9766b530b4d795d0f35f097de20155cdd17687ca
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562196"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812394"
 ---
 # <a name="web-app-that-signs-in-users---sign-in"></a>Web-app waarmee gebruikers zich aanmelden
 
@@ -28,7 +28,8 @@ Meer informatie over het toevoegen van een aanmelding aan de code voor uw web-ap
 
 ## <a name="sign-in"></a>Aanmelden
 
-De code die u in de voor gaande artikel [code configuratie van de app](scenario-web-app-sign-user-app-configuration.md) hebt opgenomen, is alleen nodig voor het implementeren van afmelding. Zodra de gebruiker zich heeft aangemeld bij uw app, wilt u deze waarschijnlijk inschakelen om u af te melden. ASP.NET-kern afmeldingen voor u.
+De code die we in de vorige artikel [code configuratie van de app](scenario-web-app-sign-user-app-configuration.md) hebben bekeken, is alleen nodig voor het implementeren van aanmelding.
+Zodra de gebruiker zich heeft aangemeld bij uw app, wilt u deze waarschijnlijk inschakelen om u af te melden. ASP.NET-kern afmeldingen voor u.
 
 ## <a name="what-sign-out-involves"></a>Welke afmelding moet worden uitgevoerd
 
@@ -39,7 +40,7 @@ Zie de sectie [een aanvraag voor een afmelding verzenden](v2-protocols-oidc.md#s
 
 ## <a name="application-registration"></a>Toepassingsregistratie
 
-Tijdens de registratie van de toepassing hebt u een post afmeldings- **URI**geregistreerd. In onze zelf studie hebt u `https://localhost:44321/signout-oidc` geregistreerd in het veld afmeldings- **URL** van de sectie **Geavanceerde instellingen** op de pagina **verificatie** . Zie [de webApp-app registreren](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp) voor meer informatie.
+Tijdens de registratie van de toepassing hebt u een **post afmeldings-URI**geregistreerd. In onze zelf studie hebt u `https://localhost:44321/signout-oidc` geregistreerd in het veld **afmeldings-URL** van de sectie **Geavanceerde instellingen** op de pagina **verificatie** . Zie [de webApp-app registreren](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp) voor meer informatie.
 
 ## <a name="aspnet-core-code"></a>ASP.NET Core code
 
@@ -66,7 +67,7 @@ else
 
 ### <a name="signout-action-of-the-accountcontroller"></a>`Signout()`actie van de`AccountController`
 
-Als u op de knop Afmelden in de web- `SignOut` app drukt, `Account` wordt de actie op de controller geactiveerd. In eerdere versies van de ASP.net core-sjablonen is `Account` de controller Inge sloten met de web-app, maar dit is niet langer het geval omdat het nu deel uitmaakt van het ASP.net core-Framework zelf. 
+Als u op de knop **Afmelden** in de web- `SignOut` app drukt, `Account` wordt de actie op de controller geactiveerd. In eerdere versies van de ASP.net core-sjablonen is `Account` de controller Inge sloten met de web-app, maar dit is niet langer het geval omdat het nu deel uitmaakt van het ASP.net core-Framework zelf. 
 
 De code voor de `AccountController` is beschikbaar vanuit de ASP.net-kern opslagplaats op van [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs). Het account beheer:
 
@@ -74,7 +75,7 @@ De code voor de `AccountController` is beschikbaar vanuit de ASP.net-kern opslag
 - Aanroepen `Signout()`, waarmee de OpenIdConnect-middleware contact kan opnemen met `logout` het micro soft Identity platform-eind punt:
 
   - Hiermee wist u de sessie cookie uit de browser en
-  - Roept uiteindelijk de afmeldings- **URL**op, die standaard wordt weer gegeven, wordt de pagina afgemelde weer gave [SignedOut. html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml) vermeld als onderdeel van ASP.net core.
+  - Roept uiteindelijk de **afmeldings-URL**op, die standaard wordt weer gegeven, wordt de pagina afgemelde weer gave [SignedOut. html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml) vermeld als onderdeel van ASP.net core.
 
 ### <a name="intercepting-the-call-to-the-logout-endpoint"></a>De aanroep naar het `logout` eind punt wordt onderschept
 
