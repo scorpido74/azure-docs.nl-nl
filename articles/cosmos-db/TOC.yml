@@ -469,6 +469,8 @@
               href: bulk-executor-graph-dotnet.md
             - name: Gremlin-query's optimaliseren
               href: graph-execution-profile.md
+            - name: Resourcetokens gebruiken
+              href: how-to-use-resource-tokens-gremlin.md
             - name: Grafiekgegevens visualiseren
               href: graph-visualization.md
             - name: Spring-gegevens opslaan en beheren

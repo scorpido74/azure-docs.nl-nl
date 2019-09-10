@@ -228,10 +228,14 @@
               href: Customize-application-attributes.md
             - name: Bereikfilters
               href: define-conditional-rules-for-provisioning-user-accounts.md
+            - name: Verwijdering overslaan voor gebruikers buiten het bereik
+              href: skip-out-of-scope-deletions.md
             - name: De inrichtingsstatus controleren
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: Rapporteren over het automatisch inrichten van gebruikers
               href: check-status-user-account-provisioning.md
+            - name: Uw configuratie exporteren en importeren
+              href: export-import-provisioning-configuration.md
         - name: Problemen met het automatisch inrichten van gebruikers oplossen
           items:
             - name: Problemen met het automatisch inrichten van gebruikers oplossen

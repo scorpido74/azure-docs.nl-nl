@@ -132,6 +132,8 @@
           href: using-metrics.md
     - name: Integreren met andere hulpprogramma's
       items:
+        - name: Gegevens bulkgewijs kopiëren met een Azure Data Factory-sjabloon
+          href: data-factory-template.md
         - name: Apache Spark-connector
           href: spark-connector.md
         - name: Verbinding vanaf Databricks maken met behulp van Python

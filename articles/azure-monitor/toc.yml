@@ -770,6 +770,8 @@
                   href: log-query/get-started-portal.md
                 - name: Zelfstudie voor logboekquery's
                   href: log-query/get-started-queries.md
+                - name: Eenvoudige logboekervaring
+                  href: log-query/simple-logs.md
             - name: Logboekgegevens
               items:
                 - name: Logboekgegevensstructuur
