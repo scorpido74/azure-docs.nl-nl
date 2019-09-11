@@ -333,7 +333,7 @@
             - name: TDE met BYOK (Bring Your Own Key)
               href: transparent-data-encryption-byok-azure-sql.md
         - name: Beveiligingskenmerken
-          href: sql-database-security-attributes.md
+          href: sql-database-security-controls.md
         - name: Functiebeperkingen
           href: sql-database-feature-restrictions.md
     - name: Schaalbaarheid
@@ -512,6 +512,8 @@
           href: sql-database-managed-instance-migrate.md
         - name: TDE-certificaat migreren naar beheerd exemplaar
           href: sql-database-managed-instance-migrate-tde-certificate.md
+        - name: Terugzetten naar herstelpunt
+          href: sql-database-managed-instance-point-in-time-restore.md
         - name: De grootte van het subnet voor een beheerd exemplaar bepalen
           href: sql-database-managed-instance-determine-size-vnet-subnet.md
         - name: Nieuw VNet en subnet maken voor beheerd exemplaar
@@ -534,8 +536,6 @@
           href: sql-database-managed-instance-connect-app.md
     - name: Gegevens laden en verplaatsen
       items:
-        - name: Terugzetten naar herstelpunt
-          href: sql-database-managed-instance-point-in-time-restore.md
         - name: Resource verplaatsen naar een nieuwe regio
           href: sql-database-move-resources-across-regions.md
         - name: Een database kopiëren binnen Azure

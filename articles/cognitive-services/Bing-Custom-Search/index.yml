@@ -6,14 +6,14 @@ metadata:
   titleSuffix: Azure Cognitive Services
   description: Meer informatie over het gebruik van het Bing Aangepaste zoekopdrachtenportaal en de API om een aangepaste zoekervaring te maken
   services: cognitive-services
-  author: v-deken
+  author: aahill
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: bing-custom-search
   ms.topic: landing-page
   ms.date: 07/25/2019
-  ms.author: v-deken
+  ms.author: aahill
 abstract:
   description: Gebruik de Bing Aangepaste zoekopdrachten-API om een zoekexemplaar te maken voor onderwerpen waarin u geïnteresseerd bent. Geef de domeinen en webpagina's op die moeten worden doorzocht en pas de zoekclassificaties aan om uw zoekervaring volledige op uw wensen af te stemmen.
 sections:
