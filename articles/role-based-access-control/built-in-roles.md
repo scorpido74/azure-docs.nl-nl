@@ -15,12 +15,12 @@ ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: fb1007929a26384da60e542865c750fd1d642440
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 5f273f2eb36b0bd1d6757eb1ffb2403641cd461f
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114661"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801369"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Ingebouwde rollen voor Azure-resources
 
@@ -36,7 +36,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 | Ingebouwde rol | Description |
 | --- | --- |
 | [Eigenaar](#owner) | Hiermee kunt u alles beheren, inclusief toegang tot resources. |
-| [Inzender](#contributor) | Hiermee beheert u alles behalve toegang tot resources. |
+| [Inzender](#contributor) | Hiermee beheert u alles behalve het verlenen van toegang tot resources. |
 | [Lezer](#reader) | Hiermee kunt u alles weer geven, maar geen wijzigingen aanbrengen. |
 | [AcrDelete](#acrdelete) | ACR verwijderen |
 | [AcrImageSigner](#acrimagesigner) | acr-afbeeldingsondertekenaar |

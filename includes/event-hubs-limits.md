@@ -9,10 +9,10 @@ ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: c163e3cce862640d43f8696dca4eeef29f2ae12a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68912344"
 ---
 De volgende tabel geeft een lijst van quota's en limieten die specifiek zijn voor [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/). Zie [Event hubs prijzen](https://azure.microsoft.com/pricing/details/event-hubs/)voor meer informatie over Event hubs prijzen.
@@ -25,7 +25,7 @@ De volgende tabel geeft een lijst van quota's en limieten die specifiek zijn voo
 | Maximale grootte van Event Hubs gebeurtenis|Entiteit |- |1 MB |
 | Maximale grootte van een Event Hub naam |Entiteit |- |50 tekens |
 | Aantal niet-epoche receivers per consumenten groep |Entiteit |- |5 |
-| Maximum aantal Throughput Units |Naamruimte |Door de limiet voor de doorvoer eenheid te overschrijden, worden uw gegevens beperkt en wordt er een [Server uitzondering](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)gegenereerd. Als u een groter aantal doorvoer eenheden wilt aanvragen voor een Standard-laag, moet u een ondersteunings [aanvraag](/azure/azure-supportability/how-to-create-azure-support-request)indienen. [Extra doorvoer eenheden](../articles/event-hubs/event-hubs-auto-inflate.md) zijn beschikbaar in blokken van 20 op basis van een vastgelegde aankoop. |20 |
+| Maximum aantal Throughput Units |Naamruimte |Door de limiet voor de doorvoer eenheid te overschrijden, worden uw gegevens beperkt en wordt er een [Server uitzondering](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)gegenereerd. Als u een groter aantal doorvoer eenheden wilt aanvragen voor een Standard-laag, moet u een [ondersteunings aanvraag](/azure/azure-supportability/how-to-create-azure-support-request)indienen. [Extra doorvoer eenheden](../articles/event-hubs/event-hubs-auto-inflate.md) zijn beschikbaar in blokken van 20 op basis van een vastgelegde aankoop. |20 |
 | Aantal autorisatie regels per naam ruimte |Naamruimte|Volgende aanvragen voor het maken van een autorisatie regel worden geweigerd.|12 |
 | Aantal aanroepen naar de methode GetRuntimeInformation | Entiteit | - | 50 per seconde | 
 | Aantal virtuele netwerken (VNet) en IP-configuratie regels | Entiteit | - | 128 | 
