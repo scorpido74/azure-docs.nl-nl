@@ -1,31 +1,25 @@
 ---
 title: Handleiding voor het oplossen van problemen met Azure Security Center | Microsoft Docs
-description: Dit document helpt bij het oplossen van problemen in Azure Security Center.
+description: Dit document helpt u bij het oplossen van problemen in Azure Security Center.
 services: security-center
-documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
-ms.assetid: 44462de6-2cc5-4672-b1d3-dbb4749a28cd
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 3/20/2019
-ms.author: rkarlin
-ms.openlocfilehash: 93656578fac52e4ba5ff96e655ea51678f2292cd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
-ms.translationtype: HT
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 26615819dc407e51281254c73076a1d721e6059f
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609919"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873389"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Handleiding voor het oplossen van problemen met Azure Security Center
 Deze handleiding is bedoeld voor IT-specialisten, informatiebeveiligingsanalisten en cloudbeheerders van organisaties die Azure Security Center gebruiken en biedt procedures voor het oplossen van problemen met Azure Security Center.
 
 >[!NOTE]
->Vanaf begin juni 2017 maakt Security Center gebruik van Microsoft Monitoring Agent voor het verzamelen en opslaan van gegevens. Zie [Migratie van Azure Security Center-platform](security-center-platform-migration.md) voor meer informatie. De informatie in dit artikel beschrijft functionaliteit van Security Center na de overstap naar de Microsoft Monitoring Agent.
+>Security Center gebruikt de micro soft Monitoring Agent voor het verzamelen en opslaan van gegevens. Zie [Migratie van Azure Security Center-platform](security-center-platform-migration.md) voor meer informatie.
 >
 
 ## <a name="troubleshooting-guide"></a>Handleiding voor het oplossen van problemen
@@ -56,9 +50,9 @@ Als u wilt zien welke versie van de agent u hebt, opent u **Taakbeheer**, zoekt 
 ## <a name="microsoft-monitoring-agent-installation-scenarios"></a>Installatiescenario's voor Microsoft Monitoring Agent
 Er zijn twee installatiescenario's die verschillende resultaten kunnen opleveren bij het installeren van Microsoft Monitoring Agent op uw computer. Dit zijn de ondersteunde scenario's:
 
-* **Agent automatisch geïnstalleerd door Security Center**: in dit scenario kunt u de waarschuwingen op beide locaties bekijken, in Security Center en door te zoeken in logboeken. U ontvangt e-mailmeldingen op het e-mailadres dat is geconfigureerd in het beveiligingsbeleid voor het abonnement waarvan de resource deel uitmaakt.
+* **Agent automatisch geïnstalleerd door Security Center**: in dit scenario kunt u de waarschuwingen op beide locaties bekijken, in Security Center en door te zoeken in logboeken. U ontvangt e-mail meldingen voor het e-mail adres dat is geconfigureerd in het beveiligings beleid voor het abonnement waartoe de resource behoort.
 .
-* **Agent handmatig geïnstalleerd op een virtuele machine in Azure**: als u in dit scenario agents gebruikt die u hebt gedownload en handmatig hebt geïnstalleerd vóór februari 2017, kunt u de waarschuwingen alleen bekijken in de portal van Security Center als u filtert op het abonnement waartoe de werkruimte behoort. Als u filtert op het abonnement waartoe de resource behoort, krijgt u geen waarschuwingen te zien. U ontvangt e-mailmeldingen op het e-mailadres dat is geconfigureerd in het beveiligingsbeleid voor het abonnement waarvan de werkruimte deel uitmaakt.
+* De **agent is hand matig geïnstalleerd op een virtuele machine die zich in azure bevindt**: in dit scenario kunt u de waarschuwingen in de Security Center Portal alleen bekijken als u deze hand 2017 matig hebt gedownload en geïnstalleerd op het abonnement van de werk ruimte. behoort. Als u filtert op het abonnement waartoe de resource behoort, worden er geen waarschuwingen weer geven. U ontvangt e-mail meldingen voor het e-mail adres dat is geconfigureerd in het beveiligings beleid voor het abonnement waarvan de werk ruimte deel uitmaakt.
 
 >[!NOTE]
 > U kunt het gedrag uit het tweede scenario voorkomen door de nieuwste versie van de agent te downloaden.

@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 2edd12435643f88a0923abf0927149993d49e424
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: dead041845c123672d881a8538644b56c34a58a2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567802"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845604"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nieuwe DBA in de Cloud: het beheren van uw afzonderlijke en gegroepeerde Data bases in Azure SQL Database
 
@@ -29,7 +29,7 @@ Als u van de traditionele zelf beheerde, zelf beheerd omgeving naar een PaaS-omg
 In dit artikel worden enkele van de belangrijkste kenmerken van Azure SQL Database als platform beschreven die u gemakkelijk kunt gebruiken bij het werken met afzonderlijke data bases en gepoolde data bases in elastische Pools. Dit zijn de volgende:
 
 - Data base bewaken met behulp van de Azure Portal
-- Bedrijfs continuïteit en herstel na nood gevallen (BCDR)
+- Bedrijfscontinuïteit en herstel na noodgeval (BCDR)
 - Beveiliging en compliance
 - Intelligente database bewaking en onderhoud
 - Gegevensverplaatsing
@@ -46,7 +46,7 @@ In de [Azure Portal](https://portal.azure.com/)kunt u een afzonderlijke data bas
 - Gegevens-I/O-percentage
 - Databaseomvangpercentage
 
-Zodra u deze metrische gegevens hebt toegevoegd, kunt u ze in het bewakings diagram bekijken met meer informatie over het venster **metrische** gegevens. De vier metrische gegevens tonen het gemiddelde gebruikspercentage ten opzichte van de **DTU** van uw database. Zie het [op DTU gebaseerde aankoop model](sql-database-service-tiers-dtu.md) en [vCore](sql-database-service-tiers-vcore.md) voor meer informatie over service lagen.  
+Zodra u deze metrische gegevens hebt toegevoegd, kunt u ze in het **bewakings** diagram bekijken met meer informatie over het venster **metrische** gegevens. De vier metrische gegevens tonen het gemiddelde gebruikspercentage ten opzichte van de **DTU** van uw database. Zie het [op DTU gebaseerde aankoop model](sql-database-service-tiers-dtu.md) en [vCore](sql-database-service-tiers-vcore.md) voor meer informatie over service lagen.  
 
 ![Servicelaagbewaking van databaseprestaties.](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
 
@@ -56,7 +56,7 @@ Als u bijvoorbeeld verwacht dat de workload van de database zal toenemen, kunt u
 
 Met de metrische gegevens over prestaties kunt u ook bepalen of u een downgrade kunt uitvoeren naar een lagere reken grootte. Stel dat u een Standard S2-database gebruikt en alle prestatiewaarden aangeven dat de database gemiddeld nooit meer dan 10% gebruikt. Het is dan waarschijnlijk dat de database in Standard S1 goed werkt. Houd echter rekening met workloads die pieken of schommelen voordat u besluit om over te stappen op een lagere reken grootte.
 
-## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Bedrijfs continuïteit en herstel na nood gevallen (BCDR)
+## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Bedrijfscontinuïteit en herstel na noodgeval (BCDR)
 
 Dankzij de mogelijkheden voor bedrijfs continuïteit en herstel na nood gevallen kunt u uw bedrijf, zoals gebruikelijk, in het geval van een ramp voortzetten. De nood geval kan een gebeurtenis op database niveau zijn (bijvoorbeeld iemand die per ongeluk een cruciale tabel verbreekt) of een gebeurtenis op het niveau van het gegevens centrum (regionaal rampen, bijvoorbeeld een tsunami).
 
@@ -142,7 +142,7 @@ Met Service-eind punten (SE) kunt u uw kritieke Azure-resources alleen beschikba
 
 #### <a name="reserved-ips"></a>Gereserveerde IP-adressen
 
-Een andere mogelijkheid is om [gereserveerde](../virtual-network/virtual-networks-reserved-public-ip.md) IP-adressen voor uw virtuele machines in te richten en deze specifieke VM-white list in de firewall-instellingen van de server op te heffen. Door gereserveerde Ip's toe te wijzen, bespaart u de moeite van het bijwerken van de firewall regels met het wijzigen van IP-adressen.
+Een andere mogelijkheid is om [gereserveerde ip's](../virtual-network/virtual-networks-reserved-public-ip.md) voor uw vm's in te richten en deze specifieke VM-IP-adressen toe te voegen in de firewall instellingen van de server. Door gereserveerde Ip's toe te wijzen, bespaart u de moeite van het bijwerken van de firewall regels met het wijzigen van IP-adressen.
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>Met welke poort kan ik verbinding maken met SQL Database op
 
@@ -282,7 +282,7 @@ Met [query Performance Insight](sql-database-query-performance.md) kunt u een ge
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure SQL-analyse (preview) in Azure Monitor-logboeken
 
-Met [Azure monitor](../azure-monitor/insights/azure-sql.md) -Logboeken kunt u belang rijke Azure-SQL Azure prestatie gegevens verzamelen en visualiseren, met ondersteuning voor maxi maal 150.000 SQL-data bases en ELASTISCHe SQL-pools van 5.000 per werk ruimte. U kunt deze gebruiken om meldingen te bewaken en te ontvangen. U kunt de metrische gegevens van SQL Database en elastische groepen bewaken in meerdere Azure-abonnementen en elastische Pools en kunnen worden gebruikt om problemen te identificeren in elke laag van een toepassings stack.
+Met [Azure monitor-logboeken](../azure-monitor/insights/azure-sql.md) kunt u belang rijke Azure-SQL Azure prestatie gegevens verzamelen en visualiseren, met ondersteuning voor maxi maal 150.000 SQL-data bases en ELASTISCHe SQL-pools van 5.000 per werk ruimte. U kunt deze gebruiken om meldingen te bewaken en te ontvangen. U kunt de metrische gegevens van SQL Database en elastische groepen bewaken in meerdere Azure-abonnementen en elastische Pools en kunnen worden gebruikt om problemen te identificeren in elke laag van een toepassings stack.
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Ik merkt prestatie problemen: Hoe verschilt mijn SQL Database-probleemoplossings methodologie van SQL Server
 
@@ -321,7 +321,7 @@ SQL Database maakt gebruik van een aantal slimme technieken waarmee de IT-server
 
 - **Exporteren**: U kunt uw Azure-SQL database exporteren als een BACPAC-bestand van de Azure Portal
 
-   ![data base exporteren](./media/sql-database-export/database-export1.png)
+   ![Data base exporteren](./media/sql-database-export/database-export1.png)
 
 - **Importeren**: U kunt ook gegevens importeren als een BACPAC-bestand in de-data base met behulp van de Azure Portal.
 
