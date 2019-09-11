@@ -4,26 +4,27 @@ ms.service: billing
 ms.topic: include
 ms.date: 6/15/2019
 ms.author: victorh
-ms.openlocfilehash: 520a403fcfed3bb96278f4a82fcfeb41abb2ee42
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: e8e65c0c1302523af5aefab297ffbafe2a90d2b4
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67277201"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "68589945"
 ---
-**Openbare DNS-zones**
+**Open bare DNS-zones**
 
 | Resource | Standaardlimiet |
 | --- | --- |
-| Openbare DNS-Zones per abonnement |250 <sup>1</sup> |
-| Recordsets per openbare DNS-zone |10,000 <sup>1</sup> |
-| Records per-recordset in de openbare DNS-zone |20 |
-| Persoonlijke DNS-zones per abonnement |1000|
-| Recordsets per privé-DNS-zone |25000|
-| Records per record ingesteld voor persoonlijke DNS-zones |20|
-| Virtueel netwerk-koppelingen per privé-DNS-zone |1000|
-| Virtuele netwerken-koppelingen per privé-DNS-zones met automatische registratie ingeschakeld |100|
-| Aantal privé-DNS-zones die kunt u een virtueel netwerk gekoppeld aan met automatische registratie ingeschakeld |1|
-| Aantal privé-DNS-zones die kunt u een virtueel netwerk gekoppeld |1000|
+| Open bare DNS-zones per abonnement |250 <sup>1</sup> |
+| Record sets per open bare DNS-zone |10.000 <sup>1</sup> |
+| Records per recordset die in open bare DNS-zone is ingesteld |20 |
+| Aantal alias records voor één Azure-resource |20|
+| Privé-DNS zones per abonnement |1000|
+| Record sets per privé-DNS-zone |25000|
+| Records per recordset voor privé-DNS-zones |20|
+| Virtual Network koppelingen per privé-DNS-zone |1000|
+| Virtuele netwerken koppelingen per privé-DNS-zone met automatische registratie ingeschakeld |100|
+| Aantal privé-DNS-zones waaraan een virtueel netwerk kan worden gekoppeld met automatische registratie ingeschakeld |1|
+| Aantal privé-DNS-zones waaraan een virtueel netwerk kan worden gekoppeld |1000|
 
-<sup>1</sup>als u deze limieten verhogen wilt, neem dan contact op met de ondersteuning van Azure.
+<sup>1</sup> Als u deze limieten wilt verhogen, neemt u contact op met de ondersteuning van Azure.

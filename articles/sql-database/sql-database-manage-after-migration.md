@@ -1,6 +1,6 @@
 ---
-title: Beheren van één en gepoolde databases na de migratie - Azure SQL Database | Microsoft Docs
-description: Meer informatie over het beheren van uw database na migratie naar Azure SQL Database.
+title: Afzonderlijke en gepoolde data bases beheren na de migratie-Azure SQL Database | Microsoft Docs
+description: Meer informatie over het beheren van uw data base na migratie naar Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,331 +10,330 @@ ms.topic: conceptual
 author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
-manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 73bc2d9889727a1633986e12642bd06cf2714632
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 2edd12435643f88a0923abf0927149993d49e424
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357314"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567802"
 ---
-# <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nieuwe DBA in de cloud, uw één en gepoolde databases in Azure SQL Database beheren
+# <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nieuwe DBA in de Cloud: het beheren van uw afzonderlijke en gegroepeerde Data bases in Azure SQL Database
 
-Verplaatsen van de traditionele zelf wordt beheerd, zelf-gecontroleerde omgeving naar een PaaS-omgeving kan overweldigend zijn iets in eerste instantie. Als een app-ontwikkelaar of een DBA, zou u wilt weten van de belangrijkste mogelijkheden van het platform waarmee u uw toepassing beschikbaar is, prestaties, veilige en flexibele - altijd. In dit artikel is erop gericht om precies dat te doen. Het artikel bondig organiseert bronnen en biedt u enkele richtlijnen over hoe u optimaal gebruik van de belangrijkste mogelijkheden van SQL-Database met één en gepoolde databases beheren en uw toepassing efficiënt te houden en optimale resultaten in de cloud. Typische publiek voor dit artikel zou zijn die:
+Als u van de traditionele zelf beheerde, zelf beheerd omgeving naar een PaaS-omgeving gaat, kan het om de eerste stap gaan. Als een app-ontwikkelaar of een DBA wilt u weten wat de kern mogelijkheden van het platform zijn die u helpen uw toepassing beschikbaar te houden, te presen teren, veilig en robuust-altijd. In dit artikel wordt ernaar gestreefd dat. In het artikel worden de resources beknopt ingedeeld en krijgt u enkele richt lijnen voor het beste gebruik van de belangrijkste mogelijkheden van SQL Database met één en gegroepeerde Data bases om te beheren en uw toepassing efficiënt te laten werken en optimale resultaten te krijgen in de Cloud. Een typische doel groep voor dit artikel is de gebruikers die:
 
-- Migratie van hun toepassingen naar Azure SQL Database: moderniseren van uw toepassingen evalueert.
-- Wordt momenteel gemigreerd van hun toepassingen – continue migratiescenario.
-- De migratie naar Azure SQL DB: nieuwe DBA in de cloud hebben onlangs zijn voltooid.
+- Evalueren van de migratie van hun toepassing (en) naar Azure SQL Database-moderniseren van uw toepassing (en).
+- Zijn in het proces voor het migreren van hun toepassings-en migratie scenario.
+- Onlangs de migratie naar Azure SQL DB – nieuwe DBA hebt voltooid in de Cloud.
 
-In dit artikel komen enkele van de belangrijkste kenmerken van Azure SQL Database als een platform waarmee u gemakkelijk gebruiken kunt bij het werken met individuele databases en gepoolde databases in elastische pools. Ze zijn als volgt:
+In dit artikel worden enkele van de belangrijkste kenmerken van Azure SQL Database als platform beschreven die u gemakkelijk kunt gebruiken bij het werken met afzonderlijke data bases en gepoolde data bases in elastische Pools. Dit zijn de volgende:
 
-- Controleren van de database met behulp van de Azure-portal
-- Zakelijke continuïteit en herstel na noodgevallen (BCDR)
+- Data base bewaken met behulp van de Azure Portal
+- Bedrijfs continuïteit en herstel na nood gevallen (BCDR)
 - Beveiliging en compliance
-- Intelligente database controleren en onderhoud
+- Intelligente database bewaking en onderhoud
 - Gegevensverplaatsing
 
 > [!NOTE]
-> In dit artikel is van toepassing op de volgende implementatie-opties in Azure SQL Database: enkele databases en elastische pools. Dit geldt niet voor het beheerde exemplaar Implementatieoptie in SQL-Database.
+> Dit artikel is van toepassing op de volgende implementatie opties in Azure SQL Database: afzonderlijke data bases en elastische Pools. Het is niet van toepassing op de implementatie optie Managed instance in SQL Database.
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>Databases bewaken via de Azure-portal
 
-In de [Azure-portal](https://portal.azure.com/), kunt u een afzonderlijke Databasegebruik s controleren door te klikken en selecteer uw database de **bewaking** grafiek. Nu wordt een venster **Metrische gegevens** geopend, dat u kunt wijzigen door op de knop **Grafiek bewerken** te klikken. Voeg de volgende metrische gegevens toe:
+In de [Azure Portal](https://portal.azure.com/)kunt u een afzonderlijke data base-gebruik bewaken door uw data base te selecteren en op de grafiek **bewaking** te klikken. Nu wordt een venster **Metrische gegevens** geopend, dat u kunt wijzigen door op de knop **Grafiek bewerken** te klikken. Voeg de volgende metrische gegevens toe:
 
 - CPU-percentage
 - DTU-percentage
 - Gegevens-I/O-percentage
 - Databaseomvangpercentage
 
-Als u deze metrische gegevens hebt toegevoegd, kunt u doorgaan met deze bekijken in de **bewaking** grafiek met meer informatie over de **Metric** venster. De vier metrische gegevens tonen het gemiddelde gebruikspercentage ten opzichte van de **DTU** van uw database. Zie de [DTU gebaseerde aankoopmodel](sql-database-service-tiers-dtu.md) en [vCore gebaseerde aankoopmodel](sql-database-service-tiers-vcore.md) artikelen voor meer informatie over Servicelagen.  
+Zodra u deze metrische gegevens hebt toegevoegd, kunt u ze in het bewakings diagram bekijken met meer informatie over het venster **metrische** gegevens. De vier metrische gegevens tonen het gemiddelde gebruikspercentage ten opzichte van de **DTU** van uw database. Zie het [op DTU gebaseerde aankoop model](sql-database-service-tiers-dtu.md) en [vCore](sql-database-service-tiers-vcore.md) voor meer informatie over service lagen.  
 
 ![Servicelaagbewaking van databaseprestaties.](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
 
 U kunt ook meldingen configureren voor prestatiewaarden. Klik op de knop **Melding toevoegen** in het venster **Metrische gegevens**. Volg de wizard om de melding te configureren. U hebt de keuze om een melding weer te geven als de metrische gegevens een bepaalde drempelwaarde overschrijden of als het meetpunt onder een bepaalde drempelwaarde komt.
 
-Als u bijvoorbeeld verwacht dat de workload van de database zal toenemen, kunt u configureren dat er een e-mailmelding wordt verstuurd wanneer de database 80% van een van de prestatiewaarden heeft bereikt. U kunt dit gebruiken als een vroegtijdige waarschuwing te achterhalen wanneer u misschien moet overschakelen naar de volgende hoogste compute-grootte.
+Als u bijvoorbeeld verwacht dat de workload van de database zal toenemen, kunt u configureren dat er een e-mailmelding wordt verstuurd wanneer de database 80% van een van de prestatiewaarden heeft bereikt. U kunt dit als een vroege waarschuwing gebruiken om te bepalen wanneer u mogelijk moet overschakelen naar de volgende hoogste reken grootte.
 
-De maatstaven voor prestaties kunt u bepalen of u moet downgraden naar een lagere compute-grootte. Stel dat u een Standard S2-database gebruikt en alle prestatiewaarden aangeven dat de database gemiddeld nooit meer dan 10% gebruikt. Het is dan waarschijnlijk dat de database in Standard S1 goed werkt. Echter rekening houden met workloads die pieken of fluctueren, voordat u de beslissing om te verplaatsen naar een lagere compute-grootte.
+Met de metrische gegevens over prestaties kunt u ook bepalen of u een downgrade kunt uitvoeren naar een lagere reken grootte. Stel dat u een Standard S2-database gebruikt en alle prestatiewaarden aangeven dat de database gemiddeld nooit meer dan 10% gebruikt. Het is dan waarschijnlijk dat de database in Standard S1 goed werkt. Houd echter rekening met workloads die pieken of schommelen voordat u besluit om over te stappen op een lagere reken grootte.
 
-## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Zakelijke continuïteit en herstel na noodgevallen (BCDR)
+## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Bedrijfs continuïteit en herstel na nood gevallen (BCDR)
 
-Mogelijkheden voor zakelijke continuïteit en noodherstel recovery kunnen u uw bedrijf, zoals gewoonlijk blijven in geval van een ramp. De noodherstel mogelijk een database op gebeurtenis (bijvoorbeeld iemand deze per ongeluk komt een belangrijke tabel) of een datacenter op gebeurtenis (regionale ramp, bijvoorbeeld een tsunami).
+Dankzij de mogelijkheden voor bedrijfs continuïteit en herstel na nood gevallen kunt u uw bedrijf, zoals gebruikelijk, in het geval van een ramp voortzetten. De nood geval kan een gebeurtenis op database niveau zijn (bijvoorbeeld iemand die per ongeluk een cruciale tabel verbreekt) of een gebeurtenis op het niveau van het gegevens centrum (regionaal rampen, bijvoorbeeld een tsunami).
 
-### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>Hoe ik maken en beheren van back-ups op SQL-Database
+### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>Hoe kan ik maken en beheren van back-ups op SQL Database
 
-Maak u geen back-ups op Azure SQL DB en dat komt omdat u niet hoeft te. SQL-Database automatisch back-ups van databases voor u, zodat u niet meer over het plannen, nemen en beheren van back-ups moet zorgen. Het platform wordt een volledige back-up elke week, differentiële dat back-up elke paar uur en een logboek back-up om de 5 minuten om te controleren of het herstel na noodgevallen is efficiënt, en de minimale verlies van gegevens. De eerste volledige back-up gebeurt er als u een database maken. Deze back-ups voor u beschikbaar zijn voor een bepaalde periode de "bewaarperiode' genoemd en is afhankelijk van de servicelaag die u kiest. SQL Database biedt u de mogelijkheid om te herstellen naar een bepaald tijdstip binnen deze bewaarperiode periode met [punt in tijd herstel (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
+U maakt geen back-ups in Azure SQL DB en dat is omdat u dat niet hoeft te doen. SQL Database maakt automatisch back-ups van data bases, zodat u zich geen zorgen meer hoeft te maken over het plannen, maken en beheren van back-ups. Het platform neemt elke week een volledige back-up, differentiële back-up elke paar uur en een back-up van het logboek om de vijf minuten om te controleren of het herstel na nood geval efficiënt is en het gegevens verlies mini maal. De eerste volledige back-up gebeurt zodra u een Data Base maakt. Deze back-ups zijn voor u beschikbaar voor een bepaalde periode met de naam ' Bewaar periode ' en zijn afhankelijk van de servicelaag die u kiest. SQL Database biedt u de mogelijkheid om op elk gewenst moment binnen deze Bewaar periode te herstellen met behulp van [PITR (Point in time Recovery)](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-|Servicelaag|Bewaarperiode in dagen|
+|Servicelaag|Bewaar periode in dagen|
 |---|:---:|
 |Basic|7|
 |Standard|35|
 |Premium|35|
 |||
 
-Bovendien de [Long-Term Retention (LTR)](sql-database-long-term-retention.md) functie kunt u afhangen uw back-upbestanden voor een veel langere periode specifiek, voor maximaal tien jaar, en het herstellen van gegevens van deze back-ups op elk gewenst moment binnen die periode. Bovendien worden de databaseback-ups bewaard in opslag met geo-replicatie om ervoor te zorgen flexibiliteit bij de regionale ramp. U kunt ook deze back-ups in een Azure-regio op elk moment binnen de bewaarperiode liggen herstellen. Zie [overzicht voor zakelijke continuïteit](sql-database-business-continuity.md).
+Daarnaast kunt u met de functie voor [lange termijn retentie (LTR)](sql-database-long-term-retention.md) uw back-upbestanden gedurende een periode van meer dan tien jaar bewaren en gegevens van deze back-ups op elk gewenst moment binnen die periode herstellen. Daarnaast worden de back-ups van de data base opgeslagen in geo-gerepliceerde opslag om de flexibiliteit van regionale rampen te garanderen. U kunt deze back-ups ook in een Azure-regio op elk gewenst moment herstellen binnen de Bewaar periode. Zie [overzicht van bedrijfs continuïteit](sql-database-business-continuity.md).
 
-### <a name="how-do-i-ensure-business-continuity-in-the-event-of-a-datacenter-level-disaster-or-regional-catastrophe"></a>Hoe kan ik ervoor zorgen dat zakelijke continuïteit in geval van een datacenter op serverniveau na noodgevallen of regionale ramp
+### <a name="how-do-i-ensure-business-continuity-in-the-event-of-a-datacenter-level-disaster-or-regional-catastrophe"></a>Hoe kan ik zorgen voor bedrijfs continuïteit in het geval van een nood situatie op Data Center of een regionale rampen
 
-Omdat uw databaseback-ups worden opgeslagen in opslag met geo-replicatie om ervoor te zorgen dat in het geval van een regionaal noodgeval, kunt u de back-up herstellen naar een andere Azure-regio. Dit is de geo-herstel genoemd. De RPO (Recovery Point Objective) voor dit is doorgaans < 1 uur en de ERT (geschatte hersteltijd – enkele minuten tot uren).
+Omdat uw database back-ups worden opgeslagen in opslag met geo-replicatie om ervoor te zorgen dat in het geval van een regionale nood situatie, kunt u de back-up herstellen naar een andere Azure-regio. Dit wordt geo-Restore genoemd. De RPO (beoogd herstel punt) is over het algemeen < 1 uur en de ERT (geschatte herstel tijd – enkele minuten tot uur).
 
-Voor databases die essentiële biedt Azure SQL DB actieve geo-replicatie. Wat dit in wezen doet, is dat er een geo-replicatie secundaire kopie van de oorspronkelijke database wordt gemaakt in een andere regio. Bijvoorbeeld, als uw database in eerste instantie wordt gehost in Azure VS-West-regio en u wilt dat flexibiliteit regionale bij noodgevallen. U maakt een actieve geo-replica van de database in VS-West te zeggen hadden VS-Oost. Wanneer de calamity op VS-West voordoet, kunt u een failover naar de regio VS-Oost. Ze configureren in een automatische-Failovergroep is nog beter, omdat dit zorgt ervoor dat de database automatisch-schakeling naar de secundaire server in VS-Oost in het geval van een noodgeval. Het RPO voor deze is < 5 seconden en de ERT < 30 seconden.
+Voor essentiële data bases, Azure SQL DB-aanbiedingen, actieve geo-replicatie. Dit is in feite het maken van een secundaire kopie met geo-replicatie van de oorspronkelijke data base in een andere regio. Als uw Data Base voor het eerst wordt gehost in de regio Azure West VS en u een regionale nood herstel tolerantie wilt. U maakt een actieve geo-replica van de data base in VS West om VS-Oost te zeggen. Wanneer de Calamity aan het VS-West wordt doorgeschakeld, kunt u een failover uitvoeren naar de regio VS-Oost. Het configureren van deze in een groep met automatische failovers is nog beter omdat hiermee ervoor wordt gezorgd dat de data base automatisch wordt overgeschakeld naar de secundaire in VS Oost in het geval van een ramp. De RPO voor dit is < vijf seconden en de ERT < 30 seconden.
 
-Als een automatische failover-groep niet is geconfigureerd, klikt u vervolgens moet uw toepassing actief controleren op een noodgeval en start een failover naar de secundaire server. U kunt maximaal 4 dergelijke actieve geo-replica's maken in verschillende Azure-regio's. Het wordt nog beter. U kunt ook toegang tot deze secundaire actieve geo-replica's voor alleen-lezen toegang. Dit is erg handig om te verminderen latentie voor een toepassingsscenario voor geografisch gedistribueerde.
+Als een groep met automatische failover niet is geconfigureerd, moet uw toepassing actief controleren op een nood geval en een failover naar de secundaire initiëren. U kunt Maxi maal vier dergelijke actieve geo-replica's maken in verschillende Azure-regio's. Het wordt nog beter. U kunt ook toegang krijgen tot deze secundaire actieve geo-replica's voor alleen-lezen toegang. Dit is een zeer handige manier om de latentie van een geografisch gedistribueerde toepassings scenario te verminderen.
 
-### <a name="how-does-my-disaster-recovery-plan-change-from-on-premises-to-sql-database"></a>Hoe wordt mijn noodherstelplan gewijzigd van on-premises SQL-database
+### <a name="how-does-my-disaster-recovery-plan-change-from-on-premises-to-sql-database"></a>Hoe verandert mijn plan voor herstel na nood gevallen van on-premises naar SQL Database
 
-Kortom, de traditionele on-premises SQL Server setup vereist dat u actief de beschikbaarheid van uw beheren met behulp van functies zoals Failoverclustering, databasespiegeling, transactionele replicatie of upfunctie en onderhouden en beheren van back-ups om ervoor te zorgen Zakelijke continuïteit. Met SQL Database beheert het platform deze voor u, zodat u kunt zich richten op het ontwikkelen en het optimaliseren van uw databasetoepassing en u geen over het beheer van noodherstel zo veel mogelijk zorgen. U kunt back-up en plannen voor herstel na noodgevallen geconfigureerd en het werken met slechts een paar klikken op de Azure-portal (of een aantal opdrachten met behulp van de PowerShell-APIs) hebben.
+In samen vatting is de traditionele on-premises SQL Server-installatie vereist dat u uw Beschik baarheid actief beheert door gebruik te maken van functies zoals Failoverclustering, database spiegeling, transactie replicatie of het registreren van back-ups en het onderhouden en beheren van reserve kopieën om ervoor te zorgen Bedrijfs continuïteit. Met SQL Database beheert het platform deze voor u, zodat u zich kunt concentreren op het ontwikkelen en optimaliseren van uw database toepassing en niet zo veel moeite hoeft te doen met nood beheer. U kunt plannen voor back-ups en herstel na nood gevallen configureren en met slechts enkele klikken op de Azure Portal (of enkele opdrachten die gebruikmaken van de Power shell-Api's).
 
-Voor meer informatie over herstel na noodgevallen, Zie: [Azure SQL Db-noodherstel 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
+Zie voor meer informatie over herstel na nood gevallen: [Herstel na nood gevallen voor Azure SQL data base 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
 
 ## <a name="security-and-compliance"></a>Beveiliging en compliance
 
-SQL-Database hecht veel waarde beveiliging en Privacy. Beveiliging in SQL-Database is beschikbaar op databaseniveau en op het niveau van het platform en is het best begrijpen wanneer onderverdeeld in meerdere lagen. Op elke laag krijgt u te bepalen en optimale beveiliging bieden voor uw toepassing. De lagen zijn:
+SQL Database is zeer serieus beveiligd en privacy. Beveiliging binnen SQL Database is beschikbaar op het niveau van de data base en op platform niveau en is het meest geschikt wanneer het in meerdere lagen wordt ingedeeld. Op elke laag krijgt u de controle en optimale beveiliging voor uw toepassing. De lagen zijn:
 
-- Identiteit en verificatie ([Windows/SQL-verificatie en verificatie van Azure Active Directory [AAD]](sql-database-control-access.md)).
-- Controleactiviteit ([controle](sql-database-auditing.md) en [detectie van bedreigingen](sql-database-threat-detection.md)).
-- Beveiligen van gegevens ([Transparent Data Encryption [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) en [Always Encrypted [AE]](/sql/relational-databases/security/encryption/always-encrypted-database-engine)).
-- Beheren van toegang tot gevoelige en beschermde gegevens ([Row Level security](/sql/relational-databases/security/row-level-security) en [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking)).
+- Identiteits & verificatie ([Windows/SQL-verificatie en Azure Active Directory [Aad]-verificatie](sql-database-control-access.md)).
+- Bewakings activiteit ([controle](sql-database-auditing.md) en [detectie van bedreigingen](sql-database-threat-detection.md)).
+- Het beveiligen van werkelijke gegevens ([transparent Data Encryption [TDe]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) en [Always encrypted [ae]](/sql/relational-databases/security/encryption/always-encrypted-database-engine)).
+- Toegang tot gevoelige en beschermde gegevens beheren ([beveiliging op rijniveau](/sql/relational-databases/security/row-level-security) en [dynamische gegevens maskering](/sql/relational-databases/security/dynamic-data-masking)).
 
-[Azure Security Center](https://azure.microsoft.com/services/security-center/) biedt gecentraliseerd beheer over workloads die worden uitgevoerd in Azure, on-premises en in andere clouds. U kunt weergeven of essentieel SQL Database protection zoals [controle](sql-database-auditing.md) en [Transparent Data Encryption [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) zijn geconfigureerd op alle resources en -beleid op basis van uw eigen vereisten maken.
+[Azure Security Center](https://azure.microsoft.com/services/security-center/) biedt gecentraliseerd beveiligings beheer voor workloads die worden uitgevoerd in azure, on-premises en in andere Clouds. U kunt weer geven of essentiële SQL Database beveiliging zoals [controle](sql-database-auditing.md) en [transparent Data Encryption [TDe]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) zijn geconfigureerd voor alle resources en beleids regels maken op basis van uw eigen vereisten.
 
-### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>Welke gebruikersverificatiemethoden worden aangeboden in SQL-Database
+### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>Welke verificatie methoden voor gebruikers worden aangeboden in SQL Database
 
-Er zijn [twee verificatiemethoden](sql-database-control-access.md#authentication) aangeboden in SQL Database:
+Er zijn [twee verificatie methoden](sql-database-control-access.md#authentication) beschikbaar in SQL database:
 
 - [Azure Active Directory-verificatie](sql-database-aad-authentication.md)
 - SQL-verificatie
 
-De traditionele windows-verificatie wordt niet ondersteund. Azure Active Directory (AD) is een gecentraliseerde service voor identiteits- en toegangsbeheer. Met dit kunt u heel eenvoudig een eenmalige aanmelding toegang (SSO) bieden tot alle personeel in uw organisatie. Dit betekent dat de referenties worden verdeeld over alle Azure-services voor eenvoudigere verificatie. Biedt ondersteuning voor AAD [MFA (Multi-factor Authentication)](sql-database-ssms-mfa-authentication.md) en met een [enkele muisklikken](../active-directory/hybrid/how-to-connect-install-express.md) AAD kan worden geïntegreerd met Windows Server Active Directory. SQL-verificatie werkt precies zoals u hebt gebruikt deze in het verleden. U een gebruikersnaam en wachtwoord opgeven en u kunt verificatie van gebruikers voor elke database op een bepaalde SQL Database-server. Zo kan SQL-Database en SQL Data Warehouse te bieden van multi-factor authentication en Gast gebruikersaccounts in een Azure AD-domein. Als u een Active Directory on-premises al hebt, kunt u de map met Azure Active Directory voor uw directory uitbreiden naar Azure federeren.
+De traditionele Windows-verificatie wordt niet ondersteund. Azure Active Directory (AD) is een gecentraliseerde service voor identiteits-en toegangs beheer. Zo kunt u eenvoudig een eenmalige aanmelding (SSO) voor alle mede werkers in uw organisatie bieden. Dit betekent dat de referenties worden gedeeld in alle Azure-Services voor een eenvoudigere verificatie. AAD ondersteunt [MFA (multi-factor Authentication)](sql-database-ssms-mfa-authentication.md) en met een [paar klikken](../active-directory/hybrid/how-to-connect-install-express.md) Aad kunnen worden geïntegreerd met Windows Server Active Directory. SQL-verificatie werkt precies zoals u deze in het verleden hebt gebruikt. U geeft een gebruikers naam en wacht woord op en u kunt gebruikers verifiëren voor elke Data Base op een bepaalde SQL Database Server. Hierdoor kunnen SQL Database en SQL Data Warehouse multi-factor Authentication-en gast gebruikers accounts binnen een Azure AD-domein aanbieden. Als u al een on-premises Active Directory hebt, kunt u de adres lijst met Azure Active Directory om uw directory uit te breiden naar Azure.
 
-|**Als u...**|**SQL Database / SQL Data Warehouse**|
+|**Als u...**|**SQL Database/SQL Data Warehouse**|
 |---|---|
-|De voorkeur geeft niet aan Azure Active Directory (AD) in Azure|Gebruik [SQL-verificatie](sql-database-security-overview.md)|
-|Gebruikte AD op SQL Server on-premises|[AD met Azure AD federeren](../active-directory/hybrid/whatis-hybrid-identity.md), en Azure AD-verificatie gebruiken. Hiermee kunt u eenmalige aanmelding.|
-|Moet multi-factor authentication (MFA) afdwingen|MFA vereist als een beleid via [voorwaardelijke toegang van Microsoft](sql-database-conditional-access.md), en gebruik [Azure AD universele authenticatie met ondersteuning voor MFA](sql-database-ssms-mfa-authentication.md).|
-|Gast-account van Microsoft-accounts (live.com, outlook.com) of andere domeinen (gmail.com)|Gebruik [Azure AD universele authenticatie](sql-database-ssms-mfa-authentication.md) in SQL Database/Data Warehouse, die gebruikmaakt van [Azure AD B2B-samenwerking](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).|
-|Zijn aangemeld bij Windows met behulp van uw Azure AD-referenties van een federatief domein|Gebruik [Azure AD-geïntegreerde verificatie](sql-database-aad-authentication-configure.md).|
-|Zijn aangemeld bij Windows met behulp van referenties van een domein dat niet is gefedereerd met Azure|Gebruik [Azure AD-geïntegreerde verificatie](sql-database-aad-authentication-configure.md).|
-|Middelste laag-services die verbinding maken met SQL-Database of SQL Data Warehouse nodig hebt|Gebruik [Azure AD-geïntegreerde verificatie](sql-database-aad-authentication-configure.md).|
+|Geen gebruik van Azure Active Directory (AD) in azure|[SQL-verificatie](sql-database-security-overview.md) gebruiken|
+|On-premises AD gebruiken op SQL Server|Vervoer [AD met Azure AD](../active-directory/hybrid/whatis-hybrid-identity.md)en gebruik Azure AD-verificatie. Met deze kunt u eenmalige aanmelding gebruiken.|
+|Multi-factor Authentication (MFA) moet worden afgedwongen|Vereis MFA als beleid via [voorwaardelijke toegang van micro soft](sql-database-conditional-access.md)en gebruik [Azure AD Universal-verificatie met MFA-ondersteuning](sql-database-ssms-mfa-authentication.md).|
+|Gast accounts van micro soft-accounts (live.com, outlook.com) of andere domeinen (gmail.com) hebben|Gebruik [Azure AD Universal-verificatie](sql-database-ssms-mfa-authentication.md) in SQL database/Data Warehouse, dat gebruikmaakt van [Azure AD B2B-samen werking](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).|
+|Worden aangemeld bij Windows met uw Azure AD-referenties van een federatief domein|[Geïntegreerde Azure AD-verificatie](sql-database-aad-authentication-configure.md)gebruiken.|
+|Worden aangemeld bij Windows met behulp van referenties van een domein dat niet federatief is met Azure|[Geïntegreerde Azure AD-verificatie](sql-database-aad-authentication-configure.md)gebruiken.|
+|De services van de middelste laag moeten verbinding maken met SQL Database of SQL Data Warehouse|[Geïntegreerde Azure AD-verificatie](sql-database-aad-authentication-configure.md)gebruiken.|
 |||
 
-### <a name="how-do-i-limit-or-control-connectivity-access-to-my-database"></a>Hoe beperken of besturingselement ik toegang tot mijn database connectiviteit
+### <a name="how-do-i-limit-or-control-connectivity-access-to-my-database"></a>Hoe kan ik de connectiviteits toegang tot mijn data base beperken of beheren
 
-Er zijn meerdere technieken beschikken die u gebruiken kunt voor het bereiken van optimale connectiviteit organisatie voor uw toepassing.
+Er zijn meerdere technieken ter beschikking die u kunt gebruiken om de optimale connectiviteits organisatie voor uw toepassing te bereiken.
 
 - Firewallregels
-- VNet-Service-eindpunten
+- VNet-service-eind punten
 - Gereserveerde IP-adressen
 
 #### <a name="firewall"></a>Firewall
 
-Een firewall voorkomt dat toegang tot uw server een externe entiteit door toe te staan alleen specifieke entiteiten toegang tot uw SQL-Database-server. Standaard alle verbindingen en databases op de SQL-Database-server zijn niet toegestaan, behalve de verbindingen die afkomstig is van andere Azure-Services in. U kunt de toegang met uw server alleen op entiteiten (bijvoorbeeld een developer-machine) die u goedkeuren, doordat het IP-adres van die computer via de firewall openen met een firewall-regel. Ook kunt u een bereik van IP-adressen die u wilt toegang krijgt tot de SQL-Database-server opgeven. Bijvoorbeeld, kunnen ontwikkelaars machine IP-adressen in uw organisatie in één keer worden toegevoegd door een adresbereik in de pagina van de Firewall-instellingen op te geven.
+Een firewall voor komt dat toegang tot uw server vanaf een externe entiteit wordt toegestaan door alleen specifieke entiteiten toegang te geven tot uw SQL Database-Server. Standaard zijn alle verbindingen en data bases in de SQL Database-Server niet toegestaan, met uitzonde ring van verbindingen die afkomstig zijn van andere Azure-Services. Met een firewall regel kunt u toegang tot uw server alleen tot entiteiten (bijvoorbeeld een ontwikkelaars computer) die u goedkeurt, openen door het IP-adres van die computer via de firewall toe te staan. U kunt hiermee ook een bereik van IP-adressen opgeven die u toegang wilt verlenen tot de SQL Database-Server. U kunt bijvoorbeeld de IP-adressen van ontwikkel aars in uw organisatie tegelijk toevoegen door een bereik op te geven op de pagina Firewall instellingen.
 
-U kunt firewallregels op serverniveau of op het databaseniveau van de maken. Server niveau IP-firewallregels kunnen ofwel worden gemaakt met behulp van Azure portal of met SSMS. Voor meer informatie over het instellen van een firewallregel op serverniveau en databaseniveau, Zie: [IP-firewallregels in SQL Database maken](sql-database-security-tutorial.md#create-firewall-rules).
+U kunt Firewall regels maken op server niveau of op database niveau. IP-firewall regels op server niveau kunnen worden gemaakt met behulp van de Azure Portal of met SSMS. Zie voor meer informatie over het instellen van een firewall regel op server niveau en database niveau: [IP-firewall regels maken in SQL database](sql-database-security-tutorial.md#create-firewall-rules).
 
 #### <a name="service-endpoints"></a>Service-eindpunten
 
-Uw SQL-database is standaard geconfigureerd voor 'Azure-services tot server toestaan': wat betekent dat elke virtuele Machine in Azure probeert verbinding maken met uw database. Deze pogingen nog steeds hoeft te geverifieerd. Echter, als u niet toegankelijk zijn via een Azure-IP-adressen van uw database wilt, kunt u uitschakelen 'Azure-services tot server toestaan'. Bovendien kunt u configureren [VNet-Service-eindpunten](sql-database-vnet-service-endpoint-rule-overview.md).
+Standaard is uw SQL database geconfigureerd om Azure-Services toegang tot de server toe te staan. Dit betekent dat een virtuele machine in azure verbinding kan maken met uw data base. Deze pogingen moeten nog steeds worden geverifieerd. Als u echter niet wilt dat uw data base toegankelijk is voor Azure Ip's, kunt u ' Azure-Services toegang verlenen tot server ' uitschakelen. Daarnaast kunt u VNet- [service-eind punten](sql-database-vnet-service-endpoint-rule-overview.md)configureren.
 
-Service-eindpunten (SE) kunnen u uw kritieke Azure-resources alleen voor uw eigen persoonlijke virtueel netwerk in Azure beschikbaar. Op deze manier elimineren u in feite openbare toegang tot uw resources. Het verkeer tussen uw virtuele netwerk naar Azure blijft in het Azure-backbone-netwerk. U krijgt de geforceerde tunnels routering uit te voeren zonder SE. Het virtuele netwerk zorgt ervoor dat het verkeer van internet voor uw organisatie en de Azure-Service in op dezelfde route. Service-eindpunten kunt u optimaliseren dit omdat de pakketten stroom rechtstreeks vanuit uw virtuele netwerk naar de service op Azure-backbone-netwerk.
+Met Service-eind punten (SE) kunt u uw kritieke Azure-resources alleen beschikbaar maken voor uw eigen particuliere virtuele netwerk in Azure. Door dit te doen, kunt u de open bare toegang tot uw resources in wezen elimineren. Het verkeer tussen uw virtuele netwerk en Azure blijft in het Azure-backbone-netwerk. Zonder SE krijgt u pakket routering met geforceerde tunneling. Met uw virtuele netwerk wordt het Internet verkeer naar uw organisatie en het verkeer van de Azure-service afgedwongen om over dezelfde route te gaan. Met Service-eind punten kunt u dit optimaliseren omdat de pakketten direct van het virtuele netwerk naar de service in het backbone-netwerk van Azure worden getransporteerd.
 
 ![VNet-service-eindpunten](./media/sql-database-manage-after-migration/vnet-service-endpoints.png)
 
 #### <a name="reserved-ips"></a>Gereserveerde IP-adressen
 
-Een andere optie is om in te richten [gereserveerd IP-adressen](../virtual-network/virtual-networks-reserved-public-ip.md) voor uw VM's en de lijst met toegestane adressen die specifieke VM-IP-in de server adressen firewall-instellingen. Door gereserveerde IP-adressen toe te wijzen, bespaart u de moeite van het bij te werken van de firewall-regels met het wijzigen van IP-adressen.
+Een andere mogelijkheid is om [gereserveerde](../virtual-network/virtual-networks-reserved-public-ip.md) IP-adressen voor uw virtuele machines in te richten en deze specifieke VM-white list in de firewall-instellingen van de server op te heffen. Door gereserveerde Ip's toe te wijzen, bespaart u de moeite van het bijwerken van de firewall regels met het wijzigen van IP-adressen.
 
-### <a name="what-port-do-i-connect-to-sql-database-on"></a>Welke poorten ik verbinding maken met SQL-Database op
+### <a name="what-port-do-i-connect-to-sql-database-on"></a>Met welke poort kan ik verbinding maken met SQL Database op
 
-Poort 1433. SQL Database communiceert via deze poort. Voor verbinding uit vanuit een bedrijfsnetwerk, moet u een uitgaande regel toevoegen in de firewall-instellingen van uw organisatie. Als een richtlijn te voorkomen dat poort 1433 buiten de grens van Azure.
+Poort 1433. SQL Database communiceert via deze poort. Als u verbinding wilt maken vanuit een bedrijfs netwerk, moet u een uitgaande regel toevoegen in de firewall instellingen van uw organisatie. Als richt lijn vermijdt u poort 1433 buiten de Azure-grens.
 
-### <a name="how-can-i-monitor-and-regulate-activity-on-my-server-and-database-in-sql-database"></a>Hoe kan ik controleren en regelen van de activiteit op de server en database in SQL-Database
+### <a name="how-can-i-monitor-and-regulate-activity-on-my-server-and-database-in-sql-database"></a>Hoe kan ik activiteiten controleren en reguleren op mijn server en data base in SQL Database
 
-#### <a name="sql-database-auditing"></a>SQL Database Auditing
+#### <a name="sql-database-auditing"></a>SQL Database controle
 
-Met SQL Database, kunt u controleren voor het bijhouden van databasegebeurtenissen. [SQL Database Auditing](sql-database-auditing.md) registreert databasegebeurtenissen en schrijft deze naar een controlelogboekbestand in uw Azure Storage-Account. Controleren is heel handig als u van plan bent krijgt u inzicht in mogelijke beveiliging en beleid schendingen, naleving van regelgeving enzovoort. Hiermee kunt u definiëren en configureren van bepaalde categorieën van gebeurtenissen die u denkt moet controleren en op basis van dat u vooraf geconfigureerde rapporten en een dashboard voor een overzicht van gebeurtenissen in uw database kunt ophalen. U kunt deze controlebeleid op het databaseniveau van de of op het serverniveau van de kunt toepassen. Een handleiding voor het inschakelen van controle voor uw server /-database, Zie: [Inschakelen van SQL Database Auditing](sql-database-security-tutorial.md#enable-security-features).
+Met SQL Database kunt u controle inschakelen om database gebeurtenissen bij te houden. [SQL database controle](sql-database-auditing.md) records database gebeurtenissen en schrijft deze naar een audit logboek bestand in uw Azure Storage-account. Controle is vooral nuttig als u van plan bent om inzicht te krijgen in mogelijke beveiligings-en beleids schendingen, behoud van de naleving van de regelgeving, enzovoort. Hiermee kunt u bepaalde gebeurtenis Categorieën definiëren en configureren die u wilt controleren en op basis van dat u vooraf geconfigureerde rapporten en een dash board kunt ophalen om een overzicht te krijgen van de gebeurtenissen die in uw data base optreden. U kunt dit controle beleid Toep assen op het niveau van de data base of op het server niveau. Zie voor een hand leiding voor het inschakelen van controle voor uw server of Data Base: [Schakel SQL database controle in](sql-database-security-tutorial.md#enable-security-features).
 
 #### <a name="threat-detection"></a>Detectie van bedreigingen
 
-Met [detectie van bedreigingen](sql-database-threat-detection.md), krijgt u de mogelijkheid om te reageren op beveiligings- of beleid schendingen die zijn gedetecteerd door te controleren heel eenvoudig. U hoeft niet te worden van een beveiligingsexpert om potentiële bedreigingen of schendingen in uw systeem. Detectie van bedreigingen heeft ook enkele ingebouwde mogelijkheden, zoals SQL-injectie detectie. SQL-injectie is een poging te wijzigen of de gegevens en een gebruikelijk manier om in het algemeen is een aanval op een databasetoepassing in gevaar brengen. Detectie van bedreigingen wordt uitgevoerd voor meerdere sets met algoritmen om mogelijke beveiligingsproblemen en SQL-injectieaanvallen, evenals afwijkende patronen voor databasetoegang (zoals toegang vanaf een ongewone locatie of door een ongebruikelijke) te detecteren. Security officers of andere aangewezen beheerders ontvangen een e-mailbericht als een bedreiging wordt gedetecteerd op de database. Elke melding bevat informatie over de verdachte activiteiten en aanbevelingen voor het verder te onderzoeken en tegenhouden. Voor informatie over het inschakelen van detectie van bedreigingen, Zie: [Detectie van bedreigingen inschakelen](sql-database-security-tutorial.md#enable-security-features).
+Met [detectie van bedreigingen](sql-database-threat-detection.md)krijgt u de mogelijkheid om te reageren op beveiligings-of beleids schendingen die worden gedetecteerd door zeer eenvoudig te controleren. U hoeft geen beveiligings expert te zijn om mogelijke dreigingen of schendingen in uw systeem op te lossen. Detectie van bedreigingen heeft ook een aantal ingebouwde mogelijkheden zoals SQL-injectie detectie. SQL-injectie is een poging om de gegevens te wijzigen of in te brengen, en een zeer veelvoorkomende manier om een database toepassing in het algemeen aan te vallen. Met detectie van bedreigingen worden meerdere sets algoritmen uitgevoerd waarmee mogelijke beveiligings problemen en SQL-injectie aanvallen worden gedetecteerd, evenals afwijkende database toegangs patronen (zoals toegang vanaf een ongebruikelijke locatie of door een onbekende principal). Beveiligings ambtenaren of andere aangewezen beheerders ontvangen een e-mail melding als er een bedreiging wordt gedetecteerd op de data base. Elke melding bevat details over de verdachte activiteit en aanbevelingen voor het verder onderzoeken en oplossen van de dreiging. Zie voor meer informatie over het inschakelen van detectie van bedreigingen: [Detectie van bedreigingen inschakelen](sql-database-security-tutorial.md#enable-security-features).
 
-### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>Hoe kan ik beveiligen mijn gegevens in het algemeen op SQL-Database
+### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>Hoe kan ik mijn gegevens in het algemeen op SQL Database beveiligen
 
-Versleuteling biedt een krachtig mechanisme om te beschermen en uw gevoelige gegevens beveiligen tegen indringers. De versleutelde gegevens is van de hacker zonder de ontsleutelingssleutel niet gebruikt. Daarom wordt er een extra beveiligingslaag boven op de bestaande lagen van SQL Database ingebouwde beveiliging toegevoegd. Er zijn twee aspecten in de bescherming van uw gegevens in SQL Database:
+Versleuteling biedt een sterk mechanisme om uw gevoelige gegevens van indringers te beschermen en te beveiligen. De versleutelde gegevens kunnen niet worden gebruikt voor de indringer zonder de sleutel voor ontsleuteling. Daarom wordt er een extra beveiligingslaag toegevoegd boven op de bestaande lagen van beveiliging die zijn ingebouwd in SQL Database. Er zijn twee aspecten waarmee u uw gegevens in SQL Database kunt beveiligen:
 
-- Uw gegevens in rust in de gegevens en logboekbestanden bestanden
-- Uw gegevens die onderweg zijn
+- Uw gegevens in de gegevens-en logboek bestanden die zich in de rest bevinden
+- Uw gegevens in de vlucht
 
-In SQL-Database, standaard, worden uw gegevens in rust in de gegevens en logboekbestanden bestanden op het opslagsubsysteem volledig en altijd versleuteld [Transparent Data Encryption [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). Uw back-ups zijn eveneens versleuteld. Met TDE er zijn geen wijzigingen aan de kant van de toepassing die toegang heeft tot deze gegevens vereist. De versleuteling en ontsleuteling gebeuren transparant; daarom de naam.
-Voor het beveiligen van uw gevoelige gegevens die onderweg zijn en at-rest, SQL Database biedt een functie, genaamd [altijd versleuteld (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine). AE is een vorm van clientversleuteling waarmee gevoelige kolommen in uw database worden gecodeerd (zodat ze zich in de gecodeerde tekst voor databasebeheerders en niet-geautoriseerde gebruikers). De server ontvangt begint met de versleutelde gegevens. De sleutel voor Always Encrypted worden ook opgeslagen op de client, zodat alleen geautoriseerde clients kunnen de gevoelige kolommen ontsleutelen. De server en de gegevensbeheerders zien niet de gevoelige gegevens omdat de versleutelingssleutels worden opgeslagen op de client. AE versleutelt gevoelige kolommen in de tabel end-to-end van niet-geautoriseerde clients naar de fysieke schijf. AE ondersteunt gelijkheid vergelijkingen vandaag, zodat de DBA kunnen blijven opvragen versleutelde kolommen als onderdeel van de SQL-opdrachten. Altijd versleutelde kan worden gebruikt met een verscheidenheid aan sleutelarchief opties, zoals [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md), Windows-certificaatarchief en lokale hardware security modules.
+In SQL Database zijn uw gegevens in de gegevens en logboek bestanden op het opslag subsysteem standaard volledig en altijd versleuteld via [transparent Data Encryption [TDe]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). Uw back-ups worden ook versleuteld. Bij TDE zijn er geen wijzigingen vereist voor uw toepassings zijde die toegang tot deze gegevens heeft. De versleuteling en ontsleuteling gebeurt transparant; Daarom is dit de naam.
+Voor het beveiligen van uw gevoelige gegevens in-Flight en op rest, SQL Database een functie met de naam [Always encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine)biedt. AE is een vorm van versleuteling aan de client zijde waarmee gevoelige kolommen in uw data base worden versleuteld (zodat ze in een gecodeerde tekst worden omgezet naar database beheerders en niet-gemachtigde gebruikers). De server ontvangt de versleutelde gegevens om te beginnen met. De sleutel voor Always Encrypted wordt ook opgeslagen aan de client zijde, zodat alleen geautoriseerde clients de gevoelige kolommen kunnen ontsleutelen. De server-en gegevens beheerders kunnen de gevoelige gegevens niet zien omdat de versleutelings sleutels zijn opgeslagen op de client. Met AE worden gevoelige kolommen in de tabel end-to-end versleuteld, van niet-geautoriseerde clients naar de fysieke schijf. AE ondersteunt vandaag nog gelijkheids vergelijkingen, zodat Dba's de versleutelde kolommen kan doorzoeken als onderdeel van hun SQL-opdrachten. Always Encrypted kan worden gebruikt met diverse opties voor sleutel opslag, zoals [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md), Windows-certificaat archief en lokale hardware security modules.
 
-|**Kenmerken**|**Altijd versleuteld**|**Transparent Data Encryption**|
+|**Ervan**|**Altijd versleuteld**|**Transparante gegevensversleuteling**|
 |---|---|---|
-|**Versleuteling span**|End-to-end|Inactieve gegevens|
-|**Database-server kunt krijgen tot gevoelige gegevens**|Nee|Ja, omdat versleuteling voor de data-at-rest|
-|**Toegestane T-SQL-bewerkingen**|Gelijkheidsvergelijking|Alle T-SQL-gebied is beschikbaar|
-|**App-wijzigingen die zijn vereist voor het gebruik van de functie**|Minimaal|Minimale|
-|**Versleuteling granulariteit**|Op kolomniveau|Databaseniveau|
+|**Versleutelings bereik**|End-to-end|At-rest-gegevens|
+|**Database server heeft toegang tot gevoelige gegevens**|Nee|Ja, omdat versleuteling voor de Data-at-rest is|
+|**Toegestane T-SQL-bewerkingen**|Gelijkheids vergelijking|Alle T-SQL-surface area is beschikbaar|
+|**App-wijzigingen die zijn vereist voor het gebruik van de functie**|Minimaal|Zeer mini maal|
+|**Granulatie van versleuteling**|Kolom niveau|Database niveau|
 ||||
 
-### <a name="how-can-i-limit-access-to-sensitive-data-in-my-database"></a>Hoe kan ik toegang tot gevoelige gegevens in mijn database beperken
+### <a name="how-can-i-limit-access-to-sensitive-data-in-my-database"></a>Hoe kan ik de toegang tot gevoelige gegevens in mijn data base beperken
 
-Elke toepassing heeft een bepaalde deel van de gevoelige gegevens in de database die moet worden beveiligd tegen het voor iedereen zichtbaar wordt. Bepaalde personeel binnen de organisatie moeten deze gegevens weergeven, maar anderen mag niet mogelijk om deze gegevens weer te geven. Een voorbeeld hiervan is salarissen. Een manager zou moeten toegang hebben tot de loon-informatie voor hun directe ondergeschikten echter, de afzonderlijke teamleden al dan niet mogen toegang hebben tot de salarisgegevens van hun collega's. Een ander scenario is ontwikkelaars van gegevens die mogelijk interactie met gevoelige gegevens tijdens de fasen van de ontwikkeling of tests, bijvoorbeeld burgerservicenummers van klanten. Deze gegevens niet opnieuw hoeft te worden blootgesteld aan de ontwikkelaar. In dergelijke gevallen kan moet de gevoelige gegevens ofwel worden gemaskeerd of niet helemaal worden blootgesteld. SQL Database biedt twee manieren om te voorkomen dat onbevoegde gebruikers de mogelijkheid om gevoelige gegevens weer te geven:
+Elke toepassing heeft een bepaalde bit van gevoelige gegevens in de data base die moet worden beveiligd om voor iedereen zichtbaar te zijn. Bepaalde mede werkers in de organisatie moeten deze gegevens weer geven, maar anderen mogen deze gegevens niet weer geven. Een voor beeld is werknemers lonen. Een manager heeft toegang nodig tot de salaris informatie voor hun directe rapporten, maar de afzonderlijke team leden mogen geen toegang hebben tot de salaris gegevens van hun collega's. Een ander scenario is het maken van gegevens ontwikkelaars die interactief met gevoelige gegevens kunnen werken tijdens ontwikkelings stadia of tests kunnen doen, bijvoorbeeld burger servicenummers klanten. Deze informatie hoeft niet meer te worden blootgesteld aan de ontwikkelaar. In dergelijke gevallen moeten uw gevoelige gegevens worden gemaskeerd of helemaal niet worden weer gegeven. SQL Database biedt twee dergelijke benaderingen om te voor komen dat onbevoegde gebruikers gevoelige gegevens kunnen bekijken:
 
-[Dynamic Data Masking](sql-database-dynamic-data-masking-get-started.md) is een functie voor het maskeren van gegevens waarmee u beperken van blootstelling van gevoelige gegevens door deze te maskeren voor niet-gemachtigde gebruikers op de toepassingslaag. U definieert een maskeringsregel dat een patroon maskering kunt maken (bijvoorbeeld weer te geven alleen de laatste vier cijfers van een nationale ID SSN: XXX-xx-0000 en markeert u de meeste van deze als Xs) en nagaan welke gebruikers moeten worden uitgesloten van de maskeringsregel. De maskering vindt plaats op het begeven en er zijn verschillende maskeringsfuncties beschikbaar voor verschillende gegevenscategorieën. Dynamische gegevensmaskering kunt u automatisch detecteren van gevoelige gegevens in uw database en maskering erop van toepassing.
+[Dynamische gegevens maskering](sql-database-dynamic-data-masking-get-started.md) is een functie voor gegevens maskering waarmee u de bloot stelling van gevoelige gegevens kunt beperken door deze te maskeren voor niet-gemachtigde gebruikers op de toepassingslaag. U definieert een maskerings regel die een maskerings patroon kan maken (bijvoorbeeld om alleen de laatste vier cijfers van een nationaal ID-SSN weer te geven: XXX-XX-0000 en markeert het meren deel van de waarde als XS) en identificeert welke gebruikers moeten worden uitgesloten van de maskerings regel. De maskering gebeurt aan de vliegen en er zijn verschillende maskerings functies beschikbaar voor verschillende gegevens categorieën. Met dynamische gegevens maskering kunt u automatisch gevoelige gegevens in uw data base detecteren en er maskering op Toep assen.
 
-[Op rijniveau](/sql/relational-databases/security/row-level-security) kunt u toegangsbeheer op het rijniveau van de. Wat betekent dat zijn bepaalde rijen in een database-tabel op basis van de gebruiker uitvoeren van de query (groep groepslidmaatschap of uitvoeringscontext context) verborgen. De beperking van de toegang is uitgevoerd op de databaselaag in plaats van in de toepassingslaag van een, voor het vereenvoudigen van uw logische app. U begint met het maken van een filterpredicaat, gefilterd op rijen die worden niet weergegeven en de beveiliging beleid volgende definiëren wie toegang tot deze rijen heeft. Ten slotte de eindgebruiker hun query wordt uitgevoerd en, afhankelijk van de bevoegdheden van de gebruiker, de beperkte rijen weergeven of kan niet worden weergegeven in alle.
+Met [beveiliging op rijniveau](/sql/relational-databases/security/row-level-security) kunt u de toegang op rijniveau beheren. Dat betekent dat bepaalde rijen in een database tabel op basis van de gebruiker die de query uitvoert (groepslid maatschap of uitvoerings context), worden verborgen. De toegangs beperking wordt uitgevoerd op de data base-laag in plaats van in een toepassingslaag om uw app-logica te vereenvoudigen. U begint met het maken van een filter predicaat, het filteren van rijen die niet worden weer gegeven en het beveiligings beleid volgende definieert wie toegang heeft tot deze rijen. Ten slotte voert de eind gebruiker hun query uit en, afhankelijk van de bevoegdheid van de gebruiker, worden deze beperkte rijen weer gegeven of kunnen ze helemaal geen toegang krijgen.
 
-### <a name="how-do-i-manage-encryption-keys-in-the-cloud"></a>Hoe beheer ik coderingssleutels opgeslagen in de cloud
+### <a name="how-do-i-manage-encryption-keys-in-the-cloud"></a>Versleutelings sleutels in de Cloud Hoe kan ik beheren
 
-Er zijn opties voor sleutelbeheer voor altijd versleuteld (client-side encryption) en Transparent Data Encryption (versleuteling-at-rest). Het raadzaam dat u regelmatig versleutelingssleutels draaien. De frequentie van de rotatie moet worden uitgelijnd met uw interne organisatie voorschriften en nalevingsvereisten.
+Er zijn opties voor sleutel beheer voor zowel Always Encrypted (versleuteling aan client zijde) als Transparent Data Encryption (versleuteling op rest). Het is raadzaam om regel matig versleutelings sleutels te draaien. De rotatie frequentie moet worden uitgelijnd met de voor schriften van uw interne organisatie en naleving.
 
 #### <a name="transparent-data-encryption-tde"></a>Transparent Data Encryption (TDE)
 
-Er is een hiërarchie met twee-sleutel in TDE: de gegevens in elke gebruikersdatabase is versleuteld met een symmetrische AES-256-database-unieke databaseversleutelingssleutel (DEK), dat op zijn beurt is versleuteld met een server-unieke asymmetrische RSA 2048-hoofdsleutel. De hoofdsleutel kunnen worden beheerd op:
+Er bevindt zich een hiërarchie met twee sleutels in TDE: de gegevens in elke gebruikers database zijn versleuteld met een symmetrische AES-256-data base-unieke database versleutelings sleutel (DEK), die op zijn beurt is versleuteld met een unieke server-uniek asymmetrisch 2048 RSA-sleutel De hoofd sleutel kan worden beheerd op een van de volgende manieren:
 
-- Automatisch door het platform - SQL-Database.
-- Of door u met behulp van [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md) als de sleutel store.
+- Automatisch door de platform-SQL Database.
+- Of u gebruikt [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md) als de sleutel opslag.
 
-Standaard wordt de hoofdsleutel voor Transparent Data Encryption beheerd door de service SQL Database voor het gemak. Als uw organisatie wil de controle over de hoofdsleutel, is er een optie voor het gebruik van Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md) als de sleutel store. Met behulp van Azure Key Vault, uw organisatie wordt ervan uitgegaan dat controle over sleutels inrichten, draaien en de machtiging besturingselementen. [Rotatie of het overschakelen van het type van een hoofdsleutel TDE](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql-key-rotation) is snel, omdat deze de DEK alleen opnieuw versleutelt. Voor organisaties met scheiding van functies tussen beveiliging en beheer van gegevens, kan een beveiligingsbeheerder inrichten van het sleutelmateriaal voor de TDE-hoofdsleutel in Azure Key Vault en bieden de databasebeheerder moet worden gebruikt voor een Azure Key Vault-sleutel-id versleuteling-at-rest op een server. De Key Vault is ontworpen dat Microsoft niet kan zien of versleutelingssleutels extraheren. U kunt ook een gecentraliseerd beheer van sleutels ophalen voor uw organisatie.
+De hoofd sleutel voor Transparent Data Encryption wordt standaard beheerd door de SQL Database-Service voor het gemak. Als uw organisatie de hoofd sleutel moet beheren, is er een optie voor het gebruik van Azure Key Vault] (SQL-data base-always-encrypted-Azure-Key-vault.md) als de sleutel opslag. Door gebruik te maken van Azure Key Vault, neemt uw organisatie de controle over de besturings elementen voor sleutel inrichting, rotatie en machtigingen. [Draaien of overschakelen van het type van een TDe-hoofd sleutel](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql-key-rotation) is snel, omdat deze alleen de dek opnieuw versleutelt. Voor organisaties met een schei ding van functies tussen beveiliging en gegevens beheer kan een beveiligings beheerder het sleutel materiaal inrichten voor de hoofd sleutel TDE in Azure Key Vault en een Azure Key Vault sleutel-id opgeven aan de database beheerder voor versleuteling van de rest op een server. De Key Vault is zodanig ontworpen dat micro soft geen versleutelings sleutels kan zien of extra heren. U krijgt ook een gecentraliseerd beheer van sleutels voor uw organisatie.
 
 #### <a name="always-encrypted"></a>Altijd versleuteld
 
-Er is ook een [twee sleutel hiërarchie](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted) in Always Encrypted - een kolom met gevoelige gegevens versleuteld met een AES 256-kolomversleuteling sleutel (CEK), dat op zijn beurt is versleuteld met een kolomhoofdsleutel (CMK). De clientstuurprogramma's voor altijd versleuteld hebben geen beperkingen op de lengte van CMKs. De versleutelde waarde van de CEK is opgeslagen op de database en de CMK zijn opgeslagen in een vertrouwde sleutel store, zoals Windows certificaat Store, Azure Key Vault of een hardware security module.
+Er is ook een [hiërarchie met twee sleutels](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted) in always Encrypted: een kolom met gevoelige gegevens wordt versleuteld met een AES 256-kolom versleutelings sleutel (CEK), die op zijn beurt is versleuteld met een kolom hoofd sleutel (CMK). De client Stuur Programma's die voor Always Encrypted worden meegeleverd, hebben geen beperkingen voor de lengte van CMKs. De versleutelde waarde van de CEK wordt opgeslagen in de data base en de CMK wordt opgeslagen in een vertrouwde sleutel opslag, zoals Windows-certificaat archief, Azure Key Vault of een Hardware Security module.
 
-- Zowel de [CEK en CMK](/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell) kunnen worden gedraaid.
-- CEK rotatie is een grootte van gegevens en kan worden tijdrovende afhankelijk van de grootte van de tabellen met daarin de versleutelde kolommen. Het is daarom verstandig om te CEK opnamen dienovereenkomstig te plannen.
-- CMK roteren, echter niet van invloed op prestaties van de database en kan worden gedaan met behulp van gescheiden.
+- Zowel de [CEK als de CMK](/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell) kunnen worden gedraaid.
+- CEK draaien is een grootte van de gegevens bewerking en kan veel tijd in beslag worden, afhankelijk van de grootte van de tabellen die de versleutelde kolommen bevatten. Daarom is het verstandig CEK rotaties dienovereenkomstig te plannen.
+- CMK draaien heeft echter geen invloed op de prestaties van de data base en kan worden uitgevoerd met gescheiden rollen.
 
-Het volgende diagram ziet u de opties sleutelarchief voor de kolom hoofdsleutels in Always Encrypted
+In het volgende diagram ziet u de opties voor de sleutel opslag voor de kolom hoofd sleutels in Always Encrypted
 
-![Altijd versleuteld CMK providers opslaan](./media/sql-database-manage-after-migration/always-encrypted.png)
+![Altijd versleutelde CMK-opslag providers](./media/sql-database-manage-after-migration/always-encrypted.png)
 
-### <a name="how-can-i-optimize-and-secure-the-traffic-between-my-organization-and-sql-database"></a>Hoe kan ik Optimaliseer en Beveilig het verkeer tussen mijn organisatie en de SQL-Database
+### <a name="how-can-i-optimize-and-secure-the-traffic-between-my-organization-and-sql-database"></a>Hoe kan ik het verkeer tussen mijn organisatie en SQL Database optimaliseren en beveiligen
 
-Het netwerkverkeer tussen uw organisatie en SQL Database zou in het algemeen krijgen gerouteerd via het openbare netwerk. Echter, als u wilt dit pad te optimaliseren en u beter te beveiligen, kunt u zoeken in Express Route. Express route in wezen kunt u uw bedrijfsnetwerk in het Azure-platform uitbreiden via een persoonlijke verbinding. Op deze manier, gaan u niet via het openbare Internet. Ook krijgt u betere beveiliging, betrouwbaarheid en routering optimalisatie die wordt omgezet in het onderste netwerkvertragingen en veel hogere snelheden worden bereikt dan u normaal zou optreden gaan via het openbare internet. Als u van plan bent voor het overdragen van een aanzienlijke hoeveelheid gegevens tussen uw organisatie en Azure, kan met behulp van Express Route kostenbesparingen opleveren. U kunt kiezen uit drie verschillende verbindingsvereisten modellen voor de verbinding van uw organisatie naar Azure:
+Het netwerk verkeer tussen uw organisatie en SQL Database wordt doorgaans gerouteerd via het open bare netwerk. Als u er echter voor kiest om dit pad te optimaliseren en het veiliger te maken, kunt u in Express route kijken. Met Express route kunt u uw bedrijfs netwerk uitbreiden naar het Azure-platform via een particuliere verbinding. Door dit te doen, gaat u niet via het open bare Internet. U krijgt ook betere beveiliging, betrouw baarheid en optimalisatie van route ring die worden omgezet naar lagere netwerk latenties en veel snellere snelheden dan u normaal gesp roken zou doen via het open bare Internet. Als u van plan bent een aanzienlijk deel van gegevens over te brengen tussen uw organisatie en Azure, kunt u met Express route kosten voordelen opleveren. U kunt kiezen uit drie verschillende connectiviteits modellen voor de verbinding tussen uw organisatie en Azure:
 
-- [Cloud Exchange CO-locatie](../expressroute/expressroute-connectivity-models.md#CloudExchange)
+- [Co-locatie van Cloud Exchange](../expressroute/expressroute-connectivity-models.md#CloudExchange)
 - [Any-to-any](../expressroute/expressroute-connectivity-models.md#IPVPN)
 - [Point-to-Point](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
-Express Route kunt u ook om uit te breiden tot 2 x de Bandbreedtelimiet die u voor zonder extra kosten koopt. Het is ook mogelijk om te configureren tussen regio connectiviteit met expressroute. Een lijst van ER connectiviteitsproviders wilt bekijken, Zie: [Express Route-Partners en Peeringlocaties](../expressroute/expressroute-locations.md). De volgende artikelen wordt Express Route in meer detail beschreven:
+Met Express route kunt u ook Maxi maal twee keer zoveel bandbreedte limieten aanschaffen als u wilt. Het is ook mogelijk om connectiviteit tussen regio's te configureren met behulp van Express route. Zie voor een overzicht van de connectiviteits providers: [Express route-partners en peering locaties](../expressroute/expressroute-locations.md). In de volgende artikelen wordt een gedetailleerde beschrijving gegeven van Express route:
 
-- [Inleiding in Express Route](../expressroute/expressroute-introduction.md)
+- [Inleiding op Express route](../expressroute/expressroute-introduction.md)
 - [Vereisten](../expressroute/expressroute-prerequisites.md)
 - [Werkstromen](../expressroute/expressroute-workflows.md)
 
-### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>Van alle wettelijke eisen die compatibel is met SQL-Database, en hoe helpt die met de naleving van mijn eigen organisatie
+### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>Voldoet aan de eisen van de regelgeving en hoe deze helpt bij de naleving van mijn eigen organisatie SQL Database
 
-SQL-Database is compatibel met een scala aan om. Als u de meest recente set om die door SQL Database is voldaan, gaat u naar de [Microsoft Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) en inzoomen op de ingebouwde die belangrijk voor uw organisatie om te zien zijn als de SQL-Database is opgenomen onder de voldoen aan het beleid Azure-services. Het is belangrijk te weten dat Hoewel SQL-Database kunnen worden gecertificeerd als een compatibele service, dit de compatibiliteit van de service van uw organisatie helpt, maar kan deze niet automatisch garanderen.
+SQL Database voldoet aan de regelgeving met betrekking tot naleving. Ga naar het [vertrouwens centrum van micro soft](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) en inzoomen op de nalevingen die belang rijk zijn voor uw organisatie om te zien of SQL database is opgenomen in de compatibele Azure-Services om de meest recente set van nalevingen weer te geven die zijn voldaan door SQL database. Het is belang rijk om te weten dat SQL Database kan worden gecertificeerd als een compatibele service, de IT-afdeling helpt bij de naleving van de service van uw organisatie, maar deze niet automatisch gegarandeerd.
 
-## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Intelligente database controleren en onderhoud na de migratie
+## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Intelligente database controle en-onderhoud na migratie
 
-Wanneer u uw database naar SQL Database hebt gemigreerd, u wilt bewaken van uw database (voor bijvoorbeeld controleren hoe het gebruik van bronnen, zoals of DBCC controleert) en regelmatig onderhoud uit te voeren (bijvoorbeeld opnieuw samenstellen of reorganize indexen, statistieken enz.). Gelukkig is SQL Database Intelligent in de zin dat maakt gebruik van de historische trends en geregistreerde metrische gegevens en statistieken om proactief te bewaken en onderhouden van uw database, zodat uw toepassing optimaal altijd wordt uitgevoerd. In sommige gevallen kan Azure SQL DB onderhoudstaken uitvoeren, afhankelijk van uw configuratie-instellingen automatisch uitvoeren. Er zijn drie facetten te bewaken van uw database in SQL-Database:
+Wanneer u uw Data Base naar SQL Database hebt gemigreerd, kunt u uw data base bewaken (Bekijk bijvoorbeeld hoe het resource gebruik is of DBCC-controles) en voert u regel matig onderhoud uit (bijvoorbeeld het opnieuw samen stellen of opnieuw indelen van indexen, statistieken, enzovoort). Gelukkig is SQL Database intelligent in de zin dat het gebruik maakt van de historische trends en vastgelegde metrische gegevens en statistieken om u proactief te helpen bij het bewaken en onderhouden van uw data base, zodat uw toepassing optimaal wordt uitgevoerd. In sommige gevallen kan Azure SQL DB automatisch onderhouds taken uitvoeren, afhankelijk van de configuratie-instellingen. Er zijn drie facetten voor het bewaken van uw data base in SQL Database:
 
 - Prestaties bewaken en optimaliseren.
-- Optimalisatie van de beveiliging.
-- Optimalisatie van kosten.
+- Beveiligings optimalisatie.
+- Kosten optimalisatie.
 
 ### <a name="performance-monitoring-and-optimization"></a>Prestaties bewaken en optimaliseren
 
-Met Query prestatie-inzichten, kunt u op maat gemaakte aanbevelingen krijgen voor uw databaseworkload zodat uw toepassingen blijven op het niveau van een optimale - altijd uitvoeren kunnen. U kunt ook instellen deze zodat deze aanbevelingen worden automatisch toegepast en u geen hebt zin presterende onderhoudstaken. Met Index Advisor, kunt u automatisch op basis van uw werkbelasting indexaanbevelingen implementeren - dit automatisch afstemmen wordt genoemd. De aanbevelingen ontwikkelen als uw toepassing workload wordt gewijzigd zodat u kunt met de meest relevante suggesties. U krijgt ook de mogelijkheid handmatig controleren van deze aanbevelingen en deze naar eigen goeddunken toepassen.  
+Met query performance Insights kunt u op maat gemaakte aanbevelingen voor uw data base-workload krijgen zodat uw toepassingen op een optimaal niveau kunnen blijven werken. U kunt deze ook zo instellen dat deze aanbevelingen automatisch worden toegepast en u hoeft geen onderhouds taken uit te voeren. Met Index Advisor kunt u automatisch index aanbevelingen implementeren op basis van uw workload. dit wordt automatisch afstemmen genoemd. De aanbevelingen worden ontwikkeld om de werk belasting van uw toepassing te wijzigen zodat u de meest relevante suggesties krijgt. U krijgt ook de mogelijkheid om deze aanbevelingen hand matig te controleren en deze op uw keuze toe te passen.  
 
-### <a name="security-optimization"></a>Beveiliging-optimalisatie
+### <a name="security-optimization"></a>Beveiligings optimalisatie
 
-SQL Database biedt praktische beveiligingsaanbevelingen aan bij het beveiligen van uw gegevens en detectie van bedreigingen voor het identificeren en onderzoeken van verdachte databaseactiviteiten, die een mogelijke thread naar de database kunnen opleveren. [Evaluatie van beveiligingsproblemen](sql-vulnerability-assessment.md) is een scannen en -service waarmee u de beveiligingsstatus van uw databases op schaal controleren en Identificeer veiligheidsrisico en drift uit door u gedefinieerde basisbeveiliging reporting-database. Na elke scan is een aangepaste lijst met stappen en herstelscripts opgegeven, evenals een evaluatierapport die kan worden gebruikt om te voldoen aan nalevingsvereisten.
+SQL Database biedt belastbare beveiligings aanbevelingen om u te helpen bij het beveiligen van uw gegevens en detectie van bedreigingen voor het identificeren en onderzoeken van verdachte database activiteiten die een mogelijke thread kunnen vormen voor de data base. De [evaluatie van beveiligings problemen](sql-vulnerability-assessment.md) is een service voor het scannen en rapporteren van een Data Base waarmee u de beveiligings status van uw data bases op schaal kunt controleren en beveiligings Risico's en-drift op basis van een door u gedefinieerde beveiligings basislijn moet identificeren. Na elke scan wordt een aangepaste lijst met bewerkingen en herstel scripts weer gegeven, evenals een evaluatie rapport dat kan worden gebruikt om te voldoen aan de nalevings vereisten.
 
-Met Azure Security Center, moet u de aanbevelingen voor beveiliging op het bord identificeren en ze toepassen met één klik.
+Met Azure Security Center identificeert u de beveiligings aanbevelingen op het bord en past u deze met één klik toe.
 
 ### <a name="cost-optimization"></a>Kostenoptimalisatie
 
-Azure SQL-platform analyseert de gebruiksgeschiedenis voor de databases in een server om te evalueren en aan te bevelen kostenoptimalisatie opties voor u. Deze analyse duurt normaal gesproken een rijtijd te analyseren en bruikbare aanbevelingen opbouwen. Elastische Pools zijn een van deze opties. De aanbeveling wordt op de portal weergegeven als een banner:
+Het Azure SQL-platform analyseert de gebruiks geschiedenis over de data bases op een server om de opties voor de kosten optimalisatie voor u te evalueren en aan te bevelen. Deze analyse vergt meestal een Fortnight om aanbevelingen te analyseren en te ontwikkelen. Elastische pool is een van deze opties. De aanbeveling wordt op de portal weer gegeven als banner:
 
-![elastische pool](./media/sql-database-manage-after-migration/elastic-pool-recommendations.png)
+![aanbevelingen voor elastische Pools](./media/sql-database-manage-after-migration/elastic-pool-recommendations.png)
 
-U kunt ook deze analyse in de sectie 'Adviseur' bekijken:
+U kunt deze analyse ook bekijken in de sectie ' Advisor ':
 
-![elastische pool aanbevelingen-advisor](./media/sql-database-manage-after-migration/advisor-section.png)
+![aanbevelingen voor elastische Pools-Advisor](./media/sql-database-manage-after-migration/advisor-section.png)
 
-### <a name="how-do-i-monitor-the-performance-and-resource-utilization-in-sql-database"></a>Hoe controleer ik de prestaties en het gebruik van resources in SQL-Database
+### <a name="how-do-i-monitor-the-performance-and-resource-utilization-in-sql-database"></a>Hoe kan ik de prestaties en het resource gebruik in SQL Database bewaken
 
-U kunt gebruikmaken van de intelligente inzichten van het platform voor het bewaken van de prestaties en afstemmen dienovereenkomstig in SQL-Database. U kunt prestaties en gebruik van resources in SQL-Database met behulp van de volgende methoden volgen:
+In SQL Database kunt u gebruikmaken van de intelligente inzichten van het platform om de prestaties te bewaken en op de juiste wijze af te stemmen. U kunt de prestaties en het resource gebruik in SQL Database bewaken met behulp van de volgende methoden:
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Verbruik van een database van bevat de Azure-portal door de database te selecteren en te klikken op de grafiek in het overzichtsvenster van. U kunt de grafiek om weer te geven meerdere metrische gegevens, met inbegrip van CPU-percentage, DTU-percentage, gegevens-IO-percentage, percentage van de sessies en databaseomvangpercentage wijzigen.
+Het Azure Portal toont het gebruik van een Data Base door de data base te selecteren en te klikken op de grafiek in het deel venster Overzicht. U kunt de grafiek wijzigen om meerdere metrische gegevens weer te geven, waaronder het CPU-percentage, het DTU-percentage, het IO-percentage van de gegevens, het percentage van sessies en het percentage van de database grootte.
 
-![Controle grafiek](./media/sql-database-manage-after-migration/monitoring-chart.png)
+![Bewakings grafiek](./media/sql-database-manage-after-migration/monitoring-chart.png)
 
-![Bewaking van grafiek2](./media/sql-database-manage-after-migration/chart.png)
+![Chart2 bewaken](./media/sql-database-manage-after-migration/chart.png)
 
-U kunt ook waarschuwingen door middel van deze grafiek configureren. Deze waarschuwingen kunnen u reageren op de voorwaarden van de resource met een e-mailadres, het schrijven naar een HTTPS/HTTP-eindpunt of een actie uitvoert. Zie voor meer informatie, [waarschuwingen maken](sql-database-insights-alerts-portal.md).
+Vanuit deze grafiek kunt u ook waarschuwingen per resource configureren. Met deze waarschuwingen kunt u reageren op resource voorwaarden met een e-mail bericht, schrijven naar een HTTPS/HTTP-eind punt of een actie uitvoeren. Zie [Create Alerts](sql-database-insights-alerts-portal.md)(Engelstalig) voor meer informatie.
 
-#### <a name="dynamic-management-views"></a>Dynamic Management Views
+#### <a name="dynamic-management-views"></a>Dynamische beheer weergaven
 
-U kunt een query de [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dynamische Beheerweergave om terug te keren resource verbruik statistieken geschiedenis van het afgelopen uur en de [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) system catalogusweergave om terug te keren geschiedenis voor de afgelopen 14 dagen.
+U kunt een query uitvoeren op de dynamische beheer weergave [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) voor het retour neren van de geschiedenis van de statistieken van het Resource verbruik van het afgelopen uur en de [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) -catalogus weergave om de afgelopen 14 dagen geschiedenis te retour neren.
 
-#### <a name="query-performance-insight"></a>Inzicht in queryprestaties
+#### <a name="query-performance-insight"></a>Query Performance Insight
 
-[Query Performance Insight](sql-database-query-performance.md) kunt u een historisch overzicht bekijken van de top-resource-intensieve query's en langlopende query's voor een specifieke database. TOP-query's door gebruik van resources, de duur en de frequentie van de uitvoering, kunt u snel identificeren. U kunt query's bijhouden en regressie detecteren. Deze functie moet [Query Store](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) zijn ingeschakeld en actief voor de database.
+Met [query Performance Insight](sql-database-query-performance.md) kunt u een geschiedenis bekijken van de belangrijkste query's en langlopende query's voor een specifieke data base. U kunt snel de meest voorkomende query's identificeren door middel van resource gebruik, duur en uitvoerings frequentie. U kunt query's volgen en regressies detecteren. Deze functie vereist dat het [query archief](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) is ingeschakeld en actief is voor de data base.
 
-![Inzicht in queryprestaties](./media/sql-database-manage-after-migration/query-performance-insight.png)
+![Query Performance Insight](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
-#### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure SQL Analytics (Preview) in Azure Monitor-Logboeken
+#### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure SQL-analyse (preview) in Azure Monitor-logboeken
 
-[Logboeken in Azure Monitor](../azure-monitor/insights/azure-sql.md) kunt u voor het verzamelen en visualiseren van de belangrijkste prestatiegegevens voor Azure SQL Azure, ondersteuning biedt voor maximaal 150.000 SQL-Databases en 5000 elastische SQL-pools per werkruimte. U kunt deze gebruiken om te controleren en meldingen ontvangen. U kunt controleren op SQL-Database en elastische pool metrische gegevens op meerdere Azure-abonnementen en elastische pools en kan worden gebruikt voor het identificeren van problemen in elke laag van een toepassingsstack.
+Met [Azure monitor](../azure-monitor/insights/azure-sql.md) -Logboeken kunt u belang rijke Azure-SQL Azure prestatie gegevens verzamelen en visualiseren, met ondersteuning voor maxi maal 150.000 SQL-data bases en ELASTISCHe SQL-pools van 5.000 per werk ruimte. U kunt deze gebruiken om meldingen te bewaken en te ontvangen. U kunt de metrische gegevens van SQL Database en elastische groepen bewaken in meerdere Azure-abonnementen en elastische Pools en kunnen worden gebruikt om problemen te identificeren in elke laag van een toepassings stack.
 
-### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Ik ben dat u prestatieproblemen kunnen voordoen: Hoe verschilt mijn probleemoplossing methodologie SQL-Database van SQL Server
+### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Ik merkt prestatie problemen: Hoe verschilt mijn SQL Database-probleemoplossings methodologie van SQL Server
 
-Een belangrijk deel van de technieken voor het oplossen van problemen die u zou gebruiken voor het vaststellen van de query en prestatieproblemen met de database blijven hetzelfde. Nadat de dezelfde SQL Server engine wordt gebruikt door de cloud. Echter is de platform, Azure SQL DB gebouwd in 'intelligentie'. U kunt oplossen en diagnosticeren van prestatieproblemen nog eenvoudiger. Het kan enkele van deze corrigerende acties ook uitvoeren op uw naam en in sommige gevallen, ze - automatisch proactief verhelpen.
+Een belang rijk deel van de probleemoplossings technieken die u zou gebruiken voor het vaststellen van problemen met de prestaties van query's en data bases, blijft hetzelfde. Nadat alle dezelfde SQL Server engine de Cloud heeft gebevoegdheden. Het platform-Azure SQL DB is echter ingebouwd in Intelligence. Het helpt u bij het oplossen van problemen met de prestaties en het eenvoudiger te diagnosticeren. Het kan ook enkele van deze corrigerende maat regelen uitvoeren namens u en in sommige gevallen, zodat deze automatisch worden opgelost.
 
-De aanpak van het oplossen van problemen met de prestaties aanzienlijk kan profiteren met behulp van intelligente functies zoals [Query Performance Insight(QPI)](sql-database-query-performance.md) en [Database Advisor](sql-database-advisor.md) in combinatie en zodat het verschil in methodologie verschilt in dat opzicht – u niet meer wilt oplossen van de handmatige werkzaamheden van malen uit de essentiële informatie die u kunnen helpen bij het probleem bij de hand. Het platform al het harde werk voor u. Een voorbeeld van is QPI. Met QPI, kunt u inzoomen helemaal op het niveau van de query en Ga naar de historische trends en dat precies de query is teruggedraaid. De Database Advisor biedt u aanbevelingen op dingen die u in het algemeen verbeteren van de prestaties van uw algehele zoals - ontbrekende indexen kunnen helpen bij verwijderen van indexen, parametriseren van uw query's enzovoort.
+Uw aanpak voor het oplossen van problemen met prestaties kan aanzienlijk profiteren van intelligente functies als [query Performance Insight (QPI)](sql-database-query-performance.md) en [database Advisor](sql-database-advisor.md) in combi natie, waardoor het verschil in methodologie anders is in dat respect: u hoeft niet langer het hand matig te doen om de essentiële informatie te verfijnen die u kan helpen bij het oplossen van het probleem. Het platform doet de hard werk voor u. Een voor beeld van dat is QPI. Met QPI kunt u alles inzoomen op het query niveau en de historische trends bekijken en nagaan waar precies de query teruggedraaide. De Database Advisor biedt u aanbevelingen die u kunnen helpen bij het verbeteren van de algehele prestaties in algemene, zoals-ontbrekende indexen, het weghalen van indexen, het parameterizing van uw query's, enzovoort.
 
-Bij het oplossen van prestaties is het belangrijk om te bepalen of het is gewoon de toepassing of het maken van back-database die wordt die invloed hebben op prestaties van uw toepassing. Vaak is het prestatieprobleem ligt in de toepassingslaag. De architectuur of de data access-patroon kan het zijn. Neem bijvoorbeeld dat een intensieve toepassing die is gevoelig voor netwerklatentie. In dit geval uw toepassing heeft omdat er veel korte aanvragen heen en weer ("intensieve') tussen de toepassing en de server en in een overbelaste netwerk, dat deze interactie snel toevoegen. In dit geval de prestaties verbeteren, kunt u [Batchquery's](sql-database-performance-guidance.md#batch-queries). Met behulp van batches kunt u dankzij omdat nu uw aanvragen in een batch verwerkt; dus, helpt u bij het beperken van de retour-latentie en verbeteren de toepassingsprestaties van uw.
+Bij het oplossen van problemen is het belang rijk om te bepalen of het nu alleen de toepassing of de data base is die er een back-up van maakt, wat invloed heeft op de prestaties van uw toepassing. Vaak ligt het prestatie probleem in de toepassingslaag. Dit kan de architectuur of het gegevens toegangs patroon zijn. Stel dat u een intensieve-toepassing hebt die gevoelig is voor netwerk latentie. In dit geval gaat uw toepassing in, omdat er veel korte aanvragen worden teruggestuurd tussen de toepassing en de server en op een gelaste netwerk. deze retours worden snel opgeteld. U kunt in dit geval [batch query's](sql-database-performance-guidance.md#batch-queries)gebruiken om de prestaties te verbeteren. Door batches te gebruiken, kunt u op een enorme manier uw aanvragen verwerken in een batch. Zo kunt u de retour latentie verminderen en de prestaties van uw toepassingen verbeteren.
 
-Bovendien, als u merkt dat een verslechtering van de in de algehele prestaties van uw database, kunt u bewaken de [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) en [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dynamic management views om informatie over verbruik voor CPU, IO en geheugen. De prestaties van uw wordt mogelijk beïnvloed omdat de database wordt pas over van resources. Kan het zijn dat wellicht moet u de compute-grootte wijzigen en/of servicelaag op basis van de groeiende en werklastvraag verkleinen.
+Daarnaast kunt u de dynamische beheer weergaven [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) en [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) controleren om inzicht te krijgen in het CPU-, i/o-en geheugen gebruik, als u een degradatie van de algehele prestaties van uw data base ziet. Uw prestaties zijn mogelijk van invloed op uw data base geen resources. Het kan zijn dat u de berekenings grootte en/of de servicelaag moet wijzigen op basis van de groeiende en verkleinde belasting vereisten.
 
-Voor een uitgebreide set met aanbevelingen voor het afstemmen van prestaties, Zie: [Uw database afstemmen](sql-database-performance-guidance.md#tune-your-database).
+Zie voor een uitgebreide set aanbevelingen voor het afstemmen van prestatie problemen: [Uw data base af te stemmen](sql-database-performance-guidance.md#tune-your-database).
 
-### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-compute-size"></a>Hoe voorkom ik dat ik ben met behulp van de juiste service-laag en grootte berekenen
+### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-compute-size"></a>Hoe kan ik ervoor te zorgen dat ik de juiste servicelaag en reken grootte gebruik
 
-SQL Database biedt verschillende Servicelagen Basic, Standard en Premium. Elke servicelaag krijgt u een gegarandeerde voorspelbare prestaties die zijn gekoppeld aan dat serviceniveau. Afhankelijk van uw werkbelasting wellicht u pieken van activiteit waar uw gebruik van resources mogelijk bereikt van het maximum van de huidige compute-grootte die u in. In dergelijke gevallen is het nuttig om eerst door het evalueren van of alle afstemmen kunt (bijvoorbeeld toe te voegen of te wijzigen van een index enz.). Als u nog steeds problemen beperken, kunt u overwegen om naar een hogere servicelaag of compute-grootte.
+SQL Database biedt diverse service lagen Basic, Standard en Premium. Elke servicelaag krijgt een gegarandeerde voorspel bare prestatie die is gekoppeld aan die servicelaag. Afhankelijk van uw werk belasting hebt u mogelijk bursts van activiteit waarbij het gebruik van resources mogelijk het plafond van de huidige berekenings grootte kan aanraken. In dergelijke gevallen is het handig om eerst te evalueren of een afstemming kan helpen (bijvoorbeeld het toevoegen of wijzigen van een index, enzovoort). Als u nog steeds problemen met de limiet ondervindt, kunt u overwegen om over te stappen op een hogere service laag of reken grootte.
 
-|**Servicelaag**|**Veelvoorkomende Use-Casescenario 's**|
+|**Servicelaag**|**Algemene use-case Scenario's**|
 |---|---|
-|**Basic**|Toepassingen met een paar gebruikers en een database waarvoor geen hoge eisen voor gelijktijdigheid, schaal en prestaties. |
-|**Standard**|Toepassingen met een aanzienlijke hoeveelheid vereisten voor gelijktijdigheid, schaal en prestaties in combinatie met een lage tot gemiddelde i/o-aanvragen. |
-|**Premium**|Toepassingen met een groot aantal gelijktijdige gebruikers, hoge CPU/geheugen en hoge i/o-vereist. Hoge gelijktijdigheid, hoge doorvoer en latentie gevoelige apps kunnen gebruikmaken van de Premium-niveau. |
+|**Basic**|Toepassingen met een gekente gebruiker en een Data Base die geen hoge gelijktijdigheids-, schaal-en prestatie vereisten hebben. |
+|**Standard**|Toepassingen met een aanzienlijke gelijktijdigheids-, schaal-en prestatie vereisten in combi natie met lage tot gemiddelde i/o-aanvragen. |
+|**Premium**|Toepassingen met veel gelijktijdige gebruikers, hoge CPU/geheugen en hoge IO-vereisten. Met hoge gelijktijdigheid, hoge door Voer en latentie gevoelige apps kunt u gebruikmaken van het Premium-niveau. |
 |||
 
-Om te controleren of dat u bent op de juiste compute-grootte, kunt u het gebruik van de resources query's en -database via een van de bovengenoemde manieren 'Hoe controleer ik het gebruik van de prestaties en resource in SQL-Database' controleren. U vindt dat uw query's / databases consistent worden uitgevoerd op CPU/geheugen enz. u kunt omhoog schalen naar een hogere compute-grootte ' hot '. Op dezelfde manier als u Houd er rekening mee dat, zelfs tijdens de piekuren die hebt u gebruikt u de resources zo veel mogelijk; Houd rekening met van de huidige grootte van de compute omlaag te schalen.
+Om ervoor te zorgen dat u zich op de juiste reken grootte bevindt, kunt u uw query-en database Resource verbruik bewaken via een van de hierboven genoemde manieren in Hoe kan ik de prestaties en het resource gebruik in SQL Database bewaken. Als u merkt dat uw query's/data bases op consistente wijze worden uitgevoerd op CPU/geheugen, enzovoort, kunt u overwegen om omhoog te schalen naar een hogere reken grootte. Op dezelfde manier kunt u, als u weet dat zelfs tijdens uw piek uren, de resources niet zo veel gebruiken. u kunt overwegen om van de huidige reken grootte omlaag te schalen.
 
-Als u een patroon van SaaS-app of een database consolidatie scenario hebt, kunt u overwegen een elastische pool om kosten te optimaliseren. Elastische pool is een uitstekende manier om de consolidatie van de database en kosten optimaliseren te realiseren. Meer informatie over het beheren van meerdere databases met behulp van de elastische pool, Zie: [Pools en databases beheren](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases).
+Als u een SaaS-app-patroon of een scenario voor database consolidatie hebt, kunt u overwegen een elastische pool te gebruiken voor de kosten optimalisatie. Elastische pool is een uitstekende manier om de samen voeging van data bases en kosten te optimaliseren. Zie voor meer informatie over het beheren van meerdere data bases met elastische pool: [Groepen en data bases beheren](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases).
 
-### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>Hoe vaak moet ik database integriteitscontroles voor mijn database uitvoeren
+### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>Hoe vaak moet ik controles van de data base-integriteit uitvoeren voor mijn data base
 
-SQL-Database maakt gebruik van sommige slimme technieken die toe te staan om bepaalde klassen van beschadiging van gegevens automatisch en zonder verlies van gegevens te verwerken. Deze technieken zijn ingebouwd in de service en worden gebruikt door de service wanneer moet zich voordoet. Uw databaseback-ups via de service zijn er regelmatig getest door deze terug te zetten en DBCC CHECKDB uitvoeren. Als er problemen zijn, lost SQL-Database proactief ze. [Automatisch herstel](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring) wordt gebruikt voor het oplossen van pagina's die zijn beschadigd of problemen met de gegevensintegriteit. De database-pagina's worden altijd geverifieerd met de standaardinstelling van de CONTROLESOM die controleert of de integriteit van de pagina. SQL-Database proactief bewaakt en controleert de integriteit van gegevens van uw database en, als er zich problemen voordoen, lost ze met de hoogste prioriteit. Naast deze kunt u desgewenst uw eigen integriteitscontroles op wordt uitgevoerd.  Zie voor meer informatie, [integriteit van gegevens in SQL-Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)
+SQL Database maakt gebruik van een aantal slimme technieken waarmee de IT-server bepaalde klassen gegevens automatisch kan verwerken en zonder dat er gegevens verloren gaan. Deze technieken zijn ingebouwd in de service en worden door de service gebruikt wanneer dat nodig is. Op regel matige basis worden de back-ups van uw data bases in de service getest door ze te herstellen en DBCC CHECKDB op het bestand uit te voeren. Als er problemen zijn, worden deze door SQL Database proactief opgelost. [Automatische pagina reparatie](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring) wordt gebruikt voor het oplossen van pagina's die beschadigd zijn of problemen met de gegevens integriteit hebben. De database pagina's worden altijd gecontroleerd met de standaard instelling voor de CONTROLESOM die de integriteit van de pagina verifieert. SQL Database proactief bewaakt en controleert de gegevens integriteit van uw data base. als er problemen optreden, worden deze geadresseerd met de hoogste prioriteit. Daarnaast kunt u ervoor kiezen om eventueel uw eigen integriteits controles uit te voeren.  Zie voor meer informatie [integriteit van gegevens in SQL database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)
 
-## <a name="data-movement-after-migration"></a>Verplaatsing van gegevens na de migratie
+## <a name="data-movement-after-migration"></a>Verplaatsing van gegevens na migratie
 
-### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database"></a>Hoe ik gegevens exporteren en importeren als Bacpac-bestanden van SQL Database
+### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database"></a>Hoe kan ik gegevens exporteren en importeren als BACPAC-bestanden vanuit SQL Database
 
-- **Exporteren**: U kunt uw Azure SQL-database exporteren als een BACPAC-bestand vanuit de Azure-portal
+- **Exporteren**: U kunt uw Azure-SQL database exporteren als een BACPAC-bestand van de Azure Portal
 
-   ![database exporteren](./media/sql-database-export/database-export1.png)
+   ![data base exporteren](./media/sql-database-export/database-export1.png)
 
-- **Importeren**: U kunt ook gegevens als een BACPAC-bestand importeren in de database met behulp van de Azure-portal.
+- **Importeren**: U kunt ook gegevens importeren als een BACPAC-bestand in de-data base met behulp van de Azure Portal.
 
-   ![database importeren](./media/sql-database-import/import1.png)
+   ![data base importeren](./media/sql-database-import/import1.png)
 
-### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>Synchroniseren van gegevens tussen SQL Database en SQL Server
+### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>Hoe kan ik gegevens tussen SQL Database en SQL Server synchroniseren
 
-Er zijn verschillende manieren om dit te bereiken:
+U kunt dit op verschillende manieren doen:
 
-- **[Gegevenssynchronisatie](sql-database-sync-data.md)**  : deze functie kunt u gegevens synchroniseren richtingen tussen meerdere on-premises SQL Server-databases en SQL-Database. Als u wilt synchroniseren met on-premises SQL Server-databases, die u wilt installeren en configureren van sync-agent op een lokale computer en de uitgaande TCP-poort 1433 openen.
-- **[Transactionele replicatie](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**  – met transactionele replicatie kunt u uw gegevens van on-premises naar Azure SQL DB synchroniseren met de on-premises wordt de uitgever en de Azure SQL-database wordt de abonnee. Alleen voor deze installatie wordt nu ondersteund. Zie voor meer informatie over het migreren van uw gegevens van on-premises naar Azure SQL met minimale downtime: [Transactionele replicatie gebruiken](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
+- **[Gegevens synchronisatie](sql-database-sync-data.md)** : met deze functie kunt u gegevens bi-directioneel synchroniseren tussen meerdere on-premises SQL server data bases en SQL database. Als u wilt synchroniseren met on-premises SQL Server-data bases, moet u de synchronisatie agent installeren en configureren op een lokale computer en de uitgaande TCP-poort 1433 openen.
+- **[Transactie replicatie](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** : met transactie replicatie kunt u uw gegevens van on-premises synchroniseren met Azure SQL DB, zodat de on-premises de uitgever en de Azure SQL DB-abonnee zijn. Momenteel wordt alleen deze configuratie ondersteund. Zie voor meer informatie over het migreren van uw gegevens van on-premises naar Azure SQL met minimale downtime: [Transactie replicatie gebruiken](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [SQL-Database](sql-database-technical-overview.md).
+Meer informatie over [SQL database](sql-database-technical-overview.md).

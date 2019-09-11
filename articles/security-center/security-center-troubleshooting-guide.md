@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 63275db36bdb64985625c3789d558bd09e2d47bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 93656578fac52e4ba5ff96e655ea51678f2292cd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60912030"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609919"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Handleiding voor het oplossen van problemen met Azure Security Center
 Deze handleiding is bedoeld voor IT-specialisten, informatiebeveiligingsanalisten en cloudbeheerders van organisaties die Azure Security Center gebruiken en biedt procedures voor het oplossen van problemen met Azure Security Center.
@@ -29,7 +29,7 @@ Deze handleiding is bedoeld voor IT-specialisten, informatiebeveiligingsanaliste
 >
 
 ## <a name="troubleshooting-guide"></a>Handleiding voor het oplossen van problemen
-In deze handleiding wordt uitgelegd hoe u problemen oplost die betrekking hebben op Security Center. In de meeste gevallen vindt probleemoplossing in Security Center plaats door eerst de records in het [Controlelogboek](../azure-monitor/platform/activity-logs-overview.md) van het onderdeel met de fout te raadplegen. Met auditlogboeken kunt u het volgende bepalen:
+In deze handleiding wordt uitgelegd hoe u problemen oplost die betrekking hebben op Security Center. In de meeste gevallen vindt probleemoplossing in Security Center plaats door eerst de records in het [Controlelogboek](../azure-monitor/platform/activity-logs-overview.md) van het onderdeel met de fout te raadplegen. Met controlelogboeken kunt u het volgende bepalen:
 
 * Welke bewerkingen er hebben plaatsgevonden
 * Wie de bewerking heeft gestart
@@ -40,7 +40,7 @@ In deze handleiding wordt uitgelegd hoe u problemen oplost die betrekking hebben
 In het controlelogboek staan alle schrijfbewerkingen (PUT, POST, DELETE) die op uw resources zijn uitgevoerd, maar er staan geen leesbewerkingen (GET) in.
 
 ## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
-Security Center maakt gebruik van de Microsoft Monitoring Agent – dit is dezelfde agent die wordt gebruikt door de Azure Monitor-service voor het verzamelen van beveiligingsgegevens van uw Azure virtual machines. Nadat het verzamelen van gegevens is ingeschakeld en de agent juist is geïnstalleerd op de doelcomputer, wordt als het goed is dit proces uitgevoerd:
+Security Center maakt gebruik van micro soft monitoring agent. Dit is dezelfde agent die wordt gebruikt door de Azure Monitor-service: om beveiligings gegevens van uw Azure virtual machines te verzamelen. Nadat het verzamelen van gegevens is ingeschakeld en de agent juist is geïnstalleerd op de doelcomputer, wordt als het goed is dit proces uitgevoerd:
 
 * HealthService.exe
 
@@ -74,8 +74,8 @@ Er zijn twee installatiescenario's die verschillende resultaten kunnen opleveren
 | Azure VM-agent ontbreekt of is ongeldig | De MMA is nog niet geïnstalleerd.  Security Center installeert de extensie pas als er een geldige Azure VM-agent is. | Installeer de Azure VM-agent (opnieuw) op de virtuele machine of voer een upgrade uit. |
 | VM-status niet gereed voor installatie  | De MMA is nog niet geïnstalleerd omdat de virtuele machine niet gereed is voor installatie. De virtuele machine is niet gereed voor installatie vanwege een probleem met de VM-agent of de VM-inrichting. | Controleer de status van uw virtuele machine. Ga terug naar **Virtuele machines** in de portal en selecteer de virtuele machine voor statusinformatie. |
 |Installatie is mislukt: algemene fout | De MMA is geïnstalleerd, maar werkt niet vanwege een fout. | [Installeer de extensie handmatig](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) of verwijder de extensie zodat Security Center deze opnieuw probeert te installeren. |
-| Installatie is mislukt: lokale agent is al geïnstalleerd | De installatie van MMA is mislukt. Security Center heeft een lokale agent (Log Analytics of System Center Operations Manager) al is geïnstalleerd op de virtuele machine gedetecteerd. De installatie van MMA is gestopt om een multihoming-configuratie - de virtuele machine rapporteert aan twee afzonderlijke werkruimten - te voorkomen. | U kunt dit op twee manieren oplossen: [de extensie handmatig installeren](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) en verbinden met de gewenste werkruimte. Of, de gewenste werkruimte instellen als uw standaardwerkruimte en automatische inrichting van de agent inschakelen.  Zie [Automatische inrichting inschakelen](security-center-enable-data-collection.md). |
-| Kan geen verbinding maken tussen agent en werkruimte | De MMA is geïnstalleerd, maar werkt niet vanwege een netwerkverbinding.  Controleer of er internettoegang is. En anders moet er een geldige HTTP-proxy voor de agent zijn geconfigureerd. | Zie de netwerkvereisten agent controleren. |
+| Installatie is mislukt: lokale agent is al geïnstalleerd | De installatie van MMA is mislukt. Security Center heeft vastgesteld dat er al een lokale agent (Log Analytics of System Center Operations Manager) is geïnstalleerd op de VM. De installatie van MMA is gestopt om een multihoming-configuratie - de virtuele machine rapporteert aan twee afzonderlijke werkruimten - te voorkomen. | U kunt dit op twee manieren oplossen: [de extensie handmatig installeren](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) en verbinden met de gewenste werkruimte. Of, de gewenste werkruimte instellen als uw standaardwerkruimte en automatische inrichting van de agent inschakelen.  Zie [Automatische inrichting inschakelen](security-center-enable-data-collection.md). |
+| Kan geen verbinding maken tussen agent en werkruimte | De MMA is geïnstalleerd, maar werkt niet vanwege een netwerkverbinding.  Controleer of er internettoegang is. En anders moet er een geldige HTTP-proxy voor de agent zijn geconfigureerd. | Zie netwerk vereisten voor de bewakings agent. |
 | Agent verbonden met ontbrekende of onbekende werkruimte | Security Center heeft gedetecteerd dat MMA die is geïnstalleerd op de VM, verbonden is met een werkruimte waartoe deze geen toegang heeft. | Dit kan gebeuren in twee gevallen. De werkruimte is verwijderd en bestaat niet meer. Installeer de agent opnieuw met de juiste werkruimte of verwijder de agent en laat Security Center de automatische inrichtingsinstallatie voltooien. In het tweede geval behoort de werkruimte tot een abonnement waarvoor Security Center geen machtigingen heeft. Security Center verleent de Microsoft Security Resource Provider toegang op basis van een abonnement. Als u toegang wilt inschakelen, registreert u het abonnement op Microsoft Security Resource Provider. U kunt dit doen via API, PowerShell, portal of gewoon door in het dashboard **Overzicht** van het Security Center te filteren op abonnement. Zie [Resourceproviders en -typen](../azure-resource-manager/resource-manager-supported-services.md#azure-portal) voor meer informatie. |
 | Agent reageert niet of ID ontbreekt | Security Center kan de beveiligingsgegevens die zijn gescand van de virtuele machine niet ophalen, zelfs niet als de agent is geïnstalleerd. | De agent rapporteert geen gegevens, ook de heartbeat niet. De agent is mogelijk beschadigd of het verkeer wordt geblokkeerd. Of de agent rapporteert gegevens, maar beschikt niet over de Azure-resource-id, waardoor de juiste Azure VM voor de gegevens niet kan worden gevonden. Zie voor het oplossen van Linux, [Troubleshooting Guide voor Log Analytics-Agent voor Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Zie [Troubleshooting Windows Virtual Machines](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines) (Problemen met virtuele Windows-machines oplossen) voor het oplossen van problemen in Windows. |
 | Agent niet geïnstalleerd | Gegevensverzameling is uitgeschakeld. | Schakel gegevensverzameling in het beveiligingsbeleid in of installeer de MMA handmatig. |
@@ -101,7 +101,7 @@ Als er problemen zijn tijdens het onboarden van de agent, leest u het artikel [O
 
 ## <a name="troubleshooting-endpoint-protection-not-working-properly"></a>Oplossen van problemen met niet goed werkende eindpuntbeveiliging
 
-De gastagent is het bovenliggende proces van alles wat de [Microsoft Antimalware](../security/azure-security-antimalware.md)-extensie doet. Wanneer het proces van de gastagent mislukt, kan de Microsoft Antimalware die wordt uitgevoerd als onderliggend proces van de gastagent ook mislukken.  In dergelijke scenario's wordt aanbevolen de volgende opties te controleren:
+De gastagent is het bovenliggende proces van alles wat de [Microsoft Antimalware](../security/fundamentals/antimalware.md)-extensie doet. Wanneer het proces van de gastagent mislukt, kan de Microsoft Antimalware die wordt uitgevoerd als onderliggend proces van de gastagent ook mislukken.  In dergelijke scenario's wordt aanbevolen de volgende opties te controleren:
 
 - Als de doel-VM een aangepaste installatiekopie is en de maker van de VM nooit een gastagent heeft geïnstalleerd.
 - Als het doel een Linux-VM in plaats van een Windows-VM is, mislukt het installeren van de Windows-versie van de anti-malware-extensie op een Linux-VM. De Linux-gastagent heeft specifieke vereisten voor het besturingssysteem en de vereiste pakketten. Als niet aan deze vereisten wordt voldaan, werkt de VM-agent ook niet.
