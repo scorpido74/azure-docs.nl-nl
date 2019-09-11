@@ -1,61 +1,101 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Personalizer
+summary: Meer informatie over het gebruik van Personalizer waarmee uw toepassing de beste ervaring kan kiezen om aan uw gebruikers te tonen, waarbij u leert van hun real-time gedrag.
 metadata:
-  document_id: null
-  title: 'Personalizer - zelfstudies, quickstarts, API-referentiemateriaal'
-  description: 'Meer informatie over het gebruik van de Personalizer-service waarmee uw toepassing de beste ervaring kan kiezen om aan uw gebruikers te tonen, waarbij u leert van hun real-time gedrag.'
+  ms.topic: landing-page
+  ms.date: 09/09/2019
+  ms.author: nitinme
   author: nitinme
-  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: personalizer
-  ms.topic: landing-page
-  ms.date: 05/07/2019
-  ms.author: nitinme
-abstract:
-  description: 'Azure Personalizer is een op de cloud gebaseerde API-service waarmee u de beste ervaring kunt kiezen om aan uw gebruikers te laten zien, waarbij u leert van hun real-time gedrag.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/personalizer/what-is-personalizer
-            html: <p>Begrijpen wat Personalizer doet en hoe u het kunt gebruiken.</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Wat is Personalizer?
-          - href: /azure/cognitive-services/personalizer/how-personalizer-works
-            html: <p>Meer informatie over hoe Personalizer-feedback-lus werkt met de Rank & Reward-API's.</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Hoe Personalizer werkt
-          - href: /azure/cognitive-services/personalizer/ethics-responsible-use
-            html: <p>Persoonlijke instellingen implementeren op een manier die vertrouwen in uw bedrijf en diensten creëert.</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Ethiek en verantwoordelijk gedrag
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: ''
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ../media/index/logo_Csharp.svg
-            href: csharp-quickstart-commandline-feedback-loop.md
-            text: 'C#'
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST-API’s
-            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2092082">Personalizer-API</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure-CLI</a></p>'
+  services: cognitive-services
+  title: Documentatie voor Personalizer
+  titleSuffix: Azure Cognitive Services
+  description: Azure Personalizer is een op de cloud gebaseerde API-service waarmee u de beste ervaring kunt kiezen om aan uw gebruikers te laten zien, waarbij u leert van hun real-time gedrag.
+  ms.openlocfilehash: 7c73472231b563c1efa583e356774f755abea3bf
+  ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/10/2019
+  ms.locfileid: "70845421"
+landingContent:
+- title: Over Personalizer
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Personalizer?
+      url: what-is-personalizer.md
+  - linkListType: concept
+    links:
+    - text: Hoe Personalizer werkt
+      url: how-personalizer-works.md
+    - text: Waar u Personalizer gebruikt
+      url: where-can-you-use-personalizer.md
+    - text: Ethiek en verantwoord gedrag
+      url: ethics-responsible-use.md
+    - text: Functies en acties kiezen die u wilt personaliseren
+      url: concepts-features.md
+    - text: Een beloning berekenen
+      url: concept-rewards.md
+    - text: Offline evaluaties
+      url: concepts-offline-evaluation.md
+  - linkListType: how-to-guide
+    links:
+    - text: Succes analyseren met offline evaluatie
+      url: how-to-offline-evaluation.md
+- title: Ontwikkelen met Personalizer
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET gebruiken
+      url: csharp-quickstart-commandline-feedback-loop.md
+    - text: Python gebruiken
+      url: python-quickstart-commandline-feedback-loop.md
+    - text: Node.js
+      url: quickstart-command-line-feedback-loop-nodejs-sdk.md
+  - linkListType: how-to-guide
+    links:
+    - text: Personalizer maken en configureren
+      url: how-to-settings.md
+  - linkListType: reference
+    links:
+    - text: Codevoorbeelden
+      url: https://github.com/Azure-Samples/cognitive-services-personalizer-samples
+    - text: REST-API’s
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank
+    - text: NuGet-pakket
+      url: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/0.8.0-preview
+    - text: NPM-pakket
+      url: https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0
+    - text: Pypi-pakket
+      url: https://pypi.org/project/azure-cognitiveservices-personalizer/
+  - linkListType: concept
+    links:
+    - text: Schaalbaarheid en prestaties
+      url: concepts-scalability-performance.md
+- title: Over reinforcement learning
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is reinforcement learning?
+      url: concepts-reinforcement-learning.md
+  - linkListType: concept
+    links:
+    - text: Verkennen
+      url: concepts-exploration.md
+    - text: Functies, actie en context
+      url: concepts-features.md
+    - text: Actief leren
+      url: concept-active-learning.md
+    - text: Voordelen
+      url: concept-rewards.md
+- title: Help en feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Problemen oplossen
+      url: troubleshooting.md
+    - text: Stel vragen op Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/personalizer
+    - text: Service beïnvloeden met UserVoice
+      url: https://cognitive.uservoice.com/forums/921562-personalizer

@@ -21,7 +21,7 @@
       href: tutorial-configure-password-hash-sync.md
 - name: Voorbeelden
   items:
-    - name: Een Azure AD DS-exemplaar maken met behulp van Azure PowerShell
+    - name: Een beheerd domein maken met Azure PowerShell
       href: powershell-create-instance.md
 - name: Concepten
   items:

@@ -27,6 +27,8 @@
       items:
         - name: Overzicht
           href: customize-content-models-overview.md
+        - name: Geanimeerde tekens
+          href: animated-characters-recognition.md
         - name: Merken
           href: customize-brands-model-overview.md
         - name: Taal
@@ -45,8 +47,10 @@
       href: video-indexer-output-json-v2.md
     - name: Exacte momenten in video's zoeken
       href: video-indexer-search.md
-    - name: 'Scènes, opnamen en sleutelframes'
+    - name: 'Scènes, opnamen en sleutelframes detecteren'
       href: scenes-shots-keyframes.md
+    - name: Meertalige inhoud identificeren en transcriberen
+      href: multi-language-identification-transcription.md
     - name: Video Indexer-inzichten weergeven en bewerken
       href: video-indexer-view-edit.md
     - name: Editor gebruiken om projecten te maken
@@ -57,6 +61,8 @@
       href: video-indexer-disaster-recovery.md
     - name: Inhoudsmodellen aanpassen
       items:
+        - name: Geanimeerde tekens
+          href: animated-characters-recognition.md
         - name: Person
           items:
             - name: met de Video Indexer-website

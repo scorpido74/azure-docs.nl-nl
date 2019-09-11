@@ -6,6 +6,8 @@
       href: sql-database-technical-overview.md
     - name: Welke SQL-optie moet ik kiezen?
       href: sql-database-paas-vs-sql-server-iaas.md
+    - name: Vergelijking van functies
+      href: sql-database-features.md
     - name: Releaseopmerkingen
       href: sql-database-release-notes.md
     - name: Updates van IP-migratie van gateway
@@ -390,10 +392,8 @@
               href: sql-database-advisor.md
     - name: Databases-functies
       items:
-        - name: Documentatie voor SQL Database-functies
+        - name: Overzicht
           href: sql-database-features-index.yml
-        - name: Vergelijking van SQL-functies
-          href: sql-database-features.md
         - name: Mogelijkheden voor meerdere modellen
           href: sql-database-multi-model-features.md
         - name: In het geheugen
@@ -534,6 +534,8 @@
           href: sql-database-managed-instance-connect-app.md
     - name: Gegevens laden en verplaatsen
       items:
+        - name: Terugzetten naar herstelpunt
+          href: sql-database-managed-instance-point-in-time-restore.md
         - name: Resource verplaatsen naar een nieuwe regio
           href: sql-database-move-resources-across-regions.md
         - name: Een database kopiëren binnen Azure

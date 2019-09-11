@@ -30,6 +30,18 @@
           href: event-hubs-dotnet-standard-getstarted-send.md
         - name: Java
           href: event-hubs-java-get-started-send.md
+        - name: Python
+          href: event-hubs-python-get-started-send.md
+        - name: Node.js
+          href: event-hubs-node-get-started-send.md
+        - name: Aan de slag
+          href: event-hubs-go-get-started-send.md
+        - name: C (alleen verzenden)
+          href: event-hubs-c-getstarted-send.md
+        - name: Apache Storm (alleen ontvangen)
+          href: event-hubs-storm-getstarted-receive.md
+        - name: .NET Framework
+          href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Gebeurtenissen vastleggen
       items:
         - name: Azure Portal gebruiken om Event Hubs Capture in te schakelen
@@ -104,46 +116,20 @@
           href: event-hubs-exchange-events-different-protocols.md
         - name: Programmeergids
           href: event-hubs-programming-guide.md
+        - name: 'Gebeurtenissen verzenden, ontvangen en vastleggen met behulp van Python'
+          href: event-hubs-python.md
     - name: Gegevens verwerken
       items:
         - name: Gegevens verwerken met Azure Stream Analytics
           href: process-data-azure-stream-analytics.md
-    - name: Clientbibliotheken gebruiken
+    - name: Integreren met Spring-framework
       items:
-        - name: .NET Framework
-          items:
-            - name: Gebeurtenissen verzenden en ontvangen met behulp van .NET Framework
-              href: event-hubs-dotnet-framework-getstarted-send.md
-        - name: Java
-          items:
-            - name: Een Spring Cloud Stream Binder-app maken
-              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
-              maintainContext: true
-            - name: Spring Boot Starter voor Apache Kafka gebruiken
-              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
-              maintainContext: true
-        - name: Python
-          items:
-            - name: Gebeurtenissen verzenden en ontvangen met behulp van Python
-              href: event-hubs-python-get-started-send.md
-            - name: 'Gebeurtenissen verzenden, ontvangen en vastleggen met behulp van Python'
-              href: event-hubs-python.md
-        - name: Node.js
-          items:
-            - name: Gebeurtenissen verzenden en ontvangen met behulp van Node.js
-              href: event-hubs-node-get-started-send.md
-        - name: Aan de slag
-          items:
-            - name: Gebeurtenissen verzenden en ontvangen met behulp van Go
-              href: event-hubs-go-get-started-send.md
-        - name: C (alleen verzenden)
-          items:
-            - name: Gebeurtenissen verzenden met behulp van C
-              href: event-hubs-c-getstarted-send.md
-        - name: Apache Storm (alleen ontvangen)
-          items:
-            - name: Gebeurtenissen ontvang met behulp van Apache Storm
-              href: event-hubs-storm-getstarted-receive.md
+        - name: Een Spring Cloud Stream Binder-app maken
+          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
+          maintainContext: true
+        - name: Spring Boot Starter voor Apache Kafka gebruiken
+          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
+          maintainContext: true
     - name: Integreren met Apache Kafka
       items:
         - name: Event-hubs maken waarvoor Apache Kafka is ingeschakeld

@@ -1,5 +1,5 @@
-- name: Documentatie bij Azure Storage
-  href: /azure/storage/
+- name: Documentatie voor Azure Blob Storage
+  href: /azure/storage/blobs/
 - name: Overzicht
   expanded: true
   items:

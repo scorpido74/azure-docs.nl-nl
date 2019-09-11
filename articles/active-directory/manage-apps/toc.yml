@@ -346,6 +346,10 @@
       items:
         - name: Expressies schrijven voor kenmerktoewijzingen
           href: functions-for-customizing-application-data.md
+    - name: Azure AD Connect-inrichtingsagent
+      items:
+        - name: Versiegeschiedenis van de inrichtingsagent
+          href: provisioning-agent-release-version-history.md
     - name: Toepassingsproxy voor on-premises apps
       items:
         - name: Versiegeschiedenis van toepassingsproxy
