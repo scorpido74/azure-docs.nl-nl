@@ -123,8 +123,6 @@
       href: billing-how-to-change-azure-account-profile.md
     - name: Toegang tot facturering verlenen
       href: billing-manage-access.md
-    - name: EA-rollen in Azure
-      href: billing-understand-ea-roles.md
     - name: Microsoft-klantovereenkomstrollen in Azure
       href: billing-understand-mca-roles.md
     - name: Partner-id koppelen
@@ -133,8 +131,26 @@
       href: billing-view-all-accounts.md
     - name: Kosten ordenen met factuursecties
       href: billing-mca-section-invoice.md
-    - name: EA-taken in Microsoft-klantovereenkomst
-      href: billing-mca-enterprise-operations.md
+    - name: EA-beheer
+      items:
+        - name: Aan de slag in de Azure EA-portal
+          href: billing-ea-portal-get-started.md
+        - name: EA-rollen in Azure
+          href: billing-understand-ea-roles.md
+        - name: Beheer van Azure EA-portal
+          href: billing-ea-portal-administration.md
+        - name: Azure EA-overeenkomsten en -aanpassingen
+          href: billing-ea-portal-agreements.md
+        - name: Enterprise Enrollment-facturen
+          href: billing-ea-portal-enrollment-invoices.md
+        - name: REST-API's in Azure Enterprise
+          href: billing-ea-portal-rest-apis.md
+        - name: Gereserveerde exemplaren Azure EA-VM
+          href: billing-ea-portal-vm-reservations.md
+        - name: Problemen met toegang tot Azure EA-portal oplossen
+          href: billing-ea-portal-troubleshoot.md
+        - name: EA-taken in Microsoft-klantovereenkomst
+          href: billing-mca-enterprise-operations.md
     - name: Verschuldigd bedrag betalen
       href: billing-azure-subscription-past-due-balance.md
     - name: Factureringsaccount instellen voor Microsoft-klantovereenkomst

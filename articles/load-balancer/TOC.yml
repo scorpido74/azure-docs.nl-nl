@@ -61,8 +61,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: Metrische en diagnostische gegevens voor een load balancer van het type Standard
       href: load-balancer-standard-diagnostics.md
-    - name: Beveiligingskenmerken
-      href: load-balancer-security-attributes.md
+    - name: Ingebouwde beveiligingsmaatregelen
+      href: load-balancer-security-controls.md
 - name: Procedures
   items:
     - name: Een zoneredundante openbare load balancer van het type Standard maken

@@ -62,8 +62,8 @@
       items:
         - name: Beveiligingsoverzicht
           href: overview-security.md
-        - name: Algemene beveiligingskenmerken
-          href: key-vault-security-attributes.md
+        - name: Ingebouwde beveiligingsmaatregelen
+          href: key-vault-security-controls.md
         - name: Beveiligingsgebieden
           href: key-vault-ovw-security-worlds.md
         - name: Uw Key Vault beveiligen
@@ -90,8 +90,6 @@
           href: create-certificate.md
         - name: Het maken van certificaten controleren en beheren
           href: create-certificate-scenarios.md
-    - name: Algemene Azure-beveiligingskenmerken
-      href: key-vault-security-attributes.md
 - name: Handleidingen
   items:
     - name: Logboekregistratie voor Azure Key Vault

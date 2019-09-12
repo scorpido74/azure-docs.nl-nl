@@ -163,8 +163,8 @@
           maintainContext: true
     - name: Veelgestelde vragen over schaalsets
       href: virtual-machine-scale-sets-faq.md
-    - name: Beveiligingskenmerken
-      href: virtual-machine-scale-sets-security-attributes.md
+    - name: Ingebouwde beveiligingsmaatregelen
+      href: virtual-machine-scale-sets-security-controls.md
 - name: Procedures
   items:
     - name: Plannen en ontwerpen

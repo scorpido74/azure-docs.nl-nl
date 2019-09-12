@@ -101,8 +101,8 @@
                   href: authenticate-application.md
             - name: Verifiëren met een Shared Access Signature
               href: authenticate-shared-access-signature.md
-        - name: Beveiligingskenmerken
-          href: event-hubs-security-attributes.md
+        - name: Ingebouwde beveiligingsmaatregelen
+          href: event-hubs-security-controls.md
     - name: AMQP 1.0-protocolhandleiding
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true

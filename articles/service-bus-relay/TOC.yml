@@ -36,8 +36,8 @@
       href: relay-authentication-and-authorization.md
     - name: Protocol hybride verbindingen
       href: relay-hybrid-connections-protocol.md
-    - name: Algemene Azure-beveiligingskenmerken
-      href: service-bus-relay-security-attributes.md
+    - name: Ingebouwde beveiligingsmaatregelen
+      href: service-bus-relay-security-controls.md
 - name: Procedures
   items:
     - name: Plannen en ontwerpen

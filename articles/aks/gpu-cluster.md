@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
 ms.openlocfilehash: 4eef31a050072c0413421a5490b35b765cb9557d
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
-ms.translationtype: MT
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68381833"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Gebruik Gpu's voor computerintensieve werk belastingen op Azure Kubernetes service (AKS)
@@ -20,7 +20,7 @@ ms.locfileid: "68381833"
 Grafische verwerkings eenheden (Gpu's) worden vaak gebruikt voor computerintensieve werk belastingen, zoals grafische werk belastingen en visualisaties. AKS biedt ondersteuning voor het maken van knooppunt groepen met GPU-functionaliteit voor het uitvoeren van deze reken intensief werk belastingen in Kubernetes. Zie voor meer informatie over beschik bare virtuele machines met GPU voor [GPU geoptimaliseerde VM-grootten in azure][gpu-skus]. Voor AKS-knoop punten wordt een minimale grootte van *Standard_NC6*aangeraden.
 
 > [!NOTE]
-> Virtuele machines met GPU bevatten gespecialiseerde hardware waarvoor hogere prijzen en beschik baarheid van de regio gelden. Zie de [prijzen][azure-pricing] tool and [region availability][azure-availability]voor meer informatie.
+> Virtuele machines met GPU bevatten gespecialiseerde hardware waarvoor hogere prijzen en beschik baarheid van de regio gelden. Zie de [prijs][azure-pricing] informatie en beschik baarheid van [regio's][azure-availability]voor meer informatie.
 
 Momenteel is het gebruik van knooppunt Pools met GPU ingeschakeld alleen beschikbaar voor Linux-knooppunt groepen.
 
@@ -223,7 +223,7 @@ kubectl apply -f samples-tf-mnist-demo.yaml
 
 ## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>Bekijk de status en de uitvoer van de GPU-ingeschakelde werk belasting
 
-Bewaak de voortgang van de taak met behulp van de opdracht [kubectl Get Jobs][kubectl-get] with het `--watch` argument. Het kan een paar minuten duren voordat de installatie kopie is opgehaald en de gegevensset wordt verwerkt. Wanneer in  de kolom voltooiings de *1/1*wordt weer gegeven, is de taak voltooid. Sluit de `kubetctl --watch` opdracht af met *CTRL-C*:
+Bewaak de voortgang van de taak met behulp van de opdracht [kubectl Get Jobs][kubectl-get] with het `--watch` argument. Het kan een paar minuten duren voordat de installatie kopie is opgehaald en de gegevensset wordt verwerkt. Wanneer in de kolom voltooiings de *1/1*wordt weer gegeven, is de taak voltooid. Sluit de `kubetctl --watch` opdracht af met *CTRL-C*:
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch

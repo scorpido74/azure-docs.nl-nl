@@ -1,0 +1,183 @@
+### YamlMime:Hub
+title: Documentatie voor Azure Cognitive Services
+summary: Ontdek hoe u intelligente en ondersteunde algoritmen voor apps, websites en bots compileert om de behoeften van uw gebruikers te kunnen zien, horen, bespreken en begrijpen.
+metadata:
+  title: Documentatie voor Azure Cognitive Services
+  description: Ontdek hoe u intelligente en ondersteunde algoritmen voor apps, websites en bots compileert om de behoeften van uw gebruikers te kunnen zien, horen, bespreken en begrijpen.
+  ms.service: cognitive-services
+  ms.topic: hub-page
+  brand: azure
+  author: nitinme
+  ms.author: nitinme
+  manager: nitinme
+  ms.date: 09/10/2019
+  ms.openlocfilehash: 0ddceb45db81ae31685cf48a6789d47d54818f3a
+  ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/11/2019
+  ms.locfileid: "70886097"
+highlightedContent:
+  items:
+  - title: Wat is Cognitive Services?
+    itemType: overview
+    url: ./welcome.md
+  - title: Cognitive Services en machine learning
+    itemType: concept
+    url: ./cognitive-services-and-machine-learning.md
+  - title: Een Cognitive Services-resource maken
+    itemType: how-to-guide
+    url: ./cognitive-services-apis-create-account.md
+  - title: Taalondersteuning in Cognitive Services
+    itemType: reference
+    url: ./language-support.md
+  - title: Cognitive Services gebruiken in containers
+    itemType: concept
+    url: ./cognitive-services-container-support.md
+  - title: Een aanvraag verifiëren
+    itemType: how-to-guide
+    url: ./authentication.md
+conceptualContent:
+  items:
+  - title: Vision
+    summary: Herken, identificeer, indexeer en wijzig uw afbeeldingen, video's en digitale inkt en voorzie deze van ondertitels.
+    links:
+    - url: ./computer-vision/index.yml
+      itemType: overview
+      text: Computer Vision
+    - url: ./Custom-Vision-Service/index.yml
+      itemType: overview
+      text: Custom Vision
+    - url: ./face/index.yml
+      itemType: overview
+      text: Face
+    - url: ./form-recognizer/index.yml
+      itemType: overview
+      text: Formulierherkenning (preview)
+    - url: ./form-recognizer/index.yml
+      itemType: overview
+      text: Ink Recognizer (preview)
+    - url: ./ink-recognizer/index.yml
+      itemType: overview
+      text: Video Indexer
+  - title: Taal
+    summary: Laat uw apps natuurlijke taal verwerken met vooraf gemaakte scripts, sentiment evalueren en leren herkennen wat gebruikers willen.
+    links:
+    - url: ./immersive-reader/index.yml
+      itemType: overview
+      text: Insluitende lezer (preview)
+    - url: ./luis/index.yml
+      itemType: overview
+      text: Language Understanding (LUIS)
+    - url: ./qnamaker/index.yml
+      itemType: overview
+      text: QnA Maker
+    - url: ./text-analytics/index.yml
+      itemType: overview
+      text: Tekstanalyse
+    - url: ./translator/index.yml
+      itemType: overview
+      text: Translator Text
+  - title: Speech
+    summary: Converteer spraak naar tekst en tekst naar spraak met natuurlijke uitspraak. Vertaal teksten van de ene naar de andere taal en schakel sprekercontrole en -herkenning in.
+    links:
+    - url: ./speech-service/index.yml
+      itemType: overview
+      text: Spraakservices
+    - url: ./speaker-recognition/home.md
+      itemType: overview
+      text: Sprekerherkenning (preview)
+    - url: ./speech/home.md
+      itemType: overview
+      text: Bing Speech (wordt buiten gebruik gesteld)
+    - url: ./translator-speech/overview.md
+      itemType: overview
+      text: Translator Speech (wordt buiten gebruik gesteld)
+  - title: Decision Services
+    summary: Bouw apps die aanbevelingen opleveren voor geïnformeerde en efficiënte besluitvorming.
+    links:
+    - url: ./anomaly-detector/index.yml
+      itemType: overview
+      text: Anomaly Detector (preview)
+    - url: ./content-moderator/index.yml
+      itemType: overview
+      text: Content Moderator
+    - url: ./personalizer/index.yml
+      itemType: overview
+      text: Personalizer (preview)
+  - title: Search
+    summary: Voeg Bing Search-API's toe aan uw apps en maak het mogelijk om miljarden webpagina's, afbeeldingen, video's en nieuwsartikelen met één API-aanroep te doorzoeken.
+    links:
+    - url: ./Bing-Autosuggest/index.yml
+      itemType: overview
+      text: Zoeken met automatische suggesties
+    - url: ./bing-custom-search/index.yml
+      itemType: overview
+      text: Aangepast zoeken
+    - url: ./bing-entities-search/index.yml
+      itemType: overview
+      text: Entiteiten zoeken
+    - url: ./bing-image-search/index.yml
+      itemType: overview
+      text: Afbeeldingen zoeken
+    - url: ./bing-local-business-search/index.yml
+      itemType: overview
+      text: Lokale bedrijven zoeken (preview)
+    - url: ./bing-news-search/index.yml
+      itemType: overview
+      text: Nieuws zoeken
+    - url: ./bing-spell-check/index.yml
+      itemType: overview
+      text: Spellingscontrole
+    - url: ./Bing-Video-Search/index.yml
+      itemType: overview
+      text: Video's zoeken
+    - url: ./bing-visual-search/index.yml
+      itemType: overview
+      text: Visueel zoeken
+    - url: ./bing-web-search/index.yml
+      itemType: overview
+      text: Webpagina's zoeken
+  - title: Containers
+    summary: Met containerondersteuning in Azure Cognitive Services kunnen ontwikkelaars gebruikmaken van dezelfde uitgebreide API's die beschikbaar zijn in Azure. Ook biedt de ondersteuning flexiliteit in de implementatie en hostlocatie van de service die bij Docker-containers horen.
+    links:
+    - url: ./cognitive-services-container-support.md
+      itemType: overview
+      text: Containers voor Cognitive Services
+    - url: ./containers/container-reuse-recipe.md
+      itemType: overview
+      text: Containers maken voor hergebruik
+    - url: ./containers/azure-container-instance-recipe.md
+      itemType: how-to-guide
+      text: Container implementeren en uitvoeren in Azure Container Instance
+    - url: ./containers/azure-kubernetes-recipe.md
+      itemType: how-to-guide
+      text: Implementeren naar Azure Kubernetes Service
+    - url: ./containers/docker-compose-recipe.md
+      itemType: how-to-guide
+      text: Docker Compose gebruiken om meerdere containers te implementeren
+additionalContent:
+  sections:
+  - items:
+    - title: Aanvullende resources
+      links:
+      - text: Azure-CLI
+        url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+      - text: PowerShell
+        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services
+    - title: REST-API’s
+      links:
+      - text: Cognitive Services-beheer
+        url: https://docs.microsoft.com/rest/api/cognitiveservices/
+    - title: SDK's
+      links:
+      - text: .Net
+        url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet
+      - text: Aan de slag
+        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices
+      - text: Java
+        url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client?view=azure-java-stable
+      - text: Node.js
+        url: https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest
+      - text: Python
+        url: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python

@@ -80,8 +80,8 @@
       href: backup-azure-backup-server-import-export-.md
     - name: Uw tapewisselaar vervangen
       href: backup-azure-backup-cloud-as-tape.md
-    - name: Algemene Azure-beveiligingskenmerken
-      href: backup-security-attributes.md
+    - name: Ingebouwde beveiligingsmaatregelen
+      href: backup-security-controls.md
 - name: Procedures
   items:
     - name: Azure Backup-server

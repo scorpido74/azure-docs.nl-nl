@@ -142,8 +142,8 @@
       href: backup-recovery.md
     - name: Infrastructuurvoorbeeld
       href: infrastructure-example.md
-    - name: Beveiligingskenmerken
-      href: virtual-machines-windows-security-attributes.md
+    - name: Ingebouwde beveiligingsmaatregelen
+      href: virtual-machines-windows-security-controls.md
 - name: Handleidingen
   items:
     - name: Virtuele machines maken

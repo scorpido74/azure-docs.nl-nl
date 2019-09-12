@@ -108,8 +108,8 @@
                   href: service-bus-managed-service-identity.md
                 - name: Verifiëren vanuit een toepassing
                   href: authenticate-application.md
-        - name: Algemene Azure-beveiligingskenmerken
-          href: service-bus-messaging-security-attributes.md
+        - name: Ingebouwde beveiligingsmaatregelen
+          href: service-bus-messaging-security-controls.md
 - name: Handleidingen
   items:
     - name: Een naamruimte maken

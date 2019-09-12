@@ -145,8 +145,8 @@
       href: backup-recovery.md
     - name: Richtlijnen voor infrastructuur
       href: infrastructure-example.md
-    - name: Beveiligingskenmerken
-      href: virtual-machines-linux-security-attributes.md
+    - name: Ingebouwde beveiligingsmaatregelen
+      href: virtual-machines-linux-security-controls.md
 - name: Handleidingen
   items:
     - name: Virtuele machines maken

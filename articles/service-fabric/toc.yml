@@ -131,8 +131,8 @@
           href: service-fabric-application-and-service-security.md
         - name: Service Fabric-clusterbeveiliging
           href: service-fabric-cluster-security.md
-        - name: Algemene Azure-beveiligingskenmerken
-          href: service-fabric-security-attributes.md
+        - name: Ingebouwde beveiligingsmaatregelen
+          href: service-fabric-security-controls.md
     - name: Terminologie
       href: service-fabric-technical-overview.md
     - name: Toepassingen bouwen

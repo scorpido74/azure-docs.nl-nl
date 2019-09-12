@@ -58,8 +58,8 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Onderlinge netwerkconnectiviteit
       href: cross-network-connectivity.md
-    - name: Algemene Azure-beveiligingskenmerken
-      href: expressroute-security-attributes.md
+    - name: Ingebouwde beveiligingsmaatregelen
+      href: expressroute-security-controls.md
     - name: Ontwerpen voor hoge beschikbaarheid
       href: designing-for-high-availability-with-expressroute.md
     - name: Ontwerpen voor herstel na noodgeval

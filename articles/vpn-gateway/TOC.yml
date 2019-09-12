@@ -42,8 +42,8 @@
           href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
         - name: Analyse van het gegevensvlak
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
-    - name: Beveiligingskenmerken
-      href: vpn-gateway-security-attributes.md
+    - name: Ingebouwde beveiligingsmaatregelen
+      href: vpn-gateway-security-controls.md
 - name: Handleidingen
   items:
     - name: Een VPN-gateway maken en beheren

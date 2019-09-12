@@ -76,8 +76,8 @@
           href: deployment-manager-health-check.md
     - name: Resource Manager en klassieke implementatie
       href: resource-manager-deployment-model.md
-    - name: Algemene Azure-beveiligingskenmerken
-      href: azure-resource-manager-security-attributes.md
+    - name: Ingebouwde beveiligingsmaatregelen
+      href: azure-resource-manager-security-controls.md
 - name: Procedures
   items:
     - name: Sjablonen maken

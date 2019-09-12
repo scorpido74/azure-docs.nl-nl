@@ -274,8 +274,8 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: Geavanceerde beveiliging tegen bedreigingen
-        - name: Beveiligingskenmerken
-          href: cosmos-db-security-attributes.md
+        - name: Ingebouwde beveiligingsmaatregelen
+          href: cosmos-db-security-controls.md
     - name: Gereedheid voor bedrijven
       items:
         - name: Online back-ups maken en on-demand herstellen
@@ -459,6 +459,10 @@
           items:
             - name: Antwoordheaders
               href: gremlin-headers.md
+            - name: Limieten
+              href: gremlin-limits.md
+            - name: Compatibiliteit
+              href: gremlin-compatibility.md
         - name: Handleidingen
           items:
             - name: Grafiekgegevens modelleren
@@ -471,6 +475,10 @@
               href: graph-execution-profile.md
             - name: Resourcetokens gebruiken
               href: how-to-use-resource-tokens-gremlin.md
+            - name: Regionale eindpunten gebruiken
+              href: how-to-use-regional-gremlin.md
+            - name: Toegang tot kenmerken van systeemdocumenten
+              href: how-to-access-system-properties-gremlin.md
             - name: Grafiekgegevens visualiseren
               href: graph-visualization.md
             - name: Spring-gegevens opslaan en beheren

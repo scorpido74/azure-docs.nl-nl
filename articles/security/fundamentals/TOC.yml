@@ -321,8 +321,8 @@
   href: best-practices-and-patterns.md
 - name: Resources
   items:
-    - name: Algemene beveiligingskenmerken
-      href: common-security-attributes.md
+    - name: Ingebouwde beveiligingsmaatregelen
+      href: security-controls.md
     - name: MVP-programma voor Azure-beveiliging
       href: mvp.md
     - name: Adviezen voor cyberbeveiliging

@@ -1,6 +1,6 @@
 ---
 title: Uw Azure-abonnement annuleren | Microsoft Docs
-description: Hierin wordt beschreven hoe u uw Azure-abonnement, zoals de gratis proefversie van abonnement annuleren
+description: Hierin wordt beschreven hoe u uw Azure-abonnement annuleert, zoals het gratis proef abonnement
 author: bandersmsft
 manager: amberb
 tags: billing
@@ -12,50 +12,60 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: banders
-ms.openlocfilehash: 8f4279d9ac085cdd1ded0dfdda4fad9d3fe12fb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 7756174f01e3fede17bec3e2ac185e89caddc097
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480237"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666433"
 ---
-# <a name="cancel-your-subscription-for-azure"></a>Uw abonnement voor Azure annuleren
+# <a name="cancel-your-azure-subscription"></a>Uw Azure-abonnement annuleren
 
-Alleen een Azure-abonnement [accountbeheerder](billing-subscription-transfer.md#whoisaa) een Azure-abonnement kunt annuleren. Ook kan een beheerder van de Azure-abonnement [toewijzen van een andere gebruiker als de beheerder van een abonnement](billing-add-change-azure-subscription-administrator.md#assign-a-user-as-an-administrator-of-a-subscription) zodat ze kunnen een abonnement annuleren. Nadat u het abonnement annuleert, wordt de toegang tot Azure-services en resources eindigt.
+U kunt uw Azure-abonnement in de Azure Portal annuleren als u het abonnement niet meer nodig hebt. 
 
 Voordat u uw abonnement annuleert:
+* Maak een back-up van uw gegevens. Als u bijvoorbeeld gegevens in azure Storage of SQL opslaat, downloadt u een kopie. Als u een virtuele machine hebt, slaat u deze lokaal op.
+* Sluit uw services af. Ga naar de [pagina Resources in de beheer Portal](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources)en **Stop** alle actieve virtuele machines, toepassingen of andere services.
+* U kunt uw gegevens migreren. Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/resource-group-move-resources.md).
+* Verwijder alle resources en alle resource groepen. U moet deze verwijderen voordat u een abonnement kunt annuleren. Elke resource groep moet afzonderlijk worden verwijderd. Tijdens het verwijderen van de resource groep moet u het verwijderen bevestigen door de naam van de resource groep op te geven.
+* Als u aangepaste rollen hebt die verwijzen naar dit abonnement in `AssignableScopes`, moet u die aangepaste rollen bijwerken om het abonnement te verwijderen. Als u een aangepaste rol probeert bij te werken nadat u een abonnement hebt geannuleerd, wordt er mogelijk een fout bericht weer geven. Zie [problemen oplossen met aangepaste rollen](../role-based-access-control/troubleshooting.md#problems-with-custom-roles) en [aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md)voor meer informatie.
 
-* Back-up van uw gegevens. Bijvoorbeeld, als u gegevens in Azure storage of SQL opslaat, een kopie downloaden. Als u een virtuele machine hebt, kunt u een afbeelding van het lokaal opslaan.
-* Uw services afsluiten. Ga naar de [resources pagina in de beheerportal](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources), en **stoppen** alle virtuele machines, toepassingen of andere services.
-* Houd rekening met uw gegevens migreren. Zie [resources verplaatsen naar een nieuwe resourcegroep of abonnement](../azure-resource-manager/resource-group-move-resources.md).
-* U moet alle resources en alle resourcegroepen verwijderen. Deze worden verwijderd is vereist voordat u een abonnement kunt annuleren. Elke resourcegroep moet afzonderlijk worden verwijderd. Tijdens het verwijderen van de resource, moet u de verwijdering bevestigt door de naam van de resourcegroep.
-* Hebt u geen aangepaste rollen die verwijzen naar dit abonnement in `AssignableScopes`, moet u deze aangepaste rollen voor het verwijderen van het abonnement bijwerken. Als u probeert een aangepaste rol bijwerken nadat u een abonnement opzegt, krijgt u mogelijk een fout. Zie voor meer informatie, [oplossen van problemen met aangepaste rollen](../role-based-access-control/troubleshooting.md#problems-with-custom-roles) en [aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md).
+Als u een betaald ondersteunings abonnement voor Azure annuleert, wordt u gefactureerd voor de rest van de abonnements periode. Zie Azure-ondersteunings [abonnementen](https://azure.microsoft.com/support/plans/)voor meer informatie.
 
-Als u een betaald ondersteuningsabonnement voor Azure annuleert, wordt u nog steeds gefactureerd voor de rest van het abonnement. Zie voor meer informatie, [ondersteuningsabonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+## <a name="cancel-subscription-in-the-azure-portal"></a>Het abonnement op het Azure Portal annuleren
 
-## <a name="cancel-subscription-using-the-azure-portal"></a>Abonnement met behulp van de Azure portal
-
-1. Selecteer uw abonnement uit de [pagina met abonnementen in Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Selecteer uw abonnement op de [pagina Abonnementen in het Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 2. Selecteer het abonnement dat u wilt annuleren.
-3. Selecteer **overzicht**, en selecteer vervolgens **abonnement annuleren**.
+3. Selecteer **overzicht**en selecteer vervolgens **abonnement annuleren**.
+    ![Scherm opname van de knop Annuleren](./media/billing-how-to-cancel-azure-subscription/cancel_ibiza.png)
+3. Volg de aanwijzingen en voltooi de annulering.
 
-    ![Schermafbeelding van de knop Annuleren](./media/billing-how-to-cancel-azure-subscription/cancel_ibiza.png)
-3. Volg de aanwijzingen en Annuleren te voltooien.
 
-## <a name="what-happens-after-i-cancel-my-subscription"></a>Wat gebeurt er wanneer ik mijn abonnement annuleren?
+## <a name="who-can-cancel-a-subscription"></a>Wie kan een abonnement annuleren?
 
-Nadat u annuleert, wordt de facturering wordt onmiddellijk gestopt. Echter kunt duurt maximaal tien minuten voor de annulering om weer te geven in de portal. Als u in het midden van een factureringsperiode annuleert, sturen we de uiteindelijk factuur op uw normale factuurdatum na afloop van de periode.
+In de volgende tabel wordt de machtiging beschreven die is vereist om een abonnement te annuleren.
 
-Nadat u annuleert, worden uw services zijn uitgeschakeld. Dit betekent dat uw virtuele machines zijn toewijzing ongedaan, tijdelijke IP-adressen worden vrijgegeven en opslag is alleen-lezen.
+|Abonnementstype     |Wie kan annuleren  |
+|---------|---------|
+|Abonnementen die worden gemaakt wanneer u zich aanmeldt voor Azure via de Azure-website. Als u zich bijvoorbeeld aanmeldt voor een [gratis Azure-account](https://azure.microsoft.com/offers/ms-azr-0044p/), [account met betalen naar](https://azure.microsoft.com/offers/ms-azr-0003p/) gebruik-tarieven of als een [Visual Studio-abonnee](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/). |  Account beheerder, eigen aren en mede werkers voor het abonnement  |
+|[Micro soft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) en [Enter prise dev/test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  Eigenaar, eigen aren en mede werkers van het abonnement       |
+|[Azure-abonnement](https://azure.microsoft.com/offers/ms-azr-0017g/) en [Azure-abonnement voor DevTest](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  Eigen aren en mede werkers voor het abonnement      |
 
-We wacht 90 dagen definitief verwijderd van uw gegevens in het geval u nodig hebt om deze te openen of u van gedachten verandert. We niet in rekening gebracht die de gegevens bewaren. Zie voor meer informatie, [Microsoft Trust Center - hoe we uw gegevens beheren](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
+
+## <a name="what-happens-after-i-cancel-my-subscription"></a>Wat gebeurt er nadat ik mijn abonnement heb geannuleerd?
+
+Nadat u hebt geannuleerd, wordt de facturering onmiddellijk gestopt. Het kan echter Maxi maal tien minuten duren voordat de annulering wordt weer gegeven in de portal. Als u het midden van een facturerings periode annuleert, sturen we de uiteindelijke factuur op uw gebruikelijke factuur datum na afloop van de periode.
+
+Nadat u de bewerking hebt geannuleerd, zijn uw services uitgeschakeld. Dit betekent dat uw virtuele machines zijn toegewezen, tijdelijke IP-adressen worden vrijgemaakt en dat opslag alleen-lezen is.
+
+We wachten 90 dagen voordat u uw gegevens permanent verwijdert, voor het geval u er toegang toe hebt of u van gedachten verandert. U wordt niet in rekening gebracht voor het bewaren van de gegevens. Zie voor meer informatie [micro soft vertrouwens centrum-hoe we uw gegevens beheren](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 
 ## <a name="reactivate-subscription"></a>Abonnement opnieuw activeren
 
-Als u per ongeluk uw betalen per gebruik-abonnement annuleert, kunt u [opnieuw activeren in het Accountcentrum](billing-subscription-become-disable.md).
+Als u uw abonnement per ongeluk betaalt met betalen naar gebruik, kunt u [dit opnieuw activeren in het account centrum](billing-subscription-become-disable.md).
 
-Als uw abonnement niet betalen per gebruik, moet u contact op met ondersteuning binnen 90 dagen na annulering uw abonnement opnieuw activeren.
+Als uw abonnement geen abonnement is met betalen per gebruik-tarieven, neemt u contact op met de ondersteuning binnen 90 dagen na de annulering om uw abonnement opnieuw te activeren.
 
 ## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
-Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, kunt u [een ondersteunings aanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
