@@ -58,8 +58,8 @@ Bereiken bieden een manier om toegang tot beveiligde resources te reguleren. Ber
 
 1. Selecteer **toepassingen**en selecteer vervolgens *webapi1* om de eigenschappen pagina te openen als deze nog niet is geopend.
 1. Selecteer **Gepubliceerde bereiken**.
-1. `Hello.Read`Voer  bij`Read access to hello`bereik, Enter en voor **Beschrijving**in.
-1. `Hello.Write`Voer  bij`Write access to hello`bereik, Enter en voor **Beschrijving**in.
+1. `Hello.Read`Voer bij`Read access to hello`bereik, Enter en voor **Beschrijving**in.
+1. `Hello.Write`Voer bij`Write access to hello`bereik, Enter en voor **Beschrijving**in.
 1. Selecteer **Opslaan**.
 1. Noteer de **volledige bereik waarde** voor het `Hello.Read` bereik dat u wilt gebruiken in een latere stap wanneer u de toepassing met één pagina configureert. De volledige bereik waarde is vergelijkbaar met `https://yourtenant.onmicrosoft.com/api/Hello.Read`.
 

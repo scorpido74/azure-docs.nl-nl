@@ -11,22 +11,23 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 05/23/2019
+ms.date: 09/10/2019
 ms.author: lahugh
-ms.openlocfilehash: 9d94c4be90b408da7635f47567aa8f713f14de86
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5dbd13775bd91a2bab3a7a4989cb14f4d7b44fa8
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083191"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900719"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 (preview) op Azure
 
 > [!IMPORTANT]
-> Er is momenteel een preview-versie van Azure-ondersteuning voor virtuele machines van generatie 2. Deze preview-versie is beschikbaar zonder een service overeenkomst en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)-previews. 
+> Er is momenteel een preview-versie van Azure-ondersteuning voor virtuele machines van generatie 2.
+> Deze preview-versie is beschikbaar zonder een service overeenkomst en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
+> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)-previews.
 
-Ondersteuning voor virtuele machines van generatie 2 (Vm's) is nu beschikbaar als preview-versie in Azure. U kunt de generatie van een virtuele machine niet wijzigen nadat u deze hebt gemaakt. Controleer de overwegingen op deze pagina voordat u een generatie kiest. 
+Ondersteuning voor virtuele machines van generatie 2 (Vm's) is nu beschikbaar als preview-versie in Azure. U kunt de generatie van een virtuele machine niet wijzigen nadat u deze hebt gemaakt. Controleer de overwegingen op deze pagina voordat u een generatie kiest.
 
 Vm's van generatie 2 ondersteunen belang rijke functies die niet worden ondersteund in virtuele machines van de eerste generatie. Tot deze functies behoren meer geheugen, Intel-software Guard Extensions (Intel SGX) en gevirtualiseerde permanent geheugen (vPMEM). Vm's van de tweede generatie hebben ook enkele functies die nog niet in Azure worden ondersteund. Zie de sectie [functies en mogelijkheden](#features-and-capabilities) voor meer informatie.
 
@@ -37,14 +38,18 @@ Vm's van generatie 2 gebruiken de nieuwe op UEFI gebaseerde opstart architectuur
 Virtuele machines van de eerste generatie worden ondersteund door alle VM-grootten in Azure. Azure biedt nu preview-generatie 2-ondersteuning voor de volgende geselecteerde VM-serie:
 
 * [B-serie](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
+* [DC-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dc-series)
 * [Dsv2-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv2-series) en [Dsv3-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv3-series-1)
 * [Esv3-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
 * [Fsv2-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-compute#fsv2-series-1)
 * [GS-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#gs-series)
+* [HB-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#hb-series)
+* [HC-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#hc-series)
 * [Ls-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series) en [Lsv2-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-storage#lsv2-series)
 * [Mv2-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series)
 * [NCv2-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv2-series) en [NCv3-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv3-series)
 * [ND-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nd-series)
+* [NVv2-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>VM-installatie kopieën van generatie 2 in azure Marketplace
 
@@ -54,6 +59,8 @@ Vm's van generatie 2 ondersteunen de volgende installatie kopieën van Marketpla
 * Windows Server 2016 Datacenter
 * Windows Server 2012 R2 Datacenter
 * Windows Server 2012 Datacenter
+* SUSE Linux Enterprise Server 15 SP1
+* SUSE Linux Enterprise Server 12 SP4
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>On-premises versus Virtuele machines van Azure Generation 2
 
@@ -120,6 +127,21 @@ U kunt ook virtuele machines van de tweede generatie maken met behulp van schaal
 
 * **Is er een prijs verschil tussen Vm's van generatie 1 en generatie 2?**  
     Nee.
+
+* **Ik heb een VHD-bestand van mijn on-premises generatie 2 VM. Kan ik dat VHD-bestand gebruiken om een virtuele machine van de tweede generatie in azure te maken?**
+  Ja, u kunt uw VHD-bestand van de tweede generatie naar Azure brengen en gebruiken om een virtuele machine van de tweede generatie te maken. Gebruik de volgende stappen om dit te doen:
+    1. Upload het. VHD-archief naar een opslag account in dezelfde regio waarin u de virtuele machine wilt maken.
+    1. Een beheerde schijf maken op basis van het VHD-bestand. Stel de eigenschap Hyper-generatie in op v2. Met de volgende Power shell-opdrachten wordt de eigenschap Hyper-generatie ingesteld tijdens het maken van een beheerde schijf.
+
+        ```powershell
+        $sourceUri = 'https://xyzstorage.blob.core.windows.net/vhd/abcd.vhd'. #<Provide location to your uploaded .vhd file>
+        $osDiskName = 'gen2Diskfrmgenvhd'  #<Provide a name for your disk>
+        $diskconfig = New-AzDiskConfig -Location '<location>' -DiskSizeGB 127 -AccountType Standard_LRS -OsType Windows -HyperVGeneration "V2" -SourceUri $sourceUri -CreateOption 'Import'
+        New-AzDisk -DiskName $osDiskName -ResourceGroupName '<Your Resource Group>' -Disk $diskconfig
+        ```
+
+    1. Zodra de schijf beschikbaar is, maakt u een virtuele machine door deze schijf te koppelen. De virtuele machine die wordt gemaakt, is een VM van de tweede generatie.
+    Bij het maken van de virtuele machine van de tweede generatie kunt u optioneel de installatie kopie van deze VM generaliseren. Door de installatie kopie te generaliseren, kunt u deze gebruiken om meerdere Vm's te maken.
 
 * **De schijf grootte van het besturings systeem Hoe kan ik verg Roten?**  
   BESTURINGSSYSTEEM schijven van meer dan 2 TB zijn nieuw voor virtuele machines van de tweede generatie. BESTURINGSSYSTEEM schijven zijn standaard kleiner dan 2 TB voor virtuele machines van de tweede generatie. U kunt de schijf grootte verg Roten tot een aanbevolen maximum van 4 TB. Gebruik de Azure CLI of de Azure Portal om de schijf grootte van het besturings systeem te verg Roten. Zie het [formaat van een schijf wijzigen](expand-disks.md)voor meer informatie over het programmatisch uitvouwen van schijven.

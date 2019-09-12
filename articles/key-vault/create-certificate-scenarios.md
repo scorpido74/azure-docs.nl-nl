@@ -1,47 +1,47 @@
 ---
 title: Het maken van certificaten controleren en beheren
-description: Scenario's om aan te tonen een scala aan opties voor het maken, verwerken bewaken en voor interactie met het maken van het certificaat met Key Vault.
+description: Scenario's met een groot aantal opties voor het maken, bewaken en door lopen van het maken van het certificaat met Key Vault.
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3d86960e726ae18fba8d171ab9f85d7c991b4e40
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f88af7027f6c907b5b55eb9aac545d98e2fbb7a
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64729236"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880848"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Het maken van certificaten controleren en beheren
 Van toepassing op: Azure
 
 De volgende 
 
-De scenario's / bewerkingen die worden beschreven in dit artikel zijn:
+De scenario's/bewerkingen die in dit artikel worden beschreven, zijn:
 
-- Een certificaat KV aanvragen met een ondersteunde verlener
-- Aanvraag in behandeling Get - aanvraagstatus is 'wordt uitgevoerd'
-- Aanvraag in behandeling Get - de aanvraagstatus is 'voltooid'
-- Aanvraag - aanvraag in behandeling status is "geannuleerd" of "mislukt" in behandeling ophalen
-- Aanvraag - aanvraag in behandeling in de status 'verwijderd' of 'overschreven' in behandeling ophalen
-- Maak (of importeren) als in behandeling zijnde aanvraag bestaat - status is 'wordt uitgevoerd'
-- Samenvoegen als aanvraag in behandeling is gemaakt met een verlener (bijvoorbeeld DigiCert)
-- Een annulering aanvragen terwijl de status van de aanvraag in behandeling is 'wordt uitgevoerd'
-- Een aanvraag in behandeling-object verwijderen
-- Een certificaat KV handmatig maken
-- Wanneer een aanvraag in behandeling is gemaakt: maken van het certificaat handmatig samenvoegen
+- Een KV-certificaat aanvragen met een ondersteunde Uitgever
+- Aanvraag voor in behandeling zijn ontvangen-aanvraag status is InProgress
+- Aanvraag voor in behandeling zijn ontvangen-aanvraag status is voltooid
+- Aanvraag voor aanvragen in behandeling ophalen is geannuleerd of is mislukt
+- Aanvraag voor aanvragen in behandeling ontvangen is "verwijderd" of "overschreven"
+- Maken (of importeren) als er een aanvraag in behandeling is: de status is InProgress
+- Samen voegen wanneer aanvraag in behandeling wordt gemaakt met een verlener (bijvoorbeeld DigiCert)
+- Een annulering aanvragen wanneer de status van de aanvraag in behandeling is.
+- Een aanvraag object voor in behandeling verwijderen
+- Een KV-certificaat hand matig maken
+- Samen voegen wanneer een aanvraag in behandeling is gemaakt-hand matig certificaat maken
 
-## <a name="request-a-kv-certificate-with-a-supported-issuer"></a>Een certificaat KV aanvragen met een ondersteunde verlener 
+## <a name="request-a-kv-certificate-with-a-supported-issuer"></a>Een KV-certificaat aanvragen met een ondersteunde Uitgever 
 
 |Methode|Aanvraag-URI|
 |------------|-----------------|
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|
 
-De volgende voorbeelden is een object met de naam 'mydigicert' al worden weergegeven in uw key vault met de provider van de uitgever als DigiCert vereist. Uitgever van het certificaat is een entiteit in Azure Key Vault (KV) als een resource CertificateIssuer weergegeven. Deze wordt gebruikt voor informatie over de oorzaak van een certificaat KV; naam van verlener, provider, referenties en andere administratieve informatie.
+In de volgende voor beelden is een object met de naam ' mydigicert ' al beschikbaar in uw sleutel kluis met de provider van de verlener als DigiCert. De uitgever van het certificaat is een entiteit die wordt weer gegeven in Azure Key Vault (KV) als een CertificateIssuer-resource. Het wordt gebruikt om informatie op te geven over de bron van een KV-certificaat; naam van de verlener, provider, referenties en andere administratieve gegevens.
 
 ### <a name="request"></a>Aanvraag
 
@@ -78,21 +78,21 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-## <a name="get-pending-request---request-status-is-inprogress"></a>Aanvraag in behandeling Get - aanvraagstatus is 'wordt uitgevoerd'
+## <a name="get-pending-request---request-status-is-inprogress"></a>Aanvraag voor in behandeling zijn ontvangen-aanvraag status is InProgress
 
 |Methode|Aanvraag-URI|
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Aanvraag
-TOEVOEGEN `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+TOEVOEGEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 OF
 
-TOEVOEGEN `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+TOEVOEGEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 > [!NOTE]
-> Als *request_id* is opgegeven in de query, deze fungeert als een filter. Als de *request_id* in de query en het object in behandeling niet overeenkomen, http-statuscode 404 wordt geretourneerd.
+> Als *request_id* is opgegeven in de query, fungeert deze als een filter. Als de *request_id* in de query en in het in behandeling zijnde object verschillend zijn, wordt de HTTP-status code 404 geretourneerd.
 
 ### <a name="response"></a>Antwoord
 
@@ -112,7 +112,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 ```
 
-## <a name="get-pending-request---request-status-is-complete"></a>Aanvraag in behandeling Get - de aanvraagstatus is 'voltooid'
+## <a name="get-pending-request---request-status-is-complete"></a>Aanvraag voor in behandeling zijn ontvangen-aanvraag status is voltooid
 
 ### <a name="request"></a>Aanvraag
 
@@ -120,11 +120,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-TOEVOEGEN `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+TOEVOEGEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 OF
 
-TOEVOEGEN `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+TOEVOEGEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Antwoord
 
@@ -144,7 +144,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 ```
 
-## <a name="get-pending-request---pending-request-status-is-canceled-or-failed"></a>Aanvraag - aanvraag in behandeling status is "geannuleerd" of "mislukt" in behandeling ophalen
+## <a name="get-pending-request---pending-request-status-is-canceled-or-failed"></a>Aanvraag voor aanvragen in behandeling ophalen is geannuleerd of is mislukt
 
 ### <a name="request"></a>Aanvraag
 
@@ -152,11 +152,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-TOEVOEGEN `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+TOEVOEGEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 OF
 
-TOEVOEGEN `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+TOEVOEGEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Antwoord
 
@@ -181,21 +181,21 @@ StatusCode: 200, ReasonPhrase: 'OK'
 ```
 
 > [!NOTE]
-> De waarde van de *errorcode* kan "certificaatverlener error" of "Aanvraag afgewezen" op basis van verlener of gebruiker fout respectievelijk.
+> De waarde van de *error code* kan de fout ' certificaat verlener ' of ' aanvraag geweigerd ' zijn, op basis van respectievelijk de verlener of de gebruikers fout.
 
-## <a name="get-pending-request---pending-request-status-is-deleted-or-overwritten"></a>Aanvraag - aanvraag in behandeling in de status 'verwijderd' of 'overschreven' in behandeling ophalen
-Een object in behandeling kan worden verwijderd of overschreven door een bewerking voor maken/importeren wanneer de status ervan niet "wordt uitgevoerd."
+## <a name="get-pending-request---pending-request-status-is-deleted-or-overwritten"></a>Aanvraag voor aanvragen in behandeling ontvangen is "verwijderd" of "overschreven"
+Een object dat in behandeling is, kan worden verwijderd of overschreven door een bewerking voor maken/importeren wanneer de status niet wordt uitgevoerd.
 
 |Methode|Aanvraag-URI|
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Aanvraag
-TOEVOEGEN `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+TOEVOEGEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 OF
 
-TOEVOEGEN `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+TOEVOEGEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Antwoord
 
@@ -210,19 +210,19 @@ StatusCode: 404, ReasonPhrase: 'Not Found'
 
 ```
 
-## <a name="create-or-import-when-pending-request-exists---status-is-inprogress"></a>Maak (of importeren) als in behandeling zijnde aanvraag bestaat - status is 'wordt uitgevoerd'
-Een object in behandeling heeft vier mogelijke statussen; "inprogress", "geannuleerd", "mislukt" of "voltooid".
+## <a name="create-or-import-when-pending-request-exists---status-is-inprogress"></a>Maken (of importeren) als er een aanvraag in behandeling is: de status is InProgress
+Een object in behandeling heeft vier mogelijke statussen; ' InProgress ', ' geannuleerd ', ' failed ' of ' voltooid '.
 
-Wanneer de status van een aanvraag in behandeling is "inprogress", maken (en importeren) bewerkingen mislukken met een HTTP-statuscode 409 (conflict).
+Wanneer de status van een aanvraag in behandeling is, mislukt het maken (en importeren) met de HTTP-status code 409 (conflict).
 
 Een conflict oplossen:
 
-- Als het certificaat handmatig wordt gemaakt, kunt u het certificaat KV voltooien door een samenvoeging doet of verwijderen van het object in behandeling.
+- Als het certificaat hand matig wordt gemaakt, kunt u het KV-certificaat volt ooien door een samen voeging of verwijdering uit te voeren in het object dat in behandeling is.
 
-- Als het certificaat wordt gemaakt met een verlener, kunt u wachten tot het certificaat is voltooid, mislukt of geannuleerd. U kunt ook de in behandeling object verwijderen.
+- Als het certificaat wordt gemaakt met een uitgever, kunt u wachten tot het certificaat is voltooid, mislukt of geannuleerd. U kunt ook het in behandeling zijnde object verwijderen.
 
 > [!NOTE]
-> Verwijderen van een object in behandeling kan of de x509 kunnen niet worden geannuleerd certificaataanvraag met de provider.
+> Als u een in behandeling zijnd object verwijdert, kan de x509-certificaat aanvraag niet worden geannuleerd met de provider.
 
 |Methode|Aanvraag-URI|
 |------------|-----------------|
@@ -256,10 +256,10 @@ StatusCode: 409, ReasonPhrase: 'Conflict'
 
 ```
 
-## <a name="merge-when-pending-request-is-created-with-an-issuer"></a>Wanneer de aanvraag in behandeling is gemaakt met een verlener samenvoegen
-Merge is niet toegestaan wanneer een object in behandeling is gemaakt met een verlener, maar is toegestaan wanneer de status "wordt uitgevoerd." 
+## <a name="merge-when-pending-request-is-created-with-an-issuer"></a>Samen voegen wanneer aanvraag in behandeling is gemaakt met een uitgever
+Samen voegen is niet toegestaan wanneer een object dat in behandeling is gemaakt met een verlener, maar wel is toegestaan wanneer de status van de functie InProgress is. 
 
-Als de aanvraag voor het maken van de x509 certificaat is mislukt of geannuleerd voor een of andere reden, en als een x509 certificaat op een out-of-band manier kan worden opgehaald, een samenvoeging voor het voltooien van het certificaat KV kan worden gedaan.
+Als de aanvraag om het x509-certificaat te maken mislukt of als enige reden wordt geannuleerd, en als een x509-certificaat door out-of-band-middelen kan worden opgehaald, kan een samenvoeg bewerking worden uitgevoerd om het KV-certificaat te volt ooien.
 
 |Methode|Aanvraag-URI|
 |------------|-----------------|
@@ -287,19 +287,19 @@ StatusCode: 403, ReasonPhrase: 'Forbidden'
 
 ```
 
-## <a name="request-a-cancellation-while-the-pending-request-status-is-inprogress"></a>Een annulering aanvragen terwijl de status van de aanvraag in behandeling is 'wordt uitgevoerd'
-Bij een annulering kan alleen worden aangevraagd. Een aanvraag kan of kan niet worden geannuleerd. Als een aanvraag is niet 'inProgress', wordt er een http-status van 400 (foute aanvraag) geretourneerd.
+## <a name="request-a-cancellation-while-the-pending-request-status-is-inprogress"></a>Een annulering aanvragen wanneer de status van de aanvraag in behandeling is.
+Een annulering kan alleen worden aangevraagd. Een aanvraag kan al dan niet worden geannuleerd. Als een aanvraag niet wordt uitgevoerd, wordt de HTTP-status 400 (ongeldige aanvraag) geretourneerd.
 
 |Methode|Aanvraag-URI|
 |------------|-----------------|
 |PATCH|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Aanvraag
-PATCH `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+VERZENDEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 OF
 
-PATCH `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+VERZENDEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ```json
 {
@@ -325,21 +325,21 @@ StatusCode: 200, ReasonPhrase: 'OK'
 }
 ```
 
-## <a name="delete-a-pending-request-object"></a>Een aanvraag in behandeling-object verwijderen
+## <a name="delete-a-pending-request-object"></a>Een aanvraag object voor in behandeling verwijderen
 
 > [!NOTE]
-> Verwijderen van het object in behandeling kan of de x509 kunnen niet worden geannuleerd certificaataanvraag met de provider.
+> Als u het in behandeling zijnde object verwijdert, kan de x509-certificaat aanvraag niet worden geannuleerd met de provider.
 
 |Methode|Aanvraag-URI|
 |------------|-----------------|
 |DELETE|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Aanvraag
-VERWIJDEREN `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+VERWIJDERD`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 OF
 
-VERWIJDEREN `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+VERWIJDERD`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Antwoord
 
@@ -357,8 +357,8 @@ StatusCode: 200, ReasonPhrase: 'OK'
 }
 ```
 
-## <a name="create-a-kv-certificate-manually"></a>Een certificaat KV handmatig maken
-U kunt een certificaat uitgegeven met een Certificeringsinstantie van uw keuze via een proces voor het handmatig maken. De naam van de verlener ingesteld op 'Onbekend' of geef geen veld voor de uitgever.
+## <a name="create-a-kv-certificate-manually"></a>Een KV-certificaat hand matig maken
+U kunt een certificaat maken dat is uitgegeven door een certificerings instantie van uw keuze door een hand matig proces maken. Stel de naam van de certificaat verlener in op ' onbekend ' of geef het veld van de verlener niet op.
 
 |Methode|Aanvraag-URI|
 |------------|-----------------|
@@ -398,7 +398,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-## <a name="merge-when-a-pending-request-is-created---manual-certificate-creation"></a>Wanneer een aanvraag in behandeling is gemaakt: maken van het certificaat handmatig samenvoegen
+## <a name="merge-when-a-pending-request-is-created---manual-certificate-creation"></a>Samen voegen wanneer een aanvraag in behandeling is gemaakt-hand matig certificaat maken
 
 |Methode|Aanvraag-URI|
 |------------|-----------------|
@@ -413,9 +413,9 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-|De naam van element|Vereist|Type|Version|Description|
+|De naam van element|Vereist|type|Version|Description|
 |------------------|--------------|----------|-------------|-----------------|
-|x5c|Ja|array|\<Inleiding tot versie >|X509 certificaatketen als base 64 tekenreeksmatrix.|
+|x5c|Ja|array|\<introductie van versie >|X509-certificaat keten als basis 64 teken reeks matrix.|
 
 ### <a name="response"></a>Antwoord
 

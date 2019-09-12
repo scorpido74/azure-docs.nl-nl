@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 08/30/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: e9dd01a58309a6b65538b19b25df70e3d18866a9
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 2940073d18cfee5a2313c03a5e9de6c00782edff
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207351"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882933"
 ---
 # <a name="quickstart-personalize-client-library-for-net"></a>Quickstart: Client bibliotheek voor .NET personaliseren
 
@@ -47,6 +47,8 @@ Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, maakt u 
 
 * `PERSONALIZER_RESOURCE_KEY`voor de resource sleutel.
 * `PERSONALIZER_RESOURCE_ENDPOINT`voor het resource-eind punt.
+
+In de Azure Portal zijn de sleutel-en eindpunt waarden beschikbaar op de pagina **Quick Start** .
 
 ### <a name="change-the-model-update-frequency"></a>De update frequentie van het model wijzigen
 
@@ -236,7 +238,7 @@ Deze Snelstartgids bevat eenvoudige context functies van de dag en de voor keur 
 
 Voor het volt ooien van de vraag, wordt de selectie van de gebruiker uit de opdracht regel opgehaald, waarna een numerieke waarde aan elke selectie wordt toegewezen, waarna de unieke positie gebeurtenis-ID en de numerieke waarde naar de belonings methode worden verzonden.
 
-In deze Quick Start wordt een eenvoudig getal als beloning, een nul of een 1, toegewezen. In productie systemen kan worden bepaald wanneer en wat er moet worden [](concept-rewards.md) verzonden naar de belonings oproep, afhankelijk van uw specifieke behoeften. 
+In deze Quick Start wordt een eenvoudig getal als beloning, een nul of een 1, toegewezen. In productie systemen kan worden bepaald wanneer en wat er moet worden verzonden naar de [belonings](concept-rewards.md) oproep, afhankelijk van uw specifieke behoeften. 
 
 [!code-csharp[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=reward)]
 

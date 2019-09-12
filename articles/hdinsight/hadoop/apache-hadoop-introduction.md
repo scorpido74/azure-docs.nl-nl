@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 08/15/2019
-ms.openlocfilehash: d6127d4fba3d2255dee28cd41179f16394545328
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
-ms.translationtype: MT
+ms.openlocfilehash: 16845e5891117cc01bef5fae28cf4b36c0508651
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207222"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899547"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Wat is Apache Hadoop in azure HDInsight?
 
@@ -30,10 +30,6 @@ Apache Hadoop MapReduce is een software raamwerk voor het schrijven van taken wa
 * **Mapper**: Gebruikt invoer gegevens, analyseert deze (meestal met filter-en sorteer bewerkingen) en verstuurt Tuples (sleutel-waardeparen)
 
 * **Reductier**: Verbruikt Tuples die worden verzonden door de Mapper en voert een samenvattings bewerking uit die een kleiner, gecombineerd resultaat van de toewijzings gegevens maakt
-
-In het volgende diagram ziet u een voor beeld van een basis aantal woorden MapReduce-taak:
-
-![HDI.WordCountDiagram][image-hdi-wordcountdiagram]
 
 De uitvoer van deze taak is het aantal keer dat elk woord is opgetreden in de tekst.
 

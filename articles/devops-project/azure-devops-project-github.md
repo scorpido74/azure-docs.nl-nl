@@ -1,30 +1,29 @@
 ---
-title: 'Zelfstudie: Een CI/CD-pijplijn voor uw bestaande code maken met behulp van Azure DevOps Projects'
+title: 'Zelfstudie: Een CI/CD-pijp lijn maken voor uw bestaande code met behulp van Azure DevOps Projects'
 description: Azure DevOps Projects zorgt ervoor dat u eenvoudig aan de slag kunt met Azure. DevOps Projects helpt u uw eigen code en GitHub-opslagplaats te gebruiken om slechts in enkele stappen een app op een Azure-service van uw keuze te starten.
 services: vsts
 documentationcenter: vs-devops-build
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.workload: web
 ms.prod: devops
 ms.technology: devops-cicd
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 88ee15a3b5cc53542d9e098dee485b8a526bb9a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2abe24ad65e1e8997b48a28b35ec0e65162022f2
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60555279"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898015"
 ---
-# <a name="tutorial-create-a-cicd-pipeline-for-your-existing-code-by-using-azure-devops-projects"></a>Zelfstudie: Een CI/CD-pijplijn voor uw bestaande code maken met behulp van Azure DevOps Projects
+# <a name="tutorial-create-a-cicd-pipeline-for-your-existing-code-by-using-azure-devops-projects"></a>Zelfstudie: Een CI/CD-pijp lijn maken voor uw bestaande code met behulp van Azure DevOps Projects
 
 Azure DevOps Projects biedt een vereenvoudigde ervaring waar u uw bestaande code en Git-opslagplaats gebruikt of een voorbeeldtoepassing kiest voor het maken van een CI- (Continue integratie) en CD-pijplijn (Continue levering) naar Azure.
 

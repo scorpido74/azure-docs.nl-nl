@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: c25bc316a345404c759b346b4fb877de42ee4d13
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4fc34ed5cdd53977aa20bef84200ba2bf5386979
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561552"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899477"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Schaal opties voor toepassingen in azure Kubernetes service (AKS)
 
@@ -51,7 +51,7 @@ Op dit moment kunt u deze cooldown-waarden niet afstemmen op de standaard waarde
 
 ## <a name="cluster-autoscaler"></a>Cluster automatisch schalen
 
-Om te reageren op het wijzigen van de pod-vraag, heeft Kubernetes een cluster automatisch schalen (momenteel in de preview-versie van AKS) waarmee het aantal knoop punten wordt aangepast op basis van de aangevraagde Compute-resources in de knooppunt groep. Standaard controleert de cluster automatisch schalen de API-server elke 10 seconden op basis van de vereiste wijzigingen in het aantal knoop punten. Als de automatisch schalen van het cluster bepaalt dat een wijziging vereist is, wordt het aantal knoop punten in uw AKS-cluster verhoogd of verlaagd. De cluster-automatische schaal functie werkt met AKS-clusters met RBAC-functionaliteit waarop Kubernetes 1,10. x of hoger wordt uitgevoerd.
+Om te reageren op het wijzigen van de pod-vraag, heeft Kubernetes een cluster automatisch schalen (momenteel in de preview-versie van AKS) waarmee het aantal knoop punten wordt aangepast op basis van de aangevraagde Compute-resources in de knooppunt groep. De standaard instelling is dat de API-server van de metriek elke 10 seconden wordt gecontroleerd op vereiste wijzigingen in het aantal knoop punten. Als de automatisch schalen van het cluster bepaalt dat een wijziging vereist is, wordt het aantal knoop punten in uw AKS-cluster verhoogd of verlaagd. De cluster-automatische schaal functie werkt met AKS-clusters met RBAC-functionaliteit waarop Kubernetes 1,10. x of hoger wordt uitgevoerd.
 
 ![Kubernetes-cluster automatisch schalen](media/concepts-scale/cluster-autoscaler.png)
 
@@ -93,7 +93,7 @@ Virtuele knoop punten worden geïmplementeerd naar een extra subnet in hetzelfde
 
 Om aan de slag te gaan met het schalen van toepassingen, volgt u eerst de [Snelstartgids om een AKS-cluster te maken met de Azure cli][aks-quickstart]. U kunt de toepassingen vervolgens hand matig of automatisch schalen in uw AKS-cluster:
 
-- Peulen [][aks-manually-scale-pods] of [knoop punten][aks-manually-scale-nodes] hand matig schalen
+- [Peulen][aks-manually-scale-pods] of [knoop punten][aks-manually-scale-nodes] hand matig schalen
 - De pod-functie voor [horizontale automatisch schalen][aks-hpa] gebruiken
 - De automatische [schaal][aks-cluster-autoscaler] functie van het cluster gebruiken
 

@@ -1,28 +1,27 @@
 ---
-title: 'Quickstart: Maken van een CI/CD-pijplijn voor de programmeertaal Go met behulp van Azure DevOps Projects'
+title: 'Quickstart: Een CI/CD-pijp lijn maken voor de programmeer taal Go met behulp van Azure DevOps Projects'
 description: Met DevOps Projects kunt u eenvoudig aan de slag met Azure. Hiermee kunt u in slechts enkele stappen een web-app in de programmeertaal Go starten voor een Azure-service.
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
 documentationcenter: vs-devops-build
 author: mlearned
-manager: douge
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: ca068b39c222a210e261234a132a0506f6b023bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7429a6de05a301b579354d722ad354b78ce6cbf
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60554968"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899677"
 ---
 # <a name="create-a-cicd-pipeline-for-go-by-using-azure-devops-projects"></a>Een CI/CD-pijplijn voor Go maken met Azure DevOps Projects
 
@@ -46,7 +45,7 @@ In DevOps Projects wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U kunt e
 
 1. Selecteer de **Go**-voorbeeld-app en selecteer vervolgens **Volgende**.  
     
-1. **Eenvoudige Go-app** is het standaardframework. Selecteer **Next**.  
+1. **Eenvoudige Go-app** is het standaardframework. Selecteer **Volgende**.  
     Het app-framework dat u eerder hebt gekozen, bepaalt welk type implementatiedoelen voor de Azure-service hier beschikbaar is voor implementeren. 
     
 1. Verlaat de Azure-standaardservice en selecteer **Volgende**.

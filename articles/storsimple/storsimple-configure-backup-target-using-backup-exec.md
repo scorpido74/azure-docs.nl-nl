@@ -233,7 +233,7 @@ Stel uw oplossing in aan de hand van de richt lijnen in de volgende secties.
 -   StorSimple biedt ondersteuning voor de volledige en incrementele back-ups van Backup Exec. U wordt aangeraden geen synthetische en differentiële back-ups te gebruiken.
 -   Back-upgegevens bestanden moeten alleen gegevens voor een specifieke taak bevatten. U kunt bijvoorbeeld geen media toevoegen tussen verschillende taken.
 -   Taak verificatie uitschakelen. Indien nodig moet de verificatie worden gepland na de meest recente back-uptaak. Het is belang rijk om te begrijpen dat deze taak van invloed is op uw back-upvenster.
--   Selecteer **opslag** >  > **Details** **** **** vandeschijfeigenschappen. >  Schakel **het vooraf toewijzen van schijf ruimte**uit.
+-   Selecteer **opslag** >  > **Details**vandeschijfeigenschappen. >  Schakel **het vooraf toewijzen van schijf ruimte**uit.
 
 Zie [de website van Veritas](https://www.veritas.com)voor de meest recente instellingen voor Backup Exec en aanbevolen procedures voor het implementeren van deze vereisten.
 
@@ -267,7 +267,7 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 
 ### <a name="to-set-up-backup-exec-storage"></a>Opslag voor Backup Exec instellen
 
-1.   >  >  **** **Selecteer** > in de beheer console Backup Exec opslag**op opslag schijven gebaseerde opslag** **configureren**.
+1.   >  >  **Selecteer** > in de beheer console Backup Exec opslag**op opslag schijven gebaseerde opslag** **configureren**.
 
     ![Backup Exec-beheer console, opslag pagina configureren](./media/storsimple-configure-backup-target-using-backup-exec/image4.png)
 

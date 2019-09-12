@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 2a037a495a1e1ed211bd9a535891ccf75fdb140b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e75de16d0e16bc639a0439220a1c9dfe53e1689b
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278181"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879062"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisch een time-series-prognose model trainen
 
@@ -138,8 +138,12 @@ local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
 ```
 
-> [!NOTE]
-> Voor de procedure voor kruis validatie (AVK) kunnen gegevens in de tijd reeks de basis statistieken van de validatie van de canonieke samen stelling schenden, zodat geautomatiseerde machine learning een validatie procedure voor de eerste oorsprong implementeert die moet worden gemaakt Kruis validatie vouwen voor gegevens van tijd reeksen. Als u deze procedure wilt gebruiken, `n_cross_validations` geeft u de `AutoMLConfig` para meter in het object op. U kunt de validatie overs Laan en uw eigen validatie sets `X_valid` gebruiken `y_valid` met de para meters en.
+Raadpleeg de [Energy demand notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) voor gedetailleerde code voorbeelden van de geavanceerde prognose configuratie, waaronder:
+
+* Kerst detectie en parametrisatie
+* Cross-Origin-Kruis validatie
+* Configureer bare lags
+* statistische functies van het Rolling venster
 
 ### <a name="view-feature-engineering-summary"></a>Samen vatting van feature engineering weer geven
 

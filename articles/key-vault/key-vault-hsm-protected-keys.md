@@ -2,19 +2,19 @@
 title: Met HSM beveiligde sleutels genereren en overdragen voor Azure Key Vault-Azure Key Vault | Microsoft Docs
 description: Gebruik dit artikel om u te helpen bij het plannen, genereren en overdragen van uw eigen met HSM beveiligde sleutels voor gebruik met Azure Key Vault. Ook wel bekend als BYOK of uw eigen sleutel nemen.
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.author: barclayn
-ms.openlocfilehash: 16aebf2bb2e0c4d495aa8e3a45d3398a9aa9b9ed
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.author: mbaldwin
+ms.openlocfilehash: 3cd8cd0b72f1b3ccea557ce0e12394081329dc5b
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575052"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883296"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Met HSM beveiligde sleutels genereren en overdragen voor Azure Key Vault
 
@@ -96,7 +96,7 @@ Sluit het Azure PowerShell-venster niet.
 
 ### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>Stap 1,3: Down load de BYOK-toolset voor Azure Key Vault
 
-Ga naar het micro soft Download centrum en [down load de Azure Key Vault BYOK](https://www.microsoft.com/download/details.aspx?id=45345) -toolset voor uw geografische regio of Azure-exemplaar. Gebruik de volgende informatie om de pakket naam te identificeren die u wilt downloaden en de bijbehorende SHA-256-pakket-hash:
+Ga naar het micro soft Download centrum en [down load de Azure Key Vault BYOK-toolset](https://www.microsoft.com/download/details.aspx?id=45345) voor uw geografische regio of Azure-exemplaar. Gebruik de volgende informatie om de pakket naam te identificeren die u wilt downloaden en de bijbehorende SHA-256-pakket-hash:
 
 ---
 **Verenigde Staten:**

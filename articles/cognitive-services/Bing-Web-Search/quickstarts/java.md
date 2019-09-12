@@ -10,17 +10,17 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.author: aahi
-ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 24197cc708789381e0f160268bea96b25457ba8f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: f8a827cf19bec0796fc0e9743d1a2599071468af
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123726"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899692"
 ---
 # <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Quickstart: Java gebruiken om op internet te zoeken met de Bing Web Search REST API, een Azure cognitieve service
 
-Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en het JSON-antwoord te ontvangen. Met deze Java-toepassing wordt een zoek opdracht naar de API verzonden en wordt het antwoord weer gegeven. Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+In deze Quick Start gebruikt u een Java-toepassing om uw eerste oproep naar de Bing Webzoekopdrachten-API te maken en het JSON-antwoord te ontvangen. Met deze Java-toepassing wordt een zoek opdracht naar de API verzonden en wordt het antwoord weer gegeven. Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 

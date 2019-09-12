@@ -1,104 +1,180 @@
 ---
-title: Privé-SKU's en -abonnementen | Azure Marketplace
-description: Het gebruik van privé-SKU's voor het beheren van de beschikbaarheid van aanbiedingen.
+title: Persoonlijke Sku's en plannen | Azure Marketplace
+description: Het gebruik van privé-Sku's voor het beheren van de beschik baarheid van de aanbieding.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 08/15/2019
 ms.author: pabutler
-ms.openlocfilehash: 6efdb1c28777d9230727066fdba03d2850be62b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 940b50cf4a04abacd4d7be2104dd97fb8b3db736
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935909"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883113"
 ---
-<a name="private-skus-and-plans"></a>Privé-SKU's en abonnementen
+<a name="private-skus-and-plans"></a>Persoonlijke Sku's en abonnementen
 ============
 
-Privé-SKU's kunt u de beschikbaarheid van SKU's beperken tot bepaalde klanten. Wanneer een SKU is gemarkeerd privé zijn, is het niet beschikbaar in alle openbare catalogus met inbegrip van [Azure Marketplace](https://azuremarketplace.microsoft.com) en de [Azure-portal](https://portal.azure.com). In de Azure-portal, kunnen alleen klanten die toegang hebben tot de SKU deze zien. Bovendien wordt deze ook gevraagd dat ze toegang tot persoonlijke aanbiedingen hebben.
+Met persoonlijke Sku's kunt u de beschik baarheid van Sku's tot specifieke klanten beperken. Wanneer een SKU is gemarkeerd als privé, is deze niet beschikbaar in een open bare catalogus, inclusief op [Azure Marketplace](https://azuremarketplace.microsoft.com) en de [Azure Portal](https://portal.azure.com). Op het Azure Portal kunnen alleen klanten met toegang tot de SKU het zien. Daarnaast zouden ze ook moeten worden gevraagd dat ze toegang hebben tot persoonlijke aanbiedingen.
 
 >[!NOTE]
->Privé-SKU's beschikken over nieuwe unieke SKU /-Plan-id's om te voorkomen dat een conflict met uw openbare SKU's.
+>Persoonlijke Sku's moeten nieuwe unieke SKU/plan-Id's hebben om conflicten met uw open bare Sku's te voor komen.
 
-U kunt persoonlijke SKU's gebruiken voor het afhandelen van de volgende scenario's:
+U kunt met behulp van private Sku's de volgende scenario's afhandelen:
 
-1.  Publiceren van software die u wilt dat alleen beschikbaar voor bepaalde klanten openbaar en niet openbaar beschikbaar.
-2.  Publiceer variaties van de openbare-software op een aangepaste prijs voor bepaalde klanten.
-3.  Publiceer variaties van de openbare software met een aangepaste beschrijving en de voorwaarden (via de nieuwe aanbieding).
+1.  Publiceer software die u alleen openbaar beschikbaar wilt maken voor specifieke klanten en niet openbaar beschikbaar is.
+2.  Publiceer variaties van open bare software tegen een aangepaste prijs voor specifieke klanten.
+3.  Publiceer variaties van open bare software met een aangepaste beschrijving en termen (via een nieuwe aanbieding).
 
-Als u wilt dat alleen de prijswijziging, kunt u de schijven van een andere SKU in de dezelfde aanbieding opnieuw te gebruiken. Met persoonlijke SKU's hebt u geen opnieuw indienen schijven voor SKU's.
+Als u de prijs alleen wilt wijzigen, kunt u de schijven uit een andere SKU gebruiken in dezelfde aanbieding. Met private Sku's hoeft u geen schijven opnieuw te verzenden tussen Sku's.
 
-<a name="mark-a-sku-private"></a>Een SKU persoonlijke markeren
+<a name="mark-a-sku-private"></a>Een SKU privé markeren
 ---------------------
 
-Als u een SKU als privégegevens, de optie gevraagd als de SKU privé is in-/ uitschakelen:
+Als u een SKU als privé markeert, schakelt u de optie om te vragen of de SKU privé is:
 
 ![Een SKU markeren als privé](./media/cloud-partner-portal-publish-virtual-machine/markingskuprivate.png)
 
-U kunt opnieuw gebruiken van de schijven in een andere SKU en de prijzen of de beschrijving wijzigen. Als u wilt de schijven gebruiken, selecteert u **Ja** vragen als reactie op de 'kiest, wordt deze SKU opnieuw gebruiken van van een openbare SKU afbeeldingen'.
+U kunt de schijven opnieuw gebruiken in een andere SKU en de prijzen of de beschrijving wijzigen. Als u de schijven opnieuw wilt gebruiken, selecteert u **Ja** als reactie op de prompt ' voert deze SKU installatie kopieën van een open bare SKU opnieuw uit '.
 
-Als de SKU is gemarkeerd als privé en de aanbieding andere SKU's met herbruikbare schijven heeft, bent u vereist om aan te geven dat de schijven van een andere SKU wordt gebruikgemaakt van de SKU. Bent u ook nodig om op te geven van de doelgroep voor het privé-SKU.
+Als de SKU is gemarkeerd als privé en de aanbieding andere Sku's heeft met herbruikbare schijven, moet u aangeven dat de SKU schijven opnieuw gebruikt vanuit een andere SKU. U moet ook de doel groep voor de privé-SKU opgeven.
 
 >[!NOTE]
->Nadat deze gepubliceerd, kan niet een openbare SKU privé worden gemaakt.
+>Nadat de app is gepubliceerd, kan een open bare SKU niet privé worden gemaakt.
 
 <a name="select-an-image"></a>Een afbeelding selecteren
 ------------------
 
-U kunt nieuwe schijven bieden voor de SKU van de persoonlijke of opnieuw gebruiken van de dezelfde schijven die al is opgegeven in een andere SKU, alleen wijzigen de prijzen of beschrijving. Als u wilt de schijven gebruiken, selecteert u **Ja** als een reactie op de vraag 'Biedt deze installatiekopie SKU opnieuw gebruiken van een openbare SKU'.
+U kunt nieuwe schijven voor de privé-SKU opgeven of dezelfde schijven die al in een andere SKU zijn geleverd hergebruiken, alleen de prijzen of beschrijving wijzigen. Als u de schijven opnieuw wilt gebruiken, selecteert u **Ja** als reactie op de prompt deze SKU wordt opnieuw gebruikt voor het opnieuw gebruiken van een open bare SKU.
 
-![Geven de installatiekopie opnieuw gebruiken](./media/cloud-partner-portal-publish-virtual-machine/selectimage1.png)
+![Aangeven dat de afbeelding opnieuw mag worden gebruikt](./media/cloud-partner-portal-publish-virtual-machine/selectimage1.png)
 
-Nadat u hebt geverifieerd dat de SKU wordt gebruikgemaakt van afbeeldingen uit een andere SKU, kunt u de SKU die de bron van de afbeeldingen identificeren.
-
-De aanwijzingen in het volgende scherm vastleggen weergeven over het identificeren van de persoonlijke SKU opnieuw gebruikt op de installatiekopieën van de geselecteerde SKU:
+Nadat u hebt bevestigd dat de SKU installatie kopieën opnieuw gebruikt, selecteert u de bron-of *basis* -SKU voor de installatie kopieën:
 
 ![Een afbeelding selecteren](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
 
-Wanneer u de aanbieding publiceert, zou de installatiekopieën van de geselecteerde SKU beschikbaar onder de persoonlijke SKU-ID van de aangepaste tarieven/voorwaarden worden gemaakt. De persoonlijke SKU is alleen zichtbaar voor de doelgroep.
+Wanneer u het aanbod publiceert, worden de installatie kopieën van de geselecteerde SKU beschikbaar gesteld onder de persoonlijke SKU-ID met de aangepaste tarieven/voor waarden. De privé-SKU is alleen zichtbaar voor de doel groep.
 
-Voor updates van installatiekopieën, zou u alleen zijn vereist voor het bijwerken van de onderliggende SKU-installatiekopie. Achter de schermen, worden de installatiekopie voor de persoonlijke SKU ook automatisch bijgewerkt. Op dezelfde manier als u de installatiekopie op de onderliggende SKU verwijderen, zou de installatiekopie ook verwijderd uit de privé-SKU.
+Voor installatie kopie-updates hoeft u alleen de onderliggende installatie kopie van de SKU bij te werken. Achter de schermen wordt de afbeelding voor de privé-SKU ook automatisch bijgewerkt. Als u de installatie kopie uit de onderliggende SKU verwijdert, wordt de installatie kopie ook uit de privé-SKU verwijderd.
 
-<a name="restricting-the-audience"></a>Beperken van de doelgroep
+<a name="restricting-the-audience"></a>De doel groep beperken
 ------------------------
 
-Persoonlijke aanbiedingen kunnen worden gevonden en die alleen door de beoogde gebruikers geïmplementeerd.
-Momenteel kunnen zoeken met behulp van de abonnement-id's van gebruikers.
+Persoonlijke aanbiedingen kunnen alleen worden gevonden en geïmplementeerd door doel gebruikers.
+Momenteel ondersteunen we het doel van gebruikers met behulp van abonnements-Id's.
 
-Deze abonnementen kunnen worden ingevoerd via een formulier handmatig invoeren **voor maximaal 10 abonnementen**, of door een CSV-bestand uploaden, zodat kan **voor maximaal 20.000 abonnementen**.
+Deze abonnementen kunnen worden ingevoerd via een invoer formulier **voor Maxi maal 10 abonnementen**, of door een CSV-bestand te uploaden, dat **Maxi maal 20.000 abonnementen**toestaat.
 
-Handmatige invoer voor beperkte doelgroep:
+Hand matige invoer voor beperkte doel groep:
 
-![Doelgroep handmatig te beperken](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience1.png)
+![Doel groep hand matig beperken](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience1.png)
 
-CSV uploaden voor beperkte doelgroep:
+CSV-upload voor beperkte doel groep:
 
-![Gebruik CSV voor het beperken van de doelgroep](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience2.png)
+![CSV gebruiken om de doel groep te beperken](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience2.png)
 
-Voorbeelden CSV-bestand voor inhoud:
+Voor beeld van CSV-bestand inhoud:
 
             Type,Id,Description
             SubscriptionId,7738d703-3135-4e8d-8b81-1e70379abd9d,Private Customer
 
-Wanneer u overschakelt van handmatige invoer naar CSV uploaden weergave of vanuit CSV-bestand naar de handmatige invoer, is de oude lijst van de abonnement-id's met toegang tot de SKU niet behouden. Een waarschuwing wordt weergegeven en de lijst alleen bij het opslaan van de aanbieding wordt overschreven.
+Wanneer u overschakelt van hand matige invoer naar CSV-upload weergave of van CSV naar hand matige invoer, wordt de oude lijst met abonnements-Id's met toegang tot de SKU niet bewaard. Er wordt een waarschuwing weer gegeven en de lijst wordt alleen overschreven bij het opslaan van de aanbieding.
 
-<a name="sync-private-subscriptions"></a>Synchronisatie van persoonlijke abonnementen
+<a name="managing-private-audiences"></a>Persoonlijke doel groepen beheren
 -------------------------
 
-Als u abonnementen toevoegt in een gepubliceerde aanbieding met een persoonlijke SKU of van Plan zijn, hoeft u niet opnieuw publiceren van de aanbieding voor het toevoegen van informatie van de doelgroep. Een Azure-abonnement-ID (abonnementen en -SKU's) of een Tenant-ID (alleen voor abonnementen) gewoon gebruiken om toe te voegen van de doelgroep.
+**Als u de doel groep wilt bijwerken zonder de volledige aanbieding opnieuw te publiceren, maakt u de gewenste wijzigingen in de doel groep (met behulp van de gebruikers interface of de API) en initieert u vervolgens de actie ' persoonlijke doel groepen synchroniseren '.**
 
-<a name="previewing-private-offers"></a>Beschikbaar als Private Preview biedt
+Als uw doel groep 10 of minder abonnementen heeft, kunt u deze volledig beheren via de CCP-gebruikers interface.
+
+Als uw doel groep meer dan 10 abonnementen is, kunt u deze beheren met behulp van een CSV-bestand dat u kunt uploaden naar de CCP-gebruikers interface of met behulp van de API.
+
+Als u de API gebruikt en geen CSV-bestand wilt behouden, kunt u het publiek via de onderstaande instructies rechtstreeks beheren via de API.
+
+> [!NOTE]
+> Gebruik de Azure-abonnements-ID (plannen en Sku's) of de Tenant-ID (alleen abonnementen) om een doel groep toe te voegen aan uw privé-aanbieding.
+
+###  <a name="managing-subscriptions-with-the-api"></a>Abonnementen beheren met de API
+
+U kunt de API gebruiken voor het uploaden van een CSV of het direct beheren van uw publiek (zonder een CSV-bestand). Over het algemeen hoeft u alleen maar uw aanbieding op te halen, `restrictedAudience` het object bij te werken en vervolgens deze wijzigingen te verzenden naar uw aanbieding om leden van een doel groep toe te voegen of te verwijderen.
+
+U gaat als volgt te werk om de lijst met doel groepen programmatisch bij te werken:
+
+1. [Uw aanbiedings gegevens ophalen](cloud-partner-portal-api-retrieve-specific-offer.md) :
+
+    ```
+    GET https://cloudpartner.azure.com/api/publishers//offers/?api-version=2017-10-31&includeAllPricing=true
+    ```
+
+2. Zoek naar beperkte doel objecten in elke SKU van de aanbieding met behulp van deze JPath-query:
+
+    ```
+    $.definition.plans[*].restrictedAudience
+    ```
+3. Werk de beperkte doelgroeps object (en) bij voor uw aanbieding.
+
+    **Als u de lijst met abonnementen voor uw persoonlijke aanbieding oorspronkelijk hebt geüpload vanuit een CSV-bestand:**
+
+    Uw *restrictedAudience* -object (en) zien er als volgt uit.
+    ```
+    "restrictedAudience": {
+                  "uploadedCsvUri": "{SasUrl}"
+    }
+    ```
+
+    Voor elk beperkt doel object:
+
+    a. Down load de inhoud `restrictedAudience.uploadedCsvUri`van. De inhoud is gewoon een CSV-bestand met kopteksten. Bijvoorbeeld:
+
+        type,id,description
+        subscriptionId,541a269f-3df2-486e-8fe3-c8f9dcf28205,sub1
+        subscriptionId,c0da499c-25ec-4e4b-a42a-6e75635253b9,sub2
+
+    b. Voeg waar nodig abonnementen in het gedownloade CSV-bestand toe of verwijder deze.
+
+    c. Upload het bijgewerkte CSV-bestand naar een locatie, zoals [Azure Blob Storage](../../storage/blobs/storage-blobs-overview.md) of [OneDrive](https://onedrive.live.com), en maak een alleen-lezen koppeling naar uw bestand. Dit is uw nieuwe *SasUrl*.
+
+    d. Werk de `restrictedAudience.uploadedCsvUri` sleutel bij met uw nieuwe *SasUrl*.
+
+    **Als u de oorspronkelijke lijst met abonnementen voor uw persoonlijke aanbieding hand matig hebt ingevoerd in de Cloud Partner-portal:**
+
+    Uw *restrictedAudience* -object (en) ziet er ongeveer als volgt uit:
+
+    ```
+    "restrictedAudience": {
+        "manualEntries": [{
+            "type": "subscriptionId",
+            "id": "541a269f-3df2-486e-8fe3-c8f9dcf28205",
+            "description": "sub1"
+            }, {
+            "type": "subscriptionId",
+            "id": "c0da499c-25ec-4e4b-a42a-6e75635253b9",
+            "description": "sub2"
+            }
+        ]}
+    ```
+
+    a. Voeg voor elk beperkt doel object vermeldingen toe aan de lijst of `restrictedAudience.manualEntries` Verwijder deze indien nodig.
+
+4. Als u alle *restrictedAudience* -objecten voor elke SKU van uw persoonlijke aanbieding hebt bijgewerkt, [werkt u de aanbieding](cloud-partner-portal-api-creating-offer.md)bij:
+
+    ```
+    PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31
+    ```
+    De bijgewerkte lijst met doel groepen is nu van kracht.
+
+<a name="previewing-private-offers"></a>Voor beeld van persoonlijke aanbiedingen
 -------------------------
 
-Tijdens de Preview-versie/fasering stap, alleen de aanbieding op preview-abonnementen kunnen toegang krijgen tot de SKU. Dit is de test fase op dat moment u wat de aanbieding controleren kunt zijbalken eruit zouden voor de betreffende klanten en is standaard voor alle typen van de publicatie.
+Tijdens de voor beeld-en faserings stap hebben alleen de preview-abonnementen voor het aanbod niveau toegang tot de SKU. In deze test fase kunt u een voor beeld bekijken van de aanbieding zoals deze aan uw doel klanten zou worden weer gegeven.
 
-Het niveau van Preview abonnementen voor toegang tot gefaseerde aanbiedingen van aanbieding:
+Preview-abonnementen voor aanbiedings niveau voor toegang tot gefaseerde aanbiedingen:
 
-![Preview-versie abonnement-id 's](./media/cloud-partner-portal-publish-virtual-machine/previewoffer1.png)
+![Preview-abonnement-Id's](./media/cloud-partner-portal-publish-virtual-machine/previewoffer1.png)
 
-Nadat de aanbieding gepubliceerd is, worden alleen de beperkte doelgroep abonnementen (ingevoerd via handmatige invoer- of CSV) kunnen weergeven en implementeren van de persoonlijke SKU. We raden aan dat u **altijd uw eigen abonnementen bevatten in de beperkte doelgroep** voor de persoonlijke SKU voor validatie.
+Wanneer de aanbieding Live is, kunnen alleen de abonnementen voor beperkte doel einden (ingevoerd via hand matige invoer of CSV) de privé-SKU bekijken en implementeren. We raden u aan om **altijd uw eigen abonnementen voor validatie doeleinden op te nemen in de beperkte doel groep** voor de privé-SKU.
 
 >[!NOTE]
->Foutopsporing, wordt ondersteuning van Microsoft en de engineering-teams ook toegang hebben tot deze persoonlijke aanbiedingen.
+>Voor fout opsporing hebben micro soft-ondersteunings-en technische teams ook toegang tot deze persoonlijke aanbiedingen.

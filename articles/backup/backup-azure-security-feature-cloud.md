@@ -7,16 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/04/2019
 ms.author: dacurwin
-ms.openlocfilehash: 938c65371b05807c774c9f2d73d4c27efe706c47
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 173e261266bffd042e12b327e26fda3a4e55ea4b
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143568"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898989"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Beveiligings functies voor het beveiligen van Cloud werkbelastingen die gebruikmaken van Azure Backup
 
-Problemen met betrekking tot beveiligings problemen, zoals malware, Ransomware en indringing, worden verhoogd. Deze beveiligings problemen kunnen kostbaar zijn, zowel voor geld als voor gegevens. Azure Backup biedt nu beveiligings functies die u helpen bij het beveiligen van back-upgegevens, zelfs na het verwijderen. Een dergelijke functie is zacht verwijderen. Met zacht verwijderen, zelfs als een schadelijke actor de back-up van een virtuele machine verwijdert (of als er per ongeluk back-upgegevens worden verwijderd), worden de back-upgegevens 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. Deze extra 14 dagen retentie van back-upgegevens in de status ' voorlopig verwijderen ' zijn niet van toepassing op de klant.
+Zorgen over beveiligingsproblemen, zoals malware, ransomware en inbraak nemen toe. Deze beveiligingsproblemen kunnen kostbaar zijn, zowel met betrekking tot geld als gegevens. Azure Backup biedt nu beveiligings functies die u helpen bij het beveiligen van back-upgegevens, zelfs na het verwijderen. Een dergelijke functie is zacht verwijderen. Met zacht verwijderen, zelfs als een schadelijke actor de back-up van een virtuele machine verwijdert (of als er per ongeluk back-upgegevens worden verwijderd), worden de back-upgegevens 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. Deze extra 14 dagen retentie van back-upgegevens in de status ' voorlopig verwijderen ' zijn niet van toepassing op de klant.
 
 > [!NOTE]
 > Met zacht verwijderen worden verwijderde back-upgegevens alleen beveiligd. Als een virtuele machine wordt verwijderd zonder een back-up, worden de gegevens niet bewaard met de functie voor voorlopig verwijderen. Alle resources moeten worden beveiligd met Azure Backup om volledige tolerantie te garanderen.
@@ -26,7 +26,7 @@ Problemen met betrekking tot beveiligings problemen, zoals malware, Ransomware e
 
 ### <a name="supported-regions"></a>Ondersteunde regio’s
 
-Voorlopig verwijderen wordt momenteel ondersteund in de regio West-Centraal vs.
+Voorlopig verwijderen wordt momenteel ondersteund in de regio West-Centraal VS en Azië-oost.
 
 ### <a name="soft-delete-for-vms"></a>Voorlopig verwijderen voor Vm's
 
@@ -136,4 +136,4 @@ Nee. Momenteel wordt een tijdelijke verwijdering alleen ondersteund voor virtuel
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [beveiligings kenmerken voor Azure backup](https://docs.microsoft.com/en-us/azure/backup/backup-security-attributes).
+* Meer informatie over [beveiligings controles voor Azure backup](backup-security-controls.md).

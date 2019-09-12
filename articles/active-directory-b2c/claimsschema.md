@@ -74,7 +74,7 @@ Het **protocol** element bevat de volgende kenmerken:
 | Name | Ja | De naam van een geldig protocol dat door Azure AD B2C wordt ondersteund. Mogelijke waarden zijn:  OAuth1, OAuth2, SAML2, OpenIdConnect, WsFed of WsTrust. |
 | PartnerClaimType | Ja | De claim type naam die moet worden gebruikt. |
 
-In het volgende voor beeld, wanneer het Framework van identiteits ervaring communiceert met een SAML2-ID-provider **** of relying party toepassing, wordt `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`de claim achternaam toegewezen aan, met OpenIdConnect en OAuth2 `family_name` , de claim wordt toegewezen aan .
+In het volgende voor beeld, wanneer het Framework van identiteits ervaring communiceert met een SAML2-ID-provider of relying party toepassing, wordt `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`de claim achternaam toegewezen aan, met OpenIdConnect en OAuth2 `family_name` , de claim wordt toegewezen aan .
 
 ```XML
 <ClaimType Id="surname">
@@ -375,4 +375,4 @@ Het invoer type **alinea** gebruiker wordt gebruikt om een veld op te geven waar
 </ClaimType>
 ```
 
-Een van de opsommings **** waarden weer geven in een **responseMsg** claim, gebruik `GetMappedValueFromLocalizedCollection` of `CreateStringClaim` claim transformatie. Zie voor meer informatie [teken reeks claim](string-transformations.md) transformaties
+Een van de opsommings waarden weer geven in een **responseMsg** claim, gebruik `GetMappedValueFromLocalizedCollection` of `CreateStringClaim` claim transformatie. Zie voor meer informatie [teken reeks claim](string-transformations.md) transformaties

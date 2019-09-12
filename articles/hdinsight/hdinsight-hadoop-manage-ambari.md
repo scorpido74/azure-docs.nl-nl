@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: d0641a1c058db59acd5e9a64b10bb57b334f82bd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 3ca9c12caa7fa9b54cd63c2655166d95477dffa2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442055"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885328"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-clusters beheren met de Web-UI van Apache Ambari
 
@@ -36,7 +36,7 @@ De Ambari-webgebruikersinterface is beschikbaar op uw HDInsight- `https://CLUSTE
 
 ## <a name="ssh-tunnel-proxy"></a>SSH-tunnel (proxy)
 
-Hoewel Ambari voor uw cluster rechtstreeks via internet toegankelijk is, worden sommige koppelingen van de Ambari-webgebruikersinterface (zoals naar de JobTracker) niet weer gegeven op internet. Voor toegang tot deze services moet u een SSH-tunnel maken. Zie SSH-tunneling [gebruiken met HDInsight](hdinsight-linux-ambari-ssh-tunnel.md)voor meer informatie.
+Hoewel Ambari voor uw cluster rechtstreeks via internet toegankelijk is, worden sommige koppelingen van de Ambari-webgebruikersinterface (zoals naar de JobTracker) niet weer gegeven op internet. Voor toegang tot deze services moet u een SSH-tunnel maken. Zie [ssh-tunneling gebruiken met HDInsight](hdinsight-linux-ambari-ssh-tunnel.md)voor meer informatie.
 
 ## <a name="ambari-web-ui"></a>Ambari-webgebruikersinterface
 
@@ -72,11 +72,11 @@ De volgende lijst bevat de algemene statussen van waarschuwingen die worden gebr
 * **KRITIEKE**
 * **UNKNOWN**
 
-Bij andere waarschuwingen dan **OK** wordt **het aantal** waarschuwingen aan de bovenkant van de pagina weer gegeven. Als u dit item selecteert, worden de waarschuwingen en hun status weer gegeven.
+Bij andere waarschuwingen dan **OK** wordt **het aantal waarschuwingen aan** de bovenkant van de pagina weer gegeven. Als u dit item selecteert, worden de waarschuwingen en hun status weer gegeven.
 
 Waarschuwingen zijn ingedeeld in verschillende standaard groepen, die kunnen worden weer gegeven op de pagina **waarschuwingen** .
 
-![pagina waarschuwingen](./media/hdinsight-hadoop-manage-ambari/alerts.png)
+![Pagina waarschuwingen](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
 
 U kunt de groepen beheren via het menu **acties** en vervolgens **waarschuwings groepen beheren**selecteren.
 
@@ -92,11 +92,11 @@ Ten slotte kunt u met het selecteren van __instellingen voor waarschuwingen behe
 
 Het tabblad **metrische gegevens** van het dash board bevat een reeks widgets waarmee u in één oogopslag de status van uw cluster kunt bewaken. Verschillende widgets, zoals **CPU-gebruik**, bieden aanvullende informatie wanneer erop wordt geklikt.
 
-![dash board met metrische gegevens](./media/hdinsight-hadoop-manage-ambari/metrics.png)
+![dash board met metrische gegevens](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
 
 Op het tabblad **Heatmaps** worden metrische gegevens weer gegeven als gekleurde Heatmaps, van groen naar rood.
 
-![dash board met Heatmaps](./media/hdinsight-hadoop-manage-ambari/heatmap.png)
+![dash board met Heatmaps](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
 
 Selecteer **hosts**voor meer informatie over de knoop punten in het cluster. Selecteer vervolgens het specifieke knoop punt waarin u bent geïnteresseerd.
 
@@ -120,9 +120,9 @@ Als u een service selecteert, wordt gedetailleerde informatie over de service we
 Voor sommige Services wordt boven aan de pagina een koppeling **naar de snelkoppeling links** weer gegeven. Dit kan worden gebruikt om toegang te krijgen tot servicespecifieke Web-UIs, zoals:
 
 * **Taak geschiedenis** -MapReduce-taak geschiedenis.
-* **Resource Manager** : de gebruikers interface voor de webbeheerset.
+* Resource Manager: de gebruikers interface voor de **Webbeheerset** .
 * **NameNode** -HADOOP DISTRIBUTED File System (HDFS) NameNode-gebruikers interface.
-* **Oozie** -webgebruikersinterface-Oozie-gebruikers interface.
+* **Oozie-webgebruikersinterface** -Oozie-gebruikers interface.
 
 Als u een van deze koppelingen selecteert, wordt er een nieuw tabblad in de browser geopend waarin de geselecteerde pagina wordt weer gegeven.
 
@@ -142,7 +142,7 @@ Werken met gebruikers, groepen en machtigingen wordt ondersteund bij het gebruik
 
 Op de pagina **hosts** worden alle hosts in het cluster weer gegeven. Voer de volgende stappen uit om hosts te beheren.
 
-![pagina hosts](./media/hdinsight-hadoop-manage-ambari/hosts.png)
+![pagina hosts](./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png)
 
 > [!NOTE]  
 > Het is niet mogelijk om een host toe te voegen, uit te stellen en opnieuw in te stellen met HDInsight-clusters.
@@ -182,7 +182,7 @@ De **actie** knop kan alle services opnieuw starten, vaak wilt u een specifieke 
     ![Service actie](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
 
    > [!NOTE]  
-   > Als er services worden gestart terwijl het cluster wordt uitgevoerd, kunnen er waarschuwingen worden gegenereerd. Als u waarschuwingen wilt voor komen, kunt u de knop **service acties** gebruiken om de onderhouds **modus** voor de service in te scha kelen voordat u de computer opnieuw opstart.
+   > Als er services worden gestart terwijl het cluster wordt uitgevoerd, kunnen er waarschuwingen worden gegenereerd. Als u waarschuwingen wilt voor komen, kunt u de knop **service acties** gebruiken om de **onderhouds modus** voor de service in te scha kelen voordat u de computer opnieuw opstart.
 
 3. Zodra een actie is geselecteerd, wordt de vermelding **# op** aan de bovenkant van de pagina weer gegeven om aan te geven dat er een achtergrond bewerking plaatsvindt. Indien geconfigureerd om weer te geven, wordt de lijst met achtergrond bewerkingen weer gegeven.
 

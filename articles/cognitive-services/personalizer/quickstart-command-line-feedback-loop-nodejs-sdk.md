@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 08/13/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: fbd86698438e09a0c94c06e0e79800b8d38b57c1
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: a7c02c92ed61e4c8c8bd6a634cc9c6ad3538396e
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544843"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883695"
 ---
 # <a name="quickstart-personalize-client-library-for-nodejs"></a>Quickstart: Client bibliotheek personaliseren voor node. js
 
@@ -46,6 +46,9 @@ Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, maakt u 
 
 * `PERSONALIZER_KEY`voor de resource sleutel.
 * `PERSONALIZER_ENDPOINT`voor het resource-eind punt.
+
+In de Azure Portal zijn de sleutel-en eindpunt waarden beschikbaar op de pagina **Quick Start** .
+
 
 ### <a name="create-a-new-nodejs-application"></a>Een nieuwe Node.js-toepassing maken
 
@@ -153,7 +156,7 @@ Deze Snelstartgids bevat eenvoudige context functies van de dag en de voor keur 
 
 Voor het volt ooien van de vraag, wordt de selectie van de gebruiker uit de opdracht regel opgehaald, waarna een numerieke waarde aan elke selectie wordt toegewezen, waarna de unieke positie gebeurtenis-ID en de numerieke waarde naar de belonings methode worden verzonden.
 
-In deze Quick Start wordt een eenvoudig getal als beloning, een nul of een 1, toegewezen. In productie systemen kan worden bepaald wanneer en wat er moet worden [](concept-rewards.md) verzonden naar de belonings oproep, afhankelijk van uw specifieke behoeften. 
+In deze Quick Start wordt een eenvoudig getal als beloning, een nul of een 1, toegewezen. In productie systemen kan worden bepaald wanneer en wat er moet worden verzonden naar de [belonings](concept-rewards.md) oproep, afhankelijk van uw specifieke behoeften. 
 
 [!code-javascript[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/node/sample.js?name=reward)]
 

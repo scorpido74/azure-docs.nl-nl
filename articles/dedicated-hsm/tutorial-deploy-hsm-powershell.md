@@ -3,8 +3,8 @@ title: 'Zelfstudie: PowerShell gebruiken voor implementatie in een bestaand virt
 description: Zelfstudie voor het implementeren van een toegewezen HSM in een bestaand virtueel netwerk met behulp van PowerShell
 services: dedicated-hsm
 documentationcenter: na
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
@@ -12,13 +12,13 @@ ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 581ce6d75df8f42bb72bbfc93e85684d97620e3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: mbaldwin
+ms.openlocfilehash: 53fb4fa344839957a3f98275d174bbb787fa5e38
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158966"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881000"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Zelfstudie: PowerShell gebruiken om HSM's te implementeren in een bestaand virtueel netwerk
 
@@ -217,7 +217,7 @@ Het SSH-hulpprogramma wordt gebruikt om verbinding te maken met de virtuele mach
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 Gebruik het wachtwoord uit het parameterbestand.
-Één keer aangemeld op de Linux-VM kunt u zich aanmelden bij de HSM met behulp van het particuliere IP-adres vinden in de portal voor de resource \<voorvoegsel > hsm_vnic.
+Zodra u bent aangemeld bij de virtuele Linux-machine, kunt u zich aanmelden bij de HSM met behulp van het privé-IP \<-adres dat is gevonden in de portal voor het resource voorvoegsel > hsm_vnic.
 
 ```powershell
 

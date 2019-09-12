@@ -1,73 +1,108 @@
 ---
-title: 'Azure Active Directory Domain Services: Een beheerd service account voor een groep maken | Microsoft Docs'
+title: Door groep beheerde service accounts voor Azure AD Domain Services | Microsoft Docs
 description: Meer informatie over het maken van een beheerd service account voor een groep (gMSA) voor gebruik met Azure Active Directory Domain Services beheerde domeinen
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: e6faeddd-ef9e-4e23-84d6-c9b3f7d16567
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 09/09/2019
 ms.author: iainfou
-ms.openlocfilehash: 3742aed7ff39e0a2f6bdf353fb9f261176027422
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1cfddf14d60b7d73bae283a18732c7c99ae22b4d
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612960"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898233"
 ---
-# <a name="create-a-group-managed-service-account-gmsa-on-an-azure-ad-domain-services-managed-domain"></a>Een door een groep beheerd service account (gMSA) maken op een Azure AD Domain Services beheerd domein
-In dit artikel wordt beschreven hoe u beheerde service accounts maakt in een Azure AD Domain Services beheerd domein.
+# <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Een door een groep beheerd service account (gMSA) maken in Azure AD Domain Services
 
-## <a name="managed-service-accounts"></a>Beheerde service accounts
-Een zelfstandig beheerd service account (sMSA) is een beheerd domein account waarvan het wacht woord automatisch wordt beheerd. Het vereenvoudigt het beheer van Service Principal Name (SPN) en maakt gedelegeerd beheer mogelijk voor andere beheerders. Dit type beheerde service account (MSA) is geïntroduceerd in Windows Server 2008 R2 en Windows 7.
+Toepassingen en services hebben vaak een identiteit nodig om zichzelf te verifiëren met andere resources. Een webservice moet bijvoorbeeld mogelijk worden geverifieerd met een database service. Als een toepassing of service meerdere instanties heeft, zoals een webserver Farm, kan het hand matig maken en configureren van de identiteiten voor deze resources tijdrovend zijn. In plaats daarvan kunt u een beheerd service account (gMSA) van een groep maken in het beheerde domein van Azure Active Directory Domain Services (Azure AD DS). Het Windows-besturings systeem beheert automatisch de referenties voor een gMSA, waardoor het beheer van grote groepen resources wordt vereenvoudigd.
 
-Het door de groep beheerde service account (gMSA) biedt dezelfde voor delen voor veel servers in het domein. Alle exemplaren van een service die op een server farm wordt gehost, moeten dezelfde service-principal gebruiken voor wederzijdse verificatie protocollen om te kunnen werken. Wanneer een gMSA wordt gebruikt als Service-Principal, beheert het Windows-besturings systeem het account wachtwoord in plaats van te vertrouwen op de beheerder.
+In dit artikel wordt beschreven hoe u een gMSA maakt in een door Azure AD DS beheerd domein.
 
-**Meer informatie:**
-- [Overzicht van door groepen beheerde service accounts](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
-- [Aan de slag met door groepen beheerde service accounts](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
+## <a name="before-you-begin"></a>Voordat u begint
 
+U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
-## <a name="using-service-accounts-in-azure-ad-domain-services"></a>Service accounts gebruiken in azure AD Domain Services
-Azure AD Domain Services beheerde domeinen zijn vergrendeld en worden beheerd door micro soft. Er zijn enkele belang rijke aandachtspunten bij het gebruik van service accounts met Azure AD Domain Services.
+* Een actief Azure-abonnement.
+    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
+    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
+    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
+* Een Windows Server Management-VM die deel uitmaakt van het door Azure AD DS beheerde domein.
+    * Als dat nodig is, voltooit u de zelf studie voor het [maken van een beheer-VM][tutorial-create-management-vm].
 
-### <a name="create-service-accounts-within-custom-organizational-units-ou-on-the-managed-domain"></a>Service accounts maken binnen aangepaste organisatie-eenheden (OE) op het beheerde domein
-U kunt geen service account maken in de ingebouwde organisatie-eenheden ' AADDC gebruikers ' of ' AADDC computers '. [Maak een aangepaste OE](create-ou.md) in uw beheerde domein en maak vervolgens service accounts binnen die aangepaste organisatie-eenheid.
+## <a name="managed-service-accounts-overview"></a>Overzicht van beheerde service accounts
 
-### <a name="the-key-distribution-services-kds-root-key-is-already-pre-created"></a>De hoofd sleutel voor Key Distribution Services (KDS) is al vooraf gemaakt
-De basis sleutel van de Key Distribution Services (KDS) wordt vooraf gemaakt op een Azure AD Domain Services beheerd domein. U hoeft geen KDS-basis sleutel te maken en u hebt hiervoor geen bevoegdheden. U kunt de basis sleutel KDS niet weer geven in het beheerde domein.
+Een zelfstandig beheerd service account (sMSA) is een domein account waarvan het wacht woord automatisch wordt beheerd. Deze aanpak vereenvoudigt het beheer van Service Principal Name (SPN) en maakt gedelegeerd beheer mogelijk voor andere beheerders. U hoeft geen referenties voor het account hand matig te maken en te draaien.
 
-## <a name="sample---create-a-gmsa-using-powershell"></a>Voor beeld: een gMSA maken met Power shell
-In het volgende voor beeld ziet u hoe u een aangepaste organisatie-eenheid maakt met behulp van Power shell. U kunt vervolgens een gMSA maken binnen die organisatie-eenheid met ```-Path``` behulp van de para meter om de OE op te geven.
+Een door een groep beheerd service account (gMSA) biedt dezelfde beheer vereenvoudiging, maar voor meerdere servers in het domein. Met een gMSA kunnen alle exemplaren van een service die wordt gehost op een server farm dezelfde service-principal gebruiken voor wederzijdse verificatie protocollen. Wanneer een gMSA wordt gebruikt als Service-Principal, beheert het Windows-besturings systeem opnieuw het wacht woord van het account in plaats van te vertrouwen op de beheerder.
+
+Zie voor meer informatie [groep managed service accounts (gMSA) Overview (Engelstalig)][gmsa-overview].
+
+## <a name="using-service-accounts-in-azure-ad-ds"></a>Service accounts in azure AD DS gebruiken
+
+Als Azure AD DS beheerde domeinen worden vergrendeld en beheerd door micro soft, zijn er enkele aandachtspunten bij het gebruik van service accounts:
+
+* Maak service accounts in aangepaste organisatie-eenheden (OE) op het beheerde domein.
+    * U kunt geen service account maken in de ingebouwde AADDC- *gebruikers* of *AADDC-computers* .
+    * Maak in plaats daarvan [een aangepaste OE][create-custom-ou] in het door Azure AD DS beheerde domein en maak vervolgens service accounts in die aangepaste organisatie-eenheid.
+* De basis sleutel voor Key Distribution Services (KDS) wordt vooraf gemaakt.
+    * De basis sleutel KDS wordt gebruikt om wacht woorden voor Gmsa's te genereren en op te halen. In azure AD DS wordt de hoofdmap KDS voor u gemaakt.
+    * U hebt geen rechten om een andere te maken of om de standaard KDS-basis sleutel te bekijken.
+
+## <a name="create-a-gmsa"></a>Een gMSA maken
+
+Maak eerst een aangepaste OE met behulp van de cmdlet [New-ADOrganizationalUnit][New-AdOrganizationalUnit] . Zie [aangepaste organisatie-eenheden in Azure AD DS][create-custom-ou]voor meer informatie over het maken en beheren van aangepaste organisatie-eenheden.
+
+In het volgende voor beeld wordt een aangepaste OE gemaakt met de naam *myNewOU* in het door Azure AD DS beheerde domein met de naam *contoso.com*. Gebruik uw eigen OE en beheerde domein naam:
 
 ```powershell
-# Create a new custom OU on the managed domain
-New-ADOrganizationalUnit -Name "MyNewOU" -Path "DC=contoso,DC=COM"
-
-# Create a service account 'WebFarmSvc' within the custom OU.
-New-ADServiceAccount -Name WebFarmSvc  `
--DNSHostName ` WebFarmSvc.contoso.com  `
--Path "OU=MYNEWOU,DC=contoso,DC=com"  `
--KerberosEncryptionType AES128, AES256  ` -ManagedPasswordIntervalInDays 30  `
--ServicePrincipalNames http/WebFarmSvc.contoso.com/contoso.com, `
-http/WebFarmSvc.contoso.com/contoso,  `
-http/WebFarmSvc/contoso.com, http/WebFarmSvc/contoso  `
--PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
+New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=contoso,DC=COM"
 ```
 
-**Documentatie voor Power shell-cmdlets:**
-- [Cmdlet New-ADOrganizationalUnit](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit)
-- [Cmdlet New-ADServiceAccount](https://docs.microsoft.com/powershell/module/addsadministration/New-ADServiceAccount)
+Maak nu een gMSA met de cmdlet [New-ADServiceAccount][New-ADServiceAccount] . De volgende voorbeeld parameters worden gedefinieerd:
 
+* **-Naam** is ingesteld op *WebFarmSvc*
+* **-Path** para meter geeft u de aangepaste OE op voor de gMSA die u in de vorige stap hebt gemaakt.
+* DNS-vermeldingen en spn's (Service Principal Names) worden ingesteld voor *WebFarmSvc.contoso.com*
+* Principals in *CONTOSO-server $* mogen het wacht woord gebruiken om de identiteit op te halen.
+
+Geef uw eigen namen en domein namen op.
+
+```powershell
+New-ADServiceAccount -Name WebFarmSvc `
+    -DNSHostName WebFarmSvc.contoso.com `
+    -Path "OU=MYNEWOU,DC=contoso,DC=com" `
+    -KerberosEncryptionType AES128, AES256 `
+    -ManagedPasswordIntervalInDays 30 `
+    -ServicePrincipalNames http/WebFarmSvc.contoso.com/contoso.com, `
+        http/WebFarmSvc.contoso.com/contoso, `
+        http/WebFarmSvc/contoso.com, `
+        http/WebFarmSvc/contoso `
+    -PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
+```
+
+Toepassingen en services kunnen nu zo worden geconfigureerd dat ze de gMSA gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Een aangepaste organisatie-eenheid maken in een beheerd domein](create-ou.md)
-- [Overzicht van door groepen beheerde service accounts](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
-- [Aan de slag met door groepen beheerde service accounts](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
+
+Zie aan de slag [met door groep beheerde service accounts][gmsa-start]voor meer informatie over gmsa's.
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[tutorial-create-management-vm]: tutorial-create-management-vm.md
+[create-custom-ou]: create-ou.md
+
+<!-- EXTERNAL LINKS -->
+[New-ADOrganizationalUnit]: /powershell/module/addsadministration/New-AdOrganizationalUnit
+[New-ADServiceAccount]: /powershell/module/addsadministration/New-AdServiceAccount
+[gmsa-overview]: /windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview
+[gmsa-start]: /windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts

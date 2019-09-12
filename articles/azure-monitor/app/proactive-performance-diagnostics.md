@@ -62,7 +62,7 @@ Slimme detectie meldingen zijn standaard ingeschakeld en worden verzonden naar p
   
   ![Instellingen voor slimme detectie](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
-  * U kunt de koppeling **** voor afmelden in het e-mail bericht voor slimme detectie gebruiken om te stoppen met het ontvangen van e-mail meldingen.
+  * U kunt de koppeling voor afmelden in het e-mail bericht voor slimme detectie gebruiken om te stoppen met het ontvangen van e-mail meldingen.
 
 E-mail berichten over fouten met betrekking tot Slimme detectie van prestaties zijn beperkt tot één e-mail per dag per Application Insights resource. Het e-mail bericht wordt alleen verzonden als er ten minste één nieuw probleem op die dag is gedetecteerd. U krijgt geen herhalingen van een bericht. 
 

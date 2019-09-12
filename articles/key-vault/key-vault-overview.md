@@ -2,20 +2,20 @@
 title: Overzicht van Azure Key Vault - Azure Key Vault | Microsoft Docs
 description: Azure Key Vault is een cloudservice die werkt als een beveiligd geheimenarchief.
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
-ms.author: barclayn
-ms.openlocfilehash: 456f828f09a710009d30e1c0a669cde658318ae0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: mbaldwin
+ms.openlocfilehash: e814c9f7859fb18280c3a9ffd72bd4053a4895ad
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789369"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883213"
 ---
 # <a name="what-is-azure-key-vault"></a>Wat is Azure Sleutelkluis?
 
@@ -42,7 +42,7 @@ Voor toegang tot een sleutelkluis is de juiste verificatie en autorisatie vereis
 
 Verificatie wordt uitgevoerd via Azure Active Directory. Autorisatie kan worden uitgevoerd via op rollen gebaseerd toegangsbeheer (RBAC) of Key Vault-toegangsbeleid. RBAC wordt gebruikt bij het beheren van de kluizen. Toegangsbeleid tot sleutelkluizen wordt gebruikt bij pogingen om toegang te krijgen tot gegevens in een kluis.
 
-Sleutelkluizen van Azure kunnen software- of hardware-HSM beveiligd zijn. Voor situaties waar extra zekerheid is vereist, kunt u sleutels in HSM's (Hardware Security Modules) importeren of genereren die nooit verdergaan dan de HSM-grens. Microsoft gebruikt nCipher hardware security modules. U kunt nCipher-hulpprogramma's gebruiken om te verplaatsen van een sleutel van uw HSM naar Azure Key Vault.
+Sleutelkluizen van Azure kunnen software- of hardware-HSM beveiligd zijn. Voor situaties waar extra zekerheid is vereist, kunt u sleutels in HSM's (Hardware Security Modules) importeren of genereren die nooit verdergaan dan de HSM-grens. Micro soft maakt gebruik van nCipher-Hardware Security modules. U kunt nCipher-hulpprogram ma's gebruiken om een sleutel van de HSM naar Azure Key Vault te verplaatsen.
 
 Tot slot is Azure Key Vault zodanig ontworpen dat Microsoft uw gegevens niet kan zien of extraheren.
 
@@ -52,7 +52,7 @@ Nadat u enkele sleutelkluizen hebt gemaakt, kunt u controleren hoe en wanneer er
 
 - Archiveren naar een opslagaccount.
 - Streamen naar een Event Hub.
-- De logboeken verzenden naar Azure Monitor-Logboeken.
+- De logboeken naar Azure Monitor-logboeken verzenden.
 
 U hebt de controle over uw logboeken en kunt ze beveiligen door de toegang te beperken. Bovendien kunt u logboeken verwijderen die u niet meer nodig hebt.
 

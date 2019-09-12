@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 09/10/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73784afd9577d66850596056df1974accd62e4b4
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1bd79b9a6fa8aedd45f41b64f8f81a908feab71f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844462"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882998"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory cmdlets voor het configureren van groepsinstellingen
 Dit artikel bevat instructies voor het gebruik van Azure Active Directory (Azure AD) Power shell-cmdlets om groepen te maken en bij te werken. Deze inhoud is alleen van toepassing op Office 365-groepen (ook wel Unified groups genoemd). 
@@ -34,13 +34,31 @@ Instellingen voor Office 365-groepen worden geconfigureerd met behulp van een in
 
 De cmdlets maken deel uit van de Azure Active Directory Power shell V2-module. Zie het artikel [Azure Active Directory Power shell versie 2](https://docs.microsoft.com/powershell/azuread/)voor instructies voor het downloaden en installeren van de module op uw computer. U kunt de versie 2-versie van de module installeren vanuit [de Power shell-galerie](https://www.powershellgallery.com/packages/AzureAD/).
 
-## <a name="create-settings-at-the-directory-level"></a>Instellingen maken op mapniveau
-Met deze stappen maakt u instellingen op mapniveau, die van toepassing zijn op alle Office 365-groepen in de map. De cmdlet Get-AzureADDirectorySettingTemplate is alleen beschikbaar in de [module Azure AD Power shell Preview voor Graph](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
+## <a name="install-powershell-cmdlets"></a>PowerShell-cmdlets installeren
 
-1. In de DirectorySettings-cmdlets moet u de ID opgeven van de SettingsTemplate die u wilt gebruiken. Als u deze ID niet weet, retourneert deze cmdlet de lijst met alle instellingen sjablonen:
+Verwijder een oudere versie van Azure Active Directory PowerShell voor Graph Module voor Windows PowerShell en installeer [Azure Active Directory PowerShell for Graph - Public Preview Release 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) (Azure Active Directory PowerShell voor Graph - Release 2.0.0.137 voor openbare preview) voordat u de PowerShell-opdrachten uitvoert.
+
+1. Open de Windows PowerShell-app als beheerder.
+2. Verwijder eventuele oudere versies van AzureADPreview.
+  
+   ``` PowerShell
+   Uninstall-Module AzureADPreview
+   Uninstall-Module azuread
+   ```
+
+3. Installeer de nieuwste versie van AzureADPreview.
+  
+   ``` PowerShell
+   Install-Module AzureADPreview
+
+## Create settings at the directory level
+These steps create settings at directory level, which apply to all Office 365 groups in the directory. The Get-AzureADDirectorySettingTemplate cmdlet is available only in the [Azure AD PowerShell Preview module for Graph](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
+
+1. In the DirectorySettings cmdlets, you must specify the ID of the SettingsTemplate you want to use. If you do not know this ID, this cmdlet returns the list of all settings templates:
   
    ```powershell
    Get-AzureADDirectorySettingTemplate
+
    ```
    Met deze cmdlet-aanroep worden alle beschik bare sjablonen geretourneerd:
   

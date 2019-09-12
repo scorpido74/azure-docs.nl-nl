@@ -7,12 +7,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: b21847d27dc7f444afaf1b73efa19b0b0087cfe4
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d601dc1efe8dc3f6f2678f5d4df03f172146cd07
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811678"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900644"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Oozie met Apache Hadoop gebruiken om een werk stroom te definiëren en uit te voeren op Azure HDInsight op basis van Linux
 
@@ -510,29 +510,29 @@ Voer de volgende stappen uit om toegang te krijgen tot de Oozie-webgebruikersint
 
 3. Selecteer links op de pagina **Oozie** > **Quick links** > **Oozie Web UI**.
 
-    ![Afbeelding van de menu's](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
+    ![Afbeelding van de menu's](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
 
 4. De Oozie web-gebruikers interface wordt standaard gebruikt om de actieve werk stroom taken weer te geven. Als u alle werk stroom taken wilt weer geven, selecteert u **alle taken**.
 
-    ![Alle taken weer gegeven](./media/hdinsight-use-oozie-linux-mac/ooziejobs.png)
+    ![Alle taken weer gegeven](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
 
 5. Selecteer de taak om meer informatie over een taak weer te geven.
 
-    ![Taakgegevens](./media/hdinsight-use-oozie-linux-mac/jobinfo.png)
+    ![Taakgegevens](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
 
 6. Op het tabblad **taak gegevens** ziet u de informatie over de basis taak en de afzonderlijke acties in de taak. U kunt de tabbladen bovenaan gebruiken om de **taak definitie**, **taak configuratie**, toegang tot het **taak logboek**te bekijken of een directed acyclic Graph (dag) van de taak weer te geven onder **taak dag**.
 
    * **Taak logboek**: Selecteer de knop **Logboeken ophalen** om alle logboeken voor de taak op te halen, of gebruik het veld **Zoek filter invoeren** om de logboeken te filteren.
 
-       ![Taak logboek](./media/hdinsight-use-oozie-linux-mac/joblog.png)
+       ![Taak logboek](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
 
    * **Taak dag**: De DAG is een grafisch overzicht van de gegevens paden die via de werk stroom worden uitgevoerd.
 
-       ![Taak DAG](./media/hdinsight-use-oozie-linux-mac/jobdag.png)
+       ![Taak DAG](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
 
 7. Als u een van de acties op het tabblad **taak gegevens** selecteert, wordt er informatie over de actie geopend. Selecteer bijvoorbeeld de actie **RunSqoopExport** .
 
-    ![Actie-informatie](./media/hdinsight-use-oozie-linux-mac/action.png)
+    ![Actie-informatie](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
 
 8. U kunt details weer geven voor de actie, zoals een koppeling naar de **console-URL**. Gebruik deze koppeling om informatie over taak beheer voor de taak weer te geven.
 
@@ -632,18 +632,18 @@ U kunt de coördinator gebruiken om een start, een eind en de frequentie van het
 
 7. Als u naar de Oozie-webgebruikersinterface gaat en het tabblad **coördinator taken** selecteert, ziet u informatie zoals in de volgende afbeelding:
 
-    ![Tabblad coördinator taken](./media/hdinsight-use-oozie-linux-mac/coordinatorjob.png)
+    ![Tabblad coördinator taken](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
 
     De **volgende materialisatie** -vermelding bevat de volgende keer dat de taak wordt uitgevoerd.
 
 8. Net als bij de eerdere werk stroom taak, als u de taak vermelding in de web-gebruikers interface selecteert, wordt informatie over de taak weer gegeven:
 
-    ![Informatie over coördinator taak](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
+    ![Informatie over coördinator taak](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
 
     > [!NOTE]  
     > In deze afbeelding worden alleen geslaagde uitvoeringen van de taak weer gegeven, niet de afzonderlijke acties binnen de geplande werk stroom. Als u de afzonderlijke acties wilt zien, selecteert u een van de **actie** vermeldingen.
 
-    ![Actie-informatie coördinator](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
+    ![Actie-informatie coördinator](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
@@ -747,7 +747,7 @@ In dit artikel hebt u geleerd hoe u een Oozie-werk stroom definieert en hoe u ee
 
 [cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
-[img-workflow-diagram]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Workflow.Diagram.png
+[img-workflow-diagram]: ./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png
 [img-preparation-output]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Preparation.Output1.png
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
 

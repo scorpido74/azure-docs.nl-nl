@@ -1,22 +1,22 @@
 ---
-title: Een Azure Search-service maken in de portal - Azure Search
+title: 'Quickstart: Een Azure Search-service maken in de portal - Azure Search'
 description: Een Azure Search-resource inrichten in de Microsoft Azure-portal-portal. Resourcegroepen, regio's en de SKU of prijscategorie kiezen.
 manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 08/09/2019
+ms.date: 09/10/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0aabf10b3be8f2f13abbba15d514a008f193646c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 483810f89ea4bbb3a68e616929bd7d752c4d509f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649952"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883849"
 ---
-# <a name="create-an-azure-search-service-in-the-portal"></a>Een Azure Search-service maken in de portal
+# <a name="quickstart-create-an-azure-search-service-in-the-portal"></a>Quickstart: Een Azure Search-service maken in de portal
 
 Azure Search is een zelfstandige resource die wordt gebruikt voor het toevoegen van een zoekervaring aan aangepaste apps. Hoewel Azure Search eenvoudig integreert met andere Azure-Services, kunt u het ook gebruiken als zelfstandig onderdeel, of het integreren met apps op netwerk servers, of met software die wordt uitgevoerd op andere Cloud platforms.
 
@@ -78,7 +78,7 @@ Azure Search kan als Azure-service worden gehost in datacenters over de hele wer
 
 U kunt de bandbreedte kosten minimaliseren of vermijden door dezelfde locatie voor meerdere services te kiezen. Als u bijvoorbeeld gegevens indexeert die door een andere Azure-service zijn verschaft (Azure Storage, Azure Cosmos DB, Azure SQL Database), voor komt u dat de Azure Search service in dezelfde regio bandbreedte kosten (er worden geen kosten in rekening gebracht voor uitgaande gegevens wanneer de services zich bevinden). dezelfde regio).
 
-Daarnaast kunt u, als u verrijkingen van cognitieve Zoek opdrachten AI gebruikt, uw service maken in dezelfde regio als uw Cognitive Services-resource. *De co-locatie van Azure Search en Cognitive Services in dezelfde regio is een vereiste voor AI*-verrijking.
+Daarnaast kunt u, als u verrijkingen van cognitieve Zoek opdrachten AI gebruikt, uw service maken in dezelfde regio als uw Cognitive Services-resource. *De co-locatie van Azure Search en Cognitive Services in dezelfde regio is een vereiste voor AI-verrijking*.
 
 > [!Note]
 > Centraal-India is momenteel niet beschikbaar voor nieuwe services. Voor services die zich al in Centraal-India bevinden, kunt u opschalen zonder beperkingen en wordt uw service volledig ondersteund in die regio. De beperking voor deze regio is tijdelijk en beperkt tot alleen nieuwe services. Deze notitie wordt verwijderd wanneer de beperking niet meer van toepassing is.

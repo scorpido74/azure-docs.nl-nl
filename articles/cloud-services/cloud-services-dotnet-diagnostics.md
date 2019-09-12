@@ -136,7 +136,7 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. Voeg een XML-bestand toe aan uw **WorkerRole1** -project door met de rechter muisknop op het **WorkerRole1** -project te klikken en nieuw item **toevoegen** -> te selecteren **...** -> **C#** **XML-bestand**met Visual-items. ****  ->  ->  Noem het bestand ' WadExample. XML '.
+2. Voeg een XML-bestand toe aan uw **WorkerRole1** -project door met de rechter muisknop op het **WorkerRole1** -project te klikken en nieuw item **toevoegen** -> te selecteren **...** -> **C#** **XML-bestand**met Visual-items. ->  ->  Noem het bestand ' WadExample. XML '.
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 3. Koppel de WadConfig. XSD aan het configuratie bestand. Zorg ervoor dat het venster WadExample. XML editor het actieve venster is. Druk op **F4** om het venster **Eigenschappen** te openen. Klik op de eigenschap schemas in het venster **Eigenschappen** . Klik op de **..** . in de eigenschap schemas. Klik op de knop **Toevoegen...** en navigeert u naar de locatie waar u het XSD-bestand hebt opgeslagen en selecteert u het bestand WadConfig. XSD. Klik op **OK**.

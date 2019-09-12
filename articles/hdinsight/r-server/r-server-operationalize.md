@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 91407fc76d0a7555a87a8a3dcd1b3ad04ee2af80
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: f9dbddcba1545e0a110faa9fbf8e3de9ff189525
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736223"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879490"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationeel maken ML-cluster in azure HDInsight
 
@@ -50,31 +50,31 @@ Nadat u het server gebruik van MILLILITERs in HDInsight hebt gebruikt om uw gege
 
 1. U krijgt de keuze uit de opties waaruit u kunt kiezen. Kies de eerste optie, zoals wordt weer gegeven in de volgende scherm afbeelding, om **ml server voor uitoefening te configureren**.
 
-    ![De optie Alles-in-één](./media/r-server-operationalize/admin-util-one-box-1.png)
+    ![Eén vak OP1](./media/r-server-operationalize/admin-util-one-box-1.png)
 
 1. U krijgt nu de optie om te kiezen hoe u ML Server wilt operationeel maken. Kies in de weer gegeven opties de eerste door **een**te typen.
 
-    ![De optie Alles-in-één](./media/r-server-operationalize/admin-util-one-box-2.png)
+    ![Eén vak op2](./media/r-server-operationalize/admin-util-one-box-2.png)
 
 1. Wanneer u hierom wordt gevraagd, voert u het wacht woord voor een lokale gebruikers beheerder in en voert u het opnieuw in.
 
 1. Er moeten uitvoer resultaten worden weer geven waarin wordt voorgesteld dat de bewerking is geslaagd. U wordt ook gevraagd een andere optie te selecteren in het menu. Selecteer E om terug te gaan naar het hoofd menu.
 
-    ![De optie Alles-in-één](./media/r-server-operationalize/admin-util-one-box-3.png)
+    ![Eén vak OP3](./media/r-server-operationalize/admin-util-one-box-3.png)
 
 1. U kunt ook diagnostische controles uitvoeren door de volgende diagnostische test uit te voeren:
 
     a. Selecteer in het hoofd menu de optie **6** om diagnostische tests uit te voeren.
 
-    ![De optie Alles-in-één](./media/r-server-operationalize/diagnostic-1.png)
+    ![diagnostic1](./media/r-server-operationalize/diagnostic-1.png)
 
     b. Selecteer in het menu diagnostische tests **een**. Wanneer u hierom wordt gevraagd, voert u het wacht woord in dat u hebt opgegeven voor de gebruiker van de lokale beheerder.
 
-    ![De optie Alles-in-één](./media/r-server-operationalize/diagnostic-2.png)
+    ![diagnostic2](./media/r-server-operationalize/diagnostic-2.png)
 
     c. Controleer of de uitvoer laat zien dat de algehele status is geslaagd.
 
-    ![De optie Alles-in-één](./media/r-server-operationalize/diagnostic-3.png)
+    ![diagnostic3](./media/r-server-operationalize/diagnostic-3.png)
 
     d. Voer in de weer gegeven menu opties **E** in om terug te keren naar het hoofd menu en voer **8** in om het beheer hulpprogramma af te sluiten.
 

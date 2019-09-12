@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 568c4324f3b542e2b913596c1d93ffb72bbbaec7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 3ff9cfbd312e672fb89afb4838ad9f8aa6574370
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814239"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900005"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Een cluster van ML Services beheren in azure HDInsight
 
@@ -209,7 +209,7 @@ Als u R-pakketten wilt installeren op de worker-knoop punten van het cluster, mo
    >
    >
 
-   ![Een scriptactie toevoegen](./media/r-server-hdinsight-manage/submitscriptaction.png)
+   ![Een scriptactie toevoegen](./media/r-server-hdinsight-manage/submit-script-action.png)
 
 4. Selecteer **Maken** om het script uit te voeren. Nadat het script is voltooid, zijn de R-pakketten beschikbaar op alle werkknooppunten.
 

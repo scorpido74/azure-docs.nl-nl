@@ -5,8 +5,6 @@ services: notification-hubs
 documentationcenter: android
 author: jwargo
 manager: patniko
-editor: spelluru
-ms.assetid: 23bde1ea-f978-43b2-9eeb-bfd7b9edc4c1
 ms.service: notification-hubs
 ms.devlang: java
 ms.topic: conceptual
@@ -14,19 +12,19 @@ ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 06/19/2019
 ms.author: jowargo
-ms.openlocfilehash: f6a6bc9b1d4826796299d073e0edfbfcede948e7
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 7a3a9affc0fd5e83c7f6046e70d198cce08cb3e1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274902"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70886036"
 ---
-# <a name="get-started-with-notification-hubs-using-baidu"></a>Aan de slag met Azure Notification Hubs die gebruikmaken van Baidu
+# <a name="deprecated-get-started-with-notification-hubs-using-baidu"></a>Keur Aan de slag met Azure Notification Hubs die gebruikmaken van Baidu
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 > [!IMPORTANT]
-> In deze zelfstudie is afgeschaft. 
+> Deze zelf studie is afgeschaft. 
 
 Baidu Cloud Push is een Chinese cloudservice waarmee u pushmeldingen naar mobiele apparaten kunt verzenden.
 
@@ -287,7 +285,7 @@ Noteer de `DefaultListenSharedAccessSignature` en `DefaultFullSharedAccessSignat
 
     Stel de waarde van de tekenreeks `API_KEY` in op de API_KEY uit het Baidu-cloudproject.
 
-    Stel de waarde van de tekenreeks `NotificationHubName` in op de naam van uw Notification Hub uit [Azure Portal] en stel daarna `NotificationHubConnectionString` in op `DefaultListenSharedAccessSignature` uit [Azure Portal].
+    Stel de waarde van de tekenreeks `NotificationHubName` in op de naam van uw Notification Hub uit [Azure-portal] en stel daarna `NotificationHubConnectionString` in op `DefaultListenSharedAccessSignature` uit [Azure-portal].
 
 11. Open MainActivity.java en voeg het volgende toe aan de methode onCreate:
 
@@ -469,7 +467,7 @@ Noteer de `DefaultListenSharedAccessSignature` en `DefaultFullSharedAccessSignat
 
 ## <a name="send-notifications-to-your-app"></a>Pushmeldingen naar uw app verzenden
 
-U kunt de ontvangst van meldingen snel testen via [Azure Portal]: gebruik de knop **Verzenden** in het configuratiescherm van de Notification Hub, zoals in de volgende schermen wordt weergegeven:
+U kunt de ontvangst van meldingen snel testen via [Azure-portal]: gebruik de knop **Verzenden** in het configuratiescherm van de Notification Hub, zoals in de volgende schermen wordt weergegeven:
 
 ![](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
 ![](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
@@ -536,10 +534,10 @@ Als u deze app wilt testen met de emulator, klikt u op de bovenste taakbalk in A
 
 De app haalt de `userId` en `channelId` op uit de Baidu-pushmeldingenservice en registreert zich bij de Notification Hub.
 
-U kunt een testmelding verzenden vanaf het foutopsporingstabblad van [Azure Portal]. Als u de .Net-console-toepassing hebt gebouwd voor Visual Studio, drukt u in Visual Studio op F5 om de toepassing te starten. De toepassing verstuurt een melding. Deze verschijnt in het bovenste gedeelte voor meldingen op uw apparaat of in de emulator.
+U kunt een testmelding verzenden vanaf het foutopsporingstabblad van [Azure-portal]. Als u de .Net-console-toepassing hebt gebouwd voor Visual Studio, drukt u in Visual Studio op F5 om de toepassing te starten. De toepassing verstuurt een melding. Deze verschijnt in het bovenste gedeelte voor meldingen op uw apparaat of in de emulator.
 
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Android SDK Baidu Push]: https://push.baidu.com/sdk/push_client_sdk_for_android
-[Azure Portal]: https://portal.azure.com/
+[Azure-portal]: https://portal.azure.com/
 [Baidu Portal]: https://www.baidu.com/

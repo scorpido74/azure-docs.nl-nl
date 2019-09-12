@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 4bfa325017d485a76bfe87c0f7facde4acf8f2b4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d0d6d091a955f37a12fe6c4066f0e4f999696e21
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066099"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884542"
 ---
-# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Quickstart: Apache Spark-cluster in Azure HDInsight met behulp van Resource Manager-sjabloon maken
+# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Quickstart: Apache Spark cluster maken in azure HDInsight met behulp van Resource Manager-sjabloon
 
 Meer informatie over hoe u een [Apache Spark](https://spark.apache.org/)-cluster maakt in Azure HDInsight en hoe u Spark SQL-query's uitvoert op [Apache Hive](https://hive.apache.org/)-tabellen. Apache Spark maakt het mogelijk om snelle gegevensanalyses en clusterberekeningen uit te voeren met behulp van verwerking in het geheugen. Zie voor informatie over Apache Spark in HDInsight [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md).
 
-In deze snelstart gebruikt u Resource Manager-sjabloon voor het maken van een Spark-cluster in HDInsight. Dezelfde sjablonen kunnen worden weergegeven op [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular). De sjabloonverwijzing vindt u [hier](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions).
+In deze snelstart gebruikt u Resource Manager-sjabloon voor het maken van een Spark-cluster in HDInsight. Vergelijk bare sjablonen kunnen worden bekeken in [Azure Quick](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)start-sjablonen. De sjabloonverwijzing vindt u [hier](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions).
 
 Het cluster maakt gebruik van Azure Storage Blobs als de clusteropslag. Zie voor informatie over het gebruik van Data Lake Storage Gen2 [Snelstart: clusters instellen in HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
@@ -85,7 +85,7 @@ SQL (Structured Query Language) is de meest voorkomende en gebruikte taal voor h
 
 1. Controleer of de kernel gereed is. Wanneer u een lege cirkel naast de naam van de kernel in de notebook ziet, is de kernel gereed. Gevulde cirkel geeft aan dat de kernel bezet is.
 
-    ![Hive-query in HDInsight Spark](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "Hive-query in HDInsight Spark")
+    ![kernel-status](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "kernel-status")
 
     Wanneer u de notebook voor het eerst start, voert de kernel enkele taken in de achtergrond uit. Wacht tot de kernel gereed is.
 2. Plak de volgende code in een lege cel en druk op **Shift+Enter** om de code uit te voeren. Met de opdracht worden de Hive-tabellen in het cluster weergegeven:

@@ -8,12 +8,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: bwren
-ms.openlocfilehash: cf2aee475f5d3933421de45fa5b2ade687bed62f
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 18e6e162764ce190a1953a4126e4f9ef2eb717f5
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348081"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899518"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Aan de slag met Log Analytics in Azure Monitor
 
@@ -89,7 +89,7 @@ Event
 
 Log Analytics resultaten automatisch bereiken:
 
-- Tijdsbereik:  Query's zijn standaard beperkt tot de afgelopen 24 uur.
+- Tijds bereik:  Query's zijn standaard beperkt tot de afgelopen 24 uur.
 - Aantal resultaten: De resultaten zijn beperkt tot Maxi maal 10.000 records.
 
 Deze query is zeer algemeen en er worden te veel resultaten geretourneerd om nuttig te zijn. U kunt de resultaten filteren door middel van de tabel elementen of door expliciet een filter toe te voegen aan de query. Het filteren van resultaten via de tabel elementen is van toepassing op de bestaande resultatenset, terwijl een filter op de query zelf een nieuwe gefilterde resultatenset retourneert, waardoor nauw keurigere resultaten kunnen worden verkregen.
@@ -148,7 +148,7 @@ Standaard worden de resultaten weer gegeven in een tabel. Klik op _grafiek_ om d
 
 ![Staafdiagram](media/get-started-portal/bar-chart.png)
 
-De resultaten worden weer gegeven in een gestapeld staaf diagram. Klik op gestapelde _kolom_ en selecteer _cirkel_ om een andere weer gave van de resultaten weer te geven:
+De resultaten worden weer gegeven in een gestapeld staaf diagram. Klik op _gestapelde kolom_ en selecteer _cirkel_ om een andere weer gave van de resultaten weer te geven:
 
 ![Cirkeldiagram](media/get-started-portal/pie-chart.png)
 
@@ -162,7 +162,7 @@ Als er sprake is van een plotselinge Prikker of stap in uw gegevens, ziet u moge
 ![Slimme diagnostische gegevens](media/get-started-portal/smart-diagnostics.png)
 
 ## <a name="pin-to-dashboard"></a>Vastmaken aan dashboard
-Als u een diagram of tabel wilt vastmaken aan een van uw gedeelde Azure-Dash boards, klikt u op het speld pictogram.
+Als u een diagram of tabel wilt vastmaken aan een van uw gedeelde Azure-Dash boards, klikt u op het speld pictogram. Houd er rekening mee dat dit pictogram wordt verplaatst naar de bovenkant van het Log Analytics venster, en dat verschilt van de onderstaande scherm afbeelding.
 
 ![Vastmaken aan dashboard](media/get-started-portal/pin-dashboard.png)
 

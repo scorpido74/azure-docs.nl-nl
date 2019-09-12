@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b63b68b7721dd848e6a72b3b7d9cfa38bf031b23
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: b451e501b216b02ecb052ee159d0e26343af7901
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035073"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910231"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio code gebruiken voor het ontwikkelen en opsporen van fouten in modules voor Azure IoT Edge
 
@@ -89,7 +89,7 @@ In de volgende stappen wordt uitgelegd hoe u een IoT Edge module maakt in uw voo
 
 1. Voer een naam in voor uw module. Kies een unieke naam in het container register.
 
-1. Geef de naam op van de installatie kopie opslagplaats van de module. Visual Studio code vult de module naam automatisch in met **localhost: 5000/< uw module naam\>** . Vervang deze door uw eigen gegevens. Als u een lokaal docker-REGI ster gebruikt voor het testen, is **localhost** prima. Als u Azure Container Registry gebruikt, gebruikt u de aanmeldingsserver van de instellingen van uw register. De aanmeldings server ziet er als volgt uit als * **\<register naam\>*. azurecr.io**. Vervang alleen het gedeelte **localhost: 5000** van de teken reeks, zodat het uiteindelijke resultaat eruit ziet *\<* als * register naam *\>. azurecr.io/* \<uw\>module naam * * *.
+1. Geef de naam op van de installatie kopie opslagplaats van de module. Visual Studio code vult de module naam automatisch in met **localhost: 5000/< uw module naam\>** . Vervang deze door uw eigen gegevens. Als u een lokaal docker-REGI ster gebruikt voor het testen, is **localhost** prima. Als u Azure Container Registry gebruikt, gebruikt u de aanmeldingsserver van de instellingen van uw register. De aanmeldings server ziet eruit als   **_\<register\>naam_. azurecr.io**. Vervang alleen het gedeelte **localhost: 5000** van de teken reeks, zodat het uiteindelijke resultaat eruitziet als  **\< *register naam*\>. azurecr.io/ _\<de\>naam van uw module_** .
 
    ![Opslagplaats voor Docker-installatiekopieën opgeven](./media/how-to-develop-csharp-module/repository.png)
 

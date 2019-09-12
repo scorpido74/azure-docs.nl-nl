@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 57e5eef8563bca0e27024d6ff5a46b983273df07
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: MT
+ms.openlocfilehash: 5c533c3b0005528eae646744e8e720e2c54436e1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810656"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880263"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Apache Ambari gebruiken om configuraties van HDInsight-clusters te optimaliseren
 
@@ -146,7 +146,7 @@ Hive volgt standaard een set regels om één optimaal query-uitvoerings plan te 
 
 Om CBO in te scha kelen, gaat u naar het tabblad **configuratie** van `parameter hive.cbo.enable`Hive en **zoekt u naar**de wissel knop naar aan.
 
-![CBO-configuratie](./media/hdinsight-changing-configs-via-ambari/cbo.png)
+![CBO-configuratie](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
 
 De volgende aanvullende configuratie parameters verhogen Hive-query prestaties wanneer CBO is ingeschakeld:
 
@@ -269,7 +269,7 @@ In de volgende secties worden extra optimalisaties voor onderdelen beschreven di
 
 Het standaard type voor samen voegen in Hive is een *wille keurige samen voeging*. In Hive leest speciale mappers de invoer en wordt een koppelings sleutel/-waardepaar naar een tussenliggend bestand verzenden. Hadoop sorteert en voegt deze paren samen in een wille keurige fase. Deze fase in wille keurige volg orde is duur. Het selecteren van de juiste koppeling op basis van uw gegevens kan de prestaties aanzienlijk verbeteren.
 
-| Jointype | Wanneer | Werking | Hive-instellingen | Opmerkingen |
+| Jointype | Wanneer | werking | Hive-instellingen | Opmerkingen |
 | -- | -- | -- | -- | -- |
 | In wille keurige volg orde | <ul><li>Standaard keuze</li><li>Werkt altijd</li></ul> | <ul><li>Lees bewerkingen van een deel van een van de tabellen</li><li>Buckets en sorteren op koppelings sleutel</li><li>Hiermee wordt één Bucket naar elke reductie verzonden</li><li>De deelname aan de minder kant wordt uitgevoerd</li></ul> | Er is geen belang rijke Hive-instelling vereist | Werkt elke keer |
 | Kaart toevoegen | <ul><li>Een tabel kan in het geheugen passen</li></ul> | <ul><li>Hiermee wordt een kleine tabel in de hash-tabel van het geheugen gelezen</li><li>Streamt via een deel van het grote bestand</li><li>Koppelt elke record uit een hash-tabel</li><li>Samen voegingen zijn alleen door de Mapper</li></ul> | `hive.auto.confvert.join=true` | Zeer snel, maar beperkt |

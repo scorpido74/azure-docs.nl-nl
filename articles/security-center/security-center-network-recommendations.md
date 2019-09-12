@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 3683550045699a24c27a3226fba2e90a671f80e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 536e2e3732a0b196801e37c51dfb6c746e070441
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101014"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910465"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Uw netwerk bronnen beveiligen in Azure Security Center
 Azure Security Center de beveiligings status van uw Azure-resources voortdurend geanalyseerd op de aanbevolen procedures voor netwerk beveiliging. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.
@@ -128,9 +128,9 @@ De sectie **netwerk topologie** bevat een hiërarchische weer gave van de resour
 
 Deze tabel is gesorteerd (virtuele machines en subnetten) op Ernst.
 
-In deze topologie weergave wordt op het eerste niveau Vnets weer gegeven. De tweede schermen bevat subnetten en het derde niveau geeft de virtuele machines weer die deel uitmaken van deze subnetten. In de rechter kolom ziet u de huidige status van de aanbevelingen voor de netwerk beveiligings groep voor deze resources.
+In deze topologie weergave wordt op het eerste niveau Vnets weer gegeven. De tweede bevat subnetten en het derde niveau geeft de virtuele machines weer die deel uitmaken van deze subnetten. In de rechter kolom ziet u de huidige status van de aanbevelingen voor de netwerk beveiligings groep voor deze resources.
 
-Op het derde niveau worden virtuele machines weer gegeven. Dit is vergelijkbaar met wat eerder is beschreven. U kunt klikken op een wille keurige resource voor meer informatie of om het benodigde beveiligings beheer of de vereiste configuratie toe te passen.
+Op het derde niveau worden virtuele machines weer gegeven. Dit is vergelijkbaar met wat eerder is beschreven. U kunt klikken op een resource voor meer informatie of de vereiste beveiligings controle of-configuratie Toep assen.
 
 ## <a name="network-recommendations"></a>Aanbevelingen voor netwerken
 
@@ -143,7 +143,7 @@ Op het derde niveau worden virtuele machines weer gegeven. Dit is vergelijkbaar 
 |Toegang tot App Services moet worden beperkt|Beperk de toegang tot uw App Services door de netwerk configuratie te wijzigen, om inkomend verkeer te weigeren van bereiken die te breed zijn.|Hoog|10|App Service|
 |Beheer poorten moeten worden gesloten op uw virtuele machines|Beperk de netwerk beveiligings groep van uw virtuele machines om de toegang tot beheer poorten te beperken.|Hoog|10|Virtuele machine|
 DDoS Protection standaard moet zijn ingeschakeld|Beveilig virtuele netwerken met toepassingen met open bare Ip's door de DDoS Protection Service-standaard in te scha kelen. DDoS Protection maakt het beperken van netwerk-en protocol aanvallen mogelijk.|Hoog|10|Virtueel netwerk|
-|Door sturen via IP op uw virtuele machine moet worden uitgeschakeld|Schakel door sturen via IP uit. Als door sturen via IP is ingeschakeld op de NIC van een virtuele machine, kan de computer verkeer ontvangen dat is geadresseerd aan andere bestemmingen. Door sturen via IP is zelden vereist (bijvoorbeeld wanneer de virtuele machine wordt gebruikt als een virtueel netwerk apparaat). dit moet daarom worden gecontroleerd door het netwerk beveiligings team.|Gemiddeld|10|Virtuele machine|
+|Door sturen via IP op uw virtuele machine moet worden uitgeschakeld|Schakel door sturen via IP uit. Als door sturen via IP is ingeschakeld op de NIC van een virtuele machine, kan de computer verkeer ontvangen dat is geadresseerd aan andere bestemmingen. Door sturen via IP is zelden vereist (bijvoorbeeld wanneer u de virtuele machine als een virtueel netwerk apparaat gebruikt), en dit moet daarom worden gecontroleerd door het netwerk beveiligings team.|Gemiddeld|10|Virtuele machine|
 |Web-App moet alleen toegankelijk zijn via HTTPS|Schakel de toegang ' alleen HTTPS ' in voor webtoepassingen. Het gebruik van HTTPS garandeert Server/service-verificatie en beveiligt gegevens tijdens de overdracht van aanvallen met een netwerklaag.|Gemiddeld|20|Webtoepassing|
 |Just-in-time-netwerk toegangs beheer moet worden toegepast op virtuele machines|Pas een just-in-time-toegangs beheer (VM) toe om de toegang tot geselecteerde poorten permanent te vergren delen en stel gemachtigde gebruikers in staat om ze te openen via JIT, gedurende een beperkte periode.|Hoog|20|Virtuele machine|
 |Functie-apps moeten alleen toegankelijk zijn via HTTPS|Schakel de toegang ' alleen HTTPS ' in voor functie-apps. Het gebruik van HTTPS garandeert Server/service-verificatie en beveiligt gegevens tijdens de overdracht van aanvallen met een netwerklaag.|Gemiddeld|20|Function App|

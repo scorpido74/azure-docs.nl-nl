@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: acf11b8107855c6f087f63f592cdbbad3766795e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: MT
+ms.openlocfilehash: c8103f5d0df7a71df5141ece3a8d67f308a562e1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811019"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884217"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight-clusters beheren met Enterprise Security Package
 Meer informatie over de gebruikers en de rollen in HDInsight Enterprise Security Package (ESP) en hoe u ESP-clusters beheert.
@@ -60,7 +60,7 @@ U kunt een normaal cluster koppelen met behulp van Ambari Managed username, ook 
 
 4. U kunt ook een cluster ontkoppelen van **Azure Explorer**.
    
-   ![niet-gekoppelde cluster-IntelliJ](./media/apache-domain-joined-manage/unlink.png)
+   ![niet-gekoppelde cluster-IntelliJ](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Gebruik Eclipse om een koppeling te maken met een cluster dat aan een domein is toegevoegd
 
@@ -83,7 +83,7 @@ U kunt een normaal cluster koppelen met behulp van Ambari Managed username, ook 
 
 4. U kunt ook een cluster ontkoppelen van **Azure Explorer**.
    
-   ![niet-gekoppelde cluster-eclips](./media/apache-domain-joined-manage/unlink.png)
+   ![niet-gekoppelde cluster-eclips](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>Toegang tot de clusters met Enterprise Security Package.
 

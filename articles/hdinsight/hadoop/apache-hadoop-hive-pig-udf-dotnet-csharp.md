@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: c05e72cd28c78b26b7c23a123b133d10147a4421
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 4e6825b40700fe3bd24631094a2a6060d94524cc
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810782"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882310"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Door C# de gebruiker gedefinieerde functies gebruiken met Apache Hive en Apache varken op Apache Hadoop in HDInsight
 
@@ -161,7 +161,7 @@ Zie [hdinsight-onderdeel versies](../hdinsight-component-versioning.md)voor meer
 
 4. Vouw het HDInsight-cluster uit dat u wilt gebruiken om deze toepassing te implementeren. Een vermelding met de tekst __(standaard opslag account)__ wordt weer gegeven.
 
-    ![Server Explorer het opslag account voor het cluster wordt weer gegeven](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
+    ![Server Explorer het opslag account voor het cluster wordt weer gegeven](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
 
     * Als dit item kan worden uitgevouwen, gebruikt u een __Azure Storage-account__ als standaard opslag voor het cluster. Als u de bestanden op de standaard opslag voor het cluster wilt weer geven, vouwt u de vermelding uit en dubbelklikt u vervolgens op de __(standaard container)__ .
 
@@ -171,7 +171,7 @@ Zie [hdinsight-onderdeel versies](../hdinsight-component-versioning.md)voor meer
 
    * Als u een __Azure Storage-account__gebruikt, klikt u op het pictogram uploaden en bladert u naar de map **Bin\debug** voor het **HiveCSharp** -project. Ten slotte selecteert u het bestand **HiveCSharp. exe** en klikt u op **OK**.
 
-       ![pictogram uploaden](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
+       ![pictogram uploaden](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
     
    * Als u __Azure data Lake Storage__gebruikt, klikt u met de rechter muisknop op een leeg gebied in de bestands vermelding en selecteert u vervolgens __uploaden__. Ten slotte selecteert u het bestand **HiveCSharp. exe** en klikt u op **openen**.
 

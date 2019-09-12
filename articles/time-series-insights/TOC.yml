@@ -59,7 +59,7 @@
           href: time-series-insights-update-storage-ingress.md
         - name: Gebruiksvoorbeelden
           href: time-series-insights-update-use-cases.md
-        - name: Gegevensmodellering
+        - name: Time Series-model
           href: time-series-insights-update-tsm.md
         - name: Query's uitvoeren op gegevens
           href: time-series-insights-update-tsq.md
