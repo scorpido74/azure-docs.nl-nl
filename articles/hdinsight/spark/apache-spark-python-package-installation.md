@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: da871a1fed0663c5654ebcfd61f4189bf2267026
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ce5dc7e17020e1e4564ebe1f531645f7329718dc
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814059"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900693"
 ---
 # <a name="script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-on-hdinsight"></a>Script actie voor het installeren van externe Python-pakketten voor Jupyter-notebooks in Apache Spark in HDInsight
 
@@ -97,7 +97,7 @@ Er zijn twee soorten open source-onderdelen die beschikbaar zijn in de HDInsight
 
     Het resultaat ziet er als volgt uit:
     
-    ![Tensor flow code-uitvoering](./media/apache-spark-python-package-installation/execution.png "Tensor flow-code uitvoeren")
+    ![Tensor flow code-uitvoering](./media/apache-spark-python-package-installation/tensorflow-execution.png "Tensor flow-code uitvoeren")
 
 > [!NOTE]  
 > Er zijn twee python-installaties in het cluster. Spark maakt gebruik van de Anaconda python-installatie `/usr/bin/anaconda/bin` die zich bevindt in en is standaard ingesteld op de python 2,7-omgeving. Als u python 3. x wilt gebruiken en pakketten in de PySpark3-kernel wilt installeren, gebruikt `conda` u het pad naar het uitvoer bare `-n` bestand voor die omgeving en gebruikt u de para meter om de omgeving op te geven. Met de opdracht `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`wordt bijvoorbeeld het `ggplot` pakket geïnstalleerd op de python 3,5-omgeving met behulp van het `conda-forge` kanaal.

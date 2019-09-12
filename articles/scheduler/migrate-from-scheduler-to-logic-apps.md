@@ -109,7 +109,7 @@ Als u bijvoorbeeld de Postman-app gebruikt, kunt u een POST-aanvraag maken met d
 
 ![Aanvraag verzenden om uw logische app hand matig te activeren](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
 
-Nadat u de oproep hebt verzonden, wordt de reactie van de logische app weer **** gegeven onder het vak onbewerkt op het tabblad **hoofd tekst** . 
+Nadat u de oproep hebt verzonden, wordt de reactie van de logische app weer gegeven onder het vak onbewerkt op het tabblad **hoofd tekst** . 
 
 <a name="workflow-run-id"></a>
 
@@ -222,7 +222,7 @@ Als uw Azure-abonnement een betaald ondersteunings plan heeft, kunt u een aanvra
    |---------|-------|
    | **Probleem type** | **Documentatie** | 
    | **Abonnement** | <*your-Azure-subscription*> | 
-   | **Service** | Selecteer scheduler onder bewaking van **** **& beheer**. | 
+   | **Service** | Selecteer scheduler onder bewaking van **& beheer**. | 
    ||| 
 
 1. Selecteer de gewenste ondersteunings optie. Als u een betaald ondersteunings abonnement hebt, kiest u **volgende**.

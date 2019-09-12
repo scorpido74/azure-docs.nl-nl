@@ -1,46 +1,46 @@
 ---
-title: Aanbevolen procedures voor het gebruik van Key Vault - Azure Key Vault | Microsoft Docs
-description: Dit document wordt uitgelegd in enkele van de aanbevolen procedures voor het gebruik van Key Vault
+title: Aanbevolen procedures voor het gebruik van Key Vault-Azure Key Vault | Microsoft Docs
+description: In dit document worden enkele van de aanbevolen procedures voor het gebruik van Key Vault beschreven.
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-key-vault
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: eb7150d0b1c3a4a312b0c05ba7612960aaf640f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 654a9bb772c8a7426a335c98dfeca69515b9ce67
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65227929"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881615"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Aanbevolen procedures voor het gebruik van Key Vault
 
-## <a name="control-access-to-your-vault"></a>Toegangsbeheer voor uw kluis
+## <a name="control-access-to-your-vault"></a>Toegang tot uw kluis beheren
 
-Azure Key Vault is een cloudservice die beveiligt uw versleutelingssleutels en geheimen, zoals certificaten, verbindingsreeksen en wachtwoorden. Omdat deze gegevens vertrouwelijk zijn en bedrijfskritiek, u moet voor het beveiligen van toegang tot uw key vaults door toe te staan alleen gemachtigde toepassingen en gebruikers. Dit [artikel](key-vault-secure-your-key-vault.md) biedt een overzicht van het model voor Key Vault. Het wordt verificatie en autorisatie worden uitgelegd en wordt beschreven hoe u veilig toegang tot uw key vaults.
+Azure Key Vault is een Cloud service die versleutelings sleutels en geheimen beveiligt, zoals certificaten, verbindings reeksen en wacht woorden. Omdat deze gegevens gevoelig en zakelijk kritiek zijn, moet u de toegang tot uw sleutel kluizen beveiligen door alleen geautoriseerde toepassingen en gebruikers toe te staan. In dit [artikel](key-vault-secure-your-key-vault.md) vindt u een overzicht van het toegangs model van Key Vault. Hierin worden verificatie en autorisatie uitgelegd en wordt beschreven hoe u de toegang tot uw sleutel kluizen kunt beveiligen.
 
-Suggesties tijdens het beheren van toegang tot de kluis zijn als volgt:
-1. Vergrendelen van toegang tot uw abonnement, resourcegroep en de sleutel kluizen (RBAC)
-2. Toegangsbeleid voor elke kluis maken
-3. Minimale bevoegdheden toegang principal gebruiken om toegang te verlenen
-4. Firewall inschakelen en [VNET-Service-eindpunten](key-vault-overview-vnet-service-endpoints.md)
+Suggesties voor het beheren van de toegang tot uw kluis zijn als volgt:
+1. De toegang tot uw abonnement, resource groep en sleutel kluizen (RBAC) vergren delen
+2. Toegangs beleid maken voor elke kluis
+3. Access principal met minimale bevoegdheden gebruiken om toegang te verlenen
+4. Firewall-en [VNET-service-eind punten](key-vault-overview-vnet-service-endpoints.md) inschakelen
 
-## <a name="use-separate-key-vault"></a>Gebruik afzonderlijke Key Vault
+## <a name="use-separate-key-vault"></a>Afzonderlijke Key Vault gebruiken
 
-Onze aanbeveling is het gebruik van een sleutelkluis per toepassing per omgeving (ontwikkeling, Pre-productie en productie). Dit kunt u geen geheimen delen tussen omgevingen en verlaagt u ook de bedreiging in het geval van een inbreuk.
+Onze aanbeveling is een kluis per toepassing per omgeving te gebruiken (ontwikkeling, voor bereiding en productie). Zo kunt u geen geheimen delen tussen omgevingen en vermindert u ook de dreiging in het geval van een schending.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Back-up
 
-Zorg ervoor dat u ondernemen regelmatig terug ups van uw [kluis](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/) op update/delete/maken van objecten in een kluis.
+Zorg ervoor dat u regel matig back-ups van uw [kluis](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/) onderneemt op het bijwerken/verwijderen/maken van objecten in een kluis.
 
-## <a name="turn-on-logging"></a>Logboekregistratie inschakelen
+## <a name="turn-on-logging"></a>Logboek registratie inschakelen
 
-[Logboekregistratie inschakelen](key-vault-logging.md) voor uw kluis. Ook waarschuwingen instellen.
+[Schakel logboek registratie in](key-vault-logging.md) voor uw kluis. Stel ook waarschuwingen in.
 
-## <a name="turn-on-recovery-options"></a>Opties voor Systeemherstel inschakelen
+## <a name="turn-on-recovery-options"></a>Herstel opties inschakelen
 
-1. Schakel [voorlopig verwijderen](key-vault-ovw-soft-delete.md).
-2. Opschonen-beveiliging inschakelen als u wilt beschermen tegen het verwijderen van de werking van het geheim / kluis, zelfs nadat de functie voor voorlopig verwijderen is ingeschakeld.
+1. Schakel [zacht verwijderen](key-vault-ovw-soft-delete.md)in.
+2. Schakel de optie Beveiliging opschonen in als u wilt dat de geheime/kluis wordt verwijderd, zelfs nadat de functie voor het uitvoeren van een tijdelijke verwijdering is ingeschakeld.

@@ -2,31 +2,25 @@
 title: Just-in-time-toegang tot virtuele machines in Azure Security Center | Microsoft Docs
 description: In dit document wordt gedemonstreerd hoe just-in-time-VM-toegang in Azure Security Center u de toegang tot uw virtuele Azure-machines kunt beheren.
 services: security-center
-documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
-ms.assetid: 671930b1-fc84-4ae2-bf7c-d34ea37ec5c7
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 8/20/2019
-ms.author: v-mohabe
-ms.openlocfilehash: f3e6cc0464c8f395db7cac0ebf8a16230f5ebcbe
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 9948f4d9e6287530004b073adf10bb723899e96d
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872915"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910608"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Toegang tot virtuele machines beheren met Just-in-time
 
 Just-in-time-toegang (VM) voor virtuele machines kan worden gebruikt om inkomend verkeer naar uw Azure-Vm's te vergren delen, waardoor de bloot stelling aan aanvallen wordt verkleind en zo snel mogelijk toegang tot virtuele machines kan worden gemaakt.
 
 > [!NOTE]
-> De just-in-time-functie is beschikbaar in de laag standaard van Security Center.  Bekijk de pagina [Prijzen](security-center-pricing.md) voor meer informatie over de tariefopties van Security Center.
+> De just-in-time-functie is beschikbaar in de laag standaard van Security Center. Bekijk de pagina [Prijzen](security-center-pricing.md) voor meer informatie over de tariefopties van Security Center.
 
 
 > [!NOTE]
@@ -36,7 +30,7 @@ Just-in-time-toegang (VM) voor virtuele machines kan worden gebruikt om inkomend
 
 Brute force-aanvallen zijn vaak gericht op beheer poorten als middel om toegang te krijgen tot een virtuele machine. Als dit lukt, kan een aanvaller de controle over de virtuele machine overnemen en een aanvaller binnen in uw omgeving tot stand brengen.
 
-Een manier om de bloot stelling aan een beveiligings aanval te verminderen is het beperken van de hoeveelheid tijd die een poort is geopend. Beheerpoorten hoeven niet te allen tijde geopend te zijn. Ze hoeven alleen geopend te zijn wanneer u bent verbonden met de VM, bijvoorbeeld om beheer- of onderhoudstaken uit te voeren. Wanneer just-in-time is ingeschakeld, maakt Security Center gebruik van [netwerk beveiligings groep](../virtual-network/security-overview.md#security-rules) (NSG) en Azure firewall regels, waarmee de toegang tot beheer poorten wordt beperkt zodat deze niet kunnen worden benaderd door aanvallers.
+Een manier om de bloot stelling aan een beveiligings aanval te verminderen is het beperken van de hoeveelheid tijd die een poort is geopend. Beheer poorten hoeven niet te allen tijde open zijn. Ze hoeven alleen te zijn geopend terwijl u verbonden bent met de virtuele machine, bijvoorbeeld om beheer-of onderhouds taken uit te voeren. Wanneer just-in-time is ingeschakeld, maakt Security Center gebruik van [netwerk beveiligings groep](../virtual-network/security-overview.md#security-rules) (NSG) en Azure firewall regels, waarmee de toegang tot beheer poorten wordt beperkt zodat deze niet kunnen worden benaderd door aanvallers.
 
 ![Just-in-time-scenario](./media/security-center-just-in-time/just-in-time-scenario.png)
 
@@ -87,7 +81,7 @@ Vanuit ASC kunt u een JIT-beleid configureren en toegang aanvragen tot een virtu
     **Just-in-time-VM-toegang** biedt informatie over de status van uw vm's:
 
     - **Geconfigureerd** : vm's die zijn geconfigureerd voor ondersteuning van just-in-time-VM-toegang. De gegevens die worden weer gegeven, zijn de afgelopen week en bevatten voor elke VM het aantal goedgekeurde aanvragen, de datum en tijd van laatste toegang en de laatste gebruiker.
-    - **Aanbevolen** : vm's die just-in-time-VM-toegang kunnen ondersteunen, maar die niet zijn geconfigureerd voor. U wordt aangeraden just-in-time-VM-toegangs beheer in te scha kelen voor deze Vm's. 
+    - **Aanbevolen** : vm's die just-in-time-VM-toegang kunnen ondersteunen, maar die niet zijn geconfigureerd voor. U wordt aangeraden just-in-time-VM-toegangs beheer in te scha kelen voor deze Vm's.
     - **Geen aanbeveling**: redenen waarom een VM mogelijk niet wordt aanbevolen zijn:
       - Ontbrekende NSG: voor de just-in-time-oplossing moet een NSG aanwezig zijn.
       - Klassieke VM-Security Center just-in-time-VM-toegang ondersteunt momenteel alleen Vm's die via Azure Resource Manager zijn geïmplementeerd. Een klassieke implementatie wordt niet ondersteund door de just-in-time-oplossing. 
@@ -131,7 +125,7 @@ Om toegang te vragen tot een virtuele machine via ASC:
 
     - Het pictogram in de kolom **verbindings Details** geeft aan of JIT is ingeschakeld op de NSG of FW. Als de functie is ingeschakeld op beide, wordt alleen het pictogram Firewall weer gegeven.
 
-    - In de kolom **verbindings Details** vindt u de juiste informatie die nodig is om verbinding te maken met de virtuele machine, evenals de geopende poorten.
+    - In de kolom **verbindings Details** vindt u de informatie die nodig is om verbinding te maken met de virtuele machine en de bijbehorende open poorten.
 
       ![Just-in-time-toegang aanvragen](./media/security-center-just-in-time/request-just-in-time-access.png)
 
@@ -191,11 +185,11 @@ Dit maakt just-in-time-toegang voor de virtuele machine mogelijk met de volgende
 
 - Windows-servers:
     - RDP-poort 3389
-    - 3 uur Maxi maal toegestane toegang
+    - Drie uur voor Maxi maal toegestane toegang
     - Toegestane IP-adressen van bron worden ingesteld op een
 - Linux-servers:
     - SSH-poort 22
-    - 3 uur Maxi maal toegestane toegang
+    - Drie uur voor Maxi maal toegestane toegang
     - Toegestane IP-adressen van bron worden ingesteld op een
      
 Als een virtuele machine al just-in-time is ingeschakeld, kunt u, wanneer u naar de pagina configuratie gaat, zien dat just-in-time is ingeschakeld en kunt u de koppeling gebruiken om het beleid in Azure Security Center te openen om de instellingen weer te geven en te wijzigen.
@@ -213,7 +207,7 @@ Wanneer u in de Azure Portal probeert verbinding te maken met een virtuele machi
   De toegang wordt aangevraagd met de volgende standaard parameters:
 
   - **bron-IP**: Any (*) (kan niet worden gewijzigd)
-  - **tijds bereik**: 3 uur (kan niet worden gewijzigd)  <!--Isn't this set in the policy-->
+  - **tijds bereik**: Drie uur (kan niet worden gewijzigd) <!--Isn't this set in the policy-->
   - **poort nummer** RDP-poort 3389 voor Windows/poort 22 voor Linux (kan worden gewijzigd)
 
     > [!NOTE]

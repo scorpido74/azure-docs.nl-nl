@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 06e1d881a14367c579bd58ffae04dc0970eb041a
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a3f9768043c9acef9640b8e286611de94e44a7ff
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941940"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910492"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Bedrijfs kritieke gegevens opslaan in Azure Blob Storage
 
@@ -53,7 +53,7 @@ Het verwijderen van containers en accounts is ook niet toegestaan als er blobs z
 ### <a name="time-based-retention"></a>Bewaar periode op basis van tijd
 
 > [!IMPORTANT]
-> Een Bewaar beleid op basis van tijd moet worden *vergrendeld* om de BLOB een compatibele onveranderlijke status (schrijven en verwijderen beveiligd) te hebben voor SEC 17a-4 (f) en andere naleving van regelgeving. We raden u aan het beleid binnen een redelijke hoeveelheid tijd te vergren delen, meestal minder dan 24 uur. De initiële status van een toegepast Bewaar beleid op basis van tijd is *ontgrendeld*, zodat u de functie kunt testen en wijzigingen kunt aanbrengen in het beleid voordat u het vergrendelt. Hoewel de status ontgrendeld Onveranderbaarheid beveiliging biedt, is het niet raadzaam om de *Ontgrendelde* status te gebruiken voor andere doel einden dan kortings functies. 
+> Een Bewaar beleid op basis van tijd moet worden *vergrendeld* om de BLOB een compatibele onveranderlijke status (schrijven en verwijderen beveiligd) te hebben voor SEC 17a-4 (f) en andere naleving van regelgeving. We raden u aan het beleid binnen een redelijke hoeveelheid tijd te vergren delen, meestal minder dan 24 uur. De initiële status van een toegepast Bewaar beleid op basis van tijd is *ontgrendeld*, zodat u de functie kunt testen en wijzigingen kunt aanbrengen in het beleid voordat u het vergrendelt. Hoewel de status *ontgrendeld* Onveranderbaarheid beveiliging biedt, is het niet raadzaam om de *Ontgrendelde* status te gebruiken voor andere doel einden dan kortings functies. 
 
 Wanneer een Bewaar beleid op basis van tijd op een container wordt toegepast, blijven alle blobs in de container onveranderbaar voor de duur van de *daad werkelijke* Bewaar periode. De daad werkelijke Bewaar periode voor bestaande blobs is gelijk aan het verschil tussen de wijzigings tijd van de BLOB en de door de gebruiker opgegeven Bewaar periode.
 
@@ -189,7 +189,7 @@ Ja, een container kan zowel een juridische bewaring als een op tijd gebaseerd Be
 
 Nee, juridisch Hold is alleen de algemene term die wordt gebruikt voor een niet op tijd gebaseerd Bewaar beleid. Het hoeft niet alleen te worden gebruikt voor procedures die betrekking hebben op een rechts zaak. Beleid voor juridische bewaring is handig voor het uitschakelen van overschrijving en verwijderingen voor het beveiligen van belang rijke gegevens van de bedrijfs WORM, waarbij de Bewaar periode onbekend is. U kunt dit als bedrijfs beleid gebruiken voor het beveiligen van de workloads van uw missie kritieke WORM of voor het gebruik van het beleid als stagingbeleid voordat een aangepaste gebeurtenis trigger het gebruik van een op tijd gebaseerd Bewaar beleid vereist. 
 
-**Kan ik een *vergrendeld* op tijd gebaseerd Bewaar beleid of juridische bewaring verwijderen?**
+**Kan ik een _vergrendeld_ op tijd gebaseerd Bewaar beleid of juridische bewaring verwijderen?**
 
 Alleen een niet-vergrendeld op tijd gebaseerd Bewaar beleid kan uit een container worden verwijderd. Wanneer een Bewaar beleid op basis van tijd is vergrendeld, kan het niet meer worden verwijderd. alleen efficiënte Bewaar periode-uitbrei dingen zijn toegestaan. Codes voor juridische bewaring kunnen worden verwijderd. Wanneer alle juridische Tags worden verwijderd, wordt de juridische bewaring verwijderd.
 
@@ -211,7 +211,7 @@ In het geval van een niet-betaling, geldt het normale Bewaar beleid voor gegeven
 
 **Biedt u ook een evaluatie- of respijtperiode voor de zojuist beschreven functie?**
 
-Ja. Wanneer een Bewaar beleid op basis van tijd voor het eerst wordt gemaakt, heeft dit een status die niet is *vergrendeld* . In deze status kunt u elke gewenste wijziging aanbrengen in het Bewaar interval, zoals verg Roten of verkleinen en zelfs het beleid verwijderen. Nadat het beleid is vergrendeld, blijft het vergrendeld totdat het retentie-interval verloopt. Met dit vergrendelde beleid voor komt u dat het Bewaar interval wordt verwijderd en gewijzigd. We raden u ten zeerste aan de ontgrendelde status alleen te gebruiken voor proef doeleinden en het beleid binnen een periode van 24 uur te vergren delen. Deze procedures helpen u te voldoen aan de beschik over de SEC 17a-4 (f) en andere voor Schriften.
+Ja. Wanneer een Bewaar beleid op basis van tijd voor het eerst wordt gemaakt, heeft dit een status die niet is *vergrendeld* . In deze status kunt u elke gewenste wijziging aanbrengen in het Bewaar interval, zoals verg Roten of verkleinen en zelfs het beleid verwijderen. Nadat het beleid is vergrendeld, blijft het vergrendeld totdat het retentie-interval verloopt. Met dit vergrendelde beleid voor komt u dat het Bewaar interval wordt verwijderd en gewijzigd. We raden u ten zeerste aan de *Ontgrendelde* status alleen te gebruiken voor proef doeleinden en het beleid binnen een periode van 24 uur te vergren delen. Deze procedures helpen u te voldoen aan de beschik over de SEC 17a-4 (f) en andere voor Schriften.
 
 **Kan ik zacht verwijderen naast onveranderbaar BLOB-beleid gebruiken?**
 

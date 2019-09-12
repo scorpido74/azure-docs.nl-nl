@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.openlocfilehash: 3b9001b9c7fa81b86c70d5c07a33a54bae539add
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 3ffb28ba6c2e6170198a0a360315b7d71f059c34
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736452"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899898"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Zelfstudie: Een Scala Maven-toepassing maken voor Apache Spark in HDInsight met behulp van IntelliJ
 
@@ -177,27 +177,27 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
 
     2. Ga in het venster **Project Structure** naar **Artifacts** > **het plusteken +**  > **JAR** > **From modules with dependencies...** .
 
-        ![JAR maken](./media/apache-spark-create-standalone-application/create-jar-1.png)
+        ![JAR1 maken](./media/apache-spark-create-standalone-application/create-jar-1.png)
 
     3. Selecteer in het venster **Create JAR from Modules** het mappictogram in het tekstvak **Main Class**.
 
     4. Selecteer in het venster **Select Main Class** de klasse die standaard wordt weergegeven en selecteer vervolgens **OK**.
 
-        ![JAR maken](./media/apache-spark-create-standalone-application/create-jar-2.png)
+        ![JAR2 maken](./media/apache-spark-create-standalone-application/create-jar-2.png)
 
     5. Controleer of in het venster **Create JAR from Modules** de optie **extract to the target JAR** is geselecteerd en selecteer vervolgens **OK**.  Met deze instelling wordt er één JAR gemaakt met alle afhankelijkheden.
 
-        ![JAR maken](./media/apache-spark-create-standalone-application/create-jar-3.png)
+        ![JAR3 maken](./media/apache-spark-create-standalone-application/create-jar-3.png)
 
     6. Het tabblad **Output Layout** geeft een overzicht van alle JAR-bestanden die zijn opgenomen als onderdeel van het Maven-project. U kunt de bestanden selecteren en verwijderen waarvan de Scala-toepassing niet direct afhankelijk is. Voor de toepassing die u hier maakt, kunt u alle bestanden behalve het laatste bestand (**SparkSimpleApp compile output**) verwijderen. Selecteer de JAR-bestanden die u wilt verwijderen en selecteer vervolgens het minteken **-** .
 
-        ![JAR maken](./media/apache-spark-create-standalone-application/delete-output-jars.png)
+        ![JAR4 maken](./media/apache-spark-create-standalone-application/delete-output-jars.png)
 
         Controleer of het selectievakje **Include in project build** is ingeschakeld, zodat het JAR-bestand telkens wordt gemaakt wanneer het project wordt gecompileerd of bijgewerkt. Selecteer **Apply** en vervolgens **OK**.
 
     7. Ga naar **Build** > **Build Artifacts** > **Build** om het JAR-bestand te maken. Het project wordt in circa dertig seconden gecompileerd.  Het bestand wordt opgeslagen in **\out\artifacts**.
 
-        ![JAR maken](./media/apache-spark-create-standalone-application/output.png)
+        ![uitvoer](./media/apache-spark-create-standalone-application/hdi-artifact-output-jar.png)
 
 ## <a name="run-the-application-on-the-apache-spark-cluster"></a>De toepassing uitvoeren in het Apache Spark-cluster
 

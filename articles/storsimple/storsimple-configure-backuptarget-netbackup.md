@@ -340,7 +340,7 @@ In de volgende procedure wordt ervan uitgegaan dat NetBackup en de doelhost zijn
 
    ![Beheer console voor netback-ups, back-upfrequentie en rotatie voor een nieuw beleid](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8. Selecteer **volgende** >  **** volgendevolt > **ooien**.  U kunt het schema wijzigen nadat het beleid is gemaakt.
+8. Selecteer **volgende** > volgendevolt > **ooien**.  U kunt het schema wijzigen nadat het beleid is gemaakt.
 
 9. Selecteer om het beleid dat u zojuist hebt gemaakt uit te vouwenen selecteer vervolgens planningen.
 

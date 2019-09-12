@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: c6f55b40b3ee077b81a3cdd6f3add7a2cad23f95
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: dca329ce598a9ecbc7da71cc1c24bf7731a4c994
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809918"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885419"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Azure HDInsight-clusters aanpassen met behulp van script acties
 
@@ -356,7 +356,7 @@ Zie [een script actie Toep assen op een op Linux gebaseerd HDInsight-cluster](ht
 
 6. U kunt ook het weglatings teken, **...** , rechts van de vermeldingen in de sectie script acties selecteren om acties uit te voeren.
 
-    ![Script acties, weglatings tekens](./media/hdinsight-hadoop-customize-cluster-linux/deletepromoted.png)
+    ![Script acties, weglatings tekens](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -442,7 +442,7 @@ U kunt de Ambari-web-gebruikers interface gebruiken om informatie te bekijken di
 
 3. Zoek de vermeldingen met **\_customscriptaction** uit in de kolom **bewerkingen** . Deze vermeldingen worden gemaakt wanneer de script acties worden uitgevoerd.
 
-    ![Scherm afbeelding van bewerkingen](./media/hdinsight-hadoop-customize-cluster-linux/ambariscriptaction.png)
+    ![Scherm afbeelding van bewerkingen](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 
     Als u de **stdout** -en **stderr** -uitvoer wilt weer geven, selecteert u de vermelding **run\customscriptaction** en zoomt u in op de koppelingen. Deze uitvoer wordt gegenereerd wanneer het script wordt uitgevoerd en kan nuttige informatie bevatten.
 
@@ -452,7 +452,7 @@ Als het maken van een cluster mislukt vanwege een script fout, worden de logboek
 
 * De opslag logboeken zijn beschikbaar `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`op.
 
-    ![Script actie logboeken](./media/hdinsight-hadoop-customize-cluster-linux/script_action_logs_in_storage.png)
+    ![Script actie logboeken](./media/hdinsight-hadoop-customize-cluster-linux/script-action-logs-in-storage.png)
 
     In deze map worden de logboeken afzonderlijk geordend voor **hoofd knooppunt**, **worker node**en **Zookeeper node**. Zie de volgende voorbeelden:
 

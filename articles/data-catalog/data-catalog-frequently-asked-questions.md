@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 754e967a1be0b00f7ce7448744ec90690fd9f0c3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 2e286854b9a38c1189ff85307f3e29454be46fb9
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736429"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898720"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Veelgestelde vragen over Azure Data Catalog
 In dit artikel vindt u antwoorden op veelgestelde vragen met betrekking tot de Azure Data Catalog-service.
@@ -52,6 +52,15 @@ Zie [Data CATALOG DSR](data-catalog-dsr.md)voor een lijst met gegevens bronnen d
 
 ## <a name="how-do-i-request-support-for-another-data-source"></a>Hoe kan ik ondersteuning aanvragen voor een andere gegevens bron?
 Als u functie aanvragen en andere feedback wilt verzenden, gaat u naar de [Data Catalog op de Azure feedback forums](https://feedback.azure.com/forums/906052-data-catalog/category/320788-data-sources).
+
+## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>Waarom verschijnt er al een fout *catalogus* wanneer ik probeer een nieuwe catalogus te maken?
+
+Wanneer u Office 365 E5 aanschaft met Power BI Pro licentie, maakt micro soft automatisch een standaard catalogus in de regio van het abonnement. Deze catalogus maakt gebruik van de gratis SKU. De gebruikers licentie voor Office 365/Power BI wordt beheerd op de pagina beheer van Office 365. 
+
+Dit type gegevens catalogus heeft echter geen **beheerders optie** en is niet zichtbaar in de **Azure Portal**. U kunt dit type gegevens catalogus niet verwijderen. Op dezelfde manier mag u de naam van de gegevens catalogus niet wijzigen en kunt u deze niet naar een andere regio verplaatsen. 
+
+Gebruikers accounts waaraan een Power BI Pro-licentie is toegewezen, hebben automatisch toegang tot de Data Catalog als gevolg van de licentie overeenkomst wanneer ze zich hebben geregistreerd voor Office 365 E5 met de Power BI Pro-licentie. Dit type gebruiker heeft volledige toegang tot assets van data Catalogs zonder beheerders bevoegdheden. Dit type gebruiker maakt *geen* deel uit van de gebruikersrol **Catalog** in azure Data Catalog.
+
 
 ## <a name="how-do-i-get-started-with-data-catalog"></a>Hoe kan ik aan de slag met Data Catalog?
 De beste manier om aan de slag te gaan, is aan de slag [met Data Catalog](data-catalog-get-started.md). Dit artikel is een end-to-end-overzicht van de mogelijkheden van de service.

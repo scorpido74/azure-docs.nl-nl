@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c06cd53e408ebcae24de487fe1d4d25e14aae11b
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240717"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910534"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Verbinding maken tussen on-premises en CloudSimple met behulp van ExpressRoute
 
@@ -23,7 +23,7 @@ Als u al een Azure ExpressRoute-verbinding hebt vanaf een externe locatie (zoals
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Een **/29-** netwerk adres blok is vereist voor het tot stand brengen van Global Reach verbinding van on-premises.  De/29-adres ruimte wordt gebruikt voor het tussenliggende netwerk tussen ExpressRoute-circuits.  Het tussenliggende netwerk mag niet overlappen met een van de virtuele netwerken van Azure, on-premises netwerken of CloudSimple-particuliere Cloud netwerken.
+Een **/29-** netwerk adres blok is vereist voor het tot stand brengen van Global Reach verbinding van on-premises.  De/29-adres ruimte wordt gebruikt voor het tussenliggende netwerk tussen ExpressRoute-circuits.  Het tussenliggende netwerk mag niet overlappen met een van uw virtuele Azure-netwerken, on-premises netwerken of CloudSimple-particuliere Cloud netwerken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,7 +32,7 @@ Een **/29-** netwerk adres blok is vereist voor het tot stand brengen van Global
 
 ## <a name="scenarios"></a>Scenario's
 
-Door uw on-premises netwerk te verbinden met uw particuliere cloud netwerk, kunt u de Privécloud op verschillende manieren gebruiken, waaronder de volgende:
+Door uw on-premises netwerk te verbinden met uw particuliere cloud netwerk, kunt u de Privécloud op verschillende manieren gebruiken, met inbegrip van de volgende scenario's:
 
 * Toegang tot uw particuliere cloud netwerk zonder een site-naar-site-VPN-verbinding te maken.
 * Gebruik uw on-premises Active Directory als een id-bron in uw Privécloud.
@@ -43,6 +43,7 @@ Door uw on-premises netwerk te verbinden met uw particuliere cloud netwerk, kunt
 ## <a name="connecting-expressroute-circuits"></a>ExpressRoute-circuits verbinden
 
 Om de ExpressRoute-verbinding tot stand te brengen, moet u een autorisatie maken op uw ExpressRoute-circuit en de autorisatie gegevens opgeven voor CloudSimple.
+
 
 ### <a name="create-expressroute-authorization"></a>ExpressRoute-autorisatie maken
 
@@ -70,6 +71,11 @@ Om de ExpressRoute-verbinding tot stand te brengen, moet u een autorisatie maken
     * Subtype probleem: **ExpressRoute-verbinding maken met on-premises**
     * Geef de bron-ID en de autorisatie sleutel op die u hebt gekopieerd en opgeslagen in het detail venster.
     * Geef een/29-netwerk adres ruimte op voor het tussenliggende netwerk.
+    * Verzendt u de standaard route via ExpressRoute?
+    * Moet het verkeer van de Privécloud gebruikmaken van de standaard route die via ExpressRoute wordt verzonden?
+
+    > [!IMPORTANT]
+    > Als u een standaard route verzendt, kunt u al het Internet verkeer vanuit een Privécloud verzenden met behulp van uw on-premises Internet verbinding.  Als u de standaard route die in de Privécloud is geconfigureerd wilt uitschakelen en de standaard route voor on-premises verbindingen wilt gebruiken, geeft u de details op in het ondersteunings ticket.
 
 ## <a name="next-steps"></a>Volgende stappen
 

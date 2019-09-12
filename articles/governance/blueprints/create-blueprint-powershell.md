@@ -7,12 +7,12 @@ ms.date: 08/21/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: bfd2d1215e7673f7ff73a0c875973e45362ce6b0
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: d2069819203e821b42ea2f70e38f27b49053639e
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231902"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910041"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Quickstart: Een Azure Blueprint definiëren en toewijzen met Power shell
 
@@ -27,6 +27,10 @@ Als u leert hoe u blauwdrukken in Azure maakt en toewijst, kunnen er algemene pa
 > - Een blauwdruk verwijderen die aan een abonnement is toegewezen
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint.
+
+## <a name="prerequisites"></a>Vereisten
+
+Als deze nog niet is geïnstalleerd, volgt u de instructies in [add de module AZ. Blue](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) voor het installeren en valideren van de module **AZ. blauw druk** van de PowerShell Gallery.
 
 ## <a name="create-a-blueprint"></a>Een blauwdruk maken
 
@@ -313,7 +317,7 @@ De waarde voor `{BlueprintVersion}` is een reeks letters, cijfers en afbreekstre
 
 Zodra een blauw druk is gepubliceerd met Power shell, kan deze worden toegewezen aan een abonnement. Wijs de blauwdruk die u hebt gemaakt toe aan een van de abonnementen in uw beheergroephiërarchie. Als de blauwdruk is opgeslagen in een abonnement, kan deze alleen aan dat abonnement worden toegewezen. De para meter **blauw** drukken geeft aan welke blauw druk moet worden toegewezen. Gebruik de overeenkomende Power shell-para meters voor de `New-AzBlueprintAssignment` cmdlet of geef deze op in het JSON-bestand van de **AssignmentFile** -para meter om naam, locatie, identiteit, vergren deling en blauw druk-para meters op te geven.
 
-1. Voer de blauwdrukimplementatie uit door deze toe te wijzen aan een abonnement. Omdat de para meters voor inzenders en **eigen aren** een matrix moeten hebben met objectid's van de principals waaraan de roltoewijzing moet worden toegekend, gebruikt u [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) voor het verzamelen van de objectid's voor gebruik in de **AssignmentFile** voor uw eigen gebruikers, groepen of service-principals.
+1. Voer de blauwdrukimplementatie uit door deze toe te wijzen aan een abonnement. Omdat de para meters voor **inzenders** en **eigen aren** een matrix moeten hebben met objectid's van de principals waaraan de roltoewijzing moet worden toegekend, gebruikt u [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) voor het verzamelen van de objectid's voor gebruik in de **AssignmentFile** voor uw eigen gebruikers, groepen of service-principals.
 
    - JSON-bestand-blueprintAssignment. json
 
@@ -397,7 +401,7 @@ Remove-AzBlueprintAssignment -Name 'assignMyBlueprint'
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [levens duur van de blauw druk](./concepts/lifecycle.md).
+- Meer informatie over de [levenscyclus van een blauwdruk](./concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](./concepts/parameters.md) gebruikt.
 - Meer informatie over hoe u de [blauwdrukvolgorde](./concepts/sequencing-order.md) aanpast.
 - Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](./concepts/resource-locking.md).

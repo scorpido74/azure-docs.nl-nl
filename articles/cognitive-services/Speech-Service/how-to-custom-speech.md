@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 6d697cd49363139cfeae2753a4f1ae40fca6e6b2
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 0f3b7826fdcc16d3094785507ec8263da39d6284
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802504"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881528"
 ---
 # <a name="what-is-custom-speech"></a>Wat is Custom Speech?
 
@@ -25,7 +25,7 @@ ms.locfileid: "70802504"
 
 Voordat u iets met Custom Speech kunt doen, hebt u een Azure-account en een abonnement op spraak services nodig. Zodra u een account hebt, kunt u uw gegevens voorbereiden, uw modellen trainen en testen, de herkennings kwaliteit controleren, de nauw keurigheid evalueren en uiteindelijk het aangepaste spraak-naar-tekst model implementeren en gebruiken.
 
-Dit diagram markeert de onderdelen waaruit de [Custom speech Portal](https://speech.microsoft.com/customspeech)is gemaakt. Gebruik de onderstaande koppelingen voor meer informatie over elke stap.
+Dit diagram markeert de onderdelen waaruit de [Custom speech Portal](https://aka.ms/customspeech)is gemaakt. Gebruik de onderstaande koppelingen voor meer informatie over elke stap.
 
 ![Hier worden de verschillende onderdelen van de Custom Speech Portal gemarkeerd.](./media/custom-speech/custom-speech-overview.png)
 

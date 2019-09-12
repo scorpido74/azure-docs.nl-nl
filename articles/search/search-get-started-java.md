@@ -1,5 +1,5 @@
 ---
-title: 'Java Quick Start: Indexen maken, laden en doorzoeken in Java'
+title: "Quickstart: Een zoek index maken in Java met REST-Api's-Azure Search"
 description: Hierin wordt uitgelegd hoe u een index maakt, gegevens laadt en query's uitvoert met behulp van Java en de Azure Search REST-Api's.
 author: lisaleib
 manager: nitinme
@@ -10,15 +10,15 @@ ms.service: search
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 07/11/2019
-ms.openlocfilehash: eec22d14c2d71a94f21a2403463315d477032ede
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 09/10/2019
+ms.openlocfilehash: 455f3dfdce93d0b39960f9ec87b0938060f87687
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186728"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881572"
 ---
-# <a name="quickstart-create-load-and-query-indexes-using-azure-search-rest-apis-with-java"></a>Quickstart: Indexen maken, laden en query's uitvoeren met behulp van Azure Search REST-Api's met Java
+# <a name="quickstart-create-an-azure-search-index-in-java-using-rest-apis"></a>Quickstart: Een Azure Search-index maken in Java met behulp van REST-Api's
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)

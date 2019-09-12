@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: e5ae05b2ad1dc03bad210b1f67834865afd49df3
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 751d5b47006f5c99a747503ad4f052b3e03a043c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810890"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882428"
 ---
-# <a name="analyze-apache-hadoop-logs"></a>Apache Hadoop-logboeken analyseren
+# <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Apache Hadoop-Logboeken in azure HDInsight analyseren
 
 Elk Apache Hadoop cluster in azure HDInsight heeft een Azure-opslag account dat wordt gebruikt als het standaard bestandssysteem. Het opslag account wordt aangeduid als het standaard opslag account. Cluster maakt gebruik van de Azure-tabel opslag en de Blob-opslag op het standaard opslag account om de logboeken op te slaan.  Zie [Apache Hadoop clusters in HDInsight beheren](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts)voor meer informatie over het standaard opslag account voor uw cluster. De logboeken blijven bewaard in het opslag account, zelfs nadat het cluster is verwijderd.
 

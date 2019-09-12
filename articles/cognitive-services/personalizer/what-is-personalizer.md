@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 7e77a5a6891335139737ba3ef377c55b6694f043
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 3132d31e9e45718fa95c39a1b8160ea303ded25d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383394"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883660"
 ---
 # <a name="what-is-personalizer"></a>Wat is Personalizer?
 
@@ -66,9 +66,9 @@ Personaler service heeft twee Api's:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Snelstart: Een feedback-lus maken inC#](csharp-quickstart-commandline-feedback-loop.md)
-* [Snelstart: Een feedback-lus maken in node. js](quickstart-command-line-feedback-loop-nodejs-sdk.md)
-* [Snelstart: Een feedback-lus maken in python](python-quickstart-commandline-feedback-loop.md)
+* [Wat is er nieuw in personaliseren?](whats-new.md)
+* [Hoe Personaler werkt?](how-personalizer-works.md)
+* [Wat is versterking van het onderwijs?](concepts-reinforcement-learning.md)
 * [Meer informatie over de functies en acties voor de rang aanvraag](concepts-features.md)
 * [Meer informatie over het bepalen van de score voor de belonings aanvraag](concept-rewards.md)
 * [De interactieve demo gebruiken](https://personalizationdemo.azurewebsites.net/)

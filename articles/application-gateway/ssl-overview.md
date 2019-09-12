@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 199fcdf2ebf10852906b842f09fe7beafd2acdb5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e52a32c1897a7add939880fbe27d6b4b7fbee0bd
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326609"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883585"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Overzicht van SSL-beëindiging en end-to-end SSL met Application Gateway
 
@@ -95,7 +95,7 @@ Verificatie certificaten zijn afgeschaft en vervangen door vertrouwde basis cert
    
 > [!NOTE] 
 >
-> Het certificaat van de back-endserver moet zijn uitgegeven door een certificerings instantie die is opgenomen in het vertrouwde archief van de applicatin-gateway om een SSL-certificaat te kunnen vertrouwen. als het certificaat niet is uitgegeven door een vertrouwde certificerings instantie, wordt de Application Gateway vervolgens gecontroleerd Controleer of het certificaat van de verlenende CA is uitgegeven door een vertrouwde certificerings instantie, zodat er een vertrouwde CERTIFICERINGs instantie wordt gevonden (op welk moment een vertrouwde, beveiligde verbinding wordt ingesteld) of geen vertrouwde certificerings instantie kan worden gevonden (op welk punt bevindt de applicatin-gateway de back-unhe althy). Daarom wordt aanbevolen het back-endserver certificaat zowel de root-als de intermidiate-certificerings instantie te bevatten.
+> Een SSL-certificaat kan alleen worden vertrouwd als het certificaat van de back-endserver is uitgegeven door een CA die is opgenomen in het vertrouwde archief van de Application Gateway. als het certificaat niet is uitgegeven door een vertrouwde certificerings instantie, wordt de Application Gateway vervolgens gecontroleerd om te controleren of het certificaat van de verlenende CA is uitgegeven door een vertrouwde certificerings instantie, enzovoort, totdat een vertrouwde CERTIFICERINGs instantie wordt gevonden (op welk moment een vertrouwde, beveiligde verbinding wordt ingesteld) of geen vertrouwde certificerings instantie kan worden gevonden (op welk punt bevindt het Application Gateway de back-end te markeren slecht). Daarom wordt aanbevolen het back-endserver certificaat zowel de root-als de intermidiate-certificerings instantie te bevatten.
 
 - Als het certificaat zelfondertekend is of door onbekende tussen personen is ondertekend, moet u een vertrouwd basis certificaat instellen om end-to-end SSL in v2 SKU in te scha kelen. Application Gateway communiceert alleen met back-ends waarvan het basis certificaat van het server certificaat overeenkomt met een van de lijst met vertrouwde basis certificaten in de back-end-http-instelling die aan de groep is gekoppeld.
 

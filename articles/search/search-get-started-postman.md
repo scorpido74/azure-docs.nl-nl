@@ -1,5 +1,5 @@
 ---
-title: "REST Snelstartgids: Indexen maken, laden en query's uitvoeren met behulp van Postman-Azure Search"
+title: "Quickstart: Een zoek index in postman maken met REST-Api's-Azure Search"
 description: Meer informatie over het aanroepen van de Azure Search REST-Api's met behulp van Postman en voorbeeld gegevens en definities.
 author: HeidiSteen
 manager: nitinme
@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 07/11/2019
+ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: b1fcca0b135852660890f9f7591ee115d2ef2b47
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 138fd3d50a5f462c6a0ad954043f107c3c250917
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656783"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881532"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Quickstart: Een Azure Search index maken in postman met REST-Api's
 > [!div class="op_single_selector"]

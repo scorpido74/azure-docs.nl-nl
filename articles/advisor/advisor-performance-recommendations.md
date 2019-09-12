@@ -1,6 +1,6 @@
 ---
-title: Prestaties van Azure-toepassingen met Azure Advisor | Microsoft Docs
-description: Advisor gebruiken om de prestaties van uw Azure-implementaties te optimaliseren.
+title: Verbeter de prestaties van Azure-toepassingen met Azure Advisor | Microsoft Docs
+description: Gebruik Advisor om de prestaties van uw Azure-implementaties te optimaliseren.
 services: advisor
 documentationcenter: NA
 author: kasparks
@@ -8,120 +8,120 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 8fdae1e12e56dcbcb56941726b0c089ad59b8fc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8647e316cc77e7e1eed5108fafccd6d70d181cf
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254656"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898189"
 ---
-# <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Prestaties van Azure-toepassingen met Azure Advisor
+# <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Verbeter de prestaties van Azure-toepassingen met Azure Advisor
 
-Azure Advisor-aanbevelingen voor prestaties te verbeteren en de reactiesnelheid van uw bedrijfskritische toepassingen. U kunt ook aanbevelingen voor prestaties van de Advisor krijgen bij de **prestaties** van de Advisor-dashboard.
+Azure Advisor prestatie aanbevelingen helpen de snelheid en reactie tijd van uw bedrijfskritische toepassingen te verbeteren. U kunt de prestatie aanbevelingen van Advisor op het tabblad **prestaties** van het Advisor-dash board ontvangen.
 
-## <a name="reduce-dns-time-to-live-on-your-traffic-manager-profile-to-fail-over-to-healthy-endpoints-faster"></a>Time to live van uw Traffic Manager-profiel sneller failover naar de eindpunten in orde van DNS-beperken
+## <a name="reduce-dns-time-to-live-on-your-traffic-manager-profile-to-fail-over-to-healthy-endpoints-faster"></a>U kunt de DNS-tijd op uw Traffic Manager-profiel verlagen zodat er sneller een failover wordt uitgevoerd naar goede eind punten
 
-[Tijd naar Live (TTL) instellingen](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-performance-considerations) op uw Traffic Manager-profiel kunt u opgeven hoe snel om over te schakelen eindpunten als een bepaald eindpunt niet meer reageert op query's. Vermindering van de TTL-waarden, betekent dat clients worden doorgestuurd naar een functionerende eindpunten sneller.
+Met de [instellingen voor time to Live (TTL)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-performance-considerations) in uw Traffic Manager-profiel kunt u opgeven hoe snel eind punten moeten worden geswitcheerd als een bepaald eind punt niet meer reageert op query's. Het verminderen van de TTL-waarden betekent dat clients sneller naar werkende eind punten worden doorgestuurd.
 
-Azure Advisor identificeert Traffic Manager-profielen met een langer TTL geconfigureerd en aanbevolen configuratie van de TTL-waarde 20 seconden of 60 seconden, afhankelijk van of u het profiel is geconfigureerd voor [Fast Failover](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/).
+Azure Advisor identificeert Traffic Manager profielen met een meer TTL-waarde die is geconfigureerd en raadt u aan de TTL te configureren op 20 seconden of 60 seconden, afhankelijk van het feit of het profiel is geconfigureerd voor [snelle failover](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/).
 
-## <a name="improve-database-performance-with-sql-db-advisor"></a>Verbeter de prestaties van de database met SQL DB Advisor
+## <a name="improve-database-performance-with-sql-db-advisor"></a>Databaseprestaties verbeteren met SQL DB Advisor
 
-Advisor biedt u een consistente, geconsolideerde weergave van de aanbevelingen voor al uw Azure-resources. Het is geïntegreerd met SQL Database Advisor voor aanbevelingen voor het verbeteren van de prestaties van uw SQL Azure-database. SQL Database Advisor beoordeelt de prestaties van uw SQL Azure-databases door het analyseren van uw gebruiksgeschiedenis. Vervolgens biedt aanbevelingen die bij uitstek geschikt zijn voor het uitvoeren van de typische werkbelasting van de database.
-
-> [!NOTE]
-> Om aanbevelingen te krijgen, moet een database over een week van het gebruik van, en in de afgelopen week moet er activiteit zijn consistent. SQL Database Advisor kunt eenvoudiger voor consistente querypatronen dan voor willekeurige pieken van activiteit optimaliseren.
-
-Zie voor meer informatie over SQL Database Advisor [SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
-
-## <a name="improve-app-service-performance-and-reliability"></a>App Service-prestaties en betrouwbaarheid verbeteren
-
-Azure Advisor kan worden geïntegreerd met aanbevelingen voor het verbeteren van de ervaring van uw App Services en relevante platformmogelijkheden detecteren. Voorbeelden van aanbevelingen voor de App-Services zijn:
-* Detectie van exemplaren waar geheugen of CPU-resources worden uitgeput door app-runtimes met opties voor risicobeperking.
-* Detectie van exemplaren waar collocating resources, zoals web-apps en -databases kan verbeteren, prestaties en lagere kosten.
-
-Zie voor meer informatie over aanbevelingen voor de App Services [Best Practices voor Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/).
-
-## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>Managed Disks gebruiken om te voorkomen dat de-i/o-schijfbeperking
-
-Advisor identificeert virtuele machines die deel uitmaken van een storage-account dat de schaalbaarheidsdoel bereikt. Dit probleem kunt u de virtuele machines vatbaar voor i/o-beperking. Advisor wordt aangeraden ze Managed Disks gebruiken om te voorkomen dat de systeemprestaties.
-
-## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks-by-using-premium-storage"></a>De prestaties en betrouwbaarheid van virtuele-machineschijven verbeteren met behulp van Premium Storage
-
-Advisor identificeert virtuele machines met standard-schijven waarvoor een groot aantal transacties in uw storage-account en wordt aanbevolen een upgrade naar premium-schijven. 
-
-Azure Premium Storage voorziet in ondersteuning voor hoge prestaties en lage latentie schijven voor virtuele machines die I/O-intensieve workloads uitvoeren. VM-schijven die gebruikmaken van premium storage-accounts worden gegevens opgeslagen op SSD-schijven (SSD's). Voor de beste prestaties voor uw toepassing, wordt u aangeraden dat u alle schijven van virtuele machines waarvoor hoge IOPS naar premium storage gemigreerd.
-
-## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Gegevensverschil op uw SQL datawarehouse-tabel te verhogen van de prestaties van query's verwijderen
-
-Gegevensverschil kan leiden tot onnodige gegevens knelpunten in verkeer of resource biedt bij het uitvoeren van uw workload. Advisor detecteert distributiegegevens scheeftrekken groter is dan 15% is en aangeraden dat u uw gegevens distribueren en terugkeren naar uw tabel distributie sleutel selecties. Zie voor meer informatie over het identificeren en verwijderen van scheeftrekken [probleemoplossing scheeftrekken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice).
-
-## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Maken of bijwerken van verouderde tabelstatistieken op uw SQL datawarehouse-tabel voor betere queryprestaties
-
-Advisor identificeert de tabellen die u geen recente hebt [tabelstatistieken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) en de gebruiker wordt aanbevolen maken of bijwerken van statistieken tabel. Query's optimaliseren up-to-date statische waarden gebruikt om te schatten van de kardinaliteit of het aantal rijen in het queryresultaat waarmee het queryoptimalisatieprogramma om een goede queryplan voor de snelste prestaties te maken voor de SQL data warehouse.
-
-## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Opschalen naar het Optimaliseer het gebruik van de cache voor uw SQL Data Warehouse-tabellen voor betere queryprestaties
-
-Azure Advisor detecteert als uw SQL Data Warehouse beschikt over hoge cache percentage gebruikt en een lage percentage bereikt. Deze voorwaarde geeft aan dat de verwijdering van hoge cache, die kan invloed hebben op de prestaties van uw SQL Data Warehouse. Advisor kan erop wijzen dat u omhoog schalen van uw SQL Data Warehouse om ervoor te zorgen voldoende capaciteit cache voor uw werkbelasting die u toewijst.
-
-## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>SQL Data Warehouse-tabellen omzetten in gerepliceerde tabellen voor betere queryprestaties
-
-Advisor identificeert de tabellen die geen gerepliceerde tabellen zijn, maar veel voordeel hebben van het converteren van en stelt deze tabellen te converteren. Aanbevelingen zijn gebaseerd op de grootte van gerepliceerde tabel, het aantal kolommen, tabel Distributietype en het aantal partities van de SQL Data Warehouse-tabel. Aanvullende methodiek kan worden opgegeven in de aanbeveling voor context. Zie voor meer informatie over hoe deze aanbeveling wordt bepaald, [aanbevelingen voor SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables). 
-
-## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>Uw Storage-Account migreren naar Azure Resource Manager om de nieuwste functies van Azure
-
-Migreer uw Storage-Account-implementatiemodel naar Azure Resource Manager (Resource Manager) om te profiteren van sjabloonimplementaties, extra beveiligingsopties en de mogelijkheid om te upgraden naar een GPv2-account voor het gebruik van de nieuwste functies van Azure Storage. Advisor identificeert een zelfstandige storage-accounts die van het klassieke implementatiemodel gebruikmaken en beveelt migreren naar het Resource Manager-implementatiemodel.
+Advisor biedt een consistente, geconsolideerde weer gave van aanbevelingen voor al uw Azure-resources. Het integreert met SQL Database Advisor om u aanbevelingen te doen voor het verbeteren van de prestaties van uw SQL Azure data base. SQL Database Advisor evalueert de prestaties van uw SQL Azure-data bases door de gebruiks geschiedenis te analyseren. Vervolgens worden aanbevelingen geboden die het meest geschikt zijn voor het uitvoeren van de normale werk belasting van de data base.
 
 > [!NOTE]
-> Klassieke waarschuwingen in Azure Monitor zijn gepland voor het buiten gebruik stellen in juni 2019. Het is raadzaam dat u uw klassieke storage-account voor het gebruik van Resource Manager te behouden waarschuwingen functionaliteit met het nieuwe platform upgraden. Zie voor meer informatie, [buiten gebruik stellen met klassieke waarschuwingen](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+> Voor het verkrijgen van aanbevelingen moet een Data Base over een week gebruik beschikken en binnen die week een consistente activiteit moeten zijn. SQL Database Advisor kan gemakkelijker worden geoptimaliseerd voor consistente query patronen dan voor wille keurige bursts van de activiteit.
 
-## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Ontwerp uw storage-accounts om te voorkomen dat te maken met de limiet voor het maximum aantal abonnementen
+Zie [SQL database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/)voor meer informatie over SQL database Advisor.
 
-Een Azure-regio kunt ondersteunt maximaal 250 storage-accounts per abonnement. Zodra de limiet is bereikt, kunt u zich niet voor het maken van meer storage accounts in deze combinatie van regio /-abonnement. Advisor controleert uw abonnementen en surface aanbevelingen voor u kunt ontwerpen voor minder storage-accounts voor die zich dicht bij de maximumlimiet is bereikt.
+## <a name="improve-app-service-performance-and-reliability"></a>De prestaties en betrouw baarheid van App Service verbeteren
 
-## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>Optimaliseer de prestaties van uw Azure MySQL, Azure PostgreSQL en Azure MariaDB-servers 
+Azure Advisor integreert aanbevelingen voor aanbevolen procedures voor het verbeteren van uw App Services ervaring en het detecteren van relevante platform mogelijkheden. Voor beelden van App Services aanbevelingen zijn:
+* Detectie van exemplaren waarbij geheugen-of CPU-bronnen worden uitgeput door app-Runtimes met beperkende opties.
+* Detectie van exemplaren waarbij collocating resources, zoals web-apps en data bases, de prestaties en lagere kosten kunnen verbeteren.
 
-### <a name="fix-the-cpu-pressure-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-with-cpu-bottlenecks"></a>Druk op de CPU van uw Azure MySQL, Azure PostgreSQL en Azure MariaDB-servers met CPU-knelpunten oplossen
-Zeer hoog gebruik van de CPU gedurende een langere periode kan leiden tot trage queryprestaties voor uw workload. Vergroten van de CPU te helpen bij het optimaliseren van de runtime van de database-query's en de algehele prestaties verbeteren. Azure Advisor identificeert servers met een hoog CPU-gebruik die waarschijnlijk CPU beperkte workloads worden uitgevoerd en aan te bevelen Computing schalen.
+Zie [Aanbevolen procedures voor Azure app service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)voor meer informatie over app Services aanbevelingen.
 
-### <a name="reduce-memory-constraints-on-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>Geheugen beperkingen met betrekking tot uw Azure MySQL, Azure PostgreSQL en Azure MariaDB-servers beperken of verplaatsen naar een voor geheugen geoptimaliseerde SKU
-Een lage cache treffers verhouding kan leiden tot tragere prestaties van query's en meer IOPS. Dit kan zijn vanwege een ongeldige query-abonnement of het uitvoeren van een geheugen intensieve workload. Het queryplan oplossen of [verhogen van het geheugen](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) van de Azure Database for PostgreSQL-databaseserver, Azure MySQL-database-server of Azure MariaDB server ervoor dat de uitvoering van de database-werkbelasting te optimaliseren. Azure Advisor identificeert servers die worden beïnvloed door dit verloop van de pool hoog Buffergebruik en raadt aan om een van beide het verhelpen van het queryplan verplaatsen naar een hogere SKU met meer geheugen en opslag vergroten om meer IOPS.
+## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>Managed Disks gebruiken om schijf-I/O-beperking te voor komen
 
-### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Een Azure MySQL of een Azure PostgreSQL-Leesreplica gebruiken om uit leesbewerkingen voor lees-intensieve workloads te schalen
-Azure Advisor maakt gebruik van heuristiek op basis van een werkbelasting, zoals de verhouding van leesbewerkingen en schrijfbewerkingen op de server gedurende de afgelopen zeven dagen voor het identificeren van lees-intensieve werkbelastingen. Uw Azure database voor PostgreSQL-bron of de Azure database voor MySQL-resource met een verhouding van zeer hoge lezen/schrijven kan resulteren in CPU-en/of geheugen contentions leiden tot trage prestaties van query's. Toevoegen van een [replica](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) helpt bij het uitschalen van leesbewerkingen op de replica-server te voorkomen dat CPU-en/of geheugen beperkingen op de primaire server. Advisor worden servers geïdentificeerd met dergelijke hoge Lees-intensieve werkbelastingen, en kunt het beste toevoegen een [replica lezen](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) voor de offload van enkele van de werkbelastingen voor lezen.
+Advisor identificeert virtuele machines die deel uitmaken van een opslag account dat het schaalbaarheids doel bereikt. Deze voor waarde zorgt ervoor dat de Vm's vatbaar zijn voor I/O-beperking. Advisor wordt aangeraden Managed Disks te gebruiken om prestaties te verslechteren.
+
+## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks-by-using-premium-storage"></a>Verbeter de prestaties en betrouw baarheid van virtuele-machine schijven met behulp van Premium Storage
+
+Advisor identificeert virtuele machines met standaard schijven met een groot aantal trans acties op uw opslag account en raadt u aan om een upgrade uit te brengen naar Premium-schijven. 
+
+Azure Premium Storage biedt schijf ondersteuning met hoge prestaties en lage latentie voor virtuele machines die I/O-intensieve workloads uitvoeren. Voor virtuele-machine schijven die gebruikmaken van Premium Storage-accounts, worden gegevens opgeslagen op Solid-state drives (Ssd's). Voor de beste prestaties van uw toepassing raden wij aan dat u alle schijven voor virtuele machines die hoge IOPS vereisen voor Premium-opslag hebt gemigreerd.
+
+## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Gegevens scheefheid van uw SQL Data Warehouse-tabel verwijderen om de query prestaties te verbeteren
+
+Gegevens scheefheid kan leiden tot onnodige gegevens verplaatsing of bron knelpunten wanneer uw werk belasting wordt uitgevoerd. Advisor detecteert distributie gegevens die groter zijn dan 15% en u wordt aangeraden uw gegevens opnieuw te distribueren en uw tabel distributie sleutel te bekijken. Zie [problemen met scheef trekken oplossen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice)voor meer informatie over het identificeren en verwijderen van scheefheid.
+
+## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Verouderde tabel statistieken in uw SQL Data Warehouse-tabel maken of bijwerken om de query prestaties te verbeteren
+
+Advisor identificeert tabellen die geen actuele [tabel statistieken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) hebben en raadt u aan om tabel statistieken te maken of bij te werken. De SQL Data Warehouse-query optimalisatie maakt gebruik van up-to-date statische gegevens om de kardinaliteit of het aantal rijen in het query resultaat te schatten waarmee de query Optimizer een query plan van hoge kwaliteit kan maken voor de snelste prestaties.
+
+## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Schaal omhoog om het cache gebruik op uw SQL Data Warehouse tabellen te optimaliseren om de query prestaties te verbeteren
+
+Azure Advisor detecteert of uw SQL Data Warehouse een hoog percentage voor cache gebruik heeft en een lage treffer percentage. Deze voor waarde duidt op hoge cache verwijdering, wat van invloed kan zijn op de prestaties van uw SQL Data Warehouse. Advisor raadt u aan om uw SQL Data Warehouse te verg Roten om ervoor te zorgen dat u voldoende cache capaciteit toewijst voor uw werk belasting.
+
+## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>SQL Data Warehouse tabellen converteren naar gerepliceerde tabellen om de query prestaties te verbeteren
+
+Advisor identificeert tabellen die geen gerepliceerde tabellen zijn, maar die wel van nut zouden zijn voor conversie en suggesties voor het converteren van deze tabellen. Aanbevelingen zijn gebaseerd op de grootte van de gerepliceerde tabel, het aantal kolommen, het distributie type van de tabel en het aantal partities van de SQL Data Warehouse tabel. Aanvullende heuristiek kan worden gegeven in de aanbeveling voor context. Zie [SQL Data Warehouse aanbevelingen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables)voor meer informatie over hoe deze aanbeveling wordt bepaald. 
+
+## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>Migreer uw opslag account naar Azure Resource Manager om alle nieuwste functies van Azure te verkrijgen
+
+Migreer het implementatie model van uw opslag account naar Azure Resource Manager (Resource Manager) om te profiteren van sjabloon implementaties, extra beveiligings opties en de mogelijkheid om een upgrade uit te voeren naar een GPv2-account voor gebruik van de nieuwste functies van Azure Storage. Advisor identificeert zelfstandige opslag accounts die gebruikmaken van het klassieke implementatie model en raadt u aan om te migreren naar het Resource Manager-implementatie model.
+
+> [!NOTE]
+> Klassieke waarschuwingen in Azure Monitor zijn in augustus 2019 buiten gebruik gesteld. We raden u aan uw klassieke opslag account bij te werken om Resource Manager te gebruiken om de functionaliteit van waarschuwingen met het nieuwe platform te behouden. Zie [klassieke waarschuwingen buiten](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform)gebruik stellen voor meer informatie.
+
+## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Uw opslag accounts ontwerpen om te voor komen dat de maximale abonnements limiet wordt bereikt
+
+Een Azure-regio kan Maxi maal 250 opslag accounts per abonnement ondersteunen. Zodra de limiet is bereikt, kunt u geen opslag accounts meer maken in deze combi natie van regio en abonnement. Advisor controleert uw abonnementen en aanbevelingen voor het Opper vlak zodat u kunt ontwerpen voor minder opslag accounts voor elk wat bijna de maximale limiet bereikt.
+
+## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>Optimaliseer de prestaties van uw Azure MySQL-, Azure PostgreSQL-en Azure MariaDB-servers 
+
+### <a name="fix-the-cpu-pressure-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-with-cpu-bottlenecks"></a>De CPU-druk van uw Azure MySQL-, Azure PostgreSQL-en Azure MariaDB-servers met CPU-knel punten oplossen
+Een zeer hoog gebruik van de CPU gedurende een langere periode kan de prestaties van uw werk belasting vertragen. Het verg Roten van de CPU-grootte helpt de runtime van de database query's te optimaliseren en de algehele prestaties te verbeteren. Azure Advisor herkent servers met een hoog CPU-gebruik waarvoor waarschijnlijk CPU-beperkte workloads worden uitgevoerd en wordt u aangeraden om uw reken kracht te schalen.
+
+### <a name="reduce-memory-constraints-on-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>Verminder de geheugen beperkingen op uw Azure MySQL-, Azure PostgreSQL-en Azure MariaDB-servers of ga naar een voor geheugen geoptimaliseerde SKU
+Een lage cache verhouding kan leiden tot tragere query prestaties en meer IOPS. Dit kan worden veroorzaakt door een beschadigd query plan of door een geheugenintensieve werk belasting uit te voeren. Het herstellen van het query plan of [het verg Roten](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) van het geheugen van de Azure database for PostgreSQL database server, Azure MySQL-database server of Azure MariaDB-server helpt de uitvoering van de werk belasting van de data base te optimaliseren. Azure Advisor identificeert servers die worden beïnvloed door deze hoge verloop tijd van de buffer groep en raadt u aan om het query plan te corrigeren, over te stappen op een hogere SKU met meer geheugen of de opslag grootte te verg Roten om meer IOPS te verkrijgen.
+
+### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Een Azure MySQL-of Azure PostgreSQL-Lees replica gebruiken om Lees bewerkingen uit te schalen voor intensieve werk belastingen voor lezen
+Azure Advisor maakt gebruik van heuristiek op basis van werk belastingen, zoals de verhouding van Lees bewerkingen op de server gedurende de afgelopen zeven dagen om Lees-intensieve workloads te identificeren. Uw Azure data base for PostgreSQL-resource of Azure data base for MySQL-resource met een zeer hoge lees-en schrijf bewerkingen kan resulteren in CPU-en/of geheugen conflicten die leiden tot trage query prestaties. Het toevoegen van een [replica](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) helpt bij het uitschalen van Lees bewerkingen naar de replica server, waardoor er geen CPU-en/of geheugen beperkingen zijn op de primaire server. Advisor identificeert servers met zulke hoge lees-intensieve workloads en raadt aan een [Lees replica](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) toe te voegen om een aantal lees workloads te offloaden.
 
 
-### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Schalen van uw Azure MySQL en Azure PostgreSQL en Azure MariaDB-server naar een hogere SKU om te voorkomen dat verbindingsbeperkingen
-Elke nieuwe verbinding met uw databaseserver geheugen in beslag neemt. Prestaties van de database-server minder als verbindingen met uw server vanwege mislukken een [bovengrens](https://docs.microsoft.com/azure/postgresql/concepts-limits) in het geheugen. Azure Advisor worden geïdentificeerd van servers met veel fouten bij het verbinden met en kunt het beste een upgrade van uw server verbindingen limieten voor meer geheugen aan de server door omhoog schalen van compute of geheugen geoptimaliseerd SKU's, waarvoor meer rekencapaciteit per kern.
+### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Schaal uw Azure MySQL-, Azure PostgreSQL-of Azure MariaDB-server naar een hogere SKU om verbindings beperkingen te voor komen
+Elke nieuwe verbinding met uw database server neemt geheugen in beslag. De prestaties van de database server verslechteren als verbindingen met uw server mislukken vanwege een [bovenlimiet](https://docs.microsoft.com/azure/postgresql/concepts-limits) in het geheugen. Azure Advisor identificeert servers met veel verbindings fouten en raadt u aan om de verbindings limieten van uw server te upgraden om meer geheugen beschikbaar te maken voor uw server door Compute te schalen of door geheugen geoptimaliseerde Sku's te gebruiken, die meer compute per kern hebben.
 
-## <a name="scale-your-cache-to-a-different-size-or-sku-to-improve-cache-and-application-performance"></a>Schaal uw Cache naar een andere grootte of SKU ter verbetering van de Cache en de prestaties van toepassingen
+## <a name="scale-your-cache-to-a-different-size-or-sku-to-improve-cache-and-application-performance"></a>Schaal uw cache op een andere grootte of SKU om de cache-en toepassings prestaties te verbeteren
 
-Cache-exemplaren het beste presteren wanneer niet wordt uitgevoerd onder zware belasting op het hoge geheugen-, hoge serverbelasting of hoge netwerkbandbreedte waardoor deze niet meer reageren, er gegevens verloren gaan of niet beschikbaar. Advisor wordt Cache-exemplaren in deze voorwaarden identificeert en aanbeveelt van de toepassing van aanbevolen procedures voor het verminderen van de geheugendruk, de belasting van de server of de bandbreedte van het netwerk of naar een andere grootte of SKU te schalen met meer capaciteit.
+Cache-instanties worden het beste uitgevoerd wanneer ze niet worden uitgevoerd onder hoge geheugen belasting, hoge belasting van de server of hoge netwerk bandbreedte, waardoor ze niet meer reageren, verlies van gegevens opleveren of niet meer beschikbaar zijn. Advisor identificeert cache-instanties in deze omstandigheden en raden u aan om aanbevolen procedures toe te passen om de geheugen belasting, server belasting of netwerk bandbreedte te verminderen of te schalen naar een andere grootte of SKU met meer capaciteit.
 
 ## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>Regio's met verkeer toevoegen aan uw Azure Cosmos DB-account
 
-Advisor detecteert Azure Cosmos DB-accounts waarvoor verkeer vanuit een regio die momenteel niet is geconfigureerd en aan toe te voegen die regio. Dit latentie voor aanvragen die afkomstig zijn van deze regio wordt verbeterd en zorgt ervoor dat de beschikbaarheid in het geval van uitval van de regio. [Meer informatie over het distribueren van globale gegevens met Azure Cosmos DB](https://aka.ms/cosmos/globaldistribution)
+Advisor detecteert Azure Cosmos DB accounts die verkeer hebben van een regio die momenteel niet is geconfigureerd en aanbeveling die regio toe te voegen. Hierdoor wordt de latentie verbeterd van aanvragen die afkomstig zijn uit deze regio en wordt de beschik baarheid gewaarborgd in het geval van regionale storingen. [Meer informatie over de distributie van globale gegevens met Azure Cosmos DB](https://aka.ms/cosmos/globaldistribution)
 
-## <a name="configure-your-azure-cosmos-db-indexing-policy-with-customer-included-or-excluded-paths"></a>Configureren van uw Azure Cosmos DB indexeringsbeleid met klant opgenomen of uitgesloten paden
+## <a name="configure-your-azure-cosmos-db-indexing-policy-with-customer-included-or-excluded-paths"></a>Uw Azure Cosmos DB-indexerings beleid configureren met door de klant opgenomen of uitgesloten paden
 
-Azure Advisor identificeert Cosmos DB-containers die gebruikmaakt van de standaardbeleidsregels voor indexering van beleid, maar kunnen profiteren van een aangepast indexeringsbeleid op basis van het workloadpatroon. De standaardbeleidsregels voor indexering voor alle eigenschappen geïndexeerd, maar de RU's en de voor indexering verbruikte opslag met behulp van een aangepast indexeringsbeleid met expliciete opgenomen of uitgesloten paden gebruikt in queryfilters kunt beperken. [Meer informatie over het wijzigen van beleid voor index](https://aka.ms/cosmosdb/modify-index-policy)
+Azure Advisor herkent Cosmos DB containers die gebruikmaken van het standaard indexerings beleid, maar kunnen wel profiteren van een aangepast indexerings beleid op basis van het werkbelasting patroon. Het standaard indexerings beleid indexeert alle eigenschappen, maar met behulp van een aangepast indexerings beleid met expliciet opgenomen of uitgesloten paden die worden gebruikt in query filters, kunnen het RUs en de opslag voor indexering worden verminderd. [Meer informatie over het wijzigen van index beleid](https://aka.ms/cosmosdb/modify-index-policy)
 
 ## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Azure Cosmos DB-querypaginaformaat (MaxItemCount) instellen op -1 
 
-Azure Advisor identificeert Azure Cosmos DB-containers die de paginagrootte voor query van 100 en om de paginagrootte van een 1 te gebruiken voor snellere scans. [Meer informatie over het maximumaantal van Item](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+Azure Advisor herkent Azure Cosmos DB containers die gebruikmaken van het pagina formaat van de query van 100 en het is raadzaam een pagina grootte van-1 te gebruiken voor snellere scans. [Meer informatie over maximum aantal items](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
 
-## <a name="how-to-access-performance-recommendations-in-advisor"></a>Toegang tot de aanbevelingen voor prestaties in Advisor
+## <a name="how-to-access-performance-recommendations-in-advisor"></a>Aanbevelingen voor toegang tot prestatie verbeteringen in Advisor
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com), en open vervolgens [Advisor](https://aka.ms/azureadvisordashboard).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open vervolgens [Advisor](https://aka.ms/azureadvisordashboard).
 
-2.  Klik op de Advisor-dashboard op de **prestaties** tabblad.
+2.  Op het Advisor-dash board klikt u op het tabblad **prestaties** .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over aanbevelingen van Advisor:
+Zie voor meer informatie over Advisor-aanbevelingen:
 
 * [Inleiding tot Advisor](advisor-overview.md)
 * [Aan de slag met Advisor](advisor-get-started.md)
-* [Aanbevelingen van Advisor-kosten](advisor-performance-recommendations.md)
-* [Advisor-aanbevelingen voor hoge beschikbaarheid](advisor-high-availability-recommendations.md)
-* [Advisor-aanbevelingen voor beveiliging](advisor-security-recommendations.md)
+* [Aanbevelingen voor Advisor-kosten](advisor-performance-recommendations.md)
+* [Aanbevelingen voor hoge Beschik baarheid van Advisor](advisor-high-availability-recommendations.md)
+* [Aanbevelingen voor de beveiliging van Advisor](advisor-security-recommendations.md)

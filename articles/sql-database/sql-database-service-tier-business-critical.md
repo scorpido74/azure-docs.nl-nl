@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: 48cde2f96083779bdeb13ba5f39b68c18b395045
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 9e398fd7d370d30fac87035b27a218834b4fab22
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515377"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899724"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Bedrijfskritiek laag-Azure SQL Database
 
@@ -45,6 +45,17 @@ Daarnaast heeft Bedrijfskritiek cluster ingebouwde read-out voor [lezen](sql-dat
 ## <a name="when-to-choose-this-service-tier"></a>Wanneer moet deze servicelaag worden gekozen?
 
 Bedrijfskritiek servicelaag is ontworpen voor de toepassingen die antwoorden met een lage latentie vereisen van de onderliggende SSD-opslag (gemiddeld 1-2 MS), snel herstel als de onderliggende infra structuur mislukt of rapporten, analyses en alleen-lezen moet worden geladen query's naar de gratis, lees bare secundaire replica van de primaire data base.
+
+De belangrijkste redenen waarom u Bedrijfskritiek servicelaag moet kiezen in plaats van Algemeen laag zijn:
+-   Minimale IO-latentie vereisten: werk belasting waarvoor het snelle antwoord van de opslaglaag nodig is (1-2 milliseconden in gemiddeld) moet Bedrijfskritiek-laag gebruiken. 
+-   Veelvuldige communicatie tussen toepassing en data base. Toepassing die geen gebruik kan maken van de caching van de toepassings laag of het [aanvragen van batches](sql-database-use-batching-to-improve-performance.md) en moet veel SQL-query's verzenden die snel moeten worden verwerkt zijn goede kandidaten voor bedrijfskritiek-laag.
+-   Groot aantal updates: insert-, update-en delete-bewerkingen wijzigen de gegevens pagina's in het geheugen (Dirty pagina) die moeten worden opgeslagen in gegevens `CHECKPOINT` bestanden met een bewerking. Mogelijk is het proces van een data base-engine vastgelopen of kan een failover van de data base met een groot aantal vuile pagina's de herstel tijd in Algemeen laag verg Roten. Gebruik Bedrijfskritiek laag als u een werk belasting hebt die veel in-Memory wijzigingen veroorzaakt. 
+-   Langlopende trans acties waarmee gegevens worden gewijzigd. Trans acties die gedurende een langere periode worden geopend, verhinderen het afkappen van het logboek bestand dat de logboek grootte en het aantal [virtuele logboek bestanden (VLF)](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch)kan verg Roten. Een groot aantal VLF kan het herstel van de data base na een failover vertragen.
+-   Workload met rapportage-en analyse query's die kunnen worden omgeleid naar de gratis secundaire alleen-lezen replica.
+- Hogere tolerantie en sneller herstel van de fouten. In het geval van een systeem fout wordt de Data Base op het primaire exemplaar uitgeschakeld en wordt een van de secundaire replica's onmiddellijk een nieuwe lezen-schrijven primaire data base gemaakt die gereed is voor het verwerken van de query's. Data base-engine hoeft geen trans acties uit het logboek bestand te analyseren en opnieuw in te dienen en alle gegevens in de geheugen buffer te laden.
+- Geavanceerde beveiliging tegen beschadiging van gegevens-Bedrijfskritiek-laag maakt gebruik van database replica's achter-de schermen voor bedrijfs continuïteits doeleinden, waardoor de service ook automatisch pagina herstel gebruikt. Dit is dezelfde technologie die voor SQL Server-Data Base wordt gehanteerd. [spiegeling en beschikbaarheids groepen](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring). In het geval dat een replica een pagina kan lezen vanwege een probleem met de gegevens integriteit, wordt een nieuwe kopie van de pagina opgehaald uit een andere replica, waardoor de onleesbare pagina wordt vervangen zonder gegevens verlies of uitval tijd van de klant. Deze functionaliteit is van toepassing op Algemeen laag als de data base geo-secundaire replica heeft.
+- Hogere Beschik baarheid-Bedrijfskritiek laag in configuratie met meerdere AZ-configuraties garandeert 99,995% Beschik baarheid, vergeleken met 99,99% van de Algemeen-laag.
+- Snelle geo-Recovery-Bedrijfskritiek laag die is geconfigureerd met geo-replicatie, heeft een gegarandeerd herstel punt (RPO) van 5 sec en de beoogde herstel tijd (RTO) van 30 sec voor 100% van de geïmplementeerde uren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

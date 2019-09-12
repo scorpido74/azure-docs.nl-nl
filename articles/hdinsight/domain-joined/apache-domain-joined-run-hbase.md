@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 39b87347212aef36bcced1a5b297f2f9e89bcc47
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 72e268628560618fb6fa47843f5125d9126a9f3e
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734918"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885153"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Zelfstudie: Apache HBase-beleid in HDInsight configureren met Enterprise Security Package
 
@@ -100,7 +100,7 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
 
 2. Op het scherm **List of Policies** worden alle Ranger-beleidsregels weergegeven die voor dit cluster zijn gemaakt. Er kan één vooraf geconfigureerd beleid worden weergegeven. Klik op **Nieuw beleid toevoegen**.
 
-    ![De pagina Create Policy in de beheerinterface van Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    ![Apache zwerver HBase-beleids lijst](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
 3. Voer in het scherm **Create Policy** de volgende waarden in:
 
@@ -119,7 +119,7 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
    * Gebruik `*` om nul of meer tekens aan te geven.
    * Gebruik `?` om één teken aan te geven.
 
-   ![De pagina Create Policy in de beheerinterface van Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   ![Apache zwerver-beleid verkoop maken](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
    >[!NOTE]
    >Als er niet automatisch een domeingebruiker wordt ingevuld bij **Select User**, wacht u even totdat Ranger is gesynchroniseerd met AAD.
@@ -138,7 +138,7 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
    |Gebruiker selecteren  | marketing_user1 |
    |Machtigingen  | Lezen |
 
-   ![De pagina Create Policy in de beheerinterface van Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   ![Apache zwerver-beleid marketing maken](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
 6. Klik op **Toevoegen** om het beleid op te slaan.
 

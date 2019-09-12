@@ -2,8 +2,8 @@
 title: Aandachtspunten voor netwerken - Azure toegewezen HSM | Microsoft Docs
 description: Overzicht van netwerken van overwegingen die van toepassing op Azure toegewezen HSM-implementaties
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: barclayn
-ms.openlocfilehash: 042ecabe38969a6a26c27622b8c3d25193b3e7c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mbaldwin
+ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118025"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881282"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure toegewezen HSM-netwerken
 
@@ -39,7 +39,7 @@ Voordat u een toegewezen HSM-apparaat inricht, moet klanten eerst naar een Virtu
 
 ### <a name="subnets"></a>Subnetten
 
-Subnetten voor het segmenteren van het virtuele netwerk in afzonderlijke adresruimten die worden gebruikt door de Azure-resources die u erin plaatst. Toegewezen HSM's zijn geïmplementeerd in een subnet in het virtuele netwerk. Elk toegewezen HSM-apparaat dat is geïmplementeerd in het subnet van de klant ontvangt een privé IP-adres van dit subnet. Het subnet waarin de HSM-apparaat is geïmplementeerd, moet expliciet worden gedelegeerd naar de service: Microsoft.HardwareSecurityModules/dedicatedHSMs. Hierbij verleend bepaalde machtigingen voor de HSM-service voor implementatie in het subnet. Overdracht naar toegewezen HSM's legt bepaalde beperkingen-beleid op het subnet. Netwerkbeveiligingsgroepen (nsg's) en door de gebruiker gedefinieerde Routes (udr's) worden momenteel niet ondersteund op subnetten zijn overgedragen. Als gevolg hiervan zodra een subnet wordt overgedragen naar toegewezen HSM's, kan alleen worden gebruikt om HSM-resources te implementeren. Mislukt de implementatie van alle andere resources van de klant in het subnet.
+Subnetten voor het segmenteren van het virtuele netwerk in afzonderlijke adresruimten die worden gebruikt door de Azure-resources die u erin plaatst. Toegewezen HSM's zijn geïmplementeerd in een subnet in het virtuele netwerk. Elk toegewezen HSM-apparaat dat is geïmplementeerd in het subnet van de klant ontvangt een privé IP-adres van dit subnet. Het subnet waarin het HSM-apparaat wordt geïmplementeerd, moet expliciet worden gedelegeerd naar de service: Microsoft.HardwareSecurityModules/dedicatedHSMs. Hierbij verleend bepaalde machtigingen voor de HSM-service voor implementatie in het subnet. Overdracht naar toegewezen HSM's legt bepaalde beperkingen-beleid op het subnet. Netwerkbeveiligingsgroepen (nsg's) en door de gebruiker gedefinieerde Routes (udr's) worden momenteel niet ondersteund op subnetten zijn overgedragen. Als gevolg hiervan zodra een subnet wordt overgedragen naar toegewezen HSM's, kan alleen worden gebruikt om HSM-resources te implementeren. Mislukt de implementatie van alle andere resources van de klant in het subnet.
 
 
 ### <a name="expressroute-gateway"></a>ExpressRoute-gateway
@@ -60,7 +60,7 @@ Een punt-naar-site virtueel particulier netwerk is de eenvoudigste vorm van een 
 
 ### <a name="site-to-site-vpn"></a>Site-to-Site VPN
 
-Een site-naar-site virtueel particulier netwerk kunnen voor veilige communicatie tussen toegewezen HSM's op basis van Azure en uw on-premises IT. Een reden hiervoor is dat een gebouw van een back-up voor van de HSM on-premises en die een verbinding tussen de twee voor het uitvoeren van de back-up.
+Een site-naar-site virtueel particulier netwerk kunnen voor veilige communicatie tussen toegewezen HSM's op basis van Azure en uw on-premises IT. Een reden hiervoor is dat er een back-upfaciliteit is voor de on-premises HSM en dat er een verbinding nodig is tussen de twee voor het uitvoeren van de back-up.
 
 ## <a name="connecting-virtual-networks"></a>Virtuele netwerken verbinden
 

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een AI-verrijkte index in Azure Portal-Azure Search maken'
+title: 'Quickstart: Meer informatie over cognitieve Zoek AI-verrijking in Azure Portal-Azure Search'
 description: Gegevens extractie, natuurlijke taal en vaardig heden voor afbeeldings verwerking in een Azure Search indexerings Portal, met behulp van de Azure Portal en de voorbeeld gegevens.
 manager: nitinme
 author: HeidiSteen
@@ -7,16 +7,16 @@ services: search
 ms.service: search
 ms.subservice: cognitive-search
 ms.topic: quickstart
-ms.date: 07/09/2019
+ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: 72546e6327fc3286455482943dcaedbd5a8e2943
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: ff32be5410876d1ba61b3bce2fd5f57868745e50
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744733"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881104"
 ---
-# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Quickstart: Een AI-indexerings pijplijn maken met behulp van cognitieve vaardig heden in Azure Search
+# <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Quickstart: Een AI-verrijkings pijplijn maken met behulp van cognitieve vaardig heden in Azure Search
 
 Azure Search kan worden geïntegreerd met [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), het toevoegen van inhoud, het door voeren van een natuurlijke taal (NLP) en de vaardig heden van installatie kopieën aan een Azure Search Indexing-pijp lijn, waardoor er geen Doorzoek bare of ongestructureerde inhoud meer kan worden doorzocht. 
 

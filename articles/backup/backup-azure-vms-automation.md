@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5176fc36b62fc1e970bd51f6386191ea34c5170c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d624f6a1711bf2c2bad5ebc252d00c299ebca225
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872682"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909836"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Back-ups van virtuele Azure-machines maken en herstellen met Power shell
 
@@ -390,7 +390,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 
 ## <a name="restore-an-azure-vm"></a>Een Azure-VM herstellen
 
-Er is een belang rijk verschil tussen het herstellen van een virtuele machine met behulp van de Azure Portal en het herstellen van een VM met behulp van Power shell. Met Power shell is de herstel bewerking voltooid zodra de schijven en configuratie-informatie van het herstel punt worden gemaakt. De virtuele machine wordt niet gemaakt met de herstel bewerking. Als u een virtuele machine van schijf wilt maken, raadpleegt u de sectie de [VM maken op basis van](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)de herstelde schijven. Raadpleeg de [sectie bestands herstel](backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup)als u de hele virtuele machine niet wilt herstellen, maar een aantal bestanden van een Azure VM-back-up wilt herstellen of herstellen.
+Er is een belang rijk verschil tussen het herstellen van een virtuele machine met behulp van de Azure Portal en het herstellen van een VM met behulp van Power shell. Met Power shell is de herstel bewerking voltooid zodra de schijven en configuratie-informatie van het herstel punt worden gemaakt. De virtuele machine wordt niet gemaakt met de herstel bewerking. Als u een virtuele machine van schijf wilt maken, raadpleegt u de sectie de [VM maken op basis van de herstelde schijven](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). Raadpleeg de [sectie bestands herstel](backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup)als u de hele virtuele machine niet wilt herstellen, maar een aantal bestanden van een Azure VM-back-up wilt herstellen of herstellen.
 
 > [!Tip]
 > De virtuele machine wordt niet gemaakt met de herstel bewerking.
@@ -716,6 +716,7 @@ In de volgende sectie worden de stappen beschreven die nodig zijn om een virtuel
     ```
 
 7. Extensie van ADE-push.
+   Als de ADE-extensies niet worden gepusht, worden de gegevens schijven gemarkeerd als niet-versleuteld, zodat het verplicht is om de volgende stappen uit te voeren:
 
    * **Voor VM met Azure AD** : gebruik de volgende opdracht om versleuteling hand matig in te scha kelen voor de gegevens schijven  
 
@@ -746,6 +747,8 @@ In de volgende sectie worden de stappen beschreven die nodig zijn om een virtuel
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
+> [!NOTE]
+> Zorg ervoor dat u de JASON-bestanden die zijn gemaakt als onderdeel van het herstel schijf proces van de versleutelde VM hand matig verwijdert.
 
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Bestanden herstellen vanuit een back-up van een Azure-VM

@@ -1,65 +1,65 @@
 ---
-title: Automatisch onderwerp maken in Apache Kafka - Azure HDInsight inschakelen
-description: Informatie over het configureren van Apache Kafka op HDInsight onderwerpen automatisch worden gemaakt. U kunt Kafka configureren door auto.create.topics.enable op ' True ' via Ambari of tijdens het maken van clusters via PowerShell of Resource Manager-sjablonen.
+title: Automatisch maken van een onderwerp in Apache Kafka-Azure HDInsight inschakelen
+description: Meer informatie over het configureren van Apache Kafka op HDInsight om automatisch onderwerpen te maken. U kunt Kafka configureren door auto. Create. topics in te stellen op True via Ambari of tijdens het maken van clusters via Power shell of Resource Manager-sjablonen.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: af26bcee08ded8eb66d640f954113be3e7672e1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f40a625b10243ca13163e549a51a760cf105917
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64709136"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900422"
 ---
-# <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Apache Kafka op HDInsight voor het automatisch maken van onderwerpen configureren
+# <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Apache Kafka op HDInsight configureren om automatisch onderwerpen te maken
 
-Standaard [Apache Kafka](https://kafka.apache.org/) op HDInsight automatisch onderwerp maken niet inschakelen. U kunt automatisch onderwerp maken voor bestaande clusters met behulp van inschakelen [Apache Ambari](https://ambari.apache.org/). U kunt ook automatisch onderwerp maken inschakelen bij het maken van een nieuwe Kafka-cluster met behulp van een Azure Resource Manager-sjabloon.
+Standaard wordt het automatisch maken van een onderwerp niet ingeschakeld door [Apache Kafka](https://kafka.apache.org/) op HDInsight. U kunt het automatisch maken van een onderwerp voor bestaande clusters inschakelen met [Apache Ambari](https://ambari.apache.org/). U kunt ook automatisch onderwerpen maken inschakelen wanneer u een nieuw Kafka-cluster maakt met behulp van een Azure Resource Manager sjabloon.
 
-## <a name="apache-ambari-web-ui"></a>Apache Ambari Web UI
+## <a name="apache-ambari-web-ui"></a>Apache Ambari-webgebruikersinterface
 
-Om in te schakelen automatisch onderwerp maken op een bestaand cluster via de Ambari-Webgebruikersinterface, gebruikt u de volgende stappen uit:
+Gebruik de volgende stappen om het automatisch maken van een onderwerp in een bestaand cluster via de Ambari-webgebruikersinterface in te scha kelen:
 
-1. Uit de [Azure-portal](https://portal.azure.com), selecteert u het Kafka-cluster.
+1. Selecteer in de [Azure Portal](https://portal.azure.com)het Kafka-cluster.
 
-2. Uit de __Cluster overzicht__, selecteer __clusterdashboard__. 
+2. Selecteer __cluster dashboard__in het __cluster overzicht__. 
 
-    ![Afbeelding van de portal met clusterdashboard geselecteerd](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
+    ![Afbeelding van de portal waarop het cluster dashboard is geselecteerd](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
 
-3. Selecteer vervolgens __HDInsight-clusterdashboard__. Wanneer u hierom wordt gevraagd, moet u verifiëren met behulp van de referenties voor clusteraanmelding (admin) voor het cluster.
+3. Selecteer vervolgens het __HDInsight-cluster dashboard__. Verifieer, wanneer u hierom wordt gevraagd, met behulp van de aanmeldings referenties (admin) voor het cluster.
 
-    ![Afbeelding van de vermelding van HDInsight-cluster-dashboard](./media/apache-kafka-auto-create-topics/hdinsight-cluster-dashboard.png)
+    ![Afbeelding van het dashboard item van het HDInsight-cluster](./media/apache-kafka-auto-create-topics/hdinsight-cluster-dashboard.png)
 
 3. Selecteer de Kafka-service in de lijst aan de linkerkant van de pagina.
 
-    ![Lijst met Services](./media/apache-kafka-auto-create-topics/service-list.png)
+    ![Service lijst](./media/apache-kafka-auto-create-topics/service-list.png)
 
 4. Selecteer configuraties in het midden van de pagina.
 
-    ![Tabblad voor service-configuratie](./media/apache-kafka-auto-create-topics/service-config.png)
+    ![Tabblad Service configuratie](./media/apache-kafka-auto-create-topics/service-config.png)
 
-5. Voer de waarde in het filterveld in `auto.create`. 
+5. Voer in het veld Filter een waarde van `auto.create`in. 
 
-    ![Afbeelding van het filterveld](./media/apache-kafka-auto-create-topics/filter.png)
+    ![Afbeelding van het filter veld](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
-    Hiermee filtert u de lijst met eigenschappen en geeft de `auto.create.topics.enable` instelling.
+    Hiermee wordt de lijst met eigenschappen gefilterd `auto.create.topics.enable` en wordt de instelling weer gegeven.
 
-6. Wijzig de waarde van `auto.create.topics.enable` naar `true`, en selecteer vervolgens opslaan. Een opmerking toevoegen en selecteert u vervolgens opslaan.
+6. Wijzig de waarde van `auto.create.topics.enable` in `true`en selecteer vervolgens opslaan. Voeg een notitie toe en selecteer vervolgens opslaan opnieuw.
 
-    ![Afbeelding van de vermelding auto.create.topics.enable](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
+    ![Afbeelding van het bestand auto. Create. topics. enable entry](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
 
-7. Selecteer de Kafka-service, selecteer __opnieuw__, en selecteer vervolgens __opnieuw alle betrokken__. Wanneer u hierom wordt gevraagd, selecteert u __bevestigen opnieuw alle__.
+7. Selecteer de Kafka-service, selecteer __opnieuw opstarten__en selecteer vervolgens __alle betrokkenen opnieuw opstarten__. Selecteer __Bevestig opnieuw opstarten__als dit wordt gevraagd.
 
-    ![Afbeelding van opnieuw opstarten selecteren](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
+    ![Afbeelding van selectie opnieuw opstarten](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
 > [!NOTE]  
-> U kunt ook instellen Ambari waarden met de Ambari REST-API. Dit is meestal moeilijker, als er meerdere REST-aanroepen naar de huidige configuratie ophalen, wijzigt u het, enzovoort. Zie voor meer informatie de [beheren HDInsight-clusters met behulp van de Apache Ambari REST-API](../hdinsight-hadoop-manage-ambari-rest-api.md) document.
+> U kunt Ambari-waarden ook instellen via de Ambari-REST API. Dit is over het algemeen moeilijker, omdat u meerdere REST-aanroepen moet maken om de huidige configuratie op te halen, deze te wijzigen, enzovoort. Zie [HDInsight-clusters beheren met het Apache Ambari rest API](../hdinsight-hadoop-manage-ambari-rest-api.md) -document voor meer informatie.
 
 ## <a name="resource-manager-templates"></a>Resource Manager-sjablonen
 
-Bij het maken van een Kafka-cluster met behulp van een Azure Resource Manager-sjabloon, kunt u rechtstreeks instellen `auto.create.topics.enable` door toe te voegen in een `kafka-broker`. De volgende JSON-fragment ziet u hoe u deze waarde instelt op `true`:
+Wanneer u een Kafka-cluster maakt met behulp van een Azure Resource Manager- `auto.create.topics.enable` sjabloon, kunt u dit `kafka-broker`rechtstreeks instellen door het te voegen in een. In het volgende JSON-code fragment ziet u hoe u deze `true`waarde instelt op:
 
 ```json
 "clusterDefinition": {
@@ -78,7 +78,7 @@ Bij het maken van een Kafka-cluster met behulp van een Azure Resource Manager-sj
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit document hebt u geleerd hoe u voor het maken van automatische onderwerp voor Apache Kafka in HDInsight. Zie de volgende koppelingen voor meer informatie over het werken met Kafka:
+In dit document hebt u geleerd hoe u het automatisch maken van een onderwerp voor Apache Kafka op HDInsight inschakelt. Raadpleeg de volgende koppelingen voor meer informatie over het werken met Kafka:
 
 * [Apache Kafka-logboeken analyseren](apache-kafka-log-analytics-operations-management.md)
 * [Gegevens repliceren tussen Apache Kafka-clusters](apache-kafka-mirroring.md)

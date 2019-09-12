@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: cd55e078e14ec34006df05096f161e7bdef39a03
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ac478a7b75bbac0c5e7f59cbe565ec2bbcd643ce
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827221"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900324"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade uw data warehouse naar Gen2
 
@@ -45,12 +45,12 @@ De volgende tabel bevat een overzicht van de regio's wanneer de lagere Gen2-Comp
 | Azië - oost |Beschikbaar |Voltooien |
 | East US |Beschikbaar |Voltooien |
 | US - oost 2 |Beschikbaar |Voltooien |
-| Frankrijk - centraal |Beschikbaar |Wordt uitgevoerd |
+| Frankrijk - centraal |Beschikbaar |In uitvoering |
 | Duitsland - centraal |\* |\* |
 | Duitsland - west-centraal |1 september 2019|1 oktober 2019 |
 | India - centraal |Beschikbaar |Voltooien |
 | India - zuid |Beschikbaar |Voltooien |
-| India - west |1 juli 2019 |Wordt uitgevoerd |
+| India - west |1 juli 2019 |In uitvoering |
 | Japan - oost |Beschikbaar |Voltooien |
 | Japan - west |Beschikbaar |Voltooien |
 | Korea - centraal |Beschikbaar |Voltooien |
@@ -61,9 +61,9 @@ De volgende tabel bevat een overzicht van de regio's wanneer de lagere Gen2-Comp
 | US - zuid-centraal |Beschikbaar |Voltooien |
 | Azië - zuidoost |Beschikbaar |Voltooien |
 | UAE - noord |20 juli 2019 |Voltooien |
-| Verenigd Koninkrijk Zuid |Beschikbaar |Wordt uitgevoerd |
-| Verenigd Koninkrijk West |Beschikbaar |Wordt uitgevoerd |
-| US - west-centraal |1 september 2019 |1 oktober 2019|
+| Verenigd Koninkrijk Zuid |Beschikbaar |In uitvoering |
+| Verenigd Koninkrijk West |Beschikbaar |In uitvoering |
+| US - west-centraal |1 november 2019 |1 december 2019|
 | Europa -west |Beschikbaar |Voltooien |
 | US - west |Beschikbaar |Voltooien |
 | US - west 2 |Beschikbaar |Voltooien |
@@ -85,7 +85,7 @@ U kunt zelf een upgrade uitvoeren door de volgende stappen uit te voeren op een 
 
 Er zijn twee opties voor het uitvoeren van een self-upgrade.  U kunt uw huidige Data Warehouse op locatie bijwerken of u kunt een gen1-Data Warehouse herstellen in een Gen2-exemplaar.
 
-- [In-place upgrade uitvoeren](upgrade-to-latest-generation.md) : met deze optie wordt uw bestaande gen1-Data Warehouse bijgewerkt naar Gen2. Bij het upgrade proces geldt een korte daling van de connectiviteit (ongeveer 5 min.) wanneer uw data warehouse opnieuw wordt gestart.  Zodra uw data warehouse opnieuw is opgestart, is het volledig beschikbaar voor gebruik. Als u problemen ondervindt tijdens de upgrade, opent u een ondersteunings [aanvraag](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) en raadpleegt u de mogelijke oorzaak van de Gen2-upgrade.
+- [In-place upgrade uitvoeren](upgrade-to-latest-generation.md) : met deze optie wordt uw bestaande gen1-Data Warehouse bijgewerkt naar Gen2. Bij het upgrade proces geldt een korte daling van de connectiviteit (ongeveer 5 min.) wanneer uw data warehouse opnieuw wordt gestart.  Zodra uw data warehouse opnieuw is opgestart, is het volledig beschikbaar voor gebruik. Als u problemen ondervindt tijdens de upgrade, opent u een [ondersteunings aanvraag](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) en raadpleegt u de mogelijke oorzaak van de Gen2-upgrade.
 - [Upgrade van herstel punt](sql-data-warehouse-restore.md) : Maak een door de gebruiker gedefinieerd herstel punt op het huidige gen1-Data Warehouse en herstel het vervolgens rechtstreeks naar een Gen2-exemplaar. Het bestaande gen1-Data Warehouse blijft aanwezig. Nadat het herstel is voltooid, is uw Gen2-Data Warehouse volledig beschikbaar voor gebruik.  Wanneer u alle test-en validatie processen op het teruggezette Gen2-exemplaar hebt uitgevoerd, kan de oorspronkelijke gen1-instantie worden verwijderd.
 
    - Stap 1: Maak in de Azure Portal [een door de gebruiker gedefinieerd herstel punt](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal).
@@ -98,7 +98,7 @@ Als u het migratie proces op de achtergrond wilt versnellen, kunt u de gegevens 
 > [!NOTE]
 > Alter index Rebuild is een offline bewerking en de tabellen zijn pas beschikbaar als het opnieuw opbouwen is voltooid.
 
-Als u problemen ondervindt met uw data warehouse, maakt u een ondersteunings [aanvraag](sql-data-warehouse-get-started-create-support-ticket.md) en verwijst u naar de mogelijke oorzaak van de Gen2-upgrade.
+Als u problemen ondervindt met uw data warehouse, maakt u een [ondersteunings aanvraag](sql-data-warehouse-get-started-create-support-ticket.md) en verwijst u naar de mogelijke oorzaak van de Gen2-upgrade.
 
 Zie [upgrade naar Gen2](upgrade-to-latest-generation.md)voor meer informatie.
 
