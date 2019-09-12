@@ -1,6 +1,6 @@
 ---
-title: Uitpakken, transformeren en laden (ETL) op schaal - Azure HDInsight
-description: Meer informatie over hoe ETL wordt gebruikt in HDInsight met Apache Hadoop.
+title: ETL uitpakken, transformeren en laden op schaal-Azure HDInsight
+description: Ontdek hoe extra heren, transformeren en laden worden gebruikt in HDInsight met Apache Hadoop.
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,133 +8,133 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: ashishth
-ms.openlocfilehash: d3ce2a19e195174cd302b25005b3b063d028b6cf
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: e4168b2aec73efcaa282398cbe145df49a117da0
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137157"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810762"
 ---
-# <a name="extract-transform-and-load-etl-at-scale"></a>Extraheren, transformeren en laden (ETL) op schaal
+# <a name="extract-transform-and-load-etl-at-scale"></a>(ETL) uitpakken, transformeren en laden op schaal
 
-Extraheren, transformeren en laden (ETL) is het proces waarmee gegevens wordt verkregen uit verschillende bronnen, die worden verzameld in een standaardlocatie opgeschoond en verwerkt en uiteindelijk worden geladen in een gegevensarchief van waaruit deze kan worden opgevraagd. Verouderde ETL-processen importeren van gegevens, deze op te schonen in plaats en vervolgens opslaan in een engine voor relationele gegevens. Met HDInsight, een groot aantal onderdelen van Apache Hadoop-ecosysteem uitvoeren van ETL op schaal ondersteunen. 
+Extra heren, transformeren en laden (ETL) is het proces waarmee gegevens worden verkregen uit verschillende bronnen, verzameld en verwerkt in een standaard locatie en uiteindelijk in een gegevens archief worden geladen waarvan het kan worden opgevraagd. Met verouderde ETL worden gegevens geïmporteerd en op de juiste plaats gereinigd en opgeslagen in een relationele gegevens engine. Met HDInsight biedt een breed scala aan Apache Hadoop ecosysteem onderdelen ondersteuning voor het uitvoeren van ETL op schaal. 
 
-Het gebruik van HDInsight in het ETL-proces kan door deze pijplijn worden samengevat:
+Het gebruik van HDInsight in het ETL-proces kan worden samenvatten door deze pijp lijn:
 
-![HDInsight ETL-overzicht](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
+![Overzicht van HDInsight ETL](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
 
-De volgende secties verkennen elk van de ETL-fasen en de bijbehorende onderdelen.
+In de volgende secties worden alle ETL-fasen en de bijbehorende onderdelen besproken.
 
 ## <a name="orchestration"></a>Indeling
 
-Orchestration reeksen in alle fasen van de ETL-pijplijn. ETL-taken in HDInsight omvatten vaak verschillende producten werken in combinatie met elkaar.  U kunt Hive gebruiken voor het opschonen van een gedeelte van de gegevens, terwijl Pig een ander deel opschonen.  U kunt Azure Data Factory gebruiken om gegevens te laden in Azure SQL Database van Azure Data Lake Store.
+Indeling omvat alle fasen van de ETL-pijp lijn. ETL-taken in HDInsight omvatten vaak verschillende producten die met elkaar samen werken.  U kunt Hive gebruiken om een deel van de gegevens te schonen, terwijl varken een ander gedeelte opschoont.  U kunt Azure Data Factory voor het laden van gegevens in Azure SQL Database van Azure Data Lake Store.
 
-Orchestration is nodig voor het uitvoeren van de juiste taak op het juiste moment.
+Indeling is nodig om de juiste taak op het juiste tijdstip uit te voeren.
 
 ### <a name="apache-oozie"></a>Apache Oozie
 
-Apache Oozie is een coördinatiesysteem voor werkstromen waarmee Hadoop-taken worden beheerd. Oozie binnen een HDInsight-cluster wordt uitgevoerd en is geïntegreerd met de Hadoop-stack. Oozie biedt ondersteuning voor Hadoop-taken voor Apache Hadoop MapReduce, Apache Pig, Apache Hive en Apache Sqoop. Oozie kan ook worden gebruikt voor het plannen van taken die specifiek voor een systeem, zoals Java-programma's of shell-scripts zijn.
+Apache Oozie is een coördinatie systeem voor werk stromen waarmee Hadoop-taken worden beheerd. Oozie wordt uitgevoerd binnen een HDInsight-cluster en is geïntegreerd met de Hadoop-stack. Oozie ondersteunt Hadoop-taken voor Apache Hadoop MapReduce, Apache varken, Apache Hive en Apache Sqoop. Oozie kan ook worden gebruikt voor het plannen van taken die specifiek zijn voor een systeem, zoals Java-Program ma's of shell scripts.
 
-Zie voor meer informatie, [Apache Oozie gebruiken met Apache Hadoop voor het definiëren en een werkstroom uitvoeren op HDInsight](../hdinsight-use-oozie-linux-mac.md) voor gedetailleerde informatie waarin wordt getoond hoe Oozie gebruiken om een end-to-end-pijplijn te stimuleren, Zie [operationeel maken van de Gegevenspijplijn](../hdinsight-operationalize-data-pipeline.md). 
+Zie voor meer informatie [Apache Oozie met Apache Hadoop gebruiken om een werk stroom op HDInsight te definiëren en uit te voeren](../hdinsight-use-oozie-linux-mac.md) voor een diep gaande uitzending van het gebruik van Oozie om een end-to-end pijp lijn te gebruiken. Zie [operationeel maken de gegevens pijplijn](../hdinsight-operationalize-data-pipeline.md). 
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Azure Data Factory biedt planningsmogelijkheden in de vorm van platform-as-a-service. Het is een cloudgebaseerde gegevensintegratieservice waarmee u gegevensgestuurde werkstromen maken in de cloud voor het indelen en automatiseren gegevensverplaatsingen en gegevenstransformaties. 
+Azure Data Factory biedt Orchestration-mogelijkheden in de vorm van platform-as-a-service. Het is een cloud-gebaseerde gegevens integratie service waarmee u gegevensgestuurde werk stromen kunt maken in de Cloud voor het organiseren en automatiseren van gegevens verplaatsing en gegevens transformatie. 
 
-Met Azure Data Factory, kunt u het volgende doen:
+Met Azure Data Factory kunt u het volgende doen:
 
-1. Maken en plannen van gegevensgestuurde werkstromen (pijplijnen genoemd) die gegevens uit verschillende gegevensarchieven opnemen.
-2. Verwerk en transformeer de gegevens met behulp van rekenservices zoals Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics, Azure Batch en Azure Machine Learning.
+1. Gegevens gegevensgestuurde werk stromen (pijp lijnen genoemd) maken en plannen die gegevens uit verschillende gegevens archieven opnemen.
+2. De gegevens verwerken en transformeren met behulp van Compute-services zoals Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics, Azure Batch en Azure Machine Learning.
 3. Uitvoergegevens publiceren naar gegevensopslaglocaties als Azure SQL Data Warehouse, waar BI-toepassingen (business intelligence) er gebruik van kunnen maken.
 
-Zie voor meer informatie over Azure Data Factory, de [documentatie](../../data-factory/introduction.md).
+Raadpleeg de [documentatie](../../data-factory/introduction.md)voor meer informatie over Azure Data Factory.
 
-## <a name="ingest-file-storage-and-result-storage"></a>Opslag van bestanden en opslag van resultaat opnemen
+## <a name="ingest-file-storage-and-result-storage"></a>Bestands opslag en resultaat opslag opnemen
 
-Bronbestanden van de gegevens worden meestal in een locatie in Azure Storage of Azure Data Lake Storage geladen. Bestanden kunnen zijn in elke indeling, maar ze zijn meestal platte bestanden, zoals CSV's. 
+Brongegevens bestanden worden meestal geladen op een locatie in Azure Storage of Azure Data Lake Storage. Bestanden kunnen een wille keurige indeling hebben, maar meestal zijn platte bestanden zoals Csv's. 
 
 ### <a name="azure-storage"></a>Azure Storage 
 
-[Azure Storage](https://azure.microsoft.com/services/storage/blobs/) heeft [specifieke schaalbaarheidsdoelen](../../storage/common/storage-scalability-targets.md).  Voor meest analytische knooppunten, Azure Storage schaalt beste tijdens het afhandelen van veel kleinere bestanden.  Azure Storage zorgt ervoor dat de dezelfde prestaties, ongeacht het aantal bestanden of hoe groot de bestanden (zo lang als u binnen uw grenzen).  Dit betekent dat u kunt terabytes aan gegevens opslaan en nog steeds consistente prestaties, ongeacht of u er een subset van de gegevens of alle van de gegevens.
+[Azure Storage](https://azure.microsoft.com/services/storage/blobs/) heeft [specifieke schaalbaarheids doelen](../../storage/common/storage-scalability-targets.md).  Voor de meeste analytische knoop punten wordt Azure Storage het beste geschaald wanneer er veel kleinere bestanden worden verwerkt.  Azure Storage garandeert dezelfde prestaties, ongeacht het aantal bestanden of de grootte van de bestanden (op voor waarde dat u zich binnen uw limieten bevindt).  Dit betekent dat u terabytes aan gegevens kunt opslaan en toch consistente prestaties krijgt, of u nu een subset van de gegevens of alle gegevens gebruikt.
 
-Azure Storage heeft verschillende typen blobs.  Een *toevoeg-blob* is een goede optie voor het opslaan van weblogboeken of sensorgegevens.  
+Azure Storage heeft verschillende typen blobs.  Een *toevoeg-BLOB* is een uitstekende optie om Weblogboeken of sensor gegevens op te slaan.  
 
-Meerdere blobs kunnen worden gedistribueerd voor grote aantallen servers uit de toegang tot te schalen, maar één blob kan alleen worden geleverd door één server. Blobs kunnen logisch worden gegroepeerd in blob-containers, maar er zijn geen partitioneren gevolgen van deze groepering.
+Er kunnen meerdere blobs worden gedistribueerd over verschillende servers om de toegang tot ze te schalen, maar één Blob kan slechts door één server worden geleverd. Hoewel blobs logisch kunnen worden gegroepeerd in BLOB-containers, zijn er geen gevolgen voor het partitioneren van deze groepering.
 
-Azure Storage heeft ook een API WebHDFS-laag voor de blob-opslag.  Alle services in HDInsight hebben toegang tot bestanden in Azure Blob Storage voor het opschonen van gegevens en gegevensverwerking, vergelijkbaar met hoe deze services Hadoop Distributed bestanden System (HDFS) gebruiken.
+Azure Storage heeft ook een WebHDFS API-laag voor de Blob-opslag.  Alle services in HDInsight hebben toegang tot bestanden in Azure Blob Storage voor het opschonen van gegevens en gegevens verwerking, op dezelfde manier als die services Hadoop Distributed File System (HDFS) zouden gebruiken.
 
-Doorgaans zijn gegevens opgenomen in Azure Storage met behulp van PowerShell, de Azure Storage-SDK of AZCopy.
+Gegevens worden doorgaans opgenomen in Azure Storage met behulp van Power shell, de Azure Storage SDK of AZCopy.
 
 ### <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
 
-Azure Data Lake Storage (ADLS) is een beheerde, zeer grootschalige opslagplaats voor analytics-gegevens die compatibel is met HDFS.  ADLS maakt gebruik van een ontwerp paradigma is vergelijkbaar met HDFS, en biedt onbeperkte schaalbaarheid wat betreft de totale capaciteit en de grootte van afzonderlijke bestanden. ADLS is zeer goed bij het werken met grote bestanden, omdat een groot bestand kan worden opgeslagen op meerdere knooppunten.  Partitioneren van gegevens in ADLS loopt achter de schermen.  Data Lake Store biedt u een enorme doorvoer voor het uitvoeren van analysetaken waarbij meer dan duizend simultane uitvoerders honderden terabytes aan gegevens efficiënt lezen en schrijven.
+Azure Data Lake Storage (ADLS) is een beheerde, grootschalige-opslag plaats voor analyse gegevens die compatibel zijn met HDFS.  ADLS maakt gebruik van een ontwerp paradigma dat vergelijkbaar is met HDFS en biedt onbeperkte schaal baarheid in termen van totale capaciteit en de grootte van afzonderlijke bestanden. ADLS is zeer goed bij het werken met grote bestanden omdat een groot bestand kan worden opgeslagen op meerdere knoop punten.  Partitioneren van gegevens in ADLS geschiedt achter de schermen.  Data Lake Store biedt u een enorme doorvoer voor het uitvoeren van analysetaken waarbij meer dan duizend simultane uitvoerders honderden terabytes aan gegevens efficiënt lezen en schrijven.
 
-Doorgaans zijn gegevens opgenomen in ADLS met behulp van Azure Data Factory, een ADLS-SDK's, AdlCopy Service, Apache DistCp of Apache Sqoop.  Welke van deze services te gebruiken grotendeels afhankelijk van de gegevens.  Als de gegevens zich momenteel in een bestaande Hadoop-cluster, kunt u Apache DistCp, AdlCopy Service of Azure Data Factory.  Als het in Azure Blob Storage, kunt u Azure Data Lake Storage .NET SDK, Azure PowerShell of Azure Data Factory.
+Gegevens worden doorgaans opgenomen in ADLS met behulp van Azure Data Factory, ADLS Sdk's, AdlCopy service, Apache DistCp of Apache Sqoop.  Welke van deze services het meest gebruikt, is afhankelijk van waar de gegevens zich bevindt.  Als de gegevens zich momenteel in een bestaand Hadoop-cluster bevindt, kunt u Apache DistCp, AdlCopy service of Azure Data Factory gebruiken.  In Azure Blob Storage kunt u Azure Data Lake Storage .NET SDK, Azure PowerShell of Azure Data Factory gebruiken.
 
-ADLS is ook geoptimaliseerd voor gebeurtenisopname met behulp van Azure Event Hub of Apache Storm.
+ADLS is ook geoptimaliseerd voor gebeurtenis opname met behulp van Azure Event hub of Apache Storm.
 
-#### <a name="considerations-for-both-storage-options"></a>Overwegingen voor beide opties voor opslag
+#### <a name="considerations-for-both-storage-options"></a>Overwegingen voor beide opslag opties
 
-De netwerklatentie kan een groot probleem zijn met name als de gegevens afkomstig is van een on-premises locatie voor het uploaden van gegevenssets in het bereik terabyte.  In dergelijke gevallen kunt u de onderstaande opties:
+Voor het uploaden van gegevens sets in het terabyte-bereik kan de netwerk latentie een groot probleem zijn, met name als de gegevens afkomstig zijn van een on-premises locatie.  In dergelijke gevallen kunt u de onderstaande opties gebruiken:
 
-* Azure ExpressRoute:  Azure ExpressRoute kunt u particuliere verbindingen maken tussen Azure-datacenters en uw on-premises infrastructuur. Deze verbindingen bieden een betrouwbare optie voor het overbrengen van grote hoeveelheden gegevens. Zie voor meer informatie, [documentatie voor Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
+* Azure ExpressRoute:  Met Azure ExpressRoute kunt u particuliere verbindingen maken tussen Azure-data centers en uw on-premises infra structuur. Deze verbindingen bieden een betrouw bare optie voor het overbrengen van grote hoeveel heden gegevens. Zie de [documentatie van Azure ExpressRoute](../../expressroute/expressroute-introduction.md)voor meer informatie.
 
-* 'Offline' uploaden van gegevens. U kunt [Azure Import/Export-service](../../storage/common/storage-import-export-service.md) voor verzending van harde schijven met uw gegevens om een Azure-Datacenter. Uw gegevens eerst geüpload naar Azure Storage-Blobs. Vervolgens kunt u [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) of de [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) hulpprogramma gegevens kopiëren van Azure Storage-blobs naar Data Lake-opslag.
+* ' Offline ' uploaden van gegevens. U kunt de [Azure import/export-service](../../storage/common/storage-import-export-service.md) gebruiken om harde schijven met uw gegevens naar een Azure-Data Center te verzenden. Uw gegevens worden eerst geüpload naar Azure Storage blobs. U kunt vervolgens [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) of het hulp programma [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) gebruiken om gegevens van Azure Storage blobs naar Data Lake Storage te kopiëren.
 
 ### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 
-Azure SQL DW is een uitstekende keuze voor het opslaan van gereinigd en worden resultaten voorbereid voor toekomstige analyse.  Azure HDInsight kan worden gebruikt om uit te voeren van deze services voor Azure SQL DW.
+Azure SQL DW is een uitstekende keuze voor het opslaan van gereinigde en voor bereide resultaten voor toekomstige analyses.  Azure HDInsight kan worden gebruikt om deze services uit te voeren voor Azure SQL DW.
 
-Azure SQL Data Warehouse (SQL DW) is een relationele database-opslag geoptimaliseerd voor analytische workloads.  Azure SQL DW kan worden geschaald op basis van gepartitioneerde tabellen.  Tabellen kunnen worden gepartitioneerd over meerdere knooppunten.  Azure SQL DW-knooppunten zijn geselecteerd op het moment van maken.  Ze kunnen worden geschaald na de gebeurtenis, maar dat een actief proces waarvoor verplaatsing van gegevens mogelijk is. Zie [SQL Data Warehouse - beheren Compute](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) voor meer informatie.
+Azure SQL Data Warehouse (SQL DW) is een relationele database opslag dat is geoptimaliseerd voor analytische werk belastingen.  Azure SQL DW kan worden geschaald op basis van gepartitioneerde tabellen.  Tabellen kunnen worden gepartitioneerd op meerdere knoop punten.  Knoop punten van Azure SQL DW worden geselecteerd op het moment van maken.  Ze kunnen worden geschaald na het feit, maar dat is een actief proces waarvoor gegevens verplaatsing nodig is. Zie [SQL Data Warehouse-Compute beheren](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) voor meer informatie.
 
 ### <a name="apache-hbase"></a>Apache HBase
 
-Apache HBase is een sleutel / waarde-opslag die beschikbaar zijn in Azure HDInsight.  Apache HBase is een open-source NoSQL-database die is gebaseerd op Hadoop en die is gemodelleerd naar Google BigTable. HBase biedt willekeurige toegang van goed presterende en sterke consistentie voor grote hoeveelheden ongestructureerde en semigestructureerde gegevens in een database zonder schema onderverdeeld op basis van kolomfamilies.
+Apache HBase is een sleutel waarde-archief dat beschikbaar is in azure HDInsight.  Apache HBase is een open-source NoSQL-database die is gebaseerd op Hadoop en die is gemodelleerd naar Google BigTable. HBase biedt wille keurige toegang en sterke consistentie voor grote hoeveel heden ongestructureerde en semigestructureerde gegevens in een schemaloze data base, geordend op kolom families.
 
-De gegevens worden opgeslagen in de rijen van een tabel en de gegevens in een rij worden gegroepeerd op basis van de kolomfamilie. HBase is een database zonder schema in de zin dat zowel de kolommen als het type gegevens dat hierin wordt opgeslagen niet hoeven te worden gedefinieerd voordat u ze kunt gebruiken. De open-source code wordt lineair geschaald om petabytes aan gegevens op duizenden knooppunten te verwerken. HBase kan afhankelijk zijn van de gegevensredundantie, batchverwerking en andere functies die worden geboden door gedistribueerde toepassingen in het Hadoop-ecosysteem.   
+De gegevens worden opgeslagen in de rijen van een tabel en de gegevens in een rij worden gegroepeerd op basis van de kolomfamilie. HBase is een database zonder schema in de zin dat zowel de kolommen als het type gegevens dat hierin wordt opgeslagen niet hoeven te worden gedefinieerd voordat u ze kunt gebruiken. De open-source code wordt lineair geschaald om petabytes aan gegevens op duizenden knooppunten te verwerken. HBase kan afhankelijk zijn van gegevens redundantie, batch verwerking en andere functies die worden geleverd door gedistribueerde toepassingen in het Hadoop-ecosysteem.   
 
-HBase is een uitstekende bestemming voor sensor- en logboekbestanden voor toekomstig gebruik.
+HBase is een uitstekende bestemming voor sensor-en logboek gegevens voor toekomstige analyse.
 
-HBase-schaalbaarheid is afhankelijk van het aantal knooppunten in het HDInsight-cluster.
+De schaal baarheid van HBase is afhankelijk van het aantal knoop punten in het HDInsight-cluster.
 
-### <a name="azure-sql-database-and-azure-database"></a>Azure SQL Database en Azure-Database
+### <a name="azure-sql-database-and-azure-database"></a>Azure SQL Database en Azure-data base
 
-Azure biedt drie verschillende relationele databases als platform-as-a-service (PAAS).
+Azure biedt drie verschillende relationele data bases als platform-as-a-Service (PAAS).
 
-* [Azure SQL Database](../../sql-database/sql-database-technical-overview.md) is een implementatie van Microsoft SQL Server. Zie voor meer informatie over prestaties, [afstemmen van prestaties in Azure SQL Database](../../sql-database/sql-database-performance-guidance.md).
-* [Azure Database voor MySQL](../../mysql/overview.md) is een implementatie van Oracle, MySQL.
-* [Azure Database voor PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) is een implementatie van de PostgreSQL.
+* [Azure SQL database](../../sql-database/sql-database-technical-overview.md) is een implementatie van Microsoft SQL Server. Zie [prestaties afstemmen in Azure SQL database](../../sql-database/sql-database-performance-guidance.md)voor meer informatie over prestaties.
+* [Azure database for MySQL](../../mysql/overview.md) is een implementatie van Oracle MySQL.
+* [Azure database for PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) is een implementatie van postgresql.
 
-Deze producten opschalen, wat betekent dat ze worden geschaald door meer CPU en geheugen toe te voegen.  U kunt ook het gebruik van premium-schijven met de producten voor betere i/o-prestaties.
+Deze producten worden omhoog geschaald, wat betekent dat ze worden geschaald door meer CPU en geheugen toe te voegen.  U kunt er ook voor kiezen om Premium-schijven met de producten te gebruiken voor betere I/O-prestaties.
 
 ## <a name="azure-analysis-services"></a>Azure Analysis Services 
 
-Azure Analysis Services (AAS) is een engine voor analytische gegevens wordt gebruikt voor ondersteuning voor besluitvorming en business analytics, met de analytische gegevens voor zakelijke rapporten en clienttoepassingen zoals Power BI, Excel, Reporting Services-rapporten en andere gegevens hulpprogramma's voor visualisatie.
+Azure Analysis Services (AAS) is een analytische gegevens engine die wordt gebruikt in de besluit ondersteuning en Business Analytics, waarmee de analytische gegevens voor zakelijke rapporten en client toepassingen zoals Power BI, Excel, Reporting Services-rapporten en andere gegevens worden verstrekt. visualisatie hulpprogramma's.
 
-Analyse van kubussen kunnen schalen door het veranderen van lagen voor elke afzonderlijke kubus.  Zie voor meer informatie, [prijzen van Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/).
+Analyse kubussen kunnen worden geschaald door de lagen voor elke afzonderlijke kubus te wijzigen.  Zie [Azure Analysis Services prijzen](https://azure.microsoft.com/pricing/details/analysis-services/)voor meer informatie.
 
 ## <a name="extract-and-load"></a>Uitpakken en laden
 
-Zodra de gegevens aanwezig zijn in Azure, kunt u veel services kunt gebruiken om te halen en deze te laden in andere producten.  HDInsight ondersteunt Sqoop en Flume. 
+Zodra de gegevens aanwezig zijn in azure, kunt u veel services gebruiken om deze te extra heren en te laden in andere producten.  HDInsight ondersteunt Sqoop en Flume. 
 
 ### <a name="apache-sqoop"></a>Apache Sqoop
 
-Apache Sqoop is een hulpprogramma dat is ontworpen voor het efficiënt gegevensoverdracht tussen gestructureerde, semi-gestructureerde en ongestructureerde gegevensbronnen. 
+Apache Sqoop is een hulp programma dat is ontworpen voor het efficiënt overbrengen van gegevens tussen gestructureerde, semi-gestructureerde en ongestructureerde gegevens bronnen. 
 
-Sqoop maakt gebruik van MapReduce om te importeren en exporteren van de gegevens voor parallelle bewerking en fouttolerantie.
+Sqoop maakt gebruik van MapReduce voor het importeren en exporteren van de gegevens, om parallelle bewerkingen en fout tolerantie mogelijk te maken.
 
 ### <a name="apache-flume"></a>Apache Flume
 
-Apache Flume is een gedistribueerde, betrouwbare en beschikbare service voor efficiënt verzamelen, aggregeren en verplaatsen van grote hoeveelheden gegevens aan het logboek. Flume is een eenvoudige en flexibele architectuur op basis van streaming gegevensstromen. Flume is robuuste en fouttolerantie met instelbare betrouwbaarheid mechanismen en veel mechanismen voor failover en herstel. Flume maakt gebruik van een eenvoudige extensible gegevensmodel waarmee voor online analytische toepassing.
+Apache Flume is een gedistribueerde, betrouw bare service waarmee u op efficiënte wijze grote hoeveel heden logboek gegevens kunt verzamelen, samen voegen en verplaatsen. Flume heeft een eenvoudige en flexibele architectuur op basis van streaming-gegevens stromen. Flume is robuust en fout tolerant met instel bare-betrouwbaarheids mechanismen en veel failover-en herstel mechanismen. Flume maakt gebruik van een eenvoudig uitbreidbaar gegevens model waarmee u online analytische toepassing kunt gebruiken.
 
-Apache Flume kan niet worden gebruikt met Azure HDInsight.  Een on-premises Hadoop-installatie kunt Flume gebruiken om gegevens te verzenden naar Azure Storage-Blobs of Azure Data Lake-opslag.  Zie voor meer informatie, [met behulp van Apache Flume met HDInsight](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
+Apache Flume kan niet worden gebruikt met Azure HDInsight.  Een on-premises Hadoop-installatie kan Flume gebruiken om gegevens te verzenden naar Azure Storage-blobs of Azure Data Lake Storage.  Zie [using Apache Flume with HDInsight](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/)(Engelstalig) voor meer informatie.
 
 ## <a name="transform"></a>Transformeren
 
-Zodra de gegevens in de gekozen locatie bestaat, moet u deze op te schonen, Combineer de oplossing of voorbereiden voor een specifieke gebruikspatroon.  Zijn alle goede keuze voor dit soort werk hive, Pig- en Spark SQL.  Ze worden ondersteund op HDInsight. 
+Zodra de gegevens op de gekozen locatie aanwezig zijn, moet u deze opschonen, combi neren of voorbereiden voor een specifiek gebruiks patroon.  Hive-, Pig-en Spark SQL zijn allemaal een goede keuze voor dat soort werk.  Ze worden allemaal ondersteund op HDInsight. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Apache Pig gebruiken met Apache Hadoop op HDInsight](hdinsight-use-pig.md)
-* [Apache Hive gebruiken als een ETL-hulpprogramma](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 
+* [Apache Hive als ETL-hulp programma gebruiken](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 
 * [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
