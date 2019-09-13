@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1828efb410849677e859d341e4e16e4f5d4ca681
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1bfc17d343f6e788d22cd158fcb849c5895b019f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68405990"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879771"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Beschik baarheid en betrouw baarheid van Apache Hadoop clusters in HDInsight
 
@@ -106,13 +106,13 @@ De Ambari-webgebruikersinterface is zichtbaar `https://CLUSTERNAME.azurehdinsigh
 
 Wanneer u op de pagina Ambari, worden de geïnstalleerde services weer gegeven aan de linkerkant van de pagina.
 
-![Geïnstalleerde services](./media/hdinsight-high-availability-linux/services.png)
+![Geïnstalleerde services](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
 
 Er kan een reeks pictogrammen naast een service worden weer gegeven om de status aan te geven. U kunt waarschuwingen met betrekking tot een service weer geven met behulp van de koppeling **waarschuwingen** boven aan de pagina.  Ambari biedt verschillende vooraf gedefinieerde waarschuwingen.
 
 De volgende waarschuwingen helpen bij het bewaken van de beschik baarheid van een cluster:
 
-| Naam van de waarschuwing                               | Description                                                                                                                                                                                  |
+| Naam van waarschuwing                               | Description                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Status van metrische monitor                    | Deze waarschuwing geeft de status van het bewakings proces voor metrische gegevens aan, zoals bepaald door het controle status script.                                                                                   |
 | Heartbeat van de Ambari-agent                   | Deze waarschuwing wordt geactiveerd als de server contact met een agent heeft verloren.                                                                                                                        |
@@ -155,13 +155,13 @@ U kunt elke service selecteren om meer informatie weer te geven.
 
 De service pagina bevat informatie over de status en configuratie van elke service, maar biedt geen informatie over het hoofd knooppunt waarop de service wordt uitgevoerd. Als u deze informatie wilt weer geven, gebruikt u de koppeling **hosts** boven aan de pagina. Op deze pagina worden de hosts in het cluster weer gegeven, met inbegrip van de hoofd knooppunten.
 
-![lijst hosts](./media/hdinsight-high-availability-linux/hosts.png)
+![lijst hosts](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
 
 Als u de koppeling selecteert voor een van de hoofd knooppunten, worden de services en onderdelen weer gegeven die op dat knoop punt worden uitgevoerd.
 
-![Onderdeel status](./media/hdinsight-high-availability-linux/nodeservices.png)
+![Onderdeel status](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
 
-Zie [HDInsight bewaken en beheren met behulp van de Apache Ambari](hdinsight-hadoop-manage-ambari.md)-webgebruikersinterface voor meer informatie over het gebruik van Ambari.
+Zie [HDInsight bewaken en beheren met behulp van de Apache Ambari-webgebruikersinterface](hdinsight-hadoop-manage-ambari.md)voor meer informatie over het gebruik van Ambari.
 
 ### <a name="ambari-rest-api"></a>Ambari REST API
 
@@ -241,7 +241,7 @@ Voer `help` bij de `sftp>` prompt een lijst met beschik bare opdrachten in.
 
 Selecteer in de Ambari-webgebruikersinterface de service waarvoor u logboeken wilt weer geven (bijvoorbeeld GARENs). Gebruik vervolgens **snelle koppelingen** om te selecteren welk hoofd knooppunt voor de logboeken moet worden weer gegeven.
 
-![Snelle koppelingen gebruiken om logboeken weer te geven](./media/hdinsight-high-availability-linux/viewlogs.png)
+![Snelle koppelingen gebruiken om logboeken weer te geven](./media/hdinsight-high-availability-linux/quick-links-view-logs.png)
 
 ## <a name="how-to-configure-the-node-size"></a>De knooppunt grootte configureren
 
@@ -251,7 +251,7 @@ Wanneer u een cluster maakt, kunt u de grootte van de knoop punten opgeven. De v
 
 * **Azure Portal**: Wanneer u een cluster maakt, kunt u de grootte van de knoop punten instellen die door het cluster worden gebruikt:
 
-    ![Afbeelding van de wizard voor het maken van een cluster met een knooppunt grootte selectie](./media/hdinsight-high-availability-linux/headnodesize.png)
+    ![Afbeelding van de wizard voor het maken van een cluster met een knooppunt grootte selectie](./media/hdinsight-high-availability-linux/hdinsight-headnodesize.png)
 
 * **Azure CLI**: Wanneer u de [opdracht AZ hdinsight Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) gebruikt, kunt u de grootte van de hoofd-, werk-en ZooKeeper-knoop punten `--headnode-size`instellen met behulp van de para meters, `--workernode-size`en `--zookeepernode-size` .
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 50bb26aa1a29dc8b1454fadec416aceea76405b2
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 6ff273236f9f8465de9ec0cda89ed3ff8996ecec
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844255"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932664"
 ---
 # <a name="aks-troubleshooting"></a>AKS problemen oplossen
 
@@ -141,3 +141,9 @@ Gebruik de volgende tijdelijke oplossingen:
 1. Gebruik een bestaande service-principal die al is door gegeven in meerdere regio's en die bestaat voor AKS tijdens het maken van een cluster.
 2. Als u automatiserings scripts gebruikt, voegt u vertragingen toe tussen het maken van service-principals en het maken van AKS-clusters.
 3. Als u Azure Portal gebruikt, keert u terug naar de cluster instellingen tijdens het maken en voert u de validatie pagina na een paar minuten opnieuw uit.
+
+## <a name="im-receiving-errors-after-restricting-my-egress-traffic"></a>Ik ontvang fouten na het beperken van mijn uitgaand verkeer
+
+Bij het beperken van uitgaand verkeer van een AKS-cluster zijn er [vereiste en optionele aanbevolen](limit-egress-traffic.md) uitgaande poorten/netwerk regels en FQDN/toepassings regels voor AKS. Als uw instellingen conflicteren met een van deze regels, is het mogelijk dat u bepaalde `kubectl` opdrachten niet kunt uitvoeren. Er worden ook fouten weer geven bij het maken van een AKS-cluster.
+
+Controleer of de instellingen niet conflicteren met een van de vereiste of optionele aanbevolen uitgaande poorten/netwerk regels en FQDN/toepassings regels.

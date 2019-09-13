@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 45c802fb42088be1eecd7c711c6693d325252c91
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 29a771b93e1d686f7972e7dc4d9e78e5858644d6
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985788"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899410"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Voorbereidingen voor het implementeren van uw IoT Edge-oplossing in productie
 
@@ -209,13 +209,15 @@ De Moby-container engine stelt standaard de limieten voor de container logboek g
 
 U kunt de grootte van alle container logboeken beperken in de logboek opties van de container-engine. In het volgende voor beeld wordt het logboek `json-file` stuur programma ingesteld op (aanbevolen) met limieten voor grootte en aantal bestanden:
 
-    {
-        "log-driver": "json-file",
-        "log-opts": {
-            "max-size": "10m",
-            "max-file": "3"
-        }
+```JSON
+{
+    "log-driver": "json-file",
+    "log-opts": {
+        "max-size": "10m",
+        "max-file": "3"
     }
+}
+```
 
 Voeg deze gegevens toe aan een bestand met de naam `daemon.json` en plaats het op de juiste locatie voor het platform van uw apparaat.
 
@@ -230,18 +232,19 @@ De container engine moet opnieuw worden gestart om de wijzigingen van kracht te 
 
 U kunt dit doen in de **createOptions** van elke module. Bijvoorbeeld:
 
-    "createOptions": {
-        "HostConfig": {
-            "LogConfig": {
-                "Type": "json-file",
-                "Config": {
-                    "max-size": "10m",
-                    "max-file": "3"
-                }
+```yml
+"createOptions": {
+    "HostConfig": {
+        "LogConfig": {
+            "Type": "json-file",
+            "Config": {
+                "max-size": "10m",
+                "max-file": "3"
             }
         }
     }
-
+}
+```
 
 **Aanvullende opties op Linux-systemen**
 

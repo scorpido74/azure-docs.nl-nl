@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: bwren
-ms.openlocfilehash: 126d96cbd85f4e91de5a6393be02a15240b51ade
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: e8fd49781301406e0c35e1de57cea3040167c6c3
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035587"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915867"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS-Portal, verplaatsen naar Azure
 
@@ -50,7 +50,7 @@ Hoewel de meeste functies blijven werken zonder een migratie uit te voeren, moet
 Raadpleeg de [Veelgestelde vragen over de overgang van de OMS-Portal naar Azure portal voor log Analytics gebruikers](oms-portal-faq.md) voor informatie over hoe u kunt overstappen naar de Azure Portal. 
 
 ## <a name="user-access-and-role-migration"></a>Gebruikers toegang en rollen migreren
-Azure Portal Access Management is rijker en krachtiger dan het toegangs beheer in de OMS-Portal. Zie [uw Azure Monitor logs ontwerpen werk ruimte] ontwerp-logboeken-deployment.md) voor meer informatie over toegangs beheer in Log Analytics.
+Azure Portal Access Management is rijker en krachtiger dan het toegangs beheer in de OMS-Portal. Zie [uw Azure monitor-werk ruimte voor logboeken ontwerpen](design-logs-deployment.md) voor meer informatie over toegangs beheer in log Analytics.
 
 > [!NOTE]
 > In vorige versies van dit artikel is aangegeven dat de machtigingen van de OMS-Portal automatisch worden geconverteerd naar het Azure Portal. Deze automatische conversie wordt niet meer gepland en u moet de conversie zelf uitvoeren.

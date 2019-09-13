@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/08/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: aa0c34a361ce191618d7b84e7a96557f2344284a
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 7e79d3119f5d2d0fe1894de0ab9535dd988706f8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70803964"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935202"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Stappen voor het migreren naar de Azure-ontwerp bron
 
@@ -49,7 +49,7 @@ Het migratie proces is beschikbaar als u de eigenaar bent van een LUIS-app.
 
     Voor elke samen werker en app wordt de standaard e-mail toepassing geopend met een e-mail met een lichte opmaak. U kunt de e-mail bewerken voordat u deze verzendt.
 
-    De e-mail sjabloon bevat de exacte app-id en app-naam. 
+    De e-mail sjabloon bevat de exacte App-ID en app-naam. 
 
     ```html
     Dear Sir/Madam,
@@ -95,11 +95,22 @@ Het migratie proces is beschikbaar als u de eigenaar bent van een LUIS-app.
 
     ![Selecteer abonnement en LUIS authoring resource om de apps te zien die u kunt ontwerpen.](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
 
+
+## <a name="app-contributor-begins-the-migration-process"></a>De Inzender voor apps start het migratie proces
+
+Volg dezelfde stappen als de eigenaar van de app voor migratie. Het proces maakt een nieuwe ontwerp bron van de soort `LUIS.Authoring`. 
+
+U moet uw account migreren om als bijdrager toe te voegen aan gemigreerde apps waarvan anderen eigenaar zijn.  
+
 ## <a name="after-the-migration-process-add-contributors-to-your-authoring-resource"></a>Voeg na het migratie proces mede werkers toe aan uw ontwerp bron
 
 [!INCLUDE [Manage contributors for the Azure authoring resource for language understanding](./includes/manage-contributors-authoring-resource.md)]
 
 Meer informatie [over het toevoegen van mede](luis-how-to-collaborate.md)werkers. 
+
+## <a name="troubleshooting-errors-with-the-migration-process"></a>Problemen met het migratie proces oplossen
+
+Als er tijdens het `MissingSubscriptionRegistration` migratie proces een fout optreedt in de Luis-Portal met een rode meldings balk, maakt u een cognitieve service resource in de [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) of [Azure cli](luis-how-to-azure-subscription.md#create-resources-in-azure-cli). Meer informatie over [oorzaken van deze fout](../../azure-resource-manager/resource-manager-register-provider-errors.md#cause).
 
 ## <a name="next-steps"></a>Volgende stappen
 

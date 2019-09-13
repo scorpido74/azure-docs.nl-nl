@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 112d0bd4b6802179692d0d177775027e552d1170
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a020ef91e52a5d801557399df827d3641bfb974e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60795855"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934189"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Een geofence instellen met behulp van Azure Maps
 
@@ -36,7 +36,7 @@ In deze zelfstudie leert u het volgende:
 
 ### <a name="create-an-azure-maps-account"></a>Een Azure Maps-account maken 
 
-Als u de stappen in deze zelfstudie wilt volgen, raadpleeg dan eerst [Account en sleutels beheren](how-to-manage-account-keys.md) om uw accountabonnement te maken en te beheren met prijscategorie S1.
+Als u de stappen in deze zelf studie wilt uitvoeren, volgt u de instructies in [Manage account](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) om een abonnement voor een Azure Maps account te maken met de prijs categorie S1 en volgt u de stappen in [primaire sleutel ophalen](./tutorial-search-location.md#getkey) om de primaire abonnements sleutel voor uw account op te halen.
 
 ## <a name="upload-geofences"></a>Geofences uploaden
 
@@ -56,7 +56,7 @@ Open de Postman-app en volg de volgende stappen om de geofence van de bouwplaats
     
     De GEOJSON-parameter in het URL-pad geeft de gegevensindeling aan van de gegevens die worden geüpload.
 
-3. Klik op **Params** en voer de volgende sleutel/waarde-paren in die voor de POST-aanvraag-URL moeten worden gebruikt. Vervang de subscription-key-waarde door de sleutel van uw Azure Maps-abonnement.
+3. Klik op **Params** en voer de volgende sleutel/waarde-paren in die voor de POST-aanvraag-URL moeten worden gebruikt. Vervang de abonnements sleutel waarde door uw Azure Maps primaire abonnements sleutel.
    
     ![Key-Value-parameters in Postman](./media/tutorial-geofence/postman-key-vals.png)
 

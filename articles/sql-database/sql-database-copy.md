@@ -8,15 +8,15 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
-ms.author: sstein
+ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 08/29/2019
-ms.openlocfilehash: cdbc79ca6764dd49f427b395dbaf8502c58bf63a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.date: 09/04/2019
+ms.openlocfilehash: de56e66046bb61ac31c1842ae6ce7a9c6720760d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173435"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934208"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Een transactioneel consistente kopie van een Azure-SQL database kopiëren
 
@@ -72,7 +72,8 @@ Als u een database kopie wilt maken, moet u de volgende rollen hebben
 - SQL Server rol Inzender of
 - Aangepaste rol op de bron-en doel database met de volgende machtiging:
 
-   Micro soft. SQL/servers/data bases/Lees micro soft. SQL/servers/data bases/write
+   Micro soft. SQL/servers/data bases/lezen   
+   Micro soft. SQL/servers/data bases/schrijven   
 
 Als u een kopie van een Data Base wilt annuleren, moet u de volgende rollen hebben
 
@@ -80,7 +81,23 @@ Als u een kopie van een Data Base wilt annuleren, moet u de volgende rollen hebb
 - SQL Server rol Inzender of
 - Aangepaste rol op de bron-en doel database met de volgende machtiging:
 
-   Micro soft. SQL/servers/data bases/Lees micro soft. SQL/servers/data bases/write
+   Micro soft. SQL/servers/data bases/lezen   
+   Micro soft. SQL/servers/data bases/schrijven   
+   
+Als u het kopiëren van de data base met Azure Portal wilt beheren, hebt u ook de volgende machtigingen nodig:
+
+&nbsp;&nbsp; Microsoft.resources/&nbsp; abonnementen/resources/lezen   
+&nbsp;&nbsp; Microsoft.resources/&nbsp; abonnementen/bronnen/schrijven   
+&nbsp;&nbsp; Microsoft.resources&nbsp; /implementaties/lezen   
+&nbsp;&nbsp; Microsoft.resources&nbsp; /implementaties/schrijven   
+&nbsp;&nbsp; Microsoft.resources/implementaties&nbsp; /operationstatuses/lezen    
+
+Als u de bewerkingen wilt zien onder implementaties in de resource groep op de portal, bewerkingen in meerdere resource providers, waaronder SQL-bewerkingen, hebt u de volgende extra RBAC-rollen nodig: 
+
+&nbsp;&nbsp; Microsoft.resources/abonnementen/ResourceGroups/implementaties&nbsp; /bewerkingen/lezen   
+&nbsp;&nbsp; Microsoft.resources/abonnementen/ResourceGroups/implementaties&nbsp; /operationstatuses/lezen
+
+
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>Een Data Base kopiëren met behulp van Transact-SQL
 
@@ -122,7 +139,7 @@ U kunt de stappen in de vorige sectie gebruiken om uw Data Base naar een SQL Dat
 
 Bewaak het kopieer proces door een query uit te geven op de weer gaven sys. data bases en sys. DM _database_copies. Terwijl het kopiëren wordt uitgevoerd, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **kopiëren**.
 
-* Als het kopiëren mislukt, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op verdacht. Voer de instructie DROP uit op de nieuwe data base en probeer het later opnieuw.
+* Als het kopiëren mislukt, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **verdacht**. Voer de instructie DROP uit op de nieuwe data base en probeer het later opnieuw.
 * Als het kopiëren is voltooid, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **online**. Het kopiëren is voltooid en de nieuwe Data Base is een reguliere data base die onafhankelijk van de bron database kan worden gewijzigd.
 
 > [!NOTE]

@@ -8,19 +8,19 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4eef31a050072c0413421a5490b35b765cb9557d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: e805ca87a34a6b50e9f799909efe8fcbe859883c
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68381833"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899465"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Gebruik Gpu's voor computerintensieve werk belastingen op Azure Kubernetes service (AKS)
 
 Grafische verwerkings eenheden (Gpu's) worden vaak gebruikt voor computerintensieve werk belastingen, zoals grafische werk belastingen en visualisaties. AKS biedt ondersteuning voor het maken van knooppunt groepen met GPU-functionaliteit voor het uitvoeren van deze reken intensief werk belastingen in Kubernetes. Zie voor meer informatie over beschik bare virtuele machines met GPU voor [GPU geoptimaliseerde VM-grootten in azure][gpu-skus]. Voor AKS-knoop punten wordt een minimale grootte van *Standard_NC6*aangeraden.
 
 > [!NOTE]
-> Virtuele machines met GPU bevatten gespecialiseerde hardware waarvoor hogere prijzen en beschik baarheid van de regio gelden. Zie de [prijs][azure-pricing] informatie en beschik baarheid van [regio's][azure-availability]voor meer informatie.
+> Virtuele machines met GPU bevatten gespecialiseerde hardware waarvoor hogere prijzen en beschik baarheid van de regio gelden. Zie de [prijs][azure-pricing] informatie en [Beschik baarheid van regio's][azure-availability]voor meer informatie.
 
 Momenteel is het gebruik van knooppunt Pools met GPU ingeschakeld alleen beschikbaar voor Linux-knooppunt groepen.
 
@@ -73,7 +73,7 @@ apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: nvidia-device-plugin-daemonset
-  namespace: kube-system
+  namespace: gpu-resources
 spec:
   updateStrategy:
     type: RollingUpdate
@@ -223,7 +223,7 @@ kubectl apply -f samples-tf-mnist-demo.yaml
 
 ## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>Bekijk de status en de uitvoer van de GPU-ingeschakelde werk belasting
 
-Bewaak de voortgang van de taak met behulp van de opdracht [kubectl Get Jobs][kubectl-get] with het `--watch` argument. Het kan een paar minuten duren voordat de installatie kopie is opgehaald en de gegevensset wordt verwerkt. Wanneer in de kolom voltooiings de *1/1*wordt weer gegeven, is de taak voltooid. Sluit de `kubetctl --watch` opdracht af met *CTRL-C*:
+Bewaak de voortgang van de taak met behulp van de opdracht [kubectl Get Jobs][kubectl-get] with het `--watch` argument. Het kan een paar minuten duren voordat de installatie kopie is opgehaald en de gegevensset wordt verwerkt. Wanneer in de kolom *voltooiings* de *1/1*wordt weer gegeven, is de taak voltooid. Sluit de `kubetctl --watch` opdracht af met *CTRL-C*:
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch
@@ -243,7 +243,7 @@ NAME                          READY   STATUS      RESTARTS   AGE
 samples-tf-mnist-demo-mtd44   0/1     Completed   0          4m39s
 ```
 
-Gebruik nu de [kubectl][kubectl-logs] -logboeken opdracht om de pod-logboeken weer te geven. In het volgende voor beeld worden pod-logboeken gecontroleerd of het juiste GPU `Tesla K80`-apparaat is gedetecteerd. Geef de naam op voor uw eigen Pod:
+Gebruik nu de [kubectl-logboeken][kubectl-logs] opdracht om de pod-logboeken weer te geven. In het volgende voor beeld worden pod-logboeken gecontroleerd of het juiste GPU `Tesla K80`-apparaat is gedetecteerd. Geef de naam op voor uw eigen Pod:
 
 ```console
 $ kubectl logs samples-tf-mnist-demo-smnr6

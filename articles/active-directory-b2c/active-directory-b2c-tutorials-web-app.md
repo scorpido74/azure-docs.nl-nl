@@ -1,21 +1,21 @@
 ---
-title: Zelfstudie - Verificatie inschakelen in een webtoepassing - Azure Active Directory B2C | Microsoft Docs
+title: Zelf studie-verificatie inschakelen in een web-app-Azure Active Directory B2C
 description: Zelfstudie over het gebruik van Azure Active Directory B2C voor het opgeven van gebruikersaanmelding voor een ASP.NET-webtoepassing.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 02/04/2019
+ms.date: 09/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: bcfd1ef02c68de7709cb8642b94f23a6884ea156
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 2066a7848efaf067dddde3d5db1decfc88d94436
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464768"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914207"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Zelfstudie: Verificatie inschakelen in een webtoepassing met behulp van Azure Active Directory B2C
 
@@ -32,8 +32,8 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Maak gebruikersstromen](tutorial-create-user-flows.md) om gebruikerservaringen in uw toepassing in te schakelen.
-- Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de **ASP.net-en Web Development** -werk belasting.
+* [Maak gebruikersstromen](tutorial-create-user-flows.md) om gebruikerservaringen in uw toepassing in te schakelen.
+* Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de **ASP.net-en Web Development** -werk belasting.
 
 ## <a name="update-the-application"></a>De toepassing bijwerken
 
@@ -58,15 +58,21 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 Deze twee projecten bevinden zich in de voorbeeldoplossing:
 
-- **TaskWebApp**: een lijst met taken maken en bewerken. Het voorbeeld gebruikt de gebruikersstroom voor **registratie of aanmelding** om gebruikers te registreren of aan te melden.
+- **TaskWebApp**: een lijst met taken maken en bewerken. In het voor beeld wordt de gebruikers stroom **registreren of aanmelden** gebruikt om gebruikers te registreren en aan te melden.
 - **TaskService**: biedt ondersteuning voor het maken, lezen, bijwerken en verwijderen van takenlijstfunctionaliteit. De API wordt beveiligd door Azure AD B2C en wordt aangeroepen door TaskWebApp.
 
-U moet het voorbeeld wijzigen om de toepassing te gebruiken die geregistreerd staat in uw tenant, met inbegrip van de toepassings-ID en de sleutel die u eerder hebt genoteerd. U moet de gebruikersstromen die u hebt gemaakt ook configureren. Het voorbeeld definieert de configuratiewaarden als app-instellingen in het bestand Web.config. De instellingen wijzigen:
+U moet het voorbeeld wijzigen om de toepassing te gebruiken die geregistreerd staat in uw tenant, met inbegrip van de toepassings-ID en de sleutel die u eerder hebt genoteerd. U moet de gebruikersstromen die u hebt gemaakt ook configureren. Het voor beeld definieert de configuratie waarden als instellingen in het bestand *Web. config* .
+
+Werk de instellingen in het bestand Web. config bij om met uw gebruikers stroom te werken:
 
 1. Open de oplossing **B2C-WebAPI-DotNet** in Visual Studio.
-2. Open in het project **TaskWebApp** het bestand **Web.config**. Vervang de waarde voor `ida:Tenant` door de naam van de tenant die u hebt gemaakt. Vervang de waarde voor `ida:ClientId` door de toepassings-id die u hebt geregistreerd. Vervang de waarde voor `ida:ClientSecret` door de sleutel die u hebt geregistreerd. U moet het client geheim coderen voordat u het toevoegt aan web. config.
-3. Vervang in het bestand **Web.config** de waarde voor `ida:SignUpSignInPolicyId` door `b2c_1_signupsignin1`. Vervang de waarde voor `ida:EditProfilePolicyId` door `b2c_1_profileediting1`. Vervang de waarde voor `ida:ResetPasswordPolicyId` door `b2c_1_passwordreset1`.
-
+1. Open in het project **TaskWebApp** het bestand **Web.config**.
+    1. Vervang de waarde van `ida:Tenant` en `ida:AadInstance` door de naam van de Tenant die u hebt gemaakt.
+    1. Vervang de waarde van `ida:ClientId` door de toepassings-id die u hebt vastgelegd.
+    1. Vervang de waarde voor `ida:ClientSecret` door de sleutel die u hebt geregistreerd. U moet het client geheim coderen voordat u het toevoegt aan web. config.
+    1. Vervang de waarde van `ida:SignUpSignInPolicyId` met `b2c_1_signupsignin1`.
+    1. Vervang de waarde van `ida:EditProfilePolicyId` met `b2c_1_profileediting1`.
+    1. Vervang de waarde van `ida:ResetPasswordPolicyId` met `b2c_1_passwordreset1`.
 
 ## <a name="run-the-sample"></a>De voorbeeldtoepassing uitvoeren
 

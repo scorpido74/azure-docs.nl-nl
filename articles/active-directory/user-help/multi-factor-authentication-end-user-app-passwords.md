@@ -14,12 +14,12 @@ ms.date: 08/13/2019
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc6f6f7b02db664ca6cd62dc7aad61baf5f132fa
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 78acb1f27b27c53aaaac508e0aa99a5b9c14ff2d
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088411"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914918"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>App-wacht woorden beheren voor verificatie in twee stappen
 
@@ -28,11 +28,9 @@ ms.locfileid: "70088411"
 
 Wanneer u app-wacht woorden gebruikt, is het belang rijk om het volgende te onthouden:
 
-- App-wacht woorden worden automatisch gegenereerd en eenmaal per app ingevoerd.
+- App-wacht woorden worden automatisch gegenereerd en moeten eenmaal per app worden gemaakt en ingevoerd.
 
 - Er is een limiet van 40 wacht woorden per gebruiker. Als u later een van deze limieten probeert te maken, wordt u gevraagd een bestaand wacht woord te verwijderen voordat u de nieuwe kunt maken.
-
-- Gebruik één app-wacht woord per apparaat, niet per app. U kunt bijvoorbeeld één wacht woord maken voor alle apps op uw laptop en vervolgens een ander wacht woord voor alle apps op uw bureau blad.
 
     >[!Note]
     >Office 2013-clients (inclusief Outlook) ondersteunen nieuwe verificatie protocollen en kunnen worden gebruikt met verificatie in twee stappen. Deze ondersteuning betekent dat als u verificatie in twee stappen hebt ingeschakeld, u geen app-wacht woorden meer nodig hebt voor Office 2013-clients. Zie voor meer informatie het artikel [hoe moderne verificatie werkt voor office 2013-en office 2016-client-apps](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) .

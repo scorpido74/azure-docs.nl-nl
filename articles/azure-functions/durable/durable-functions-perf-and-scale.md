@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ed0fe22903412d4164fb3a85dbd9afafdc7023e6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 53f561283d4d07d58bd03b59a24a30d8010caaf0
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097999"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933279"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Prestaties en schaal in Durable Functions (Azure Functions)
 
@@ -30,7 +30,7 @@ Wanneer een Orchestration-exemplaar moet worden uitgevoerd, worden de juiste rij
 
 ## <a name="instances-table"></a>Tabel met exemplaren
 
-De tabel instances is een andere Azure Storage tabel die de statussen bevat van alle indelings instanties binnen een task hub. Als er exemplaren worden gemaakt, worden er nieuwe rijen aan deze tabel toegevoegd. De partitie sleutel van deze tabel is de indelings exemplaar-ID en de rij is een vaste constante. Er is één rij per Orchestration-exemplaar.
+De tabel **instances** is een andere Azure Storage tabel die de statussen bevat van alle indelings instanties binnen een task hub. Als er exemplaren worden gemaakt, worden er nieuwe rijen aan deze tabel toegevoegd. De partitie sleutel van deze tabel is de indelings exemplaar-ID en de rij is een vaste constante. Er is één rij per Orchestration-exemplaar.
 
 Deze tabel wordt gebruikt om te voldoen aan de instantie query [](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) aanvragen van de api's GetStatusAsync `getStatus` (.net) en (Java script), evenals de [http API-status query](durable-functions-http-api.md#get-instance-status). Het wordt uiteindelijk consistent met de inhoud van de eerder genoemde **geschiedenis** tabel. Het gebruik van een afzonderlijke Azure Storage tabel om op deze manier efficiënt te voldoen aan de instantie query bewerkingen, wordt beïnvloed door het [CQRS-patroon (Command and query Responsibility segregation)](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
 
@@ -87,7 +87,7 @@ Als u niets opgeeft, wordt `AzureWebJobsStorage` het standaard opslag account ge
 
 ## <a name="orchestrator-scale-out"></a>Orchestrator-uitschalen
 
-Activiteit functies zijn stateless en worden automatisch geschaald door Vm's toe te voegen. Orchestrator-functies, anderzijds, worden gepartitioneerd over een of meer controle wachtrijen. Het aantal controle wachtrijen wordt gedefinieerd in het **host. json** -bestand. In het volgende voor beeld wordt de `durableTask/partitionCount` eigenschap host. json ingesteld op. `3`
+Activiteit functies zijn stateless en worden automatisch geschaald door Vm's toe te voegen. Orchestrator-functies, anderzijds, worden *gepartitioneerd* over een of meer controle wachtrijen. Het aantal controle wachtrijen wordt gedefinieerd in het **host. json** -bestand. In het volgende voor beeld wordt de `durableTask/partitionCount` eigenschap host. json ingesteld op. `3`
 
 ### <a name="functions-1x"></a>Functions 1.x
 
@@ -219,8 +219,8 @@ Als `durableTask/extendedSessionIdleTimeoutInSeconds` bijvoorbeeld is ingesteld 
 Bij het plannen van het gebruik van Durable Functions voor een productie toepassing is het belang rijk om de prestatie vereisten vroeg in het plannings proces in overweging te nemen. In deze sectie worden enkele eenvoudige gebruiks scenario's en de verwachte maximum doorvoer aantallen besproken.
 
 * **Uitvoering van sequentiële activiteit**: In dit scenario wordt een Orchestrator-functie beschreven waarmee een reeks activiteit wordt uitgevoerd, één na de andere. Het lijkt veel op het voor beeld van een [functie](durable-functions-sequence.md) koppeling.
-* **Uitvoering van parallelle activiteit**: In dit scenario wordt een Orchestrator-functie beschreven waarmee veel activiteit functies parallel worden uitgevoerd met behulp van het uitwaaieren [van](durable-functions-cloud-backup.md) de ventilator.
-* **Verwerking van parallelle antwoorden**: Dit scenario is de tweede helft van het [](durable-functions-cloud-backup.md) uitwaaieren van de ventilator. Het is gericht op de prestaties van de ventilator. Het is belang rijk te weten dat in tegens telling tot uitwaaiers de ventilator wordt uitgevoerd door één functie-exemplaar van Orchestrator en daarom alleen op één virtuele machine kan worden uitgevoerd.
+* **Uitvoering van parallelle activiteit**: In dit scenario wordt een Orchestrator-functie beschreven waarmee veel activiteit functies parallel worden uitgevoerd met behulp van het [uitwaaieren van](durable-functions-cloud-backup.md) de ventilator.
+* **Verwerking van parallelle antwoorden**: Dit scenario is de tweede helft van het [uitwaaieren](durable-functions-cloud-backup.md) van de ventilator. Het is gericht op de prestaties van de ventilator. Het is belang rijk te weten dat in tegens telling tot uitwaaiers de ventilator wordt uitgevoerd door één functie-exemplaar van Orchestrator en daarom alleen op één virtuele machine kan worden uitgevoerd.
 * **Externe gebeurtenis verwerking**: Dit scenario bevat één Orchestrator-functie-exemplaar dat op [externe gebeurtenissen](durable-functions-external-events.md)een voor een kan wachten.
 
 > [!TIP]
@@ -243,4 +243,4 @@ Als u de door u verwachte doorvoer nummers niet ziet en het CPU-en geheugen gebr
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Uw eerste Durable Function maken in C#](durable-functions-create-first-csharp.md)
+> [Meer informatie over herstel na nood gevallen en geo-distributie](durable-functions-disaster-recovery-geo-distribution.md)

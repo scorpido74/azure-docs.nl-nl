@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 14fbca6dea735ed1ee13fca20f19379cc2c4d0a9
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 79428520eed95e6e79f29e1676e2711e6ee24087
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742324"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934838"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Herstel na nood geval instellen voor SQL Server
 
@@ -111,7 +111,7 @@ Sommige BCDR-technologieën zoals SQL always on bieden geen systeem eigen onders
 
     ![Scherm opname van het venster met de naam Content_AG met server namen en-statussen](./media/site-recovery-sql/bring-listener-online.png)
 
-1. Maak een load balancer. Voor elke beschikbaarheids groep-listener maakt u één IP-adres uit de front-end-IP-groep. Voeg ook de SQL Server virtuele machine toe aan de back-end-pool.
+1. Zorg ervoor dat de load balancer in het failover-netwerk één IP-adres heeft, van de front-end-IP-adres groep die overeenkomt met elke beschikbaarheids groep-listener en met de SQL Server virtuele machine in de back-end-pool.
 
      ![Scherm afbeelding van het venster met de titel ' SQL-AlwaysOn-LB-front-end IP-adres groep](./media/site-recovery-sql/create-load-balancer1.png)
 

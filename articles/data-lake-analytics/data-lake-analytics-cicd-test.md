@@ -1,6 +1,6 @@
 ---
-title: Het testen van uw Azure Data Lake Analytics-code
-description: Informatie over het toevoegen van testcases voor U-SQL en uitgebreide C#-code voor Azure Data Lake Analytics.
+title: Uw Azure Data Lake Analytics code testen
+description: Meer informatie over het toevoegen van test cases voor de U C# -SQL-en uitgebreide code voor Azure data Lake Analytics.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -9,64 +9,63 @@ ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 07/03/2018
-ms.openlocfilehash: 4532e0c6e8095c9d64897410e0492e2135d8a478
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/30/2019
+ms.openlocfilehash: d568a267952a22d2e7a6b7acb6d54cf41f803367
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60630082"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913965"
 ---
-# <a name="test-your-azure-data-lake-analytics-code"></a>Testen van uw Azure Data Lake Analytics-code
+# <a name="test-your-azure-data-lake-analytics-code"></a>Uw Azure Data Lake Analytics-code testen
 
-Azure Data Lake biedt de U-SQL-taal, combineert een verklarende SQL met imperatieve C# om gegevens te verwerken op elke schaal. In dit document leert u hoe u testcases voor U-SQL en uitgebreide C# UDO (door de gebruiker gedefinieerde operator)-code maken.
+Azure Data Lake biedt de [U-SQL-](data-lake-analytics-u-sql-get-started.md) taal. U-SQL combineert declaratieve SQL met C# dwingende gegevens te verwerken op elke schaal. In dit document leert u hoe u test cases kunt maken voor de U-SQL C# -en Extended User-defined operator-code (Udo).
 
-## <a name="test-u-sql-scripts"></a>Testen van U-SQL-scripts
+## <a name="test-u-sql-scripts"></a>U-SQL-scripts testen
 
-De U-SQL-script is gecompileerd en geoptimaliseerd voor uitvoerbare code om uit te voeren op computers in de cloud of op uw lokale computer. De compilatie en optimalisatie van het proces wordt het gehele U-SQL-script behandeld als geheel. U kunt niet een traditionele 'eenheidstest' voor elke instructie. Echter met behulp van de U-SQL testen SDK en de lokale SDK worden uitgevoerd, kunt u doen scriptniveau tests.
+Het U-SQL-script wordt gecompileerd en geoptimaliseerd voor uitvoer bare code die wordt uitgevoerd in azure of op uw lokale computer. Het compilatie-en optimalisatie proces behandelt het hele U-SQL-script als geheel. U kunt geen traditionele eenheids test uitvoeren voor elke instructie. Met de U-SQL test-SDK en de lokale run SDK kunt u echter testen op script niveau uitvoeren.
 
-### <a name="create-test-cases-for-u-sql-script"></a>Testcases voor U-SQL-script maken
+### <a name="create-test-cases-for-u-sql-script"></a>Test cases voor U-SQL-script maken
 
-Azure Data Lake Tools voor Visual Studio kunt u U-SQL-script-testcases maken.
+Met Azure Data Lake-Hulpprogram Ma's voor Visual Studio kunt u test cases voor U-SQL-scripts maken.
 
-1.  Met de rechtermuisknop op een U-SQL-script in Solution Explorer en selecteer vervolgens **eenheidstest maken**.
-2.  Maak een nieuw project voor het testen of de Testscenario invoegen in een bestaand testproject.
+1. Klik met de rechter muisknop op een U-SQL-script in Solution Explorer en selecteer vervolgens **eenheid maken**.
 
-    ![Data Lake Tools voor Visual Studio, maak een project voor U-SQL-testen](./media/data-lake-analytics-cicd-test/data-lake-tools-create-usql-test-project.png) 
+1. Maak een nieuw test project of Voeg de test case in een bestaand test project in.
 
-    ![Data Lake Tools voor Visual Studio, maken een U-SQL-Testconfiguratie project](./media/data-lake-analytics-cicd-test/data-lake-tools-create-usql-test-project-configure.png) 
+   ![Data Lake-Hulpprogram Ma's voor Visual Studio: een U-SQL test project configuratie maken](./media/data-lake-analytics-cicd-test/data-lake-tools-create-usql-test-project-configure.png)
 
-### <a name="manage-the-test-data-source"></a>Beheren van de gegevensbron testen
+### <a name="manage-the-test-data-source"></a>De test gegevens bron beheren
 
-Wanneer u het testen van U-SQL-scripts, moet u de invoerbestanden testen. U kunt de testgegevens beheren door het configureren van **gegevensbron testen** in de U-SQL project eigenschappen. 
+Wanneer u u-SQL-scripts test, moet u invoer bestanden testen. Als u de test gegevens wilt beheren, klikt u in **Solution Explorer**met de rechter muisknop op het U-SQL-project en selecteert u **Eigenschappen**. U kunt een bron invoeren in de **test gegevens bron**.
 
-Wanneer u aanroepen de `Initialize()` interface in de U-SQL-test SDK, de hoofdmap van een tijdelijke lokale gegevens wordt gemaakt onder de werkmap van de testproject en alle bestanden en submappen (en bestanden in submappen) in de bronmap voor test-gegevens worden gekopieerd naar de tijdelijke lokale gegevens hoofdmap voordat u de testcases van de U-SQL-script uitvoeren. U kunt meer test data source-mappen toevoegen door op te splitsen test gegevens pad naar de map met een puntkomma.
+![Data Lake-Hulpprogram Ma's voor Visual Studio--test gegevens bron project configureren](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
 
-![Data Lake Tools voor Visual Studio - project test-gegevensbron configureren](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
+Wanneer u de `Initialize()` interface aanroept in de U-SQL test-SDK, wordt er een tijdelijke lokale hoofdmap voor gegevens gemaakt in de werkmap van het test project. Alle bestanden en mappen in de bronmap test gegevens worden gekopieerd naar de tijdelijke lokale data root-map voordat u de U-SQL-script test uitvoert. U kunt meer mappen voor de gegevens bron testen toevoegen door het pad naar de map met test gegevens te splitsen met een punt komma.
 
-### <a name="manage-the-database-environment-for-testing"></a>De database-omgeving voor het testen van beheren
+### <a name="manage-the-database-environment-for-testing"></a>De database omgeving voor het testen beheren
 
-Als uw U-SQL-scripts gebruiken of query's met uitvoeren U-SQL-database-objecten (bijvoorbeeld bij het aanroepen van opgeslagen procedures) moet u de databaseomgeving initialiseren voordat U-SQL-testcases wordt uitgevoerd. De `Initialize()` interface in de U-SQL-test SDK helpt u bij het implementeren van alle databases waarnaar wordt verwezen door de U-SQL-project naar de hoofdmap van de tijdelijke lokale gegevens in de werkmap van de testproject. 
+Als uw U-SQL-scripts gebruikmaken van of query's uitvoeren met U-SQL database-objecten, moet u de database omgeving initialiseren voordat u U-SQL-test cases uitvoert. Deze methode kan nodig zijn wanneer u opgeslagen procedures aanroept. De `Initialize()` interface in de u-SQL test-SDK helpt u bij het implementeren van alle data bases waarnaar wordt verwezen door het U-SQL-project naar de map met tijdelijke lokale data-hoofdmap in de werkmap van het test project.
 
-Meer informatie over [over het beheren van U-SQL-database projectverwijzingen voor een U-SQL project](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project).
+Zie voor meer informatie over het beheren van U-SQL database project verwijzingen voor een U-SQL-project [verwijzen naar een u-SQL database-project](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project).
 
-### <a name="verify-test-results"></a>Controleer of de resultaten
+### <a name="verify-test-results"></a>Test resultaten controleren
 
-De `Run()` interface retourneert een resultaat van de uitvoering van taak. 0 wordt aangegeven dat geslaagd, en 1 betekent mislukt. U kunt ook een C# assert functies gebruiken om te controleren of de uitvoer. 
+De `Run()` interface retourneert een resultaat van de taak uitvoering. *0* betekent geslaagd, en *1* betekent fout. U kunt ook assert C# functions gebruiken om de uitvoer te controleren.
 
-### <a name="run-test-cases-in-visual-studio"></a>Testcases uitvoeren in Visual Studio
+### <a name="run-test-cases-in-visual-studio"></a>Test cases uitvoeren in Visual Studio
 
-Een project U-SQL-script te testen, is gebaseerd op de testframework van een C#-eenheid. Nadat u het project bouwt, kunt u alle testcases uitvoeren via **testen Explorer > afspeellijst**. U kunt ook met de rechtermuisknop op het bestand .cs en selecteer vervolgens **Tests uitvoeren**.
+Een U-SQL-script test project is gebaseerd op een C# test raamwerk voor eenheden. Nadat u het project hebt gemaakt, selecteert u test**Verkenner**van**Windows** >  **testen** > . U kunt test cases uitvoeren vanuit **test Explorer**. U kunt ook met de rechter muisknop op het. CS-bestand in de eenheids test klikken en **tests uitvoeren**selecteren.
 
 ## <a name="test-c-udos"></a>Test C# UDOs
 
-### <a name="create-test-cases-for-c-udos"></a>Testcases voor C# UDO's maken
+### <a name="create-test-cases-for-c-udos"></a>Test cases maken C# voor udo's
 
-U kunt een C#-eenheid testframework gebruiken voor het testen van uw C# UDO's (door de gebruiker gedefinieerde operators). Wanneer u test UDO's, moet u voorbereiden overeenkomt **IRowset** objecten als invoer.
+U kunt een C# eenheids test raamwerk gebruiken om uw C# door de gebruiker gedefinieerde Opera tors (udo's) te testen. Bij het testen van Udo's moet u bijbehorende **IRowset** -objecten voorbereiden als invoer.
 
-Er zijn twee manieren om te maken van een object IRowset:
+Er zijn twee manieren om een **IRowset** -object te maken:
 
-- Gegevens laden uit een bestand IRowset maken:
+- Gegevens uit een bestand laden om **IRowset**te maken:
 
     ```csharp
     //Schema: "a:int, b:int"
@@ -82,7 +81,7 @@ Er zijn twee manieren om te maken van een object IRowset:
     IRowset rowset = UnitTestHelper.GetRowsetFromFile(@"processor.txt", schema, output.AsReadOnly(), discardAdditionalColumns: true, rowDelimiter: null, columnSeparator: '\t');
     ```
 
-- Gebruik gegevens uit een gegevensverzameling IRowset maken:
+- Gegevens uit een gegevens verzameling gebruiken om **IRowset**te maken:
 
     ```csharp
     //Schema: "a:int, b:int"
@@ -103,49 +102,54 @@ Er zijn twee manieren om te maken van een object IRowset:
     IRowset rowset = UnitTestHelper.GetRowsetFromCollection(rows, output.AsReadOnly());
     ```
 
-### <a name="verify-test-results"></a>Controleer of de resultaten
+### <a name="verify-test-results"></a>Test resultaten controleren
 
-Nadat u UDO functies aanroept, kunt u de resultaten in het schema en de rijenset waarde verificatie controleren met behulp van C# assert functies. U kunt de voorbeeldcode gebruiken in een U-SQL C# UDO eenheid test-voorbeeldproject via **bestand > Nieuw > Project** in Visual Studio.
+Nadat u de UDO-functies hebt aangeroepen, kunt u de resultaten controleren via de verificatie van het schema C# en de waarde van de rijenset door gebruik te maken van assert functions. U kunt een **U-SQL C# Udo-eenheids test project** toevoegen aan uw oplossing. Als u dit wilt doen, selecteert u **bestand > nieuw > project** in Visual Studio.
 
-### <a name="run-test-cases-in-visual-studio"></a>Testcases uitvoeren in Visual Studio
+### <a name="run-test-cases-in-visual-studio"></a>Test cases uitvoeren in Visual Studio
 
-Nadat u de testproject maakt, kunt u echter alle testcases uitvoeren **testen Explorer > afspeellijst**, of met de rechtermuisknop op het bestand .cs en kies **Tests uitvoeren**.
+Nadat u het project hebt gemaakt, selecteert u test**Verkenner**van**Windows** >  **testen** > . U kunt test cases uitvoeren vanuit **test Explorer**. U kunt ook met de rechter muisknop op het. CS-bestand in de eenheids test klikken en **tests uitvoeren**selecteren.
 
-## <a name="run-test-cases-in-azure-devops"></a>Testcases uitvoeren in Azure DevOps
+## Test cases uitvoeren in azure-pijp lijnen<a name="run-test-cases-in-azure-devops"></a>
 
-Beide **U-SQL-script-en Testprojecten** en **C# UDO en Testprojecten** C#-eenheid en Testprojecten overnemen. De [Visual Studio test taak](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts) in Azure DevOps deze testcases kunt uitvoeren. 
+Zowel **U-SQL-script test** projecten als  **C# Udo-test** projecten nemen C# eenheids test projecten over. Met de [Visual Studio-test taak](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts) in azure-pijp lijnen kunnen deze test cases worden uitgevoerd.
 
-### <a name="run-u-sql-test-cases-in-azure-devops"></a>U-SQL-testcases uitvoeren in Azure DevOps
+### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>U-SQL-test cases uitvoeren in azure-pijp lijnen
 
-Voor het testen van een U-SQL, zorg ervoor dat u hebt geladen `CPPSDK` op uw computer van de build, en vervolgens pas de `CPPSDK` pad naar USqlScriptTestRunner (cppSdkFolderFullPath: \@"").
+Zorg ervoor dat u voor een U-SQL-test `CPPSDK` de belasting op de computer bouwt en geef het `CPPSDK` pad door `USqlScriptTestRunner(cppSdkFolderFullPath: @"")`aan.
 
-**Wat is CPPSDK?**
+#### <a name="what-is-cppsdk"></a>Wat is CPPSDK?
 
-CPPSDK is een pakket met Microsoft Visual C++-14 en Windows SDK 10.0.10240.0. Dit is de omgeving die nodig is door de runtime van U-SQL. U kunt dit pakket onder het Azure Data Lake Tools voor Visual Studio-installatiemap krijgen:
+CPPSDK is een pakket dat micro soft Visual C++ 14 en Windows SDK 10.0.10240.0 bevat. Dit pakket bevat de omgeving die nodig is voor de U-SQL-runtime. U kunt dit pakket verkrijgen onder de Azure Data Lake-Hulpprogram Ma's voor Visual Studio-installatiemap:
 
-- Voor Visual Studio 2015 is onder `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
-- Voor Visual Studio 2017 is onder `C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\SDK\ScopeCppSDK`
+- Voor Visual Studio 2015 is het onder`C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
+- Voor Visual Studio 2017 is het onder`C:\Program Files (x86)\Microsoft Visual Studio\2017\<Visual Studio Edition>\SDK\ScopeCppSDK`
+- Voor Visual Studio 2019 is het onder`C:\Program Files (x86)\Microsoft Visual Studio\2019\<Visual Studio Edition>\SDK\ScopeCppSDK`
 
-**CPPSDK voorbereiden in de Azure DevOps-build-agent**
+#### <a name="prepare-cppsdk-in-the-azure-pipelines-build-agent"></a>CPPSDK voorbereiden in de Azure pipelines build-agent
 
-De meest voorkomende manier om voor te bereiden van de afhankelijkheid CPPSDK in Azure DevOps is als volgt:
+De meest voorkomende manier om de CPPSDK-afhankelijkheid in azure-pijp lijnen voor te bereiden is als volgt:
 
-1.  ZIP-de map die de CPPSDK-bibliotheken omvat.
-2.  Controleer in het ZIP-bestand in uw bronbeheersysteem. (Het ZIP-bestand zorgt ervoor dat u in alle bibliotheken onder de map CPPSDK controleren zodat bepaalde bestanden niet worden genegeerd door '.gitignore'.)   
-3.  Pak het ZIP-bestand in de build-pijplijn.
-4.  Punt `USqlScriptTestRunner` naar deze uitgepakte map op de build-machine.
+1. Zip-map die de CPPSDK-bibliotheken bevat.
 
-### <a name="run-c-udo-test-cases-in-azure-devops"></a>C# UDO testcases uitvoeren in Azure DevOps
+1. Check het zip-bestand in op uw broncode beheer systeem. Het zip-bestand zorgt ervoor dat u alle bibliotheken in de map CPPSDK incheckt, zodat bestanden niet worden genegeerd `.gitignore` vanwege een bestand.
 
-Zorg dat u verwijst naar de volgende assembly's, die nodig zijn voor UDO's voor een C# UDO-test. Als u verwijst naar via [het Nuget-pakket Microsoft.Azure.DataLake.USQL.Interfaces](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.Interfaces/), zorg ervoor dat u een taak voor het herstellen van NuGet toevoegen in de build-pijplijn.
+1. Pak het zip-bestand uit in de build-pijp lijn.
 
-* Microsoft.Analytics.Interfaces
-* Microsoft.Analytics.Types
-* Microsoft.Analytics.UnitTest
+1. Wijs `USqlScriptTestRunner` naar deze uitgepakte map op de computer bouwen.
+
+### <a name="run-c-udo-test-cases-in-azure-pipelines"></a>Udo C# -test cases uitvoeren in azure-pijp lijnen
+
+Voor een C# Udo-test moet u verwijzen naar de volgende assembly's, die nodig zijn voor udo's.
+
+- Micro soft. Analytics. interfaces
+- Microsoft.Analytics.Types
+- Microsoft.Analytics.UnitTest
+
+Als u hiernaar verwijst via [het Nuget-pakket micro soft. Azure. DataLake. USQL. interfaces](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.Interfaces/), moet u een herstel taak voor Nuget toevoegen in uw build-pijp lijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [CI/CD-pijplijn instellen voor Azure Data Lake Analytics](data-lake-analytics-cicd-overview.md)
+- [CI/CD-pijp lijn instellen voor Azure Data Lake Analytics](data-lake-analytics-cicd-overview.md)
 - [U-SQL-script uitvoeren op uw lokale computer](data-lake-analytics-data-lake-tools-local-run.md)
-- [Gebruik U-SQL database-project voor het ontwikkelen van U-SQL-database](data-lake-analytics-data-lake-tools-develop-usql-database.md)
-
+- [U-SQL database project gebruiken om U-SQL database te ontwikkelen](data-lake-analytics-data-lake-tools-develop-usql-database.md)

@@ -1,5 +1,5 @@
 ---
-title: Gegevens verzamelen van een hybride Linux-computer met Azure Monitor | Microsoft Docs
+title: 'Quickstart: Gegevens verzamelen van een hybride Linux-computer met Azure Monitor'
 description: In deze Quick Start leert u hoe u de Log Analytics-agent voor Linux-computers die buiten Azure worden uitgevoerd, kunt implementeren en hoe u gegevens kunt verzamelen met Azure Monitor-Logboeken.
 services: azure-monitor
 documentationcenter: azure-monitor
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 6fa26adab64a91ac2910607e4a828f9362490d08
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.custom: mvc, seo-javascript-september2019
+ms.openlocfilehash: cdaca0fd3e314ecb5c0b68438eaaf87fbfb699b0
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991756"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933032"
 ---
 # <a name="collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Gegevens verzamelen van een Linux-computer in een hybride omgeving met Azure Monitor
 
@@ -139,7 +139,7 @@ Azure Monitor kunt gebeurtenissen verzamelen uit de Linux syslog-en prestatie me
 
 Nu u gegevensverzameling hebt ingeschakeld, geven we een voorbeeld van een eenvoudige zoekopdracht in logboeken om enkele gegevens afkomstig van de doelcomputer weer te geven.  
 
-1. Selecteer Logboeken in het linkerdeel venster van de geselecteerde werk ruimte.
+1. Selecteer **Logboeken**in het linkerdeel venster van de geselecteerde werk ruimte.
 
 2. Typ `Perf` op de pagina logboek registratie de query-editor en selecteer **uitvoeren**.
  

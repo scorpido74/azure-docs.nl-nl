@@ -12,49 +12,49 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: 937a076b3e0e3c5170779d3449776f0aa1cf5b49
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 2d2fc1e2992e379c80a16dee2c1983f9559470c5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259004"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931137"
 ---
-# <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Azure Data Factory gebruiken om gegevens van uw data Lake of Data Warehouse te migreren naar Azure 
+# <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Azure Data Factory gebruiken om gegevens van uw data Lake of Data Warehouse te migreren naar Azure
 
-Azure Data Factory kan het hulp programma zijn om gegevens migratie uit te voeren wanneer u uw data Lake of ENTER prise Data Warehouse (EDW) wilt migreren naar Azure. De migratie van data Lake en data warehouses zijn gerelateerd aan de volgende scenario's: 
+Als u uw data Lake of ENTER prise Data Warehouse (EDW) wilt migreren naar Microsoft Azure, kunt u overwegen Azure Data Factory te gebruiken. Azure Data Factory is heel geschikt voor de volgende scenario's:
 
-- Migratie van de werk belasting van Big data van AWS S3, on-premises Hadoop-bestands systeem naar Azure. 
-- EDW migratie van Oracle Exadata, Netezza, Teradata, AWS Redshift naar Azure. 
+- Migratie van een Big Data-werk belasting van de Amazon Simple Storage-service (Amazon S3) of een on-premises Hadoop Distributed File System (HDFS) naar Azure
+- EDW migratie van Oracle Exadata, Netezza, Teradata of Amazon Redshift naar Azure
 
-Azure Data Factory kunt PBs van gegevens verplaatsen voor data Lake Migration en tien tallen TB gegevens voor Data Warehouse migratie. 
+Azure Data Factory kunt PETA bytes (PB) met gegevens voor data Lake Migration verplaatsen en tien tallen terabytes (TB) aan gegevens voor Data Warehouse migraties.
 
-## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Waarom Azure Data Factory kunnen worden gebruikt voor gegevens migratie 
+## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Waarom Azure Data Factory kunnen worden gebruikt voor gegevens migratie
 
-- Met Azure Data Factory kunt u eenvoudig de hoeveelheid paarden van uw gegevens op serverloze wijze schalen met hoge prestaties, flexibiliteit en schaal baarheid en betaalt u alleen voor wat u gebruikt.  
-  - Azure Data Factory heeft geen beperking voor het gegevens volume en het aantal bestanden.
-  - Azure Data Factory kan 100% gebruikmaken van uw netwerk-en opslag bandbreedte om de maximale door Voer van gegevens verplaatsing in uw omgeving te krijgen.   
-  - Azure Data Factory volgt de strategie voor betalen naar gebruik, zodat u alleen voor de tijd hoeft te betalen wanneer u Azure Data Factory gebruikt om de gegevens migratie naar Azure uit te voeren.  
-- Azure Data Factory beschikt over de mogelijkheid om eenmalig historische belasting en de geplande incrementele belasting uit te voeren. 
-- Azure Data Factory gebruikt Azure IR voor het verplaatsen van gegevens tussen openbaar toegankelijke data Lake/Warehouse-eind punten, of het gebruik van zelf-hostende IR voor het verplaatsen van gegevens voor data Lake/Warehouse-eind punten in VNet of achter de firewall. 
-- Azure Data Factory heeft beveiliging op bedrijfs niveau: gebruik MSI of service-identiteit voor beveiligde service-to-Service-integratie, of gebruik de Azure Key Vault voor referentie beheer. 
-- Azure Data Factory biedt een code-gratis ontwerp ervaring en een uitgebreid ingebouwd controle dashboard.  
+- Met Azure Data Factory kunt u eenvoudig de hoeveelheid verwerkings kracht schalen om gegevens op een server te verplaatsen met hoge prestaties, flexibiliteit en schaal baarheid. En u betaalt alleen voor wat u gebruikt. Let ook op het volgende: 
+  - Azure Data Factory heeft geen beperkingen op het gegevens volume of het aantal bestanden.
+  - Azure Data Factory kunt uw netwerk-en opslag bandbreedte volledig gebruiken om de maximale door Voer van gegevens verplaatsing in uw omgeving te behaalen.
+  - Azure Data Factory maakt gebruik van een betalen per gebruik-methode, zodat u alleen betaalt voor de tijd die u daad werkelijk gebruikt voor het uitvoeren van de gegevens migratie naar Azure.  
+- Azure Data Factory kunt een eenmalige historische belasting en geplande incrementele belastingen uitvoeren.
+- Azure Data Factory gebruikt Azure Integration runtime (IR) om gegevens te verplaatsen tussen openbaar toegankelijke data Lake-en Warehouse-eind punten. Het kan ook zelf-hostende IR gebruiken voor het verplaatsen van gegevens voor data Lake-en Warehouse-eind punten in azure Virtual Network (VNet) of achter een firewall.
+- Azure Data Factory heeft beveiliging op bedrijfs niveau: U kunt Windows Installer (MSI) of service-identiteit gebruiken voor beveiligde service-to-Service-integratie, of gebruik Azure Key Vault voor referentie beheer.
+- Azure Data Factory biedt een gratis ontwerp functie voor code en een uitgebreid, ingebouwd bewakings dashboard.  
 
 ## <a name="online-vs-offline-data-migration"></a>Online versus offline gegevens migratie
 
-Azure Data Factory is een standaard hulp programma voor het migreren van gegevens via het netwerk (Internet, er of VPN), waarbij gebruikers fysiek gegevens overdracht van uw organisatie naar Azure Data Center verzenden via een offline gegevens migratie.  
+Azure Data Factory is een standaard hulp programma voor het migreren van gegevens via een netwerk (Internet, er of VPN). Met offline gegevens migratie verzenden gebruikers fysiek apparaten voor gegevens overdracht van hun organisatie naar een Azure-Data Center.  
 
-Er zijn drie belang rijke overwegingen bij het selecteren van online versus offline migratie methode:  
+Er zijn drie belang rijke aandachtspunten wanneer u kiest tussen een online-en offline migratie methode:  
 
-- Grootte van de gegevens die moeten worden gemigreerd. 
-- Netwerk bandbreedte. 
-- Migratie venster.   
+- Grootte van de gegevens die moeten worden gemigreerd
+- Netwerk bandbreedte
+- Migratie venster
 
-Als u de gegevens migratie binnen twee weken (migratie venster) wilt volt ooien, ziet u in de onderstaande afbeelding een knip lijn om weer te geven wanneer het handig is om een hulp programma voor online migratie (Azure Data Factory) met verschillende gegevens grootte en netwerk bandbreedte te gebruiken.   
+Stel dat u van plan bent om Azure Data Factory te gebruiken voor het volt ooien van de gegevens migratie binnen twee weken (uw *migratie venster*). Let op de regel roze/blauw knippen in de volgende tabel. In de laagste roze cel voor een bepaalde kolom ziet u de gegevens grootte/netwerk bandbreedte koppeling waarvan het migratie venster zich het dichtst bij maar minder dan twee weken bevindt. (Elke grootte/band breedte-koppeling in een blauwe cel heeft een venster voor online migratie van meer dan twee weken.) 
 
-![Online versus offline](media/data-migration-guidance-overview/online-offline.png)
+![Online versus offline](media/data-migration-guidance-overview/online-offline.png) deze tabel helpt u te bepalen of u kunt voldoen aan uw beoogde migratie venster via online migratie (Azure Data Factory) op basis van de grootte van uw gegevens en de beschik bare netwerk bandbreedte. Als het venster voor online migratie meer dan twee weken duurt, moet u offline migratie gebruiken.
 
 > [!NOTE]
-> Het voor deel van het online migratie proces is dat u zowel historische gegevens belasting als incrementele feeds met één hulp programma kunt bereiken.  Op die manier kunnen de gegevens worden gesynchroniseerd tussen bestaande en nieuwe opslag tijdens het hele migratie venster, zodat u de ETL-logica in de nieuwe Store opnieuw kunt samen stellen met vernieuwde gegevens. 
+> Door online migratie te gebruiken, kunt u zowel historische gegevens belasting als incrementele feeds end-to-end uitvoeren met één hulp programma.  Met deze aanpak kunnen uw gegevens worden gesynchroniseerd tussen de bestaande Store en de nieuwe Store tijdens het hele migratie venster. Dit betekent dat u uw ETL-logica opnieuw kunt samen stellen in de nieuwe opslag met vernieuwde gegevens.
 
 
 ## <a name="next-steps"></a>Volgende stappen

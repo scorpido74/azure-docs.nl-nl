@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 9543e67d0f98836f760ac840fa12ec5718da037e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39c40f29f4548f2e7379472427a2c97f1a0b762c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086048"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932975"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Wat is Microsoft Flow, Logic Apps, Functions en WebJobs?
 
@@ -52,7 +52,7 @@ Raadpleeg de volgende tabel om te bepalen of Microsoft Flow of Logic Apps het me
 
 Functions en Logic Apps zijn Azure-services waarmee serverloze werkbelastingen mogelijk worden gemaakt. Azure Functions is een serverloze rekenservice, terwijl Azure Logic Apps serverloze werkstromen biedt. Met beide kunnen complexe *indelingen* worden gemaakt. Een indeling bestaat uit een verzameling functies of stappen, *acties* genoemd, in Logic Apps, die worden uitgevoerd om een complexe taak te volbrengen. Als u bijvoorbeeld een reeks orders wilt verwerken, kunt u een aantal instanties van een functie parallel uitvoeren, wachten tot alle instanties zijn voltooid en vervolgens een functie uitvoeren die het resultaat voor de combinatie berekent.
 
-Met Azure Functions ontwikkelt u indelingen door code te schrijven en de [extensie Durable Functions](durable/durable-functions-concepts.md) te gebruiken. Met Logic Apps maakt u indelingen door gebruik te maken van een GUI of door configuratiebestanden te bewerken.
+Met Azure Functions ontwikkelt u indelingen door code te schrijven en de [extensie Durable Functions](durable/durable-functions-overview.md) te gebruiken. Met Logic Apps maakt u indelingen door gebruik te maken van een GUI of door configuratiebestanden te bewerken.
 
 U kunt services combineren en matchen als u een indeling bouwt, waarbij u functies aanroept vanuit logische apps en logische apps aanroept vanuit functies. U kunt kiezen hoe u elke indeling bouwt op basis van de mogelijkheden van de services of van uw persoonlijke voorkeur. In de volgende tabel worden de belangrijkste verschillen tussen deze services vermeld:
  

@@ -1,6 +1,6 @@
 ---
-title: Toegang tot Apache Hadoop YARN-toepassingslogboeken op Linux gebaseerde HDInsight - Azure
-description: Leer hoe u toegang tot YARN-toepassingslogboeken op een Linux gebaseerde HDInsight (Apache Hadoop)-cluster met behulp van de opdrachtregel en een webbrowser.
+title: Toegang tot Apache Hadoop garen-toepassings logboeken op op Linux gebaseerde HDInsight-Azure
+description: Meer informatie over het openen van toepassings logboeken op basis van een op Linux gebaseerd HDInsight-cluster (Apache Hadoop) met behulp van de opdracht regel en een webbrowser.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,66 +8,67 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: c0c5ecfba97c61288d08681006645eab0bdd23f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2b230f91b9d6b169b89b125bdd0394c2c7ecd96f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059458"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879850"
 ---
-# <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Toegang tot Apache Hadoop YARN-toepassingslogboeken op Linux gebaseerde HDInsight
+# <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Toegang tot Apache Hadoop GARENs van toepassings logboeken op HDInsight op basis van Linux
 
-Leer hoe u toegang tot de logboeken voor [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) (nog een andere Resource Negotiator)-toepassingen op een [Apache Hadoop](https://hadoop.apache.org/) -cluster in Azure HDInsight.
+Meer informatie over toegang tot de logboeken voor [Apache HADOOP garens](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) (nog een andere resource-onderhandelings toepassing) op een [Apache Hadoop](https://hadoop.apache.org/) cluster in azure HDInsight.
 
-## <a name="YARNTimelineServer"></a>YARN Timeline Server
+## <a name="YARNTimelineServer"></a>Tijdlijn server-garen
 
-De [Apache Hadoop YARN Timeline Server](https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) biedt algemene informatie over voltooide toepassingen
+De [tijdlijn server van Apache HADOOP garen](https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) biedt algemene informatie over voltooide toepassingen
 
-YARN Timeline Server omvat het volgende type gegevens:
+De lijn van een garen tijdlijn server bevat het volgende type gegevens:
 
 * De toepassings-ID, een unieke id van een toepassing
-* De gebruiker die de toepassing is gestart
-* Meer informatie over een poging om uit te voeren van de toepassing
-* De containers die worden gebruikt door een bepaalde toepassing poging
+* De gebruiker die de toepassing heeft gestart
+* Informatie over pogingen om de toepassing te volt ooien
+* De containers die worden gebruikt door een bepaalde toepassings poging
 
-## <a name="YARNAppsAndLogs"></a>YARN-toepassingen en Logboeken
+## <a name="YARNAppsAndLogs"></a>Toepassingen en logboeken van garen
 
-YARN biedt ondersteuning voor meerdere programmeermodellen ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) wordt een van beide) door het resourcebeheer van toepassingen plannen/bewaking ontkoppeling. YARN maakt gebruik van een algemene *ResourceManager* (DB), per worker-knooppunt *NodeManagers* (NMs), en per toepassing *ApplicationMasters* (AMs). Het uur per toepassing onderhandelt over de resources (CPU, geheugen, schijf-, netwerk) voor het uitvoeren van uw toepassing met de RM. De RM werkt met NMs verlenen deze resources, die zijn verleend als *containers*. Het uur is verantwoordelijk voor het bijhouden van de voortgang van de containers die zijn toegewezen door de RM. Een toepassing mogelijk veel containers, afhankelijk van de aard van de toepassing.
+GARENs ondersteunt meerdere programmeer modellen ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) zijn) door het ontkoppelen van resource beheer vanuit toepassings planning/-bewaking. GARENs maakt gebruik van een globale *Resource Manager* (RM), per worker-knoop punt *NodeManagers* (NMs) en per toepassings *ApplicationMasters* (AMS). De per-toepassing onderhandelt bronnen (CPU, geheugen, schijf, netwerk) voor het uitvoeren van uw toepassing met de RM. De RM werkt met NMs voor het verlenen van deze resources, die als *containers*worden verleend. De AM is verantwoordelijk voor het volgen van de voortgang van de containers die hieraan zijn toegewezen door de RM. Een toepassing kan veel containers vereisen, afhankelijk van de aard van de toepassing.
 
-Elke toepassing kan bestaan uit meerdere *toepassing pogingen*. Als een toepassing mislukt, wordt deze opnieuw uitgevoerd als een nieuwe poging. Elke poging wordt uitgevoerd in een container. In zekere zin biedt een container in de context voor de basiseenheid voor werk dat door een YARN-toepassing uitgevoerd. Al het werk dat wordt uitgevoerd binnen de context van een container wordt uitgevoerd op de één worker-knooppunt waarop de container is toegewezen. Zie [Apache Hadoop YARN concepten](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html) voor verdere verwijzing.
+Elke toepassing kan bestaan uit meerdere *toepassings pogingen*. Als een toepassing mislukt, wordt deze mogelijk opnieuw geprobeerd als een nieuwe poging. Elke poging wordt uitgevoerd in een container. In een zin bevat een container de context voor de basis eenheid van het werk dat door een toepassing met een garen is uitgevoerd. Alle werkzaamheden die in de context van een container worden uitgevoerd, worden uitgevoerd op het knoop punt voor één werk nemer waarop de container is toegewezen. Zie [Apache HADOOP garens](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html) voor meer informatie.
 
-Toepassingslogboeken (en de bijbehorende containerlogboeken), zijn essentieel tijdens de foutopsporing problematische Hadoop-toepassingen. YARN biedt een mooie raamwerk voor het verzamelen, verzamelen en opslaan van toepassingslogboeken met de [Log aggregatie](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/) functie. De functie Logboeken gegevensaggregatie kunt de toegang tot toepassingslogboeken meer deterministische. Deze logboeken verzamelt alle containers op een worker-knooppunt en slaat deze op als een geaggregeerde logboekbestand per worker-knooppunt. Het logboek wordt opgeslagen op het standaardbestandssysteem nadat een toepassing is voltooid. Uw toepassing kan gebruikmaken van honderden of duizenden containers, maar de logboeken voor alle containers die worden uitgevoerd op een knooppunt één werknemer altijd worden samengevoegd in één bestand. Er is dus alleen 1 logboek per worker-knooppunt wordt gebruikt door uw toepassing. Aggregatie van logboek is standaard op HDInsight-clusters versie 3.0 en hoger ingeschakeld. Samengevoegde logboeken bevinden zich in de standaardopslag voor het cluster. Het volgende pad, is het HDFS-pad naar de logboeken:
+Toepassings Logboeken (en de bijbehorende container Logboeken) zijn van cruciaal belang bij het opsporen van fouten in problemen met Hadoop-toepassingen. GARENs bieden een goed kader voor het verzamelen, samen voegen en opslaan van toepassings logboeken met de functie voor het [samen voegen van Logboeken](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/) . Met de functie voor het samen voegen van Logboeken wordt toegang tot toepassings logboeken meer deterministisch. Hiermee worden logboeken samengevoegd over alle containers op een werk knooppunt en worden deze opgeslagen als één geaggregeerd logboek bestand per worker-knoop punt. Het logboek wordt opgeslagen op het standaard bestandssysteem nadat een toepassing is voltooid. Uw toepassing kan honderden of duizenden containers gebruiken, maar logboeken voor alle containers die worden uitgevoerd op één worker-knoop punt worden altijd geaggregeerd naar één bestand. Er is dus slechts één logboek per werk knooppunt dat door uw toepassing wordt gebruikt. Logboek aggregatie is standaard ingeschakeld op HDInsight-clusters versie 3,0 en hoger. Samengevoegde logboeken bevinden zich in de standaard opslag voor het cluster. Het volgende pad is het HDFS-pad naar de logboeken:
 
     /app-logs/<user>/logs/<applicationId>
 
-In het pad `user` is de naam van de gebruiker die de toepassing is gestart. De `applicationId` is de unieke id die is toegewezen aan een toepassing door de YARN-RM.
+In het pad `user` is de naam van de gebruiker die de toepassing heeft gestart. De `applicationId` is de unieke id die is toegewezen aan een toepassing door de garens RM.
 
-De samengevoegde logboeken zijn niet rechtstreeks kan worden gelezen, zoals ze zijn geschreven in een [TFile][T-file], [binaire indeling] [ binary-format] geïndexeerd door de container. De ResourceManager YARN-Logboeken of de CLI-hulpprogramma's gebruiken om deze logboeken als tekst zonder opmaak voor toepassingen of containers van belang weer te geven.
+De geaggregeerde logboeken zijn niet rechtstreeks leesbaar, omdat ze zijn geschreven in een [TFile][T-file], [binaire indeling][binary-format] geïndexeerd door container. Gebruik de indelings-of CLI-hulpprogram ma's van de garen om deze logboeken als tekst zonder opmaak te bekijken voor toepassingen of containers die van belang zijn.
 
-## <a name="yarn-cli-tools"></a>YARN CLI-hulpprogramma 's
+## <a name="yarn-cli-tools"></a>Hulp middelen voor garen-CLI
 
-Voor het gebruik van de YARN CLI-hulpprogramma's, moet u eerst verbinding met het HDInsight-cluster via SSH. Zie [SSH-sleutels gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) voor informatie.
+Als u de hulpprogram ma's voor garen-CLI wilt gebruiken, moet u eerst met SSH verbinding maken met het HDInsight-cluster. Zie [SSH-sleutels gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) voor informatie.
 
-U kunt deze logboeken als tekst zonder opmaak weergeven door het uitvoeren van een van de volgende opdrachten:
+U kunt deze logboeken als tekst zonder opmaak weer geven door een van de volgende opdrachten uit te voeren:
 
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 
-Geef de &lt;applicationId >, &lt;-die-aan de slag-de-gebruikerstoepassing >, &lt;containerId >, en &lt;worker-knooppunt-adres > informatie bij het uitvoeren van deze opdrachten.
+Geef de &lt;applicationId >, &lt;gebruiker-who-started-Application >, &lt;containerId > en &lt;work-node-Address > informatie op wanneer u deze opdrachten uitvoert.
 
-## <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager UI
+## <a name="yarn-resourcemanager-ui"></a>De gebruikers interface van garen
 
-De gebruikersinterface van YARN ResourceManager op het hoofdknooppunt van het cluster wordt uitgevoerd. Deze toegankelijk is via de Ambari-Webgebruikersinterface. Gebruik de volgende stappen uit om de YARN-logboeken weer te geven:
+De interface van de garen-WebResource Manager wordt uitgevoerd op het cluster hoofd knooppunt. Deze wordt geopend via de Ambari-webgebruikersinterface. Voer de volgende stappen uit om de GARENs-logboeken weer te geven:
 
-1. Navigeer in uw webbrowser naar https://CLUSTERNAME.azurehdinsight.net. CLUSTERNAME vervangen door de naam van uw HDInsight-cluster.
-2. Selecteer in de lijst met services aan de linkerkant **YARN**.
+1. Navigeer in uw webbrowser naar https://CLUSTERNAME.azurehdinsight.net. Vervang CLUSTERNAME door de naam van uw HDInsight-cluster.
+2. Selecteer in de lijst met services aan de linkerkant de optie **garens**.
 
-    ![Yarn-service die zijn geselecteerd](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnservice.png)
-3. Uit de **snelkoppelingen** vervolgkeuzelijst, selecteer een van de hoofdknooppunten van het cluster en selecteer vervolgens **ResourceManager Log**.
+    ![Service garen geselecteerd](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 
-    ![Yarn-snelkoppelingen](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnquicklinks.png)
+3. Selecteer in de vervolg keuzelijst **snelle koppelingen** een van de cluster hoofd knooppunten en selecteer vervolgens het **bestand Manager-logboek**.
 
-    Krijgt u een lijst met koppelingen naar YARN-Logboeken.
+    ![Snelle koppelingen voor garens](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
+
+    Er wordt een lijst weer gegeven met koppelingen naar GARENs op hetzelfde basis.
 
 [YARN-timeline-server]:https://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
 [T-file]:https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf

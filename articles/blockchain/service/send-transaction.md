@@ -1,28 +1,27 @@
 ---
-title: Slimme contracten gebruiken op de Azure Block Chain-Service
-description: Zelf studie over het gebruik van de Azure Block Chain-Service voor het implementeren van een slim contract en het uitvoeren van een functie via een trans actie.
+title: Visual Studio code gebruiken om slimme contracten te maken, te bouwen en te implementeren met behulp van de Azure Block Chain-Service
+description: Zelf studie over het gebruik van de Azure Block Chain Development Kit voor Ethereum-extensie in Visual Studio code voor het maken, bouwen en implementeren van een slim contract op de Azure Block Chain-service.
 services: azure-blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 07/31/2019
+ms.date: 09/10/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
-ms.openlocfilehash: 1843bd66e11a6686c9ae81fb8e30c7b030e889b7
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 96fe4d77efdd1fda309d7da021bcc208edd2dfe9
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705130"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934998"
 ---
-# <a name="tutorial-use-smart-contracts-on-azure-blockchain-service"></a>Zelfstudie: Slimme contracten gebruiken op de Azure Block Chain-Service
+# <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>Zelfstudie: Visual Studio code gebruiken om slimme contracten te maken, te bouwen en te implementeren
 
-In deze zelf studie gebruikt u de Azure Block Chain Development Kit voor Ethereum voor het maken en implementeren van een slim contract en voert u een slimme contract functie uit via een trans actie op een consortium Block chain-netwerk.
+In deze zelf studie gebruikt u de Azure Block Chain Development Kit voor Ethereum-extensie in Visual Studio code voor het maken, bouwen en implementeren van een slim contract op de Azure Block Chain-service. U kunt Truffle ook gebruiken om een slimme contract functie uit te voeren via een trans actie.
 
 U gebruikt Azure Block Chain Development Kit voor Ethereum voor het volgende:
 
 > [!div class="checklist"]
-> * Verbinding maken met het block Chain-lid van het Azure Block Chain Service consortium
 > * Een slim contract maken
 > * Een slim contract implementeren
 > * Een slimme contract functie uitvoeren via een trans actie
@@ -32,52 +31,11 @@ U gebruikt Azure Block Chain Development Kit voor Ethereum voor het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Volledige [Snelstartgids: Maak een Block Chain-lid met behulp [van de Azure Portal](create-member.md) of Quick Start: Een Block Chain-lid van de Azure Block Chain-service maken met behulp van Azure CLI](create-member-cli.md)
-* [Visual Studio Code](https://code.visualstudio.com/Download)
-* [Azure Block Chain Development Kit voor Ethereum-uitbrei ding](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node.js](https://nodejs.org)
-* [Git](https://git-scm.com)
-* [Python](https://www.python.org/downloads/release/python-2715/). Voeg python. exe toe aan het pad. Python in het pad is vereist voor Azure Block Chain Development Kit.
-* [Truffle](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
-* [Ganache CLI](https://github.com/trufflesuite/ganache-cli)
-
-### <a name="verify-azure-blockchain-development-kit-environment"></a>De Azure Block Chain Development Kit-omgeving controleren
-
-In azure Block Chain Development Kit wordt gecontroleerd of aan de vereisten van uw ontwikkel omgeving is voldaan. Controleren of uw ontwikkel omgeving:
-
-Kies **in het palet met de VS code-opdracht Azure Block chain: Welkomst pagina**weer geven.
-
-Azure Block Chain Development Kit voert een validatie script uit dat ongeveer een minuut in beslag neemt. U kunt de uitvoer weer geven door **Terminal > New Terminal**te selecteren. Selecteer in de menu balk van de Terminal het tabblad **uitvoer** en **Azure Block Chain** in de vervolg keuzelijst. Geslaagde validatie ziet eruit als in de volgende afbeelding:
-
-![Geldige ontwikkel omgeving](./media/send-transaction/valid-environment.png)
-
- Als u een vereist hulp programma mist, wordt een nieuw tabblad met de naam **Azure Block Chain Development Kit** weer gegeven met de vereiste apps die moeten worden geïnstalleerd en koppelingen voor het downloaden van de hulpprogram ma's.
-
-![Ontwikkel Kit vereiste apps](./media/send-transaction/required-apps.png)
-
-## <a name="connect-to-consortium-member"></a>Verbinding maken met het consortium
-
-U kunt verbinding maken met consortium leden met behulp van de Azure Block Chain Development Kit VS code extension. Wanneer u bent verbonden met een consortium, kunt u slimme contracten compileren, bouwen en implementeren in een Azure Block Chain Service consortium-lid.
-
-Als u geen toegang hebt tot een lid van een Azure Block Chain Service consortium, voltooit [u de vereiste Snelstartgids: Maak een Block Chain-lid met behulp [van de Azure Portal](create-member.md) of Quick Start: Maak een Azure Block Chain Service Block Chain-lid met behulp van Azure CLI](create-member-cli.md).
-
-1. Vouw in het deel venster Visual Studio code (VS code) Explorer de **Azure Block Chain** -extensie uit.
-1. Selecteer **verbinding maken met consortium**.
-
-   ![Verbinding maken met consortium](./media/send-transaction/connect-consortium.png)
-
-    Als u wordt gevraagd om Azure-verificatie, volgt u de prompts voor verificatie met behulp van een browser.
-1. Kies **verbinding maken met Azure Block Chain Service consortium** in de vervolg keuzelijst voor het opdracht palet.
-1. Kies het abonnement en de resource groep die aan uw Azure Block Chain Service consortium-lid zijn gekoppeld.
-1. Kies uw consortium in de lijst.
-
-De consortium-en block Chain-leden worden weer gegeven in de Visual Studio Explorer-balk.
-
-![Consortium weer gegeven in Verkenner](./media/send-transaction/consortium-node.png)
+* Volledige [Snelstartgids: Visual Studio code gebruiken om verbinding te maken met een Azure Block Chain Service consortium-netwerk](connect-vscode.md)
 
 ## <a name="create-a-smart-contract"></a>Een slim contract maken
 
-De Azure Block Chain Development Kit voor Ethereum gebruikt Project sjablonen en Truffle-hulpprogram ma's om contracten te helpen, te bouwen en te implementeren.
+De Azure Block Chain Development Kit voor Ethereum gebruikt Project sjablonen en Truffle-hulpprogram ma's om contracten te helpen, te bouwen en te implementeren. Voordat u begint, moet u de vereiste [Snelstartgids volt ooien: Gebruik Visual Studio code om verbinding te maken met een Azure Block Chain service](connect-vscode.md)consortium-netwerk. De Snelstartgids helpt u bij de installatie en configuratie van de Azure Block Chain Development Kit voor Ethereum.
 
 1. Kies **in het palet met de VS code-opdracht Azure Block chain: Nieuw volheid-project**.
 1. Kies **basis project maken**.
@@ -104,10 +62,10 @@ Azure Block Chain Development Kit maakt gebruik van truffle om de slimme contrac
 
 ## <a name="deploy-a-smart-contract"></a>Een slim contract implementeren
 
-Truffle maakt gebruik van migratie scripts om uw contracten te implementeren in een Ethereum-netwerk. Migraties zijn Java script-bestanden die zich in de map migraties van het project bevinden.
+Truffle maakt gebruik van migratie scripts om uw contracten te implementeren in een Ethereum-netwerk. Migraties zijn Java script-bestanden die zich in de map **migraties** van het project bevinden.
 
 1. Als u uw slimme contract wilt implementeren, klikt u met de rechter muisknop op **HelloBlockchain. Sol** en kiest u **contracten implementeren** in het menu.
-1. Kies uw Azure Block Chain consortium-netwerk onder **van truffle-config. js**. Het consortium Block chain-netwerk is toegevoegd aan het Truffle-configuratie bestand van het project wanneer u het project hebt gemaakt.
+1. Kies uw Azure Block Chain consortium-netwerk in het opdracht palet. Het consortium Block chain-netwerk is toegevoegd aan het Truffle-configuratie bestand van het project wanneer u het project hebt gemaakt.
 1. Kies **instructie genereren**. Kies een bestands naam en sla het bestand voor de instructie op in de projectmap. Bijvoorbeeld `myblockchainmember.env`. Het instructie bestand wordt gebruikt voor het genereren van een persoonlijke sleutel Ethereum voor uw Block Chain-lid.
 
 Azure Block Chain Development Kit maakt gebruik van truffle om het migratie script uit te voeren om de contracten te implementeren op de Block chain.
@@ -173,7 +131,7 @@ Met de functies van een slimme opdracht kan de huidige waarde van de status vari
     De functie retourneert het bericht dat is opgeslagen in een status variabele op basis van de huidige status van het contract.
 
 1. Klik met de rechter muisknop op **HelloBlockchain. Sol** en kies **contracten maken** in het menu om de wijzigingen in het slimme contract te compileren.
-1. Als u wilt implementeren, klikt u met de rechter muisknop op **HelloBlockchain. Sol** en kiest u **contracten implementeren** in het menu.
+1. Als u wilt implementeren, klikt u met de rechter muisknop op **HelloBlockchain. Sol** en kiest u **contracten implementeren** in het menu. Kies uw Azure Block Chain consortium-netwerk in het opdracht palet wanneer u hierom wordt gevraagd.
 1. Maak vervolgens een script dat wordt gebruikt om de functie **GetMessage** aan te roepen. Maak een nieuw bestand in de hoofdmap van uw Truffle-project en noem `getmessage.js`het. Voeg de volgende Web3 java script-code toe aan het bestand.
 
     ```javascript

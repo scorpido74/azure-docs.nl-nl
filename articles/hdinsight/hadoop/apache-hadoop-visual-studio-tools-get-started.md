@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 7a243dd0eca179317309438c31c114c94f94bf00
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 706bcbed39ca2a3fe0a38eba864edb863c31b4ec
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736436"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884116"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake-Hulpprogram Ma's voor Visual Studio gebruiken om verbinding te maken met Azure HDInsight en Apache Hive query's uit te voeren
 
@@ -46,7 +46,7 @@ Als u dit artikel wilt volt ooien en Data Lake-Hulpprogram Ma's voor Visual Stud
 
   Voor bestaande installaties navigeert u in de menu balk naar **hulpprogram** > ma's**en functies ophalen...** om Visual Studio Installer te openen.  Selecteer vervolgens ten minste de werk belastingen **Azure-ontwikkeling** of **gegevens opslag en-verwerking**.
 
-  ![Scherm opname van Visual Studio Installer](./media/apache-hadoop-visual-studio-tools-get-started/vs2017_installation.png)
+  ![Scherm opname van Visual Studio Installer](./media/apache-hadoop-visual-studio-tools-get-started/vs-2017-installation.png)
 
 * Visual Studio 2013 en 2015  
   [Down load data Lake-Hulpprogram ma's](https://www.microsoft.com/download/details.aspx?id=49504). Kies de versie van Data Lake Tools die overeenkomt met uw versie van Visual Studio.  
@@ -195,13 +195,13 @@ Ad-hoc query's maken en uitvoeren:
 
       Zorg ervoor dat **interactief** is geselecteerd en selecteer vervolgens **uitvoeren**.
 
-      ![Scherm afbeelding van query en uitvoeren](./media/apache-hadoop-visual-studio-tools-get-started/execute.png)  
+      ![Scherm afbeelding van query en uitvoeren](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-execute.png)  
 
     * **Batch**  
 
       Zorg ervoor dat **batch** is geselecteerd en selecteer vervolgens **verzenden**.  Als u de optie Geavanceerde verzen ding selecteert, configureert u de **taak naam**, **argumenten**, **aanvullende configuraties**en de **status Directory** voor het script.
 
-      ![Scherm afbeelding van query en batch](./media/apache-hadoop-visual-studio-tools-get-started/batch.png)  
+      ![Scherm afbeelding van query en batch](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)  
 
       ![Schermafbeelding van een HDInsight Hadoop Hive-query](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png "Query's verzenden")
 
@@ -224,7 +224,7 @@ Een Hive-oplossing maken en uitvoeren:
 
 De samen vatting van de taak varieert enigszins tussen **batch** en **interactieve** modus.
 
-![Taak samenvatting](./media/apache-hadoop-visual-studio-tools-get-started/jobSummary.png "Samen vatting van Hive-taak")
+![Taak samenvatting](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png "Samen vatting van Hive-taak")
 
 Gebruik de knop **vernieuwen** om de status bij te werken totdat de taak status **is**gewijzigd in voltooid.  
 
@@ -232,7 +232,7 @@ Gebruik de knop **vernieuwen** om de status bij te werken totdat de taak status 
 
 * Zie tabbladen **uitvoer** en **HiveServer2 uitvoer**voor de taak Details van de **interactieve** modus.
 
-  ![taak Details](./media/apache-hadoop-visual-studio-tools-get-started/tabs.png "Details van Hive-taak")
+  ![taak Details](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png "Details van Hive-taak")
 
 ### <a name="view-job-graph"></a>Taak grafiek weer geven
 

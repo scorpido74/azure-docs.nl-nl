@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: barclayn
-ms.openlocfilehash: f3cacdad2986de257ae345f4baa9d14ea6c894b2
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 78062dd92d20da365bb4f3d9c21cc4d576bae01f
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873188"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918874"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-gegevens versleuteling-at-rest
 
@@ -39,7 +39,7 @@ Versleuteling bij rest is de code ring (versleuteling) van gegevens wanneer deze
 - Een symmetrische versleutelings sleutel wordt gebruikt voor het versleutelen van gegevens die naar opslag worden geschreven.
 - Dezelfde versleutelings sleutel wordt gebruikt om die gegevens te ontsleutelen wanneer deze gereed is voor gebruik in het geheugen.
 - Gegevens kunnen gepartitioneerd zijn en verschillende sleutels kunnen voor elke partitie worden gebruikt.
-- Sleutels moeten worden opgeslagen op een veilige locatie met toegangs beheer op basis van identiteit en controle beleid. Gegevens versleutelings sleutels worden vaak versleuteld met asymmetrische versleuteling om de toegang verder te beperken.
+- Sleutels moeten worden opgeslagen op een veilige locatie met toegangs beheer op basis van identiteit en controle beleid. Gegevens versleutelings sleutels worden vaak versleuteld met een sleutel versleutelings sleutel in Azure Key Vault om de toegang verder te beperken.
 
 In de praktijk moeten sleutel beheer-en controle scenario's, evenals schaal-en beschikbaarheids garanties, extra constructs vereisen. Microsoft Azure versleuteling bij rest-concepten en-onderdelen worden hieronder beschreven.
 
@@ -71,12 +71,12 @@ Machtigingen voor het gebruik van sleutels die zijn opgeslagen in Azure Key Vaul
 
 ### <a name="key-hierarchy"></a>Sleutel hiërarchie
 
-Er wordt meer dan één versleutelings sleutel gebruikt in een versleuteling bij rest-implementatie. Asymmetrische versleuteling is handig voor het tot stand brengen van de vertrouwens relatie en de verificatie die nodig zijn voor sleutel toegang en-beheer. Symmetrische versleuteling is efficiënter voor bulk versleuteling en ontsleuteling, waardoor betere versleuteling en betere prestaties mogelijk zijn. Het beperken van het gebruik van één versleutelings sleutel vermindert het risico dat de sleutel wordt aangetast en de kosten voor het opnieuw versleutelen wanneer een sleutel moet worden vervangen. Azure-versleuteling bij rest modellen gebruiken een sleutel hiërarchie die bestaat uit de volgende typen sleutels:
+Er wordt meer dan één versleutelings sleutel gebruikt in een versleuteling bij rest-implementatie. Het opslaan van een versleutelings sleutel in Azure Key Vault zorgt voor veilige toegang tot de sleutel en Centraal beheer van sleutels. De lokale toegang tot de versleutelings sleutels van de service is echter efficiënter voor bulk versleuteling en ontsleuteling dan met Key Vault voor elke gegevens bewerking, waardoor een sterkere versleuteling en betere prestaties mogelijk zijn. Het beperken van het gebruik van één versleutelings sleutel vermindert het risico dat de sleutel wordt aangetast en de kosten voor het opnieuw versleutelen wanneer een sleutel moet worden vervangen. Azure-versleuteling bij rest-modellen gebruiken een belang rijke hiërarchie die bestaat uit de volgende soorten sleutels om deze behoeften aan te pakken:
 
 - **Gegevens versleutelings sleutel (dek)** : een SYMMETRISCHe AES256-sleutel die wordt gebruikt om een partitie of gegevens blok te versleutelen.  Eén resource kan veel partities en veel gegevens versleutelings sleutels hebben. Het versleutelen van elk gegevens blok met een andere sleutel maakt crypto-analyse aanvallen lastiger. Toegang tot DEKs is vereist voor de resource provider of het toepassings exemplaar dat een specifiek blok versleutelt en ontsleutelt. Wanneer een DEK wordt vervangen door een nieuwe sleutel, moeten alleen de gegevens in het bijbehorende blok opnieuw worden versleuteld met de nieuwe sleutel.
-- Sleutel versleutelings **sleutel (KEK)** : een asymmetrische versleutelings sleutel die wordt gebruikt om de gegevens versleutelings sleutels te versleutelen. Gebruik van een sleutel versleutelings sleutel zorgt ervoor dat de gegevens versleutelings sleutels zelf kunnen worden versleuteld en beheerd. De entiteit die toegang heeft tot de KEK kan afwijken van de entiteit waarvoor de DEK is vereist. Een entiteit kan toegang tot de DEK Broker om de toegang van elke DEK te beperken tot een specifieke partitie. Omdat de KEK is vereist voor het ontsleutelen van de DEKs, is de KEK een specifiek punt waarmee DEKs effectief kan worden verwijderd door het verwijderen van de KEK.
+- Sleutel versleutelings **sleutel (KEK)** : een versleutelings sleutel die wordt gebruikt om de gegevens versleutelings sleutels te versleutelen. Door gebruik te maken van een versleutelings sleutel die Key Vault nooit verlaat, kunnen de gegevens versleutelings sleutels zelf worden versleuteld en beheerd. De entiteit die toegang heeft tot de KEK kan afwijken van de entiteit waarvoor de DEK is vereist. Een entiteit kan toegang tot de DEK Broker om de toegang van elke DEK te beperken tot een specifieke partitie. Omdat de KEK is vereist voor het ontsleutelen van de DEKs, is de KEK een specifiek punt waarmee DEKs effectief kan worden verwijderd door het verwijderen van de KEK.
 
-De gegevens versleutelings sleutels, versleuteld met de sleutel versleutelings sleutels, worden afzonderlijk opgeslagen en alleen een entiteit met toegang tot de sleutel coderings sleutel kan alle versleutelings sleutels voor gegevens versleuteld met die sleutel. Verschillende modellen van sleutel opslag worden ondersteund. Verderop in de volgende sectie wordt elk model uitvoerig besproken.
+De gegevens versleutelings sleutels, versleuteld met de sleutel versleutelings sleutels, worden afzonderlijk opgeslagen en alleen een entiteit met toegang tot de sleutel coderings sleutel kan deze versleutelings sleutels ontsleutelen. Verschillende modellen van sleutel opslag worden ondersteund. Verderop in de volgende sectie wordt elk model uitvoerig besproken.
 
 ## <a name="data-encryption-models"></a>Gegevens versleutelings modellen
 
@@ -150,7 +150,9 @@ Wanneer versleuteling aan de server zijde met door service beheerde sleutels wor
 
 #### <a name="server-side-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Versleuteling aan de server zijde met door de klant beheerde sleutels in Azure Key Vault
 
-Voor scenario's waarbij de vereiste is om de gegevens in rust te versleutelen en de versleutelings sleutels te beheren, kunnen klanten versleuteling aan de server zijde gebruiken met door de klant beheerde sleutels in Key Vault. Sommige services kunnen alleen de sleutel voor de sleutel van de basis sleutel opslaan in Azure Key Vault en de versleutelde gegevens versleutelings sleutel opslaan op een interne locatie dichter bij de gegevens. In dat geval kunnen klanten hun eigen sleutels naar Key Vault (Bring Your Own Key BYOK) brengen, of nieuwe codes genereren en ze gebruiken om de gewenste resources te versleutelen. Terwijl de resource provider de bewerkingen voor versleuteling en ontsleuteling uitvoert, gebruikt deze de geconfigureerde sleutel als de basis sleutel voor alle versleutelings bewerkingen.
+Voor scenario's waarbij de vereiste is om de gegevens in rust te versleutelen en de versleutelings sleutels te beheren, kunnen klanten versleuteling aan de server zijde gebruiken met door de klant beheerde sleutels in Key Vault. Sommige services kunnen alleen de sleutel voor de sleutel van de basis sleutel opslaan in Azure Key Vault en de versleutelde gegevens versleutelings sleutel opslaan op een interne locatie dichter bij de gegevens. In dat geval kunnen klanten hun eigen sleutels naar Key Vault (Bring Your Own Key BYOK) brengen, of nieuwe codes genereren en ze gebruiken om de gewenste resources te versleutelen. Terwijl de resource provider de bewerkingen voor versleuteling en ontsleuteling uitvoert, wordt de geconfigureerde sleutel versleutelings sleutel gebruikt als basis sleutel voor alle versleutelings bewerkingen.
+
+Verlies van sleutel versleutelings sleutels betekent gegevens verlies. Daarom mogen sleutels niet worden verwijderd. Er moet een back-up van sleutels worden gemaakt wanneer u deze maakt of roteert. [Zacht verwijderen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) moet zijn ingeschakeld op een kluis die sleutel versleutelings sleutels opslaat. In plaats van een sleutel te verwijderen, stelt u ingeschakeld in op ONWAAR of stelt u de verval datum in.
 
 ##### <a name="key-access"></a>Sleutel toegang
 

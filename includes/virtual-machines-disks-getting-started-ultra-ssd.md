@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: db8147717e825d9cc48b7f0704dc5eea0be223a9
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3f910a3d0466153bd60fe23ef2f9f656cac292ee
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510314"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70919667"
 ---
 # <a name="using-azure-ultra-disks"></a>Azure Ultra Disk gebruiken
 
@@ -64,7 +64,7 @@ $vmSize = "Standard_E64s_v3"
 
 Het antwoord komt overeen met het onderstaande formulier, waarbij X de zone is die moet worden gebruikt voor de implementatie in de gekozen regio. X kan 1, 2 of 3 zijn. Momenteel ondersteunen slechts drie regio's Ultra disks: VS-Oost 2, Zuidoost-Azië en Europa-noord.
 
-De waarde van de zone behouden, het vertegenwoordigt uw beschikbaarheids zone en u hebt deze nodig om een ultra schijf te kunnen implementeren.
+De waarde **van de zone behouden** , het vertegenwoordigt uw beschikbaarheids zone en u hebt deze nodig om een ultra schijf te kunnen implementeren.
 
 |ResourceType  |Name  |Location  |Zones  |Beperking  |Mogelijkheid  |Value  |
 |---------|---------|---------|---------|---------|---------|---------|
@@ -79,7 +79,7 @@ Nu u weet in welke zone u wilt implementeren, volgt u de implementatie stappen i
 
 Bepaal eerst welke VM-grootte moet worden geïmplementeerd. Nu ondersteunen alleen DsV3-en EsV3-VM-families Ultra disks. Raadpleeg de tweede tabel in dit [blog](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) voor meer informatie over deze VM-grootten.
 
-Als u een virtuele machine met meerdere Ultra schijven wilt maken, raadpleegt u het voor beeld [een VM met meerdere Ultra schijven maken](https://aka.ms/UltraSSDTemplate).
+Als u een virtuele machine met meerdere Ultra schijven wilt maken, raadpleegt u het voor beeld [een VM met meerdere Ultra schijven maken](https://aka.ms/ultradiskArmTemplate).
 
 Als u uw eigen sjabloon wilt gebruiken, moet u ervoor zorgen dat apiVersion `Microsoft.Compute/virtualMachines` voor `Microsoft.Compute/Disks` en is ingesteld `2018-06-01` als (of hoger).
 

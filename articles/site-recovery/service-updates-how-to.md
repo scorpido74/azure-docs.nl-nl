@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
-ms.openlocfilehash: e06cd77a1d46208fe0f7aa166be3ccd3b9b7dbb4
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828612"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910479"
 ---
 # <a name="service-updates-in-site-recovery"></a>Service-updates in Site Recovery
 
@@ -52,7 +52,7 @@ E-mail meldingen worden als volgt verzonden.
 --- | ---
 60 dagen voor het verval van het onderdeel | Eenmaal per twee weken
 Volgende 53 dagen | Eenmaal per week
-Laatste 7 dagen | Eenmaal per dag
+Afgelopen 7 dagen | Eenmaal per dag
 Na verloop datum | Eenmaal per twee weken
 
 
@@ -101,10 +101,9 @@ Als u updates hand matig wilt beheren, gaat u als volgt te werk:
 
 ## <a name="vmware-vmphysical-server-disaster-recovery-to-azure"></a>Herstel na nood geval voor virtuele VMware-machines en fysieke servers naar Azure
 
-1. Op basis van uw huidige versie en de ondersteunings [verklaring](#support-statement-for-azure-site-recovery)installeert u de update eerst op de on-premises configuratie server met behulp van [deze instructies](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server). 
+1. Op basis van uw huidige versie en de [ondersteunings verklaring](#support-statement-for-azure-site-recovery)installeert u de update eerst op de on-premises configuratie server met behulp van [deze instructies](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server). 
 2. Als u scale-out proces servers hebt, moet u deze nu bijwerken met behulp van [deze instructies](vmware-azure-manage-process-server.md#upgrade-a-process-server).
-3. Open **beveiligde items** > **gerepliceerd items**om de Mobility-agent op elke beveiligde computer bij te werken.
-4. Selecteer de virtuele machine en selecteer de knop **agent bijwerken** die onder aan de pagina voor elke virtuele machine wordt weer gegeven. Hiermee wordt de Mobility Service-agent bijgewerkt op alle beveiligde Vm's.
+3. Raadpleeg [Dit](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) artikel voor het bijwerken van de Mobility-agent op elke beveiligde computer.
 
 ### <a name="reboot-after-mobility-service-upgrade"></a>Opnieuw opstarten na de upgrade van de Mobility-service
 

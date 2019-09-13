@@ -7,27 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: bd5ec1e75fa1669b0ca33e4cb4629793b09a9bad
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: ddfe5c855b6cd0171494f1af20dc5eb4ae571a6e
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036128"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918983"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
 
 In dit artikel worden de partners van het virtuele Windows-bureau blad in alfabetische volg orde weer gegeven.
-
-## <a name="active-cypher"></a>Actieve coderings
-
-![Actief coderings-logo](./media/partners/active-cypher.png)
-
-Active coderings is een Windows-service provider voor virtueel bureau blad, die IT voorziet van versleutelings technologie om de onderneming te beschermen tegen inbreuken en gegevens verlies. Met actieve coderings ondersteunt innovatieve coderings technologie de algehele strategie voor bestands beveiliging om virtueel bureau blad van Windows op Azure uit te voeren.
-
-Bij gebruik in combi natie met Windows Virtual Desktop biedt Active coderings aanvullende mogelijkheden om toegankelijkheid en mobiliteit van gebruikers gegevens mogelijk te maken, terwijl er onbedoeld gegevens verlies wordt voor komen. Met Active coderings kunnen bestaande beleids regels voor groeps beveiliging en machtigingen in Azure Information Protection worden gebruikt voor het versleutelen van gebruikers bestanden tijdens het gebruik van Windows virtueel bureau blad.
-
-- [Bekijk de kortere oplossing.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oNLu)
-- [Ga naar de website van de partner.](https://activecypher.com/)
 
 ## <a name="cloudjumper"></a>CloudJumper
 

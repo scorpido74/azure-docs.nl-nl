@@ -2,19 +2,19 @@
 title: Wat is Azure Sleutelkluis? | Microsoft Docs
 description: Meer informatie over hoe Azure Key Vault cryptografische sleutels en geheimen beveiligt die worden gebruikt door Cloud toepassingen en-services.
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/18/2019
-ms.author: barclayn
-ms.openlocfilehash: 2786ec387d528e1593e2687d906060f8a2673a8c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.author: mbaldwin
+ms.openlocfilehash: cf8101923f898c4ce190f3eaf2f3a9b2430cc723
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934480"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885124"
 ---
 # <a name="what-is-azure-key-vault"></a>Wat is Azure Sleutelkluis?
 
@@ -41,7 +41,7 @@ Hier volgen enkele belang rijke voor waarden:
 
 - **Resource**: Een resource is een beheerbaar item dat beschikbaar is via Azure. Algemene voor beelden hiervan zijn virtuele machines, opslag accounts, Web-apps, data bases en virtuele netwerken. Er zijn nog veel meer.
 
-- **Resourcegroep**: Een resourcegroep is een container met verwante resources voor een Azure-oplossing. De resourcegroep kan alle resources voor de oplossing bevatten of enkel de resources die u als groep wilt beheren. U bepaalt hoe resources worden toegewezen aan resourcegroepen op basis van wat voor uw organisatie het meest zinvol is.
+- **Resourcegroep**: Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. De resourcegroep kan alle resources voor de oplossing bevatten of enkel de resources die u als groep wilt beheren. U bepaalt hoe resources worden toegewezen aan resourcegroepen op basis van wat voor uw organisatie het meest zinvol is.
 
 - **Service-Principal**: Een Azure-Service-Principal is een beveiligings identiteit die door gebruikers gemaakte apps, services en hulpprogram ma's voor automatisering gebruikt om toegang te krijgen tot specifieke Azure-resources. U kunt het beschouwen als een ' gebruikers identiteit ' (gebruikers naam en wacht woord of certificaat) met een specifieke rol en nauw keurig beheerde machtigingen. Anders dan een algemene gebruikers-id, hoeft een service-principal slechts enkele specifieke handelingen uit te kunnen voeren. Het verbetert de beveiliging als u alleen het minimale machtigings niveau hebt dat nodig is om de beheer taken uit te voeren.
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a756f0d9fe3669ab9d0f2b4576a35be5d2112a87
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: c05e1dc720f49eb190ccdbe1826a1a347fba7fa1
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872213"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914779"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Een niet-beheerde Directory als beheerder overnemen in Azure Active Directory
 
@@ -43,7 +43,7 @@ Sommige producten die share point en OneDrive bevatten, zoals Office 365, bieden
 
 3. Selecteer **Ja**in het bevestigings bericht van Power bi.
 
-4. Meld u aan bij het [Microsoft 365-beheer centrum](https://admin.microsoft.com) met de Power bi gebruikers account. U ontvangt een bericht waarin wordt aangegeven dat u **de beheerder** bent van de domein naam die al is geverifieerd in de niet-beheerde Tenant. Selecteer **Ja, ik wil de beheerder zijn**.
+4. Meld u aan bij het [Microsoft 365-beheer centrum](https://portal.office.com/admintakeover) met de Power bi gebruikers account. U ontvangt een bericht waarin wordt aangegeven dat u **de beheerder** bent van de domein naam die al is geverifieerd in de niet-beheerde Tenant. Selecteer **Ja, ik wil de beheerder zijn**.
   
    ![eerste scherm afbeelding van de beheerder](./media/domains-admin-takeover/become-admin-first.png)
   

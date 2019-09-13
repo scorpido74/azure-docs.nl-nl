@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4dfcde96957bb8fce3731e38eee62554795d795f
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 30842c787e2009b4919fef916f3c5e1f73a79bf2
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844889"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918818"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 
@@ -211,13 +211,16 @@ Standaard bestands shares zijn beschikbaar in alle regio's tot 5 TiB. In bepaald
 |Australië - oost |LRS     |Nee    |Ja|
 |Australië - zuidoost|LRS     |Nee    |Nog niet|
 |India - centraal  |LRS     |Nee    |Nog niet|
+|East US        |LRS     |Nee    |Nog niet|
 |Frankrijk - centraal |LRS, ZRS|Nee    |LRS-Ja, ZRS-nog niet|
 |Frankrijk - zuid   |LRS     |Nee    |Ja|
 |India - zuid    |LRS     |Nee    |Nog niet|
 |Azië - zuidoost |LRS, ZRS|Nee    |Ja|
 |US - west-centraal|LRS     |Nee    |Nog niet|
 |Europa -west    |LRS, ZRS|Nee    |Ja|
+|US - west        |LRS     |Nee    |Nog niet|
 |US - west 2      |LRS, ZRS|Nee    |Ja|
+
 
 \* Voor regio's zonder ondersteuning van de portal kunt u Power shell of de Azure-opdracht regel interface (CLI) nog steeds gebruiken om meer dan 5 TiB-shares te maken. U kunt ook een nieuwe share maken via de Portal zonder een quotum op te geven. Hiermee wordt een share gemaakt met de standaard grootte van 100 TiB, die later kan worden bijgewerkt via Power shell of Azure CLI.
 

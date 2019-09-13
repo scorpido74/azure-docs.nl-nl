@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 06/18/2019
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 3c16d8b5f1611c6c05e60d65551f73eb2d395668
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 847a4ec7da3c9b00753e5d07baf2952b31d2b5bb
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872906"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934852"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Back-ups maken van SQL Server-databases in virtuele Azure-machines
 
@@ -36,8 +36,7 @@ Controleer de volgende criteria voordat u een back-up maakt van een SQL Server D
 1. Identificeer of maak een [Recovery Services kluis](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) in dezelfde regio of locatie als de virtuele machine die als host fungeert voor het SQL Server exemplaar.
 2. Controleer of de virtuele machine [verbinding](backup-sql-server-database-azure-vms.md#establish-network-connectivity)heeft met het netwerk.
 3. Zorg ervoor dat de SQL Server-data bases voldoen [aan de richt lijnen voor de naamgeving van data bases voor Azure backup](#database-naming-guidelines-for-azure-backup).
-4. Voeg, met name voor SQL 2008 en 2008 R2, [register sleutel](#add-registry-key-to-enable-registration) toe om Server registratie in te scha kelen. Deze stap is niet vereist wanneer de functie algemeen beschikbaar is.
-5. Controleer of er geen andere back-upoplossingen zijn ingeschakeld voor de data base. Schakel alle andere SQL Server back-ups uit voordat u een back-up van de data base maakt.
+4. Controleer of er geen andere back-upoplossingen zijn ingeschakeld voor de data base. Schakel alle andere SQL Server back-ups uit voordat u een back-up van de data base maakt.
 
 > [!NOTE]
 > U kunt Azure Backup inschakelen voor een virtuele machine van Azure en ook voor een SQL Server-Data Base die op de virtuele machine wordt uitgevoerd zonder conflict.
@@ -98,22 +97,6 @@ Vermijd het gebruik van de volgende elementen in database namen:
 
 Aliasing is beschikbaar voor niet-ondersteunde tekens, maar we raden u aan om deze te vermijden. Zie [Het gegevensmodel van de tabelservice](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN) voor meer informatie.
 
-### <a name="add-registry-key-to-enable-registration"></a>Register sleutel toevoegen om registratie in te scha kelen
-
-1. Regedit openen
-2. Maak het pad naar de map voor het REGI ster: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WorkloadBackup\TestHook (u moet de sleutel TestHook maken onder WorkloadBackup die op zijn beurt moet worden gemaakt onder micro soft).
-3. Maak onder het pad naar de map van het REGI ster een nieuwe teken reeks waarde met de teken reeks naam **AzureBackupEnableWin2K8R2SP1** en waarde: **Echte**
-
-    ![RegEdit voor het inschakelen van registratie](media/backup-azure-sql-database/reg-edit-sqleos-bkp.png)
-
-U kunt deze stap ook automatiseren door het REG-bestand uit te voeren met de volgende opdracht:
-
-```csharp
-Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WorkloadBackup\TestHook]
-"AzureBackupEnableWin2K8R2SP1"="True"
-```
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -262,18 +245,6 @@ Ga als volgt te werk om een back-upbeleid te maken:
 
 14. Als u klaar bent met het bewerken van het back-upbeleid, selecteert u **OK**.
 
-
-### <a name="modify-policy"></a>Beleid wijzigen
-Wijzig het beleid om de back-upfrequentie of het Bewaar bereik te wijzigen.
-
-> [!NOTE]
-> Elke wijziging in de retentie periode wordt retro actief toegepast op alle oudere herstel punten, naast de nieuwe.
-
-Ga in het kluis dashboard naar beleid voor het **beheren** > van**back-ups** en kies het beleid dat u wilt bewerken.
-
-  ![Back-upbeleid beheren](./media/backup-azure-sql-database/modify-backup-policy.png)
-
-
 ## <a name="enable-auto-protection"></a>Automatische beveiliging inschakelen  
 
 U kunt automatische beveiliging inschakelen om automatisch een back-up te maken van alle bestaande en toekomstige data bases naar een zelfstandig SQL Server exemplaar of naar een AlwaysOn-beschikbaarheids groep.
@@ -285,7 +256,7 @@ U kunt automatische beveiliging inschakelen om automatisch een back-up te maken 
 Automatische beveiliging inschakelen:
 
   1. In **Items voor back-up** selecteert u het exemplaar waarvoor u automatische beveiliging wilt inschakelen.
-  2. Selecteer de vervolg keuzelijst onder AutoProtect, kies **aan**en selecteer **OK**.
+  2. Selecteer de vervolg keuzelijst onder **AutoProtect**, kies **aan**en selecteer **OK**.
 
       ![Automatische beveiliging inschakelen voor de beschikbaarheids groep](./media/backup-azure-sql-database/enable-auto-protection.png)
 

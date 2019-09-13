@@ -1,7 +1,7 @@
 ---
 title: De Automated ML-interface van Azure gebruiken voor het trainen & implementeren van modellen
 titleSuffix: Azure Machine Learning service
-description: Automatische machine learning experimenten maken, beheren en implementeren in de Azure Portal
+description: Automatische machine learning experimenten maken, beheren en implementeren op de landings pagina van Azure Machine Learning werk ruimte (preview).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,20 +10,19 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 08/02/2019
-ms.openlocfilehash: 79632a2b5862538ef702cec01a60aada14d8dbce
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.date: 09/09/2019
+ms.openlocfilehash: 3ee15b5485f4fc0f81788107ce2378c65085e000
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860486"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910423"
 ---
-# <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Automatische machine learning experimenten maken, verkennen en implementeren in de Azure Portal (preview-versie)
+# <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>Automatische machine learning experimenten maken, verkennen en implementeren met behulp van de landings pagina van Azure Machine Learning werk ruimte (preview)
 
- In dit artikel leert u hoe u geautomatiseerde machine learning experimenten kunt maken, verkennen en implementeren in de Azure Portal zonder één regel code. Automatische machine learning automatiseert het proces van het selecteren van het beste algoritme dat voor uw specifieke gegevens moet worden gebruikt, zodat u snel een machine learning model kunt genereren. Meer [informatie over automatische machine learning](concept-automated-ml.md).
+ In dit artikel leert u hoe u geautomatiseerde machine learning experimenten kunt maken, verkennen en implementeren op de landings pagina van de Azure Machine Learning werk ruimte zonder één regel code. Automatische machine learning automatiseert het proces van het selecteren van het beste algoritme dat voor uw specifieke gegevens moet worden gebruikt, zodat u snel een machine learning model kunt genereren. Meer [informatie over automatische machine learning](concept-automated-ml.md).
 
  Als u de voor keur geeft aan een meer op code gebaseerde ervaring, kunt u ook [uw geautomatiseerde machine learning experimenten in python configureren](how-to-configure-auto-train.md) met de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
-
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,23 +32,26 @@ ms.locfileid: "70860486"
 
 ## <a name="get-started"></a>Aan de slag
 
-Navigeer naar het linkerdeel venster van uw werk ruimte. Selecteer Automatische Machine Learning in het gedeelte ontwerpen (preview).
 
-![Navigatie deel venster Azure Portal](media/how-to-create-portal-experiments/nav-pane.png)
+1. Meld u aan bij [de pagina voor het land van de werk ruimte](https://ml.azure.com/workspaceportal/). 
 
- Als dit de eerste keer is dat er experimenten worden uitgevoerd, ziet u het scherm **Welkom bij automatisch machine learning** . 
+1. Selecteer uw abonnement en werk ruimte. 
+
+1. Ga naar het linkerdeel venster. Selecteer **automatische ml** onder het gedeelte **ontwerpen** .
+
+[![Navigatie deel venster Azure Portal](media/how-to-create-portal-experiments/nav-pane.png)](media/how-to-create-portal-experiments/nav-pane-expanded.png)
+
+ Als dit de eerste keer is dat er experimenten worden uitgevoerd, ziet u het scherm **aan de slag** . 
 
 Anders ziet u uw **geautomatiseerde machine learning** -dash board met een overzicht van al uw geautomatiseerde machine learning experimenten, met inbegrip van de proeven die zijn gemaakt met de SDK. Hier kunt u uw uitvoeringen filteren en verkennen op datum, naam van het experiment en uitvoerings status.
 
-U kunt ook automatische Machine Learning openen via de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com).
+## <a name="create-and-run-experiment"></a>Experiment maken en uitvoeren
 
-## <a name="create-an-experiment"></a>Een experiment maken
-
-Selecteer **experiment maken** en vul het formulier **een nieuw automatisch machine learning experiment maken** in.
+1. Selecteer **experiment maken** en vul het formulier in.
 
 1. Voer een unieke naam voor het experiment in.
 
-1. Selecteer een compute voor de taak voor gegevens profilering en training. In de vervolg keuzelijst vindt u een lijst met uw bestaande berekeningen. Volg de instructies in stap 3 om een nieuwe Compute te maken.
+1. Selecteer een compute voor de taak voor gegevens profilering en training. In de vervolg keuzelijst vindt u een lijst met uw bestaande berekeningen. Volg de instructies in stap 4 als u een nieuwe berekening wilt maken.
 
 1. Selecteer **een nieuwe Compute maken** om uw berekenings context voor dit experiment te configureren.
 
@@ -58,32 +60,40 @@ Selecteer **experiment maken** en vul het formulier **een nieuw automatisch mach
     Compute-naam| Voer een unieke naam in die uw berekenings context identificeert.
     Grootte van de virtuele machine| Selecteer de grootte van de virtuele machine voor de reken kracht.
     Aanvullende instellingen| *Min. knoop punt*: Voer het minimum aantal knoop punten in voor de reken kracht. Het minimum aantal knoop punten voor de AML-Compute is 0. Als u gegevens profilering wilt inschakelen, moet u één of meer knoop punten hebben. <br> *Maximum knoop punt*: Voer het maximum aantal knoop punten in voor de reken kracht. De standaard waarde is 6 knoop punten voor een AML-berekening.
+    
+    Selecteer **Maken**. Het maken van een nieuwe berekening kan enkele minuten duren.
 
-      Selecteer **Maken**. Het maken van een nieuwe berekening kan enkele minuten duren.
+    >[!NOTE]
+    > De naam van de berekening geeft aan of de compute die u selecteert/maakt, *profile ring is ingeschakeld*. (Zie de sectie [gegevens profilering](#profile) voor meer informatie).
 
-      >[!NOTE]
-      > De naam van de berekening geeft aan of de compute die u selecteert/maakt, *profile ring is ingeschakeld*. (Zie 7b voor meer informatie over gegevens profilering).
+1. Selecteer een gegevensset uit uw opslag container of maak er een uit door een bestand van uw lokale computer naar de container te uploaden. Open bare preview biedt alleen ondersteuning voor het uploaden van lokale bestanden en Azure Blob-opslag accounts.
 
-1. Selecteer een opslag account voor uw gegevens. 
-
-1. Selecteer een opslag container.
-
-1. Selecteer een gegevens bestand uit uw opslag container of upload een bestand van uw lokale computer naar de container. Open bare preview biedt alleen ondersteuning voor het uploaden van lokale bestanden en Azure Blob Storage-accounts.
     >[!Important]
     > Vereisten voor trainings gegevens:
     >* Gegevens moeten in tabel vorm zijn.
     >* De waarde die u wilt voors pellen (doel kolom), moet aanwezig zijn in de gegevens.
 
-    [![Gegevens bestand selecteren](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
+    1. Als u een nieuwe gegevensset wilt maken op basis van een bestand op uw lokale compute, selecteert u **Bladeren** en selecteert u vervolgens het bestand. 
 
-1. Gebruik de tabbladen preview en profile om uw gegevens voor dit experiment verder te configureren.
+    1. Geef uw gegevensset een unieke naam en geef een optionele beschrijving op. 
 
-    1. Geef op het tabblad **voor beeld** aan of uw gegevens kopteksten bevatten en selecteer de functies (kolommen) voor training met behulp van de **opgenomen** switch knoppen in elke functie kolom.
+    1. Selecteer **volgende** om het te uploaden naar de standaard opslag container die automatisch is gemaakt met uw werk ruimte of kies een opslag container die u wilt gebruiken voor het experiment. 
 
-    1. Op het tabblad **profiel** kunt u het [gegevens profiel](#profile) weer geven op functie, evenals de verdeling, het type en de samenvattings statistieken (gemiddelde, mediaan, maximum/min, enzovoort) van elk.
+    1. Controleer de **instellingen en het voorbeeld** formulier op nauw keurigheid. Het formulier wordt op intelligente wijze ingevuld op basis van het bestands type. 
 
-        >[!NOTE]
-        > Het volgende fout bericht wordt weer gegeven als voor uw Compute-context **geen** profile ring is ingeschakeld: *Gegevens profilering is alleen beschikbaar voor Compute-doelen die al worden uitgevoerd*.
+        Veld| Description
+        ----|----
+        Bestands indeling| Hiermee definieert u de indeling en het type van de gegevens die zijn opgeslagen in een bestand.
+        Scheidingsteken| Een of meer tekens voor het opgeven van de grens tussen afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevens stromen.
+        Encoding| Hiermee wordt aangegeven welke bits-schema tabel moet worden gebruikt om de gegevensset te lezen.
+        Kolomkoppen| Hiermee wordt aangegeven hoe de headers van de gegevensset, indien aanwezig, worden behandeld.
+        Rijen overs Laan | Hiermee wordt aangegeven hoeveel, indien van toepassing, rijen in de gegevensset worden overgeslagen.
+    
+        Selecteer **Volgende**.
+
+    1. Het **schema** formulier wordt op de slimme wijze ingevuld op basis van de selecties in het formulier **instellingen en preview** . Hier configureert u het gegevens type voor elke kolom, bekijkt u de kolom namen en selecteert u welke kolommen niet voor uw experiment moeten worden **toegevoegd** . 
+            
+        Selecteer **Volgende.**
 
 1. Selecteer het type trainings taak: classificatie, regressie of prognose.
 
@@ -94,7 +104,7 @@ Selecteer **experiment maken** en vul het formulier **een nieuw automatisch mach
 
     1. Prognose horizon selecteren: Geef aan hoeveel tijds eenheden (minuten/uren/dagen/weken/maanden/jaren) het model op de toekomst kan voors pellen. Verder is het model vereist om in de toekomst te voors pellen, hoe minder nauw keurig wordt. Meer [informatie over prognoses en prognoses horizon](how-to-auto-train-forecast.md).
 
-1. Beschrijving Geavanceerde instellingen: extra instellingen die u kunt gebruiken om de trainings taak beter te beheren.
+1. Beschrijving Geavanceerde instellingen: extra instellingen die u kunt gebruiken om de trainings taak beter te beheren. Anders worden de standaard waarden toegepast op basis van het experiment en de gegevens. 
 
     Geavanceerde instellingen|Description
     ------|------
@@ -165,7 +175,7 @@ Het kan even duren voordat trainings taken worden uitgevoerd om de uitvoering va
 
 Inzoomen op de uitvoer modellen om details van de trainings uitvoering te bekijken, zoals prestatie gegevens en distributie grafieken. [Meer informatie over grafieken](how-to-understand-automated-ml.md).
 
-![Details van herhaling](media/how-to-create-portal-experiments/iteration-details.png)
+[![Details van herhaling](media/how-to-create-portal-experiments/iteration-details.png)](media/how-to-create-portal-experiments/iteration-details-expanded.png)
 
 ## <a name="deploy-your-model"></a>Uw model implementeren
 
@@ -178,7 +188,8 @@ Automatische ML helpt u bij het implementeren van het model zonder code te schri
     + Optie 1: Als u het beste model wilt implementeren (volgens de criteria die u hebt gedefinieerd), selecteert u beste model implementeren op de detail pagina Details uitvoeren.
 
     + Optie 2: Als u een specifieke model herhaling uit dit experiment wilt implementeren, zoomt u in op het model om de detail pagina van de uitvoering te openen en selecteert u model implementeren.
-1. Het deel venster **model implementeren** invullen
+
+1. Vul het deel venster **model implementeren** in.
 
     Veld| Value
     ----|----

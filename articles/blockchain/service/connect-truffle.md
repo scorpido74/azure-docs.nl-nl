@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 822402f548fe0fc866051a9c77adef6e37c3fa75
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: ea64e3fe4789ac0558463ded81c8179db83469d5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240891"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932584"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>Quickstart: Truffle gebruiken om verbinding te maken met een transactie knooppunt
+# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>Quickstart: Truffle gebruiken om verbinding te maken met een transactieknooppunt
 
 Truffle is een Block Chain-ontwikkel omgeving die u kunt gebruiken om verbinding te maken met een Azure Block Chain Service Trans Action-knoop punt.
 
@@ -25,7 +25,7 @@ Truffle is een Block Chain-ontwikkel omgeving die u kunt gebruiken om verbinding
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Een Azure Block Chain-lid maken](create-member.md)
+* Volledige [Snelstartgids: Maak een Block Chain-lid met behulp [van de Azure Portal](create-member.md) of Quick Start: Een Block Chain-lid van de Azure Block Chain-service maken met behulp van Azure CLI](create-member-cli.md)
 * Installeer [Truffle](https://github.com/trufflesuite/truffle). Truffle vereist verschillende hulpprogram ma's die moeten worden geïnstalleerd, waaronder [node. js](https://nodejs.org), [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)installeren. Python is vereist voor web3.
 
@@ -124,7 +124,7 @@ Gebruik *Web3* om verbinding te maken met het transactie knooppunt.
 
 In deze Snelstartgids hebt u een Truffle-project gemaakt om verbinding te maken met het standaard transactie knooppunt van de Azure Block Chain-service.
 
-Probeer de volgende zelf studie voor het gebruik van Azure Block Chain Development Kit voor Ethereum en Truffle voor het uitvoeren van een slimme contract functie via een trans actie op een consortium Block chain-netwerk.
+Probeer de volgende zelf studie voor het gebruik van Azure Block Chain Development Kit voor Ethereum en Truffle voor het maken, bouwen, implementeren en uitvoeren van een slimme contract functie via een trans actie.
 
 > [!div class="nextstepaction"]
-> [Slimme contracten gebruiken op de Azure Block Chain-Service](send-transaction.md)
+> [Visual Studio code gebruiken om slimme contracten te maken, te bouwen en te implementeren](send-transaction.md)

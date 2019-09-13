@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake-tools voor Visual Studio installeren
-description: In dit artikel wordt beschreven hoe u Azure Data Lake Tools voor Visual Studio installeren.
+description: In dit artikel wordt beschreven hoe u Azure Data Lake-Hulpprogram Ma's voor Visual Studio installeert.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -8,43 +8,51 @@ ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
-ms.date: 05/03/2018
-ms.openlocfilehash: 3269d38b691ec4dd9573a241c89dadc285787143
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/30/2019
+ms.openlocfilehash: 08f0456b6a8b663f0af68fbb179de14b9e3acf79
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60408111"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914090"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>Data Lake Tools voor Visual Studio installeren
 
-Informatie over het gebruik van de Visual Studio voor het maken van Azure Data Lake Analytics-accounts, het definiëren van taken in [U-SQL](data-lake-analytics-u-sql-get-started.md) en het verzenden van taken naar de Data Lake Analytics-service. Zie [Overzicht van Azure Data Lake Analytics](data-lake-analytics-overview.md) voor meer informatie over Data Lake Analytics.
+Meer informatie over het gebruik van Visual Studio voor het maken van Azure Data Lake Analytics-accounts. U kunt taken in [U-SQL](data-lake-analytics-u-sql-get-started.md) definiëren en taken verzenden naar de data Lake Analytics-service. Zie [Overzicht van Azure Data Lake Analytics](data-lake-analytics-overview.md) voor meer informatie over Data Lake Analytics.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Visual Studio**: Alle versies behalve Express worden ondersteund.
-    * Visual Studio 2017
-    * Visual Studio 2015
-    * Visual Studio 2013
-* **Microsoft Azure SDK voor .NET** versie 2.7.1 of hoger.  U kunt dit installeren met het [webplatforminstallatieprogramma](https://www.microsoft.com/web/downloads/platform.aspx).
+* **Visual Studio**: Alle edities, met uitzonde ring van Express, worden ondersteund.
+
+  * Visual Studio 2019
+  * Visual Studio 2017
+  * Visual Studio 2015
+  * Visual Studio 2013
+
+* **Microsoft Azure SDK voor .NET** versie 2.7.1 of hoger. U kunt dit installeren met het [webplatforminstallatieprogramma](https://www.microsoft.com/web/downloads/platform.aspx).
 * Een **Data Lake Analytics**-account. Zie [Aan de slag met Azure Data Lake Analytics met Azure Portal](data-lake-analytics-get-started-portal.md) om een account te maken.
 
-## <a name="install-azure-data-lake-tools-for-visual-studio-2017"></a>Azure Data Lake-tools voor Visual Studio 2017 installeren
+## <a name="install-azure-data-lake-tools-for-visual-studio-2017-or-visual-studio-2019"></a>Azure Data Lake-Hulpprogram Ma's voor Visual Studio 2017 of Visual Studio 2019 installeren
 
-Azure Data Lake Tools voor Visual Studio wordt ondersteund in Visual Studio 2017 15.3 en hoger. Het hulpprogramma maakt deel uit van de workloads **Gegevensopslag en -verwerking** en **Azure Development** in het installatieprogramma van Visual Studio. Schakel een van deze twee workloads in als onderdeel van uw installatie van Visual Studio.  
+Azure Data Lake-Hulpprogram Ma's voor Visual Studio worden ondersteund in Visual Studio 2017 15,3 of hoger. Het hulp programma maakt deel uit van de werk belastingen voor **gegevens opslag en-verwerking** en voor **Azure-ontwikkel aars** . Schakel een van deze twee workloads in als onderdeel van uw installatie van Visual Studio.
 
-Schakel de **gegevensopslag en verwerking** workload zoals wordt weergegeven: ![Gegevensopslag en verwerking van workload inschakelen](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-01.png)
+Schakel de werk belasting voor **gegevens opslag en-verwerking** in zoals weer gegeven:
 
-Schakel de **Azure-ontwikkeling** workload zoals wordt weergegeven: ![Azure-ontwikkelworkload inschakelen](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-02.png)
+![De werk belasting voor gegevens opslag en-verwerking inschakelen](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2019-install-01.png)
+
+Schakel de werk belasting van **Azure Development** in zoals weer gegeven:
+
+![Een Azure Development-workload selecteren](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2019-install-02.png)
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio-2013-and-2015"></a>Azure Data Lake Tools voor Visual Studio 2013 en 2015 installeren
 
-Download en installeer Azure Data Lake-tools voor Visual Studio [via het Downloadcentrum](https://aka.ms/adltoolsvs). Na installatie moet u zich het volgende realiseren:
-* Het knooppunt **Server Explorer** > **Azure** bevat een **Data Lake Analytics**-knooppunt. 
+Down load en Installeer [Microsoft Azure data Lake en stream Analytics Hulpprogram ma's voor Visual Studio ](https://aka.ms/adltoolsvs). Na de installatie heeft Visual Studio de volgende wijzigingen:
+
+* Het knooppunt **Server Explorer** > **Azure** bevat een **Data Lake Analytics**-knooppunt.
 * Het menu **Extra** bevat een **Data Lake**-item.
 
-
 ## <a name="next-steps"></a>Volgende stappen
-* Zie [Accessing diagnostics logs for Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md) (Diagnostische logboeken openen voor Azure Data Lake Analytics) voor logboekregistratie van diagnostische informatie.
+
+* Zie [toegang tot Diagnostische logboeken voor Azure data Lake Analytics voor](data-lake-analytics-diagnostic-logs.md)informatie over het vastleggen van diagnostische gegevens.
 * Zie [Websitelogboeken analyseren met Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md) voor een complexere query.
-* Als u wilt de vertex execution view gebruiken, Zie [de Vertex Execution View in Data Lake Tools voor Visual Studio gebruiken](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
+* Zie [de weer gave vertex Execution gebruiken in data Lake-Hulpprogram ma's voor Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)voor meer informatie over het gebruik van de vertex Execution-weer gave.

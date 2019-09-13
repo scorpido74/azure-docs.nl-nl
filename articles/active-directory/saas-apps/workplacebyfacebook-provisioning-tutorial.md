@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Werkplek door Facebook configureren voor het automatisch gebruikers inrichten met Azure Active Directory | Microsoft Docs'
+title: 'Zelfstudie: Werk plek configureren via Facebook voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Workplace by Facebook configureert.
 services: active-directory
 documentationCenter: na
@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72c2e23b0d60ca242549ebf2c058ea8f44f2b1c8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f040ff4c8e59f764676aa6fdd9460ec94641684a
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60520132"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881794"
 ---
-# <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Zelfstudie: Werkplek door Facebook configureren voor het automatisch inrichten van gebruikers
+# <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Zelfstudie: Werk plek configureren via Facebook voor automatische gebruikers inrichting
 
-Het doel van deze zelfstudie is om weer te geven u de stappen die u uitvoeren in de werkplek op Facebook en Azure AD wilt om automatisch inrichten en verwijdering van gebruikersaccounts uit Azure AD aan een werkplek op Facebook.
+Het doel van deze zelf studie is om u te laten zien welke stappen u moet uitvoeren op de werk plek van Facebook en Azure AD om gebruikers accounts van Azure AD automatisch in te richten en uit te voeren op de werk plek van Facebook.
 
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt het volgende nodig om Azure AD-integratie te configureren met Workplace by Facebook:
 
 - Een Azure AD-abonnement
-- Een werkplek op Facebook eenmalige aanmelding ingeschakeld abonnement
+- Een werk plek met een Facebook-abonnement dat is ingeschakeld voor eenmalige aanmelding
 
 > [!NOTE]
 > Als u wilt testen van de stappen in deze zelfstudie, raden we niet met behulp van een productie-omgeving.
@@ -41,65 +41,68 @@ Als u wilt testen van de stappen in deze zelfstudie, moet u deze aanbevelingen v
 - Gebruik niet de productieomgeving, tenzij dit echt nodig is.
 - Als u nog geen proefversie van Azure AD hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) een proefversie van één maand aanvragen.
 
-## <a name="assigning-users-to-workplace-by-facebook"></a>Gebruikers toewijzen aan een werkplek op Facebook
+## <a name="assigning-users-to-workplace-by-facebook"></a>Gebruikers toewijzen aan werk plek via Facebook
 
-Azure Active Directory maakt gebruik van een concept genaamd "toewijzingen" om te bepalen welke gebruikers krijgen toegang tot geselecteerde apps. In de context van het inrichten van automatische gebruikersaccounts, wordt alleen de gebruikers en groepen die '' aan een toepassing in Azure AD toegewezen zijn gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam ' toewijzingen ' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u configureren en inschakelen van de inrichtingsservice, moet u om te bepalen welke gebruikers en/of groepen in Azure AD vertegenwoordigen de gebruikers die toegang nodig tot uw werkplek op Facebook-app. Als besloten, kunt u deze gebruikers toewijzen aan uw werkplek met Facebook-app door de instructies hier:
+Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot uw werk plek via Facebook app. Nadat u hebt besloten, kunt u deze gebruikers aan uw werk plek toewijzen via de Facebook-app door de volgende instructies te volgen:
 
-[Een gebruiker of groep toewijzen aan een enterprise-app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Een gebruiker of groep toewijzen aan een bedrijfs-app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-workplace-by-facebook"></a>Belangrijke tips voor het toewijzen van gebruikers aan de werkplek op Facebook
+### <a name="important-tips-for-assigning-users-to-workplace-by-facebook"></a>Belang rijke tips voor het toewijzen van gebruikers aan werk plek via Facebook
 
-*   Het wordt aanbevolen dat één Azure AD-gebruiker is toegewezen aan een werkplek op Facebook voor het testen van de configuratie van de inrichting. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+*   U wordt aangeraden één Azure AD-gebruiker toe te wijzen op werk plek via Facebook om de inrichtings configuratie te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-*   Wanneer een gebruiker toewijzen aan een werkplek op Facebook, moet u een geldige gebruikersrol selecteren. De rol 'standaardtoegang' werkt niet voor het inrichten.
+*   Wanneer u een gebruiker toewijst aan werk plek via Facebook, moet u een geldige gebruikersrol selecteren. De rol ' standaard toegang ' werkt niet voor het inrichten.
 
-## <a name="enable-user-provisioning"></a>Inrichting van de gebruiker inschakelen
+## <a name="enable-user-provisioning"></a>Gebruikers inrichten inschakelen
 
-Deze sectie helpt u bij het verbinden van uw Azure AD met werkplek door de Facebook-gebruikersaccount Inrichtings-API, en configureren van de provisioning-service voor het maken, bijwerken en uitschakelen van accounts in de werkplek op Facebook op basis van gebruikers en groepen toegewezen gebruiker toewijzing in Azure AD.
+In deze sectie wordt u begeleid bij het verbinden van uw Azure AD-werk plek met de inrichtings-API van de gebruikers account van Facebook en het configureren van de inrichtings service om toegewezen gebruikers accounts in werk plek te maken, bij te werken en uit te scha kelen op basis van gebruikers en groepen toewijzing in azure AD.
 
 >[!Tip]
->U kunt ook op SAML gebaseerde eenmalige aanmelding inschakelen voor werkplek met Facebook, vindt u de instructies te volgen in [Azure-portal](https://portal.azure.com). Eenmalige aanmelding kan worden geconfigureerd onafhankelijk van automatische inrichting, hoewel deze twee functies een fraaie aanvulling in elkaar.
+>U kunt ook op SAML gebaseerde eenmalige aanmelding inschakelen voor werk plek via Facebook, volgens de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, maar deze twee functies gelden voor elkaar.
 
-### <a name="to-configure-user-account-provisioning-to-workplace-by-facebook-in-azure-ad"></a>Het configureren van het inrichten van gebruikersaccounts aan een werkplek op Facebook in Azure AD:
+### <a name="to-configure-user-account-provisioning-to-workplace-by-facebook-in-azure-ad"></a>Configureren van het inrichten van gebruikers accounts op werk plek via Facebook in azure AD:
 
-Het doel van deze sectie is om een overzicht van het inschakelen van de inrichting van Active Directory-gebruikersaccounts aan een werkplek op Facebook te.
+Het doel van deze sectie is het maken van een overzicht van het inrichten van Active Directory gebruikers accounts op werk plek via Facebook.
 
-Azure AD ondersteunt de mogelijkheid om automatisch te synchroniseren de accountdetails van de toegewezen gebruikers aan een werkplek op Facebook. Deze automatische synchronisatie kunt werkplek met Facebook om op te halen van de gegevens die nodig is om te autoriseren van gebruikers om toegang te krijgen, vóór u zich voor de eerste keer aanmeldt. Deze ook inricht ongedaan maken gebruikers vanuit werkplek door Facebook wanneer toegang is ingetrokken in Azure AD.
+Azure AD biedt ondersteuning voor de mogelijkheid om automatisch de account gegevens van toegewezen gebruikers te synchroniseren met Facebook. Deze automatische synchronisatie maakt werk plek via Facebook mogelijk om de benodigde gegevens op te halen voor toegang, voordat ze zich voor de eerste keer proberen aan te melden. Ook worden gebruikers van werk plek door Facebook verwijderd wanneer de toegang is ingetrokken in azure AD.
 
-1. In de [Azure-portal](https://portal.azure.com), blader naar de **Azure Active Directory** > **Bedrijfsapps** > **alle toepassingen** sectie.
+1. Ga in het [Azure Portal](https://portal.azure.com)naar de sectie **Azure Active Directory** > **Enter prise apps** > **all applications** .
 
-2. Als u werkplek door Facebook al hebt geconfigureerd voor eenmalige aanmelding, zoeken naar uw exemplaar van de werkplek door het zoekveld met Facebook. Selecteer anders **toevoegen** en zoek naar de **werkplek door Facebook** in de toepassingengalerie. Selecteer werkplek door Facebook in de resultaten voor zoeken en toe te voegen aan uw lijst met toepassingen.
+2. Als u de werk plek al hebt geconfigureerd door Facebook voor eenmalige aanmelding, zoekt u naar uw exemplaar van de werk plek via Facebook met behulp van het zoek veld. Als dat niet het geval is, selecteert u **toevoegen** en zoeken naar **werk plek op Facebook** in de toepassings galerie. Selecteer werk plek op Facebook in de zoek resultaten en voeg deze toe aan uw lijst met toepassingen.
 
-3. Selecteer uw exemplaar van de werkplek op Facebook en selecteer vervolgens de **Provisioning** tabblad.
+3. Selecteer uw instantie van werk plek op Facebook en selecteer vervolgens het tabblad **inrichten** .
 
-4. Stel de **Inrichtingsmodus** naar **automatische**. 
+4. Stel de **inrichtings modus** in op **automatisch**. 
 
-    ![Inrichting](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
+    ![inrichten](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. Onder de **beheerdersreferenties** sectie, voer het toegangstoken van uw werkplek door Facebook-beheerder en stel de waarde van de Tenant-URL op `https://www.facebook.com/scim/v1/` . Deze [instructies](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) over het maken van een toegangstoken voor werkplek. 
+5. Geef in de sectie **beheerders referenties** het toegangs token van uw werk plek op in de Facebook-beheerder en stel de waarde `https://www.facebook.com/scim/v1/` van de Tenant-URL in op. Zie deze [instructies](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) voor het maken van een toegangs token voor werk plek. 
 
-6. Klik in de Azure-portal op **testverbinding** om te controleren of Azure AD kan verbinding maken met uw werkplek met Facebook-app. Als de verbinding is mislukt, controleert u of dat uw werkplek op Facebook-account Team beheerdersmachtigingen heeft.
+6. Klik in het Azure Portal op **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw werk plek via de Facebook-app. Als de verbinding mislukt, zorgt u ervoor dat uw werk plek op Facebook-account team beheerders machtigingen heeft.
 
-7. Voer het e-mailadres van een persoon of groep die inrichting fout meldingen moet ontvangen de **e-mailmelding** veld en schakel het selectievakje in.
+7. Voer het e-mail adres in van een persoon of groep die inrichtings fout meldingen moet ontvangen in het veld **e-mail melding** en schakel het selectie vakje in.
 
 8. Klik op **opslaan.**
 
-9. Selecteer onder de sectie toewijzingen **synchroniseren Azure Active Directory: gebruikers aan een werkplek op Facebook.**
+9. Selecteer in de sectie toewijzingen de optie **Azure Active Directory gebruikers op de werk plek synchroniseren met Facebook.**
 
-10. In de **kenmerktoewijzingen** sectie, controleert u de kenmerken van de gebruiker die aan een werkplek door Facebook van Azure AD worden gesynchroniseerd. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt zodat deze overeenkomen met de gebruikersaccounts in werkplek door Facebook voor update-bewerkingen. Selecteer de knop Opslaan om door te voeren van eventuele wijzigingen.
+10. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD op werk plek via Facebook. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om de gebruikers accounts in werk plek van Facebook te vergelijken voor update bewerkingen. Selecteer de knop Opslaan om door te voeren van eventuele wijzigingen.
 
-11. Om in te schakelen in de Azure AD-inrichtingsservice voor werkplek met Facebook, wijzigen de **Inrichtingsstatus** naar **op** in de **instellingen** sectie
+11. Als u de Azure AD-inrichtings service voor werk plek wilt inschakelen op Facebook, wijzigt **u de** **inrichtings status** in in het gedeelte **instellingen**
 
 12. Klik op **opslaan.**
 
-Zie voor meer informatie over het configureren van automatische inrichting. [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
+Zie voor meer informatie over het configureren van automatische inrichting[https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
 
-U kunt nu een testaccount maken. Wacht tot 20 minuten om te verifiëren dat het account is gesynchroniseerd met werkplek op Facebook.
+U kunt nu een test account maken. Wacht Maxi maal 20 minuten om te controleren of het account is gesynchroniseerd op werk plek via Facebook.
+
+> [!NOTE]
+> We werken nauw samen met de werk plek van het Facebook-team om te controleren of de Azure AD-toepassing is goedgekeurd en voldoet aan de nieuwe richt lijnen.   
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* [Het inrichten van gebruikersaccounts voor bedrijfs-Apps beheren](tutorial-list.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](tutorial-list.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 * [Eenmalige aanmelding configureren](workplacebyfacebook-tutorial.md)

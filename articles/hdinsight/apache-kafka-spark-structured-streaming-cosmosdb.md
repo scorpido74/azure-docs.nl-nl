@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: b95af36ed8f8b6c9749711e2ebbf6ef8aa88f001
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 1e4f79a1978b77c2b744d523c8f42f1497d63007
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885882"
+ms.locfileid: "70918368"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Spark Structured streaming gebruiken met Apache Kafka en Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Spark Structured Streaming is een streamverwerkingsengine gebaseerd op Spark SQL
 
 Apache Kafka in HDInsight biedt geen toegang tot de Kafka-brokers via het openbare internet. Alles wat er naar Kafka praat, moet zich in hetzelfde virtuele Azure-netwerk bevindt als de knoop punten in het Kafka-cluster. In dit voor beeld bevinden zowel de Kafka-als Spark-clusters zich in een virtueel Azure-netwerk. In het volgende diagram ziet u hoe communicatie stromen tussen de clusters:
 
-![Diagram van Spark- en Kafka-clusters in een Azure Virtual Network](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
+![Diagram van Spark- en Kafka-clusters in een Azure Virtual Network](./media/apache-kafka-spark-structured-streaming-cosmosdb/apache-spark-kafka-vnet.png)
 
 > [!NOTE]  
 > De Kafka-service blijft beperkt tot communicatie binnen het virtuele netwerk. Andere services in het cluster, zoals SSH en Ambari, zijn toegankelijk via internet. Zie [Poorten en URI's die worden gebruikt door HDInsight](hdinsight-hadoop-port-settings-for-services.md) voor meer informatie over de openbare poorten die beschikbaar zijn voor HDInsight.

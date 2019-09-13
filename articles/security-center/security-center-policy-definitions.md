@@ -2,24 +2,18 @@
 title: Azure-beleids definities die in Azure Security Center worden bewaakt | Microsoft Docs
 description: Azure-beleids definities die in Azure Security Center worden bewaakt.
 services: security-center
-documentationcenter: na
 author: monhaber
 manager: barbkess
-editor: ''
-ms.assetid: c89cb1aa-74e8-4ed1-980a-02a7a25c1a2f
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 8/22/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 56e6285501529f26e3622e2f773dbd373c169c10
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 37c29a40596a0ea7989b91d1ffcbabf930e5ed93
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990494"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910359"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>Azure-beveiligings beleid bewaakt door Security Center
 Dit artikel bevat een lijst met Azure Policy definities die u in Azure Security Center kunt bewaken. Zie [werken met beveiligings beleid](tutorial-security-policy.md)voor meer informatie over beveiligings beleidsregels.
@@ -50,7 +44,7 @@ Zie de volgende tabel voor meer informatie over het ingebouwde beleid dat wordt 
 |Diagnostische logboeken in Azure Data Lake Store moeten worden ingeschakeld|Controleren of Logboeken worden ingeschakeld en bewaard tot een jaar. Hiermee maakt u een activiteiten spoor voor onderzoek wanneer er een beveiligings incident optreedt of uw netwerk is aangetast.|
 |Diagnostische logboeken in Data Lake Analytics moeten worden ingeschakeld|Controleren of Logboeken worden ingeschakeld en bewaard gedurende een jaar. Hiermee maakt u een activiteiten spoor voor onderzoek wanneer er een beveiligings incident optreedt of uw netwerk is aangetast.|
 |Opslag accounts moeten worden gemigreerd naar nieuwe AzureRM-resources|Gebruik Azure Resource Manager voor uw opslag accounts om beveiligings uitbreidingen te bieden. Deze omvatten: <br>-Sterker toegangs beheer (RBAC)<br>-Betere controle<br>-Implementatie en governance op basis van Azure Resource Manager<br>-Toegang tot beheerde identiteiten<br>-Toegang tot Azure Key Vault voor geheimen<br>-Verificatie op basis van Azure AD<br>-Ondersteuning voor Tags en resource groepen voor eenvoudiger beveiligings beheer|
-|Virtuele machines moeten worden gemigreerd naar nieuwe AzureRM-resources|Gebruik Azure Resource Manager voor uw virtuele machines om beveiligings uitbreidingen te bieden.  Deze omvatten: <br>-Sterker toegangs beheer (RBAC)<br>-Betere controle<br>-Implementatie en governance op basis van Azure Resource Manager<br>-Toegang tot beheerde identiteiten<br>-Toegang tot Azure Key Vault voor geheimen<br>-Verificatie op basis van Azure AD<br>-Ondersteuning voor Tags en resource groepen voor eenvoudiger beveiligings beheer|
+|Virtuele machines moeten worden gemigreerd naar nieuwe AzureRM-resources|Gebruik Azure Resource Manager voor uw virtuele machines om beveiligings uitbreidingen te bieden. Deze omvatten: <br>-Sterker toegangs beheer (RBAC)<br>-Betere controle<br>-Implementatie en governance op basis van Azure Resource Manager<br>-Toegang tot beheerde identiteiten<br>-Toegang tot Azure Key Vault voor geheimen<br>-Verificatie op basis van Azure AD<br>-Ondersteuning voor Tags en resource groepen voor eenvoudiger beveiligings beheer|
 |Metrische waarschuwings regels moeten worden geconfigureerd voor batch-accounts|Controleer de configuratie van metrische waarschuwings regels op Azure Batch accounts om de vereiste metriek in te scha kelen.|
 |Diagnostische logboeken in batch-accounts moeten worden ingeschakeld|Controleren of Logboeken worden ingeschakeld en bewaard gedurende een jaar. Hiermee maakt u een activiteiten spoor voor onderzoek wanneer er een beveiligings incident optreedt of uw netwerk is aangetast.|
 |Versleuteling moet zijn ingeschakeld voor de variabelen van het Automation-account|Het is belang rijk om versleuteling van de variabele activa van Azure Automation-account in te scha kelen wanneer u gevoelige gegevens opslaat.|

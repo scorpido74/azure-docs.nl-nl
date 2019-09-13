@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 8e13e9f95fac8d2e651755ade126417acc6d97da
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: e52ce4411a2fa1969db196ba2e32bb485f71f8b6
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311618"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931229"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>gegevens uit Event Hub opnemen in Azure Data Explorer
 
@@ -111,7 +111,7 @@ Nu kunt u vanuit Azure Data Explorer verbinding maken met de event hub. Wanneer 
     **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
     |---|---|---|
     | Naam van gegevensverbinding | *test-hub-connection* | De naam van de verbinding die u wilt maken in Azure Data Explorer.|
-    | Event hub-naamruimte | Een unieke naam voor de naamruimte | De naam die u eerder hebt gekozen om de naamruimte te identificeren. |
+    | Event Hub-naamruimte | Een unieke naam voor de naamruimte | De naam die u eerder hebt gekozen om de naamruimte te identificeren. |
     | Event Hub | *test-hub* | De Event Hub die u hebt gemaakt. |
     | Consumentengroep | *test-group* | De consumentengroep die u hebt gedefinieerd in de gemaakte Event Hub. |
     | | |
@@ -124,7 +124,7 @@ Nu kunt u vanuit Azure Data Explorer verbinding maken met de event hub. Wanneer 
      **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
     |---|---|---|
     | Tabel | *TestTable* | De tabel die u hebt gemaakt in **TestDatabase**. |
-    | Gegevensindeling | *JSON* | Ondersteunde indelingen zijn Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV en TXT. |
+    | Gegevensindeling | *JSON* | Ondersteunde indelingen zijn Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV en TXT. Ondersteunde compressie opties: GZip |
     | Toewijzen van kolommen | *TestMapping* | De toewijzing die u hebt gemaakt in **TestDatabase** en waarmee die binnenkomende JSON-gegevens worden toegewezen aan de kolomnamen en gegevenstypen van **TestTable**. Vereist voor JSON, meerdere regels JSON of AVRO, en optioneel voor andere indelingen.|
     | | |
 
@@ -137,7 +137,7 @@ Wanneer u de [voorbeeld-app](https://github.com/Azure-Samples/event-hubs-dotnet-
 
 1. Onder de naamruimte van de Event Hub die u hebt gemaakt, selecteert u **Gedeeld toegangsbeleid** en vervolgens **RootManageSharedAccessKey**.
 
-    ![Gedeeld toegangsbeleid](media/ingest-data-event-hub/shared-access-policies.png)
+    ![Beleid voor gedeelde toegang](media/ingest-data-event-hub/shared-access-policies.png)
 
 1. Kopieer **Verbindingsreeks - primaire sleutel**. U plak deze in de volgende sectie.
 

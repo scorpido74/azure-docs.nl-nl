@@ -9,16 +9,16 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 07/01/2019
-ms.openlocfilehash: 65c1d427939dc39aebece24b923bc4ebfbf136bb
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ed2ba70b803940700044e900a1b2bb6607c0f051
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861009"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934050"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Verbinding maken met on-premises gegevens bronnen vanuit Azure Logic Apps
 
-Om toegang te krijgen tot gegevens bronnen on-premises vanuit uw Logic apps, maakt u een on-premises gegevens gateway resource in de Azure Portal. Uw Logic apps kunnen vervolgens gebruikmaken [van de on-premises connectors](../logic-apps/logic-apps-gateway-install.md#supported-connections). In dit artikel wordt beschreven hoe u uw Azure gateway-resource maakt *nadat* u [de gateway op uw lokale computer hebt gedownload en geïnstalleerd](../logic-apps/logic-apps-gateway-install.md). Zie [hoe de gateway](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)werkt voor meer informatie over de werking van de gateway.
+Om toegang te krijgen tot gegevens bronnen on-premises vanuit uw Logic apps, maakt u een on-premises gegevens gateway resource in de Azure Portal. Uw Logic apps kunnen vervolgens gebruikmaken [van de on-premises connectors](../connectors/apis-list.md#on-premises-connectors). In dit artikel wordt beschreven hoe u uw Azure gateway-resource maakt *nadat* u [de gateway hebt gedownload en geïnstalleerd op een lokale computer](../logic-apps/logic-apps-gateway-install.md). Zie [hoe de gateway werkt](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)voor meer informatie over de gateway.
 
 > [!TIP]
 > Als u verbinding wilt maken met virtuele netwerken van Azure, kunt u in plaats daarvan een [*integratie service omgeving*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) maken. 
@@ -29,6 +29,27 @@ Zie de volgende artikelen voor meer informatie over het gebruik van de gateway m
 * [Microsoft Flow on-premises gegevens gateway](https://flow.microsoft.com/documentation/gateway-manage/)
 * [Microsoft PowerApps on-premises gegevens gateway](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Azure Analysis Services on-premises gegevens gateway](../analysis-services/analysis-services-gateway.md)
+
+<a name="supported-connections"></a>
+
+## <a name="supported-data-sources"></a>Ondersteunde gegevensbronnen
+
+De on-premises gegevens gateway voor Azure Logic Apps ondersteunt [on-premises connectors](../connectors/apis-list.md#on-premises-connectors) voor deze gegevens bronnen:
+
+* BizTalk Server 2016
+* Bestandssysteem
+* IBM DB2  
+* IBM Informix
+* IBM MQ
+* MySQL
+* Oracle Database
+* PostgreSQL
+* SAP
+* SharePoint Server
+* SQL Server
+* Teradata
+
+Hoewel de gateway zelf geen extra kosten in rekening brengt, is het [Logic apps prijs model](../logic-apps/logic-apps-pricing.md) van toepassing op deze connectors en andere bewerkingen in azure Logic apps.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -135,6 +156,13 @@ Als u een andere gateway bron wilt maken, koppelt u de gateway-installatie aan e
 <a name="faq"></a>
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
+
+**V**: Waarom zie ik mijn Gateway-installatie niet bij het maken van de gateway bron in azure? <br/>
+**A**: Dit probleem kan de volgende oorzaken hebben:
+
+* De installatie van de gateway is al geregistreerd en geclaimd door een andere gateway bron in Azure. Gateway-installaties worden niet weer gegeven in de lijst instanties nadat er gateway bronnen voor zijn gemaakt. Als u uw gateway registraties wilt controleren in de Azure Portal, controleert u alle Azure-resources met het type **on-premises gegevens gateways** voor *alle* Azure-abonnementen.
+
+* De Azure AD-identiteit voor de persoon die de gateway heeft geïnstalleerd, verschilt van de persoon die zich heeft aangemeld bij de Azure Portal. Controleer of u bent aangemeld met dezelfde identiteit waarmee de gateway is geïnstalleerd.
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 

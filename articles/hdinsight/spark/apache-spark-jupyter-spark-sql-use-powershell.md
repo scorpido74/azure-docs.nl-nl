@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Maken van een Spark-cluster in HDInsight met behulp van Azure PowerShell'
+title: 'Quickstart: Een Spark-cluster maken in HDInsight met behulp van Azure PowerShell'
 description: Deze snelstartgids laat zien hoe u met Azure PowerShell een Apache Spark-cluster maakt in HDInsight en hoe u een eenvoudige Spark SQL-query uitvoert.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 4a075a2c5a5da677ae8d56c918ecab3384209431
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 185d87bfaf909fdffaa56c2dd6ad29838ce635f7
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066072"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885146"
 ---
-# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Quickstart: Apache Spark-cluster maken in Azure HDInsight met behulp van PowerShell
+# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Quickstart: Apache Spark cluster maken in azure HDInsight met behulp van Power shell
 
 Meer informatie over hoe u een [Apache Spark](https://spark.apache.org/)-cluster maakt in Azure HDInsight en hoe u Spark SQL-query's uitvoert op [Apache Hive](https://hive.apache.org/)-tabellen. Apache Spark maakt het mogelijk om snelle gegevensanalyses en clusterberekeningen uit te voeren met behulp van verwerking in het geheugen. Zie voor informatie over Apache Spark in HDInsight [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md).
 
@@ -28,7 +28,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisite"></a>Vereiste
 
-De PowerShell [Az Module](https://docs.microsoft.com/powershell/azure/overview) geïnstalleerd.
+De Power shell [AZ-module](https://docs.microsoft.com/powershell/azure/overview) is geïnstalleerd.
 
 ## <a name="create-an-hdinsight-spark-cluster"></a>Een HDInsight Spark-cluster maken
 
@@ -43,13 +43,13 @@ U gebruikt een PowerShell-script om de resources te maken.  Wanneer u het script
 |Parameter|Value|
 |------|------|
 |Naam van Azure-resourcegroep | Geef een unieke naam op voor de resourcegroep.|
-|Locatie| Geef de Azure-regio op, bijvoorbeeld 'US - centraal'. |
+|Location| Geef de Azure-regio op, bijvoorbeeld 'US - centraal'. |
 |Standaardnaam van opslagaccount | Geef een unieke naam op voor het opslagaccount. |
 |Clusternaam | Geef een unieke naam op voor het HDInsight Spark-cluster.|
 |Referenties voor clusteraanmelding | U gebruikt dit account om later in de snelstartgids verbinding te maken met het clusterdashboard.|
 |Referenties van SSH-gebruiker | De SSH-clients kunnen worden gebruikt voor het opzetten van een externe opdrachtregelsessie met de HDInsight-clusters.|
 
-1. Selecteer **uitproberen** in de rechterbovenhoek van het volgende codeblok openen [Azure Cloud Shell](../../cloud-shell/overview.md), en volg de instructies voor het verbinding maken met Azure.
+1. Selecteer **deze** in de rechter bovenhoek van het volgende code blok proberen om [Azure Cloud shell](../../cloud-shell/overview.md)te openen en volg de instructies om verbinding te maken met Azure.
 
 2. Kopieer en plak het volgende PowerShell-script in de cloud-shell.
 
@@ -156,7 +156,7 @@ SQL (Structured Query Language) is de meest voorkomende en gebruikte taal voor h
 
 1. Controleer of de kernel gereed is. Wanneer u een lege cirkel naast de naam van de kernel in de notebook ziet, is de kernel gereed. Gevulde cirkel geeft aan dat de kernel bezet is.
 
-    ![Hive-query in HDInsight Spark](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "Hive-query in HDInsight Spark")
+    ![kernel-status](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "kernel-status")
 
     Wanneer u de notebook voor het eerst start, voert de kernel enkele taken in de achtergrond uit. Wacht tot de kernel gereed is. 
 2. Plak de volgende code in een lege cel en druk op **Shift+Enter** om de code uit te voeren. Met de opdracht worden de Hive-tabellen in het cluster weergegeven:
@@ -193,7 +193,7 @@ Ga terug naar Azure Portal en selecteer **Verwijderen**.
 
 U kunt ook de naam van de resourcegroep selecteren om de pagina van de resourcegroep te openen en vervolgens **Resourcegroep verwijderen** selecteren. Als u de resourcegroep verwijdert, verwijdert u zowel het HDInsight Spark-cluster als het standaardopslagaccount.
 
-### <a name="piecemeal-clean-up-with-powershell-az-module"></a>Thuis opschonen met Az PowerShell-module
+### <a name="piecemeal-clean-up-with-powershell-az-module"></a>Stuksgewijs opschonen met Power shell AZ-module
 
 ```powershell
 # Removes the specified HDInsight cluster from the current subscription.

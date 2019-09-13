@@ -7,19 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bbce41271914df4bb8a75804bc66ae538fe766fa
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 5ae12742c2ad50d5bf1caaf14ae2f6d34bd6d3a2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716755"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880781"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Over het aanpassen van de gebruikers interface in Azure Active Directory B2C
 
-De mogelijkheid om u aan te merken en de gebruikers interface (UI) aan te passen die Azure Active Directory (Azure AD) B2C met uw toepassingen wordt gebruikt, is belang rijk voor een naadloze ervaring met uw klant. Deze ervaring omvat het aanmelden, aanmelden, profiel bewerking en het opnieuw instellen van het wacht woord. Dit artikel bevat informatie om u te helpen bij het aanpassen van de gebruikers interface van uw toepassingen.
+De mogelijkheid om u aan te merken en de gebruikers interface (UI) te aanpassen die door Azure Active Directory B2C (Azure AD B2C) wordt gebruikt voor uw toepassingen is belang rijk voor een naadloze ervaring met uw klant. Deze ervaring omvat het aanmelden, aanmelden, profiel bewerking en het opnieuw instellen van het wacht woord. Dit artikel bevat informatie om u te helpen bij het aanpassen van de gebruikers interface van uw toepassingen.
 
 Afhankelijk van uw behoeften op het gebied van deze ervaringen, past u de gebruikers interface van uw toepassing op verschillende manieren aan. Bijvoorbeeld:
 
@@ -118,7 +118,7 @@ De volgende tabel bevat de HTML-fragmenten die Azure AD B2C worden samengevoegd 
 | Lokaal account registreren | Bevat een formulier voor het registreren van een lokaal account op basis van een e-mail adres of een gebruikers naam. Het formulier kan verschillende invoer besturings elementen bevatten, zoals een tekstinvoervak, een vak voor het invoeren van een wacht woord, keuze rondje, vervolg keuze vakjes en selectie vakjes met meerdere selecties. |
 | Aanmelding voor sociaal account | Kan worden weer gegeven wanneer u zich aanmeldt met een bestaand account van een id-provider voor sociale netwerken, zoals Facebook of Google. Dit wordt gebruikt wanneer aanvullende informatie van de klant moet worden verzameld met behulp van een aanmeldings formulier. |
 | Unified Sign-up of aanmelden | Hiermee worden zowel registratie als gebruikers met sociale id-providers, zoals Facebook-, Google-of lokale accounts, afgehandeld. |
-| Meervoudige verificatie | Klanten kunnen hun telefoon nummers (met behulp van tekst of spraak) verifiëren tijdens het registreren of aanmelden. |
+| Multi-Factor Authentication | Klanten kunnen hun telefoon nummers (met behulp van tekst of spraak) verifiëren tijdens het registreren of aanmelden. |
 | Fout | Geeft fout informatie aan de klant. |
 
 
@@ -134,6 +134,9 @@ Voor voor beelden van aanpassing kunt u deze [voorbeeld sjabloon bestanden](http
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u gebruik maakt van gebruikers stromen, kunt u uw gebruikers interface aanpassen met behulp van de zelf studie: [Pas de gebruikers interface van uw toepassingen aan in azure Active Directory B2C](tutorial-customize-ui.md).
-- Als u aangepast beleid gebruikt, kunt u de gebruikers interface nu aanpassen met het artikel: [Pas de gebruikers interface van uw toepassing aan met behulp van een aangepast beleid in azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
+- Als u gebruik maakt van **gebruikers stromen**, kunt u uw gebruikers interface aanpassen met behulp van de zelf studie:
 
+    [Pas de gebruikers interface van uw toepassingen aan in azure Active Directory B2C](tutorial-customize-ui.md).
+- Als u **aangepast beleid**gebruikt, kunt u de gebruikers interface nu aanpassen met het artikel:
+
+    [Pas de gebruikers interface van uw toepassing aan met behulp van een aangepast beleid in azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).

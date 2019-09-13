@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 019b2ba0fd87610195ca9e6c7cb749be9542bd72
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 524bc3b2650ad7b435cba6b6b9d4084ffa5cf96c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858853"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932682"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Een IoT Plug en Play preview-apparaat bouwen dat gereed is voor certificering
 
@@ -84,6 +84,18 @@ De interface van de **apparaatgegevens** in VS code weer geven:
 1. In de open bare model opslagplaats selecteert u het tabblad **interfaces** , selecteert u het filter pictogram en voert u **apparaatgegevens** in het filter veld in.
 
 1. Als u een lokale kopie van de **apparaatgegevens** interface wilt maken, selecteert u deze in de gefilterde lijst en selecteert u **downloaden**. VS code geeft het interface bestand weer.
+
+De interface voor **apparaatgegevens** weer geven met behulp van de Azure cli:
+
+1. [Installeer de Azure IOT cli-extensie](howto-install-pnp-cli.md).
+
+1. Gebruik de volgende Azure CLI-opdracht om een interface met de ID van de apparaatgegevens interface weer te geven:
+
+    ```cmd/sh
+    az iot pnp interface show --interface urn:azureiot:DeviceManagement:DeviceInformation:1
+    ```
+
+Zie [de Azure IOT-extensie voor Azure cli installeren en gebruiken](howto-install-pnp-cli.md)voor meer informatie.
 
 ## <a name="update-device-code"></a>Apparaatinstellingen bijwerken
 

@@ -9,16 +9,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1168963c0698c6bdafe20babe2e5143585bf90a8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ee5b18ddc734335ddac2a7d3352de0e4388f445d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087110"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933262"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Functie koppeling in Durable Functions-Hello-reeks voorbeeld
 
-Functie koppeling heeft betrekking op het patroon van het uitvoeren van een reeks functies in een bepaalde volg orde. Vaak moet de uitvoer van de ene functie worden toegepast op de invoer van een andere functie. In dit artikel wordt de keten volgorde beschreven die u maakt wanneer u de Durable Functions Quick Start[C#](durable-functions-create-first-csharp.md) (of [Java script](quickstart-js-vscode.md)) voltooit. Zie [Durable functions patronen en technische concepten](durable-functions-concepts.md)voor meer informatie over Durable functions.
+Functie koppeling heeft betrekking op het patroon van het uitvoeren van een reeks functies in een bepaalde volg orde. Vaak moet de uitvoer van de ene functie worden toegepast op de invoer van een andere functie. In dit artikel wordt de keten volgorde beschreven die u maakt wanneer u de Durable Functions Quick Start[C#](durable-functions-create-first-csharp.md) (of [Java script](quickstart-js-vscode.md)) voltooit. Zie [Durable functions Overview](durable-functions-overview.md)voor meer informatie over Durable functions.
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -141,7 +141,7 @@ Zoals u ziet, is de `runtimeStatus` van de instantie `output` *voltooid* en beva
 > [!NOTE]
 > Het HTTP POST-eind punt dat de Orchestrator-functie heeft gestart, wordt in de voor beeld-app geïmplementeerd als een HTTP-trigger functie met de naam ' HttpStart '. U kunt soort gelijke starter Logic implementeren voor andere trigger typen, `queueTrigger`zoals `eventHubTrigger`, of `timerTrigger`.
 
-Bekijk de uitvoer logboeken van de functie. De `E1_HelloSequence` functie is meerdere keren gestart en voltooid als gevolg van het gedrag voor opnieuw afspelen dat wordt beschreven in het [overzicht](durable-functions-concepts.md). Aan de andere kant waren er maar drie uitvoeringen van `E1_SayHello` , omdat deze functies niet opnieuw worden afgespeeld.
+Bekijk de uitvoer logboeken van de functie. De `E1_HelloSequence` functie is meerdere keren gestart en voltooid als gevolg van het gedrag voor opnieuw afspelen dat wordt beschreven in het onderwerp over de [Orchestration-betrouw baarheid](durable-functions-orchestrations.md#reliability) . Aan de andere kant waren er maar drie uitvoeringen van `E1_SayHello` , omdat deze functies niet opnieuw worden afgespeeld.
 
 ## <a name="visual-studio-sample-code"></a>Visual Studio-voorbeeld code
 

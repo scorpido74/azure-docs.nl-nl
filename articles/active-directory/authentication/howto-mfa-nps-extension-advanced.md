@@ -1,6 +1,6 @@
 ---
-title: De Azure MFA NPS-extensie - Azure Active Directory configureren
-description: Nadat u de NPS-extensie geïnstalleerd, gebruikt u deze stappen voor geavanceerde configuratie, zoals de UPN vervangen en IP-whitelists.
+title: De Azure MFA NPS-extensie configureren-Azure Active Directory
+description: Nadat u de NPS-uitbrei ding hebt geïnstalleerd, gebruikt u deze stappen voor geavanceerde configuratie, zoals IP-white list en UPN-vervanging.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,44 +11,47 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8ac0497b13dad6795e8dc7ffaf761fe887a9953
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2e156585ba063515bd8be573b5d99b41e7ce35d1
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65988628"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932490"
 ---
-# <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Geavanceerde configuratieopties voor de NPS-extensie voor meervoudige verificatie
+# <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Geavanceerde configuratie opties voor de NPS-extensie voor Multi-Factor Authentication
 
-De extensie voor Network Policy Server (NPS) breidt uw cloud-gebaseerde Azure multi-factor Authentication-functies in uw on-premises infrastructuur. In dit artikel wordt ervan uitgegaan dat u al de extensie geïnstalleerd hebben en wilt weten hoe u de extensie voor uw behoeften aanpassen. 
+De Network Policy Server (NPS) uitbrei ding breidt Azure Multi-Factor Authentication-functies in de Cloud uit naar uw on-premises infra structuur. In dit artikel wordt ervan uitgegaan dat u de uitbrei ding al hebt geïnstalleerd en wilt weten hoe u de uitbrei ding voor uw behoeften kunt aanpassen. 
 
 ## <a name="alternate-login-id"></a>Alternatieve aanmeldings-ID
 
-Omdat de NPS-extensie maakt verbinding met uw on-premises en de cloud-adreslijsten, u mogelijk een probleem ondervindt waar in uw on-premises UPN-namen (UPN) niet overeenkomen met de namen in de cloud. U lost dit probleem, gebruik van alternatieve aanmeldings-id. 
+Aangezien de NPS-extensie verbinding maakt met zowel uw on-premises als in de Cloud, kan er een probleem optreden waarbij uw on-premises UPN (User Principal Names) niet overeenkomen met de namen in de Cloud. Gebruik alternatieve aanmeldings-Id's om dit probleem op te lossen. 
 
-In de NPS-extensie kunt u een Active Directory-kenmerk moet worden gebruikt in plaats van de UPN voor Azure multi-factor Authentication aanwijzen. Hiermee kunt u uw on-premises resources beveiligen met verificatie in twee stappen zonder te wijzigen van uw on-premises UPN's. 
+U kunt binnen de NPS-uitbrei ding een Active Directory kenmerk opgeven dat moet worden gebruikt in plaats van de UPN voor Azure Multi-Factor Authentication. Zo kunt u uw on-premises resources beveiligen met verificatie in twee stappen zonder uw lokale Upn's te wijzigen. 
 
-Voor het configureren van alternatieve aanmeldings-id, gaat u naar `HKLM\SOFTWARE\Microsoft\AzureMfa` en bewerken van de volgende registerwaarden:
+Als u alternatieve aanmeldings-id's wilt configureren `HKLM\SOFTWARE\Microsoft\AzureMfa` , gaat u naar en bewerkt u de volgende register waarden:
 
-| Name | Type | Standaardwaarde | Description |
+| Name | type | Standaardwaarde | Description |
 | ---- | ---- | ------------- | ----------- |
-| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | Leeg | De naam van Active Directory-kenmerk dat u wilt gebruiken in plaats van de UPN wordt aangegeven. Dit kenmerk wordt gebruikt als het kenmerk AlternateLoginId. Als deze registerwaarde is ingesteld op een [geldig Active Directory-kenmerk](https://msdn.microsoft.com/library/ms675090.aspx) (voor bijvoorbeeld e-mail of naam), klikt u vervolgens de waarde van het kenmerk wordt gebruikt in plaats van de UPN van de gebruiker voor verificatie. Als deze registerwaarde leeg of niet is is geconfigureerd, klikt u vervolgens AlternateLoginId is uitgeschakeld en de UPN van de gebruiker wordt gebruikt voor verificatie. |
-| LDAP_FORCE_GLOBAL_CATALOG | booleaans | False | Gebruik deze eigenschap om af te dwingen van het gebruik van globale catalogus LDAP-zoekopdrachten wanneer AlternateLoginId opzoeken. Een domeincontroller configureren als een globale catalogus, het kenmerk AlternateLoginId toevoegen aan de globale catalogus en vervolgens deze optie inschakelen. <br><br> Als LDAP_LOOKUP_FORESTS is geconfigureerd (niet leeg), **deze vlag wordt afgedwongen als waar**, ongeacht de waarde van de instelling in het register. De NPS-extensie is in dit geval de globale catalogus kan worden geconfigureerd met het kenmerk AlternateLoginId voor elk forest vereist. |
-| LDAP_LOOKUP_FORESTS | string | Leeg | Geef een door puntkomma's gescheiden lijst met forests om te zoeken. Bijvoorbeeld, *contoso.com;foobar.com*. Als deze registerwaarde is geconfigureerd, zoekt de NPS-extensie alle forests iteratief in de volgorde waarin ze werden weergegeven en retourneert de eerste geslaagde AlternateLoginId-waarde. Als deze registerwaarde is niet geconfigureerd, wordt de zoekopdracht AlternateLoginId beperkt tot het huidige domein.|
+| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | Leeg | Geef de naam op van Active Directory kenmerk dat u wilt gebruiken in plaats van de UPN. Dit kenmerk wordt gebruikt als het kenmerk AlternateLoginId. Als deze register waarde is ingesteld op een [geldig Active Directory kenmerk](https://msdn.microsoft.com/library/ms675090.aspx) (bijvoorbeeld E-mail of DisplayName), wordt de waarde van het kenmerk gebruikt in plaats van de UPN van de gebruiker voor authenticatie. Als deze register waarde leeg of niet geconfigureerd is, wordt AlternateLoginId uitgeschakeld en wordt de UPN van de gebruiker voor verificatie gebruikt. |
+| LDAP_FORCE_GLOBAL_CATALOG | boolean | False | Gebruik deze vlag om het gebruik van globale catalogus voor LDAP-Zoek opdrachten af te dwingen bij het opzoeken van AlternateLoginId. Configureer een domein controller als een globale catalogus, voeg het kenmerk AlternateLoginId toe aan de globale catalogus en schakel deze vlag in. <br><br> Als LDAP_LOOKUP_FORESTS is geconfigureerd (niet leeg), **wordt deze vlag afgedwongen als waar**, ongeacht de waarde van de register instelling. In dit geval vereist de NPS-uitbrei ding dat de globale catalogus moet worden geconfigureerd met het kenmerk AlternateLoginId voor elke forest. |
+| LDAP_LOOKUP_FORESTS | string | Leeg | Geef een door punt komma's gescheiden lijst met forests op die u wilt doorzoeken. Bijvoorbeeld: *contoso. com; foobar. com*. Als deze register waarde is geconfigureerd, doorzoekt de NPS-extensie iteratief alle forests in de volg orde waarin ze werden vermeld en wordt de eerste geslaagde AlternateLoginId-waarde geretourneerd. Als deze register waarde niet is geconfigureerd, wordt de AlternateLoginId-zoek opdracht beperkt tot het huidige domein.|
 
-Gebruik de aanbevolen stappen voor het oplossen van problemen met alternatieve aanmeldings-id, [alternatieve aanmeldings-ID fouten](howto-mfa-nps-extension-errors.md#alternate-login-id-errors).
+Als u problemen met alternatieve aanmeldings-Id's wilt oplossen, gebruikt u de aanbevolen stappen voor [alternatieve aanmeldings-ID-fouten](howto-mfa-nps-extension-errors.md#alternate-login-id-errors).
 
-## <a name="ip-exceptions"></a>IP-uitzonderingen
+## <a name="ip-exceptions"></a>IP-uitzonde ringen
 
-Als u nodig hebt voor het bewaken van de beschikbaarheid van de server, zoals als netwerktaakverdelers welke servers worden uitgevoerd controleren voordat u werkbelastingen, verzendt wilt u niet dat deze controles door verificatie aanvragen worden geblokkeerd. In plaats daarvan maakt u een lijst met IP-adressen die worden gebruikt door de service-accounts en uitschakelen van multi-factor Authentication-vereisten voor die lijst.
+Als u de beschik baarheid van de server wilt bewaken, bijvoorbeeld als load balancers controleren welke servers worden uitgevoerd voordat workloads worden verzonden, wilt u deze controles niet blok keren door verificatie aanvragen. Maak in plaats daarvan een lijst met IP-adressen die u kent door service accounts, en schakel Multi-Factor Authentication vereisten voor die lijst uit.
 
-Voor het configureren van een lijst met toegestane IP-adres, gaat u naar `HKLM\SOFTWARE\Microsoft\AzureMfa` en configureer de volgende registerwaarde:
+Als u een lijst met toegestane IP-adressen `HKLM\SOFTWARE\Microsoft\AzureMfa` wilt configureren, gaat u naar en configureert u de volgende register waarde:
 
-| Name | Type | Standaardwaarde | Description |
+| Name | type | Standaardwaarde | Description |
 | ---- | ---- | ------------- | ----------- |
-| IP_WHITELIST | string | Leeg | Geef een door puntkomma's gescheiden lijst met IP-adressen. Neem het IP-adressen van machines waar aanvragen afkomstig, zoals de NAS/VPN-server zijn. IP-bereiken en subnetten worden niet ondersteund. <br><br> Bijvoorbeeld, *10.0.0.1;10.0.0.2;10.0.0.3*.
+| IP_WHITELIST | string | Leeg | Geef een door punt komma's gescheiden lijst met IP-adressen op. Voeg de IP-adressen van computers toe waar service aanvragen afkomstig zijn, zoals de NAS/VPN-server. IP-adresbereiken en subnetten worden niet ondersteund. <br><br> Bijvoorbeeld *10.0.0.1; 10.0.0.2; 10.0.0.3*.
 
-Wanneer een aanvraag afkomstig is van een IP-adres dat zich in de `IP_WHITELIST`, verificatie in twee stappen wordt overgeslagen. De lijst met IP wordt vergeleken met het IP-adres dat is opgegeven in de *ratNASIPAddress* kenmerk van de RADIUS-aanvraag. Als een RADIUS-aanvraag zonder het kenmerk ratNASIPAddress komt, wordt de volgende waarschuwing vastgelegd: "P_WHITE_LIST_WARNING::IP Whitelist wordt genegeerd als de bron-IP ontbreekt in de RADIUS-aanvraag in NasIpAddress kenmerk."
+> [!NOTE]
+> Deze register sleutel wordt niet standaard gemaakt door het installatie programma en er wordt een fout weer gegeven in het AuthZOptCh-logboek wanneer de service opnieuw wordt gestart. Deze fout in het logboek kan worden genegeerd, maar als deze register sleutel is gemaakt en leeg blijft als deze niet nodig is, wordt het fout bericht niet weer gegeven.
+
+Wanneer een aanvraag afkomstig is van een IP-adres dat in de `IP_WHITELIST`is, wordt verificatie in twee stappen overgeslagen. De IP-lijst wordt vergeleken met het IP-adres dat is opgenomen in het kenmerk *ratNASIPAddress* van de RADIUS-aanvraag. Als een RADIUS-aanvraag binnenkomt zonder het kenmerk ratNASIPAddress, wordt de volgende waarschuwing vastgelegd: "P_WHITE_LIST_WARNING:: IP-white list wordt genegeerd omdat het bron-IP-adres ontbreekt in de RADIUS-aanvraag in het kenmerk NasIpAddress."
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/30/2018
+ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7215a8f169a878b10663347cf9560d822c6aa7e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9f053cc7646a2a4f41c57010f7e43a3fe3255b7e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081769"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931795"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Zelfstudie - Cloud-init gebruiken voor het aanpassen van een virtuele Linux-machine in Azure bij de eerste keer dat die wordt opgestart
 
@@ -33,8 +33,6 @@ In een vorige zelfstudie hebt u geleerd hoe u een virtuele machine (VM) via SSH 
 > * Key Vault gebruiken voor het veilig opslaan van certificaten
 > * Beveiligde implementaties van NGINX automatiseren met cloud-init
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="cloud-init-overview"></a>Overzicht van cloud-init
@@ -44,21 +42,23 @@ Cloud-init werkt ook in distributies. U gebruikt bijvoorbeeld niet **apt-get ins
 
 Samen met onze partners willen we cloud-init opnemen en werkend krijgen in de installatiekopieën die zij aan Azure leveren. De volgende tabel geeft een overzicht van de huidige beschikbaarheid van cloud-init op Azure-platforminstallatiekopieën:
 
-| Alias | Uitgever | Aanbieding | SKU | Version |
+| Uitgever | Aanbieding | SKU | Versie | cloud-init gereed |
 |:--- |:--- |:--- |:--- |:--- |
-| UbuntuLTS |Canonical |UbuntuServer |16.04-LTS |latest |
-| UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |latest |
-| CoreOS |CoreOS |CoreOS |Stabiel |latest |
-| | OpenLogic | CentOS | 7-CI | latest |
-| | RedHat | RHEL | 7-RAW-CI | latest |
+|Canonical |UbuntuServer |18.04-LTS |latest |ja | 
+|Canonical |UbuntuServer |16.04-LTS |meest recente |ja | 
+|Canonical |UbuntuServer |14.04.5-LTS |meest recente |ja |
+|CoreOS |CoreOS |Stabiel |meest recente |ja |
+|Open Logic 7,6 |CentOS |7-CI |meest recente |preview |
+|RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ja |
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
 
 
 ## <a name="create-cloud-init-config-file"></a>Een cloud-init-configuratiebestand maken
 Als u cloud-init in actie wilt zien, maakt u een VM waarop NGINX is geïnstalleerd en een eenvoudige 'Hallo wereld' Node.js-app wordt uitgevoerd. Met de volgende cloud init-configuratie installeert u de vereiste pakketten, maakt u een Node.js-app en initialiseert en start u vervolgens de app.
 
-Maak in uw huidige shell een bestand met de naam *cloud-init.txt* en plak de volgende configuratie. Maak bijvoorbeeld het bestand in de Cloud Shell, niet op uw lokale computer. U kunt elke editor die u wilt gebruiken. Voer `sensible-editor cloud-init.txt` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Controleer of het hele cloud-init-bestand correct is gekopieerd, met name de eerste regel:
+Maak een bestand met de naam *Cloud-init. txt* op de bash-prompt of in het Cloud shell en plak de volgende configuratie. Typ `sensible-editor cloud-init.txt` bijvoorbeeld om het bestand te maken en een lijst met beschik bare editors weer te geven. Controleer of het hele cloud-init-bestand correct is gekopieerd, met name de eerste regel:
 
-```yaml
+```azurecli-interactive
 #cloud-config
 package_upgrade: true
 packages:
@@ -114,7 +114,7 @@ Maak een virtuele machine met [az vm create](/cli/azure/vm#az-vm-create). Gebrui
 ```azurecli-interactive
 az vm create \
     --resource-group myResourceGroupAutomate \
-    --name myVM \
+    --name myAutomatedVM \
     --image UbuntuLTS \
     --admin-username azureuser \
     --generate-ssh-keys \
@@ -184,7 +184,7 @@ vm_secret=$(az vm secret format --secret "$secret")
 ### <a name="create-cloud-init-config-to-secure-nginx"></a>Cloud-init-config maken om NGINX te beveiligen
 Wanneer u een virtuele machine maakt, worden certificaten en sleutels opgeslagen in de beveiligde */var/lib/waagent/* directory. U kunt de bijgewerkte cloud-init-configuratie uit het vorige voorbeeld gebruiken om het certificaat toe te voegen en NGINX te configureren.
 
-Maak een bestand met de naam *cloud-init-secured.txt* en plak de volgende configuratie. Nogmaals, als u de Cloud Shell gebruikt, maakt u het cloud-init-configuratiebestand daar en niet op uw lokale computer. Gebruik `sensible-editor cloud-init-secured.txt` voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Controleer of het hele cloud-init-bestand correct is gekopieerd, met name de eerste regel:
+Maak een bestand met de naam *cloud-init-secured.txt* en plak de volgende configuratie. Als u de Cloud Shell gebruikt, maakt u het Cloud-init-configuratie bestand en niet op uw lokale computer. Typ `sensible-editor cloud-init-secured.txt` bijvoorbeeld om het bestand te maken en een lijst met beschik bare editors weer te geven. Controleer of het hele cloud-init-bestand correct is gekopieerd, met name de eerste regel:
 
 ```yaml
 #cloud-config
@@ -241,7 +241,7 @@ Maak een virtuele machine met [az vm create](/cli/azure/vm#az-vm-create). De geg
 ```azurecli-interactive
 az vm create \
     --resource-group myResourceGroupAutomate \
-    --name myVMSecured \
+    --name myVMWithCerts \
     --image UbuntuLTS \
     --admin-username azureuser \
     --generate-ssh-keys \

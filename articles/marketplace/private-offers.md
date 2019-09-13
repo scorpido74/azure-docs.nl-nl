@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: pabutler
-ms.openlocfilehash: 35134d828098af0cff3d585dee600ee1808b00c4
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 3d97fd167f0f946239d4de24bb180796ebb498d3
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013634"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885869"
 ---
 # <a name="private-offers"></a>Persoonlijke aanbiedingen
 
@@ -29,11 +29,11 @@ Enter prise-klanten gebruiken vaker online markt plaatsen om cloud oplossingen t
 
 Met persoonlijke aanbiedingen kunnen uitgevers profiteren van de schaal en wereld wijde Beschik baarheid van een open bare Marketplace, met de flexibiliteit en controle die nodig is om te onderhandelen en aangepaste deals en configuraties te leveren. Met deze functies wordt de deur van een krachtige Enter prise-acceptatie van Cloud marketplaces geopend.  Ondernemingen kunnen nu kopen en verkopen op hun verwachte en aanbod wijze.
 
-Persoonlijke aanbiedingen zijn nu beschikbaar voor virtuele machines, Azure-toepassing (geïmplementeerd als oplossings sjablonen of beheerde toepassingen) en SaaS-apps bieden. Net als bij open bare aanbiedingen kunnen persoonlijke aanbiedingen worden gemaakt en beheerd via de [Cloud Partner-Portal](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  Klanten kunnen binnen enkele minuten toegang krijgen of ingetrokken voor privé-aanbiedingen.
+Persoonlijke aanbiedingen zijn nu beschikbaar voor virtuele machines, Azure-toepassing (geïmplementeerd als oplossings sjablonen of beheerde toepassingen) en SaaS-apps bieden. Net als bij open bare aanbiedingen kunnen persoonlijke aanbiedingen worden gemaakt en beheerd via de [Cloud Partner-Portal](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md).  Klanten kunnen binnen enkele minuten toegang krijgen of ingetrokken voor privé-aanbiedingen.
 
 ## <a name="creating-private-offers-using-skus-and-plans"></a>Persoonlijke aanbiedingen maken met Sku's en abonnementen
 
-Voor *nieuwe of bestaande aanbiedingen met open bare sku's of abonnementen*kunnen uitgevers eenvoudig nieuwe, persoonlijke variaties maken door nieuwe sku's of plannen te maken en ze als privé te markeren.  [Persoonlijke sku's](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus) en abonnementen zijn onderdelen van een aanbieding en zijn alleen zichtbaar en tevens door de doel klanten. Persoonlijke Sku's en abonnementen kunnen de basis installatie kopieën en/of de meta gegevens van de aanbieding die al zijn gepubliceerd voor een open bare SKU of abonnement hergebruiken. Met deze optie kunnen uitgevers meerdere persoonlijke variaties van een open bare aanbieding maken zonder dat ze meerdere versies van dezelfde basis installatie kopie hoeven te publiceren en meta gegevens te bieden. Voor alleen aanbiedingen voor virtuele machines en Azure-toepassingen, wanneer een persoonlijke SKU een basis installatie kopie deelt met een open bare SKU, worden wijzigingen in de basis installatie kopie van de aanbieding door gegeven aan alle open bare en persoonlijke Sku's met die basis installatie kopie.
+Voor *nieuwe of bestaande aanbiedingen met open bare sku's of abonnementen*kunnen uitgevers eenvoudig nieuwe, persoonlijke variaties maken door nieuwe sku's of plannen te maken en ze als privé te markeren.  [Persoonlijke sku's](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) en abonnementen zijn onderdelen van een aanbieding en zijn alleen zichtbaar en tevens door de doel klanten. Persoonlijke Sku's en abonnementen kunnen de basis installatie kopieën en/of de meta gegevens van de aanbieding die al zijn gepubliceerd voor een open bare SKU of abonnement hergebruiken. Met deze optie kunnen uitgevers meerdere persoonlijke variaties van een open bare aanbieding maken zonder dat ze meerdere versies van dezelfde basis installatie kopie hoeven te publiceren en meta gegevens te bieden. Voor alleen aanbiedingen voor virtuele machines en Azure-toepassingen, wanneer een persoonlijke SKU een basis installatie kopie deelt met een open bare SKU, worden wijzigingen in de basis installatie kopie van de aanbieding door gegeven aan alle open bare en persoonlijke Sku's met die basis installatie kopie.
 
 Voor *nieuwe aanbiedingen die alleen particuliere sku's of abonnementen bevatten*, kunnen uitgevers hun aanbiedingen als een andere aanbieding maken en de sku's of plannen als privé markeren. De aanbiedingen die alleen persoonlijke Sku's of abonnementen hebben, kunnen niet worden gedetecteerd of toegankelijk via [Azure Marketplace](https://azuremarketplace.microsoft.com) of de [Azure Portal](https://azure.microsoft.com/features/azure-portal/) door klanten die niet aan de aanbieding zijn gekoppeld.
 
@@ -52,4 +52,4 @@ Persoonlijke aanbiedingen worden ook weer gegeven in Zoek resultaten. Bekijk gew
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u gebruik wilt maken van deze nieuwe mogelijkheden, kunt u aan de slag gaan met verkopen op de [Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
+Volg de stappen in de hand leiding voor [Private sku's en plannen](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) om te beginnen met het gebruik van privé aanbiedingen.

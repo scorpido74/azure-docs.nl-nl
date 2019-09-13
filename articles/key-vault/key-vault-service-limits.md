@@ -1,24 +1,24 @@
 ---
-title: Servicelimieten in Azure Key Vault - Azure Key Vault | Microsoft Docs
-description: Meer informatie over de Servicelimieten voor Azure Key Vault.
+title: Service limieten voor Azure Key Vault-Azure Key Vault | Microsoft Docs
+description: Meer informatie over de service limieten voor Azure Key Vault.
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.author: barclayn
-ms.openlocfilehash: b49f55caee39d7d01329bb9f3493180f6da56cb9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mbaldwin
+ms.openlocfilehash: 24236ed6aa497b553e57eeb506674dcb2b2ce927
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696271"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880717"
 ---
-# <a name="azure-key-vault-service-limits"></a>Limieten voor Azure Key Vault-service
+# <a name="azure-key-vault-service-limits"></a>Limieten van de Azure Key Vault-service
 
-Hier zijn de servicebeperkingen voor Azure Key Vault.
+Dit zijn de service limieten voor Azure Key Vault.
 
 [!INCLUDE [key-vault-limits](../../includes/key-vault-limits.md)]
 

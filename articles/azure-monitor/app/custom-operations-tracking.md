@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 45eebe5bce819fa59f2ed6779e845afa6b3efaa5
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 34658fb1db84ff09a4c3d22ea95f5bfc7384721d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276844"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883639"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Aangepaste bewerkingen bijhouden met Application Insights .NET SDK
 
@@ -125,7 +125,10 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 Het HTTP-protocol voor correlatie declareert ook `Correlation-Context` de header. Dit wordt hier echter voor eenvoud wegge laten.
 
 ## <a name="queue-instrumentation"></a>Instrumentatie in wachtrij plaatsen
-Hoewel er een [http-protocol](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) is om correlatie Details met een HTTP-aanvraag door te geven, moet elk wachtrij protocol definiëren hoe dezelfde details worden door gegeven aan het wachtrij bericht. In sommige wachtrij protocollen (zoals AMQP) is het door geven van aanvullende meta gegevens en enkele andere (Azure Storage wachtrij) mogelijk, moet de context worden gecodeerd in de bericht lading.
+Hoewel er sprake is van een [W3C-tracerings context](https://www.w3.org/TR/trace-context/) en een [http-protocol](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) om correlatie Details met een HTTP-aanvraag door te geven, moet elk wachtrij protocol definiëren hoe dezelfde details worden door gegeven aan het wachtrij bericht. In sommige wachtrij protocollen (zoals AMQP) is het door geven van aanvullende meta gegevens en enkele andere (Azure Storage wachtrij) mogelijk, moet de context worden gecodeerd in de bericht lading.
+
+> [!NOTE]
+> * **Tracering van meerdere onderdelen wordt nog niet ondersteund voor wacht rijen** Als uw producent en consument telemetrie verzenden naar verschillende Application Insights resources, worden de trans acties voor de diagnose van de werk wijze en de toepassings toewijzing weer gegeven en worden de end-to-end-berichten toegewezen. In het geval van wacht rijen, wordt dit nog niet ondersteund. 
 
 ### <a name="service-bus-queue"></a>Service Bus-wachtrij
 Application Insights traceert Service Bus Messa ging-aanroepen met de nieuwe [Microsoft Azure ServiceBus-client voor .net](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) versie 3.0.0 en hoger.
@@ -142,7 +145,8 @@ public async Task Enqueue(string payload)
     // StartOperation is a helper method that initializes the telemetry item
     // and allows correlation of this operation with its parent and children.
     var operation = telemetryClient.StartOperation<DependencyTelemetry>("enqueue " + queueName);
-    operation.Telemetry.Type = "Queue";
+    
+    operation.Telemetry.Type = "Azure Service Bus";
     operation.Telemetry.Data = "Enqueue " + queueName;
 
     var message = new BrokeredMessage(payload);
@@ -179,7 +183,7 @@ public async Task Process(BrokeredMessage message)
 {
     // After the message is taken from the queue, create RequestTelemetry to track its processing.
     // It might also make sense to get the name from the message.
-    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "Dequeue " + queueName };
+    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "process " + queueName };
 
     var rootId = message.Properties["RootId"].ToString();
     var parentId = message.Properties["ParentId"].ToString();
@@ -228,7 +232,7 @@ De `Enqueue` bewerking is het onderliggende element van een bovenliggende bewerk
 public async Task Enqueue(CloudQueue queue, string message)
 {
     var operation = telemetryClient.StartOperation<DependencyTelemetry>("enqueue " + queue.Name);
-    operation.Telemetry.Type = "Queue";
+    operation.Telemetry.Type = "Azure queue";
     operation.Telemetry.Data = "Enqueue " + queue.Name;
 
     // MessagePayload represents your custom message and also serializes correlation identifiers into payload.
@@ -274,38 +278,18 @@ Als u de hoeveelheid telemetrie van uw toepassings rapporten wilt beperken of al
 #### <a name="dequeue"></a>Dequeue
 `Enqueue`Op dezelfde manier wordt een daad werkelijke HTTP-aanvraag voor de opslag wachtrij automatisch bijgehouden door Application Insights. De `Enqueue` bewerking wordt echter vermoedelijk uitgevoerd in de bovenliggende context, zoals een binnenkomende aanvraag context. Application Insights Sdk's correleren een dergelijke bewerking (en het bijbehorende HTTP-deel) automatisch met de bovenliggende aanvraag en andere telemetrie die in hetzelfde bereik zijn gerapporteerd.
 
-De `Dequeue` bewerking is lastig. De Application Insights SDK registreert automatisch HTTP-aanvragen. Het kent echter niet de correlatie context tot het bericht is geparseerd. Het is niet mogelijk om de HTTP-aanvraag te correleren om het bericht met de rest van de telemetrie te verkrijgen.
-
-In veel gevallen kan het handig zijn om de HTTP-aanvraag aan de wachtrij met andere traceringen te correleren. In het volgende voor beeld ziet u hoe u dit doet:
+De `Dequeue` bewerking is lastig. De Application Insights SDK registreert automatisch HTTP-aanvragen. Het kent echter niet de correlatie context tot het bericht is geparseerd. Het is niet mogelijk om de HTTP-aanvraag voor het ophalen van het bericht met de rest van de telemetrie te correleren, vooral wanneer er meer dan één bericht wordt ontvangen.
 
 ```csharp
 public async Task<MessagePayload> Dequeue(CloudQueue queue)
 {
-    var telemetry = new DependencyTelemetry
-    {
-        Type = "Queue",
-        Name = "Dequeue " + queue.Name
-    };
-
-    telemetry.Start();
-
+    var operation = telemetryClient.StartOperation<DependencyTelemetry>("dequeue " + queue.Name);
+    operation.Telemetry.Type = "Azure queue";
+    operation.Telemetry.Data = "Dequeue " + queue.Name;
+    
     try
     {
         var message = await queue.GetMessageAsync();
-
-        if (message != null)
-        {
-            var payload = JsonConvert.DeserializeObject<MessagePayload>(message.AsString);
-
-            // If there is a message, we want to correlate the Dequeue operation with processing.
-            // However, we will only know what correlation ID to use after we get it from the message,
-            // so we will report telemetry after we know the IDs.
-            telemetry.Context.Operation.Id = payload.RootId;
-            telemetry.Context.Operation.ParentId = payload.ParentId;
-
-            // Delete the message.
-            return payload;
-        }
     }
     catch (StorageException e)
     {
@@ -317,8 +301,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
     finally
     {
         // Update status code and success as appropriate.
-        telemetry.Stop();
-        telemetryClient.TrackDependency(telemetry);
+        telemetryClient.StopOperation(operation);
     }
 
     return null;
@@ -333,7 +316,8 @@ In het volgende voor beeld wordt een inkomend bericht op een manier bijgehouden,
 public async Task Process(MessagePayload message)
 {
     // After the message is dequeued from the queue, create RequestTelemetry to track its processing.
-    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "Dequeue " + queueName };
+    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "process " + queueName };
+    
     // It might also make sense to get the name from the message.
     requestTelemetry.Context.Operation.Id = message.RootId;
     requestTelemetry.Context.Operation.ParentId = message.ParentId;
@@ -368,8 +352,15 @@ Wanneer u het verwijderen van een bericht instrumenteert, moet u ervoor zorgen d
 - Stop de `Activity`.
 - Gebruik `Start/StopOperation`of telemetrie hand matig aan te roepen `Track` .
 
+### <a name="dependency-types"></a>Afhankelijkheids typen
+
+Application Insights maakt gebruik van afhankelijkheids type voor cusomize UI-ervaringen. Voor wacht rijen herkent het de volgende `DependencyTelemetry` typen waarmee de ervaring voor het [diagnosticeren van trans acties](/azure-monitor/app/transaction-diagnostics)wordt verbeterd:
+- `Azure queue`voor Azure Storage wachtrijen
+- `Azure Event Hubs`voor Azure Event Hubs
+- `Azure Service Bus`voor Azure Service Bus
+
 ### <a name="batch-processing"></a>Batchverwerking
-Met sommige wacht rijen kunt u meerdere berichten met één aanvraag uit de wachtrij verwijderen. Het verwerken van dergelijke berichten is waarschijnlijk een onafhankelijke onafhankelijk en maakt deel uit van de verschillende logische bewerkingen. In dit geval is het niet mogelijk om de `Dequeue` bewerking van bepaalde bericht verwerking te correleren.
+Met sommige wacht rijen kunt u meerdere berichten met één aanvraag uit de wachtrij verwijderen. Het verwerken van dergelijke berichten is waarschijnlijk een onafhankelijke onafhankelijk en maakt deel uit van de verschillende logische bewerkingen. Het is niet mogelijk om de `Dequeue` bewerking te correleren aan een bepaald bericht dat wordt verwerkt.
 
 Elk bericht moet worden verwerkt in een eigen asynchrone controle stroom. Zie de sectie [Tracking van uitgaande afhankelijkheden](#outgoing-dependencies-tracking) voor meer informatie.
 
@@ -495,6 +486,7 @@ Elke Application Insights bewerking (aanvraag of afhankelijkheid) `Activity` omv
 ## <a name="next-steps"></a>Volgende stappen
 
 - Leer de basis beginselen van de correlatie tussen de [telemetrie](correlation.md) in Application Insights.
+- Bekijk hoe gecorreleerde gegevens over de werking van [trans acties](/azure-monitor/app/transaction-diagnostics) en [toepassings overzicht](/azure-monitor/app/app-map).
 - Zie het [gegevens model](../../azure-monitor/app/data-model.md) voor Application Insights typen en het gegevens model.
 - Aangepaste [gebeurtenissen en metrische gegevens](../../azure-monitor/app/api-custom-events-metrics.md) rapporteren aan Application Insights.
 - Bekijk de standaard [configuratie](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) voor de verzameling context eigenschappen.

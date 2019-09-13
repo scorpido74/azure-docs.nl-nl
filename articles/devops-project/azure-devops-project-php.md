@@ -6,23 +6,22 @@ ms.technology: devops-cicd
 services: vsts
 documentationcenter: vs-devops-build
 author: mlearned
-manager: douge
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 82310857276c53c85af033ae32a3aeef4f33c8da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c097c2a7247c9cad6cdce8a89059ee8d90d159e
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60555024"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899579"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-projects"></a>Een CI/CD-pijplijn voor PHP maken met Azure DevOps Projects
 

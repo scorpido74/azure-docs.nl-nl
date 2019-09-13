@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 96a8eab57f1714eed4831bea01508e9140d1dfad
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
-ms.translationtype: MT
+ms.openlocfilehash: 69631b39403dedab56ed75cb145d464c0e1f747c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934976"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935347"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Gids voor het oplossen van problemen Azure Storage Explorer
 
@@ -30,7 +30,7 @@ Als u problemen ondervindt bij het openen van opslag resources met RBAC, kan dat
 
 Neem contact op met de beheerder van uw Azure-account als u niet zeker weet of u de juiste rollen of machtigingen hebt.
 
-#### <a name="read-listget-storage-accounts"></a>Wie Opslagaccounts opnemen in een lijst of ophalen
+#### <a name="read-listget-storage-accounts"></a>Wie Opslag account (s) weer geven/ophalen
 
 U moet gemachtigd zijn om opslag accounts weer te geven. U kunt deze machtiging krijgen door de rol ' lezer ' toe te wijzen.
 
@@ -71,7 +71,7 @@ Certificaat fouten worden veroorzaakt door een van de volgende twee situaties:
 Wanneer Storage Explorer een zelfondertekend of niet-vertrouwd certificaat ziet, kan het niet meer weten of het ontvangen HTTPS-bericht is gewijzigd. Als u een exemplaar van het zelfondertekende certificaat hebt, kunt u dit als volgt door geven Storage Explorer vertrouwen:
 
 1. Een met base 64 gecodeerde X. 509 (. CER)-kopie van het certificaat verkrijgen
-2. Klik op**SSL-certificaten** >  **bewerken** > **certificaten importeren**en gebruik vervolgens de bestands kiezer om het. cer-bestand te zoeken, selecteren en openen
+2. Klik op **bewerken** → **SSL-certificaten** → **certificaten importeren**, en gebruik vervolgens de bestands kiezer om het. cer-bestand te zoeken, selecteren en openen
 
 Dit probleem kan ook het gevolg zijn van meerdere certificaten (basis en tussenliggend). Beide certificaten moeten worden toegevoegd om de fout te verholpen.
 
@@ -86,7 +86,7 @@ Als u niet zeker weet waar het certificaat vandaan komt, kunt u deze stappen pro
 3. Voer `s_client -showcerts -connect microsoft.com:443` uit
 4. Zoek naar zelfondertekende certificaten. Als u niet zeker weet welke certificaten zelfondertekend zijn, zoekt u naar een wille keurige `("s:")` plaats waar het `("i:")` onderwerp en de uitgever hetzelfde zijn.
 5. Wanneer u zelfondertekende certificaten hebt gevonden, kopieert en plakt u alles uit en voegt u **-----begin certificaat-----** toe **-----eind certificaat-----** naar een nieuw CER-bestand.
-6. Open Storage Explorer, klik op**SSL-certificaten** >  **bewerken** > **certificaten importeren**en gebruik vervolgens de bestands kiezer om de CER-bestanden die u hebt gemaakt, te zoeken, te selecteren en te openen.
+6. Open Storage Explorer, klik op **bewerken** → **SSL-certificaten** → **certificaten importeren**en gebruik vervolgens de bestands kiezer om de CER-bestanden die u hebt gemaakt, te zoeken, te selecteren en te openen.
 
 Als u geen zelfondertekende certificaten kunt vinden met behulp van de voor gaande stappen, neemt u contact met ons op via het feedback programma voor meer informatie. U kunt er ook voor kiezen om Storage Explorer te starten vanaf de opdracht `--ignore-certificate-errors` regel met de vlag. Wanneer deze vlag wordt gestart, worden certificaat fouten door Storage Explorer genegeerd.
 
@@ -196,7 +196,7 @@ Als u hulpprogram ma's voor netwerken hebt, zoals Fiddler voor Windows, kunt u d
 * Controleer het poort nummer dat wordt gebruikt door uw netwerk programma.
 * Voer de URL van de lokale host en het poort nummer van het netwerk hulpprogramma in als proxy-instellingen in Storage Explorer. Wanneer het netwerk hulpprogramma correct is uitgevoerd, wordt het registreren van netwerk aanvragen van Storage Explorer naar beheer-en service-eind punten gestart. Voer https://cawablobgrs.blob.core.windows.net/ bijvoorbeeld in voor uw BLOB-eind punt in een browser, en u ontvangt een antwoord dat lijkt op het volgende, waarmee wordt voorgesteld dat de resource bestaat, hoewel u er geen toegang tot hebt.
 
-![code voorbeeld](./media/storage-explorer-troubleshooting/4022502_en_2.png)
+![Code voorbeeld](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
 ### <a name="contact-proxy-server-admin"></a>Beheerder van de proxy server
 
@@ -214,6 +214,58 @@ Als u met Azure bent verbonden via een proxy, controleert u of de proxy-instelli
 Als dit fout bericht wordt weer gegeven, is het mogelijk dat u niet over de benodigde machtigingen beschikt om de sleutels voor uw opslag account te verkrijgen. Als u wilt controleren of dit het geval is, gaat u naar de portal en zoekt u naar uw opslag account. U kunt dit snel doen door met de rechter muisknop te klikken op het knoop punt voor uw opslag account en op ' openen in portal ' te klikken. Zodra u dit hebt gedaan, gaat u naar de Blade toegangs sleutels. Als u geen machtigingen hebt om sleutels weer te geven, ziet u een pagina met het bericht "u hebt geen toegang". U kunt dit probleem omzeilen door de account sleutel van iemand anders te verkrijgen en de naam en sleutel te koppelen. u kunt ook iemand vragen voor een SAS aan het opslag account en deze gebruiken om het opslag account te koppelen.
 
 Als u de account sleutels ziet, kunt u een probleem in GitHub oplossen, zodat we u kunnen helpen het probleem op te lossen.
+
+## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>Er is een fout opgetreden tijdens het toevoegen van een nieuwe verbinding: TypeError: Kan de eigenschap Version niet lezen van niet gedefinieerd
+
+Als dit fout bericht wordt weer gegeven wanneer u een aangepaste verbinding probeert toe te voegen, is het mogelijk dat de verbindings gegevens die zijn opgeslagen in de lokale referentie beheerder, beschadigd zijn.
+U kunt dit probleem omzeilen door de beschadigde lokale verbindingen te verwijderen en vervolgens opnieuw toe te voegen.
+
+1. Start Storage Explorer. Ga in het bovenste menu naar Help → wissel knop Ontwikkelhulpprogramma's.
+2. Ga in het geopende venster naar het tabblad toepassing → lokale opslag (links) → file://
+3. Afhankelijk van het type verbindingen waarmee u te maken hebt, zoekt u de sleutel en kopieert u de waarde ervan naar een tekst editor. De waarde is een matrix van uw aangepaste verbindings namen.
+    * Opslagaccounts
+        * `StorageExplorer_CustomConnections_Accounts_v1`
+    * Blobcontainers
+        * `StorageExplorer_CustomConnections_Blobs_v1`
+        * `StorageExplorer_CustomConnections_Blobs_v2`
+    * Bestandsshares
+        * `StorageExplorer_CustomConnections_Files_v1`
+    * Wachtrijen
+        * `StorageExplorer_CustomConnections_Queues_v1`
+    * Tabellen
+        * `StorageExplorer_CustomConnections_Tables_v1`
+4. Nadat u de huidige verbindings namen hebt opgeslagen, stelt u de waarde in het `[]`Ontwikkelhulpprogramma's in op.
+
+Als u de niet-beschadigde verbindingen wilt behouden, kunt u de volgende stappen uitvoeren om de beschadigde verbindingen te vinden. Als u niet alle bestaande verbindingen kwijtraakt, kunt u de volgende stappen overs Laan en de platformspecifieke instructies volgen om uw verbindings gegevens te wissen.
+
+1. Voeg in de tekst editor elke verbindings naam weer toe aan de Ontwikkelhulpprogramma's en controleer of de verbinding nog steeds werkt.
+2. Als een verbinding goed werkt, is deze niet beschadigd en kunt u deze daar veilig laten staan. Als een verbinding niet werkt, verwijdert u de waarde uit het Ontwikkelhulpprogramma's en legt u deze vast, zodat u deze later opnieuw kunt toevoegen.
+3. Herhaal deze stap totdat u al uw verbindingen hebt gecontroleerd.
+
+Nadat u alle verbindingen hebt door lopen, moet u voor alle verbindings namen die niet meer worden toegevoegd, de beschadigde gegevens wissen (indien aanwezig) en deze opnieuw toevoegen via de normale stappen met Storage Explorer.
+
+# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+
+1. Open referentie beheer door het menu Start te openen en zoek naar referentie beheer.
+2. Ga in het geopende venster naar Windows-referenties.
+3. Onder generieke referenties zoekt u naar vermeldingen met de `<connection_type_key>/<corrupted_connection_name>` sleutel ( `StorageExplorer_CustomConnections_Accounts_v1/account1`bijvoorbeeld).
+4. Verwijder deze vermeldingen en voeg de verbindingen weer toe.
+
+# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+
+1. Open Spotlight (opdracht regel balk) en zoek naar ' sleutel hanger toegang '.
+2. Zoek naar vermeldingen met de `<connection_type_key>/<corrupted_connection_name>` sleutel ( `StorageExplorer_CustomConnections_Accounts_v1/account1`bijvoorbeeld).
+3. Verwijder deze vermeldingen en voeg de verbindingen weer toe.
+
+# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+
+Het lokale referentie beheer varieert afhankelijk van de Linux-distributie. Als uw Linux-distributie geen ingebouwd GUI-hulp programma biedt voor lokaal referentie beheer, kunt u een hulp programma van derden installeren om uw lokale referenties te beheren. U kunt bijvoorbeeld [seahorse](https://wiki.gnome.org/Apps/Seahorse/)gebruiken, een open-source GUI-hulp programma voor het beheren van lokale referenties voor Linux.
+
+1. Open uw lokale hulp programma voor referentie beheer, Zoek uw opgeslagen referenties.
+2. Zoek naar vermeldingen met de `<connection_type_key>/<corrupted_connection_name>` sleutel ( `StorageExplorer_CustomConnections_Accounts_v1/account1`bijvoorbeeld).
+3. Verwijder deze vermeldingen en voeg de verbindingen weer toe.
+
+Als deze fout blijft optreden nadat u deze stappen hebt uitgevoerd, of als u wilt delen wat u denkt dat de verbindingen zijn beschadigd, [opent u een probleem](https://github.com/microsoft/AzureStorageExplorer/issues) op onze github-pagina.
 
 ## <a name="issues-with-sas-url"></a>Problemen met SAS-URL
 
@@ -233,15 +285,15 @@ Als u per ongeluk hebt gekoppeld met een ongeldige SAS-URL en niet kunt ontkoppe
 
 ## <a name="linux-dependencies"></a>Linux-afhankelijkheden
 
-<!-- Storage Explorer 1.9.0 and later is available as a snap from the Snap Store. The Storage Explorer snap installs all of its dependencies with no extra hassle.
+Storage Explorer 1.10.0 en hoger is beschikbaar als een module van de snap Store. Met de module Storage Explorer worden alle afhankelijkheden automatisch geïnstalleerd en bijgewerkt wanneer er een nieuwe versie van de magneet beschikbaar is. Het installeren van de Storage Explorer-module is de aanbevolen installatie methode.
 
-Storage Explorer requires the use of a password manager, which may need to be connected manually before Storage Explorer will work correctly. You can connect Storage Explorer to your system's password manager with the following command:
+Voor Storage Explorer is het gebruik van een wachtwoord beheerder vereist, dat mogelijk hand matig moet worden aangesloten voordat Storage Explorer goed werkt. U kunt Storage Explorer verbinding maken met wachtwoord beheer van uw systeem met de volgende opdracht:
 
 ```bash
 snap connect storage-explorer:password-manager-service :password-manager-service
 ```
 
-You can also download the application .tar.gz file, but you'll have to install dependencies manually. -->
+U kunt de toepassing ook downloaden als een. tar. gz-bestand, maar u moet afhankelijkheden hand matig installeren.
 
 > [!IMPORTANT]
 > Storage Explorer zoals gegeven in de. tar. gz-down load wordt alleen ondersteund voor Ubuntu-distributies. Andere distributies zijn niet geverifieerd en kunnen alternatieve of extra pakketten vereisen.

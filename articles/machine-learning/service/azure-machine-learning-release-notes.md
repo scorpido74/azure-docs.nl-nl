@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6aca340994f10bd546a25e577258d90d7b7b1368
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 2721e134e03d3d622e61085dc39a2914098ba570
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860941"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70930741"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Releaseopmerkingen Azure Machine Learning-service
 
@@ -25,7 +25,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informa
 
 ## <a name="2019-09-09"></a>2019-09-09
 
-### <a name="new-web-experience-for-azure-machine-learning-workspaces-preview"></a>Nieuwe Webervaring voor Azure Machine Learning werk ruimten (preview-versie)
+### <a name="new-web-experience-preview-for-azure-machine-learning-workspaces"></a>Nieuwe webervaring (preview-versie) voor Azure Machine Learning-werk ruimten 
 Met de nieuwe webervaring kunnen gegevens wetenschappers en gegevens technici hun end-to-end machine learning levenscyclus volt ooien van bereidt en gegevens visualiseren om modellen op één locatie te trainen en te implementeren. 
 
 ![Gebruikers interface van Azure Machine Learning werk ruimte (preview)](./media/azure-machine-learning-release-notes/new-ui-for-workspaces.jpg)
@@ -34,7 +34,7 @@ Met de nieuwe webervaring kunnen gegevens wetenschappers en gegevens technici hu
 
 Met deze nieuwe Azure Machine Learning interface kunt u nu het volgende doen:
 + Uw notitie blokken beheren of een koppeling naar Jupyter
-+ Automatische ML experimenten uitvoeren
++ [Automatische ML experimenten uitvoeren](tutorial-first-experiment-automated-ml.md)
 + [Gegevens sets maken op basis van lokale bestanden, gegevens opslag, &-Webbe standen](how-to-create-register-datasets.md)
 + Gegevens sets verkennen & voorbereiden voor het maken van modellen
 + Gegevens drift voor uw modellen bewaken 

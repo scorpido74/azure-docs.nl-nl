@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.openlocfilehash: f83fbda9f211b094a95e557a6b9d727d508927bd
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 24c00d8d5db7c36746d68ad10edc4db4f76e0aac
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885748"
+ms.locfileid: "70918724"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Enterprise Security Package clusters maken en configureren in azure HDInsight
 
@@ -71,7 +71,7 @@ Overzicht: In deze sectie maakt u de gebruikers die toegang hebben tot het HDIns
 
     1. Klik in het scherm **Active Directory gebruikers en computers** op **actie** > **nieuwe** > **gebruiker**.
 
-        ![Nieuwe Active Directory gebruiker maken](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-user.png)
+        ![Nieuwe Active Directory gebruiker maken](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-user.png)
 
     1. Voer`HDIUser` in het scherm **Nieuw object-gebruiker** de **aanmeldings naam** van de gebruiker in en klik op **volgende**.
 
@@ -85,7 +85,7 @@ Overzicht: In deze sectie maakt u de gebruikers die toegang hebben tot het HDIns
 
 1. Klik in het scherm **Active Directory gebruikers en computers** op **actie** > **nieuwe** > **groep**. Maken `HDIUserGroup` als een nieuwe groep.
 
-    ![Nieuwe Active Directory groep maken](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-group.png)
+    ![Nieuwe Active Directory groep maken](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-group.png)
 
     ![nieuwe group2 maken](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0028.png)
 

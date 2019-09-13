@@ -1,6 +1,6 @@
 ---
-title: Apache Storm-topologieën op Azure HDInsight implementeren en beheren
-description: Informatie over het implementeren, bewaken en beheren van Apache Storm-topologieën met behulp van de Storm-Dashboard op Linux gebaseerde HDInsight. Hadoop-hulpprogramma's voor Visual Studio gebruiken.
+title: Apache Storm topologieën implementeren en beheren in azure HDInsight
+description: Meer informatie over het implementeren, bewaken en beheren van Apache Storm topologieën met behulp van het Storm-dash board op HDInsight op basis van Linux. Gebruik Hadoop-hulpprogram ma's voor Visual Studio.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,119 +8,119 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: ac1a4c77589f4ef88c9ee862cb871b376ca8a0fe
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1c219c85836eb4730fa90918385555c433a12449
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483854"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915098"
 ---
-# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Apache Storm-topologieën op Azure HDInsight implementeren en beheren 
+# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Apache Storm topologieën implementeren en beheren in azure HDInsight 
 
-In dit document leert de basisbeginselen van het beheren en controleren van [Apache Storm](https://storm.apache.org/) topologieën voor Storm op HDInsight-clusters waarop.
+In dit document leert u de basis beginselen van het beheren en bewaken van [Apache Storm](https://storm.apache.org/) topologieën die worden uitgevoerd op Storm op HDInsight-clusters.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Apache Storm-cluster in HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **Storm** voor **clustertype**.
+* Een Apache Storm cluster in HDInsight. Zie [Apache Hadoop clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **Storm** voor het **cluster type**.
 
 
-* (Optioneel) Kennis van SSH en SCP: Zie [SSH gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie.
+* Beschrijving Vertrouwd met SSH en SCP: Zie [SSH gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie.
 
-* (Optioneel) Visual Studio: Azure SDK 2.5.1 of hoger en de Data Lake Tools voor Visual Studio. Zie voor meer informatie, [aan de slag met Data Lake Tools voor Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* Beschrijving Visual Studio: Azure SDK 2.5.1 of nieuwer en de Data Lake-Hulpprogram Ma's voor Visual Studio. Zie [aan de slag met data Lake-Hulpprogram ma's voor Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)voor meer informatie.
 
     Een van de volgende versies van Visual Studio:
 
-  * Visual Studio 2012 update 4
+  * Visual Studio 2012 met update 4
 
-  * Visual Studio 2013 met Update 4 of [Visual Studio 2013 Community](https://go.microsoft.com/fwlink/?LinkId=517284)
+  * Visual Studio 2013 met update 4 of [Visual Studio 2013 Community](https://go.microsoft.com/fwlink/?LinkId=517284)
   * [Visual Studio 2015](https://www.visualstudio.com/downloads/)
 
   * Visual Studio 2015 (alle edities)
 
-  * Visual Studio 2017 (willekeurige editie). Data Lake Tools voor Visual Studio 2017 zijn geïnstalleerd als onderdeel van de Azure-Workload.
+  * Visual Studio 2017 (willekeurige editie). Data Lake-Hulpprogram Ma's voor Visual Studio 2017 worden geïnstalleerd als onderdeel van de Azure-workload.
 
-## <a name="submit-a-topology-visual-studio"></a>Indienen van een topologie: Visual Studio
+## <a name="submit-a-topology-visual-studio"></a>Een topologie verzenden: Visual Studio
 
-De HDInsight-hulpprogramma's kan worden gebruikt om in te dienen C# of hybride topologieën met uw Storm-cluster. De volgende stappen gebruikt een voorbeeld van toepassing. Zie voor meer informatie over het maken van over het gebruik van de hulpprogramma's voor HDInsight [C#-topologieën ontwikkelen met de HDInsight Tools voor Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md).
+De HDInsight-Hulpprogram Ma's kunnen worden gebruikt C# voor het verzenden of hybride topologieën naar uw Storm-cluster. In de volgende stappen wordt een voorbeeld toepassing gebruikt. Zie voor meer informatie over het maken van met de HDInsight-Hulpprogram Ma's [topologieën ontwikkelen C# met de Hdinsight-Hulpprogram Ma's voor Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md).
 
-1. Als u de meest recente versie van de Data Lake-hulpprogramma's zijn niet voor Visual Studio hebt geïnstalleerd, raadpleegt u [aan de slag met Data Lake Tools voor Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+1. Als u de nieuwste versie van de Data Lake-hulpprogram ma's voor Visual Studio nog niet hebt geïnstalleerd, raadpleegt u [aan de slag met data Lake-Hulpprogram ma's voor Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
     > [!NOTE]  
-    > De Data Lake Tools voor Visual Studio werden voorheen de HDInsight-hulpprogramma's voor Visual Studio.
+    > De Data Lake-Hulpprogram Ma's voor Visual Studio werden voorheen de HDInsight-Hulpprogram Ma's voor Visual Studio genoemd.
     >
-    > Data Lake Tools voor Visual Studio zijn opgenomen in de __Azure Workload__ voor Visual Studio 2017.
+    > Data Lake-Hulpprogram Ma's voor Visual Studio zijn opgenomen in de __Azure-workload__ voor visual studio 2017.
 
-2. Open Visual Studio, selecteer **bestand** > **nieuw** > **Project**.
+2. Open Visual Studio, selecteer **bestand** > **Nieuw** > **project**.
 
-3. In de **nieuw Project** dialoogvenster Vouw **geïnstalleerde** > **sjablonen**, en selecteer vervolgens **HDInsight**. Selecteer in de lijst met sjablonen **Storm voorbeeld**. Typ een naam voor de toepassing aan de onderkant van het dialoogvenster.
+3. Vouw in het dialoog venster **Nieuw project** de optie **geïnstalleerde** > **sjablonen**uit en selecteer **HDInsight**. Selecteer in de lijst met sjablonen Storm-voor **beeld**. Typ onder in het dialoog venster een naam voor de toepassing.
 
-    ![image](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
+    ![image](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
-4. In **Solution Explorer**, met de rechtermuisknop op het project en selecteer **indienen bij Storm op HDInsight**.
+4. Klik in **Solution Explorer**met de rechter muisknop op het project en selecteer **verzenden naar Storm op HDInsight**.
 
    > [!NOTE]  
-   > Als u hierom wordt gevraagd, voert u de aanmeldingsreferenties voor uw Azure-abonnement. Als u meer dan één abonnement hebt, moet u zich aanmelden bij de optie die uw Storm op HDInsight-cluster bevat.
+   > Voer de aanmeldings referenties voor uw Azure-abonnement in als u hierom wordt gevraagd. Als u meer dan één abonnement hebt, meldt u zich aan bij de versie die uw Storm in HDInsight-cluster bevat.
 
-5. Selecteer uw Storm op HDInsight-cluster op basis van de **Storm-Cluster** vervolgkeuzelijst en selecteer vervolgens **indienen**. U kunt controleren of het verzenden voltooid met behulp van is de **uitvoer** venster.
+5. Selecteer uw Storm op HDInsight-cluster in de vervolg keuzelijst **Storm-cluster** en selecteer vervolgens **verzenden**. U kunt controleren of de verzen ding is geslaagd met behulp van het **uitvoer** venster.
 
-## <a name="submit-a-topology-ssh-and-the-storm-command"></a>Indienen van een topologie: SSH en de Storm-opdracht
+## <a name="submit-a-topology-ssh-and-the-storm-command"></a>Een topologie verzenden: SSH en de Storm-opdracht
 
-1. Gebruik SSH verbinding maken met de HDInsight-cluster. Vervang **gebruikersnaam** de naam van uw SSH-aanmelding. Vervang **CLUSTERNAME** met de naam van uw HDInsight-cluster:
+1. Gebruik SSH om verbinding te maken met het HDInsight-cluster. Vervang **username** door de naam van uw SSH-aanmelding. Vervang **clustername** door de naam van uw HDInsight-cluster:
 
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
-    Zie voor meer informatie over het gebruik van SSH verbinding maken met uw HDInsight-cluster [SSH gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+    Zie [SSH gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)voor meer informatie over het gebruik van SSH om verbinding te maken met uw HDInsight-cluster.
 
 2. Gebruik de volgende opdracht om een voorbeeldtopologie te starten:
 
         storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology WordCount
 
-    Met deze opdracht wordt de WordCount-voorbeeldtopologie gestart op het cluster. Deze topologie genereert willekeurig zinnen en telt vervolgens het exemplaar van elk woord in de zinnen.
+    Met deze opdracht wordt de WordCount-voorbeeldtopologie gestart op het cluster. Deze topologie genereert wille keurig zinnen en telt vervolgens het exemplaar van elk woord in de zinnen.
 
    > [!NOTE]  
-   > Bij het indienen van de topologie bij het cluster moet u eerst het jar-bestand met het cluster kopiëren voordat u de opdracht `storm` gebruikt. Als u wilt kopiëren van het bestand aan het cluster, kunt u de `scp` opdracht. Bijvoorbeeld: `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
+   > Bij het indienen van de topologie bij het cluster moet u eerst het jar-bestand met het cluster kopiëren voordat u de opdracht `storm` gebruikt. U kunt de `scp` opdracht gebruiken om het bestand naar het cluster te kopiëren. Bijvoorbeeld: `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
    >
    > Het WordCount-voorbeeld en andere Storm Starter-voorbeelden zijn al in uw cluster opgenomen in `/usr/hdp/current/storm-client/contrib/storm-starter/`.
 
-## <a name="submit-a-topology-programmatically"></a>Indienen van een topologie: via een programma
+## <a name="submit-a-topology-programmatically"></a>Een topologie verzenden: programmatisch
 
-U kunt een topologie met behulp van het Nimbus-service programmatisch implementeren. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) Geeft een voorbeeld Java-toepassing die u laat zien hoe u kunt implementeren en starten van een topologie via het Nimbus-service.
+U kunt een topologie programmatisch implementeren met behulp van de Nimbus-service. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology)biedt een voor beeld van een Java-toepassing die laat zien hoe u een topologie kunt implementeren en starten via de Nimbus-service.
 
 ## <a name="monitor-and-manage-visual-studio"></a>Controleren en beheren: Visual Studio
 
-Wanneer een topologie wordt verzonden met behulp van Visual Studio, de **Storm-topologieën** weergegeven. Selecteer de topologie in de lijst om informatie over de actieve topologie weer te geven.
+Wanneer een topologie wordt verzonden met behulp van Visual Studio, wordt de weer gave **Storm-topologieën** weer gegeven. Selecteer de topologie in de lijst om informatie over de actieve topologie weer te geven.
 
-![monitor voor Visual studio](./media/apache-storm-deploy-monitor-topology-linux/vsmonitor.png)
+![monitor voor Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
 
 > [!NOTE]  
-> U kunt ook weergeven **Storm-topologieën** van **Server Explorer** door uit te vouwen **Azure** > **HDInsight**, en vervolgens met de rechtermuisknop op een Storm op HDInsight-cluster en het selecteren van **Zobrazit topologie Stormu**.
+> U kunt Storm- **topologieën** ook bekijken vanuit **Server Explorer** door **Azure** > **HDInsight**uit te vouwen, vervolgens met de rechter muisknop op een storm op HDInsight-cluster te klikken en **Storm-topologieën weer geven**te selecteren.
 
-Selecteer de shape voor de spouts of bolts om informatie over deze onderdelen weer te geven. Er wordt een nieuw venster geopend voor elk item geselecteerd.
+Selecteer de vorm voor de spouts of bouten om informatie over deze onderdelen weer te geven. Er wordt een nieuw venster geopend voor elk geselecteerd item.
 
 ### <a name="deactivate-and-reactivate"></a>Deactiveren en opnieuw activeren
 
-Het deactiveren van een topologie wordt onderbroken deze totdat deze wordt afgesloten of opnieuw geactiveerd. Als u wilt deze bewerkingen wilt uitvoeren, gebruiken de __deactiveren__ en __opnieuw activeren__ knoppen aan de bovenkant van de __Topology Summary__.
+Als u een topologie deactiveert, wordt deze onderbroken totdat deze is afgebroken of opnieuw geactiveerd. Als u deze bewerkingen wilt uitvoeren, gebruikt u de knoppen __deactiveren__ en __opnieuw activeren__ boven aan het __topologie overzicht__.
 
 ### <a name="rebalance"></a>Opnieuw verdelen
 
-Herverdeling van een topologie, kan het systeem voor het bijwerken van de parallelle uitvoering van de topologie. Als u het cluster om toe te voegen meer notities hebt uitgebreid, kan opnieuw verdelen bijvoorbeeld een topologie om te zien van de nieuwe knooppunten.
+Door een topologie te herverdelen kan het systeem de parallellisme van de topologie herzien. Als u bijvoorbeeld het formaat van het cluster hebt gewijzigd om meer notities toe te voegen, kunt u met herverdeling de nieuwe knoop punten weer geven met een topologie.
 
-Als u wilt opnieuw verdelen een topologie, gebruikt u de __opnieuw verdelen__ knop aan de bovenkant van de __Topology Summary__.
+Als u een topologie wilt herverdelen, gebruikt u de knop opnieuw __verdelen__ boven aan het __topologie overzicht__.
 
 > [!WARNING]  
-> Eerst een topologie herverdeling deactiveert u de topologie gelijkmatig herdistribueert u werknemers in het cluster vervolgens, tot slot wordt de topologie naar de status was voordat de herverdeling is opgetreden. Dus als de topologie actief was, wordt het actieve opnieuw. Als deze is gedeactiveerd, blijft het gedeactiveerd.
+> Als u een topologie herbalanceert, wordt de topologie eerst gedeactiveerd, waarna de werk nemers gelijkmatig over het cluster worden gedistribueerd. vervolgens wordt de topologie met de status weer gegeven voordat deze is opgebalanceerd. Dus als de topologie actief was, wordt deze weer actief. Als de service is gedeactiveerd, blijft deze gedeactiveerd.
 
-### <a name="kill-a-topology"></a>Een topologie kill
+### <a name="kill-a-topology"></a>Een topologie beëindigen
 
-Storm-topologieën blijven uitvoeren totdat ze zijn gestopt of het cluster wordt verwijderd. Als u wilt een topologie stoppen, gebruikt u de __Kill__ knop aan de bovenkant van de __Topology Summary__.
+Storm-topologieën blijven actief totdat ze worden gestopt of het cluster wordt verwijderd. Als u een topologie wilt stoppen, gebruikt u de knop __Kill__ aan de bovenkant van het __topologie overzicht__.
 
 ## <a name="monitor-and-manage-ssh-and-the-storm-command"></a>Controleren en beheren: SSH en de Storm-opdracht
 
-De `storm` hulpprogramma kunt u werken met actieve topologieën vanaf de opdrachtregel. Gebruik `storm -h` voor een volledige lijst met opdrachten.
+Met `storm` het hulp programma kunt u met het uitvoeren van topologieën werken vanaf de opdracht regel. Gebruiken `storm -h` voor een volledige lijst met opdrachten.
 
-### <a name="list-topologies"></a>Lijst met topologieën
+### <a name="list-topologies"></a>Topologieën weer geven
 
-Gebruik de volgende opdracht om een lijst van alle actieve topologieën:
+Gebruik de volgende opdracht om een lijst met alle actieve topologieën weer te geven:
 
     storm list
 
@@ -132,104 +132,104 @@ Met deze opdracht wordt informatie geretourneerd die lijkt op de volgende tekst:
 
 ### <a name="deactivate-and-reactivate"></a>Deactiveren en opnieuw activeren
 
-Het deactiveren van een topologie wordt onderbroken deze totdat deze wordt afgesloten of opnieuw geactiveerd. Gebruik de volgende opdracht uit om te deactiveren en opnieuw activeren:
+Als u een topologie deactiveert, wordt deze onderbroken totdat deze is afgebroken of opnieuw geactiveerd. Gebruik de volgende opdracht om te deactiveren en opnieuw te activeren:
 
     storm Deactivate TOPOLOGYNAME
 
     storm Activate TOPOLOGYNAME
 
-### <a name="kill-a-running-topology"></a>Een actieve topologie kill
+### <a name="kill-a-running-topology"></a>Een actieve topologie beëindigen
 
-Storm-topologieën, één keer wordt gestart, gaat u verder uitgevoerd totdat deze wordt gestopt. Als u wilt een topologie stoppen, gebruikt u de volgende opdracht uit:
+Storm-topologieën, zodra het is gestart, blijven actief totdat het wordt gestopt. Gebruik de volgende opdracht om een topologie te stoppen:
 
     storm kill TOPOLOGYNAME
 
 ### <a name="rebalance"></a>Opnieuw verdelen
 
-Herverdeling van een topologie, kan het systeem voor het bijwerken van de parallelle uitvoering van de topologie. Als u het cluster om toe te voegen meer notities hebt uitgebreid, kan opnieuw verdelen bijvoorbeeld een topologie om te zien van de nieuwe knooppunten.
+Door een topologie te herverdelen kan het systeem de parallellisme van de topologie herzien. Als u bijvoorbeeld het formaat van het cluster hebt gewijzigd om meer notities toe te voegen, kunt u met herverdeling de nieuwe knoop punten weer geven met een topologie.
 
 > [!WARNING]  
-> Eerst een topologie herverdeling deactiveert u de topologie gelijkmatig herdistribueert u werknemers in het cluster vervolgens, tot slot wordt de topologie naar de status was voordat de herverdeling is opgetreden. Dus als de topologie actief was, wordt het actieve opnieuw. Als deze is gedeactiveerd, blijft het gedeactiveerd.
+> Als u een topologie herbalanceert, wordt de topologie eerst gedeactiveerd, waarna de werk nemers gelijkmatig over het cluster worden gedistribueerd. vervolgens wordt de topologie met de status weer gegeven voordat deze is opgebalanceerd. Dus als de topologie actief was, wordt deze weer actief. Als de service is gedeactiveerd, blijft deze gedeactiveerd.
 
     storm rebalance TOPOLOGYNAME
 
-## <a name="monitor-and-manage-storm-ui"></a>Controleren en beheren: Storm-gebruikersinterface
+## <a name="monitor-and-manage-storm-ui"></a>Controleren en beheren: Storm-gebruikers interface
 
-De Storm-gebruikersinterface biedt een webinterface voor het werken met actieve topologieën en is opgenomen in uw HDInsight-cluster. Als u de Storm-gebruikersinterface, gebruikt u een webbrowser openen **https://CLUSTERNAME.azurehdinsight.net/stormui** , waarbij **CLUSTERNAME** is de naam van uw cluster.
+De Storm-gebruikersinterface biedt een webinterface voor het werken met actieve topologieën en is opgenomen in uw HDInsight-cluster. Als u de Storm-gebruikers interface wilt weer geven, gebruikt **https://CLUSTERNAME.azurehdinsight.net/stormui** u een webbrowser om te openen, waarbij **clustername** de naam van uw cluster is.
 
 > [!NOTE]  
 > Als u wordt gevraagd een gebruikersnaam en een wachtwoord op te geven, voert u de gegevens voor de clusterbeheerder (admin) en het wachtwoord in die u hebt gebruikt toen u het cluster maakte.
 
-### <a name="main-page"></a>Hoofdpagina
+### <a name="main-page"></a>Hoofd pagina
 
-De startpagina van de Storm-gebruikersinterface biedt de volgende informatie:
+De hoofd pagina van de Storm-gebruikers interface bevat de volgende informatie:
 
-* **Samenvatting voor cluster**: Algemene informatie over de Storm-cluster.
-* **Topologie samenvatting**: Een lijst met actieve topologieën. Gebruik de koppelingen in deze sectie om meer informatie over specifieke topologieën weer te geven.
-* **Samenvatting supervisor**: Informatie over de supervisor Storm.
-* **Nimbus-configuratie**: Nimbus-configuratie van het cluster.
+* **Cluster overzicht**: Basis informatie over het Storm-cluster.
+* **Topologie overzicht**: Een lijst met actieve topologieën. Gebruik de koppelingen in deze sectie om meer informatie over specifieke topologieën te bekijken.
+* **Overzicht Super Visor**: Informatie over de Storm-Super Visor.
+* **Nimbus-configuratie**: Nimbus-configuratie voor het cluster.
 
 ### <a name="topology-summary"></a>Topologie samenvatting
 
-Selecteren van een koppeling van de **Topology summary** sectie vindt u de volgende informatie over de topologie:
+Als u een koppeling selecteert in het gedeelte **topologie overzicht** , wordt de volgende informatie over de topologie weer gegeven:
 
-* **Topologie samenvatting**: Algemene informatie over de topologie.
-* **Topologie acties**: Beheeracties die u voor de topologie uitvoeren kunt.
+* **Topologie overzicht**: Basis informatie over de topologie.
+* **Topologie acties**: Beheer acties die u voor de topologie kunt uitvoeren.
 
   * **Activeren**: Hervat de verwerking van een gedeactiveerde topologie.
-  * **Deactiveren**: Een actieve topologie wordt onderbroken.
-  * **Rebalance**: Hiermee past u de parallelle uitvoering van de topologie. Nadat u het aantal knooppunten in het cluster hebt gewijzigd, moet u actieve topologieën opnieuw verdelen. Met deze bewerking kunt de topologie aangepast aan parallelle uitvoering om te compenseren voor het grotere of kleinere aantal knooppunten in het cluster.
+  * **Deactiveren**: Hiermee wordt een actieve topologie onderbroken.
+  * **Herverdeling**: Hiermee past u de parallellisme van de topologie aan. Nadat u het aantal knooppunten in het cluster hebt gewijzigd, moet u actieve topologieën opnieuw verdelen. Met deze bewerking kan de topologie de parallellisme aanpassen om het toegenomen of kleinere aantal knoop punten in het cluster te compenseren.
 
-    Zie voor meer informatie, <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">inzicht in de parallelle uitvoering van een Apache Storm-topologie</a>.
-  * **Kill**: Een Storm-topologie beëindigd na de opgegeven time-out.
-* **Topology stats**: Statistieken over de topologie. Om in te stellen het tijdsbestek voor de overige items op de pagina, gebruik de koppelingen in de **venster** kolom.
-* **Spouts**: De spouts die worden gebruikt door de topologie. Gebruik de koppelingen in deze sectie om meer informatie over specifieke spouts weer te geven.
-* **Bolts**: De bolts die worden gebruikt door de topologie. Gebruik de koppelingen in deze sectie voor meer informatie over specifieke bolts.
-* **Topologieconfiguratie**: De configuratie van de geselecteerde topologie.
+    Zie <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">informatie over de parallellisme van een Apache Storm topologie</a>voor meer informatie.
+  * **Afsluiten**: Hiermee wordt een storm-topologie beëindigd na de opgegeven time-out.
+* **Topologie statistieken**: Statistieken over de topologie. Als u het tijds bestek voor de resterende vermeldingen op de pagina wilt instellen, gebruikt u de koppelingen in de kolom **venster** .
+* **Spouts**: De spouts die wordt gebruikt door de topologie. Gebruik de koppelingen in deze sectie om meer informatie over specifieke spouts weer te geven.
+* **Bouten**: De schichten die door de topologie worden gebruikt. Gebruik de koppelingen in deze sectie om meer informatie over specifieke schichten te bekijken.
+* **Topologie configuratie**: De configuratie van de geselecteerde topologie.
 
-### <a name="spout-and-bolt-summary"></a>Spout en Bolt-overzicht
+### <a name="spout-and-bolt-summary"></a>Samen vatting van Spout en Schicht
 
-Selecteren van een spout uit de **Spouts** of **Bolts** secties bevat de volgende informatie over het geselecteerde item:
+Als u een Spout selecteert in de secties **Spouts** of **Bouts** , wordt de volgende informatie over het geselecteerde item weer gegeven:
 
-* **Overzicht van onderdelen**: Algemene informatie over de spout of bolt.
-* **Spout/Bolt stats**: Statistieken over de spout of bolt. Om in te stellen het tijdsbestek voor de overige items op de pagina, gebruik de koppelingen in de **venster** kolom.
-* **Input stats** (alleen Bolts): Informatie over de invoer stromen die worden gebruikt door de bolt.
-* **Output stats**: Informatie over de stromen die door de spout of bolt.
-* **Executor**: Informatie over de exemplaren van een spout of bolt. Selecteer de **poort** vermelding voor een specifieke executor om een logboek van diagnostische gegevens weer te geven die wordt geproduceerd voor dit exemplaar.
-* **Fouten**: Foutgegevens voor de spout of bolt.
+* **Samen vatting van onderdelen**: Basis informatie over de Spout of bout.
+* **Spout/flits statistieken**: Statistieken over de Spout of bout. Als u het tijds bestek voor de resterende vermeldingen op de pagina wilt instellen, gebruikt u de koppelingen in de kolom **venster** .
+* **Invoer statistieken** (alleen flits): Informatie over de invoer stromen die door de schicht worden gebruikt.
+* **Uitvoer statistieken**: Informatie over de stromen die worden verzonden door de Spout of bout.
+* **Uitvoerendeers**: Informatie over de instanties van de Spout of bout. Selecteer de poort vermelding voor een specifieke **uitvoerder** om een logboek met diagnostische gegevens weer te geven die voor deze instantie zijn geproduceerd.
+* **Fouten**: Eventuele fout gegevens voor de Spout of bout.
 
 ## <a name="monitor-and-manage-rest-api"></a>Controleren en beheren: REST-API
 
-De Storm-gebruikersinterface is gebaseerd op de REST-API, zodat u soortgelijke beheer en controle van functies met behulp van de REST-API kunt uitvoeren. De REST-API kunt u aangepaste hulpprogramma's voor het beheren en controleren van Storm-topologieën maken.
+De Storm-gebruikers interface is gebaseerd op de REST API, zodat u vergelijk bare beheer-en controle functionaliteit kunt uitvoeren met behulp van de REST API. U kunt de REST API gebruiken om aangepaste hulp middelen te maken voor het beheren en bewaken van Storm-topologieën.
 
-Zie voor meer informatie, [REST-API voor Apache Storm-gebruikersinterface](https://storm.apache.org/releases/current/STORM-UI-REST-API.html). De volgende informatie is specifiek voor de REST-API gebruiken met Apache Storm op HDInsight.
+Zie [Apache Storm UI rest API](https://storm.apache.org/releases/current/STORM-UI-REST-API.html)voor meer informatie. De volgende informatie is specifiek voor het gebruik van de REST API met Apache Storm op HDInsight.
 
 > [!IMPORTANT]  
-> De Storm-REST-API is niet openbaar beschikbaar via het internet, en moeten worden geopend via een SSH-tunnel naar het hoofdknooppunt van HDInsight-cluster. Zie voor meer informatie over het maken en gebruiken van een SSH-tunnel [SSH-Tunneling gebruiken voor toegang tot de Apache Ambari-Webgebruikersinterface, ResourceManager JobHistory, NameNode, Apache Oozie en andere webgebruikersinterfaces](../hdinsight-linux-ambari-ssh-tunnel.md).
+> De Storm-REST API is niet openbaar beschikbaar via internet en moet worden geopend met behulp van een SSH-tunnel naar het hoofd knooppunt van het HDInsight-cluster. Zie [ssh-tunneling gebruiken om toegang te krijgen tot Apache Ambari Web UI, Resource Manager, JobHistory, NameNode, Apache Oozie en andere web-UIs](../hdinsight-linux-ambari-ssh-tunnel.md)voor informatie over het maken en gebruiken van een SSH-tunnel.
 
 ### <a name="base-uri"></a>Basis-URI
 
-De basis-URI voor de REST-API op Linux gebaseerde HDInsight-clusters is beschikbaar op het hoofdknooppunt op **https:\//HEADNODEFQDN:8744/api/v1/** . De domeinnaam van het hoofdknooppunt is gegenereerd tijdens het maken van clusters en is niet statisch.
+De basis-URI voor de rest API op op Linux gebaseerde HDInsight-clusters is beschikbaar op het hoofd knooppunt op **https\/:/HEADNODEFQDN: 8744/API/v1/** . De domein naam van het hoofd knooppunt wordt gegenereerd tijdens het maken van het cluster en is niet statisch.
 
-U vindt de volledig gekwalificeerde domeinnaam (FQDN) voor het hoofdknooppunt van het cluster op verschillende manieren:
+U kunt de Fully Qualified Domain Name (FQDN) voor het hoofd knooppunt van het cluster op verschillende manieren vinden:
 
-* **Vanuit een SSH-sessie**: Gebruik de opdracht `headnode -f` van een SSH-sessie met het cluster.
-* **From Ambari Web**: Selecteer **Services** vanaf de bovenkant van de pagina, selecteert u vervolgens **Storm**. Uit de **samenvatting** tabblad **Storm UI Server**. De FQDN-naam van het knooppunt dat als host fungeert voor de Storm-gebruikersinterface en de REST-API wordt weergegeven boven aan de pagina.
-* **From Ambari REST API**: Gebruik de opdracht `curl -u admin -G "https:\//CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` informatie ophalen over het knooppunt dat de Storm-gebruikersinterface en de REST-API op worden uitgevoerd. Vervang **CLUSTERNAME** met de naam van het cluster. Wanneer u hierom wordt gevraagd, voert u het wachtwoord voor het aanmeldingswachtwoord (beheerder)-account. In het antwoord bevat de vermelding 'hostnaam' de FQDN-naam van het knooppunt.
+* **Vanuit een SSH-sessie**: Gebruik de opdracht `headnode -f` van een SSH-sessie naar het cluster.
+* **Van Ambari-Web**: Selecteer **Services** boven aan de pagina en selecteer vervolgens **Storm**. Selecteer op het tabblad **samen vatting** de optie **Storm-gebruikers interface Server**. De FQDN van het knoop punt dat als host fungeert voor de Storm-gebruikers interface en REST API wordt boven aan de pagina weer gegeven.
+* **Van Ambari rest API**: Gebruik de opdracht `curl -u admin -G "https:\//CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` om informatie op te halen over het knoop punt waarop de Storm-gebruikers interface en de rest API worden uitgevoerd. Vervang **clustername** door de naam van het cluster. Wanneer u hierom wordt gevraagd, voert u het wacht woord in voor het account voor aanmelding (Administrator). In het antwoord bevat de vermelding ' host_name ' de FQDN-naam van het knoop punt.
 
-### <a name="authentication"></a>Verificatie
+### <a name="authentication"></a>Authentication
 
-Aanvragen voor de REST-API moeten gebruiken **basisverificatie**, zodat u de beheerder de naam van HDInsight-cluster en het wachtwoord gebruiken.
+Aanvragen voor de REST API moeten **basis verificatie**gebruiken, dus u gebruikt de naam en het wacht woord van de HDInsight-cluster beheerder.
 
 > [!NOTE]  
-> Omdat basisverificatie wordt verzonden met behulp van niet-versleutelde tekst, moet u **altijd** HTTPS gebruikt voor het beveiligen van communicatie met het cluster.
+> Omdat basis verificatie wordt verzonden met behulp van Lees bare tekst, moet u **altijd** https gebruiken om de communicatie met het cluster te beveiligen.
 
-### <a name="return-values"></a>Retourwaarden
+### <a name="return-values"></a>Retour waarden
 
-Informatie die wordt geretourneerd vanaf de REST-API kan alleen worden gebruikt in binnen het cluster. Bijvoorbeeld, de volledig gekwalificeerde domeinnaam (FQDN) geretourneerd voor [Apache ZooKeeper](https://zookeeper.apache.org/) servers is niet toegankelijk vanaf Internet.
+Informatie die wordt geretourneerd door de REST API, kan alleen worden gebruikt vanuit het cluster. Zo is de Fully Qualified Domain Name (FQDN) die voor [Apache ZooKeeper](https://zookeeper.apache.org/) servers wordt geretourneerd, niet toegankelijk vanaf internet.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [ontwikkelen op Java gebaseerde topologieën met behulp van Apache Maven](apache-storm-develop-java-topology.md).
+Meer informatie over het [ontwikkelen van op Java gebaseerde topologieën met Apache Maven](apache-storm-develop-java-topology.md).
 
-Zie voor een lijst van meer voorbeeldtopologieën, [voorbeeldtopologieën van Apache Storm op HDInsight](apache-storm-example-topology.md).
+Zie [voorbeeld topologieën voor Apache Storm op HDInsight](apache-storm-example-topology.md)voor een lijst met voor beeld-topologieën.

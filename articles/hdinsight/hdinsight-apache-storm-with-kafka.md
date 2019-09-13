@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 62452937d51c80a59e24e6d254d29337552b1af2
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 6b370c88e8b230c87bcbadf11d52337bd73b72e2
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734737"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917069"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Zelfstudie: Apache Storm gebruiken met Apache Kafka in HDInsight
 
@@ -380,7 +380,7 @@ Apache Kafka in HDInsight biedt geen toegang tot de Kafka-brokers via het openba
 
 Het volgende diagram laat zien hoe de communicatie tussen Storm en Kafka verloopt:
 
-![Diagram met Storm- en Kafka-clusters in een virtueel netwerk van Azure](./media/hdinsight-apache-storm-with-kafka/storm-kafka-vnet.png)
+![Diagram met Storm- en Kafka-clusters in een virtueel netwerk van Azure](./media/hdinsight-apache-storm-with-kafka/apache-storm-kafka-vnet.png)
 
 > [!NOTE]  
 > Andere services in het cluster, zoals SSH en [Apache Ambari](https://ambari.apache.org/), zijn toegankelijk via internet. Zie [Poorten en URI's die worden gebruikt door HDInsight](hdinsight-hadoop-port-settings-for-services.md) voor meer informatie over de openbare poorten die beschikbaar zijn voor HDInsight.
@@ -389,7 +389,7 @@ Gebruik de volgende stappen om eerst een virtueel Azure-netwerk te maken en verv
 
 1. Gebruik de volgende knop om u aan te melden bij Azure en de sjabloon in de Azure Portal te openen.
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
    
     De Azure Resource Manager-sjabloon bevindt zich op **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json** . Met deze sjabloon maakt u de volgende resources:
     

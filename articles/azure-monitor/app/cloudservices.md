@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 64995ad0560efd06bfa0084c948527e8a01e1890
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 9325d2dd6c897f4c8dacb3dcf3a382f9f0e856a8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67443342"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933014"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights voor Azure Cloud Services
 [Application Insights][start] kunt [Azure Cloud service-apps](https://azure.microsoft.com/services/cloud-services/) bewaken voor Beschik baarheid, prestaties, fouten en gebruik door gegevens van Application Insights sdk's te combi neren met [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) gegevens uit uw Cloud Services. Op basis van de feedback die u krijgt over de prestaties en de effectiviteit van uw app tijdens het gebruik, kunt u weldoordachte beslissingen nemen over de richting van het ontwerp in elke fase van de ontwikkelingslevenscyclus.
@@ -63,7 +63,7 @@ Elke resource behoort tot een resourcegroep. Resource groepen worden gebruikt vo
 ### <a name="resources-for-components"></a>Resources voor onderdelen
 U kunt het beste een afzonderlijke resource maken voor elk onderdeel van uw app. Dat wil zeggen dat u een resource maakt voor elke webrol en werk rollen. U kunt elk onderdeel afzonderlijk analyseren, maar u maakt een [dash board](../../azure-monitor/app/overview-dashboard.md) waarin de belangrijkste grafieken van alle onderdelen worden gecombineerd, zodat u ze in één weer gave kunt vergelijken en controleren. 
 
-Een alternatieve methode is het verzenden van de telemetrie van meer dan één rol naar dezelfde resource, maar [u kunt een dimensie-eigenschap toevoegen aan elk](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer) telemetrie-item dat de bijbehorende bron functie identificeert. In deze benadering wordt in metrische grafieken, zoals uitzonde ringen, normaal gesp roken een aggregatie van de aantallen van de verschillende rollen weer gegeven, maar u kunt de grafiek zo nodig met de rol-id segmenteren. U kunt Zoek opdrachten ook filteren op dezelfde dimensie. Dit alternatief maakt het een beetje eenvoudiger om alles tegelijk te bekijken, maar kan ook leiden tot Verwar ring tussen de rollen.
+Een alternatieve methode is het verzenden van de telemetrie van meer dan één rol naar dezelfde resource, maar [u kunt een dimensie-eigenschap toevoegen aan elk telemetrie-item](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer) dat de bijbehorende bron functie identificeert. In deze benadering wordt in metrische grafieken, zoals uitzonde ringen, normaal gesp roken een aggregatie van de aantallen van de verschillende rollen weer gegeven, maar u kunt de grafiek zo nodig met de rol-id segmenteren. U kunt Zoek opdrachten ook filteren op dezelfde dimensie. Dit alternatief maakt het een beetje eenvoudiger om alles tegelijk te bekijken, maar kan ook leiden tot Verwar ring tussen de rollen.
 
 Telemetrie van de browser wordt gewoonlijk opgenomen in dezelfde resource als de gegevens van de webrol op de server.
 
@@ -84,8 +84,9 @@ Als u hebt besloten om een afzonderlijke resource te maken voor elke rol, en wel
 
     ![Application Insights deel venster](./media/cloudservices/01-new.png)
 
-1. Selecteer in de vervolg keuzelijst **toepassings type** de optie **ASP.net**-webtoepassing.  
-    Elke resource wordt geïdentificeerd door een instrumentatie sleutel. U hebt deze sleutel mogelijk later nodig als u de configuratie van de SDK hand matig wilt configureren of controleren.
+1. Selecteer in de vervolg keuzelijst **toepassings type** de optie **ASP.NET-webtoepassing**.
+
+Elke resource wordt geïdentificeerd door een instrumentatie sleutel. U hebt deze sleutel mogelijk later nodig als u de configuratie van de SDK hand matig wilt configureren of controleren.
 
 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Azure Diagnostics instellen voor elke rol
@@ -133,8 +134,9 @@ Gebruik Visual Studio om de Application Insights-SDK voor elk cloudtoepassingspr
     * [Werkrol](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
     * [Voor webpagina's](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
-1. Stel in dat het bestand *ApplicationInsights. config* altijd moet worden gekopieerd naar de uitvoermap.  
-    Een bericht in het *. config* -bestand vraagt u om de instrumentatie sleutel in te plaatsen. Voor Cloud-apps is het echter beter om deze in te stellen vanuit het *cscfg* -bestand. Deze aanpak zorgt ervoor dat de rol correct wordt geïdentificeerd in de portal.
+1. Stel in dat het bestand *ApplicationInsights. config* altijd moet worden gekopieerd naar de uitvoermap.
+
+   Een bericht in het *. config* -bestand vraagt u om de instrumentatie sleutel in te plaatsen. Voor Cloud-apps is het echter beter om deze in te stellen vanuit het *cscfg* -bestand. Deze aanpak zorgt ervoor dat de rol correct wordt geïdentificeerd in de portal.
 
 ## <a name="set-up-status-monitor-to-collect-full-sql-queries-optional"></a>Status Monitor instellen voor het verzamelen van volledige SQL-Query's (optioneel)
 
@@ -171,16 +173,19 @@ Deze stap is alleen nodig als u volledige SQL-query's wilt vastleggen op .NET Fr
 
 1. Voer uw app uit en meld u aan bij Azure. 
 
-1. Open de Application Insights resources die u hebt gemaakt.  
-    Afzonderlijke gegevens punten worden weer gegeven in de [Zoek opdracht](../../azure-monitor/app/diagnostic-search.md)en verzamelde gegevens worden weer gegeven in [metrische Explorer](../../azure-monitor/app/metrics-explorer.md). 
+1. Open de Application Insights resources die u hebt gemaakt.
+
+   Afzonderlijke gegevens punten worden weer gegeven in de [Zoek opdracht][diagnostic]en verzamelde gegevens worden weer gegeven in [metrische Explorer](../../azure-monitor/app/metrics-explorer.md).
 
 1. Meer telemetrie toevoegen (Zie de volgende secties) en vervolgens uw app publiceren om live diagnostische gegevens en gebruiks feedback te ontvangen. 
 
 Als er geen gegevens zijn, gaat u als volgt te werk:
+
 1. Open de tegel [zoeken][diagnostic] om afzonderlijke gebeurtenissen weer te geven.
 1. Open in de app verschillende pagina's zodat er een telemetrie wordt gegenereerd.
 1. Wacht een paar seconden en klik vervolgens op **vernieuwen**.  
-    Zie [Probleemoplossing][qna] voor meer informatie .
+
+Zie [Probleemoplossing][qna] voor meer informatie .
 
 ## <a name="view-azure-diagnostics-events"></a>Azure Diagnostics gebeurtenissen weer geven
 U vindt de [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) informatie in Application Insights op de volgende locaties:
@@ -257,7 +262,7 @@ Dit doet u al volgt:
 Zie [de Java script-SDK toevoegen aan uw][client]webpagina's voor meer informatie over het maken van een telemetrie in de Cloud, zoals het aantal pagina weergave, pagina laad tijden of script uitzonderingen, en om aangepaste telemetrie in uw pagina scripts te schrijven.
 
 ## <a name="availability-tests"></a>Beschikbaarheidstesten
-[Stel][availability]webtests in om ervoor te zorgen dat uw app Live en responsief blijft.
+[Stel webtests][availability]in om ervoor te zorgen dat uw app Live en responsief blijft.
 
 ## <a name="display-everything-together"></a>Een totaaloverzicht weergeven
 Voor een algemene afbeelding van uw systeem kunt u de belangrijkste bewakings grafieken in één [dash board](../../azure-monitor/app/overview-dashboard.md)weer geven. U kunt bijvoorbeeld het aantal aanvragen en het aantal fouten voor elke rol aan het dashboard vastmaken. 

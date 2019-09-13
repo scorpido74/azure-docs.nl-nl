@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3db0cd3dd01e3f5f6af6b4b668d1ccac094624a2
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 0df6f5f9728a8e48a3257e56ddf8ad23906dc92c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735178"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933320"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Instanties in Durable Functions in azure beheren
 
@@ -31,9 +31,6 @@ Het is belang rijk om een instantie van indeling te kunnen starten. Dit wordt va
 Met de methode [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) op de [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) (.net) `startNew` of op `DurableOrchestrationClient` de (Java script) wordt een nieuw exemplaar gestart. U verkrijgt instanties van deze klasse met behulp van de `orchestrationClient` binding. Intern in deze methode een bericht in de controle wachtrij, waarmee vervolgens het begin van een functie wordt geactiveerd met de opgegeven naam die de `orchestrationTrigger` trigger binding gebruikt.
 
 Deze asynchrone bewerking is voltooid wanneer het Orchestration-proces is gepland. Het Orchestration-proces moet binnen 30 seconden beginnen. Als het langer duurt, ziet u een `TimeoutException`.
-
-> [!WARNING]
-> Wanneer u lokaal ontwikkelt in Java script, stelt u `WEBSITE_HOSTNAME` de `localhost:<port>` omgevings variabele in `localhost:7071`op (bijvoorbeeld) om `DurableOrchestrationClient`de methoden te gebruiken. Zie het [github-probleem](https://github.com/Azure/azure-functions-durable-js/issues/28)voor meer informatie over deze vereiste.
 
 ### <a name="net"></a>.NET
 
@@ -361,7 +358,7 @@ func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "It was ti
 
 ## <a name="send-events-to-instances"></a>Gebeurtenissen naar instanties verzenden
 
-In sommige gevallen is het belang rijk dat uw Orchestrator-functies kunnen wachten op externe gebeurtenissen en er kan worden geluisterd. Dit omvat [controle functies](durable-functions-concepts.md#monitoring) en-functies die wachten op [menselijke interactie](durable-functions-concepts.md#human).
+In sommige gevallen is het belang rijk dat uw Orchestrator-functies kunnen wachten op externe gebeurtenissen en er kan worden geluisterd. Dit omvat [controle functies](durable-functions-overview.md#monitoring) en-functies die wachten op [menselijke interactie](durable-functions-overview.md#human).
 
 Verzend gebeurtenis meldingen naar actieve instanties met behulp van de methode [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) van de klasse [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) (.net) `raiseEvent` of de methode `DurableOrchestrationClient` van de klasse (Java script). Exemplaren die deze gebeurtenissen kunnen afhandelen, zijn de instanties die wachten op [](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) het aanroepen van WaitForExternalEvent `waitForExternalEvent` (.net) of (Java script).
 
@@ -541,7 +538,7 @@ Als u een indelings fout hebt om een onverwachte reden, kunt u het exemplaar *te
 
 Gebruik de API van [RewindAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RewindAsync_System_String_System_String_) (.net `rewindAsync` ) of (Java script) om de indeling weer in te stellen op de status *wordt uitgevoerd* . Voer de activiteit of de uitvoerings fouten van de suborchestrator die de Orchestration-fout hebben veroorzaakt, opnieuw uit.
 
-Stel bijvoorbeeld dat u een werk stroom hebt met een reeks [Human goed keuringen](durable-functions-concepts.md#human). Stel dat er een reeks activiteit functies zijn die iemand verwittigen dat hun goed keuring nodig is, en wacht de realtime respons. Wanneer alle goedkeurings activiteiten antwoorden hebben ontvangen of een time-out hebben, wordt ervan uitgegaan dat een andere activiteit mislukt als gevolg van een onjuiste configuratie van een toepassing, zoals een ongeldige data base connection string. Het resultaat is een indelings fout diep in de werk stroom. Met de `RewindAsync` API (.net) `rewindAsync` of (Java script) kan een toepassings beheerder de configuratie fout herstellen en de mislukte indeling terugspoelen naar de status direct vóór de fout. Geen van de stappen voor menselijke interactie moet opnieuw worden goedgekeurd en de indeling kan nu worden voltooid.
+Stel bijvoorbeeld dat u een werk stroom hebt met een reeks [Human goed keuringen](durable-functions-overview.md#human). Stel dat er een reeks activiteit functies zijn die iemand verwittigen dat hun goed keuring nodig is, en wacht de realtime respons. Wanneer alle goedkeurings activiteiten antwoorden hebben ontvangen of een time-out hebben, wordt ervan uitgegaan dat een andere activiteit mislukt als gevolg van een onjuiste configuratie van een toepassing, zoals een ongeldige data base connection string. Het resultaat is een indelings fout diep in de werk stroom. Met de `RewindAsync` API (.net) `rewindAsync` of (Java script) kan een toepassings beheerder de configuratie fout herstellen en de mislukte indeling terugspoelen naar de status direct vóór de fout. Geen van de stappen voor menselijke interactie moet opnieuw worden goedgekeurd en de indeling kan nu worden voltooid.
 
 > [!NOTE]
 > De functie *rewenteling* biedt geen ondersteuning voor het terugspoelen van indelings instanties die gebruikmaken van duurzame timers.
@@ -661,4 +658,7 @@ func durable delete-task-hub --task-hub-name UserTest
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het gebruik van de HTTP-Api's voor instantie beheer](durable-functions-http-api.md)
+> [Meer informatie over het verwerken van versie beheer](durable-functions-versioning.md)
+
+> [!div class="nextstepaction"]
+> [Ingebouwde HTTP API-referentie voor exemplaar beheer](durable-functions-http-api.md)

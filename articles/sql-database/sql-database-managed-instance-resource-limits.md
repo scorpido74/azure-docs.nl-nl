@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 33e21b54927280e2692a58c311e2de23e257f923
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 0dea447ed44a61b20faf9a0a1690b2bbdd674b30
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845379"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70930611"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Overzicht Azure SQL Database limieten voor beheerde exemplaar bronnen
 
@@ -58,6 +58,7 @@ Het beheerde exemplaar heeft twee service lagen: Algemeen en Bedrijfskritiek. De
 | Maximum aantal data bases per exemplaar | 100 | 100 |
 | Maximum aantal database bestanden per exemplaar | Maxi maal 280 | 32.767 bestanden per data base |
 | Maximale bestands grootte | 8 TB | 4 TB |
+| Maximale grootte van logboek bestand | 2 TB | 2 TB |
 | Gegevens/logboek IOPS (benadering) | 500-7.500 per bestand<br/>\*[Bestands grootte verg Roten om meer IOPS te verkrijgen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k-110 K (1375/vCore)<br/>Voeg meer vCores toe om betere IO-prestaties te krijgen. |
 | Doorvoer limiet schrijf bewerkingen vastleggen in logboek | 3 MB/s per vCore<br/>Maxi maal 22 MB/s per instantie | 4 MB/s per vCore<br/>Maxi maal 48 MB/s per instantie|
 | Gegevens doorvoer (bij benadering) | 100-250 MB/s per bestand<br/>\*[De bestands grootte verg Roten om betere IO-prestaties te krijgen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | N/A |
@@ -66,8 +67,6 @@ Het beheerde exemplaar heeft twee service lagen: Algemeen en Bedrijfskritiek. De
 | In-memory OLTP | Niet ondersteund | Beschikbaar |
 | Maximum aantal sessies | 30000 | 30000 |
 | [Alleen-lezen replica's](sql-database-read-scale-out.md) | 0 | 1 (inclusief prijs) |
-| Prijzen/facturering | [vCore en gereserveerde opslag](https://azure.microsoft.com/pricing/details/sql-database/managed/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht.<br/>Er wordt nog geen back-upopslag in rekening gebracht. | [vCore en gereserveerde opslag](https://azure.microsoft.com/pricing/details/sql-database/managed/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht.<br/>Er wordt nog geen back-upopslag in rekening gebracht. | 
-| Kortings modellen | [Gereserveerde instanties](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (niet beschikbaar in dev/test-abonnementen)<br/>Ontwikkel-en test abonnementen voor [ondernemingen](https://azure.microsoft.com/offers/ms-azr-0148p/) en [betalen naar gebruik](https://azure.microsoft.com/offers/ms-azr-0023p/)| [Gereserveerde instanties](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (niet beschikbaar in dev/test-abonnementen)<br/>Ontwikkel-en test abonnementen voor [ondernemingen](https://azure.microsoft.com/offers/ms-azr-0148p/) en [betalen naar gebruik](https://azure.microsoft.com/offers/ms-azr-0023p/)|
 
 > [!NOTE]
 > - De grootte van de gegevens en het logboek bestand in de gebruikers-en systeem databases zijn opgenomen in de opslag grootte van het exemplaar, vergeleken met de maximale opslag grootte. Gebruik de <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> -systeem weergave om de totale hoeveelheid gebruikte ruimte te bepalen op basis van data bases. Fouten logboeken worden niet persistent gemaakt en zijn niet opgenomen in de grootte. Back-ups worden niet opgenomen in de opslag grootte.

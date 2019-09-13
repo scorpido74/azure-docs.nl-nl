@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c67b24d57117a248559424497939a04ce347658c
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: e57b5a49ac0c99fa81e54134e74964bf38418e4d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308944"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934905"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Quickstart: Azure Key Vault-client bibliotheek voor .NET
 
@@ -118,7 +118,7 @@ Met deze bewerking wordt een reeks sleutel-waardeparen geretourneerd.
 }
 ```
 
-Let op de clientId, clientSecret, subscriptionId en tenantId, aangezien we deze gebruiken in de [verificatie van uw sleutel kluis](#authenticate-to-your-key-vault) hieronder.
+Noteer de clientId-en clientSecret, aangezien we deze gebruiken in de verificatie van [uw sleutel kluis](#authenticate-to-your-key-vault) hieronder.
 
 U hebt ook de appID van de service-principal nodig. U kunt dit vinden door de [ad SP-lijst](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) van AZ `--show-mine` uit te voeren met de para meter:
 
@@ -164,10 +164,6 @@ Voordat u uw app bouwt en uitvoert, gebruikt u `setx` de opdracht om de `akvClie
 setx akvClientId <your-clientID>
 
 setx akvClientSecret <your-clientSecret>
-
-setx akvTenantId <your-tentantId>
-
-setx akvSubscriptionId <your-subscriptionId>
 ````
 
 Elke keer dat u `setx`belt, ontvangt u een reactie van het volgende: Opgegeven waarde is opgeslagen. "
@@ -178,7 +174,7 @@ Wijs deze omgevings variabelen toe aan teken reeksen in uw code en verifieer uw 
 
 ### <a name="save-a-secret"></a>Een geheim opslaan
 
-Nu uw toepassing is geverifieerd, kunt u een geheim in uw sleutel kluis plaatsen met behulp van de [SetSecretAsync-methode](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) hiervoor moet de URL van de Key kluis in het formulier `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`staan. Er is ook een naam voor het geheim vereist: we gebruiken ' mySecret '.  Mogelijk wilt u deze teken reeksen toewijzen aan een variabele voor resue.
+Nu uw toepassing is geverifieerd, kunt u een geheim in uw sleutel kluis plaatsen met behulp van de [SetSecretAsync-methode](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) hiervoor moet de URL van de Key kluis in het formulier `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`staan. Er is ook een naam voor het geheim vereist: we gebruiken ' mySecret '.  Mogelijk wilt u deze teken reeksen toewijzen aan een variabele voor hergebruik.
 
 [!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=setsecret)]
 

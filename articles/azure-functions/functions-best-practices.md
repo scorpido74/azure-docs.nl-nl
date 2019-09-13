@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19e088eee878695d24678d1df17b2848a4be1e01
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2782781fdfd560c0c8f322e362fcf74c796664bd
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097541"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933043"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimaliseer de prestaties en betrouw baarheid van Azure Functions
 
-Dit artikel bevat richt lijnen voor het verbeteren van de prestaties en [](https://azure.microsoft.com/solutions/serverless/) betrouw baarheid van uw serverloze functie-apps. 
+Dit artikel bevat richt lijnen voor het verbeteren van de prestaties en betrouw baarheid van uw [serverloze](https://azure.microsoft.com/solutions/serverless/) functie-apps. 
 
-## <a name="general-best-practices"></a>Algemene aanbevolen procedures
+## <a name="general-best-practices"></a>Algemene best practices
 
 Hieronder vindt u de aanbevolen procedures voor het bouwen en ontwerpen van uw serverloze oplossingen met behulp van Azure Functions.
 
@@ -36,7 +36,7 @@ Als dat mogelijk is, kunnen er in kleinere functie sets grote functies worden ge
 
 ### <a name="cross-function-communication"></a>Communicatie tussen meerdere functies
 
-[Durable functions](durable/durable-functions-concepts.md) en [Azure Logic apps](../logic-apps/logic-apps-overview.md) zijn gebouwd om status overgangen en communicatie tussen meerdere functies te beheren.
+[Durable functions](durable/durable-functions-overview.md) en [Azure Logic apps](../logic-apps/logic-apps-overview.md) zijn gebouwd om status overgangen en communicatie tussen meerdere functies te beheren.
 
 Als u Durable Functions of Logic Apps niet gebruikt om te integreren met meerdere functies, is het meestal een best practice om opslag wachtrijen te gebruiken voor communicatie tussen meerdere delen.  De belangrijkste reden hiervoor is dat opslag wachtrijen goed koper zijn en veel gemakkelijker te inrichten zijn. 
 

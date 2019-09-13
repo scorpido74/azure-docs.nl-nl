@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/14/2018
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1d50f239a0ef4de02c9f0c87a28b0f5092d9c529
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 5ef4ca3f6cbf45ac67bad6531926a7de54cd2012
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019038"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934764"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Back-ups van SQL Server-data bases beheren en bewaken
 
@@ -49,7 +49,7 @@ Database back-upwaarschuwingen bewaken:
 
    ![Waarschuwingen en gebeurtenissen selecteren](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
 
-3. Selecteer in **waarschuwingen en gebeurtenissen** **back-** upwaarschuwingen.
+3. Selecteer in **waarschuwingen en gebeurtenissen** **back-upwaarschuwingen**.
 
    ![Waarschuwingen voor back-ups selecteren](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
 
@@ -68,7 +68,7 @@ Als u ervoor kiest herstel punten te verlaten, houdt u deze details in acht:
 
 Ga als volgt te werk om de beveiliging van een database te stoppen:
 
-1. Selecteer **back-** upitems op het kluis dashboard.
+1. Selecteer **Back-upitems**op het kluis dashboard.
 
 2. Onder **type back-upbeheer**selecteert u **SQL in azure VM**.
 
@@ -121,7 +121,7 @@ U kunt verschillende typen back-ups op aanvraag uitvoeren:
 * Logboekback-up
 
 Wanneer u de Bewaar periode voor een volledige back-up wilt opgeven, wordt de Bewaar termijn voor de volledige back-up van ad-hoc automatisch ingesteld op 45 dagen vanaf de huidige tijd. <br/>
-Zie [SQL Server back-](backup-architecture.md#sql-server-backup-types)uptypen voor meer informatie.
+Zie [SQL Server back-uptypen](backup-architecture.md#sql-server-backup-types)voor meer informatie.
 
 ## <a name="unregister-a-sql-server-instance"></a>Registratie van een SQL Server-exemplaar ongedaan maken
 
@@ -140,6 +140,32 @@ Hef de registratie van een SQL Server-exemplaar op nadat u de beveiliging hebt u
 4. Klik met de rechter muisknop op de beveiligde server en selecteer **registratie ongedaan maken**.
 
    ![Verwijderen selecteren](./media/backup-azure-sql-database/delete-protected-server.jpg)
+
+
+## <a name="modify-policy"></a>Beleid wijzigen
+Wijzig het beleid om de back-upfrequentie of het Bewaar bereik te wijzigen.
+
+> [!NOTE]
+> Elke wijziging in de retentie periode wordt retro actief toegepast op alle oudere herstel punten, naast de nieuwe.
+
+Ga in het kluis dashboard naar beleid voor het **beheren** > van**back-ups** en kies het beleid dat u wilt bewerken.
+
+  ![Back-upbeleid beheren](./media/backup-azure-sql-database/modify-backup-policy.png)
+
+  ![Back-upbeleid wijzigen](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
+
+Beleids wijzigingen zijn van invloed op alle gekoppelde back-upitems en triggers die overeenkomen met het **configureren van beveiligings** taken. 
+
+#### <a name="inconsistent-policy"></a>Inconsistent beleid 
+
+Soms kan een bewerking voor het wijzigen van een beleid leiden tot een **inconsistente** beleids versie voor sommige back-upitems. Dit gebeurt wanneer de bijbehorende taak **Beveiliging configureren** mislukt voor het back-upitem nadat een bewerking voor het wijzigen van beleid is geactiveerd. Dit ziet er als volgt uit in de weer gave back-upitem:
+ 
+  ![Inconsistent beleid](./media/backup-azure-sql-database/inconsistent-policy.png)
+
+U kunt de beleids versie voor alle betrokken items met één klik oplossen:
+
+  ![Inconsistent beleid corrigeren](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
+ 
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>De extensie opnieuw registreren op de SQL Server-VM
 

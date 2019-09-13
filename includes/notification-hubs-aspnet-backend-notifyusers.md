@@ -5,23 +5,23 @@ services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 03/22/2019
+ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 590ba4b7a61fa437767d99ac6b9ae3e0fa94edc3
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 60d5d8efb10cce54743038599238cc6f61922369
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227773"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934112"
 ---
 ## <a name="create-the-webapi-project"></a>Het WebAPI-project maken
 
 In de volgende secties wordt het maken van een nieuwe ASP.NET WebAPI-back-end besproken. Dit proces heeft drie hoofddoelen:
 
-- **Clients verifiëren**: U toevoegen een berichtenhandler om te verifiëren van aanvragen van clients en de gebruiker koppelen aan de aanvraag.
-- **Registreren voor meldingen met behulp van de WebAPI-back-end**: U voegt een controller voor het afhandelen van nieuwe registraties voor een clientapparaat voor het ontvangen van meldingen toe. De naam van de geverifieerde gebruiker wordt automatisch aan de registratie toegevoegd als een [tag](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md).
-- **Meldingen verzenden naar clients**: U voegt een controller om aan te bieden een manier voor gebruikers voor het activeren van een beveiligde push naar apparaten en clients die zijn gekoppeld aan de tag toe.
+- **Clients verifiëren**: U voegt een bericht-handler toe voor het verifiëren van client aanvragen en het koppelen van de gebruiker aan de aanvraag.
+- **Registreer u voor meldingen met behulp van de WebAPI-back-end**: U voegt een controller toe voor het afhandelen van nieuwe registraties voor een client apparaat om meldingen te ontvangen. De naam van de geverifieerde gebruiker wordt automatisch aan de registratie toegevoegd als een [tag](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md).
+- **Meldingen verzenden naar clients**: U voegt een controller toe om gebruikers in staat te stellen een beveiligde push naar apparaten en clients te activeren die zijn gekoppeld aan het label.
 
 Maak de nieuwe ASP.NET WebAPI-back-end door de volgende acties uit te voeren:
 
@@ -59,7 +59,7 @@ Maak de nieuwe ASP.NET WebAPI-back-end door de volgende acties uit te voeren:
 
     ![Het venster Microsoft Azure Web App configureren][B5]
 
-    Als u deze pagina voor app service-plan configureren, gaat u verder met de zelfstudie niet ziet. U kunt deze configureren tijdens de publicatie van de app later opnieuw. 
+    Als u deze pagina voor het configureren van het app service-abonnement niet ziet, gaat u verder met de zelf studie. U kunt deze configureren terwijl u de app later publiceert. 
 
 ## <a name="authenticate-clients-to-the-webapi-backend"></a>Clients verifiëren bij de WebAPI-back-end
 
@@ -140,7 +140,7 @@ In deze sectie maakt u een nieuwe berichtenhandlerklasse met de naam **Authentic
     ```
 
     > [!NOTE]
-    > Opmerking over beveiliging: De `AuthenticationTestHandler` klasse biedt geen echte verificatie. Het wordt alleen gebruikt om basisverificatie na te bootsen en is niet beveiligd. U moet een veilig verificatiemechanisme implementeren in uw productietoepassingen en -services.
+    > Opmerking over beveiliging: De `AuthenticationTestHandler` klasse biedt geen echte authenticatie. Het wordt alleen gebruikt om basisverificatie na te bootsen en is niet beveiligd. U moet een veilig verificatiemechanisme implementeren in uw productietoepassingen en -services.
 5. Voeg de volgende code toe aan het einde van de `Register`-methode in de klasse **App_Start/WebApiConfig.cs** om de berichtenhandler te registreren:
 
     ```csharp
@@ -185,6 +185,9 @@ In deze sectie voegen we een nieuwe controller toe aan de WebAPI-back-end om aan
         }
     }
     ```
+    > [!IMPORTANT]
+    > Voer de **naam** en het **DefaultFullSharedAccessSignature** van uw hub in voordat u verder gaat. 
+    
 7. Maak vervolgens een nieuwe controller met de naam **RegisterController**. Klik in Solution Explorer met de rechtermuisknop op de map **Controllers** en selecteer achtereenvolgens **Toevoegen** en **Controller**.
 
 8. Selecteer **Web API 2 Controller - leeg** en selecteer vervolgens **Toevoegen**.

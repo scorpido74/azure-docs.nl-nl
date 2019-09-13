@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5c533c3b0005528eae646744e8e720e2c54436e1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: d34cb7b8bfae14c25950cc4d77c6625c675e813b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880263"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934642"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Apache Ambari gebruiken om configuraties van HDInsight-clusters te optimaliseren
 
@@ -23,7 +23,7 @@ Zie [HDInsight-clusters beheren met behulp van de Apache Ambari-webgebruikersint
 
 Meld u aan bij Ambari `https://CLUSTERNAME.azurehdidnsight.net` met uw cluster referenties. In het eerste scherm wordt een overzichts dashboard weer gegeven.
 
-![Ambari-dash board](./media/hdinsight-changing-configs-via-ambari/ambari-dashboard.png)
+![Ambari-dash board](./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png)
 
 De Ambari-webgebruikersinterface kan worden gebruikt voor het beheren van hosts, services, waarschuwingen, configuraties en weer gaven. Ambari kan niet worden gebruikt voor het maken van een HDInsight-cluster, het upgraden van services, het beheren van stacks en versies, het buiten gebruik stellen of de hergebruik van hosts of het toevoegen van services aan het cluster.
 
@@ -31,7 +31,7 @@ De Ambari-webgebruikersinterface kan worden gebruikt voor het beheren van hosts,
 
 Met configuratie-instellingen kunt u een bepaalde service afstemmen. Als u de configuratie-instellingen van een service wilt wijzigen, selecteert u de service in de zijbalk van **Services** (aan de linkerkant) en navigeert u vervolgens naar het tabblad **configuratie** van de detail pagina van de service.
 
-![Services-zijbalk](./media/hdinsight-changing-configs-via-ambari/services-sidebar.png)
+![Services-zijbalk](./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png)
 
 ### <a name="modify-namenode-java-heap-size"></a>Grootte van NameNode Java-heap wijzigen
 
@@ -41,15 +41,15 @@ De grootte van de NameNode Java-heap wijzigen:
 
 1. Selecteer **HDFS** in de services-zijbalk en navigeer naar het tabblad **configuratie** .
 
-    ![HDFS-configuratie](./media/hdinsight-changing-configs-via-ambari/hdfs-config.png)
+    ![HDFS-configuratie](./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png)
 
 1. Zoek de instelling **NameNode Java Heap-grootte**. U kunt ook het tekstvak **filteren** gebruiken om een bepaalde instelling te typen en te zoeken. Selecteer het pictogram met de **pen** naast de naam van de instelling.
 
-    ![Grootte van NameNode Java-heap](./media/hdinsight-changing-configs-via-ambari/java-heap-size.png)
+    ![Grootte van NameNode Java-heap](./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png)
 
 1. Typ de nieuwe waarde in het tekstvak en druk vervolgens op **Enter** om de wijziging op te slaan.
 
-    ![NameNode Java-heap size1 bewerken](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
+    ![NameNode Java-heap size1 bewerken](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit1.png)
 
 1. De grootte van de NameNode Java-heap is gewijzigd van 1 GB van 2 GB.
 
@@ -57,7 +57,7 @@ De grootte van de NameNode Java-heap wijzigen:
 
 1. Sla uw wijzigingen op door te klikken op de groene knop **Opslaan** boven aan het configuratie scherm.
 
-    ![Wijzigingen opslaan](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
+    ![Wijzigingen opslaan](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
 
 ## <a name="apache-hive-optimization"></a>Apache Hive optimalisatie
 
@@ -72,11 +72,11 @@ Hive bevat twee uitvoerings engines: [Apache Hadoop MapReduce](https://hadoop.ap
 
 1. Typ **Execution Engine** in het vak Filter op het tabblad **configuratie** van Hive.
 
-    ![Takenreeksuitvoeringsengine doorzoeken](./media/hdinsight-changing-configs-via-ambari/search-execution.png)
+    ![Takenreeksuitvoeringsengine doorzoeken](./media/hdinsight-changing-configs-via-ambari/ambari-search-execution.png)
 
 1. De standaard waarde van de **optimalisatie** -eigenschap is **TEZ**.
 
-    ![Optimalisatie-TEZ](./media/hdinsight-changing-configs-via-ambari/optimization-tez.png)
+    ![Optimalisatie-TEZ](./media/hdinsight-changing-configs-via-ambari/optimization-apache-tez.png)
 
 ### <a name="tune-mappers"></a>Toewijzings toewijzingen afstemmen
 
@@ -93,7 +93,7 @@ Als u bijvoorbeeld vier toewijzings taken wilt instellen voor een gegevens groot
 
 1. Stel beide para meters in op **33.554.432** bytes (32 MB).
 
-    ![TEZ](./media/hdinsight-changing-configs-via-ambari/tez-grouping-size.png)
+    ![TEZ](./media/hdinsight-changing-configs-via-ambari/apache-tez-grouping-size.png)
  
 Deze wijzigingen zijn van invloed op alle TEZ-taken op de server. Kies de juiste parameter waarden om optimaal resultaat te krijgen.
 
@@ -109,7 +109,7 @@ Met `hive.exec.reducers.bytes.per.reducer` de para meter wordt het aantal verwer
 
 1. Als u de para meter wilt wijzigen, gaat u naar het tabblad **configuratie** van Hive en zoekt u de para meter **gegevens per verkorter** op de pagina instellingen.
 
-    ![Gegevens per verminderr](./media/hdinsight-changing-configs-via-ambari/data-per-reducer.png)
+    ![Gegevens per verminderr](./media/hdinsight-changing-configs-via-ambari/ambari-data-per-reducer.png)
  
 1. Selecteer **bewerken** om de waarde te wijzigen in 128 MB (134.217.728 bytes) en druk vervolgens op **Enter** om op te slaan.
 
@@ -127,7 +127,7 @@ Een Hive-query wordt uitgevoerd in een of meer fasen. Als de onafhankelijke fase
  
 1.  Als u het aantal taken dat parallel moet worden uitgevoerd, wilt beperken `hive.exec.parallel.thread.number` , wijzigt u de eigenschap. De standaard waarde is 8.
 
-    ![Component exec parallel](./media/hdinsight-changing-configs-via-ambari/hive-exec-parallel.png)
+    ![Component exec parallel](./media/hdinsight-changing-configs-via-ambari/apache-hive-exec-parallel.png)
 
 
 ### <a name="enable-vectorization"></a>Vectorization inschakelen
@@ -373,7 +373,7 @@ De HBase-Heap-grootte geeft de maximale hoeveelheid heap op die in mega bytes pe
 
 1. Wijzig de standaard waarde in 5.000 MB.
 
-    ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/hbase-heapsize.png)
+    ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/ambari-hbase-heapsize.png)
 
 
 ### <a name="optimize-read-heavy-workloads"></a>Lees zware workloads optimaliseren

@@ -1,5 +1,5 @@
 ---
-title: HTTP-Api's in Durable Functions-Azure
+title: HTTP-Api's in Durable Functions-Azure Functions
 description: Meer informatie over het implementeren van HTTP-Api's in de Durable Functions-extensie voor Azure Functions.
 services: functions
 author: cgillum
@@ -7,47 +7,86 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b34fd30b8e43e674b0b346672366d680d99ebd5c
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: c81eccaa2b3a4335f034b9667f6e7be317635f43
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734275"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933388"
 ---
-# <a name="http-apis-in-durable-functions-azure-functions"></a>HTTP-Api's in Durable Functions (Azure Functions)
+# <a name="http-api-reference"></a>HTTP API-verwijzing
 
-De uitbrei ding duurzame taak bevat een reeks HTTP-Api's die kunnen worden gebruikt om de volgende taken uit te voeren:
+De uitbrei ding Durable Functions maakt een reeks ingebouwde HTTP-Api's die kunnen worden gebruikt voor het uitvoeren van beheer taken voor [Orchestrations](durable-functions-types-features-overview.md#orchestrator-functions), [entiteiten](durable-functions-types-features-overview.md#entity-functions)en [taak hubs](durable-functions-task-hubs.md). Deze HTTP-Api's zijn uitbreid bare webhooks die worden geautoriseerd door de Azure Functions-host, maar rechtstreeks worden verwerkt door de uitbrei ding Durable Functions.
 
-* De status van een Orchestration-exemplaar ophalen.
-* Een gebeurtenis verzenden naar een Waiting-instantie.
-* Een actief Orchestration-exemplaar beëindigen.
+Voor alle HTTP-Api's die door de extensie worden geïmplementeerd, zijn de volgende para meters vereist. Het gegevens type van alle para meters is `string`.
 
-Elk van deze HTTP-Api's is een webhook-bewerking die rechtstreeks door de extensie van de duurzame taak wordt verwerkt. Ze zijn niet specifiek voor een functie in de functie-app.
+| Parameter        | Parametertype  | Description |
+|------------------|-----------------|-------------|
+| **`taskHub`**    | Querytekenreeks    | De naam van de [taak hub](durable-functions-task-hubs.md). Indien niet opgegeven, wordt ervan uitgegaan dat de naam van de taak-hub van de huidige functie-app wordt gebruikt. |
+| **`connection`** | Querytekenreeks    | De **naam** van de Connection String voor het opslag account. Als deze niet wordt opgegeven, wordt aangenomen dat de standaard connection string voor de functie-app wordt gebruikt. |
+| **`systemKey`**  | Querytekenreeks    | De autorisatie sleutel die is vereist om de API aan te roepen. |
 
-> [!NOTE]
-> Deze bewerkingen kunnen ook rechtstreeks worden aangeroepen met behulp van de instance Management-Api's in de [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) -klasse. Zie [instance Management](durable-functions-instance-management.md)(Engelstalig) voor meer informatie.
+`systemKey`is een autorisatie sleutel die automatisch wordt gegenereerd door de Azure Functions-host. Het geeft specifiek toegang tot de duurzame Api's voor taak uitbreidingen en kan op dezelfde manier worden beheerd als [andere autorisatie sleutels](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). De eenvoudigste manier om de `systemKey` waarde te detecteren is met behulp van de `CreateCheckStatusResponse` eerder vermelde API.
 
-## <a name="http-api-url-discovery"></a>URL-detectie van HTTP API
+In de volgende secties worden de specifieke HTTP-Api's beschreven die worden ondersteund door de uitbrei ding en worden voor beelden gegeven van hoe ze kunnen worden gebruikt.
 
-De klasse [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) toont een [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_) -API die kan worden gebruikt voor het genereren van een nettolading van http-antwoorden die koppelingen bevat naar alle ondersteunde bewerkingen. Hier volgt een voor beeld van een HTTP-activerings functie die laat zien hoe u deze API gebruikt:
+## <a name="start-orchestration"></a>Indeling starten
 
-### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
+Het uitvoeren van een nieuw exemplaar van de opgegeven Orchestrator-functie wordt gestart.
 
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
+### <a name="request"></a>Aanvraag
 
-### <a name="c-script"></a>C# Script
+Voor versie 1. x van de functions-runtime wordt de aanvraag als volgt opgemaakt (er worden meerdere lijnen weer gegeven voor duidelijkheid):
 
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/HttpStart/run.csx)]
+```http
+POST /admin/extensions/DurableTaskExtension/orchestrators/{functionName}/{instanceId?}
+     ?taskHub={taskHub}
+     &connection={connectionName}
+     &code={systemKey}
+```
 
-### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
+In versie 2. x van de functions runtime heeft de URL-indeling dezelfde para meters, maar met een iets ander voor voegsel:
 
-[!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
+```http
+POST /runtime/webhooks/durabletask/orchestrators/{functionName}/{instanceId?}
+     ?taskHub={taskHub}
+     &connection={connectionName}
+     &code={systemKey}
+```
 
-In deze voorbeeld functies worden de volgende gegevens van de JSON-respons gegenereerd. Het gegevens type van alle velden is `string`.
+Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meters:
 
-| Veld                   |Description                           |
+| Veld              | Parametertype  | Description |
+|--------------------|-----------------|-------------|
+| **`functionName`** | URL             | De naam van de Orchestrator-functie die moet worden gestart. |
+| **`instanceId`**   | URL             | Optionele para meter. De ID van het Orchestration-exemplaar. Als deze niet wordt opgegeven, begint de Orchestrator-functie met een wille keurige exemplaar-ID. |
+| **`{content}`**    | Inhoud van aanvraag | Optioneel. De functie-invoer voor de JSON-indeling van Orchestrator. |
+
+### <a name="response"></a>Antwoord
+
+Er kunnen verschillende mogelijke status code waarden worden geretourneerd.
+
+* **HTTP 202 (geaccepteerd)** : De opgegeven Orchestrator-functie is gepland om te worden uitgevoerd. De `Location` antwoord header bevat een URL voor het navragen van de Orchestration-status.
+* **HTTP 400 (ongeldige aanvraag)** : De opgegeven Orchestrator-functie bestaat niet, de opgegeven exemplaar-ID is ongeldig of de aanvraag inhoud is geen geldige JSON.
+
+Hier volgt een voorbeeld aanvraag waarmee een `RestartVMs` Orchestrator-functie wordt gestart en die JSON-object Payload bevat:
+
+```http
+POST /runtime/webhooks/durabletask/orchestrators/RestartVMs?code=XXX
+Content-Type: application/json
+Content-Length: 83
+
+{
+    "resourceGroup": "myRG",
+    "subscriptionId": "111deb5d-09df-4604-992e-a968345530a9"
+}
+```
+
+De nettolading van de reactie voor de **HTTP 202-** cases is een JSON-object met de volgende velden:
+
+| Veld                       | Description                          |
 |-----------------------------|--------------------------------------|
 | **`id`**                    |De ID van het Orchestration-exemplaar. |
 | **`statusQueryGetUri`**     |De status-URL van het Orchestrator-exemplaar. |
@@ -56,66 +95,38 @@ In deze voorbeeld functies worden de volgende gegevens van de JSON-respons gegen
 | **`purgeHistoryDeleteUri`** |De URL voor het verwijderen van de geschiedenis van het Orchestrator-exemplaar. |
 | **`rewindPostUri`**         |evaluatie De ' rewinde ' URL van het Orchestrator-exemplaar. |
 
-Hier volgt een voor beeld van een antwoord:
+Het gegevens type van alle velden is `string`.
+
+Hier volgt een voor beeld van een nettolading voor een Orchestrator- `abc123` exemplaar met als id (opgemaakt voor de Lees baarheid):
 
 ```http
-HTTP/1.1 202 Accepted
-Content-Length: 923
-Content-Type: application/json; charset=utf-8
-Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
-
 {
-    "id":"34ce9a28a6834d8492ce6a295f1a80e2",
-    "statusQueryGetUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "sendEventPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "terminatePostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "purgeHistoryDeleteUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
-    "rewindPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/rewind?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
+    "id": "abc123",
+    "purgeHistoryDeleteUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/abc123?code=XXX",
+    "sendEventPostUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/abc123/raiseEvent/{eventName}?code=XXX",
+    "statusQueryGetUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/abc123?code=XXX",
+    "terminatePostUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/abc123/terminate?reason={text}&code=XXX"
 }
 ```
 
-> [!NOTE]
-> De indeling van de webhook-Url's kan verschillen, afhankelijk van welke versie van de Azure Functions-host u uitvoert. Het bovenstaande voor beeld is voor de host Azure Functions 2. x.
+Het HTTP-antwoord is bedoeld om compatibel te zijn met het *polling Consumer-patroon*. Het bevat ook de volgende belang rijke reactie headers:
 
-## <a name="async-operation-tracking"></a>Asynchrone bewerkingen bijhouden
+* **Locatie**: De URL van het status eindpunt. Deze URL bevat dezelfde waarde als het `statusQueryGetUri` veld.
+* **Opnieuw proberen na**: Het aantal seconden dat moet worden gewacht tussen polling bewerkingen. De standaardwaarde is `10`.
 
-Het HTTP-antwoord dat eerder is vermeld, is ontworpen om te helpen met het implementeren van langlopende HTTP async-Api's met Durable Functions. Dit wordt soms ook wel het *polling Consumer-patroon*genoemd. De client/server-stroom werkt als volgt:
+Zie de documentatie over [http async-tracering](durable-functions-http-features.md#async-operation-tracking) voor meer informatie over het asynchrone HTTP polling-patroon.
 
-1. De client geeft een HTTP-aanvraag voor het starten van een langlopend proces, zoals een Orchestrator-functie.
-2. De http-trigger van het doel retourneert een http 202 `Location` -antwoord met `statusQueryGetUri` een header met de waarde.
-3. De client pollt de URL in de `Location` koptekst. Er worden nog http 202-antwoorden weer geven `Location` met een header.
-4. Wanneer het exemplaar is voltooid (of mislukt), retourneert het eind punt `Location` in de header HTTP 200.
-
-Met dit protocol kunnen langlopende processen worden gecooerdineerd met externe clients of services die ondersteuning bieden voor het pollen van `Location` een http-eind punt en het volgen van de header. De fundamentele onderdelen zijn al ingebouwd in de Durable Functions HTTP-Api's.
-
-> [!NOTE]
-> Standaard worden alle op HTTP gebaseerde acties die worden geboden door [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/) het standaard asynchrone bewerkings patroon ondersteunen. Deze mogelijkheid maakt het mogelijk een langdurige, duurzame functie in te sluiten als onderdeel van een Logic Apps werk stroom. Meer informatie over Logic Apps ondersteuning voor asynchrone HTTP-patronen vindt u in de [Azure Logic apps werk stroom acties en triggers-documentatie](../../logic-apps/logic-apps-workflow-actions-triggers.md#asynchronous-patterns).
-
-## <a name="http-api-reference"></a>HTTP API-verwijzing
-
-Alle HTTP-Api's die door de extensie worden geïmplementeerd, hebben de volgende para meters. Het gegevens type van alle para meters is `string`.
-
-| Parameter        | Parametertype  | Description |
-|------------------|-----------------|-------------|
-| **`taskHub`**    | Querytekenreeks    | De naam van de [taak hub](durable-functions-task-hubs.md). Indien niet opgegeven, wordt ervan uitgegaan dat de naam van de taak-hub van de huidige functie-app wordt gebruikt. |
-| **`connection`** | Querytekenreeks    | De **naam** van de Connection String voor het opslag account. Als deze niet wordt opgegeven, wordt aangenomen dat de standaard connection string voor de functie-app wordt gebruikt. |
-| **`systemKey`**  | Querytekenreeks    | De autorisatie sleutel die is vereist om de API aan te roepen. |
-
-`systemKey`is een autorisatie sleutel die automatisch door de Azure Functions-host wordt gegenereerd. Het geeft specifiek toegang tot de duurzame Api's voor taak uitbreidingen en kan op dezelfde manier worden beheerd als [andere autorisatie sleutels](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). De eenvoudigste manier om de `systemKey` waarde te detecteren is met behulp van de `CreateCheckStatusResponse` eerder vermelde API.
-
-In de volgende secties worden de specifieke HTTP-Api's beschreven die worden ondersteund door de uitbrei ding en worden voor beelden gegeven van hoe ze kunnen worden gebruikt.
-
-### <a name="get-instance-status"></a>Status van exemplaar ophalen
+## <a name="get-instance-status"></a>Status van exemplaar ophalen
 
 Hiermee wordt de status van een opgegeven Orchestrator-exemplaar opgehaald.
 
-#### <a name="request"></a>Aanvraag
+### <a name="request"></a>Aanvraag
 
 Voor versie 1. x van de functions-runtime wordt de aanvraag als volgt opgemaakt (er worden meerdere lijnen weer gegeven voor duidelijkheid):
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/{instanceId}
-    ?taskHub={taskHub
+    ?taskHub={taskHub}
     &connection={connectionName}
     &code={systemKey}
     &showHistory=[true|false]
@@ -145,9 +156,9 @@ Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, ev
 | **`showHistoryOutput`** | Querytekenreeks    | Optionele para meter. Als deze optie `true`is ingesteld op, worden de functie-uitvoer opgenomen in de geschiedenis van de Orchestration-uitvoering.|
 | **`createdTimeFrom`**   | Querytekenreeks    | Optionele para meter. Hiermee wordt de lijst met geretourneerde exemplaren die zijn gemaakt op of na de opgegeven ISO8601-tijds tempel gefilterd.|
 | **`createdTimeTo`**     | Querytekenreeks    | Optionele para meter. Hiermee wordt de lijst met geretourneerde exemplaren die zijn gemaakt op of vóór de opgegeven ISO8601-tijds tempel gefilterd.|
-| **`runtimeStatus`**     | Querytekenreeks    | Optionele para meter. Hiermee wordt indien opgegeven de lijst met geretourneerde instanties gefilterd op basis van de runtime status. Zie het onderwerp [query's in instanties](durable-functions-instance-management.md) voor een lijst met mogelijke runtime status waarden. |
+| **`runtimeStatus`**     | Querytekenreeks    | Optionele para meter. Hiermee wordt indien opgegeven de lijst met geretourneerde instanties gefilterd op basis van de runtime status. Zie het artikel [querying instances](durable-functions-instance-management.md) voor een lijst met mogelijke runtime status waarden. |
 
-#### <a name="response"></a>Antwoord
+### <a name="response"></a>Antwoord
 
 Er kunnen verschillende mogelijke status code waarden worden geretourneerd.
 
@@ -226,14 +237,14 @@ Hier volgt een voor beeld van een nettolading met de geschiedenis van de Orchest
 
 Het **http 202-** antwoord bevat ook een **locatie** antwoord header die verwijst naar dezelfde URL als `statusQueryGetUri` het eerder genoemde veld.
 
-### <a name="get-all-instances-status"></a>Status van alle instanties ophalen
+## <a name="get-all-instances-status"></a>Status van alle instanties ophalen
 
 U kunt ook een query uitvoeren op de status van alle instanties `instanceId` door de uit de aanvraag ' exemplaar status ophalen ' te verwijderen. In dit geval zijn de basis parameters hetzelfde als de Get-exemplaar status. Query reeks parameters voor filteren worden ook ondersteund.
 
-Een ding die u moet onthouden `connection` is `code` dat en is optioneel. Als u anonieme verificatie hebt voor de functie, is code niet vereist.
+Een ding die u moet onthouden `connection` is `code` dat en is optioneel. Als u anonieme verificatie hebt voor de functie, `code` is dit niet vereist.
 Als u geen andere opslag connection string wilt gebruiken dan gedefinieerd in de app-instelling voor AzureWebJobsStorage, kunt u de teken reeks parameter voor de verbindings query veilig negeren.
 
-#### <a name="request"></a>Aanvraag
+### <a name="request"></a>Aanvraag
 
 Voor versie 1. x van de functions-runtime wordt de aanvraag als volgt opgemaakt (er worden meerdere lijnen weer gegeven voor duidelijkheid):
 
@@ -273,10 +284,10 @@ Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, ev
 | **`showHistoryOutput`** | Querytekenreeks    | Optionele para meter. Als deze optie `true`is ingesteld op, worden de functie-uitvoer opgenomen in de geschiedenis van de Orchestration-uitvoering.|
 | **`createdTimeFrom`**   | Querytekenreeks    | Optionele para meter. Hiermee wordt de lijst met geretourneerde exemplaren die zijn gemaakt op of na de opgegeven ISO8601-tijds tempel gefilterd.|
 | **`createdTimeTo`**     | Querytekenreeks    | Optionele para meter. Hiermee wordt de lijst met geretourneerde exemplaren die zijn gemaakt op of vóór de opgegeven ISO8601-tijds tempel gefilterd.|
-| **`runtimeStatus`**     | Querytekenreeks    | Optionele para meter. Hiermee wordt indien opgegeven de lijst met geretourneerde instanties gefilterd op basis van de runtime status. Zie het onderwerp [query's in instanties](durable-functions-instance-management.md) voor een lijst met mogelijke runtime status waarden. |
+| **`runtimeStatus`**     | Querytekenreeks    | Optionele para meter. Hiermee wordt indien opgegeven de lijst met geretourneerde instanties gefilterd op basis van de runtime status. Zie het artikel [querying instances](durable-functions-instance-management.md) voor een lijst met mogelijke runtime status waarden. |
 | **`top`**               | Querytekenreeks    | Optionele para meter. Hiermee wordt het aantal exemplaren dat door de query wordt geretourneerd, beperkt. |
 
-#### <a name="response"></a>Antwoord
+### <a name="response"></a>Antwoord
 
 Hier volgt een voor beeld van reactie payloads, inclusief de indelings status (opgemaakt voor de Lees baarheid):
 
@@ -337,11 +348,11 @@ Als er meer resultaten bestaan, wordt in de reactie header een vervolg token ger
 
 Als u de vervolg token waarde in de volgende aanvraag header instelt, kunt u de volgende pagina met resultaten ophalen. Dit is ook `x-ms-continuation-token`de naam van de aanvraag header.
 
-### <a name="purge-single-instance-history"></a>Geschiedenis van één exemplaar opschonen
+## <a name="purge-single-instance-history"></a>Geschiedenis van één exemplaar opschonen
 
 Hiermee verwijdert u de geschiedenis en gerelateerde artefacten voor een opgegeven Orchestration-exemplaar.
 
-#### <a name="request"></a>Aanvraag
+### <a name="request"></a>Aanvraag
 
 Voor versie 1. x van de functions-runtime wordt de aanvraag als volgt opgemaakt (er worden meerdere lijnen weer gegeven voor duidelijkheid):
 
@@ -367,7 +378,7 @@ Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, ev
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | De ID van het Orchestration-exemplaar. |
 
-#### <a name="response"></a>Antwoord
+### <a name="response"></a>Antwoord
 
 De volgende HTTP-status code waarden kunnen worden geretourneerd.
 
@@ -388,11 +399,11 @@ Hier volgt een voor beeld van een Payload-reactie (opgemaakt voor de Lees baarhe
 }
 ```
 
-### <a name="purge-multiple-instance-history"></a>Geschiedenis van meerdere exemplaren opschonen
+## <a name="purge-multiple-instance-histories"></a>Meerdere exemplaar geschiedenissen verwijderen
 
 U kunt ook de geschiedenis en gerelateerde artefacten voor meerdere exemplaren binnen een taak hub verwijderen door de `{instanceId}` uit de aanvraag verwijderen van één exemplaar van de geschiedenis te verwijderen. Als u de instantie geschiedenis selectief wilt opschonen, gebruikt u dezelfde filters die in de aanvraag ' alle instanties ophalen ' worden beschreven.
 
-#### <a name="request"></a>Aanvraag
+### <a name="request"></a>Aanvraag
 
 Voor versie 1. x van de functions-runtime wordt de aanvraag als volgt opgemaakt (er worden meerdere lijnen weer gegeven voor duidelijkheid):
 
@@ -424,12 +435,12 @@ Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, ev
 |-----------------------|-----------------|-------------|
 | **`createdTimeFrom`** | Querytekenreeks    | Hiermee wordt de lijst met verwijderde exemplaren gefilterd die zijn gemaakt op of na de opgegeven ISO8601-tijds tempel.|
 | **`createdTimeTo`**   | Querytekenreeks    | Optionele para meter. Hiermee wordt de lijst met verwijderde exemplaren die zijn gemaakt op of vóór de opgegeven ISO8601-tijds tempel gefilterd.|
-| **`runtimeStatus`**   | Querytekenreeks    | Optionele para meter. Hiermee wordt indien opgegeven de lijst met verwijderde exemplaren gefilterd op basis van de runtime status. Zie het onderwerp [query's in instanties](durable-functions-instance-management.md) voor een lijst met mogelijke runtime status waarden. |
+| **`runtimeStatus`**   | Querytekenreeks    | Optionele para meter. Hiermee wordt indien opgegeven de lijst met verwijderde exemplaren gefilterd op basis van de runtime status. Zie het artikel [querying instances](durable-functions-instance-management.md) voor een lijst met mogelijke runtime status waarden. |
 
 > [!NOTE]
 > Deze bewerking kan erg kostbaar zijn in termen van Azure Storage I/O als er veel rijen in de tabellen instanties en/of geschiedenis zijn. Meer informatie over deze tabellen vindt u in de documentatie over [prestaties en schaal baarheid in Durable functions (Azure functions)](durable-functions-perf-and-scale.md#instances-table) .
 
-#### <a name="response"></a>Antwoord
+### <a name="response"></a>Antwoord
 
 De volgende HTTP-status code waarden kunnen worden geretourneerd.
 
@@ -450,11 +461,11 @@ Hier volgt een voor beeld van een Payload-reactie (opgemaakt voor de Lees baarhe
 }
 ```
 
-### <a name="raise-event"></a>Gebeurtenis verhogen
+## <a name="raise-event"></a>Gebeurtenis verhogen
 
 Hiermee verzendt u een bericht over gebeurtenis meldingen naar een actief Orchestration-exemplaar.
 
-#### <a name="request"></a>Aanvraag
+### <a name="request"></a>Aanvraag
 
 Voor versie 1. x van de functions-runtime wordt de aanvraag als volgt opgemaakt (er worden meerdere lijnen weer gegeven voor duidelijkheid):
 
@@ -482,7 +493,7 @@ Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, ev
 | **`eventName`**   | URL             | De naam van de gebeurtenis waarop het doel exemplaar van de Orchestrator-instantie wacht. |
 | **`{content}`**   | Inhoud van aanvraag | De nettolading van de JSON-indeling. |
 
-#### <a name="response"></a>Antwoord
+### <a name="response"></a>Antwoord
 
 Er kunnen verschillende mogelijke status code waarden worden geretourneerd.
 
@@ -503,11 +514,11 @@ Content-Length: 6
 
 De antwoorden voor deze API bevatten geen inhoud.
 
-### <a name="terminate-instance"></a>Exemplaar beëindigen
+## <a name="terminate-instance"></a>Exemplaar beëindigen
 
 Hiermee beëindigt u een actief Orchestration-exemplaar.
 
-#### <a name="request"></a>Aanvraag
+### <a name="request"></a>Aanvraag
 
 Voor versie 1. x van de functions-runtime wordt de aanvraag als volgt opgemaakt (er worden meerdere lijnen weer gegeven voor duidelijkheid):
 
@@ -536,7 +547,7 @@ Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, ev
 | **`instanceId`**  | URL             | De ID van het Orchestration-exemplaar. |
 | **`reason`**      | Querytekenreeks    | Optioneel. De reden voor het beëindigen van het Orchestrator-exemplaar. |
 
-#### <a name="response"></a>Antwoord
+### <a name="response"></a>Antwoord
 
 Er kunnen verschillende mogelijke status code waarden worden geretourneerd.
 
@@ -552,11 +563,11 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 De antwoorden voor deze API bevatten geen inhoud.
 
-### <a name="rewind-instance-preview"></a>Exemplaar terugspoelen (preview-versie)
+## <a name="rewind-instance-preview"></a>Exemplaar terugspoelen (preview-versie)
 
 Hiermee herstelt u een mislukte Orchestrator-instantie in een actieve status door de meest recente mislukte bewerkingen te herhalen.
 
-#### <a name="request"></a>Aanvraag
+### <a name="request"></a>Aanvraag
 
 Voor versie 1. x van de functions-runtime wordt de aanvraag als volgt opgemaakt (er worden meerdere lijnen weer gegeven voor duidelijkheid):
 
@@ -585,7 +596,7 @@ Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, ev
 | **`instanceId`**  | URL             | De ID van het Orchestration-exemplaar. |
 | **`reason`**      | Querytekenreeks    | Optioneel. De reden voor het terugspoelen van het Orchestration-exemplaar. |
 
-#### <a name="response"></a>Antwoord
+### <a name="response"></a>Antwoord
 
 Er kunnen verschillende mogelijke status code waarden worden geretourneerd.
 
@@ -601,11 +612,14 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 De antwoorden voor deze API bevatten geen inhoud.
 
-### <a name="signal-entity-preview"></a>Signaal entiteit (preview-versie)
+## <a name="signal-entity"></a>Signaal entiteit
 
 Verzendt een eenrichtings bewerkings bericht naar een [duurzame entiteit](durable-functions-types-features-overview.md#entity-functions). Als de entiteit niet bestaat, wordt deze automatisch gemaakt.
 
-#### <a name="request"></a>Aanvraag
+> [!NOTE]
+> Duurzame entiteiten zijn beschikbaar vanaf Durable Functions 2,0.
+
+### <a name="request"></a>Aanvraag
 
 De HTTP-aanvraag wordt als volgt ingedeeld (er worden meerdere regels weer gegeven voor de duidelijkheid):
 
@@ -635,7 +649,7 @@ Content-Type: application/json
 5
 ```
 
-#### <a name="response"></a>Antwoord
+### <a name="response"></a>Antwoord
 
 Deze bewerking heeft verschillende mogelijke reacties:
 
@@ -645,11 +659,11 @@ Deze bewerking heeft verschillende mogelijke reacties:
 
 Een geslaagde HTTP-aanvraag bevat geen inhoud in het antwoord. Een mislukte HTTP-aanvraag kan fout informatie in JSON-indeling bevatten in de antwoord inhoud.
 
-### <a name="query-entity-preview"></a>Query-entiteit (preview-versie)
+## <a name="query-entity"></a>Query-entiteit
 
 Hiermee wordt de status van de opgegeven entiteit opgehaald.
 
-#### <a name="request"></a>Aanvraag
+### <a name="request"></a>Aanvraag
 
 De HTTP-aanvraag wordt als volgt ingedeeld (er worden meerdere regels weer gegeven voor de duidelijkheid):
 
@@ -660,7 +674,7 @@ GET /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
     &code={systemKey}
 ```
 
-#### <a name="response"></a>Antwoord
+### <a name="response"></a>Antwoord
 
 Deze bewerking heeft twee mogelijke antwoorden:
 
@@ -669,8 +683,8 @@ Deze bewerking heeft twee mogelijke antwoorden:
 
 Een geslaagd antwoord bevat de JSON-serialisatie status van de entiteit als de inhoud.
 
-#### <a name="example"></a>Voorbeeld
-Hier volgt een voor beeld van een HTTP-aanvraag die de status van een bestaande `Counter` entiteit met `steps`de naam:
+### <a name="example"></a>Voorbeeld
+In het volgende voor beeld van een HTTP-aanvraag wordt `Counter` de status `steps`van een bestaande entiteit met de naam:
 
 ```http
 GET /runtime/webhooks/durabletask/entities/Counter/steps
@@ -687,4 +701,4 @@ Als de `Counter` entiteit simpelweg een aantal stappen bevat die zijn opgeslagen
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het afhandelen van fouten](durable-functions-error-handling.md)
+> [Meer informatie over het gebruik van Application Insights om uw duurzame functies te bewaken](durable-functions-diagnostics.md)

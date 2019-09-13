@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e79d7a4b97f010b035f5c864682b4d3882a21393
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: a2189b2012f598542725acd2d5ebe3a7586bafd9
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171920"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880820"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Pas de gebruikers interface van uw toepassing aan met behulp van een aangepast beleid in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Nadat u dit artikel hebt voltooid, hebt u een aangepast beleid voor aanmelden en aanmelden met uw merk en vormgeving. Met Azure Active Directory B2C (Azure AD B2C) krijgt u bijna volledige controle over de HTML-en CSS-inhoud die wordt gepresenteerd aan gebruikers. Wanneer u een aangepast beleid gebruikt, configureert u de UI-aanpassing in XML in plaats van besturings elementen in de Azure Portal. 
+Nadat u dit artikel hebt voltooid, hebt u een aangepast beleid voor aanmelden en aanmelden met uw merk en vormgeving. Met Azure Active Directory B2C (Azure AD B2C) krijgt u bijna volledige controle over de HTML-en CSS-inhoud die wordt gepresenteerd aan gebruikers. Wanneer u een aangepast beleid gebruikt, configureert u de UI-aanpassing in XML in plaats van besturings elementen in de Azure Portal.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -51,7 +51,7 @@ Maak HTML-inhoud met de merk naam van uw product in de titel.
    </html>
    ```
 
-2. Plak het gekopieerde fragment in een tekst editor en sla het bestand op als *Customize-UI. html*.
+1. Plak het gekopieerde fragment in een tekst editor en sla het bestand op als *Customize-UI. html*.
 
 > [!NOTE]
 > HTML-formulier elementen worden verwijderd vanwege beveiligings beperkingen als u login.microsoftonline.com gebruikt. Gebruik b2clogin.com als u HTML-formulier elementen wilt gebruiken in uw aangepaste HTML-inhoud. Zie [B2clogin.com gebruiken](b2clogin.md) voor andere voor delen.
@@ -61,71 +61,71 @@ Maak HTML-inhoud met de merk naam van uw product in de titel.
 >[!NOTE]
 > In dit artikel gebruiken we Azure Blob-opslag om onze inhoud te hosten. U kunt ervoor kiezen om uw inhoud op een webserver te hosten, maar u moet [CORS inschakelen op de webserver](https://enable-cors.org/server.html).
 
-Ga als volgt te werk om deze HTML-inhoud in Blob Storage te hosten:
+Als u deze HTML-inhoud in Blob Storage wilt hosten, voert u de volgende stappen uit:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer in het **hub** -menu de optie **Nieuw** > **opslag** > **opslag account**.
-3. Selecteer een **abonnement** voor uw opslag account.
-4. Maak een **resource groep** of selecteer een bestaande.
-5. Voer een unieke **naam** in voor uw opslag account.
-6. Selecteer de **geografische locatie** voor uw opslag account. 
-7. **Implementatie model** kan **Resource Manager**blijven.
-8. **Prestaties** kunnen **standaard**blijven.
-9. Wijzig het **type account** in **Blob Storage**.
-10. **Replicatie** kan **Ra-GRS**blijven.
-11. De **toegangs laag** kan **Hot**blijven. 
-12. Klik op **beoordeling + maken** om het opslag account te maken.  
-    Nadat de implementatie is voltooid, wordt de Blade **opslag account** automatisch geopend.
+1. Selecteer in het **hub** -menu de optie **Nieuw** > **opslag** > **opslag account**.
+1. Selecteer een **abonnement** voor uw opslag account.
+1. Maak een **resource groep** of selecteer een bestaande.
+1. Voer een unieke **naam** in voor uw opslag account.
+1. Selecteer de **geografische locatie** voor uw opslag account.
+1. **Implementatie model** kan **Resource Manager**blijven.
+1. **Prestaties** kunnen **standaard**blijven.
+1. Wijzig het **type account** in **Blob Storage**.
+1. **Replicatie** kan **Ra-GRS**blijven.
+1. De **toegangs laag** kan **Hot**blijven.
+1. Klik op **beoordeling + maken** om het opslag account te maken.
+    Nadat de implementatie is voltooid, wordt de pagina **opslag account** automatisch geopend.
 
 ## <a name="create-a-container"></a>Een container maken
 
-Als u een open bare container in Blob Storage wilt maken, gaat u als volgt te werk:
+Als u een open bare container in Blob Storage wilt maken, voert u de volgende stappen uit:
 
-1. Onder **BLOB service** in het linkermenu selecteert u blobs.
-2. Klik op **+ container**.
-3. Voer *basis*in bij **naam**. Dit kan een naam zijn van uw keuze, bijvoorbeeld *wingtiptoys*, maar in dit voor beeld wordt de *basis* gebruikt voor eenvoud.
-4. Selecteer **BLOB**voor **openbaar toegangs niveau**en klik vervolgens op **OK**.
-5. Klik op **root** om de nieuwe container te openen.
-6. Klik op **Uploaden**.
-7. Klik op het mappictogram naast **een bestand selecteren**.
-8. Navigeer naar en selecteer **Customize-UI. html** die u eerder hebt gemaakt in de sectie UI-aanpassing van de pagina.
-9. Als u wilt uploaden naar een submap, vouwt u **Geavanceerd** uit en voert u de naam van een map in **uploaden naar map**in.
-10. Selecteer **Uploaden**.
-11. Selecteer de BLOB **Customize-UI. html** die u hebt geüpload.
-12. Selecteer rechts van het tekstvak **URL** het pictogram **kopiëren naar klem bord** om de URL naar het klem bord te kopiëren.
-13. Navigeer in webbrowser naar de URL die u hebt gekopieerd om te controleren of de blob die u hebt geüpload, toegankelijk is. Als het niet toegankelijk is, bijvoorbeeld als er een `ResourceNotFound` fout optreedt, controleert u of het toegangs type voor de container is ingesteld op **BLOB**.
+1. Onder **BLOB service** in het linkermenu selecteert u **blobs**.
+1. Klik op **+ container**.
+1. Voer *basis*in bij **naam**. Dit kan een naam zijn van uw keuze, bijvoorbeeld *wingtiptoys*, maar in dit voor beeld wordt de *basis* gebruikt voor eenvoud.
+1. Selecteer **BLOB**voor **openbaar toegangs niveau**en klik vervolgens op **OK**.
+1. Klik op **root** om de nieuwe container te openen.
+1. Klik op **Uploaden**.
+1. Klik op het mappictogram naast **een bestand selecteren**.
+1. Navigeer naar en selecteer **Customize-UI. html** die u eerder hebt gemaakt in de sectie UI-aanpassing van de pagina.
+1. Als u wilt uploaden naar een submap, vouwt u **Geavanceerd** uit en voert u de naam van een map in **uploaden naar map**in.
+1. Selecteer **Uploaden**.
+1. Selecteer de BLOB **Customize-UI. html** die u hebt geüpload.
+1. Selecteer rechts van het tekstvak **URL** het pictogram **kopiëren naar klem bord** om de URL naar het klem bord te kopiëren.
+1. Navigeer in webbrowser naar de URL die u hebt gekopieerd om te controleren of de blob die u hebt geüpload, toegankelijk is. Als het niet toegankelijk is, bijvoorbeeld als er een `ResourceNotFound` fout optreedt, controleert u of het toegangs type voor de container is ingesteld op **BLOB**.
 
 ## <a name="configure-cors"></a>CORS configureren
 
-Configureer de Blob-opslag voor cross-Origin-resource delen door het volgende te doen:
+Configureer de Blob-opslag voor cross-Origin-resource delen door de volgende stappen uit te voeren:
 
 1. Selecteer **CORS**in het menu.
-2. Voer`https://your-tenant-name.b2clogin.com`in voor **toegestane oorsprongen**. Vervang `your-tenant-name` met de naam van uw Azure AD B2C-tenant. Bijvoorbeeld `https://fabrikam.b2clogin.com`. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant.
-3. Voor **toegestane methoden**selecteert u beide `GET` en `OPTIONS`.
-4. Voer een asterisk (*) in bij **toegestane headers**.
-5. Voer een asterisk (*) in voor **weer gegeven headers**.
-6. Voer 200 in als **maximum leeftijd**.
-7. Klik op **Opslaan**.
+1. Voer`https://your-tenant-name.b2clogin.com`in voor **toegestane oorsprongen**. Vervang `your-tenant-name` met de naam van uw Azure AD B2C-tenant. Bijvoorbeeld `https://fabrikam.b2clogin.com`. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant.
+1. Voor **toegestane methoden**selecteert u beide `GET` en `OPTIONS`.
+1. Voer een asterisk (*) in bij **toegestane headers**.
+1. Voer een asterisk (*) in voor **weer gegeven headers**.
+1. Voer 200 in als **maximum leeftijd**.
+1. Klik op **Opslaan**.
 
 ## <a name="test-cors"></a>CORS testen
 
-Controleer als volgt of u klaar bent:
+Controleer of u klaar bent door de volgende stappen uit te voeren:
 
 1. Ga naar de [www.test-cors.org](https://www.test-cors.org/) -website en plak de URL in het vak **externe URL** .
-2. Klik op **aanvraag verzenden**.  
+1. Klik op **aanvraag verzenden**.
     Als u een fout bericht ontvangt, moet u ervoor zorgen dat de [CORS-instellingen](#configure-cors) juist zijn. Mogelijk moet u ook de cache van de browser wissen of een persoonlijke browser sessie openen door op CTRL + SHIFT + P te drukken.
 
 ## <a name="modify-the-extensions-file"></a>Het extensie bestand wijzigen
 
 Als u de UI-aanpassing wilt configureren, kopieert u de **ContentDefinition** en de onderliggende elementen van het basis bestand naar het extensie bestand.
 
-1. Open het basis bestand van uw beleid. Bijvoorbeeld *TrustFrameworkBase. XML*.
-2. Zoek en kopieer de volledige inhoud van het **ContentDefinitions** -element.
-3. Open het extensie bestand. Bijvoorbeeld *TrustFrameworkExtensions. XML*. Zoek het element **BuildingBlocks** . Als het element niet bestaat, voegt u het toe.
-4. Plak de volledige inhoud van het **ContentDefinitions** -element dat u hebt gekopieerd als onderliggend element van het **Building Blocks** -object. 
-5. Zoek naar het **ContentDefinition** -element dat `Id="api.signuporsignin"` zich in de XML bevinden die u hebt gekopieerd.
-6. Wijzig de waarde van **LoadUri** in de URL van het HTML-bestand dat u hebt geüpload naar opslag. Bijvoorbeeld `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
-    
+1. Open het basis bestand van uw beleid. Bijvoorbeeld *`SocialAndLocalAccounts/`*****.`TrustFrameworkBase.xml` Dit is een van de beleids bestanden in het aangepaste beleids Starter Pack, die u in de vereiste moet hebben verkregen, aan de [slag met aangepast beleid](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Zoek en kopieer de volledige inhoud van het **ContentDefinitions** -element.
+1. Open het extensie bestand. Bijvoorbeeld *TrustFrameworkExtensions. XML*. Zoek het element **BuildingBlocks** . Als het element niet bestaat, voegt u het toe.
+1. Plak de volledige inhoud van het **ContentDefinitions** -element dat u hebt gekopieerd als onderliggend element van het **Building Blocks** -object.
+1. Zoek naar het **ContentDefinition** -element dat `Id="api.signuporsignin"` zich in de XML bevinden die u hebt gekopieerd.
+1. Wijzig de waarde van **LoadUri** in de URL van het HTML-bestand dat u hebt geüpload naar opslag. Bijvoorbeeld `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
+
     Het aangepaste beleid moet er als volgt uitzien:
 
     ```xml
@@ -143,22 +143,22 @@ Als u de UI-aanpassing wilt configureren, kopieert u de **ContentDefinition** en
     </BuildingBlocks>
     ```
 
-7. Sla het bestand met extensies op.
+1. Sla het bestand met extensies op.
 
 ## <a name="upload-your-updated-custom-policy"></a>Uw bijgewerkte aangepaste beleid uploaden
 
 1. Zorg ervoor dat u de map met uw Azure AD B2C-tenant door te klikken op de **map- en abonnementsfilter** in het bovenste menu en de map waarin uw tenant te kiezen.
-3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-4. Selecteer een **Framework voor identiteits ervaring**.
-2. Klik op **alle beleids regels**.
-3. Klik op **beleid uploaden**.
-4. Upload het extensie bestand dat u eerder hebt gewijzigd.
+1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
+1. Selecteer een **Framework voor identiteits ervaring**.
+1. Klik op **alle beleids regels**.
+1. Klik op **beleid uploaden**.
+1. Upload het extensie bestand dat u eerder hebt gewijzigd.
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>Het aangepaste beleid testen met behulp van **nu uitvoeren**
 
-1. Ga op de Blade **Azure AD B2C** naar **alle beleids regels**.
-2. Selecteer het aangepaste beleid dat u hebt geüpload en klik op de knop **nu uitvoeren** .
-3. U moet zich kunnen aanmelden met behulp van een e-mail adres.
+1. Ga op de pagina **Azure AD B2C** naar **alle beleids regels**.
+1. Selecteer het aangepaste beleid dat u hebt geüpload en klik op de knop **nu uitvoeren** .
+1. U moet zich kunnen aanmelden met behulp van een e-mail adres.
 
 ## <a name="reference"></a>Referentie
 
@@ -179,19 +179,20 @@ De map sample_templates/Wingtip bevat de volgende HTML-bestanden:
 | *Unified. html* | Gebruik dit bestand als een sjabloon voor een uniforme registratie-of aanmeldings pagina. |
 | *updateprofile. html* | Gebruik dit bestand als een sjabloon voor een update pagina van een profiel. |
 
-Hier volgen de stappen voor het gebruik van het voor beeld. 
-1. Kloon de opslag plaats op uw lokale machine. Kies een sjabloon map onder sample_templates. U kunt of `wingtip` `contoso`gebruiken.
-2. Upload alle bestanden in de `css`mappen, `fonts`en en `images` naar Blob Storage, zoals beschreven in de vorige secties. 
-3. Open vervolgens elk \*HTML-bestand in de hoofdmap van ofwel `wingtip` of `contoso` (afhankelijk van wat u in de eerste stap hebt geselecteerd) en vervang alle exemplaren http://localhost van ' ' door de url's van de CSS-, afbeeldings-en letter typen bestanden die u in stap 2 hebt geüpload.
-4. Sla de \*HTML-bestanden op en upload deze naar de Blob-opslag.
-5. Wijzig nu het extensie bestand zoals eerder vermeld in [het bestand extensies wijzigen](#modify-the-extensions-file).
-6. Als u ontbrekende letter typen, afbeeldingen of CSS ziet, controleert u uw referenties in het uitbrei ding beleid \*en de. html-bestanden.
+Hier volgen de stappen voor het gebruik van het voor beeld:
 
-### <a name="content-defintion-ids"></a>Definitie-Id's van inhoud
+1. Kloon de opslag plaats op uw lokale machine. Kies een sjabloon map onder sample_templates. U kunt of `wingtip` `contoso`gebruiken.
+1. Upload alle bestanden in de `css`mappen, `fonts`en en `images` naar Blob Storage, zoals beschreven in de vorige secties.
+1. Open vervolgens elk \*HTML-bestand in de hoofdmap van ofwel `wingtip` of `contoso` (afhankelijk van wat u in de eerste stap hebt geselecteerd) en vervang alle exemplaren http://localhost van ' ' door de url's van de CSS-, afbeeldings-en letter typen bestanden die u in stap 2 hebt geüpload.
+1. Sla de \*HTML-bestanden op en upload deze naar de Blob-opslag.
+1. Wijzig nu het extensie bestand zoals eerder vermeld in [het bestand extensies wijzigen](#modify-the-extensions-file).
+1. Als u ontbrekende letter typen, afbeeldingen of CSS ziet, controleert u uw referenties in het uitbrei ding \*beleid en de. html-bestanden.
+
+### <a name="content-definition-ids"></a>Inhouds definitie-Id's
 
 In de sectie uw eigen registratie-of aanmeldings beleid aanpassen hebt u de inhouds definitie voor `api.idpselections`geconfigureerd. De volledige set met inhouds definitie-Id's die worden herkend door het Azure AD B2C identiteits ervarings raamwerk en de bijbehorende beschrijvingen vindt u in de volgende tabel:
 
-| ID van de inhouds definitie | Description | 
+| ID van de inhouds definitie | Description |
 |-----------------------|-------------|
 | *api.error* | **Fout pagina**. Deze pagina wordt weer gegeven wanneer er een uitzonde ring of een fout wordt aangetroffen. |
 | *api.idpselections* | **Pagina**voor het selecteren van de identiteits provider. Deze pagina bevat een lijst met id-providers waaruit de gebruiker kan kiezen tijdens het aanmelden. Deze opties zijn ondernemings-id-providers, sociale id-providers, zoals Facebook, Google + of lokale accounts. |

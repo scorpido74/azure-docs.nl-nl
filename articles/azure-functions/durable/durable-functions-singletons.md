@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d9bf9687f60e649fee98869ef263117177ad5efd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ba35999d5a7193ba691b14005dc8271120ac2be7
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097934"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933235"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Singleton-Orchestrator in Durable Functions (Azure Functions)
 
@@ -113,9 +113,6 @@ module.exports = async function(context, req) {
 
 Exemplaar-Id's zijn standaard wille keurig gegenereerde GUID'S. Maar in dit geval wordt de exemplaar-ID door gegeven in route gegevens van de URL. Met de code [](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) wordt GetStatusAsyncC#() `getStatus` of (Java script) aangeroepen om te controleren of een exemplaar met de opgegeven id al wordt uitgevoerd. Als dat niet het geval is, wordt er een exemplaar gemaakt met die ID.
 
-> [!WARNING]
-> Bij het lokaal ontwikkelen in Java script moet u de omgevings variabele `WEBSITE_HOSTNAME` instellen op `localhost:<port>`, bijvoorbeeld. `localhost:7071`om methoden te gebruiken `DurableOrchestrationClient`in. Zie het [github-probleem](https://github.com/Azure/azure-functions-durable-js/issues/28)voor meer informatie over deze vereiste.
-
 > [!NOTE]
 > Dit voor beeld bevat een mogelijke race voorwaarde. Als twee instanties van **HttpStartSingle** gelijktijdig worden uitgevoerd, wordt door beide functie aanroepen geslaagd, maar er wordt slechts één Orchestration-exemplaar gestart. Afhankelijk van uw vereisten kan dit ongewenste neven effecten hebben. Daarom is het belang rijk om ervoor te zorgen dat twee aanvragen deze trigger gelijktijdig kunnen uitvoeren.
 
@@ -124,4 +121,4 @@ De implementatie details van de Orchestrator-functie zijn niet werkelijk van bel
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het aanroepen van sub-indelingen](durable-functions-sub-orchestrations.md)
+> [Meer informatie over de systeem eigen HTTP-functies van Orchestrations](durable-functions-http-features.md)

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: f7fc5b32fb18da60816056c72dde8c53d439befe
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d7cb473c54dc9cf735e43c65bc079fb4f21e4c97
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812186"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913996"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Wat is Azure SQL Database-Service?
 
@@ -26,6 +26,8 @@ In het kader van de cloudstrategie van Microsoft worden nieuwe mogelijkheden van
 
 > [!NOTE]
 > Zie voor een verklarende woorden lijst in Azure SQL Database [SQL database termen woorden lijst](sql-database-glossary-terms.md)
+
+## <a name="deployment-models"></a>Implementatiemodellen
 
 Azure SQL Database biedt de volgende implementatieopties voor een Azure SQL-database:
 
@@ -51,11 +53,19 @@ U kunt uw eerste app bouwen op een kleine, afzonderlijke Data Base met een lage 
 
 Dynamische schaalbaarheid is iets anders dan automatisch schalen. Automatisch schalen vindt plaats wanneer een service automatisch wordt geschaald op basis van criteria, terwijl u met dynamische schaalbaarheid handmatig kunt schalen zonder uitvaltijd. Een enkele data base ondersteunt hand matige dynamische schaal baarheid, maar niet automatisch schalen. Voor een meer *automatische* ervaring zou u elastische pools kunnen gebruiken. Hiermee kunnen databases resources in een pool delen op basis van afzonderlijke databasebehoeften. Er zijn echter scripts waarmee de schaal baarheid voor één data base kan worden geautomatiseerd. Zie voor een voor beeld [Power shell gebruiken om één Data Base te bewaken en te schalen](scripts/sql-database-monitor-and-scale-database-powershell.md).
 
-### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>Koop modellen, service lagen, reken grootten en opslag bedragen
+### <a name="purchasing-models"></a>Aankoopmodellen
 
 SQL Database biedt twee aankoop modellen:
-- [Met het op vCore gebaseerde aankoop model](sql-database-service-tiers-vcore.md) kunt u het aantal vCores, de hoeveelheid geheugen en de hoeveelheid en snelheid van de opslag kiezen. Met het op vCore gebaseerde aankoop model kunt u ook Azure Hybrid Benefit gebruiken om [SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) kosten besparingen te verkrijgen. Zie [Veelgestelde vragen](#sql-database-frequently-asked-questions-faq)voor meer informatie over de Azure Hybrid Benefit.
+- [Met het op vCore gebaseerde aankoop model](sql-database-service-tiers-vcore.md) kunt u het aantal vCores, de hoeveelheid geheugen en de hoeveelheid en snelheid van de opslag kiezen. Met het op vCore gebaseerde aankoop model kunt u ook Azure Hybrid Benefit gebruiken om **[SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/)** kosten besparingen te verkrijgen. Zie [Veelgestelde vragen](#sql-database-frequently-asked-questions-faq)voor meer informatie over de Azure Hybrid Benefit.
 - Het [op DTU gebaseerde aankoop model](sql-database-service-tiers-dtu.md) biedt een combi natie van compute-, geheugen-en i/o-resources in drie service lagen ter ondersteuning van Lightweight-to-Heavyweight data base-workloads. Reken grootten binnen elke laag bieden een andere combi natie van deze resources, waaraan u extra opslag resources kunt toevoegen.
+- Het [model zonder server](sql-database-serverless.md) dat automatisch wordt geschaald op basis van de vraag van de werk belasting en de facturen voor de hoeveelheid reken kracht die per seconde wordt gebruikt. De compute-laag zonder server onderbreekt ook automatisch data bases tijdens inactieve Peri Oden wanneer alleen opslag wordt gefactureerd en automatisch data bases hervat wanneer de activiteit wordt geretourneerd.
+
+### <a name="service-tiers"></a>Servicelagen
+
+Azure SQL Database biedt drie service lagen die zijn ontworpen voor verschillende soorten toepassingen:
+- [Algemeen/Standard-](sql-database-service-tier-general-purpose.md) servicelaag ontworpen voor algemene werk belastingen. Biedt berekenings-en opslag opties voor budget gericht evenwicht.
+- [Bedrijfskritiek/Premium-](sql-database-service-tier-business-critical.md) servicelaag ontworpen voor OLTP-toepassingen met een hoge transactie frequentie en een laagste LATENTIE-io. Biedt de hoogste flexibiliteit tot storingen met behulp van verschillende, geïsoleerde replica's.
+- [Grootschalige](sql-database-service-tier-hyperscale.md) service tier ontworpen voor zeer grote OLTP-data base en de mogelijkheid om opslag en schaal berekening voorzichtig te schalen. 
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Elastische pools voor optimaal resourcegebruik
 
@@ -147,7 +157,7 @@ Er is ook een reeks functies voor de [verwerking van adaptieve query’s](/sql/r
 SQL Database biedt een reeks [ingebouwde functies voor beveiliging en naleving](sql-database-security-overview.md) zodat uw toepassing voldoet aan diverse vereisten op het gebied van beveiliging en de naleving van voorschriften.
 
 > [!IMPORTANT]
-> Azure SQL Database (alle implementatie opties), is gecertificeerd op basis van een aantal nalevings standaarden. Zie het [vertrouwens centrum van Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) voor meer informatie over de meest recente lijst met SQL database nalevings certificeringen.
+> Azure SQL Database (alle implementatie opties), is gecertificeerd op basis van een aantal nalevings standaarden. Zie het vertrouwens centrum van [Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) voor meer informatie over de meest recente lijst met SQL database nalevings certificeringen.
 
 ### <a name="advance-threat-protection"></a>Advanced Threat Protection
 
@@ -165,7 +175,7 @@ Geavanceerde gegevens beveiliging is een uniform pakket voor geavanceerde SQL-be
 
 ### <a name="auditing-for-compliance-and-security"></a>Controles voor naleving en beveiliging
 
-Met [auditing](sql-database-auditing.md) worden database gebeurtenissen bijgehouden en naar een audit logboek in uw Azure Storage-account geschreven. Dankzij controles kunt u zorgen voor naleving van wet- en regelgeving, krijgt u inzicht in de activiteit in uw database en in de afwijkingen en discrepanties die kunnen wijzen op problemen voor het bedrijf of vermoedelijke schendingen van de beveiliging.
+[](sql-database-auditing.md) Met auditing worden database gebeurtenissen bijgehouden en naar een audit logboek in uw Azure Storage-account geschreven. Dankzij controles kunt u zorgen voor naleving van wet- en regelgeving, krijgt u inzicht in de activiteit in uw database en in de afwijkingen en discrepanties die kunnen wijzen op problemen voor het bedrijf of vermoedelijke schendingen van de beveiliging.
 
 ### <a name="data-encryption"></a>Gegevensversleuteling
 
@@ -177,7 +187,7 @@ Dankzij [Azure Active Directory-integratie](sql-database-aad-authentication.md) 
 
 ### <a name="compliance-certification"></a>Nalevingscertificering
 
-SQL Database wordt regelmatig gecontroleerd en is gecertificeerd volgens diverse nalevingsstandaarden. Zie het [vertrouwens centrum van Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) voor meer informatie over de meest recente lijst met SQL database nalevings certificeringen.
+SQL Database wordt regelmatig gecontroleerd en is gecertificeerd volgens diverse nalevingsstandaarden. Zie het vertrouwens centrum van [Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) voor meer informatie over de meest recente lijst met SQL database nalevings certificeringen.
 
 ## <a name="easy-to-use-tools"></a>Gebruiksvriendelijke hulpprogramma’s
 
@@ -208,7 +218,7 @@ De huidige versie van SQL Database is V12. Versie V11 is buiten gebruik gesteld.
 
 ### <a name="can-i-control-when-patching-downtime-occurs"></a>Kan ik bepalen wanneer uitval tijd van patches optreedt
 
-Nee. De impact van patching is doorgaans niet merkbaar als u [probeert logica](sql-database-develop-overview.md#resiliency) in uw app te gebruiken. Voor meer informatie over het voorbereiden van geplande onderhouds gebeurtenissen in uw Azure SQL database raadpleegt u [Azure-onderhouds gebeurtenissen plannen in Azure SQL database](sql-database-planned-maintenance.md).
+Nee. De impact van patching is doorgaans niet merkbaar als u [probeert logica](sql-database-develop-overview.md#resiliency) in uw app te gebruiken. Voor meer informatie over het voorbereiden van geplande onderhouds gebeurtenissen in uw Azure SQL database raadpleegt u Azure-onderhouds [gebeurtenissen plannen in Azure SQL database](sql-database-planned-maintenance.md).
 
 ### <a name="azure-hybrid-benefit-questions"></a>Vragen over Azure Hybrid Benefit
 

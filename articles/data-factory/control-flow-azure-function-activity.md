@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: 292fe858b85faef69b9df2dbdf54e7061ed56fa2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a3499637fb5320afe80bf4eefa634173db31f1b6
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142510"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931852"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure functions-activiteit in Azure Data Factory
 
@@ -44,10 +44,10 @@ Het retour type van de Azure-functie moet geldig `JObject`zijn. (Houd er wel bij
 | name  | Naam van de activiteit in de pijp lijn  | Tekenreeks | ja |
 | Type  | Type activiteit is ' AzureFunctionActivity ' | Tekenreeks | ja |
 | gekoppelde service | De gekoppelde Azure-functie service voor de bijbehorende Azure-functie-app  | Verwijzing naar gekoppelde service | ja |
-| functie naam  | De naam van de functie in de Azure-functie-app die deze activiteit aanroept | Tekenreeks | ja |
+| Functie naam  | De naam van de functie in de Azure-functie-app die deze activiteit aanroept | Tekenreeks | ja |
 | methode  | REST API methode voor de functie aanroep | Ondersteunde typen teken reeksen: ' GET ', ' POST ', ' PUT '   | ja |
 | koptekst  | Kopteksten die naar de aanvraag worden verzonden. Als u bijvoorbeeld de taal en het type van een aanvraag wilt instellen: ' headers ': {' Accept-Language ': ' nl-nl ', ' content-type ': ' application/json '} | Teken reeks (of expressie met het resultType van de teken reeks) | Nee |
-| hoofdtekst  | hoofd tekst die samen met de aanvraag wordt verzonden naar de functie-API-methode  | Teken reeks (of expressie met het resultType van de teken reeks) of het object.   | Vereist voor PUT/POST-methoden |
+| body  | hoofd tekst die samen met de aanvraag wordt verzonden naar de functie-API-methode  | Teken reeks (of expressie met het resultType van de teken reeks) of het object.   | Vereist voor PUT/POST-methoden |
 |   |   |   | |
 
 Zie het schema van de sectie aanvraag lading in [schema](control-flow-web-activity.md#request-payload-schema) voor de lading van de aanvraag.
@@ -62,12 +62,12 @@ De Azure function-activiteit biedt ook ondersteuning voor **query's**. Een query
 
 Azure functions een time-out na 230 seconden, ongeacht `functionTimeout` de instelling die u in de instellingen hebt geconfigureerd. Raadpleeg [dit artikel](../azure-functions/functions-versions.md#timeout) voor meer informatie. U kunt dit probleem omzeilen door een async-patroon te volgen of door Durable Functions te gebruiken. Het voor deel van Durable Functions is dat ze hun eigen status tracerings mechanisme bieden, zodat u uw eigen functie niet hoeft te implementeren.
 
-Meer informatie over Durable Functions in [dit artikel](../azure-functions/durable/durable-functions-overview.md). U kunt een Azure function-activiteit instellen om de duurzame functie aan te roepen, waardoor een antwoord wordt geretourneerd met een andere URI, zoals [dit voor beeld](../azure-functions/durable/durable-functions-http-api.md#http-api-url-discovery). Omdat `statusQueryGetUri` de HTTP-status 202 wordt geretourneerd terwijl de functie wordt uitgevoerd, kunt u de status van de functie navragen met behulp van een webactiviteit. Stel een webactiviteit in waarbij het `url` veld is ingesteld op. `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri` Wanneer de duurzame functie is voltooid, wordt de uitvoer van de functie de uitvoer van de webactiviteit.
+Meer informatie over Durable Functions in [dit artikel](../azure-functions/durable/durable-functions-overview.md). U kunt een Azure function-activiteit instellen om de duurzame functie aan te roepen, waardoor een antwoord wordt geretourneerd met een andere URI, zoals [dit voor beeld](../azure-functions/durable/durable-functions-http-features.md#http-api-url-discovery). Omdat `statusQueryGetUri` de HTTP-status 202 wordt geretourneerd terwijl de functie wordt uitgevoerd, kunt u de status van de functie navragen met behulp van een webactiviteit. Stel een webactiviteit in waarbij het `url` veld is ingesteld op. `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri` Wanneer de duurzame functie is voltooid, wordt de uitvoer van de functie de uitvoer van de webactiviteit.
 
 
 ## <a name="sample"></a>Voorbeeld
 
-U vindt een voor beeld van een Data Factory waarin een Azure-functie wordt gebruikt om de inhoud van een tar [](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)-bestand te extra heren.
+U vindt een voor beeld van een Data Factory waarin een Azure-functie wordt gebruikt om de inhoud van een tar [-bestand te](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)extra heren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

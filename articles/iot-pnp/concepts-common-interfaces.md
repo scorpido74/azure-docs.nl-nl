@@ -3,16 +3,16 @@ title: Algemene interfaces-IoT Plug en Play preview | Microsoft Docs
 description: Beschrijving van algemene interfaces voor IoT Plug en Play-ontwikkel aars
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 07/16/2019
+ms.date: 09/08/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5a5aeac06ccf31e88a8ec670e57b22e753553ff5
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 2eae778230fa5fce1be095106a02b2b643ff436e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114254"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935328"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>Algemene interfaces Plug en Play de preview-versie van IoT
 
@@ -38,11 +38,11 @@ Alle IoT Plug en Play-apparaten worden verwacht een aantal algemene interfaces t
 U kunt de Azure IoT-extensie voor Azure CLI gebruiken om de gemeen schappelijke interfaces uit de open bare model opslagplaats op te halen.
 
 ```cmd/sh
-az iot pnp interface show --interface {InterfaceID} --login {ModelRepoConnectionString}
+az iot pnp interface show --interface {InterfaceID}
 ```
 
 ```cmd/sh
-az iot pnp model show --interface {InterfaceID} --login {ModelRepoConnectionString}
+az iot pnp capability-model show --model {ModelID}
 ```
 
 ### <a name="vs-code"></a>VS Code

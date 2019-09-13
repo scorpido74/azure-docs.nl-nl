@@ -1,121 +1,121 @@
 ---
 title: Microsoft Azure Data Box Edge technische specificaties en naleving | Microsoft Docs
-description: Meer informatie over de technische specificaties en de naleving voor uw Azure Data Box-Edge
+description: Meer informatie over de technische specificaties en naleving voor uw Azure Data Box Edge
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 09/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 52fb32a8b34c62fe94ab35e2c051d996ab8bef10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f1199748782c40b2527a8778417588891b84f9fc
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60755131"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910125"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge technische specificaties
 
-De hardware-onderdelen van uw Microsoft Azure Data Box Edge-apparaat voldoen aan de technische specificaties en wettelijk verplichte standaarden die worden beschreven in dit artikel. De technische specificaties beschrijven de Power supply units (PSUs), opslagcapaciteit, behuizingen en uitwerking standaarden. 
+De hardwareonderdelen van uw Microsoft Azure Data Box Edge apparaat voldoen aan de technische specificaties en regelgevings normen als beschreven in dit artikel. De technische specificaties beschrijven de voedings eenheden (PSUs), opslag capaciteit, behuizingen en omgevings standaarden. 
 
-## <a name="power-supply-unit-specifications"></a>Power supply eenheid specificaties
+## <a name="power-supply-unit-specifications"></a>Specificaties van voedings eenheid voor voeding
 
-De gegevens in het Edge-apparaat heeft twee 100-240 V Power supply eenheden (PSUs) met hoge prestaties fans. De twee PSUs bieden een configuratie met redundante voeding. Als een voeding mislukt, wordt het apparaat blijft normaal functioneren op de andere voeding, totdat de mislukte-module is vervangen. De volgende tabel bevat de technische specificaties van de PSUs.
+Het Data Box Edge-apparaat heeft twee 100-240 V-energievoedings eenheden (PSUs) met hoge prestaties. De twee PSUs bieden een redundante energie configuratie. Als een PSU mislukt, blijft het apparaat normaal op de andere PSU functioneren totdat de module failed wordt vervangen. De volgende tabel geeft een lijst van de technische specificaties van de PSUs.
 
 | Specificatie           | 750 W PSU                  |
 |-------------------------|----------------------------|
-| Maximale Uitgangsstroom    | 750 W                     |
+| Maximale uitvoer kracht    | 750 W                     |
 | Frequentie               | 50/60 Hz                   |
-| Bereikselectie voltage | Automatisch variëren: 100-240 V AC |
+| Selectie van voltage bereik | Automatische bereik bepaling: 100-240 V AC |
 | Hot pluggable           | Ja                        |
 
 <!--## Power consumption statistics
 
 The following table lists the typical power consumption data (actual values may vary from the published) for the Data Box Edge device.-->
 
-## <a name="storage-specifications"></a>Opslag-specificaties
+## <a name="storage-specifications"></a>Opslag specificaties
 
-De gegevens in het Edge-apparaten hebben 10 X 2,5" NVMe SSD's, elk met een capaciteit van versie 1.6 TB. Van deze SSD's, 2 besturingssysteemschijven en de andere 8 gegevensschijven. De totale bruikbare capaciteit voor het apparaat is ongeveer 12,5 TB. De volgende tabel bevat de details voor de opslagcapaciteit van het apparaat.
+De Data Box Edge-apparaten hebben 9 X 2,5 ' NVMe Ssd's, elk met een capaciteit van 1,6 TB. Van deze Ssd's, 1 is een schijf van het besturings systeem en de andere 8 zijn gegevens schijven. De totale bruikbare capaciteit van het apparaat is ongeveer 12,5 TB. De volgende tabel bevat de Details voor de opslag capaciteit van het apparaat.
 
 |     Specificatie                          |     Value             |
 |--------------------------------------------|-----------------------|
-|    Aantal SSD-schijven (SSD's)     |    8                  |
-|    Één SSD-capaciteit                     |    1,6 TB             |
+|    Aantal Solid-state drives (Ssd's)     |    8                  |
+|    Capaciteit van één SSD                     |    1,6 TB             |
 |    Totale capaciteit                          |    12,8 TB            |
 |    Totale bruikbare capaciteit *                  |    ~ 12.5 TB            |
 
-**Maak ruimte is gereserveerd voor intern gebruik.*
+**Er is ruimte gereserveerd voor intern gebruik.*
 
-## <a name="enclosure-dimensions-and-weight-specifications"></a>Behuizing dimensies en gewicht specificaties
+## <a name="enclosure-dimensions-and-weight-specifications"></a>Afmetingen van behuizing en gewichts specificaties
 
-De volgende tabellen worden de verschillende behuizing-specificaties voor dimensies en gewicht.
+In de volgende tabellen staan de verschillende specificaties van de behuizing voor dimensies en gewicht.
 
-### <a name="enclosure-dimensions"></a>Behuizing dimensies
+### <a name="enclosure-dimensions"></a>Afmetingen van behuizing
 
-De volgende tabel bevat de afmetingen van de behuizing in millimeters en inch.
+De volgende tabel bevat de afmetingen van de behuizing in millimeters en inches.
 
-|     Systeembehuizing     |     Millimeters     |     Inches     |
+|     Sluit     |     Millimeters     |     Mm     |
 |-------------------|---------------------|----------------|
-|    Hoogte         |    44.45            |    1.75"          |
-|    Breedte          |    434.1           |    17.09"          |
-|    Lengte          |    740.4           |    29.15"          |
+|    Hoogte         |    44,45            |    1,75 '          |
+|    Breedte          |    434,1           |    17,09 '          |
+|    Lengte          |    740,4           |    29,15 '          |
 
-De volgende tabel bevat de afmetingen van het pakket voor verzending in millimeters en inch.
+De volgende tabel bevat de afmetingen van het verzend pakket in millimeters en inches.
 
-|     Pakket     |     Millimeters     |     Inches     |
+|     Pakket     |     Millimeters     |     Mm     |
 |-------------------|---------------------|----------------|
-|    Hoogte         |    311.2            |    12.25"          |
-|    Breedte          |    642.8          |    25.31"          |
-|    Lengte          |   1,051.1          |    41.38"          |
+|    Hoogte         |    311,2            |    12,25 '          |
+|    Breedte          |    642,8          |    25,31 '          |
+|    Lengte          |   1\.051,1          |    41,38 '          |
 
-### <a name="enclosure-weight"></a>Behuizing-gewicht
+### <a name="enclosure-weight"></a>Gewicht van behuizing
 
-Het pakket apparaat weegt 66 lbs. en twee personen verwerkt; het is vereist. Het gewicht van het apparaat, is afhankelijk van de configuratie van de behuizing.
+Het apparaatstuurprogrammapakket weegt 66 lbs. en er zijn twee personen nodig om deze af te handelen. Het gewicht van het apparaat is afhankelijk van de configuratie van de behuizing.
 
-|     Systeembehuizing                                 |     Gewicht          |
+|     Sluit                                 |     Gewicht          |
 |-----------------------------------------------|---------------------|
-|    Totaal gewicht, met inbegrip van het inpakken       |    61 lbs.          |
+|    Totaal gewicht inclusief de verpakking       |    61 lbs.          |
 |    Gewicht van het apparaat                       |    35 lbs.          |
 
-## <a name="enclosure-environment-specifications"></a>Behuizing omgeving specificaties
+## <a name="enclosure-environment-specifications"></a>Specificaties van behuizing-omgeving
 
-In deze sectie bevat de specificaties die betrekking hebben op de behuizing-omgeving, zoals temperatuur, vochtigheid en hoogte.
+In deze sectie vindt u de specificaties met betrekking tot de behuizing-omgeving, zoals Tempe ratuur, vochtigheid en hoogte.
 
-### <a name="temperature-and-humidity"></a>Temperatuur en vochtigheid
+### <a name="temperature-and-humidity"></a>Tempe ratuur en vochtigheid
 
-|     Systeembehuizing         |     De omgevingstemperatuur bereik     |     De relatieve luchtvochtigheid     |     Maximale dauwpunt     |
+|     Sluit         |     Omgevings temperatuur bereik     |     Relatieve lucht vochtigheid     |     Maximum Dew-punt     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
-|    Operationeel        |    10 TEMPERATUUR - 35° C (50° F - 86° F)         |    10% tot 80% niet-voegen tot.         |    29°C (84°F)            |
-|    Niet-operationeel    |    De GC-40 tot 65 ° C (-40 ° F - 149 ° F)     |    5-95% niet-voegen tot.          |    33 GC (91° F)            |
+|    Operationeel        |    10 °C-35 °C (50 °F-86 °F)         |    10%-80% niet-condenserend.         |    29 °C (84 °F)            |
+|    Niet-operationeel    |    -40 °C tot 65 °C (-40 °F-149 °F)     |    5%-95% niet-condenserend.          |    33 °C (91 °F)            |
 
-### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Luchtstroom, hoogte, schudt, trillingen, richting, veiligheid en EMC
+### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Lucht stroom, hoogte, schokken, trillingen, oriëntatie, veiligheid en EMC
 
-|     Systeembehuizing                           |     Operationele specificaties                                                                                                                                                                                         |
+|     Sluit                           |     Operationele specificaties                                                                                                                                                                                         |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|    Luchtstroom                              |    Systeem luchtstroom is voor naar achteren. Systeem moet worden gebruikt met een low-pressure, achterzijde uitlaatgas installatie. <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
-|    Maximale hoogte, operationele        |    3048 meters (10.000 voet) met hoogste temperatuur ongedaan maken geclassificeerd bepaald door [temperatuur ongedaan maken waardering specificaties](#operating-temperature-de-rating-specifications).                                                                                |
-|    Maximale hoogte, niet-operationeel    |    12\.000 meters (39,370 voet)                                                                                                                                                                                         |
-|    Schudt, operationele                   |    6 G voor 11 milliseconden in 6 richtingen                                                                                                                                                                         |
-|    Schudt, niet-operationeel               |    71 G voor 2 milliseconden in 6 richtingen                                                                                                                                                                           |
-|    Trillingen, operationele               |    0,26 G<sub>RMS</sub> 5 Hz tot 350 Hz willekeurige                                                                                                                                                                                     |
-|    Trillingen, niet-operationeel           |    1.88 G<sub>RMS</sub> 10 Hz tot 500 Hz gedurende 15 minuten (alle zes zijden getest.)                                                                                                                                                  |
-|    De afdrukstand en koppelen             |    19-inch rek monteren                                                                                                                                                                                        |
-|    Veiligheid en -goedkeuringen                 |    EN 60950-1:2006 A1:2010 + A2:2013 + A11:2009 + A12:2011 / IEC 60950-1:2005 ed2 + A1:2009 + A2:2013 EN 62311:2008                                                                                                                                                                       |
-|    EMC                                  |    FCC A, ICES-003 <br>NL 55032:2012 / CISPR 32:2012  <br>NL 55032:2015 / CISPR 32:2015  <br>NL 55024:2010 + A1:2015 / CISPR 24:2010 + A1:2015  <br>NL 61000-3-2:2014 / IEC 61000-3-2:2014 (klasse D)   <br>EN 61000-3-3:2013/IEC 61000-3-3:2013                                                                                                                                                                                         |
-|    Energie             |    Verordening (EU) Nee 617/2013                                                                                                                                                                                        |
-|    RoHS           |    EN 50581:2012                                                                                                                                                                                        |
+|    Lucht stroom                              |    De stroom van het systeem is aan de achterzijde. Het systeem moet worden bediend met een installatie met een lage druk, een achterlopende uitlaat. <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
+|    Maximum hoogte, operationeel        |    3048 meters (10.000 meter) met een maximale gebruiks temperatuur van de nominale waarde bepaald door [de specificaties van de gebruiks temperatuur van de beoordeling](#operating-temperature-de-rating-specifications).                                                                                |
+|    Maximale hoogte, niet-operationeel    |    12.000 meters (39.370 meter)                                                                                                                                                                                         |
+|    Schokken, operationeel                   |    6 G voor 11 milliseconden in 6 standen                                                                                                                                                                         |
+|    Schokken, niet-operationeel               |    71 G voor 2 milliseconden in 6 standen                                                                                                                                                                           |
+|    Trillingen, operationeel               |    0,26 G<sub>RMS</sub> 5 hz tot 350 Hz wille keurig                                                                                                                                                                                     |
+|    Trillingen, niet-operationeel           |    1,88 G<sub>RMS</sub> 10 hz tot 500 Hz gedurende 15 minuten (alle zes zijden zijn getest)                                                                                                                                                  |
+|    Afdruk stand en koppelen             |    19-rack koppeling                                                                                                                                                                                        |
+|    Veiligheid en goed keuringen                 |    EN 60950-1:2006 + a1:2010 + a2:2013 + A11:2009 + A12:2011/IEC 60950-1:2005 ed2 + a1:2009 + a2:2013 EN 62311:2008                                                                                                                                                                       |
+|    EMC                                  |    FCC A, ICES-003 <br>EN 55032:2012/CISPR 32:2012  <br>EN 55032:2015/CISPR 32:2015  <br>EN 55024:2010 + A1:2015/CISPR 24:2010 + A1:2015  <br>EN 61000-3-2:2014/IEC 61000-3-2:2014 (klasse D)   <br>EN 61000-3-3:2013/IEC 61000-3-3:2013                                                                                                                                                                                         |
+|    Energie             |    Verordening (EU) van de Commissie. 617/2013                                                                                                                                                                                        |
+|    BvGS           |    EN 50581:2012                                                                                                                                                                                        |
 
 
-### <a name="operating-temperature-de-rating-specifications"></a>Ongedaan maken waardering specificaties temperatuur
+### <a name="operating-temperature-de-rating-specifications"></a>Specificaties voor de gebruiks temperatuur van de beoordeling
 
-|     Operationele temperatuur waardering ongedaan maken     |     De omgevingstemperatuur bereik                                                         |
+|     De beoordeling van de gebruiks temperatuur     |     Omgevings temperatuur bereik                                                         |
 |--------------------------------------------|------------------------------------------------------------------------------------------|
-|    Tot 35 GC (95° F)                       |    Maximale temperatuur verminderd door 1° C/300 m (1° F/547 ft) boven 950 m (3,117 ft).    |
-|    35° C tot 40° C (95° F tot 104° F)            |    Maximale temperatuur verminderd door 1° C/175 m (1° F/319 ft) boven 950 m (3,117 ft).    |
-|    40° C tot 45° C (104° F tot 113° F)           |    Maximale temperatuur verminderd door 1° C/125 m (1° F/228 ft) boven 950 m (3,117 ft).    |
+|    Maxi maal 35 °C (95 °F)                       |    De maximale Tempe ratuur wordt verlaagd met 1 °C/300 m (1 °F/547 ft) boven 950 m (3.117 ft).    |
+|    35 °C tot 40 °C (95 °F tot 104 °F)            |    De maximale Tempe ratuur wordt verlaagd met 1 °C/175 m (1 °F/319 ft) van meer dan 950 m (3.117 ft).    |
+|    40 °C tot 45 °C (104 °F tot 113 °F)           |    De maximale Tempe ratuur wordt verlaagd met 1 °C/125 m (1 °F/228 ft) van meer dan 950 m (3.117 ft).    |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Uw Azure Data Box-Edge implementeren](data-box-edge-deploy-prep.md)
+- [Uw Azure Data Box Edge implementeren](data-box-edge-deploy-prep.md)

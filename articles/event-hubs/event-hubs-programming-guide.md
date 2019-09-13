@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d9a1dff9c44403ad14e58b3fc3cda880cf65a29c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 28b5c2db0f347b27beb31d427c7f189d74903dff
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679115"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913982"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Programmeerhandleiding voor Azure Event Hubs
 Dit artikel worden enkele algemene scenario's bij het schrijven van code met Azure Event Hubs. Er wordt uitgegaan van een basisbegrip van Event Hubs. Zie het [Overzicht van Event Hubs](event-hubs-what-is-event-hubs.md) voor een conceptueel overzicht van Event Hubs.
@@ -140,7 +140,10 @@ Met de klasse [EventProcessorHost][] wordt ook een op Azure Storage gebaseerd me
 
 ## <a name="publisher-revocation"></a>Uitgever intrekken
 
-Naast de geavanceerde functies van de runtime van [EventProcessorHost][], Event Hubs maakt intrekken van uitgevers als u wilt dat specifieke uitgevers geen gebeurtenis kunnen verzenden naar een event hub. Deze functies zijn handig als token van een uitgever is aangetast, of een software-update wordt veroorzaakt door ze naar behoren functioneert vanwege. In deze gevallen kan de uitgever-id, die onderdeel is van het bijbehorende SAS-token, worden geblokkeerd voor het uitgeven van gebeurtenissen.
+Naast de geavanceerde runtime functies van Event processor host, kan de Event Hubs-service de intrekking van een [Uitgever](/rest/api/eventhub/revoke-publisher) inschakelen om te voor komen dat specifieke uitgevers een gebeurtenis verzenden naar een event hub. Deze functies zijn handig als token van een uitgever is aangetast, of een software-update wordt veroorzaakt door ze naar behoren functioneert vanwege. In deze gevallen kan de uitgever-id, die onderdeel is van het bijbehorende SAS-token, worden geblokkeerd voor het uitgeven van gebeurtenissen.
+
+> [!NOTE]
+> Op dit moment wordt deze functie alleen door REST API ondersteund ([intrekken](/rest/api/eventhub/revoke-publisher)van de uitgever).
 
 Zie het voorbeeld [Op grote schaal veilig publiceren met Event Hubs](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) voor meer informatie over het intrekken van uitgevers en over het als uitgever verzenden naar Event Hubs.
 

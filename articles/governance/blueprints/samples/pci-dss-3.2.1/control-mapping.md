@@ -8,18 +8,21 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d7d62770bc0e2683fc7bc1554493954c0e98758b
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 2ec299a79f852c553763439290b014a91d3a9414
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232686"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918603"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>De toewijzing van het voor beeld van het PCI-DSS v 3.2.1-blauw druk
 
 Het volgende artikel bevat informatie over de manier waarop het Azure-blauw drukken van het PCI-DSS v 3.2.1-voor beeld wordt toegewezen aan de besturings elementen voor PCI-DSS v 3.2.1. Zie [PCI-DSS v 3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf)voor meer informatie over de besturings elementen.
 
 De volgende toewijzingen zijn de **PCI-DSS v 3.2.1:2018** -besturings elementen. Gebruik de navigatie aan de rechter kant om rechtstreeks naar een specifieke besturings element koppeling te gaan. Veel van de toegewezen besturings elementen worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md) -initiatief. Als u het complete initiatief wilt bekijken, opent u **beleid** in het Azure Portal en selecteert u de pagina **definities** . Zoek en selecteer vervolgens de  **\[preview\] -controle PCI v 3.2.1:2018-besturings elementen en implementeer specifieke VM-extensies ter ondersteuning** van de ingebouwde beleids initiatieven voor controle vereisten.
+
+> [!IMPORTANT]
+> Elk besturings element hieronder is gekoppeld aan een of meer [Azure Policy](../../../policy/overview.md) definities. Met deze beleids regels kunt u de naleving van het besturings element [beoordelen](../../../policy/how-to/get-compliance-data.md) . Er is echter vaak geen 1:1-of volledige overeenkomst tussen een besturings element en een of meer beleids regels. Als zodanig is de **naleving** in azure Policy alleen bedoeld voor het beleid zelf. Dit garandeert niet dat u volledig compatibel bent met alle vereisten van een besturings element. Daarnaast bevat de nalevings standaard besturings elementen die niet worden behandeld door Azure Policy definities op dit moment. Daarom is naleving in Azure Policy slechts een gedeeltelijke weer gave van uw algemene nalevings status. De koppelingen tussen de besturings elementen en Azure Policy definities voor dit voor beeld van deze naleving blauw druk kunnen na verloop van tijd veranderen. Als u de wijzigings geschiedenis wilt weer geven, raadpleegt u de [github commit-geschiedenis](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md).
 
 ## <a name="132-and-134-boundary-protection"></a>Grens beveiliging voor 1.3.2 en 1.3.4
 
@@ -134,7 +137,7 @@ Nu u de controle toewijzing van de PCI-DSS v 3.2.1-blauw druk hebt gecontroleerd
 
 ## <a name="addition-articles-about-blueprints-and-how-to-use-them"></a>Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
-- Meer informatie over de [levens duur van de blauw druk](../../concepts/lifecycle.md).
+- Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.
 - Meer informatie over hoe u de [blauwdrukvolgorde](../../concepts/sequencing-order.md) aanpast.
 - Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](../../concepts/resource-locking.md).

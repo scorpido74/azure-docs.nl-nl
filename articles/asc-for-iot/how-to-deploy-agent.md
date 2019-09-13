@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: ffc6ea447ae90649be0455abbed6245c078e518d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 18031400155b92f243877ae8c8d7a56e1d5295a0
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596343"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933650"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Een beveiligings agent op uw IoT-apparaat selecteren en implementeren
 
@@ -44,7 +44,7 @@ De op C gebaseerde beveiligings agent heeft een lagere geheugen capaciteit en is
 |     | Op C gebaseerde beveiligings agent | C#gebaseerde beveiligings agent |
 | --- | ----------- | --------- |
 | Open-source | Beschikbaar onder een [MIT-licentie](https://en.wikipedia.org/wiki/MIT_License) in [github](https://aka.ms/iot-security-github-cs) | Beschikbaar onder een [MIT-licentie](https://en.wikipedia.org/wiki/MIT_License) in [github](https://aka.ms/iot-security-github-c) |
-| Ontwikkel taal    | C | C# |
+| Ontwikkeltaal    | C | C# |
 | Ondersteunde Windows-platforms? | Nee | Ja |
 | Windows-vereisten | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Ondersteunde Linux-platforms? | Ja, x64 en x86 | Ja, alleen x64 |
@@ -78,7 +78,7 @@ Beantwoord de volgende vragen over uw IoT-apparaten om de juiste agent te select
 
 - Gebruikt u een Linux-distributie met een x64-architectuur?
 
-    U kunt een van beide agents gebruiken. <br>
+    Beide versies van de agent kunnen worden gebruikt. <br>
     [Implementeer een op C gebaseerde beveiligings agent voor Linux](how-to-deploy-linux-c.md) en/of [Implementeer een C#beveiligings agent voor Linux](how-to-deploy-linux-cs.md).
 
 Beide versies van de agent bieden dezelfde set functies en bieden ondersteuning voor vergelijk bare configuratie opties.
@@ -97,7 +97,7 @@ De volgende lijst bevat alle momenteel ondersteunde platforms.
 |C#|Ubuntu 18.04    |x64|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
-|C#|Windows 10 IoT core build 17763 |x64|
+|C#|Windows 10 IoT core, build 17763    |x64|
 |
 
 ## <a name="next-steps"></a>Volgende stappen

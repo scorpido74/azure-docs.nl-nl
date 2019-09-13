@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: c692b1c5b77b95e5487a847b46473906135c3d86
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: aeb00b84ac254232e0d68fd9631fb539a928e67d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261139"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931894"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Over de Mobility-service voor VMware-Vm's en fysieke servers
 
@@ -119,7 +119,7 @@ Gebruik | UnifiedAgent. exe/Role \<MS/MT >/InstallLocation \<-installatie locati
 Installatie logboeken | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
 /Role | Verplichte installatie parameter. Hiermee geeft u op of de Mobility-service (MS) of het hoofd doel (MT) moet worden geïnstalleerd.
 /InstallLocation| Optionele para meter. Hiermee geeft u de installatie locatie van de Mobility-service (een map).
-/Platform | Verplicht. Hiermee geeft u het platform op waarop de Mobility-service is geïnstalleerd. **VMware** voor VMware-vm's/fysieke servers; **Azure** voor Azure-vm's.
+/Platform | Verplicht. Hiermee geeft u het platform op waarop de Mobility-service is geïnstalleerd. **VMware** voor VMware-vm's/fysieke servers; **Azure** voor Azure-vm's.<br/><br/> Als u Azure-Vm's als fysieke machines behandelt, moet u **VMware**opgeven.
 /Silent| Optioneel. Hiermee geeft u op of het installatie programma moet worden uitgevoerd in de Stille modus.
 
 #### <a name="registration-settings"></a>Registratie-instellingen

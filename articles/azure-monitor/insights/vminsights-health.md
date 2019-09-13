@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.date: 09/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 311db544a119d4b9bee7d31cfdfac33aa3c4ed79
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: b9b4a33e5aee92a4e8caa7a1128538cb2f1a8a7e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233223"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933126"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Inzicht in de status van uw virtuele machines in azure
 
@@ -36,49 +36,52 @@ Zie [Azure monitor voor VM's inschakelen](vminsights-enable-overview.md)voor mee
 
 In deze sectie vindt u een overzicht van de standaard status criteria voor het bewaken van Azure Windows-en Linux-Vm's. Alle status criteria zijn vooraf geconfigureerd om een waarschuwing te verzenden wanneer ze een onjuiste voor waarde detecteren.
 
-### <a name="windows-vms"></a>Windows-VM's
+| Monitor naam | Frequentie (min.) | Lookback duur (min) | Operator | Drempelwaarde | Waarschuwen over status | Severity | Categorie workload | 
+|--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
+| Logische schijf online | 5 | 15 | <> | 1 (waar) | Kritiek | Sev1 | Linux | 
+| Beschik bare ruimte op logische schijf | 5 | 15 | < | 200 MB (waarschuwing)<br> 100 MB (kritiek) | Waarschuwing | Sev1<br> Sev2 | Linux | 
+| % Vrije inodes voor logische schijf | 5 | 15 | < | 5% | Kritiek | Sev1 | Linux | 
+| Percentage beschik bare ruimte logische schijf | 5 | 15 | < | 5% | Kritiek | Sev1 | Linux | 
+| Status van de netwerk adapter | 5 | 15 | <> | 1 (waar) | Waarschuwing | Sev2 | Linux | 
+| Beschik bare mega bytes geheugen van besturings systeem | 5 | 10 | < | 2,5 MB | Kritiek | Sev1 | Linux | 
+| Schijf Gem. Schijf sec/lezen | 5 | 25 | > | 0,05 s | Kritiek | Sev1 | Linux | 
+| Schijf Gem. Schijfoverdrachten per seconde | 5 | 25 | > | 0,05 s | Kritiek | Sev1 | Linux | 
+| Schijf Gem. Schijf sec/schrijven | 5 | 25 | > | 0,05 s | Kritiek | Sev1 | Linux | 
+| Schijf status | 5 | 25 | <> | 1 (waar) | Kritiek | Sev1 | Linux | 
+| Totale percentage processor tijd van het besturings systeem | 5 | 10 | >= | 95% | Kritiek | Sev1 | Linux | 
+| Totaal percentage CPU-gebruik | 5 | 10 | >= | 95% | Kritiek | Sev1 | Windows | 
+| Fout in het bestands systeem of beschadiging | 60 | 60 | <> | 4 | Kritiek | Sev1 | Windows | 
+| Gemiddeld aantal seconden per Lees bewerking voor logische schijf | 1 | 15 | > | 0.04 s | Waarschuwing | Sev2 | Windows | 
+| Gemiddeld aantal seconden per overdracht logische schijf | 1 | 15 | > | 0.04 s | Waarschuwing | Sev2 | Windows | 
+| Gemiddeld aantal seconden per schrijf bewerking logische schijf (logische schijf) | 1 | 15 | > | 0.04 s | Waarschuwing | Sev2 | Windows | 
+| Huidige wachtrij lengte voor de schijf (logische schijf) | 5 | 60 | >= | 32 | Waarschuwing | Sev2 | Windows | 
+| Beschik bare ruimte op logische schijf (MB) | 15 | 60 | > | 500 MB-waarschuwing<br> 300 MB kritiek | Kritiek | Sev1<br> Sev2 | Windows | 
+| Beschik bare ruimte op logische schijf (%) | 15 | 60 | > | waarschuwing voor 10%<br> 5% kritiek | Kritiek | Sev1<br> Sev2 | Windows |
+| Percentage niet-actieve tijd van logische schijf | 15 | 360 | <= | 20% | Waarschuwing | Sev2 | Windows | 
+| Percentage gebruikte band breedte gelezen | 5 | 60 | >= | 60% | Waarschuwing | Sev2 | Windows | 
+| Totaal percentage gebruikte band breedte | 5 | 60 | >= | 75% | Waarschuwing | Sev2 | Windows | 
+| Percentage gebruikte band breedte voor schrijven | 5 | 60 | >= | 60% | Waarschuwing | Sev2 | Windows | 
+| Service Health DHCP-client | 5 | 12 | <> | 4 (wordt uitgevoerd) | Kritiek | Sev1 | Windows | 
+| DNS-Client Service Health | 5 | 12 | <> | 4 (wordt uitgevoerd) | Kritiek | Sev1 | Windows | 
+| Windows-gebeurtenis logboek Service Health | 5 | 12 | <> | 4 (wordt uitgevoerd) | Kritiek | Sev1 | Windows | 
+| Windows Firewall Service Health | 5 | 12 | <> | 4 (wordt uitgevoerd) | Kritiek | Sev1 | Windows | 
+| RPC-Service Health | 5 | 12 | <> | 4 (wordt uitgevoerd) | Kritiek | Sev1 | Windows | 
+| Server Service Health | 5 | 12 | <> | 4 (wordt uitgevoerd) | Kritiek | Sev1 | Windows | 
+| Service Health voor extern beheer van Windows | 5 | 12 | <> | 4 (wordt uitgevoerd) | Kritiek | Sev1 | Windows | 
+| Beschik bare mega bytes aan geheugen | 5 | 10 | < | 100 MB | Kritiek | Sev1 | Windows | 
+| Vermeldingen in tabel met beschik bare systeem pagina's | 5 | 10 | <= | 5000 | Kritiek | Sev1 | Windows | 
+| Geheugen pagina's per seconde | 5 | 10 | >= | 5000/s | Waarschuwing | Sev1 | Windows | 
+| Percentage toegewezen geheugen in gebruik | 5 | 10 | > | 80% | Kritiek | Sev1 | Windows | 
+| Gemiddeld aantal seconden per overdracht schijf | 1 | 15 | > | 0.04 s | Waarschuwing | Sev2 | Windows | 
+| Gemiddeld aantal seconden per schrijf bewerking schijf | 1 | 15 | > | 0.04 s | Waarschuwing | Sev2 | Windows | 
+| Huidige wachtrij lengte voor de schijf | 5 | 60 | >= | 32 | Waarschuwing | Sev2 | Windows | 
+| Percentage niet-actieve tijd schijf | 5 | 60 | >= | 20% | Waarschuwing | Sev2 | Windows | 
 
-- Beschik bare mega bytes aan geheugen
-- Gemiddeld aantal seconden per schrijf bewerking (logische schijf)
-- Gemiddeld aantal seconden per schrijf bewerking (schijf)
-- Gemiddeld aantal seconden per Lees bewerking voor logische schijf
-- Gemiddeld aantal seconden per overdracht logische schijf
-- Gemiddeld aantal seconden per Lees bewerking schijf
-- Gemiddeld aantal seconden per overdracht schijf
-- Huidige wachtrij lengte voor de schijf (logische schijf)
-- Huidige wachtrij lengte voor de schijf (schijf)
-- Percentage niet-actieve tijd schijf
-- Fout in het bestands systeem of beschadiging
-- Beschik bare ruimte op logische schijf (%) Gebrek
-- Beschik bare ruimte op logische schijf (MB)
-- Percentage niet-actieve tijd van logische schijf
-- Geheugen pagina's per seconde
-- Percentage gebruikte band breedte gelezen
-- Totaal percentage gebruikte band breedte
-- Percentage gebruikte band breedte voor schrijven
-- Percentage toegewezen geheugen in gebruik
-- Percentage niet-actieve tijd schijf
-- Service Health DHCP-client
-- DNS-Client Service Health
-- RPC-Service Health
-- Server Service Health
-- Totaal percentage CPU-gebruik
-- Windows-gebeurtenis logboek Service Health
-- Windows Firewall Service Health
-- Service Health voor extern beheer van Windows
+>[!NOTE]
+>De duur Lookback geeft aan hoe vaak in het venster terugkijken de metrische waarden worden gecontroleerd, bijvoorbeeld de laatste vijf minuten.  
 
-### <a name="linux-vms"></a>Linux VM's
-
-- Schijf Gem. Schijfoverdrachten per seconde
-- Schijf Gem. Schijf sec/lezen
-- Schijf Gem. Schijf sec/schrijven
-- Schijf status
-- Beschik bare ruimte op logische schijf
-- Percentage beschik bare ruimte logische schijf
-- % Vrije inodes voor logische schijf
-- Status van de netwerk adapter
-- Totale percentage processor tijd
-- Beschik bare bytes van het besturings systeem geheugen
+>[!NOTE]
+>Frequentie geeft aan hoe vaak de metrische waarschuwing controleert als aan de voor waarden wordt voldaan, bijvoorbeeld elke minuut.  Het is de frequentie waarmee het criterium van de status wordt uitgevoerd en lookback is de duur waarover het status criterium wordt geëvalueerd. Status criterium wordt bijvoorbeeld geëvalueerd als het **CPU-gebruik** van de voor waarde hoger is dan 95 procent met een frequentie van 5 minuten en gedurende 15 minuten langer dan 95% is (3 opeenvolgende evaluatie cycli), dan wordt de status bijgewerkt naar kritiek Ernst als dit nog niet is gebeurd.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -164,7 +167,7 @@ Klik op **status weer geven** selectie vakje en de status wordt geretourneerd vo
 
 Voor een van de items in de lijst kunt u op de corresponderende status klikken om status diagnostiek te starten. hier ziet u hoe de status van de geselecteerde virtuele machine wordt geëvalueerd. 
 
-Als u op de pagina **virtual machines** de naam van een virtuele machine selecteert onder de naam van de virtuele **machine**, gaat u naar de pagina van het **VM-exemplaar** . Op deze pagina vindt u meer informatie over de problemen met waarschuwingen en status criteria die van invloed zijn op de geselecteerde virtuele machine. Filter de status Details door in de linkerbovenhoek van de pagina de status pictogram te selecteren om te zien welke onderdelen slecht zijn. U kunt ook de VM-status waarschuwingen weer geven die zijn gegenereerd door een niet-gezond onderdeel gecategoriseerd op basis van de ernst van de waarschuwing.
+Als u op de pagina **virtual machines** de naam van een virtuele machine selecteert onder de naam van de virtuele **machine**, gaat u naar de pagina van het **VM-exemplaar** . Op deze pagina vindt u meer informatie over de problemen met waarschuwingen en status criteria die van invloed zijn op de geselecteerde virtuele machine. Filter de status Details door in de linkerbovenhoek van de pagina de **status pictogram te** selecteren om te zien welke onderdelen slecht zijn. U kunt ook de VM-status waarschuwingen weer geven die zijn gegenereerd door een niet-gezond onderdeel gecategoriseerd op basis van de ernst van de waarschuwing.
 
 Selecteer in de lijst weergave van de **virtuele machine** de naam van een virtuele machine om de **status** pagina voor die virtuele machine te openen, op dezelfde manier als u direct **inzichten (preview)** van de virtuele machine hebt geselecteerd.
 
@@ -245,7 +248,7 @@ Het beleid voor het samen stellen van statussen maakt deel uit van de configurat
 
 U kunt ook de lijst met Azure Monitor REST API [exemplaren controleren per resource](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitorinstances/listbyresource) gebruiken om een lijst met alle status criteria op te halen. Dit criterium bevat configuratie details die worden uitgevoerd op de Azure VM-resource.
 
-Voor het criterium type voor de eenheids status kan de configuratie worden gewijzigd door de koppeling naar het beletsel teken aan de rechter kant te selecteren. Selecteer **Details weer geven** om het configuratie deel venster te openen.
+Voor het criterium type voor de **eenheids** status kan de configuratie worden gewijzigd door de koppeling naar het beletsel teken aan de rechter kant te selecteren. Selecteer **Details weer geven** om het configuratie deel venster te openen.
 
 ![Een voor beeld van een status criterium configureren](./media/vminsights-health/health-diagnostics-vm-example-02.png)
 

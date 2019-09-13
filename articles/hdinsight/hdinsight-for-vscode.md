@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 226862c51417e311bc39feefa9f5e860d55b7dc1
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 51f0e223abd7103663fddd8c06dcdf0be549c671
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034112"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70930800"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Gebruik de Spark-& Hive-Hulpprogram Ma's voor Visual Studio code
 
@@ -37,7 +37,7 @@ Nadat u aan de vereisten hebt voldaan, kunt u Spark-& Hive-Hulpprogram Ma's voor
 
 1. Open Visual Studio Code.
 
-2. Ga in de menu balk naar uitbrei**dingen** **weer geven** > .
+2. Ga in de menu balk naar**uitbrei dingen** **weer geven** > .
 
 3. Voer in het zoekvak **Spark &-Hive**in.
 
@@ -56,7 +56,7 @@ Voer de volgende stappen uit om een werkmap te openen en een bestand te maken in
 
 2. Selecteer in de **Verkenner** -weer gave de map **HDexample** en selecteer vervolgens het pictogram **nieuw bestand** naast de werkmap:
 
-   ![Nieuw bestand](./media/hdinsight-for-vscode/new-file.png)
+   ![Nieuw bestand](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
 
 3. Geef het nieuwe bestand een naam met behulp van de `.hql` (Hive-query's) of de `.py` bestands extensie (Spark-script). In dit voor beeld wordt **HelloWorld. HQL**gebruikt.
 
@@ -131,7 +131,7 @@ U kunt een normaal cluster koppelen met behulp van een door [Apache Ambari](http
 
 3. Bekijk de **uitvoer** weergave. In deze weer gave worden uw gekoppelde cluster (of clusters) en alle clusters onder uw Azure-abonnement weer gegeven:
 
-    ![Een standaard cluster configuratie instellen](./media/hdinsight-for-vscode/list-cluster-result.png)
+    ![Een standaard cluster configuratie instellen](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
 ## <a name="set-the-default-cluster"></a>Het standaard cluster instellen
 
@@ -280,7 +280,7 @@ Een bestand verzenden en u ziet dat de map. vscode automatisch wordt toegevoegd 
 
 + De project instellingen:
 
-    ![Livy-configuratie](./media/hdinsight-for-vscode/hdi-livyconfig.png)
+    ![Livy-configuratie](./media/hdinsight-for-vscode/hdi-apache-livy-config.png)
 
     >[!NOTE]
     >Stel de waarde en eenheid in voor de instellingen **driverMemory** en **executorMemory** . Bijvoorbeeld: 1g of 1024m.
@@ -292,19 +292,19 @@ Een bestand verzenden en u ziet dat de map. vscode automatisch wordt toegevoegd 
 
     | name | description | Type | 
     | :- | :- | :- | 
-    | file | Bestand met de toepassing die moet worden uitgevoerd | Pad (vereist) |
+    | file | Bestand met de toepassing die moet worden uitgevoerd | pad (vereist) |
     | proxyUser | Gebruiker die moet worden geïmiteerd bij het uitvoeren van de taak | Tekenreeks |
     | className | Hoofd klasse java/Spark-toepassing | Tekenreeks |
-    | args | Opdracht regel argumenten voor de toepassing | Lijst met teken reeksen |
-    | jars | Potten die in deze sessie moeten worden gebruikt | Lijst met teken reeksen | 
-    | pyFiles | Python-bestanden die moeten worden gebruikt in deze sessie | Lijst met teken reeksen |
-    | files | Bestanden die moeten worden gebruikt in deze sessie | Lijst met teken reeksen |
+    | args | Opdracht regel argumenten voor de toepassing | lijst met teken reeksen |
+    | jars | potten die in deze sessie moeten worden gebruikt | lijst met teken reeksen | 
+    | pyFiles | Python-bestanden die moeten worden gebruikt in deze sessie | lijst met teken reeksen |
+    | files | bestanden die moeten worden gebruikt in deze sessie | lijst met teken reeksen |
     | driverMemory | Hoeveelheid geheugen die moet worden gebruikt voor het stuur programma | Tekenreeks |
     | driverCores | Het aantal kernen dat moet worden gebruikt voor het stuur programma | Int |
     | executorMemory | Hoeveelheid geheugen die per bewerkings proces moet worden gebruikt | Tekenreeks |
     | executorCores | Aantal kernen dat voor elke uitvoerder moet worden gebruikt | Int |
     | numExecutors | Aantal actieve uitvoerendeers dat voor deze sessie wordt gestart | Int |
-    | archives | Archief archieven die moeten worden gebruikt in deze sessie | Lijst met teken reeksen |
+    | archives | Archief archieven die moeten worden gebruikt in deze sessie | lijst met teken reeksen |
     | queue | De naam van de wachtrij met GARENs die moet worden ingediend| Tekenreeks |
     | name | De naam van deze sessie | Tekenreeks |
     | belangen | Eigenschappen van Spark-configuratie | Toewijzing van sleutel = val |
@@ -317,7 +317,7 @@ Een bestand verzenden en u ziet dat de map. vscode automatisch wordt toegevoegd 
     | id | Sessie-id | Int | 
     | appId | Toepassings-id van deze sessie | Tekenreeks |
     | appInfo | Gedetailleerde toepassings informatie | Toewijzing van sleutel = val |
-    | logboek | Logboek regels | Lijst met teken reeksen |
+    | logboek | Logboek regels | lijst met teken reeksen |
     | toestand |Batch status | Tekenreeks |
 
     >[!NOTE]
@@ -409,7 +409,7 @@ Bij het verzenden van een taak naar een HDInsight-cluster wordt u gevraagd het c
   >
   >U kunt gebruiken `Spark / Hive: List Cluster` om het gekoppelde cluster te controleren:
   >
-  >![Koppeling naar het onderdeel Hulpprogramma's van Spark & voor Visual Studio code Reader](./media/hdinsight-for-vscode/list-cluster-result.png)
+  >![Koppeling naar het onderdeel Hulpprogramma's van Spark & voor Visual Studio code Reader](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
 ## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 

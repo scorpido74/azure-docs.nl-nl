@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: victorh
-ms.openlocfilehash: 119f28bcc4f88f0b4dc0ce65584dbce326087eba
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: da5880d27e5dd51d3a5f90b7cd6cf2e7dec50f89
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114763"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932748"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -149,7 +149,10 @@ Als u * **. contoso.com**configureert, is *anyvalue*. contoso.com, maar niet con
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>*De inrichtings status: Mislukt* gemiddelde?
 
-Wanneer een configuratie wijziging wordt toegepast, probeert Azure Firewall alle onderliggende back-end-exemplaren bij te werken. In zeldzame gevallen kan een van deze backend-exemplaren niet worden bijgewerkt met de nieuwe configuratie en wordt het update proces gestopt met een mislukte inrichtings status. Uw Azure Firewall is nog steeds operationeel, maar de toegepaste configuratie kan een inconsistente status hebben, waarbij sommige instanties de vorige configuratie hebben, waarbij anderen de bijgewerkte regelset hebben. Als dit het geval is, kunt u proberen om de configuratie nog een keer bij te werken totdat de bewerking is geslaagd en uw firewall een geslaagde inrichtings status heeft.
+Wanneer een configuratie wijziging wordt toegepast, probeert Azure Firewall alle onderliggende back-end-exemplaren bij te werken. In zeldzame gevallen kan een van deze backend-exemplaren niet worden bijgewerkt met de nieuwe configuratie en wordt het update proces gestopt met een mislukte inrichtings status. Uw Azure Firewall is nog steeds operationeel, maar de toegepaste configuratie kan een inconsistente status hebben, waarbij sommige instanties de vorige configuratie hebben, waarbij anderen de bijgewerkte regelset hebben. Als dit het geval is, kunt u proberen om de configuratie nog een keer bij te werken totdat de bewerking is geslaagd en uw firewall een *geslaagde* inrichtings status heeft.
+
+### <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Hoe verwerkt Azure Firewall gepland onderhoud en niet-geplande fouten?
+Azure Firewall bestaat uit verschillende back-end-knoop punten in een actief/actief-configuratie.  Voor elk gepland onderhoud hebben we verbindings verwerkings logica voor het op de juiste wijze bijwerken van knoop punten.  Updates worden gepland tijdens niet-kantoor uren voor elk van de Azure-regio's om het risico van onderbrekingen verder te beperken.  Voor ongeplande problemen instantiëren we een nieuw knoop punt om het knoop punt dat is mislukt te vervangen.  De verbinding met het nieuwe knoop punt wordt doorgaans binnen tien seconden na het tijdstip van de fout hersteld.
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>Is er een maximum aantal tekens voor een firewall naam?
 

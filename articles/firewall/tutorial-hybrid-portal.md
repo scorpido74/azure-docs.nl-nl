@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: f7dce448b01c211441fd1e0fd530ff6ad062c303
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 08c1a8940bedb1093f618c8de53abc78f81c10dd
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114876"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918791"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Zelfstudie: Azure Firewall implementeren en configureren in een hybride netwerk met behulp van de Azure Portal
 
@@ -102,7 +102,7 @@ Maak nu het VNet:
 4. Typ **VNet-spoke**voor **naam**.
 5. Typ **10.6.0.0/16**bij **adres ruimte**.
 6. Bij **Abonnement** selecteert u uw abonnement.
-7. Voor **resource groep**selecteert u **test-FW-RG**.
+7. Selecteer voor **resource groep**de optie **FW-Hybrid-test**.
 8. Bij **Locatie** selecteert u dezelfde locatie die u eerder hebt gebruikt.
 9. Onder **Subnet** typt u **SN-Workload** bij **Naam**.
 10. Typ **10.6.0.0/24**voor het **adres bereik**.
@@ -276,7 +276,7 @@ Na ongeveer vijf minuten moet de status van beide verbindingen worden **verbonde
 Koppel nu de virtuele hub- en spoke-netwerken.
 
 1. Open de resource groep **FW-Hybrid-test** en selecteer het virtuele **VNet-hub** -netwerk.
-2. Selecteer peerings in de linkerkolom.
+2. Selecteer **peerings**in de linkerkolom.
 3. Selecteer **Toevoegen**.
 4. Typ **HubtoSpoke**voor **naam**.
 5. Voor het **virtuele netwerk**selecteert u **VNet-spoke**
@@ -289,7 +289,7 @@ Koppel nu de virtuele hub- en spoke-netwerken.
 U moet het **toestaan van doorgestuurd verkeer** op de SpoketoHub-peering inschakelen.
 
 1. Open de resource groep **FW-Hybrid-test** en selecteer het virtuele **VNet-spoke** -netwerk.
-2. Selecteer peerings in de linkerkolom.
+2. Selecteer **peerings**in de linkerkolom.
 3. Selecteer de **SpoketoHub** -peering.
 4. Selecteer onder **doorgestuurd verkeer van VNet-hub naar VNet-spoke toestaan**de optie **ingeschakeld**.
 5. Selecteer **Opslaan**.

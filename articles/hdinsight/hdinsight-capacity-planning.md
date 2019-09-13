@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 608d097f1ebad9e4e1092c7ec54a573ccb58ad81
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 64de4078fb529140859f1d4ff2e973fd081a5400
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734669"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916565"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Capaciteits planning voor HDInsight-clusters
 
@@ -96,9 +96,6 @@ Er worden kosten in rekening gebracht voor de levens duur van een cluster. Als e
 
 Soms kunnen er fouten optreden vanwege de parallelle uitvoering van meerdere toewijzingen en het verminderen van de onderdelen op een cluster met meerdere knoop punten. Om het probleem op te lossen, kunt u gedistribueerde tests uitvoeren door gelijktijdige meerdere taken uit te voeren op een knoop punt cluster met één worker en vervolgens deze benadering uit te vouwen om meerdere taken gelijktijdig uit te voeren op clusters met meer dan één knoop punt. Als u een HDInsight-cluster met één knoop punt in azure wilt maken, gebruikt u de optie *aangepast (grootte, instellingen, apps)* en gebruikt u een waarde van 1 voor het *aantal worker-knoop punten* in de sectie **cluster grootte** bij het inrichten van een nieuw cluster in de portal.
 
-U kunt ook een ontwikkel omgeving met één knoop punt op uw lokale computer installeren en daar de oplossing testen. Hortonworks biedt een lokale ontwikkel omgeving met één knoop punt voor op Hadoop gebaseerde oplossingen die nuttig is voor de eerste ontwikkeling, het testen van concepten en tests. Zie [Hortonworks sandbox](https://hortonworks.com/products/hortonworks-sandbox/)voor meer informatie.
-
-Als u het probleem wilt identificeren op een lokaal cluster met één knoop punt, kunt u mislukte taken opnieuw uitvoeren en de invoer gegevens aanpassen of kleinere gegevens sets gebruiken. Hoe u deze taken uitvoert, is afhankelijk van het platform en het type toepassing.
 
 ## <a name="quotas"></a>Quota
 

@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 868efad58e14fd817729f0aa9ac785bc0f960867
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 74f33a1ce1026424a6cdb97699223aeb5ff8277f
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087022"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933129"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Sub-indelingen in Durable Functions (Azure Functions)
 
@@ -118,7 +118,10 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+> [!NOTE]
+> Sub-indelingen moeten worden gedefinieerd in dezelfde functie-app als de bovenliggende indeling. Als u in een andere functie-app-integratie moet aanroepen en wachten, kunt u overwegen de ingebouwde ondersteuning voor HTTP-Api's en het HTTP 202-polling-consument patroon te gebruiken. Zie het onderwerp [http-functies](durable-functions-http-features.md) voor meer informatie.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over taak hubs en hoe u deze kunt configureren](durable-functions-task-hubs.md)
+> [Meer informatie over het instellen van een aangepaste indelings status](durable-functions-custom-orchestration-status.md)

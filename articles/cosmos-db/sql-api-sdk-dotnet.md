@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 431ede41e115c82c877041da4a0eb93eacf83cbd
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8017f02e694f5c9e2cd677c7b1f28c5de973d077
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142667"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932571"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK voor SQL-API: Down load en release-opmerkingen
 > [!div class="op_single_selector"]
@@ -44,6 +44,11 @@ ms.locfileid: "70142667"
 
 > [!NOTE]
 > Als u .NET Framework gebruikt, raadpleegt u de meest recente versie 3. x van de [.NET SDK](sql-api-sdk-dotnet-standard.md), die de .net-standaard richt. 
+
+### <a name="a-name260260"></a><a name="2.6.0"/>2.6.0
+
+* PortReusePolicy toegevoegd aan Connection Policy
+* Vaste Ntdll! RtlGetVersion TypeLoadException-probleem wanneer SDK wordt gebruikt in een UWP-app
 
 ### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
 
@@ -385,6 +390,7 @@ Aanvragen voor het Azure Cosmos DB met behulp van een buiten gebruik gestelde SD
 
 | Version | Releasedatum | Vervaldatum |
 | --- | --- | --- |
+| [2.6.0](#2.6.0) |30 augustus 2019 |--- |
 | [2.5.1](#2.5.1) |02, 2019 |--- |
 | [2.4.1](#2.4.1) |20 juni 2019 |--- |
 | [2.4.0](#2.4.0) |05 mei 2019 |--- |

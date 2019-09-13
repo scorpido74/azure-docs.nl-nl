@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: fd75ca1fbad358e80a2c040b5ead8c50611489e2
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 52355a8896f4891e99d07e2b4106cede77a1f8df
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478879"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916211"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Zoeken naar een nuttige plaats met Azure Maps
 
@@ -27,7 +27,7 @@ Deze zelfstudie laat zien hoe u uw Azure Maps-account en de Route Service SDK ge
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u doorgaat, voert u de stappen in de vorige zelfstudie uit voor het [maken van uw Azure Kaarten-account ](./tutorial-search-location.md#createaccount) en het [ophalen van de abonnementssleutel voor uw account](./tutorial-search-location.md#getkey).
+Voordat u verdergaat, volgt u de instructies in [account beheren](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) om een abonnement voor een Azure Maps account te maken met de prijs categorie S1 en volgt u de stappen in [primaire sleutel ophalen](./tutorial-search-location.md#getkey) om de primaire abonnements sleutel voor uw account op te halen.
 
 <a id="getcoordinates"></a>
 

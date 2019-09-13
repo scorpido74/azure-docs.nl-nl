@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b6343931287ed59363db2715641ca63a814a9c32
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 6619fd842f225a6d362a4b308dde6e35b43677c9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638809"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915761"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Aangepaste gegevens op een raster kaart weer geven
 
@@ -27,7 +27,8 @@ Als u aangepaste markerings punten, labels en geometrie-overlays wilt weer geven
 
 ### <a name="create-an-azure-maps-account"></a>Een Azure Maps-account maken
 
-Als u de procedures in dit artikel wilt uitvoeren, moet u eerst [een Azure Maps-account maken](how-to-manage-account-keys.md) in de prijs categorie S1.
+Als u de procedures in dit artikel wilt uitvoeren, moet u eerst een Azure Maps-account maken door de instructies in het [account beheren](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) te volgen en de stappen in [primaire sleutel ophalen](./tutorial-search-location.md#getkey) om een primaire abonnements sleutel voor uw account op te halen.
+
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Markerings punten met labels en een aangepaste installatie kopie weer geven
 
@@ -207,6 +208,6 @@ Volg deze stappen om een cirkel en markerings punten met aangepaste labels weer 
 ## <a name="next-steps"></a>Volgende stappen
 
 
-* Verken de documentatie over de Azure Maps-overzichts- [API ophalen](https://docs.microsoft.com/rest/api/maps/render/getmapimage) .
+* Verken de documentatie over de [Azure Maps-overzichts-API ophalen](https://docs.microsoft.com/rest/api/maps/render/getmapimage) .
 * Zie de [Service documentatie](https://docs.microsoft.com/rest/api/maps/data)voor meer informatie over Azure Maps data service.
 

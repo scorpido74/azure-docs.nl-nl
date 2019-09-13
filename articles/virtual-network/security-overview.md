@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 25c732d1311e2bcffe0fda0d5e427d5df5f99da6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1d9fc022a0b0d5ba96517b4ed06b4a2576245a26
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70065932"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70886029"
 ---
 # <a name="security-groups"></a>Beveiligingsgroepen
 <a name="network-security-groups"></a>
@@ -87,7 +87,7 @@ De volgende service tags zijn beschikbaar voor gebruik in [regels voor netwerk b
 * **SQL*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van de Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL en Azure SQL Data Warehouse Services. Als u *Sql* opgeeft als waarde, wordt verkeer naar Sql toegestaan of geweigerd. Als u alleen toegang tot SQL wilt toestaan in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio opgeven in de volgende indeling SQL. [regio naam]. De tag vertegenwoordigt de service, maar geen specifieke exemplaren van de service. De tag vertegenwoordigt bijvoorbeeld de service Azure SQL Database, maar geen specifieke SQL-database of -server. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
 * **SqlManagement*** (alleen Resource Manager): Met deze tag worden de adres voorvoegsels van het beheer verkeer voor SQL-toegewezen implementaties aangegeven. Als u *SqlManagement* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd voor SqlManagement. Deze tag wordt aanbevolen voor de inkomende/uitgaande beveiligings regel. 
 * **Opslag*** (alleen Resource Manager): Met deze tag wordt de IP-adresruimte voor de service Azure Storage aangeduid. Als u *Storage* opgeeft als waarde, wordt verkeer naar de opslag toegestaan of geweigerd. Als u alleen toegang tot opslag wilt toestaan in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio opgeven in de volgende indelings opslag. [regio naam]. De tag vertegenwoordigt de service, maar geen specifieke exemplaren van de service. De tag vertegenwoordigt bijvoorbeeld de service Azure Storage, maar geen specifiek Azure Storage-account. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
-* **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** voor de klassieke versie): Deze tag omvat de adres ruimte van het virtuele netwerk (alle CIDR-bereiken die zijn gedefinieerd voor het virtuele netwerk), alle verbonden on [](virtual-network-peering-overview.md) -premises adres ruimten, gekoppelde virtuele netwerken of virtuele netwerken die zijn verbonden met een [virtuele netwerk gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json) en-adres voor voegsels die worden gebruikt voor door de [gebruiker gedefinieerde routes](virtual-networks-udr-overview.md). Houd er rekening mee dat deze tag mogelijk een standaard route kan bevatten. 
+* **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** voor de klassieke versie): Deze tag omvat de adres ruimte van het virtuele netwerk (alle CIDR-bereiken die zijn gedefinieerd voor het virtuele netwerk [), alle](virtual-network-peering-overview.md) verbonden on-premises adres ruimten, gekoppelde virtuele netwerken of virtuele netwerken die zijn verbonden met een [virtuele netwerk gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json), de [ het virtuele IP-adres van de host](security-overview.md#azure-platform-considerations) -en adres voorvoegsels die worden gebruikt voor door de [gebruiker gedefinieerde routes](virtual-networks-udr-overview.md). Houd er rekening mee dat deze tag mogelijk een standaard route kan bevatten. 
 
 > [!NOTE]
 > Met servicetags van Azure-services worden de adresvoorvoegsels aangeduid van de specifieke cloud die wordt gebruikt. 
@@ -101,13 +101,13 @@ U kunt een on-premises firewall downloaden en integreren met de lijst met Servic
 U kunt deze informatie ook programmatisch ophalen met behulp van de **service tag discovery-API** (open bare preview)- [rest](https://aka.ms/discoveryapi_rest), [Azure PowerShell](https://aka.ms/discoveryapi_powershell)en [Azure cli](https://aka.ms/discoveryapi_cli). 
 
 > [!NOTE]
-> De volgende wekelijkse publicaties (oude versie) voor [](https://www.microsoft.com/en-us/download/details.aspx?id=41653)Azure-Clouds, volks [Republiek China](https://www.microsoft.com/en-us/download/details.aspx?id=42064)en [duitsland](https://www.microsoft.com/en-us/download/details.aspx?id=54770) worden met 30 juni 2020 afgeschaft. Begin met het gebruik van de bijgewerkte publicaties zoals hierboven wordt beschreven. 
+> De volgende wekelijkse publicaties (oude versie) voor [Azure-](https://www.microsoft.com/en-us/download/details.aspx?id=41653)Clouds, volks [Republiek China](https://www.microsoft.com/en-us/download/details.aspx?id=42064)en [duitsland](https://www.microsoft.com/en-us/download/details.aspx?id=54770) worden met 30 juni 2020 afgeschaft. Begin met het gebruik van de bijgewerkte publicaties zoals hierboven wordt beschreven. 
 
 ## <a name="default-security-rules"></a>Standaardbeveiligingsregels
 
 Azure maakt de volgende standaardregels in elke netwerkbeveiligingsgroep die u maakt:
 
-### <a name="inbound"></a>Inkomend
+### <a name="inbound"></a>Binnenkomend
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 

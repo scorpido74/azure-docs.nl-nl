@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: ashishth
-ms.openlocfilehash: 546d491c24198d5f7a92765876e5f6919ca32020
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 75158fbe5604c6fcf54c2fa08636cb87dfd9da80
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735793"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917448"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Een Apache HBase-cluster migreren naar een nieuwe versie
 
@@ -180,7 +180,7 @@ Voer de volgende stappen uit om uw Apache HBase-cluster in azure HDInsight bij t
 5. Voer het vorige script opnieuw uit om ervoor te zorgen dat alle recente gegevens in de geheugen opslag worden leeg gemaakt.
 6. Meld u aan bij [Apache Ambari](https://ambari.apache.org/) op het oude cluster https://OLDCLUSTERNAME.azurehdidnsight.net) (en stop de HBase-Services. Wanneer u wordt gevraagd om te bevestigen dat u de services wilt stoppen, schakelt u het selectie vakje onderhouds modus inschakelen voor HBase in. Zie [HDInsight-clusters beheren met behulp van de Ambari-webgebruikersinterface](../hdinsight-hadoop-manage-ambari.md)voor meer informatie over het maken van verbinding met en het gebruik van Ambari.
 
-    ![Klik in Ambari op Services > HBase > Stop onder service acties](./media/apache-hbase-migrate-new-version/stop-hbase-services.png)
+    ![Klik in Ambari op Services > HBase > Stop onder service acties](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
 
     ![Schakel het selectie vakje onderhouds modus inschakelen voor HBase in en bevestig](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 

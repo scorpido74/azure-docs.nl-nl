@@ -3,18 +3,18 @@ title: Azure Key Vault-beperkingsrichtlijnen
 description: Key Vault wordt beperkt het aantal gelijktijdige aanroepen om te voorkomen dat bronnen overmatig worden gebruikt.
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: ''
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 06b96ac6ea0202b74638b9331d754c0e0cc28ad0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f10f40551701cafd94692afc0916972b1fd73aff
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695248"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883043"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault-beperkingsrichtlijnen
 
@@ -31,7 +31,7 @@ Als u een geldige zakelijke-aanvraag voor hogere beperkingslimieten hebt, neem d
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Hoe u uw app in reactie op Servicelimieten beperken
 
-Hieronder vindt u **aanbevolen procedures** moet u implementeren wanneer de service is beperkt:
+Hier volgen enkele **Aanbevolen procedures** voor het uitvoeren van een beperking van uw service:
 - Verminder het aantal bewerkingen per aanvraag.
 - Verminder de frequentie van aanvragen.
 - Vermijd direct nieuwe pogingen. 
@@ -112,7 +112,7 @@ Hieronder ziet u code die exponentieel uitstel implementeert.
 ```
 
 
-Met deze code in een client C\# toepassing is eenvoudig. Het volgende voorbeeld wordt getoond hoe, met behulp van de klasse httpclient maakt.
+Het gebruik van deze code in een\# client C-toepassing is eenvoudig. In het volgende voor beeld ziet u hoe u de klasse httpclient maakt gebruikt.
 
 ```csharp
 public async Task<Cart> GetCartItems(int page)
@@ -131,7 +131,7 @@ public async Task<Cart> GetCartItems(int page)
 }
 ```
 
-Houd er rekening mee dat deze code als een concepttest alleen geschikt is. 
+Houd er rekening mee dat deze code alleen geschikt is voor het testen van het concept. 
 
 ### <a name="recommended-client-side-throttling-method"></a>Aanbevolen methode voor client-side '-beperking
 

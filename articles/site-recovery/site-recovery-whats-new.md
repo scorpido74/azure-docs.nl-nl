@@ -1,18 +1,18 @@
 ---
-title: Wat is er nieuw in Azure Site Recovery | Microsoft Docs
+title: Wat is er nieuw in Azure Site Recovery
 description: Biedt een samen vatting van de nieuwe functies die zijn geïntroduceerd in Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/12/2019
 ms.author: raynew
-ms.openlocfilehash: 5cd4b86c9c70f713a207f7feea9fa8efc06b6247
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 2d40e6fef215219035720ee64492a91fcdafb472
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146901"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933935"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
@@ -24,16 +24,56 @@ U kunt volgen en u abonneren op Site Recovery update meldingen in het [Azure-upd
 
 Voor Site Recovery-onderdelen ondersteunen we N-4 versies, waarbij N de meest recente versie is van de release. Deze worden in de volgende tabel samenvatten.
 
-**Update** |  **Unified Setup** | **Eicellen van de configuratie server** | **Mobility Service-agent** | **Site Recovery provider** | **Recovery Services-agent** 
---- | --- | --- | --- | ---
+**Update** |  **Unified Setup** | **Eicellen van de configuratie server** | **Mobility Service-agent** | **Site Recovery provider** | **Recovery Services-agent**
+--- | --- | --- | --- | --- | ---
+[Pakket 40](https://support.microsoft.com/help/4517283/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Pakket 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 [Pakket 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
 [Pakket 37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
 [Pakket 36](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
-[Pakket 35](https://support.microsoft.com/help/4494485/) | 9.23.5163.1 | 5.1.4000.0 | 9.23.5163.1 | 5.1.4000.0 | 2.0.9156.0 
         
 
 Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning van de update.
+
+
+## <a name="updates-september-2019"></a>Updates (september 2019)
+
+### <a name="update-rollup-40"></a>Update pakket 40
+
+[Update pakket 40](h https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) bevat de volgende updates.
+
+**Update** | **Details**
+--- | ---
+**Providers en agents** | Updates voor Site Recovery agents en providers (zoals beschreven in de rollup)
+**Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
+
+
+
+
+### <a name="azure-vm-disaster-recovery"></a>Herstel na nood gevallen voor Azure VM
+
+Nieuwe functies voor herstel na nood gevallen voor Azure VM worden in de tabel samenvatten.
+
+**Functie** | **Details**
+--- | ---
+**Opschonen na failback** | Na een failover naar de secundaire Azure en vervolgens een failback naar de primaire regio, Site Recovery automatisch machines in de secundaire regio opschonen. Het is niet nodig om VM'S en Nic's hand matig te verwijderen.
+**IP-adres behouden door testfailover** | U kunt nu het IP-adres van de bron-VM bewaren tijdens een nood herstel analyse en een statisch IP-adres kiezen voor een testfailover.
+
+## <a name="vmwarephysical-server-disaster-recovery"></a>Herstel na nood geval voor VMware/fysieke server
+
+De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
+
+**Functie** | **Details**
+--- | ---
+Nieuwe waarschuwingen voor proces server | Er zijn nieuwe waarschuwingen voor de proces server toegevoegd. [Meer informatie](vmware-physical-azure-monitor-process-server.md). 
+
+## <a name="hyper-v-disaster-recovery"></a>Herstel na nood geval voor Hyper-V
+
+De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
+
+**Functie** | **Details**
+--- | ---
+Storage-account | Site Recovery ondersteunt nu het gebruik van een opslag account waarvoor op rollen gebaseerd toegangs beheer (RBAC) is ingeschakeld. Meer [informatie](../storage/common/storage-account-manage.md#access-control) over toegangs beheer voor opslag accounts. 
 
 
 ## <a name="updates-august-2019"></a>Updates (augustus 2019)

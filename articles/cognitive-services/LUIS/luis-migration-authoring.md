@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/08/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 5828d4f453afeccfaac206195f064e43a20d1ba0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 8e732496c4523646f02ef461b7d3c52314c28dae
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844764"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932830"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migreren naar een Azure-resource bewerkings sleutel
 
@@ -35,7 +35,8 @@ Als u bijvoorbeeld twee typen LUIS-apps hebt die u ontwerpt, met verschillende l
 
 Migratie omvat:
 
-* **Alle** apps van de eigenaar.
+* Alle gebruikers van LUIS, eigen aren en mede werkers.
+* **Alle** apps.
 * Een **eenrichtings migratie.**
 
 De eigenaar kan geen subset van te migreren apps kiezen en het proces kan niet onomkeerbaar zijn. 
@@ -87,13 +88,17 @@ U kunt mede werkers toevoegen aan de ontwerp bron vanuit het _Azure Portal_op de
 
 ## <a name="migration-for-the-app-contributor"></a>Migratie voor de app-bijdrager
 
+Elke gebruiker van LUIS moet worden gemigreerd, met inbegrip van deel nemers/mede werkers. 
+
 ### <a name="before-the-app-is-migrated"></a>Voordat de app wordt gemigreerd
 
 U kunt ervoor kiezen om een app waarvoor u een samen werker bent te exporteren, en vervolgens de app weer in LUIS te importeren. Het import proces maakt een nieuwe app met een nieuwe app-ID waarvoor u de eigenaar bent.
 
 ### <a name="after-the-app-is-migrated"></a>Nadat de app is gemigreerd
 
-Als u na het migratie proces toegang tot de oorspronkelijke app nodig hebt, moet u deze toevoegen aan de Azure-ontwerp bron als samen werker door de eigenaar van de app.  
+De eigenaar van de app moet [uw e-mail adres toevoegen aan de Azure-ontwerp bron als samen werker](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource). 
+
+Na het migratie proces zijn de apps die u hebt aangeschaft, beschikbaar op de pagina **mijn apps** van de Luis-Portal.  
 
 ## <a name="next-steps"></a>Volgende stappen
 

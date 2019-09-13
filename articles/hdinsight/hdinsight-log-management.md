@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: d4774dcc96e5f7639ca0b03bca992c9a3126230b
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
-ms.translationtype: MT
+ms.openlocfilehash: 5264491220a4b0756a2a9f0a96aae4ed67809618
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623897"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879462"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Logboeken beheren voor een HDInsight-cluster
 
@@ -49,7 +49,7 @@ U kunt de meeste gegevens op het hoogste niveau ophalen met behulp van de Azure 
     az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
 
-U kunt Power shell ook gebruiken om deze informatie weer te geven.  Zie voor meer informatie [Apache Hadoop-clusters in HDInsight beheren](hdinsight-administer-use-powershell.md)met behulp van Azure PowerShell.
+U kunt Power shell ook gebruiken om deze informatie weer te geven.  Zie voor meer informatie [Apache Hadoop-clusters in HDInsight beheren met behulp van Azure PowerShell](hdinsight-administer-use-powershell.md).
 
 ### <a name="understand-the-workloads-running-on-your-clusters"></a>Meer informatie over de werk belastingen die worden uitgevoerd op uw clusters
 
@@ -93,7 +93,7 @@ Met HDInsight- [script acties](hdinsight-hadoop-customize-cluster-linux.md) word
 
 De volgende stap is het controleren van de logboek bestanden voor taak uitvoering voor de verschillende services.  Services kunnen Apache HBase, Apache Spark en vele andere zijn. Een Hadoop-cluster produceert een groot aantal uitgebreide logboeken, zodat u kunt bepalen welke logboeken nuttig zijn (en welke niet) het tijdrovender is.  Meer informatie over het logboek registratie systeem is belang rijk voor het beheer van logboek bestanden.  Hier volgt een voor beeld van een logboek bestand.
 
-![Voor beeld van HDInsight-logboek bestand](./media/hdinsight-log-management/logs.png)
+![Voor beeld van HDInsight-logboek bestand](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>Toegang tot de Hadoop-logboek bestanden
 
@@ -138,7 +138,7 @@ De gebruikers interface van de garen-server wordt uitgevoerd op het hoofd knoopp
 
 Nadat u de voor gaande stappen hebt voltooid, hebt u een goed idee van de typen en volumes van de logboek bestanden die uw HDInsight-cluster (en) produceert.
 
-Analyseer daarna het volume van de logboek gegevens in de opslag locaties van het sleutel logboek gedurende een bepaalde tijd. U kunt bijvoorbeeld het volume en de groei gedurende 30-60-90 dagen analyseren.  Neem deze informatie op in een werk blad of gebruik andere hulpprogram ma's, zoals Visual Studio, de Azure Storage Explorer of Power Query voor Excel. Zie HDInsight-logboeken [analyseren](hdinsight-debug-jobs.md)voor meer informatie.  
+Analyseer daarna het volume van de logboek gegevens in de opslag locaties van het sleutel logboek gedurende een bepaalde tijd. U kunt bijvoorbeeld het volume en de groei gedurende 30-60-90 dagen analyseren.  Neem deze informatie op in een werk blad of gebruik andere hulpprogram ma's, zoals Visual Studio, de Azure Storage Explorer of Power Query voor Excel. Zie [HDInsight-logboeken analyseren](hdinsight-debug-jobs.md)voor meer informatie.  
 
 U hebt nu voldoende informatie om een strategie voor logboek beheer voor de sleutel logboeken te maken.  Gebruik uw werk blad (of hulp programma) om zowel de groei van de logboek grootte als de logboek opslag van Azure-service kosten in de toekomst te ramen.  Houd ook rekening met de vereisten voor het bewaren van Logboeken voor de set met logboeken die u wilt onderzoeken.  Nu kunt u toekomstige kosten voor de opslag van het logboek opnieuw ramen nadat u hebt bepaald welke logboek bestanden kunnen worden verwijderd (indien van toepassing) en welke logboeken moeten worden bewaard en gearchiveerd naar minder dure Azure-opslag.
 
@@ -148,7 +148,7 @@ Nadat u hebt vastgesteld welke logboek bestanden kunnen worden verwijderd, kunt 
 
 Voor bepaalde logboek bestanden kunt u gebruikmaken van een gereduceerde aanpak voor het archiveren van het logboek bestand. Voor Azure Resource Manager activiteiten Logboeken kunt u deze aanpak verkennen met behulp van de Azure Portal.  Stel de archivering van de ARM-Logboeken in door de koppeling **activiteiten logboek**te selecteren in de Azure portal voor uw HDInsight-exemplaar.  Selecteer aan de bovenkant van de pagina zoeken in het activiteiten logboek het menu-item **exporteren** om het deel venster **activiteiten logboek exporteren** te openen.  Vul het abonnement, de regio, in of u wilt exporteren naar een opslag account en hoeveel dagen de logboeken moeten worden bewaard. In dit deel venster kunt u ook aangeven of u wilt exporteren naar een Event Hub. 
 
-![Logboek bestanden exporteren](./media/hdinsight-log-management/archive.png)
+![Logboek bestanden exporteren](./media/hdinsight-log-management/hdi-export-log-files.png)
 
 U kunt ook scripts archiveren in het logboek met Power shell.  Zie [Azure Automation logboeken archiveren in Azure Blob Storage](https://gallery.technet.microsoft.com/scriptcenter/Archive-Azure-Automation-898a1aa8)voor een voor beeld van een Power shell-script.
 

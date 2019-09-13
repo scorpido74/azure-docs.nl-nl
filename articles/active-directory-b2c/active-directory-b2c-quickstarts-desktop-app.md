@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: aanmelden instellen voor een bureaublad-app met Azure Active Directory B2C | Microsoft Docs'
-description: Voer een voorbeeld-ASP.NET-bureaublad-app uit die gebruikmaakt van Azure Active Directory B2C voor aanmelden bij een account.
+title: 'Snelstartgids: aanmelden instellen voor een bureau blad-app met behulp van Azure Active Directory B2C'
+description: Voer een voor beeld van een WPF-bureaublad toepassing die gebruikmaakt van Azure Active Directory B2C om het aanmelden van het account te bieden.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/30/2018
+ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 636e47c1d0c689dd9660f8bf01ada571d3824961
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 98d312dbafd399cc8b92e2c4fb70499853c214b5
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835463"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914261"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Quickstart: Aanmelden instellen voor een bureaublad-app met Azure Active Directory B2C
 
@@ -26,8 +26,8 @@ Azure Active Directory (Azure AD) B2C bevat functionaliteit voor identiteitsbehe
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de **ASP.NET en webontwikkeling** werkbelasting.
-- Een sociaalnetwerkaccount van Facebook, Google, Microsoft of Twitter.
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de werk belasting **ASP.net en Web Development** .
+- Een sociaal account van Facebook, Google of micro soft.
 - [Download een ZIP-bestand ](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip) of kloon de voorbeeld-web-app vanuit GitHub.
 
     ```
@@ -43,16 +43,16 @@ Azure Active Directory (Azure AD) B2C bevat functionaliteit voor identiteitsbehe
 
 1. Klik op **Aanmelden** om de werkstroom **Registreren of aanmelden** te starten.
 
-    ![Schermopname van de voorbeeld-WPF-toepassing](media/active-directory-b2c-quickstarts-desktop-app/wpf-sample-application.png)
+    ![Scherm afbeelding van de voor beeld-WPF-toepassing](media/active-directory-b2c-quickstarts-desktop-app/wpf-sample-application.png)
 
-    Het voorbeeld worden verschillende registratiemogelijkheden ondersteund. Deze opties zijn onder andere met behulp van een sociale id-provider of een lokaal account met behulp van een e-mailadres te maken. Voor deze snelstart gebruikt u een account van een id-provider voor sociale netwerken (Facebook, Google, Microsoft of Twitter).
+    Het voor beeld ondersteunt verschillende registratie opties. Deze opties zijn het gebruik van een sociale ID-provider of het maken van een lokaal account met behulp van een e-mail adres. Gebruik voor deze Quick Start een id-provider account van de sociale identiteit van Facebook, Google of micro soft.
 
 
-2. In Azure AD B2C wordt een aangepaste aanmeldingspagina voor het fictieve merk Wingtip Toys weergegeven voor de voorbeeldweb-app. Klik op de knop van de id-provider voor sociale netwerken die u wilt gebruiken om u aan te melden via een id-provider voor sociale netwerken.
+2. Azure AD B2C geeft een aanmeldings pagina voor een fictief bedrijf met de naam Fabrikam voor de voor beeld-webtoepassing. Klik op de knop van de id-provider voor sociale netwerken die u wilt gebruiken om u aan te melden via een id-provider voor sociale netwerken.
 
-    ![Aanmelden of registreren-pagina met id-providers](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
+    ![De pagina aanmelden of registreren met id-providers](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
 
-    U verifiëren (aanmelden) met behulp van uw sociaalnetwerkaccount referenties en de toepassing te lezen van gegevens uit uw sociaalnetwerkaccount. Door toegang te verlenen, kan de toepassing profielgegevens van het sociaalnetwerkaccount ophalen, zoals uw naam en plaats.
+    U kunt zich verifiëren (aanmelden) met behulp van de referenties van uw sociale account en de toepassing autoriseren om informatie uit uw sociale account te lezen. Door toegang te verlenen, kan de toepassing profielgegevens van het sociaalnetwerkaccount ophalen, zoals uw naam en plaats.
 
 2. Voltooi het aanmeldingsproces voor de id-provider.
 
@@ -64,9 +64,9 @@ Azure AD B2C biedt functionaliteit waarmee gebruikers hun profielen kunnen bijwe
 
 1. Klik in de menubalk van de toepassing op **Profiel bewerken** om het door u gemaakte profiel te bewerken.
 
-    ![Profiel knop gemarkeerd in de voorbeeld-WPF-app bewerken](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
+    ![Knop profiel bewerken gemarkeerd in WPF-voor beeld-app](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
 
-2. Kies de id-provider die is gekoppeld aan het account dat u hebt gemaakt. Als u bijvoorbeeld Twitter als id-provider hebt gebruikt bij het maken van uw account, kiest u Twitter om de gekoppelde profielgegevens te wijzigen.
+2. Kies de id-provider die is gekoppeld aan het account dat u hebt gemaakt. Als u bijvoorbeeld Facebook hebt gebruikt als de ID-provider tijdens het maken van uw account, kiest u Facebook om de details van het gekoppelde profiel te wijzigen.
 
 3. Wijzig uw **weergavenaam** of **plaats** en klik op **Doorgaan**.
 
@@ -88,12 +88,12 @@ U kunt uw Azure AD B2C-tenant gebruiken voor andere snelstarts of zelfstudies vo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids gebruikt u een voorbeeld-desktoptoepassing aan:
+In deze Snelstartgids hebt u een voor beeld van een bureaublad toepassing gebruikt voor het volgende:
 
-* Meld u aan met een aangepaste aanmeldingspagina
-* Meld u aan met een sociale id-provider
+* Aanmelden met een aangepaste aanmeldings pagina
+* Aanmelden met een sociale ID-provider
 * Een Azure AD B2C-account maken
-* Een web-API die wordt beveiligd door Azure AD B2C aanroepen
+* Een web-API aanroepen die wordt beveiligd door Azure AD B2C
 
 Aan de slag met het maken van uw eigen Azure AD B2C-tenant.
 

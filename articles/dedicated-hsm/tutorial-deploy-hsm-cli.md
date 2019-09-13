@@ -3,8 +3,8 @@ title: 'Zelfstudie: Azure CLI gebruiken voor implementatie in een bestaand virtu
 description: Zelfstudie voor het implementeren van een toegewezen HSM in een bestaand virtueel netwerk met behulp van CLI
 services: dedicated-hsm
 documentationcenter: na
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
@@ -12,13 +12,13 @@ ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 84beac4eca44a274eecc032e4816e3ff57aeafe2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: mbaldwin
+ms.openlocfilehash: 1d8649fc271801748723f484515f5fd2f708f95e
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60688366"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881038"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Zelfstudie: HSM's implementeren in een bestaand virtueel netwerk met behulp van CLI
 
@@ -177,7 +177,7 @@ Het duurt gewoonlijk maximaal 25 tot 30 minuten totdat deze implementatie is vol
 
 ![inrichtingsstatus](media/tutorial-deploy-hsm-cli/progress-status.png)
 
-Wanneer de implementatie is voltooid 'provisioningState': 'Geslaagd' wordt weergegeven. U kunt verbinding maken met de bestaande virtuele machine en SSH gebruiken om de beschikbaarheid van het HSM-apparaat te verzekeren.
+Wanneer de implementatie is voltooid ' provisioningState ': "Geslaagd" wordt weer gegeven. U kunt verbinding maken met de bestaande virtuele machine en SSH gebruiken om de beschikbaarheid van het HSM-apparaat te verzekeren.
 
 ## <a name="verifying-the-deployment"></a>De implementatie controleren
 

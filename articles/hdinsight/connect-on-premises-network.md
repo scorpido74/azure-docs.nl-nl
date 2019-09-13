@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: ced0655d2e8ff012b3043dd123a8483674b4c472
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 1ed722ad68280226387b98b3fefb77647f5cd825
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404542"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918551"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>HDInsight verbinden met uw on-premises netwerk
 
@@ -67,11 +67,11 @@ In deze stappen wordt gebruikgemaakt van de [Azure Portal](https://portal.azure.
   
 2. Ga in het menu links naar **+ een resource** > **Compute** > **Ubuntu Server 18,04 LTS**maken.
 
-    ![Een virtuele Ubuntu-machine maken](./media/connect-on-premises-network/create-ubuntu-vm.png)
+    ![Een virtuele Ubuntu-machine maken](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
 
 3. Voer op het tabblad __basis beginselen__ de volgende gegevens in:  
   
-    | Veld | Waarde |
+    | Veld | Value |
     | --- | --- |
     |Subscription |Selecteer het juiste abonnement.|
     |Resource group |Selecteer de resource groep met het virtuele netwerk dat u eerder hebt gemaakt.|
@@ -84,7 +84,7 @@ In deze stappen wordt gebruikgemaakt van de [Azure Portal](https://portal.azure.
     |Wachtwoord of openbare SSH-sleutel | Het beschik bare veld wordt bepaald door uw keuze voor **verificatie type**.  Voer de juiste waarde in.|
     |Openbare poorten voor inkomend verkeer|Selecteer **Geselecteerde poorten toestaan**. Selecteer vervolgens **SSH (22)** in de vervolg keuzelijst **Selecteer binnenkomende poorten** .|
 
-    ![Basis configuratie van virtuele machine](./media/connect-on-premises-network/vm-basics.png)
+    ![Basis configuratie van virtuele machine](./media/connect-on-premises-network/virtual-machine-basics.png)
 
     Geef andere vermeldingen op bij de standaard waarden en selecteer vervolgens het tabblad **netwerken** .
 
@@ -109,7 +109,7 @@ Als de virtuele machine eenmaal is gemaakt, ontvangt u een melding over de **imp
 
 2. Noteer de waarden voor **openbaar IP-adres/DNS-naam label** en **privé-IP-adres** voor later gebruik.
 
-   ![Open bare en privé-IP-adressen](./media/connect-on-premises-network/vm-ip-addresses.png)
+   ![Open bare en privé-IP-adressen](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
 
 ### <a name="install-and-configure-bind-dns-software"></a>Binding installeren en configureren (DNS-software)
 
@@ -279,7 +279,7 @@ U kunt netwerk beveiligings groepen (NSG) of door de gebruiker gedefinieerde rou
 
 2. Voor de IP-adressen die u in stap 1 hebt geïdentificeerd, wordt binnenkomend verkeer van die IP-adressen toegestaan.
 
-   * Als u __NSG__gebruikt: Binnenkomend verkeer op poort __443__ voor de IP-adressen toestaan.
+   * Als u __NSG__gebruikt: __Binnenkomend__ verkeer op poort __443__ voor de IP-adressen toestaan.
    * Als u __UDR__gebruikt: Stel het type van de __volgende hop__ van de route naar __Internet__ in voor de IP-adressen.
 
 Voor een voor beeld van het gebruik van Azure PowerShell of de Azure CLI voor het maken van Nsg's, raadpleegt u het document [HDInsight uitbreiden met Azure Virtual Networks](hdinsight-create-virtual-network.md#hdinsight-nsg) .

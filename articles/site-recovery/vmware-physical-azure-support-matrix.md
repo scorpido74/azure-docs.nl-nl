@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 09/11/2019
 ms.author: raynew
-ms.openlocfilehash: fd24d0d9f05855cf22da547f95b16da0a8d2c788
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 47914a635afe754cb4205a1e089622a69b706b51
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617648"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910446"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure
 
@@ -245,6 +245,10 @@ Gedeelde VHD | Wordt niet ondersteund. | De controle is mislukt als dit niet wor
 FC-schijf | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
 BitLocker | Wordt niet ondersteund. | BitLocker moet worden uitgeschakeld voordat u replicatie voor een machine inschakelt. |
 VM-naam | Van 1 tot 63 tekens.<br/><br/> Alleen letters, cijfers en afbreekstreepjes.<br/><br/> De naam van de computer moet beginnen en eindigen met een letter of cijfer. |  Werk de waarde in de computer eigenschappen in Site Recovery bij.
+
+## <a name="resource-group-limits"></a>Limieten voor resource groep
+
+Raadpleeg het artikel over de [limieten en quota's voor abonnementen](https://docs.microsoft.com/azure/azure-subscription-service-limits#resource-group-limits) voor meer informatie over het aantal virtuele machines dat kan worden beveiligd onder één resource groep.
 
 ## <a name="churn-limits"></a>Verloop limieten
 

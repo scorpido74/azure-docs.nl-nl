@@ -1,7 +1,7 @@
 ---
-title: "Python Quick Start: Indexen maken, laden en query's uitvoeren met REST-Api's-Azure Search"
+title: "Quickstart: Een zoek index in python maken met REST-Api's-Azure Search"
 description: Hierin wordt uitgelegd hoe u een index maakt, gegevens laadt en query's uitvoert met behulp van python, Jupyter-notebooks en de Azure Search REST API.
-ms.date: 08/28/2019
+ms.date: 09/10/2019
 author: heidisteen
 manager: nitinme
 ms.author: heidist
@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.openlocfilehash: 352d26a1f3e781f7dbb6e502caea44bdb45b398a
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 273cd690c56ef01b4fd38398aaef85570dd758a2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129393"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881547"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Quickstart: Een Azure Search-index in python maken met behulp van Jupyter-notebooks
 > [!div class="op_single_selector"]

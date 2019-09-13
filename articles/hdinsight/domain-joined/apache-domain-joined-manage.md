@@ -4,16 +4,16 @@ description: Meer informatie over het beheren van Azure HDInsight-clusters met E
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: mamccrea
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: c8103f5d0df7a71df5141ece3a8d67f308a562e1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: e5062ce27e1e9367a262d263070ab01f899dfc54
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884217"
+ms.locfileid: "70918926"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight-clusters beheren met Enterprise Security Package
 Meer informatie over de gebruikers en de rollen in HDInsight Enterprise Security Package (ESP) en hoe u ESP-clusters beheert.
@@ -34,7 +34,7 @@ U kunt een normaal cluster koppelen met behulp van Apache Ambari Managed usernam
    
 3. U kunt een gekoppeld cluster zien met behulp van de opdracht **lijst cluster**. U kunt nu een script verzenden naar dit gekoppelde cluster.
 
-   ![gekoppeld cluster](./media/apache-domain-joined-manage/linked-cluster.png "gekoppeld cluster")
+   ![gekoppeld cluster](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "gekoppeld cluster")
 
 4. U kunt ook de koppeling van een cluster met behulp van **HDInsight ontkoppelen: Een cluster** ontkoppelen van het opdracht palet.
 
@@ -71,7 +71,7 @@ U kunt een normaal cluster koppelen met behulp van Ambari Managed username, ook 
 
 2. Voer de **cluster naam**, de **gebruikers naam** en het **wacht woord**in en klik vervolgens op de knop OK om het cluster te koppelen. Voer optioneel het opslag account en de opslag sleutel in en selecteer vervolgens opslag container voor Storage Explorer om in de linkernavigatiebalk te werken
    
-   ![dialoog eclips voor het koppelen van een cluster](./media/apache-domain-joined-manage/link-cluster-dialog.png)
+   ![dialoog eclips voor het koppelen van een cluster](./media/apache-domain-joined-manage/link-cluster-dialog1.png)
    
    > [!NOTE]  
    > We gebruiken de gekoppelde opslag sleutel, gebruikers naam en wacht woord als het cluster beide zijn aangemeld bij het Azure-abonnement en een cluster heeft gekoppeld.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/28/2019
 ms.author: mlottner
-ms.openlocfilehash: 99ffa49a8e379f6c3a2139c082cd23f95c126e50
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 1ccf1c912dbf982fde1eb5cde4cde6556fc88bc1
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597243"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933914"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center voor IoT-beveiligings waarschuwingen
 
@@ -85,8 +85,8 @@ Zie [aangepaste waarschuwingen maken](quickstart-create-custom-alerts.md)voor me
 | Gemiddeld   | Het certificaat is verwijderd uit een IoT Hub                                    | Een certificaat met \'de naam% {\' DescCertificateName} is verwijderd \'uit IOT hub% {\'DescIoTHubName}. Als deze actie is uitgevoerd door een niet-geautoriseerde partij, kan dit wijzen op een schadelijke activiteit.| 1. Zorg ervoor dat het certificaat is verwijderd door een geautoriseerde partij. <br> 2. Als het certificaat niet is verwijderd door een bevoegde partij, voegt u het certificaat dan toe en escaleren u de waarschuwing naar het beveiligings team van de organisatie. |
 | Gemiddeld   | Er is een niet-geslaagde poging gedetecteerd om een certificaat toe te voegen aan een IoT Hub     | Er is een mislukte poging gedaan om het \'certificaat% {DescCertificateName}\' toe te voegen aan IOT hub \'%\'{DescIoTHubName}. Als deze actie is uitgevoerd door een niet-geautoriseerde partij, kan dit wijzen op schadelijke activiteiten.|   Zorg ervoor dat machtigingen voor het wijzigen van certificaten alleen worden verleend aan geautoriseerde partijen.  |
 | Gemiddeld   | Er is een niet-geslaagde poging gedetecteerd om een certificaat uit een IoT Hub te verwijderen | Er is een mislukte poging gedaan om het \'certificaat% {DescCertificateName}\' te verwijderen uit \'IOT hub% {DescIoTHubName\'}. Als deze actie is uitgevoerd door een niet-geautoriseerde partij, kan dit wijzen op schadelijke activiteiten. |Zorg ervoor dat machtigingen voor het wijzigen van certificaten alleen worden verleend aan een gemachtigde partij.
-| Laag      | Er is geprobeerd een diagnostische instelling van een gedetecteerde IoT Hub toe te voegen of te bewerken    | Poging om de diagnostische instellingen van een IoT Hub toe te voegen of te bewerken is gedetecteerd. Met Diagnostische instellingen kunt u de activiteiten sporen voor onderzoek doeleinden opnieuw maken wanneer er een beveiligings incident optreedt of uw netwerk is aangetast. Als deze actie niet is uitgevoerd door een bevoegde partij, kan dit wijzen op schadelijke activiteiten.  |
-| Laag      | Poging tot het verwijderen van een diagnostische instelling van een gedetecteerde IoT Hub       | Er is% {DescAttemptStatusMessage}\' geprobeerd de diagnostische instelling \'% {DescDiagnosticSettingName}\' van IOT hub \'% {DescIoTHubName}\'toe te voegen of te bewerken. Met de diagnostische instelling kunt u de activiteiten sporen voor onderzoek doeleinden opnieuw maken wanneer er een beveiligings incident optreedt of uw netwerk is aangetast. Als deze actie niet is uitgevoerd door een bevoegde partij, kan dit wijzen op een schadelijke activiteit. |1. Zorg ervoor dat het certificaat is verwijderd door een geautoriseerde partij.<br> 2. Als het certificaat niet is verwijderd door een bevoegde partij, voegt u het certificaat dan weer toe en geeft u de waarschuwing door aan uw gegevens beveiligings team.
+| Laag      | Er is geprobeerd een diagnostische instelling van een gedetecteerde IoT Hub toe te voegen of te bewerken    | Poging om de diagnostische instellingen van een IoT Hub toe te voegen of te bewerken is gedetecteerd. Met Diagnostische instellingen kunt u de activiteiten sporen voor onderzoek doeleinden opnieuw maken wanneer er een beveiligings incident optreedt of uw netwerk is aangetast. Als deze actie niet is uitgevoerd door een bevoegde partij, kan dit wijzen op schadelijke activiteiten.  |1. Zorg ervoor dat het certificaat is verwijderd door een geautoriseerde partij.<br> 2. Als het certificaat niet is verwijderd door een bevoegde partij, voegt u het certificaat dan weer toe en geeft u de waarschuwing door aan uw gegevens beveiligings team.
+| Laag      | Poging tot het verwijderen van een diagnostische instelling van een gedetecteerde IoT Hub       | Er is% {DescAttemptStatusMessage}\' geprobeerd de diagnostische instelling \'% {DescDiagnosticSettingName}\' van IOT hub \'% {DescIoTHubName}\'toe te voegen of te bewerken. Met de diagnostische instelling kunt u de activiteiten sporen voor onderzoek doeleinden opnieuw maken wanneer er een beveiligings incident optreedt of uw netwerk is aangetast. Als deze actie niet is uitgevoerd door een bevoegde partij, kan dit wijzen op een schadelijke activiteit. |Zorg ervoor dat machtigingen voor het wijzigen van diagnostische instellingen alleen worden toegekend aan een geautoriseerde partij.
 |
 
 ## <a name="next-steps"></a>Volgende stappen

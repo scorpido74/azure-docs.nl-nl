@@ -2,19 +2,19 @@
 title: Diagnostische gegevens in Durable Functions-Azure
 description: Meer informatie over het vaststellen van problemen met de Durable Functions extensie voor Azure Functions.
 services: functions
-author: ggailey777
+author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7c02d4dfde7869da7985817b06f6de398bbef38d
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: d2badee3eaa5a9af48e89adc1b59beacc1571792
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734495"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933508"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostische gegevens in Durable Functions in azure
 
@@ -32,7 +32,7 @@ Elke levens cyclus gebeurtenis van een indelings instantie zorgt ervoor dat een 
 
 * **hubName**: De naam van de taak hub waarin uw Orchestrations worden uitgevoerd.
 * **AppName**: De naam van de functie-app. Dit is handig wanneer u meerdere functie-apps hebt die hetzelfde Application Insights exemplaar delen.
-* **sleuf**: De [implementatie site](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/) waarin de huidige functie-app wordt uitgevoerd. Dit is handig wanneer u implementatie sleuven gebruikt voor het versie gebruik van uw Orchestrations.
+* **sleuf**: De [implementatie site](../functions-deployment-slots.md) waarin de huidige functie-app wordt uitgevoerd. Dit is handig wanneer u implementatie sleuven gebruikt voor het versie gebruik van uw Orchestrations.
 * **functie naam**: De naam van de functie Orchestrator of activiteit.
 * **functionType**: Het type functie, zoals **Orchestrator** of **Activity**.
 * **instanceId**: De unieke ID van het Orchestration-exemplaar.
@@ -349,12 +349,13 @@ Clients ontvangen het volgende antwoord:
 
 Azure Functions ondersteunt functie code voor fout opsporing rechtstreeks en dezelfde ondersteuning gaat naar Durable Functions, ongeacht of deze wordt uitgevoerd in azure of lokaal. Er zijn echter enkele gedragingen waarmee u rekening moet houden bij fout opsporing:
 
-* Opnieuw **afspelen**: Orchestrator-functies worden regel matig herhaald wanneer er nieuwe invoer wordt ontvangen. Dit betekent dat een enkele *logische* uitvoering van een Orchestrator-functie kan leiden tot hetzelfde onderbrekings punt meerdere keren, vooral als het vroegtijdig is ingesteld in de functie code.
-* **Wacht**op: Wanneer er `await` een fout optreedt, wordt het besturings element teruggebracht naar de verzender van het duurzame taak raamwerk. Als dit de eerste keer is dat een `await` bepaald is aangetroffen, wordt de bijbehorende taak *nooit* hervat. Omdat de taak nooit wordt hervat, is *het niet* mogelijk om door te lopen (F10 in Visual Studio). Alleen uitvoeren werkt wanneer een taak wordt herhaald.
-* **Time-outs van berichten**: Durable Functions intern gebruikt wachtrij berichten om de uitvoering van Orchestrator-functies en-activiteit functies te verzorgen. In een omgeving met meerdere VM'S kan de fout opsporing voor langere Peri Oden ertoe leiden dat een andere virtuele machine het bericht ophaalt, wat resulteert in dubbele uitvoering. Dit gedrag bestaat ook voor normale functies van de wachtrij-trigger, maar is belang rijk om in deze context te wijzen, omdat de wacht rijen een implementatie detail zijn.
+* Opnieuw **afspelen**: Orchestrator-functies worden regel matig [herhaald](durable-functions-orchestrations.md#reliability) wanneer er nieuwe invoer wordt ontvangen. Dit betekent dat een enkele *logische* uitvoering van een Orchestrator-functie kan leiden tot hetzelfde onderbrekings punt meerdere keren, vooral als het vroegtijdig is ingesteld in de functie code.
+* **Wacht**op: Wanneer een `await` in een Orchestrator-functie wordt aangetroffen, wordt het besturings element teruggebracht naar de verzender van het duurzame taak raamwerk. Als dit de eerste keer is dat een `await` bepaald is aangetroffen, wordt de bijbehorende taak *nooit* hervat. Omdat de taak nooit wordt hervat, is *het niet* mogelijk om door te lopen (F10 in Visual Studio). Alleen uitvoeren werkt wanneer een taak wordt herhaald.
+* **Time-outs van berichten**: Durable Functions intern gebruikt wachtrij berichten om de uitvoering van orchestrator-, activity-en Entity-functies te verzorgen. In een omgeving met meerdere VM'S kan de fout opsporing voor langere Peri Oden ertoe leiden dat een andere virtuele machine het bericht ophaalt, wat resulteert in dubbele uitvoering. Dit gedrag bestaat ook voor normale functies van de wachtrij-trigger, maar is belang rijk om in deze context te wijzen, omdat de wacht rijen een implementatie detail zijn.
+* **Stoppen en starten**: Berichten in duurzame functies blijven behouden tussen sessies voor fout opsporing. Als u de fout opsporing stopt en het lokale hostproces beëindigt terwijl een duurzame functie wordt uitgevoerd, wordt deze functie mogelijk automatisch opnieuw uitgevoerd in een toekomstige foutopsporingssessie. Dit kan verwarrend zijn wanneer niet wordt verwacht. Het wissen van alle berichten uit de [interne opslag wachtrijen](durable-functions-perf-and-scale.md#internal-queue-triggers) tussen sessies voor fout opsporing is een techniek om dit gedrag te voor komen.
 
 > [!TIP]
-> Als u onderbrekings punten wilt instellen, kunt u, als u alleen een niet-replay-uitvoering wilt onderbreken, een voorwaardelijk onderbrekings `IsReplaying` punt `false`instellen dat alleen als is afgebroken.
+> Als u onderbrekings punten instelt in Orchestrator-functies en u alleen een niet-replay-uitvoering wilt onderbreken, kunt u een voorwaardelijk onderbrekings punt instellen dat `IsReplaying` alleen `false`als is afgebroken.
 
 ## <a name="storage"></a>Storage
 
@@ -370,4 +371,4 @@ Dit is handig voor het opsporen van fouten, omdat u precies ziet in welke staat 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het gebruik van duurzame timers](durable-functions-timers.md)
+> [Meer informatie over bewaking in Azure Functions](../functions-monitoring.md)

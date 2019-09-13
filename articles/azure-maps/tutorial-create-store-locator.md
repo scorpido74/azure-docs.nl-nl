@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 4cc21a4dbab7d5114eed8414c6530eab5f42bb00
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: bf30e805a06222bf8c74429df54565073d7d919b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478865"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933071"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Een winkelzoeker maken met behulp van Azure Maps
 
@@ -35,7 +35,7 @@ Spring vooruit naar het [live-winkelzoekervoorbeeld](https://azuremapscodesample
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om de stappen in deze zelfstudie te voltooien, moet u eerst [uw Azure Maps-account maken](./tutorial-search-location.md#createaccount) en [de abonnementssleutel voor uw account ophalen](./tutorial-search-location.md#getkey).
+Als u de stappen in deze zelf studie wilt volt ooien, moet u eerst [uw Azure Maps-account maken](./tutorial-search-location.md#createaccount) en de stappen in [primaire sleutel ophalen](./tutorial-search-location.md#getkey) om de primaire abonnements sleutel voor uw account te krijgen.
 
 ## <a name="design"></a>Ontwerpen
 
@@ -417,7 +417,7 @@ Op dit punt is alles ingesteld in de gebruikersinterface. Nu moeten we de JavaSc
             center: [-90, 40],
             zoom: 2,
 
-            //Add your Azure Maps subscription key to the map SDK.
+            //Add your Azure Maps primary subscription key to the map SDK.
             authOptions: {
                 authType: 'subscriptionKey',
                 subscriptionKey: '<Your Azure Maps Key>'

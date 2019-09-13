@@ -4,14 +4,14 @@ description: Begrijpen hoe indexering werkt in Azure Cosmos DB.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: c8e21ea89f3e23709d636ab8af4716bff76d7217
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 4d961f8635a52a09011543b793ce8a87eaa4ea9e
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479289"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914198"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexeren in Azure Cosmos DB-overzicht
 
@@ -25,6 +25,7 @@ Telkens wanneer een item wordt opgeslagen in een container, wordt de inhoud erva
 
 Bekijk bijvoorbeeld dit item:
 
+```json
     {
         "locations": [
             { "country": "Germany", "city": "Berlin" },
@@ -36,6 +37,7 @@ Bekijk bijvoorbeeld dit item:
             { "city": "Athens" }
         ]
     }
+```
 
 Deze wordt weer gegeven in de volgende structuur:
 
@@ -70,13 +72,13 @@ Het **bereik** index type wordt gebruikt voor:
 
     ```sql
    SELECT * FROM container c WHERE c.property = 'value'
-    ```
+   ```
 
 - Bereik query's:
 
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
-   ``` 
+   ```
   (werkt voor `>`, `<`, `>=` ,,`!=`,) `<=`
 
 - `ORDER BY`aanvragen
@@ -107,15 +109,27 @@ Het type **ruimtelijke** index wordt gebruikt voor:
    SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
    ```
 
-Ruimtelijke indexen kunnen worden gebruikt op correct opgemaakte [GEOjson](geospatial.md) -objecten. Points, line strings toe en veelhoeken worden momenteel ondersteund.
+Ruimtelijke indexen kunnen worden gebruikt op correct opgemaakte [GEOjson](geospatial.md) -objecten. Punten, line strings toe, veelhoeken en multiveelhoeken worden momenteel ondersteund.
 
 De **samengestelde** index soort wordt gebruikt voor:
 
-- `ORDER BY`query's op meerdere eigenschappen: 
+- `ORDER BY`query's op meerdere eigenschappen:
 
-   ```sql
-   SELECT * FROM container c ORDER BY c.firstName, c.lastName
-   ```
+```sql
+ SELECT * FROM container c ORDER BY c.property1, c.property2
+```
+
+- Query's met een filter en `ORDER BY`. Deze query's kunnen gebruikmaken van een samengestelde index als de eigenschap filter wordt toegevoegd aan de `ORDER BY` component.
+
+```sql
+ SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
+```
+
+- Query's met een filter voor twee of meer eigenschappen waarbij ten minste één eigenschap een gelijkheids filter is
+
+```sql
+ SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
+```
 
 ## <a name="querying-with-indexes"></a>Query's uitvoeren met indexen
 
@@ -126,7 +140,7 @@ Bekijk bijvoorbeeld de volgende query: `SELECT location FROM location IN company
 ![Een specifiek pad binnen een structuur zoeken](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Een `ORDER BY` component waarbij orders met één eigenschap *altijd* een bereik index nodig heeft en mislukt als het pad waarnaar wordt verwezen, niet is opgenomen. Op dezelfde manier heeft `ORDER BY` een meervoudige query *altijd* een samengestelde index nodig.
+> Een `ORDER BY` component waarbij orders met één eigenschap *altijd* een bereik index nodig heeft en mislukt als het pad waarnaar wordt verwezen, niet is opgenomen. Op dezelfde manier `ORDER BY` heeft een query die door meerdere eigenschappen orders *altijd* een samengestelde index nodig.
 
 ## <a name="next-steps"></a>Volgende stappen
 

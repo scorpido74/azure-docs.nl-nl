@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: dca329ce598a9ecbc7da71cc1c24bf7731a4c994
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 226a3b0ffa4b770d1738e69fd04592476b9f4075
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885419"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935288"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Azure HDInsight-clusters aanpassen met behulp van script acties
 
@@ -165,11 +165,11 @@ In deze sectie worden de verschillende manieren beschreven waarop u script actie
 
 3. Selecteer in de sectie __Geavanceerde instellingen__ __script acties__. Selecteer in de sectie __script acties__ __+ nieuwe verzenden__.
 
-    ![Een nieuwe script actie verzenden](./media/hdinsight-hadoop-customize-cluster-linux/add-script-action.png)
+    ![Een nieuwe script actie verzenden](./media/hdinsight-hadoop-customize-cluster-linux/add-new-script-action.png)
 
 4. Gebruik het __script item selecteren__ om een vooraf gemaakt script te selecteren. Als u een aangepast script wilt gebruiken, selecteert u __aangepast__. Geef vervolgens de __naam__ en de __bash-script-URI__ voor uw script op.
 
-    ![Een script toevoegen in het formulier Select script](./media/hdinsight-hadoop-customize-cluster-linux/select-script.png)
+    ![Een script toevoegen in het formulier Select script](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
     De volgende tabel beschrijft de elementen op het formulier:
 
@@ -185,7 +185,7 @@ In deze sectie worden de verschillende manieren beschreven waarop u script actie
 
 5. Selecteer __maken__ om het script op te slaan. Vervolgens kunt u __+ Nieuw__ gebruiken om een ander script toe te voegen.
 
-    ![Meerdere script acties](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts.png)
+    ![Meerdere script acties](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
     Wanneer u klaar bent met het toevoegen van scripts, selecteert u de knop __selecteren__ en vervolgens de knop __volgende__ om terug te gaan naar het gedeelte __cluster samenvatting__ .
 
@@ -251,7 +251,7 @@ Ga naar de [Azure Portal](https://portal.azure.com):
 
 4. Gebruik het __script item selecteren__ om een vooraf gemaakt script te selecteren. Als u een aangepast script wilt gebruiken, selecteert u __aangepast__. Geef vervolgens de __naam__ en de __bash-script-URI__ voor uw script op.
 
-    ![Een script toevoegen in het formulier Select script](./media/hdinsight-hadoop-customize-cluster-linux/select-script.png)
+    ![Een script toevoegen in het formulier Select script](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
     De volgende tabel beschrijft de elementen op het formulier:
 
@@ -438,7 +438,7 @@ U kunt de Ambari-web-gebruikers interface gebruiken om informatie te bekijken di
 
 2. Selecteer de **OPS** -vermelding in de balk boven aan de pagina. Er wordt een lijst weer gegeven met de huidige en vorige bewerkingen die op het cluster zijn uitgevoerd via Ambari.
 
-    ![Ambari Web UI-balk met OPS geselecteerd](./media/hdinsight-hadoop-customize-cluster-linux/ambari-nav.png)
+    ![Ambari Web UI-balk met OPS geselecteerd](./media/hdinsight-hadoop-customize-cluster-linux/hdi-apache-ambari-nav.png)
 
 3. Zoek de vermeldingen met **\_customscriptaction** uit in de kolom **bewerkingen** . Deze vermeldingen worden gemaakt wanneer de script acties worden uitgevoerd.
 
@@ -520,4 +520,4 @@ Er zijn twee uitzonderingen:
 * [Apache Giraph in HDInsight-clusters installeren en gebruiken](hdinsight-hadoop-giraph-install-linux.md)
 * [Extra opslag ruimte toevoegen aan een HDInsight-cluster](hdinsight-hadoop-add-storage.md)
 
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "Fasen tijdens het maken van het cluster"
+[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png "Fasen tijdens het maken van het cluster"

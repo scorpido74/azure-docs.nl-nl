@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: ea896697c8f6986c4c77f3ce86a62947d9a3327e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: e4d961603ab0ade1bb175161fffd7f085a1f644b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861408"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934086"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>De levens cyclus van Azure Blob-opslag beheren
 
@@ -54,7 +54,7 @@ U kunt een beleid toevoegen, bewerken of verwijderen met een van de volgende met
 In dit artikel wordt uitgelegd hoe u beleid beheert met behulp van de portal-en Power shell-methoden.  
 
 > [!NOTE]
-> Als u firewall regels inschakelt voor uw opslag account, kunnen aanvragen voor levenscyclus beheer worden geblokkeerd. U kunt deze aanvragen deblokkeren door uitzonde ringen op te geven. De vereiste bypass is `AzureServices`:. Zie de sectie uitzonde ringen in firewalls [en virtuele netwerken configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)voor meer informatie.
+> Als u firewall regels inschakelt voor uw opslag account, kunnen aanvragen voor levenscyclus beheer worden geblokkeerd. U kunt deze aanvragen deblokkeren door uitzonde ringen op te geven voor vertrouwde micro soft-Services. Zie de sectie uitzonde ringen in firewalls [en virtuele netwerken configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)voor meer informatie.
 
 ### <a name="azure-portal"></a>Azure Portal
 

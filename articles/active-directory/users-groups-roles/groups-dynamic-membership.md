@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b5f85aa99876ef6c3c9193612051085f3e0ffc0
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 59450fc93052a1e169d13fab5b80cbc57c169e0f
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872182"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909771"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschaps regels voor groepen in Azure Active Directory
 
@@ -99,8 +99,8 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 | Regio |Een wille keurige teken reeks waarde of *Null* |(User. country-EQ "waarde") |
 | companyName | Een wille keurige teken reeks waarde of *Null* | (user.companyName -eq "value") |
 | Afdeling |Een wille keurige teken reeks waarde of *Null* |(User. Department-EQ "waarde") |
-| displayName |Wille keurige teken reeks waarde |(User. displayName-EQ "waarde") |
-| employeeId |Wille keurige teken reeks waarde |(User. employeeId-EQ "waarde")<br>(User. employeeId-ne *Null*) |
+| displayName |wille keurige teken reeks waarde |(User. displayName-EQ "waarde") |
+| employeeId |wille keurige teken reeks waarde |(User. employeeId-EQ "waarde")<br>(User. employeeId-ne *Null*) |
 | facsimileTelephoneNumber |Een wille keurige teken reeks waarde of *Null* |(user.facsimileTelephoneNumber -eq "value") |
 | givenName |Een wille keurige teken reeks waarde of *Null* |(gebruiker. OpgegevenNaam-EQ "waarde") |
 | Functie |Een wille keurige teken reeks waarde of *Null* |(User. jobTitle-EQ "waarde") |
@@ -119,14 +119,14 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 | Achternaam |Een wille keurige teken reeks waarde of *Null* |(User. achternaam-EQ "waarde") |
 | telephoneNumber |Een wille keurige teken reeks waarde of *Null* |(user.telephoneNumber -eq "value") |
 | usageLocation |Land code van twee letters |(user.usageLocation -eq "US") |
-| userPrincipalName |Wille keurige teken reeks waarde |(user.userPrincipalName -eq "alias@domain") |
+| userPrincipalName |wille keurige teken reeks waarde |(user.userPrincipalName -eq "alias@domain") |
 | userType |*Null* voor leden gast |(User. User type-EQ "lid") |
 
 ### <a name="properties-of-type-string-collection"></a>Eigenschappen van het type teken reeks verzameling
 
 | properties | Toegestane waarden | Gebruik |
 | --- | --- | --- |
-| otherMails |Wille keurige teken reeks waarde |(User. otherMails-bevat "alias@domain") |
+| otherMails |wille keurige teken reeks waarde |(User. otherMails-bevat "alias@domain") |
 | proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses-bevat "SMTP: alias@domain") |
 
 Zie [regels voor apparaten](#rules-for-devices)voor de eigenschappen die worden gebruikt voor apparaat regels.
@@ -376,7 +376,7 @@ De volgende kenmerken van apparaten kunnen worden gebruikt.
  deviceManufacturer | wille keurige teken reeks waarde | (device.deviceManufacturer -eq "Samsung")
  deviceModel | wille keurige teken reeks waarde | (Device. deviceModel-EQ "iPad-Air")
  deviceOwnership | Persoonlijk, bedrijf, onbekend | (apparaat. deviceOwnership-EQ "bedrijf")
- enrollmentProfileName | Naam van Apple Device Enrollment profile of Windows auto pilot-profiel | (apparaat. enrollmentProfileName-EQ "DEP iPhones")
+ enrollmentProfileName | Apple-inschrijvings profiel voor apparaten, registratie van apparaten-bedrijfs apparaat-id's (Android-kiosk) of Windows auto pilot-profiel naam | (apparaat. enrollmentProfileName-EQ "DEP iPhones")
  isRooted | waar onwaar | (Device. isRooted-EQ True)
  managementType | MDM (voor mobiele apparaten)<br>PC (voor computers die worden beheerd door de intune-PC-agent) | (Device. managementType-EQ "MDM")
  deviceId | een geldige Azure AD-apparaat-ID | (apparaat. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")

@@ -8,12 +8,12 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9c6bd2040cb90f7a837efdf11d33a6e6999bc944
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 7e57abcc3df17dadd2e607895a8de011761ed68c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965491"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932801"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Zelfstudie: Query's uitvoeren in Azure Cosmos DB met behulp van de SQL-API
 
@@ -61,7 +61,7 @@ In de SQL-query's in dit artikel wordt het volgende voorbeelddocument gebruikt.
 U kunt query's uitvoeren met de Data Explorer in de Azure-portal, via de [REST API en SDK's](sql-api-sdk-dotnet.md) en zelfs de [query-speelplaats](https://www.documentdb.com/sql/demo), waar query's worden uitgevoerd voor een bestaande reeks voorbeeldgegevens.
 
 Meer informatie over SQL-query's vindt u in:
-* [SQL-query en SQL-syntaxis](how-to-sql-query.md)
+* [SQL-query en SQL-syntaxis](sql-query-getting-started.md)
 
 ## <a name="prerequisites"></a>Vereisten
 

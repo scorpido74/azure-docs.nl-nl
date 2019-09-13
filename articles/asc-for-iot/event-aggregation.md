@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2019
 ms.author: mlottner
-ms.openlocfilehash: a8f751d0a40a8d8e1555549c200a9a7ca8ef0661
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b8100fc78eced9aa26fe185a8d68244d8f665ff2
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600616"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933906"
 ---
 # <a name="security-agent-event-aggregation"></a>Aggregatie van beveiligings agent gebeurtenissen
 
@@ -28,7 +28,7 @@ Azure Security Center voor IoT-beveiligings agenten verzamelen gegevens en syste
 
 Azure Security Center voor IoT-agents deze typen gebeurtenissen samen voegen om het extra quotum en de kosten te verminderen terwijl uw apparaten beveiligd blijven.
 
-Gebeurtenis aggregatie is standaard **ingeschakeld** en hoewel dit niet wordt aanbevolen, **kan op elk** gewenst moment hand matig worden uitgeschakeld.
+Gebeurtenis aggregatie is standaard **ingeschakeld** en hoewel dit niet wordt aanbevolen, kan op elk gewenst moment hand matig **worden uitgeschakeld.**
 
 Aggregatie is momenteel beschikbaar voor de volgende typen gebeurtenissen:
 * ProcessCreate
@@ -59,6 +59,7 @@ Na analyse maakt Azure Security Center voor IoT beveiligings waarschuwingen voor
 
 Begin tijd van de aggregatie, de eind tijd en het aantal treffers voor elke gebeurtenis worden vastgelegd in het veld gebeurtenis **ExtraDetails** binnen log Analytics voor gebruik tijdens het onderzoek. 
 
+Elke geaggregeerde gebeurtenis vertegenwoordigt een periode van 24 uur aan verzamelde waarschuwingen. Met het menu gebeurtenis opties in de linkerbovenhoek van elke gebeurtenis kunt u elke afzonderlijke statistische gebeurtenis **sluiten** .    
 
 ## <a name="event-aggregation-twin-configuration"></a>Dubbele configuratie gebeurtenis aggregatie
 Breng wijzigingen aan in de configuratie van Azure Security Center voor IoT-gebeurtenis aggregatie in het object van de [agent configuratie](how-to-agent-configuration.md) van de module dubbele identiteit van de module **azureiotsecurity** .

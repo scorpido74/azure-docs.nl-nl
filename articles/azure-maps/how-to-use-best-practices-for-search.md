@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 996a084fd653b2100d94313e8801d915b4bf2cf3
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 25615ae8bc9bc8cadbe973f3a1859c2d43b067a9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348176"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915563"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Aanbevolen procedures voor het gebruik van Azure Maps Search Service
 
@@ -27,7 +27,7 @@ Azure Maps [Search service](https://docs.microsoft.com/rest/api/maps/search) bev
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het aanroepen van de Maps service Api's, hebt u een Maps-account en-sleutel nodig. Zie [uw Azure Maps account en sleutels beheren](how-to-manage-account-keys.md)voor meer informatie over het maken van een account en het ophalen van een sleutel.
+Voor het aanroepen van de Maps service Api's, hebt u een Maps-account en-sleutel nodig. Volg de instructies in het [account beheren](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) voor meer informatie over het maken van een account en volg de stappen in [primaire sleutel ophalen](./tutorial-search-location.md#getkey) om een primaire abonnements sleutel voor uw account op te halen.
 
 > [!Tip]
 > Als u een query wilt uitvoeren op de zoek service, kunt u de [app postman](https://www.getpostman.com/apps) gebruiken om rest-aanroepen te bouwen of kunt u elke gewenste API-ontwikkel omgeving gebruiken.
@@ -64,7 +64,7 @@ Zie [geocoderings dekking](https://docs.microsoft.com/azure/azure-maps/geocoding
    2. U kunt ook de exacte set resultaat typen opgeven die moeten worden geretourneerd met behulp `idxSet` van de para meter. Voor dit doel kunt u een lijst met door komma's gescheiden indexen verzenden, maar de volg orde van de items niet van belang is. De volgende indexen worden ondersteund:
 
        * `Addr` - **Adresbereiken:** Voor sommige straten zijn er adres punten die worden geïnterpoleerd vanaf het begin en het einde van de straat. deze punten worden weer gegeven als adresbereiken.
-       * `Geo` - Geographs: Gebieden op een kaart die de administratieve divisie van een land vertegenwoordigen, dat wil zeggen land, staat, plaats.
+       * `Geo` - **Geographs**: Gebieden op een kaart die de administratieve divisie van een land vertegenwoordigen, dat wil zeggen land, staat, plaats.
        * `PAD` - **Punt adres**:  Punten op een kaart waarbij een specifiek adres met een straat naam en nummer kan worden gevonden in een index, bijvoorbeeld Soquel Dr 2501. Het is het hoogste nauwkeurigheids niveau dat beschikbaar is voor adressen.  
        * `POI` - **Interessante punten**: Punten op een kaart die aandacht best Eden en mogelijk interessant zijn.  [Zoek adres ophalen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) retourneert niet poi's.  
        * `Str` - **Streets**: Weer gave van straten op de kaart.
@@ -689,7 +689,7 @@ Hieronder vindt u een overzicht van de onderstaande antwoord structuur. De resul
 Wanneer het antwoord type **geometrie**is, kan het de geometrie-id bevatten die wordt geretourneerd in het object **Data sources** onder "geometrie" en "ID". Met de service voor het [ophalen van polygoon](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) kunt u bijvoorbeeld de geometrie gegevens opvragen in de geojson-indeling, zoals een plaats of een overzicht van de lucht haven voor een set entiteiten. U kunt deze grens gegevens gebruiken voor [geoomheining](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence) of [Zoeken in poi's binnen de geometrie](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry).
 
 
-[Zoek adres](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) of [Zoek acties](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) op fuzzy-API kunnen de **geometrie-id** bevatten die wordt geretourneerd in het object data sources onder "geometrie" en "ID".
+[Zoek adres](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) of [Zoek acties op fuzzy](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) -API kunnen de **geometrie-id** bevatten die wordt geretourneerd in het object data sources onder "geometrie" en "ID".
 
 
 ```JSON 

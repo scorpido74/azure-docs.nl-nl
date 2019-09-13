@@ -1,287 +1,323 @@
 ---
-title: Analytics voor commerciële Marketplace in Partnercentrum
-description: Leer hoe u toegang tot analytische rapporten verkoop bewaken, prestaties evalueren en optimaliseren van uw marketplace-aanbiedingen.
-author: mattwojo
+title: Analytics voor de commerciële Marketplace in het partner centrum
+description: Meer informatie over het openen van analytische rapporten voor het bewaken van de verkoop, het evalueren van prestaties en het optimaliseren van uw Marketplace-aanbiedingen.
+author: chjenk
 manager: evansma
 ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/31/2019
-ms.openlocfilehash: e467def33eb2980e58611d50c314a1206877e3b0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
-ms.translationtype: MT
+ms.date: 09/09/2019
+ms.openlocfilehash: be1da90ef089da412545ac8af6fabb04198d821c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619692"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880169"
 ---
-# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analytics voor commerciële Marketplace in Partnercentrum
+# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analytics voor de commerciële Marketplace in het partner centrum
 
-Leer hoe u toegang tot analytische rapporten in de Microsoft Partner Center om te controleren van verkoop, prestaties evalueren en optimaliseren van uw aanbiedingen op marketplace. Als partner kunt u controleren van de vermeldingen voor aanbiedingen met behulp van de gegevensvisualisatie en inzicht grafieken ondersteund door Partner Center en manieren om uw verkoop te maximaliseren. De verbeterde analytics-hulpprogramma's kunnen u reageren op prestatieresultaten en betere relaties met uw klanten en leveranciers. 
+Meer informatie over het openen van analytische rapporten in micro soft Partner Center voor het bewaken van de verkoop, het evalueren van prestaties en het optimaliseren van uw aanbiedingen op Marketplace. Als partner kunt u uw aanbiedingen volgen met behulp van de gegevens visualisatie en Insight-grafieken die worden ondersteund door het partner centrum en kunt u manieren vinden om uw verkoop te maximaliseren. Dankzij de verbeterde analyse hulpprogramma's kunt u de resultaten van prestaties verbeteren en betere relaties met uw klanten en wederverkopers onderhouden. 
 
-Voor toegang tot de Partner Center analytics-hulpprogramma's, opent u de **[analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** dashboard onder commerciële Marketplace.
+Open het dash board **[analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** onder commerciële Marketplace om toegang te krijgen tot de Partner Center Analytics-hulpprogram ma's.
 
-|**Dashboard**|**Weergegeven inhoud**|
+|**Dashboard**|**Weer gegeven inhoud**|
 |:---|:---|
-|[Samenvatting](#summary-dashboard)|Grafieken, trends en waarden van de cumulatieve gegevens met samenvattingen van marketplace-activiteit voor uw aanbiedingen|
-|[Orders](#orders-dashboard)|Informatie over uw bestellingen in een grafische en downloadbare indeling|
-|[Klanten](#customer-dashboard)|Informatie over uw klanten, inclusief de groei van de ontwikkeling, die zijn gepresenteerd in een grafische en downloadbare indeling|
-|[Downloads](#downloads-dashboard)|Een lijst van de downloadaanvragen in de afgelopen 30 dagen|
+|[Samenvatting](#summary-dashboard)|Grafieken, trends en waarden van statistische gegevens die Marketplace-activiteiten voor uw aanbiedingen samenvatten|
+|[Orders](#orders-dashboard)|Informatie over uw orders in een grafische en download bare indeling|
+|[Hun](#customer-dashboard)|Informatie over uw klanten, met inbegrip van groei trends, gepresenteerd in een grafische en download bare indeling|
+|[Downloads](#downloads-dashboard)|Een lijst met uw download aanvragen in de afgelopen 30 dagen|
+|[Beoordelingen en beoordelingen](#ratings-and-reviews)| Informatie over beoordelingen en beoordelingen die uw klanten laten staan voor de aanbiedingen die ze hebben verkregen.
 
-## <a name="summary-dashboard"></a>Dashboard overzicht
+## <a name="summary-dashboard"></a>Samenvattings dashboard
 
-De **samenvatting** dashboard geeft een overzicht op basis van elk aanbiedingtype. **Insights** essentiële informatie weergeven in een oogopslag en bieden een brede weergave van de verkoopactiviteiten van uw aanbiedingen. U kunt deze rapporten met behulp van visualiseren de **samenvatting** dashboard:
+Het dash board **samen vatting** geeft een overzicht op basis van elk aanbiedings type. **Inzichten** tonen essentiële informatie in één oogopslag en bieden een uitgebreid overzicht van de verkoop activiteiten van uw aanbiedingen. U kunt deze rapporten visualiseren met behulp van het dash board **samen vatting** :
 
-- [Totaalaantal bestellingen](#totals)
+- [Totaal aantal orders](#totals)
 - [Totaal aantal klanten](#totals)
 - [Geografische locatie van uw klanten](#customers-by-geography)
-- [Opkomende trends op basis van de gegevens van uw klanten en volgorde](#growth-trend-chart)
-- [Leaderboard van de klant met hoogste orders](#customer-leaderboard)
-- [Aantal orders geordend op de aanbiedingsnaam van](#offers-by-orders)
+- [Trends die worden geopkomendeeerd op basis van uw klant-en bestel gegevens](#growth-trend-chart)
+- [Klant Leader Board met de hoogste orders](#customer-leaderboard)
+- [Aantal orders geordend op aanbiedings naam](#offers-by-orders)
 
 ### <a name="date-range"></a>Datumbereik
 
-Selectie van een datumbereik vindt u in de rechterbovenhoek van elke pagina. De uitvoer van de **samenvatting** grafieken van de pagina kunnen worden aangepast door het selecteren van een datumbereik op basis van de afgelopen 3, 6 of 12 maanden of door het selecteren van een aangepast datumbereik met een maximale duur van 12 maanden. Het datumbereik voor de standaardwaarde is zes maanden.
+U kunt in de rechter bovenhoek van elke pagina een selectie voor het datum bereik vinden. De uitvoer van de **overzichts** pagina grafieken kan worden aangepast door een datum bereik te selecteren op basis van de afgelopen 3, 6 of 12 maanden of door een aangepast datum bereik te selecteren met een maximale duur van 12 maanden. Het standaard datum bereik is zes maanden.
 
-![Partner Center analyseren dashboard](./media/analyze-dashboard.png)
+![Dash board analyseren in Partner Center](./media/analyze-dashboard.png)
 
 ### <a name="totals"></a>Totalen
 
-De **totalen** sectie geeft een telling van alle orders die worden gemaakt of verkregen, in het geselecteerde datumbereik dat klanten weer. 
+In de sectie **Totalen** wordt een telling weer gegeven van alle orders die zijn gemaakt, of klanten die zijn verkregen tijdens het geselecteerde datum bereik. 
 
-- De waarde voor het percentage naast **totaalaantal bestellingen** en **totaal klanten** vertegenwoordigt de hoeveelheid groei ten opzichte van de vorige maand. 
-- Een groene driehoek die verwijst naar boven geeft aan dat een positieve groeitrend. Een rode driehoek omlaag geeft aan dat een trend negatieve groei ten opzichte van de vorige maand. 
-- Volgorde en klant groei trends worden vertegenwoordigd door staafdiagrammen en de waarde voor elke maand worden weergegeven door de muiswijzer op de kolommen van de grafiek.
+- De waarde voor het percentage naast het **totale aantal orders** en het **Totaal aantal klanten** vertegenwoordigt de groei hoeveelheid vergeleken met de vorige maand. 
+- Een groene en opwaartse drie hoek duidt op een positieve groei trend. Een rode drie hoek die omlaag wijst wijst op een negatieve groei trend ten opzichte van de vorige maand. 
+- Trends in de volg orde en de groei van de klant worden weer gegeven door staaf diagrammen en de waarde voor elke maand wordt weer gegeven door de muis aanwijzer boven de kolommen van de grafiek te plaatsen.
 
-![Partner Center analyseren totalen](./media/analyze-totals.png)
+![Totalen analyseren in Partner Center](./media/analyze-totals.png)
 
-### <a name="customers-by-geography"></a>Klanten op basis van Geografie
+### <a name="customers-by-geography"></a>Klanten op geografie
 
-De **klanten op basis van Geografie** heatmap geeft het aantal klanten op een wereldkaart ter. 
+De heatmap **klanten** op een wereld kaart geven een aantal klanten weer.
 
-- U kunt de kaart om weer te geven van de exacte locatie verplaatsen. 
-- U kunt inzoomen op een specifieke locatie. 
-- De heatmap is een aanvullende raster om de details van het aantal klanten weer te geven (of [bestellen aantal](#orders-by-geography)) op de specifieke locatie. 
-- U kunt zoeken naar en selecteer een land/regio in het raster om in te zoomen op de locatie op de kaart. Terugkeren naar de oorspronkelijke weergave door te drukken de **Start** knop op de kaart.
-- Een **nieuwe** een van uw aanbiedingen voor de eerste keer tijdens de maand binnen het geselecteerde datumbereik dat de klant heeft gekocht.
+- U kunt de kaart verplaatsen om de exacte locatie weer te geven.
+- U kunt inzoomen op een specifieke locatie.
+- De heatmap heeft een aanvullend raster voor het weer geven van de details van het aantal klanten (of het [aantal orders](#orders-by-geography)) op de specifieke locatie.
+- U kunt in het raster zoeken en een land selecteren om in te zoomen op de locatie in de kaart. Keer terug naar de oorspronkelijke weer gave door in de kaart op de knop **Start** te drukken.
+- Een **nieuwe** klant heeft een van uw aanbiedingen voor de eerste keer in de maand in het geselecteerde datum bereik gekocht.
 
-![Partner Center analyseren klant Geografie](./media/analyze-customer-geography.png)
+![Partner centrum voor het analyseren van de klant Geografie](./media/analyze-customer-geography.png)
 
-### <a name="growth-trend-chart"></a>Groei van de trendgrafiek
+### <a name="growth-trend-chart"></a>Diagram van groei trend
 
-Vindt u trends op basis van de groei van uw **Orders gemaakt** of **klanten verkregen**, weergegeven per maand op basis van het geselecteerde datumbereik. U kunt deze trends verder analyseren door te selecteren van de koppelingen onder de grafiek die gaat u naar de desbetreffende **volgorde** of **klant** pagina's.
+U kunt trends weer geven op basis van de groei van uw **orders die zijn gemaakt** of **klanten hebben gekocht**, de maand per maand weer gegeven op basis van het geselecteerde datum bereik. U kunt deze trends verder analyseren door koppelingen onder het diagram te selecteren, waarmee u naar de betreffende **order** -of **klant** pagina's navigeert.
 
-![Partner Center analyseren groei trends](./media/analyze-growth-trends.png)
+![Partner centrum analyse van groei trends](./media/analyze-growth-trends.png)
 
-### <a name="customer-leaderboard"></a>Klant-leaderboard
+### <a name="customer-leaderboard"></a>Klant Leader Board
 
-De top 50 van klanten met het hoogste aantal orders worden weergegeven op een *klassement*, gesorteerd op de hoogste volgorde aantal en het percentage van de order. 
+De Top 50 klanten met het hoogste aantal orders worden weer gegeven op een *Leader Board*, gesorteerd op het hoogste aantal bestellingen en het percentage van de bestelling. 
 
-- Selecteer een klant om hun profielgegevens, orders geordend op de aanbieding of orders ingedeeld per kanaal voor het type en de prijzen van Azure-licentie weer te geven. 
-- De **biedt orders** ringdiagram geeft de bovenste vier aanbiedingen (op volgorde aantal) en de resterende gegroepeerd in als Rest alle biedt.
-
-> [!NOTE]
-> Persoonlijke klantgegevens wordt worden alleen weergegeven als de klant heeft toestemming gegeven. U kunt deze informatie kunt bekijken als u zich hebt aangemeld met een **eigenaar** rol machtigingen op serverniveau. Gebruikers met de **Inzender** rol niet mogelijk om deze informatie weer te geven. [Meer informatie over gebruikersrollen en machtigingen](./manage-account.md#define-user-roles-and-permissions).
-
-![Partner Center analyseren groei trends](./media/analyze-growth-trends.png)
-
-### <a name="offers-by-orders"></a>Aanbiedingen van orders
-
-De **biedt orders** grafiek organiseert uw actieve orders op basis van de naam van de aanbieding. 
-
-- U kunt slepen via segmenten uit het ringdiagram links naar de juiste ringdiagram om meer informatie over de aanbieding die u hebt gesleept weer te geven. Deze twee grafieken kunnen u een bepaalde aanbieding met de prestaties van al uw aanbiedingen ('Rest All') te vergelijken. 
-
-![Partner Center analyseren aanbiedingen van orders](./media/analyze-offer-by-order.png)
-
-## <a name="orders-dashboard"></a>Orders dashboard
-
-De **Orders** dashboard van de **analyseren** menu geeft de huidige orders voor al uw SaaS-aanbiedingen. Hier vindt u grafische voorstellingen van:
-
-- [Totalen](#order-totals)
-- [Orders op basis van Geografie](#orders-by-geography)
-- [Trends voor actieve en geannuleerde bestellingen](#trends-for-active-and-canceled-orders)
-- [Orders geordend op type marketplace-licentie](#orders-by-marketplace-license-type)
-- [Orders geordend op nieuwe en bestaande klanten](#orders-by-customer-type)
-- [De tabel details volgorde](#order-details-table)
+- Selecteer een klant om de profiel details te bekijken, bestellingen die zijn georganiseerd per aanbieding of de orders die zijn ingedeeld op basis van het Azure-licentie type en het prijs kanaal. 
+- In de grafiek **aanbiedingen per** order ring worden de vier beste Voorst Ellen weer gegeven (per Bestel aantal) en de resterende aanbiedingen gegroepeerd op als ' rest all '.
 
 > [!NOTE]
-> Er zijn verschillen tussen het analytics-weergeven in de Cloud Partner Portal (CPP) en de nieuwe commerciële Marketplace-programma in Partner Center rapporten. Een specifieke manier is dat de **verkoper Insights** in CPP heeft een **Orders & Gebruik** tabblad worden gegevens voor op gebruik gebaseerde aanbiedingen en niet op gebruik gebaseerde aanbiedingen weergegeven. In de Partner Center, de **Orders** pagina heeft een afzonderlijk tabblad voor SaaS-aanbiedingen.
+> Persoonlijke gegevens van de klant worden alleen weer gegeven als de klant toestemming heeft gegeven. U kunt deze informatie weer geven als u bent aangemeld met een **eigenaars** machtiging-niveau. Gebruikers met de rol **Inzender** kunnen deze gegevens niet weer geven. Meer [informatie over gebruikers rollen en machtigingen](./manage-account.md#define-user-roles-and-permissions).
 
-### <a name="order-totals"></a>Totalen
+![Partner centrum analyse van groei trends](./media/analyze-growth-trends.png)
 
-De **titel** sectie vindt u een telling van alle bestellingen hebt gemaakt, met inbegrip van beide **Active** en **geannuleerd** orders, tijdens de geselecteerde [datumbereik ](#date-range). 
+### <a name="offers-by-orders"></a>Aanbiedingen per order
 
-- De waarde voor het percentage naast **totaalaantal bestellingen** vertegenwoordigt de hoeveelheid groei ten opzichte van de vorige maand. 
-- Een groene driehoek die verwijst naar boven geeft aan dat een positieve groeitrend. Een rode driehoek omlaag geeft aan dat een trend negatieve groei ten opzichte van de vorige maand. 
-- Groei van de trends worden vertegenwoordigd door staafdiagrammen en de waarde voor elke maand worden weergegeven door de muiswijzer op de kolommen van de grafiek.
+In het diagram **aanbiedingen per bestelling** worden uw actieve orders geordend op basis van de naam van de aanbieding. 
 
-### <a name="orders-by-geography"></a>Orders op basis van Geografie
+- U kunt over segmenten slepen van de linker ring diagram naar de rechter ring diagram om meer details weer te geven voor de aanbieding die u hebt gesleept. Met deze twee grafieken kunt u een specifieke aanbieding vergelijken met de prestaties van alle andere aanbiedingen (' rest all '). 
 
-De **Orders op basis van Geografie** heatmap geeft het aantal uw bestellingen weer op een wereldkaart ter en werkt hetzelfde als de  **[klanten per Geografie heatmap](#customers-by-geography)** .
+![Partner centrum analyse van aanbiedingen op bestellingen](./media/analyze-offer-by-order.png)
 
-### <a name="trends-for-active-and-canceled-orders"></a>Trends voor actieve en geannuleerde bestellingen
+## <a name="orders-dashboard"></a>Het dash board orders
 
-De **actieve orders door aanbiedingen** ring graph organiseert al uw actieve orders op basis van hun namen van de aanbieding.
+In het dash board **Orders** van het menu **analyseren** worden de huidige orders voor al uw SaaS-aanbiedingen weer gegeven. U kunt grafische weer gaven bekijken van:
 
-- De top 4 aanbiedingen worden weergegeven in de grafiek en de rest van de aanbiedingen zijn gegroepeerd als Rest alle.
-- U kunt specifieke aanbiedingen selecteren in de legenda om alleen die aanbiedingen in de grafiek weer te geven. 
-- De muisaanwijzer boven een segment in de grafiek wordt weergegeven, het aantal orders en het percentage van deze aanbieding in vergelijking met het totale aantal orders in alle aanbiedingen.
-- **Orders door aanbiedingen trend** per maand groei trends weergegeven. De maand kolom geeft het aantal orders met de aanbiedingsnaam. Het lijndiagram wordt weergegeven de groei van percentage trend getekend op een z-as.
-- Gebruik de schuifregelaar kunt u boven aan de grafiek schuift u naar rechts en links langs de x-as en de focus op specifieke gegevenspunten.
-- U kunt de trendgrafiek weergeven door te selecteren van een specifiek item in de legenda.
-- U kunt er ook voor kiezen om weer te geven van trends en gegevens voor **geannuleerd orders**. De grafiek werkt op dezelfde manier als actieve orders.
+- [Order totalen](#order-totals)
+- [Orders op geografie](#orders-by-geography)
+- [Trends voor actieve en geannuleerde orders](#trends-for-active-and-canceled-orders)
+- [Orders geordend op Marketplace-licentie type](#orders-by-marketplace-license-type)
+- [Bestellingen georganiseerd door nieuwe en bestaande klanten](#orders-by-customer-type)
+- [Tabel Order Details](#order-details-table)
 
-![Partner Center analyseren actieve orders](./media/analyze-active-orders.png)
+> [!NOTE]
+> Er zijn verschillen tussen hoe analyse rapporten worden weer gegeven in het Cloud Partner-portal (CPP) en het nieuwe commerciële Marketplace-programma in Partner Center. Een specifieke manier is dat de **verkoop inzichten** in cpp het tabblad **Orders & gebruik** bevat, die gegevens weer geven voor aanbiedingen op basis van gebruik en aanbiedingen die niet op het gebruik zijn. In het partner centrum heeft de pagina **Orders** een afzonderlijk tabblad voor SaaS-aanbiedingen.
 
-### <a name="orders-by-marketplace-license-type"></a>Orders per type marketplace-licentie
+### <a name="order-totals"></a>Order totalen
+
+In de sectie **order totalen** wordt een telling weer gegeven van alle orders die zijn gemaakt, inclusief **actieve** en **geannuleerde** orders tijdens het geselecteerde [datum bereik](#date-range). 
+
+- De percentage waarde naast **Totaal aantal orders** vertegenwoordigt de hoeveelheid groei ten opzichte van de vorige maand. 
+- Een groene en opwaartse drie hoek duidt op een positieve groei trend. Een rode drie hoek die omlaag wijst wijst op een negatieve groei trend ten opzichte van de vorige maand. 
+- Groei trends worden weer gegeven door staaf diagrammen en de waarde voor elke maand wordt weer gegeven door de muis aanwijzer boven de kolommen van de grafiek te plaatsen.
+
+### <a name="orders-by-geography"></a>Orders op geografie
+
+In het heatmap **Orders per geografie** wordt het aantal van uw orders op een wereld kaart weer gegeven en werkt hetzelfde als de **[klanten op geografie heatmap](#customers-by-geography)** .
+
+### <a name="trends-for-active-and-canceled-orders"></a>Trends voor actieve en geannuleerde orders
+
+**Met de opdrachten actieve orders per** aanbod ring grafiek worden al uw actieve orders geordend op basis van hun aanbiedings namen.
+
+- De vier beste aanbiedingen worden weer gegeven in de grafiek en de rest van de aanbiedingen worden als ' rest all ' gegroepeerd.
+- U kunt specifieke aanbiedingen in de legenda selecteren om alleen die aanbiedingen in de grafiek weer te geven. 
+- Als u de muis aanwijzer boven een segment in de grafiek houdt, wordt het aantal orders en percentage van die aanbieding weer gegeven vergeleken met het totale aantal orders in alle aanbiedingen.
+- **Met orders per aanbod trend** worden trends in de maand per maand weer gegeven. De kolom maand vertegenwoordigt het aantal orders per aanbiedings naam. In het lijn diagram wordt de trend van het groei percentage weer gegeven die op een z-as is getekend.
+- U kunt de schuif regelaar aan de bovenkant van de grafiek gebruiken om naar rechts en naar links op de x-as te schuiven en te focussen op specifieke gegevens punten.
+- U kunt het trendanalyse diagram weer geven door een specifiek item in de legenda te selecteren.
+- U kunt er ook voor kiezen om trends en gegevens weer te geven voor **geannuleerde orders**. De grafiek werkt op dezelfde manier als actieve orders.
+
+![Partner centrum voor het analyseren van actieve orders](./media/analyze-active-orders.png)
+
+### <a name="orders-by-marketplace-license-type"></a>Orders per Marketplace-licentie type
 <!-- Section needs review and clarification!  -->
-De **Orders door marketplace licentietype** diagram geeft een ordertelling per maand is op basis van het licentietype en facturering-methode van de marketplace-aanbieding. Licentietypen zijn:
+In de grafiek **per Marketplace-licentie type** wordt een aantal maanden per maand weer gegeven op basis van het licentie type en de facturerings methode van de Marketplace-aanbieding. Licentie typen zijn onder andere:
 
-- **Kosten in rekening gebracht via Azure**: Microsoft factureert klanten namens u, als u ervoor te kiest [verkopen van uw aanbieding via Microsoft](./create-new-saas-offer.md#sell-through-microsoft) met dit licentietype. Betaalmethoden zijn betalen per gebruik via creditcard of Enterprise-facturering.
-- **Neem uw eigen licentie mee**: Microsoft kanaalpartners niet klanten voor hun gebruik van dit type marketplace-aanbieding. Vermeld als **[deze nu (gratis)](./create-new-saas-offer.md#get-it-now-free)** in de marketplace.
-- **Gratis**: Microsoft kanaalpartners niet klanten voor hun gebruik van dit type marketplace-aanbieding. Vermeld als **[gratis proefversie](./create-new-saas-offer.md##free-trial-listing)** in de marketplace.
-- **Microsoft als wederverkoper**: Hiermee geeft u aanbiedingen die door Microsoft-resellers wordt verkocht als onderdeel van de  **[programma Cloud Solution Provider (CSP)](./create-new-saas-offer.md#csp-program-opt-in)** .
+- **Gefactureerd via Azure**: Micro soft factureert klanten namens u wanneer u ervoor kiest om [uw aanbieding via micro soft te verkopen](./create-new-saas-offer.md#sell-through-microsoft) met dit licentie type. Betalings typen zijn onder andere betalen per gebruik via credit card of het factureren van een onderneming.
+- **Bring your own License**: Micro soft factureert geen klanten voor het gebruik van dit type Marketplace-aanbieding. Wordt weer gegeven als **[nu downloaden (gratis)](./create-new-saas-offer.md#get-it-now-free)** in Marketplace.
+- **Gratis**: Micro soft factureert geen klanten voor het gebruik van dit type Marketplace-aanbieding. Vermeld als **[gratis proef versie](./create-new-saas-offer.md##free-trial-listing)** in Marketplace.
+- **Micro soft als wederverkoper**: Vertegenwoordigt aanbiedingen die door micro soft-wederverkopers worden verkocht als onderdeel van het programma van de **[Cloud Solution Provider (CSP)](./create-new-saas-offer.md#csp-program-opt-in)** .
 
-![Partner Center analyseren orders door licentietype](./media/analyze-license-type.png)
+![Partner centrum Analyseer orders per licentie type](./media/analyze-license-type.png)
 
-### <a name="orders-by-customer-type"></a>Orders per klanttype
+### <a name="orders-by-customer-type"></a>Orders per klant type
 
-De **Orders per klanttype** staafdiagram geeft het aantal orders verdeeld over de **nieuwe klanten** en **bestaande klanten**. 
+In het staaf diagram **Orders per klant type** wordt het aantal orders weer gegeven dat is verdeeld tussen **nieuwe klanten** en **bestaande klanten**. 
 
-- Een **nieuwe klant** heeft verkregen van een of meer van uw aanbiedingen voor het eerst binnen de dezelfde kalendermaand (y-as). Een **bestaande klant** is eerder verkregen van een aanbieding van u voorafgaand aan de kalendermaand gerapporteerd (op de y-as). 
-- Een extra cirkeldiagram vertegenwoordigt alle orders die zijn gemaakt door de nieuwe of bestaande klant voor het geselecteerde datumbereik.
-- In beide diagrammen, kunt u alleen nieuwe of enige bestaande klanten door het selecteren van de respectieve legenda weergeven.
+- Een **nieuwe klant** heeft een of meer van uw aanbiedingen voor de eerste keer in dezelfde kalender maand (y-as) aangeschaft. Een **bestaande klant** heeft eerder een aanbieding van u aangeschaft vóór de gemelde kalender maand (op de y-as). 
+- Een extra cirkel diagram vertegenwoordigt alle orders die zijn gemaakt door de nieuwe of bestaande klant voor het geselecteerde datum bereik.
+- In beide grafieken kunt u ervoor kiezen om alleen nieuwe of alleen bestaande klanten weer te geven door de betreffende legenda te selecteren.
 
-![Partner Center analyseren orders per klanttype](./media/analyze-order-by-customer.png)
+![Partner centrum orders analyseren op klant type](./media/analyze-order-by-customer.png)
 
-### <a name="order-details-table"></a>De tabel details volgorde
+### <a name="order-details-table"></a>Tabel Order Details
 
-De **details ordertabel** geeft een genummerde lijst van de bovenste orders gesorteerd op basis van datum van aanschaf van 1000.
+In de **tabel Order Details** wordt een genummerde lijst met de 1000 belangrijkste orders gesorteerd op datum van aanschaf.
 
-- Elke kolom in het raster is gesorteerd.
-- Als het aantal records minder dan 1000 is, kunnen de gegevens op een TSV-bestand worden geëxtraheerd.
-- Als het aantal records meer dan 1000, geëxporteerd wordt gegevens asynchroon geplaatst in een pagina met downloads voor de komende 30 dagen.
-- Filters kunnen worden toegepast op de **details ordertabel** om alleen de gegevens die u geïnteresseerd bent in weer te geven. Gegevens kunnen worden gefilterd op land, Azure licentietype, type Marketplace-licentie, type aanbieding, de status, gratis sporen, Marketplace-abonnement-ID, de klant-ID, en bedrijfsnaam.
+- Elke kolom in het raster is sorteerbaar.
+- De gegevens kunnen worden geëxtraheerd naar een TSV-bestand als het aantal records kleiner is dan 1000.
+- Als records een getal van meer dan 1000, worden geëxporteerde gegevens asynchroon in een download pagina voor de volgende 30 dagen geplaatst.
+- Filters kunnen worden toegepast op de **tabel Order Details** om alleen de gegevens weer te geven waarin u geïnteresseerd bent. Gegevens kunnen worden gefilterd op land, het type Azure-licentie, het Marketplace-licentie type, het type aanbieding, de status van de bestelling, een gratis spoor, abonnements-ID, klant-ID en bedrijfs naam.
 
-![Details van partner Center analyseren](./media/analyze-order-details.png)
+![Partner centrum Details van order analyseren](./media/analyze-order-details.png)
 
-## <a name="customer-dashboard"></a>Klant-dashboard
+## <a name="customer-dashboard"></a>Gebruikers dashboard
 
-De **klant** dashboard van de **analyseren** menu worden gegevens weergegeven voor klanten die uw aanbiedingen hebben aangeschaft. Hier vindt u grafische voorstellingen van:
+In het dash board van de **klant** van het menu **analyseren** worden gegevens weer gegeven voor klanten die uw aanbiedingen hebben aangeschaft. U kunt grafische weer gaven bekijken van:
 
-- [Klanttotalen](#customer-totals)
-- [Klanten op basis van Geografie](#customers-by-geography)
-- [Klantentrends](#customer-trends)
-- [Klanten met orders](#customers-by-orders)
-- [De detailtabel van klant](#customer-details-table)
+- [Klant totalen](#customer-totals)
+- [Klanten op geografie](#customers-by-geography)
+- [Klant trends](#customer-trends)
+- [Klanten op bestellingen](#customers-by-orders)
+- [Tabel Klant gegevens](#customer-details-table)
 
-### <a name="customer-totals"></a>Klanttotalen
+### <a name="customer-totals"></a>Klant totalen
 
-De **klanttotalen** sectie vindt u een telling van alle klanten, met inbegrip van nieuwe, bestaande en gegevensverloop, tijdens de geselecteerde [datumbereik](#date-range).
+In het gedeelte **klant totalen** wordt een telling weer gegeven van alle klanten, met inbegrip van nieuwe, bestaande en verlopen, tijdens het geselecteerde [datum bereik](#date-range).
 
-- Percentage van de klanten van de groei ten opzichte van de vorige maand wordt aangegeven door het aantal en de opwaartse indicator in de groene of neerwaartse indicator in het rood.
-- Groei van de trends worden vertegenwoordigd door staafdiagrammen en de waarde voor elke maand worden weergegeven door de muiswijzer op de kolommen van de grafiek.
+- Het percentage van de groei in vergelijking met de vorige maand wordt aangegeven door de indicator aantal en omhoog in een groene of neerwaartse indicator rood.
+- Groei trends worden weer gegeven door staaf diagrammen en de waarde voor elke maand wordt weer gegeven door de muis aanwijzer boven de kolommen van de grafiek te plaatsen.
 
-#### <a name="customer-types"></a>Klant-typen
+#### <a name="customer-types"></a>Klant typen
 
-Er zijn drie typen van de klant: nieuwe, bestaande en gegevensverloop. 
+Er zijn drie typen klanten: nieuw, bestaand en overlopend. 
 
-- Een nieuwe klant heeft verkregen, een of meer van uw aanbiedingen voor het eerst binnen de geselecteerde maand.
-- Een bestaande klant heeft verkregen, een of meer van uw aanbiedingen vóór de maand hebt geselecteerd.
-- Een churned klant heeft alle aanbiedingen die eerder hebt gekocht geannuleerd.
+- Een nieuwe klant heeft een of meer van uw aanbiedingen voor de eerste keer in de geselecteerde maand opgehaald.
+- Een bestaande klant heeft een of meer van uw aanbiedingen aangeschaft vóór de maand geselecteerd.
+- Een bestaande klant heeft alle aanbiedingen die eerder zijn gekocht, geannuleerd.
 
-### <a name="customer-trends"></a>Klantentrends
+### <a name="customer-trends"></a>Klant trends
 
-De **klantentrends** diagram geeft een telling van alle klanten, met inbegrip van nieuwe, bestaande en gegevensverloop, met een groeitrend per maand.
+In het diagram **klant trends** wordt een telling weer gegeven van alle klanten, met inbegrip van nieuwe, bestaande en geverloopte, met een groei trend per maand.
 
-- Het lijndiagram vertegenwoordigt de algehele klant groei percentages. 
-- De maand kolom geeft het aantal klanten gestapeld door klanten van nieuwe, bestaande en gegevensverloop.
-- Het aantal klanten gegevensverloop wordt op de negatieve richting van de Y-as weergegeven.
-- Specifieke legenda items die moeten worden weergegeven informatie kunt u een gedetailleerd overzicht. Selecteer bijvoorbeeld nieuwe klanten in de legenda om weer te geven alleen nieuwe klanten.
-- Gebruik de schuifregelaar kunt u boven aan de grafiek schuift u naar rechts en links op de x-as en u richten op specifieke gegevenspunten om weer te geven in meer detail.
-- De muisaanwijzer boven een kolom van de grafiek, worden de gegevens weergegeven voor alleen die maand.
+- Het lijn diagram geeft het totale percentage aan klant groei. 
+- De kolom month vertegenwoordigt het aantal klanten dat is gestapeld door nieuwe, bestaande en geafnemerde klanten.
+- Het aantal geverloopte klanten wordt weer gegeven op de negatieve richting van de Y-as.
+- U kunt specifieke legenda-items selecteren om meer gedetailleerde weer gaven weer te geven. Selecteer bijvoorbeeld nieuwe klanten in de legenda om alleen nieuwe klanten weer te geven.
+- U kunt de schuif regelaar aan de bovenkant van de grafiek gebruiken om naar rechts en links op de x-as te schuiven en te focussen op specifieke gegevens punten om meer details weer te geven.
+- Als u de muis aanwijzer boven een kolom van de grafiek houdt, worden alleen de Details voor die maand weer gegeven.
 
-![Partner Center analyseren klantentrends](./media/analyze-customer-trends.png)
+![Partner centrum trends van klanten analyseren](./media/analyze-customer-trends.png)
 
-### <a name="customers-by-orders"></a>Klanten met orders
+### <a name="customers-by-orders"></a>Klanten op bestellingen
 
-De **klanten door orders** grafiek geeft de **boven klant percentiel** langs de x-as, zoals wordt bepaald door het aantal orders. De y-as wordt weergegeven van de klant volgorde count. De z-as (lijndiagram) bevat het cumulatieve percentage van het totale aantal orders. U kunt details weergeven door de muiswijzer op punten langs de lijndiagram weer te geven.
+In het diagram **klanten per bestelling** wordt het **bovenste klant percentiel** langs de x-as weer gegeven, zoals bepaald door het aantal orders. Op de y-as wordt het aantal orders van de klant weer gegeven. In de z-as (lijn diagram) wordt het cumulatieve percentage van het totale aantal orders weer gegeven. U kunt details weer geven door boven punten in het lijn diagram te bewegen.
 
-Als u bijvoorbeeld kunt u meer uit deze gegevens van de klant die de top 30% van uw klanten een bijdrage aan 83% van de orders, gelijk zijn aan 2,130 orders levert.
+U kunt bijvoorbeeld leren van deze klant order gegevens die de top 30% van uw klanten bijdraagt aan 83% van de orders, gelijk aan 2.130 orders.
 
-![Partner Center analyseren klantorders](./media/analyze-customer-orders.png)
+![Partner centrum klant orders analyseren](./media/analyze-customer-orders.png)
 
-### <a name="customer-details-table"></a>De detailtabel van klant
+### <a name="customer-details-table"></a>Tabel Klant gegevens
 
-De **details klantentabel** geeft een genummerde lijst van de top 1000 klanten gesorteerd op basis van de datum waarop ze een van uw aanbiedingen voor het eerst hebt verkregen.
+In de **tabel Klant gegevens** wordt een genummerde lijst met de top 1000-klanten weer gegeven, gesorteerd op de datum waarop ze voor het eerst een van uw aanbiedingen hebben verkregen.
 
-- Persoonlijke klantgegevens is alleen beschikbaar als de klant heeft toestemming gegeven. U kunt deze informatie alleen bekijken als u zich hebt aangemeld met een **eigenaar** machtigingsniveau-rol. [Meer informatie over gebruikersrollen en machtigingen](./manage-account.md#define-user-roles-and-permissions).
-- Elke kolom in het raster is gesorteerd.
-- Als het aantal records minder dan 1000 is, kunnen de gegevens op een TSV-bestand worden geëxtraheerd.
-- Als het aantal records meer dan 1000, geëxporteerd wordt gegevens asynchroon geplaatst in een pagina met downloads voor de komende 30 dagen.
-- Filters kunnen worden toegepast op de tabel om alleen de gegevens die u geïnteresseerd bent in weer te geven. Gegevens kunnen worden gefilterd op de bedrijfsnaam, klant-ID, Marketplace abonnements-ID, licentietype van Azure, verkregen van de datum, datum verloren, e-mailadres van de klant, land/status/plaats/Zip, taal van de klant, enzovoort.
+- Persoonlijke gegevens van de klant zijn alleen beschikbaar als de klant toestemming heeft gegeven. U kunt deze informatie alleen weer geven als u bent aangemeld met het rol niveau **eigenaar** van machtigingen. Meer [informatie over gebruikers rollen en machtigingen](./manage-account.md#define-user-roles-and-permissions).
+- Elke kolom in het raster is sorteerbaar.
+- De gegevens kunnen worden geëxtraheerd naar een TSV-bestand als het aantal records kleiner is dan 1000.
+- Als records een getal van meer dan 1000, worden geëxporteerde gegevens asynchroon in een download pagina voor de volgende 30 dagen geplaatst.
+- Filters kunnen worden toegepast op de tabel om alleen de gegevens weer te geven waarin u bent geïnteresseerd. Gegevens kunnen worden gefilterd op bedrijfs naam, klant-ID, abonnements-ID van de Marketplace, Azure-licentie type, datum van aanschaf, verloren datum, klant-e-mail, klant land/staat/plaats/post code, klant taal, enzovoort.
 
-![Details van klant analyseren Partnercentrum](./media/analyze-customer-table.png)
+![Partner centrum Details van klant analyseren](./media/analyze-customer-table.png)
 
-## <a name="downloads-dashboard"></a>Downloads van dashboard
+## <a name="downloads-dashboard"></a>Dash board down loads
 
-De **Downloads** dashboard van de **analyseren** menu wordt weergegeven voor aanvragen voor alle downloads die meer dan 1000 rijen van de klant of order gegevens bevatten.
+In het dash board **down loads** van het menu **analyseren** worden aanvragen weer gegeven voor alle down loads die meer dan 1000 rijen met klant-of order gegevens bevatten.
 
-U ontvangt een pop-upmelding en e-mailbericht met een koppeling naar de **Downloads** dashboard wanneer u een download met meer dan 1000 rijen met gegevens verzoekt. Deze gegevensdownloads zijn beschikbaar voor een periode van 30 dagen en vervolgens verwijderd.
+U ontvangt een pop-upmelding en een e-mail bericht met een koppeling naar het dash board **down loads** wanneer u een down load opvraagt met meer dan 1000 rijen met gegevens. Deze gegevens worden gedownload gedurende een periode van 30 dagen en vervolgens verwijderd.
 
-![Partner Center analyseren downloads](./media/analyze-downloads.png)
+![Partner centrum voor het analyseren van down loads](./media/analyze-downloads.png)
 
-### <a name="dictionary-of-data-terms"></a>Woordenlijst van termen van gegevens
+### <a name="dictionary-of-data-terms"></a>Woorden lijst met gegevens termen
 
 | De naam van kenmerk | Rapporten | Definitie|
 |---|---|---|
-| Azure licentietype | Klant, volgorde | Het type licentieovereenkomst door klanten gebruikt om Azure te kopen. Ook wel bekend als kanaal |
-| Azure licentietype: Cloud Solution Provider | Klant, volgorde | De eindklant aanschaft Azure en uw aanbieding van Marketplace via hun Cloud Solution Provider, die als uw reseller fungeert.|
-| Azure licentietype: Zakelijk | Klant, volgorde | De eindklant aanschaft Azure en uw Marketplace-aanbieding via een Enterprise Agreement, ondertekend rechtstreeks met Microsoft.|
-| Azure licentietype: Enterprise via wederverkoper  | Klant, volgorde | De eindklant aanschaft Azure en uw Marketplace-aanbieding via een reseller die vereenvoudigt het uitvoeren van hun Enterprise Agreement van Microsoft.|  |
-| Azure licentietype: Betalen naar gebruik| Klant, volgorde | De eindklant aanschaft Azure en uw Marketplace-aanbieding via een 'Betalen naar gebruik'-overeenkomst, ondertekend rechtstreeks met Microsoft.||
-| Naam van de cloud-exemplaar| Bestellen| De Microsoft-Cloud waarin een VM-implementatie is opgetreden.||
-| Naam van cloud-exemplaar: Azure Global| Bestellen| De openbare wereldwijde Microsoft-cloud.|| |
-| Naam van cloud-exemplaar: Azure Government | Bestellen| Voor een van de volgende overheden Government-specifieke Microsoft-clouds: China, Duitsland of de Verenigde Staten van Amerika.| |
-| Plaats klant| De klant| De plaatsnaam geleverd door de klant. Plaats kan afwijken van de plaats in de Azure-abonnement van een klant.||
-| Taal van de klant-communicatie  | De klant| De taal van voorkeur van de klant voor communicatie.||
-| De naam van het bedrijf van klant | Klant, volgorde | De naam van het bedrijf die is opgegeven door de klant. De naam kan afwijken van de plaats in de Azure-abonnement van een klant.|  |
-| Land/regio van de klant | Klant, volgorde | De landnaam is opgegeven door de klant. Land/regio kan afwijken van het land/regio in de Azure-abonnement van een klant.|  |
-| E-mailadres van de klant| De klant| Het e-mailadres dat is geleverd door de klant. E-mailbericht kan afwijken van het e-mailadres in van een klant Azure-abonnement.||
-| Voornaam van de klant| De klant| De naam die is opgegeven door de klant. Naam kan afwijken van de naam die is opgegeven in de Azure-abonnement van een klant.| |
-| Klant-ID | Klant, volgorde | De unieke id die is toegewezen aan een klant. Een klant kan nul of meer Azure Marketplace-abonnementen hebben.|  |
-| Klant-postcode  | De klant| De postcode is opgegeven door de klant. Code kan afwijken van de postcode die is opgegeven in de Azure-abonnement van een klant.| |
-| Status van de klant| De klant| De status (adres) die door de klant. Status kan afwijken van de laatste naam die is opgegeven in de Azure-abonnement van een klant.| |
-| Datum verworven| De klant| De eerste datum waarop de klant aangeschaft een aanbieding door u zijn gepubliceerd.| |
-| Datum verloren| De klant| De laatste datum de laatste van alle eerder hebt gekocht-aanbiedingen is geannuleerd door de klant.||
-| Nieuwe klant  | Bestellen| De waarde identificeert een nieuwe klant verkrijgen van een of meer van uw aanbiedingen voor de eerste keer (of niet). Waarde is 'Ja' als binnen de dezelfde kalendermaand voor 'Datum verkregen'. Waarde is "Nee" als een van uw aanbiedingen voorafgaand aan de kalendermaand gerapporteerd door de klant heeft gekocht. |
-| Preview-versie SKU| Bestellen| De waarde laat u weten als u de SKU als 'preview' zijn gelabeld. Waarde is 'Ja' als de SKU is daarom gemarkeerd en geautoriseerd door u alleen Azure-abonnementen kunnen implementeren en gebruiken van deze installatiekopie. Waarde is "Nee" Als de SKU is niet zijn geïdentificeerd als 'preview'.  |
-| Contact op met de promotie is Opt-In| De klant| De waarde laat u weten als de klant proactief aangemeld, wordt voor de contactpersoon in de promotie van uitgevers. Op dit moment zijn we niet de optie presenteren aan klanten, zodat we "Nee" over de hele linie hebt aangegeven. Wanneer deze functie is geïmplementeerd, gaan we dienovereenkomstig bijgewerkt.|
-| Type Marketplace-licentie| Bestellen| De facturering methode van de Marketplace-aanbieding.||
-| Marketplace-licentietype: Kosten in rekening gebracht via Azure| Bestellen| Microsoft is van de agent voor deze aanbieding van Marketplace en klanten namens u kosten in rekening gebracht. (Betalen per gebruik creditcard of factuur Enterprise)||
-| Marketplace-licentietype: Bring Your Own License | Bestellen| De virtuele machine vereist een licentiesleutel geleverd door de klant om te implementeren. Microsoft kanaalpartners niet klanten voor het weergeven van de aanbiedingen op deze manier via de marketplace.||
-| Marketplace-licentietype: Free| Bestellen| De aanbieding is geconfigureerd om gratis voor alle gebruikers. Microsoft kanaalpartners niet klanten voor hun gebruik van deze aanbieding.||
-| Marketplace-licentietype: Microsoft als wederverkoper  | Bestellen| Microsoft kan uw reseller voor deze Marketplace-aanbieding.|  |
-| Marketplace abonnements-ID | Klant, volgorde | De unieke id die is gekoppeld aan het Azure-abonnement de klant gebruikt voor het kopen van uw Marketplace-aanbieding. ID was voorheen de GUID van Azure-abonnement.||
+| Azure-licentie type | Klant, order | Het type licentie overeenkomst dat door klanten wordt gebruikt om Azure aan te schaffen. Ook wel bekend als Channel |
+| Azure-licentie type: Cloud Solution Provider | Klant, order | De eind klant schaft Azure en uw Marketplace-aanbieding aan via hun Cloud solution provider, die fungeert als uw wederverkoper.|
+| Azure-licentie type: Zakelijk | Klant, order | De eind klant schaft Azure en uw Marketplace-aanbieding aan via een Enterprise Agreement, die rechtstreeks is ondertekend met micro soft.|
+| Azure-licentie type: Enter prise via wederverkoper  | Klant, order | De eind klant schaft Azure en uw Marketplace-aanbieding aan via een wederverkoper die hun Enterprise Agreement met micro soft vereenvoudigt.|  |
+| Azure-licentie type: Betalen per gebruik| Klant, order | De eind klant aanschaft Azure en uw Marketplace-aanbieding via een overeenkomst voor betalen naar gebruik, die rechtstreeks is ondertekend met micro soft.||
+| Naam van Cloud exemplaar| Bestellen| De Microsoft Cloud waarin een VM-implementatie is opgetreden.||
+| Naam van Cloud exemplaar: Azure Global| Bestellen| De open bare wereld wijde micro soft-Cloud.|| |
+| Naam van Cloud exemplaar: Azure Government | Bestellen| Government-specifieke micro soft-Clouds voor een van de volgende regeringen: China, Duitsland of de Verenigde Staten van Amerika.| |
+| Klant plaats| De klant| De naam van de plaats van de klant. De stad kan afwijken van de plaats in het Azure-abonnement van een klant.||
+| Taal van klant communicatie  | De klant| De taal die door de klant wordt aanbevolen voor communicatie.||
+| Bedrijfs naam van klant | Klant, order | De bedrijfs naam die door de klant is verschaft. De naam kan afwijken van de plaats in het Azure-abonnement van een klant.|  |
+| Land/regio van de klant | Klant, order | De land naam van de klant. Het land kan afwijken van het land van het Azure-abonnement van de klant.|  |
+| E-mail van klant| De klant| Het e-mail adres van de eind gebruiker. E-mail kan afwijken van het e-mail adres in het Azure-abonnement van een klant.||
+| Voor naam van klant| De klant| De naam van de klant. De naam kan afwijken van de naam die is opgenomen in het Azure-abonnement van de klant.| |
+| Klant-id | Klant, order | De unieke id die aan een klant is toegewezen. Een klant heeft mogelijk geen of meer Azure Marketplace-abonnementen.|  |
+| Post code van de klant  | De klant| De post code die de klant heeft ontvangen. De code kan afwijken van de post code die is opgenomen in het Azure-abonnement van een klant.| |
+| Klant status| De klant| De status (adres) van de klant. De status kan afwijken van de achternaam die is opgenomen in het Azure-abonnement van de klant.| |
+| Aanschaf datum| De klant| De eerste datum waarop de klant een door u gepubliceerde aanbieding heeft gekocht.| |
+| Datum verloren| De klant| De laatste datum waarop de klant de laatste van alle eerder gekochte aanbiedingen heeft geannuleerd.||
+| Is nieuwe klant  | Bestellen| Met deze waarde wordt een nieuwe klant geïdentificeerd die voor de eerste keer een of meer van uw aanbiedingen aanschaft (of niet). De waarde is ' ja ' in dezelfde kalender maand voor ' verworven datum '. De waarde is "nee" als de klant een van de aanbiedingen vóór de gemelde kalender maand heeft gekocht. |
+| Is preview-SKU| Bestellen| De waarde laat u weten of u de SKU hebt gelabeld als ' preview '. De waarde is "ja" als de SKU dienovereenkomstig is gelabeld en alleen Azure-abonnementen die door u zijn geautoriseerd, kunnen deze installatie kopie implementeren en gebruiken. De waarde is ' nee ' als de SKU niet is geïdentificeerd als ' preview '.  |
+| Is de contact persoon voor de reclame in| De klant| De waarde laat u weten of de klant proactief heeft gekozen voor een contact persoon van uitgevers. Op dit moment bieden we geen optie voor klanten, dus hebben we "no" aangegeven op het bord. Zodra deze functie is geïmplementeerd, gaan we dienovereenkomstig met bijwerken.|
+| Marketplace-licentie type| Bestellen| De facturerings methode van de Marketplace-aanbieding.||
+| Marketplace-licentie type: Gefactureerd via Azure| Bestellen| Micro soft is uw agent voor deze Marketplace-aanbieding en factuurt klanten namens u. (PAYG credit card of ENTER prise-factuur)||
+| Marketplace-licentie type: Neem uw eigen licentie mee | Bestellen| Voor de virtuele machine is een licentie sleutel van de klant vereist om te implementeren. Micro soft factureert klanten niet op deze manier met hun aanbiedingen via Marketplace.||
+| Marketplace-licentie type: Free| Bestellen| De aanbieding is zo geconfigureerd dat deze gratis is voor alle gebruikers. Micro soft houdt geen klanten in rekening voor het gebruik van deze aanbieding.||
+| Marketplace-licentie type: Micro soft als wederverkoper  | Bestellen| Micro soft is uw wederverkoper voor deze Marketplace-aanbieding.|  |
+| Marketplace-abonnements-ID | Klant, order | De unieke id die is gekoppeld aan het Azure-abonnement dat de klant heeft gebruikt voor het kopen van uw Marketplace-aanbieding. De ID was voorheen de GUID van het Azure-abonnement.||
 | Naam van aanbieding:  | Bestellen| De naam van de Marketplace-aanbieding.|| |
-| Type aanbieding  | Bestellen| Het type van de Microsoft Marketplace-aanbiedingen.|||
-| Type aanbieding: Beheerde toepassing  | Volgorde | Gebruik de Azure-app: app-aanbieding voor type beheerd wanneer de volgende voorwaarden vereist zijn: U kunt ofwel een oplossing implementeren voor uw klanten met behulp van een virtuele machine of een volledige IaaS-oplossing. U of uw klant vereisen dat de oplossing worden beheerd door een partner. |
-| Type aanbieding: Azure Application| Volgorde | Gebruik het type Azure-toepassing oplossing aanbieding als uw oplossing extra implementatie en configuratie automation dan een eenvoudige virtuele machine vereist.||
-| Type aanbieding: Adviesservice| Bestellen| Adviesservices op Azure Marketplace kunnen klanten verbinding met services te ondersteunen en uitbreiden van hun gebruik van Azure.| |
-| Type aanbieding: Container | Bestellen| Het type van de aanbieding Container gebruiken als uw oplossing een Docker-containerinstallatiekopie ingericht als een Azure container op basis van een Kubernetes-service is.||
-| Type aanbieding: Dynamics 365 Business Central| Bestellen| Dit aanbiedingtype gebruikt wanneer uw oplossing is geïntegreerd met Dynamics 365 voor Financiën en bewerkingen| |
-| Type aanbieding: Dynamics 365 for Customer Engagement | Bestellen| Gebruik dit aanbiedingtype als uw oplossing is geïntegreerd met Dynamics 365 voor Customer Engagement.||
-| Type aanbieding: IoT Edge-Module | Bestellen| Azure IoT Edge-modules zijn de kleinste berekening eenheden die worden beheerd door IoT Edge en Microsoft-services (zoals Azure Stream Analytics), 3rd derden services of uw eigen oplossingsspecifieke code kunnen bevatten. |
-| Type aanbieding: Power BI-toepassing | Bestellen| Het type van de aanbieding Power BI-toepassing gebruiken bij het implementeren van een toepassing die is geïntegreerd met Power BI.|  |
-| Type aanbieding: SaaS-toepassing| Bestellen| Gebruik het aanbiedingtype van SaaS-app zodat uw klant uw oplossing op basis van SaaS, technische als een abonnement kopen.||
-| Type aanbieding: Virtuele Machine | Bestellen| Het type van de aanbieding virtuele machine gebruiken wanneer u een virtueel apparaat voor het abonnement is gekoppeld aan uw klant implementeert.||
-| Type aanbieding: Visual Studio Marketplace Extension  | Bestellen| Type eerder beschikbaar was aanbieden aan ontwikkelaars van Azure DevOps-extensie. Gaan forward Azure DevOps verkocht extensie ontwikkelaars hun extensie rechtstreeks aan klanten. Extensie aanbiedingen kunnen worden geconfigureerd als betaalde of met een evaluatieversie. |
-| Orderdatum annuleren| Bestellen| De datum waarop die de Marketplace-bestelling is geannuleerd.||
-| Order-id| Bestellen| De unieke id van de volgorde van de klant voor uw Marketplace-service. Virtuele Machine op gebruik gebaseerde aanbiedingen zijn niet gekoppeld aan een volgorde.| |
-| Aankoopdatum volgorde| Bestellen| De datum waarop de Marketplace-bestelling is gemaakt.|||
-| De Status| Bestellen| De status van een Marketplace-bestelling op het moment dat de gegevens voor het laatst is vernieuwd.|     |
-| De Status van de order: Actief  | Bestellen| De klant een bestelling heeft aangeschaft en niet de order is geannuleerd.|         |
-| Orderstatus: geannuleerd | Bestellen| De klant een bestelling eerder hebt gekocht en vervolgens hun order geannuleerd.||
-| E-mailadres van provider| De klant| Het e-mailadres van de provider in de relatie tussen Microsoft en de eindklant. Als de klant een onderneming via Reseller, is dit de leverancier. Als er een Cloud Solution Provider (CSP) is betrokken, is dit de CSP.|
-| Naam van provider| De klant| De naam van de provider die betrokken zijn bij de relatie tussen Microsoft en end-klant. Als de klant een onderneming via Reseller, is dit de leverancier. Als er een Cloud Solution Provider (CSP) is betrokken, is dit de CSP.|
-| SKU| Bestellen| SKU-naam zoals gedefinieerd tijdens het publiceren. Een aanbieding mogelijk veel SKU's, maar een SKU kan alleen worden gekoppeld aan één aanbieding.||
-| Proefversie einddatum| Bestellen| De datum waarop de proefperiode voor deze order wordt beëindigd of is beëindigd.||
+| Type aanbieding  | Bestellen| Het type Microsoft Marketplace aanbieding.|||
+| Aanbiedings type: Beheerde toepassing  | Ter | Gebruik het aanbiedings type Azure-app: beheerde app wanneer de volgende voor waarden zijn vereist: U implementeert een oplossing op basis van een abonnement voor uw klant met behulp van een virtuele machine of een volledige oplossing op basis van IaaS. U of uw klant vereist dat de oplossing wordt beheerd door een partner. |
+| Aanbiedings type: Azure Application| Ter | Gebruik het Azure-toepassing aanbieding van de oplossings sjabloon wanneer voor uw oplossing extra implementatie-en configuratie automatisering nodig is dan een eenvoudige virtuele machine.||
+| Aanbiedings type: Adviesservice| Bestellen| Advies Services in azure Marketplace helpen klanten met services te verbinden en hun gebruik van Azure te ondersteunen en uit te breiden.| |
+| Aanbiedings type: Container | Bestellen| Gebruik het type container aanbod wanneer uw oplossing een docker-container installatie kopie is ingericht als een op Kubernetes gebaseerde Azure-container service.||
+| Aanbiedings type: Dynamics 365 Business Central| Bestellen| Gebruik dit aanbiedings type wanneer uw oplossing is geïntegreerd met Dynamics 365 voor financiering en bewerkingen| |
+| Aanbiedings type: Dynamics 365 for Customer Engagement | Bestellen| Gebruik dit aanbiedings type wanneer uw oplossing is geïntegreerd met Dynamics 365 voor klant betrokkenheid.||
+| Aanbiedings type: IoT Edge-module | Bestellen| Azure IoT Edge modules zijn de kleinste reken eenheden die worden beheerd door IoT Edge en die micro soft-Services (zoals Azure Stream Analytics), services van derden of uw eigen oplossing-specifieke code kunnen bevatten. |
+| Aanbiedings type: Power BI toepassing | Bestellen| Gebruik het Power BI type toepassings aanbieding wanneer u een toepassing implementeert die is geïntegreerd met Power BI.|  |
+| Aanbiedings type: SaaS-toepassing| Bestellen| Gebruik het type SaaS-app-aanbieding om uw klant in staat te stellen uw SaaS-gebaseerde technische oplossing als een abonnement te kopen.||
+| Aanbiedings type: Virtuele Machine | Bestellen| Gebruik het type virtuele machine-aanbieding wanneer u een virtueel apparaat implementeert op het abonnement dat is gekoppeld aan uw klant.||
+| Aanbiedings type: Visual Studio Marketplace-extensie  | Bestellen| Het aanbiedings type is eerder beschikbaar voor ontwikkel aars van Azure DevOps extension. Ontwikkel aars van Azure DevOps extension kunnen hun verlenging rechtstreeks aan klanten verkopen. Extensie aanbiedingen kunnen worden geconfigureerd als betaald of met inbegrip van een proef versie. |
+| Annulerings datum van bestelling| Bestellen| De datum waarop de Marketplace-bestelling is geannuleerd.||
+| Order-id| Bestellen| De unieke id van de klant bestelling voor uw Marketplace-service. Aanbiedingen op basis van het gebruik van virtuele machines zijn niet gekoppeld aan een order.| |
+| Aankoop datum van bestelling| Bestellen| De datum waarop de Marketplace-bestelling is gemaakt.|||
+| Status van bestelling| Bestellen| De status van een Marketplace-bestelling op het moment dat de gegevens voor het laatst zijn vernieuwd.|     |
+| Status van bestelling: Actief  | Bestellen| De klant heeft een bestelling gekocht en heeft zijn order niet geannuleerd.|         |
+| Status van bestelling: geannuleerd | Bestellen| De klant heeft eerder een order aangeschaft en vervolgens de bestelling geannuleerd.||
+| E-mail van provider| De klant| Het e-mail adres van de provider die deel uitmaakt van de relatie tussen micro soft en de eind klant. Als de klant een onderneming is via wederverkoper, is dit de wederverkoper. Als er een Cloud Solution Provider (CSP) betrokken is, wordt dit de CSP.|
+| Naam van provider| De klant| De naam van de provider die deel uitmaakt van de relatie tussen micro soft en de eind klant. Als de klant een onderneming is via wederverkoper, is dit de wederverkoper. Als er een Cloud Solution Provider (CSP) betrokken is, wordt dit de CSP.|
+| SKU| Bestellen| SKU-naam zoals gedefinieerd tijdens het publiceren. Een aanbieding kan veel Sku's hebben, maar een SKU kan slechts worden gekoppeld aan één aanbieding.||
+| Eind datum van proef versie| Bestellen| De datum waarop de proef periode voor deze order wordt beëindigd of beëindigd.||
+
+## <a name="ratings-and-reviews"></a>Beoordelingen en beoordelingen
+
+Als klanten bladeren, zoek acties en aanbiedingen kopen in beide marketplaces, kunnen ze beoordelingen en beoordelingen geven voor de aanbiedingen die ze hebben verkregen. Ze kunnen nieuwe beoordelingen of beoordelingen verzenden en beoordelingen of beoordelingen die ze al hebben verzonden, bijwerken of verwijderen. Beoordelingen worden gepubliceerd in azure Marketplace of AppSource op het tabblad Recensies van de pagina product weergave van de aanbieding. Klanten kunnen hun namen voor beoordelingen of recensies toevoegen, of ze kunnen anoniem berichten verzenden.  
+
+> [!NOTE]
+> Klanten kunnen alleen wijzigingen aanbrengen in de beoordelingen en beoordelingen waarvan ze eigenaar zijn.
+
+In het **dash board beoordelingen & beoordeling** worden de trends en inzichten van klant activiteiten weer gegeven. Het biedt grafische voors tellingen van:
+
+- Beoordelingen & beoordelingen  
+- Opmerkingen controleren
+
+### <a name="marketplace-storefront-tabs"></a>Tabbladen Marketplace-winkel
+
+Uitgevers kunnen hun metrische aanbod gegevens afzonderlijk weer geven op de AppSource & Azure Marketplace-tabbladen. Selecteer **aanbieding** in de vervolg keuzelijst om de metrische gegevens van een specifieke aanbieding weer te geven:
+
+![Vervolg keuzelijst voor aanbod analyse van partner centrum](./media/analyze-offer-dropdown.png)
+
+### <a name="ratings-and-reviews-summary"></a>Overzicht van beoordelingen en beoordelingen
+
+De overzichts sectie beoordelings & beoordelingen bevat de metrische gegevens hieronder voor een geselecteerd datum bereik:
+
+- **Gemiddelde beoordeling:** De gewogen gemiddelde ster waardering van alle beoordelingen die door klanten zijn verzonden voor de geselecteerde aanbieding.
+- **Uitsplitsing van classificatie:** Uitsplitsing van de ster waardering door het aantal klanten dat de classificatie heeft ingediend. Het staaf diagram is gestapeld met de werkelijke en herziene classificaties (bijgewerkt aantal beoordelingen).
+- **Totaal aantal beoordelingen:** Het totale aantal verzonden Beoordelingen. Dit aantal omvat ook beoordelingen met en zonder Beoordelingen.
+- **Beoordelingen met beoordelingen:** Aantal verzonden Beoordelingen.
+
+![Samen vatting van de beoordelingen en beoordelingen door het partner centrum analyseren](./media/analyze-ratings-summary.png)
+
+### <a name="review-comments"></a>Opmerkingen controleren
+
+Beoordelingen worden in chronologische volg orde weer gegeven wanneer ze zijn gepost. In de standaard weergave worden alle beoordelingen weer gegeven. U kunt de beoordelingen per ster waardering filteren met behulp van het **filter** in de vervolg keuzelijst. U kunt ook zoeken naar tref woorden die in de beoordeling worden weer gegeven.  
+
+![Partner centrum analyse opmerkingen analyseren](./media/analyze-reviews.png)

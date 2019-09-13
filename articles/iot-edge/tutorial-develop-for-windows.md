@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 66fa7c2f61af250e4b63b67f6941bed768bd94c4
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 03b279e6193c55141b80a5fadc9d39c7c1681006
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541927"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915138"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Zelfstudie: IoT Edge-modules ontwikkelen voor Windows-apparaten
 
@@ -194,13 +194,13 @@ De voorbeeld C# code die bij de project sjabloon hoort, maakt gebruik van de [Mo
 
 6. Zoek de eigenschap **modules** van de gewenste eigenschappen van de $edgeAgent. 
 
-   Er moeten twee modules worden weer gegeven. De eerste is **temp sensor**, die is opgenomen in alle sjablonen standaard om gesimuleerde temperatuur gegevens te bieden die u kunt gebruiken om uw modules te testen. De tweede is de **IotEdgeModule1** -module die u hebt gemaakt als onderdeel van dit project.
+   Er moeten twee modules worden weer gegeven. De eerste is **SimulatedTemperatureSensor**, die is opgenomen in alle sjablonen standaard om gesimuleerde temperatuur gegevens te bieden die u kunt gebruiken om uw modules te testen. De tweede is de **IotEdgeModule1** -module die u hebt gemaakt als onderdeel van dit project.
 
    Deze eigenschap modules declareert welke modules moeten worden opgenomen in de implementatie op uw apparaat of op apparaten. 
 
 7. Zoek de eigenschap **routes** van de gewenste eigenschappen van de $edgeHub. 
 
-   Een van de functies als de module IoT Edge hub berichten moet routeren tussen alle modules in een implementatie. Controleer de waarden in de eigenschap routes. De eerste route, **IotEdgeModule1ToIoTHub**, gebruikt een Joker teken ( **\*** ) om een bericht op te genomen van een uitvoer wachtrij in de IotEdgeModule1-module. Deze berichten gaan naar *$upstream*. Dit is een gereserveerde naam die IOT hub aangeeft. De tweede route, **sensorToIotEdgeModule1**, haalt berichten uit de Temp sensor-module en stuurt deze door naar de invoer wachtrij *input1* van de module IotEdgeModule1. 
+   Een van de functies als de module IoT Edge hub berichten moet routeren tussen alle modules in een implementatie. Controleer de waarden in de eigenschap routes. De eerste route, **IotEdgeModule1ToIoTHub**, gebruikt een Joker teken ( **\*** ) om een bericht op te genomen van een uitvoer wachtrij in de IotEdgeModule1-module. Deze berichten gaan naar *$upstream*. Dit is een gereserveerde naam die IOT hub aangeeft. De tweede route, **sensorToIotEdgeModule1**, haalt berichten uit de SimulatedTemperatureSensor-module en stuurt deze door naar de invoer wachtrij *input1* van de module IotEdgeModule1. 
 
    ![Routes bekijken in implementatie. sjabloon. json](./media/tutorial-develop-for-windows/deployment-routes.png)
 
@@ -284,14 +284,14 @@ U hebt gecontroleerd of de gemaakte container installatie kopieën zijn opgeslag
 
 4. Vouw de details van uw IoT Edge-apparaat uit in de Cloud Verkenner om de modules op het apparaat te bekijken.
 
-5. Gebruik de knop **vernieuwen** om de status van het apparaat bij te werken om te zien of de Temp sensor-en IotEdgeModule1-modules uw apparaat hebben geïmplementeerd. 
+5. Gebruik de knop **vernieuwen** om de status van het apparaat bij te werken om te zien of de SimulatedTemperatureSensor-en IotEdgeModule1-modules uw apparaat hebben geïmplementeerd. 
 
 
    ![Modules weer geven die worden uitgevoerd op uw IoT Edge apparaat](./media/tutorial-develop-for-windows/view-running-modules.png)
 
 ## <a name="view-messages-from-device"></a>Berichten van het apparaat weer geven
 
-De IotEdgeModule1 code ontvangt berichten via de invoer wachtrij en geeft deze door aan de uitvoer wachtrij. Het implementatie manifest heeft gedeclareerde routes die berichten ontvangen van temp sensor naar IotEdgeModule1 en vervolgens berichten die vervolgens worden doorgestuurd van IotEdgeModule1 naar IoT Hub. Met de Azure IoT Edge-hulpprogram ma's voor Visual Studio kunt u berichten zien wanneer ze op IoT Hub van uw afzonderlijke apparaten arriveren. 
+De IotEdgeModule1 code ontvangt berichten via de invoer wachtrij en geeft deze door aan de uitvoer wachtrij. Het implementatie manifest heeft gedeclareerde routes die berichten ontvangen van SimulatedTemperatureSensor naar IotEdgeModule1 en vervolgens berichten die vervolgens worden doorgestuurd van IotEdgeModule1 naar IoT Hub. Met de Azure IoT Edge-hulpprogram ma's voor Visual Studio kunt u berichten zien wanneer ze op IoT Hub van uw afzonderlijke apparaten arriveren. 
 
 1. Selecteer in de Visual Studio Cloud Explorer de naam van het IoT Edge-apparaat dat u hebt geïmplementeerd. 
 
@@ -315,7 +315,7 @@ De opdrachten in deze sectie zijn voor uw IoT Edge apparaat, niet voor uw ontwik
    iotedge list
    ```
 
-   U ziet vier modules: de twee IoT Edge runtime modules, temp sensor en IotEdgeModule1. Alle vier moeten worden weer gegeven als actief.
+   U ziet vier modules: de twee IoT Edge runtime modules, SimulatedTemperatureSensor en IotEdgeModule1. Alle vier moeten worden weer gegeven als actief.
 
 * Inspecteer de logboeken voor een specifieke module:
 
@@ -325,7 +325,7 @@ De opdrachten in deze sectie zijn voor uw IoT Edge apparaat, niet voor uw ontwik
 
    IoT Edge modules zijn hoofdletter gevoelig. 
 
-   De Temp sensor-en IotEdgeModule1-logboeken moeten de berichten weer geven die ze verwerken. De edgeAgent-module is verantwoordelijk voor het starten van de andere modules, zodat de logboeken hiervan informatie bevatten over het implementeren van het implementatie manifest. Als een module niet wordt vermeld of niet wordt uitgevoerd, hebben de edgeAgent-logboeken waarschijnlijk de fouten. De edgeHub-module is verantwoordelijk voor de communicatie tussen de modules en IoT Hub. Als de modules actief zijn, maar de berichten niet op uw IoT-hub arriveren, hebben de edgeHub-logboeken waarschijnlijk de fouten. 
+   De SimulatedTemperatureSensor-en IotEdgeModule1-logboeken moeten de berichten weer geven die ze verwerken. De edgeAgent-module is verantwoordelijk voor het starten van de andere modules, zodat de logboeken hiervan informatie bevatten over het implementeren van het implementatie manifest. Als een module niet wordt vermeld of niet wordt uitgevoerd, hebben de edgeAgent-logboeken waarschijnlijk de fouten. De edgeHub-module is verantwoordelijk voor de communicatie tussen de modules en IoT Hub. Als de modules actief zijn, maar de berichten niet op uw IoT-hub arriveren, hebben de edgeHub-logboeken waarschijnlijk de fouten. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

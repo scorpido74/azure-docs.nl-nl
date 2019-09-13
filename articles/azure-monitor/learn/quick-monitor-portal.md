@@ -1,6 +1,6 @@
 ---
 title: Een ASP.NET-web-app bewaken met Azure Application Insights | Microsoft Docs
-description: Vindt u instructies voor het snel een ASP.NET-Web-App instellen voor de bewaking met Application Insights
+description: Biedt instructies om snel een ASP.NET-Web-app in te stellen voor bewaking met Application Insights
 services: application-insights
 keywords: ''
 author: mrbullwinkle
@@ -10,23 +10,23 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 6d26cedb0dd836846d7e9f00539fe101c944f478
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1edb83fcbe03fd113c59986bdbb6afcf2a0970bb
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442213"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916112"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Begin uw ASP.NET-webtoepassing te controleren
 
 Met Azure Application Insights kunt u eenvoudig de beschikbaarheid, de prestaties en het gebruik van een webtoepassing controleren.  U kunt ook snel fouten in de toepassing identificeren en er een diagnose voor uitvoeren, zonder dat u hoeft te wachten totdat een gebruiker ze heeft gerapporteerd.  Met de informatie die u met Application Insights verzamelt over de prestaties en de effectiviteit van uw app, kunt u weloverwogen keuzes maken bij het onderhouden en verbeteren van uw toepassing.
 
-Deze snelstartgids laat zien hoe u Application Insights kunt toevoegen aan een bestaande ASP.NET-webtoepassing en live statistieken kunt analyseren, wat slechts een van de diverse methoden is die u kunt gebruiken om uw toepassing te analyseren. Als u een ASP.NET-webtoepassing hebt, kunt u een volgende maken de [maken van een ASP.NET-Web-App Quick Start](../../app-service/app-service-web-get-started-dotnet-framework.md).
+Deze snelstartgids laat zien hoe u Application Insights kunt toevoegen aan een bestaande ASP.NET-webtoepassing en live statistieken kunt analyseren, wat slechts een van de diverse methoden is die u kunt gebruiken om uw toepassing te analyseren. Als u geen ASP.NET-webtoepassing hebt, kunt u er een maken nadat u de Snelstartgids voor het [maken van een ASP.net-Web-app](../../app-service/app-service-web-get-started-dotnet-framework.md)hebt gemaakt.
 
 ## <a name="prerequisites"></a>Vereisten
 Dit zijn de vereisten voor het voltooien van deze snelstart:
 
-- Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende workloads:
+- Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende werk belastingen:
     - ASP.NET-ontwikkeling en webontwikkeling
     - Azure-ontwikkeling
 
@@ -35,7 +35,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="enable-application-insights"></a>Application Insights inschakelen
 
-1. Open het project in Visual Studio 2019.
+1. Open uw project in Visual Studio 2019.
 2. Selecteer **Configure Application Insights** in het menu Project. De Application Insights-SDK wordt toegevoegd aan uw toepassing.
 
     > [!IMPORTANT]
@@ -47,7 +47,9 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 4. Selecteer uw abonnement en klik op **Registreren**.
 
-5. Voer uw toepassing uit door **Start Debugging** (Foutopsporing starten) te selecteren in het menu **Debug** (Foutopsporing) of door op de F5-toets te drukken.
+5. Selecteer **project** >  > **Manage NuGet** > **packages Bron: nuget.org**de Application Insights SDK-pakketten**bijwerken** naar de laatste stabiele release.
+
+6. Voer uw toepassing uit door **Start Debugging** (Foutopsporing starten) te selecteren in het menu **Debug** (Foutopsporing) of door op de F5-toets te drukken.
 
 ## <a name="confirm-app-configuration"></a>App-configuratie bevestigen
 
@@ -61,7 +63,7 @@ Application Insights verzamelt telemetriegegevens voor uw toepassing, ongeacht w
 
 U kunt nu Application Insights openen in Azure Portal om allerlei gegevens over uw actieve toepassing weer te geven.
 
-1. Vouw de **Connected Services** map (cloud en plug-pictogram) in de Solution Explorer klikt u vervolgens met de rechtermuisknop op de **Application Insights** map en klikt u op **Open Application Insights-Portal** .  U ziet een aantal gegevens over uw toepassing en allerlei opties.
+1. Vouw de map **verbonden services** (Cloud-en plug-pictogram) uit in de Solution Explorer klik met de rechter muisknop op de map **Application Insights** en klik op **Application Insights Portal openen**.  U ziet een aantal gegevens over uw toepassing en allerlei opties.
 
     ![Toepassingskaart](media/quick-monitor-portal/04-overview.png)
 
@@ -69,11 +71,11 @@ U kunt nu Application Insights openen in Azure Portal om allerlei gegevens over 
 
     ![Toepassingskaart](media/quick-monitor-portal/05-appmap.png)
 
-3. Klik op de **analyse van App-** pictogram ![Toepassingsoverzicht](media/quick-monitor-portal/app-viewinlogs-icon.png) **weergeven in Logboeken (Analytics)** op een van de onderdelen van de toepassing. Hiermee opent u **Logboeken (Analytics)** , waarmee u een uitgebreide querytaal voor het analyseren van alle gegevens die worden verzameld door Application Insights. In dit geval wordt er een query gegenereerd waarmee het aantal aanvragen wordt weergegeven als een grafiek. U kunt uw eigen query's schrijven om andere gegevens te analyseren.
+3. Klik op de weer gave toepassings ![overzicht](media/quick-monitor-portal/app-viewinlogs-icon.png) van **app-analyse** pictogram **in Logboeken (Analytics)** op een van de toepassings onderdelen. Hiermee opent u **Logboeken (Analytics)** , dat een uitgebreide query taal biedt voor het analyseren van alle gegevens die zijn verzameld door Application Insights. In dit geval wordt er een query gegenereerd waarmee het aantal aanvragen wordt weergegeven als een grafiek. U kunt uw eigen query's schrijven om andere gegevens te analyseren.
 
     ![Analyse](media/quick-monitor-portal/6viewanalytics.png)
 
-4. Klik op **Live Metrics Stream** aan de linkerkant onder onderzoeken. Hier worden live statistieken weergegeven over uw toepassing terwijl deze wordt uitgevoerd. Dit zijn onder andere gegevens over het aantal inkomende aanvragen, de duur van deze aanvragen en eventuele fouten die optreden. U kunt ook kritieke prestatiegegevens inspecteren, zoals de processor en het geheugen.
+4. Klik op **Live Metrics stream** aan de linkerkant onder onderzoek. Hier worden live statistieken weergegeven over uw toepassing terwijl deze wordt uitgevoerd. Dit zijn onder andere gegevens over het aantal inkomende aanvragen, de duur van deze aanvragen en eventuele fouten die optreden. U kunt ook kritieke prestatiegegevens inspecteren, zoals de processor en het geheugen.
 
     ![Live Stream](media/quick-monitor-portal/7livemetrics.png)
 
@@ -104,15 +106,15 @@ Raadpleeg de GitHub-opslagplaats voor de [open-source JavaScript SDK](https://gi
 
 ## <a name="video"></a>Video
 
-* Externe stapsgewijze video over [Application Insights configureren met een .NET-toepassing helemaal](https://www.youtube.com/watch?v=blnGAVgMAfA).
+* Externe stapsgewijze video over [het configureren van Application Insights met een nieuwe .NET-toepassing](https://www.youtube.com/watch?v=blnGAVgMAfA).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Wanneer u klaar bent met testen, kunt u de resourcegroep verwijderen en alle gerelateerde resources. Om te dus de volgende stappen.
+Wanneer u klaar bent met testen, kunt u de resource groep en alle gerelateerde resources verwijderen. Volg hiervoor de onderstaande stappen.
 1. Klik in het menu links in Azure Portal op **Resourcegroepen** en klik vervolgens op **myResourceGroup**.
 2. Klik op de pagina van uw resourcegroep op **Verwijderen**, typ **myResourceGroup** in het tekstvak en klik vervolgens op **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze snelstartgids hebt hebt u uw toepassing voor bewaking door Azure Application Insights ingeschakeld.  Ga verder met de zelfstudies om te leren hoe u dit kunt gebruiken om statistieken bij te houden en problemen in uw toepassing te detecteren.
+In deze Quick Start hebt u uw toepassing voor bewaking door Azure-toepassing Insights ingeschakeld.  Ga verder met de zelfstudies om te leren hoe u dit kunt gebruiken om statistieken bij te houden en problemen in uw toepassing te detecteren.
 
 > [!div class="nextstepaction"]
 > [Zelfstudies voor Azure Application Insights](tutorial-runtime-exceptions.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: c7d8b946fc587d58f13e16c1d7d806390e712104
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4e23a440f46b52633a88d0212e08c7b584f61a38
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879550"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932481"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT Explorer installeren en gebruiken
 
@@ -83,10 +83,10 @@ Dubbel klik op een apparaat op de pagina overzicht om het volgende detail niveau
 
 ### <a name="device"></a>Apparaat
 
-Deze sectie bevat de tabbladen **apparaat-id**, telemetrie en **device dubbele** .
+Deze sectie bevat de tabbladen **apparaat-id**, **telemetrie**en **device dubbele** .
 
 - U kunt de gegevens van de apparaat-id weer geven en bijwerken op het tabblad **apparaat-id** .
-- Als een apparaat is verbonden en actief gegevens verzendt, kunt u de telemetrie weer geven op het tabblad telemetrie.
+- Als een apparaat is verbonden en actief gegevens verzendt, kunt u de telemetrie weer geven op het tabblad **telemetrie** .
 - U kunt de dubbele gegevens van het apparaat openen op het tabblad **apparaat dubbele** .
 
 ### <a name="digital-twin"></a>Digitale dubbele
@@ -116,8 +116,8 @@ Als u een opdracht wilt verzenden naar een apparaat, gaat u naar de pagina **opd
 
 #### <a name="telemetry"></a>Telemetrie
 
-Als u de telemetrie voor de geselecteerde interface wilt weer geven , gaat u naar de pagina telemetrie.
+Als u de telemetrie voor de geselecteerde interface wilt weer geven, gaat u naar de pagina **telemetrie** .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit procedure-artikel hebt u geleerd hoe u Azure IoT Explorer kunt installeren en gebruiken om te communiceren met uw IoT Plug en Play-apparaten. Een voorgestelde volgende stap is informatie over het [beheren van modellen](./howto-manage-models.md).
+In dit procedure-artikel hebt u geleerd hoe u Azure IoT Explorer kunt installeren en gebruiken om te communiceren met uw IoT Plug en Play-apparaten. Een voorgestelde volgende stap is om te leren hoe u de [Azure cli-extensie installeert en gebruikt](./howto-install-pnp-cli.md).

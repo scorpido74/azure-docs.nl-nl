@@ -1,77 +1,86 @@
 ---
-title: Toevoegen van een hulpprogramma voor beoordeling/migratie voor de eerste keer in Azure Migrate | Microsoft Docs
-description: Beschrijft hoe u een Azure Migrate-project maken en toevoegen van een hulpprogramma voor beoordeling/migratie.
+title: Een hulp programma voor evaluatie/migratie voor de eerste keer in Azure Migrate toevoegen | Microsoft Docs
+description: Hierin wordt beschreven hoe u een Azure Migrate project maakt en een hulp programma voor evaluatie/migratie toevoegt.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/09/2019
 ms.author: raynew
-ms.openlocfilehash: b226f7c5879673b573133cde45db78d8d1f2fffa
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: bd119956ced79b73b0376fe4530c9eafaf870238
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812023"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934167"
 ---
-# <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Een hulpprogramma voor beoordeling/migratie voor de eerste keer toevoegen
+# <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Voor de eerste keer een evaluatie-/migratiehulpprogramma toevoegen
 
-In dit artikel wordt beschreven hoe u een evaluatie- of migratie hulpprogramma toevoegen een [Azure Migrate](migrate-overview.md) project voor de eerste keer.  
-Azure Migrate biedt een centraal punt voor het volgen van detectie, beoordeling en migratie van uw on-premises toepassingen en workloads en persoonlijke/openbare cloud, virtuele machines naar Azure. De hub biedt hulpprogramma's voor Azure Migrate voor evaluatie en migratie, evenals van derden, onafhankelijke softwareleverancier (ISV) [aanbiedingen](migrate-services-overview.md#isv-integration) . 
+In dit artikel wordt beschreven hoe u voor de eerste keer een hulp programma voor beoordeling of migratie toevoegt aan een [Azure migrate](migrate-overview.md) project.  
+Azure Migrate biedt een centrale hub voor het bijhouden van detectie, evaluatie en migratie van uw on-premises apps en werk belastingen, en persoonlijke/open bare Cloud-Vm's naar Azure. De hub biedt Azure Migrate-hulpprogram ma's voor evaluatie en migratie, en voor de [aanbiedingen](migrate-services-overview.md#isv-integration) van onafhankelijke software leveranciers (ISV) van derden. 
 
-## <a name="create-a-project-and-add-a-tool"></a>Maak een project en een programma toevoegen
+## <a name="create-a-project-and-add-a-tool"></a>Een project maken en een hulp programma toevoegen
 
-Instellen van een nieuwe Azure Migrate-project in een Azure-abonnement en een programma toevoegen.
+Stel een nieuw Azure Migrate project in een Azure-abonnement in en voeg een hulp programma toe.
 
-- Een Azure Migrate-project wordt gebruikt voor het opslaan van detectie, beoordeling en migratie metagegevens die zijn verzameld uit de omgeving u beoordelen of migreren. 
-- U kunt in een project gedetecteerde activa bijhouden en maakt u gecoördineerde evaluatie en migratie.
+- Een Azure Migrate project wordt gebruikt voor het opslaan van de meta gegevens voor detectie, evaluatie en migratie die zijn verzameld uit de omgeving die u wilt beoordelen of migreren. 
+- In een project kunt u gedetecteerde assets bijhouden en de evaluatie en migratie organiseren.
 
-1. In Azure portal > **alle services**, zoeken naar **Azure Migrate**.
-2. Onder **Services**, selecteer **Azure Migrate**.
+1. Zoek in de Azure-portal in **Alle services** naar **Azure Migrate**.
+2. Onder **Services** selecteert u **Azure Migrate**.
 
-    ![Instellen van Azure Migrate](./media/how-to-add-tool-first-time/azure-migrate-search.png)
+    ![Azure Migrate instellen](./media/how-to-add-tool-first-time/azure-migrate-search.png)
 
-3. In **overzicht**, klikt u op **evalueren en migreren van servers**.
-4. Onder **ontdekken, beoordelen en servers migreren**, klikt u op **evalueren en migreren van servers**.
+3. Klik in **Overzicht** op **Servers evalueren en migreren**.
+4. Klik onder **servers detecteren, evalueren en migreren**op **servers beoordelen en migreren**.
 
-    ![Detecteren en evalueren van servers](./media/how-to-add-tool-first-time/assess-migrate.png)
+    ![Servers detecteren en beoordelen](./media/how-to-add-tool-first-time/assess-migrate.png)
 
-1. In **ontdekken, beoordelen en servers migreren**, klikt u op **toevoegen van extra**.
-2. In **Migrate-project**, selecteer uw Azure-abonnement en maak een resourcegroep als u dit niet hebt.
-3. In **projectdetails**, geef de naam van het project en het geografische gebied waarin u wilt maken van het project. 
+1. Klik in **Servers detecteren, evalueren en migreren** op **Hulpprogramma's toevoegen**.
+2. Selecteer in **Project migreren** uw Azure-abonnement en maak een resourcegroep als u er nog geen hebt.
+3. Geef in **Project Details**de project naam en geografie op waarin u het project wilt maken. 
 
     ![Een Azure Migrate-project maken](./media/how-to-add-tool-first-time/migrate-project.png)
 
-    U kunt een Azure Migrate-project maken in een van deze locaties.
+    U kunt in elk van deze geografische gebieden een Azure Migrate project maken.
 
-    **Geografie** | **Opslag locatie regio**
+   **Geografie** | **Opslag locatie regio**
     --- | ---
-    Azië | Zuidoost-Azië of Oost-Azië
-    Europa | Zuid-Europa of West-Europa
-    Verenigd Koninkrijk | UK-Zuid of UK-West
-    Verenigde Staten | -Centraal VS of VS-West 2
+    Azië   | Zuidoost-Azië of Azië-oost
+    Europa | Europa - noord of Europa - west
+    Japan  | Japan-Oost of Japan-West
+    Verenigd Koninkrijk | UK-zuid of UK-west
+    Verenigde Staten | VS-midden, VS-West 2
+    Canada | Canada - midden
+    India  | India centraal of India-Zuid
+    Australië | Australië-Zuidoost
 
-    De opgegeven geografie voor het project wordt alleen gebruikt om de metagegevens op te slaan die zijn verzameld van on-premises virtuele machines. U kunt een doelregio voor de daadwerkelijk migratie selecteren.
+    De opgegeven geografie voor het project wordt alleen gebruikt om de metagegevens op te slaan die zijn verzameld van on-premises virtuele machines. U kunt een wille keurige doel regio voor de daad werkelijke migratie selecteren.
 
-4. Klik op **volgende**, en voeg een hulpprogramma voor beoordeling of migratie.
+    Als u een specifieke regio binnen een geografie wilt opgeven voor het implementeren van het gemigreerde project en de bijbehorende resources (beleids beperkingen in uw abonnement kunnen de implementatie van Azure-resources alleen toestaan voor een specifieke Azure-regio), kunt u de onderstaande API gebruiken om een migratie project maken. Geef de abonnements-ID, de naam van de resource groep, de naam van het project en de locatie op (een van de Azure-regio's die worden vermeld in de tabel waarin Azure Migrate wordt geïmplementeerd.)
+
+    `PUT /subscriptions/<subid>/resourceGroups/<rg>/providers/Microsoft.Migrate/MigrateProjects/<mymigrateprojectname>?api-version=2018-09-01-preview "{location: 'centralus', properties: {}}"`   
+
+
+4. Klik op **volgende**en voeg een hulp programma voor beoordeling of migratie toe.
 
     > [!NOTE]
-    > Wanneer u een project maakt die u wilt toevoegen van ten minste één hulpprogramma voor beoordeling of migratie.
+    > Wanneer u een project maakt, moet u ten minste één hulp programma voor evaluatie of migratie toevoegen.
 
-5. In **Selecteer assessment tool**, een beoordelingshulpprogramma voor toevoegen. Als u niet een beoordelingshulpprogramma voor nodig hebt, selecteert u **toevoegen van een hulpprogramma voor upgradebeoordeling voorlopig overslaan** > **volgende**. 
-2. In **hulpprogramma voor migratie selecteren**, een hulpprogramma voor migratie toevoegen als vereist. Als u niet een hulpprogramma voor migratie nu nodig hebt, selecteert u **toevoegen van een hulpprogramma voor migratie van voorlopig overslaan** > **volgende**.
-3. In **bekijken en toevoegen van extra**, Controleer de instellingen en klik op **hulpprogramma's toevoegen**.
+5. Voeg in **hulp programma voor beoordeling selecteren**een evaluatie hulpprogramma toe. Als u geen beoordelings programma nodig hebt, selecteert u **overs Laan een evaluatie programma toevoegen voor nu** > **volgende**. 
+2. Voeg in **hulp programma voor migratie het selectie vakje**een migratie hulpprogramma toe zoals vereist. Als**u momenteel geen**hulp programma voor migratie nodig hebt, selecteert u >  **overs Laan nu een migratie programma toevoegen**.
+3. Controleer de instellingen in **hulp middelen voor beoordeling en toevoegen**en klik op **hulp middelen toevoegen**.
 
-U kunt extra hulpprogramma's voor evaluatie en migratie van servers en werkbelastingen, databases en web-apps selecteren na het maken van het project.
+Nadat u het project hebt gemaakt, kunt u extra hulp middelen selecteren voor de evaluatie en migratie van servers en werk belastingen, data bases en web-apps.
 
-## <a name="create-additional-projects"></a>Extra projecten maken
+## <a name="create-additional-projects"></a>Aanvullende projecten maken
 
-In sommige gevallen moet u mogelijk aanvullende Azure Migrate-projecten maken. Bijvoorbeeld als u datacenters in verschillende fysieke locaties hebt, of u moet voor het opslaan van metagegevens in een andere Geografie bevinden. Maak een extra project als volgt:
+In sommige gevallen moet u mogelijk aanvullende Azure Migrate-projecten maken. Als u bijvoorbeeld data centers in verschillende geografische grafieken hebt, of als u meta gegevens in een andere geografie wilt opslaan. Maak als volgt een extra project:
 
-1. In de huidige Azure Migrate-project, klikt u op **Servers** of **Databases**.
-2. Klik in de rechterbovenhoek op **wijziging** naast de naam van het huidige project.
-3. In **instellingen**, selecteer **Klik hier om te maken van een nieuw project**.
-4. Maak een nieuw project en voeg een nieuw hulpprogramma toe zoals beschreven in de vorige procedure.
+1. Klik in het huidige Azure Migrate project op **servers** of **data bases**.
+2. Klik in de rechter bovenhoek op **wijzigen** naast de huidige project naam.
+3. Selecteer in **instellingen** **de optie Klik hier om een nieuw project te maken**.
+4. Maak een nieuw project en voeg een nieuw hulp programma toe zoals beschreven in de vorige procedure.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Informatie over het toevoegen van extra [evaluatie](how-to-assess.md) en [migratie](how-to-migrate.md) hulpprogramma's. 
+Meer informatie over het toevoegen van extra hulpprogram ma's voor [evaluatie](how-to-assess.md) en [migratie](how-to-migrate.md) . 

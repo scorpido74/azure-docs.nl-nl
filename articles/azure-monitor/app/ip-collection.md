@@ -8,14 +8,14 @@ ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 09/11/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3a504fe4475cee8e2949ee121c632b792f349758
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 49534cbce7bb0bbf540416785e31b451509d5bf6
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694290"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916164"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Verwerking van geolocatie en IP-adres
 
@@ -36,10 +36,9 @@ Dit gedrag is inherent aan het ontwerp om onnodig verzamelen van persoons gegeve
 
 Hoewel het standaard gedrag is om het verzamelen van persoons gegevens te minimaliseren, bieden we nog steeds de flexibiliteit om IP-adres gegevens te verzamelen en op te slaan. Voordat u ervoor kiest om persoonlijke gegevens op te slaan, zoals IP-adressen, wordt u ten zeerste aangeraden te controleren of dit geen nalevings vereisten of lokale voor Schriften bevat waarvan u mogelijk afhankelijk bent. Raadpleeg de [richt lijnen voor persoonlijke gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)voor meer informatie over het afhandelen van persoonlijke gegevens in Application Insights.
 
-## <a name="storing-partial-ip-address-data"></a>Gegevens van gedeeltelijk IP-adres opslaan
+## <a name="storing-ip-address-data"></a>IP-adres gegevens opslaan
 
-Als u een gedeeltelijke IP-verzameling en-opslag wilt `DisableIpMasking` inschakelen, moet de eigenschap van het onderdeel Application Insights `true`worden ingesteld op. Deze eigenschap kan worden ingesteld via Azure Resource Manager sjablonen of door de REST API aan te roepen. IP-adressen worden geregistreerd met het laatste octet van nul.
-
+Als u de IP-verzameling en-opslag wilt `DisableIpMasking` inschakelen, moet u de eigenschap van het onderdeel `true`Application Insights instellen op. Deze eigenschap kan worden ingesteld via Azure Resource Manager sjablonen of door de REST API aan te roepen. 
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
 
@@ -92,7 +91,7 @@ Als u het gedrag voor een enkele Application Insights resource alleen hoeft te w
 
     In dit geval wordt er niets nieuw gekocht, maar wordt alleen de configuratie van de bestaande Application Insights resource bijgewerkt.
 
-6. Zodra de implementatie is voltooid, worden er nieuwe telemetriegegevens opgenomen met de eerste drie octetten die zijn gevuld met het IP-adres en het laatste octet van nul.
+6. Zodra de implementatie is voltooid, worden nieuwe telemetriegegevens vastgelegd.
 
     Als u een sjabloon opnieuw wilt selecteren en bewerken, zou u alleen de standaard sjabloon zien en de zojuist toegevoegde eigenschap en de bijbehorende waarde niet zien. Als u geen IP-adres gegevens ziet en wilt bevestigen dat `"DisableIpMasking": true` deze is ingesteld. Voer de volgende Power shell uit: (Vervang `Fabrikam-dev` door de naam van de juiste resource en resource groep.)
     
@@ -128,7 +127,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>Initialisatie functie voor telemetrie
 
-Als u het volledige IP-adres moet vastleggen in plaats van alleen de eerste drie octetten, kunt u een [initialisatie functie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) voor telemetrie gebruiken om het IP-adres te kopiëren naar een aangepast veld dat niet wordt gemaskeerd.
+Als u een flexibeler alternatief nodig hebt `DisableIpMasking` dan voor het vastleggen van alle of een deel van de IP-adressen, kunt u een [initialisatie functie voor telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) gebruiken om het hele IP-adres of een deel van een aangepast veld te kopiëren. 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 
@@ -205,7 +204,7 @@ appInsights.defaultClient.addTelemetryProcessor((envelope) => {
 });
 ```
 
-### <a name="client-side-javascript"></a>Java script aan de client zijde
+### <a name="client-side-javascript"></a>JavaScript aan de clientzijde
 
 In tegens telling tot de Sdk's aan de server zijde berekent de Java script SDK aan de client zijde geen IP-adres. Standaard wordt de berekening van IP-adressen voor telemetrie aan de client zijde uitgevoerd op het opname-eind punt in azure bij de ontvangst van telemetrie. Dit betekent dat als u client gegevens naar een proxy verzendt en vervolgens doorstuurt naar het opname-eind punt, het IP-adres van de proxy wordt weer gegeven in de berekening van het IP-adres en niet de client. Als er geen proxy wordt gebruikt, mag dit geen probleem zijn.
 

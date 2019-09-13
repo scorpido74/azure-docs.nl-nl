@@ -1,6 +1,6 @@
 ---
 title: Aan de slag met Storage Explorer | Microsoft Docs
-description: Azure storage-resources beheren met Opslagverkenner
+description: Azure storage-resources beheren met Storage Explorer
 services: storage
 author: cawaMS
 ms.service: storage
@@ -8,18 +8,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: cawa
-ms.openlocfilehash: f7dd6d3d30f34ba2c69b40111bb28d484ce572e7
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: c4aad2f2f5bca25ead03518b2de9ac9315172052
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508735"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934751"
 ---
 # <a name="get-started-with-storage-explorer"></a>Aan de slag met Storage Explorer
 
 ## <a name="overview"></a>Overzicht
 
-Azure Storage Explorer is een zelfstandige app waarmee u eenvoudig met Azure Storage-gegevens kunt werken via Windows, macOS en Linux. In dit artikel leert u enkele manieren om verbinding te maken met en beheren van uw Azure storage-accounts.
+Microsoft Azure Storage Explorer is een zelfstandige app waarmee u eenvoudig met Azure Storage gegevens kunt werken in Windows, macOS en Linux. In dit artikel leert u verschillende manieren om verbinding te maken met uw Azure Storage-accounts en hoe u deze kunt beheren.
 
 ![Microsoft Azure Storage Explorer][0]
 
@@ -27,67 +27,71 @@ Azure Storage Explorer is een zelfstandige app waarmee u eenvoudig met Azure Sto
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
-Azure Storage Explorer wordt ondersteund op de volgende versies van Windows:
+Storage Explorer wordt ondersteund in de volgende versies van Windows:
 
 * Windows 10 (aanbevolen)
 * Windows 8
 * Windows 7
 
-Voor alle versies van Windows, .NET Framework 4.6.2 of hoger is vereist.
-
-[Storage Explorer downloaden en installeren](https://www.storageexplorer.com)
+.NET Framework 4.6.2 of hoger is vereist voor alle versies van Windows.
 
 # <a name="macostabmacos"></a>[MacOS](#tab/macos)
 
-Azure Storage Explorer wordt op de volgende versies van macOS ondersteund:
+Storage Explorer wordt ondersteund op de volgende versies van macOS:
 
-* macOS 10.12 'Sierra' en latere versies
-
-[Storage Explorer downloaden en installeren](https://www.storageexplorer.com)
+* macOS 10,12 ' Sierra ' en latere versies
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
-Azure Storage Explorer wordt ondersteund op de volgende distributies van Linux:
+Storage Explorer is beschikbaar in de [snap Store](https://snapcraft.io/storage-explorer) voor de meest voorkomende distributies van Linux en is de aanbevolen installatie methode. Met de Storage Explorer-snap worden automatisch alle afhankelijkheden en updates geïnstalleerd, omdat nieuwe versies worden gepubliceerd in de snap Store.
 
-* Ubuntu 18.04 x64
+Ga voor een lijst met ondersteunde distributies naar de [pagina gesnapte installatie](https://snapcraft.io/docs/installing-snapd).
+
+Voor Storage Explorer is het gebruik van een wachtwoord beheerder vereist, dat mogelijk hand matig moet worden aangesloten voordat Storage Explorer goed werkt. U kunt Storage Explorer verbinding maken met wachtwoord beheer van uw systeem met de volgende opdracht:
+
+```bash
+snap connect storage-explorer:password-manager-service :password-manager-service
+```
+
+Storage Explorer is ook beschikbaar als een. tar. gz-down load, maar u moet afhankelijkheden hand matig installeren. De installatie van tar. gz wordt ondersteund in de volgende distributies van Linux:
+
+* Ubuntu 18,04 x64
 * Ubuntu 16.04 x64
-* Ubuntu 14.04 x64
+* Ubuntu 14,04 x64
 
-Azure Storage Explorer werkt in een andere distributie, maar de enige die hierboven vermeld worden officieel ondersteund.
+De installatie van. tar. gz kan worden uitgevoerd op andere distributies, maar alleen de hierboven genoemde items worden officieel ondersteund.
 
-Zie voor meer informatie over Storage Explorer installeren op Linux, de [Troubleshooting Guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting#linux-dependencies).
-
-Azure Storage Explorer [opmerkingen bij de Release](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) specifieke stappen voor het aantal distributies bevatten.
-
-[Storage Explorer downloaden en installeren](https://www.storageexplorer.com)
+Raadpleeg de [hand leiding voor probleem oplossing](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting#linux-dependencies)voor meer informatie over het installeren van Storage Explorer op Linux.
 
 ---
 
+## <a name="download-and-install"></a>Downloaden en installeren
+
+[Storage Explorer downloaden en installeren](https://www.storageexplorer.com)
+
 ## <a name="connect-to-a-storage-account-or-service"></a>Verbinding maken met een opslagaccount of -service
 
-Storage Explorer biedt verschillende manieren om verbinding te maken met opslagaccounts. In het algemeen kunt u deze:
+Storage Explorer biedt verschillende manieren om verbinding te maken met opslagaccounts. In het algemeen kunt u het volgende doen:
 
-* [Aanmelden bij Azure voor toegang tot uw abonnementen en hun resources](#sign-in-to-azure)
-* [Koppelen van een specifieke resource voor opslag of CosmosDB](#attach-a-specific-resource)
+* [Meld u aan bij Azure om toegang te krijgen tot uw abonnementen en hun resources](#sign-in-to-azure)
+* [Een specifieke opslag-of CosmosDB-resource koppelen](#attach-a-specific-resource)
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
 > [!NOTE]
-> Volledig na de aanmelding toegang krijgen tot bronnen, vereist Opslagverkenner management (ARM) en layer-machtigingen voor gegevens. Dit betekent dat u Azure AD-machtigingen die u toegang tot uw Storage-account, de containers in het account en de gegevens in de containers geven nodig hebt. Als u alleen machtigingen op het niveau van de gegevens hebt, kunt u overwegen [koppelen met Azure AD](#add-a-resource-via-azure-ad). Zie voor meer informatie over de exacte machtigingen Storage Explorer is vereist, de [problemen oplossen met](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#role-based-access-control-permission-issues).
->
->
+> Als u toegang wilt krijgen tot bronnen na het aanmelden, moet u voor Storage Explorer zowel beheer (ARM) als gegevenslaag machtigingen hebben. Dit betekent dat u Azure AD-machtigingen nodig hebt waarmee u toegang krijgt tot uw opslag account, de containers in het account en de gegevens in de containers. Als u alleen machtigingen hebt op de gegevenslaag, kunt u het beste [koppelen met Azure AD](#add-a-resource-via-azure-ad)gebruiken. Raadpleeg de [hand leiding voor probleem oplossing](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#role-based-access-control-permission-issues)voor meer informatie over de exacte machtigingen Storage Explorer vereist.
 
-1. Selecteer in Storage Explorer **Accounts beheren** naar de **Account Management Panel**.
+1. In Storage Explorer selecteert u **accounts beheren** om naar het **account beheer paneel**te gaan.
 
     ![Accounts beheren][1]
 
-2. In het linkerdeelvenster ziet u nu alle Azure accounts die u hebt aangemeld bij. Voor verbinding met een ander account, selecteert u **een account toevoegen**
+2. In het linkerdeel venster worden nu alle Azure-accounts weer gegeven waarop u bent aangemeld. Selecteer **een account toevoegen** om verbinding te maken met een ander account
 
-3. Als u zich aanmelden bij een nationale cloud of een Azure Stack wilt, klikt u op de **Azure-omgeving** vervolgkeuzelijst te selecteren welke Azure-cloud u wilt gebruiken. Nadat u uw omgeving hebt gekozen, klikt u op de **aanmelden...**  knop. Als u met Azure Stack aanmeldt zich, Zie [Storage Explorer verbinden met een Azure Stack-abonnement](/azure-stack/user/azure-stack-storage-connect-se) voor meer informatie.
+3. Als u zich wilt aanmelden bij een nationale Cloud of een Azure Stack, klikt u op de vervolg keuzelijst van de **Azure-omgeving** om te selecteren welke Azure-Cloud u wilt gebruiken. Wanneer u uw omgeving hebt gekozen, klikt u op de knop **aanmelden...** . Zie [Connect Storage Explorer to a Azure stack Subscription](/azure-stack/user/azure-stack-storage-connect-se)(Engelstalig) voor meer informatie.
 
-    ![Meld u aan optie][2]
+    ![Optie voor aanmelden][2]
 
-4. Nadat u zich hebt aangemeld met een Azure-account, worden het account en de Azure-abonnementen die zijn gekoppeld aan dat account toegevoegd aan het linkerdeelvenster. Selecteer het Azure-abonnementen die u wilt werken en selecteer vervolgens **toepassen** (selecteren **alle abonnementen:** te selecteren selecteert u alle of geen van de Azure-abonnementen).
+4. Nadat u zich hebt aangemeld met een Azure-account, worden het account en de Azure-abonnementen die aan dat account zijn gekoppeld, toegevoegd aan het linkerdeel venster. Selecteer de Azure-abonnementen waarmee u wilt werken en selecteer vervolgens **Toep assen** ( **alle abonnementen selecteren:** wissel knop selecteren alle of geen van de vermelde Azure-abonnementen).
 
     ![Selecteer Azure-abonnementen][3]
 
@@ -96,121 +100,123 @@ Storage Explorer biedt verschillende manieren om verbinding te maken met opslaga
     ![Geselecteerde Azure-abonnementen][4]
 
 ### <a name="attach-a-specific-resource"></a>Een specifieke resource koppelen
-    
-Er zijn diverse opties voor het koppelen van een resource aan Storage Explorer. U kunt:
 
-* [Een resource via Azure AD toevoegen](#add-a-resource-via-azure-ad): Als u alleen machtigingen op het niveau van de gegevens hebt, kunt u deze optie gebruiken om een Blob-container of een ADLS Gen2 Blob-container te voegen.
-* [Gebruik een verbindingsreeks](#use-a-connection-string): Als u een verbindingsreeks naar een Opslagaccount hebt. Storage Explorer biedt ondersteuning voor zowel de sleutel en [SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) verbindingsreeksen.
-* [Een SAS-URI gebruiken](#use-a-sas-uri): Als u hebt een [SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) URI naar een Blob-Container, -bestandsshare, wachtrij of tabel. Als u een SAS-URI, kunt u ofwel [Opslagverkenner](#generate-a-sas-in-storage-explorer) of de [Azure-portal](https://portal.azure.com).
-* [Een naam en sleutel gebruiken](#use-a-name-and-key): Als u een van de sleutels naar uw Opslagaccount weet, kunt u deze optie om snel verbinding te maken. De sleutels voor uw Opslagaccount bevinden zich op het Opslagaccount **toegangssleutels** blade op de [Azure-portal](https://portal.azure.com).
-* [Koppelen aan een lokale emulator](#attach-to-a-local-emulator): Als u een van de beschikbare Azure Storage-emulator gebruikt, moet u deze optie gebruiken eenvoudig verbinding maken met de emulator.
-* [Verbinding maken met een Azure Cosmos DB-account met behulp van een verbindingsreeks](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string): Als u een verbindingsreeks naar een cosmos DB-exemplaar hebt.
-* [Verbinding maken met Azure Data Lake Store via een URI](#connect-to-azure-data-lake-store-by-uri): Als u een URI naar een Azure Data Lake Store.
+U kunt koppelen aan een resource in Storage Explorer met behulp van verschillende opties:
 
-#### <a name="add-a-resource-via-azure-ad"></a>Een resource via Azure AD toevoegen
+* [Een resource toevoegen via Azure AD](#add-a-resource-via-azure-ad): Als u alleen machtigingen hebt op de gegevenslaag, kunt u deze optie gebruiken om een BLOB-container of een ADLS Gen2 BLOB-container toe te voegen.
+* [Een Connection String gebruiken](#use-a-connection-string): Als u een connection string hebt voor een opslag account. Storage Explorer ondersteunt zowel sleutel-als [SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) -verbindings reeksen.
+* [Een SAS-URI gebruiken](#use-a-sas-uri): Als u een [SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) -URI hebt naar een BLOB-container, een bestands share, een wachtrij of een tabel. Als u een SAS-URI wilt ophalen, kunt u [Storage Explorer](#generate-a-sas-in-storage-explorer) of de [Azure Portal](https://portal.azure.com)gebruiken.
+* [Een naam en sleutel gebruiken](#use-a-name-and-key): Als u een van de account sleutels in uw opslag account kent, kunt u deze optie gebruiken om snel verbinding te maken. De sleutels voor uw opslag account bevinden zich in het deel venster **toegangs sleutels** voor opslag accounts op het [Azure Portal](https://portal.azure.com).
+* [Koppelen aan een lokale emulator](#attach-to-a-local-emulator): Als u een van de beschik bare Azure Storage-emulators gebruikt, gebruikt u deze optie om eenvoudig verbinding te maken met uw emulator.
+* [Verbinding maken met een Azure Cosmos DB-account met behulp van een Connection String](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string): Als u een connection string hebt naar een CosmosDB-exemplaar.
+* [Verbinding maken met Azure data Lake Store op URI](#connect-to-azure-data-lake-store-by-uri): Als u een URI naar een Azure Data Lake Store hebt.
 
-1. Open de **dialoogvenster verbinding maken met** door te klikken op de **verbinding maken met knop** op de links, verticale werkbalk.
+#### <a name="add-a-resource-via-azure-ad"></a>Een resource toevoegen via Azure AD
 
-    ![Verbinding maken met de optie Azure Storage][9]
-
-2. Als u hebt nog niet gedaan, gebruikt u de **een Azure-Account toevoegen** optie om aan te melden bij de Azure-Account die toegang tot de resource heeft. Nadat het aan te melden in het **dialoogvenster verbinding maken met**.
-
-3. Selecteer de **toevoegen van een resource via Azure Active Directory (Azure AD)** optie en klik op **volgende**.
-
-4. Selecteer het Azure-Account dat toegang tot de Storage-resource die u wilt koppelen en het abonnement waarin de resource zich heeft bevindt en klik vervolgens op **volgende**.
-
-5. Kies het type resource dat u wilt koppelen, en voer vervolgens de gegevens die nodig zijn om verbinding te maken. De invoer op deze pagina verandert afhankelijk van het type resource dat u wilt toevoegen. Zorg ervoor dat u kiest u het juiste type resource. Nadat u hebt ingevuld, klikt u op de vereiste gegevens op **volgende**.
-
-6. Bekijk de samenvatting verbinding en zorg ervoor dat alle informatie juist is. Als alle informatie die overeenkomt met uw wijzigingen klikt u op **Connect**, anders Ga terug naar de vorige pagina's met de **terug** knop eventuele onjuiste gegevens te corrigeren.
-
-Zodra de verbinding is toegevoegd, wordt de resourcestructuur van de wordt automatisch navigeren naar het knooppunt van de verbinding. Als voor een of andere reden niet, kijk onder **lokaal en gekoppeld** → **Opslagaccounts** → **(Containers die zijn gekoppeld)** → **Blobcontainers** . Als u Storage Explorer kan niet worden toegevoegd, de verbinding is, of als u kan geen toegang tot uw gegevens na het toevoegen van de verbinding is, raadpleegt u de [problemen oplossen met](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor hulp.
-
-#### <a name="use-a-connection-string"></a>Gebruik een verbindingsreeks
-
-1. Open de **dialoogvenster verbinding maken met** door te klikken op de **verbinding maken met knop** op de links, verticale werkbalk.
+1. Open het **dialoog venster verbinden** door te klikken op de **knop verbinding maken** op de verticale werk balk.
 
     ![Verbinding maken met de optie Azure Storage][9]
 
-2. Selecteer de **gebruik een verbindingsreeks** optie en klik op **volgende**.
+2. Als u dit nog niet hebt gedaan, gebruikt u de optie **een Azure-account toevoegen** om u aan te melden bij het Azure-account dat toegang heeft tot de resource. Nadat u zich hebt aangemeld, keert u terug naar het **dialoog venster verbinden**.
 
-3. Kies een weergavenaam voor uw verbinding en voer in de verbindingsreeks. Klik op **Volgende**.
+3. Selecteer de optie **een resource toevoegen via Azure Active Directory (Azure AD)** en klik op **volgende**.
 
-4. Bekijk de samenvatting verbinding en zorg ervoor dat alle informatie juist is. Als alle informatie die overeenkomt met uw wijzigingen klikt u op **Connect**, anders Ga terug naar de vorige pagina's met de **terug** knop eventuele onjuiste gegevens te corrigeren.
+4. Selecteer het Azure-account en de Tenant die toegang hebben tot de opslag resource die u wilt koppelen. Klik op **Volgende**.
 
-Zodra de verbinding is toegevoegd, wordt de resourcestructuur van de wordt automatisch navigeren naar het knooppunt van de verbinding. Als voor een of andere reden niet, kijk onder **lokaal en gekoppeld** → **Opslagaccounts**. Als u Storage Explorer kan niet worden toegevoegd, de verbinding is, of als u kan geen toegang tot uw gegevens na het toevoegen van de verbinding is, raadpleegt u de [problemen oplossen met](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor hulp.
+5. Kies het resource type dat u wilt koppelen en voer vervolgens de gegevens in die nodig zijn om verbinding te maken. De invoer op deze pagina wordt gewijzigd, afhankelijk van het type resource dat u wilt toevoegen. Zorg ervoor dat u het juiste type resource kiest. Wanneer u de vereiste gegevens hebt ingevuld, klikt u op **volgende**.
+
+6. Bekijk de samen vatting van de verbinding en zorg ervoor dat alle informatie juist is. Als alle informatie correct is, klikt u op **verbinding maken**. Als dat niet het geval is, keert u terug naar de vorige pagina's met de knop **terug** om onjuiste gegevens te corrigeren.
+
+Zodra de verbinding is toegevoegd, gaat de resource structuur automatisch naar het knoop punt dat de verbinding vertegenwoordigt. U kunt ook zoeken onder **lokale & gekoppeld** → **opslag accounts** → **(gekoppelde containers)** → **BLOB-containers** als dat niet het geval is. Als Storage Explorer uw verbinding niet kan toevoegen of als u geen toegang hebt tot uw gegevens nadat u de verbinding hebt toegevoegd, raadpleegt u de [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor het oplossen van problemen.
+
+#### <a name="use-a-connection-string"></a>Een verbindingsreeks gebruiken
+
+1. Open het **dialoog venster verbinden** door te klikken op de **knop verbinding maken** op de verticale werk balk.
+
+    ![Verbinding maken met de optie Azure Storage][9]
+
+2. Selecteer de optie **een Connection String gebruiken** en klik op **volgende**.
+
+3. Kies een weergave naam voor de verbinding en voer uw connection string in. Klik op **Volgende**.
+
+4. Bekijk de samen vatting van de verbinding en zorg ervoor dat alle informatie juist is. Als alle informatie correct is, klikt u op **verbinden**, anders keert u terug naar de vorige pagina's met de knop **terug** om eventuele onjuiste gegevens te corrigeren.
+
+Zodra de verbinding is toegevoegd, gaat de resource structuur automatisch naar het knoop punt dat de verbinding vertegenwoordigt. U kunt ook zoeken onder **lokale & gekoppeld** → **opslag accounts** als dat niet het geval is. Als Storage Explorer uw verbinding niet kan toevoegen of als u geen toegang hebt tot uw gegevens nadat u de verbinding hebt toegevoegd, raadpleegt u de [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor het oplossen van problemen.
 
 #### <a name="use-a-sas-uri"></a>Een SAS-URI gebruiken
 
-1. Open de **dialoogvenster verbinding maken met** door te klikken op de **verbinding maken met knop** op de links, verticale werkbalk.
+1. Open het **dialoog venster verbinden** door te klikken op de **knop verbinding maken** op de verticale werk balk.
 
     ![Verbinding maken met de optie Azure Storage][9]
 
-2. Selecteer de **gebruiken een shared access signature (SAS) URI** optie en klik op **volgende**.
+2. Selecteer de optie **een SAS-URI (Shared Access Signature) gebruiken** en klik op **volgende**.
 
-3. Kies een weergavenaam voor uw verbinding en voer uw SAS-URI. Het service-eindpunt voor het type resource dat u wilt toevoegen, moet automatisch doorvoeren. Als u een aangepast eindpunt is het mogelijk is dat het niet mogelijk. Klik op **volgende**.
+3. Kies een weergave naam voor de verbinding en voer de SAS-URI in. Het service-eind punt voor het type resource dat u wilt koppelen, moet automatisch door voeren worden. Als u een aangepast eind punt gebruikt, is dit mogelijk niet mogelijk. Klik op **Volgende**.
 
-4. Bekijk de samenvatting verbinding en zorg ervoor dat alle informatie juist is. Als alle informatie die overeenkomt met uw wijzigingen klikt u op **Connect**, anders Ga terug naar de vorige pagina's met de **terug** knop eventuele onjuiste gegevens te corrigeren.
+4. Bekijk de samen vatting van de verbinding en zorg ervoor dat alle informatie juist is. Als alle informatie correct is, klikt u op **verbinden**, anders keert u terug naar de vorige pagina's met de knop **terug** om onjuiste gegevens te corrigeren.
 
-Zodra de verbinding is toegevoegd, wordt de resourcestructuur van de wordt automatisch navigeren naar het knooppunt van de verbinding. Als voor een of andere reden niet, kijk onder **lokaal en gekoppeld** → **Opslagaccounts** → **(Containers die zijn gekoppeld)** → **het serviceknooppunt voor het type het door u bijgevoegde container**. Als u Storage Explorer kan niet worden toegevoegd, de verbinding is, of als u kan geen toegang tot uw gegevens na het toevoegen van de verbinding is, raadpleegt u de [problemen oplossen met](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor hulp.
+Zodra de verbinding is toegevoegd, gaat de resource structuur automatisch naar het knoop punt dat de verbinding vertegenwoordigt. U kunt ook zoeken onder **lokale & gekoppeld** → **opslag accounts** → **(gekoppelde containers)** → **het service knooppunt voor het type container dat u hebt gekoppeld** als dat niet het geval is. Als Storage Explorer uw verbinding niet kan toevoegen of als u geen toegang hebt tot uw gegevens nadat u de verbinding hebt toegevoegd, raadpleegt u de [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor het oplossen van problemen.
 
 #### <a name="use-a-name-and-key"></a>Een naam en sleutel gebruiken
 
-1. Open de **dialoogvenster verbinding maken met** door te klikken op de **verbinding maken met knop** op de links, verticale werkbalk.
+1. Open het **dialoog venster verbinden** door te klikken op de **knop verbinding maken** op de verticale werk balk.
 
     ![Verbinding maken met de optie Azure Storage][9]
 
-2. Selecteer de **een opslagaccountnaam en -sleutel gebruiken** optie en klik op **volgende**.
+2. Selecteer de optie **een opslag accountnaam en-sleutel gebruiken** en klik op **volgende**.
 
-3. Kies een weergavenaam voor uw verbinding.
+3. Kies een weergave naam voor de verbinding.
 
-4. Voer in de naam van uw Opslagaccount en een van de toegangssleutels ervan.
+4. Voer de naam van uw opslag account en een van de bijbehorende toegangs sleutels in.
 
-5. Kies de **opslagdomein** gebruiken en klik vervolgens op **volgende**.
+5. Kies het **opslag domein** dat u wilt gebruiken en klik vervolgens op **volgende**.
 
-4. Bekijk de samenvatting verbinding en zorg ervoor dat alle informatie juist is. Als alle informatie die overeenkomt met uw wijzigingen klikt u op **Connect**, anders Ga terug naar de vorige pagina's met de **terug** knop eventuele onjuiste gegevens te corrigeren.
+4. Bekijk de samen vatting van de verbinding en zorg ervoor dat alle informatie juist is. Als alle informatie correct is, klikt u op **verbinden**, anders keert u terug naar de vorige pagina's met de knop **terug** om eventuele onjuiste gegevens te corrigeren.
 
-Zodra de verbinding is toegevoegd, wordt de resourcestructuur van de wordt automatisch navigeren naar het knooppunt van de verbinding. Als voor een of andere reden niet, kijk onder **lokaal en gekoppeld** → **Opslagaccounts**. Als u Storage Explorer kan niet worden toegevoegd, de verbinding is, of als u kan geen toegang tot uw gegevens na het toevoegen van de verbinding is, raadpleegt u de [problemen oplossen met](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor hulp.
+Zodra de verbinding is toegevoegd, gaat de resource structuur automatisch naar het knoop punt dat de verbinding vertegenwoordigt. U kunt ook zoeken onder **lokale & gekoppeld** → **opslag accounts** als dat niet het geval is. Als Storage Explorer uw verbinding niet kan toevoegen of als u geen toegang hebt tot uw gegevens nadat u de verbinding hebt toegevoegd, raadpleegt u de [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor het oplossen van problemen.
 
 #### <a name="attach-to-a-local-emulator"></a>Koppelen aan een lokale emulator
 
-Storage Explorer biedt ondersteuning voor emulators op alle platforms. De twee officiële beschikbaar emulators zijn momenteel:
-* [Azure-opslagemulator](storage/common/storage-use-emulator.md) (alleen Windows)
+Storage Explorer ondersteunt momenteel twee officiële opslag emulators:
+* [Azure-opslag emulator](storage/common/storage-use-emulator.md) (Alleen Windows)
 * [Azurite](https://github.com/azure/azurite) (Windows, macOS of Linux)
 
-Als de emulator wordt uitgevoerd op de standaard-poorten kunt u de **Emulator - standaardpoorten** knooppunt, kunt u altijd vinden onder **lokaal en gekoppeld** → **Storage-Accounts** , snel toegang krijgt tot de emulator. Als u wilt een andere naam voor de verbinding gebruiken of als de emulator wordt niet uitgevoerd op de standaard-poorten, volgt u de onderstaande stappen.
+Als uw emulator luistert naar de standaard poorten, kunt u het knoop punt **emulator-standaard poorten** (gevonden onder **lokale & gekoppeld** → **opslag accounts**) gebruiken om snel toegang te krijgen tot uw emulator.
 
-1. Start de emulator. Wanneer u dit doet, neem notitie van welke poorten luistert de emulator op voor elk servicetype. U moet over deze informatie later opnieuw.
+Als u een andere naam wilt gebruiken voor uw verbinding of als uw emulator niet wordt uitgevoerd op de standaard poorten:
+
+1. Start uw emulator. Wanneer u dit doet, noteert u op welke poorten de emulator luistert voor elk Service type.
 
    > [!IMPORTANT]
-   > Storage Explorer uw emulator niet automatisch wordt gestart. U moet deze zelf starten.
+   > De emulator wordt niet automatisch door Storage Explorer gestart. U moet het zelf starten.
 
-2. Open de **dialoogvenster verbinding maken met** door te klikken op de **verbinding maken met knop** op de links, verticale werkbalk.
+2. Open het **dialoog venster verbinden** door te klikken op de **knop verbinding maken** op de verticale werk balk.
 
     ![Verbinding maken met de optie Azure Storage][9]
 
-3. Selecteer de **koppelen aan een lokale emulator** optie en klik op **volgende**.
+3. Selecteer de optie **koppelen aan een lokale emulator** en klik op **volgende**.
 
-4. Kies een weergavenaam voor uw verbinding en voer in de poorten die uw emulator op voor elk servicetype luistert. Standaard bevat de tekstvakken de standaardwaarden van de poort voor de meeste emulators. De **bestanden poort** ook leeg is standaard als geen van de officiële emulators momenteel ondersteuning voor de Files-service. Als de emulator u ondersteuning biedt voor deze echter, kunt klikt u vervolgens u in de poort die wordt gebruikt. Klik op **volgende**.
+4. Kies een weergave naam voor de verbinding en voer in de poorten waarop uw emulator luistert voor elk Service type in. De tekst vakken worden gestart met de standaard poort waarden voor de meeste emulators. De **bestanden poort** is leeg, omdat geen van de officiële emulators de service bestanden ondersteunt. Als de emulator die u gebruikt, ondersteuning biedt voor bestanden, kunt u de poort opgeven die wordt gebruikt. Klik op **Volgende**.
 
-5. Bekijk de samenvatting verbinding en zorg ervoor dat alle informatie juist is. Als alle informatie die overeenkomt met uw wijzigingen klikt u op **Connect**, anders Ga terug naar de vorige pagina's met de **terug** knop eventuele onjuiste gegevens te corrigeren.
+5. Bekijk de samen vatting van de verbinding en zorg ervoor dat alle informatie juist is. Als alle informatie correct is, klikt u op **verbinden**, anders gaat u terug naar de vorige pagina's met de knop **terug** om onjuiste gegevens te corrigeren.
 
-Zodra de verbinding is toegevoegd, wordt de resourcestructuur van de wordt automatisch navigeren naar het knooppunt van de verbinding. Als voor een of andere reden niet, kijk onder **lokaal en gekoppeld** → **Opslagaccounts**. Als u Storage Explorer kan niet worden toegevoegd, de verbinding is, of als u kan geen toegang tot uw gegevens na het toevoegen van de verbinding is, raadpleegt u de [problemen oplossen met](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor hulp.
+Zodra de verbinding is toegevoegd, gaat de resource structuur automatisch naar het knoop punt dat de verbinding vertegenwoordigt. U kunt ook zoeken onder **lokale & gekoppeld** → **opslag accounts** als dat niet het geval is. Als Storage Explorer uw verbinding niet kan toevoegen of als u geen toegang hebt tot uw gegevens nadat u de verbinding hebt toegevoegd, raadpleegt u de [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor het oplossen van problemen.
 
-#### <a name="connect-to-an-azure-cosmos-db-account-by-using-a-connection-string"></a>Verbinding maken met een Azure Cosmos DB-account met behulp van een verbindingsreeks
+#### <a name="connect-to-an-azure-cosmos-db-account-by-using-a-connection-string"></a>Verbinding maken met een Azure Cosmos DB-account met behulp van een connection string
 
-Naast Azure Cosmos DB-accounts via Azure-abonnement te beheren, een andere manier om verbinding te maken met een Azure Cosmos DB is om een verbindingsreeks te gebruiken. Gebruik de volgende stappen om verbinding te maken met behulp van een verbindingsreeks.
+Naast het beheren van Azure Cosmos DB accounts via een Azure-abonnement, is het gebruik van een connection string een alternatieve manier om verbinding te maken met een Azure Cosmos DB. Gebruik de volgende stappen om verbinding te maken met behulp van een verbindingsreeks.
 
 1. Ga naar **Lokaal en gekoppeld** in het linkerdeelvenster, klik met de rechtermuisknop op **Azure Cosmos DB-accounts**, en kies **Verbinding maken met Azure Cosmos DB...**
 
-    ![verbinding maken met Azure Cosmos DB met een verbindingsreeks][21]
+    ![verbinding maken met Azure Cosmos DB door connection string][21]
 
-2. Kies Azure Cosmos DB API, plak uw **Connection String**, en klik vervolgens op **OK** om Azure Cosmos DB-account verbinding te maken. Zie [De verbindingsreeks ophalen](https://docs.microsoft.com/azure/cosmos-db/manage-account) voor informatie over het ophalen van de verbindingsreeks.
+2. Kies Azure Cosmos DB-API, plak de **verbindings reeks**en klik vervolgens op **OK** om verbinding te maken met Azure Cosmos DB account. Zie [De verbindingsreeks ophalen](https://docs.microsoft.com/azure/cosmos-db/manage-account) voor informatie over het ophalen van de verbindingsreeks.
 
     ![connection-string][22]
 
-#### <a name="connect-to-azure-data-lake-store-by-uri"></a>Verbinding maken met Azure Data Lake Store via een URI
+#### <a name="connect-to-azure-data-lake-store-by-uri"></a>Verbinding maken met Azure Data Lake Store op URI
 
-Als u toegang wilt krijgen tot de resources die niet aanwezig zijn in uw abonnement, maar anderen de URI voor de resources aan u geven. In dit geval kunt u de URI gebruiken om verbinding te maken met Data Lake Store nadat u bent aangemeld. Bekijk de volgende stappen.
+Als u toegang nodig hebt tot een resource die niet in uw abonnement is, hebt u iemand die toegang nodig heeft om u de resource-URI te geven. Nadat u zich hebt aangemeld, kunt u verbinding maken met Data Lake Store met behulp van de URI door de volgende stappen uit te voeren:
 
 1. Open Storage Explorer.
 2. Vouw **Lokaal en gekoppeld** uit in het linkerdeelvenster.
@@ -225,42 +231,42 @@ Als u toegang wilt krijgen tot de resources die niet aanwezig zijn in uw abonnem
     ![resultaat Verbinding maken met Data Lake Store](./media/vs-azure-tools-storage-manage-with-storage-explorer/storageexplorer-adls-attach-finish.png)
 
 
-## <a name="generate-a-sas-in-storage-explorer"></a>Een SAS genereren in Storage Explorer
+## <a name="generate-a-sas-in-storage-explorer"></a>Een SAS in Storage Explorer genereren
 
-### <a name="account-level-sas"></a>Een SAS op accountniveau
+### <a name="account-level-sas"></a>SAS op account niveau
 
-1. Met de rechtermuisknop op het opslagaccount dat u wilt delen en selecteer vervolgens **Shared Access Signature ophalen...** .
+1. Klik met de rechter muisknop op het opslag account dat u wilt delen en selecteer vervolgens **Shared Access Signature ophalen...** .
 
     ![Optie SAS-contextmenu ophalen][14]
 
-2. In de **Shared Access Signature genereren** dialoogvenster vak, geeft u de periode en de machtigingen die u wilt gebruiken voor het account en klik vervolgens op de **maken** knop.
+2. Geef in het dialoog venster **Shared Access Signature genereren** het tijds bestek en de gewenste machtigingen voor het account op. Klik op **Create**.
 
-    ![Dialoogvenster SAS ophalen][15]
+    ![Het dialoog venster SAS ophalen][15]
 
-3. U kunt nu Kopieer de **Connection string** of de onbewerkte **querytekenreeks** naar het Klembord.
+3. U kunt nu de **verbindings reeks** of de onbewerkte **query teken reeks** naar het klem bord kopiëren.
 
-### <a name="service-level-sas"></a>SAS op serviceniveau
+### <a name="service-level-sas"></a>SAS op service niveau
 
-[Hoe u een SAS ophalen voor een blob-container in Storage Explorer](vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
+[Een SAS ophalen voor een BLOB-container in Storage Explorer](vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
 
 ## <a name="search-for-storage-accounts"></a>Zoeken naar opslagaccounts
 
-Als u wilt een opslagresource vinden en waar deze zich niet meer weet, kunt u het zoekvak boven aan het linkerdeelvenster om te zoeken naar de resource.
+Als u een opslag resource wilt zoeken en niet weet waar het is, kunt u het zoekvak boven aan het linkerdeel venster gebruiken om te zoeken naar de resource.
 
-Als u in het zoekvak typt, wordt in het linkerdeelvenster alle resources die overeenkomen met de zoekwaarde die u hebt ingevoerd tot dat moment weergegeven. Bijvoorbeeld een zoekopdracht voor **eindpunten** wordt weergegeven in de volgende schermafbeelding:
+Wanneer u in het zoekvak typt, worden in het linkerdeel venster alle resources weer gegeven die overeenkomen met de zoek waarde die u tot dat punt hebt ingevoerd. Bijvoorbeeld, wordt een zoek opdracht voor **eind punten** weer gegeven in de volgende scherm afbeelding:
 
 ![Zoeken naar Storage-account][23]
 
 > [!NOTE]
-> Gebruik de **Account Management Panel** om op te heffen alle abonnementen waarvoor geen het item dat u zoekt voor het verbeteren van de uitvoeringstijd van uw zoekopdracht. U kunt ook met de rechtermuisknop op een knooppunt en kies **zoeken vanaf hier** begint met zoeken van een specifiek knooppunttype.
+> Gebruik het **deel venster account beheer** om alle abonnementen te deselecteren die het item dat u zoekt, niet bevatten om de uitvoerings tijd van uw zoek opdracht te verbeteren. U kunt ook met de rechter muisknop op een knoop punt klikken en **hier zoeken** kiezen om te beginnen met zoeken vanaf een specifiek knoop punt.
 >
 >
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure Blob Storage-resources beheren met Opslagverkenner](vs-azure-tools-storage-explorer-blobs.md)
-* [Azure Cosmos DB beheren in Azure Storage Explorer (Preview)](./cosmos-db/storage-explorer.md)
-* [Azure Data Lake Store-resources beheren met Opslagverkenner](./data-lake-store/data-lake-store-in-storage-explorer.md)
+* [Azure Blob Storage-resources beheren met Storage Explorer](vs-azure-tools-storage-explorer-blobs.md)
+* [Azure Cosmos DB beheren in Storage Explorer (preview-versie)](./cosmos-db/storage-explorer.md)
+* [Azure Data Lake Store-resources beheren met Storage Explorer](./data-lake-store/data-lake-store-in-storage-explorer.md)
 
 [0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Overview.png
 [1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageAccounts.png

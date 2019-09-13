@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 09/12/2019
 ms.author: mbullwin
-ms.openlocfilehash: f72feeefeb896c9006f767f8724d9ca3b3640c1e
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: f3b093b8d5f772bad759d3384405f4ca9f0cee15
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035221"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933760"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights voor webpagina’s
 
@@ -66,7 +66,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 Standaard verzamelt de Application Insights java script SDK een aantal telemetriegegevens die nuttig zijn bij het bepalen van de status van uw toepassing en de onderliggende gebruikers ervaring. Deze omvatten:
 
-- Niet-onderschepte **uitzonde ringen** in uw app, inclusief informatie over
+- Niet- **onderschepte uitzonde ringen** in uw app, inclusief informatie over
     - Stack tracering
     - Details van uitzonde ring en bericht dat de fout vergezelt
     - Regel & kolom aantal fouten
@@ -103,7 +103,7 @@ De meeste configuratie velden hebben de naam zo, dat ze standaard kunnen worden 
 
 | Name | Standaard | Description |
 |------|---------|-------------|
-| instrumentationKey | null | **Vereist**<br>Instrumentatie sleutel die u hebt verkregen van de Azure Portal. |
+| InstrumentationKey | null | **Vereist**<br>Instrumentatie sleutel die u hebt verkregen van de Azure Portal. |
 | accountId | null | Een optionele account-ID als uw app gebruikers in accounts groepeert. Geen spaties, komma's, punt komma's, is gelijk aan of verticale balken |
 | sessionRenewalMs | 1800000 | Er wordt een sessie geregistreerd als de gebruiker gedurende deze tijd inactief is in milliseconden. De standaard waarde is 30 minuten |
 | sessionExpirationMs | 86400000 | Een sessie wordt geregistreerd als deze de tijd in milliseconden heeft geduurd. De standaard waarde is 24 uur |
@@ -143,18 +143,18 @@ De meeste configuratie velden hebben de naam zo, dat ze standaard kunnen worden 
 
 Deze SDK verwerkt standaard **geen** route wijzigingen op basis van status die optreden in toepassingen met één pagina. Als u het bijhouden van automatische route wijzigingen wilt inschakelen voor uw toepassing met één `enableAutoRouteTracking: true` pagina, kunt u aan uw installatie configuratie toevoegen.
 
-Op dit moment bieden we een afzonderlijke [reageer-invoeg toepassing](#react-extensions) die u kunt initialiseren met deze SDK. Ook wordt het bijhouden van route wijzigingen voor u uitgevoerd, evenals [andere](https://github.com/microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-js)gereageerde telemetrie.
+Op dit moment bieden we een afzonderlijke [reageer-invoeg toepassing](#react-extensions) die u kunt initialiseren met deze SDK. Ook wordt het bijhouden van route wijzigingen voor u uitgevoerd, evenals [andere gereageerde telemetrie](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md).
 
 ## <a name="react-extensions"></a>Extensies voor reageren
 
 | Extensies |
 |---------------|
-| [Reageren](https://github.com/microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-js)|
-| [Systeem eigen](https://github.com/microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-native)|
+| [Reageren](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
+| [Systeem eigen](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
 
 ## <a name="explore-browserclient-side-data"></a>Browser/gegevens van client zijde verkennen
 
-De browser/client-side gegevens kunnen worden weer gegeven door te gaan naar metrieken en afzonderlijke metrieken toe te voegen: 
+De browser/client-side gegevens kunnen worden weer gegeven door te gaan naar **metrieken** en afzonderlijke metrieken toe te voegen: 
 
 ![](./media/javascript/page-view-load-time.png)
 

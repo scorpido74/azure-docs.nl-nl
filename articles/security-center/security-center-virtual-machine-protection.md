@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 03/20/2019
 ms.author: v-mohabe
-ms.openlocfilehash: cb6025b47aec50121a0f96f7b6cba7ad726db291
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: c8f381a3440d742cca880f44b73cbc22bde92ecc
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907953"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910565"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Beveiligen van uw computers en toepassingen in Azure Security Center
 Azure Security Center analyseert de beveiligings status van uw Azure-resources, niet-Azure-servers en virtuele machines. Wanneer Security Center potentiële beveiligingsproblemen worden geïdentificeerd, worden er aanbevelingen die u bij het proces begeleiden van het configureren van de benodigde besturingselementen. Aanbevelingen zijn van toepassing op Azure-resource-typen: virtuele machines (VM's) en computers, toepassingen, netwerken, SQL, en de identiteit en toegang.
@@ -108,7 +108,6 @@ Er zijn vier typen pictogrammen weergegeven in deze lijst:
 U kunt met het pictogram dat wordt weergegeven onder elke aanbeveling snel identificeren van de virtuele machine en de computer die aandacht vereisen en wat het type aanbeveling. U kunt ook de filters gebruiken om de lijst te doorzoeken op **resource type** en op **Ernst**.
 
 Als u wilt inzoomen op de beveiligings aanbevelingen voor elke virtuele machine, klikt u op de virtuele machine.
-Hier ziet u de beveiligingsdetails voor de virtuele machine of computer. Onderin ziet u de aanbevolen actie en de ernst van elk probleem.
 ![Cloudservices](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
 
 ### <a name="cloud-services"></a>Cloud services
@@ -125,7 +124,7 @@ Als u een meer beschrijvende uitleg wilt zien over deze aanbeveling, klikt u op 
 ![Besturingssysteemversie bijwerken](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig8-new4.png)
 
 ### <a name="app-services"></a>App-services
-U moet App Service in uw abonnement inschakelen om de App Service gegevens weer te geven. Zie [app service beveiligen met Azure Security Center](security-center-app-services.md)voor instructies over het inschakelen van deze functie.
+Als u de App Service informatie wilt weer geven, moet u App Service inschakelen in uw abonnement. Zie [app service beveiligen met Azure Security Center](security-center-app-services.md)voor instructies over het inschakelen van deze functie.
 [!NOTE]
 > Bewaking van App Service is in preview en alleen beschikbaar op de prijscategorie Standard van Security Center.
 
@@ -170,7 +169,7 @@ De micro soft Monitoring Agent installeren:
 
    ![MMS installeren](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
-Als u nieuwe schaal sets wilt instellen om micro soft monitoring agent automatisch te installeren:
+Nieuwe schaal sets instellen om micro soft monitoring agent automatisch te installeren:
 1. Ga naar Azure Policy en klik op **definities**.
 2. Zoek naar het beleid **implementeren log Analytics agent voor virtuele-machine schaal sets voor Windows** en klik erop.
 3. Klik op **Toewijzen**.

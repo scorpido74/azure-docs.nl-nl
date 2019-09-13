@@ -8,12 +8,12 @@ services: iot-pnp
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: yahajiza
-ms.openlocfilehash: ec36bef9c2b65a5c88a52621bbf3a1db708c235c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 1b71d8bd0f0417c7dc408c580a1c73ac654743ce
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880499"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932864"
 ---
 # <a name="manage-models-in-the-repository"></a>Modellen in de opslag plaats beheren
 
@@ -30,7 +30,7 @@ Er zijn drie hulpprogram ma's die u kunt gebruiken voor het beheren van de opsla
 Er zijn twee soorten model opslagplaatsen voor het opslaan van Capability-modellen en-interfaces:
 
 - Er is één _open bare opslag plaats_ voor het opslaan van de hulp modellen en interfaces voor apparaten in de [Azure Certified voor IOT-apparaat Catalog](https://aka.ms/iotdevcat). Deze opslag plaats bevat ook [algemene interfaces](./concepts-common-interfaces.md) en [DCMs en interfaces die zijn gepubliceerd door micro soft-partners](./howto-onboard-portal.md). Raadpleeg de zelf studie [uw IOT-Plug en Play apparaat certificeren](./tutorial-certification-test.md)voor meer informatie over het certificeren van een apparaat en het toevoegen van het functionaliteits model van het apparaat aan de open bare opslag plaats.
-- Er zijn meerdere _bedrijfs opslagplaatsen_. Er wordt automatisch een bedrijfs opslagplaats gemaakt voor uw organisatie wanneer u [de Azure Certified voor IOT-Portal](./howto-onboard-portal.md)onboardeert. U kunt uw bedrijfs opslagplaats gebruiken voor het opslaan van de mogelijkheden en interfaces van uw apparaten tijdens het ontwikkelen en testen.
+- Er zijn meerdere _bedrijfs opslagplaatsen_. Er wordt automatisch een bedrijfs opslagplaats gemaakt voor uw organisatie wanneer u [de Azure Certified voor IOT-Portal onboardeert](./howto-onboard-portal.md). U kunt uw bedrijfs opslagplaats gebruiken voor het opslaan van de mogelijkheden en interfaces van uw apparaten tijdens het ontwikkelen en testen.
 
 ## <a name="azure-certified-for-iot-portal"></a>Azure Certified voor IoT-Portal
 
@@ -41,7 +41,7 @@ In de [Azure Certified voor IOT-Portal](https://preview.catalog.azureiotsolution
 
 ## <a name="azure-cli"></a>Azure-CLI
 
-De Azure CLI bevat opdrachten voor het beheren van de mogelijkheden en interfaces van de apparaten in de IoT Plug en Play Public en bedrijfs model-opslag plaatsen.
+De Azure CLI bevat opdrachten voor het beheren van de mogelijkheden en interfaces van de apparaten in de IoT Plug en Play Public en bedrijfs model-opslag plaatsen. Zie voor meer informatie de [Azure IOT-extensie voor Azure cli-hand leiding installeren en gebruiken](./howto-install-pnp-cli.md) .
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 

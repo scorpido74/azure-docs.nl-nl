@@ -1,5 +1,5 @@
 ---
-title: "Node. js Quick Start: Indexen maken, laden en query's uitvoeren met behulp van Azure Search REST-Api's-Azure Search"
+title: "Quickstart: Een zoek index maken in node. js met REST-Api's-Azure Search"
 description: Voor beeld van node. js voor Azure Search, waarin wordt uitgelegd hoe u gegevens maakt, laadt en een query uitvoert vanuit Java script.
 author: lobrien
 manager: nitinme
@@ -8,16 +8,16 @@ services: search
 ms.service: search
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 07/30/2019
+ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: b22a6371522674895465afac88e68f556ab09bcb
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 4e17247ea412b5472a0c23fd74ff7e53f375710d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656306"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881498"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-nodejs"></a>Quickstart: Een Azure Search-index maken in node. js
+# <a name="quickstart-create-an-azure-search-index-in-nodejs-using-rest-apis"></a>Quickstart: Een Azure Search-index maken in node. js met REST-Api's
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
@@ -39,7 +39,7 @@ De volgende services, hulpprogram ma's en gegevens worden gebruikt in deze Quick
 + In dit artikel vindt u een voor beeld van een structuur van de index en de bijbehorende documenten of vanuit de [ **Quick** start van de opslag plaats](https://github.com/Azure-Samples/azure-search-javascript-samples/).
 + [Een Azure Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt een gratis service voor deze Quick Start gebruiken.
 
-Aanbevelingen
+Aanbevolen:
 
 * [Visual Studio Code](https://code.visualstudio.com).
 * [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) -en [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) -uitbrei dingen voor VSCode.
@@ -453,7 +453,7 @@ Vergeet niet dat de laatste aanroep `run()`naar! Het is het begin punt voor uw p
 
 Houd er `AzureSearchClient.indexExistsAsync()` rekening `AzureSearchClient.deleteIndexAsync()` mee dat en geen para meters zijn. Deze functies bellen `AzureSearchClient.request()` `bodyJson` zonder argument. In `AzureSearchClient.request()`, `indexExistsAsync()` `deleteIndexAsync()`omdat `bodyJson === null` de structuur`init` is ingesteld op alleen de HTTP-term (' Get ' voor en ' delete ' voor) en de headers, die de aanvraag `true`sleutel opgeven.  
 
-Daarentegen neemt de `AzureSearchClient.createIndexAsync(indexDefinition)` methode een para meter. Met `run` de functie `index.js`in, wordt de inhoud van het bestand **hotels_quickstart_index. json** door `AzureSearchClient.createIndexAsync(indexDefinition)` gegeven aan de-methode. De `createIndexAsync()` -methode geeft deze definitie `AzureSearchClient.request()`door aan. In `AzureSearchClient.request()`, omdat `bodyJson === null` de `false` `body` structuur nu niet alleen de HTTP-term (' put ') en de headers bevat, maar de index definitie gegevens heeft ingesteld. `init`
+Daarentegen neemt de `AzureSearchClient.createIndexAsync(indexDefinition)` methode _een_ para meter. Met `run` de functie `index.js`in, wordt de inhoud van het bestand **hotels_quickstart_index. json** door `AzureSearchClient.createIndexAsync(indexDefinition)` gegeven aan de-methode. De `createIndexAsync()` -methode geeft deze definitie `AzureSearchClient.request()`door aan. In `AzureSearchClient.request()`, omdat `bodyJson === null` de `false` `body` structuur nu niet alleen de HTTP-term (' put ') en de headers bevat, maar de index definitie gegevens heeft ingesteld. `init`
 
 ### <a name="prepare-and-run-the-sample"></a>Het voor beeld voorbereiden en uitvoeren
 
@@ -600,7 +600,7 @@ const run = async () => {
 }
 ```
 
-Voer het programma opnieuw uit `node index.js`met. Er wordt een iets andere set met berichten weer geven die u in stap 1 hebt gezien. Deze keer bestaat de index en wordt het bericht weer gegeven over het verwijderen voordat de app de nieuwe index maakt en er gegevens naar verzendt. 
+Voer het programma opnieuw uit `node index.js`met. Er wordt een iets andere set met berichten weer geven die u in stap 1 hebt gezien. Deze keer bestaat _de index en wordt het_ bericht weer gegeven over het verwijderen voordat de app de nieuwe index maakt en er gegevens naar verzendt. 
 
 ## <a name="3---search-an-index"></a>3 - Een index doorzoeken
 

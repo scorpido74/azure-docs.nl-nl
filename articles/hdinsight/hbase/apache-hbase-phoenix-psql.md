@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 15bb65e004de916862297f91278328cddb16487d
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 43465a1c31b953620c45dfe759de7b6e1b4dc3c9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810413"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917282"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Bulksgewijs gegevens laden in Apache Phoenix met psql
 
@@ -29,7 +29,7 @@ Bulksgewijs laden met MapReduce wordt gebruikt voor veel grotere gegevens volume
 
 Controleer voordat u begint met het laden van gegevens of Phoenix is ingeschakeld en of de instellingen van de querytime-out naar verwachting zijn.  Open uw HDInsight cluster [Apache Ambari](https://ambari.apache.org/) -dash board, selecteer HBase en klik vervolgens op het tabblad Configuratie.  Schuif omlaag om te controleren of Apache Phoenix is ingesteld `enabled` op zoals weer gegeven:
 
-![Instellingen van HDInsight-cluster Apache Phoenix](./media/apache-hbase-phoenix-psql/ambari-phoenix.png)
+![Instellingen van HDInsight-cluster Apache Phoenix](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
 
 ### <a name="use-psql-to-bulk-load-tables"></a>Gebruiken `psql` om tabellen bulksgewijs te laden
 

@@ -1,20 +1,20 @@
 ---
-title: Verifiëren met beheerde identiteiten-Azure Logic Apps | Microsoft Docs
+title: Verifiëren met beheerde identiteiten-Azure Logic Apps
 description: Als u zich wilt verifiëren zonder u aan te melden, kunt u een beheerde identiteit (voorheen Managed Service Identity of MSI genoemd) maken zodat uw logische app toegang heeft tot bronnen in andere Azure Active Directory (Azure AD)-tenants zonder referenties of geheimen
-author: kevinlam1
-ms.author: klam
-ms.reviewer: estfan, LADocs
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: b157db5032bd62ab443209f201b4ceded6e44cb5
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
-ms.translationtype: MT
+ms.openlocfilehash: bb1443afa14f2a23b807af52ab8fef6ac41ea200
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385566"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934037"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Verifiëren en toegang krijgen tot resources met beheerde identiteiten in Azure Logic Apps
 
@@ -27,7 +27,7 @@ Om toegang te krijgen tot resources in andere Azure Active Directory (Azure AD)-
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement, of als u geen abonnement hebt, kunt <a href="https://azure.microsoft.com/free/" target="_blank">u zich aanmelden voor een gratis Azure-account</a>.
+* Een Azure-abonnement, of als u geen abonnement hebt, kunt [u zich aanmelden voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
 * De logische app waarvoor u de door het systeem toegewezen beheerde identiteit wilt gebruiken. Als u geen logische app hebt, raadpleegt u [uw eerste werk stroom voor logische apps maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -49,9 +49,9 @@ Als u via de Azure Portal een door het systeem toegewezen beheerde identiteit vo
 
 1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-1. Selecteer **identiteit**onder **instellingen**in het menu van de logische app. 
+1. Selecteer **identiteit**onder **instellingen**in het menu van de logische app.
 
-1. Kies **aan**onder **toegewezen** > systeem**status**. Kies vervolgens **Opslaan** > **Ja**.
+1. Selecteer **aan**onder **toegewezen** > systeem**status**. Selecteer vervolgens **Opslaan** > **Ja**.
 
    ![De instelling beheerde identiteit inschakelen](./media/create-managed-service-identity/turn-on-managed-service-identity.png)
 
@@ -59,10 +59,10 @@ Als u via de Azure Portal een door het systeem toegewezen beheerde identiteit vo
 
    ![GUID'S voor object-ID](./media/create-managed-service-identity/object-id.png)
 
-   | Eigenschap | Waarde | Description | 
-   |----------|-------|-------------| 
-   | **Object-ID** | <*identity-resource-ID*> | Een GUID (Globally Unique Identifier) die de door het systeem toegewezen beheerde identiteit voor uw logische app vertegenwoordigt in een Azure AD-Tenant | 
-   ||| 
+   | Eigenschap | Waarde | Description |
+   |----------|-------|-------------|
+   | **Object-ID** | <*identity-resource-ID*> | Een GUID (Globally Unique Identifier) die de door het systeem toegewezen beheerde identiteit voor uw logische app vertegenwoordigt in een Azure AD-Tenant |
+   ||||
 
 <a name="template"></a>
 
@@ -111,11 +111,11 @@ Wanneer Azure uw logische app maakt, bevat deze werk stroom definitie van de log
 }
 ```
 
-| Eigenschap | Waarde | Description | 
+| Eigenschap | Waarde | Description |
 |----------|-------|-------------|
-| **principalId** | <*principal-ID*> | Een GUID (Globally Unique Identifier) die de logische app in de Azure AD-Tenant vertegenwoordigt en soms wordt weer gegeven als een ' object-ID ' of`objectID` | 
-| **tenantId** | <*Azure-AD-tenant-ID*> | Een GUID (Globally Unique Identifier) die de Azure AD-Tenant vertegenwoordigt waarbij de logische app nu lid is. De Service-Principal in de Azure AD-Tenant heeft dezelfde naam als de logische app-instantie. | 
-||| 
+| **principalId** | <*principal-ID*> | Een GUID (Globally Unique Identifier) die de logische app in de Azure AD-Tenant vertegenwoordigt en soms wordt weer gegeven als een ' object-ID ' of`objectID` |
+| **tenantId** | <*Azure-AD-tenant-ID*> | Een GUID (Globally Unique Identifier) die de Azure AD-Tenant vertegenwoordigt waarbij de logische app nu lid is. De Service-Principal in de Azure AD-Tenant heeft dezelfde naam als de logische app-instantie. |
+||||
 
 <a name="access-other-resources"></a>
 
@@ -130,13 +130,13 @@ Nadat u een door het systeem toegewezen beheerde identiteit voor uw logische app
 
 Voer de volgende stappen uit om toegang te geven tot een andere Azure-resource voor de door het systeem toegewezen beheerde identiteit van de logische app:
 
-1. Ga in het Azure Portal naar de Azure-resource waaraan u toegang wilt toewijzen voor uw beheerde identiteit. 
+1. Ga in het Azure Portal naar de Azure-resource waaraan u toegang wilt toewijzen voor uw beheerde identiteit.
 
-1. Selecteer **toegangs beheer (IAM)** in het menu van de resource. **Kies op** > de werk balk de optie roltoewijzing**toevoegen.**
+1. Selecteer **toegangs beheer (IAM)** in het menu van de resource. Kies op de werk balk de optie >  **roltoewijzing toevoegen.**
 
    ![Roltoewijzing toevoegen](./media/create-managed-service-identity/add-permissions-logic-app.png)
 
-1. Onder roltoewijzing **toevoegen**selecteert u de gewenste **rol** voor de identiteit. 
+1. Onder roltoewijzing **toevoegen**selecteert u de gewenste **rol** voor de identiteit.
 
 1. Selecteer in de eigenschap **toegang toewijzen aan** de optie **Azure AD-gebruiker,-groep of Service-Principal**als dat nog niet is geselecteerd.
 
@@ -154,9 +154,7 @@ Nadat u uw logische app hebt ingesteld met een door het systeem toegewezen behee
 
 1. Geef de benodigde gegevens voor die actie op, zoals de aanvraag **methode** en **URI** -locatie voor de resource die u wilt aanroepen.
 
-   Stel dat u gebruikmaakt van Azure Active Directory-verificatie (Azure AD) met [een van deze Azure-Services die ondersteuning bieden voor Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
-   Voer in het vak **URI** de eind punt-URL voor de Azure-service in. 
-   Als u Azure Resource Manager gebruikt, voert u deze waarde in de **URI** -eigenschap in:
+   Stel dat u gebruikmaakt van Azure Active Directory-verificatie (Azure AD) met [een van deze Azure-Services die ondersteuning bieden voor Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). Voer in het vak **URI** de eind punt-URL voor de Azure-service in. Als u Azure Resource Manager gebruikt, voert u deze waarde in de **URI** -eigenschap in:
 
    `https://management.azure.com/subscriptions/<Azure-subscription-ID>?api-version=2016-06-01`
 
@@ -188,7 +186,7 @@ Als u een door het systeem toegewezen beheerde identiteit voor uw logische app w
 
 1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-1. Selecteer **identiteit**onder **instellingen**in het menu van de logische app. 
+1. Selecteer **identiteit**onder **instellingen**in het menu van de logische app.
 
 1. Kies **uit**onder **toegewezen** > systeem**status**. Kies vervolgens **Opslaan** > **Ja**.
 
@@ -204,7 +202,6 @@ Als u de door het systeem toegewezen beheerde identiteit van de logische app met
 }
 ```
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="next-steps"></a>Volgende stappen
 
-* Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
-* Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
+* [Beveiligde toegang en gegevens in Azure Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md)

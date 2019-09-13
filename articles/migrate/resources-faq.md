@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 46c6ac52e1afb6c1619b814580a1059fd3dfedda
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ec4cb58692cd98a799f1dc58f60b11a0552829c8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279504"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934926"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Migrate: Veelgestelde vragen
 
@@ -26,6 +26,37 @@ Zie de [lijst voor VMware](https://docs.microsoft.com/azure/migrate/migrate-supp
 ### <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Wat is het verschil tussen Azure Migrate en Azure Site Recovery?
 
 Azure Migrate biedt een gecentraliseerde hub om uw migratie te starten, detectie en evaluatie van machines en workloads uit te voeren en te volgen, en de migratie van machines en workloads naar Azure uit te voeren en te volgen. [Azure site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) is een oplossing voor nood herstel. Azure Migrate server migratie gebruikt Azure Site Recovery op de back-end om migratie scenario's voor de migratie van on-premises machines in te scha kelen.
+
+### <a name="how-do-i-delete-an-azure-migrate-project"></a>Een Azure Migrate-project Hoe kan ik verwijderen
+
+Als u een Azure Migrate project en de bijbehorende resources wilt verwijderen, inclusief sites, Recovery Services-kluizen, migreert u kluizen, sleutel kluizen, evaluatie projecten, enzovoort, gaat u naar de pagina Resource groepen op de Azure Portal, selecteert u de resource groep waarin het migratie project zich bevindt is gemaakt en selecteer ' verborgen typen weer geven '. Selecteer vervolgens het gemigreerde project en de bijbehorende resources die hieronder worden weer gegeven en verwijder ze. Als de resource groep alleen wordt gebruikt door het migratie project en de bijbehorende resources, kunt u ook de hele resource groep verwijderen. Deze lijst is een volledige lijst met alle resource typen die zijn gemaakt voor alle scenario's (detectie, evaluatie en migratie). U vindt alleen de resources die zijn gemaakt voor uw scenario in de resource groep.
+
+#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-vmware-or-physical-servers-resource-type"></a>Resources die zijn gemaakt voor gedetecteerde, geoordeelde of gemigreerde servers op VMware of fysieke servers [resource (type)]:
+
+- "Apparaatnaam" KV (sleutel kluis)
+- De site ' Apparaatnaam ' (micro soft. OffAzure/VMwareSites)
+- ' ProjectName ' (micro soft. migrate/migrateprojects)
+- Het project ProjectName (micro soft. migrate/assessmentProjects)
+- "ProjectName" rsvault (Recovery Services-kluis)
+- "ProjectName"-MigrateVault-* (Recovery Services kluis)
+- migrateappligwsa * (opslag account)
+- migrateapplilsa * (opslag account)
+- migrateapplicsa * (opslag account)
+- migrateapplikv * (sleutel kluis)
+- migrateapplisbns16041 (Service Bus naam ruimte)
+
+Opmerking: Verwijder opslag accounts en sleutel kluizen met een waarschuwing, omdat deze mogelijk toepassings gegevens en beveiligings sleutels bevatten.
+
+#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-hyper-v-resource-type"></a>Resources die zijn gemaakt voor gedetecteerde, geoordeelde of gemigreerde servers op Hyper-V [resource (type)]:
+
+- ' ProjectName ' (micro soft. migrate/migrateprojects)
+- Het project ProjectName (micro soft. migrate/assessmentProjects)
+- Hyper-v-KV (sleutel kluis)
+- Hyper-v-site (micro soft. OffAzure/HyperVSites)
+- "ProjectName"-MigrateVault-* (Recovery Services kluis) 
+
+Opmerking: Verwijder de sleutel kluis met een waarschuwing, aangezien deze beveiligings sleutels kan bevatten.
+
 
 ## <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 

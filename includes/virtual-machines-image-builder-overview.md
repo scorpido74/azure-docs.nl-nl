@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: 4be1ed779ad424d30ac34fd55f117ada3ed9c7a2
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: c881c95fb860befbc978aba5a6c73375dce235fe
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70166698"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70919666"
 ---
 Met gestandaardiseerde installatie kopieën van virtuele machines kunnen organisaties migreren naar de Cloud en zorgen voor consistentie in de implementaties. Installatie kopieën bevatten doorgaans vooraf gedefinieerde beveiligings-en configuratie-instellingen en de benodigde software. Voor het instellen van uw eigen Imaging-pijp lijn zijn tijd, infra structuur en configuratie vereist, maar met Azure VM Image Builder kunt u een eenvoudige configuratie bieden waarmee uw installatie kopie wordt beschreven, verzonden naar de service en de installatie kopie wordt gebouwd en gedistribueerd.
  
@@ -47,7 +47,7 @@ AIB biedt ondersteuning voor Azure Marketplace Base OS-basis installatie kopieë
 - Ubuntu 16.04
 - RHEL 7,6
 - CentOS 7,6
-- Windows 10 RS5 Enterprize/Professional/Enter prise voor Virtual Desktop (EVD) 
+- Windows 10 RS5 Enter prise/Professional/Enter prise voor Virtual Desktop (EVD) 
 - Windows 2016
 - Windows 2019
 

@@ -6,14 +6,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: a078fc205403983f4f6484f6a7ccde7f99c4dd58
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 401ccda62805cbdebc99317c925aeb1b0ffc66bb
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734551"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915374"
 ---
-# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>Verbeter de prestaties van Apache Spark werk belastingen met behulp van de Azure HDInsight IO-cache (preview)
+# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Verbeter de prestaties van Apache Spark werk belastingen met behulp van de Azure HDInsight IO-cache 
 
 I/o-cache is een service voor gegevens cache voor Azure HDInsight waarmee de prestaties van Apache Spark taken worden verbeterd. I/o-cache werkt ook met [Apache TEZ](https://tez.apache.org/) en [Apache Hive](https://hive.apache.org/) workloads, die op [Apache Spark](https://spark.apache.org/) -clusters kunnen worden uitgevoerd. I/o-cache maakt gebruik van een open-source cache onderdeel met de naam RubiX. RubiX is een lokale schijf cache voor gebruik met big data Analytics-engines die toegang hebben tot gegevens van opslag systemen in de Cloud. RubiX is uniek voor caching-systemen, omdat het gebruik maakt van Ssd's (Solid-state drives) in plaats van dat het besturings geheugen wordt gereserveerd voor cache doeleinden. De i/o-cache service start en beheert RubiX-meta gegevens servers op elk worker-knoop punt van het cluster. Ook worden alle services van het cluster geconfigureerd voor transparant gebruik van RubiX-cache.
 

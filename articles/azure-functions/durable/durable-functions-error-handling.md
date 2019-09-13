@@ -9,20 +9,20 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7b357189a9ce67f27952985b78dd3134517ffba5
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 5a3cfb78fe97b52abb1406dff64132fc1b3fb985
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734308"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933429"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Het afhandelen van fouten in Durable Functions (Azure Functions)
 
-Duurzame functie-indelingen worden in code geïmplementeerd en kunnen de functies voor fout afhandeling van de programmeer taal gebruiken. Daarom zijn er echt geen nieuwe concepten die u nodig hebt om meer te weten te komen over het opnemen van fout afhandeling en compensatie in uw integraties. Er zijn echter enkele gedragingen waarmee u rekening moet houden.
+Duurzame functie-indelingen worden in code geïmplementeerd en kunnen de ingebouwde functies voor fout afhandeling van de programmeer taal gebruiken. Er zijn echt geen nieuwe concepten die u nodig hebt om fout afhandeling en compensatie toe te voegen aan uw integraties. Er zijn echter enkele gedragingen waarmee u rekening moet houden.
 
 ## <a name="errors-in-activity-functions"></a>Fouten in de activiteit functies
 
-Uitzonde ringen die worden gegenereerd in een functie van een activiteit, worden teruggeleid naar de Orchestrator-functie en `FunctionFailedException`gegenereerd als een. U kunt fout afhandeling en compensatie code schrijven die aan uw behoeften voldoen in de Orchestrator-functie.
+Uitzonde ringen die worden gegenereerd in een activiteit functie, worden teruggestuurd naar de Orchestrator-functie en gegenereerd als `FunctionFailedException`een. U kunt fout afhandeling en compensatie code schrijven die aan uw behoeften voldoen in de Orchestrator-functie.
 
 Denk bijvoorbeeld aan de volgende Orchestrator-functie waarmee u fondsen van het ene naar het andere account overbrengt:
 
@@ -139,7 +139,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Als de aanroep van de functie **CreditAccount** mislukt voor het doel account, compenseert de Orchestrator-functie dit door de tegoeden terug te sturen naar het bron account.
+Als de eerste aanroep van de functie **CreditAccount** mislukt, compenseert de Orchestrator-functie door de tegoeden terug te sturen naar het bron account.
 
 ## <a name="automatic-retry-on-failure"></a>Automatische nieuwe poging bij fout
 
@@ -192,14 +192,14 @@ module.exports = df.orchestrator(function*(context) {
 
 De `CallActivityWithRetryAsync` API (.net) `callActivityWithRetry` of (Java script) gebruikt `RetryOptions` een para meter. Suborchestrator-aanroepen met `CallSubOrchestratorWithRetryAsync` behulp van de `callSubOrchestratorWithRetry` API (.net) of (Java script) kunnen gebruikmaken van dezelfde beleids regels voor opnieuw proberen.
 
-Er zijn verschillende opties voor het aanpassen van het beleid voor automatische opnieuw proberen. Hieronder vallen de volgende landen/regio's:
+Er zijn verschillende opties voor het aanpassen van het beleid voor automatische opnieuw proberen:
 
 * **Maximum aantal pogingen**: Het maximum aantal nieuwe pogingen.
 * **Interval voor eerste poging**: De hoeveelheid tijd die moet worden gewacht voordat de eerste nieuwe poging wordt gedaan.
 * **Uitstel coëfficiënt**: De coëfficiënt die wordt gebruikt om de frequentie van de toename van uitstel te bepalen. De standaard waarde is 1.
 * **Maximum interval voor opnieuw proberen**: De maximale wacht tijd tussen nieuwe pogingen.
 * **Time-out voor opnieuw proberen**: De maximale hoeveelheid tijd die nodig is om nieuwe pogingen uit te voeren. Het standaard gedrag is om voor onbepaalde tijd opnieuw te proberen.
-* **Greep**: Een door de gebruiker gedefinieerde call back kan worden opgegeven, waarmee wordt bepaald of een functie aanroep opnieuw moet worden geprobeerd.
+* **Greep**: Een door de gebruiker gedefinieerde call back kan worden opgegeven om te bepalen of een functie opnieuw moet worden uitgevoerd.
 
 ## <a name="function-timeouts"></a>Time-outs van functies
 
@@ -296,6 +296,9 @@ module.exports = df.orchestrator(function*(context) {
 Als een Orchestrator-functie mislukt met een niet-verwerkte uitzonde ring, worden de details van de uitzonde ring vastgelegd en `Failed` wordt het exemplaar voltooid met een status.
 
 ## <a name="next-steps"></a>Volgende stappen
+
+> [!div class="nextstepaction"]
+> [Meer informatie over eeuwige-Orchestrations](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
 > [Meer informatie over het vaststellen van problemen](durable-functions-diagnostics.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 08/15/2019
-ms.openlocfilehash: 16845e5891117cc01bef5fae28cf4b36c0508651
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
-ms.translationtype: HT
+ms.openlocfilehash: 859e830483ac959f6f55ba27b5657779ac16d2fb
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899547"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934139"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Wat is Apache Hadoop in azure HDInsight?
 
@@ -30,6 +30,10 @@ Apache Hadoop MapReduce is een software raamwerk voor het schrijven van taken wa
 * **Mapper**: Gebruikt invoer gegevens, analyseert deze (meestal met filter-en sorteer bewerkingen) en verstuurt Tuples (sleutel-waardeparen)
 
 * **Reductier**: Verbruikt Tuples die worden verzonden door de Mapper en voert een samenvattings bewerking uit die een kleiner, gecombineerd resultaat van de toewijzings gegevens maakt
+
+In het volgende diagram ziet u een voor beeld van een basis aantal woorden MapReduce-taak:   
+
+ ![HDI.WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
 
 De uitvoer van deze taak is het aantal keer dat elk woord is opgetreden in de tekst.
 
@@ -55,5 +59,3 @@ Raadpleeg het volgende document voor voor beelden van het gebruik van Hadoop str
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Apache Hadoop-cluster maken in HDInsight](apache-hadoop-linux-create-cluster-get-started-portal.md)
-
-[image-hdi-wordcountdiagram]: ./media/hdinsight-use-mapreduce/HDI.WordCountDiagram.gif

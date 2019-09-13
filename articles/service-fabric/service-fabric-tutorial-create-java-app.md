@@ -14,18 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
-ms.custom: mvc, seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 56a68f852e9eee3303540d6ebd180608935c6135
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 57c9bd8caf6e8762ed07ac5e6f4ff16171569723
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172069"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900676"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Zelfstudie: Een toepassing maken met een Java API-front-end-service en een stateful back-end-service op Azure Service Fabric
 
-Deze zelfstudie is deel één van een serie. Wanneer u klaar bent, hebt u een stemtoepassing met een web-front-end in Java die stemresultaten opslaat in een stateful back-endservice in het cluster. Voor deze zelfstudie hebt u een werkende Mac OSX- of Linux-ontwikkelaarsmachine nodig. Als u de stemtoepassing niet handmatig wilt maken, kunt u [de broncode downloaden](https://github.com/Azure-Samples/service-fabric-java-quickstart) voor de voltooide toepassing en verdergaan met [Het voorbeeld van een stemtoepassing doorlopen](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application). Overweeg ook de [quickstart voor betrouwbare Java-services](service-fabric-quickstart-java-reliable-services.md) te volgen.
-
+Deze zelfstudie is deel één van een serie. Wanneer u klaar bent, hebt u een stem toepassing met een Java-web-front-end die stem resultaten opslaat in een stateful back-end-service op Azure Service Fabric. Voor deze zelfstudie hebt u een werkende Mac OSX- of Linux-ontwikkelaarsmachine nodig. Als u de stemtoepassing niet handmatig wilt maken, kunt u [de broncode downloaden](https://github.com/Azure-Samples/service-fabric-java-quickstart) voor de voltooide toepassing en verdergaan met [Het voorbeeld van een stemtoepassing doorlopen](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application). Denk ook na over de [Snelstartgids voor Java reliable Services.](service-fabric-quickstart-java-reliable-services.md).
 
 ![Lokale stem-app](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
 

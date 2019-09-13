@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 77cb18a858ca87acbb8182bf708e403010251365
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ec2a174c365e31520fe99ca0b505bbb62faad8c6
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191780"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883406"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Controleer de publicatie status van uw aanbieding voor commerciële Marketplace
 
@@ -99,6 +99,9 @@ Dit rapport bevat beschrijvingen van alle beleids regels die zijn mislukt, samen
 
 Tijdens de stap **voor het maken** van de preview-fase maken we een versie van uw aanbieding die alleen toegankelijk is voor de doel groep die u hebt opgegeven in het gedeelte preview van uw aanbieding.
 
+>[!Note]
+> Gebruik deze stap niet om personen buiten uw organisatie inzicht te geven in een aanbieding. Gebruik in plaats daarvan de optie voor de **privé-aanbieding** . Uw aanbieding is op dit moment niet volledig getest en gevalideerd en is niet gereed voor externe distributie.
+
 ## <a name="publisher-approval"></a>Goed keuring Uitgever
 
 In deze stap ontvangt u een e-mail met een aanvraag voor u om uw Preview-voor beeld te controleren en goed te keuren voordat u de laatste stap publiceert.
@@ -111,7 +114,7 @@ Als uw aanbieding al Live is en beschikbaar is voor het publiek in de Marketplac
 
 ### <a name="publish-offer-to-the-public"></a>Aanbieding publiceren naar het publiek
 
-Meld u aan bij Partner Center en open de aanbieding. U wordt omgeleid naar de overzichts pagina van de **aanbieding** . Boven aan deze pagina ziet u een optie voor **Live go**. Selecteer **Live** en nadat u hebt bevestigd, wordt de aanbieding naar het openbaar gepubliceerd. U ontvangt een e-mail melding wanneer de aanbieding Live is.
+Meld u aan bij Partner Center en open de aanbieding. U wordt omgeleid naar de **overzichts** pagina van de aanbieding. Boven aan deze pagina ziet u een optie voor **Live go**. Selecteer **Live** en nadat u hebt bevestigd, wordt de aanbieding naar het openbaar gepubliceerd. U ontvangt een e-mail melding wanneer de aanbieding Live is.
 
 ## <a name="publish"></a>Publiceren
 
