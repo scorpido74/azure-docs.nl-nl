@@ -307,7 +307,7 @@ Een bestand verzenden en u ziet dat de map. vscode automatisch wordt toegevoegd 
     | archives | Archief archieven die moeten worden gebruikt in deze sessie | lijst met teken reeksen |
     | queue | De naam van de wachtrij met GARENs die moet worden ingediend| Tekenreeks |
     | name | De naam van deze sessie | Tekenreeks |
-    | belangen | Eigenschappen van Spark-configuratie | Toewijzing van sleutel = val |
+    | conf | Eigenschappen van Spark-configuratie | Toewijzing van sleutel = val |
 
     Antwoord tekst   
     Het gemaakte batch-object.
