@@ -15,7 +15,7 @@
       href: quickstart-create-logic-apps-visual-studio-code.md
 - name: Zelfstudies
   items:
-    - name: Regelmatig verkeer controleren
+    - name: Op schema gebaseerde werkstromen maken
       href: tutorial-build-schedule-recurring-logic-app-workflow.md
     - name: Mailinglijstaanvragen beheren
       href: tutorial-process-mailing-list-subscriptions-workflow.md

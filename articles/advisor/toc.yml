@@ -22,6 +22,8 @@
       href: view-recommendations.md
     - name: Machtigingen en geblokkeerde acties
       href: permissions.md
+    - name: Waarschuwingen voor aanbevelingen configureren
+      href: advisor-alerts.md
 - name: Naslaginformatie
   items:
     - name: Security Center

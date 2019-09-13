@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 9d06cf334f08ba6ec9c47450d21d33733900ebe5
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 594367db838266a6d11f4fbf3b763b024f8e14d4
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356576"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882839"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Verificatie op basis van certificaten voor een Azure AD-identiteit om toegang te krijgen tot sleutels van een Azure Cosmos DB-account
 
@@ -38,7 +38,7 @@ In deze stap maakt u een voor beeld van een webtoepassing in uw Azure AD-account
 
    * **Naam** : Geef een naam op voor uw toepassing. Dit kan een wille keurige naam zijn, zoals ' sampleApp '.
    * **Ondersteunde account typen** : Kies **accounts in deze organisatie-Directory alleen (standaard directory),** zodat resources in uw huidige map toegang hebben tot deze toepassing. 
-   * Omleidings- **URL** : Kies toepassing van het type **Web** en geef een URL op waar uw toepassing wordt gehost. Dit kan een wille keurige URL zijn. Voor dit voor beeld kunt u een test-URL opgeven, `https://sampleApp.com` zoals in de richting van de app, zelfs als deze niet bestaat.
+   * **Omleidings-URL** : Kies toepassing van het type **Web** en geef een URL op waar uw toepassing wordt gehost. Dit kan een wille keurige URL zijn. Voor dit voor beeld kunt u een test-URL opgeven, `https://sampleApp.com` zoals in de richting van de app, zelfs als deze niet bestaat.
 
    ![Een voor beeld-webtoepassing registreren](./media/certificate-based-authentication/register-sample-web-app.png)
 
@@ -233,4 +233,4 @@ Net als bij de vorige sectie kunt u het activiteiten logboek van uw Azure Cosmos
 
 * [Azure Cosmos-sleutels beveiligen met Azure Key Vault](access-secrets-from-keyvault.md)
 
-* [Veiligheidskenmerken voor Azure Cosmos DB](cosmos-db-security-attributes.md)
+* [Beveiligings controles voor Azure Cosmos DB](cosmos-db-security-controls.md)

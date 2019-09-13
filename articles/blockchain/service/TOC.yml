@@ -13,6 +13,8 @@
       href: create-member-cli.md
     - name: Verbinding maken met transactieknooppunt
       items:
+        - name: VS Code gebruiken
+          href: connect-vscode.md
         - name: Met behulp van MetaMask
           href: connect-metamask.md
         - name: Met behulp van Geth

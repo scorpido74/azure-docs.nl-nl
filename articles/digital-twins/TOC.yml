@@ -19,7 +19,7 @@
           href: tutorial-facilities-udf.md
         - name: Meldingen versturen met Logic Apps
           href: tutorial-facilities-events.md
-        - name: Gebeurtenissen visualiseren met TSI
+        - name: Gebeurtenissen visualiseren met Time Series Insights
           href: tutorial-facilities-analyze.md
 - name: Concepten
   items:

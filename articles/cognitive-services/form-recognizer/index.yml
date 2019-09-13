@@ -1,78 +1,78 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Form Recognizer
+summary: Azure Form Recognizer is een Cognitive Service-dienst die gebruikmaakt van machine learning-technologie om sleutel-waardeparen en tabelgegevens uit formulierdocumenten te identificeren en te extraheren. Vervolgens voert het gestructureerde gegevens uit die ook de relaties uit het oorspronkelijke bestand omvatten. Leerprocessen zonder supervisie stellen het model in staat om de lay-out en relaties tussen velden en items te begrijpen zonder handmatige labeling van gegevens of intensieve codering en onderhoud.
 metadata:
-  title: API-documentatie - Form Recognizer
-  titleSuffix: Azure Cognitive Services
-  description: Informatie over hoe u Form Recognizer kunt gebruiken om op intelligente wijze sleutel-waardegegevens uit uw formulierdocumenten te extraheren.
-  services: cognitive-services
-  author: PatrickFarley
-  manager: nitinme
-  ms.service: cognitive-services
-  ms.subservice: forms-recognizer
-  ms.topic: landing-page
-  ms.date: 04/16/2019
-  ms.author: pafarley
-ms.custom: seodec18
-abstract:
+  title: Documentatie voor Form Recognizer
   description: Azure Form Recognizer is een Cognitive Service-dienst die gebruikmaakt van machine learning-technologie om sleutel-waardeparen en tabelgegevens uit formulierdocumenten te identificeren en te extraheren. Vervolgens voert het gestructureerde gegevens uit die ook de relaties uit het oorspronkelijke bestand omvatten. Leerprocessen zonder supervisie stellen het model in staat om de lay-out en relaties tussen velden en items te begrijpen zonder handmatige labeling van gegevens of intensieve codering en onderhoud.
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ../media/index/form-recognizer-landing-page-video.png
-      width: 250
-    title: 'Procesautomatisering op basis van AI met Form Recognizer (2:15)'
-    href: 'https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/form-recognizer/overview
-            html: <p>Meer informatie over Form Recognizer.</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Wat is Form Recognizer?
-          - href: /azure/cognitive-services/form-recognizer/form-recognizer-container-howto
-            html: <p>Meer informatie over het gebruik van de Form Recognizer-container voor het parseren van formulier- en tabelgegevens.</p>
-            image:
-              src: ../media/index/i_get-started.svg
-            title: Containers installeren en uitvoeren
-          - href: /azure/cognitive-services/form-recognizer/build-training-data-set
-            html: <p>Stel een gegevensset samen die geoptimaliseerd is om een aangepast model te trainen.</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Een set met trainingsgegevens samenstellen
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Een Form Recognizer-model trainen en gegevens uit formulieren extraheren met behulp van:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/logos/logo-curl.svg
-            text: cURL
-            href: quickstarts/curl-train-extract.md
-          - image:
-              src: ./media/logos/logo-python.svg
-            text: Python
-            href: quickstarts/python-train-extract.md
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: API's
-            html: '<p><a href="https://aka.ms/form-recognizer/api">Form Recognizer-API</a></p>'
-          - title: SDK's
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview">.NET</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure-CLI</a></p>'
+  services: cognitive-services
+  ms.service: cognitive-services
+  ms.subservice: form-recognizer
+  ms.topic: landing-page
+  author: PatrickFarley
+  ms.author: pafarley
+  ms.date: 09/05/2019
+  ms.openlocfilehash: 0c450a79c0dbdd19732488af927c3c29df263a23
+  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/12/2019
+  ms.locfileid: "70931832"
+landingContent:
+- title: Over Form Recognizer
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Form Recognizer?
+      url: overview.md
+  - linkListType: video
+    links:
+    - text: Procesautomatisering op basis van AI met Form Recognizer
+      url: https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer
+- title: Een aangepast model trainen en gegevens extraheren
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: De .NET SDK gebruiken
+      url: quickstarts/dotnet-sdk.md
+    - text: De REST API gebruiken (Python)
+      url: quickstarts/python-train-extract.md
+    - text: De REST API gebruiken (cURL)
+      url: quickstarts/curl-train-extract.md
+- title: Gegevens extraheren uit ontvangsten
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: De .NET SDK gebruiken
+      url: quickstarts/dotnet-sdk.md
+- title: Een set met trainingsgegevens samenstellen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een set met trainingsgegevens samenstellen
+      url: build-training-data-set.md
+- title: Containers gebruiken
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Containers installeren en uitvoeren
+      url: form-recognizer-container-howto.md
+  - linkListType: how-to-guide
+    links:
+    - text: Containers configureren
+      url: form-recognizer-container-configuration.md
+  - linkListType: deploy
+    links:
+    - text: Containerinstanties gebruiken
+      url: deploy-form-recognizer-on-container-instances.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Form Recognizer-API
+      url: https://aka.ms/form-recognizer/api
+    - text: .NET SDK
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure-opdrachtregelinterface (CLI)
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
