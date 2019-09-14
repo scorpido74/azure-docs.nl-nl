@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 3ff9cfbd312e672fb89afb4838ad9f8aa6574370
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d31eb9ccb5df9137bebb877cce169cf657113d30
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900005"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967769"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Een cluster van ML Services beheren in azure HDInsight
 
@@ -31,7 +31,7 @@ In dit artikel leert u hoe u een bestaand ML Services-cluster in azure HDInsight
 
 U kunt meerdere gelijktijdige gebruikers inschakelen voor een cluster van ML Services in HDInsight door meer gebruikers toe te voegen voor het Edge-knoop punt waarop de RStudio-Community-versie wordt uitgevoerd. Wanneer u een HDInsight-cluster maakt, moet u twee gebruikers opgeven, te weten een HTTP-gebruiker en een SSH-gebruiker:
 
-![Gelijktijdige gebruiker 1](./media/r-server-hdinsight-manage/concurrent-users-1.png)
+![Gelijktijdige gebruiker 1](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
 - **Gebruikersnaam voor aanmelding cluster**: een HTTP-gebruiker voor verificatie via de HDInsight-gateway die wordt gebruikt voor het beveiligen van de HDInsight-clusters die u hebt gemaakt. Deze HTTP-gebruiker wordt gebruikt voor toegang tot de Apache Ambari-gebruikers interface, Apache Hadoop garen gebruikers interface en andere GEBRUIKERSINTERFACE onderdelen.
 - **Secure Shell (SSH)-gebruikersnaam**: een SSH-gebruiker voor toegang tot het cluster via Secure Shell. Deze gebruiker is een gebruiker in het Linux-systeem voor alle hoofdknooppunten, werkknooppunten en Edge-knooppunten. U kunt Secure Shell gebruiken voor toegang tot alle knooppunten in een extern cluster.
@@ -66,7 +66,7 @@ Om een gebruiker toe te voegen aan het Edge-knooppunt, voert u de volgende opdra
 
 In de volgende scherm afbeelding ziet u de uitvoer.
 
-![Gelijktijdige gebruiker 3](./media/r-server-hdinsight-manage/concurrent-users-2.png)
+![Gelijktijdige gebruiker 3](./media/r-server-hdinsight-manage/hdi-concurrent-users2.png)
 
 Wanneer u wordt gevraagd naar ' Huidig Kerberos-wacht woord: ', drukt u op **Enter** om het te negeren. De `-m`-optie in de opdracht `useradd` geeft aan dat het systeem een basismap voor de gebruiker maakt die vereist is voor RStudio Community-versie.
 

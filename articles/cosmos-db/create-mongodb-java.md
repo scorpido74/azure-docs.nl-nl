@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.author: rimman
-ms.custom: seo-java-august2019
-ms.openlocfilehash: f30b1ef7a80e11c2cefd8689845fb7d450a1c167
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 7129819b6cec068420b0b265d878078622721812
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172337"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965393"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Quickstart: Een console-app maken met Java en de MongoDB-API in Azure Cosmos DB
 
@@ -27,7 +27,7 @@ ms.locfileid: "70172337"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel databases maken van documenten, sleutel/waarde-paren en grafieken en hier query's op uitvoeren. Deze databases genieten allemaal het voordeel van de globale distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Cosmos DB. 
+In deze Quick Start gebruikt u de Azure Cosmos DB-API voor Mongo DB en Java SDK voor het maken van een web-app voor een console. Met Azure Cosmos DB kunt u snel document-, sleutel-en grafiek databases maken en doorzoeken, die allemaal profiteren van de mogelijkheden van globale distributie en horizontale schaal op basis van Cosmos DB.
 
 In deze snelstart ziet u hoe u een Cosmos-account kunt maken met de [API van Azure Cosmos DB voor MongoDB](mongodb-introduction.md). U gaat vervolgens een console-app ontwikkelen en implementeren met behulp van het [MongoDB Java-stuurprogramma](https://docs.mongodb.com/ecosystem/drivers/java/). 
 

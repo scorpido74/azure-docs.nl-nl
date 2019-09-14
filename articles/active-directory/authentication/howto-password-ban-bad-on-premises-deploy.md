@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5949f57a87f324dc2e6651611574f4b66215c8a8
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 895d44ea7ab6bfebee44014ad4e96016a555c08e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389761"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959926"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wachtwoordbeveiliging in Azure AD implementeren
 
-Nu u begrijpt [hoe u Azure AD-wachtwoord beveiliging voor Windows Server Active Directory afdwingt](concept-password-ban-bad-on-premises.md), is de volgende stap het plannen en uitvoeren van uw implementatie.
+Nu u begrijpt [hoe u Azure AD-wachtwoord beveiliging voor Windows Server Active Directory](concept-password-ban-bad-on-premises.md)afdwingt, is de volgende stap het plannen en uitvoeren van uw implementatie.
 
 ## <a name="deployment-strategy"></a>Implementatie strategie
 
@@ -38,7 +38,7 @@ Het is ook mogelijk om uw bestaande Active Directory domein controller implement
 * [De replica promotie van de domein controller is mislukt vanwege een zwak wacht woord voor de herstel modus van de Directory Services](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
 * [De degradatie van de domein controller is mislukt vanwege een zwak lokaal beheerders wachtwoord](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
-Nadat de functie gedurende een redelijke periode in de controle modus is uitgevoerd, kunt u de configuratie van de *controle* wijzigen naar *afdwingen* om veiligere wacht woorden te vereisen. Het is een goed idee om te controleren of er momenteel gerichte bewaking is.
+Nadat de functie gedurende een redelijke periode in de controle modus is uitgevoerd, kunt u de configuratie van de *controle* wijzigen naar afdwingen om veiligere wacht woorden te vereisen. Het is een goed idee om te controleren of er momenteel gerichte bewaking is.
 
 ## <a name="deployment-requirements"></a>Implementatievereisten
 
@@ -65,6 +65,14 @@ Nadat de functie gedurende een redelijke periode in de controle modus is uitgevo
 * Een algemeen beheerders account voor het registreren van de proxy service voor wachtwoord beveiliging en forest met Azure AD.
 * Een account met Active Directory domein beheerders rechten in het forest-hoofd domein om het Windows Server Active Directory forest te registreren bij Azure AD.
 * Een Active Directory domein waarop de DC-Agent service software wordt uitgevoerd, moet Distributed File System replicatie (DFSR) voor SYSVOL-replicatie gebruiken.
+
+  Als het domein niet al gebruikmaakt van DFSR, moet u het migreren naar DFSR voordat u Azure AD-wachtwoord beveiliging installeert. Zie de volgende koppeling voor meer informatie:
+
+  [Migratie handleiding voor SYSVOL-replicatie: FRS naar DSF-replicatie](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+
+  > [!WARNING]
+  > De Azure AD-agent software voor wachtwoord beveiliging wordt momenteel geïnstalleerd op domein controllers in domeinen die nog steeds gebruikmaken van FRS (de voorafgaande technologie naar DFSR) voor SYSVOL-replicatie, maar de software werkt niet goed in deze omgeving. Bijkomende negatieve neven effecten omvatten afzonderlijke bestanden die niet worden gerepliceerd, en SYSVOL-herstel procedures die worden uitgevoerd, maar die niet op de achtergrond worden gerepliceerd. U moet uw domein zo snel mogelijk migreren naar het gebruik van DFSR en de implementatie van Azure AD-wachtwoord beveiliging blok keren. Toekomstige versies van de software worden automatisch uitgeschakeld wanneer ze worden uitgevoerd in een domein dat nog steeds FRS gebruikt.
+
 * De Key Distribution-service moet zijn ingeschakeld op alle domein controllers in het domein waarop Windows Server 2012 wordt uitgevoerd. Deze service wordt standaard ingeschakeld via hand matige trigger start.
 
 ## <a name="single-forest-deployment"></a>Implementatie met één forest

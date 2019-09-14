@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1eb5600a9793963a722967e1bbe702cf3b2f670e
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 8d882b34bc4f057035a16b7916249cfe8f0b8d0b
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147116"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983436"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Veelgestelde vragen en bekende problemen met beheerde identiteiten voor Azure-resources
 
@@ -32,122 +32,122 @@ ms.locfileid: "67147116"
 > [!NOTE]
 > Beheerde identiteiten voor Azure-resources is de nieuwe naam voor de service die eerder de naam Managed Service Identity (MSI) had.
 
-### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Werkt beheerde identiteiten voor Azure-resources met Azure Cloud Services?
+### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Werken beheerde identiteiten voor Azure-resources met Azure Cloud Services?
 
-Nee, er zijn geen plannen voor de ondersteuning van beheerde identiteiten voor Azure-resources in Azure Cloud Services.
+Nee, er zijn geen plannen voor het ondersteunen van beheerde identiteiten voor Azure-resources in azure Cloud Services.
 
-### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Werkt beheerde identiteiten voor Azure-resources met de Active Directory Authentication Library (ADAL) of de Microsoft Authentication Library (MSAL)?
+### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Werken beheerde identiteiten voor Azure-resources met de Active Directory Authentication Library (ADAL) of de micro soft Authentication Library (MSAL)?
 
-Nee, beheerde identiteiten voor Azure-resources nog niet is geïntegreerd met ADAL of MSAL. Zie voor meer informatie over het ophalen van een token voor beheerde identiteiten voor Azure-resources met behulp van de REST-eindpunt, [over het gebruik van beheerde identiteiten voor Azure-resources op een Azure-VM aan een toegangstoken verkrijgen](how-to-use-vm-token.md).
+Nee, beheerde identiteiten voor Azure-resources zijn nog niet geïntegreerd met ADAL of MSAL. Ga voor meer informatie over het verkrijgen van een token voor beheerde identiteiten voor Azure-resources met het REST-eind punt naar [Managed Identities voor Azure resources op een Azure VM gebruiken om een toegangs token te verkrijgen](how-to-use-vm-token.md).
 
-### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>Wat is de beveiligingsgrens van beheerde identiteiten voor Azure-resources?
+### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>Wat is de beveiligings grens van beheerde identiteiten voor Azure-resources?
 
-De beveiligingsgrens van de identiteit is de resource waaraan deze is gekoppeld. Bijvoorbeeld, de beveiligingsgrens voor een virtuele Machine met beheerde identiteiten voor Azure-resources ingeschakeld, wordt de virtuele Machine. Een code die wordt uitgevoerd op deze VM is kan aanroepen van de beheerde identiteiten voor Azure-resources eindpunt en de aanvraag-tokens. Het is de vergelijkbare ervaring met andere resources die ondersteuning bieden voor beheerde identiteiten voor Azure-resources.
+De beveiligings grens van de identiteit is de resource waaraan deze is gekoppeld. Zo is de beveiligings grens voor een virtuele machine met beheerde identiteiten voor Azure-resources ingeschakeld, de virtuele machine. Alle code die op die virtuele machine wordt uitgevoerd, kan de beheerde identiteiten voor het eind punt van Azure-resources aanroepen en tokens aanvragen. Het is een vergelijk bare ervaring met andere resources die beheerde identiteiten voor Azure-resources ondersteunen.
 
-### <a name="what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request"></a>Welke identiteit wordt IMDS standaard als de identiteit niet opgeeft in de aanvraag?
+### <a name="what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request"></a>Met welke identiteit wordt de IMDS standaard ingesteld als de identiteit in de aanvraag niet wordt opgegeven?
 
-- Als systeem toegewezen beheerde identiteit is ingeschakeld en er is geen identiteit in de aanvraag is opgegeven, wordt het systeem toegewezen identiteit beheerde IMDS standaard.
-- Als het systeem toegewezen beheerde identiteit niet is ingeschakeld, en slechts één gebruiker toegewezen beheerde identiteit bestaat, standaard IMDS die door één gebruiker toegewezen beheerde identiteit. 
-- Als systeem toegewezen beheerde identiteit is niet ingeschakeld en meerdere gebruiker beheerde identiteiten toegewezen bestaat, is het vereist dat u vervolgens een beheerde identiteit op te geven in de aanvraag.
+- Als door het systeem toegewezen beheerde identiteit is ingeschakeld en er geen identiteit is opgegeven in de aanvraag, wordt IMDS standaard ingesteld op de door het systeem toegewezen beheerde identiteit.
+- Als door het systeem toegewezen beheerde identiteit niet is ingeschakeld en er slechts één door de gebruiker toegewezen beheerde identiteit bestaat, wordt IMDS standaard ingesteld op de door de gebruiker toegewezen beheerde identiteit. 
+- Als door het systeem toegewezen beheerde identiteit niet is ingeschakeld en er meerdere door de gebruiker toegewezen beheerde identiteiten bestaan, is het opgeven van een beheerde identiteit in de aanvraag vereist.
 
-### <a name="should-i-use-the-managed-identities-for-azure-resources-imds-endpoint-or-the-vm-extension-endpoint"></a>Moet ik de beheerde identiteiten voor Azure-resources IMDS eindpunt of het eindpunt van de VM-extensie gebruiken?
+### <a name="should-i-use-the-managed-identities-for-azure-resources-imds-endpoint-or-the-vm-extension-endpoint"></a>Moet ik de beheerde identiteiten voor Azure resources IMDS-eind punt of het eind punt van de VM-extensie gebruiken?
 
-Bij gebruik van beheerde identiteiten voor Azure-resources met virtuele machines, wordt u aangeraden het IMDS-eindpunt. De Azure Instance Metadata Service is een toegankelijk is voor alle IaaS-VM's die zijn gemaakt via de Azure Resource Manager REST-eindpunt. 
+Wanneer u beheerde identiteiten voor Azure-resources met Vm's gebruikt, raden we u aan het IMDS-eind punt te gebruiken. De Azure-Instance Metadata Service is een REST-eind punt dat toegankelijk is voor alle virtuele IaaS-machines die via de Azure Resource Manager zijn gemaakt. 
 
-Enkele van de voordelen van het gebruik van beheerde identiteiten voor Azure-resources via IMDS zijn:
-- Alle besturingssystemen van Azure IaaS ondersteund kunt beheerde identiteiten gebruiken voor Azure-resources via IMDS.
-- Niet meer hoeft te installeren van een uitbreiding op de virtuele machine om in te schakelen van beheerde identiteiten voor Azure-resources. 
-- De certificaten die op beheerde identiteiten voor Azure-resources zijn niet meer aanwezig zijn in de virtuele machine.
-- Het eindpunt IMDS is een bekende niet-routeerbare IP-adres, alleen beschikbaar vanuit de virtuele machine.
-- 1000 toegewezen gebruiker beheerde identiteiten kunnen worden toegewezen aan een enkele virtuele machine. 
+Enkele van de voor delen van het gebruik van beheerde identiteiten voor Azure-bronnen via IMDS zijn:
+- Alle door Azure IaaS ondersteunde besturings systemen kunnen beheerde identiteiten gebruiken voor Azure-resources via IMDS.
+- U hoeft geen uitbrei ding meer op uw virtuele machine te installeren om beheerde identiteiten voor Azure-resources in te scha kelen. 
+- De certificaten die worden gebruikt door beheerde identiteiten voor Azure-resources, zijn niet meer aanwezig in de VM.
+- Het IMDS-eind punt is een bekend, niet-routeerbaar IP-adres dat alleen beschikbaar is vanuit de virtuele machine.
+- 1000 door de gebruiker toegewezen beheerde identiteiten kunnen worden toegewezen aan één virtuele machine. 
 
-De beheerde identiteiten voor VM-extensie voor Azure-resources is nog steeds beschikbaar. Er zijn echter niet meer nieuwe functionaliteit in deze gewerkt. Het is raadzaam om voor het gebruik van het eindpunt IMDS overschakelen. 
+De beheerde identiteiten voor de VM-extensie van Azure-resources zijn nog steeds beschikbaar. We ontwikkelen echter geen nieuwe functionaliteit meer. U kunt het beste overschakelen op het gebruik van het IMDS-eind punt. 
 
-Enkele van de beperkingen van het gebruik van de VM-extensie-eindpunt zijn:
-- Beperkte ondersteuning voor Linux-distributies: Stable van CoreOS, CentOS 7.1, 7.2 van Red Hat, Ubuntu 15.04, Ubuntu 16.04
-- Alleen 32 gebruiker toegewezen beheerde identiteiten kunnen worden toegewezen aan de virtuele machine.
+Enkele van de beperkingen van het gebruik van het eind punt van de VM-extensie zijn:
+- Beperkte ondersteuning voor Linux-distributies: CoreOS stabiel, CentOS 7,1, Red Hat 7,2, Ubuntu 15,04, Ubuntu 16,04
+- Er kunnen slechts 32 door de gebruiker toegewezen beheerde identiteiten aan de virtuele machine worden toegewezen.
 
 
-Opmerking: De beheerde identiteiten voor VM-extensie voor Azure-resources worden ondersteuning vervalt over januari 2019. 
+Opmerking: De beheerde identiteiten voor de VM-extensie van Azure-resources zijn in januari 2019 niet meer in aanmerking komen. 
 
-Zie voor meer informatie over Azure Instance Metadata Service [IMDS-documentatie](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+Zie [IMDS-documentatie](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service) voor meer informatie over Azure instance metadata service
 
-### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>Beheerde identiteiten worden opnieuw gemaakt automatisch als ik een abonnement naar een andere directory verplaatst?
+### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>Worden beheerde identiteiten automatisch opnieuw gemaakt als ik een abonnement naar een andere map Verplaats?
 
-Nee. Als u een abonnement naar een andere map verplaatst, moet u handmatig opnieuw te maken en Azure RBAC-roltoewijzingen opnieuw verlenen.
-- Voor het systeem beheerde identiteiten toegewezen: uitschakelen en weer inschakelen. 
-- Voor de gebruiker toegewezen beheerde identiteiten: verwijderen, opnieuw te maken en ze opnieuw koppelen aan de benodigde resources (bijvoorbeeld virtuele machines)
+Nee. Als u een abonnement naar een andere map verplaatst, moet u deze hand matig opnieuw maken en de toewijzingen van Azure RBAC-rollen opnieuw verlenen.
+- Voor door het systeem toegewezen beheerde identiteiten: uitschakelen en opnieuw inschakelen. 
+- Voor door de gebruiker toegewezen beheerde identiteiten: verwijderen, opnieuw maken en opnieuw koppelen aan de benodigde resources (bijvoorbeeld virtuele machines)
 
-### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>Kan ik een beheerde identiteit gebruiken voor toegang tot een bron in een andere directory/tenant?
+### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>Kan ik een beheerde identiteit gebruiken om toegang te krijgen tot een resource in een andere Directory/Tenant?
 
-Nee. Beheerde identiteiten bieden momenteel geen ondersteuning voor scenario's voor cross-directory. 
+Nee. Beheerde identiteiten bieden momenteel geen ondersteuning voor scenario's met meerdere mappen. 
 
-### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Welke Azure RBAC-machtigingen zijn vereist voor het beheerde identiteit van een resource? 
+### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Welke Azure RBAC-machtigingen zijn vereist voor de beheerde identiteit van een resource? 
 
-- Het systeem toegewezen beheerde identiteit: U moet machtigingen voor schrijven over de resource. Voorbeeld kunt zien, voor virtuele machines moet u Microsoft.Compute/virtualMachines/write. Deze actie is opgenomen in specifieke ingebouwde rollen, zoals bron [Inzender voor virtuele machines](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
-- De gebruiker toegewezen beheerde identiteit: U moet machtigingen voor schrijven over de resource. Bijvoorbeeld, moet u voor virtuele machines Microsoft.Compute/virtualMachines/write. Naast [beheerde identiteit Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) roltoewijzing op de beheerde identiteit.
+- Door het systeem toegewezen beheerde identiteit: U hebt schrijf machtigingen nodig voor de resource. Voor virtuele machines hebt u bijvoorbeeld micro soft. Compute/informatie/write nodig. Deze actie is opgenomen in resource-specifieke ingebouwde rollen als [Inzender voor virtuele machines](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
+- Door de gebruiker toegewezen beheerde identiteit: U hebt schrijf machtigingen nodig voor de resource. Voor virtuele machines hebt u bijvoorbeeld micro soft. Compute/informatie/write nodig. Naast de roltoewijzing voor [beheerde identiteits operatoren](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) via de beheerde identiteit.
 
-### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Hoe start u de beheerde identiteit voor Azure-resources-uitbreiding opnieuw?
-Op Windows en bepaalde versies van Linux, als de extensie wordt gestopt, kan de volgende cmdlet worden gebruikt om handmatig opnieuw starten:
+### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Hoe start u de beheerde identiteiten voor Azure resources extension opnieuw?
+In Windows en bepaalde versies van Linux, als de extensie stopt, kan de volgende cmdlet worden gebruikt om deze hand matig opnieuw te starten:
 
 ```powershell
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 
 Waar: 
-- Naam van de uitbreiding en het type voor Windows is: ManagedIdentityExtensionForWindows
-- Naam van de uitbreiding en het type voor Linux is: ManagedIdentityExtensionForLinux
+- De naam en het type van de extensie voor Windows is: ManagedIdentityExtensionForWindows
+- De naam en het type van de extensie voor Linux is: ManagedIdentityExtensionForLinux
 
 ## <a name="known-issues"></a>Bekende problemen
 
-### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>"Automatiseringsscript" is mislukt bij het schema exporteren voor beheerde identiteiten voor uitbreiding van de Azure-resources
+### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>Automatiserings script mislukt bij het proberen van schema export voor beheerde identiteiten voor Azure-bronnen uitbreiding
 
-Als beheerde identiteiten voor Azure-resources op een virtuele machine is ingeschakeld, wordt de volgende fout weergegeven bij het gebruik van de functie 'Automatiseringsscript' voor de virtuele machine of de resourcegroep:
+Wanneer beheerde identiteiten voor Azure-resources zijn ingeschakeld op een virtuele machine, wordt de volgende fout weer gegeven wanneer u probeert de functie Automation script te gebruiken voor de virtuele machine of de bijbehorende resource groep:
 
-![Beheerde identiteiten voor een Azure-resources automatiseringsscript exportfout](./media/msi-known-issues/automation-script-export-error.png)
+![Export fout van beheerde identiteiten voor het automatiserings script van Azure-resources](./media/msi-known-issues/automation-script-export-error.png)
 
-De beheerde identiteiten voor VM-extensie (gepland voor de afschaffing in januari 2019) momenteel geen biedt Azure-resources bieden ondersteuning voor het bijbehorende schema exporteren naar een resourcegroepsjabloon. Als gevolg hiervan weergegeven de gegenereerde sjabloon niet. configuratieparameters voor het inschakelen van beheerde identiteiten voor Azure-resources op de resource. Deze secties kunnen handmatig worden toegevoegd aan de hand van de voorbeelden in [configureren beheerde identiteiten voor een Azure-resources op een Azure-VM met behulp van een sjablonen](qs-configure-template-windows-vm.md).
+De beheerde identiteiten voor de VM-extensie van Azure resources (gepland voor afschaffing in januari 2019) biedt momenteel geen ondersteuning voor de mogelijkheid om het schema te exporteren naar een sjabloon voor een resource groep. Als gevolg hiervan worden door de gegenereerde sjabloon geen configuratie parameters weer gegeven voor het inschakelen van beheerde identiteiten voor Azure-resources op de resource. Deze secties kunnen hand matig worden toegevoegd met behulp van de voor beelden in [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met een sjabloon](qs-configure-template-windows-vm.md).
 
-Wanneer de schema-export-functionaliteit beschikbaar is voor de beheerde identiteiten voor VM-extensie van een Azure-resources (gepland voor de afschaffing in januari 2019), wordt deze weergegeven in [exporteren van resourcegroepen met VM-extensies](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
+Wanneer de functie voor het exporteren van het schema beschikbaar wordt voor de VM-extensie Managed Identities voor Azure resources (gepland voor afschaffing in januari 2019), wordt deze weer gegeven bij het [exporteren van resource groepen die VM-extensies bevatten](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
 
-### <a name="vm-fails-to-start-after-being-moved-from-resource-group-or-subscription"></a>Virtuele machine niet kan worden gestart na worden verplaatst van resourcegroep of abonnement
+### <a name="vm-fails-to-start-after-being-moved-from-resource-group-or-subscription"></a>De virtuele machine kan niet worden gestart na het verplaatsen van de resource groep of het abonnement
 
-Als u een virtuele machine in de status running doorbrengt verplaatst, blijft tijdens het verplaatsen uitgevoerd. Echter na de verplaatsing mislukt als de virtuele machine wordt gestopt en opnieuw opgestart, dit om te starten. Dit probleem treedt op omdat de virtuele machine niet voor de verwijzing naar de beheerde identiteit voor de id van de Azure-resources bijwerken is en wijst u deze in de oude resourcegroep wordt voortgezet.
+Als u een virtuele machine met de status actief verplaatst, blijft deze tijdens de verplaatsing actief. Als de virtuele machine eenmaal is gestopt en opnieuw wordt gestart, kan deze echter niet worden gestart. Dit probleem doet zich voor omdat de virtuele machine de verwijzing naar de beheerde identiteiten voor de Azure-resources-identiteit niet bijwerkt en blijft verwijzen naar deze in de oude resource groep.
 
 **Tijdelijke oplossing** 
  
-Trigger voor een update voor de virtuele machine, zodat de juiste waarden voor de beheerde identiteit voor Azure-resources kunnen worden opgehaald. U kunt de wijziging van een VM-eigenschap voor het bijwerken van de verwijzing naar de beheerde identiteit voor de id van de Azure-resources kunt doen. U kunt bijvoorbeeld een nieuwe tagwaarde instellen op de virtuele machine met de volgende opdracht:
+Activeer een update op de VM zodat deze de juiste waarden kan ophalen voor de beheerde identiteiten voor Azure-resources. U kunt een wijziging van de VM-eigenschap uitvoeren om de verwijzing naar de beheerde identiteiten voor de Azure-resources-identiteit bij te werken. U kunt bijvoorbeeld een nieuwe label waarde op de VM instellen met de volgende opdracht:
 
 ```azurecli-interactive
  az  vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
 ```
  
-Met deze opdracht wordt een nieuwe tag 'fixVM' met een waarde van 1 ingesteld op de virtuele machine. 
+Met deze opdracht wordt een nieuwe tag ' fixVM ' ingesteld met de waarde 1 in de virtuele machine. 
  
-Deze eigenschap instelt, de virtuele machine wordt bijgewerkt met de juiste beheerde identiteit voor Azure-resources resource-URI en vervolgens moet u de virtuele machine gestart. 
+Door deze eigenschap in te stellen, wordt de VM bijgewerkt met de juiste beheerde identiteiten voor de resource-URI van Azure resources. vervolgens moet u de virtuele machine kunnen starten. 
  
-Nadat de virtuele machine is gestart, kan de tag worden verwijderd met behulp van de volgende opdracht:
+Zodra de VM is gestart, kan de tag worden verwijderd met behulp van de volgende opdracht:
 
 ```azurecli-interactive
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-### <a name="vm-extension-provisioning-fails"></a>VM-extensie mislukt inrichten
+### <a name="vm-extension-provisioning-fails"></a>Het inrichten van de VM-extensie mislukt
 
-Inrichting van de VM-extensie kan mislukken vanwege DNS-lookup-fouten. Start de VM opnieuw op en probeer het opnieuw.
+Het inrichten van de VM-extensie kan mislukken vanwege fouten in de DNS-zoek actie. Start de virtuele machine opnieuw op en probeer het opnieuw.
  
 > [!NOTE]
-> De VM-extensie is gepland voor de afschaffing van januari 2019. Het is raadzaam om dat u aan met behulp van het eindpunt IMDS verplaatsen.
+> De VM-extensie wordt gepland voor afschaffing op 2019 januari. U wordt aangeraden over te stappen naar het IMDS-eind punt te gebruiken.
 
-### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Een abonnement wordt overgedragen tussen Azure AD-mappen
+### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Een abonnement verplaatsen tussen Azure AD-directory's
 
-Beheerde identiteiten doen niet bijgewerkt wanneer u een abonnement is verplaatst/overgedragen naar een andere map. Als gevolg hiervan is een bestaand systeem toegewezen of de gebruiker toegewezen identiteiten op beheerde verbroken. 
+Beheerde identiteiten worden niet bijgewerkt wanneer een abonnement wordt verplaatst of overgedragen naar een andere map. Als gevolg hiervan worden bestaande door het systeem toegewezen of door de gebruiker toegewezen beheerde identiteiten verbroken. 
 
 Tijdelijke oplossing voor beheerde identiteiten in een abonnement dat is verplaatst naar een andere map:
 
- - Voor het systeem beheerde identiteiten toegewezen: uitschakelen en weer inschakelen. 
- - Voor de gebruiker toegewezen beheerde identiteiten: verwijderen, opnieuw te maken en ze opnieuw koppelen aan de benodigde resources (bijvoorbeeld virtuele machines)
+ - Voor door het systeem toegewezen beheerde identiteiten: uitschakelen en opnieuw inschakelen. 
+ - Voor door de gebruiker toegewezen beheerde identiteiten: verwijderen, opnieuw maken en opnieuw koppelen aan de benodigde resources (bijvoorbeeld virtuele machines)
 
-### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Een gebruiker toegewezen beheerde identiteit verplaatsen naar een andere resourcegroep /-abonnement
+### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Een door de gebruiker toegewezen beheerde identiteit verplaatsen naar een andere resource groep of een ander abonnement
 
-Een gebruiker toegewezen beheerde identiteit verplaatsen naar een andere resourcegroep zorgt ervoor dat de identiteit te kraken. Als gevolg hiervan zich resources (bijvoorbeeld VM's) met behulp van de identiteit die niet op aanvragen van tokens voor het. 
+Als een door de gebruiker toegewezen beheerde identiteit wordt verplaatst naar een andere resource groep, wordt de identiteit verbroken. Als gevolg hiervan kunnen bronnen (bijvoorbeeld virtuele machines) die met die identiteit worden gebruikt, geen tokens meer aanvragen. 

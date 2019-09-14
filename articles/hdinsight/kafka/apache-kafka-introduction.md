@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/13/2019
-ms.openlocfilehash: e500f08de414a5907a0f1aeeca90d8c2090adcdd
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 7cf83af52d5bedee5b4d57ee1b4dda2fb34d1b3f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137063"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960096"
 ---
-# <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Wat is Apache Kafka in Azure HDInsight
+# <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Wat is Apache Kafka in azure HDInsight?
 
 [Apache Kafka](https://kafka.apache.org) is een open-source gedistribueerd streamingplatform dat kan worden gebruikt voor het bouwen van pijplijnen en toepassingen voor realtime streaming van gegevens. Kafka biedt ook berichtenbrokerfunctionaliteit vergelijkbaar met een berichtenwachtrij, waarmee u benoemde gegevensstromen kunt publiceren en zich erop kunt abonneren. 
 
@@ -45,7 +45,7 @@ Dit zijn specifieke kenmerken van Kafka in HDInsight:
 
 Het volgende diagram toont een typische Kafka-configuratie die gebruikmaakt van de consumentgroepen, partitionering en replicatie om het parallel lezen van gebeurtenissen met fouttolerantie mogelijk te maken:
 
-![Diagram van Kafka-clusterconfiguratie](./media/apache-kafka-introduction/kafka-cluster.png)
+![Diagram van Kafka-clusterconfiguratie](./media/apache-kafka-introduction/kafka-cluster-diagram.png)
 
 Apache ZooKeeper beheert de status van het Kafka-cluster. Zookeeper is gebouwd voor gelijktijdige, robuuste transacties met een lage latentie. 
 

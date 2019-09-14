@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 93d5b3de47ec0b3c0494589da0baf87f91a0233a
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 642b21624ce3ffc993d5f29a413845044d703fd7
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390262"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984272"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Benoemde entiteits herkenning gebruiken in Text Analytics
 
@@ -47,7 +47,6 @@ Voor het gebruik van entiteits koppeling in verschillende talen moet u in elke t
 | Hoeveelheid      | Aantal        | "6", "six"     |
 | Hoeveelheid      | Percentage    | 50%, vijftig procent|
 | Hoeveelheid      | Rangtelwoord       | 2e, tweede     |
-| Hoeveelheid      | Nummerbereik   | 4 tot 8     |
 | Hoeveelheid      | Leeftijd           | "90 dag oud", "30 jaar oud"    |
 | Hoeveelheid      | Currency      | $ 10,99     |
 | Hoeveelheid      | Dimensie     | 10 mijl, 40 cm     |
@@ -59,7 +58,6 @@ Voor het gebruik van entiteits koppeling in verschillende talen moet u in elke t
 | DateTime      | TimeRange     | 18.00 uur tot 19.00 uur     |
 | DateTime      | Duration      | 1 minuut en 45 seconden   |
 | DateTime      | Set           | elke dinsdag     |
-| DateTime      | Tijdzone      |    |
 | URL           | N.V.T.\*         | "https:\//www.bing.com"    |
 | Email         | N.V.T.\*         | "support@contoso.com" |
 

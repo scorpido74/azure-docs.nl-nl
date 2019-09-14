@@ -3,20 +3,20 @@ title: 'Zelfstudie: Translator Speech-API C#'
 titleSuffix: Azure Cognitive Services
 description: Gebruik de Translator Speech-API om tekst in realtime te vertalen.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: tutorial
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a3853dd810182948e12b578c33b8cb91bef4b1cf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 669322aefb152729cc120abc0d7a52ce9d1151da
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445587"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965287"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>Zelfstudie: Translator Speech-toepassing in C#
 
@@ -34,13 +34,13 @@ Een Visual Studio-oplossingsbestand voor deze toepassing is [beschikbaar in GitH
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor deze zelfstudie moet u een versie van Visual Studio-2019, met inbegrip van de Community-versie.
+Voor deze zelf studie hebt u een editie van Visual Studio 2019, inclusief de Community Edition, nodig.
 
 Met de Visual Studio-oplossing wordt ook een installatieprogramma voor de toepassing gebouwd. U hebt de [WiX Toolset](http://wixtoolset.org/) en de [WiX Toolset Visual Studio-extensie](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension) nodig om deze functionaliteit te ondersteunen.
 
 U hebt ook een abonnementssleutel nodig voor de Translator Speech-service. Deze kunt u verkrijgen via het Microsoft Azure-dashboard. Er is een gratis prijslaag beschikbaar waarmee u gratis maximaal 10 uur spraak per maand kunt vertalen. Deze laag is voldoende voor deze zelfstudie.
 
-De derde partij [JSON.NET bibliotheek](https://www.newtonsoft.com/json) (van Newtonsoft) is ook vereist. Deze assembly wordt automatisch geïnstalleerd met NuGet als beide selectievakjes voor Pakket herstellen zijn ingeschakeld in de Visual Studio-opties.
+De [JSON.net-bibliotheek](https://www.newtonsoft.com/json) van derden (van Newton Soft) is ook vereist. Deze assembly wordt automatisch geïnstalleerd met NuGet als beide selectievakjes voor Pakket herstellen zijn ingeschakeld in de Visual Studio-opties.
 
 ## <a name="trying-the-translation-app"></a>De vertaal-app uitproberen
 

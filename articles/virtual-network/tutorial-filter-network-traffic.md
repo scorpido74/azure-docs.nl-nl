@@ -1,7 +1,7 @@
 ---
 title: Netwerkverkeer filteren - zelfstudie - Azure Portal
 titlesuffix: Azure Virtual Network
-description: In deze zelfstudie leert u hoe u netwerkverkeer filtert naar een subnet, met een netwerkbeveiligingsgroep met behulp van de Azure portal.
+description: In deze zelf studie leert u hoe u netwerk verkeer kunt filteren op een subnet, met een netwerk beveiligings groep, met behulp van de Azure Portal.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 4097d4fc46aac88cd44d21a4cdcf0d7d5093feea
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2d0519abdf25a6fc8373f9d1a3a7232a9783d316
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242724"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984910"
 ---
-# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Zelfstudie: Netwerkverkeer filteren met een netwerkbeveiligingsgroep met behulp van de Azure portal
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Zelfstudie: Netwerk verkeer filteren met een netwerk beveiligings groep met behulp van de Azure Portal
 
 U kunt het netwerkverkeer inkomend in en uitgaand naar een subnet van een virtueel netwerk filteren met een netwerkbeveiligingsgroep. Netwerkbeveiligingsgroepen bevatten beveiligingsregels die netwerkverkeer filteren op IP-adres, poort en protocol. Beveiligingsregels worden toegepast op resources die zijn geïmplementeerd in een subnet. In deze zelfstudie leert u het volgende:
 
@@ -51,7 +51,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
     | Adresruimte           | 10.0.0.0/16                                        |
     | Abonnement            | Selecteer uw abonnement.                          |
     | Resourcegroep          | Selecteer **Nieuwe maken** en voer *myResourceGroup* in. |
-    | Locatie                | Selecteer **US - oost**.                                |
+    | Location                | Selecteer **US - oost**.                                |
     | Subnet - naam            | mySubnet                                           |
     | Subnet - adresbereik  | 10.0.0.0/24                                        |
 
@@ -66,18 +66,18 @@ Met een toepassingsbeveiligingsgroep kunt u servers met vergelijkbare functies g
     | Instelling        | Waarde                                                         |
     | ---            | ---                                                           |
     | Name           | myAsgWebServers                                               |
-    | Abonnement   | Selecteer uw abonnement.                                     |
-    | Resourcegroep | Selecteer **Bestaande gebruiken** en selecteer vervolgens **myResourceGroup**. |
-    | Locatie       | US - oost                                                       |
+    | Subscription   | Selecteer uw abonnement.                                     |
+    | Resource group | Selecteer **Bestaande gebruiken** en selecteer vervolgens **myResourceGroup**. |
+    | Location       | East US                                                       |
 
 4. Voer stap 3 opnieuw uit en geef hierbij de volgende waarden op:
 
     | Instelling        | Waarde                                                         |
     | ---            | ---                                                           |
     | Name           | myAsgMgmtServers                                              |
-    | Abonnement   | Selecteer uw abonnement.                                     |
-    | Resourcegroep | Selecteer **Bestaande gebruiken** en selecteer vervolgens **myResourceGroup**. |
-    | Locatie       | US - oost                                                       |
+    | Subscription   | Selecteer uw abonnement.                                     |
+    | Resource group | Selecteer **Bestaande gebruiken** en selecteer vervolgens **myResourceGroup**. |
+    | Location       | East US                                                       |
 
 ## <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
 
@@ -88,9 +88,9 @@ Met een toepassingsbeveiligingsgroep kunt u servers met vergelijkbare functies g
     |Instelling|Waarde|
     |---|---|
     |Name|myNsg|
-    |Abonnement| Selecteer uw abonnement.|
+    |Subscription| Selecteer uw abonnement.|
     |Resourcegroep | Selecteer **Bestaande gebruiken** en selecteer *myResourceGroup*.|
-    |Locatie|US - oost|
+    |Location|East US|
 
 ## <a name="associate-network-security-group-to-subnet"></a>Netwerkbeveiligingsgroep koppelen aan subnet
 
@@ -123,7 +123,7 @@ Met een toepassingsbeveiligingsgroep kunt u servers met vergelijkbare functies g
     | Bestemming             | Selecteer **Toepassingsbeveiligingsgroep** en selecteer vervolgens **myAsgMgmtServers** als **Toepassingsbeveiligingsgroep**. |
     | Poortbereiken van doel | Voer 3389 in                                                                                                      |
     | Protocol                | Selecteer TCP                                                                                                      |
-    | Prioriteit                | Voer 110 in                                                                                                       |
+    | Priority                | Voer 110 in                                                                                                       |
     | Name                    | Allow-RDP-All                                                                                                   |
 
     In deze zelfstudie wordt RDP (poort 3389) voor internet beschikbaar gemaakt voor de VM die is toegewezen aan de toepassingsbeveiligingsgroep *myAsgMgmtServers*. Voor productieomgevingen wordt u aanbevolen in plaats van poort 3389 voor internet te gebruiken, via een VPN of persoonlijke netwerkverbinding verbinding te maken met Azure-resources die u wilt beheren.
@@ -140,27 +140,29 @@ Maak twee VM’s in het virtuele netwerk.
 
 1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
 2. Selecteer **Compute** en vervolgens **Windows Server 2016 Datacenter**.
-3. Voer de volgende informatie in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **OK**:
+3. Voer de volgende informatie in of Selecteer deze, en accepteer de standaard waarden voor de overige instellingen:
 
-    |Instelling|Waarde|
+    |Instelling|Value|
     |---|---|
+    |Subscription| Selecteer uw abonnement.|
+    |Resource group| Selecteer **Bestaande gebruiken** en selecteer **myResourceGroup**.|
     |Name|myVmWeb|
+    |Location| Selecteer **US - oost**.|
     |Gebruikersnaam| Voer een gebruikersnaam naar keuze in.|
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Abonnement| Selecteer uw abonnement.|
-    |Resourcegroep| Selecteer **Bestaande gebruiken** en selecteer **myResourceGroup**.|
-    |Locatie| Selecteer **US - oost**|
+
+   
 
 4. Selecteer een grootte voor de virtuele machine en selecteer **Selecteren**.
-5. Selecteer onder **Instellingen** de volgende waarden, accepteer de resterende standaardwaarden en selecteer vervolgens **OK**:
+5. Selecteer onder **netwerken**de volgende waarden, en accepteer de resterende standaard waarden:
 
     |Instelling|Waarde|
     |---|---|
-    |Virtueel netwerk |Selecteer **myVirtualNetwork**|
-    |Netwerkbeveiligingsgroep | Selecteer **Geavanceerd**.|
-    |Netwerkbeveiligingsgroep (firewall)| Selecteer **(nieuw) myVmWeb-nsg** en selecteer vervolgens onder **Netwerkbeveiligingsgroep kiezen** de optie **Geen**. |
+    |Virtueel netwerk |Selecteer **myVirtualNetwork**.|
+    |NIC-netwerk beveiligings groep |Selecteer **Geavanceerd**.|
+    |Open bare binnenkomende poorten|Selecteer **Geen**. |
 
-6. Selecteer onder **Maken** bij **Samenvatting** de optie **Maken** om de implementatie van de virtuele machine te starten.
+6. Selecteer onder, links **bekijken + maken** de optie **maken** om VM-implementatie te starten.
 
 ### <a name="create-the-second-vm"></a>De tweede VM maken
 

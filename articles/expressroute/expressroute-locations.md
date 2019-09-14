@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/09/2019
+ms.date: 09/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: b7672ff83dac31968dff7ef7a66ff40b36b69d59
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 502975df94fb61371dfa688806dfe1e1cc5aac70
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845191"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967126"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute
 
@@ -157,7 +157,7 @@ De volgende tabel toont de locaties per serviceprovider. Als u alle beschikbare 
 | **[Transtelco](https://transtelco.net/enterprise-services/)** |Ondersteund |Ondersteund |Rotterdam, + Los Angeles|
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |Ondersteund |Ondersteund |Sao Paulo |
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |Ondersteund |Ondersteund |Amsterdam, Chicago, Amsterdam, Hongkong SAR, Londen, Mumbai, silicium dal, Singapore, Sydney, Tokio, Toronto, Washington DC |
-| **Viasat** | Ondersteund | Ondersteund | Washington DC2 |
+| **[Viasat](http://www.directcloud.viasatbusiness.com/)** | Ondersteund | Ondersteund | Washington DC2 |
 | **[Vocus groep NZ](https://www.vocus.co.nz/business/cloud-data-centres)** | Ondersteund | Ondersteund | Auckland, Sydney |
 | **[Vodafone](https://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |Ondersteund |Ondersteund |Amsterdam2, Londen, Singapore |
 | **Vodafone Idea** | Ondersteund | Ondersteund | Mumbai, Mumbai2 |
@@ -221,7 +221,7 @@ Als u extern bent en geen glasvezel connectiviteit hebt of als u andere connecti
 
 * Intelsat
 * [SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)
-* Viasat
+* [Viasat](http://www.directcloud.viasatbusiness.com/)
 
 ## <a name="connectivity-through-additional-service-providers"></a>Connectiviteit via aanvullende service providers
 

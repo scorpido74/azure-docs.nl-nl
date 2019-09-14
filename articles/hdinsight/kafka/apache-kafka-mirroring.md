@@ -1,6 +1,6 @@
 ---
-title: Onderwerpen over Apache Kafka - Azure HDInsight spiegelen
-description: Informatie over het gebruik van Apache Kafka mirroring-functie voor het onderhouden van een replica van een Kafka in HDInsight-cluster door het spiegelen van de onderwerpen in een secundaire cluster.
+title: Apache Kafka-onderwerpen spie gelen-Azure HDInsight
+description: Meer informatie over het gebruik van de functie spiegeling van Apache Kafka om een replica van een Kafka in HDInsight-cluster te onderhouden door onderwerpen te spie gelen naar een secundair cluster.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,68 +8,68 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/24/2019
-ms.openlocfilehash: bdc393d041bd40fd27493ccc8f3c4f39adfa35b2
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 8565ee03ddff67afb3700aa1cda91ae696a0fc93
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657167"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960212"
 ---
-# <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker gebruiken voor het Apache Kafka-onderwerpen repliceren met Kafka in HDInsight
+# <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker gebruiken om Apache Kafka-onderwerpen te repliceren met Kafka in HDInsight
 
-Informatie over het gebruik van Apache Kafka mirroring functie onderwerpen repliceren naar een secundaire cluster. Spiegelen kan worden uitgevoerd als een continu proces of soms gebruikt als een methode van de migratie van gegevens van het ene cluster naar een andere.
+Meer informatie over het gebruik van de functie spiegeling van Apache Kafka om onderwerpen te repliceren naar een secundair cluster. Spiegeling kan worden uitgevoerd als een doorlopend proces of worden gebruikt als een methode voor het migreren van gegevens van het ene naar het andere cluster.
 
-In dit voorbeeld wordt spiegelen gebruikt voor het repliceren van onderwerpen tussen twee clusters met HDInsight. Beide clusters zich in verschillende virtuele netwerken in verschillende datacenters.
+In dit voor beeld wordt spiegeling gebruikt voor het repliceren van onderwerpen tussen twee HDInsight-clusters. Beide clusters bevinden zich in verschillende virtuele netwerken in verschillende data centers.
 
 > [!WARNING]  
-> Spiegeling moet niet worden beschouwd als een manier om fouttolerantie. De verschuiving naar items in een onderwerp verschillen tussen de primaire en secundaire clusters, zodat clients kunnen niet beide worden door elkaar gebruikt.
+> Mirroring mag niet worden beschouwd als een manier om fout tolerantie te krijgen. De offset van items in een onderwerp verschilt tussen de primaire en secundaire clusters, zodat clients de twee onderlinge verschillen niet kunnen gebruiken.
 >
-> Als u zich zorgen maken over-fouttolerantie gebruikt, moet u replicatie voor de onderwerpen in uw cluster instellen. Zie voor meer informatie, [aan de slag met Apache Kafka in HDInsight](apache-kafka-get-started.md).
+> Als u zich zorgen maakt over fout tolerantie, moet u de replicatie voor de onderwerpen in uw cluster instellen. Zie [aan de slag met Apache Kafka op HDInsight](apache-kafka-get-started.md)voor meer informatie.
 
-## <a name="how-apache-kafka-mirroring-works"></a>Hoe Apache Kafka spiegelen werkt
+## <a name="how-apache-kafka-mirroring-works"></a>Hoe Apache Kafka mirroring werkt?
 
-Spiegelen werkt met behulp van de [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) hulpprogramma (onderdeel van Apache Kafka) naar de records van de onderwerpen op het primaire cluster gebruiken en maak vervolgens een lokale kopie op de secundaire-cluster. MirrorMaker maakt gebruik van een (of meer) *consumenten* die gelezen uit de primaire cluster en een *producent* die worden geschreven naar het lokale cluster (secundair).
+Spiegeling werkt met behulp van het hulp programma [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) (onderdeel van Apache Kafka) om records te gebruiken uit onderwerpen op het primaire cluster en vervolgens een lokale kopie te maken op het secundaire cluster. MirrorMaker maakt gebruik van een (of meer) *consumenten* die van het primaire cluster worden gelezen en een *producent* die naar het lokale (secundaire) cluster schrijft.
 
-De instellingen van de handigste mirroring voor herstel na noodgevallen maakt gebruik van Kafka-clusters in verschillende Azure-regio's. Om dit te bereiken, worden de virtuele netwerken waarbij de clusters bevinden zich bij elkaar gekoppeld.
+De meest nuttige instelling voor het spie gelen van de spiegeling voor herstel na nood gevallen maakt gebruik van Kafka-clusters in verschillende Azure-regio's. Hiervoor zijn de virtuele netwerken waar de clusters zich bevinden, gekoppeld aan elkaar.
 
-Het volgende diagram illustreert het proces voor mirroring en hoe de communicatie stroomt tussen clusters:
+Het volgende diagram illustreert het spiegel proces en hoe de communicatie stromen tussen clusters:
 
-![Diagram van de mirroring-proces](./media/apache-kafka-mirroring/kafka-mirroring-vnets2.png)
+![Diagram van het spiegel proces](./media/apache-kafka-mirroring/kafka-mirroring-vnets2.png)
 
-De primaire en secundaire clusters kunnen afwijken van het aantal knooppunten en partities en verschuivingen in de onderwerpen zijn ook andere. De waarde van de sleutel die wordt gebruikt voor het partitioneren, spiegelen worden bijgehouden, zodat de volgorde van de records wordt behouden op basis van de per-sleutel.
+De primaire en secundaire clusters kunnen verschillen in het aantal knoop punten en partities, en verschuivingen in de onderwerpen zijn ook verschillend. Spiegeling houdt de sleutel waarde bij die wordt gebruikt voor partitioneren, zodat de volg orde van de records per sleutel wordt bewaard.
 
-### <a name="mirroring-across-network-boundaries"></a>Spiegelen van de grenzen van netwerken
+### <a name="mirroring-across-network-boundaries"></a>Spie gelen tussen netwerk grenzen
 
-Als u spiegelen tussen Kafka-clusters in verschillende netwerken wilt, zijn er de volgende aanvullende overwegingen:
+Als u een mirror moet maken tussen Kafka-clusters in verschillende netwerken, zijn er de volgende aanvullende overwegingen:
 
-* **Gateways**: De netwerken moeten kunnen communiceren op het TCP/IP-niveau.
+* **Gateways**: De netwerken moeten kunnen communiceren op het niveau van TCP/IP.
 
-* **Server-adressering**: U kunt kiezen om uw clusterknooppunten met behulp van hun IP-adressen of de volledig gekwalificeerde domeinnamen.
+* **Server adressen**: U kunt ervoor kiezen om uw cluster knooppunten te adresseren met hun IP-adressen of volledig gekwalificeerde domein namen.
 
-    * **IP-adressen**: Als u uw Kafka-clusters voor het gebruik van IP-adres reclame configureert, kunt u doorgaan met de mirroring installatie met behulp van de IP-adressen van de broker-knooppunten en de zookeeper-knooppunten.
+    * **IP-adressen**: Als u uw Kafka-clusters configureert voor het gebruik van IP-adres reclame, kunt u door gaan met de installatie van het spie gelen van de IP-adressen van de knoop punten Broker en Zookeeper.
     
-    * **Domeinnamen**: Als u uw Kafka-clusters voor reclame voor IP-adres niet configureert, moeten de clusters kunnen met elkaar verbinden met behulp van de volledig gekwalificeerde domeinnamen (FQDN's) zijn. Dit is een Domain Name System (DNS)-server in elk netwerk dat is geconfigureerd om aanvragen doorsturen naar de andere netwerken vereist. Bij het maken van een Azure-netwerk, in plaats van de automatische DNS-server opgegeven met het netwerk, moet u een aangepaste DNS-server en het IP-adres voor de server opgeven. Nadat het Virtueelnetwerk is gemaakt, moet u vervolgens een Azure-Machine die gebruikmaakt van dit IP-adres, maakt en vervolgens installeren en configureren van DNS-software op het.
+    * **Domein namen**: Als u uw Kafka-clusters niet configureert voor het adverteren van IP-adressen, moeten de clusters verbinding met elkaar kunnen maken met behulp van FQDN-namen (FULLy Qualified Domain Name). Hiervoor is een Domain Name System-server (DNS) vereist in elk netwerk dat is geconfigureerd voor het door sturen van aanvragen naar de andere netwerken. Wanneer u een Azure-Virtual Network maakt, moet u in plaats van de automatische DNS-naam die bij het netwerk wordt gebruikt, een aangepaste DNS-server en het IP-adres voor de server opgeven. Nadat de Virtual Network is gemaakt, moet u vervolgens een virtuele Azure-machine maken die dat IP-adres gebruikt, vervolgens DNS-software installeren en configureren.
 
     > [!WARNING]  
-    > Maak en configureer de aangepaste DNS-server voor de installatie van HDInsight in het Virtueelnetwerk. Er is geen aanvullende configuratie vereist voor HDInsight de DNS-server geconfigureerd voor het Virtueelnetwerk te gebruiken.
+    > Maak en configureer de aangepaste DNS-server voordat u HDInsight in de Virtual Network installeert. Er is geen aanvullende configuratie vereist voor HDInsight voor het gebruik van de DNS-server die is geconfigureerd voor de Virtual Network.
 
-Zie voor meer informatie over het verbinden van twee virtuele netwerken van Azure, [een VNet-naar-VNet-verbinding configureren](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
+Zie [een vnet-naar-VNet-verbinding configureren](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)voor meer informatie over het verbinden van twee virtuele netwerken van Azure.
 
-## <a name="mirroring-architecture"></a>Architectuur spiegelen
+## <a name="mirroring-architecture"></a>Architectuur voor spie gelen
 
-Deze architectuur biedt twee clusters in verschillende resourcegroepen en virtuele netwerken: een **primaire** en **secundaire**.
+Deze architectuur bevat twee clusters in verschillende resource groepen en virtuele netwerken: een **primair** en **secundair**.
 
-### <a name="creation-steps"></a>Stappen voor het maken
+### <a name="creation-steps"></a>Stappen voor maken
 
-1. Maak twee nieuwe resourcegroepen:
+1. Maak twee nieuwe resource groepen:
 
     |Resourcegroep | Location |
     |---|---|
     | kafka-primary-rg | US - centraal |
     | kafka-secondary-rg | US - noord-centraal |
 
-1. Een nieuw virtueel netwerk maken **kafka-primaire-vnet** in **kafka-primaire-rg**. Behoud de standaardinstellingen.
-1. Een nieuw virtueel netwerk maken **kafka-secundaire-vnet** in **kafka-secundaire-rg**, ook met de standaardinstellingen.
+1. Maak een nieuw virtueel netwerk **Kafka-primair-vnet** in **Kafka-Primary-RG**. Behoud de standaard instellingen.
+1. Maak een nieuw virtueel netwerk **Kafka-secundair-vnet** in **Kafka-Secondary-RG**, ook met de standaard instellingen.
 
 1. Twee nieuwe Kafka-clusters maken:
 
@@ -78,18 +78,18 @@ Deze architectuur biedt twee clusters in verschillende resourcegroepen en virtue
     | kafka-primary-cluster | kafka-primary-rg | kafka-primary-vnet | kafkaprimarystorage |
     | kafka-secondary-cluster | kafka-secondary-rg | kafka-secondary-vnet | kafkasecondarystorage |
 
-1. Peerings van virtuele netwerken maken. Deze stap maakt u twee peerings: één van **kafka-primaire-vnet** naar **kafka-secundaire-vnet** en een back-ups maken van **kafka-secundaire-vnet** naar  **kafka-primaire-vnet**.
-    1. Selecteer de **kafka-primaire-vnet** virtueel netwerk.
-    1. Klik op **Peerings** onder **instellingen**.
+1. Maak peerings voor virtuele netwerken. Met deze stap maakt u twee peerings: één van **Kafka-Primary-vnet** naar **Kafka-Secondary-vnet** en één keer van **Kafka-Secondary-vnet** naar **Kafka-Primary-vnet**.
+    1. Selecteer het virtuele netwerk **Kafka-Primary-vnet** .
+    1. Klik op **peerings** onder **instellingen**.
     1. Klik op **Toevoegen**.
-    1. Op de **peering toevoegen** scherm, voert u de details zoals wordt weergegeven in de onderstaande schermafbeelding.
+    1. Geef in het scherm **peering toevoegen** de details op, zoals wordt weer gegeven in de onderstaande scherm afbeelding.
 
-        ![vnet-peering toevoegen](./media/apache-kafka-mirroring/add-vnet-peering.png)
+        ![vnet-peering toevoegen](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
-1. Configureer IP-advertenties:
-    1. Ga naar de Ambari-dashboard voor de primaire cluster: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
-    1. Klik op **Services** > **Kafka**. Klik op de **Peeringconfiguraties** tabblad.
-    1. De volgende configuratie regels toevoegen aan de onderkant **kafka-env sjabloon** sectie. Klik op **Opslaan**.
+1. IP-reclame configureren:
+    1. Ga naar het Ambari-dash board voor het primaire `https://PRIMARYCLUSTERNAME.azurehdinsight.net`cluster:.
+    1. Klik op **Services** > **Kafka**. Klik op het tabblad **configuratie** .
+    1. Voeg de volgende configuratie regels toe aan de onderste **sjabloon sectie Kafka-env** . Klik op **Opslaan**.
     
         ```
         # Configure Kafka to advertise IP addresses instead of FQDN
@@ -99,52 +99,52 @@ Deze architectuur biedt twee clusters in verschillende resourcegroepen en virtue
         echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
         ```
 
-    1. Voer een opmerking op de **configuratie opslaan** scherm en klikt u op **opslaan**.
-    1. Als u met de volgende Configuratiewaarschuwing wordt gevraagd, klikt u op **toch doorgaan**.
-    1. Klik op **Ok** op de **configuratiewijzigingen opslaan**.
-    1. Klik op **opnieuw** > **start opnieuw op alle betrokken** in de **opnieuw opstarten is vereist** melding. Klik op **opnieuw starten bevestigen alle**.
+    1. Voer een opmerking in het scherm **configuratie opslaan** in en klik op **Opslaan**.
+    1. Als u wordt gevraagd om een configuratie waarschuwing, klikt u op **door gaan**.
+    1. Klik op **OK** in de **configuratie wijzigingen opslaan**.
+    1. Klik op **opnieuw opstarten**opnieuw starten,**waarbij dit probleem optreedt** in het bericht **opnieuw opstarten is vereist** . >  Klik op **Bevestig opnieuw opstarten**.
 
-        ![opnieuw opstarten van kafka-knooppunten](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+        ![Kafka-knoop punten opnieuw starten](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
-1. Kafka om te luisteren op alle netwerkinterfaces configureren.
-    1. Blijf op de **Peeringconfiguraties** tabblad onder **Services** > **Kafka**. In de **Kafka-Broker** sectie set de **listeners** eigenschap `PLAINTEXT://0.0.0.0:9092`.
+1. Configureer Kafka om te Luis teren op alle netwerk interfaces.
+    1. Blijf op het tabblad **configuratie** onder **Services** > **Kafka**. Stel in het gedeelte **Kafka-Broker** de eigenschap **listeners** in `PLAINTEXT://0.0.0.0:9092`op.
     1. Klik op **Opslaan**.
-    1. Klik op **opnieuw**, en **opnieuw starten bevestigen alle**.
+    1. Klik op **opnieuw opstarten**en **Bevestig opnieuw opstarten**.
 
-1. Noteer de Broker-IP-adressen en Zookeeper-adressen voor de primaire-cluster.
-    1. Klik op **Hosts** op de Ambari-dashboard.
-    1. Noteer de IP-adressen voor de Brokers en Zookeepers. De broker-knooppunten hebben **omlaag** als de eerste twee letters van de naam van de host en de zookeeper-knooppunten hebben **zk** als de eerste twee letters van de naam van de host.
+1. Registreer Broker IP-adressen en Zookeeper-adressen voor primair cluster.
+    1. Klik op **hosts** in het Ambari-dash board.
+    1. Noteer de IP-adressen voor de brokers en Zookeepers. De Broker knooppunten hebben **wn** als de eerste twee letters van de hostnaam en de Zookeeper-knoop punten hebben **ZK** als de eerste twee letters van de hostnaam.
 
-        ![ip-adressen weergeven](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+        ![IP-adressen weer geven](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
-1. Herhaal de vorige drie stappen voor het tweede cluster **kafka-secundaire-cluster**: configureren van IP-reclame, listeners instellen en noteer de Broker en Zookeeper-IP-adressen.
+1. Herhaal de vorige drie stappen voor het tweede cluster **Kafka-secundair-cluster**: IP-reclame configureren, listeners instellen en noteer de Broker-en Zookeeper-IP-adressen.
 
-## <a name="create-topics"></a>Help-onderwerpen maken
+## <a name="create-topics"></a>Onderwerpen maken
 
-1. Verbinding maken met de **primaire** cluster via SSH:
+1. Verbinding maken met het **primaire** cluster via SSH:
 
     ```bash
     ssh sshuser@PRIMARYCLUSTER-ssh.azurehdinsight.net
     ```
 
-    Vervang **sshuser** met de naam van de SSH-gebruiker die wordt gebruikt bij het maken van het cluster. Vervang **BASENAME** met de naam die wordt gebruikt bij het maken van het cluster.
+    Vervang **sshuser** door de SSH-gebruikers naam die wordt gebruikt bij het maken van het cluster. Vervang **basispad** door de basis naam die wordt gebruikt bij het maken van het cluster.
 
     Zie [SSH-sleutels gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md) voor informatie.
 
-2. Gebruik de volgende opdracht om te maken van een variabele met de Apache Zookeeper-hosts voor de primaire cluster. De tekenreeksen, zoals `ZOOKEEPER_IP_ADDRESS1` moeten worden vervangen door de werkelijke IP-adressen, worden eerder hebt genoteerd, zoals `10.23.0.11` en `10.23.0.7`. Als u van de resolutie van de FQDN-naam met een aangepaste DNS-server gebruikmaakt, voert u de [stappen](apache-kafka-get-started.md#getkafkainfo) om op te halen broker en zookeeper namen.:
+2. Gebruik de volgende opdracht om een variabele te maken met de Apache Zookeeper-hosts voor het primaire cluster. De teken reeksen `ZOOKEEPER_IP_ADDRESS1` zoals moeten worden vervangen door de werkelijke IP-adressen `10.23.0.11` die eerder zijn geregistreerd `10.23.0.7`, zoals en. Als u de FQDN-resolutie met een aangepaste DNS-server gebruikt, voert u [de volgende stappen uit om de](apache-kafka-get-started.md#getkafkainfo) namen van Broker en Zookeeper op te halen.:
 
     ```bash
     # get the zookeeper hosts for the primary cluster
     export PRIMARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181, ZOOKEEPER_IP_ADDRESS2:2181, ZOOKEEPER_IP_ADDRESS3:2181'
     ```
 
-3. Een onderwerp met de naam `testtopic`, gebruikt u de volgende opdracht:
+3. Als u een onderwerp met `testtopic`de naam wilt maken, gebruikt u de volgende opdracht:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $PRIMARY_ZKHOSTS
     ```
 
-3. Gebruik de volgende opdracht uit om te controleren of het onderwerp is gemaakt:
+3. Gebruik de volgende opdracht om te controleren of het onderwerp is gemaakt:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $PRIMARY_ZKHOSTS
@@ -152,156 +152,156 @@ Deze architectuur biedt twee clusters in verschillende resourcegroepen en virtue
 
     Het antwoord bevat `testtopic`.
 
-4. Gebruik de volgende om de hostinformatie van Zookeeper voor deze weer te geven (de **primaire**) cluster:
+4. Gebruik de volgende informatie om de Zookeeper van de host te bekijken (het **primaire**) cluster:
 
     ```bash
     echo $PRIMARY_ZKHOSTS
     ```
 
-    Hiermee wordt informatie weergegeven die vergelijkbaar is met de volgende tekst:
+    Dit retourneert informatie die lijkt op de volgende tekst:
 
     `10.23.0.11:2181,10.23.0.7:2181,10.23.0.9:2181`
 
-    Deze gegevens worden opgeslagen. Het wordt gebruikt in de volgende sectie.
+    Sla deze informatie op. Deze wordt gebruikt in de volgende sectie.
 
-## <a name="configure-mirroring"></a>Configureer het spiegelen
+## <a name="configure-mirroring"></a>Spiegeling configureren
 
-1. Verbinding maken met de **secundaire** cluster met behulp van een andere SSH-sessie:
+1. Verbinding maken met het **secundaire** cluster met behulp van een andere SSH-sessie:
 
     ```bash
     ssh sshuser@SECONDARYCLUSTER-ssh.azurehdinsight.net
     ```
 
-    Vervang **sshuser** met de naam van de SSH-gebruiker die wordt gebruikt bij het maken van het cluster. Vervang **SECONDARYCLUSTER** met de naam die wordt gebruikt bij het maken van het cluster.
+    Vervang **sshuser** door de SSH-gebruikers naam die wordt gebruikt bij het maken van het cluster. Vervang **SECONDARYCLUSTER** door de naam die is gebruikt bij het maken van het cluster.
 
     Zie [SSH-sleutels gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md) voor informatie.
 
-2. Een `consumer.properties` bestand wordt gebruikt voor het configureren van de communicatie met de **primaire** cluster. Gebruik de volgende opdracht voor het maken van het bestand:
+2. Een `consumer.properties` bestand wordt gebruikt voor het configureren van de communicatie met het **primaire** cluster. Gebruik de volgende opdracht om het bestand te maken:
 
     ```bash
     nano consumer.properties
     ```
 
-    Gebruik de volgende tekst als de inhoud van de `consumer.properties` bestand:
+    Gebruik de volgende tekst als de inhoud van het `consumer.properties` bestand:
 
     ```yaml
     zookeeper.connect=PRIMARY_ZKHOSTS
     group.id=mirrorgroup
     ```
 
-    Vervang **PRIMARY_ZKHOSTS** met de Zookeeper-IP-adressen van de **primaire** cluster.
+    Vervang **PRIMARY_ZKHOSTS** door de IP-adressen van Zookeeper uit het **primaire** cluster.
 
-    Dit bestand beschrijft de consument informatie over het gebruik bij het lezen van het primaire Kafka-cluster. Zie voor meer informatie consumer-configuratie, [consument configuraties](https://kafka.apache.org/documentation#consumerconfigs) op kafka.apache.org.
+    In dit bestand wordt de consument informatie beschreven die moet worden gebruikt bij het lezen van het primaire Kafka-cluster. Zie configuratie van [consumenten](https://kafka.apache.org/documentation#consumerconfigs) op Kafka.apache.org voor meer informatie.
 
-    Gebruiken om het bestand hebt opgeslagen, **Ctrl + X**, **Y**, en vervolgens **Enter**.
+    Als u het bestand wilt opslaan, gebruikt u **CTRL + X**, **Y**en **voert**u in.
 
-3. Voordat u configureert de producent die communiceert met het tweede cluster, instellen van een variabele voor de broker-IP-adressen van de **secundaire** cluster. Gebruik de volgende opdrachten om te maken van deze variabele:
+3. Voordat u de producent configureert die met het secundaire cluster communiceert, stelt u een variabele in voor de IP-adressen van de Broker van het **secundaire** cluster. Gebruik de volgende opdrachten om deze variabele te maken:
 
     ```bash
     export SECONDARY_BROKERHOSTS='BROKER_IP_ADDRESS1:9092,BROKER_IP_ADDRESS2:9092,BROKER_IP_ADDRESS2:9092'
     ```
 
-    De opdracht `echo $SECONDARY_BROKERHOSTS` geretourneerde informatie moet er die vergelijkbaar is met de volgende tekst:
+    De opdracht `echo $SECONDARY_BROKERHOSTS` moet informatie retour neren die overeenkomt met de volgende tekst:
 
     `10.23.0.14:9092,10.23.0.4:9092,10.23.0.12:9092`
 
-4. Een `producer.properties` wordt gebruikt om te communiceren de **secundaire** cluster. Gebruik de volgende opdracht voor het maken van het bestand:
+4. Een `producer.properties` bestand wordt gebruikt om het **secundaire** cluster te communiceren. Gebruik de volgende opdracht om het bestand te maken:
 
     ```bash
     nano producer.properties
     ```
 
-    Gebruik de volgende tekst als de inhoud van de `producer.properties` bestand:
+    Gebruik de volgende tekst als de inhoud van het `producer.properties` bestand:
 
     ```yaml
     bootstrap.servers=SECONDARY_BROKERHOSTS
     compression.type=none
     ```
 
-    Vervang **SECONDARY_BROKERHOSTS** met de broker-IP-adressen die worden gebruikt in de vorige stap.
+    Vervang **SECONDARY_BROKERHOSTS** door de IP-adressen van de broker die worden gebruikt in de vorige stap.
 
-    Zie voor meer informatie producent-configuratie, [producent configuraties](https://kafka.apache.org/documentation#producerconfigs) op kafka.apache.org.
+    Zie [producent configuraties](https://kafka.apache.org/documentation#producerconfigs) op Kafka.apache.org voor meer informatie.
 
-5. Gebruik de volgende opdrachten om te maken van een omgevingsvariabele met de IP-adressen van de Zookeeper-hosts voor de secundaire cluster:
+5. Gebruik de volgende opdrachten om een omgevings variabele te maken met de IP-adressen van de Zookeeper-hosts voor het secundaire cluster:
 
     ```bash
     # get the zookeeper hosts for the secondary cluster
     export SECONDARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181,ZOOKEEPER_IP_ADDRESS2:2181,ZOOKEEPER_IP_ADDRESS3:2181'
     ```
 
-7. De standaardconfiguratie voor Kafka in HDInsight is niet toegestaan voor het automatisch maken van onderwerpen. Voordat u begint met het proces spiegelen moet u een van de volgende opties gebruiken:
+7. De standaard configuratie voor Kafka in HDInsight staat het automatisch maken van onderwerpen niet toe. U moet een van de volgende opties gebruiken voordat u het spiegel proces start:
 
-    * **Maken van de onderwerpen op het secundaire cluster**: Deze optie kunt u het aantal partities en de replicatie van meerdere factoren instellen.
+    * **Maak de onderwerpen op het secundaire cluster**: Met deze optie kunt u ook het aantal partities en de replicatie factor instellen.
 
-        U kunt onderwerpen tevoren maken met behulp van de volgende opdracht uit:
+        U kunt de volgende opdracht gebruiken om eerder onderwerpen te maken:
 
         ```bash
         /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $SECONDARY_ZKHOSTS
         ```
 
-        Vervang `testtopic` met de naam van het onderwerp te maken.
+        Vervang `testtopic` door de naam van het onderwerp dat u wilt maken.
 
-    * **Configureren van het cluster voor het maken van automatische onderwerp**: Deze optie kunt MirrorMaker automatisch maken van onderwerpen, maar deze met een verschillend aantal partities of replicatiefactor dan de primaire onderwerp maken kan.
+    * **Het cluster configureren voor het automatisch maken van een onderwerp**: Met deze optie kan MirrorMaker automatisch onderwerpen maken, maar deze kan worden gemaakt met een ander aantal partities of replicatie factor dan het primaire onderwerp.
 
-        Als u wilt configureren voor het automatisch maken van onderwerpen de secundaire cluster, moet u deze stappen uitvoeren:
+        Voer de volgende stappen uit om het secundaire cluster zo te configureren dat er automatisch onderwerpen worden gemaakt:
 
-        1. Ga naar de Ambari-dashboard voor het tweede cluster: `https://SECONDARYCLUSTERNAME.azurehdinsight.net`.
-        1. Klik op **Services** > **Kafka**. Klik op de **Peeringconfiguraties** tabblad.
-        5. In de __Filter__ veld, voert u een waarde van `auto.create`. Hiermee filtert u de lijst met eigenschappen en geeft de `auto.create.topics.enable` instelling.
-        6. Wijzig de waarde van `auto.create.topics.enable` op true en selecteer vervolgens __opslaan__. Een opmerking toevoegen en selecteer vervolgens __opslaan__ opnieuw.
-        7. Selecteer de __Kafka__ service en selecteer __opnieuw__, en selecteer vervolgens __opnieuw alle betrokken__. Wanneer u hierom wordt gevraagd, selecteert u __bevestigen opnieuw alle__.
+        1. Ga naar het Ambari-dash board voor het secundaire `https://SECONDARYCLUSTERNAME.azurehdinsight.net`cluster:.
+        1. Klik op **Services** > **Kafka**. Klik op het tabblad **configuratie** .
+        5. Voer in het veld __filter__ een waarde van `auto.create`in. Hiermee wordt de lijst met eigenschappen gefilterd `auto.create.topics.enable` en wordt de instelling weer gegeven.
+        6. Wijzig de waarde van `auto.create.topics.enable` in waar en selecteer vervolgens __Opslaan__. Voeg een notitie toe en selecteer vervolgens __Opslaan__ opnieuw.
+        7. Selecteer de __Kafka__ -service, selecteer __opnieuw opstarten__en selecteer vervolgens __alle betrokkenen opnieuw opstarten__. Selecteer __Bevestig opnieuw opstarten__als dit wordt gevraagd.
 
-        ![configureren van onderwerp automatisch maken](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
+        ![automatisch maken van het onderwerp configureren](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 
 ## <a name="start-mirrormaker"></a>MirrorMaker starten
 
-1. Van de SSH-verbinding met de **secundaire** cluster, gebruikt u de volgende opdracht uit om de MirrorMaker-proces te starten:
+1. Gebruik van de SSH-verbinding met het **secundaire** cluster de volgende opdracht om het MirrorMaker-proces te starten:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-run-class.sh kafka.tools.MirrorMaker --consumer.config consumer.properties --producer.config producer.properties --whitelist testtopic --num.streams 4
     ```
 
-    De parameters die in dit voorbeeld zijn:
+    De para meters die in dit voor beeld worden gebruikt, zijn:
 
-    * **--consumer.config**: Hiermee geeft u het bestand dat consumenten-eigenschappen bevat. Deze eigenschappen worden gebruikt voor het maken van een gebruiker die leest uit de *primaire* Kafka-cluster.
+    * **--Consumer. config**: Hiermee geeft u het bestand op dat de eigenschappen van de gebruiker bevat. Deze eigenschappen worden gebruikt voor het maken van een consumer die leest van het *primaire* Kafka-cluster.
 
-    * **--producer.config**: Hiermee geeft u het bestand dat de producent-eigenschappen bevat. Deze eigenschappen worden gebruikt voor het maken van een producent die naar schrijft de *secundaire* Kafka-cluster.
+    * **--producer. config**: Hiermee geeft u het bestand op dat de eigenschappen van de producent bevat. Deze eigenschappen worden gebruikt voor het maken van een producent die naar het *secundaire* Kafka-cluster schrijft.
 
-    * **--lijst met toegestane adressen**: Een lijst met onderwerpen die MirrorMaker worden gerepliceerd uit de primaire cluster naar de secundaire server.
+    * **--white list**: Een lijst met onderwerpen die MirrorMaker repliceren van het primaire cluster naar de secundaire.
 
-    * **--num.streams**: Het aantal threads van de consument te maken.
+    * **--num. streams**: Het aantal te maken Consumer threads.
 
-    De gebruiker op het secundaire knooppunt is nu wachten om berichten te ontvangen.
+    De consument op het secundaire knoop punt wacht nu op het ontvangen van berichten.
 
-2. Van de SSH-verbinding met de **primaire** cluster, gebruikt u de volgende opdracht uit om te starten van een producent en berichten verzenden naar het onderwerp:
+2. Van de SSH-verbinding met het **primaire** cluster, gebruikt u de volgende opdracht om een producent te starten en berichten te verzenden naar het onderwerp:
 
     ```bash
     export PRIMARY_BROKERHOSTS=BROKER_IP_ADDRESS1:9092,BROKER_IP_ADDRESS2:9092,BROKER_IP_ADDRESS2:9092
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $SOURCE_BROKERHOSTS --topic testtopic
     ```
 
-     Wanneer u bij een lege regel met een cursor aankomt, typt u in een paar tekstberichten. De berichten worden verzonden naar het onderwerp op de **primaire** cluster. Wanneer u klaar bent, gebruikt u **Ctrl + C** de producent-proces te beëindigen.
+     Wanneer u een lege regel met een cursor aankomt, typt u een paar tekst berichten. De berichten worden verzonden naar het onderwerp op het **primaire** cluster. Wanneer u klaar bent, gebruikt u **CTRL + C** om het proces van de producent te beëindigen.
 
-3. Van de SSH-verbinding met de **secundaire** cluster, gebruikt u **Ctrl + C** de MirrorMaker-proces te beëindigen. Het duurt enkele seconden om het proces te beëindigen. Om te controleren dat de berichten zijn gerepliceerd naar de secundaire, gebruik de volgende opdracht:
+3. Gebruik op basis van de SSH-verbinding met het **secundaire** cluster **CTRL + C** om het MirrorMaker-proces te beëindigen. Het kan enkele seconden duren voordat het proces is beëindigd. Gebruik de volgende opdracht om te controleren of de berichten naar de secundaire zijn gerepliceerd:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $SECONDARY_ZKHOSTS --topic testtopic --from-beginning
     ```
 
-    De lijst met onderwerpen bevat nu `testtopic`, die wordt gemaakt wanneer MirrorMaster komt overeen met het onderwerp van het primaire cluster naar de secundaire server. De berichten die worden opgehaald van het onderwerp zijn hetzelfde als de computer die u hebt ingevoerd op de primaire-cluster.
+    De lijst met onderwerpen bevat `testtopic`nu een MirrorMaster die wordt gemaakt wanneer het onderwerp van het primaire cluster wordt gespiegeld met de secundaire. De berichten die worden opgehaald uit het onderwerp, zijn dezelfde als die u hebt ingevoerd op het primaire cluster.
 
 ## <a name="delete-the-cluster"></a>Het cluster verwijderen
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-De stappen in dit document clusters in verschillende Azure-resourcegroepen hebt gemaakt. Als u wilt verwijderen van alle resources die zijn gemaakt, kunt u de twee resourcegroepen die zijn gemaakt verwijderen: **kafka-primaire-rg** en **kafka-secondary_rg**. De resourcegroepen verwijdert alle resources hebt gemaakt op basis van dit document, inclusief clusters, virtuele netwerken en opslagaccounts.
+Met de stappen in dit document worden clusters in verschillende Azure-resource groepen gemaakt. Als u alle gemaakte resources wilt verwijderen, kunt u de twee gemaakte resource groepen verwijderen: **Kafka-Primary-RG** en **Kafka-secondary_rg**. Als u de resource groepen verwijdert, worden alle resources verwijderd die zijn gemaakt door dit document te volgen, met inbegrip van clusters, virtuele netwerken en opslag accounts.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit document hebt u geleerd hoe u [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) te maken van een replica van een [Apache Kafka](https://kafka.apache.org/) cluster. Gebruik de volgende koppelingen voor het detecteren van andere manieren om te werken met Kafka:
+In dit document hebt u geleerd hoe u [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) kunt gebruiken om een replica van een [Apache Kafka](https://kafka.apache.org/) cluster te maken. Gebruik de volgende koppelingen om andere manieren te ontdekken voor het werken met Kafka:
 
-* [Documentatie voor Apache Kafka MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) op cwiki.apache.org.
-* [Aan de slag met Apache Kafka in HDInsight](apache-kafka-get-started.md)
-* [Apache Spark gebruiken met Apache Kafka in HDInsight](../hdinsight-apache-spark-with-kafka.md)
-* [Apache Storm gebruiken met Apache Kafka in HDInsight](../hdinsight-apache-storm-with-kafka.md)
-* [Verbinding maken met Apache Kafka via een Azure-netwerk](apache-kafka-connect-vpn-gateway.md)
+* [Apache Kafka MirrorMaker-documentatie](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) op cwiki.apache.org.
+* [Aan de slag met Apache Kafka op HDInsight](apache-kafka-get-started.md)
+* [Apache Spark gebruiken met Apache Kafka op HDInsight](../hdinsight-apache-spark-with-kafka.md)
+* [Apache Storm gebruiken met Apache Kafka op HDInsight](../hdinsight-apache-storm-with-kafka.md)
+* [Verbinding maken met Apache Kafka via een Azure-Virtual Network](apache-kafka-connect-vpn-gateway.md)

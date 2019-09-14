@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: 59574f0a07f4ecc145f2b0efd430e65cbdebcc65
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: d76ea317271ae0e8eb0d54fcfee5dc005d836fc1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991562"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984947"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Gegevens in Azure Data Lake Storage Gen2 analyseren met behulp van Power BI
 
@@ -28,7 +28,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
 > * Een opslag account met een hiërarchische naam ruimte. Volg [deze](data-lake-storage-quickstart-create-account.md) instructies om er een te maken.
 > In dit artikel wordt ervan uitgegaan dat u een account `myadlsg2`hebt gemaakt met de naam.
 > * Een voor beeld van een `Drivers.txt` gegevens bestand bevindt zich in uw opslag account.
-> U kunt dit voor beeld downloaden van [Azure data Lake Git-opslag plaats](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceDataDrivers.txt)en dat bestand vervolgens uploaden naar uw opslag account.
+> U kunt dit voor beeld downloaden van [Azure data Lake Git-opslag plaats](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)en dat bestand vervolgens uploaden naar uw opslag account.
 > * **Power bi Desktop**. U kunt dit downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=45331). 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Een rapport maken in Power BI Desktop
@@ -83,7 +83,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
 
 13. Laat ons een cirkel diagram maken om de Stuur Programma's in elke plaats voor een bepaald land weer te geven. U doet dit door de volgende selecties te maken.
 
-    Klik op het tabblad visualisaties op het symbool voor een cirkel diagram.
+    Klik op het tabblad **Visualisaties** op het symbool voor een cirkel diagram.
 
     ![Visualisaties](media/data-lake-storage-use-power-bi/visualizations.png)
 

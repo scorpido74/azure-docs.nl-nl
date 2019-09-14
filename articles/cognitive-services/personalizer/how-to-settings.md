@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: cd67f435ff390267e01acd99594b9063db4c4ee1
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 376c2efbf3269092d0534870108ef6d753f8743e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559088"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962526"
 ---
 # <a name="personalizer-settings"></a>Persoonlijke instellingen
 
@@ -67,13 +67,13 @@ Het meest recente model, dat is getraind vanuit belonings-API-aanroepen van elke
 
 High model-update frequenties zijn nuttig voor situaties waarin u de wijzigingen in het gedrag van gebruikers nauw keurig wilt bijhouden. Voor beelden zijn onder andere sites die worden uitgevoerd op Live nieuws, virale inhoud of Live-product biedingen. In deze scenario's kunt u een frequentie van 15 minuten gebruiken. Voor de meeste gebruiks voorbeelden is een lagere update frequentie van kracht. Update frequenties van één minuut zijn handig bij het opsporen van fouten in de code van een toepassing met behulp van Personaler, het uitvoeren van demo's of het interactief testen van machine learning aspecten.
 
-![Met de model update frequentie stelt u in hoe vaak een nieuw Personalr model opnieuw wordt getraind.](media/settings/configure-model-update-frequency-settings.png)
+![Met de model update frequentie stelt u in hoe vaak een nieuw Personalr model opnieuw wordt getraind.](media/settings/configure-model-update-frequency-settings-15-minutes.png)
 
 Wanneer u deze instelling hebt gewijzigd, selecteert u **Opslaan**.
 
 ### <a name="data-retention"></a>Bewaartijd van gegevens
 
-**Gegevens retentie periode** instellen hoeveel dagen persoonlijke gegevens logboeken worden bewaard. Eerdere gegevens logboeken zijn vereist voor het uitvoeren van [offline](concepts-offline-evaluation.md)-evaluaties, die worden gebruikt om de effectiviteit van personaler te meten en het trainings beleid te optimaliseren.
+**Gegevens retentie periode** instellen hoeveel dagen persoonlijke gegevens logboeken worden bewaard. Eerdere gegevens logboeken zijn vereist voor het uitvoeren van [offline-evaluaties](concepts-offline-evaluation.md), die worden gebruikt om de effectiviteit van personaler te meten en het trainings beleid te optimaliseren.
 
 Wanneer u deze instelling hebt gewijzigd, selecteert u **Opslaan**.
 

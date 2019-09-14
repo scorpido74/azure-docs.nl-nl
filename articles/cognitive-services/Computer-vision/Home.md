@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4f823b62237e8018f092d7a94fb479f7fbdd38da
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 915388b850b1b046dae91a20540881480694a944
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565764"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967047"
 ---
 # <a name="what-is-computer-vision"></a>Wat is Computer Vision?
 
@@ -75,6 +75,6 @@ Zoals geldt voor alle Cognitive Services, dienen ontwikkelaars die de Computer V
 
 Aan de slag met Computer Vision door een quickstart te volgen:
 
-- [Snelstart: Een afbeelding analyseren](quickstarts-sdk/csharp-analyze-sdk.md)
-- [Snelstart: Handgeschreven tekst extraheren](quickstarts-sdk/csharp-hand-text-sdk.md)
-- [Snelstart: Een miniatuur genereren](quickstarts-sdk/csharp-thumb-sdk.md)
+- [Snelstart: Computer Vision .NET SDK](quickstarts-sdk/csharp-sdk.md)
+- [Snelstart: Computer Vision python-SDK](quickstarts-sdk/python-sdk.md)
+- [Snelstart: Computer Vision Java-SDK](quickstarts-sdk/java-sdk.md)

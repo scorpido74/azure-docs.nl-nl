@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 69631b39403dedab56ed75cb145d464c0e1f747c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: HT
+ms.openlocfilehash: 3a95d52f2a0aa07094f91b0653fcb94ff1f88d44
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935347"
+ms.locfileid: "70959002"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Gids voor het oplossen van problemen Azure Storage Explorer
 
@@ -264,6 +264,7 @@ Het lokale referentie beheer varieert afhankelijk van de Linux-distributie. Als 
 1. Open uw lokale hulp programma voor referentie beheer, Zoek uw opgeslagen referenties.
 2. Zoek naar vermeldingen met de `<connection_type_key>/<corrupted_connection_name>` sleutel ( `StorageExplorer_CustomConnections_Accounts_v1/account1`bijvoorbeeld).
 3. Verwijder deze vermeldingen en voeg de verbindingen weer toe.
+---
 
 Als deze fout blijft optreden nadat u deze stappen hebt uitgevoerd, of als u wilt delen wat u denkt dat de verbindingen zijn beschadigd, [opent u een probleem](https://github.com/microsoft/AzureStorageExplorer/issues) op onze github-pagina.
 

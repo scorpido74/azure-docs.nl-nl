@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 6d87e46b522bb7c7e55c711194cc6456fcd89e92
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: ecb173a31e6c61991eba1bb7525f6b978d9fff72
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736215"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960073"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Quickstart: Een R-script uitvoeren op een ML Services-cluster in azure HDInsight met behulp van de RStudio-server
 
@@ -37,7 +37,7 @@ De eerste keer dat u zich aanmeldt, moet u twee keer verifiëren. Geef bij de ee
 
 Zodra u verbonden bent, moet het scherm vergelijkbaar zijn met de volgende schermafbeelding:
 
-![Basisgegevens van clusters](./media/ml-services-quickstart-job-rstudio/connect-to-r-studio.png)
+![Basisgegevens van clusters](./media/ml-services-quickstart-job-rstudio/connect-to-r-studio1.png)
 
 ## <a name="use-a-compute-context"></a>Een compute-context gebruiken
 

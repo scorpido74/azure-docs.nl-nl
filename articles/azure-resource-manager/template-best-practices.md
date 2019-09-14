@@ -1,22 +1,17 @@
 ---
 title: Aanbevolen procedures voor Azure Resource Manager sjablonen
 description: Hierin worden aanbevolen benaderingen beschreven voor het ontwerpen van Azure Resource Manager sjablonen. Biedt suggesties om veelvoorkomende problemen te voor komen bij het gebruik van sjablonen.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/16/2019
+ms.date: 09/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 361fcc6b60e863ee43d348cedd6b1571f3f563a2
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: bd3167b7f0daf7ebd595b2c33b1147140415c3de
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812901"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983827"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Aanbevolen procedures voor Azure Resource Manager sjabloon
 
@@ -47,7 +42,8 @@ Wanneer u resources implementeert voor een resource groep, slaat de resource gro
 Als de regio van de resource groep tijdelijk niet beschikbaar is, kunt u resources in de resource groep niet bijwerken omdat de meta gegevens niet beschikbaar zijn. De resources in andere regio's zullen nog steeds werken zoals verwacht, maar u kunt ze niet bijwerken. Als u het risico wilt minimaliseren, zoekt u de resource groep en de resources in dezelfde regio.
 
 ## <a name="parameters"></a>Parameters
-De informatie in deze sectie kan nuttig zijn wanneer u met [para meters](resource-group-authoring-templates.md#parameters)werkt.
+
+De informatie in deze sectie kan nuttig zijn wanneer u met [para meters](template-parameters.md)werkt.
 
 ### <a name="general-recommendations-for-parameters"></a>Algemene aanbevelingen voor para meters
 
@@ -149,7 +145,7 @@ De informatie in deze sectie kan nuttig zijn wanneer u met [para meters](resourc
 
 ## <a name="variables"></a>Variabelen
 
-De volgende informatie kan nuttig zijn wanneer u met [variabelen](resource-group-authoring-templates.md#variables)werkt:
+De volgende informatie kan nuttig zijn wanneer u met [variabelen](template-variables.md)werkt:
 
 * Gebruik Camel Case voor namen van variabelen.
 
@@ -169,7 +165,7 @@ De volgende informatie kan nuttig zijn wanneer u met [variabelen](resource-group
 
 ## <a name="resource-dependencies"></a>Bronafhankelijkheden
 
-Wanneer u wilt bepalen welke [afhankelijkheden](resource-group-define-dependencies.md) er moeten worden ingesteld, gebruikt u de volgende richt lijnen:
+Wanneer u wilt [](resource-group-define-dependencies.md) bepalen welke afhankelijkheden er moeten worden ingesteld, gebruikt u de volgende richt lijnen:
 
 * Gebruik de functie **Reference** en geef de naam van de resource door om een impliciete afhankelijkheid in te stellen tussen resources die een eigenschap moeten delen. Voeg geen expliciet `dependsOn` element toe wanneer u al een impliciete afhankelijkheid hebt gedefinieerd. Deze aanpak vermindert het risico van overbodige afhankelijkheden.
 
@@ -286,7 +282,7 @@ De volgende informatie kan nuttig zijn wanneer u met [resources](resource-group-
 
 ## <a name="outputs"></a>outputs
 
-Als u een sjabloon gebruikt voor het maken van open bare IP-adressen, neemt u een [sectie outputs](resource-group-authoring-templates.md#outputs) op waarmee details van het IP-adres en de Fully QUALIFIED domain name (FQDN) worden geretourneerd. U kunt uitvoerwaarden gebruiken om op te halen eenvoudig meer informatie over openbare IP-adressen en FQDN's na de implementatie.
+Als u een sjabloon gebruikt voor het maken van open bare IP-adressen, neemt u een [sectie outputs](template-outputs.md) op waarmee details van het IP-adres en de Fully QUALIFIED domain name (FQDN) worden geretourneerd. U kunt uitvoerwaarden gebruiken om op te halen eenvoudig meer informatie over openbare IP-adressen en FQDN's na de implementatie.
 
 ```json
 "outputs": {

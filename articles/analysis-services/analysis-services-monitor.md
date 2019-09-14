@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5431dd74629b9ed76a6a072d8ada286ce71a7633
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7c7aaf911930f83775f66c47377bc68edb059519
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596084"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958973"
 ---
 # <a name="monitor-server-metrics"></a>Metrische servergegevens bewaken
 
@@ -55,14 +55,18 @@ Gebruik deze tabel om te bepalen welke metrische gegevens het meest geschikt zij
 |MemoryLimitLow|Geheugen: Geheugen limiet laag|Bytes|Average|Limiet voor weinig geheugen, van configuratie bestand.|
 |MemoryLimitVertiPaq|Geheugen: Geheugen limiet VertiPaq|Bytes|Average|In-Memory limiet, van configuratie bestand.|
 |MemoryUsage|Geheugen: Geheugengebruik|Bytes|Average|Geheugen gebruik van het Server proces zoals gebruikt bij het berekenen van de prijs voor het schonen van geheugen. Gelijk aan Counter Process\PrivateBytes plus de grootte van gegevens die zijn toegewezen door het geheugen, waarbij elk geheugen wordt genegeerd dat is toegewezen aan of toegewezen door de in-Memory Analytics Engine (VertiPaq) die de geheugen limiet van het engine overschrijdt.|
+|private_bytes_metric|Privébytes |Bytes|Average|De totale hoeveelheid geheugen die het Analysis Services engine proces en de mashup-container processen hebben toegewezen, exclusief geheugen gedeeld met andere processen.|
+|virtual_bytes_metric|Virtuele bytes |Bytes|Average|De huidige grootte van de virtuele adres ruimte die Analysis Services engine proces en mashup-container processen gebruiken.|
+|mashup_engine_private_bytes_metric|M-engine-eigen bytes |Bytes|Average|De totale hoeveelheid geheugen-mashup-container processen zijn toegewezen, exclusief geheugen gedeeld met andere processen.|
+|mashup_engine_virtual_bytes_metric|M-engine virtuele bytes |Bytes|Average|De huidige grootte van de mashup-container processen van de virtuele adres ruimte wordt gebruikt.|
 |Quota|Geheugen: Quota|Bytes|Average|Huidig geheugen quotum, in bytes. Geheugen quota wordt ook wel een geheugen toekenning of geheugen reservering genoemd.|
 |QuotaBlocked|Geheugen: Quota geblokkeerd|Count|Average|Het huidige aantal quotum aanvragen dat is geblokkeerd totdat andere geheugen quota zijn vrijgemaakt.|
 |VertiPaqNonpaged|Geheugen: VertiPaq Nonpaged|Bytes|Average|Geheugen bytes vergrendeld in de werkset voor gebruik door de in-Memory engine.|
 |VertiPaqPaged|Geheugen: VertiPaq Paged|Bytes|Average|Bytes van wisselbaar geheugen die in gebruik zijn voor in-Memory gegevens.|
 |ProcessingPoolJobQueueLength|Wachtrij lengte van de pool taak wordt verwerkt|Count|Average|Het aantal niet-I/O-taken in de wachtrij van de verwer kende thread pool.|
-|RowsConvertedPerSec|Verwerken: Geconverteerde rijen per seconde|CountPerSecond|Average|Het aantal rijen dat tijdens de verwerking is geconverteerd.|
-|RowsReadPerSec|Verwerken: Gelezen rijen per seconde|CountPerSecond|Average|Het aantal rijen dat van alle relationele data bases is gelezen.|
-|RowsWrittenPerSec|Verwerken: Aantal geschreven rijen per seconde|CountPerSecond|Average|Het aantal rijen dat tijdens de verwerking is geschreven.|
+|RowsConvertedPerSec|Bezig Geconverteerde rijen per seconde|CountPerSecond|Average|Het aantal rijen dat tijdens de verwerking is geconverteerd.|
+|RowsReadPerSec|Bezig Gelezen rijen per seconde|CountPerSecond|Average|Het aantal rijen dat van alle relationele data bases is gelezen.|
+|RowsWrittenPerSec|Bezig Aantal geschreven rijen per seconde|CountPerSecond|Average|Het aantal rijen dat tijdens de verwerking is geschreven.|
 |qpu_metric|QPU|Count|Average|QPU. Bereik 0-100 voor S1, 0-200 voor S2 en 0-400 voor S4|
 |QueryPoolBusyThreads|Query's pool bezette threads|Count|Average|Het aantal actieve threads in de query thread pool.|
 |SuccessfullConnectionsPerSec|Geslaagde verbindingen per seconde|CountPerSecond|Average|Snelheid van geslaagde verbindings voltooiingen.|

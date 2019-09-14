@@ -1,71 +1,71 @@
 ---
-title: Azure Marketplace en AppSource publicatiehandleiding voor
-description: Een overzicht van de Azure Marketplace en Microsoft AppSource voor uitgevers van app- en service.
+title: Publicatie handleiding voor Azure Marketplace en AppSource
+description: Een overzicht van de Azure Marketplace en Microsoft AppSource voor app-en service-Publishers.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 58591302280c67dbd0f69ebe0bc47cf95c8bfc18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd6b09a1130e50fae7bd83579a0f176af0b5b9cd
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956740"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962612"
 ---
-# <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace en AppSource publicatiehandleiding voor
+# <a name="azure-marketplace-and-appsource-publishing-guide"></a>Publicatie handleiding voor Azure Marketplace en AppSource
 
-De Marketplace publicatiehandleiding voor is ontworpen om u te helpen nieuwe en bestaande uitgevers informatie over het gebruik van storefronts in de [Azure Marketplace](https://azuremarketplace.microsoft.com) en [Microsoft AppSource](https://appsource.microsoft.com) hun bedrijfsactiviteiten in samenwerking met Microsoft door toepassingen en services weer te geven.
+De Marketplace-publicatie handleiding is ontworpen om nieuwe en bestaande uitgevers te helpen bij het gebruik van de winkel op de [Azure Marketplace](https://azuremarketplace.microsoft.com) en [Microsoft AppSource](https://appsource.microsoft.com) om hun bedrijf in samen werking met micro soft te laten groeien door toepassingen aan te bieden en Onderzoeksservices.
 
 >[!Note]
->De Marketplace hier verwijst naar zowel Azure Marketplace en AppSource.  Zie [Marketplace een, twee storefronts](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) voor meer informatie.
+>De Marketplace verwijst naar Azure Marketplace en AppSource.  Bekijk [één Marketplace, twee winkelen](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) voor meer informatie.
 
-Deze handleiding wordt ingegaan op de volgende onderwerpen: 
-*   Wat de Marketplace is en hoe het werkt 
-*   Het verschil tussen de Azure Marketplace en AppSource storefronts 
-*   De voordelen van die deel uitmaken van de Marketplace 
-*   Hoe om te worden van een uitgever en weer van uw toepassing of service 
-*   Hoe u uw bedrijfsactiviteiten in 
+Deze hand leiding bevat de volgende onderwerpen: 
+*   Wat is de Marketplace en hoe werkt het? 
+*   Het verschil tussen Azure Marketplace-en AppSource-winkel 
+*   De voor delen van deelname aan Marketplace 
+*   Een uitgever worden en uw toepassing of service weer geven 
+*   Hoe breidt u uw bedrijf uit 
 
-Deze handleiding bevat technische en zakelijke informatie over de stappen u moet uitvoeren voordat u uw toepassingen en services. Gebruik de inhoudsopgave naar verschillende secties van de handleiding en Ga rechtstreeks naar belangrijke onderwerpen.
+Deze hand leiding bevat technische en zakelijke informatie over de stappen die u moet nemen voordat u uw toepassingen en services vermeldt. Gebruik de inhouds opgave om naar verschillende secties van de hand leiding te gaan en rechtstreeks naar de belangrijkste onderwerpen te gaan.
 
-Als u vragen hebt over de Azure Marketplace en AppSource, stuur ons een bericht onder **probleemtype** > **Marketplace Onboarding**.  Onze Marketplace Publisher Onboarding-Team worden helpen u graag! 
+Als u vragen hebt over Azure Marketplace en AppSource, kunt u ons een bericht sturen onder **probleem type** > **Marketplace voor onboarding**.  Het team voor de voor bereiding van Marketplace-uitgevers is blij om te helpen! 
 
-## <a name="benefits-of-participating-in-the-marketplace"></a>Voordelen van deelname aan Marketplace 
+## <a name="benefits-of-participating-in-the-marketplace"></a>Voor delen van deelname aan Marketplace 
 
-De Marketplace is een launchpad voor gezamenlijke go-to-market-activiteiten met Microsoft die kunnen helpen uw zakelijke groei te versnellen. Met behulp van starten promotie, genereren van de vraag en gezamenlijke verkoop en marketing, kunnen uw Marketplace-aanbiedingen zijn de spil van uw cloud-business-engine. Er zijn geen kosten voor uw deelname aan Marketplace.
+Marketplace is het lanceer paneel voor gezamenlijke go-to-Market-activiteiten met micro soft waarmee u de groei van uw bedrijf kunt versnellen. Met start promotie, het genereren van aanvragen en gezamenlijke verkoop en marketing kunnen uw Marketplace-aanbiedingen de hart van uw zakelijke cloud-Engine zijn. Er zijn geen kosten verbonden aan deelname aan Marketplace.
 
-Ons doel is om klanten van Microsoft met de aanbevolen oplossingen die onze partnerecosysteem biedt verbinding te maken. Om dit te doen, ondersteunen we u in uw traject, van onboarding van publicatie en groei. 
+Ons doel is om micro soft-klanten te verbinden met de beste oplossingen die onze partner ecosysteem biedt. Hiervoor ondersteunen wij u tijdens uw traject, van onboarding tot publicaties en groei. 
 
-Profiteer van de mogelijkheden in de Marketplace om uw bedrijf laten groeien.
+Profiteer van de mogelijkheden op Marketplace om uw bedrijf uit te breiden.
 
-### <a name="expand-to-new-markets-and-segments-and-generate-new-sales-opportunities"></a>Uitbreiden naar nieuwe markten en segmenten en nieuwe verkoopkansen genereren
+### <a name="expand-to-new-markets-and-segments-and-generate-new-sales-opportunities"></a>Breid uit naar nieuwe markten en segmenten en Genereer nieuwe verkoop kansen
 
-Gebruik de Marketplace als een kanaal voor toegang tot nieuwe markten, segmenten en gebruikers van Microsoft-cloud met uw portfolio van oplossingen. Genereer nieuwe leads voor marketing, verkoopactiviteiten opnemen en nieuwe leads voor verkoopkansen. Profiteren van gezamenlijke marketing- en activiteiten aan meer klanten.
+Gebruik Marketplace als een kanaal om toegang te krijgen tot nieuwe markten, segmenten en micro soft-Cloud gebruikers met uw port Folio van oplossingen. Genereer nieuwe marketing leads en nurture nieuwe leads naar verkoop kansen. Profiteer van gezamenlijke marketing-en verkoop activiteiten om meer klanten te krijgen.
 
-### <a name="enhance-business-value-and-increase-deal-size-with-existing-and-new-customers"></a>Waarde voor het bedrijf te verbeteren en vergroot de omvang van de deal met bestaande en nieuwe klanten 
+### <a name="enhance-business-value-and-increase-deal-size-with-existing-and-new-customers"></a>Verbeter de bedrijfs waarde en verg root de deal grootte met bestaande en nieuwe klanten 
 
-Upsell en cross-selling uw oplossingen door problemen van klanten nadat u werkbelastingen naar de cloud verplaatsen. Als u verkopen of via de Marketplace distribueren, kunt u verkoop cycli verminderen, projecten versnellen en deal winstgevendheid verhogen door het verkopen van complete oplossingen die doel specifieke workloads en scenario's voor de bedrijfstak. 
+Verkoop uw oplossingen door de problemen op te lossen en te verhelpen door de werk belastingen naar de cloud te verplaatsen. Als u via Marketplace verkoopt of implementeert, kunt u verkoop cycli verminderen, projecten versnellen en de winstgevendheid van deals verhogen door volledige oplossingen te verkopen die gericht zijn op specifieke werk belastingen en branche scenario's. 
 
 ### <a name="get-actionable-insights"></a>Inzichten verkrijgen waarop actie kan worden ondernomen 
 
-Verkrijg inzicht in de prestaties van uw aanbiedingen via de inzichten en analyses die beschikbaar voor u via de Marketplace zijn. Krijg meer informatie over campagneprestaties, orders en betalingen en hoe u campagneactiviteiten voor uw oplossing te maximaliseren.
+Krijg inzicht in de prestaties van uw aanbiedingen via de inzichten en analyses die voor u beschikbaar zijn via Marketplace. Meer informatie over campagne prestaties, orders en uitbetalingen en het maximaliseren van campagne activiteiten voor uw oplossing.
 
-### <a name="marketplace-go-to-market-benefits"></a>Marketplace-go-to-market-voordelen 
+### <a name="commercial-marketplace-benefits"></a>Commerciële Marketplace-voor delen 
 
-Nieuwe aanbiedingen op Marketplace komen in aanmerking voor een groot aantal gratis voordelen voor partners hun bedrijfsactiviteiten in de Marketplace. Deze voordelen kunnen worden onderverdeeld in de volgende categorieën: 
+Nieuwe aanbiedingen in de Marketplace komen in aanmerking voor een verscheidenheid aan gratis voor delen, zodat partners hun bedrijf op Marketplace kunnen verg Roten. Deze voor delen vallen in de volgende categorieën: 
 
-*   Technische: Alles wat die u nodig hebt om uw toepassing gereed is voor implementatie. Technische ondersteuning van ontwerp van toepassingen en -architectuur te ontwerpen, op Azure-tegoed voor ontwikkeling en testen. 
+*   Documentatie Alles wat u nodig hebt om uw toepassing gereed te laten zijn voor Lance ring. Van technische ondersteuning, toepassings ontwerp en architectuur ontwerp tot Azure-tegoed voor ontwikkeling en testen. 
 
-*   Co-marketing: Alles wat die u nodig hebt om te starten van uw aanbieding. Toegang tot gratis Microsoft Go-To-Market Fundamentals starten om te starten en stuur uw oplossing. U zich mogelijk ook in aanmerking komen voor aanvullende Microsoft marketing campagne insluitings- en kansen om te worden aanbevolen in de Marketplace.
+*   Co-marketing: Alles wat u nodig hebt om uw aanbieding te starten. Krijg toegang tot gratis micro Soft Go-to-Market-start beginselen zodat u uw oplossing kunt starten en promoten. U kunt ook in aanmerking komen voor aanvullende micro soft-marketing campagne en mogelijkheden om te worden aangeboden in de Marketplace.
 
-*   Verkoopactiviteiten: Beginnen met of versnel uw overstap naar uw verkopen met Microsoft via de Marketplace. Toegang tot programma's en ondersteuning om het gezamenlijke verkoop met Microsoft-teams te stimuleren.
+*   Co-Sell: Begin of Versnel uw reis om te verkopen met micro soft via Marketplace. Krijg toegang tot Program ma's en ondersteuning om gezamenlijke omzet te stimuleren met micro soft-teams.
 
-Nadat u [indienen van uw oplossing](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) op Marketplace, onze voorbereidingsteam neemt contact op met u ter ondersteuning van uw publicatie-ervaring.  Zie [over het maken van een account Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) voor meer informatie.
+Nadat u [uw oplossing](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) naar Marketplace hebt verzonden, neemt het voorbereidings team contact met u op om uw publicatie ervaring te ondersteunen.  Zie [een partner centrum-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) voor meer informatie.
 
-Zie voor meer informatie over de voordelen van Microsoft Go-To-Market en manieren om uw bedrijfsactiviteiten in de Marketplace [Microsoft Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm).
+Meer informatie over de [voor delen van uw commerciële Marketplace](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk uitgebreide informatie over cloudonderwerpen marketplace door te verkennen van de inhoudsopgave aan de linkerkant. 
+Bekijk gedetailleerde informatie over onderwerpen over Cloud Marketplace door de inhouds opgave naar links te verkennen. 

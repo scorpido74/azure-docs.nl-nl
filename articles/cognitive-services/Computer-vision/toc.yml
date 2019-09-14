@@ -7,6 +7,14 @@
       href: Home.md
 - name: Snelstartgidsen
   items:
+    - name: De client-SDK gebruiken
+      items:
+        - name: .NET SDK
+          href: quickstarts-sdk/csharp-sdk.md
+        - name: Python-SDK
+          href: quickstarts-sdk/python-sdk.md
+        - name: Java-SDK
+          href: quickstarts-sdk/java-sdk.md
     - name: Met behulp van de REST API
       items:
         - name: Een externe afbeelding analyseren
@@ -75,18 +83,6 @@
           items:
             - name: Python
               href: QuickStarts/python-domain.md
-    - name: De .NET SDK gebruiken
-      items:
-        - name: Een afbeelding analyseren
-          href: quickstarts-sdk/csharp-analyze-sdk.md
-        - name: Een miniatuur genereren
-          href: quickstarts-sdk/csharp-thumb-sdk.md
-        - name: Tekst extraheren
-          href: quickstarts-sdk/csharp-hand-text-sdk.md
-    - name: De Python-SDK gebruiken
-      href: quickstarts-sdk/python-sdk.md
-    - name: De Java-SDK gebruiken
-      href: quickstarts-sdk/java-sdk.md
 - name: Zelfstudies
   items:
     - name: Metagegevens genereren voor afbeeldingen

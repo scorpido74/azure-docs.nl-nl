@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ae329bd031a2a57ea4fc2eec9cde1e532439bb4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7caf6eff9f5bd497ab6c3a500f3940549b198576
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561701"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959041"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Huisstijl van uw organisatie Azure Active Directory-aanmelden pagina toevoegen
 Het logo en de aangepaste kleurenschema's van uw organisatie gebruiken om een consistent uiterlijk-en-werking op uw Azure Active Directory (Azure AD) aanmeldingspagina's. Uw aanmeldingspagina's worden weergegeven wanneer gebruikers zich aanmelden bij uw organisatie op basis van een web-apps, zoals Office 365, dat gebruikmaakt van Azure AD als id-provider.
@@ -29,7 +29,7 @@ Het logo en de aangepaste kleurenschema's van uw organisatie gebruiken om een co
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Uw Azure AD-aanmeldingspagina aanpassen
 U kunt uw Azure AD-aanmelden pagina's aanpassen, die worden weergegeven wanneer gebruikers zich aanmelden bij apps van de tenant-specifieke van uw organisatie, zoals [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), of als een domeinvariabele, zoals wordtdoorgegeven[ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com).
 
-Uw aangepaste huis stijl wordt niet onmiddellijk weer gegeven wanneer uw gebruikers naar sites gaan,\.zoals www-Office.com. In plaats daarvan wordt de gebruiker heeft om aan te melden voordat uw aangepaste huisstijl weergegeven.
+Uw aangepaste huis stijl wordt niet onmiddellijk weer gegeven wanneer uw gebruikers naar sites gaan,\.zoals www-Office.com. In plaats daarvan wordt de gebruiker heeft om aan te melden voordat uw aangepaste huisstijl weergegeven. Nadat de gebruiker zich heeft aangemeld, kan het 15 minuten of langer duren voordat de huis stijl wordt weer gegeven. 
 
 > [!NOTE]
 > Alle huisstijl elementen zijn optioneel. Als u een logo in banner met geen afbeelding opgeeft, wordt de aanmeldingspagina uw logo met een standaardinstallatiekopie van achtergrond van de doelsite (bijvoorbeeld Office 365) weergegeven.<br><br>Bovendien branding-aanmeldingspagina niet meegenomen naar persoonlijke Microsoft-accounts. Als uw gebruikers- of zakelijke gasten zich hebt aangemeld met een persoonlijk Microsoft-account, wordt niet de aanmeldingspagina doorgevoerd in de huisstijl van uw organisatie.

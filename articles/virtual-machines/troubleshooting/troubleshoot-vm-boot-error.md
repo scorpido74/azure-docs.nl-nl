@@ -1,5 +1,5 @@
 ---
-title: Opstart fout van de virtuele machine van Azure
+title: Azure Virtual Machine-opstartfout
 description: Het opstarten van de virtuele machine is mislukt omdat de virtuele machine een herstel console heeft opgegeven
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 14bf7b289f3d03dd1437a18b0b5bd35fdec567ea
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9995b9049378a0ab4f3450ec577d034598d171e9
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143308"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984830"
 ---
 # <a name="vm-boot-error"></a>Fout bij het opstarten van de virtuele machine
 
@@ -48,11 +48,11 @@ Volg de onderstaande stappen, afhankelijk van de fout die u ontvangt:
 
     2. Voer vervolgens de volgende opdracht uit om de configuratie opnieuw te genereren:`grub2-mkconfig -o /boot/grub2/grub.cfg`
 
-   * Als het ontbrekende bestand is `/boot/grub/menu.lst`, is deze fout voor oudere versies van het besturings systeem (**RHEL 6. x**, **CentOS 6. x** en **Ubuntu 14,04**), zodat de opdrachten kunnen worden uitgesteld. U moet een oude server opzetten en testen om er zeker van te zijn dat de juiste opdrachten worden weer gegeven.
+   * Als het ontbrekende bestand is `/boot/grub/menu.lst`, is deze fout voor oudere versies van het besturings systeem (**RHEL 6. x**, **CentOS 6. x** en **Ubuntu 14,04**), zodat de opdrachten kunnen verschillen. U moet een oude server opzetten en testen om er zeker van te zijn dat de juiste opdrachten worden weer gegeven.
 
 ### <a name="error---no-such-partition"></a>Fout-er is geen partitie
 
-* Als u het fout bericht **geen dergelijke partitie**krijgt, raadpleegt u scenario met de [fout melding ' geen dergelijke partitie ' tijdens het starten van de virtuele machine na een poging om het station van het besturings systeem](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/)uit te breiden.
+* Als u het fout bericht **geen dergelijke partitie**krijgt, raadpleegt u scenario met de [fout melding ' geen dergelijke partitie ' tijdens het starten van de virtuele machine na een poging om het station van het besturings systeem uit te breiden](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/).
 
 ### <a name="error---grubcfg-file-not-found"></a>Fout-grub. cfg-bestand niet gevonden
 

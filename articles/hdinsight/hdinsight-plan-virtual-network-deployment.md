@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 135855ee33f783e85b398c7f9716c2c897633de9
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: a0c9c729081da9f6c7b8f549a4906d432af6ecb2
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779546"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961647"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Een virtueel netwerk voor Azure HDInsight plannen
 
@@ -212,7 +212,7 @@ Netwerk verkeer in een virtuele Azure-netwerken kan worden beheerd met behulp va
 
 Als beheerde service vereist HDInsight onbeperkte toegang tot de HDInsight-status-en beheer Services voor binnenkomend en uitgaand verkeer van het VNET. Wanneer u Nsg's gebruikt, moet u ervoor zorgen dat deze services nog steeds kunnen communiceren met het HDInsight-cluster.
 
-![Diagram van HDInsight-entiteiten die zijn gemaakt in een aangepast Azure-VNET](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
+![Diagram van HDInsight-entiteiten die zijn gemaakt in een aangepast Azure-VNET](./media/hdinsight-plan-virtual-network-deployment/hdinsight-vnet-diagram.png)
 
 ### <a name="hdinsight-with-network-security-groups"></a>HDInsight met netwerk beveiligings groepen
 
@@ -220,17 +220,17 @@ Als u van plan bent om **netwerk beveiligings groepen** te gebruiken om netwerk 
 
 1. Bepaal de Azure-regio die u wilt gebruiken voor HDInsight.
 
-2. Identificeer de IP-adressen die zijn vereist voor HDInsight. Zie [IP-adressen voor HDInsight-beheer](hdinsight-management-ip-addresses.md)voor meer informatie.
+2. Identificeer de IP-adressen die zijn vereist voor HDInsight. Zie voor meer informatie [HDInsight management IP addresses](hdinsight-management-ip-addresses.md) (IP-adressen voor HDInsight-beheer).
 
 3. Maak of wijzig de netwerk beveiligings groepen voor het subnet waarop u HDInsight wilt installeren.
 
-    * __Netwerk beveiligings groepen__: Allow inkomend verkeer op poort __443__ van de IP-adressen. Dit zorgt ervoor dat HDInsight-beheer Services het cluster kunnen bereiken van buiten het virtuele netwerk.
+    * __Netwerk beveiligings groepen__: Allow __Inkomend__ verkeer op poort __443__ van de IP-adressen. Dit zorgt ervoor dat HDInsight-beheer Services het cluster kunnen bereiken van buiten het virtuele netwerk.
 
 Zie [overzicht van netwerk beveiligings groepen](../virtual-network/security-overview.md)voor meer informatie over netwerk beveiligings groepen.
 
 ### <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>Uitgaand verkeer van HDInsight-clusters beheren
 
-Zie voor meer informatie over het beheren van uitgaand verkeer van HDInsight-clusters uitgaand [netwerk verkeer configureren beperking voor Azure HDInsight-clusters](hdinsight-restrict-outbound-traffic.md).
+Zie voor meer informatie over het beheren van uitgaand verkeer van HDInsight-clusters [uitgaand netwerk verkeer configureren beperking voor Azure HDInsight-clusters](hdinsight-restrict-outbound-traffic.md).
 
 #### <a name="forced-tunneling-to-on-premise"></a>Geforceerde tunneling naar on-premises
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: pabutler
-ms.openlocfilehash: 98d33dd1aad726d4da8499006166dfd2c043378f
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 40170540458b7bc7ddb30f88117d472858937e8c
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977155"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962939"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Gebruikskenmerken van klanten van Azure-partners
 
@@ -247,7 +247,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>Rapport
 
-U kunt het rapport voor de toewijzing van klant gebruik in uw partner centrum voor het analyseren van het dash board vinden. ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Als u het rapport wilt weer geven, moet u uw partner centrum referenties gebruiken om u aan te melden. Als u problemen ondervindt met een rapport of meldt, maakt u een ondersteunings aanvraag volgens de instructie in het gedeelte ondersteuning verkrijgen.
+U kunt het rapport voor de toewijzing van klant gebruik in uw partner centrum voor het analyseren van het dash board vinden. ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Als u het rapport wilt weer geven, moet u uw partner centrum referenties gebruiken om u aan te melden. Als u problemen ondervindt met een rapport of meldt, maakt u een ondersteunings aanvraag volgens de instructie in het gedeelte ondersteuning verkrijgen.
 
 Kies bijgehouden sjabloon in de keuze lijst van het type partner koppeling om het rapport weer te geven.
 
@@ -269,7 +269,7 @@ Wanneer u partner \<> software implementeert, kan micro soft de installatie van 
 
 Er zijn twee ondersteunings kanalen, afhankelijk van de problemen die u ondervindt.
 
-Als u problemen ondervindt in het partner centrum, zoals het weer geven van het rapport voor het gebruik van de klant en u zich hebt aangemeld, maakt u hier een ondersteunings aanvraag met het ondersteunings team van partner Center:[https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
+Als u problemen ondervindt in het partner centrum, zoals het weer geven van het rapport voor het gebruik van de klant en u zich hebt aangemeld, maakt u hier een ondersteunings aanvraag met het ondersteunings team van partner Center:[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
 ![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 

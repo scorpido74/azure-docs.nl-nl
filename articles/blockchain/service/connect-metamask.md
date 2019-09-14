@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 09/12/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 5b46c5b2e8f613d351442fdf3c8ae5ee2198f2da
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b89e75d406a738fb685bb3294dca8d79a2b9170c
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933990"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966553"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Quickstart: Een slim contract gebruiken om verbinding te maken en te implementeren
 
@@ -62,20 +62,13 @@ U hebt het Azure Block Chain service-eindpunt adres nodig om verbinding te maken
 Remix is een op een browser gebaseerde omgeving voor het ontwikkelen van volheid. U kunt met behulp van het gebruik van het Remix en de combi natie van intelligente contracten acties uitvoeren.
 
 1. Ga in de browser naar `https://remix.ethereum.org`.
-1. Selecteer **Uitvoeren**. 
-
-    Met het deel masker wordt uw **omgeving** ingesteld op het **injecteren van Web3** en **account** in uw netwerk.
-
-    ![Tabblad uitvoeren](./media/connect-metamask/injected-web3.png)
-
-1. Selecteer **nieuw bestand maken**.
+1. Selecteer in het tabblad **Start** onder **bestand**de optie **nieuw bestand** .
 
     Geef het nieuwe bestand `simple.sol`een naam.
 
     ![Bestand maken](./media/connect-metamask/create-file.png)
 
     Selecteer **OK**.
-
 1. Plak in de Remix-editor de volgende **eenvoudige info contract** code.
 
     ```solidity
@@ -99,14 +92,18 @@ Remix is een op een browser gebaseerde omgeving voor het ontwikkelen van volheid
     ```
 
     Het **eenvoudige contract** declareert een status variabele met de naam **saldo**. Er zijn twee functies gedefinieerd. Met de functie **toevoegen** wordt een getal toegevoegd om te **verdelen**. De functie **Get** retourneert de waarde **saldo**.
-
-1. Als u het contract wilt compileren, selecteert u de **compiler > beginnen te compileren**. Als dit lukt, wordt er een groen vak met de naam van het contract weer gegeven.
+1. Als u het contract wilt compileren, selecteert u eerst het deel venster volheid compiler en selecteert u vervolgens **Simple. Sol compileren**. 
 
     ![Verzamelen](./media/connect-metamask/compile.png)
 
-1. Als u het contract wilt uitvoeren, selecteert u het tabblad **uitvoeren** . Selecteer het **eenvoudige** contract en **Implementeer**het.
+1. Selecteer het deel venster **implementatie & uitvoeren** en stel vervolgens de **omgeving** in op **injected Web3** om verbinding te maken via het block Chain-lid.
 
-    ![Aangepaste RPC](./media/connect-metamask/deploy.png)
+    ![Tabblad uitvoeren](./media/connect-metamask/injected-web3.png)
+
+1. Selecteer het **eenvoudige** contract en **Implementeer**het.
+
+    ![Implementeren](./media/connect-metamask/deploy.png)
+
 
 1. Er wordt een melding over een gemaskeerde waarschuwing weer gegeven met de melding dat er onvoldoende middelen zijn om de trans actie uit te voeren.
 
@@ -125,13 +122,13 @@ Remix is een op een browser gebaseerde omgeving voor het ontwikkelen van volheid
 
     Er zijn twee **acties waarmee u** deze kaart kunt **toevoegen** aan de functies die in het contract zijn gedefinieerd.
 
-1. Als u een trans actie **toevoegen** wilt uitvoeren op de Block Chain, voert u een nummer in dat u wilt toevoegen en selecteert u vervolgens **toevoegen**.
+1. Als u een trans actie **toevoegen** wilt uitvoeren op de Block Chain, voert u een nummer in dat u wilt toevoegen en selecteert u vervolgens **toevoegen**. U ontvangt mogelijk een fout bericht over een gas-schatting van Remix. U stuurt de trans actie naar een persoonlijke Block chain die geen gas vereist. Selecteer **trans actie verzenden** om de trans actie af te dwingen.
 1. Net als bij het implementeren van het contract wordt er een melding over een gemaskeerde waarschuwing weer gegeven waarin u wordt gewaarschuwd dat er onvoldoende middelen zijn om de trans actie uit te voeren.
 
     Aangezien dit een privé netwerk in een consortium is, kunnen we de prijs van een gas instellen op nul.
 
 1.  Selecteer de kosten voor het **gas > bewerk > Geavanceerd**, stel de **aardgas prijs** in op 0 en selecteer **Opslaan**.
-1. Selecteer **bevestigen** om de trans actie op de Block Chain uit te voeren.
+1. Selecteer **bevestigen** om de trans actie naar het block chain te verzenden.
 1. Selecteer actie **ophalen** . Dit is een aanroep voor het opvragen van knooppunt gegevens. Een trans actie is niet nodig.
 1. In het deel venster fout opsporing van Remix ziet u details over de trans acties in de Block chain.
 

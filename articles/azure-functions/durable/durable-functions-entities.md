@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 419505404214d60a2c928770a34384f80c8446cb
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: HT
+ms.openlocfilehash: 99e61cef55bd97704063e4d2da90909d0376c327
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935871"
+ms.locfileid: "70961469"
 ---
 # <a name="entity-functions-preview"></a>Entiteit functies (preview-versie)
 
@@ -32,7 +32,7 @@ Entiteiten (soms entiteit *instanties*genoemd) worden geopend via een unieke id,
 
 Zo kan een *Counter* entity-functie worden gebruikt om de score in een online spel te bewaren. Elk exemplaar van het spel heeft een unieke entiteit-id, zoals `@Counter@Game1`, `@Counter@Game2`, enzovoort. Alle bewerkingen die gericht zijn op een bepaalde entiteit, moeten een entiteit-ID opgeven als para meter.
 
-## <a name="programing-models"></a>Programma modellen
+## <a name="programming-models"></a>Programmeer modellen
 
 Duurzame entiteiten ondersteunen twee verschillende programmeer modellen. Het eerste model is een dynamisch ' functionele ' model waarbij de entiteit wordt gedefinieerd door één functie. Het tweede model is een object gericht model waarin de entiteit is gedefinieerd door een klasse en methoden. Deze modellen en de programmeer modellen voor interactie met entiteiten worden beschreven in de volgende secties.
 

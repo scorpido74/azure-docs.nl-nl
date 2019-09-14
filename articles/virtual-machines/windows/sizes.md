@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/08/2019
 ms.author: jonbeck
-ms.openlocfilehash: e14a12543b95f3495e91e4a80880ac586ba911a0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 093e990365c2b33a873236f5d0ad6a1395e5e8fc
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088310"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967567"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Grootten voor virtuele Windows-machines in azure
 
@@ -32,7 +32,7 @@ In dit artikel worden de beschik bare grootten en opties voor de virtuele machin
 | [Geoptimaliseerde rekenkracht](sizes-compute.md)        | Fsv2           | Hoge CPU-geheugenverhouding. Goed voor webservers met gemiddeld verkeer, netwerkapparatuur, batchprocessen en toepassingsservers.        |
 | [Geoptimaliseerd geheugen](sizes-memory.md)         | Esv3, Ev3, Easv3, Eav3, Mv2, M, DSv2, dv2  | Hoge geheugen-naar-CPU-verhouding. Uiterst geschikt voor relationele-databaseservers, middelgrote tot grote caches en analysefuncties in het geheugen.                 |
 | [Geoptimaliseerde opslag](sizes-storage.md)        | Lsv2                | Hoge schijf doorvoer en IO ideaal voor Big Data, SQL, NoSQL data bases, data warehousing en grote transactionele data bases.  |
-| [GPU](sizes-gpu.md)            | NC, NCv2, NCv3, ND, NDv2 (preview), NV, NVv3 (preview-versie) | Gespecialiseerde virtuele machines gericht op zware grafische rendering en video bewerking, en model training en demijnen (ND) met diep gaande lessen. Beschikbaar met één of meerdere Gpu's.       |
+| [GPU](sizes-gpu.md)            | NC, NCv2, NCv3, ND, NDv2 (preview), NV, NVv3 | Gespecialiseerde virtuele machines gericht op zware grafische rendering en video bewerking, en model training en demijnen (ND) met diep gaande lessen. Beschikbaar met één of meerdere Gpu's.       |
 | [Krachtig rekenvermogen](sizes-hpc.md) | HB, HC,  H | Onze snelste en krachtigste CPU-virtuele machines met optionele netwerkinterfaces (RDMA) voor hoge doorvoer. |
 
 
@@ -58,7 +58,7 @@ Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij he
 
 ## <a name="benchmark-scores"></a>Benchmarkscores
 
-Meer informatie over reken prestaties voor Windows-Vm's met behulp van de coopmerking- [benchmark scores](compute-benchmark-scores.md).
+Meer informatie over reken prestaties voor Windows-Vm's met behulp van de [Coopmerking-benchmark scores](compute-benchmark-scores.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

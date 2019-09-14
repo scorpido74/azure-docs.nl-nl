@@ -1,6 +1,6 @@
 ---
-title: Beheer de toegang tot Azure-resources voor externe gebruikers met RBAC | Microsoft Docs
-description: Informatie over het beheren van toegang tot Azure-resources voor gebruikers van buiten een organisatie met behulp van op rollen gebaseerd toegangsbeheer (RBAC).
+title: Toegang tot Azure-resources voor externe gast gebruikers beheren met RBAC | Microsoft Docs
+description: Meer informatie over het beheren van toegang tot Azure-resources voor gebruikers buiten een organisatie met behulp van op rollen gebaseerd toegangs beheer (RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,123 +12,197 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 03/20/2018
+ms.date: 09/12/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: d919453816436366c00dde506210a2ed38cc69b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12f4b0276074b6732cf57443f51ef5d867f205a6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952203"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967391"
 ---
-# <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>Toegang tot Azure-resources voor externe gebruikers met RBAC beheren
+# <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>Toegang tot Azure-resources beheren voor externe gast gebruikers met RBAC
 
-Op rollen gebaseerd toegangsbeheer (RBAC) kunt beter beveiligingsbeheer voor grote organisaties en voor het midden-en kleinbedrijf werkt met externe deelnemers, leveranciers of freelancers die toegang tot bepaalde bronnen in uw omgeving, maar niet per se op de gehele nodig infrastructuur of alle scopes met betrekking tot facturering. Met RBAC kan de flexibiliteit van die eigenaar is van één Azure-abonnement beheerd door de administrator-account (service administrator-rol op een abonnementsniveau) en hebt u meerdere gebruikers uitgenodigd om te werken onder hetzelfde abonnement, maar zonder beheerdersrechten heeft voor het .
+Op rollen gebaseerd toegangs beheer (RBAC) biedt betere beveiliging voor grote organisaties en voor kleine en middel grote bedrijven met externe deel nemers, leveranciers of freelancers die toegang nodig hebben tot specifieke bronnen in uw omgeving, maar niet noodzakelijkerwijs de volledige infra structuur of een facturerings bereik. U kunt de mogelijkheden van [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) gebruiken om samen te werken met externe gast gebruikers en u kunt RBAC gebruiken om alleen de machtigingen te verlenen die gast gebruikers in uw omgeving nodig hebben.
 
-> [!NOTE]
-> Office 365-abonnementen of licenties voor Azure Active Directory (bijvoorbeeld: De toegang tot Azure Active Directory) is ingericht vanuit Microsoft 365-beheercentrum komen niet in aanmerking voor het gebruik van RBAC.
+## <a name="when-would-you-invite-guest-users"></a>Wanneer wilt u gast gebruikers uitnodigen?
 
-## <a name="assign-rbac-roles-at-the-subscription-scope"></a>RBAC-rollen op het abonnementsbereik toewijzen
+Hier volgen enkele voor beelden van scenario's waarin u gast gebruikers kunt uitnodigen voor uw organisatie en machtigingen kunt verlenen:
 
-Er zijn twee algemene voorbeelden bij RBAC is gebruikt (maar niet tot beperkt):
+- Een externe selfservice leverancier toestaan die alleen een e-mail account heeft voor toegang tot uw Azure-resources voor een project.
+- Een externe partner toestaan bepaalde bronnen of een volledig abonnement te beheren.
+- Ondersteunings medewerkers die niet in uw organisatie (zoals micro soft support) zijn, toestaan om tijdelijk toegang te krijgen tot uw Azure-resource om problemen op te lossen.
 
-* Met externe gebruikers van de organisaties (die geen deel uitmaakt van Azure Active Directory-tenant van de gebruiker met beheerdersrechten) uitgenodigd om bepaalde resources of het hele abonnement te beheren
-* Werken met gebruikers binnen de organisatie (ze zijn onderdeel van Azure Active Directory-tenant van de gebruiker), maar deel uitmaken van verschillende teams of groepen die gedetailleerde toegang tot het hele abonnement of bepaalde resourcegroepen of resource-scopes in de omgeving nodig
+## <a name="permission-differences-between-member-users-and-guest-users"></a>Machtigings verschillen tussen gebruikers van leden en gast gebruikers
 
-## <a name="grant-access-at-a-subscription-level-for-a-user-outside-of-azure-active-directory"></a>Toegang verlenen op het abonnementsniveau van een voor een gebruiker buiten de Azure Active Directory
+Systeem eigen leden van een map (gebruikers van leden) hebben andere machtigingen dan gebruikers die zijn uitgenodigd vanuit een andere directory als B2B-samenwerkings gast (gast gebruikers). Leden van de gebruiker kunnen bijvoorbeeld bijna alle Directory gegevens lezen terwijl gast gebruikers beperkte mapmachtigingen hebben. Zie [Wat zijn de standaard machtigingen voor gebruikers in azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md)voor meer informatie over gebruikers van leden en gast gebruikers.
 
-RBAC-rollen kunnen alleen worden verleend **eigenaren** van het abonnement. Daarom moet de beheerder zijn aangemeld als een gebruiker die deze rol heeft een vooraf toegewezen of het Azure-abonnement is gemaakt.
+## <a name="add-a-guest-user-to-your-directory"></a>Een gastgebruiker toevoegen aan uw map
 
-Selecteer 'Abonnementen' in en kies het gewenste abonnement in Azure portal, nadat u zich hebt aangemeld als beheerder.
-![abonnementsblade in Azure portal](./media/role-assignments-external-users/0.png) standaard, als de gebruiker met beheerdersrechten heeft aangeschaft het Azure-abonnement, de gebruiker wordt weergegeven als **accountbeheerder**, dit wordt het abonnement de rol. Zie voor meer informatie over de functies van de Azure-abonnement, [toevoegen of wijzigen Azure-abonnementbeheerders](../billing/billing-add-change-azure-subscription-administrator.md).
+Volg deze stappen om een gast gebruiker toe te voegen aan uw directory via de pagina Azure Active Directory.
 
-In dit voorbeeld wordt de gebruiker "alflanigan@outlook.com" is de **eigenaar** van de 'gratis' abonnement in de AAD-tenant 'tenant Azure Default'. Omdat deze gebruiker de maker van het Azure-abonnement met de eerste 'Outlook' van de Microsoft-Account is (Microsoft-Account = Outlook, etc. Live) de standaarddomeinnaam voor alle andere gebruikers die zijn toegevoegd in deze tenant worden **"\@ alflaniganuoutlook.onmicrosoft.com"** . Standaard de syntaxis van het nieuwe domein wordt gevormd door het samenstellen van de naam van de gebruikersnaam en het domein van de gebruiker die de tenant gemaakt en het toevoegen van de extensie **'. onmicrosoft.com "** .
-Daarnaast wordt kunnen gebruikers zich aanmelden met een aangepaste domeinnaam in de tenant na het toevoegen van en controle van de voor de nieuwe tenant. Zie voor meer informatie over het controleren van een aangepaste domeinnaam in een Azure Active Directory-tenant [een aangepaste domeinnaam toevoegen aan uw directory](../active-directory/fundamentals/add-custom-domain.md).
+1. Zorg ervoor dat de instellingen voor externe samen werking van uw organisatie zodanig zijn geconfigureerd dat u gasten kunt uitnodigen. Zie [externe B2B-samen werking inschakelen en beheren wie gasten kan uitnodigen](../active-directory/b2b/delegate-invitations.md)voor meer informatie.
 
-In dit voorbeeld bevat de map 'Standaardtenant Azure' alleen gebruikers met de naam van het domein '\@alflanigan.onmicrosoft.com '.
+1. Klik in de Azure Portal op **Azure Active Directory** > **gebruikers** > **nieuwe gast gebruiker**.
 
-Na het selecteren van het abonnement, de gebruiker met beheerdersrechten moet klikken op **Access Control (IAM)** en vervolgens **toevoegen van een nieuwe rol**.
+    ![Nieuwe functie gast gebruiker in Azure Portal](./media/role-assignments-external-users/invite-guest-user.png)
 
-![functie voor IAM toegang in Azure portal](./media/role-assignments-external-users/1.png)
+1. Volg de stappen om een nieuwe gast gebruiker toe te voegen. Zie [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure Portal](../active-directory/b2b/add-users-administrator.md#add-guest-users-to-the-directory)voor meer informatie.
 
-![nieuwe gebruiker toevoegen in de functie voor IAM toegang in Azure portal](./media/role-assignments-external-users/2.png)
+Nadat u een gast gebruiker aan de Directory hebt toegevoegd, kunt u de gast gebruiker een rechtstreekse koppeling sturen naar een gedeelde app, of de gast gebruiker kan klikken op de opname-URL in het e-mail bericht.
 
-De volgende stap is het selecteren van de functie moet worden toegewezen en de gebruiker waaraan de RBAC-rol wordt toegewezen aan. In de **rol** in het vervolgkeuzemenu, de gebruiker met beheerdersrechten ziet alleen de ingebouwde RBAC-rollen die beschikbaar in Azure zijn. Zie voor meer uitleg van elke rol en hun toewijsbare bereiken gedetailleerde, [ingebouwde rollen voor Azure-resources](built-in-roles.md).
+![E-mail uitnodiging gast gebruiker](./media/role-assignments-external-users/invite-email.png)
 
-De gebruiker met beheerdersrechten moet vervolgens de e-mailadres van de externe gebruiker toevoegen. Het verwachte gedrag is voor de externe gebruiker worden niet weergegeven in de bestaande tenant. Nadat de externe gebruiker is uitgenodigd, deze is zichtbaar onder **abonnementen > Access Control (IAM)** met de huidige gebruikers die momenteel een RBAC-rol op het abonnementsbereik zijn toegewezen.
+De gast gebruiker moet het uitnodigings proces volt ooien om toegang te kunnen krijgen tot uw Directory.
 
-![Voeg machtigingen toe aan het nieuwe RBAC-rol](./media/role-assignments-external-users/3.png)
+![Machtigingen voor controleren door gast gebruiker uitnodigen](./media/role-assignments-external-users/invite-review-permissions.png)
 
-![lijst met RBAC-rollen op abonnementsniveau](./media/role-assignments-external-users/4.png)
+Zie [Azure Active Directory uitnodiging voor B2B-samen werking](../active-directory/b2b/redemption-experience.md)voor meer informatie over het uitnodigings proces.
 
-De gebruiker "chessercarlton@gmail.com" is uitgenodigd moet een **eigenaar** voor het abonnement 'Gratis'. Nadat de uitnodiging is verzonden, ontvangt de externe gebruiker een e-mailbevestiging met een activeringskoppeling.
-![e-mailuitnodiging voor RBAC-rol](./media/role-assignments-external-users/5.png)
+## <a name="grant-access-to-a-guest-user"></a>Toegang verlenen aan een gast gebruiker
 
-Wordt buiten de organisatie, heeft de nieuwe gebruiker geen bestaande kenmerken in de map 'Standaardtenant Azure'. Ze worden gemaakt nadat de externe gebruiker toestemming heeft gegeven moeten worden vastgelegd in de map die is gekoppeld aan het abonnement dat deze een rol is toegewezen.
+In RBAC kunt u een rol toewijzen om toegang te verlenen. Als u toegang wilt verlenen aan een gast gebruiker, voert u [dezelfde stappen uit](role-assignments-portal.md#add-a-role-assignment) als voor een gebruiker, groep, Service-Principal of beheerde identiteit. Volg deze stappen om toegang te verlenen aan een gast gebruiker op verschillende bereiken.
 
-![e-mailbericht met de uitnodiging voor RBAC-rol](./media/role-assignments-external-users/6.png)
+1. Klik in Azure Portal op **Alle services**.
 
-De externe gebruiker wordt weergegeven in de Azure Active Directory-tenant van nu af als externe gebruiker en deze kunnen worden weergegeven in de Azure-portal.
+1.  Selecteer de set resources waarop de toegang van toepassing is, ook wel bekend als het bereik. U kunt bijvoorbeeld **beheer groepen**, **abonnementen**, **resource groepen**of een resource selecteren.
 
-![gebruikers blade azure active directory Azure portal](./media/role-assignments-external-users/7.png)
+1. Klik op de specifieke resource.
 
-In de **gebruikers** weergeven, de externe gebruikers kunnen worden herkend door het type ander pictogram in de Azure-portal.
+1. Klik op **toegangsbeheer (IAM)** .
 
-Echter verleent **eigenaar** of **Inzender** toegang tot een externe gebruiker op de **abonnement** scope, staat niet toe dat de toegang tot de map van de gebruiker met beheerdersrechten, tenzij de **Globale beheerder** is toegestaan. In de eigenschappen van de gebruiker, de **gebruikerstype**, heeft twee algemene parameters, **lid** en **Gast** kunnen worden geïdentificeerd. Een lid is van een gebruiker die is geregistreerd in de map terwijl een gast een gebruiker is uitgenodigd voor de directory vanaf een externe bron is. Zie voor meer informatie, [hoe door Azure Active Directory-beheerders de gebruikers van B2B-samenwerking toevoegen](../active-directory/active-directory-b2b-admin-add-users.md).
+    De volgende scherm afbeelding toont een voor beeld van de Blade toegangs beheer (IAM) voor een resource groep. Als u hier toegangscontrole wijzigingen aanbrengt, zijn deze alleen van toepassing op de resource groep.
 
-> [!NOTE]
-> Zorg ervoor dat na het invoeren van de referenties in de portal, selecteert u de juiste map zich aanmeldt bij de externe gebruiker. Dezelfde gebruiker kan toegang hebben tot meerdere mappen en selecteer een van deze door te klikken op de gebruikersnaam in de rechterbovenhoek in Azure portal en kies vervolgens de juiste map in de vervolgkeuzelijst.
+    ![Blade toegangs beheer (IAM) voor een resource groep](./media/role-assignments-external-users/access-control-resource-group.png)
 
-Terwijl u een gast in de map, de externe gebruiker alle resources voor het Azure-abonnement kunt beheren, maar geen toegang tot de map.
+1. Klik op **het tabblad roltoewijzingen om** alle roltoewijzingen in dit bereik weer te geven.
 
-![toegang beperkt tot azure active directory met Azure portal](./media/role-assignments-external-users/9.png)
+1. Klik op **Toevoegen** > **Roltoewijzing toevoegen** om het deelvenster Roltoewijzing toevoegen te openen.
 
-Azure Active Directory en een Azure-abonnement geen een onderliggende bovenliggende relatie net als andere Azure-resources (bijvoorbeeld: virtuele machines, virtuele netwerken, web-apps, opslag enz.) met een Azure-abonnement hebt. Alle deze is gemaakt, beheerd en onder een Azure-abonnement gefactureerd, terwijl een Azure-abonnement wordt gebruikt voor het beheren van de toegang tot een Azure-adreslijst. Zie voor meer informatie, [hoe een Azure-abonnement is gerelateerd aan Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+    Als u niet bent gemachtigd voor het toewijzen van rollen, is de optie Roltoewijzing toevoegen uitgeschakeld.
 
-Van alle de ingebouwde RBAC-rollen, **eigenaar** en **Inzender** bieden volledige beheertoegang tot alle resources in de omgeving is het verschil is dat een inzender kan niet maken en verwijderen van nieuwe RBAC-rollen . De ingebouwde rollen, zoals **Inzender voor virtuele machines** bieden volledige beheertoegang tot de resources aangegeven door de naam, ongeacht de **resourcegroep** ze worden gemaakt in.
+    ![Menu Toevoegen](./media/role-assignments-external-users/add-menu.png)
 
-Toewijzen van de ingebouwde RBAC-rol van **Inzender voor virtuele machines** op het abonnementsniveau van een, betekent dat de gebruiker de rol is toegewezen:
+1. Selecteer in de vervolgkeuzelijst **Rol** een rol, zoals **Inzender voor virtuele machines**.
 
-* Vindt alle virtuele machines ongeacht de datum waarop de implementatie en de resourcegroepen die ze deel van uitmaken
-* Volledig beheertoegang heeft tot de virtuele machines in het abonnement
-* Andere resourcetypen weergeven in het abonnement niet
-* Wijzigingen die betrekking tot facturering kan niet worden uitgevoerd.
+1. Selecteer de gast gebruiker in de **selectie** lijst. Als de gebruiker niet in de lijst wordt weer gegeven, kunt u in het **selectie** vakje typen om de map te doorzoeken op weergave namen, e-mail adressen en object-id's.
 
-## <a name="assign-a-built-in-rbac-role-to-an-external-user"></a>Een ingebouwde RBAC-rol toewijzen aan een externe gebruiker
+   ![Deelvenster Roltoewijzing toevoegen](./media/role-assignments-external-users/add-role-assignment.png)
 
-Voor een ander scenario in deze test de externe gebruiker "alflanigan@gmail.com' wordt toegevoegd als een **Inzender voor virtuele machines**.
+1. Klik op **Opslaan** om de rol toe te wijzen aan het geselecteerde bereik.
 
-![virtuele machine ingebouwde rol van Inzender](./media/role-assignments-external-users/11.png)
+    ![Roltoewijzing voor Inzender voor virtuele machines](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-Het normale gedrag voor deze externe gebruiker met deze ingebouwde rol is het bekijken en beheren van alleen virtuele machines en hun aangrenzende Resource Manager alleen resources nodig tijdens de implementatie. Deze beperkte rollen bieden standaard alleen toegang tot de bijbehorende resources gemaakt in Azure portal.
+## <a name="grant-access-to-a-guest-user-not-yet-in-your-directory"></a>Toegang verlenen aan een gast gebruiker die nog niet in uw directory is
 
-![overzicht van virtuele machines Inzender rol in Azure portal](./media/role-assignments-external-users/12.png)
+In RBAC kunt u een rol toewijzen om toegang te verlenen. Als u toegang wilt verlenen aan een gast gebruiker, voert u [dezelfde stappen uit](role-assignments-portal.md#add-a-role-assignment) als voor een gebruiker, groep, Service-Principal of beheerde identiteit.
 
-## <a name="grant-access-at-a-subscription-level-for-a-user-in-the-same-directory"></a>Toegang verlenen op het abonnementsniveau van een voor een gebruiker in dezelfde map
+Als de gast gebruiker zich nog niet in uw directory bevindt, kunt u de gebruiker rechtstreeks uitnodigen vanuit het deel venster roltoewijzing toevoegen.
 
-Het proces dat plaatsvindt identiek is aan een externe gebruiker toe te voegen, wordt zowel vanuit het perspectief beheerder is voor het verlenen van zowel de RBAC-rol als de gebruiker krijgt toegang tot de rol. Het verschil is hier is dat de uitgenodigde gebruiker geen uitnodigingen voor een e-mailbericht ontvangt als de resource-bereiken binnen het abonnement beschikbaar in het dashboard zijn na de aanmelding.
+1. Klik in Azure Portal op **Alle services**.
 
-## <a name="assign-rbac-roles-at-the-resource-group-scope"></a>RBAC-rollen in het groepsbereik resource toewijzen
+1.  Selecteer de set resources waarop de toegang van toepassing is, ook wel bekend als het bereik. U kunt bijvoorbeeld **beheer groepen**, **abonnementen**, **resource groepen**of een resource selecteren.
 
-Toewijzen van een RBAC-rol op een **resourcegroep** bereik heeft een identieke proces voor het toewijzen van de rol op het abonnementsniveau, voor beide typen gebruikers: externe of interne (onderdeel van dezelfde map). De gebruikers die zijn toegewezen de RBAC-rol is om te zien in hun omgeving alleen de resourcegroep waarin ze zijn toegewezen toegang vanaf de **resourcegroepen** pictogram in de Azure-portal.
+1. Klik op de specifieke resource.
 
-## <a name="assign-rbac-roles-at-the-resource-scope"></a>Toewijzen van RBAC-rollen in het bereik van de resource
+1. Klik op **toegangsbeheer (IAM)** .
 
-Toewijzen van een RBAC-rol op een bereik van de resource in Azure heeft een identieke proces voor het toewijzen van de rol op abonnementsniveau of op niveau van de resourcegroep, de dezelfde werkstroom voor beide scenario's te volgen. Nogmaals, de gebruikers die zijn toegewezen de RBAC-rol ziet alleen de items die ze hebben toegang tot is toegewezen, in de **alle Resources** tabblad of rechtstreeks in het dashboard.
+1. Klik op **het tabblad roltoewijzingen om** alle roltoewijzingen in dit bereik weer te geven.
 
-Er is een belangrijk aspect voor RBAC zowel op het groepsbereik van de resource of resource-bereik voor de gebruikers om ervoor te zorgen voor aanmelding bij de juiste map.
+1. Klik op **Toevoegen** > **Roltoewijzing toevoegen** om het deelvenster Roltoewijzing toevoegen te openen.
 
-![Directory-aanmelding in Azure portal](./media/role-assignments-external-users/13.png)
+    ![Menu Toevoegen](./media/role-assignments-external-users/add-menu.png)
 
-## <a name="assign-rbac-roles-for-an-azure-active-directory-group"></a>Toewijzen van RBAC-rollen voor een Azure Active Directory-groep
+1. Selecteer in de vervolgkeuzelijst **Rol** een rol, zoals **Inzender voor virtuele machines**.
 
-Alle scenario's die gebruikmaken van RBAC op de drie verschillende niveaus in Azure bieden de bevoegdheid beheren, implementeren en beheren van verschillende bronnen als toegewezen gebruiker zonder de noodzaak van het beheer van een persoonlijke abonnement. Ongeacht de RBAC-rol is toegewezen voor een abonnement, resourcegroep of resource-bereik, de resources die zijn gemaakt verder door de toegewezen gebruikers worden in rekening gebracht wanneer de gebruikers toegang tot hebben één Azure-abonnement. Op deze manier de gebruikers die beschikken over beheerdersmachtigingen voor die hele Azure-abonnement facturering heeft een volledig overzicht van het verbruik ongeacht wie de resources worden beheerd.
+1. Typ in de **selectie** lijst het e-mail adres van de persoon die u wilt uitnodigen en selecteer deze persoon.
 
-Voor grote organisaties kunnen RBAC-rollen worden toegepast op dezelfde manier voor Azure Active Directory-beveiligingsgroepen die u overweegt het perspectief dat de gebruiker met beheerdersrechten toegang wil verlenen de gedetailleerde voor teams of afdelingen gehele, niet afzonderlijk voor elke gebruiker, dus u overweegt deze als een zeer tijd en beheer van efficiënte optie. Ter illustratie van dit voorbeeld wordt de **Inzender** rol is toegevoegd aan een van de groepen in de tenant op het abonnementsniveau.
+   ![Gast gebruiker uitnodigen in deel venster roltoewijzing toevoegen](./media/role-assignments-external-users/add-role-assignment-new-guest.png)
 
-![RBAC-rol voor AAD-groepen toevoegen](./media/role-assignments-external-users/14.png)
+1. Klik op **Opslaan** om de gast gebruiker toe te voegen aan uw directory, de rol toe te wijzen en een uitnodiging te verzenden.
 
-Deze groepen zijn netwerkbeveiligingsgroepen die zijn ingericht en beheerd alleen binnen een Azure Active Directory.
+    Na enkele ogen blikken ziet u een melding van de roltoewijzing en informatie over de uitnodiging.
 
+    ![Roltoewijzing en uitgenodigde gebruikers meldingen](./media/role-assignments-external-users/invited-user-notification.png)
+
+1. Als u de gast gebruiker hand matig wilt uitnodigen, klikt u met de rechter muisknop op de uitnodiging en kopieert u deze naar de melding. Klik niet op de uitnodiging om het uitnodigings proces te starten.
+
+    De uitnodigings koppeling heeft de volgende indeling:
+
+    `https://invitations.microsoft.com/redeem/...`
+
+1. Verzend de uitnodiging koppeling naar de gast gebruiker om het uitnodigings proces te volt ooien.
+
+    Zie [Azure Active Directory uitnodiging voor B2B-samen werking](../active-directory/b2b/redemption-experience.md)voor meer informatie over het uitnodigings proces.
+
+## <a name="remove-a-guest-user-from-your-directory"></a>Een gast gebruiker uit uw Directory verwijderen
+
+Voordat u een gast gebruiker uit een Directory verwijdert, moet u eerst eventuele roltoewijzingen voor die gast gebruiker verwijderen. Volg deze stappen om een gast gebruiker uit een directory te verwijderen.
+
+1. **Toegangs beheer (IAM)** openen in een bereik, zoals de beheer groep, het abonnement, de resource groep of de resource, waarbij de gast gebruiker een roltoewijzing heeft.
+
+1. Klik op **het tabblad roltoewijzingen** om alle roltoewijzingen weer te geven.
+
+1. Voeg in de lijst met roltoewijzingen een selectie vakje naast de gast gebruiker toe met de roltoewijzing die u wilt verwijderen.
+
+   ![Roltoewijzing verwijderen](./media/role-assignments-external-users/remove-role-assignment-select.png)
+
+1. Klik op **Verwijderen**.
+
+   ![Bericht bij verwijderen van roltoewijzing](./media/role-assignments-external-users/remove-role-assignment.png)
+
+1. Klik op **Ja** om te bevestigen dat u de roltoewijzing inderdaad wilt verwijderen.
+
+1. Klik in de linker navigatie balk op **Azure Active Directory** > **gebruikers**.
+
+1. Klik op de gast gebruiker die u wilt verwijderen.
+
+1. Klik op **Verwijderen**.
+
+   ![Gast gebruiker verwijderen](./media/role-assignments-external-users/delete-guest-user.png)
+
+1. Klik op **Ja**in het bericht verwijderen dat wordt weer gegeven.
+
+## <a name="troubleshoot"></a>Problemen oplossen
+
+### <a name="guest-user-cannot-browse-the-directory"></a>Gast gebruiker kan niet bladeren in de map
+
+Gast gebruikers hebben beperkte mapmachtigingen. Gast gebruikers kunnen bijvoorbeeld niet bladeren in de map en kunnen niet zoeken naar groepen of toepassingen. Zie [Wat zijn de standaard gebruikers machtigingen in azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md)voor meer informatie.
+
+![Gast gebruiker kan niet bladeren naar gebruikers in een map](./media/role-assignments-external-users/directory-no-users.png)
+
+Als een gast gebruiker in de Directory extra bevoegdheden nodig heeft, kunt u een directory-rol toewijzen aan de gast gebruiker. Als u wilt dat een gast gebruiker volledige lees toegang heeft tot uw adres lijst, kunt u de gast gebruiker toevoegen aan de rol van [adreslijst lezers](../active-directory/users-groups-roles/directory-assign-admin-roles.md) in azure AD. Zie [machtigingen verlenen aan gebruikers van partner organisaties in uw Azure Active Directory-Tenant](../active-directory/b2b/add-guest-to-role.md)voor meer informatie.
+
+![Rol van adreslijst lezers toewijzen](./media/role-assignments-external-users/directory-roles.png)
+
+### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>Gast gebruiker kan niet bladeren naar gebruikers, groepen of service-principals om rollen toe te wijzen
+
+Gast gebruikers hebben beperkte mapmachtigingen. Zelfs als een gast gebruiker een rol is die [eigenaar](built-in-roles.md#owner) is van een bereik, kunt u, als ze een roltoewijzing proberen te maken om iemand anders toegang te verlenen, niet bladeren in de lijst met gebruikers, groepen of service-principals.
+
+![Gast gebruiker kan niet bladeren in beveiligings-principals om rollen toe te wijzen](./media/role-assignments-external-users/directory-no-browse.png)
+
+Als de gast gebruiker de exacte aanmeldings naam van iemand in de Directory kent, kunnen ze toegang verlenen. Als u wilt dat een gast gebruiker volledige lees toegang heeft tot uw adres lijst, kunt u de gast gebruiker toevoegen aan de rol van [adreslijst lezers](../active-directory/users-groups-roles/directory-assign-admin-roles.md) in azure AD. Zie [machtigingen verlenen aan gebruikers van partner organisaties in uw Azure Active Directory-Tenant](../active-directory/b2b/add-guest-to-role.md)voor meer informatie.
+
+### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>Gast gebruiker kan toepassingen niet registreren of service-principals maken
+
+Gast gebruikers hebben beperkte mapmachtigingen. Als een gast gebruiker toepassingen kan registreren of service-principals moet maken, kunt u de gast gebruiker toevoegen aan de rol van [toepassings ontwikkelaar](../active-directory/users-groups-roles/directory-assign-admin-roles.md) in azure AD. Zie [machtigingen verlenen aan gebruikers van partner organisaties in uw Azure Active Directory-Tenant](../active-directory/b2b/add-guest-to-role.md)voor meer informatie.
+
+![Gast gebruiker kan geen toepassingen registreren](./media/role-assignments-external-users/directory-access-denied.png)
+
+### <a name="guest-user-does-not-see-the-new-directory"></a>Gast gebruiker ziet de nieuwe map niet
+
+Als een gast gebruiker toegang heeft gekregen tot een directory, maar de nieuwe map die wordt vermeld in de Azure Portal niet wordt weer gegeven wanneer ze overschakelen in hun **Directory-en-abonnements** venster, controleert u of de gast gebruiker het uitnodigings proces heeft voltooid. Zie [Azure Active Directory uitnodiging voor B2B-samen werking](../active-directory/b2b/redemption-experience.md)voor meer informatie over het uitnodigings proces.
+
+### <a name="guest-user-does-not-see-resources"></a>De gast gebruiker ziet geen resources
+
+Als een gast gebruiker toegang heeft gekregen tot een directory, maar de resources waartoe ze toegang hebben, worden niet weer gegeven in de Azure Portal, moet u ervoor zorgen dat de gast gebruiker de juiste map heeft geselecteerd. Een gast gebruiker heeft mogelijk toegang tot meerdere directory's. Als u wilt scha kelen tussen directory's, klikt u in de linkerbovenhoek op **Directory + abonnement**en klikt u vervolgens op de juiste map.
+
+![Het deel venster mappen en abonnementen in Azure Portal](./media/role-assignments-external-users/directory-subscription.png)
+
+## <a name="next-steps"></a>Volgende stappen
+
+- [Gebruikers van Azure Active Directory B2B-samenwerking toevoegen in Azure portal](../active-directory/b2b/add-users-administrator.md)
+- [Eigenschappen van een Azure Active Directory B2B-samenwerkings gebruiker](../active-directory/b2b/user-properties.md)
+- [De elementen van het e-mail adres uitnodiging voor B2B-samen werking-Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)

@@ -1,7 +1,7 @@
 ---
-title: Metrische gegevens vastleggen tijdens trainings uitvoeringen
+title: Log ML experimenten & metrische gegevens
 titleSuffix: Azure Machine Learning service
-description: U kunt uw experimenten bijhouden en metrische gegevens controleren om het proces voor het maken van het model te verbeteren. Meer informatie over het toevoegen van logboek registratie aan uw trainings script, het verzenden van het experiment, het controleren van de voortgang van een actieve taak en het weer geven van de geregistreerde resultaten van een uitvoering.
+description: Bewaak uw Azure ML experimenten en bewaak metrische uitvoerings gegevens om het proces voor het maken van het model te verbeteren. Voeg logboek registratie toe aan uw trainings script en Bekijk de geregistreerde resultaten van een uitvoering.  Gebruik run. log, run. start_logging of ScriptRunConfig.
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -10,18 +10,18 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f295bf3a76d89e811fe9a022a3ccb68fbe7556a
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 1c2747c8eaac0323ac32f67afb27ac854a3a5ce9
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858718"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959943"
 ---
-# <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>machine learning trainings metrieken bijhouden met Azure Machine Learning
+# <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Uitvoeringen en metrische gegevens van Azure ML-experimenten bewaken
 
-Verbeter het proces voor het maken van het model door de metrische gegevens voor experimenten en controles bij te houden. In dit artikel leert u hoe u logboek registratie code kunt toevoegen aan uw trainings script, een experiment moet verzenden, de uitvoering ervan kunt controleren en de resultaten kunt controleren in Azure Machine Learning-service.
+Verbeter het proces voor het maken van het model door de metrische gegevens voor experimenten en bewakings uitvoeringen bij te houden. In dit artikel leert u hoe u logboek registratie code kunt toevoegen aan uw trainings script, een experiment moet verzenden, de uitvoering ervan kunt controleren en de resultaten kunt controleren in Azure Machine Learning-service.
 
 > [!NOTE]
 > Azure Machine Learning-service kan ook gegevens van andere bronnen tijdens de training registreren, zoals geautomatiseerde machine learning uitvoeringen, of de docker-container die de trainings taak uitvoert. Deze logboeken worden niet gedocumenteerd. Als u problemen ondervindt en contact opneemt met micro soft ondersteuning, kunnen ze deze logboeken gebruiken tijdens het oplossen van problemen.

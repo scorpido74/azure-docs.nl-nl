@@ -1,27 +1,27 @@
 ---
-title: Aan de slag met Microsoft Speech Service | Microsoft Docs
+title: Aan de slag met micro soft Speech Service | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Microsoft Speech-Service gebruiken.
+description: Gebruik micro soft Speech Service.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 7b7a286bb3f38982f6c55e37e186c524a8a92266
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 847d9f53e725ef2edc92dadf08ecb167528b6fd9
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515275"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965915"
 ---
-# <a name="get-started-with-bing-speech"></a>Aan de slag met de Bing Speech
+# <a name="get-started-with-bing-speech"></a>Aan de slag met Bing Speech
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Als u de Microsoft-service voor spraak wilt audio naar tekst wilt converteren, Zie de spraakherkenning [REST-API's](GetStartedREST.md) of de [clientbibliotheken](GetStartedClientLibraries.md).
+Als u de micro soft speech recognition-service wilt gebruiken om audio naar tekst te converteren, raadpleegt u de [rest-api's](GetStartedREST.md) voor spraak herkenning of de [client bibliotheken](GetStartedClientLibraries.md).
 
-Zie voor het gebruik van de Text to Speech-service van Microsoft, de [Text to Speech-API-verwijzing](../api-reference-rest/bingvoiceoutput.md).
+Zie de [Naslag informatie over text to Speech-API](../api-reference-rest/bingvoiceoutput.md)als u de micro soft text-to-speech-service wilt gebruiken.

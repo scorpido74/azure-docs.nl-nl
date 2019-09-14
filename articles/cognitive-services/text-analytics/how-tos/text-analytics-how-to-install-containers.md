@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 09/12/2019
 ms.author: dapine
-ms.openlocfilehash: 8664d0f727c47da1b70b8060f879a49fbbd8c7c5
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 3cc61798fb5e5ecba91fef93a743b492dce75211
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051265"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966795"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics containers installeren en uitvoeren
 
@@ -40,7 +40,7 @@ U moet voldoen aan de volgende vereisten voordat u met behulp van Text Analytics
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
-### <a name="the-host-computer"></a>De hostcomputer
+## <a name="the-host-computer"></a>De hostcomputer
 
 [!INCLUDE [Host Computer requirements](../../../../includes/cognitive-services-containers-host-computer.md)]
 
@@ -48,15 +48,15 @@ U moet voldoen aan de volgende vereisten voordat u met behulp van Text Analytics
 
 De volgende tabel beschrijft de minimale en aanbevolen CPU-kernen, ten minste 2,6 GHz (gigahertz) of sneller, en het geheugen, in gigabytes (GB), om toe te wijzen voor elke container Text Analytics.
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Sleuteltermextractie](#tab/keyphrase)
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Sleuteltermextractie](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
 
-#### <a name="language-detectiontablanguage"></a>[Taaldetectie](#tab/language)
+# <a name="language-detectiontablanguage"></a>[Taaldetectie](#tab/language)
 
 [!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Sentimentanalyse](#tab/sentiment)
+# <a name="sentiment-analysistabsentiment"></a>[Sentimentanalyse](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
 
@@ -67,21 +67,41 @@ De volgende tabel beschrijft de minimale en aanbevolen CPU-kernen, ten minste 2,
 
 Core en geheugen komen overeen met `--cpus` de `--memory` instellingen en, die worden gebruikt als onderdeel van `docker run` de opdracht.
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Sleuteltermextractie](#tab/keyphrase)
+## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met`docker pull`
 
-[!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
+Container installatie kopieën voor Text Analytics zijn beschikbaar op de micro soft-Container Registry.
 
-#### <a name="language-detectiontablanguage"></a>[Taaldetectie](#tab/language)
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Sleuteltermextractie](#tab/keyphrase)
 
-[!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
+[!INCLUDE [key-phrase-extraction-container-repository](../includes/key-phrase-extraction-container-repository.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Sentimentanalyse](#tab/sentiment)
+# <a name="language-detectiontablanguage"></a>[Taaldetectie](#tab/language)
 
-[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
+[!INCLUDE [language-detection-container-repository](../includes/language-detection-container-repository.md)]
+
+# <a name="sentiment-analysistabsentiment"></a>[Sentimentanalyse](#tab/sentiment)
+
+[!INCLUDE [sentiment-analysis-container-repository](../includes/sentiment-analysis-container-repository.md)]
 
 ***
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
+
+### <a name="docker-pull-for-the-text-analytics-containers"></a>Docker-pull voor de Text Analytics containers
+
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Sleuteltermextractie](#tab/keyphrase)
+
+[!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
+
+# <a name="language-detectiontablanguage"></a>[Taaldetectie](#tab/language)
+
+[!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
+
+# <a name="sentiment-analysistabsentiment"></a>[Sentimentanalyse](#tab/sentiment)
+
+[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
+
+***
 
 ## <a name="how-to-use-the-container"></a>De container gebruiken
 
@@ -96,15 +116,15 @@ Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/comman
 
 [Voor beelden](../text-analytics-resource-container-config.md#example-docker-run-commands) van `docker run` de opdracht zijn beschikbaar.
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Sleuteltermextractie](#tab/keyphrase)
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Sleuteltermextractie](#tab/keyphrase)
 
 [!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-#### <a name="language-detectiontablanguage"></a>[Taaldetectie](#tab/language)
+# <a name="language-detectiontablanguage"></a>[Taaldetectie](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Sentimentanalyse](#tab/sentiment)
+# <a name="sentiment-analysistabsentiment"></a>[Sentimentanalyse](#tab/sentiment)
 
 [!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
 
@@ -149,7 +169,10 @@ Zie voor meer informatie over deze opties [containers configureren](../text-anal
 
 In dit artikel hebt u geleerd concepten en werkstroom voor het downloaden, installeren en Text Analytics-containers uitvoeren. Samenvatting:
 
-* Text Analytics biedt drie Linux-containers voor Docker, encapsulating sleuteltermextractie, taaldetectie en sentimentanalyse.
+* Text Analytics biedt drie Linux-containers voor docker, met inkapseling van diverse mogelijkheden:
+   * *Sleuteltermextractie*
+   * *Taaldetectie*
+   * *Sentimentanalyse*
 * Containerinstallatiekopieën worden gedownload uit het Microsoft Container Registry (MCR) in Azure.
 * Containerinstallatiekopieën uitvoeren in Docker.
 * U kunt de REST-API of de SDK gebruiken om aan te roepen van bewerkingen in Text Analytics-containers door de host-URI van de container op te geven.

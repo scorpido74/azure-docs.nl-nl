@@ -6,12 +6,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 8bfe249b0295bc860cf17a006c3787ff8afa676b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 15ef18663a42153c11a55d4c5963d47f0e2514d6
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69573703"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961717"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Problemen met Apache Hadoop GARENs oplossen met behulp van Azure HDInsight
 
@@ -33,27 +33,27 @@ In dit voorbeeld twee bestaande wachtrijen (**standaard** en **thriftsvr**) beid
 
 1. Selecteer de **Ambari-weergaven** pictogram en selecteer vervolgens het rasterpatroon. Selecteer vervolgens **YARN wachtrijbeheerder**.
 
-    ![Selecteer het pictogram van de Ambari-weergaven](media/hdinsight-troubleshoot-yarn/create-queue-1.png)
+    ![Selecteer het pictogram van de Ambari-weergaven](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Selecteer de **standaard** wachtrij.
 
-    ![Selecteer de standaardwachtrij](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
+    ![Selecteer de standaardwachtrij](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
 3. Voor de **standaard** in de wachtrij, wijzigt u de **capaciteit** van 50% tot 25%. Voor de **thriftsvr** in de wachtrij, wijzigt u de **capaciteit** 25%.
 
-    ![De capaciteit aan 25% van de standaard- en thriftsvr wachtrijen wijzigen](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
+    ![De capaciteit aan 25% van de standaard- en thriftsvr wachtrijen wijzigen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. Voor het maken van een nieuwe wachtrij selecteert **wachtrij toevoegen**.
 
-    ![Selecteer de wachtrij toevoegen](media/hdinsight-troubleshoot-yarn/create-queue-4.png)
+    ![Selecteer de wachtrij toevoegen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
 5. De naam van de nieuwe wachtrij.
 
-    ![De naam van de wachtrij Spark](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
+    ![De naam van de wachtrij Spark](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
 6. Laat de **capaciteit** waarden op 50% en selecteer vervolgens de **acties** knop.
 
-    ![Selecteer de knop acties](media/hdinsight-troubleshoot-yarn/create-queue-6.png)  
+    ![Selecteer de knop acties](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
 7. Selecteer **slaan en te vernieuwen wachtrijen**.
 
-    ![Selecteer opslaan en vernieuwen van wachtrijen](media/hdinsight-troubleshoot-yarn/create-queue-7.png)  
+    ![Selecteer opslaan en vernieuwen van wachtrijen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
 Deze wijzigingen zijn zichtbaar onmiddellijk op de gebruikersinterface van YARN Scheduler.
 
@@ -141,4 +141,4 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 - Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-- Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de ondersteunings [abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+- Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

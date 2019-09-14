@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: 6877595f191c326ed73b347d46cb1aeb404702b5
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 8bcb6caa418f7bd5c5241d06dbda69ccba360f2c
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232231"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984458"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Wat zijn de Apache Hadoop onderdelen en versies die beschikbaar zijn in HDInsight?
 
@@ -31,7 +31,6 @@ De versies van de onderdelen die zijn gekoppeld aan HDInsight-cluster versies wo
 
 | Onderdeel | HDInsight 4.0 | HDInsight 3,6 (standaard) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 |
 |---------------------------|---------------|-----------------------------|---------------|---------------|---------------|----------------------|
-| Hortonworks Data Platform | 3.0 | 2.6 | 2.5 | 2.4 | 2.3 | 2.2 |
 | Apache Hadoop en garen | 3.1.1 | 2.7.3 | 2.7.3 | 2.7.1 | 2.7.1 | 2.6.0 |
 | Apache TEZ | 0.9.1 | 0.7.0 | 0.7.0 | 0.7.0 | 0.7.0 | 0.5.2 |
 | Apache Pig | 0.16.0 | 0.16.0 | 0.16.0 | 0.15.0 | 0.15.0 | 0.14.0 |
@@ -145,7 +144,7 @@ Zie [prijzen voor HDInsight](https://azure.microsoft.com/pricing/details/hdinsig
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>Service overeenkomst voor HDInsight-cluster versies
 
-De service level agreement (SLA) wordt gedefinieerd in termen van een _ondersteunings venster_. Het ondersteunings venster is de periode dat een HDInsight-cluster versie wordt ondersteund door de klanten service en ondersteuning van micro soft. Als de versie een ondersteunings _vervaldatum_ heeft die is door gegeven, bevindt het HDInsight-cluster zich buiten het ondersteunings venster. De verval datum van de ondersteuning voor een opgegeven HDInsight-versie X (na een nieuwere X + 1-versie is beschikbaar) wordt berekend als de volgende:  
+De service level agreement (SLA) wordt gedefinieerd in termen van een _ondersteunings venster_. Het ondersteunings venster is de periode dat een HDInsight-cluster versie wordt ondersteund door de klanten service en ondersteuning van micro soft. Als de versie een _ondersteunings vervaldatum_ heeft die is door gegeven, bevindt het HDInsight-cluster zich buiten het ondersteunings venster. De verval datum van de ondersteuning voor een opgegeven HDInsight-versie X (na een nieuwere X + 1-versie is beschikbaar) wordt berekend als de volgende:  
 
 * Formule 1: 180 dagen toevoegen aan de datum waarop de versie X van het HDInsight-cluster is uitgebracht.
 * Formule 2: Voeg 90 dagen toe aan de datum waarop de versie van het HDInsight-cluster (X + 1) beschikbaar wordt gemaakt in Azure Portal.

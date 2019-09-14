@@ -1,34 +1,34 @@
 ---
 title: Bing Speech WebSocket-Protocol | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Documentatie voor de Bing Speech-protocol op basis van WebSockets
+description: Protocol documentatie voor Bing Speech op basis van websockets
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e7f51d49624d5019bec058a2d12f6ca2f1366938
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515325"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966888"
 ---
-# <a name="bing-speech-websocket-protocol"></a>Bing Speech WebSocket-protocol
+# <a name="bing-speech-websocket-protocol"></a>Bing Speech WebSocket-Protocol
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Bing Speech is een cloud-platform die mogelijkheden voor de meest geavanceerde algoritmen die beschikbaar zijn voor het converteren van de gesproken audio naar tekst. De Bing Speech-protocol bepaalt de [verbindingsinstellingen](#connection-establishment) tussen toepassingen en de service en die worden uitgewisseld tussen tegenhangers berichten voor de spraakherkenning ([berichten client afkomstig](#client-originated-messages) en [berichten afkomstig is van een service](#service-originated-messages)). Bovendien [telemetrieberichten](#telemetry-schema) en [foutafhandeling](#error-handling) worden beschreven.
+Bing Speech is een op de cloud gebaseerd platform dat de meest geavanceerde algoritmen bevat die beschikbaar zijn voor het converteren van gesp roken audio naar tekst. Het Bing Speech-protocol definieert de [Verbindings instellingen](#connection-establishment) tussen client toepassingen en de service en de spraak herkennings berichten die worden uitgewisseld tussen de tegen Hangers (door de[client afkomstige berichten](#client-originated-messages) en door de [service afkomstige berichten](#service-originated-messages) ) ). Daarnaast worden [telemetrie-berichten](#telemetry-schema) en [fout afhandeling](#error-handling) beschreven.
 
 ## <a name="connection-establishment"></a>Verbinding tot stand brengen
 
-Het protocol Spraakservice volgt de standaard WebSocket-specificatie [IETF RFC 6455](https://tools.ietf.org/html/rfc6455). Een HTTP-aanvraag die HTTP-headers die wijzen op van de client de verbinding een upgrade uitvoert naar een WebSocket in plaats van HTTP-semantiek willen bevat in eerste instantie een WebSocket-verbinding. De server geeft aan dat de bereidheid om deel te nemen in de WebSocket-verbinding door te retourneren van een HTTP `101 Switching Protocols` antwoord. Na de uitwisseling van deze handshake, client- en houd de socket geopend en beginnen met behulp van een protocol op basis van een bericht te verzenden en ontvangen van gegevens.
+Het Speech-Service Protocol volgt de WebSocket Standard Specification [IETF RFC 6455](https://tools.ietf.org/html/rfc6455). Een WebSocket-verbinding wordt gestart als een HTTP-aanvraag die HTTP-headers bevat die aangeven dat de client de verbinding met een WebSocket moet upgraden in plaats van HTTP-semantiek te gebruiken. De server geeft aan dat het gaat om deel te nemen aan de WebSocket- `101 Switching Protocols` verbinding door een HTTP-antwoord te retour neren. Na de uitwisseling van deze Handshake behoudt de-client en-service de socket open en begint met het gebruik van een op berichten gebaseerd protocol voor het verzenden en ontvangen van informatie.
 
-Als u wilt de WebSocket-handshake, verzendt de clienttoepassing een HTTPS-GET-aanvraag naar de service. Het bevat standaard upgrade WebSocket-headers, samen met andere headers die specifiek voor spraak zijn.
+De client toepassing stuurt een HTTPS GET-aanvraag naar de service om de WebSocket-Handshake te starten. Het bevat standaard WebSocket-upgrade headers samen met andere headers die specifiek zijn voor spraak.
 
 ```HTTP
 GET /speech/recognition/interactive/cognitiveservices/v1 HTTP/1.1
@@ -53,50 +53,50 @@ Set-Cookie: SpeechServiceToken=AAAAABAAWTC8ncb8COL; expires=Wed, 17 Aug 2016 15:
 Date: Wed, 17 Aug 2016 15:03:52 GMT
 ```
 
-Alle spraak-aanvragen vereisen de [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) versleuteling. Het gebruik van niet-versleutelde gesproken aanvragen wordt niet ondersteund. De volgende TLS-versie wordt ondersteund:
+Voor alle spraak aanvragen is [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) -versleuteling vereist. Het gebruik van niet-versleutelde spraak aanvragen wordt niet ondersteund. De volgende TLS-versie wordt ondersteund:
 
 * TLS 1.2
 
-### <a name="connection-identifier"></a>Id van de verbinding
+### <a name="connection-identifier"></a>Verbindings-id
 
-Spraakservice is vereist dat alle clients zijn onder andere een unieke ID voor het identificeren van de verbinding. Clients *moet* bevatten de *X ConnectionId* header wanneer ze een WebSocket-handshake starten. De *X ConnectionId* -header moet een [universele, unieke id](https://en.wikipedia.org/wiki/Universally_unique_identifier) (UUID)-waarde. Upgrade WebSocket-aanvragen die geen bevatten de *X ConnectionId*, Geef een waarde voor de *X ConnectionId* header, niet opnemen van een geldige UUID waarde worden geweigerd door de service met een HTTP- `400 Bad Request` antwoord.
+Voor de spraak service is vereist dat alle clients een unieke ID bevatten om de verbinding te identificeren. Clients *moeten* de *X-ConnectionId* -header bevatten wanneer ze een WebSocket-Handshake starten. De *X-ConnectionId* -header moet een UUID-waarde ( [Universally Unique Identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier) ) zijn. WebSocket-upgrade aanvragen die geen *x-ConnectionId*bevatten, geven geen waarde op voor de *x-ConnectionId* -header of bevatten geen geldige UUID-waarde die door de service wordt genegeerd met een http- `400 Bad Request` antwoord.
 
-### <a name="authorization"></a>Autorisatie
+### <a name="authorization"></a>Authorization
 
-Naast de standaard WebSocket-handshake-headers, spraak-aanvragen vereisen een *autorisatie* header. Zonder deze header worden geweigerd door de service met een HTTP-aanvragen `403 Forbidden` antwoord.
+In aanvulling op de standaard-WebSocket-Handshake-headers vereist spraak aanvragen een *autorisatie* -header. Verbindings aanvragen zonder deze header worden door de service afgewezen met een http `403 Forbidden` -antwoord.
 
-De *autorisatie* header moet een toegangstoken van JSON Web Token (JWT) bevatten.
+De *autorisatie* -header moet een JSON Web token (JWT)-toegangs token bevatten.
 
-Zie voor meer informatie over het abonnement en API-sleutels die worden gebruikt om op te halen ongeldig JWT-toegangstokens te verkrijgen, de [Cognitive Services-abonnement](https://azure.microsoft.com/try/cognitive-services/) pagina.
+Voor informatie over het abonneren en verkrijgen van API-sleutels die worden gebruikt om geldige JWT-toegangs tokens op te halen, raadpleegt u de pagina [Cognitive Services abonnement](https://azure.microsoft.com/try/cognitive-services/) .
 
-De API-sleutel wordt doorgegeven aan de service voor beveiligingstokens. Bijvoorbeeld:
+De API-sleutel wordt door gegeven aan de token service. Bijvoorbeeld:
 
 ``` HTTP
 POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken
 Content-Length: 0
 ```
 
-De volgende headerinformatie is vereist voor token-toegang.
+De volgende header-informatie is vereist voor toegang tot tokens.
 
 | Name | Indeling | Description |
 |----|----|----|
 | OCP-Apim-Subscription-Key | ASCII | Uw abonnementssleutel |
 
-De service voor beveiligingstokens retourneert het toegangstoken JWT als `text/plain`. En vervolgens de JWT wordt doorgegeven als een `Base64 access_token` op de handshake als een *autorisatie* header voorafgegaan door de tekenreeks `Bearer`. Bijvoorbeeld:
+De token service retourneert het JWT-toegangs token `text/plain`als. Vervolgens wordt de JWT als een aan `Base64 access_token` de handshake door gegeven als een *autorisatie* header die wordt voorafgegaan door `Bearer`de teken reeks. Bijvoorbeeld:
 
 `Authorization: Bearer [Base64 access_token]`
 
 ### <a name="cookies"></a>Cookies
 
-Clients *moet* ondersteuning bieden voor HTTP-cookies die zijn opgegeven in [RFC 6265](https://tools.ietf.org/html/rfc6265).
+Clients *moeten* HTTP-cookies ondersteunen, zoals opgegeven in [RFC 6265](https://tools.ietf.org/html/rfc6265).
 
 ### <a name="http-redirection"></a>HTTP-omleiding
 
-Clients *moet* ondersteuning voor de omleiding van standard-mechanismen opgegeven door de [HTTP protocol specification](https://www.w3.org/Protocols/rfc2616/rfc2616.html).
+Clients *moeten* ondersteuning bieden voor de standaard-omleidings mechanismen die zijn opgegeven door de specificatie van het [http-protocol](https://www.w3.org/Protocols/rfc2616/rfc2616.html).
 
-### <a name="speech-endpoints"></a>Spraak-eindpunten
+### <a name="speech-endpoints"></a>Spraak-eind punten
 
-Clients *moet* een juiste Speech Service-eindpunt gebruiken. Het eindpunt is gebaseerd op de opname-modus en de taal. De tabel ziet u enkele voorbeelden.
+Clients *moeten* een geschikt eind punt van de speech-service gebruiken. Het eind punt is gebaseerd op de herkennings modus en taal. In de tabel ziet u enkele voor beelden.
 
 | Modus | Path | Service-URI |
 | -----|-----|-----|
@@ -104,91 +104,91 @@ Clients *moet* een juiste Speech Service-eindpunt gebruiken. Het eindpunt is geb
 | Gesprek | /speech/recognition/conversation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
 | Dicteren | /speech/recognition/dictation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
 
-Zie voor meer informatie de [URI van de Service](../GetStarted/GetStartedREST.md#service-uri) pagina.
+Zie de [service-URI](../GetStarted/GetStartedREST.md#service-uri) -pagina voor meer informatie.
 
-### <a name="report-connection-problems"></a>Problemen met de verbinding van rapport
+### <a name="report-connection-problems"></a>Verbindings problemen rapporteren
 
-Clients moeten alle problemen opgetreden bij het maken van een verbinding onmiddellijk rapporteren. De message protocol voor rapportage mislukte verbindingen wordt beschreven in [verbinding mislukt telemetrie](#connection-failure-telemetry).
+Clients moeten onmiddellijk alle problemen rapporteren die zijn opgetreden tijdens het maken van een verbinding. Het bericht protocol voor het rapporteren van mislukte verbindingen wordt beschreven in [telemetrie van verbindings fouten](#connection-failure-telemetry).
 
-### <a name="connection-duration-limitations"></a>Duur van de beperkingen van verbinding
+### <a name="connection-duration-limitations"></a>Beperkingen voor de verbindings duur
 
-Als de vergeleken met HTTP-verbindingen met de standaard web service, WebSocket verbindingen laatst een *lang* tijd. Speech Service plaatst beperkingen op de duur van de WebSocket-verbindingen met de service:
+In vergelijking met typische HTTP-verbindingen van de webservice, de WebSocket-verbindingen voor het laatst *lang* . Met de spraak service worden beperkingen voor de duur van de WebSocket-verbindingen met de service geplaatst:
 
- * De maximale duur voor alle actieve WebSocket-verbinding is 10 minuten. Er is een verbinding actief als de service of de client WebSocket-berichten via deze verbinding verzendt. De service verbreekt de verbinding zonder waarschuwing wanneer de limiet is bereikt. Clients moeten de gebruiker moet worden opgegeven die niet nodig hebt voor de verbinding actief tijdens of kort de levensduur van het maximumaantal verbindingen blijft ontwikkelen.
+ * De maximale duur voor een actieve WebSocket-verbinding is 10 minuten. Er is een verbinding actief als de service of de client WebSocket-berichten via die verbinding verzendt. De service beëindigt de verbinding zonder waarschuwing wanneer de limiet is bereikt. Clients moeten gebruikers scenario's ontwikkelen die de verbinding niet nodig hebben om actief te blijven op of in de buurt van de maximale verbindings duur.
 
- * De maximale duur voor een inactieve WebSocket-verbinding is 180 seconden. Er is een verbinding inactief als de service noch de client een WebSocket-bericht via de verbinding verzonden. Nadat de maximale levensduur van een niet-actief is bereikt, beëindigt de service de inactieve WebSocket-verbinding.
+ * De maximale duur voor een inactieve WebSocket-verbinding is 180 seconden. Een verbinding is inactief als de service of de client geen WebSocket-bericht via de verbinding heeft verzonden. Nadat de maximale inactieve levens duur is bereikt, wordt de inactieve WebSocket-verbinding door de service beëindigd.
 
-## <a name="message-types"></a>Berichttypen
+## <a name="message-types"></a>Bericht typen
 
-Nadat een WebSocket-verbinding tot stand is gebracht tussen de client en de service, kunnen u berichten met zowel de client en de service verzenden. Deze sectie beschrijft de indeling van deze WebSocket-berichten.
+Nadat een WebSocket-verbinding tot stand is gebracht tussen de client en de service, kan de client en de service berichten verzenden. In deze sectie wordt de indeling van deze WebSocket-berichten beschreven.
 
-[IETF RFC 6455](https://tools.ietf.org/html/rfc6455) geeft aan dat de gegevens voor WebSocket-berichten kunnen worden verzonden met behulp van een tekst of binaire codering. De twee coderingen gebruiken verschillende indelingen van de kabel. Elke indeling is geoptimaliseerd voor efficiënte codering, overdracht en decodering van de berichtnettolading.
+[IETF RFC 6455](https://tools.ietf.org/html/rfc6455) geeft aan dat de WebSocket-berichten gegevens kunnen verzenden met behulp van een tekst of binaire code ring. De twee code ringen gebruiken verschillende on-the-Wire-indelingen. Elke indeling is geoptimaliseerd voor efficiënte code ring, verzen ding en decodering van de bericht lading.
 
-### <a name="text-websocket-messages"></a>WebSocket-SMS-berichten
+### <a name="text-websocket-messages"></a>Text-WebSocket-berichten
 
-SMS-berichten voor WebSocket voert een nettolading van tekstgegevens die uit een gedeelte van kopteksten en een instantie van elkaar gescheiden door de combinatie van vertrouwde dubbele regelterugloop newline gebruikt voor HTTP-berichten bestaat. En zoals HTTP-berichten, tekstberichten van de WebSocket kopteksten in *naam: waarde* indeling, gescheiden door een combinatie van één regelterugloop nieuwe regel. Geen tekst is opgenomen in een tekstbericht WebSocket *moet* gebruiken [UTF-8](https://tools.ietf.org/html/rfc3629) codering.
+Tekst-WebSocket-berichten bevatten een payload van tekstuele informatie die bestaat uit een sectie met kopteksten en een hoofd tekst gescheiden door de vertrouwde combi natie van het teken voor dubbele regel terugloop die wordt gebruikt voor HTTP-berichten. Net als HTTP-berichten geven text-socket-berichten kopteksten op *naam: waarde* -indeling gescheiden door een combi natie van een nieuwe regel met één regel terugloop. Alle tekst in een text-WebSocket- bericht moet [UTF-8-](https://tools.ietf.org/html/rfc3629) code ring gebruiken.
 
-WebSocket-SMS-berichten moeten een pad opgeven in de header *pad*. De waarde van deze header moet een van de spraakherkenning protocol berichttypen gedefinieerd verderop in dit document.
+Text-WebSocket-berichten moeten een pad naar een bericht opgeven in het *pad*van de header. De waarde van deze header moet een van de spraak protocol bericht typen die verderop in dit document zijn gedefinieerd.
 
 ### <a name="binary-websocket-messages"></a>Binaire WebSocket-berichten
 
-Binaire WebSocket berichten voert een binaire-nettolading. In het protocol Spraakservice audio verzonden naar en ontvangen van de service met behulp van binaire WebSocket-berichten. Alle andere berichten zijn berichten WebSocket.
+Binaire WebSocket-berichten bevatten een binaire nettolading. In het Speech-Service Protocol wordt audio verzonden naar en ontvangen van de service met behulp van binaire WebSocket-berichten. Alle andere berichten zijn text-WebSocket-berichten.
 
-Zoals SMS-berichten voor WebSocket bestaan binaire WebSocket-berichten uit een koptekst en een hoofdtekst-sectie. Geef de eerste 2 bytes van het binaire WebSocket-bericht [big endian](https://en.wikipedia.org/wiki/Endianness) volgorde, de grootte van de 16-bits geheel getal van de sectie header. De grootte van de sectie minimale kop is 0 bytes. De maximale grootte is 8192 bytes. De tekst in de headers van binaire WebSocket berichten *moet* gebruiken [US-ASCII-](https://tools.ietf.org/html/rfc20) codering.
+Net als tekst-WebSocket-berichten bestaan binaire WebSocket-berichten uit een sectie met koptekst en hoofd tekst. De eerste 2 bytes van het binaire bericht van de WebSocket opgeven, in de volg orde [big endian](https://en.wikipedia.org/wiki/Endianness) , de 16-bits integer-grootte van de koptekst sectie. De minimale sectie grootte van de header is 0 bytes. De maximale grootte is 8.192 bytes. De tekst in de headers van binaire WebSocket- berichten moet [US-ASCII-](https://tools.ietf.org/html/rfc20) code ring gebruiken.
 
-Kopteksten in een binaire WebSocket-bericht zijn gecodeerd in dezelfde indeling als in de SMS-berichten voor WebSocket. De *naam: waarde* indeling wordt gescheiden door een combinatie van één regelterugloop nieuwe regel. Binaire WebSocket berichten moeten een pad opgeven in de header *pad*. De waarde van deze header moet een van de spraakherkenning protocol berichttypen gedefinieerd verderop in dit document.
+Headers in een binaire WebSocket-bericht worden gecodeerd in dezelfde indeling als in text-WebSocket-berichten. De indeling *naam: waarde* wordt gescheiden door een combi natie van een nieuwe regel met één regel terugloop. Voor binaire WebSocket-berichten moet een pad naar een bericht worden opgegeven in het *pad*van de header. De waarde van deze header moet een van de spraak protocol bericht typen die verderop in dit document zijn gedefinieerd.
 
-Tekst en binaire WebSocket-berichten worden gebruikt in de Service voor spraak-protocol.
+Zowel tekst als binaire WebSocket-berichten worden gebruikt in het Speech-Service Protocol.
 
-## <a name="client-originated-messages"></a>Berichten afkomstig is van een client
+## <a name="client-originated-messages"></a>Berichten die afkomstig zijn van de client
 
-Nadat de verbinding tot stand is gebracht, worden zowel de client en de service kunnen beginnen met het verzenden van berichten. Deze sectie beschrijft de indeling en de nettolading van de berichten die clienttoepassingen naar spraak-Service verzenden. De sectie [berichten afkomstig is van een Service](#service-originated-messages) geeft de berichten die afkomstig zijn uit Speech Service en worden verzonden naar de clienttoepassingen.
+Nadat de verbinding tot stand is gebracht, kunnen de client en de service beginnen met het verzenden van berichten. In deze sectie worden de indeling en Payload beschreven van berichten die door client toepassingen naar de speech-service worden verzonden. De sectie [service-afkomstige berichten](#service-originated-messages) geeft de berichten weer die afkomstig zijn van de spraak service en worden verzonden naar de client toepassingen.
 
-De belangrijkste berichten verzonden door de client naar de services zijn `speech.config`, `audio`, en `telemetry` berichten. Voordat we elk bericht in detail, vereist de gemeenschappelijke berichtkoppen voor al deze berichten worden beschreven.
+De belangrijkste berichten die door de client naar de services worden `speech.config`verzonden `audio`, zijn `telemetry` , en berichten. Voordat we elk bericht in detail beschouwen, worden de algemene vereiste bericht koppen voor al deze berichten beschreven.
 
-### <a name="required-message-headers"></a>Vereiste berichtkoppen
+### <a name="required-message-headers"></a>Vereiste bericht headers
 
-De volgende headers zijn vereist voor alle berichten die afkomstig zijn van een client.
+De volgende headers zijn vereist voor alle door de client afkomstige berichten.
 
 | Header | Value |
 |----|----|
-| Path | Het pad weergegeven die zijn opgegeven in dit document |
-| X-RequestId | UUID in 'niet-dash'-indeling |
-| X-Timestamp | Client UTC klok tijdstempel in ISO 8601-notatie |
+| Path | Het pad naar het bericht zoals opgegeven in dit document |
+| X-RequestId | UUID in indeling zonder streepje |
+| X-Time Stamp | Tijds tempel van UTC-klok tijd van client in ISO 8601-indeling |
 
-#### <a name="x-requestid-header"></a>De header X-RequestId
+#### <a name="x-requestid-header"></a>X-aanvraag-header
 
-Aanvragen afkomstig is van een client worden onderscheiden op basis van de *X-RequestId* berichtkop. Deze header is vereist voor alle berichten die afkomstig zijn van een client. De *X-RequestId* header-waarde moet een UUID "niet-dash" vorm, bijvoorbeeld *123e4567e89b12d3a456426655440000*. Deze *kan geen* worden in de canonieke vorm *123e4567-e89b-12d3-a456-426655440000*. Aanvragen zonder een *X-RequestId* header of met een headerwaarde die gebruikmaakt van de verkeerde indeling voor UUID's ervoor zorgen dat de service beëindigen van de WebSocket-verbinding.
+Aanvragen die afkomstig zijn van de client, worden uniek geïdentificeerd door de bericht header *X-aanvraag-* id. Deze header is vereist voor alle door de client afkomstige berichten. De waarde van de *X-aanvraag-* header moet een uuid in het formulier zonder streepje zijn, bijvoorbeeld *123e4567e89b12d3a456426655440000*. Het *mag niet* in de canonieke vorm *123e4567-e89b-12d3-A456-426655440000*zijn. Aanvragen zonder een *X-aanvraag-* header of met een header-waarde die de onjuiste indeling voor uuid gebruikt, zorgt ervoor dat de service de WebSocket-verbinding beëindigt.
 
-#### <a name="x-timestamp-header"></a>De header X-Timestamp
+#### <a name="x-timestamp-header"></a>X-Time Stamp-kop
 
-Elk bericht dat wordt verzonden naar spraak-Service door een clienttoepassing *moet* bevatten een *X-Timestamp* header. De waarde voor deze header is de tijd wanneer de client wordt het bericht wordt verzonden. Aanvragen zonder een *X-Timestamp* header of leiden dat de service beëindigen van de WebSocket-verbinding met een headerwaarde die gebruikmaakt van de verkeerde indeling.
+Elk bericht dat wordt verzonden naar de spraak service door een client toepassing *moet* een *X-Time Stamp-* kop bevatten. De waarde voor deze header is het tijdstip waarop de client het bericht verzendt. Aanvragen zonder een *X-Time Stamp-* kop of met een header waarde die de onjuiste indeling gebruikt, zorgen ervoor dat de service de WebSocket-verbinding kan beëindigen.
 
-De *X-Timestamp* headerwaarde moet van het formulier 'yyyy'-'MM'-'dd'T' HH': 'mm':'ss '.' fffffffZ' waar 'fffffff' is een fractie van een seconde. Bijvoorbeeld, '12,5' '12 + 5/10 seconden en '12.526' betekent ' 12 plus 526/1000 seconden'. Deze indeling voldoet aan de [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) en, in tegenstelling tot de standaard-HTTP- *datum* header, kan deze milliseconde oplossing te bieden. Clienttoepassingen kunnen afronden tijdstempels op de dichtstbijzijnde milliseconde. Moeten de clienttoepassingen om ervoor te zorgen dat de apparaatklok nauwkeurig worden bijgehouden tijd met behulp van een [Network Time Protocol (NTP)-server](https://en.wikipedia.org/wiki/Network_Time_Protocol).
+De waarde van de *X-Time Stamp* -header moet de vorm ' YYYY'-'MM'-'dd'T'HH ': ' mm ': ' ss ' zijn. fffffffZ ' waarbij ' fffffff ' een fractie van een seconde is. Bijvoorbeeld: ' 12,5 ' betekent ' 12 + 5/10 seconden ' en ' 12,526 ' betekent ' 12 plus 526/1000 seconden '. Deze indeling voldoet aan [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) en, in tegens telling tot de standaard HTTP *date* -kop, kan de resolutie van milliseconden opleveren. Client toepassingen kunnen tijds tempels afronden op de dichtstbijzijnde milliseconde. Client toepassingen moeten ervoor zorgen dat de klok van het apparaat nauw keurig wordt getraceerd door gebruik te maken van een [NTP-server (Network Time Protocol)](https://en.wikipedia.org/wiki/Network_Time_Protocol).
 
-### <a name="message-speechconfig"></a>Bericht `speech.config`
+### <a name="message-speechconfig"></a>Bericht`speech.config`
 
-Spraakservice moet de kenmerken van uw toepassing voor de best mogelijke spraakherkenning kent. De gegevens van de vereiste kenmerken bevat informatie over het apparaat en het besturingssysteem dat wordt gebruikt door uw toepassing. U opgeven dat deze informatie in de `speech.config` bericht.
+De spraak service moet weten wat de kenmerken van uw toepassing zijn om de best mogelijke spraak herkenning mogelijk te maken. De vereiste kenmerken gegevens bevatten informatie over het apparaat en het besturings systeem dat uw toepassing aanstuurt. U geeft deze informatie op in `speech.config` het bericht.
 
-Clients *moet* verzendt een `speech.config` bericht zodra ze maken van de verbinding met Spraakservice en voordat ze een verzenden `audio` berichten. U moet voor het verzenden van een `speech.config` bericht slechts één keer per verbinding.
+Clients *moeten* onmiddellijk een `speech.config` bericht verzenden nadat ze de verbinding hebben gemaakt met de spraak service en `audio` voordat ze berichten verzenden. U hoeft slechts één keer `speech.config` per verbinding een bericht te verzenden.
 
 | Veld | Description |
 |----|----|
-| WebSocket-bericht coderen | Text |
-| Hoofdtekst | De nettolading als een JSON-structuur |
+| WebSocket-bericht codering | Text |
+| Hoofdtekst | De payload als een JSON-structuur |
 
-#### <a name="required-message-headers"></a>Vereiste berichtkoppen
+#### <a name="required-message-headers"></a>Vereiste bericht headers
 
 | Headernaam | Value |
 |----|----|
 | Path | `speech.config` |
-| X-Timestamp | Client UTC klok tijdstempel in ISO 8601-notatie |
+| X-Time Stamp | Tijds tempel van UTC-klok tijd van client in ISO 8601-indeling |
 | Content-Type | application/json; charset=utf-8 |
 
-Net als bij alle berichten in het protocol Speech Service, die afkomstig is van een client de `speech.config` bericht *moet* bevatten een *X-Timestamp* -header die records van de client UTC clock-tijd waarop het bericht is verzonden met de service. De `speech.config` bericht *niet* vereisen een *X-RequestId* header omdat dit bericht is niet gekoppeld aan een bepaalde spraak-aanvraag.
+Net als bij alle client-afkomstige berichten in het Speech-Service protocol `speech.config` *moet* het bericht een *X-Time Stamp-* header bevatten die de klok tijd van de client vastlegt wanneer het bericht is verzonden naar de service. Het `speech.config` bericht vereist *geen* *X-aanvraag-* header omdat dit bericht niet aan een bepaalde spraak aanvraag is gekoppeld.
 
-#### <a name="message-payload"></a>De berichtnettolading van
-De nettolading van de `speech.config` bericht is een JSON-structuur die informatie over de toepassing bevat. Het volgende voorbeeld ziet deze informatie. Voor clients en apparaten context-informatie is opgenomen in de *context* element van de JSON-structuur.
+#### <a name="message-payload"></a>Bericht lading
+De payload van het `speech.config` bericht is een JSON-structuur die informatie over de toepassing bevat. In het volgende voor beeld wordt deze informatie weer gegeven. Informatie over de context van de client en het apparaat is opgenomen in het *context* element van de JSON-structuur.
 
 ```JSON
 {
@@ -211,67 +211,67 @@ De nettolading van de `speech.config` bericht is een JSON-structuur die informat
 }
 ```
 
-##### <a name="system-element"></a>Systeemelement
+##### <a name="system-element"></a>Systeem element
 
-Het element system.version van de `speech.config` bericht bevat de versie van de gesproken tekst SDK-software die worden gebruikt door de clienttoepassing of het apparaat. De waarde in het formulier is *major.minor.build.branch*. U kunt weglaten de *vertakking* onderdeel als deze niet van toepassing is.
+Het element System. version van het `speech.config` bericht bevat de versie van de Speech SDK-software die wordt gebruikt door de client toepassing of het apparaat. De waarde heeft de indeling *Major. minor. build. Branch*. U kunt het *vertakkings* onderdeel weglaten als het niet van toepassing is.
 
-##### <a name="os-element"></a>OS-element
-
-| Veld | Description | Gebruik |
-|-|-|-|
-| os.platform | De OS-platform die als host fungeert van de toepassing, bijvoorbeeld, Windows, Android, iOS- of Linux |Vereist |
-| os.name | De productnaam besturingssysteem, bijvoorbeeld Debian of Windows 10 | Vereist |
-| os.version | De versie van het besturingssysteem in de vorm *major.minor.build.branch* | Vereist |
-
-##### <a name="device-element"></a>Apparaat-element
+##### <a name="os-element"></a>BESTURINGSSYSTEEM element
 
 | Veld | Description | Gebruik |
 |-|-|-|
-| device.manufacturer | De fabrikant van apparaat | Vereist |
-| device.model | Het Apparaatmodel | Vereist |
-| device.version | De versie van het apparaat software is geleverd door de fabrikant van het apparaat. Deze waarde bevat een versie van het apparaat dat kan worden gevolgd door de fabrikant. | Vereist |
+| os.platform | Het OS-platform dat als host fungeert voor de toepassing, bijvoorbeeld Windows, Android, iOS of Linux |Vereist |
+| os.name | De product naam van het besturings systeem, bijvoorbeeld Debian of Windows 10 | Vereist |
+| os.version | De versie van het besturings systeem in de vorm *primair. secundair. build. Branch* | Vereist |
 
-### <a name="message-audio"></a>Bericht `audio`
+##### <a name="device-element"></a>Element apparaat
 
-Spraak ingeschakeld clienttoepassingen verzenden audio naar spraak-Service door de audiostream omzetten in een reeks van audio segmenten. Elk segment van de audio wordt een segment van de gesproken audio die moet worden omgezet door de service. De maximale grootte van één audio segment is 8192 bytes. Audiostream berichten zijn *binaire WebSocket berichten*.
+| Veld | Description | Gebruik |
+|-|-|-|
+| device.manufacturer | De hardwarefabrikant van het apparaat | Vereist |
+| device.model | Het model van het apparaat | Vereist |
+| device.version | De software versie van het apparaat die is geleverd door de fabrikant van het apparaat. Met deze waarde wordt een versie van het apparaat opgegeven dat door de fabrikant kan worden gevolgd. | Vereist |
 
-Clients gebruiken de `audio` dat een audio segment naar de service verzonden. Clients lezen audio van de microfoon in segmenten en deze segmenten verzenden naar Spraakservice voor transcriptie. De eerste `audio` bericht een grammaticaal correcte header die goed geeft aan dat de audio aan een van de indelingen ondersteund door de service voldoet moet bevatten. Aanvullende `audio` berichten bevatten alleen de binaire audio streamen gegevens lezen van de microfoon.
+### <a name="message-audio"></a>Bericht`audio`
 
-Clients worden verzonden (optioneel) een `audio` bericht met een lengte van nul-instantie. Dit bericht geeft aan dat de service die de client bekend is dat de gebruiker heeft gestopt spreken, de utterance is voltooid en de microfoon is uitgeschakeld.
+Spraak ingeschakelde client toepassingen verzenden audio naar de speech-service door de audio stroom te converteren naar een reeks audio fragmenten. Elk audio segment bevat een segment van de gesp roken audio dat door de service wordt getranscribeerd. De maximale grootte van één audio segment is 8.192 bytes. Audio stroom berichten zijn *binaire WebSocket-berichten*.
 
-Speech Service maakt gebruik van de eerste `audio` -mailbericht met een unieke aanvraag-id op om door te geven het begin van een nieuwe aanvraag/antwoord-cyclus of *inschakelen*. Nadat de service ontvangt een `audio` bericht met een nieuwe aanvraag-id, het in de wachtrij of niet-verzonden berichten die gekoppeld aan alle vorige inschakelen zijn wordt verwijderd.
+Clients gebruiken het `audio` bericht om een audio segment naar de service te verzenden. Clients lezen audio van de microfoon in segmenten en verzenden deze segmenten naar de speech-service voor transcriptie. Het eerste `audio` bericht moet een juist opgemaakte header bevatten die aangeeft dat de audio voldoet aan een van de coderings indelingen die worden ondersteund door de service. Extra `audio` berichten bevatten alleen de binaire audio gegevensstroom gegevens die van de microfoon zijn gelezen.
+
+Clients kunnen eventueel een `audio` bericht verzenden met een hoofd tekst met een lengte van nul. Dit bericht geeft aan de service dat de client weet dat de gebruiker is gestopt met spreken, het utterance is voltooid en de microfoon is uitgeschakeld.
+
+De speech-service gebruikt `audio` het eerste bericht dat een unieke aanvraag-id bevat om aan te geven dat het begin van een nieuwe aanvraag/antwoord cyclus of *Turn*wordt gestart. Nadat de service een `audio` bericht met een nieuwe aanvraag-id heeft ontvangen, worden alle in de wachtrij geplaatste of niet-verzonden berichten die zijn gekoppeld aan een vorige zet, verwijderd.
 
 | Veld | Description |
 |-------------|----------------|
-| WebSocket-bericht coderen | Binair bestand |
-| Hoofdtekst | De binaire gegevens voor de audio chunk. Maximale grootte is 8192 bytes. |
+| WebSocket-bericht codering | Binary |
+| Hoofdtekst | De binaire gegevens voor het audio segment. De maximale grootte is 8.192 bytes. |
 
-#### <a name="required-message-headers"></a>Vereiste berichtkoppen
+#### <a name="required-message-headers"></a>Vereiste bericht headers
 
 De volgende headers zijn vereist voor alle `audio` berichten.
 
 | Header         |  Value     |
 | ------------- | ---------------- |
 | Path | `audio` |
-| X-RequestId | UUID in 'niet-dash'-indeling |
-| X-Timestamp | Client UTC klok tijdstempel in ISO 8601-notatie |
-| Content-Type | De audio inhoudstype. Het type moet een *audio/x-wav* (PCM) of *audio/zijde* (ZIJDE). |
+| X-RequestId | UUID in indeling zonder streepje |
+| X-Time Stamp | Tijds tempel van UTC-klok tijd van client in ISO 8601-indeling |
+| Content-Type | Het type audio-inhoud. Het type moet *Audio/x-WAV* (PCM) of *Audio/zijde* (zijde) zijn. |
 
-#### <a name="supported-audio-encodings"></a>Ondersteunde audio coderingen
+#### <a name="supported-audio-encodings"></a>Ondersteunde audio codering
 
-Deze sectie beschrijft de codecs audio wordt ondersteund door spraak-Service.
+In deze sectie worden de audiocodecs beschreven die worden ondersteund door de spraak service.
 
 ##### <a name="pcm"></a>PCM
 
-Speech Service accepteert niet-gecomprimeerde pulse-code (PCM)-modulatie audio. Audio wordt verzonden naar de service in [WAV](https://en.wikipedia.org/wiki/WAV) -indeling, zodat de eerste audio wordt verdeeld *moet* bevatten een geldige [Resource Interchange bestandsindeling](https://en.wikipedia.org/wiki/Resource_Interchange_File_Format) (RIFF)-header. Als een client een inschakelen met een audio-segment dat doet initieert *niet* een geldige RIFF-header bevatten, de service wordt het verzoek geweigerd en wordt de WebSocket-verbinding beëindigd.
+De spraak service accepteert niet-gecomprimeerde Pulse Code-modulatie (PCM)-audio. Audio wordt in [WAV](https://en.wikipedia.org/wiki/WAV) -indeling naar de service verzonden, dus het eerste audio segment *moet* een geldige RIFF-header ( [Resource Interchange File Format](https://en.wikipedia.org/wiki/Resource_Interchange_File_Format) ) bevatten. Als een client een turn initieert met een audio segment dat *geen* geldige RIFF-kop bevat, weigert de service de aanvraag en beëindigt de WebSocket-verbinding.
 
-PCM-audio *moet* daarvan worden genomen op 16 kHz met 16 bits per voorbeeld en één kanaal (*riff-16khz-16-bits-mono-pcm*). Speech Service biedt geen ondersteuning voor stereo audiostreams en audiostreams die geen van de opgegeven bitsnelheid, samplefrequentie of aantal kanalen gebruikmaken weigert.
+PCM-audio *moet* worden bemonsterd met 16 kHz en 16 bits per sample en één kanaal (*RIFF-16khz-16-mono-PCM*). De speech-service biedt geen ondersteuning voor audio gegevensstromen in stereo en wijst audio stromen af die geen gebruik maken van de opgegeven bitsnelheid, sample frequentie of het aantal kanalen.
 
 ##### <a name="opus"></a>Opus
 
-Opus is een open, royaltyvrije, uiterst veelzijdige audiocodec. Spraakservice ondersteunt Opus tegen een tarief constante bits van `32000` of `16000`. Alleen de `OGG` container voor Opus wordt momenteel ondersteund die is opgegeven door de `audio/ogg` MIME-type.
+Opus is een open, Royalty gratis, uiterst veelzijdige audiocodec van audio. Speech Service ondersteunt Opus met een constante bitsnelheid van `32000` of. `16000` Alleen de `OGG` container voor Opus wordt momenteel ondersteund en wordt opgegeven door het `audio/ogg` MIME-type.
 
-Voor het gebruik van Opus, wijzigen de [JavaScript voorbeeld](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/master/samples/browser/Sample.html#L101) en wijzig de `RecognizerSetup` methode om te retourneren.
+Als u Opus wilt gebruiken, wijzigt u het [Java script](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/master/samples/browser/Sample.html#L101) -voor beeld en wijzigt u de `RecognizerSetup` methode om te retour neren.
 
 ```javascript
 return SDK.CreateRecognizerWithCustomAudioSource(
@@ -287,52 +287,52 @@ return SDK.CreateRecognizerWithCustomAudioSource(
           ));
 ```
 
-#### <a name="detect-end-of-speech"></a>Einde van spraak detecteren
+#### <a name="detect-end-of-speech"></a>Einde van spraak detectie
 
-Mensen doen niet expliciet geven wanneer ze klaar bent spreken. Elke toepassing die door spraak geaccepteerd als invoer twee opties heeft voor het verwerken van het einde van de gesproken tekst in een audiostream: detectie van end-of-speech en detectie van de end-of-speech client-service. Van deze twee opties biedt detectie van de end-of-speech service gewoonlijk een betere gebruikerservaring.
+Mensen geven geen expliciete Signa lering wanneer ze klaar zijn met spreken. Elke toepassing die spraak accepteert als invoer, heeft twee opties voor het afhandelen van het einde van de spraak in een audio stroom: end-of-speech-detectie en client-end-of-speech-detectie. Van deze twee keuzes biedt service-end-of-speech-detectie meestal een betere gebruikers ervaring.
 
-##### <a name="service-end-of-speech-detection"></a>Detectie van de end-of-speech service
+##### <a name="service-end-of-speech-detection"></a>End-of-speech-detectie service
 
-Voor het bouwen van de ideale Handsfree spraak-ervaring, zodat toepassingen de service om te detecteren wanneer de gebruiker spreekt is voltooid. Clients verzenden audio van de microfoon als *audio* segmenten gedownload totdat de service stilte detecteert en met reageert een `speech.endDetected` bericht.
+Om de ideale hand-free spraak ervaring te bouwen, kunnen de services door toepassingen detecteren wanneer de gebruiker klaar is met spreken. Clients verzenden audio van de microfoon als *Audio* fragmenten totdat de service stilte detecteert en terugkeert met `speech.endDetected` een bericht.
 
-##### <a name="client-end-of-speech-detection"></a>Detectie van de end-of-speech client
+##### <a name="client-end-of-speech-detection"></a>Client end-of-speech-detectie
 
-Clienttoepassingen die toestaan dat de gebruiker het einde van de gesproken tekst in een bepaalde manier kunnen tevens de service die signaal. Een clienttoepassing zijn mogelijk een 'Stop' of ' ' dempen die kan de gebruiker op. Als u wilt aangeven end-of-speech, het verzenden van clienttoepassingen een *audio* chunk-bericht met een lengte van nul-instantie. Spraakservice wordt dit bericht als het einde van de binnenkomende audiostream geïnterpreteerd.
+Client toepassingen die de gebruiker in staat stellen het einde van de spraak op een of andere manier te Signa leren, kunnen ook de service die signaal geeft. Een client toepassing kan bijvoorbeeld een knop ' stoppen ' of ' dempen ' hebben waarop de gebruiker kan drukken. Om einde van spraak te Signa leren, verzenden client toepassingen een bericht met een *Audio* segment met een hoofd tekst met een lengte van nul. De speech-service interpreteert dit bericht als het einde van de inkomende audio stroom.
 
-### <a name="message-telemetry"></a>Bericht `telemetry`
+### <a name="message-telemetry"></a>Bericht`telemetry`
 
-Clienttoepassingen *moet* bevestigen van het einde van elke inschakelen door te verzenden van telemetrie over de inschakelen naar Speech Service. Schakel-end bevestiging kunt Speech-Service om ervoor te zorgen dat alle berichten die nodig zijn voor de voltooiing van de aanvraag en de reactie correct zijn ontvangen door de client. Schakel-end bevestiging kunt ook-spraak-Service om te verifiëren dat de clienttoepassingen worden uitgevoerd zoals verwacht. Deze informatie is zeer waardevol als u informatie over het oplossen van uw toepassing spraak ingeschakelde nodig hebt.
+Client toepassingen *moeten* het einde van elke beurt bevestigen door telemetrie over de turn to speech-service te verzenden. Met de functie voor het inschakelen van de eind bevestiging kan de spraakherkennings service ervoor zorgen dat alle berichten die nodig zijn voor het volt ooien van de aanvraag en het antwoord op de juiste wijze zijn ontvangen door de client. Met de functie voor het inschakelen van de eind bevestiging kan de speech-service ook controleren of de client toepassingen worden uitgevoerd zoals verwacht. Deze informatie is niet waardevol als u hulp nodig hebt bij het oplossen van problemen met spraak toepassingen.
 
-Clients het einde van een inschakelen door te sturen moeten bevestigen een `telemetry` bericht snel na ontvangst een `turn.end` bericht. Clients om te bevestigen moeten proberen de `turn.end` zo snel mogelijk. Als een clienttoepassing mislukt voor het bevestigen van het einde inschakelen, mogelijk Speech Service de verbinding met een fout te beëindigen. Clients kunnen slechts één moeten verzenden `telemetry` bericht voor elke aanvraag en reactie geïdentificeerd door de *X-RequestId* waarde.
+Clients moeten het einde van een turn bevestigen door een `telemetry` bericht te verzenden zodra hij een `turn.end` bericht heeft ontvangen. Clients moeten zo snel mogelijk proberen `turn.end` om dit te bevestigen. Als een client toepassing het inschakelen van het einde niet kan bevestigen, kan de spraak service de verbinding met een fout beëindigen. Clients moeten slechts één `telemetry` bericht verzenden voor elke aanvraag en reactie die wordt geïdentificeerd door de *X-aanvraag-* id.
 
 | Veld | Description |
 | ------------- | ---------------- |
-| WebSocket-bericht coderen | Text |
+| WebSocket-bericht codering | Text |
 | Path | `telemetry` |
-| X-Timestamp | Client UTC klok tijdstempel in ISO 8601-notatie |
+| X-Time Stamp | Tijds tempel van UTC-klok tijd van client in ISO 8601-indeling |
 | Content-Type | `application/json` |
-| Hoofdtekst | Een JSON-structuur met clientinformatie over het inschakelen |
+| Hoofdtekst | Een JSON-structuur die client informatie over de beurt bevat |
 
-Het schema voor de hoofdtekst van de `telemetry` bericht is gedefinieerd in de [telemetrie schema](#telemetry-schema) sectie.
+Het schema voor de hoofd tekst van `telemetry` het bericht wordt gedefinieerd in de sectie [telemetrie-schema](#telemetry-schema) .
 
 #### <a name="telemetry-for-interrupted-connections"></a>Telemetrie voor onderbroken verbindingen
 
-Als de netwerkverbinding om welke reden dan ook tijdens een inschakelen mislukt en de client heeft *niet* ontvangen een `turn.end` bericht uit de service, de client verzendt een `telemetry` bericht. In dit bericht wordt de mislukte aanvragen met de volgende keer dat de client een verbinding met de service maakt. Clients hoeven niet onmiddellijk probeert een verbinding voor het verzenden van de `telemetry` bericht. Het bericht kan worden gebufferd op de client en verzonden via een toekomstige gebruiker aangevraagde verbinding. De `telemetry` bericht voor de mislukte aanvragen *moet* gebruiken de *X-RequestId* waarde van de mislukte aanvragen. Deze kan worden verzonden naar de service zodra een verbinding tot stand is gebracht, zonder te wachten op verzenden of ontvangen van andere berichten.
+Als de netwerk verbinding om een of andere reden niet kan worden uitgevoerd en de *client geen* `turn.end` bericht van de service ontvangt, verzendt de client een `telemetry` bericht. In dit bericht wordt de mislukte aanvraag beschreven wanneer de client de volgende keer verbinding maakt met de service. Clients hoeven niet onmiddellijk een verbinding te proberen om het `telemetry` bericht te verzenden. Het bericht kan worden gebufferd op de client en via een toekomstig door de gebruiker aangevraagde verbinding worden verzonden. Het `telemetry` bericht voor de mislukte aanvraag *moet* de *X-aanvraag-* waarde van de mislukte aanvraag gebruiken. Het kan worden verzonden naar de service zodra er een verbinding tot stand is gebracht, zonder te wachten op het verzenden of ontvangen van andere berichten.
 
-## <a name="service-originated-messages"></a>Berichten afkomstig is van een service
+## <a name="service-originated-messages"></a>Berichten van de service
 
-Deze sectie beschrijft de berichten die afkomstig zijn uit Speech Service en worden verzonden naar de client. Speech Service houdt een register van de client-mogelijkheden en genereert de berichten die zijn vereist voor elke client, dus niet dat alle clients ontvangen alle berichten die hier worden beschreven. Beknopt alternatief berichten wordt verwezen door de waarde van de *pad* header. Bijvoorbeeld, verwijzen we naar een WebSocket SMS-bericht met de *pad* waarde `speech.hypothesis` als een bericht speech.hypothesis.
+In deze sectie worden de berichten beschreven die afkomstig zijn van de spraak service en worden verzonden naar de client. Speech Service onderhoudt een REGI ster van client mogelijkheden en genereert de berichten die zijn vereist voor elke client, zodat niet alle clients alle berichten ontvangen die hier worden beschreven. Voor het boogere wordt verwezen naar berichten met de waarde van de *pad* -header. Zo verwijzen we naar een WebSocket-tekst bericht met de *padwaarde* `speech.hypothesis` als een speech. hypo these-bericht.
 
-### <a name="message-speechstartdetected"></a>Bericht `speech.startDetected`
+### <a name="message-speechstartdetected"></a>Bericht`speech.startDetected`
 
-De `speech.startDetected` bericht geeft aan dat Spraakservice spraak gedetecteerd in de audio-stream.
+Het `speech.startDetected` bericht geeft aan dat de speech-service spraak heeft gedetecteerd in de audio stroom.
 
 | Veld | Description |
 | ------------- | ---------------- |
-| WebSocket-bericht coderen | Text |
+| WebSocket-bericht codering | Text |
 | Path | `speech.startDetected` |
 | Content-Type | application/json; charset=utf-8 |
-| Hoofdtekst | De JSON-structuur die informatie over de voorwaarden bevat wanneer het begin van spraak is gedetecteerd. De *Offset* veld in deze structuur geeft de verschuiving (in eenheden van 100 nanoseconden) wanneer spraak in de audiostream, ten opzichte van het begin van de stroom is gedetecteerd. |
+| Hoofdtekst | De JSON-structuur met informatie over de voor waarden wanneer het starten van de spraak is gedetecteerd. In het *Offset* veld in deze structuur wordt de offset (in 100-nano seconden eenheden) opgegeven wanneer er spraak is gedetecteerd in de audio stroom, ten opzichte van het begin van de stroom. |
 
 #### <a name="sample-message"></a>Voorbeeldbericht
 
@@ -346,19 +346,19 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-### <a name="message-speechhypothesis"></a>Bericht `speech.hypothesis`
+### <a name="message-speechhypothesis"></a>Bericht`speech.hypothesis`
 
-Tijdens de spraakherkenning genereert Speech Service regelmatig hypothesen over de woorden die de service wordt herkend. Speech Service verzendt deze hypothesen naar de client ongeveer elke 300 milliseconden. De `speech.hypothesis` geschikt *alleen* voor het verbeteren van de gebruikerservaring van spraak. U moet eventuele afhankelijkheden van de inhoud of de nauwkeurigheid van de tekst niet uitvoeren in deze berichten.
+Tijdens spraak herkenning genereert de spraak service periodiek hypo thesen over de woorden die door de service worden herkend. Speech service stuurt deze hypo theses ongeveer elke 300 milliseconden naar de client. De `speech.hypothesis` is *alleen* geschikt voor het verbeteren van de gebruikers spraak ervaring. U mag geen afhankelijkheid nemen van de inhoud of nauw keurigheid van de tekst in deze berichten.
 
- De `speech.hypothesis` bericht is van toepassing op clients die de mogelijkheden van sommige tekst rendering en feedback wilt geven near-real-time van de erkenning wordt uitgevoerd voor de persoon die spreekt.
+ Het `speech.hypothesis` bericht is van toepassing op de clients die een bepaalde functie voor het weer geven van tekst hebben en die vrijwel realtime feedback over de onderhanden herkenning kunnen geven aan de persoon die spreekt.
 
 | Veld | Description |
 | ------------- | ---------------- |
-| WebSocket-bericht coderen | Text |
+| WebSocket-bericht codering | Text |
 | Path | `speech.hypothesis` |
-| X-RequestId | UUID in 'niet-dash'-indeling |
+| X-RequestId | UUID in indeling zonder streepje |
 | Content-Type | application/json |
-| Hoofdtekst | De spraak-hypothese JSON-structuur |
+| Hoofdtekst | De JSON-structuur voor spraak hypo Thesen |
 
 #### <a name="sample-message"></a>Voorbeeldbericht
 
@@ -374,24 +374,24 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-De *Offset* element geeft de verschuiving (in eenheden van 100 nanoseconden) wanneer de woordgroep wordt herkend, ten opzichte van het begin van de audio-stream.
+Met het *Offset* -element wordt de offset (in 100-nano seconden eenheden) aangegeven wanneer de zin is herkend, ten opzichte van het begin van de audio stroom.
 
-De *duur* element Hiermee geeft u de duur (in eenheden van 100 nanoseconden) van deze zin spraak.
+Met het element *duration* wordt de duur (in 100-nano seconden eenheden) van deze spraak zin opgegeven.
 
-Clients moeten niet veronderstellingen over de frequentie, timing of tekst in een hypothese spraak of de consistentie van de tekst in een hypothesen twee spraak. De hypothesen zijn alleen momentopnamen in het proces transcriptie in de service. Ze vertegenwoordigt een stabiele opeenstapeling van transcriptie. Bijvoorbeeld een eerste spraak hypothese bevat mogelijk de woorden "fijn leuk" en de tweede hypothese kan bevatten van de woorden "leuks was vinden." Spraakservice uitvoeren niet na verwerking (bijvoorbeeld gebruik van hoofdletters, leestekens) op de tekst in de hypothese spraak.
+Clients mogen geen veronderstellingen doen over de frequentie, de timing of de tekst in een spraak-hypo these of de consistentie van tekst in twee spraak hypo Thesen. De hypo Thesen zijn alleen moment opnamen in het transcriptie-proces in de service. Ze vertegenwoordigen geen stabiele accumulatie van transcriptie. Zo kan een eerste spraak hypo these de woorden ' fijn plezier ' bevatten en kan de tweede hypo these de woorden ' leuke Zoek ' bevatten. De spraak service voert geen naverwerking (bijvoorbeeld hoofdletter gebruik, lees tekens) uit voor de tekst in de woorden hypo these.
 
-### <a name="message-speechphrase"></a>Bericht `speech.phrase`
+### <a name="message-speechphrase"></a>Bericht`speech.phrase`
 
-Wanneer Spraakservice bepaalt dat er voldoende informatie voor het produceren van een herkenningsresultaat dat niet verandert, de service-produceert een `speech.phrase` bericht. Speech Service levert deze resultaten nadat gedetecteerd dat de gebruiker een zin of woordgroep is voltooid.
+Wanneer de spraak service vaststelt dat er voldoende informatie is om een herkennings resultaat te maken dat niet verandert, `speech.phrase` wordt een bericht door de service gegenereerd. De spraak service produceert deze resultaten nadat is vastgesteld dat de gebruiker een zin of woord groep heeft voltooid.
 
 | Veld | Description |
 | ------------- | ---------------- |
-| WebSocket-bericht coderen | Text |
+| WebSocket-bericht codering | Text |
 | Path | `speech.phrase` |
 | Content-Type | application/json |
-| Hoofdtekst | De spraak-woordgroep JSON-structuur |
+| Hoofdtekst | De tekst van de JSON-structuur van de spraak |
 
-De spraak woordgroep JSON-schema bevat de volgende velden: `RecognitionStatus`, `DisplayText`, `Offset`, en `Duration`. Zie voor meer informatie over deze velden, [transcriptie antwoorden](../concepts.md#transcription-responses).
+Het JSON-schema van de spraak zin bevat de `RecognitionStatus`volgende `DisplayText`velden `Offset`:, `Duration`, en. Zie [transcriptie Responses](../concepts.md#transcription-responses)(Engelstalig) voor meer informatie over deze velden.
 
 #### <a name="sample-message"></a>Voorbeeldbericht
 
@@ -408,15 +408,15 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-### <a name="message-speechenddetected"></a>Bericht `speech.endDetected`
+### <a name="message-speechenddetected"></a>Bericht`speech.endDetected`
 
-De `speech.endDetected` bericht geeft aan dat de clienttoepassing moet worden stopgezet streamen van audio naar de service.
+Het `speech.endDetected` bericht geeft aan dat de client toepassing het streamen van audio naar de service moet stoppen.
 
 | Veld | Description |
 | ------------- | ---------------- |
-| WebSocket-bericht coderen | Text |
+| WebSocket-bericht codering | Text |
 | Path | `speech.endDetected` |
-| Hoofdtekst | De JSON-structuur met de verschuiving van het einde van spraak is gedetecteerd. De offset wordt weergegeven in eenheden van 100 nanoseconden verschuiving vanaf het begin van de audio die wordt gebruikt voor opname. |
+| Hoofdtekst | De JSON-structuur die de offset bevat wanneer het einde van de spraak is gedetecteerd. De offset wordt weer gegeven in 100-nano seconden eenheden van het begin van de audio die wordt gebruikt voor herkenning. |
 | Content-Type | application/json; charset=utf-8 |
 
 #### <a name="sample-message"></a>Voorbeeldbericht
@@ -431,15 +431,15 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-De *Offset* element geeft de verschuiving (in eenheden van 100 nanoseconden) wanneer de woordgroep wordt herkend, ten opzichte van het begin van de audio-stream.
+Met het *Offset* -element wordt de offset (in 100-nano seconden eenheden) aangegeven wanneer de zin is herkend, ten opzichte van het begin van de audio stroom.
 
-### <a name="message-turnstart"></a>Bericht `turn.start`
+### <a name="message-turnstart"></a>Bericht`turn.start`
 
-De `turn.start` geeft aan het begin van een inschakelen vanuit het perspectief van de service. De `turn.start` bericht is altijd het eerste antwoordbericht u voor elke aanvraag ontvangt. Als u niet hebt ontvangen een `turn.start` ontvangt, wordt ervan uitgegaan dat de status van de serviceverbinding is ongeldig.
+Hiermee wordt het begin van een bocht van het perspectief van de service gesignaleerd.`turn.start` Het `turn.start` bericht is altijd het eerste antwoord bericht dat u voor elke aanvraag ontvangt. Als u geen `turn.start` bericht ontvangt, moet u aannemen dat de status van de service verbinding ongeldig is.
 
 | Veld | Description |
 | ------------- | ---------------- |
-| WebSocket-bericht coderen | Text |
+| WebSocket-bericht codering | Text |
 | Path | `turn.start` |
 | Content-Type | application/json; charset=utf-8 |
 | Hoofdtekst | JSON-structuur |
@@ -458,15 +458,15 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-De hoofdtekst van de `turn.start` bericht is een JSON-structuur die context voor het begin van de beurt bevat. De *context* element bevat een *serviceTag* eigenschap. Deze eigenschap geeft u een tagwaarde die de service is gekoppeld aan de beurt. Deze waarde kan worden gebruikt door Microsoft als u informatie over het oplossen van fouten in uw toepassing nodig hebt.
+De hoofd tekst van `turn.start` het bericht is een JSON-structuur die context bevat voor het begin van de beurt. Het *context* element bevat een eigenschap *serviceTag* . Met deze eigenschap geeft u een label waarde op die aan de beurt is gekoppeld aan de service. Deze waarde kan worden gebruikt door micro soft als u hulp nodig hebt bij het oplossen van fouten in uw toepassing.
 
-### <a name="message-turnend"></a>Bericht `turn.end`
+### <a name="message-turnend"></a>Bericht`turn.end`
 
-De `turn.end` geeft aan het einde van een inschakelen vanuit het perspectief van de service. De `turn.end` bericht is altijd het laatste antwoordbericht u voor elke aanvraag ontvangt. Clients kunnen de ontvangst van dit bericht gebruiken als een signaal voor opschoning activiteiten en over te stappen op een niet-actieve status. Als u niet hebt ontvangen een `turn.end` ontvangt, wordt ervan uitgegaan dat de status van de serviceverbinding is ongeldig. In deze gevallen de bestaande verbinding met de service sluit en opnieuw verbinding maken.
+De `turn.end` signalen het einde van een omschakeling van het perspectief van de service. Het `turn.end` bericht is altijd het laatste antwoord bericht dat u voor elke aanvraag ontvangt. Clients kunnen de ontvangst van dit bericht gebruiken als signaal voor opschoon activiteiten en overschakelen naar een niet-actieve status. Als u geen `turn.end` bericht ontvangt, moet u aannemen dat de status van de service verbinding ongeldig is. In dat geval sluit u de bestaande verbinding met de service en maakt u opnieuw verbinding.
 
 | Veld | Description |
 | ------------- | ---------------- |
-| WebSocket-bericht coderen | Text |
+| WebSocket-bericht codering | Text |
 | Path | `turn.end` |
 | Hoofdtekst | Geen |
 
@@ -479,13 +479,13 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 ## <a name="telemetry-schema"></a>Telemetrie-schema
 
-De hoofdtekst van de *telemetrie* bericht is een JSON-structuur die clientinformatie over een inschakelen of een pogingen tot verbinding bevat. De structuur is opgebouwd uit client tijdstempels die record wanneer clientgebeurtenissen plaatsvinden. Elke tijdstempel moet zich in de ISO 8601-notatie, zoals beschreven in de sectie 'X-Timestamp header'. *Telemetrie* berichten die niet alle vereiste velden in de JSON-structuur opgeeft of die gebruik niet de juiste tijdstempel-indeling kunnen leiden tot de service de verbinding met de client is beëindigd. Clients *moet* geldige waarden voor alle vereiste velden opgeven. Clients *moet* waarden voor optionele velden wanneer dat nodig. De waarden in de voorbeelden in deze sectie zijn uitsluitend ter illustratie.
+De hoofd tekst van het *telemetrie* -bericht is een JSON-structuur die client informatie over een bocht of een poging tot verbinding bevat. De structuur bestaat uit client tijds tempels die vastleggen wanneer client gebeurtenissen optreden. Elke tijds tempel moet de ISO 8601-indeling hebben, zoals beschreven in de sectie ' X-Time Stamp-koptekst '. *Telemetrie* -berichten waarbij niet alle vereiste velden in de JSON-structuur worden opgegeven of die niet gebruikmaken van de juiste notatie voor tijds tempels, kunnen ertoe leiden dat de service de verbinding met de client beëindigt. Clients *moeten* geldige waarden opgeven voor alle vereiste velden. Clients *moeten* indien nodig waarden voor optionele velden opgeven. De waarden die in de voor beelden in deze sectie worden weer gegeven, zijn alleen ter illustratie.
 
-Telemetrie-schema is onderverdeeld in de volgende onderdelen: ontvangen bericht tijdstempels en metrische gegevens. De indeling en het gebruik van elk onderdeel is opgegeven in de volgende secties.
+Het telemetrie-schema is onderverdeeld in de volgende onderdelen: tijds tempels en metrische gegevens van het bericht ontvangen. De notatie en het gebruik van elk deel worden opgegeven in de volgende secties.
 
-### <a name="received-message-time-stamps"></a>Ontvangen bericht tijdstempels
+### <a name="received-message-time-stamps"></a>Ontvangen tijds tempels van bericht
 
--Clients moeten de tijd van ontvangst waarden voor alle berichten die zij krijgen de verbinding is geslaagd met de service zijn. Deze waarden moeten registreren op welk tijdstip wanneer de client *ontvangen* elk bericht van het netwerk. De waarde moet een ander tijdstip niet vastleggen. De client moet bijvoorbeeld niet registreren op welk tijdstip wanneer deze *gehandeld* voor het bericht. De tijdstempels ontvangen bericht worden opgegeven in een matrix met *naam: waarde* paren. Hiermee geeft u op de naam van de combinatie van de *pad* waarde van het bericht. De waarde van het paar Hiermee geeft u de tijd op de client wanneer het bericht is ontvangen. Of, als meer dan één bericht van de opgegeven naam is ontvangen, is de waarde van de combinatie van een matrix van tijdstempels die aangeeft wanneer deze berichten zijn ontvangen.
+Clients moeten waarden voor tijd van ontvangst bevatten voor alle berichten die ze ontvangen nadat verbinding is gemaakt met de service. Deze waarden moeten de tijd vastleggen waarop de client elk bericht van het netwerk *heeft ontvangen* . De waarde mag geen andere tijd vastleggen. De client mag bijvoorbeeld niet de tijd vastleggen waarop het bericht is *verwerkt* . De ontvangen tijds tempels van het bericht zijn opgegeven in een matrix met de *naam:* waardeparen. De naam van het paar geeft de waarde van het *pad* van het bericht aan. De waarde van het paar geeft u de client tijd op waarop het bericht is ontvangen. Als er meer dan één bericht met de opgegeven naam is ontvangen, is de waarde van het paar een matrix met tijds tempels die aangeeft wanneer die berichten zijn ontvangen.
 
 ```JSON
   "ReceivedMessages": [
@@ -496,86 +496,86 @@ Telemetrie-schema is onderverdeeld in de volgende onderdelen: ontvangen bericht 
   ]
 ```
 
-Clients *moet* bevestigt de ontvangst van alle berichten die door de service worden verzonden door tijdstempels voor deze berichten op te nemen in de JSON-hoofdtekst. Als een client niet kan de ontvangst van een bericht te bevestigen, kan de service de verbinding verbreken.
+Clients *moeten* de ontvangst bevestigen van alle berichten die door de service worden verzonden, door tijds tempels op te nemen voor deze berichten in de JSON-hoofd tekst. Als een client de ontvangst van een bericht niet bevestigt, kan de verbinding met de service worden verbroken.
 
 ### <a name="metrics"></a>Metrische gegevens
 
-Clients moeten bevatten informatie over gebeurtenissen die hebben plaatsgevonden tijdens de levensduur van een aanvraag. De volgende metrische gegevens worden ondersteund: `Connection`, `Microphone`, en `ListeningTrigger`.
+Clients moeten informatie over gebeurtenissen bevatten die zijn opgetreden tijdens de levens duur van een aanvraag. De volgende metrische gegevens worden ondersteund: `Connection`, `Microphone`en `ListeningTrigger`.
 
-### <a name="metric-connection"></a>Metrische gegevens `Connection`
+### <a name="metric-connection"></a>Gemeten`Connection`
 
-De `Connection` metrische waarde geeft meer informatie over verbindingspogingen door de client. De metrische gegevens moet tijdstempels bevatten wanneer de WebSocket-verbinding is gestart en is voltooid. De `Connection` metrische gegevens is vereist *alleen voor de eerste inschakelen van een verbinding*. Hiermee schakelt u volgende hoeven niet te deze informatie opnemen. Als een client meerdere verbindingspogingen voordat een verbinding tot stand is gebracht, informatie over *alle* de verbindingspogingen moeten worden opgenomen. Zie voor meer informatie, [verbinding mislukt telemetrie](#connection-failure-telemetry).
+De `Connection` metriek geeft details over verbindings pogingen door de client aan. De metrische gegevens moeten tijds tempels bevatten wanneer de WebSocket-verbinding is gestart en voltooid. De `Connection` metriek is *alleen vereist voor de eerste bocht van een verbinding*. Volgende schakels zijn niet vereist voor het toevoegen van deze gegevens. Als een client meerdere Verbindings pogingen doet voordat een verbinding tot stand is gebracht, moet informatie over *alle* Verbindings pogingen worden opgenomen. Zie [verbindings fout telemetrie](#connection-failure-telemetry)voor meer informatie.
 
 | Veld | Description | Gebruik |
 | ----- | ----------- | ----- |
 | Name | `Connection` | Vereist |
-| Id | De verbinding id-waarde die is gebruikt in de *X ConnectionId* -header voor deze aanvraag | Vereist |
-| Start | Het tijdstip waarop de client de verbindingsaanvraag verzonden | Vereist |
-| einde | De tijd bij het ontvangen van de client de verbinding is tot stand is gebracht of, in foutgevallen, afgewezen, geweigerd of is mislukt | Vereist |
-| Fout | Een beschrijving van de fout is opgetreden, indien van toepassing. Als de verbinding geslaagd is, moeten clients laat dit veld weg. De maximale lengte van dit veld is 50 tekens. | Vereist voor foutgevallen, anders wordt weggelaten |
+| ID | De waarde van de verbindings-id die is gebruikt in de *X-ConnectionId* -header voor deze verbindings aanvraag | Vereist |
+| Start | Het tijdstip waarop de client de verbindings aanvraag heeft verzonden | Vereist |
+| einde | Het tijdstip waarop de client melding heeft ontvangen dat de verbinding tot stand is gebracht of, in fout gevallen, geweigerd, geweigerd of mislukt | Vereist |
+| Fout | Een beschrijving van de fout die is opgetreden, indien van toepassing. Als de verbinding tot stand is gebracht, moeten clients dit veld weglaten. De maximale lengte van dit veld is 50 tekens. | Vereist voor fout cases, wordt anders wegge laten |
 
-De beschrijving van de fout moet maximaal 50 tekens lang zijn en in het ideale geval moet een van de waarden die worden vermeld in de volgende tabel. Als het probleem komt niet overeen met een van deze waarden, clients een beknopte beschrijving van de fout kunnen gebruiken met behulp van [CamelCasing](https://en.wikipedia.org/wiki/Camel_case) zonder spaties bevatten. De mogelijkheid voor het verzenden van een *telemetrie* bericht moet worden verbonden met de service, zodat alleen tijdelijke of tijdelijke fouten kunnen worden gerapporteerd de *telemetrie* bericht. Foutsituaties die *permanent* blok een client van een verbinding te maken met de service te voorkomen dat de client een bericht verzenden naar de service, met inbegrip van *telemetrie* berichten.
+De fout beschrijving mag Maxi maal 50 tekens lang zijn en in het ideale geval moet een van de waarden in de volgende tabel worden weer gegeven. Als de fout niet overeenkomt met een van deze waarden, kunnen clients een beknopte beschrijving van de fout voorwaarde gebruiken met behulp van [CamelCasing](https://en.wikipedia.org/wiki/Camel_case) zonder spaties. De mogelijkheid om een *telemetrie* -bericht te verzenden vereist een verbinding met de service, zodat alleen tijdelijke of tijdelijke fout voorwaarden in het *telemetrie* -bericht kunnen worden gerapporteerd. Fout situaties waarbij een client *permanent* een verbinding met de service tot stand kan brengen, voor komen dat de client een bericht verzendt naar de service, inclusief *telemetrie* -berichten.
 
 | Fout | Gebruik |
 | ----- | ----- |
-| DNSfailure | De client kon geen verbinding maken met de service vanwege een DNS-fout in de netwerkstack. |
-| NoNetwork | De client heeft geprobeerd een verbinding, maar de netwerkstack gemeld dat er geen fysieke netwerk beschikbaar is. |
-| NoAuthorization | De clientverbinding is mislukt tijdens het verkrijgen van een verificatietoken voor de verbinding. |
-| NoResources | De client heeft te weinig een lokale bron (bijvoorbeeld geheugen) bij een poging om een verbinding te maken. |
-| Verboden | De client is geen verbinding maken met de service omdat de service heeft een HTTP geretourneerd `403 Forbidden` statuscode in de aanvraag om een upgrade WebSocket. |
-| Niet geautoriseerd | De client is geen verbinding maken met de service omdat de service heeft een HTTP geretourneerd `401 Unauthorized` statuscode in de aanvraag om een upgrade WebSocket. |
-| BadRequest | De client is geen verbinding maken met de service omdat de service heeft een HTTP geretourneerd `400 Bad Request` statuscode in de aanvraag om een upgrade WebSocket. |
-| ServerUnavailable | De client is geen verbinding maken met de service omdat de service heeft een HTTP geretourneerd `503 Server Unavailable` statuscode in de aanvraag om een upgrade WebSocket. |
-| ServerError | De client kan geen verbinding maken met de service omdat de service heeft geretourneerd is een `HTTP 500` statuscode interne fout in de aanvraag om een upgrade WebSocket. |
-| Time-out | Aanvraag van de client verbinding zonder een reactie van de service is een time-out. De *End* veld bevat de tijd wanneer de client is een time-out en wachten op de verbinding is gestopt. |
-| ClientError | De client verbroken de verbinding vanwege een interne Clientfout. |
+| DNSfailure | De client kan geen verbinding maken met de service vanwege een DNS-fout in de netwerk stack. |
+| Geen netwerk | De client heeft een verbinding tot stand gebracht, maar de netwerk stack meldt dat er geen fysiek netwerk beschikbaar was. |
+| Autorisatie | De client verbinding is mislukt bij een poging een autorisatie token te verkrijgen voor de verbinding. |
+| Geen resources | De client heeft een of meer lokale bronnen (bijvoorbeeld geheugen) uitgevoerd tijdens het maken van een verbinding. |
+| Verboden | De client kan geen verbinding maken met de service, omdat de service een http `403 Forbidden` -status code heeft geretourneerd voor de upgrade aanvraag van WebSocket. |
+| Niet geautoriseerd | De client kan geen verbinding maken met de service, omdat de service een http `401 Unauthorized` -status code heeft geretourneerd voor de upgrade aanvraag van WebSocket. |
+| BadRequest | De client kan geen verbinding maken met de service, omdat de service een http `400 Bad Request` -status code heeft geretourneerd voor de upgrade aanvraag van WebSocket. |
+| ServerUnavailable | De client kan geen verbinding maken met de service, omdat de service een http `503 Server Unavailable` -status code heeft geretourneerd voor de upgrade aanvraag van WebSocket. |
+| ServerError | De client kan geen verbinding maken met de service, omdat de service een `HTTP 500` interne fout status code voor de WebSocket-upgrade aanvraag heeft geretourneerd. |
+| Time-out | Er is een time-out opgetreden voor de verbindings aanvraag van de client zonder reactie van de service. Het veld *End* bevat het tijdstip waarop de client een time-out heeft en de wacht tijd voor de verbinding is gestopt. |
+| ClientError | De client heeft de verbinding verbroken vanwege een interne client fout. |
 
-### <a name="metric-microphone"></a>Metrische gegevens `Microphone`
+### <a name="metric-microphone"></a>Gemeten`Microphone`
 
-De `Microphone` metrische gegevens is vereist voor alle spraak schakelt. Met deze metriek wordt de tijd op de client gedurende welke audio-invoer actief voor een spraak-aanvraag gebruikt wordt.
+De `Microphone` metriek is vereist voor alle gesp roken schakelingen. Deze metrische waarde meet de tijd op de client gedurende welke audio-invoer actief wordt gebruikt voor een spraak aanvraag.
 
-Gebruik de volgende voorbeelden als richtlijnen voor de opname *Start* tijd van de waarden voor de `Microphone` metrische gegevens in uw clienttoepassing:
+Gebruik de volgende voor beelden als richt lijnen voor het vastleggen van start `Microphone` tijd waarden voor de metrische gegevens in uw client toepassing:
 
-* Een clienttoepassing vereist dat een gebruiker moet druk op een fysieke knop om te starten van de microfoon. Na de druk op de knop, de clienttoepassing leest de invoer van de microfoon en verzonden naar spraak-Service. De *Start* waarde voor de `Microphone` metriek legt de tijd na de knop push wanneer de microfoon is geïnitialiseerd en is klaar voor invoer. De *End* waarde voor de `Microphone` metriek legt de tijd wanneer het streamen van audio naar de service nadat het ontvangen van de clienttoepassing wordt gestopt de `speech.endDetected` bericht van de service.
+* Een client toepassing vereist dat een gebruiker op een fysieke knop moet drukken om de microfoon te starten. Nadat de knop is ingedrukt, leest de client toepassing de invoer van de microfoon en verzendt deze naar de speech-service. De *begin* waarde voor de `Microphone` metrische gegevens registreert de tijd na de knop push wanneer de microfoon is geïnitialiseerd en klaar is om invoer te leveren. De *eind* waarde voor de `Microphone` metrische gegevens registreert de tijd waarop de client toepassing het streamen van audio naar de service `speech.endDetected` heeft gestopt nadat het bericht van de service is ontvangen.
 
-* Een clienttoepassing maakt gebruik van een sleutelwoord spotter die 'altijd' luistert. Nadat het sleutelwoord spotter een woordgroep gesproken trigger detecteert de clienttoepassing de invoer van de microfoon te verzamelen en te verzenden naar Speech Service. De *Start* waarde voor de `Microphone` metriek legt de tijd waarop het sleutelwoord spotter op de hoogte gesteld de client te starten met behulp van de invoer van de microfoon. De *End* waarde voor de `Microphone` metriek legt de tijd wanneer het streamen van audio naar de service nadat het ontvangen van de clienttoepassing wordt gestopt de `speech.endDetected` bericht van de service.
+* Een client toepassing maakt gebruik van een tref woord Spotter dat ' Always ' luistert. Alleen nadat het tref woord Spotter een gesp roken trigger detecteert, verzamelt de client toepassing de invoer van de microfoon en verzendt deze naar de speech-service. De *begin* waarde voor de `Microphone` metrische gegevens registreert de tijd waarop het tref woord Spotter de client heeft gewaarschuwd om invoer van de microfoon te gebruiken. De *eind* waarde voor de `Microphone` metrische gegevens registreert de tijd waarop de client toepassing het streamen van audio naar de service `speech.endDetected` heeft gestopt nadat het bericht van de service is ontvangen.
 
-* Een clienttoepassing toegang heeft tot een constante audiostream en stilte/spraak detectie uitvoert op die audiostream in een *spraak detectiemodule*. De *Start* waarde voor de `Microphone` metriek legt de tijd wanneer de *spraak detectiemodule* een melding van de client te starten met behulp van de invoer van de audio-stream. De *End* waarde voor de `Microphone` metriek legt de tijd wanneer het streamen van audio naar de service nadat het ontvangen van de clienttoepassing wordt gestopt de `speech.endDetected` bericht van de service.
+* Een client toepassing heeft toegang tot een constante audio stroom en voert stilte/spraak detectie uit op die audio stroom in een *module voor spraak detectie*. De *begin* waarde voor de `Microphone` metrische gegevens registreert de tijd waarop de *module spraak detectie* de client heeft gewaarschuwd om invoer van de audio stroom te gebruiken. De *eind* waarde voor de `Microphone` metrische gegevens registreert de tijd waarop de client toepassing het streamen van audio naar de service `speech.endDetected` heeft gestopt nadat het bericht van de service is ontvangen.
 
-* Een clienttoepassing wordt verwerkt door de tweede inschakelen van een aanvraag meerdere inschakelen en op de hoogte gesteld door een antwoordbericht service om in te schakelen op de microfoon voor het verzamelen van invoer voor de tweede inschakelen. De *Start* waarde voor de `Microphone` metriek legt de tijd waarop de clienttoepassing kan de microfoon en wordt gestart met behulp van de invoer van de audio bron. De *End* waarde voor de `Microphone` metriek legt de tijd wanneer het streamen van audio naar de service nadat het ontvangen van de clienttoepassing wordt gestopt de `speech.endDetected` bericht van de service.
+* Een client toepassing verwerkt de tweede turn van een aanvraag voor meervoudige invoer en wordt op de hoogte gesteld door een service respons bericht om de microfoon in te scha kelen om invoer voor de tweede zet te verzamelen. De *begin* waarde voor de `Microphone` metrische gegevens registreert de tijd wanneer de client toepassing de microfoon inschakelt en begint met het gebruik van de invoer van die audio bron. De *eind* waarde voor de `Microphone` metrische gegevens registreert de tijd waarop de client toepassing het streamen van audio naar de service `speech.endDetected` heeft gestopt nadat het bericht van de service is ontvangen.
 
-De *End* tijd-waarde voor de `Microphone` metriek legt de tijd wanneer het streamen van audio-invoer van de clienttoepassing wordt gestopt. In de meeste gevallen deze gebeurtenis treedt op kort nadat de client ontvangen de `speech.endDetected` bericht van de service. Clienttoepassingen kunnen controleren of dat ze goed die aan het protocol voldoen zijn door ervoor te zorgen dat de *End* tijd-waarde voor de `Microphone` metriek optreedt hoger is dan de ontvangst tijd-waarde voor de `speech.endDetected` bericht. En omdat er meestal een vertraging tussen het einde van een inschakelen en het begin van een andere inschakelen, clients conformiteit van protocol kunnen verifiëren door ervoor te zorgen dat de *Start* tijd van de `Microphone` metrische gegevens voor elke volgende turn correct legt de tijd wanneer de client *gestart* met behulp van de microfoon stream audio-invoer voor de service.
+Met de waarde voor *eind* tijd `Microphone` voor de metriek wordt de tijd vastgelegd waarop de client toepassing is gestopt met het streamen van audio-invoer. In de meeste gevallen vindt deze gebeurtenis plaats kort nadat de client het `speech.endDetected` bericht van de service heeft ontvangen. Client toepassingen kunnen controleren of ze juist voldoen aan het protocol door ervoor te zorgen dat de *eind* tijd waarde voor de `Microphone` metriek later ligt dan de waarde voor de ontvangst tijd van het `speech.endDetected` bericht. En omdat er meestal een vertraging is tussen het einde van de ene beurt en het begin van een andere zet, kunnen clients het protocol conformiteit controleren door ervoor te zorgen dat de `Microphone` begin tijd van de metriek voor elke volgende keer correct wordt vastgelegd op de tijd waarop de client heeft de microfoon *gestart* met het streamen van audio-invoer naar de service.
 
 | Veld | Description | Gebruik |
 | ----- | ----------- | ----- |
 | Name | Microfoon | Vereist |
-| Start | De tijd wanneer de client aan de slag met audio-invoer van de microfoon of andere audiostream of een trigger hebt ontvangen van het sleutelwoord spotter | Vereist |
-| einde | De tijd wanneer de client is gestopt met behulp van de microfoon of audio-stream | Vereist |
-| Fout | Een beschrijving van de fout is opgetreden, indien van toepassing. Als de bewerkingen van de microfoon gelukt is, moeten clients laat dit veld weg. De maximale lengte van dit veld is 50 tekens. | Vereist voor foutgevallen, anders wordt weggelaten |
+| Start | Het tijdstip waarop de client audio-invoer van de microfoon of andere audio stroom heeft gestart of een trigger heeft ontvangen van het tref woord Spotter | Vereist |
+| einde | Het tijdstip waarop de client stopt met het gebruik van de microfoon of audio stroom | Vereist |
+| Fout | Een beschrijving van de fout die is opgetreden, indien van toepassing. Als de microfoon bewerkingen zijn geslaagd, moeten clients dit veld weglaten. De maximale lengte van dit veld is 50 tekens. | Vereist voor fout cases, wordt anders wegge laten |
 
-### <a name="metric-listeningtrigger"></a>Metrische gegevens `ListeningTrigger`
-De `ListeningTrigger` metriek meet de tijd wanneer de gebruiker voert de actie die spraakinvoer initieert. De `ListeningTrigger` metriek is optioneel, maar de clients die met deze metriek worden uitgevers aangemoedigd om dit te doen.
+### <a name="metric-listeningtrigger"></a>Gemeten`ListeningTrigger`
+De `ListeningTrigger` meet waarde meet de tijd waarop de gebruiker de actie uitvoert die de spraak invoer initieert. De `ListeningTrigger` metriek is optioneel, maar clients die deze metrische gegevens kunnen opgeven, worden aanbevolen.
 
-Gebruik de volgende voorbeelden als richtlijnen voor de opname *Start* en *End* tijd van de waarden voor de `ListeningTrigger` metrische gegevens in uw clienttoepassing.
+Gebruik de volgende voor beelden als richt lijnen voor het vastleggen van de *begin* - `ListeningTrigger` en *eind* tijd waarden voor de metrische gegevens in uw client toepassing.
 
-* Een clienttoepassing vereist dat een gebruiker moet druk op een fysieke knop om te starten van de microfoon. De *Start* voor deze metrische gegevens de tijd van de knop push legt-waarde. De *End* waarde legt de tijd wanneer de knop push-bewerking is voltooid.
+* Een client toepassing vereist dat een gebruiker op een fysieke knop moet drukken om de microfoon te starten. De *begin* waarde voor deze metrische gegevens registreert de tijd van de knop push. Met de *eind* waarde wordt de tijd vastgelegd waarop het pushen van de knop is voltooid.
 
-* Een clienttoepassing maakt gebruik van een sleutelwoord spotter die 'altijd' luistert. Na het sleutelwoord spotter detecteert een woordgroep gesproken trigger de clienttoepassing leest de invoer van de microfoon en verzonden naar spraak-Service. De *Start* waarde voor deze metrische gegevens legt de tijd waarop het sleutelwoord spotter ontvangen audio die vervolgens de trigger-zin is gedetecteerd. De *End* waarde legt de tijd wanneer het laatste woord van de trigger woordgroep is gesproken door de gebruiker.
+* Een client toepassing maakt gebruik van een tref woord Spotter dat ' Always ' luistert. Nadat het tref woord Spotter een gedicteerde trigger woordgroep detecteert, leest de client toepassing de invoer van de microfoon en verzendt deze naar de speech-service. De *begin* waarde voor deze metrische gegevens registreert de tijd waarop het tref woord Spotter audio heeft ontvangen die vervolgens is gedetecteerd als de trigger frase. Met de *eind* waarde wordt de tijd vastgelegd waarop het laatste woord van de trigger woordgroep door de gebruiker is gesp roken.
 
-* Een clienttoepassing toegang heeft tot een constante audiostream en stilte/spraak detectie uitvoert op die audiostream in een *spraak detectiemodule*. De *Start* waarde voor deze metrische gegevens de tijd legt die de *spraak detectiemodule* ontvangen audio die vervolgens als spraak is gedetecteerd. De *End* waarde legt de tijd wanneer de *spraak detectiemodule* spraak gedetecteerd.
+* Een client toepassing heeft toegang tot een constante audio stroom en voert stilte/spraak detectie uit op die audio stroom in een *module voor spraak detectie*. De *begin* waarde voor deze metrische gegevens registreert de tijd waarop de *module spraak detectie* audio heeft ontvangen die vervolgens als spraak is gedetecteerd. De *eind* waarde legt de tijd vast waarop de *module spraak detectie* spraak heeft gedetecteerd.
 
-* Een clienttoepassing wordt verwerkt door de tweede inschakelen van een aanvraag meerdere inschakelen en op de hoogte gesteld door een antwoordbericht service om in te schakelen op de microfoon voor het verzamelen van invoer voor de tweede inschakelen. De clienttoepassing moet *niet* bevatten een `ListeningTrigger` metrische gegevens voor deze inschakelen.
+* Een client toepassing verwerkt de tweede turn van een aanvraag voor meervoudige invoer en wordt op de hoogte gesteld door een service respons bericht om de microfoon in te scha kelen om invoer voor de tweede zet te verzamelen. De client toepassing mag *geen* `ListeningTrigger` metrieke waarde voor deze turn bevatten.
 
 | Veld | Description | Gebruik |
 | ----- | ----------- | ----- |
 | Name | ListeningTrigger | Optioneel |
-| Start | Het tijdstip waarop de luisterende client-trigger is gestart | Vereist |
-| einde | De tijd waarop de luisterende client-trigger is beëindigd | Vereist |
-| Fout | Een beschrijving van de fout is opgetreden, indien van toepassing. Als de triggerbewerking voltooid is, moeten clients laat dit veld weg. De maximale lengte van dit veld is 50 tekens. | Vereist voor foutgevallen, anders wordt weggelaten |
+| Start | Het tijdstip waarop de client luistert gestart | Vereist |
+| einde | Het tijdstip waarop de client luistert die is voltooid | Vereist |
+| Fout | Een beschrijving van de fout die is opgetreden, indien van toepassing. Als de trigger bewerking is geslaagd, moeten clients dit veld weglaten. De maximale lengte van dit veld is 50 tekens. | Vereist voor fout cases, wordt anders wegge laten |
 
 #### <a name="sample-message"></a>Voorbeeldbericht
 
-Het volgende voorbeeld toont een telemetrie-bericht met zowel ReceivedMessages en metrische gegevens delen:
+In het volgende voor beeld ziet u een telemetrie-bericht met zowel ReceivedMessages als metrische onderdelen:
 
 ```HTML
 Path: telemetry
@@ -613,98 +613,98 @@ X-Timestamp: 2016-08-16T15:03:54.183Z
 
 ## <a name="error-handling"></a>Foutafhandeling
 
-Deze sectie beschrijft de soorten foutberichten en voorwaarden die uw toepassing nodig heeft om af te handelen.
+In deze sectie worden de soorten fout berichten en voor waarden beschreven die uw toepassing moet verwerken.
 
 ### <a name="http-status-codes"></a>HTTP-statuscodes
 
-Tijdens de aanvraag van de WebSocket-upgrade, spraak-Service retourneert mogelijk een van de standaard HTTP-statuscodes zoals `400 Bad Request`, enzovoort. Uw toepassing moet de foutvoorwaarden van deze correct verwerken.
+Tijdens de WebSocket-upgrade aanvraag kan de spraak service een van de standaard HTTP-status codes, zoals `400 Bad Request`, enzovoort, retour neren. Uw toepassing moet deze fout voorwaarden correct afhandelen.
 
 #### <a name="authorization-errors"></a>Verificatiefouten
 
-Als het onjuiste autorisatie is opgegeven tijdens de upgrade WebSocket Speech Service een HTTP retourneert `403 Forbidden` statuscode. Tussen de voorwaarden die u kunnen deze foutcode activeren zijn:
+Als er tijdens de upgrade van de WebSocket geen onjuiste autorisatie wordt gegeven, wordt `403 Forbidden` door de speech-service een HTTP-status code geretourneerd. Onder de omstandigheden die deze fout code kunnen activeren, zijn:
 
-* Ontbrekende *autorisatie* koptekst
+* *Autorisatie* -header ontbreekt
 
-* Ongeldig verificatietoken
+* Ongeldig autorisatie token
 
-* Verlopen Autorisatietoken
+* Verlopen autorisatie token
 
-De `403 Forbidden` foutbericht niet duiden op een probleem met de Speech-Service. Dit foutbericht geeft een probleem met de clienttoepassing.
+Het `403 Forbidden` fout bericht duidt niet op een probleem met de spraak service. Dit fout bericht geeft aan dat er een probleem is met de client toepassing.
 
-### <a name="protocol-violation-errors"></a>Tot protocolschending
+### <a name="protocol-violation-errors"></a>Schendingen van protocol fouten
 
-Als Speech Service eventuele protocolschendingen van een client detecteert, de service wordt beëindigd door de WebSocket-verbinding na het retourneren van een *statuscode* en *reden* voor de beëindiging. Clienttoepassingen kunnen deze informatie gebruiken om problemen op te lossen de schendingen.
+Als de speech-service eventuele schendingen van het Protocol van een client detecteert, wordt de WebSocket-verbinding door de service beëindigd nadat de *status code* en de *reden* voor de beëindiging zijn geretourneerd. Client toepassingen kunnen deze informatie gebruiken om problemen op te lossen en de schendingen op te lossen.
 
-#### <a name="incorrect-message-format"></a>Onjuiste indeling
+#### <a name="incorrect-message-format"></a>Onjuiste bericht indeling
 
-Als een client verzendt een tekst of binaire bericht naar de service die is niet gecodeerd in de juiste indeling opgegeven in deze specificatie, de service, sluit u de verbinding met een *1007 Ongeldige nettolading gegevens* statuscode.
+Als een client een tekst-of binair bericht verzendt naar de service die niet is versleuteld in de juiste indeling die is opgegeven in deze specificatie, sluit de service de verbinding met een ongeldige status code voor *payload-gegevens van 1007* .
 
-De service retourneert deze statuscode voor een aantal redenen, zoals wordt weergegeven in de volgende voorbeelden:
+De service retourneert deze status code om verschillende redenen, zoals wordt weer gegeven in de volgende voor beelden:
 
-* "Onjuist berichtindeling. Binaire bericht heeft ongeldige header-Groottevoorvoegsel." De client verzonden een binaire bericht dat het voorvoegsel van een ongeldige header-grootte heeft.
+* "Onjuiste bericht indeling. Het binaire bericht bevat een ongeldig voor voegsel voor de header grootte. De client heeft een binair bericht met een ongeldig voor voegsel voor de header grootte verzonden.
 
-* "Onjuist berichtindeling. Binaire bericht heeft ongeldige header-grootte." De client verzonden een binaire bericht dat een ongeldige header-grootte opgegeven.
+* "Onjuiste bericht indeling. Het binaire bericht heeft een ongeldige header-grootte. De client heeft een binair bericht verzonden dat een ongeldige header grootte heeft opgegeven.
 
-* "Onjuist berichtindeling. Binaire-mailberichtkoppen in UTF-8-decodering is mislukt." De client verzonden een binaire bericht met kopteksten die zijn niet correct gecodeerd in UTF-8.
+* "Onjuiste bericht indeling. Fout bij het decoderen van binaire bericht headers in UTF-8. De client heeft een binair bericht verzonden met headers die niet juist zijn gecodeerd in UTF-8.
 
-* "Onjuist berichtindeling. SMS-bericht bevat geen gegevens." De client verzonden een SMS-bericht dat geen van de hoofdtekstgegevens bevat.
+* "Onjuiste bericht indeling. Tekst bericht bevat geen gegevens. " De client heeft een tekst bericht verzonden dat geen hoofd gegevens bevat.
 
-* "Onjuist berichtindeling. SMS-bericht in UTF-8-decodering is mislukt." De client verzonden een SMS-bericht is niet correct gecodeerd in UTF-8.
+* "Onjuiste bericht indeling. Het SMS-bericht dat in UTF-8 wordt gedecodeerd, is mislukt. De client heeft een tekst bericht verzonden dat niet juist is gecodeerd in UTF-8.
 
-* "Onjuist berichtindeling. SMS-bericht bevat geen scheidingsteken header." De client verzonden een SMS-bericht dat bevat geen scheidingsteken header of het scheidingsteken verkeerde kop gebruikt.
+* "Onjuiste bericht indeling. Het tekst bericht bevat geen scheidings teken voor de koptekst. " De client heeft een tekst bericht verzonden dat geen header scheidings teken bevat of het verkeerde scheidings teken voor kopteksten heeft gebruikt.
 
-#### <a name="missing-or-empty-headers"></a>Headers ontbreekt of is leeg
+#### <a name="missing-or-empty-headers"></a>Ontbrekende of lege kopteksten
 
-Als een client verzendt een bericht dat u beschikt niet over de vereiste headers *X-RequestId* of *pad*, de service wordt gesloten voor de verbinding met een *1002 protocolfout* statuscode. Het bericht is 'koptekst ontbreekt/leeg. {Headernaam}."
+Als een client een bericht verzendt dat niet de vereiste headers *X-time-* out of het *pad*heeft, sluit de service de verbinding met de fout status code van een *1002-protocol* . Het bericht bevat een ontbrekende/lege koptekst. {Header naam}. "
 
-#### <a name="requestid-values"></a>Aanvraag-id-waarden
+#### <a name="requestid-values"></a>Aanvraag-waarde
 
-Als een client een bericht verzendt dat aangeeft een *X-RequestId* koptekst met een onjuiste indeling bevatten, de service de verbinding wordt gesloten en retourneert een *1002 protocolfout* status. Het bericht wordt 'Ongeldige aanvraag. De waarde van de header X-aanvraag-id is niet opgegeven in niet-dash-UUID-opmaak."
+Als een client een bericht verzendt waarin een *X-aanvraag-* header met een onjuiste indeling wordt opgegeven, wordt de verbinding door de service afgesloten en wordt een fout status van het *1002-protocol* geretourneerd. Het bericht is een ongeldige aanvraag. De waarde van de X-aanvraag-header is niet opgegeven in de No-Dash-UUID-indeling.
 
-#### <a name="audio-encoding-errors"></a>Audio coderingsfouten
+#### <a name="audio-encoding-errors"></a>Audio coderings fouten
 
-Als een client verzendt een audio segment een inschakelen en de audio-indeling initieert of codering niet met de vereiste specificatie overeenkomt, de service de verbinding wordt gesloten en retourneert een *1007 Ongeldige nettolading gegevens* statuscode. Het bericht geeft aan dat de codering van de bron van fout-indeling.
+Als een client een audio segment verzendt dat een bocht initieert en de audio-indeling of-code ring niet voldoet aan de vereiste specificatie, wordt de verbinding door de service afgesloten en wordt een ongeldige status code van een *nettolading van 1007* geretourneerd. Het bericht geeft de fout bron voor indelings codering aan.
 
-#### <a name="requestid-reuse"></a>Hergebruik van de aanvraag-id
+#### <a name="requestid-reuse"></a>Aanvraag-opnieuw gebruiken
 
-Nadat een inschakelen is voltooid, als een client verzendt een bericht weergegeven waarin wordt gebruikgemaakt van de aanvraag-id van die inschakelen, de service de verbinding wordt gesloten en retourneert een *1002 protocolfout* statuscode. Het bericht wordt 'Ongeldige aanvraag. Hergebruik van aanvraag-id is niet toegestaan."
+Als een client een bericht verzendt dat de aanvraag-id opnieuw gebruikt, wordt de verbinding door de service afgesloten en wordt er een fout status code van het *1002-protocol* weer gegeven. Het bericht is een ongeldige aanvraag. Het opnieuw gebruiken van aanvraag-id's is niet toegestaan. "
 
-## <a name="connection-failure-telemetry"></a>Verbinding mislukt telemetrie
+## <a name="connection-failure-telemetry"></a>Telemetrie verbindings fout
 
-Om ervoor te zorgen de best mogelijke gebruikerservaring, clients verwittigt Speech-Service van de tijdstempels voor belangrijke controlepunten binnen een verbinding met behulp van de *telemetrie* bericht. Is het belangrijk dat clients de service van verbindingen die zijn uitgevoerd, maar kan niet informeren.
+Om ervoor te zorgen dat de beste gebruikers ervaring is, moeten clients spraak service van de tijds tempels op de hoogte stellen van belang rijke controle punten binnen een verbinding door gebruik te maken van het *telemetrie* -bericht. Het is net zo belang rijk dat clients de service van verbindingen die zijn geprobeerd, op de hoogte brengen, maar mislukt.
 
-Voor elke verbindingspoging die niet zijn geslaagd, clients maken een *telemetrie* bericht met een unieke *X-RequestId* header-waarde. Omdat de client kan een verbinding tot stand brengen de *ReceivedMessages* veld in de JSON-hoofdtekst kan worden weggelaten. Alleen de `Connection` vermelding in de *metrische gegevens* veld is opgenomen. Deze vermelding bestaat uit het begin en einde tijdstempels, evenals de foutstatus die is opgetreden.
+Voor elke verbindings poging die is mislukt, maken clients een *telemetrie* -bericht met een unieke header waarde *X-id-aanvraag* . Omdat de client geen verbinding kan maken, kan het veld *ReceivedMessages* in de JSON-hoofd tekst worden wegge laten. Alleen de `Connection` invoer in het veld *metrieken* is opgenomen. Dit item bevat de begin-en eind tijd tempels en de fout voorwaarde die is aangetroffen.
 
-### <a name="connection-retries-in-telemetry"></a>Verbindingspogingen in telemetrie
+### <a name="connection-retries-in-telemetry"></a>Verbindings pogingen in telemetrie
 
-Clients dient te onderscheiden *nieuwe pogingen* van *meerdere verbindingspogingen* door de gebeurtenis die wordt geactiveerd de verbindingspoging. Verbindingspogingen die via een programma worden uitgevoerd zonder invoer van de gebruiker zijn nieuwe pogingen. Meerdere verbindingspogingen die worden uitgevoerd in reactie op invoer van de gebruiker zijn meerdere verbindingspogingen. Clients geven elke verbindingspoging die door de gebruiker heeft geactiveerd een unieke *X-RequestId* en *telemetrie* bericht. Clients gebruiken de *X-RequestId* voor programmatische nieuwe pogingen. Als meerdere pogingen zijn gedaan voor een enkele verbindingspoging elke nieuwe poging wordt opgenomen als een `Connection` vermelding in de *telemetrie* bericht.
+Clients moeten *nieuwe pogingen* onderscheiden van *meerdere Verbindings pogingen* door de gebeurtenis die de verbindings poging activeert. Verbindings pogingen die programmatisch worden uitgevoerd zonder tussen komst van de gebruiker, worden opnieuw geprobeerd. Meerdere Verbindings pogingen die worden uitgevoerd als reactie op gebruikers invoer zijn meerdere Verbindings pogingen. Clients geven elke door de gebruiker geactiveerde verbindings poging een unieke *X-aanvraag-* en *telemetrie* -bericht. Clients hergebruiken de *X-client-aanvraag* opnieuw voor programmatische pogingen. Als er meerdere nieuwe pogingen zijn gedaan voor een enkele verbindings poging, wordt elke nieuwe poging als `Connection` vermelding opgenomen in het *telemetrie* -bericht.
 
-Stel bijvoorbeeld dat een gebruiker spreekt het sleutelwoord-trigger voor het starten van een verbinding en de eerste verbindingspoging is mislukt vanwege fouten in DNS. Echter, een tweede poging die via een programma is gemaakt door de client is geslaagd. Omdat de client opnieuw geprobeerd de verbinding zonder aanvullende invoer van de gebruiker, de client maakt gebruik van een enkel *telemetrie* bericht met meerdere `Connection` vermeldingen voor het beschrijven van de verbinding.
+Stel bijvoorbeeld dat een gebruiker de trefwoord trigger uitspreekt om een verbinding te starten en de eerste verbindings poging mislukt vanwege DNS-fouten. Een tweede poging die via een programma wordt uitgevoerd door de client, slaagt echter. Omdat de client de verbinding opnieuw heeft uitgevoerd zonder dat er extra invoer van de gebruiker is vereist, gebruikt de client een enkel *telemetrie* -bericht met meerdere `Connection` vermeldingen om de verbinding te beschrijven.
 
-Als een ander voorbeeld: Stel dat een gebruiker spreekt het sleutelwoord-trigger voor het starten van een verbinding en deze verbindingspoging is mislukt na drie pogingen. De client geeft, probeert verbinding maken met de service stopt, en wordt de gebruiker geïnformeerd dat er iets misgegaan is. De gebruiker spreekt vervolgens de trigger sleutelwoord opnieuw. Deze tijd, Stel dat de client verbinding maakt met de service. Na de verbinding te maken, verzendt de client onmiddellijk een *telemetrie* bericht naar de service die drie bevat `Connection` vermeldingen die de verbindingsfouten beschrijven. Na de `turn.end` bericht, verzendt de client een andere *telemetrie* bericht met een beschrijving van de verbinding is geslaagd.
+Een voor beeld: een gebruiker spreekt de trefwoord trigger uit om een verbinding te starten en deze verbindings poging mislukt na drie nieuwe pogingen. De client geeft vervolgens een poging om verbinding te maken met de service en de gebruiker te informeren dat er iets is misgegaan. De gebruiker spreekt vervolgens de trefwoord trigger opnieuw. Stel dat de client verbinding maakt met de service. Nadat verbinding is gemaakt, verzendt de client onmiddellijk een *telemetrie* -bericht naar de `Connection` service die drie vermeldingen bevat die de verbindings fouten beschrijven. Nadat het `turn.end` bericht is ontvangen, verzendt de client een ander *telemetrie* -bericht met een beschrijving van de geslaagde verbinding.
 
-## <a name="error-message-reference"></a>Naslaginformatie over foutberichten
+## <a name="error-message-reference"></a>Naslag informatie over fout berichten
 
 ### <a name="http-status-codes"></a>HTTP-statuscodes
 
 | HTTP-statuscode | Description | Problemen oplossen |
 | - | - | - |
-| 400-Ongeldige aanvraag | De client verzonden een WebSocket-verbindingsaanvraag onjuist is. | Controleer dat u alle vereiste parameters en HTTP-headers opgegeven en of de waarden correct zijn. |
-| 401-niet toegestaan | De client bevat niet de vereiste autorisatie-informatie. | Controleer of u het bericht verzendt de *autorisatie* -header in de WebSocket-verbinding. |
-| 403-verboden | Autorisatie-informatie voor de client worden verzonden, maar deze is ongeldig. | Controleer dat u niet de waarde van een verlopen of ongeldig verzendt de *autorisatie* header. |
-| 404 – Niet gevonden | De client probeert te krijgen van een URL-pad wordt niet ondersteund. | Controleer dat u de juiste URL voor de WebSocket-verbinding gebruikt. |
-| 500-fout | De service is een interne fout opgetreden en kan niet voldoen aan de aanvraag. | Deze fout is tijdelijk in de meeste gevallen. De aanvraag opnieuw. |
-| 503 Service niet beschikbaar | De service is niet beschikbaar voor het afhandelen van de aanvraag. | Deze fout is tijdelijk in de meeste gevallen. De aanvraag opnieuw. |
+| 400 ongeldige aanvraag | De client heeft een onjuiste WebSocket-verbindings aanvraag verzonden. | Controleer of u alle vereiste para meters en HTTP-headers hebt opgegeven en of de waarden juist zijn. |
+| 401 niet gemachtigd | De client bevat niet de vereiste autorisatie gegevens. | Controleer of u de *autorisatie* -header in de WebSocket-verbinding verzendt. |
+| 403 verboden | De client heeft autorisatie gegevens verzonden, maar deze is ongeldig. | Controleer of u geen verlopen of ongeldige waarde in de *autorisatie* -header verzendt. |
+| 404 Niet gevonden | De client heeft geprobeerd toegang te krijgen tot een URL-pad dat niet wordt ondersteund. | Controleer of u de juiste URL gebruikt voor de WebSocket-verbinding. |
+| 500-server fout | De service heeft een interne fout aangetroffen en kan de aanvraag niet volt ooien. | In de meeste gevallen is deze fout tijdelijk. Voer de aanvraag opnieuw uit. |
+| 503 Service niet beschikbaar | De service is niet beschikbaar om de aanvraag af te handelen. | In de meeste gevallen is deze fout tijdelijk. Voer de aanvraag opnieuw uit. |
 
-### <a name="websocket-error-codes"></a>WebSocket-foutcodes
+### <a name="websocket-error-codes"></a>WebSocket-fout codes
 
-| WebSocketsStatus code | Description | Problemen oplossen |
+| WebSocketsStatus-code | Description | Problemen oplossen |
 | - | - | - |
-| 1000 normale sluiting | De service verbroken de WebSocket-verbinding zonder fouten. | Als de sluiting WebSocket werd niet verwacht, lees opnieuw in de documentatie om ervoor te zorgen dat u begrijpt hoe en wanneer de service de WebSocket-verbinding kunt beëindigen. |
-| 1002 Protocol Error | De client kan niet voldoen aan de vereisten voor protocol. | Zorg ervoor dat u inzicht in de documentatie van het protocol en schakel over de vereisten. Raadpleeg de vorige documentatie over de fout redenen om te zien als u vereisten voor protocol bent schenden. |
-| 1007 Invalid Payload Data | De client heeft een ongeldige nettolading verzonden in een protocolbericht. | Controleer het laatste bericht dat u hebt verzonden naar de service op fouten. Raadpleeg de vorige documentatie over fouten met nettolading. |
-| 1011 Server Error | De service is een interne fout opgetreden en kan niet voldoen aan de aanvraag. | Deze fout is tijdelijk in de meeste gevallen. De aanvraag opnieuw. |
+| 1000 normale sluiting | De service heeft de WebSocket-verbinding zonder een fout gesloten. | Als het sluiten van de WebSocket onverwacht was, lees dan de documentatie opnieuw om te zien hoe en wanneer de service de WebSocket-verbinding kan beëindigen. |
+| 1002-protocol fout | De client kan niet voldoen aan de protocol vereisten. | Zorg ervoor dat u de protocol documentatie begrijpt en duidelijk weet wat de vereisten zijn. Lees de vorige documentatie voor de oorzaken van de fout om te zien of u de protocol vereisten hebt geschonden. |
+| 1007 ongeldige payload-gegevens | De client heeft een ongeldige Payload verzonden in een protocol bericht. | Controleer het laatste bericht dat u naar de service hebt verzonden voor fouten. Lees de vorige documentatie over Payload-fouten. |
+| 1011-server fout | De service heeft een interne fout aangetroffen en kan de aanvraag niet volt ooien. | In de meeste gevallen is deze fout tijdelijk. Voer de aanvraag opnieuw uit. |
 
 ## <a name="related-topics"></a>Verwante onderwerpen
 
-Zie een [JavaScript SDK](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript) dat wil zeggen een implementatie van de Speech-Service op basis van WebSocket-protocol.
+Bekijk een [Java script-SDK](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript) die een implementatie is van het Speech Service-Protocol op basis van websockets.

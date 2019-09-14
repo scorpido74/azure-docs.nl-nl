@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
-ms.openlocfilehash: 4bca52f19348569444ee09348c49756f64c986b7
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 746b1b51d593b21bdf85bca4eeb75c135196093a
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884451"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962860"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure en AppSource Marketplace biedt
 
@@ -36,7 +36,7 @@ Het proces voor het maken van een nieuwe aanbieding verschilt veel van de aanbie
 
 *Test drive* is een Marketplace-functie waarmee klanten een demonstratie optie voor ' try voor u kopen ' bieden voor elke aanbieding die is ingeschakeld.  De capaciteit van het test station is beperkt tot de volgende subset met aanbiedings typen: [Azure-toepassingen](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 voor klant betrokkenheid](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 voor Financiën en bewerkingen](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [SaaS-toepassingen](./saas-app/cpp-saas-offer.md)en [virtuele machines](./virtual-machine/cpp-virtual-machine-offer.md).  Voor deze functie moet de uitgever een sjabloon voor het testen van een station maken, aangepast voor de aanbieding.  Zie de sectie [test station](./test-drive/what-is-test-drive.md)voor meer informatie.
 
-U kunt door de bestaande Marketplace-aanbiedingen bladeren die een test drive demonstratie hebben door het [test drive-filter](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive)toe te passen. 
+U kunt door de bestaande Marketplace-aanbiedingen bladeren die een test drive demonstratie hebben door het [test drive-filter](https://azuremarketplace.microsoft.com/marketplace/apps?filters=test-drive)toe te passen. 
 
 
 ## <a name="azure-marketplace-and-appsource-offer-types"></a>Azure Marketplace-en AppSource-aanbiedings typen

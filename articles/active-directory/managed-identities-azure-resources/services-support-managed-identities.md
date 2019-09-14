@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9464b408f43f55cb75a57798b098be6335328e3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: d5f271f75a4faa7067f8a52d63a34772780c6448
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136526"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959917"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Services die beheerde identiteiten voor Azure-resources ondersteunen
 
@@ -33,7 +33,7 @@ De volgende Azure-Services ondersteunen beheerde identiteiten voor Azure-resourc
 | Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
 | Door het systeem toegewezen | Beschikbaar | Preview | Preview | Preview | 
-| Door de gebruiker toegewezen | Preview | Preview | Preview | Preview |
+| Door de gebruiker toegewezen | Beschikbaar | Preview | Preview | Preview |
 
 Raadpleeg de volgende lijst om de beheerde identiteit voor Azure Virtual Machines te configureren (in regio's waar beschikbaar):
 
@@ -48,7 +48,7 @@ Raadpleeg de volgende lijst om de beheerde identiteit voor Azure Virtual Machine
 |Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
 | Door het systeem toegewezen | Beschikbaar | Preview | Preview | Preview |
-| Door de gebruiker toegewezen | Preview | Preview | Preview | Preview |
+| Door de gebruiker toegewezen | Beschikbaar | Preview | Preview | Preview |
 
 Raadpleeg de volgende lijst om de beheerde identiteit voor Azure Virtual Machine Scale Sets te configureren (in regio's waar beschikbaar):
 
@@ -210,7 +210,7 @@ Raadpleeg de volgende lijst om de toegang tot Azure Resource Manager te configur
 
 | Cloud | Resource-ID | Status |
 |--------|------------|--------|
-| Azure Global | `https://eventhubs.azure.net` | Preview |
+| Azure Global | `https://eventhubs.azure.net` | Beschikbaar |
 | Azure Government |  | Niet beschikbaar |
 | Azure Duitsland |   | Niet beschikbaar |
 | Azure China 21Vianet |  | Niet beschikbaar |
@@ -219,7 +219,7 @@ Raadpleeg de volgende lijst om de toegang tot Azure Resource Manager te configur
 
 | Cloud | Resource-ID | Status |
 |--------|------------|--------|
-| Azure Global | `https://servicebus.azure.net`  | Preview |
+| Azure Global | `https://servicebus.azure.net`  | Beschikbaar |
 | Azure Government |  | Niet beschikbaar |
 | Azure Duitsland |   | Niet beschikbaar |
 | Azure China 21Vianet |  | Niet beschikbaar |

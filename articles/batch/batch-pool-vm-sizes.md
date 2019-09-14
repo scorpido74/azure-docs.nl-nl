@@ -11,15 +11,15 @@ ms.service: batch
 ms.workload: ''
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 09/12/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: f894a7438c56c3830eb62c516447195f10fc3b76
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e3d96ad7783c43dba6b69f6b11acccf790d0d6c9
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094670"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983756"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Een VM-grootte voor reken knooppunten in een Azure Batch groep kiezen
 
@@ -45,16 +45,18 @@ Alle promotie-of preview-VM-grootten die niet worden vermeld, zijn niet gegarand
 | Av2-serie | Alle grootten | Any |
 | B-serie | Geen | Niet beschikbaar |
 | DC-serie | Geen | Niet beschikbaar |
-| Dv2, Dsv2-serie | Alle grootten | Any |
+| Dv2, DSv2-serie | Alle grootten | Any |
 | Dv3, Dsv3-serie | Alle grootten | Any |
-| [Geoptimaliseerd voor geheugen](../virtual-machines/linux/sizes-memory.md) | Geen | Niet beschikbaar |
+| Ev3, Esv3-serie | Alle grootten | Any |
 | Fsv2-serie | Alle grootten | Any |
 | H-serie | Alle grootten | Any |
 | HB-serie<sup>2</sup> | Alle grootten | Any |
-| Hc-series<sup>2</sup> | Alle grootten | Any |
+| HC-serie<sup>2</sup> | Alle grootten | Any |
 | Ls-serie | Alle grootten | Any |
 | Lsv2-serie | Geen | Niet beschikbaar |
-| M-serie | Standard_M64ms (alleen lage prioriteit), Standard_M128s (alleen lage prioriteit) | Any |  
+| M-serie | Standard_M64ms (alleen lage prioriteit), Standard_M128s (alleen lage prioriteit) | Any |
+| Mv2-serie | Geen | Niet beschikbaar |
+| NC-serie | Alle grootten | Any |
 | NCv2-serie<sup>2</sup> | Alle grootten | Any |
 | NCv3-serie<sup>2</sup> | Alle grootten | Any |
 | ND-serie<sup>2</sup> | Alle grootten | Any |

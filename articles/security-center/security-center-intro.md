@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 2ef207a14582e6ba0d9f8a25c0314c5ec639c7cb
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 762ab2800193aa084b771b7d000b383a7004097e
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882850"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984922"
 ---
 # <a name="what-is-azure-security-center"></a>Wat is Azure Security Center?
 
@@ -38,7 +38,7 @@ Azure Security Center biedt een oplossing voor de drie dringendste beveiligingsp
 
 Met Security Center kunt u zich tegen deze bedreigingen beveiligen. Het biedt namelijk hulpprogramma's waarmee u het volgende kunt doen:
 
--   **De beveiligingsstatus verbeteren**: Security Center beoordeelt uw omgeving en biedt u inzicht in de status van uw resources. Zijn ze veilig of niet?
+-   **De beveiligingsstatus verbeteren**: Security Center beoordeling van uw omgeving en stelt u in staat om inzicht te krijgen in de status van uw resources en of ze veilig zijn.
 
 -   **Beveiliging tegen bedreigingen**: Security Center beoordeelt uw workloads en genereert aanbevelingen voor het voorkomen van bedreigingen en waarschuwingen bij de detectie van bedreigingen.
 

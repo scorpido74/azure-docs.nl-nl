@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d49b8bf9c62813023c1a1e06e0f8fc0d7809f48d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f7154da76b41198c208d02b8c563ba26ff8101a1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232052"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983600"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>Uw App Service-toepassing configureren voor het gebruik van Twitter-aanmelding
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -31,7 +31,7 @@ Als u de procedure in dit onderwerp wilt volt ooien, moet u een Twitter-account 
 ## <a name="register"> </a>Uw toepassing registreren bij Twitter
 1. Meld u aan bij de [Azure-portal]en navigeer naar uw toepassing. Kopieer uw **URL**. U gebruikt deze om uw Twitter-app te configureren.
 2. Ga naar de website van de [Twitter-ontwikkel aars] , Meld u aan met de referenties van uw Twitter-account en klik op **nieuwe app maken**.
-3. Typ de **naam** en een **Beschrijving** voor de nieuwe app. Plak de **URL** van uw toepassing voor de waarde van de **website** . Typ vervolgens de URL van uw App Service-app in het URL-adres van de **call back**en voeg het pad `/.auth/login/aad/callback`toe. Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Zorg ervoor dat u het HTTPS-schema gebruikt.
+3. Typ de **naam** en een **Beschrijving** voor de nieuwe app. Plak de **URL** van uw toepassing voor de waarde van de **website** . Typ vervolgens de URL van uw App Service-app in het URL-adres van de **call back**en voeg het pad `/.auth/login/twitter/callback`toe. Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Zorg ervoor dat u het HTTPS-schema gebruikt.
 4. Lees en accepteer de voor waarden aan de onderkant van de pagina. Klik vervolgens op **uw Twitter-toepassing maken**. De details van de toepassing worden weer gegeven.
 5. Klik op het tabblad **instellingen** , Schakel **toestaan dat deze toepassing wordt gebruikt om u aan te melden met Twitter**en klik vervolgens op **instellingen bijwerken**.
 6. Selecteer het tabblad **sleutels en toegangs tokens** . Noteer de waarden van de **consument sleutel (API-sleutel)** en het **geheim van de consument (API-geheim)** .

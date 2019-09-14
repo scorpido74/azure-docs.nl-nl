@@ -1,67 +1,67 @@
 ---
-title: Aan de slag met de Bing Speech-API in Objective-C in iOS | Microsoft Docs
+title: Aan de slag met de Bing Speech Recognition API in doelstelling-C op iOS | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: De Bing Speech-API gebruiken voor het ontwikkelen van iOS-toepassingen die Converteer gesproken audio naar tekst.
+description: Gebruik de Bing Speech Recognition API om iOS-toepassingen te ontwikkelen die gesp roken audio naar tekst converteren.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 09b7e8961e59bd6fad49408c28e9ee9a4a209cae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e42784e6d2751f7e76aec8caf1d6e1f9f09a9fd1
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515295"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965937"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>Quickstart: Gebruik de Bing Speech-API in Objective-C in iOS
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>Quickstart: De Bing Speech Recognition API in doel-C op iOS gebruiken
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Met de spraak-API, kunt u iOS-toepassingen die gebruikmaken van cloud-gebaseerde Service van spraak naar gesproken audio naar tekst converteren ontwikkelen. De API ondersteunt realtime streaming, zodat uw toepassing kunt tegelijkertijd en asynchroon gedeeltelijke herkenningsresultaten ontvangen op hetzelfde moment het verzendt audio naar de service.
+Met de API voor spraak herkenning kunt u iOS-toepassingen ontwikkelen die gebruikmaken van de spraak service op basis van de cloud om gesp roken audio naar tekst te converteren. De API ondersteunt realtime streaming, zodat uw toepassing tegelijkertijd gedeeltelijke herkennings resultaten kan ontvangen op het moment dat de audio naar de service wordt verzonden.
 
-In dit artikel wordt een voorbeeldtoepassing ter illustratie van de basisprincipes van het aan de slag met de spraak-API voor het ontwikkelen van een iOS-toepassing. Zie voor een volledige API-verwijzing de [naslaginformatie over spraakherkenning SDK-clientbibliotheek](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html).
+In dit artikel wordt een voorbeeld toepassing gebruikt om te demonstreren hoe u aan de slag gaat met de API voor spraak herkenning voor het ontwikkelen van een iOS-toepassing. Zie [Naslag informatie voor de Speech SDK-client bibliotheek](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html)voor een volledige API-verwijzing.
 
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="platform-requirements"></a>Platformvereisten
 
-Zorg ervoor dat de Mac XCode IDE is geïnstalleerd.
+Controleer of de Mac XCode IDE is geïnstalleerd.
 
-### <a name="get-the-client-library-and-examples"></a>Ophalen van de client-bibliotheek en voorbeelden
+### <a name="get-the-client-library-and-examples"></a>De client bibliotheek en voor beelden ophalen
 
-De Speech client-bibliotheek en voorbeelden voor iOS zijn beschikbaar op de [Speech client-SDK voor iOS](https://github.com/microsoft/cognitive-speech-stt-ios).
+De spraakclientbibliotheek en voor beelden voor iOS zijn beschikbaar in de [Speech client SDK voor IOS](https://github.com/microsoft/cognitive-speech-stt-ios).
 
-### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Abonneer u op de spraak-API en een gratis proefabonnement-sleutel ophalen
+### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Abonneer u op de spraakherkennings-API en ontvang een gratis proef abonnement sleutel
 
-De spraak-API maakt deel uit van Cognitive Services (eerder Project Oxford). U krijgt een gratis proefabonnement sleutels uit de [Cognitive Services-abonnement](https://azure.microsoft.com/try/cognitive-services/) pagina. Nadat u de spraak-API selecteert, selecteert u **API-sleutel ophalen** om op te halen van de sleutel. Het resultaat een primaire en secundaire sleutel. Beide sleutels zijn gekoppeld aan dezelfde quota, zodat u beide sleutels kunt gebruiken.
+De Speech-API maakt deel uit van Cognitive Services (voorheen project Oxford). U kunt abonnements sleutels voor een gratis proef versie downloaden van de pagina [Cognitive Services abonnement](https://azure.microsoft.com/try/cognitive-services/) . Nadat u de spraak-API hebt geselecteerd, selecteert u **API-sleutel ophalen** om de sleutel op te halen. Er wordt een primaire en secundaire sleutel geretourneerd. Beide sleutels zijn gekoppeld aan hetzelfde quotum, dus u kunt beide sleutels gebruiken.
 
-Als u wilt gebruiken *erkenning met opzet*, moet u ook voor het aanmelden bij de [Language Understanding Intelligent Service (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+Als u *herkenning met opzet*wilt gebruiken, moet u zich ook registreren voor de [Language Understanding intelligent service (Luis)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
 > [!IMPORTANT]
-> * De abonnementssleutel van een ophalen. Voordat u de spraak-clientbibliotheken gebruiken kunt, moet u beschikken over een [abonnementssleutel](https://azure.microsoft.com/try/cognitive-services/).
+> * Een abonnements sleutel ophalen. Voordat u Speech client-bibliotheken kunt gebruiken, moet u een [abonnements sleutel](https://azure.microsoft.com/try/cognitive-services/)hebben.
 >
-> * Gebruik uw abonnement. Met de opgegeven iOS-voorbeeldtoepassing moet u het bestand Samples/SpeechRecognitionServerExample/settings.plist bijwerken met de abonnementssleutel van uw. Zie voor meer informatie, [bouwen en uitvoeren van voorbeelden](#build-and-run-samples).
+> * Gebruik uw abonnements sleutel. Met de meegeleverde iOS-voorbeeld toepassing moet u de bestands voorbeelden/SpeechRecognitionServerExample/Settings. plist bijwerken met uw abonnements sleutel. Zie voor [beelden bouwen en uitvoeren](#build-and-run-samples)voor meer informatie.
 
-## <a name="use-the-speech-client-library"></a>Gebruik de Speech client-bibliotheek
+## <a name="use-the-speech-client-library"></a>De spraakclientbibliotheek gebruiken
 
-Als u wilt toevoegen de clientbibliotheek in een XCode-project, volgt u deze [instructies](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS#the-client-library).
+Volg deze [instructies](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS#the-client-library)om de client bibliotheek toe te voegen aan een Xcode-project.
 
-Als u zoekt de client naslaginformatie over de clientbibliotheek voor iOS, ziet deze [webpagina](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html).
+Zie deze [webpagina](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html)om de referentie van de client bibliotheek voor IOS te vinden.
 
-## <a name="build-and-run-samples"></a>Bouwen en uitvoeren van voorbeelden
+## <a name="build-and-run-samples"></a>Voor beelden bouwen en uitvoeren
 
-Zie voor informatie over het bouwen en uitvoeren voorbeelden [Leesmij-bestand pagina](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS#the-sample).
+Zie deze [Leesmij-pagina](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS#the-sample)voor meer informatie over het maken en uitvoeren van voor beelden.
 
-## <a name="samples-explained"></a>Voorbeelden uitgelegd
+## <a name="samples-explained"></a>Voor beelden beschreven
 
-### <a name="create-recognition-clients"></a>Opname-clients maken
+### <a name="create-recognition-clients"></a>Herkennings-clients maken
 
-De volgende code in het voorbeeld laat zien hoe spraakherkenning clientklassen op basis van gebruiker scenario's maken:
+De volgende code in het voor beeld laat zien hoe u herkennings-client klassen maakt op basis van gebruikers scenario's:
 
 ```
 {
@@ -112,38 +112,38 @@ De volgende code in het voorbeeld laat zien hoe spraakherkenning clientklassen o
 
 ```
 
-De clientbibliotheek biedt vooraf geïmplementeerde erkenning clientklassen voor gebruikelijke scenario's van spraakherkenning:
+De client bibliotheek biedt vooraf geïmplementeerde client klassen voor herkenning voor typische scenario's in spraak herkenning:
 
-* `DataRecognitionClient`: Spraakherkenning met PCM-gegevens (bijvoorbeeld van de bron van een bestand of audio). De gegevens wordt opgedeeld in buffers en elke buffer naar spraak-Service is verzonden. Geen aanpassing is gereed om terug te de buffers, zodat gebruikers hun eigen Stiltedetectie toepassen kunnen, indien gewenst. Als de gegevens wordt geleverd door WAV-bestanden, kunt u gegevens verzenden vanaf de rechterkant van het bestand met de server. Als u hebt de onbewerkte gegevens, bijvoorbeeld audio die afkomstig zijn via Bluetooth, u eerst een indeling-header verzenden naar de server die wordt gevolgd door de gegevens.
-* `MicrophoneRecognitionClient`: Spraakherkenning met audio die afkomstig zijn van de microfoon. Zorg ervoor dat de microfoon is ingeschakeld en dat de gegevens van de microfoon naar de spraakherkenningsservice wordt verzonden. Een ingebouwde "stiltedetector' wordt toegepast op de microfoon gegevens voordat deze wordt verzonden naar de opname-service.
-* `DataRecognitionClientWithIntent` en `MicrophoneRecognitionClientWithIntent`: Naast de tekst van de spraakherkenning retourneert deze clients gestructureerde informatie over het doel van de spreker, die uw toepassingen gebruiken kunnen om verdere acties te stimuleren. Voor het gebruik van 'Doel', moet u eerst een model met behulp van de trein [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+* `DataRecognitionClient`: Spraak herkenning met PCM-gegevens (bijvoorbeeld van een bestand of audio bron). De gegevens worden opgedeeld in buffers en elke buffer wordt naar de speech-service verzonden. Er worden geen wijzigingen aangebracht in de buffers, zodat gebruikers hun eigen stilte detectie kunnen Toep assen, indien gewenst. Als de gegevens afkomstig zijn uit WAV-bestanden, kunt u gegevens van het bestand rechtstreeks naar de server verzenden. Als u onbewerkte gegevens hebt, bijvoorbeeld audio die via Bluetooth komt, verzendt u eerst een indelings header naar de server, gevolgd door de gegevens.
+* `MicrophoneRecognitionClient`: Spraak herkenning met audio afkomstig van de microfoon. Zorg ervoor dat de microfoon is ingeschakeld en dat de gegevens van de microfoon worden verzonden naar de service voor spraak herkenning. Er wordt een ingebouwde "stilte detector" toegepast op de microfoon gegevens voordat deze naar de herkennings service worden verzonden.
+* `DataRecognitionClientWithIntent` en `MicrophoneRecognitionClientWithIntent`: Deze clients geven naast herkennings tekst gestructureerde informatie over de bedoeling van de spreker, die uw toepassingen kunnen gebruiken om verdere acties uit te voeren. Als u ' intentie ' wilt gebruiken, moet u eerst een model trainen met behulp van [Luis](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
-### <a name="recognition-language"></a>OCR-taal
+### <a name="recognition-language"></a>Herkennings taal
 
-Bij het gebruik `SpeechRecognitionServiceFactory` voor het maken van de client, moet u een taal selecteren. Zie voor de volledige lijst met talen die worden ondersteund door de Service voor spraak, [ondersteunde talen](../API-Reference-REST/supportedlanguages.md).
+Wanneer u gebruikt `SpeechRecognitionServiceFactory` om de-client te maken, moet u een taal selecteren. Zie [ondersteunde talen](../API-Reference-REST/supportedlanguages.md)voor de volledige lijst met talen die door de spraak service worden ondersteund.
 
 ### <a name="speechrecognitionmode"></a>SpeechRecognitionMode
 
-U moet ook opgeven `SpeechRecognitionMode` bij het maken van de client met `SpeechRecognitionServiceFactory`:
+U moet ook opgeven `SpeechRecognitionMode` wanneer u de-client maakt met: `SpeechRecognitionServiceFactory`
 
-* `SpeechRecognitionMode_ShortPhrase`: Een utterance tot maximaal 15 seconden lang. Gegevens worden verzonden naar de service, ontvangt de client meerdere gedeeltelijke resultaten en één eindresultaat met meerdere n-beste keuzen.
-* `SpeechRecognitionMode_LongDictation`: Een utterance tot twee minuten lang. Gegevens worden verzonden naar de service, ontvangt de client meerdere gedeeltelijke resultaten en meerdere eindresultaten, op basis van waar de server pauzes in zinnen aangeeft.
+* `SpeechRecognitionMode_ShortPhrase`: Een utterance van Maxi maal 15 seconden lang. Wanneer gegevens naar de service worden verzonden, ontvangt de client meerdere gedeeltelijke resultaten en één eind resultaat met meerdere n-beste keuzes.
+* `SpeechRecognitionMode_LongDictation`: Een utterance van Maxi maal twee minuten lang. Naarmate er gegevens naar de service worden verzonden, ontvangt de client meerdere gedeeltelijke resultaten en meerdere eind resultaten, op basis van de locatie van de server die zin pauzeert.
 
 ### <a name="attach-event-handlers"></a>Gebeurtenis-handlers koppelen
 
-U kunt verschillende gebeurtenis-handlers koppelen aan de client u hebt gemaakt:
+U kunt verschillende gebeurtenis-handlers koppelen aan de client die u hebt gemaakt:
 
-* **Gedeeltelijke resultaten gebeurtenissen**: Deze gebeurtenis wordt aangeroepen telkens wanneer die Speech-Service wordt voorspeld wat u mogelijk worden zeggen, voordat u klaar bent met het spreken (als u `MicrophoneRecognitionClient`) of u klaar bent met het verzenden van gegevens (als u `DataRecognitionClient`).
-* **Gebeurtenissen op foutniveau**: Wordt aangeroepen wanneer de service een fout wordt gedetecteerd.
-* **Intentie gebeurtenissen**: Met de naam op de clients 'WithIntent' (alleen in de modus ShortPhrase) na de laatste opname resultaat in een gestructureerde JSON-doel wordt geparseerd.
-* **Gebeurtenissen resulteren**:
-  * In `SpeechRecognitionMode_ShortPhrase` modus, deze gebeurtenis wordt genoemd en n-beste resultaten retourneert nadat u klaar bent met het spreken.
-  * In `SpeechRecognitionMode_LongDictation` modus wordt de gebeurtenis-handler heet meerdere keren op basis van waar de service pauzes in zinnen aangeeft.
-  * **Voor elk van de n-beste keuzen**, een waarde vertrouwen en enkele andere vormen van de herkende tekst worden geretourneerd. Zie voor meer informatie, [uitvoerindeling](../Concepts.md#output-format).
+* **Gedeeltelijke resultaten gebeurtenissen**: Deze gebeurtenis wordt aangeroepen telkens wanneer de speech-service voor spelt wat u kunt zeggen, zelfs voordat u met het spreken stopt (als `MicrophoneRecognitionClient`u gebruikt) of het verzenden van gegevens ( `DataRecognitionClient`als u gebruikt).
+* **Fout gebeurtenissen**: Wordt aangeroepen wanneer er een fout wordt gedetecteerd door de service.
+* **Intentie gebeurtenissen**: Wordt aangeroepen op ' WithIntent-clients (alleen in de ShortPhrase-modus) nadat het uiteindelijke herkennings resultaat is geparseerd in een Structured JSON-doel.
+* **Resultaat gebeurtenissen**:
+  * In `SpeechRecognitionMode_ShortPhrase` de modus wordt deze gebeurtenis aangeroepen en retourneert n-beste resultaten nadat u hebt gesp roken.
+  * In `SpeechRecognitionMode_LongDictation` de modus wordt de gebeurtenis-handler meerdere keren aangeroepen, op basis van waar de service zin-pauzes aanduidt.
+  * **Voor elk van de n-beste keuzes**wordt een betrouw bare waarde en enkele andere vormen van de herkende tekst geretourneerd. Zie [output format](../Concepts.md#output-format)(Engelstalig) voor meer informatie.
 
 ## <a name="related-topics"></a>Verwante onderwerpen
 
-* [Naslaginformatie over-clientbibliotheek voor iOS](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html)
-* [Aan de slag met Microsoft-spraakherkenning en/of kunt u lezen wat in Java op Android](GetStartedJavaAndroid.md)
-* [Aan de slag met de Microsoft Speech-API in JavaScript](GetStartedJSWebsockets.md)
-* [Aan de slag met de Microsoft Speech-API via REST](GetStartedREST.md)
+* [Naslag informatie voor de client bibliotheek voor iOS](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html)
+* [Aan de slag met spraak herkenning van micro soft en/of intentie in Java op Android](GetStartedJavaAndroid.md)
+* [Aan de slag met de micro soft Speech API in Java script](GetStartedJSWebsockets.md)
+* [Aan de slag met de micro soft Speech API via REST](GetStartedREST.md)

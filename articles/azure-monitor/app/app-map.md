@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: ce44be5bae5aaa8f86d04068cce1c4bc919b0893
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f895aa9aa4bc66c32f10d290b7ee708345be8c9b
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126963"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983770"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Toepassings toewijzing: Gedistribueerde toepassingen sorteren
 
@@ -272,6 +272,6 @@ Als u feedback wilt geven, gebruikt u de optie feedback.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Raadpleeg voor meer informatie over hoe correlatie werkt in Application Insights het [artikel over de telemetrie https://docs.microsoft.com/azure/application-insights/application-insights-correlation) -correlatie] (.
+* Raadpleeg het artikel over de [telemetrie-correlatie](https://docs.microsoft.com/azure/application-insights/application-insights-correlation)voor meer informatie over hoe correlatie werkt in Application Insights.
 * De [end-to-end trans actie diagnostische ervaring](transaction-diagnostics.md) verbindt de telemetrie aan de server zijde van alle Application Insights bewaakte onderdelen tot één weer gave.
 * Raadpleeg voor geavanceerde correlatie scenario's in ASP.NET Core en ASP.NET het artikel [aangepaste bewerkingen bijhouden](custom-operations-tracking.md) .

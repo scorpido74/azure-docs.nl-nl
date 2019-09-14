@@ -15,12 +15,12 @@ ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: c3ca873cb4dd49d77ba818b3d05c3aa41e89276f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: eb7c2cb4a20c89f3a54f23e354d56e5dc3711ef0
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982728"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967110"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Problemen met RBAC voor Azure-resources oplossen
 
@@ -28,7 +28,7 @@ In dit artikel vindt u antwoorden op algemene vragen over op rollen gebaseerd to
 
 ## <a name="problems-with-rbac-role-assignments"></a>Problemen met RBAC-roltoewijzingen
 
-- Als u geen roltoewijzing kunt toevoegen in de Azure Portal op **toegangs beheer (IAM),** omdat de > optie**toewijzing van roltoewijzing** toevoegen is uitgeschakeld of omdat u de machtigingen fout krijgt, is de client met object-id niet autorisatie voor het uitvoeren van de actie ', Controleer of u momenteel bent aangemeld met een gebruiker aan wie een rol is toegewezen `Microsoft.Authorization/roleAssignments/write` die de machtiging heeft, zoals [eigenaar](built-in-roles.md#owner) of [gebruikers toegangs beheerder](built-in-roles.md#user-access-administrator) in het bereik dat u probeert toe te wijzen aan de rol.
+- Als u geen roltoewijzing kunt toevoegen in de Azure Portal op **toegangs beheer (IAM),** **omdat de** > optie**toewijzing van roltoewijzing** toevoegen is uitgeschakeld of omdat u de machtigingen fout krijgt, is de client met object-id niet autorisatie voor het uitvoeren van de actie ', Controleer of u momenteel bent aangemeld met een gebruiker aan wie een rol is toegewezen `Microsoft.Authorization/roleAssignments/write` die de machtiging heeft, zoals [eigenaar](built-in-roles.md#owner) of [gebruikers toegangs beheerder](built-in-roles.md#user-access-administrator) in het bereik dat u probeert toe te wijzen aan de rol.
 - Als u het fout bericht ' er kunnen geen roltoewijzingen meer worden gemaakt ' weer gegeven (code: RoleAssignmentLimitExceeded)' optreedt, vermindert u het aantal roltoewijzingen door in plaats hiervan rollen toe te wijzen aan groepen. Azure ondersteunt maximaal **2000** roltoewijzingen per abonnement.
 
 ## <a name="problems-with-custom-roles"></a>Problemen met aangepaste rollen
@@ -52,7 +52,7 @@ In dit artikel vindt u antwoorden op algemene vragen over op rollen gebaseerd to
 ## <a name="access-denied-or-permission-errors"></a>Toegang geweigerd of machtigings fouten
 
 - Als de machtigingsfout 'Client met object-id is niet gemachtigd om actie uit te voeren over bereik (code: AuthorizationFailed)' wanneer u een resource wilt maken, controleert u of u momenteel bent aangemeld met een gebruiker die een rol heeft met schrijfrechten voor de resource in het geselecteerde bereik. Als u bijvoorbeeld virtuele machines in een resourcegroep wilt beheren, moet u de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) toewijzen aan de resourcegroep (of bovenliggend bereik). Voor een lijst met machtigingen voor elke ingebouwde rol, raadpleegt u [Ingebouwde rollen voor Azure-resources](built-in-roles.md).
-- Als u de machtiging fout ' u bent niet gemachtigd om een ondersteunings aanvraag te maken ' krijgt wanneer u een ondersteunings ticket probeert te maken of bij te werken, controleert u of u momenteel bent aangemeld met een gebruiker aan `Microsoft.Support/supportTickets/write` wie een rol is toegewezen, zoals [ Inzender](built-in-roles.md#support-request-contributor)voor ondersteunings aanvragen.
+- Als u de machtiging fout ' u bent niet gemachtigd om een ondersteunings aanvraag te maken ' krijgt wanneer u een ondersteunings ticket probeert te maken of bij te werken, controleert u of u momenteel bent aangemeld met een gebruiker aan `Microsoft.Support/supportTickets/write` wie een rol is toegewezen, zoals [ Inzender voor ondersteunings aanvragen](built-in-roles.md#support-request-contributor).
 
 ## <a name="role-assignments-without-a-security-principal"></a>Roltoewijzingen zonder beveiligings-principal
 
@@ -182,6 +182,8 @@ Voor sommige functies van [Azure functions](../azure-functions/functions-overvie
 Een lezer kan op het tabblad **platform functies** klikken en vervolgens op **alle instellingen** klikken om enkele instellingen te bekijken die betrekking hebben op een functie-app (vergelijkbaar met een web-app), maar ze kunnen geen van deze instellingen wijzigen. U hebt de rol [Inzender](built-in-roles.md#contributor) nodig om toegang te krijgen tot deze functies.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Toegang tot Azure-resources beheren met op rollen gebaseerd toegangsbeheer en de Azure-portal](role-assignments-portal.md)
-* [Activiteiten logboeken voor RBAC-wijzigingen in azure-resources weer geven](change-history-report.md)
+
+- [Problemen met gast gebruikers oplossen](role-assignments-external-users.md#troubleshoot)
+- [Toegang tot Azure-resources beheren met op rollen gebaseerd toegangsbeheer en de Azure-portal](role-assignments-portal.md)
+- [Activiteiten logboeken voor RBAC-wijzigingen in azure-resources weer geven](change-history-report.md)
 

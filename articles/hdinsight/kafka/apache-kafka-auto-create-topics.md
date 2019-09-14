@@ -3,16 +3,17 @@ title: Automatisch maken van een onderwerp in Apache Kafka-Azure HDInsight insch
 description: Meer informatie over het configureren van Apache Kafka op HDInsight om automatisch onderwerpen te maken. U kunt Kafka configureren door auto. Create. topics in te stellen op True via Ambari of tijdens het maken van clusters via Power shell of Resource Manager-sjablonen.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: 4f40a625b10243ca13163e549a51a760cf105917
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 5d990a1c39495090fed1c78f1ddf5e879490e6c4
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900422"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960674"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Apache Kafka op HDInsight configureren om automatisch onderwerpen te maken
 
@@ -34,11 +35,11 @@ Gebruik de volgende stappen om het automatisch maken van een onderwerp in een be
 
 3. Selecteer de Kafka-service in de lijst aan de linkerkant van de pagina.
 
-    ![Service lijst](./media/apache-kafka-auto-create-topics/service-list.png)
+    ![Service lijst](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
 
 4. Selecteer configuraties in het midden van de pagina.
 
-    ![Tabblad Service configuratie](./media/apache-kafka-auto-create-topics/service-config.png)
+    ![Tabblad Service configuratie](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
 5. Voer in het veld Filter een waarde van `auto.create`in. 
 

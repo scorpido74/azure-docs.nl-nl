@@ -1,84 +1,84 @@
 ---
-title: Text to Speech-API van Microsoft Speech Service | Microsoft Docs
+title: Text to Speech-API van micro soft Speech Service | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: De text to speech-API gebruiken voor realtime-naar-spraak conversie in een aantal stemmen en talen
+description: Gebruik de tekst-naar-spraak-API om realtime conversie van tekst naar spraak te bieden in verschillende stemmen en talen
 services: cognitive-services
-author: priyaravi20
-manager: yanbo
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: priyar
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a046bec5d81d828d88716d31c84e9cbcdcea1a08
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ee9b0b47fb88cba948bc06db6eb83fe9c076fe40
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515427"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966860"
 ---
-# <a name="bing-text-to-speech-api"></a>Bing text to speech-API
+# <a name="bing-text-to-speech-api"></a>Bing tekst-naar-spraak-API
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 ## <a name="Introduction"></a>Inleiding
 
-Met de Bing text to speech-API, kan uw toepassing HTTP-aanvragen verzenden naar een cloud-server, waarbij tekst onmiddellijk human klinkende spraaksynthese en geretourneerd als een geluidsbestand. Deze API kan in veel verschillende contexten worden gebruikt voor realtime-naar-spraak conversie in tal van verschillende stemmen en talen.
+Met de Bing tekst-naar-spraak-API kan uw toepassing HTTP-aanvragen verzenden naar een Cloud Server, waarbij tekst onmiddellijk wordt gesynthesizerd in menselijke klank spraak en wordt geretourneerd als een audio bestand. Deze API kan in veel verschillende contexten worden gebruikt voor het bieden van realtime conversie van tekst naar spraak in verschillende stemmen en talen.
 
-## <a name="VoiceSynReq"></a>Stem synthese aanvraag
+## <a name="VoiceSynReq"></a>Voice synthese-aanvraag
 
-### <a name="Subscription"></a>Autorisatietoken
+### <a name="Subscription"></a>Autorisatie token
 
-Elke stem synthese-aanvraag moet een toegangstoken van JSON Web Token (JWT). De JWT-toegangstoken wordt doorgegeven in de aanvraagheader van spraak. Het token heeft een verlooptijd van 10 minuten. Zie voor meer informatie over het abonnement en het verkrijgen van API-sleutels die worden gebruikt om op te halen ongeldig JWT-tokens voor toegang tot [Cognitive Services-abonnement](https://azure.microsoft.com/try/cognitive-services/).
+Voor elke voice Synthesis-aanvraag is een JSON Web Token (JWT)-toegangs token vereist. Het JWT-toegangs token wordt door gegeven in de header van de spraak aanvraag. Het token heeft een verloop tijd van 10 minuten. Zie [Cognitive Services-abonnement](https://azure.microsoft.com/try/cognitive-services/)voor meer informatie over het abonneren en verkrijgen van API-sleutels die worden gebruikt om geldige JWT-toegangs tokens op te halen.
 
-De API-sleutel wordt doorgegeven aan de service voor beveiligingstokens. Bijvoorbeeld:
+De API-sleutel wordt door gegeven aan de token service. Bijvoorbeeld:
 
 ```HTTP
 POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken
 Content-Length: 0
 ```
 
-De vereiste header-informatie voor token-toegang is als volgt.
+De vereiste header-informatie voor token toegang is als volgt.
 
 Name| Indeling | Description
 ----|----|----
 OCP-Apim-Subscription-Key | ASCII | Uw abonnementssleutel
 
-De service voor beveiligingstokens retourneert het toegangstoken JWT als `text/plain`. En vervolgens de JWT wordt doorgegeven als een `Base64 access_token` naar het eindpunt spraak als een autorisatie-header voorafgegaan door de tekenreeks `Bearer`. Bijvoorbeeld:
+De token service retourneert het JWT-toegangs token `text/plain`als. Vervolgens wordt de JWT als een `Base64 access_token` aan het spraak eindpunt door gegeven als een autorisatie header die met de teken reeks `Bearer`wordt voorafgegaan. Bijvoorbeeld:
 
 `Authorization: Bearer [Base64 access_token]`
 
-Clients moeten het volgende eindpunt gebruiken voor toegang tot de Text to Speech-service:
+Clients moeten het volgende eind punt gebruiken om toegang te krijgen tot de tekst-naar-spraak-service:
 
 `https://speech.platform.bing.com/synthesize`
 
 >[!NOTE]
->Deze koppeling wordt gegenereerd totdat u kunt een toegangstoken hebt aangeschaft met uw abonnementssleutel, zoals eerder beschreven, een `403 Forbidden` antwoordfout.
+>Totdat u een toegangs token hebt verkregen met uw abonnements sleutel zoals eerder beschreven, genereert deze koppeling een `403 Forbidden` reactie fout.
 
 ### <a name="Http"></a>HTTP-headers
 
-De volgende tabel ziet u de HTTP-headers die worden gebruikt voor spraak synthese aanvragen.
+De volgende tabel bevat de HTTP-headers die worden gebruikt voor aanvragen voor spraak synthese.
 
 Header |Value |Opmerkingen
 ----|----|----
-Content-Type | application/ssml+xml | De invoer inhoudstype.
-X-Microsoft-OutputFormat | **1.** ssml-16 khz-16-bits-mono-tts <br> **2.** raw-16 khz-16-bits-mono-pcm <br>**3.** audio-16 khz-16 kbps-mono-siren <br> **4.** riff-16 khz-16 kbps-mono-siren <br> **5.** riff-16 khz-16-bits-mono-pcm <br> **6.** audio-16 khz-128kbitrate-mono-mp3 <br> **7.** audio-16 khz-64kbitrate-mono-mp3 <br> **8.** audio-16 khz-32kbitrate-mono-mp3 | De uitvoer audio-indeling.
-X-Search-AppId | Een GUID (hexadecimaal alleen, geen streepjes) | Een ID die de clienttoepassing wordt aangeduid. Dit kan de opslag-ID voor apps zijn. Als een niet beschikbaar is, kan de ID gebruiker gegenereerd voor een toepassing zijn.
-X-Search-ClientID | Een GUID (hexadecimaal alleen, geen streepjes) | Een ID die de instantie van een toepassing voor elke installatie wordt aangeduid.
-User-Agent | De naam van de toepassing | De toepassingsnaam is vereist en moet minder dan 255 tekens.
-Authorization | Autorisatietoken |  Zie de <a href="#Subscription">Autorisatietoken</a> sectie.
+Content-Type | Application/SSML + XML | Het type invoer inhoud.
+X-Microsoft-OutputFormat | **1.** SSML-16khz-16-mono-TTS <br> **2.** onbewerkte-16khz-16-mono-PCM <br>**3.** audio-16khz-16kbps-mono-Siren <br> **4.** RIFF-16khz-16kbps-mono-Siren <br> **5.** RIFF-16khz-16-mono-PCM <br> **6.** audio-16khz-128kbitrate-mono-mp3 <br> **7.** audio-16khz-64kbitrate-mono-mp3 <br> **8.** audio-16khz-32kbitrate-mono-mp3 | De uitvoer audio-indeling.
+X-Search-AppId | Een GUID (alleen hex, geen streepjes) | Een ID waarmee de client toepassing uniek wordt geïdentificeerd. Dit kan de Store-ID voor apps zijn. Als er geen beschikbaar is, kan de ID door de gebruiker worden gegenereerd voor een toepassing.
+X-Search-ClientID | Een GUID (alleen hex, geen streepjes) | Een ID waarmee een toepassings exemplaar voor elke installatie uniek wordt geïdentificeerd.
+User-Agent | Toepassingsnaam | De naam van de toepassing is vereist en moet korter zijn dan 255 tekens.
+Authorization | Autorisatietoken |  Zie de sectie <a href="#Subscription">autorisatie token</a> .
 
-### <a name="InputParam"></a>Invoerparameters
+### <a name="InputParam"></a>Invoer parameters
 
-Aanvragen voor Bing text to speech-API worden gedaan met behulp van HTTP POST-aanroepen. De headers zijn opgegeven in de vorige sectie. De hoofdtekst bevat invoer spraak synthese Markup Language (SSML) waarmee de tekst die moet worden gemaakt. Zie voor een beschrijving van de markering die wordt gebruikt voor het beheren aspecten van spraakherkenning, zoals de taal en geslacht van de spreker analyseren, de [SSML W3C-specificatie](https://www.w3.org/TR/speech-synthesis/).
+Aanvragen voor de Bing tekst naar de spraak-API worden gemaakt met behulp van HTTP POST-aanroepen. De headers zijn opgegeven in de vorige sectie. De hoofd tekst bevat SSML-invoer (Speech synthese Markup Language) die de tekst vertegenwoordigt die moet worden gesynthesizerd. Zie de [SSML W3C-specificatie](https://www.w3.org/TR/speech-synthesis/)voor een beschrijving van de opmaak die wordt gebruikt voor het beheren van aspecten van spraak, zoals de taal en het geslacht van de spreker.
 
 >[!NOTE]
->De maximale grootte van de invoer SSML die wordt ondersteund is 1024 tekens, inclusief alle tags.
+>De maximale grootte van de SSML-invoer die wordt ondersteund, is 1.024 tekens, inclusief alle tags.
 
-###  <a name="SampleVoiceOR"></a>Voorbeeld: stem uitvoeraanvraag
+###  <a name="SampleVoiceOR"></a>Voor beeld: aanvraag voor spraak uitvoer
 
-Een voorbeeld van een aanvraag voice-uitvoer is als volgt:
+Een voor beeld van een aanvraag voor spraak uitvoer is als volgt:
 
 ```HTTP
 POST /synthesize
@@ -94,13 +94,13 @@ Authorization: Bearer [Base64 access_token]
 <speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>Microsoft Bing Voice Output API</voice></speak>
 ```
 
-## <a name="VoiceOutResponse"></a>Stem uitvoer antwoord
+## <a name="VoiceOutResponse"></a>Antwoord op spraak uitvoer
 
-Bing text to speech-API maakt gebruik van HTTP POST voor het verzenden van audio terug naar de client. De API-reactie bevat de audiostream en de codec en deze overeenkomt met de indeling van de gevraagde uitvoer. De audio geretourneerd voor een bepaalde aanvraag mag niet groter zijn dan 15 seconden.
+De Bing tekst-naar-spraak-API maakt gebruik van HTTP POST om audio terug te sturen naar de client. Het API-antwoord bevat de audio stroom en de codec en komt overeen met de aangevraagde uitvoer indeling. Het geluid dat voor een bepaalde aanvraag wordt geretourneerd, mag niet langer zijn dan 15 seconden.
 
-### <a name="SuccessfulRecResponse"></a>Voorbeeld: geslaagd synthese antwoord
+### <a name="SuccessfulRecResponse"></a>Voor beeld: geslaagde synthese reactie
 
-De volgende code is een voorbeeld van een JSON-antwoord op een geslaagde stem synthese-aanvraag. De opmerkingen en opmaak van de code voor dit voorbeeld alleen zijn en zijn weggelaten uit de daadwerkelijke reactie.
+De volgende code is een voor beeld van een JSON-antwoord op een geslaagde Voice Synthesis-aanvraag. De opmerkingen en opmaak van de code zijn alleen bedoeld voor dit voor beeld en worden wegge laten uit de daad werkelijke reactie.
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -110,9 +110,9 @@ Content-Type: audio/x-wav
 Response audio payload
 ```
 
-### <a name="RecFailure"></a>Voorbeeld: synthese fout
+### <a name="RecFailure"></a>Voor beeld: synthese-fout
 
-De volgende voorbeeldcode ziet u een JSON-antwoord aan een stem-synthese query-fout:
+In de volgende voorbeeld code ziet u een JSON-antwoord op een fout in de query voor een spraak synthese:
 
 ```HTTP
 HTTP/1.1 400 XML parser error
@@ -120,16 +120,16 @@ Content-Type: text/xml
 Content-Length: 0
 ```
 
-### <a name="ErrorResponse"></a>Foutberichten
+### <a name="ErrorResponse"></a>Fout berichten
 
 Fout | Description
 ----|----
-HTTP-/ 400 Ongeldige aanvraag | Er ontbreekt een vereiste parameter ontbreekt, is leeg of null zijn of de waarde die wordt doorgegeven aan een vereiste of optionele parameter is ongeldig. Eén reden voor het ophalen van het antwoord 'Ongeldige' is een tekenreekswaarde die langer is dan de toegestane lengte doorgegeven. Een korte beschrijving van de problematische parameter is opgenomen.
-HTTP/401-niet gemachtigd | De aanvraag is niet gemachtigd.
-HTTP/413 RequestEntityTooLarge  | De invoer SSML is groter dan wat wordt ondersteund.
-HTTP/502 BadGateway | Er is een probleem met netwerk of een probleem met de serverzijde.
+HTTP/400-ongeldige aanvraag | Een vereiste para meter ontbreekt, is leeg of null of de waarde die is door gegeven aan een vereiste of optionele para meter is ongeldig. Een van de redenen voor het ophalen van de reactie ' ongeldig ' is een teken reeks waarde door gegeven die langer is dan de toegestane lengte. Een korte beschrijving van de problematische para meter is opgenomen.
+HTTP/401 niet toegestaan | De aanvraag is niet gemachtigd.
+HTTP/413 RequestEntityTooLarge  | De SSML-invoer is groter dan wat wordt ondersteund.
+HTTP/502 BadGateway | Er is een probleem met het netwerk of een probleem aan de server zijde.
 
-Een voorbeeld van een foutbericht is als volgt:
+Een voor beeld van een fout bericht is als volgt:
 
 ```HTTP
 HTTP/1.0 400 Bad Request
@@ -139,11 +139,11 @@ Content-Type: text/plain; charset=UTF-8
 Voice name not supported
 ```
 
-## <a name="ChangeSSML"></a>Voice-uitvoer via SSML wijzigen
+## <a name="ChangeSSML"></a>De spraak uitvoer wijzigen via SSML
 
-Text to Speech-API van Microsoft SSML 1.0 ondersteunt, zoals gedefinieerd in W3C [spraak synthese Markup Language (SSML) versie 1.0](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/). In deze sectie ziet u voorbeelden van het wijzigen van bepaalde kenmerken van de gegenereerde voice-uitvoer zoals spreekstijl beoordelen, enz. met behulp van tags SSML uitspraak.
+De API voor tekst naar spraak van micro soft ondersteunt SSML 1,0 zoals gedefinieerd in de W3C [-versie 1,0 (Speech synthese Markup Language)](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/). In deze sectie vindt u voor beelden van het wijzigen van bepaalde kenmerken van gegenereerde spraak uitvoer, zoals de spreek snelheid, de uitspraak, enzovoort. met behulp van SSML-Tags.
 
-1. Einde toevoegen
+1. Breek punt toevoegen
 
    ```
    <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
@@ -173,26 +173,26 @@ Text to Speech-API van Microsoft SSML 1.0 ondersteunt, zoals gedefinieerd in W3C
    <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
    ```
 
-6. Wijziging prosody contour
+6. Prosody-contour wijzigen
 
    ```
    <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
    ```
 
 > [!NOTE]
-> Houd er rekening mee de audiogegevens is 8 kB of 16 kB wav wordt ingediend in de volgende indeling: **CRC code** (CRC-32): 4 bytes (DWORD) met het geldige bereik 0x00000000 ~ 0xFFFFFFFF; **Audio-indeling vlag**: 4 bytes (DWORD) met het geldige bereik 0x00000000 ~ 0xFFFFFFFF; **Aantal**: 4 bytes (DWORD) met het geldige bereik 0x00000000 ~ 0x7FFFFFFF; **Grootte van de hoofdtekst van de binaire**: 4 bytes (DWORD) met het geldige bereik 0x00000000 ~ 0x7FFFFFFF; **Binaire hoofdtekst**: n bytes.
+> Houd er rekening mee dat de audio gegevens in de volgende indeling moeten worden 8k of een 16-KB WAV-bestand: **CRC-code** (CRC-32): 4 bytes (DWORD) met geldig bereik 0x00000000 ~ 0xFFFFFFFF; **Audio-indelings markering**: 4 bytes (DWORD) met geldig bereik 0x00000000 ~ 0xFFFFFFFF; **Aantal voor beelden**: 4 bytes (DWORD) met geldig bereik 0x00000000 ~ 0x7FFFFFFF; **Grootte van binaire hoofd tekst**: 4 bytes (DWORD) met geldig bereik 0x00000000 ~ 0x7FFFFFFF; **Binaire hoofd tekst**: n bytes.
 
-## <a name="SampleApp"></a>Voorbeeld van een toepassing
+## <a name="SampleApp"></a>Voorbeeld toepassing
 
-Zie voor meer informatie voor implementatie, de [Visual C# .NET-naar-spraak-voorbeeldtoepassing](https://github.com/Microsoft/Cognitive-Speech-TTS/blob/master/Samples-Http/CSharp/TTSProgram.cs).
+Zie voor meer informatie over de implementatie de [Visual C#.net-voorbeeld toepassing tekst-naar-spraak](https://github.com/Microsoft/Cognitive-Speech-TTS/blob/master/Samples-Http/CSharp/TTSProgram.cs).
 
-## <a name="SupLocales"></a>Ondersteunde talen en spraakstijlen
+## <a name="SupLocales"></a>Ondersteunde land instellingen en spraak lettertypen
 
-De volgende tabel bevat enkele van de ondersteunde landinstellingen en gerelateerde spraakstijlen.
+De volgende tabel bevat een aantal ondersteunde land instellingen en verwante spraak lettertypen.
 
 Landinstelling | Geslacht | De toewijzing van service
 ---------|--------|------------
-ar bijvoorbeeld * | Vrouw | "Microsoft Server spraak tekst en spraak spraak (ar-bijvoorbeeld Hoda)"
+AR-bijvoorbeeld * | Vrouw | "Microsoft Server spraak tekst en spraak spraak (ar-bijvoorbeeld Hoda)"
 ar-SA | Man | "Microsoft Server spraak tekst en spraak, spraak (ar-SA, Naayf)"
 bg-BG | Man | "Microsoft Server tekst naar spraak stem (bg-BG, Ivan)"
 CA-ES | Vrouw | "Microsoft Server tekst naar spraak stem (ca-ES, HerenaRUS)"
@@ -200,11 +200,11 @@ cs-CZ | Man | "Microsoft Server spraak tekst en spraak spraak (cs-CZ, Jakub)"
 da-DK | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (da-DK, HelleRUS)"
 de-AT | Man | "Microsoft Server spraak tekst en spraak, spraak (de-AT, Michael)"
 de CH | Man | "Microsoft Server spraak tekst en spraak, spraak (de-h, Karsten)"
-de-DE | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (nl-nl, Hedda)"
+de-DE | Vrouw | "Micro soft server Speech Text to Speech Voice (de-DE, Hedda)"
 de-DE | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (nl-nl, HeddaRUS)"
-de-DE | Man | "Microsoft Server spraak tekst en spraak, spraak (nl-nl, Stefan, Apollo)"
+de-DE | Man | "Micro soft server Speech Text to Speech Voice (de-DE, Stefan, Apollo)"
 el GR | Man | "Microsoft Server spraak tekst en spraak, spraak (el-GR, Stefanos)"
-en-AU | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (en-AU, Catherine)"
+en-AU | Vrouw | "Micro soft server Speech Text to Speech Voice (en-AU, Catherine)"
 en-AU | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (en-AU, HayleyRUS)"
 NL-CA | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (en-CA, Linda)"
 NL-CA | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (en-CA, HeatherRUS)"
@@ -271,15 +271,15 @@ zh-TW | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (zh-TW, Yating,
 zh-TW | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (zh-TW, HanHanRUS)"
 zh-TW | Man | "Microsoft Server spraak tekst en spraak, spraak (zh-TW, Zhiwei, Apollo)"
 
- \* ar-bijvoorbeeld ondersteunt moderne Standard Arabisch (MSA).
+ \* AR-BIJV ondersteunt de moderne standaard Arabische (MSA).
 
 > [!NOTE]
-> Houd er rekening mee dat de vorige servicenamen **Microsoft Server spraak tekst en spraak spraak (cs-CZ, Vit)** en **Microsoft Server spraak tekst en spraak, spraak (en Internet Explorer, Shaun)** na 3/31 januari 2018 wordt afgeschaft de volgorde voor het optimaliseren van de Bing Speech-API-mogelijkheden. Werk uw code met de bijgewerkte namen.
+> Houd er rekening mee dat de vorige service namen van **micro soft server speech text to speech Voice (cs-cz, vit)** en **micro soft server Speech Text to speech Voice (en-IE, Shaun)** worden afgeschaft na 3/31/2018, om de Bing Speech-API te optimaliseren bieden. Werk uw code bij met de bijgewerkte namen.
 
-## <a name="TrouNSupport"></a>Problemen oplossen en ondersteuning
+## <a name="TrouNSupport"></a>Probleem oplossing en ondersteuning
 
-Plaats alle vragen en problemen met de [Bing Speech-Service](https://social.msdn.microsoft.com/Forums/en-US/home?forum=SpeechService) MSDN-forum. Meer informatie, zoals zijn onder andere:
+U kunt alle vragen en problemen naar het MSDN-forum van de [Bing Speech-Service](https://social.msdn.microsoft.com/Forums/en-US/home?forum=SpeechService) posten. Volledige details toevoegen, zoals:
 
-* Een voorbeeld van de volledige aanvraag-tekenreeks.
-* Indien van toepassing, meld u met de volledige uitvoer van een mislukte aanvragen, waaronder id's.
-* Het percentage aanvragen dat mislukken.
+* Een voor beeld van de volledige aanvraag reeks.
+* Indien van toepassing, de volledige uitvoer van een mislukte aanvraag, waaronder logboek-Id's.
+* Het percentage mislukte aanvragen.

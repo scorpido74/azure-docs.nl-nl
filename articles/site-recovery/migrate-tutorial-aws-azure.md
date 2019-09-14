@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1f5f2dc6babbca219f0efbb1d7013d4e6e3270e6
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 1533ceebcda15c45a71c04580c35432de4125ccd
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873301"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984987"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>AWS-VM’s (Amazon Web Services) migreren naar Azure
 
@@ -117,6 +117,7 @@ Selecteer op de pagina **Beveiligingsdoel** de volgende waarden:
 |---------|-----------|
 | Waar bevinden de machines zich? |Selecteer **On-premises**.|
 | Waarnaartoe wilt u de machines repliceren? |Selecteer **Naar Azure**.|
+| Voert u een migratie uit? | Selecteer **Ja**en schakel het selectie vakje naast de **underdstand in, maar ik wil door gaan met Azure site Recovery.**
 | Zijn de machines gevirtualiseerd? |Selecteer **Niet gevirtualiseerd/overig**.|
 
 Wanneer u gereed bent, selecteert u **OK** om naar de volgende sectie te gaan.

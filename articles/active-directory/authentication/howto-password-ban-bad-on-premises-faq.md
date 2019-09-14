@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ece7f93b5397db16e03c1eab1d2dc1e568113d9
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 82fe917f911be45d7f68662e956fe3bd14f92267
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879262"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959885"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>On-premises Veelgestelde vragen over Azure AD-wachtwoord beveiliging
 
@@ -77,6 +77,13 @@ Raadpleeg de volgende artikelen voor meer informatie:
 [Het geval voor de migratie van SYSVOL-replicatie naar DFSR](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
 
 [Het einde is nigh voor FRS](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
+
+Als het domein niet al gebruikmaakt van DFSR, moet u het migreren naar DFSR voordat u Azure AD-wachtwoord beveiliging installeert. Zie de volgende koppeling voor meer informatie:
+
+[Migratie handleiding voor SYSVOL-replicatie: FRS naar DSF-replicatie](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+
+> [!WARNING]
+> De Azure AD-agent software voor wachtwoord beveiliging wordt momenteel geïnstalleerd op domein controllers in domeinen die nog steeds gebruikmaken van FRS voor SYSVOL-replicatie, maar de software zal niet goed werken in deze omgeving. Bijkomende negatieve neven effecten omvatten afzonderlijke bestanden die niet worden gerepliceerd, en SYSVOL-herstel procedures die worden uitgevoerd, maar die niet op de achtergrond worden gerepliceerd. U moet uw domein zo snel mogelijk migreren naar het gebruik van DFSR en de implementatie van Azure AD-wachtwoord beveiliging blok keren. Toekomstige versies van de software worden automatisch uitgeschakeld wanneer ze worden uitgevoerd in een domein dat nog steeds FRS gebruikt.
 
 **V: Wat is de benodigde schijf ruimte voor de functie op de SYSVOL-share van het domein?**
 

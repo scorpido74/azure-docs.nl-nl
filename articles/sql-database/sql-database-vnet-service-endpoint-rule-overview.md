@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: d924f0eb89984fbe77f94eff553d00a25b4b7a3a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 485c79bab90295cf9af9ef1dbbc209d46931a485
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309621"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984940"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Service-eind punten en-regels voor virtuele netwerken gebruiken voor database servers
 
@@ -244,7 +244,7 @@ U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtu
 3. Stel het besturings element **toegang tot Azure-Services toestaan** in op uit.
 
     > [!IMPORTANT]
-    > Als u het besturings element instelt op aan, accepteert uw Azure SQL Database-Server communicatie vanuit elk subnet. Het is mogelijk dat het besturings element dat is ingesteld op aan, overmatig toegankelijk is vanuit het beveiligings oogpunt van de weer gave. Met de functie Microsoft Azure Virtual Network Service-eind punt, in combi natie met de regel functie voor virtuele netwerken van SQL Database, kan uw beveiligings surface area worden verminderd.
+    > Als u het besturings element hebt ingesteld op aan, accepteert uw Azure SQL Database-Server communicatie vanaf elk subnet binnen de grens van Azure, d.w.z. afkomstig van een van de IP-adressen die worden herkend als die binnen bereiken die zijn gedefinieerd voor Azure data centers. Het is mogelijk dat het besturings element dat is ingesteld op aan, overmatig toegankelijk is vanuit het beveiligings oogpunt van de weer gave. Met de functie Microsoft Azure Virtual Network Service-eind punt, in combi natie met de regel functie voor virtuele netwerken van SQL Database, kan uw beveiligings surface area worden verminderd.
 
 4. Klik in de sectie **virtuele netwerken** op het besturings element **+ bestaande toevoegen** .
 

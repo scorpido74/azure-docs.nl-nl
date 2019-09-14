@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: a7271eb6b8cbc8a117b5a8e75edfe02985ec3452
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43a32177280361bb0c2a433af0cb5dd3cfc6b9d3
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821536"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967590"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Kafka MirrorMaker gebruiken met Eventhubs voor Apache Kafka
 
@@ -85,7 +85,7 @@ Het configuratiebestand van de consument bijwerken `source-kafka.config`, waarin
 
 ##### <a name="source-kafkaconfig"></a>bron-kafka.config
 
-```xml
+```
 bootstrap.servers={SOURCE.KAFKA.IP.ADDRESS1}:{SOURCE.KAFKA.PORT1},{SOURCE.KAFKA.IP.ADDRESS2}:{SOURCE.KAFKA.PORT2},etc
 group.id=example-mirrormaker-group
 exclude.internal.topics=true
@@ -98,7 +98,7 @@ Nu de producent-configuratiebestand bijwerken `mirror-eventhub.config`, waarin s
 
 ##### <a name="mirror-eventhubconfig"></a>mirror-eventhub.config
 
-```xml
+```
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
 client.id=mirror_maker_producer
 
@@ -121,10 +121,10 @@ Om te controleren dat gebeurtenissen de Kafka-functionaliteit event hub worden b
 Alle gebeurtenissen verzonden naar de bron van Kafka-cluster worden ontvangen door zowel de Kafka-cluster met MirrorMaker uitgevoerd, en de gespiegelde Kafka event hub-service ingeschakeld. Met behulp van MirrorMaker en een Event Hubs Kafka-eindpunt, kunt u een bestaande Kafka-pijplijn met de beheerde service van Azure Event Hubs migreren zonder het bestaande cluster wijzigen of onderbreken van een doorlopende gegevensstroom.
 
 ## <a name="samples"></a>Voorbeelden
-Zie de volgende voorbeelden op GitHub:
+Bekijk de volgende voor beelden op GitHub:
 
-- [Voorbeeldcode voor deze zelfstudie op GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
-- [Azure Event Hubs Kafka MirrorMaker die worden uitgevoerd op Azure Container Instances](https://github.com/djrosanova/EventHubsMirrorMaker)
+- [Voorbeeld code voor deze zelf studie op GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
+- [Azure Event Hubs Kafka MirrorMaker uitgevoerd op een Azure-container exemplaar](https://github.com/djrosanova/EventHubsMirrorMaker)
 
 ## <a name="next-steps"></a>Volgende stappen
 

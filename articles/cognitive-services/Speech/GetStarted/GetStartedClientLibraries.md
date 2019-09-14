@@ -1,46 +1,46 @@
 ---
-title: Aan de slag met de Bing Speech-API met behulp van clientbibliotheken | Microsoft Docs
+title: Aan de slag met de Bing Speech Recognition API met behulp van client bibliotheken | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: De Bing Speech-clientbibliotheken in Microsoft Cognitive Services gebruiken voor het ontwikkelen van toepassingen die Converteer gesproken audio naar tekst.
+description: Gebruik de Bing Speech-client bibliotheken in Microsoft Cognitive Services om toepassingen te ontwikkelen die gesp roken audio naar tekst converteren.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 89eb18a2b4af76f6489442dc66ab12d0840e92c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ea0c9e7104b29456749c7f1af2a671b32a8fde2
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515233"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966852"
 ---
-# <a name="get-started-with-bing-speech-service-client-libraries"></a>Aan de slag met de Bing Speech-Service-clientbibliotheken
+# <a name="get-started-with-bing-speech-service-client-libraries"></a>Aan de slag met Bing Speech Service-client bibliotheken
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Bing Speech-Service biedt naast het maken van directe HTTP-aanvragen via een REST-API, ontwikkelaars en Speech clientbibliotheken in verschillende talen. De spraak-clientbibliotheken:
+Naast het maken van directe HTTP-aanvragen via een REST API, biedt Bing Speech-Service ontwikkel aars met Speech-client bibliotheken in verschillende talen. De speech client-bibliotheken:
 
-- Ondersteuning voor meer geavanceerde mogelijkheden van spraakherkenning, zoals tussenliggende resultaten in realtime, lang audiostream (maximaal 10 minuten) en continue herkenning.
-- Bieden een eenvoudige en idiomatisch API in de taal van uw voorkeur.
-- Communicatiedetails van laag niveau verbergen.
+- Biedt ondersteuning voor meer geavanceerde mogelijkheden in spraak herkenning, zoals tussenliggende resultaten in realtime, lange audio stroom (Maxi maal 10 minuten) en doorlopende herkenning.
+- Geef een eenvoudige en idiomatisch API op in de taal van uw voor keur.
+- De communicatie Details op laag niveau verbergen.
 
-Op dit moment zijn de volgende Bing Speech-clientbibliotheken beschikbaar:
+Momenteel zijn de volgende Bing Speech-client bibliotheken beschikbaar:
 
-- [C# bureaublad-bibliotheek](GetStartedCSharpDesktop.md)
-- [C#-servicebibliotheek](GetStartedCSharpServiceLibrary.md)
+- [C#Desktop bibliotheek](GetStartedCSharpDesktop.md)
+- [C#Service bibliotheek](GetStartedCSharpServiceLibrary.md)
 - [JavaScript-bibliotheek](GetStartedJSWebsockets.md)
-- [Java-clientbibliotheek voor Android](GetStartedJavaAndroid.md)
-- [Objective-C-bibliotheek voor iOS](Get-Started-ObjectiveC-iOS.md)
+- [Java-bibliotheek voor Android](GetStartedJavaAndroid.md)
+- [Doel-C-bibliotheek voor iOS](Get-Started-ObjectiveC-iOS.md)
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- De [voorbeelden](../samples.md) pagina biedt volledige voorbeelden voor het gebruik van spraak-clientbibliotheken.
-- Als u een clientbibliotheek die nog niet wordt ondersteund, kunt u uw eigen SDK kunt maken. Implementeer de [spraak WebSocket-protocol](../API-Reference-REST/websocketprotocol.md) op het platform en gebruik de taal van uw keuze.
+- De pagina met voor [beelden](../samples.md) bevat volledige voor beelden voor het gebruik van speech-client bibliotheken.
+- Als u een client bibliotheek nodig hebt die nog niet wordt ondersteund, kunt u uw eigen SDK maken. Implementeer het [Speech WebSocket-protocol](../API-Reference-REST/websocketprotocol.md) op het platform en gebruik de taal van uw keuze.
 
 ## <a name="license"></a>Licentie
 
-Alle Cognitive Services-SDK's en voorbeelden hebben een licentie voor de MIT-licentie. Zie voor meer informatie, [licentie](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md).
+Alle Cognitive Services Sdk's en voor beelden zijn gelicentieerd met de MIT-licentie. Zie [licentie](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md)voor meer informatie.

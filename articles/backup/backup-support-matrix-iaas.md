@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: da987b5e841824dc62f3b740cae2961de9d7b293
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 62f633b617abb52e1be4003f65cc537cc9ff2a25
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872903"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983777"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteunings matrix voor Azure VM-back-up
 U kunt de [Azure backup-service](backup-overview.md) gebruiken voor het maken van een back-up van on-premises machines en werk belastingen, en virtuele machines van Azure (vm's). Dit artikel bevat een overzicht van de ondersteunings instellingen en beperkingen bij het maken van back-ups van virtuele Azure-machines met Azure Backup.
@@ -180,7 +180,7 @@ Meerdere gereserveerde IP-adressen |    Ondersteund. <br/><br/> [Meer informatie
 Vm's met meerdere netwerk adapters  | Ondersteund. <br/><br/> [Meer informatie](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) over het herstellen van vm's met speciale netwerk instellingen.
 Vm's met open bare IP-adressen    | Ondersteund.<br/><br/> Een bestaand openbaar IP-adres koppelen aan de NIC, of een adres maken en dit koppelen aan de NIC nadat het terugzetten is voltooid.
 Netwerk beveiligings groep (NSG) op NIC/subnet. |   Ondersteund.
-Gereserveerd IP adres (statisch) | Wordt niet ondersteund.<br/><br/> U kunt geen back-up maken van een virtuele machine met een gereserveerd IP-adres en geen gedefinieerd eind punt.
+Vast IP-adres | Wordt niet ondersteund.<br/><br/> Er wordt een dynamisch IP-adres toegewezen aan een nieuwe virtuele machine die is gemaakt op basis van een herstel punt.<br/><br/> Voor klassieke Vm's kunt u geen back-up maken van een virtuele machine met een gereserveerd IP-adres en geen gedefinieerd eind punt.
 Dynamisch IP-adres |    Ondersteund.<br/><br/> Als de NIC op de bron-VM gebruikmaakt van dynamische IP-adres Sering, wordt deze ook gebruikt door de NIC op de herstelde VM.
 Azure Traffic Manager   | Ondersteund.<br/><br/>Als de back-up van de virtuele machine is Traffic Manager, voegt u de herstelde VM hand matig toe aan hetzelfde Traffic Manager exemplaar.
 Azure DNS | Ondersteund.

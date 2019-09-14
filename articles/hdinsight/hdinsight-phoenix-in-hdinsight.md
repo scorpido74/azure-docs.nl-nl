@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: ashishth
-ms.openlocfilehash: 8ba27261f5ba505c37ef4cc82d06b314471440bc
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 1e7059d30c5d480948eb681b477239151020b266
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811893"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961842"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix in azure HDInsight
 
@@ -129,11 +129,11 @@ An HDInsight HBase-cluster bevat de [Ambari-gebruikers interface](hdinsight-hado
 
 2. Selecteer **HBase** in de lijst met Services in het menu aan de linkerkant en selecteer vervolgens het tabblad **configuratie** .
 
-    ![Ambari HBase config](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config.png)
+    ![Ambari HBase config](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
 
 3. Zoek de sectie SQL-configuratie in **Breda** om Phoenix in of uit te scha kelen en de querytime-out in te stellen.
 
-    ![Ambari Phoenix SQL-configuratie sectie](./media/hdinsight-phoenix-in-hdinsight/ambari-phoenix.png)
+    ![Ambari Phoenix SQL-configuratie sectie](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
 
 ## <a name="see-also"></a>Zie ook
 

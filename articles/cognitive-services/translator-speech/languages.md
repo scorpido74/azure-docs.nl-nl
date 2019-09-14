@@ -1,33 +1,33 @@
 ---
-title: Ondersteunde talen - Translator Speech-API
+title: Ondersteunde talen-Translator Speech-API
 titlesuffix: Azure Cognitive Services
-description: Bekijk de talen die worden ondersteund door de Translator Speech-API.
+description: Talen weer geven die worden ondersteund door de Translator Speech-API.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ed8f693e4dc0344a0117ae9d6992b925992ef0c4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2f5b48f2dbc2d109c03613676c6a119fd971603b
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446917"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965445"
 ---
 # <a name="languages-supported-by-the-translator-speech-api"></a>Talen die worden ondersteund door de Translator Speech-API
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
-De volgende talen worden ondersteund voor spraakomzetting. Is beschikbaar als beide talen worden ondersteund voor spraakomzetting, spraak-naar-spraak of spraak naar tekst. Als de doel-taal voor vertaling van gesproken tekst niet wordt ondersteund, vindt u alleen spraak naar tekst.
+De volgende talen worden ondersteund voor spraak omzetting. Als beide talen worden ondersteund voor spraak omzetting, is spraak op spraak of spraak op tekst beschikbaar. Als de doel taal niet wordt ondersteund voor spraak omzetting, is alleen spraak naar tekst vertaling beschikbaar.
 
 | Taal voor spraakherkenning    |
 |:----------- |
 | Arabisch (moderne Standard)      |
-| Portugees (Brazilië)     |
+| Braziliaans-Portugees     |
 | Chinees (Mandarijn)      |
 | Nederlands      |
 | Frans      |
@@ -37,7 +37,7 @@ De volgende talen worden ondersteund voor spraakomzetting. Is beschikbaar als be
 | Russisch      |
 | Spaans      |
 
-De Translator Speech-API ondersteunt de volgende talen als een doeltaal voor spraak-naar-tekst.
+De Translator Speech-API biedt ondersteuning voor de volgende talen als doel taal voor spraak naar tekst vertaling.
 
 | Taal van de tekst    | Taalcode |
 |:----------- |:-------------:|
@@ -105,16 +105,16 @@ De Translator Speech-API ondersteunt de volgende talen als een doeltaal voor spr
 | Welsh      | `cy`          |
 | Yucatec Maya      | `yua`          |
 
-## <a name="access-the-list-programmatically"></a>Via een programma toegang krijgen tot de lijst
+## <a name="access-the-list-programmatically"></a>Toegang tot de lijst via een programma
 
-U kunt toegang tot de lijst met ondersteunde talen programmatisch met behulp van de resource talen. De lijst bevat de taalcode, evenals de naam van de taal in het Engels of een andere ondersteunde taal. Deze lijst wordt automatisch bijgewerkt door de Translator Speech-service zodra nieuwe talen beschikbaar.
+U kunt de lijst met ondersteunde talen programmatisch openen met behulp van de resource. De lijst bevat de taal code en de taal naam in het Engels, of een andere ondersteunde taal. Deze lijst wordt automatisch bijgewerkt door de Translator Speech-Service wanneer er nieuwe talen beschikbaar zijn.
 
-De resource talen retourneert de lijst met ondersteunde talen voor spraak-, tekst- en tekst naar spraak. De resource talen vereist geen verificatie.
+De resource taal retourneert de lijst met ondersteunde talen voor spraak, tekst en tekst naar spraak. Voor de taal resource is geen verificatie vereist.
 
-[Ga naar de API-verwijzing voor het uitproberen van de methode talen](languages-reference.md)
+[Ga naar de API-verwijzing voor het uitproberen van de talen methode](languages-reference.md)
 
-## <a name="access-the-list-on-the-microsoft-translator-website"></a>Toegang tot de lijst op de website van Microsoft Translator
+## <a name="access-the-list-on-the-microsoft-translator-website"></a>Toegang tot de lijst op de website van micro soft Translator
 
-Voor een kort overzicht van de talen ziet u de website van Microsoft Translator-alle talen die worden ondersteund door de Translator tekst en spraak-API's. Deze lijst bevat geen developer-specifieke informatie zoals taalcodes.
+Voor een beknopt overzicht van de talen bevat de micro soft Translator-website alle talen die worden ondersteund door de Translator Text-en spraak-Api's. Deze lijst bevat geen informatie die specifiek is voor de ontwikkelaar, zoals taal codes.
 
-[Zie de lijst met talen](https://www.microsoft.com/translator/languages.aspx)
+[Bekijk de lijst met talen](https://www.microsoft.com/translator/languages.aspx)

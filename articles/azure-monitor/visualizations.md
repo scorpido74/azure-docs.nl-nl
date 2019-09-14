@@ -1,6 +1,6 @@
 ---
-title: Gegevens weergeven vanuit Azure Monitor | Microsoft Docs
-description: Geeft een overzicht van de beschikbare methoden te visualiseren van metrische gegevens en gegevens die zijn opgeslagen in Azure Monitor te melden.
+title: Gegevens visualiseren van Azure Monitor | Microsoft Docs
+description: Hierin wordt een overzicht gegeven van de beschik bare methoden voor het visualiseren van metrische gegevens en logboeken die zijn opgeslagen in Azure Monitor.
 author: bwren
 manager: carmonm
 editor: ''
@@ -12,135 +12,135 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 4e9bb9bd86e22efa5dd514e742481911b09c5e17
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6390384220830d473b56f4082a98dfaa8aa686d1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61088225"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984191"
 ---
-# <a name="visualizing-data-from-azure-monitor"></a>Gegevens weergeven vanuit Azure Monitor
-In dit artikel bevat een samenvatting van de beschikbare methoden voor het visualiseren van logboek- en metrische gegevens die zijn opgeslagen in Azure Monitor.
+# <a name="visualizing-data-from-azure-monitor"></a>Gegevens visualiseren van Azure Monitor
+Dit artikel bevat een overzicht van de beschik bare methoden voor het visualiseren van logboek-en metrische gegevens die zijn opgeslagen in Azure Monitor.
 
-Visualisaties, zoals diagrammen en grafieken kunt u bij het analyseren van uw gegevens om te zoomen op problemen en patronen te identificeren. Afhankelijk van het hulpprogramma die u gebruikt, kan u ook de optie voor visualisaties delen met andere gebruikers binnen en buiten uw organisatie hebt.
+Visualisaties zoals grafieken en grafieken kunnen u helpen bij het analyseren van uw bewakings gegevens om in te zoomen op problemen en patronen te identificeren. Afhankelijk van het hulp programma dat u gebruikt, hebt u mogelijk ook de mogelijkheid om visualisaties te delen met andere gebruikers binnen en buiten uw organisatie.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="azure-dashboards"></a>Azure-Dashboards
-[Azure-dashboards](../azure-portal/azure-portal-dashboards.md) zijn van de primaire dashboarding-technologie voor Azure. Ze zijn vooral nuttig in een enkel glazen verstrekken over uw Azure-infrastructuur en services zodat u snel belangrijke problemen te identificeren.
+## <a name="azure-dashboards"></a>Azure-Dash boards
+[Azure-Dash boards](../azure-portal/azure-portal-dashboards.md) zijn de primaire Dashboard technologie voor Azure. Ze zijn vooral handig voor het leveren van een enkel glas venster over uw Azure-infra structuur en-services, zodat u snel belang rijke problemen kunt identificeren.
 
 ![Dashboard](media/visualizations/dashboard.png)
 
 ### <a name="advantages"></a>Voordelen
-- Diepe integratie in Azure. Visualisaties kunnen worden vastgemaakt aan dashboards vanuit meerdere Azure pagina's, met inbegrip van Metrics Explorer, Log Analytics en Application Insights.
-- Biedt ondersteuning voor metrische gegevens en Logboeken.
-- Combineer gegevens uit meerdere bronnen, met inbegrip van de uitvoer van [metrics explorer](platform/metrics-charts.md), [query's bijgehouden](log-query/log-query-overview.md), en [toegewezen](app/app-map.md) en beschikbaarheid in Application Insights.
-- De optie voor persoonlijke of gedeelde dashboards. Geïntegreerd met Azure [verificatie op basis van rollen (RBAC)](../role-based-access-control/overview.md).
-- Automatische vernieuwing. Metrische gegevens over Gegevensvernieuwing is afhankelijk van tijdsbereik met ten minste vijf minuten. Logboeken vernieuwen op één minuut.
-- Constructorreeks mag metrische gegevens over dashboards met tijdstempel en aangepaste parameters.
-- Opties voor flexibele lay-out.
+- Diep gaande integratie in Azure. Visualisaties kunnen worden vastgemaakt aan dash boards van meerdere Azure-pagina's, waaronder Metrics Explorer, Log Analytics en Application Insights.
+- Ondersteunt metrische gegevens en Logboeken.
+- Combi neer gegevens uit meerdere bronnen, inclusief uitvoer van [Metrics Explorer](platform/metrics-charts.md), [logboek query's](log-query/log-query-overview.md)en [kaarten](app/app-map.md) en beschik baarheid in Application Insights.
+- Optie voor persoonlijke of gedeelde Dash boards. Geïntegreerd met Azure [Role Based Authentication (RBAC)](../role-based-access-control/overview.md).
+- Automatisch vernieuwen. Het vernieuwen van metrische gegevens is afhankelijk van het tijds bereik met mini maal vijf minuten. Logboeken worden elk uur vernieuwd, met een optie voor hand matige vernieuwing op aanvraag door te klikken op het pictogram Vernieuwen op een bepaalde visualisatie of door het volledige dash board te vernieuwen.
+- Parametrized metrische Dash boards met tijds tempel en aangepaste para meters.
+- Flexibele indelings opties.
 - Modus volledig scherm.
 
 
 ### <a name="limitations"></a>Beperkingen
-- Beperkte controle over log visualisaties met biedt geen ondersteuning voor gegevenstabellen. Totaal aantal gegevensreeksen is beperkt tot 10 met verdere gegevensreeks gegroepeerd onder een _andere_ bucket.
-- Er zijn geen aangepaste parameters ondersteuning voor logaritmische grafieken.
-- Logaritmische grafieken zijn beperkt tot de afgelopen 30 dagen.
-- Logaritmische grafieken kunnen alleen worden vastgemaakt aan gedeelde dashboards.
-- Er is geen interactiviteit van de dashboardgegevens.
-- Beperkte contextuele inzoomen.
+- Beperkte controle over logboek visualisaties zonder ondersteuning voor gegevens tabellen. Het totale aantal gegevens reeksen is beperkt tot 10 met verdere gegevens reeksen die zijn gegroepeerd onder een _andere_ Bucket.
+- Er zijn geen aangepaste parameter ondersteuning voor logboek grafieken.
+- Logboek grafieken zijn beperkt tot de afgelopen 30 dagen.
+- Logboek grafieken kunnen alleen worden vastgemaakt aan gedeelde Dash boards.
+- Geen interactiviteit met Dashboard gegevens.
+- Beperkt context-inzoomen.
 
-## <a name="azure-monitor-views"></a>Azure Monitor-weergaven
-[Weergaven in Azure Monitor](platform/view-designer.md) kunt u aangepaste visualisaties maken met logboekgegevens. Ze worden gebruikt door [bewakingsoplossingen](insights/solutions.md) om de gegevens die zij verzamelen te presenteren.
+## <a name="azure-monitor-views"></a>Azure Monitor weergaven
+Met [weer gaven in azure monitor](platform/view-designer.md) kunt u aangepaste visualisaties met logboek gegevens maken. Deze worden gebruikt door [bewakings oplossingen](insights/solutions.md) om de verzamelde gegevens te presen teren.
 
 ![Weergave](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Voordelen
-- Uitgebreide visualisaties voor logboekgegevens.
-- Exporteren en importeren van weergaven deze overbrengen naar andere resourcegroepen en abonnementen.
-- Integreert in model voor het beheren van Azure Monitor met werkruimten en bewakingsoplossingen.
-- [Filters](platform/view-designer-filters.md) voor aangepaste parameters.
-- Interactief, biedt ondersteuning voor meerdere niveaus drill-in (weergave die in een andere weergave ingezoomd)
+- Uitgebreide visualisaties voor logboek gegevens.
+- Weer gaven exporteren en importeren om ze over te dragen naar andere resource groepen en-abonnementen.
+- Kan worden geïntegreerd in Azure Monitor-beheer model met werk ruimten en bewakings oplossingen.
+- [Filters](platform/view-designer-filters.md) voor aangepaste para meters.
+- Interactief, ondersteunt inzoomen op meerdere niveaus (weer gave van inzoomen in een andere weer gave)
 
 ### <a name="limitations"></a>Beperkingen
-- Ondersteunt Logboeken, maar geen metrische gegevens.
-- Er zijn geen persoonlijke weergaven. Beschikbaar voor alle gebruikers met toegang tot de werkruimte.
-- Er is geen automatische vernieuwing.
-- Beperkte outopties voor lay.
-- Geen ondersteuning voor het uitvoeren van query's op meerdere werkruimten of Application Insights-toepassingen.
-- Query's worden in Antwoordgrootte beperkt tot 8MB en query uitvoeringstijd van 110 seconden.
+- Ondersteunt logboeken maar geen metrische gegevens.
+- Geen persoonlijke weer gaven. Beschikbaar voor alle gebruikers met toegang tot de werk ruimte.
+- Geen automatische vernieuwing.
+- Beperkte indelings opties.
+- Geen ondersteuning voor het uitvoeren van query's in meerdere werk ruimten of Application Insights toepassingen.
+- Query's zijn beperkt tot de antwoord grootte tot 8 MB en de uitvoer tijd van de query van 110 seconden.
 
 
-## <a name="workbooks"></a>Werkmappen
-[Werkmappen](../azure-monitor/app/usage-workbooks.md) interactieve documenten die inzicht in uw gegevens, onderzoek en samenwerking binnen het team bieden. Specifieke voorbeelden waarin werkmappen nuttig zijn zijn voor probleemoplossing handleidingen en postmortem incident.
+## <a name="workbooks"></a>Workbooks
+[Werkmappen](../azure-monitor/app/usage-workbooks.md) zijn interactieve documenten die diep inzicht geven in uw gegevens, onderzoek en samen werking binnen het team. Specifieke voor beelden waarin werkmappen handig zijn, zijn probleemoplossings richtlijnen en incident postmortem.
 
 ![Werkmap](media/visualizations/workbook.png)
 
 ### <a name="advantages"></a>Voordelen
-- Biedt ondersteuning voor metrische gegevens en Logboeken.
-- Ondersteunt parameters het inschakelen van interactieve rapporten waar dynamisch selecteren van een element in een tabel wordt bijgewerkt gekoppeld grafieken en visualisaties.
+- Ondersteunt metrische gegevens en Logboeken.
+- Biedt ondersteuning voor para meters die interactieve rapporten inschakelen waarbij een element in een tabel wordt geselecteerd, worden gekoppelde grafieken en visualisaties dynamisch bijgewerkt.
 - Document-achtige stroom.
-- De optie voor persoonlijke of gedeelde werkmappen.
-- Eenvoudige en gezamenlijke-vriendelijke ervaring.
-- Sjablonen ondersteunen een galerie met openbare GitHub op basis van sjablonen.
+- Optie voor persoonlijke of gedeelde werkmappen.
+- Eenvoudige, gebruiks vriendelijke ontwerp ervaring.
+- Sjablonen ondersteunen galerie met open bare GitHub-sjablonen.
 
 ### <a name="limitations"></a>Beperkingen
-- Er is geen automatische vernieuwing.
-- Er is geen compacte indeling, zoals dashboards, waardoor werkmappen minder nuttig zijn als een enkel glazen. Bedoeld informatie voor het leveren van meer inzicht te krijgen.
+- Geen automatische vernieuwing.
+- Geen compacte indeling zoals Dash boards, waardoor werkmappen minder nuttig zijn als één glas venster. Meer bedoeld voor meer inzicht.
 
 
 ## <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) is vooral handig voor het maken van zakelijke dashboards en rapporten, evenals rapporten op de lange termijn KPI-trends analyseren. U kunt [importeren van de resultaten van een query voor](platform/powerbi.md) naar een Power BI-gegevensset, zodat u van de functies profiteren kunt, zoals het combineren van gegevens uit verschillende bronnen en delen van rapporten op het web en mobiele apparaten.
+[Power bi](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) is vooral handig voor het maken van zakelijke Dash boards en rapporten, evenals rapporten waarmee kpi's trends op lange termijn worden geanalyseerd. U kunt [de resultaten van een logboek query importeren](platform/powerbi.md) in een Power bi-gegevensset, zodat u kunt profiteren van de functies, zoals het combi neren van gegevens uit verschillende bronnen en het delen van rapporten op de web-en mobiele apparaten.
 
 ![Power BI](media/visualizations/power-bi.png)
 
 ### <a name="advantages"></a>Voordelen
 - Uitgebreide visualisaties.
-- Uitgebreide interactieve inclusief in te zoomen en kruislings filteren.
+- Uitgebreide interactiviteit, inclusief inzoomen en kruislings filteren.
 - Eenvoudig te delen binnen uw organisatie.
-- Integratie met andere gegevens van meerdere gegevensbronnen.
-- Betere prestaties met resultaten in de cache opgeslagen in een kubus.
+- Integratie met andere gegevens uit meerdere gegevens bronnen.
+- Betere prestaties met de resultaten in de cache van een kubus.
 
 
 ### <a name="limitations"></a>Beperkingen
-- Ondersteunt Logboeken, maar geen metrische gegevens.
-- Geen integratie van Azure. Dashboards en -modellen via Azure Resource Manager kan niet beheren.
-- De resultaten van query moeten worden geïmporteerd in Power BI-model om te configureren. Beperking van de grootte en vernieuwen.
-- Beperkte gegevens vernieuwen van acht keer per dag.
+- Ondersteunt logboeken maar geen metrische gegevens.
+- Geen Azure-integratie. Kan geen Dash boards en modellen beheren via Azure Resource Manager.
+- Query resultaten moeten worden geïmporteerd in Power BI model om te configureren. Beperking van de resultaat grootte en het vernieuwen.
+- Beperkte gegevens vernieuwing van acht keer per dag.
 
 
 ## <a name="grafana"></a>Grafana
-[Grafana](https://grafana.com/) is een open platform waarmee werkt uitstekend in operationele dashboards. Dit is vooral handig voor het detecteren en isoleren en operationele incidenten beoordelen. U kunt toevoegen [Grafana Azure Monitor-gegevensbron invoegtoepassing](platform/grafana-plugin.md) aan uw Azure-abonnement om uw metrische gegevens van Azure-gegevens visualiseren.
+[Grafana](https://grafana.com/) is een open platform dat Excel in operationele Dash boards bevat. Dit is met name handig voor het detecteren en isoleren en uitsorteren van operationele incidenten. U kunt [Grafana Azure monitor gegevens bron-invoeg toepassing](platform/grafana-plugin.md) toevoegen aan uw Azure-abonnement om uw Azure-metrische gegevens te visualiseren.
 
 ![Grafana](media/visualizations/grafana.png)
 
 ### <a name="advantages"></a>Voordelen
 - Uitgebreide visualisaties.
-- Rijk ecosysteem van gegevensbronnen.
-- Gegevens met inbegrip van interactiviteit inzoomen.
-- Biedt ondersteuning voor parameters.
+- Uitgebreid ecosysteem van gegevens bronnen.
+- Gegevens interactiviteit, inclusief inzoomen.
+- Ondersteunt para meters.
 
 ### <a name="limitations"></a>Beperkingen
-- Geen integratie van Azure. Dashboards en -modellen via Azure Resource Manager kan niet beheren.
-- Kosten voor de ondersteuning voor Grafana Cloud extra Grafana infrastructuur of extra kosten.
+- Geen Azure-integratie. Kan geen Dash boards en modellen beheren via Azure Resource Manager.
+- Kosten ter ondersteuning van extra Grafana-infra structuur of extra kosten voor Grafana-Cloud.
 
 
-## <a name="build-your-own-custom-application"></a>Bouw uw eigen aangepaste toepassing
-U kunt gegevens in Logboeken en metrische gegevens in Azure Monitor openen via hun API met een willekeurige REST-client, waarmee u uw eigen aangepaste websites en toepassingen kunt maken.
+## <a name="build-your-own-custom-application"></a>Uw eigen aangepaste toepassing bouwen
+U kunt toegang krijgen tot gegevens in logboek-en metrische gegevens in Azure Monitor via hun API met behulp van elke REST-client, waarmee u uw eigen aangepaste websites en toepassingen kunt bouwen.
 
 ### <a name="advantages"></a>Voordelen
-- Volledige flexibiliteit in de gebruikersinterface, visualisatie, interactiviteit en functies.
-- Combineer metrische gegevens en logboekgegevens aan andere gegevensbronnen.
+- Volledige flexibiliteit in de gebruikers interface, visualisatie, interactiviteit en functies.
+- Metrische gegevens combi neren en gegevens in een logboek vastleggen met andere bronnen.
 
 ### <a name="disadvantages"></a>Nadelen
-- Belangrijke technische werk dat nodig is.
+- Aanzienlijke technische inspanning vereist.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over de [gegevens verzameld door Azure Monitor](platform/data-platform.md).
-- Meer informatie over [Azure-dashboards](../azure-portal/azure-portal-dashboards.md).
-- Meer informatie over [weergaven in Azure Monitor](platform/view-designer.md).
+- Meer informatie over de [gegevens die worden verzameld door Azure monitor](platform/data-platform.md).
+- Meer informatie over [Azure-Dash boards](../azure-portal/azure-portal-dashboards.md).
+- Meer informatie over [weer gaven in azure monitor](platform/view-designer.md).
 - Meer informatie over [werkmappen](../azure-monitor/app/usage-workbooks.md).
-- Meer informatie over [logboekgegevens importeren in Power BI](../azure-monitor/platform/powerbi.md).
-- Meer informatie over de [Grafana Azure Monitor-gegevensbron invoegtoepassing](../azure-monitor/platform/grafana-plugin.md).
+- Meer informatie over het [importeren van logboek gegevens in Power bi](../azure-monitor/platform/powerbi.md).
+- Meer informatie over de [Grafana Azure monitor-invoeg toepassing voor gegevens bronnen](../azure-monitor/platform/grafana-plugin.md).
 

@@ -4,14 +4,14 @@ description: Hierin worden de structuur en eigenschappen van Azure Resource Mana
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: d396b6b48687e451396849cc256c25f847a219cf
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 4a5c1a99911c31f539d4f55adefb2c5f06243dd0
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306845"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984100"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Inzicht in de structuur en syntaxis van Azure Resource Manager sjablonen
 
@@ -84,6 +84,8 @@ De beschik bare eigenschappen voor een para meter zijn:
 | Lengte |Nee |De maximale lengte van de para meters voor teken reeksen, beveiligde teken reeksen en matrix type is inclusief. |
 | description |Nee |Beschrijving van de para meter die wordt weer gegeven voor gebruikers via de portal. Zie [opmerkingen in sjablonen](#comments)voor meer informatie. |
 
+Zie [para meters in azure Resource Manager Templates](template-parameters.md)voor voor beelden van het gebruik van para meters.
+
 ## <a name="variables"></a>Variabelen
 
 In de sectie variabelen kunt u waarden maken die in de hele sjabloon kunnen worden gebruikt. U hoeft geen variabelen te definiëren, maar ze vereenvoudigen uw sjabloon vaak door complexe expressies te reduceren.
@@ -116,6 +118,8 @@ In het volgende voor beeld ziet u de beschik bare opties voor het definiëren va
 ```
 
 Zie voor meer informatie `copy` over het gebruik van om verschillende waarden voor een variabele te maken de [variabele iteratie](resource-group-create-multiple.md#variable-iteration).
+
+Zie [variabelen in azure Resource Manager sjabloon](template-variables.md)voor voor beelden van het gebruik van variabelen.
 
 ## <a name="functions"></a>Functies
 
@@ -159,6 +163,8 @@ Bij het definiëren van een gebruikers functie gelden enkele beperkingen:
 | para meter-waarde |Nee |Type parameter waarde. De toegestane typen en waarden zijn **String**, **securestring**, **int**, **BOOL**, **object**, **secureObject**en **array**. |
 | uitvoer type |Ja |Type van de uitvoerwaarde. Uitvoer waarden ondersteunen dezelfde typen als de invoer parameters van de functie. |
 | uitvoer waarde |Ja |De taal expressie voor de sjabloon die wordt geëvalueerd en geretourneerd door de functie. |
+
+Zie door de [gebruiker gedefinieerde functies in azure Resource Manager sjabloon](template-user-defined-functions.md)voor voor beelden van het gebruik van aangepaste functies.
 
 ## <a name="resources"></a>Resources
 
@@ -228,12 +234,12 @@ U definieert resources met de volgende structuur:
 | name |Ja |Naam van de resource. De naam moet volgen op de URI-onderdeel beperkingen die zijn gedefinieerd in RFC3986. Azure-Services die de resource naam beschikbaar maken voor externe partijen, valideren de naam om ervoor te zorgen dat het geen poging is om een andere identiteit te vervalsen. Voor een onderliggende resource is de notatie van de naam afhankelijk van of deze is genest binnen de bovenliggende resource of buiten de bovenliggende resource is gedefinieerd. Zie [naam en type voor onderliggende resources instellen](child-resource-name-type.md). |
 | location |Varieert |Ondersteunde geo-locaties van de gegeven bron. U kunt een van de beschik bare locaties selecteren, maar normaal gesp roken is het een goed idee om er een te kiezen die zich dicht bij uw gebruikers bevindt. Doorgaans is het zinvol om resources te plaatsen die met elkaar in dezelfde regio communiceren. Voor de meeste resource typen is een locatie vereist, maar sommige typen (zoals een roltoewijzing) vereisen geen locatie. Zie [resource locatie instellen](resource-location.md). |
 | codes |Nee |Tags die zijn gekoppeld aan de resource. Pas Tags toe om de resources in uw abonnement logisch te organiseren. |
-| aantekeningen |Nee |Uw notities voor het documenteren van de resources in uw sjabloon. Zie [opmerkingen in sjablonen](resource-group-authoring-templates.md#comments)voor meer informatie. |
+| Aantekeningen |Nee |Uw notities voor het documenteren van de resources in uw sjabloon. Zie [opmerkingen in sjablonen](resource-group-authoring-templates.md#comments)voor meer informatie. |
 | kopiëren |Nee |Als er meer dan één exemplaar nodig is, wordt het aantal resources dat moet worden gemaakt. De standaard modus is parallel. Geef de seriële modus op als u niet wilt dat alle of de resources op hetzelfde moment worden geïmplementeerd. Zie [meerdere exemplaren van resources maken in azure Resource Manager](resource-group-create-multiple.md)voor meer informatie. |
 | dependsOn |Nee |Resources die moeten worden geïmplementeerd voordat deze resource wordt geïmplementeerd. Resource Manager evalueert de afhankelijkheden tussen resources en implementeert deze in de juiste volg orde. Wanneer resources niet afhankelijk zijn van elkaar, worden ze parallel geïmplementeerd. De waarde kan een door komma's gescheiden lijst zijn van een resource naam of unieke id van een resource. Alleen een lijst met resources die in deze sjabloon zijn geïmplementeerd. Resources die niet in deze sjabloon zijn gedefinieerd, moeten al bestaan. Vermijd overbodige afhankelijkheden omdat deze uw implementatie kunnen vertragen en circulaire afhankelijkheden kan maken. Zie [afhankelijkheden definiëren in azure Resource Manager sjablonen](resource-group-define-dependencies.md)voor hulp bij het instellen van afhankelijkheden. |
 | properties |Nee |Resource-specifieke configuratie-instellingen. De waarden voor de eigenschappen zijn gelijk aan de waarden die u opgeeft in de hoofd tekst van de aanvraag voor de REST API bewerking (PUT-methode) om de resource te maken. U kunt ook een Kopieer matrix opgeven om meerdere exemplaren van een eigenschap te maken. Zie [Naslag informatie over sjablonen](/azure/templates/)om beschik bare waarden te bepalen. |
 | sku | Nee | Sommige resources staan waarden toe die de te implementeren SKU definiëren. U kunt bijvoorbeeld het type redundantie voor een opslag account opgeven. |
-| type | Nee | Bij sommige resources is een waarde toegestaan die het type resource definieert dat u implementeert. U kunt bijvoorbeeld het type Cosmos DB opgeven dat u wilt maken. |
+| Type | Nee | Bij sommige resources is een waarde toegestaan die het type resource definieert dat u implementeert. U kunt bijvoorbeeld het type Cosmos DB opgeven dat u wilt maken. |
 | Fonds | Nee | In sommige resources zijn waarden toegestaan waarmee het plan wordt gedefinieerd dat moet worden geïmplementeerd. U kunt bijvoorbeeld de Marketplace-installatie kopie voor een virtuele machine opgeven. | 
 | bronnen |Nee |Onderliggende bronnen die afhankelijk zijn van de resource die wordt gedefinieerd. Alleen resource typen opgeven die zijn toegestaan voor het schema van de bovenliggende resource. De afhankelijkheid van de bovenliggende resource is niet geïmpliceerd. Deze afhankelijkheid moet expliciet worden gedefinieerd. Zie [naam en type voor onderliggende resources instellen](child-resource-name-type.md). |
 
@@ -259,6 +265,8 @@ Het volgende voorbeeld ziet u de structuur van de uitvoerdefinitie van een:
 | condition |Nee | Booleaanse waarde die aangeeft of deze uitvoer waarde wordt geretourneerd. Wanneer `true`is de waarde opgenomen in de uitvoer voor de implementatie. Wanneer `false`wordt de uitvoer waarde overgeslagen voor deze implementatie. Wanneer deze niet is opgegeven, is `true`de standaard waarde. |
 | Type |Ja |Type van de uitvoerwaarde. Uitvoerwaarden ondersteuning van de dezelfde typen als sjabloon invoerparameters die zijn opgegeven. Als u **securestring** opgeeft voor het uitvoer type, wordt de waarde niet weer gegeven in de implementatie geschiedenis en kan deze niet worden opgehaald uit een andere sjabloon. Als u een geheime waarde in meer dan één sjabloon wilt gebruiken, slaat u het geheim op in een Key Vault en verwijst u naar het geheim in het parameter bestand. Zie [Azure Key Vault gebruiken om de waarde van een beveiligde para meter door te geven tijdens de implementatie](resource-manager-keyvault-parameter.md)voor meer informatie. |
 | value |Ja |De sjabloontaalexpressie dat wordt geëvalueerd en geretourneerd als de uitvoerwaarde. |
+
+Zie [uitvoer in azure Resource Manager sjabloon](template-outputs.md)voor voor beelden van het gebruik van uitvoer.
 
 <a id="comments" />
 

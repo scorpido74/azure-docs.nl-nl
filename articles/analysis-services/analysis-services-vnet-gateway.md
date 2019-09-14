@@ -1,41 +1,43 @@
 ---
-title: Gebruik On-premises gegevensgateway voor gegevensbronnen voor Azure Virtual Network | Microsoft Docs
-description: Informatie over het configureren van een server voor het gebruik van een gateway voor gegevensbronnen op VNet.
+title: On-premises gegevens gateway gebruiken voor Azure Virtual Network gegevens bronnen | Microsoft Docs
+description: Meer informatie over het configureren van een server voor het gebruik van een gateway voor gegevens bronnen op VNet.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7e97bd50e3d37218e0f88f722387fd1a53167e27
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 675d8ecd3d6a3310a9b102df37df18bed02df3de
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60534061"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958808"
 ---
-# <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Gateway gebruiken voor gegevensbronnen op een Azure Virtual Network (VNet)
+# <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Gateway gebruiken voor gegevens bronnen op een Azure Virtual Network (VNet)
 
-In dit artikel beschrijft de **AlwaysUseGateway** eigenschap van de server voor gebruik bij gegevensbronnen zijn op een [Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md).
+In dit artikel wordt de **AlwaysUseGateway** -Server eigenschap voor het gebruik van gegevens bronnen op een [Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md)beschreven.
 
-## <a name="server-access-to-vnet-data-sources"></a>Toegang tot de server met VNet-gegevensbronnen
+## <a name="server-access-to-vnet-data-sources"></a>Server toegang tot VNet-gegevens bronnen
 
-Uw gegevensbronnen zijn toegankelijk via een VNet, uw Azure Analysis Services-server moet verbinding maken met deze gegevensbronnen alsof ze zich on-premises, in uw eigen omgeving. U kunt configureren dat de **AlwaysUseGateway** eigenschap van de server om op te geven van de server voor toegang tot alle gegevens van de gegevensbron via een [On-premises gateway](analysis-services-gateway.md). 
+Als uw gegevens bronnen toegankelijk zijn via een VNet, moet uw Azure Analysis Services-server verbinding maken met deze gegevens bronnen alsof ze on-premises zijn, in uw eigen omgeving. U kunt de **AlwaysUseGateway** -Server eigenschap configureren om de server op te geven voor toegang tot alle gegevens bronnen via een [on-premises gateway](analysis-services-gateway.md). 
+
+Azure SQL Database beheerde exemplaar gegevens bronnen worden uitgevoerd in azure VNet met een privé IP-adres. Als het open bare eind punt is ingeschakeld voor het exemplaar, is een gateway niet vereist. Als het open bare eind punt niet is ingeschakeld, is een on-premises gegevens gateway vereist en moet de eigenschap AlwaysUseGateway worden ingesteld op True.
 
 > [!NOTE]
-> Deze eigenschap is effectieve alleen wanneer een [On-premises gegevensgateway](analysis-services-gateway.md) is geïnstalleerd en geconfigureerd. De gateway kan zich op het VNet.
+> Deze eigenschap is alleen effectief wanneer een [on-premises gegevens gateway](analysis-services-gateway.md) is geïnstalleerd en geconfigureerd. De gateway kan zich in het VNet bevindt.
 
-## <a name="configure-alwaysusegateway-property"></a>De eigenschap AlwaysUseGateway configureren
+## <a name="configure-alwaysusegateway-property"></a>Eigenschap AlwaysUseGateway configureren
 
-1. In SSMS > server > **eigenschappen** > **algemene**, selecteer **weergeven (alle) geavanceerde eigenschappen**.
-2. In de **ASPaaS\AlwaysUseGateway**, selecteer **waar**.
+1. Selecteer in SSMS > Server > **Eigenschappen** > **Algemeen** **de optie Geavanceerde eigenschappen (alle) weer geven**.
+2. Selecteer **waar**in de **ASPaaS\AlwaysUseGateway**.
 
-    ![Gebruik altijd de gateway-eigenschap](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)
+    ![Altijd gateway-eigenschap gebruiken](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)
 
 
 ## <a name="see-also"></a>Zie ook
-[Verbinding maken met on-premises gegevensbronnen](analysis-services-gateway.md)   
-[Installeren en configureren van een on-premises gegevensgateway](analysis-services-gateway-install.md)   
-[Azure-netwerk (VNET)](../virtual-network/virtual-networks-overview.md)   
+[Verbinding maken met on-premises gegevens bronnen](analysis-services-gateway.md)   
+[Een on-premises gegevens gateway installeren en configureren](analysis-services-gateway-install.md)   
+[Azure Virtual Network (VNET)](../virtual-network/virtual-networks-overview.md)   
 

@@ -9,14 +9,14 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 08/13/2019
+ms.date: 09/12/2019
 ms.author: lahugh
-ms.openlocfilehash: 916dceb7c5e4314df98407b4e8fa4ed75cdb308c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 995dfeaf26180b74f135ed2b74fa40faf3a12c08
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095285"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958791"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Omgevings variabelen Azure Batch-runtime
 
@@ -48,7 +48,7 @@ De opdracht regels die door taken op reken knooppunten worden uitgevoerd, worden
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | De naam van het batch-account waartoe de taak behoort.                  | Alle taken.   | mybatchaccount gemaakt |
 | AZ_BATCH_ACCOUNT_URL            | De URL van het batch-account. | Alle taken. | `https://myaccount.westus.batch.azure.com` |
-| AZ_BATCH_APP_PACKAGE            | Een voor voegsel van alle omgevings variabelen voor het app-pakket. Als bijvoorbeeld toepassing "foo" versie "1" is geïnstalleerd op een groep, is de omgevings variabele AZ_BATCH_APP_PACKAGE_FOO_1. AZ_BATCH_APP_PACKAGE_FOO_1 verwijst naar de locatie waar het pakket is gedownload (een map). | Elke taak met een gekoppeld app-pakket. Ook beschikbaar voor alle taken als het knoop punt zelf toepassings pakketten heeft. | AZ_BATCH_APP_PACKAGE_FOO_1 |
+| AZ_BATCH_APP_PACKAGE            | Een voor voegsel van alle omgevings variabelen voor het app-pakket. Als bijvoorbeeld toepassing "foo" versie "1" is geïnstalleerd op een groep, is de omgevings variabele AZ_BATCH_APP_PACKAGE_FOO_1. AZ_BATCH_APP_PACKAGE_FOO_1 verwijst naar de locatie waar het pakket is gedownload (een map). Wanneer u de standaard versie van het app-pakket gebruikt, gebruikt u de omgevings variabele AZ_BATCH_APP_PACKAGE zonder de versie nummers. | Elke taak met een gekoppeld app-pakket. Ook beschikbaar voor alle taken als het knoop punt zelf toepassings pakketten heeft. | AZ_BATCH_APP_PACKAGE_FOO_1 |
 | AZ_BATCH_AUTHENTICATION_TOKEN   | Een verificatie token dat toegang verleent tot een beperkt aantal batch-service bewerkingen. Deze omgevings variabele is alleen aanwezig als de [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) worden ingesteld wanneer de [taak wordt toegevoegd](/rest/api/batchservice/task/add#request-body). De token waarde wordt in de batch-Api's gebruikt als referenties voor het maken van een batch-client, zoals in de [.net API BatchClient. Open ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_). | Alle taken. | OAuth2-toegangs token |
 | AZ_BATCH_CERTIFICATES_DIR       | Een map in de [werkmap][files_dirs] van de taak waarin certificaten worden opgeslagen voor Linux-reken knooppunten. Deze omgevings variabele is niet van toepassing op Windows-reken knooppunten.                                                  | Alle taken.   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_HOST_LIST              | De lijst met knoop punten die worden toegewezen aan een [taak met meerdere instanties][multi_instance] in de `nodeIP,nodeIP`indeling. | Primaire en subtaken voor meerdere instanties. | `10.0.0.4,10.0.0.5` |

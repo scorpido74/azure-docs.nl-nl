@@ -8,17 +8,17 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/26/2019
-ms.openlocfilehash: 8f10e3d3fd7c67d1e803e8f85c9918c91bb81d59
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.date: 08/01/2019
+ms.openlocfilehash: 6a6b096911ac8596fe29aeb4596f1da6d5266794
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517460"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967815"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Uw ISE (Integration service Environment) beheren in Azure Logic Apps
 
-Volg de stappen in dit onderwerp om de netwerk status van uw [ISE (Integration service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) te controleren en de Logic apps, verbindingen, integratie accounts en aangepaste connectors die in uw ISE bestaan, te beheren.
+Volg de stappen in dit onderwerp om de netwerk status van uw [ISE (Integration service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) te controleren en de logische apps, verbindingen, integratie accounts en connectors te beheren die aanwezig zijn in uw ISE. Zie [artefacten toevoegen aan uw integratie service omgeving](../logic-apps/add-artifacts-integration-service-environment-ise.md)om deze artefacten aan uw ISE toe te voegen.
 
 ## <a name="view-your-ise"></a>Uw ISE weer geven
 
@@ -46,31 +46,49 @@ Selecteer in het menu ISE onder **instellingen**de optie **netwerk status**. Dit
 
 ## <a name="manage-your-logic-apps"></a>Uw Logic apps beheren
 
+U kunt de Logic apps in uw ISE weer geven en beheren.
+
 1. Selecteer in het menu ISE onder **instellingen**de optie **Logic apps**.
 
-   ![Logische apps zoeken](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
+   ![Logic apps weer geven](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
 
-1. Als u logische apps uit uw ISE wilt verwijderen wanneer u deze niet meer nodig hebt, selecteert u deze Logic apps en selecteert u vervolgens **verwijderen**.
+1. Als u logische Apps wilt verwijderen die u niet meer nodig hebt in uw ISE, selecteert u deze Logic apps en selecteert u vervolgens **verwijderen**. Selecteer **Ja**om te bevestigen dat u wilt verwijderen.
 
 <a name="find-api-connections"></a>
 
 ## <a name="manage-api-connections"></a>API-verbindingen beheren
 
-1. Als u de API-verbindingen wilt weer geven die zijn gemaakt door Logic apps die in uw ISE worden uitgevoerd, selecteert u in het menu ISE onder **instellingen**de optie **API-verbindingen**.
+U kunt de verbindingen weer geven en beheren die zijn gemaakt door de Logic apps die worden uitgevoerd in uw ISE.
 
-   ![API-verbindingen zoeken](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
+1. Selecteer in het menu ISE onder **instellingen**de optie **API-verbindingen**.
 
-1. Als u verbindingen van uw ISE wilt verwijderen wanneer deze niet meer nodig zijn, selecteert u deze verbindingen en selecteert u vervolgens **verwijderen**.
+   ![API-verbindingen weer geven](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
+
+1. Als u verbindingen wilt verwijderen die u niet meer nodig hebt in uw ISE, selecteert u deze verbindingen en selecteert u vervolgens **verwijderen**. Selecteer **Ja**om te bevestigen dat u wilt verwijderen.
+
+<a name="manage-api-connectors"></a>
+
+## <a name="manage-ise-connectors"></a>ISE-connectors beheren
+
+U kunt de API-connectors weer geven en beheren die zijn geïmplementeerd in uw ISE.
+
+1. Selecteer in het menu ISE, onder **instellingen**, **beheerde connectors**.
+
+   ![Beheerde connectors weer geven](./media/ise-manage-integration-service-environment/ise-view-managed-connectors.png)
+
+1. Als u connectors wilt verwijderen die u niet beschikbaar wilt maken in uw ISE, selecteert u deze connectors en selecteert u vervolgens **verwijderen**. Selecteer **Ja**om te bevestigen dat u wilt verwijderen.
 
 <a name="find-custom-connectors"></a>
 
 ## <a name="manage-custom-connectors"></a>Aangepaste connectors beheren
 
-1. Als u aangepaste connectors wilt weer geven die zijn gemaakt in uw ISE, selecteert u in het menu ISE onder **instellingen**de optie **aangepaste connectors**.
+U kunt de aangepaste connectors weer geven en beheren die u hebt geïmplementeerd voor uw ISE.
+
+1. Selecteer in het menu ISE onder **instellingen**de optie **aangepaste connectors**.
 
    ![Aangepaste connectoren vinden](./media/ise-manage-integration-service-environment/ise-find-custom-connectors.png)
 
-1. Als u aangepaste connectors uit uw ISE wilt verwijderen wanneer u deze niet meer nodig hebt, selecteert u deze connectors en selecteert u vervolgens **verwijderen**.
+1. Als u aangepaste connectors die u niet meer nodig hebt in uw ISE wilt verwijderen, selecteert u deze connectors en selecteert u vervolgens **verwijderen**. Selecteer **Ja**om te bevestigen dat u wilt verwijderen.
 
 <a name="find-integration-accounts"></a>
 

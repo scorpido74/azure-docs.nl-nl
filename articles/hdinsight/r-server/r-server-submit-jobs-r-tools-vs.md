@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 0ae717487f1538536601c8578e744d976798bf76
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 2d53f1bfc6eade535bfb1b3bb07d5115ffe5fc80
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899936"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967883"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Taken verzenden vanuit R-hulpprogramma's voor Visual Studio
 
@@ -55,7 +55,8 @@ RTVS breidt uw R-werk stroom uit door hulpprogram ma's te bieden zoals het [R In
 5. Open het `1-Getting Started with R.R` bestand in de `A first look at R` map Solution.
 6. Vanaf de bovenkant van het bestand, drukt u op CTRL + ENTER om elke regel, één per keer, naar het venster R Interactive te verzenden. Sommige regels kunnen even duren als ze pakketten installeren.
     * U kunt ook alle regels in het R-bestand selecteren (CTRL + A) en vervolgens alle uitvoeren (CTRL + ENTER) of het pictogram voor het uitvoeren van een interactieve taak op de werk balk selecteren.
-        ![Interactief uitvoeren](./media/r-server-submit-jobs-r-tools-vs/execute-interactive.png)
+
+        ![Interactief uitvoeren](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
 7. Nadat u alle regels in het script hebt uitgevoerd, ziet u een uitvoer die er ongeveer als volgt uitzien:
 
@@ -82,20 +83,20 @@ Als u een micro soft ml server/micro soft R-client gebruikt vanaf een Windows-co
     # Create the Spark Cluster compute context
     mySparkCluster <- RxSpark(
           sshUsername = mySshUsername,
-      sshHostname = mySshHostname,
-      sshSwitches = mySshSwitches,
-      sshProfileScript = mySshProfileScript,
-      consoleOutput = TRUE,
-      hdfsShareDir = myHdfsShareDir,
-      shareDir = myShareDir,
-      sshClientDir = mySshClientDir
+          sshHostname = mySshHostname,
+          sshSwitches = mySshSwitches,
+          sshProfileScript = mySshProfileScript,
+          consoleOutput = TRUE,
+          hdfsShareDir = myHdfsShareDir,
+          shareDir = myShareDir,
+          sshClientDir = mySshClientDir
     )
-    
+
     # Set the current compute context as the Spark compute context defined above
     rxSetComputeContext(mySparkCluster)
     ```
-    
-    ![De Spark-context instellen](./media/r-server-submit-jobs-r-tools-vs/spark-context.png)
+
+   ![De Spark-context instellen](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
 
 1. Voer de volgende opdrachten uit in het venster R Interactive:
 
@@ -107,13 +108,12 @@ Als u een micro soft ml server/micro soft R-client gebruikt vanaf een Windows-co
 
     Als het goed is, wordt ongeveer de volgende uitvoer weergegeven:
 
-    ![Geslaagde RX-opdracht uitvoering](./media/r-server-submit-jobs-r-tools-vs/rx-commands.png)
-
+    ![Geslaagde RX-](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) opdracht voor het uitvoeren van een
 1. Controleer of het `people.json` bestand `/user/RevoShare/newUser` is gekopieerd van de map voorbeeld gegevens naar de zojuist gemaakte map: `rxHadoopCopy`
 
     1. Selecteer in het deel venster cluster van HDInsight ML-Services in azure **opslag accounts** in het menu links.
 
-        ![Opslagaccounts](./media/r-server-submit-jobs-r-tools-vs/storage-accounts.png)
+        ![Opslagaccounts](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. Selecteer het standaard opslag account voor uw cluster en noteer de naam van de container/map.
 
@@ -123,7 +123,7 @@ Als u een micro soft ml server/micro soft R-client gebruikt vanaf een Windows-co
 
     4. Selecteer de container naam van uw cluster, blader naar de map **gebruiker** (mogelijk moet u op *extra laden* onder aan de lijst) en selecteer vervolgens *RevoShare*en **newuser**. Het `people.json` bestand moet in de `newUser` map worden weer gegeven.
 
-        ![Gekopieerd bestand](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
+        ![Gekopieerd bestand](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
 1. Wanneer u klaar bent met het gebruik van de huidige Apache Spark context, moet u deze stoppen. U kunt niet meerdere contexten tegelijk uitvoeren.
 

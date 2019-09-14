@@ -1,88 +1,88 @@
 ---
-title: Aan de slag met de Bing Speech-API met behulp van REST | Microsoft Docs
+title: Aan de slag met de Bing Speech Recognition API met behulp van REST | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: REST gebruiken voor toegang tot de spraak-API in Microsoft Cognitive Services om Converteer gesproken audio naar tekst.
+description: Gebruik REST om toegang te krijgen tot de spraakherkennings-API in Microsoft Cognitive Services om gesp roken audio om te zetten in tekst.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ead4026ecec4878c69bc21a9ebc989eaf3d69a13
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e962a12c6c27737f95e78e80036e51bac41147d5
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515134"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965773"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Quickstart: De Bing-spraakherkenning REST-API gebruiken
+# <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Quickstart: De Bing Speech herkennings REST API gebruiken
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Met de cloud gebaseerde Bing Speech-Service, kunt u toepassingen ontwikkelen met behulp van de REST-API aan Converteer gesproken audio naar tekst.
+Met de Bing Speech-Service in de cloud kunt u toepassingen ontwikkelen met behulp van de REST API om gesp roken audio naar tekst te converteren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>Abonneer u op de spraak-API en een gratis proefabonnement-sleutel ophalen
+### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>Abonneer u op de spraak-API en ontvang een gratis proef abonnement sleutel
 
-De spraak-API maakt deel uit van Cognitive Services (eerder Project Oxford). U krijgt een gratis proefabonnement sleutels uit de [Cognitive Services-abonnement](https://azure.microsoft.com/try/cognitive-services/) pagina. Nadat u de spraak-API selecteert, selecteert u **API-sleutel ophalen** om op te halen van de sleutel. Het resultaat een primaire en secundaire sleutel. Beide sleutels zijn gekoppeld aan dezelfde quota, zodat u beide sleutels kunt gebruiken.
+De Speech-API maakt deel uit van Cognitive Services (voorheen project Oxford). U kunt abonnements sleutels voor een gratis proef versie downloaden van de pagina [Cognitive Services abonnement](https://azure.microsoft.com/try/cognitive-services/) . Nadat u de spraak-API hebt geselecteerd, selecteert u **API-sleutel ophalen** om de sleutel op te halen. Er wordt een primaire en secundaire sleutel geretourneerd. Beide sleutels zijn gekoppeld aan hetzelfde quotum, dus u kunt beide sleutels gebruiken.
 
 > [!IMPORTANT]
->* De abonnementssleutel van een ophalen. Voordat u krijgt de REST-API tot toegang, moet u beschikken over een [abonnementssleutel](https://azure.microsoft.com/try/cognitive-services/).
+>* Een abonnements sleutel ophalen. Voordat u toegang kunt krijgen tot de REST API, moet u een [abonnements sleutel](https://azure.microsoft.com/try/cognitive-services/)hebben.
 >
->* Gebruik uw abonnement. In de volgende REST-voorbeelden, kunt u YOUR_SUBSCRIPTION_KEY vervangen door uw eigen abonnementssleutel.
+>* Gebruik uw abonnements sleutel. Vervang YOUR_SUBSCRIPTION_KEY door uw eigen abonnements sleutel in de volgende REST-voor beelden.
 >
->* Raadpleeg de [verificatie](../how-to/how-to-authentication.md) pagina voor het ophalen van de abonnementssleutel van een.
+>* Raadpleeg de [verificatie](../how-to/how-to-authentication.md) pagina voor het verkrijgen van een abonnements sleutel.
 
-### <a name="prerecorded-audio-file"></a>Vooraf opgenomen audiobestand
+### <a name="prerecorded-audio-file"></a>Opgenomen audio bestand
 
-In dit voorbeeld gebruiken we een opgenomen audiobestand te laten zien hoe u de REST-API gebruikt. Registreer een geluidsbestand van uzelf een korte zin zeggen. Zeg bijvoorbeeld 'Wat is het weer, zoals vandaag?' of "Vinden grappige films." De the spraakherkennings-API biedt ook ondersteuning voor externe microfoon invoer.
+In dit voor beeld gebruiken we een opgenomen audio bestand om te laten zien hoe u de REST API kunt gebruiken. Neem een audio bestand van jezelf op dat een korte zinsnede zegt. Zeg bijvoorbeeld ' wat is de weers verwachting? ' of ' vind een ' te bekijken film '. De API voor spraak herkenning biedt ook ondersteuning voor externe microfoon invoer.
 
 > [!NOTE]
-> Het voorbeeld is vereist dat audio wordt vastgelegd als een WAV-bestand met **PCM één kanaal (mono), 16 KHz**.
+> In het voor beeld moet audio worden vastgelegd als een WAV-bestand met een **PCM-kanaal (mono), 16 kHz**.
 
-## <a name="build-a-recognition-request-and-send-it-to-the-speech-recognition-service"></a>Een aanvraag voor spraakherkenning maken en te verzenden naar de spraakherkenningsservice
+## <a name="build-a-recognition-request-and-send-it-to-the-speech-recognition-service"></a>Een herkennings aanvraag bouwen en deze naar de spraakherkennings service verzenden
 
-De volgende stap voor spraakherkenning is een POST-aanvraag verzenden naar de spraak-HTTP-eindpunten met de juiste aanvraag koptekst en hoofdtekst.
+De volgende stap voor spraak herkenning is het verzenden van een POST-aanvraag naar de HTTP-eind punten van de spraak met de juiste aanvraag header en hoofd tekst.
 
 ### <a name="service-uri"></a>Service-URI
 
-De spraakherkenningsservice URI is gedefinieerd op basis van [erkenning modi](../concepts.md#recognition-modes) en [erkenning talen](../concepts.md#recognition-languages):
+De service-URI voor spraak herkenning is gedefinieerd op basis van [herkennings modi](../concepts.md#recognition-modes) en [herkennings talen](../concepts.md#recognition-languages):
 
 ```HTTP
 https://speech.platform.bing.com/speech/recognition/<RECOGNITION_MODE>/cognitiveservices/v1?language=<LANGUAGE_TAG>&format=<OUTPUT_FORMAT>
 ```
 
-`<RECOGNITION_MODE>` Hiermee geeft u de opname-modus en moet een van de volgende waarden: `interactive`, `conversation`, of `dictation`. Dit is een vereiste bron-pad in de URI. Zie voor meer informatie, [erkenning modi](../concepts.md#recognition-modes).
+`<RECOGNITION_MODE>`Hiermee geeft u de herkennings modus en moet u een van de `interactive`volgende `conversation`waarden hebben `dictation`:, of. Het is een vereist bronpad in de URI. Zie [herkennings modi](../concepts.md#recognition-modes)voor meer informatie.
 
-`<LANGUAGE_TAG>` is een vereiste parameter in de querytekenreeks. De doeltaal voor audio conversie wordt gedefinieerd: bijvoorbeeld `en-US` voor Engels (Verenigde Staten). Zie voor meer informatie, [erkenning talen](../concepts.md#recognition-languages).
+`<LANGUAGE_TAG>`is een vereiste para meter in de query teken reeks. Hiermee wordt de doel taal voor audio conversie gedefinieerd: bijvoorbeeld `en-US` voor Engels (Verenigde Staten). Zie [herkennings talen](../concepts.md#recognition-languages)voor meer informatie.
 
-`<OUTPUT_FORMAT>` is een optionele parameter in de querytekenreeks. De toegestane waarden zijn `simple` en `detailed`. Standaard retourneert resultaten in de service `simple` indeling. Zie voor meer informatie, [uitvoerindeling](../concepts.md#output-format).
+`<OUTPUT_FORMAT>`is een optionele para meter in de query teken reeks. De toegestane waarden zijn `simple` en `detailed`. Standaard worden met de service resultaten in `simple` de indeling weer gegeven. Zie [output format](../concepts.md#output-format)(Engelstalig) voor meer informatie.
 
-In de volgende tabel vindt u enkele voorbeelden van URI's-service.
+Een aantal voor beelden van service-Uri's vindt u in de volgende tabel.
 
 | Herkennings-modus  | Taal | Uitvoerindeling | Service-URI |
 |---|---|---|---|
 | `interactive` | pt-BR | Standaard | https:\//speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| `conversation` | en-US | Gedetailleerde | https:\//speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
-| `dictation` | fr-FR | Eenvoudig | https:\//speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
+| `conversation` | en-US | Gedetailleerd | https:\//speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
+| `dictation` | fr-FR | Simpel | https:\//speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
 
 > [!NOTE]
-> De service-URI is alleen nodig wanneer uw toepassing maakt gebruik van REST-API's om aan te roepen de spraakherkenningsservice. Als u een van de [clientbibliotheken](GetStartedClientLibraries.md), doorgaans niet nodig om te weten welke URI wordt gebruikt. De clientbibliotheken mogelijk andere service-URI's, die alleen van toepassing op een specifieke client-bibliotheek gebruiken. Zie voor meer informatie de clientbibliotheek van uw keuze.
+> De service-URI is alleen nodig als uw toepassing REST-Api's gebruikt voor het aanroepen van de service voor spraak herkenning. Als u een van de [client bibliotheken](GetStartedClientLibraries.md)gebruikt, hoeft u normaal gesp roken niet te weten welke URI er wordt gebruikt. De client bibliotheken kunnen verschillende service-Uri's gebruiken, die alleen van toepassing zijn op een specifieke client bibliotheek. Zie de client bibliotheek van uw keuze voor meer informatie.
 
 ### <a name="request-headers"></a>Aanvraagheaders
 
-De volgende velden moeten worden ingesteld in de aanvraagheader:
+De volgende velden moeten worden ingesteld in de aanvraag header:
 
-- `Ocp-Apim-Subscription-Key`: Elke keer dat u de service roept, moet u uw abonnementssleutel in doorgeven de `Ocp-Apim-Subscription-Key` header. Speech Service biedt ook ondersteuning voor autorisatie doorgegeven tokens in plaats van abonnementssleutels. Zie [Verificatie](../How-to/how-to-authentication.md) voor meer informatie.
-- `Content-type`: De `Content-type` veld Beschrijving van de indeling en codec van de audio-stream. Op dit moment alleen WAV-bestand en PCM Mono 16000 codering wordt ondersteund. De waarde van de Content-type voor deze indeling is `audio/wav; codec=audio/pcm; samplerate=16000`.
+- `Ocp-Apim-Subscription-Key`: Telkens wanneer u de service aanroept, moet u uw abonnements sleutel in de `Ocp-Apim-Subscription-Key` kop door geven. Spraak service biedt ook ondersteuning voor het door geven van autorisatie tokens in plaats van abonnements sleutels. Zie [Verificatie](../How-to/how-to-authentication.md) voor meer informatie.
+- `Content-type`: In `Content-type` het veld worden de indeling en de codec van de audio stroom beschreven. Op dit moment wordt alleen WAV-bestand en PCM mono 16000-code ring ondersteund. De waarde van het inhouds type voor deze indeling `audio/wav; codec=audio/pcm; samplerate=16000`is.
 
-Het veld `Transfer-Encoding` is optioneel. Als u dit veld ingesteld op `chunked`, kunt u de audio afgeknipt in kleine chunks. Zie voor meer informatie, [gesegmenteerde overdrachtscodering overdracht](../How-to/how-to-chunked-transfer.md).
+Het veld `Transfer-Encoding` is optioneel. Als u dit veld instelt op `chunked`, kunt u de audio in kleine segmenten Chop. Zie [gesegmenteerde overdracht](../How-to/how-to-chunked-transfer.md)voor meer informatie.
 
-Hier volgt een voorbeeld-aanvraagheader:
+Hier volgt een voor beeld van een aanvraag header:
 
 ```HTTP
 POST https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
@@ -96,10 +96,10 @@ Expect: 100-continue
 
 ### <a name="send-a-request-to-the-service"></a>Een aanvraag verzenden naar de service
 
-Het volgende voorbeeld ziet hoe u een spraak opname-aanvraag verzendt naar spraak REST-eindpunten. Hierbij de `interactive` opname-modus.
+In het volgende voor beeld ziet u hoe u een aanvraag voor spraak herkenning verzendt naar spraak-eind punten. De `interactive` herkennings modus wordt gebruikt.
 
 > [!NOTE]
-> Vervang `YOUR_AUDIO_FILE` met het pad naar uw vooraf opgenomen audiobestand. Vervang `YOUR_SUBSCRIPTION_KEY` door uw eigen abonnementssleutel.
+> Vervang `YOUR_AUDIO_FILE` met het pad naar uw vooraf opgenomen audiobestand. Vervang `YOUR_SUBSCRIPTION_KEY` door uw eigen abonnements sleutel.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -127,10 +127,10 @@ $RecoResponse
 
 # <a name="curltabcurl"></a>[curl](#tab/curl)
 
-Het voorbeeld wordt curl gebruikt op Linux met bash. Als deze niet beschikbaar is op uw platform, moet u mogelijk curl installeren. Het voorbeeld werkt ook op Cygwin op Windows, Git Bash, zsh en andere shells.
+In het voor beeld wordt krul op Linux met bash gebruikt. Als deze niet beschikbaar is op uw platform, moet u mogelijk een krul installeren. Het voor beeld werkt ook op Cygwin in Windows, Git bash, zsh en andere shells.
 
 > [!NOTE]
-> Houd de `@` vóór de naam van de audio-bestand bij het vervangen van `YOUR_AUDIO_FILE` met het pad naar uw vooraf opgenomen audiobestand, zoals deze wordt aangegeven dat de waarde van `--data-binary` is de bestandsnaam van een in plaats van gegevens.
+> Zorg ervoor `@` dat de naam van het audio bestand `YOUR_AUDIO_FILE` wordt vervangen door het pad naar uw vastgelegde audio bestand, omdat dit aangeeft dat de waarde `--data-binary` van een bestands naam is in plaats van gegevens.
 
 ```
 curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
@@ -176,14 +176,14 @@ using (FileStream fs = new FileStream(YOUR_AUDIO_FILE, FileMode.Open, FileAccess
 
 ---
 
-## <a name="process-the-speech-recognition-response"></a>Het antwoord van de spraakherkenning spraak verwerken
+## <a name="process-the-speech-recognition-response"></a>De reactie op spraak herkenning verwerken
 
-Na het verwerken van de aanvraag, retourneert Speech Service de resultaten in een reactie als JSON-indeling.
+Nadat de aanvraag is verwerkt, retourneert de speech-service de resultaten in een reactie als JSON-indeling.
 
 > [!NOTE]
-> Als de vorige code een fout retourneert, Zie [probleemoplossing](../troubleshooting.md) mogelijke oorzaken te vinden.
+> Als de vorige code een fout retourneert, raadpleegt u [probleem oplossing](../troubleshooting.md) om de mogelijke oorzaak te vinden.
 
-Het volgende codefragment toont een voorbeeld van hoe u het antwoord van de stroom kunt lezen.
+Het volgende code fragment toont een voor beeld van hoe u de reactie van de stroom kunt lezen.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -194,7 +194,7 @@ ConvertTo-Json $RecoResponse
 
 # <a name="curltabcurl"></a>[curl](#tab/curl)
 
-In dit voorbeeld retourneert curl rechtstreeks het antwoordbericht in een tekenreeks. Als u weergeven in JSON-indeling wilt, kunt u extra hulpprogramma's, bijvoorbeeld jq.
+In dit voor beeld retourneert krul direct het antwoord bericht in een teken reeks. Als u deze wilt weer geven in JSON-indeling, kunt u extra hulp middelen gebruiken, bijvoorbeeld JQ.
 
 ```
 curl -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE | jq
@@ -223,7 +223,7 @@ using (WebResponse response = request.GetResponse())
 
 ---
 
-Het volgende voorbeeld wordt een JSON-antwoord:
+Het volgende voor beeld is een JSON-antwoord:
 
 ```json
 OK
@@ -243,19 +243,19 @@ OK
 
 ## <a name="limitations"></a>Beperkingen
 
-De REST-API heeft enkele beperkingen:
+De REST API heeft enkele beperkingen:
 
-- Het ondersteunt audio-stream maximaal 15 seconden.
-- Het biedt geen ondersteuning voor tussenliggende resultaten genereren tijdens de opname. Gebruikers ontvangen het laatste herkenningsresultaat.
+- Het ondersteunt alleen audio streams tot 15 seconden.
+- Het biedt geen ondersteuning voor tussenliggende resultaten tijdens de herkenning. Gebruikers ontvangen alleen het uiteindelijke herkennings resultaat.
 
-Als u wilt verwijderen van deze beperkingen, gebruik spraak [clientbibliotheken](GetStartedClientLibraries.md). Of werkt u direct met de [spraak WebSocket-protocol](../API-Reference-REST/websocketprotocol.md).
+Als u deze beperkingen wilt verwijderen, gebruikt u de speech- [client bibliotheken](GetStartedClientLibraries.md). U kunt ook rechtstreeks werken met het [Speech-WebSocket-protocol](../API-Reference-REST/websocketprotocol.md).
 
 ## <a name="whats-next"></a>Volgend onderwerp
 
-- Zie voor meer informatie over de REST-API in C#, Java, enzovoort gebruikt, deze [voorbeeldtoepassingen](../samples.md).
-- Als u wilt zoeken en oplossen van fouten, Zie [probleemoplossing](../troubleshooting.md).
-- Voor het gebruik van meer geavanceerde functies, ziet u hoe u aan de slag met behulp van spraak [clientbibliotheken](GetStartedClientLibraries.md).
+- Zie deze [voorbeeld toepassingen](../samples.md)voor meer informatie over C#het gebruik van de rest API in, Java, enzovoort.
+- Zie [probleem oplossing](../troubleshooting.md)om fouten te vinden en op te lossen.
+- Als u meer geavanceerde functies wilt gebruiken, raadpleegt u aan de slag met behulp van speech- [client bibliotheken](GetStartedClientLibraries.md).
 
 ### <a name="license"></a>Licentie
 
-Alle Cognitive Services-SDK's en voorbeelden hebben een licentie voor de MIT-licentie. Zie voor meer informatie, [licentie](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md).
+Alle Cognitive Services Sdk's en voor beelden zijn gelicentieerd met de MIT-licentie. Zie [licentie](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md)voor meer informatie.

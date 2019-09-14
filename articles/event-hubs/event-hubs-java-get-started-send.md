@@ -7,21 +7,21 @@ manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.custom: seodec18, seo-java-august2019
+ms.custom: seodec18, seo-java-august2019, seo-java-september2019
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: c622e9af4263c844fb25dc65657998cfc82d4a2d
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a24263e80f50d880be269238441545785e2f51e8
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884212"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967617"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs"></a>Java gebruiken om gebeurtenissen te verzenden naar of ontvangen van Azure Event Hubs
 
-Azure Event Hubs is een big data-platform voor het streamen van gegevens en een gebeurtenisopneemservice die miljoenen gebeurtenissen per seconde kan opnemen en verwerken. Event Hubs kan gebeurtenissen, gegevens of telemetrie die wordt geproduceerd door gedistribueerde software en apparaten verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie [Overzicht van Event Hubs](event-hubs-about.md) en [Functies van Event Hubs](event-hubs-features.md) voor een gedetailleerd overzicht van Event Hubs.
+Deze zelf studie laat zien hoe u Java-toepassingen kunt maken om gebeurtenissen te verzenden naar of gebeurtenissen van Azure Event Hubs te ontvangen.
 
-Deze zelf studie laat zien hoe u Java-toepassingen kunt maken om gebeurtenissen te verzenden naar of gebeurtenissen van een Event Hub te ontvangen. 
+Azure Event Hubs is een big data-platform voor het streamen van gegevens en een gebeurtenisopneemservice die miljoenen gebeurtenissen per seconde kan opnemen en verwerken. Event Hubs kan gebeurtenissen, gegevens of telemetrie die wordt geproduceerd door gedistribueerde software en apparaten verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie Event Hubs overzicht en Event Hubs functies voor een gedetailleerd overzicht van Event Hubs.
 
 > [!NOTE]
 > U kunt deze snelstart als voorbeeld downloaden van de [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend), de tekenreeksen `EventHubConnectionString` en `EventHubName` vervangen door uw event hub-waarden en deze uitvoeren. U kunt ook de stappen in deze zelfstudie volgen om uw eigen oplossing te maken.

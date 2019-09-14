@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: be1da90ef089da412545ac8af6fabb04198d821c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 535dae4226f7db9cbc7240f9a92642f0e206cd3b
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880169"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962733"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analytics voor de commerciële Marketplace in het partner centrum
 
@@ -26,7 +26,6 @@ Open het dash board **[analyseren](https://partner.microsoft.com/dashboard/comme
 |[Orders](#orders-dashboard)|Informatie over uw orders in een grafische en download bare indeling|
 |[Hun](#customer-dashboard)|Informatie over uw klanten, met inbegrip van groei trends, gepresenteerd in een grafische en download bare indeling|
 |[Downloads](#downloads-dashboard)|Een lijst met uw download aanvragen in de afgelopen 30 dagen|
-|[Beoordelingen en beoordelingen](#ratings-and-reviews)| Informatie over beoordelingen en beoordelingen die uw klanten laten staan voor de aanbiedingen die ze hebben verkregen.
 
 ## <a name="summary-dashboard"></a>Samenvattings dashboard
 
@@ -263,7 +262,7 @@ U ontvangt een pop-upmelding en een e-mail bericht met een koppeling naar het da
 | Marketplace-licentie type: Free| Bestellen| De aanbieding is zo geconfigureerd dat deze gratis is voor alle gebruikers. Micro soft houdt geen klanten in rekening voor het gebruik van deze aanbieding.||
 | Marketplace-licentie type: Micro soft als wederverkoper  | Bestellen| Micro soft is uw wederverkoper voor deze Marketplace-aanbieding.|  |
 | Marketplace-abonnements-ID | Klant, order | De unieke id die is gekoppeld aan het Azure-abonnement dat de klant heeft gebruikt voor het kopen van uw Marketplace-aanbieding. De ID was voorheen de GUID van het Azure-abonnement.||
-| Naam van aanbieding:  | Bestellen| De naam van de Marketplace-aanbieding.|| |
+| Naam van aanbieding  | Bestellen| De naam van de Marketplace-aanbieding.|| |
 | Type aanbieding  | Bestellen| Het type Microsoft Marketplace aanbieding.|||
 | Aanbiedings type: Beheerde toepassing  | Ter | Gebruik het aanbiedings type Azure-app: beheerde app wanneer de volgende voor waarden zijn vereist: U implementeert een oplossing op basis van een abonnement voor uw klant met behulp van een virtuele machine of een volledige oplossing op basis van IaaS. U of uw klant vereist dat de oplossing wordt beheerd door een partner. |
 | Aanbiedings type: Azure Application| Ter | Gebruik het Azure-toepassing aanbieding van de oplossings sjabloon wanneer voor uw oplossing extra implementatie-en configuratie automatisering nodig is dan een eenvoudige virtuele machine.||
@@ -286,38 +285,3 @@ U ontvangt een pop-upmelding en een e-mail bericht met een koppeling naar het da
 | Naam van provider| De klant| De naam van de provider die deel uitmaakt van de relatie tussen micro soft en de eind klant. Als de klant een onderneming is via wederverkoper, is dit de wederverkoper. Als er een Cloud Solution Provider (CSP) betrokken is, wordt dit de CSP.|
 | SKU| Bestellen| SKU-naam zoals gedefinieerd tijdens het publiceren. Een aanbieding kan veel Sku's hebben, maar een SKU kan slechts worden gekoppeld aan één aanbieding.||
 | Eind datum van proef versie| Bestellen| De datum waarop de proef periode voor deze order wordt beëindigd of beëindigd.||
-
-## <a name="ratings-and-reviews"></a>Beoordelingen en beoordelingen
-
-Als klanten bladeren, zoek acties en aanbiedingen kopen in beide marketplaces, kunnen ze beoordelingen en beoordelingen geven voor de aanbiedingen die ze hebben verkregen. Ze kunnen nieuwe beoordelingen of beoordelingen verzenden en beoordelingen of beoordelingen die ze al hebben verzonden, bijwerken of verwijderen. Beoordelingen worden gepubliceerd in azure Marketplace of AppSource op het tabblad Recensies van de pagina product weergave van de aanbieding. Klanten kunnen hun namen voor beoordelingen of recensies toevoegen, of ze kunnen anoniem berichten verzenden.  
-
-> [!NOTE]
-> Klanten kunnen alleen wijzigingen aanbrengen in de beoordelingen en beoordelingen waarvan ze eigenaar zijn.
-
-In het **dash board beoordelingen & beoordeling** worden de trends en inzichten van klant activiteiten weer gegeven. Het biedt grafische voors tellingen van:
-
-- Beoordelingen & beoordelingen  
-- Opmerkingen controleren
-
-### <a name="marketplace-storefront-tabs"></a>Tabbladen Marketplace-winkel
-
-Uitgevers kunnen hun metrische aanbod gegevens afzonderlijk weer geven op de AppSource & Azure Marketplace-tabbladen. Selecteer **aanbieding** in de vervolg keuzelijst om de metrische gegevens van een specifieke aanbieding weer te geven:
-
-![Vervolg keuzelijst voor aanbod analyse van partner centrum](./media/analyze-offer-dropdown.png)
-
-### <a name="ratings-and-reviews-summary"></a>Overzicht van beoordelingen en beoordelingen
-
-De overzichts sectie beoordelings & beoordelingen bevat de metrische gegevens hieronder voor een geselecteerd datum bereik:
-
-- **Gemiddelde beoordeling:** De gewogen gemiddelde ster waardering van alle beoordelingen die door klanten zijn verzonden voor de geselecteerde aanbieding.
-- **Uitsplitsing van classificatie:** Uitsplitsing van de ster waardering door het aantal klanten dat de classificatie heeft ingediend. Het staaf diagram is gestapeld met de werkelijke en herziene classificaties (bijgewerkt aantal beoordelingen).
-- **Totaal aantal beoordelingen:** Het totale aantal verzonden Beoordelingen. Dit aantal omvat ook beoordelingen met en zonder Beoordelingen.
-- **Beoordelingen met beoordelingen:** Aantal verzonden Beoordelingen.
-
-![Samen vatting van de beoordelingen en beoordelingen door het partner centrum analyseren](./media/analyze-ratings-summary.png)
-
-### <a name="review-comments"></a>Opmerkingen controleren
-
-Beoordelingen worden in chronologische volg orde weer gegeven wanneer ze zijn gepost. In de standaard weergave worden alle beoordelingen weer gegeven. U kunt de beoordelingen per ster waardering filteren met behulp van het **filter** in de vervolg keuzelijst. U kunt ook zoeken naar tref woorden die in de beoordeling worden weer gegeven.  
-
-![Partner centrum analyse opmerkingen analyseren](./media/analyze-reviews.png)

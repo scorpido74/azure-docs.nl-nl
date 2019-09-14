@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 09/06/2019
 ms.author: danlep
-ms.openlocfilehash: 6cf5efb33340844d782dc4481f5834d7590e745a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c0d4bd397c68fe3ed2d36404af9230e2316f3362
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172309"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959189"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Inhoud vertrouwen in Azure Container Registry
 
@@ -43,7 +43,7 @@ Inhoud vertrouwen wordt beheerd met behulp van cryptografische ondertekeningssle
 
 Uw eerste stap is het inschakelen van inhoud vertrouwen op het niveau van het register. Na het inschakelen kunnen clients (gebruikers of services) ondertekende installatiekopieën pushen naar uw register. Als u inhoud vertrouwen voor uw register inschakelt, wordt het gebruik van het register niet beperkt tot consumenten waarvoor inhoud vertrouwen is ingeschakeld. Ook gebruikers waarvoor inhoud vertrouwen niet is ingeschakeld, kunnen uw register gewoon blijven gebruiken. Gebruikers die inhoud vertrouwen op hun clients hebben ingeschakeld, kunnen echter *alleen* ondertekende installatiekopieën in uw register zien.
 
-Als u inhoud vertrouwen voor uw register wilt inschakelen, navigeert u eerst naar het register in Azure Portal. Selecteer onder **beleid**de optie **inhouds vertrouwensrelatie** > **ingeschakeld** > **Opslaan**.
+Als u inhoud vertrouwen voor uw register wilt inschakelen, navigeert u eerst naar het register in Azure Portal. Selecteer onder **beleid**de optie **inhouds vertrouwensrelatie** > **ingeschakeld** > **Opslaan**. U kunt ook de opdracht [AZ ACR config content-Trust update][az-acr-config-content-trust-update] in de Azure CLI gebruiken.
 
 ![Inhoud vertrouwen voor een register inschakelen in Azure Portal][content-trust-01-portal]
 
@@ -75,6 +75,9 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 ## <a name="grant-image-signing-permissions"></a>Verleen machtigingen voor het ondertekenen van installatiekopieën
 
 Alleen de gebruikers of systemen die u daartoe hebt gemachtigd, kunnen vertrouwde installatiekopieën naar uw register pushen. Als u een gebruiker (of een systeem met een service-principal) machtigingen voor het pushen van vertrouwde installatiekopieën wilt verlenen, verleent u de rol `AcrImageSigner` aan hun Azure Active Directory-entiteiten. Dit is een aanvulling op de `AcrPush` (of gelijkwaardige) rol die vereist is voor het pushen van installatie kopieën naar het REGI ster. Zie [Azure container Registry-rollen en-machtigingen](container-registry-roles.md)voor meer informatie.
+
+> [!NOTE]
+> U kunt geen vertrouwde installatie kopie push machtiging verlenen aan het [beheerders account](container-registry-authentication.md#admin-account) van een Azure container Registry.
 
 Detailinformatie over het verlenen van de rol `AcrImageSigner` in Azure Portal en de Azure-opdrachtregelinterface volgt later.
 
@@ -113,7 +116,8 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 
 De `<service principal ID>` kan de **appId**, **objectId** of een van de bijbehorende **servicePrincipalNames** van de service-principal zijn. Zie [Azure Container Registry authentication with service principals](container-registry-auth-service-principal.md) (Azure Container Registry-verificatie met service-principals) voor meer informatie over het werken met service-principals en Azure Container Registry.
 
-Nadat een rol is gewijzigd, `az acr login` voert u uit om het lokale identiteits token voor de Azure CLI te vernieuwen zodat de nieuwe rollen van kracht worden.
+> [!IMPORTANT]
+> Nadat een rol is gewijzigd, `az acr login` voert u uit om het lokale identiteits token voor de Azure CLI te vernieuwen zodat de nieuwe rollen van kracht worden. Zie [toegang tot Azure-resources beheren met RBAC en Azure cli](../role-based-access-control/role-assignments-cli.md) voor meer informatie over het controleren van rollen voor een identiteit en het [oplossen van problemen met RBAC voor Azure-resources](../role-based-access-control/troubleshooting.md).
 
 ## <a name="push-a-trusted-image"></a>Een vertrouwde installatiekopie pushen
 
@@ -214,3 +218,4 @@ Als u inhoud vertrouwen voor uw register wilt uitschakelen, navigeert u naar het
 
 <!-- LINKS - internal -->
 [azure-cli]: /cli/azure/install-azure-cli
+[az-acr-config-content-trust-update]: /cli/azure/acr/config/content-trust#az-acr-config-content-trust-update

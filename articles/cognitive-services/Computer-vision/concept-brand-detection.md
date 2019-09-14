@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: b4bcd07cf7549029d09f5acd58fdf8f92fffed74
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: c3a80cbdd166f77681665ee3675c1a71ce3a9bd6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945292"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967095"
 ---
 # <a name="detect-popular-brands-in-images"></a>Populaire merken detecteren in installatie kopieën
 
@@ -76,5 +76,5 @@ In sommige gevallen haalt de merk detector zowel de logo afbeelding als de stijl
 
 De functie voor merk detectie maakt deel uit van de API voor het [analyseren van afbeeldingen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . U kunt deze API aanroepen via een systeem eigen SDK of via REST-aanroepen. Neem `Brands` in de query parameter **visualFeatures** op. Wanneer u vervolgens het volledige JSON-antwoord krijgt, parseert u de teken reeks voor de inhoud `"brands"` van de sectie.
 
-* [Snelstart: Een installatie kopie analyseren (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
+* [Snelstart: Computer Vision .NET SDK](./quickstarts-sdk/csharp-sdk.md)
 * [Snelstart: Een afbeelding analyseren (REST API)](./quickstarts/csharp-analyze.md)

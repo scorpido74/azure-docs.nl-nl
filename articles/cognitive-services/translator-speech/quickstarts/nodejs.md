@@ -3,20 +3,20 @@ title: 'Quickstart: Translator Speech-API Node.js'
 titlesuffix: Azure Cognitive Services
 description: Ontdek informatie en codevoorbeelden om u te helpen snel aan de slag te gaan met de Translator Speech-API.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: c16b4ca0375376829c7617b488d16151363dc816
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fc5c6fe4040a8f4140cd18ff41373d50f74a6a55
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442148"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965397"
 ---
 # <a name="quickstart-translator-speech-api-with-nodejs"></a>Quickstart: Translator Speech-API met Node.js
 <a name="HOLTop"></a>

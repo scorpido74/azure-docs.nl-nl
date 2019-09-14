@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 28ec42f1634e0546d75f81ed76b1ecbac51f6c3f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: a2b467eed010edbb842d536bd8f6e3f4107fcea8
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277596"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984367"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-resources beheren
 
@@ -87,6 +87,8 @@ U kunt uw abonnements sleutels weer geven en opnieuw instellen in de Azure Porta
 
 ## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>Eindpunt sleutels zoeken in de QnA Maker Portal
 
+Het eind punt bevindt zich in dezelfde regio als de resource omdat de eindpunt sleutels worden gebruikt voor het aanroepen van de Knowledge Base.
+
 Eindpunt-sleutels kunnen worden beheerd vanuit de [QnA Maker portal](https://qnamaker.ai).
 
 1. Meld u aan bij de [QnA Maker-Portal](https://qnamaker.ai), ga naar uw profiel en selecteer vervolgens service- **instellingen**:
@@ -111,6 +113,8 @@ QnA Maker maakt verschillende Azure-resources. Gebruik de volgende tabel om te b
 |App Service|X|Niet mogelijk door het ontwerp|
 |Application Insights|✔|Kan worden gedeeld|
 |Zoekservice|✔|1. `testkb` is een gereserveerde naam voor de QnAMaker-service en kan niet worden gebruikt door anderen.<br>2. Synoniem map met de naam `synonym-map` is gereserveerd voor de QnAMaker-service.<br>3. Het aantal gepubliceerde kennis grondslagen wordt beperkt door de zoek service laag. Als er gratis indexen beschikbaar zijn, kunnen andere services deze gebruiken.|
+
+Meer informatie over de [app service](../../../app-service/index.yml) en de [Zoek service](../../../search/index.yml).
 
 ### <a name="using-a-single-search-service"></a>Eén zoek service gebruiken
 
@@ -202,6 +206,8 @@ U kunt uw huidige versie controleren op https://www.qnamaker.ai/UserSettings. Al
 De beheer service van QnA Maker wordt alleen gebruikt voor de QnA Maker Portal en voor initiële gegevens verwerking. Deze service is alleen beschikbaar in de regio vs-West. Er worden geen klant gegevens opgeslagen in deze service vs-West.
 
 ## <a name="next-steps"></a>Volgende stappen
+
+Meer informatie over de [app service](../../../app-service/index.yml) en de [Zoek service](../../../search/index.yml).
 
 > [!div class="nextstepaction"]
 > [Maken en een kennisdatabase publiceren](../Quickstarts/create-publish-knowledge-base.md)

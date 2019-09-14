@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: bb1443afa14f2a23b807af52ab8fef6ac41ea200
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: HT
+ms.openlocfilehash: d6cf19a07829afea924d3d799b1309cfc5f6329f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934037"
+ms.locfileid: "70959970"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Verifiëren en toegang krijgen tot resources met beheerde identiteiten in Azure Logic Apps
 
@@ -23,7 +23,7 @@ Om toegang te krijgen tot resources in andere Azure Active Directory (Azure AD)-
 > [!NOTE]
 > Uw logische app kan beheerde identiteiten alleen gebruiken met connectors die beheerde identiteiten ondersteunen. Op dit moment ondersteunt alleen beheerde identiteiten alleen de HTTP-connector.
 >
-> In elk Azure-abonnement beschikt u over Maxi maal 10 werk stromen voor logische apps met door het systeem toegewezen beheerde identiteiten.
+> U kunt momenteel Maxi maal 100 logische app-werk stromen hebben met door het systeem toegewezen beheerde identiteiten in elk Azure-abonnement.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -168,7 +168,7 @@ Nadat u uw logische app hebt ingesteld met een door het systeem toegewezen behee
    > 
    > In de eigenschap **doel groep** moet de resource-id-waarde exact overeenkomen met wat Azure AD verwacht, inclusief alle vereiste afsluitende slashes. 
    > U vindt deze resource-ID-waarden in deze [tabel met een beschrijving van de Azure-Services die ondersteuning bieden voor Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
-   > Als u bijvoorbeeld de resource-ID van Azure Resource Manager gebruikt, moet u ervoor zorgen dat de URI een afsluitende slash heeft.
+   > Als u bijvoorbeeld de resource-ID Azure Resource Manager gebruikt, moet u ervoor zorgen dat de URI een afsluitende slash heeft.
 
 1. Ga door met het bouwen van de logische app op de gewenste manier.
 

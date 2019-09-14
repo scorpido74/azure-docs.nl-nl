@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5264491220a4b0756a2a9f0a96aae4ed67809618
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 4e9a6a9ca435971d64ec8f59203a518287e6db4e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879462"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961004"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Logboeken beheren voor een HDInsight-cluster
 
@@ -79,11 +79,11 @@ Apache Ambari vereenvoudigt het beheer, de configuratie en de controle van een H
 
 Als u een lijst met Service weergaven wilt openen, selecteert u het deel venster **Ambari weer gaven** op de pagina Azure portal voor HDInsight.  Deze lijst varieert, afhankelijk van de bibliotheken die u hebt geïnstalleerd.  Zo ziet u een voor beeld van een garen van het wachtrij beheer, Hive-weer gave en TEZ.  Selecteer een service koppeling om de configuratie-en service gegevens te bekijken.  De pagina Ambari UI **stack en version** bevat informatie over de configuratie-en service versie geschiedenis van Cluster Services. Als u wilt navigeren naar deze sectie van de Ambari-gebruikers interface, selecteert u het menu **beheerder** en vervolgens **stacks en versies**.  Selecteer het tabblad **versies** om informatie over de service versie weer te geven.
 
-![Stack en versies](./media/hdinsight-log-management/stack-versions.png)
+![Stack en versies](./media/hdinsight-log-management/ambari-stack-versions.png)
 
-Met de Ambari-gebruikers interface kunt u de configuratie voor alle (of alle) services die worden uitgevoerd op een bepaalde host (of een knoop punt) in het cluster downloaden.  Selecteer het menu **hosts** en vervolgens de koppeling voor de gewenste host. Selecteer op de pagina van de host de knop **acties host** en **down load vervolgens client configuraties**. 
+Met de Ambari-gebruikers interface kunt u de configuratie voor alle (of alle) services die worden uitgevoerd op een bepaalde host (of een knoop punt) in het cluster downloaden.  Selecteer het menu **hosts** en vervolgens de koppeling voor de gewenste host. Selecteer op de pagina van de host de knop **acties host** en **down load vervolgens client configuraties**.
 
-![Configuraties van host-client](./media/hdinsight-log-management/client-configs.png)
+![Configuraties van host-client](./media/hdinsight-log-management/download-client-configs.png)
 
 ### <a name="view-the-script-action-logs"></a>De script actie logboeken weer geven
 

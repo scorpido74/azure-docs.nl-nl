@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 9bccd826a37b66f7f89e70c57260a0db08342421
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 4e36362fd42a147ee900005d84b0af1b4839aae1
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019190"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965136"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Zelfstudie: toepassingen schalen in AKS (Azure Kubernetes Service)
 
@@ -94,7 +94,7 @@ resources:
      cpu: 500m
 ```
 
-In het volgende voor beeld wordt de opdracht [kubectl AutoScale][kubectl-autoscale] gebruikt voor het automatisch schalen van het aantal peulen in de implementatie van *Azure-stemmen-front* . Als het CPU-gebruik hoger wordt dan 50%, wordt het aantal pods automatisch verhoogd tot een maximum van *10* exemplaren. Minimaal *3* exemplaren worden dan gedefinieerd voor de implementatie:
+In het volgende voor beeld wordt de opdracht [kubectl AutoScale][kubectl-autoscale] gebruikt voor het automatisch schalen van het aantal peulen in de implementatie van *Azure-stemmen-front* . Als gemiddeld CPU-gebruik voor alle doel einden 50% van het aangevraagde gebruik overschrijdt, verhoogt de automatische schaalr het aantal tot Maxi maal *10* exemplaren. Minimaal *3* exemplaren worden dan gedefinieerd voor de implementatie:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10

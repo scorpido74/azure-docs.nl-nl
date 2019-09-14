@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: f9dbddcba1545e0a110faa9fbf8e3de9ff189525
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 4980b4d3a4ec7165a4aba3d02561f6c666150924
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879490"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967688"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationeel maken ML-cluster in azure HDInsight
 
@@ -66,15 +66,15 @@ Nadat u het server gebruik van MILLILITERs in HDInsight hebt gebruikt om uw gege
 
     a. Selecteer in het hoofd menu de optie **6** om diagnostische tests uit te voeren.
 
-    ![diagnostic1](./media/r-server-operationalize/diagnostic-1.png)
+    ![diagnostic1](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
     b. Selecteer in het menu diagnostische tests **een**. Wanneer u hierom wordt gevraagd, voert u het wacht woord in dat u hebt opgegeven voor de gebruiker van de lokale beheerder.
 
-    ![diagnostic2](./media/r-server-operationalize/diagnostic-2.png)
+    ![diagnostic2](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
     c. Controleer of de uitvoer laat zien dat de algehele status is geslaagd.
 
-    ![diagnostic3](./media/r-server-operationalize/diagnostic-3.png)
+    ![diagnostic3](./media/r-server-operationalize/hdinsight-diagnostic3.png)
 
     d. Voer in de weer gegeven menu opties **E** in om terug te keren naar het hoofd menu en voer **8** in om het beheer hulpprogramma af te sluiten.
 

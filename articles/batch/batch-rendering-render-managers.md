@@ -1,45 +1,51 @@
 ---
-title: Renderen manager support - Azure Batch
-description: Met behulp van Azure voor het renderen met behulp van Azure Batch rendering manager-integratie
+title: Ondersteuning voor rendering Manager-Azure Batch
+description: Azure gebruiken voor rendering met behulp van de integratie van Azure Batch render Manager
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6878d3b4fc8648db540d016389747eceb45d936a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: eb3ce47e5ffed697392065a1faacbbfaec19f4d1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436165"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983675"
 ---
-# <a name="using-azure-batch-with-render-farm-managers"></a>Met behulp van Azure Batch met render farm managers
+# <a name="using-azure-batch-with-render-farm-managers"></a>Azure Batch gebruiken met Farm beheerders weer geven
 
-Als u een bestaande renderen on-premises-farm, en vervolgens is het zeer waarschijnlijk dat een render manager bepaalt de render farm capaciteit en taken weer te geven.
+Als u een bestaande on-premises render-farm gebruikt, is het zeer waarschijnlijk dat een weergave beheerder de capaciteit van de farm genereren en de taken renderen beheert.
 
-Azure biedt ingebouwde ondersteuning of invoegtoepassingen voor populaire render managers. U kunt vervolgens toevoegen en verwijderen van virtuele machines van Azure, met inbegrip van virtuele machines met de licentieverlening voor de toepassingen waarbij u betaalt voor gebruik en virtuele machines met lage prioriteit.
+Azure biedt ingebouwde ondersteuning of invoeg toepassingen voor populaire weergave beheerders. U kunt vervolgens virtuele machines van Azure toevoegen en verwijderen, inclusief Vm's met de licentie voor het gebruik van toepassingen voor betalen en gebruiken en virtuele machines met lage prioriteit.
 
 De volgende render-managers worden ondersteund:
 
 * [PipelineFX Qube!](https://www.pipelinefx.com/)
-* [Royal Render](https://www.royalrender.de/)
-* [Thinkbox Deadline](https://deadline.thinkboxsoftware.com/)
+* [Koninklijk Rendering](https://www.royalrender.de/)
+* [Deadline Thinkbox](https://deadline.thinkboxsoftware.com/)
 
-## <a name="using-azure-with-pipelinefx-qube"></a>Gebruik van Azure met PipelineFX Qube
+## <a name="azure-render-hub"></a>Azure render-hub
 
-Scripts en instructies voor het inschakelen van Azure Batch pool van virtuele machines moet worden gebruikt als Qube werknemers zijn [de GitHub-opslagplaats](https://github.com/Azure/azure-qube).
+Azure render hub vereenvoudigt het maken en beheren van Azure-render-farms.  Render hub heeft systeem eigen ondersteuning voor PipelineFx Qube en deadline 10.  Zie [de GitHub-opslag plaats](https://github.com/Azure/azure-render-hub)voor meer informatie en gedetailleerde instructies.
 
-## <a name="using-azure-with-royal-render"></a>Gebruik van Azure met Royal Render
+## <a name="using-azure-with-pipelinefx-qube"></a>Azure gebruiken met PipelineFX Qube
 
-Royal Render heeft ingebouwde, integratie van Azure en Azure Batch zodat u kunt om uit te breiden een renderfarm met virtuele machines op basis van Azure. Zie voor een overzicht [de help-bestanden](https://www.royalrender.de/help8/index.html?Cloudrendering.html).
+De Azure render hub biedt ondersteuning voor populaire weergave Managers, inclusief deadline.  Zie [de GitHub-opslag plaats](https://github.com/Azure/azure-render-hub)voor instructies over het implementeren en gebruiken van render hub.
 
-Zie voor een voorbeeld van een klant Royal renderen met behulp van de integratie van Azure, de [Jellyfish Pictures klantverhaal](https://customers.microsoft.com/story/jellyfishpictures).
+Scripts en instructies voor het inschakelen van Azure Batch groeps-Vm's die moeten worden gebruikt als Qube-werk nemers, zijn ook beschikbaar in [de GitHub-opslag plaats](https://github.com/Azure/azure-qube).
 
-## <a name="using-azure-with-thinkbox-deadline"></a>Gebruik van Azure met Thinkbox Deadline
+## <a name="using-azure-with-royal-render"></a>Azure gebruiken met Royal Rendering
 
-Scripts en instructies voor het inschakelen van Azure Batch VM's moet worden gebruikt als de Deadline ondergeschikte servers zich in een pool [de GitHub-opslagplaats](https://github.com/Azure/azure-deadline).
+Royal rendering heeft ingebouwde integratie van Azure en Azure Batch, waarmee u een render-farm kunt uitbreiden met op Azure gebaseerde Vm's. Zie [de Help-bestanden](https://www.royalrender.de/help8/index.html?Cloudrendering.html)voor een overzicht.
+
+Voor een voor beeld van een Royal render-klant die gebruikmaakt van Azure-integratie, raadpleegt u het [verhaal Jellyfish Pictures](https://customers.microsoft.com/story/jellyfishpictures).
+
+## <a name="using-azure-with-thinkbox-deadline"></a>Azure gebruiken met Thinkbox-deadline
+
+De Azure render hub biedt ondersteuning voor populaire weergave Managers, inclusief deadline.  Zie [de GitHub-opslag plaats](https://github.com/Azure/azure-render-hub)voor instructies over het implementeren en gebruiken van render hub.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Probeer de Azure Batch-integratie voor uw render-manager, met behulp van de juiste invoegtoepassing en de instructies op GitHub, indien van toepassing.
+Probeer de Azure Batch-integratie voor uw render Manager uit met behulp van de juiste invoeg toepassing en instructies op GitHub, indien van toepassing.

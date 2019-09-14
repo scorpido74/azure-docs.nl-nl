@@ -9,16 +9,16 @@ ms.devlang: ''
 ms.topic: conceptual
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: 5a613a2eb6499538199306872f2e415019552686
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a4941038288b90bcbfd61660458c564ce64add9e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567719"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958510"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Aan de slag met Azure SQL Database Managed instance auditing
 
@@ -214,7 +214,7 @@ Als u gegevens van de audit logboeken van Event hub wilt gebruiken, moet u een s
 
 ### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Logboeken die zijn opgeslagen in Azure Monitor Logboeken gebruiken en analyseren
 
-Als audit logboeken naar Azure Monitor logboeken worden geschreven, zijn ze beschikbaar in de Log Analytics-werk ruimte, waar u geavanceerde zoek opdrachten kunt uitvoeren op de controle gegevens. Ga als uitgangs punt naar de log Analytics-werk ruimte en klik in de sectie *Algemeen* op Logboeken en voer een eenvoudige query `search "SQLSecurityAuditEvents"` in, zoals: om de audit logboeken weer te geven.  
+Als audit logboeken naar Azure Monitor logboeken worden geschreven, zijn ze beschikbaar in de Log Analytics-werk ruimte, waar u geavanceerde zoek opdrachten kunt uitvoeren op de controle gegevens. Ga als uitgangs punt naar de log Analytics-werk ruimte en klik in de sectie *Algemeen* op *Logboeken* en voer een eenvoudige query `search "SQLSecurityAuditEvents"` in, zoals: om de audit logboeken weer te geven.  
 
 Met Azure Monitor-Logboeken kunt u in realtime operationeel inzicht krijgen met behulp van geïntegreerde Zoek-en aangepaste Dash boards waarmee u miljoenen records in al uw workloads en servers eenvoudig kunt analyseren. Zie voor aanvullende nuttige informatie over Azure Monitor Zoek taal en-opdrachten in Logboeken [Azure monitor logboeken zoeken](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
 

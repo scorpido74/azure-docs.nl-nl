@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 5/31/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 90ccd6c827371d9bf72391e2b24c7dcef31f36c9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 8d42395bc4f813fecf3820024539999a1129921b
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844627"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983802"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Quickstart: Een AKS-cluster (Azure Kubernetes Service) implementeren met Azure Portal
 
@@ -52,7 +52,7 @@ Voltooi de volgende stappen om een AKS-cluster te maken:
    - Maak een nieuwe Service-Principal door het veld **Service Principal** te verlaten met **(nieuw) standaard Service-Principal**. U kunt ook *Service-Principal configureren* selecteren om een bestaande te gebruiken. Als u een bestaand account gebruikt, moet u de SPN-client-ID en het geheim opgeven.
    - Schakel de optie voor Kubernetes-toegangsbeheer op basis van rollen (RBAC) in. Dit biedt meer nauw keurige controle over toegang tot de Kubernetes-resources die zijn geïmplementeerd in uw AKS-cluster.
 
-    Standaard worden *basis* netwerkfuncties gebruikt en Azure Monitor voor containers is ingeschakeld. Klik op **beoordeling + maken** en **Maak** een validatie wanneer de verificatie is voltooid.
+Standaard worden *basis* netwerkfuncties gebruikt en Azure Monitor voor containers is ingeschakeld. Klik op **beoordeling + maken** en **Maak** een validatie wanneer de verificatie is voltooid.
 
 Het duurt enkele minuten om het AKS-cluster te maken. Wanneer de implementatie is voltooid, klikt **u op Ga naar resource**of bladert u naar de AKS-cluster resource groep, zoals *myResourceGroup*, en selecteert u de AKS-resource, zoals *myAKSCluster*. Het AKS-cluster dashboard wordt weer gegeven, zoals in dit voor beeld:
 

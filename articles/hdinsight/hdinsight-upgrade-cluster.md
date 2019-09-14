@@ -4,15 +4,16 @@ description: Meer informatie over richt lijnen voor het bijwerken van uw Azure H
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: f4458b33edb9d55c30de8c5168668743abb33161
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a62da0d27d21589f7b75a89cc184ce9f456f1fed
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811639"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960696"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>HDInsight-cluster upgraden naar een nieuwere versie
 Als u gebruik wilt maken van de nieuwste HDInsight-functies, raden we aan dat HDInsight-clusters worden bijgewerkt naar de nieuwste versie. Volg de onderstaande richt lijnen om de versies van uw HDInsight-cluster bij te werken.
@@ -23,7 +24,7 @@ Als u gebruik wilt maken van de nieuwste HDInsight-functies, raden we aan dat HD
 ## <a name="upgrade-tasks"></a>Upgrade taken
 De werk stroom voor het upgraden van een HDInsight-cluster is als volgt.
 
-![Werk stroom diagram bijwerken](./media/hdinsight-upgrade-cluster/upgrade-workflow.png)
+![Werk stroom diagram bijwerken](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
 
 1. Lees elke sectie van dit document voor meer informatie over wijzigingen die mogelijk vereist zijn bij het upgraden van uw HDInsight-cluster.
 2. Maak een cluster als test-of kwaliteits borgings omgeving. Zie [informatie over het maken van HDInsight-clusters op basis van Linux](hdinsight-hadoop-provision-linux-clusters.md) voor meer informatie over het maken van een cluster.

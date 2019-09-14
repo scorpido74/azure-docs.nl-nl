@@ -11,21 +11,21 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 1189faf64dc3619d0e4581641c2c66d0b527754a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 96f1f98f95bb726864553c81245e250cf907fb05
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813446"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961544"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Extern bureaublad installeren en configureren om verbinding te maken met een virtuele Linux-machine in azure
 Virtuele Linux-machines (Vm's) in Azure worden meestal beheerd vanaf de opdracht regel met behulp van een SSH-verbinding (Secure Shell). Wanneer u geen ervaring hebt met Linux of voor snelle probleemoplossings scenario's, is het gebruik van extern bureau blad mogelijk eenvoudiger. In dit artikel wordt beschreven hoe u een desktop-omgeving ([xfce](https://www.xfce.org)) en extern bureau blad ([xrdp](https://www.xrdp.org)) installeert en configureert voor uw virtuele Linux-machine met behulp van het Resource Manager-implementatie model.
 
 
 ## <a name="prerequisites"></a>Vereisten
-Voor dit artikel is een bestaande Ubuntu 16,04 LTS-VM vereist in Azure. Als u een virtuele machine wilt maken, gebruikt u een van de volgende methoden:
+Voor dit artikel is een bestaande Ubuntu 18,04 LTS-VM vereist in Azure. Als u een virtuele machine wilt maken, gebruikt u een van de volgende methoden:
 
 - De [Azure cli](quick-create-cli.md)
 - [Azure Portal](quick-create-portal.md)
@@ -34,7 +34,7 @@ Voor dit artikel is een bestaande Ubuntu 16,04 LTS-VM vereist in Azure. Als u ee
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Een desktop omgeving installeren op uw virtuele Linux-machine
 Voor de meeste Linux-Vm's in Azure is geen bureaublad omgeving standaard geïnstalleerd. Virtuele Linux-machines worden vaak beheerd met SSH-verbindingen in plaats van een desktop omgeving. Er zijn verschillende desktop omgevingen in Linux die u kunt kiezen. Afhankelijk van uw keuze van de bureaublad omgeving, kan het één tot 2 GB aan schijf ruimte verbruiken en vijf tot tien minuten duren om alle vereiste pakketten te installeren en te configureren.
 
-In het volgende voor beeld wordt de licht gewicht [xfce4](https://www.xfce.org/) Desktop Environment geïnstalleerd op een Ubuntu 16,04 LTS-VM. Opdrachten voor andere distributies variëren enigszins `yum` per Red Hat Enterprise Linux, configureren van de juiste `selinux` regels of gebruiken `zypper` om te installeren op Suse, bijvoorbeeld).
+In het volgende voor beeld wordt de licht gewicht [xfce4](https://www.xfce.org/) Desktop Environment geïnstalleerd op een Ubuntu 18,04 LTS-VM. Opdrachten voor andere distributies variëren enigszins `yum` per Red Hat Enterprise Linux, configureren van de juiste `selinux` regels of gebruiken `zypper` om te installeren op Suse, bijvoorbeeld).
 
 Eerst SSH naar uw VM. In het volgende voor beeld wordt verbinding gemaakt met de virtuele machine met de naam *myvm.westus.cloudapp.Azure.com* met de gebruikers naam van *azureuser*. Gebruik uw eigen waarden:
 

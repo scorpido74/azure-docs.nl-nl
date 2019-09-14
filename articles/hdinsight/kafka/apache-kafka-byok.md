@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: f619a0179849e2ca17a0528d97ef13f0788a4838
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 09cca0eda9a82b1605323678d7442700dc1a2292
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811541"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960496"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Uw eigen sleutel voor Apache Kafka in azure HDInsight nemen
 
@@ -58,7 +58,7 @@ Als u een BYOK Kafka-cluster wilt maken, gaat u als volgt te werk:
 
         b. Stel **Opties** in voor het **genereren** en geven van de sleutel een naam.
 
-        ![Sleutel naam genereren](./media/apache-kafka-byok/kafka-create-a-key.png "Sleutel naam genereren")
+        ![Sleutel naam genereren](./media/apache-kafka-byok/apache-kafka-create-key.png "Sleutel naam genereren")
 
         c. Selecteer de sleutel die u hebt gemaakt in de lijst met sleutels.
 
@@ -103,7 +103,7 @@ Als u een BYOK Kafka-cluster wilt maken, gaat u als volgt te werk:
 
    Als u de sleutel wilt draaien, moet u de volledige URL van de nieuwe sleutel hebben (zie stap 3 van [de Key Vault en sleutels instellen](#setup-the-key-vault-and-keys)). Als dat het geval is, gaat u naar de sectie cluster eigenschappen Kafka in de portal en klikt u op de **sleutel wijzigen** onder URL voor de **schijf versleutelings sleutel**. Voer in de nieuwe sleutel-URL in en verzend de sleutel om deze te draaien.
 
-   ![Kafka draai schijf versleutelings sleutel](./media/apache-kafka-byok/kafka-change-key.png)
+   ![Kafka draai schijf versleutelings sleutel](./media/apache-kafka-byok/apache-kafka-change-key.png)
 
 ## <a name="faq-for-byok-to-apache-kafka"></a>Veelgestelde vragen over BYOK naar Apache Kafka
 

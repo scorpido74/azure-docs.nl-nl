@@ -10,23 +10,23 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 22955ba4b885b264210dc8788f2a410b785b28b4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 50325b75280160a3fefa5b5487df29a25e53bddd
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883969"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966958"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Uw model gebruiken met de Voorspellings-API
 
 Nadat u uw model hebt getraind, kunt u afbeeldingen testen via een programma door deze te verzenden naar het API-eind punt.
 
 > [!NOTE]
-> In dit document ziet u hoe u een afbeelding bij de voorspellings-API kunt indienen met behulp van C#. Zie voor meer informatie en voor beelden de voor Spellings- [API-referentie](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15).
+> In dit document ziet u hoe u een afbeelding bij de voorspellings-API kunt indienen met behulp van C#. Zie voor meer informatie en voor beelden de voor [Spellings-API-referentie](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15).
 
 ## <a name="publish-your-trained-iteration"></a>Uw getrainde iteratie publiceren
 
-Op de [Custom Vision-webpagina](https://customvision.ai) selecteert u uw project en vervolgens selecteert u het tabblad __Prestaties__ .
+Op de [Custom Vision-webpagina](https://customvision.ai) selecteert u uw project en vervolgens selecteert u het tabblad __Prestaties__.
 
 Als u installatie kopieën wilt verzenden naar de Voorspellings-API, moet u eerst uw iteratie voor de voor spelling publiceren, die u kunt doen door __publiceren__ te selecteren en een naam op te geven voor de gepubliceerde iteratie. Hiermee wordt uw model toegankelijk gemaakt voor de Voorspellings-API van uw Custom Vision Azure-resource.
 
@@ -38,22 +38,20 @@ Zodra uw model is gepubliceerd, wordt het label "gepubliceerd" weer gegeven naas
 
 ## <a name="get-the-url-and-prediction-key"></a>De URL en voorspellingssleutel ophalen
 
-Zodra uw model is gepubliceerd, kunt u de vereiste gegevens ophalen door de URL voor de voor __Spelling__ te selecteren. Hiermee opent u een dialoog venster met informatie over het gebruik van de Voorspellings-API, met inbegrip van de Voorspellings- __URL__ en de Voorspellings __sleutel__ .
+Zodra uw model is gepubliceerd, kunt u de vereiste gegevens ophalen door de URL voor de voor __Spelling__te selecteren. Hiermee opent u een dialoog venster met informatie over het gebruik van de Voorspellings-API, met inbegrip van de __Voorspellings-URL__ en de __Voorspellings sleutel__.
 
 ![Het tabblad prestaties wordt weer gegeven met een rode rechthoek rondom de knop voor de Voorspellings-URL.](./media/use-prediction-api/published-iteration-prediction-url.png)
 
 ![Het tabblad prestaties wordt weer gegeven met een rode rechthoek rondom de waarde van de Voorspellings-URL voor het gebruik van een afbeeldings bestand en de waarde voor de voor Spellings sleutel.](./media/use-prediction-api/prediction-api-info.png)
 
-> [!TIP]
-> De __Voorspellings sleutel__ kan ook worden gevonden op de [Azure Portal](https://portal.azure.com) pagina voor de Custom Vision Azure-resource die aan uw project is gekoppeld, onder de Blade __sleutels__ .
 
-In deze hand leiding maakt u gebruik van een lokale installatie kopie en kopieert u de URL onder **Als u een afbeeldings bestand** op een tijdelijke locatie hebt. Kopieer ook de bijbehorende Voorspellings __sleutel__ waarde.
+In deze hand leiding maakt u gebruik van een lokale installatie kopie en kopieert u de URL onder **Als u een afbeeldings bestand** op een tijdelijke locatie hebt. Kopieer ook de bijbehorende __Voorspellings sleutel__ waarde.
 
 ## <a name="create-the-application"></a>De toepassing maken
 
 1. Maak in Visual Studio een nieuwe C# console toepassing.
 
-1. Gebruik de volgende code als de hoofdtekst van het bestand __Program.cs__ .
+1. Gebruik de volgende code als de hoofdtekst van het bestand __Program.cs__.
 
     ```csharp
     using System;

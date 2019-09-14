@@ -5,15 +5,15 @@ author: DCtheGeek
 manager: carmonm
 ms.service: blueprints
 ms.topic: sample
-ms.date: 08/21/2019
+ms.date: 09/04/2019
 ms.author: dacoulte
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 58deb4fff4cee21acbf99d3c4035a9941697bed4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ea2c56e35741a49d057f2261f7b53fb754a43f8b
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231830"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967989"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-voorbeelden
 
@@ -23,7 +23,7 @@ De volgende tabel bevat links naar voorbeelden voor Azure Blueprints. Elk voorbe
 
 |  |  |
 |---------|---------|
-| [Canada Federal PBMM](./canada-federal-pbmm/control-mapping.md) | Voorziet in richtlijnen om te voldoen aan de naleving van PBMM (Canada Federal Protected B, Medium Integrity, Medium Availability). |
+| [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Voorziet in richtlijnen om te voldoen aan de naleving van PBMM (Canada Federal Protected B, Medium Integrity, Medium Availability). |
 | [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1.1.0/index.md)| Biedt een set beleidsregels om te voldoen aan de aanbevelingen van CIS Microsoft Azure Foundations Benchmark. |
 | [IRS 1075](./irs-1075/index.md) | Deze blauwdruk biedt richtlijnen voor naleving van IRS 1075.|
 | [ISO 27001](./iso27001/index.md) | Deze blauwdruk biedt richtlijnen voor naleving van ISO 27001. |

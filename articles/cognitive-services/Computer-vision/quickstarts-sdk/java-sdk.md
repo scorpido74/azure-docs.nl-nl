@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: fd8abf81589f3338f9e45c6c1d23681269ccc654
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 16a487dc007526f685edb52726f5797303a30c11
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164857"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966992"
 ---
 # <a name="quickstart-computer-vision-client-library-for-java"></a>Quickstart: Client bibliotheek voor Java Computer Vision
 
@@ -42,7 +42,7 @@ Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u z
 * Ontvang een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/#decision) die zeven dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Bekijk uw resource op het [Azure Portal](https://portal.azure.com/).
 
-Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service- `COMPUTER_VISION_SUBSCRIPTION_KEY` eindpunt teken reeks, respectievelijk met de naam en. `COMPUTER_VISION_ENDPOINT`
+Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service- `COMPUTER_VISION_SUBSCRIPTION_KEY` eindpunt `COMPUTER_VISION_ENDPOINT`teken reeks, respectievelijk met de naam en.
 
 ### <a name="create-a-new-gradle-project"></a>Een nieuw Gradle-project maken
 
@@ -106,7 +106,7 @@ De volgende klassen en interfaces verwerken enkele van de belangrijkste functies
 |Name|Description|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | Deze klasse is nodig voor alle Computer Vision functionaliteit. U maakt de app met uw abonnements gegevens en gebruikt deze om instanties van andere klassen te maken.|
-|[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| Deze klasse is afkomstig van het client object en verwerkt rechtstreeks alle afbeeldings bewerkingen, zoals het analyseren van afbeeldingen, tekst detectie en het genereren van miniaturen.
+|[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| Deze klasse is afkomstig van het client object en verwerkt rechtstreeks alle afbeeldings bewerkingen, zoals het analyseren van afbeeldingen, tekst detectie en het genereren van miniaturen.|
 |[VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable)| Deze opsomming definieert de verschillende typen afbeeldings analyse die kunnen worden uitgevoerd in een standaard analyse bewerking. U geeft een set VisualFeatureTypes-waarden op, afhankelijk van uw behoeften. |
 
 ## <a name="code-examples"></a>Code voorbeelden
@@ -121,7 +121,7 @@ Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Co
 > [!NOTE]
 > In deze Quick Start wordt ervan uitgegaan dat u [een omgevings variabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) hebt gemaakt `COMPUTER_VISION_SUBSCRIPTION_KEY`voor uw computer vision sleutel met de naam.
 
-Met de volgende code wordt `main` een methode toegevoegd aan uw klasse en worden er variabelen gemaakt voor het Azure-eind punt en de sleutel van uw resource. U moet uw eigen eindpunt teken reeks invoeren, die u kunt vinden door de overzichts sectie van de Azure portal te controleren. 
+Met de volgende code wordt `main` een methode toegevoegd aan uw klasse en worden er variabelen gemaakt voor het Azure-eind punt en de sleutel van uw resource. U moet uw eigen eindpunt teken reeks invoeren, die u kunt vinden door de **overzichts** sectie van de Azure portal te controleren. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_mainvars)]
 
@@ -172,17 +172,17 @@ Met de volgende code wordt de gedetecteerde categorie van de afbeelding opgehaal
 
 ### <a name="get-image-tags"></a>Afbeeldings Tags ophalen
 
-Met de volgende code wordt de set gedetecteerde labels in de afbeelding opgehaald. Zie [inhouds Tags](../concept-tagging-images.md) voor meer informatie
+Met de volgende code wordt de set gedetecteerde labels in de afbeelding opgehaald. Zie [inhouds Tags](../concept-tagging-images.md) voor meer informatie.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_tags)]
 
-### <a name="get-faces"></a>Gezichten ophalen
+### <a name="detect-faces"></a>Gezichten detecteren
 
 Met de volgende code worden de gedetecteerde gezichten in de afbeelding met hun rechthoek coördinaten als resultaat gegeven en selecteert u face Attributes. Zie [gezichts detectie](../concept-detecting-faces.md) voor meer informatie.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_faces)]
 
-### <a name="get-adult-or-racy-content"></a>Inhoud voor volwassenen of ongepaste ophalen
+### <a name="detect-adult-or-racy-content"></a>Inhoud voor volwassenen of ongepaste detecteren
 
 Met de volgende code wordt de gedetecteerde aanwezigheid van inhoud voor volwassenen of ongepaste in de installatie kopie afgedrukt. Zie [inhoud voor volwassenen en ongepaste](../concept-detecting-adult-content.md) voor meer informatie.
 
@@ -205,6 +205,12 @@ Met de volgende code worden gegevens over gedetecteerde beroemdheden in de insta
 Met de volgende code worden gegevens over gedetecteerde bezienswaardigheden in de installatie kopie geparseerd.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_landmarks)]
+
+### <a name="get-the-image-type"></a>Het afbeeldings type ophalen
+
+Met de volgende code wordt informatie over het type afbeelding&mdash;afgedrukt, ongeacht of het een illustratie of lijn tekening is.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_imagetype)]
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 

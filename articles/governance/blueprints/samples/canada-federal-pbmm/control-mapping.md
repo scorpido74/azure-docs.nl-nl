@@ -3,16 +3,16 @@ title: Voor beeld-Canada Federal PBMM blauw druk-Control-toewijzing
 description: De toewijzing van het voor beeld van Canada Federal PBMM blauw drukken tot Azure Policy.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/21/2019
+ms.date: 09/04/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 068e3253dbcb7ef8d0a5c0191ac1a0b75bd8c0e9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 18c098263a4760c8b4b48f6799bcb263aa9709a9
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918767"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968289"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>De toewijzing van het voor beeld van Canada Federal PBMM blauw drukken
 
@@ -310,6 +310,12 @@ Deze blauw druk helpt u bij het controleren van uw systeem door logboek registra
 > De beschik baarheid van specifieke Azure Policy definities kan verschillen in Azure Government en andere nationale Clouds. 
 
 ## <a name="next-steps"></a>Volgende stappen
+
+U hebt de beheer toewijzing van het voor beeld van Canada Federal PBMM Blue gecontroleerd. Ga vervolgens naar de volgende artikelen voor meer informatie over het overzicht en hoe u dit voor beeld implementeert:
+
+> [!div class="nextstepaction"]
+> [Canada Federal PBMM blauw druk-overzicht](./control-mapping.md)
+> [Canada Federal PBMM blauw druk-implementatie stappen](./deploy.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 

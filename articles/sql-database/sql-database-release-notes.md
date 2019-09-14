@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 55e8121152aa281ab1025f1e8ded53c4b00c3d44
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ef19d22b5c47c51f5ee3f74a4d7ab06725f7ed41
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566935"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968333"
 ---
 # <a name="sql-database-release-notes"></a>Opmerkingen bij de release SQL Database
 
@@ -22,9 +22,11 @@ Dit artikel bevat een overzicht van SQL Database functies die momenteel beschikb
 
 ## <a name="features-in-public-preview"></a>Functies in open bare preview
 
+### <a name="single-databasetabsingle-database"></a>[Individuele database](#tab/single-database)
+
 | Functie | Details |
 | ---| --- |
-| Versneld database herstel met afzonderlijke data bases en elastische Pools | Zie versneld [database herstel](sql-database-accelerated-database-recovery.md)voor meer informatie.|
+| Versneld database herstel met afzonderlijke data bases en elastische Pools | Zie [versneld database herstel](sql-database-accelerated-database-recovery.md)voor meer informatie.|
 |Aantal benadering|Zie [geschatte aantallen DISTINCT](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)voor meer informatie.|
 |Batch-modus op Rowstore (onder compatibiliteits niveau 150)|Zie [batch-modus op Rowstore](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)voor meer informatie.|
 | Gegevensdetectie en -classificatie  |Zie [Azure SQL database en SQL Data Warehouse gegevens detectie & classificatie](sql-database-data-discovery-and-classification.md)voor meer informatie.|
@@ -43,6 +45,19 @@ Dit artikel bevat een overzicht van SQL Database functies die momenteel beschikb
 | Transparent Data Encryption (TDE) met Bring Your Own Key (BYOK) met beheerde instanties |Zie [Azure SQL transparent Data Encryption met door de klant beheerde sleutels in azure Key Vault voor meer informatie: Ondersteuning](transparent-data-encryption-byok-azure-sql.md)voor Bring your own Key.|
 | &nbsp; |
 
+### <a name="managed-instancetabmanaged-instance"></a>[Beheerd exemplaar](#tab/managed-instance)
+
+| Functie | Details |
+| ---| --- |
+| <a href="/azure/sql-database/sql-database-instance-pools">Instantie groepen</a> | Een handige en rendabele manier om kleinere SQL-instanties naar de cloud te migreren. |
+| <a href="https://aka.ms/managed-instance-tde-byok">Uw eigen versleutelings sleutels meenemen</a> | Migreer data base van on-premises waarop al Transparent Data Encryption (TDE) is ingeschakeld met bestaande TDE-sleutels. |
+| <a href="https://aka.ms/managed-instance-failover-groups">Groepen met geo-gedistribueerde failover</a> | Bewaar een kopie van het exemplaar in een andere regio en zorg ervoor dat uw gegevens ook beschikbaar zijn in het scenario voor het regionale nood geval. |
+| <a href="https://aka.ms/managed-instance-aadlogins">Azure AD server-principals op exemplaar niveau (aanmeldingen)</a> | Aanmeldingen op server niveau maken met behulp van de instructie voor het <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">maken van een aanmelding vanuit een externe provider</a> . |
+| [Transactionele replicatie](sql-database-managed-instance-transactional-replication.md) | Repliceer de wijzigingen van uw tabellen in andere data bases die zijn geplaatst in beheerde exemplaren, afzonderlijke data bases of SQL Server exemplaren, of werk uw tabellen bij wanneer sommige rijen worden gewijzigd in andere beheerde exemplaren of SQL Server exemplaar. |
+| &nbsp; |
+
+---
+
 ## <a name="updates"></a>Updates
 
 Zie [SQL database service-updates](https://azure.microsoft.com/updates/?product=sql-database)voor een lijst met updates en verbeteringen van SQL database.
@@ -51,4 +66,4 @@ Zie [service-updates](https://azure.microsoft.com/updates)voor updates en verbet
 
 ## <a name="contribute-to-content"></a>Bijdragen aan inhoud
 
-Raadpleeg de [hand leiding voor docs](https://docs.microsoft.com/contribute/)-inzenders om een bijdrage te leveren aan de Azure SQL database documentatie.
+Raadpleeg de [hand leiding voor docs-inzenders](https://docs.microsoft.com/contribute/)om een bijdrage te leveren aan de Azure SQL database documentatie.

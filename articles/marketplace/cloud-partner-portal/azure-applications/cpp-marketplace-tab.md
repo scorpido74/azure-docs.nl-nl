@@ -1,134 +1,134 @@
 ---
-title: Azure-toepassing aanbieding Marketplace-tabblad
-description: Gebruik het tabblad Marketplace marketing assets voor een aanbieding van Azure-toepassing te identificeren.
+title: Het tabblad Marketplace van Azure-toepassing
+description: Op het tabblad Marketplace kunt u marketing assets voor een Azure-toepassings aanbieding identificeren.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 7ea6e6be0597a114b02fad8c41e37d21ce1f6028
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5d54e4c6744675da0dea5b095590b71df6d2641
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942970"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962865"
 ---
-# <a name="azure-application-marketplace-tab"></a>Azure-toepassing Marketplace tabblad
+# <a name="azure-application-marketplace-tab"></a>Tabblad Azure Application Marketplace
 
-Gebruik het tabblad Marketplace om te beschrijven van uw Azure-toepassing en marketing activa. Op dit tabblad bevat de volgende formulieren: Overzicht, Marketing-artefacten, Lead Management en juridische.
+Op het tabblad Marketplace kunt u uw Azure-toepassing beschrijven en marketing middelen aanbieden. Dit tabblad bevat de volgende formulieren: Overzicht, marketing artefacten, Lead beheer en juridisch.
 
-## <a name="overview-form"></a>Overzichtsformulier
+## <a name="overview-form"></a>Overzichts formulier
 
-Het formulier overzicht bevat de vereiste en optionele velden wordt weergegeven in de volgende schermopname. Verplichte velden zijn indicted met een asterisk (*).
+Het overzichts formulier bevat de vereiste en optionele velden die worden weer gegeven in de volgende scherm opname. Vereiste velden worden gedicteerd door een asterisk (*).
 
-![Overzichtsformulier](./media/azureapp-marketplace-overview.png)
+![Overzichts formulier](./media/azureapp-marketplace-overview.png)
 
-De volgende tabel beschrijft de instellingen moet worden gebruikt voor het maken van een webwinkel voor de aanbieding.   De velden die zijn toegevoegd met een sterretje zijn vereist.
+In de volgende tabel worden de instellingen beschreven die moeten worden gebruikt voor het maken van een winkel voor de aanbieding.   De velden die zijn toegevoegd met een sterretje zijn vereist.
 
 |      Veld         |    Description    |
 |  ---------------   |  ---------------  |
-| **Titel\***        | De titel van de aanbieding. Het wordt prominent weergegeven in de marketplace. De maximale lengte is 50 tekens. |
-| **Samenvatting\***      | Korte samenvatting van de aanbieding. De maximale lengte is 100 tekens.           |
-| **Lange samenvatting\*** | Meer samenvatting van de aanbieding (Hoewel deze kan niet hetzelfde zijn als de samenvatting). De maximale lengte is 256 tekens.           |
-| **Beschrijving\***  | Beschrijving van de aanbieding. De maximale lengte is 3000 tekens. Eenvoudige HTML-opmaak is toegestaan, met inbegrip van &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt; en header-codes.  |
-| **Marketing-id\*** | Een unieke URL om te koppelen aan deze aanbieding omvat gewoonlijk van uw organisatie en de naam van de oplossing, maximaal 50 tekens. Kies een korte, beschrijvende marketing-id voor uw service. Dit wordt gebruikt in marketplace-URL's voor deze aanbieding. Bijvoorbeeld, als uw uitgevers-ID is 'contoso' en uw marketing-id is 'sampleApp', is de URL voor uw aanbieding in Azure Marketplace https://azuremarketplace.microsoft.com/en-us/marketplace/apps/contoso.sampleApp  
-| **Preview-versie abonnement-id 's\*** | Toevoegen van één tot 100 abonnements-id's van viewers. Deze technische vermeld abonnementen hebben toegang tot uw aanbieding terwijl het is beschikbaar in Preview-versie nadat deze gepubliceerd, voordat u deze meteen live.          |
-| **Nuttige koppelingen**    | Desgewenst kunt u koppelingen naar diverse bronnen opgeven voor gebruikers van uw aanbieding, zoals ondersteuning, documentatie, forums, enzovoort.  Het is raadzaam dat u ten minste één koppeling aan uw documentatie toevoegen.            |
-| **Aanbevolen categorieën (maximaal 5)\*** | Selecteer één tot vijf categorieën. De geselecteerde categorieën worden gebruikt om uw aanbieding worden toegewezen aan de productcategorieën die beschikbaar zijn in Azure Marketplace en Azure-Portal. Ze worden weergegeven op de pagina's bladeren en op de pagina met details van uw product. |
+| **Hoofd\***        | De titel van de aanbieding. Deze wordt duidelijk weer gegeven in de Marketplace. De maximale lengte is 50 tekens. |
+| **Overzicht\***      | Korte samen vatting van de aanbieding. De maximale lengte is 100 tekens.           |
+| **Lange samen vatting\*** | Een langere samen vatting van de aanbieding (hoewel deze mogelijk hetzelfde is als de samen vatting). De maximale lengte is 256 tekens.           |
+| **Beschrijvingen\***  | De beschrijving van de aanbieding. De maximale lengte is 3000 tekens. Eenvoudige HTML-opmaak is toegestaan, &lt;zoals&gt;p &lt;,&gt;em &lt;,&gt;ul &lt;,&gt;Li ,&lt;OL&gt; en header tags.  |
+| **Marketing-id\*** | Een unieke URL om aan deze aanbieding te koppelen, bevat doorgaans de naam van uw organisatie en de oplossing, maximale lengte van 50 tekens. Kies een korte, beschrijvende marketing-id voor uw service. Dit wordt gebruikt in Url's voor Marketplace voor deze aanbieding. Als uw uitgevers-ID bijvoorbeeld ' Contoso ' is en uw marketing-id ' sampleApp ' is, wordt de URL voor uw aanbieding in azure Marketplace https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
+| **Preview-abonnement-Id's\*** | Voeg toe van een tot 100-abonnement-id's van de Previewers. Deze op wit vermelde abonnementen hebben toegang tot uw aanbieding terwijl deze beschikbaar is in de preview-versie nadat deze is gepubliceerd, voordat deze live gaat.          |
+| **Nuttige koppelingen**    | U kunt eventueel ook koppelingen naar verschillende bronnen geven voor gebruikers van uw aanbieding, zoals ondersteuning, Documentatie, forums, enzovoort.  Het is raadzaam om ten minste één koppeling naar uw documentatie toe te voegen.            |
+| **Voorgestelde categorieën (Maxi maal 5)\*** | Selecteer een van de vijf categorieën. De geselecteerde categorieën worden gebruikt om uw aanbieding toe te wijzen aan de product categorieën die beschikbaar zijn in azure Marketplace en Azure Portal. Deze worden weer gegeven op de Blade pagina's en op de pagina met product gegevens. |
 |  |  |
 
 
 ## <a name="marketing-artifacts"></a>Marketing artefacten
 
-Het formulier Marketing artefacten heeft de vereiste en optionele velden weergegeven in de volgende schermopname. Verplichte velden zijn indicted met een asterisk (*).
+Het formulier marketing artefacten bevat de vereiste en optionele velden die worden weer gegeven in de volgende scherm opname. Vereiste velden worden gedicteerd door een asterisk (*).
 
-![Marketing artefacten formulier](./media/azureapp-marketplace-artifacts.png)
+![Formulier marketing artefacten](./media/azureapp-marketplace-artifacts.png)
 
-De volgende tabel beschrijft de marketing-artefacten.
+In de volgende tabel worden de marketing artefacten beschreven.
 
 |      Veld         |    Description    |
 |  ---------------   |  ---------------  |
-| **Kleine\***        | Klein logo: 40, 40 pixels in PNG-indeling     |
-| **Gemiddeld\***       | Gemiddeld logo: 90 x 90 pixels in PNG-indeling    |
-| **Large\***        | Grote logo: 115 x 115 pixels in PNG-indeling   |
-| **Breed\***         | Breed logo: 255 x 115 pixels in PNG-indeling    |
-| **Hero**           | Optionele hero logo: 815 x 290 pixels in PNG-indeling. **Opmerking:** De hero-pictogram kan niet worden verwijderd nadat deze geüpload. |
-| **Schermafbeeldingen (maximaal 5)** |        Schermafbeeldingen worden weergegeven op de pagina met details van uw product. Ze zijn een goede manier om te communiceren visueel wat uw app doet en hoe het werkt. U kunt bijvoorbeeld architectuurdiagrammen weergeven of de aanvraag illustraties gebruiken. Schermafbeeldingen zijn optioneel en u beperkt tot 5 per SKU. Een schermopname toevoegen:<ul><li>Selecteer **+ toevoegen schermafbeelding** om de schermafbeelding-venster te openen</li><li>**Naam** -Voer een naam/titel (maximale lengte van 100 tekens).</li><li>**Uploaden** -Upload de installatiekopie. Dit moet een PNG-indeling hebben en de grootte is 533 x 324 pixels.</li></ul>           |
-| **Video toevoegen**      | Optioneel, video's worden weergegeven op de pagina met details van uw product. Ze zijn een goede manier om te communiceren visueel wat uw toepassing doet en hoe het werkt. Een video wilt toevoegen: <ul><li>Selecteer **+ toevoegen video** om de Video-venster te openen</li><li>**Naam** -Voer een naam/titel (maximale lengte van 100 tekens).</li><li>**Koppeling** : Voer de URL voor de site die als host voor de video (YouTube of Vimeo fungeert)</li><li>**Miniatuur** – een miniatuur uploaden. Dit moet een PNG-indeling hebben en de grootte is 533 x 324 pixels.</li></ul>          |
+| **Geringe\***        | Klein logo: 40x40 pixels in PNG-indeling     |
+| **Drager\***       | Gemiddeld logo: 90x90 pixels in PNG-indeling    |
+| **Lange\***        | Groot logo: 115x115 pixels in PNG-indeling   |
+| **Organisatiebreed\***         | Breed logo: 255x115 pixels in PNG-indeling    |
+| **Hero**           | Optionele held-logo: 815x290 pixels in PNG-indeling. **Opmerking:** Het held pictogram kan niet worden verwijderd nadat het is geüpload. |
+| **Scherm afbeeldingen (max. 5)** |        Scherm afbeeldingen worden weer gegeven op de pagina met product gegevens. Ze zijn een goede manier om visueel te communiceren wat uw app doet en hoe het werkt. U kunt bijvoorbeeld architectuur diagrammen weer geven of voorbeeld illustraties gebruiken. Scherm afbeeldingen zijn optioneel en u bent beperkt tot 5 per SKU. Een scherm afbeelding toevoegen:<ul><li>Selecteer **+ scherm opname toevoegen** om het scherm afbeeldings venster te openen</li><li>**Naam** : Voer een naam/titel in (maximale lengte van 100 tekens.)</li><li>**Upload** : Upload de installatie kopie. Het moet de PNG-indeling hebben en de grootte is 533 x 324 pixels.</li></ul>           |
+| **Video toevoegen**      | Optioneel, Video's worden weer gegeven op de pagina met product gegevens. Ze zijn een goede manier om visueel te communiceren wat uw toepassing doet en hoe het werkt. Een video toevoegen: <ul><li>Selecteer **+ video toevoegen** om het video venster te openen</li><li>**Naam** : Voer een naam/titel in (maximale lengte van 100 tekens.)</li><li>**Koppeling** : Voer de URL in voor de site die als host fungeert voor de video (YouTube of Vimeo)</li><li>**Miniatuur** : een miniatuur uploaden. Het moet de PNG-indeling hebben en de grootte is 533 x 324 pixels.</li></ul>          |
 |  |  |
 
 
-### <a name="artifact-examples-in-azure-marketplace"></a>Voorbeelden van het artefact in Azure Marketplace
+### <a name="artifact-examples-in-azure-marketplace"></a>Voor beelden van artefacten in azure Marketplace
 
-De volgende Schermafbeelding toont een voorbeeld van een zoekresultaat Marketplace.
+In de volgende scherm opname ziet u een voor beeld van een Zoek resultaat op Marketplace.
 
-![Marketplace-aanbieding zoekresultaat](./media/azureapp-marketplace-example-browse.png)
+![Zoek resultaat voor Marketplace-aanbiedingen](./media/azureapp-marketplace-example-browse.png)
 
-De volgende afbeelding ziet u hoe de aanbieding wordt weergegeven in de Marketplace nadat een klant op de tegel van de aanbieding in de zoekresultaten klikt.
+De volgende afbeelding laat zien hoe de aanbieding wordt weer gegeven in de Marketplace nadat een klant op de tegel van de aanbieding in het Zoek resultaat is geklikt.
 
-![Resultaatdetails van Marketplace-aanbieding zoeken](./media/azureapp-marketplace-example-details.png)
+![Details van zoek resultaten voor Marketplace-aanbiedingen](./media/azureapp-marketplace-example-details.png)
 
 
-### <a name="artifact-examples-in-azure-portal"></a>Voorbeelden van het artefact in Azure Portal
+### <a name="artifact-examples-in-azure-portal"></a>Voor beelden van artefacten in azure Portal
 
-De volgende schermafbeeldingen tonen hoe een aanbieding wordt weergegeven in de Azure-Portal. De aanbieding van de toepassing in dit voorbeeld worden gevonden door te bladeren naar **Marketplace > Alles > ontwikkelen en testen > Jenkins**. De Jenkins-aanbieding bevat een logo, titel en weergavenaam van de uitgever.
+In de volgende scherm opnamen ziet u hoe een aanbieding wordt weer gegeven in de Azure-Portal. De aanbieding van de toepassing in dit voor beeld is gevonden door te bladeren naar **Marketplace > alles > dev + Test > Jenkins**. De Jenkins-aanbieding bevat een logo, titel en weergave naam van de uitgever.
 
-![Bladeren in Azure portal biedt](./media/azureapp-portalbrowse-artifacts-jenkins.png)
+![Aanbiedingen zoeken in Azure Portal](./media/azureapp-portalbrowse-artifacts-jenkins.png)
 
-De volgende schermopname bevat gedetailleerde informatie over de toepassing wanneer een gebruiker Jenkins selecteert.
+In de volgende scherm opname wordt gedetailleerde informatie weer gegeven over de toepassing wanneer een gebruiker Jenkins selecteert.
 
-![Details van de aanbieding in Azure portal](./media/azureapp-portal-artifacts-jenkins-details.png)
+![Details van de aanbieding in Azure Portal](./media/azureapp-portal-artifacts-jenkins-details.png)
 
 
 ### <a name="logo-guidelines"></a>Logorichtlijnen
 
-Alle de logo's uploaden naar de Cloud Partner-Portal moeten de richtlijnen te volgen:
+Alle logo's die naar het Cloud Partner-portal worden geüpload, moeten de volgende richt lijnen volgen:
 
-- Het Azure-ontwerp heeft een eenvoudig kleurenpalet. Houd het aantal primaire en secundaire kleuren op uw logo laag.
-- De themakleuren van het Azure-Portal zijn wit en zwart. Vermijd het gebruik van deze kleuren als de achtergrondkleur voor uw logo's. Gebruik een kleur die voor uw logo's opvallende in Azure portal maken. We adviseren eenvoudige primaire kleuren. Als u een transparante achtergrond, zorg ervoor dat de logo's / tekst worden niet wit, zwart of blauw.
-- Gebruik niet een kleurovergang achtergrond op uw logo.
-- Voorkomen dat tekst, zelfs uw bedrijf of de naam van het merk, geplaatst op het logo. Het uiterlijk van uw logo moet een "platte" en vermijd kleurovergangen.
-- Niet uitrekken het logo.
+- Het Azure-ontwerp heeft een eenvoudig kleurenpalet. Laat het aantal primaire en secundaire kleuren op uw logo laag.
+- De thema kleuren van de Azure-Portal zijn wit en zwart. Vermijd het gebruik van deze kleuren als de achtergrond kleur voor uw logo's. Gebruik een kleur waarmee uw logo's prominent worden weer geven in de Azure Portal. We adviseren eenvoudige primaire kleuren. Als u een transparante achtergrond gebruikt, zorg er dan voor dat de logo's/tekst niet wit, zwart of blauw zijn.
+- Gebruik geen achtergrond kleur overgang in uw logo.
+- Vermijd het plaatsen van tekst, zelfs de naam van uw bedrijf of merk, op het logo. Het uiterlijk van uw logo moet ' plat ' zijn en moet geen kleur overgangen hebben.
+- Rekt het logo niet uit.
 
 
 #### <a name="hero-logo"></a>Hero-logo
 
-De Hero-logo is optioneel.
+Het held-logo is optioneel.
 
 >[!IMPORTANT]
->U kunt de Hero-logo niet verwijderen nadat deze geüpload.
+>U kunt het held-logo niet verwijderen nadat het is geüpload.
 
-Gebruik de volgende richtlijnen voor een Hero-logo:
+Gebruik de volgende richt lijnen voor een held logo:
 
-- Zwart, wit en transparante achtergrond zijn niet toegestaan.
-- Vermijd het gebruik van een lichte kleur als achtergrond voor het logo. De uitgever weergavenaam, plan titel en de lange samenvatting aanbieding worden weergegeven in wit tekstkleur en moeten onderscheiden op basis van de achtergrond.
-- Vermijd het gebruik van de meeste tekst bij het ontwerpen van het logo. Naam van de uitgever, de titel van het abonnement, de aanbieding voor lange samenvatting en een knop maken worden via een programma ingesloten in het logo wanneer van de aanbieding weergegeven.
-- Een rechthoekige ongebruikte ruimte aan de rechterkant van het hero-logo bevatten. Deze lege ruimte is 415 x 100 pixels en offset aan de linkerkant en 370 pixels.
+- Zwart, wit en transparante achtergronden zijn niet toegestaan.
+- Vermijd het gebruik van lichte kleuren als achtergrond voor het logo. De weergave naam van de uitgever, de titel van de planning en de lange samen vatting van de aanbieding worden weer gegeven in een witte tekst kleur en moeten worden opgezocht op de achtergrond.
+- Vermijd het gebruik van de meeste tekst wanneer u het logo ontwerpt. De naam van de uitgever, de titel van het abonnement, de lange samen vatting van de aanbieding en een knop maken wordt via een programma in het logo Inge sloten wanneer de aanbieding wordt weer gegeven.
+- Neem een ongebruikte rechthoekige ruimte aan de rechter kant van het logo van uw held. Deze lege ruimte is 415x100 pixels en verschuift van links met 370 pixels.
 
 
-## <a name="lead-management"></a>Leads beheren
+## <a name="lead-management"></a>Lead beheer
 
-Het formulier leiden Management is een optioneel veld leadbeheer configureren. Voor het configureren van beheer van leads, selecteert u de bestemming Lead in de vervolgkeuzelijst. De volgende schermopname ziet u de beschikbare bestemmingen.
+Het formulier Lead beheer bevat een optioneel veld voor het configureren van het beheer van leads. Als u beheer van leads wilt configureren, selecteert u de doel locatie van de lead in de vervolg keuzelijst. In de volgende scherm opname ziet u de beschik bare bestemmingen.
 
-![Selecteer lead management bestemming](./media/azureapp-marketplace-leadmgmt.png)
+![Doel van lead beheer selecteren](./media/azureapp-marketplace-leadmgmt.png)
 
 >[!TIP]
->Selecteer het informatiepictogram aan dit bericht ziet: "Selecteer het systeem waar de leads worden opgeslagen. Meer informatie over het verbinding maken met uw CRM-systeem [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) . "
+>Selecteer het informatie pictogram om dit bericht te bekijken: "Selecteer het systeem waar uw leads worden opgeslagen. Meer informatie over hoe u [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) verbinding mee maakt met uw CRM-systeem. "
 
-Zie voor meer informatie, [configureren leads klant](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads).
+Zie [leads van klanten configureren](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)voor meer informatie.
 
 
-## <a name="legal"></a>Juridische informatie
+## <a name="legal"></a>Juridisch
 
-De juridische formulier gebruiken om de juridische documentatie die vereist zijn voor elke aanbieding.
+Gebruik het juridische formulier om de juridische documentatie op te geven die is vereist voor elke aanbieding.
 
 Geef de volgende informatie op:
 
-- **URL privacybeleid\***  – voert een koppeling naar het privacybeleid van uw app.
-- **Gebruiksvoorwaarden\***  – Geef de gebruiksvoorwaarden voor uw app. Klanten moeten deze voorwaarden accepteren voordat ze uw app kunnen uitproberen.
+- **URL\* van privacybeleid** : Geef een koppeling op naar het privacybeleid van uw app.
+- **Gebruiksvoorwaarden\***  : Voer de gebruiks voorwaarden in voor uw app. Klanten moeten deze voor waarden accepteren voordat ze uw app kunnen proberen.
 
-![Rechtsvorm](./media/azureapp-marketplace-legal.png)
+![Juridisch formulier](./media/azureapp-marketplace-legal.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen

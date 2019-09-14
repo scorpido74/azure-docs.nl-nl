@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 3b242ff8ee3e635493cd501cf37ffc7c78a57d91
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 87dca4cf06bd8c5982e5f83a2498496c4bec69fd
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563317"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984862"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Inzicht in de uitvoer van Azure Stream Analytics
 
@@ -310,7 +310,7 @@ De volgende tabel geeft een overzicht van de partitie ondersteuning en het aanta
 | Azure Service Bus-onderwerp | Ja | Automatisch gekozen. Het aantal partities is gebaseerd op de [Service Bus-SKU's en grootte](../service-bus-messaging/service-bus-partitioning.md). De partitie sleutel is een unieke gehele waarde voor elke partitie.| Hetzelfde als het aantal partities in het onderwerp van de uitvoer.  |
 | Azure Service Bus-wachtrij | Ja | Automatisch gekozen. Het aantal partities is gebaseerd op de [Service Bus-SKU's en grootte](../service-bus-messaging/service-bus-partitioning.md). De partitie sleutel is een unieke gehele waarde voor elke partitie.| Hetzelfde als het aantal partities in de uitvoerwachtrij. |
 | Azure Cosmos DB | Ja | Op basis van de component PARTITION BY in de query. | De invoer voor het partitioneren van volgt [volledig geparallelliseerd query's](stream-analytics-scale-jobs.md). |
-| Azure Functions | Nee | Geen | Niet van toepassing. |
+| Azure Functions | Ja | Op basis van de component PARTITION BY in de query. | De invoer voor het partitioneren van volgt [volledig geparallelliseerd query's](stream-analytics-scale-jobs.md). |
 
 Het aantal schrijvers van uitvoer kan ook worden beheerd met `INTO <partition count>` behulp van de component (Zie [into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) in uw query. Dit kan handig zijn bij het bereiken van een gewenste taak topologie. Als de uitvoeradapter niet is gepartitioneerd, gebrek aan gegevens in één invoer partitie, zorgt ervoor dat een vertraging van maximaal het latere aankomst van tijd. In dergelijke gevallen wordt de uitvoer samengevoegd met één schrijver, wat kan leiden tot knel punten in de pijp lijn. Zie [Azure stream Analytics overwegingen voor gebeurtenis orders](stream-analytics-out-of-order-and-late-events.md)voor meer informatie over het beleid voor late ontvangst.
 

@@ -17,24 +17,24 @@ ms.date: 07/29/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74b2d80d21822758991ad8b3bc1d3bb44e2257f4
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3d48aa3ead28ab0b0a22478a0c4183995483058a
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129807"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983504"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Rapporten inrichten in de Azure Active Directory Portal (preview)
 
 De rapportage architectuur in Azure Active Directory (Azure AD) bestaat uit de volgende onderdelen:
 
 - **Activiteit** 
-    - Aanmeldingen: informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers.
+    - **Aanmeldingen** : informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers.
     - **Audit logboeken** - [audit logboeken](concept-audit-logs.md) bevatten informatie over de systeem activiteit van gebruikers en groeps beheer, beheerde toepassingen en Directory-activiteiten.
-    - Inrichtings logboeken: systeem activiteiten bieden over gebruikers, groepen en rollen die zijn ingericht door de Azure AD-inrichtings service. 
+    - **Inrichtings logboeken** : systeem activiteiten bieden over gebruikers, groepen en rollen die zijn ingericht door de Azure AD-inrichtings service. 
 
 - **Beveiliging** 
-    - **Risk ante** aanmeldingen: een [Risk ante aanmelding](concept-risky-sign-ins.md) is een indicator voor een aanmeldings poging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikers account is.
+    - **Risk ante aanmeldingen** : een [Risk ante aanmelding](concept-risky-sign-ins.md) is een indicator voor een aanmeldings poging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikers account is.
     - **Gebruikers die zijn gemarkeerd voor risico** : een [Risk ante gebruiker](concept-user-at-risk.md) is een indicator voor een gebruikers account dat mogelijk is aangetast.
 
 In dit onderwerp vindt u een overzicht van het inrichtings rapport.
@@ -50,7 +50,7 @@ In dit onderwerp vindt u een overzicht van het inrichtings rapport.
 
 Aan uw Tenant moet een Azure AD Premium-licentie zijn gekoppeld om het rapport alle inrichtings activiteiten te bekijken. Zie [Aan de slag met Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) om uw versie van Azure Active Directory te upgraden. 
 
-## <a name="provisioning-logs"></a>Inrichtings logboeken
+## <a name="provisioning-logs"></a>Inrichtingslogboeken
 
 De inrichtings logboeken bieden antwoorden op de volgende vragen:
 
@@ -58,9 +58,9 @@ De inrichtings logboeken bieden antwoorden op de volgende vragen:
 * Hoe rollen zijn geïmporteerd uit Amazon Web Services?
 * Wat zijn de gebruikers die niet met succes zijn gemaakt in DropBox?
 
-U kunt toegang krijgen tot de inrichtings logboeken door inrichtings logboeken te selecteren in de sectie **bewaking** van de Blade **Azure Active Directory** in de [Azure Portal](https://portal.azure.com). Het kan Maxi maal twee uur duren voordat bepaalde inrichtings records worden weer gegeven in de portal.
+U kunt toegang krijgen tot de inrichtings logboeken door **inrichtings logboeken** te selecteren in de sectie **bewaking** van de Blade **Azure Active Directory** in de [Azure Portal](https://portal.azure.com). Het kan Maxi maal twee uur duren voordat bepaalde inrichtings records worden weer gegeven in de portal.
 
-![] Inrichtings logboeken (./media/concept-provisioning-logs/access-provisioning-logs.png "") Inrichtings logboeken
+![Inrichtings logboeken](./media/concept-provisioning-logs/access-provisioning-logs.png "Inrichtings logboeken")
 
 
 Een inrichtings logboek heeft een standaard lijst weergave waarin het volgende wordt weer gegeven:
@@ -85,7 +85,7 @@ Hiermee kunt u extra velden weergeven of velden verwijderen die al worden weerge
 
 Selecteer een item in de lijst weergave voor meer gedetailleerde informatie.
 
-![Gedetailleerde informatie](./media/concept-provisioning-logs/detailed-information.png "Gedetailleerde informatie")
+![Gedetailleerde informatie](./media/concept-provisioning-logs/steps.png "Filter")
 
 
 ## <a name="filter-provisioning-activities"></a>Inrichtings activiteiten filteren
@@ -102,7 +102,7 @@ Als u de gerapporteerde gegevens wilt beperken tot een niveau dat geschikt is vo
 
 ![Filter](./media/concept-provisioning-logs/filter.png "Filter")
 
-Met het identiteits filter kunt u de naam of de identiteit opgeven die u bevalt. Deze identiteit kan een gebruiker, een groep, een rol of een ander object zijn. U kunt zoeken op de naam of ID van het object. De ID is afhankelijk van het scenario. Wanneer u bijvoorbeeld een object inricht vanuit Azure AD naar Sales Force, is de bron-ID de object-ID van de gebruiker in azure AD terwijl de TargetID de ID van de gebruiker in Sales Force is. Bij het inrichten van workday naar Active Directory, is de bron-ID de werk nemer-ID van de werkdag. Houd er rekening mee dat de naam van de gebruiker mogelijk niet altijd aanwezig is in de identiteits kolom. Er wordt altijd één ID weer. 
+Met het **identiteits** filter kunt u de naam of de identiteit opgeven die u bevalt. Deze identiteit kan een gebruiker, een groep, een rol of een ander object zijn. U kunt zoeken op de naam of ID van het object. De ID is afhankelijk van het scenario. Wanneer u bijvoorbeeld een object inricht vanuit Azure AD naar Sales Force, is de bron-ID de object-ID van de gebruiker in azure AD terwijl de TargetID de ID van de gebruiker in Sales Force is. Bij het inrichten van workday naar Active Directory, is de bron-ID de werk nemer-ID van de werkdag. Houd er rekening mee dat de naam van de gebruiker mogelijk niet altijd aanwezig is in de identiteits kolom. Er wordt altijd één ID weer. 
 
 Met het filter **bron systeem** kunt u opgeven waar de identiteit van wordt opgehaald. Bij het inrichten van een object van Azure AD naar ServiceNow, is het bron systeem bijvoorbeeld Azure AD. 
 

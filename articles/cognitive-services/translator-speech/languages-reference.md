@@ -1,46 +1,46 @@
 ---
-title: Translator Speech-API talen methode
+title: Methode voor Translator Speech-API talen
 titleSuffix: Azure Cognitive Services
-description: Gebruik de talen van Translator Speech-API-methode.
+description: Gebruik de Translator Speech-API talen methode.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4abe6330d0359f7d7c922facecaaf1a8b1fc7174
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 46ac3928238382f56db5a799226bd3d9243b7ca2
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446960"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966414"
 ---
 # <a name="translator-speech-api-languages"></a>Translator Speech-API: Languages
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
-Translator Speech wordt voortdurend uitgebreid voor de lijst met talen die worden ondersteund door de services. Gebruik deze API voor het detecteren van de reeks talen die momenteel beschikbaar voor gebruik met de Translator Speech-service.
+Translator Speech breidt de lijst met talen die door de services worden ondersteund, voortdurend uit. Gebruik deze API om de set talen te detecteren die momenteel beschikbaar zijn voor gebruik met de Translator Speech-Service.
 
-Voorbeelden van code aan te tonen gebruik van de API om op te halen van de beschikbare talen zijn beschikbaar via de [Microsoft Translator GitHub-site](https://github.com/MicrosoftTranslator).
+Code voorbeelden van het gebruik van de API voor het verkrijgen van beschik bare talen zijn beschikbaar via de [micro soft Translator github-site](https://github.com/MicrosoftTranslator).
 
 ## <a name="implementation-notes"></a>Opmerkingen bij de implementatie
 
 ### <a name="get-languages"></a>/Languages ophalen
 
-Een groot aanbod van talen is beschikbaar voor spraak, de getranscribeerde tekst vertalen, en voor het produceren van kunstmatige spraak van de vertaling transcriberen.
+Er is een grote set talen beschikbaar voor het transcriberen van spraak, het vertalen van de vertaalde tekst en het produceren van een gesynthesizerde spraak van de vertaling.
 
-Een client gebruikt de `scope` queryparameter om te definiëren welke sets met talen die het is geïnteresseerd in.
+Een client maakt gebruik `scope` van de query parameter om te bepalen in welke talen de para meter is geïnteresseerd.
 
-* **Spraak-naar-tekst:** Gebruik van de queryparameter `scope=speech` om de set beschikbare spraak naar tekst te transcriberen talen te halen.
-* **Vertalen van tekst:** Gebruik van de queryparameter `scope=text` om op te halen van de set met talen die beschikbaar zijn voor de omzetting van getranscribeerde tekst.
-* **Tekst naar spraak:**  Gebruik van de queryparameter `scope=tts` om op te halen van de reeks talen en stemmen beschikbaar om na te bootsen vertaalde tekst naar spraak.
+* **Spraak naar tekst:** Gebruik query parameter `scope=speech` om de set beschik bare talen op te halen om spraak naar tekst te transcriberen.
+* **Vertalen van tekst:** Gebruik query parameter `scope=text` om de set beschik bare talen op te halen voor het vertalen van transcribed tekst.
+* **Tekst-naar-spraak:**  Gebruik query parameter `scope=tts` om de set talen en stemmen op te halen die beschikbaar zijn om vertaalde tekst weer in spraak te voorzien.
 
 Een client kan meerdere sets tegelijk ophalen door een door komma's gescheiden lijst met opties op te geven. Bijvoorbeeld `scope=speech,text,tts`.
 
-Een geslaagde reactie is een JSON-object met een eigenschap voor elke set aangevraagd.
+Een geslaagde reactie is een JSON-object met een eigenschap voor elke aangevraagde set.
 
 ```
 {
@@ -56,17 +56,17 @@ Een geslaagde reactie is een JSON-object met een eigenschap voor elke set aangev
 }
 ```
 
-Nadat een client kan gebruiken de `scope` queryparameter selecteren welke sets van ondersteunde talen moet worden geretourneerd, een echte reactie omvat mogelijk alleen een subset van alle eigenschappen die hierboven worden weergegeven.
+Omdat een client de `scope` query parameter kan gebruiken om te selecteren welke sets ondersteunde talen moeten worden geretourneerd, mag een echt antwoord alleen een subset van alle hierboven weer gegeven eigenschappen bevatten.
 
-De waarde die is opgegeven met elke eigenschap is als volgt.
+De waarde die bij elke eigenschap wordt gegeven, is als volgt.
 
-### <a name="speech-to-text-speech"></a>Spraak-naar-tekst (spraak)
+### <a name="speech-to-text-speech"></a>Spraak naar tekst (spraak)
 
-De waarde die is gekoppeld met de spraak-naar-tekst-eigenschap, `speech`, is een dictionary van (sleutel, waarde) paren. Elke sleutel identificeert een taal die wordt ondersteund voor spraak-naar-tekst. De sleutel is de id die client wordt doorgegeven aan de API. De waarde die is gekoppeld aan de sleutel is een object met de volgende eigenschappen:
+De waarde die is gekoppeld aan de eigenschap voor spraak naar tekst `speech`, is een woorden lijst van paren (sleutel, waarde). Elke sleutel identificeert een taal die wordt ondersteund voor spraak naar tekst. De sleutel is de id die door de client wordt door gegeven aan de API. De waarde die is gekoppeld aan de sleutel is een object met de volgende eigenschappen:
 
-* `name`: Weergavenaam van de taal.
-* `language`: De taalcode van de bijbehorende taal geschreven. Zie 'Tekst transactie' hieronder.
-Er is een voorbeeld:
+* `name`: Weergave naam van de taal.
+* `language`: Taal code van de gekoppelde geschreven taal. Zie "tekst transactie" hieronder.
+Een voor beeld is:
 
 ```
 {
@@ -76,14 +76,14 @@ Er is een voorbeeld:
 }
 ```
 
-### <a name="text-translation-text"></a>Tekstomzetting (tekst)
+### <a name="text-translation-text"></a>Tekst omzetting (tekst)
 
-De waarde die is gekoppeld aan de `text` eigenschap is ook een woordenlijst waar elke sleutel een taal voor tekstvertaling wordt ondersteund identificeert. De waarde die is gekoppeld aan de sleutel worden beschreven van de taal:
+De waarde die is gekoppeld `text` aan de eigenschap is ook een woorden lijst waarbij elke sleutel een taal identificeert die wordt ondersteund voor tekst vertaling. De waarde die is gekoppeld aan de sleutel, beschrijft de taal:
 
-* `name`: Weergavenaam van de taal.
-* `dir`: Richting is `rtl` voor talen van rechts naar links of `ltr` voor talen van links naar rechts.
+* `name`: Weergave naam van de taal.
+* `dir`: Directionality `rtl` voor talen die van rechts naar links worden geschreven of `ltr` van links naar rechts.
 
-Er is een voorbeeld:
+Een voor beeld is:
 
 ```
 {
@@ -93,18 +93,18 @@ Er is een voorbeeld:
 }
 ```
 
-### <a name="text-to-speech-tts"></a>Spraak
+### <a name="text-to-speech-tts"></a>Tekst-naar-spraak (TTS)
 
-De waarde die is gekoppeld aan de Text to Speech eigenschap tts, is ook een woordenlijst waar elke sleutel een ondersteunde stem identificeert. Kenmerken van een stem-object zijn:
+De waarde die is gekoppeld aan de eigenschap tekst-naar-spraak, TTS, is ook een woorden lijst waarbij elke sleutel een ondersteunde spraak identificeert. De kenmerken van een spraak object zijn:
 
-* `displayName`: Weergavenaam voor de stem.
-* `gender`: Het geslacht van de stem (mannelijke of vrouwelijke).
-* `locale`: De taalcode van de stem met subcode van de primaire taal en regio subcode.
-* `language`: De taalcode van de bijbehorende taal geschreven.
-* `languageName`: Weergavenaam van de taal.
-* `regionName`: De weergavenaam van de regio voor deze taal.
+* `displayName`: Weergave naam voor de stem.
+* `gender`: Geslacht van de stem (mannelijk of vrouwelijk).
+* `locale`: Taal code van de stem met primaire taal subtag en regio subtag.
+* `language`: Taal code van de gekoppelde geschreven taal.
+* `languageName`: Weergave naam van de taal.
+* `regionName`: Weergave naam van de regio voor deze taal.
 
-Er is een voorbeeld:
+Een voor beeld is:
 
 ```
 {
@@ -121,35 +121,35 @@ Er is een voorbeeld:
 ```
 
 ### <a name="localization"></a>Lokalisatie
-De service retourneert alle namen in de taal van de header 'Accept-Language' voor alle talen die worden ondersteund in tekst.
+De service retourneert alle namen in de taal van de ' Accept-Language '-header, voor alle talen die worden ondersteund in tekst vertalingen.
 
-### <a name="response-class-status-200"></a>Antwoord-klasse (Status 200)
-Object met een beschrijving van de set met ondersteunde talen.
+### <a name="response-class-status-200"></a>Response-klasse (status 200)
+Het object dat de set ondersteunde talen beschrijft.
 
-ModelExample waarde:
+ModelExample-waarde:
 
-Langagues {spraak (object, optioneel), tekst (object, optioneel), tts (object, optioneel)}
+Langagues {Speech (object, optioneel), Text (object, optioneel), TTS (object, optioneel)}
 
 ### <a name="headers"></a>Headers
 
-|Header|Description|Type|
+|Header|Description|type|
 :--|:--|:--|
-X-RequestId|Waarde die worden gegenereerd door de server voor het identificeren van de aanvraag en gebruikt voor het oplossen van problemen.|string|
+X-RequestId|De waarde die door de server wordt gegenereerd om de aanvraag te identificeren en wordt gebruikt voor het oplossen van problemen.|string|
 
 ### <a name="parameters"></a>Parameters
 
 |Parameter|Description|Parametertype|Gegevenstype|
 |:--|:--|:--|:--|
-|api-version    |De versie van de API die is aangevraagd door de client. Toegestane waarden zijn: `1.0`.|query|string|
-|scope  |Sets met ondersteunde talen of stemmen om terug te keren naar de client. Deze parameter is opgegeven als een door komma's gescheiden lijst met trefwoorden. De volgende trefwoorden zijn beschikbaar:<ul><li>`speech`: Biedt de talen die worden ondersteund voor spraak transcriberen.</li><li>`tts`: Biedt de stemmen voor tekst-speech conversie wordt ondersteund.</li><li>`text`: Biedt de talen die worden ondersteund voor het omzetten van tekst.</li></ul>Als een waarde niet opgegeven is, de waarde van `scope` standaard ingesteld op `text`.|query|string|
-|X-ClientTraceId    |Een client gegenereerde GUID gebruikt voor het traceren van een aanvraag. Om te kunnen oplossen van problemen met, moeten clients voorzien van elke aanvraag een nieuwe waarde en aangemeld.|koptekst|string|
-|Accept-Language    |Enkele van de velden in het antwoord zijn namen van talen of regio's. Gebruik deze parameter voor het definiëren van de taal waarin de namen worden geretourneerd. De taal die is opgegeven door op te geven van een opgemaakte BCP-47-taalcode. Selecteer een label in de lijst van taal-id's die zijn geretourneerd met de `text` bereik. Voor niet-ondersteunde talen vindt u de namen in het Engels.<br/>Gebruik bijvoorbeeld de waarde `fr` aan te vragen van namen in het Frans of gebruikt u de waarde `zh-Hant` naar namen van de aanvraag in een traditioneel Chinees.|koptekst|string|
+|api-version    |De versie van de API die door de client is aangevraagd. Toegestane waarden zijn: `1.0`.|query|string|
+|bereik  |Sets van ondersteunde talen of stemmen die moeten worden geretourneerd naar de client. Deze para meter wordt opgegeven als een door komma's gescheiden lijst met tref woorden. De volgende tref woorden zijn beschikbaar:<ul><li>`speech`: Biedt de set talen die worden ondersteund voor het transcriberen van spraak.</li><li>`tts`: Biedt de set stemmen die worden ondersteund voor conversie van tekst spraak.</li><li>`text`: Biedt de set talen die worden ondersteund voor het vertalen van tekst.</li></ul>Als er geen waarde is opgegeven, is de waarde `scope` van standaard `text`ingesteld op.|query|string|
+|X-ClientTraceId    |Een door de client gegenereerde GUID die wordt gebruikt om een aanvraag te traceren. Om het oplossen van problemen te vereenvoudigen, moeten clients een nieuwe waarde opgeven bij elke aanvraag en deze registreren.|koptekst|string|
+|Accept-Language    |Sommige velden in het antwoord zijn namen van talen of regio's. Gebruik deze para meter om de taal te definiëren waarin de namen worden geretourneerd. De taal wordt opgegeven door een juist opgemaakte BCP 47-taal code op te geven. Selecteer een tag in de lijst met taal-id's die met het `text` bereik zijn geretourneerd. Voor niet-ondersteunde talen zijn de namen beschikbaar in de Engelse taal.<br/>Gebruik bijvoorbeeld de waarde `fr` voor het aanvragen van namen in het Frans of gebruik de waarde `zh-Hant` om namen aan te vragen in traditioneel Chinees.|koptekst|string|
 
-### <a name="response-messages"></a>Berichten met reacties
+### <a name="response-messages"></a>Antwoord berichten
 
-|HTTP-statuscode|Reason|
+|HTTP-status code|Reason|
 |:--|:--|
-|400|Ongeldige aanvraag. Controleer de invoerparameters om ervoor te zorgen dat geldig zijn. Het antwoordobject bevat een gedetailleerde beschrijving van de fout.|
+|400|Ongeldige aanvraag. Controleer de invoer parameters om er zeker van te zijn dat ze geldig zijn. Het object Response bevat een gedetailleerde beschrijving van de fout.|
 |429|Te veel aanvragen.|
-|500|Er is een fout opgetreden. Als de fout zich blijft voordoen, het rapport met trace-client-id (X-ClientTraceId) of aanvraag-id (X-RequestId).|
-|503|De server is tijdelijk niet beschikbaar. Probeer de aanvraag. Als de fout zich blijft voordoen, het rapport met trace-client-id (X-ClientTraceId) of aanvraag-id (X-RequestId).|
+|500|Er is een fout opgetreden. Als de fout zich blijft voordoen, meldt u deze met de client Trace Identifier (X-ClientTraceId) of de aanvraag-id (X-id-aanvraag).|
+|503|De server is tijdelijk niet beschikbaar. Voer de aanvraag opnieuw uit. Als de fout zich blijft voordoen, meldt u deze met de client Trace Identifier (X-ClientTraceId) of de aanvraag-id (X-id-aanvraag).|

@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 3e95412675100043eb21f50c8f93aa0ec0b6b7e6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d63fd3d1b778c691d053f13fbf0fbb2ed5ccb3e3
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963988"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968284"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Beheerde identiteit voor Service Fabric toepassing (preview-versie)
 
@@ -62,9 +62,8 @@ De lijst met ondersteunde scenario's voor de preview-versie is als volgt:
 
 De volgende scenario's worden niet ondersteund of worden niet aanbevolen. Houd er rekening mee dat deze acties mogelijk niet worden geblokkeerd, maar kan leiden tot storingen in uw toepassingen:
 
-   - De identiteiten die aan een toepassing zijn toegewezen, verwijderen of wijzigen. Als u wijzigingen moet aanbrengen, dient u afzonderlijke implementaties in te dienen om eerst een nieuwe identiteit toe te voegen en vervolgens een eerder toegewezen toewijzing te verwijderen. Het verwijderen van een identiteit uit een bestaande toepassing kan ongewenste gevolgen hebben, zoals het verlaten van uw toepassing in een status die niet kan worden geüpgraded. Het is veilig om de toepassing te verwijderen als het verwijderen van een identiteit nood zakelijk is. Houd er rekening mee dat hiermee de door het systeem toegewezen identiteit (indien gedefinieerd) die aan de toepassing is gekoppeld, wordt verwijderd en alle koppelingen met de door de gebruiker toegewezen identiteiten die aan de toepassing zijn toegewezen, worden verwijderd.
+   - De identiteiten die aan een toepassing zijn toegewezen, verwijderen of wijzigen. Als u wijzigingen moet aanbrengen, dient u afzonderlijke implementaties in te dienen om eerst een nieuwe identiteits toewijzing toe te voegen en vervolgens een eerder toegewezen account te verwijderen. Het verwijderen van een identiteit uit een bestaande toepassing kan ongewenste gevolgen hebben, zoals het verlaten van uw toepassing in een status die niet kan worden geüpgraded. Het is veilig om de toepassing te verwijderen als het verwijderen van een identiteit nood zakelijk is. Houd er rekening mee dat hiermee de door het systeem toegewezen identiteit (indien gedefinieerd) die aan de toepassing is gekoppeld, wordt verwijderd en alle koppelingen met de door de gebruiker toegewezen identiteiten die aan de toepassing zijn toegewezen, worden verwijderd.
 
-   - Het wordt niet aanbevolen om door het systeem toegewezen en door de gebruiker toegewezen identiteiten te combi neren in dezelfde toepassing.
 >
 > [!NOTE]
 >

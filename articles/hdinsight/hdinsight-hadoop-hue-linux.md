@@ -1,7 +1,7 @@
 ---
-title: HUE met Hadoop op HDInsight Linux gebaseerde clusters - Azure
-description: Leer hoe u Hue installeren op HDInsight-clusters en voor het routeren van de aanvragen naar de Hue-tunneling gebruiken. Hue opslag bladeren en uitvoeren van Hive of Pig gebruiken.
-keywords: HUE hadoop
+title: Tint met Hadoop op HDInsight Linux-gebaseerde clusters-Azure
+description: Meer informatie over het installeren van tint op HDInsight-clusters en het gebruik van tunneling om de aanvragen naar tinten te sturen. Gebruik tint om door de opslag te bladeren en Hive of Pig uit te voeren.
+keywords: kleur Toon Hadoop
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,137 +9,137 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: 74ccf2af2d379b3c1966543885df6ebe5cf0f47a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 67f338b583ef428b8dd04e859a5204fd708ce434
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059436"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962008"
 ---
-# <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Installeren en Hue gebruiken op HDInsight Hadoop-clusters
+# <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Tint op HDInsight Hadoop-clusters installeren en gebruiken
 
-Leer hoe u Hue installeren op HDInsight-clusters en voor het routeren van de aanvragen naar de Hue-tunneling gebruiken.
+Meer informatie over het installeren van tint op HDInsight-clusters en het gebruik van tunneling om de aanvragen naar tinten te sturen.
 
-## <a name="what-is-hue"></a>Wat is Hue?
-HUE is een set van webtoepassingen die worden gebruikt om te communiceren met een Apache Hadoop-cluster. U kunt Hue gebruiken om te bladeren, de opslag die is gekoppeld aan een Hadoop-cluster (in het geval van een HDInsight-clusters WASB), uitvoeren van Hive-taken en Pig-scripts, enzovoort. De volgende onderdelen zijn beschikbaar met Hue-installaties op een HDInsight Hadoop-cluster.
+## <a name="what-is-hue"></a>Wat is tint?
+Tint is een set webtoepassingen die worden gebruikt voor interactie met een Apache Hadoop cluster. U kunt tint gebruiken om te bladeren door de opslag die is gekoppeld aan een Hadoop-cluster (WASB, in het geval van HDInsight-clusters), Hive-taken en Pig-scripts, enzovoort, uit te voeren. De volgende onderdelen zijn beschikbaar voor tint installaties op een HDInsight Hadoop-cluster.
 
-* Bijenwas Hive-Editor
+* Beeswax-Hive-editor
 * Apache Pig
-* Metastore-manager
+* Meta Store-beheer
 * Apache Oozie
-* FileBrowser (die praat met standaardcontainer WASB)
-* Job Browser
+* FileBrowser (die praat met de WASB-standaard container)
+* Taak browser
 
 > [!WARNING]  
-> Onderdelen van het HDInsight-cluster volledig worden ondersteund en Microsoft Support kunnen opsporen en oplossen van problemen met betrekking tot deze onderdelen.
+> Onderdelen die worden meegeleverd met het HDInsight-cluster, worden volledig ondersteund en Microsoft Ondersteuning helpt bij het isoleren en oplossen van problemen met betrekking tot deze onderdelen.
 >
-> Aangepaste onderdelen commercieel redelijke ondersteuning om het probleem verder oplossen met u te helpen te ontvangen. Dit kan resulteren in het oplossen van het probleem of vraag of u contact opnemen met beschikbare kanalen voor de open source-technologieën waar uitgebreide expertise voor deze technologie kan worden gevonden. Er zijn bijvoorbeeld veel communitysites die kunnen worden gebruikt, zoals: [MSDN-forum voor HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Ook Apache-projecten project-sites hebben op [ https://apache.org ](https://apache.org), bijvoorbeeld: [Hadoop](https://hadoop.apache.org/).
+> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Dit kan leiden tot het oplossen van het probleem of het vragen om beschik bare kanalen te benaderen voor de open source-technologieën waar diep gaande expertise voor die technologie wordt gevonden. Er zijn bijvoorbeeld veel community-sites die kunnen worden gebruikt, zoals: [MSDN-forum voor HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Ook Apache-projecten hebben project sites [https://apache.org](https://apache.org)op, bijvoorbeeld: [Hadoop](https://hadoop.apache.org/).
 >
 >
 
-## <a name="install-hue-using-script-actions"></a>Met behulp van scriptacties Hue installeren
+## <a name="install-hue-using-script-actions"></a>Tint installeren met script acties
 
-Hue installeren op een Linux gebaseerde HDInsight-cluster met het script is beschikbaar op https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. Hue installeren op clusters met Azure Storage-Blobs (WASB) of Azure Data Lake Storage als standaardopslag kunt u dit script gebruiken.
+Het script voor de installatie van tint op een HDInsight-cluster op basis van https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh Linux is beschikbaar op. U kunt dit script gebruiken om tinten te installeren in clusters met Azure Storage-blobs (WASB) of Azure Data Lake Storage als standaard opslag.
 
-Deze sectie vindt u instructies over het gebruik van het script bij het inrichten van het cluster met behulp van de Azure-portal.
+In deze sectie vindt u instructies voor het gebruik van het script bij het inrichten van het cluster met behulp van de Azure Portal.
 
 > [!NOTE]  
-> Azure PowerShell, de klassieke Azure-CLI, de HDInsight .NET SDK of Azure Resource Manager-sjablonen kunnen ook worden gebruikt om toe te passen van scriptacties. U kunt ook scriptacties toepassen op clusters al wordt uitgevoerd. Zie voor meer informatie, [aanpassen HDInsight-clusters met scriptacties](hdinsight-hadoop-customize-cluster-linux.md).
+> Azure PowerShell, de klassieke Azure-CLI, de HDInsight .NET SDK of Azure Resource Manager sjablonen kunnen ook worden gebruikt voor het Toep assen van script acties. U kunt ook script acties Toep assen op reeds actieve clusters. Zie [HDInsight-clusters aanpassen met script acties](hdinsight-hadoop-customize-cluster-linux.md)voor meer informatie.
 >
 >
 
-1. Start het inrichten van een cluster met behulp van de stappen in [inrichten HDInsight-clusters op Linux](hdinsight-hadoop-provision-linux-clusters.md), maar ze niet worden voltooid wordt ingericht.
+1. Begin met het inrichten van een cluster met behulp van de stappen bij het [inrichten van HDInsight-clusters in Linux](hdinsight-hadoop-provision-linux-clusters.md), maar het inrichten niet volt ooien.
 
    > [!NOTE]  
-   > Hue installeren op HDInsight-clusters, de grootte van de aanbevolen hoofdknooppunt is ten minste A4 (8 kernen, 14 GB geheugen).
+   > Voor het installeren van tint op HDInsight-clusters is de aanbevolen hoofd knooppunt-grootte ten minste A4 (8 kernen, 14 GB geheugen).
    >
    >
-2. Op de **optionele configuratie** Selecteer **scriptacties**, en geef de informatie, zoals hieronder weergegeven:
+2. Selecteer op de Blade **optionele configuratie** de optie **script acties**en geef de gegevens op zoals hieronder wordt weer gegeven:
 
-    ![Script actieparameters bieden voor Hue](./media/hdinsight-hadoop-hue-linux/hue-script-action.png "script actieparameters bieden voor Hue")
+    ![Script actie parameters opgeven voor tint](./media/hdinsight-hadoop-hue-linux/hdi-hue-script-action.png "Script actie parameters opgeven voor tint")
 
-   * **NAAM**: Voer een beschrijvende naam voor de scriptactie.
+   * **NAAM**: Voer een beschrijvende naam in voor de script actie.
    * **SCRIPT-URI**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
-   * **HEAD**: Schakel deze optie.
-   * **WERKNEMER**: Laat dit leeg.
+   * **KOP**: Schakel deze optie in.
+   * **WERK NEMER**: Laat dit leeg.
    * **ZOOKEEPER**: Laat dit leeg.
-   * **PARAMETERS**: Laat dit leeg.
-3. Aan de onderkant van de **scriptacties**, gebruikt u de **selecteren** om de configuratie op te slaan. Gebruik tot slot de **Selecteer** knop aan de onderkant van de **optionele configuratie** blade de optionele configuratie-gegevens op te slaan.
-4. Doorgaan met het inrichten van het cluster, zoals beschreven in [inrichten HDInsight-clusters op Linux](hdinsight-hadoop-provision-linux-clusters.md).
+   * **PARA METERS**: Laat dit leeg.
+3. Gebruik de knop **selecteren** aan de onderkant van de **script acties**om de configuratie op te slaan. Gebruik tot slot de knop **selecteren** onder aan de Blade **optionele configuratie** om de optionele configuratie gegevens op te slaan.
+4. Ga door met het inrichten van het cluster zoals beschreven in [HDInsight-clusters inrichten op Linux](hdinsight-hadoop-provision-linux-clusters.md).
 
-## <a name="use-hue-with-hdinsight-clusters"></a>Hue gebruiken met HDInsight-clusters
+## <a name="use-hue-with-hdinsight-clusters"></a>Tint gebruiken met HDInsight-clusters
 
-SSH-Tunneling is de enige manier om de Hue op het cluster toegang heeft wanneer deze wordt uitgevoerd. Tunneling via SSH, kan het verkeer en Ga rechtstreeks naar het hoofdknooppunt van het cluster waarop Hue wordt uitgevoerd. Nadat het cluster de inrichting is voltooid, gebruikt u de volgende stappen uit Hue gebruiken op een HDInsight Linux-cluster.
+SSH-Tunneling is de enige manier om toegang te krijgen tot de tint op het cluster zodra deze actief is. Door middel van tunneling via SSH kan het verkeer rechtstreeks naar de hoofd knooppunt van het cluster gaan waarop tint wordt uitgevoerd. Wanneer het inrichten van het cluster is voltooid, gebruikt u de volgende stappen om tint te gebruiken op een HDInsight Linux-cluster.
 
 > [!NOTE]  
-> U wordt aangeraden met behulp van web-Firefox-browser de onderstaande instructies te volgen.
+> U wordt aangeraden om de volgende instructies te volgen met Firefox-webbrowser.
 >
 >
 
-1. Gebruik de informatie in [SSH-Tunneling gebruiken voor toegang tot de Apache Ambari-Webgebruikersinterface, ResourceManager JobHistory, NameNode, Oozie en andere webgebruikersinterfaces van](hdinsight-linux-ambari-ssh-tunnel.md) maken van een SSH-tunnel vanuit het clientsysteem naar het HDInsight-cluster en vervolgens configureren uw webbrowser de SSH-tunnel gebruiken als een proxy.
+1. Gebruik de informatie in [ssh-tunneling gebruiken om toegang te krijgen tot Apache Ambari Web UI, Resource Manager, JobHistory, NameNode, Oozie en andere WEBgebruikersinterfaces](hdinsight-linux-ambari-ssh-tunnel.md) om een SSH-tunnel van uw client systeem te maken met het HDInsight-cluster, en configureer vervolgens uw webbrowser voor het gebruik van de SSH-tunnel als een proxy.
 
-2. Nadat u hebt een SSH-tunnel gemaakt en uw browser naar de proxy het verkeer daarlangs geconfigureerd, moet u de hostnaam van het primaire hoofdknooppunt. U kunt dit doen door verbinding te maken met het cluster via SSH op poort 22. Bijvoorbeeld, `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net` waar **gebruikersnaam** is de naam van de SSH-gebruiker en **CLUSTERNAME** is de naam van uw cluster.
+2. Nadat u een SSH-tunnel hebt gemaakt en uw browser hebt geconfigureerd voor proxy verkeer via deze, moet u de hostnaam van het primaire hoofd knooppunt vinden. U kunt dit doen door verbinding te maken met het cluster via SSH op poort 22. Bijvoorbeeld, `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net` waarbij **username** de gebruikers naam van SSH is en **clustername** de naam van uw cluster is.
 
     Zie [SSH gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie.
 
-3. Eenmaal verbinding hebben, gebruikt u de volgende opdracht uit om op te halen van de volledig gekwalificeerde domeinnaam van het primaire hoofdknooppunt:
+3. Als de verbinding tot stand is gebracht, gebruikt u de volgende opdracht om de Fully Qualified Domain Name van de primaire hoofd knooppunt te verkrijgen:
 
         hostname -f
 
-    Hiermee herstelt u een naam die vergelijkbaar is met het volgende:
+    Dit retourneert een naam die er ongeveer als volgt uitziet:
 
         hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
-    Dit is de hostnaam van het primaire hoofdknooppunt waar de Hue-website zich bevindt.
-4. De browser gebruiken om de Hue-portal HTTP te openen:\//HOSTNAME:8888. HOSTNAAM vervangen door de naam die u hebt verkregen in de vorige stap.
+    Dit is de hostnaam van de primaire hoofd knooppunt waar de website tint zich bevindt.
+4. Gebruik de browser om de tint portal te openen op http\/:/hostname: 8888. Vervang HOSTNAME door de naam die u in de vorige stap hebt verkregen.
 
    > [!NOTE]  
-   > Wanneer u zich aanmeldt voor de eerste keer, wordt u gevraagd om een account voor aanmelding bij de Hue-portal te maken. De referenties die u hier opgeeft, worden beperkt tot de portal en niet gerelateerd zijn aan de beheerder of de SSH-gebruikersreferenties die u hebt opgegeven tijdens het inrichten het cluster.
+   > Wanneer u zich voor de eerste keer aanmeldt, wordt u gevraagd een account te maken om u aan te melden bij de tint Portal. De referenties die u hier opgeeft, zijn beperkt tot de portal en zijn niet gerelateerd aan de beheerders-of SSH-gebruikers referenties die u hebt opgegeven tijdens het inrichten van het cluster.
    >
    >
 
-    ![Meld u aan bij de Hue-portal](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Geef referenties op voor de Hue-portal")
+    ![Meld u aan bij de portal voor kleur Toon](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Referenties opgeven voor de Toon van de portal")
 
 ### <a name="run-a-hive-query"></a>Een Hive-query uitvoeren
-1. De Hue-portal, klik op **Query Editors**, en klik vervolgens op **Hive** om het Hive-editor te openen.
+1. Klik in de tint Portal op **query-editors**en klik vervolgens op **Hive** om de Hive-editor te openen.
 
     ![Hive gebruiken](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Hive gebruiken")
-2. Op de **helpen** tabblad onder **Database**, ziet u **hivesampletable**. Dit is een voorbeeldtabel die wordt geleverd met alle Hadoop-clusters op HDInsight. Voer een voorbeeldquery in het rechter deelvenster en de uitvoer zien op de **resultaten** tabblad in het deelvenster onder, zoals wordt weergegeven in de schermopname.
+2. Op het tabblad **assistent** , onder **Data Base**, ziet u **hivesampletable**. Dit is een voorbeeld tabel die wordt geleverd met alle Hadoop-clusters in HDInsight. Voer een voorbeeld query in het rechterdeel venster in en Bekijk de uitvoer op het tabblad **resultaten** in het onderstaande deel venster, zoals wordt weer gegeven in de scherm opname.
 
-    ![Hive-query uitvoeren](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "uitvoeren Hive-query")
+    ![Hive-query uitvoeren](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Hive-query uitvoeren")
 
-    U kunt ook de **grafiek** tabblad om te bekijken van een visuele representatie van het resultaat.
+    U kunt ook het tabblad **grafiek** gebruiken om een visuele weer gave van het resultaat te bekijken.
 
-### <a name="browse-the-cluster-storage"></a>De clusteropslag bladeren
-1. De Hue-portal, klik op **bestandsbrowser** in de rechterbovenhoek van de menubalk.
-2. De browser wordt standaard geopend op de **/gebruiker/myuser** directory. Klik op de slash vlak voor de map in het pad naar de hoofdmap van de Azure storage-container die zijn gekoppeld aan het cluster.
+### <a name="browse-the-cluster-storage"></a>Bladeren door de cluster opslag
+1. Klik in de rechter bovenhoek van de menu balk van de tint Portal op **bestands browser** .
+2. De bestands browser wordt standaard geopend in de **/User/myuser** -map. Klik op de slash direct vóór de gebruikers lijst in het pad om naar de hoofdmap van de Azure storage-container te gaan die aan het cluster is gekoppeld.
 
-    ![Gebruik bestandsbrowser](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "bestandsbrowser gebruiken")
-3. Met de rechtermuisknop op een bestand of map om te zien van de beschikbare bewerkingen. Gebruik de **uploaden** knop in de rechterhoek bestanden uploaden naar de huidige map. Gebruik de **nieuw** knop om nieuwe bestanden of mappen te maken.
+    ![Bestands browser gebruiken](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "Bestands browser gebruiken")
+3. Klik met de rechter muisknop op een bestand of map om de beschik bare bewerkingen weer te geven. Gebruik de knop **uploaden** in de rechter bovenhoek om bestanden te uploaden naar de huidige map. Gebruik de knop **Nieuw** om nieuwe bestanden of mappen te maken.
 
 > [!NOTE]  
-> De Hue-bestand-browser kunt alleen de inhoud van de standaard-container die zijn gekoppeld aan het HDInsight-cluster weergeven. Alle extra opslagruimte accounts/containers die u mogelijk hebt gekoppeld aan het cluster zich niet toegankelijk is via de browser. De extra containers die zijn gekoppeld aan het cluster wordt echter altijd worden toegankelijk is voor de Hive-taken. Bijvoorbeeld, als u de opdracht hebt ingevoerd `dfs -ls wasb://newcontainer@mystore.blob.core.windows.net` in de Hive-editor, ziet u de inhoud van andere containers ook. In deze opdracht **newcontainer** is niet de standaard-container die zijn gekoppeld aan een cluster.
+> De bestands browser tinten kan alleen de inhoud weer geven van de standaard container die is gekoppeld aan het HDInsight-cluster. Alle extra opslag accounts/containers die u aan het cluster hebt gekoppeld, zijn niet toegankelijk via de bestands browser. De extra containers die zijn gekoppeld aan het cluster, zijn echter altijd toegankelijk voor de Hive-taken. Als u bijvoorbeeld de opdracht `dfs -ls wasb://newcontainer@mystore.blob.core.windows.net` in de Hive-editor invoert, ziet u ook de inhoud van extra containers. In deze opdracht is **newcontainer** niet de standaard container die aan een cluster is gekoppeld.
 >
 >
 
-## <a name="important-considerations"></a>Belangrijke overwegingen
-1. Het script gebruikt voor het installeren van Hue installeert deze alleen op het primaire hoofdknooppunt van het cluster.
+## <a name="important-considerations"></a>Belang rijke overwegingen
+1. Het script dat wordt gebruikt om de kleur Toon te installeren, installeert dit alleen op de primaire hoofd knooppunt van het cluster.
 
-2. Tijdens de installatie, worden meerdere Hadoop-services (HDFS, YARN, MR2, Oozie) voor het bijwerken van de configuratie opnieuw gestart. Nadat het script is voltooid Hue installeren, is het duurt even voordat andere Hadoop-services om opnieuw te starten. Dit kan de Hue-prestaties in eerste instantie beïnvloeden. Nadat alle services worden gestart, is Hue is volledig functioneel.
-3. HUE begrijpt niet Apache Tez-taken, de huidige standaardinstelling voor Hive. Als u MapReduce gebruiken als de engine voor het uitvoeren van Hive wilt, werkt u het script voor het gebruik van de volgende opdracht in uw script:
+2. Tijdens de installatie worden meerdere Hadoop-Services (HDFS, GARENs, MR2, Oozie) opnieuw gestart voor het bijwerken van de configuratie. Nadat het script is voltooid, kan het enige tijd duren voordat andere Hadoop-services worden opgestart. Dit kan in eerste instantie van invloed zijn op de prestaties van de kleur. Zodra alle services zijn opgestart, is de kleur Toon volledig functioneel.
+3. Kleur Toon biedt geen inzicht in Apache TEZ-taken. Dit is de huidige standaard waarde voor Hive. Als u MapReduce wilt gebruiken als de engine voor het uitvoeren van de Hive, werkt u het script bij voor het gebruik van de volgende opdracht in uw script:
 
         set hive.execution.engine=mr;
 
-4. Met Linux-clusters hebt u een scenario waarbij uw services worden uitgevoerd op het primaire hoofdknooppunt terwijl de Resource Manager kan worden uitgevoerd op de secundaire server. Dit scenario kan leiden tot fouten (Zie hieronder) bij het gebruik van Hue details wilt weergeven van taken wordt uitgevoerd op het cluster. U kunt echter de taakdetails weergeven wanneer de taak is voltooid.
+4. Met Linux-clusters kunt u een scenario hebben waarin uw services worden uitgevoerd op de primaire hoofd knooppunt terwijl de Resource Manager kan worden uitgevoerd op de secundaire server. Dit scenario kan leiden tot fouten (zie hieronder) als u de details van actieve taken op het cluster wilt weer geven met behulp van tint. U kunt de taak Details echter bekijken wanneer de taak is voltooid.
 
-   ![HUE-portal fout](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Hue-portal fout")
+   ![Fout met tint Portal](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Fout met tint Portal")
 
-   Dit is vanwege een bekend probleem. Als tijdelijke oplossing, Ambari zodanig aanpassen dat de actieve Resource Manager wordt ook uitgevoerd op het primaire hoofdknooppunt.
-5. HUE begrijpt WebHDFS terwijl het HDInsight-clusters gebruiken met behulp van Azure Storage `wasb://`. Het aangepaste script gebruikt in combinatie met scriptactie installeert dus WebWasb, dit een service met WebHDFS compatibele is voor communicatie met WASB. Ja, hoewel de Hue-portal HDFS op plaatsen zegt (zoals wanneer u de muisaanwijzer over de **bestandsbrowser**), moet dit worden beschouwd als WASB.
+   Dit is te wijten aan een bekend probleem. Als tijdelijke oplossing wijzigt u Ambari zodat de actieve Resource Manager ook wordt uitgevoerd op de primaire hoofd knooppunt.
+5. Kleur Toon begrijpt WebHDFS terwijl HDInsight-clusters Azure Storage `wasb://`gebruiken. Het aangepaste script dat wordt gebruikt met script actie installeert dus WebWasb, een WebHDFS-compatibele service voor het praten met WASB. Dit betekent dat, zelfs als de kleur Toon, HDFS op locatie (bijvoorbeeld wanneer u de muis over de **bestands browser**beweegt) wordt geïnterpreteerd als WASB.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Apache Giraph installeren op HDInsight-clusters](hdinsight-hadoop-giraph-install-linux.md). Aanpassing van de cluster Giraph installeren op HDInsight Hadoop-clusters gebruiken. Giraph kunt u met behulp van Hadoop graph-verwerking uit te voeren en deze kan worden gebruikt met Azure HDInsight.
-* [R installeren op HDInsight-clusters](hdinsight-hadoop-r-scripts-linux.md). Aanpassing van de cluster R installeren op HDInsight Hadoop-clusters gebruiken. R is een open source-taal en omgeving voor statistische computing. Het bevat honderden ingebouwde statistische functies en een eigen programmeertaal die aspecten van het programmeren van functionele en objectgeoriënteerde combineert. Het biedt ook uitgebreide grafische mogelijkheden.
+* [Installeer Apache Giraph op HDInsight-clusters](hdinsight-hadoop-giraph-install-linux.md). Gebruik cluster aanpassing om Giraph te installeren op HDInsight Hadoop-clusters. Met Giraph kunt u grafiek verwerking uitvoeren met behulp van Hadoop en kan deze worden gebruikt met Azure HDInsight.
+* [Installeer R op HDInsight-clusters](hdinsight-hadoop-r-scripts-linux.md). Gebruik cluster aanpassing om R-op HDInsight Hadoop-clusters te installeren. R is een open source-taal en-omgeving voor statistische computing. Het biedt honderden ingebouwde statistische functies en een eigen programmeer taal waarmee aspecten van functionele en objectgeoriënteerd Program meren worden gecombineerd. Het biedt ook uitgebreide grafische mogelijkheden.
 
 [powershell-install-configure]: install-configure-powershell-linux.md
 [hdinsight-provision]: hdinsight-provision-clusters-linux.md

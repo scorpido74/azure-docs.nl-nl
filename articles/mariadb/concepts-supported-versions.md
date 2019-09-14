@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 950294094584958e83f6a16630a6e1f897785e46
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 09/12/2019
+ms.openlocfilehash: e5d1dbc8c212d4cdefb12fb740a454324d3adfa1
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897290"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962921"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>Ondersteunde Azure Database for MariaDB server versies
 
@@ -20,21 +20,21 @@ Azure Database for MariaDB is ontwikkeld op basis van de open-source [MariaDB-se
 MariaDB maakt gebruik van het naamgevings schema X. Y. Z. X is de primaire versie, Y de secundaire versie en Z de versie van de patch.
 
 > [!NOTE]
-> In de service wordt een gateway gebruikt om de verbindingen met Server exemplaren om te leiden. Nadat de verbinding tot stand is gebracht, geeft de MySQL-client de versie van MariaDB die in de gateway is ingesteld, niet de daad werkelijke versie die wordt uitgevoerd op uw MariaDB Server-exemplaar. Gebruik de `SELECT VERSION();` opdracht om de versie van uw MariaDB-Server exemplaar te bepalen.
+> In de service wordt een gateway gebruikt om de verbindingen met serverinstanties om te leiden. Nadat de verbinding tot stand is gebracht, geeft de MySQL-client de versie van MariaDB die in de gateway is ingesteld, niet de daad werkelijke versie die wordt uitgevoerd op uw MariaDB Server-exemplaar. Gebruik de `SELECT VERSION();` opdracht om de versie van uw MariaDB-Server exemplaar te bepalen.
 
 Azure Database for MariaDB ondersteunt momenteel de volgende versie:
 
 ## <a name="mariadb-version-102"></a>MariaDB-versie 10,2
 
-Patch versie: 10.2.23
+Patch versie: 10.2.25
 
-Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/library/mariadb-10223-release-notes/) voor meer informatie over verbeteringen en oplossingen in MariaDB 10.2.23.
+Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/library/mariadb-10225-release-notes/) voor meer informatie over verbeteringen en oplossingen in deze versie.
 
 ## <a name="mariadb-version-103"></a>MariaDB-versie 10,3
 
-Patch versie: 10.3.14
+Patch versie: 10.3.16
 
-Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/library/mariadb-10314-release-notes/) voor meer informatie over verbeteringen en oplossingen in MariaDB 10.3.14.
+Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/library/mariadb-10316-release-notes/) voor meer informatie over verbeteringen en oplossingen in deze versie.
 
 ## <a name="managing-updates-and-upgrades"></a>Updates en upgrades beheren
 De service beheert automatisch upgrades voor patch-updates. Bijvoorbeeld 10.2.21 naar 10.2.23.  
@@ -43,4 +43,4 @@ Upgrades van de secundaire en primaire versie worden momenteel niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [service lagen](./concepts-pricing-tiers.md)voor informatie over specifieke resource quota en beperkingenop basis van uw servicelaag.
+- Zie [service lagen](./concepts-pricing-tiers.md)voor informatie over specifieke resource quota en beperkingen op basis **van uw servicelaag**.

@@ -3,7 +3,7 @@ title: Richt lijnen voor het plannen van Azure NetApp Files netwerken | Microsof
 description: Hierin worden richt lijnen beschreven die u kunnen helpen bij het ontwerpen van een efficiënte netwerk architectuur met behulp van Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
-author: b-juche
+author: ram-kakani
 manager: ''
 editor: ''
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 087ecee053069a02e4d4dd6f636d05ea15269e2e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 02852b325a22f274b4aa6e793b03c733c38bb9aa
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383499"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984125"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Richtlijnen voor Azure NetApp Files-netwerkplanning
 
@@ -36,13 +36,13 @@ U moet rekening houden met enkele overwegingen bij het plannen van Azure NetApp 
 De onderstaande functies worden momenteel niet ondersteund voor Azure NetApp Files: 
 
 * Netwerk beveiligings groepen (Nsg's) die zijn toegepast op het overgedragen subnet
-* Door de gebruiker gedefinieerde routes (Udr's) met de volgende hop als Azure NetApp files-subnet
+* Door de gebruiker gedefinieerde routes (Udr's) met adres voorvoegsel als Azure NetApp files-subnet
 * Azure-beleid (bijvoorbeeld aangepaste naamgevings beleid) op de Azure NetApp Files interface
 * Load balancers voor Azure NetApp Files verkeer
 
 De volgende netwerk beperkingen zijn van toepassing op Azure NetApp Files:
 
-* Het aantal Ip's dat in een VNet met Azure NetApp Files (inclusief peered VNets) wordt gebruikt, mag niet hoger zijn dan 1000.
+* Het aantal Ip's dat in een VNet met Azure NetApp Files (inclusief peered VNets) wordt gebruikt, mag niet hoger zijn dan 1000. We zijn bezig om deze limiet te verhogen om tegemoet te komen aan de schaal vereisten van klanten. Als u meer IP-adressen nodig hebt, kunt u het ondersteunings team bereiken met uw use-case en de vereiste limiet.
 * In elk virtueel Azure-netwerk (VNet) kan er slechts één subnet aan Azure NetApp Files worden gedelegeerd.
 
 
@@ -75,7 +75,7 @@ Subnetten segmenteert het virtuele netwerk in afzonderlijke adres ruimten die ku
 
 Subnet delegering biedt expliciete machtigingen voor de Azure NetApp Files-service om servicespecifieke bronnen in het subnet te maken.  Er wordt gebruikgemaakt van een unieke id bij het implementeren van de service. In dit geval wordt een netwerk interface gemaakt om verbinding met Azure NetApp Files mogelijk te maken.
 
-Als u een nieuw VNet gebruikt, kunt u een subnet maken en het subnet delegeren naar Azure NetApp Files door de instructies in [een subnet naar Azure NetApp files te](azure-netapp-files-delegate-subnet.md)delegeren. U kunt ook een bestaand leeg subnet delegeren dat nog niet is gedelegeerd aan andere services.
+Als u een nieuw VNet gebruikt, kunt u een subnet maken en het subnet delegeren naar Azure NetApp Files door de instructies in [een subnet naar Azure NetApp files te delegeren](azure-netapp-files-delegate-subnet.md). U kunt ook een bestaand leeg subnet delegeren dat nog niet is gedelegeerd aan andere services.
 
 Als het VNet is gekoppeld aan een ander VNet, kunt u de VNet-adres ruimte niet uitbreiden. Daarom moet het nieuwe gedelegeerde subnet worden gemaakt binnen de VNet-adres ruimte. Als u de adres ruimte wilt uitbreiden, moet u de VNet-peering verwijderen voordat u de adres ruimte uitbreidt.
 
@@ -97,13 +97,13 @@ Een basis scenario is het maken of verbinden van een Azure NetApp Files-volume v
 
 ### <a name="vnet-peering"></a>VNet-peering
 
-Als er extra VNets in dezelfde regio zijn die toegang moeten hebben tot de resources van elkaar, kan de VNets worden verbonden met behulp van [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) -peering om veilige connectiviteit mogelijk te maken via de Azure-infra structuur. 
+Als er extra VNets in dezelfde regio zijn die toegang moeten hebben tot de resources van elkaar, kan de VNets worden verbonden met behulp van [VNet-peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) om veilige connectiviteit mogelijk te maken via de Azure-infra structuur. 
 
 Overweeg VNet 2 en VNet 3 in het bovenstaande diagram. Als VM 2 verbinding moet maken met VM 3 of volume 2, of als VM 3 verbinding moet maken met VM 2 of volume 1, moet u VNet-peering inschakelen tussen VNet 2 en VNet 3. 
 
 Bedenk daarnaast een scenario waarin VNet 1 is gekoppeld aan VNet 2 en VNet 2 is gekoppeld aan VNet 3 in dezelfde regio. De resources van VNet 1 kunnen verbinding maken met resources in VNet 2, maar kunnen geen verbinding maken met resources in VNet 3, tenzij VNet 1 en VNet 3 gelijkwaardig zijn. 
 
-In het bovenstaande diagram, hoewel VM 3 verbinding kan maken met volume 1, kan VM 4 geen verbinding maken met volume 2.  De reden hiervoor is dat de spoke-VNets niet worden gepeerd en dat _Transit routering niet wordt ondersteund via VNet_-peering.
+In het bovenstaande diagram, hoewel VM 3 verbinding kan maken met volume 1, kan VM 4 geen verbinding maken met volume 2.  De reden hiervoor is dat de spoke-VNets niet worden gepeerd en dat _Transit routering niet wordt ondersteund via VNet-peering_.
 
 ## <a name="hybrid-environments"></a>Hybride omgevingen
 
@@ -124,7 +124,7 @@ In de bovenstaande topologie is het on-premises netwerk verbonden met een hub VN
 * VM 3 in de hub-VNet kan verbinding maken met volume 2 in spoke VNet 1 en volume 3 in spoke VNet 2.
 * VM 4 van spoke VNet 1 en VM 5 van spoke VNet 2 kan verbinding maken met volume 1 in de hub VNet.
 
-VM 4 in spoke VNet 1 kan geen verbinding maken met volume 3 in spoke VNet 2. Daarnaast kan VM 5 in spoke VNet2 geen verbinding maken met volume 2 in spoke VNet 1. Dit is het geval omdat de spoke-VNets niet worden gepeerd en _Transit routering niet wordt ondersteund via VNet_-peering.
+VM 4 in spoke VNet 1 kan geen verbinding maken met volume 3 in spoke VNet 2. Daarnaast kan VM 5 in spoke VNet2 geen verbinding maken met volume 2 in spoke VNet 1. Dit is het geval omdat de spoke-VNets niet worden gepeerd en _Transit routering niet wordt ondersteund via VNet-peering_.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 558ce8950a1848f0cddc247f60dd4e75dd20ccf0
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: e14cb56db6e45fe86ecd5e73766c47d29dd23fa1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305482"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984232"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Ondersteuning van talen en regio's voor de Text Analytics-API
 
@@ -48,7 +48,7 @@ Taal ondersteuning wordt in eerste instantie in de preview-fase geïmplementeerd
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | Arabisch      | `ar`          |           |             | ✔ \*                     | |
 | Tsjechisch       | `cs`          |           |             | ✔ \*                     | |
-| Chinees-vereenvoudigd | `zh-CN`|           |             | ✔         |    |
+| Chinees-vereenvoudigd | `zh-CN`| ✔ \***     |             | ✔         |    |
 | Deens      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
 | Nederlands       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
 | Engels     | `en`          | ✔        | ✔           |  ✔ \*\*     |      |
@@ -58,7 +58,7 @@ Taal ondersteuning wordt in eerste instantie in de preview-fase geïmplementeerd
 | Grieks       | `el`          | ✔ \*     |             |            |     |
 | Hongaars   | `hu`          |           |             |  ✔ \*          |     | 
 | Italiaans     | `it`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| Japans    | `ja`          |          | ✔           |  ✔ \*          |     |
+| Japans    | `ja`          | ✔ \***         | ✔           |  ✔ \*          |     |
 | Koreaans      | `ko`          |          | ✔           |  ✔ \*          |     |
 | Noors (Bokmål) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |
 | Pools      | `pl`          | ✔ \*     |  ✔          |  ✔ \*           |     |
@@ -71,7 +71,9 @@ Taal ondersteuning wordt in eerste instantie in de preview-fase geïmplementeerd
 
 \*Taal ondersteuning is beschikbaar als preview-versie
 
-\*\*[Herkenning van benoemde entiteiten](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) en [entiteits koppelingen](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) zijn beide beschikbaar voor deze taal.    
+\*\*[Herkenning van benoemde entiteiten](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) en [entiteits koppelingen](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) zijn beide beschikbaar voor deze taal.  
+
+\** * Beschikbaar in de [open bare preview van sentimentanalyse v3](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview)
 
 ## <a name="see-also"></a>Zie ook
 

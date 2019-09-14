@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 9f6f3d43f80b3c69b0c1106b8e395b4d8f5d32ab
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: cf04efd8dac3ba4d252701d79c65b1bf56619fe0
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640706"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968243"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Service Fabric-toepassing implementeren met door het systeem toegewezen beheerde identiteit (preview)
 
@@ -51,7 +51,7 @@ Met deze eigenschap declareert u (voor Azure Resource Manager en de beheerde ide
 
 ### <a name="application-and-service-package"></a>Toepassings-en service pakket
 
-1. Werk het toepassings manifest bij om een **ManagedIdentity** -element toe te voegen aan de sectie principals met een enkel item, zoals hieronder wordt weer gegeven:
+1. Werk het toepassings manifest bij om een **ManagedIdentity** -element toe te voegen aan de sectie **principals** met een enkel item, zoals hieronder wordt weer gegeven:
 
     **ApplicationManifest. XML**
 
@@ -93,15 +93,9 @@ Met deze eigenschap declareert u (voor Azure Resource Manager en de beheerde ide
     Dit is de equivalente toewijzing van een identiteit aan een service zoals hierboven wordt beschreven, maar vanuit het perspectief van de service definitie. Er wordt naar de identiteit verwezen met de beschrijvende naam (`WebAdmin`), zoals aangegeven in het manifest van de toepassing.
 
 ## <a name="next-steps"></a>Volgende stappen
-
 * [Ondersteuning voor beheerde identiteiten](./concepts-managed-identity.md) bekijken in azure service Fabric
-
 * [Een nieuwe implementeren](./configure-new-azure-service-fabric-enable-managed-identity.md) Azure Service Fabric-cluster met ondersteuning voor beheerde identiteiten 
-
 * [Beheerde identiteit inschakelen](./configure-existing-cluster-enable-managed-identity-token-service.md) in een bestaand Azure service Fabric-cluster
-
 * Gebruikmaken van de [beheerde identiteit van](./how-to-managed-identity-service-fabric-app-code.md) een service Fabric toepassing uit de bron code
-
 * [Een Azure Service Fabric-toepassing implementeren met een door de gebruiker toegewezen beheerde identiteit](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-
 * [Een Azure Service Fabric-toepassing toegang verlenen tot andere Azure-resources](./how-to-grant-access-other-resources.md)

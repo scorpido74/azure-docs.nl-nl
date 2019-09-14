@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: fad16ab9b556a1aa802cd9f84a06a88e61fd84b3
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: d0b3c6124af30cb9ad870ad5f2600495ab872698
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744433"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983657"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP-adressen die worden gebruikt door Application Insights en Log Analytics
 De [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) -service gebruikt een aantal IP-adressen. Mogelijk moet u deze adressen weten als de app die u bewaakt, wordt gehost achter een firewall.
@@ -37,7 +37,7 @@ U moet een aantal uitgaande poorten in de firewall van uw server openen zodat de
 
 | Doel | URL | IP | Poorten |
 | --- | --- | --- | --- |
-| Telemetrie |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.162.117<br/>40.73.171.20<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.203.248 | 443 |
+| Telemetrie |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.162.117<br/>40.73.171.20<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248 | 443 |
 | Live Metrics Stream |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
 
 ## <a name="status-monitor"></a>Status Monitor
@@ -55,7 +55,7 @@ Status Monitor configuratie: alleen nodig als u wijzigingen aanbrengt.
 | Installatie | `globalcdn.nuget.org`, `packages.nuget.org` ,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`,`dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>Beschikbaarheidstesten
-Dit is de lijst met adressen waarvan de [webtesten voor Beschik baarheid](../../azure-monitor/app/monitor-web-app-availability.md) worden uitgevoerd. Als u webtests wilt uitvoeren voor uw app, maar uw webserver is beperkt tot het leveren van specifieke clients, moet u inkomend verkeer via onze beschikbaarheids test servers toestaan.
+Dit is de lijst met adressen waarvan de webtesten voor [Beschik baarheid](../../azure-monitor/app/monitor-web-app-availability.md) worden uitgevoerd. Als u webtests wilt uitvoeren voor uw app, maar uw webserver is beperkt tot het leveren van specifieke clients, moet u inkomend verkeer via onze beschikbaarheids test servers toestaan.
 
 Open poorten 80 (http) en 443 (https) voor binnenkomend verkeer van deze adressen (IP-adressen zijn gegroepeerd op locatie):
 

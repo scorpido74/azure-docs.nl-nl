@@ -8,85 +8,85 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: e1ba09f459152616941071c23f7a6545ec2a8b73
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 9964aaf060c43cc3e9992f515bf272011e795043
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210674"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962119"
 ---
-# <a name="process-fixed-length-text-files-using-data-factory-mapping-data-flows"></a>Tekst bestanden met een vaste lengte verwerken met Data Factory gegevens stromen toewijzen
+# <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Tekst bestanden met een vaste lengte verwerken met Data Factory gegevens stromen toewijzen
 
-Data Factory toewijzing van gegevens stromen ondersteunt transformatie gegevens van tekst bestanden met een vaste breedte. U definieert een gegevensset voor een tekst bestand zonder scheidings teken en stelt vervolgens subtekenreeksen in op basis van de positie van het rang telwoord.
+Met toewijzing van gegevens stromen in Microsoft Azure Data Factory kunt u gegevens van tekst bestanden met vaste breedte transformeren. In de volgende taak definiëren we een gegevensset voor een tekst bestand zonder scheidings teken en vervolgens subtekenreeks splitsen op basis van ordinale positie.
 
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
 
-1. Ga naar **+ nieuwe pijp lijn** om een nieuwe pijp lijn te starten
+1. Selecteer **+ nieuwe pijp lijn** om een nieuwe pijp lijn te maken.
 
-2. Een gegevens stroom activiteit toevoegen die wordt gebruikt voor het verwerken van bestanden met een vaste breedte
+2. Voeg een gegevens stroom activiteit toe die wordt gebruikt voor het verwerken van bestanden met een vaste breedte:
 
-  ![Pijp lijn met vaste breedte](media/data-flow/fwpipe.png)
+    ![Pijp lijn met vaste breedte](media/data-flow/fwpipe.png)
 
-3. Selecteer in de activiteit gegevens stroom de optie nieuwe toewijzings gegevens stroom
+3. Selecteer in de activiteit gegevens stroom de optie **nieuwe toewijzings gegevens stroom**.
 
-4. Een bron transformatie, afgeleide kolom, selecteren en Sink-trans formatie toevoegen
+4. Voeg een bron, afgeleide kolom, Select en Sink-trans formatie toe:
 
-  ![Gegevens stroom met vaste breedte](media/data-flow/fw2.png)
+    ![Gegevens stroom met vaste breedte](media/data-flow/fw2.png)
 
-5. De bron transformatie configureren voor het gebruik van een nieuwe gegevensset die van het type scheidings teken is
+5. Configureer de bron transformatie voor het gebruik van een nieuwe gegevensset, die van het tekst type met scheidings tekens is.
 
-6. Geen kolom scheidings teken en geen kopteksten instellen
+6. Stel geen kolom scheidings teken of kopteksten in.
 
-We gaan gewoon het begin punt en de lengte van het veld instellen voor de inhoud van deze bestanden:
+   Nu gaan we de begin punten en lengten van het veld instellen voor de inhoud van dit bestand:
 
-```
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-```
+    ```
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    ```
 
-7. Op het tabblad projectie van de bron transformatie ziet u één teken reeks kolom met de naam ' Column_1 '
+7. Op het tabblad **projectie** van de bron transformatie ziet u een teken reeks kolom met de naam *Column_1*.
 
-8. Maak nu een nieuwe kolom in de afgeleide kolom
+8. Maak een nieuwe kolom in de afgeleide kolom.
 
-9. We geven de kolommen eenvoudige namen zoals Kol1
+9. We geven de kolommen eenvoudige namen zoals *Kol1*.
 
-10. Typ in de opbouw functie voor expressies vervolgens:
+10. Typ in de opbouw functie voor expressies het volgende:
 
-  ```substring(Column_1,1,4)```
+    ```substring(Column_1,1,4)```
 
-  ![afgeleide kolom](media/data-flow/fwderivedcol1.png)
+    ![Afgeleide kolom](media/data-flow/fwderivedcol1.png)
 
-10. Herhaal dit voor alle kolommen die u moet parseren
+11. Herhaal stap 10 voor alle kolommen die u wilt parseren.
 
-12. Klik op het tabblad controleren om de nieuwe kolommen te zien die worden gegenereerd
+12. Selecteer het tabblad **controleren** om de nieuwe kolommen te zien die worden gegenereerd:
 
-  ![controleert](media/data-flow/fwinspect.png)
+    ![controleert](media/data-flow/fwinspect.png)
 
-13. Gebruik de Select Transform om een van de kolommen te verwijderen die u niet nodig hebt voor trans formatie
+13. Gebruik de Select Transform om een van de kolommen te verwijderen die u niet nodig hebt voor trans formatie:
 
-  ![trans formatie selecteren](media/data-flow/fwselect.png)
+    ![trans formatie selecteren](media/data-flow/fwselect.png)
 
-14. Gebruik tot slot Sink om de gegevens naar een map uit te voeren:
+14. Sink gebruiken om de gegevens naar een map uit te voeren:
 
-  ![Sink met vaste breedte](media/data-flow/fwsink.png)
+    ![Sink met vaste breedte](media/data-flow/fwsink.png)
 
-  De uitvoer ziet er als volgt uit:
+    De uitvoer ziet er als volgt uit:
 
-  ![uitvoer met een vaste breedte](media/data-flow/fxdoutput.png)
+    ![uitvoer met een vaste breedte](media/data-flow/fxdoutput.png)
 
-  De gegevens met een vaste breedte worden nu gesplitst met vier tekens en worden toegewezen aan Kol1, col2, Col3, Col4,... Op basis van het bovenstaande voor beeld worden de gegevens in vier kolommen gesplitst
+  De gegevens met een vaste breedte worden nu gesplitst, met vier tekens elk en worden toegewezen aan Kol1, col2, Col3, Col4, enzovoort. Op basis van het vorige voor beeld worden de gegevens in vier kolommen gesplitst.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bouw de rest van uw gegevensstroom logica met gegevens stroom transformaties toewijzen [](concepts-data-flow-overview.md)
+* Bouw de rest van uw gegevensstroom logica met behulp van trans [formaties](concepts-data-flow-overview.md)voor gegevens stromen.

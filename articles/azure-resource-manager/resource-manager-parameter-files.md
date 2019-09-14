@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 694bd3b5f14ac37229763b33fb97c17bd4e573d4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 4305213d272172cb89bfdd207b6c8106af3f4939
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69893800"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983936"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager-parameter bestand maken
 
@@ -204,6 +204,6 @@ Als uw sjabloon een para meter bevat met dezelfde naam als een van de para meter
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [inzicht in de structuur en syntaxis van Azure Resource Manager sjablonen](resource-group-authoring-templates.md)voor meer informatie over het definiëren van para meters in uw sjabloon.
+- Zie [para meters in azure Resource Manager sjablonen](template-parameters.md)voor meer informatie over het definiëren van para meters in uw sjabloon.
 - Zie [Azure Key Vault gebruiken om de waarde van een beveiligde para meter door te geven tijdens de implementatie](resource-manager-keyvault-parameter.md)voor meer informatie over het gebruik van waarden uit een sleutel kluis.
-
+- Zie [para meters in azure Resource Manager-sjablonen](template-parameters.md)voor meer informatie over para meters.

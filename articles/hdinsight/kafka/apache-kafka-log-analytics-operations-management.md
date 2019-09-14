@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor-logboeken voor Apache Kafka - Azure HDInsight
-description: Informatie over het gebruik van Azure Monitor-logboeken voor het analyseren van Logboeken van Apache Kafka-cluster in Azure HDInsight.
+title: Azure Monitor logboeken voor Apache Kafka-Azure HDInsight
+description: Informatie over het gebruik van Azure Monitor logboeken voor het analyseren van logboeken van Apache Kafka cluster op Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,39 +8,39 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 1e141aea3b22bfdcb981513f03e595b6c2f15466
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44eea1bc6390e743aff104550e5b6d7e97c45929
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147972"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960117"
 ---
-# <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Logboeken voor Apache Kafka in HDInsight analyseren
+# <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Logboeken voor Apache Kafka op HDInsight analyseren
 
-Informatie over het gebruik van Azure Monitor-logboeken voor het analyseren van logboeken die worden gegenereerd door Apache Kafka in HDInsight.
+Informatie over het gebruik van Azure Monitor logboeken voor het analyseren van logboeken die zijn gegenereerd door Apache Kafka op HDInsight.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Azure Monitor-logboeken voor Apache Kafka inschakelen
+## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Azure Monitor logboeken inschakelen voor Apache Kafka
 
-De stappen voor het inschakelen van Azure Monitor-logboeken voor HDInsight zijn hetzelfde voor alle HDInsight-clusters. Gebruik de volgende koppelingen voor meer informatie over het maken en configureren van de vereiste services:
+De stappen voor het inschakelen van Azure Monitor logboeken voor HDInsight zijn hetzelfde voor alle HDInsight-clusters. Gebruik de volgende koppelingen om inzicht te krijgen in het maken en configureren van de vereiste services:
 
-1. Een Log Analytics-werkruimte maken. Zie voor meer informatie de [registreert in Azure Monitor](../../azure-monitor/platform/data-platform-logs.md) document.
+1. Maak een Log Analytics-werk ruimte. Zie de [Logboeken in azure monitor](../../azure-monitor/platform/data-platform-logs.md) document voor meer informatie.
 
-2. Maken van een Kafka op HDInsight-cluster. Zie voor meer informatie de [beginnen met Apache Kafka in HDInsight](apache-kafka-get-started.md) document.
+2. Maak een Kafka in HDInsight-cluster. Zie het document [beginnen met Apache Kafka in HDInsight](apache-kafka-get-started.md) voor meer informatie.
 
-3. Configureer de Kafka-cluster voor het gebruik van Azure Monitor-Logboeken. Zie voor meer informatie de [gebruikt Azure Monitor-logboeken voor het controleren van HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md) document.
+3. Configureer het Kafka-cluster om Azure Monitor-logboeken te gebruiken. Zie [Azure monitor Logboeken gebruiken om HDInsight-documenten te controleren](../hdinsight-hadoop-oms-log-analytics-tutorial.md) voor meer informatie.
 
 > [!IMPORTANT]  
-> Het kan ongeveer 20 minuten duren voordat gegevens beschikbaar voor Azure Monitor-logboeken zijn.
+> Het kan ongeveer 20 minuten duren voordat er gegevens beschikbaar zijn voor Azure Monitor Logboeken.
 
-## <a name="query-logs"></a>Logboeken voor query 's
+## <a name="query-logs"></a>Query-logboeken
 
-1. Uit de [Azure-portal](https://portal.azure.com), selecteer uw Log Analytics-werkruimte.
+1. Selecteer uw Log Analytics-werk ruimte in de [Azure Portal](https://portal.azure.com).
 
-2. In het menu links onder **algemene**, selecteer **logboeken**. Hier vindt u de gegevens die worden verzameld van Kafka. Voer een query in het query-venster en selecteer vervolgens **uitvoeren**. Hier volgen enkele voorbeelden van zoekopdrachten:
+2. Ga naar het menu links en selecteer **Logboeken**onder **Algemeen**. Hier kunt u zoeken naar gegevens die zijn verzameld uit Kafka. Voer een query in het query venster in en selecteer vervolgens **uitvoeren**. Hier volgen enkele voor beelden van zoek opdrachten:
 
-* Gebruik van de schijf:
+* Schijf gebruik:
 
     ```kusto
     Perf 
@@ -56,7 +56,7 @@ De stappen voor het inschakelen van Azure Monitor-logboeken voor HDInsight zijn 
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
 
-* Binnenkomende berichten per seconde:
+* Inkomende berichten per seconde:
 
     ```kusto
     metrics_kafka_CL 
@@ -81,25 +81,25 @@ De stappen voor het inschakelen van Azure Monitor-logboeken voor HDInsight zijn 
     ```
 
     > [!IMPORTANT]  
-    > Vervang de querywaarden met de specifieke gegevens van uw cluster. Bijvoorbeeld, `ClusterName_s` moet worden ingesteld op de naam van uw cluster. `HostName_s` moet worden ingesteld op de domeinnaam van een worker-knooppunt in het cluster.
+    > Vervang de query waarden door uw specifieke cluster informatie. Bijvoorbeeld `ClusterName_s` moet worden ingesteld op de naam van uw cluster. `HostName_s`moet worden ingesteld op de domein naam van een werk knooppunt in het cluster.
     
-    U kunt ook opgeven `*` om te zoeken naar alle typen in het logboek geregistreerd. De volgende logboeken zijn momenteel beschikbaar voor query's:
+    U kunt ook invoeren `*` om te zoeken naar alle typen die zijn geregistreerd. Momenteel zijn de volgende logboeken beschikbaar voor query's:
     
     | Logboektype | Description |
     | ---- | ---- |
-    | log\_kafkaserver\_CL | Kafka-broker server.log |
-    | log\_kafkacontroller\_CL | Kafka-broker controller.log |
-    | metrics\_kafka\_CL | Kafka JMX-meetwaarden |
+    | log\_kafkaserver\_CL | Kafka Broker-server. log |
+    | log\_kafkacontroller\_CL | Kafka Broker controller. log |
+    | metrische gegevens\_Kafkacl\_ | Kafka JMX-metrische gegevens |
     
-    ![Afbeelding van het CPU-gebruik zoeken](./media/apache-kafka-log-analytics-operations-management/kafka-cpu-usage.png)
+    ![Afbeelding van de zoek opdracht voor het CPU-gebruik](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
  
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over Azure Monitor [overzicht van Azure Monitor](../../log-analytics/log-analytics-get-started.md), en [Query Azure Monitor-logboeken voor het controleren van HDInsight-clusters](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
+Zie [overzicht van Azure monitor](../../log-analytics/log-analytics-get-started.md)voor meer informatie over Azure monitor en [query Azure monitor logboeken voor het bewaken van HDInsight-clusters](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
 
-Zie de volgende documenten voor meer informatie over het werken met Apache Kafka:
+Raadpleeg de volgende documenten voor meer informatie over het werken met Apache Kafka:
 
-* [Mirror Apache Kafka tussen clusters met HDInsight](apache-kafka-mirroring.md)
-* [Verhoog de schaalbaarheid van Apache Kafka in HDInsight](apache-kafka-scalability.md)
-* [Apache Spark streaming (DStreams) met Apache Kafka gebruiken](../hdinsight-apache-spark-with-kafka.md)
-* [Apache Spark structured streaming met Apache Kafka gebruiken](../hdinsight-apache-kafka-spark-structured-streaming.md)
+* [Mirror Apache Kafka tussen HDInsight-clusters](apache-kafka-mirroring.md)
+* [De schaal baarheid van Apache Kafka op HDInsight verg Roten](apache-kafka-scalability.md)
+* [Apache Spark streaming (DStreams) gebruiken met Apache Kafka](../hdinsight-apache-spark-with-kafka.md)
+* [Apache Spark Structured streamen gebruiken met Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

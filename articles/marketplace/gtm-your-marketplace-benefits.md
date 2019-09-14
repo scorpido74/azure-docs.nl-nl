@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: d1a0f3ea46922b8a684c269c13df068e0c879cbd
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c09e685d10764470d328e7c66293551287b5b1b2
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309054"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962700"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Uw voor delen voor commerciële Marketplace
 
@@ -74,7 +74,7 @@ Alle partners die een live-aanbieding hebben, gaan werken met een toegewezen eng
 
 Gedetailleerde beschrijvingen voor al deze voor delen vindt u in het [Marketplace-programma voor markt beloningen](https://aka.ms/marketplacerewards).
 
-Naast de voor delen van beloningen, hebben zakelijke toepassings partners met Dynamics-aanbiedingen gepubliceerd naar Microsoft AppSource aanvullende Program ma's beschikbaar [maken via ISV Connect](https://partner.microsoft.com/en-us/solutions/business-applications/isv-overview). Dit omvat technische, marketing-en verkoop ondersteuning die speciaal is gericht op de behoeften van zakelijke toepassings partners.
+Naast de voor delen van beloningen, hebben zakelijke toepassings partners met Dynamics-aanbiedingen gepubliceerd naar Microsoft AppSource aanvullende Program ma's beschikbaar [maken via ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview). Dit omvat technische, marketing-en verkoop ondersteuning die speciaal is gericht op de behoeften van zakelijke toepassings partners.
 
 ## <a name="marketplace-rewards-requirements-and-restrictions"></a>Vereisten en beperkingen voor markt beloningen
 
@@ -101,9 +101,9 @@ Trans acties die frauduleus zijn bewezen, worden niet meegeteld bij de [laag gef
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u uw aanbieding in Cloud Partner-portal hebt gemaakt, meldt u zich aan om uw aanbieding te maken of te configureren.
+Als u uw aanbieding in [Cloud Partner-Portal](https://cloudpartner.azure.com)hebt gemaakt, meldt u zich aan om uw aanbieding te maken of te configureren.
 
-Als u uw aanbieding in partner centrum hebt gemaakt, meldt u zich aan om uw aanbieding te maken of te configureren.
+Als u uw aanbieding in [partner centrum](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)hebt gemaakt, meldt u zich aan om uw aanbieding te maken of te configureren.
 
 Bekijk de [zelf-beschik bare resources die voor u beschikbaar zijn](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 

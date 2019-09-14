@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: cf72a83035e318d3a937176bbaaebd8e298d3ad2
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 358cbfb80da03d20475e591f0fd0c5b907b83b22
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390596"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984690"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Implementeer modellen met de Azure Machine Learning-service
 
@@ -804,6 +804,19 @@ Voor meer voorbeeld projecten en voor beelden raadpleegt u deze voor beeld-opsla
 
 * [Micro soft-MLOps](https://github.com/Microsoft/MLOps)
 * [Micro soft-MLOpsPython](https://github.com/microsoft/MLOpsPython)
+
+## <a name="download-a-model"></a>Een model downloaden
+Als u uw model wilt downloaden om dit in uw eigen uitvoerings omgeving te gebruiken, kunt u dit doen met de volgende SDK/CLI-opdrachten:
+
+SDK
+```python
+model_path = Model(ws,'mymodel').download()
+```
+
+CLI:
+```azurecli-interactive
+az ml model download --model-id mymodel:1 --target-dir model_folder
+```
 
 ## <a name="package-models"></a>Pakket modellen
 

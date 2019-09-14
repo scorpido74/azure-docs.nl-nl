@@ -4,14 +4,14 @@ description: Hier wordt weer gegeven welke Azure-resource typen tags ondersteune
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: bf10274e8c492363cb54c5610ff8d912ab308d1c
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8bcbd7b14de497cb6a8bb5cf12de4ec8c555b97b
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194728"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983909"
 ---
 # <a name="tag-support-for-azure-resources"></a>Ondersteuning voor labels voor Azure-resources
 In dit artikel wordt beschreven of een resource type [labels](resource-group-using-tags.md)ondersteunt. De kolom met de naam **ondersteunt labels** geeft aan of het resource type een eigenschap voor de tag heeft. De kolom label **in het kosten rapport** geeft aan of dit resource type de tag doorgeeft aan het kosten rapport.
@@ -21,7 +21,6 @@ Down load [tag-support. CSV](https://github.com/tfitzmac/resource-capabilities/b
 Ga naar de naam ruimte van een resource provider:
 > [!div class="op_single_selector"]
 > - [Microsoft.AAD](#microsoftaad)
-> - [Micro soft. AADDomainServices](#microsoftaaddomainservices)
 > - [Micro soft. Addons](#microsoftaddons)
 > - [Micro soft. ADHybridHealthService](#microsoftadhybridhealthservice)
 > - [Micro soft. Advisor](#microsoftadvisor)
@@ -29,6 +28,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Microsoft.AnalysisServices](#microsoftanalysisservices)
 > - [Microsoft.ApiManagement](#microsoftapimanagement)
 > - [Microsoft.AppConfiguration](#microsoftappconfiguration)
+> - [Micro soft. AppPlatform](#microsoftappplatform)
 > - [Micro soft. Attestation](#microsoftattestation)
 > - [Microsoft.Authorization](#microsoftauthorization)
 > - [Microsoft.Automation](#microsoftautomation)
@@ -62,14 +62,12 @@ Ga naar de naam ruimte van een resource provider:
 > - [Microsoft.ContentModerator](#microsoftcontentmoderator)
 > - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
-> - [Microsoft.CustomerInsights](#microsoftcustomerinsights)
 > - [Micro soft. CustomerLockbox](#microsoftcustomerlockbox)
 > - [Micro soft. CustomProviders](#microsoftcustomproviders)
 > - [Microsoft.DataBox](#microsoftdatabox)
 > - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
 > - [Microsoft.Databricks](#microsoftdatabricks)
 > - [Microsoft.DataCatalog](#microsoftdatacatalog)
-> - [Microsoft.DataConnect](#microsoftdataconnect)
 > - [Microsoft.DataFactory](#microsoftdatafactory)
 > - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
 > - [Microsoft.DataLakeStore](#microsoftdatalakestore)
@@ -112,7 +110,6 @@ Ga naar de naam ruimte van een resource provider:
 > - [Microsoft.MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
-> - [Micro soft. ManagedLab](#microsoftmanagedlab)
 > - [Micro soft. ManagedServices](#microsoftmanagedservices)
 > - [Micro soft. Management](#microsoftmanagement)
 > - [Microsoft.Maps](#microsoftmaps)
@@ -180,13 +177,6 @@ Ga naar de naam ruimte van een resource provider:
 > | DomainServices/oucontainer | Nee |Nee |
 > | DomainServices/ReplicaSets | Ja |Ja |
 
-## <a name="microsoftaaddomainservices"></a>Micro soft. AADDomainServices
-
-> [!div class="mx-tableFixed"]
-> | Resourcetype | Ondersteunt labels | Label in kosten rapport |
-> | ------------- | ----------- | ----------- |
-> | domeinen | Nee |Nee |
-
 ## <a name="microsoftaddons"></a>Microsoft.Addons
 
 > [!div class="mx-tableFixed"]
@@ -231,8 +221,8 @@ Ga naar de naam ruimte van een resource provider:
 > | alertsMetaData | Nee |Nee |
 > | alertsSummary | Nee |Nee |
 > | alertsSummaryList | Nee |Nee |
-> | feedback | Nee |Nee |
-> | smartDetectorAlertRules | Nee |Nee |
+> | Feedback | Nee |Nee |
+> | smartDetectorAlertRules | Ja |Ja |
 > | smartDetectorRuntimeEnvironments | Nee |Nee |
 > | smartGroups | Nee |Nee |
 
@@ -259,6 +249,13 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | configurationStores | Ja |Ja |
 > | configurationStores/eventGridFilters | Nee |Nee |
+
+## <a name="microsoftappplatform"></a>Micro soft. AppPlatform
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Ondersteunt labels | Label in kosten rapport |
+> | ------------- | ----------- | ----------- |
+> | Lente | Ja |Ja |
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
 
@@ -328,6 +325,10 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
+> | hybridDataManagers | Ja |Ja |
+> | postgresInstances | Ja |Ja |
+> | sqlBigDataClusters | Ja |Ja |
+> | sqlInstances | Ja |Ja |
 > | sqlServerRegistrations | Ja |Ja |
 > | sqlServerRegistrations/sqlServers | Nee |Nee |
 
@@ -354,11 +355,28 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | billingAccounts | Nee |Nee |
 > | billingAccounts/overeenkomsten | Nee |Nee |
+> | billingAccounts/billingPermissions | Nee |Nee |
 > | billingAccounts/billingProfiles | Nee |Nee |
+> | billingAccounts/billingProfiles/billingPermissions | Nee |Nee |
+> | billingAccounts/billingProfiles/billingRoleAssignments | Nee |Nee |
+> | billingAccounts/billingProfiles/billingRoleDefinitions | Nee |Nee |
 > | billingAccounts/billingProfiles/billingSubscriptions | Nee |Nee |
+> | billingAccounts/billingProfiles/createBillingRoleAssignment | Nee |Nee |
+> | billingAccounts/billingProfiles/klanten | Nee |Nee |
 > | billingAccounts/billingProfiles/invoices | Nee |Nee |
 > | billingAccounts/billingProfiles/invoices/pricesheet | Nee |Nee |
 > | billingAccounts/billingProfiles/invoiceSections | Nee |Nee |
+> | billingAccounts/billingProfiles/invoiceSections/billingPermissions | Nee |Nee |
+> | billingAccounts/billingProfiles/invoiceSections/billingRoleAssignments | Nee |Nee |
+> | billingAccounts/billingProfiles/invoiceSections/billingRoleDefinitions | Nee |Nee |
+> | billingAccounts/billingProfiles/invoiceSections/billingSubscriptions | Nee |Nee |
+> | billingAccounts/billingProfiles/invoiceSections/createBillingRoleAssignment | Nee |Nee |
+> | billingAccounts/billingProfiles/invoiceSections/initiateTransfer | Nee |Nee |
+> | billingAccounts/billingProfiles/invoiceSections/Products | Nee |Nee |
+> | billingAccounts/billingProfiles/invoiceSections/Products/overdracht | Nee |Nee |
+> | billingAccounts/billingProfiles/invoiceSections/Products/updateAutoRenew | Nee |Nee |
+> | billingAccounts/billingProfiles/invoiceSections/trans acties | Nee |Nee |
+> | billingAccounts/billingProfiles/invoiceSections/transfers | Nee |Nee |
 > | billingAccounts/BillingProfiles/patchOperations | Nee |Nee |
 > | billingAccounts/billingProfiles/paymentMethods | Nee |Nee |
 > | billingAccounts/billingProfiles/policies | Nee |Nee |
@@ -366,10 +384,17 @@ Ga naar de naam ruimte van een resource provider:
 > | billingAccounts/billingProfiles/pricesheetDownloadOperations | Nee |Nee |
 > | billingAccounts/billingProfiles/products | Nee |Nee |
 > | billingAccounts/billingProfiles/transactions | Nee |Nee |
+> | billingAccounts/billingRoleAssignments | Nee |Nee |
+> | billingAccounts/billingRoleDefinitions | Nee |Nee |
 > | billingAccounts/billingSubscriptions | Nee |Nee |
+> | billingAccounts/createBillingRoleAssignment | Nee |Nee |
 > | billingAccounts/createInvoiceSectionOperations | Nee |Nee |
 > | billingAccounts/klanten | Nee |Nee |
 > | billingAccounts/klanten/billingSubscriptions | Nee |Nee |
+> | billingAccounts/klanten/initiateTransfer | Nee |Nee |
+> | billingAccounts/klanten/producten | Nee |Nee |
+> | billingAccounts/klanten/trans acties | Nee |Nee |
+> | billingAccounts/klanten/overdrachten | Nee |Nee |
 > | billingAccounts/departments | Nee |Nee |
 > | billingAccounts/enrollmentAccounts | Nee |Nee |
 > | billingAccounts/invoices | Nee |Nee |
@@ -392,11 +417,11 @@ Ga naar de naam ruimte van een resource provider:
 > | billingAccounts/producten | Nee |Nee |
 > | billingAccounts/transactions | Nee |Nee |
 > | billingPeriods | Nee |Nee |
-> | billingPermissions | Nee |Nee |
+> | BillingPermissions | Nee |Nee |
 > | billingProperty | Nee |Nee |
-> | billingRoleAssignments | Nee |Nee |
-> | billingRoleDefinitions | Nee |Nee |
-> | createBillingRoleAssignment | Nee |Nee |
+> | BillingRoleAssignments | Nee |Nee |
+> | BillingRoleDefinitions | Nee |Nee |
+> | CreateBillingRoleAssignment | Nee |Nee |
 > | afdeling | Nee |Nee |
 > | enrollmentAccounts | Nee |Nee |
 > | factureer | Nee |Nee |
@@ -404,6 +429,7 @@ Ga naar de naam ruimte van een resource provider:
 > | transfers/acceptTransfer | Nee |Nee |
 > | overdrachten/declineTransfer | Nee |Nee |
 > | overdrachten/operationStatus | Nee |Nee |
+> | overdrachten/validateTransfer | Nee |Nee |
 > | validateAddress | Nee |Nee |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
@@ -514,7 +540,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | bieden | Nee |Nee |
+> | Bieden | Nee |Nee |
 > | Domein naam | Ja |Ja |
 > | Domein naam/mogelijkheden | Nee |Nee |
 > | Domein naam/internalLoadBalancers | Nee |Nee |
@@ -546,7 +572,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | bieden | Nee |Nee |
+> | Bieden | Nee |Nee |
 > | expressRouteCrossConnections | Nee |Nee |
 > | expressRouteCrossConnections/peerings | Nee |Nee |
 > | gatewaySupportedDevices | Nee |Nee |
@@ -562,7 +588,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | bieden | Nee |Nee |
+> | Bieden | Nee |Nee |
 > | schijven | Nee |Nee |
 > | afbeeldingen | Nee |Nee |
 > | osImages | Nee |Nee |
@@ -570,12 +596,16 @@ Ga naar de naam ruimte van een resource provider:
 > | publicImages | Nee |Nee |
 > | quotas | Nee |Nee |
 > | storageAccounts | Ja |Ja |
+> | storageAccounts/blobServices | Nee |Nee |
+> | storageAccounts/fileServices | Nee |Nee |
 > | Storage accounts/metricDefinitions | Nee |Nee |
 > | Storage accounts/meet waarden | Nee |Nee |
+> | storageAccounts/queueServices | Nee |Nee |
 > | storageAccounts/services | Nee |Nee |
 > | storageAccounts/services/diagnosticSettings | Nee |Nee |
 > | Storage accounts/Services/metricDefinitions | Nee |Nee |
 > | Storage accounts/Services/metrische gegevens | Nee |Nee |
+> | storageAccounts/tableServices | Nee |Nee |
 > | storageAccounts/vmImages | Nee |Nee |
 > | vmImages | Nee |Nee |
 
@@ -726,7 +756,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Connectors | Ja |Ja |
 > | Afdelingen | Nee |Nee |
 > | Dimensies | Nee |Nee |
-> | EnrollmentAccounts | Nee |Nee |
+> | enrollmentAccounts | Nee |Nee |
 > | Exports | Nee |Nee |
 > | ExternalBillingAccounts | Nee |Nee |
 > | ExternalBillingAccounts/waarschuwingen | Nee |Nee |
@@ -746,25 +776,6 @@ Ga naar de naam ruimte van een resource provider:
 > | Instellingen | Nee |Nee |
 > | showbackRules | Nee |Nee |
 > | Weergaven | Nee |Nee |
-
-## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
-
-> [!div class="mx-tableFixed"]
-> | Resourcetype | Ondersteunt labels | Label in kosten rapport |
-> | ------------- | ----------- | ----------- |
-> | bedrijfs | Ja |Ja |
-> | hubs/authorizationPolicies | Nee |Nee |
-> | hubs/connectors | Nee |Nee |
-> | hubs/connectors/toewijzingen | Nee |Nee |
-> | hubs/interacties | Nee |Nee |
-> | hubs/kpi | Nee |Nee |
-> | hubs/links | Nee |Nee |
-> | hubs/profielen | Nee |Nee |
-> | hubs/roleAssignments | Nee |Nee |
-> | hubs/rollen | Nee |Nee |
-> | hubs/suggestTypeSchema | Nee |Nee |
-> | hubs/weer gaven | Nee |Nee |
-> | hubs/widgetTypes | Nee |Nee |
 
 ## <a name="microsoftcustomerlockbox"></a>Microsoft.CustomerLockbox
 
@@ -810,15 +821,12 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | catalogi | Ja |Ja |
 > | datacatalogs | Ja |Ja |
+> | datacatalogs/gegevens bronnen | Nee |Nee |
+> | datacatalogs/gegevens bronnen/scans | Nee |Nee |
+> | datacatalogs/gegevens bronnen/scans/gegevens sets | Nee |Nee |
+> | datacatalogs/gegevens bronnen/scans/triggers | Nee |Nee |
 > | datacatalogs/scantargets | Nee |Nee |
 > | datacatalogs/scantargets/gegevens sets | Nee |Nee |
-
-## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
-
-> [!div class="mx-tableFixed"]
-> | Resourcetype | Ondersteunt labels | Label in kosten rapport |
-> | ------------- | ----------- | ----------- |
-> | connectionManagers | Ja |Ja |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -936,7 +944,6 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | applicationgroups | Ja |Ja |
 > | applicationgroups/toepassingen | Nee |Nee |
-> | applicationgroups/assignedusers | Nee |Nee |
 > | applicationgroups/startmenuitems | Nee |Nee |
 > | hostpools | Ja |Ja |
 > | hostpools/sessionhosts | Nee |Nee |
@@ -949,7 +956,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | ElasticPools | Ja |Ja |
+> | elasticPools | Ja |Ja |
 > | ElasticPools/IotHubTenants | Ja |Ja |
 > | IotHubs | Ja |Ja |
 > | IotHubs/eventGridFilters | Nee |Nee |
@@ -968,7 +975,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | fungeren | Ja |Ja |
+> | Fungeren | Ja |Ja |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -1081,8 +1088,9 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
+> | autoManagedVmConfigurationProfiles | Ja |Ja |
 > | guestConfigurationAssignments | Nee |Nee |
-> | software | Nee |Nee |
+> | Software | Nee |Nee |
 > | softwareUpdateProfile | Nee |Nee |
 > | softwareUpdates | Nee |Nee |
 
@@ -1135,7 +1143,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | materialen | Ja |Ja |
+> | Materialen | Ja |Ja |
 > | networkScopes | Ja |Ja |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
@@ -1207,6 +1215,7 @@ Ga naar de naam ruimte van een resource provider:
 > | hostingEnvironments | Ja |Ja |
 > | integrationAccounts | Ja |Ja |
 > | integrationServiceEnvironments | Ja |Ja |
+> | integrationServiceEnvironments/Beheerdeapi's | Ja |Ja |
 > | isolatedEnvironments | Ja |Ja |
 > | stroom | Ja |Ja |
 
@@ -1234,13 +1243,6 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | Identiteiten | Nee |Nee |
 > | userAssignedIdentities | Ja |Ja |
-
-## <a name="microsoftmanagedlab"></a>Microsoft.ManagedLab
-
-> [!div class="mx-tableFixed"]
-> | Resourcetype | Ondersteunt labels | Label in kosten rapport |
-> | ------------- | ----------- | ----------- |
-> | labaccounts | Ja |Ja |
 
 ## <a name="microsoftmanagedservices"></a>Micro soft. ManagedServices
 
@@ -1348,8 +1350,11 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
+> | holographicsBroadcastAccounts | Ja |Ja |
+> | objectUnderstandingAccounts | Ja |Ja |
 > | remoteRenderingAccounts | Ja |Ja |
 > | spatialAnchorsAccounts | Ja |Ja |
+> | surfaceReconstructionAccounts | Ja |Ja |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -1475,6 +1480,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
+> | clusters | Ja |Ja |
 > | apparaten | Nee |Nee |
 > | linkTargets | Nee |Nee |
 > | storageInsightConfigs | Nee |Nee |
@@ -1501,6 +1507,8 @@ Ga naar de naam ruimte van een resource provider:
 > | legacyPeerings | Nee |Nee |
 > | peerAsns | Nee |Nee |
 > | peerings | Ja |Ja |
+> | peeringServiceProviders | Nee |Nee |
+> | peeringServices | Ja |Ja |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 
@@ -1561,7 +1569,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
 > | accounts | Nee |Nee |
-> | reeksen | Ja |Ja |
+> | Reeksen | Ja |Ja |
 > | verzamelingen/toepassingen | Nee |Nee |
 > | verzamelingen/securityprincipals | Nee |Nee |
 > | templateImages | Nee |Nee |
@@ -1596,21 +1604,18 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | implementaties | Nee |Nee |
+> | implementaties | Ja |Nee |
 > | implementaties/bewerkingen | Nee |Nee |
 > | koppelen | Nee |Nee |
 > | notifyResourceJobs | Nee |Nee |
 > | Providers | Nee |Nee |
-> | resourceGroups | Nee |Nee |
+> | resourceGroups | Ja |Nee |
 > | bronnen | Nee |Nee |
 > | abonnementen | Nee |Nee |
 > | abonnementen/providers | Nee |Nee |
-> | abonnementen/resourceGroups | Nee |Nee |
-> | abonnementen/ResourceGroups/resources | Nee |Nee |
 > | abonnementen/resources | Nee |Nee |
 > | abonnementen/TagName | Nee |Nee |
 > | subscriptions/tagNames/tagValues | Nee |Nee |
-> | codes | Nee |Nee |
 > | tenants | Nee |Nee |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -1626,7 +1631,6 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | stromen | Ja |Ja |
 > | jobcollections | Ja |Ja |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -1661,6 +1665,7 @@ Ga naar de naam ruimte van een resource provider:
 > | iotSecuritySolutions/analyticsModels/aggregatedAlerts | Nee |Nee |
 > | iotSecuritySolutions/analyticsModels/aggregatedRecommendations | Nee |Nee |
 > | jitNetworkAccessPolicies | Nee |Nee |
+> | networkData | Nee |Nee |
 > | playbookConfigurations | Ja |Ja |
 > | beleidsregels | Nee |Nee |
 > | prijzen | Nee |Nee |
@@ -1693,7 +1698,8 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | aggregaties | Nee |Nee |
 > | alertRules | Nee |Nee |
-> | wijzer | Nee |Nee |
+> | alertRuleTemplates | Nee |Nee |
+> | Wijzer | Nee |Nee |
 > | meldingen | Nee |Nee |
 > | dataConnectors | Nee |Nee |
 > | entiteiten | Nee |Nee |
@@ -1919,6 +1925,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | annuleren | Nee |Nee |
 > | CreateSubscription | Nee |Nee |
+> | inschakelen | Nee |Nee |
 > | naam wijzigen | Nee |Nee |
 > | SubscriptionDefinitions | Nee |Nee |
 > | SubscriptionOperations | Nee |Nee |
@@ -2007,7 +2014,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | materialen | Nee |Nee |
+> | Materialen | Nee |Nee |
 > | componentsSummary | Nee |Nee |
 > | monitorInstances | Nee |Nee |
 > | monitorInstancesSummary | Nee |Nee |

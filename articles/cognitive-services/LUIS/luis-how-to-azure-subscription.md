@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: diberry
-ms.openlocfilehash: 5c2e81cd11826a0325cd78384a22ec7eefb3a565
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1fb57a7c6cc694c56667d589eae39442ee9e82ac
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844861"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984385"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Resource sleutels voor ontwerpen en runtime gebruiken
 
@@ -56,7 +56,7 @@ Wanneer u klaar bent om uw Voorspellings eindpunt te publiceren, maakt en wijst 
 1. Selecteer **+ Een resource maken**.
 1. Typ `Language understanding` in het zoekvak.
 1. Selecteer **Maken** om te beginnen met het aanmaakproces. 
-1. Maak **beide** voor het maken van een ontwerp-en een Voorspellings eindpunt runtime sleutel. 
+1. Selecteer **beide** voor het maken van een ontwerp-en een Voorspellings eindpunt runtime sleutel. 
 1. Voer de vereiste gegevens in om de resource te maken en selecteer vervolgens **maken** om het proces te volt ooien.
 
     ![De Language Standing resource maken](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)

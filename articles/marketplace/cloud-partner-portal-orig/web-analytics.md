@@ -1,5 +1,5 @@
 ---
-title: Web Analytics
+title: Webanalyse
 description: .
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
@@ -8,97 +8,97 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 4b75b2cbd629204e7edbf1196eec9b03cb7a6736
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a6b2a7981452b47a3992b6c0efee286878e143fb
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943158"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962883"
 ---
-<a name="web-analytics"></a>Web Analytics
+<a name="web-analytics"></a>Webanalyse
 =============
 
-Dit artikel vindt u instructies voor het leren en te gebruiken van Web Analytics beste Breid uw bedrijf. Op dit tabblad Insights is momenteel beschikbaar voor alle AppSource-aanbiedingen.
+In dit artikel vindt u instructies voor het leren en gebruiken van Web Analytics om uw bedrijf het beste te laten groeien. Momenteel is dit inzichten tabblad beschikbaar voor AppSource-aanbiedingen.
 
-Nu dat u hebt gemaakt en gepubliceerd van uw aanbieding, het volgende deel van uw reis bij te houden en te meten is de\' geslaagd. Met **Web Analytics**, hebben we de mogelijkheid om te zien precies hoe goed presteert elk van uw aanbiedingen op marketplace toegevoegd. Voor het starten van uw reis, gaat u naar de pagina met inzichten aan de linkerkant van de Cloud Partner-Portal om te zien van het nieuwe tabblad analytische gegevens.
+Nu u uw aanbieding hebt gemaakt en gepubliceerd, is het volgende deel van uw reis om het\' succes te volgen en te meten. Met **Web Analytics**hebben we de mogelijkheid om precies te zien hoe goed elk van uw aanbiedingen op de Marketplace doet. Als u de reis wilt starten, gaat u naar de pagina inzichten aan de linkerkant van Cloud Partner-portal om het tabblad nieuwe analyse te zien.
 
-![WebAnalytics pagina](./media/si-getting-started/WebAnalytics1.png)
+![Webanalytics-pagina](./media/si-getting-started/WebAnalytics1.png)
 
-Ziet u een uitgebreid dashboard toegevoegd voor de uitgevers-ID die is gemaakt met Microsoft Power BI en kunt u elk van uw aanbiedingen\' gegevens die dagelijks wordt vernieuwd.
+U ziet een uitgebreid dash board voor uw uitgevers-id die is gebouwd met micro soft power bi en biedt u de mogelijkheid om de gegevens\' van uw aanbiedingen te bekijken. deze worden dagelijks vernieuwd.
 
-<a name="microsoft-campaigns"></a>**Microsoft Campaigns**
+<a name="microsoft-campaigns"></a>**Micro soft-campagnes**
 -----------------------
 
-Om te groeien van uw aanbiedingen en bijhouden van de groei van uw aanbiedingen, is voorzien van de mogelijkheid om te gebruiken **Microsoft campagnes** in de Cloud Partner-Portal. Campagnes zijn een nieuwe functie voor de marketplace die zorgen u dat ervoor voor het bijhouden van de verschillende kanalen die klanten naar de pagina met details van uw app verzenden.
+We hebben de mogelijkheid geboden om **micro soft-campagnes** te gebruiken op het Cloud Partner-Portal om uw aanbiedingen te kunnen uitbreiden en de groei van uw aanbiedingen te volgen. Campagnes zijn een nieuw ondersteund onderdeel voor Marketplace waarmee u de verschillende kanalen kunt volgen die klanten verzenden naar uw app-gegevens pagina.
 
-### <a name="how-to-make-a-campaign"></a>**Het maken van een campagne**
+### <a name="how-to-make-a-campaign"></a>**Een campagne maken**
 
-De eenvoudigste manier om te beschrijven van campagnes is dat u toevoegt een aangepaste word/term naar de URL die terechtkomt op de detailpagina van uw app in de marketplace. Google, Bing, LinkedIn en veel andere sites raden u aan te maken van een aankondiging, het koppelen van hun site in uw gewenste site.
+De eenvoudigste manier om campagnes te beschrijven is dat u een aangepaste woord/term toevoegt aan uw URL die wordt gelandd op de detail pagina van uw app in de Marketplace. Google, Bing, LinkedIn en veel andere sites raden u aan om een aankondiging te maken, vanaf hun site te koppelen naar de gewenste site.
 
-In het algemeen worden station nieuwe om klanten te helpen uw product en is het essentieel is voor het meten van het succes van hoe elk van uw kanalen presteert. Dit is de herkomst van campagnes.
+Over het algemeen is het belang rijk om nieuwe klanten te helpen bij uw product en het is essentieel om het succes van uw kanalen te meten. Dit is de plaats waar campagnes binnenkomen.
 
 Er zijn twee manieren om uw eigen campagne te genereren.
 
-1. Toevoegen aan uw URL de queryparameter **mktcmpid** waarin wordt beschreven wat de campagne is en welke pagina/event deze klanten afkomstig zijn uit.
+1. Voeg aan uw URL toe de query parameter **mktcmpid** die beschrijft wat de campagne is en op welke pagina/gebeurtenis deze klanten afkomstig zijn.
 
-U kunt bijvoorbeeld het volgende gebruiken: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
+U kunt bijvoorbeeld het volgende gebruiken:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
 
-1. (Geavanceerd): Gebruik een van onze campagne ondersteunde, algemene id's in de URL. We willen laten met extra ref-labels die u gebruiken, wilt zodat we bieden ondersteuning voor de overeenkomst automatisch herkent deze andere labels worden werken:
+1. (Geavanceerd): Gebruik een van onze ondersteunde, algemene campagne-Id's in de URL. We willen graag gebruikmaken van aanvullende ref-Tags die u moet gebruiken. Daarom ondersteunen we de Conventie automatisch om deze extra tags te herkennen:
     
-    1. **UTM\_campagne**
-    2. **utm\_source**
+    1. **UTM\_-campagne**
+    2. **UTM\_-bron**
     3. **ref**
     4. **src**
 
-U kunt bijvoorbeeld het volgende gebruiken: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
+U kunt bijvoorbeeld het volgende gebruiken:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
 
-U kunt ervoor kiezen een combinatie van meerdere van deze campagne-ID's om meerdere bronnen verkeer voor de campagne, zoals waar de klant afkomstig uit (e-mailbericht, blog, sociale media-bron, enzovoort zijn) te stimuleren nader te identificeren.
+U kunt ervoor kiezen om een combi natie van meerdere van deze campagne-Id's te hebben om meerdere bronnen te identificeren die verkeer voor de campagne aansturen, zoals de locatie van de klant (e-mail adres, blog, sociale media bron, enz.).
 
 Bijvoorbeeld:
 
-1. Nieuwsbrief verwijzende site:  <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
-2. LinkedIn referrer:  <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
+1. Verwijzing naar nieuws brief:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
+2. LinkedIn-verwijzings bronnen:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
 
-### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**Ervoor zorgen dat campagnes doorgeven aan alle pagina 's**
+### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**Zorgen dat campagnes alle pagina's door lopen**
 
-Er is mogelijk een scenario waarbij uw campagnes een tussenliggende pagina die u verkeer naar die vervolgens gaat deze hebt naar de klanten te verzenden naar de marketplace. Het is belangrijk om door te geven tot en met uw eerste campagne-ID's in de laatste-URL die u naar de marketplace verzendt.
+Er is mogelijk een scenario waarin uw campagnes een tussenliggende pagina hebben waarnaar u verkeer stuurt en vervolgens verdergaat om de klanten naar de Marketplace te sturen. Het is belang rijk om uw eerste campagne-Id's door te geven aan de uiteindelijke URL die u naar de Marketplace verzendt.
 
 Hier volgt een voorbeeld:
 
-1. Marketing werknemer koopt advertenties van Google drive-verkeer naar het bedrijf\'s landingspagina <https://contoso.com>. Deze landingspagina heeft een \"probeer mijn product\" koppeling naar <https://appsource.com>.
-2. Een gebruiker klikt op de ad en over zijn bedrijf belandt\'landingspagina s.
+1. Marketing medewerker koopt advertenties van Google om verkeer naar de landings\'pagina <https://contoso.com>van het bedrijf te sturen. Deze landings pagina heeft \"de koppeling <https://appsource.com>mijn\" product proberen.
+2. Een gebruiker klikt op de landings pagina van de organisatie\'en de grond.
     1.  Referentie-URL = google.com
-    2.  URL van openingspagina = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-3. De gebruiker klikt op de \"probeer mijn product\" koppelen en gaat in AppSource.
-    1. Referentie-URL =  <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. Landing Page URL (**Ensure that this URL has utm\_campaign and  utm\_source added to this URL**) =  [https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?**utm\_ campaign=MyCampaignAdName&utm\_ source=MySourceAdName**](https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+    2.  URL van landings pagina =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+3. De gebruiker klikt op \"de koppeling mijn\" product proberen en gaat naar AppSource.
+    1. Verwijzings-URL =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+    2. URL van de landings pagina (**Zorg ervoor dat\_deze URL UTM\_-campagne heeft en UTM-bron is toegevoegd aan deze URL**) = [ https://appsource.microsoft.com/product/dynamics-365/contoso.offername? **\_ UTM Campaign = MyCampaignAdName & UTM\_ source = MySourceAdName** ](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
 
-<a name="how-to-evaluate-the-success-of-a-campaign"></a>Het evalueren van het succes van een campagne
+<a name="how-to-evaluate-the-success-of-a-campaign"></a>Het succes van een campagne evalueren
 -----------------------------------------
 
 ### <a name="page-visits-by-campaign"></a>**Pagina bezoeken per campagne**
 
 ![WebAnalytics2](./media/si-getting-started/WebAnalytics2.png)
 
-Dit is de uitsplitsing van elk van uw dagelijkse paginabezoeken door de campagne die ze afkomstig zijn uit.
+Dit is de uitsplitsing van elk van uw dagelijkse pagina bezoeken door de campagne waarvan ze afkomstig zijn.
 
-### <a name="conversion-rate-by-campaign"></a>**Conversieverhouding per campagne**
+### <a name="conversion-rate-by-campaign"></a>**Conversie prijs per campagne**
 
 ![WebAnalytics3](./media/si-getting-started/WebAnalytics3.png)
 
-Vergelijkbaar met hoe we de conversieverhouding van uw gehele aanbod, in dit diagram ziet u de verdeling weergegeven van de manier waarop uw verschillende campagnes doen. In deze grafiek kunt u om te bepalen waar de hogere conversie tarief campagnes afkomstig zijn.
+Net als bij de manier waarop we de conversie percentage van uw hele aanbieding tonen, kunt u in dit diagram zien hoe de verschillende campagnes worden uitgevoerd. Deze grafiek helpt u te bepalen waar de hogere conversie tarieven van campagnes afkomstig zijn.
 
 ### <a name="distribution-by-campaign"></a>**Distributie per campagne**
 
 ![WebAnalytics4](./media/si-getting-started/WebAnalytics4.png)
 
-In deze grafiek is net als bij hoe we kijken naar de domeinen van uw klanten, kunt u de distributie van uw gegevens per campagne die de gebruikers worden toegevoegd aan de marketplace onder zien. \_NoCampaign betekent dat de klant geen een campagne-ID in de url heeft wanneer ze de marketplace genavigeerd.
+Net als bij het bekijken van de domeinen van uw klanten, kunt u met deze grafiek de distributie van uw gegevens per campagne bekijken waarvan de gebruikers naar de Marketplace gaan onder. \_Geen enkele campagne betekent dat de klant geen campagne-ID in de URL heeft wanneer deze naar de Marketplace navigeert.
 
 <a name="next-steps"></a>**Volgende stappen**
 --------------
 
-Nu dat u de mogelijkheid om bij te houden van uw aanbiedingen is geslaagd hebt, willen we raden u aan uw eigen campagnes maken.
+Nu u de mogelijkheid hebt om het succes van uw aanbiedingen te volgen, willen we u aanmoedigen om uw eigen campagnes te maken.
 
-Als u vragen/functieaanvragen hebt, kunt u deze via Feedback, zich in de rechterbovenhoek delen.
+Als u vragen/functie aanvragen hebt, kunt u deze delen via feedback. Deze bevindt zich in de rechter bovenhoek.
 
-![Feedback in de Cloud Partner-Portal](./media/si-getting-started/WebAnalytics5.png)
+![Feedback in Cloud Partner-portal](./media/si-getting-started/WebAnalytics5.png)

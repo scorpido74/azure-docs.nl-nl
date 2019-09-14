@@ -5,19 +5,19 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 357e7975b1c4fe44d86b7e29e96a9abb6ab63c35
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6b311135832e1ec861cf6e14e5ad7e82574294bf
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932259"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959068"
 ---
 # <a name="setup-diagnostic-logging"></a>Registratie in diagnoselogboek instellen
 
-Een belangrijk onderdeel van een Analysis Services-oplossing wordt bewaakt door het uitvoeren van uw servers. Met [Azure resource Diagnostic](../azure-monitor/platform/diagnostic-logs-overview.md)-Logboeken kunt u logboeken controleren en verzenden naar [Azure Storage](https://azure.microsoft.com/services/storage/), ze streamen naar [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/)en exporteren naar [Azure monitor logboeken](../azure-monitor/azure-monitor-log-hub.md).
+Een belangrijk onderdeel van een Analysis Services-oplossing wordt bewaakt door het uitvoeren van uw servers. Met [Azure resource Diagnostic-logboeken](../azure-monitor/platform/diagnostic-logs-overview.md)kunt u logboeken controleren en verzenden naar [Azure Storage](https://azure.microsoft.com/services/storage/), ze streamen naar [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/)en exporteren naar [Azure monitor logboeken](../azure-monitor/azure-monitor-log-hub.md).
 
 ![Diagnostische logboek registratie voor opslag, Event Hubs of Azure Monitor-logboeken](./media/analysis-services-logging/aas-logging-overview.png)
 
@@ -67,7 +67,7 @@ Selecteren **Engine** registreert alle [xEvents](https://docs.microsoft.com/anal
 
 ### <a name="all-metrics"></a>Alle metrische gegevens
 
-De metrische categorie registreert hetzelfde [metrische servergegevens](analysis-services-monitor.md#server-metrics) weergegeven in de metrische gegevens.
+De categorie metrische gegevens registreert dezelfde [Server metrieken](analysis-services-monitor.md#server-metrics) in de tabel AzureMetrics. Als u query [scale-out](analysis-services-scale-out.md) gebruikt en metrische gegevens voor elke Lees replica moet scheiden, gebruikt u de AzureDiagnostics-tabel in plaats daarvan, waarbij **operationname** gelijk is aan **LogMetric**.
 
 ## <a name="setup-diagnostics-logging"></a>Diagnostische logboekregistratie instellen
 
@@ -155,33 +155,59 @@ Logboeken zijn doorgaans beschikbaar binnen een paar uur na het instellen van lo
 
 Metrische gegevens en server gebeurtenissen zijn geïntegreerd met xEvents in uw Log Analytics werkruimte resource voor de analyse van de side-by-side. Log Analytics-werk ruimte kan ook worden geconfigureerd voor het ontvangen van gebeurtenissen van andere Azure-Services met een holistische weer gave van gegevens van diagnostische logboek registratie in uw architectuur.
 
-Als u uw diagnostische gegevens wilt weer geven, opent u in log Analytics werk ruimte logboeken vanuit het linkermenu.
+Als u uw diagnostische gegevens wilt weer geven, opent u in Log Analytics werk ruimte **Logboeken** vanuit het linkermenu.
 
 ![Opties voor het doorzoeken van logboekbestanden in de Azure-portal](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
 Vouw in de opbouw functie voor query's **LogManagement** > **AzureDiagnostics**uit. AzureDiagnostics bevat-Engine en servicegebeurtenissen. U ziet dat er aan de vlucht een query wordt gemaakt. De EventClass\_s veld bevat xEvent-namen, die bekend als u xEvents hebt gebruikt voor on-premises logboekregistratie kunnen zoeken. Klik **op\_EventClass s** of een van de gebeurtenis namen en log Analytics werk ruimte blijft een query maken. Zorg ervoor dat u uw query's voor hergebruik.
 
-### <a name="example-query"></a>Voorbeeld query
-Met deze query wordt CPU berekend en geretourneerd voor elke gebeurtenis van het einde/vernieuwen van de query voor een model database en-server:
+### <a name="example-queries"></a>Voorbeelden van query's
+
+#### <a name="example-1"></a>Voorbeeld 1
+
+Met de volgende query wordt de duur van elke query end/Refresh end gebeurtenis voor een model database en-server geretourneerd. Als de uitbreiden worden uitgeschaald, worden de resultaten uitgesplitst op replica omdat het replica nummer is opgenomen in ServerName_s. Groeperen op RootActivityId_g vermindert het aantal rijen dat is opgehaald uit de Azure Diagnostics REST API en helpt de limieten binnen de grenzen te blijven zoals beschreven in [log Analytics frequentie limieten](https://dev.loganalytics.io/documentation/Using-the-API/Limits).
 
 ```Kusto
-let window =  AzureDiagnostics
-   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and ServerName_s =~"MyServerName" and DatabaseName_s == "Adventure Works Localhost" ;
+let window = AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName" and DatabaseName_s =~ "MyDatabaseName" ;
 window
 | where OperationName has "QueryEnd" or (OperationName has "CommandEnd" and EventSubclass_s == 38)
 | where extract(@"([^,]*)", 1,Duration_s, typeof(long)) > 0
 | extend DurationMs=extract(@"([^,]*)", 1,Duration_s, typeof(long))
-| extend Engine_CPUTime=extract(@"([^,]*)", 1,CPUTime_s, typeof(long))
-| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g ,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs,Engine_CPUTime
-| join kind=leftouter (
-window
-    | where OperationName == "ProgressReportEnd" or (OperationName == "VertiPaqSEQueryEnd" and EventSubclass_s  != 10) or OperationName == "DiscoverEnd" or (OperationName has "CommandEnd" and EventSubclass_s != 38)
-    | summarize sum_Engine_CPUTime = sum(extract(@"([^,]*)", 1,CPUTime_s, typeof(long))) by RootActivityId_g
-    ) on RootActivityId_g
-| extend totalCPU = sum_Engine_CPUTime + Engine_CPUTime
-
+| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs
+| order by StartTime_t asc
 ```
 
+#### <a name="example-2"></a>Voorbeeld 2
+
+Met de volgende query wordt het geheugen-en QPU verbruik voor een server geretourneerd. Als de uitbreiden worden uitgeschaald, worden de resultaten uitgesplitst op replica omdat het replica nummer is opgenomen in ServerName_s.
+
+```Kusto
+let window = AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName";
+window
+| where OperationName == "LogMetric" 
+| where name_s == "memory_metric" or name_s == "qpu_metric"
+| project ServerName_s, TimeGenerated, name_s, value_s
+| summarize avg(todecimal(value_s)) by ServerName_s, name_s, bin(TimeGenerated, 1m)
+| order by TimeGenerated asc 
+```
+
+#### <a name="example-3"></a>Voorbeeld 3
+
+Met de volgende query worden de Analysis Services engine-prestatie meter items van de rijen voor een server gelezen per seconde.
+
+```Kusto
+let window =  AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName";
+window
+| where OperationName == "LogMetric" 
+| where parse_json(tostring(parse_json(perfobject_s).counters))[0].name == "Rows read/sec" 
+| extend Value = tostring(parse_json(tostring(parse_json(perfobject_s).counters))[0].value) 
+| project ServerName_s, TimeGenerated, Value
+| summarize avg(todecimal(Value)) by ServerName_s, bin(TimeGenerated, 1m)
+| order by TimeGenerated asc 
+```
 
 Er zijn honderden query's die u kunt gebruiken. Zie aan de [slag met Azure monitor-logboek query's](../azure-monitor/log-query/get-started-queries.md)voor meer informatie over query's.
 

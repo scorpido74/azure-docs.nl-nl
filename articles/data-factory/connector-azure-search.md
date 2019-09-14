@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: bc914d27e9bea15a625dd2cd196401d733f8cfb8
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: c2165d0ff16233766918f9e274324b02d1bf1ac8
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275935"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962103"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Gegevens kopiëren naar een Azure Search-index met behulp van Azure Data Factory
 
@@ -164,7 +164,7 @@ Azure Search-service ondersteunt het schrijven van documenten als een batch. Een
 ]
 ```
 
-### <a name="data-type-support"></a>Ondersteuning voor gegevens typen
+## <a name="data-type-support"></a>Ondersteuning voor gegevens typen
 
 In de volgende tabel wordt aangegeven of een Azure Search gegevens type wordt ondersteund.
 
@@ -178,6 +178,8 @@ In de volgende tabel wordt aangegeven of een Azure Search gegevens type wordt on
 | DataTimeOffset | J |
 | String Array | N |
 | GeographyPoint | N |
+
+Momenteel worden andere gegevens typen, zoals complex type, niet ondersteund. Zie [ondersteunde gegevens typen (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)voor een volledige lijst met ondersteund Azure zoeken-gegevens type.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md##supported-data-stores-and-formats).

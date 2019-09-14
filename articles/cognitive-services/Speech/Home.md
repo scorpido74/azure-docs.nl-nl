@@ -1,64 +1,64 @@
 ---
-title: Microsoft Bing Speech-Service | Microsoft Docs
+title: Micro soft Bing Speech-Service | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Microsoft Speech-API gebruiken voor het spraakgestuurde acties toevoegen aan uw apps, met inbegrip van realtime-interactie met gebruikers.
+description: Gebruik micro soft Speech API om op spraak gebaseerde acties toe te voegen aan uw apps, waaronder realtime-interactie met gebruikers.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d2c7211831658a18e65e04aa753607f4eb22dac8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ff9de2557583eecd5ddb2acd97b445a93abc5fb6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515094"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966654"
 ---
-# <a name="what-is-bing-speech"></a>Wat is de Bing Speech?
+# <a name="what-is-bing-speech"></a>Wat is Bing Speech?
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-De cloud gebaseerde Microsoft Bing Speech-API biedt ontwikkelaars een eenvoudige manier om te maken van krachtige functies voor spraak ingeschakelde in hun toepassingen, zoals voice opdrachtbesturingselement, met behulp van natuurlijke taal gesprek, en spraaktranscriptie en dicteren dialoogvenster voor de gebruiker. De Microsoft Speech-API ondersteunt zowel *spraak naar tekst* en *tekst naar spraak* conversie.
+De op de cloud gebaseerde micro soft-Bing Speech-API biedt ontwikkel aars een eenvoudige manier om krachtige spraak functies in hun toepassingen te maken, zoals het besturings element spraak opdracht, het dialoog venster voor gebruikers met natuurlijke spraak conversatie en spraak transcriptie en-dictering. De Speech-API van micro soft ondersteunt zowel *spraak op tekst* als *Text to speech* conversie.
 
 - **Spraak naar tekst** API converteert menselijke spraak naar tekst die kan worden gebruikt als invoer of opdrachten voor het beheren van uw toepassing.
-- **Tekst naar spraak** API converteert tekst naar audio stromen die kunnen worden afgespeeld op de gebruiker van uw toepassing.
+- **Text to speech** Met API wordt tekst geconverteerd naar audiostreams die kunnen worden weer gegeven aan de gebruiker van uw toepassing.
 
-## <a name="speech-to-text-speech-recognition"></a>Spraak naar tekst (spraakherkenning)
+## <a name="speech-to-text-speech-recognition"></a>Spraak naar tekst (spraak herkenning)
 
-Microsoft-spraakherkenning API *transcribes* audiostreams naar tekst die uw toepassing kan worden weergegeven voor de gebruiker of bij het fungeren als invoer opdracht. Het biedt twee manieren voor ontwikkelaars voor het toevoegen van de spraakherkenning aan hun apps: REST API's **of** op basis van Websocket-clientbibliotheken.
+De *API voor* spraak herkenning van micro soft verzorgt audio stromen naar tekst die door uw toepassing kan worden weer gegeven aan de gebruiker of waarmee kan worden gereageerd als opdracht invoer. Het biedt ontwikkel aars twee manieren om spraak toe te voegen aan hun apps: REST-Api's **of** op websockets gebaseerde client bibliotheken.
 
-- [REST-API's](GetStarted/GetStartedREST.md): Ontwikkelaars kunnen HTTP-aanroepen naar de service voor spraakherkenning van hun apps gebruiken.
-- [Clientbibliotheken](GetStarted/GetStartedClientLibraries.md): Voor geavanceerde functies, kunnen ontwikkelaars downloaden van Microsoft Speech-clientbibliotheken en koppel in hun apps.  De clientbibliotheken zijn beschikbaar op verschillende platformen (Windows, Android, iOS) met behulp van verschillende talen (C#, Java, JavaScript, ObjectiveC). In tegenstelling tot de REST-API's, de clientbibliotheken gebruikmaken van op basis van Websocket-protocol.
+- [Rest-api's](GetStarted/GetStartedREST.md): Ontwikkel aars kunnen HTTP-aanroepen van hun apps naar de service gebruiken voor spraak herkenning.
+- [Client bibliotheken](GetStarted/GetStartedClientLibraries.md): Ontwikkel aars kunnen voor geavanceerde functies micro soft speech client-bibliotheken downloaden en een koppeling maken naar hun apps.  De-client bibliotheken zijn beschikbaar op verschillende platformen (Windows, Android, iOS) met behulp van verschillende talen (C#Java, java script, ObjectiveC). In tegens telling tot de REST-Api's maakt de client bibliotheken gebruik van WebSocket-protocol.
 
-| Gebruiksvoorbeelden | [REST API's](GetStarted/GetStartedREST.md) | [Clientbibliotheken](GetStarted/GetStartedClientLibraries.md) |
+| Gebruiksvoorbeelden | [REST API's](GetStarted/GetStartedREST.md) | [Client bibliotheken](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
-| (Audio lengte < 15 s) opdrachten converteren een korte gesproken audio, bijvoorbeeld zonder tussentijdse resultaten | Ja | Ja |
-| Converteren van een lange audio (> 15 s) | Nee | Ja |
-| Stream audio met tijdelijke resultaten gewenst | Nee | Ja |
-| Inzicht in de tekst geconverteerd van audio gebruik maakt van LUIS | Nee | Ja |
+| Een korte gesp roken audio converteren, bijvoorbeeld opdrachten (audio lengte < 15 s) zonder tussenliggende resultaten | Ja | Ja |
+| Een lange audio converteren (> 15 s) | Nee | Ja |
+| Stream audio met de gewenste tussentijdse resultaten | Nee | Ja |
+| Inzicht in de tekst die is geconverteerd van audio met behulp van LUIS | Nee | Ja |
 
-Welke benadering ontwikkelaars kiezen (REST-API's of -clientbibliotheken), Microsoft spraak-service ondersteunt het volgende:
+Welke benaderingen van ontwikkel aars kiezen (REST Api's of client bibliotheken), micro soft Speech Service ondersteunt het volgende:
 
-- Geavanceerde spraak technologieën van Microsoft die worden gebruikt door Cortana, dicteren Office Translator Office en andere Microsoft-producten.
-- Realtime continue herkenning. De the spraakherkennings-API kan gebruikers audio naar tekst in realtime, met ondersteuning voor het ontvangen van de tussenliggende resultaten van de woorden die tot nu toe zijn herkend transcriberen. De spraakservice biedt ook ondersteuning voor end-of-speech detectie. Gebruikers kunnen daarnaast aanvullende opmaakopties mogelijkheden, zoals de hoofdletters en interpunctie, maskering grof taalgebruik en tekst normalisering kiezen.
-- Ondersteunt geoptimaliseerd spraak herkenningsresultaten voor *interactieve*, *conversatie*, en *dicteren* scenario's. Voor gebruiker-scenario's waarvoor aangepaste taalmodellen en akoestische modellen [Custom Speech Service](../custom-speech-service/cognitive-services-custom-speech-home.md) kunt u spraakmodellen die zijn afgestemd op uw toepassing en uw gebruikers maken.
-- Ondersteuning voor vele talen in meerdere dialecten. Zie voor de volledige lijst van ondersteunde talen in beide modi erkenning, [erkenning talen](api-reference-rest/supportedlanguages.md).
-- Integratie met language understanding. Naast de audio-invoer converteren naar tekst, de *spraak naar tekst* biedt toepassingen een aanvullende mogelijkheden om te begrijpen wat de tekst betekent. Hierbij de [Language Understanding Intelligent Service(LUIS)](../LUIS/what-is-luis.md) intenties en entiteiten ophalen uit de herkende tekst.
-
-### <a name="next-steps"></a>Volgende stappen
-
-- Aan de slag om te gebruiken Microsoft-spraakherkenningsservice met [REST-API's](GetStarted/GetStartedREST.md) of [clientbibliotheken](GetStarted/GetStartedClientLibraries.md).
-- Bekijk [voorbeeldtoepassingen](samples.md) in uw favoriete programmeertaal.
-- Ga naar de sectie documentatie te vinden [Microsoft Speech Protocol](API-Reference-REST/websocketprotocol.md) details en API-verwijzingen.
-
-## <a name="text-to-speech-speech-synthesis"></a>Tekst naar spraak (spraaksynthese)
-
-*Tekst naar spraak* REST API's gebruiken voor het gestructureerde tekst converteren naar een audiostream. De API's bieden een snelle tekst naar spraak conversie in verschillende stemmen en talen. Daarnaast hebben gebruikers ook de mogelijkheid om te wijzigen van audio kenmerken, zoals de uitspraak, volume, presentatie, enzovoort. met behulp van SSML met tags.
+- Geavanceerde technologieën voor spraak herkenning van micro soft die worden gebruikt door Cortana, Office dicteren, Office Translator en andere micro soft-producten.
+- Realtime continue herkenning. Met de API voor spraak herkenning kunnen gebruikers audio naar tekst in realtime transcriberen en wordt ondersteuning geboden voor het ontvangen van de tussenliggende resultaten van de woorden die tot nu toe zijn herkend. De spraak service biedt ook ondersteuning voor het detecteren van het eind van spraak. Daarnaast kunnen gebruikers extra opmaak mogelijkheden kiezen, zoals het hoofdletter gebruik en interpunctie, het maskeren van scheld woorden en tekst normalisatie.
+- Ondersteunt geoptimaliseerde spraak herkennings resultaten voor *interactieve*, *conversatie*-en *dicteer* scenario's. Voor gebruikers scenario's waarvoor aangepaste taal modellen en akoestische modellen zijn vereist, kunt u met [Custom Speech Service](../custom-speech-service/cognitive-services-custom-speech-home.md) spraak modellen maken die zijn afgestemd op uw toepassing en uw gebruikers.
+- Ondersteuning voor veel gesp roken talen in meerdere dialecten. Zie [herkennings talen](api-reference-rest/supportedlanguages.md)voor een volledige lijst met ondersteunde talen in elke herkennings modus.
+- Integratie met language standing. Naast het converteren van de audio-invoer naar tekst, biedt de *spraak naar tekst* toepassingen een extra mogelijkheid om te begrijpen wat de tekst inhoudt. De [Language Understanding intelligent service (Luis)](../LUIS/what-is-luis.md) wordt gebruikt voor het uitpakken van intenties en entiteiten uit de herkende tekst.
 
 ### <a name="next-steps"></a>Volgende stappen
 
-- Aan de slag om Microsoft text to speech-service te gebruiken: [Text to Speech-API-verwijzing](api-reference-rest/bingvoiceoutput.md). Zie voor de volledige lijst met talen en stemmen ondersteund door de tekst naar spraak, [ondersteunde landinstellingen en Spraakstijlen](api-reference-rest/bingvoiceoutput.md#SupLocales).
+- Ga aan de slag met het gebruik van micro soft speech recognition service met [rest api's](GetStarted/GetStartedREST.md) of [client bibliotheken](GetStarted/GetStartedClientLibraries.md).
+- Bekijk [voorbeeld toepassingen](samples.md) in de programmeer taal van uw voor keur.
+- Ga naar het gedeelte met Naslag informatie om de details van het [micro soft speech-protocol](API-Reference-REST/websocketprotocol.md) en API-verwijzingen te vinden.
+
+## <a name="text-to-speech-speech-synthesis"></a>Tekst-naar-spraak (spraak-synthese)
+
+*Text to speech* Api's gebruiken REST om gestructureerde tekst te converteren naar een audio stroom. De Api's bieden snelle tekst-naar-spraak conversie in verschillende stemmen en talen. Daarnaast hebben gebruikers ook de mogelijkheid om audio-eigenschappen te wijzigen, zoals de uitspraak, het volume, de hoogte, enzovoort. SSML-Tags gebruiken.
+
+### <a name="next-steps"></a>Volgende stappen
+
+- Ga aan de slag met het gebruik van micro soft text to Speech Service: [Text to Speech-API verwijzing](api-reference-rest/bingvoiceoutput.md). Zie [ondersteunde land instellingen en spraak lettertypen](api-reference-rest/bingvoiceoutput.md#SupLocales)voor een volledige lijst met talen en stemmen die door Text to speech worden ondersteund.

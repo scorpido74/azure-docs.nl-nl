@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: atsenthi
-ms.openlocfilehash: 07b26fb86392b26ef45c4370741a32efc7dc436b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: f2621abcb2bac55ff123a11efa0ae9a082a1acbd
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640916"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968266"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Het verlenen van toegang tot Azure-resources door de beheerde identiteit van een Service Fabric-toepassing (preview)
 
@@ -69,7 +69,5 @@ Het volgende voor beeld illustreert het verlenen van toegang tot een kluis via e
 Zie [kluizen-Access Policy bijwerken](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-
 * [Een Azure Service Fabric-toepassing implementeren met een door het systeem toegewezen beheerde identiteit](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
-
 * [Een Azure Service Fabric-toepassing implementeren met een door de gebruiker toegewezen beheerde identiteit](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)

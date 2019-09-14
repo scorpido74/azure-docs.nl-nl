@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 4ce40fdf36f7d66e60e15955318e43f1f24f275f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 15d0a584d88045f6020162a88124cd9d6a4735bf
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515844"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984008"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Resourcelimieten voor Azure NetApp Files
 
@@ -36,7 +36,7 @@ In de volgende tabel worden resource limieten voor Azure NetApp Files beschreven
 |  Aantal volumes per capaciteits pool     |    500   |    Ja     |
 |  Aantal moment opnamen per volume       |    255     |    Nee        |
 |  Aantal subnetten dat wordt gedelegeerd aan Azure NetApp Files (micro soft. NetApp/volumes) per Azure-Virtual Network    |   1   |    Nee    |
-|  Aantal gelijktijdige IP-adressen in een VNet (inclusief peered VNets) die toegang hebben tot Azure NetApp Files   |    1000   |    Nee   |
+|  Aantal IP-adressen in een VNet (inclusief peered VNets) die toegang hebben tot Azure NetApp Files   |    1000   |    Ja   |
 |  Minimum grootte van één capaciteits groep   |  4 TiB     |    Nee  |
 |  Maximale grootte van één capaciteits groep    |  500 TiB   |   Nee   |
 |  Minimum grootte van één volume    |    100 GiB    |    Nee    |
@@ -53,8 +53,8 @@ Vanuit Azure Portal navigatie vlak:
 2. Klik op **+ nieuwe ondersteunings aanvraag**.
 3. Geef op het tabblad basis beginselen de volgende informatie op: 
     1. Type probleem: **Service-en abonnements limieten (quota's)** selecteren.
-    2. Abonnementen: Selecteer het abonnement voor de resource dat u nodig hebt om het quotum te verg root.
-    3. Quotum type: Opslag **selecteren: Azure NetApp Files limieten**.
+    2. Geabonneerd Selecteer het abonnement voor de resource dat u nodig hebt om het quotum te verg root.
+    3. Type quotum: Opslag **selecteren: Azure NetApp Files limieten**.
     4. Klik op **Next: Oplossingen**.
 4. Op het tabblad Details:
     1. Geef in het vak Beschrijving de volgende informatie op voor het bijbehorende resource type:

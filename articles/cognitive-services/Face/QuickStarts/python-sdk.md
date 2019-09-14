@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 2a74dbe9c306c1bf2420fdaac78a9b9183cacab1
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: f237af58bb98f667d4481a88bbb4daa77657468c
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376141"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966911"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Quickstart: Face client-bibliotheek voor python
 
@@ -285,7 +285,7 @@ Als u gegevens hebt gemigreerd met behulp van de snap shot-functie in deze Quick
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u de face-bibliotheek voor Java kunt gebruiken om basis taken uit te voeren. Bekijk vervolgens de referentie documentatie voor meer informatie over de-bibliotheek.
+In deze Quick Start hebt u geleerd hoe u de face-bibliotheek voor python kunt gebruiken om basis taken uit te voeren. Bekijk vervolgens de referentie documentatie voor meer informatie over de-bibliotheek.
 
 > [!div class="nextstepaction"]
 > [Face-API verwijzing (python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)

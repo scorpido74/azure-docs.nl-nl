@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 0dd4447736469644875dff914c6284b087be87d0
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e831b94099a8bdf96710fc8ae8915938bbe997c4
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910226"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984515"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Zelfstudie: Uw eerste classificatie model maken met geautomatiseerde machine learning
 
@@ -99,7 +99,8 @@ Het scherm **aan** de slag wordt weer gegeven, omdat dit uw eerste experiment me
         Bestands indeling| Gescheiden
         Scheidingsteken| Komma
         Encoding| UTF-8
-        Kolomkoppen| Alle bestanden hebben dezelfde headers voor het overs laan van rijen | Geen
+        Kolomkoppen| Alle bestanden hebben dezelfde headers
+        Rijen overs Laan | Geen
 
         >[!NOTE]
         > Als een van de instellingen in dit formulier is bijgewerkt, wordt de preview-versie dienovereenkomstig bijgewerkt.

@@ -8,17 +8,17 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/26/2019
-ms.openlocfilehash: df43b52514eebc3216dbec01cff0d8a3b14e7940
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.date: 08/01/2019
+ms.openlocfilehash: 8e2e9d30fa24e56711a0d6800a8ca9a34e53c12e
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517655"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967242"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Artefacten toevoegen aan uw integratie service omgeving (ISE) in Azure Logic Apps
 
-Nadat u een [ISE (Integration service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)hebt gemaakt, voegt u artefacten, zoals Logic apps, integratie accounts en aangepaste connectors, toe om toegang te krijgen tot de resources in uw virtuele Azure-netwerk.
+Nadat u een [ISE (Integration service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)hebt gemaakt, voegt u artefacten toe, zoals Logic apps, integratie accounts en connectors, zodat ze toegang hebben tot de resources in uw virtuele Azure-netwerk.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -28,7 +28,7 @@ Nadat u een [ISE (Integration service Environment)](../logic-apps/connect-virtua
 
 <a name="create-logic-apps-environment"></a>
 
-## <a name="create-logic-apps-in-an-ise"></a>Logische apps maken in een ISE
+## <a name="create-logic-apps"></a>Logische apps maken
 
 Voer de volgende stappen uit om Logic apps te bouwen die worden uitgevoerd in uw integratie service omgeving (ISE):
 
@@ -57,7 +57,7 @@ Voer de volgende stappen uit om Logic apps te bouwen die worden uitgevoerd in uw
 
 <a name="create-integration-account-environment"></a>
 
-## <a name="create-integration-accounts-in-an-ise"></a>Integratie accounts maken in een ISE
+## <a name="create-integration-accounts"></a>Integratie accounts maken
 
 Op basis van de [ISE-SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) die u hebt geselecteerd bij het maken, bevat uw ISE geen extra kosten voor het gebruik van een bepaald integratie account. Logic apps die zich in een Integration service Environment (ISE) bevinden, kunnen verwijzen naar alleen integratie accounts die zich in dezelfde ISE bevinden. Voor een integratie account om te werken met Logic apps in een ISE, moeten zowel het integratie account als de logische apps *dezelfde omgeving* gebruiken als hun locatie. Zie [integratie accounts met ISE](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment
 )voor meer informatie over integratie accounts en ISEs.
@@ -84,9 +84,25 @@ Voer de volgende stappen uit om een integratie account te maken dat gebruikmaakt
 
 1. Zie [uw integratie service omgeving beheren](../logic-apps/ise-manage-integration-service-environment.md)voor informatie over het beheren van integratie accounts in uw ISE.
 
+<a name="add-ise-connectors-environment"></a>
+
+## <a name="add-ise-connectors"></a>ISE-connectors toevoegen
+
+U kunt door micro soft beheerde connectors toevoegen die beschikbaar zijn voor gebruik in uw ISE, maar die niet zijn geïmplementeerd in uw ISE.
+
+1. Selecteer in het menu ISE, onder **instellingen**, **beheerde connectors**. Selecteer **toevoegen**op de werk balk.
+
+   ![Beheerde connectors weer geven](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
+
+1. Open in het deel venster **een nieuwe beheerde connector toevoegen** de lijst **connector zoeken** . Als de gewenste connector beschikbaar is, selecteert u die connector en selecteert u **maken**.
+
+   De lijst bevat alleen de connectors die in aanmerking komen, maar die niet zijn geïmplementeerd in uw ISE. Connectors die al in uw ISE zijn geïmplementeerd, kunnen niet worden geselecteerd.
+
+   ![In aanmerking komende connector selecteren](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
+
 <a name="create-custom-connectors-environment"></a>
 
-## <a name="create-custom-connectors-in-an-ise"></a>Aangepaste connectors maken in een ISE
+## <a name="create-custom-connectors"></a>Aangepaste connectors maken
 
 Als u aangepaste connectors in uw ISE wilt gebruiken, maakt u die aangepaste connectors rechtstreeks in uw ISE.
 

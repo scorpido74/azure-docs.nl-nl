@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: cad04df9ba76ce483a308411949e6f98bab23bf9
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 29fd82eb0253f2f7f6b9bc8b6a84882e2372124c
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858556"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984976"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>T-SQL-verschillen in beheerde exemplaren, beperkingen en bekende problemen
 
@@ -339,7 +339,7 @@ Een beheerd exemplaar heeft geen toegang tot bestands shares en Windows-mappen, 
 - `ALTER ASSEMBLY`kan niet verwijzen naar bestanden. Zie [ALTER assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Database Mail (db_mail)
- - `sp_send_dbmail`kan geen bijlagen verzenden @file_attachments met behulp van een para meter. Het lokale bestands systeem en de omvangele shares of Azure Blob-opslag zijn niet toegankelijk via deze procedure.
+ - `sp_send_dbmail`kan geen bijlagen verzenden @file_attachments met behulp van een para meter. Lokale bestands systeem-en Extertal-shares of Azure Blob-opslag zijn niet toegankelijk via deze procedure.
  - Zie de bekende problemen met betrekking `@query` tot para meter en authenticatie.
  
 ### <a name="dbcc"></a>DBCC
@@ -479,9 +479,12 @@ Beperkingen:
 - Herstellen van `.BAK` een bestand met een beperking die in dit document is `FILESTREAM` beschreven (bijvoorbeeld of `FILETABLE` objecten) kan niet worden hersteld op een beheerd exemplaar.
 - `.BAK`bestanden die meerdere back-upsets bevatten, kunnen niet worden hersteld. 
 - `.BAK`bestanden die meerdere logboek bestanden bevatten, kunnen niet worden hersteld.
-- Back-ups die data bases bevatten die groter zijn dan 8TB, Active in-memory OLTP Objects of meer dan 280 bestanden kunnen niet worden hersteld op een Algemeen-exemplaar. 
+- Back-ups met data bases die groter zijn dan 8TB, actieve in-memory OLTP objecten of het aantal bestanden dat groter zou zijn dan 280 bestanden per exemplaar, kunnen niet worden hersteld op een Algemeen-exemplaar. 
 - Back-ups die data bases bevatten die groter zijn dan 4 TB of in-memory OLTP objecten met de totale grootte die groter is dan de grootte die is beschreven in [resource limieten](sql-database-managed-instance-resource-limits.md) , kunnen niet worden hersteld op bedrijfskritiek exemplaar.
 Zie Restore statements ( [instructies herstellen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)) voor meer informatie over Restore-instructies.
+
+ > [!IMPORTANT]
+ > Dezelfde beperkingen zijn van toepassing op de ingebouwde herstel bewerking naar een bepaald tijdstip. Zo kan Algemeen data base van meer dan 4 TB niet worden hersteld op Bedrijfskritiek exemplaar. Bedrijfskritiek data base met OLTP-bestanden in het geheugen of meer dan 280 bestanden kunnen niet worden hersteld op Algemeen exemplaar.
 
 ### <a name="service-broker"></a>Service Broker
 

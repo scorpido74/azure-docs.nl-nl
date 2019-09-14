@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7d7618d2542b1c1d83ed7328c8a32d80f2d0e66a
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b7665caad60a5135da5780da242772af3c0a05a4
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699534"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984888"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Quickstart: Azure-bestandsshares maken en beheren met Azure Portal 
 [Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestandsshares kunnen worden gekoppeld in Windows, Linux en macOS. In deze handleiding worden de basisbeginselen besproken van het werken met Azure-bestandsshares met behulp van [Azure Portal](https://portal.azure.com/).
@@ -44,9 +44,9 @@ Zie het volgende document op basis van het besturingssysteem om een bestandsshar
 - [MacOS](storage-how-to-use-files-mac.md)
 
 ### <a name="using-an-azure-file-share-from-the-azure-portal"></a>Een Azure-bestandsshare maken vanuit de Azure-portal
-Alle aanvragen via Azure Portal worden gedaan via de REST-API van File, zodat u bestanden en mappen kunt maken, wijzigen en verwijderen in clients zonder toegang tot SMB. Het is mogelijk om rechtstreeks met het File REST-protocol te werken (dat wil zeggen HTTP REST-aanroepen zelf te maken). De meest voorkomende manier om het File REST-protocol te gebruiken (naast het gebruik van Azure Portal), is echter met de [Azure PowerShell-module](storage-how-to-use-files-powershell.md), de [Azure CLI](storage-how-to-use-files-cli.md) of een Azure Storage-SDK, die allemaal een mooie wrapper rond het File REST-protocol bieden in de script-/programmeertaal van uw keuze. 
+Alle aanvragen via Azure Portal worden gedaan via de REST-API van File, zodat u bestanden en mappen kunt maken, wijzigen en verwijderen in clients zonder toegang tot SMB. Het is mogelijk om rechtstreeks met het File REST protocol te werken (dat wil zeggen, handcrafting REST HTTP-aanroepen), maar de meest voorkomende manier (niet langer dan het gebruik van de Azure Portal) voor het gebruik van het bestand REST protocol is het gebruik van de [Azure PowerShell module](storage-how-to-use-files-powershell.md), de [Azure cli](storage-how-to-use-files-cli.md), of een Azure Storage SDK, die allemaal een fraaie wrapper rond het bestand REST protocol bevat in de script-en programmeer taal van uw keuze. 
 
-In de meeste gevallen gebruikt u Azure Files en de Azure-bestandsshare via het SMB-protocol, omdat dit u de mogelijkheid biedt om de bestaande toepassingen en hulpprogramma's te gebruiken die u verwacht te kunnen gebruiken, maar er zijn diverse redenen waarom het gebruik van de File REST-API in plaats van SMB voordelen oplevert, zoals:
+De meeste gebruikers van Azure Files willen werken met hun Azure-bestands share via het SMB-protocol, omdat hierdoor de bestaande toepassingen en hulpprogram ma's kunnen worden gebruikt die ze kunnen gebruiken, maar er zijn verschillende redenen om het bestand REST-AP te gebruiken I in plaats van SMB, zoals:
 
 - U wilt een snelle wijziging in de Azure-bestandsshare aanbrengen vanaf een apparaat terwijl u onderweg bent, zoals vanaf een laptop zonder SMB-toegang, een tablet of een mobiel apparaat.
 - U wilt een script of toepassing uitvoeren vanaf een client die geen SMB-share kan koppelen, zoals on-premises clients waarvoor poort 445 niet is gedeblokkeerd.

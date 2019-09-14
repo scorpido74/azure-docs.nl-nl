@@ -141,6 +141,8 @@
       href: how-to-legacy-device-symm-key.md
     - name: SDK-hulpprogramma's gebruiken voor ontwikkeling
       href: how-to-use-sdk-tools.md
+    - name: Problemen oplossen
+      href: how-to-troubleshoot-dps.md
 - name: Naslaginformatie
   items:
     - name: REST-API
