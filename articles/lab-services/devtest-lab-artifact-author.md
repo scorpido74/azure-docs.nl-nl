@@ -56,7 +56,7 @@ Het volgende voorbeeld ziet u de secties die gezamenlijk de basisstructuur van e
 | De naam van element | Vereist? | Description |
 | --- | --- | --- |
 | $schema |Nee |Locatie van het bestand met JSON-schema. Het JSON-schema-bestand kunt u de geldigheid van de definitie van het bestand te testen. |
-| titel |Ja |De naam van het artefact weergegeven in het lab. |
+| title |Ja |De naam van het artefact weergegeven in het lab. |
 | description |Ja |Beschrijving van het artefact weergegeven in het lab. |
 | iconUri |Nee |De URI van het pictogram weergegeven in het lab. |
 | targetOsType |Ja |Besturingssysteem van de virtuele machine waarop het artefact is geïnstalleerd. Ondersteunde opties zijn Windows en Linux. |
