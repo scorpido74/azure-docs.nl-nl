@@ -9,12 +9,12 @@ ms.date: 04/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c8ec6b1e90eb6638c99ca43715c5e8bea6e48c22
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 892cbe66222626a6847ad7a5b6c990d23991c182
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030958"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002256"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-the-azure-portal"></a>Door de klant beheerde sleutels configureren voor Azure Storage versleuteling van de Azure Portal
 
@@ -48,7 +48,7 @@ Voer de volgende stappen uit om een sleutel als URI op te geven:
 
     ![Scherm opname van sleutel kluis sleutel-URI](media/storage-encryption-keys-portal/key-uri-portal.png)
 
-1. Kies in de versleutelings instellingen voor uw opslag account de optie **sleutel-URI opgeven** .
+1. Kies in de **versleutelings** instellingen voor uw opslag account de optie **sleutel-URI opgeven** .
 1. Geef in het veld **sleutel-URI** de URI op.
 
    ![Scherm afbeelding die laat zien hoe de sleutel-URI moet worden ingevoerd](./media/storage-encryption-keys-portal/ssecmk2.png)
@@ -67,10 +67,10 @@ Als u een sleutel van een sleutel kluis wilt opgeven, moet u eerst controleren o
 
 Wanneer u een nieuwe versie van een sleutel maakt, moet u het opslag account bijwerken voor gebruik van de nieuwe versie. Volg deze stappen:
 
-1. Navigeer naar uw opslag account en geef de versleutelings instellingen weer.
+1. Navigeer naar uw opslag account en geef de **versleutelings** instellingen weer.
 1. Geef de URI op voor de nieuwe sleutel versie. U kunt ook de sleutel kluis en de sleutel opnieuw selecteren om de versie bij te werken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure Storage versleuteling voor Data-at-rest](storage-service-encryption.md)
-- [Wat is Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?
+- [Wat is Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

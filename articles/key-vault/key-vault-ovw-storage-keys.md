@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/01/2019
-ms.openlocfilehash: 86ac58aea174ca05580da99b6bde0cc3823ab151
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 68c9279333e9ee92cbca1034f70801c153b6cdb8
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883062"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000537"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Sleutels voor opslag accounts beheren met Azure Key Vault en de Azure CLI 
 
@@ -158,7 +158,7 @@ Er zijn drie manieren om te verifiëren bij Key Vault:
 - Een Service-Principal en een certificaat gebruiken. 
 - Een Service-Principal en wacht woord gebruiken. Deze methode wordt niet aanbevolen.
 
-Zie [Azure Key Vault voor meer informatie: Basis concepten](key-vault-whatis.md#basic-concepts).
+Zie [Azure Key Vault voor meer informatie: Basis concepten](basic-concepts.md).
 
 In het volgende voor beeld ziet u hoe u de tokens voor Shared Access-hand tekeningen ophaalt. U haalt de tokens op nadat u een definitie van een gedeelde toegangs handtekening hebt gemaakt. 
 

@@ -1,94 +1,94 @@
 ---
-title: SQL-query-operators voor Azure Cosmos DB
-description: Meer informatie over SQL-operators voor Azure Cosmos DB.
+title: SQL-query operators voor Azure Cosmos DB
+description: Meer informatie over SQL-Opera tors voor Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: eecc1522f8c260286c7dd7fc4c2e58d5d8caa8fb
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 899355ad7331a3df8cd5d647a573dc15e3a0bb14
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342450"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003382"
 ---
-# <a name="operators-in-azure-cosmos-db"></a>Operators in Azure Cosmos DB
+# <a name="operators-in-azure-cosmos-db"></a>Opera tors in Azure Cosmos DB
 
-Dit artikel worden de verschillende operators ondersteund door Azure Cosmos DB.
+In dit artikel vindt u meer informatie over de verschillende Opera tors die door Azure Cosmos DB worden ondersteund.
 
-## <a name="equality-and-comparison-operators"></a>Gelijkheid en vergelijkingsoperators
+## <a name="equality-and-comparison-operators"></a>Gelijkheids-en vergelijkings operators
 
 In de volgende tabel ziet het resultaat van gelijkheidsvergelijkingen in de SQL-API voor elk paar JSON-typen.
 
 | **Op** | **Undefined** | **Null** | **Boolean** | **Number** | **String** | **Object** | **Array** |
 |---|---|---|---|---|---|---|---|
-| **Undefined** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Null** | Undefined | **Ok** | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Boolean** | Undefined | Undefined | **Ok** | Undefined | Undefined | Undefined | Undefined |
-| **Number** | Undefined | Undefined | Undefined | **Ok** | Undefined | Undefined | Undefined |
-| **String** | Undefined | Undefined | Undefined | Undefined | **Ok** | Undefined | Undefined |
-| **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **Ok** | Undefined |
-| **Array** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **Ok** |
+| **Undefined** | Niet gedefinieerd | Undefined | Undefined | Undefined | Undefined | Undefined | Niet gedefinieerd |
+| **Null** | Niet gedefinieerd | **Ok** | Niet gedefinieerd | Undefined | Undefined | Undefined | Niet gedefinieerd |
+| **Boolean** | Niet gedefinieerd | Niet gedefinieerd | **Ok** | Niet gedefinieerd | Undefined | Undefined | Niet gedefinieerd |
+| **Number** | Niet gedefinieerd | Undefined | Niet gedefinieerd | **Ok** | Niet gedefinieerd | Undefined | Niet gedefinieerd |
+| **String** | Niet gedefinieerd | Undefined | Undefined | Niet gedefinieerd | **Ok** | Niet gedefinieerd | Niet gedefinieerd |
+| **Object** | Niet gedefinieerd | Undefined | Undefined | Undefined | Niet gedefinieerd | **Ok** | Niet gedefinieerd |
+| **Array** | Niet gedefinieerd | Undefined | Undefined | Undefined | Undefined | Niet gedefinieerd | **Ok** |
 
-Voor vergelijkingsoperators zoals `>`, `>=`, `!=`, `<`, en `<=`, vergelijking van de verschillende typen of tussen twee objecten of matrices produceert `Undefined`.  
+Voor vergelijkings operatoren `>`zoals `>=` `!=`, `<`,, en `<=`wordt vergelijking tussen typen of tussen twee objecten of matrices gegenereerd `Undefined`.  
 
-Als het resultaat van de scalaire expressie `Undefined`, het item niet is opgenomen in het resultaat, omdat `Undefined` is niet gelijk aan `true`.
+Als het resultaat van de scalaire expressie `Undefined`is, wordt het item niet opgenomen in het resultaat `Undefined` omdat het `true`niet gelijk is aan.
 
 ## <a name="logical-and-or-and-not-operators"></a>Logische operatoren (EN, OF en NIET)
 
-Logische operatoren worden uitgevoerd op Booleaanse waarden. De volgende tabellen ziet de logische waarheid tabellen voor deze operators:
+Logische operatoren worden uitgevoerd op Booleaanse waarden. In de volgende tabellen ziet u de logische waarheids tabellen voor deze opera tors:
 
 **Operator OF**
 
-| OF | True | False | Undefined |
+| OR | Waar | False | Niet gedefinieerd |
 | --- | --- | --- | --- |
-| True |True |True |True |
-| False |True |False |Undefined |
-| Undefined |True |Undefined |Undefined |
+| Waar |Waar |Waar |Waar |
+| False |Waar |False |Niet gedefinieerd |
+| Niet gedefinieerd |Waar |Niet gedefinieerd |Undefined |
 
 **Operator EN**
 
-| EN | True | False | Undefined |
+| EN | Waar | False | Niet gedefinieerd |
 | --- | --- | --- | --- |
-| True |True |False |Undefined |
+| Waar |Waar |False |Niet gedefinieerd |
 | False |False |False |False |
-| Undefined |Undefined |False |Undefined |
+| Niet gedefinieerd |Niet gedefinieerd |False |Niet gedefinieerd |
 
 **Operator NIET**
 
 | NIET |  |
 | --- | --- |
-| True |False |
-| False |True |
-| Undefined |Undefined |
+| Waar |False |
+| False |Waar |
+| Niet gedefinieerd |Niet gedefinieerd |
 
 
-## <a name="-operator"></a>* operator
+## <a name="-operator"></a>*-operator
 
-De speciale operator * het gehele artikel projecten is. Als u deze operator gebruikt, moet dit het enige geprojecteerde veld zijn. Een query zoals `SELECT * FROM Families f` is geldig, maar `SELECT VALUE * FROM Families f` en `SELECT *, f.id FROM Families f` zijn niet geldig.
+De speciale operator * projecteert het hele item in de vorm van. Als u deze operator gebruikt, moet dit het enige geprojecteerde veld zijn. Een query zoals `SELECT * FROM Families f` is geldig, `SELECT *, f.id FROM Families f` maar `SELECT VALUE * FROM Families f` is niet geldig.
 
-## <a name="-and--operators"></a>? en? Operators
+## <a name="-and--operators"></a>? en?? Dienen
 
-U kunt de Ternair (?) en operators (?) voor het bouwen van voorwaardelijke expressies, zoals in programmeertalen, zoals samenvoegen C# en JavaScript. 
+U kunt de Opera tors (?) en Coalesce (?) gebruiken om voorwaardelijke expressies te maken, zoals in programmeer talen zoals C# en Java script. 
 
-U kunt de? de operator op die nieuwe JSON-eigenschappen op elk gewenst moment te maken. Bijvoorbeeld, de volgende query worden geclassificeerd geavanceerde niveaus in `elementary` of `other`:
+U kunt de gebruiken? operator voor het maken van nieuwe JSON-eigenschappen. Met de volgende query worden bijvoorbeeld de classificatie niveaus geclassificeerd in `elementary` of: `other`
 
 ```sql
      SELECT (c.grade < 5)? "elementary": "other" AS gradeLevel
      FROM Families.children[0] c
 ```
 
-U kunt ook nesten aanroepen naar de? operator, zoals in de volgende query uit: 
+U kunt ook aanroepen nesten naar de? , zoals in de volgende query: 
 
 ```sql
     SELECT (c.grade < 5)? "elementary": ((c.grade < 9)? "junior": "high") AS gradeLevel
     FROM Families.children[0] c
 ```
 
-Net als bij andere standaardoperators voor query's, de? operator niet van toepassing op items als de waarnaar wordt verwezen, eigenschappen ontbreken of de typen dat wordt vergeleken verschillend zijn.
+Net als bij andere query operators, de? de operator sluit items uit als de eigenschappen van de verwijzing ontbreken of de typen die worden vergeleken, verschillen.
 
-Gebruik de? de operator op die efficiënt controleren voor een eigenschap van een item wanneer een query op gemengde type of semi-gestructureerde gegevens. Bijvoorbeeld, de volgende query retourneert `lastName` indien aanwezig, of `surname` als `lastName` niet aanwezig is.
+Gebruikt u de? operator om efficiënt te controleren op een eigenschap in een item bij het uitvoeren van query's op semi-gestructureerde of gegevens van een gemengd type. De volgende query retourneert bijvoorbeeld, indien `lastName` aanwezig, of `surname` als `lastName` deze niet aanwezig is.
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName
@@ -97,6 +97,6 @@ Gebruik de? de operator op die efficiënt controleren voor een eigenschap van ee
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [trefwoorden](sql-query-keywords.md)
 - [SELECT-component](sql-query-select.md)

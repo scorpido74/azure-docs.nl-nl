@@ -10,12 +10,12 @@ ms.date: 03/24/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 55cdb70a02aae62a69f4fc930f4c6ee385a24702
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2784d57f3f85094230b481dd9fedca191edb39d4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839544"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001112"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Zelfstudie: Een python IoT Edge-module ontwikkelen en implementeren voor Linux-apparaten
 
@@ -33,6 +33,9 @@ U kunt Azure IoT Edge-modules gebruiken voor het implementeren van code die uw b
 De IoT Edge-module die u maakt in deze zelfstudie filtert de temperatuurgegevens die door uw apparaat worden gegenereerd. Er worden alleen gegevens upstream gezonden als de temperatuur boven een opgegeven drempelwaarde komt. Dit soort analyse is nuttig om de hoeveelheid gegevens te reduceren die worden gecommuniceerd naar en worden opgeslagen in de cloud. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+> [!NOTE]
+> De volgende hand leiding is voor de V1 python SDK, die sindsdien is afgeschaft. We werken momenteel aan het maken van deze hand leiding v2 compatibel. Bekijk deze ruimte op updates.
 
 ## <a name="solution-scope"></a>Oplossings bereik
 

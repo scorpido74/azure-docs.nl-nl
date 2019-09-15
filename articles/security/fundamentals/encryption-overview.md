@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 62fcc19f3cfe9109097d1f2a70d785060b5bdc53
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 408c9fb58b428c1671794c6e4e5cc890a153813f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727359"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003943"
 ---
 # <a name="azure-encryption-overview"></a>Overzicht van Azure-versleuteling
 
@@ -61,7 +61,7 @@ De drie versleutelings modellen aan de server zijde bieden verschillende kenmerk
 
 U kunt virtuele Windows-en Linux-machines beveiligen met behulp van [Azure Disk Encryption](/azure/security/azure-security-disk-encryption), die gebruikmaakt van [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) -technologie en Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) om zowel de besturingssysteem schijven als gegevens schijven te beveiligen met volledige versleuteling van het volume.
 
-Versleutelings sleutels en geheimen worden beveiligd in uw [Azure Key Vault-abonnement](../../key-vault/key-vault-whatis.md). Met de Azure Backup-Service kunt u back-ups maken en terugzetten van versleutelde virtuele machines (Vm's) die gebruikmaken van de KEK-configuratie (Key Encryption Key).
+Versleutelings sleutels en geheimen worden beveiligd in uw [Azure Key Vault-abonnement](../../key-vault/key-vault-overview.md). Met de Azure Backup-Service kunt u back-ups maken en terugzetten van versleutelde virtuele machines (Vm's) die gebruikmaken van de KEK-configuratie (Key Encryption Key).
 
 ### <a name="azure-storage-service-encryption"></a>Azure Storage Service-versleuteling
 

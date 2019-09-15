@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 33128cbece3b217778182b3831b02e2f3f654f3b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c01f695210ebbd69a26b957e846ff645b1dea5bb
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853221"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999016"
 ---
 # <a name="microsoft-identity-platform-integration-checklist"></a>Controle lijst voor integratie van micro soft Identity platform
 
@@ -64,9 +64,9 @@ Gebruik de volgende controle lijst om ervoor te zorgen dat uw toepassing effecti
 |---|---|
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Behoud het eigendom van alle omleidings-Uri's en behoud de DNS-records voor deze. Gebruik geen joker tekens (*) in uw Uri's. Zorg ervoor dat alle Uri's beveiligd en versleuteld zijn (bijvoorbeeld met behulp van HTTPS-schema's) voor web-apps. Gebruik voor open bare clients platformspecifieke omleidings-Uri's, indien van toepassing (voornamelijk voor iOS en Android). Gebruik anders omleidings-Uri's met een grote hoeveelheid wille keurigheid om conflicten te voor komen bij het terugbellen naar uw app. Als uw app wordt gebruikt vanuit een geïsoleerde webagent, kunt u gebruiken https://login.microsoftonline.com/nativeclient. Alle ongebruikte of overbodige omleidings-Uri's regel matig controleren en bijsnijden. |
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Als uw app is geregistreerd in een directory, kunt u de lijst met app-registratie-eigen aren minimaliseren en hand matig bewaken. |
-| ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Schakel de ondersteuning voor de [OAuth2 impliciete toekennings stroom](v2-oauth2-implicit-grant-flow.md) niet in, tenzij expliciet vereist. Meer informatie over het geldige [](v1-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant)scenario. |
+| ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Schakel de ondersteuning voor de [OAuth2 impliciete toekennings stroom](v2-oauth2-implicit-grant-flow.md) niet in, tenzij expliciet vereist. Meer informatie over het geldige [scenario.](v1-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant) |
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Gebruik geen [wacht woord](v2-oauth-ropc.md)voor de ROPC van de resource-eigenaar, waarmee de wacht woorden van gebruikers rechtstreeks worden verwerkt. Deze stroom vereist een hoge mate van vertrouwen en gebruikers belichting en mag alleen worden gebruikt als andere, veiliger, stromen niet kunnen worden gebruikt. |
-| ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Uw app-referenties beveiligen en beheren. [Certificaat referenties](active-directory-certificate-credentials.md)gebruiken, niet wachtwoord referenties (client geheimen). Als u een wachtwoord referentie moet gebruiken, hoeft u deze niet hand matig in te stellen. Sla geen referenties op in code of config en laat deze nooit door de mens worden verwerkt. Gebruik, indien mogelijk, [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) of [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) om uw referenties op te slaan en regel matig te draaien. |
+| ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Uw app-referenties beveiligen en beheren. [Certificaat referenties](active-directory-certificate-credentials.md)gebruiken, niet wachtwoord referenties (client geheimen). Als u een wachtwoord referentie moet gebruiken, hoeft u deze niet hand matig in te stellen. Sla geen referenties op in code of config en laat deze nooit door de mens worden verwerkt. Gebruik, indien mogelijk, [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) of [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) om uw referenties op te slaan en regel matig te draaien. |
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Zorg ervoor dat uw toepassing de machtigingen voor de minste bevoegdheden aanvraagt. Vraag alleen om machtigingen die uw toepassing absoluut nodig heeft en alleen wanneer u ze nodig hebt. Meer informatie over de verschillende [soorten machtigingen](v1-permissions-and-consent.md#types-of-permissions). Gebruik indien nodig alleen toepassings machtigingen. Gebruik waar mogelijk gedelegeerde machtigingen. Zie deze [Naslag informatie voor machtigingen](https://docs.microsoft.com/graph/permissions-reference)voor een volledige lijst met Microsoft Graph machtigingen. |
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Als u een API wilt beveiligen met behulp van het micro soft-identiteits platform, kunt u de machtigingen die ze moeten openbaren zorgvuldig door lopen. Bedenk wat de juiste granulatie voor uw oplossing is en welke machtiging (en) toestemming van de beheerder nodig heeft. Controleer op de verwachte machtigingen in de inkomende tokens voordat u autorisatie beslissingen neemt. |
 

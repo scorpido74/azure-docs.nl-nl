@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 27961413d0dddc165f90ebde1c5e1aee6b8d9fd3
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 36ba9e2d3385184f32876a6d067b58f7c21a90bd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981840"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003284"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Gegevens migreren naar Azure Cosmos DB SQL-API-account met behulp van Realtimeplatform
  
@@ -193,7 +193,7 @@ In deze sectie configureert u de Azure Cosmos DB SQL-API-account als doel voor h
 
    ![Gemigreerde gegevens in azure valideren](./media/cosmosdb-sql-api-migrate-data-striim/portal-validate-results.png)
 
-Door gebruik te maken van de Realtimeplatform-oplossing in azure, kunt u voortdurend gegevens migreren naar Azure Cosmos DB van verschillende bronnen, zoals Oracle, Cassandra, MongoDB en diverse andere, naar Azure Cosmos DB. Voor problemen bij het instellen van het migratie traject met Realtimeplatform, een ondersteunings aanvraag indienen op de [realtimeplatform-website](https://go2.striim.com/request-support-striim).
+Door gebruik te maken van de Realtimeplatform-oplossing in azure, kunt u voortdurend gegevens migreren naar Azure Cosmos DB van verschillende bronnen, zoals Oracle, Cassandra, MongoDB en diverse andere, naar Azure Cosmos DB. Ga voor meer informatie naar de [realtimeplatform-website](https://www.striim.com/), [down load een gratis proef versie van 30 dagen van realtimeplatform](https://go2.striim.com/download-free-trial)en voor eventuele problemen bij het instellen van het migratie traject met realtimeplatform, een [ondersteunings aanvraag indienen.](https://go2.striim.com/request-support-striim)
 
 ## <a name="next-steps"></a>Volgende stappen
 

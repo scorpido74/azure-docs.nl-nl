@@ -1,6 +1,6 @@
 ---
 title: Beheren en aanvragen resourcequota
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Deze gebruiksaanwijzing wordt uitgelegd van de verschillende quota voor resources voor Azure Machine Learning en het weergeven en meer quotum aanvragen.
 services: machine-learning
 ms.service: machine-learning
@@ -11,26 +11,26 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: bc0455b34ebdcb080e0cd702e58d8163228b60ff
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 2ee819625f772c96ac6c5a771935da17ee05f3aa
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278068"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002693"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Beheren en quota's voor Azure-resources aanvragen
 
-Als met andere Azure-services, er gelden beperkingen voor bepaalde resources die zijn gekoppeld aan de Azure Machine Learning-service. Deze limieten variëren van een kapje op het aantal werk ruimten dat u kunt maken om beperkingen te bereiken voor de werkelijke onderliggende Compute die wordt gebruikt voor model training of deslijtage/Score. 
+Net als bij andere Azure-Services gelden er limieten voor bepaalde resources die zijn gekoppeld aan Azure Machine Learning. Deze limieten variëren van een kapje op het aantal werk ruimten dat u kunt maken om beperkingen te bereiken voor de werkelijke onderliggende Compute die wordt gebruikt voor model training of deslijtage/Score. 
 
 In dit artikel geeft meer informatie over de vooraf geconfigureerde limieten voor verschillende Azure-resources voor uw abonnement en bevat ook handige koppelingen om aanvraag quotum verbeteringen voor elk type resource. Deze limieten zijn geplaatst om te voorkomen dat te veel uitgevoerd vanwege fraude budget en capaciteitsbeperkingen voor Azure in acht neemt.
 
-Houd bij het ontwerpen en opschalen van uw Azure Machine Learning service resources voor productie-workloads de volgende quota's in acht. Als uw cluster bijvoorbeeld niet het doel aantal knoop punten bereikt dat u hebt opgegeven, hebt u mogelijk een limiet van Azure Machine Learning Reken kernen bereikt voor uw abonnement. Als u de is besteed of wanneer het quotum boven de limiet standaard verhogen wilt, opent u een online ondersteuningsverzoek gratis. De limieten kunnen niet worden verhoogd boven de maximumlimiet-waarde die wordt weergegeven in de volgende tabellen vanwege beperkingen van Azure-capaciteit. Als er geen kolom maximumlimiet is, klikt u vervolgens de resource geen instelbare limieten.
+Houd bij het ontwerpen en opschalen van uw Azure Machine Learning resources voor productie werkbelastingen de volgende quota's in acht. Als uw cluster bijvoorbeeld niet het doel aantal knoop punten bereikt dat u hebt opgegeven, hebt u mogelijk een limiet van Azure Machine Learning Reken kernen bereikt voor uw abonnement. Als u de is besteed of wanneer het quotum boven de limiet standaard verhogen wilt, opent u een online ondersteuningsverzoek gratis. De limieten kunnen niet worden verhoogd boven de maximumlimiet-waarde die wordt weergegeven in de volgende tabellen vanwege beperkingen van Azure-capaciteit. Als er geen kolom maximumlimiet is, klikt u vervolgens de resource geen instelbare limieten.
 
 ## <a name="special-considerations"></a>Speciale overwegingen
 
 + Een quotum is een tegoed is besteed, niet een capaciteit gegarandeerd. Als u grootschalige capaciteit nodig hebt, neem dan contact op met ondersteuning van Azure.
 
-+ Uw quotum wordt gedeeld tussen alle services in uw abonnementen met inbegrip van Azure Machine Learning-service. De enige uitzonde ring is Azure Machine Learning Compute die een afzonderlijke quota van het core Compute-quotum heeft. Zorg ervoor dat het quotagebruik berekenen van alle services bij het evalueren van uw behoeften aan capaciteit.
++ Uw quotum wordt gedeeld door alle services in uw abonnementen, met inbegrip van Azure Machine Learning. De enige uitzonde ring is Azure Machine Learning Compute die een afzonderlijke quota van het core Compute-quotum heeft. Zorg ervoor dat het quotagebruik berekenen van alle services bij het evalueren van uw behoeften aan capaciteit.
 
 + Standaardlimieten variëren per Type aanbieding, zoals gratis proefversie, betalen per gebruik en -serie, zoals Dv2, F, G, enzovoort.
 

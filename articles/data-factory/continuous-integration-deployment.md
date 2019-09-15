@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.openlocfilehash: 4d4fe32b5f457e2b223132006afd20bfe3161bbd
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 08/14/2019
+ms.openlocfilehash: e522cba88eaf9cb63ef7ef2f20e3b72691261073
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142610"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002402"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Continue integratie en levering (CI/CD) in Azure Data Factory
 

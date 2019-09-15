@@ -1,21 +1,21 @@
 ---
-title: Scalaire expressies in Azure Cosmos DB SQL-query 's
-description: Meer informatie over scalaire expressie SQL-syntaxis voor Azure Cosmos DB.
+title: Scalaire expressies in Azure Cosmos DB SQL-query's
+description: Meer informatie over de SQL-syntaxis van scalaire expressies voor Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4464c39a45c47c680a13f3ebc34841b47ee0d7c6
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: c35ad65a584f8ee95142e9bc85a58b5b6cd99744
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342880"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003532"
 ---
-# <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Scalaire expressies in Azure Cosmos DB SQL-query 's
+# <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Scalaire expressies in Azure Cosmos DB SQL-query's
 
-De [component SELECT](sql-query-select.md) biedt ondersteuning voor scalaire expressies. Een scalaire expressie die is een combinatie van tekens en operators die kunnen worden geëvalueerd om te verkrijgen van een enkele waarde. Voorbeelden van scalaire expressies zijn onder meer: constanten, verwijzen naar eigenschappen, matrix-element verwijst naar, alias-verwijzingen of functieaanroepen. Scalaire expressies kunnen worden gecombineerd tot complexe expressies operators gebruiken.
+De [component SELECT](sql-query-select.md) ondersteunt scalaire expressies. Een scalaire expressie die is een combinatie van tekens en operators die kunnen worden geëvalueerd om te verkrijgen van een enkele waarde. Voor beelden van scalaire expressies zijn: constanten, eigenschaps verwijzingen, matrix element verwijzingen, alias verwijzingen of functie aanroepen. Scalaire expressies kunnen worden gecombineerd tot complexe expressies met behulp van Opera tors.
 
 ## <a name="syntax"></a>Syntaxis
   
@@ -59,11 +59,11 @@ De [component SELECT](sql-query-select.md) biedt ondersteuning voor scalaire exp
   
 - `<scalar_expression>.property_name`  
   
-   Hiermee geeft u een waarde van de eigenschap van een object. Als de eigenschap niet bestaat of de eigenschap wordt verwezen op een waarde die niet een object, en de expressie wordt geëvalueerd als **niet-gedefinieerde** waarde.  
+   Hiermee geeft u een waarde van de eigenschap van een object. Als de eigenschap niet bestaat of als er wordt verwezen naar de eigenschap in een waarde die geen object is, wordt de expressie geëvalueerd als niet- **gedefinieerde** waarde.  
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   Hiermee geeft u een waarde van de eigenschap met de naam `property_name` of matrixelement met index `array_index` van een matrix. Als de eigenschap/matrixindex niet bestaat of index van de eigenschap/array wordt verwezen op een waarde die is geen object/matrix, wordt de expressie wordt geëvalueerd als niet-gedefinieerde waarde.  
+   Vertegenwoordigt een waarde van de eigenschap met de `property_name` naam of het matrix element `array_index` met de index van een matrix. Als de eigenschap/matrixindex niet bestaat of index van de eigenschap/array wordt verwezen op een waarde die is geen object/matrix, wordt de expressie wordt geëvalueerd als niet-gedefinieerde waarde.  
   
 - `unary_operator <scalar_expression>`  
   
@@ -99,7 +99,7 @@ De [component SELECT](sql-query-select.md) biedt ondersteuning voor scalaire exp
   
 ## <a name="remarks"></a>Opmerkingen
   
-  Wanneer u een ingebouwde of door de gebruiker gedefinieerde scalaire functie aanroept, kunnen alle argumenten moeten worden gedefinieerd. Als een van de argumenten niet is gedefinieerd, wordt de functie niet wordt aangeroepen en wordt het resultaat is niet gedefinieerd.  
+  Wanneer u een ingebouwde of door de gebruiker gedefinieerde scalaire functie aanroept, moeten alle argumenten worden gedefinieerd. Als een van de argumenten niet is gedefinieerd, wordt de functie niet wordt aangeroepen en wordt het resultaat is niet gedefinieerd.  
   
   Bij het maken van een object, wordt elke eigenschap die niet-gedefinieerde waarde is toegewezen overgeslagen en niet opgenomen in het gemaakte object.  
   
@@ -119,7 +119,7 @@ De resultaten zijn:
     }]
 ```
 
-In de volgende query is het resultaat van de scalaire expressie die een Booleaanse waarde:
+In de volgende query is het resultaat van de scalaire expressie een Booleaanse waarde:
 
 ```sql
     SELECT f.address.city = f.address.state AS AreFromSameCityState
@@ -142,5 +142,5 @@ De resultaten zijn:
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Inleiding tot Azure Cosmos DB](introduction.md)
-- [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Subquery 's](sql-query-subquery.md)
+- [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Subquery's](sql-query-subquery.md)

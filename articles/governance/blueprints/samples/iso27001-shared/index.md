@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b590eeb86972a8e769fc240b1935c6c8ed32530a
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: e723fab12c6ba88ec5698a697ba1ddd774eed7e2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231735"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000512"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Overzicht van de voorbeeldblauwdruk voor ISO 27001 conforme gedeelde services
 
@@ -38,7 +38,7 @@ Deze omgeving bestaat uit diverse Azure-services die samen een veilige, volledig
   - Een jumpbox- of bastionhost die wordt gebruikt voor beheertaken en alleen kan worden benaderd via een [Azure-firewall](../../../../firewall/overview.md) die is geïmplementeerd in het subnet voor de stack voor inkomend verkeer
   - Twee virtuele machines met Active Directory Domain Services (ADDS) en DNS die uitsluitend toegankelijk zijn via de jumpbox en alleen kunnen worden geconfigureerd voor replicatie van AD via een VPN- of [ExpressRoute](../../../../expressroute/expressroute-introduction.md)-verbinding (niet geïmplementeerd door de blauwdruk)
   - [Azure Net Watcher](../../../../network-watcher/network-watcher-monitoring-overview.md) en standaard-DDoS-bescherming
-- Een [Azure Key Vault](../../../../key-vault/key-vault-whatis.md)-exemplaar om de geheimen te bewaren voor de virtuele machines die in de omgeving met gedeelde services worden geïmplementeerd
+- Een [Azure Key Vault](../../../../key-vault/key-vault-overview.md)-exemplaar om de geheimen te bewaren voor de virtuele machines die in de omgeving met gedeelde services worden geïmplementeerd
 
 Al deze elementen voldoen aan de aanbevolen procedures zoals gepubliceerd in [Azure Architecture Center - Referentiearchitecturen](/azure/architecture/reference-architectures/).
 

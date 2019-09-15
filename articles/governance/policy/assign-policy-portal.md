@@ -7,12 +7,12 @@ ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 805f9178cb77241b8332fb78687a8409206e5c05
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 6db0879152dfcfd37719c8d22f836da6db7ed79d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231573"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000897"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Quickstart: Een beleidstoewijzing maken om niet-conforme resources te identificeren
 
@@ -64,7 +64,7 @@ In deze snelstart maakt u een beleidstoewijzing en wijst u de beleidsdefinitie *
 
 1. Klik op **Toewijzen**.
 
-U bent er nu klaar voor om niet-compatibele resources te identificeren om inzicht te krijgen in de nalevingsstatus van uw omgeving.
+U bent nu klaar om niet-compatibele resources te identificeren om inzicht te krijgen in de nalevings status van uw omgeving.
 
 ## <a name="identify-non-compliant-resources"></a>Niet-compatibele resources identificeren
 
@@ -74,7 +74,7 @@ Selecteer **Naleving** links op de pagina. Zoek dan de beleidstoewijzing **Virtu
 
 Als er bestaande resources zijn die niet conform deze nieuwe toewijzing zijn, worden deze weergegeven bij **Niet-conforme resources**.
 
-Als een voorwaarde wordt geëvalueerd ten opzichte van uw bestaande resources en deze waar blijkt te zijn, worden deze resources gemarkeerd als niet-compatibel met het beleid. In de volgende tabel ziet u hoe verschillende beleidsacties werken met de evaluatie van voorwaarden voor de resulterende nalevingsstatus. U kunt de evaluatielogica niet zien in Azure Portal, maar de resultaten voor de nalevingsstatus worden wel weergegeven. Het resultaat voor de nalevingsstatus is compatibel of niet-compatibel.
+Als een voorwaarde wordt geëvalueerd ten opzichte van uw bestaande resources en deze waar blijkt te zijn, worden deze resources gemarkeerd als niet-compatibel met het beleid. In de volgende tabel ziet u hoe verschillende beleidsacties werken met de evaluatie van voorwaarden voor de resulterende nalevingsstatus. Hoewel u de evaluatie logica in het Azure Portal niet ziet, worden de resultaten van de nalevings status weer gegeven. Het resultaat voor de nalevingsstatus is compatibel of niet-compatibel.
 
 | **Resourcestatus** | **Effect** | **Beleidsevaluatie** | **Nalevingsstatus** |
 | --- | --- | --- | --- |

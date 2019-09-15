@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: e92ccacbcdc49ae5ea9496c9c8ac7fa90a05e20c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 225ce9fcbb18aa374f413e8e237c911c85cc77a6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079232"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999356"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Key Vault instellen voor virtuele machines in Azure Resource Manager
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 
-In Azure Resource Manager stack worden geheimen/certificaten gemodelleerd als bronnen die worden verschaft door de resource provider van Key Vault. Zie [Wat is Azure Key Vault?](../../key-vault/key-vault-whatis.md) voor meer informatie over Key Vault.
+In Azure Resource Manager stack worden geheimen/certificaten gemodelleerd als bronnen die worden verschaft door de resource provider van Key Vault. Zie [Wat is Azure Key Vault?](../../key-vault/key-vault-overview.md) voor meer informatie over Key Vault.
 
 > [!NOTE]
 > 1. Als Key Vault moet worden gebruikt met Azure Resource Manager virtuele machines, moet de eigenschap **EnabledForDeployment** op Key Vault worden ingesteld op True. U kunt dit doen in verschillende clients.

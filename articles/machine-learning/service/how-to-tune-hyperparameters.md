@@ -1,7 +1,7 @@
 ---
 title: Afstemmen van hyperparameters voor uw model
-titleSuffix: Azure Machine Learning service
-description: Efficiënt afstemmen van hyperparameters voor uw deep learning / machine learning-model met behulp van Azure Machine Learning-service. U leert hoe u de zoek ruimte voor de para meters definieert, een primaire metriek opgeeft die u wilt optimaliseren, en vervroegde uitvoeringen worden uitgevoerd.
+titleSuffix: Azure Machine Learning
+description: Hyper parameters efficiënt afstemmen op uw diepe leer-en machine learning model met behulp van Azure Machine Learning. U leert hoe u de zoek ruimte voor de para meters definieert, een primaire metriek opgeeft die u wilt optimaliseren, en vervroegde uitvoeringen worden uitgevoerd.
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,16 +11,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5a6f7c6de005112578cc29865574e5e255c99a8e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: cb4023be41377846ed209b3d6702188f5d79ba00
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873073"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999390"
 ---
-# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Afstemmen van hyperparameters voor uw model met Azure Machine Learning-service
+# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Hyper parameters voor uw model afstemmen met Azure Machine Learning
 
-Efficiënt afstemmen van hyperparameters voor uw model met behulp van Azure Machine Learning-service.  Hyperparameter afstemmen bevat de volgende stappen uit:
+Hyper parameters efficiënt afstemmen voor uw model met behulp van Azure Machine Learning.  Hyperparameter afstemmen bevat de volgende stappen uit:
 
 * De parameter zoeken ruimte definiëren
 * Geef een primaire metrische waarde om te optimaliseren  
@@ -94,7 +94,7 @@ Deze code definieert een spatie zoeken met twee parameters - `learning_rate` en 
 
 ### <a name="sampling-the-hyperparameter-space"></a>De ruimte hyperparameter steekproeven
 
-U kunt ook de parameter methode te gebruiken via de definitie van de ruimte hyperparameter opgeven. Azure Machine Learning-service ondersteunt steekproeven, raster steekproeven en Bayesiaanse steekproeven.
+U kunt ook de parameter methode te gebruiken via de definitie van de ruimte hyperparameter opgeven. Azure Machine Learning ondersteunt wille keurige steek proeven, Raster sampling en Bayesiaanse-steek proeven.
 
 #### <a name="random-sampling"></a>Steekproeven
 
@@ -186,7 +186,7 @@ Wanneer u een beleid voor vroegtijdige beëindiging gebruikt, kunt u de volgende
 * `evaluation_interval`: de frequentie voor het toepassen van het beleid. Telkens wanneer de training de primaire metriek scriptlogboeken telt als één interval. Dus een `evaluation_interval` van 1 wordt het beleid wordt toegepast wanneer het trainingsscript de primaire metrische gegevens rapporteert. Een `evaluation_interval` van 2 wordt het beleid toepassen andere wanneer het trainingsscript de primaire metrische gegevens rapporteert. Indien niet opgegeven, `evaluation_interval` is standaard ingesteld op 1.
 * `delay_evaluation`: de eerste evaluatie van het beleid voor een opgegeven aantal intervallen uitstelt. Het is een optionele parameter waarmee alle configuraties voor een initiële minimum aantal intervallen, vermijden voortijdige beëindiging van de training uit te voeren wordt uitgevoerd. Als u opgeeft, is het beleid van toepassing is elke meervoud van evaluation_interval die groter zijn dan of gelijk is aan delay_evaluation.
 
-Azure Machine Learning-service ondersteunt de volgende beleidsregels voor vroegtijdige beëindiging.
+Azure Machine Learning ondersteunt de volgende beleids regels voor vroegtijdige beëindiging.
 
 ### <a name="bandit-policy"></a>Bandieten beleid
 
@@ -304,7 +304,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name` de naam die u toewijst aan uw hyperparameter experiment, afstemmen en `workspace` is de werkruimte waarin u wilt maken van het experiment (Zie voor meer informatie over experimenten [hoe werkt Azure Machine Learning-service?](concept-azure-machine-learning-architecture.md))
+`experiment_name`is de naam die u toewijst aan uw afstemming- `workspace` afstemmings experiment en is de werk ruimte waarin u het experiment wilt maken (Zie [Hoe werkt Azure machine learning?](concept-azure-machine-learning-architecture.md)) voor meer informatie over experimenten.
 
 ## <a name="visualize-experiment"></a>Experiment visualiseren
 

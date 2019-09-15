@@ -1,6 +1,6 @@
 ---
 title: Een diepe Learning Neural-netwerk trainen met PyTorch
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Meer informatie over het uitvoeren van uw PyTorch-trainings scripts op ENTER prise Scale met behulp van de PyTorch Estimator-klasse van Azure Machine Learning.  De voorbeeld scripts classificeren de installatie kopieën van kippen en Turkije om een diep gaande Neural-netwerk te bouwen op basis van de zelf studie over de overdracht van PyTorch.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7ac3675ec9d90fc51bc9e3c72b76d8fb80312a8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: c688f5a59a9a6d980f50a726f9da4dc4379ce073
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966775"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002575"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Pytorch diepe Learning-modellen op schaal trainen met Azure Machine Learning
 
@@ -67,7 +67,7 @@ from azureml.train.dnn import PyTorch
 
 ### <a name="initialize-a-workspace"></a>Een werk ruimte initialiseren
 
-De [werk ruimte](concept-workspace.md) van de Azure machine learning-service is de resource op het hoogste niveau voor de service. Het biedt u een centrale locatie voor het werken met alle artefacten die u maakt. In de python-SDK hebt u toegang tot de werkruimte artefacten door een [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) object te maken.
+De [Azure machine learning werk ruimte](concept-workspace.md) is de resource op het hoogste niveau voor de service. Het biedt u een centrale locatie voor het werken met alle artefacten die u maakt. In de python-SDK hebt u toegang tot de werkruimte artefacten door een [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) object te maken.
 
 Maak een werkruimte object op basis `config.json` van het bestand dat in de [sectie vereisten](#prerequisites)is gemaakt.
 
@@ -93,7 +93,7 @@ De gegevensset bestaat uit ongeveer 120 trainings afbeeldingen voor kalk oenen e
 
 ### <a name="prepare-training-scripts"></a>Trainings scripts voorbereiden
 
-In deze zelf studie wordt het trainings script `pytorch_train.py`,,, al meegeleverd. In de praktijk kunt u een aangepast trainings script uitvoeren, zoals dat is, en het met Azure Machine Learning service.
+In deze zelf studie wordt het trainings script `pytorch_train.py`,,, al meegeleverd. In de praktijk kunt u een aangepast trainings script uitvoeren, zoals dat is, en dit met Azure Machine Learning.
 
 Upload het Pytorch-trainings script `pytorch_train.py`,.
 
@@ -101,7 +101,7 @@ Upload het Pytorch-trainings script `pytorch_train.py`,.
 shutil.copy('pytorch_train.py', project_folder)
 ```
 
-Als u echter Azure Machine Learning service tracering en metrische mogelijkheden wilt gebruiken, moet u een kleine code in uw trainings script toevoegen. Voor beelden van het bijhouden van metrische gegevens vindt `pytorch_train.py`u in.
+Als u echter de mogelijkheden Azure Machine Learning bijhouden en metrische gegevens wilt gebruiken, moet u een kleine code in uw trainings script toevoegen. Voor beelden van het bijhouden van metrische gegevens vindt `pytorch_train.py`u in.
 
 ## <a name="create-a-compute-target"></a>Een compute-doel maken
 
@@ -189,7 +189,7 @@ for f in run.get_file_names():
 
 ## <a name="distributed-training"></a>Gedistribueerde training
 
-De [`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) Estimator biedt ook ondersteuning voor gedistribueerde training over CPU-en GPU-clusters. U kunt eenvoudig gedistribueerde PyTorch-taken uitvoeren en Azure Machine Learning-service beheert de indeling voor u.
+De [`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) Estimator biedt ook ondersteuning voor gedistribueerde training over CPU-en GPU-clusters. U kunt eenvoudig gedistribueerde PyTorch-taken uitvoeren en de indeling wordt door Azure Machine Learning beheerd.
 
 ### <a name="horovod"></a>Horovod
 [Horovod](https://github.com/uber/horovod) is een open source-, alle verlaagde structuur voor gedistribueerde training ontwikkeld door uber. Het biedt een eenvoudig pad naar gedistribueerde GPU PyTorch-taken.
@@ -222,7 +222,7 @@ Converteer uw getrainde PyTorch-model naar de ONNX-indeling om de deinterferenti
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een diep gaande Neural-netwerk getraind en geregistreerd met behulp van PyTorch in Azure Machine Learning service. Ga verder met ons model implementatie artikel voor meer informatie over het implementeren van een model.
+In dit artikel hebt u een diep gaande Neural-netwerk getraind en geregistreerd met behulp van PyTorch in Azure Machine Learning. Ga verder met ons model implementatie artikel voor meer informatie over het implementeren van een model.
 
 > [!div class="nextstepaction"]
 > [Hoe en waar modellen moeten worden geïmplementeerd](how-to-deploy-and-where.md)

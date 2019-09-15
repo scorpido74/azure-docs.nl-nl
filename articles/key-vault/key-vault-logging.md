@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: fc0f259a4866f7eb2438938c7a10989db9200aa4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 997651887c3c378e4791553d5ff05f585ad169ea
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976964"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000670"
 ---
 # <a name="azure-key-vault-logging"></a>Logboekregistratie voor Azure Key Vault
 
@@ -32,10 +32,10 @@ Deze zelfstudie helpt u op weg met de logboekregistratie van Azure Sleutelkluis.
 > [!NOTE]
 > Deze zelfstudie bevat geen instructies voor het maken van sleutelkluizen, sleutels of geheimen. Zie [Wat is Azure Key Vault?](key-vault-overview.md)voor deze informatie. Voor meerdere platformen van Azure CLI, Zie [Deze equivalente zelf studie](key-vault-manage-with-cli2.md).
 >
-> Dit artikel bevat Azure PowerShell instructies voor het bijwerken van de diagnostische logboek registratie. U kunt Diagnostische logboek registratie ook bijwerken met behulp van Azure monitor in de sectie Diagnostische logboeken van de Azure Portal. 
+> Dit artikel bevat Azure PowerShell instructies voor het bijwerken van de diagnostische logboek registratie. U kunt Diagnostische logboek registratie ook bijwerken met behulp van Azure Monitor in de sectie **Diagnostische logboeken** van de Azure Portal. 
 >
 
-Zie [Wat is Azure Key Vault?](key-vault-whatis.md)voor overzichts informatie over Key Vault. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/key-vault/)voor meer informatie over waar Key Vault beschikbaar is.
+Zie [Wat is Azure Key Vault?](key-vault-overview.md)voor overzichts informatie over Key Vault. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/key-vault/)voor meer informatie over waar Key Vault beschikbaar is.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -262,7 +262,7 @@ De volgende tabel bevat de veld namen en beschrijvingen:
 | **callerIpAddress** |Het IP-adres van de client die de aanvraag heeft ingediend. |
 | **correlationId** |Een optionele GUID die de client kan doorgeven om de logboeken aan de clientzijde te relateren aan (Sleutelkluis-)logboeken aan de servicezijde. |
 | **persoon** |Identiteit van het token dat is aangeboden in de REST API aanvraag. Dit is meestal een ' gebruiker ', een ' Service-Principal ' of de combi natie ' gebruiker + appId ', zoals in het geval van een aanvraag die resulteert van een Azure PowerShell-cmdlet. |
-| **Eigenschappen** |Informatie die varieert op basis van de bewerking (**operationname**). In de meeste gevallen bevat dit veld client informatie (de teken reeks van de gebruikers agent die is door gegeven door de client), de exacte REST API aanvraag-URI en de HTTP-status code. Als er een object wordt geretourneerd als gevolg van een aanvraag (bijvoorbeeld **VaultGet**of een service) , bevat het ook de sleutel-URI (als id), kluis-URI of geheime URI. |
+| **Eigenschappen** |Informatie die varieert op basis van de bewerking (**operationname**). In de meeste gevallen bevat dit veld client informatie (de teken reeks van de gebruikers agent die is door gegeven door de client), de exacte REST API aanvraag-URI en de HTTP-status code. Als er een object wordt geretourneerd als gevolg van een aanvraag (bijvoorbeeld **VaultGet** **of een** service), bevat het ook de sleutel-URI (als id), kluis-URI of geheime URI. |
 
 De waarde van het veld **operationname** bevindt zich in de *ObjectVerb* -indeling. Bijvoorbeeld:
 
@@ -306,7 +306,7 @@ De volgende tabel geeft een lijst van de **operationname** waarden en de bijbeho
 
 U kunt de Key Vault oplossing in Azure Monitor Logboeken gebruiken om Key Vault **audit event** -logboeken te controleren. In Azure Monitor-Logboeken kunt u logboek query's gebruiken om gegevens te analyseren en de benodigde informatie op te halen. 
 
-Zie [Azure Key Vault-oplossing in azure monitor](../azure-monitor/insights/azure-key-vault.md)-logboeken voor meer informatie over hoe u dit kunt instellen. Dit artikel bevat ook instructies voor het migreren van de oude Key Vault-oplossing die werd aangeboden tijdens de preview-versie van Azure Monitor logboeken, waar u uw logboeken voor het eerst naar een Azure-opslag account hebt gerouteerd en Azure Monitor Logboeken hebt geconfigureerd om daar te lezen.
+Zie [Azure Key Vault-oplossing in azure monitor-logboeken](../azure-monitor/insights/azure-key-vault.md)voor meer informatie over hoe u dit kunt instellen. Dit artikel bevat ook instructies voor het migreren van de oude Key Vault-oplossing die werd aangeboden tijdens de preview-versie van Azure Monitor logboeken, waar u uw logboeken voor het eerst naar een Azure-opslag account hebt gerouteerd en Azure Monitor Logboeken hebt geconfigureerd om daar te lezen.
 
 ## <a id="next"></a>Volgende stappen
 
@@ -314,6 +314,6 @@ Zie [Azure Key Vault gebruiken in een webtoepassing](tutorial-net-create-vault-a
 
 Zie de [Ontwikkelaarshandleiding voor Azure Key Vault](key-vault-developers-guide.md) voor het programmeren van verwijzingen.
 
-Zie [Azure Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)-cmdlets voor een lijst met Azure PowerShell 1,0-cmdlets voor Azure Key Vault.
+Zie [Azure Key Vault-cmdlets](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)voor een lijst met Azure PowerShell 1,0-cmdlets voor Azure Key Vault.
 
 Zie [Key Vault met end-to-end-draaiing en controle instellen](key-vault-key-rotation-log-monitoring.md)voor een zelf studie over de belangrijkste draaiing en logboek controle met Azure Key Vault.

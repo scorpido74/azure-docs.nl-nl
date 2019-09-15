@@ -9,12 +9,12 @@ ms.date: 07/22/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 58c88e9b7cf2e0f80c88d32e02d13096a9623a4b
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: ed668f744716b062fd70d2f63d89152f6fc8a902
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914031"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999129"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio 2019 gebruiken voor het ontwikkelen en opsporen van fouten in modules voor Azure IoT Edge
 
@@ -44,7 +44,7 @@ Nadat uw Visual Studio 2019 gereed is, hebt u ook de volgende hulpprogram ma's e
 
 - Down load en Installeer [docker Community Edition](https://docs.docker.com/install/) op uw ontwikkel computer om uw module-installatie kopieën te bouwen en uit te voeren. U moet docker CE instellen om te worden uitgevoerd in de Linux-container modus of de Windows-container modus.
 
-- Stel uw lokale ontwikkel omgeving in op fout opsporing, uitvoering en test uw IoT Edge-oplossing door het [Azure IOT EdgeHub dev tool](https://pypi.org/project/iotedgehubdev/)te installeren. Installeer [python (2.7/3.6) en PIP](https://www.python.org/) en installeer het **iotedgehubdev** -pakket door de volgende opdracht uit te voeren in uw Terminal. Zorg ervoor dat uw versie van het Azure IoT EdgeHub Dev hulpprogramma is groter dan 0.3.0.
+- Stel uw lokale ontwikkel omgeving in op fout opsporing, uitvoering en test uw IoT Edge-oplossing door het [Azure IOT EdgeHub dev tool](https://pypi.org/project/iotedgehubdev/)te installeren. Installeer [python (2.7/3.6 +) en PIP](https://www.python.org/) en installeer het **iotedgehubdev** -pakket door de volgende opdracht uit te voeren in uw Terminal. Zorg ervoor dat uw versie van het Azure IoT EdgeHub Dev hulpprogramma is groter dan 0.3.0.
 
    ```cmd
    pip install --upgrade iotedgehubdev

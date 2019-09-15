@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 30ec36067b4a047478abc294361b015d12d21319
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 4cabf2e7a1f0f1ff058f900ed823cc4df0ce80a6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129339"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999206"
 ---
 # <a name="introduction-to-azure-security"></a>Inleiding tot Azure-beveiliging
 ## <a name="overview"></a>Overzicht
@@ -96,7 +96,7 @@ Als er zich crashes, fouten of prestatie problemen voordoen, kunt u de gegevens 
 [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) biedt visualisatie, query, route ring, waarschuwingen, automatisch schalen en automatisering op gegevens van de Azure-infra structuur ([activiteiten logboek](../../azure-monitor/platform/activity-logs-overview.md)) en elke afzonderlijke Azure-resource ([Diagnostische logboeken](../../azure-monitor/platform/diagnostic-logs-overview.md)). U kunt Azure Monitor gebruiken om u te waarschuwen voor beveiligings gebeurtenissen die worden gegenereerd in azure-Logboeken.
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor-logboeken
-[Azure monitor](https://azure.microsoft.com/documentation/services/log-analytics/) -logboeken: voorziet in een IT-beheer oplossing voor zowel on-premises als Cloud infrastructuur op basis van derden (zoals AWS) naast Azure-resources. Gegevens van Azure Monitor kunnen rechtstreeks naar Azure Monitor-logboeken worden gerouteerd, zodat u meet waarden en logboeken voor uw hele omgeving op één plek kunt zien.
+[Azure monitor-logboeken](https://azure.microsoft.com/documentation/services/log-analytics/) : voorziet in een IT-beheer oplossing voor zowel on-premises als Cloud infrastructuur op basis van derden (zoals AWS) naast Azure-resources. Gegevens van Azure Monitor kunnen rechtstreeks naar Azure Monitor-logboeken worden gerouteerd, zodat u meet waarden en logboeken voor uw hele omgeving op één plek kunt zien.
 
 Azure Monitor logboeken kunnen een handig hulp middel zijn in forensische en een andere beveiligings analyse, omdat u met het hulp programma snel grote hoeveel heden aan beveiligings gegevens kunt doorzoeken met een flexibele query benadering. Daarnaast kunnen on-premises [firewall-en proxy Logboeken in Azure worden geëxporteerd en beschikbaar worden gesteld voor analyse met behulp van Azure monitor-Logboeken.](../../log-analytics/log-analytics-agent-windows.md)
 
@@ -154,7 +154,7 @@ In Application Diagnostics kunt u de gebeurtenissen weer geven die op de volgend
 De sectie bevat aanvullende informatie over de belangrijkste functies in azure Storage-beveiliging en samenvattings informatie over deze mogelijkheden.
 
 ### <a name="role-based-access-control-rbac"></a>RBAC (op rollen gebaseerd toegangsbeheer)
-U kunt uw opslag account beveiligen met op rollen gebaseerd Access Control (RBAC). Het beperken van de toegang op basis van de beveiligings principes [](https://en.wikipedia.org/wiki/Principle_of_least_privilege) van de [nood zaak om te kennen](https://en.wikipedia.org/wiki/Need_to_know) , is van cruciaal belang voor organisaties die beveiligings beleid voor gegevens toegang willen afdwingen. Deze toegangs rechten worden verleend door de juiste RBAC-rol toe te wijzen aan groepen en toepassingen bij een bepaald bereik. U kunt [Ingebouwde RBAC-rollen](../../role-based-access-control/built-in-roles.md), zoals Inzender voor opslag accounts, gebruiken om machtigingen toe te wijzen aan gebruikers. Toegang tot de opslag sleutels voor een opslag account met behulp van het [Azure Resource Manager](../../storage/common/storage-security-guide.md) model kan worden beheerd via op rollen gebaseerde Access Control (RBAC).
+U kunt uw opslag account beveiligen met op rollen gebaseerd Access Control (RBAC). Het beperken van de toegang op basis van de beveiligings principes van de [nood zaak om te kennen](https://en.wikipedia.org/wiki/Need_to_know) , is van cruciaal belang voor organisaties [die beveiligings beleid](https://en.wikipedia.org/wiki/Principle_of_least_privilege) voor gegevens toegang willen afdwingen. Deze toegangs rechten worden verleend door de juiste RBAC-rol toe te wijzen aan groepen en toepassingen bij een bepaald bereik. U kunt [Ingebouwde RBAC-rollen](../../role-based-access-control/built-in-roles.md), zoals Inzender voor opslag accounts, gebruiken om machtigingen toe te wijzen aan gebruikers. Toegang tot de opslag sleutels voor een opslag account met behulp van het [Azure Resource Manager](../../storage/common/storage-security-guide.md) model kan worden beheerd via op rollen gebaseerde Access Control (RBAC).
 
 ### <a name="shared-access-signature"></a>Shared Access Signature
 Een [SAS (Shared Access Signature; handtekening voor gedeelde toegang)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) biedt gedelegeerde toegang tot bronnen in uw opslagaccount. De SAS betekent dat u een client beperkte machtigingen kunt verlenen voor objecten in uw opslag account voor een opgegeven periode en met een opgegeven set machtigingen. U kunt deze beperkte machtigingen verlenen zonder dat u de toegangs sleutels van uw account hoeft te delen.
@@ -307,7 +307,7 @@ De sectie bevat aanvullende informatie over belang rijke functies op dit gebied 
 Met Azure IaaS kunt u antimalware-software gebruiken van beveiligings leveranciers zoals micro soft, Symantec, Trend Micro, McAfee en Kaspersky om uw virtuele machines te beschermen tegen schadelijke bestanden, adware en andere bedreigingen. [Micro soft antimalware](antimalware.md) voor Azure Cloud Services en virtual machines is een beschermings functie waarmee u virussen, spyware en andere schadelijke software kunt identificeren en verwijderen. Micro soft antimalware biedt Configureer bare waarschuwingen wanneer bekende schadelijke of ongewenste software probeert zichzelf te installeren of uit te voeren op uw Azure-systemen. Micro soft antimalware kan ook worden geïmplementeerd met Azure Security Center
 
 ### <a name="hardware-security-module"></a>Hardware Security module
-Versleuteling en verificatie verbeteren de beveiliging alleen als de sleutels zelf zijn beveiligd. U kunt het beheer en de beveiliging van uw essentiële geheimen en sleutels vereenvoudigen door ze op te slaan in [Azure Key Vault](../../key-vault/key-vault-whatis.md). Key Vault biedt de mogelijkheid om uw sleutels op te slaan in Hardware Security modules (Hsm's) die zijn gecertificeerd voor FIPS 140-2 level 2-standaarden. Uw SQL Server versleutelings sleutels voor back-up of [transparante gegevens versleuteling](https://msdn.microsoft.com/library/bb934049.aspx) kunnen allemaal worden opgeslagen in Key Vault met alle sleutels of geheimen van uw toepassingen. Machtigingen en toegang tot deze beveiligde items worden beheerd via [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
+Versleuteling en verificatie verbeteren de beveiliging alleen als de sleutels zelf zijn beveiligd. U kunt het beheer en de beveiliging van uw essentiële geheimen en sleutels vereenvoudigen door ze op te slaan in [Azure Key Vault](../../key-vault/key-vault-overview.md). Key Vault biedt de mogelijkheid om uw sleutels op te slaan in Hardware Security modules (Hsm's) die zijn gecertificeerd voor FIPS 140-2 level 2-standaarden. Uw SQL Server versleutelings sleutels voor back-up of [transparante gegevens versleuteling](https://msdn.microsoft.com/library/bb934049.aspx) kunnen allemaal worden opgeslagen in Key Vault met alle sleutels of geheimen van uw toepassingen. Machtigingen en toegang tot deze beveiligde items worden beheerd via [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
 
 ### <a name="virtual-machine-backup"></a>Back-up van virtuele machine
 [Azure backup](../../backup/backup-overview.md) is een oplossing die uw toepassings gegevens beveiligt met een kapitaal investering van nul en minimale bedrijfs kosten. Toepassings fouten kunnen uw gegevens beschadigen en menselijke fouten kunnen fouten in uw toepassingen introduceren die kunnen leiden tot beveiligings problemen. Met Azure Backup worden uw virtuele machines met Windows en Linux beveiligd.
@@ -347,7 +347,7 @@ Micro soft maakt gebruik van meerdere beveiligings procedures en-technologieën 
 
 -   [Microsoft Authenticator](https://aka.ms/authenticator) biedt een gebruiks vriendelijke multi-factor Authentication ervaring die werkt met Microsoft Azure Active Directory-en micro soft-accounts, en biedt ondersteuning voor wearables en goed keuringen op basis van vinger afdrukken.
 
--   Met het afdwingen van het [wacht woord](https://azure.microsoft.com/documentation/articles/active-directory-passwords-policy/) wordt de beveiliging van traditionele wacht woorden verhoogd door de vereisten voor lengte en complexiteit, geforceerde periodieke rotatie en account vergrendeling na mislukte verificatie pogingen op te nemen.
+-   Met het [afdwingen van het wacht woord](https://azure.microsoft.com/documentation/articles/active-directory-passwords-policy/) wordt de beveiliging van traditionele wacht woorden verhoogd door de vereisten voor lengte en complexiteit, geforceerde periodieke rotatie en account vergrendeling na mislukte verificatie pogingen op te nemen.
 
 -   [Met verificatie op basis van tokens](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/) kunt u verificatie via Azure Active Directory.
 

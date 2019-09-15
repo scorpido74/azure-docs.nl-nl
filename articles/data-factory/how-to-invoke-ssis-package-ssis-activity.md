@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d2fe8da1c4d49f5b57f907a5940ec9c445d0d1f7
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 9057cefa5108924c57dbc85bbb895b31e804a51c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984322"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000641"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Voer een SSIS-pakket uit met de activiteit voor het uitvoeren van SSIS-pakketten in Azure Data Factory
 In dit artikel wordt beschreven hoe u een SQL Server Integration Services (SSIS)-pakket in de Azure Data Factory (ADF)-pijp lijn uitvoert met behulp van de activiteit SSIS-pakket uitvoeren. 
@@ -269,7 +269,7 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
    }
    ```
 
-Als u pakketten wilt uitvoeren die zijn opgeslagen in bestands systemen/bestands shares/Azure Files, kunt u de waarden voor de eigenschappen van uw pakket/logboek locatie als volgt opgeven.
+   Als u pakketten wilt uitvoeren die zijn opgeslagen in bestands systemen/bestands shares/Azure Files, kunt u de waarden voor de eigenschappen van uw pakket/logboek locatie als volgt opgeven.
 
    ```json
    {
@@ -318,7 +318,7 @@ Als u pakketten wilt uitvoeren die zijn opgeslagen in bestands systemen/bestands
    }
    ```
 
-Als u pakketten wilt uitvoeren in projecten die zijn opgeslagen in bestands systemen/bestands shares/Azure Files, kunt u als volgt de waarden voor uw pakket locatie-eigenschap invoeren.
+   Als u pakketten wilt uitvoeren in projecten die zijn opgeslagen in bestands systemen/bestands shares/Azure Files, kunt u als volgt de waarden voor uw pakket locatie-eigenschap invoeren.
 
    ```json
    {

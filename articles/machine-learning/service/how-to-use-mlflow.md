@@ -1,6 +1,6 @@
 ---
 title: Gebruik MLflow met
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Stel MLflow met Azure Machine Learning in om metrische gegevens & artefacten te registreren en modellen te implementeren vanuit Databricks, uw lokale omgeving of VM-omgeving.
 services: machine-learning
 author: rastala
@@ -11,18 +11,18 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: c7bed307373289c6a6f76117fa07ee2ee3242bfc
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b1b2255b4e0f5aa34e3c7159b00156aee5224928
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860453"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999295"
 ---
-# <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>Houd metrische gegevens bij en implementeer modellen met MLflow en Azure Machine Learning service (preview)
+# <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>Houd metrische gegevens bij en implementeer modellen met MLflow en Azure Machine Learning (preview-versie)
 
-In dit artikel wordt beschreven hoe u de tracerings-URI en logboek registratie-API van MLflow [](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)kunt inschakelen, met Azure machine learning service. Zo kunt u:
+In dit artikel wordt beschreven hoe u de tracerings-URI en logboek registratie-API van MLflow kunt [inschakelen, met](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)Azure machine learning. Zo kunt u:
 
-+ De metrische gegevens en artefacten van uw experiment bijhouden en vastleggen in uw [Azure machine learning service-werk ruimte](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture#workspaces). Als u MLflow tracking al gebruikt voor uw experimenten, biedt de werk ruimte een gecentraliseerde, veilige en schaal bare locatie voor het opslaan van uw metrische gegevens en modellen voor training.
++ De metrische gegevens en artefacten van uw experiment bijhouden en vastleggen in uw [Azure machine learning-werk ruimte](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture#workspaces). Als u MLflow tracking al gebruikt voor uw experimenten, biedt de werk ruimte een gecentraliseerde, veilige en schaal bare locatie voor het opslaan van uw metrische gegevens en modellen voor training.
 
 + Implementeer uw MLflow-experimenten als een Azure Machine Learning-webservice. Door te implementeren als een webservice, kunt u de Azure Machine Learning bewaking en de functionaliteit voor de detectie van gegevens drift Toep assen op uw productie modellen. 
 
@@ -34,7 +34,7 @@ In het volgende diagram ziet u dat er met MLflow-tracking een experiment kan wor
 
 ## <a name="compare-mlflow-and-azure-machine-learning-clients"></a>MLflow-en Azure Machine Learning-clients vergelijken
 
- De onderstaande tabel bevat een overzicht van de verschillende clients die Azure Machine Learning-service kunnen gebruiken en hun respectieve functie mogelijkheden.
+ De onderstaande tabel bevat een overzicht van de verschillende clients die Azure Machine Learning kunnen gebruiken en hun respectieve functie mogelijkheden.
 
  MLflow tracking biedt metrische logboek registratie en opslag functies voor artefacten die alleen beschikbaar zijn via de [python-SDK van Azure machine learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
@@ -59,7 +59,7 @@ In het volgende diagram ziet u dat er met MLflow-tracking een experiment kan wor
 
 ## <a name="track-local-runs"></a>Lokale uitvoeringen bijhouden
 
-MLflow tracking with Azure Machine Learning service kunt u de vastgelegde metrische gegevens en artefacten van uw lokale uitvoeringen opslaan in uw Azure Machine Learning-werk ruimte.
+MLflow tracking met Azure Machine Learning kunt u de vastgelegde metrische gegevens en artefacten van uw lokale uitvoeringen opslaan in uw Azure Machine Learning-werk ruimte.
 
 Installeer het `azureml-contrib-run` pakket voor het gebruik van MLflow tracking met Azure machine learning van uw experimenten die lokaal worden uitgevoerd in een Jupyter notebook of code-editor.
 
@@ -98,7 +98,7 @@ with mlflow.start_run():
 
 ## <a name="track-remote-runs"></a>Externe uitvoeringen bijhouden
 
-MLflow tracking with Azure Machine Learning service kunt u de vastgelegde metrische gegevens en artefacten opslaan vanaf uw externe uitvoeringen in uw Azure Machine Learning-werk ruimte.
+MLflow tracking met Azure Machine Learning kunt u de vastgelegde metrische gegevens en artefacten opslaan vanaf uw externe uitvoeringen in uw Azure Machine Learning-werk ruimte.
 
 Met extern uitvoeren kunt u uw modellen trainen op krachtige reken mogelijkheden, zoals virtuele machines met GPU of Machine Learning Compute clusters. Zie [Compute-doelen voor model training instellen](how-to-set-up-training-targets.md) voor meer informatie over verschillende reken opties.
 
@@ -141,7 +141,7 @@ run = exp.submit(src)
 
 ## <a name="track-azure-databricks-runs"></a>Azure Databricks uitvoeringen bijhouden
 
-MLflow tracking with Azure Machine Learning service kunt u de vastgelegde metrische gegevens en artefacten opslaan vanuit uw Databricks-uitvoeringen in uw Azure Machine Learning-werk ruimte.
+MLflow tracking met Azure Machine Learning kunt u de vastgelegde metrische gegevens en artefacten opslaan vanuit uw Databricks-uitvoeringen in uw Azure Machine Learning-werk ruimte.
 
 Als u uw Mlflow experimenten met Azure Databricks wilt uitvoeren, moet u eerst een [Azure Databricks-werk ruimte en-cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) maken
 

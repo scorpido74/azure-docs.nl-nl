@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: c302b18e34533a564904562ed39879bbe37b82ca
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: df12acad5fa9287f43cc256bfcc89fa6775c3e3b
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65908209"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001312"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Een gesimuleerd TPM-apparaat maken en inrichten voor IoT Hub Device Provisioning Service met de apparaat-SDK voor Python
 
@@ -33,9 +33,12 @@ In dit artikel worden afzonderlijke registraties gedemonstreerd.
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
+> [!NOTE]
+> Deze hand leiding is alleen van toepassing op de nu afgeschafte v1 python SDK. Gesimuleerde TPM-apparaten worden nog niet ondersteund in v2. Het team is momenteel in staat om v2 te gebruiken voor de functie pariteit.
+
 ## <a name="prepare-the-environment"></a>De omgeving voorbereiden 
 
-1. Zorg ervoor dat u hebt geïnstalleerd een [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 of hoger, met de ' bureaubladontwikkeling met C++' werkbelasting ingeschakeld voor uw installatie van Visual Studio.
+1. Zorg ervoor dat u [Visual studio](https://visualstudio.microsoft.com/vs/) 2015 of hoger hebt geïnstalleerd met de optie ' Desktop Development with C++' voor de installatie van Visual Studio.
 
 1. Download en installeer het [CMake-bouwsysteem](https://cmake.org/download/).
 
@@ -44,7 +47,7 @@ In dit artikel worden afzonderlijke registraties gedemonstreerd.
 1. Open een opdrachtprompt of Git Bash. Kloon het codevoorbeeld voor de GitHub-opslagplaats voor apparaatsimulatie:
     
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-python.git --recursive
+    git clone --single-branch --branch v1-deprecated https://github.com/Azure/azure-iot-sdk-python.git --recursive
     ```
 
 1. Maak een map in de lokale kopie van deze GitHub-opslagplaats voor het CMake-bouwproces. 

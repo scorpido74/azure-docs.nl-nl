@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b5ffc16a7c9dacef3036ca5ce225265252dcdf5d
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: a8aed646f03b777722518152354cfe80cea043a0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516765"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002806"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Best practices voor StorSimple Virtual array
 
@@ -45,7 +45,7 @@ Implementeer de volgende aanbevolen procedures bij het inrichten van de virtuele
 | --- | --- | --- |
 | **Type virtuele machine** |**Generatie 2** VM voor gebruik met Windows Server 2012 of hoger en een *. vhdx* -installatie kopie. <br></br> **Generatie 1** VM voor gebruik met een Windows Server 2008 of hoger en een *VHD* -installatie kopie. |Gebruik de versie 8 van de virtuele machine wanneer u een *VMDK* -afbeelding gebruikt. |
 | **Type geheugen** |Configureer als **statisch geheugen**. <br></br> Gebruik niet de optie **dynamisch geheugen** . | |
-| **Type gegevens schijf** |Inrichten als **dynamisch uitbreiden**.<br></br> De **vaste grootte** neemt veel tijd in beslag. <br></br> Gebruik niet de optie **differentiëring** . |Gebruik de optie voor **Thin** provisioning. |
+| **Type gegevens schijf** |Inrichten als **dynamisch uitbreiden**.<br></br> De **vaste grootte** neemt veel tijd in beslag. <br></br> Gebruik niet de optie **differentiëring** . |Gebruik de optie voor **Thin Provisioning** . |
 | **Wijziging van de gegevens schijf** |Uitbrei ding of krimpen is niet toegestaan. Als u dit toch doet, worden alle lokale gegevens op het apparaat verloren. |Uitbrei ding of krimpen is niet toegestaan. Als u dit toch doet, worden alle lokale gegevens op het apparaat verloren. |
 
 ### <a name="sizing"></a>Grootte aanpassen
@@ -160,7 +160,7 @@ U kunt in uw virtuele matrix shares inrichten wanneer deze is geconfigureerd als
 Let op de volgende aanbevolen procedures bij het inrichten van shares of volumes op het virtuele apparaat.
 
 * De bestands grootte ten opzichte van de ingerichte grootte van een gelaagde share kan invloed hebben op de prestaties van de lagen. Het werken met grote bestanden kan resulteren in een langzame laag. Wanneer u werkt met grote bestanden, raden we aan dat het grootste bestand kleiner is dan 3% van de share grootte.
-* Er kunnen Maxi maal 16 volumes/shares worden gemaakt op de virtuele matrix. Voor de maximale grootte van de lokaal vastgemaakte en gelaagde volumes/shares raadpleegt u altijd de limieten voor de [virtuele StorSimple-matrix](storsimple-ova-limits.md).
+* Er kunnen Maxi maal 16 volumes/shares worden gemaakt op de virtuele matrix. Voor de maximale grootte van de lokaal vastgemaakte en gelaagde volumes/shares raadpleegt u altijd de [limieten voor de virtuele StorSimple-matrix](storsimple-ova-limits.md).
 * Bij het maken van een volume moet u rekening houden met het verwachte gegevens verbruik en de toekomstige groei. Het volume kan niet later worden uitgebreid.
 * Zodra het volume is gemaakt, kunt u de grootte van het volume op StorSimple niet verkleinen.
 * Wanneer u naar een gelaagd volume op StorSimple schrijft en de volume gegevens een bepaalde drempel waarde bereiken (ten opzichte van de lokale ruimte die voor het volume is gereserveerd), wordt de i/o beperkt. Als u doorgaat met schrijven naar dit volume, wordt de IO aanzienlijk vertraagd. Hoewel u kunt schrijven naar een gelaagd volume dat groter is dan de ingerichte capaciteit (de gebruiker niet actief stopt met het schrijven van de ingerichte capaciteit), ziet u een waarschuwings melding over het effect dat u hebt geabonneerd. Zodra u de waarschuwing ziet, is het van cruciaal belang dat u de herstel maatregelen uitvoert, zoals het verwijderen van de volume gegevens (volume uitbreiding wordt momenteel niet ondersteund).
@@ -199,7 +199,7 @@ Gebruik de volgende aanbevolen procedures bij het configureren van ACRs voor Sto
 ### <a name="data-security-and-encryption"></a>Gegevensbeveiliging en -versleuteling
 Uw virtuele StorSimple-matrix bevat functies voor gegevens beveiliging en-versleuteling die ervoor zorgen dat de vertrouwelijkheid en integriteit van uw gegevens worden gegarandeerd. Wanneer u deze functies gebruikt, is het raadzaam deze aanbevolen procedures te volgen: 
 
-* Definieer een versleutelings sleutel voor de Cloud opslag om AES-256-versleuteling te genereren voordat de gegevens vanuit uw virtuele matrix naar de cloud worden verzonden. Deze sleutel is niet vereist als uw gegevens zijn versleuteld om te beginnen met. U kunt de sleutel genereren en veilig houden met behulp van een sleutel beheersysteem, zoals [Azure Key kluis](../key-vault/key-vault-whatis.md).
+* Definieer een versleutelings sleutel voor de Cloud opslag om AES-256-versleuteling te genereren voordat de gegevens vanuit uw virtuele matrix naar de cloud worden verzonden. Deze sleutel is niet vereist als uw gegevens zijn versleuteld om te beginnen met. U kunt de sleutel genereren en veilig houden met behulp van een sleutel beheersysteem, zoals [Azure Key kluis](../key-vault/key-vault-overview.md).
 * Wanneer u het opslag account via de StorSimple Manager-service configureert, moet u ervoor zorgen dat u de SSL-modus inschakelt om een beveiligd kanaal te maken voor netwerk communicatie tussen uw StorSimple-apparaat en de Cloud.
 * Genereer regel matig de sleutels voor uw opslag accounts (door de Azure Storage-service opnieuw te openen) om eventuele wijzigingen in toegang te krijgen op basis van de gewijzigde lijst met beheerders.
 * Gegevens in uw virtuele matrix worden gecomprimeerd en ontdubbeld voordat deze naar Azure worden verzonden. Het wordt niet aangeraden de functie Service Gegevensontdubbeling te gebruiken op uw Windows Server-host.
@@ -242,7 +242,7 @@ Houd bij het uitvoeren van een failover voor uw virtuele matrix het volgende in 
   * De failover is voltooid toen het bron apparaat werd verwijderd, maar het doel apparaat heeft problemen en u hebt geen toegang tot gegevens. De gegevens zijn nog steeds veilig in de Cloud en kunnen eenvoudig worden opgehaald door een andere virtuele matrix te maken en deze vervolgens als doel apparaat te gebruiken voor de DR.
 
 ### <a name="deactivate"></a>Deactiveren
-Wanneer u een virtuele StorSimple-matrix deactiveert, verbreekt u de verbinding tussen het apparaat en de bijbehorende StorSimple Manager service. Deactivering is een **permanente** bewerking en kan niet ongedaan worden gemaakt. Een gedeactiveerd apparaat kan niet opnieuw worden geregistreerd bij de StorSimple Manager-service. Ga voor meer informatie naar deactiveren [en verwijder de virtuele StorSimple-matrix](storsimple-virtual-array-deactivate-and-delete-device.md).
+Wanneer u een virtuele StorSimple-matrix deactiveert, verbreekt u de verbinding tussen het apparaat en de bijbehorende StorSimple Manager service. Deactivering is een **permanente** bewerking en kan niet ongedaan worden gemaakt. Een gedeactiveerd apparaat kan niet opnieuw worden geregistreerd bij de StorSimple Manager-service. Ga voor meer informatie naar [deactiveren en verwijder de virtuele StorSimple-matrix](storsimple-virtual-array-deactivate-and-delete-device.md).
 
 Houd bij het deactiveren van uw virtuele array de volgende aanbevolen procedures in acht:
 

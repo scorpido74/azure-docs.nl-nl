@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 9d88b8101f37fde5d1ab8ac11253884b6534e3b5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726770"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999173"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Aanbevolen procedures voor het beveiligen van PaaS web-en mobiele toepassingen met Azure Storage
 In dit artikel bespreken we een verzameling Azure Storage best practices voor het beveiligen van uw PaaS-web en mobiele toepassingen (platform-as-a-Service). Deze aanbevolen procedures zijn afgeleid van onze ervaring met Azure en de ervaringen van klanten, zoals uzelf.
@@ -71,7 +71,7 @@ Zie voor meer informatie over RBAC:
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Versleuteling aan client zijde gebruiken voor gegevens met hoge waarde
 Met versleuteling aan de client zijde kunt u gegevens in transit programmatisch versleutelen voordat u deze uploadt naar Azure Storage, en gegevens programmatisch ontsleutelen bij het ophalen. Dit zorgt voor versleuteling van gegevens tijdens de overdracht, maar biedt ook versleuteling van gegevens in rust. Versleuteling aan de client zijde is de veiligste methode voor het versleutelen van uw gegevens, maar hiervoor moet u programmatisch wijzigingen aanbrengen in uw toepassing en de belangrijkste beheer processen plaatsen.
 
-Versleuteling aan de client zijde biedt u ook de mogelijkheid om de versleutelings sleutels te beheren. U kunt uw eigen versleutelings sleutels genereren en beheren. Er wordt gebruikgemaakt van een envelop techniek waarbij de Azure Storage-client bibliotheek een CEK (content Encryption Key) genereert die vervolgens wordt verpakt (versleuteld) met behulp van de sleutel versleutelings sleutel (KEK). De KEK wordt geïdentificeerd aan de hand van een sleutel-id en kan een asymmetrisch sleutel paar of een symmetrische sleutel zijn en kan lokaal worden beheerd of opgeslagen in [Azure Key Vault](/azure/key-vault/key-vault-whatis).
+Versleuteling aan de client zijde biedt u ook de mogelijkheid om de versleutelings sleutels te beheren. U kunt uw eigen versleutelings sleutels genereren en beheren. Er wordt gebruikgemaakt van een envelop techniek waarbij de Azure Storage-client bibliotheek een CEK (content Encryption Key) genereert die vervolgens wordt verpakt (versleuteld) met behulp van de sleutel versleutelings sleutel (KEK). De KEK wordt geïdentificeerd aan de hand van een sleutel-id en kan een asymmetrisch sleutel paar of een symmetrische sleutel zijn en kan lokaal worden beheerd of opgeslagen in [Azure Key Vault](/azure/key-vault/key-vault-overview).
 
 Versleuteling aan client zijde is ingebouwd in de Java-en de .NET Storage-client bibliotheken. Zie [versleuteling aan client zijde en Azure Key Vault voor Microsoft Azure Storage](/azure/storage/common/storage-client-side-encryption) voor informatie over het versleutelen van gegevens in client toepassingen en het genereren en beheren van uw eigen versleutelings sleutels.
 

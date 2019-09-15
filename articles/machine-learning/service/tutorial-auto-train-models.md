@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie voor een regressiemodel: Geautomatiseerde machine learning'
-titleSuffix: Azure Machine Learning service
-description: Leer hoe u een machine learning-model genereert met behulp van geautomatiseerde machine learning. Azure Machine Learning kan voorbewerking van gegevens, selectie van algoritmes en selectie van hyperparameters automatisch voor u uitvoeren. Het uiteindelijke model wordt vervolgens geïmplementeerd met Azure Machine Learning Service.
+titleSuffix: Azure Machine Learning
+description: Leer hoe u een machine learning-model genereert met behulp van geautomatiseerde machine learning. Azure Machine Learning kan voorbewerking van gegevens, selectie van algoritmes en selectie van hyperparameters automatisch voor u uitvoeren. Vervolgens wordt het uiteindelijke model geïmplementeerd met Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/21/2019
-ms.openlocfilehash: 990755b247190f689a90d5cdf3d60d6eff9f4ae7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: f08f2f07137e518925ee4dbe9b128e100be870c9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036249"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003980"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Zelfstudie: Automatische machine learning gebruiken om taxi tarieven te voors pellen
 
-In deze zelf studie gebruikt u geautomatiseerde machine learning in Azure Machine Learning-service om een regressie model te maken om de prijzen van het NYCe taxi te voors pellen. Dit proces accepteert trainings gegevens en configuratie-instellingen en herhaalt automatisch combi Naties van verschillende methoden voor het normaliseren/standaardiseren van functies, modellen en afstemming-instellingen om het beste model te ontvangen.
+In deze zelf studie gebruikt u geautomatiseerde machine learning in Azure Machine Learning om een regressie model te maken om de prijzen van het NYCe taxi te voors pellen. Dit proces accepteert trainings gegevens en configuratie-instellingen en herhaalt automatisch combi Naties van verschillende methoden voor het normaliseren/standaardiseren van functies, modellen en afstemming-instellingen om het beste model te ontvangen.
 
 ![Stroomdiagram](./media/tutorial-auto-train-models/flow2.png)
 
@@ -30,11 +30,11 @@ In deze zelf studie leert u de volgende taken:
 > * Een geautomatiseerd machine learning regressie model trainen
 > * Nauw keurigheid van model berekenen
 
-Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie](https://aka.ms/AMLFree) van Azure machine learning service.
+Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie](https://aka.ms/AMLFree) van Azure machine learning.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Voltooi de [installatie handleiding](tutorial-1st-experiment-sdk-setup.md) als u nog geen Azure machine learning service-werk ruimte of virtuele notebook-machine hebt.
+* Voltooi de [installatie handleiding](tutorial-1st-experiment-sdk-setup.md) als u nog geen virtuele Machine met Azure machine learning-werk ruimte of-notebook hebt.
 * Nadat u de installatie zelf studie hebt voltooid, opent u de notebook **zelf studies/Regression-Automated-ml. ipynb** met dezelfde notebook server.
 
 Deze zelf studie is ook beschikbaar op [github](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) als u deze wilt uitvoeren in uw eigen [lokale omgeving](how-to-configure-environment.md#local). Voer `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` uit om de vereiste pakketten op te halen.
@@ -1057,7 +1057,7 @@ De traditionele machine learning-model ontwikkelingsproces is zeer resource-inte
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Voltooi deze sectie niet als u van plan bent andere Azure Machine Learning service-zelf studies uit te voeren.
+Voltooi deze sectie niet als u van plan bent andere Azure Machine Learning zelf studies uit te voeren.
 
 ### <a name="stop-the-notebook-vm"></a>De VM van het notebook stoppen
 
@@ -1088,4 +1088,4 @@ In deze zelfstudie over geautomatiseerde machine learning hebt u het volgende ge
 > * U hebt getraind met behulp van een lokaal geautomatiseerd regressiemodel met aangepaste parameters.
 > * U hebt trainingsresultaten verkend en gecontroleerd.
 
-[Implementeer uw model](tutorial-deploy-models-with-aml.md) met Azure machine learning service.
+[Uw model implementeren](tutorial-deploy-models-with-aml.md) met Azure Machine Learning.

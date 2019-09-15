@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b451e501b216b02ecb052ee159d0e26343af7901
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e5bfd2fc127774b9630e87ab4f51241e82ed7c87
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910231"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999071"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio code gebruiken voor het ontwikkelen en opsporen van fouten in modules voor Azure IoT Edge
 
@@ -61,7 +61,7 @@ Als u uw module-installatie kopie wilt bouwen en implementeren, moet u docker ge
     > [!TIP]
     > U kunt een lokale Docker-register voor prototype en in plaats van een cloud-register voor testdoeleinden gebruiken.
 
-Tenzij u uw module in C ontwikkelt, hebt u ook het op python gebaseerde [Azure IOT EdgeHub dev tool](https://pypi.org/project/iotedgehubdev/) nodig om uw lokale ontwikkel omgeving in te stellen voor het opsporen, uitvoeren en testen van uw IOT EDGE-oplossing. Als u dit nog niet hebt gedaan, installeert u [python (2.7/3.6) en PIP](https://www.python.org/) en installeert u **iotedgehubdev** door deze opdracht uit te voeren in uw Terminal.
+Tenzij u uw module in C ontwikkelt, hebt u ook het op python gebaseerde [Azure IOT EdgeHub dev tool](https://pypi.org/project/iotedgehubdev/) nodig om uw lokale ontwikkel omgeving in te stellen voor het opsporen, uitvoeren en testen van uw IOT EDGE-oplossing. Als u dit nog niet hebt gedaan, installeert u [python (2.7/3.6 +) en PIP](https://www.python.org/) en installeert u **iotedgehubdev** door deze opdracht uit te voeren in uw Terminal.
 
    ```cmd
    pip install --upgrade iotedgehubdev
@@ -269,22 +269,22 @@ Bij het opsporen van fouten in modules met deze methode worden uw modules boven 
       ptvsd.break_into_debugger()
       ```
 
-     Als u bijvoorbeeld fouten wilt opsporen in de `receive_message_callback` methode, voegt u de volgende regel code toe, zoals hieronder wordt weer gegeven:
+     Als u bijvoorbeeld fouten wilt opsporen in de `receive_message_listener` functie, voegt u de volgende regel code toe, zoals hieronder wordt weer gegeven:
 
       ```python
-      def receive_message_callback(message, hubManager):
+      def receive_message_listener(client):
           ptvsd.break_into_debugger()
-          global RECEIVE_CALLBACKS
-          message_buffer = message.get_bytearray()
-          size = len(message_buffer)
-          print ( "    Data: <<<%s>>> & Size=%d" % (message_buffer[:size].decode ('utf-8'), size) )
-          map_properties = message.properties()
-          key_value_pair = map_properties.get_internals()
-          print ( "    Properties: %s" % key_value_pair )
-          RECEIVE_CALLBACKS += 1
-          print ( "    Total calls received: %d" % RECEIVE_CALLBACKS )
-          hubManager.forward_event_to_output("output1", message, 0)
-          return IoTHubMessageDispositionResult.ACCEPTED
+          global RECEIVED_MESSAGES
+          while True:
+              message = client.receive_message_on_input("input1")   # blocking call
+              RECEIVED_MESSAGES += 1
+              print("Message received on input1")
+              print( "    Data: <<{}>>".format(message.data) )
+              print( "    Properties: {}".format(message.custom_properties))
+              print( "    Total calls received: {}".format(RECEIVED_MESSAGES))
+              print("Forwarding message to output1")
+              client.send_message_to_output(message, "output1")
+              print("Message successfully forwarded")
       ```
 
 1. In het Visual Studio code-opdracht palet:

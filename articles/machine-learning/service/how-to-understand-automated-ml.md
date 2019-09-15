@@ -1,6 +1,6 @@
 ---
 title: Meer informatie over geautomatiseerde ML-resultaten
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Meer informatie over het weer geven en begrijpen van grafieken en metrische gegevens voor elk van uw geautomatiseerde machine learning uitvoeringen.
 services: machine-learning
 author: nilesha
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 60ecd71419bbf65cceab257cb97a96929d24ec08
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 56d8dff7d158cedb4ab33e811cf5134cdbc475ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860557"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999432"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Automatische machine learning resultaten begrijpen
 
@@ -28,7 +28,7 @@ Meer informatie over:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer nog vandaag de [gratis of betaalde versie van de Azure Machine Learning Service](https://aka.ms/AMLFree).
+* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 * Maak een geautomatiseerd machine learning experiment, hetzij met de SDK, in de Azure Portal of op de landings pagina van uw werk ruimte (preview).
 

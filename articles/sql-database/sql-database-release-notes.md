@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: ef19d22b5c47c51f5ee3f74a4d7ab06725f7ed41
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: ed41ccea0754f3eeffdd0248bac567859db1492c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968333"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001514"
 ---
 # <a name="sql-database-release-notes"></a>Opmerkingen bij de release SQL Database
 
@@ -36,13 +36,9 @@ Dit artikel bevat een overzicht van SQL Database functies die momenteel beschikb
 |Feedback over geheugen toekenning (rij-modus) (onder compatibiliteits niveau 150)|Zie [feedback over geheugen toekenning (rij-modus)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)voor meer informatie.|
 | Query-Editor in het Azure Portal |Zie [de SQL-query editor van het Azure Portal gebruiken om verbinding te maken en gegevens op te vragen](sql-database-connect-query-portal.md)voor meer informatie.|
 | R Services/machine learning met afzonderlijke data bases en elastische Pools |Zie [Machine Learning Services in Azure SQL database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)voor meer informatie.|
-| Verwijderde data bases opnieuw maken met beheerde exemplaren |Zie [Verwijderde data bases opnieuw maken in Azure SQL Managed instance](https://medium.com/azure-sqldb-managed-instance/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266)voor meer informatie.|
-| Replicatie met beheerde exemplaren |Zie [Configure Replication in a Azure SQL database Managed instance data base](replication-with-sql-database-managed-instance.md)(Engelstalig) voor meer informatie.|
 | Serverloze compute-laag | Zie [SQL database serverloze (preview-versie)](sql-database-serverless.md)voor meer informatie.|
 |SQL-analyse|Zie [Azure SQL-analyse](../azure-monitor/insights/azure-sql.md)voor meer informatie.|
 |Uitgestelde compilatie van tabel variabele (onder compatibiliteits niveau 150)|Zie voor meer informatie [tabel variabele uitgestelde compilatie](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation).|
-| Detectie van bedreigingen met beheerde instanties |Zie [detectie van dreigingen configureren in Azure SQL database Managed instance](sql-database-managed-instance-threat-detection.md)voor meer informatie.|
-| Transparent Data Encryption (TDE) met Bring Your Own Key (BYOK) met beheerde instanties |Zie [Azure SQL transparent Data Encryption met door de klant beheerde sleutels in azure Key Vault voor meer informatie: Ondersteuning](transparent-data-encryption-byok-azure-sql.md)voor Bring your own Key.|
 | &nbsp; |
 
 ### <a name="managed-instancetabmanaged-instance"></a>[Beheerd exemplaar](#tab/managed-instance)
@@ -50,13 +46,19 @@ Dit artikel bevat een overzicht van SQL Database functies die momenteel beschikb
 | Functie | Details |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Instantie groepen</a> | Een handige en rendabele manier om kleinere SQL-instanties naar de cloud te migreren. |
-| <a href="https://aka.ms/managed-instance-tde-byok">Uw eigen versleutelings sleutels meenemen</a> | Migreer data base van on-premises waarop al Transparent Data Encryption (TDE) is ingeschakeld met bestaande TDE-sleutels. |
+| <a href="https://aka.ms/managed-instance-tde-byok">Transparent Data Encryption (TDE) met Bring Your Own Key (BYOK)</a> |Zie [Azure SQL transparent Data Encryption met door de klant beheerde sleutels in azure Key Vault voor meer informatie: Ondersteuning](transparent-data-encryption-byok-azure-sql.md)voor Bring your own Key.|
 | <a href="https://aka.ms/managed-instance-failover-groups">Groepen met geo-gedistribueerde failover</a> | Bewaar een kopie van het exemplaar in een andere regio en zorg ervoor dat uw gegevens ook beschikbaar zijn in het scenario voor het regionale nood geval. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Azure AD server-principals op exemplaar niveau (aanmeldingen)</a> | Aanmeldingen op server niveau maken met behulp van de instructie voor het <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">maken van een aanmelding vanuit een externe provider</a> . |
-| [Transactionele replicatie](sql-database-managed-instance-transactional-replication.md) | Repliceer de wijzigingen van uw tabellen in andere data bases die zijn geplaatst in beheerde exemplaren, afzonderlijke data bases of SQL Server exemplaren, of werk uw tabellen bij wanneer sommige rijen worden gewijzigd in andere beheerde exemplaren of SQL Server exemplaar. |
+| [Transactionele replicatie](sql-database-managed-instance-transactional-replication.md) | Repliceer de wijzigingen van uw tabellen in andere data bases die zijn geplaatst in beheerde exemplaren, afzonderlijke data bases of SQL Server exemplaren, of werk uw tabellen bij wanneer sommige rijen worden gewijzigd in andere beheerde exemplaren of SQL Server exemplaar. Zie [Configure Replication in a Azure SQL database Managed instance data base](replication-with-sql-database-managed-instance.md)(Engelstalig) voor meer informatie. |
+| Detectie van bedreigingen |Zie [detectie van dreigingen configureren in Azure SQL database Managed instance](sql-database-managed-instance-threat-detection.md)voor meer informatie.|
+| Verwijderde data bases opnieuw maken met beheerde exemplaren |Zie [Verwijderde data bases opnieuw maken in Azure SQL Managed instance](https://medium.com/azure-sqldb-managed-instance/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266)voor meer informatie.|
 | &nbsp; |
 
 ---
+
+## <a name="fixed-known-issues"></a>Opgeloste bekende problemen
+
+- **Aug 2019** -Inge sloten data bases worden volledig ondersteund in een beheerd exemplaar.
 
 ## <a name="updates"></a>Updates
 

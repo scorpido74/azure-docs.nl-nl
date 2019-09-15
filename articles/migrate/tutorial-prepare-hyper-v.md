@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 87df37cc6baa863bb0b068bdfeb9cde873e38836
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 87a585f821f7b41c689899818627d863394fe844
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952083"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003098"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Voor bereiding voor de evaluatie en migratie van virtuele Hyper-V-machines naar Azure
 
@@ -99,7 +99,7 @@ Ga als volgt te werk om de Hyper-V-evaluatie voor te bereiden:
 1. Controleer de instellingen voor de Hyper-V-host.
 2. Externe communicatie van Power shell instellen op elke host, zodat het Azure Migrate apparaat Power shell-opdrachten op de host kan uitvoeren via een WinRM-verbinding.
 3. Als de VM-schijven zich in externe SMB-opslag bevinden, is delegering van referenties nodig. 
-    - Schakel CredSSP-delegering in, zodat het Azure Migrate apparaat kan fungeren als de client, en de referenties voor een host delegeren. D
+    - Schakel CredSSP-delegering in, zodat het Azure Migrate apparaat kan fungeren als de client, en de referenties voor een host delegeren.
     - U schakelt elke host in als gemachtigde voor het apparaat, zoals hieronder wordt beschreven.
     - Wanneer u het apparaat later instelt, schakelt u delegering op het apparaat in.
 4. Controleer de vereisten van apparaten en de URL/poort toegang die nodig is voor het apparaat.
@@ -113,7 +113,7 @@ U kunt deze instellingen hand matig configureren met behulp van de onderstaande 
 
 Met het script valideert u Hyper-V-hosts en configureert u de instellingen die u nodig hebt om virtuele Hyper-V-machines te detecteren en te evalueren. Dit doet u als volgt:
 
-- Hiermee wordt gecontroleerd of u het script uitvoert op een ondersteunde Power shell-versie.
+- Controleert of u het script uitvoert op een ondersteunde Power shell-versie.
 - Controleert of u (de gebruiker die het script uitvoert) beheerders bevoegdheden op de Hyper-V-host heeft.
 - Hiermee kunt u een lokaal gebruikers account (geen beheerder) maken dat wordt gebruikt voor de Azure Migrate-service om te communiceren met de Hyper-V-host. Dit gebruikers account wordt toegevoegd aan deze groepen op de host:
     - Gebruikers van extern beheer

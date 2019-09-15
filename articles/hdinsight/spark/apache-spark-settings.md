@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 2d369af7c11473d811677f33f9112d41260fcecf
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 48f19e5da8c7703cc597518246c2f62ebce3ae17
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736025"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003187"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark-instellingen configureren
 
@@ -44,11 +44,11 @@ Apache Spark heeft drie systeem configuratie locaties:
 Wanneer u een bepaalde versie van Spark selecteert, bevat uw cluster de standaard configuratie-instellingen.  U kunt de standaard Spark-configuratie waarden wijzigen met behulp van een aangepast Spark-configuratie bestand.  Hieronder ziet u een voor beeld.
 
 ```
-    spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
-    spark.hadoop.mapreduce.input.fileinputformat.split.minsize 1099511627776
-    spark.hadoop.parquet.block.size 1099511627776
-    spark.sql.files.maxPartitionBytes 1099511627776
-    spark.sql.files.openCostInBytes 1099511627776
+spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
+spark.hadoop.mapreduce.input.fileinputformat.split.minsize 1099511627776
+spark.hadoop.parquet.block.size 1099511627776
+spark.sql.files.maxPartitionBytes 1099511627776
+spark.sql.files.openCostInBytes 1099511627776
 ```
 
 In het bovenstaande voor beeld wordt een aantal standaard waarden overschreven voor vijf Spark-configuratie parameters.  Dit zijn de compressie-codec, Apache Hadoop MapReduce de minimale grootte en Parquet-blok grootte te splitsen en ook de standaard waarden voor de SQL-partitie voor spaarzaam en open file sizes.  Deze configuratie wijzigingen worden gekozen, omdat de bijbehorende gegevens en taken (in dit voor beeld genoom gegevens) bepaalde kenmerken hebben, waardoor deze aangepaste configuratie-instellingen beter kunnen worden gebruikt.
@@ -63,7 +63,7 @@ De Apache Ambari-webgebruikersinterface wordt weer gegeven met een dashboard wee
 
 Als u de configuratie waarden voor Apache Spark wilt bekijken, selecteert u **configuratie geschiedenis**en selecteert u **Spark2**.  Selecteer het tabblad **configuraties** en selecteer vervolgens de `Spark` koppeling ( `Spark2`of, afhankelijk van uw versie) in de lijst met Services.  U ziet een lijst met configuratie waarden voor het cluster:
 
-![Spark-configuraties](./media/apache-spark-settings/spark-config.png)
+![Spark-configuraties](./media/apache-spark-settings/spark-configurations.png)
 
 Als u afzonderlijke Spark-configuratie waarden wilt bekijken en wijzigen, selecteert u een koppeling met het woord "Spark" in de titel van de koppeling.  Configuraties voor Spark bevatten zowel aangepaste als geavanceerde configuratie waarden in deze categorieën:
 
@@ -82,7 +82,7 @@ Als u een niet-standaard set configuratie waarden maakt, kunt u ook de geschiede
 
 Het volgende diagram toont de belangrijkste Spark-objecten: het stuur programma en de bijbehorende Spark-context, en de Cluster beheer-en de *n* worker-knoop punten.  Elk werk knooppunt bevat een uitvoerder, een cache en *n* taak exemplaren.
 
-![Cluster objecten](./media/apache-spark-settings/spark-arch.png)
+![Cluster objecten](./media/apache-spark-settings/hdi-spark-architecture.png)
 
 Spark-taken gebruiken werk resources, met name geheugen, zodat het gebruikelijk is om Spark-configuratie waarden aan te passen voor uitvoerder van worker-knoop punten.
 
@@ -93,7 +93,7 @@ Drie belang rijke para meters die vaak worden aangepast aan het afstemmen van Sp
 
 Een andere informatiebron over de resources die worden gebruikt door de Spark-uitvoerders, is de gebruikersinterface van de Spark-toepassing.  Selecteer in de Spark-gebruikers interface het tabblad **uitvoerende** resources om samen vatting-en detail weergaven weer te geven van de configuratie en resources die worden verbruikt door de uitvoerender.  Met deze weergaven kunt u bepalen of u de standaardwaarden voor Spark-uitvoerders voor het hele cluster wilt wijzigen, of alleen voor een bepaalde reeks taakuitvoeringen.
 
-![Spark-Uitvoerendeers](./media/apache-spark-settings/spark-executors.png)
+![Spark-Uitvoerendeers](./media/apache-spark-settings/apache-spark-executors.png)
 
 U kunt ook de Ambari-REST API gebruiken om de configuratie-instellingen voor HDInsight-en Spark-clusters programmatisch te controleren.  Meer informatie vindt u op de [AMBARI API-referentie van Apache op github](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
@@ -105,7 +105,7 @@ Afhankelijk van de Spark-workload kunt u bepalen dat een Spark-configuratie die 
 
 Hier volgt een voor beeld van twee worker-knoop punten met verschillende configuratie waarden:
 
-![Configuraties met twee knoop punten](./media/apache-spark-settings/executor-config.png)
+![Configuraties met twee knoop punten](./media/apache-spark-settings/executor-configuration.png)
 
 In de volgende lijst ziet u de para meters voor Key Spark-bewerkings geheugen.
 
@@ -116,7 +116,7 @@ In de volgende lijst ziet u de para meters voor Key Spark-bewerkings geheugen.
 
 GAREN beheert de maximale hoeveelheid geheugen die wordt gebruikt door de containers op elk Spark-knoop punt. In het volgende diagram ziet u de relaties per knoop punt tussen garen configuratie objecten en Spark-objecten.
 
-![Vonk geheugen beheer van garen](./media/apache-spark-settings/yarn-spark-memory.png)
+![Vonk geheugen beheer van garen](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
 
 ## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Para meters wijzigen voor een toepassing die wordt uitgevoerd in Jupyter notebook
 
@@ -136,8 +136,8 @@ Voor toepassingen die worden uitgevoerd in de Jupyter-notebook `%%configure` , g
 De volgende code laat zien hoe u de configuratie wijzigt voor een toepassing die wordt uitgevoerd in een Jupyter-notebook.
 
 ```
-    %%configure
-    {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+%%configure
+{"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
 ```
 
 ## <a name="conclusion"></a>Conclusie

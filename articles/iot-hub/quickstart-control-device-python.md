@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: fe0c16962eef38ac26490eb7928d1705ef63a217
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6a3be3733c5041576d5db49256056ac4f0c03a7f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68355019"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003034"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Quickstart: Een apparaat beheren dat is verbonden met een IoT-hub (python)
 
@@ -34,22 +34,6 @@ In de snelstartgids worden twee vooraf geschreven Python-toepassingen gebruikt:
 Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
-
-De twee voorbeeldtoepassingen die u uitvoert in deze snelstartgids zijn geschreven in Python. Op dit moment ondersteunen de Microsoft Azure IoT Sdk's voor python alleen specifieke versies van python voor elk platform. Raadpleeg het Leesmij-bestand voor [PYTHON SDK](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues)voor meer informatie.
-
-In deze Quick Start wordt ervan uitgegaan dat u een Windows-ontwikkel computer gebruikt. Alleen voor Windows-systemen [python 3.6. x](https://www.python.org/downloads/release/python-368/) wordt ondersteund. Welk Python-installatieprogramma u moet kiezen, hangt af van de architectuur van het systeem waarmee u werkt. Als uw CPU-architectuur van het systeem 32 bits is, downloadt u het installatie programma x86. voor de 64-bits architectuur downloadt u het installatie programma x86-64. Bovendien moet u ervoor zorgen dat de [micro soft Visual C++ Redistributable for Visual Studio 2015, 2017 en 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) is geïnstalleerd voor uw architectuur (x86 of x64).
-
-U kunt python downloaden voor andere platforms vanuit [python.org](https://www.python.org/downloads/).
-
-Gebruik een van de volgende opdrachten om te controleren wat de huidige versie van Python op uw ontwikkelcomputer is:
-
-```python
-python - -version
-```
-
-```python
-python3 - -version
-```
 
 Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI toe te voegen aan uw Cloud Shell-exemplaar. De IOT-extensie voegt IoT Hub, IoT Edge en IoT Device Provisioning Service (DPS)-specifieke opdrachten toe aan Azure CLI.
 
@@ -73,9 +57,9 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
 
 1. Voer de volgende opdracht uit in Azure Cloud Shell om de apparaat-id te maken.
 
-    **YourIoTHubName** : vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
+    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
-    **MyPythonDevice** : dit is de naam van het geregistreerde apparaat. Gebruik MyPythonDevice zoals weergegeven. Als u een andere naam voor het apparaat kiest, moet u deze naam ook in de rest van dit artikel gebruiken, en moet u de apparaatnaam bijwerken in de voorbeeldtoepassingen voordat u ze uitvoert.
+    **MyPythonDevice**: dit is de naam van het geregistreerde apparaat. Gebruik MyPythonDevice zoals weergegeven. Als u een andere naam voor het apparaat kiest, moet u deze naam ook in de rest van dit artikel gebruiken, en moet u de apparaatnaam bijwerken in de voorbeeldtoepassingen voordat u ze uitvoert.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyPythonDevice
@@ -83,7 +67,7 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
 
 2. Voer de volgende opdrachten uit in Azure Cloud Shell om de _apparaatverbindingsreeks_ op te halen voor het apparaat dat u zojuist hebt geregistreerd:
 
-    **YourIoTHubName** : vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
+    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyPythonDevice --output table
@@ -97,7 +81,7 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
 
 3. U hebt ook een _service-verbindingsreeks_ nodig, zodat de back-end-toepassing verbinding kan maken met de IoT-hub en de berichten kan ophalen. Met de volgende opdracht haalt u de serviceverbindingsreeks voor uw IoT-hub op:
 
-    **YourIoTHubName** : vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
+    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
     ```azurecli-interactive
     az iot hub show-connection-string \
@@ -114,7 +98,7 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
 
 ## <a name="listen-for-direct-method-calls"></a>Luisteren naar aanroepen van directe methoden
 
-De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatspecifiek eindpunt op uw IoT-hub, verstuurt gesimuleerde telemetrie en luistert naar aanroepen van directe methoden vanuit de hub. In deze snelstartgids geeft de aanroep van de directe methode vanuit de hub het apparaat opdracht om het interval voor het verzenden van telemetrie te wijzigen. Het gesimuleerde apparaat stuurt een bevestiging terug naar de hub nadat de directe methode is uitgevoerd.
+De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatspecifiek eindpunt op uw IoT-hub, verstuurt gesimuleerde telemetrie en luistert naar aanroepen van directe methoden vanuit de hub. In deze snelstartgids geeft de aanroep van de directe methode vanuit de hub het apparaat opdracht om het interval voor het verzenden van telemetrie te wijzigen. Het gesimuleerde apparaat verzendt een bevestiging terug naar uw hub nadat de directe methode is uitgevoerd.
 
 1. Navigeer in een lokaal terminalvenster naar de hoofdmap van het voorbeeldproject in Python. Navigeer vervolgens naar de map **iot-hub\Quickstarts\simulated-device-2**.
 
@@ -140,7 +124,7 @@ De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatsp
 
 ## <a name="call-the-direct-method"></a>De directe methode aanroepen
 
-De back-endtoepassing maakt verbinding met een eindpunt aan de servicezijde van uw IoT-hub. De toepassing verstuurt via uw IoT-hub aanroepen naar directe methoden op een apparaat en luistert naar bevestigingen. Een back-endtoepassing van IoT Hub wordt meestal in de cloud uitgevoerd.
+De back-endtoepassing maakt verbinding met een eindpunt aan de servicezijde van uw IoT-hub. De toepassing maakt directe methode aanroepen naar een apparaat via uw IoT-hub en luistert naar bevestigingen. Een back-endtoepassing van IoT Hub wordt meestal in de cloud uitgevoerd.
 
 1. Navigeer in een ander lokaal terminalvenster naar de hoofdmap van het voorbeeldproject in Python. Navigeer vervolgens naar de map **iot-hub\Quickstarts\back-end-application**.
 
@@ -160,7 +144,7 @@ De back-endtoepassing maakt verbinding met een eindpunt aan de servicezijde van 
     python BackEndApplication.py
     ```
 
-    In de volgende schermafbeelding ziet u de uitvoer op het moment dat de toepassing een directe methode op het apparaat aanroept en een bevestiging ontvangt:
+    In de volgende scherm afbeelding ziet u de uitvoer wanneer de toepassing een directe methode aanroept naar het apparaat en ontvangt u een bevestiging:
 
     ![De back-endtoepassing uitvoeren](./media/quickstart-control-device-python/BackEndApplication.png)
 

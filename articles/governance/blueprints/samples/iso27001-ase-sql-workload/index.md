@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 8877c29341c95d5cd0fe8e35887c44594e0b6d41
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: cee3867449aea1cb1c59ac5a7c3be57291d1aebc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231761"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000142"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Overzicht van het blauwdrukvoorbeeld voor ISO 27001 conforme App Service Environment-/SQL Database-workloads
 
@@ -36,7 +36,7 @@ Deze omgeving bestaat uit diverse Azure-services die samen een veilige, volledig
 - [Azure-beleid](../../../policy/overview.md) om vast te leggen welke services in de omgeving mogen worden geïmplementeerd en om te voorkomen dat er resources op basis van een openbaar IP-adres worden gemaakt
 - Een virtueel netwerk met één subnet en een koppeling met een al bestaande omgeving met [gedeelde services](../iso27001-shared/index.md), waarbij al het verkeer wordt gedwongen de firewall voor [gedeelde services](../iso27001-shared/index.md) te passeren. Het virtuele netwerk hosts de volgende resources:
   - Een [Azure App Service Environment](../../../../app-service/environment/intro.md) die kan worden gebruikt voor het hosten van een of meer web-apps, web-API's of functies
-  - Een [Azure Key Vault](../../../../key-vault/key-vault-whatis.md)-exemplaar met een VNet-service-eindpunt, voor het opslaan van geheimen die worden gebruikt door in de workloadomgeving uitgevoerde toepassingen
+  - Een [Azure Key Vault](../../../../key-vault/key-vault-overview.md)-exemplaar met een VNet-service-eindpunt, voor het opslaan van geheimen die worden gebruikt door in de workloadomgeving uitgevoerde toepassingen
   - Een [Azure SQL Database](../../../../sql-database/sql-database-technical-overview.md)-serverexemplaar met een VNet-service-eindpunt, voor het hosten van databases die worden gebruikt voor toepassingen in de workloadomgeving
 
 ## <a name="next-steps"></a>Volgende stappen

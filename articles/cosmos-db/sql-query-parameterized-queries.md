@@ -1,25 +1,25 @@
 ---
-title: Geparameteriseerde query's in Azure Cosmos DB
-description: Meer informatie over SQL geparametriseerde-query 's
+title: Query's met para meters in Azure Cosmos DB
+description: Meer informatie over SQL-query's met para meters
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
-ms.openlocfilehash: 2bfc22346c1dd43d7d3c2937ffc286e48ae774d0
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 45c1344c32e35f60f35ba8ed105e912d92574cce
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342613"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003603"
 ---
-# <a name="parameterized-queries-in-azure-cosmos-db"></a>Geparameteriseerde query's in Azure Cosmos DB
+# <a name="parameterized-queries-in-azure-cosmos-db"></a>Query's met para meters in Azure Cosmos DB
 
-Cosmos DB biedt ondersteuning voor query's met parameters worden uitgedrukt met de vertrouwde @ notatie. Geparameteriseerde SQL biedt robuuste verwerking en aanhalingstekens invoer van de gebruiker en wordt voorkomen dat onbedoelde blootstelling van gegevens via SQL-injectie.
+Cosmos DB ondersteunt query's met para meters die worden uitgedrukt in de vertrouwde @-notatie. SQL met para meters biedt een robuuste afhandeling en Escape van de invoer van gebruikers en voor komt onopzettelijke bloot stelling van gegevens via SQL-injectie.
 
 ## <a name="examples"></a>Voorbeelden
 
-U kunt bijvoorbeeld een query waarmee schrijven `lastName` en `address.state` als parameters en uit te voeren voor verschillende waarden van `lastName` en `address.state` op basis van de invoer van de gebruiker.
+U kunt bijvoorbeeld een query schrijven `lastName` die en `address.state` als para meters, en deze uitvoeren voor diverse waarden van `lastName` en `address.state` op basis van gebruikers invoer.
 
 ```sql
     SELECT *
@@ -27,7 +27,7 @@ U kunt bijvoorbeeld een query waarmee schrijven `lastName` en `address.state` al
     WHERE f.lastName = @lastName AND f.address.state = @addressState
 ```
 
-Vervolgens kunt u deze aanvraag verzenden naar Cosmos DB als een JSON-query met parameters als volgt uit:
+U kunt deze aanvraag vervolgens naar Cosmos DB verzenden als een geparametriseerde JSON-query, zoals in het volgende:
 
 ```sql
     {
@@ -39,7 +39,7 @@ Vervolgens kunt u deze aanvraag verzenden naar Cosmos DB als een JSON-query met 
     }
 ```
 
-Het volgende voorbeeld wordt de bovenste argument met een query met parameters: 
+In het volgende voor beeld wordt het bovenste argument met een query met para meters ingesteld: 
 
 ```sql
     {
@@ -50,10 +50,10 @@ Het volgende voorbeeld wordt de bovenste argument met een query met parameters:
     }
 ```
 
-Parameterwaarden mag geldige JSON: tekenreeksen, getallen, Booleaanse waarden, null, zelfs matrices of geneste JSON. Sinds de Cosmos DB schemaloos is, worden parameters worden niet gevalideerd op basis van elk type.
+Parameter waarden kunnen bestaan uit een geldige JSON: teken reeksen, getallen, Booleaanse waarden, null, zelfs matrices of geneste JSON. Omdat Cosmos DB schemaloos is, worden para meters niet gevalideerd op basis van elk type.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Documentgegevens modelleren](modeling-data.md)
+- [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Document gegevens model leren](modeling-data.md)

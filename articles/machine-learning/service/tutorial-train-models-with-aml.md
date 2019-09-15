@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie over classificatie van afbeeldingen: Modellen trainen'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het trainen van een afbeeldings classificatie model met scikit-informatie over een python Jupyter-notebook met Azure Machine Learning service. Deze zelfstudie is deel één van een serie van twee.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het trainen van een afbeeldings classificatie model met scikit-informatie over een python Jupyter-notebook met Azure Machine Learning. Deze zelfstudie is deel één van een serie van twee.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,18 +10,18 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8cf639a290067e71b562e0df844ee01d018a7557
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5c7396baa745196e054c6cb49d349bf7684cd899
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170575"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001667"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Zelfstudie: Beeld classificatie modellen trainen met MNIST-gegevens en scikit-meer informatie met behulp van Azure Machine Learning
 
-In deze zelfstudie gaat u een machine learning-model trainen op externe rekenresources. U gebruikt de werkstroom voor training en implementatie voor de Azure Machine Learning-service in een Python Jupyter-notebook.  Vervolgens kunt u het notebook gebruiken als een sjabloon voor het trainen van uw eigen machine learning-model met uw eigen gegevens. Deze zelfstudie is **deel één van een serie van twee**.  
+In deze zelfstudie gaat u een machine learning-model trainen op externe rekenresources. U gebruikt de trainings-en implementatie werk stroom voor Azure Machine Learning in een python Jupyter-notebook.  Vervolgens kunt u het notebook gebruiken als een sjabloon voor het trainen van uw eigen machine learning-model met uw eigen gegevens. Deze zelfstudie is **deel één van een serie van twee**.  
 
-In deze zelfstudie traint u een eenvoudig logistiek regressiemodel met de gegevensset [MNIST](http://yann.lecun.com/exdb/mnist/) en [scikit-learn](https://scikit-learn.org) met behulp van Azure Machine Learning Service. MNIST is een populaire gegevensset die bestaat uit 70.000 afbeeldingen in grijstinten. Elke afbeelding is een handgeschreven cijfer van 28 x 28 pixels, dat een getal tussen 0-9 vertegenwoordigt. Het doel is om een classificatiemechanisme met meerdere klassen te maken om het cijfer te identificeren dat een bepaalde afbeelding vertegenwoordigt.
+In deze zelf studie wordt een eenvoudige logistiek regressie getraind met behulp van de [MNIST](http://yann.lecun.com/exdb/mnist/) -gegevensset en [scikit-leer](https://scikit-learn.org) Azure machine learning. MNIST is een populaire gegevensset die bestaat uit 70.000 afbeeldingen in grijstinten. Elke afbeelding is een handgeschreven cijfer van 28 x 28 pixels, dat een getal tussen 0-9 vertegenwoordigt. Het doel is om een classificatiemechanisme met meerdere klassen te maken om het cijfer te identificeren dat een bepaalde afbeelding vertegenwoordigt.
 
 U leert hoe u de volgende acties uitvoert:
 
@@ -33,7 +33,7 @@ U leert hoe u de volgende acties uitvoert:
 
 In [deel twee van deze zelfstudie](tutorial-deploy-models-with-aml.md) leert u hoe u een model selecteert en dit implementeert.
 
-Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer nog vandaag de [gratis of betaalde versie van de Azure Machine Learning Service](https://aka.ms/AMLFree).
+Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 >[!NOTE]
 > De code in dit artikel is getest met [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -versie 1.0.57.
@@ -436,7 +436,7 @@ compute_target.delete()
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie over de Azure Machine Learning-service hebt u Python gebruikt voor de volgende taken:
+In deze Azure Machine Learning zelf studie hebt u python gebruikt voor de volgende taken:
 
 > [!div class="checklist"]
 > * De ontwikkelomgeving instellen.

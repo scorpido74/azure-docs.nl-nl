@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie: Uw eerste ML model trainen'
-titleSuffix: Azure Machine Learning service
-description: In deze zelf studie leert u de Foundational ontwerp patronen in Azure Machine Learning-service en traint u een eenvoudig scikit-leer model op basis van de diabetes-gegevensset.
+titleSuffix: Azure Machine Learning
+description: In deze zelf studie leert u de Foundational ontwerp patronen in Azure Machine Learning en traint u een eenvoudig scikit model op basis van de diabetes-gegevensset.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: 989775916454b6710aef6c2c5be6792920622dab
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b5d3a687adc8ecefcf581f7eda3b9e13d1973c62
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241298"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004027"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Zelfstudie: Uw eerste ML model trainen
 
-Deze zelfstudie is **deel twee van een tweedelige reeks**. In de vorige zelf studie hebt u [een werk ruimte gemaakt en een ontwikkel omgeving gekozen](tutorial-1st-experiment-sdk-setup.md). In deze zelf studie leert u de Foundational ontwerp patronen in Azure Machine Learning-service en traint u een eenvoudig scikit-leer model op basis van de diabetes-gegevensset. Na het volt ooien van deze zelf studie beschikt u over de praktische kennis van de SDK voor het uitbreiden van meer complexe experimenten en werk stromen.
+Deze zelfstudie is **deel twee van een tweedelige reeks**. In de vorige zelf studie hebt u [een werk ruimte gemaakt en een ontwikkel omgeving gekozen](tutorial-1st-experiment-sdk-setup.md). In deze zelf studie leert u de Foundational ontwerp patronen in Azure Machine Learning en traint u een eenvoudig scikit model op basis van de diabetes-gegevensset. Na het volt ooien van deze zelf studie beschikt u over de praktische kennis van de SDK voor het uitbreiden van meer complexe experimenten en werk stromen.
 
 In deze zelfstudie leert u het volgende:
 
@@ -197,7 +197,7 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Voltooi deze sectie niet als u van plan bent andere Azure Machine Learning service-zelf studies uit te voeren.
+Voltooi deze sectie niet als u van plan bent andere Azure Machine Learning zelf studies uit te voeren.
 
 ### <a name="stop-the-notebook-vm"></a>De VM van het notebook stoppen
 

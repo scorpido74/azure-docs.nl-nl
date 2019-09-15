@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: Azure ML-pijp lijnen voor batch Score'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Bouw een ML-pijp lijn voor het uitvoeren van batch scoreing op een afbeeldings classificatie model. Machine learning-pijp lijnen Optimaliseer uw werk stroom met snelheid, portabiliteit en hergebruik zodat u zich kunt concentreren op uw expertise, machine learning in plaats van op de infra structuur en automatisering.
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/05/2019
-ms.openlocfilehash: 039dbc435cbffed9fe2a9e9be0053d5eb663e9bb
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: aa280ea71735ce7c4000951e5c11de2913aaebe8
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997353"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001619"
 ---
 # <a name="use-azure-machine-learning-pipelines-for-batch-scoring"></a>Azure Machine Learning pijplijnen gebruiken voor batch scores
 
-In deze zelf studie gebruikt u Azure Machine Learning service pijplijnen voor het uitvoeren van een batch Score of een afleiding, taak. In deze voorbeeld taak wordt gebruikgemaakt van het vooraf getrainde aangemaakte [-v3](https://arxiv.org/abs/1512.00567) convolutional Neural Network tensor flow model voor het classificeren van niet-gelabelde installatie kopieën. Nadat u een pijp lijn hebt gemaakt en gepubliceerd, configureert u een REST-eind punt zodat u de pijp lijn kunt activeren vanuit elke HTTP-bibliotheek op elk platform.
+In deze zelf studie gebruikt u Azure Machine Learning pijp lijnen voor het uitvoeren van een batch Score of het aflaten van een taak. In deze voorbeeld taak wordt gebruikgemaakt van het vooraf getrainde aangemaakte [-v3](https://arxiv.org/abs/1512.00567) convolutional Neural Network tensor flow model voor het classificeren van niet-gelabelde installatie kopieën. Nadat u een pijp lijn hebt gemaakt en gepubliceerd, configureert u een REST-eind punt zodat u de pijp lijn kunt activeren vanuit elke HTTP-bibliotheek op elk platform.
 
 Machine learning-pijp lijnen Optimaliseer uw werk stroom met snelheid, portabiliteit en hergebruik zodat u zich kunt concentreren op uw expertise, machine learning in plaats van op de infra structuur en automatisering. Meer [informatie over ml-pijp lijnen](concept-ml-pipelines.md).
 
@@ -33,11 +33,11 @@ In deze zelf studie leert u de volgende taken:
 > * Een pijp lijn bouwen, uitvoeren en publiceren
 > * Een REST-eind punt inschakelen voor de pijp lijn
 
-Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer nog vandaag de [gratis of betaalde versie van de Azure Machine Learning Service](https://aka.ms/AMLFree).
+Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Voltooi [deel 1 van de installatie handleiding](tutorial-1st-experiment-sdk-setup.md) als u nog geen Azure machine learning service-werk ruimte of virtuele notebook-machine hebt.
+* Voltooi [deel 1 van de zelf studie voor Setup](tutorial-1st-experiment-sdk-setup.md) als u nog geen virtuele Machine voor Azure machine learning-werk ruimte of-notebook hebt.
 * Nadat u de installatie zelf studie hebt voltooid, opent u de notebook **zelf studies/tutorial-pipeline-batch-scoring-Classification. ipynb** met dezelfde notebook server.
 
 Deze zelf studie is ook beschikbaar op [github](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) als u deze wilt uitvoeren in uw eigen [lokale omgeving](how-to-configure-environment.md#local). Voer `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` uit om de vereiste pakketten op te halen.
@@ -512,7 +512,7 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Voltooi deze sectie niet als u van plan bent andere Azure Machine Learning service-zelf studies uit te voeren.
+Voltooi deze sectie niet als u van plan bent andere Azure Machine Learning zelf studies uit te voeren.
 
 ### <a name="stop-the-notebook-vm"></a>De VM van het notebook stoppen
 

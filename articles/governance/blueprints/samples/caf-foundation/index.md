@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: b78f81e16afbd044306c6697e0d8823bdd02b81a
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: aa25bbb54893fa84bb345a317850df4125faed25
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232874"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003298"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Overzicht van Microsoft Cloud Adoption Framework voor het Azure Foundation-blauwdrukvoorbeeld
 
@@ -27,7 +27,7 @@ Met het CAF Foundation-blauwdrukvoorbeeld worden aanbevolen infrastructuurresour
 
 Deze implementatie omvat verschillende Azure-services die worden gebruikt om een veilige, volledig bewaakte basis op bedrijfsniveau te bieden. De omgeving bestaat uit de volgende elementen:
 
-- Een [Azure Key Vault](../../../../key-vault/key-vault-whatis.md)-exemplaar om de geheimen te bewaren voor de virtuele machines die in de omgeving met gedeelde services worden geïmplementeerd
+- Een [Azure Key Vault](../../../../key-vault/key-vault-overview.md)-exemplaar om de geheimen te bewaren voor de virtuele machines die in de omgeving met gedeelde services worden geïmplementeerd
 - Implementeer [Log Analytics](../../../../azure-monitor/overview.md). Dit wordt geïmplementeerd om te garanderen dat er op een centrale locatie logboeken worden bijgehouden voor alle acties en services zodra u begint met de beveiligde implementatie in [Opslagaccounts](../../../../storage/common/storage-introduction.md) voor diagnostisch logboekregistratie
 - Implementeer [Azure Security Center](../../../../security-center/security-center-intro.md) (standaardversie). Dit biedt bedreigingsbeveiliging voor uw gemigreerde workloads
 - Met de blauwdruk wordt ook [Azure-beleid](../../../policy/overview.md) gedefinieerd en geïmplementeerd, voor 

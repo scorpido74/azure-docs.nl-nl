@@ -7,12 +7,12 @@ ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: bcdac2635c9d40bcd0f7605fad7479d5b8cdddba
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: c18e48d76381bf40e6177feb389a0197aace081d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70239215"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000856"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Quickstart: Met behulp van Azure PowerShell een beleidstoewijzing maken om niet-conforme resources te identificeren
 
@@ -59,7 +59,7 @@ In de voorgaande opdrachten wordt de volgende informatie gebruikt:
 - **Definitie**: de beleidsdefinitie, op basis waarvan u de toewijzing maakt. In dit geval is het de id van de beleidsdefinitie *Virtuele machines zonder beheerde schijven controleren*.
 - **Bereik**: een bereik bepaalt voor welke resources of groep resources de beleidstoewijzing wordt afgedwongen. Dit kan variëren van een abonnement tot resourcegroepen. Vergeet niet om &lt;scope&gt; te vervangen door de naam van uw resourcegroep.
 
-U bent er nu klaar voor om niet-compatibele resources te identificeren om inzicht te krijgen in de nalevingsstatus van uw omgeving.
+U bent nu klaar om niet-compatibele resources te identificeren om inzicht te krijgen in de nalevings status van uw omgeving.
 
 ## <a name="identify-non-compliant-resources"></a>Niet-compatibele resources identificeren
 

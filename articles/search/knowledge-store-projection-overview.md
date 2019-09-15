@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.subservice: cognitive-search
-ms.openlocfilehash: 2dd61a4511d406fefec5aacd0702fa732f79de92
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 85376bddbfbf8249438c9027eaf4dc63b83fe2fe
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186231"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004006"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>Werken met projecties in een Knowledge Store in Azure Search
 
@@ -34,7 +34,7 @@ Het kennis archief ondersteunt twee soorten projecties:
 
 + **Objecten**: Wanneer u een JSON-weer gave van uw gegevens en verrijkingen nodig hebt, worden object projecties opgeslagen als blobs.
 
-Als u de prognoses wilt weer geven die in de context zijn gedefinieerd, kunt u stapsgewijs bepalen [hoe u aan de slag gaat met kennis opslag](knowledge-store-howto.md)
+Als u de prognoses wilt weer geven die in de context zijn gedefinieerd, kunt u stapsgewijs aan de [slag met kennis opslag](knowledge-store-howto.md).
 
 ## <a name="projection-groups"></a>Projectie groepen
 
@@ -66,6 +66,9 @@ U kunt één document in uw index in meerdere tabellen projecteren, waarbij de r
 ### <a name="defining-a-table-projection"></a>Tabel projectie definiëren
 
 Wanneer u een tabel projectie in het `knowledgeStore` element van uw vaardig heden definieert, begint u met het toewijzen van een knoop punt op de verrijkings structuur met de tabel bron. Dit knoop punt is doorgaans de uitvoer van een **shaper** -vaardigheid die u hebt toegevoegd aan de lijst met vaardig heden voor het produceren van een specifieke vorm die u moet projecteren in tabellen. Het knoop punt dat u hebt gekozen voor project, kan worden gesegmenteerd tot project in meerdere tabellen. De definitie van tabellen is een lijst met tabellen die u wilt projecteren. 
+
+#### <a name="projection-slicing"></a>Projectie segmentering
+Bij het definiëren van een tabel projectie groep kan een enkel knoop punt in de verrijkings structuur worden gesegmenteerd in meerdere gerelateerde tabellen. Het toevoegen van een tabel met een bronpad dat een onderliggend element is van een bestaande tabel projectie resulteert in het onderliggende knoop punt dat wordt afgesneden van het bovenliggende knoop punt en wordt geprojecteerd in de nieuwe, nog gerelateerde tabel. Hierdoor kunt u één knoop punt in een shaper-vaardigheid definiëren die de bron voor al uw tabel projecties kan zijn.
 
 Voor elke tabel zijn drie eigenschappen vereist:
 
@@ -154,7 +157,7 @@ Voor het genereren van een object projectie zijn enkele object-specifieke kenmer
 
 + storageContainer: De container waar de objecten worden opgeslagen
 + Bron Het pad naar het knoop punt van de verrijkings structuur die de basis vormt van de projectie
-+ prestatie Een pad dat een unieke sleutel vertegenwoordigt voor het object dat moet worden opgeslagen. Het wordt gebruikt om de naam van de BLOB in de container te maken.
++ Prestatie Een pad dat een unieke sleutel vertegenwoordigt voor het object dat moet worden opgeslagen. Het wordt gebruikt om de naam van de BLOB in de container te maken.
 
 ## <a name="projection-lifecycle"></a>Projectie levenscyclus
 

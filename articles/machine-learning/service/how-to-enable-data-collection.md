@@ -1,6 +1,6 @@
 ---
 title: Gegevens verzamelen in uw productie modellen
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Meer informatie over het verzamelen van Azure Machine Learning invoermodel gegevens in een Azure Blob-opslag.
 services: machine-learning
 ms.service: machine-learning
@@ -11,16 +11,16 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 16fac492fe4c193ecd7ffa7eeff1e884acb742ae
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: d836b600a39b73f60c0847c5a9642f396fb70d17
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860516"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002865"
 ---
 # <a name="collect-data-for-models-in-production"></a>Verzamelen van gegevens voor modellen in productie
 
-In dit artikel leert u hoe u invoer om modelgegevens te verzamelen via de Azure Machine Learning-services die u hebt geïmplementeerd in Azure Kubernetes Cluster (AKS) in een Azure Blob-opslag. 
+In dit artikel leert u hoe u invoer model gegevens kunt verzamelen van Azure Machine Learning die u in azure Kubernetes-cluster (AKS) hebt geïmplementeerd in een Azure Blob-opslag. 
 
 Eenmaal is ingeschakeld, wordt deze gegevens die u verzamelt helpt u:
 * [Gegevens drift bewaken](how-to-monitor-data-drift.md) naarmate productie gegevens uw model binnenkomen
@@ -50,9 +50,9 @@ Het pad naar de uitvoergegevens in de blob met de volgende deze syntaxis:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer nog vandaag de [gratis of betaalde versie van de Azure Machine Learning Service](https://aka.ms/AMLFree).
+- Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
-- Een Azure Machine Learning-service-werkruimte en een lokale map met uw scripts en de Azure Machine Learning-SDK voor Python geïnstalleerd. Informatie over het verkrijgen van deze vereisten met behulp van de [het configureren van een ontwikkelomgeving](how-to-configure-environment.md) document.
+- Een Azure Machine Learning-werk ruimte, een lokale map met uw scripts en de Azure Machine Learning SDK voor python geïnstalleerd. Informatie over het verkrijgen van deze vereisten met behulp van de [het configureren van een ontwikkelomgeving](how-to-configure-environment.md) document.
 
 - Een getraind model voor machine learning om te worden geïmplementeerd naar Azure Kubernetes Service (AKS). Als u niet hebt, raadpleegt u de [classificeringsmodel voor de installatiekopie van de trein](tutorial-train-models-with-aml.md) zelfstudie.
 
@@ -61,7 +61,7 @@ Het pad naar de uitvoergegevens in de blob met de volgende deze syntaxis:
 - [Instellen van uw omgeving](how-to-configure-environment.md) en installeer de [Monitoring SDK](https://aka.ms/aml-monitoring-sdk).
 
 ## <a name="enable-data-collection"></a>Gegevensverzameling inschakelen
-Het verzamelen van gegevens kan worden ingeschakeld, ongeacht het model wordt geïmplementeerd via Azure Machine Learning-Service of andere hulpprogramma's. 
+Het verzamelen van gegevens kan worden ingeschakeld, ongeacht het model dat wordt geïmplementeerd via Azure Machine Learning of andere hulpprogram ma's. 
 
 Als u wilt inschakelen, moet u naar:
 

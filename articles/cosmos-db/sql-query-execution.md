@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: 0eca458c344e5c44ad62121db14e6b286dc19a86
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c42732df1bcfa8649c89899febc364bb1f5f9b5a
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614436"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999918"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Uitvoering van SQL-query Azure Cosmos DB
 
@@ -245,7 +245,7 @@ De .net-client doorloopt automatisch alle pagina's met query resultaten in de `f
 
 U kunt paginering ook expliciet beheren door het `IDocumentQueryable` `IQueryable` object te maken, en vervolgens de `ResponseContinuationToken` waarden te lezen en ze terug te `RequestContinuationToken` geven `FeedOptions`als in. U kunt instellen `EnableScanInQuery` om scans in te scha kelen wanneer de query niet wordt ondersteund door het geconfigureerde indexerings beleid. Voor gepartitioneerde containers kunt u gebruiken `PartitionKey` om de query uit te voeren op één partitie, hoewel Azure Cosmos DB deze automatisch kan ophalen uit de query tekst. U kunt gebruiken `EnableCrossPartitionQuery` om query's uit te voeren op meerdere partities.
 
-Zie voor meer .NET-voor beelden met query's de [Azure Cosmos db .net](https://github.com/Azure/azure-cosmosdb-dotnet) -voor beelden in github.
+Zie voor meer .NET-voor beelden met query's de [Azure Cosmos db .net](https://github.com/Azure/azure-cosmos-dotnet-v3) -voor beelden in github.
 
 ## <a id="JavaScript-server-side-API"></a>JavaScript-API op de server
 
@@ -288,5 +288,5 @@ In het volgende voor beeld ziet u `queryDocuments` hoe u in de Java script-Serve
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Inleiding tot Azure Cosmos DB](introduction.md)
-- [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Consistentie niveaus Azure Cosmos DB](consistency-levels.md)

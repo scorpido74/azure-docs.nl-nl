@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: ca2f346950d84fda736437f439efc5d35e342799
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5329323122d8470b19055040b6f00b6db7c0e75f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934578"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998949"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Overzicht van Azure Service Fabric-beveiliging
 [Azure service Fabric](../../service-fabric/service-fabric-overview.md) is een platform voor gedistribueerde systemen waarmee schaal bare en betrouw bare micro services eenvoudig kunnen worden verpakt, geïmplementeerd en beheerd. Service Fabric verhelpt de uitdagingen bij het ontwikkelen en beheren van Cloud toepassingen. Ontwikkel aars en beheerders kunnen complexe infrastructuur problemen voor komen en zich richten op het implementeren van essentiële, veeleisende workloads die schaalbaar en betrouwbaar zijn.
@@ -132,7 +132,7 @@ U kunt de beveiliging van client naar knoop punt configureren met behulp van Cli
 ### <a name="manage-secrets-in-service-fabric-applications"></a>Geheimen in Service Fabric toepassingen beheren
 Geheimen kunnen gevoelige informatie zijn, zoals verbindings reeksen voor opslag, wacht woorden of andere waarden die niet in tekst zonder opmaak moeten worden verwerkt.
 
-U kunt [Azure Key Vault](../../key-vault/key-vault-whatis.md) gebruiken om sleutels en geheimen te beheren. Het gebruik van geheimen in een toepassing is echter niet afhankelijk van een specifiek Cloud platform. U kunt toepassingen implementeren in een cluster dat overal wordt gehost. Er zijn vier belang rijke stappen in deze stroom:
+U kunt [Azure Key Vault](../../key-vault/key-vault-overview.md) gebruiken om sleutels en geheimen te beheren. Het gebruik van geheimen in een toepassing is echter niet afhankelijk van een specifiek Cloud platform. U kunt toepassingen implementeren in een cluster dat overal wordt gehost. Er zijn vier belang rijke stappen in deze stroom:
 
 1.  Een certificaat voor gegevens versleuteling ophalen.
 2.  Installeer het certificaat op uw cluster.
@@ -156,5 +156,5 @@ Taken voor het configureren van beveiligings beleid zijn onder andere:
 Beveiliging is een van de belangrijkste aspecten van de communicatie. Het Reliable Services-toepassings raamwerk bevat enkele vooraf ontwikkelde communicatie stacks en hulpprogram ma's die u kunt gebruiken om de beveiliging te verbeteren. Zie voor meer informatie [Secure service externe communicatie voor een service](../../service-fabric/service-fabric-reliable-services-secure-communication.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie [een service Fabric cluster maken](../../service-fabric/service-fabric-cluster-creation-via-arm.md) met behulp van Azure Resource Manager en [een service Fabric cluster maken met behulp van de Azure Portal](../../service-fabric/service-fabric-cluster-creation-via-portal.md)voor conceptuele informatie over de beveiliging van een cluster.
+- Zie [een service Fabric cluster maken met behulp van Azure Resource Manager](../../service-fabric/service-fabric-cluster-creation-via-arm.md) en [een service Fabric cluster maken met behulp van de Azure Portal](../../service-fabric/service-fabric-cluster-creation-via-portal.md)voor conceptuele informatie over de beveiliging van een cluster.
 - Zie [service Fabric cluster beveiligings scenario's](../../service-fabric/service-fabric-cluster-security.md)voor meer informatie over de beveiliging van een cluster in service Fabric.

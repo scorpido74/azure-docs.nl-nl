@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: e6f6ba131a4fb5dd31f113afd2b6de2d65aeaea0
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 828ec2b925535df3f925093466556447e703cd76
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915169"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003817"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Topologieën ontwikkelen C# voor Apache Storm met behulp van de data Lake-hulpprogram Ma's voor Visual Studio
 
@@ -135,7 +135,7 @@ Zie [github](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventh
 
 2. Vouw in het venster **Nieuw project** de optie **geïnstalleerde** > **sjablonen**uit en selecteer **Azure data Lake**. Selecteer in de lijst met sjablonen **Storm-toepassing**. Voer onder aan het scherm **WordCount** in als de naam van de toepassing.
 
-    ![Scherm afbeelding van het nieuwe project venster](./media/apache-storm-develop-csharp-visual-studio-topology/new-project.png)
+    ![Scherm afbeelding van het nieuwe project venster](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
 
 3. Nadat u het project hebt gemaakt, hebt u de volgende bestanden nodig:
 
@@ -338,7 +338,7 @@ Zie [github](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventh
 
 Spouts en schichten worden gerangschikt in een grafiek, waarmee wordt gedefinieerd hoe de gegevens stromen tussen onderdelen. Voor deze topologie is de grafiek als volgt:
 
-![Diagram van de rang schikking van onderdelen](./media/apache-storm-develop-csharp-visual-studio-topology/wordcount-topology.png)
+![Diagram van de rang schikking van onderdelen](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
 
 Zinnen worden verzonden vanaf de Spout en worden gedistribueerd naar instanties van de Splits schicht. De Splits Schicht breekt de zinnen op in woorden, die worden gedistribueerd naar de Counter-bout.
 
@@ -461,7 +461,6 @@ Voor een voor beeld van een hybride topologie maakt u een project en selecteert 
   > [!NOTE]  
   > In deze versie wordt ook gedemonstreerd hoe u clojure code uit een tekst bestand kunt gebruiken als Java-onderdeel.
 
-
 Als u wilt overschakelen naar de topologie die wordt gebruikt wanneer het project wordt verzonden `[Active(true)]` , moet u de instructie verplaatsen naar de topologie die u wilt gebruiken, voordat u deze naar het cluster verzendt.
 
 > [!NOTE]  
@@ -571,15 +570,15 @@ Hoewel het eenvoudig is om een topologie te implementeren in een cluster, moet u
    > [!NOTE]
    > Vergeet niet om het **uitvoer type** terug te wijzigen in **Class Library** voordat u de topologie op een cluster implementeert.
 
-2. Klik in **Solution Explorer**met de rechter muisknop op het project en selecteer vervolgens**Nieuw item** **toevoegen** > . Selecteer **klasse**en voer **LocalTest.cs** in als de naam van de klasse. Klik ten slotte op **toevoegen**.
+1. Klik in **Solution Explorer**met de rechter muisknop op het project en selecteer vervolgens**Nieuw item** **toevoegen** > . Selecteer **klasse**en voer **LocalTest.cs** in als de naam van de klasse. Klik ten slotte op **toevoegen**.
 
-3. Open **LocalTest.cs**en voeg het volgende toe **met behulp** van de instructie bovenaan:
+1. Open **LocalTest.cs**en voeg het volgende toe **met behulp** van de instructie bovenaan:
 
     ```csharp
     using Microsoft.SCP;
     ```
 
-4. Gebruik de volgende code als de inhoud van de klasse **LocalTest** :
+1. Gebruik de volgende code als de inhoud van de klasse **LocalTest** :
 
     ```csharp
     // Drives the topology components
@@ -681,9 +680,9 @@ Hoewel het eenvoudig is om een topologie te implementeren in een cluster, moet u
     Console.ReadKey();
     ```
 
-2. Sla de wijzigingen op en klik vervolgens op **F5** of **Selecteer** > fout**opsporing starten** om het project te starten. Er moet een console venster worden weer gegeven en de status van het logboek registreren als de tests worden uitgevoerd. Wanneer de **tests zijn voltooid** , drukt u op een wille keurige toets om het venster te sluiten.
+1. Sla de wijzigingen op en klik vervolgens op **F5** of **Selecteer** > fout**opsporing starten** om het project te starten. Er moet een console venster worden weer gegeven en de status van het logboek registreren als de tests worden uitgevoerd. Wanneer de **tests zijn voltooid** , drukt u op een wille keurige toets om het venster te sluiten.
 
-3. Gebruik **Windows Verkenner** om de map te zoeken die het project bevat. Bijvoorbeeld: **C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**. Open **bin**deze map en klik vervolgens op **fouten opsporen**. U moet de tekst bestanden zien die zijn gemaakt toen de tests werden uitgevoerd: zinnen. txt, Counter. txt en splitter. txt. Open elk tekst bestand en controleer de gegevens.
+1. Gebruik **Windows Verkenner** om de map te zoeken die het project bevat. Bijvoorbeeld: **C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**. Open **bin**deze map en klik vervolgens op **fouten opsporen**. U moet de tekst bestanden zien die zijn gemaakt toen de tests werden uitgevoerd: zinnen. txt, Counter. txt en splitter. txt. Open elk tekst bestand en controleer de gegevens.
 
    > [!NOTE]  
    > Teken reeks gegevens blijven bestaan als een matrix met decimale waarden in deze bestanden. Bijvoorbeeld: \[[97.103.111]] in het bestand **Splitt. txt** is het woord *en*.

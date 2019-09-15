@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 9a6b3a538304f2d09941650e3087130c21422dc0
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6a43b721b70858d82083538638853c5bbdf1531d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946349"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004131"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Communiceren met uw IoT-hub met behulp van het MQTT-Protocol
 
@@ -48,7 +48,7 @@ De volgende tabel bevat koppelingen naar code voorbeelden voor elke ondersteunde
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol.MQTT |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) |MQTT_Protocol |
 | [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType.Mqtt |
-| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/device/samples) |IoTHubTransportProvider.MQTT |
+| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) |MQTT standaard altijd ondersteunt |
 
 ### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Een apparaat-app migreren van AMQP naar MQTT
 
@@ -58,7 +58,9 @@ Zorg er daarom voor dat u de volgende items controleert:
 
 * AMQP retourneert fouten voor veel omstandigheden, terwijl MQTT de verbinding beëindigt. Als gevolg hiervan kan de logica voor het afhandelen van uitzonde ringen enkele wijzigingen vereisen.
 
-* MQTT biedt geen ondersteuning voor de afwijzings bewerkingen wanneer er [Cloud-naar-apparaat-berichten worden](iot-hub-devguide-messaging.md)ontvangen. Als uw back-end-app een reactie van de apparaat-app moet ontvangen, overweeg dan om [directe methoden](iot-hub-devguide-direct-methods.md)te gebruiken.
+* MQTT biedt geen ondersteuning voor de *afwijzings* bewerkingen wanneer er [Cloud-naar-apparaat-berichten worden](iot-hub-devguide-messaging.md)ontvangen. Als uw back-end-app een reactie van de apparaat-app moet ontvangen, overweeg dan om [directe methoden](iot-hub-devguide-direct-methods.md)te gebruiken.
+
+* AMQP wordt niet ondersteund in de python-SDK
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>Het MQTT-protocol direct gebruiken (als een apparaat)
 
@@ -113,7 +115,7 @@ Als een apparaat de Sdk's van het apparaat niet kan gebruiken, kan het nog steed
 
 Voor MQTT Connect-en Disconnect-pakketten IoT Hub een gebeurtenis op het kanaal van de **Operations-bewaking** . Deze gebeurtenis bevat aanvullende informatie die u kan helpen bij het oplossen van verbindings problemen.
 
-De apparaat-app kan een bericht in het **Connect** -pakket opgeven. De app van het apparaat `devices/{device_id}/messages/events/` moet `devices/{device_id}/messages/events/{property_bag}` de naam van het onderwerp gebruiken om te definiëren dat berichten worden doorgestuurd als een telemetrie-bericht. Als de netwerk verbinding is gesloten, maar er nog geen verbrekings pakket van het apparaat is ontvangen, stuurt IoT Hub het bericht dat in het **Connect** -pakket is opgegeven, naar het telemetrie-kanaal. Het telemetrie-kanaal kan het eind punt van de standaard **gebeurtenissen** zijn of een aangepast eind punt dat is gedefinieerd door IOT hub route ring. Aan het bericht is de eigenschap **iothub-Message type** met de waarde van toegewezen.
+De apparaat-app **kan een bericht** in het **Connect** -pakket opgeven. De app van het apparaat `devices/{device_id}/messages/events/` moet `devices/{device_id}/messages/events/{property_bag}` **de naam van het onderwerp gebruiken** om **te definiëren dat berichten worden doorgestuurd** als een telemetrie-bericht. Als de netwerk verbinding is gesloten, maar er nog geen **Verbrekings** pakket van het apparaat is ontvangen, stuurt IOT hub **het bericht dat** in het **Connect** -pakket is opgegeven, naar het telemetrie-kanaal. Het telemetrie-kanaal kan het eind punt van de standaard **gebeurtenissen** zijn of een aangepast eind punt dat is gedefinieerd door IOT hub route ring. Aan het bericht is de eigenschap **iothub-Message type** met de waarde **van toegewezen** .
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>Het MQTT-protocol direct gebruiken (als een module)
 

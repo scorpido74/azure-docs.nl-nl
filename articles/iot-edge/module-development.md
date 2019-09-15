@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 923859fdb0b398d04e710810a96c33fb1c3cd9da
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9d983dc4a2623e7f2a272ea2a320d2658d784dee
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698570"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003590"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Uw eigen IoT Edge-modules ontwikkelen
 
@@ -60,7 +60,7 @@ Verbinding maken met de lokale IoT Edge hub vanuit een module bestaat uit twee s
 1. Maak een ModuleClient-exemplaar in uw toepassing.
 2. Zorg ervoor dat uw toepassing accepteert het certificaat dat door de IoT Edge hub op het apparaat.
 
-Maak een ModuleClient-exemplaar om uw module te koppelen aan de IoT Edge hub die op het apparaat wordt uitgevoerd, vergelijkbaar met de manier waarop DeviceClient-instanties IoT-apparaten verbinden met IoT Hub. Zie de API-verwijzing voor uw voorkeurs taal van de SDK voor meer informatie over de ModuleClient-klasse en de communicatie methoden: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C en python](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)of [node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
+Maak een ModuleClient-exemplaar om uw module te koppelen aan de IoT Edge hub die op het apparaat wordt uitgevoerd, vergelijkbaar met de manier waarop DeviceClient-instanties IoT-apparaten verbinden met IoT Hub. Zie de API-verwijzing voor uw voorkeurs taal van de SDK voor meer informatie over de ModuleClient-klasse en de communicatie methoden: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)of [node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
 ## <a name="language-and-architecture-support"></a>Ondersteuning voor taal en architectuur
 
@@ -70,7 +70,7 @@ IoT Edge ondersteunt meerdere besturings systemen, architecturen en ontwikkeling
 
 IoT Edge ondersteunt de ontwikkeling voor AMD64-en ARM32 Linux-apparaten voor alle talen in de volgende tabel. 
 
-| Ontwikkel taal | Ontwikkelprogramma's |
+| Ontwikkeltaal | Ontwikkelprogramma's |
 | -------------------- | ----------------- |
 | C | Visual Studio Code<br>Visual Studio 2017/2019 |
 | C# | Visual Studio Code<br>Visual Studio 2017/2019 |
@@ -85,7 +85,7 @@ IoT Edge ondersteunt de ontwikkeling voor AMD64-en ARM32 Linux-apparaten voor al
 
 IoT Edge ondersteunt de ontwikkeling van AMD64 Windows-apparaten voor alle talen in de volgende tabel.
 
-| Ontwikkel taal | Ontwikkelprogramma's |
+| Ontwikkeltaal | Ontwikkelprogramma's |
 | -------------------- | ----------------- |
 | C | Visual Studio 2017/2019 |
 | C# | Visual Studio code (geen mogelijkheden voor fout opsporing)<br>Visual Studio 2017/2019 |

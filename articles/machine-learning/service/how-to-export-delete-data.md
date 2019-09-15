@@ -1,7 +1,7 @@
 ---
 title: Exporteren of verwijderen van gegevens in de werkruimte
-titleSuffix: Azure Machine Learning service
-description: Informatie over het exporteren of verwijderen van uw werkruimte met de Azure portal, CLI, SDK en geverifieerde REST-API's.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over hoe u uw werk ruimte exporteert of verwijdert met de Azure Portal, CLI, SDK en geverifieerde REST-Api's.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: ph-com
 ms.author: pahusban
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3b55282adf56bedb0724eca578b8eaea00c26074
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18e2ab18dac214e73eaf6ad7dfcb9dbbab0b5cf5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023979"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002840"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exporteren of uw gegevens in de werkruimte voor Machine Learning-service verwijderen 
 
@@ -27,9 +27,9 @@ U kunt in Azure Machine Learning, exporteren of verwijderen van uw gegevens in d
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="control-your-workspace-data"></a>Uw gegevens in de werkruimte beheren
-In het product gegevens die zijn opgeslagen door Azure Machine Learning Services is beschikbaar voor exporteren en verwijderen via de Azure portal, CLI, SDK, en geverifieerde REST-API's. Telemetriegegevens zijn toegankelijk via de Privacy van de Azure-portal. 
+In-product gegevens die zijn opgeslagen door Azure Machine Learning, kunnen worden geëxporteerd en verwijderd via de Azure Portal, CLI, SDK en geverifieerde REST-Api's. Telemetriegegevens zijn toegankelijk via de Privacy van de Azure-portal. 
 
-In Azure Machine Learning-Services bestaat persoonlijke gegevens uit gegevens van de gebruiker in de uitvoeringsgeschiedenis documenten en telemetrie-records van de interactie van sommige gebruikers met de service.
+In Azure Machine Learning bestaan persoonlijke gegevens uit gebruikers gegevens in uitvoerings geschiedenis documenten en telemetrie-records van sommige gebruikers interacties met de service.
 
 ## <a name="delete-workspace-data-with-the-rest-api"></a>Verwijderen van gegevens in de werkruimte met de REST-API 
 
@@ -232,28 +232,28 @@ Gegevensbronnen kunnen worden verkregen door:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
 
-## <a name="delete-visual-interface-assets"></a>Visuele interface assets verwijderen
+## <a name="delete-visual-interface-assets"></a>Elementen van de Visual-Interface verwijderen
 
-In de visuele interface waar u uw experiment hebt gemaakt, kunt u afzonderlijke assets verwijderen:
+Verwijder afzonderlijke assets in de visuele interface waar u uw experiment hebt gemaakt:
 
-1. Aan de linkerkant, selecteer het type van de asset die u wilt verwijderen.
+1. Selecteer aan de linkerkant het type activum dat u wilt verwijderen.
 
     ![Assets verwijderen](media/how-to-export-delete-data.md/delete-experiment.png)
 
-1. In de lijst, selecteert u de afzonderlijke elementen te verwijderen.
+1. Selecteer in de lijst de afzonderlijke activa die u wilt verwijderen.
 
-1. Selecteer op de onderste **verwijderen**.
+1. Selecteer aan de onderkant **verwijderen**.
 
-## <a name="export-visual-interface-data"></a>Visuele interface gegevens exporteren
+## <a name="export-visual-interface-data"></a>Gegevens van de visuele interface exporteren
 
-In de visuele interface waar u uw experiment hebt gemaakt, exporteert u gegevens die u hebt toegevoegd:
+In de visuele interface waar u uw experiment hebt gemaakt, exporteert u de gegevens die u hebt toegevoegd:
 
 1. Selecteer aan de linkerkant **gegevens**.
 
-1. Selecteer op de bovenkant **mijn gegevenssets** of **voorbeelden** te vinden van de gegevens die u wilt exporteren.
+1. Selecteer bovenaan **mijn gegevens sets** of voor **beelden** om de gegevens te vinden die u wilt exporteren.
 
     ![Gegevens downloaden](media/how-to-export-delete-data.md/download-data.png)
 
-1. In de lijst, selecteert u de afzonderlijke gegevenssets te exporteren.
+1. Selecteer in de lijst de afzonderlijke gegevens sets die u wilt exporteren.
 
-1. Selecteer op de onderste **downloaden**.
+1. Selecteer onderaan **downloaden**.

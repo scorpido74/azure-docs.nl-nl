@@ -1,21 +1,21 @@
 ---
 title: SELECT-component in Azure Cosmos DB
-description: Meer informatie over SQL SELECT-component voor Azure Cosmos DB. Gebruik SQL als een Azure Cosmos DB-JSON-querytaal.
+description: Meer informatie over de SQL SELECT-component voor Azure Cosmos DB. Gebruik SQL als Azure Cosmos DB JSON-query taal.
 author: ginarobinson
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: 84d0212f7f212b4554b506726e027fe51f795eea
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: d34b1c39d9789409dc365cd4cf07fdc3d5a780fd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342860"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003528"
 ---
 # <a name="select-clause"></a>SELECT-component
 
-Elke query bestaat uit een SELECT-component en optionele [FROM](sql-query-from.md) en [waar](sql-query-where.md) van de EU, per ANSI SQL-standaarden. Normaal gesproken de bron in de component FROM is geïnventariseerd, en de component WHERE wordt een filter toegepast op de bron om op te halen van een subset van JSON-items. De component SELECT projecten vervolgens de vereiste JSON-waarden in de selectielijst.
+Elke query bestaat uit een SELECT-component en optionele [from](sql-query-from.md) -en [where](sql-query-where.md) -componenten, per ANSI SQL-standaards. Normaal gesp roken wordt de bron in de component FROM genummerd en de WHERE-component past een filter op de bron toe om een subset van JSON-items op te halen. De SELECT-component vervolgens projecteert de aangevraagde JSON-waarden in de selectie lijst.
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -52,7 +52,7 @@ SELECT <select_specification>
  
 - `DISTINCT`
   
-  Hiermee geeft u op dat de kopieën van de verwachte eigenschappen moeten worden verwijderd.  
+  Hiermee geeft u op dat dubbele waarden van geprojecteerde eigenschappen moeten worden verwijderd.  
 
 - `<scalar_expression>`  
 
@@ -78,7 +78,7 @@ Beide `SELECT <select_list>` en `SELECT *` 'syntactische suiker' zijn en kan ook
   
 ## <a name="examples"></a>Voorbeelden
 
-De volgende Selecteer voorbeeld retourneert query `address` van `Families` waarvan `id` komt overeen met `AndersenFamily`:
+In het volgende voor beeld van `address` een select- `AndersenFamily`query wordt een resultaat van `Families` de overeenkomstgeretourneerd:`id`
 
 ```sql
     SELECT f.address
@@ -98,8 +98,8 @@ De resultaten zijn:
     }]
 ```
 
-### <a name="quoted-property-accessor"></a>Tussen aanhalingstekens eigenschapsaccessor
-U kunt toegang tot eigenschappen met behulp van de eigenschap tussen aanhalingstekens operator []. Zo is `SELECT c.grade` bijvoorbeeld het equivalent van `SELECT c["grade"]`. Deze syntaxis is handig als u een eigenschap die spaties, speciale tekens bevat of heeft dezelfde naam als een SQL-trefwoord of gereserveerd woord.
+### <a name="quoted-property-accessor"></a>Accessor van de geciteerde eigenschap
+U kunt eigenschappen openen met de operator voor de geciteerde eigenschap []. Zo is `SELECT c.grade` bijvoorbeeld het equivalent van `SELECT c["grade"]`. Deze syntaxis is handig als u een eigenschap wilt escapepen die spaties, speciale tekens bevat of dezelfde naam heeft als een SQL-tref woord of gereserveerd woord.
 
 ```sql
     SELECT f["lastName"]
@@ -109,7 +109,7 @@ U kunt toegang tot eigenschappen met behulp van de eigenschap tussen aanhalingst
 
 ### <a name="nested-properties"></a>Geneste eigenschappen
 
-Het volgende voorbeeld projecten twee eigenschappen van geneste `f.address.state` en `f.address.city`.
+In het volgende voor beeld worden twee geneste eigenschappen geprojecteerd, `f.address.state` en. `f.address.city`
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -127,7 +127,7 @@ De resultaten zijn:
 ```
 ### <a name="json-expressions"></a>JSON-expressies
 
-Projectie biedt ook ondersteuning voor JSON-expressies, zoals wordt weergegeven in het volgende voorbeeld:
+Projectie biedt ook ondersteuning voor JSON-expressies, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city, "name": f.id }
@@ -147,7 +147,7 @@ De resultaten zijn:
     }]
 ```
 
-In het voorgaande voorbeeld de component SELECT moet maken van een JSON-object en omdat het voorbeeld geen sleutel bevat, de naam van de impliciete argument variabele maakt gebruik van de component `$1`. De volgende query retourneert twee argumentvariabelen die impliciete: `$1` en `$2`.
+In het voor gaande voor beeld moet de SELECT-component een JSON-object maken en aangezien het voor beeld geen sleutel bevat, gebruikt de component de impliciete `$1`argument naam van de variabele. Met de volgende query worden twee impliciete argument `$1` variabelen `$2`geretourneerd: en.
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -173,5 +173,5 @@ De resultaten zijn:
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Aan de slag](sql-query-getting-started.md)
-- [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [WHERE-component](sql-query-where.md)

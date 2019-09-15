@@ -10,14 +10,15 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 12ccff3676cb35ac27126360dbcf5a1b9b3e131f
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 3474d30d051e88d0e9150ea649958caa460932c7
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65914149"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001298"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Een gesimuleerd X.509-apparaat met de SDK voor Python maken en inrichten voor IoT Hub Device Provisioning Service
+
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 In deze stappen wordt getoond hoe u een gesimuleerd X.509-apparaat maakt op een ontwikkelcomputer met Windows OS en het Python-codevoorbeeld gebruikt om dit gesimuleerde apparaat te verbinden met de Device Provisioning Service en uw IoT-hub. 
@@ -32,9 +33,12 @@ In dit artikel worden afzonderlijke registraties gedemonstreerd.
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
+> [!NOTE]
+> Deze hand leiding is alleen van toepassing op de nu afgeschafte v1 python SDK. Gesimuleerde X. 509-apparaten zijn nog niet ondersteund in v2. Het team is momenteel in staat om v2 te gebruiken voor de functie pariteit.
+
 ## <a name="prepare-the-environment"></a>De omgeving voorbereiden 
 
-1. Zorg ervoor dat u hebt geïnstalleerd een [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 of hoger, met de ' bureaubladontwikkeling met C++' werkbelasting ingeschakeld voor uw installatie van Visual Studio.
+1. Zorg ervoor dat u [Visual studio](https://visualstudio.microsoft.com/vs/) 2015 of hoger hebt geïnstalleerd met de optie ' Desktop Development with C++' voor de installatie van Visual Studio.
 
 2. Download en installeer het [CMake-bouwsysteem](https://cmake.org/download/).
 

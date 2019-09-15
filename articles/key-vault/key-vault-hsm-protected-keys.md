@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3cd8cd0b72f1b3ccea557ce0e12394081329dc5b
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 71b7e4bd9406e7fb300ebccd86908820b7628c29
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883296"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000764"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Met HSM beveiligde sleutels genereren en overdragen voor Azure Key Vault
 
@@ -27,7 +27,7 @@ Gebruik de informatie in dit onderwerp om u te helpen bij het plannen, genereren
 Deze functionaliteit is niet beschikbaar voor Azure China.
 
 > [!NOTE]
-> Zie [Wat is Azure Key Vault?](key-vault-whatis.md) voor meer informatie over Azure Key Vault.  
+> Zie [Wat is Azure Key Vault?](key-vault-overview.md) voor meer informatie over Azure Key Vault.  
 > Zie [Wat is Azure Key Vault?](key-vault-overview.md)voor een zelf studie waarmee u aan de slag kunt gaan met het maken van een sleutel kluis voor met HSM beschermde sleutels.
 
 Meer informatie over het genereren en overdragen van een met HSM beschermde sleutel via internet:

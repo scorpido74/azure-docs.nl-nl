@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8ea7fc5a318775b05c03166df3d9b457ec004273
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 4bbe9d9bfaf49fe93631787b347a3446e4b0f817
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773115"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000583"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Over sleutels, geheimen en certificaten
 
@@ -25,7 +25,7 @@ Met Azure Key Vault kunnen Microsoft Azure toepassingen en gebruikers verschille
 - Bewijzen Biedt ondersteuning voor certificaten die zijn gebouwd op basis van sleutels en geheimen, en het toevoegen van een functie voor automatische verlenging.
 - Azure Storage: Kan sleutels van een Azure Storage account voor u beheren. Intern kunnen Key Vault met een Azure Storage-account (Sync) sleutels weer geven en de sleutels periodiek opnieuw genereren (draaien). 
 
-Zie [Wat is Azure Key Vault?](/azure/key-vault/key-vault-whatis) voor meer algemene informatie over Key Vault.
+Zie [Wat is Azure Key Vault?](/azure/key-vault/key-vault-overview) voor meer algemene informatie over Key Vault.
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
 

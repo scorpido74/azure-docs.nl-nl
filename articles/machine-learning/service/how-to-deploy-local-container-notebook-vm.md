@@ -1,7 +1,7 @@
 ---
 title: Modellen implementeren op laptop-Vm's
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het implementeren van uw Azure Machine Learning-service modellen als een webservice met behulp van een notebook-Vm's.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het implementeren van uw Azure Machine Learning-modellen als een webservice met behulp van een notebook-Vm's.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,26 +10,26 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 08/08/2019
-ms.openlocfilehash: d6b26dfe1eb8ea65dd7c751a148c599123b0f6db
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 046f998038c47a48a8528bf36d87ac836395eec2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947758"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002826"
 ---
 # <a name="deploy-a-model-to-notebook-vms"></a>Een model implementeren op laptop-Vm's
 
-Informatie over het gebruik van de Azure Machine Learning-service voor het implementeren van een model als een webservice op uw notebook-VM. Gebruik laptop-Vm's als aan een van de volgende voor waarden wordt voldaan:
+Meer informatie over het gebruik van Azure Machine Learning voor het implementeren van een model als een webservice op uw notebook-VM. Gebruik laptop-Vm's als aan een van de volgende voor waarden wordt voldaan:
 
 - U moet sneller te implementeren en valideren van uw model.
 - U test een model dat is in ontwikkeling.
 
 > [!TIP]
-> Het implementeren van een model van een Jupyter Notebook op een notebook-VM is een _lokale implementatie_op een webservice op dezelfde VM. In dit geval is de ' lokale ' computer de VM van de notebook. Zie [modellen implementeren met Azure machine learning service](how-to-deploy-and-where.md)voor meer informatie over implementaties.
+> Het implementeren van een model van een Jupyter Notebook op een notebook-VM is een _lokale implementatie_op een webservice op dezelfde VM. In dit geval is de ' lokale ' computer de VM van de notebook. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over implementaties.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure Machine Learning Services-werk ruimte met een notebook-VM die wordt uitgevoerd. Zie [Setup Environment and Workspace](tutorial-1st-experiment-sdk-setup.md)(Engelstalig) voor meer informatie.
+- Een Azure Machine Learning-werk ruimte met een notebook-VM die wordt uitgevoerd. Zie [Setup Environment and Workspace](tutorial-1st-experiment-sdk-setup.md)(Engelstalig) voor meer informatie.
 
 ## <a name="deploy-to-the-notebook-vms"></a>Implementeren op de laptop-Vm's
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: f57d054134b9f2c8b327fe157e7a5b5e3d5ff183
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: b8e830cb187b375e17b3dc33c582126adfa32f3e
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813921"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002499"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>HDInsight Spark-cluster gebruiken voor het analyseren van gegevens in Data Lake Storage Gen1
 
@@ -25,7 +25,6 @@ In dit artikel gebruikt u [Jupyter notebook](https://jupyter.org/) die beschikba
 
 * Azure HDInsight Spark cluster met Data Lake Storage Gen1 als opslag. Volg de instructies in [Quick Start: clusters instellen in HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-    
 ## <a name="prepare-the-data"></a>De gegevens voorbereiden
 
 > [!NOTE]  
@@ -57,7 +56,7 @@ Als u een HDInsight-cluster hebt gemaakt met Data Lake Storage als extra opslag 
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>Een HDInsight Spark-cluster gebruiken met Data Lake Storage Gen1
 
-1. Klik vanuit de [Azure-Portal](https://portal.azure.com/), in de start Board, op de tegel voor uw Apache Spark-cluster (als u deze hebt vastgemaakt aan de start Board). U kunt ook naar uw cluster navigeren onder **Bladeren** > **HDInsight-clusters**.
+1. Klik vanuit het [Azure Portal](https://portal.azure.com/), in het start Board, op de tegel voor uw Apache Spark cluster (als u het hebt vastgemaakt aan de start Board). U kunt ook naar uw cluster navigeren onder **Bladeren** > **HDInsight-clusters**.
 
 2. Klik vanuit de blade Spark-cluster op **Snelkoppelingen**. Klik vervolgens vanuit het **Cluster-dashboard** op **Jupyter Notebook**. Voer de beheerdersreferenties voor het cluster in als u daarom wordt gevraagd.
 
@@ -120,7 +119,7 @@ Als u een HDInsight-cluster hebt gemaakt met Data Lake Storage als extra opslag 
 
      U kunt de resultaten ook in andere visualisaties bekijken. Zo ziet een gebiedsgrafiek voor dezelfde uitvoer er als volgt uit.
 
-     ![Gebiedsgrafiek van het queryresultaat](./media/apache-spark-use-with-data-lake-store/jupyter-area-output.png "Gebiedsgrafiek van het queryresultaat")
+     ![Gebiedsgrafiek van het queryresultaat](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "Gebiedsgrafiek van het queryresultaat")
 
 8. Wanneer u klaar bent met het uitvoeren van de toepassing, moet u de notebook afsluiten om de resources vrij te geven. Dit doet u door in het menu **Bestand** in de notebook te klikken op **Sluiten en stoppen**. Hiermee wordt de notebook afgesloten.
 

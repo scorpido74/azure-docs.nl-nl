@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 06/27/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 27e5323e2c9fed3886b2ddf175a2c67718ad52d0
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: c1897b73164b05dfd881729147e6d082be547530
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959155"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002281"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Veelgestelde vragen over VMware naar Azure-replicatie
 
@@ -231,7 +231,7 @@ Controleer de [vereisten](vmware-azure-deploy-configuration-server.md#prerequisi
 
 ### <a name="can-i-manually-set-up-the-configuration-server-instead-of-using-a-template"></a>Kan ik de configuratie server hand matig instellen in plaats van een sjabloon te gebruiken?
 
-We raden u aan [de VM van de configuratie server te maken](vmware-azure-deploy-configuration-server.md) met behulp van de meest recente versie van de open virtual machine Format-sjabloon (OVF). Als u de sjabloon niet kunt gebruiken (bijvoorbeeld als u geen toegang hebt tot de VMware-Server), [downloadt](physical-azure-set-up-source.md) u het installatie bestand vanuit de portal en stelt u de configuratie server in.
+We raden u aan [de VM van de configuratie server te maken](vmware-azure-deploy-configuration-server.md) met behulp van de meest recente versie van de sjabloon open VIRTUALIZATION Format (OVF). Als u de sjabloon niet kunt gebruiken (bijvoorbeeld als u geen toegang hebt tot de VMware-Server), [downloadt](physical-azure-set-up-source.md) u het installatie bestand vanuit de portal en stelt u de configuratie server in.
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>Kan een configuratie server naar meer dan één regio repliceren?
 

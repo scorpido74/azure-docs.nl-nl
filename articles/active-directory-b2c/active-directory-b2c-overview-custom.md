@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: be6d54886f23b0fa219b1e4b8948b4a4c51f5864
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: a3ded11ac6a68e82fba76e7551699f29f3cb6075
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716825"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998418"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Aangepast beleid in Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ Aangepaste beleids regels zijn configuratie bestanden waarmee het gedrag van uw 
 | Kenmerk aanpassing | Standaard-en aangepaste kenmerken. | Dezelfde |
 | Token-en sessie beheer | Aangepaste tokens en opties voor meerdere sessies. | Dezelfde |
 | Id-providers | Vooraf gedefinieerde lokale of sociale provider en de meeste OIDC-id-providers, zoals Federatie met Azure Active Directory-tenants. | Op standaarden gebaseerde OIDC, OAUTH en SAML.  Verificatie is ook mogelijk met behulp van integratie met REST Api's. |
-| Identiteits taken | Meld u aan of Meld u aan met lokale of veel sociale accounts.<br><br>Self-service voor wacht woord opnieuw instellen.<br><br>Profiel bewerken.<br><br>Multi-factor Authentication.<br><br>Tokens en sessies aanpassen.<br><br>Toegangs token stromen. | Voer dezelfde taken uit als voor gebruikers stromen met aangepaste ID-providers of gebruik aangepaste bereiken.<br><br>Een gebruikers account inrichten in een ander systeem op het moment van registratie.<br><br>Stuur een welkomst-e-mail met uw eigen e-mailservice provider.<br><br>Gebruik een gebruikers archief buiten Azure AD B2C.<br><br>Door de gebruiker verstrekte informatie met een vertrouwd systeem valideren met behulp van een API. |
+| Identiteits taken | Meld u aan of Meld u aan met lokale of veel sociale accounts.<br><br>Self-service voor wacht woord opnieuw instellen.<br><br>Profiel bewerken.<br><br>Multi-Factor Authentication.<br><br>Tokens en sessies aanpassen.<br><br>Toegangs token stromen. | Voer dezelfde taken uit als voor gebruikers stromen met aangepaste ID-providers of gebruik aangepaste bereiken.<br><br>Een gebruikers account inrichten in een ander systeem op het moment van registratie.<br><br>Stuur een welkomst-e-mail met uw eigen e-mailservice provider.<br><br>Gebruik een gebruikers archief buiten Azure AD B2C.<br><br>Door de gebruiker verstrekte informatie met een vertrouwd systeem valideren met behulp van een API. |
 
 ## <a name="policy-files"></a>Beleids bestanden
 
@@ -55,7 +55,7 @@ De CIAM-service (Customer Identity and Access Management) in azure omvat:
 
 Azure AD B2C interactie met id-providers, gebruikers, andere systemen en met de lokale gebruikers lijst in volg orde om een identiteits taak te kunnen uitvoeren. U kunt bijvoorbeeld een gebruiker aanmelden, een nieuwe gebruiker registreren of een wacht woord opnieuw instellen. Met het Framework voor identiteits ervaring en een beleid (ook wel een gebruikers traject of een beleid voor vertrouwens raamwerk genoemd) wordt een vertrouwens relatie met meerdere partijen vastgelegd en worden expliciet de actors, de acties, de protocollen en de volg orde van de stappen gedefinieerd.
 
-Het Framework voor identiteits ervaring is een volledig configureerbaar, op de cloud gebaseerd Azure-platform dat de vertrouwens relatie tussen entiteiten in standaard protocol indelingen, zoals OpenID Connect Connect, OAuth, SAML, WSFed en een aantal niet-standaard, bevat, bijvoorbeeld REST Op API gebaseerde systeem-naar-systeem claim uitwisselingen. Het Framework maakt gebruikers vriendelijke, met witte labels ondervindt ervaringen die ondersteuning bieden voor HTML en CSS.
+Het Framework voor identiteits ervaring is een volledig configureerbaar, op de cloud gebaseerd Azure-platform dat de vertrouwens relatie tussen entiteiten in standaard-protocol indelingen, zoals OpenID Connect Connect, OAuth, SAML en enkele niet-standaard, vertrouwt, bijvoorbeeld REST Op API gebaseerde systeem-naar-systeem claim uitwisselingen. Het Framework maakt gebruikers vriendelijke, met witte labels ondervindt ervaringen die ondersteuning bieden voor HTML en CSS.
 
 Een aangepast beleid bestaat uit een of meer XML-bestanden die in een hiërarchische keten naar elkaar verwijzen. De XML-elementen definiëren het claim schema, claim transformaties, inhouds definities, claim providers, technische profielen en de stappen voor het door geven van de gebruikers, onder andere elementen. Een aangepast beleid is toegankelijk als een of meer XML-bestanden die worden uitgevoerd door het Framework voor identiteits ervaring wanneer het wordt aangeroepen door een Relying Party. Ontwikkel aars die aangepaste beleids regels configureren, moeten de vertrouwde relaties in zorgvuldige Details definiëren om eind punten van meta gegevens, exacte claim uitwisselings definities op te geven en geheimen, sleutels en certificaten te configureren die nodig zijn voor elke id-provider.
 

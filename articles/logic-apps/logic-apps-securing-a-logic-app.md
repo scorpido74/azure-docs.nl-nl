@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: 6c16b38cce31c45158a5871c10dbd01339da9203
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: be10d144fadb21a695c5573c82681a26136e71d4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845430"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004093"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -185,7 +185,7 @@ Als u wilt voor komen dat anderen uw logische app wijzigen of verwijderen, kunt 
 
 Tijdens de uitvoering van een logische app worden alle gegevens tijdens de overdracht versleuteld met behulp van [TLS (Transit Layer Security)](https://azure.microsoft.com/updates/app-service-and-functions-hosted-apps-can-now-update-tls-versions/) en in [rust](../security/fundamentals/encryption-atrest.md). Wanneer de logische app wordt uitgevoerd, kunt u de geschiedenis voor die uitvoering bekijken, met inbegrip van de stappen die samen met de status, duur, invoer en uitvoer voor elke actie worden uitgevoerd. Deze uitgebreide details bieden inzicht in hoe uw logische app wordt uitgevoerd en waar u kunt beginnen met het oplossen van problemen die zich voordoen.
 
-Wanneer u de uitvoerings geschiedenis van de logische app opent, wordt uw toegang door Logic Apps geverifieerd en vindt u koppelingen naar de invoer en uitvoer van de aanvragen en antwoorden in de uitvoering van uw logische app. Voor acties waarbij wacht woorden, geheimen, sleutels of andere gevoelige informatie worden verwerkt, wilt u echter voor komen dat anderen deze gegevens kunnen weer geven en gebruiken. Als uw logische app bijvoorbeeld een geheim krijgt van [Azure Key Vault](../key-vault/key-vault-whatis.md) om te gebruiken bij het verifiëren van een http-actie, wilt u dat geheim verbergen in de weer gave.
+Wanneer u de uitvoerings geschiedenis van de logische app opent, wordt uw toegang door Logic Apps geverifieerd en vindt u koppelingen naar de invoer en uitvoer van de aanvragen en antwoorden in de uitvoering van uw logische app. Voor acties waarbij wacht woorden, geheimen, sleutels of andere gevoelige informatie worden verwerkt, wilt u echter voor komen dat anderen deze gegevens kunnen weer geven en gebruiken. Als uw logische app bijvoorbeeld een geheim krijgt van [Azure Key Vault](../key-vault/key-vault-overview.md) om te gebruiken bij het verifiëren van een http-actie, wilt u dat geheim verbergen in de weer gave.
 
 Als u de toegang tot de invoer en uitvoer in de uitvoerings geschiedenis van de logische app wilt beheren, hebt u de volgende opties:
 
@@ -370,7 +370,7 @@ Zie voor meer informatie [veilige para meters in werk stroom definities](#secure
 
 Wanneer u implementaties automatiseert met [Azure Resource Manager sjablonen](../azure-resource-manager/resource-group-authoring-templates.md#parameters), kunt u de para meters voor beveiligde sjablonen definiëren die tijdens de implementatie worden `securestring` geëvalueerd `secureobject` met behulp van de-en-typen. Voor het definiëren van sjabloon parameters gebruikt u de sectie van `parameters` het hoogste niveau van uw sjabloon, die gescheiden is en anders `parameters` is dan de sectie van uw werk stroom definitie. Als u de waarden voor sjabloon parameters wilt opgeven, gebruikt u een afzonderlijk [parameter bestand](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values).
 
-Als u bijvoorbeeld geheimen gebruikt, kunt u de para meters voor beveiligde sjablonen definiëren en gebruiken om deze geheimen op te halen uit [Azure Key Vault](../key-vault/key-vault-whatis.md) tijdens de implementatie. U kunt vervolgens naar de sleutel kluis en het geheim in het parameter bestand verwijzen. Zie de volgende onderwerpen voor meer informatie:
+Als u bijvoorbeeld geheimen gebruikt, kunt u de para meters voor beveiligde sjablonen definiëren en gebruiken om deze geheimen op te halen uit [Azure Key Vault](../key-vault/key-vault-overview.md) tijdens de implementatie. U kunt vervolgens naar de sleutel kluis en het geheim in het parameter bestand verwijzen. Zie de volgende onderwerpen voor meer informatie:
 
 * [Azure Key Vault gebruiken om beveiligde parameter waarden door te geven tijdens de implementatie](../azure-resource-manager/resource-manager-keyvault-parameter.md)
 * [Veilige para meters in azure Resource Manager sjablonen](#secure-parameters-deployment-template) verderop in dit onderwerp
@@ -425,7 +425,7 @@ Als u gevoelige informatie in de werk stroom definitie van de logische app wilt 
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Veilige para meters in Azure Resource Manager sjablonen
 
-Een resource manager-sjabloon voor een logische app heeft `parameters` meerdere secties. Als u wacht woorden, sleutels, geheimen en andere gevoelige informatie wilt beveiligen, definieert u de beveiligde para meters op sjabloon niveau en op `securestring` het `secureobject` niveau van de werk stroom definitie met behulp van het of-type. U kunt deze waarden vervolgens opslaan in [Azure Key Vault](../key-vault/key-vault-whatis.md) en het [parameter bestand](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values) gebruiken om te verwijzen naar de sleutel kluis en het geheim. Uw sjabloon haalt vervolgens die informatie op tijdens de implementatie. Zie [Azure Key Vault gebruiken om beveiligde parameter waarden door te geven tijdens de implementatie](../azure-resource-manager/resource-manager-keyvault-parameter.md)voor meer informatie.
+Een resource manager-sjabloon voor een logische app heeft `parameters` meerdere secties. Als u wacht woorden, sleutels, geheimen en andere gevoelige informatie wilt beveiligen, definieert u de beveiligde para meters op sjabloon niveau en op `securestring` het `secureobject` niveau van de werk stroom definitie met behulp van het of-type. U kunt deze waarden vervolgens opslaan in [Azure Key Vault](../key-vault/key-vault-overview.md) en het [parameter bestand](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values) gebruiken om te verwijzen naar de sleutel kluis en het geheim. Uw sjabloon haalt vervolgens die informatie op tijdens de implementatie. Zie [Azure Key Vault gebruiken om beveiligde parameter waarden door te geven tijdens de implementatie](../azure-resource-manager/resource-manager-keyvault-parameter.md)voor meer informatie.
 
 Hier vindt u meer informatie over `parameters` deze secties:
 

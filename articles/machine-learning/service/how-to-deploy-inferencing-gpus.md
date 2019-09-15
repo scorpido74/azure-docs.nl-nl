@@ -1,7 +1,7 @@
 ---
 title: Een model implementeren voor demijnen met GPU
-titleSuffix: Azure Machine Learning service
-description: In dit artikel leert u hoe u de Azure Machine Learning-service kunt gebruiken voor het implementeren van een met GPU ingeschakeld tensor flow-Learning model als een webservice. aanvragen voor het instellen van de service en de score.
+titleSuffix: Azure Machine Learning
+description: In dit artikel leert u hoe u Azure Machine Learning kunt gebruiken om een tensor flow diepe leer model met GPU te implementeren als een webservice. aanvragen voor het afnemen van de service en de score.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 3113ad050ec6040d4f7964e940c507024bcf002d
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: bfed4daed51e95bb0b86ef187d45722e2c3a25ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844980"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002771"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Een diep leer model implementeren voor demijnen met GPU
 
-In dit artikel leert u hoe u de Azure Machine Learning-service kunt gebruiken om een model met GPU-functionaliteit te implementeren als een webservice. De informatie in dit artikel is gebaseerd op het implementeren van een model in azure Kubernetes service (AKS). Het AKS-cluster biedt een GPU-resource die wordt gebruikt door het model voor demijnen.
+In dit artikel leert u hoe u Azure Machine Learning kunt gebruiken om een model met GPU te implementeren als een webservice. De informatie in dit artikel is gebaseerd op het implementeren van een model in azure Kubernetes service (AKS). Het AKS-cluster biedt een GPU-resource die wordt gebruikt door het model voor demijnen.
 
 Detrainer of model Score is de fase waarin het geïmplementeerde model wordt gebruikt voor het maken van voor spellingen. Het gebruik van Gpu's in plaats van Cpu's biedt prestatie voordelen voor een zeer kan worden opgestart berekening.
 
@@ -34,7 +34,7 @@ Detrainer of model Score is de fase waarin het geïmplementeerde model wordt geb
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een werkruimte van Azure Machine Learning-service. Zie [een Azure machine learning service-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
+* Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
 
 * Een python-ontwikkel omgeving met de Azure Machine Learning SDK geïnstalleerd. Zie [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)voor meer informatie.  
 
@@ -51,7 +51,7 @@ Detrainer of model Score is de fase waarin het geïmplementeerde model wordt geb
 Gebruik de volgende code om verbinding te maken met een bestaande werk ruimte:
 
 > [!IMPORTANT]
-> Dit code fragment verwacht dat de werkruimte configuratie wordt opgeslagen in de huidige map of het bovenliggende item. Zie [Azure machine learning service-werk ruimten maken en beheren](how-to-manage-workspace.md)voor meer informatie over het maken van een werk ruimte.   Zie [een configuratie bestand voor een werk ruimte maken](how-to-configure-environment.md#workspace)voor meer informatie over het opslaan van de configuratie in een bestand.
+> Dit code fragment verwacht dat de werkruimte configuratie wordt opgeslagen in de huidige map of het bovenliggende item. Zie [Azure machine learning-werk ruimten maken en beheren](how-to-manage-workspace.md)voor meer informatie over het maken van een werk ruimte.   Zie [een configuratie bestand voor een werk ruimte maken](how-to-configure-environment.md#workspace)voor meer informatie over het opslaan van de configuratie in een bestand.
 
 ```python
 from azureml.core import Workspace
@@ -93,7 +93,7 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > In azure wordt u gefactureerd zolang het AKS-cluster bestaat. Zorg ervoor dat u uw AKS-cluster verwijdert wanneer u klaar bent.
 
-Zie [How to Deploy to Azure Kubernetes service](how-to-deploy-azure-kubernetes-service.md)(Engelstalig) voor meer informatie over het gebruik van AKS met Azure machine learning service.
+Zie [How to Deploy to Azure Kubernetes service](how-to-deploy-azure-kubernetes-service.md)(Engelstalig) voor meer informatie over het gebruik van AKS met Azure machine learning.
 
 ## <a name="write-the-entry-script"></a>Het invoer script schrijven
 

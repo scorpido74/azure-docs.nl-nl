@@ -1,6 +1,6 @@
 ---
 title: Trainings uitvoeringen in python starten, controleren en annuleren
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Meer informatie over hoe u begint, de status van het label instelt en uw machine learning-experimenten indeelt.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2019
-ms.openlocfilehash: b938d55749373711ddf2a19df12b987276b224ca
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 6615b5c277577ee2238434591c61362885f2fec6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376302"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002733"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Trainings uitvoeringen in python starten, controleren en annuleren
 
@@ -33,9 +33,9 @@ In dit artikel vindt u voor beelden van de volgende taken:
 
 U hebt de volgende items nodig:
 
-* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer nog vandaag de [gratis of betaalde versie van de Azure Machine Learning Service](https://aka.ms/AMLFree).
+* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
-* Een [Azure Machine Learning Services-werk ruimte](how-to-manage-workspace.md).
+* Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md).
 
 * De Azure Machine Learning SDK voor python (versie 1.0.21 of hoger). Zie [de SDK installeren of bijwerken](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)om de nieuwste versie van de SDK te installeren of bij te werken.
 
@@ -45,7 +45,7 @@ U hebt de volgende items nodig:
     print(azureml.core.VERSION)
     ```
 
-* De [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) -en [cli-extensie voor de Azure machine learning-service](reference-azure-machine-learning-cli.md).
+* De [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) -en [cli-extensie voor Azure machine learning](reference-azure-machine-learning-cli.md).
 
 ## <a name="start-a-run-and-its-logging-process"></a>Een uitvoering en het bijbehorende logboek registratie proces starten
 
@@ -79,7 +79,7 @@ Gebruik de volgende stappen om een uitvoering van uw experiment te starten:
     az login
     ```
 
-1. Een werkruimte configuratie koppelen aan de map die uw trainings script bevat. Vervang `myworkspace` door uw Azure machine learning service-werk ruimte. Vervang `myresourcegroup` door de Azure-resource groep die uw werk ruimte bevat:
+1. Een werkruimte configuratie koppelen aan de map die uw trainings script bevat. Vervang `myworkspace` door uw Azure machine learning-werk ruimte. Vervang `myresourcegroup` door de Azure-resource groep die uw werk ruimte bevat:
 
     ```azurecli-interactive
     az ml folder attach -w myworkspace -g myresourcegroup
@@ -253,7 +253,7 @@ print(parent_run.get_children())
 
 ## <a name="tag-and-find-runs"></a>Uitvoeringen coderen en zoeken
 
-In Azure Machine Learning service kunt u eigenschappen en tags gebruiken om uw uitvoeringen te organiseren en query's uit te voeren op belang rijke informatie.
+In Azure Machine Learning kunt u eigenschappen en tags gebruiken om uw uitvoeringen te organiseren en query's uit te voeren op belang rijke informatie.
 
 ### <a name="add-properties-and-tags"></a>Eigenschappen en Tags toevoegen
 

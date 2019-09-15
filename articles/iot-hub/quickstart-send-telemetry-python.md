@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/28/2019
-ms.openlocfilehash: c92b019e15c6a9ee5b2d38e240ae4f9891621f72
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a08719d322f044bbf1ced8103af5e4e23ed948c9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360191"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998493"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Quickstart: Telemetrie vanaf een apparaat verzenden naar een IoT-hub en lezen met een back-endtoepassing (Python)
 
@@ -30,22 +30,6 @@ In dit artikel wordt een vooraf geschreven Python-toepassing gebruikt om de tele
 Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
-
-De voorbeeld toepassing die u in deze Quick start uitvoert, is geschreven met behulp van python. Op dit moment ondersteunen de Microsoft Azure IoT Sdk's voor python alleen specifieke versies van python voor elk platform. Raadpleeg het Leesmij-bestand voor [PYTHON SDK](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues)voor meer informatie.
-
-In deze Quick Start wordt ervan uitgegaan dat u een Windows-ontwikkel computer gebruikt. Alleen voor Windows-systemen [python 3.6. x](https://www.python.org/downloads/release/python-368/) wordt ondersteund. Welk Python-installatieprogramma u moet kiezen, hangt af van de architectuur van het systeem waarmee u werkt. Als uw CPU-architectuur van het systeem 32 bits is, downloadt u het installatie programma x86. down load het x86-64-installatie programma voor de 64-bits architectuur. Bovendien moet u ervoor zorgen dat [micro C++ Soft Visual Redistributable for Visual Studio 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) is geïnstalleerd voor uw architectuur (x86 of x64).
-
-U kunt python downloaden voor andere platforms vanuit [python.org](https://www.python.org/downloads/).
-
-Gebruik een van de volgende opdrachten om te controleren wat de huidige versie van Python op uw ontwikkelcomputer is:
-
-```python
-python - -version
-```
-
-```python
-python3 - -version
-```
 
 Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI toe te voegen aan uw Cloud Shell-exemplaar. De IOT-extensie voegt IoT Hub, IoT Edge en IoT Device Provisioning Service (DPS)-specifieke opdrachten toe aan Azure CLI.
 
@@ -100,7 +84,7 @@ De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatsp
 1. Voer in het lokale terminalvenster de volgende opdrachten uit om de vereiste bibliotheken te installeren voor de toepassing voor het gesimuleerde apparaat:
 
     ```cmd/sh
-    pip install azure-iothub-device-client
+    pip install azure-iot-device
     ```
 
 1. Voer in het lokale terminalvenster de volgende opdrachten uit om de toepassing voor het gesimuleerde apparaat uit te voeren:
@@ -112,13 +96,7 @@ De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatsp
     In de volgende schermafbeelding ziet u de uitvoer op het moment dat de toepassing voor het gesimuleerde apparaat telemetriegegevens naar uw IoT-hub verzendt:
 
     ![Het gesimuleerde apparaat uitvoeren](media/quickstart-send-telemetry-python/SimulatedDevice.png)
-    
-### <a name="to-avoid-the-import-iothubclient-error"></a>Als u wilt voor komen dat de iothub_client-fout wordt geïmporteerd
-De huidige versie van de Azure IoT SDK voor python is een wrapper op [onze C-SDK](https://github.com/azure/azure-iot-sdk-c). Het wordt gegenereerd met de [Boost](https://www.boost.org/) -bibliotheek. Als gevolg hiervan zijn er enkele belang rijke beperkingen. Meer informatie vindt u [hier](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues)
 
-1. Controleer of u de juiste versie van [python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues)hebt. Houd er rekening mee dat alleen bepaalde versies geschikt zijn voor dit voor beeld. 
-2. Controleer of u de juiste versie van C++ runtime [micro soft Visual C++ Redistributable voor Visual Studio 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)hebt. (We raden u aan het nieuwste te doen).
-3. Controleer of u de iothub-client hebt geïnstalleerd `pip install azure-iothub-device-client`:.
 
 ## <a name="read-the-telemetry-from-your-hub"></a>De telemetrie van uw hub lezen
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0d97ca91466516b8722ecca77d19078399a258f7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ac0109ff8c5dd7f6013acefbe5ee08a13494cb77
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814088"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001781"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Resources voor Apache Spark cluster beheren in azure HDInsight 
 
@@ -51,17 +51,19 @@ De Web-UI van de Spark-geschiedenis server ziet er als volgt uit:
 ![HDInsight Spark-geschiedenis server](./media/apache-spark-resource-manager/hdinsight-spark-history-server.png)
 
 ## <a name="open-the-yarn-ui"></a>De garen-gebruikers interface openen
+
 U kunt de garen-interface gebruiken om toepassingen te bewaken die momenteel worden uitgevoerd op het Spark-cluster.
 
 1. Open in het [Azure Portal](https://portal.azure.com/)het Spark-cluster. Zie voor meer informatie het [overzicht en weer geven van clusters](../hdinsight-administer-use-portal-linux.md#showClusters).
 2. Klik vanuit **snelle koppelingen**op **cluster dashboard**en klik vervolgens op **garens**.
 
-    ![Gebruikers interface van garen starten](./media/apache-spark-resource-manager/launch-yarn-ui.png)
+    ![Gebruikers interface van garen starten](./media/apache-spark-resource-manager/hdi-launch-apache-yarn.png)
 
    > [!TIP]  
    > U kunt ook de gebruikers interface van garen starten vanuit de Ambari-gebruikers interface. Als u de Ambari-gebruikers interface wilt starten, klikt u op **cluster dashboard**en vervolgens op **HDInsight-cluster dashboard**. Klik in de Ambari-gebruikers interface op **garens**, klik op **snelle koppelingen**, klik op actieve Resource Manager en klik vervolgens op **Resource Manager-gebruikers interface**.
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Clusters optimaliseren voor Spark-toepassingen
+
 De drie belang rijke para meters die kunnen worden gebruikt voor Spark-configuratie, zijn `spark.executor.instances`afhankelijk `spark.executor.cores`van de `spark.executor.memory`toepassings vereisten, en. Een uitvoerder is een proces dat wordt gestart voor een Spark-toepassing. Het wordt uitgevoerd op het worker-knoop punt en is verantwoordelijk voor het uitvoeren van de taken voor de toepassing. Het standaard aantal uitvoerende agents en de uitvoerings grootte voor elk cluster wordt berekend op basis van het aantal worker-knoop punten en de grootte van het worker-knoop punt. Deze informatie wordt opgeslagen in `spark-defaults.conf` op de hoofd knooppunten van het cluster.
 
 De drie configuratie parameters kunnen worden geconfigureerd op cluster niveau (voor alle toepassingen die in het cluster worden uitgevoerd) of kunnen ook voor elke afzonderlijke toepassing worden opgegeven.
@@ -76,7 +78,7 @@ De drie configuratie parameters kunnen worden geconfigureerd op cluster niveau (
 
 3. Klik op **Opslaan** om de configuratie wijzigingen op te slaan. Boven aan de pagina wordt u gevraagd om alle betrokken services opnieuw op te starten. Klik op **Opnieuw opstarten**.
 
-    ![Services opnieuw starten](./media/apache-spark-resource-manager/restart-services.png)
+    ![Services opnieuw starten](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>De para meters wijzigen voor een toepassing die wordt uitgevoerd in Jupyter notebook
 Voor toepassingen die worden uitgevoerd in de Jupyter-notebook, kunt `%%configure` u het Magic gebruiken om de configuratie wijzigingen door te voeren. In het ideale geval moet u dergelijke wijzigingen aan het begin van de toepassing aanbrengen voordat u uw eerste code-cel uitvoert. Dit zorgt ervoor dat de configuratie wordt toegepast op de livy-sessie wanneer deze wordt gemaakt. Als u de configuratie in een later stadium in de toepassing wilt wijzigen, moet u de `-f` para meter gebruiken. De voortgang van de toepassing gaat echter verloren.
@@ -135,21 +137,21 @@ Vanwege de dynamische toewijzing van Spark zijn de resources die worden gebruikt
 ## <a name="restart-the-jupyter-service"></a>De Jupyter-service opnieuw starten
 Start de Ambari-webgebruikersinterface zoals wordt weer gegeven in het begin van het artikel. Klik in het navigatie deel venster links op **Jupyter**, klik op **service acties**en klik vervolgens op **alle opnieuw opstarten**. Hiermee start u de Jupyter-service op alle hoofd knooppunten.
 
-![Jupyter opnieuw starten](./media/apache-spark-resource-manager/restart-jupyter.png "Jupyter opnieuw starten")
+![Jupyter opnieuw starten](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Jupyter opnieuw starten")
 
 ## <a name="monitor-resources"></a>Resources controleren
 Start de gebruikers interface van het garen zoals in het begin van het artikel wordt weer gegeven. Controleer in de tabel cluster metrische gegevens boven op het scherm de waarden voor het **gebruikte geheugen** en het **totale geheugen** in kolommen. Als de twee waarden sluiten, zijn er mogelijk onvoldoende bronnen om de volgende toepassing te starten. Hetzelfde geldt voor de kolommen **VCores used** en **VCores totaal** . Als er in de hoofd weergave een toepassing in de **geaccepteerde** status bevindt en niet wordt overgeschakeld naar de **actieve** of **mislukte** status, kan dit ook duiden op een indicatie dat er niet voldoende bronnen worden opgehaald om te starten.
 
-![Resource limiet](./media/apache-spark-resource-manager/resource-limit.png "Resource limiet")
+![Resource limiet](./media/apache-spark-resource-manager/apache-ambari-resource-limit.png "Resource limiet")
 
 ## <a name="kill-running-applications"></a>Actieve toepassingen beëindigen
 1. Klik in de gebruikers interface van garen vanuit het linkerdeel venster op **uitvoeren**. Bepaal in de lijst met actieve toepassingen welke toepassing moet worden beëindigd en klik op de **id**.
 
-    ![App1 afsluiten](./media/apache-spark-resource-manager/kill-app1.png "App1 afsluiten")
+    ![App1 afsluiten](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "App1 afsluiten")
 
 2. Klik in de rechter bovenhoek op **toepassing beëindigen** en klik vervolgens op **OK**.
 
-    ![App2 afsluiten](./media/apache-spark-resource-manager/kill-app2.png "App2 afsluiten")
+    ![App2 afsluiten](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "App2 afsluiten")
 
 ## <a name="see-also"></a>Zie ook
 * [Taken die worden uitgevoerd in een Apache Spark-cluster in HDInsight, traceren en er fouten in oplossen](apache-spark-job-debugging.md)

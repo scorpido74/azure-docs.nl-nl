@@ -1,7 +1,7 @@
 ---
 title: Werk ruimten maken met Azure CLI
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de Azure CLI om een nieuwe Azure Machine Learning service-werk ruimte te maken.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de Azure CLI om een nieuwe Azure Machine Learning-werk ruimte te maken.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: f398eb8124f45562ebc3c4238c641a6638811394
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 75487906e4323ea12a47d75164617212bd3e65d9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873492"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002638"
 ---
-# <a name="create-a-workspace-for-azure-machine-learning-service-with-azure-cli"></a>Een werk ruimte voor Azure Machine Learning service maken met Azure CLI
+# <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Een werk ruimte maken voor Azure Machine Learning met Azure CLI
 
-In dit artikel leert u hoe u een Azure Machine Learning service-werk ruimte maakt met behulp van de Azure CLI. De Azure CLI bevat opdrachten voor het beheer van Azure-resources. De machine learning-extensie voor de CLI biedt opdrachten voor het werken met Azure Machine Learning-service resources.
+In dit artikel leert u hoe u een Azure Machine Learning-werk ruimte maakt met behulp van de Azure CLI. De Azure CLI bevat opdrachten voor het beheer van Azure-resources. De machine learning-extensie voor de CLI bevat opdrachten voor het werken met Azure Machine Learning-resources.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een **Azure-abonnement**. Als u er nog geen hebt, kunt u de [gratis of betaalde versie van Azure machine learning service](https://aka.ms/AMLFree)proberen.
+* Een **Azure-abonnement**. Als u er nog geen hebt, probeer [dan de gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 
 * Als u de CLI-opdrachten in dit document vanuit uw **lokale omgeving**wilt gebruiken, hebt u de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)nodig.
 
@@ -53,7 +53,7 @@ az extension add -n azure-cli-ml
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
-De werk ruimte van de Azure Machine Learning-service is afhankelijk van de volgende Azure-Services of-entiteiten:
+De Azure Machine Learning-werk ruimte is afhankelijk van de volgende Azure-Services of-entiteiten:
 
 > [!IMPORTANT]
 > Als u geen bestaande Azure-service opgeeft, wordt er automatisch een gemaakt tijdens het maken van de werk ruimte. U moet altijd een resource groep opgeven.
@@ -68,10 +68,10 @@ De werk ruimte van de Azure Machine Learning-service is afhankelijk van de volge
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-De werk ruimte voor de Azure Machine Learning-service moet worden gemaakt in een resource groep. U kunt een bestaande resource groep gebruiken of een nieuwe maken. Gebruik de volgende opdracht om __een nieuwe resource groep te maken__. Vervang `<resource-group-name>` door de naam die u voor deze resource groep wilt gebruiken. Vervang `<location>` door de Azure-regio die u wilt gebruiken voor deze resource groep:
+De Azure Machine Learning-werk ruimte moet binnen een resource groep worden gemaakt. U kunt een bestaande resource groep gebruiken of een nieuwe maken. Gebruik de volgende opdracht om __een nieuwe resource groep te maken__. Vervang `<resource-group-name>` door de naam die u voor deze resource groep wilt gebruiken. Vervang `<location>` door de Azure-regio die u wilt gebruiken voor deze resource groep:
 
 > [!TIP]
-> U moet een regio selecteren waar de Azure Machine Learning-service beschikbaar is. Zie [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)voor meer informatie.
+> U moet een regio selecteren waar Azure Machine Learning beschikbaar is. Zie [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)voor meer informatie.
 
 ```azurecli-interactive
 az group create --name <resource-group-name> --location <location>
@@ -170,7 +170,7 @@ Als u een werk ruimte wilt maken waarin bestaande resources worden gebruikt, moe
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"`
 
     > [!IMPORTANT]
-    > Het [beheerders account](/azure/container-registry/container-registry-authentication#admin-account) moet zijn ingeschakeld voor het container register voordat het kan worden gebruikt met een Azure machine learning service-werk ruimte.
+    > Het [beheerders account](/azure/container-registry/container-registry-authentication#admin-account) moet zijn ingeschakeld voor het container register voordat het kan worden gebruikt met een Azure machine learning-werk ruimte.
 
 Wanneer u de id's hebt voor de resource (s) die u wilt gebruiken voor de werk ruimte, gebruikt u de `az workspace create -w <workspace-name> -g <resource-group-name>` basis opdracht en voegt u de para meter (s) en de id ('s) toe voor de bestaande resources. Met de volgende opdracht maakt u bijvoorbeeld een werk ruimte die gebruikmaakt van een bestaand container register:
 
@@ -302,7 +302,7 @@ Als u een werk ruimte wilt delen met een andere gebruiker in uw abonnement, gebr
 az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user> --role <role>
 ```
 
-Zie [gebruikers en rollen beheren](how-to-assign-roles.md)voor meer informatie over op rollen gebaseerd toegangs beheer (RBAC) met Azure machine learning-service.
+Zie [gebruikers en rollen beheren](how-to-assign-roles.md)voor meer informatie over op rollen gebaseerd toegangs beheer (RBAC) met Azure machine learning.
 
 Zie voor meer informatie de documentatie bij [AZ ml-werkruimte share](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share) .
 

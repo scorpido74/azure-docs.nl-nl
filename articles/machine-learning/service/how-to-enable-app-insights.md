@@ -1,7 +1,7 @@
 ---
 title: Azure-toepassing Insights instellen voor het bewaken van ML-modellen
-titleSuffix: Azure Machine Learning service
-description: Webservices die met Azure Machine Learning service zijn geïmplementeerd, bewaken met behulp van Azure-toepassing Insights
+titleSuffix: Azure Machine Learning
+description: Webservices die zijn geïmplementeerd met Azure Machine Learning bewaken met behulp van Azure-toepassing Insights
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ff9261e2720ed80fc96131cea69d2985c8e0883e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 785507e9ae12d8da564a223c8cdf544a98b8de61
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858756"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002872"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Uw Azure Machine Learning-modellen met Application Insights bewaken
 
-In dit artikel leert u hoe u Azure Application Insights instellen voor uw Azure Machine Learning-service. Application Insights biedt u de mogelijkheid om te controleren:
+In dit artikel vindt u informatie over het instellen van Azure-toepassing Insights voor Azure Machine Learning. Application Insights biedt u de mogelijkheid om te controleren:
 * Tarieven, reactietijden en foutpercentages aanvragen.
 * Afhankelijkheidsrelaties, reactietijden en foutpercentages.
 * Uitzonderingen.
@@ -30,7 +30,7 @@ In dit artikel leert u hoe u Azure Application Insights instellen voor uw Azure 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer nog vandaag de [gratis of betaalde versie van de Azure Machine Learning Service](https://aka.ms/AMLFree).
+* Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 * Een Azure Machine Learning-werkruimte en een lokale map met uw scripts en de Azure Machine Learning-SDK voor Python geïnstalleerd. Zie voor meer informatie over het verkrijgen van deze vereisten, [het configureren van een ontwikkelomgeving](how-to-configure-environment.md).
 * Een getrainde machine learning-model worden toegepast op Azure Kubernetes Service (AKS) of Azure Container exemplaar (ACI). Als u niet hebt, raadpleegt u de [Train installatiekopie classificeringsmodel](tutorial-train-models-with-aml.md) zelfstudie.
@@ -111,7 +111,7 @@ U kunt in- en uitschakelen van Application Insights in Azure portal.
  
 
 ## <a name="evaluate-data"></a>Gegevens evalueren
-Van uw service-gegevens worden opgeslagen in uw Application Insights-account, in dezelfde resourcegroep bevinden als uw Azure Machine Learning-service.
+De gegevens van uw service worden opgeslagen in uw Application Insights-account, in dezelfde resource groep als Azure Machine Learning.
 Om dit te bekijken:
 1. Ga naar de service Machine Learning-werkruimte in de [Azure-portal](https://portal.azure.com) en klik op de koppeling van Application Insights.
 

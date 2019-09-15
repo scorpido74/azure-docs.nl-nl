@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 60b323c12e5c548c974a7d660d08861637ac2381
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 944c05a28eb33c659bf4aaa600985530122f8d3e
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996667"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000329"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexerings beleid in Azure Cosmos DB
 
@@ -26,8 +26,11 @@ In sommige gevallen is het mogelijk dat u dit automatische gedrag wilt overschri
 
 Azure Cosmos DB ondersteunt twee indexerings modi:
 
-- **Consistent**: Als het indexerings beleid van een container is ingesteld op consistent, wordt de index synchroon bijgewerkt wanneer u items maakt, bijwerkt of verwijdert. Dit betekent dat de consistentie van uw Lees query's de [consistentie is die voor het account is geconfigureerd](consistency-levels.md).
-- **Geen**: Als het indexerings beleid van een container is ingesteld op geen, wordt indexeren effectief uitgeschakeld voor die container. Dit wordt meestal gebruikt wanneer een container wordt gebruikt als een pure sleutel waarde Store zonder dat hiervoor secundaire indexen nodig zijn. Het kan ook helpen bij het versnellen van Bulk Insert-bewerkingen.
+- **Consistent**: De index wordt synchroon bijgewerkt wanneer u items maakt, bijwerkt of verwijdert. Dit betekent dat de consistentie van uw Lees query's de [consistentie is die voor het account is geconfigureerd](consistency-levels.md).
+- **Geen**: Indexeren is uitgeschakeld op de container. Dit wordt meestal gebruikt wanneer een container wordt gebruikt als een pure sleutel waarde Store zonder dat hiervoor secundaire indexen nodig zijn. Het kan ook worden gebruikt om de prestaties van bulk bewerkingen te verbeteren. Nadat de bulk bewerkingen zijn voltooid, kan de index modus worden ingesteld op consistent en vervolgens worden bewaakt met behulp van de [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) totdat de bewerking is voltooid.
+
+> [!NOTE]
+> Cosmos DB ondersteunt ook een vertraagde indexerings modus. Lazy-indexering voert updates op een veel lagere prioriteits niveau uit als de engine geen andere werkzaamheden uitvoert. Dit kan leiden tot **inconsistente of onvolledige** query resultaten. Daarnaast biedt het gebruik van luie indexering in plaats van ' none ' voor bulk bewerkingen geen voor deel wanneer een wijziging in de index modus ertoe leidt dat de index wordt verwijderd en opnieuw wordt gemaakt. Daarom raden we u aan klanten te gebruiken. Als u de prestaties voor bulk bewerkingen wilt verbeteren, stelt u de index modus in op geen, vervolgens keert u terug naar de consistente modus en controleert u de `IndexTransformationProgress` eigenschap op de container totdat deze is voltooid.
 
 Indexerings beleid is standaard ingesteld op `automatic`. Het wordt bereikt door de `automatic` eigenschap in het indexerings beleid in te stellen op. `true` Als u deze eigenschap `true` instelt op, kan Azure CosmosDB documenten automatisch indexeren wanneer ze zijn geschreven.
 

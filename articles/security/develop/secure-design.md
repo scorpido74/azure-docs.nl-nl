@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 87acc6e8c561349b734bd9cd98300b65e730abe7
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 316ed596cfa49987e229004c388267286ff50927
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928075"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000972"
 ---
 # <a name="design-secure-applications-on-azure"></a>Veilige toepassingen ontwerpen in azure
 In dit artikel bieden we beveiligings activiteiten en-controles waarmee u rekening moet houden bij het ontwerpen van toepassingen voor de Cloud. Trainings bronnen samen met beveiligings vragen en concepten die u kunt overwegen tijdens de vereisten en ontwerp fasen van micro soft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) , worden gedekt. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-Services die u kunt gebruiken om een veiligere toepassing te ontwerpen.
@@ -155,7 +155,7 @@ Het ontwerpen van het toepassings ontwerp en het opsommen van [STRIDE](https://d
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Spoofing               | Authentication        | [HTTPS-verbindingen vereisen](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
 | Manipulatie              | Gegevensintegriteit             | SSL/TLS-certificaten valideren. Toepassingen die gebruikmaken van SSL/TLS moeten de X. 509-certificaten van de entiteiten waarmee ze verbinding maken, volledig controleren. Gebruik Azure Key Vault certificaten om [uw x509-certificaten te beheren](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates). |
-| Ging            | Geen weerlegbaarheid       | [Bewaking en diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)van Azure inschakelen.|
+| Ging            | Niet-afwijzing       | [Bewaking en diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)van Azure inschakelen.|
 | Openbaarmaking van informatie | Aard       | Versleutel gevoelige gegevens in [rust](../fundamentals/encryption-atrest.md) en [onderweg](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
 | Denial of service (DoS)      | Beschikbaarheid          | Bewaak de prestatie gegevens voor mogelijke denial of service-voor waarden. Verbindings filters implementeren. [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md#next-steps), gecombineerd met aanbevolen procedures voor het ontwerpen van toepassingen, biedt bescherming tegen DDoS-aanvallen.|
 | Verhoging van bevoegdheden | Authorization         | Gebruik Azure Active Directory <span class="underline"></span> [privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md).|
@@ -203,7 +203,7 @@ Dingen die u kunt doen om een identiteits gerichte aanpak te ontwikkelen voor he
 
 #### <a name="enforce-multi-factor-authentication-for-users"></a>Multi-factor Authentication afdwingen voor gebruikers
 
-Gebruik twee ledige verificatie. Verificatie met twee factoren is de huidige standaard voor verificatie en autorisatie, omdat hiermee wordt voor komen dat de zwakke plekken in de beveiliging van gebruikers naam en wacht woord worden geauthenticeerd. Toegang tot de Azure-beheer interfaces (Azure Portal/Remote Power shell) en aan klant gerichte services moeten zijn ontworpen en geconfigureerd voor gebruik van [Azure multi-factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
+Gebruik twee ledige verificatie. Verificatie met twee factoren is de huidige standaard voor verificatie en autorisatie, omdat hiermee wordt voor komen dat de zwakke plekken in de beveiliging van gebruikers naam en wacht woord worden geauthenticeerd. Toegang tot de Azure-beheer interfaces (Azure Portal/Remote Power shell) en aan klant gerichte services moeten zijn ontworpen en geconfigureerd voor het gebruik van [Azure multi-factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
 
 #### <a name="use-strong-authentication-and-authorization-platforms"></a>Sterke verificatie-en autorisatie platforms gebruiken
 
@@ -242,7 +242,7 @@ De beste manier om dit soort aanvallen te tegen komen, is door de gebruiker te v
 
 Het verlies van sleutels en referenties is een veelvoorkomend probleem. Het enige wat u nog ergert dan het verlies van uw sleutels en referenties is dat een niet-geautoriseerde partij er toegang toe krijgt. Aanvallers kunnen gebruikmaken van geautomatiseerde en hand matige technieken om sleutels en geheimen te vinden die zijn opgeslagen in code opslagplaatsen zoals GitHub. Plaats geen sleutels en geheimen in deze open bare code opslagplaatsen of op een andere server.
 
-Plaats altijd uw sleutels, certificaten, geheimen en verbindings reeksen in een oplossing voor sleutel beheer. U kunt een gecentraliseerde oplossing gebruiken waarin sleutels en geheimen worden opgeslagen in Hardware Security modules (Hsm's). Azure biedt u een HSM in de Cloud met [Azure Key Vault](../../key-vault/key-vault-whatis.md).
+Plaats altijd uw sleutels, certificaten, geheimen en verbindings reeksen in een oplossing voor sleutel beheer. U kunt een gecentraliseerde oplossing gebruiken waarin sleutels en geheimen worden opgeslagen in Hardware Security modules (Hsm's). Azure biedt u een HSM in de Cloud met [Azure Key Vault](../../key-vault/key-vault-overview.md).
 
 Key Vault is een *geheim archief*: het is een gecentraliseerde Cloud service voor het opslaan van toepassings geheimen. Key Vault uw vertrouwelijke gegevens veilig houdt door toepassings geheimen op één centrale locatie te bewaren en beveiligde toegang, machtigings beheer en logboek registratie van toegang te bieden.
 
@@ -277,7 +277,7 @@ Als u opmerkingen in uw code plaatst, moet u ervoor zorgen dat u geen gevoelige 
 
 In principe wordt ervan uitgegaan dat alles in uw ontwikkelings project openbaar kennis is wanneer het is geïmplementeerd. Vermijd het opnemen van gevoelige gegevens van elk soort in het project.
 
-Eerder zijn we besproken [Azure Key Vault](../../key-vault/key-vault-whatis.md). U kunt Key Vault gebruiken om geheimen zoals sleutels en wacht woorden op te slaan in plaats van ze vast te schrijven. Wanneer u Key Vault gebruikt in combi natie met beheerde identiteiten voor Azure-resources, kan uw Azure-web-app eenvoudig en veilig toegang krijgen tot geheime configuratie waarden zonder geheimen in uw bron beheer of configuratie op te slaan. Zie [geheimen beheren in uw server-apps met Azure Key Vault](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)voor meer informatie.
+Eerder zijn we besproken [Azure Key Vault](../../key-vault/key-vault-overview.md). U kunt Key Vault gebruiken om geheimen zoals sleutels en wacht woorden op te slaan in plaats van ze vast te schrijven. Wanneer u Key Vault gebruikt in combi natie met beheerde identiteiten voor Azure-resources, kan uw Azure-web-app eenvoudig en veilig toegang krijgen tot geheime configuratie waarden zonder geheimen in uw bron beheer of configuratie op te slaan. Zie [geheimen beheren in uw server-apps met Azure Key Vault](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)voor meer informatie.
 
 ### <a name="implement-fail-safe-measures"></a>Fout veilige maat regelen implementeren
 
@@ -287,7 +287,7 @@ U moet er ook voor zorgen dat fouten worden geregistreerd met voldoende gebruike
 
 ### <a name="take-advantage-of-error-and-exception-handling"></a>Profiteer van de afhandeling van fouten en uitzonde ringen
 
-Het implementeren van de juiste fout-en uitzonderings [afhandeling](https://docs.microsoft.com/dotnet/standard/exceptions/best-practices-for-exceptions) is een belang rijk onderdeel van de code voor verdediging. Het verwerken van fouten en uitzonde ringen is van cruciaal belang om een systeem betrouwbaar en beveiligd te maken. Fouten bij het afhandelen van fouten kunnen leiden tot verschillende soorten beveiligings problemen, zoals het lekken van informatie aan kwaadwillende personen en het helpen van kwaadwillende personen meer inzicht te krijgen in uw platform en ontwerp.
+Het implementeren van de juiste fout-en [uitzonderings afhandeling](https://docs.microsoft.com/dotnet/standard/exceptions/best-practices-for-exceptions) is een belang rijk onderdeel van de code voor verdediging. Het verwerken van fouten en uitzonde ringen is van cruciaal belang om een systeem betrouwbaar en beveiligd te maken. Fouten bij het afhandelen van fouten kunnen leiden tot verschillende soorten beveiligings problemen, zoals het lekken van informatie aan kwaadwillende personen en het helpen van kwaadwillende personen meer inzicht te krijgen in uw platform en ontwerp.
 
 Zorg ervoor dat:
 
@@ -299,7 +299,7 @@ Zorg ervoor dat:
 
 - Uitzonde ringen worden vastgelegd en er wordt voldoende informatie geboden voor forensische of reacties op incidenten die kunnen worden onderzocht.
 
-[Azure Logic apps](../../logic-apps/logic-apps-overview.md) biedt een eersteklas ervaring voor het afhandelen van [fouten en uitzonde ringen](../../logic-apps/logic-apps-exception-handling.md) die worden veroorzaakt door afhankelijke systemen. U kunt Logic Apps gebruiken om werk stromen te maken voor het automatiseren van taken en processen die apps, gegevens, systemen en services integreren in ondernemingen en organisaties.
+[Azure Logic apps](../../logic-apps/logic-apps-overview.md) biedt een eersteklas ervaring voor het [afhandelen van fouten en uitzonde ringen](../../logic-apps/logic-apps-exception-handling.md) die worden veroorzaakt door afhankelijke systemen. U kunt Logic Apps gebruiken om werk stromen te maken voor het automatiseren van taken en processen die apps, gegevens, systemen en services integreren in ondernemingen en organisaties.
 
 ### <a name="use-logging-and-alerting"></a>Logboek registratie en waarschuwingen gebruiken
 

@@ -15,16 +15,16 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: d6d3e91bef6c4f837b068d755994b2f3268600da
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 7c899bae6cf36e68664a3ce60939f72a4b5bd1ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074042"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001209"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Een SSL-certificaat voor Azure App Service kopen en configureren
 
-In deze zelf studie ziet u hoe u uw [app service app](https://docs.microsoft.com/azure/app-service/) of [functie-app](https://docs.microsoft.com/azure/azure-functions/) kunt beveiligen door een app service certificaat te maken (te kopen) in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) en het vervolgens te binden aan een app service-app.
+In deze zelf studie ziet u hoe u uw [app service app](https://docs.microsoft.com/azure/app-service/) of [functie-app](https://docs.microsoft.com/azure/azure-functions/) kunt beveiligen door een app service certificaat te maken (te kopen) in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) en het vervolgens te binden aan een app service-app.
 
 > [!TIP]
 > App Service certificaten kunnen worden gebruikt voor alle Azure-of niet-Azure-Services en is niet beperkt tot App Services. Als u dit wilt doen, moet u een lokaal PFX-exemplaar maken van een App Service certificaat dat u overal kunt gebruiken. Zie [een lokale pfx-kopie maken van een app service Certificate](https://blogs.msdn.microsoft.com/benjaminperkins/2017/04/12/export-an-azure-app-service-certificate-pfx-powershell/)voor meer informatie.
@@ -64,7 +64,7 @@ Selecteer het certificaat op de pagina [app service certificaten](https://portal
 
 ![afbeelding van gereed voor Store invoegen in KV](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
-[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) is een Azure-service die helpt bij het beveiligen van cryptografische sleutels en geheimen die worden gebruikt door Cloud toepassingen en-services. Het is de opslag van de keuze voor App Service certificaten.
+[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) is een Azure-service die helpt bij het beveiligen van cryptografische sleutels en geheimen die worden gebruikt door Cloud toepassingen en-services. Het is de opslag van de keuze voor App Service certificaten.
 
 Klik op de pagina **Key Vault status** op **Key Vault opslag plaats** om een nieuwe kluis te maken of kies een bestaande kluis. Als u ervoor kiest om een nieuwe kluis te maken, gebruikt u de volgende tabel om u te helpen de kluis te configureren en klikt u op maken. Zie nieuwe Key Vault maken binnen hetzelfde abonnement en dezelfde resource groep.
 
@@ -109,7 +109,7 @@ Nu het certificaat is geïmporteerd, moet u het binden aan een toegewezen domein
 
 ![afbeelding van import certificaat invoegen](./media/app-service-web-purchase-ssl-web-site/AddBinding.png)
 
-Gebruik de volgende tabel om u te helpen de binding te configureren in het dialoog venster **SSL** -bindingen en klik vervolgens op **binding toevoegen**.
+Gebruik de volgende tabel om u te helpen de binding te configureren in het dialoog venster **SSL-bindingen** en klik vervolgens op **binding toevoegen**.
 
 | Instelling | Description |
 |-|-|

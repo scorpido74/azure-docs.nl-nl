@@ -1,6 +1,6 @@
 ---
 title: Een diepe Learning Neural-netwerk trainen met Chainer
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Meer informatie over het uitvoeren van uw PyTorch-trainings scripts op ondernemings schaal met behulp van de Estimator-klasse van Azure Machine Learning Chainer.  In het voorbeeld script classifis worden handgeschreven cijfer afbeeldingen gemaakt om een diep gaande Neural-netwerk te bouwen met behulp van de keten python-bibliotheek die op numpy wordt uitgevoerd.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +10,14 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: bc14ba2bcaa80236717c062abd1dc8a63b58305c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 91e638793d77a6d38f9813345829720d98545293
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966835"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002718"
 ---
-# <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Keten modellen trainen en registreren op schaal met Azure Machine Learning-service
+# <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Keten modellen trainen en registreren op schaal met Azure Machine Learning
 
 In dit artikel leert u hoe u uw [Chainer](https://chainer.org/) -trainings scripts kunt uitvoeren op ENTER prise Scale met behulp van de [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) -klasse van Azure machine learning. In het voorbeeld script in dit artikel wordt gebruikgemaakt van de populaire [MNIST-gegevensset](http://yann.lecun.com/exdb/mnist/) om handgeschreven cijfers te classificeren met behulp van een diepe Neural Network (DNN) die is gebouwd met behulp van de python-bibliotheek van de keten die boven op [numpy](https://www.numpy.org/)wordt uitgevoerd.
 
@@ -25,7 +25,7 @@ Of u nu een diep gaande leer keten van het model traint of een bestaand model in
 
 Meer informatie over [uitgebreide kennis en machine learning](concept-deep-learning-vs-machine-learning.md).
 
-Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer nog vandaag de [gratis of betaalde versie van de Azure Machine Learning Service](https://aka.ms/AMLFree).
+Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -60,7 +60,7 @@ print("SDK version:", azureml.core.VERSION)
 
 ### <a name="initialize-a-workspace"></a>Een werk ruimte initialiseren
 
-De [werk ruimte](concept-workspace.md) van de Azure machine learning-service is de resource op het hoogste niveau voor de service. Het biedt u een centrale locatie voor het werken met alle artefacten die u maakt. In de python-SDK hebt u toegang tot de werkruimte artefacten door een [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) object te maken.
+De [Azure machine learning werk ruimte](concept-workspace.md) is de resource op het hoogste niveau voor de service. Het biedt u een centrale locatie voor het werken met alle artefacten die u maakt. In de python-SDK hebt u toegang tot de werkruimte artefacten door een [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) object te maken.
 
 Maak een werkruimte object door het `config.json` bestand te lezen dat is gemaakt in de [sectie vereisten](#prerequisites):
 
@@ -209,7 +209,7 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een diep gaande training getraind en geregistreerd, Neural-netwerk met Chainer op Azure Machine Learning service. Ga verder met ons [model implementatie](how-to-deploy-and-where.md) artikel voor meer informatie over het implementeren van een model.
+In dit artikel hebt u een diep gaande training getraind en geregistreerd, Neural Network met Chainer op Azure Machine Learning. Ga verder met ons [model implementatie](how-to-deploy-and-where.md) artikel voor meer informatie over het implementeren van een model.
 
 * [Afstemmen van hyperparameters](how-to-tune-hyperparameters.md)
 

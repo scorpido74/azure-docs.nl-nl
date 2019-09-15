@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: dc30aeae842cf9c3cd39422517ed49773c524f1e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 81bde54c65cf3ed25da634c38b7b99e72a187e00
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232839"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002448"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Overzicht van het Microsoft Cloud Adoption Framework-blauwdrukvoorbeeld voor de Azure-migratielandingszone
 
@@ -29,7 +29,7 @@ Het CAF-blauwdrukvoorbeeld voor de migratielandingszone implementeert fundamente
 
 Deze omgeving bestaat uit diverse Azure-services die een veilige, volledig bewaakte en direct inzetbare governance bieden. De omgeving bestaat uit de volgende elementen:
 
-- Een [Azure Key Vault](../../../../key-vault/key-vault-whatis.md)-exemplaar om de geheimen te bewaren voor de certificaten, sleutels en geheimen die in de omgeving met gedeelde services worden geïmplementeerd
+- Een [Azure Key Vault](../../../../key-vault/key-vault-overview.md)-exemplaar om de geheimen te bewaren voor de certificaten, sleutels en geheimen die in de omgeving met gedeelde services worden geïmplementeerd
 - [Log Analytics](../../../../azure-monitor/overview.md) wordt geïmplementeerd om te garanderen dat op een centrale locatie logboeken worden bijgehouden voor alle acties en services zodra u met de migratie begint
 - Implementeer [Azure Security Center](../../../../security-center/security-center-intro.md) (standaardversie). Dit biedt beveiliging tegen bedreigingen voor uw gemigreerde workloads.
 - Implementeer [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md). Dit biedt een geïsoleerd netwerk en subnetten voor uw virtuele machine.

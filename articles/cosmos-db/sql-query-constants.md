@@ -1,17 +1,17 @@
 ---
 title: SQL-constanten in Azure Cosmos DB
-description: Meer informatie over SQL constanten in Azure Cosmos DB
+description: Meer informatie over SQL-constanten in Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: ed337c8330eb8b3e4ad97c92cca1d0c5977f9588
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 41cafeb76b7b9481a78ffcff179676d0aa7bf6fd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342664"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002034"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL-query constanten  
 
@@ -26,7 +26,7 @@ ms.locfileid: "67342664"
 |**Boolean**|Waarden: **false**, **waar**.|  
 |**Number**|Een getal met dubbele precisie getal met drijvende komma, IEEE 754 standard.|  
 |**String**|Een reeks van nul of meer Unicode-tekens. Tekenreeksen moeten tussen enkele of dubbele aanhalingstekens worden geplaatst.|  
-|**Array**|Een reeks van nul of meer elementen. Elk element mag een waarde van elk gegevenstype scalaire, behalve **Undefined**.|  
+|**Array**|Een reeks van nul of meer elementen. Elk element kan een waarde van elk scalair gegevens type zijn, behalve niet **gedefinieerd**.|  
 |**Object**|Een niet-geordende set van nul of meer naam/waarde-paren. Naam is een Unicode-tekenreeks, de waarde kan zijn van elk gegevenstype scalaire, behalve **Undefined**.|  
   
 ## <a name="bk_syntax"></a>Syntaxis
@@ -59,7 +59,7 @@ ms.locfileid: "67342664"
   
 ```  
   
-##  <a name="bk_arguments"></a> argumenten
+##  <a name="bk_arguments"></a>Opmerkingen
   
 * `<undefined_constant>; Undefined`  
   
@@ -107,7 +107,7 @@ ms.locfileid: "67342664"
 |-|-|-|  
 |\\'|enkel aanhalingsteken (')|U+0027|  
 |\\"|dubbel aanhalingsteken (")|U+0022|  
-|\\\ |omgekeerde schuine streep (\\)|U + 005C|  
+|\\\ |omgekeerde schuine streep\\()|U + 005C|  
 |\\/|schuine streep (/)|U+002F|  
 |\b|BACKSPACE|U+0008|  
 |\f|formulier-feed|U + 000C|  
@@ -118,5 +118,5 @@ ms.locfileid: "67342664"
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Documentgegevens modelleren](modeling-data.md)
+- [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Document gegevens model leren](modeling-data.md)

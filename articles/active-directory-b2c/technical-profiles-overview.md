@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cdb1b49af5d3a85dc1853e5964c1cdfdd5c3a7cd
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 679de2d3a5519e57978239ddd75a4b9fa2ffef3c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716674"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998760"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Over technische profielen in Azure Active Directory B2C aangepast beleid
 
@@ -37,7 +37,6 @@ Met een technisch profiel kunnen deze soorten scenario's worden ingeschakeld:
 - Betrouw bare [provider](restful-technical-profile.md) : oproep naar rest API services, zoals het valideren van gebruikers invoer, verrijkende gebruikers gegevens of het integreren van line-of-business-toepassingen.
 - [SAML2](saml-technical-profile.md) -Federatie met een id-provider voor SAML-protocollen.
 - [](self-asserted-technical-profile.md) Zelfbevestigend: interactie met de gebruiker. Verzamel bijvoorbeeld de referenties van de gebruiker om u aan te melden, de registratie pagina weer te geven of het wacht woord opnieuw in te stellen.
-- **WsFed** -Federatie met een WsFed-protocol-ID-provider.
 - [Sessie beheer](active-directory-b2c-reference-sso-custom.md) : verschillende soorten sessies verwerken.
 - **Application Insights**
 

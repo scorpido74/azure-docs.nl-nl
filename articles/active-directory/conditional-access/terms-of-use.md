@@ -1,6 +1,6 @@
 ---
-title: Gebruiksvoorwaarden - Azure Active Directory | Microsoft Docs
-description: Aan de slag met Azure Active Directory gebruiksrechtovereenkomst gebruiken om gegevens te presenteren aan werknemers of gasten voordat ze toegang krijgen.
+title: Gebruiksvoorwaarden-Azure Active Directory | Microsoft Docs
+description: Ga aan de slag met Azure Active Directory gebruiks voorwaarden om informatie aan werk nemers of gasten te presen teren voordat ze toegang krijgen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
@@ -11,50 +11,50 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f891642761a2f692158efbd9111ff96444c4269d
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 31d84d5bf43bac55769a6479917794a51c1ccd0c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476192"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999123"
 ---
-# <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory-gebruiksvoorwaarden
+# <a name="azure-active-directory-terms-of-use"></a>Gebruiks voorwaarden van Azure Active Directory
 
-Azure AD gebruiksrechtovereenkomst biedt een eenvoudige methode die organisaties kunnen gebruiken om gegevens te presenteren aan eindgebruikers. Deze presentatie zorgt ervoor dat gebruikers relevante disclaimers voor juridische vereisten of nalevingsvereisten te zien krijgen. In dit artikel wordt beschreven hoe u aan de slag met de gebruiksvoorwaarden.
+Azure AD-gebruiks voorwaarden bieden een eenvoudige methode die organisaties kunnen gebruiken om informatie te presen teren aan eind gebruikers. Deze presentatie zorgt ervoor dat gebruikers relevante disclaimers voor juridische vereisten of nalevingsvereisten te zien krijgen. In dit artikel wordt beschreven hoe u aan de slag gaat met gebruiks voorwaarden.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="overview-videos"></a>Overzicht van video 's
 
-De volgende video biedt een kort overzicht van de gebruiksvoorwaarden.
+De volgende video bevat een kort overzicht van gebruiks voorwaarden.
 
 >[!VIDEO https://www.youtube.com/embed/tj-LK0abNao]
 
 Zie voor aanvullende video's:
-- [Gebruiksvoorwaarden in Azure Active Directory implementeren](https://www.youtube.com/embed/N4vgqHO2tgY)
-- [Hoe implementeer gebruiksvoorwaarden in Azure Active Directory](https://www.youtube.com/embed/t_hA4y9luCY)
+- [Gebruiks voorwaarden in Azure Active Directory implementeren](https://www.youtube.com/embed/N4vgqHO2tgY)
+- [Gebruiks voorwaarden in Azure Active Directory samen vouwen](https://www.youtube.com/embed/t_hA4y9luCY)
 
-## <a name="what-can-i-do-with-terms-of-use"></a>Wat kan ik doen met de gebruiksvoorwaarden
+## <a name="what-can-i-do-with-terms-of-use"></a>Wat kan ik doen met gebruiks voorwaarden?
 
-Azure AD gebruiksrechtovereenkomst heeft de volgende mogelijkheden:
+Azure AD-gebruiks voorwaarden hebben de volgende mogelijkheden:
 
-- Vereisen dat werknemers of gasten accepteert de gebruiksrechtovereenkomst voordat ze toegang krijgen.
-- Vereisen dat werknemers of gasten accepteer de gebruiksvoorwaarden op elk apparaat voordat ze toegang krijgen.
-- Werknemers of gasten accepteert de gebruiksrechtovereenkomst volgens een terugkerend schema vereist.
-- Werknemers of gasten accepteert de gebruiksrechtovereenkomst voorafgaand aan de registratie van beveiligingsgegevens in Azure multi-factor Authentication (MFA) vereist.
-- Vereisen dat werknemers accepteer de gebruiksvoorwaarden voorafgaand aan de registratie van beveiligingsgegevens in Azure AD selfservice voor wachtwoordherstel (SSPR).
-- Algemene gebruiksrechtovereenkomst voor alle gebruikers die aanwezig zijn in uw organisatie.
-- Specifieke gebruiksrechtovereenkomst op basis van gebruikerskenmerken (ex presenteren.) artsen versus verpleegkundigen of binnenlandse werknemers versus werknemers in het buitenland) met behulp van [dynamische groepen](../users-groups-roles/groups-dynamic-membership.md).
-- Specifieke gebruiksvoorwaarden presenteren bij het openen van hoge zakelijke impact toepassingen, zoals Salesforce.
-- Gebruiksvoorwaarden die aanwezig zijn in verschillende talen.
-- De lijst die is of met uw gebruiksrechtovereenkomst nog niet is geaccepteerd.
+- Vereisen dat werk nemers of gasten uw gebruiks voorwaarden accepteren voordat ze toegang krijgen.
+- Vereisen dat werk nemers of gasten uw gebruiks voorwaarden op elk apparaat accepteren voordat ze toegang krijgen.
+- Vereisen dat werk nemers of gasten uw gebruiks voorwaarden in een terugkerend schema accepteren.
+- Vereisen dat werk nemers of gasten uw gebruiks voorwaarden accepteren voordat ze beveiligings gegevens registreren in azure Multi-Factor Authentication (MFA).
+- Vereisen dat werk nemers uw gebruiks voorwaarden accepteren voordat ze beveiligings gegevens registreren in azure AD selfservice voor wachtwoord herstel (SSPR).
+- Algemene Gebruiks voorwaarden voor alle gebruikers in uw organisatie.
+- Specifieke gebruiks voorwaarden presen teren op basis van de kenmerken van een gebruiker (bijvoorbeeld artsen versus verpleegkundigen of binnenlandse werknemers versus werknemers in het buitenland) met behulp van [dynamische groepen](../users-groups-roles/groups-dynamic-membership.md).
+- Specifieke gebruiks voorwaarden presen teren bij het openen van toepassingen met hoge bedrijfs impact, zoals Sales Force.
+- Gebruiks voorwaarden in verschillende talen.
+- Een lijst die uw gebruiks voorwaarden al dan niet heeft geaccepteerd.
 - Helpen bij het voldoen aan de regels.
-- Een logboek van de voorwaarden van de activiteit gebruiken voor naleving en audits weergegeven.
-- Maken en beheren van de voorwaarden van het gebruik van gebruik [Microsoft Graph-API's](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) (momenteel in Preview-versie).
+- Een logboek met gebruiks voorwaarden voor naleving en controle weer geven.
+- Gebruiks voorwaarden maken en beheren met behulp van [Microsoft Graph api's](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) (momenteel als preview-versie).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u wilt gebruiken en configureren van Azure AD gebruiksrechtovereenkomst gebruiken, moet u het volgende hebben:
+Als u Azure AD-gebruiks voorwaarden wilt gebruiken en configureren, hebt u het volgende nodig:
 
 - Abonnement op Azure AD Premium P1, P2, EMS E3 of EMS E5.
    - Als u niet over een van deze abonnementen beschikt, kunt u [Azure AD Premium downloaden](../fundamentals/active-directory-get-started-premium.md) of [Azure AD Premium uitproberen](https://azure.microsoft.com/trial/get-started-active-directory/).
@@ -65,37 +65,37 @@ Als u wilt gebruiken en configureren van Azure AD gebruiksrechtovereenkomst gebr
 
 ## <a name="terms-of-use-document"></a>Document met gebruiksrechtovereenkomst
 
-Azure AD gebruiksrechtovereenkomst maakt gebruik van de PDF-indeling weergeven van inhoud. Het PDF-bestand kan van alles bevatten, zoals bestaande contracten, zodat u tijdens het aanmelden van gebruikers eindgebruikersovereenkomsten kunt verzamelen. Ter ondersteuning van gebruikers op mobiele apparaten, is de aanbevolen tekengrootte in het PDF-bestand 24 punt.
+Voor de gebruiks voorwaarden van Azure AD wordt de PDF-indeling gebruikt om inhoud weer te geven. Het PDF-bestand kan van alles bevatten, zoals bestaande contracten, zodat u tijdens het aanmelden van gebruikers eindgebruikersovereenkomsten kunt verzamelen. Ter ondersteuning van gebruikers op mobiele apparaten, is de aanbevolen tekengrootte in het PDF-bestand 24 punt.
 
 ## <a name="add-terms-of-use"></a>Gebruiksrechtovereenkomst toevoegen
 
-Nadat u uw document met gebruiksrechtovereenkomst hebt voltooid, gebruikt u de volgende procedure toe te voegen.
+Wanneer u het document voor de gebruiks voorwaarden hebt voltooid, gebruikt u de volgende procedure om het te voegen.
 
 1. Aanmelden bij Azure als een globale beheerder, beveiligingsbeheerder of beheerder van voorwaardelijke toegang.
 1. Navigeer naar **Gebruiksrechtovereenkomst** op [https://aka.ms/catou](https://aka.ms/catou).
 
-   ![Voorwaardelijke toegang - voorwaarden van de blade gebruiken](./media/terms-of-use/tou-blade.png)
+   ![Voorwaardelijke toegang-Blade Gebruiksvoorwaarden](./media/terms-of-use/tou-blade.png)
 
 1. Klik op **Nieuwe voorwaarden**.
 
-   ![Nieuwe term van deelvenster gebruiken om op te geven van de voorwaarden van de instellingen gebruiken](./media/terms-of-use/new-tou.png)
+   ![Het deel venster nieuwe gebruiks voorwaarden om uw gebruiksrecht overeenkomst op te geven](./media/terms-of-use/new-tou.png)
 
-1. In de **naam** vak, voer een naam voor de gebruiksvoorwaarden die wordt gebruikt in Azure portal.
+1. Voer in het vak **naam** een naam in voor de gebruiks voorwaarden die worden gebruikt in de Azure Portal.
 1. In de **weergavenaam** vak, voer een titel die gebruikers wanneer ze zich zien aanmelden.
-1. Voor **document met gebruiksrechtovereenkomst**, blader naar uw voltooide gebruiksrechtovereenkomst PDF-bestand en selecteert u deze.
-1. Selecteer de taal voor uw document met gebruiksrechtovereenkomst. Via de taaloptie kunt u meerdere gebruiksvoorwaarden uploaden, elk met een andere taal. Welke versie van de gebruiksvoorwaarden aan een eindgebruiker wordt weergegeven, is gebaseerd op de browservoorkeuren.
-1. Instellen om te vereisen dat eindgebruikers om weer te geven van de gebruiksvoorwaarden alvorens deze te accepteren, **vereisen dat gebruikers om uit te breiden de gebruiksvoorwaarden** naar **op**.
-1. Instellen om te vereisen dat eindgebruikers accepteer de gebruiksvoorwaarden op elk apparaat dat ze vanuit openen, **vereisen dat gebruikers accepteren op elk apparaat** naar **op**. Zie voor meer informatie, [Per apparaat gebruiksvoorwaarden](#per-device-terms-of-use).
-1. Als u wilt laten verlopen van voorwaarden instemming voor gebruiksrechtovereenkomst volgens een schema, stelt u **verlopen toestemmingen** naar **op**. Wanneer een ingesteld op aan, worden twee aanvullende schema-instellingen weergegeven.
+1. Voor **Gebruiksvoorwaarden document**bladert u naar uw voltooide voor waarden van PDF en selecteert u deze.
+1. Selecteer de taal voor uw gebruiks voorwaarden document. Via de taaloptie kunt u meerdere gebruiksvoorwaarden uploaden, elk met een andere taal. Welke versie van de gebruiksvoorwaarden aan een eindgebruiker wordt weergegeven, is gebaseerd op de browservoorkeuren.
+1. Als u wilt dat eind gebruikers de gebruiks voorwaarden kunnen bekijken voordat ze ze kunnen accepteren, stelt u **gebruikers verplichten om de gebruiks voorwaarden uit te breiden** naar **aan.**
+1. Als eind gebruikers de gebruiks voorwaarden moeten accepteren op elk apparaat waartoe ze toegang hebben, stelt u **gebruikers verplicht om op elk apparaat** in te stemmen **.** Zie [gebruiks voorwaarden per apparaat](#per-device-terms-of-use)voor meer informatie.
+1. Als u de voor waarden voor het gebruik van de gebruiksrecht overeenkomst volgens een planning wilt laten verlopen, stelt u **verlopende berichten** **in op aan.** Wanneer een ingesteld op aan, worden twee aanvullende schema-instellingen weergegeven.
 
-   ![Verlopen toestemmingen instellingen om in te stellen, begindatum, frequentie en duur](./media/terms-of-use/expire-consents.png)
+   ![Instellingen voor verlopen verloopt om de begin datum, frequentie en duur in te stellen](./media/terms-of-use/expire-consents.png)
 
-1. Gebruik de **verloopt vanaf** en **frequentie** instellingen om op te geven van de planning voor de voorwaarden van accountwachtwoorden gebruiken. De volgende tabel toont het resultaat voor een aantal voorbeeldinstellingen voor:
+1. Gebruik de instellingen **verloopt op basis van begin datum** en **frequentie** om de planning op te geven voor de gebruiks voorwaarden. De volgende tabel toont het resultaat voor een aantal voorbeeldinstellingen voor:
 
    | Verloopt vanaf | Frequentie | Resultaat |
    | --- | --- | --- |
-   | De datum van vandaag  | Maandelijks | Vanaf vandaag, moeten gebruikers accepteer de gebruiksvoorwaarden en vervolgens accepteren elke maand. |
-   | Datum in de toekomst  | Maandelijks | Vanaf vandaag, moeten gebruikers de gebruiksvoorwaarden accepteren. Wanneer de datum in de toekomst plaatsvindt, toestemmingen verloopt en vervolgens gebruikers elke maand moeten accepteren.  |
+   | De datum van vandaag  | Maandelijks | Vanaf vandaag moeten gebruikers de gebruiks voorwaarden accepteren en vervolgens elke maand opnieuw accepteren. |
+   | Datum in de toekomst  | Maandelijks | Gebruikers moeten de gebruiks voorwaarden accepteren om vandaag nog te beginnen. Wanneer de datum in de toekomst plaatsvindt, toestemmingen verloopt en vervolgens gebruikers elke maand moeten accepteren.  |
 
    Bijvoorbeeld, als u de verlopen starten op de datum die moet worden ingesteld **1 januari** en frequentie **maandelijkse**, dit is hoe accountwachtwoorden voor twee gebruikers zich kunnen voordoen:
 
@@ -104,7 +104,7 @@ Nadat u uw document met gebruiksrechtovereenkomst hebt voltooid, gebruikt u de v
    | Els | 1 januari | 1 februari | 1 maart | 1 april |
    | Bob | 15 januari | 1 februari | 1 maart | 1 april |
 
-1. Gebruik de **duur voordat re-acceptatie vereist (dagen)** instelling om op te geven van het aantal dagen voordat de gebruiker moet de gebruiksvoorwaarden accepteren. Hiermee kunnen gebruikers hun eigen planning volgen. Bijvoorbeeld, als u de periode instellen op **30** dagen, dit is hoe accountwachtwoorden voor twee gebruikers zich kunnen voordoen:
+1. Gebruik de waarde **voor de duur voordat u voor opnieuw accepteren (dagen)** de instelling opgeeft om het aantal dagen op te geven waarna de gebruiker de gebruiks voorwaarden opnieuw moet accepteren. Hiermee kunnen gebruikers hun eigen planning volgen. Bijvoorbeeld, als u de periode instellen op **30** dagen, dit is hoe accountwachtwoorden voor twee gebruikers zich kunnen voordoen:
 
    | Gebruiker | Datum eerste accepteren | Eerst verlopen datum | Ten tweede verlopen datum | Het derde verlopen datum |
    | --- | --- | --- | --- | --- |
@@ -113,142 +113,142 @@ Nadat u uw document met gebruiksrechtovereenkomst hebt voltooid, gebruikt u de v
 
    Het is mogelijk gebruik van de **toestemmingen verlopen** en **duur voordat re-acceptatie vereist (dagen)** instellingen bij elkaar, maar doorgaans een of andere gebruiken.
 
-1. Onder **voorwaardelijke toegang**, gebruikt u de **afdwingen met voorwaardelijke toegang beleidssjabloon** lijst selecteert u de sjabloon om af te dwingen de gebruiksvoorwaarden.
+1. Gebruik onder **voorwaardelijke toegang**de lijst **afdwingen met beleids sjablonen voor voorwaardelijke toegang** om de sjabloon te selecteren voor het afdwingen van de gebruiks voorwaarden.
 
-   ![Voorwaardelijke toegang vervolgkeuzelijst te selecteren van een beleidssjabloon](./media/terms-of-use/conditional-access-templates.png)
+   ![De vervolg keuzelijst voorwaardelijke toegang om een beleids sjabloon te selecteren](./media/terms-of-use/conditional-access-templates.png)
 
    | Template | Description |
    | --- | --- |
-   | **Toegang tot cloud-apps voor alle gasten** | Beleid voor voorwaardelijke toegang wordt gemaakt voor alle gasten en alle cloud-apps. Dit beleid heeft gevolgen voor de Azure-portal. Nadat deze is gemaakt, kunt u mogelijk vereist voor het afmelden en aanmelden. |
-   | **Toegang tot cloud-apps voor alle gebruikers** | Beleid voor voorwaardelijke toegang wordt gemaakt voor alle gebruikers en alle cloud-apps. Dit beleid heeft gevolgen voor de Azure-portal. Nadat deze is gemaakt, zich kunt u afmelden en opnieuw aanmelden vereist. |
-   | **Aangepast beleid** | Selecteer de gebruikers, groepen en apps die deze gebruiksvoorwaarden worden toegepast op. |
-   | **Het voorwaardelijke toegangsbeleid later maken** | Deze gebruiksrechtovereenkomst wordt weergegeven in de lijst voor beheer verlenen bij het maken van een beleid voor voorwaardelijke toegang. |
+   | **Toegang tot cloud-apps voor alle gasten** | Er wordt een beleid voor voorwaardelijke toegang gemaakt voor alle gasten en alle Cloud-apps. Dit beleid heeft gevolgen voor de Azure-portal. Nadat deze is gemaakt, kunt u mogelijk vereist voor het afmelden en aanmelden. |
+   | **Toegang tot cloud-apps voor alle gebruikers** | Er wordt een beleid voor voorwaardelijke toegang gemaakt voor alle gebruikers en alle Cloud-apps. Dit beleid heeft gevolgen voor de Azure-portal. Nadat deze is gemaakt, zich kunt u afmelden en opnieuw aanmelden vereist. |
+   | **Aangepast beleid** | Selecteer de gebruikers, groepen en apps waarop deze gebruiks voorwaarden worden toegepast. |
+   | **Beleid voor voorwaardelijke toegang later maken** | Deze gebruiks voorwaarden worden weer gegeven in de lijst granting Control bij het maken van beleid voor voorwaardelijke toegang. |
 
    >[!IMPORTANT]
-   >Voorwaardelijke toegang beleid besturingselementen (met inbegrip van de gebruiksvoorwaarden) bieden geen ondersteuning voor handhaving op serviceaccounts. Het is raadzaam om alle serviceaccounts uitsluiten van het beleid voor voorwaardelijke toegang.
+   >Besturings elementen voor beleid voor voorwaardelijke toegang (met inbegrip van gebruiks voorwaarden) bieden geen ondersteuning voor het afdwingen van service accounts. U wordt aangeraden alle service accounts uit te sluiten van het beleid voor voorwaardelijke toegang.
 
-    Aangepaste beleidsregels voor voorwaardelijke toegang inschakelen gedetailleerde gebruiksrechtovereenkomst, naar een specifieke cloudtoepassing of groep gebruikers. Zie voor meer informatie [Snelstart: Gebruiksrechtovereenkomst moet zijn geaccepteerd voordat u toegang tot cloud-apps vereisen](require-tou.md).
+    Met het aangepaste beleid voor voorwaardelijke toegang worden nauw keurige gebruiks voorwaarden ingeschakeld, tot een bepaalde Cloud toepassing of groep gebruikers. Zie voor meer informatie [Snelstart: Vereisen dat gebruiks voorwaarden worden geaccepteerd voordat ze toegang krijgen tot](require-tou.md)Cloud-apps.
 
 1. Klik op **Create**.
 
-   Als u een aangepaste sjabloon voor voorwaardelijke toegang hebt geselecteerd, klikt u vervolgens weergegeven een nieuw scherm waarin kunt u het aangepaste beleid voor voorwaardelijke toegang maken.
+   Als u een aangepaste sjabloon voor voorwaardelijke toegang hebt geselecteerd, wordt er een nieuw scherm weer gegeven waarin u het aangepaste beleid voor voorwaardelijke toegang kunt maken.
 
-   ![Nieuw deelvenster voor voorwaardelijke toegang als u de sjabloon voor aangepaste voorwaardelijke toegang](./media/terms-of-use/custom-policy.png)
+   ![Het deel venster nieuwe voorwaardelijke toegang als u de sjabloon voor het aangepaste beleid voor voorwaardelijke toegang hebt gekozen](./media/terms-of-use/custom-policy.png)
 
-   U ziet nu uw nieuwe gebruiksrechtovereenkomst.
+   U ziet nu de nieuwe gebruiks voorwaarden.
 
-   ![Nieuwe gebruiksvoorwaarden die worden vermeld in de voorwaarden van de blade gebruiken](./media/terms-of-use/create-tou.png)
+   ![Nieuwe gebruiks voorwaarden die worden vermeld op de Blade voor de voor waarden van het gebruik](./media/terms-of-use/create-tou.png)
 
 ## <a name="view-report-of-who-has-accepted-and-declined"></a>Rapport weergeven van wie heeft geaccepteerd en geweigerd
 
-In de Gebruiksrechtovereenkomst-blade ziet u de aantallen gebruikers die al dan niet hebben geaccepteerd. Deze telt het aantal en die geaccepteerd/afgewezen worden opgeslagen voor de levensduur van de gebruiksvoorwaarden.
+In de Gebruiksrechtovereenkomst-blade ziet u de aantallen gebruikers die al dan niet hebben geaccepteerd. Deze aantallen en personen die zijn geaccepteerd/geweigerd, worden opgeslagen voor de gebruiks duur van de gebruiks voorwaarden.
 
 1. Meld u aan bij Azure en navigeer naar **Gebruiksrechtovereenkomst** op [https://aka.ms/catou](https://aka.ms/catou).
 
-   ![Gebruiksrechtovereenkomst gebruik blade met het nummer van de gebruiker weergeven hebben geaccepteerd en niet](./media/terms-of-use/view-tou.png)
+   ![Gebruiksvoorwaarden Blade met vermelding van het aantal gebruikers weer geven dat is geaccepteerd en geweigerd](./media/terms-of-use/view-tou.png)
 
-1. Voor een gebruiksrechtovereenkomst, klikt u op de getallen onder **geaccepteerde** of **geweigerd** om de huidige status voor gebruikers weer te geven.
+1. Voor gebruiks voorwaarden klikt u op de nummers onder **geaccepteerd** of **geweigerd** om de huidige status voor gebruikers weer te geven.
 
-   ![De gebruiksrechtovereenkomst toestemmingen deelvenster Overzicht van de gebruikers die hebben geaccepteerd](./media/terms-of-use/accepted-tou.png)
+   ![Gebruiksvoorwaarden deel venster met toestemmingen worden de gebruikers weer gegeven die zijn geaccepteerd](./media/terms-of-use/accepted-tou.png)
 
 1. Als u wilt de geschiedenis van een afzonderlijke gebruiker weergeven, klikt u op het weglatingsteken ( **...** ) en vervolgens **geschiedenis weergeven**.
 
-   ![Geschiedenis-contextmenu voor een gebruiker weergeven](./media/terms-of-use/view-history-menu.png)
+   ![Context menu Geschiedenis voor een gebruiker weer geven](./media/terms-of-use/view-history-menu.png)
 
    In het deelvenster van de geschiedenis van weergave ziet u een overzicht van alle de dalingen en accountwachtwoorden accepteert.
 
-   ![Geschiedenis-deelvenster lijsten de geschiedenis accepteert, dalingen en accountwachtwoorden voor een gebruiker weergeven](./media/terms-of-use/view-history-pane.png)
+   ![Deel venster geschiedenis weer geven bevat de geschiedenis accepteren, afwijzen en verlopen voor een gebruiker](./media/terms-of-use/view-history-pane.png)
 
 ## <a name="view-azure-ad-audit-logs"></a>Auditlogboeken weergeven Azure AD
 
-Als u wilt om extra activiteiten te bekijken, bevat Azure AD gebruiksrechtovereenkomst auditlogboeken. Elke toestemming van de gebruiker activeert een gebeurtenis in de auditlogboeken die zijn opgeslagen voor **30 dagen**. U kunt deze logboeken bekijken in de portal of downloaden als CSV-bestand.
+Als u aanvullende activiteiten wilt weer geven, bevatten Azure AD-gebruiks voorwaarden audit Logboeken. Elke toestemming van de gebruiker activeert een gebeurtenis in de auditlogboeken die zijn opgeslagen voor **30 dagen**. U kunt deze logboeken bekijken in de portal of downloaden als CSV-bestand.
 
 Aan de slag met Azure AD controlelogboeken, gebruikt u de volgende procedure:
 
 1. Meld u aan bij Azure en navigeer naar **Gebruiksrechtovereenkomst** op [https://aka.ms/catou](https://aka.ms/catou).
-1. Selecteer een gebruiksrechtovereenkomst.
+1. Selecteer een gebruiks voorwaarden.
 1. Klik op **Auditlogboeken weergeven**.
 
-   ![Voorwaarden van de blade voor gebruik met de weergave audit logs-optie is gemarkeerd](./media/terms-of-use/audit-tou.png)
+   ![Gebruiksvoorwaarden Blade met de optie controle logboeken weer geven gemarkeerd](./media/terms-of-use/audit-tou.png)
 
 1. Op de Azure AD controleren logboeken scherm, kunt u de gegevens met behulp van de opgegeven lijsten om gegevens van specifieke auditlogboeken doel te filteren.
 
    U kunt ook op **Downloaden** klikken om de informatie te downloaden naar een CSV-bestand voor lokaal gebruik.
 
-   ![Azure AD-auditlogboeken scherm aanbieding datum, doel-beleid, gestart door, en activiteit](./media/terms-of-use/audit-logs-tou.png)
+   ![Controle logboeken van Azure AD scherm datum, doel beleid, geïnitieerd door en activiteit](./media/terms-of-use/audit-logs-tou.png)
 
    Als u een logboek klikt, wordt een deelvenster met details van de extra activiteiten wordt weergegeven.
 
-   ![Details van de activiteit voor een logboek weer met activiteit, de status van de activiteit, gestart door, beleid doel](./media/terms-of-use/audit-log-activity-details.png)
+   ![Activiteit gegevens voor een logboek met activiteiten, activiteitsstatus, geïnitieerd door, doel beleid](./media/terms-of-use/audit-log-activity-details.png)
 
-## <a name="what-terms-of-use-looks-like-for-users"></a>Welke gebruiksvoorwaarden lijkt voor gebruikers
+## <a name="what-terms-of-use-looks-like-for-users"></a>Welke gebruiks voorwaarden zijn er voor gebruikers?
 
-Zodra een gebruiksrechtovereenkomst is gemaakt en afgedwongen, zien gebruikers, die binnen het bereik, het volgende scherm tijdens het aanmelden.
+Zodra een gebruiks voorwaarden is gemaakt en afgedwongen, zien gebruikers, die binnen het bereik vallen, het volgende scherm tijdens het aanmelden.
 
-![Voorbeeld van de gebruiksrechtovereenkomst die wordt weergegeven wanneer een gebruiker zich aanmeldt](./media/terms-of-use/user-tou.png)
+![Voor beeld van gebruiks voorwaarden die worden weer gegeven wanneer een gebruiker zich aanmeldt](./media/terms-of-use/user-tou.png)
 
-Gebruikers kunnen de gebruiksvoorwaarden bekijken en indien nodig, knoppen gebruiken in-en uitzoomen.
+Gebruikers kunnen de gebruiks voorwaarden bekijken en, indien nodig, knoppen gebruiken om in en uit te zoomen.
 
-![Weergave van gebruiksvoorwaarden met knoppen voor inzoomen](./media/terms-of-use/zoom-buttons.png)
+![Weer gave van gebruiks voorwaarden met Zoom knoppen](./media/terms-of-use/zoom-buttons.png)
 
-Het volgende scherm ziet u hoe gebruiksvoorwaarden eruitziet op mobiele apparaten.
+In het volgende scherm ziet u hoe de gebruiks voorwaarden op mobiele apparaten eruitzien.
 
-![Voorbeeld van de gebruiksrechtovereenkomst die wordt weergegeven wanneer een gebruiker zich aanmeldt op een mobiel apparaat](./media/terms-of-use/mobile-tou.png)
+![Voor beeld van gebruiks voorwaarden die worden weer gegeven wanneer een gebruiker zich aanmeldt op een mobiel apparaat](./media/terms-of-use/mobile-tou.png)
 
-Gebruikers zijn alleen vereist voor de gebruiksvoorwaarden accepteren één keer en zien ze de gebruiksvoorwaarden opnieuw op de volgende aanmeldingen.
+Gebruikers moeten de gebruiks voorwaarden slechts eenmaal accepteren en de gebruiks voorwaarden worden niet meer weer geven voor volgende aanmeldingen.
 
-### <a name="how-users-can-review-their-terms-of-use"></a>Hoe gebruikers hun gebruiksvoorwaarden kunnen controleren
+### <a name="how-users-can-review-their-terms-of-use"></a>Hoe gebruikers hun gebruiks voorwaarden kunnen bekijken
 
-Gebruikers controleren en bekijken van de gebruiksvoorwaarden die ze hebben geaccepteerd met behulp van de volgende procedure.
+Gebruikers kunnen de gebruiks voorwaarden bekijken en bekijken die ze hebben geaccepteerd met behulp van de volgende procedure.
 
 1. Meld u aan bij [https://myapps.microsoft.com](https://myapps.microsoft.com).
 1. In de rechterbovenhoek, klikt u op uw naam en selecteer **profiel**.
 
-   ![MyApps-website met van de gebruiker-deelvenster geopend](./media/terms-of-use/tou14.png)
+   ![MyApps-site met het deel venster van de gebruiker geopend](./media/terms-of-use/tou14.png)
 
 1. Klik in uw profielpagina op **Gebruiksvoorwaarden controleren**.
 
-   ![Profielpagina voor een gebruiker met de voorwaarden van de beoordeling van de verbinding gebruiken](./media/terms-of-use/tou13a.png)
+   ![Profiel pagina voor een gebruiker met de koppeling beoordelings voorwaarden van gebruik](./media/terms-of-use/tou13a.png)
 
 1. Vanaf hier kunt u de gebruiksrechtovereenkomst bekijken die u hebt geaccepteerd.
 
 ## <a name="edit-terms-of-use-details"></a>Gegevens van gebruiksvoorwaarden bewerken
 
-U kunt sommige gegevens van gebruiksvoorwaarden bewerken, maar u kunt een bestaand document niet wijzigen. De volgende procedure wordt beschreven hoe u de details bewerken.
+U kunt enkele details van de gebruiks voorwaarden bewerken, maar niet wijzigen van een bestaand document. De volgende procedure wordt beschreven hoe u de details bewerken.
 
 1. Meld u aan bij Azure en navigeer naar **Gebruiksrechtovereenkomst** op [https://aka.ms/catou](https://aka.ms/catou).
-1. Selecteer de gebruiksvoorwaarden die u wilt bewerken.
+1. Selecteer de gebruiks voorwaarden die u wilt bewerken.
 1. Klik op **gebruiksvoorwaarden bewerken**.
 1. In de voorwaarden bewerken van deelvenster gebruikt, wijzigt u de naam, weergavenaam of vereisen dat gebruikers om uit te breiden waarden.
 
-   Als er andere instellingen die u wijzigen wilt, zoals PDF-document, vereisen dat gebruikers accepteren op elk apparaat, verlopen toestemmingen, duur voordat reacceptance of beleid voor voorwaardelijke toegang, moet u een nieuwe gebruiksvoorwaarden maken.
+   Als er andere instellingen zijn die u wilt wijzigen, zoals een PDF-document, moet u gebruikers toestemming geven op elk apparaat, verlopend en verlopen, duur vóór heracceptatie of beleid voor voorwaardelijke toegang. u kunt ook een nieuwe gebruiks voorwaarden maken.
 
-   ![Gebruiksvoorwaarden van gebruik deelvenster waarin de naam bewerken en vouw opties](./media/terms-of-use/edit-tou.png)
+   ![Deel venster met gebruiks voorwaarden bewerken naam en Uitvouw opties weer geven](./media/terms-of-use/edit-tou.png)
 
 1. Klik op **opslaan** uw wijzigingen op te slaan.
 
-   Nadat u uw wijzigingen opslaat, worden gebruikers niet hebben deze wijzigingen onderhevig.
+   Zodra u de wijzigingen hebt opgeslagen, hoeven gebruikers deze bewerkingen niet opnieuw te accepteren.
 
-## <a name="add-a-terms-of-use-language"></a>Een gebruiksrechtovereenkomst gebruik taal toevoegen
+## <a name="add-a-terms-of-use-language"></a>Een taal voor de gebruiks voorwaarden toevoegen
 
-De volgende procedure wordt beschreven hoe u een gebruiksrechtovereenkomst gebruik taal toevoegen.
+In de volgende procedure wordt beschreven hoe u een taal voor de gebruiks voorwaarden kunt toevoegen.
 
 1. Meld u aan bij Azure en navigeer naar **Gebruiksrechtovereenkomst** op [https://aka.ms/catou](https://aka.ms/catou).
-1. Selecteer de gebruiksvoorwaarden die u wilt bewerken.
+1. Selecteer de gebruiks voorwaarden die u wilt bewerken.
 1. Klik in het detailvenster op de **talen** tabblad.
 
-   ![Gebruiksvoorwaarden geselecteerd en het tabblad talen worden weergegeven in het deelvenster met details](./media/terms-of-use/languages-tou.png)
+   ![Gebruiksvoorwaarden geselecteerd en toont het tabblad talen in het detail venster](./media/terms-of-use/languages-tou.png)
 
 1. Klik op **taal toevoegen**.
 1. In de voorwaarden toevoegen van gebruik taal deelvenster, uw gelokaliseerde PDF-bestand uploaden en selecteer de taal.
 
-   ![Gebruiksrechtovereenkomst gebruik taal deelvenster met opties voor het uploaden van gelokaliseerde PDF-bestanden toevoegen](./media/terms-of-use/language-add-tou.png)
+   ![Het deel venster taal van gebruiks voorwaarden toevoegen met opties voor het uploaden van gelokaliseerde Pdf's](./media/terms-of-use/language-add-tou.png)
 
 1. Klik op **toevoegen** om toe te voegen van de taal.
 
-## <a name="per-device-terms-of-use"></a>Gebruiksvoorwaarden per apparaat
+## <a name="per-device-terms-of-use"></a>Gebruiks voorwaarden per apparaat
 
-De **vereisen dat gebruikers accepteren op elk apparaat** instelling kunt u vereisen dat eindgebruikers accepteer de gebruiksvoorwaarden op elk apparaat dat ze vanuit openen. De eindgebruiker moet naar het toevoegen van hun apparaat in Azure AD. Wanneer het apparaat is toegevoegd, wordt de apparaat-ID wordt gebruikt om af te dwingen de gebruiksvoorwaarden op elk apparaat.
+Met de optie gebruikers moeten toestemming geven voor **elke Apparaatinstellingen** kunt u eind gebruikers verplichten de gebruiks voorwaarden te accepteren op elk apparaat waartoe ze toegang hebben. De eindgebruiker moet naar het toevoegen van hun apparaat in Azure AD. Wanneer het apparaat wordt toegevoegd, wordt de apparaat-ID gebruikt voor het afdwingen van de gebruiks voorwaarden op elk apparaat.
 
 Hier volgt een lijst van de ondersteunde platformen en software.
 
@@ -260,12 +260,12 @@ Hier volgt een lijst van de ondersteunde platformen en software.
 > | **Internet Explorer** | Ja | Ja | Ja |  |
 > | **Chrome (met de extensie)** | Ja | Ja | Ja |  |
 
-Gebruiksvoorwaarden per apparaat heeft de volgende beperkingen:
+Voor de gebruiks voorwaarden per apparaat gelden de volgende beperkingen:
 
 - Een apparaat kan alleen worden samengevoegd in één tenant.
 - Een gebruiker moet machtigingen voor het toevoegen van hun apparaat hebben.
-- De app Intune-inschrijving wordt niet ondersteund.
-- Azure AD B2B-gebruikers worden niet ondersteund.
+- De intune-inschrijvings-app wordt niet ondersteund.
+- Gebruikers van Azure AD B2B worden niet ondersteund.
 
 Als het apparaat van de gebruiker niet is toegevoegd, ontvangt deze een bericht die ze nodig hebben om hun apparaat. Hun ervaring zijn afhankelijk van het platform en de software.
 
@@ -273,7 +273,7 @@ Als het apparaat van de gebruiker niet is toegevoegd, ontvangt deze een bericht 
 
 Als een gebruiker wordt met behulp van Windows 10 en Microsoft Edge, ontvangt deze een bericht dat lijkt op de volgende [toevoegen van hun apparaat](../user-help/user-help-join-device-on-network.md#to-join-an-already-configured-windows-10-device).
 
-![Windows 10 en Microsoft Edge - dat aangeeft dat het apparaat moet worden geregistreerd](./media/terms-of-use/per-device-win10-edge.png)
+![Windows 10 en micro soft Edge: berichten die aangeven dat het apparaat moet worden geregistreerd](./media/terms-of-use/per-device-win10-edge.png)
 
 Als ze met chrome werkt, wordt ze gevraagd voor het installeren van de [Windows 10-Accounts extensie](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
 
@@ -281,42 +281,42 @@ Als ze met chrome werkt, wordt ze gevraagd voor het installeren van de [Windows 
 
 Als een gebruiker via de browser die niet wordt ondersteund, wordt ze gevraagd een andere browser te gebruiken.
 
-![Dat aangeeft dat het apparaat moet worden geregistreerd, maar de browser wordt niet ondersteund](./media/terms-of-use/per-device-browser-unsupported.png)
+![Bericht dat aangeeft dat uw apparaat moet zijn geregistreerd, maar de browser wordt niet ondersteund](./media/terms-of-use/per-device-browser-unsupported.png)
 
-## <a name="delete-terms-of-use"></a>Gebruiksvoorwaarden verwijderen
+## <a name="delete-terms-of-use"></a>Gebruiks voorwaarden verwijderen
 
-Oude gebruiksrechtovereenkomst met de volgende procedure kunt u verwijderen.
+U kunt oude gebruiks voorwaarden verwijderen met behulp van de volgende procedure.
 
 1. Meld u aan bij Azure en navigeer naar **Gebruiksrechtovereenkomst** op [https://aka.ms/catou](https://aka.ms/catou).
 1. Selecteer de gebruiksrechtovereenkomst die u wilt verwijderen.
 1. Klik op **Gebruiksvoorwaarden verwijderen**.
 1. Klik in het bericht waarin u wordt gevraagd of u wilt doorgaan op **Ja**.
 
-   ![Bericht waarin wordt gevraagd om bevestiging gebruiksvoorwaarden verwijderen](./media/terms-of-use/delete-tou.png)
+   ![Bericht dat vraagt om bevestiging voor het verwijderen van de gebruiks voorwaarden](./media/terms-of-use/delete-tou.png)
 
-   U ziet niet langer de gebruiksrechtovereenkomst.
+   Het is niet meer mogelijk om uw gebruiks voorwaarden te zien.
 
-## <a name="deleted-users-and-active-terms-of-use"></a>Verwijderde gebruikers en actieve gebruiksvoorwaarden
+## <a name="deleted-users-and-active-terms-of-use"></a>Verwijderde gebruikers en actieve gebruiks voorwaarden
 
-Standaard blijft een verwijderde gebruiker gedurende 30 dagen in Azure AD aanwezig met de status Verwijderd. In deze periode kan de gebruiker eventueel door een beheerder worden teruggezet. Na dertig dagen wordt die gebruiker definitief verwijderd. Daarnaast kan een hoofdbeheerder via de Azure Active Directory-portal expliciet [een recentelijk verwijderde gebruiker definitief verwijderen](../fundamentals/active-directory-users-restore.md) voordat de dertig dagen zijn verstreken. Een gebruiker permanent is verwijderd, verdere gegevens over die gebruiker wordt verwijderd uit de actieve gebruiksvoorwaarden. Controle-informatie over verwijderde gebruikers blijft in het auditlogboek aanwezig.
+Standaard blijft een verwijderde gebruiker gedurende 30 dagen in Azure AD aanwezig met de status Verwijderd. In deze periode kan de gebruiker eventueel door een beheerder worden teruggezet. Na dertig dagen wordt die gebruiker definitief verwijderd. Daarnaast kan een hoofdbeheerder via de Azure Active Directory-portal expliciet [een recentelijk verwijderde gebruiker definitief verwijderen](../fundamentals/active-directory-users-restore.md) voordat de dertig dagen zijn verstreken. Een gebruiker is definitief verwijderd. volgende gegevens over die gebruiker worden verwijderd uit de actieve gebruiks voorwaarden. Controle-informatie over verwijderde gebruikers blijft in het auditlogboek aanwezig.
 
 ## <a name="policy-changes"></a>Beleidswijzigingen
 
-Beleid voor voorwaardelijke toegang zijn onmiddellijk van kracht. Als dit gebeurt, gaan de beheerder 'verdrietige clouds' of 'Token problemen met Azure AD'. De beheerder moet zich afmelden en opnieuw aanmelden om te voldoen aan het nieuwe beleid.
+Beleids regels voor voorwaardelijke toegang worden direct van kracht. Als dit gebeurt, gaan de beheerder 'verdrietige clouds' of 'Token problemen met Azure AD'. De beheerder moet zich afmelden en opnieuw aanmelden om te voldoen aan het nieuwe beleid.
 
 > [!IMPORTANT]
 > Gebruikers in het bereik moeten zich af- en aanmelden om te voldoen aan een nieuw beleid:
 >
-> - beleid voor voorwaardelijke toegang is ingeschakeld op een gebruiksrechtovereenkomst
+> - een beleid voor voorwaardelijke toegang is ingeschakeld voor de gebruiks voorwaarden
 > - of als er een tweede gebruiksrechtovereenkomst is gemaakt
 
 ## <a name="b2b-guests-preview"></a>B2B-gasten (Preview)
 
-De meeste organisaties beschikken over een proces voor hun werknemers akkoord gaan met de voorwaarden van gebruik en privacyverklaringen van hun organisatie. Maar hoe kunt u afdwingen de dezelfde toestemmingen voor Azure AD business-to-business (B2B) gasten wanneer ze worden toegevoegd via SharePoint of Teams? Met behulp van voorwaardelijke toegang en gebruiksvoorwaarden, kunt u een beleid rechtstreeks voor B2B-gastgebruikers afdwingen. Tijdens de uitnodiging inwisselen stroom, wordt de gebruiker weergegeven met de gebruiksvoorwaarden. Deze ondersteuning is momenteel in preview.
+De meeste organisaties beschikken over een proces voor hun werk nemers om toestemming te geven voor de gebruiks voorwaarden en privacyverklaringen van de organisatie. Maar hoe kunt u afdwingen de dezelfde toestemmingen voor Azure AD business-to-business (B2B) gasten wanneer ze worden toegevoegd via SharePoint of Teams? Door gebruik te maken van voorwaardelijke toegang en gebruiks voorwaarden, kunt u een beleid rechtstreeks afdwingen voor B2B-gast gebruikers. Tijdens de inwissel van de uitnodiging krijgt de gebruiker de gebruiks voorwaarden te zien. Deze ondersteuning is momenteel in preview.
 
-Gebruiksvoorwaarden wordt alleen weergegeven wanneer de gebruiker een Gast-account in Azure AD heeft. SharePoint Online op dit moment heeft een [ad-hoc extern delen geadresseerde ervaring](/sharepoint/what-s-new-in-sharing-in-targeted-release) voor het delen van een document of een map waarvoor de gebruiker een gastaccount hebben. In dit geval wordt een gebruiksrechtovereenkomst niet weergegeven.
+Gebruiksvoorwaarden wordt alleen weer gegeven wanneer de gebruiker een gast account in azure AD heeft. Share point online heeft momenteel een [ad hoc externe ontvanger](/sharepoint/what-s-new-in-sharing-in-targeted-release) voor het delen van een document of een map waarvoor de gebruiker geen gast account nodig heeft. In dit geval wordt er geen gebruiks voorwaarden weer gegeven.
 
-![Gebruikers en groepen deelvenster - tabblad met de optie voor alle Gast gebruikers dit selectievakje is ingeschakeld](./media/terms-of-use/b2b-guests.png)
+![Het deel venster gebruikers en groepen-tabblad includes met alle gast gebruikers opties ingeschakeld](./media/terms-of-use/b2b-guests.png)
 
 ## <a name="support-for-cloud-apps-preview"></a>Ondersteuning voor cloud-apps (Preview)
 
@@ -324,64 +324,64 @@ Gebruiksvoorwaarden kunnen worden gebruikt voor verschillende cloud-apps, zoals 
 
 ### <a name="azure-information-protection"></a>Azure Information Protection
 
-U kunt een beleid voor voorwaardelijke toegang voor de Azure Information Protection-app configureren en een gebruiksrechtovereenkomst vereisen wanneer een gebruiker toegang heeft tot een beveiligd document. Hiermee wordt een gebruiksrechtovereenkomst voordat een gebruiker toegang tot een beveiligd document voor de eerste keer geactiveerd.
+U kunt een beleid voor voorwaardelijke toegang configureren voor de app Azure Information Protection en vereisen een gebruiks voorwaarden wanneer een gebruiker toegang heeft tot een beveiligd document. Hiermee wordt een gebruiks voorwaarden geactiveerd voor de eerste keer dat een gebruiker toegang heeft tot een beveiligd document.
 
-![Deelvenster voor cloud-apps met Microsoft Azure Information Protection-app geselecteerd](./media/terms-of-use/cloud-app-info-protection.png)
+![Deel venster Cloud-apps met Microsoft Azure Information Protection app geselecteerd](./media/terms-of-use/cloud-app-info-protection.png)
 
 ### <a name="microsoft-intune-enrollment"></a>Microsoft Intune-inschrijving
 
-U kunt een beleid voor voorwaardelijke toegang voor de app Microsoft Intune-inschrijving configureren en vereisen een gebruiksrechtovereenkomst voordat u de inschrijving van een apparaat bij Intune. Raadpleeg voor meer informatie het [oplossing voor uw organisatie blog-bericht het recht kiezen voorwaarden](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
+U kunt een beleid voor voorwaardelijke toegang configureren voor de Microsoft Intune-inschrijvings-app en een gebruiks voorwaarden vereisen vóór de inschrijving van een apparaat in intune. Raadpleeg voor meer informatie het [oplossing voor uw organisatie blog-bericht het recht kiezen voorwaarden](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
-![Deelvenster voor cloud-apps met Microsoft Intune-app geselecteerd](./media/terms-of-use/cloud-app-intune.png)
+![Deel venster Cloud-apps met Microsoft Intune app geselecteerd](./media/terms-of-use/cloud-app-intune.png)
 
 > [!NOTE]
-> De app Intune-inschrijving wordt niet ondersteund voor [Per apparaat gebruiksvoorwaarden](#per-device-terms-of-use).
+> De intune-inschrijvings-app wordt niet ondersteund voor de [gebruiks voorwaarden per apparaat](#per-device-terms-of-use).
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-**V: Hoe kan ik zien wanneer / of een gebruiker een gebruiksrechtovereenkomst heeft geaccepteerd?**<br />
-A: Klik op de voorwaarden van de blade gebruik, het aantal onder **geaccepteerde**. U kunt ook weergeven of zoeken naar de accept-activiteit in de Azure AD auditlogboeken. Zie voor meer informatie weergeven rapport wie heeft geaccepteerd en geweigerd en [weergave Azure AD-auditlogboeken](#view-azure-ad-audit-logs).
+**V: Hoe kan ik zien wanneer/of een gebruiker een gebruiksrecht overeenkomst heeft geaccepteerd?**<br />
+A: Klik op de Blade Gebruiksvoorwaarden op het aantal onder **geaccepteerd**. U kunt ook weergeven of zoeken naar de accept-activiteit in de Azure AD auditlogboeken. Zie rapport weer geven van wie is geaccepteerd en geweigerd en [Azure AD-controle logboeken weer geven](#view-azure-ad-audit-logs)voor meer informatie.
 
-**V: Hoe lang wordt informatie opgeslagen?**<br />
-A: De gebruiker wordt geteld in de voorwaarden van het rapport gebruiken en die voor de levensduur van de gebruiksrechtovereenkomst geaccepteerd/afgewezen worden opgeslagen. De Azure AD-audit logboeken worden opgeslagen voor 30 dagen.
+**V: Hoe lang worden gegevens opgeslagen?**<br />
+A: De gebruiker telt in het rapport met gebruiks voorwaarden en die is geaccepteerd/geweigerd, worden opgeslagen voor de gebruiks duur van de gebruiks voorwaarden. De Azure AD-audit logboeken worden opgeslagen voor 30 dagen.
 
-**V: Waarom zie ik een ander aantal toestemmingen in de voorwaarden van gebruik rapport vergeleken met de Azure AD auditlogboeken?**<br />
-A: De voorwaarden van gebruik rapport wordt opgeslagen voor de levensduur van deze gebruiksrechtovereenkomst, terwijl de Azure AD-audit logboeken worden opgeslagen voor 30 dagen. Ook de voorwaarden van gebruik rapport alleen de huidige toestemming-status van gebruikers weergegeven. Bijvoorbeeld, als een gebruiker geweigerd en vervolgens accepteert de gebruiksrechtovereenkomst gebruik rapport wordt alleen weergegeven van die gebruiker accepteren. Als u nodig hebt om te zien van de geschiedenis, kunt u de Azure AD auditlogboeken.
+**V: Waarom zie ik een ander aantal toestemmingen in het rapport met gebruiks voorwaarden versus de Azure AD-audit logboeken?**<br />
+A: Het rapport met gebruiks voorwaarden wordt opgeslagen voor de levens duur van die gebruiks voorwaarden, terwijl de Azure AD-controle logboeken 30 dagen worden bewaard. Daarnaast worden in het rapport voor de gebruiks voorwaarden alleen de gebruikers status van huidige toestemming weer gegeven. Als een gebruiker bijvoorbeeld weigert en vervolgens accepteert, wordt in het rapport met gebruiks voorwaarden alleen de acceptatie van die gebruiker weer gegeven. Als u nodig hebt om te zien van de geschiedenis, kunt u de Azure AD auditlogboeken.
 
-**V: Als het bewerken van de details voor een gebruiksrechtovereenkomst, moeten gebruikers opnieuw accepteren?**<br />
-A: Nee, als een beheerder de details van de bewerkingen voor een gebruiksrechtovereenkomst (naam, weergavenaam, vereisen dat gebruikers om uit te breiden of een taal toevoegen), hoeven er geen gebruikers aan de nieuwe voorwaarden accepteren.
+**V: Als ik de Details voor een gebruiks voorwaarden Bewerk, moeten gebruikers deze dan opnieuw accepteren?**<br />
+A: Nee, als een beheerder de details bewerkt voor een gebruiks voorwaarden (naam, weergave naam, gebruikers moeten een uitbrei ding hebben of een taal toevoegen), is het niet vereist dat gebruikers de nieuwe voor waarden accepteren.
 
-**V: Kan ik een document met bestaande gebruiksrechtovereenkomst bijwerken?**<br />
-A: U kunt een document met bestaande gebruiksrechtovereenkomst op dit moment niet bijwerken. Als u wilt wijzigen van een document met gebruiksrechtovereenkomst, wordt u moet maken van een nieuwe gebruiksrechtovereenkomst gebruik exemplaar.
+**V: Kan ik een bestaand gebruiks document van de gebruiksrecht overeenkomst bijwerken?**<br />
+A: Op dit moment kunt u een bestaand gebruiks document niet bijwerken. Als u een document met de gebruiksrecht overeenkomst wilt wijzigen, moet u een nieuw exemplaar van de gebruiksrecht overeenkomst maken.
 
-**V: Als hyperlinks in PDF-document met de gebruiksrechtovereenkomst, eindgebruikers zich erop klikt?**<br />
-A: Het PDF-bestand wordt standaard weergegeven als een JPEG, zodat hyperlinks niet geklikt. Gebruikers hebben de optie te selecteren **hebt u problemen met weergeven? Klik hier**, die wordt weergegeven het PDF-bestand systeemeigen waar hyperlinks worden ondersteund.
+**V: Als de Hyper links in het PDF-document met voor waarden worden gebruikt, kunnen eind gebruikers er op klikken?**<br />
+A: Ja, eind gebruikers kunnen hyper links selecteren naar extra pagina's, maar koppelingen naar secties binnen het document worden niet ondersteund.
 
-**V: Kunnen een gebruiksrechtovereenkomst ondersteund in meerdere talen?**<br />
-A: Ja. Er zijn momenteel 108 verschillende talen een beheerder voor één configureren kan gebruiksrechtovereenkomst. Een beheerder kan meerdere PDF-documenten te uploaden en code die documenten met een bijbehorende taal (maximaal 108). Wanneer eindgebruikers zich aanmelden, we kijken naar de Taalvoorkeur van hun browser en het overeenkomende document wordt weergegeven. Als er geen overeenkomst, geven we weer het standaarddocument, is het eerste document dat is geüpload.
+**V: Kunnen gebruiks voorwaarden meerdere talen ondersteunen?**<br />
+A: Ja. Momenteel zijn er 108 verschillende talen die een beheerder kan configureren voor een enkele gebruiks voorwaarden. Een beheerder kan meerdere PDF-documenten uploaden en deze documenten labelen met een bijbehorende taal (Maxi maal 108). Wanneer eind gebruikers zich aanmelden, bekijken we de voor keuren van de browser taal en worden ze het overeenkomende document weer gegeven. Als er geen overeenkomst wordt gevonden, wordt het standaard document weer gegeven. Dit is het eerste document dat wordt geüpload.
 
-**V: Wanneer is de gebruiksrechtovereenkomst geactiveerd?**<br />
-A: De gebruiksrechtovereenkomst wordt geactiveerd tijdens de aanmeldingsprocedure.
+**V: Wanneer wordt de gebruiksrecht overeenkomst geactiveerd?**<br />
+A: De gebruiks voorwaarden worden geactiveerd tijdens de aanmeldings procedure.
 
-**V: Welke toepassingen kan ik een gebruiksrechtovereenkomst te richten?**<br />
-A: U kunt een beleid voor voorwaardelijke toegang maken voor bedrijfstoepassingen die moderne authenticatie gebruiken. Zie [Bedrijfstoepassingen](./../manage-apps/view-applications-portal.md) voor meer informatie.
+**V: Met welke toepassingen kan ik een gebruiks voorwaarden richten?**<br />
+A: U kunt een beleid voor voorwaardelijke toegang maken voor de bedrijfs toepassingen met moderne verificatie. Zie [Bedrijfstoepassingen](./../manage-apps/view-applications-portal.md) voor meer informatie.
 
-**V: Kan ik meerdere gebruiksrechtovereenkomsten toevoegen aan een bepaalde gebruiker of de app?**<br />
-A: Ja, met het maken van meerdere beleidsregels voor voorwaardelijke toegang die gericht is op deze groepen of toepassingen. Als een gebruiker binnen het bereik van meerdere gebruiksrechtovereenkomsten valt, accepteren ze één gebruiksrechtovereenkomst tegelijk.
+**V: Kan ik meerdere gebruiks voorwaarden toevoegen aan een bepaalde gebruiker of app?**<br />
+A: Ja, door meerdere beleids regels voor voorwaardelijke toegang te maken die zijn gericht op deze groepen of toepassingen. Als een gebruiker binnen het bereik van meerdere gebruiks voorwaarden valt, accepteren ze één gebruiks voorwaarden tegelijk.
 
-**V: Wat gebeurt er als een gebruiker de gebruiksrechtovereenkomst afwijst?**<br />
-A: De gebruiker is krijgt dan geen toegang tot de toepassing geblokkeerd. De gebruiker moet zich opnieuw aanmelden en de voorwaarden accepteren om toegang te krijgen.
+**V: Wat gebeurt er als een gebruiker akkoord gaat met de gebruiksrecht overeenkomst?**<br />
+A: De gebruiker heeft geen toegang tot de toepassing. De gebruiker moet zich opnieuw aanmelden en de voorwaarden accepteren om toegang te krijgen.
 
-**V: Is het mogelijk om een gebruiksrechtovereenkomst die eerder is geaccepteerd unaccept?**<br />
-A: U kunt [revisie eerder gebruiksrechtovereenkomst geaccepteerd](#how-users-can-review-their-terms-of-use), maar er is momenteel een manier te unaccept.
+**V: Is het mogelijk om een eerder geaccepteerde gebruiksrecht overeenkomst te accepteren?**<br />
+A: U kunt [eerder geaccepteerde gebruiks voorwaarden bekijken](#how-users-can-review-their-terms-of-use), maar op dit moment is er geen manier om te accepteren.
 
-**V: Wat gebeurt er als ik ook Intune-voorwaarden en bepalingen?**<br />
-A: Als u beide Azure AD gebruiksrechtovereenkomst hebt geconfigureerd en [Intune bepalingen en voorwaarden](/intune/terms-and-conditions-create), de gebruiker moet beide accepteren. Zie voor meer informatie de [oplossing voor uw organisatie blog-bericht het recht kiezen voorwaarden](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
+**V: Wat gebeurt er als ik ook intune-voor waarden gebruik?**<br />
+A: Als u zowel Azure AD-gebruiks voorwaarden als [intune](/intune/terms-and-conditions-create)-voor waarden hebt geconfigureerd, is de gebruiker verplicht beide te accepteren. Zie voor meer informatie de [oplossing voor uw organisatie blog-bericht het recht kiezen voorwaarden](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
-**V: Welke eindpunten gebruikt de voorwaarden van de service gebruiken voor verificatie?**<br />
-A: Gebruiksvoorwaarden maakt gebruik van de volgende eindpunten voor verificatie: https://tokenprovider.termsofuse.identitygovernance.azure.com en https://account.activedirectory.windowsazure.com. Als uw organisatie een acceptatielijst van URL's voor inschrijving heeft, moet u om toe te voegen deze eindpunten aan de acceptatielijst, samen met de Azure AD-eindpunten voor aanmelden.
+**V: Welke eind punten worden gebruikt voor de voor waarden van het gebruik van de service voor verificatie?**<br />
+A: Gebruiksvoorwaarden gebruikt de volgende eind punten voor verificatie: https://tokenprovider.termsofuse.identitygovernance.azure.com en. https://account.activedirectory.windowsazure.com Als uw organisatie een lijst met Url's voor inschrijving heeft, moet u deze eind punten toevoegen aan de acceptatie lijst, samen met de Azure AD-eind punten voor aanmelding.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Snelstart: Gebruiksrechtovereenkomst moet zijn geaccepteerd voordat u toegang tot cloud-apps vereisen](require-tou.md)
+- [Snelstart: Vereisen dat gebruiks voorwaarden worden geaccepteerd voor toegang tot Cloud-apps](require-tou.md)
 - [Aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory](best-practices.md)

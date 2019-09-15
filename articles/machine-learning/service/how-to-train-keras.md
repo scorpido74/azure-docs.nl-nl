@@ -1,7 +1,7 @@
 ---
 title: Een diepe Learning Neural-netwerk trainen met Keras
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het trainen en registreren van een Keras diepe Neural-netwerk classificatie model dat wordt uitgevoerd op tensor flow met Azure Machine Learning service.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het trainen en registreren van een Keras diepe Neural-netwerk classificatie model dat wordt uitgevoerd op tensor flow met Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,20 +11,20 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7646330d9d89d5257a991b5095b7b6814aa3ba9
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: efa9b8f4f5cba36bfb2557b7be33ec9519b1d804
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966820"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999377"
 ---
-# <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning-service"></a>Een Keras-classificatie model trainen en registreren met Azure Machine Learning-service
+# <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Een Keras-classificatie model trainen en registreren met Azure Machine Learning
 
-In dit artikel leest u hoe u een Keras-classificatie model kunt trainen en registreren dat is gebaseerd op tensor flow met behulp van Azure Machine Learning-service. Er wordt gebruikgemaakt van de populaire [MNIST-gegevensset](http://yann.lecun.com/exdb/mnist/) om handgeschreven cijfers te classificeren met behulp van een diepe Neural Network (DNN) die is gebouwd met behulp van de [Keras python-bibliotheek](https://keras.io) op [tensor flow](https://www.tensorflow.org/overview).
+In dit artikel leest u hoe u een Keras-classificatie model kunt trainen en registreren dat is gebaseerd op tensor flow met behulp van Azure Machine Learning. Er wordt gebruikgemaakt van de populaire [MNIST-gegevensset](http://yann.lecun.com/exdb/mnist/) om handgeschreven cijfers te classificeren met behulp van een diepe Neural Network (DNN) die is gebouwd met behulp van de [Keras python-bibliotheek](https://keras.io) op [tensor flow](https://www.tensorflow.org/overview).
 
-Keras is een Neural-netwerk-API op hoog niveau die de ontwikkeling van andere populaire DNN-Frameworks kan vereenvoudigen. Met Azure Machine Learning-service kunt u trainings taken snel uitschalen met behulp van elastische Cloud Compute-resources. U kunt ook uw trainings uitvoeringen, versie modellen, implementatie modellen en nog veel meer volgen.
+Keras is een Neural-netwerk-API op hoog niveau die de ontwikkeling van andere populaire DNN-Frameworks kan vereenvoudigen. Met Azure Machine Learning kunt u trainings taken snel uitschalen met behulp van elastische Cloud Compute-resources. U kunt ook uw trainings uitvoeringen, versie modellen, implementatie modellen en nog veel meer volgen.
 
-Of u nu een Keras-model ontwikkelt of een bestaand model in de Cloud brengt, Azure Machine Learning service kan u helpen bij het bouwen van modellen die gereed zijn voor productie.
+Of u nu een Keras-model ontwikkelt of een bestaand model in de Cloud brengt, Azure Machine Learning u kunt helpen bij het bouwen van productie klare modellen.
 
 Zie het [conceptuele artikel](concept-deep-learning-vs-machine-learning.md) voor informatie over de verschillen tussen machine learning en diep gaande lessen.
 
@@ -68,7 +68,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Een werk ruimte initialiseren
 
-De [werk ruimte](concept-workspace.md) van de Azure machine learning-service is de resource op het hoogste niveau voor de service. Het biedt u een centrale locatie voor het werken met alle artefacten die u maakt. In de python-SDK hebt u toegang tot de werkruimte artefacten door een [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) object te maken.
+De [Azure machine learning werk ruimte](concept-workspace.md) is de resource op het hoogste niveau voor de service. Het biedt u een centrale locatie voor het werken met alle artefacten die u maakt. In de python-SDK hebt u toegang tot de werkruimte artefacten door een [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) object te maken.
 
 Maak een werkruimte object op basis `config.json` van het bestand dat in de [sectie vereisten](#prerequisites)is gemaakt.
 
@@ -203,7 +203,7 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een Keras-model getraind en geregistreerd bij Azure Machine Learning service. Ga verder met ons model implementatie artikel voor meer informatie over het implementeren van een model.
+In dit artikel hebt u een Keras-model getraind en geregistreerd op Azure Machine Learning. Ga verder met ons model implementatie artikel voor meer informatie over het implementeren van een model.
 
 > [!div class="nextstepaction"]
 > [Hoe en waar modellen moeten worden geïmplementeerd](how-to-deploy-and-where.md)

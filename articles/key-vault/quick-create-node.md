@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2010
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 4bea46e62f90a41b566781457a39718849ee0e15
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 02b9c439a932a4b35700871e68bdad7f03451110
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259230"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003500"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Quickstart: Een geheim van Azure Key Vault instellen en ophalen met behulp van een knoop punt web-app 
 
@@ -27,7 +27,7 @@ In deze Quick start ziet u hoe u een geheim opslaat in Azure Key Vault en hoe u 
 * Schakel een [Beheerde identiteit](../active-directory/managed-service-identity/overview.md) in voor de web-app.
 * De vereiste machtigingen verlenen aan de webtoepassing om gegevens te lezen uit de sleutelkluis.
 
-Voordat u doorgaat, moet u ervoor zorgen dat u bekend bent met de [basis concepten voor Key Vault](key-vault-whatis.md#basic-concepts).
+Voordat u doorgaat, moet u ervoor zorgen dat u bekend bent met de [basis concepten voor Key Vault](basic-concepts.md).
 
 > [!NOTE]
 > Key Vault is een centrale opslagplaats voor het opslaan van geheimen via een programma. Maar hiervoor moeten toepassingen en gebruikers eerst worden geverifieerd bij Key Vault, wat betekent dat ze een geheim moeten presenteren. Als u de aanbevolen procedures voor beveiliging wilt volgen, moet dit eerste geheim periodiek worden gerouleerd. 

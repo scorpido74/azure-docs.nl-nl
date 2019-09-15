@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 31273105c2f4de6950eae6a66c50264803197642
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 39427ac12dc6214630d6c3e5ace62692b1ea30b6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981878"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003073"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Gegevens migreren naar Azure Cosmos DB Cassandra-API-account met behulp van Realtimeplatform
 
@@ -155,7 +155,17 @@ In deze sectie configureert u de Azure Cosmos DB Cassandra-API account als doel 
 
    ![Verbinding maken met doel](./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png)
 
-1. Voer in de configuratie-eigenschappen van uw doel-Azure Cosmos DB exemplaar in en selecteer **Opslaan** om door te gaan.
+1. Voordat u het doel configureert, moet u ervoor zorgen dat u een [Baltimore-basis certificaat hebt toegevoegd aan de Java-omgeving van realtimeplatform](/java/java-sdk-add-certificate-ca-store?view=azure-java-stable#to-add-a-root-certificate-to-the-cacerts-store).
+
+1. Voer de configuratie-eigenschappen van uw doel Azure Cosmos DB exemplaar in en selecteer **Opslaan** om door te gaan. Hier volgen de belangrijkste para meters die u moet weten:
+
+   * **Adapter** : gebruik **DatabaseWriter**. Wanneer u naar Azure Cosmos DB Cassandra-API schrijft, is DatabaseWriter vereist. Het Cassandra-stuur programma 3.6.0 is gebundeld met Realtimeplatform. Als de DatabaseWriter groter is dan het aantal dat is ingericht in de Azure Cosmos-container, zal de toepassing vastlopen.
+
+   * **Gebruikers naam** : Geef de naam van uw Azure Cosmos-account op.
+   
+   * **Wacht woord** : Geef de primaire sleutel van uw Azure Cosmos-account op.
+
+   * **Tabellen** -doel tabellen moeten primaire sleutels hebben en primaire sleutels kunnen niet worden bijgewerkt.
 
    ![Doel eigenschappen configureren](./media/cosmosdb-cassandra-api-migrate-data-striim/configure-target-parameters1.png)
 
@@ -178,8 +188,7 @@ In deze sectie configureert u de Azure Cosmos DB Cassandra-API account als doel 
 
 1. Tot slot gaan we aanmelden bij Azure en naar uw Azure Cosmos-account gaan. Vernieuw het Data Explorer en u kunt zien dat de gegevens zijn aangekomen. 
 
-Door gebruik te maken van de Realtimeplatform-oplossing in azure, kunt u voortdurend gegevens migreren naar Azure Cosmos DB van verschillende bronnen, zoals Oracle, Cassandra, MongoDB en diverse andere, naar Azure Cosmos DB. Voor problemen bij het instellen van het migratie traject met Realtimeplatform, een ondersteunings aanvraag indienen op de [realtimeplatform-website](https://go2.striim.com/request-support-striim).
-
+Door gebruik te maken van de Realtimeplatform-oplossing in azure, kunt u voortdurend gegevens migreren naar Azure Cosmos DB van verschillende bronnen, zoals Oracle, Cassandra, MongoDB en diverse andere, naar Azure Cosmos DB. Ga voor meer informatie naar de [realtimeplatform-website](https://www.striim.com/), [down load een gratis proef versie van 30 dagen van realtimeplatform](https://go2.striim.com/download-free-trial)en voor eventuele problemen bij het instellen van het migratie traject met realtimeplatform, een [ondersteunings aanvraag indienen.](https://go2.striim.com/request-support-striim)
 
 ## <a name="next-steps"></a>Volgende stappen
 

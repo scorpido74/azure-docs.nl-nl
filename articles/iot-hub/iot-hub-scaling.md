@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: 9be0b93335cef919db4efa2fce361bda1f9b934e
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 18864a662464f77d799e54d583092a371bc2d137
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891984"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999968"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Kies de juiste IoT Hub laag voor uw oplossing
 
@@ -33,7 +33,7 @@ Elke IoT Hub-laag is beschikbaar in drie grootten, op basis van de hoeveelheid g
 
 De laag standaard van IoT Hub maakt alle functies mogelijk en is vereist voor IoT-oplossingen die gebruik moeten maken van de bidirectionele communicatie mogelijkheden. De laag basis maakt een subset van de functies mogelijk en is bedoeld voor IoT-oplossingen die alleen uni-directionele communicatie van apparaten naar de Cloud nodig hebben. Beide lagen bieden dezelfde beveiligings-en verificatie functies.
 
-Er kan slechts één type [versie](https://azure.microsoft.com/pricing/details/iot-hub/) in een laag worden gekozen per IOT hub. U kunt bijvoorbeeld een IoT Hub maken met meerdere eenheden van S1, maar niet met een combi natie van eenheden uit verschillende versies, zoals S1 en B3, of S1 en S2.
+Er kan slechts één type [versie](https://azure.microsoft.com/pricing/details/iot-hub/) in een laag worden gekozen per IOT hub. U kunt bijvoorbeeld een IoT Hub maken met meerdere eenheden van S1, maar niet met een combi natie van eenheden uit verschillende versies, zoals S1 en S2.
 
 | Mogelijkheid | Basic-laag | Laag gratis/Standard |
 | ---------- | ---------- | ------------- |
@@ -86,6 +86,10 @@ Het verschil in ondersteunde mogelijkheden tussen de lagen basis en standaard va
 | Module gebeurtenis verzenden | Alleen AMQP en MQTT | Alleen AMQP en MQTT |
 | [Upload status van update bestand](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Ja | Ja |
 | [Bewerking bulksgewijs apparaat](https://docs.microsoft.com/rest/api/iothub/service/bulkcreateorupdatedevices) | Ja, met uitzonde ring van IoT Edge mogelijkheden | Ja |
+| [Export taak importeren annuleren](https://docs.microsoft.com/rest/api/iothub/service/cancelimportexportjob) | Ja | Ja |
+| [Import export taak maken](https://docs.microsoft.com/rest/api/iothub/service/createimportexportjob) | Ja | Ja |
+| [Import export taak ophalen](https://docs.microsoft.com/rest/api/iothub/service/getimportexportjob) | Ja | Ja |
+| [Import-export taken ophalen](https://docs.microsoft.com/rest/api/iothub/service/getimportexportjobs) | Ja | Ja |
 | [Opdracht wachtrij leegmaken](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Ja |
 | [Apparaat dubbele ophalen](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Ja |
 | [Module dubbele ophalen](https://docs.microsoft.com/rest/api/iothub/service/getmoduletwin) |   | Ja |
@@ -107,17 +111,17 @@ De beste manier om een IoT Hub oplossing te verg Roten is om het verkeer per een
 * Cloud-naar-apparaat-berichten
 * Registerbewerkingen voor identiteit
 
-Verkeer wordt per eenheid gemeten, niet per hub. Een IoT Hub-exemplaar van niveau 1 of 2 kan zoveel 200 eenheden zijn gekoppeld. Een IoT Hub-exemplaar van niveau 3 kan Maxi maal 10 eenheden bevatten. Als u uw IoT-hub hebt gemaakt, kunt u het aantal eenheden wijzigen of tussen de 1, 2 en 3 formaten binnen een specifieke laag verplaatsen zonder uw bestaande bewerkingen te onderbreken. Zie [een upgrade uitvoeren van uw IOT hub](iot-hub-upgrade.md)voor meer informatie.
+Verkeer wordt per eenheid gemeten voor uw IoT-hub. Wanneer u een IoT-hub maakt, kiest u de betreffende laag en editie en stelt u het aantal beschik bare eenheden in. U kunt tot 200 eenheden kopen voor de B1, B2, S1 of S2-editie, of tot 10 eenheden voor de B3-of S3-editie. Nadat uw IoT-hub is gemaakt, kunt u het aantal beschik bare eenheden voor de editie wijzigen, een upgrade of downgrade uitvoeren tussen edities binnen de laag (B1 naar B2) of een upgrade uitvoeren van het basis niveau naar de Standard-laag (B1 naar S1) zonder uw bestaande bewerkingen te onderbreken. Zie [een upgrade uitvoeren van uw IOT-hub](iot-hub-upgrade.md)voor meer informatie.  
 
 Als voor beeld van de verkeers mogelijkheden van elke laag gelden voor apparaat-naar-Cloud-berichten de volgende continue doorvoer richtlijnen:
 
-| Laag | Continue door Voer | Continue verzend frequentie |
+| Tier Edition | Continue door Voer | Continue verzend frequentie |
 | --- | --- | --- |
 | B1, S1 |Maxi maal 1111 KB/minuut per eenheid<br/>(1,5 GB/dag/eenheid) |Gemiddeld aantal 278 berichten/minuut per eenheid<br/>(400.000 berichten/dag per eenheid) |
 | B2, S2 |Maxi maal 16 MB/minuut per eenheid<br/>(22,8 GB/dag/eenheid) |Gemiddeld aantal 4.167 berichten/minuut per eenheid<br/>(6.000.000 berichten/dag per eenheid) |
 | B3, S3 |Maxi maal 814 MB/minuut per eenheid<br/>(1144,4 GB/dag/eenheid) |Gemiddeld aantal 208.333 berichten/minuut per eenheid<br/>(300.000.000 berichten/dag per eenheid) |
 
-Naast deze informatie over de door Voer, Zie [IOT hub quota's en gashendel](iot-hub-devguide-quotas-throttling.md) , en ontwerp uw oplossing dienovereenkomstig.
+Een apparaat-naar-Cloud-door Voer is slechts een van de metrische gegevens die u moet overwegen bij het ontwerpen van een IoT-oplossing. Zie [IOT hub quota's en gashendel](iot-hub-devguide-quotas-throttling.md)voor meer informatie.
 
 ### <a name="identity-registry-operation-throughput"></a>Door Voer van identiteits register bewerking
 
@@ -127,7 +131,7 @@ Zie [IOT hub quota's en gashendel](iot-hub-devguide-quotas-throttling.md)voor sp
 
 ## <a name="auto-scale"></a>Automatisch schalen
 
-Als u de toegestane bericht limiet op uw IoT Hub nadert, kunt u deze stappen gebruiken [om automatisch te schalen](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) om een IOT hub eenheid in dezelfde IOT hub laag te verhogen.
+Als u de toegestane bericht limiet op uw IoT-hub nadert, kunt u deze [stappen gebruiken om automatisch te schalen](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) om een IOT hub eenheid op hetzelfde IOT hub niveau te verhogen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie over de classificatie van afbeeldingen: Modellen implementeren'
-titleSuffix: Azure Machine Learning service
-description: In deze zelfstudie ontdekt u hoe u de Azure Machine Learning-service kunt gebruiken om een afbeeldingsclassificatiemodel met scikit-learn in een Python Jupyter-notebook te implementeren. Deze zelfstudie is deel 2 van een tweedelige reeks.
+titleSuffix: Azure Machine Learning
+description: Deze zelf studie laat zien hoe u Azure Machine Learning kunt gebruiken om een installatie kopie-classificatie model te implementeren met scikit-Learn in een python Jupyter-notebook. Deze zelfstudie is deel 2 van een tweedelige reeks.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 57d34bb170c0ff86f3d3c42a25184d8af71c0270
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6e5ab17a04c994f09bccc0f51f11749ee8590b1d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036209"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003054"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Zelfstudie: Een afbeeldingsclassificatiemodel implementeren in Azure Container Instances
 
@@ -23,7 +23,7 @@ Deze zelfstudie is **deel twee van een tweedelige reeks**. In de [vorige zelfstu
 
 Nu kunt u het model als een webservice implementeren in [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/). Een webservice is een installatiekopie, in dit geval een Docker-installatiekopie. De service omvat de scoringlogica en het model zelf. 
 
-In dit gedeelte van de zelfstudie gebruikt u Azure Machine Learning-service voor de volgende taken:
+In dit gedeelte van de zelf studie gebruikt u Azure Machine Learning voor de volgende taken:
 
 > [!div class="checklist"]
 > * Uw testomgeving instellen
@@ -378,7 +378,7 @@ service.delete()
 
 ## <a name="next-steps"></a>Volgende stappen
 
-+ Lees meer over alle [implementatieopties voor Azure Machine Learning-service](how-to-deploy-and-where.md).
++ Meer informatie over de [implementatie opties voor Azure machine learning](how-to-deploy-and-where.md).
 + Meer informatie over het [maken van clients voor de webservice](how-to-consume-web-service.md).
 +  Doe asynchroon [voorspellingen op grote hoeveelheden gegevens](how-to-run-batch-predictions.md).
 + Bewaak uw Azure Machine Learning-modellen met [Application Insights](how-to-enable-app-insights.md).

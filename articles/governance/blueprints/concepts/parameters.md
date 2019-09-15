@@ -7,12 +7,12 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 9670433284ae963783b655322c4b18f748df52c5
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ee44d744c580dd9fbf20e7186b6e76fdc74cc5d0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231948"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004073"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dynamische blauw drukken via para meters maken
 
@@ -62,7 +62,7 @@ Een parameter waarde die in de definitie van een blauw druk is gedefinieerd, wor
 
 1. Klik op een bestaande blauw druk en klik vervolgens op **blauw drukken bewerken** of klik op **+ blauw druk maken** en vul de informatie in op het tabblad **basis beginselen** .
 
-1. Klik op **Next: Artefacten of klik op het tabblad artefacten.**
+1. Klik op **Next: Artefacten of klik op het tabblad **artefacten.****
 
 1. Artefacten die zijn toegevoegd aan de blauw druk met parameter opties, worden **X van Y-para meters** weer gegeven in de kolom **para meters** . Klik op de rij artefacten om de artefact parameters te bewerken.
 
@@ -167,7 +167,7 @@ Het maken van **statische para meters** voor een artefact is vergelijkbaar, maar
   }
   ```
 
-### <a name="dynamic-parameters"></a>Dynamische para meters
+### <a name="dynamic-parameters"></a>Dynamische parameters
 
 Het tegenovergestelde van een statische para meter is een **dynamische para meter**. Deze para meter is niet gedefinieerd op de blauw druk, maar wordt in plaats daarvan gedefinieerd tijdens elke toewijzing van de blauw druk. In het voor beeld van een resource groep is het gebruik van een **dynamische para meter** zinvol voor de naam van de resource groep. Het biedt een andere naam voor elke toewijzing van de blauw druk. Zie de naslag informatie voor [blauw](../reference/blueprint-functions.md) drukken voor een lijst met functies van blauw drukken.
 
@@ -239,7 +239,7 @@ Het instellen van **dynamische para meters** tijdens de toewijzing wordt uitgevo
 ## <a name="next-steps"></a>Volgende stappen
 
 - Bekijk de lijst met [blauw](../reference/blueprint-functions.md)drukken-functies.
-- Meer informatie over de [levens duur van de blauw druk](lifecycle.md).
+- Meer informatie over de [levenscyclus van een blauwdruk](lifecycle.md).
 - Meer informatie over hoe u de [blauwdrukvolgorde](sequencing-order.md) aanpast.
 - Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](resource-locking.md).
 - Meer informatie over hoe u [bestaande toewijzingen bijwerkt](../how-to/update-existing-assignments.md).

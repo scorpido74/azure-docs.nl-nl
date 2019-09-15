@@ -11,16 +11,16 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 5aaad8c44328e1cc2aeb7729e3e221665823a467
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0bba755ec5683e988bb8ae3f2308a1c298b228b0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073028"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000566"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>& Classificatie Azure SQL Database en SQL Data Warehouse voor gegevens detectie
 
-Gegevens detectie & classificatie biedt geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL database voor het **detecteren**, classificeren & , labelen van het**beveiligen** van gevoelige gegevens in uw data bases.
+Gegevens detectie & classificatie biedt geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL database voor het **detecteren**, **classificeren** & , **labelen**van het**beveiligen** van gevoelige gegevens in uw data bases.
 
 Het detecteren en classificeren van uw meest gevoelige gegevens (zakelijke, financiële, gezondheids zorg, persoonlijke Identificeer bare gegevens (PII), enzovoort.) kan een draai functie in uw organisatie voor gegevens beveiliging van stature afspelen. Dit kan dienen als infra structuur voor:
 
@@ -107,7 +107,7 @@ Zodra het beleid voor de hele Tenant is gedefinieerd, kunt u door gaan met de cl
 
       ![Aanbevelingen Toep assen](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
 
-7. U kunt ook **hand matig** kolommen classificeren als een andere, of als aanvulling op de op aanbeveling gebaseerde classificatie:
+7. U kunt ook **hand matig kolommen classificeren** als een andere, of als aanvulling op de op aanbeveling gebaseerde classificatie:
 
    - Klik op **classificatie toevoegen** in het bovenste menu van het venster.
 
@@ -137,6 +137,8 @@ U kunt T-SQL gebruiken om kolom classificaties toe te voegen of te verwijderen, 
 - De classificatie van een of meer kolommen toevoegen/bijwerken: [GEVOELIGHEIDS CLASSIFICATIE TOEVOEGEN](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
 - De classificatie uit een of meer kolommen verwijderen: [GEVOELIGHEIDS CLASSIFICATIE VOOR NEERZETTEN](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Alle classificaties weer geven in de Data Base: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+
+### <a name="manage-classifications-using-rest-apis"></a>Classificaties beheren met rest-Api's
 
 U kunt ook REST-Api's gebruiken om classificaties programmatisch te beheren. De gepubliceerde REST Api's ondersteunen de volgende bewerkingen:
 

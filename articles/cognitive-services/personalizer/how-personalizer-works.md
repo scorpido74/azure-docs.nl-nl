@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 09/13/2019
 ms.author: diberry
-ms.openlocfilehash: c258799b1305c4204d08d66aa36a0be7c71a4944
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7c163dacae24749dbe309bca33bac016a3be7aa5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034377"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002894"
 ---
 # <a name="how-personalizer-works"></a>Hoe Personalizer werkt
 
@@ -89,31 +89,6 @@ Personaler is gebaseerd op wetenschap en onderzoek op het gebied van versterking
 * Bot-eigenschappen & Toon: voor bots die de Toon, uitgebreidheid en schrijf stijl kunnen variëren, kunt u op een aangepaste manier overwegen deze eigenschappen te variëren.
 * Inhoud van meldings & waarschuwing: Beslis welke tekst u voor waarschuwingen wilt gebruiken om gebruikers meer te benaderen.
 * Timing van meldings & waarschuwing: laat u weten wanneer u meldingen naar gebruikers wilt verzenden om ze te benaderen.
-
-## <a name="checklist-for-applying-personalizer"></a>Controle lijst voor het Toep assen van persoonlijker
-
-U kunt persoonlijker Toep assen in situaties waarin:
-
-* U hebt een zakelijk of bruikbaar doel voor uw toepassing.
-* U hebt een plaats in uw toepassing waar u een contextuele beslissing neemt om het doel van gebruikers te verbeteren.
-* De beste keuze kan en moeten worden geleerd van het gedrag van de collectieve gebruiker en de totale belonings Score.
-* Het gebruik van machine learning voor personalisatie is gebaseerd op de beschik bare [richt lijnen](ethics-responsible-use.md) en opties voor uw team.
-* De beslissing kan worden uitgedrukt als een classificatie van de beste optie ([actie](concepts-features.md#actions-represent-a-list-of-options) van een beperkt aantal keuzes.
-* Hoe goed de gekozen keuze kan worden berekend door uw bedrijfs logica, door een bepaald aspect van het gedrag van de gebruiker te meten en deze uit te drukken in een getal tussen-1 en 1.
-* De belonings Score brengt niet te veel congevonden of externe factoren in, met name de duur van het experiment is te laag, waardoor de belonings Score kan worden berekend terwijl deze nog steeds relevant is.
-* U kunt de context voor de rang orde als een woorden lijst van ten minste vijf functies die u denkt wilt gebruiken om de juiste keuze te maken en die geen persoons gegevens bevatten.
-* U hebt informatie over elke actie als een woorden lijst van ten minste vijf kenmerken of functies die u denkt te helpen de juiste keuze te maken.
-* U kunt gegevens lang genoeg bewaren om een geschiedenis van ten minste 100.000 interacties te verzamelen.
-
-## <a name="machine-learning-considerations-for-applying-personalizer"></a>Overwegingen voor machine learning voor het Toep assen van persoonlijker
-
-Personaler is gebaseerd op educatief leren, een aanpak van machine learning die de duur van de cursus ontvangt door feedback die u geeft. 
-
-Personaler leert het beste in situaties waarin:
-* Er zijn voldoende gebeurtenissen om optimaal te kunnen voldoen aan de optimale persoonlijke instellingen als het probleem zich in de loop van de tijd (zoals voor keuren in nieuws of mode) bevindt. Personaler wordt aangepast aan doorlopende wijzigingen in de echte wereld, maar de resultaten zijn niet optimaal als er niet voldoende gebeurtenissen en gegevens zijn om te leren van het detecteren en afrekenen van nieuwe patronen. U moet een use-case kiezen die vaak voldoende optreedt. Overweeg voor het zoeken naar use cases die ten minste 500 keer per dag plaatsvinden.
-* Context en acties hebben voldoende functies om leren te vergemakkelijken.
-* Er zijn minder dan 50 acties voor de positie per aanroep.
-* Met de instellingen voor het bewaren van gegevens kan Personaler voldoende gegevens verzamelen om offline-evaluaties en optimalisatie van het beleid uit te voeren. Dit is meestal ten minste 50.000 gegevens punten.
 
 ## <a name="how-to-use-personalizer-in-a-web-application"></a>Personaliseren gebruiken in een webtoepassing
 

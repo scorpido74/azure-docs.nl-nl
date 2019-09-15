@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: d20ea4a6e86bb889615d3ab9bfcac5aedf838ceb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 67a34b2b0a997a118cb2fe1b99de04bd58063307
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098625"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999049"
 ---
 # <a name="securing-paas-deployments"></a>PaaS-implementaties beveiligen
 
@@ -88,7 +88,7 @@ De principes en patronen voor de netwerk verbinding zijn tien tallen beschikbaar
 Hieronder volgen de aanbevolen procedures voor het beheren van het identiteits perimeter netwerk.
 
 **Aanbevolen procedure**: Beveilig uw sleutels en referenties voor het beveiligen van uw PaaS-implementatie.   
-**Details**: Het verlies van sleutels en referenties is een veelvoorkomend probleem. U kunt een gecentraliseerde oplossing gebruiken waarbij sleutels en geheimen kunnen worden opgeslagen in Hardware Security modules (Hsm's). [Azure Key Vault](../../key-vault/key-vault-whatis.md) beveiligt uw sleutels en geheimen door verificatie sleutels, opslag account sleutels, gegevens versleutelings sleutels, pfx-bestanden en wacht woorden te versleutelen met behulp van sleutels die worden beveiligd door hsm's.
+**Details**: Het verlies van sleutels en referenties is een veelvoorkomend probleem. U kunt een gecentraliseerde oplossing gebruiken waarbij sleutels en geheimen kunnen worden opgeslagen in Hardware Security modules (Hsm's). [Azure Key Vault](../../key-vault/key-vault-overview.md) beveiligt uw sleutels en geheimen door verificatie sleutels, opslag account sleutels, gegevens versleutelings sleutels, pfx-bestanden en wacht woorden te versleutelen met behulp van sleutels die worden beveiligd door hsm's.
 
 **Aanbevolen procedure**: Plaats geen referenties en andere geheimen in de bron code of het GitHub.   
 **Details**: Het enige wat u nog ergert dan het verlies van uw sleutels en referenties is dat een niet-geautoriseerde partij er toegang toe krijgt. Aanvallers kunnen gebruikmaken van bot-technologieën om sleutels en geheimen te vinden die zijn opgeslagen in code opslagplaatsen, zoals GitHub. Plaats geen sleutel en geheimen in deze open bare code opslagplaatsen.
@@ -133,7 +133,7 @@ Hieronder vindt u aanbevolen procedures voor het gebruik van App Service.
 **Details**: Het beperken van de toegang is van cruciaal belang voor organisaties die beveiligings beleid voor gegevens toegang willen afdwingen. U kunt RBAC gebruiken om machtigingen toe te wijzen aan gebruikers, groepen en toepassingen bij een bepaald bereik. Zie aan de [slag met toegangs beheer](/azure/role-based-access-control/overview)voor meer informatie over het verlenen van gebruikers toegang tot toepassingen.
 
 **Aanbevolen procedure**: Beveilig uw sleutels.   
-**Details**: Azure Key Vault helpt bij het beveiligen van cryptografische sleutels en geheimen die worden gebruikt door Cloud toepassingen en-services. Met Key Vault kunt u sleutels en geheimen versleutelen (zoals verificatie sleutels, sleutels voor opslag accounts, sleutels voor gegevens versleuteling,. PFX-bestanden en wacht woorden) met behulp van sleutels die worden beveiligd door Hardware Security modules (Hsm's). Voor extra zekerheid kunt u de sleutels importeren of genereren in HSM's. Zie [Azure Key Vault](/azure/key-vault/key-vault-whatis) voor meer informatie. U kunt Key Vault ook gebruiken om uw TLS-certificaten te beheren met automatische verlenging.
+**Details**: Azure Key Vault helpt bij het beveiligen van cryptografische sleutels en geheimen die worden gebruikt door Cloud toepassingen en-services. Met Key Vault kunt u sleutels en geheimen versleutelen (zoals verificatie sleutels, sleutels voor opslag accounts, sleutels voor gegevens versleuteling,. PFX-bestanden en wacht woorden) met behulp van sleutels die worden beveiligd door Hardware Security modules (Hsm's). Voor extra zekerheid kunt u de sleutels importeren of genereren in HSM's. Zie [Azure Key Vault](/azure/key-vault/key-vault-overview) voor meer informatie. U kunt Key Vault ook gebruiken om uw TLS-certificaten te beheren met automatische verlenging.
 
 **Aanbevolen procedure**: IP-adressen van binnenkomende bronnen beperken.   
 **Details**: [App service Environment](/azure/app-service/environment/intro) heeft een functie voor de integratie van virtuele netwerken waarmee u binnenkomende bron-IP-adressen kunt beperken via netwerk beveiligings groepen. Met virtuele netwerken kunt u Azure-resources in een niet-Internet Routeer bare netwerk plaatsen waartoe u de toegang beheert. Zie [uw app integreren met een virtueel Azure-netwerk](/azure/app-service/web-sites-integrate-with-vnet)voor meer informatie.
@@ -159,7 +159,7 @@ Gebruik [Azure-toepassing inzichten](https://azure.microsoft.com/documentation/s
 Application Insights heeft uitgebreide hulpmiddelen voor interactie met de gegevens die worden verzameld. Application Insights slaat zijn gegevens op in een gemeenschappelijke opslagplaats. Het kan profiteren van gedeelde functionaliteit zoals waarschuwingen, Dash boards en diepe analyse met de Kusto-query taal.
 
 ## <a name="perform-security-penetration-testing"></a>Beveiligings indringings tests uitvoeren
-Het valideren van beveiligings beveiliging is net zo belang rijk als het testen van andere functies. Zorg voor indringings [test](pen-testing.md) een standaard onderdeel van uw build-en implementatie proces. Plan regel matige beveiligings tests en beveiligings problemen met het scannen van geïmplementeerde toepassingen en controleer op open poorten, eind punten en aanvallen.
+Het valideren van beveiligings beveiliging is net zo belang rijk als het testen van andere functies. Zorg voor [indringings test](pen-testing.md) een standaard onderdeel van uw build-en implementatie proces. Plan regel matige beveiligings tests en beveiligings problemen met het scannen van geïmplementeerde toepassingen en controleer op open poorten, eind punten en aanvallen.
 
 Fuzz testen is een methode voor het vinden van programma fouten (code fouten) door onjuiste invoer gegevens op te geven voor programma-interfaces (ingangs punten) die deze gegevens parseren en gebruiken. [Micro soft beveiligings risico detectie](https://www.microsoft.com/en-us/security-risk-detection/) is een cloud-gebaseerd hulp programma dat u kunt gebruiken om te zoeken naar fouten en andere beveiligings problemen in uw software voordat u deze implementeert in Azure. Het hulp programma is ontworpen om beveiligings problemen te ondervangen voordat u software implementeert, zodat u geen bug hoeft op te lossen, met crashes kunt omgaan of op een aanval kunt reageren nadat de software is uitgebracht.
 

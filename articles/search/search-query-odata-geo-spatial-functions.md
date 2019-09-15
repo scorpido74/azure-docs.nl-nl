@@ -1,7 +1,7 @@
 ---
 title: Verwijzing naar geo-ruimtelijke functie van OData-Azure Search
 description: Geo-ruimtelijke functies van OData, geo. Distance en geo. intersects, in Azure Search query's.
-ms.date: 06/13/2019
+ms.date: 09/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,18 +19,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9585a9a7ea976ed32ccb8eed1e69877339196f87
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 03220786c65ab510a632252b20d593cd96a90494
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647566"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003449"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-search---geodistance-and-geointersects"></a>Geo-ruimtelijke functies van OData in azure Search `geo.distance` -en`geo.intersects`
 
 Azure Search ondersteunt geo-ruimtelijke query's in [OData-filter expressies](query-odata-filter-orderby-syntax.md) via `geo.distance` de `geo.intersects` functies en. De `geo.distance` functie retourneert de afstand in kilo meters tussen twee punten, een veld of bereik variabele en een constante die wordt door gegeven als onderdeel van het filter. De `geo.intersects` functie retourneert `true` of een bepaald punt zich in een bepaalde veelhoek bevindt, waarbij het punt een veld-of bereik variabele is en de veelhoek is opgegeven als een constante die als onderdeel van het filter wordt door gegeven.
 
 De `geo.distance` functie kan ook worden gebruikt in de [para meter **$OrderBy** ](search-query-odata-orderby.md) om Zoek resultaten te sorteren op afstand van een bepaald punt. De syntaxis voor `geo.distance` in **$OrderBy** is hetzelfde als in **$filter**. Wanneer u `geo.distance` in **$OrderBy**gebruikt, moet het veld waarop het van toepassing is, `Edm.GeographyPoint` van het type zijn en moet het ook **sorteerbaar**zijn.
+
+> [!NOTE]
+> Wanneer u `geo.distance` gebruikt in de para meter **$OrderBy** , mag het veld dat u aan de functie doorgeeft slechts één geo-Point bevatten. Met andere woorden, deze moeten van het type `Edm.GeographyPoint` en niet `Collection(Edm.GeographyPoint)`. Het is niet mogelijk om te sorteren op verzamelings velden in Azure Search.
 
 ## <a name="syntax"></a>Syntaxis
 

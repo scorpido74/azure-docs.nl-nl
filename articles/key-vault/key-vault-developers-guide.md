@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ca640b058a1d91d15c5accb9367936368511a3ef
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a2749ca35e6137d42a09b79da9315c8f7b242c31
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881605"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000800"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Ontwikkelaars handleiding Azure Key Vault
 
@@ -24,7 +24,7 @@ Met Key Vault kunt u veilig toegang krijgen tot gevoelige informatie in uw toepa
 - Uw toepassing kan gebruikmaken van sleutels voor ondertekening en versleuteling, maar het sleutel beheer is ook extern vanuit uw toepassing, zodat uw oplossing geschikt is voor een geografisch gedistribueerde app.
 - Vanaf de release van september 2016 van Key Vault kunnen uw toepassingen nu Key Vault certificaten beheren. Zie [informatie over sleutels, geheimen en certificaten](/rest/api/keyvault/about-keys--secrets-and-certificates)voor meer informatie.
 
-Zie [Wat is Key Vault](key-vault-whatis.md)voor meer algemene informatie over Azure Key Vault.
+Zie [Wat is Key Vault](key-vault-overview.md)voor meer algemene informatie over Azure Key Vault.
 
 ## <a name="public-previews"></a>Open bare voor beelden
 
@@ -148,7 +148,7 @@ Deze artikelen zijn over andere scenario's en services die gebruikmaken van of w
 - In het [overzicht van Key Vault Storage-account sleutels](key-vault-ovw-storage-keys.md) worden de sleutels Key Vault Integration Azure Storage accounts beschreven.
 - [Key Vault Security-wereld](key-vault-ovw-security-worlds.md) beschrijft de relaties tussen regio's en beveiligings gebieden.
 
-## <a name="social"></a>Sociale media
+## <a name="social"></a>Sociaal netwerken
 
 - [Key Vault blog](https://aka.ms/kvblog)
 - [Key Vault forum](https://aka.ms/kvforum)

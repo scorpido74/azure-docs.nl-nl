@@ -1,5 +1,5 @@
 ---
-title: Voor beelden van controle logboeken en definities in Azure Active Directory B2C | Microsoft Docs
+title: Voor beelden van controle logboeken en definities in Azure Active Directory B2C
 description: Hand leiding en voor beelden voor het openen van de Azure AD B2C controle Logboeken.
 services: active-directory-b2c
 author: mmacy
@@ -7,105 +7,143 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/04/2017
+ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d8cc67b8e243fb2b97cd1522a850adc63c84428e
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: cbb748e9856b6de9004d57e4393e205ddfcfffb4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69969631"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998812"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Toegang tot Azure AD B2C controle logboeken
 
-Azure Active Directory B2C (Azure AD B2C) verzendt audit logboeken met activiteit gegevens over B2C-resources, uitgegeven tokens en beheerders toegang. Dit artikel bevat een kort overzicht van de informatie die beschikbaar is via audit logboeken en instructies voor het openen van deze gegevens voor uw Azure AD B2C-Tenant.
+Azure Active Directory B2C (Azure AD B2C) verzendt audit logboeken met activiteit gegevens over B2C-resources, tokens die zijn uitgegeven en beheerders toegang. Dit artikel bevat een kort overzicht van de informatie die beschikbaar is in audit logs en instructies over het openen van deze gegevens voor uw Azure AD B2C-Tenant.
 
-> [!IMPORTANT]
-> Audit logboeken worden alleen zeven dagen bewaard. Plan uw logboeken te downloaden en op te slaan met een van de hieronder vermelde methoden als u een langere Bewaar periode nodig hebt.
+Audit logboek gebeurtenissen worden alleen **zeven dagen**bewaard. Plan uw logboeken te downloaden en op te slaan met een van de hieronder vermelde methoden als u een langere Bewaar periode nodig hebt.
 
 > [!NOTE]
-> U kunt geen gebruikers aanmeldingen zien voor afzonderlijke Azure AD B2C-toepassingen in het gedeelte **gebruikers** van de **Azure Active Directory** -of **Azure AD B2C** -Blades. Bij de aanmeldingen wordt de activiteit van de gebruiker weer gegeven, maar kan niet worden gekoppeld aan de B2C-toepassing waarbij de gebruiker zich heeft aangemeld. U moet de audit logboeken voor gebruiken, zoals verderop in dit artikel wordt uitgelegd.
+> U kunt geen gebruikers aanmeldingen zien voor afzonderlijke Azure AD B2C-toepassingen in het gedeelte **gebruikers** van de **Azure Active Directory** -of **Azure AD B2C** pagina's in de Azure Portal. De aanmeldings gebeurtenissen bevatten de gebruikers activiteit, maar kunnen niet worden gekoppeld aan de B2C-toepassing waarbij de gebruiker zich heeft aangemeld. U moet de audit logboeken voor gebruiken, zoals verderop in dit artikel wordt uitgelegd.
 
 ## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>Overzicht van de activiteiten die beschikbaar zijn in de categorie B2C van audit logboeken
+
 De categorie **B2C** in audit Logboeken bevat de volgende soorten activiteiten:
 
 |Type activiteit |Description  |
 |---------|---------|
-|Authorization |Activiteiten met betrekking tot de autorisatie van een gebruiker om toegang te krijgen tot B2C-bronnen (bijvoorbeeld een beheerder die toegang heeft tot een lijst met B2C-beleid)         |
-|Directory |Activiteiten met betrekking tot adreslijst kenmerken die zijn opgehaald wanneer een beheerder zich aanmeldt met de Azure Portal |
-|Toepassing | RUWE bewerkingen op B2C-toepassingen |
-|Sleutel |RUWE bewerkingen op sleutels die zijn opgeslagen in de sleutel container B2C |
-|Resource |RUWE bewerkingen op B2C-bronnen (bijvoorbeeld beleids regels en identiteits providers)
-|Authentication |Validatie van gebruikers referenties en het uitgeven van tokens|
+|Authorization |Activiteiten met betrekking tot de autorisatie van een gebruiker om toegang te krijgen tot B2C-bronnen (bijvoorbeeld een beheerder die toegang heeft tot een lijst met B2C-beleid).         |
+|Directory |Activiteiten gerelateerd aan adreslijst kenmerken die zijn opgehaald wanneer een beheerder zich aanmeldt met behulp van de Azure Portal. |
+|Toepassing | Maak, lees-, update-en delete-bewerkingen (ruw) in B2C-toepassingen. |
+|Sleutel |RUWE bewerkingen op sleutels die zijn opgeslagen in een B2C-sleutel container. |
+|Resource |RUWE bewerkingen op B2C-resources. Bijvoorbeeld beleid en id-providers.
+|Authentication |Validatie van gebruikers referenties en het uitgeven van tokens.|
 
-> [!NOTE]
-> Raadpleeg de categorie **basis directory** voor een ruwe activiteiten voor gebruikers objecten.
+Raadpleeg de categorie **basis directory** voor een ruwe activiteiten voor gebruikers objecten.
 
 ## <a name="example-activity"></a>Voorbeeld activiteit
-In het onderstaande voor beeld ziet u de gegevens die zijn vastgelegd wanneer een gebruiker zich aanmeldt met een externe ID-provider:  
-    ![Voor beeld van de pagina met details van de controle logboek activiteit in Azure Portal](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
+
+In dit voor beeld van een afbeelding van de Azure Portal worden de gegevens weer gegeven die zijn vastgelegd wanneer een gebruiker zich aanmeldt met een externe ID-provider, in dit geval Facebook:
+
+![Voor beeld van de pagina met details van de controle logboek activiteit in Azure Portal](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
 
 Het deel venster activity Details bevat de volgende relevante informatie:
 
 |Section|Veld|Description|
 |-------|-----|-----------|
-| Activiteit | Name | Welke activiteit heeft plaatsgevonden. Bijvoorbeeld ' Geef een id_token op voor de toepassing ' (waarmee de werkelijke gebruikers aanmelding wordt beëindigd). |
-| Gestart door (actor) | ObjectId | De **object-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt (deze id is niet zichtbaar in de Azure Portal, maar is wel toegankelijk via de Graph API bijvoorbeeld). |
+| Activiteit | Name | Welke activiteit heeft plaatsgevonden. U kunt bijvoorbeeld *een Id_token uitgeven aan de toepassing*, waardoor de werkelijke gebruikers aanmelding wordt beëindigd. |
+| Gestart door (actor) | ObjectId | De **object-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. Deze id is niet zichtbaar in de Azure Portal, maar is toegankelijk via de Microsoft Graph-API. |
 | Gestart door (actor) | SPN-naam | De **toepassings-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. |
 | Doel (en) | ObjectId | De **object-id** van de gebruiker die zich aanmeldt. |
 | Aanvullende details | TenantId | De **Tenant-id** van de Azure AD B2C Tenant. |
 | Aanvullende details | `PolicyId` | De **beleids-id** van de gebruikers stroom (het beleid) dat wordt gebruikt voor het ondertekenen van de gebruiker in. |
 | Aanvullende details | ApplicationId | De **toepassings-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. |
 
-## <a name="accessing-audit-logs-through-the-azure-portal"></a>Controle Logboeken openen via de Azure Portal
-1. Ga naar de [Azure Portal](https://portal.azure.com). Zorg ervoor dat u zich in de B2C-adres lijst bevindt.
-2. Klik op **Azure Active Directory** in de werk balk Favorieten aan de linkerkant
+## <a name="view-audit-logs-in-the-azure-portal"></a>Audit logboeken weer geven in de Azure Portal
 
-    ![Azure Active Directory knop gemarkeerd in het menu links in de portal](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
+De Azure Portal biedt toegang tot de audit logboek gebeurtenissen in uw Azure AD B2C-Tenant.
 
-1. Klik onder **activiteit**op **audit logboeken**
+1. Meld u aan bij [Azure Portal](https://portal.azure.com)
+1. Ga naar de map die uw Azure AD B2C-Tenant bevat en blader vervolgens naar **Azure AD B2C**.
+1. Selecteer onder **activiteiten** in het linkermenu **audit logboeken**.
 
-    ![De knop controle logboeken gemarkeerd in het gedeelte activiteit van het menu](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-section.png)
+Er wordt een lijst weer gegeven met activiteiten gebeurtenissen die zijn vastgelegd in de afgelopen zeven dagen.
 
-2. Selecteer **B2C** in de **categorie** Dropbox
-3. Klik op **Toep assen**
+![Voorbeeld filter met twee activiteiten gebeurtenissen in Azure Portal](media/active-directory-b2c-reference-audit-logs/audit-logs-example-filter.png)
 
-    ![De categorie en de knop Toep assen gemarkeerd in het controle logboek filter](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
+Er zijn verschillende filter opties beschikbaar, waaronder:
 
-U ziet een lijst met activiteiten die zijn vastgelegd in de afgelopen zeven dagen.
-- Gebruik de vervolg keuzelijst **activiteit resource type** om te filteren op de hierboven beschreven typen activiteiten
-- Gebruik de vervolg keuzelijst **datum bereik** om het datum bereik van de weer gegeven activiteiten te filteren
-- Als u op een specifieke rij in de lijst klikt, worden in een context afhankelijk vak aan de rechter kant aanvullende kenmerken weer gegeven die zijn gekoppeld aan de activiteit
-- Klik op **downloaden** om de activiteiten te downloaden als een CSV-bestand
+* **Resource type van activiteit** : filteren op de activiteitstypen die worden weer gegeven in de sectie [overzicht van activiteiten die beschikbaar zijn](#overview-of-activities-available-in-the-b2c-category-of-audit-logs) .
+* **Datum** : filter het datum bereik van de weer gegeven activiteiten.
 
-> [!NOTE]
-> U kunt de audit logboeken ook weer geven door te navigeren naar **Azure AD B2C** in plaats van **Azure Active Directory** in de werk balk Favorieten aan de linkerkant. Klik onder **activiteiten**op **controle logboeken**, waarin u dezelfde Logboeken vindt als vergelijk bare filter mogelijkheden.
+Als u een rij in de lijst selecteert, worden de gegevens van de activiteit voor de gebeurtenis weer gegeven.
 
-## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Controle Logboeken openen met de rapportage-API van Azure AD
-Audit logboeken worden gepubliceerd op dezelfde pijp lijn als andere activiteiten voor Azure Active Directory, zodat ze toegankelijk zijn via de [Azure Active Directory rapportage-API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference).
+Als u de lijst met activiteiten gebeurtenissen in een CSV-bestand (Comma-Separated Values) wilt downloaden, selecteert u **downloaden**.
 
-### <a name="prerequisites"></a>Vereisten
-Als u de Azure AD Reporting API wilt verifiëren, moet u eerst een toepassing registreren. Zorg ervoor dat u de stappen in [vereisten voor toegang tot de Azure AD Reporting api's](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)volgt.
+## <a name="get-audit-logs-with-the-azure-ad-reporting-api"></a>Audit logboeken ophalen met de rapportage-API van Azure AD
 
-### <a name="accessing-the-api"></a>Toegang tot de API
-Als u de Azure AD B2C controle logboeken wilt downloaden via de API, kunt u de logboeken filteren in de categorie **B2C** . Als u wilt filteren op categorie, gebruikt u de query teken reeks parameter bij het aanroepen van het Azure AD Reporting API-eind punt, zoals hieronder wordt weer gegeven:
+Audit logboeken worden gepubliceerd op dezelfde pijp lijn als andere activiteiten voor Azure Active Directory, zodat ze toegankelijk zijn via de [Azure Active Directory rapportage-API](https://docs.microsoft.com/graph/api/directoryaudit-list). Zie [aan de slag met de Azure Active Directory-rapportage-API](../active-directory/reports-monitoring/concept-reporting-api.md)voor meer informatie.
 
-`https://graph.windows.net/your-b2c-tentant.onmicrosoft.com/activities/audit?api-version=beta&$filter=category eq 'B2C'`
+### <a name="enable-reporting-api-access"></a>Rapportage-API-toegang inschakelen
+
+Als u toegang op basis van scripts of toepassingen wilt toestaan voor de rapportage-API van Azure AD, moet u een Azure Active Directory toepassing die in uw Azure AD B2C Tenant is geregistreerd met de volgende API-machtigingen:
+
+* Microsoft Graph
+  * Toepassing: Alle audit logboek gegevens lezen
+
+U kunt deze machtigingen inschakelen voor een bestaande registratie van de toepassing binnen uw B2C-Tenant of een nieuwe maken die specifiek is voor gebruik met audit logboek automatisering.
+
+Als u een nieuwe toepassing wilt maken, de vereiste API-machtigingen wilt toewijzen en een client geheim wilt maken, voert u de volgende stappen uit:
+
+1. Toepassing registreren
+    1. Meld u aan bij de [Azure Portal](https://portal.azure.com), ga naar de map met uw Azure AD B2C Tenant en blader vervolgens naar **Azure AD B2C**.
+    1. Selecteer in het linkermenu onder **beheren** de optie **app-registraties (verouderd)** .
+    1. **Nieuwe toepassings registratie** selecteren
+    1. Voer een naam in voor de toepassing. Bijvoorbeeld de *app audit logboek*.
+    1. Voer een geldige URL in voor de **aanmeldings-URL**. Bijvoorbeeld *https://localhost* . Dit eind punt hoeft niet bereikbaar te zijn, maar moet een geldige URL zijn.
+    1. Selecteer **Maken**.
+    1. Noteer de **toepassings-id** die wordt weer gegeven op de pagina **geregistreerde app** . U hebt deze waarde nodig voor verificatie in Automation-scripts, zoals het Power shell-voorbeeld script dat in een latere sectie wordt weer gegeven.
+1. API-toegangs machtigingen toewijzen
+    1. Op de overzichts pagina van de **geregistreerde app** selecteert u **instellingen**.
+    1. Selecteer onder **API-toegang**de optie **vereiste machtigingen**.
+    1. Selecteer **toevoegen**en selecteer vervolgens **een API**.
+    1. Selecteer **Microsoft Graph**en **Selecteer**.
+    1. Selecteer **alle audit logboek gegevens lezen**onder **toepassings machtigingen**.
+    1. Selecteer de knop **selecteren** en selecteer vervolgens **gereed**.
+    1. Selecteer **machtigingen verlenen**, en selecteer vervolgens **Ja**.
+1. Client geheim maken
+    1. Selecteer onder **API-toegang**de optie **sleutels**.
+    1. Voer een beschrijving in voor de sleutel in het vak **sleutel beschrijving** . Bijvoorbeeld *controle logboek sleutel*.
+    1. Selecteer de geldigheids **duur**en selecteer vervolgens **Opslaan**.
+    1. Noteer de **waarde**van de sleutel. U hebt deze waarde nodig voor verificatie in Automation-scripts, zoals het Power shell-voorbeeld script dat in een latere sectie wordt weer gegeven.
+
+U hebt nu een toepassing met de vereiste API-toegang, een toepassings-ID en een sleutel die u kunt gebruiken in uw automatiserings scripts. Zie de sectie Power shell-script verderop in dit artikel voor een voor beeld van hoe u activiteiten gebeurtenissen kunt ophalen met een script.
+
+### <a name="access-the-api"></a>Toegang tot de API
+
+Als u Azure AD B2C controle logboek gebeurtenissen via de API wilt downloaden, filtert u `B2C` de logboeken op de categorie. Als u wilt filteren op categorie, `filter` gebruikt u de query reeks parameter wanneer u het Azure AD Reporting API-eind punt aanroept.
+
+```HTTP
+https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByService eq 'B2C' and activityDateTime gt 2019-09-10T02:28:17Z
+```
 
 ### <a name="powershell-script"></a>PowerShell-script
-Het volgende script geeft een voor beeld van het gebruik van Power shell om de rapportage-API van Azure AD op te vragen en de resultaten op te slaan als een JSON-bestand:
+
+In het volgende Power shell-script ziet u een voor beeld van het uitvoeren van een query op de Azure AD-rapportage-API. Na het uitvoeren van een query op de API, worden de vastgelegde gebeurtenissen in de standaard uitvoer afgedrukt en wordt de JSON-uitvoer naar een bestand geschreven.
+
+U kunt dit script proberen in de [Azure Cloud shell](../cloud-shell/overview.md). Zorg ervoor dat u deze update bijwerkt met uw toepassings-ID, sleutel en de naam van uw Azure AD B2C Tenant.
 
 ```powershell
-# This script will require registration of a Web Application in Azure Active Directory (see https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)
+# This script requires the registration of a Web Application in Azure Active Directory:
+# https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api
 
 # Constants
-$ClientID       = "your-client-application-id-here"       # Insert your application's Client ID, a Globally Unique ID (registered by Global Admin)
-$ClientSecret   = "your-client-application-secret-here"   # Insert your application's Client Key/Secret string
+$ClientID       = "your-client-application-id-here"       # Insert your application's Client ID, a GUID (registered by Global Admin)
+$ClientSecret   = "your-client-application-secret-here"   # Insert your application's Client secret/key
+$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant; for example, contoso.onmicrosoft.com
 $loginURL       = "https://login.microsoftonline.com"
-$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # AAD B2C Tenant; for example, contoso.onmicrosoft.com
-$resource       = "https://graph.windows.net"             # Azure AD Graph API resource URI
+$resource       = "https://graph.microsoft.com"           # Microsoft Graph API resource URI
 $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' to decrement minutes, for example
 Write-Output "Searching for events starting $7daysago"
 
@@ -117,7 +155,7 @@ $oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2
 if ($oauth.access_token -ne $null) {
     $i=0
     $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
-    $url = 'https://graph.windows.net/' + $tenantdomain + '/activities/audit?api-version=beta&$filter=category eq ''B2C''and activityDate gt ' + $7daysago
+    $url = "https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?`$filter=loggedByService eq 'B2C' and activityDateTime gt  " + $7daysago
 
     # loop through each query page (1 through n)
     Do {
@@ -138,3 +176,72 @@ if ($oauth.access_token -ne $null) {
     Write-Host "ERROR: No Access Token"
 }
 ```
+
+Hier volgt een voor beeld van de JSON-weer gave van de gebeurtenis activiteit die eerder in dit artikel is weer gegeven:
+
+```JSON
+{
+    "id": "B2C_DQO3J_4984536",
+    "category": "Authentication",
+    "correlationId": "00000000-0000-0000-0000-000000000000",
+    "result": "success",
+    "resultReason": "N/A",
+    "activityDisplayName": "Issue an id_token to the application",
+    "activityDateTime": "2019-09-14T18:13:17.0618117Z",
+    "loggedByService": "B2C",
+    "operationType": "",
+    "initiatedBy": {
+        "user": null,
+        "app": {
+            "appId": "00000000-0000-0000-0000-000000000000",
+            "displayName": null,
+            "servicePrincipalId": null,
+            "servicePrincipalName": "00000000-0000-0000-0000-000000000000"
+        }
+    },
+    "targetResources": [
+        {
+            "id": "00000000-0000-0000-0000-000000000000",
+            "displayName": null,
+            "type": "User",
+            "userPrincipalName": null,
+            "groupType": null,
+            "modifiedProperties": []
+        }
+    ],
+    "additionalDetails": [
+        {
+            "key": "TenantId",
+            "value": "test.onmicrosoft.com"
+        },
+        {
+            "key": "PolicyId",
+            "value": "B2C_1A_signup_signin"
+        },
+        {
+            "key": "ApplicationId",
+            "value": "00000000-0000-0000-0000-000000000000"
+        },
+        {
+            "key": "Client",
+            "value": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
+        },
+        {
+            "key": "IdentityProviderName",
+            "value": "facebook"
+        },
+        {
+            "key": "IdentityProviderApplicationId",
+            "value": "0000000000000000"
+        },
+        {
+            "key": "ClientIpAddress",
+            "value": "127.0.0.1"
+        }
+    ]
+}
+```
+
+## <a name="next-steps"></a>Volgende stappen
+
+U kunt andere beheer taken automatiseren, bijvoorbeeld [gebruikers beheren met .net](active-directory-b2c-devquickstarts-graph-dotnet.md).

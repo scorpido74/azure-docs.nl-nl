@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault instellen voor virtuele Linux-machines | Microsoft Docs
-description: Over het instellen van Key Vault voor gebruik met een Azure Resource Manager-machine met de Azure CLI.
+description: Key Vault instellen voor gebruik met een Azure Resource Manager virtuele machine met de Azure CLI.
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
@@ -15,35 +15,35 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: kasing
-ms.openlocfilehash: 736a30fe83ff26cd1dd4f197de9e7db925b7243b
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: cbc8b6be09fcf4232636b580dc0c62482b83bd60
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671384"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002165"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>Key Vault instellen voor virtuele machines met de Azure CLI
 
-In de Azure Resource Manager-stack, worden geheimen/certificates gemodelleerd als resources die worden geboden door Key Vault. Zie voor meer informatie over Azure Key Vault, [wat is Azure Key Vault?](../../key-vault/key-vault-whatis.md) Key Vault moet worden gebruikt met Azure Resource Manager VM's, zodat de *EnabledForDeployment* eigenschap voor Key Vault moet zijn ingesteld op true. Dit artikel ziet u hoe u Key Vault instellen voor gebruik met Azure virtual machines (VM's) met de Azure CLI. 
+In de Azure Resource Manager stack worden geheimen/certificaten gemodelleerd als bronnen die door Key Vault worden verschaft. Zie [Wat is Azure Key Vault?](../../key-vault/key-vault-overview.md) voor meer informatie over Azure Key Vault. Als Key Vault met Azure Resource Manager Vm's wilt gebruiken, moet de eigenschap *EnabledForDeployment* op Key Vault worden ingesteld op True. In dit artikel wordt beschreven hoe u Key Vault instelt voor gebruik met Azure virtual machines (Vm's) met behulp van de Azure CLI. 
 
-Als u wilt deze stappen uitvoert, moet u de meest recente [Azure CLI](/cli/azure/install-az-cli2) geïnstalleerd en aangemeld bij een Azure-account met [az login](/cli/azure/reference-index).
+Als u deze stappen wilt uitvoeren, moet u de nieuwste [Azure cli](/cli/azure/install-az-cli2) installeren en u aanmelden bij een Azure-account met [AZ login](/cli/azure/reference-index).
 
 ## <a name="create-a-key-vault"></a>Een sleutelkluis maken
-Een sleutelkluis maken en toewijzen van implementatiebeleid voor de met [az keyvault maken](/cli/azure/keyvault). Het volgende voorbeeld wordt een key vault met de naam `myKeyVault` in de `myResourceGroup` resourcegroep:
+Maak een sleutel kluis en wijs het implementatie beleid toe met [AZ Key kluis Create](/cli/azure/keyvault). In het volgende voor beeld wordt een sleutel `myKeyVault` kluis gemaakt `myResourceGroup` met de naam in de resource groep:
 
 ```azurecli
 az keyvault create -l westus -n myKeyVault -g myResourceGroup --enabled-for-deployment true
 ```
 
-## <a name="update-a-key-vault-for-use-with-vms"></a>Een Key Vault voor gebruik met virtuele machines bijwerken
-Set-kluis met de beleidsregels voor implementatie op een bestaande sleutel [az keyvault update](/cli/azure/keyvault). De volgende updates de key vault met de naam `myKeyVault` in de `myResourceGroup` resourcegroep:
+## <a name="update-a-key-vault-for-use-with-vms"></a>Een Key Vault bijwerken voor gebruik met Vm's
+Stel het implementatie beleid in op een bestaande sleutel kluis met [AZ Key kluis update](/cli/azure/keyvault). In het volgende wordt de sleutel kluis `myKeyVault` met de `myResourceGroup` naam in de resource groep bijgewerkt:
 
 ```azurecli
 az keyvault update -n myKeyVault -g myResourceGroup --set properties.enabledForDeployment=true
 ```
 
-## <a name="use-templates-to-set-up-key-vault"></a>Sjablonen gebruiken voor het instellen van Key Vault
-Wanneer u een sjabloon gebruikt, moet u instellen de `enabledForDeployment` eigenschap `true` voor de Key Vault resource als volgt:
+## <a name="use-templates-to-set-up-key-vault"></a>Sjablonen gebruiken om Key Vault in te stellen
+Wanneer u een sjabloon gebruikt, moet u de `enabledForDeployment` eigenschap instellen op `true` voor de Key Vault resource als volgt:
 
 ```json
 {
@@ -60,4 +60,4 @@ Wanneer u een sjabloon gebruikt, moet u instellen de `enabledForDeployment` eige
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor andere opties die u configureren kunt wanneer u een Sleutelkluis maken met behulp van sjablonen, [maken van een key vault](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).
+Zie [een sleutel kluis maken](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)voor andere opties die u kunt configureren wanneer u een Key Vault maakt met behulp van sjablonen.

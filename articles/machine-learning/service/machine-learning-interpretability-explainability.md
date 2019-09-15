@@ -1,6 +1,6 @@
 ---
 title: Interpreteerbaarheid van modellen
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Meer informatie over hoe u uw model voorspellingen maakt met behulp van de Azure Machine Learning SDK. Het kan worden gebruikt tijdens de training en om te begrijpen hoe uw model voor spellingen doet.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +10,14 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 06/21/2019
-ms.openlocfilehash: 2e8eb79c4baebebb1974a977394215545ef944db
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6b825e61542dabc92baf482ede6c93edc486e059
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872392"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002362"
 ---
-# <a name="model-interpretability-with-azure-machine-learning-service"></a>Modellen interpreteren met Azure Machine Learning-service
+# <a name="model-interpretability-with-azure-machine-learning"></a>Modellen interpreteren met Azure Machine Learning
 
 In dit artikel leert u hoe u kunt uitleggen waarom uw model de voor spellingen heeft gemaakt met de verschillende interpreteer bare pakketten van de Azure Machine Learning python SDK.
 
@@ -91,7 +91,7 @@ De ingebouwde `TabularExplainer` intelligentie wordt Geavanceerd geworden naarma
 `TabularExplainer`heeft ook aanzienlijke verbeteringen aangebracht in de functie en prestaties ten opzichte van de rechtstreekse uitleg:
 
 * **Samen vatting van de initialisatie-gegevensset**. In gevallen waarin de snelheid van uitleg het belangrijkst is, vatten we de initialisatie-gegevensset samen en genereren ze een kleine set representatieve voor beelden, waardoor zowel globale als lokale uitleg wordt versneld.
-* Bemonstert u **de set evaluatie gegevens**. Als de gebruiker een grote set evaluatie voorbeelden heeft door gegeven, maar niet alle moet worden geëvalueerd, kan de para meter sample worden ingesteld op True om de globale uitleg te versnellen.
+* **Bemonstert u de set evaluatie gegevens**. Als de gebruiker een grote set evaluatie voorbeelden heeft door gegeven, maar niet alle moet worden geëvalueerd, kan de para meter sample worden ingesteld op True om de globale uitleg te versnellen.
 
 In het volgende diagram ziet u de huidige structuur van directe en meta-uitleg.
 
@@ -219,7 +219,7 @@ Het `explain` pakket is ontworpen om te werken met zowel lokale als externe Comp
 
 ### <a name="train-and-explain-remotely"></a>Train en leg op afstand
 
-Hoewel u kunt trainen op de verschillende reken doelen die door Azure Machine Learning service worden ondersteund, wordt in het voor beeld in deze sectie beschreven hoe u dit doet met behulp van een Azure Machine Learning Compute-doel.
+Hoewel u kunt trainen op de verschillende reken doelen die door Azure Machine Learning worden ondersteund, wordt in het voor beeld in deze sectie beschreven hoe u dit doet met behulp van een Azure Machine Learning Compute-doel.
 
 1. Een trainings script maken in een lokale Jupyter-Notebook (bijvoorbeeld run_explainer. py).
 
@@ -474,7 +474,7 @@ De uitleg kan samen met het oorspronkelijke model worden geïmplementeerd en kan
 
 1. Implementeer de installatie kopie naar een berekenings doel:
 
-   1. Een score bestand maken (voordat u deze stap uitvoert, volgt u de stappen in [modellen implementeren met de Azure machine learning-service](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where) om uw oorspronkelijke Voorspellings model te registreren)
+   1. Een score bestand maken (voordat u deze stap uitvoert, volgt u de stappen in [modellen implementeren met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where) om uw oorspronkelijke Voorspellings model te registreren)
 
         ```python
         %%writefile score.py

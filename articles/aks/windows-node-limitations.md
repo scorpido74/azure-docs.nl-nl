@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: ca5d857e4d473c7f76b7fac62e8a8bab39769b25
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a0fe65428a3329d4843ec913e934fb7a91b13759
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233125"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000219"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Huidige beperkingen voor Windows Server-knooppunt groepen en toepassings werkbelastingen in azure Kubernetes service (AKS)
 
@@ -36,7 +36,7 @@ Ondersteuning voor de venster Server knooppunt groep bevat enkele beperkingen di
 
 Kubernetes is historisch gericht op Linux. Veel voor beelden die worden gebruikt in de upstream [Kubernetes.io][kubernetes] -website zijn bedoeld voor gebruik op Linux-knoop punten. Wanneer u implementaties maakt die gebruikmaken van Windows Server-containers, gelden de volgende overwegingen op het niveau van het besturings systeem:
 
-- **Identity** -Linux maakt gebruik van userid (UID) en GROUPID (GID), die worden weer gegeven als typen met gehele getallen. Gebruikers-en groeps namen zijn niet canoniek: ze zijn slechts een alias in */etc/groups* of */etc/passwd* terug naar de UID en GID.
+- **Identiteit** -Linux identificeert een gebruiker op basis van een gebruikers-id (UID) van een geheel getal. Een gebruiker heeft ook een alfanumerieke gebruikers naam voor aanmelding, die Linux vertaalt naar de UID van de gebruiker. Net als Linux wordt een gebruikers groep aangeduid met een groeps-id (GID) en wordt een groeps naam omgezet in de bijbehorende GID.
     - Windows Server gebruikt een grotere binaire beveiligings-id (SID) die is opgeslagen in de SAM-data base (Windows Security Access Manager). Deze data base wordt niet gedeeld tussen de host en containers of tussen containers.
 - **Bestands machtigingen** : Windows Server gebruikt een toegangs beheer lijst op basis van sid's, in plaats van een bitmasker van machtigingen en UID + GID
 - **Bestands paden** : de Conventie voor Windows Server is door gebruik te gebruiken in plaats van/.

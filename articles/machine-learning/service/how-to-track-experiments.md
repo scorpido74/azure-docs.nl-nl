@@ -1,6 +1,6 @@
 ---
 title: Log ML experimenten & metrische gegevens
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Bewaak uw Azure ML experimenten en bewaak metrische uitvoerings gegevens om het proces voor het maken van het model te verbeteren. Voeg logboek registratie toe aan uw trainings script en Bekijk de geregistreerde resultaten van een uitvoering.  Gebruik run. log, run. start_logging of ScriptRunConfig.
 services: machine-learning
 author: heatherbshapiro
@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1c2747c8eaac0323ac32f67afb27ac854a3a5ce9
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: a37ed7c7f39324a7fb4750389c0d76c36539c3cc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959943"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002711"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Uitvoeringen en metrische gegevens van Azure ML-experimenten bewaken
 
-Verbeter het proces voor het maken van het model door de metrische gegevens voor experimenten en bewakings uitvoeringen bij te houden. In dit artikel leert u hoe u logboek registratie code kunt toevoegen aan uw trainings script, een experiment moet verzenden, de uitvoering ervan kunt controleren en de resultaten kunt controleren in Azure Machine Learning-service.
+Verbeter het proces voor het maken van het model door de metrische gegevens voor experimenten en bewakings uitvoeringen bij te houden. In dit artikel leert u hoe u logboek registratie code kunt toevoegen aan uw trainings script, een experiment moet verzenden, de uitvoering ervan kunt controleren en de resultaten kunt controleren in Azure Machine Learning.
 
 > [!NOTE]
-> Azure Machine Learning-service kan ook gegevens van andere bronnen tijdens de training registreren, zoals geautomatiseerde machine learning uitvoeringen, of de docker-container die de trainings taak uitvoert. Deze logboeken worden niet gedocumenteerd. Als u problemen ondervindt en contact opneemt met micro soft ondersteuning, kunnen ze deze logboeken gebruiken tijdens het oplossen van problemen.
+> Azure Machine Learning kunnen ook gegevens van andere bronnen tijdens de training registreren, zoals geautomatiseerde machine learning uitvoeringen, of de docker-container die de trainings taak uitvoert. Deze logboeken worden niet gedocumenteerd. Als u problemen ondervindt en contact opneemt met micro soft ondersteuning, kunnen ze deze logboeken gebruiken tijdens het oplossen van problemen.
 
 ## <a name="available-metrics-to-track"></a>Beschik bare metrische gegevens om bij te houden
 
@@ -65,7 +65,7 @@ Voordat u logboekregistratie en het verzenden van een experiment toevoegt, moet 
 
 **start_logging** maakt u een interactieve uitvoeren voor gebruik in scenario's zoals laptops. Alle metrische gegevens die zijn vastgelegd tijdens de sessie worden toegevoegd aan de uitvoerregistratie in het experiment.
 
-Het volgende voorbeeld traint een eenvoudig model sklearn Ridge lokaal in een lokaal Jupyter-notitieblok. Zie voor meer informatie over het verzenden van experimenten in verschillende omgevingen, [compute-doelen voor modeltraining met Azure Machine Learning-service instellen](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
+Het volgende voorbeeld traint een eenvoudig model sklearn Ridge lokaal in een lokaal Jupyter-notitieblok. Zie [Compute-doelen voor model training instellen met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets)voor meer informatie over het verzenden van experimenten voor verschillende omgevingen.
 
 1. Maak een trainingsscript in een lokaal Jupyter-notitieblok. 
 
@@ -91,7 +91,7 @@ Het volgende voorbeeld traint een eenvoudig model sklearn Ridge lokaal in een lo
    joblib.dump(value = reg, filename = 'model.pkl');
    ```
 
-2. Experiment bijhouden met behulp van de Azure Machine Learning-service-SDK toevoegen en een persistente model uploaden naar het experiment record worden uitgevoerd. De volgende code wordt toegevoegd tags, Logboeken, en wordt een modelbestand geüpload naar het experiment uitvoeren.
+2. Voeg experiment tracking toe met behulp van de Azure Machine Learning SDK en upload een persistent model in de record experiment run. De volgende code wordt toegevoegd tags, Logboeken, en wordt een modelbestand geüpload naar het experiment uitvoeren.
 
    ```python
     # Get an experiment object from Azure Machine Learning
