@@ -1,6 +1,6 @@
 ---
 title: Omgevingen maken, gebruiken en beheren voor model training en-implementatie
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Omgevingen maken en beheren voor model training en-implementatie. Python-pakketten en andere instellingen voor de omgeving beheren.
 services: machine-learning
 author: rastala
@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: e506259b980c0aaf0300c0bb0a1aa0803171643a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 242f3cec0ac766e537bd0483725ba51685bb7ced
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098956"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996622"
 ---
 # <a name="create-and-manage-environments-for-training-and-deployment"></a>Omgevingen maken en beheren voor training en implementatie
 
 In dit artikel vindt u informatie over het maken en beheren van Azure Machine Learning [omgevingen](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) , zodat u de software afhankelijkheden van uw projecten kunt bijhouden en reproduceren tijdens het ontwikkelen.
 
-Beheer van de software-afhankelijkheid is een algemene taak voor ontwikkel aars. U wilt er zeker van zijn dat de builds worden gereproduceerd zonder veel hand matige software configuratie. Met oplossingen voor lokale ontwikkeling, zoals PIP en Conda, biedt de Azure Machine Learning service omgevingen klasse een oplossing voor lokale en gedistribueerde Cloud ontwikkeling.
+Beheer van de software-afhankelijkheid is een algemene taak voor ontwikkel aars. U wilt er zeker van zijn dat de builds worden gereproduceerd zonder veel hand matige software configuratie. Met oplossingen voor lokale ontwikkeling, zoals PIP en Conda, biedt de klasse Azure Machine Learning omgevingen een oplossing voor zowel lokale als gedistribueerde Cloud ontwikkeling.
 
 In de voor beelden in dit artikel wordt uitgelegd hoe u:
 
@@ -52,7 +52,7 @@ Door systeem beheerde omgevingen worden gebruikt wanneer u wilt dat [Conda](http
 ## <a name="prerequisites"></a>Vereisten
 
 * De Azure Machine Learning SDK voor python is [geïnstalleerd](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-* Een [Azure Machine Learning Services-werk ruimte](how-to-manage-workspace.md).
+* Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md).
 
 ## <a name="create-an-environment"></a>Een omgeving maken
 
@@ -247,7 +247,7 @@ myenv.docker.gpu_support=True
 
 ## <a name="using-environments-for-training"></a>Omgevingen gebruiken voor training
 
-Als u een trainings uitvoering wilt verzenden, moet u uw omgeving, het berekenings [doel](concept-compute-target.md) en het python-trainings script in een uitvoerings configuratie combi neren. een wrapper-object dat wordt gebruikt voor het verzenden van uitvoeringen.
+Als u een trainings uitvoering wilt verzenden, moet u uw omgeving, het [berekenings doel](concept-compute-target.md) en het python-trainings script in een uitvoerings configuratie combi neren. een wrapper-object dat wordt gebruikt voor het verzenden van uitvoeringen.
 
 Wanneer u een trainings uitvoering verzendt, kan het maken van een nieuwe omgeving enkele minuten duren, afhankelijk van de grootte van de vereiste afhankelijkheden. De omgevingen worden in de cache opgeslagen door de service, dus als de omgevings definitie ongewijzigd blijft, wordt de volledige instel tijd slechts eenmaal in rekening gebracht.
 
@@ -306,7 +306,7 @@ run = experiment.submit(sk_est)
 
 U kunt omgevingen gebruiken bij het implementeren van uw model als een webservice. Hierdoor kan een reproduceer bare, verbonden werk stroom worden gebruikt voor het trainen, testen en implementeren van uw model met exact dezelfde bibliotheken in uw training en voor het afnemen van interferenties.
 
-Als u een webservice wilt implementeren, moet u de omgeving combi neren, reken kracht, Score script en geregistreerd model in uw implementatie object [implementeren ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-). Meer informatie over het [implementeren](how-to-deploy-and-where.md)van webservices.
+Als u een webservice wilt implementeren, moet u de omgeving combi neren, reken kracht, Score script en geregistreerd model in uw implementatie object [implementeren ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-). Meer informatie over het [implementeren van webservices](how-to-deploy-and-where.md).
 
 In dit voor beeld wordt ervan uitgegaan dat u een trainings uitvoering hebt voltooid die dat model wilt implementeren in een Azure container instance (ACI). Bij het bouwen van de webservice worden het model en de Score bestanden gekoppeld aan de installatie kopie en wordt de Azure Machine Learning ring stack toegevoegd aan de installatie kopie.
 

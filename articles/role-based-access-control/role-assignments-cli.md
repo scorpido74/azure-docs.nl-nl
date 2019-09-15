@@ -1,6 +1,6 @@
 ---
-title: Beheer de toegang tot Azure-resources met behulp van RBAC en Azure CLI | Microsoft Docs
-description: Informatie over het beheren van toegang tot Azure-resources voor gebruikers, groepen en toepassingen die gebruikmaken van op rollen gebaseerd toegangsbeheer (RBAC) en Azure CLI. U vindt hier instructies voor het weergeven van toegang, het verlenen van toegang en het intrekken van toegang.
+title: Toegang tot Azure-resources beheren met RBAC en Azure CLI | Microsoft Docs
+description: Meer informatie over het beheren van de toegang tot Azure-resources voor gebruikers, groepen en toepassingen met behulp van op rollen gebaseerd toegangs beheer (RBAC) en Azure CLI. U vindt hier instructies voor het weergeven van toegang, het verlenen van toegang en het intrekken van toegang.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,36 +11,36 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2019
+ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: bc5deb614e2ac6e47ff3bf241943df92d97699b2
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 1b898f42fa6f66fba7c84daa67769249642bd986
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295176"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996488"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>Beheer de toegang tot Azure-resources met behulp van RBAC en Azure CLI
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>Toegang tot Azure-resources beheren met RBAC en Azure CLI
 
-[Op rollen gebaseerd toegangsbeheer (RBAC)](overview.md) is de manier waarop u de toegang tot Azure-resources beheert. Dit artikel wordt beschreven hoe u de toegang voor gebruikers, groepen en toepassingen die gebruikmaken van RBAC en Azure CLI beheren.
+[Op rollen gebaseerd toegangsbeheer (RBAC)](overview.md) is de manier waarop u de toegang tot Azure-resources beheert. In dit artikel wordt beschreven hoe u de toegang beheert voor gebruikers, groepen en toepassingen met RBAC en Azure CLI.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het beheren van toegang, moet u een van de volgende:
+Als u de toegang wilt beheren, hebt u een van de volgende opties nodig:
 
-* [Bash in Azure Cloudshell](/azure/cloud-shell/overview)
+* [Bash in Azure Cloud Shell](/azure/cloud-shell/overview)
 * [Azure-CLI](/cli/azure)
 
 ## <a name="list-roles"></a>Rollen opvragen
 
-U kunt alle beschikbare roldefinities gebruiken [az role definitielijst](/cli/azure/role/definition#az-role-definition-list):
+Als u alle beschik bare roldefinities wilt weer geven, gebruikt u de [lijst AZ Role definition](/cli/azure/role/definition#az-role-definition-list):
 
 ```azurecli
 az role definition list
 ```
 
-Het volgende voorbeeld worden de naam en beschrijving van alle beschikbare roldefinities:
+In het volgende voor beeld worden de naam en beschrijving van alle beschik bare roldefinities weer gegeven:
 
 ```azurecli
 az role definition list --output json | jq '.[] | {"roleName":.roleName, "description":.description}'
@@ -63,7 +63,7 @@ az role definition list --output json | jq '.[] | {"roleName":.roleName, "descri
 ...
 ```
 
-Het volgende voorbeeld worden alle van de ingebouwde roldefinities:
+In het volgende voor beeld ziet u alle ingebouwde roldefinities:
 
 ```azurecli
 az role definition list --custom-role-only false --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
@@ -89,15 +89,15 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-## <a name="list-a-role-definition"></a>Een roldefinitie lijst
+## <a name="list-a-role-definition"></a>Een roldefinitie weer geven
 
-U kunt een roldefinitie gebruiken [az role definitielijst](/cli/azure/role/definition#az-role-definition-list):
+Gebruik [AZ Role definition List](/cli/azure/role/definition#az-role-definition-list)om een functie definitie weer te geven:
 
 ```azurecli
 az role definition list --name <role_name>
 ```
 
-De volgende voorbeeld ziet u de *Inzender* roldefinitie:
+In het volgende voor beeld wordt de roldefinitie van de rol *Inzender* weer gegeven:
 
 ```azurecli
 az role definition list --name "Contributor"
@@ -135,9 +135,9 @@ az role definition list --name "Contributor"
 ]
 ```
 
-### <a name="list-actions-of-a-role"></a>Lijst met acties van een rol
+### <a name="list-actions-of-a-role"></a>Acties van een rol weer geven
 
-Het volgende voorbeeld worden alleen de *acties* en *notActions* van de *Inzender* rol:
+*In het* volgende voor beeld worden alleen de *acties* en de verslechtering van de rol *Inzender* weer gegeven:
 
 ```azurecli
 az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
@@ -156,7 +156,7 @@ az role definition list --name "Contributor" --output json | jq '.[] | {"actions
 }
 ```
 
-Het volgende voorbeeld worden alleen de acties van de *Inzender voor virtuele machines* rol:
+In het volgende voor beeld worden alleen de acties van de rol *Inzender voor virtuele machines* vermeld:
 
 ```azurecli
 az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
@@ -182,19 +182,19 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 
 ## <a name="list-access"></a>Toegang opvragen
 
-In RBAC, de toegang van de lijst, u lijst maken met de roltoewijzingen.
+In RBAC kunt u de roltoewijzingen weer geven om toegang weer te geven.
 
 ### <a name="list-role-assignments-for-a-user"></a>Roltoewijzingen voor een gebruiker weergeven
 
-U kunt de roltoewijzingen voor een specifieke gebruiker gebruiken [lijst van zonetoewijzingen rol az](/cli/azure/role/assignment#az-role-assignment-list):
+Als u de roltoewijzingen voor een specifieke gebruiker wilt weer geven, gebruikt u de [lijst AZ Role Assignment](/cli/azure/role/assignment#az-role-assignment-list):
 
 ```azurecli
 az role assignment list --assignee <assignee>
 ```
 
-Standaard wordt alleen directe toewijzingen binnen het bereik van abonnement worden weergegeven. Als u wilt weergeven toewijzingen ingedeeld per resource of groep, gebruikt u `--all` en gebruiken als u wilt weergeven overgenomen asisgnments, `--include-inherited`.
+Standaard worden alleen directe toewijzingen weer gegeven die zijn gericht op een abonnement. Als u toewijzingen wilt weer geven die zijn afgestemd `--all` op resource of groep, gebruikt en `--include-inherited`om overgenomen toewijzingen weer te geven, gebruikt u.
 
-Het volgende voorbeeld worden de roltoewijzingen die zijn toegewezen rechtstreeks naar de *patlong\@contoso.com* gebruiker:
+In het volgende voor beeld worden de roltoewijzingen weer gegeven die rechtstreeks aan *de\@patlong contoso.com* -gebruiker zijn toegewezen:
 
 ```azurecli
 az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -213,26 +213,28 @@ az role assignment list --all --assignee patlong@contoso.com --output json | jq 
 }
 ```
 
-### <a name="list-role-assignments-for-a-resource-group"></a>Roltoewijzingen voor een resourcegroep opvragen
+### <a name="list-role-assignments-at-a-resource-group-scope"></a>Roltoewijzingen weer geven in een bereik van een resource groep
 
-U kunt de toewijzing van functies die beschikbaar zijn voor een resourcegroep gebruiken [lijst van zonetoewijzingen rol az](/cli/azure/role/assignment#az-role-assignment-list):
+Als u de roltoewijzingen wilt weer geven die voor komen in een bereik van een resource groep, gebruikt u de [lijst AZ Role Assignment](/cli/azure/role/assignment#az-role-assignment-list):
 
 ```azurecli
 az role assignment list --resource-group <resource_group>
 ```
 
-Het volgende voorbeeld worden de roltoewijzingen voor de *pharma sales* resourcegroep:
+In het volgende voor beeld worden de roltoewijzingen voor de resource groep *Pharma-Sales* weer gegeven:
 
 ```azurecli
-az role assignment list --resource-group pharma-sales --output json | jq '.[] | {"roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+az role assignment list --resource-group pharma-sales --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
 ```Output
 {
+  "principalName": "patlong@contoso.com",
   "roleDefinitionName": "Backup Operator",
   "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
 }
 {
+  "principalName": "patlong@contoso.com",
   "roleDefinitionName": "Virtual Machine Contributor",
   "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
 }
@@ -240,44 +242,68 @@ az role assignment list --resource-group pharma-sales --output json | jq '.[] | 
 ...
 ```
 
+### <a name="list-role-assignments-at-a-subscription-scope"></a>Roltoewijzingen in een abonnements bereik weer geven
+
+Gebruik [AZ Role Assignment List](/cli/azure/role/assignment#az-role-assignment-list)om alle roltoewijzingen in een abonnements bereik weer te geven. Als u de abonnements-ID wilt ophalen, kunt u deze vinden op de Blade **abonnementen** in de Azure portal of kunt u [AZ account list](/cli/azure/account#az-account-list)gebruiken.
+
+```azurecli
+az role assignment list --subscription <subscription_name_or_id>
+```
+
+```Example
+az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```
+
+### <a name="list-role-assignments-at-a-management-group-scope"></a>Roltoewijzingen in een beheer groeps bereik weer geven
+
+Gebruik [AZ Role Assignment List](/cli/azure/role/assignment#az-role-assignment-list)om alle roltoewijzingen in een beheer groeps bereik weer te geven. Als u de beheer groep-ID wilt ophalen, kunt u deze vinden op de Blade **beheer groepen** in de Azure portal of u kunt [AZ Account Management-Group List](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list)gebruiken.
+
+```azurecli
+az role assignment list --scope /providers/Microsoft.Management/managementGroups/<group_id>
+```
+
+```Example
+az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```
+
 ## <a name="grant-access"></a>Toegang verlenen
 
 In RBAC verleent u toegang door een roltoewijzing te maken.
 
-### <a name="create-a-role-assignment-for-a-user"></a>Een roltoewijzing voor een gebruiker maken
+### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Een roltoewijzing maken voor een gebruiker in een bereik van een resource groep
 
-Gebruik voor het maken van een roltoewijzing voor een gebruiker op de resource-groepsbereik [az roltoewijzing maken](/cli/azure/role/assignment#az-role-assignment-create):
+Als u toegang wilt verlenen aan een gebruiker in een bereik van een resource groep, gebruikt u [AZ Role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create).
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-In het volgende voorbeeld wordt de *Inzender voor virtuele machines* rol *patlong\@contoso.com* gebruiker op de *pharma sales* groepsbereik van de resource:
+In het volgende voor beeld wordt de rol van *Inzender voor virtuele machines* toegewezen aan *\@patlong contoso.com* gebruiker op het *Pharma-Sales-* resource groeps bereik:
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales
 ```
 
-### <a name="create-a-role-assignment-using-the-unique-role-id"></a>Een roltoewijzing met behulp van de unieke ID maken
+### <a name="create-a-role-assignment-using-the-unique-role-id"></a>Een roltoewijzing maken met behulp van de unieke rol-ID
 
-Er zijn een paar keer wanneer de naam van een rol kan wijzigen, bijvoorbeeld:
+Er zijn een aantal keren dat een rolnaam kan worden gewijzigd, bijvoorbeeld:
 
-- U uw eigen aangepaste rol worden gebruikt en u besluit om de naam te wijzigen.
-- U gebruikt een preview-functie die heeft **(Preview)** in de naam. Wanneer de functie wordt uitgebracht, wordt de rol wordt gewijzigd.
+- U gebruikt uw eigen aangepaste rol en u besluit de naam te wijzigen.
+- U gebruikt een preview-functie met **(preview)** in de naam. Wanneer de rol wordt vrijgegeven, wordt de naam van de rol gewijzigd.
 
 > [!IMPORTANT]
-> Een preview-versie wordt geleverd zonder een service level agreement, en het wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
+> Een preview-versie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
 > Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-Zelfs als de naam van een rol is gewijzigd, wordt de rol-ID niet wijzigen. Als u scripts of automation gebruikt om uw roltoewijzingen te maken, is het aanbevolen om te gebruiken van de unieke ID in plaats van de naam van de rol. Daarom zijn uw scripts kans om te werken als een rol is gewijzigd.
+Zelfs als een rol een andere naam heeft gekregen, wordt de rol-ID niet gewijzigd. Als u scripts of automatisering gebruikt om roltoewijzingen te maken, is het een best practice om de unieke rol-ID te gebruiken in plaats van de rolnaam. Als de naam van een rol wordt gewijzigd, zijn uw scripts waarschijnlijker goed.
 
-Gebruik voor het maken van een roltoewijzing met behulp van de unieke ID in plaats van de naam van de rol [az roltoewijzing maken](/cli/azure/role/assignment#az-role-assignment-create).
+Als u een roltoewijzing wilt maken met behulp van de unieke rol-ID in plaats van de rolnaam, gebruikt u [AZ Role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create).
 
 ```azurecli
 az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-In het volgende voorbeeld wordt de [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) rol *patlong\@contoso.com* gebruiker op de *pharma sales* groepsbereik van de resource. Als u de unieke ID, kunt u [az role definitielijst](/cli/azure/role/definition#az-role-definition-list) of Zie [ingebouwde rollen voor Azure-resources](built-in-roles.md).
+In het volgende voor beeld wordt de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) toegewezen aan de *\@patlong contoso.com* -gebruiker op het *Pharma-Sales-* resource groeps bereik. Als u de unieke rol-ID wilt ophalen, kunt u de [lijst met AZ Role definition](/cli/azure/role/definition#az-role-definition-list) gebruiken of [ingebouwde rollen voor Azure-resources](built-in-roles.md)weer geven.
 
 ```azurecli
 az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
@@ -285,59 +311,93 @@ az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee
 
 ### <a name="create-a-role-assignment-for-a-group"></a>Een roltoewijzing voor een groep maken
 
-Gebruik voor het maken van een roltoewijzing voor een groep [az roltoewijzing maken](/cli/azure/role/assignment#az-role-assignment-create):
+Gebruik [AZ Role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create)om toegang te verlenen aan een groep. Als u de ID van de groep wilt ophalen, kunt u [AZ Ad Group List](/cli/azure/ad/group#az-ad-group-list) of [AZ Ad Group show](/cli/azure/ad/group#az-ad-group-show)gebruiken.
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
 ```
 
-In het volgende voorbeeld wordt de *lezer* rol die u wilt de *Anne Mack Team* groep met ID 22222222-2222-2222-2222-222222222222 op het abonnementsbereik. Als u de ID van de groep, kunt u [az ad group list](/cli/azure/ad/group#az-ad-group-list) of [az ad group show](/cli/azure/ad/group#az-ad-group-show).
+In het volgende voor beeld wordt de rol *lezer* toegewezen aan de *team groep Anne Mack* met id 22222222-2222-2222-2222-222222222222 bij een abonnements bereik.
 
 ```azurecli
 az role assignment create --role Reader --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/00000000-0000-0000-0000-000000000000
 ```
 
-In het volgende voorbeeld wordt de *Inzender voor virtuele machines* rol die u wilt de *Anne Mack Team* groep met ID 22222222-2222-2222-2222-222222222222 met een resource-bereik voor een virtueel netwerk met de naam *pharma-verkoop-project-netwerk*:
+In het volgende voor beeld wordt de rol van *Inzender voor virtuele machines* toegewezen aan de *team groep Anne Mack* met id 22222222-2222-2222-2222-222222222222 in een resource bereik voor een virtueel netwerk met de naam *Pharma-Sales-project-Network*.
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/pharma-sales/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network
 ```
 
-### <a name="create-a-role-assignment-for-an-application"></a>Een roltoewijzing voor een toepassing maken
+### <a name="create-a-role-assignment-for-an-application-at-a-resource-group-scope"></a>Een roltoewijzing maken voor een toepassing in een bereik van een resource groep
 
-Gebruik voor het maken van een rol voor een toepassing [az roltoewijzing maken](/cli/azure/role/assignment#az-role-assignment-create):
+Gebruik [AZ Role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create)om toegang te verlenen aan een toepassing. Als u de object-ID van de toepassing wilt ophalen, kunt u [AZ AD App List](/cli/azure/ad/app#az-ad-app-list) of [AZ AD App Show](/cli/azure/ad/app#az-ad-app-show)gebruiken.
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
+az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group>
 ```
 
-In het volgende voorbeeld wordt de *Inzender voor virtuele machines* rol aan een toepassing met object-ID 44444444-4444-4444-4444-444444444444 op de *pharma sales* groepsbereik van de resource. Als u de object-ID van de toepassing, kunt u [az ad app-lijst](/cli/azure/ad/app#az-ad-app-list) of [az ad app show](/cli/azure/ad/app#az-ad-app-show).
+In het volgende voor beeld wordt de rol van *Inzender voor virtuele machines* toegewezen aan een toepassing met object-id 44444444-4444-4444-4444-444444444444 in het bereik *Pharma-Sales* .
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales
 ```
 
-## <a name="remove-access"></a>Toegang intrekken
+### <a name="create-a-role-assignment-for-a-user-at-a-subscription-scope"></a>Een roltoewijzing maken voor een gebruiker op een abonnements bereik
 
-In RBAC, als u wilt verwijderen van toegang, verwijdert u een roltoewijzing met behulp van [az-roltoewijzing verwijderen](/cli/azure/role/assignment#az-role-assignment-delete):
+Als u toegang wilt verlenen aan een gebruiker op een abonnements bereik, gebruikt u [AZ Role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create). Als u de abonnements-ID wilt ophalen, kunt u deze vinden op de Blade **abonnementen** in de Azure portal of kunt u [AZ account list](/cli/azure/account#az-account-list)gebruiken.
+
+```azurecli
+az role assignment create --role <role_name_or_id> --assignee <assignee> --subscription <subscription_name_or_id>
+```
+
+In het volgende voor beeld wordt de rol van *lezer* toegewezen aan de *annm\@example.com* -gebruiker bij een abonnements bereik.
+
+```azurecli
+az role assignment create --role "Reader" --assignee annm@example.com --subscription 00000000-0000-0000-0000-000000000000
+```
+
+### <a name="create-a-role-assignment-for-a-user-at-a-management-group-scope"></a>Een roltoewijzing maken voor een gebruiker in een bereik van een beheer groep
+
+Als u toegang wilt verlenen aan een gebruiker op een beheer groeps bereik, gebruikt u [AZ Role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create). Als u de beheer groep-ID wilt ophalen, kunt u deze vinden op de Blade **beheer groepen** in de Azure portal of u kunt [AZ Account Management-Group List](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list)gebruiken.
+
+```azurecli
+az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
+```
+
+In het volgende voor beeld wordt de rol *facturerings lezer* toegewezen aan de *\@Alain example.com* -gebruiker in een bereik van een beheer groep.
+
+```azurecli
+az role assignment create --role "Billing Reader" --assignee alain@example.com --scope /providers/Microsoft.Management/managementGroups/marketing-group
+```
+
+## <a name="remove-access"></a>Remove access
+
+Als u de toegang wilt verwijderen in RBAC, verwijdert u een roltoewijzing met behulp van [AZ Role Assignment delete](/cli/azure/role/assignment#az-role-assignment-delete):
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role_name_or_id> --resource-group <resource_group>
 ```
 
-Het volgende voorbeeld verwijdert u de *Inzender voor virtuele machines* roltoewijzing van de *patlong\@contoso.com* gebruiker op de *pharma sales* resourcegroep:
+In het volgende voor beeld wordt de toewijzing van de rol *Inzender voor virtuele machines* uit de *patlong\@contoso.com* -gebruiker voor de resource groep *Pharma-Sales* verwijderd:
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales
 ```
 
-Het volgende voorbeeld verwijdert u de *lezer* rol van de *Anne Mack Team* groep met ID 22222222-2222-2222-2222-222222222222 op het abonnementsbereik. Als u de ID van de groep, kunt u [az ad group list](/cli/azure/ad/group#az-ad-group-list) of [az ad group show](/cli/azure/ad/group#az-ad-group-show).
+In het volgende voor beeld wordt de rol *lezer* verwijderd uit de *team groep Anne Mack* met id 22222222-2222-2222-2222-222222222222 bij een abonnements bereik. Als u de ID van de groep wilt ophalen, kunt u [AZ Ad Group List](/cli/azure/ad/group#az-ad-group-list) of [AZ Ad Group show](/cli/azure/ad/group#az-ad-group-show)gebruiken.
 
 ```azurecli
-az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --scope /subscriptions/00000000-0000-0000-0000-000000000000
+az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000
+```
+
+In het volgende voor beeld wordt de rol *facturerings lezer* verwijderd uit de *\@Alain example.com* -gebruiker in het bereik van de beheer groep. Als u de ID van de beheer groep wilt ophalen, kunt u [AZ Account Management-Group List](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list)gebruiken.
+
+```azurecli
+az role assignment delete --assignee alain@example.com --role "Billing Reader" --scope /providers/Microsoft.Management/managementGroups/marketing-group
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelfstudie: Maken van een aangepaste rol voor Azure-resources met behulp van Azure CLI](tutorial-custom-role-cli.md)
-- [De Azure CLI gebruiken voor het beheren van Azure-resources en resourcegroepen](../azure-resource-manager/cli-azure-resource-manager.md)
+- [Zelfstudie: Een aangepaste rol maken voor Azure-resources met behulp van Azure CLI](tutorial-custom-role-cli.md)
+- [Azure CLI gebruiken voor het beheren van Azure-resources en-resource groepen](../azure-resource-manager/cli-azure-resource-manager.md)

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
-ms.date: 07/08/2019
-ms.openlocfilehash: 7d47b74d4fef3676101f3f624dcacb832dcedc3a
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.date: 09/13/2019
+ms.openlocfilehash: 80c5ad26150547263469c9f59366e270bf660335
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858702"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993164"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Gegevens drift (preview) detecteren voor modellen die zijn geïmplementeerd in azure Kubernetes service (AKS)
 
@@ -133,7 +133,6 @@ Er zijn meerdere manieren om gegevens over de drift weer te geven:
 
 * Gebruik de `RunDetails` [widget Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py).
 * Gebruik de [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) functie voor elk `datadrift` run-object.
-* Bekijk de metrische gegevens in het Azure Portal van uw model.
 * De metrische gegevens weer geven in het gedeelte **modellen** van de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com).
 
 In het volgende python-voor beeld ziet u hoe u relevante gegevens waarden kunt tekenen. U kunt de geretourneerde metrische gegevens gebruiken om aangepaste visualisaties te maken:
@@ -159,17 +158,16 @@ datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-De configuratie van de data drift-detectie kan worden weer gegeven op de pagina model Details in de Azure Portal of de landings pagina van uw werk ruimte (preview).
+De configuratie van de gegevensdrijf detector kan worden gezien onder **modellen** op het tabblad **Details** in de [landings pagina van de werk ruimte (preview)](https://ml.azure.com).
 
-![Configuratie van gegevens-drift Azure Portal](media/how-to-monitor-data-drift/drift_config.png)
+![Gegevens drift Azure Portal](media/how-to-monitor-data-drift/drift-config.png)
 
-## <a name="view-results-in-azure-portal"></a>Resultaten in Azure Portal weer geven
+## <a name="view-results-in-your-workspace-landing-page"></a>Resultaten weer geven op de landings pagina van de werk ruimte
 
-Als u de resultaten in uw werk ruimte in [Azure Portal](https://portal.azure.com)wilt weer geven, gaat u naar de model pagina. Op het tabblad Details van het model wordt de data-drift configuratie weer gegeven. Een tabblad ' gegevens drift (preview-versie) ' is nu beschikbaar voor het visualiseren van de metrische gegevens waarden. 
+Als u de resultaten wilt weer geven in uw werk ruimte op de [pagina landings ruimte (preview)](https://ml.azure.com), gaat u naar de model pagina. Op het tabblad Details van het model wordt de data-drift configuratie weer gegeven. Er is nu een tabblad **gegevens drift** beschikbaar voor het visualiseren van de metrische gegevens over de data waarde. 
 
-![Gegevens drift Azure Portal](media/how-to-monitor-data-drift/drift_ui.png)
+[![Gegevens drift van landings pagina van werk ruimte](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
 
-De resultaten zijn ook beschikbaar in de details van het model op de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com).
 
 ## <a name="receiving-drift-alerts"></a>Ontvangst van drijf signalen
 

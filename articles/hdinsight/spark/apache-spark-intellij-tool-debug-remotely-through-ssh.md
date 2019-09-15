@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 9690e114f9ae01c4aee71145525fdda2eff4701c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 844901d9c689d5a04312b52101572854f4d7fe6b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814176"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70994024"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Fouten opsporen Apache Spark toepassingen op een HDInsight-cluster met Azure-toolkit voor IntelliJ via SSH
 
@@ -77,7 +77,7 @@ U kunt deze fout oplossen door [het uitvoer bare bestand te downloaden](https://
 1. Open het script **SparkCore_wasbloTest** , klik met de rechter muisknop op de script editor en selecteer vervolgens de optie **Run ' [Spark-taak] xxx '** om lokale uitvoering uit te voeren.
 1. Zodra de lokale uitvoering is voltooid, kunt u het uitvoer bestand opslaan in de **__standaard__** **gegevens** > van de project Verkenner.
 
-    ![Resultaat van lokale uitvoer](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-result.png)
+    ![Resultaat van lokale uitvoer](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
 1. Onze tools hebben de standaard configuratie voor lokale uitvoering automatisch ingesteld wanneer u de lokale uitvoering en de lokale fout opsporing uitvoert. Open de configuratie **[Spark op hdinsight] xxx** . in de rechter bovenhoek ziet u de **[Spark op hdinsight] xxx** die al is gemaakt onder **Apache Spark op hdinsight**. Schakel over naar het tabblad **lokaal uitvoeren** .
 
     ![Lokale uitvoerings configuratie](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
@@ -114,13 +114,11 @@ U kunt deze fout oplossen door [het uitvoer bare bestand te downloaden](https://
 
 1. Nadat u de configuratie-instellingen hebt voltooid, kunt u het project uitvoeren op het externe cluster of externe fout opsporing uitvoeren.
    
-   ![Knop voor uitvoering op afstand](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run.png)
+   ![Knop voor uitvoering op afstand](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run-button.png)
 
 1. Klik op de knop **verbinding verbreken** als de inzendings logboeken niet worden weer gegeven in het linkerdeel venster. Het is echter nog steeds actief op de back-end.
 
-   ![Resultaat van externe uitvoering](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
-
-
+   ![Resultaat van externe uitvoering](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png)
 
 ### <a name="scenario-2-perform-remote-debugging"></a>Scenario 2: Fout opsporing op afstand uitvoeren
 1. Stel breuk punten in en klik vervolgens op het pictogram **fout opsporing op afstand** . Het verschil met externe verzen ding is dat de SSH-gebruikers naam en het wacht woord moeten worden geconfigureerd.
@@ -148,7 +146,7 @@ U kunt deze fout oplossen door [het uitvoer bare bestand te downloaden](https://
 
 1. Klik met de rechter muisknop op het doel op het tabblad **fout opsporing** en selecteer vervolgens **waarde instellen**. Voer vervolgens een nieuwe waarde in voor de variabele. Selecteer vervolgens **Enter** om de waarde op te slaan. 
 
-   ![Waarde instellen](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value.png) 
+   ![Waarde instellen](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value1.png)
 
 1. Selecteer het pictogram **programma hervatten** om door te gaan met het programma uitvoeren. Deze keer wordt er geen uitzonde ring gedetecteerd. U kunt zien dat het project zonder uitzonde ringen correct wordt uitgevoerd.
 

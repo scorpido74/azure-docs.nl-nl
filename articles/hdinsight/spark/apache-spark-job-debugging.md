@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: d6a8ac97aa3896eaf98651f5f1120fcc6bf25516
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: c71bf9be94799c2b109d57393e70e99a0710e252
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814112"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995523"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Fouten opsporen Apache Spark taken die worden uitgevoerd op Azure HDInsight
 
@@ -29,14 +29,14 @@ U moet het volgende hebben:
 ## <a name="track-an-application-in-the-yarn-ui"></a>Een toepassing volgen in de garen-gebruikers interface
 1. Start de garen-gebruikers interface. Klik op **garens** onder **cluster dashboards**.
    
-    ![Gebruikers interface van garen starten](./media/apache-spark-job-debugging/launch-yarn-ui.png)
+    ![Gebruikers interface van garen starten](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
    
    > [!TIP]  
    > U kunt ook de gebruikers interface van garen starten vanuit de Ambari-gebruikers interface. Als u de Ambari-gebruikers interface wilt starten, klikt u op **Ambari start** onder **cluster dashboards**. Klik in de Ambari-gebruikers interface op **garens**, klik op **snelle koppelingen**, klik op actieve Resource Manager en klik vervolgens op **Resource Manager-gebruikers interface**. 
 
 2. Omdat u de Spark-taak met Jupyter-notebooks hebt gestart, heeft de toepassing de naam **remotesparkmagics** (dit is de naam voor alle toepassingen die vanuit de notitie blokken worden gestart). Klik op de toepassings-ID voor de toepassings naam om meer informatie over de taak weer te geven. Hiermee opent u de weer gave van de toepassing.
    
-    ![Zoeken naar Spark-toepassings-ID](./media/apache-spark-job-debugging/find-application-id.png)
+    ![Zoeken naar Spark-toepassings-ID](./media/apache-spark-job-debugging/find-application-id1.png)
    
     Voor dergelijke toepassingen die worden gestart vanuit de Jupyter-notebooks, wordt de status altijd **uitgevoerd** totdat u het notitie blok sluit.
 3. Vanuit de toepassings weergave kunt u verder inzoomen op de containers die zijn gekoppeld aan de toepassing en de logboeken (stdout/stderr). U kunt ook de Spark-gebruikers interface starten door te klikken op de koppeling die overeenkomt met de **tracerings-URL**, zoals hieronder wordt weer gegeven. 
@@ -48,13 +48,13 @@ In de Spark-gebruikers interface kunt u inzoomen op de Spark-taken die worden ui
 
 1. Als u de Spark-gebruikers interface wilt starten, klikt u in de toepassings weergave op de koppeling met de **tracerings-URL**, zoals wordt weer gegeven in de bovenstaande scherm opname. U kunt alle Spark-taken zien die worden gestart door de toepassing die wordt uitgevoerd in de Jupyter-notebook.
    
-    ![Spark-taken weer geven](./media/apache-spark-job-debugging/view-spark-jobs.png)
+    ![Spark-taken weer geven](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
 2. Klik op het tabblad **uitvoerende uitvoeringen** om de verwerkings-en opslag informatie voor elke uitvoerder te bekijken. U kunt de aanroep stack ook ophalen door te klikken op de koppeling **thread dump** .
    
     ![Spark-uitvoerendeers weer geven](./media/apache-spark-job-debugging/view-spark-executors.png)
 3. Klik op het tabblad **fasen** om de fasen te zien die zijn gekoppeld aan de toepassing.
    
-    ![Spark-fasen weer geven](./media/apache-spark-job-debugging/view-spark-stages.png "Spark-fasen weer geven")
+    ![Spark-fasen weer geven](./media/apache-spark-job-debugging/view-apache-spark-stages.png "Spark-fasen weer geven")
    
     Elke fase kan meerdere taken bevatten waarvoor u uitvoerings statistieken kunt bekijken, zoals hieronder wordt weer gegeven.
    

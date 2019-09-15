@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 240b2110db66af0982e4e1bf95d3715cbe733a60
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 0e11949804e0c3de52db315424f83905516b4da8
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816516"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996605"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Problemen met Azure Files prestaties oplossen
 
@@ -85,6 +85,7 @@ Een mogelijke oorzaak hiervan is dat er geen SMB-ondersteuning voor meerdere kan
 
 - Het verkrijgen van een virtuele machine met een grotere kern kan helpen de door voer te verbeteren.
 - Als de client toepassing vanaf meerdere Vm's wordt uitgevoerd, wordt de door Voer verhoogd.
+
 - Gebruik waar mogelijk REST Api's.
 
 ## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>De door Voer op Linux-clients is aanzienlijk lager in vergelijking met Windows-clients.
@@ -95,8 +96,9 @@ Dit is een bekend probleem met de implementatie van SMB-client op Linux.
 
 ### <a name="workaround"></a>Tijdelijke oplossing
 
-- De belasting over meerdere Vm's spreiden
+- De belasting over meerdere Vm's spreiden.
 - Gebruik op dezelfde VM meerdere koppel punten met de optie **nosharesock** en verspreid de belasting over deze koppel punten.
+- Probeer in Linux te koppelen met de optie **nostrictsync** om te voor komen dat SMB-leegmaak bewerking wordt afgedwongen bij elke fsync-aanroep. Voor Azure Files is deze optie niet van invloed op de gegevens consistentcy, maar kan de verouderde meta gegevens van het bestand in de mapweergave (**ls-l** opdracht) niet worden veroorzaakt. Het rechtstreeks opvragen van meta gegevens van het**bestand (de** opdracht) retourneert de meest recente meta gegevens van een bestand.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Hoge latenties voor zware werk belastingen voor meta gegevens met uitgebreide open/close-bewerkingen.
 

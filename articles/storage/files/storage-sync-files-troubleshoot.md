@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c6b9c0a8615960772ccac824c293b5f4ea6cfe55
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 78e113f881d1f62c9848ba40f039fa19eeb09055
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129197"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996453"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen oplossen met Azure File Sync
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -395,6 +395,18 @@ Deze fout treedt op omdat de Azure File Sync-agent geen toegang kan krijgen tot 
     ```
 2. [Controleer of het opslag account bestaat.](#troubleshoot-storage-account)
 3. [Controleer of de instellingen voor de firewall en het virtuele netwerk op het opslag account correct zijn geconfigureerd (indien ingeschakeld)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+
+<a id="-2134364022"></a><a id="storage-unknown-error"></a>**Er is een onbekende fout opgetreden bij het openen van het opslag account.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c8308a |
+| **HRESULT (decimaal)** | -2134364022 |
+| **Fout reeks** | ECS_E_STORAGE_ACCOUNT_UNKNOWN_ERROR |
+| **Herstel vereist** | Ja |
+
+1. [Controleer of het opslag account bestaat.](#troubleshoot-storage-account)
+2. [Controleer of de instellingen voor de firewall en het virtuele netwerk op het opslag account correct zijn geconfigureerd (indien ingeschakeld)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
 <a id="-1906441138"></a>**De synchronisatie is mislukt vanwege een probleem met de synchronisatie database.**  
 
@@ -781,7 +793,7 @@ U kunt dit probleem oplossen door de volgende stappen uit te voeren om de synchr
 1. Verwijder alle server eindpunten in de synchronisatie groep.
 2. Verwijder het Cloud eindpunt. 
 3. De synchronisatie groep verwijderen.
-4. Als Cloud lagen zijn ingeschakeld op een server eindpunt, verwijdert u de zwevende gelaagde bestanden op de server door de stappen uit te voeren die worden beschreven in de gelaagde [bestanden niet toegankelijk zijn op de server na het verwijderen van een server eindpunt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) sectie.
+4. Als Cloud lagen zijn ingeschakeld op een server eindpunt, verwijdert u de zwevende gelaagde bestanden op de server door de stappen uit te voeren die worden beschreven in de [gelaagde bestanden niet toegankelijk zijn op de server na het verwijderen van een server eindpunt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) sectie.
 5. Maak de synchronisatie groep opnieuw.
 
 ### <a name="common-troubleshooting-steps"></a>Veelvoorkomende stappen voor probleem oplossing
@@ -890,7 +902,7 @@ if ($fileShare -eq $null) {
 <a id="troubleshoot-rbac"></a>**Zorg ervoor dat Azure File Sync toegang heeft tot het opslag account.**  
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. Klik op **toegangs beheer (IAM)** in de linker inhouds opgave.
-1. Klik op het tabblad roltoewijzingen aan de lijst met gebruikers en toepassingen (*service*-principals) die toegang hebben tot uw opslag account.
+1. Klik op **het tabblad roltoewijzingen** aan de lijst met gebruikers en toepassingen (*service*-principals) die toegang hebben tot uw opslag account.
 1. Controleer of **Hybrid File Sync Service** wordt weer gegeven in de lijst met de rol **lezer en gegevens toegang** . 
 
     ![Een scherm afbeelding van de Service-Principal Hybrid File Sync Service op het tabblad toegangs beheer van het opslag account](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)

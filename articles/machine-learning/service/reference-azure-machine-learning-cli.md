@@ -1,7 +1,7 @@
 ---
 title: Machine learning CLI-extensie
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over de Azure Machine Learning CLI-extensie voor de Azure CLI. De Azure-CLI is een opdrachtregelprogramma voor meerdere platformen die u kunt werken met resources in de Azure-cloud. De Machine Learning-extensie kunt u werken met de Azure Machine Learning-Service.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over de Azure Machine Learning CLI-extensie voor de Azure CLI. De Azure-CLI is een opdrachtregelprogramma voor meerdere platformen die u kunt werken met resources in de Azure-cloud. Met de Machine Learning extensie kunt u werken met Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: jordane
 author: jpe316
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6c5068512f8ba26f7710bca7c0fccb98e0a5be33
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 85ebcc36d32b86ec2640ce7ce02190deaab19d6b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996752"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997085"
 ---
-# <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Gebruik de CLI-extensie voor Azure Machine Learning-service
+# <a name="use-the-cli-extension-for-azure-machine-learning"></a>De CLI-uitbrei ding voor Azure Machine Learning gebruiken
 
-De CLI van Azure Machine Learning is een uitbreiding van de [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), een platformoverschrijdende opdrachtregelinterface voor het Azure-platform. Deze uitbrei ding bevat opdrachten voor het werken met de Azure Machine Learning-service. Zo kunt u uw machine learning activiteiten automatiseren. De volgende lijst bevat enkele voor beelden van acties die u kunt uitvoeren met de CLI-extensie:
+De CLI van Azure Machine Learning is een uitbreiding van de [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), een platformoverschrijdende opdrachtregelinterface voor het Azure-platform. Deze uitbrei ding bevat opdrachten voor het werken met Azure Machine Learning. Zo kunt u uw machine learning activiteiten automatiseren. De volgende lijst bevat enkele voor beelden van acties die u kunt uitvoeren met de CLI-extensie:
 
 + Uitvoeren van experimenten voor het maken van machine learning-modellen
 
@@ -32,7 +32,7 @@ De CLI is geen vervanging voor de SDK van Azure Machine Learning. Het is een aan
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Voor het gebruik van de CLI, moet u een Azure-abonnement hebben. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer nog vandaag de [gratis of betaalde versie van de Azure Machine Learning Service](https://aka.ms/AMLFree).
+* Voor het gebruik van de CLI, moet u een Azure-abonnement hebben. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 * De [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
@@ -86,7 +86,7 @@ De volgende opdrachten laten zien hoe u de CLI gebruiken voor het beheren van re
     az group create -n myresourcegroup -l westus2
     ```
 
-+ Maak een Azure Machine Learning-service-werkruimte:
++ Een Azure Machine Learning-werk ruimte maken:
 
     ```azurecli-interactive
     az ml workspace create -w myworkspace -g myresourcegroup
@@ -163,7 +163,7 @@ De volgende opdrachten laten zien hoe u de CLI gebruiken voor het beheren van re
 
 ## <a name="environment-management"></a>Omgevings beheer
 
-De volgende opdrachten laten zien hoe u Azure Machine Learning-service [omgevingen](how-to-configure-environment.md) maakt, registreert en vermeldt voor uw werk ruimte:
+De volgende opdrachten laten zien hoe u Azure Machine Learning [omgevingen](how-to-configure-environment.md) kunt maken, registreren en weer geven voor uw werk ruimte:
 
 + Maak een steiger bestand voor een omgeving:
 

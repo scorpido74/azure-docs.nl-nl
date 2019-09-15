@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: mlearned
-ms.openlocfilehash: 5aa8268fee7d43ad13ea8710760ba493683f502e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f150103c8e9534bfd1bb93d20e3d65d715767184
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126883"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996967"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Toegang tot het Kubernetes Web dash board in azure Kubernetes service (AKS)
 
@@ -36,34 +36,47 @@ az aks browse --resource-group myResourceGroup --name myAKSCluster
 
 Met deze opdracht maakt u een proxy tussen uw ontwikkel systeem en de Kubernetes-API en opent u een webbrowser op het Kubernetes-dash board. Als een webbrowser niet wordt geopend in het Kubernetes-dash board, kopieert en plakt u het URL-adres dat u in `http://127.0.0.1:8001`de Azure cli hebt genoteerd, meestal.
 
-![De aanmeldings pagina van het Kubernetes Web dash board](./media/kubernetes-dashboard/dashboard-login.png)
+<!--
+![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
 
-U hebt de volgende opties om u aan te melden bij het dash board van uw cluster:
+You have the following options to sign in to your cluster's dashboard:
 
-* Een [kubeconfig-bestand][kubeconfig-file]. U kunt een kubeconfig-bestand genereren met [AZ AKS Get-credentials][az-aks-get-credentials].
-* Een token, zoals een [Service account token][aks-service-accounts] of gebruikers token. Op met [Aad ingeschakelde clusters][aad-cluster]is dit token een Aad-token. U kunt gebruiken `kubectl config view` om de tokens in uw kubeconfig-bestand weer te geven. Zie [Azure Active Directory integreren met de Azure Kubernetes-service met de Azure cli][aad-cluster]voor meer informatie over het maken van een Aad-token voor gebruik met een AKS-cluster.
-* Het standaard dash board service-account, dat wordt gebruikt als u op *overs Laan*klikt.
+* A [kubeconfig file][kubeconfig-file]. You can generate a kubeconfig file using [az aks get-credentials][az-aks-get-credentials].
+* A token, such as a [service account token][aks-service-accounts] or user token. On [AAD-enabled clusters][aad-cluster], this token would be an AAD token. You can use `kubectl config view` to list the tokens in your kubeconfig file. For more details on creating an AAD token for use with an AKS cluster see [Integrate Azure Active Directory with Azure Kubernetes Service using the Azure CLI][aad-cluster].
+* The default dashboard service account, which is used if you click *Skip*.
 
 > [!WARNING]
-> Open het Kubernetes-dash board nooit openbaar, ongeacht de gebruikte verificatie methode.
+> Never expose the Kubernetes dashboard publicly, regardless of the authentication method used.
 > 
-> Wanneer u verificatie instelt voor het Kubernetes-dash board, is het raadzaam om een token te gebruiken voor het standaard dash board service-account. Met een token kan elke gebruiker hun eigen machtigingen gebruiken. Als u het standaard dash board service-account gebruikt, kan een gebruiker hun eigen machtigingen negeren en in plaats daarvan het service account gebruiken.
+> When setting up authentication for the Kubernetes dashboard, it is recommended that you use a token over the default dashboard service account. A token allows each user to use their own permissions. Using the default dashboard service account may allow a user to bypass their own permissions and use the service account instead.
 > 
-> Als u ervoor kiest om het standaard dashboard service account te gebruiken en uw AKS-cluster gebruikmaakt van RBAC, moet u een *ClusterRoleBinding* maken voordat u het dash board correct kunt openen. Standaard wordt het Kubernetes-dash board geïmplementeerd met minimale Lees toegang en worden RBAC-toegangs fouten weer gegeven. Een cluster beheerder kan ervoor kiezen om extra toegang te verlenen aan het *kubernetes-dash board-* service account, maar dit kan een vector zijn voor het escaleren van bevoegdheden. U kunt ook Azure Active Directory-verificatie integreren om een nauw keuriger toegangs niveau te bieden.
+> If you do choose to use the default dashboard service account and your AKS cluster uses RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays RBAC access errors. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
 >
-> Als u een binding wilt maken, gebruikt u de opdracht [kubectl Create clusterrolebinding][kubectl-create-clusterrolebinding] , zoals weer gegeven in het volgende voor beeld. **Deze voorbeeld binding geldt niet voor aanvullende verificatie onderdelen en kan leiden tot onveilig gebruik.**
+> To create a binding, use the [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] command as shown in the following example. **This sample binding does not apply any additional authentication components and may lead to insecure use.**
 >
 > ```console
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
 > 
-> U hebt nu toegang tot het Kubernetes-dash board in uw cluster met RBAC-functionaliteit. Als u het Kubernetes-dash board wilt starten, gebruikt u de opdracht [AZ AKS Browse][az-aks-browse] zoals beschreven in de vorige stap.
+> You can now access the Kubernetes dashboard in your RBAC-enabled cluster. To start the Kubernetes dashboard, use the [az aks browse][az-aks-browse] command as detailed in the previous step.
 >
-> Als uw cluster geen RBAC gebruikt, wordt het niet aanbevolen een *ClusterRoleBinding*te maken.
+> If your cluster does not use RBAC, it is not recommended to create a *ClusterRoleBinding*.
+> 
+> For more information on using the different authentication methods, see the Kubernetes dashboard wiki on [access controls][dashboard-authentication].
+
+After you choose a method to sign in, the Kubernetes dashboard is displayed. If you chose to use *token* or *skip*, the Kubernetes dashboard will use the permissions of the currently logged in user to access the cluster.
+-->
+
+> [!IMPORTANT]
+> Als uw AKS-cluster gebruikmaakt van RBAC, moet er een *ClusterRoleBinding* worden gemaakt voordat u het dash board correct kunt openen. Standaard wordt het Kubernetes-dash board geïmplementeerd met minimale Lees toegang en worden RBAC-toegangs fouten weer gegeven. Het Kubernetes-dash board biedt momenteel geen ondersteuning voor door de gebruiker geleverde referenties om het toegangs niveau te bepalen. hiervoor worden de rollen gebruikt die aan het service account worden verleend. Een cluster beheerder kan ervoor kiezen om extra toegang te verlenen aan het *kubernetes-dash board-* service account, maar dit kan een vector zijn voor het escaleren van bevoegdheden. U kunt ook Azure Active Directory-verificatie integreren om een nauw keuriger toegangs niveau te bieden.
+> 
+> Als u een binding wilt maken, gebruikt u de opdracht [kubectl Create clusterrolebinding][kubectl-create-clusterrolebinding] . In het volgende voor beeld ziet u hoe u een voor beeld-binding maakt, maar deze voorbeeld binding heeft geen betrekking op extra verificatie onderdelen en kan leiden tot onveilig gebruik. Het Kubernetes-dash board is geopend voor iedereen die toegang heeft tot de URL. Maak het Kubernetes-dash board niet openbaar zichtbaar.
+>
+> ```console
+> kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+> ```
 > 
 > Voor meer informatie over het gebruik van de verschillende verificatie methoden, zie de Kubernetes dash board-wiki op [toegangs beheer][dashboard-authentication].
-
-Nadat u een methode hebt gekozen om u aan te melden, wordt het Kubernetes-dash board weer gegeven. Als u ervoor kiest om *token* of *Skip*te gebruiken, gebruikt het Kubernetes-dash board de machtigingen van de gebruiker die momenteel is aangemeld voor toegang tot het cluster.
 
 ![De overzichts pagina van het Kubernetes Web dash board](./media/kubernetes-dashboard/dashboard-overview.png)
 

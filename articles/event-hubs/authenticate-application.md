@@ -8,15 +8,15 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 818bebdb7555d1b515a5c4a3439d11d4a4766e56
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: cce96039ca3883e0ea5ea0b738e0f6e2e079262d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011973"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996198"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Een toepassing verifiëren met Azure Active Directory om toegang te krijgen tot Event Hubs resources
-Microsoft Azure biedt geïntegreerde toegangsbeheer voor bronnen en toepassingen op basis van Azure Active Directory (Azure AD). Een belang rijk voor deel van het gebruik van Azure AD met Azure Event Hubs is dat u uw referenties niet meer hoeft op te slaan in de code. In plaats daarvan kunt u een OAuth 2,0-toegangs token aanvragen bij het micro soft Identity-platform. Azure AD verifieert de beveiligingsprincipal (een gebruiker, groep of Service-Principal) die de toepassing uitvoert. Als de verificatie slaagt, retourneert Azure AD een toegangs token voor de toepassing en kan de toepassing vervolgens het toegangs token gebruiken om een aanvraag voor Azure Event Hubs-resources te autoriseren.
+Microsoft Azure biedt geïntegreerde toegangsbeheer voor bronnen en toepassingen op basis van Azure Active Directory (Azure AD). Een belang rijk voor deel van het gebruik van Azure AD met Azure Event Hubs is dat u uw referenties niet meer hoeft op te slaan in de code. In plaats daarvan kunt u een OAuth 2,0-toegangs token aanvragen bij het micro soft Identity-platform. De resource naam voor het aanvragen van een `https://eventhubs.azure.net/`token is. Azure AD verifieert de beveiligingsprincipal (een gebruiker, groep of Service-Principal) die de toepassing uitvoert. Als de verificatie slaagt, retourneert Azure AD een toegangs token voor de toepassing en kan de toepassing vervolgens het toegangs token gebruiken om een aanvraag voor Azure Event Hubs-resources te autoriseren.
 
 Wanneer een rol is toegewezen aan een Azure AD-beveiligings-principal, verleent Azure toegang tot de resources voor die beveiligings-principal. De toegang kan worden beperkt tot het niveau van het abonnement, de resource groep, de Event Hubs naam ruimte of een andere resource. Een Azure AD-beveiliging kan rollen toewijzen aan een gebruiker, een groep, een service-principal voor de toepassing of een [beheerde identiteit voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md). 
 
@@ -46,12 +46,12 @@ Nadat u het juiste bereik voor een roltoewijzing hebt bepaald, navigeert u naar 
 
     ![Selecteer uw Event Hub](./media/authenticate-application/select-event-hub.png)
 1. Selecteer **Access Control (IAM)** om instellingen voor toegangs beheer voor de Event hub weer te geven. 
-1. Selecteer het tabblad roltoewijzingen om de lijst met roltoewijzingen weer te geven. Selecteer de knop **toevoegen** op de werk balk en selecteer vervolgens **functie toewijzing toevoegen**. 
+1. Selecteer het **tabblad roltoewijzingen om de lijst** met roltoewijzingen weer te geven. Selecteer de knop **toevoegen** op de werk balk en selecteer vervolgens **functie toewijzing toevoegen**. 
 
     ![Knop toevoegen op de werk balk](./media/authenticate-application/role-assignments-add-button.png)
 1. Voer op de pagina **roltoewijzing toevoegen** de volgende stappen uit:
     1. Selecteer de **Event hubs rol** die u wilt toewijzen. 
-    1. Zoek naar de beveiligingsprincipal (gebruiker, groep, Service-Principal) waaraan u de rol wilt toewijzen.
+    1. Zoek naar de beveiligingsprincipal **(gebruiker** , groep, Service-Principal) waaraan u de rol wilt toewijzen.
     1. Selecteer **Opslaan** om de roltoewijzing op te slaan. 
 
         ![Rol toewijzen aan een gebruiker](./media/authenticate-application/assign-role-to-user.png)

@@ -1,6 +1,6 @@
 ---
 title: '#6 voor beeld van visuele interface: Classificatie voor het voors pellen van vlucht vertragingen'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: In dit artikel wordt beschreven hoe u een machine learning model bouwt om vlucht vertragingen te voors pellen met behulp van de visuele interface voor slepen en neerzetten en aangepaste R-code.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 07/02/2019
-ms.openlocfilehash: 4c0a990ae3f45fc7b08c157f180d8ecf805c24e6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 3d1363d24aa6e5f8875ba90513a8d9d5b951c9db
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990029"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997113"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>Voor beeld 6: classificatie: Vertragingen in de vlucht voors pellen met R
 
@@ -108,9 +108,9 @@ Maak een model met behulp van de module **logistiek-regressie met twee klassen**
 
 Het resultaat van de module **Train model** is een getraind classificatie model dat kan worden gebruikt om nieuwe voor beelden te scoren om voor spellingen te maken. Gebruik de testset om scores te genereren op basis van de getrainde modellen. Gebruik vervolgens de module **Evaluate model** om de kwaliteit van de modellen te analyseren en vergelijken.
 
-Nadat u het experiment hebt uitgevoerd, kunt u de uitvoer van de module **score model** weer geven door te klikken op deuitvoer poort en visualiseren te selecteren. De uitvoer bevat de gescoorde labels en de waarschijnlijkheid voor de labels.
+Nadat u het experiment hebt uitgevoerd, kunt u de uitvoer van de module **score model** weer geven door te klikken op de uitvoer poort en **visualiseren**te selecteren. De uitvoer bevat de gescoorde labels en de waarschijnlijkheid voor de labels.
 
-Ten slotte kunt u de kwaliteit van de resultaten testen door de module **Evaluate model** toe te voegen aan het canvas van het experiment en de linker invoer poort te koppelen aan de uitvoer van de module score model. Voer het experiment uit en Bekijk de uitvoer van de module **Evaluate model** door te klikken op de uitvoerpoort en visualiseren te selecteren.
+Ten slotte kunt u de kwaliteit van de resultaten testen door de module **Evaluate model** toe te voegen aan het canvas van het experiment en de linker invoer poort te koppelen aan de uitvoer van de module score model. Voer het experiment uit en Bekijk de uitvoer van de module **Evaluate model** door te klikken op de uitvoer poort en **visualiseren**te selecteren.
 
 ## <a name="evaluate"></a>Evalueren
 Het logistiek regressie model heeft AUC van 0,631 in de testset.

@@ -1,7 +1,7 @@
 ---
 title: Wat is er nieuw in de release?
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over de nieuwste updates voor Azure Machine Learning-service en de machine learning-en gegevens voorbereiding python-Sdk's.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over de nieuwste updates voor Azure Machine Learning en de machine learning en de python-Sdk's voor gegevens voorbereiding.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2721e134e03d3d622e61085dc39a2914098ba570
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 26d66dad1e9953ddcbdbe0fd3b495bb3e418b3e7
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70930741"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993430"
 ---
-# <a name="azure-machine-learning-service-release-notes"></a>Releaseopmerkingen Azure Machine Learning-service
+# <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
-In dit artikel meer informatie over de versies van de Azure Machine Learning-service.  Ga voor de volledige SDK-referentie-inhoud naar de hoofd pagina van de hand leiding van de Azure Machine Learning van de [**SDK voor python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . 
+In dit artikel vindt u meer informatie over Azure Machine Learning releases.  Ga voor de volledige SDK-referentie-inhoud naar de hoofd pagina van de hand leiding van de Azure Machine Learning van de [**SDK voor python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . 
 
 Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informatie over bekende problemen en oplossingen.
 
@@ -557,7 +557,7 @@ In Azure Portal kunt u nu het volgende doen:
 + Live diagram en metrische gegevens bijwerken in rapporten uitvoeren en detail pagina's uitvoeren
 + De bestands viewer voor logboeken, uitvoer en moment opnamen is bijgewerkt op de pagina's met details van de uitvoering.
 + Nieuwe en verbeterde ervaring bij het maken van rapporten op het tabblad experimenten. 
-+ De mogelijkheid om het bestand config. json te downloaden van de pagina overzicht van de werk ruimte van de Azure Machine Learning-service is toegevoegd.
++ De mogelijkheid om het bestand config. json te downloaden van de pagina overzicht van de werk ruimte Azure Machine Learning is toegevoegd.
 + Ondersteuning voor het maken van Machine Learning Services-werk ruimte vanuit Azure Databricks werk ruimte 
 
 ## <a name="2019-04-26"></a>2019-04-26
@@ -576,7 +576,7 @@ Gebruik een laptop-VM als een veilige, bedrijfsgeschikte hosting omgeving voor J
 + [U kunt snel een vooraf geconfigureerde notebook-VM](tutorial-1st-experiment-sdk-setup.md) maken met de nieuwste versie van Azure machine learning SDK en gerelateerde pakketten.
 + De toegang wordt beveiligd via bewezen technologieën, zoals HTTPS, Azure Active Directory verificatie en autorisatie.
 + Betrouw bare Cloud opslag van notitie blokken en code in uw Azure Machine Learning-werkruimte Blob Storage-account. U kunt de VM van uw notebook veilig verwijderen zonder dat uw werk verloren gaat.
-+ Vooraf geïnstalleerde voorbeeld notitieblokken om te verkennen en experimenteren met Azure Machine Learning service-functies.
++ Vooraf geïnstalleerde voorbeeld notitieblokken om Azure Machine Learning-functies te verkennen en te experimenteren.
 + Volledige aanpassings mogelijkheden van virtuele Azure-machines, elk VM-type, alle pakketten, alle Stuur Programma's. 
 
 ## <a name="2019-04-26"></a>2019-04-26
@@ -873,7 +873,7 @@ Opmerking: De python-SDK voor gegevens voorbereiding wordt `numpy` niet `pandas`
 
 ## <a name="2018-12-04-general-availability"></a>2018-12-04: Algemene beschikbaarheid
 
-Azure Machine Learning-service is nu algemeen beschikbaar.
+Azure Machine Learning is nu algemeen beschikbaar.
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning-Computing
 In deze versie kondigt wij een nieuwe beheerde reken ervaring aan via de [Azure machine learning Compute](how-to-set-up-training-targets.md#amlcompute). Dit Compute doel vervangt Azure Batch AI Compute for Azure Machine Learning. 
@@ -985,7 +985,7 @@ Meer informatie over de SDK voor Data Prep door te lezen [verwijzen naar docs](h
 ## <a name="2018-11-05"></a>2018-11-05
 
 ### <a name="azure-portal"></a>Azure Portal 
-De Azure-portal voor de Azure Machine Learning-service heeft de volgende updates:
+De Azure Portal voor Azure Machine Learning heeft de volgende updates:
   * Een nieuwe **pijplijnen** tabblad voor gepubliceerde pijplijnen.
   * Er is ondersteuning toegevoegd voor het koppelen van een bestaand HDInsight-cluster als een compute-doel.
 
@@ -1098,4 +1098,4 @@ Een nieuwe, vernieuwde versie van Azure Machine Learning: Meer informatie over d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees het overzicht voor [Azure machine learning service](../service/overview-what-is-azure-ml.md).
+Lees het overzicht voor [Azure Machine Learning](../service/overview-what-is-azure-ml.md).

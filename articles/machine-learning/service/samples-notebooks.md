@@ -1,7 +1,7 @@
 ---
 title: Voorbeelden van Jupyter-notebooks
-titleSuffix: Azure Machine Learning service
-description: Zoek en gebruik voor beelden van Jupyter-notebooks om de Azure Machine Learning service python SDK te verkennen.
+titleSuffix: Azure Machine Learning
+description: Zoek en gebruik voor beelden van Jupyter-notebooks om de Azure Machine Learning python voor SDK te verkennen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14962b936d1c09a6c50daa7bec460ce11dbefe5d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: dd93e4e621a4fd474283f788e2cf67b305a1be3d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860390"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997062"
 ---
-# <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Azure Machine Learning-Service verkennen met Jupyter-notebooks
+# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Azure Machine Learning verkennen met Jupyter-notebooks
 
 Het [voor beeld Azure machine learning-notitie blokken](https://github.com/azure/machinelearningnotebooks) bevat de meest recente Azure machine learning python SDK-voor beelden. Deze Juypter-notebooks zijn ontworpen om u te helpen de SDK te verkennen en als modellen te gebruiken voor uw eigen machine learning projecten.
 
@@ -55,7 +55,7 @@ De Data Science Virtual Machine (DSVM) is een aangepaste VM-installatie kopie di
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [voorbeeld notitieblokken](https://aka.ms/aml-notebooks) om te ontdekken wat de Azure machine learning-service kan doen, of probeer deze zelf studies:
+Bekijk de [voorbeeld notitieblokken](https://aka.ms/aml-notebooks) om te ontdekken wat Azure machine learning kan doen of probeer deze zelf studies:
 
 - [Een model voor de classificatie van afbeeldingen trainen en implementeren met MNIST](tutorial-train-models-with-aml.md)
 

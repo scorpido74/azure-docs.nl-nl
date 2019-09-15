@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9ec8f8f1c6e1d1b806c5d965d3c2287027885c44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56d41d92b77ea6ef536f1e371a825b775a780bef
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60369699"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993894"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Een gesimuleerd TPM-apparaat met de SDK voor C# maken en inrichten voor IoT Hub Device Provisioning Service
 
@@ -27,6 +27,7 @@ De voorbeeldcode gebruikt de Windows TPM-simulator als de [HSM (Hardware Securit
 Als u niet bekend bent met het proces van automatisch inrichten, bekijk dan ook de [Concepten voor automatische inrichting](concepts-auto-provisioning.md). Controleer ook of u de stappen in [IoT Hub Device Provisioning Service instellen met Azure Portal](./quick-setup-auto-provision.md) hebt voltooid voordat u verdergaat. 
 
 Azure IoT Device Provisioning Service ondersteunt twee typen inschrijvingen:
+
 - [Inschrijvingsgroepen](concepts-service.md#enrollment-group): Wordt gebruikt om meerdere gerelateerde apparaten in te schrijven.
 - [Afzonderlijke inschrijvingen](concepts-service.md#individual-enrollment): Wordt gebruikt om één apparaat in te schrijven.
 
@@ -37,23 +38,21 @@ In dit artikel worden afzonderlijke registraties gedemonstreerd.
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>De ontwikkelomgeving voorbereiden 
 
-1. Zorg ervoor dat u hebt de [.NET Core-SDK 2.1 of hoger](https://www.microsoft.com/net/download/windows) op uw computer geïnstalleerd. 
+1. Zorg ervoor dat u de [.net Core 2,1 SDK of hoger](https://www.microsoft.com/net/download/windows) op uw computer hebt geïnstalleerd. 
 
 1. Zorg ervoor dat `git` op de computer wordt geïnstalleerd en toegevoegd aan de omgevingsvariabelen die voor het opdrachtvenster toegankelijk zijn. Zie [Software Freedom Conservancy's Git client tools](https://git-scm.com/download/) (Git-clienthulpprogramma's van Software Freedom Conservancy) om de nieuwste versie van `git`-hulpprogramma's te installeren, waaronder **Git Bash**, de opdrachtregel-app die u kunt gebruiken voor interactie met de lokale Git-opslagplaats. 
 
 1. Open een opdrachtprompt of Git Bash. Kloon de Azure IoT-voorbeelden GitHub-opslagplaats voor C#:
-    
+
     ```cmd
     git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     ```
 
 ## <a name="provision-the-simulated-device"></a>Het gesimuleerde apparaat inrichten
 
-
 1. Meld u aan bij Azure Portal. Klik in het linkermenu op de knop **All resources** en open uw Device Provisioning-service. Noteer de waarde van het **_Id-bereik_** in de blade **Overzicht**.
 
     ![Bereik-id van provisioning-service kopiëren van portal-blade](./media/quick-create-simulated-device-tpm-csharp/copy-scope.png) 
-
 
 2. Ga op een opdrachtprompt naar de projectmap met de voorbeeldcode voor het inrichten van het de TPM-apparaat.
 
@@ -67,9 +66,9 @@ In dit artikel worden afzonderlijke registraties gedemonstreerd.
     dotnet run <IDScope>
     ```
 
-    Met deze opdracht wordt de TPM-chip-simulator in een aparte opdrachtprompt gestart.  
+    Met deze opdracht wordt de TPM-chip-simulator in een aparte opdrachtprompt gestart. In Windows kunt u een beveiligings waarschuwing van Windows tegen komen waarin u wordt gevraagd of u Simulator. exe wilt toestaan om te communiceren op open bare netwerken. Voor de doel einden van dit voor beeld kunt u de aanvraag annuleren.
 
-1. In het opdrachtvenster ziet u waarden voor **_Endorsement Key_**, **_Registration ID_** en een voorgestelde **_Device ID_**. Deze waarden hebt u nodig voor registratie van het apparaat. Noteer deze waarden. U gebruikt deze waarde om een afzonderlijke inschrijving te maken in uw Device Provisioning Service-instantie. 
+1. In het opdrachtvenster ziet u waarden voor **_Endorsement Key_** , **_Registration ID_** en een voorgestelde **_Device ID_** . Deze waarden hebt u nodig voor registratie van het apparaat. Noteer deze waarden. U gebruikt deze waarde om een afzonderlijke inschrijving te maken in uw Device Provisioning Service-instantie. 
    > [!NOTE]
    > Verwar het venster met opdrachtuitvoer niet met het venster dat uitvoer van de TPM-simulator bevat. U moet mogelijk in het opdrachtvenster klikken om dit naar de voorgrond te halen.
 
@@ -89,14 +88,13 @@ In dit artikel worden afzonderlijke registraties gedemonstreerd.
 
    Als het apparaat is ingeschreven, wordt de *Registration ID* ervan weergegeven in de lijst onder het tabblad *Individual Enrollments*. 
 
-6. Druk op Enter in het opdrachtvenster (waarin de **_Endorsement Key_**, de **_Registration ID_** en een voorgestelde **_Device ID_** worden weergegeven) om het gesimuleerde apparaat te registreren. De gegevens van uw IoT-hub leest u in de berichten die het opstarten van het apparaat en het verbinding maken met Device Provisioning Service simuleren. 
+6. Druk op Enter in het opdrachtvenster (waarin de **_Endorsement Key_** , de **_Registration ID_** en een voorgestelde **_Device ID_** worden weergegeven) om het gesimuleerde apparaat te registreren. De gegevens van uw IoT-hub leest u in de berichten die het opstarten van het apparaat en het verbinding maken met Device Provisioning Service simuleren. 
 
 1. Controleer of het apparaat is ingericht. Als het gesimuleerde apparaat is ingericht met de IoT-hub die is gekoppeld met de provisioning-service, wordt de apparaat-id weergegeven op de blade **IoT-apparaten** van de hub. 
 
     ![Apparaat wordt geregistreerd voor de IoT-hub](./media/quick-create-simulated-device-tpm-csharp/hub_registration.png) 
 
     Als u de standaardwaarde van de *initiële status van de apparaatdubbel* hebt gewijzigd in de inschrijvingsvermelding voor uw apparaat, kan de gewenste status van de dubbel uit de hub worden gehaald en er dienovereenkomstig naar worden gehandeld. Zie [Understand and use device twins in IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md) (Apparaatdubbelen begrijpen en gebruiken in IoT Hub) voor meer informatie
-
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

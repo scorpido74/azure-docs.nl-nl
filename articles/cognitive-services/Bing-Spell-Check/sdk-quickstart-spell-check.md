@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: d98d00275cbd89702e4bae0c93aa262805617e59
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 74697d69fbeb9072f839f0b6d49c010c5a7a7a05
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500784"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996709"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Quickstart: Spellingcontrole met de Bing Spellingcontrole-SDK voor C#
 
@@ -80,7 +80,7 @@ Als u de Bing Spellingcontrole SDK wilt toevoegen aan uw project, selecteert u *
     }
     ```
 
-3. Haal de eerste voorgestelde correctie op, als deze beschikbaar is. Druk de voorgestelde score en het voorgestelde woord af. 
+3. De eerste voorgestelde correctie ophalen, indien aanwezig. De Score van het voor stel en het voorgestelde woord afdrukken. 
 
     ```csharp
             var suggestions = firstspellCheckResult.Suggestions;

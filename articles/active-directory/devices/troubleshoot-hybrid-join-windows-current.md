@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b0b5bd5972e544c4254ee0f425e27cc8c465f0
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6d4a0f00c8bcf511f220d3e0df81adac1e9ff0d4
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297575"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995199"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Problemen oplossen met hybride Azure Active Directory gekoppelde apparaten 
 
@@ -92,7 +92,7 @@ WamDefaultAuthority: organizations
 
 Controleer de volgende velden en zorg ervoor dat ze de verwachte waarden hebben:
 
-#### <a name="domainjoined--yes"></a>DomainJoined : KLIKT  
+#### <a name="domainjoined--yes"></a>DomainJoined : JA  
 
 Dit veld geeft aan of het apparaat is gekoppeld aan een on-premises Active Directory of niet. Als de waarde **Nee**is, kan het apparaat geen hybride Azure AD-deelname uitvoeren.  
 
@@ -100,7 +100,7 @@ Dit veld geeft aan of het apparaat is gekoppeld aan een on-premises Active Direc
 
 Dit veld geeft aan of het apparaat is geregistreerd bij Azure AD als persoonlijk apparaat (gemarkeerd als *toegevoegd aan werk plek*). Deze waarde mag **niet** worden toegevoegd aan een computer die lid is van een domein en ook hybride Azure AD is toegevoegd. Als de waarde **Ja**is, is er een werk-of school account toegevoegd vóór het volt ooien van de deelname van de hybride Azure AD. In dit geval wordt het account genegeerd wanneer u de jubileum update versie van Windows 10 (1607) gebruikt.
 
-#### <a name="azureadjoined--yes"></a>AzureAdJoined : KLIKT  
+#### <a name="azureadjoined--yes"></a>AzureAdJoined : JA  
 
 Dit veld geeft aan of het apparaat is gekoppeld aan Azure AD. Als de waarde **Nee**is, is de koppeling naar Azure AD nog niet voltooid. 
 
@@ -396,7 +396,7 @@ Krijg hier open bare scripts [ https://1drv.ms/u/s: AkyTjQ17vtfagYkZ6VJzPg78e3o7
 
 ### <a name="retrieve-the-join-status"></a>De status van de samen voeging ophalen 
 
-#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: Ja en AzureADPrt: KLIKT
+#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: Ja en AzureADPrt: JA
   
 Deze velden geven aan of de gebruiker is geverifieerd bij Azure AD bij het aanmelden bij het apparaat. Als de waarden **Nee**zijn, kan dit worden veroorzaakt door:
 
@@ -404,6 +404,9 @@ Deze velden geven aan of de gebruiker is geverifieerd bij Azure AD bij het aanme
 - Alternatieve aanmeldings-ID
 - Kan de HTTP-proxy niet vinden
 
+## <a name="known-issues"></a>Bekende problemen
+- Onder Instellingen-> Accounts-> toegang tot werk of school kunnen hybride Azure AD gekoppelde apparaten twee verschillende accounts weer geven, één voor Azure AD en één voor on-premises AD, wanneer deze zijn verbonden met mobiele HOTS pots of externe WiFi-netwerken. Dit is slechts een UI-probleem en heeft geen invloed op de functionaliteit. 
+ 
 ## <a name="next-steps"></a>Volgende stappen
 
 Door gaan met [het oplossen van problemen met de dsregcmd-opdracht](troubleshoot-device-dsregcmd.md)

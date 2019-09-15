@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 4bf2e057f4c5dad650834f9b42c75be3aedec46e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 1cd5325be7def4bc631d994f8811734e6c3cf545
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142846"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996441"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Functie definities voor Azure-resources begrijpen
 
@@ -126,7 +126,7 @@ Autorisatie voor alle beheer bewerkingen-API-aanroepen wordt afgehandeld door Az
 
 ### <a name="data-operations-example"></a>Voor beeld van gegevens bewerkingen
 
-Voor een beter inzicht in hoe beheer en gegevens bewerkingen werken, kunt u een specifiek voor beeld overwegen. Lisa is toegewezen aan de rol van [eigenaar](built-in-roles.md#owner) op het abonnements bereik. Bob is toegewezen aan de rol van de blobgegevens van de [gegevens opslag](built-in-roles.md#storage-blob-data-contributor) in een bereik van een opslag account. In het volgende diagram ziet u dit voor beeld.
+Voor een beter inzicht in hoe beheer en gegevens bewerkingen werken, kunt u een specifiek voor beeld overwegen. Lisa is toegewezen aan de rol van [eigenaar](built-in-roles.md#owner) op het abonnements bereik. Bob is toegewezen aan de rol van de [blobgegevens van de gegevens opslag](built-in-roles.md#storage-blob-data-contributor) in een bereik van een opslag account. In het volgende diagram ziet u dit voor beeld.
 
 ![Toegangs beheer op basis van rollen is uitgebreid om zowel beheer-als gegevens bewerkingen te ondersteunen](./media/role-definitions/rbac-management-data.png)
 
@@ -213,16 +213,18 @@ Met `NotDataActions` de machtiging worden de gegevens bewerkingen opgegeven die 
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-Met `AssignableScopes` de eigenschap geeft u de bereiken (abonnementen, resource groepen of resources) op waarvoor deze roldefinitie beschikbaar is. U kunt de rol beschikbaar maken voor toewijzing in alleen de abonnementen of resource groepen die deze nodig hebben, en de gebruikers ervaring voor de rest van de abonnementen of resource groepen niet opruimen. U moet ten minste één abonnement, resource groep of Resource-ID gebruiken.
+Met `AssignableScopes` de eigenschap geeft u de bereiken (beheer groepen, abonnementen, resource groepen of resources) op waarvoor deze roldefinitie beschikbaar is. U kunt de rol beschikbaar maken voor toewijzing in alleen de beheer groepen, abonnementen of resource groepen die deze nodig hebben. U moet ten minste één beheer groep, abonnement, resource groep of Resource-ID gebruiken.
 
 Ingebouwde rollen zijn `AssignableScopes` ingesteld op het hoofd bereik (`"/"`). Het hoofd bereik geeft aan dat de rol beschikbaar is voor toewijzing in alle bereiken. Voor beelden van geldige toewijs bare bereiken zijn:
 
-| Scenario | Voorbeeld |
+| De rol is beschikbaar voor toewijzing | Voorbeeld |
 |----------|---------|
-| De rol is beschikbaar voor toewijzing in één abonnement | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"` |
-| De rol is beschikbaar voor toewijzing in twee abonnementen | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e", "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"` |
-| De rol is alleen beschikbaar voor toewijzing in de netwerk resource groep | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
-| De rol is beschikbaar voor toewijzing in alle bereiken (alleen van toepassing op ingebouwde rollen) | `"/"` |
+| Eén abonnement | `"/subscriptions/{subscriptionId1}"` |
+| Twee abonnementen | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |
+| Netwerk resource groep | `"/subscriptions/{subscriptionId1}/resourceGroups/Network"` |
+| Eén beheer groep | `"/providers/Microsoft.Management/managementGroups/{groupId1}"` |
+| Beheer groep en een abonnement | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
+| Alle bereiken (alleen van toepassing op ingebouwde rollen) | `"/"` |
 
 Zie `AssignableScopes` [aangepaste rollen voor Azure-resources](custom-roles.md)voor meer informatie over aangepaste rollen.
 

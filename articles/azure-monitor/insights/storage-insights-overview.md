@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 36f70ebaaf3fe6d841ef700561bbd6a200366c84
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 17135f896140a843dd95c8d9624e9faf1d7194c3
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563872"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996250"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Uw opslag service controleren met Azure Monitor voor opslag (preview-versie)
 
@@ -34,7 +34,7 @@ Gecombineerd IT-levert:
 
 * **Op schaal perspectief** met een moment opname van de beschik baarheid op basis van de status van de opslag service of de API-bewerking, het gebruik van het totale aantal aanvragen dat door de opslag service wordt ontvangen en latentie met de gemiddelde tijd van de de opslag service of het API-bewerkings type neemt aanvragen verwerken. U kunt ook capaciteit weer geven per blob, bestand, tabel en wachtrij.
 
-* Inzoomen op een specifiek opslag account om problemen op te lossen of gedetailleerde analyses uit te voeren op categorie-Beschik baarheid, prestaties, fouten en capaciteit. Als u een van deze opties selecteert, krijgt u een gedetailleerde weer gave van metrische gegevens.  
+* **Inzoomen** op een specifiek opslag account om problemen op te lossen of gedetailleerde analyses uit te voeren op categorie-Beschik baarheid, prestaties, fouten en capaciteit. Als u een van deze opties selecteert, krijgt u een gedetailleerde weer gave van metrische gegevens.  
 
 * **Aanpasbaar** waar u kunt wijzigen welke metrische gegevens u wilt zien, wijzigen of instellen van drempel waarden die worden uitgelijnd met uw limieten en opslaan als uw eigen werkmap. Grafieken in de werkmap kunnen worden vastgemaakt aan het dash board van Azure.  
 
@@ -42,6 +42,10 @@ Voor deze functie hoeft u niets in te scha kelen of te configureren. de metrisch
 
 >[!NOTE]
 >Er zijn geen kosten verbonden aan het verkrijgen van toegang tot deze functie en er worden alleen kosten in rekening gebracht voor de Azure Monitor essentiële functies die u configureert of inschakelt, zoals wordt beschreven op de pagina met [Azure monitor prijs informatie](https://azure.microsoft.com/pricing/details/monitor/) .
+
+>[!NOTE]
+>Azure Monitor voor opslag biedt geen ondersteuning voor [algemene v1-accounts](../../storage/common/storage-account-overview.md#general-purpose-v1-accounts).
+>
 
 ## <a name="view-from-azure-monitor"></a>Weer geven van Azure Monitor
 
@@ -209,7 +213,7 @@ We gaan nu het kleuren thema wijzigen voor de metrische gegevens over capaciteit
 
 ### <a name="modify-the-availability-threshold"></a>De beschikbaarheids drempel wijzigen
 
-In dit voor beeld werken we met de werkmap capaciteit van opslag account en laten we zien hoe de drempel waarde voor de beschik baarheid kan worden gewijzigd. De beschik baarheid van de tegel-en raster rapportage percentage wordt standaard geconfigureerd met een minimum drempel van 90 en een maximum drempel van 99. We gaan de minimale drempel waarde van het beschik bare **percentage** in het raster **Beschik baarheid per API-naam** wijzigen in 85%, wat betekent dat de status verandert in kritiek als de drempel waarde lager is dan 85 procent. 
+In dit voor beeld werken we met de werkmap capaciteit van opslag account en laten we zien hoe de drempel waarde voor de beschik baarheid kan worden gewijzigd. De beschik baarheid van de tegel-en raster rapportage percentage wordt standaard geconfigureerd met een minimum drempel van 90 en een maximum drempel van 99. We gaan de minimale drempel waarde van het **beschik bare percentage** in het raster **Beschik baarheid per API-naam** wijzigen in 85%, wat betekent dat de status verandert in kritiek als de drempel waarde lager is dan 85 procent. 
 
 1. Selecteer **opslag accounts** in de portal en selecteer vervolgens een opslag account in de lijst.
 

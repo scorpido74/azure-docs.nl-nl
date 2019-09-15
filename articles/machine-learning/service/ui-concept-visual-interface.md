@@ -1,7 +1,7 @@
 ---
 title: Visuele interface
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over de voor waarden, concepten en werk stromen voor de Visual Interface (preview) voor Azure Machine Learning service.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over de voor waarden, concepten en werk stromen waaruit de visuele interface (preview) van Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 70141e3ad438ff7ff6d4486e6c27ff4163416e95
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 65daf1468d27825d9904a14e42e43796d3985321
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860412"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996528"
 ---
-# <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Wat is de visuele interface voor Azure Machine Learning service? 
+# <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>Wat is de visuele interface voor Azure Machine Learning? 
 
-Met de Visual Interface (preview) voor Azure Machine Learning service kunt u gegevens voorbereiden, machine learning modellen trainen, testen, implementeren, beheren en bijhouden zonder code te schrijven.
+Met de Visual Interface (preview) voor Azure Machine Learning kunt u gegevens voorbereiden, machine learning modellen trainen, testen, implementeren, beheren en bijhouden zonder code te schrijven.
 
 Er is geen programmering vereist. u kunt [gegevens sets](#dataset) en [modules](#module) visueel verbinden om uw model samen te stellen.
 
-De Visual Interface gebruikt uw Azure Machine Learning service- [werk ruimte](concept-workspace.md) om het volgende te doen:
+De visuele interface gebruikt uw Azure Machine Learning- [werk ruimte](concept-workspace.md) om het volgende te doen:
 
 + Schrijf artefacten van [experiment](#experiment) -uitvoeringen in de werk ruimte.
 + Access- [gegevens sets](#dataset).

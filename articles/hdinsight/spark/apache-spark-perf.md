@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: cda974a71c0d24bda9422fb8444fbf4dec0088f9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 673c83c861e1f044a521786a903dd7b21db8c170
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885104"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995570"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Apache Spark-taken in HDInsight optimaliseren
 
@@ -96,7 +96,7 @@ Ter referentie worden de Spark-geheugen structuur en enkele para meters voor de 
 
 Als u [Apache HADOOP garens](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)gebruikt, beheert garen de maximale hoeveelheid geheugen die wordt gebruikt door alle containers op elk Spark-knoop punt.  In het volgende diagram ziet u de belangrijkste objecten en hun relaties.
 
-![Vonk geheugen beheer van garen](./media/apache-spark-perf/yarn-spark-memory.png)
+![Vonk geheugen beheer van garen](./media/apache-spark-perf/apache-yarn-spark-memory.png)
 
 Probeer het volgende om berichten over onvoldoende geheugen te adresseren:
 

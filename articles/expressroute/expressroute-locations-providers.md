@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 69226cafc31771ae5307999e921cec4ae7841f8c
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 17d1a8e2e98f1b2967b4f2e33e14ee187a765190
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967142"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995725"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute
 
@@ -82,7 +82,7 @@ De volgende tabel geeft de connectiviteitslocaties en de serviceproviders voor e
 ### <a name="production-azure"></a>Productie-Azure
 | **Location** | **Eigenaar en adres** | **Lokale Azure-regio's** | **Serviceproviders** |
 | --- | --- | --- | --- |
-| **Amsterdam** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | Europa -west | Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Interxion, KPN, IX Reach, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Telia Carrier, Verizon, Zayo |
+| **Amsterdam** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | Europa -west | Aryaka Networks, AT & T netbond, British Telecom, Colt, Equinix, euNetworks, GÉANT, intercloud, Interxion, KPN, IX REACH, Level 3 Communications, Mega Port, NTT Communications, oranje, Tata Communications, Telefonica, Telenor, Telia Carrier, Verizon, Zayo |
 | **Amsterdam2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | Europa -west | CenturyLink Cloud Connect, DE-CIX, Colt, Interxion, Vodafone |
 | **Atlanta** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | N.v.t. | Equinix, Megaport |
 | **Auckland** | [Vocus groep NZ Albany](https://www.vocus.co.nz/business/cloud-data-centres) | N.v.t. | Devoli, Kordia, Mega Port, Spark NZ, Vocus groep NZ |
@@ -195,16 +195,16 @@ Als u extern bent en geen glasvezel connectiviteit hebt of als u andere connecti
 ## <a name="c1partners"></a>Connectiviteit via aanvullende service providers
 | **Location** | **Exchange** | **Connectiviteits providers** |
 | --- | --- | --- |
-| **Amsterdam** | Equinix, Interxion, Level 3 Communications, Telecity | BICS, CloudXpress, euro Fiber, Fastweb S. p. A, Golf Bridge International, Kalaam Telecom Bahrein B. S. C, MainOne, Nianet, POST Telecom Luxembourg, Proximus, TDC erhverv, Telecom Italië vonk, Telekom Deutschland GmbH, Telia |
+| **Amsterdam** | Equinix, Interxion, Level 3 Communications | BICS, CloudXpress, euro Fiber, Fastweb S. p. A, Golf Bridge International, Kalaam Telecom Bahrein B. S. C, MainOne, Nianet, POST Telecom Luxembourg, Proximus, TDC erhverv, Telecom Italië vonk, Telekom Deutschland GmbH, Telia |
 | **Atlanta** | Equinix| Kroon Castle
 | **Kaapstad** | Teraco | MTN |
 | **Chicago** | Equinix| Kroon Castle, spectrum Enter prise, windstream |
 | **Dallas** | Equinix, Megaport | Axtel, C3ntro Telecom, Cox Business, kroon Castle, data found, spectrum onderneming, Transtelco |
-| **Frankfurt** | Interxion, telestad | BICS, Cinia, Nianet, QSC AG, Telekom Deutschland GmbH |
+| **Frankfurt** | Interxion | BICS, Cinia, Nianet, QSC AG, Telekom Deutschland GmbH |
 | **Hamburg** | Equinix | Cinia |
 | **Hong Kong SAR** | Equinix | Chief, Macroview Telecom |
 | **Johannesburg** | Teraco | MTN |
-| **Londen** | BICS, Equinix, euNetworks, Telecity | Bezeq International Ltd., CoreAzure, Epsilon Telecommunications Limited, Exponential E, HSO, NexGen Networks, Proximus, Tamares Telecom, Zain |
+| **Londen** | BICS, Equinix, euNetworks| Bezeq International Ltd., CoreAzure, Epsilon Telecommunications Limited, Exponential E, HSO, NexGen Networks, Proximus, Tamares Telecom, Zain |
 | **Los Angeles** | Equinix |Kroon Castle, spectrum Enter prise, Transtelco |
 | **Madrid** | Level3 | Zertia |
 | **Montreal** | Cologix, Equinix | Airgate Technologies, Inc. Aptum Technologies, Rogers, Zirro |

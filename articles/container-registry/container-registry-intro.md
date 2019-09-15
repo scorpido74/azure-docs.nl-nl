@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/28/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8b20c54d2151afae227a085dd66a0d31f2b85305
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 2262948a8368f9448d876166b712ebaf670b5a56
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310672"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70994360"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Inleiding tot privé-Docker-containerregisters in Azure
 
@@ -31,7 +31,7 @@ Haal installatiekopieën op vanuit een Azure-containerregister en push ze naar v
 * **Schaalbare indelingssystemen** die toepassingen in een container beheren in hostclusters, waaronder [Kubernetes](https://kubernetes.io/docs/), [DC/OS](https://docs.mesosphere.com/) en [Docker Swarm](https://docs.docker.com/swarm/).
 * **Azure-services** die het bouwen en uitvoeren van toepassingen op schaal ondersteunen, waaronder [Azure Kubernetes Service (AKS)](../aks/index.yml), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/) en andere.
 
-Ontwikkelaars kunnen ook naar een containerregister pushen als onderdeel van een ontwikkelingswerkstroom met containers. Als u bijvoorbeeld een container register wilt richten op een continue integratie-en leverings hulp programma, zoals [Azure-pijp lijnen](/azure/devops/pipelines/get-started/what-is-azure-pipelines) of [Jenkins](https://jenkins.io/).
+Ontwikkelaars kunnen ook naar een containerregister pushen als onderdeel van een ontwikkelingswerkstroom met containers. Als u bijvoorbeeld een container register wilt richten op een continue integratie-en leverings hulp programma, zoals [Azure-pijp lijnen](/azure/devops/pipelines/ecosystems/containers/acr-template) of [Jenkins](https://jenkins.io/).
 
 Configureer ACR-taken zodanig dat toepassings installatie kopieën automatisch opnieuw worden opgebouwd wanneer hun basis installatie kopieën worden bijgewerkt, of Automatiseer installatie kopieën wanneer uw team code doorvoert naar een Git-opslag plaats. Maak taken met meerdere stappen om het bouwen, testen en bijwerken van meerdere container installatie kopieën parallel in de cloud te automatiseren.
 

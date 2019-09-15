@@ -1,6 +1,6 @@
 ---
 title: '#4 voor beeld van visuele interface: Classificatie om het krediet risico te voors pellen (kosten gevoelig)'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: In dit artikel wordt beschreven hoe u een complex machine learning experiment bouwt met behulp van de visuele interface. U leert hoe u aangepaste python-scripts implementeert en hoe u meerdere modellen vergelijkt om de beste optie te kiezen.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: ee4b67c82ef2bf5a1ef9c060687cc1c937328e66
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 977ff101b0f697a48b3e5595834c98fef0f1119a
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990434"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997033"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>Voor beeld 4-classificatie: Voor speld krediet risico (kosten gevoelig)
 
@@ -48,7 +48,7 @@ In dit experiment vergelijken we twee verschillende benaderingen voor het genere
 - Training met de oorspronkelijke gegevensset.
 - Training met een gerepliceerde gegevensset.
 
-Met beide benaderingen evalueren we de modellen met behulp van de test gegevensset met replicatie om ervoor te zorgen dat de resultaten worden uitgelijnd met de functie cost. We testen twee classificaties met beide benaderingen: **Ondersteuning voor vector machines met twee klassen** en een geboostte **beslissings structuur van twee**klasse.
+Met beide benaderingen evalueren we de modellen met behulp van de test gegevensset met replicatie om ervoor te zorgen dat de resultaten worden uitgelijnd met de functie cost. We testen twee classificaties met beide benaderingen: **Ondersteuning voor vector machines met twee klassen** en een **Geboostte beslissings structuur van twee**klasse.
 
 De kosten voor een slechtere classificatie van een voor beeld met een laag risico zijn 1 en de kosten voor een slechtere voor beeld van een hoog risico zijn 5. We gebruiken een **python-script** module voor het uitvoeren van een account voor deze niet-geclassificeerde kosten.
 
@@ -95,7 +95,7 @@ De **ondersteunings vector-machine module met twee klassen ondersteunt** teken r
 
 ## <a name="models"></a>Modellen
 
-Omdat we twee classificaties hebben toegepast, een SVM ( **Support Vector machine) met twee klassen** en een geboostte **beslissings structuur van twee klassen**, en er ook twee gegevens sets worden gebruikt, genereren we een totaal van vier modellen:
+Omdat we twee classificaties hebben toegepast, een SVM ( **Support Vector machine) met twee klassen** en een **Geboostte beslissings structuur van twee klassen**, en er ook twee gegevens sets worden gebruikt, genereren we een totaal van vier modellen:
 
 - SVM is getraind met de oorspronkelijke gegevens.
 - SVM heeft getraind met gerepliceerde gegevens.
@@ -104,7 +104,7 @@ Omdat we twee classificaties hebben toegepast, een SVM ( **Support Vector machin
 
 We gebruiken de standaard experimentele werk stroom om de modellen te maken, te trainen en te testen:
 
-1. Initialiseer de leer algoritmen met behulp van een **Vector machine met twee klassen** en een geboostte **beslissings structuur van twee klassen**.
+1. Initialiseer de leer algoritmen met behulp van een **Vector machine met twee klassen** en een **Geboostte beslissings structuur van twee klassen**.
 1. **Train model** gebruiken om het algoritme toe te passen op de gegevens en het daad werkelijke model te maken.
 1. Gebruik het **score model** voor het produceren van scores met behulp van de test voorbeelden.
 

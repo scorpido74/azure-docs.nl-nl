@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: 4c324bc013ccf339d19bb9dd7681909c4331db60
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: bf038b97335db20349577f754bfa41e1b98ee9b7
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500322"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996750"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Quickstart: Spellingcontrole met de Bing Spellingcontrole-REST API en Ruby
 
@@ -49,7 +49,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole-REST 
 
 ## <a name="send-a-spell-check-request"></a>Een spellingcontroleaanvraag verzenden
 
-1. Maak een URI op basis van uw host-URI, pad en parametertekenreeks. Voeg aan de query de tekst toe waarop u een spellingcontrole wilt uitvoeren.
+1. Maak een URI op basis van uw host-URI, pad en parametertekenreeks. Stel de query in op de tekst waarvoor u de spelling controle wilt uitvoeren.
 
    ```ruby
    uri = URI(uri + path + params)

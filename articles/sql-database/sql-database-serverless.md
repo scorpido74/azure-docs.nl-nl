@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: ba4e1e933b00aa8ca74be30a6ea5e1a22844b15f
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: e6c815b317e60d7a65a2f26249782451bc917097
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858496"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993455"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database serverloze (preview-versie)
 
@@ -132,7 +132,7 @@ Autohervatten wordt geactiveerd als een van de volgende voor waarden op elk mome
 |Controleren|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
 |Gegevensmaskering|Regels voor gegevens maskering toevoegen, wijzigen, verwijderen of weer geven|
 |Transparent Data Encryption|Status of status van transparante gegevens versleuteling weer geven|
-|Gegevens Archief voor query (prestaties)|Query Store-instellingen wijzigen of weer geven. automatisch afstemmen|
+|Gegevens Archief voor query (prestaties)|Query Store-instellingen wijzigen of weer geven|
 |Autotuning|Toepassing en verificatie van aanbevelingen voor automatische afstemming, zoals automatisch indexeren|
 |Data base kopiëren|Maak een Data Base als kopie.<br>Exporteren naar een BACPAC-bestand.|
 |SQL-gegevens synchronisatie|Synchronisatie tussen de data bases van de hub en het lid die worden uitgevoerd op een configureerbaar schema of die hand matig worden uitgevoerd|

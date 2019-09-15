@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 1f7c212b7bb850816557feb53099973986bab587
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 10e0f24642d54c43d6c818773d0eb17815ab784b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114496"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996906"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Zelfstudie: HTTPS op een aangepast domein van Azure CDN configureren
 
@@ -130,7 +130,7 @@ Geef Azure CDN toegang tot de certificaten (geheimen) in uw Azure Key Vault-acco
 
     ![Instellingen voor toegangsbeleid](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
-3. Selecteer **geheime machtigingen ophalen** en vervolgens **certificaat machtigingen** ophalen en weer geven zodat CDN deze machtigingen kan uitvoeren om de certificaten op te halen en weer te geven. 
+3. Selecteer **certificaat machtigingen**en schakel vervolgens de selectie vakjes voor **ophalen** en **lijst** in om CDN toe te staan deze machtigingen uit te voeren om de certificaten op te halen en weer te geven.
 
 4. Selecteer **OK**. 
 

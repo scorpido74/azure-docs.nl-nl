@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 8fd3aedd2e371e511730fd98751ae3214545c489
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c1422b6411fc60383cffa6c3082108bb940c4343
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034589"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996223"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB tabel .NET Standard API: Down load en release-opmerkingen
 > [!div class="op_single_selector"]
@@ -41,6 +41,9 @@ de 2.0.0-serie neemt de afhankelijkheid van [micro soft. Azure. Cosmos](https://
 
 ## <a name="release-notes-for-100-series"></a>Release opmerkingen voor de 1.0.0-serie
 de 1.0.0-serie neemt de afhankelijkheid van [micro soft. Azure. DocumentDB. core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
+
+### <a name="a-name105105"></a><a name="1.0.5"/>1.0.5
+* Nieuwe configuratie introduceren onder TableClientConfiguration om rest-uitvoerder te gebruiken om te communiceren met Cosmos DB Table-API
 
 ### <a name="a-name105-preview105-preview"></a><a name="1.0.5-preview"/>1.0.5-preview
 * Opgeloste fouten
@@ -92,6 +95,7 @@ In deze platformoverschrijdende .NET Standard-bibliotheek [micro soft. Azure. Co
 ### <a name="100-series"></a>1.0.0-serie
 | Version | Releasedatum | Vervaldatum |
 | --- | --- | --- |
+| [1.0.5](#1.0.5) |13 september 2019 |--- |
 | [1.0.5-preview](#1.0.5-preview) |Auguest 20, 2019 |--- |
 | [1.0.4](#1.0.4) |Auguest 12, 2019 |--- |
 | [1.0.4-preview](#1.0.4-preview) |26 juli 2019 |--- |

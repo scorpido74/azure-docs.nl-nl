@@ -4,14 +4,14 @@ description: Hier wordt weer gegeven welke Azure-resource typen tags ondersteune
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8bcbd7b14de497cb6a8bb5cf12de4ec8c555b97b
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 7b8d3de3eaa9cdbb945879f2acc283d74c8b4e82
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983909"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996831"
 ---
 # <a name="tag-support-for-azure-resources"></a>Ondersteuning voor labels voor Azure-resources
 In dit artikel wordt beschreven of een resource type [labels](resource-group-using-tags.md)ondersteunt. De kolom met de naam **ondersteunt labels** geeft aan of het resource type een eigenschap voor de tag heeft. De kolom label **in het kosten rapport** geeft aan of dit resource type de tag doorgeeft aan het kosten rapport.
@@ -151,6 +151,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Microsoft.SiteRecovery](#microsoftsiterecovery)
 > - [Micro soft. SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
+> - [Micro soft. SQL](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.Storage](#microsoftstorage)
 > - [Microsoft.StorageCache](#microsoftstoragecache)
@@ -1820,6 +1821,7 @@ Ga naar de naam ruimte van een resource provider:
 > | servers/restorableDroppedDatabases | Nee | Nee |
 > | servers/serviceobjectives | Nee | Nee |
 > | servers/tdeCertificates | Nee | Nee |
+> | virtualClusters | Nee | Nee |
 
 <a id="sqlnote" />
 

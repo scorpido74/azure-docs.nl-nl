@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: Prijs voor auto Mobile voors pellen met de visuele interface'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Leer hoe u een machine learning model kunt trainen, beoordelen en implementeren met behulp van een visuele interface voor slepen en neerzetten. Deze zelf studie is deel één van een serie met twee delen voor het voors pellen van prijzen voor auto's met lineaire regressie.
 author: peterclu
 ms.author: peterlu
@@ -9,16 +9,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 08/16/2019
-ms.openlocfilehash: a2134853c48ca09faa150f038be2d9327af75eee
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 11c65c217ef6c150c47f387f7f80070488a8df89
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891648"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996784"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Zelfstudie: Prijs voor auto Mobile voors pellen met de visuele interface
 
-In deze tweedelige zelf studie leert u hoe u de interface van de Azure Machine Learning service kunt gebruiken voor het ontwikkelen en implementeren van een voorspellende analytische oplossing die de prijs van elke auto voorspelt. 
+In deze tweedelige zelf studie leert u hoe u de visuele interface van Azure Machine Learning kunt gebruiken voor het ontwikkelen en implementeren van een voorspellende analytische oplossing die de prijs van elke auto voorspelt. 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GY]
 
@@ -41,11 +41,11 @@ Als u dit wilt vinden, selecteert u op de **pagina experimenten**de optie **Nieu
 
 ## <a name="create-a-new-experiment"></a>Een nieuw experiment maken
 
-Voor het maken van een experiment voor een Visual-Interface hebt u eerst een service-werk ruimte van Azure machine Learns nodig. In deze sectie leert u hoe u deze resources kunt maken.
+Voor het maken van een experiment voor een Visual-Interface hebt u eerst een Azure Machine Learning service-werk ruimte nodig. In deze sectie leert u hoe u deze resources kunt maken.
 
 ### <a name="create-a-new-workspace"></a>Een nieuwe werkruimte maken
 
-Als u een werk ruimte van Azure Machine Learning service hebt, gaat u naar de volgende sectie.
+Als u een Azure Machine Learning-werk ruimte hebt, gaat u verder met de volgende sectie.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -73,7 +73,7 @@ Machine learning is afhankelijk van gegevens. Gelukkig, er zijn verschillende vo
 
    ![Gegevens naar canvas slepen](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
 
-1. Selecteer de kolommen met gegevens waarmee u wilt werken. Typ in het zoekvak boven aan het palet om de module **select columns in dataset** te vinden.
+1. Selecteer de kolommen met gegevens waarmee u wilt werken. Typ **in** het zoekvak boven aan het palet om de module **select columns in dataset** te vinden.
 
 1. Klik en sleep de module **kolommen in gegevensset selecteren** op het canvas. Verwijder de module onder de module DataSet.
 

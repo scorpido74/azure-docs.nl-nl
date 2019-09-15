@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 86ac042bdddce36f00be71cc5109618bec909d90
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 60b323c12e5c548c974a7d660d08861637ac2381
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914175"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996667"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexerings beleid in Azure Cosmos DB
 
@@ -29,7 +29,7 @@ Azure Cosmos DB ondersteunt twee indexerings modi:
 - **Consistent**: Als het indexerings beleid van een container is ingesteld op consistent, wordt de index synchroon bijgewerkt wanneer u items maakt, bijwerkt of verwijdert. Dit betekent dat de consistentie van uw Lees query's de [consistentie is die voor het account is geconfigureerd](consistency-levels.md).
 - **Geen**: Als het indexerings beleid van een container is ingesteld op geen, wordt indexeren effectief uitgeschakeld voor die container. Dit wordt meestal gebruikt wanneer een container wordt gebruikt als een pure sleutel waarde Store zonder dat hiervoor secundaire indexen nodig zijn. Het kan ook helpen bij het versnellen van Bulk Insert-bewerkingen.
 
-Daarnaast moet u de **automatische** eigenschap in het indexerings beleid instellen op **True**. Als u deze eigenschap instelt op True, kunnen Azure Cosmos DB documenten automatisch indexeren wanneer ze zijn geschreven.
+Indexerings beleid is standaard ingesteld op `automatic`. Het wordt bereikt door de `automatic` eigenschap in het indexerings beleid in te stellen op. `true` Als u deze eigenschap `true` instelt op, kan Azure CosmosDB documenten automatisch indexeren wanneer ze zijn geschreven.
 
 ## <a name="including-and-excluding-property-paths"></a>Eigenschaps paden opnemen en uitsluiten
 

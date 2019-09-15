@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 6c1104ba340f23a76d5b9b4167f895f5a115152c
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 8faa6338179eb1540eb4f9a375bf3bc696c745f3
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773288"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995378"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Replica's in Azure Database for MariaDB lezen
 
@@ -155,4 +155,4 @@ De [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over [het maken en beheren van Lees replica's met behulp van de Azure Portal](howto-read-replicas-portal.md)
-- Meer informatie over [het maken en beheren van Lees replica's met behulp van Azure cli](howto-read-replicas-cli.md)
+- Meer informatie over [het maken en beheren van Lees replica's met behulp van Azure CLI en rest API](howto-read-replicas-cli.md)

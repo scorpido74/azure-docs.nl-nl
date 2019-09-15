@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: overview
 ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 284c9bb1b9032d2f9caf0ce62c45ffa7cd8bf9d4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: e325618ed1cdec6149ac31771c8bd67ecea7d559
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68476856"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993815"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Wat is Apache Spark in Azure HDInsight?
 
@@ -25,7 +25,7 @@ Apache Spark is een framework voor parallelle verwerking dat ondersteuning biedt
 
 Spark biedt primitieve typen voor in-memory clustercomputing. Een Spark-taak kan gegevens laden en in het geheugen cachen en er herhaaldelijk query’s op uitvoeren. Verwerkingen in het geheugen (in-memory) zijn veel sneller dan toepassingen die op schijf worden uitgevoerd, zoals Hadoop, dat gegevens deelt via HDFS (Hadoop Distributed File System). Apache Spark kan ook worden geïntegreerd met de programmeertaal Scala waarmee u gedistribueerde gegevenssets zoals lokale verzamelingen kunt bewerken. Het is niet nodig om alles te structureren als toewijzings- en verminderingsbewerkingen.
 
-![Traditionele MapReduce vergeleken met Spark](./media/apache-spark-overview/mapreduce-vs-spark.png)
+![Traditionele MapReduce vergeleken met Spark](./media/apache-spark-overview/map-reduce-vs-spark1.png)
 
 Spark-clusters in HDInsight bieden een volledig beheerde Spark-service. Dit zijn de voordelen van het maken van een Spark-cluster in HDInsight.
 
@@ -57,7 +57,7 @@ Spark-clusters in HDInsight bieden ook een [ODBC-stuurprogramma](https://go.micr
 
 ## <a name="spark-cluster-architecture"></a>Architectuur van Spark-cluster
 
-![De architectuur van HDInsight Spark](./media/apache-spark-overview/spark-architecture.png)
+![De architectuur van HDInsight Spark](./media/apache-spark-overview/hdi-spark-architecture.png)
 
 De onderdelen van Spark zijn gemakkelijker te begrijpen als u weet hoe Spark wordt uitgevoerd in HDInsight-clusters.
 

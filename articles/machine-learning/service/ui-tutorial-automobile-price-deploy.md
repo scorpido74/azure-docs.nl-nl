@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie: Een machine learning model met de visuele interface implementeren'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het bouwen van een predictive analytics oplossing in de Visual Interface van de Azure Machine Learning-service. Train, Score en implementeer een machine learning model met behulp van slepen-en-neerzetten. Deze zelf studie is deel twee van een reeks van twee delen voor het voors pellen van prijzen voor auto's met lineaire regressie.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het bouwen van een predictive analytics oplossing in de visuele interface van Azure Machine Learning. Train, Score en implementeer een machine learning model met behulp van slepen-en-neerzetten. Deze zelf studie is deel twee van een reeks van twee delen voor het voors pellen van prijzen voor auto's met lineaire regressie.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 64062aeab9a807d2aee7f4bca05d4019a3d9b736
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 22d5c41e8b815fd99450962cb63d11e9560c787f
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858629"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997015"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Zelfstudie: Een machine learning model met de visuele interface implementeren
 
@@ -105,7 +105,7 @@ Navigeer naar het tabblad **API-document** om meer API-details te vinden.
 
 ## <a name="manage-models-and-deployments"></a>Modellen en implementaties beheren
 
-De modellen en web service-implementaties die u in de visuele interface maakt, kunnen ook worden beheerd vanuit de werk ruimte Azure Machine Learning service.
+De modellen en web service-implementaties die u in de visuele interface maakt, kunnen ook worden beheerd vanuit de werk ruimte Azure Machine Learning.
 
 1. Open uw werk ruimte in de [Azure Portal](https://portal.azure.com/).  
 

@@ -1,6 +1,6 @@
 ---
 title: '#5 voor beeld van visuele interface: Classificatie voor het voors pellen van verloop en verlangen + up-sell'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: In dit voorbeeld experiment van de Visual-Interface ziet u de binaire classifier-voor spelling van het verloop, een algemene taak voor Customer Relationship Management (CRM).
 services: machine-learning
 ms.service: machine-learning
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: a2eabdd601fcf350d2076d33882e3d90255fee92
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 054ac3ea5224a4ffea2e7bae9da329ba7bc81233
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016474"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997139"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>Voor beeld 5-classificatie: Verloop, verlangen en up-sell voors pellen 
 
 Meer informatie over hoe u een complex machine learning experiment bouwt zonder een enkele regel code te schrijven met behulp van de visuele interface.
 
-In dit experiment worden drie, met **twee klassen** gestimuleerde classificaties voor de beslissings structuur voor het voors pellen van veelvoorkomende taken voor CRM-systemen (Customer Relationship Management): verloop, verlangen en up-selling. De gegevens waarden en labels zijn gesplitst over meerdere gegevens bronnen en worden versleuteld naar anoniem maken klant gegevens. we kunnen echter nog steeds de visuele interface gebruiken om gegevens sets te combi neren en een model te trainen met behulp van de versleutelde waarden.
+In dit experiment worden drie, met **twee klassen gestimuleerde** classificaties voor de beslissings structuur voor het voors pellen van veelvoorkomende taken voor CRM-systemen (Customer Relationship Management): verloop, verlangen en up-selling. De gegevens waarden en labels zijn gesplitst over meerdere gegevens bronnen en worden versleuteld naar anoniem maken klant gegevens. we kunnen echter nog steeds de visuele interface gebruiken om gegevens sets te combi neren en een model te trainen met behulp van de versleutelde waarden.
 
 Omdat we proberen de vraag "welke?" te beantwoorden Dit wordt een probleem met de classificatie genoemd. U kunt echter dezelfde stappen in dit experiment Toep assen om elk type machine learning probleem op te doen, of het nu gaat om een regressie, classificatie, Clustering, enzovoort.
 
@@ -65,7 +65,7 @@ Visualiseer de uitvoer van de module **Evaluate model** om de prestaties van het
 
 ![De resultaten evalueren](./media/ui-sample-classification-predict-churn/evaluate-result.png)
 
- U kunt de schuif regelaar drempelwaarde verplaatsen en de wijziging van metrische gegevens voor de binaire classificatie taak bekijken.
+ U kunt de schuif regelaar **drempelwaarde** verplaatsen en de wijziging van metrische gegevens voor de binaire classificatie taak bekijken.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

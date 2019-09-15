@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: heidist
-ms.openlocfilehash: f6cc119387482e4f5403e91de98916cbe2aaff2a
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 60dfae48b0aa1d6e0d9bc8e79d5ff2dedd744fd5
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963497"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993588"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-search"></a>Relationele SQL-gegevens model leren voor importeren en indexeren in Azure Search
 
@@ -152,11 +152,11 @@ Gezien de vorige resultatenset en het bovenstaande index schema, hebt u alle ver
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt de [wizard gegevens importeren](search-import-data-portal.md) gebruiken om een rijenset te indexeren zoals in dit artikel wordt beschreven. De wizard detecteert de Inge sloten JSON-verzameling in *kamers* en leidt een index schema af dat de juiste verzameling complexe typen verschaft. 
+Met uw eigen gegevensset kunt u de [wizard gegevens importeren](search-import-data-portal.md) gebruiken om de index te maken en te laden. De wizard detecteert de Inge sloten JSON-verzameling, zoals de groep die is opgenomen in de *ruimten*en leidt tot een index schema dat een verzameling complexe typen bevat. 
 
   ![Index afgeleid door wizard gegevens importeren](media/index-sql-relational-data/search-index-rooms-complex-collection.png "Index afgeleid door wizard gegevens importeren")
 
-Als u het importeren wilt volt ooien en een bruikbare index wilt maken, moet u de sleutel selecteren en zelf kenmerken instellen. Als u niet bekend bent met deze wizard, kunt u de volgende Snelstartgids proberen om de basis stappen te leren.
+Probeer de volgende Snelstartgids voor meer informatie over de basis stappen van de wizard gegevens importeren.
 
 > [!div class="nextstepaction"]
 > [Snelstart: Een zoek index maken met behulp van Azure Portal](search-get-started-portal.md)

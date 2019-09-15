@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: a671b2ddd3cfa1237b6d843369e78233960f1c14
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 139ebe02727bab8cc80f6f0c6bbbd2156f025c21
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013189"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70992309"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Azure Service Bus bronnen
 [Identiteiten voor een Azure-resources beheerd](../active-directory/managed-identities-azure-resources/overview.md) is een cross-Azure-functie die u kunt maken van een veilige identiteit die is gekoppeld aan de implementatie waarmee uw toepassingscode wordt uitgevoerd. Daarna kunt u die identiteit koppelen met access-control-rollen die aangepaste machtigingen voor toegang tot specifieke Azure-resources die uw toepassing nodig heeft.
@@ -28,7 +28,7 @@ Met beheerde identiteiten beheert het Azure-platform deze runtime-identiteit. U 
 ## <a name="overview"></a>Overzicht
 Wanneer een beveiligingsprincipal (een gebruiker, groep of toepassing) probeert toegang te krijgen tot een Service Bus entiteit, moet de aanvraag worden geautoriseerd. Met Azure AD is toegang tot een resource een proces dat uit twee stappen bestaat. 
 
- 1. Eerst wordt de identiteit van de beveiligingsprincipal geverifieerd en wordt een OAuth 2,0-token geretourneerd. 
+ 1. Eerst wordt de identiteit van de beveiligingsprincipal geverifieerd en wordt een OAuth 2,0-token geretourneerd. De resource naam voor het aanvragen van een `https://servicebus.azure.net`token is.
  1. Vervolgens wordt het token door gegeven als onderdeel van een aanvraag aan de Service Bus-service om toegang tot de opgegeven bron te autoriseren.
 
 De verificatie stap vereist dat een toepassings aanvraag een OAuth 2,0-toegangs token bevat tijdens runtime. Als een toepassing wordt uitgevoerd binnen een Azure-entiteit, zoals een Azure-VM, een schaalset voor virtuele machines of een Azure function-app, kan deze een beheerde identiteit gebruiken om toegang te krijgen tot de resources. Zie [toegang verifiëren voor Azure service bus resources met Azure Active Directory en beheerde identiteiten voor Azure-resources](service-bus-managed-service-identity.md)voor meer informatie over het verifiëren van aanvragen die door een beheerde identiteit worden door gegeven aan service bus service. 
@@ -106,7 +106,7 @@ Als u een rol aan een Service Bus naam ruimte wilt toewijzen, gaat u naar de naa
 
 1. Ga in het Azure Portal naar uw Service Bus naam ruimte en geef het **overzicht** voor de naam ruimte weer. 
 1. Selecteer **Access Control (IAM)** in het menu links om instellingen voor toegangs beheer voor de naam ruimte service bus weer te geven.
-1.  Selecteer het tabblad roltoewijzingen om de lijst met roltoewijzingen weer te geven.
+1.  Selecteer het **tabblad roltoewijzingen om de lijst** met roltoewijzingen weer te geven.
 3.  Selecteer **toevoegen** om een nieuwe rol toe te voegen.
 4.  Selecteer op de pagina **roltoewijzing toevoegen** de Azure service bus rollen die u wilt toewijzen. Zoek vervolgens naar de service-identiteit die u hebt geregistreerd om de rol toe te wijzen.
     

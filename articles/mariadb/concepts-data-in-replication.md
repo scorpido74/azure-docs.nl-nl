@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/11/2019
-ms.openlocfilehash: 28c2c01e85120ec17e6f782fb0686a627d50d0d0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/13/2019
+ms.openlocfilehash: 3ceb8b4f3c2c50ac0ac3bd12831b5497f9a05afb
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136750"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993032"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Gegevens repliceren naar Azure Database for MariaDB
 
@@ -37,7 +37,7 @@ De [*MySQL-systeem database*](https://mariadb.com/kb/en/library/the-mysql-databa
 - Als SSL is ingeschakeld op de master server, controleert u of het SSL-CA-certificaat dat is opgegeven voor `mariadb.az_replication_change_master` het domein, is opgenomen in de opgeslagen procedure. Raadpleeg de volgende [voor beelden](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) en de `master_ssl_ca` para meter.
 - Zorg ervoor dat het IP-adres van de hoofdserver is toegevoegd aan de firewallregels van de Azure Database for MariaDB-replicaserver. Firewallregels bijwerken met de [Azure-portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) of [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli).
 - Zorg ervoor dat de computer waarop de hoofdserver wordt gehost zowel binnenkomend als uitgaand verkeer op poort 3306 toestaat.
-- Zorg ervoor dat de hoofdserver een **openbaar IP-adres** heeft of dat de DNS openbaar toegankelijk is
+- Zorg ervoor dat de hoofd server een **openbaar IP-adres**heeft, dat de DNS openbaar toegankelijk is of een Fully QUALIFIED domain name (FQDN) heeft.
 
 ### <a name="other"></a>Overige
 - Replicatie van gegevens wordt alleen ondersteund in de Algemeen en de prijs categorieën die zijn geoptimaliseerd voor geheugen.

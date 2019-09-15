@@ -1,6 +1,6 @@
 ---
 title: Geheimen gebruiken in trainings uitvoeringen
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Geheimen op beveiligde wijze door geven aan trainings uitvoeringen met behulp van werkruimte Key Vault
 services: machine-learning
 author: rastala
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 777818b74f935a560047d1eea20e0d0e657efcac
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 4872ba8a707192cd61ec371fa982a076d410e918
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019418"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996573"
 ---
 # <a name="use-secrets-in-training-runs"></a>Geheimen gebruiken in trainings uitvoeringen
 
@@ -69,4 +69,4 @@ De methoden set en Get hebben ook batch versies [set_secrets](https://docs.micro
 ## <a name="next-steps"></a>Volgende stappen
 
  * [Voorbeeld notitieblok weer geven](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/manage-azureml-service/authentication-in-azureml/authentication-in-azureml.ipynb)
- * [Meer informatie over Enter prise Security met Azure Machine Learning-service](concept-enterprise-security.md)
+ * [Meer informatie over Enter prise Security met Azure Machine Learning](concept-enterprise-security.md)

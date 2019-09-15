@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 5/31/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 8d42395bc4f813fecf3820024539999a1129921b
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 0df60cac241151b5968c5ddfc01ca9c0515a5e6b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983802"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996973"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Quickstart: Een AKS-cluster (Azure Kubernetes Service) implementeren met Azure Portal
 
@@ -236,7 +236,7 @@ De containers *azure-vote-back* en *azure-vote-front* worden weergegeven, zoals 
 
 ![De status van actieve containers in AKS weergeven](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-Selecteer de koppeling **Containerlogboeken weergeven** aan de rechterkant van de lijst met containers om de logboeken voor de `azure-vote-front`-pod te zien. Deze logboeken bevatten de stromen *stdout* en *stderr* van de container.
+Als u de logboeken `azure-vote-front` voor de pod wilt bekijken, selecteert u de **container logboeken weer geven** in de vervolg keuzelijst van de lijst met containers. Deze logboeken bevatten de stromen *stdout* en *stderr* van de container.
 
 ![De containerlogboeken in AKS weergeven](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 

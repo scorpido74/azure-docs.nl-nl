@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
-ms.openlocfilehash: 6ab2e0866c4e6c5cc8f89cb490504f6ca6a076fc
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: b16a7d874f15747c14df1d728be824fac76de2be
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019649"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993951"
 ---
 # <a name="troubleshooting-guide"></a>Handleiding voor het oplossen van problemen
 
@@ -283,7 +283,7 @@ Container image build failed
 De bovenstaande opdracht toont aan dat de pod van de service is toegewezen aan *virtueel-node-ACI-Linux*. Dit is een virtueel knoop punt.
 
 ### <a name="try"></a>Probeer:
-Werk de helm-grafiek voor de service bij om alle *nodeSelector* -en /of toegestane waarden te verwijderen waarmee de service op een virtueel knoop punt kan worden uitgevoerd. Deze waarden worden meestal gedefinieerd in het bestand van `values.yaml` de grafiek.
+Werk de helm-grafiek voor de service bij om alle *nodeSelector* -en/of *toegestane waarden te* verwijderen waarmee de service op een virtueel knoop punt kan worden uitgevoerd. Deze waarden worden meestal gedefinieerd in het bestand van `values.yaml` de grafiek.
 
 U kunt nog steeds een AKS-cluster gebruiken waarop de functie virtuele knoop punten is ingeschakeld, als de service die u wilt bouwen/debuggen via dev Spaces wordt uitgevoerd op een VM-knoop punt. Dit is de standaard configuratie.
 
@@ -385,7 +385,7 @@ De RBAC-rol van de gebruiker voor de controller bijwerken:
 1. Schakel het selectie vakje *verborgen typen weer geven* in.
 1. Klik op de controller.
 1. Open het deel venster *Access Control (IAM)* .
-1. Klik op het tabblad roltoewijzingen.
+1. Klik *op het tabblad* roltoewijzingen.
 1. Klik op *toevoegen* en vervolgens op *functie toewijzing toevoegen*.
     * Selecteer *Inzender* of *eigenaar*voor een *rol* .
     * Voor *toegang toewijzen aan* *gebruiker, groep of Service-Principal van Azure AD*selecteren.
@@ -422,7 +422,7 @@ Momenteel is Azure dev Spaces alleen bedoeld om te worden uitgevoerd op Linux en
 Azure dev Spaces kan geen controller maken op uw AKS-cluster omdat er geen untainted-knoop punt met de status *gereed* kan worden gevonden voor het plannen van een Peul op. Voor Azure-ontwikkel ruimten is ten minste één Linux-knoop punt met de status *gereed* die het plannen van peulen toestaat zonder dat er toleranties worden opgegeven.
 
 ### <a name="try"></a>Proberen
-[Werk uw Taint-configuratie](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) op uw AKS-cluster bij om ervoor te zorgen dat er ten minste één Linux-knoop punt kan worden gepland, zonder dat u de toleranties opgeeft. Zorg er ook voor dat er ten minste één Linux-knoop punt is dat het plannen van Peul toestaat zonder dat u de toleranties kunt opgeven. Als het knoop punt lange tijd neemt om de status *gereed* te bereiken, kunt u het knoop punt opnieuw starten.
+[Werk uw Taint-configuratie](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) op uw AKS-cluster bij om ervoor te zorgen dat er ten minste één Linux-knoop punt kan worden gepland, zonder dat u de toleranties opgeeft. Zorg er ook voor dat er ten minste één Linux-knoop punt is *dat het plannen* van Peul toestaat zonder dat u de toleranties kunt opgeven. Als het knoop punt lange tijd neemt om de status *gereed* te bereiken, kunt u het knoop punt opnieuw starten.
 
 ## <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>Fout ' Azure dev Spaces is niet correct geïnstalleerd ' bij het uitvoeren`az aks use-dev-spaces`
 
@@ -456,3 +456,40 @@ Hieronder ziet u een voor beeld van een aantekening voor proxy bronnen die moet 
 ```
 azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"},\"Requests\": {\"cpu\": \"150m\",\"memory\": \"200Mi\"}}"
 ```
+
+## <a name="error-unauthorized-authentication-required-when-trying-to-use-a-docker-image-from-a-private-registry"></a>Fout "niet toegestaan: authenticatie vereist" bij het gebruik van een docker-installatie kopie uit een persoonlijk REGI ster
+
+### <a name="reason"></a>Reason
+
+U gebruikt een docker-installatie kopie uit een persoonlijk REGI ster waarvoor verificatie is vereist. Met [imagePullSecrets](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets)kunt u ontwikkel ruimten toestaan om installatie kopieën te verifiëren en uit te pakken vanuit dit privé register.
+
+### <a name="try"></a>Proberen
+
+Als u imagePullSecrets wilt gebruiken, [maakt u een Kubernetes-geheim](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) in de naam ruimte waarin u de installatie kopie gebruikt. Geef vervolgens het geheim op als een imagePullSecret `azds.yaml`in.
+
+Hieronder ziet u een voor beeld van een opgegeven `azds.yaml`imagePullSecrets in.
+
+```
+kind: helm-release
+apiVersion: 1.1
+build:
+  context: $BUILD_CONTEXT$
+  dockerfile: Dockerfile
+install:
+  chart: $CHART_DIR$
+  values:
+  - values.dev.yaml?
+  - secrets.dev.yaml?
+  set:
+    # Optional, specify an array of imagePullSecrets. These secrets must be manually created in the namespace.
+    # This will override the imagePullSecrets array in values.yaml file.
+    # If the dockerfile specifies any private registry, the imagePullSecret for the registry must be added here.
+    # ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    #
+    # This uses credentials from secret "myRegistryKeySecretName".
+    imagePullSecrets:
+      - name: myRegistryKeySecretName
+```
+
+> [!IMPORTANT]
+> Als u imagePullSecrets `azds.yaml` in instelt, worden imagePullSecrets die `values.yaml`zijn opgegeven in de.

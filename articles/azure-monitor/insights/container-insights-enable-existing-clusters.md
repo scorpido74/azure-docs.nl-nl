@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/19/2019
+ms.date: 09/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 650729269370bfcd6608b82fc14c3306da1ed222
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0153d39e1307458baa920d8e9107c8931242014e
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624435"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996267"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Bewaking van het cluster van Azure Kubernetes service (AKS) inschakelen dat al is geïmplementeerd
 
@@ -49,17 +49,51 @@ De uitvoer ziet eruit als in het volgende:
 provisioningState       : Succeeded
 ```
 
-Als u in plaats daarvan met een bestaande werkruimte integreren zou, gebruikt u de volgende opdracht uit om op te geven die werkruimte.
+### <a name="integrate-with-an-existing-workspace"></a>Integreren met een bestaande werk ruimte
 
-```azurecli
-az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG --workspace-resource-id <ExistingWorkspaceResourceID> 
-```
+Als u liever met een bestaande werk ruimte integreert, voert u de volgende stappen uit om eerst de volledige resource-id te identificeren van uw `--workspace-resource-id` log Analytics werk ruimte die voor de para meter is vereist en voert u vervolgens de opdracht uit om de invoeg toepassing bewaking in te scha kelen. de opgegeven werk ruimte.  
 
-De uitvoer ziet eruit als in het volgende:
+1. Een lijst met alle abonnementen die u hebt geopend met behulp van de volgende opdracht:
 
-```azurecli
-provisioningState       : Succeeded
-```
+    ```azurecli
+    az account list --all -o table
+    ```
+
+    De uitvoer ziet eruit als in het volgende:
+
+    ```azurecli
+    Name                                  CloudName    SubscriptionId                        State    IsDefault
+    ------------------------------------  -----------  ------------------------------------  -------  -----------
+    Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
+    ```
+
+    Kopieer de waarde voor **SubscriptionId**.
+
+2. Schakel over naar het abonnement dat als host fungeert voor de Log Analytics-werk ruimte met behulp van de volgende opdracht:
+
+    ```azurecli
+    az account set -s <subscriptionId of the workspace>
+    ```
+
+3. In het volgende voor beeld wordt de lijst met werk ruimten in uw abonnementen weer gegeven in de standaard JSON-indeling. 
+
+    ```
+    az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
+    ```
+
+    Zoek in de uitvoer de naam van de werk ruimte en kopieer de volledige Resource-ID van die Log Analytics werk ruimte onder de veld **-id**.
+ 
+4. Voer de volgende opdracht uit om de invoeg toepassing bewaking in te scha kelen, waarbij u `--workspace-resource-id` de waarde voor de para meter vervangt. De teken reeks waarde moet binnen de dubbele aanhalings tekens staan:
+
+    ```azurecli
+    az aks enable-addons -a monitoring -n ExistingManagedCluster -g ExistingManagedClusterRG --workspace-resource-id  “/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>”
+    ```
+
+    De uitvoer ziet eruit als in het volgende:
+
+    ```azurecli
+    provisioningState       : Succeeded
+    ```
 
 ## <a name="enable-using-terraform"></a>Inschakelen met behulp van Terraform
 
@@ -232,7 +266,7 @@ Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lo
     }
     ```
 
-4. Bewerk de waarden voor **aksResourceId** en **aksResourceLocation** met behulp van de waarden op de overzichts pagina van **AKS** voor het AKS-cluster. De waarde voor **workspaceResourceId** is de volledige resource-ID van uw Log Analytics-werkruimte, waaronder de naam van de werkruimte. 
+4. Bewerk de waarden voor **aksResourceId** en **aksResourceLocation** met behulp van de waarden op de **overzichts** pagina van AKS voor het AKS-cluster. De waarde voor **workspaceResourceId** is de volledige resource-ID van uw Log Analytics-werkruimte, waaronder de naam van de werkruimte. 
 
     Bewerk de waarden voor **aksResourceTagValues** zodat deze overeenkomen met de bestaande label waarden die zijn opgegeven voor het AKS-cluster.
 

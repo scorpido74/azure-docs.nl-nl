@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e57b5a49ac0c99fa81e54134e74964bf38418e4d
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d24323996e222caf6456372cbc65681d2055c3db
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934905"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996647"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Quickstart: Azure Key Vault-client bibliotheek voor .NET
 
@@ -26,7 +26,6 @@ Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen
 - Gebruik FIPS 140-2 level 2 Validated Hsm's.
 
 [](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [Bron](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/KeyVault)codepakket | voor de documentatie bibliotheek van de API-naslag gids[(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
-
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -120,24 +119,12 @@ Met deze bewerking wordt een reeks sleutel-waardeparen geretourneerd.
 
 Noteer de clientId-en clientSecret, aangezien we deze gebruiken in de verificatie van [uw sleutel kluis](#authenticate-to-your-key-vault) hieronder.
 
-U hebt ook de appID van de service-principal nodig. U kunt dit vinden door de [ad SP-lijst](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) van AZ `--show-mine` uit te voeren met de para meter:
-
-```azurecli
-az ad sp list --show-mine
-```
-
-Het `appID` wordt weer gegeven in de geretourneerde JSON:
-
-```json
-    "appId": "2cf5aa18-0100-445a-9438-0b93e577a3ed",
-```
-
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>De Service-Principal toegang verlenen tot uw sleutel kluis
 
-Maak een toegangs beleid voor de sleutel kluis die machtigingen verleent aan uw service-principal. U doet dit met de opdracht [AZ-set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) . De Service-Principal krijgt de machtigingen Get, List en set voor zowel de sleutels als de geheimen.
+Maak een toegangs beleid voor de sleutel kluis die machtigingen verleent aan uw Service-Principal door de clientId door te geven aan de opdracht [AZ-set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) . Geef de Service-Principal Get, List en stel machtigingen voor zowel sleutels als geheimen.
 
 ```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <appid-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
 ## <a name="object-model"></a>Object model

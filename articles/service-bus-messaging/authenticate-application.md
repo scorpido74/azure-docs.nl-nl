@@ -8,12 +8,12 @@ author: axisc
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 0860b1d621d2df5f371638bb48a03fdd8474d12d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 6a78e4d81921fae8dcb325e9d72df1eee7b99a3b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014540"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996990"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Een toepassing met Azure Active Directory voor toegang tot Azure Service Bus entiteiten verifiëren en autoriseren
 Azure Service Bus ondersteunt het gebruik van Azure Active Directory (Azure AD) voor het machtigen van aanvragen voor het Service Bus van entiteiten (wacht rijen, onderwerpen, abonnementen of filters). Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal. Dit kan een gebruiker, groep of toepassings Service-Principal zijn. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
@@ -21,7 +21,7 @@ Azure Service Bus ondersteunt het gebruik van Azure Active Directory (Azure AD) 
 ## <a name="overview"></a>Overzicht
 Wanneer een beveiligingsprincipal (een gebruiker, groep of toepassing) probeert toegang te krijgen tot een Service Bus entiteit, moet de aanvraag worden geautoriseerd. Met Azure AD is toegang tot een resource een proces dat uit twee stappen bestaat. 
 
- 1. Eerst wordt de identiteit van de beveiligingsprincipal geverifieerd en wordt een OAuth 2,0-token geretourneerd. 
+ 1. Eerst wordt de identiteit van de beveiligingsprincipal geverifieerd en wordt een OAuth 2,0-token geretourneerd. De resource naam voor het aanvragen van een `https://servicebus.azure.net`token is.
  1. Vervolgens wordt het token door gegeven als onderdeel van een aanvraag aan de Service Bus-service om toegang tot de opgegeven bron te autoriseren.
 
 De verificatie stap vereist dat een toepassings aanvraag een OAuth 2,0-toegangs token bevat tijdens runtime. Als een toepassing wordt uitgevoerd binnen een Azure-entiteit, zoals een Azure-VM, een schaalset voor virtuele machines of een Azure function-app, kan deze een beheerde identiteit gebruiken om toegang te krijgen tot de resources. Zie [toegang verifiëren voor Azure service bus resources met Azure Active Directory en beheerde identiteiten voor Azure-resources](service-bus-managed-service-identity.md)voor meer informatie over het verifiëren van aanvragen die door een beheerde identiteit worden door gegeven aan service bus service. 
@@ -70,12 +70,12 @@ Nadat u het juiste bereik voor een roltoewijzing hebt bepaald, navigeert u naar 
 1. Navigeer in het [Azure Portal](https://portal.azure.com/)naar uw service bus naam ruimte. Selecteer **Access Control (IAM)** in het menu links om de instellingen voor toegangs beheer voor de naam ruimte weer te geven. Als u een Service Bus naam ruimte moet maken, volgt u de instructies in dit artikel: [Maak een service bus Messa ging-naam ruimte](service-bus-create-namespace-portal.md).
 
     ![Selecteer Access Control in het menu links](./media/authenticate-application/select-access-control-menu.png)
-1. Selecteer het tabblad roltoewijzingen om de lijst met roltoewijzingen weer te geven. Selecteer de knop **toevoegen** op de werk balk en selecteer vervolgens **functie toewijzing toevoegen**. 
+1. Selecteer het **tabblad roltoewijzingen om de lijst** met roltoewijzingen weer te geven. Selecteer de knop **toevoegen** op de werk balk en selecteer vervolgens **functie toewijzing toevoegen**. 
 
     ![Knop toevoegen op de werk balk](./media/authenticate-application/role-assignments-add-button.png)
 1. Voer op de pagina **roltoewijzing toevoegen** de volgende stappen uit:
     1. Selecteer de **Service Bus rol** die u wilt toewijzen. 
-    1. Zoek naar de beveiligingsprincipal (gebruiker, groep, Service-Principal) waaraan u de rol wilt toewijzen.
+    1. Zoek naar de beveiligingsprincipal **(gebruiker** , groep, Service-Principal) waaraan u de rol wilt toewijzen.
     1. Selecteer **Opslaan** om de roltoewijzing op te slaan. 
 
         ![Rol toewijzen aan een gebruiker](./media/authenticate-application/assign-role-to-user.png)
@@ -128,7 +128,7 @@ De toepassing heeft een client geheim nodig om de identiteit ervan te bewijzen w
     ![Clientgeheim](./media/authenticate-application/client-secret.png)
 
 ### <a name="permissions-for-the-service-bus-api"></a>Machtigingen voor de Service Bus-API
-Als uw toepassing een console toepassing is, moet u een systeem eigen toepassing registreren en API-machtigingen voor **micro soft. ServiceBus** toevoegen aan de **vereiste machtigingenset** . Systeem eigen toepassingen hebben ook een omleidings **-URI** in azure AD nodig, die als een id fungeert. de URI hoeft geen netwerk bestemming te zijn. Gebruik `https://servicebus.microsoft.com` voor dit voorbeeld omdat het voorbeeld code al gebruikmaakt van deze URI.
+Als uw toepassing een console toepassing is, moet u een systeem eigen toepassing registreren en API-machtigingen voor **micro soft. ServiceBus** toevoegen aan de **vereiste machtigingenset** . Systeem eigen toepassingen hebben ook een **omleidings-URI** in azure AD nodig, die als een id fungeert. de URI hoeft geen netwerk bestemming te zijn. Gebruik `https://servicebus.microsoft.com` voor dit voorbeeld omdat het voorbeeld code al gebruikmaakt van deze URI.
 
 ### <a name="client-libraries-for-token-acquisition"></a>Client bibliotheken voor het verkrijgen van tokens  
 Zodra u uw toepassing hebt geregistreerd en de machtiging hebt verleend voor het verzenden/ontvangen van gegevens in Azure Service Bus, kunt u code toevoegen aan uw toepassing om een beveiligingsprincipal te verifiëren en het OAuth 2,0-token te verkrijgen. Als u het token wilt verifiëren en verkrijgen, kunt u een van de [micro soft-identiteits platform verificatie bibliotheken](../active-directory/develop/reference-v2-libraries.md) of een andere open-source-bibliotheek gebruiken die ondersteuning biedt voor OpenID Connect of verbinding maken met 1,0. Uw toepassing kan vervolgens het toegangs token gebruiken om een aanvraag voor Azure Service Bus te autoriseren.

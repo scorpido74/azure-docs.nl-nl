@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7385888c54d46e706621f781a64d12d3ae7aa5fb
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 87e130d3a4569971bffb9b1ac2e189babb900225
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512680"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997598"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Welke schijf typen zijn beschikbaar in azure?
 
@@ -33,7 +33,7 @@ De volgende tabel bevat een vergelijking van ultra schijven, Premium-schijven (S
 
 ## <a name="ultra-disk"></a>Ultra Disk
 
-Azure Ultra disks bieden hoge door Voer, hoge IOPS en een consistente schijf opslag met lage latentie voor Azure IaaS-Vm's. Enkele extra voor delen van ultra schijven zijn de mogelijkheid om de prestaties van de schijf en uw workloads dynamisch te wijzigen, zonder dat u uw virtuele machines opnieuw hoeft op te starten. Ultra disks zijn geschikt voor gegevensintensieve workloads, zoals SAP HANA, data bases in de bovenste laag en transactie zware werk belastingen. Ultra schijven kunnen alleen worden gebruikt als gegevens schijven. U wordt aangeraden Premium Ssd's als besturingssysteem schijven te gebruiken.
+Azure Ultra disks bieden hoge door Voer, hoge IOPS en een consistente schijf opslag met lage latentie voor Azure IaaS-Vm's. Enkele extra voor delen van ultra schijven zijn de mogelijkheid om de prestaties van de schijf en uw workloads dynamisch te wijzigen zonder dat u uw virtuele machines (VM) opnieuw hoeft op te starten. Ultra disks zijn geschikt voor gegevensintensieve workloads, zoals SAP HANA, data bases in de bovenste laag en transactie zware werk belastingen. Ultra schijven kunnen alleen worden gebruikt als gegevens schijven. U wordt aangeraden Premium Ssd's als besturingssysteem schijven te gebruiken.
 
 ### <a name="performance"></a>Prestaties
 
@@ -42,9 +42,9 @@ Wanneer u een ultra schijf inricht, kunt u onafhankelijk de capaciteit en de pre
 Enkele belang rijke mogelijkheden van ultra disk zijn:
 
 - Schijf capaciteit: Schijven met een capaciteit van Maxi maal 4 GiB tot 64 TiB.
-- Schijf-IOPS: Ultra disks ondersteunen IOPS-limieten van 300 IOPS/GiB, Maxi maal 160 K IOPS per schijf. Zorg ervoor dat de geselecteerde schijf-IOPS kleiner is dan de limiet van de VM-IOPS om de IOPS die u hebt ingericht, te bewerkstelligen. De minimale IOPS per schijf is 2 IOPS/GiB, met een totaal van de basis lijn mini maal 100 IOPS. Als u bijvoorbeeld een ultra schijf van 4 GiB hebt, hebt u Mini maal 100 IOPS, in plaats van 8 IOPS.
+- Schijf-IOPS: Ultra disks ondersteunen IOPS-limieten van 300 IOPS/GiB, Maxi maal 160 K IOPS per schijf. Zorg ervoor dat de geselecteerde schijf-IOPS kleiner is dan de limiet van de VM-IOPS om de IOPS die u hebt ingericht, te bewerkstelligen. De minimale IOPS per schijf is 2 IOPS/GiB, met een totaal van de basis lijn mini maal 100 IOPS. Als u bijvoorbeeld een ultra schijf van 4 GiB hebt, hebt u Mini maal 100 IOPS, in plaats van acht IOPS.
 - Schijf doorvoer: Bij Ultra disks is de doorvoer limiet van één schijf 256 KiB/s voor elke ingerichte IOPS, Maxi maal 2000 MBps per schijf (waarbij MBps = 10 ^ 6 bytes per seconde). De minimale door Voer per schijf is 4KiB/s voor elke ingerichte IOPS, met een totale basis lijn van Mini maal 1 MBps.
-- Ultra disks ondersteunen het aanpassen van de schijf prestatie kenmerken (IOPS en door Voer) tijdens runtime zonder dat de schijf wordt losgekoppeld van de virtuele machine. Zodra de bewerking voor het wijzigen van de schijf prestaties op een schijf is uitgevoerd, kan het tot een uur duren voordat de wijzigingen van kracht worden.
+- Ultra disks ondersteunen het aanpassen van de schijf prestatie kenmerken (IOPS en door Voer) tijdens runtime zonder dat de schijf wordt losgekoppeld van de virtuele machine. Zodra de bewerking voor het wijzigen van de schijf prestaties op een schijf is uitgevoerd, kan het tot een uur duren voordat de wijzigingen van kracht worden. Er geldt een limiet van vier bewerkingen voor de grootte van de prestaties tijdens een periode van 24 uur. Het is mogelijk dat de bewerking voor het wijzigen van de prestaties mislukt als gevolg van een gebrek aan prestatie bandbreedte capaciteit.
 
 ### <a name="disk-size"></a>Schijfgrootte
 
@@ -71,3 +71,4 @@ Voor nu hebben Ultra disks de volgende beperkingen:
 - Kan alleen worden gemaakt als lege schijven  
 - Nog geen ondersteuning bieden voor schijf momentopnamen, VM-installatie kopieën, beschikbaarheids sets, schaal sets voor virtuele machines en Azure Disk Encryption
 - Nog geen ondersteuning voor integratie met Azure Backup of Azure Site Recovery
+- De huidige maximum limiet voor IOPS op GA Vm's is 80.000.

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: bffe6436678a055ac6d861587f048542f15c5f22
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0610648594d09de3f86c5d9eb2f0cae722978cca
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079311"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996408"
 ---
 # <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
 
@@ -263,7 +263,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 
 Meta gegevens van exemplaren kunnen worden opgehaald in Windows via `curl` het programma:
 
-```bash
+```powershell
 curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2019-03-11 | select -ExpandProperty Content
 ```
 

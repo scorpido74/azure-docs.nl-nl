@@ -1,54 +1,83 @@
 ---
-title: 'Azure Active Directory Domain Services: Share point-gebruikers profiel service inschakelen | Microsoft Docs'
-description: Azure Active Directory Domain Services beheerde domeinen configureren voor de ondersteuning van profiel synchronisatie voor share Point server
+title: Share point-gebruikers profiel service inschakelen met Azure AD DS | Microsoft Docs
+description: Meer informatie over het configureren van een Azure Active Directory Domain Services beheerd domein voor de ondersteuning van profiel synchronisatie voor share Point server
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2018
+ms.date: 09/12/2019
 ms.author: iainfou
-ms.openlocfilehash: 4a9ee05b37a69927d70269dccef2b74a2c251722
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 90d728ceee0b9a4ed5e5e33805de9358aca6530c
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234104"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996339"
 ---
-# <a name="configure-a-managed-domain-to-support-profile-synchronization-for-sharepoint-server"></a>Een beheerd domein configureren voor de ondersteuning van profiel synchronisatie voor share Point server
-Share Point server bevat een gebruikers profiel service die wordt gebruikt voor het synchroniseren van gebruikers profielen. Als u de gebruikers profiel service wilt instellen, moeten de juiste machtigingen worden verleend voor een Active Directory domein. Zie voor meer informatie [Active Directory Domain Services machtigingen verlenen voor profiel synchronisatie in share Point Server 2013](https://technet.microsoft.com/library/hh296982.aspx).
+# <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Azure Active Directory Domain Services configureren voor de ondersteuning van synchronisatie van gebruikers profielen voor share Point server
 
-In dit artikel wordt uitgelegd hoe u Azure AD Domain Services beheerde domeinen kunt configureren om de synchronisatie service van de share Point server-gebruikers profielen te implementeren.
+Share Point server bevat een service voor het synchroniseren van gebruikers profielen. Met deze functie kunnen gebruikers profielen worden opgeslagen op een centrale locatie en toegankelijk op meerdere share point-sites en-farms. Als u de gebruikers profiel service van share Point server wilt configureren, moeten de juiste machtigingen worden verleend in een door Azure Active Directory Domain Services (Azure AD DS) beheerd domein. Zie [gebruikers profiel synchronisatie in share Point server](https://technet.microsoft.com/library/hh296982.aspx)voor meer informatie.
 
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+In dit artikel wordt beschreven hoe u Azure AD DS configureert om de synchronisatie service voor gebruikers profielen van share Point server toe te staan.
 
-## <a name="the-aad-dc-service-accounts-group"></a>De groep ' AAD DC-service accounts '
-Een beveiligings groep met de naam '**Aad DC-service accounts**' is beschikbaar binnen de organisatie-eenheid ' gebruikers ' op uw beheerde domein. U kunt deze groep zien in de MMC-module **Active Directory gebruikers en computers** in uw beheerde domein.
+## <a name="before-you-begin"></a>Voordat u begint
 
-![Beveiligings groep voor AAD DC-service accounts](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts.png)
+U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
-Leden van deze beveiligings groep zijn gemachtigd om de volgende bevoegdheden:
-- De bevoegdheid Directory wijzigingen repliceren in de hoofdmap DSE van het beheerde domein.
-- De bevoegdheid Directory wijzigingen repliceren in de configuratie naamgevings context (CN = Configuration container) van het beheerde domein.
+* Een actief Azure-abonnement.
+    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
+    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
+    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
+* Een Windows Server Management-VM die deel uitmaakt van het door Azure AD DS beheerde domein.
+    * Als dat nodig is, voltooit u de zelf studie voor het [maken van een beheer-VM][tutorial-create-management-vm].
+* Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
+* Een share point-service account voor de synchronisatie service voor gebruikers profielen.
+    * Zie, indien nodig, [plan voor beheer-en service accounts in share Point server][sharepoint-service-account].
 
-Deze beveiligings groep is ook lid van de ingebouwde groep **pre-Windows 2000-compatibele toegang**.
+## <a name="service-accounts-overview"></a>Overzicht van service accounts
 
-![Beveiligings groep voor AAD DC-service accounts](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-properties.png)
+In een door Azure AD DS beheerd domein bestaat een beveiligings groep met de naam **Aad DC-service accounts** als onderdeel van de organisatie-eenheid (OE) van de *gebruiker* . Leden van deze beveiligings groep zijn gemachtigd om de volgende bevoegdheden:
 
+- De bevoegdheid **Directory wijzigingen repliceren** op het hoofd DSE.
+- De bevoegdheid **Directory wijzigingen repliceren** in de *configuratie* naamgevings`cn=configuration` context (container).
 
-## <a name="enable-your-managed-domain-to-support-sharepoint-server-user-profile-sync"></a>Uw beheerde domein inschakelen voor de ondersteuning van synchronisatie van gebruikers profielen van share Point server
-U kunt het service account dat wordt gebruikt voor de synchronisatie van share point-gebruikers profielen toevoegen aan de groep **Aad DC-service accounts** . Als gevolg hiervan krijgt het synchronisatie account voldoende bevoegdheden om wijzigingen in de map te repliceren. Met deze configuratie stap kan de synchronisatie van share Point server-gebruikers profielen goed worden uitgevoerd.
+De beveiligings groep van de **Aad DC-service accounts** is ook lid van de ingebouwde groep **Pre-Windows 2000-compatibele toegang**.
 
-![AAD DC-service accounts-leden toevoegen](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-add-member.png)
+Wanneer het service account voor de synchronisatie service van de share Point server-gebruikers profielen aan deze beveiligings groep wordt toegevoegd, worden de vereiste bevoegdheden verleend om correct te werken.
 
-![AAD DC-service accounts-leden toevoegen](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-add-member2.png)
+## <a name="enable-support-for-sharepoint-server-user-profile-sync"></a>Ondersteuning voor synchronisatie van gebruikers profielen van share Point server inschakelen
 
-## <a name="related-content"></a>Gerelateerde inhoud
-* [Technische Naslag informatie over het verlenen van Active Directory Domain Services machtigingen voor profiel synchronisatie in share Point server 2013](https://technet.microsoft.com/library/hh296982.aspx)
+Het service account voor share Point server heeft voldoende bevoegdheden nodig om wijzigingen in de Directory te repliceren en de synchronisatie van het gebruikers profiel van share Point server correct te laten werken. Als u deze bevoegdheden wilt opgeven, voegt u het service account dat wordt gebruikt voor de synchronisatie van share point-gebruikers profielen toe aan de groep **Aad DC-service accounts** .
+
+Voer de volgende stappen uit op de virtuele machine met Azure AD DS Management:
+
+> [!NOTE]
+> Als u groepslid maatschap wilt bewerken in een door Azure AD DS beheerd domein, moet u zijn aangemeld bij een gebruikers account dat lid is van de groep *Aad DC-Administrators* .
+
+1. Selecteer in het Start scherm de optie **systeem beheer**. Er wordt een lijst met beschik bare beheer hulpprogramma's weer gegeven die in de zelf studie zijn geïnstalleerd om [een beheer-VM te maken][tutorial-create-management-vm].
+1. Als u groepslid maatschap wilt beheren, selecteert u **Active Directory-beheercentrum** in de lijst met beheer Programma's.
+1. Kies in het linkerdeel venster uw door Azure AD DS beheerde domein, zoals *contoso.com*. Er wordt een lijst met bestaande Ou's en resources weer gegeven.
+1. Selecteer de organisatie-eenheid **gebruikers** en kies vervolgens de beveiligings groep *Aad DC-service accounts* .
+1. Selecteer **leden**en klik vervolgens op **toevoegen...** .
+1. Voer de naam van het share point-service account in en selecteer **OK**. In het volgende voor beeld heeft het share point-service account de naam *SPAdmin*:
+
+    ![Het share point-service account toevoegen aan de beveiligings groep van de AAD DC-service accounts](./media/deploy-sp-profile-sync/add-member-to-aad-dc-service-accounts-group.png)
+
+## <a name="next-steps"></a>Volgende stappen
+
+Zie [Active Directory Domain Services machtigingen verlenen voor profiel synchronisatie in share Point server](https://technet.microsoft.com/library/hh296982.aspx) voor meer informatie.
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[tutorial-create-management-vm]: tutorial-create-management-vm.md
+
+<!-- EXTERNAL LINKS -->
+[sharepoint-service-account]: /sharepoint/security-for-sharepoint-server/plan-for-administrative-and-service-accounts

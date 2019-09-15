@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 2d23b2b39844d48c6414d269f8d69d7b96fff272
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 13a7769e310bcd0cb28eddbf9dded3fe1d62eec7
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860302"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993686"
 ---
-# <a name="publishing-integrated-solutions"></a>Oplossingen die zijn geïntegreerd met publiceren
+# <a name="publishing-integrated-solutions"></a>Geïntegreerde oplossingen publiceren
 
 Een geïntegreerde oplossing is een combi natie van meerdere ISV Point-oplossings technologieën, samen met de implementatie en services van een systeem integrator (SI), in één gebundelde aanbieding die wordt vermeld in de Marketplace van het SI as a [Consulting Services-aanbod](https://docs.microsoft.com/azure/marketplace/consulting-services).
 
@@ -89,5 +89,9 @@ Hoewel er vijf service typen beschikbaar zijn voor advies Services, moet een ge�
 ## <a name="going-to-market-with-your-integrated-solution"></a>Ga naar de markt met uw geïntegreerde oplossing 
 
 Zodra uw oplossing in azure Marketplace of AppSource is opgenomen, kunt u de generatie van bewustzijn en vraag via marketing activiteiten doen. Bekijk de activiteiten die worden vermeld in het [Project plan en de tijd lijn](https://aka.ms/AA5qiuc), inclusief activiteiten die partners kunnen aansturen binnen hun eigen teams en met elkaar. Vervolgens krijgt u toegang tot de [voor delen](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) van de partners die zijn gepubliceerd op de Marketplace. Alle geïntegreerde oplossingen bieden in aanmerking voor voor delen op proef niveau.
+
+## <a name="next-steps"></a>Volgende stappen
+
+Zie [geïntegreerde oplossingen](https://docs.microsoft.com/azure/marketplace/integrated-solutions) voor meer informatie over het kopen van een geïntegreerde oplossing op Marketplace.
 
 ---

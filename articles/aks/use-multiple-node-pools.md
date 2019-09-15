@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 516d4f47cb971dee91bc678ff56eeca71a28183a
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 92accf4317ef8d0e3837ce3789615b5aaf6f6919
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915844"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996902"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Voor beeld: meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
@@ -76,9 +76,9 @@ az provider register --namespace Microsoft.ContainerService
 De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en beheert die ondersteuning bieden voor meerdere knooppunt groepen:
 
 * Meerdere knooppunt groepen zijn alleen beschikbaar voor clusters die zijn gemaakt nadat u de *MultiAgentpoolPreview* -functie hebt geregistreerd voor uw abonnement. U kunt geen knooppunt groepen toevoegen of beheren met een bestaand AKS-cluster dat is gemaakt voordat deze functie is geregistreerd.
-* U kunt de eerste knooppunt groep niet verwijderen.
+* U kunt de standaard-knooppunt groep (First) niet verwijderen.
 * De invoeg toepassing voor het routeren van HTTP-toepassingen kan niet worden gebruikt.
-* U kunt knooppunt groepen niet toevoegen/bijwerken/verwijderen met behulp van een bestaande resource manager-sjabloon, net als bij de meeste bewerkingen. In plaats daarvan [kunt u een afzonderlijke resource manager-sjabloon gebruiken](#manage-node-pools-using-a-resource-manager-template) om wijzigingen aan te brengen in knooppunt groepen in een AKS-cluster.
+* U kunt geen knooppunt groepen toevoegen of verwijderen met behulp van een bestaande resource manager-sjabloon, net als bij de meeste bewerkingen. In plaats daarvan [kunt u een afzonderlijke resource manager-sjabloon gebruiken](#manage-node-pools-using-a-resource-manager-template) om wijzigingen aan te brengen in knooppunt groepen in een AKS-cluster.
 
 Hoewel deze functie in preview is, zijn de volgende extra beperkingen van toepassing:
 
@@ -89,6 +89,8 @@ Hoewel deze functie in preview is, zijn de volgende extra beperkingen van toepas
 ## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken
 
 Om aan de slag te gaan, maakt u een AKS-cluster met één knooppunt groep. In het volgende voor beeld wordt de opdracht [AZ Group Create][az-group-create] gebruikt voor het maken van een resource groep met de naam *myResourceGroup* in de regio *eastus* . Er wordt een AKS-cluster met de naam *myAKSCluster* gemaakt met behulp van de opdracht [AZ AKS Create][az-aks-create] . Een *--kubernetes-versie* van *1.13.10* wordt gebruikt om te laten zien hoe u een knooppunt groep in een volgende stap bijwerkt. U kunt elke [ondersteunde versie van Kubernetes][supported-versions]opgeven.
+
+Het is raadzaam om de standaard SKU-load balancer te gebruiken wanneer u meerdere knooppunt groepen gebruikt. Lees [dit document](load-balancer-standard.md) voor meer informatie over het gebruik van standaard load balancers met AKS.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -101,7 +103,8 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --node-count 2 \
     --generate-ssh-keys \
-    --kubernetes-version 1.13.10
+    --kubernetes-version 1.13.10 \
+    --load-balancer-sku standard
 ```
 
 Het duurt een paar minuten om het cluster te maken.
@@ -578,7 +581,7 @@ Het kan een paar minuten duren voordat u uw AKS-cluster bijwerkt, afhankelijk va
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Een openbaar IP-adres per knoop punt in een knooppunt groep toewijzen
 
 > [!NOTE]
-> Tijdens de preview-periode is er sprake van een beperking van het gebruik van deze functie met *Standard load BALANCER SKU in AKS (preview)* vanwege mogelijke Load Balancer regels die conflicteren met de inrichting van de virtuele machine. In het voor beeld wordt de *Basic Load BALANCER SKU* gebruikt als u een openbaar IP-adres per knoop punt moet toewijzen.
+> Tijdens de preview van het toewijzen van een openbaar IP-adres per knoop punt, kan het niet worden gebruikt met de *Standard load BALANCER SKU in AKS* vanwege mogelijke Load Balancer regels die conflicteren met de inrichting van de virtuele machine. In het voor beeld wordt de *Basic Load BALANCER SKU* gebruikt als u een openbaar IP-adres per knoop punt moet toewijzen.
 
 AKS-knoop punten vereisen geen eigen open bare IP-adressen voor communicatie. Het kan echter voor komen dat knoop punten in een knooppunt groep hun eigen open bare IP-adressen hebben. Een voor beeld is gaming, waarbij een-console een directe verbinding moet maken met een virtuele machine in de cloud om hops te minimaliseren. Dit kan worden bereikt door te registreren voor een afzonderlijke preview-functie, open bare IP-adres (preview) van het knoop punt.
 

@@ -1,7 +1,7 @@
 ---
 title: Handleiding voor het oplossen van problemen met de implementatie
-titleSuffix: Azure Machine Learning service
-description: Informatie over het omzeilen, oplossen en oplossen van problemen met veelvoorkomende docker-implementatie fouten met de Azure Kubernetes-service en Azure Container Instances het gebruik van Azure Machine Learning-service.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het omzeilen, oplossen en oplossen van problemen met veelvoorkomende docker-implementatie fouten met de Azure Kubernetes-service en Azure Container Instances het gebruik van Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 07/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5ec92e34ffa68718525e9b407dc9e58f4c409975
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 08b9434dbcca96ff57e2c8182693023a5eb2eea9
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183540"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997160"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Troubleshooting Azure Machine Learning service Azure Kubernetes service and Azure Container Instances Deployment
+# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problemen met Azure Machine Learning Azure Kubernetes-service en Azure Container Instances-implementatie oplossen
 
-Meer informatie over het oplossen van veelvoorkomende docker-implementatie fouten met Azure Container Instances (ACI) en Azure Kubernetes service (AKS) met behulp van Azure Machine Learning-service.
+Meer informatie over het oplossen van veelvoorkomende docker-implementatie fouten met Azure Container Instances (ACI) en Azure Kubernetes service (AKS) met behulp van Azure Machine Learning.
 
-Bij het implementeren van een model in Azure Machine Learning-service, wordt in het systeem een aantal taken uitvoert. De implementatietaken zijn:
+Bij het implementeren van een model in Azure Machine Learning, voert het systeem een aantal taken uit. De implementatietaken zijn:
 
 1. Registreer het model in de werkruimte model-register.
 
@@ -288,7 +288,7 @@ Er zijn twee dingen die u kunnen helpen bij het voor komen van 503-status codes:
     Het doel gebruik voor automatisch schalen is standaard ingesteld op 70%, wat betekent dat de service pieken kan verwerken in aanvragen per seconde (RPS) van Maxi maal 30%. U kunt het doel van het gebruik aanpassen door de `autoscale_target_utilization` in te stellen op een lagere waarde.
 
     > [!IMPORTANT]
-    > Met deze wijziging worden er geen replica's meer gemaakt. In plaats daarvan worden ze gemaakt met een lagere drempel waarde voor het gebruik. In plaats van te wachten totdat de service 70% wordt gebruikt, kan het wijzigen van de waarde in 30% ertoe leiden dat er replica's worden gemaakt wanneer er sprake is van 30%.
+    > Met deze wijziging worden er geen replica's *meer gemaakt.* In plaats daarvan worden ze gemaakt met een lagere drempel waarde voor het gebruik. In plaats van te wachten totdat de service 70% wordt gebruikt, kan het wijzigen van de waarde in 30% ertoe leiden dat er replica's worden gemaakt wanneer er sprake is van 30%.
     
     Als de webservice de huidige maximum replica's al gebruikt en u nog steeds 503 status codes ziet, verhoogt u de `autoscale_max_replicas` waarde om het maximale aantal replica's te verhogen.
 
@@ -346,7 +346,7 @@ In sommige gevallen moet u mogelijk interactief fouten opsporen in de python-cod
 
         ```json
         {
-            "name": "Azure Machine Learning service: Docker Debug",
+            "name": "Azure Machine Learning: Docker Debug",
             "type": "python",
             "request": "attach",
             "port": 5678,
@@ -479,7 +479,7 @@ In dit voor beeld is `myregistry` de naam van het REGI ster en de installatie ko
     docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
     ```
 
-1. Als u VS code aan PTVSD in de container wilt koppelen, opent u VS code en gebruikt u de toets F5 of selecteert u __fout opsporing__. Wanneer u hierom wordt gevraagd __, selecteert u de Azure machine learning-service: Configuratie van docker-fout opsporing__ . U kunt ook het debug-pictogram op de balk aan de zijkant __selecteren, de Azure machine learning-service:__  In het vervolg keuzemenu voor fout opsporing van docker en vervolgens de groene pijl gebruiken om het fout opsporingsprogramma te koppelen.
+1. Als u VS code aan PTVSD in de container wilt koppelen, opent u VS code en gebruikt u de toets F5 of selecteert u __fout opsporing__. Wanneer u hierom wordt gevraagd __, selecteert u de Azure machine learning: Configuratie van docker-fout opsporing__ . U kunt ook het pictogram voor fout opsporing selecteren in de zijbalk, __de Azure machine learning:__  In het vervolg keuzemenu voor fout opsporing van docker en vervolgens de groene pijl gebruiken om het fout opsporingsprogramma te koppelen.
 
     ![Het pictogram fout opsporing, de knop fout opsporing starten en de configuratie kiezer](media/how-to-troubleshoot-deployment/start-debugging.png)
 

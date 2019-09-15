@@ -1,6 +1,6 @@
 ---
 title: '#3 voor beeld van visuele interface: Classificatie om het krediet risico te voors pellen'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Meer informatie over het bouwen van een machine learning classificatie zonder een enkele regel code te schrijven met behulp van de visuele interface.
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +10,16 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 7565f94910d0e926682a72af42b02059fe7295ea
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 26e3f5f237cdd148d12f0a413eb97ed52cb84b49
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990059"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997045"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>Voor beeld 3-classificatie: Kredietrisico voorspellen
 
-Meer informatie over het bouwen van een machine learning classificatie zonder een enkele regel code te schrijven met behulp van de visuele interface. In dit voor beeld wordt een geboostte **beslissings structuur met twee klassen** getraind om het krediet risico te voors pellen (hoog of laag) op basis van gegevens over krediet aanvragen, zoals de krediet geschiedenis, leeftijd en het aantal credit cards.
+Meer informatie over het bouwen van een machine learning classificatie zonder een enkele regel code te schrijven met behulp van de visuele interface. In dit voor beeld wordt een **geboostte beslissings structuur met twee klassen** getraind om het krediet risico te voors pellen (hoog of laag) op basis van gegevens over krediet aanvragen, zoals de krediet geschiedenis, leeftijd en het aantal credit cards.
 
 Omdat we proberen de vraag "welke?" te beantwoorden Dit wordt een probleem met de classificatie genoemd. U kunt echter hetzelfde fundamentele proces Toep assen om elk type machine learning probleem aan te pakken, of het nu gaat om een regressie, classificatie, Clustering, enzovoort.
 

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: 215660b0f0b8748461849f20e65a3585f939085e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 8f684a9c0c40774c8c17a08801997c569be74c8d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858794"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993347"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Gegevens sets (preview) maken en openen in Azure Machine Learning
 
@@ -76,7 +76,12 @@ workspace = Workspace.from_config()
 # retrieve an existing datastore in the workspace by name
 datastore = Datastore.get(workspace, datastore_name)
 ```
+
 ### <a name="create-tabulardatasets"></a>TabularDatasets maken
+
+TabularDatasets kunnen worden gemaakt via de SDK of via de werk ruimte landings pagina (preview).
+
+#### <a name="sdk"></a>SDK 
 
 Gebruik de `from_delimited_files()` methode voor `TabularDatasetFactory` de klasse om bestanden te lezen in de CSV-of TSV-indeling en maak een niet-geregistreerde TabularDataset. Als u leest uit meerdere bestanden, worden de resultaten samengevoegd in één tabel weergave.
 
@@ -103,7 +108,18 @@ titanic_ds.take(3).to_pandas_dataframe()
 1|2|1|1|Cumings, Mevr. John Bradley (Florence Briggs th...|vrouwelijk|38,0|1|0|PC 17599|71,2833|C85|C
 2|3|1|3|Heikkinen, missen. Laina|vrouwelijk|26,0|0|0|STON/O2. 3101282|7,9250||Z
 
+#### <a name="workspace-landing-page"></a>Landings pagina werk ruimte 
+
+Meld u aan bij de pagina voor het land van de [werk ruimte](https://ml.azure.com) om een gegevensset te maken via de webervaring. Op dit moment ondersteunt de landings pagina van de werk ruimte alleen het maken van TabularDatasets.
+
+De volgende animatie laat zien hoe u een gegevensset maakt op de landings pagina van de werk ruimte. 
+
+Selecteer eerst **gegevens sets** in het gedeelte **assets** van het linkerdeel venster. Selecteer vervolgens **+ gegevensset maken** om de bron van uw gegevensset te kiezen. Dit kan een van de volgende zijn: lokale bestanden, gegevens opslag of open bare Web-url's. De **instellingen en het voor beeld** en de **schema** formulieren worden op intelligente wijze gevuld op basis van het bestands type. Selecteer **volgende** om deze te bekijken of uw gegevensset verder te configureren voordat u deze hebt gemaakt. Selecteer **gereed** om het maken van de gegevensset te volt ooien. 
+
+![Een gegevensset maken met de gebruikers interface](media/how-to-create-register-datasets/create-dataset-ui.gif)
+
 ### <a name="create-filedatasets"></a>FileDatasets maken
+
 Gebruik de `from_files()` methode voor `FileDatasetFactory` de klasse om bestanden in elke indeling te laden en een niet-geregistreerde FileDataset te maken.
 
 ```Python
@@ -134,6 +150,9 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'titanic training data')
 ```
 
+>[!Note]
+> Gegevens sets die zijn gemaakt via de werk ruimte landings pagina worden automatisch geregistreerd bij de werk ruimte. 
+
 ## <a name="version-datasets"></a>Versie gegevens sets
 
 U kunt een nieuwe gegevensset onder dezelfde naam registreren door een nieuwe versie te maken. De gegevensset-versie is een manier om de status van uw gegevens te bookmarkren, zodat u een specifieke versie van de gegevensset kunt Toep assen voor experimenten of toekomstige reproductie. Typische scenario's om versie beheer te overwegen: 
@@ -141,7 +160,7 @@ U kunt een nieuwe gegevensset onder dezelfde naam registreren door een nieuwe ve
 * Wanneer u verschillende benaderingen voor gegevens voorbereiding of functie techniek toepast.
 
 ```Python
-# create a TabularDataset from new Titanic training data
+# create a TabularDataset from Titanic training data
 web_paths = [
             'https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
             'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv'

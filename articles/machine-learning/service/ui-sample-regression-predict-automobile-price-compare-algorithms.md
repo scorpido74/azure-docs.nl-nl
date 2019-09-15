@@ -1,6 +1,6 @@
 ---
 title: 'Voor beeld van een Visual-Interface #3: regressie voor prijs-en vergelijkings algoritmen'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: In dit artikel wordt beschreven hoe u een complex machine learning experiment bouwt zonder een enkele regel code te schrijven met behulp van de visuele interface. Meer informatie over het trainen en vergelijken van meerdere regressie modellen voor het voors pellen van de prijs van een auto op basis van technische functies
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: d05a601196ec4a5349a0acb4763098d9716c17f5
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2c45ccf55b1adde7150dee17fd562b24ee4777ba
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990004"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997104"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Voor beeld 2-regressie: Prijs voors pellen en algoritmen vergelijken
 
@@ -80,7 +80,7 @@ Dit zijn de resultaten:
 
 ![De resultaten vergelijken](media/ui-sample-regression-predict-automobile-price-compare-algorithms/result.png)
 
-Deze resultaten geven aan dat het model dat is gebouwd met een **versterkte regressie** voor de beslissings structuur, een lager uitstaande fout heeft dan het model dat is opgebouwd op basis van de regressie van het **beslissings forest**.
+Deze resultaten geven aan dat het model dat is gebouwd met een **versterkte regressie voor de beslissings structuur** , een lager uitstaande fout heeft dan het model dat is opgebouwd op basis van de regressie van het **beslissings forest**.
 
 Beide algoritmen hebben een lagere fout in de trainings gegevensset dan op de ongelijke test gegevensset.
 

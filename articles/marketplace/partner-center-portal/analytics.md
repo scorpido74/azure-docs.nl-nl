@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: 535dae4226f7db9cbc7240f9a92642f0e206cd3b
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 4357a91a87648885def69d8e75e19e38a5a3f751
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962733"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993720"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analytics voor de commerciële Marketplace in het partner centrum
 
@@ -244,7 +244,7 @@ U ontvangt een pop-upmelding en een e-mail bericht met een koppeling naar het da
 | Naam van Cloud exemplaar: Azure Government | Bestellen| Government-specifieke micro soft-Clouds voor een van de volgende regeringen: China, Duitsland of de Verenigde Staten van Amerika.| |
 | Klant plaats| De klant| De naam van de plaats van de klant. De stad kan afwijken van de plaats in het Azure-abonnement van een klant.||
 | Taal van klant communicatie  | De klant| De taal die door de klant wordt aanbevolen voor communicatie.||
-| Bedrijfs naam van klant | Klant, order | De bedrijfs naam die door de klant is verschaft. De naam kan afwijken van de plaats in het Azure-abonnement van een klant.|  |
+| Bedrijfs naam van klant | Klant, order | De bedrijfs naam die door de klant is verschaft. De naam kan afwijken van de naam in het Azure-abonnement van een klant.|  |
 | Land/regio van de klant | Klant, order | De land naam van de klant. Het land kan afwijken van het land van het Azure-abonnement van de klant.|  |
 | E-mail van klant| De klant| Het e-mail adres van de eind gebruiker. E-mail kan afwijken van het e-mail adres in het Azure-abonnement van een klant.||
 | Voor naam van klant| De klant| De naam van de klant. De naam kan afwijken van de naam die is opgenomen in het Azure-abonnement van de klant.| |

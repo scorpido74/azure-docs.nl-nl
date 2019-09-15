@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9cfced0860b206e41b3e9f82f1ed2b92867e6b39
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 42323af40ee18a965363321196a04aa75c00aa40
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914839"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996938"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Een standaard SKU-load balancer gebruiken in azure Kubernetes service (AKS)
 
@@ -277,6 +277,8 @@ Ga in een browser naar het open bare IP-adres en controleer of u de voorbeeld to
 
 Wanneer u een *standaard* -SKU Load Balancer met beheerde uitgaande open bare ip's, die standaard worden gemaakt, kunt u het aantal beheerde uitgaande open bare ip's schalen met behulp van de para meter *Load-Balancer-managed-IP-Count* .
 
+Voer de volgende opdracht uit om een bestaand cluster bij te werken. Deze para meter kan ook op een cluster worden ingesteld voor het maken van meerdere beheerde open bare IP-adressen.
+
 ```azurecli-interactive
 az aks update \
     --resource-group myResourceGroup \
@@ -284,11 +286,15 @@ az aks update \
     --load-balancer-managed-outbound-ip-count 2
 ```
 
-In het bovenstaande voor beeld wordt het aantal beheerde uitgaande open bare Ip's ingesteld op *2* voor het *myAKSCluster* -cluster in *myResourceGroup*. U kunt ook de para meter voor door het *netwerk met taak verdeling beheerde IP-aantal* gebruiken om het eerste aantal beheerde uitgaande open bare ip's in te stellen bij het maken van uw cluster. Het standaard aantal beheerde uitgaande open bare Ip's is 1.
+In het bovenstaande voor beeld wordt het aantal beheerde uitgaande open bare Ip's ingesteld op *2* voor het *myAKSCluster* -cluster in *myResourceGroup*. 
+
+U kunt ook de para meter met *taak verdeling-beheerde IP-aantal* gebruiken om het eerste aantal beheerde uitgaande open bare IP-adressen in te stellen bij het maken van het `--load-balancer-managed-outbound-ip-count` cluster door de para meter toe te voegen en op de gewenste waarde in te stellen. Het standaard aantal beheerde uitgaande open bare Ip's is 1.
 
 ## <a name="optional---provide-your-own-public-ips-or-prefixes-for-egress"></a>Optioneel: Geef uw eigen open bare Ip's of voor voegsels op voor uitgang
 
-Wanneer u een *standaard* -SKU Load Balancer gebruikt, wordt in het AKS-cluster automatisch een openbaar IP-adres gemaakt in dezelfde resource groep die is gemaakt voor het AKS-cluster en wordt het open bare IP-adres toegewezen aan de *standaard* -SKU Load Balancer. U kunt ook uw eigen open bare IP-adres toewijzen.
+Wanneer u een *standaard* -SKU Load Balancer gebruikt, wordt in het AKS-cluster automatisch een openbaar IP-adres gemaakt in dezelfde resource groep die is gemaakt voor het AKS-cluster en wordt het open bare IP-adres toegewezen aan de *standaard* -SKU Load Balancer. U kunt ook uw eigen open bare IP toewijzen tijdens het maken van het cluster of u kunt de load balancer eigenschappen van een bestaand cluster bijwerken.
+
+Door meerdere IP-adressen of voor voegsels te maken, kunt u meerdere services voor het aanbrengen van een back-up definiëren wanneer u het IP-adres achter een enkel load balancer-object definieert. Het uitgaand eind punt van specifieke knoop punten is afhankelijk van de service waaraan ze zijn gekoppeld.
 
 > [!IMPORTANT]
 > U moet de *standaard* -SKU open bare ip's gebruiken om uw Load Balancer te doen met uw *standaard* SKU. U kunt de SKU van uw open bare Ip's controleren met behulp van de opdracht [AZ Network public-ip show][az-network-public-ip-show] :
@@ -324,8 +330,6 @@ az network public-ip prefix show --resource-group myResourceGroup --name myPubli
 
 De bovenstaande opdracht toont de ID voor het open bare IP-voor voegsel *myPublicIPPrefix* in de resource groep *myResourceGroup* .
 
-Gebruik de opdracht *AZ AKS update* met de para meter *Load Balancer-outbound-IP-prefixes* met de id's van de vorige opdracht.
-
 In het volgende voor beeld wordt de para meter *Load Balancer-uitgaand-IP-voor voegsels* gebruikt met de id's van de vorige opdracht.
 
 ```azurecli-interactive
@@ -337,6 +341,36 @@ az aks update \
 
 > [!IMPORTANT]
 > De open bare Ip's en IP-voor voegsels moeten zich in dezelfde regio bevinden en deel uitmaken van hetzelfde abonnement als uw AKS-cluster.
+
+### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>Uw eigen open bare IP of voor voegsels definiëren op het moment dat het cluster wordt gemaakt
+
+U kunt uw eigen IP-adressen of IP-voor voegsels maken voor uitgaand verkeer tijdens het maken van het cluster ter ondersteuning van scenario's zoals white list-uitgangs eindpunten. Voeg de hierboven weer gegeven para meters toe aan de stap voor het maken van het cluster om uw eigen open bare Ip's en IP-voor voegsels te definiëren aan het begin van de levens cyclus van een cluster.
+
+Gebruik de opdracht *AZ AKS Create* met de para meter *Load-Balancer-outbound-ip's* om aan het begin een nieuw cluster met uw open bare ip's te maken.
+
+```
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
+```
+
+Gebruik de opdracht *AZ AKS Create* met de para meter *Load-Balancer-uitgaand-IP-voor voegsels* om een nieuw cluster te maken met uw open bare IP-voor voegsels aan het begin.
+
+```
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
+```
 
 ## <a name="clean-up-the-standard-sku-load-balancer-configuration"></a>De standaard SKU-load balancer configuratie opruimen
 
