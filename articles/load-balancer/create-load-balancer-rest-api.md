@@ -35,9 +35,9 @@ Gebruik de volgende HTTP PUT-aanvraag te maken van een nieuwe Azure Basic Load B
 
 |Name  |In  |Vereist |Type |Description |
 |---------|---------|---------|---------|--------|
-|subscriptionId   |  pad       |  True       |   string      |  De referenties van het abonnement die unieke identificatie van de Microsoft Azure-abonnement. De abonnements-ID maakt deel uit van de URI voor elke Serviceaanroep.      |
-|resourceGroupName     |     pad    | True        |  string       |   De naam van de resourcegroep.     |
-|loadBalancerName     |  pad       |      True   |    string     |    De naam van de load balancer.    |
+|subscriptionId   |  path       |  True       |   string      |  De referenties van het abonnement die unieke identificatie van de Microsoft Azure-abonnement. De abonnements-ID maakt deel uit van de URI voor elke Serviceaanroep.      |
+|resourceGroupName     |     path    | True        |  string       |   De naam van de resourcegroep.     |
+|loadBalancerName     |  path       |      True   |    string     |    De naam van de load balancer.    |
 |api-version    |   query     |  True       |     string    |  Client-API-versie.      |
 
 
@@ -55,10 +55,10 @@ Is de enige vereiste parameter `location`. Als u geen definieert de *SKU* versie
 
 In dit voorbeeld moet u eerst een Basic Load Balancer, samen met de daarbij behorende bronnen maken. Vervolgens configureert u de load balancer-resources die zijn een front-end-IP-configuratie, een back-endadresgroep, een load balancing-regel, een statustest en een binnenkomende NAT-regel.
 
-Voordat u een load balancer met behulp van het volgende voorbeeld maakt, maakt u een virtueel netwerk met de naam *vnetlb* met een subnet met de naam *subnetlb* in een resourcegroep met de naam *rg1* in de **VS-Oost** locatie.
+Voordat u een load balancer met behulp van het volgende voorbeeld maakt, maakt u een virtueel netwerk met de naam *vnetlb* met een subnet met de naam *subnetlb* in een resourcegroep met de naam *rg1* in de **East US** locatie.
 
 ### <a name="step-1-create-a-basic-load-balancer"></a>STAP 1. Een Basic load balancer maken
-In deze stap maakt u een Basic Load Balancer met de naam *lb* op de **VS-Oost** locatie binnen de *rg1* resourcegroep.
+In deze stap maakt u een Basic Load Balancer met de naam *lb* op de **EAST US** locatie binnen de *rg1* resourcegroep.
 #### <a name="sample-request"></a>Voorbeeld van een aanvraag
 
   ```HTTP    
