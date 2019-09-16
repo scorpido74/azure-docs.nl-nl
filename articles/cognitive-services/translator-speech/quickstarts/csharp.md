@@ -3,20 +3,20 @@ title: 'Quickstart: Translator Speech-API C#'
 titlesuffix: Azure Cognitive Services
 description: Ontdek informatie en codevoorbeelden om u te helpen snel aan de slag te gaan met de Translator Speech-API.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 04/26/2019
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5cca3d5d02f9618e99f122bf3fc2a7d2874e1cdf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 359d962db8b7d8cfdc17c230351bc5556604ebbe
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444514"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965424"
 ---
 # <a name="quickstart-translator-speech-api-with-c"></a>Quickstart: Translator Speech-API met C#
 <a name="HOLTop"></a>
@@ -27,7 +27,7 @@ In dit artikel leest u hoe de Translator Speech-API gebruikt voor het vertalen v
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet [Visual Studio 2019](https://www.visualstudio.com/downloads/) om uit te voeren van deze code op Windows. (De gratis Community-editie volstaat.) Als u Mac OS of Linux gebruikt, kunt u ook de teksteditor [Visual Studio Code](https://code.visualstudio.com/Download) gebruiken als alternatief.
+U hebt [Visual Studio 2019](https://www.visualstudio.com/downloads/) nodig om deze code uit te voeren in Windows. (De gratis Community-editie volstaat.) Als u Mac OS of Linux gebruikt, kunt u ook de teksteditor [Visual Studio Code](https://code.visualstudio.com/Download) gebruiken als alternatief.
 
 In de map met het uitvoerbare bestand dat u maakt op basis van de volgende code moet ook een WAV-bestand staan met de naam speak.wav. Dit WAV-bestand moet de standaardindeling hebben: PCM, 16-bits, 16 kHz, mono.
 

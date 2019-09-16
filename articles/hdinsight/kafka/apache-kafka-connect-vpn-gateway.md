@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 395bb01247efde82dbb39733c1915bc989b1729d
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: ab5f8c35334b6b6c56b0ebe8714d04ad5c7c8084
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68402775"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960385"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Verbinding maken met Apache Kafka op HDInsight via een Azure-Virtual Network
 
@@ -252,7 +252,7 @@ Standaard retourneert Apache Zookeeper de domein naam van de Kafka-Brokers naar 
 
 3. Als u de configuratie van Kafka wilt weer geven, selecteert u __configuraties__ in het bovenste midden.
 
-    ![Configuratie koppelingen voor Kafka](./media/apache-kafka-connect-vpn-gateway/select-kafka-config.png)
+    ![Configuratie koppelingen voor Kafka](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
 4. Als u de __Kafka-env-__ configuratie wilt `kafka-env` vinden, voert u in het veld __filter__ in de rechter bovenhoek in.
 
@@ -270,21 +270,21 @@ Standaard retourneert Apache Zookeeper de domein naam van de Kafka-Brokers naar 
 
 6. Als u de interface wilt configureren waarop Kafka luistert, `listeners` voert u in het veld __filter__ in de rechter bovenhoek in.
 
-7. Als u Kafka wilt configureren om te Luis teren op alle netwerk interfaces,  wijzigt u de waarde `PLAINTEXT://0.0.0.0:9092`in het veld listeners in.
+7. Als u Kafka wilt configureren om te Luis teren op alle netwerk interfaces, wijzigt u de waarde `PLAINTEXT://0.0.0.0:9092`in het veld listeners in.
 
 8. Gebruik de knop __Opslaan__ om de configuratie wijzigingen op te slaan. Voer een tekst bericht in waarin de wijzigingen worden beschreven. Selecteer __OK__ zodra de wijzigingen zijn opgeslagen.
 
-    ![Knop configuratie opslaan](./media/apache-kafka-connect-vpn-gateway/save-button.png)
+    ![Knop configuratie opslaan](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
-9. Als u fouten wilt voor komen bij het opnieuw starten van Kafka, gebruikt u de knop __service acties__ en selecteert u onderhouds __modus inschakelen__. Selecteer OK om deze bewerking te volt ooien.
+9. Als u fouten wilt voor komen bij het opnieuw starten van Kafka, gebruikt u de knop __service acties__ en selecteert u __onderhouds modus inschakelen__. Selecteer OK om deze bewerking te volt ooien.
 
     ![Service acties, met ingeschakeld onderhoud inschakelen](./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png)
 
 10. Als u Kafka opnieuw wilt starten, gebruikt u de knop __opnieuw opstarten__ en selecteert u __alle betrokkenen opnieuw opstarten__. Bevestig het opnieuw opstarten en gebruik vervolgens de knop __OK__ nadat de bewerking is voltooid.
 
-    ![Knop opnieuw opstarten met alle betrokken gemarkeerd voor opnieuw opstarten](./media/apache-kafka-connect-vpn-gateway/restart-button.png)
+    ![Knop opnieuw opstarten met alle betrokken gemarkeerd voor opnieuw opstarten](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
 
-11. Als u de onderhouds modus wilt uitschakelen, gebruikt u de knop __service acties__ en selecteert u onderhouds __modus uitschakelen__. Selecteer **OK** om deze bewerking te volt ooien.
+11. Als u de onderhouds modus wilt uitschakelen, gebruikt u de knop __service acties__ en selecteert u __onderhouds modus uitschakelen__. Selecteer **OK** om deze bewerking te volt ooien.
 
 ### <a name="connect-to-the-vpn-gateway"></a>Verbinding maken met de VPN-gateway
 

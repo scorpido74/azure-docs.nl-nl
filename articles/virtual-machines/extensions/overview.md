@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/30/2018
+ms.date: 09/12/2019
 ms.author: roiyz
-ms.openlocfilehash: 8c63df2d9a7e398fb9b67edd3b57a3ba06cbe7a1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 200a5e93c24f6aa4ecf9d76cffac261d83498d02
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084329"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958840"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Extensies en functies van virtuele Azure-machines
 Azure virtual machine-uitbrei dingen zijn kleine toepassingen die configuratie-en automatiserings taken na de implementatie bieden op Azure-Vm's. u kunt bestaande installatie kopieën gebruiken en deze vervolgens aanpassen als onderdeel van uw implementaties, zodat u het bedrijf van aangepaste installatie kopie maken.
@@ -49,6 +49,30 @@ U hoeft niet rechtstreeks verbinding te maken met een virtuele machine om de uit
 
 ## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>Iets anders zou ik denken te weten over uitbrei dingen?
 Uitbrei dingen installeren toepassingen, zoals toepassingen die aan bepaalde vereisten voldoen, voor uitbrei dingen bevat een lijst met ondersteunde Windows-en Linux-besturings systemen en u moet de Azure VM-agents hebben geïnstalleerd. Sommige individuele VM-extensie toepassingen hebben mogelijk hun eigen omgevings vereisten, zoals toegang tot een eind punt.
+
+## <a name="troubleshoot-extensions"></a>Problemen met extensies oplossen
+
+Informatie voor probleem oplossing voor elke extensie vindt u in de sectie **probleem oplossing en ondersteuning** in het overzicht voor de uitbrei ding. Hier volgt een lijst met de beschik bare informatie over het oplossen van problemen:
+
+| Naamruimte | Problemen oplossen |
+|-----------|-----------------|
+| micro soft. Azure. monitoring. dependencyagent. dependencyagentlinux | [Azure Monitor afhankelijkheid voor Linux](agent-dependency-linux.md#troubleshoot-and-support) |
+| micro soft. Azure. monitoring. dependencyagent. dependencyagentwindows | [Azure Monitor afhankelijkheid voor Windows](agent-dependency-windows.md#troubleshoot-and-support) |
+| micro soft. Azure. Security. azurediskencryptionforlinux | [Azure Disk Encryption voor Linux](azure-disk-enc-linux.md#troubleshoot-and-support) |
+| micro soft. Azure. Security. azurediskencryption | [Azure Disk Encryption voor Windows](azure-disk-enc-windows.md#troubleshoot-and-support) |
+| micro soft. compute. customscriptextension | [Aangepast script voor Windows](custom-script-windows.md#troubleshoot-and-support) |
+| micro soft. ostcextensions. customscriptforlinux | [Configuratie van de gewenste status voor Linux](dsc-linux.md#troubleshoot-and-support) |
+| micro soft. Power shell. DSC | [Configuratie van desired state voor Windows](dsc-windows.md#troubleshoot-and-support) |
+| micro soft. hpccompute. nvidiagpudriverlinux | [Uitbrei ding van NVIDIA GPU-stuur programma voor Linux](hpccompute-gpu-linux.md#troubleshoot-and-support) |
+| micro soft. hpccompute. nvidiagpudriverwindows | [Uitbrei ding voor NVIDIA GPU-stuur programma voor Windows](hpccompute-gpu-windows.md#troubleshoot-and-support) |
+| micro soft. Azure. Security. iaasantimalware | [Uitbrei ding van antimalware voor Windows](iaas-antimalware-windows.md#troubleshoot-and-support) |
+| micro soft. enterprisecloud. monitoring. omsagentforlinux | [Azure Monitor voor Linux](oms-linux.md#troubleshoot-and-support)
+| micro soft. enterprisecloud. monitoring. microsoftmonitoringagent | [Azure Monitor voor Windows](oms-windows.md#troubleshoot-and-support) |
+| stackify. linuxagent. extension. stackifylinuxagentextension | [Stackify opnieuw traceren voor Linux](stackify-retrace-linux.md#troubleshoot-and-support) |
+| vmaccessforlinux. micro soft. ostcextensions | [Wacht woord opnieuw instellen (VMAccess) voor Linux](vmaccess.md#troubleshoot-and-support) |
+| micro soft. Recovery Services. vmsnapshot | [Moment opname voor Linux](vmsnapshot-linux.md#troubleshoot-and-support) |
+| micro soft. Recovery Services. vmsnapshot | [Moment opname voor Windows](vmsnapshot-windows.md#troubleshoot-and-support) |
+
 
 ## <a name="next-steps"></a>Volgende stappen
 * Zie [Azure VM-extensies en-functies voor Linux](features-linux.md)voor meer informatie over de werking van de Linux-agent en-extensies.

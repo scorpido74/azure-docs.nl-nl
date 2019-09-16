@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 9ba03f6b1e658e08c3d07d7ccb5e2a99e96fe69c
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: fad2c83138f211e83e9462182d33f6169cbdb833
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736457"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968141"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Uitgebreide Apache Spark geschiedenis server gebruiken om fouten op te sporen en op te sporen Apache Spark toepassingen
 
@@ -47,23 +47,23 @@ Selecteer taak-ID en klik vervolgens op **gegevens** in het menu van het hulp pr
 
 + Controleer de **invoer**, **uitvoer**en **tabel bewerkingen** door de tabbladen afzonderlijk te selecteren.
 
-    ![Gegevens tabbladen](./media/apache-azure-spark-history-server/sparkui-data-tabs.png)
+    ![Gegevens tabbladen](./media/apache-azure-spark-history-server/apache-spark-data-tabs.png)
 
 + Kopieer alle rijen door te klikken op de knop **kopiëren**.
 
-    ![Gegevens kopiëren](./media/apache-azure-spark-history-server/sparkui-data-copy.png)
+    ![Gegevens kopiëren](./media/apache-azure-spark-history-server/apache-spark-data-copy.png)
 
 + Sla alle gegevens op als CSV-bestand door te klikken op de knop **CSV**.
 
-    ![Gegevens opslaan](./media/apache-azure-spark-history-server/sparkui-data-save.png)
+    ![Gegevens opslaan](./media/apache-azure-spark-history-server/apache-spark-data-save.png)
 
 + Zoek door tref woorden **in zoeken in velden in**te voeren, wordt het Zoek resultaat onmiddellijk weer gegeven.
 
-    ![Gegevens zoeken](./media/apache-azure-spark-history-server/sparkui-data-search.png)
+    ![Gegevens zoeken](./media/apache-azure-spark-history-server/apache-spark-data-search.png)
 
 + Klik op de kolomkop om de tabel te sorteren en klik op het plus teken om een rij uit te vouwen om meer details weer te geven of klik op het minteken om een rij samen te vouwen.
 
-    ![Gegevens tabel](./media/apache-azure-spark-history-server/sparkui-data-table.png)
+    ![Gegevens tabel](./media/apache-azure-spark-history-server/apache-spark-data-table.png)
 
 + U kunt één bestand downloaden door te klikken op knop **gedeelte downloaden** dat aan de rechter kant wordt weer gegeven. vervolgens wordt het geselecteerde bestand gedownload naar lokale, als het bestand niet meer bestaat, wordt er een nieuw tabblad geopend om de fout berichten weer te geven.
 
@@ -75,7 +75,7 @@ Selecteer taak-ID en klik vervolgens op **gegevens** in het menu van het hulp pr
 
 + Klik op het nummer onder de tabel om te navigeren naar pagina's wanneer te veel rijen op één pagina worden weer gegeven. 
 
-    ![Gegevens pagina](./media/apache-azure-spark-history-server/sparkui-data-page.png)
+    ![Gegevens pagina](./media/apache-azure-spark-history-server/apache-spark-data-page.png)
 
 + Beweeg de muis aanwijzer op het vraag teken naast gegevens om de knop Info weer te geven of klik op het vraag teken voor meer informatie.
 
@@ -93,7 +93,7 @@ Selecteer taak-ID en klik vervolgens op **grafiek** in het menu van het hulp pro
 
 + Standaard worden alle taken weer gegeven. deze kunnen worden gefilterd op **taak-id**.
 
-    ![grafiek taak-ID](./media/apache-azure-spark-history-server/sparkui-graph-jobid.png)
+    ![grafiek taak-ID](./media/apache-azure-spark-history-server/apache-spark-graph-jobid.png)
 
 + Standaard is de **voortgang** geselecteerd, de gebruiker kan de gegevens stroom controleren door in de vervolg keuzelijst met **weer gave**de optie **lezen/geschreven** te selecteren.
 
@@ -211,15 +211,15 @@ Voer de volgende stappen uit om de Community-versie terug te zetten:
 5. De eigenschap wordt nu ingesteld op **Onwaar** .
 6. Klik op **Opslaan** om de configuratie op te slaan.
 
-    ![functie wordt uitgeschakeld](./media/apache-azure-spark-history-server/sparkui-turn-off.png)
+    ![functie wordt uitgeschakeld](./media/apache-azure-spark-history-server/apache-spark-turn-off.png)
 
 7. Klik op **Spark2** in het linkerdeel venster, onder tabblad **samen vatting** , op **Spark2 geschiedenis server**.
 
-    ![server1 opnieuw starten](./media/apache-azure-spark-history-server/sparkui-restart-1.png) 
+    ![server1 opnieuw starten](./media/apache-azure-spark-history-server/apache-spark-restart1.png) 
 
 8. Start de geschiedenis server opnieuw door te klikken op **opnieuw starten** van de **Spark2-geschiedenis server**.
 
-    ![server2 opnieuw starten](./media/apache-azure-spark-history-server/sparkui-restart-2.png)  
+    ![server2 opnieuw starten](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 
 9. De Web-UI van de Spark-geschiedenis server vernieuwen, wordt deze teruggezet naar de Community-versie.
 
@@ -236,7 +236,7 @@ Als u een geschiedenis server fout uitvoert, volgt u de stappen om de gebeurteni
 
 3. Geef de titel en de beschrijving van de fout op, Sleep het zip-bestand naar het veld bewerken en klik vervolgens op **nieuw probleem verzenden**.
 
-    ![bestands probleem](./media/apache-azure-spark-history-server/sparkui-file-issue.png)
+    ![bestands probleem](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
 
 
 ### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3. Het jar-bestand voor het hotfix-scenario bijwerken
@@ -314,7 +314,7 @@ Als u een upgrade wilt uitvoeren met hotfix, gebruikt u het onderstaande script 
    + Controleren op **kop** en **werk nemers**.
    + **Para meters**: Stel de para meters in op het bash-gebruik.
 
-     ![hotfix voor het uploaden van het logboek of de upgrade](./media/apache-azure-spark-history-server/sparkui-upload2.png)
+     ![hotfix voor het uploaden van het logboek of de upgrade](./media/apache-azure-spark-history-server/apache-spark-upload1.png)
 
 
 ## <a name="known-issues"></a>Bekende problemen

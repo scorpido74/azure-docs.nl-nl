@@ -7,16 +7,16 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 334d277370bb8d6678679c887f6a2b89d65652c3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 19795d5dc3998f601de8121176e52ef9dc83ee47
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569476"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958444"
 ---
 # <a name="sql-database-audit-log-format"></a>Indeling van SQL Database audit logboek
 
@@ -78,7 +78,7 @@ Controle gebeurtenissen worden geschreven naar log Analytics werk ruimte die tij
 | session_id | session_id_d | De ID van de sessie waarop de gebeurtenis heeft plaatsgevonden | smallint | int |
 | session_server_principal_name | session_server_principal_name_s | Server-Principal voor sessie | sysname | string |
 | rekeningen | statement_s | T-SQL-instructie die is uitgevoerd (indien van toepassing) | nvarchar (4000) | string |
-| is voltooid | succeeded_s | Hiermee wordt aangegeven of de actie die de gebeurtenis heeft geactiveerd is geslaagd. Voor andere gebeurtenissen dan aanmelden en batch wordt hiermee alleen gerapporteerd of de machtiging is geslaagd of mislukt, niet voor de bewerking. 1 = geslaagd, 0 = mislukt | bit | string |
+| Is voltooid | succeeded_s | Hiermee wordt aangegeven of de actie die de gebeurtenis heeft geactiveerd is geslaagd. Voor andere gebeurtenissen dan aanmelden en batch wordt hiermee alleen gerapporteerd of de machtiging is geslaagd of mislukt, niet voor de bewerking. 1 = geslaagd, 0 = mislukt | bit | string |
 | target_database_principal_id | target_database_principal_id_d | De databaseprincipal waarmee de bewerking GRANT/DENY/REVOKE wordt uitgevoerd. 0 indien niet van toepassing | int | int |
 | target_database_principal_name | target_database_principal_name_s | Doel gebruiker van actie. NULL indien niet van toepassing | string | string |
 | target_server_principal_id | target_server_principal_id_d | Server-Principal waarop de bewerking GRANT/DENY/REVOKE wordt uitgevoerd. Retourneert 0 indien niet van toepassing | int | int |
