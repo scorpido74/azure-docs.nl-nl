@@ -69,7 +69,7 @@ De volgende gegevens typen worden ondersteund in modellen die zijn gemaakt met d
 | double |drijvende-komma getal met dubbele precisie |
 | int |32 bits geheel getal |
 | float |drijvende-komma getal met enkele precisie |
-| lang |lange integer |
+| long |lange integer |
 | int8\_t |8-bits geheel getal |
 | int16\_t |16-bits geheel getal |
 | Int32\_t |32 bits geheel getal |
@@ -77,11 +77,11 @@ De volgende gegevens typen worden ondersteund in modellen die zijn gemaakt met d
 | bool |boolean |
 | ascii\_char\_ptr |ASCII-teken reeks |
 | EDM\_DATE\_TIME\_OFFSET |datum en tijd verschuiving |
-| EDM\_-GUID |GUID |
+| EDM\_GUID |GUID |
 | EDM\_BINARY |binary |
-| STRUCT\_DECLAREREN |complex gegevens type |
+| DECLARE\_STRUCT |complex gegevens type |
 
-Laten we beginnen met het laatste gegevens type. Met **de\_declare STRUCT** kunt u complexe gegevens typen definiëren. Dit zijn groeperingen van de andere primitieve typen. Met deze groeperingen kunnen we een model definiëren dat er als volgt uitziet:
+Laten we beginnen met het laatste gegevens type. Met **DECLARE\_STRUCT** kunt u complexe gegevens typen definiëren. Dit zijn groeperingen van de andere primitieve typen. Met deze groeperingen kunnen we een model definiëren dat er als volgt uitziet:
 
 ```C
 DECLARE_STRUCT(TestType,
