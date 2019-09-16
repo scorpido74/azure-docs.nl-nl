@@ -306,7 +306,7 @@ Controleer of het certificaat is geïnstalleerd in het persoonlijke\'archief van
         |---|---|
         | Source | Any |
         | Source port ranges | * |
-        | Bestemming | Any |
+        | Destination | Any |
         | Destination port range | 636 |
         | Protocol | Any |
         | Action | Allow |
