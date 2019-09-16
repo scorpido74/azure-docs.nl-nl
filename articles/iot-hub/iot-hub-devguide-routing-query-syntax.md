@@ -55,9 +55,9 @@ Systeem eigenschappen helpen de inhoud en bron van de berichten te identificeren
 | -------- | ---- | ----------- |
 | contentType | string | De gebruiker geeft het inhouds type van het bericht op. Als u een query wilt toestaan voor de hoofd tekst van het bericht, moet u de waarde Application/JSON instellen. |
 | contentEncoding | string | De gebruiker geeft het type code ring van het bericht op. Toegestane waarden zijn UTF-8, UTF-16, UTF-32 als het content type is ingesteld op Application/JSON. |
-| iothub-verbinding-apparaat-id | string | Deze waarde wordt ingesteld door IoT Hub en identificeert de ID van het apparaat. Gebruik `$connectionDeviceId`voor query's. |
+| iothub-connection-device-id | string | Deze waarde wordt ingesteld door IoT Hub en identificeert de ID van het apparaat. Gebruik `$connectionDeviceId`voor query's. |
 | iothub-enqueuedtime | string | Deze waarde wordt ingesteld door IoT Hub en vertegenwoordigt de werkelijke tijd van enqueuing van het bericht in UTC. Gebruik `enqueuedTime`voor query's. |
-| iothub-interface-naam | string | Deze waarde wordt ingesteld door de gebruiker en vertegenwoordigt de naam van de digitale twee interface die het telemetrie-bericht implementeert. Gebruik `$interfaceName`voor query's. Deze functie is beschikbaar als onderdeel van de [open bare preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md). |
+| iothub-interface-name | string | Deze waarde wordt ingesteld door de gebruiker en vertegenwoordigt de naam van de digitale twee interface die het telemetrie-bericht implementeert. Gebruik `$interfaceName`voor query's. Deze functie is beschikbaar als onderdeel van de [open bare preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md). |
 
 Zoals beschreven in de [IOT hub berichten](iot-hub-devguide-messages-construct.md), zijn er aanvullende systeem eigenschappen in een bericht. Naast **Content type**, **contentEncoding**en **enqueuedTime**kan ook een query worden uitgevoerd op de **connectionDeviceId** -en **connectionModuleId** .
 
