@@ -81,6 +81,8 @@
       href: search-lucene-query-architecture.md
     - name: Cognitive Search
       href: cognitive-search-concept-intro.md
+    - name: Vaardighedensets
+      href: cognitive-search-working-with-skillsets.md
     - name: Knowledge Store
       href: knowledge-store-concept-intro.md
     - name: Projecties
@@ -166,9 +168,7 @@
         - name: Complexe gegevenstypen modelleren
           href: search-howto-complex-data-types.md
         - name: Relationele gegevens modelleren
-          href: search-example-adventureworks-modeling.md
-        - name: Facetten op meerdere niveaus modelleren
-          href: search-example-adventureworks-multilevel-faceting.md
+          href: index-sql-relational-data.md
     - name: Gegevens laden
       items:
         - name: Overzicht van gegevensimport
@@ -241,10 +241,14 @@
           href: cognitive-search-resources-documentation.md
     - name: Knowledge Store (preview)
       items:
-        - name: Verbinding maken met behulp van Power BI
-          href: knowledge-store-connect-powerbi.md
+        - name: Een kennisarchief maken in de Azure-portal
+          href: knowledge-store-create-portal.md
         - name: Maken met behulp van REST en Postman
           href: knowledge-store-howto.md
+        - name: Weergeven met Storage Explorer
+          href: knowledge-store-view-storage-explorer.md
+        - name: Verbinden met Power BI
+          href: knowledge-store-connect-power-bi.md
     - name: Querygegevens
       items:
         - name: Een basisquery maken
@@ -273,6 +277,8 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: Begrip van verzamelingsfilters
           href: search-query-understand-collection-filters.md
+        - name: Voorbeelden van facetten op meerdere niveaus
+          href: search-example-adventureworks-multilevel-faceting.md
     - name: Resultaten verwerken
       items:
         - name: Paginagerelateerde functies

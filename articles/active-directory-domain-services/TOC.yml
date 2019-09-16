@@ -89,7 +89,7 @@
       items:
         - name: Azure AD-toepassingsproxy implementeren
           href: deploy-azure-app-proxy.md
-        - name: Ondersteuning voor profielsynchronisatie voor SharePoint Server configureren
+        - name: Profielsynchronisatie voor SharePoint Server inschakelen
           href: deploy-sp-profile-sync.md
     - name: Problemen oplossen
       items:

@@ -13,7 +13,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: null
   ms.topic: overview
-  ms.date: 03/04/2019
+  ms.date: 09/09/2019
   ms.author: sstein
 abstract:
   description: 'Azure SQL Database is een relationele database als een service (DBaaS) voor algemeen gebruik, op basis van de nieuwste stabiele versie van Microsoft SQL Server Database Engine. SQL Database is een krachtige, betrouwbare en veilige clouddatabase die u kunt gebruiken om gegevensgestuurde toepassingen en websites te bouwen in de programmeertaal van uw keuze, zonder dat u hiervoor infrastructuur hoeft te beheren. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u SQL Database gebruikt.'
@@ -27,27 +27,54 @@ abstract:
     href: 'https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/'
     width: 250
 sections:
-  - items:
+  - title: Concepten
+    items:
+      - type: paragraph
+        text: 'Maak kennis met de belangrijkste voordelen van Platform-as-a-Service-databases, en met de aankoopmodellen en servicelagen die u kunt gebruiken om een configuratie met een optimale prijs/prestatie-verhouding in te richten.'
       - type: list
         style: cards
         className: cardsM
         columns: 3
         items:
           - href: /azure/sql-database/sql-database-technical-overview
-            html: '<p>PaaS-database die altijd wordt uitgevoerd met de nieuwste stabiele versie van SQL Server Database Engine en een bijgewerkt besturingssysteem met 99,99% beschikbaarheid.</p>'
+            html: '<p>Een PaaS-database die altijd wordt uitgevoerd met de nieuwste stabiele versie van SQL Server Database Engine en een bijgewerkt besturingssysteem met 99,99% beschikbaarheid.</p>'
             image:
               src: media/index/i_managed.svg
-            title: Volledig beheerd
+            title: Overzicht
           - href: /azure/sql-database/sql-database-service-tiers
             html: <p>Een op maat gemaakte prijs-prestatieverhouding met flexibele servicelagen die uiteenlopen van $ 5/maand tot krachtige databases met 80 cores.</p>
             image:
               src: media/index/i_perftier.svg
-            title: Prijs/servicelagen
+            title: Prijsmodellen
+          - href: /azure/sql-database/sql-database-service-tiers-general-purpose-business-critical
+            html: <p>Kies de servicelaag en cloudarchitectuur die het beste voldoen aan uw behoeften of optimaal aansluiten bij de infrastructuur die u in uw on-premises omgeving gebruikt.</p>
+            image:
+              src: media/index/gear.svg
+            title: Servicelagen
           - href: /azure/sql-database/sql-database-scalability-index
-            html: '<p>Eenvoudig omhoog schalen, omlaag schalen of uw databases sharden, afhankelijk van de behoeften om de prestaties van uw toepassing te verbeteren.</p>'
+            html: '<p>Afhankelijk van de mate waarin u de prestaties van uw toepassing wilt verbeteren, kunt u uw databases eenvoudig omhoog schalen, omlaag schalen of sharden.</p>'
             image:
               src: media/index/i_scale.svg
             title: Schaalbaarheid
+          - href: /azure/sql-database/sql-database-paas
+            html: '<p>Ingebouwde hoge beschikbaarheid, automatische back-ups en geo-replicatie zorgen ervoor dat onderhoudsbewerkingen of fouten in de infrastructuur of hardware uw bedrijf niet platleggen.</p>'
+            image:
+              src: media/index/i_intelligence.svg
+            title: Platform als een Service
+          - href: /azure/sql-database/sql-database-security-index
+            html: '<p>Beveilig uw database met Azure AD-verificatie, virtuele netwerken, firewalls en Always Encrypted-verbindingen. Identificeer bedreigingen en beveiligingsproblemen dankzij ingebouwde beveiliging.</p>'
+            image:
+              src: media/index/i_security.svg
+            title: Geavanceerde beveiliging
+  - title: Implementatiemodellen
+    items:
+      - type: paragraph
+        text: 'Kies het implementatiemodel dat aansluit bij uw behoeften: een individuele database is de beste keuze voor nieuwe, moderne cloudtoepassingen, in een elastische pool host u gemakkelijk een groot aantal databases, en een beheerd exemplaar biedt een hoge mate van compatibiliteit met SQL Server en maakt eenvoudige migratie naar de cloud mogelijk.'
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
           - href: /azure/sql-database/sql-database-single-index
             html: <p>Gebruik een individuele database die wordt beheerd door een SQL Database-server voor uw SaaS-toepassingen en microservices waarvoor een individuele database met voorspelbare prestaties nodig is.</p>
             image:
@@ -63,21 +90,6 @@ sections:
             image:
               src: media/index/i_mi.svg
             title: Beheerd exemplaar
-          - href: /azure/sql-database/sql-database-paas
-            html: '<p>Ingebouwde hoge beschikbaarheid, automatische back-ups en geo-replicatie zorgen ervoor dat onderhoudsbewerkingen of fouten in de infrastructuur of hardware uw bedrijf niet platleggen.</p>'
-            image:
-              src: media/index/gear.svg
-            title: Platform als een Service
-          - href: /azure/sql-database/sql-database-security-index
-            html: '<p>Beveilig uw database met Azure AD-verificatie, virtuele netwerken, firewalls en Always Encrypted-verbindingen. Identificeer bedreigingen en beveiligingsproblemen dankzij ingebouwde beveiliging.</p>'
-            image:
-              src: media/index/i_security.svg
-            title: Geavanceerde beveiliging
-          - href: /azure/sql-database/sql-database-monitoring-tuning-index
-            html: <p>Met ingebouwde bewaking en intelligente afstemming kunt u de kosten voor het uitvoeren en beheren van databases drastisch verlagen en de prestaties van uw toepassing optimaliseren.</p>
-            image:
-              src: media/index/i_intelligence.svg
-            title: Bewaking en afstemming
   - title: QuickStarts van vijf minuten
     items:
       - type: paragraph
@@ -116,18 +128,21 @@ sections:
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
-  - title: Zelfstudies met stapsgewijze instructies
+  - title: Zelfstudies met stapsgewijze instructies en trainingsmateriaal
     items:
       - type: paragraph
         text: 'Meer informatie over het maken, beheren en migreren van databases met SQL Database'
       - type: list
         style: ordered
         items:
+          - html: Ga na of <a href="/azure/sql-database/sql-database-paas-vs-sql-server-iaas">SQL Server op VM (IaaS) of Azure SQL Database (PaaS) de juiste keuze is voor uw workload</a>.
+          - html: Ontdek <a href="/azure/sql-database/sql-database-features">welke functies er in Azure SQL Database worden ondersteund en wat de verschillen in gedrag zijn</a>.
           - html: Ga met behulp van onze quickstarts aan de slag met een <a href="/azure/sql-database/sql-database-single-database-quickstart-guide">individuele database</a> en een <a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">beheerd exemplaar</a>.
           - html: Het schema voor een nieuwe individuele database maken en ontwerpen met behulp van <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> of <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>
-          - html: 'Een bestaande database migreren naar Azure met een <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">systeemeigen SQL Server-back-upbestand</a>, de <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a> of <a href="/azure/sql-database/sql-database-import">door een BACPAC-bestand te importeren</a>'
+          - html: 'Migreer een bestaande database naar Azure met een <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">systeemeigen SQL Server-back-upbestand</a>, de <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a> of <a href="/azure/sql-database/sql-database-import">door een BACPAC-bestand te importeren</a>.'
           - html: <a href="/azure/sql-database/sql-database-security-tutorial">Uw SQL-database beveiligen</a>
-          - html: Uw gegevens wereldwijd distribueren met behulp van een <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geografisch gedistribueerde database</a>
+          - html: Distribueer uw gegevens wereldwijd met behulp van een <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geografisch gedistribueerde database</a>.
+          - html: Maak kennis met <a href="/azure/sql-database/sql-database-release-notes">nieuwe functies in Azure SQL Database</a>.
   - title: Uw vaardigheden ontwikkelen met Microsoft Learn
     items:
       - type: list

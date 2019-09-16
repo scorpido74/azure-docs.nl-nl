@@ -1,9 +1,9 @@
-- name: Documentatie over Azure Machine Learning Service
+- name: Documentatie voor Machine Learning
   href: ../index.yml
 - name: Overzicht
   expanded: true
   items:
-    - name: Wat is de Azure Machine Learning-service?
+    - name: Wat is Azure Machine Learning?
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
     - name: Architectuur en voorwaarden
@@ -31,6 +31,11 @@
             - name: Een ML-model automatisch trainen
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
+        - name: Batchgewijs scoren met pijplijnen (geavanceerd)
+          items:
+            - name: Een classificatiemodel batchgewijs scoren
+              displayName: pipelines
+              href: tutorial-pipeline-batch-scoring-classification.md
     - name: Visuele interface
       items:
         - name: 1. Regressiemodel trainen
@@ -122,7 +127,7 @@
         - name: Resource Manager-sjabloon gebruiken
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: "De ontwikkelomgeving instellen\_"
+    - name: De ontwikkelomgeving instellen
       items:
         - name: Ontwikkelaaromgevingen configureren
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'

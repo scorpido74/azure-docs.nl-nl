@@ -111,7 +111,7 @@
         - name: Antwoord ophalen met metagegevens
           href: How-To/metadata-generateanswer-usage.md
           displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
-        - name: Een bot maken met een ingeschakelde knowledge base
+        - name: Een bot maken met QnA Maker en LUIS
           href: Tutorials/integrate-qnamaker-luis.md
         - name: Een knowledge base maken in een andere taal
           href: How-To/language-knowledge-base.md

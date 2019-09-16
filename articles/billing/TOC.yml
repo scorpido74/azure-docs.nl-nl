@@ -121,6 +121,10 @@
           href: billing-understand-free-service-meter-mapping.md
     - name: Profiel bewerken
       href: billing-how-to-change-azure-account-profile.md
+    - name: Open banking en krachtige klantverificatie
+      href: billing-open-banking-strong-customer-authentication.md
+    - name: Verschuldigd bedrag betalen
+      href: billing-azure-subscription-past-due-balance.md
     - name: Toegang tot facturering verlenen
       href: billing-manage-access.md
     - name: Microsoft-klantovereenkomstrollen in Azure
@@ -131,6 +135,8 @@
       href: billing-view-all-accounts.md
     - name: Kosten ordenen met factuursecties
       href: billing-mca-section-invoice.md
+    - name: EA-taken in Microsoft-klantovereenkomst
+      href: billing-mca-enterprise-operations.md
     - name: EA-beheer
       items:
         - name: Aan de slag in de Azure EA-portal
@@ -151,8 +157,6 @@
           href: billing-ea-portal-troubleshoot.md
         - name: EA-taken in Microsoft-klantovereenkomst
           href: billing-mca-enterprise-operations.md
-    - name: Verschuldigd bedrag betalen
-      href: billing-azure-subscription-past-due-balance.md
     - name: Factureringsaccount instellen voor Microsoft-klantovereenkomst
       href: billing-mca-setup-account.md
     - name: Registreren met Office 365-account

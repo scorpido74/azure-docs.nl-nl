@@ -253,6 +253,10 @@
           href: virtual-network-public-ip-address.md
         - name: Voorvoegsel voor het openbare IP-adres
           href: manage-public-ip-address-prefix.md
+    - name: Verplaatsen tussen regio's
+      items:
+        - name: Virtuele netwerken - portal
+          href: virtual-network-azure-to-azure-migrate-vnet-portal.md
     - name: Problemen oplossen
       items:
         - name: Peering-problemen van virtueel netwerk oplossen

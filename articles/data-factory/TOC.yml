@@ -614,6 +614,12 @@
       items:
         - name: Tekstbestanden met een vaste breedte verwerken
           href: how-to-fixed-width.md
+    - name: SSIS-migratie van on-premises
+      items:
+        - name: Overzicht SSIS-gegevensmigratie
+          href: scenario-ssis-migration-overview.md
+        - name: Migratie van SSISDB naar een beheerd Azure SQL Database-exemplaar
+          href: scenario-ssis-migration-ssisdb-mi.md
 - name: Naslaginformatie
   items:
     - name: .NET

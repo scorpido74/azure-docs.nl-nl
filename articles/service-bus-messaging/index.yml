@@ -1,163 +1,115 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure Service Bus-berichten
+summary: Meer informatie over het instellen van berichten die toepassingen en services in on-premises en cloudomgevingen verbinden.
 metadata:
-  document_id: ''
-  title: 'Documentatie voor Azure Service Bus-berichten - zelfstudies, snelstarts, API-verwijzing'
-  meta.description: Learn how to set up messaging that connects applications and services across on-premises and cloud environments.
+  title: Documentatie voor Azure Service Bus Messaging
+  description: Meer informatie over het instellen van berichten die toepassingen en services in on-premises en cloudomgevingen verbinden.
   services: service-bus-messaging
-  author: spelluru
-  manager: femila
   ms.service: service-bus-messaging
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 05/16/2018
+  ms.collection: collection
+  author: spelluru
   ms.author: spelluru
-abstract:
-  description: 'Azure Service Bus is een berichtenservice in de cloud met meerdere tenants die u kunt gebruiken om informatie tussen toepassingen en diensten te verzenden. Met asynchrone bewerkingen krijgt u flexibele Brokered Messaging, samen met gestructureerde FIFO-messaging (first in, first out) en mogelijkheden voor publiceren/abonneren.<p>Leer hoe u de Azure Service Bus-berichtenservice gebruikt om berichten te verzenden naar en te ontvangen van wachtrijen, en om berichten te publiceren en te ontvangen op basis van onderwerpen en abonnementen.</p>'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://docs.microsoft.com/azure/service-bus-messaging/media/index/azure-messaging-and-event-based-architecture.png'
-      width: 250
-    title: 'Azure Messaging en op gebeurtenis gebaseerde architectuur (1:24:32)'
-    href: 'https://azure.microsoft.com/resources/videos/build-2018-azure-messaging-and-event-based-architecture-in-the-real-world-lessons-learned-rebuilding-microsoft-s-supply-chain-on-azure-serverless/'
-    width: 250
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Leer hoe u berichten verzendt naar en ontvangt van Service Bus-<b>wachtrijen</b>:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_net.svg
-            text: .NET
-            href: /azure/service-bus-messaging/service-bus-dotnet-get-started-with-queues
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_java.svg
-            text: Java
-            href: /azure/service-bus-messaging/service-bus-java-how-to-use-queues
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_nodejs.svg
-            text: Node.js
-            href: /azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_python.svg
-            text: Python
-            href: /azure/service-bus-messaging/service-bus-python-how-to-use-queues
-          - image:
-              src: /azure/service-bus-messaging/media/index/ruby.svg
-            text: Ruby
-            href: /azure/service-bus-messaging/service-bus-ruby-how-to-use-queues
-          - image:
-              src: /azure/service-bus-messaging/media/index/portal.svg
-            text: Azure Portal
-            href: /azure/service-bus-messaging/service-bus-quickstart-portal
-          - image:
-              src: /azure/service-bus-messaging/media/index/cli.svg
-            text: Azure-CLI
-            href: /azure/service-bus-messaging/service-bus-quickstart-cli
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/service-bus-messaging/service-bus-quickstart-powershell
-      - type: paragraph
-        text: 'Leer hoe u berichten publiceert en ontvangt op basis van Service Bus-<b>onderwerpen en -abonnementen</b>:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_net.svg
-            text: .NET
-            href: /azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_java.svg
-            text: Java
-            href: /azure/service-bus-messaging/service-bus-java-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_nodejs.svg
-            text: Node.js
-            href: /azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_php.svg
-            text: PHP
-            href: /azure/service-bus-messaging/service-bus-php-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_python.svg
-            text: Python
-            href: /azure/service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/ruby.svg
-            text: Ruby
-            href: /azure/service-bus-messaging/service-bus-ruby-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/portal.svg
-            text: Azure Portal
-            href: /azure/service-bus-messaging/service-bus-quickstart-portal
-          - image:
-              src: /azure/service-bus-messaging/media/index/cli.svg
-            text: Azure-CLI
-            href: /azure/service-bus-messaging/service-bus-quickstart-cli
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/service-bus-messaging/service-bus-quickstart-powershell
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Informatie over hoe u met Azure Service Bus berichten maakt, beheert, stuurt en ontvangt'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/service-bus-messaging/service-bus-tutorial-topics-subscriptions-cli">Onderwerpen en abonnementen gebruiken om een inventarisassortiment bij te werken met Azure CLI</a>
-          - html: <a href="/azure/service-bus-messaging/service-bus-tutorial-topics-subscriptions-portal">Onderwerpen en abonnementen gebruiken om een inventarisassortiment bij te werken met Azure Portal</a>
-          - html: <a href="/azure/service-bus-messaging/service-bus-tutorial-topics-subscriptions-powershell">Onderwerpen en abonnementen gebruiken om een inventarisassortiment bij te werken met Azure PowerShell</a>
-  - title: Uw vaardigheden ontwikkelen met Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Communicatiewerkstromen implementeren op basis van berichten met Azure Service Bus
-            href: /learn/modules/implement-message-workflows-with-service-bus/
-            image:
-              src: /learn/achievements/implement-message-workflows-with-service-bus.svg
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-service-bus">Meer interactief leren...</a>
-  - title: Gratis Pluralsight-videotraining
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Ontwikkelen met .NET op Azure
-            href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: Zoek scripts om algemene taken te beheren.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://github.com/Azure/azure-service-bus/tree/master/samples/Management">Azure PowerShell</a>'
-          - html: '<a href="https://github.com/Azure/azure-service-bus/tree/master/samples/Management">Azure-CLI</a>'
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: <p><a href="/powershell/module/az.servicebus/">Azure PowerShell</a></p><p><a href="/cli/azure/servicebus">Azure-CLI</a></p>
-          - title: Talen
-            html: <p><a href="/dotnet/api/microsoft.servicebus.messaging">.NET Framework</a></p><p><a href="/dotnet/api/microsoft.azure.servicebus">.NET Standard</a></p><p><a href="/java/api/overview/azure/servicebus">Java</a></p><p><a href="/javascript/api/overview/azure/service-bus">Node.js</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/servicebus/">Naslaginformatie over REST-API</a></p>
+  ms.date: 09/12/2019
+  ms.openlocfilehash: e1104c8caf1080aab3b6c5300dcbe4cd04d6b61a
+  ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/12/2019
+  ms.locfileid: "70962496"
+landingContent:
+- title: Over Service Bus Messaging
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Service Bus Messaging?
+      url: service-bus-messaging-overview.md
+  - linkListType: concept
+    links:
+    - text: Azure-berichtenservices vergelijken
+      url: ../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json
+    - text: Azure- en Service Bus-wachtrijen vergelijken
+      url: service-bus-azure-and-service-bus-queues-compared-contrasted.md
+    - text: Wachtrijen, onderwerpen en abonnementen
+      url: service-bus-queues-topics-subscriptions.md
+- title: Een Service Bus-wachtrij maken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Portal
+      url: service-bus-quickstart-portal.md
+    - text: Azure-CLI
+      url: service-bus-quickstart-cli.md
+    - text: Azure PowerShell
+      url: service-bus-quickstart-powershell.md
+    - text: Azure Resource Manager-sjabloon
+      url: service-bus-resource-manager-namespace-queue.md
+- title: Service Bus-onderwerpen en -abonnementen maken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Portal
+      url: service-bus-quickstart-topics-subscriptions-portal.md
+    - text: Azure Resource Manager-sjabloon
+      url: service-bus-resource-manager-namespace-topic.md
+- title: Berichten verzenden en ontvangen - wachtrijen
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET
+      url: service-bus-dotnet-get-started-with-queues.md
+    - text: Java
+      url: service-bus-java-how-to-use-queues.md
+    - text: Node.js
+      url: service-bus-nodejs-how-to-use-queues-new-package.md
+    - text: Python
+      url: service-bus-python-how-to-use-queues.md
+    - text: PHP
+      url: service-bus-php-how-to-use-queues.md
+    - text: Ruby
+      url: service-bus-ruby-how-to-use-queues.md
+- title: Publiceren en abonneren op berichten
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET
+      url: service-bus-dotnet-how-to-use-topics-subscriptions.md
+    - text: Java
+      url: service-bus-java-how-to-use-topics-subscriptions.md
+    - text: Node.js
+      url: service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md
+    - text: Python
+      url: service-bus-python-how-to-use-topics-subscriptions.md
+    - text: PHP
+      url: service-bus-php-how-to-use-topics-subscriptions.md
+    - text: Ruby
+      url: service-bus-ruby-how-to-use-topics-subscriptions.md
+- title: Controleren en beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: PowerShell gebruiken om entiteiten in te richten
+      url: service-bus-manage-with-ps.md
+    - text: Service Bus bewaken met Azure Monitor
+      url: service-bus-metrics-azure-monitor.md
+    - text: Diagnostische logboeken instellen
+      url: service-bus-diagnostic-logs.md
+    - text: Bericht-entiteiten onderbreken en opnieuw activeren
+      url: entity-suspend.md
+    - text: Azure Resource Manager-sjablonen gebruiken
+      url: service-bus-resource-manager-overview.md
+    - text: Problemen met uitzonderingen oplossen
+      url: service-bus-messaging-exceptions.md
+- title: Beveiligen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verificatie en autorisatie
+      url: service-bus-authentication-and-authorization.md
+    - text: Verifiëren met Shared Access Signature
+      url: service-bus-sas.md
+    - text: Beheerde identiteiten verifiëren met Azure Active Directory
+      url: service-bus-managed-service-identity.md
+    - text: Een toepassing verifiëren met Azure Active Directory
+      url: authenticate-application.md

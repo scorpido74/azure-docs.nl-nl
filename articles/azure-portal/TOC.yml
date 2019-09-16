@@ -4,6 +4,8 @@
   items:
     - name: Over de Azure-portal
       href: azure-portal-overview.md
+    - name: Aan de slag met Azure Quickstart Center
+      href: azure-portal-quickstart-center.md
     - name: Ondersteunde browsers en apparaten
       href: azure-portal-supported-browsers-devices.md
 - name: Concepten
@@ -25,7 +27,7 @@
     - name: Gebruikersinstellingen exporteren of verwijderen
       href: azure-portal-export-delete-settings.md
     - name: Videoserie met instructies voor de Azure-portal
-      href: 'https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR'
+      href: azure-portal-video-series.md
 - name: Naslaginformatie
   items:
     - name: Sneltoetsen

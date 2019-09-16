@@ -1,10 +1,10 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor de Anomaly Detector-API
+summary: Ontdek hoe u de Anomaly Detector-API kunt gebruiken om gegevens in de loop van de tijd te bewaken en om afwijkingen te detecteren met machine learning. Krijg inzicht in uw gegevens, ongeacht het volume, de sector of het scenario.
 metadata:
-  title: 'Anomaly Detector-API - zelfstudies, quickstarts, API-referentiemateriaal'
+  title: Anomaly Detector-API - zelfstudies, quickstarts, API-referentiemateriaal
   titleSuffix: Azure Cognitive Services
-  description: 'Gebruik de Anomaly Detector-API om gegevens een bepaalde periode te bewaken en om afwijkingen te detecteren met machine learning. Krijg inzicht in uw gegevens, ongeacht het volume, de sector of het scenario.'
+  description: Gebruik de Anomaly Detector-API om gegevens een bepaalde periode te bewaken en om afwijkingen te detecteren met machine learning. Krijg inzicht in uw gegevens, ongeacht het volume, de sector of het scenario.
   services: cognitive-services
   author: aahill
   manager: nitinme
@@ -12,62 +12,102 @@ metadata:
   ms.service: cognitive-services
   ms.subservice: anomaly-detector
   ms.topic: landing-page
-  ms.date: 03/26/2019
+  ms.date: 09/10/2019
   ms.author: aahi
-abstract:
-  description: 'Met de Anomaly Detector-API kunt u eenvoudig mogelijkheden voor anomaliedetectie insluiten in uw apps zodat uw gebruikers problemen snel kunnen identificeren om gegevensverlies en gevolgen voor klanten te minimaliseren. Een achtergrond in machine learning is niet vereist. Met één API-aanroep activeert u dit vooraf getrainde AI-model dat tijdreeksgegevens van alle soorten en volumes opneemt, het best passende anomaliedetectiemodel voor hoge nauwkeurigheid van uw gegevens selecteert en automatisch problemen ontdekt zodra die voorkomen. U kunt de service aanpassen om afwijkingen van alle soorten en maten te detecteren.  Gebruik Anomaly Detector om bedrijfsincidenten te detecteren, IoT-apparaatverkeer te bewaken, fraude te voorkomen en te reageren op veranderende markten en meer.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/anomaly-detector/overview
-            html: <p>Meer informatie over de Anomaly Detector-API</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Wat is de Anomaly Detector-API?
-          - href: /azure/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices
-            html: <p>Optimaliseer uw anomaliedetectieresultaten aan de hand van de best practices met de API</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Best practices bij het gebruik van de Anomaly Detector-API
-          - href: /azure/cognitive-services/anomaly-detector/how-to/identify-anomalies
-            html: '<p>Pas de anomaliedetectiegevoeligheid aan, gebruik verschillende detectiemodi en meer.</p>'
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: De Anomaly Detector-API gebruiken
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Detecteer afwijkingen in uw tijdreeksgegevens met:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/logo_Csharp.svg
-            href: quickstarts/detect-data-anomalies-csharp
-            text: 'C#'
-          - image:
-              src: media/logo_Java.svg
-            href: quickstarts/detect-data-anomalies-java
-            text: Java
-          - image:
-              src: media/logo_python.svg
-            href: quickstarts/detect-data-anomalies-python
-            text: Python
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST-API
-            html: '<p><a href="https://aka.ms/anomaly-detector-rest-api-ref">Anomaly Detector-API</a></p>'
-          - title: SDK's
-            html: '<p><a href="https://aka.ms/anomaly-detector-dotnet-ref">.NET</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2089915">Go</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2090370">Python</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2090788">Node.js</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure-CLI</a></p>'
+  ms.openlocfilehash: 61db0fe16557b582ad43cd2eddbe8e421a0b743a
+  ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/13/2019
+  ms.locfileid: "70967078"
+landingContent:
+- title: Over de Anomaly Detector-API
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is de Anomaly Detector-API?
+      url: overview.md
+  - linkListType: get-started
+    links:
+    - text: Anomaly Detector-demo
+      url: https://aka.ms/adDemo
+  - linkListType: video
+    links:
+    - text: Inleiding tot de Anomaly Detector-API
+      url: https://channel9.msdn.com/Shows/AI-Show/Introducing-Azure-Anomaly-Detector?WT.mc_id=ai-c9-niner
+    - text: Algoritmen die worden gebruikt door de Anomaly Detector-API
+      url: https://www.youtube.com/embed/ERTaAnwCarM
+  - linkListType: reference
+    links:
+    - text: Algoritmen die worden gebruikt voor anomaliedetectie (whitepaper)
+      url: https://arxiv.org/abs/1906.03821
+- title: Afwijkingen in uw gegevens detecteren
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# gebruiken
+      url: quickstarts/detect-data-anomalies-csharp-sdk.md
+    - text: Python gebruiken
+      url: quickstarts/detect-data-anomalies-python-sdk.md
+  - linkListType: tutorial
+    links:
+    - text: Afwijkingen visualiseren met batchgewijs detecteren en Power BI
+      url: tutorials/batch-anomaly-detection-powerbi.md
+    - text: Afwijkingen in streaming-gegevens detecteren met behulp van Azure Databricks
+      url: tutorials/batch-anomaly-detection-powerbi.md
+  - linkListType: video
+    links:
+    - text: Detectie van afwijkingen in streaming-gegevens met behulp van Azure Databricks
+      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-detection-on-streaming-data-using-Azure-Databricks
+- title: Detectieresultaten optimaliseren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: De modi en parameters voor anomaliedetectie afstemmen op uw gegevens.
+      url: how-to/identify-anomalies.md
+    - text: Best practices gebruiken om de resultaten van de anomaliedetectie te optimaliseren.
+      url: concepts/anomaly-detection-best-practices.md
+  - linkListType: video
+    links:
+    - text: Best practices voor anomaliedetectie
+      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-Detector-v10-Best-Practices
+- title: Docker-containers gebruiken
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Anomaly Detector-containers installeren en uitvoeren
+      url: anomaly-detector-container-howto.md
+    - text: Anomaly Detector-containers configureren
+      url: anomaly-detector-container-configuration.md
+    - text: Een containerinstantie implementeren in Azure
+      url: how-to/deploy-anomaly-detection-on-container-instances.md
+  - linkListType: video
+    links:
+    - text: Anomaly Detector on-premises gebruiken met ondersteuning voor containers
+      url: https://channel9.msdn.com/Shows/AI-Show/Bring-Anomaly-Detector-on-premise-with-containers-support
+- title: Lid worden van de Anomaly Detector-community
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Lid worden van de Anomaly Detector-adviesgroep van Microsoft Teams
+      url: https://aka.ms/adadvisorsjoin
+    - text: Uitgelichte door gebruikers gegenereerde inhoud
+      url: user-generated-content.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST-API
+      url: https://aka.ms/anomaly-detector-rest-api-ref
+    - text: .NET SDK
+      url: https://aka.ms/anomaly-detector-dotnet-ref
+    - text: .Python-SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2090370
+    - text: Go-SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2089915
+    - text: Node.js SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2090788
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure-CLI
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list

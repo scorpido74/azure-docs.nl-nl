@@ -58,6 +58,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=key-vault'
 - name: Concepten
   items:
+    - name: Basisbegrippen
+      href: basic-concepts.md
     - name: Beveiliging
       items:
         - name: Beveiligingsoverzicht
@@ -68,8 +70,6 @@
           href: key-vault-ovw-security-worlds.md
         - name: Uw Key Vault beveiligen
           href: key-vault-secure-your-key-vault.md
-    - name: Wat is Key Vault?
-      href: key-vault-whatis.md
     - name: Voorlopig verwijderen
       href: key-vault-ovw-soft-delete.md
     - name: Beperking
@@ -92,6 +92,8 @@
           href: create-certificate-scenarios.md
 - name: Handleidingen
   items:
+    - name: Een beheerde identiteit in App Service gebruiken
+      href: managed-identity.md
     - name: Logboekregistratie voor Azure Key Vault
       href: key-vault-logging.md
     - name: Toegang achter firewalls

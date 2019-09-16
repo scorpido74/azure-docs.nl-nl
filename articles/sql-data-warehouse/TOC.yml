@@ -129,10 +129,16 @@
               href: /sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest
         - name: Gerealiseerde weergave
           items:
+            - name: Richtlijnen voor het afstemmen van prestaties
+              href: performance-tuning-materialized-views.md
             - name: Maken
               href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
             - name: Bewerken
               href: /sql/t-sql/statements/alter-materialized-view-transact-sql
+        - name: Geordende columnstore-index
+          items:
+            - name: Richtlijnen voor het afstemmen van prestaties
+              href: performance-tuning-ordered-CCI.md
         - name: Caching van resultatenset
           href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: Tabellen

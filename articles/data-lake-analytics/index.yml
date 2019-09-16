@@ -1,0 +1,91 @@
+### YamlMime:Landing
+title: Documentatie voor Data Lake Analytics
+summary: Met Azure Data Lake Analytics kunt u op big data analysetaken uitvoeren die schaalbaar zijn naar grote gegevenssets.
+metadata:
+  title: Azure Data Lake Analytics
+  description: Met Azure Data Lake Analytics kunt u op big data analysetaken uitvoeren die schaalbaar zijn naar grote gegevenssets.
+  services: service
+  ms.service: data-lake-analytics
+  ms.subservice: subservice
+  ms.topic: landing-page
+  ms.collection: collection
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 09/13/2019
+  ms.openlocfilehash: a370cf424d7ebdf32fcdd2e0f8653e2e36b7162b
+  ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/14/2019
+  ms.locfileid: "70997244"
+landingContent:
+- title: Over Data Lake Analytics
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Data Lake Analytics?
+      url: data-lake-analytics-overview.md
+  - linkListType: quickstart
+    links:
+    - text: U-SQL-taken maken in de Azure-portal
+      url: data-lake-analytics-get-started-portal.md
+    - text: U-SQL-taken maken met Azure CLI
+      url: data-lake-analytics-get-started-cli.md
+    - text: U-SQL-taken maken in Visual Studio Code
+      url: data-lake-analytics-data-lake-tools-for-vscode.md
+- title: De U-SQL-taal leren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Aan de slag met U-SQL
+      url: data-lake-analytics-u-sql-get-started.md
+    - text: Naslaginformatie over de U-SQL-taal
+      url: https://docs.microsoft.com/u-sql/
+    - text: Aan de slag met de U-SQL-catalogus
+      url: data-lake-analytics-u-sql-catalog.md
+    - text: Door de gebruiker gedefinieerde operators
+      url: data-lake-analytics-u-sql-develop-user-defined-operators.md
+- title: U-SQL-programma’s ontwikkelen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Data Lake-hulpprogramma's voor Visual Studio gebruiken
+      url: data-lake-analytics-data-lake-tools-get-started.md
+    - text: Een U-SQL-databaseproject gebruiken in Visual Studio
+      url: data-lake-analytics-data-lake-tools-develop-usql-database.md
+    - text: Job Browser en Job View gebruiken
+      url: data-lake-analytics-data-lake-tools-view-jobs.md
+    - text: Fouten opsporen in door gebruikers gedefinieerde C#-code
+      url: data-lake-analytics-debug-u-sql-jobs.md
+    - text: Azure Data Lake-hulpprogramma's voor Visual Studio Code gebruiken
+      url: data-lake-analytics-data-lake-tools-for-vscode.md
+    - text: Aangepaste code met U-SQL gebruiken in Visual Studio Code
+      url: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
+    - text: Taken plannen met behulp van SSIS
+      url: data-lake-analytics-schedule-jobs-ssis.md
+- title: Data Lake Analytics beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Beheren met de Azure-portal
+      url: data-lake-analytics-manage-use-portal.md
+    - text: Beheren met Azure CLI
+      url: data-lake-analytics-manage-use-cli.md
+    - text: Beheren met een .NET-app
+      url: data-lake-analytics-manage-use-dotnet-sdk.md
+    - text: Een gebruiker toevoegen in de Azure-portal
+      url: data-lake-analytics-add-users.md
+    - text: Azure Data Lake Analytics beheren met behulp van beleid
+      url: data-lake-analytics-policies.md
+- title: Doorlopende integratie en doorlopende implementatie
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een CI/CD-pijplijn instellen
+      url: data-lake-analytics-cicd-overview.md
+    - text: U-SQL-assembly's beheren
+      url: data-lake-analytics-cicd-manage-assemblies.md
+    - text: U-SQL-scripts testen
+      url: data-lake-analytics-cicd-test.md
+    - text: De U-SQL-SDK gebruiken
+      url: data-lake-analytics-u-sql-sdk.md

@@ -1,63 +1,61 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie voor Azure Data Share Preview
+### YamlMime:Landing
+title: Documentatie voor Azure Data Share (preview)
+summary: Azure Data Share Preview is een veilige en beveiligde service om gegevens te delen met externe organisaties.
 metadata:
-  title: 'Documentatie voor Azure Data Share Preview - Zelfstudies, instructiegidsen'
-  description: Azure Data Share Preview is een veilige en beveiligde service om gegevens te delen met externe organisaties.
-  author: joannapea
-  ms.author: joanpo
+  title: Azure Data Share (preview)
+  description: Azure Data Share (preview) is een veilige en beveiligde service om gegevens te delen met externe organisaties.
+  services: service
   ms.service: data-share
+  ms.subservice: subservice
   ms.topic: landing-page
-  ms.date: 07/10/2019
-abstract:
-  description: '<p>Azure Data Share Preview is een veilige en beveiligde service om gegevens te delen met externe organisaties. Selecteer de gegevenssets die u wilt delen, voeg de ontvangers toe en deel de gegevens met de mogelijkheid om degene met wie u gegevens deelt te beheren en te bewaken. </p><p>Informatie over het gebruik van Azure Data Share via onze zelfstudies en instructiegidsen.</p>'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/azure-friday.png
-      width: 250
-    title: Azure Data Share in Azure Friday
-    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Share-data-simply-and-securely-using-Azure-Data-Share/player?format=ny'
-    width: 250
-sections:
-  - title: Handleidingen
-    items:
-      - type: paragraph
-        text: 'Meer informatie over hoe u de gegevens bewaakt die u deelt, gegevenssettoewijzingen configureert, ontvangers toevoegt en meer met een van de volgende instructiegidsen:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/data-share/media/index/portal.svg
-            text: Azure Data Share bewaken
-            href: /azure/data-share/how-to-monitor
-          - image:
-              src: /azure/data-share/media/index/portal.svg
-            text: Een gegevenssettoewijzing configureren
-            href: /azure/data-share/how-to-configure-mapping
-          - image:
-              src: /azure/data-share/media/index/portal.svg
-            text: Problemen met Azure Data Share oplossen
-            href: /azure/data-share/data-share-troubleshoot
-  - title: Stapsgewijze zelfstudies
-    items:
-      - type: paragraph
-        text: Meer informatie over hoe u uw gegevens deelt met Azure Data Share
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="share-your-data">Uw gegevens delen met Azure Data Share</a>
-          - html: <a href="subscribe-to-data-share">Gegevens accepteren en ontvangen met Azure Data Share</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Talen
-            html: <p><a href="/dotnet/api/overview/azure/datashare">.NET</a></p>
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.datashare/?view=azps-2.6.0">Azure Powershell</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/datashare">REST API</a></p>
+  ms.collection: collection
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 09/13/2019
+  ms.openlocfilehash: 7e44541fae4cb9987f4c2e3b68a6ec3ff61c1bcf
+  ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/14/2019
+  ms.locfileid: "70993938"
+landingContent:
+- title: Over Azure Data Share
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Data Share?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Azure Data Share-concepten
+      url: terminology.md
+    - text: Rollen en vereisten voor Azure Data Share
+      url: concepts-roles-permissions.md
+- title: Gegevens delen
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Uw gegevens delen met Azure Data Share
+      url: share-your-data.md
+    - text: Gegevens accepteren en ontvangen met Azure Data Share
+      url: subscribe-to-data-share.md
+  - linkListType: how-to-guide
+    links:
+    - text: Gegevenssettoewijzingen configureren
+      url: how-to-configure-mapping.md
+    - text: Gegevenssets toevoegen
+      url: how-to-add-datasets.md
+- title: Controleren en beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Data Share bewaken
+      url: how-to-monitor.md
+    - text: Algemene problemen
+      url: data-share-troubleshoot.md
+    - text: Gegevenssets toevoegen
+      url: how-to-add-datasets.md
+    - text: Een uitnodiging verwijderen
+      url: how-to-delete-invitation.md
+    - text: Een share-abonnement intrekken
+      url: how-to-revoke-share-subscription.md

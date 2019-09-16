@@ -144,8 +144,6 @@
               href: platform/service-providers.md
             - name: Toegang beheren
               href: platform/manage-access.md
-            - name: Integreren met Configuration Manager
-              href: platform/collect-sccm.md
         - name: Verbruik en kosten
           items:
             - name: Gebruik en geraamde kosten
@@ -643,8 +641,6 @@
               href: insights/service-map.md
             - name: Computergroepen
               href: platform/computer-groups.md
-            - name: Configuratiebeheer
-              href: platform/collect-sccm.md
         - name: Azure-resources
           items:
             - name: Diagnostische logboeken
@@ -745,6 +741,8 @@
               href: platform/om-agents.md
             - name: Operations Manager evalueren
               href: insights/scom-assessment.md
+            - name: Verbinding maken met Configuration Manager
+              href: platform/collect-sccm.md
         - name: Gegevens streamen naar Event Hubs
           href: platform/diagnostic-logs-stream-event-hubs.md
     - name: Gegevens analyseren
@@ -764,6 +762,8 @@
             - name: Overzicht van logboekquery's
               displayname: 'log query, log queries, query, queries'
               href: log-query/log-query-overview.md
+            - name: Eenvoudige logboekervaring
+              href: log-query/simple-logs.md
             - name: Zelfstudies
               items:
                 - name: Log Analytics-zelfstudie
@@ -785,9 +785,9 @@
                 - name: Verschillen in taal
                   href: log-query/data-explorer-difference.md
                 - name: Nuttige operatoren
-                  href: log-query/functions.md
-                - name: Functions
                   href: log-query/useful-operators.md
+                - name: Functions
+                  href: log-query/functions.md
                 - name: Overgang van zoeken in logboeken
                   href: log-query/log-search-transition.md
                 - name: Lessen

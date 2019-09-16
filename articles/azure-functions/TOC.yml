@@ -98,6 +98,10 @@
       href: functions-premium-plan.md
     - name: Implementaties
       href: functions-deployment-technologies.md
+    - name: Gebeurtenissen en berichten
+      items:
+        - name: Ontwerpen voor identieke invoer
+          href: functions-idempotent.md
     - name: Triggers en bindingen
       items:
         - name: Over triggers en bindings
