@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 6a942e48ffea7785fe971cc2f8fa66e8569ed672
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 362024868de269ed64a440a25e8c19c5b68bef80
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342541"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003464"
 ---
 # <a name="where-clause"></a>WHERE-component
 
-De optionele WHERE-component (`WHERE <filter_condition>`) voorwaarde(n) geeft aan dat de bron-JSON-items om de query voor het opnemen in resultaten voldoen moeten. Een JSON-item moet de opgegeven voorwaarden om te evalueren `true` worden overwogen voor het resultaat. De WHERE-component om te bepalen van de kleinste subset van de bronitems die deel van het resultaat uitmaken kunnen wordt gebruikt door de index-laag.
+De optionele WHERE-component`WHERE <filter_condition>`() geeft voor waarde (n) aan waaraan de bron-JSON-items moeten voldoen om ze in de resultaten op te vragen. Een JSON-item moet de opgegeven voor waarden `true` evalueren om in aanmerking te komen voor het resultaat. De index laag maakt gebruik van de WHERE-component om de kleinste subset van bron items te bepalen die deel kunnen uitmaken van het resultaat.
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -42,7 +42,7 @@ WHERE <filter_condition>
 
 ## <a name="examples"></a>Voorbeelden
 
-De volgende query aanvragen items die bevatten een `id` waarvan de waarde is de eigenschap `AndersenFamily`. Deze niet van toepassing op elk item dat niet beschikt over een `id` eigenschap of waarvan de waarde komt niet overeen met `AndersenFamily`.
+Met de volgende query worden items opgevraagd die `id` een eigenschap bevatten waarvan `AndersenFamily`de waarde is. Hiermee wordt een item uitgesloten dat geen `id` eigenschap heeft of waarvan de waarde niet overeenkomt. `AndersenFamily`
 
 ```sql
     SELECT f.address
@@ -62,11 +62,11 @@ De resultaten zijn:
     }]
 ```
 
-### <a name="scalar-expressions-in-the-where-clause"></a>Scalaire expressies in de WHERE-component
+### <a name="scalar-expressions-in-the-where-clause"></a>Scalaire expressies in de component WHERE
 
 Het vorige voorbeeld bevatte een eenvoudige gelijkheidsquery. De SQL-API ondersteunt ook verschillende [scalaire expressies](sql-query-scalar-expressions.md). Binaire en unaire expressies worden het meest gebruikt. Eigenschapsverwijzingen vanaf het JSON-bronobject zijn ook geldige expressies.
 
-U kunt de volgende ondersteunde binaire operators gebruiken:  
+U kunt de volgende ondersteunde binaire Opera tors gebruiken:  
 
 |**Operatortype**  | **Waarden** |
 |---------|---------|
@@ -74,9 +74,9 @@ U kunt de volgende ondersteunde binaire operators gebruiken:
 |Bitsgewijs    | \|, &, ^, <<, >>, >>> (opvulling met nullen shift-rechts) |
 |Logisch    | EN, OF, NIET      |
 |Vergelijking | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
-|String     |  \|\| (samenvoegen) |
+|Tekenreeks     |  \|\| (samenvoegen) |
 
-De volgende query's gebruiken binaire operators:
+De volgende query's gebruiken binaire Opera tors:
 
 ```sql
     SELECT *
@@ -92,7 +92,7 @@ De volgende query's gebruiken binaire operators:
     WHERE c.grade >= 5    -- matching grades == 5
 ```
 
-U kunt ook de unitaire operators +,-, ~, en niet in query's, zoals wordt weergegeven in de volgende voorbeelden:
+U kunt ook de unaire Opera Tors +,-, ~ en niet in query's gebruiken, zoals wordt weer gegeven in de volgende voor beelden:
 
 ```sql
     SELECT *
@@ -104,10 +104,10 @@ U kunt ook de unitaire operators +,-, ~, en niet in query's, zoals wordt weergeg
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-U kunt ook de eigenschap verwijzingen gebruiken in query's. Bijvoorbeeld, `SELECT * FROM Families f WHERE f.isRegistered` retourneert het JSON-item met de eigenschap `isRegistered` met de waarde gelijk is aan `true`. Een andere waarde, zoals `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>`, of `<array>`, sluit u het item van het resultaat. 
+U kunt ook eigenschaps verwijzingen gebruiken in query's. `SELECT * FROM Families f WHERE f.isRegistered` Retourneert bijvoorbeeld het JSON-item met de eigenschap `isRegistered` met de waarde gelijk aan `true`. Elke `false`andere waarde, zoals `Undefined`, `null` `<number>`,,,,, of`<array>`, sluit het item uit van het resultaat. `<string>` `<object>` 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Aan de slag](sql-query-getting-started.md)
-- [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [FROM-component](sql-query-from.md)
