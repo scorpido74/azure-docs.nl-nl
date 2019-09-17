@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 3cdf2255208069e20f5a230cc2acd82a628fdcfd
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 41ed51fc0cec9843525275613cca211d2e1bf409
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840210"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018616"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Een Apache Storm topologie maken in Java
 
@@ -487,7 +487,7 @@ De topologie verbindt de spouts en schichten samen in een grafiek, die definieer
 
 De volgende afbeelding is een basis diagram van de grafiek van onderdelen voor deze topologie.
 
-![diagram van de spouts-en bouten-indeling](./media/apache-storm-develop-java-topology/wordcount-topology.png)
+![diagram van de spouts-en bouten-indeling](./media/apache-storm-develop-java-topology/word-count-topology1.png)
 
 Als u de topologie wilt implementeren, voert u de onderstaande opdracht in om een nieuw `WordCountTopology.java`bestand te maken en te openen:
 

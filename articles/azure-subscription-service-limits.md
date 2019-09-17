@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 0f036462eb9b37b4ec783bcf8957d307cc55f7ac
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "68698288"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018523"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-abonnement en servicelimieten, quota's en beperkingen
 Dit document bevat enkele van de meest voorkomende Microsoft Azure limieten, ook wel quota's genoemd. Dit document geldt momenteel niet voor alle Azure-Services. De lijst wordt na verloop van tijd uitgebreid en bijgewerkt om meer services te kunnen behandelen.
@@ -89,8 +89,9 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
   * [Azure Firewall](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
   * [Load balancer](#load-balancer)
-  * [Openbaar IP-adres](#publicip-address)
   * [Network Watcher](#network-watcher-limits)
+  * [Openbaar IP-adres](#publicip-address)
+  * [Persoonlijke koppeling](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
   * [Virtueel netwerk](#networking-limits)
 * [Notification Hubs](#notification-hubs-limits)
@@ -168,6 +169,9 @@ De volgende tabel is van toepassing op v1-, v2-, Standard-en WAF-Sku's, tenzij a
 
 #### <a name="network-watcher-limits"></a>Network Watcher limieten
 [!INCLUDE [network-watcher-limits](../includes/network-watcher-limits.md)]
+
+#### <a name="private-link-limits"></a>Limieten voor persoonlijke koppelingen
+[!INCLUDE [private-link-limits](../includes/private-link-limits.md)]
 
 #### <a name="traffic-manager-limits"></a>Traffic Manager limieten
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]

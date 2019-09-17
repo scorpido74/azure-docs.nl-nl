@@ -4,15 +4,16 @@ description: Vind antwoorden op veelgestelde vragen over het werken met Apache S
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 143a941b8266734a8415c71daafc07681bc13b80
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 8931f9b09836d30f95e25cee245932475c3cf64c
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049544"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018398"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Apache Spark oplossen met behulp van Azure HDInsight
 
@@ -26,49 +27,49 @@ Spark-configuratie waarden kunnen worden afgestemd om een `OutofMemoryError` Apa
 
 1. Ga naar **Spark2** > -**configuraties**.
 
-    ![Selecteer het tabblad configuraties](./media/apache-troubleshoot-spark/update-config-2.png)
+    ![Selecteer het tabblad configuraties](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
 1. Selecteer in de lijst met configuraties de **Opties Custom-spark2-defaults**.
 
 1. Zoek de instelling van de waarde die u nodig hebt om aan te passen, zoals **spark.executor.memory**. In dit geval is de waarde van **9728m** te hoog.
 
-    ![Selecteer de aangepaste-spark-standaardinstellingen](./media/apache-troubleshoot-spark/update-config-4.png)
+    ![Selecteer de aangepaste-spark-standaardinstellingen](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
 1. Stel de waarde in op de aanbevolen instelling. De waarde **2048m** voor deze instelling wordt aanbevolen.
 
 1. Sla de waarde en sla vervolgens de configuratie. Selecteer **Opslaan**.
 
-    ![Waarde wijzigen naar 2048 min.](./media/apache-troubleshoot-spark/update-config-6a.png)
+    ![Waarde wijzigen naar 2048 min.](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
     Voeg een opmerking over wijzigingen in de configuratie en selecteer vervolgens **opslaan**.
 
-    ![Voer een opmerking over de wijzigingen die u hebt gemaakt](./media/apache-troubleshoot-spark/update-config-6c.png)
+    ![Voer een opmerking over de wijzigingen die u hebt gemaakt](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
 
     U wordt gewaarschuwd als de configuraties vereisen aandacht. Houd er rekening mee de items en selecteer vervolgens **toch doorgaan**.
 
-    ![Selecteer Doorgaan toch](./media/apache-troubleshoot-spark/update-config-6b.png)
+    ![Selecteer Doorgaan toch](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
 
 1. Wanneer een configuratie is opgeslagen, wordt u gevraagd de service opnieuw te starten. Selecteer **opnieuw**.
 
-    ![Opnieuw opstarten selecteren](./media/apache-troubleshoot-spark/update-config-7a.png)
+    ![Opnieuw opstarten selecteren](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
 
     Controleer of het opnieuw opstarten.
 
-    ![Bevestigen selecteren Alles opnieuw starten](./media/apache-troubleshoot-spark/update-config-7b.png)
+    ![Bevestigen selecteren Alles opnieuw starten](./media/apache-troubleshoot-spark/apache-spark-ambari-config7b.png)
 
     De processen die worden uitgevoerd, kunt u bekijken.
 
-    ![Actieve processen controleren](./media/apache-troubleshoot-spark/update-config-7c.png)
+    ![Actieve processen controleren](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
 
 1. U kunt configuraties toevoegen. Selecteer in de lijst met configuraties **aangepaste-spark2-standaardinstellingen**, en selecteer vervolgens **eigenschap toevoegen**.
 
-    ![Selecteer toevoegen de eigenschap](./media/apache-troubleshoot-spark/update-config-8.png)
+    ![Selecteer toevoegen de eigenschap](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
 
 1. Een nieuwe eigenschap definiëren. U kunt één eigenschap definiëren met behulp van een dialoogvenster voor specifieke instellingen, zoals het gegevenstype. Of u kunt meerdere eigenschappen definiëren met behulp van één definitie per regel.
 
     In dit voorbeeld wordt de **spark.driver.memory** eigenschap is gedefinieerd met een waarde van **4g**.
 
-    ![Nieuwe eigenschap definiëren](./media/apache-troubleshoot-spark/update-config-9.png)
+    ![Nieuwe eigenschap definiëren](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
 
 1. De configuratie op te slaan en start de service opnieuw zoals beschreven in stap 6 en 7.
 
@@ -112,4 +113,4 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de ondersteunings [abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

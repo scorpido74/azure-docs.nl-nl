@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/05/2019
-ms.openlocfilehash: aa280ea71735ce7c4000951e5c11de2913aaebe8
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 15a11ba74262ec5a354f0cb3fe22c09167c8d5a6
+ms.sourcegitcommit: d15b23e23328ce7502dd3d2846b49fd2d6d8209c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001619"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71005399"
 ---
 # <a name="use-azure-machine-learning-pipelines-for-batch-scoring"></a>Azure Machine Learning pijplijnen gebruiken voor batch scores
 
-In deze zelf studie gebruikt u Azure Machine Learning pijp lijnen voor het uitvoeren van een batch Score of het aflaten van een taak. In deze voorbeeld taak wordt gebruikgemaakt van het vooraf getrainde aangemaakte [-v3](https://arxiv.org/abs/1512.00567) convolutional Neural Network tensor flow model voor het classificeren van niet-gelabelde installatie kopieën. Nadat u een pijp lijn hebt gemaakt en gepubliceerd, configureert u een REST-eind punt zodat u de pijp lijn kunt activeren vanuit elke HTTP-bibliotheek op elk platform.
+In deze zelf studie gebruikt u Azure Machine Learning pijp lijnen om een batch Score taak uit te voeren. In dit voor beeld wordt [het convolutional Neural](https://arxiv.org/abs/1512.00567) Network tensor flow model van vooraf getraind gemaakt. Nadat u een pijp lijn hebt gemaakt en gepubliceerd, configureert u een REST-eind punt zodat u de pijp lijn kunt activeren vanuit elke HTTP-bibliotheek op elk platform.
 
 Machine learning-pijp lijnen Optimaliseer uw werk stroom met snelheid, portabiliteit en hergebruik zodat u zich kunt concentreren op uw expertise, machine learning in plaats van op de infra structuur en automatisering. Meer [informatie over ml-pijp lijnen](concept-ml-pipelines.md).
 

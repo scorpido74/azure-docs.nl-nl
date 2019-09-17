@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 08/27/2019
-ms.openlocfilehash: 0dea447ed44a61b20faf9a0a1690b2bbdd674b30
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.date: 09/16/2019
+ms.openlocfilehash: 7f7faf11ed18fa2a85587c193376a3e4ce905fd2
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70930611"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010193"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Overzicht Azure SQL Database limieten voor beheerde exemplaar bronnen
 
-Dit artikel bevat een overzicht van de resource limieten voor Azure SQL Database beheerde instantie en bevat informatie over het aanvragen van een verhoging van deze limieten.
+Dit artikel bevat een overzicht van de technische kenmerken en resource limieten voor Azure SQL Database beheerde instantie en bevat informatie over het aanvragen van een verhoging van deze limieten.
 
 > [!NOTE]
-> Zie voor verschillen in ondersteunde functies en T-SQL-instructies [functie verschillen](sql-database-features.md) en [ondersteuning voor t-SQL-instructie](sql-database-managed-instance-transact-sql-information.md).
+> Zie voor verschillen in ondersteunde functies en T-SQL-instructies [functie verschillen](sql-database-features.md) en [ondersteuning voor t-SQL-instructie](sql-database-managed-instance-transact-sql-information.md). Zie de [vergelijking](sql-database-service-tiers-general-purpose-business-critical.md#service-tier-comparison)van de servicelaag voor algemene verschillen tussen service lagen in één data base en een beheerd exemplaar.
 
 ## <a name="instance-level-resource-limits"></a>Resource limieten op exemplaar niveau
 
@@ -43,11 +43,11 @@ Azure SQL Database Managed instance kan worden geïmplementeerd op twee hardware
 
 > [!IMPORTANT]
 > - Gen4-hardware wordt gefaseerd uitgevoerd. Het is raadzaam om nieuwe beheerde exemplaren te implementeren op GEN5-hardware.
-> - Gen4-hardware is op dit moment beschikbaar in de volgende regio's: Europa-noord, Europa-west, VS-Oost, Zuid-Centraal VS, Noord-Centraal VS, VS-West 2, VS-midden, Canada-centraal, India-zuid, Zuidoost-Azië en Korea-centraal.
+> - Gen4-hardware is op dit moment nog steeds alleen beschikbaar in de volgende regio's: Europa-noord, Europa-west, VS-Oost, Zuid-Centraal VS, Noord-Centraal VS, VS-West 2, VS-midden, Canada-centraal, India-zuid, Zuidoost-Azië en Korea-centraal.
 
 ### <a name="service-tier-characteristics"></a>Kenmerken van servicelaag
 
-Het beheerde exemplaar heeft twee service lagen: Algemeen en Bedrijfskritiek. Deze lagen bieden verschillende mogelijkheden, zoals wordt beschreven in de volgende tabel:
+Het beheerde exemplaar heeft twee service lagen: [Algemeen](sql-database-service-tier-general-purpose.md) en [bedrijfskritiek](sql-database-service-tier-business-critical.md). Deze lagen bieden [verschillende mogelijkheden](sql-database-service-tiers-general-purpose-business-critical.md), zoals wordt beschreven in de volgende tabel:
 
 | **Functie** | **Algemeen** | **Bedrijfskritiek** |
 | --- | --- | --- |
@@ -73,6 +73,9 @@ Het beheerde exemplaar heeft twee service lagen: Algemeen en Bedrijfskritiek. De
 > - De door Voer en IOPS zijn ook afhankelijk van het pagina formaat dat niet expliciet wordt beperkt door een beheerd exemplaar.
 > U kunt een andere Lees bare replica maken in een andere Azure-regio met behulp van groepen voor automatische failover.
 
+> [!NOTE]
+> Meer informatie over de [resource limieten vindt u in dit artikel in beheerde exemplaar groepen](sql-database-instance-pools.md#instance-pools-resource-limitations).
+
 ## <a name="supported-regions"></a>Ondersteunde regio’s
 
 Beheerde exemplaren kunnen alleen worden gemaakt in [ondersteunde regio's](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Als u een beheerd exemplaar wilt maken in een regio die momenteel niet wordt ondersteund, kunt u [via de Azure Portal een ondersteunings aanvraag verzenden](#obtaining-a-larger-quota-for-sql-managed-instance).
@@ -93,7 +96,7 @@ Managed instance biedt momenteel alleen ondersteuning voor de implementatie van 
 Ondersteunde abonnements typen kunnen een beperkt aantal resources per regio bevatten. Het beheerde exemplaar heeft twee standaard limieten per Azure-regio, afhankelijk van een type abonnements type:
 
 - **Subnet limiet**: Het maximum aantal subnetten waarop beheerde exemplaren in één regio worden geïmplementeerd.
-- **limiet voor vCore**: Het maximum aantal vCores dat kan worden geïmplementeerd in alle instanties in één regio.
+- **limiet voor vCore**: Het maximum aantal vCores dat kan worden geïmplementeerd in alle instanties in één regio. Het totale aantal exemplaren is niet beperkt zolang het binnen de vCore-limiet valt.
 
 > [!Note]
 > Deze limieten zijn standaard instellingen en niet van technische beperkingen. De limieten kunnen op aanvraag worden verhoogd door een speciale [ondersteunings aanvraag te maken in de Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance) als u meer beheerde instanties in de huidige regio nodig hebt. Als alternatief kunt u nieuwe beheerde instanties maken in een andere Azure-regio zonder ondersteunings aanvragen te verzenden.

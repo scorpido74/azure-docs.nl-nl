@@ -8,27 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: b5b7d43fc5a53bcf46874a48914bcda565a41c3e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 4c6499cd0e105e28954b6d4df667c71a51b9ccff
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697070"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71017761"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Wat is er nieuw in de Text Analytics-API?
 
 De Text Analytics-API wordt doorlopend bijgewerkt. In dit artikel vindt u informatie over nieuwe releases en functies, zodat u op de hoogte blijft van recente ontwikkelingen.
 
-## <a name="sentiment-analysis-v3-public-preview---july-2019"></a>Open bare preview van Sentimentanalyse v3-juli 2019
+## <a name="sentiment-analysis-v3-public-preview---september-2019"></a>Open bare preview van Sentimentanalyse v3-september 2019
 
 De volgende versie van Sentimentanalyse is nu beschikbaar voor open bare preview en biedt aanzienlijke verbeteringen in de nauw keurigheid en Details van de tekst categorisatie en Score van de API. Daarnaast vindt u het volgende:
 
 * Automatische labeling voor verschillende gevoel in tekst.
 * Sentiment analyse en uitvoer op het niveau van een document en zin. 
 
-Het Engels ondersteunt en is beschikbaar in drie regio's: Centraal-Canada, Azië-oost en Centraal vs. Zoek naar extra talen en regio's die in volgende releases moeten worden toegevoegd.
+Het biedt ondersteuning voor Engels, Japans en vereenvoudigd Chinees en is beschikbaar in de volgende regio's `Australia East`: `Central Canada`, `Central US` `North Europe`, `East Asia`, `East US`, `East US 2`,, `Southeast Asia`, `South Central US` , , `UK South`, `West Europe` en.`West US 2`
 
 > [!div class="nextstepaction"]
 > [Meer informatie over Sentimentanalyse v3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)

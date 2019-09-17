@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 34658fb1db84ff09a4c3d22ea95f5bfc7384721d
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 91467f99e7932ce7ffcd5b3300f8544fb848ccfa
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883639"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71019077"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Aangepaste bewerkingen bijhouden met Application Insights .NET SDK
 
@@ -486,7 +486,7 @@ Elke Application Insights bewerking (aanvraag of afhankelijkheid) `Activity` omv
 ## <a name="next-steps"></a>Volgende stappen
 
 - Leer de basis beginselen van de correlatie tussen de [telemetrie](correlation.md) in Application Insights.
-- Bekijk hoe gecorreleerde gegevens over de werking van [trans acties](/azure-monitor/app/transaction-diagnostics) en [toepassings overzicht](/azure-monitor/app/app-map).
+- Bekijk hoe gecorreleerde gegevens over de werking van [trans acties](../../azure-monitor/app/transaction-diagnostics.md) en [toepassings overzicht](../../azure-monitor/app/app-map.md).
 - Zie het [gegevens model](../../azure-monitor/app/data-model.md) voor Application Insights typen en het gegevens model.
 - Aangepaste [gebeurtenissen en metrische gegevens](../../azure-monitor/app/api-custom-events-metrics.md) rapporteren aan Application Insights.
 - Bekijk de standaard [configuratie](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) voor de verzameling context eigenschappen.

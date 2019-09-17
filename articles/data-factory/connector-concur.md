@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 48ebdca1b6abf57a84927e25bca1f85b023fa208
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 2b2b1933c19b3f488ba0c1e2b18052be16c8d101
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726161"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010664"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Gegevens kopiëren van Concur met Azure Data Factory (Preview)
 
@@ -27,6 +27,11 @@ In dit artikel bevat een overzicht over het gebruik van de Kopieeractiviteit in 
 > Deze connector is momenteel in preview. U kunt uitproberen en ons feedback te geven. Neem contact op met de [ondersteuning van Azure](https://azure.microsoft.com/support/) als u een afhankelijkheid van preview-connectors wilt opnemen in uw oplossing.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
+
+Deze concur-connector wordt ondersteund voor de volgende activiteiten:
+
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
+- [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit Concur kopiëren naar een ondersteunde sink-gegevensopslag. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
 
@@ -47,7 +52,7 @@ De volgende eigenschappen worden ondersteund voor Concur gekoppelde service:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **Concur** | Ja |
+| Type | De eigenschap type moet worden ingesteld op: **Concur** | Ja |
 | clientId | Toepassing client_id geleverd door App-beheer Concur.  | Ja |
 | username | De gebruikersnaam die u gebruikt voor toegang tot Service Concur.  | Ja |
 | password | Het wachtwoord dat overeenkomt met de naam van de gebruiker die u hebt opgegeven in het gebruikersnaamveld. Dit veld markeren als een SecureString Bewaar deze zorgvuldig in Data Factory, of [verwijzen naar een geheim opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
@@ -82,7 +87,7 @@ Om gegevens te kopiëren van Concur, stel de eigenschap type van de gegevensset 
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **ConcurObject** | Ja |
+| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **ConcurObject** | Ja |
 | tableName | Naam van de tabel. | Nee (als 'query' in de activiteitbron is opgegeven) |
 
 
@@ -113,7 +118,7 @@ Om gegevens te kopiëren van Concur, stelt u het brontype in de kopieeractivitei
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **ConcurSource** | Ja |
+| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **ConcurSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM Opportunities where Id = xxx "`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**
@@ -147,6 +152,10 @@ Om gegevens te kopiëren van Concur, stelt u het brontype in de kopieeractivitei
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
+
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).

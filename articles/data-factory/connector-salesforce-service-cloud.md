@@ -12,18 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 729ea0fa667a11f710fd815003bc0995cb08ae70
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ac9b12f07a27b3bb8ff66d8a5637cb656e06abc6
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68842554"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010572"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar de Sales Force-Service-Cloud met behulp van Azure Data Factory
 
 In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens van en naar de Sales Force-Service-Cloud te kopiëren. Dit is gebaseerd op de [overzicht van Kopieeractiviteit](copy-activity-overview.md) artikel met daarin een algemeen overzicht van de kopieeractiviteit.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
+
+Deze Cloud connector van de Sales Force-service wordt ondersteund voor de volgende activiteiten:
+
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
+- [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit Sales Force Service-Cloud kopiëren naar elk ondersteund Sink-gegevens archief. U kunt ook gegevens uit een ondersteund brongegevens archief kopiëren naar de Sales Force-Service-Cloud. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bronnen of sinks op basis van de Kopieer activiteit.
 
@@ -59,7 +64,7 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service Sales Fo
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type |De eigenschap type moet worden ingesteld op **SalesforceServiceCloud**. |Ja |
+| Type |De eigenschap type moet worden ingesteld op **SalesforceServiceCloud**. |Ja |
 | environmentUrl | Geef de URL van het Sales Force Service-Cloud exemplaar op. <br> -Standaard is `"https://login.salesforce.com"`. <br> -Als u gegevens wilt kopiëren uit de `"https://test.salesforce.com"`sandbox, geeft u op. <br> -Als u gegevens wilt kopiëren uit een aangepast domein, geeft u `"https://[domain].my.salesforce.com"`bijvoorbeeld op. |Nee |
 | username |Geef een gebruikers naam op voor het gebruikers account. |Ja |
 | password |Geef een wacht woord op voor het gebruikers account.<br/><br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
@@ -137,7 +142,7 @@ De volgende eigenschappen worden ondersteund om gegevens van en naar de Sales Fo
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op **SalesforceServiceCloudObject**.  | Ja |
+| Type | De eigenschap type moet worden ingesteld op **SalesforceServiceCloudObject**.  | Ja |
 | objectApiName | De naam van het Sales Force-object waaruit gegevens worden opgehaald. | Nee voor bron, Ja voor sink |
 
 > [!IMPORTANT]
@@ -166,7 +171,7 @@ De volgende eigenschappen worden ondersteund om gegevens van en naar de Sales Fo
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de DataSet moet worden ingesteld op **RelationalTable**. | Ja |
+| Type | De eigenschap type van de DataSet moet worden ingesteld op **RelationalTable**. | Ja |
 | tableName | De naam van de tabel in de Sales Force-Service-Cloud. | Nee (als ' query ' in de activiteit bron is opgegeven) |
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
@@ -179,7 +184,7 @@ Als u gegevens wilt kopiëren uit de Sales Force-Service-Cloud, worden de volgen
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **SalesforceServiceCloudSource**. | Ja |
+| Type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **SalesforceServiceCloudSource**. | Ja |
 | query |Gebruik de aangepaste query om gegevens te lezen. U kunt de [Sales Force object query language-query (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) of SQL-92-query gebruiken. Meer tips vindt u in de sectie [query tips](#query-tips) . Als er geen query is opgegeven, worden alle gegevens van het Cloud object Sales Force-service dat is opgegeven in ' objectApiName ' in dataset opgehaald. | Nee (als "objectApiName" in de gegevensset is opgegeven) |
 | readBehavior | Hiermee wordt aangegeven of een query moet worden doorzocht op de bestaande records, of dat alle records moeten worden opgevraagd met een query. Als deze niet wordt opgegeven, is het standaard gedrag het voormalige. <br>Toegestane waarden: **query** (standaard), **queryAll**.  | Nee |
 
@@ -226,7 +231,7 @@ Als u gegevens wilt kopiëren naar de Sales Force-Service-Cloud, worden de volge
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld op **SalesforceServiceCloudSink**. | Ja |
+| Type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld op **SalesforceServiceCloudSink**. | Ja |
 | writeBehavior | Het schrijf gedrag voor de bewerking.<br/>Toegestane waarden zijn **Insert** en **Upsert**. | Nee (standaard waarde is invoegen) |
 | externalIdFieldName | De naam van het veld externe ID voor de bewerking upsert. Het opgegeven veld moet worden gedefinieerd als een externe ID-veld in het Cloud object van de Sales Force-service. De waarde mag geen NULL-waarden bevatten in de bijbehorende invoer gegevens. | Ja voor ' Upsert ' |
 | writeBatchSize | Het aantal rijen van gegevens dat is geschreven naar de Sales Force-Service-Cloud in elke batch. | Nee (de standaard waarde is 5.000) |
@@ -307,25 +312,30 @@ Wanneer u gegevens van de Sales Force-service-cloud kopieert, worden de volgende
 
 | Cloud gegevens type Sales Force-service | Data Factory tussentijdse gegevenstype |
 |:--- |:--- |
-| Auto Number |Tekenreeks |
-| Checkbox |Boolean-waarde |
+| Auto Number |String |
+| Checkbox |Boolean |
 | Currency |Decimal |
-| Date |Datetime |
-| Date/Time |Datetime |
-| Email |Tekenreeks |
-| ID |Tekenreeks |
-| Lookup Relationship |Tekenreeks |
-| Multi-Select Picklist |Tekenreeks |
+| Date |DateTime |
+| Date/Time |DateTime |
+| Email |String |
+| ID |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
 | Number |Decimal |
 | Percent |Decimal |
-| Phone |Tekenreeks |
-| Selectie lijst |Tekenreeks |
-| Text |Tekenreeks |
-| Text Area |Reeks |
-| Text Area (Long) |Tekenreeks |
-| Text Area (Rich) |Tekenreeks |
-| Text (Encrypted) |Tekenreeks |
+| Phone |String |
+| Picklist |String |
+| Text |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
 | URL |Tekenreeks |
+
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
+
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).

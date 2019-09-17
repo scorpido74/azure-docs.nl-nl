@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: raynew
-ms.openlocfilehash: 2d40e6fef215219035720ee64492a91fcdafb472
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 867a2dc9739e839a6957190f93311a811556df15
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933935"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010250"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
@@ -59,7 +59,7 @@ Nieuwe functies voor herstel na nood gevallen voor Azure VM worden in de tabel s
 **Opschonen na failback** | Na een failover naar de secundaire Azure en vervolgens een failback naar de primaire regio, Site Recovery automatisch machines in de secundaire regio opschonen. Het is niet nodig om VM'S en Nic's hand matig te verwijderen.
 **IP-adres behouden door testfailover** | U kunt nu het IP-adres van de bron-VM bewaren tijdens een nood herstel analyse en een statisch IP-adres kiezen voor een testfailover.
 
-## <a name="vmwarephysical-server-disaster-recovery"></a>Herstel na nood geval voor VMware/fysieke server
+### <a name="vmwarephysical-server-disaster-recovery"></a>Herstel na nood geval voor VMware/fysieke server
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
@@ -67,13 +67,13 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 --- | ---
 Nieuwe waarschuwingen voor proces server | Er zijn nieuwe waarschuwingen voor de proces server toegevoegd. [Meer informatie](vmware-physical-azure-monitor-process-server.md). 
 
-## <a name="hyper-v-disaster-recovery"></a>Herstel na nood geval voor Hyper-V
+### <a name="hyper-v-disaster-recovery"></a>Herstel na nood geval voor Hyper-V
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 **Functie** | **Details**
 --- | ---
-Storage-account | Site Recovery ondersteunt nu het gebruik van een opslag account waarvoor op rollen gebaseerd toegangs beheer (RBAC) is ingeschakeld. Meer [informatie](../storage/common/storage-account-manage.md#access-control) over toegangs beheer voor opslag accounts. 
+Storage-account | Site Recovery ondersteunt nu het gebruik van opslag accounts waarvoor Firewall is ingeschakeld voor Hyper-V naar Azure-herstel na nood gevallen.  U kunt opslag accounts met firewall mogelijkheden selecteren als doel account of voor cache opslag. Als u gebruikmaakt van Firewall-account, moet u ervoor zorgen dat u de optie voor het toestaan van vertrouwde micro soft-Services hebt ingeschakeld.
 
 
 ## <a name="updates-august-2019"></a>Updates (augustus 2019)

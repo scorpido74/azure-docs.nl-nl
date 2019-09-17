@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 72ab33cd280892ac6de827986e21e04672e58960
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: db3e4b8a8abea4718f5779790906bf45591d221c
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951850"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018696"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Een overzicht van Azure VM backup
 
@@ -79,7 +79,7 @@ Azure Backup maakt moment opnamen volgens het back-upschema.
 
 In de volgende tabel ziet u de verschillende soorten consistentie van moment opnamen:
 
-**Snapshot** | **Details** | **Recovery** | **Beschouwing**
+**Snapshot** | **Details** | **Recovery** | **Overweging**
 --- | --- | --- | ---
 **Toepassings consistent** | Met app-consistente back-ups worden geheugen inhoud en I/O-bewerkingen in behandeling vastgelegd. App-consistente moment opnamen maken gebruik van een VSS Writer (of pre/post scripts voor Linux) om de consistentie van de app-gegevens te garanderen voordat een back-up wordt uitgevoerd. | Wanneer u een virtuele machine herstelt met een app-consistente moment opname, wordt de VM opgestart. Er zijn geen gegevens beschadiging of-verlies. De apps beginnen met een consistente status. | Windows: Alle VSS-schrijvers zijn geslaagd<br/><br/> Linux: Pre/post-scripts zijn geconfigureerd en geslaagd
 **Bestands systeem consistent** | Bestandssysteem consistente back-ups bieden consistentie door een moment opname van alle bestanden tegelijk te maken.<br/><br/> | Wanneer u een virtuele machine herstelt met een bestandssysteem consistente moment opname, wordt de VM opgestart. Er zijn geen gegevens beschadiging of-verlies. Apps moeten hun eigen mechanisme ' herstellen ' implementeren om ervoor te zorgen dat de herstelde gegevens consistent zijn. | Windows: Sommige VSS-schrijvers zijn mislukt <br/><br/> Linux: Standaard (als er vooraf/post-scripts niet zijn geconfigureerd of mislukt)
@@ -87,7 +87,7 @@ In de volgende tabel ziet u de verschillende soorten consistentie van moment opn
 
 ## <a name="backup-and-restore-considerations"></a>Overwegingen voor back-up en herstel
 
-**Beschouwing** | **Details**
+**Overweging** | **Details**
 --- | ---
 **Schijf** | Back-ups van VM-schijven zijn parallel. Als een virtuele machine bijvoorbeeld vier schijven heeft, probeert de back-upservice tegelijkertijd een back-up te maken van alle vier de schijven. De back-up is incrementeel (alleen gewijzigde gegevens).
 **Schema** |  Als u het back-upverkeer wilt verminderen, maakt u op verschillende tijdstippen van de dag een back-up van verschillende Vm's en zorgt u ervoor dat de tijden niet overlappen. Als er op hetzelfde moment back-ups worden gemaakt van Vm's, loopt verkeer storingen.
@@ -140,48 +140,13 @@ Gegevens schijf 2 | 4095 GB | 0 GB
 De werkelijke grootte van de virtuele machine in dit geval 17 GB + 30 GB + 0 GB = 47 GB. Deze beveiligde-instantie grootte (47 GB) wordt de basis voor de maandelijkse factuur. Naarmate de hoeveelheid gegevens in de virtuele machine groeit, wordt de grootte van de beveiligde instantie die wordt gebruikt voor het aanpassen van de facturering, gewijzigd.
 
 <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
-## <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Beperkte open bare Preview: Back-up van de VM met schijf grootten tot 30 TB
+## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Openbare preview: Back-up van de VM met schijf grootten tot 30 TB
 
-Azure Backup ondersteunt nu een beperkte open bare preview van grotere en krachtige [Azure-Managed disks](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) van Maxi maal 30 TB. Deze preview biedt ondersteuning op productie niveau voor beheerde virtuele machines.
+Azure Backup ondersteunt nu een open bare preview van grotere en krachtige [Azure-Managed disks](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) van Maxi maal 30 TB. Deze preview biedt ondersteuning op productie niveau voor beheerde virtuele machines.
 
-U kunt de preview-versie probleemloos registreren zonder dat dit van invloed is op uw doorlopende back-ups. Nadat het abonnement is inge schreven in de preview, moet een back-up worden gemaakt van alle virtuele machines met een schijf grootte van Maxi maal 30 TB. Inschrijven voor de preview-versie:
- 
-Voer de volgende cmdlets uit vanuit een Power shell-terminal met verhoogde bevoegdheden:
+De back-ups voor uw virtuele machines met elke schijf grootte tot 30TB en een maximum van 256TB gecombineerd voor alle schijven in een VM, moeten naadloos werken zonder dat dit van invloed is op uw bestaande back-ups. Er is geen gebruikers actie vereist voor het ophalen van de back-ups die worden uitgevoerd voor de grote schijven, als de virtuele machine al is geconfigureerd met Azure Backup.
 
-1. Meld u aan bij uw Azure-account.
-
-    ```powershell
-    PS C:> Login-AzureRmAccount
-    ```
-
-2. Selecteer het abonnement dat u voor de upgrade wilt registreren:
-
-    ```powershell
-    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-    ```
-3. Registreer dit abonnement in het preview-programma: 
-
-    ```powershell
-    PS C:> Register-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-    Wacht 30 minuten totdat het abonnement is inge schreven in de preview-versie. 
-
- 4. Voer de volgende cmdlets uit om de status te controleren:
-
-    ```powershell
-    PS C:> Get-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices 
-    ```
-5. Wanneer het abonnement wordt weer gegeven als geregistreerd, voert u de volgende opdracht uit:
-    
-    ```powershell
-    PS C:> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-> [!NOTE]
-> Versleutelde Vm's met schijven die groter zijn dan 4 TB, worden niet ondersteund in deze preview-versie.
-
-
+Voor alle Azure-Virtual Machines met grote schijven waarvan de back-up is geconfigureerd, moet een back-up worden gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

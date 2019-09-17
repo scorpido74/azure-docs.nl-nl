@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 5671c3e36a49680b72b1f7b138cbd6e9c0bc4313
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 877d0a17b9ff06e9b9ac2c843c1847c9cb9726e4
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914853"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018713"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Voor beeld: een cluster automatisch schalen om te voldoen aan de toepassings vereisten van de Azure Kubernetes-service (AKS)
 
@@ -104,7 +104,7 @@ Het duurt enkele minuten om het cluster te maken en de instellingen voor het aut
 ## <a name="change-the-cluster-autoscaler-settings"></a>De instellingen voor het automatisch schalen van clusters wijzigen
 
 > [!IMPORTANT]
-> Als u de functie *meerdere agent groepen* hebt ingeschakeld voor uw abonnement, gaat u naar de [sectie automatisch schalen met meerdere groepen van agents](##use-the-cluster-autoscaler-with-multiple-node-pools-enabled). Voor clusters waarvoor meerdere agent Pools zijn ingeschakeld, moet de `az aks nodepool` opdracht set worden gebruikt om specifieke eigenschappen van de knooppunten `az aks`groep te wijzigen in plaats van. In de onderstaande instructies wordt ervan uitgegaan dat u meerdere knooppunt groepen niet hebt ingeschakeld. Als u wilt controleren of u deze hebt ingeschakeld `az feature  list -o table` , voert u `Microsoft.ContainerService/multiagentpoolpreview`uit en zoekt u naar.
+> Als u de functie *meerdere agent groepen* hebt ingeschakeld voor uw abonnement, gaat u naar de [sectie automatisch schalen met meerdere groepen van agents](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). Voor clusters waarvoor meerdere agent Pools zijn ingeschakeld, moet de `az aks nodepool` opdracht set worden gebruikt om specifieke eigenschappen van de knooppunten `az aks`groep te wijzigen in plaats van. In de onderstaande instructies wordt ervan uitgegaan dat u meerdere knooppunt groepen niet hebt ingeschakeld. Als u wilt controleren of u deze hebt ingeschakeld `az feature  list -o table` , voert u `Microsoft.ContainerService/multiagentpoolpreview`uit en zoekt u naar.
 
 In de vorige stap om een AKS-cluster te maken of een bestaande knooppunt groep bij te werken, is het minimum aantal knoop punten van het cluster automatisch ingesteld op *1*en is het maximum aantal knoop punten ingesteld op *3*. Als uw toepassing wordt gewijzigd, moet u mogelijk het aantal knoop punten van de cluster automatisch schalen aanpassen.
 

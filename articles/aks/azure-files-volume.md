@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: e3050d189396a797dbc0980e06e11533b9de977e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 009da6c16d446f2b0d4d3f402c1c1ec63dde34d8
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098615"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018737"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Hand matig een volume maken en gebruiken met Azure Files share in azure Kubernetes service (AKS)
 
@@ -135,17 +135,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Koppelingsopties
 
-Standaard waarden voor *file mode* en *DirMode* verschillen van Kubernetes-versies, zoals beschreven in de volgende tabel.
-
-| version | value |
-| ---- | ---- |
-| v1.6.x, v1.7.x | 0777 |
-| v1.8.0-v1.8.5 | 0700 |
-| v 1.8.6 of hoger | 0755 |
-| v1.9.0 | 0700 |
-| v 1.9.1 of hoger | 0755 |
-
-Als u een cluster van versie 1.8.5 of hoger gebruikt en het permanente volume statisch maakt, moet u de koppelings opties opgeven voor het *PersistentVolume* -object.
+De standaard waarde voor *file mode* en *dirMode* is *0755* voor Kubernetes-versie 1.9.1 en hoger. Als u een cluster met Kuberetes-versie 1.8.5 of hoger gebruikt en het permanente volume statisch maakt, moeten er koppelings opties worden opgegeven voor het *PersistentVolume* -object. In het volgende voor beeld wordt *0777*ingesteld:
 
 ```yaml
 apiVersion: v1
@@ -157,6 +147,7 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
+  storageClassName: azurefile
   azureFile:
     secretName: azure-secret
     shareName: aksshare
@@ -166,9 +157,79 @@ spec:
   - file_mode=0777
   - uid=1000
   - gid=1000
+  - mfsymlinks
+  - nobrl
 ```
 
 Als u een cluster van versie 1.8.0-1.8.4 gebruikt, kan een beveiligings context worden opgegeven met de *runAsUser* -waarde ingesteld op *0*. Zie [Configure a security context][kubernetes-security-context](Engelstalig) voor meer informatie over pod-beveiligings context.
+
+Als u de koppelings opties wilt bijwerken, maakt u een *azurefile-mount-options-PV. yaml-* bestand met een *PersistentVolume*. Bijvoorbeeld:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: azurefile
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  storageClassName: azurefile
+  azureFile:
+    secretName: azure-secret
+    shareName: aksshare
+    readOnly: false
+  mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
+  - mfsymlinks
+  - nobrl
+```
+
+Maak een *azurefile-mount-options-PVC. yaml-* bestand met een *PersistentVolumeClaim* die gebruikmaakt van de *PersistentVolume*. Bijvoorbeeld:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: azurefile
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: azurefile
+  resources:
+    requests:
+      storage: 5Gi
+```
+
+Gebruik de `kubectl` opdrachten om de *PersistentVolume* en *PersistentVolumeClaim*te maken.
+
+```console
+kubectl apply -f azurefile-mount-options-pv.yaml
+kubectl apply -f azurefile-mount-options-pvc.yaml
+```
+
+Controleer of uw *PersistentVolumeClaim* is gemaakt en gekoppeld aan de *PersistentVolume*.
+
+```console
+$ kubectl get pvc azurefile
+
+NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
+```
+
+Werk uw container specificatie bij om naar uw *PersistentVolumeClaim* te verwijzen en uw pod bij te werken. Bijvoorbeeld:
+
+```yaml
+...
+  volumes:
+  - name: azure
+    persistentVolumeClaim:
+      claimName: azurefile
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

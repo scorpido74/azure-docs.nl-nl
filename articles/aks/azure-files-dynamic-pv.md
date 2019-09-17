@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 09/12/2019
 ms.author: mlearned
-ms.openlocfilehash: 580363973afd918351931edfb187a1a8d38d6985
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 045fcb3286c89097459a4a8405d22ee70e44c205
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "67665971"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018824"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamisch een permanent volume maken en gebruiken met Azure Files in azure Kubernetes service (AKS)
 
@@ -28,11 +28,12 @@ Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfiguree
 
 ## <a name="create-a-storage-class"></a>Een opslag klasse maken
 
-Een opslag klasse wordt gebruikt om te bepalen hoe een Azure-bestands share wordt gemaakt. Er wordt automatisch een opslag account gemaakt in de [knooppunt resource groep][node-resource-group] voor gebruik met de opslag klasse om de Azure-bestands shares op te slaan. Kies een van de volgende [Azure Storage][storage-skus] -redundantie voor *skuName*:
+Een opslag klasse wordt gebruikt om te bepalen hoe een Azure-bestands share wordt gemaakt. Er wordt automatisch een opslag account gemaakt in de [knooppunt resource groep][node-resource-group] voor gebruik met de opslag klasse om de Azure-bestands shares op te slaan. Kies een van de volgende [Azure Storage-redundantie][storage-skus] voor *skuName*:
 
 * *Standard_LRS* -Standard lokaal redundante opslag (LRS)
 * *Standard_GRS* -standaard geo-redundante opslag (GRS)
 * *Standard_RAGRS* -standaard geografisch redundante opslag met lees toegang (RA-GRS)
+* *Premium_LRS* -Premium lokaal redundante opslag (LRS)
 
 > [!NOTE]
 > Azure Files Premium-opslag wordt ondersteund in AKS-clusters met Kubernetes 1,13 of hoger.
@@ -52,6 +53,9 @@ mountOptions:
   - file_mode=0777
   - uid=1000
   - gid=1000
+  - mfsymlinks
+  - nobrl
+  - cache=none
 parameters:
   skuName: Standard_LRS
 ```
@@ -64,7 +68,7 @@ kubectl apply -f azure-file-sc.yaml
 
 ## <a name="create-a-cluster-role-and-binding"></a>Een cluster functie en-binding maken
 
-AKS-clusters gebruiken Kubernetes voor op rollen gebaseerd toegangs beheer (RBAC) om acties te beperken die kunnen worden uitgevoerd. *Rollen* definiëren de machtigingen die moeten worden verleend  en bindingen worden toegepast op de gewenste gebruikers. Deze toewijzingen kunnen worden toegepast op een bepaalde naam ruimte of in het hele cluster. Zie [using RBAC Authorization][kubernetes-rbac](Engelstalig) voor meer informatie.
+AKS-clusters gebruiken Kubernetes voor op rollen gebaseerd toegangs beheer (RBAC) om acties te beperken die kunnen worden uitgevoerd. *Rollen* definiëren de machtigingen die moeten worden verleend en *bindingen* worden toegepast op de gewenste gebruikers. Deze toewijzingen kunnen worden toegepast op een bepaalde naam ruimte of in het hele cluster. Zie [using RBAC Authorization][kubernetes-rbac](Engelstalig) voor meer informatie.
 
 Als u wilt toestaan dat het Azure-platform de vereiste opslag bronnen maakt, maakt u een *ClusterRole* en *ClusterRoleBinding*. Maak een bestand met `azure-pvc-roles.yaml` de naam en kopieer de volgende YAML:
 
@@ -101,7 +105,7 @@ kubectl apply -f azure-pvc-roles.yaml
 
 ## <a name="create-a-persistent-volume-claim"></a>Een permanente volume claim maken
 
-Een permanente volume claim (PVC) maakt gebruik van het opslag klassen object om een Azure-bestands share dynamisch in te richten. De volgende YAML kunnen worden gebruikt voor het maken van een permanente volume claim *5 GB* met *ReadWriteMany* -toegang. Zie de documentatie over het [permanente volume van Kubernetes][access-modes] voor meer informatie over de toegangs modi.
+Een permanente volume claim (PVC) maakt gebruik van het opslag klassen object om een Azure-bestands share dynamisch in te richten. De volgende YAML kunnen worden gebruikt voor het maken van een permanente volume claim *5 GB* in grootte met *ReadWriteMany* -toegang. Zie de documentatie over het [permanente volume van Kubernetes][access-modes] voor meer informatie over de toegangs modi.
 
 Maak nu een bestand met `azure-file-pvc.yaml` de naam en kopieer de volgende YAML. Zorg ervoor dat de *storageClassName* overeenkomt met de opslag klasse die in de laatste stap is gemaakt:
 
@@ -118,6 +122,9 @@ spec:
     requests:
       storage: 5Gi
 ```
+
+> [!NOTE]
+> Als u de *Premium_LRS* SKU voor uw opslag klasse gebruikt, moet de minimale waarde voor opslag *100Gi*zijn.
 
 Maak de permanente volume claim met de opdracht [kubectl apply][kubectl-apply] :
 
@@ -196,17 +203,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Koppelingsopties
 
-Standaard waarden voor *file mode* en *DirMode* verschillen van Kubernetes-versies, zoals beschreven in de volgende tabel.
-
-| version | value |
-| ---- | ---- |
-| v1.6.x, v1.7.x | 0777 |
-| v1.8.0-v1.8.5 | 0700 |
-| v 1.8.6 of hoger | 0755 |
-| v1.9.0 | 0700 |
-| v 1.9.1 of hoger | 0755 |
-
-Als u een cluster van versie 1.8.5 of hoger gebruikt en het permanente volume dynamisch maakt met een opslag klasse, kunnen er koppelings opties worden opgegeven voor het opslag klassen object. In het volgende voor beeld wordt *0777*ingesteld:
+De standaard waarde voor *file mode* en *dirMode* is *0755* voor Kubernetes-versie 1.9.1 en hoger. Als u een cluster met Kuberetes-versie 1.8.5 of hoger gebruikt en het permanente volume dynamisch maakt met een opslag klasse, kunnen er koppelings opties worden opgegeven voor het opslag klassen object. In het volgende voor beeld wordt *0777*ingesteld:
 
 ```yaml
 kind: StorageClass
@@ -219,6 +216,9 @@ mountOptions:
   - file_mode=0777
   - uid=1000
   - gid=1000
+  - mfsymlinks
+  - nobrl
+  - cache=none
 parameters:
   skuName: Standard_LRS
 ```

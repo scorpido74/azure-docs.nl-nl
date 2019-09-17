@@ -1,6 +1,6 @@
 ---
-title: Gebruikers van B2B-samenwerking toevoegen in Azure portal - Azure Active Directory | Microsoft Docs
-description: Laat zien hoe een beheerder gastgebruikers kunt toevoegen aan de directory van een partnerorganisatie die met behulp van Azure Active Directory (Azure AD) B2B-samenwerking.
+title: B2B-samenwerkings gebruikers toevoegen in de Azure Portal-Azure Active Directory | Microsoft Docs
+description: Laat zien hoe een beheerder gast gebruikers kan toevoegen aan hun directory vanuit een partner organisatie met behulp van Azure Active Directory (Azure AD) B2B-samen werking.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,116 +11,116 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66b3e68ff2199c6a8bf4da9e02caaf93ee69342b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21117e551642571d5b974e66d0769ed9906b9d50
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65812834"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018197"
 ---
-# <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Gebruikers van Azure Active Directory B2B-samenwerking toevoegen in Azure portal
+# <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Active Directory B2B-samenwerkings gebruikers toevoegen aan de Azure Portal
 
-Als een gebruiker die een van de beperkte beheerder directory-rollen is toegewezen, kunt u de Azure-portal kunt gebruiken om uit te nodigen gebruikers van B2B-samenwerking. U kunt gastgebruikers ook kunnen naar de map, een groep of een toepassing kunt uitnodigen. Nadat u een gebruiker via een van deze methoden uitnodigen, account van de uitgenodigde gebruiker is toegevoegd aan Azure Active Directory (Azure AD), met een gebruikerstype van *Gast*. De gastgebruiker moet vervolgens de uitnodiging voor toegang tot resources inwisselen.
+Als gebruiker aan wie een van de beperkte beheerders rollen is toegewezen, kunt u de Azure Portal gebruiken om B2B-samenwerkings gebruikers uit te nodigen. U kunt gast gebruikers uitnodigen voor de Directory, een groep of een toepassing. Nadat u een gebruiker via een van deze methoden hebt uitgenodigd, wordt het account van de uitgenodigde gebruiker toegevoegd aan Azure Active Directory (Azure AD) met het gebruikers type *gast*. De gast gebruiker moet vervolgens hun uitnodiging inwisselen om toegang te krijgen tot resources. Een uitnodiging van een gebruiker verloopt niet.
 
-Nadat u een gastgebruiker aan de directory toevoegen, u kunt ofwel de gastgebruiker een directe koppeling sturen naar een gedeelde app of de gastgebruiker kunt klikken op de URL voor inschrijving in de uitnodiging per e-mail. Zie voor meer informatie over het proces inwisselen [B2B-samenwerking uitnodiging inwisselen](redemption-experience.md).
+Nadat u een gast gebruiker aan de Directory hebt toegevoegd, kunt u de gast gebruiker een rechtstreekse koppeling sturen naar een gedeelde app, of de gast gebruiker kan klikken op de opname-URL in het e-mail bericht. Zie voor meer informatie over het inwisselings proces [uitnodiging voor B2B-samen werking](redemption-experience.md).
 
 > [!IMPORTANT]
-> U moet de stappen in [procedures: Privacy-informatie van uw organisatie toevoegen in Azure Active Directory](https://aka.ms/adprivacystatement) om toe te voegen van de URL van privacyverklaring van uw organisatie. Als onderdeel van de eerste keer uitnodiging inwisselen proces, moet een van de uitgenodigde gebruiker toestemming geven aan uw privacyvoorwaarden om door te gaan. 
+> Volg de stappen in [How-to: Voeg de privacygegevens van uw organisatie toe](https://aka.ms/adprivacystatement) aan Azure Active Directory om de URL van de privacyverklaring van uw organisatie toe te voegen. Als onderdeel van de eerste keer dat een uitnodiging wordt inwisseld, moet een uitgenodigde gebruiker toestemming geven om door te gaan. 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Zorg ervoor dat instellingen voor externe samenwerking van uw organisatie zijn geconfigureerd, zodat u mag gasten uitnodigen. Standaard kunnen alle gebruikers en beheerders gasten uitnodigen. Maar er beleid van de externe samenwerking van uw organisatie zijn geconfigureerd om te voorkomen dat bepaalde typen gebruikers of beheerders gasten uitnodigen. Als u wilt weten over het weergeven en deze beleidsregels in te stellen, Zie [externe B2B-samenwerking inschakelen en beheren die kunnen gasten uitnodigen](delegate-invitations.md).
+Zorg ervoor dat de instellingen voor externe samen werking van uw organisatie zodanig zijn geconfigureerd dat u gasten kunt uitnodigen. Standaard kunnen alle gebruikers en beheerders gasten uitnodigen. Het externe samenwerkings beleid van uw organisatie kan echter worden geconfigureerd om te voor komen dat bepaalde soorten gebruikers of beheerders hun gasten uitnodigen. Als u wilt weten hoe u dit beleid kunt weer geven en instellen, raadpleegt u [externe samen werking van B2B inschakelen en beheren wie gasten kan uitnodigen](delegate-invitations.md).
 
-## <a name="add-guest-users-to-the-directory"></a>Gastgebruikers toevoegen aan de directory
+## <a name="add-guest-users-to-the-directory"></a>Gast gebruikers toevoegen aan de Directory
 
-Gebruikers van B2B-samenwerking toevoegen aan de directory, de volgende stappen uit:
+Voer de volgende stappen uit om B2B-samenwerkings gebruikers toe te voegen aan de Directory:
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com) als een gebruiker aan wie een beperkte beheerder directory-rol of de rol Gastuitnodiging is toegewezen.
-2. Selecteer in het navigatiedeelvenster **Azure Active Directory**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een gebruiker aan wie een beperkte beheerdersrol of de rol van de gast-uitnodiging is toegewezen.
+2. Selecteer **Azure Active Directory**in het navigatie deel venster.
 3. Onder **Beheren**, selecteer **Gebruikers**.
 4. Selecteer **Nieuwe gastgebruiker**.
 
-   ![Laat zien waar nieuwe gastgebruiker zich bevindt in de gebruikersinterface](./media/add-users-administrator/NewGuestUser-Directory.png) 
+   ![Laat zien waar een nieuwe gast gebruiker zich in de gebruikers interface bevindt](./media/add-users-administrator/NewGuestUser-Directory.png) 
  
    > [!NOTE]
-   > De **nieuwe gastgebruiker** optie is ook beschikbaar in de **organisatie relaties** pagina. In **Azure Active Directory**onder **beheren**, selecteer **organisatie relaties**.
+   > De optie **nieuwe gast gebruiker** is ook beschikbaar op de pagina **relaties organisatie** . Selecteer in **Azure Active Directory** **organisatie relaties**onder **beheren**.
 
 5. Onder **Gebruikersnaam**, voer het e-mailadres van de externe gebruiker in. U kunt optioneel een welkomstbericht toevoegen. Bijvoorbeeld:
 
-   ![Laat zien waar nieuwe gastgebruiker zich bevindt in de gebruikersinterface](./media/add-users-administrator/InviteGuest.png) 
+   ![Laat zien waar een nieuwe gast gebruiker zich in de gebruikers interface bevindt](./media/add-users-administrator/InviteGuest.png) 
 
     > [!NOTE]
-    > Groep e-mailadressen worden niet ondersteund; Voer het e-mailadres voor een persoon. Ook bepaalde e-mailproviders toestaan dat gebruikers om toe te voegen een plusteken (+)-symbool en aanvullende tekst naar hun e-mailadressen met een zaken zoals het filteren van postvak in. Echter, Azure AD ondersteunt momenteel geen plus-teken in e-mailadressen. Levering om problemen te voorkomen, laat u het plusteken en alle tekens tot na het @-teken.
+    > E-mail adressen van groepen worden niet ondersteund. Voer het e-mail adres voor een persoon in. Daarnaast kunnen gebruikers van e-mail providers een plus teken (+) en aanvullende tekst toevoegen aan hun e-mail adressen om te helpen bij zaken als het filteren van postvak in. Azure AD biedt momenteel echter geen ondersteuning voor plus symbolen in e-mail adressen. Als u de bezorgings problemen wilt voor komen, laat u het plus teken en eventuele tekens achter het symbool weg.
 
 6. Selecteer **Uitnodigen** voor het automatisch verzenden van de uitnodiging voor de gastgebruiker. 
  
 Nadat u de uitnodiging verzendt, wordt het gebruikersaccount automatisch toegevoegd aan de map als gast.
 
 
-![B2B-gebruiker met de Gast gebruikerstype bevat](./media/add-users-administrator/GuestUserType.png)  
+![B2B-gebruiker met gast gebruikers type](./media/add-users-administrator/GuestUserType.png)  
 
-## <a name="add-guest-users-to-a-group"></a>Gastgebruikers toevoegen aan een groep
-Als u wilt dat gebruikers van B2B-samenwerking handmatig toevoegen aan een groep, volgt u deze stappen:
+## <a name="add-guest-users-to-a-group"></a>Gast gebruikers toevoegen aan een groep
+Als u gebruikers van B2B-samen werking hand matig aan een groep wilt toevoegen, volgt u deze stappen:
 
 1. Meld u als een Azure AD-administrator aan bij de [Azure Portal](https://portal.azure.com).
-2. Selecteer in het navigatiedeelvenster **Azure Active Directory**.
-3. Onder **beheren**, selecteer **groepen**.
-4. Selecteer een groep (of klik op **nieuwe groep** naar een nieuwe maken). Er is een goed idee om op te nemen in de groepsbeschrijving van de die de B2B-gastgebruikers bevat.
+2. Selecteer **Azure Active Directory**in het navigatie deel venster.
+3. Selecteer onder **beheren**de optie **groepen**.
+4. Selecteer een groep (of klik op **nieuwe groep** om een nieuw item te maken). Het is een goed idee om in de groeps beschrijving te vermelden dat de groep B2B-gast gebruikers bevat.
 5. Selecteer **leden**. 
 6. Voer een van de volgende handelingen uit:
-   - Als de gastgebruiker al in de directory bestaat, kunt u zoeken naar de B2B-gebruiker. Selecteer de gebruiker en klik vervolgens op **Selecteer** om toe te voegen van de gebruiker aan de groep.
-   - Als de gastgebruiker niet al in de map bestaat, nodigen voor de groep door hun e-mailadres in het zoekvak te typen en vervolgens te klikken op een optioneel persoonlijke bericht typen **Selecteer**. De uitnodiging wordt automatisch verzonden naar de uitgenodigde gebruiker.
+   - Als de gast gebruiker al in de directory bestaat, zoekt u naar de B2B-gebruiker. Selecteer de gebruiker en klik vervolgens op **selecteren** om de gebruiker aan de groep toe te voegen.
+   - Als de gast gebruiker zich nog niet in de map bevinden, kunt u deze in de groep uitnodigen door hun e-mail adres in het zoekvak te typen, een optioneel persoonlijk bericht te typen en vervolgens op **selecteren**te klikken. De uitnodiging gaat automatisch naar de uitgenodigde gebruiker.
      
-     ![De knop uitnodigen om toe te voegen gastleden toevoegen](./media/add-users-administrator/GroupInvite.png)
+     ![Knop uitnodigen toevoegen om gast leden toe te voegen](./media/add-users-administrator/GroupInvite.png)
    
-U kunt dynamische groepen ook gebruiken met Azure AD B2B-samenwerking. Zie voor meer informatie, [dynamische groepen en Azure Active Directory B2B-samenwerking](use-dynamic-groups.md).
+U kunt ook dynamische groepen gebruiken met Azure AD B2B-samen werking. Zie [dynamische groepen en Azure Active Directory B2B Collaboration](use-dynamic-groups.md)(Engelstalig) voor meer informatie.
 
-## <a name="add-guest-users-to-an-application"></a>Gastgebruikers toevoegen aan een toepassing
+## <a name="add-guest-users-to-an-application"></a>Gast gebruikers toevoegen aan een toepassing
 
-Gebruikers van B2B-samenwerking toevoegen aan een toepassing, de volgende stappen uit:
+Voer de volgende stappen uit om B2B-samenwerkings gebruikers toe te voegen aan een toepassing:
 
 1. Meld u als een Azure AD-administrator aan bij de [Azure Portal](https://portal.azure.com).
-2. Selecteer in het navigatiedeelvenster **Azure Active Directory**.
-3. Onder **beheren**, selecteer **bedrijfstoepassingen** > **alle toepassingen**.
-4. Selecteer de toepassing die u wilt toevoegen van gastgebruikers.
-5. Selecteer op het dashboard van de toepassing, **totaal aantal gebruikers** openen de **gebruikers en groepen** deelvenster.
+2. Selecteer **Azure Active Directory**in het navigatie deel venster.
+3. Selecteer onder **beheren**de optie **bedrijfs toepassingen** > **alle toepassingen**.
+4. Selecteer de toepassing waaraan u gast gebruikers wilt toevoegen.
+5. Selecteer op het dash board van de toepassing **totale gebruikers** om het deel venster **gebruikers en groepen** te openen.
 
-    ![Totaal aantal gebruikers om toe te voegen open gebruikers en groepen](./media/add-users-administrator/AppUsersAndGroups.png)
+    ![Knop totaal aantal gebruikers om open gebruikers en groepen toe te voegen](./media/add-users-administrator/AppUsersAndGroups.png)
 
 6. Selecteer **Gebruiker toevoegen**.
-7. Onder **toevoegen toewijzing**, selecteer **gebruikers en groepen**.
+7. Onder **toewijzing toevoegen**selecteert u **gebruiker en groepen**.
 8. Voer een van de volgende handelingen uit:
-   - Als de gastgebruiker al in de directory bestaat, kunt u zoeken naar de B2B-gebruiker. Selecteer de gebruiker, klikt u op **Selecteer**, en klik vervolgens op **toewijzen** om toe te voegen van de gebruiker naar de app.
-   - Als de gastgebruiker nog niet bestaat in de map onder **lid selecteren of een externe gebruiker uitnodigen**, typ de e-mailadres van de gebruiker. Typ desgewenst een persoonlijk bericht in het bericht. Klik in het berichtvenster op **uitnodigen**.
+   - Als de gast gebruiker al in de directory bestaat, zoekt u naar de B2B-gebruiker. Selecteer de gebruiker, klik op **selecteren**en klik vervolgens op **toewijzen** om de gebruiker toe te voegen aan de app.
+   - Als de gast gebruiker zich nog niet in de map bevinden, typt u het e-mail adres van de gebruiker onder **lid selecteren of een externe gebruiker uitnodigen**. Typ een optioneel persoonlijk bericht in het bericht venster. Klik in het bericht venster op **uitnodigen**.
            
-       ![De knop uitnodigen om toe te voegen gastleden toevoegen](./media/add-users-administrator/AppInviteUsers.png)
+       ![Knop uitnodigen toevoegen om gast leden toe te voegen](./media/add-users-administrator/AppInviteUsers.png)
    
-      Klik op **Selecteer**, en klik vervolgens op **toewijzen** om toe te voegen van de gebruiker naar de app. Een uitnodiging wordt automatisch verzonden naar de uitgenodigde gebruiker.
+      Klik op **selecteren**en klik vervolgens op **toewijzen** om de gebruiker toe te voegen aan de app. Er wordt automatisch een uitnodiging verzonden naar de uitgenodigde gebruiker.
 
-9. De gastgebruiker wordt weergegeven in de toepassingsmap **gebruikers en groepen** lijst met de toegewezen rol van **standaardtoegang**. Als u wijzigen van de rol wilt, het volgende doen:
-   - Selecteer de gastgebruiker, en selecteer vervolgens **bewerken**. 
-   - Onder **toewijzing bewerken**, klikt u op **rol selecteren**, en selecteer de rol die u wilt toewijzen aan de geselecteerde gebruiker.
+9. De gast gebruiker wordt weer gegeven in de lijst **gebruikers en groepen** van de toepassing met de toegewezen rol van **standaard toegang**. Als u de rol wilt wijzigen, gaat u als volgt te werk:
+   - Selecteer de gast gebruiker en selecteer vervolgens **bewerken**. 
+   - Klik onder **toewijzing bewerken**op **rol selecteren**en selecteer de rol die u aan de geselecteerde gebruiker wilt toewijzen.
    - Klik op **Selecteren**.
    - Klik op **Toewijzen**.
  
-## <a name="resend-invitations-to-guest-users"></a>Uitnodigingen voor gastgebruikers opnieuw verzenden
+## <a name="resend-invitations-to-guest-users"></a>Uitnodigingen voor gast gebruikers opnieuw verzenden
 
-Als een gastgebruiker is nog niet ingewisseld voor hun uitnodiging, kunt u de uitnodiging per e-mail opnieuw verzenden.
+Als een gast gebruiker de uitnodiging nog niet heeft ingewisseld, kunt u de uitnodigings-e-mail opnieuw verzenden.
 
 1. Meld u als een Azure AD-administrator aan bij de [Azure Portal](https://portal.azure.com).
-2. Selecteer in het navigatiedeelvenster **Azure Active Directory**.
+2. Selecteer **Azure Active Directory**in het navigatie deel venster.
 3. Onder **Beheren**, selecteer **Gebruikers**.
-5. Selecteer het gebruikersaccount.
-6. Onder **beheren**, selecteer **profiel**.
-7. Als de gebruiker nog niet de uitnodiging heeft geaccepteerd een **uitnodiging opnieuw verzenden** optie beschikbaar is. Selecteer deze knop om opnieuw te versturen.
+5. Selecteer het gebruikers account.
+6. Selecteer onder **beheren**de optie **profiel**.
+7. Als de gebruiker de uitnodiging nog niet heeft geaccepteerd, is de optie **uitnodiging opnieuw verzenden** beschikbaar. Selecteer deze knop om opnieuw te verzenden.
 
-   ![Optie in het gebruikersprofiel uitnodiging opnieuw verzenden](./media/add-users-administrator/Resend-Invitation.png)
+   ![Uitnodigings optie opnieuw verzenden in het gebruikers profiel](./media/add-users-administrator/Resend-Invitation.png)
 
 > [!NOTE]
-> Als u een uitnodiging die oorspronkelijk doorgestuurd van de gebruiker voor een specifieke app opnieuw verzenden, moet u begrijpen dat de koppeling in de nieuwe uitnodiging de gebruiker naar het toegangsvenster op het hoogste niveau in plaats daarvan wordt.
+> Als u een uitnodiging die de gebruiker oorspronkelijk naar een specifieke app heeft gericht, opnieuw verzendt, moet u weten dat de koppeling in de nieuwe uitnodiging in plaats daarvan de gebruiker in het toegangs paneel van het hoogste niveau heeft.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u wilt weten hoe beheerders van niet-Azure AD B2B-gastgebruikers kunt toevoegen, Zie [hoe IT-medewerkers Voeg gebruikers van B2B-samenwerking?](add-users-information-worker.md)
-- Zie voor meer informatie over de uitnodiging per e-mail [de elementen van de B2B-samenwerking uitnodigingse-mail](invitation-email-elements.md).
+- Als u wilt weten hoe niet-Azure AD-beheerders B2B-gast gebruikers kunnen toevoegen, raadpleegt u [Hoe kunnen informatie werkers B2B-samenwerkings gebruikers toevoegen?](add-users-information-worker.md)
+- Zie [de elementen van het e-mail bericht uitnodiging voor B2B-samen werking](invitation-email-elements.md)voor meer informatie over de uitnodigings-e-mail.
 

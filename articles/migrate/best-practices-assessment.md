@@ -1,17 +1,17 @@
 ---
-title: Aanbevolen procedures voor het maken van evaluatie met Azure Migrate server beoordeling | Microsoft Docs
+title: Aanbevolen procedures voor het maken van evaluatie met Azure Migrate server-evaluatie
 description: Biedt tips voor het maken van evaluaties met Azure Migrate server-evaluatie.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 09/16/2019
 ms.author: raynew
-ms.openlocfilehash: 18b82b5553f7045c38c9de532199c2a0fd815ee1
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: a07e83c805fc422c861f6c644a59da0b42bb8072
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234300"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71007717"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Aanbevolen procedures voor het maken van evaluaties
 
@@ -33,8 +33,8 @@ Een voor beeld: als u een on-premises VM hebt met vier kernen van 20% gebruik en
 
 - **Evaluatie op basis van prestaties**:
     - Identificeert effectief kernen en geheugen op basis van core (4 x 0,20 = 0,8) en geheugen (8 GB x 0,10 = 0,8) gebruik.
-    - Past de comfort factor toe die is opgegeven in de eigenschappen van de beoordeling (le'ts zeg 1,3 x) om de waarden op te halen die moeten worden gebruikt voor het aanpassen van de grootte. 
-    - Hiermee wordt de dichtstbijzijnde VM-grootte in azure aanbevolen die ondersteuning biedt voor meer dan ~ 1,4 kernen (0,8 x 1,3) en ~ 1,4 GB (0,8 x 1,3) geheugen.
+    - Past de comfort factor toe die is opgegeven in de eigenschappen van de beoordeling (stel 1,3 x in) om de waarden op te halen die moeten worden gebruikt voor het aanpassen van de grootte. 
+    - Hiermee wordt de dichtstbijzijnde VM-grootte in azure aanbevolen die ondersteuning biedt voor meer dan ~ 1,04 kernen (0,8 x 1,3) en ~ 1,04 GB (0,8 x 1,3) geheugen.
 
 - **As-is (zoals on-premises) evaluatie**:
     -  Raadt een VM aan met vier kernen; 8 GB geheugen.
@@ -77,7 +77,7 @@ Als u computers toevoegt aan of verwijdert uit een groep nadat u een evaluatie h
 
 ### <a name="outdated-assessments"></a>Verouderde evaluaties
 
-Als er on-premises wijzigingen zijn aangebracht aan virtuele machines die zich in een groep bevinden die is geëvalueerd, wordt de evaluatie gemarkeerd als verouderd. Voer de evaluatie opnieuw uit om de wijzigingen weer te geven.
+Als er on-premises wijzigingen zijn aangebracht aan virtuele machines die zich in een groep bevinden die is geëvalueerd,wordt de evaluatie gemarkeerd als verouderd. Voer de evaluatie opnieuw uit om de wijzigingen weer te geven.
 
 ### <a name="low-confidence-rating"></a>Beoordeling met lage betrouw baarheid
 
@@ -85,9 +85,9 @@ Een evaluatie heeft mogelijk niet alle gegevens punten om een aantal redenen:
 
 - U hebt uw omgeving niet geprofileerd gedurende de periode waarvoor u de evaluatie maakt. Als u bijvoorbeeld een *evaluatie op basis van prestaties* maakt waarbij de duur van de prestaties is ingesteld op een week, moet u een periode van minstens een week wachten nadat u de detectie hebt gestart voor alle gegevens punten die u wilt verzamelen. U kunt altijd op **herberekenen** klikken om de meest recente beoordeling van het vertrouwen te bekijken. De vertrouwens classificatie is alleen van toepassing wanneer u een evaluatie *op basis van prestaties* maakt.
 
-- Er zijn enkele VM's uitgeschakeld geweest in de periode waarover de evaluatie wordt berekend. Als sommige Vm's al enige tijd zijn uitgeschakeld, kan de server evaluatie de prestatie gegevens voor die periode niet verzamelen.
+- Er zijn enkele VM's uitgeschakeld geweest in de periode waarover de evaluatie wordt berekend. Als bepaalde VM's gedurende een tijdje uitgeschakeld zijn geweest, kunnen er voor deze periode geen prestatiegegevens worden verzameld.
 
-- Er zijn enkele Vm's gemaakt nadat de detectie in de server evaluatie is gestart. Als u bijvoorbeeld een evaluatie maakt voor de prestatiegeschiedenis van de laatste maand, maar er een week geleden enkele VM's in de omgeving zijn gemaakt. In dit geval zijn de prestatie gegevens voor de nieuwe Vm's niet beschikbaar voor de hele duur en is de betrouwbaarheids classificatie laag.
+- Er zijn enkele VM’s gemaakt nadat detectie in Server-evaluatie al was gestart. Als u bijvoorbeeld een evaluatie maakt voor de prestatiegeschiedenis van de laatste maand, maar er een week geleden enkele VM's in de omgeving zijn gemaakt. In dit geval zijn er voor de hele periode geen prestatiegegevens van de nieuwe VM’s beschikbaar, waardoor de betrouwbaarheidsclassificatie laag is.
 
 
 ## <a name="next-steps"></a>Volgende stappen

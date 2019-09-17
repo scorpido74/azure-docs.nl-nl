@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 2c490c9eb23ad62559a6246f1588f80080851014
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: b5d4febbb8e068ca8f922145c1e7255ab7a587ac
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726052"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010581"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Gegevens kopiëren van QuickBooks Online met Azure Data Factory (Preview)
 
@@ -27,6 +27,11 @@ In dit artikel bevat een overzicht over het gebruik van de Kopieeractiviteit in 
 > Deze connector is momenteel in preview. U kunt uitproberen en ons feedback te geven. Neem contact op met de [ondersteuning van Azure](https://azure.microsoft.com/support/) als u een afhankelijkheid van preview-connectors wilt opnemen in uw oplossing.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
+
+Deze QuickBooks-connector wordt ondersteund voor de volgende activiteiten:
+
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
+- [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit QuickBooks Online kopiëren naar een ondersteunde sink-gegevensopslag. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
 
@@ -46,7 +51,7 @@ De volgende eigenschappen worden ondersteund voor QuickBooks gekoppelde service:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **QuickBooks** | Ja |
+| Type | De eigenschap type moet worden ingesteld op: **QuickBooks** | Ja |
 | endpoint | Het eindpunt van de QuickBooks Online-server. (dat wil zeggen, quickbooks.api.intuit.com)  | Ja |
 | companyId | De bedrijfs-ID van het bedrijf QuickBooks te autoriseren. Zie voor informatie over het zoeken naar de bedrijfs-ID [hoe vind ik de ID van mijn bedrijf?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Ja |
 | consumerKey | De consumentsleutel voor OAuth 1.0-verificatie. | Ja |
@@ -92,7 +97,7 @@ Als u wilt kopiëren van gegevens uit QuickBooks Online, stel de eigenschap type
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **QuickBooksObject** | Ja |
+| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **QuickBooksObject** | Ja |
 | tableName | Naam van de tabel. | Nee (als 'query' in de activiteitbron is opgegeven) |
 
 **Voorbeeld**
@@ -122,7 +127,7 @@ Als u wilt kopiëren van gegevens uit QuickBooks Online, stelt u het brontype in
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **QuickBooksSource** | Ja |
+| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **QuickBooksSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**
@@ -159,6 +164,11 @@ Als u wilt kopiëren van gegevens uit QuickBooks Online, stelt u het brontype in
 ## <a name="copy-data-from-quickbooks-desktop"></a>Gegevens uit Quickbooks Desktop kopiëren
 
 De Kopieeractiviteit in Azure Data Factory kan gegevens rechtstreeks vanuit Quickbooks Desktop niet kopiëren. Uw Quickbooks-gegevens exporteren naar een bestand met door komma's gescheiden waarden (CSV) om gegevens te kopiëren vanuit Quickbooks Desktop, en vervolgens het bestand te uploaden naar Azure Blob Storage. Van daaruit kunt u Data Factory kopiëren van de gegevens naar de sink van uw keuze.
+
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
+
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).

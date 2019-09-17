@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: aahi
-ms.openlocfilehash: b1660034f1937d2d8ff9e70139407619626886a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5e893fda5a0e71703eb867c045de19d391c012ed
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498862"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018216"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Quickstart: De Bing Web Search SDK voor C# gebruiken
 
@@ -39,7 +39,7 @@ Voordat u verdergaat met deze snelstart moet u beschikken over:
 > [!TIP]
 > Haal de nieuwste code als Visual Studio-oplossing op uit [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
 
-De eerste stap bestaat uit het maken van een nieuw consoleproject. Als u hulp bij het instellen van een console-project, Zie [Hello World - uw eerste programma (C# -programmeergids)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Als u de Bing Web Search SDK wilt gebruiken in uw toepassing, moet u `Microsoft.Azure.CognitiveServices.Search.WebSearch` installeren met behulp van NuGet Package Manager.
+De eerste stap bestaat uit het maken van een nieuw consoleproject. Zie [Hallo wereld--uw eerste programma (C# programmeer handleiding)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program)als u hulp nodig hebt bij het instellen van een console project. Als u de Bing Web Search SDK wilt gebruiken in uw toepassing, moet u `Microsoft.Azure.CognitiveServices.Search.WebSearch` installeren met behulp van NuGet Package Manager.
 
 Met het [Web Search SDK-pakket](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) wordt ook het volgende geïnstalleerd:
 
@@ -61,7 +61,7 @@ using System.Linq;
 
 ## <a name="create-project-scaffolding"></a>Een projectopzet maken
 
-Wanneer u het nieuwe consoleproject hebt gemaakt, moeten er een naamruimte en klasse voor uw toepassing zijn gemaakt. Uw programma moet eruitzien als in dit voorbeeld:
+Wanneer u het nieuwe consoleproject hebt gemaakt, moeten er een naamruimte en klasse voor uw toepassing zijn gemaakt. Uw programma moet er als volgt uitzien:
 
 ```csharp
 namespace WebSearchSDK
@@ -243,7 +243,7 @@ In dit voorbeeld worden de parameters `count` en `offset` gebruikt voor het bepe
     {
         try
         {
-            var webData = await client.Web.SearchAsync(query: "Best restaurants in Seattle", offset: 10, count: 20).Result;
+            var webData = await client.Web.SearchAsync(query: "Best restaurants in Seattle", offset: 10, count: 20);
             Console.WriteLine("\r\nSearching for \" Best restaurants in Seattle \"");
 
             if (webData?.WebPages?.Value?.Count > 0)
@@ -303,7 +303,7 @@ In dit voorbeeld wordt de parameter `response_filter` gebruikt om zoekresultaten
         try
         {
             IList<string> responseFilterstrings = new List<string>() { "news" };
-            var webData = await client.Web.SearchAsync(query: "Microsoft", responseFilter: responseFilterstrings).Result;
+            var webData = await client.Web.SearchAsync(query: "Microsoft", responseFilter: responseFilterstrings);
             Console.WriteLine("\r\nSearching for \" Microsoft \" with response filter \"news\"");
 
             if (webData?.News?.Value?.Count > 0)
@@ -366,7 +366,7 @@ In dit voorbeeld worden de parameters `answer_count`, `promote`, en `safe_search
         try
         {
             IList<string> promoteAnswertypeStrings = new List<string>() { "videos" };
-            var webData = await client.Web.SearchAsync(query: "Music Videos", answerCount: 2, promote: promoteAnswertypeStrings, safeSearch: SafeSearch.Strict).Result;
+            var webData = await client.Web.SearchAsync(query: "Music Videos", answerCount: 2, promote: promoteAnswertypeStrings, safeSearch: SafeSearch.Strict);
             Console.WriteLine("\r\nSearching for \"Music Videos\"");
 
             if (webData?.Videos?.Value?.Count > 0)

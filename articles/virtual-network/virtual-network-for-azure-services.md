@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 80d89914f33273fcb033ab47098a8864b11974c9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c345b31c218c4678e7811c36113c94e0c4d2ac03
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876150"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71019064"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integratie van virtueel netwerk voor Azure-Services
 
 Door Azure-Services te integreren in een virtueel Azure-netwerk, kunt u persoonlijke toegang tot de service krijgen via virtuele machines of reken resources in het virtuele netwerk.
 U kunt Azure-Services in uw virtuele netwerk integreren met de volgende opties:
 - Implementatie van toegewezen exemplaren van de service in een virtueel netwerk. De services kunnen vervolgens worden geopend in het virtuele netwerk en vanuit on-premises netwerken.
-- Het uitbreiden van een virtueel netwerk naar de service via service-eind punten. Met Service-eind punten kunnen afzonderlijke service bronnen worden beveiligd met het virtuele netwerk.
+- Een [persoonlijke koppeling](../private-link/private-link-overview.md) gebruiken voor toegang tot een specifiek exemplaar van de service vanuit uw virtuele netwerk en uit on-premises netwerken.
 
-Als u meerdere Azure-Services wilt integreren in uw virtuele netwerk, kunt u een of meer van de bovenstaande patronen combi neren. U kunt bijvoorbeeld HDInsight implementeren in uw virtuele netwerk en een opslag account beveiligen met het HDInsight-subnet via service-eind punten.
+U kunt de service ook openen met behulp van open bare eind punten door een virtueel netwerk uit te breiden naar de service, via [service-eind punten](virtual-network-service-endpoints-overview.md). Met Service-eind punten kunnen service resources worden beveiligd met het virtuele netwerk.
  
 ## <a name="deploy-azure-services-into-virtual-networks"></a>Azure-Services implementeren in virtuele netwerken
 
@@ -50,19 +50,14 @@ Het implementeren van services binnen een virtueel netwerk biedt de volgende mog
 
 |Categorie|Service| Toegewezen ¹-subnet
 |-|-|-|
-| Compute | Virtuele machines: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Schaal sets voor virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Cloud service](https://msdn.microsoft.com/library/azure/jj156091): Alleen virtueel netwerk (klassiek)<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Nee <br/> Nee <br/> Nee <br/> Nee ²
+| Compute | Virtuele machines: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Virtuele-machineschaalsets](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Cloud service](https://msdn.microsoft.com/library/azure/jj156091): Alleen virtueel netwerk (klassiek)<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Nee <br/> Nee <br/> Nee <br/> Nee ²
 | Netwerk | [Application Gateway-WAF](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Virtuele netwerk apparaten](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn) | Ja <br/> Ja <br/> Ja <br/> Nee
 |Data|[RedisCache](../azure-cache-for-redis/cache-how-to-premium-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Beheerd exemplaar voor Azure SQL Database](../sql-database/sql-database-managed-instance-connectivity-architecture.md?toc=%2fazure%2fvirtual-network%2ftoc.json)| Ja <br/> Ja <br/> 
 |Analyse | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Nee ² <br/> Nee ² <br/> 
 | Identiteit | [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Nee <br/>
 | Containers | [Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure container instance (ACI)](https://www.aka.ms/acivnet)<br/>[Azure container service-engine](https://github.com/Azure/acs-engine) met Azure Virtual Network cni [-invoeg toepassing](https://github.com/Azure/acs-engine/tree/master/examples/vnet)|Nee ²<br/> Ja <br/><br/> Nee
 | Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[App Service-omgeving](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ja <br/> Ja <br/> Ja
-| Zone | [Specifieke HSM van Azure](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ja <br/> Ja <br/>
+| Gehost | [Specifieke HSM van Azure](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ja <br/> Ja <br/>
 | | |
 
 ¹ ' dedicated ' impliceert dat alleen servicespecifieke bronnen kunnen worden geïmplementeerd in dit subnet en niet kunnen worden gecombineerd met de VM-VMSSs van de klant <br/> ² aanbevolen, maar geen verplichte vereiste die door de service is opgelegd.
-
-
-## <a name="service-endpoints-for-azure-services"></a>Service-eind punten voor Azure-Services
-
-Sommige Azure-Services kunnen niet worden geïmplementeerd in virtuele netwerken. U kunt de toegang tot bepaalde service bronnen beperken tot alleen specifieke subnetten van het virtuele netwerk, als u dat doet door een service-eind punt van een virtueel netwerk in te scha kelen.  Meer informatie over [service-eind punten voor virtuele netwerken](virtual-network-service-endpoints-overview.md)en de services waarvoor eind punten kunnen worden ingeschakeld.

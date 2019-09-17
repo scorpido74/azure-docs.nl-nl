@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 0bba755ec5683e988bb8ae3f2308a1c298b228b0
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b85793223e23aa3d668d6f86494da3ee78c43e91
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000566"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009997"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>& Classificatie Azure SQL Database en SQL Data Warehouse voor gegevens detectie
 
@@ -144,8 +144,11 @@ U kunt ook REST-Api's gebruiken om classificaties programmatisch te beheren. De 
 
 - [Maken of bijwerken](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) : Hiermee wordt het gevoeligheids label van een bepaalde kolom gemaakt of bijgewerkt
 - [Verwijderen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) : Hiermee verwijdert u het gevoeligheids label van een bepaalde kolom
+- [Aanbeveling uitschakelen](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/disablerecommendation) : Hiermee worden de gevoeligheids aanbevelingen voor een bepaalde kolom uitgeschakeld
+- [Aanbeveling inschakelen](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/enablerecommendation) : Hiermee schakelt u gevoeligheids aanbevelingen in voor een bepaalde kolom (aanbevelingen zijn standaard ingeschakeld voor alle kolommen)
 - [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) -haalt het gevoeligheids label van een bepaalde kolom op
 - [Lijst huidige per data base](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) : Hiermee worden de huidige gevoeligheids labels van een bepaalde data base opgehaald
+
 - [Lijst aanbevolen door data base](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) : Hiermee wordt de aanbevolen gevoeligheids labels van een bepaalde data base opgehaald
 
 ## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>Gegevens detectie en-classificatie beheren met Azure PowerShell

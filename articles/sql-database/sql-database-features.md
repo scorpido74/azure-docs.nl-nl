@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 2ddef73121ef2f6c145516ca114989aa12b8003c
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 3cad1a73dd98928ed12748e2acffaea158dc5924
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873512"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010302"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database functies
 
@@ -32,7 +32,7 @@ Azure SQL Database beheert uw data bases en garandeert een hoge Beschik baarheid
 
 De volgende tabel bevat de belangrijkste functies van SQL Server en geeft informatie over of de functie gedeeltelijk of volledig wordt ondersteund in een beheerd exemplaar of Individuele database en elastische Pools, met een koppeling naar meer informatie over de functie.
 
-| **SQL-functie** | **Afzonderlijke data bases en elastische Pools** | **Beheerde instanties** |
+| **SQL-functie** | **Afzonderlijke data bases en elastische Pools** | **Beheerde instanties en exemplaar groepen** |
 | --- | --- | --- |
 | [Altijd versleuteld](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Ja, Zie [certificaat archief](sql-database-always-encrypted.md) en [sleutel kluis](sql-database-always-encrypted-azure-key-vault.md) | Ja, Zie [certificaat archief](sql-database-always-encrypted.md) en [sleutel kluis](sql-database-always-encrypted-azure-key-vault.md) |
 | [AlwaysOn-beschikbaarheids groepen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Hoge Beschik baarheid](sql-database-high-availability.md) is opgenomen in elke Data Base. Herstel na nood gevallen wordt beschreven in [overzicht van bedrijfs continuïteit met Azure SQL database](sql-database-business-continuity.md) | [Hoge Beschik baarheid](sql-database-high-availability.md) is opgenomen in elke Data Base en [kan niet worden beheerd door de gebruiker](sql-database-managed-instance-transact-sql-information.md#always-on-availability). Herstel na nood gevallen wordt beschreven in [overzicht van bedrijfs continuïteit met Azure SQL database](sql-database-business-continuity.md) |
@@ -112,7 +112,7 @@ De volgende tabel bevat de belangrijkste functies van SQL Server en geeft inform
 
 Azure-platform biedt een aantal PaaS-mogelijkheden die als extra waarde worden toegevoegd aan de standaard database functies. Er zijn een aantal externe services die kunnen worden gebruikt met Azure SQL Database Service. 
 
-| **Platform functie** | **Afzonderlijke data bases en elastische Pools** | **Beheerde instanties** |
+| **Platform functie** | **Afzonderlijke data bases en elastische Pools** | **Beheerde instanties en exemplaar groepen** |
 | --- | --- | --- |
 | [Actieve Geo-replicatie](sql-database-active-geo-replication.md) | Ja, alle service lagen dan grootschalige | Nee, Zie [automatische failover-groepen (preview-versie)](sql-database-auto-failover-group.md) als alternatief |
 | [Groepen voor automatische failover](sql-database-auto-failover-group.md) | Ja, alle service lagen dan grootschalige | Ja, in [open bare preview](sql-database-auto-failover-group.md)|
@@ -131,7 +131,7 @@ Azure-platform biedt een aantal PaaS-mogelijkheden die als extra waarde worden t
 | [Op beleid gebaseerd beheer](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nee | Nee |
 | Openbaar IP-adres | Ja. De toegang kan worden beperkt met behulp van firewall-of service-eind punten.  | Ja. Moet expliciet zijn ingeschakeld en poort 3342 moet zijn ingeschakeld in NSG-regels. Open bare IP kan indien nodig worden uitgeschakeld. Zie [openbaar eind punt](sql-database-managed-instance-public-endpoint-securely.md) voor meer informatie. | 
 | [Herstel naar een bepaald tijdstip data base](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Ja, alle service lagen met uitzonde ring van grootschalige-Zie [SQL database Recovery](sql-database-recovery-using-backups.md#point-in-time-restore) | Ja, Zie [SQL database herstellen](sql-database-recovery-using-backups.md#point-in-time-restore) |
-| Resource groepen | Ja, als [elastische Pools](sql-database-elastic-pool.md) | Nee. Eén beheerd exemplaar kan meerdere data bases hebben die dezelfde groep resources delen. Beheerde exemplaren kunnen geen resources delen. |
+| Resource groepen | Ja, als [elastische Pools](sql-database-elastic-pool.md) | Ja. Eén beheerd exemplaar kan meerdere data bases hebben die dezelfde groep resources delen. Daarnaast kunt u meerdere beheerde exemplaren implementeren in [exemplaar groepen (preview)](sql-database-instance-pools.md) die de bronnen kunnen delen. |
 | Omhoog of omlaag schalen (online) | Ja, u kunt DTU of gereserveerde vCores of maximale opslag ruimte wijzigen met de minimale downtime. | Ja, u kunt gereserveerde vCores of maximale opslag ruimte wijzigen met de minimale downtime. |
 | SQL-alias | Ja, Zie [DNS-alias](dns-alias-overview.md) | Nee |
 | [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Ja | Ja |
@@ -146,7 +146,7 @@ Azure-platform biedt een aantal PaaS-mogelijkheden die als extra waarde worden t
 ## <a name="tools"></a>Hulpprogramma's
 Azure SQL database ondersteunt diverse hulp middelen voor gegevens die u kunnen helpen bij het beheren van uw gegevens.
 
-| **Hulpprogramma** | **Afzonderlijke data bases en elastische Pools** | **Beheerde instanties** |
+| **Hulpprogramma** | **Afzonderlijke data bases en elastische Pools** | **Beheerde instanties en exemplaar groepen** |
 | --- | --- | --- |
 | Azure Portal | Ja | Ja |
 | Azure-CLI | Ja | Ja|
@@ -167,7 +167,7 @@ Azure SQL database ondersteunt diverse hulp middelen voor gegevens die u kunnen 
 
 U kunt verschillende migratie methoden gebruiken om uw gegevens te verplaatsen tussen SQL Server, Individuele database en beheerde exemplaar databases. Sommige methoden zijn **online** en nemen alle wijzigingen op die tijdens het uitvoeren van de migratie op de bron worden aangebracht, terwijl u in **offline** -methoden de werk belasting stopt die gegevens op de bron wijzigt terwijl de migratie wordt uitgevoerd.
 
-| **Bron** | **Eén data base en elastische pool** | **Beheerd exemplaar** |
+| **Bron** | **Eén data base en elastische pool** | **Beheerde instanties en exemplaar groepen** |
 | --- | --- | --- |
 | SQL Server (on-premises, AzureVM, Amazon RDS) | **Aanschaffen** [Gegevens migratie service (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Breken** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Aanschaffen** [Gegevens migratie service (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Breken** Systeem eigen back-up/herstellen, [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [momentopname replicatie](sql-database-managed-instance-transactional-replication.md) |
 | Individuele database | **Breken** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Breken** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
@@ -183,3 +183,4 @@ Micro soft blijft functies toevoegen aan Azure SQL Database. Ga naar de webpagin
 Zie voor meer informatie over de Azure SQL Database-versies:
 - [Wat is SQL Database?](sql-database-technical-overview.md)
 - [Wat is een beheerd exemplaar?](sql-database-managed-instance.md)
+- [Wat zijn beheerde exemplaar groepen?](sql-database-instance-pools.md)

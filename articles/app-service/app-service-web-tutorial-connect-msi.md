@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 08/06/2019
+ms.date: 09/16/2019
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 09e9a89fc79763eee5d154ba589b599fe8a180b2
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: d4e0d632fe476df159710f800eca3a2a283f7908
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743387"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018288"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Zelfstudie: Azure SQL Database-verbinding vanuit App Service beveiligen met een beheerde identiteit
 
@@ -83,10 +83,22 @@ Zie [een Azure Active Directory beheerder voor uw Azure SQL database server inri
 
 ## <a name="set-up-visual-studio"></a>Visual Studio instellen
 
-Als u de ontwikkeling en fout opsporing in Visual Studio wilt inschakelen, voegt u uw Azure AD-gebruiker toe in Visual Studio door**instellingen** voor **Bestands** > accounts te selecteren in het menu en op **een account toevoegen**te klikken.
+### <a name="windows"></a>Windows
+Visual Studio voor Windows is geïntegreerd met Azure AD-verificatie. Als u de ontwikkeling en fout opsporing in Visual Studio wilt inschakelen, voegt u uw Azure AD-gebruiker toe in Visual Studio door**instellingen** voor **Bestands** > accounts te selecteren in het menu en op **een account toevoegen**te klikken.
 
 Als u de Azure AD-gebruiker voor Azure-service verificatie wilt instellen, selecteert u **extra** > **Opties** in het menu en selecteert u **Azure service-verificatie** > **accounts**selecteren. Selecteer de Azure AD-gebruiker die u hebt toegevoegd en klik op **OK**.
 
+U kunt nu uw app ontwikkelen en fouten opsporen met de SQL Database als back-end, met behulp van Azure AD-verificatie.
+
+### <a name="macos"></a>MacOS
+
+Visual Studio voor Mac is niet geïntegreerd met Azure AD-verificatie. De bibliotheek [micro soft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) die u later gebruikt, kan echter gebruikmaken van tokens van Azure cli. Als u de ontwikkeling en fout opsporing in Visual Studio wilt inschakelen, moet u eerst [Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) op uw lokale computer.
+
+Als Azure CLI is geïnstalleerd op uw lokale computer, meldt u zich met de volgende opdracht aan bij Azure CLI met behulp van uw Azure AD-gebruiker:
+
+```bash
+az login --allow-no-subscriptions
+```
 U kunt nu uw app ontwikkelen en fouten opsporen met de SQL Database als back-end, met behulp van Azure AD-verificatie.
 
 ## <a name="modify-your-project"></a>Uw project wijzigen

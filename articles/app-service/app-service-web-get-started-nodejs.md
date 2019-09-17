@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 989bff7d8be5c234d9536afa8afc0beb6870807e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d03b209902d3ab0bcdb247b1deefdd70d01905cb
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071665"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018497"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Een Node.js-web-app maken in Azure
 
@@ -51,7 +51,7 @@ Open _index.js_ en zoek de volgende regel:
 const port = process.env.PORT || 1337;
 ```
 
-App Service injecteert process.env.PORT in uw toepassing, zodat de code de variabele gebruikt om te weten naar welke poort moet worden geluisterd. 
+App Service vult de omgevings variabele, **process. env. Port**. Gebruik dit in uw toepassing, zodat de code weet welke poort moet worden geluisterd.
 
 Navigeer in een Terminal venster naar de **hoofdmap** van het knoop punt. js-voorbeeld project (de map die _index. js_bevat).
 
