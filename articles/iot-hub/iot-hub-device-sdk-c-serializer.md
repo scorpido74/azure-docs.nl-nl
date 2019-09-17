@@ -77,11 +77,11 @@ De volgende gegevens typen worden ondersteund in modellen die zijn gemaakt met d
 | bool |boolean |
 | ascii\_char\_ptr |ASCII-teken reeks |
 | EDM\_DATE\_TIME\_OFFSET |datum en tijd verschuiving |
-| EDM\_-GUID |GUID |
+| EDM\_GUID |GUID |
 | EDM\_BINARY |binary |
-| STRUCT\_DECLAREREN |complex gegevens type |
+| DECLARE\_STRUCT |complex gegevens type |
 
-Laten we beginnen met het laatste gegevens type. Met **de\_declare STRUCT** kunt u complexe gegevens typen definiëren. Dit zijn groeperingen van de andere primitieve typen. Met deze groeperingen kunnen we een model definiëren dat er als volgt uitziet:
+Laten we beginnen met het laatste gegevens type. Met **DECLARE\_STRUCT** kunt u complexe gegevens typen definiëren. Dit zijn groeperingen van de andere primitieve typen. Met deze groeperingen kunnen we een model definiëren dat er als volgt uitziet:
 
 ```C
 DECLARE_STRUCT(TestType,

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 0a695f08f00b99fcd0bc634d12e30c0f3cfbd312
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d8773b330349356410589cf66e8f50636d92b601
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813086"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009177"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Gegevens kopiëren van HDFS met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -30,7 +30,7 @@ In dit artikel wordt beschreven hoe u gegevens kopieert van HDFS-server. Lees vo
 
 Deze HDFS-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
 Deze HDFS-connector ondersteunt met name:
@@ -481,6 +481,10 @@ Er zijn twee opties om de on-premises omgeving in te stellen, zodat u Kerberos-v
 **In Azure Data Factory:**
 
 * Configureer de HDFS-connector met behulp van **Windows-verificatie** samen met uw domein account of Kerberos-principal om verbinding te maken met de HDFS-gegevens bron. Raadpleeg de sectie eigenschappen van koppelen aan de [gekoppelde service](#linked-service-properties) in configuratie details.
+
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
+
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
