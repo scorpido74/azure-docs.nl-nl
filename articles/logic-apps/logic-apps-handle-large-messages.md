@@ -119,7 +119,7 @@ In deze stappen wordt het gedetailleerde proces beschreven Logic Apps gebruikt v
 
    | Veld aanvraag header Logic Apps | Value | type | Description |
    |---------------------------------|-------|------|-------------|
-   | **x-ms-transfer-mode** | gesegmenteerde | Tekenreeks | Geeft aan dat de inhoud is geüpload in segmenten |
+   | **x-ms-transfer-mode** | gesegmenteerde | String | Geeft aan dat de inhoud is geüpload in segmenten |
    | **x-ms-content-length** | <*content-length*> | Integer | De volledige inhouds grootte in bytes voordat deze wordt gesegmenteerd |
    ||||
 
@@ -128,7 +128,7 @@ In deze stappen wordt het gedetailleerde proces beschreven Logic Apps gebruikt v
    | Veld koptekst eindpunt reactie | type | Vereist | Description |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | Integer | Nee | De voorgestelde segment grootte in bytes |
-   | **Location** | Tekenreeks | Ja | De URL-locatie waarnaar de HTTP-PATCH berichten moeten worden verzonden |
+   | **Location** | String | Ja | De URL-locatie waarnaar de HTTP-PATCH berichten moeten worden verzonden |
    ||||
 
 3. In uw logische app worden opvolge HTTP-PATCH berichten gemaakt en verzonden, met de volgende gegevens:
