@@ -1,6 +1,6 @@
 ---
 title: Problemen met Azure-aanmelding oplossen
-description: Oplossen van een probleem bij het aanmelden voor een nieuw account in het Microsoft Azure-portal-account centrum.
+description: Een probleem oplossen bij aanmelding voor een nieuw account in het Microsoft Azure Portal-accountcentrum.
 author: v-miegge
 manager: na
 editor: v-jesits
@@ -13,128 +13,128 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: 5032762c1275d3f1c8d1a020a54d20555f8ba3fe
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "70242439"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>Problemen met Azure-aanmelding oplossen
 
-U kunt een probleem ondervinden wanneer u zich probeert aan te melden voor een nieuw account in het Microsoft Azure-portal of het Azure-account centrum. Controleer eerst het volgende voordat u het probleem oplost:
+Er kan een probleem optreden wanneer u zich in Microsoft Azure Portal of het Azure-accountcentrum probeert aan te melden voor een nieuw account. Controleer het volgende voordat u het probleem gaat oplossen:
 
-- De gegevens die u hebt ingevoerd voor uw Azure-account profiel (inclusief het e-mail adres van de contact persoon, het adres en het telefoon nummer) zijn correct.
-- De creditcard gegevens zijn juist.
-- U hebt nog geen Microsoft-account met dezelfde informatie.
+- De gegevens die u hebt opgegeven voor uw Azure-accountprofiel (zoals het e-mailadres, adres en telefoonnummer van de contactpersoon), zijn correct.
+- De creditcardgegevens zijn correct.
+- U hebt geen ander Microsoft-account met dezelfde gegevens.
 
-## <a name="resolutions"></a>Omzetting
+## <a name="resolutions"></a>Oplossingen
 
-Als u eventuele fouten wilt oplossen, selecteert u het probleem dat optreedt wanneer u zich probeert aan te melden voor Azure.
+Selecteer het probleem dat optreedt bij aanmelding voor Azure om fouten te corrigeren.
 
-### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Fout: *Kan niet door gaan met aanmelden vanwege een probleem met uw account. Neem contact op met ondersteuning voor facturering.*
+### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Fout: *De aanmelding kan niet worden voltooid vanwege een probleem met uw account. Neem contact op met ondersteuning voor facturering.*
 
-Voer de volgende stappen uit om het probleem op te lossen:
+Volg deze stappen om het probleem op te lossen:
 
-1. Meld u aan bij het [Azure-account centrum](https://account.azure.com/Profile) met de referenties van de account beheerder.
+1. Meld u aan bij het [Azure-accountcentrum](https://account.azure.com/Profile) met de accountbeheerdersreferenties.
 
 2. Selecteer **Details bewerken**.
 
-3. Zorg ervoor dat alle adres velden zijn voltooid en geldig zijn.
+3. Zorg ervoor dat alle adresvelden zijn ingevuld en geldig zijn.
 
-4. Wanneer u zich aanmeldt voor het Azure-abonnement, moet u ervoor zorgen dat het factuur adres voor de registratie van de credit card overeenkomt met uw bank records.
+4. Wanneer u zich aanmeldt voor het Azure-abonnement, moet u ervoor zorgen dat het factuuradres voor de creditcardregistratie overeenkomt met uw bankgegevens.
 
-Als het fout bericht nog steeds wordt weer gegeven, probeert u zich aan te melden met een andere browser.
+Als het foutbericht nog steeds wordt weer gegeven, probeert u zich aan te melden in een andere browser.
 
-### <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>De voortgangs balk loopt vast in de sectie *identiteits controle per kaart* .
+### <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>De voortgangsbalk loopt vast in de sectie *Identiteitverificatie via creditcard*.
 
-Voor het volt ooien van de identiteits verificatie per kaart, moeten cookies van derden worden toegestaan voor uw browser.
+U moet in uw browser cookies van derden toestaan om de identiteitverificatie via creditcard te voltooien.
 
 ![Identiteitverificatie via creditcard](./media/billing-troubleshoot-azure-sign-up/identify-verification-by-card.png)
  
-Gebruik de volgende stappen om de cookie-instellingen van uw browser bij te werken.
+Voer de volgende stappen uit om de cookie-instellingen van uw browser bij te werken.
 
-1. Als u Chrome gebruikt, selecteert u **instellingen** >  > geavanceerde instellingen instellingen**Privacy** > -**inhoud** **weer geven**. Wis **cookies van derden en site gegevens blok keren**.
+1. Als u Chrome gebruikt, selecteert u **Instellingen** > **Geavanceerde instellingen weergeven** > **Privacy** > **Inhoudsinstellingen**. Wis **Cookies en sitegegevens van derden blokkeren**.
 
-2. Als u micro soft Edge gebruikt, selecteert u **instellingen** > **Geavanceerde instellingen** > weer geven**cookies** > **blok keren cookies niet**.
+2. Als u Microsoft Edge gebruikt, selecteert u **Instellingen** > **Geavanceerde instellingen weergeven** > **Cookies** > **Geen cookies blokkeren**.
 
-3. Vernieuw de Azure-aanmeldings pagina en controleer of het probleem is opgelost.
+3. Vernieuw de Azure-aanmeldingspagina en controleer of het probleem is opgelost.
 
-4. Als het probleem niet is opgelost, sluit u de browser en start u deze opnieuw. Probeer het vervolgens opnieuw.
+4. Als het probleem niet is opgelost, sluit u de browser en start u deze opnieuw op. Probeer het vervolgens opnieuw.
 
-### <a name="credit-card-form-doesnt-support-my-billing-address"></a>Het creditcard formulier biedt geen ondersteuning voor mijn factuur adres
+### <a name="credit-card-form-doesnt-support-my-billing-address"></a>Het creditcardformulier biedt geen ondersteuning voor mijn factuuradres
 
-Uw factuur adres moet zich in het land bevinden dat u in de sectie **over u** selecteert. Zorg ervoor dat u het juiste land selecteert.
+Uw factuuradres moet zich bevinden in het land dat u selecteert in de sectie **Over u**. Zorg ervoor dat u het juiste land selecteert.
 
-### <a name="no-text-messages-or-calls-during-sign-up-account-verification"></a>Geen tekst berichten of aanroepen bij de verificatie van het registratie account
+### <a name="no-text-messages-or-calls-during-sign-up-account-verification"></a>Geen tekstberichten of oproepen bij de verificatie van de accountaanmelding
 
-Hoewel het proces meestal snel is, kan het tot vier minuten duren voordat een verificatie code wordt bezorgd. Het telefoon nummer dat u voor verificatie invoert, wordt niet opgeslagen als een contact nummer voor het account.
+Hoewel het proces meestal snel gaat, kan het tot vier minuten duren voordat er een verificatiecode wordt verstrekt. Het telefoonnummer dat u voor verificatie invoert, wordt niet opgeslagen als contactnummer voor het account.
 
 Hier volgen enkele aanvullende tips:
 
-- Een VoiP-telefoon nummer (Voice-over-IP) kan niet worden gebruikt voor het verificatie proces voor de telefoon.
-- Dubbel Controleer het telefoon nummer dat u invoert, inclusief de land code die u in de vervolg keuzelijst selecteert.
-- Als uw telefoon geen tekst berichten (SMS) ontvangt, probeert u de optie voor **bellen** .
-- Zorg ervoor dat uw telefoon gesp rekken of SMS-berichten kan ontvangen van een op Verenigde Staten gebaseerd telefoon nummer.
+- Een VoiP-telefoonnummer (Voice-over-IP) kan niet worden gebruikt voor het telefoonverificatieproces.
+- Controleer het telefoonnummer dat u invoert, inclusief het landnummer dat u in de vervolgkeuzelijst selecteert.
+- Als u geen tekstberichten (sms) op uw telefoon ontvangt, probeert u de optie **Mij bellen**.
+- Zorg ervoor dat uw telefoon oproepen of sms-berichten kan ontvangen van een telefoonnummer uit de Verenigde Staten.
 
-Wanneer u het tekst bericht of telefoon gesprek ontvangt, voert u de code in die u in het tekstvak ontvangt.
+Wanneer u het sms-bericht of de oproep ontvangt, voert u in het tekstvak die code in die u hebt ontvangen.
 
-### <a name="credit-card-declined-or-not-accepted"></a>De credit card is afgewezen of niet geaccepteerd
+### <a name="credit-card-declined-or-not-accepted"></a>De creditcard wordt afgewezen of niet geaccepteerd
 
-Een of meer betaalde credit cards of betaal passen worden niet geaccepteerd als betaling voor Azure-abonnementen. Zie uw betaalpas of credit card wordt [geweigerd bij Azure-aanmelding](https://support.microsoft.com/help/4042960)om te zien wat er anders kan leiden dat uw kaart wordt afgewezen.
+Virtuele of prepaidcreditcards of -debitcards worden niet geaccepteerd als betaalmethode voor Azure-abonnementen. Controleer of uw debitcard of creditcard is [geweigerd bij Azure-aanmelding](https://support.microsoft.com/help/4042960) om te zien waardoor uw kaart nog meer kan zijn afgewezen.
 
-### <a name="free-trial-is-not-available"></a>De gratis proef versie is niet beschikbaar
+### <a name="free-trial-is-not-available"></a>Er is geen gratis proefversie beschikbaar
 
-Hebt u in het verleden een Azure-abonnement gebruikt? De gebruiksvoorwaarden van Azure beperken de activering van de gratis proefversie alleen voor een gebruiker die nieuw is in Azure. Als u eerder een ander type Azure-abonnement hebt gehad, is het niet mogelijk om een gratis proefversie te activeren. U kunt zich aanmelden voor een [abonnement met betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/).
+Hebt u in het verleden een Azure-abonnement gebruikt? De gebruiksvoorwaarden van Azure beperken de activering van de gratis proefversie alleen voor een gebruiker die nieuw is in Azure. Als u eerder een ander type Azure-abonnement hebt gehad, is het niet mogelijk om een gratis proefversie te activeren. Overweeg u aan te melden voor een [abonnement voor Betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/).
 
-### <a name="i-saw-a-charge-on-my-free-trial-account"></a>Ik heb een tarief voor mijn gratis proef account gezien
+### <a name="i-saw-a-charge-on-my-free-trial-account"></a>Ik heb kosten gezien voor mijn gratis proefaccount
 
-U ziet mogelijk een kleine verificatie blokkering op uw creditcard account nadat u zich hebt aangemeld. Dit wordt binnen drie tot vijf dagen verwijderd. Als u zich zorgen maakt over het beheer van kosten, lees dan meer over [onverwachte kosten voor komen](billing-getting-started.md).
+U kunt na aanmelding een kleine verificatiepost voor uw creditcardaccount aantreffen. Deze wordt binnen drie tot vijf dagen verwijderd. Lees meer over [Onverwachte kosten voorkomen](billing-getting-started.md) als u zich zorgen maakt over het kostenbeheer.
 
-### <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>Kan het Azure-vergoedings plan niet activeren zoals MSDN, BizSpark, BizSparkPlus of MPN
+### <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>Kan het Azure-vergoedingsplan, bijvoorbeeld MSDN, BizSpark, BizSparkPlus of MPN, niet activeren
 
-Zorg ervoor dat u de juiste aanmeldings referenties gebruikt. Controleer vervolgens het programma voor de vergoeding om er zeker van te zijn dat u in aanmerking komt.
+Zorg ervoor dat u de juiste aanmeldingsreferenties gebruikt. Controleer vervolgens het voordeelprogramma om na te gaan of u wel in aanmerking komt.
 
 - MSDN 
-  - Controleer uw geschiktheids status op de pagina van uw [MSDN-account](https://msdn.microsoft.com/subscriptions/manage/default.aspx).
-  - Als u uw status niet kunt controleren, neemt u contact op met de [klanten service centers van MSDN-abonnementen](https://msdn.microsoft.com/library/aa493452.aspx).
-- Microsoft voor startups
-  - Meld u aan bij de [Portal van micro soft voor opstarten](https://startups.microsoft.com/#start-two) om uw geschiktheids status voor micro soft te verifiëren voor opstarten.
-  - Als u uw status niet kunt verifiëren, kunt u hulp krijgen in de [forums van micro soft voor opstarten](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups).
+  - Controleer uw geschiktheidsstatus op uw [MSDN-accountpagina](https://msdn.microsoft.com/subscriptions/manage/default.aspx).
+  - Als u uw status niet kunt controleren, neemt u contact op met de [klantenservicecenters voor MSDN-abonnementen](https://msdn.microsoft.com/library/aa493452.aspx).
+- Microsoft for Startups
+  - Meld u aan bij de [Microsoft for Startups-portal](https://startups.microsoft.com/#start-two) om uw geschiktheidsstatus voor Microsoft te verifiëren voor opstarten.
+  - Als u uw status niet kunt verifiëren, kunt u ondersteuning krijgen via de [Microsoft for Startups-forums](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups).
 - MPN 
-  - Meld u aan bij de [MPN-Portal](https://mspartner.microsoft.com/Pages/Locale.aspx) om uw geschiktheids status te controleren. Als u over de juiste [bevoegdheden voor het Cloud platform](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx)beschikt, komt u mogelijk in aanmerking voor extra voor delen.
+  - Meld u aan bij de [MPN-portal](https://mspartner.microsoft.com/Pages/Locale.aspx) om uw geschiktheidsstatus te controleren. Als u over de juiste [competenties voor het cloudplatform](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx) beschikt, komt u mogelijk in aanmerking voor extra voordelen.
   - Als u uw status niet kunt verifiëren, neemt u contact op met de [MPN-ondersteuning](https://mspartner.microsoft.com/Pages/Support/Premium/contact-support.aspx).
 
-### <a name="cant-activate-new-azure-in-open-subscription"></a>Kan geen nieuw Azure activeren in een open-abonnement
+### <a name="cant-activate-new-azure-in-open-subscription"></a>Kan geen nieuw Azure In Open-abonnement activeren
 
-Als u een Azure in open-abonnement wilt maken, moet u een geldige OSA-sleutel (online service Activation) hebben waaraan ten minste één Azure in open token is gekoppeld. Als u geen OSA-sleutel hebt, neemt u contact op met een van de micro soft-partners die worden vermeld in [micro soft Pinpoint](https://pinpoint.microsoft.com/).
+Als u een Azure In Open-abonnement wilt maken, moet u een geldige OSA-sleutel (Online Service Activation) hebben waaraan ten minste één Azure In Open-token is gekoppeld. Als u geen OSA-sleutel hebt, neemt u contact op met een van de Microsoft-partners die worden vermeld in [Microsoft Pinpoint](https://pinpoint.microsoft.com/).
 
 ### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>Fout: *U komt niet in aanmerking voor een Azure-abonnement*
 
-Om dit probleem op te lossen, controleert u of de volgende items waar zijn:
+U kunt dit probleem oplossen door het volgende te controleren:
 
-- De gegevens die u hebt ingevoerd voor uw Azure-account profiel (inclusief het e-mail adres van de contact persoon, het adres en het telefoon nummer) zijn correct.
-- De creditcard gegevens zijn juist.
-- U hebt nog geen Microsoft-account die dezelfde gegevens gebruiken.
+- De gegevens die u hebt opgegeven voor uw Azure-accountprofiel (zoals het e-mailadres, adres en telefoonnummer van de contactpersoon), zijn correct.
+- De creditcardgegevens zijn correct.
+- U hebt geen ander Microsoft-account waarvoor dezelfde gegevens worden gebruikt.
 
-### <a name="error-your-current-account-type-is-not-supported"></a>Fout: *Uw huidige account type wordt niet ondersteund*
+### <a name="error-your-current-account-type-is-not-supported"></a>Fout: *Uw huidige accounttype wordt niet ondersteund*
 
-Dit probleem kan zich voordoen als het account is geregistreerd in een niet- [beheerde Azure AD-adres lijst](../active-directory/users-groups-roles/directory-self-service-signup.md)en niet is opgenomen in de Azure AD-Directory van uw organisatie. 
+Dit probleem kan zich voordoen als het account is geregistreerd in een [niet-beheerde Azure AD-directory](../active-directory/users-groups-roles/directory-self-service-signup.md) en niet is opgenomen in de Azure AD-directory van uw organisatie. 
 
-U kunt dit probleem oplossen door u aan te melden bij het Azure-account met een ander account of door de niet-beheerde AD-Directory over te nemen. Zie voor meer informatie een niet- [beheerde Directory als Administrator overnemen in azure Active Directory](../active-directory/users-groups-roles/domains-admin-takeover.md).
+U kunt dit probleem oplossen door het Azure-account aan te melden met behulp van een ander account of door de niet-beheerde AD-directory over te nemen. Zie [Een niet-beheerde directory overnemen als beheerder in Azure Active Directory](../active-directory/users-groups-roles/domains-admin-takeover.md) voor meer informatie.
  
-## <a name="additional-help-resources"></a>Aanvullende hulp bronnen
+## <a name="additional-help-resources"></a>Aanvullende ondersteuningsresources
 
-Andere artikelen over het oplossen van problemen met Azure-facturering en-abonnementen
+Andere artikelen met probleemoplossingen voor Azure Billing en abonnementen
 
 - [Geweigerde kaart](billing-troubleshoot-declined-card.md)
-- [Aanmeldings problemen voor abonnementen](billing-troubleshoot-sign-in-issue.md)
+- [Aanmeldingsproblemen voor abonnementen](billing-troubleshoot-sign-in-issue.md)
 - [Geen abonnementen gevonden](billing-no-subscriptions-found.md)
 - [Weergave voor bedrijfskosten is uitgeschakeld](billing-enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
-## <a name="contact-us-for-help"></a>Neem contact met ons op voor hulp
+## <a name="contact-us-for-help"></a>Contact met ons opnemen voor ondersteuning
 
-Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Documentatie voor Azure billing](index.md)
+- [Documentatie voor Azure Billing](index.md)
