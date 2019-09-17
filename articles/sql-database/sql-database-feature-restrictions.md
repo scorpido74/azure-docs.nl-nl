@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database-functie-beperkingen | Microsoft Docs
-description: Beperkingen voor Azure SQL Database-functie verbetert de databasebeveiliging van uw door functies in de database die door aanvallers toegang kunnen krijgen tot informatie in deze kan worden te beperken.
+title: Functie beperkingen voor Azure SQL Database | Microsoft Docs
+description: Dankzij de beperkingen van Azure SQL Database-functies wordt uw database beveiliging verbeterd door functies in uw data base te beperken die aanvallers kunnen gebruiken om toegang te krijgen tot informatie.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,22 +10,21 @@ ms.topic: conceptual
 author: vainolo
 ms.author: arib
 ms.reviewer: vanto
-manager: craigg
 ms.date: 03/22/2019
-ms.openlocfilehash: ac7a074e78def504a10b4daa07971f919f414a88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 5f5123624b5b9388baf799b48127b5b796eec21b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66259450"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568222"
 ---
-# <a name="azure-sql-database-feature-restrictions"></a>Beperkingen voor Azure SQL Database-functie
+# <a name="azure-sql-database-feature-restrictions"></a>Functie beperkingen Azure SQL Database
 
-Een algemene gegevensbron van SQL Server-aanvallen, is via web-apps die toegang hebben tot de database waarbij verschillende vormen van SQL-injectieaanvallen worden gebruikt voor het verzamelen van informatie over de database.  In het ideale geval wordt toepassingscode ontwikkeld, zodat deze niet toe voor SQL-injectie dat staat.  In grote-codebases met verouderde en externe code, kan een echter nooit zijn ervoor dat alle gevallen zijn opgelost, zodat een feit van het leven die wij hebben om te beveiligen tegen SQL-injecties.  Het doel van de functiebeperkingen is om te voorkomen dat sommige formulieren van de SQL-injectie uit het lekken van informatie over de database, zelfs als de SQL-injectie geslaagd is.
+Een veelvoorkomende bron van SQL Server aanvallen is via webtoepassingen die toegang hebben tot de data base waar verschillende vormen van SQL-injectie aanvallen worden gebruikt om informatie over de data base te beschikken.  In het ideale geval wordt de toepassings code ontwikkeld zodat SQL-injectie niet is toegestaan.  In grote code bases die verouderde en externe code bevatten, kan er echter nooit zeker van zijn dat alle cases zijn geadresseerd, zodat SQL-injecties veel tijd in beslag nemen.  Het doel van functie beperkingen is om te voor komen dat sommige vormen van SQL-injecties gegevens over de data base lekken, zelfs wanneer de SQL-injectie is geslaagd.
 
-## <a name="enabling-feature-restrictions"></a>Inschakelen van functiebeperkingen
+## <a name="enabling-feature-restrictions"></a>Functie beperkingen inschakelen
 
-Inschakelen van functiebeperkingen wordt uitgevoerd met behulp van de `sp_add_feature_restriction` opgeslagen procedure als volgt:
+Het inschakelen van de functie beperkingen wordt `sp_add_feature_restriction` als volgt gedaan met behulp van de opgeslagen procedure:
 
 ```sql
 EXEC sp_add_feature_restriction <feature>, <object_class>, <object_name>
@@ -35,90 +34,90 @@ De volgende functies kunnen worden beperkt:
 
 | Functie          | Description |
 |------------------|-------------|
-| N'ErrorMessages' | Als beperkt, worden alle gebruikersgegevens binnen het foutbericht wordt gemaskeerd. Zie [foutberichten functie beperking](#error-messages-feature-restriction) |
-| N'Waitfor'       | Als beperkt, wordt de opdracht onmiddellijk geretourneerd zonder enige vertraging. Zie [WAITFOR functie beperking](#waitfor-feature-restriction) |
+| N'ErrorMessages' | Wanneer dit is beperkt, worden alle gebruikers gegevens in het fout bericht gemaskeerd. Raadpleeg de [functie beperking voor fout berichten](#error-messages-feature-restriction) |
+| N'Waitfor'       | Wanneer dit is beperkt, wordt de opdracht direct zonder vertraging geretourneerd. Zie [waitfor-functie beperking](#waitfor-feature-restriction) |
 
-De waarde van `object_class` kan `N'User'` of `N'Role'` om aan te duiden of `object_name` is de naam van een gebruiker of de naam van een rol in de database.
+De waarde van `object_class` kan ofwel `N'User'` of `N'Role'` worden aangegeven `object_name` of de naam van een gebruikers naam of een rol in de data base is.
 
-Het volgende voorbeeld zorgt ervoor dat alle foutberichten voor gebruiker `MyUser` moet worden gemaskeerd:
+In het volgende voor beeld worden alle fout berichten voor `MyUser` de gebruiker gemaskeerd:
 
 ```sql
 EXEC sp_add_feature_restriction N'ErrorMessages', N'User', N'MyUser'
 ```
 
-## <a name="disabling-feature-restrictions"></a>Functiebeperkingen uitschakelen
+## <a name="disabling-feature-restrictions"></a>Functie beperkingen uitschakelen
 
-Functiebeperkingen uitschakelen wordt gedaan met behulp van de `sp_drop_feature_restriction` opgeslagen procedure als volgt:
+Het uitschakelen van de functie beperkingen wordt `sp_drop_feature_restriction` als volgt gedaan met behulp van de opgeslagen procedure:
 
 ```sql
 EXEC sp_drop_feature_restriction <feature>, <object_class>, <object_name>
 ```
 
-Het volgende voorbeeld wordt een fout bericht maskeren voor gebruiker `MyUser`:
+In het volgende voor beeld wordt fout bericht maskering uitgeschakeld voor `MyUser`gebruiker:
 
 ```sql
 EXEC sp_drop_feature_restriction N'ErrorMessages', N'User', N'MyUser'
 ```
 
-## <a name="viewing-feature-restrictions"></a>Functiebeperkingen weergeven
+## <a name="viewing-feature-restrictions"></a>Functie beperkingen weer geven
 
-De `sys.sql_feature_restrictions` weergave geeft alle functiebeperkingen van het momenteel gedefinieerde op de database. Het heeft de volgende kolommen:
+De `sys.sql_feature_restrictions` weer gave bevat alle momenteel gedefinieerde functie beperkingen voor de data base. Het bevat de volgende kolommen:
 
 | Kolomnaam | Gegevenstype | Description |
 |-------------|-----------|-------------|
-| Klasse       | nvarchar(128) | Klasse van het object waarop de beperking van toepassing is |
-| object      | nvarchar(256) | Naam van het object waarop de beperking van toepassing is |
-| Functie     | nvarchar(128) | Functie die is beperkt |
+| Klasse       | nvarchar (128) | Klasse van object waarop de beperking van toepassing is |
+| object      | nvarchar(256) | De naam van het object waarop de beperking van toepassing is |
+| traceren     | nvarchar (128) | Functie die is beperkt |
 
-## <a name="feature-restrictions"></a>Functiebeperkingen
+## <a name="feature-restrictions"></a>Functie beperkingen
 
-### <a name="error-messages-feature-restriction"></a>Fout berichten functie beperking
+### <a name="error-messages-feature-restriction"></a>Functie beperking voor fout berichten
 
-Een algemene SQL-injectie-aanval methode is het invoeren van code die een fout veroorzaakt.  Door het foutbericht, een aanvaller voor meer informatie over het systeem inschakelen van aanvullende meer gerichte aanvallen.  Deze aanval kan met name nuttig zijn wanneer de toepassing de resultaten van een query niet wordt weergegeven, maar er foutberichten worden weergegeven.
+Een algemene aanvals methode voor SQL-injectie is het invoegen van code die een fout veroorzaakt.  Als u het fout bericht bekijkt, kan een aanvaller informatie over het systeem achterhalen, zodat er meer gerichte aanvallen mogelijk zijn.  Deze aanval kan vooral nuttig zijn als de toepassing de resultaten van een query niet weergeeft, maar er fout berichten worden weer gegeven.
 
-Houd rekening met een web-App met een aanvraag in de vorm van:
+Overweeg een webtoepassing met een aanvraag in de vorm van:
 
 ```html
 http://www.contoso.com/employee.php?id=1
 ```
 
-Die wordt uitgevoerd de volgende databasequery:
+Die de volgende database query uitvoert:
 
 ```sql
 SELECT Name FROM EMPLOYEES WHERE Id=$EmpId
 ```
 
-Als de waarde die is doorgegeven als de `id` parameter voor de aanvraag van de web ter vervanging van $EmpId in de databasequery is gekopieerd, een aanvaller kan maken van de volgende aanvraag:
+Als de waarde die wordt door `id` gegeven als de para meter voor de aanvraag van de webtoepassing, wordt gekopieerd om $EmpId te vervangen in de database query, kan een aanvaller de volgende aanvraag indienen:
 
 ```html
 http://www.contoso.com/employee.php?id=1 AND CAST(DB_NAME() AS INT)=0
 ```
 
-En de volgende fout wordt geretourneerd, waardoor de aanvaller voor meer informatie over de naam van de database:
+En de volgende fout wordt geretourneerd, waardoor de aanvaller de naam van de data base kan achterhalen:
 
 ```sql
 Conversion failed when converting the nvarchar value 'HR_Data' to data type int.
 ```
 
-Na het inschakelen van de foutberichten functie beperking voor de gebruiker van de toepassing in de database, wordt het foutbericht geretourneerd zodat er geen interne informatie over de database is gelekt gemaskeerd:
+Na het inschakelen van de functie beperking voor fout berichten voor de toepassings gebruiker in de data base, wordt het geretourneerde fout bericht gemaskeerd zodat er geen interne informatie over de data base wordt gelekt:
 
 ```sql
 Conversion failed when converting the ****** value '******' to data type ******.
 ```
 
-De aanvaller kan op dezelfde manier, maken van de volgende aanvraag:
+Op dezelfde manier kan de aanvaller de volgende aanvraag doen:
 
 ```html
 http://www.contoso.com/employee.php?id=1 AND CAST(Salary AS TINYINT)=0
 ```
 
-En de volgende fout wordt geretourneerd, waardoor de aanvaller voor meer informatie over het salaris van de werknemer:
+En de volgende fout wordt geretourneerd, waardoor de aanvaller het salaris van de werk nemer kan weten:
 
 ```sql
 Arithmetic overflow error for data type tinyint, value = 140000.
 ```
 
-Met behulp van fout berichten functie beperking, de database geretourneerd:
+Als u de functie voor fout berichten gebruikt, retourneert de data base het volgende:
 
 ```sql
 Arithmetic overflow error for data type ******, value = ******.
@@ -126,24 +125,24 @@ Arithmetic overflow error for data type ******, value = ******.
 
 ### <a name="waitfor-feature-restriction"></a>WAITFOR-functie beperking
 
-Een Blind SQL-injectie is wanneer een toepassing heeft niet beschikt over een aanvaller met de resultaten van de geïnjecteerde SQL of met een foutbericht weergegeven, maar de aanvaller gegevens uit de database afleiden door een voorwaardelijke query waarin de twee Voorwaardelijke vertakkingen duren voordat een andere hoeveelheid tijd om uit te voeren. Door het vergelijken van de reactietijd, weet de aanvaller welke vertakking is uitgevoerd en waardoor meer informatie over het systeem. De eenvoudigste variant van deze aanval wordt met behulp van de `WAITFOR` instructie om te introduceren de vertraging.
+Een blinde SQL-injectie is wanneer een toepassing geen aanvaller met de resultaten van de geïnjecteerde SQL of met een fout bericht biedt, maar de aanvaller gegevens uit de data base kan afleiden door een voorwaardelijke query te maken waarin de twee voorwaardelijke vertakkingen Voer een andere hoeveelheid tijd in om uit te voeren. Door de reactie tijd te vergelijken, kan de aanvaller weten welke vertakking werd uitgevoerd en wordt er informatie over het systeem meer in rekening gebracht. De eenvoudigste variant van deze aanval gebruikt de `WAITFOR` instructie om de vertraging aan te brengen.
 
-Houd rekening met een web-App met een aanvraag in de vorm van:
+Overweeg een webtoepassing met een aanvraag in de vorm van:
 
 ```html
 http://www.contoso.com/employee.php?id=1
 ```
 
-Die wordt uitgevoerd de volgende databasequery:
+die de volgende database query uitvoert:
 
 ```sql
 SELECT Name FROM EMPLOYEES WHERE Id=$EmpId
 ```
 
-Als de waarde als de id-parameter doorgegeven aan de webtoepassingsaanvragen vast ter vervanging van $EmpId in de databasequery is gekopieerd, kan een aanvaller maken van de volgende aanvraag:
+Als de waarde die wordt door gegeven als de id-para meter voor de aanvragen van de webtoepassing, wordt gekopieerd om $EmpId te vervangen in de database query, kan een aanvaller de volgende aanvraag doen:
 
 ```html
 http://www.contoso.com/employee.php?id=1; IF SYSTEM_USER='sa' WAITFOR DELAY '00:00:05'
 ```
 
-En de query zou een extra 5 seconden duren als de `sa` account wordt gebruikt. Als `WAITFOR` beperking van de functie is uitgeschakeld in de database, de `WAITFOR` instructie worden genegeerd en niet informatie wordt gelekt met behulp van deze aanval.
+En de query duurt vijf seconden als het `sa` account wordt gebruikt. Als `WAITFOR` functie beperking is uitgeschakeld in de data base, `WAITFOR` wordt de instructie genegeerd en wordt er geen informatie gelekt met behulp van deze aanval.

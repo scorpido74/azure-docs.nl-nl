@@ -1,9 +1,9 @@
 ---
-title: Azure Service Fabric-DNS-service | Microsoft Docs
-description: Gebruik van Service Fabric-dns-service voor het detecteren van microservices van binnen het cluster.
+title: Azure Service Fabric DNS-service | Microsoft Docs
+description: De DNS-service van Service Fabric gebruiken voor het detecteren van micro Services in het cluster.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: vturecek
 ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
@@ -13,51 +13,51 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
-ms.author: aljo
-ms.openlocfilehash: 3b3262eadc732c23000a66f24aaeeed4d9794db0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.author: atsenthi
+ms.openlocfilehash: 94b2b807eb68d628165ca8fa4011b8f3e41d3c6d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60947626"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599644"
 ---
-# <a name="dns-service-in-azure-service-fabric"></a>DNS-Service in Azure Service Fabric
-De DNS-Service is een optionele systeemservice waarmee u in uw cluster inschakelen kunt voor het detecteren van andere services met behulp van het DNS-protocol. 
+# <a name="dns-service-in-azure-service-fabric"></a>DNS-service in azure Service Fabric
+De DNS-service is een optionele systeem service die u in uw cluster kunt inschakelen om andere services te detecteren die gebruikmaken van het DNS-protocol. 
 
-Veel services, met name services in containers, kunnen worden opgevraagd via een reeds bestaande URL. Kunnen omzetten van deze services met behulp van de standaard DNS-protocol in plaats van het Service Fabric Naming-Service-protocol wordt is wenselijk. De DNS-service kunt u DNS-namen worden toegewezen aan een servicenaam en kan daarom oplossen eindpunt IP-adressen. Deze functionaliteit de draagbaarheid van services in containers worden bewaard in verschillende platforms en kunt u 'lift and shift' scenario's eenvoudiger, doordat u gebruik bestaande service-URL's in plaats van met code te herschrijven als u wilt gebruikmaken van de Naming-Service. 
+Veel services, met name services die zijn gecontainerd, zijn adresseerbaar via een vooraf bestaande URL. U kunt deze services omzetten met behulp van het standaard-DNS-protocol in plaats van het Service Fabric Naming Service Protocol. Met de DNS-service kunt u DNS-namen toewijzen aan een service naam en daarom IP-adres van het eind punt omzetten. Deze functionaliteit houdt de draag baarheid van services die zijn gecontainerd op verschillende platforms, en kunnen de scenario's van ' lift en verschuiving ' eenvoudiger maken, doordat u bestaande service-Url's kunt gebruiken in plaats van het herschrijven van code om gebruik te maken van de Naming Service. 
 
-Servicenamen, die op zijn beurt worden opgelost door de Naming-Service om te retourneren van het service-eindpunt kaarten DNS-namen van de DNS-service. De DNS-naam voor de service wordt geleverd op het moment dat wordt gemaakt. Het volgende diagram laat zien hoe de DNS-service werkt voor stateless services.
+De DNS-service wijst DNS-namen toe aan service namen, die op zijn beurt worden omgezet door de Naming Service om het service-eind punt te retour neren. De DNS-naam voor de service wordt verschaft op het moment dat deze wordt gemaakt. In het volgende diagram ziet u hoe de DNS-service werkt voor stateless Services.
 
-![Service-eindpunten](./media/service-fabric-dnsservice/stateless-dns.png)
+![Service-eind punten](./media/service-fabric-dnsservice/stateless-dns.png)
 
-Beginnen met Service Fabric versie 6.3, is het Service Fabric-DNS-protocol uitgebreid om op te nemen van een schema voor het adresseren van gepartitioneerde stateful services. Deze extensies maken het mogelijk is om op te lossen IP-adressen van een specifieke partitie met behulp van een combinatie van stateful service DNS-naam en de naam van de partitie. Alle drie partitioneringsschema's worden ondersteund:
+Vanaf Service Fabric versie 6,3 is het Service Fabric DNS-protocol uitgebreid met een schema voor het adresseren van gepartitioneerde stateful Services. Met deze uitbrei dingen kunt u specifieke IP-adressen van partities omzetten met behulp van een combi natie van stateful service DNS-naam en de partitie naam. Alle drie de partitie schema's worden ondersteund:
 
-- Met de naam partitioneren
-- Variabele partitioneren
-- Singleton-partities
+- Benoemde partitionering
+- Partitioneren met bereik
+- Singleton-partitionering
 
-Het volgende diagram laat zien hoe de DNS-service werkt voor gepartitioneerde stateful services.
+In het volgende diagram ziet u hoe de DNS-service werkt voor gepartitioneerde stateful Services.
 
-![stateful service-eindpunten](./media/service-fabric-dnsservice/stateful-dns.png)
+![stateful service-eind punten](./media/service-fabric-dnsservice/stateful-dns.png)
 
-Dynamische poorten worden niet ondersteund door de DNS-service. Om op te lossen services beschikbaar gesteld op dynamische poorten, de [reverse proxy-service](./service-fabric-reverseproxy.md).
+Dynamische poorten worden niet ondersteund door de DNS-service. Gebruik de reverse [Proxy service](./service-fabric-reverseproxy.md)om services die beschikbaar zijn op dynamische poorten, op te lossen.
 
 ## <a name="enabling-the-dns-service"></a>De DNS-service inschakelen
 > [!NOTE]
-> DNS-service voor Service Fabric-services is nog niet ondersteund in Linux.
+> De DNS-service voor Service Fabric Services wordt nog niet ondersteund in Linux.
 
-Wanneer u een cluster met behulp van de portal maakt, de DNS-service is standaard ingeschakeld in de **omvatten DNS-service** selectievakje op de **clusterconfiguratie** menu:
+Wanneer u een cluster maakt met behulp van de portal, wordt de DNS-service standaard ingeschakeld in het selectie vakje **DNS-service insluiten** in het menu **cluster configuratie** :
 
-![Het inschakelen van DNS-service via de portal](./media/service-fabric-dnsservice/enable-dns-service.png)
+![DNS-service inschakelen via de portal](./media/service-fabric-dnsservice/enable-dns-service.png)
 
-Als u niet de portal gebruikt om uw cluster te maken of als u een bestaand cluster bijwerkt, moet u de DNS-service in een sjabloon inschakelen:
+Als u de portal niet gebruikt om uw cluster te maken of als u een bestaand cluster bijwerkt, moet u de DNS-service inschakelen in een sjabloon:
 
-- Als u wilt een nieuw cluster hebt geïmplementeerd, kunt u ofwel de [-voorbeeldsjablonen](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) of maak uw eigen Resource Manager-sjabloon. 
-- Voor het bijwerken van een bestaand cluster, kunt u navigeren naar de resourcegroep van het cluster in de portal en klik op **automatiseringsscript** te werken met een sjabloon die overeenkomt met de huidige status van het cluster en andere resources in de groep. Zie voor meer informatie, [de sjabloon exporteren uit resourcegroep](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template).
+- Als u een nieuw cluster wilt implementeren, kunt u de [voorbeeld sjablonen](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) gebruiken of uw eigen Resource Manager-sjabloon maken. 
+- Als u een bestaand cluster wilt bijwerken, gaat u naar de resource groep van het cluster op de portal en klikt u op **Automation script** om te werken met een sjabloon die de huidige status van het cluster en andere resources in de groep weergeeft. Zie [de sjabloon exporteren uit de resource groep](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template)voor meer informatie.
 
-Nadat u een sjabloon hebt, kunt u de DNS-service met de volgende stappen inschakelen:
+Nadat u een sjabloon hebt, kunt u de DNS-service inschakelen met de volgende stappen:
 
-1. Controleer of de `apiversion` is ingesteld op `2017-07-01-preview` of hoger voor de `Microsoft.ServiceFabric/clusters` resource, en als dat niet het geval is, werken zoals wordt weergegeven in het volgende voorbeeld:
+1. Controleer of de `apiversion` is ingesteld op `2017-07-01-preview` of hoger voor de `Microsoft.ServiceFabric/clusters` resource, en als dat niet het geval is, werkt u deze bij, zoals wordt weer gegeven in het volgende voor beeld:
 
     ```json
     {
@@ -69,9 +69,9 @@ Nadat u een sjabloon hebt, kunt u de DNS-service met de volgende stappen inschak
     }
     ```
 
-2. Nu de DNS-service inschakelen op een van de volgende manieren:
+2. Schakel nu de DNS-service in op een van de volgende manieren:
 
-   - Zodat de DNS-service met de standaardinstellingen toe te voegen aan de `addonFeatures` sectie binnen de `properties` sectie zoals wordt weergegeven in het volgende voorbeeld:
+   - Als u de DNS-service met de standaard instellingen wilt inschakelen, `addonFeatures` voegt u deze `properties` toe aan de sectie in de sectie, zoals wordt weer gegeven in het volgende voor beeld:
 
        ```json
            "properties": {
@@ -83,7 +83,7 @@ Nadat u een sjabloon hebt, kunt u de DNS-service met de volgende stappen inschak
               ...
            }
        ```
-   - Toevoegen voor het inschakelen van de service met dan standaardinstellingen, een `DnsService` sectie aan de `fabricSettings` sectie binnen de `properties` sectie. In dit geval u niet nodig om toe te voegen aan de DNS-service `addonFeatures`. Zie voor meer informatie over de eigenschappen die kunnen worden ingesteld voor de DNS-Service, [DNS-Service-instellingen](./service-fabric-cluster-fabric-settings.md#dnsservice).
+   - Als u de service met andere dan de standaard instellingen wilt inschakelen `DnsService` , voegt u `fabricSettings` een sectie toe `properties` aan de sectie in de sectie. In dit geval hoeft u de DNS niet toe te voegen `addonFeatures`aan. Zie [DNS-service-instellingen](./service-fabric-cluster-fabric-settings.md#dnsservice)voor meer informatie over de eigenschappen die kunnen worden ingesteld voor de DNS-service.
 
        ```json
            "properties": {
@@ -111,18 +111,18 @@ Nadat u een sjabloon hebt, kunt u de DNS-service met de volgende stappen inschak
               ]
             }
        ```
-1. Zodra u de clustersjabloon met uw wijzigingen bijgewerkt hebt, past deze toe en kunt u de upgrade voltooid. Wanneer de upgrade is voltooid, wordt de DNS-service wordt uitgevoerd in uw cluster. De servicenaam is `fabric:/System/DnsService`, en u vindt deze onder de **System** sectie in Service Fabric explorer. 
+1. Nadat u de cluster sjabloon met uw wijzigingen hebt bijgewerkt, past u deze toe en laat u de upgrade volt ooien. Wanneer de upgrade is voltooid, wordt de DNS-systeem service gestart in uw cluster. De naam van de `fabric:/System/DnsService`service is en u vindt deze in het gedeelte **systeem** service van service Fabric Explorer. 
 
 
 ## <a name="setting-the-dns-name-for-your-service"></a>De DNS-naam voor uw service instellen
-U kunt een DNS-naam voor uw services declaratief voor services die standaard in het bestand ApplicationManifest.xml of instellen via PowerShell-opdrachten.
+U kunt een DNS-naam voor uw services declaratief instellen voor standaard services in het bestand ApplicationManifest. XML of via Power shell-opdrachten.
 
-De DNS-naam voor uw service wordt omgezet in het cluster, dus is het belangrijk om ervoor te zorgen dat de DNS-naam in het cluster. 
+De DNS-naam voor uw service kan in het hele cluster worden omgezet. het is belang rijk om ervoor te zorgen dat de DNS-naam in het cluster uniek is. 
 
-Het is raadzaam dat u een schema voor naamgeving van `<ServiceDnsName>.<AppInstanceName>`, bijvoorbeeld `service1.application1`. Als een toepassing wordt geïmplementeerd met behulp van Docker compose, services worden automatisch toegewezen met behulp van dit schema voor naamgeving van DNS-namen.
+Het is raadzaam om een naam schema van `<ServiceDnsName>.<AppInstanceName>`te gebruiken, `service1.application1`bijvoorbeeld. Als een toepassing wordt geïmplementeerd met behulp van docker opstellen, worden aan services automatisch DNS-namen toegewezen met dit naamgevings schema.
 
-### <a name="setting-the-dns-name-for-a-default-service-in-the-applicationmanifestxml"></a>De DNS-naam voor een standaardservice instellen in de ApplicationManifest.xml
-Open uw project in Visual Studio, of uw favoriete editor en open het bestand ApplicationManifest.xml. Ga naar de sectie van de standaard-services en voor elke service toevoegen de `ServiceDnsName` kenmerk. Het volgende voorbeeld laat zien hoe het instellen van de DNS-naam van de service `service1.application1`
+### <a name="setting-the-dns-name-for-a-default-service-in-the-applicationmanifestxml"></a>De DNS-naam voor een standaard service in ApplicationManifest. XML instellen
+Open uw project in Visual Studio of uw favoriete editor en open het bestand ApplicationManifest. XML. Ga naar de sectie standaard services en voeg voor elke service het `ServiceDnsName` kenmerk toe. In het volgende voor beeld ziet u hoe u de DNS-naam van de service instelt op`service1.application1`
 
 ```xml
     <Service Name="Stateless1" ServiceDnsName="service1.application1">
@@ -131,11 +131,11 @@ Open uw project in Visual Studio, of uw favoriete editor en open het bestand App
       </StatelessService>
     </Service>
 ```
-Wanneer de toepassing is geïmplementeerd, ziet u de service-exemplaar in de Service Fabric explorer de DNS-naam voor dit exemplaar, zoals wordt weergegeven in de volgende afbeelding: 
+Zodra de toepassing is geïmplementeerd, wordt in het service-exemplaar in Service Fabric Explorer de DNS-naam voor deze instantie weer gegeven, zoals in de volgende afbeelding: 
 
-![Service-eindpunten](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
+![Service-eind punten](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
-Het volgende voorbeeld wordt de DNS-naam voor een stateful service `statefulsvc.app`. De service maakt gebruik van een benoemde partitieschema. U ziet dat de partitienamen van de kleine letters. Dit is een vereiste voor partities die worden opgenomen in de DNS-query's; Zie voor meer informatie, [maken van DNS-query's op een stateful service partitie](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition).
+In het volgende voor beeld wordt de DNS-naam voor `statefulsvc.app`een stateful service ingesteld op. De service maakt gebruik van een benoemde partitie schema. U ziet dat de namen van de partities kleine letters zijn. Dit is een vereiste voor partities die worden bedoeld in DNS-query's; Zie [DNS-Query's maken op een stateful service partitie](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition)voor meer informatie.
 
 ```xml
     <Service Name="Stateful1" ServiceDnsName="statefulsvc.app" />
@@ -148,8 +148,8 @@ Het volgende voorbeeld wordt de DNS-naam voor een stateful service `statefulsvc.
     </Service>
 ```
 
-### <a name="setting-the-dns-name-for-a-service-using-powershell"></a>Instellen van de DNS-naam voor een service met behulp van Powershell
-U kunt de DNS-naam voor een service instellen bij het maken van met behulp van de `New-ServiceFabricService` Powershell-opdracht. Het volgende voorbeeld wordt een nieuwe stateless service met de DNS-naam `service1.application1`
+### <a name="setting-the-dns-name-for-a-service-using-powershell"></a>De DNS-naam voor een service instellen met behulp van Power shell
+U kunt de DNS-naam voor een service instellen wanneer u deze maakt `New-ServiceFabricService` met behulp van de Power shell-opdracht. In het volgende voor beeld wordt een nieuwe stateless service gemaakt met de DNS-naam`service1.application1`
 
 ```powershell
     New-ServiceFabricService `
@@ -162,41 +162,41 @@ U kunt de DNS-naam voor een service instellen bij het maken van met behulp van d
     -ServiceDnsName service1.application1
 ```
 
-## <a name="preview-making-dns-queries-on-a-stateful-service-partition"></a>[Preview] DNS-query's maken op de servicepartitie van een stateful
-Beginnen met Service Fabric versie 6.3, de Service Fabric-DNS-service biedt ondersteuning voor query's voor servicepartities.
+## <a name="preview-making-dns-queries-on-a-stateful-service-partition"></a>Evaluatie DNS-query's maken op een stateful service partitie
+Met ingang van Service Fabric versie 6,3 ondersteunt de Service Fabric DNS-service query's voor service partities.
 
-Voor de partities die worden gebruikt voor DNS-query's, de volgende naamsbeperkingen zijn van toepassing:
+Voor partities die worden gebruikt in DNS-query's gelden de volgende naamgevings beperkingen:
 
-   - Partitienamen moet voldoen aan het DNS-beleid.
-   - Meerdere label partitienamen (die punt bevatten '.', in de naam) mogen niet worden gebruikt.
-   - Partitienamen moeten kleine letters.
+   - Partitie namen moeten compatibel zijn met DNS.
+   - Partitie namen met meerdere labels (met punt, '. ', in naam) mogen niet worden gebruikt.
+   - Partitie namen moeten kleine letters zijn.
 
-DNS-query's die zijn gericht op een partitie zijn als volgt ingedeeld:
+DNS-query's die zijn gericht op een partitie, zijn als volgt ingedeeld:
 
 ```
     <First-Label-Of-Partitioned-Service-DNSName><PartitionPrefix><Target-Partition-Name>< PartitionSuffix>.<Remaining- Partitioned-Service-DNSName>
 ```
 Waar:
 
-- *First-Label-Of-Partitioned-Service-DNSName* is het eerste deel van de DNS-naam van uw service.
-- *PartitionPrefix* is een waarde die kan worden ingesteld in de sectie de DNS-service van het clustermanifest of door middel van het cluster Resource Manager-sjabloon. De standaardwaarde is '-'. Zie voor meer informatie, [DNS-Service-instellingen](./service-fabric-cluster-fabric-settings.md#dnsservice).
-- *Doel partitienaam* is de naam van de partitie. 
-- *PartitionSuffix* is een waarde die kan worden ingesteld in de sectie de DNS-service van het clustermanifest of door middel van het cluster Resource Manager-sjabloon. De standaardwaarde is een lege tekenreeks. Zie voor meer informatie, [DNS-Service-instellingen](./service-fabric-cluster-fabric-settings.md#dnsservice).
-- *Resterende-gepartitioneerd-Service-DNSName* is het resterende gedeelte van de DNS-naam van uw service.
+- Het *eerste label van de gepartitioneerde service-DNSName* is het eerste deel van de DNS-naam van uw service.
+- *PartitionPrefix* is een waarde die kan worden ingesteld in de sectie DNS van het cluster manifest of via de Resource Manager-sjabloon van het cluster. De standaard waarde is '-'. Zie [DNS-service-instellingen](./service-fabric-cluster-fabric-settings.md#dnsservice)voor meer informatie.
+- *Doel-partitie: naam* is de naam van de partitie. 
+- *PartitionSuffix* is een waarde die kan worden ingesteld in de sectie DNS van het cluster manifest of via de Resource Manager-sjabloon van het cluster. De standaard waarde is een lege teken reeks. Zie [DNS-service-instellingen](./service-fabric-cluster-fabric-settings.md#dnsservice)voor meer informatie.
+- Resterend gepartitioneerde *service-DNSName* is het resterende deel van de DNS-naam van de service.
 
-De volgende voorbeelden ziet u DNS-query's voor gepartitioneerde services die worden uitgevoerd op een cluster met standaardinstellingen voor `PartitionPrefix` en `PartitionSuffix`: 
+In de volgende voor beelden worden DNS-query's weer gegeven voor gepartitioneerde services die worden uitgevoerd `PartitionPrefix` op `PartitionSuffix`een cluster met standaard instellingen voor en: 
 
-- Om op te lossen '0'-partitie van een service met de DNS-naam `backendrangedschemesvc.application` die gebruikmaakt van een ranged partitieschema, gebruikt u `backendrangedschemesvc-0.application`.
-- Om op te lossen van de partitie 'first' van een service met DNS-naam `backendnamedschemesvc.application` die gebruikmaakt van een benoemde partitieschema, gebruikt u `backendnamedschemesvc-first.application`.
+- Als u de partitie "0" van een service wilt omzetten `backendrangedschemesvc.application` met een DNS-naam die gebruikmaakt van een partitie `backendrangedschemesvc-0.application`schema met bereik, gebruikt u.
+- Als u de partitie ' First ' van een service wilt omzetten `backendnamedschemesvc.application` met een DNS-naam die gebruikmaakt van een `backendnamedschemesvc-first.application`benoemde partitie schema, gebruikt u.
 
-De DNS-service wordt het IP-adres van de primaire replica van de partitie. Als er geen partitie is opgegeven, retourneert de service het IP-adres van de primaire replica van een willekeurig geselecteerde partitie.
+De DNS-service retourneert het IP-adres van de primaire replica van de partitie. Als er geen partitie is opgegeven, retourneert de service het IP-adres van de primaire replica van een wille keurige geselecteerde partitie.
 
-## <a name="using-dns-in-your-services"></a>Met behulp van DNS in uw services
-Als u meer dan één service implementeert, kunt u de eindpunten van andere services om te communiceren met met behulp van een DNS-naam vinden. De DNS-service werkt voor stateless services en, in Service Fabric versie 6.3 en hoger voor stateful services. Voor stateful services die worden uitgevoerd op eerdere versies van Service Fabric 6.3, kunt u de ingebouwde [reverse proxy-service](./service-fabric-reverseproxy.md) voor http-aanroepen voor het aanroepen van de partitie van een bepaalde service. 
+## <a name="using-dns-in-your-services"></a>DNS gebruiken in uw services
+Als u meer dan één service implementeert, kunt u de eind punten van andere services vinden om te communiceren met behulp van een DNS-naam. De DNS-service werkt voor stateless Services en, in Service Fabric versie 6,3 en hoger, voor stateful Services. Voor stateful services die worden uitgevoerd op versies van Service Fabric vóór 6,3, kunt u de ingebouwde reverse [Proxy-service](./service-fabric-reverseproxy.md) voor http-aanroepen gebruiken om een bepaalde service partitie aan te roepen. 
 
-Dynamische poorten worden niet ondersteund door de DNS-service. U kunt de reverse proxy-service gebruiken om op te lossen van de services die gebruikmaken van dynamische poorten.
+Dynamische poorten worden niet ondersteund door de DNS-service. U kunt de reverse proxy-service gebruiken voor het oplossen van services die gebruikmaken van dynamische poorten.
 
-De volgende code toont hoe u aan te roepen een stateless service via DNS. Het is gewoon een gewone http-aanroep waar u de DNS-naam, de poort en eventuele optionele pad opgeven als onderdeel van de URL.
+De volgende code laat zien hoe u een stateless service aanroept via DNS. Het is gewoon een gewone http-oproep waarbij u de DNS-naam, de poort en een optioneel pad opgeeft als onderdeel van de URL.
 
 ```csharp
 public class ValuesController : Controller
@@ -224,7 +224,7 @@ public class ValuesController : Controller
 }
 ```
 
-De volgende code toont een oproep op een specifieke partitie van een stateful service. In dit geval bevat de naam van de DNS-naam van de partitie (Partitie1). De aanroep wordt ervan uitgegaan dat een cluster met de standaardwaarden voor de `PartitionPrefix` en `PartitionSuffix`.
+De volgende code toont een aanroep voor een specifieke partitie van een stateful service. In dit geval bevat de DNS-naam de partitie naam (partition1). Bij de aanroep wordt uitgegaan van een cluster met `PartitionPrefix` standaard `PartitionSuffix`waarden voor en.
 
 ```csharp
 public class ValuesController : Controller
@@ -253,10 +253,10 @@ public class ValuesController : Controller
 ```
 
 ## <a name="known-issues"></a>Bekende problemen
-* Voor Service Fabric versie 6.3 en hoger is er een probleem met DNS-zoekacties voor de servicenamen met een koppelteken in de DNS-naam. Volgen voor meer informatie over dit probleem, de volgende [GitHub-probleem](https://github.com/Azure/service-fabric-issues/issues/1197). Een oplossing voor dit wordt binnenkort in de volgende 6.3 update. 
+* Voor Service Fabric versies 6,3 en hoger is er een probleem met DNS-zoek acties voor service namen met een koppel teken in de DNS-naam. Houd voor meer informatie over dit probleem het volgende github- [probleem](https://github.com/Azure/service-fabric-issues/issues/1197)bij. Er is een oplossing voor dit probleem in de volgende 6,3-update. 
 
-* DNS-service voor Service Fabric-services is nog niet ondersteund in Linux. DNS-service wordt ondersteund voor containers in Linux. Handmatige oplossing met behulp van Fabric Client/ServicePartitionResolver is het alternatief beschikbaar.
+* De DNS-service voor Service Fabric Services wordt nog niet ondersteund in Linux. De DNS-service wordt ondersteund voor containers in Linux. Hand matige omzetting met Fabric client/ServicePartitionResolver is het beschik bare alternatief.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over communicatie binnen het cluster met [verbinding maken en te communiceren met services](service-fabric-connect-and-communicate-with-services.md)
+Meer informatie over service communicatie binnen het cluster met [verbinding maken en communiceren met Services](service-fabric-connect-and-communicate-with-services.md)
 
