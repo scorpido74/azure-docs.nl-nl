@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: Documentatie over Private Link
+summary: Met Azure Private Link hebt u via een privé-eindpunt in uw virtuele netwerk toegang tot Azure PaaS-services (bijvoorbeeld Azure Storage en SQL Database) en in Azure gehoste services van klanten of partners.  Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. Het is ook mogelijk om een eigen Private Link-service te maken in uw virtuele netwerk en deze privé aan te bieden bij klanten.
+metadata:
+  title: Documentatie over Private Link - Quickstarts, instructiegidsen en API-verwijzing
+  description: Meer informatie over het gebruik van Azure Private Link. In quickstarts en zelfstudies leert u hoe u een Private Link-service implementeert.
+  ms.service: virtual-network
+  ms.topic: landing-page
+  ms.collection: collection
+  author: KumudD
+  ms.author: kumud
+  ms.date: 09/16/2019
+  ms.openlocfilehash: 867c20b96f8a48aeb52e455d718057e686ddfcbe
+  ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/16/2019
+  ms.locfileid: "71020208"
+landingContent:
+- title: Over Azure Private Link
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Private Link?
+      url: private-link-overview.md
+- title: Verbinding maken met een Azure-service
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Wat is een privé-eindpunt?
+      url: private-endpoint-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Een privé-eindpunt maken
+      url: create-private-endpoint-portal.md
+- title: Uw eigen Private Link-service bouwen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Wat is de Private Link-service?
+      url: private-link-service-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een Private Link-service maken
+      url: create-private-link-service-powershell.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure-CLI
+      url: /cli/azure/network
+    - text: Azure PowerShell
+      url: /powershell/module/az.network
+    - text: REST
+      url: /rest/api/virtualnetwork/privatelinkservices
