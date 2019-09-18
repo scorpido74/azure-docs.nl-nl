@@ -1,6 +1,6 @@
 ---
-title: Gebruikersstromen in Azure Active Directory B2C | Microsoft Docs
-description: Meer informatie over de uitbreidbaar beleidsframework van Azure Active Directory B2C en hoe u verschillende gebruikersstromen maken.
+title: Gebruikers stromen in Azure Active Directory B2C | Microsoft Docs
+description: Meer informatie over het flexibele beleids raamwerk van Azure Active Directory B2C en het maken van verschillende gebruikers stromen.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,30 +10,30 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 54677dc0771f65b7636b4d1cac77f53f9c04a09d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08da04a8bf167c99ef2384a9714034ae1865bec1
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508940"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065377"
 ---
-# <a name="user-flows-in-azure-active-directory-b2c"></a>Gebruikersstromen in Azure Active Directory B2C
+# <a name="user-flows-in-azure-active-directory-b2c"></a>Gebruikers stromen in Azure Active Directory B2C
 
-Het framework uitbreidbaar beleid van Azure Active Directory (Azure AD) B2C, is de belangrijkste sterkte van de service. Volledig beschrijven identiteitservaringen zoals beleid voor registreren, aanmelden of profiel bewerken. Instellen om u te helpen de meest algemene taken voor identiteit, bevat vooraf gedefinieerde, configureerbare beleidsregels met de naam van de Azure AD B2C-portal **gebruikersstromen**. 
+Het Extensible Policy Framework van Azure Active Directory B2C (Azure AD B2C) is de kern sterkte van de service. Het beleid beschrijft volledige identiteits ervaringen, zoals aanmelden, aanmelden of profiel bewerking. Om u te helpen bij het instellen van de meest voorkomende identiteits taken, bevat de Azure AD B2C Portal vooraf gedefinieerde, Configureer bare beleids regels met de naam **gebruikers stromen**.
 
-## <a name="what-are-user-flows"></a>Wat zijn gebruikersstromen?
+## <a name="what-are-user-flows"></a>Wat zijn gebruikers stromen?
 
-Een beleid kunt u gedrag in uw toepassingen beheren met het configureren van de volgende instellingen:
+Met een gebruikers stroom kunt u gedrag in uw toepassingen beheren door de volgende instellingen te configureren:
 
-- Account typen die wordt gebruikt voor aanmelding bij, zoals sociale accounts, zoals een Facebook- of lokale accounts
-- Kenmerken worden verzameld van de consumenten, zoals de voornaam, postcode, en schoen grootte
+- Account typen die worden gebruikt voor aanmelding, zoals sociale accounts zoals een Facebook-of lokale account
+- Kenmerken die moeten worden verzameld van de consument, zoals de voor naam, de post code en de grootte van de schoenen
 - Azure Multi-Factor Authentication
-- Aanpassing van de gebruikersinterface
-- Informatie die de toepassing als claims in een token ontvangt 
+- Aanpassing van de gebruikers interface
+- Informatie die de toepassing ontvangt als claims in een token
 
-U kunt veel gebruikersstromen van verschillende typen maken in uw tenant en ze in uw toepassingen indien nodig kunnen gebruiken. Gebruikersstromen kunnen worden hergebruikt binnen toepassingen. Deze flexibiliteit kunt u definiëren en ervaring van de identiteit met minimale of geen wijzigingen in uw code te wijzigen. Uw toepassing wordt een gebruikersstroom geactiveerd met behulp van een standaard HTTP-verificatieaanvraag met de parameter van een gebruiker-stroom. Een aangepaste [token](active-directory-b2c-reference-tokens.md) als reactie wordt ontvangen. 
+U kunt veel gebruikers stromen van verschillende typen in uw Tenant maken en deze naar behoefte gebruiken in uw toepassingen. Gebruikers stromen kunnen opnieuw worden gebruikt in verschillende toepassingen. Met deze flexibiliteit kunt u identiteits ervaringen definiëren en wijzigen met minimale of geen wijzigingen in uw code. Uw toepassing activeert een gebruikers stroom met behulp van een standaard-HTTP-verificatie aanvraag die een para meter voor de gebruikers stroom bevat. Er wordt een aangepast [token](active-directory-b2c-reference-tokens.md) ontvangen als antwoord.
 
-De volgende voorbeelden ziet de parameter 'p' query tekenreeks die Hiermee geeft u het beleid moet worden gebruikt:
+In de volgende voor beelden ziet u de query reeks parameter "p" waarmee de gebruikers stroom wordt opgegeven die moet worden gebruikt:
 
 ```
 https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
@@ -61,30 +61,30 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ## <a name="user-flow-versions"></a>Gebruikersstroomversies
 
-In de Azure-portal, nieuwe [versies van gebruikersstromen](user-flow-versions.md) voortdurend worden toegevoegd. Wanneer u aan de slag met Azure AD B2C, getest gebruiker stromen worden aanbevolen voor gebruik. Wanneer u een nieuwe gebruikersstroom maakt, kiest u de gebruikersstroom die u nodig hebt uit de **aanbevolen** tabblad.
+In de Azure Portal worden er voortdurend nieuwe [versies van gebruikers stromen](user-flow-versions.md) toegevoegd. Wanneer u aan de slag gaat met Azure AD B2C, worden geteste gebruikers stromen aanbevolen voor gebruik. Wanneer u een nieuwe gebruikers stroom maakt, kiest u de gebruikers stroom die u nodig hebt op het tabblad **Aanbevolen** .
 
-De volgende gebruikersstromen worden momenteel aanbevolen:
+De volgende gebruikers stromen worden momenteel aanbevolen:
 
-- **Registreren en aanmelden** -beide van de ervaringen van de registratie en aanmelden met een configuratie voor één verwerkt. Gebruikers worden in de juiste weg afhankelijk van de context geleid. Het verdient aanbeveling dat u deze gebruikersstroom via gebruiken een **aanmelding** gebruikersstroom of een **aanmelden** gebruikersstroom.
-- **Bewerken van profielen** -kunnen gebruikers hun profielgegevens bewerken.
-- **Wachtwoord opnieuw instellen** -kunt u configureren of en hoe gebruikers hun wachtwoord opnieuw kunnen instellen.
+- **Meld u aan en meld u** aan voor beide registratie-en aanmeldings ervaringen met één configuratie. Gebruikers ondervinden het pad naar de juiste locatie, afhankelijk van de context. Het is raadzaam deze gebruikers stroom te gebruiken via een **aanmeldings stroom van** een gebruiker of een gebruikers stroom **voor het aanmelden** .
+- **Profiel bewerken** : Hiermee kunnen gebruikers hun profiel gegevens bewerken.
+- **Wacht woord opnieuw instellen** : Hiermee kunt u configureren of en hoe gebruikers hun wacht woord opnieuw kunnen instellen.
 
-## <a name="linking-user-flows"></a>Koppelen gebruikersstromen
+## <a name="linking-user-flows"></a>Gebruikers stromen koppelen
 
-Een **registreren of aanmelden** de gebruikersstroom met lokale accounts bevat een **wachtwoord vergeten?** koppeling op de eerste pagina van de ervaring. Op deze koppeling te klikken niet automatisch trigger een wachtwoord opnieuw instellen van beleid. 
+Een **registratie-of aanmeldings** gebruikers stroom met lokale accounts bevat een **verg eten wacht woord?** koppeling op de eerste pagina van de ervaring. Als u op deze koppeling klikt, wordt de gebruikers stroom voor wacht woord opnieuw instellen niet automatisch geactiveerd.
 
-In plaats daarvan de foutcode `AADB2C90118` wordt geretourneerd naar uw toepassing. De toepassing nodig heeft voor het afhandelen van deze foutcode door het uitvoeren van een specifieke gebruikersstroom die het wachtwoord opnieuw instellen. Als u wilt zien, kijk eens een [eenvoudige ASP.NET-voorbeeld](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI) die laat zien het koppelen van de gebruikersstromen.
+In plaats daarvan wordt de `AADB2C90118` fout code geretourneerd naar uw toepassing. Uw toepassing moet deze fout code verwerken door een specifieke gebruikers stroom uit te voeren waarmee het wacht woord opnieuw wordt ingesteld. Bekijk een voor beeld met een [eenvoudig ASP.net](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI) -voor beeld dat het koppelen van gebruikers stromen laat zien.
 
-## <a name="email-address-storage"></a>E-mailadres opslag
+## <a name="email-address-storage"></a>E-mail adres opslag
 
-Een e-mailadres is vereist als onderdeel van een beleid. Als de gebruiker wordt geverifieerd met een sociale id-provider, het e-mailadres is opgeslagen in de **otherMails** eigenschap. Als een lokaal account is gebaseerd op de gebruikersnaam van een, wordt het e-mailadres opgeslagen in een eigenschap van de detail sterke verificatie. Als een lokaal account is gebaseerd op een e-mailadres, wordt het e-mailadres is opgeslagen in de **signInNames** eigenschap.
- 
-Het e-mailadres wordt niet gegarandeerd in al deze gevallen worden geverifieerd. Een tenantbeheerder kan de e-mailverificatie in het algemene beleid voor lokale accounts uitschakelen. Zelfs als e-mailadresverificatie is ingeschakeld, adressen worden niet geverifieerd als ze afkomstig van een sociale id-provider zijn en ze nog niet hebt gewijzigd.
- 
-Alleen de **otherMails** en **signInNames** eigenschappen worden weergegeven via het Active Directory Graph API. Het e-mailadres in de eigenschap van de detail sterke verificatie is niet beschikbaar.
+Een e-mail adres kan worden vereist als onderdeel van een gebruikers stroom. Als de gebruiker zich verifieert bij een sociale ID-provider, wordt het e-mail adres opgeslagen in de eigenschap **otherMails** . Als een lokaal account is gebaseerd op een gebruikers naam, wordt het e-mail adres opgeslagen in een eigenschap met een sterke authenticatie Details. Als een lokaal account is gebaseerd op een e-mail adres, wordt het e-mail adres opgeslagen in de eigenschap **signInNames** .
+
+Het e-mail adres is niet gegarandeerd om in een van deze gevallen te worden geverifieerd. Een Tenant beheerder kan e-mail verificatie uitschakelen in het basis beleid voor lokale accounts. Zelfs als verificatie via e-mail adres is ingeschakeld, worden adressen niet gecontroleerd als ze afkomstig zijn van een sociale ID-provider en ze zijn niet gewijzigd.
+
+Alleen de eigenschappen **otherMails** en **signInNames** worden weer gegeven via de Active Directory Graph API. Het e-mail adres in de detail eigenschap sterke authenticatie is niet beschikbaar.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volg de instructies in voor het maken van de aanbevolen gebruikersstromen [zelfstudie: Een gebruikersstroom maken](tutorial-create-user-flows.md).
+Volg de instructies in [de zelf studie om de aanbevolen gebruikers stromen te maken: Maak een gebruikers stroom](tutorial-create-user-flows.md).
 
 

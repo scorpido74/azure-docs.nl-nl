@@ -1,6 +1,6 @@
 ---
-title: Configureren van de complexiteit van wachtwoorden met behulp van aangepaste beleidsregels in Azure Active Directory B2C | Microsoft Docs
-description: Klik hier voor meer informatie over het configureren van de vereisten voor wachtwoordcomplexiteit met behulp van een aangepast beleid in Azure Active Directory B2C.
+title: Wachtwoord complexiteit configureren met aangepaste beleids regels in Azure Active Directory B2C | Microsoft Docs
+description: Vereisten voor wachtwoord complexiteit configureren met behulp van een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,28 +10,28 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 04a37e6faf51787457d7ca4ab8434fd253deb2ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6454d380b0f34e940951e3de44d1dee0ff6b597f
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509162"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065526"
 ---
-# <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Configureren van de complexiteit van wachtwoorden met behulp van aangepaste beleidsregels in Azure Active Directory B2C
+# <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Wachtwoord complexiteit configureren met aangepaste beleids regels in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In Azure Active Directory (Azure AD) B2C, kunt u de complexiteitsvereisten voldoen voor wachtwoorden die worden geleverd door een gebruiker bij het maken van een account configureren. Azure AD B2C gebruikt standaard **sterke** wachtwoorden. In dit artikel leest u hoe het configureren van de complexiteit van wachtwoorden in [aangepast beleid](active-directory-b2c-overview-custom.md). Het is ook mogelijk om te configureren van de complexiteit van wachtwoorden in [gebruikersstromen](active-directory-b2c-reference-password-complexity.md).
+In Azure Active Directory B2C (Azure AD B2C) kunt u de complexiteits vereisten configureren voor wacht woorden die door een gebruiker worden verschaft bij het maken van een account. Azure AD B2C maakt standaard gebruik van **sterke** wacht woorden. In dit artikel leest u hoe u wachtwoord complexiteit kunt configureren in [aangepaste beleids regels](active-directory-b2c-overview-custom.md). Het is ook mogelijk om wachtwoord complexiteit te configureren in [gebruikers stromen](active-directory-b2c-reference-password-complexity.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voer de stappen in [aan de slag met aangepaste beleidsregels in Active Directory B2C](active-directory-b2c-get-started-custom.md).
+Voer de stappen in aan de [slag met aangepast beleid in Active Directory B2C](active-directory-b2c-get-started-custom.md).
 
-## <a name="add-the-elements"></a>De elementen toe te voegen
+## <a name="add-the-elements"></a>De elementen toevoegen
 
-1. Kopieer de *SignUpOrSignIn.xml* bestand dat u met de beginnerspakket gedownload en geef deze de naam *SingUpOrSignInPasswordComplexity.xml*.
-2. Open de *SingUpOrSignInPasswordComplexity.xml* bestand en wijzig de **PolicyId** en de **PublicPolicyUri** naar een nieuwe naam. Bijvoorbeeld, *B2C_1A_signup_signin_password_complexity*.
-3. Voeg de volgende **ClaimType** elementen met de id's van `newPassword` en `reenterPassword`:
+1. Kopieer het *SignUpOrSignIn. XML-* bestand dat u met het eerste pakket hebt gedownload en noem dit *SingUpOrSignInPasswordComplexity. XML*.
+2. Open het bestand *SingUpOrSignInPasswordComplexity. XML* en wijzig de **PolicyId** en de **PublicPolicyUri** in een nieuwe beleids naam. Bijvoorbeeld *B2C_1A_signup_signin_password_complexity*.
+3. Voeg de volgende **claim** type-elementen met de `newPassword` id's `reenterPassword`van en toe:
 
     ```XML
     <ClaimsSchema>
@@ -44,7 +44,7 @@ Voer de stappen in [aan de slag met aangepaste beleidsregels in Active Directory
     </ClaimsSchema>
     ```
 
-4. [Predikaten](predicates.md) methode typen hebben `IsLengthRange` of `MatchesRegex`. De `MatchesRegex` type wordt gebruikt om een reguliere expressie. De `IsLengthRange` type heeft een minimale en maximale tekenreekslengte. Toevoegen een **predikaten** element op de **BuildingBlocks** element als deze niet met de volgende bestaat **predicaat** elementen:
+4. [Predikaten](predicates.md) hebben methoden van `IsLengthRange` het type of `MatchesRegex`. Het `MatchesRegex` type wordt gebruikt om overeen te komen met een reguliere expressie. Het `IsLengthRange` type neemt een minimum-en maximum lengte van de teken reeks met zich mee. Voeg een **predikaten** -element toe aan het **BuildingBlocks** -element als dit niet bestaat met de volgende **predicaat** elementen:
 
     ```XML
     <Predicates>
@@ -62,7 +62,7 @@ Voer de stappen in [aan de slag met aangepaste beleidsregels in Active Directory
     </Predicates>
     ```
 
-5. Elke **InputValidation** element wordt samengesteld met behulp van de gedefinieerde **predicaat** elementen. Dit element kunt u Booleaanse aggregatiefuncties die vergelijkbaar met zijn `and` en `or`. Voeg een **InputValidations** element op de **BuildingBlocks** element als deze niet met de volgende bestaat **InputValidation** element:
+5. Elk **InputValidation** -element wordt samengesteld met behulp van de gedefinieerde **predicaat** elementen. Met dit element kunt u Booleaanse aggregaties uitvoeren die vergelijkbaar zijn met `and` en `or`. Voeg een **InputValidations** -element toe aan het **BuildingBlocks** -element als dit niet bestaat met het volgende **InputValidation** -element:
 
     ```XML
     <InputValidations>
@@ -80,7 +80,7 @@ Voer de stappen in [aan de slag met aangepaste beleidsregels in Active Directory
     </InputValidations>
     ```
 
-6. Zorg ervoor dat de **PolicyProfile** technisch profiel bevat de volgende elementen:
+6. Zorg ervoor dat het technische profiel **PolicyProfile** de volgende elementen bevat:
 
     ```XML
     <RelyingParty>
@@ -103,31 +103,31 @@ Voer de stappen in [aan de slag met aangepaste beleidsregels in Active Directory
     </RelyingParty>
     ```
 
-7. Sla het beleidsbestand.
+7. Sla het beleids bestand op.
 
-## <a name="test-your-policy"></a>Het beleid testen
+## <a name="test-your-policy"></a>Uw beleid testen
 
-Bij het testen van uw toepassingen in Azure AD B2C, kan het nuttig zijn om de Azure AD B2C-token dat is geretourneerd naar `https://jwt.ms` om te kunnen controleren van de claims in het.
+Bij het testen van uw toepassingen in azure AD B2C kan het nuttig zijn om het Azure AD B2C-token te `https://jwt.ms` retour neren om de claims daarin te kunnen bekijken.
 
 ### <a name="upload-the-files"></a>De bestanden uploaden
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Zorg ervoor dat u de adreslijst gebruikt die uw Azure AD B2C-tenant bevat door te klikken op het **filter voor adreslijsten en abonnementen** in het bovenste menu en de adreslijst te kiezen waarin uw tenant zich bevindt.
+2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-4. Selecteer **Identity-Ervaringsframework**.
-5. Klik op de pagina aangepast beleid **uploaden beleid**.
-6. Selecteer **het beleid overschrijven als deze bestaat**, en zoek en selecteer de *SingUpOrSignInPasswordComplexity.xml* bestand.
+4. Selecteer een **Framework voor identiteits ervaring**.
+5. Klik op het tabblad Aangepaste beleids regels op **beleid uploaden**.
+6. Selecteer **het beleid overschrijven als dit bestaat**, en zoek en selecteer het bestand *SingUpOrSignInPasswordComplexity. XML* .
 7. Klik op **Uploaden**.
 
 ### <a name="run-the-policy"></a>Het beleid uitvoeren
 
-1. Open het beleid dat u hebt gewijzigd. Bijvoorbeeld, *B2C_1A_signup_signin_password_complexity*.
-2. Voor **toepassing**, selecteer uw toepassing die u eerder hebt geregistreerd. Om te zien van het token wordt de **antwoord-URL** moet worden weergegeven `https://jwt.ms`.
+1. Open het beleid dat u hebt gewijzigd. Bijvoorbeeld *B2C_1A_signup_signin_password_complexity*.
+2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Om het token weer te geven, moet de antwoord `https://jwt.ms`- **URL** worden weer gegeven.
 3. Klik op **Nu uitvoeren**.
-4. Selecteer **Meld u nu**, voer een e-mailadres en een nieuw wachtwoord invoeren. Richtlijnen wordt voor wachtwoordbeperkingen weergegeven. De gebruikersinformatie ingevoerd en klik vervolgens op **maken**. Hier ziet u de inhoud van het token dat is geretourneerd.
+4. Selecteer **nu aanmelden**, voer een e-mail adres in en voer een nieuw wacht woord in. Richt lijnen worden weer gegeven voor wachtwoord beperkingen. Voer de gebruikers gegevens in en klik vervolgens op **maken**. De inhoud van het geretourneerde token moet worden weer gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [configureren met behulp van aangepaste beleidsregels in Azure Active Directory B2C wachtwoordwijziging](active-directory-b2c-reference-password-change-custom.md).
+- Meer informatie over het [configureren van wachtwoord wijzigingen met aangepaste beleids regels in azure Active Directory B2C](active-directory-b2c-reference-password-change-custom.md).
 
 

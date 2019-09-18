@@ -10,18 +10,67 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 26d66dad1e9953ddcbdbe0fd3b495bb3e418b3e7
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 5191f8b565762e9377f3718cc147c96e491f5a0d
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993430"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067734"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
 In dit artikel vindt u meer informatie over Azure Machine Learning releases.  Ga voor de volledige SDK-referentie-inhoud naar de hoofd pagina van de hand leiding van de Azure Machine Learning van de [**SDK voor python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . 
 
 Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informatie over bekende problemen en oplossingen.
+
+## <a name="2019-09-16"></a>2019-09-16
+
+### <a name="azure-machine-learning-sdk-for-python-v1062"></a>Azure Machine Learning SDK voor python v-1.0.62
+
++ **Nieuwe functies**
+  + Heeft de tijds Erie-eigenschappen geïntroduceerd op TabularDataset. Met deze eigenschappen kunt u eenvoudig tijds tempel filteren op gegevens een TabularDataset, zoals het nemen van alle gegevens tussen een tijd bereik of de meest recente gegevens. Als u meer wilt weten over de tijds Erie-eigenschappen op TabularDataset https://aka.ms/azureml-data , kunt u https://aka.ms/azureml-tsd-notebook een bezoek brengen aan documentatie of een voor beeld van een notebook. 
+  + Ingeschakelde training met TabularDataset en FileDataset. Ga naar https://aka.ms/dataset-tutorial een voor beeld van een notebook. 
+  
+  + **azureml-train-core**
+    + Ondersteuning voor Nccl en Gloo toegevoegd in PyTorch estimator
+  
++ **Oplossingen en verbeteringen voor oplossingen**
+  + **azureml-automl-core**
+    + De AutoML-instelling lag_length en LaggingTransformer zijn afgeschaft.
+    + De juiste validatie van invoer gegevens is hersteld als deze zijn opgegeven in een gegevensstroom indeling
+    + De fit_pipeline. py is gewijzigd om de JSON van de grafiek te genereren en te uploaden naar artefacten. 
+    + De grafiek wordt weer gegeven onder userrun met behulp van Cytoscape.
+  + **azureml-core**
+    + Gestart de verwerking van uitzonde ringen in de ADB-code op en breng wijzigingen aan op basis van de nieuwe fout afhandeling
+    + Automatische MSI-verificatie is toegevoegd voor VM-Vm's.
+    + Hiermee wordt een bug opgelost waarbij beschadigde of lege modellen kunnen worden geüpload vanwege mislukte pogingen.
+    + Er is een fout `DataReference` opgelost waarbij naam verandert `DataReference` wanneer de modus wijzigt (bijvoorbeeld bij `as_upload`het `as_download`aanroepen `as_mount`, of).
+    + Maken `mount_point` en `target_path` optioneel voor `FileDataset.mount` en .`FileDataset.download`
+    + Uitzonde ring dat de time stamp-kolom niet kan worden gevonden, wordt gegenereerd als de gerelateerde time-out van de API wordt aangeroepen zonder dat de toegewezen time stamp-kolommen worden verwijderd.
+    + Tijdgebonden kolommen moeten worden toegewezen aan een kolom waarvan het type datum is, anders wordt er een uitzonde ring verwacht
+    + Time-kolommen voor het toewijzen van de API ' with_timestamp_columns ' kunnen de kolom naam voor de fijn/ruwe tijds tempel geen waarde krijgen, waardoor eerder toegewezen time stamp-kolommen worden gewist.
+    + Er wordt een uitzonde ring gegenereerd wanneer een ruwe korrel of een verfijnde time stamp-kolom wordt verwijderd met de melding dat de gebruiker die het object verwijdert, kan worden uitgevoerd na een time stamp-kolom in de lijst met uitzonde ringen, of with_time_stamp met geen waarde voor release-tijds tempel aanroepen kolommen
+    + Er wordt een uitzonde ring gegenereerd wanneer een ruwe korrel of een verfijnde time stamp-kolom niet is opgenomen in de lijst kolommen behouden, met vermelding van de gebruiker die kan worden uitgevoerd na de time stamp-kolom in de kolom lijst behouden of with_time_stamp met geen aanroepen de waarde voor het vrijgeven van Time Stamp-kolommen.
+    + Logboek registratie toegevoegd voor de grootte van een geregistreerd model.
+  + **azureml-explain-model**
+    + Er is een vaste waarschuwing afgedrukt op de console wanneer het python-pakket ' Pack ' niet is geïnstalleerd: "Voor het gebruik van oudere versies dan de ondersteunde versie van lightgbm, moet u een upgrade uitvoeren naar een versie die hoger is dan 2.2.1"
+    + Verklaring van een vast Download model met sharding voor globale uitleg met veel functies
+    + Er ontbreken voor beelden van de initialisatie van een vaste naimiteerer voor de uitvoer uitleg
+    + Vast onveranderbare fout bij het instellen van eigenschappen bij het uploaden met een uitleg-client met behulp van twee verschillende typen modellen
+    + Er is een get_raw-para meter toegevoegd aan Score uitleg. uitleg (), zodat één beoordelings uitleg zowel engineered als RAW-waarden kan retour neren.
+  + **azureml-train-automl**
+    + Geïntroduceerde open bare Api's van AutoML voor de ondersteuning van uitleg van AutoML verklarende SDK-nieuwe manier om AutoML-toelichtingen te ondersteunen door ontkoppeling AutoML parametrisatie en uitleg over SDK-geïntegreerde onbewerkte ondersteuning van de azureml uitleggen SDK voor AutoML basis.
+    + Het verwijderen van azureml-standaard waarden van een externe trainings omgeving.
+    + De standaard locatie van het cache archief is gewijzigd van file cache Store op basis van een AzureFileCacheStore voor AutoML op AzureDatabricks.
+    + De juiste validatie van invoer gegevens is hersteld als deze zijn opgegeven in een gegevensstroom indeling
+  + **azureml-train-core**
+    + Geannuleerde source_directory_data_store-afschaffing.
+    + De mogelijkheid om geïnstalleerde pakket versies van azureml te negeren is toegevoegd. 
+    + Er is ondersteuning toegevoegd `environment_definition` voor dockerfile in de para meter in de schattingen.
+    + Vereenvoudigde gedistribueerde trainings parameters in schattingen.
+         ```py 
+        from azureml.train.dnn import TensorFlow, Mpi, ParameterServer 
+        ```
 
 ## <a name="2019-09-09"></a>2019-09-09
 

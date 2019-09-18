@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f535bc7d67198b3fe06326260bc1910b6afd36f2
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 13eedeb66d826d212b814fac321f920e78758cb8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68346770"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063744"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een onderliggend technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory-B2C (Azure AD) biedt ondersteuning voor uw eigen REST-service. Azure AD B2C verzendt gegevens naar de REST-service in een claim verzameling met invoer en ontvangt gegevens terug in een verzameling uitvoer claims. Met de ondersteunings integratie van de REST-service kunt u het volgende doen:
+Azure Active Directory B2C (Azure AD B2C) biedt ondersteuning voor uw eigen REST-service. Azure AD B2C verzendt gegevens naar de REST-service in een claim verzameling met invoer en ontvangt gegevens terug in een verzameling uitvoer claims. Met de ondersteunings integratie van de REST-service kunt u het volgende doen:
 
 - **Gebruikers invoer valideren** : hiermee voor komt u dat er ongeldige gegevens worden bewaard in azure AD B2C. Als de waarde van de gebruiker ongeldig is, retourneert de REST-service een fout bericht dat de gebruiker de opdracht geeft een vermelding op te geven. U kunt bijvoorbeeld controleren of het e-mail adres van de gebruiker bestaat in de data base van uw klant.
 - **Invoer claims overschrijven** : Hiermee kunt u de waarden in invoer claims opnieuw indelen. Als een gebruiker bijvoorbeeld de eerste naam in alle kleine letters of hoofd letters typt, kunt u de naam alleen met de eerste letter in een letter type Format teren.
@@ -43,12 +43,12 @@ In het volgende voor beeld wordt een onderliggend technisch profiel weer gegeven
 <TechnicalProfile Id="REST-UserMembershipValidator">
   <DisplayName>Validate user input data and return loyaltyNumber claim</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-  ...    
+  ...
 ```
 
 ## <a name="input-claims"></a>Invoer claims
 
-Het **InputClaims** -element bevat een lijst met claims die moeten worden verzonden naar de rest API. U kunt de naam van uw claim ook toewijzen aan de naam die is gedefinieerd in de REST API. In het volgende voor beeld ziet u de toewijzing tussen uw beleid en de REST API. De naam van **de claim wordt** verzonden naar de rest API als **FirstName**, **terwijl de** achternaam wordt verzonden als **LastName**. De **e-mail** claim is ingesteld als is.
+Het **InputClaims** -element bevat een lijst met claims die moeten worden verzonden naar de rest API. U kunt de naam van uw claim ook toewijzen aan de naam die is gedefinieerd in de REST API. In het volgende voor beeld ziet u de toewijzing tussen uw beleid en de REST API. De naam van **de claim wordt** verzonden naar de rest API als **FirstName**, **terwijl de achternaam wordt** verzonden als **LastName**. De **e-mail** claim is ingesteld als is.
 
 ```XML
 <InputClaims>
@@ -70,7 +70,7 @@ In het volgende voor beeld ziet u de claim die wordt geretourneerd door de REST 
 
 - De **MembershipId** -claim die is toegewezen aan de naam van de **loyaltyNumber** -claim.
 
-Het technische profiel retourneert ook claims die niet worden geretourneerd door de ID-provider: 
+Het technische profiel retourneert ook claims die niet worden geretourneerd door de ID-provider:
 
 - De **loyaltyNumberIsNew** -claim waarvoor een standaard waarde is ingesteld `true`op.
 
@@ -85,11 +85,11 @@ Het technische profiel retourneert ook claims die niet worden geretourneerd door
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| ServiceUrl | Ja | De URL van het REST API-eind punt. | 
-| AuthenticationType | Ja | Het type verificatie dat wordt uitgevoerd door de claim provider voor de REST. Mogelijke waarden: `None`, `Basic`of `ClientCertificate`. De `None` waarde geeft aan dat de rest API niet anoniem is. De `Basic` waarde geeft aan dat de rest API is beveiligd met HTTP Basic-verificatie. Alleen geverifieerde gebruikers, met inbegrip van Azure AD B2C, hebben toegang tot uw API. De `ClientCertificate` waarde (aanbevolen) geeft aan dat de rest API de toegang beperkt met behulp van verificatie op basis van client certificaten. Alleen services met de juiste certificaten, zoals Azure AD B2C hebben toegang tot uw service. | 
-| SendClaimsIn | Nee | Hiermee wordt aangegeven hoe de invoer claims worden verzonden naar de claim provider voor de REST. Mogelijke waarden: `Body` (standaard), `Form`, `Header`of `QueryString`. De `Body` waarde is de invoer claim die in de hoofd tekst van de aanvraag wordt verzonden in de JSON-indeling. De `Form` waarde is de invoer claim die in de hoofd tekst van de aanvraag wordt verzonden in een ampersand ' & ' gescheiden sleutel waarde-indeling. De `Header` waarde is de invoer claim die in de aanvraag header wordt verzonden. De `QueryString` waarde is de invoer claim die wordt verzonden in de query teken reeks van de aanvraag. | 
-| ClaimsFormat | Nee | Hiermee geeft u de indeling voor de uitvoer claims op. Mogelijke waarden: `Body` (standaard), `Form`, `Header`of `QueryString`. De `Body` waarde is de uitvoer claim die in de hoofd tekst van de aanvraag wordt verzonden in de JSON-indeling. De `Form` waarde is de uitvoer claim die in de hoofd tekst van de aanvraag wordt verzonden in een ampersand ' & ' gescheiden sleutel waarde-indeling. De `Header` waarde is de uitvoer claim die in de aanvraag header wordt verzonden. De `QueryString` waarde is de uitvoer claim die wordt verzonden in de query teken reeks van de aanvraag. | 
-| DebugMode | Nee | Voert het technische profiel in de foutopsporingsmodus. In de foutopsporingsmodus kan de REST API meer informatie retour neren. Zie de sectie fout bericht over het retour neren. | 
+| ServiceUrl | Ja | De URL van het REST API-eind punt. |
+| AuthenticationType | Ja | Het type verificatie dat wordt uitgevoerd door de claim provider voor de REST. Mogelijke waarden: `None`, `Basic`of `ClientCertificate`. De `None` waarde geeft aan dat de rest API niet anoniem is. De `Basic` waarde geeft aan dat de rest API is beveiligd met HTTP Basic-verificatie. Alleen geverifieerde gebruikers, met inbegrip van Azure AD B2C, hebben toegang tot uw API. De `ClientCertificate` waarde (aanbevolen) geeft aan dat de rest API de toegang beperkt met behulp van verificatie op basis van client certificaten. Alleen services met de juiste certificaten, zoals Azure AD B2C hebben toegang tot uw service. |
+| SendClaimsIn | Nee | Hiermee wordt aangegeven hoe de invoer claims worden verzonden naar de claim provider voor de REST. Mogelijke waarden: `Body` (standaard), `Form`, `Header`of `QueryString`. De `Body` waarde is de invoer claim die in de hoofd tekst van de aanvraag wordt verzonden in de JSON-indeling. De `Form` waarde is de invoer claim die in de hoofd tekst van de aanvraag wordt verzonden in een ampersand ' & ' gescheiden sleutel waarde-indeling. De `Header` waarde is de invoer claim die in de aanvraag header wordt verzonden. De `QueryString` waarde is de invoer claim die wordt verzonden in de query teken reeks van de aanvraag. |
+| ClaimsFormat | Nee | Hiermee geeft u de indeling voor de uitvoer claims op. Mogelijke waarden: `Body` (standaard), `Form`, `Header`of `QueryString`. De `Body` waarde is de uitvoer claim die in de hoofd tekst van de aanvraag wordt verzonden in de JSON-indeling. De `Form` waarde is de uitvoer claim die in de hoofd tekst van de aanvraag wordt verzonden in een ampersand ' & ' gescheiden sleutel waarde-indeling. De `Header` waarde is de uitvoer claim die in de aanvraag header wordt verzonden. De `QueryString` waarde is de uitvoer claim die wordt verzonden in de query teken reeks van de aanvraag. |
+| DebugMode | Nee | Voert het technische profiel in de foutopsporingsmodus. In de foutopsporingsmodus kan de REST API meer informatie retour neren. Zie de sectie fout bericht over het retour neren. |
 
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 
@@ -111,7 +111,7 @@ Als het type verificatie is ingesteld op `Basic`, bevat het **CryptographicKeys*
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| BasicAuthenticationUsername | Ja | De gebruikers naam die wordt gebruikt voor verificatie. | 
+| BasicAuthenticationUsername | Ja | De gebruikers naam die wordt gebruikt voor verificatie. |
 | BasicAuthenticationPassword | Ja | Het wacht woord dat wordt gebruikt voor verificatie. |
 
 In het volgende voor beeld ziet u een technisch profiel met basis verificatie:
@@ -136,7 +136,7 @@ Als het type verificatie is ingesteld op `ClientCertificate`, bevat het **Crypto
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| ClientCertificate | Ja | Het x509-certificaat (RSA key set) dat moet worden gebruikt voor verificatie. | 
+| ClientCertificate | Ja | Het x509-certificaat (RSA key set) dat moet worden gebruikt voor verificatie. |
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -159,13 +159,13 @@ Uw REST API moet mogelijk een fout bericht retour neren, zoals ' de gebruiker is
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| version | Ja | 1.0.0 | 
-| status | Ja | 409 | 
-| code | Nee | Een fout code van de rest-eindpunt provider, die wordt weer gegeven `DebugMode` wanneer is ingeschakeld. | 
-| requestId | Nee | Een aanvraag-id van de rest-eindpunt provider, die wordt weer `DebugMode` gegeven wanneer is ingeschakeld. | 
-| userMessage | Ja | Een fout bericht dat wordt weer gegeven aan de gebruiker. | 
-| developerMessage | Nee | De uitgebreide beschrijving van het probleem en hoe het kan worden opgelost, dat wordt weer gegeven `DebugMode` wanneer is ingeschakeld. | 
-| moreInfo | Nee | Een URI die verwijst naar extra informatie, die wordt weer gegeven `DebugMode` wanneer is ingeschakeld. | 
+| version | Ja | 1.0.0 |
+| status | Ja | 409 |
+| code | Nee | Een fout code van de rest-eindpunt provider, die wordt weer gegeven `DebugMode` wanneer is ingeschakeld. |
+| requestId | Nee | Een aanvraag-id van de rest-eindpunt provider, die wordt weer `DebugMode` gegeven wanneer is ingeschakeld. |
+| userMessage | Ja | Een fout bericht dat wordt weer gegeven aan de gebruiker. |
+| developerMessage | Nee | De uitgebreide beschrijving van het probleem en hoe het kan worden opgelost, dat wordt weer gegeven `DebugMode` wanneer is ingeschakeld. |
+| moreInfo | Nee | Een URI die verwijst naar extra informatie, die wordt weer gegeven `DebugMode` wanneer is ingeschakeld. |
 
 In het volgende voor beeld ziet u een REST API die een fout bericht retourneert dat is ingedeeld in JSON:
 
@@ -175,9 +175,9 @@ In het volgende voor beeld ziet u een REST API die een fout bericht retourneert 
   "status": 409,
   "code": "API12345",
   "requestId": "50f0bd91-2ff4-4b8f-828f-00f170519ddb",
-  "userMessage": "Message for the user", 
-  "developerMessage": "Verbose description of problem and how to fix it.", 
-  "moreInfo": "https://restapi/error/API12345/moreinfo" 
+  "userMessage": "Message for the user",
+  "developerMessage": "Verbose description of problem and how to fix it.",
+  "moreInfo": "https://restapi/error/API12345/moreinfo"
 }
 ```
 
@@ -197,7 +197,7 @@ public class ResponseContent
 ```
 
 ## <a name="examples"></a>Voorbeelden:
-- [REST API claims-uitwisselingen integreren in uw Azure AD B2C gebruikers traject als validatie van gebruikers invoer](active-directory-b2c-custom-rest-api-netfw.md) 
+- [REST API claims-uitwisselingen integreren in uw Azure AD B2C gebruikers traject als validatie van gebruikers invoer](active-directory-b2c-custom-rest-api-netfw.md)
 - [Beveilig uw REST-services met behulp van HTTP-basis verificatie](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 - [Uw REST-service beveiligen met behulp van client certificaten](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 - [Begint REST API claims-uitwisselingen integreren in uw Azure AD B2C-gebruikers migratie als validatie op gebruikers invoer](active-directory-b2c-rest-api-validation-custom.md)

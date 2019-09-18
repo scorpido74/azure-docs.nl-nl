@@ -1,6 +1,6 @@
 ---
 title: Client maken om geïmplementeerde webservice te gebruiken
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Meer informatie over het gebruik van een webservice die is gegenereerd bij het implementeren van een model met Azure Machine Learning model. De webservice toont een REST API. Clients voor deze API maken met behulp van de programmeer taal van uw keuze.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5f57be9a1fc5d260ce580b969c8f92c87aea17a8
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e005cf0860faeaad7010ea4da3ca1c5227ade14b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279115"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034796"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Een Azure Machine Learning-model dat is geïmplementeerd als een webservice gebruiken
 
@@ -43,7 +43,7 @@ De klasse [azureml. core. webservice](https://docs.microsoft.com/python/api/azur
 * `auth_enabled`-Als de sleutel verificatie is ingeschakeld `True`, anders, `False`.
 * `token_auth_enabled`-Als token verificatie is ingeschakeld, `True`anders,. `False`
 * `scoring_uri` -De REST-API-adres.
-* `swagger_uri`-Het adres van de OpenAPI-specificatie. Deze URI is beschikbaar als u automatische schema generatie hebt ingeschakeld. Zie [modellen implementeren met de Azure machine learning-service](how-to-deploy-and-where.md#schema)voor meer informatie.
+* `swagger_uri`-Het adres van de OpenAPI-specificatie. Deze URI is beschikbaar als u automatische schema generatie hebt ingeschakeld. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md#schema)voor meer informatie.
 
 Er zijn een drie manieren om op te halen van deze informatie voor de geïmplementeerde webservices:
 

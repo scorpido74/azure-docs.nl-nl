@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 81f3e4beb29f21f1b752a876827e9b35856c713a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c501bed9220c08013d44836066e46df92cf69eaa
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566886"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037438"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure Resource Manager-sjablonen voor Azure SQL Database
 
 Azure Resource Manager-sjablonen maken het mogelijk om uw infrastructuur als code te definiëren en uw oplossingen naar de Azure-cloud te implementeren.
 
-## <a name="single-database--elastic-pool"></a>Individuele database en elastische pool
+## <a name="single-database--elastic-pooltabsingle-database"></a>[Eén data base & elastische pool](#tab/single-database)
 
 De volgende tabel bevat koppelingen naar Azure Resource Manager-sjablonen voor Azure SQL Database.
 
@@ -41,7 +41,7 @@ De volgende tabel bevat koppelingen naar Azure Resource Manager-sjablonen voor A
 | [HDInsight-cluster met een SQL-database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Met deze sjabloon kunt u een HDInsight-cluster, een SQL Database-server, een SQL-database en twee tabellen maken. Deze sjabloon wordt gebruikt in het [artikel over het gebruik van Sqoop met Hadoop in HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop). |
 | [Logische Azure-app die een in SQL opgeslagen procedure volgens een schema uitvoert](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | Met deze sjabloon kunt u een logische app maken die een in SQL opgeslagen procedure volgens een schema uitvoert. Eventuele argumenten voor de procedure kunnen in de hoofdsectie van de sjabloon worden geplaatst.|
 
-## <a name="managed-instance"></a>Beheerd exemplaar
+## <a name="managed-instancetabmanaged-instance"></a>[Beheerd exemplaar](#tab/managed-instance)
 
 De volgende tabel bevat koppelingen naar Azure Resource Manager-sjablonen voor Azure SQL Database - Beheerd exemplaar.
 
@@ -51,3 +51,5 @@ De volgende tabel bevat koppelingen naar Azure Resource Manager-sjablonen voor A
 | [Netwerkomgeving voor beheerd exemplaar](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Met deze implementatie maakt u een geconfigureerd virtueel Azure-netwerk met twee subnetten: één subnet dat is gereserveerd voor uw beheerde exemplaren en een ander subnet voor het opslaan van andere resources (zoals VM's, App Service-omgevingen, enzovoort). Met deze sjabloon maakt u een correct geconfigureerde netwerkomgeving waarin u beheerde exemplaren kunt implementeren. |
 | [Beheerd exemplaar met P2S-verbinding](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-point-to-site-vpn) | Met deze implementatie maakt u een virtueel Azure-netwerk met twee subnetten: `ManagedInstance` en `GatewaySubnet`. Het beheerde exemplaar wordt geïmplementeerd in het subnet ManagedInstance. De virtuele netwerkgateway wordt gemaakt in het subnet `GatewaySubnet` en geconfigureerd voor een punt-naar-site VPN-verbinding. |
 | [Beheerd exemplaar met virtuele machine](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | Met deze implementatie maakt u een virtueel Azure-netwerk met twee subnetten: `ManagedInstance` en `Management`. Het beheerde exemplaar wordt geïmplementeerd in het subnet `ManagedInstance`. Een virtuele machine met de meest recente versie van SQL Server Management Studio (SSMS) wordt geïmplementeerd in het subnet `Management`. |
+
+---

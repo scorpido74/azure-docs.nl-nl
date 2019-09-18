@@ -1,6 +1,6 @@
 ---
 title: Maken en gebruiken van compute-doelen voor modeltraining
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Configureer de trainings omgevingen (Compute-doelen) voor de training van machine learning model. U kunt eenvoudig overschakelen tussen trainings omgevingen. Start training lokaal. Als u wilt uitschalen, gaat u naar een compute-doel op basis van de Cloud.
 services: machine-learning
 author: heatherbshapiro
@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a34ccf5201b81a2c74c2eccd0ec3f311a1158ab
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7c3bae2fff9e20ed9427c72b5f5f632d975f9f94
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860534"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034416"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Reken doelen voor model training instellen en gebruiken 
 
-Met Azure Machine Learning-service kunt u uw model trainen op diverse resources of omgevingen en gezamenlijk ook [__reken doelen__](concept-azure-machine-learning-architecture.md#compute-targets)genoemd. Een compute-doel kan een lokale machine of een Cloud resource zijn, zoals een Azure Machine Learning compute, Azure HDInsight of een externe virtuele machine.  U kunt ook reken doelen voor model implementatie maken, zoals wordt beschreven in [' waar en hoe u uw modellen implementeert '](how-to-deploy-and-where.md).
+Met Azure Machine Learning kunt u uw model trainen op diverse resources of omgevingen, die gezamenlijk worden aangeduid als [__Compute-doelen__](concept-azure-machine-learning-architecture.md#compute-targets). Een compute-doel kan een lokale machine of een Cloud resource zijn, zoals een Azure Machine Learning compute, Azure HDInsight of een externe virtuele machine.  U kunt ook reken doelen voor model implementatie maken, zoals wordt beschreven in [' waar en hoe u uw modellen implementeert '](how-to-deploy-and-where.md).
 
-U kunt een reken doel maken en beheren met behulp van de Azure Machine Learning SDK, Azure Portal, de landings pagina voor de werk ruimte (preview), de Azure CLI of de Azure Machine Learning VS code-extensie. Als u de compute-doelen die zijn gemaakt via een andere service (bijvoorbeeld: een HDInsight-cluster) hebt, kunt u ze kunt gebruiken door ze te koppelen aan uw werkruimte van Azure Machine Learning-service.
+U kunt een reken doel maken en beheren met behulp van de Azure Machine Learning SDK, Azure Portal, de landings pagina voor de werk ruimte (preview), de Azure CLI of de Azure Machine Learning VS code-extensie. Als u reken doelen hebt die zijn gemaakt via een andere service (bijvoorbeeld een HDInsight-cluster), kunt u deze gebruiken door deze te koppelen aan uw Azure Machine Learning-werk ruimte.
  
 In dit artikel leert u hoe u verschillende reken doelen kunt gebruiken voor model training.  De stappen voor alle Compute-doelen volgen dezelfde werk stroom:
 1. __Maak__ een reken doel als u er nog geen hebt.
@@ -35,7 +35,7 @@ In dit artikel leert u hoe u verschillende reken doelen kunt gebruiken voor mode
 
 ## <a name="compute-targets-for-training"></a>Reken doelen voor training
 
-Azure Machine Learning-service heeft verschillende ondersteuning voor verschillende reken doelen. Een typische model ontwikkelingscyclus begint met dev/experimenten op een kleine hoeveelheid gegevens. In deze fase, wordt u aangeraden een lokale omgeving. Bijvoorbeeld, de lokale computer of een cloud-gebaseerde VM. Als u uw training voor grotere gegevenssets opschalen of gedistribueerde training doen, wordt u aangeraden een één of meerdere node cluster maken dat automatisch wordt geschaald telkens wanneer die u een uitvoering verzenden met Azure Machine Learning-Computing. U kunt ook uw eigen compute-resource koppelen, hoewel ondersteuning voor verschillende scenario's als variëren kunnen hieronder uitgelegd:
+Azure Machine Learning heeft verschillende ondersteuning voor verschillende Compute-doelen. Een typische model ontwikkelingscyclus begint met dev/experimenten op een kleine hoeveelheid gegevens. In deze fase, wordt u aangeraden een lokale omgeving. Bijvoorbeeld, de lokale computer of een cloud-gebaseerde VM. Als u uw training voor grotere gegevenssets opschalen of gedistribueerde training doen, wordt u aangeraden een één of meerdere node cluster maken dat automatisch wordt geschaald telkens wanneer die u een uitvoering verzenden met Azure Machine Learning-Computing. U kunt ook uw eigen compute-resource koppelen, hoewel ondersteuning voor verschillende scenario's als variëren kunnen hieronder uitgelegd:
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
@@ -45,7 +45,7 @@ Azure Machine Learning-service heeft verschillende ondersteuning voor verschille
 
 ## <a name="whats-a-run-configuration"></a>Wat is een uitvoerings configuratie?
 
-Bij het trainen is het gebruikelijk om te beginnen op de lokale computer en dat trainings script later uit te voeren op een ander reken doel. Met Azure Machine Learning-service kunt u uw script uitvoeren op verschillende reken doelen zonder dat u het script hoeft te wijzigen.
+Bij het trainen is het gebruikelijk om te beginnen op de lokale computer en dat trainings script later uit te voeren op een ander reken doel. Met Azure Machine Learning kunt u het script uitvoeren op verschillende reken doelen zonder dat u het script hoeft te wijzigen.
 
 Alles wat u hoeft te doen, is het definiëren van de omgeving voor elk reken doel in een **uitvoerings configuratie**.  Wanneer u uw trainings experiment wilt uitvoeren op een ander Compute-doel, geeft u de uitvoerings configuratie op voor die reken kracht. Zie [omgevingen maken en beheren voor training en implementatie](how-to-use-environments.md)voor meer informatie over het opgeven van een omgeving en het binden ervan voor het uitvoeren van een configuratie.
 
@@ -143,7 +143,7 @@ Nu u de reken kracht hebt gekoppeld en de uitvoering hebt geconfigureerd, is de 
 
 ### <a id="vm"></a>Externe virtuele machines
 
-Azure Machine Learning ondersteunt ook uw eigen compute-resource halen en deze te koppelen aan uw werkruimte. Een van deze bron typen is een wille keurige externe virtuele machine, zolang deze toegankelijk is vanaf Azure Machine Learning service. De resource kan een Azure-VM, een externe server in uw organisatie of on-premises zijn. Met name op basis van het IP-adres en de referenties (gebruikers naam en wacht woord of SSH-sleutel) kunt u elke toegankelijke virtuele machine gebruiken voor externe uitvoeringen.
+Azure Machine Learning ondersteunt ook uw eigen compute-resource halen en deze te koppelen aan uw werkruimte. Een van deze bron typen is een wille keurige externe virtuele machine, zolang deze toegankelijk is vanaf Azure Machine Learning. De resource kan een Azure-VM, een externe server in uw organisatie of on-premises zijn. Met name op basis van het IP-adres en de referenties (gebruikers naam en wacht woord of SSH-sleutel) kunt u elke toegankelijke virtuele machine gebruiken voor externe uitvoeringen.
 
 U kunt een systeem gebouwd conda-omgeving, een al bestaande Python-omgeving of een Docker-container. Als u wilt uitvoeren op een docker-container, moet er een docker-engine op de VM worden uitgevoerd. Deze functionaliteit is vooral nuttig als u wilt dat een meer flexibele, cloud-gebaseerde dev/experimentele omgeving dan uw lokale computer.
 
@@ -327,7 +327,7 @@ Volg de vorige stappen om de lijst met Compute-doelen weer te geven. Gebruik ver
 
 ### <a id="portal-reuse"></a>Reken doelen koppelen
 
-Als u Compute-doelen wilt gebruiken die buiten de Azure Machine Learning service werkruimte zijn gemaakt, moet u ze koppelen. Als u een reken doel koppelt, wordt het beschikbaar voor uw werk ruimte.
+Als u Compute-doelen wilt gebruiken die buiten de Azure Machine Learning-werk ruimte zijn gemaakt, moet u ze koppelen. Als u een reken doel koppelt, wordt het beschikbaar voor uw werk ruimte.
 
 Volg de stappen die eerder zijn beschreven om de lijst met Compute-doelen weer te geven. Gebruik vervolgens de volgende stappen om een reken doel te koppelen: 
 
@@ -356,7 +356,7 @@ Volg de stappen die eerder zijn beschreven om de lijst met Compute-doelen weer t
 
 ## <a name="set-up-with-cli"></a>Instellen met CLI
 
-U kunt toegang krijgen tot de reken doelen die aan uw werk ruimte zijn gekoppeld met de [cli-extensie](reference-azure-machine-learning-cli.md) voor Azure machine learning service.  U kunt de CLI gebruiken voor het volgende:
+U kunt toegang krijgen tot de reken doelen die aan uw werk ruimte zijn gekoppeld met de [cli-extensie](reference-azure-machine-learning-cli.md) voor Azure machine learning.  U kunt de CLI gebruiken voor het volgende:
 
 * Een beheerd reken doel maken
 * Een beheerd reken doel bijwerken
@@ -366,7 +366,7 @@ Zie [resource management](reference-azure-machine-learning-cli.md#resource-manag
 
 ## <a name="set-up-with-vs-code"></a>Met VS code instellen
 
-U kunt de berekenings doelen die aan uw werk ruimte zijn gekoppeld, openen, maken en beheren met de [VS code-extensie](how-to-vscode-tools.md#create-and-manage-compute-targets) voor Azure machine learning service.
+U kunt de berekenings doelen die aan uw werk ruimte zijn gekoppeld, openen, maken en beheren met de [VS code-extensie](how-to-vscode-tools.md#create-and-manage-compute-targets) voor Azure machine learning.
 
 ## <a id="submit"></a>Een trainings uitvoering verzenden met Azure Machine Learning SDK
 
@@ -515,4 +515,4 @@ Bekijk deze notebooks voor voor beelden van training met verschillende Compute-d
 * Meer informatie over hoe u [Hyper parameters efficiënt kunt afstemmen](how-to-tune-hyperparameters.md) om betere modellen te bouwen.
 * Wanneer u een getraind model hebt, leert u [hoe en waar u modellen kunt implementeren](how-to-deploy-and-where.md).
 * Bekijk de [RunConfiguration class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK-referentie.
-* [Azure Machine Learning-service gebruiken met virtuele Azure-netwerken](how-to-enable-virtual-network.md)
+* [Azure Machine Learning gebruiken met virtuele netwerken van Azure](how-to-enable-virtual-network.md)

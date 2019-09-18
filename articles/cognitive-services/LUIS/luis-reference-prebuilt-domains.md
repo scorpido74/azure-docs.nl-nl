@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: b840f1ce42c9d7e4af8854a2c6bd7fd26f5b88e9
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f5810a813b6c54f190d95061e79914457f51d19c
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307451"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067601"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Vooraf ontwikkelde domein referentie voor uw LUIS-app
 Deze referentie bevat informatie over de [vooraf gemaakte domeinen](luis-how-to-use-prebuilt-domains.md), die zijn vooraf gemaakte verzamelingen van intenties en entiteiten die LUIS biedt.
@@ -27,7 +27,7 @@ Deze referentie bevat informatie over de [vooraf gemaakte domeinen](luis-how-to-
 
 De volgende tabel bevat een overzicht van de momenteel ondersteunde domeinen. Ondersteuning voor Engels is meestal meer dan andere. 
 
-| Entiteits type       | EN-US      | ZH-CN   | DE    | FR     | ES    | it      | PT-BR |  JP  |      KO |        NL |    TR |
+| Entiteits type       | EN-US      | ZH-CN   | DE    | FR     | ES    | IT      | PT-BR |  JP  |      KO |        NL |    TR |
 |:-----------------:|:-------:|:-------:|:-----:|:------:|:-----:|:-------:| :-------:| :-------:| :-------:| :-------:|  :-------:| 
 | [Agenda](#calendar)    | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | [Verbindings](#communication)   | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
@@ -54,10 +54,10 @@ Agenda is alles over persoonlijke vergaderingen en afspraken, geen open bare geb
 Doel naam | Description | Voorbeelden
 ---------|----------|---------------
  AcceptEventEntry | Een (n) afspraak/vergadering/evenement/gebeurtenis accepteren in de agenda. | Een afspraak accepteren. <br> De gebeurtenis accepteren <br> Accepteer de huidige vergadering.
- Annuleren | Annuleer de lopende actie per virtuele assistent, zoals het annuleren van het proces voor het maken van een vergadering. <br> ***Kennisgeving**: Deze intentie omvat hoofd zakelijk de actie annuleren in het scenario van de agenda. Als u de algemene expressie op Annuleren nodig hebt, gebruik dan ' annuleren ' in het domein **Hulpprogram ma's** . * | Het is OK, maar u hoeft alleen maar de gebeurtenis te annuleren. <br> Nee, ik annuleer alleen de afspraak.
+ Annuleren | Annuleer de lopende actie per virtuele assistent, zoals het annuleren van het proces voor het maken van een vergadering. <br> _**Kennisgeving**: Deze intentie omvat hoofd zakelijk de actie annuleren in het scenario van de agenda. Als u de algemene expressie op Annuleren nodig hebt, kunt u ' annuleren ' gebruiken in het domein **Hulpprogram ma's** ._ | Het is OK, maar u hoeft alleen maar de gebeurtenis te annuleren. <br> Nee, ik annuleer alleen de afspraak.
  ChangeCalendarEntry | De agenda-item wijzigen of opnieuw plannen. | Mijn 6 uur opnieuw plannen afspraak morgen tot 17.00 uur <br> Afspraak van dokter voor 5 uur opnieuw plannen <br> De lunch opnieuw plannen met Wilma Olson tot en met vrijdag. <br> De tijd van de gebeurtenis wijzigen.
  CheckAvailability | Beschikbaarheid voor een afspraak of vergadering agenda van de gebruiker of een andere persoon kalender niet vinden. | Wanneer is Jim beschikbaar om te voldoen? <br> Weer geven wanneer Carola morgen beschikbaar is. <br> Chris vrij is op zaterdag?
- Bevestigen | Controleer of een bewerking of actie moet worden uitgevoerd op basis van eerdere opzet. <br> ***Kennisgeving**: Deze intentie omvat hoofd zakelijk de actie bevestigen voor het agenda scenario. Als u meer algemene expressies wilt gebruiken, moet u ' Bevestig ' bedoelen in het domein **Hulpprogram ma's** . *| Dat klopt, de vergadering maken <br> Ja, bedankt, verbinding maken met de vergadering.
+ Bevestigen | Controleer of een bewerking of actie moet worden uitgevoerd op basis van eerdere opzet. <br> _**Kennisgeving**: Deze intentie omvat hoofd zakelijk de actie bevestigen voor het agenda scenario. Als u meer algemene expressies op bevestigen wilt, kunt u ' Bevestig ' bedoelen in het domein **Hulpprogram ma's** ._| Dat klopt, de vergadering maken <br> Ja, bedankt, verbinding maken met de vergadering.
  ConnectToMeeting | Verbinding maken met een vergadering. | Verbinding maken met 11:00-telefonische vergaderingen met Andy. <br> Accepteer de oproep voor de budget vergadering.
  ContactMeetingAttendees | Neem contact op met de genodigden van de vergadering. | Vertel de vergadering die ik op de hoogte ben van 3:00-vergaderingen. <br> Waarschuw collega's voor 8 am-vergaderingen die moeten beginnen om 8:30.
  CreateCalendarEntry | Een nieuwe eenmalige item toevoegen aan de agenda. | Maak een vergadering over het bespreken van problemen. <br> een vergadering maken metabc@microsoft.com
@@ -69,10 +69,10 @@ Doel naam | Description | Voorbeelden
  FindCalendarDetail | Controleer de Details voor de planning en geef deze weer. | Ik heb u de details nodig van de vergadering die ik heb gepland met mijn collega-Paul.
  FindDuration | Controleer de duur. | Hoe lang duurt het om boodschappen uit te kiezen? <br> Hoe lang heb ik voor de lunch?
  FindMeetingRoom | Zoek de beschik bare Vergader zalen. | Wat voldoet aan kamers? <br> Zoek een nieuwe locatie van de vergadering.
- GoBack | Ga terug naar de laatste stap of het vorige item.  <br> ***Kennisgeving**: Raadpleeg het domein **Utilities** voor meer GoBack General uitingen. * | Vorige versie <br> Terug naar laatste e-mail.
- Afwijzen | De gebruiker weigert de voorgestelde virtuele assistent. <br> ***Kennisgeving**: Raadpleeg het domein **Hulpprogram ma's** voor meer informatie over het afwijzen van algemene uitingen. * | Het is niet nodig om de gebeurtenis in te stellen. <br> Ik kan op dat moment andere dingen doen.
-ShowNext | Controleer de volgende gebeurtenis. <br> ***Kennisgeving**: Raadpleeg het domein **Hulpprogram ma's** voor meer ShowNext algemene uitingen. * | Mijn volgende gebeurtenis geven. <br> Wat staat er nu in de agenda?
- ShowPrevious | Controleer de vorige gebeurtenis. <br> ***Kennisgeving**: Raadpleeg het domein **Hulpprogram ma's** voor meer ShowPrevious algemene uitingen. * | Wat is de planning voor dit?
+ GoBack | Ga terug naar de laatste stap of het vorige item.  <br> _**Kennisgeving**: Raadpleeg het domein **Utilities** voor meer GoBack General uitingen._ | Vorige versie <br> Terug naar laatste e-mail.
+ Afwijzen | De gebruiker weigert de voorgestelde virtuele assistent. <br> _**Kennisgeving**: Raadpleeg het domein toC- **Hulpprogram ma's** voor meer informatie over het afwijzen van de algemene uitingen._ | Het is niet nodig om de gebeurtenis in te stellen. <br> Ik kan op dat moment andere dingen doen.
+ShowNext | Controleer de volgende gebeurtenis. <br> _**Kennisgeving**: Raadpleeg het domein **Hulpprogram ma's** voor meer ShowNext algemene uitingen._ | Mijn volgende gebeurtenis geven. <br> Wat staat er nu in de agenda?
+ ShowPrevious | Controleer de vorige gebeurtenis. <br> _**Kennisgeving**: Raadpleeg het domein **Hulpprogram ma's** voor meer ShowPrevious algemene uitingen._ | Wat is de planning voor dit?
  TimeRemaining | Controleer de resterende tijd tot de volgende gebeurtenis. | Weer geven hoeveel tijd ik voor mijn vergaderingen heb. <br> De hoeveelheid tijd weer geven die ik heb voordat mijn volgende vergadering begint.
  
 ### <a name="entities"></a>**Rijg**
@@ -150,9 +150,9 @@ TurnSpeakerOn | Schakel de sprekerherkenning-telefoon. | Handsfree-modus. <br>  
 De naam van de entiteit | Entiteits type | Description | Voorbeelden | Sleuven
 ------|-------|----------|--------------|---------------
 Attachment | Simple | De bijlage die de gebruiker wil verzenden per tekst of e-mail bericht. | Een **bestand** vanuit OneNote e-mailen. <br> Verzend mijn housekeeping- **document** naar Katie. | file <br> documenten
-AudioDeviceType | Simple | Type audio apparaat (spreker, headset, microfoon, enzovoort). | Antwoord met behulp van **hands free**. <br> Kies opnieuw op de telefoon met de **spreker**. | woont <br> Hands Free <br> apparaatklasse
+AudioDeviceType | Simple | Type audio apparaat (spreker, headset, microfoon, enzovoort). | Antwoord met behulp van **hands free**. <br> Kies opnieuw op de telefoon met de **spreker**. | woont <br> Hands Free <br> Apparaatklasse
 Categorie | Simple | De categorie van een bericht of e-mail, de categorie moet een duidelijke definitie hebben in het e-mail systeem, zoals ' ongelezen ', ' vlag '. De definitie van de beschrijving met een lees-o, bijvoorbeeld ' nieuw ' en ' recent ' zijn geen categorieën. | Alle e-mail markeren als **gelezen**  <br> Nieuwe e-mail met **hoge prioriteit** voor Paul | belangrijk <br> hoge prioriteit <br> lezen
-ContactAttribute | Simple | Een kenmerk van de contact persoon voor wie de gebruikers vragen zijn.| **Verjaar dagen** volgende maand waarover ik moet weten? | verjaar dagen <br> address <br> telefoon nummer
+ContactAttribute | Simple | Een kenmerk van de contact persoon voor wie de gebruikers vragen zijn.| **Verjaar dagen** volgende maand waarover ik moet weten? | verjaar dagen <br> address <br> Telefoon nummer
 Naam contactpersoon | personName  | De naam van de ontvanger van een contactpersoon of een bericht. | Verzend het e-mail bericht naar **Stevens** | Stevens
 Date/Time | datetime | Datum/tijd van een ontvangen e-mail. | De e-mail van **vandaag**lezen <br> Wie heb ik **vandaag**per e-mail gestuurd? <br> Wie heeft ik op **7 uur**gebeld? | vandaag <br> morgen
 DestinationPhone | Simple | De doel gebruiker wil een tekst aanroepen of verzenden naar. | een **gesprek tot stand** brengen <br> een tekst bericht naar **Home** verzenden | Boomhut <br> start
@@ -163,7 +163,7 @@ Regel | Simple | De lijn gebruiker wil een e-mail of tekst verzenden vanuit. | M
 SenderName | personName | De naam van de afzender. | Het e-mail bericht van **David** lezen <br> E-mail berichten van Chanda | David <br> Chanda
 FromRelationshipName | Simple | De relatie naam van de afzender. | Bericht lezen van **pa**. <br> Lees ik alle SMS-berichten van **mom**? | Je vader <br> Mama 
 Message | eenvoudig, patroon. Iedere |  Het bericht te verzenden als een e-mailadres of tekst.  | E-mail verzenden met de melding**Ik ben bezet**. | Ik ben bezet
-OrderReference | Simple | De rangtelwoord of relatieve positie in een lijst, het identificeren van een item om op te halen. | Wat is het **laatste** bericht dat ik heb verzonden? <br> Lees de **laatste** e-mail van Nokia. <br> Lees **nieuwe** tekst berichten. | duren <br> latest <br> afgelopen <br> nieuwste
+OrderReference | Simple | De rangtelwoord of relatieve positie in een lijst, het identificeren van een item om op te halen. | Wat is het **laatste** bericht dat ik heb verzonden? <br> Lees de **laatste** e-mail van Nokia. <br> Lees **nieuwe** tekst berichten. | duren <br> latest <br> Afgelopen <br> nieuwste
 PositionReference | eenvoudig, rang telwoord | De rangtelwoord of relatieve positie in een lijst, het identificeren van een item om op te halen.| Wat is het **eerste** bericht dat ik heb verzonden? <br> De **derde** .| Eerste <br> externe
 phoneNumber | phoneNumber | De telefoon nummer waarmee de gebruiker een tekst wil aanroepen of verzenden. | tekst verzenden naar **4 1 5 6 8 4 5 2 8 4** | 3525214446
 RelationshipName | Simple | De relatie naam van een contact persoon of geadresseerde van het bericht. | E-mail verzenden naar mijn **vrouw** | vrouw
@@ -203,7 +203,7 @@ SenderName | personName | De naam van de afzender. | Het e-mail bericht van **Da
 FromRelationshipName | Simple | De relatie naam van de afzender. | Bericht lezen van **pa**. <br> Lees ik alle SMS-berichten van **mom**? | Je vader <br> Mama 
 Message | eenvoudig, patroon. Iedere |  Het bericht te verzenden als een e-mailadres of tekst.  | E-mail verzenden met de melding**Ik ben bezet**. | Ik ben bezet
 Categorie | Simple | De categorie van een bericht of e-mail, de categorie moet een duidelijke definitie hebben in het e-mail systeem, zoals ' ongelezen ', ' vlag '. De definitie van de beschrijving met een lees-o, bijvoorbeeld ' nieuw ' en ' recent ' zijn geen categorieën. | Alle e-mail markeren als **gelezen**  <br> Nieuwe e-mail met **hoge prioriteit** voor Paul | belangrijk <br> hoge prioriteit <br> lezen
-OrderReference | Simple | De rangtelwoord of relatieve positie in een lijst, het identificeren van een item om op te halen. | Wat is het **laatste** bericht dat ik heb verzonden? <br> Lees de **laatste** e-mail van Nokia. <br> Lees **nieuwe** tekst berichten. | duren <br> latest <br> afgelopen <br> nieuwste
+OrderReference | Simple | De rangtelwoord of relatieve positie in een lijst, het identificeren van een item om op te halen. | Wat is het **laatste** bericht dat ik heb verzonden? <br> Lees de **laatste** e-mail van Nokia. <br> Lees **nieuwe** tekst berichten. | duren <br> latest <br> Afgelopen <br> nieuwste
 PositionReference | eenvoudig, rang telwoord | De rangtelwoord of relatieve positie in een lijst, het identificeren van een item om op te halen.| Wat is het **eerste** bericht dat ik heb verzonden? <br> De **derde** .| Eerste <br> externe
 RelationshipName | Simple | De relatie naam van een contact persoon of geadresseerde van het bericht. | E-mail verzenden naar mijn **vrouw** | vrouw
 Time | datetime | Time | e- **Tonight**verzenden. | tonight
@@ -268,7 +268,7 @@ De naam van de entiteit | Entiteits type | Description | Voorbeelden
 Text | eenvoudig, patroon. Iedere | De tekst van een opmerking of een herinnering. | voordat u walking uitbreiden <br> lange termijn morgen
 Titel | eenvoudig, patroon. Iedere | De titel van een opmerking. | boodschappen <br> mensen om aan te roepen <br> taak
 CreationDate | datetimeV2 | Deze sleuf geldt wanneer de gebruiker wordt gevraagd om notities te maken binnen een bepaald datum-en tijd venster. | 
-Kwantiteits meter | List | Wanneer een gebruiker wordt gevraagd een actie uit te voeren op ' alle ', ' elke ' of ' alle ' items of alle tekst in een notitie. | alle <br> willekeurig <br> elke
+Kwantiteits meter | List | Wanneer een gebruiker wordt gevraagd een actie uit te voeren op ' alle ', ' elke ' of ' alle ' items of alle tekst in een notitie. | all <br> Iedere <br> elke
 OrderReference | ordinal | De gebruiker wil acties uitvoeren met ' First ', ' last ', ' Next ', enzovoort. | instantie <br> duren
 
 
@@ -386,7 +386,7 @@ LUIS entiteit | Entiteits type | Description | Voorbeelden
 ------------|-------------|-------------|---------
 ordinal | ordinal | Een rang telwoord of numerieke verwijzing naar een item. | De **tweede** . <br> **Volgende** .
 nummer | nummer | Aantal items dat door de gebruiker wil | De volgende **3** items
-DirectionalReference | Simple | Een referentie punt voor waar op het scherm een item zich bevindt. | De juiste <br> hoofd
+DirectionalReference | Simple | Een referentie punt voor waar op het scherm een item zich bevindt. | De juiste <br> Hoofd
 
 ## <a name="weather"></a>**Meteorologische**
 Weer domein is gericht op het controleren van weers omstandigheden en adviseurs met de locatie en tijd of de controle tijd op basis van weer situaties.
@@ -404,12 +404,12 @@ LUIS entiteit | Entiteits type | Description | Voorbeelden
 ------------|-------------|-------------|---------
 Location | Geografie | De absolute of impliciete locatie voor een weer aanvraag. | Palo Alto<br>Sjanghai<br>Seattle<br>Delvina<br>
 Date/Time   | datetime | Datum/tijd voor het opvragen van het weer. | November<br>per uur<br>ochtend<br>Dit weekend<br>10 dagen<br>
-AdditionalWeatherCondition | list | Extra beschrijving woord voor het weer, zoals de snelheid of richting van wind. | direction<br>Snel<br>waarmee
+AdditionalWeatherCondition | list | Extra beschrijving woord voor het weer, zoals de snelheid of richting van wind. | direction<br>Snel<br>Waarmee
 Historie | Simple | Beschrijving van de historische weers omstandigheden, waaronder gemiddelde 、-grens waarden in de afgelopen periode. | bewaren<br>historisch/geschiedenis<br>lidstaat<br>beste tijd<br>ooit opgenomen
 PrecipitationUnit | dimensie | De precipitatie voor sneeuw of regen. | 5 inch<br>6 cm
 SuitableFor | Simple | De beschrijving van een menselijke activiteit onder een weers omstandigheden, wat gebruikelijk is wanneer gebruikers een query uitvoeren op activiteiten die afhankelijk zijn van de weers omstandigheden. | jassen<br>paraplu<br>Zwembad
 TemperatureUnit |temperatuur | temperatuur | 18 Celsius<br>7 Kelvin-graden
-WeatherRange | Simple | De specifieke conditie van de Tempe ratuur, wind en andere weers omstandigheden binnen een bepaalde periode | maximum<br>hogesnelheidsnet<br>laag<br>gemiddeld hoog<br>Hoogst
+WeatherRange | Simple | De specifieke conditie van de Tempe ratuur, wind en andere weers omstandigheden binnen een bepaalde periode | maximum<br>Hogesnelheidsnet<br>laag<br>gemiddeld hoog<br>Hoogst
 WeatherCondition | Simple | Beschrijving van de weers voorwaarde | zon<br>vloeiend<br>regen achtig<br>temperatuur<br>richting<br>hot
 WindDirectionUnit | list | De richtings woorden van wind | Noord<br>South<br>East<br>West<br>zijde
 

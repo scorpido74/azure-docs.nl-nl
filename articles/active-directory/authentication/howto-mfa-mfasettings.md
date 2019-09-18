@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eab92f044f62a1ca32062753f824ea76a2726a8
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: cf732ec97a57a5bc1d2bcaa39e5fd14a305504d0
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860278"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075504"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication-instellingen configureren
 
@@ -403,6 +403,8 @@ De functie beperkt het aantal authenticaties op Web-apps, die Norma liter elke k
 >De functie **multi-factor Authentication onthouden** is niet compatibel met de functie **aangemeld blijven** van AD FS, wanneer gebruikers verificatie in twee stappen uitvoeren voor AD FS via Azure multi-factor Authentication-Server of een multi-factor van derden verificatie oplossing.
 >
 >Als uw gebruikers **ingelogd blijven aangemeld** bij AD FS en hun apparaat ook markeren als vertrouwd voor multi-factor Authentication, wordt de gebruiker niet automatisch gecontroleerd wanneer het aantal dagen van de **Meervoudige multi-factor Authentication** is verlopen. Azure AD vraagt een nieuwe verificatie in twee stappen aan, maar AD FS retourneert een token met de oorspronkelijke Multi-Factor Authentication claim en datum, in plaats van de verificatie in twee stappen opnieuw uit te voeren. **Met deze reactie wordt een verificatie lus tussen Azure AD en AD FS.**
+>
+>De functie **multi-factor Authentication onthouden** is niet compatibel met B2B-gebruikers en is niet zichtbaar voor B2B-gebruikers wanneer ze zich aanmelden bij de uitgenodigde tenants.
 >
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Multi-Factor Authentication onthouden inschakelen

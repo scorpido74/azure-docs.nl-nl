@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: 4357a91a87648885def69d8e75e19e38a5a3f751
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 87ecf534fa7d4f3609882f5f18b314c246e388bd
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993720"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036651"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analytics voor de commerciële Marketplace in het partner centrum
 
@@ -250,7 +250,7 @@ U ontvangt een pop-upmelding en een e-mail bericht met een koppeling naar het da
 | Voor naam van klant| De klant| De naam van de klant. De naam kan afwijken van de naam die is opgenomen in het Azure-abonnement van de klant.| |
 | Klant-id | Klant, order | De unieke id die aan een klant is toegewezen. Een klant heeft mogelijk geen of meer Azure Marketplace-abonnementen.|  |
 | Post code van de klant  | De klant| De post code die de klant heeft ontvangen. De code kan afwijken van de post code die is opgenomen in het Azure-abonnement van een klant.| |
-| Klant status| De klant| De status (adres) van de klant. De status kan afwijken van de achternaam die is opgenomen in het Azure-abonnement van de klant.| |
+| Klant status| De klant| De status (adres) van de klant. De status kan afwijken van de status die is opgenomen in het Azure-abonnement van de klant.| |
 | Aanschaf datum| De klant| De eerste datum waarop de klant een door u gepubliceerde aanbieding heeft gekocht.| |
 | Datum verloren| De klant| De laatste datum waarop de klant de laatste van alle eerder gekochte aanbiedingen heeft geannuleerd.||
 | Is nieuwe klant  | Bestellen| Met deze waarde wordt een nieuwe klant geïdentificeerd die voor de eerste keer een of meer van uw aanbiedingen aanschaft (of niet). De waarde is ' ja ' in dezelfde kalender maand voor ' verworven datum '. De waarde is "nee" als de klant een van de aanbiedingen vóór de gemelde kalender maand heeft gekocht. |

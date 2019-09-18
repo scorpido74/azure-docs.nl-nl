@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: ada570196c916a8101e8e968d284a3b280199cf3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ce1cdadcdc69fb5539394aa9bf402aa9463311e9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142807"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057665"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Quickstart: Client bibliotheek voor formulier herkenning voor .NET
 
@@ -22,9 +22,11 @@ Aan de slag met de Form Recognizer-client bibliotheek voor .NET. Formulier herke
 
 Gebruik de Form Recognizer-client bibliotheek voor .NET voor het volgende:
 
-* Een aangepast model voor formulier herkenning trainen
-* Formulieren analyseren met een aangepast model
-* Een lijst met aangepaste modellen ophalen
+* [Een aangepast model voor formulier herkenning trainen](#train-a-custom-model)
+* [Een lijst met geëxtraheerde sleutels ophalen](#get-a-list-of-extracted-keys)
+* [Formulieren analyseren met een aangepast model](#analyze-forms-with-a-custom-model)
+* [Een lijst met aangepaste modellen ophalen](#get-a-list-of-custom-models)
+* [Een aangepast model verwijderen](#delete-a-custom-model)
 
 [](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [Bron](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer)codepakket | van de referentie documentatie bibliotheek[(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
@@ -68,14 +70,7 @@ Build succeeded.
 
 Open het _Program.cs_ -bestand in de map van het project in uw voorkeurs editor of IDE. Voeg de volgende `using` instructies toe:
 
-```csharp
-using Microsoft.Azure.CognitiveServices.FormRecognizer;
-using Microsoft.Azure.CognitiveServices.FormRecognizer.Models;
-
-using System;
-using System.IO;
-using System.Threading.Tasks;
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_using)]
 
 Voeg vervolgens de volgende code toe aan de methode **Main** van de toepassing. U definieert deze asynchrone taak later op.
 
@@ -115,10 +110,12 @@ Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de fo
 
 * [De client verifiëren](#authenticate-the-client)
 * [Een aangepast model voor formulier herkenning trainen](#train-a-custom-model)
+* [Een lijst met geëxtraheerde sleutels ophalen](#get-a-list-of-extracted-keys)
 * [Formulieren analyseren met een aangepast model](#analyze-forms-with-a-custom-model)
 * [Een lijst met aangepaste modellen ophalen](#get-a-list-of-custom-models)
+* [Een aangepast model verwijderen](#delete-a-custom-model)
 
-### <a name="define-variables"></a>Variabelen definiëren
+## <a name="define-variables"></a>Variabelen definiëren
 
 Voordat u een methode definieert, voegt u de volgende variabele definities toe boven aan de **programma** klasse. U moet een aantal van de variabelen zelf invullen. 
 
@@ -127,13 +124,13 @@ Voordat u een methode definieert, voegt u de volgende variabele definities toe b
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_variables)]
 
-### <a name="authenticate-the-client"></a>De client verifiëren
+## <a name="authenticate-the-client"></a>De client verifiëren
 
 Definieer onder `Main` de-methode de taak waarnaar wordt verwezen in. `Main` Hier verifieert u het client object met behulp van de hierboven gedefinieerde abonnements variabelen. U definieert de andere methoden later op.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_maintask)]
 
-### <a name="train-a-custom-model"></a>Aangepast model trainen
+## <a name="train-a-custom-model"></a>Aangepast model trainen
 
 De volgende methode gebruikt uw formulier Recognizer-client object om een nieuw herkennings model te trainen in de documenten die zijn opgeslagen in uw Azure Blob-container. Er wordt een hulp methode gebruikt om informatie weer te geven over het nieuwe getrainde model (vertegenwoordigd door een [ModelResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelresult?view=azure-dotnet-preview) -object) en het retourneert de model-id.
 
@@ -143,9 +140,18 @@ De volgende Help-methode geeft informatie weer over een model voor formulier her
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displaymodel)]
 
-### <a name="analyze-forms-with-a-custom-model"></a>Formulieren analyseren met een aangepast model
+## <a name="get-a-list-of-extracted-keys"></a>Een lijst met geëxtraheerde sleutels ophalen
+
+Zodra de training is voltooid, wordt in het aangepaste model een lijst met sleutels bijgehouden die zijn geëxtraheerd uit de trainings documenten. Er worden toekomstige formulier documenten verwacht dat deze sleutels worden opgenomen, waarna de bijbehorende waarden worden opgehaald in de analyse bewerking. Gebruik de volgende methode om de lijst met geëxtraheerde sleutels op te halen en af te drukken naar de-console. Dit is een goede manier om te controleren of het trainings proces effectief is.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getkeys)]
+
+## <a name="analyze-forms-with-a-custom-model"></a>Formulieren analyseren met een aangepast model
 
 Deze methode maakt gebruik van de formulier Recognizer-client en een model-ID voor het analyseren van een PDF-formulier document en het extra heren van sleutel/waarde-gegevens. Er wordt een hulp methode gebruikt om de resultaten weer te geven (vertegenwoordigd door een [AnalyzeResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.analyzeresult?view=azure-dotnet-preview) -object).
+
+> [!NOTE]
+> Met de volgende methode wordt een PDF-formulier geanalyseerd. Zie voor soort gelijke methoden voor het analyseren van JPEG-en PNG-formulieren de volledige voorbeeld code op [github](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer).
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_analyzepdf)]
 
@@ -153,11 +159,17 @@ Met de volgende Help-methode wordt informatie weer gegeven over een analyse bewe
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displayanalyze)]
 
-### <a name="get-a-list-of-custom-models"></a>Een lijst met aangepaste modellen ophalen
+## <a name="get-a-list-of-custom-models"></a>Een lijst met aangepaste modellen ophalen
 
 U kunt een lijst weer geven met alle getrainde modellen die deel uitmaken van uw account en u kunt informatie ophalen over het tijdstip waarop deze zijn gemaakt. De lijst met modellen wordt vertegenwoordigd door een [ModelsResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelsresult?view=azure-dotnet-preview) -object.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getmodellist)]
+
+## <a name="delete-a-custom-model"></a>Een aangepast model verwijderen
+
+Als u het aangepaste model uit uw account wilt verwijderen, gebruikt u de volgende methode:
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
@@ -174,9 +186,7 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-Als u een aangepast model hebt getraind dat u uit uw account wilt verwijderen, kunt u ook de volgende methode gebruiken:
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
+Als u een aangepast model hebt getraind dat u uit uw account wilt verwijderen, moet u ook de methode in [een aangepast model verwijderen](#delete-a-custom-model)uitvoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
-title: Gebruiker stroom versies in Azure Active Directory B2C | Microsoft Docs
-description: Meer informatie over de versies van gebruikersstromen beschikbaar in Azure Active Directory B2C.
+title: Versies van de gebruikers stroom in Azure Active Directory B2C | Microsoft Docs
+description: Meer informatie over de versies van gebruikers stromen die beschikbaar zijn in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,38 +10,38 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ed57a9fa3b041961ce220e8f10d9aed5e7bef60e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7b3ce6a4e72b90c6fd642b92d4a92eb02f4c92c
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511929"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063201"
 ---
-# <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Gebruiker stroom versies in Azure Active Directory B2C
+# <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Versies van de gebruikers stroom in Azure Active Directory B2C
 
 >[!IMPORTANT]
-> Gebruiker stromen die worden vermeld in het artikel wordt beschouwd als openbare preview-versie, tenzij geïdentificeerd als **aanbevolen**. U moet de aanbevolen gebruikersstromen alleen gebruiken voor uw productietoepassingen.
+> Elke gebruikers stroom die in het artikel wordt vermeld, wordt beschouwd als een open bare preview, tenzij wordt aangegeven als **Aanbevolen**. Gebruik alleen aanbevolen gebruikers stromen voor uw productie toepassingen.
 
-Gebruikersstromen in Azure Active Directory (Azure AD) B2C kunnen u voor het instellen van algemene [beleid](active-directory-b2c-reference-policies.md) die identiteit klantervaringen volledig te beschrijven. Deze ervaringen zijn gebruikersregistratie, aanmelding, wachtwoord opnieuw instellen of bewerken van profielen. In Azure AD B2C, kunt u selecteren uit een verzameling van aanbevolen gebruikersstromen en gebruikersstromen Preview-versie. 
+Gebruikers stromen in Azure Active Directory B2C (Azure AD B2C) helpen u bij het instellen van een gemeen schappelijke [beleids](active-directory-b2c-reference-policies.md) regel voor het beschrijven van de ervaring van de klant identiteit. Deze ervaring omvat het aanmelden, aanmelden, het opnieuw instellen van wacht woorden of het bewerken van profielen. In Azure AD B2C kunt u kiezen uit een verzameling van zowel aanbevolen gebruikers stromen als voor beeld van gebruikers stromen.
 
-Nieuwe gebruikersstromen worden toegevoegd als nieuwe versies. Gebruikersstromen komen stabiel, wordt ze worden aanbevolen voor gebruik. Gebruikersstromen zijn gemarkeerd als **aanbevolen** als ze grondig hebt getest. Gebruikersstromen wordt beschouwd als Preview-versie totdat gemarkeerd als aanbevolen. Een aanbevolen beleid voor een productietoepassing gebruiken, maar kiezen uit andere versies voor het testen van nieuwe functionaliteit wanneer deze beschikbaar. Oudere versies van aanbevolen gebruikersstromen kunt u al dan niet mogen gebruiken.
+Nieuwe gebruikers stromen worden toegevoegd als nieuwe versies. Wanneer gebruikers stromen stabiel worden, worden ze aanbevolen voor gebruik. Gebruikers stromen worden gemarkeerd als **Aanbevolen** als ze uitvoerig zijn getest. Gebruikers stromen worden in de preview-fase opgenomen tot ze als aanbevolen zijn gemarkeerd. Gebruik een aanbevolen gebruikers stroom voor een productie toepassing, maar kies uit andere versies om de nieuwe functionaliteit te testen zodra deze beschikbaar wordt. Gebruik geen oudere versies van aanbevolen gebruikers stromen.
 
 ## <a name="v1"></a>V1
 
 | Gebruikersstroom | Aanbevolen | Description |
 | --------- | ----------- | ----------- |
-| Wachtwoord opnieuw instellen | Ja | Kan een gebruiker een nieuw wachtwoord kiezen nadat u hebt gecontroleerd van hun e-mailadres. Met dit beleid kunt configureren u: <ul><li>[Multi-factor authentication](active-directory-b2c-reference-mfa.md)</li><li>Instellingen voor tokencompatibiliteit</li><li>[Vereisten voor wachtwoordcomplexiteit](active-directory-b2c-reference-password-complexity.md)</li></ul> |
-| Profiel bewerken | Ja | Kan een gebruiker configureren hun gebruikerskenmerken. Met dit beleid kunt configureren u: <ul><li>[Levensduur van token](active-directory-b2c-reference-tokens.md)</li><li>Instellingen voor tokencompatibiliteit</li><li>Sessiegedrag</li></ul> |
-| resource-eigenaar | Nee | Kan een gebruiker met een lokaal account aanmelden rechtstreeks in systeemeigen toepassingen (geen browser vereist). Met dit beleid kunt configureren u: <ul><li>[Levensduur van token](active-directory-b2c-reference-tokens.md)</li><li>Instellingen voor tokencompatibiliteit</li></ul> |
-| Aanmelden | Nee | Kan een gebruiker zich aanmeldt bij hun account. Met dit beleid kunt configureren u: <ul><li>[Multi-factor authentication](active-directory-b2c-reference-mfa.md)</li><li>[Levensduur van token](active-directory-b2c-reference-tokens.md)</li><li>Instellingen voor tokencompatibiliteit</li><li>Sessiegedrag</li><li>Aanmelding blokkeren</li><li>Opnieuw instellen van wachtwoorden forceren</li><li>Aangemeld blijven In (KMSI)</ul><br>U kunt de gebruikersinterface met deze gebruikersstroom niet aanpassen. |
-| Aanmelden | Nee | Kan een gebruiker om een account te maken. Met dit beleid kunt configureren u: <ul><li>[Multi-factor authentication](active-directory-b2c-reference-mfa.md)</li><li>[Levensduur van token](active-directory-b2c-reference-tokens.md)</li><li>Instellingen voor tokencompatibiliteit</li><li>Sessiegedrag</li><li>[Vereisten voor wachtwoordcomplexiteit](active-directory-b2c-reference-password-complexity.md)</li></ul> |
-| Registreren en aanmelden | Ja | Kan een gebruiker voor het maken van een account of aanmelden bij hun account. Met dit beleid kunt configureren u: <ul><li>[Multi-factor authentication](active-directory-b2c-reference-mfa.md)</li><li>[Levensduur van token](active-directory-b2c-reference-tokens.md)</li><li>Instellingen voor tokencompatibiliteit</li><li>Sessiegedrag</li><li>[Vereisten voor wachtwoordcomplexiteit](active-directory-b2c-reference-password-complexity.md)</li></ul>|
+| Wachtwoord opnieuw instellen | Ja | Hiermee kan een gebruiker een nieuw wacht woord kiezen na het verifiëren van het e-mail adres. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Multi-factor authentication](active-directory-b2c-reference-mfa.md)</li><li>Instellingen voor tokencompatibiliteit</li><li>[Vereisten voor wachtwoord complexiteit](active-directory-b2c-reference-password-complexity.md)</li></ul> |
+| Profiel bewerken | Ja | Hiermee kan een gebruiker hun gebruikers kenmerken configureren. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Levens duur van token](active-directory-b2c-reference-tokens.md)</li><li>Instellingen voor tokencompatibiliteit</li><li>Sessiegedrag</li></ul> |
+| Resource-eigenaar | Nee | Hiermee kan een gebruiker met een lokaal account zich rechtstreeks aanmelden bij systeem eigen toepassingen (er is geen browser vereist). Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Levens duur van token](active-directory-b2c-reference-tokens.md)</li><li>Instellingen voor tokencompatibiliteit</li></ul> |
+| Aanmelden | Nee | Hiermee kan een gebruiker zich aanmelden bij hun account. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Multi-factor authentication](active-directory-b2c-reference-mfa.md)</li><li>[Levens duur van token](active-directory-b2c-reference-tokens.md)</li><li>Instellingen voor tokencompatibiliteit</li><li>Sessiegedrag</li><li>Aanmelden blok keren</li><li>Wacht woord opnieuw instellen afdwingen</li><li>Aangemeld blijven (KMSI)</ul><br>U kunt de gebruikers interface niet aanpassen met deze gebruikers stroom. |
+| Registreren | Nee | Hiermee kan een gebruiker een account maken. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Multi-factor authentication](active-directory-b2c-reference-mfa.md)</li><li>[Levens duur van token](active-directory-b2c-reference-tokens.md)</li><li>Instellingen voor tokencompatibiliteit</li><li>Sessiegedrag</li><li>[Vereisten voor wachtwoord complexiteit](active-directory-b2c-reference-password-complexity.md)</li></ul> |
+| Registreren en aanmelden | Ja | Hiermee kan een gebruiker een account maken of zich aanmelden bij hun account. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Multi-factor authentication](active-directory-b2c-reference-mfa.md)</li><li>[Levens duur van token](active-directory-b2c-reference-tokens.md)</li><li>Instellingen voor tokencompatibiliteit</li><li>Sessiegedrag</li><li>[Vereisten voor wachtwoord complexiteit](active-directory-b2c-reference-password-complexity.md)</li></ul>|
 
 ## <a name="v2"></a>V2
 
 | Gebruikersstroom | Aanbevolen | Description |
 | --------- | ----------- | ----------- |
-| V2 voor wachtwoord opnieuw instellen | Nee | Kan een gebruiker een nieuw wachtwoord kiezen nadat u hebt gecontroleerd van hun e-mailadres. Met dit beleid kunt configureren u: <ul><li>[Multi-factor authentication](active-directory-b2c-reference-mfa.md)</li><li>Instellingen voor tokencompatibiliteit</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>[Vereisten voor wachtwoordcomplexiteit](active-directory-b2c-reference-password-complexity.md)</li></ul> |
-| Meld u aan v2 | Nee | Kan een gebruiker zich aanmeldt bij hun account. Met dit beleid kunt configureren u: <ul><li>[Multi-factor authentication](active-directory-b2c-reference-mfa.md)</li><li>[Levensduur van token](active-directory-b2c-reference-tokens.md)</li><li>Instellingen voor tokencompatibiliteit</li><li>Sessiegedrag</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>Aanpassing van de aanmeldingspagina opgeven</li></ul> |
-| Meld u v2 | Nee | Kan een gebruiker om een account te maken. Met dit beleid kunt configureren u: <ul><li>[Multi-factor authentication](active-directory-b2c-reference-mfa.md)</li><li>[Levensduur van token](active-directory-b2c-reference-tokens.md)</li><li>Instellingen voor tokencompatibiliteit</li><li>Sessiegedrag</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>[Vereisten voor wachtwoordcomplexiteit](active-directory-b2c-reference-password-complexity.md)</li></ul> |
-| Registreren en aanmelden in v2 | Nee | Kan een gebruiker voor het maken van een account of meld u aan hun account. Met dit beleid kunt configureren u: <ul><li>[Multi-factor authentication](active-directory-b2c-reference-mfa.md)</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>[Vereisten voor wachtwoordcomplexiteit](active-directory-b2c-reference-password-complexity.md)</li></ul> |
+| Wachtwoord opnieuw instellen v2 | Nee | Hiermee kan een gebruiker een nieuw wacht woord kiezen na het verifiëren van het e-mail adres. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Multi-factor authentication](active-directory-b2c-reference-mfa.md)</li><li>Instellingen voor tokencompatibiliteit</li><li>[Leeftijds beperking](basic-age-gating.md)</li><li>[vereisten voor wachtwoord complexiteit](active-directory-b2c-reference-password-complexity.md)</li></ul> |
+| Aanmelden v2 | Nee | Hiermee kan een gebruiker zich aanmelden bij hun account. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Multi-factor authentication](active-directory-b2c-reference-mfa.md)</li><li>[Levens duur van token](active-directory-b2c-reference-tokens.md)</li><li>Instellingen voor tokencompatibiliteit</li><li>Sessiegedrag</li><li>[Leeftijds beperking](basic-age-gating.md)</li><li>Aanpassing van de aanmeldings pagina</li></ul> |
+| Registreren v2 | Nee | Hiermee kan een gebruiker een account maken. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Multi-factor authentication](active-directory-b2c-reference-mfa.md)</li><li>[Levens duur van token](active-directory-b2c-reference-tokens.md)</li><li>Instellingen voor tokencompatibiliteit</li><li>Sessiegedrag</li><li>[Leeftijds beperking](basic-age-gating.md)</li><li>[Vereisten voor wachtwoord complexiteit](active-directory-b2c-reference-password-complexity.md)</li></ul> |
+| Registreren en aanmelden v2 | Nee | Hiermee kan een gebruiker een account maken of zich aanmelden bij hun account. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Multi-factor authentication](active-directory-b2c-reference-mfa.md)</li><li>[Leeftijds beperking](basic-age-gating.md)</li><li>[Vereisten voor wachtwoord complexiteit](active-directory-b2c-reference-password-complexity.md)</li></ul> |
