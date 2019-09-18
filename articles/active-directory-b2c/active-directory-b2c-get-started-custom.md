@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 83269a5ae0d2e5fb7ae2651dbc27926c910a0e03
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: b7eb004dbeba499e6f67f98165b72d7ec8615f1b
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302494"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065850"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Aan de slag met aangepast beleid in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-[Aangepaste beleids regels](active-directory-b2c-overview-custom.md) zijn configuratie bestanden waarmee het gedrag van uw Azure Active Directory-Tenant (Azure AD) B2C wordt gedefinieerd. In dit artikel maakt u een aangepast beleid dat ondersteuning biedt voor het registreren van lokale accounts of het aanmelden met behulp van een e-mail adres en wacht woord. U kunt ook uw omgeving voorbereiden voor het toevoegen van id-providers.
+[Aangepaste beleids regels](active-directory-b2c-overview-custom.md) zijn configuratie bestanden waarmee het gedrag van uw Azure Active Directory B2C (Azure AD B2C)-Tenant wordt gedefinieerd. In dit artikel maakt u een aangepast beleid dat ondersteuning biedt voor het registreren van lokale accounts of het aanmelden met behulp van een e-mail adres en wacht woord. U kunt ook uw omgeving voorbereiden voor het toevoegen van id-providers.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,7 +31,7 @@ ms.locfileid: "68302494"
 ## <a name="add-signing-and-encryption-keys"></a>Ondertekenings-en versleutelings sleutels toevoegen
 
 1. Meld u als globale beheerder van de Azure AD B2C-tenant aan bij [Azure Portal](https://portal.azure.com/).
-2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Klik op het **Directory-en abonnements filter** in het bovenste menu en kies de map die uw Tenant bevat.
+2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
 
@@ -85,7 +85,7 @@ Azure AD B2C moet u twee toepassingen registreren die worden gebruikt om gebruik
 1. Selecteer in **app-registraties (verouderd)** de optie **nieuwe toepassing registreren**.
 2. Voer`ProxyIdentityExperienceFramework`in bij **naam**.
 3. Kies voor **toepassings type** **systeem eigen**.
-4. `your-tenant-name`  Voer`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`voor omleidings-URI, waarbij uw Azure AD B2C Tenant.
+4. `your-tenant-name` Voer`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`voor omleidings-URI, waarbij uw Azure AD B2C Tenant.
 5. Klik op **Create**. Nadat de app is gemaakt, kopieert u de toepassings-ID en slaat u deze op voor later gebruik.
 6. Selecteer op de pagina instellingen de optie **vereiste machtigingen**en selecteer vervolgens **toevoegen**.
 7. Kies **een API selecteren**, zoek naar en selecteer **IdentityExperienceFramework**, en klik vervolgens op **selecteren**.

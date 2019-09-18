@@ -1,7 +1,7 @@
 ---
 title: Bestaande modellen gebruiken en implementeren
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over hoe u Azure Machine Learning service kunt gebruiken met modellen die buiten de service zijn getraind. U kunt modellen registreren die buiten Azure Machine Learning service zijn gemaakt en deze vervolgens implementeren als webservice of Azure IoT Edge module.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over hoe u Azure Machine Learning kunt gebruiken met modellen die buiten de service zijn getraind. U kunt modellen registreren die buiten Azure Machine Learning zijn gemaakt en deze vervolgens implementeren als webservice of Azure IoT Edge module.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,32 +10,32 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: f30ac3d5e20b3f797e083972ac179fd29f6b1475
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 0de9284896900cb7430f42e1d0266a1c02fab20e
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182539"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034432"
 ---
-# <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Een bestaand model gebruiken met Azure Machine Learning service
+# <a name="use-an-existing-model-with-azure-machine-learning"></a>Een bestaand model gebruiken met Azure Machine Learning
 
-Meer informatie over het gebruik van een bestaand machine learning model met de Azure Machine Learning-service.
+Meer informatie over het gebruik van een bestaand machine learning model met Azure Machine Learning.
 
-Als u een machine learning model hebt dat is getraind buiten de Azure Machine Learning-service, kunt u de service nog steeds gebruiken om het model te implementeren als een webservice of op een IoT Edge apparaat. 
+Als u een machine learning model hebt dat is getraind buiten Azure Machine Learning, kunt u de service nog steeds gebruiken om het model te implementeren als een webservice of op een IoT Edge apparaat. 
 
 > [!TIP]
-> Dit artikel bevat basis informatie over het registreren en implementeren van een bestaand model. Na de implementatie biedt Azure Machine Learning-Service bewaking voor uw model. U kunt hiermee ook invoer gegevens opslaan die naar de implementatie worden verzonden, die kunnen worden gebruikt voor gegevens verplaatsing of voor het trainen van nieuwe versies van het model.
+> Dit artikel bevat basis informatie over het registreren en implementeren van een bestaand model. Na de implementatie biedt Azure Machine Learning bewaking voor uw model. U kunt hiermee ook invoer gegevens opslaan die naar de implementatie worden verzonden, die kunnen worden gebruikt voor gegevens verplaatsing of voor het trainen van nieuwe versies van het model.
 >
 > Zie [machine learning modellen beheren, implementeren en controleren](concept-model-management-and-deployment.md)voor meer informatie over de concepten en termen die hier worden gebruikt.
 >
-> Zie [modellen implementeren met Azure machine learning service](how-to-deploy-and-where.md)voor algemene informatie over het implementatie proces.
+> Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor algemene informatie over het implementatie proces.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een werkruimte van Azure Machine Learning-service. Zie [een werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
+* Een Azure Machine Learning-werkruimte. Zie [een werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
 
     > [!TIP]
-    > In de python-voor beelden in dit artikel `ws` wordt ervan uitgegaan dat de variabele is ingesteld op uw Azure machine learning service-werk ruimte.
+    > In de python-voor beelden in dit artikel `ws` wordt ervan uitgegaan dat de variabele is ingesteld op uw Azure machine learning-werk ruimte.
     >
     > De CLI-voor beelden gebruiken een `myworkspace` tijdelijke `myresourcegroup`aanduiding van en. Vervang deze door de naam van uw werk ruimte en de resource groep waarin deze zich bevindt.
 
@@ -46,7 +46,7 @@ Als u een machine learning model hebt dat is getraind buiten de Azure Machine Le
 * Een getraind model. Het model moet persistent zijn gemaakt voor een of meer bestanden in uw ontwikkel omgeving.
 
     > [!NOTE]
-    > Voor het registreren van een model dat is getraind buiten Azure Machine Learning service, gebruiken de voorbeeld code fragmenten in dit artikel de modellen die zijn gemaakt door het Twitter [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)sentiment Analysis-project van Paolo Ripamonti:.
+    > Voor het registreren van een model dat is getraind buiten Azure Machine Learning, gebruiken de voorbeeld code fragmenten in dit artikel de modellen die zijn gemaakt door het Twitter [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)sentiment Analysis-project van Paolo Ripamonti:.
 
 ## <a name="register-the-models"></a>Model (len) registreren
 
@@ -58,7 +58,7 @@ from azureml.core.model import Model
 #      only some of the files from the directory
 model = Model.register(model_path = "./models",
                        model_name = "sentiment",
-                       description = "Sentiment analysis model trained outside Azure Machine Learning service",
+                       description = "Sentiment analysis model trained outside Azure Machine Learning",
                        workspace = ws)
 ```
 
@@ -79,7 +79,7 @@ Zie [machine learning modellen beheren, implementeren en bewaken](concept-model-
 De configuratie voor afwijzen bepaalt de omgeving die wordt gebruikt om het geïmplementeerde model uit te voeren. De configuratie voor het afmaken van een deservering verwijst naar de volgende entiteiten die worden gebruikt om het model uit te voeren wanneer het wordt geïmplementeerd:
 
 * Een invoer script. Dit bestand (met `score.py`de naam) laadt het model wanneer de geïmplementeerde service wordt gestart. Het is ook verantwoordelijk voor het ontvangen van gegevens, het door geven aan het model en het retour neren van een antwoord.
-* Een Azure Machine Learning-service [omgeving](how-to-use-environments.md). Een omgeving definieert de software afhankelijkheden die nodig zijn voor het uitvoeren van het model en het vermeldings script.
+* Een Azure Machine Learning [omgeving](how-to-use-environments.md). Een omgeving definieert de software afhankelijkheden die nodig zijn voor het uitvoeren van het model en het vermeldings script.
 
 In het volgende voor beeld ziet u hoe u de SDK gebruikt om een omgeving te maken en deze vervolgens te gebruiken met een Afleidings configuratie:
 
@@ -135,7 +135,7 @@ dependencies:
     - keras
 ```
 
-Zie [modellen implementeren met Azure machine learning service](how-to-deploy-and-where.md)voor meer informatie over het afnemen van de configuratie.
+Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over het afnemen van de configuratie.
 
 ### <a name="entry-script"></a>Invoer script
 
@@ -220,7 +220,7 @@ def predict(text, include_neutral=True):
        "elapsed_time": time.time()-start_at}  
 ```
 
-Zie [modellen implementeren met Azure machine learning service](how-to-deploy-and-where.md)voor meer informatie over invoer scripts.
+Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over invoer scripts.
 
 ## <a name="define-deployment"></a>Implementatie definiëren
 

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 72e268628560618fb6fa47843f5125d9126a9f3e
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5823bed08e0fc2ed67dbbf3c58c39982f3a1897e
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885153"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037274"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Zelfstudie: Apache HBase-beleid in HDInsight configureren met Enterprise Security Package
 
@@ -88,7 +88,8 @@ U kunt SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens [Ap
     ```hbaseshell
     scan 'Contacts'
     ```
-    ![HDInsight Hadoop HBase-shell](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+
+    ![HDInsight Hadoop HBase shell-uitvoer](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
 
 ## <a name="create-ranger-policies"></a>Ranger-beleidsregels maken
 
@@ -96,7 +97,7 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
 
 1. Open de **beheerinterface van Ranger**. Klik onder **HBase** op **\<ClusterName>_hbase**.
 
-   ![Beheerinterface van Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   ![Gebruikers interface van HDInsight Apache zwerver-beheerder](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
 2. Op het scherm **List of Policies** worden alle Ranger-beleidsregels weergegeven die voor dit cluster zijn gemaakt. Er kan één vooraf geconfigureerd beleid worden weergegeven. Klik op **Nieuw beleid toevoegen**.
 
@@ -202,14 +203,14 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
    kinit marketing_user1
    ```
 
-2. Open de HBase-shell en scan de `Customers`tabel:
+1. Open de HBase-shell en scan de `Customers`tabel:
 
     ```hbaseshell
     hbase shell
     scan `Customers`
     ```
 
-3. U ziet dat de marketing_user alleen de vijf kolommen van de kolomfamilie `Contact` kan bekijken.
+1. U ziet dat de marketing_user alleen de vijf kolommen van de kolomfamilie `Contact` kan bekijken.
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -226,9 +227,9 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
     2 row(s) in 0.0730 seconds
     ```
 
-9. Bekijk de controlegebeurtenissen voor toegang vanuit de gebruikersinterface van Ranger.
+1. Bekijk de controlegebeurtenissen voor toegang vanuit de gebruikersinterface van Ranger.
 
-   ![Controle van beleid vanuit de Ranger-gebruikersinterface](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   ![Beleids controle van HDInsight zwerver-gebruikers interface](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

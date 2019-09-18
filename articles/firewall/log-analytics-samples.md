@@ -1,50 +1,50 @@
 ---
-title: Azure log analytics-voorbeelden van Firewall
-description: Azure log analytics-voorbeelden van Firewall
+title: Voor beelden van Azure Firewall log Analytics
+description: Voor beelden van Azure Firewall log Analytics
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 2/15/2019
+ms.date: 09/17/2019
 ms.author: victorh
-ms.openlocfilehash: 3f329d3dd4af1faef8f77d08db655cc7d6ef79fd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a4ab1263abac67714357594e5bd87a4b910953b1
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60461508"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033982"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Azure log analytics-voorbeelden van Firewall
+# <a name="azure-firewall-log-analytics-samples"></a>Voor beelden van Azure Firewall log Analytics
 
-De volgende voorbeelden voor Azure Monitor-logboeken kunnen worden gebruikt voor het analyseren van uw Azure-Firewall-logboeken. Het voorbeeldbestand is ingebouwd in de Designer bekijken in Azure Monitor, de [Designer bekijken in Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) artikel vindt u meer informatie over het ontwerp van de weergave.
+De volgende Azure Monitor logboeken kunnen worden gebruikt om uw Azure Firewall-logboeken te analyseren. Het voorbeeld bestand is gebouwd in de weer gave designer in Azure Monitor, de [weer gave designer in azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) artikel bevat meer informatie over het ontwerp van de weer gave.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="azure-monitor-logs-view"></a>Azure Monitor-logboeken weergeven
+## <a name="azure-monitor-logs-view"></a>Azure Monitor logboeken weer geven
 
-Hier ziet u hoe u een voorbeeld van Azure Monitor logboeken visualisatie kunt configureren. U kunt downloaden de voorbeeld-visualisatie van de [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) opslagplaats. De eenvoudigste manier is met de rechtermuisknop op de hyperlink op deze pagina en kies *opslaan als* en geef een naam, zoals **AzureFirewall.omsview**. 
+Hier kunt u een voor beeld van een visualisatie Azure Monitor logboeken configureren. U kunt de voorbeeld visualisatie downloaden uit de opslag plaats [Azure-docs-JSON-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) . De eenvoudigste manier is om met de rechter muisknop op de Hyper link op deze pagina te klikken en *Opslaan als* en een naam op te geven, zoals **AzureFirewall. omsview**. 
 
-Voer de volgende stappen uit om de weergave aan uw Log Analytics-werkruimte:
+Voer de volgende stappen uit om de weer gave toe te voegen aan uw Log Analytics-werk ruimte:
 
-1. Open de Log Analytics-werkruimte in de Azure Portal.
-2. Open **Designer bekijken** hieronder **algemene**.
+1. Open de werk ruimte Log Analytics in azure Portal.
+2. Open de **weer gave Designer** onder **Algemeen**.
 3. Klik op **importeren**.
-4. Blader en selecteer de **AzureFirewall.omsview** dat u hebt gedownload voordat.
+4. Blader en selecteer het **AzureFirewall. omsview** -bestand dat u eerder hebt gedownload.
 5. Klik op **Opslaan**.
 
-Hier ziet u hoe de weergave voor de logboekgegevens van de toepassing-regel:
+Hier ziet u hoe de weer gave zoekt naar de logboek gegevens van de toepassings regel:
 
-![Logboekgegevens van toepassing-regel](./media/log-analytics-samples/azurefirewall-applicationrulelogstats.png)
+![Logboek gegevens toepassings regel](./media/log-analytics-samples/azurefirewall-applicationrulelogstats.png)
 
-En voor de logboekgegevens van de netwerk-regel:
+En voor de logboek gegevens van de netwerk regel:
 
-![Logboekgegevens voor netwerk-regel]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
+![Logboek gegevens van netwerk regel]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-Firewall van Azure-Logboeken gegevens eronder AzureDiagnostics met categorie als **AzureFirewallApplicationRule** of **AzureFirewallNetworkRule**. De gegevens met de gegevens worden opgeslagen in het veld msg_s. Met behulp van de [parseren](https://docs.microsoft.com/azure/kusto/query/parseoperator) operator we de verschillende interessante eigenschappen van het veld msg_s kan extraheren. De onderstaande query's extraheren de gegevens voor beide categorieën.
+Azure Firewall registreert de gegevens onder AzureDiagnostics met categorie als **AzureFirewallApplicationRule** of **AzureFirewallNetworkRule**. De gegevens met de details worden opgeslagen in het veld msg_s. Met de operator [parseren](https://docs.microsoft.com/azure/kusto/query/parseoperator) kunnen we de verschillende interessante eigenschappen uit het veld msg_s ophalen. De onderstaande query's extra heren de informatie voor beide categorieën.
 
-## <a name="application-rules-log-data-query"></a>Toepassing regels query voor gegevens
+## <a name="application-rules-log-data-query"></a>Query voor logboek gegevens van toepassings regels
 
-De onderstaande query parseert de logboekgegevens van de toepassing-regel. In de verschillende opmerkingsregels vindt u enkele richtlijnen over hoe de query is gemaakt:
+Met de volgende query worden de logboek gegevens van de toepassings regel geparseerd. In de verschillende opmerkingen regels vindt u enkele richt lijnen voor het bouwen van de query:
 
 ```Kusto
 AzureDiagnostics
@@ -70,7 +70,7 @@ SourcePort = tostring(SourcePortInt)
 TargetPort = tostring(TargetPortInt)
 | extend
 //make sure we only have Allowed / Deny in the Action Field
-Action1 = case(Action1 == "denied","Deny","Unknown Action")
+Action1 = case(Action1 == "Deny","Deny","Unknown Action")
 | extend
     Action = case(Action2 == "",Action1,Action2),
     Rule = case(Rule2a == "",case(Rule1 == "",case(Rule2b == "","N/A", Rule2b),Rule1),Rule2a), 
@@ -80,7 +80,7 @@ Action1 = case(Action1 == "denied","Deny","Unknown Action")
 | project TimeGenerated, msg_s, Protocol, SourceIP, SourcePort, FQDN, TargetPort, Action ,RuleCollection, Rule
 ```
 
-Dezelfde query in een verkorte notatie:
+Dezelfde query in een meer versmalde indeling:
 
 ```Kusto
 AzureDiagnostics
@@ -92,15 +92,15 @@ AzureDiagnostics
 | parse TempDetails with * "Deny." RuleCollection2b ". Proceeding with" Rule2b
 | extend SourcePort = tostring(SourcePortInt)
 | extend TargetPort = tostring(TargetPortInt)
-| extend Action1 = case(Action1 == "denied","Deny","Unknown Action")
+| extend Action1 = case(Action1 == "Deny","Deny","Unknown Action")
 | extend Action = case(Action2 == "",Action1,Action2),Rule = case(Rule2a == "", case(Rule1 == "",case(Rule2b == "","N/A", Rule2b),Rule1),Rule2a), 
 RuleCollection = case(RuleCollection2b == "",case(RuleCollection2a == "","No rule matched",RuleCollection2a), RuleCollection2b),FQDN = case(FQDN == "", "N/A", FQDN),TargetPort = case(TargetPort == "", "N/A", TargetPort)
 | project TimeGenerated, msg_s, Protocol, SourceIP, SourcePort, FQDN, TargetPort, Action ,RuleCollection, Rule
 ```
 
-## <a name="network-rules-log-data-query"></a>Netwerk regels query voor gegevens
+## <a name="network-rules-log-data-query"></a>Query voor logboek gegevens van netwerk regels
 
-De volgende query parseert de logboekgegevens van de netwerk-regel. In de verschillende opmerkingsregels vindt u enkele richtlijnen over hoe de query is gemaakt:
+Met de volgende query worden de logboek gegevens van de netwerk regel geparseerd. In de verschillende opmerkingen regels vindt u enkele richt lijnen voor het bouwen van de query:
 
 ```Kusto
 AzureDiagnostics
@@ -137,7 +137,7 @@ TargetPort = tostring(TargetPortInt)
 | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action, NatDestination
 ```
 
-Dezelfde query in een verkorte notatie:
+Dezelfde query in een meer versmalde indeling:
 
 ```Kusto
 AzureDiagnostics
@@ -151,9 +151,9 @@ AzureDiagnostics
 | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action, NatDestination
 ```
 
-## <a name="threat-intelligence-log-data-query"></a>Threat Intelligence query voor gegevens
+## <a name="threat-intelligence-log-data-query"></a>Query voor logboek gegevens van bedreigings informatie
 
-De volgende query parseert de logboekgegevens van Bedreigingsinformatie regel:
+Met de volgende query worden de logboek gegevens van de bedreigings informatie regel geparseerd:
 
 ```Kusto
 AzureDiagnostics
@@ -168,4 +168,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over Azure-Firewall controle en diagnostische gegevens, [zelfstudie: Azure-Firewall-logboeken en metrische gegevens controleren](tutorial-diagnostics.md).
+Zie [zelf studie voor meer informatie over Azure firewall bewaking en diagnostische gegevens: Azure Firewall logboeken en metrische gegevens](tutorial-diagnostics.md)bewaken.

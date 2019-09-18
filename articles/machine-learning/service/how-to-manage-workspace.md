@@ -1,7 +1,7 @@
 ---
 title: Azure ML-werk ruimten maken in de portal
-titleSuffix: Azure Machine Learning service
-description: Informatie over het maken, weergeven en verwijderen van Azure Machine Learning-service toegang tot werkruimten in Azure portal.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het maken, weer geven en verwijderen van Azure Machine Learning-werk ruimten in de Azure Portal.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,20 +11,20 @@ ms.author: shipatel
 author: shivp950
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: df015df3c20cdb99512167e3dc3e455da2762c52
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 776b873e089c331f2f2867c94e542903075be4f7
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744792"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034513"
 ---
-# <a name="create-and-manage-azure-machine-learning-service-workspaces-in-the-azure-portal"></a>Azure Machine Learning service-werk ruimten maken en beheren in de Azure Portal
+# <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning-werk ruimten in de Azure Portal maken en beheren
 
-In dit artikel, zult u maken, weergeven en verwijderen [ **Azure Machine Learning-service werkruimten** ](concept-workspace.md) in Azure portal voor [Azure Machine Learning-service](overview-what-is-azure-ml.md).  De portal is de eenvoudigste manier om aan de slag te gaan met werk ruimten, maar als uw behoeften wijzigen of vereisten voor automatisering verhogen, kunt u ook werk ruimten maken en verwijderen [met behulp van de CLI](reference-azure-machine-learning-cli.md), [met Python-code](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) of [via de VS code-extensie](how-to-vscode-tools.md#get-started-with-azure-machine-learning).
+In dit artikel maakt, bekijkt en verwijdert u [**Azure machine learning-werk ruimten**](concept-workspace.md) in de Azure Portal voor [Azure machine learning](overview-what-is-azure-ml.md).  De portal is de eenvoudigste manier om aan de slag te gaan met werk ruimten, maar als uw behoeften wijzigen of vereisten voor automatisering verhogen, kunt u ook werk ruimten maken en verwijderen [met behulp van de CLI](reference-azure-machine-learning-cli.md), [met Python-code](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) of [via de VS code-extensie](how-to-vscode-tools.md#get-started-with-azure-machine-learning).
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
-Een werkruimte te maken, moet u een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer nog vandaag de [gratis of betaalde versie van de Azure Machine Learning Service](https://aka.ms/AMLFree).
+Een werkruimte te maken, moet u een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -47,7 +47,7 @@ Een werkruimte te maken, moet u een Azure-abonnement. Als u nog geen Azure-abonn
 
 1. Selecteer **machine learning service-werk ruimten**.
 
-   ![Zoeken naar Azure Machine Learning service-werk ruimte](media/how-to-manage-workspace/all-services.png)
+   ![Zoeken naar Azure Machine Learning-werk ruimte](media/how-to-manage-workspace/all-services.png)
 
 1. Bekijk de lijst met werkruimten die zijn gevonden. U kunt filteren op basis van abonnement, resourcegroepen en locaties.  
 
@@ -66,7 +66,7 @@ Gebruik de knop verwijderen aan de bovenkant van de werkruimte die u wilt verwij
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voer de volledige zelfstudie voor informatie over het gebruik van een werkruimte te bouwen, te trainen en implementeer modellen met Azure Machine Learning-service.
+Volg de zelf studie met volledige lengte voor meer informatie over het gebruik van een werk ruimte om modellen te bouwen, te trainen en te implementeren met Azure Machine Learning.
 
 > [!div class="nextstepaction"]
 > [Zelfstudie: Modellen trainen](tutorial-train-models-with-aml.md)

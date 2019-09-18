@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met Logboeken-query's in Azure Monitor | Microsoft Docs
-description: In dit artikel bevat een zelfstudie voor aan de slag logboeken-query's schrijven in Azure Monitor.
+title: Aan de slag met logboek query's in Azure Monitor | Microsoft Docs
+description: In dit artikel vindt u een zelf studie voor het schrijven van logboek query's in Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,118 +13,120 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: bwren
-ms.openlocfilehash: b03109ee5cdb76247bf3be6fda97e0cf6e434f17
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 6eb066e04cfa561a4fa443b8c8f9582e286a4d7b
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296092"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076758"
 ---
-# <a name="get-started-with-log-queries-in-azure-monitor"></a>Aan de slag met Logboeken-query's in Azure Monitor
+# <a name="get-started-with-log-queries-in-azure-monitor"></a>Aan de slag met logboek query's in Azure Monitor
 
 
 > [!NOTE]
-> U moet voltooien [aan de slag met Azure Monitor Log-Analytics](get-started-portal.md) voordat het voltooien van deze zelfstudie.
+> U moet aan de [slag met Azure Monitor Log Analytics](get-started-portal.md) volt ooien voordat u deze zelf studie voltooit.
 
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+> [!NOTE]
+> U kunt deze oefening in uw eigen omgeving door lopen als u gegevens verzamelt van ten minste één virtuele machine. Als dat niet het geval is, gebruikt u onze [demo omgeving](https://portal.loganalytics.io/demo), die veel voorbeeld gegevens bevat.
 
-In deze zelfstudie leert u Logboeken-query's schrijven in Azure Monitor. Deze leert u hoe aan:
 
-- Inzicht in query-structuur
-- Query-resultaten sorteren
-- Filter de resultaten van query
-- Een tijdsperiode opgeven
-- Welke velden moeten worden opgenomen in de resultaten
-- Definiëren en gebruiken van aangepaste velden
-- Cumulatieve en groep-resultaten
+In deze zelf studie leert u hoe u logboek query's schrijft in Azure Monitor. U leert het volgende:
 
-Zie voor een zelfstudie over het gebruik van Log Analytics in Azure portal, [aan de slag met Azure Monitor Log-Analytics](get-started-portal.md).<br>
-Zie voor meer informatie over de logboeken-query's in Azure Monitor [overzicht van het logboek query's in Azure Monitor](log-query-overview.md).
+- Query structuur begrijpen
+- Query resultaten sorteren
+- Query resultaten filteren
+- Een tijds bereik opgeven
+- Selecteren welke velden moeten worden meegenomen in de resultaten
+- Aangepaste velden definiëren en gebruiken
+- Resultaten samen voegen en groeperen
+
+Zie [aan de slag met Azure Monitor Log Analytics](get-started-portal.md)voor een zelf studie over het gebruik van log Analytics in het Azure Portal.<br>
+Zie [overzicht van logboek query's in azure monitor](log-query-overview.md)voor meer informatie over logboek query's in azure monitor.
 
 ## <a name="writing-a-new-query"></a>Een nieuwe query schrijven
-Query's kunnen beginnen met ofwel een tabelnaam wordt opgegeven of de *zoeken* opdracht. U moet beginnen met een tabelnaam wordt opgegeven, omdat deze een duidelijke bereik voor de query wordt gedefinieerd en verbetert de prestaties van query's zowel relevantie van de resultaten.
+Query's kunnen beginnen met een tabel naam of met de *Zoek* opdracht. U moet beginnen met een tabel naam omdat hiermee een duidelijk bereik voor de query wordt gedefinieerd en de query prestaties en relevantie van de resultaten worden verbeterd.
 
 > [!NOTE]
-> De Kusto-query-taal die wordt gebruikt door Azure Monitor is hoofdlettergevoelig. Trefwoorden voor de taal worden doorgaans intern kleine letters. Wanneer u de namen van tabellen of kolommen in een query, zorg ervoor dat u het juiste geval is, zoals wordt weergegeven in het deelvenster schema.
+> De Kusto-query taal die door Azure Monitor wordt gebruikt, is hoofdletter gevoelig. Taal trefwoorden worden meestal in kleine letters geschreven. Wanneer u namen van tabellen of kolommen in een query gebruikt, moet u ervoor zorgen dat u de juiste aanvraag gebruikt, zoals wordt weer gegeven in het deel venster schema.
 
 ### <a name="table-based-queries"></a>Query's op basis van een tabel
-Azure Monitor organiseert logboekgegevens in tabellen, elk bestaat uit meerdere kolommen. Alle tabellen en kolommen worden weergegeven in het deelvenster schema in Log Analytics in de Analytics-portal. Identificeert een tabel die u geïnteresseerd bent en klikt u vervolgens Kijk eens een deel van de gegevens:
+Azure Monitor organiseert logboek gegevens in tabellen, die elk bestaan uit meerdere kolommen. Alle tabellen en kolommen worden weer gegeven in het deel venster schema in Log Analytics in de analyse Portal. Identificeer een tabel waarin u geïnteresseerd bent en bekijk vervolgens een stukje gegevens:
 
 ```Kusto
 SecurityEvent
 | take 10
 ```
 
-De bovenstaande query retourneert 10 resultaten van de *SecurityEvent* tabel in een specifieke volgorde. Dit is een veelgebruikte manier een blik op een tabel en inzicht in de structuur en inhoud. We bekijken hoe deze wordt gemaakt:
+De query die hierboven wordt weer gegeven, retourneert tien resultaten uit de *SecurityEvent* -tabel, in een bepaalde volg orde. Dit is een zeer veelvoorkomende manier om een tabel in een oogopslag te bekijken en inzicht te krijgen in de structuur en inhoud ervan. Laten we eens kijken hoe het is gebouwd:
 
-* De query wordt gestart met de naam van de tabel *SecurityEvent* -in dit gedeelte definieert u het bereik van de query.
-* Het sluisteken (|) opdrachten zijn gescheiden, zodat de uitvoer van het eerste item in de invoer van de volgende opdracht. U kunt een willekeurig aantal doorgesluisd elementen kunt toevoegen.
-* Na de pipe is de **nemen** opdracht, waarbij een bepaald aantal willekeurige records geretourneerd uit de tabel.
+* De query begint met de tabel naam *SecurityEvent* : dit onderdeel definieert het bereik van de query.
+* Het sluis teken (|) scheidt opdrachten, dus de uitvoer van de eerste in de invoer van de volgende opdracht. U kunt elk gewenst aantal elementen in de pipes toevoegen.
+* Na de pipe is de opdracht **nemen** , die een specifiek aantal wille keurige records uit de tabel retourneert.
 
-We kunnen de query daadwerkelijk uitvoeren zelfs zonder toe te voegen `| take 10` : die nog steeds geldig zou zijn, maar het kan maximaal 10.000 resultaten worden geretourneerd.
+We kunnen de query zelfs zonder toe te voegen `| take 10` , ook wel geldig zijn, maar er kunnen wel 10.000 resultaten worden geretourneerd.
 
 ### <a name="search-queries"></a>Zoekquery 's
-Zoekquery's zijn minder gestructureerde en doorgaans meer geschikt is voor het zoeken van records die een specifieke waarde in een van de kolommen bevatten:
+Zoek query's zijn minder gestructureerd en zijn over het algemeen geschikt voor het zoeken van records die een specifieke waarde bevatten in een van de kolommen:
 
 ```Kusto
 search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-Deze query zoekt naar de *SecurityEvent* tabel voor records die de zin 'Cryptografische' bevatten. Deze records worden 10 records geretourneerd en weergegeven. Als we weglaat de `in (SecurityEvent)` deel en alleen worden uitgevoerd `search "Cryptographic"`, de zoekopdracht gaat over *alle* tabellen die langer duren en minder efficiënt.
+Met deze query wordt in de *SecurityEvent* -tabel gezocht naar records die de woord groep ' cryptographic ' bevatten. Van deze records worden 10 records geretourneerd en weer gegeven. Als we het `in (SecurityEvent)` onderdeel weglaten en gewoon `search "Cryptographic"`worden uitgevoerd, gaat de zoek opdracht over op *alle* tabellen, wat langer duurt en minder efficiënt is.
 
 > [!WARNING]
-> Zoekquery's zijn doorgaans langzamer dan query's op basis van een tabel, omdat ze hebben om meer gegevens te verwerken. 
+> Zoek query's zijn meestal trager dan query's op basis van een tabel, omdat ze meer gegevens moeten verwerken. 
 
-## <a name="sort-and-top"></a>Sorteren en top
-Terwijl **nemen** is handig om een paar records, de resultaten zijn geselecteerd en wordt weergegeven in willekeurige volgorde. Als u een geordende weergeven, kunt u **sorteren** door de gewenste kolom:
+## <a name="sort-and-top"></a>Sorteren en bovenaan
+Hoewel het handig is om een aantal records te verkrijgen **, worden de** resultaten geselecteerd en weer gegeven in een bepaalde volg orde. Als u een geordende weer gave wilt krijgen, kunt u **sorteren** op de voorkeurs kolom:
 
 ```Kusto
 SecurityEvent   
 | sort by TimeGenerated desc
 ```
 
-Die al te veel resultaten kan worden geretourneerd en kan ook enige tijd duren. De bovenstaande query sorteert *het gehele* SecurityEvent tabel door de kolom TimeGenerated. De Analytics-portal beperkt vervolgens de weergave alleen 10.000 records wilt weergeven. Deze aanpak is natuurlijk niet optimaal.
+Het kan echter ook te veel resultaten retour neren, maar dit kan enige tijd duren. Met de bovenstaande query wordt *de hele* SecurityEvent-tabel gesorteerd op de kolom TimeGenerated. De analyse Portal beperkt vervolgens de weer gave om alleen 10.000 records weer te geven. Deze benadering is natuurlijk niet optimaal.
 
-De beste manier om op te halen, alleen de meest recente 10 records is met **boven**, die de hele tabel aan de serverzijde sorteert en retourneert vervolgens de bovenste records:
+De beste manier om alleen de meest recente 10 records op te halen, is het gebruik van **Top**, waarmee de hele tabel op de server wordt gesorteerd en de bovenste records worden geretourneerd:
 
 ```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
 ```
 
-Aflopend is de standaardinstelling sorteervolgorde, zodat we meestal laat de **desc** argument. De uitvoer ziet er als volgt:
+Aflopend is de standaard sorteer volgorde, waardoor het argument **DESC** doorgaans niet wordt wegge laten. De uitvoer ziet er als volgt uit:
 
 ![Top 10](media/get-started-queries/top10.png)
 
 
-## <a name="where-filtering-on-a-condition"></a>Waar: filteren op een voorwaarde
-Filters, zoals aangegeven door de naam, filteren de gegevens door een specifieke voorwaarde. Dit is de meest voorkomende manier om te beperken van de queryresultaten naar relevante informatie.
+## <a name="where-filtering-on-a-condition"></a>Where: filteren op een voor waarde
+Filters, zoals aangegeven door hun naam, filteren de gegevens op een specifieke voor waarde. Dit is de meest voorkomende manier om de query resultaten te beperken tot relevante informatie.
 
-U kunt een filter toevoegen aan een query met de **waar** operator gevolgd door een of meer voorwaarden. De volgende query retourneert bijvoorbeeld alleen *SecurityEvent* records waarin _niveau_ gelijk is aan _8_:
+Als u een filter aan een query wilt toevoegen, gebruikt u de operator **where** gevolgd door een of meer voor waarden. Met de volgende query worden bijvoorbeeld alleen *SecurityEvent* -records geretourneerd waarbij _niveau_ gelijk is aan _8_:
 
 ```Kusto
 SecurityEvent
 | where Level == 8
 ```
 
-Bij het schrijven van de filtervoorwaarden, kunt u de volgende expressies:
+Wanneer u filter voorwaarden schrijft, kunt u de volgende expressies gebruiken:
 
-| expressie | Description | Voorbeeld |
+| Expressie | Description | Voorbeeld |
 |:---|:---|:---|
-| == | Gelijkheid controleren<br>(hoofdlettergevoelig) | `Level == 8` |
-| =~ | Gelijkheid controleren<br>(niet hoofdlettergevoelig) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
+| == | Gelijkheid controleren<br>(hoofdletter gevoelig) | `Level == 8` |
+| =~ | Gelijkheid controleren<br>(niet hoofdletter gevoelig) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
 | !=, <> | Ongelijkheid controleren<br>(beide expressies zijn identiek) | `Level != 4` |
-| *en*, *of* | Vereist tussen de voorwaarden| `Level == 16 or CommandLine != ""` |
+| *en*, *of* | Vereist tussen omstandigheden| `Level == 16 or CommandLine != ""` |
 
-Als u wilt filteren op meerdere voorwaarden, kunt u ofwel **en**:
+Als u wilt filteren op meerdere voor waarden, kunt u **en**gebruiken:
 
 ```Kusto
 SecurityEvent
 | where Level == 8 and EventID == 4672
 ```
 
-of meerdere overbrengen **waar** elementen een na de andere:
+of pipe meerdere **waar** elementen één na de andere liggen:
 
 ```Kusto
 SecurityEvent
@@ -133,18 +135,18 @@ SecurityEvent
 ```
     
 > [!NOTE]
-> Waarden hebben verschillende typen, zodat u wellicht te gieten om uit te voeren vergelijking op het juiste type. Bijvoorbeeld, SecurityEvent *niveau* kolom is van het type String, zodat u cast-conversie moet deze naar een numeriek type zoals *int* of *lang*, voordat u de numerieke operators erop kunt gebruiken: `SecurityEvent | where toint(Level) >= 10`
+> Waarden kunnen verschillende typen hebben, dus u moet deze mogelijk converteren om een vergelijking op het juiste type uit te voeren. Bijvoorbeeld, *de kolom SecurityEvent* is van het type teken reeks, dus moet u deze converteren naar een numeriek type, bijvoorbeeld *int* of *Long*, voordat u numerieke Opera tors kunt gebruiken:`SecurityEvent | where toint(Level) >= 10`
 
-## <a name="specify-a-time-range"></a>Een tijdsperiode opgeven
+## <a name="specify-a-time-range"></a>Een tijds bereik opgeven
 
-### <a name="time-picker"></a>Tijdkiezer
-De tijdkiezer naast de knop uitvoeren en geeft aan dat we bij het opvragen van alleen de records van de afgelopen 24 uur. Dit is het tijdsbereik voor standaard toegepast op alle query's. Als u alleen de records van het afgelopen uur, selecteer _afgelopen uur_ en voer de query opnieuw uit.
+### <a name="time-picker"></a>Tijd kiezer
+De tijd kiezer bevindt zich naast de knop uitvoeren en geeft aan dat er alleen records in de afgelopen 24 uur worden opgevraagd. Dit is het standaard tijd bereik dat wordt toegepast op alle query's. Als u alleen records van het afgelopen uur wilt ophalen, selecteert u _vorig uur_ en voert u de query opnieuw uit.
 
 ![Tijdkiezer](media/get-started-queries/timepicker.png)
 
 
-### <a name="time-filter-in-query"></a>Tijdfilter in query
-U kunt ook uw eigen tijdsbereik definiëren door een time-filter toe te voegen aan de query. Het is raadzaam te plaatsen van het tijdfilter direct na de naam van de tabel: 
+### <a name="time-filter-in-query"></a>Tijd filter in query
+U kunt ook uw eigen tijds bereik definiëren door een tijd filter toe te voegen aan de query. Het is het beste om het tijd filter direct na de tabel naam te plaatsen: 
 
 ```Kusto
 SecurityEvent
@@ -152,11 +154,11 @@ SecurityEvent
 | where toint(Level) >= 10
 ```
 
-In het bovenstaande tijdfilter `ago(30m)` "30 minuten geleden" betekent, zodat deze query alleen records uit de laatste 30 minuten retourneert. Andere tijdseenheden inclusief dagen (2d), minuten (25m) en seconden (per 10).
+In het bovenstaande filter `ago(30m)` betekent ' 30 minuten geleden ' zodat deze query alleen records retourneert van de laatste 30 minuten. Andere tijds eenheden zijn dagen (2D), minuten (25m) en seconden (10).
 
 
-## <a name="project-and-extend-select-and-compute-columns"></a>Project en uitbreiden: Selecteer en kolommen berekenen
-Gebruik **project** om specifieke kolommen om op te nemen in de resultaten te selecteren:
+## <a name="project-and-extend-select-and-compute-columns"></a>Project en uitbreiden: kolommen selecteren en berekenen
+**Project** gebruiken om specifieke kolommen te selecteren die in de resultaten moeten worden meegenomen:
 
 ```Kusto
 SecurityEvent 
@@ -164,15 +166,15 @@ SecurityEvent
 | project TimeGenerated, Computer, Activity
 ```
 
-Het vorige voorbeeld wordt deze uitvoer gegenereerd:
+In het vorige voor beeld wordt deze uitvoer gegenereerd:
 
-![De resultaten van de query-project](media/get-started-queries/project.png)
+![Resultaten van query project](media/get-started-queries/project.png)
 
-U kunt ook **project** namen van kolommen wijzigen en nieuwe te definiëren. Project wordt het volgende voorbeeld het volgende doen:
+U kunt **project** ook gebruiken om de namen van kolommen te wijzigen en nieuwe te definiëren. In het volgende voor beeld wordt project gebruikt om het volgende te doen:
 
-* Selecteer alleen de *Computer* en *TimeGenerated* oorspronkelijke kolommen.
-* Wijzig de naam van de *activiteit* kolom *EventDetails*.
-* Maak een nieuwe kolom met de naam *EventCode*. De **substring()** functie wordt gebruikt om op te halen van alleen de eerste vier tekens van het veld activiteit.
+* Selecteer alleen de *computer* en de oorspronkelijke *TimeGenerated* -kolommen.
+* Wijzig de naam van de kolom *Activity* in *EventDetails*.
+* Maak een nieuwe kolom met de naam *Event code*. De functie **subtekenreeks ()** wordt gebruikt om alleen de eerste vier tekens uit het veld activiteit op te halen.
 
 
 ```Kusto
@@ -181,7 +183,7 @@ SecurityEvent
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
 ```
 
-**uitbreiden** houdt u alle oorspronkelijke kolommen in de resultatenset en nieuwe zijn in definieert. De volgende query gebruikt **uitbreiden** om toe te voegen de *EventCode* kolom. Houd er rekening mee dat deze kolom kan niet worden weergegeven aan het einde van de resultaten van de tabel in dat geval u moet om uit te breiden de details van een record weer te geven.
+**uitbreiden** houdt alle oorspronkelijke kolommen in de resultatenset bij en definieert aanvullende waarden. De volgende query maakt gebruik van **uitbreiden** om de kolom *Event code* toe te voegen. Houd er rekening mee dat deze kolom niet wordt weer gegeven aan het einde van de tabel, waardoor u de details van een record moet uitvouwen om deze weer te geven.
 
 ```Kusto
 SecurityEvent
@@ -189,17 +191,17 @@ SecurityEvent
 | extend EventCode=substring(Activity, 0, 4)
 ```
 
-## <a name="summarize-aggregate-groups-of-rows"></a>Samenvatting: Rijgroepen samenvoegen
-Gebruik **samenvatten** identificeren groepen records, op basis van een of meer kolommen en aggregaties op hen van toepassing. De meest voorkomende gebruik van **samenvatten** is *aantal*, die het aantal resultaten retourneert in elke groep.
+## <a name="summarize-aggregate-groups-of-rows"></a>Samenvatten: statistische groepen rijen
+Gebruik **samenvatten** om groepen records te identificeren, volgens een of meer kolommen en pas aggregaties hierop toe. Het meest voorkomende gebruik van **een samen vatting** *is het aantal dat*de resultaten in elke groep retourneert.
 
-De volgende query controleert alle *voor prestaties* records van het afgelopen uur, gegroepeerd door *ObjectName*, en de records in elke groep telt: 
+De volgende query controleert alle *prestatie* records van het afgelopen uur, gegroepeerd op *object naam*en telt de records in elke groep: 
 ```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize count() by ObjectName
 ```
 
-Soms is het handig om groepen te definiëren voor meerdere dimensies. Elke unieke combinatie van deze waarden worden gedefinieerd voor een afzonderlijke groep:
+Soms is het zinvol om groepen te definiëren op basis van meerdere dimensies. Elke unieke combi natie van deze waarden definieert een afzonderlijke groep:
 
 ```Kusto
 Perf
@@ -207,7 +209,7 @@ Perf
 | summarize count() by ObjectName, CounterName
 ```
 
-Er is een ander algemeen gebruik wiskundige of statistische berekeningen uitvoeren op elke groep. Bijvoorbeeld, het volgende wordt het gemiddelde wordt berekend *CounterValue* voor elke computer:
+Een ander algemeen gebruik is het uitvoeren van wiskundige of statistische berekeningen op elke groep. In het volgende voor beeld wordt de gemiddelde *CounterValue* voor elke computer berekend:
 
 ```Kusto
 Perf
@@ -215,7 +217,7 @@ Perf
 | summarize avg(CounterValue) by Computer
 ```
 
-De resultaten van deze query zijn helaas geen betekenis heeft, omdat we verschillende prestatiemeters vermengd. Om dit meer af te stemmen, moeten we de gemiddelde afzonderlijk voor elke combinatie van berekenen *CounterName* en *Computer*:
+Helaas hebben de resultaten van deze query geen betekenis omdat we verschillende prestatie meter items combi neren. Om dit duidelijker te maken, moeten we het gemiddelde voor elke combi natie van *CounterName* en *computer*berekenen:
 
 ```Kusto
 Perf
@@ -223,10 +225,10 @@ Perf
 | summarize avg(CounterValue) by Computer, CounterName
 ```
 
-### <a name="summarize-by-a-time-column"></a>Samenvatten op een time-kolom
-Resultaten groeperen kan ook worden gebaseerd op een time-kolom, of een andere continue waarde. Samenvatting van gewoon `by TimeGenerated` echter zou groepen maken voor elke één milliseconde gedurende het tijdsbereik, omdat dit unieke waarden zijn. 
+### <a name="summarize-by-a-time-column"></a>Een overzicht van een kolom tijd
+Het groeperen van resultaten kan ook worden gebaseerd op een tijd kolom of een andere doorlopende waarde. U hoeft alleen `by TimeGenerated` maar een samen vatting te maken van groepen voor elke enkele milliseconden gedurende het tijds bereik, omdat dit unieke waarden zijn. 
 
-Voor het maken van groepen op basis van doorlopende waarden, het is raadzaam om het bereik in beheerbare eenheden met behulp van **bin**. De volgende query worden geanalyseerd *Perf* records die het meten van beschikbaar geheugen (*beschikbare megabytes (MB)* ) op een specifieke computer. De gemiddelde waarde van elke periode van één uur wordt berekend in de afgelopen 7 dagen:
+Als u groepen wilt maken op basis van doorlopende waarden, kunt u het bereik het beste met behulp van **bin**opsplitsen in beheer bare eenheden. De volgende query analyseert de *prestatie* records die het vrije geheugen (*beschik bare Mbytes*) meten op een specifieke computer. De gemiddelde waarde van elke periode van één uur wordt berekend in de afgelopen 7 dagen:
 
 ```Kusto
 Perf 
@@ -236,12 +238,12 @@ Perf
 | summarize avg(CounterValue) by bin(TimeGenerated, 1h)
 ```
 
-Als u de uitvoer duidelijker, schakelt u weer te geven als een tijdgrafiek van het beschikbare geheugen na verloop van tijd:
+Als u de uitvoer helderder wilt maken, selecteert u deze om weer te geven als een tijd diagram met daarin het beschik bare geheugen in de loop van de tijd:
 
-![Querygeheugen na verloop van tijd](media/get-started-queries/chart.png)
+![Query geheugen na verloop van tijd](media/get-started-queries/chart.png)
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [zoekquery's schrijven](search-queries.md)
+- Meer informatie over het [schrijven van zoek query's](search-queries.md)

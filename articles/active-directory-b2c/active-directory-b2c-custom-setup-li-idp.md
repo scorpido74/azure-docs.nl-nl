@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9465c1991418c7ebef8c4eed825affc7b1d93492
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 41caa5807ce837e1ff00ceadd3fe5aef958d01b6
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693331"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066053"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden met een LinkedIn-account instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In dit artikel wordt beschreven hoe u aanmelden voor gebruikers vanaf een LinkedIn-account inschakelt met [aangepaste beleids regels](active-directory-b2c-overview-custom.md) in azure Active Directory (Azure AD) B2C.
+In dit artikel leest u hoe u aanmelden kunt inschakelen voor gebruikers vanuit een LinkedIn-account met behulp van [aangepast beleid](active-directory-b2c-overview-custom.md) in Azure Active Directory B2C (Azure AD B2C).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -51,7 +51,7 @@ Als u LinkedIn wilt gebruiken als een id-provider in Azure AD B2C, moet u een Li
 1. Selecteer het tabblad **auth** .
 1. Registreer de **client-id**.
 1. Onthul en noteer het **client geheim**.
-1. Voeg onder **OAuth 2,0-instellingen**de volgende omleidings- **URL**toe. Vervang `your-tenant` door de naam van uw Tenant. Gebruik **alleen kleine letters** voor de naam van de Tenant, zelfs als deze is gedefinieerd met hoofd letters in azure AD B2C.
+1. Voeg onder **OAuth 2,0-instellingen**de volgende **omleidings-URL**toe. Vervang `your-tenant` door de naam van uw Tenant. Gebruik **alleen kleine letters** voor de naam van de Tenant, zelfs als deze is gedefinieerd met hoofd letters in azure AD B2C.
 
     `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp`
 
@@ -60,7 +60,7 @@ Als u LinkedIn wilt gebruiken als een id-provider in Azure AD B2C, moet u een Li
 U moet het client geheim opslaan dat u eerder in uw Azure AD B2C-Tenant hebt vastgelegd.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het **Directory-en abonnements filter** in het bovenste menu en kies de map die uw Tenant bevat.
+2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
 5. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
@@ -133,7 +133,7 @@ Definieer een LinkedIn-account als een claim provider door het toe te voegen aan
 
 Voor het technische profiel LinkedIn moeten de **ExtractGivenNameFromLinkedInResponse** -en **ExtractSurNameFromLinkedInResponse** -claim transformaties worden toegevoegd aan de lijst met ClaimsTransformations. Als er geen **ClaimsTransformations** -element in uw bestand is gedefinieerd, voegt u de bovenliggende XML-elementen toe zoals hieronder wordt weer gegeven. De claim transformaties hebben ook een nieuw claim type gedefinieerd met de naam **nullStringClaim**.
 
-Voeg het element BuildingBlocks toe aan de bovenkant van het bestand *TrustFrameworkExtensions. XML* . Zie *TrustFrameworkBase. XML* voor een voor beeld.
+Voeg het element **BuildingBlocks** toe aan de bovenkant van het bestand *TrustFrameworkExtensions. XML* . Zie *TrustFrameworkBase. XML* voor een voor beeld.
 
 ```XML
 <BuildingBlocks>
@@ -220,7 +220,7 @@ Nu er een knop aanwezig is, moet u deze koppelen aan een actie. De actie in dit 
 Communicatie met Azure AD B2C vindt plaats via een toepassing die u in uw Tenant maakt. In deze sectie vindt u optionele stappen die u kunt uitvoeren om een test toepassing te maken als u dit nog niet hebt gedaan.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het **Directory-en abonnements filter** in het bovenste menu en kies de map die uw Tenant bevat.
+2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer **Toepassingen** en vervolgens **Toevoegen**.
 5. Voer een naam in voor de toepassing, bijvoorbeeld *testapp1*.
@@ -297,7 +297,7 @@ Voeg in het **OutputClaimsTransformations** van de **TechnicalProfile**de volgen
 
 In de laatste stap hebt u nieuwe claim transformaties toegevoegd die moeten worden gedefinieerd. Als u de claim transformaties wilt definiëren, voegt u deze toe aan de lijst met **ClaimsTransformations**. Als er geen **ClaimsTransformations** -element in uw bestand is gedefinieerd, voegt u de bovenliggende XML-elementen toe zoals hieronder wordt weer gegeven. De claim transformaties hebben ook een nieuw claim type gedefinieerd met de naam **nullStringClaim**.
 
-Het element BuildingBlocks moet aan de bovenkant van het bestand worden toegevoegd. Zie *TrustframeworkBase. XML* als voor beeld.
+Het element **BuildingBlocks** moet aan de bovenkant van het bestand worden toegevoegd. Zie *TrustframeworkBase. XML* als voor beeld.
 
 ```XML
 <BuildingBlocks>

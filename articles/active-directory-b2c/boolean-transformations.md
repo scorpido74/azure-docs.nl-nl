@@ -1,6 +1,6 @@
 ---
-title: Booleaanse waarde van de claims transformatievoorbeelden voor de identiteit ervaring Framework-Schema van de Azure Active Directory B2C | Microsoft Docs
-description: Booleaanse waarde claims transformatievoorbeelden voor de identiteit ervaring Framework-Schema van de Azure Active Directory B2C.
+title: Voor beelden van Boole-betalings transformatie voor het identiteits ervaring Framework-schema van Azure Active Directory B2C | Microsoft Docs
+description: Boole-voor beelden van claim transformatie voor het identiteits ervaring Framework-schema van Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,37 +10,37 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0a08849340d19055a03f85ca401757a81cd2c95d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da4fc4704ee72210e180ef95fe6a821c8d116fa2
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511741"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064565"
 ---
-# <a name="boolean-claims-transformations"></a>Booleaanse claimtransformaties
+# <a name="boolean-claims-transformations"></a>Booleaanse claim transformaties
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In dit artikel biedt voorbeelden voor het gebruik van de claimtransformaties Booleaanse van het schema Identiteitservaring-Framework in Azure Active Directory (Azure AD) B2C. Zie voor meer informatie, [ClaimsTransformations](claimstransformations.md).
+In dit artikel vindt u voor beelden van het gebruik van de Boole-claim transformaties van het Framework-schema voor identiteits ervaring in Azure Active Directory B2C (Azure AD B2C). Zie [ClaimsTransformations](claimstransformations.md)voor meer informatie.
 
 ## <a name="andclaims"></a>AndClaims
 
-Voert een bewerking en van twee Booleaanse inputClaims en stelt de outputClaim met het resultaat van de bewerking.
+Voert een en-bewerking uit van twee Booleaanse inputClaims en stelt de output claim in met het resultaat van de bewerking.
 
 | Item  | TransformationClaimType  | Gegevenstype  | Opmerkingen |
 |-------| ------------------------ | ---------- | ----- |
-| InputClaim | inputClaim1 | booleaans | De eerste ClaimType om te evalueren. |
-| InputClaim | inputClaim2  | booleaans | De tweede ClaimType om te evalueren. |
-|OutputClaim | outputClaim | booleaans | De ClaimTypes die worden geproduceerd nadat deze transformatie claims is aangeroepen (waar of ONWAAR). |
+| InputClaim | inputClaim1 | boolean | Het eerste claim type dat moet worden geëvalueerd. |
+| InputClaim | inputClaim2  | boolean | Het tweede claim type dat moet worden geëvalueerd. |
+|OutputClaim | outputClaim | boolean | De ClaimTypes die wordt geproduceerd nadat deze claim transformatie is aangeroepen (True of false). |
 
-De volgende claimtransformatie wordt gedemonstreerd hoe u en twee Booleaanse ClaimTypes: `isEmailNotExist`, en `isSocialAccount`. De uitvoerclaim `presentEmailSelfAsserted` is ingesteld op `true` als de waarde van beide invoerclaims `true`. In een orchestration-stap kunt u een voorwaarde om vooraf een zelf-gecontroleerde pagina alleen als een sociaal account e-mailadres leeg is.
+De volgende claims-trans formatie demonstreert hoe en hoe en met `isEmailNotExist`de ClaimTypes `isSocialAccount`: en. De uitvoer claim `presentEmailSelfAsserted` wordt ingesteld op `true` als de waarde `true`van beide invoer claims. In een indelings stap kunt u een voor waarde gebruiken voor het vooraf instellen van een zelfbevestigende pagina, alleen als een e-mail adres voor een sociaal account leeg is.
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="AndClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isEmailNotExist" TransformationClaimType="inputClaim1" />
     <InputClaim ClaimTypeReferenceId="isSocialAccount" TransformationClaimType="inputClaim2" />
-  </InputClaims>                    
+  </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="presentEmailSelfAsserted" TransformationClaimType="outputClaim" />
   </OutputClaims>
@@ -49,27 +49,27 @@ De volgende claimtransformatie wordt gedemonstreerd hoe u en twee Booleaanse Cla
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
-    - **inputClaim1**: true
-    - **inputClaim2**: false
-- Uitvoerclaims:
-    - **outputClaim**: false
+- Invoer claims:
+    - **inputClaim1**: True
+    - **inputClaim2**: False
+- Uitvoer claims:
+    - **output claim**: False
 
 
 ## <a name="assertbooleanclaimisequaltovalue"></a>AssertBooleanClaimIsEqualToValue
 
-Controleert of Booleaanse waarden van twee claims gelijk zijn, en een uitzondering genereert als ze niet.
+Controleert of Boole-waarden van twee claims gelijk zijn en genereert een uitzonde ring als dat niet het geval is.
 
 | Item | TransformationClaimType  | Gegevenstype  | Opmerkingen |
 | ---- | ------------------------ | ---------- | ----- |
-| inputClaim | inputClaim | booleaans | Het ClaimType moeten worden gecontroleerd. |
-| InputParameter |valueToCompareTo | booleaans | De waarde om te vergelijken (waar of ONWAAR). |
+| inputClaim | inputClaim | boolean | Het claim type dat moet worden bevestigd. |
+| InputParameter |valueToCompareTo | boolean | De waarde die moet worden vergeleken (waar of onwaar). |
 
-De **AssertBooleanClaimIsEqualToValue** claimtransformatie wordt altijd uitgevoerd vanuit een [validatie technisch profiel](validation-technical-profile.md) die wordt aangeroepen door een [door zelf bevestigde technisch profiel](self-asserted-technical-profile.md). De **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** metagegevens van de zelf-gecontroleerde technisch profiel bepaalt het foutbericht dat het technische profiel aan de gebruiker biedt.
+De **AssertBooleanClaimIsEqualToValue** -claim transformatie wordt altijd uitgevoerd op basis van een [validatie technische profiel](validation-technical-profile.md) dat wordt aangeroepen door een [zelf-bevestigd technisch profiel](self-asserted-technical-profile.md). De meta gegevens van het zelfondertekende technische profiel **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** bepalen het fout bericht dat de gebruiker aan het technische profiel presenteert.
 
-![AssertStringClaimsAreEqual uitvoering](./media/boolean-transformations/assert-execution.png)
+![AssertStringClaimsAreEqual-uitvoering](./media/boolean-transformations/assert-execution.png)
 
-De volgende claimtransformatie ziet u hoe u om te controleren of de waarde van een Booleaanse ClaimType met een `true` waarde. Als de waarde van de `accountEnabled` ClaimType is ingesteld op false, een foutbericht dat wordt gegenereerd.
+De volgende claims transformatie laat zien hoe u de waarde van een Booleaanse claim type met een `true` waarde kunt controleren. Als de waarde van het `accountEnabled` claim type is ingesteld op False, wordt een fout bericht gegenereerd.
 
 ```XML
 <ClaimsTransformation Id="AssertAccountEnabledIsTrue" TransformationMethod="AssertBooleanClaimIsEqualToValue">
@@ -83,7 +83,7 @@ De volgende claimtransformatie ziet u hoe u om te controleren of de waarde van e
 ```
 
 
-De `login-NonInteractive` validatie technisch profiel aanroepen de `AssertAccountEnabledIsTrue` transformatie claims.
+Het `login-NonInteractive` validatie technische profiel roept de `AssertAccountEnabledIsTrue` trans formatie van claims aan.
 ```XML
 <TechnicalProfile Id="login-NonInteractive">
   ...
@@ -93,7 +93,7 @@ De `login-NonInteractive` validatie technisch profiel aanroepen de `AssertAccoun
 </TechnicalProfile>
 ```
 
-De zelf-gecontroleerde technisch profiel roept de validatie **aanmelding niet-interactieve** technisch profiel.
+Het zelfondertekende technische profiel aanroept het technische profiel voor validatie **aanmelding-niet-interactief** .
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
@@ -108,21 +108,21 @@ De zelf-gecontroleerde technisch profiel roept de validatie **aanmelding niet-in
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
-    - **inputClaim**: false
-    - **valueToCompareTo**: true
-- Resultaat: Fout opgetreden
+- Invoer claims:
+    - **input claim**: False
+    - **valueToCompareTo**: True
+- Daardoor Fout gegenereerd
 
 ## <a name="notclaims"></a>NotClaims
 
-Voert een niet-bewerking van de Booleaanse inputClaim en stelt de outputClaim met het resultaat van de bewerking.
+Hiermee wordt een niet-bewerking uitgevoerd van de Booleaanse input claim en wordt de output claim ingesteld met het resultaat van de bewerking.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | booleaans | De claim te worden uitgevoerd. |
-| OutputClaim | outputClaim | booleaans | De ClaimTypes die worden gegenereerd nadat deze ClaimsTransformation is aangeroepen (waar of ONWAAR). |
+| InputClaim | inputClaim | boolean | De claim die moet worden gebruikt. |
+| OutputClaim | outputClaim | boolean | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen (True of false). |
 
-Deze claimtransformatie gebruiken om uit te voeren logische onderhandeling op een claim.
+Gebruik deze claim transformatie om logische ontkenning op een claim uit te voeren.
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="NotClaims">
@@ -136,29 +136,29 @@ Deze claimtransformatie gebruiken om uit te voeren logische onderhandeling op ee
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
-    - **inputClaim**: false
-- Uitvoerclaims:
-    - **outputClaim**: true
+- Invoer claims:
+    - **input claim**: False
+- Uitvoer claims:
+    - **output claim**: True
 
-## <a name="orclaims"></a>OrClaims 
+## <a name="orclaims"></a>OrClaims
 
-Een of van twee Booleaanse inputClaims berekent en stelt de outputClaim met het resultaat van de bewerking.
+Hiermee worden een of twee Booleaanse inputClaims berekend en wordt de output claim ingesteld met het resultaat van de bewerking.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim1 | booleaans | De eerste ClaimType om te evalueren. |
-| InputClaim | inputClaim2 | booleaans | De tweede ClaimType om te evalueren. |
-| OutputClaim | outputClaim | booleaans | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen (waar of ONWAAR). |
+| InputClaim | inputClaim1 | boolean | Het eerste claim type dat moet worden geëvalueerd. |
+| InputClaim | inputClaim2 | boolean | Het tweede claim type dat moet worden geëvalueerd. |
+| OutputClaim | outputClaim | boolean | De ClaimTypes die wordt geproduceerd nadat deze ClaimsTransformation is aangeroepen (True of false). |
 
-De volgende claimtransformatie wordt gedemonstreerd hoe u `Or` twee Booleaanse ClaimTypes. In de orchestration-stap kunt u een voorwaarde om vooraf een zelf-gecontroleerde pagina gebruiken als de waarde van een van de claims `true`.
+De volgende claims transformatie laat zien hoe `Or` twee Booleaanse ClaimTypes. In de Orchestration-stap kunt u een voor waarde gebruiken voor het vooraf instellen van een zelfbevestigende pagina, als de waarde van een van de claims `true`is.
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="OrClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isLastTOSAcceptedNotExists" TransformationClaimType="inputClaim1" />
     <InputClaim ClaimTypeReferenceId="isLastTOSAcceptedGreaterThanNow" TransformationClaimType="inputClaim2" />
-  </InputClaims>                    
+  </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="presentTOSSelfAsserted" TransformationClaimType="outputClaim" />
   </OutputClaims>
@@ -168,9 +168,9 @@ De volgende claimtransformatie wordt gedemonstreerd hoe u `Or` twee Booleaanse C
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
-    - **inputClaim1**: true
-    - **inputClaim2**: false
-- Uitvoerclaims:
-    - **outputClaim**: true
+- Invoer claims:
+    - **inputClaim1**: True
+    - **inputClaim2**: False
+- Uitvoer claims:
+    - **output claim**: True
 

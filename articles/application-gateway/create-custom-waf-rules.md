@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: a4cc11447686f81017332a3528019a54a5167c52
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 71f2357ba2c2d3e978e4f967ad09fee763586a7c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231993"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058318"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Aangepaste regels voor Web Application firewall v2 maken en gebruiken
 
@@ -179,7 +179,7 @@ Overeenkomende CRS-regel:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001
 
 ## <a name="example-3"></a>Voorbeeld 3
 
-Voor dit voor beeld wilt u de *evilbot*van de gebruiker en het verkeer in het bereik 192.168.5.0/24 blok keren. Als u dit wilt doen, kunt u twee afzonderlijke match-voor waarden maken en deze in dezelfde regel plaatsen. Dit zorgt ervoor dat beide *evilbot* in de header van de gebruikers agent **en** IP-adressen uit het bereik 192.168.5.0/24 worden geblokkeerd.
+Voor dit voor beeld wilt u de *evilbot*van de gebruiker en het verkeer in het bereik 192.168.5.0/24 blok keren. Als u dit wilt doen, kunt u twee afzonderlijke match-voor waarden maken en deze in dezelfde regel plaatsen. Dit zorgt ervoor dat als beide *evilbot* in de header van de gebruikers agent **en** IP-adressen uit het bereik 192.168.5.0/24 overeenkomen, de aanvraag wordt geblokkeerd.
 
 Logic: p **en** q
 

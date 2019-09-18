@@ -1,7 +1,7 @@
 ---
 title: Rollen in een Azure Machine Learning-werk ruimte beheren
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over toegang tot een Azure Machine Learning service-werk ruimte met behulp van op rollen gebaseerd toegangs beheer (RBAC).
+titleSuffix: Azure Machine Learning
+description: Meer informatie over toegang tot een Azure Machine Learning-werk ruimte met behulp van op rollen gebaseerd toegangs beheer (RBAC).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f28397717d5c89e5a5bcd5e7bdc17b4feb49577
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 22ce9ea44dde6da4d1194463fe266ed00c5a3f96
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467981"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067711"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Toegang tot een Azure Machine Learning-werk ruimte beheren
 
@@ -107,11 +107,13 @@ Na de implementatie wordt deze rol beschikbaar in de opgegeven werk ruimte. U ku
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
+Zie [aangepaste rollen voor Azure-resources](/azure/role-based-access-control/custom-roles)voor meer informatie over aangepaste rollen.
 
-Zie [aangepaste rollen voor Azure-resources](/azure/role-based-access-control/custom-roles)voor meer informatie.
+Zie bewerkingen voor de [resource provider](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)voor meer informatie over de bewerkingen (acties) die kunnen worden gebruikt met aangepaste rollen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Overzicht van ENTER prise Security](concept-enterprise-security.md)
 - [Veilig experimenten en demijnen/Score in een virtueel netwerk uitvoeren](how-to-enable-virtual-network.md)
 - [Zelfstudie: Modellen trainen](tutorial-train-models-with-aml.md)
+- [Bewerkingen van de resource provider](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

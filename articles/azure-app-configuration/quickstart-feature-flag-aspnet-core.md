@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 41947de18ae27b41d046fd4358f0039a1b56374d
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 6f9094a52ff3558fa8d1f2fee1d80ed8eb09a416
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347909"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076330"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Quickstart: Functie vlaggen toevoegen aan een ASP.NET Core-app
 
@@ -36,9 +36,9 @@ De .NET Core-functie beheer bibliotheken breiden het Framework uit met uitgebrei
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Selecteer **feature Manager** >  **+ maken** om de volgende functie vlaggen toe te voegen:
+6. Selecteer **feature Manager** >  **+ toevoegen** om de volgende functie vlaggen toe te voegen:
 
-    | Sleutel | Status |
+    | Sleutel | State |
     |---|---|
     | Bèta | Uit |
 
@@ -81,10 +81,11 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
 
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
 
-1. Voeg een verwijzing naar `Microsoft.Azure.AppConfiguration.AspNetCore` het NuGet-pakket toe door de volgende opdracht uit te voeren:
+1. Voeg een verwijzing naar `Microsoft.Azure.AppConfiguration.AspNetCore` de en `Microsoft.FeatureManagement.AspNetCore` de NuGet-pakketten toe door de volgende opdrachten uit te voeren:
 
     ```
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
+    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-009000001-1251
     ```
 
 1. Voer de volgende opdracht uit om de pakketten voor uw project te herstellen:
@@ -199,7 +200,7 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. Open *_Layout. cshtml* in de \\*gedeelde* `<nav>`mapviews en vervang de streepjes code `<body>` door > de volgende code: `<header>`
+1. Open *_Layout. cshtml* in de\\*gedeelde* `<nav>`mapviews en vervang de streepjes code `<body>` door > de volgende code: `<header>`
 
     ```html
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -262,9 +263,11 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
 
 1. Selecteer **functie beheer**en wijzig de status van de **bèta** sleutel **in op**:
 
-    | Sleutel | Status |
+    | Sleutel | State |
     |---|---|
     | Bèta | Aan |
+
+1. Start de toepassing opnieuw door terug te scha kelen naar de opdracht `Ctrl-C` prompt en op het `dotnet` actieve proces te annuleren en vervolgens `dotnet run`opnieuw uit te voeren.
 
 1. Vernieuw de browserpagina om de nieuwe configuratie-instellingen te zien.
 
@@ -281,3 +284,4 @@ In deze Quick Start hebt u een nieuwe app-configuratie opgeslagen gemaakt en geb
 - Meer informatie over [functie beheer](./concept-feature-management.md).
 - [Functie vlaggen beheren](./manage-feature-flags.md).
 - [Functie vlaggen in een ASP.net core-app gebruiken](./use-feature-flags-dotnet-core.md).
+- [Dynamische configuratie in een ASP.NET Core-app gebruiken](./enable-dynamic-configuration-aspnet-core.md)

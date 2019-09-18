@@ -1,6 +1,6 @@
 ---
-title: JSON van de claims transformatievoorbeelden voor de identiteit ervaring Framework-Schema van de Azure Active Directory B2C | Microsoft Docs
-description: JSON claims transformatievoorbeelden voor de identiteit ervaring Framework-Schema van de Azure Active Directory B2C.
+title: Voor beelden van JSON-claim transformatie voor het Framework van de identiteits ervaring van Azure Active Directory B2C | Microsoft Docs
+description: Voor beelden van JSON-claim transformatie voor het Framework van de identiteits ervaring van Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,30 +10,30 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9a026d205d3ab855ecbb51048e7464df6fb4a094
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff70b2f54304c83f70ff578e1947d752aafb34a7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510756"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064164"
 ---
-# <a name="json-claims-transformations"></a>JSON-transformaties claims
+# <a name="json-claims-transformations"></a>JSON-claim transformaties
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In dit artikel biedt voorbeelden voor het gebruik van de JSON-claimtransformaties van het schema Identiteitservaring-Framework in Azure Active Directory (Azure AD) B2C. Zie voor meer informatie, [ClaimsTransformations](claimstransformations.md).
+In dit artikel vindt u voor beelden voor het gebruik van de JSON-claim transformaties van het Framework voor identiteits ervaring in Azure Active Directory B2C (Azure AD B2C). Zie [ClaimsTransformations](claimstransformations.md)voor meer informatie.
 
 ## <a name="getclaimfromjson"></a>GetClaimFromJson
 
-Het opgegeven element ophalen uit een JSON-gegevens.
+Een opgegeven element ophalen uit een JSON-gegevens.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJson | string | De ClaimTypes die door de claimtransformatie worden gebruikt om op te halen van het item. |
-| InputParameter | claimToExtract | string | de naam van de JSON-element moet worden geëxtraheerd. |
-| OutputClaim | extractedClaim | string | Het ClaimType dat wordt gegenereerd nadat deze transformatie claims is aangeroepen, de elementwaarde die is opgegeven in de _claimToExtract_ invoerparameter. |
+| InputClaim | inputJson | string | De ClaimTypes die worden gebruikt door de claim transformatie om het item op te halen. |
+| InputParameter | claimToExtract | string | de naam van het JSON-element dat moet worden geëxtraheerd. |
+| OutputClaim | extractedClaim | string | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen, is de element waarde die is opgegeven in de invoer parameter _claimToExtract_ . |
 
-In het volgende voorbeeld wordt de claimtransformatie geëxtraheerd de `emailAddress` -element van de JSON-gegevens: `{"emailAddress": "someone@example.com", "displayName": "Someone"}`
+In het volgende voor beeld heeft de claim transformatie het `emailAddress` element opgehaald uit de JSON-gegevens:`{"emailAddress": "someone@example.com", "displayName": "Someone"}`
 
 ```XML
 <ClaimsTransformation Id="GetEmailClaimFromJson" TransformationMethod="GetClaimFromJson">
@@ -51,28 +51,28 @@ In het volgende voorbeeld wordt de claimtransformatie geëxtraheerd de `emailAdd
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
-  - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Iemand"}
-- Invoerparameter:
+- Invoer claims:
+  - **inputJson**: {"emailAddress": "someone@example.com", "DisplayName": "Iemand"}
+- Invoer parameter:
     - **claimToExtract**: emailAddress
-- Uitvoerclaims: 
-  - **extractedClaim**: someone@example.com
+- Uitvoer claims:
+  - **extractedClaim**:someone@example.com
 
 
 ## <a name="getclaimsfromjsonarray"></a>GetClaimsFromJsonArray
 
-Een lijst met opgegeven elementen ophalen van Json-gegevens.
+Een lijst met opgegeven elementen uit de JSON-gegevens ophalen.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | jsonSourceClaim | string | De ClaimTypes die door de claimtransformatie worden gebruikt om op te halen van de claims. |
-| InputParameter | errorOnMissingClaims | booleaans | Geeft aan of een fout is inzetten als een van de claims ontbreekt. |
-| InputParameter | includeEmptyClaims | string | Geef op of bevatten lege claims. |
-| InputParameter | jsonSourceKeyName | string | Sleutelnaam van element |
-| InputParameter | jsonSourceValueName | string | Waardenaam element |
-| OutputClaim | Verzameling | String, int, Booleaanse waarde en datum/tijd |Lijst met claims om op te halen. De naam van de claim moet gelijk zijn aan de versie die is opgegeven _jsonSourceClaim_ invoer claim. |
+| InputClaim | jsonSourceClaim | string | De ClaimTypes die worden gebruikt door de claim transformatie om de claims op te halen. |
+| InputParameter | errorOnMissingClaims | boolean | Hiermee geeft u op of er een fout moet worden gegenereerd als een van de claims ontbreekt. |
+| InputParameter | includeEmptyClaims | string | Geef op of lege claims moeten worden toegevoegd. |
+| InputParameter | jsonSourceKeyName | string | Sleutel naam van element |
+| InputParameter | jsonSourceValueName | string | Naam van element waarde |
+| OutputClaim | Collection | teken reeks, int, Boolean en datum/tijd |Lijst met te extra heren claims. De naam van de claim moet gelijk zijn aan die in _jsonSourceClaim_ -invoer claim. |
 
-In het volgende voorbeeld haalt de claimtransformatie de volgende claims: e-mailadres (tekenreeks), displayName (tekenreeks), membershipNum (int), actieve (boolean) en geboortedatum (datetime) van de JSON-gegevens.
+In het volgende voor beeld worden met de claim transformatie de volgende claims geëxtraheerd: e-mail (teken reeks), displayName (String), membershipNum (int), Active (Boolean) en geboorte datum (datetime) van de JSON-gegevens.
 
 ```JSON
 [{"key":"email","value":"someone@example.com"}, {"key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value":true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
@@ -97,38 +97,38 @@ In het volgende voorbeeld haalt de claimtransformatie de volgende claims: e-mail
     <OutputClaim ClaimTypeReferenceId="birthdate" />
   </OutputClaims>
 </ClaimsTransformation>
-```    
+```
 
-- Invoerclaims:
-  - **jsonSourceClaim**: [{"sleutel": "e", "waarde": "someone@example.com"}, {"sleutel": "displayName", "waarde": "Iemand"}, {"sleutel": "membershipNum", "waarde": 6353399}, {"sleutel": 'active', '' waarde '': true}, {"sleutel": "geboortedatum", "waarde": "1980-09-23T00:0 0:00Z"}]
-- Invoerparameters die zijn opgegeven:
-    - **errorOnMissingClaims**: false
-    - **includeEmptyClaims**: false
-    - **jsonSourceKeyName**: key
+- Invoer claims:
+  - **jsonSourceClaim**: [{"Key": "e-mail", "waarde": "someone@example.com"}, {"sleutel": "DisplayName", "waarde": "persoon"}, {"sleutel": "membershipNum", "waarde": 6353399}, {"sleutel": "actief", "waarde": True}, {"sleutel": "geboorte datum", "waarde": "1980-09-23T00:00:00Z "}]
+- Invoer parameters:
+    - **errorOnMissingClaims**: False
+    - **includeEmptyClaims**: False
+    - **jsonSourceKeyName**: sleutel
     - **jsonSourceValueName**: value
-- Uitvoerclaims:
-  - **e-mailbericht**: "someone@example.com"
-  - **displayName**: "Iemand"
+- Uitvoer claims:
+  - **e-mail**:someone@example.com
+  - **DisplayName**: Ander
   - **membershipNum**: 6353399
-  - **actieve**: true
-  - **Geboortedatum**: 1980-09-23T00:00:00Z
+  - **actief**: waar
+  - **geboorte datum**: 1980-09-23T00:00:00Z
 
 ## <a name="getnumericclaimfromjson"></a>GetNumericClaimFromJson
 
-Hiermee haalt u een opgegeven numerieke (long)-element van een JSON-gegevens.
+Hiermee wordt een opgegeven numeriek (lang)-element opgehaald uit een JSON-gegevens.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJson | string | De ClaimTypes die door de claimtransformatie worden gebruikt om op te halen van de claim. |
-| InputParameter | claimToExtract | string | De naam van de JSON-element om op te halen. |
-| OutputClaim | extractedClaim | lang | Het ClaimType dat wordt gegenereerd nadat deze ClaimsTransformation is aangeroepen, van het element waarde opgegeven in de _claimToExtract_ -invoerparameters. |
+| InputClaim | inputJson | string | De ClaimTypes die door de claim transformatie worden gebruikt om de claim op te halen. |
+| InputParameter | claimToExtract | string | De naam van het JSON-element dat moet worden uitgepakt. |
+| OutputClaim | extractedClaim | long | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen, is de waarde van het element opgegeven in de _claimToExtract_ -invoer parameters. |
 
-In het volgende voorbeeld wordt de claimtransformatie haalt de `id` -element van de JSON-gegevens.
+In het volgende voor beeld haalt de claim transformatie het `id` element uit de JSON-gegevens.
 
 ```JSON
 {
-    "emailAddress": "someone@example.com", 
-    "displayName": "Someone", 
+    "emailAddress": "someone@example.com",
+    "displayName": "Someone",
     "id" : 6353399
 }
 ```
@@ -149,23 +149,23 @@ In het volgende voorbeeld wordt de claimtransformatie haalt de `id` -element van
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
-  - **inputJson**: {"emailAddress": "someone@example.com", "displayName": 'Iemand', 'id': 6353399}
-- Invoerparameters
+- Invoer claims:
+  - **inputJson**: {"emailAddress": "someone@example.com", "DisplayName": ' Iemand ', ' id ': 6353399}
+- Invoer parameters
     - **claimToExtract**: id
-- Uitvoerclaims: 
+- Uitvoer claims:
     - **extractedClaim**: 6353399
 
 ## <a name="getsinglevaluefromjsonarray"></a>GetSingleValueFromJsonArray
 
-Hiermee haalt u het eerste element van een matrix met JSON.
+Hiermee wordt het eerste element opgehaald uit een JSON-gegevens matrix.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJsonClaim | string | De ClaimTypes die door de claimtransformatie worden gebruikt voor het item ophalen uit de JSON-matrix. |
-| OutputClaim | extractedClaim | string | Het ClaimType dat wordt gegenereerd nadat deze ClaimsTransformation is aangeroepen, het eerste element in de JSON-matrix. |
+| InputClaim | inputJsonClaim | string | De ClaimTypes die door de claim transformatie worden gebruikt om het item uit de JSON-matrix op te halen. |
+| OutputClaim | extractedClaim | string | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen, het eerste element in de JSON-matrix. |
 
-In het volgende voorbeeld haalt de claimtransformatie het eerste element (e-mailadres) uit de JSON-matrix `["someone@example.com", "Someone", 6353399]`.
+In het volgende voor beeld haalt de claim transformatie het eerste element (e-mail adres) uit de JSON `["someone@example.com", "Someone", 6353399]`-matrix.
 
 ```XML
 <ClaimsTransformation Id="GetEmailFromJson" TransformationMethod="GetSingleValueFromJsonArray">
@@ -180,19 +180,19 @@ In het volgende voorbeeld haalt de claimtransformatie het eerste element (e-mail
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
-  - **inputJsonClaim**: ["someone@example.com", "Iemand", 6353399]
-- Uitvoerclaims: 
-  - **extractedClaim**: someone@example.com
+- Invoer claims:
+  - **inputJsonClaim**: ["someone@example.com", "iemand", 6353399]
+- Uitvoer claims:
+  - **extractedClaim**:someone@example.com
 
 ## <a name="xmlstringtojsonstring"></a>XmlStringToJsonString
 
-XML-gegevens wordt omgezet in JSON-indeling.
+XML-gegevens worden geconverteerd naar de JSON-indeling.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | xml | string | De ClaimTypes die worden gebruikt door de claimtransformatie voor de gegevens uit XML converteren naar JSON-indeling. |
-| OutputClaim | json | string | Het ClaimType dat wordt gegenereerd nadat deze ClaimsTransformation is aangeroepen, worden de gegevens in JSON-indeling. |
+| InputClaim | xml | string | De ClaimTypes die worden gebruikt door de claim transformatie voor het converteren van de gegevens van XML naar de JSON-indeling. |
+| OutputClaim | json | string | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen, is de gegevens in JSON-indeling. |
 
 ```XML
 <ClaimsTransformation Id="ConvertXmlToJson" TransformationMethod="XmlStringToJsonString">
@@ -205,7 +205,7 @@ XML-gegevens wordt omgezet in JSON-indeling.
 </ClaimsTransformation>
 ```
 
-In het volgende voorbeeld wordt omgezet de claimtransformatie in de volgende XML-gegevens JSON-indeling.
+In het volgende voor beeld worden met de claim transformatie de volgende XML-gegevens geconverteerd naar de JSON-indeling.
 
 #### <a name="example"></a>Voorbeeld
 Invoer claim:
@@ -217,7 +217,7 @@ Invoer claim:
 </user>
 ```
 
-Uitvoerclaim:
+Uitvoer claim:
 
 ```JSON
 {

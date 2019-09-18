@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: df47b4fc5b8048f76f94486e213285896dab9cb9
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 042c4fa18ce583f714bbe71f522b1f8f1af3dfdb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874096"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066110"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Een toegangs token aanvragen in Azure Active Directory B2C
 
-Een *toegangs token* bevat claims die u in azure Active Directory (Azure AD) B2C kunt gebruiken om de verleende machtigingen voor uw api's te identificeren. Bij het aanroepen van een bron server moet er een toegangs token aanwezig zijn in de HTTP-aanvraag. Een toegangs token wordt aangeduid als **access_token** in de reacties van Azure AD B2C.
+Een *toegangs token* bevat claims die u in Azure Active Directory B2C (Azure AD B2C) kunt gebruiken om de verleende machtigingen voor uw api's te identificeren. Bij het aanroepen van een bron server moet er een toegangs token aanwezig zijn in de HTTP-aanvraag. Een toegangs token wordt aangeduid als **access_token** in de reacties van Azure AD B2C.
 
 In dit artikel wordt beschreven hoe u een toegangs token kunt aanvragen voor een webtoepassing en Web-API. Zie het [overzicht van tokens in azure Active Directory B2C](active-directory-b2c-reference-tokens.md)voor meer informatie over tokens in azure AD B2C.
 
@@ -65,7 +65,7 @@ In het volgende voor beeld vervangt u deze waarden:
 - `<tenant-name>`-De naam van uw Azure AD B2C-Tenant.
 - `<policy-name>`-De naam van uw aangepaste beleid of gebruikers stroom.
 - `<application-ID>`-De toepassings-id van de webtoepassing die u hebt geregistreerd ter ondersteuning van de gebruikers stroom.
-- `<redirect-uri>`-De omleidings- **URI** die u hebt ingevoerd bij het registreren van de client toepassing.
+- `<redirect-uri>`-De **omleidings-URI** die u hebt ingevoerd bij het registreren van de client toepassing.
 
 ```HTTP
 GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?

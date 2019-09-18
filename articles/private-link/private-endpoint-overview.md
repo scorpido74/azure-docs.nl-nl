@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 031055dce66361cc128ed42a4d0c942ccb5a3b82
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: c2f26c1f672644edd4993010c64062ee4108ca40
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017969"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057823"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
 
@@ -55,8 +55,8 @@ Een persoonlijke koppelings bron is het doel doel van een gegeven persoonlijk ei
 |**Persoonlijke koppelings service** (Uw eigen service)   |  Micro soft. Network/privateLinkServices       | Leeg |
 |**Azure SQL Database** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
 |**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
-|**Azure Storage**  | (Micro soft. Storage/Storage accounts)    |  BLOB (BLOB, blob_secondary)<BR> Tabel (tabel, table_secondary)<BR> Wachtrij (wachtrij, queue_secondary)<BR> Bestand (bestand, file_secondary)<BR> Web (Web, web_secondary)        |
-|**Azure Data Lake Storage Gen2**  | (Micro soft. Storage/Storage accounts)    |  BLOB (BLOB, blob_secondary)       |
+|**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (BLOB, blob_secondary)<BR> Tabel (tabel, table_secondary)<BR> Wachtrij (wachtrij, queue_secondary)<BR> Bestand (bestand, file_secondary)<BR> Web (Web, web_secondary)        |
+|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (BLOB, blob_secondary)       |
  
  
 ## <a name="network-security-of-private-endpoints"></a>Netwerk beveiliging van privé-eind punten 

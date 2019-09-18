@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0088cc2c2bd30748a8a62217c76f962dd1b174f8
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: bb7711eea927212042ed2299bae74130867c1692
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019991"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067646"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Connectiviteit van apparaten in azure IoT Central
 
@@ -34,14 +34,17 @@ Met DPS kunt u het volgende doen:
 
 In dit artikel worden de volgende vier gebruiks voorbeelden beschreven:
 
-1. [Snel verbinding maken met één apparaat met SAS](#connect-a-single-device)
-1. [Apparaten op schaal aansluiten met SAS](#connect-devices-at-scale-using-sas)
-1. [Apparaten op schaal aansluiten met X. 509-certificaten](#connect-devices-using-x509-certificates) dit is de aanbevolen benadering voor productie omgevingen.
-1. [Verbinding maken zonder eerst apparaten te registreren](#connect-without-registering-devices)
+- [Snel verbinding maken met één apparaat met SAS](#connect-a-single-device)
+- [Apparaten op schaal aansluiten met SAS](#connect-devices-at-scale-using-sas)
+- [Apparaten op schaal aansluiten met X. 509-certificaten](#connect-devices-using-x509-certificates) dit is de aanbevolen benadering voor productie omgevingen.
+- [Verbinding maken zonder eerst apparaten te registreren](#connect-without-registering-devices)
 
 ## <a name="connect-a-single-device"></a>Eén apparaat verbinden
 
-Deze aanpak is nuttig wanneer u experimenteert met IoT Central of apparaten testen. U kunt de verbindings gegevens van het apparaat gebruiken van uw IoT Central-toepassing om de connection string voor een apparaat te genereren. Zie [How to generate a device Connection String om verbinding te maken met een Azure IOT Central-toepassing](howto-generate-connection-string.md)voor gedetailleerde stappen.
+Deze aanpak is nuttig wanneer u experimenteert met IoT Central of apparaten testen. Met de Device Provisioning Service (DPS) kunt u de verbindings gegevens van uw IoT Central gebruiken om een apparaat te verbinden met uw IoT Central-toepassing. U kunt de client code voor voorbeeld DPS-apparaten vinden voor de volgende talen:
+
+- [C\#](./howto-connect-raspberry-pi-csharp.md)
+- [Node.js](./howto-connect-nodejs.md)
 
 ## <a name="connect-devices-at-scale-using-sas"></a>Apparaten op schaal aansluiten met SAS
 
@@ -163,8 +166,6 @@ De Sdk's van het Azure-apparaat bieden u de eenvoudigste manier voor het impleme
 - [Azure IoT SDK voor node. js](https://github.com/azure/azure-iot-sdk-node)
 - [Azure IoT SDK voor Java](https://github.com/azure/azure-iot-sdk-java)
 - [Azure IoT SDK voor .NET](https://github.com/azure/azure-iot-sdk-csharp)
-
-Elk apparaat maakt verbinding met behulp van een unieke connection string waarmee het apparaat wordt geïdentificeerd. Een apparaat kan alleen verbinding maken met de IoT-hub als het is geregistreerd. Wanneer u een echt apparaat in uw Azure IoT Central-toepassing maakt, genereert de toepassing de informatie die u nodig hebt om een `dps-keygen`Connection String te maken met.
 
 ### <a name="sdk-features-and-iot-hub-connectivity"></a>SDK-functies en IoT Hub connectiviteit
 

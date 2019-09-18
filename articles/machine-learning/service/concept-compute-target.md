@@ -1,7 +1,7 @@
 ---
 title: 'Compute-doelen: voor het trainen en implementeren van modellen'
-titleSuffix: Azure Machine Learning service
-description: Bepaal waar u uw model wilt trainen of implementeren met Azure Machine Learning service.
+titleSuffix: Azure Machine Learning
+description: Bepaal waar u uw model wilt trainen of implementeren met Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/10/2019
-ms.openlocfilehash: b2e4c9160ccad66b04dd30979f0568da68836d76
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: fe60b740312ee49510ea931bba1346ceaef9f31a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860584"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035519"
 ---
-#  <a name="what-are-compute-targets-in-azure-machine-learning-service"></a>Wat zijn Compute-doelen in Azure Machine Learning service? 
+#  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Wat zijn Compute-doelen in Azure Machine Learning? 
 
 Een **Compute-doel** is een aangewezen reken resource/omgeving waar u uw trainings script uitvoert of uw service-implementatie host. Deze locatie kan uw lokale machine of een cloud-gebaseerde reken resource zijn. Met Compute-doelen kunt u op een later tijdstip uw berekenings omgeving wijzigen zonder dat u de code hoeft te wijzigen.  
 
@@ -29,7 +29,7 @@ De reken resources die u voor uw reken doelen gebruikt, worden aan een [werk rui
 
 ## <a name="train"></a>Doelen van de trainings compute
 
-Azure Machine Learning-service heeft verschillende ondersteunings bronnen.  U kunt ook uw eigen reken resource toevoegen, maar ondersteuning voor verschillende scenario's kan variëren.
+Azure Machine Learning heeft verschillende ondersteuning voor verschillende reken bronnen.  U kunt ook uw eigen reken resource toevoegen, maar ondersteuning voor verschillende scenario's kan variëren.
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
@@ -46,7 +46,7 @@ Meer informatie over [waar en hoe u uw model implementeert in een compute-doel](
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning Compute (beheerd)
 
-Een beheerde Compute-resource wordt gemaakt en beheerd door Azure Machine Learning service. Deze berekening is geoptimaliseerd voor machine learning workloads. Azure Machine Learning Compute is de enige beheerde reken kracht vanaf 30 mei 2019. Extra beheerde reken bronnen kunnen in de toekomst worden toegevoegd.
+Een beheerde Compute-resource wordt gemaakt en beheerd door Azure Machine Learning. Deze berekening is geoptimaliseerd voor machine learning workloads. Azure Machine Learning Compute is de enige beheerde reken kracht vanaf 30 mei 2019. Extra beheerde reken bronnen kunnen in de toekomst worden toegevoegd.
 
 U kunt Azure machine learning Compute for training en voor batch-(preview-versie) gebruiken.  Met deze reken resource hebt u het volgende:
 
@@ -59,7 +59,7 @@ U kunt Azure Machine Learning Compute-instanties maken in Azure Portal of de [la
 
 ## <a name="unmanaged-compute"></a>Onbeheerde compute
 
-Een niet-beheerd reken doel wordt *niet* beheerd door Azure machine learning service. U maakt dit type reken doel buiten Azure Machine Learning en koppelt het vervolgens aan uw werk ruimte. Onbeheerde reken resources kunnen extra stappen vereisen om de prestaties van machine learning werk belastingen te hand haven of te verbeteren.
+Een niet-beheerd reken doel wordt *niet* beheerd door Azure machine learning. U maakt dit type reken doel buiten Azure Machine Learning en koppelt het vervolgens aan uw werk ruimte. Onbeheerde reken resources kunnen extra stappen vereisen om de prestaties van machine learning werk belastingen te hand haven of te verbeteren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

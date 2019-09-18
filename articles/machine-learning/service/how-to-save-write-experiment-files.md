@@ -1,6 +1,6 @@
 ---
 title: Waar opslaan & write experimenten-bestanden
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Meer informatie over waar u uw experimentele invoer bestanden opslaat, en waar u uitvoer bestanden schrijft om te voor komen dat er problemen met de opslag beperking en de latentie van een experiment optreden.
 services: machine-learning
 author: rastala
@@ -12,12 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 7d5e147173e766d0da54aa3422faef4b6035b914
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 77f816400709262fab8cb9bd351bdcde73377e09
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114517"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034298"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Locatie voor het opslaan en schrijven van bestanden voor Azure Machine Learning experimenten
 
@@ -33,7 +33,7 @@ Azure Machine Learning oefent trainings scripts uit door de hele scripthost naar
 
 Daarom kunt u het beste het volgende doen:
 
-* **Uw bestanden worden opgeslagen in een Azure Machine Learning [gegevens opslag](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py).** Dit voor komt problemen met de latentie van experimenten en heeft de voor delen van het openen van gegevens van een extern Compute-doel, wat betekent dat verificatie en bevestiging wordt beheerd door Azure Machine Learning service. Meer informatie over het opgeven van een gegevens opslag als bron directory en het uploaden van bestanden naar uw gegevens opslag in het artikel [toegangs gegevens van uw gegevens opslag](how-to-access-data.md) .
+* **Uw bestanden worden opgeslagen in een Azure Machine Learning [gegevens opslag](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py).** Dit voor komt problemen met de latentie van experimenten en heeft de voor delen van het openen van gegevens van een extern Compute-doel, wat betekent dat verificatie en bevestiging wordt beheerd door Azure Machine Learning. Meer informatie over het opgeven van een gegevens opslag als bron directory en het uploaden van bestanden naar uw gegevens opslag in het artikel [toegangs gegevens van uw gegevens opslag](how-to-access-data.md) .
 
 * **Als u alleen een aantal gegevens bestanden en afhankelijkheids scripts nodig hebt en u geen gegevens opslag kunt gebruiken, plaatst u** de bestanden in dezelfde map als uw trainings script. Geef deze map op als `source_directory` uw eigen trainings script of in de code die uw trainings script aanroept.
 

@@ -10,25 +10,25 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ddc42bc9315d50b8b8cdd40264de561d0edf5c7d
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: be347fe33e03b4c2a7ecc1015a407c5a58062326
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622372"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065150"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Registratie instellen en aanmelden met een LinkedIn-account met behulp van Azure Active Directory B2C
 
 ## <a name="create-a-linkedin-application"></a>Een LinkedIn-toepassing maken
 
-Als u een LinkedIn-account wilt gebruiken als een [ID-provider](active-directory-b2c-reference-oauth-code.md) in azure Active Directory (Azure AD) B2C, moet u een toepassing maken in uw Tenant waarmee deze wordt vertegenwoordigd. Als u nog geen LinkedIn-account hebt, kunt u zich aanmelden bij [https://www.linkedin.com/](https://www.linkedin.com/).
+Als u een LinkedIn-account wilt gebruiken als een [ID-provider](active-directory-b2c-reference-oauth-code.md) in Azure Active Directory B2C (Azure AD B2C), moet u een toepassing maken in uw Tenant waarmee deze wordt vertegenwoordigd. Als u nog geen LinkedIn-account hebt, kunt u zich aanmelden bij [https://www.linkedin.com/](https://www.linkedin.com/).
 
 1. Meld u aan bij de [LinkedIn-ontwikkelaars website](https://www.developer.linkedin.com/) met uw LinkedIn-account referenties.
 1. Selecteer **mijn apps**en klik vervolgens op **toepassing maken**.
 1. Voer de **Bedrijfs naam**, **toepassings naam**, **toepassings beschrijving**, **toepassings logo**, **toepassings gebruik**, **website-URL**, **zakelijk e-mail adres**en **zakelijke telefoon**in.
 1. Ga akkoord met de **gebruiks voorwaarden van de LINKEDIN API** en klik op **verzenden**.
 1. Kopieer de waarden van **Client-ID** en **Clientgeheim**. U kunt ze vinden onder **verificatie sleutels**. U hebt beide nodig om LinkedIn te configureren als een id-provider in uw Tenant. **Client geheim** is een belang rijke beveiligings referentie.
-1. Voer `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in geautoriseerde omleidings- **url's**in. Vervang `your-tenant-name` door de naam van uw Tenant. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant, zelfs als de Tenant is gedefinieerd met hoofd letters in Azure AD B2C. Selecteer **toevoegen**en klik vervolgens op **bijwerken**.
+1. Voer `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in **geautoriseerde omleidings-url's**in. Vervang `your-tenant-name` door de naam van uw Tenant. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant, zelfs als de Tenant is gedefinieerd met hoofd letters in Azure AD B2C. Selecteer **toevoegen**en klik vervolgens op **bijwerken**.
 
 ## <a name="configure-a-linkedin-account-as-an-identity-provider"></a>Een LinkedIn-account configureren als een id-provider
 

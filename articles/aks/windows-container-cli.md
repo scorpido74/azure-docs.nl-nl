@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 30587af098b5ced7962dc45d6a059184f8b5f319
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 8e00053d5ce7c481b026d2fe0ce590d7b8799d8a
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914885"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075455"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Voor beeld: een Windows Server-container maken op een Azure Kubernetes service (AKS)-cluster met behulp van de Azure CLI
 
@@ -149,7 +149,7 @@ az aks create \
 > Als er een fout is opgetreden bij het valideren van het wacht woord, probeert u de resource groep te maken in een andere regio.
 > Probeer vervolgens het cluster te maken met de nieuwe resource groep.
 
-Na enkele minuten is de opdracht voltooid en retourneert deze informatie over het cluster in JSON-indeling.
+Na enkele minuten is de opdracht voltooid en retourneert deze informatie over het cluster in JSON-indeling. Af en toe kan het cluster langer dan een paar minuten duren. In deze gevallen Maxi maal 10 minuten toestaan. 
 
 ## <a name="add-a-windows-server-node-pool"></a>Een Windows Server-knooppunt groep toevoegen
 
@@ -264,7 +264,7 @@ service/sample created
 
 ## <a name="test-the-application"></a>De toepassing testen
 
-Wanneer de toepassing wordt uitgevoerd, maakt een Kubernetes-service de front-end van de toepassing beschikbaar op internet. Dit proces kan enkele minuten duren.
+Wanneer de toepassing wordt uitgevoerd, maakt een Kubernetes-service de front-end van de toepassing beschikbaar op internet. Dit proces kan enkele minuten duren. Af en toe kan de service langer dan een paar minuten duren om in te richten. In deze gevallen Maxi maal 10 minuten toestaan.
 
 Gebruik de opdracht [kubectl get service][kubectl-get] met het argument `--watch` om de voortgang te controleren.
 

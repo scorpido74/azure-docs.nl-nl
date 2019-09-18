@@ -4,14 +4,14 @@ description: Hierin wordt een overzicht gegeven van bekende problemen in de Azur
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 16e0fe51137ce7e96cf98c0a8acf7c490e9087b3
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 49c43d393ef0722424088e0073942b56787f1bc7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232416"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067812"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Problemen met Azure Migrate oplossen
 
@@ -78,7 +78,7 @@ Een project verwijderen uit de huidige versie van Azure Migrate:
 2. Selecteer op de pagina resource groep de optie **verborgen typen weer geven**.
 3. Selecteer het migratie project dat u wilt verwijderen. Het resource type is micro soft. migrate/migrateprojects en verwijdert het.
 
-Een project verwijderen uit de oudere versie van Azure Migrate: 
+Een project verwijderen uit de oudere versie van Azure Migrate:
 
 1. Open de Azure-resource groep waarin het project is gemaakt.
 2. Selecteer het migratie project dat u wilt verwijderen. Het resource type is een migratie project en wordt verwijderd.
@@ -87,10 +87,10 @@ Een project verwijderen uit de oudere versie van Azure Migrate:
 ### <a name="delete-a-workspace"></a>Een werkruimte verwijderen
 
 Blader naar de Log Analytics werkruimte die aan het project is gekoppeld.
-* Als u het Azure migrate project nog niet hebt verwijderd, kunt u de koppeling naar de werk > ruimte in Essentials**Server-evaluatie**vinden.
+* Als u het Azure migrate project nog niet hebt verwijderd, kunt u de koppeling naar de werk ruimte in **Essentials** > **Server-evaluatie**vinden.
        ![De werk ruimte LA](./media/troubleshooting-general/loganalytics-workspace.png)
 
-     * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it. 
+     * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it.
 
 
 ## <a name="error-requests-must-contain-user-identity-headers"></a>Fout ' aanvragen moeten gebruikers identiteits headers bevatten '
@@ -153,7 +153,7 @@ Als deze verbindings fout optreedt, kunt u mogelijk geen verbinding maken met vC
 
 ## <a name="error-appliance-might-not-be-registered"></a>Fout: Het apparaat is mogelijk niet geregistreerd
 
-- Fout 60052 ' het apparaat is mogelijk niet geregistreerd voor het Azure Migrate-project ' treedt op als het Azure-account dat wordt gebruikt om het apparaat te registreren, onvoldoende machtigingen heeft. 
+- Fout 60052 ' het apparaat is mogelijk niet geregistreerd voor het Azure Migrate-project ' treedt op als het Azure-account dat wordt gebruikt om het apparaat te registreren, onvoldoende machtigingen heeft.
     - Zorg ervoor dat het Azure-gebruikers account dat wordt gebruikt om het apparaat te registreren, ten minste Inzender machtigingen heeft voor het abonnement.
     - Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) over vereiste Azure-rollen en-machtigingen.
 - Fout 60039 ' het apparaat is mogelijk niet geregistreerd voor het Azure Migrate-project ' kan zich voordoen als de registratie mislukt, omdat het Azure Migrate project dat is gebruikt voor de registratie van het apparaat, niet kan worden gevonden.
@@ -162,7 +162,7 @@ Als deze verbindings fout optreedt, kunt u mogelijk geen verbinding maken met vC
 
 ## <a name="error-key-vault-management-operation-failed"></a>Fout: Key Vault beheer bewerking is mislukt
 
-Ga als volgt te werk als de fout 60030 of 60031 wordt weer gegeven: ' een Azure Key Vault beheer bewerking is mislukt ' 
+Ga als volgt te werk als de fout 60030 of 60031 wordt weer gegeven: ' een Azure Key Vault beheer bewerking is mislukt '
 - Zorg ervoor dat het Azure-gebruikers account dat wordt gebruikt om het apparaat te registreren, ten minste Inzender machtigingen heeft voor het abonnement.
 - Zorg ervoor dat het account toegang heeft tot de sleutel kluis die is opgegeven in het fout bericht en voer de bewerking opnieuw uit.
 - Neem contact op met micro soft ondersteuning als het probleem zich blijft voordoen.
@@ -187,7 +187,7 @@ Fout 60025: ' Een Azure AD-bewerking is mislukt. De fout is opgetreden tijdens h
 
 ## <a name="discovered-vms-not-in-portal"></a>Gedetecteerde Vm's niet in Portal
 
-Als u de detectie start zodat de **Server evaluatie** en **server migratie** **detectie worden uitgevoerd**, maar de virtuele machines in de portal nog niet worden weer gegeven, let dan op het volgende: 
+Als u de detectie start zodat de **Server evaluatie** en **server migratie** **detectie worden uitgevoerd**, maar de virtuele machines in de portal nog niet worden weer gegeven, let dan op het volgende:
 
 - Nadat de detectie van het apparaat is gestart, duurt het ongeveer 15 minuten voor een VMware-VM-detectie en ongeveer twee minuten voor elke toegevoegde host voor de detectie van Hyper-V-VM'S.
 - Als de **detectie** nog steeds wordt weer geven, zelfs na deze wacht tijden, selecteert u **vernieuwen** op het tabblad **servers** . Hier wordt het aantal gedetecteerde servers weer gegeven in **Server evaluatie** en **server migratie**.
@@ -202,7 +202,7 @@ Als u een apparaat hebt geïmplementeerd dat uw on-premises omgeving continu det
 
     1. Selecteer in **servers** > **Azure migrate server-evaluatie**de optie **overzicht**.
     2. Selecteer onder **beheren**de optie **status van agent**
-    3. Selecteer **agent vernieuwen**. 
+    3. Selecteer **agent vernieuwen**.
     1. Wacht tot de vernieuwings bewerking is voltooid. Nu worden actuele gegevens weer geven.
 
 ## <a name="vm-information-isnt-in-the-portal"></a>VM-informatie staat niet in de portal
@@ -212,7 +212,7 @@ Als u een apparaat hebt geïmplementeerd dat uw on-premises omgeving continu det
 
     1. Selecteer in **servers** > **Azure migrate server-evaluatie**de optie **overzicht**.
     2. Selecteer onder **beheren**de optie **status van agent**
-    3. Selecteer **agent vernieuwen**. 
+    3. Selecteer **agent vernieuwen**.
     1. Wacht tot de vernieuwings bewerking is voltooid. Nu worden actuele gegevens weer geven.
 
 
@@ -247,7 +247,7 @@ Vereist een micro soft Visual Studio-abonnement | Op de computer wordt een Windo
 Er is geen VM gevonden voor de vereiste opslag prestaties | De opslag prestaties (invoer/uitvoer-bewerkingen per seconde [IOPS] en door Voer) die vereist zijn voor de computer, overschrijden de ondersteuning voor Azure-VM'S. Verminder de opslag vereisten voor de machine vóór de migratie.
 Er is geen VM gevonden voor de vereiste netwerk prestaties | De netwerk prestaties (in/uit) die vereist zijn voor de computer, overschrijden de ondersteuning voor Azure-VM'S. Verminder de netwerk vereisten voor de computer.
 De virtuele machine is niet gevonden op de opgegeven locatie | Gebruik een andere doel locatie vóór de migratie.
-Een of meer ongeschikte schijven | Een of meer schijven die zijn gekoppeld aan de virtuele machine voldoen niet aan de vereisten van Azure. Één<br/><br/> Azure Migrate: Server analyse biedt momenteel geen ondersteuning voor Ultra-SSD schijven en controleert de schijven op basis van de schijf limieten voor Premium Managed disks (32 TB).<br/><br/> Zorg ervoor dat de grootte van de schijf < 64 TB (ondersteund door Ultra-SSD schijven) voor elke schijf die aan de VM is gekoppeld.<br/><br/> Als dat niet het geval is, vermindert u de schijf grootte voordat u naar Azure migreert, of gebruikt u meerdere schijven in Azure en stript u [deze samen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) om hogere opslag limieten te krijgen. Zorg ervoor dat de prestaties (IOPS en door Voer) die nodig zijn voor elke schijf worden ondersteund door door Azure [beheerde virtuele-machine schijven](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits).
+Een of meer ongeschikte schijven | Een of meer schijven die zijn gekoppeld aan de virtuele machine voldoen niet aan de vereisten van Azure. Één<br/><br/> Azure Migrate: Server analyse biedt momenteel geen ondersteuning voor Ultra-SSD schijven en controleert de schijven op basis van de schijf limieten voor Premium Managed disks (32 TB).<br/><br/> Zorg ervoor dat de grootte van de schijf < 64 TB (ondersteund door Ultra-SSD schijven) voor elke schijf die aan de VM is gekoppeld.<br/><br/> Als dat niet het geval is, vermindert u de schijf grootte voordat u naar Azure migreert, of gebruikt u meerdere schijven in Azure en [stript u deze samen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) om hogere opslag limieten te krijgen. Zorg ervoor dat de prestaties (IOPS en door Voer) die nodig zijn voor elke schijf worden ondersteund door door Azure [beheerde virtuele-machine schijven](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits).
 Een of meer niet-geschikte netwerk adapters. | Verwijder ongebruikte netwerk adapters van de machine voordat de migratie wordt gebruikt.
 Het aantal schijven overschrijdt de limiet | Verwijder ongebruikte schijven van de machine vóór de migratie.
 De schijfgrootte overschrijdt de limiet | Azure Migrate: Server analyse biedt momenteel geen ondersteuning voor Ultra-SSD schijven en bepaalt de schijven op basis van Premium-schijf limieten (32 TB).<br/><br/> Azure ondersteunt echter schijven met een grootte van Maxi maal 64 TB (ondersteund door Ultra-SSD schijven). Verklein schijven tot minder dan 64 TB vóór de migratie of gebruik meerdere schijven in Azure en [strip deze samen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) om hogere opslag limieten te krijgen.
@@ -258,10 +258,6 @@ VM met vereiste kernen en geheugen niet gevonden | Azure kan geen geschikt VM-ty
 Kan de geschiktheid van de virtuele machine niet bepalen vanwege een interne fout | Probeer een nieuwe evaluatie voor de groep te maken.
 Kan de geschiktheid van een of meer schijven niet bepalen vanwege een interne fout | Probeer een nieuwe evaluatie voor de groep te maken.
 Kan de geschiktheid voor een of meer netwerk adapters niet bepalen vanwege een interne fout | Probeer een nieuwe evaluatie voor de groep te maken.
-
-## <a name="cant-add-enterprise-agreement-ea-in-an-assessment"></a>Kan geen Enterprise Agreement (EA) toevoegen in een evaluatie
-
-Azure Migrate server beoordeling biedt momenteel geen ondersteuning voor Enterprise Agreement (EA) prijzen. Als u deze beperking wilt omzeilen, gebruikt **u betalen naar** gebruik als de Azure-aanbieding en gebruikt u de eigenschap **Discount** om een aangepaste korting op te geven die u ontvangt. [Meer informatie](https://aka.ms/migrate/selfhelp/eapricing) over het aanpassen van een evaluatie.
 
 ## <a name="linux-vms-are-conditionally-ready"></a>Linux-Vm's zijn ' voorwaardelijk gereed '
 
@@ -279,7 +275,7 @@ Azure Migrate server-evaluatie kan Azure VM Sku's aanbevelen met meer kernen en 
 
 
 - De aanbeveling van de VM-SKU is afhankelijk van de evaluatie-eigenschappen.
-- Dit wordt beïnvloed door het type evaluatie dat u uitvoert in Server evaluatie: Op *basis van prestaties*of *als on-premises*. 
+- Dit wordt beïnvloed door het type evaluatie dat u uitvoert in Server evaluatie: Op *basis van prestaties*of *als on-premises*.
 - Voor evaluaties op basis van prestaties worden de gebruiks gegevens van de on-premises Vm's (CPU, geheugen, schijf en netwerk gebruik) beschouwd om de juiste doel-VM-SKU voor uw on-premises Vm's te bepalen. Er wordt ook een comfort factor toegevoegd bij het bepalen van effectief gebruik.
 - Voor on-premises grootte worden de prestatie gegevens niet in overweging genomen en wordt de doel-SKU aanbevolen op basis van on-premises toewijzing.
 
@@ -288,14 +284,14 @@ Om te laten zien hoe dit kan invloed hebben op aanbevelingen, gaan we een voor b
 We hebben een on-premises VM met vier kernen en acht GB geheugen, met een CPU-gebruik van 50% en een geheugen gebruik van 50% en een opgegeven comfort factor van 1,3.
 
 -  Als de evaluatie **on-premises**is, wordt een Azure VM-SKU met 4 kernen en 8 GB geheugen aanbevolen.
-- Als de evaluatie op prestaties gebaseerd is, op basis van effectief CPU-en geheugen gebruik (50% van 4 kernen * 1,3 = 2,6 kernen en 50% van 8 GB geheugen * 1,3 = 5,3 GB geheugen), de goedkoopste VM-SKU van vier kernen (dichtstbijgelegen ondersteunde kernen) en 8 GB aan geheugen (dichtstbijzijnde ondersteund geheugen grootte) wordt aanbevolen. 
+- Als de evaluatie op prestaties gebaseerd is, op basis van effectief CPU-en geheugen gebruik (50% van 4 kernen * 1,3 = 2,6 kernen en 50% van 8 GB geheugen * 1,3 = 5,3 GB geheugen), de goedkoopste VM-SKU van vier kernen (dichtstbijgelegen ondersteunde kernen) en 8 GB aan geheugen (dichtstbijzijnde ondersteund geheugen grootte) wordt aanbevolen.
 - Meer [informatie](concepts-assessment-calculation.md#sizing) over de beoordelings grootte.
 
 ## <a name="azure-disk-skus-bigger-than-on-premises"></a>Azure Disk Sku's groter dan on-premises
 
 Azure Migrate server beoordeling kan een grotere schijf aanbevelen op basis van het type evaluatie.
 - De schijf grootte in Server analyse is afhankelijk van twee evaluatie-eigenschappen: grootte criteria en opslag type.
-- Als de grootte criteria **op basis van prestaties**zijn en het opslag type is ingesteld op **automatisch**, worden de IOPS-en doorvoer waarden van de schijf overwogen bij het identificeren van het doel schijf type (Standard-HDD, Standard-SSD of Premium). Er wordt vervolgens een schijf-SKU van het schijf type aanbevolen en de aanbeveling houdt rekening met de grootte vereisten van de on-premises schijf. 
+- Als de grootte criteria **op basis van prestaties**zijn en het opslag type is ingesteld op **automatisch**, worden de IOPS-en doorvoer waarden van de schijf overwogen bij het identificeren van het doel schijf type (Standard-HDD, Standard-SSD of Premium). Er wordt vervolgens een schijf-SKU van het schijf type aanbevolen en de aanbeveling houdt rekening met de grootte vereisten van de on-premises schijf.
 - Als de grootte criteria **op basis van prestaties**zijn en het opslag type **Premium**is, wordt een Premium-schijf-SKU in azure aanbevolen op basis van de IOPS-, doorvoer-en grootte vereisten van de on-premises schijf. Dezelfde logica wordt gebruikt voor het uitvoeren van schijf grootte wanneer de grootte criteria **op locatie** zijn en het opslag type is **Standard-HDD**, **Standard-SSD**of **Premium**.
 
 Als u bijvoorbeeld een on-premises schijf met 32 GB geheugen hebt, maar de geaggregeerde Lees-en schrijf-IOPS voor de schijf 800 IOPS is, raadt server beoordeling een Premium-schijf aan (vanwege de hogere IOPS-vereisten) en wordt vervolgens een schijf-SKU aanbevolen die de r kan ondersteunen IOPS en grootte van ereist. In dit voorbeeld komen we dan uit bij P15 (256 GB, 1100 IOPS). Hoewel de grootte die de on-premises schijf vereist, 32 GB was, raadt server evaluatie een grotere schijf aan vanwege de hoge IOPS-vereiste van de on-premises schijf.

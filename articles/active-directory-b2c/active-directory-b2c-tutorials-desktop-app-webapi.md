@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b4b70ddfe6ea2baf42227cc83ed0cc14969b3e92
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 75469d4522cea2914e0f69d5aa1850e468cb0d50
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66508102"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064840"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Zelfstudie: Toegang verlenen aan een web-API van Node.js vanuit een desktop-app met behulp van Azure Active Directory B2C
 
-Deze zelfstudie laat zien hoe u een Node.js web-API-resource moet aanroepen die wordt beveiligd door een Azure Active Directory (Azure AD) B2C, vanuit een Windows Presentation Foundation (WPF) desktop-app.
+In deze zelf studie leert u hoe u een Azure Active Directory B2C (Azure AD B2C) beveiligde node. js-Web-API-resource aanroept vanuit een Windows Presentation Foundation-desktop-app (WPF).
 
 In deze zelfstudie leert u het volgende:
 
@@ -37,18 +37,18 @@ Voltooi de stappen en de vereisten in [Zelfstudie: Verificatie van desktop-apps 
 
 ## <a name="add-a-web-api-application"></a>Een web-API-toepassing toevoegen
 
-Web-API-resources moeten worden geregistreerd in uw tenant voordat deze in staat zijn om beveiligde resourceaanvragen door clienttoepassingen die een toegangstoken aanbieden, kunnen accepteren en erop kunnen reageren. 
+Web-API-resources moeten worden geregistreerd in uw tenant voordat deze in staat zijn om beveiligde resourceaanvragen door clienttoepassingen die een toegangstoken aanbieden, kunnen accepteren en erop kunnen reageren.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Zorg ervoor dat u de adreslijst gebruikt die uw Azure AD B2C-tenant bevat door te klikken op het **filter voor adreslijsten en abonnementen** in het bovenste menu en de adreslijst te kiezen waarin uw tenant zich bevindt.
+2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer **Toepassingen** en vervolgens **Toevoegen**.
 5. Voer een naam in voor de toepassing. Bijvoorbeeld *webapi1*.
 6. Selecteer voor **Inclusief webtoepassing/ web-API** en **Impliciete stroom toestaan** **Ja**.
 7. Voer voor de **Antwoord-URL** een eindpunt in waarop Azure AD B2C tokens retourneert die door uw toepassing worden aangevraagd. In deze zelfstudie wordt het voorbeeld lokaal uitgevoerd en luistert dit op `https://localhost:5000`.
-8. Voer voor **App-id-URI** de id in die wordt gebruikt voor uw web-API. De volledige id-URI, inclusief het domein, wordt voor u gegenereerd. Bijvoorbeeld `https://contosotenant.onmicrosoft.com/api`.
+8. Voer voor **App ID URI** de id in die wordt gebruikt voor uw web-API. De volledige id-URI, inclusief het domein, wordt voor u gegenereerd. Bijvoorbeeld `https://contosotenant.onmicrosoft.com/api`.
 9. Klik op **Create**.
-10. Noteer op de eigenschappenpagina de toepassings-id die u gebruikt wanneer u de webtoepassing configureert.
+10. Noteer op de eigenschappenpagina de toepassings-ID die u gebruikt wanneer u de webtoepassing configureert.
 
 ## <a name="configure-scopes"></a>Bereiken configureren
 
@@ -76,14 +76,14 @@ Een gebruiker voert een verificatie uit met Azure AD B2C om de WPF-bureaubladtoe
 
 ## <a name="configure-the-sample"></a>Voorbeeld configureren
 
-Nu de web-API is geregistreerd en u bereiken hebt gedefinieerd, moet u de web-API-code configureren om uw Azure AD B2C-tenant te gebruiken. In deze zelfstudie gaat u een Node.js web-app-voorbeeld configureren dat u kunt downloaden vanuit GitHub. 
+Nu de web-API is geregistreerd en u bereiken hebt gedefinieerd, moet u de web-API-code configureren om uw Azure AD B2C-tenant te gebruiken. In deze zelfstudie gaat u een Node.js web-app-voorbeeld configureren dat u kunt downloaden vanuit GitHub.
 
 [Download een ZIP-bestand ](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip) of kloon de voorbeeld-web-app vanuit GitHub.
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
 ```
-Het Node.js web-API-voorbeeld maakt gebruik van de bibliotheek Passport.js zodat Azure AD B2C aanroepen naar de API kan beveiligen. 
+Het Node.js web-API-voorbeeld maakt gebruik van de bibliotheek Passport.js zodat Azure AD B2C aanroepen naar de API kan beveiligen.
 
 1. Open het `index.js`-bestand.
 2. Configureer het voorbeeld met de registratiegegevens voor Azure AD B2C-tenant. Wijzig de volgende regels code:
@@ -111,7 +111,7 @@ Het Node.js web-API-voorbeeld maakt gebruik van de bibliotheek Passport.js zodat
 1. Open de oplossing **active directory-b2c wpf** in Visual Studio.
 2. Druk op **F5** om de desktop-app uit te voeren.
 3. Meld u aan met het e-mailadres en het wachtwoord dat wordt gebruikt in de zelfstudie [Verificatie van gebruikers met Azure Active Directory B2C in een desktop-app](active-directory-b2c-tutorials-desktop-app.md).
-4. Klik op de knop **API aanroepen**. 
+4. Klik op de knop **API aanroepen**.
 
 De desktop-app dient een aanvraag in bij de web-API en haalt van een antwoord op met de weergavenaam van de aangemelde gebruiker. Uw beveiligde web-app roept de beveiligde web-API in uw Azure AD B2C-tenant aan.
 

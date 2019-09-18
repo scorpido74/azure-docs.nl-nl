@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b14d6f70f4c4163f16c8275f4e071da6a9e0bc78
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 3513dc0a1928168d6313e9d49a8f3d5d27aca781
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019811"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066332"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Een Windows IoT core-apparaat verbinden met uw Azure IoT Central-toepassing
 
@@ -37,19 +37,33 @@ Een toepassing die is gemaakt op basis van de voor **beeld-Devkits** -toepassing
 
 - Telemetrie-metingen voor het apparaat: **Vochtigheid**, **Tempe ratuur**en **Druk**.
 - Instelling voor het beheren van de snelheid van de **ventilator**.
-- Een berekenings-en Cloud eigenschaps **locatie**van een apparaat.
+- Een **berekenings** -en Cloud eigenschaps **locatie**van een apparaat.
 
-Zie voor volledige informatie over de configuratie van de sjabloon de [Details van Windows IOT core](#device-template-details)-apparaatgegevens.
+Zie voor volledige informatie over de configuratie van de sjabloon de [Details van Windows IOT core-apparaatgegevens](#device-template-details).
 
 ## <a name="add-a-real-device"></a>Echt apparaat toevoegen
 
-Gebruik in uw Azure IoT Central-toepassing de pagina **device Explorer** om een echt apparaat toe te voegen vanuit de **Windows 10 IOT core** Device-sjabloon. Noteer de verbindings Details van het apparaat (**scope-id**, **apparaat-id**en **primaire sleutel**). Zie voor meer informatie [verbindings gegevens ophalen](howto-generate-connection-string.md#get-connection-information).
+Gebruik in uw Azure IoT Central-toepassing de pagina **device Explorer** om een echt apparaat toe te voegen vanuit de **Windows 10 IOT core** Device-sjabloon. Noteer de verbindings Details van het apparaat (**scope-id**, **apparaat-id**en **primaire sleutel**).
 
 ## <a name="prepare-the-device"></a>Het apparaat voorbereiden
 
-Het apparaat kan alleen verbinding maken met IoT Central als het een connection string heeft.
+Het apparaat kan alleen verbinding maken met IoT Central als het een connection string heeft:
 
-[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
+1. Gebruik het `dps-keygen` opdracht regel hulpprogramma voor het genereren van een Connection String:
+
+    Voer de volgende opdracht uit om het [hulp programma voor sleutel Generator](https://github.com/Azure/dps-keygen)te installeren:
+
+    ```cmd/sh
+    npm i -g dps-keygen
+    ```
+
+1. Als u een connection string wilt genereren, voert u de volgende opdracht uit met de verbindings gegevens die u eerder hebt genoteerd:
+
+    ```cmd/sh
+    dps-keygen -di:<Device ID> -dk:<Primary or Secondary Key> -si:<Scope ID>
+    ```
+
+1. Kopieer de Connection String van de `dps-keygen` uitvoer zodat u deze kunt gebruiken in de code van uw apparaat.
 
 Voor de apparaatcode voor toegang tot de Connection String, slaat u deze op in een bestand met de naam **Connection. String. iothub** in de map `C:\Data\Users\DefaultAccount\Documents\` op uw Windows 10 IOT core-apparaat.
 

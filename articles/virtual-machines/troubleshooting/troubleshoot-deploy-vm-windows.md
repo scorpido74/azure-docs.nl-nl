@@ -4,7 +4,7 @@ description: Problemen met het implementeren van problemen met virtuele Windows-
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: d963556a657f4367acca14d5d8340f384ef555a9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2baa82bda1f92fe81bb0db69b84e6865b2709e42
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080208"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058035"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Problemen met het implementeren van problemen met virtuele Windows-machines in azure oplossen
 
@@ -90,7 +90,7 @@ Als u gebruik wilt maken van de GPU-mogelijkheden van Azure N-serie Vm's met Win
 
 ## <a name="is-n-series-vms-available-in-my-region"></a>Zijn er Vm's uit de N-serie beschikbaar in mijn regio?
 
-U kunt de beschik baarheid controleren vanuit de [tabel met beschik bare producten per regio](https://azure.microsoft.com/regions/services)en de prijzen. [](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)
+U kunt de beschik baarheid controleren vanuit de [tabel met beschik bare producten per regio](https://azure.microsoft.com/regions/services)en [de prijzen.](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)
 
 ## <a name="what-client-images-can-i-use-and-deploy-in-azure-and-how-to-i-get-them"></a>Welke client installatie kopieën kan ik gebruiken en implementeren in azure, en hoe krijg ik deze?
 

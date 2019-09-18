@@ -1,6 +1,6 @@
 ---
-title: Microsoft-Account (MSA) toevoegen als een id-provider met behulp van aangepaste beleidsregels in Azure Active Directory B2C
-description: Voorbeeld met behulp van Microsoft als id-provider met behulp van OIDC (OpenID Connect)-protocol.
+title: Micro soft-account (MSA) toevoegen als een id-provider met behulp van aangepast beleid in Azure Active Directory B2C
+description: Een voor beeld van het gebruik van micro soft als id-provider met het OpenID Connect Connect (OIDC)-protocol.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,66 +10,66 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9ae944a9d587e71c4be83bd524cf3875a7b52dd1
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 8ecd3a3c26c3b03982a2c6ce6f09df6ae21c3b26
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654158"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066019"
 ---
-# <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Instellen van aanmelding met een Microsoft-account met behulp van aangepaste beleidsregels in Azure Active Directory B2C
+# <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden instellen met een Microsoft-account aangepaste beleids regels gebruiken in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Dit artikel leest u hoe u aanmelding voor gebruikers van een Microsoft-account inschakelen met behulp van [aangepast beleid](active-directory-b2c-overview-custom.md) in Azure Active Directory (Azure AD) B2C.
+In dit artikel wordt beschreven hoe u aanmelden voor gebruikers vanaf een Microsoft-account inschakelt met behulp van [aangepast beleid](active-directory-b2c-overview-custom.md) in Azure Active Directory B2C (Azure AD B2C).
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Voer de stappen in [aan de slag met aangepaste beleidsregels in Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
-- Als u nog een Microsoft-account hebt, maakt u één voor één [ https://www.live.com/ ](https://www.live.com/).
+- Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
+- Als u nog geen Microsoft-account hebt, maakt u er een [https://www.live.com/](https://www.live.com/)op.
 
 ## <a name="add-an-application"></a>Een toepassing toevoegen
 
-Om in te schakelen aanmelding voor gebruikers met een Microsoft-account, moet u een toepassing registreren met de Azure AD-tenant. De Azure AD-tenant is niet gelijk zijn aan uw Azure AD B2C-tenant.
+Als u aanmelden voor gebruikers met een Microsoft-account wilt inschakelen, moet u een toepassing registreren in de Azure AD-Tenant. De Azure AD-Tenant is niet hetzelfde als uw Azure AD B2C-Tenant.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Zorg ervoor dat u de map met uw Azure AD-tenant door te klikken op de **map- en abonnementsfilter** in het bovenste menu en de map met uw Azure AD-tenant te kiezen.
-1. Kies **alle services** in de linkerbovenhoek van de Azure portal en vervolgens zoeken naar en selecteer **App-registraties**.
-1. Selecteer **registratie van nieuwe**.
-1. Voer een **naam** voor uw toepassing. Bijvoorbeeld, *MSAapp1*.
-1. Onder **ondersteund accounttypen**, selecteer **Accounts in een organisatie-map en de persoonlijke Microsoft-accounts (zoals Skype, Xbox, Outlook.com)** .
-1. Onder **omleidings-URI (optioneel)** , selecteer **Web** en voer `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in het tekstvak in. Vervang `your-tenant-name` met de naam van uw Azure AD B2C-tenant.
+1. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD-Tenant bevat.
+1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
+1. Selecteer **nieuwe registratie**.
+1. Voer een **naam** in voor uw toepassing. Bijvoorbeeld *MSAapp1*.
+1. Onder **ondersteunde account typen**selecteert u **accounts in een organisatorische map en persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox, Outlook.com)** .
+1. Onder **omleidings-URI (optioneel)** selecteert u `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **Web** en voert u in het tekstvak in. Vervang `your-tenant-name` door de naam van uw Azure AD B2C-Tenant.
 1. Selecteer **registreren**
-1. Record de **(client) toepassings-ID** weergegeven op de overzichtspagina van de toepassing. U hebt deze nodig wanneer u de claimprovider in een volgende sectie configureren.
-1. Selecteer **certificaten en geheimen**
-1. Klik op **nieuwe clientgeheim**
-1. Voer een **beschrijving** voor het geheim, bijvoorbeeld *MSA Client Toepassingsgeheim*, en klik vervolgens op **toevoegen**.
-1. Noteer het wachtwoord wordt weergegeven in de **waarde** kolom. U gebruikt deze waarde in de volgende sectie.
+1. Noteer de **id van de toepassing (client)** die wordt weer gegeven op de overzichts pagina van de toepassing. U hebt deze nodig wanneer u de claim provider in een latere sectie configureert.
+1. **Certificaten & geheimen** selecteren
+1. Klik op **Nieuw client geheim**
+1. Voer een **Beschrijving** in voor het geheim, bijvoorbeeld *MSA-toepassings client geheim*, en klik vervolgens op **toevoegen**.
+1. Noteer het toepassings wachtwoord dat wordt weer gegeven in de kolom **waarde** . U gebruikt deze waarde in de volgende sectie.
 
-## <a name="create-a-policy-key"></a>De beleidssleutel van een maken
+## <a name="create-a-policy-key"></a>Een beleids sleutel maken
 
-Nu u de toepassing in uw Azure AD-tenant hebt gemaakt, moet u voor het opslaan van het clientgeheim van de toepassing in uw Azure AD B2C-tenant.
+Nu u de toepassing hebt gemaakt in uw Azure AD-Tenant, moet u het client geheim van die toepassing opslaan in uw Azure AD B2C-Tenant.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-1. Zorg ervoor dat u de map met uw Azure AD B2C-tenant. Selecteer de **map- en abonnementsfilter** in het bovenste menu en kiest u de map waarin uw tenant.
+1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-1. Selecteer op de pagina overzicht **Identity-Ervaringsframework**.
-1. Selecteer **Beleidssleutels** en selecteer vervolgens **toevoegen**.
-1. Voor **opties**, kiest u `Manual`.
-1. Voer een **naam** voor de beleidssleutel. Bijvoorbeeld `MSASecret`. Het voorvoegsel `B2C_1A_` wordt automatisch toegevoegd aan de naam van uw sleutel.
-1. In **geheim**, voer het clientgeheim die u in de vorige sectie hebt genoteerd.
-1. Voor **sleutelgebruik**, selecteer `Signature`.
+1. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
+1. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
+1. Kies`Manual`voor **Opties**.
+1. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `MSASecret`. Het voor `B2C_1A_` voegsel wordt automatisch toegevoegd aan de naam van uw sleutel.
+1. Voer in het **geheim**het client geheim in dat u in de vorige sectie hebt vastgelegd.
+1. Selecteer`Signature`voor **sleutel gebruik**.
 1. Klik op **Create**.
 
-## <a name="add-a-claims-provider"></a>Toevoegen van een claimprovider
+## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
 
-Als u wilt dat uw gebruikers zich aanmelden met een Microsoft-account, moet u het account als een claimprovider waarmee Azure AD B2C via een eindpunt communiceren kunnen definiëren. Het eindpunt biedt een set claims die worden gebruikt door Azure AD B2C om te controleren of dat een specifieke gebruiker is geverifieerd.
+Als u wilt dat uw gebruikers zich kunnen aanmelden met een Microsoft-account, moet u het account definiëren als een claim provider waarmee Azure AD B2C met behulp van een eind punt kunt communiceren. Het eind punt biedt een set claims die wordt gebruikt door Azure AD B2C om te controleren of een specifieke gebruiker is geverifieerd.
 
-U kunt Azure AD als een claimprovider definiëren door toe te voegen de **ClaimsProvider** element in het bestand uitbreiding van uw beleid.
+U kunt Azure AD definiëren als een claim provider door het element **ClaimsProvider** toe te voegen aan het extensie bestand van uw beleid.
 
-1. Open de *TrustFrameworkExtensions.xml* beleid-bestand.
-1. Zoek de **ClaimsProviders** element. Als deze niet bestaat, kunt u deze onder het root-element toevoegen.
-1. Toevoegen van een nieuwe **ClaimsProvider** als volgt:
+1. Open het beleids bestand *TrustFrameworkExtensions. XML* .
+1. Zoek het element **ClaimsProviders** . Als deze niet bestaat, voegt u deze toe onder het hoofd element.
+1. Voeg als volgt een nieuwe **ClaimsProvider** toe:
 
     ```xml
     <ClaimsProvider>
@@ -111,83 +111,83 @@ U kunt Azure AD als een claimprovider definiëren door toe te voegen de **Claims
     </ClaimsProvider>
     ```
 
-1. Vervang de waarde van **client_id** met de Azure AD-toepassing *(client) toepassings-ID* die u eerder hebt genoteerd.
+1. Vervang de waarde van **client_id** door de *client-id* van de Azure AD-toepassing die u eerder hebt vastgelegd.
 1. Sla het bestand op.
 
-U hebt nu uw beleid geconfigureerd zodat Azure AD B2C weet hoe om te communiceren met uw Microsoft-account-toepassing in Azure AD.
+U hebt nu uw beleid geconfigureerd zodat Azure AD B2C weet hoe u kunt communiceren met uw Microsoft-account toepassing in azure AD.
 
-### <a name="upload-the-extension-file-for-verification"></a>Upload het extensiebestand voor verificatie
+### <a name="upload-the-extension-file-for-verification"></a>Upload het extensie bestand voor verificatie
 
-Upload het gewijzigde beleid om te bevestigen dat er geen problemen met tot nu toe voordat u verdergaat.
+Voordat u doorgaat, moet u het gewijzigde beleid uploaden om te bevestigen dat het geen problemen tot nu toe heeft voorgedaan.
 
-1. Navigeer naar uw Azure AD B2C-tenant in Azure portal en selecteer **Identity-Ervaringsframework**.
-1. Op de **aangepast beleid** weergeeft, schakelt **aangepaste beleid uploaden**.
-1. Schakel **het beleid overschrijven als deze bestaat**, en blader vervolgens naar en selecteer de *TrustFrameworkExtensions.xml* bestand.
+1. Navigeer naar uw Azure AD B2C-Tenant in de Azure Portal en selecteer **identiteits ervaring-Framework**.
+1. Op de pagina **aangepast beleid** selecteert u **aangepast beleid uploaden**.
+1. Schakel **het beleid overschrijven als dit bestaat**in en selecteer vervolgens het *TrustFrameworkExtensions. XML-* bestand.
 1. Klik op **Uploaden**.
 
-Als er geen fouten worden weergegeven in de portal, gaat u verder met de volgende sectie.
+Als er geen fouten worden weer gegeven in de portal, gaat u verder met de volgende sectie.
 
-## <a name="register-the-claims-provider"></a>De claimprovider registreren
+## <a name="register-the-claims-provider"></a>De claim provider registreren
 
-Op dit moment dat u de id-provider hebt ingesteld, maar deze nog niet beschikbaar in elk van de schermen registreren of aanmelden. Om het beschikbaar maken, een duplicaat van een bestaande sjabloon voor de gebruikersbeleving maken en dit zodanig aanpassen dat ook de Microsoft-account-id-provider heeft.
+Op dit moment hebt u de ID-provider ingesteld, maar deze is nog niet beschikbaar in een van de registratie-en aanmeld schermen. Om het beschikbaar te maken, maakt u een kopie van een bestaande sjabloon gebruiker en wijzigt u deze zodat deze ook de Microsoft-account-ID-provider heeft.
 
-1. Open de *TrustFrameworkBase.xml* -bestand van het starter-pack.
-1. Zoeken en kopieer de gehele inhoud van de **UserJourney** element met `Id="SignUpOrSignIn"`.
-1. Open de *TrustFrameworkExtensions.xml* en zoek de **UserJourneys** element. Als het element niet bestaat, Voeg een.
-1. Plak de volledige inhoud van de **UserJourney** element dat u hebt gekopieerd als onderliggende site van de **UserJourneys** element.
-1. Wijzig de naam van de ID van de gebruikersbeleving. Bijvoorbeeld `SignUpSignInMSA`.
+1. Open het bestand *TrustFrameworkBase. XML* van het Starter Pack.
+1. Zoek en kopieer de volledige inhoud van het **UserJourney** -element dat `Id="SignUpOrSignIn"`bevat.
+1. Open *TrustFrameworkExtensions. XML* en zoek het element **UserJourneys** . Als het element niet bestaat, voegt u er een toe.
+1. Plak de volledige inhoud van het **UserJourney** -element dat u hebt gekopieerd als onderliggend element van het onderdeel **UserJourneys** .
+1. Wijzig de naam van de gebruikers traject. Bijvoorbeeld `SignUpSignInMSA`.
 
-### <a name="display-the-button"></a>De knop weergeven
+### <a name="display-the-button"></a>De knop weer geven
 
-De **ClaimsProviderSelection** element is vergelijkbaar met een id-provider-knop op het scherm registreren of aanmelden. Als u een **ClaimsProviderSelection** -element voor een Microsoft-account, een nieuwe knop wordt weergegeven wanneer een gebruiker op de pagina terechtkomt.
+Het element **ClaimsProviderSelection** is vergelijkbaar met een id-provider knop op een registratie-of aanmeldings scherm. Als u een **ClaimsProviderSelection** -element toevoegt voor een Microsoft-account, wordt er een nieuwe knop weer gegeven wanneer een gebruiker op de pagina terechtkomt.
 
-1. In de *TrustFrameworkExtensions.xml* bestand, zoek de **OrchestrationStep** element met `Order="1"` in de gebruikersbeleving die u hebt gemaakt.
-1. Onder **ClaimsProviderSelects**, voegt u het volgende element toe. Stel de waarde van **TargetClaimsExchangeId** naar een geschikte waarde, bijvoorbeeld `MicrosoftAccountExchange`:
+1. Zoek in het bestand *TrustFrameworkExtensions. XML* het element **OrchestrationStep** op dat is `Order="1"` opgenomen in de gebruikers traject die u hebt gemaakt.
+1. Voeg onder **ClaimsProviderSelects**het volgende element toe. Stel de waarde van **TargetClaimsExchangeId** in op een geschikte waarde, bijvoorbeeld `MicrosoftAccountExchange`:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="MicrosoftAccountExchange" />
     ```
 
-### <a name="link-the-button-to-an-action"></a>De knop koppelen aan een actie
+### <a name="link-the-button-to-an-action"></a>De knop aan een actie koppelen
 
-Nu dat u een knop op locatie hebt, die u wilt koppelen aan een actie. De actie, wordt in dit geval is voor Azure AD B2C om te communiceren met een Microsoft-account voor het ontvangen van een token.
+Nu er een knop aanwezig is, moet u deze koppelen aan een actie. De actie in dit geval is voor Azure AD B2C om te communiceren met een Microsoft-account om een token te ontvangen.
 
-1. Zoek de **OrchestrationStep** die bevat `Order="2"` in de gebruikersbeleving.
-1. Voeg de volgende **ClaimsExchange** element ervoor te zorgen dat u dezelfde waarde voor de ID die u gebruikt voor **TargetClaimsExchangeId**:
+1. Zoek de **OrchestrationStep** die in `Order="2"` de gebruikers reis zijn opgenomen.
+1. Voeg het volgende **ClaimsExchange** -element toe om ervoor te zorgen dat u dezelfde waarde gebruikt voor de id die u hebt gebruikt voor **TargetClaimsExchangeId**:
 
     ```xml
     <ClaimsExchange Id="MicrosoftAccountExchange" TechnicalProfileReferenceId="MSA-OIDC" />
     ```
 
-    Werk de waarde van **TechnicalProfileReferenceId** zodat deze overeenkomen met die van de `Id` waarde in de **TechnicalProfile** element van de claimprovider die u eerder hebt toegevoegd. Bijvoorbeeld `MSA-OIDC`.
+    Werk de waarde van **TechnicalProfileReferenceId** bij zodat deze overeenkomt `Id` met de waarde in het **TechnicalProfile** -element van de claim provider die u eerder hebt toegevoegd. Bijvoorbeeld `MSA-OIDC`.
 
-1. Sla de *TrustFrameworkExtensions.xml* -bestand en upload het opnieuw om te verifiëren.
+1. Sla het bestand *TrustFrameworkExtensions. XML* op en upload het opnieuw voor verificatie.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Een Azure AD B2C-toepassing maken
 
-Communicatie met Azure AD B2C vindt plaats via een toepassing die u in uw Azure AD B2C-tenant maakt. Deze sectie vindt u optionele stappen die u uitvoeren kunt voor het maken van een testtoepassing als u dat nog niet hebt gedaan.
+Communicatie met Azure AD B2C vindt plaats via een toepassing die u in uw Azure AD B2C Tenant maakt. In deze sectie vindt u optionele stappen die u kunt uitvoeren om een test toepassing te maken als u dit nog niet hebt gedaan.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Zorg ervoor dat u de map met uw Azure AD B2C-tenant. Selecteer de **map- en abonnementsfilter** in het bovenste menu en kiest u de map waarin uw tenant.
+1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer **Toepassingen** en vervolgens **Toevoegen**.
-1. Voer een naam voor de toepassing, bijvoorbeeld *testapp1*.
-1. Voor **Web-App / Web-API**, selecteer `Yes`, en voer vervolgens `https://jwt.ms` voor de **antwoord-URL**.
+1. Voer een naam in voor de toepassing, bijvoorbeeld *testapp1*.
+1. Voor **Web-app/Web**-API `Yes`selecteert u en voert `https://jwt.ms` u vervolgens in voor de **antwoord-URL**.
 1. Klik op **Create**.
 
-## <a name="update-and-test-the-relying-party-file"></a>Bijwerken en testen van de relying party-bestand
+## <a name="update-and-test-the-relying-party-file"></a>Het Relying Party bestand bijwerken en testen
 
-Bijwerken van de relying party (RP)-bestand dat initieert de gebruikersbeleving die u hebt gemaakt.
+Werk het Relying Party (RP)-bestand bij waarmee de door u gemaakte gebruikers traject wordt gestart.
 
-1. Maak een kopie van *SignUpOrSignIn.xml* in uw werkmap en wijzig de naam. Bijvoorbeeld, wijzig de naam *SignUpSignInMSA.xml*.
-1. Open het nieuwe bestand en werk de waarde van de **PolicyId** voor het kenmerk **TrustFrameworkPolicy** met een unieke waarde. Bijvoorbeeld `SignUpSignInMSA`.
-1. Werk de waarde van **PublicPolicyUri** aan de URI voor het beleid. Bijvoorbeeld:`http://contoso.com/B2C_1A_signup_signin_msa`
-1. Werk de waarde van de **ReferenceId** kenmerk in **DefaultUserJourney** zodat deze overeenkomen met de ID van de gebruikersbeleving die u eerder (SignUpSignInMSA) hebt gemaakt.
-1. Sla uw wijzigingen, upload het bestand en selecteer vervolgens het nieuwe beleid in de lijst.
-1. Zorg ervoor dat Azure AD B2C-toepassing die u in de vorige sectie hebt gemaakt (of door te voeren van de vereisten, bijvoorbeeld *webapp1* of *testapp1*) is geselecteerd in de **selecteren toepassing** veld en vervolgens testen door te klikken op **nu uitvoeren**.
-1. Selecteer de **Microsoft-Account** knop en meld u aan.
+1. Maak een kopie van *SignUpOrSignIn. XML* in uw werkmap en wijzig de naam ervan. Wijzig de naam bijvoorbeeld in *SignUpSignInMSA. XML*.
+1. Open het nieuwe bestand en werk de waarde van het kenmerk **PolicyId** voor **TrustFrameworkPolicy** met een unieke waarde bij. Bijvoorbeeld `SignUpSignInMSA`.
+1. Werk de waarde van **PublicPolicyUri** bij met de URI voor het beleid. Bijvoorbeeld:`http://contoso.com/B2C_1A_signup_signin_msa`
+1. Werk de waarde van het kenmerk **ReferenceId** in **DefaultUserJourney** bij zodat dit overeenkomt met de id van de gebruikers traject die u eerder hebt gemaakt (SignUpSignInMSA).
+1. Sla de wijzigingen op, upload het bestand en selecteer vervolgens het nieuwe beleid in de lijst.
+1. Zorg ervoor dat Azure AD B2C toepassing die u hebt gemaakt in de vorige sectie (of door het volt ooien van de vereisten, bijvoorbeeld *webapp1* of *testapp1*) is geselecteerd in het veld **toepassing selecteren** en test deze door te klikken op **nu uitvoeren** .
+1. Selecteer de knop **micro soft-account** en meld u aan.
 
-    Als de aanmelding geslaagd is, wordt u doorgestuurd naar `jwt.ms` weergeven met het decoderen-Token, vergelijkbaar met:
+    Als de aanmeldings bewerking is geslaagd, wordt u omgeleid zodat `jwt.ms` de gedecodeerde token wordt weer gegeven, vergelijkbaar met:
 
     ```json
     {

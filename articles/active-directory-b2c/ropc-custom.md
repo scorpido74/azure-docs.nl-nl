@@ -1,6 +1,6 @@
 ---
-title: De resource-eigenaar wachtwoord referentiestroom configureren in Azure Active Directory B2C | Microsoft Docs
-description: Informatie over het configureren van de resource-eigenaar wachtwoord referentiestroom in Azure Active Directory B2C.
+title: De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure Active Directory B2C | Microsoft Docs
+description: Meer informatie over het configureren van de gegevens stroom voor het wacht woord voor de resource-eigenaar in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,50 +10,50 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d01e8ce894bfb1ece3555eddc714d2d3a80e44b5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 414dc4e69fda8ccd79b5a48b19bccee35bd11a45
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164840"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063711"
 ---
-# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>De resource-eigenaar wachtwoord referentiestroom in Azure Active Directory B2C met een aangepast beleid configureren
+# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure Active Directory B2C met behulp van een aangepast beleid
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-In Azure Active Directory (Azure AD) B2C is de stroom voor referenties (ROPC) de resource-eigenaar wachtwoord een standaard OAuth-verificatiestroom. In deze stroom uitwisselt een toepassing, ook wel bekend als de relying party, geldige referenties voor tokens. De referenties bestaan uit een gebruikers-ID en het wachtwoord. De tokens die zijn geretourneerd, zijn een ID-token, toegangstoken en een vernieuwingstoken.
+In Azure Active Directory B2C (Azure AD B2C) is de stroom voor het wacht woord voor de resource-eigenaar (ROPC) een OAuth-standaard verificatie stroom. In deze stroom wordt een toepassing, ook wel bekend als de Relying Party, de uitwisseling van geldige referenties voor tokens. De referenties bevatten een gebruikers-ID en wacht woord. De geretourneerde tokens zijn een ID-token, toegangs token en een vernieuwings token.
 
-De volgende opties worden ondersteund in de stroom ROPC:
+De volgende opties worden ondersteund in de ROPC-stroom:
 
-- **Native Client** -tussenkomst van de gebruiker tijdens de verificatie gebeurt wanneer de code wordt uitgevoerd op een apparaat van de gebruiker aan clientzijde.
-- **Openbare clientstroom** -alleen de gebruiker referenties die worden verzameld door een toepassing, zijn verzonden in de API-aanroep. De referenties van de toepassing worden niet verzonden.
-- **Toevoegen van nieuwe claims** -inhoud van de ID-tokens kunnen worden gewijzigd om toe te voegen nieuwe claims.
+- **Systeem eigen client** -gebruikers interactie tijdens verificatie gebeurt wanneer code wordt uitgevoerd op een apparaat aan de gebruiker.
+- **Data transport voor open bare clients** : alleen gebruikers referenties die worden verzameld door een toepassing worden verzonden in de API-aanroep. De referenties van de toepassing worden niet verzonden.
+- **Nieuwe claims toevoegen** : de inhoud van het id-token kan worden gewijzigd om nieuwe claims toe te voegen.
 
 De volgende stromen worden niet ondersteund:
 
-- **Server-naar-server** -het identity protection-systeem moet een betrouwbare IP-adres van de beller (de systeemeigen client) verzameld als onderdeel van de interactie. In een server-side-API-aanroep, zijn alleen van de server-IP-adres wordt gebruikt. Als er niet te veel aanmeldingen, kan het identity protection-systeem als een aanvaller er uitzien op een herhaalde IP-adres.
-- **Eén pagina toepassing** -een front-end-toepassing die is voornamelijk geschreven in JavaScript. De toepassing is vaak het geval is, met behulp van een framework zoals AngularJS, Ember.js of Durandal geschreven.
-- **Vertrouwelijke clientstroom** : de client-ID van de toepassing is gevalideerd, maar het toepassingsgeheim niet is.
+- **Server-naar-server** -het identiteits beheersysteem heeft een betrouw bare IP-adres nodig dat door de aanroeper (de systeem eigen client) is verzameld als onderdeel van de interactie. In een API-aanroep aan de server zijde wordt alleen het IP-adres van de server gebruikt. Als er te veel aanmeldingen mislukken, kan het identiteits beschermings systeem een herhaald IP-adres als een aanvaller bekijken.
+- **Toepassing met één pagina** : een front-end-toepassing die voornamelijk is geschreven in Java script. De toepassing wordt vaak geschreven met behulp van een framework zoals AngularJS, wordt. js of Durandal.
+- **Vertrouwelijke client stroom** : de client-id van de toepassing wordt gevalideerd, maar het toepassings geheim is niet.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voer de stappen in [aan de slag met aangepaste beleidsregels in Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
+Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
 
 ## <a name="register-an-application"></a>Een toepassing registreren
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Zorg ervoor dat u de adreslijst gebruikt die uw Azure AD B2C-tenant bevat door te klikken op het **filter voor adreslijsten en abonnementen** in het bovenste menu en de adreslijst te kiezen waarin uw tenant zich bevindt.
+2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer **Toepassingen** en vervolgens **Toevoegen**.
-5. Voer een naam voor de toepassing, zoals *ROPC_Auth_app*.
-6. Selecteer **Nee** voor **Web App of Web-API**, en selecteer vervolgens **Ja** voor **Native client**.
-7. Alle andere waarden laten zoals ze zijn, en selecteer vervolgens **maken**.
+5. Voer een naam in voor de toepassing, zoals *ROPC_Auth_app*.
+6. Selecteer **Nee** voor **Web-app/Web-API**en selecteer vervolgens **Ja** voor **native client**.
+7. Zorg ervoor dat alle andere waarden behouden blijven, en selecteer vervolgens **maken**.
 8. Selecteer de nieuwe toepassing en noteer de toepassings-ID voor later gebruik.
 
-##  <a name="create-a-resource-owner-policy"></a>Maak een beleid voor resource-eigenaar
+##  <a name="create-a-resource-owner-policy"></a>Een beleid voor de eigenaar van een resource maken
 
-1. Open de *TrustFrameworkExtensions.xml* bestand.
-2. Als deze niet al bestaat, voegt u toe een **ClaimsSchema** -element en de onderliggende elementen als het eerste element onder de **BuildingBlocks** element:
+1. Open het bestand *TrustFrameworkExtensions. XML* .
+2. Als deze nog niet bestaat, voegt u een **ClaimsSchema** -element en de onderliggende elementen toe als het eerste element onder het element **BuildingBlocks** :
 
     ```XML
     <ClaimsSchema>
@@ -76,7 +76,7 @@ Voer de stappen in [aan de slag met aangepaste beleidsregels in Azure Active Dir
     </ClaimsSchema>
     ```
 
-3. Na **ClaimsSchema**, Voeg een **ClaimsTransformations** -element en de onderliggende elementen aan de **BuildingBlocks** element:
+3. Voeg na **ClaimsSchema**een **ClaimsTransformations** -element en de onderliggende elementen toe aan het **BuildingBlocks** -element:
 
     ```XML
     <ClaimsTransformations>
@@ -88,7 +88,7 @@ Voer de stappen in [aan de slag met aangepaste beleidsregels in Azure Active Dir
           <OutputClaim ClaimTypeReferenceId="sub" TransformationClaimType="createdClaim" />
         </OutputClaims>
       </ClaimsTransformation>
-    
+
       <ClaimsTransformation Id="AssertRefreshTokenIssuedLaterThanValidFromDate" TransformationMethod="AssertDateTimeIsGreaterThan">
         <InputClaims>
           <InputClaim ClaimTypeReferenceId="refreshTokenIssuedOnDateTime" TransformationClaimType="leftOperand" />
@@ -102,7 +102,7 @@ Voer de stappen in [aan de slag met aangepaste beleidsregels in Azure Active Dir
     </ClaimsTransformations>
     ```
 
-4. Zoek de **ClaimsProvider** -element met een **DisplayName** van `Local Account SignIn` en de volgende technische profiel toevoegen:
+4. Zoek het **ClaimsProvider** -element met een **DisplayName** van `Local Account SignIn` en voeg het volgende technische profiel toe:
 
     ```XML
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
@@ -140,9 +140,9 @@ Voer de stappen in [aan de slag met aangepaste beleidsregels in Azure Active Dir
     </TechnicalProfile>
     ```
 
-    Vervang de **DefaultValue** van **client_id** met toepassings-ID van de ProxyIdentityExperienceFramework-toepassing die u hebt gemaakt in de vereiste zelfstudie. Vervang vervolgens **DefaultValue** van **bron-id** met toepassings-ID van de IdentityExperienceFramework-toepassing die u ook in de vereiste zelfstudie hebt gemaakt.  
+    Vervang de **DefaultValue** van **Client_id** door de toepassings-id van de ProxyIdentityExperienceFramework-toepassing die u hebt gemaakt in de zelf studie voor vereisten. Vervang vervolgens **DefaultValue** van **Resource_id** door de toepassings-id van de IdentityExperienceFramework-toepassing die u ook hebt gemaakt in de hand leiding voor vereisten.
 
-5. Voeg volgende **ClaimsProvider** elementen met hun technische profielen aan de **ClaimsProviders** element:
+5. Voeg de volgende **ClaimsProvider** -elementen met hun technische profielen toe aan het **ClaimsProviders** -element:
 
     ```XML
     <ClaimsProvider>
@@ -196,7 +196,7 @@ Voer de stappen in [aan de slag met aangepaste beleidsregels in Azure Active Dir
     </ClaimsProvider>
     ```
 
-6. Voeg een **UserJourneys** -element en de onderliggende elementen aan de **TrustFrameworkPolicy** element:
+6. Voeg een **UserJourneys** -element en de onderliggende elementen toe aan het element **TrustFrameworkPolicy** :
 
     ```XML
     <UserJourney Id="ResourceOwnerPasswordCredentials">
@@ -233,19 +233,19 @@ Voer de stappen in [aan de slag met aangepaste beleidsregels in Azure Active Dir
     </UserJourney>
     ```
 
-7. Op de **aangepast beleid** pagina in uw Azure AD B2C-tenant, selecteer **uploaden beleid**.
-8. Schakel **het beleid overschrijven als deze bestaat**, en blader vervolgens naar en selecteer de *TrustFrameworkExtensions.xml* bestand.
+7. Selecteer op de pagina **aangepaste beleids regels** in uw Azure AD B2C-Tenant de optie **beleid uploaden**.
+8. Schakel **het beleid overschrijven als dit bestaat**in en selecteer vervolgens het *TrustFrameworkExtensions. XML-* bestand.
 9. Klik op **Uploaden**.
 
-## <a name="create-a-relying-party-file"></a>Maak een relying party-bestand
+## <a name="create-a-relying-party-file"></a>Een Relying Party-bestand maken
 
-Werk vervolgens de relying party-bestand dat initieert de gebruikersbeleving die u hebt gemaakt:
+Werk vervolgens het Relying Party bestand bij dat de door u gemaakte gebruikers traject initieert:
 
-1. Maak een kopie van *SignUpOrSignin.xml* -bestand in uw werkmap en wijzig de naam *ROPC_Auth.xml*.
-2. Open het nieuwe bestand en wijzig de waarde van de **PolicyId** voor het kenmerk **TrustFrameworkPolicy** naar een unieke waarde. De beleids-ID is de naam van uw beleid. Bijvoorbeeld, **B2C_1A_ROPC_Auth**.
-3. Wijzig de waarde van de **ReferenceId** kenmerk in **DefaultUserJourney** naar `ResourceOwnerPasswordCredentials`.
-4. Wijzig de **OutputClaims** element bevat alleen de volgende claims:
-    
+1. Maak een kopie van het bestand *SignUpOrSignin. XML* in de werkmap en wijzig de naam in *ROPC_Auth. XML*.
+2. Open het nieuwe bestand en wijzig de waarde van het kenmerk **PolicyId** voor **TrustFrameworkPolicy** in een unieke waarde. De beleids-ID is de naam van uw beleid. Bijvoorbeeld **B2C_1A_ROPC_Auth**.
+3. Wijzig de waarde van het kenmerk **ReferenceId** in `ResourceOwnerPasswordCredentials`DefaultUserJourney in.
+4. Wijzig het element **OutputClaims** zodat het de volgende claims bevat:
+
     ```XML
     <OutputClaim ClaimTypeReferenceId="sub" />
     <OutputClaim ClaimTypeReferenceId="objectId" />
@@ -254,34 +254,34 @@ Werk vervolgens de relying party-bestand dat initieert de gebruikersbeleving die
     <OutputClaim ClaimTypeReferenceId="surname" DefaultValue="" />
     ```
 
-5. Op de **aangepast beleid** pagina in uw Azure AD B2C-tenant, selecteer **uploaden beleid**.
-6. Schakel **het beleid overschrijven als deze bestaat**, en blader vervolgens naar en selecteer de *ROPC_Auth.xml* bestand.
+5. Selecteer op de pagina **aangepaste beleids regels** in uw Azure AD B2C-Tenant de optie **beleid uploaden**.
+6. Schakel **het beleid overschrijven als dit bestaat**in en selecteer vervolgens het *ROPC_Auth. XML-* bestand.
 7. Klik op **Uploaden**.
 
 ## <a name="test-the-policy"></a>Het beleid testen
 
-Gebruik uw favoriete API-ontwikkeling-toepassing voor het genereren van een API-aanroep en bekijk de reactie voor foutopsporing van uw beleid. Bouw een aanroep zoals in dit voorbeeld met de volgende informatie als de hoofdtekst van de POST-aanvraag:
+Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te genereren en Bekijk het antwoord op fout opsporing van uw beleid. Maak een aanroep zoals dit voor beeld met de volgende informatie als hoofd tekst van de POST-aanvraag:
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
 - Vervang `your-tenant-name` met de naam van uw Azure AD B2C-tenant.
-- Vervang `B2C_1A_ROPC_Auth` met de volledige naam van uw resource-eigenaar wachtwoordbeleid referenties.
+- Vervang `B2C_1A_ROPC_Auth` door de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
 
 | Sleutel | Value |
 | --- | ----- |
 | username | `user-account` |
 | password | `password1` |
 | grant_type | password |
-| scope | openid `application-id` offline_access |
+| bereik | OpenID Connect `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | token id_token |
 
-- Vervang `user-account` met de naam van een gebruikersaccount in uw tenant.
-- Vervang `password1` met het wachtwoord van het gebruikersaccount.
-- Vervang `application-id` met toepassings-ID van de *ROPC_Auth_app* registratie.
-- *Offline_access* is optioneel als u wilt een vernieuwingstoken ontvangen.
+- Vervang `user-account` door de naam van een gebruikers account in uw Tenant.
+- Vervang `password1` door het wacht woord van het gebruikers account.
+- Vervang `application-id` door de toepassings-id uit de *ROPC_Auth_app* -registratie.
+- *Offline_access* is optioneel als u een vernieuwings token wilt ontvangen.
 
-De werkelijke POST-aanvraag ziet eruit als in het volgende voorbeeld:
+De werkelijke POST-aanvraag ziet er ongeveer uit als in het volgende voor beeld:
 
 ```HTTPS
 POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
@@ -291,7 +291,7 @@ Content-Type: application/x-www-form-urlencoded
 username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
 ```
 
-Een geslaagde respons met offline toegang ziet eruit als in het volgende voorbeeld:
+Een geslaagde reactie met offline toegang lijkt op het volgende voor beeld:
 
 ```JSON
 {
@@ -303,14 +303,14 @@ Een geslaagde respons met offline toegang ziet eruit als in het volgende voorbee
 }
 ```
 
-## <a name="redeem-a-refresh-token"></a>Een vernieuwingstoken inwisselen
+## <a name="redeem-a-refresh-token"></a>Een vernieuwings token inwisselen
 
-Maken van een POST-aanroep zoals hier weergegeven. Gebruik de informatie in de volgende tabel als de hoofdtekst van de aanvraag:
+Een POST-aanroep maken zoals deze wordt weer gegeven. Gebruik de informatie in de volgende tabel als hoofd tekst van de aanvraag:
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
 - Vervang `your-tenant-name` met de naam van uw Azure AD B2C-tenant.
-- Vervang `B2C_1A_ROPC_Auth` met de volledige naam van uw resource-eigenaar wachtwoordbeleid referenties.
+- Vervang `B2C_1A_ROPC_Auth` door de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
 
 | Sleutel | Value |
 | --- | ----- |
@@ -320,10 +320,10 @@ Maken van een POST-aanroep zoals hier weergegeven. Gebruik de informatie in de v
 | resource | `application-id` |
 | refresh_token | `refresh-token` |
 
-- Vervang `application-id` met toepassings-ID van de *ROPC_Auth_app* registratie.
-- Vervang `refresh-token` met de **refresh_token** die in het vorige antwoord is verzonden.
+- Vervang `application-id` door de toepassings-id uit de *ROPC_Auth_app* -registratie.
+- Vervang `refresh-token` door het **refresh_token** dat in het vorige antwoord is teruggestuurd.
 
-Een geslaagde respons ziet eruit als in het volgende voorbeeld:
+Een geslaagde reactie ziet eruit als in het volgende voor beeld:
 
 ```JSON
 {
@@ -341,11 +341,11 @@ Een geslaagde respons ziet eruit als in het volgende voorbeeld:
 }
 ```
 
-## <a name="use-a-native-sdk-or-app-auth"></a>Gebruik een systeemeigen SDK of App Auth
+## <a name="use-a-native-sdk-or-app-auth"></a>Een systeem eigen SDK of app-auth gebruiken
 
-Azure AD B2C voldoet aan de OAuth 2.0-standaarden voor openbare client-referenties voor wachtwoord van resource-eigenaar en moet compatibel zijn met de meeste client-SDK's. Voor de meest recente informatie, Zie [systeemeigen App SDK voor OAuth 2.0 en OpenID verbinding maken met het implementeren van best practices voor moderne](https://appauth.io/).
+Azure AD B2C voldoet aan de OAuth 2,0-standaarden voor de referenties van het eigenaars wachtwoord voor open bare client bronnen en moet compatibel zijn met de meeste client-Sdk's. Zie voor de meest recente informatie [systeem eigen app SDK voor OAuth 2,0 en OpenID Connect Connect implementeren moderne Best practices](https://appauth.io/).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Een volledig voorbeeld van dit scenario in de [beginnerspakket voor Azure Active Directory B2C-beleid voor aangepaste](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc).
-- Meer informatie over de tokens die worden gebruikt door Azure Active Directory B2C in de [Token verwijzing](active-directory-b2c-reference-tokens.md).
+- Bekijk een volledig voor beeld van dit scenario in het [Azure Active Directory B2C aangepast beleids Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc).
+- Meer informatie over de tokens die worden gebruikt door Azure Active Directory B2C in de [token verwijzing](active-directory-b2c-reference-tokens.md).

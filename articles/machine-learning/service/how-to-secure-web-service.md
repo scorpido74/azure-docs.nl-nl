@@ -1,7 +1,7 @@
 ---
 title: Webservices beveiligen met SSL
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het beveiligen van een webservice die wordt geïmplementeerd via de Azure Machine Learning-service door HTTPS in te scha kelen. HTTPS beveiligt gegevens van clients door middel van TLS (trans port Layer Security), een vervanging van SSL (Secure Socket Layers). Clients gebruiken ook HTTPS om de identiteit van de webservice te verifiëren.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het beveiligen van een webservice die wordt geïmplementeerd via Azure Machine Learning door HTTPS in te scha kelen. HTTPS beveiligt gegevens van clients door middel van TLS (trans port Layer Security), een vervanging van SSL (Secure Socket Layers). Clients gebruiken ook HTTPS om de identiteit van de webservice te verifiëren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8805e065c92b42013c1e56f20b4a032d280cb8ac
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ce60806c26359ae682f5ab468e4f4265d3572c87
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772525"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034380"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>SSL gebruiken om een webservice te beveiligen via Azure Machine Learning
 
-In dit artikel wordt beschreven hoe u een webservice kunt beveiligen die via de Azure Machine Learning-service is geïmplementeerd.
+Dit artikel laat u zien hoe u een webservice kunt beveiligen die via Azure Machine Learning wordt geïmplementeerd.
 
 U gebruikt [https](https://en.wikipedia.org/wiki/HTTPS) om de toegang tot webservices te beperken en de gegevens te beveiligen die door clients worden verzonden. Met HTTPS kunt u de communicatie tussen een client en een webservice beveiligen door de communicatie tussen de twee te versleutelen. Versleuteling maakt gebruik van [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). TLS wordt soms nog steeds aangeduid als *Secure Sockets Layer* (SSL). Dit is de voorafgaande taak van TLS.
 
@@ -151,7 +151,7 @@ Vervolgens moet u uw DNS om te verwijzen naar de webservice bijwerken.
 
   Werk de DNS van het open bare IP-adres van de AKS-cluster op het tabblad **configuratie** onder **instellingen** in het linkerdeel venster. (Zie de volgende afbeelding.) Het open bare IP-adres is een resource type dat wordt gemaakt onder de resource groep die de AKS-agent knooppunten en andere netwerk bronnen bevat.
 
-  [![Azure Machine Learning-service: Webservices beveiligen met SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure Machine Learning: Webservices beveiligen met SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>Het SSL-certificaat bijwerken
 

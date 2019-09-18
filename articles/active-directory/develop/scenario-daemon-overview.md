@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b86841cc6889eb8e716df3f6d1ac9bc7b158992
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ae0912203f2427694d2a9b8611966a55e1e6889e
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852728"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056381"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Scenario: Daemon-toepassing die web-Api's aanroept
 
@@ -60,7 +60,7 @@ Toepassingen die een token voor hun eigen identiteiten verkrijgen:
 Voor ontwikkel aars heeft de end-to-end-ervaring voor dit scenario de volgende aspecten:
 
 - Daemon-toepassingen kunnen alleen worden gebruikt in azure AD-tenants. Het kan zinvol zijn om een daemon-toepassing te maken die probeert persoonlijke micro soft-accounts te bewerken. Als u een LOB-app (line-of-Business) bent, maakt u uw daemon-app in uw Tenant. Als u een ISV bent, wilt u mogelijk een multi tenant-daemon-toepassing maken. Het moet worden gezonden door elke Tenant beheerder.
-- Tijdens de [registratie](./scenario-daemon-app-registration.md)van de toepassing is de **antwoord-URI** niet nodig. U moet geheimen of certificaten delen met Azure AD en u moet de machtigingen van toepassingen aanvragen en toestemming geven om deze app-machtigingen te gebruiken.
+- Tijdens de [registratie](./scenario-daemon-app-registration.md)van de toepassing is de **antwoord-URI** niet nodig. U moet geheimen of certificaten of ondertekende verklaringen met Azure AD delen, en u moet machtigingen voor toepassingen aanvragen en toestemming geven om deze app-machtigingen te gebruiken.
 - De [configuratie](./scenario-daemon-app-configuration.md) van de toepassing moet client referenties opgeven die worden gedeeld met Azure ad tijdens de registratie van de toepassing.
 - Het [bereik](scenario-daemon-acquire-token.md#scopes-to-request) dat wordt gebruikt om een token met de client referentie stroom te verkrijgen, moet een statisch bereik zijn.
 

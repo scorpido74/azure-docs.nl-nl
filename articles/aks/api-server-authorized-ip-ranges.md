@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 487940bfb5d6e7c5eebf99f804f57c3e17709377
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 59e64b7c84e589da57ea28d6655c9305f4fdc101
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276488"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058346"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Voor beeld-veilige toegang tot de API-server met behulp van geautoriseerde IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -28,7 +28,7 @@ In dit artikel wordt beschreven hoe u geautoriseerde IP-adresbereiken van de API
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit artikel wordt ervan uitgegaan dat u werkt met clusters die gebruikmaken van [kubenet] [kubenet].  Met [Azure container Networking interface (CNI)] [cni-netwerken] op basis van clusters hebt u niet de vereiste route tabel nodig om de toegang te beveiligen.  U moet de route tabel hand matig maken.  Zie [route tabellen beheren](https://docs.microsoft.com/azure/virtual-network/manage-route-table) voor meer informatie.
+In dit artikel wordt ervan uitgegaan dat u werkt met clusters die gebruikmaken van [kubenet][kubenet].  Met [Azure container Networking interface (cni)][cni-networking] gebaseerde clusters hebt u niet de vereiste route tabel nodig om de toegang te beveiligen.  U moet de route tabel hand matig maken.  Zie [route tabellen beheren](https://docs.microsoft.com/azure/virtual-network/manage-route-table) voor meer informatie.
 
 Door de API-server geautoriseerde IP-adresbereiken werken alleen voor nieuwe AKS-clusters die u maakt. In dit artikel wordt beschreven hoe u een AKS-cluster maakt met behulp van de Azure CLI.
 
@@ -256,6 +256,8 @@ Zie voor meer informatie [beveiligings concepten voor toepassingen en clusters i
 
 <!-- LINKS - external -->
 [azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/
+[kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
+[cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

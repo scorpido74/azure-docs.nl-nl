@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 66b3dc4aba5d1b29cc0c6190877fbd6b26a11f0c
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: a1a9ad0c615e50db746548a1ed5b557fe6fdea5a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510106"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064285"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Geef een toegangs token door via een gebruikers stroom naar uw toepassing in Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Azure AD B2C biedt momenteel alleen ondersteuning voor het door geven van het to
 ## <a name="enable-the-claim"></a>Claim inschakelen
 
 1. Meld u als globale beheerder van de Azure AD B2C-tenant aan bij [Azure Portal](https://portal.azure.com/).
-2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het **Directory-en abonnements filter** in het bovenste menu en kies de map die uw Tenant bevat.
+2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer **gebruikers stromen (beleid)** en selecteer vervolgens uw gebruikers stroom. Bijvoorbeeld **B2C_1_signupsignin1**.
 5. Selecteer **Toepassingsclaims**.

@@ -4,16 +4,17 @@ description: Een inleiding tot HDInsight en tot de Apache Hadoop- en Apache Spar
 keywords: azure hadoop, hadoop azure, hadoop-inleiding, hadoop-informatie, hadoop-technologiestack, inleiding tot hadoop, informatie over hadoop, wat is een hadoop-cluster, wat is hadoop-cluster, waar wordt hadoop voor gebruikt
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 42de6277449b51eb51a13148504e7e9a5f6f5270
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: f950d273e16dc7fc25f443fda58f9d6582085129
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208498"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076401"
 ---
 # <a name="what-is-azure-hdinsight"></a>Wat is Azure HDInsight?
 
@@ -99,7 +100,7 @@ HDInsight-clusters, waaronder Spark, HBase, Kafka, Hadoop en andere, bieden onde
 
 |Programmeertaal  |Information  |
 |---------|---------|
-|Standaardondersteuning voor programmeertalen     | Standaard bieden HDInsight-clusters ondersteuning voor:<ul><li>Java</li><li>Python</li><li>.NET</li><li>Start</li></ul>  |
+|Standaardondersteuning voor programmeertalen     | Standaard bieden HDInsight-clusters ondersteuning voor:<ul><li>Java</li><li>Python</li><li>.NET</li><li>Aan de slag</li></ul>  |
 |JVM-talen (Java Virtual Machine)     | Op een virtuele Java-machine (JVM) kunnen naast Java ook vele andere talen worden uitgevoerd. Voor sommige van deze talen moet u mogelijk echter aanvullende onderdelen in het cluster installeren. De volgende JVM-talen worden in HDInsight-clusters ondersteund: <ul><li>Clojure</li><li>Jython (Python voor Java)</li><li>Scala</li></ul>     |
 |Hadoop-specifieke talen     | HDInsight-clusters bieden ondersteuning voor de volgende talen die specifiek zijn voor de Hadoop-technologiestack: <ul><li>Pig Latin voor Pig-taken</li><li>HiveQL voor Hive-taken en SparkSQL</li></ul>        |
 

@@ -1,10 +1,10 @@
 ---
-title: Virtuele Linux-Machines in Azure implementeren | Microsoft Docs
-description: Klik hier voor meer informatie over het implementeren van virtuele Linux-machines in Azure voor het oplossen van problemen met SSH-verbinding.
+title: Linux Virtual Machines opnieuw implementeren in azure | Microsoft Docs
+description: Virtuele Linux-machines opnieuw implementeren in azure om problemen met SSH-verbindingen te verhelpen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 tags: azure-resource-manager,top-support-issue
 ms.assetid: e9530dd6-f5b0-4160-b36b-d75151d99eb7
 ms.service: virtual-machines-linux
@@ -13,33 +13,33 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: cffed7949eff63484c84f385510baa8cd4244958
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d8096a14bf2abc0b06b7ab7c3d340a313b1cd24c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710268"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057302"
 ---
-# <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>Linux virtuele machine naar de nieuwe Azure-knooppunt opnieuw implementeren
-Als u problemen bij het oplossen van problemen SSH te maken krijgt of toegang tot toepassingen op een Linux virtuele machine (VM) in Azure, de virtuele machine opnieuw te implementeren kan helpen. Wanneer u een virtuele machine opnieuw implementeren, wordt de virtuele machine verplaatst naar een nieuw knooppunt in de Azure-infrastructuur en vervolgens wordt gebruikt door deze terug op. Alle configuratie-opties en bijbehorende resources worden bewaard. Dit artikel ziet u hoe u een virtuele machine met behulp van Azure CLI of Azure portal opnieuw implementeren.
+# <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>Virtuele Linux-machine opnieuw implementeren naar een nieuw Azure-knoop punt
+Als u problemen ondervindt met het oplossen van problemen met SSH of toepassing op een virtuele Linux-machine (VM) in azure, is het mogelijk dat u de VM opnieuw implementeert. Wanneer u een virtuele machine opnieuw implementeert, wordt de virtuele machine verplaatst naar een nieuw knoop punt in de Azure-infra structuur en wordt deze vervolgens weer toegezonden. Alle configuratie opties en gekoppelde resources worden bewaard. In dit artikel wordt beschreven hoe u een VM opnieuw implementeert met behulp van Azure CLI of de Azure Portal.
 
 > [!NOTE]
-> Nadat u een virtuele machine opnieuw implementeren, is de tijdelijke schijf verloren en dynamische IP-adressen die zijn gekoppeld aan virtuele netwerkinterface worden bijgewerkt. 
+> Nadat u een virtuele machine opnieuw hebt geïmplementeerd, gaat de tijdelijke schijf verloren en worden dynamische IP-adressen die zijn gekoppeld aan de virtuele netwerk interface, bijgewerkt. 
 
 
 ## <a name="use-the-azure-cli"></a>Azure CLI gebruiken
-Installeer de meest recente [Azure CLI](/cli/azure/install-az-cli2) en aan te melden bij uw Azure-account met [az login](/cli/azure/reference-index).
+Installeer de nieuwste [Azure cli](/cli/azure/install-az-cli2) en meld u aan bij uw Azure-account met behulp van [AZ login](/cli/azure/reference-index).
 
-Opnieuw implementeren van uw virtuele machine met [az vm opnieuw implementeren](/cli/azure/vm). Het volgende voorbeeld implementeert de virtuele machine met de naam opnieuw *myVM* in de resourcegroep met de naam *myResourceGroup*:
+Implementeer uw VM opnieuw met [AZ VM redeploy](/cli/azure/vm). In het volgende voor beeld wordt de virtuele machine met de naam *myVM* in de resource groep met de naam *myResourceGroup*opnieuw geïmplementeerd:
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM 
 ```
 
-## <a name="use-the-azure-classic-cli"></a>Gebruik de klassieke Azure-CLI
-Installeer de [meest recente Azure klassieke CLI](../../cli-install-nodejs.md) en meld u aan bij uw Azure-account. Zorg ervoor dat u zich in Resource Manager-modus (`azure config mode arm`).
+## <a name="use-the-azure-classic-cli"></a>De klassieke Azure-CLI gebruiken
+Installeer de [nieuwste Azure Classic cli](../../cli-install-nodejs.md) en meld u aan bij uw Azure-account. Zorg ervoor dat u zich in de modus Resource Manager`azure config mode arm`() bevindt.
 
-Het volgende voorbeeld implementeert de virtuele machine met de naam opnieuw *myVM* in de resourcegroep met de naam *myResourceGroup*:
+In het volgende voor beeld wordt de virtuele machine met de naam *myVM* in de resource groep met de naam *myResourceGroup*opnieuw geïmplementeerd:
 
 ```azurecli
 azure vm redeploy --resource-group myResourceGroup --vm-name myVM 
@@ -48,6 +48,6 @@ azure vm redeploy --resource-group myResourceGroup --vm-name myVM
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Als u hebt met het maken van een verbinding met uw virtuele machine problemen, kunt u specifieke hulp vinden op [problemen met SSH-verbindingen oplossen](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) of [gedetailleerde stappen voor probleemoplossing SSH](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Als geen u toegang een toepassing die wordt uitgevoerd op de virtuele machine tot, u kunt ook lezen [toepassing oplossen van problemen met](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Als u problemen ondervindt met het verbinding maken met uw virtuele machine, vindt u specifieke hulp bij het [oplossen van problemen met ssh-verbindingen](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) of [gedetailleerde stappen](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor het oplossen van SSH. Als u geen toegang krijgt tot een toepassing die wordt uitgevoerd op uw virtuele machine, kunt u ook [problemen met het oplossen van toepassingen](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)lezen.
 
 

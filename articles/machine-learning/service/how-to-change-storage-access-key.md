@@ -1,7 +1,7 @@
 ---
 title: Toegangs sleutels voor opslag accounts wijzigen
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het wijzigen van de toegangs sleutels voor het Azure Storage-account dat wordt gebruikt door uw werk ruimte. Azure Machine Learning-service gebruikt een Azure Storage-account om gegevens en modellen op te slaan. Wanneer u de toegangs sleutel voor het opslag account opnieuw genereert, moet u de Azure Machine Learning-service bijwerken om de nieuwe sleutels te gebruiken.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het wijzigen van de toegangs sleutels voor het Azure Storage-account dat wordt gebruikt door uw werk ruimte. Azure Machine Learning gebruikt een Azure Storage-account om gegevens en modellen op te slaan. Wanneer u de toegangs sleutel voor het opslag account opnieuw genereert, moet u Azure Machine Learning bijwerken om de nieuwe sleutels te gebruiken.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,22 +10,22 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/16/2019
-ms.openlocfilehash: e386e34a8326a51753631ee9ea4215d01ba7ceb3
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 6c87d4553c7b0fd34513d761558a06cd527c4e3b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558223"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034956"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Toegangs sleutels voor het opslag account opnieuw genereren
 
-Meer informatie over het wijzigen van de toegangs sleutels voor Azure Storage accounts die worden gebruikt door de Azure Machine Learning-service. Azure Machine Learning kunt opslag accounts gebruiken om gegevens of getrainde modellen op te slaan.
+Meer informatie over het wijzigen van de toegangs sleutels voor Azure Storage accounts die worden gebruikt door Azure Machine Learning. Azure Machine Learning kunt opslag accounts gebruiken om gegevens of getrainde modellen op te slaan.
 
 Uit veiligheids overwegingen moet u de toegangs sleutels voor een Azure Storage-account mogelijk wijzigen. Wanneer u de toegangs sleutel opnieuw genereert, moet Azure Machine Learning worden bijgewerkt om de nieuwe sleutel te gebruiken. Azure Machine Learning maakt mogelijk gebruik van het opslag account voor zowel model opslag als een gegevens opslag.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een werkruimte van Azure Machine Learning-service. Zie het artikel [een werk ruimte maken](how-to-manage-workspace.md) voor meer informatie.
+* Een Azure Machine Learning-werkruimte. Zie het artikel [een werk ruimte maken](how-to-manage-workspace.md) voor meer informatie.
 
 * De [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
@@ -35,7 +35,7 @@ Uit veiligheids overwegingen moet u de toegangs sleutels voor een Azure Storage-
 
 ## <a name="what-needs-to-be-updated"></a>Wat moet worden bijgewerkt?
 
-Opslag accounts kunnen worden gebruikt door de Azure Machine Learning service-werk ruimte (het opslaan van Logboeken, modellen, moment opnamen, enzovoort) en als een gegevens opslag. Het proces voor het bijwerken van de werk ruimte is een enkele Azure CLI-opdracht en kan worden uitgevoerd na het bijwerken van de opslag sleutel. Het proces voor het bijwerken van gegevens opslag is meer betrokken en hiervoor is het vereist dat er wordt gedetecteerd welke data stores momenteel gebruikmaken van het opslag account en vervolgens opnieuw moeten worden geregistreerd.
+Opslag accounts kunnen worden gebruikt door de Azure Machine Learning-werk ruimte (logboeken, modellen, moment opnamen, enz.) en als gegevens opslag. Het proces voor het bijwerken van de werk ruimte is een enkele Azure CLI-opdracht en kan worden uitgevoerd na het bijwerken van de opslag sleutel. Het proces voor het bijwerken van gegevens opslag is meer betrokken en hiervoor is het vereist dat er wordt gedetecteerd welke data stores momenteel gebruikmaken van het opslag account en vervolgens opnieuw moeten worden geregistreerd.
 
 > [!IMPORTANT]
 > Werk de werk ruimte bij met behulp van de Azure CLI en de gegevens opslag in Python, op hetzelfde moment. Het bijwerken van de ene of de andere is niet voldoende en kan fouten veroorzaken totdat beide zijn bijgewerkt.
@@ -74,7 +74,7 @@ Als er een vermelding bestaat voor het opslag account dat u wilt gebruiken voor 
 
 ## <a name="update-the-access-key"></a>De toegangs sleutel bijwerken
 
-Voer de volgende stappen uit om Azure Machine Learning-service bij te werken voor het gebruik van de nieuwe sleutel:
+Gebruik de volgende stappen om Azure Machine Learning bij te werken voor het gebruik van de nieuwe sleutel:
 
 > [!IMPORTANT]
 > Voer alle stappen uit en werk de werk ruimte bij met behulp van de CLI en gegevens opslag met python. Het bijwerken van de ene of de andere kan fouten veroorzaken totdat beide zijn bijgewerkt.

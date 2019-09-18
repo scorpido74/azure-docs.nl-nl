@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 14aff313ece93feabc39194ba6859e3bca6be3bc
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 134ca92671a41eb53201101a3622215466a60c09
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622405"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065100"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Registratie instellen en aanmelden met een Microsoft-account met behulp van Azure Active Directory B2C
 
 ## <a name="create-a-microsoft-account-application"></a>Een Microsoft-account-toepassing maken
 
-Als u een Microsoft-account als een [ID-provider](active-directory-b2c-reference-oidc.md) wilt gebruiken in azure Active Directory (Azure AD) B2C, moet u een toepassing maken in de Azure AD-Tenant. De Azure AD-Tenant is niet hetzelfde als uw Azure AD B2C-Tenant. Als u nog geen Microsoft-account hebt, kunt u er een op [https://www.live.com/](https://www.live.com/)ontvangen.
+Als u een Microsoft-account als een [ID-provider](active-directory-b2c-reference-oidc.md) in Azure Active Directory B2C (Azure AD B2C) wilt gebruiken, moet u een toepassing maken in de Azure AD-Tenant. De Azure AD-Tenant is niet hetzelfde als uw Azure AD B2C-Tenant. Als u nog geen Microsoft-account hebt, kunt u er een op [https://www.live.com/](https://www.live.com/)ontvangen.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD-Tenant bevat.

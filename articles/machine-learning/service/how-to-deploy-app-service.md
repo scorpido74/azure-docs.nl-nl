@@ -1,7 +1,7 @@
 ---
 title: Ml-modellen implementeren op Azure App Service (preview-versie)
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de Azure Machine Learning-service voor het implementeren van een model in een web-app in Azure App Service.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van Azure Machine Learning voor het implementeren van een model in een web-app in Azure App Service.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,21 +10,21 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 20a90a70c66310f6838b41a40aa945308bf338d4
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 24ec49a0f23516638d1f525341ea44e204653fea
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147910"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034601"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Een machine learning model implementeren op Azure App Service (preview-versie)
 
-Meer informatie over het implementeren van een model van de Azure Machine Learning-service als een web-app in Azure App Service.
+Meer informatie over het implementeren van een model van Azure Machine Learning als een web-app in Azure App Service.
 
 > [!IMPORTANT]
-> Hoewel zowel Azure Machine Learning-service als Azure App Service algemeen beschikbaar zijn, is de mogelijkheid om een model van de Machine Learning-service naar App Service te implementeren, een preview-versie.
+> Hoewel zowel Azure Machine Learning als Azure App Service algemeen beschikbaar zijn, is de mogelijkheid om een model van de Machine Learning-service naar App Service te implementeren, een preview-versie.
 
-Met Azure Machine Learning-service kunt u docker-installatie kopieën maken op basis van getrainde machine learning modellen. Deze installatie kopie bevat een webservice waarmee gegevens worden ontvangen, naar het model worden verzonden en het antwoord vervolgens wordt geretourneerd. Azure App Service kan worden gebruikt om de installatie kopie te implementeren en biedt de volgende functies:
+Met Azure Machine Learning kunt u docker-installatie kopieën maken op basis van getrainde machine learning modellen. Deze installatie kopie bevat een webservice waarmee gegevens worden ontvangen, naar het model worden verzonden en het antwoord vervolgens wordt geretourneerd. Azure App Service kan worden gebruikt om de installatie kopie te implementeren en biedt de volgende functies:
 
 * Geavanceerde [verificatie](/azure/app-service/configure-authentication-provider-aad) voor verbeterde beveiliging. Verificatie methoden zijn zowel Azure Active Directory als multi-factor Authentication.
 * [Automatisch schalen](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json) zonder opnieuw te hoeven implementeren.
@@ -37,7 +37,7 @@ Zie [app service-overzicht](/azure/app-service/overview)voor meer informatie ove
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een werkruimte van Azure Machine Learning-service. Zie het artikel [een werk ruimte maken](how-to-manage-workspace.md) voor meer informatie.
+* Een Azure Machine Learning-werkruimte. Zie het artikel [een werk ruimte maken](how-to-manage-workspace.md) voor meer informatie.
 * De [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Een getraind machine learning model dat is geregistreerd in uw werk ruimte. Als u geen model hebt, gebruikt u de [zelf studie voor installatie kopie classificatie: Train model](tutorial-train-models-with-aml.md) om er een te trainen en te registreren.
 
@@ -48,7 +48,7 @@ Zie [app service-overzicht](/azure/app-service/overview)voor meer informatie ove
     > * `model`-Het geregistreerde model dat wordt geïmplementeerd.
     > * `inference_config`-De configuratie voor het afwachten van het model.
     >
-    > Zie [modellen implementeren met de Azure machine learning-service](how-to-deploy-and-where.md)voor meer informatie over het instellen van deze variabelen.
+    > Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over het instellen van deze variabelen.
 
 ## <a name="prepare-for-deployment"></a>Voorbereiden voor implementatie
 
@@ -66,14 +66,14 @@ Voordat u implementeert, moet u definiëren wat er nodig is om het model als een
     >
     > Een ander alternatief dat kan worden gebruikt voor uw scenario is [batch](how-to-run-batch-predictions.md)voorspellingen. Dit biedt ook toegang tot gegevens opslag in de score.
 
-    Zie [modellen implementeren met de Azure machine learning-service](how-to-deploy-and-where.md)voor meer informatie over invoer scripts.
+    Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over invoer scripts.
 
 * **Afhankelijkheden**, zoals hulp scripts of python/Conda-pakketten die zijn vereist voor het uitvoeren van het script of model van de vermelding
 
 Deze entiteiten worden ingekapseld in een Afleidings __configuratie__. De configuratie voor afwijzen verwijst naar het script voor de vermelding en andere afhankelijkheden.
 
 > [!IMPORTANT]
-> Wanneer u een configuratie voor afwijzen maakt voor gebruik met Azure App Service, moet u [](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) een omgevings object gebruiken. In het volgende voor beeld ziet u hoe u een omgevings object maakt en dit gebruikt met een configuratie voor ingaand gebruik:
+> Wanneer u een configuratie voor afwijzen maakt voor gebruik met Azure App Service, moet u een [omgevings](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) object gebruiken. In het volgende voor beeld ziet u hoe u een omgevings object maakt en dit gebruikt met een configuratie voor ingaand gebruik:
 >
 > ```python
 > from azureml.core import Environment
@@ -89,7 +89,7 @@ Deze entiteiten worden ingekapseld in een Afleidings __configuratie__. De config
 
 Zie [omgevingen maken en beheren voor training en implementatie](how-to-use-environments.md)voor meer informatie over omgevingen.
 
-Zie [modellen implementeren met de Azure machine learning-service](how-to-deploy-and-where.md)voor meer informatie over het afnemen van de configuratie.
+Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over het afnemen van de configuratie.
 
 > [!IMPORTANT]
 > Wanneer u naar Azure App Service implementeert, hoeft u geen __implementatie configuratie__te maken.
@@ -99,7 +99,7 @@ Zie [modellen implementeren met de Azure machine learning-service](how-to-deploy
 Als u de docker-installatie kopie wilt maken die is geïmplementeerd op Azure App Service, gebruikt u [model. package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-). Het volgende code fragment laat zien hoe u een nieuwe installatie kopie kunt bouwen op basis van het model en de configuratie voor het afwijzen van de afleiding:
 
 > [!NOTE]
-> In het code fragment wordt ervan `model` uitgegaan dat het een geregistreerd model `inference_config` bevat en dat de configuratie voor de afnemende omgeving bevat. Zie [modellen implementeren met de Azure machine learning-service](how-to-deploy-and-where.md)voor meer informatie.
+> In het code fragment wordt ervan `model` uitgegaan dat het een geregistreerd model `inference_config` bevat en dat de configuratie voor de afnemende omgeving bevat. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie.
 
 ```python
 from azureml.core import Model
@@ -153,7 +153,7 @@ Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegev
     In dit voor beeld wordt een __basis__ prijs categorie`--sku B1`() gebruikt.
 
     > [!IMPORTANT]
-    > Voor installatie kopieën die door de Azure machine learning-service zijn gemaakt, wordt Linux `--is-linux` gebruikt. u moet dus de para meter gebruiken.
+    > Installatie kopieën die zijn gemaakt door Azure machine learning Linux gebruiken, dus u `--is-linux` moet de para meter gebruiken.
 
 1. Gebruik de volgende opdracht om de web-app te maken. Vervang `<app-name>` door de naam die u wilt gebruiken. Vervang `<acrinstance>` `package.location` en `<imagename>` door de waarden die eerder zijn geretourneerd:
 

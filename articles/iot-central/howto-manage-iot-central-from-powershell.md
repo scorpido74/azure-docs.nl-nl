@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 85afb69a7656e96e2f7163ded5cb23ac1b2560ea
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: e91d2d487a8b3409c53a0a0731700c39cf56dd63
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70380972"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066360"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>IoT Central beheren vanuit Azure PowerShell
 
@@ -66,7 +66,7 @@ Het script maakt eerst een resource groep in de regio VS-Oost voor de toepassing
 |Parameter         |Description |
 |------------------|------------|
 |ResourceGroupName |De resource groep die de toepassing bevat. Deze resource groep moet al bestaan in uw abonnement. |
-|Location |Deze cmdlet gebruikt standaard de locatie van de resource groep. Op dit moment kunt u een IoT Central-toepassing maken in de regio's **VS-Oost**, VS- **West**, **Europa-Noord**of **Europa-West** . |
+|Location |Deze cmdlet gebruikt standaard de locatie van de resource groep. Op dit moment kunt u een IoT Central-toepassing maken in de regio **VS-Oost**, VS- **West**, **Europa-Noord**of **Europa-West** regio's of in het **Australia** -geografie. |
 |Name              |De naam van de toepassing in de Azure Portal. |
 |Subdomein         |Het subdomein in de URL van de toepassing. In het voor beeld is https://mysubdomain.azureiotcentral.com de URL van de toepassing. |
 |Sku               |Op dit moment is de enige waarde **S1** (Standard-laag). Zie [prijzen voor Azure IOT Central](https://azure.microsoft.com/pricing/details/iot-central/). |

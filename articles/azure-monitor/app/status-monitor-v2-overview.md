@@ -3,21 +3,21 @@ title: Overzicht van Azure Status Monitor v2 | Microsoft Docs
 description: Een overzicht van Status Monitor v2. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 09/16/2019
 ms.author: tilee
-ms.openlocfilehash: 0264cf3a972c35edb3ad6dc600ca39bdaa076dfd
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 3060659c5f870be60f1ac02e432dd0a8333f0900
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333683"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057839"
 ---
 # <a name="status-monitor-v2"></a>Status Monitor v2
 
@@ -59,7 +59,15 @@ Status Monitor v2 bevindt zich https://www.powershellgallery.com/packages/Az.App
   *Ja*. Er zijn meerdere manieren om Status Monitor v2 te downloaden. Als uw computer toegang heeft tot internet, kunt u de PowerShell Gallery onboarden `-Proxy` met behulp van para meters.
 U kunt de module ook hand matig downloaden en installeren op uw computer of rechtstreeks gebruiken.
 Elk van deze opties wordt beschreven in de [gedetailleerde instructies](status-monitor-v2-detailed-instructions.md).
+
+- Ondersteunt Status Monitor v2 ASP.NET Core toepassingen?
+
+  *Nee*. Zie [Application Insights voor ASP.net core toepassingen](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)voor instructies om de bewaking van ASP.net core-toepassingen in te scha kelen. Het is niet nodig om StatusMonitor te installeren voor een ASP.NET Core-toepassing. Dit geldt ook als ASP.NET Core toepassing wordt gehost in IIS.
   
+Ondersteunt Status Monitor v2 ASP.NET Core toepassingen? 
+
+  *Nee*. Volg [deze](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) instructies om bewaking in te scha kelen voor ASP.net core toepassingen. Het is niet nodig om StatusMonitor te installeren voor een ASP.NET Core-toepassing. Dit geldt ook als ASP.NET Core toepassing wordt gehost in IIS.
+
 - Hoe kan ik controleren of de activering is geslaagd?
 
   - De cmdlet [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) kan worden gebruikt om te controleren of de activering is geslaagd.

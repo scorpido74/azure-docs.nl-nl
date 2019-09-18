@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b7d09ebd9c6ef04aff4d750024216b51513c3cca
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 44a0b8fe56477620c0ac47d5c5de8830dac46214
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576821"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037474"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Uw virtuele CloudSimple-Cloud machines beheren in azure
 
-Als u de virtuele machines die u hebt [gemaakt voor uw CloudSimple-privécloud](azure-create-vm.md)wilt beheren, meldt u zich aan bij de [Azure Portal](http://portal.azure.com). Zoek en selecteer de virtuele server (Zoek in **alle services** of **virtual machines** in het menu aan de zijkant).
+Als u de virtuele machines die u hebt [gemaakt voor uw CloudSimple-privécloud](azure-create-vm.md)wilt beheren, meldt u zich aan bij de [Azure Portal](https://portal.azure.com). Zoek en selecteer de virtuele server (Zoek in **alle services** of **virtual machines** in het menu aan de zijkant).
 
 ## <a name="control-virtual-machine-operation"></a>Bewerking van virtuele machine beheren
 

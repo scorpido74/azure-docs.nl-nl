@@ -10,16 +10,16 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ca9d8a8373bd73d527862864d436319eb45b5f48
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ca636079439f811a887d16b627473e7d73930799
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227171"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065696"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Wat is Azure Active Directory B2C?
 
-Azure Active Directory (Azure AD) B2C is een identiteits beheer service van Business-to-consumer. Met deze service kunt u aanpassen en beheren hoe gebruikers veilig kunnen omgaan met uw web-, bureaublad- en mobiele toepassingen of toepassingen met één pagina. Met Azure AD B2C kunnen gebruikers zich registreren, aanmelden, kunnen ze wachtwoorden herstellen en profielen bewerken. In Azure AD B2C is een formulier geïmplementeerd van de OpenID Connect- en OAuth 2.0-protocollen. De belangrijke sleutel in de implementatie van deze protocollen wordt gevormd door de beveiligingstokens en de bijbehorende claims waarmee u veilige toegang hebt tot resources.
+Azure Active Directory B2C (Azure AD B2C) is een identiteits beheer service van Business-to-consumer. Met deze service kunt u aanpassen en beheren hoe gebruikers veilig kunnen omgaan met uw web-, bureaublad- en mobiele toepassingen of toepassingen met één pagina. Met Azure AD B2C kunnen gebruikers zich registreren, aanmelden, kunnen ze wachtwoorden herstellen en profielen bewerken. In Azure AD B2C is een formulier geïmplementeerd van de OpenID Connect- en OAuth 2.0-protocollen. De belangrijke sleutel in de implementatie van deze protocollen wordt gevormd door de beveiligingstokens en de bijbehorende claims waarmee u veilige toegang hebt tot resources.
 
 Een *gebruikersbeleving* is een aanvraag waarmee een beleid wordt opgegeven dat het gedrag controleert van de wijze waarop de gebruiker en uw toepassing met Azure AD B2C omgaan. Er zijn twee paden beschikbaar voor het definiëren van gebruikersbelevingen in Azure AD B2C.
 
@@ -119,7 +119,7 @@ Als u een ontwikkelaar van bureaubladtoepassingen bent, kunt u uw toepassing ins
 
 Als u een ontwikkelaar van toepassingen met één pagina bent, kunt u uw toepassing instellen voor het verifiëren van accounts met behulp van de stappen in [Zelfstudie: toegang verlenen aan een web-API van ASP.NET Core vanuit een toepassing met één pagina met behulp van Azure Active Directory B2C](active-directory-b2c-tutorials-spa-webapi.md).
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 
 U kunt uw eigen JavaScript-code aan de clientzijde toevoegen aan uw toepassingen in Azure AD B2C. Als u Java script wilt instellen in uw toepassing, definieert u een [pagina-indeling](page-layout.md) en schakelt u [Java script](javascript-samples.md) in uw gebruikers stromen of aangepast beleid in.
 

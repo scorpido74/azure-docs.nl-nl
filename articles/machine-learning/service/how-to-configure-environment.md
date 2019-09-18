@@ -1,7 +1,7 @@
 ---
 title: Een python-ontwikkel omgeving instellen
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het configureren van een ontwikkel omgeving wanneer u met de Azure Machine Learning-service werkt. In dit artikel vindt u informatie over het gebruik van Conda-omgevingen, het maken van configuratie bestanden en het configureren van uw eigen cloud-gebaseerde Notebook server, Jupyter-notebooks, Azure Databricks, Ide's, code editors en de Data Science Virtual Machine.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het configureren van een ontwikkel omgeving wanneer u werkt met Azure Machine Learning. In dit artikel vindt u informatie over het gebruik van Conda-omgevingen, het maken van configuratie bestanden en het configureren van uw eigen cloud-gebaseerde Notebook server, Jupyter-notebooks, Azure Databricks, Ide's, code editors en de Data Science Virtual Machine.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,16 +11,16 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 39daff8be5ac072479463dc10c9041cda6b7b628
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 933ae5b70d8e0485360a94ede1fff99c02f75a4c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860574"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034877"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Een ontwikkelomgeving configureren voor Azure Machine Learning
 
-In dit artikel leert u hoe u een ontwikkel omgeving kunt configureren om met Azure Machine Learning-service te werken. Azure Machine Learning-service is platform neutraal. De enige harde vereiste voor uw ontwikkel omgeving is python 3. Een geïsoleerde omgeving zoals Anaconda of virtualenv wordt ook aanbevolen.
+In dit artikel leert u hoe u een ontwikkel omgeving kunt configureren om met Azure Machine Learning te werken. Azure Machine Learning is platform neutraal. De enige harde vereiste voor uw ontwikkel omgeving is python 3. Een geïsoleerde omgeving zoals Anaconda of virtualenv wordt ook aanbevolen.
 
 In de volgende tabel ziet u elke ontwikkel omgeving die in dit artikel wordt behandeld, samen met de voor-en nadelen.
 
@@ -40,7 +40,7 @@ Dit artikel bevat ook extra tips voor het gebruik van de volgende hulpprogram ma
 
 ## <a name="prerequisites"></a>Vereisten
 
-Een werkruimte van Azure Machine Learning-service. Zie [een Azure machine learning service werkruimte maken](how-to-manage-workspace.md)om de werk ruimte te maken. Een werk ruimte is alles wat u nodig hebt om aan de slag te gaan met uw eigen [cloud-gebaseerde Notebook server](#notebookvm), een [DSVM](#dsvm)of [Azure Databricks](#aml-databricks).
+Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md)voor het maken van de werk ruimte. Een werk ruimte is alles wat u nodig hebt om aan de slag te gaan met uw eigen [cloud-gebaseerde Notebook server](#notebookvm), een [DSVM](#dsvm)of [Azure Databricks](#aml-databricks).
 
 Als u de SDK-omgeving voor uw [lokale computer](#local)wilt installeren, [Jupyter notebook server](#jupyter) of [Visual Studio code](#vscode) die u ook nodig hebt:
 
@@ -70,7 +70,7 @@ De VM van het notebook is:
   + Een keuze uit een diep gaande lessen
 
 
-  Als u in code werkt, bevat de virtuele machine zelf studies en voor beelden om u te helpen te verkennen en hoe u Azure Machine Learning-service kunt gebruiken. De voorbeeld notitieblokken worden opgeslagen in het Azure Blob Storage-account van uw werk ruimte zodat ze kunnen worden gedeeld via Vm's. Wanneer ze worden uitgevoerd, hebben ze ook toegang tot de gegevens archieven en reken resources van uw werk ruimte.
+  Als u code gebruikt, bevat de virtuele machine zelf studies en voor beelden om u te helpen verkennen en te leren hoe u Azure Machine Learning kunt gebruiken. De voorbeeld notitieblokken worden opgeslagen in het Azure Blob Storage-account van uw werk ruimte zodat ze kunnen worden gedeeld via Vm's. Wanneer ze worden uitgevoerd, hebben ze ook toegang tot de gegevens archieven en reken resources van uw werk ruimte.
 
 + **Eenvoudige installatie**: Maak een wille keurig moment in uw Azure Machine Learning-werk ruimte. Geef een naam op en geef een Azure VM-type op. Probeer het nu met deze [zelf studie: Omgeving en werk ruimte](tutorial-1st-experiment-sdk-setup.md)instellen.
 
@@ -145,7 +145,7 @@ Ga als volgt te werk om de DSVM te gebruiken als een ontwikkel omgeving:
     print(azureml.core.VERSION)
     ```
 
-1. Zie de sectie [een configuratie bestand voor een werk ruimte maken](#workspace) om de DSVM te configureren voor het gebruik van uw Azure machine learning service-werk ruimte.
+1. Zie de sectie [een configuratie bestand voor een werk ruimte maken](#workspace) om de DSVM te configureren voor het gebruik van uw Azure machine learning-werk ruimte.
 
 Zie [Data Science virtual machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)voor meer informatie.
 
@@ -255,7 +255,7 @@ De procedure in de sectie [lokale computer](#local) installeert de vereiste onde
     sys.path
     ```
     
-1. Als u de Jupyter Notebook wilt configureren voor het gebruik van uw Azure Machine Learning service-werk ruimte, gaat u naar de sectie [een werkruimte configuratie bestand maken](#workspace) .
+1. Als u de Jupyter Notebook wilt configureren voor het gebruik van uw Azure Machine Learning-werk ruimte, gaat u naar de sectie [een werkruimte configuratie bestand maken](#workspace) .
 
 
 ### <a id="vscode"></a>Visual Studio Code
@@ -287,7 +287,7 @@ Ga als volgt te werk om Visual Studio code te gebruiken voor ontwikkeling:
 ## <a name="azure-databricks"></a>Azure Databricks
 Azure Databricks is een op Apache Spark gebaseerde omgeving in de Azure-Cloud. Het biedt een samen werkende notebook omgeving met een CPU of een reken cluster op basis van GPU.
 
-Hoe Azure Databricks werkt met Azure Machine Learning-service:
+Hoe Azure Databricks met Azure Machine Learning werkt:
 + U kunt een model trainen met Spark MLlib en het model implementeren naar ACI/AKS in Azure Databricks.
 + U kunt ook gebruikmaken van [geautomatiseerde machine learning](concept-automated-ml.md) mogelijkheden in een speciale Azure ml SDK met Azure Databricks.
 + U kunt Azure Databricks als een reken doel van een [Azure machine learning pijp lijn](concept-ml-pipelines.md)gebruiken.
@@ -355,7 +355,7 @@ Uitproberen:
 
 ## <a id="workspace"></a>Het configuratiebestand van een werkruimte maken
 
-Het configuratie bestand van de werk ruimte is een JSON-bestand dat laat zien hoe de SDK communiceert met uw Azure Machine Learning service-werk ruimte. Het bestand heeft de naam *config. json*en heeft de volgende indeling:
+Het configuratie bestand van de werk ruimte is een JSON-bestand dat de SDK vertelt hoe er met uw Azure Machine Learning-werk ruimte moet worden gecommuniceerd. Het bestand heeft de naam *config. json*en heeft de volgende indeling:
 
 ```json
 {

@@ -15,12 +15,12 @@ ms.date: 02/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: be37768a5cef38ae0dc49e12f1d83ba8005ab961
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: e9ce71f12d50aa414579e5fc7c2961156965a337
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194171"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037528"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Klassieke abonnementsbeheerdersrollen, Azure RBAC-rollen en Azure AD-beheerdersrollen
 
@@ -112,7 +112,7 @@ In algemene zin worden Azure RBAC-rollen gebruikt voor het beheren van Azure-res
 | Azure RBAC-rollen | Azure AD-beheerdersrollen |
 | --- | --- |
 | Toegang tot Azure-resources beheren | Toegang tot Azure Active Directory-resources beheren |
-| Ondersteuning voor aangepaste rollen | Eigen rollen maken is niet mogelijk |
+| Ondersteuning voor aangepaste rollen | Ondersteuning voor aangepaste rollen |
 | Bereik kan worden opgegeven op meerdere niveaus (beheergroep, abonnement, resourcegroep, resource) | Bereik is op tenantniveau |
 | Gegevens van rollen zijn beschikbaar vanuit Azure Portal, Azure CLI, Azure PowerShell, Azure Resource Manager-sjablonen en de REST-API | U kunt toegang krijgen tot de functie gegevens in de Azure-beheer Portal, Microsoft 365 beheer centrum, Microsoft Graph, AzureAD Power shell |
 

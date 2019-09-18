@@ -1,20 +1,20 @@
 ---
-title: Een persoonlijk Azure-eind punt maken met behulp van Azure Portal | Microsoft Docs
-description: Meer informatie over Azure persoonlijk eind punt
+title: Privé verbinding maken met een opslag account met behulp van een persoonlijk Azure-eind punt
+description: Meer informatie over hoe u persoonlijke verbinding kunt maken met een opslag account in azure met behulp van een persoonlijk eind punt.
 services: virtual-network
 author: KumudD
 ms.service: virtual-network
-ms.topic: quickstart
+ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 8a569f91a27884c320f4af5b1282bfe4dd9a5a99
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
-ms.translationtype: MT
+ms.openlocfilehash: 93ca3c8c4b7a4da0387d1302b301cf677b689281
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018944"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074979"
 ---
-# <a name="create-a-private-endpoint-using-the-azure-portal"></a>Een persoonlijk eind punt maken met behulp van de Azure Portal
+# <a name="connect-privately-to-a-storage-account-using-an-azure-private-endpoint"></a>Privé verbinding maken met een opslag account met behulp van een persoonlijk Azure-eind punt
 Persoonlijk Azure-eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hierdoor kunnen Azure-resources, zoals virtuele machines (Vm's), privé communiceren met persoonlijke koppelings bronnen.
 
 In deze Quick Start leert u hoe u een virtuele machine maakt in een virtueel Azure-netwerk, een opslag account met een persoonlijk eind punt met behulp van de Azure Portal. Daarna kunt u veilig toegang krijgen tot het opslag account via de VM.

@@ -8,19 +8,19 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3ad2372f9a9f90e4502b304a08477771fd6ef385
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0e019a9229b671be2fb73e758bd39f33657bc2d4
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880382"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037431"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>CloudSimple Private Cloud instellen als een nood herstel site voor on-premises VMware-workloads
 
 Uw CloudSimple-Privécloud kan worden ingesteld als een herstel site voor on-premises toepassingen om bedrijfs continuïteit te bieden in het geval van een ramp. De herstel oplossing is gebaseerd op Zerto virtuele replicatie als het replicatie-en Orchestration-platform. Kritieke infra structuur en toepassings-virtuele machines kunnen doorlopend worden gerepliceerd van uw on-premises vCenter naar uw Privécloud. U kunt uw Privécloud gebruiken voor het testen van de failover en om de beschik baarheid van uw toepassing tijdens een nood geval te garanderen. Een soort gelijke aanpak kan worden gevolgd om de Privécloud in te stellen als een primaire site die wordt beveiligd door een herstel site op een andere locatie.
 
 > [!NOTE]
-> Raadpleeg de Zerto van de document [grootte voor Zerto Virtual Replication](http://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf) voor richt lijnen over het aanpassen van de grootte van uw omgeving voor herstel na nood gevallen.
+> Raadpleeg de Zerto van de document [grootte voor Zerto Virtual Replication](https://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf) voor richt lijnen over het aanpassen van de grootte van uw omgeving voor herstel na nood gevallen.
 
 De CloudSimple-oplossing:
 

@@ -1,6 +1,6 @@
 ---
-title: Gebruik van Azure met Azure facturerings-API's ophalen | Microsoft Docs
-description: Meer informatie over Azure Billing gebruiks- en RateCard APIs's die worden gebruikt voor het bieden van inzicht in het gebruik van Azure-resources en trends.
+title: Azure-gebruik met Azure Billing-API's | Microsoft Docs
+description: Informatie over Azure Billing Usage en RateCard-API's, die worden gebruikt om inzicht te krijgen in het gebruik en trends van Azure-resources.
 services: ''
 documentationcenter: ''
 author: tonguyen
@@ -17,50 +17,50 @@ ms.date: 5/10/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 4756c7abcb354e0b72c8a95c9d2df4bb3a14671a
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68443026"
 ---
-# <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure facturerings-API's gebruiken om via een programma inzicht uw gebruik van Azure
-Gebruik Azure facturering API's voor pull-gebruik en de resource-gegevens in uw favoriete hulpprogramma's voor gegevensanalyse. De Azure Resource Usage- en RateCard-API’s kunnen u helpen uw kosten nauwkeurig te voorspellen en te beheren. De API's worden geïmplementeerd als een Resource Provider en een deel van de API's beschikbaar gemaakt door de Azure Resource Manager-familie.  
+# <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Gebruik Azure Billing-API's voor het op programmatische wijze verkrijgen van inzicht in uw gebruik van Azure
+Gebruik Azure Billing-API's voor het opnemen van gebruiks- en resourcegegevens in uw favoriete hulpprogramma's voor gegevensanalyse. De Azure Resource Usage- en RateCard-API’s kunnen u helpen uw kosten nauwkeurig te voorspellen en te beheren. De API's worden geïmplementeerd als resourceprovider en maken deel uit van de API-familie die beschikbaar wordt gesteld door Azure Resource Manager.  
 
-## <a name="azure-invoice-download-api-preview"></a>API voor Azure-facturen downloaden (Preview)
-Zodra de [aanmelden is voltooid](billing-manage-access.md#opt-in), downloaden van facturen met behulp van de preview-versie van [factuur API](/rest/api/billing). De functies zijn onder andere:
+## <a name="azure-invoice-download-api-preview"></a>API Azure-factuur downloaden (preview)
+Nadat het [aanmelden is voltooid](billing-manage-access.md#opt-in), kunt u facturen downloaden met behulp van de preview-versie van de [Factuur-API](/rest/api/billing). De functies zijn onder andere:
 
-* **Azure Role-based Access Control** -configureren toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/overview) om op te geven welke gebruikers of toepassingen toegang tot krijgen kunnen de gegevens over het gebruik van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. De oproepende functie toevoegen aan de factureren voor lezer, lezer, eigenaar, Inzender rol of toegang krijgen tot gegevens over gebruik voor een specifieke Azure-abonnement.
-* **Datum filteren** -gebruik de `$filter` parameter om op te halen van alle facturen in omgekeerde volgorde door de einddatum van de factuur.
+* **Op rollen gebaseerd toegangsbeheer van Azure**: configureer toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/overview) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Facturering voor lezer, Lezer, Eigenaar of Bijdrager om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
+* **Datumfilters**: gebruik de parameter `$filter` om alle facturen in omgekeerde chronologische volgorde op te halen op basis van de einddatum van de factuurperiode.
 
 > [!NOTE]
-> Deze functie is in eerste versie van de Preview-versie en zijn mogelijk onderhevig aan wijzigingen achterwaarts compatibel. Het is momenteel niet beschikbaar voor bepaalde abonnementaanbiedingen (EA, CSP, AIO niet ondersteund) en Azure Duitsland.
+> Deze functie bevindt zich in de eerste preview-versie. Mogelijk worden er wijzigingen doorgevoerd die niet achterwaarts compatibel zijn. De functie is momenteel niet beschikbaar voor bepaalde abonnementstypen (EA, CSP en AIO worden niet ondersteund) en voor Azure Duitsland.
 
-## <a name="azure-resource-usage-api-preview"></a>Azure Resourcegebruik-API (Preview)
-Gebruik de Azure [Resource Usage API](/previous-versions/azure/reference/mt219003(v=azure.100)) om uw geschatte Azure-verbruik-gegevens. De API omvat:
+## <a name="azure-resource-usage-api-preview"></a>Azure-resourcegebruik-API (preview)
+Gebruik de [Azure-resourcegebruik-API](/previous-versions/azure/reference/mt219003(v=azure.100)) om geschatte gegevens over het Azure-gebruik op te halen. De API omvat:
 
-* **Azure Role-based Access Control** -configureren toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/overview) om op te geven welke gebruikers of toepassingen toegang tot krijgen kunnen de gegevens over het gebruik van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. De oproepende functie toevoegen aan de factureren voor lezer, lezer, eigenaar, Inzender rol of toegang krijgen tot gegevens over gebruik voor een specifieke Azure-abonnement.
-* **Elk uur of dagelijks aggregaties** - aanroepers kunnen opgeven of ze hun gebruik van Azure-gegevens wilt per uur duurbuckets of dagelijks tijdsintervallen. De standaardwaarde is dagelijks.
-* **Metagegevens van het exemplaar (met inbegrip van resourcetags)** – informatie zoals de volledig gekwalificeerde resource-uri op exemplaarniveau krijgen (/subscriptions/ {abonnement-id} /...), wordt de informatie over resource en resourcetags. Deze metagegevens kunt u via een programma heel deterministisch en gebruik toewijzen door de labels voor use cases als cross-kosten in rekening gebracht.
-* **De resource metagegevens** -Resourcedetails zoals meternaam, metercategorie, subcategorie van de meter, eenheid en regio geven de aanroeper een beter begrip van wat is verbruikt. We werken ook om te worden uitgelijnd resource metagegevens terminologie voor Azure portal, Azure-gebruik CSV, EA facturering CSV en andere openbare-ervaringen, zodat u gegevens correleren met ervaringen.
-* **Gebruik voor andere typen** – gebruiksgegevens is beschikbaar voor de aanbiedingstypen zoals betalen per gebruik, MSDN, monetaire toezegging, financieel tegoed en EA, met uitzondering van [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-invoice#retrieve-usage-data-for-a-specific-subscription).
+* **Op rollen gebaseerd toegangsbeheer van Azure**: configureer toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/overview) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Facturering voor lezer, Lezer, Eigenaar of Bijdrager om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
+* **Aggregaties per uur of per dag**: aanroepers kunnen opgeven of ze hun Azure-gebruiksgegevens in buckets per uur of per dag willen. De standaardinstelling is per dag.
+* **Metagegevens van exemplaren (inclusief resourcetags**): haal details op exemplaarniveau op, zoals de volledig gekwalificeerde resource-URI (/subscriptions/{subscription-id}/..), informatie over de resourcegroep en resourcetags. Deze metagegevens helpen u op een deterministische en programmatische manier gebruik toe te wijzen aan de tags, bijvoorbeeld voor kostendoorrekeningen.
+* **Metagegevens van resources**: resourcegegevens zoals de naam, categorie en subcategorie van de meter, eenheid en regio geven de aanroeper een beter inzicht in wat er is verbruikt. We werken ook aan het gelijktrekken van de terminologie voor resourcemetagegevens in de Azure-portal, CSV voor Azure-gebruik, EA Billing CSV en andere openbare ervaringen, zodat u gegevens in verschillende ervaringen kunt correleren.
+* **Gebruik voor verschillende aanbiedingstypen**: gebruiksgegevens zijn beschikbaar voor aanbiedingstypen zoals betalen naar gebruik, MSDN, monetaire toezegging, geldtegoed en EA, met uitzondering van [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-invoice#retrieve-usage-data-for-a-specific-subscription).
 
-## <a name="azure-resource-ratecard-api-preview"></a>Azure-Resource RateCard API (Preview)
-Gebruik de [RateCard API van Azure Resource](/previous-versions/azure/reference/mt219005(v=azure.100)) om op te halen van de lijst met beschikbare Azure-resources en de geschatte informatie over de prijzen voor elk. De API omvat:
+## <a name="azure-resource-ratecard-api-preview"></a>Azure-resource-RateCard-API (preview)
+Gebruik de[Azure Resource RateCard-API](/previous-versions/azure/reference/mt219005(v=azure.100)) om een lijst met beschikbare Azure-resources op te halen, evenals geschatte prijsinformatie voor elke resource. De API omvat:
 
-* **Azure Role-based Access Control** -het-beleid configureren op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/overview) om op te geven welke gebruikers of toepassingen toegang tot krijgen kunnen de RateCard-gegevens. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. De oproepende functie toevoegen aan de lezer, de eigenaar of Inzender rol toegang krijgen tot gegevens over gebruik voor een bepaald Azure-abonnement.
-* **Ondersteuning voor betalen per gebruik, MSDN, monetaire toezegging en monetaire creditaanbiedingen (EA en [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-pricelist#get-prices-by-using-the-azure-rate-card) niet ondersteund)** -deze API biedt Azure-aanbieding op serverniveau snelheid informatie.  De aanroeper van deze API moet doorgeven in de informatie over de aanbieding om details van de resource en tarieven te verkrijgen. We zijn momenteel niet voor EA-tarieven omdat EA-aanbiedingen tarieven per inschrijving hebt aangepast.
+* **Op rollen gebaseerd toegangsbeheer van Azure**: configureer uw toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/overview) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de RateCard-gegevens. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer, Eigenaar of Bijdrager om toegang te krijgen tot de gebruiksgegevens voor een bepaald Azure-abonnement.
+* **Ondersteuning voor de aanbiedingstypen betalen per gebruik, MSDN, monetaire toezegging en geldtegoed (EA en [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-pricelist#get-prices-by-using-the-azure-rate-card) worden niet ondersteund)** : deze API biedt informatie over de tarieven voor Azure.  De aanroeper van deze API moet de aanbiedingsgegevens invoeren om de resourcedetails en-tarieven op te halen. We kunnen momenteel geen EA-tarieven verstrekken omdat EA-aanbiedingen aangepaste tarieven per inschrijving hebben.
 
 ## <a name="scenarios"></a>Scenario's
-Hier volgen enkele van de scenario's die zijn aangebracht mogelijk is met de combinatie van het gebruik en de APIs RateCard:
+Hier volgen enkele van de scenario's die mogelijk worden gemaakt met de combinatie van de gebruiks- en de RateCard-API:
 
-* **Azure-uitgaven gedurende de maand** - gebruik van de combinatie van het gebruik en RateCard-APIs beter inzicht krijgt in uw cloud uitgaven gedurende de maand. U kunt de buckets per uur en dagelijkse gebruik en kosten schattingen analyseren.
-* **Waarschuwingen instellen** : het gebruik en de APIs RateCard gebruiken voor het ophalen van de geschatte cloudverbruik en kosten in rekening gebracht en waarschuwingen op basis van een resource of monetaire op basis van instellen.
-* **Factuur voorspellen** – Get uw geschatte verbruik en de cloud besteden en machine learning-algoritmen om te voorspellen wat de factuur is aan het einde van de factureringscyclus van toepassing.
-* **Vooraf verbruikskosten analysis** – de RateCard API gebruiken om te voorspellen hoeveel uw factuur zou zijn voor uw verwachte gebruik wanneer u uw werkbelastingen naar Azure verplaatsen. Als u bestaande workloads in andere clouds en privéclouds hebt, kunt u ook uw gebruik met de Azure toewijzen tarieven voor een betere schatting van de Azure-uitgaven. Deze schatting biedt u de mogelijkheid om terug te draaien op de aanbieding, en vergelijk en Maak onderscheid tussen de verschillende aanbiedingstypen dan betalen per gebruik, zoals monetaire toezegging en financieel tegoed. De API is ook biedt u de mogelijkheid om te zien van kostenverschillen per regio en kunt u een wat-als kostenanalyse zodat u implementatie beslissingen kunt komen.
-* **Wat als-analyse** -
+* **Azure-uitgaven gedurende de maand**: gebruik de combinatie van de API's voor gebruik en RateCard om in de loop van de maand beter inzicht te krijgen in uw clouduitgaven. U kunt het gebruik en de kostenramingen per uur en per dag analyseren.
+* **Waarschuwingen instellen**: gebruik de API's voor gebruik en RateCard om het geschatte cloudverbruik en de bijbehorende kosten te verkrijgen en stel waarschuwingen in op basis van resources of geld.
+* **Factuurvoorspelling**: ontvang het geschatte verbruik en de clouduitgaven en pas machine learning-algoritmen toe om de hoogte van de factuur aan het einde van de factureringscyclus te voorspellen.
+* **Kostenanalyse vóór verbruik**: gebruik de RateCard-API om te voorspellen hoe hoog uw factuur voor uw verwachte gebruik zou zijn wanneer u uw workloads naar Azure verplaatst. Als u bestaande workloads in andere clouds of particuliere clouds hebt, kunt u uw gebruik ook toewijzen aan de Azure-tarieven om een betere schatting te krijgen van de uitgaven met Azure. Met deze schatting kunt u gebruikmaken van aanbiedingen en de verschillende typen aanbiedingen vergelijken naast buiten betalen per gebruik, zoals monetaire toezegging en geldtegoed. Met de API kunt u ook de kostenverschillen per regio bekijken en een wat-als-kostenanalyse uitvoeren om u te helpen bij het nemen van de juiste beslissingen voor een implementatie.
+* **Wat-als-analyse** -
 
-  * U kunt bepalen of deze rendabeler voor het uitvoeren van workloads in een andere regio, of op een andere configuratie van de Azure-resource is. Kosten voor Azure-resource kunnen verschillen op basis van de Azure-regio u.
-  * U kunt ook bepalen als een ander Azure-aanbiedingtype resulteert in een betere rentabiliteit op een Azure-resource.
+  * U kunt bepalen of het rendabeler is om workloads uit te voeren in een andere regio of met een andere configuratie van de Azure-resource. Kosten voor Azure-resources kunnen verschillen afhankelijk van de Azure-regio die u gebruikt.
+  * U kunt ook bepalen of een ander Azure-aanbiedingstype een beter tarief voor een Azure-resource biedt.
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -71,4 +71,4 @@ Hier volgen enkele van de scenario's die zijn aangebracht mogelijk is met de com
 
   * [Codevoorbeeld RateCard API](https://github.com/Azure-Samples/billing-dotnet-ratecard-api)
 
-* Zie voor meer informatie over de Azure Resource Manager, [overzicht van Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+* Zie [Overzicht Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) voor meer informatie over Azure Resource Manager.

@@ -1,10 +1,10 @@
 ---
-title: Adressen van Azure Instance-level openbaar IP-adres (klassiek) | Microsoft Docs
-description: Instance-level public IP (ILPIP)-adressen en hoe u ze kunt beheren met behulp van PowerShell.
+title: Open bare IP-adressen (klassiek) van Azure-exemplaar | Microsoft Docs
+description: Meer informatie over ILPIP-adressen (instance level open bare IP) en hoe u deze beheert met behulp van Power shell.
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: tysonn
 ms.assetid: 07eef6ec-7dfe-4c4d-a2c2-be0abfb48ec5
 ms.service: virtual-network
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: genli
-ms.openlocfilehash: 2f6db23e02c836dea6d640757d12275b654ad468
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d92832d1eee995e8883dc6c8ed0f58c9755e40f8
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60186794"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058410"
 ---
-# <a name="instance-level-public-ip-classic-overview"></a>Openbare IP (klassiek) overzicht's op exemplaarniveau
-Een instantie level public IP (ILPIP) is een openbare IP-adres dat u rechtstreeks naar een exemplaar van de rol virtuele machine of Cloud Services, in plaats van met de cloudservice die uw rol of VM-exemplaar zich bevinden in kunt toewijzen. Een ILPIP ter niet vervanging van het virtuele IP (VIP) die is toegewezen aan uw cloudservice. Het is in plaats daarvan een extra IP-adres dat u kunt rechtstreeks verbinding maken met uw rol of VM-exemplaar.
+# <a name="instance-level-public-ip-classic-overview"></a>Overzicht van open bare IP-adressen (klassiek) op exemplaar niveau
+Een openbaar IP-adres (ILPIP) op exemplaar niveau is een openbaar IP-adressen dat u rechtstreeks kunt toewijzen aan een virtuele machine of Cloud Services rolinstantie, in plaats van naar de Cloud service waar uw VM of rolinstantie zich bevindt. Een ILPIP neemt niet de plaats van het virtuele IP-adres (VIP) dat is toegewezen aan uw Cloud service. In plaats daarvan is het een extra IP-adres dat u kunt gebruiken om rechtstreeks verbinding te maken met uw VM of rolinstantie.
 
 > [!IMPORTANT]
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources:  [Resource Manager en het klassieke model](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dit artikel gaat over het gebruik van het klassieke implementatiemodel. Microsoft raadt aan het maken van virtuele machines via Resource Manager. Zorg ervoor dat u begrijpt hoe [IP-adressen](virtual-network-ip-addresses-overview-classic.md) werk in Azure.
+> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources:  [Resource Manager en het klassieke model](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dit artikel gaat over het gebruik van het klassieke implementatiemodel. Micro soft raadt aan Vm's te maken met Resource Manager. Zorg ervoor dat u begrijpt hoe [IP-adressen](virtual-network-ip-addresses-overview-classic.md) werken in Azure.
 
 ![Verschil tussen ILPIP en VIP](./media/virtual-networks-instance-level-public-ip/Figure1.png)
 
-Zoals weergegeven in afbeelding 1, de cloudservice wordt geopend met behulp van een VIP-adres, terwijl de afzonderlijke virtuele machines normaal gesproken worden geopend met behulp van VIP:&lt;poortnummer&gt;. Door een ILPIP toewijzen aan een specifieke virtuele machine, is die virtuele machine toegankelijk via dit IP-adres.
+Zoals weer gegeven in afbeelding 1, wordt de Cloud service geopend met behulp van een VIP, terwijl de afzonderlijke vm's normaal gesp&lt;roken worden&gt;gebruikt via VIP: poort nummer. Door een ILPIP toe te wijzen aan een specifieke virtuele machine, kan de virtuele machine rechtstreeks worden geopend met behulp van dat IP-adres.
 
-Wanneer u een cloudservice in Azure maakt, worden bijbehorende DNS A-records automatisch gemaakt voor toegang tot de service via een volledig gekwalificeerde domeinnaam (FQDN), in plaats van de werkelijke VIP. Hetzelfde proces gebeurt voor een ILPIP, zodat toegang tot de rol of VM-exemplaar met FQDN-naam in plaats van de ILPIP. Bijvoorbeeld, als u een cloudservice met de naam *contosoadservice*, en het configureren van een Webrol die met de naam *contosoweb* met twee exemplaren en in cscfg `domainNameLabel` is ingesteld op  *WebPublicIP*, Azure registreert de volgende A-records voor de exemplaren:
+Wanneer u een Cloud service in azure maakt, worden de bijbehorende DNS-records automatisch gemaakt om toegang tot de service toe te staan via een Fully Qualified Domain Name (FQDN), in plaats van de daad werkelijke VIP te gebruiken. Hetzelfde proces treedt op voor een ILPIP, waardoor toegang tot de virtuele machine of het rolinstantie wordt toegestaan door de FQDN in plaats van de ILPIP. Als u bijvoorbeeld een Cloud service met de naam *contosoadservice*maakt en u een webrol met de naam *contosoweb* met twee exemplaren configureert, en in. `domainNameLabel` cscfg is ingesteld op *WebPublicIP*, registreert Azure de volgende a-records voor de vaak
 
 
 * WebPublicIP.0.contosoadservice.cloudapp.net
@@ -40,25 +40,25 @@ Wanneer u een cloudservice in Azure maakt, worden bijbehorende DNS A-records aut
 
 
 > [!NOTE]
-> U kunt slechts één ILPIP voor elk exemplaar van de virtuele machine of rol kunt toewijzen. U kunt maximaal 5 ILPIPs per abonnement gebruiken. ILPIPs worden niet ondersteund voor virtuele machines meerdere NIC's.
+> U kunt slechts één ILPIP toewijzen voor elke VM of rolinstantie. U kunt Maxi maal vijf ILPIPs per abonnement gebruiken. ILPIPs worden niet ondersteund voor Vm's met meerdere NIC'S.
 > 
 > 
 
-## <a name="why-would-i-request-an-ilpip"></a>Waarom zou ik een ILPIP vragen?
-Als u kunnen verbinding maken met uw rol of VM-exemplaar met een IP-adres toegewezen om er rechtstreeks wilt, in plaats van de cloud service VIP:&lt;poortnummer&gt;, een ILPIP aanvragen voor uw virtuele machine of uw rolinstantie.
+## <a name="why-would-i-request-an-ilpip"></a>Waarom zou ik een ILPIP aanvragen?
+Als u verbinding wilt kunnen maken met uw virtuele machine of rolinstantie met een IP-adres dat rechtstreeks aan de VM is toegewezen, in plaats van het Cloud service&lt;-VIP&gt;: poort nummer te gebruiken, moet u een ILPIP aanvragen voor uw virtuele machine of uw rolinstantie.
 
-* **Actieve FTP** -door een ILPIP toewijzen aan een virtuele machine, kan ontvangen verkeer op een willekeurige poort. Eindpunten zijn niet vereist voor de virtuele machine om verkeer te ontvangen.  Zie [overzicht van de FTP-Protocol](https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) voor meer informatie over het FTP-protocol.
-* **Uitgaande IP** : uitgaand verkeer dat afkomstig is van de virtuele machine is toegewezen aan de ILPIP als de bron en de ILPIP unieke identificatie van de virtuele machine naar externe entiteiten.
+* **Actieve FTP** : door een ILPIP toe te wijzen aan een virtuele machine, kan het verkeer ontvangen op elke poort. Er zijn geen eind punten vereist voor de virtuele machine om verkeer te ontvangen.  Zie [overzicht van FTP-protocollen](https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) voor meer informatie over het FTP-protocol.
+* **Uitgaand IP** -verkeer dat afkomstig is van de virtuele machine, wordt toegewezen aan de ILPIP als bron en de ILPIP unieke identificatie van de virtuele machine naar externe entiteiten.
 
 > [!NOTE]
-> In het verleden is een ILPIP-adres aangeduid als een openbaar IP-(PIP)-adres.
+> In het verleden werd een ILPIP-adres aangeduid als een openbaar IP-adres (PIP).
 > 
 
 ## <a name="manage-an-ilpip-for-a-vm"></a>Een ILPIP voor een virtuele machine beheren
-De volgende taken kunnen u maken, toewijzen en ILPIPs verwijderen van virtuele machines:
+De volgende taken bieden u de mogelijkheid om ILPIPs te maken, toe te wijzen en te verwijderen uit Vm's:
 
-### <a name="how-to-request-an-ilpip-during-vm-creation-using-powershell"></a>Het aanvragen van een ILPIP VM wordt gemaakt met behulp van PowerShell
-De volgende PowerShell-script maakt een cloudservice met de naam *FTPService*, haalt u een installatiekopie van Azure, maakt u een virtuele machine met de naam *FTPInstance* met behulp van de opgehaalde, stelt u de virtuele machine te gebruiken een ILPIP en wordt toegevoegd de virtuele machine naar de nieuwe service:
+### <a name="how-to-request-an-ilpip-during-vm-creation-using-powershell"></a>Een ILPIP aanvragen tijdens het maken van een virtuele machine met behulp van Power shell
+Met het volgende Power shell-script maakt u een Cloud service met de naam *FTPService*, haalt u een installatie kopie op uit Azure, maakt u een virtuele machine met de naam *FTPInstance* met behulp van de opgehaalde installatie kopie, stelt u de virtuele machine in op een ILPIP en voegt u de virtuele machine toe aan de nieuwe
 
 ```powershell
 New-AzureService -ServiceName FTPService -Location "Central US"
@@ -76,7 +76,7 @@ New-AzureVMConfig -Name FTPInstance -InstanceSize Small -ImageName $image.ImageN
 | Set-AzurePublicIP -PublicIPName ftpip | New-AzureVM -ServiceName FTPService -Location "Central US"
 
 ```
-Als u een ander opslagaccount opgeven als de locatie van de nieuwe VM-schijf wilt, kunt u **MediaLocation** parameter:
+Als u een ander opslag account wilt opgeven als locatie van de nieuwe VM-schijf, kunt u de para meter **MediaLocation** gebruiken:
 
 ```powershell
     New-AzureVMConfig -Name FTPInstance -InstanceSize Small -ImageName $image.ImageName `
@@ -85,8 +85,8 @@ Als u een ander opslagaccount opgeven als de locatie van de nieuwe VM-schijf wil
     | Set-AzurePublicIP -PublicIPName ftpip | New-AzureVM -ServiceName FTPService -Location "Central US"
 ```
 
-### <a name="how-to-retrieve-ilpip-information-for-a-vm"></a>ILPIP-informatie voor een virtuele machine ophalen
-Voer de volgende PowerShell-opdracht als u de ILPIP-informatie voor de virtuele machine met het vorige script gemaakt, en houd rekening met de waarden voor *PublicIPAddress* en *PublicIPName*:
+### <a name="how-to-retrieve-ilpip-information-for-a-vm"></a>ILPIP-gegevens ophalen voor een virtuele machine
+Als u de ILPIP-informatie voor de virtuele machine die met het vorige script is gemaakt, wilt weer geven, voert u de volgende Power shell-opdracht uit en bekijkt u de waarden voor *PublicIPAddress* en *PublicIPName*:
 
 ```powershell
 Get-AzureVM -Name FTPInstance -ServiceName FTPService
@@ -121,26 +121,26 @@ Verwachte uitvoer:
     OperationId                 : 568d88d2be7c98f4bbb875e4d823718e
     OperationStatus             : OK
 
-### <a name="how-to-remove-an-ilpip-from-a-vm"></a>Het verwijderen van een ILPIP van een virtuele machine
-Als u wilt verwijderen van de ILPIP toegevoegd aan de virtuele machine in het vorige script, voer de volgende PowerShell-opdracht:
+### <a name="how-to-remove-an-ilpip-from-a-vm"></a>Een ILPIP verwijderen uit een virtuele machine
+Als u de ILPIP die is toegevoegd aan de virtuele machine in het vorige script wilt verwijderen, voert u de volgende Power shell-opdracht uit:
 
 ```powershell
 Get-AzureVM -ServiceName FTPService -Name FTPInstance | Remove-AzurePublicIP | Update-AzureVM
 ```
 
 ### <a name="how-to-add-an-ilpip-to-an-existing-vm"></a>Een ILPIP toevoegen aan een bestaande virtuele machine
-Een ILPIP toevoegen aan de virtuele machine gemaakt met behulp van het vorige script, moet u de volgende opdracht uitvoeren:
+Voer de volgende opdracht uit om een ILPIP toe te voegen aan de virtuele machine die is gemaakt met behulp van het script:
 
 ```powershell
 Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -PublicIPName ftpip2 | Update-AzureVM
 ```
 
-## <a name="manage-an-ilpip-for-a-cloud-services-role-instance"></a>Een ILPIP voor een exemplaar van Cloud Services beheren
+## <a name="manage-an-ilpip-for-a-cloud-services-role-instance"></a>Een ILPIP beheren voor een Cloud Services rolinstantie
 
-Een ILPIP toevoegen aan een exemplaar van Cloud Services, voert u de volgende stappen uit:
+Voer de volgende stappen uit om een ILPIP toe te voegen aan een Cloud Services Role:
 
-1. Download het cscfg-bestand voor de cloudservice via de stappen in de [over het configureren van Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) artikel.
-2. Het cscfg-bestand bijwerken door toe te voegen de `InstanceAddress` element. Het volgende voorbeeld wordt een met de naam ILPIP *MyPublicIP* naar een rolexemplaar met de naam *WebRole1*: 
+1. Down load het. cscfg-bestand voor de Cloud service door de stappen in het artikel [Cloud Services configureren te](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) volt ooien.
+2. Werk het. cscfg-bestand bij door `InstanceAddress` het element toe te voegen. In het volgende voor beeld wordt een ILPIP met de naam *MyPublicIP* toegevoegd aan een rolinstantie met de naam *WebRole1*: 
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -162,10 +162,10 @@ Een ILPIP toevoegen aan een exemplaar van Cloud Services, voert u de volgende st
       </NetworkConfiguration>
     </ServiceConfiguration>
     ```
-3. Uploaden van het cscfg-bestand voor de cloudservice via de stappen in de [over het configureren van Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) artikel.
+3. Upload het. cscfg-bestand voor de Cloud service door de stappen in het artikel [Cloud Services configureren te](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) volt ooien.
 
-### <a name="how-to-retrieve-ilpip-information-for-a-cloud-service"></a>Het ophalen van gegevens voor een Cloudservice ILPIP
-Als u de informatie ILPIP per rolexemplaar, de volgende PowerShell-opdracht uit en bekijk de waarden voor *PublicIPAddress*, *PublicIPName*, *PublicIPDomainNameLabel* en *PublicIPFqdns*:
+### <a name="how-to-retrieve-ilpip-information-for-a-cloud-service"></a>ILPIP-gegevens ophalen voor een Cloud service
+Als u de ILPIP-informatie per rolinstantie wilt weer geven, voert u de volgende Power shell-opdracht uit en bekijkt u de waarden voor *PublicIPAddress*, *PublicIPName*, *PublicIPDomainNameLabel* en *PublicIPFqdns*:
 
 ```powershell
 Add-AzureAccount
@@ -176,12 +176,12 @@ $roles[0].PublicIPAddress
 $roles[1].PublicIPAddress
 ```
 
-U kunt ook `nslookup` de record het subdomein query:
+U kunt ook gebruiken `nslookup` om een query uit te zoeken naar een record van het subdomein:
 
 ```batch
 nslookup WebPublicIP.0.<Cloud Service Name>.cloudapp.net
 ``` 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Begrijpen hoe [IP-adressering](virtual-network-ip-addresses-overview-classic.md) werkt in het klassieke implementatiemodel.
-* Meer informatie over [gereserveerd IP-adressen](virtual-networks-reserved-public-ip.md).
+* Begrijp hoe [IP-adres Sering](virtual-network-ip-addresses-overview-classic.md) werkt in het klassieke implementatie model.
+* Meer informatie over [gereserveerde ip's](virtual-networks-reserved-public-ip.md).

@@ -5,13 +5,14 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.date: 08/09/2019
-ms.openlocfilehash: 830e58e68ea84d70c581ea315ca15b2a03be59da
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 3d2ba5965fef19a36faa8b9bbef235fd4117c20f
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019636"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71071943"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Verificatie problemen in azure HDInsight
 
@@ -113,7 +114,7 @@ Het beleid voor voorwaardelijke toegang of MFA wordt toegepast op de gebruiker. 
 
 ### <a name="resolution"></a>Oplossing
 
-Gebruik het beleid voor voorwaardelijke toegang om de Hdinsight-clusters van MFA vrij te maken, zoals wordt weer gegeven in [een HDInsight-cluster configureren met Enterprise Security Package](./apache-domain-joined-configure-using-azure-adds.md)met behulp van Azure Active Directory Domain Services.
+Gebruik het beleid voor voorwaardelijke toegang om de Hdinsight-clusters van MFA vrij te maken, zoals wordt weer gegeven in [een HDInsight-cluster configureren met Enterprise Security Package met behulp van Azure Active Directory Domain Services](./apache-domain-joined-configure-using-azure-adds.md).
 
 ---
 
@@ -201,4 +202,4 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de ondersteunings [abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

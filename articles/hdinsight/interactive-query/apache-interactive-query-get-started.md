@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
-ms.date: 06/14/2019
-ms.openlocfilehash: 29b2a9378abaaa697d2d869145d5e912d6c06d6c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.date: 09/17/2019
+ms.openlocfilehash: 3e0fddc03ad880d36876276827198b0ac180a00d
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811594"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076364"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Wat is interactieve query in azure HDInsight?
 
@@ -28,6 +28,9 @@ U hebt alleen toegang tot de component service in het interactieve query cluster
 ## <a name="create-an-interactive-query-cluster"></a>Een interactief query cluster maken
 
 Zie [Apache Hadoop clusters maken in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)voor meer informatie over het maken van een HDInsight-cluster. Kies het type interactieve query cluster.
+
+> [!IMPORTANT]
+> De minimale grootte van de hoofd knooppunt voor interactieve query clusters is Standard_D13_v2. Zie het [formaat diagram van Azure VM](../../cloud-services/cloud-services-sizes-specs.md#dv2-series)voor meer informatie.
 
 ## <a name="execute-apache-hive-queries-from-interactive-query"></a>Apache Hive query's uitvoeren vanuit een interactieve query
 

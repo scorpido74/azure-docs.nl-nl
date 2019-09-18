@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 09/16/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e87ea28f2454ec3c969574b21ef383e81b3148c2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d9b9476d8cc62585be7e7003d837607b502c8566
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098769"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067869"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planning en implementatie voor SAP net-Weaver
 
@@ -344,6 +344,7 @@ In het hele document gebruiken we de volgende voor waarden:
 * SAP-landschap: Deze term verwijst naar de volledige SAP-assets in het IT-landschap van een klant. Het SAP-landschap omvat alle productie-en niet-productie omgevingen.
 * SAP-systeem: De combi natie van DBMS-laag en-toepassingslaag van, bijvoorbeeld een SAP ERP-ontwikkelings systeem, SAP BW test systeem, SAP CRM-productie systeem, enzovoort. In azure-implementaties wordt het niet ondersteund om deze twee lagen te verdelen over on-premises en Azure. Betekent dat een SAP-systeem on-premises is geïmplementeerd of wordt geïmplementeerd in Azure. U kunt de verschillende systemen van een SAP-landschap echter implementeren in azure of on-premises. U kunt bijvoorbeeld het ontwikkel-en test systeem van SAP CRM implementeren in azure, maar het productie systeem op locatie van SAP.
 * Cross-premises of hybride: Hierin wordt een scenario beschreven waarin Vm's worden geïmplementeerd naar een Azure-abonnement met site-naar-site-, multi-site-of ExpressRoute-connectiviteit tussen de on-premises Data Center (s) en Azure. In algemene documentatie over Azure worden dit soort implementaties ook beschreven als cross-premises of hybride scenario's. De reden hiervoor is om on-premises domeinen, on-premises Active Directory-OpenLDAP en on-premises DNS uit te breiden naar Azure. De on-premises liggende lands worden uitgebreid naar de Azure-assets van het abonnement. Met deze extensie kunnen Vm's deel uitmaken van het on-premises domein. Domein gebruikers van het on-premises domein hebben toegang tot de servers en kunnen services uitvoeren op deze Vm's (zoals DBMS-Services). Communicatie en naam omzetting tussen Vm's die on-premises en Azure geïmplementeerde Vm's zijn geïmplementeerd, is mogelijk. Dit is het meest voorkomende en bijna exclusieve geval dat SAP-assets in Azure worden geïmplementeerd. Zie [Dit][vpn-gateway-cross-premises-options] artikel en [deze][vpn-gateway-site-to-site-create]voor meer informatie.
+* Azure-bewakings uitbreiding, verbeterde bewaking en Azure-extensie voor SAP: Beschrijf een en hetzelfde item. Hierin wordt een VM-extensie beschreven die moet worden geïmplementeerd door u om enkele basis gegevens over de Azure-infra structuur te verstrekken aan de SAP host-agent. SAP in SAP-notities kan worden gebruikt als bewakings uitbreiding of uitgebreide bewaking. In azure wordt hiernaar verwezen als **Azure-extensie voor SAP**.
 
 > [!NOTE]
 > Cross-premises of hybride implementaties van SAP-systemen waarbij Azure Virtual Machines SAP-systemen worden uitgevoerd, worden lid van een on-premises domein ondersteund voor SAP-productie systemen. Cross-premises of hybride configuraties worden ondersteund voor het implementeren van onderdelen of het volt ooien van SAP-landschappen in Azure. Zelfs als u het volledige SAP-landschap uitvoert in azure, moeten deze Vm's deel uitmaken van het on-premises domein en ADS/OpenLDAP. 
@@ -799,7 +800,7 @@ De ervaring van de klant is tot nu toe dat Power shell (PS) het krachtige hulp m
 Bekijk hier het voor beeld:<https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
 
-De implementatie van de Azure-bewakings extensie voor SAP (zie hoofd stuk [Azure bewakings oplossing voor SAP][planning-guide-9.1] in dit document) is alleen mogelijk via Power shell of cli. Daarom is het verplicht om Power shell of CLI in te stellen en te configureren bij het implementeren of beheren van een SAP net-Weaver-systeem in Azure.  
+De implementatie van de Azure-extensie voor SAP (zie hoofd stuk [Azure-extensie voor SAP][planning-guide-9.1] in dit document) is alleen mogelijk via Power shell of cli. Daarom is het verplicht om Power shell of CLI in te stellen en te configureren bij het implementeren of beheren van een SAP net-Weaver-systeem in Azure.  
 
 Naarmate Azure meer functionaliteit biedt, worden er nieuwe PS-cmdlets toegevoegd waarvoor een update van de cmdlets is vereist. Daarom is het zinvol om de Azure-download site ten minste één keer per <https://azure.microsoft.com/downloads/> maand te controleren voor een nieuwe versie van de cmdlets. De nieuwe versie wordt boven op de oudere versie geïnstalleerd.
 
@@ -816,7 +817,7 @@ Zie voor informatie over de installatie, configuratie en het gebruik van CLI-opd
 * [Implementeren en beheren van virtuele machines met behulp van Azure Resource Manager-sjablonen en de Azure CLI] [../../linux/create-ssh-secured-vm-from-template.md]
 * [Gebruik de klassieke Azure CLI voor Mac, Linux en Windows met Azure Resource Manager][xplat-cli-azure-resource-manager]
 
-Lees ook hoofd stuk [Azure CLI voor Linux-vm's][deployment-guide-4.5.2] in de [implementatie handleiding][planning-guide] voor het gebruik van Azure CLI voor het implementeren van de Azure-bewakings extensie voor SAP.
+Lees ook hoofd stuk [Azure CLI voor Linux-vm's][deployment-guide-4.5.2] in de [implementatie handleiding][planning-guide] voor het gebruik van Azure CLI voor het implementeren van de Azure-extensie voor SAP.
 
 ## <a name="different-ways-to-deploy-vms-for-sap-in-azure"></a>Verschillende manieren om Vm's voor SAP in azure te implementeren
 
@@ -969,7 +970,7 @@ In dit geval willen we een VHD uploaden, hetzij met ofwel zonder een besturings 
 #### <a name="deployment-of-a-vm-image"></a>Implementatie van een VM-installatie kopie
 Als u een bestaande virtuele machine of VHD vanuit het on-premises netwerk wilt uploaden, moet u deze gebruiken als een Azure VM-installatie kopie, zoals een virtuele machine of VHD die voldoet aan de vereisten die worden vermeld in hoofdstuk [voorbereiding voor het implementeren van een virtuele machine met een klantspecifieke installatie kopie voor SAP][planning-guide-5.2.2] van dit document.
 
-* Gebruik *Sysprep* op Windows of *waagent-* deprovisioning in Linux om uw VM te generaliseren: Zie [technische Naslag informatie over Sysprep](https://technet.microsoft.com/library/cc766049.aspx) voor Windows of [hoe u een virtuele Linux-machine vastlegt voor gebruik als Resource Manager-sjabloon][capture-image-linux-step-2-create-vm-image] voor Linux
+* Gebruik *Sysprep* op Windows of *waagent-deprovisioning* in Linux om uw VM te generaliseren: Zie [technische Naslag informatie over Sysprep](https://technet.microsoft.com/library/cc766049.aspx) voor Windows of [hoe u een virtuele Linux-machine vastlegt voor gebruik als Resource Manager-sjabloon][capture-image-linux-step-2-create-vm-image] voor Linux
 * Meld u aan bij uw abonnement met *Connect-AzAccount*
 * Stel het abonnement van uw context in met *set-AzContext* en para meter SubscriptionId of subscriptionname-Zie<https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
 * Upload de VHD met *add-AzVhd* naar een Azure Storage-account-Zie<https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
@@ -981,7 +982,7 @@ Als u een bestaande virtuele machine of VHD vanuit het on-premises netwerk wilt 
 
 **Azure-CLI**
 
-* Gebruik *Sysprep* op Windows of *waagent-* deprovisioning in Linux om uw VM te generaliseren: Zie [technische Naslag informatie over Sysprep](https://technet.microsoft.com/library/cc766049.aspx) voor Windows of [hoe u een virtuele Linux-machine vastlegt voor gebruik als Resource Manager-sjabloon][capture-image-linux-step-2-create-vm-image] voor Linux
+* Gebruik *Sysprep* op Windows of *waagent-deprovisioning* in Linux om uw VM te generaliseren: Zie [technische Naslag informatie over Sysprep](https://technet.microsoft.com/library/cc766049.aspx) voor Windows of [hoe u een virtuele Linux-machine vastlegt voor gebruik als Resource Manager-sjabloon][capture-image-linux-step-2-create-vm-image] voor Linux
 * Meld u aan bij uw abonnement met *AZ login*
 * Selecteer uw abonnement met *AZ account set--Subscription `<subscription name or id` >*
 * De VHD uploaden met *AZ Storage BLOB upload* -Zie [de Azure CLI gebruiken met Azure Storage][storage-azure-cli]
@@ -990,7 +991,7 @@ Als u een bestaande virtuele machine of VHD vanuit het on-premises netwerk wilt 
 
 **Sjabloon**
 
-* Gebruik *Sysprep* op Windows of *waagent-* deprovisioning in Linux om uw VM te generaliseren: Zie [technische Naslag informatie over Sysprep](https://technet.microsoft.com/library/cc766049.aspx) voor Windows of [hoe u een virtuele Linux-machine vastlegt voor gebruik als Resource Manager-sjabloon][capture-image-linux-step-2-create-vm-image] voor Linux
+* Gebruik *Sysprep* op Windows of *waagent-deprovisioning* in Linux om uw VM te generaliseren: Zie [technische Naslag informatie over Sysprep](https://technet.microsoft.com/library/cc766049.aspx) voor Windows of [hoe u een virtuele Linux-machine vastlegt voor gebruik als Resource Manager-sjabloon][capture-image-linux-step-2-create-vm-image] voor Linux
 * De VHD uploaden met Power shell of Azure CLI
 * Beschrijving Een beheerde schijf installatie kopie maken van de VHD met Power shell, Azure CLI of de Azure Portal
 * Implementeer de virtuele machine met een JSON-sjabloon die verwijst naar de afbeelding VHD, zoals wordt weer gegeven in [dit voor beeld-JSON-sjabloon](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json) of met behulp van de beheerde schijf installatie kopie, zoals wordt weer gegeven in [dit voor beeld](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)
@@ -1302,7 +1303,7 @@ Azure geo-replicatie werkt lokaal op elke VHD in een VM en repliceert de IOs in 
 ---
 ### <a name="final-deployment"></a>Definitieve implementatie
 
-Raadpleeg de [implementatie handleiding][deployment-guide]voor de laatste implementatie en de exacte stappen, met name ten aanzien van de implementatie van SAP uitgebreide bewaking.
+Raadpleeg de [implementatie handleiding][deployment-guide]voor de laatste implementatie en de exacte stappen, met name ten aanzien van de implementatie van de Azure-extensie voor SAP.
 
 ## <a name="accessing-sap-systems-running-within-azure-vms"></a>Toegang tot SAP-systemen die worden uitgevoerd in azure Vm's
 
@@ -1775,29 +1776,29 @@ SAP-exemplaren die zich in azure bevinden, hebben toegang tot bestands shares di
 
 ## <a name="supportability"></a>Ondersteuning
 
-### <a name="6f0a47f3-a289-4090-a053-2521618a28c3"></a>Azure-bewakings oplossing voor SAP
+### <a name="6f0a47f3-a289-4090-a053-2521618a28c3"></a>Azure-extensie voor SAP
 
-Om de bewaking van essentiële SAP-systemen in azure mogelijk te maken, krijgen de SAP-bewakings hulpprogramma's SAPOSCOL of SAP host agent gegevens uit de Azure virtual machine service host via een Azure-bewakings extensie voor SAP. Omdat de vereisten van SAP specifiek zijn voor SAP-toepassingen, heeft micro soft besloten de vereiste functionaliteit niet algemeen in azure te implementeren, maar laat het klanten de benodigde bewakings onderdelen en configuraties implementeren op hun virtuele Machines die in Azure worden uitgevoerd. Het beheer van de implementatie en de levens cyclus van de bewakings onderdelen wordt voornamelijk geautomatiseerd door Azure.
+Als u een deel van de gegevens van de Azure-infra structuur van essentiële SAP-systemen wilt belichten bij de SAP host agent-exemplaren die in Vm's zijn geïnstalleerd, moet een Azure (VM)-extensie voor SAP worden geïnstalleerd voor de geïmplementeerde Vm's. Omdat de vereisten van SAP specifiek zijn voor SAP-toepassingen, heeft micro soft besloten de vereiste functionaliteit niet algemeen in azure te implementeren, maar laat klanten de benodigde VM-extensie en-configuraties implementeren op hun Virtual Machines met in Azure. Implementatie-en levenscyclus beheer van de Azure VM-extensie voor SAP wordt voornamelijk geautomatiseerd door Azure.
 
 #### <a name="solution-design"></a>Ontwerp van de oplossing
 
-De oplossing die is ontwikkeld om SAP-bewaking in te scha kelen, is gebaseerd op de architectuur van de Azure VM-agent en extensie Framework. Het idee van de Azure VM-agent en extensie Framework is het toestaan van de installatie van de software toepassing (en) die beschikbaar zijn in de Azure VM-extensie galerie binnen een VM. Het principe dat zich achter dit concept bevindt, is het toestaan van de implementatie van speciale functionaliteit op een virtuele machine en de configuratie van deze software op het moment van implementatie.
+De oplossing die is ontwikkeld om SAP host agent in te scha kelen, is gebaseerd op de architectuur van de Azure VM-agent en extensie Framework. Het idee van de Azure VM-agent en extensie Framework is het toestaan van de installatie van de software toepassing (en) die beschikbaar zijn in de Azure VM-extensie galerie binnen een VM. Het principe dat zich achter dit concept bevindt, is het toestaan van (in gevallen zoals de Azure-extensie voor SAP), de implementatie van speciale functionaliteit in een virtuele machine en de configuratie van dergelijke software tijdens de implementatie.
 
 De ' Azure VM-agent ' die het verwerken van specifieke Azure VM-extensies in de virtuele machine mogelijk maakt, wordt standaard in virtuele Windows-machines ingevoegd in de Azure Portal. In het geval van SUSE, Red Hat of Oracle Linux maakt de VM-agent al deel uit van de Azure Marketplace-installatie kopie. Als één virtuele Linux-machine van on-premises wordt geüpload naar Azure, moet de VM-agent hand matig worden geïnstalleerd.
 
-De basis bouwstenen van de bewakings oplossing in azure voor SAP ziet er als volgt uit:
+De basis bouwstenen van de oplossing voor het leveren van Azure-infrastructuur gegevens aan de SAP host agent in azure ziet er als volgt uit:
 
 ![Microsoft Azure extensie onderdelen][planning-guide-figure-2400]
 
-Zoals wordt weer gegeven in het bovenstaande blok diagram, wordt een deel van de bewakings oplossing voor SAP gehost in de Azure VM-installatie kopie en de Azure extension-galerie. Dit is een globaal gerepliceerde opslag plaats die wordt beheerd door Azure-bewerkingen. Het is de verantwoordelijkheid van het gezamenlijke SAP/MS-team dat samenwerkt met de Azure-implementatie van SAP om te werken met Azure-bewerkingen om nieuwe versies van de Azure-bewakings extensie voor SAP te publiceren.
+Zoals wordt weer gegeven in het bovenstaande blok diagram, wordt één deel van de oplossing gehost in de Azure VM-installatie kopie en de Azure-extensie galerie. Dit is een globaal gerepliceerde opslag plaats die wordt beheerd door Azure-bewerkingen. Het is de verantwoordelijkheid van het gezamenlijke SAP/MS-team dat samenwerkt met de Azure-implementatie van SAP om te werken met Azure-bewerkingen om nieuwe versies van de Azure-extensie voor SAP te publiceren.
 
-Wanneer u een nieuwe virtuele Windows-machine implementeert, wordt de Azure VM-agent automatisch toegevoegd aan de VM. De functie van deze agent is het coördineren van het laden en configureren van de Azure-extensies voor de bewaking van SAP NetWeaver-systemen. Voor virtuele Linux-machines is de Azure VM-agent al onderdeel van de Azure Marketplace-installatie kopie van het besturings systeem.
+Wanneer u een nieuwe virtuele Windows-machine implementeert, wordt de Azure VM-agent automatisch toegevoegd aan de VM. De functie van deze agent is het coördineren van het laden en configureren van de Azure-extensies van de Vm's. Voor virtuele Linux-machines is de Azure VM-agent al onderdeel van de Azure Marketplace-installatie kopie van het besturings systeem.
 
 Er is echter een stap die nog steeds door de klant moet worden uitgevoerd. Dit is de activering en configuratie van de prestatie verzameling. Het proces dat is gerelateerd aan de configuratie wordt geautomatiseerd door een Power shell-script of CLI-opdracht. Het Power shell-script kan worden gedownload in het Microsoft Azure Script Center zoals beschreven in de [implementatie handleiding][deployment-guide].
 
-De algemene architectuur van de Azure-bewakings oplossing voor SAP ziet er als volgt uit:
+De algemene architectuur van de Azure-extensie voor SAP ziet er als volgt uit:
 
-![Azure-bewakings oplossing voor SAP net-Weaver][planning-guide-figure-2500]
+![Azure-extensie voor SAP ][planning-guide-figure-2500]
 
 **Volg de instructies in de [implementatie handleiding][deployment-guide]voor de exacte procedures en voor gedetailleerde stappen voor het gebruik van deze Power shell-cmdlets of cli-opdracht tijdens implementaties.**
 
@@ -1943,7 +1944,7 @@ Meer informatie vindt u in deze documentatie:<https://azure.microsoft.com/docume
 
 #### <a name="high-availability-for-sap-central-services-on-azure"></a>Hoge Beschik baarheid voor SAP Central-Services op Azure
 
-Voor een architectuur met hoge Beschik baarheid van SAP Central-Services op Azure, raadpleegt u de architectuur van het artikel met [hoge Beschik baarheid en scenario's voor SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios) NetWeaver als vermelding. Het artikel verwijst naar meer gedetailleerde beschrijvingen voor de specifieke besturings systemen.
+Voor een architectuur met hoge Beschik baarheid van SAP Central-Services op Azure, raadpleegt u de architectuur van het artikel met [hoge Beschik baarheid en scenario's voor SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios) als vermelding. Het artikel verwijst naar meer gedetailleerde beschrijvingen voor de specifieke besturings systemen.
 
 #### <a name="high-availability-for-the-sap-database-instance"></a>Hoge Beschik baarheid voor de SAP-data base-instantie
 

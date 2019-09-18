@@ -13,14 +13,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/26/2018
+ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: b9db5cbb9e65fc7bc8aa306a69a0889f29b61be3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 549fd8f4cb770d472eefd1c504e42837fa8230dd
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101337"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066854"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines-implementatie voor SAP NetWeaver
 
@@ -121,12 +121,12 @@ ms.locfileid: "70101337"
 [deployment-guide-4.4]:deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d (De Azure VM-agent downloaden, installeren en inschakelen)
 [deployment-guide-4.5.1]:deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 (Azure PowerShell)
 [deployment-guide-4.5.2]:deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f (Azure CLI)
-[deployment-guide-4.5]:deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (De uitgebreide bewakings extensie van Azure configureren voor SAP)
-[deployment-guide-5.1]:deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (Gereedheids controle voor uitgebreide Azure-bewaking voor SAP)
-[deployment-guide-5.2]:deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Status controle voor de infra structuur van Azure monitoring)
-[deployment-guide-5.3]:deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (Problemen met Azure-bewaking voor SAP oplossen)
+[deployment-guide-4.5]:deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (De Azure-extensie voor SAP configureren)
+[deployment-guide-5.1]:deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (Gereedheids controle voor Azure-extensie voor SAP)
+[deployment-guide-5.2]:deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Status controle voor de Azure-extensie voor SAP-configuratie)
+[deployment-guide-5.3]:deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (Problemen met Azure-extensie voor SAP oplossen)
 
-[deployment-guide-configure-monitoring-scenario-1]:deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (Bewaking configureren)
+[deployment-guide-configure-monitoring-scenario-1]:deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (VM-extensie configureren)
 [deployment-guide-configure-proxy]:deployment-guide.md#baccae00-6f79-4307-ade4-40292ce4e02d (De proxy configureren)
 [deployment-guide-figure-100]:media/virtual-machines-shared-sap-deployment-guide/100-deploy-vm-image.png
 [deployment-guide-figure-1000]:media/virtual-machines-shared-sap-deployment-guide/1000-service-properties.png
@@ -150,7 +150,7 @@ ms.locfileid: "70101337"
 [deployment-guide-figure-azure-cli-installed]:deployment-guide.md#402488e5-f9bb-4b29-8063-1c5f52a892d0
 [deployment-guide-figure-azure-cli-version]:deployment-guide.md#0ad010e6-f9b5-4c21-9c09-bb2e5efb3fda
 [deployment-guide-install-vm-agent-windows]:deployment-guide.md#b2db5c9a-a076-42c6-9835-16945868e866
-[deployment-guide-troubleshooting-chapter]:deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b (Controles en probleem oplossing voor het instellen van end-to-end-bewaking)
+[deployment-guide-troubleshooting-chapter]:deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b (Controles en probleem oplossing voor end-to-end gegevens verzameling voor SAP host agent)
 
 [deploy-template-cli]:../../../resource-group-template-deploy-cli.md
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
@@ -313,7 +313,7 @@ ms.locfileid: "70101337"
 
 Azure Virtual Machines is de oplossing voor organisaties die behoefte hebben aan reken-en opslag resources, op minimale tijd en zonder langdurige aankoop cycli. U kunt Azure Virtual Machines gebruiken om klassieke toepassingen te implementeren, zoals toepassingen op basis van SAP netweave, in Azure. Breid de betrouw baarheid en beschik baarheid van een toepassing uit zonder extra on-premises resources. Azure Virtual Machines ondersteunt cross-premises-connectiviteit, zodat u Azure Virtual Machines kunt integreren in de on-premises domeinen, persoonlijke Clouds en het SAP-systeem van uw organisatie.
 
-In dit artikel behandelen we de stappen voor het implementeren van SAP-toepassingen op virtuele machines (Vm's) in azure, inclusief alternatieve implementatie opties en probleem oplossing. Dit artikel is gebaseerd op de informatie in [Azure virtual machines planning en implementatie voor SAP][planning-guide]net-Weaver. Het is ook een aanvulling op de SAP-installatie documentatie en SAP-notities, die de primaire bronnen zijn voor het installeren en implementeren van SAP-software.
+In dit artikel behandelen we de stappen voor het implementeren van SAP-toepassingen op virtuele machines (Vm's) in azure, inclusief alternatieve implementatie opties en probleem oplossing. Dit artikel is gebaseerd op de informatie in [Azure virtual machines planning en implementatie voor SAP net-Weaver][planning-guide]. Het is ook een aanvulling op de SAP-installatie documentatie en SAP-notities, die de primaire bronnen zijn voor het installeren en implementeren van SAP-software.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -327,7 +327,7 @@ Als u virtuele Windows-of Linux-machines wilt beheren, kunt u een Power shell-sc
 
 ### <a name="internet-connection"></a>Internet verbinding
 
-Als u de hulpprogram ma's en scripts wilt downloaden en uitvoeren die vereist zijn voor de implementatie van SAP-software, moet u verbinding hebben met internet. De Azure-VM met de uitgebreide bewakings extensie van Azure heeft ook toegang nodig tot internet. Als de Azure-VM deel uitmaakt van een virtueel Azure-netwerk of een on-premises domein, moet u ervoor zorgen dat de relevante proxy-instellingen zijn ingesteld, zoals beschreven in [de proxy configureren][deployment-guide-configure-proxy].
+Als u de hulpprogram ma's en scripts wilt downloaden en uitvoeren die vereist zijn voor de implementatie van SAP-software, moet u verbinding hebben met internet. De Azure-VM met de Azure-extensie voor SAP moet ook toegang hebben tot internet. Als de Azure-VM deel uitmaakt van een virtueel Azure-netwerk of een on-premises domein, moet u ervoor zorgen dat de relevante proxy-instellingen zijn ingesteld, zoals beschreven in [de proxy configureren][deployment-guide-configure-proxy].
 
 ### <a name="microsoft-azure-subscription"></a>Microsoft Azure-abonnement
 
@@ -345,7 +345,7 @@ U moet de topologie en architectuur van de SAP-implementatie in azure definiëre
 * VM-grootten en het aantal extra gegevens schijven dat moet worden gekoppeld aan de virtuele machines
 * SAP-correctie en transport systeem configuratie (CTS)
 
-Maak en configureer Azure Storage-accounts (indien nodig) of virtuele Azure-netwerken voordat u begint met het implementatie proces van SAP-software. Voor informatie over het maken en configureren van deze resources raadpleegt u [Azure virtual machines planning en implementatie voor SAP][planning-guide]NetWeaver.
+Maak en configureer Azure Storage-accounts (indien nodig) of virtuele Azure-netwerken voordat u begint met het implementatie proces van SAP-software. Voor informatie over het maken en configureren van deze resources raadpleegt u [Azure virtual machines planning en implementatie voor SAP NetWeaver][planning-guide].
 
 ### <a name="sap-sizing"></a>SAP-grootte
 
@@ -402,7 +402,7 @@ U hebt meerdere opties voor het implementeren van Vm's en gekoppelde schijven in
 
 ### <a name="db477013-9060-4602-9ad4-b0316f8bb281"></a>Scenario 1: Een virtuele machine implementeren vanuit Azure Marketplace voor SAP
 
-U kunt een installatie kopie van micro soft of door derden op Azure Marketplace gebruiken om uw virtuele machine te implementeren. Marketplace biedt enkele standaard installatie kopieën van besturings systemen van Windows Server en verschillende Linux-distributies. U kunt ook een installatie kopie implementeren die Database Management System (DBMS) Sku's bevat, bijvoorbeeld Microsoft SQL Server. Voor meer informatie over het gebruik van installatie kopieën met DBMS-Sku's raadpleegt u [Azure virtual machines DBMS-implementatie voor SAP][dbms-guide]NetWeaver.
+U kunt een installatie kopie van micro soft of door derden op Azure Marketplace gebruiken om uw virtuele machine te implementeren. Marketplace biedt enkele standaard installatie kopieën van besturings systemen van Windows Server en verschillende Linux-distributies. U kunt ook een installatie kopie implementeren die Database Management System (DBMS) Sku's bevat, bijvoorbeeld Microsoft SQL Server. Voor meer informatie over het gebruik van installatie kopieën met DBMS-Sku's raadpleegt u [Azure virtual machines DBMS-implementatie voor SAP NetWeaver][dbms-guide].
 
 Het volgende stroom diagram toont de SAP-specifieke volg orde van de stappen voor het implementeren van een VM vanuit Azure Marketplace:
 
@@ -426,21 +426,21 @@ De wizard begeleidt u bij het instellen van de vereiste para meters voor het mak
    * **Gebruikers naam en wacht woord** of **open bare SSH-sleutel**: Voer de gebruikers naam en het wacht woord in van de gebruiker die tijdens het inrichten is gemaakt. Voor een virtuele Linux-machine kunt u de open bare Secure shell-sleutel (SSH) invoeren die u gebruikt om u aan te melden bij de computer.
    * **Abonnement**: Selecteer het abonnement dat u wilt gebruiken om de nieuwe virtuele machine in te richten.
    * **Resourcegroep**: De naam van de resource groep voor de virtuele machine. U kunt de naam van een nieuwe resource groep of de naam van een resource groep opgeven die al bestaat.
-   * **Locatie**: Waar de nieuwe virtuele machine moet worden geïmplementeerd. Als u de virtuele machine wilt verbinden met uw on-premises netwerk, moet u ervoor zorgen dat u de locatie van het virtuele netwerk selecteert waarmee Azure verbinding maakt met uw on-premises netwerk. Zie voor meer informatie [Microsoft Azure netwerken][planning-guide-microsoft-azure-networking] in [Azure virtual machines planning en implementatie van SAP][planning-guide]net-Weaver.
+   * **Locatie**: Waar de nieuwe virtuele machine moet worden geïmplementeerd. Als u de virtuele machine wilt verbinden met uw on-premises netwerk, moet u ervoor zorgen dat u de locatie van het virtuele netwerk selecteert waarmee Azure verbinding maakt met uw on-premises netwerk. Zie voor meer informatie [Microsoft Azure netwerken][planning-guide-microsoft-azure-networking] in [Azure virtual machines planning en implementatie van SAP net-Weaver][planning-guide].
 1. **Grootte**:
 
-     Zie SAP Note [1928533]voor een lijst met ondersteunde VM-typen. Zorg ervoor dat u het juiste VM-type selecteert als u Azure Premium Storage wilt gebruiken. Niet alle VM-typen ondersteunen Premium Storage. Zie [opslag: voor meer informatie. Microsoft Azure Storage-en gegevens][planning-guide-storage-microsoft-azure-storage-and-data-disks] schijven en [Azure Premium Storage][planning-guide-azure-premium-storage] in [Azure virtual machines planning en implementatie van SAP][planning-guide]NetWeaver.
+     Zie SAP Note [1928533]voor een lijst met ondersteunde VM-typen. Zorg ervoor dat u het juiste VM-type selecteert als u Azure Premium Storage wilt gebruiken. Niet alle VM-typen ondersteunen Premium Storage. Zie [opslag: voor meer informatie. Microsoft Azure Storage-en gegevens][planning-guide-storage-microsoft-azure-storage-and-data-disks] schijven en [Azure Premium Storage][planning-guide-azure-premium-storage] in [Azure virtual machines planning en implementatie van SAP NetWeaver][planning-guide].
 
 1. **Instellingen voor**:
    * **Storage**
      * **Schijf type**: Selecteer het schijf type van de besturingssysteem schijf. Als u Premium Storage voor uw gegevens schijven wilt gebruiken, raden we u aan om ook Premium Storage te gebruiken voor de besturingssysteem schijf.
      * **Beheerde schijven gebruiken**: Als u Managed Disks wilt gebruiken, selecteert u Ja. Zie hoofd stuk [Managed disks][planning-guide-managed-disks] in de plannings handleiding voor meer informatie over Managed disks.
-     * **Opslagaccount**: Selecteer een bestaand opslag account of maak een nieuwe. Niet alle opslag typen werken voor het uitvoeren van SAP-toepassingen. Zie [opslag structuur van een virtuele machine voor RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)-implementaties voor meer informatie over opslag typen.
+     * **Opslagaccount**: Selecteer een bestaand opslag account of maak een nieuwe. Niet alle opslag typen werken voor het uitvoeren van SAP-toepassingen. Zie [opslag structuur van een virtuele machine voor RDBMS-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)voor meer informatie over opslag typen.
    * **Netwerk**
      * **Virtueel netwerk** en **subnet**: Als u de virtuele machine wilt integreren met uw intranet, selecteert u het virtuele netwerk dat is verbonden met uw on-premises netwerk.
      * **Openbaar IP-adres**: Selecteer het open bare IP-adres dat u wilt gebruiken of voer para meters in om een nieuw openbaar IP-adres te maken. U kunt een openbaar IP-adres gebruiken om toegang te krijgen tot uw virtuele machine via internet. Zorg ervoor dat u ook een netwerk beveiligings groep maakt om de toegang tot uw virtuele machine te beveiligen.
      * **Netwerk beveiligings groep**: Zie [netwerk verkeer beheren met netwerk beveiligings groepen][virtual-networks-nsg]voor meer informatie.
-   * **Extensies**: U kunt virtuele-machine uitbreidingen installeren door ze toe te voegen aan de implementatie. U hoeft geen uitbrei dingen toe te voegen in deze stap. De uitbrei dingen die zijn vereist voor SAP-ondersteuning, worden later geïnstalleerd. Zie hoofd stuk [de uitgebreide bewakings uitbreiding van Azure configureren voor SAP][deployment-guide-4.5] in deze hand leiding.
+   * **Extensies**: U kunt virtuele-machine uitbreidingen installeren door ze toe te voegen aan de implementatie. U hoeft geen uitbrei dingen toe te voegen in deze stap. De uitbrei dingen die zijn vereist voor SAP-ondersteuning, worden later geïnstalleerd. Zie hoofd stuk [de Azure-extensie voor SAP configureren][deployment-guide-4.5] in deze hand leiding.
    * **Hoge Beschik baarheid**: Selecteer een beschikbaarheidsset of voer de para meters in om een nieuwe beschikbaarheidsset te maken. Zie [Azure-beschikbaarheids sets][planning-guide-3.2.3]voor meer informatie.
    * **Controle**
      * **Diagnostische gegevens over opstarten**: U kunt **uitschakelen** selecteren voor diagnostische gegevens over opstarten.
@@ -508,19 +508,19 @@ De Azure VM-agent wordt standaard geïmplementeerd wanneer u een installatie kop
 
 #### <a name="configure-proxy-settings"></a>Proxy-instellingen configureren
 
-Afhankelijk van de configuratie van uw on-premises netwerk moet u mogelijk de proxy op uw virtuele machine instellen. Als uw virtuele machine is verbonden met uw on-premises netwerk via VPN of ExpressRoute, is de virtuele machine mogelijk niet in staat om toegang te krijgen tot internet en kunt u de vereiste extensies niet downloaden of bewakings gegevens verzamelen. Zie [Configure the proxy][deployment-guide-configure-proxy](Engelstalig) voor meer informatie.
+Afhankelijk van de configuratie van uw on-premises netwerk moet u mogelijk de proxy op uw virtuele machine instellen. Als uw virtuele machine is verbonden met uw on-premises netwerk via VPN of ExpressRoute, is de virtuele machine mogelijk niet in staat om toegang te krijgen tot internet en kunt u de vereiste VM-extensies niet downloaden of Azure-infrastructuur informatie voor de SAP host agent verzamelen via de SAP-extensie voor Azure. Zie [Configure the proxy][deployment-guide-configure-proxy](Engelstalig) voor meer informatie.
 
 #### <a name="join-a-domain-windows-only"></a>Lid worden van een domein (alleen Windows)
 
-Als uw Azure-implementatie is verbonden met een on-premises Active Directory of een DNS-exemplaar via een Azure site-naar-site-VPN-verbinding of ExpressRoute (dit wordt *Cross-premises* genoemd in [Azure virtual machines planning en implementatie voor SAP ][planning-guide]NetWeaver), wordt verwacht dat de virtuele machine wordt toegevoegd aan een on-premises domein. Zie [een virtuele machine toevoegen aan een on-premises domein (alleen Windows)][deployment-guide-4.3]voor meer informatie over overwegingen voor deze taak.
+Als uw Azure-implementatie is verbonden met een on-premises Active Directory of een DNS-exemplaar via een Azure site-naar-site-VPN-verbinding of ExpressRoute (dit wordt *Cross-premises* genoemd in [Azure virtual machines planning en implementatie voor SAP Netweaver][planning-guide]), wordt verwacht dat de virtuele machine wordt toegevoegd aan een on-premises domein. Zie [een virtuele machine toevoegen aan een on-premises domein (alleen Windows)][deployment-guide-4.3]voor meer informatie over overwegingen voor deze taak.
 
-#### <a name="ec323ac3-1de9-4c3a-b770-4ff701def65b"></a>Bewaking configureren
+#### <a name="ec323ac3-1de9-4c3a-b770-4ff701def65b"></a>VM-extensie configureren
 
-Als u wilt dat SAP uw omgeving ondersteunt, stelt u de Azure-bewakings extensie voor SAP in zoals beschreven in [de Azure Enhanced monitoring-extensie voor SAP configureren][deployment-guide-4.5]. Controleer de vereisten voor SAP-bewaking en de vereiste minimum versie van de SAP-kernel en SAP Hosta Gent, in de resources die worden vermeld in [SAP-resources][deployment-guide-2.2].
+Om ervoor te zorgen dat SAP uw omgeving ondersteunt, stelt u de Azure-extensie voor SAP in zoals beschreven in [de Azure-extensie voor SAP configureren][deployment-guide-4.5]. Controleer de vereisten voor SAP en de vereiste minimum versie van de SAP-kernel en SAP Hosta Gent, in de resources die worden vermeld in [SAP-resources][deployment-guide-2.2].
 
-#### <a name="monitoring-check"></a>Controle controleren
+#### <a name="vm-extension-for-sap-check"></a>VM-extensie voor SAP-controle
 
-Controleer of bewaking werkt, zoals wordt beschreven in [controles en probleem oplossing voor het instellen van end-to-end-bewaking][deployment-guide-troubleshooting-chapter].
+Controleer of de VM-extensie voor SAP werkt, zoals beschreven in [controles en probleem oplossing voor end-to-end gegevens verzameling voor SAP host agent][deployment-guide-troubleshooting-chapter].
 
 #### <a name="post-deployment-steps"></a>Stappen na de implementatie
 
@@ -545,7 +545,7 @@ U kunt verschillende stappen gebruiken om een persoonlijke installatie kopie voo
 >
 
 ---
-U kunt een aangepaste installatie kopie voorbereiden en maken en deze vervolgens gebruiken om meerdere nieuwe Vm's te maken. Dit wordt beschreven in [Azure virtual machines planning en implementatie voor SAP][planning-guide]net-Weaver. Uw Data Base-inhoud instellen met behulp van SAP software Provisioning Manager voor het installeren van een nieuw SAP-systeem (herstelt een database back-up van een schijf die is gekoppeld aan de virtuele machine) of door een back-up van een Data Base rechtstreeks te herstellen vanuit Azure Storage, als uw DBMS ondersteunt. Zie voor meer informatie, [Azure virtuele Machines DBMS-implementatie voor SAP NetWeaver][dbms-guide]. Als u al een SAP-systeem op uw on-premises VM hebt geïnstalleerd (met name voor systemen met twee lagen), kunt u de SAP-systeem instellingen aanpassen na de implementatie van de Azure-VM met behulp van de procedure voor het wijzigen van het systeem dat wordt ondersteund door SAP software Provisioning Manager (SAP Opmerking [1619720]). Als dat niet het geval is, kunt u de SAP-software installeren nadat u de virtuele Azure-machine hebt geïmplementeerd.
+U kunt een aangepaste installatie kopie voorbereiden en maken en deze vervolgens gebruiken om meerdere nieuwe Vm's te maken. Dit wordt beschreven in [Azure virtual machines planning en implementatie voor SAP net-Weaver][planning-guide]. Uw Data Base-inhoud instellen met behulp van SAP software Provisioning Manager voor het installeren van een nieuw SAP-systeem (herstelt een database back-up van een schijf die is gekoppeld aan de virtuele machine) of door een back-up van een Data Base rechtstreeks te herstellen vanuit Azure Storage, als uw DBMS ondersteunt. Zie voor meer informatie, [Azure virtuele Machines DBMS-implementatie voor SAP NetWeaver][dbms-guide]. Als u al een SAP-systeem op uw on-premises VM hebt geïnstalleerd (met name voor systemen met twee lagen), kunt u de SAP-systeem instellingen aanpassen na de implementatie van de Azure-VM met behulp van de procedure voor het wijzigen van het systeem dat wordt ondersteund door SAP software Provisioning Manager (SAP Opmerking [1619720]). Als dat niet het geval is, kunt u de SAP-software installeren nadat u de virtuele Azure-machine hebt geïmplementeerd.
 
 Het volgende stroom diagram toont de SAP-specifieke volg orde van de stappen voor het implementeren van een virtuele machine vanuit een aangepaste installatie kopie:
 
@@ -566,10 +566,10 @@ De wizard begeleidt u bij het instellen van de vereiste para meters voor het mak
    * **Gebruikers naam en wacht woord** of **open bare SSH-sleutel**: Voer de gebruikers naam en het wacht woord in van de gebruiker die tijdens het inrichten is gemaakt. Voor een virtuele Linux-machine kunt u de open bare Secure shell-sleutel (SSH) invoeren die u gebruikt om u aan te melden bij de computer.
    * **Abonnement**: Selecteer het abonnement dat u wilt gebruiken om de nieuwe virtuele machine in te richten.
    * **Resourcegroep**: De naam van de resource groep voor de virtuele machine. U kunt de naam van een nieuwe resource groep of de naam van een resource groep opgeven die al bestaat.
-   * **Locatie**: Waar de nieuwe virtuele machine moet worden geïmplementeerd. Als u de virtuele machine wilt verbinden met uw on-premises netwerk, moet u ervoor zorgen dat u de locatie van het virtuele netwerk selecteert waarmee Azure verbinding maakt met uw on-premises netwerk. Zie voor meer informatie [Microsoft Azure netwerken][planning-guide-microsoft-azure-networking] in [Azure virtual machines planning en implementatie van SAP][planning-guide]net-Weaver.
+   * **Locatie**: Waar de nieuwe virtuele machine moet worden geïmplementeerd. Als u de virtuele machine wilt verbinden met uw on-premises netwerk, moet u ervoor zorgen dat u de locatie van het virtuele netwerk selecteert waarmee Azure verbinding maakt met uw on-premises netwerk. Zie voor meer informatie [Microsoft Azure netwerken][planning-guide-microsoft-azure-networking] in [Azure virtual machines planning en implementatie van SAP net-Weaver][planning-guide].
 1. **Grootte**:
 
-     Zie SAP Note [1928533]voor een lijst met ondersteunde VM-typen. Zorg ervoor dat u het juiste VM-type selecteert als u Azure Premium Storage wilt gebruiken. Niet alle VM-typen ondersteunen Premium Storage. Zie [opslag: voor meer informatie. Microsoft Azure Storage-en gegevens][planning-guide-storage-microsoft-azure-storage-and-data-disks] schijven en [Azure Premium Storage][planning-guide-azure-premium-storage] in [Azure virtual machines planning en implementatie van SAP][planning-guide]NetWeaver.
+     Zie SAP Note [1928533]voor een lijst met ondersteunde VM-typen. Zorg ervoor dat u het juiste VM-type selecteert als u Azure Premium Storage wilt gebruiken. Niet alle VM-typen ondersteunen Premium Storage. Zie [opslag: voor meer informatie. Microsoft Azure Storage-en gegevens][planning-guide-storage-microsoft-azure-storage-and-data-disks] schijven en [Azure Premium Storage][planning-guide-azure-premium-storage] in [Azure virtual machines planning en implementatie van SAP NetWeaver][planning-guide].
 
 1. **Instellingen voor**:
    * **Storage**
@@ -579,7 +579,7 @@ De wizard begeleidt u bij het instellen van de vereiste para meters voor het mak
      * **Virtueel netwerk** en **subnet**: Als u de virtuele machine wilt integreren met uw intranet, selecteert u het virtuele netwerk dat is verbonden met uw on-premises netwerk.
      * **Openbaar IP-adres**: Selecteer het open bare IP-adres dat u wilt gebruiken of voer para meters in om een nieuw openbaar IP-adres te maken. U kunt een openbaar IP-adres gebruiken om toegang te krijgen tot uw virtuele machine via internet. Zorg ervoor dat u ook een netwerk beveiligings groep maakt om de toegang tot uw virtuele machine te beveiligen.
      * **Netwerk beveiligings groep**: Zie [netwerk verkeer beheren met netwerk beveiligings groepen][virtual-networks-nsg]voor meer informatie.
-   * **Extensies**: U kunt virtuele-machine uitbreidingen installeren door ze toe te voegen aan de implementatie. U hoeft in deze stap geen extensie toe te voegen. De uitbrei dingen die zijn vereist voor SAP-ondersteuning, worden later geïnstalleerd. Zie hoofd stuk [de uitgebreide bewakings uitbreiding van Azure configureren voor SAP][deployment-guide-4.5] in deze hand leiding.
+   * **Extensies**: U kunt virtuele-machine uitbreidingen installeren door ze toe te voegen aan de implementatie. U hoeft in deze stap geen extensie toe te voegen. De uitbrei dingen die zijn vereist voor SAP-ondersteuning, worden later geïnstalleerd. Zie hoofd stuk [de Azure-extensie voor SAP configureren][deployment-guide-4.5] in deze hand leiding.
    * **Hoge Beschik baarheid**: Selecteer een beschikbaarheidsset of voer de para meters in om een nieuwe beschikbaarheidsset te maken. Zie [Azure-beschikbaarheids sets][planning-guide-3.2.3]voor meer informatie.
    * **Controle**
      * **Diagnostische gegevens over opstarten**: U kunt **uitschakelen** selecteren voor diagnostische gegevens over opstarten.
@@ -650,26 +650,26 @@ Als u de sjablonen wilt gebruiken die in de voor gaande sectie worden beschreven
 
 #### <a name="join-a-domain-windows-only"></a>Lid worden van een domein (alleen Windows)
 
-Als uw Azure-implementatie is verbonden met een on-premises Active Directory of een DNS-exemplaar via een Azure site-naar-site-VPN-verbinding of Azure ExpressRoute (dit wordt *Cross-premises* genoemd in [Azure virtual machines planning en implementatie voor SAP ][planning-guide]NetWeaver), wordt verwacht dat de virtuele machine wordt toegevoegd aan een on-premises domein. Zie [een virtuele machine toevoegen aan een on-premises domein (alleen Windows)][deployment-guide-4.3]voor meer informatie over overwegingen voor deze stap.
+Als uw Azure-implementatie is verbonden met een on-premises Active Directory of een DNS-exemplaar via een Azure site-naar-site-VPN-verbinding of Azure ExpressRoute (dit wordt *Cross-premises* genoemd in [Azure virtual machines planning en implementatie voor SAP Netweaver][planning-guide]), wordt verwacht dat de virtuele machine wordt toegevoegd aan een on-premises domein. Zie [een virtuele machine toevoegen aan een on-premises domein (alleen Windows)][deployment-guide-4.3]voor meer informatie over overwegingen voor deze stap.
 
 #### <a name="configure-proxy-settings"></a>Proxy-instellingen configureren
 
-Afhankelijk van de configuratie van uw on-premises netwerk moet u mogelijk de proxy op uw virtuele machine instellen. Als uw virtuele machine is verbonden met uw on-premises netwerk via VPN of ExpressRoute, is de virtuele machine mogelijk niet in staat om toegang te krijgen tot internet en kunt u de vereiste extensies niet downloaden of bewakings gegevens verzamelen. Zie [Configure the proxy][deployment-guide-configure-proxy](Engelstalig) voor meer informatie.
+Afhankelijk van de configuratie van uw on-premises netwerk moet u mogelijk de proxy op uw virtuele machine instellen. Als uw virtuele machine is verbonden met uw on-premises netwerk via VPN of ExpressRoute, is de virtuele machine mogelijk niet in staat om toegang te krijgen tot internet en kunt u de vereiste VM-extensies niet downloaden of Azure-infrastructuur informatie voor de SAP host agent verzamelen via de SAP-extensie Zie [Configure the proxy][deployment-guide-configure-proxy](Engelstalig) voor Azure.
 
-#### <a name="configure-monitoring"></a>Bewaking configureren
+#### <a name="configure-azure-vm-extension-for-sap"></a>Azure VM-extensie voor SAP configureren
 
-Als u wilt dat SAP uw omgeving ondersteunt, stelt u de Azure-bewakings extensie voor SAP in zoals beschreven in [de Azure Enhanced monitoring-extensie voor SAP configureren][deployment-guide-4.5]. Controleer de vereisten voor SAP-bewaking en de vereiste minimum versie van de SAP-kernel en SAP Hosta Gent, in de resources die worden vermeld in [SAP-resources][deployment-guide-2.2].
+Om ervoor te zorgen dat SAP uw omgeving ondersteunt, stelt u de Azure-extensie voor SAP in zoals beschreven in [de Azure-extensie voor SAP configureren][deployment-guide-4.5]. Controleer de vereisten voor SAP en de vereiste minimum versie van de SAP-kernel en SAP Hosta Gent, in de resources die worden vermeld in [SAP-resources][deployment-guide-2.2].
 
-#### <a name="monitoring-check"></a>Controle controleren
+#### <a name="sap-vm-extension-check"></a>Controle van SAP-VM-extensie
 
-Controleer of bewaking werkt, zoals wordt beschreven in [controles en probleem oplossing voor het instellen van end-to-end-bewaking][deployment-guide-troubleshooting-chapter].
+Controleer of de VM-extensie voor SAP werkt, zoals beschreven in [controles en probleem oplossing voor end-to-end gegevens verzameling voor SAP host agent][deployment-guide-troubleshooting-chapter].
 
 
 ### <a name="a9a60133-a763-4de8-8986-ac0fa33aa8c1"></a>Scenario 3: Een on-premises VM verplaatsen met behulp van een niet-gegeneraliseerde Azure VHD met SAP
 
 In dit scenario bent u van plan een specifiek SAP-systeem te verplaatsen van een on-premises omgeving naar Azure. U kunt dit doen door de VHD met het besturings systeem, de SAP binaire bestanden en uiteindelijk de binaire bestanden van de DBMS te uploaden, plus de Vhd's met de gegevens-en logboek bestanden van het DBMS, naar Azure. In tegens telling tot het [scenario dat wordt beschreven in scenario 2: Een virtuele machine implementeren met een aangepaste installatie kopie][deployment-guide-3.3]voor SAP. in dit geval moet u de hostnaam, SAP sid en SAP-gebruikers accounts in de Azure VM blijven, omdat deze zijn geconfigureerd in de on-premises omgeving. U hoeft het besturings systeem niet te generaliseren. Dit scenario is het meest van toepassing op cross-premises scenario's waarbij een deel van het SAP-landschap on-premises en een deel ervan wordt uitgevoerd op Azure.
 
-In dit scenario wordt de VM-agent **niet** automatisch geïnstalleerd tijdens de implementatie. Omdat de VM-agent en de Azure Enhanced monitoring-extensie voor SAP vereist zijn voor het uitvoeren van SAP NetWeaver op Azure, moet u beide onderdelen hand matig downloaden, installeren en inschakelen nadat u de virtuele machine hebt gemaakt.
+In dit scenario wordt de VM-agent **niet** automatisch geïnstalleerd tijdens de implementatie. Omdat de VM-agent en de Azure-extensie voor SAP vereist zijn voor het uitvoeren van SAP NetWeaver op Azure, moet u beide onderdelen hand matig downloaden, installeren en inschakelen nadat u de virtuele machine hebt gemaakt.
 
 Zie de volgende bronnen voor meer informatie over de Azure VM-agent.
 
@@ -690,7 +690,7 @@ Het volgende stroom diagram toont de volg orde van de stappen voor het verplaats
 
 ![Stroom diagram van VM-implementatie voor SAP-systemen met behulp van een VM-schijf][deployment-guide-figure-400]
 
-Als de schijf al is geüpload en gedefinieerd in azure (Zie [azure virtual machines planning en implementatie voor SAP][planning-guide]NetWeaver), voert u de taken uit die in de volgende secties worden beschreven.
+Als de schijf al is geüpload en gedefinieerd in azure (Zie [azure virtual machines planning en implementatie voor SAP NetWeaver][planning-guide]), voert u de taken uit die in de volgende secties worden beschreven.
 
 #### <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
@@ -740,30 +740,30 @@ Als u geen gebruik maakt van de sjablonen die in de voor gaande sectie worden be
 
 #### <a name="join-a-domain-windows-only"></a>Lid worden van een domein (alleen Windows)
 
-Als uw Azure-implementatie is verbonden met een on-premises Active Directory of een DNS-exemplaar via een Azure site-naar-site-VPN-verbinding of ExpressRoute (dit wordt *Cross-premises* genoemd in [Azure virtual machines planning en implementatie voor SAP ][planning-guide]NetWeaver), wordt verwacht dat de virtuele machine wordt toegevoegd aan een on-premises domein. Zie [een virtuele machine toevoegen aan een on-premises domein (alleen Windows)][deployment-guide-4.3]voor meer informatie over overwegingen voor deze taak.
+Als uw Azure-implementatie is verbonden met een on-premises Active Directory of een DNS-exemplaar via een Azure site-naar-site-VPN-verbinding of ExpressRoute (dit wordt *Cross-premises* genoemd in [Azure virtual machines planning en implementatie voor SAP Netweaver][planning-guide]), wordt verwacht dat de virtuele machine wordt toegevoegd aan een on-premises domein. Zie [een virtuele machine toevoegen aan een on-premises domein (alleen Windows)][deployment-guide-4.3]voor meer informatie over overwegingen voor deze taak.
 
 #### <a name="configure-proxy-settings"></a>Proxy-instellingen configureren
 
-Afhankelijk van de configuratie van uw on-premises netwerk moet u mogelijk de proxy op uw virtuele machine instellen. Als uw virtuele machine is verbonden met uw on-premises netwerk via VPN of ExpressRoute, is de virtuele machine mogelijk niet in staat om toegang te krijgen tot internet en kunt u de vereiste extensies niet downloaden of bewakings gegevens verzamelen. Zie [Configure the proxy][deployment-guide-configure-proxy](Engelstalig) voor meer informatie.
+Afhankelijk van de configuratie van uw on-premises netwerk moet u mogelijk de proxy op uw virtuele machine instellen. Als uw virtuele machine is verbonden met uw on-premises netwerk via VPN of ExpressRoute, is de virtuele machine mogelijk niet in staat om toegang te krijgen tot internet en kunt u de vereiste VM-extensies niet downloaden of Azure-infrastructuur informatie voor de SAP host agent verzamelen via de SAP-extensie Zie [Configure the proxy][deployment-guide-configure-proxy](Engelstalig) voor Azure.
 
-#### <a name="configure-monitoring"></a>Bewaking configureren
+#### <a name="configure-azure-vm-extension-for-sap"></a>Azure VM-extensie voor SAP configureren
 
-Als u wilt dat SAP uw omgeving ondersteunt, stelt u de Azure-bewakings extensie voor SAP in zoals beschreven in [de Azure Enhanced monitoring-extensie voor SAP configureren][deployment-guide-4.5]. Controleer de vereisten voor SAP-bewaking en de vereiste minimum versie van de SAP-kernel en SAP Hosta Gent, in de resources die worden vermeld in [SAP-resources][deployment-guide-2.2].
+Om ervoor te zorgen dat SAP uw omgeving ondersteunt, stelt u de Azure-extensie voor SAP in zoals beschreven in [de Azure-extensie voor SAP configureren][deployment-guide-4.5]. Controleer de vereisten voor SAP en de vereiste minimum versie van de SAP-kernel en SAP Hosta Gent, in de resources die worden vermeld in [SAP-resources][deployment-guide-2.2].
 
-#### <a name="monitoring-check"></a>Controle controleren
+#### <a name="sap-vm-check"></a>Controle van SAP-VM
 
-Controleer of bewaking werkt, zoals wordt beschreven in [controles en probleem oplossing voor het instellen van end-to-end-bewaking][deployment-guide-troubleshooting-chapter].
+Controleer of de VM-extensie voor SAP werkt, zoals beschreven in [controles en probleem oplossing voor end-to-end gegevens verzameling voor SAP host agent][deployment-guide-troubleshooting-chapter].
 
-## <a name="update-the-monitoring-configuration-for-sap"></a>De bewakings configuratie voor SAP bijwerken
+## <a name="update-the-configuration-of-azure-extension-for-sap"></a>De configuratie van de Azure-extensie voor SAP bijwerken
 
-Werk de SAP-bewakings configuratie bij in een van de volgende scenario's:
-* Het Joint micro soft/SAP-team breidt de bewakings mogelijkheden uit en vraagt meer of minder tellers.
-* Micro soft introduceert een nieuwe versie van de onderliggende Azure-infra structuur die de bewakings gegevens levert en de uitgebreide bewakings extensie van Azure voor SAP moet worden aangepast aan die wijzigingen.
-* U kunt extra gegevens schijven koppelen aan uw Azure VM of een gegevens schijf verwijderen. In dit scenario werkt u het verzamelen van gegevens met betrekking tot opslag bij. Het wijzigen van uw configuratie door eind punten toe te voegen of te verwijderen of door IP-adressen toe te wijzen aan een virtuele machine heeft geen invloed op de bewakings configuratie.
+Werk de configuratie van de Azure-extensie voor SAP bij in een van de volgende scenario's:
+* Het Joint micro soft/SAP-team breidt de mogelijkheden van de VM-extensie uit en vraagt meer of minder tellers.
+* Micro soft introduceert een nieuwe versie van de onderliggende Azure-infra structuur die de gegevens levert en de Azure-extensie voor SAP moet worden aangepast aan die wijzigingen.
+* U kunt extra gegevens schijven koppelen aan uw Azure VM of een gegevens schijf verwijderen. In dit scenario werkt u het verzamelen van gegevens met betrekking tot opslag bij. Het wijzigen van uw configuratie door eind punten toe te voegen of te verwijderen of door IP-adressen toe te wijzen aan een virtuele machine heeft geen invloed op de configuratie van de extensie.
 * U kunt de grootte van uw virtuele Azure-machine wijzigen, bijvoorbeeld van grootte A5 naar een andere VM-grootte.
 * U voegt nieuwe netwerk interfaces toe aan uw Azure-VM.
 
-Als u bewakings instellingen wilt bijwerken, werkt u de bewakings infrastructuur bij door de stappen in [de Azure Enhanced monitoring-extensie configureren voor SAP][deployment-guide-4.5]te volgen.
+Als u de instellingen wilt bijwerken, moet u de configuratie van Azure-extensie voor SAP bijwerken door de stappen in [de Azure-extensie voor SAP configureren][deployment-guide-4.5]te volgen.
 
 ## <a name="detailed-tasks-for-sap-software-deployment"></a>Gedetailleerde taken voor SAP-software-implementatie
 
@@ -925,15 +925,15 @@ De proxy-instellingen \\in\\etc waagent. conf zijn ook van toepassing op de vere
 
 Zie door de gebruiker [gedefinieerde routes en door sturen via IP][virtual-networks-udr-overview]voor meer informatie over door de gebruiker gedefinieerde routes.
 
-### <a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>De uitgebreide bewakings extensie van Azure configureren voor SAP
+### <a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>De Azure-extensie voor SAP configureren
 
-Wanneer u de virtuele machine hebt voor bereid zoals beschreven in [implementatie scenario's van vm's voor SAP on Azure][deployment-guide-3], wordt de Azure VM-agent geïnstalleerd op de virtuele machine. De volgende stap is het implementeren van de uitgebreide bewakings extensie van Azure voor SAP, die beschikbaar is in de Azure extension-opslag plaats in de wereld wijde Azure-data centers. Zie [Azure virtual machines planning en implementatie voor SAP][planning-guide-9.1]net-Weaver voor meer informatie.
+Wanneer u de virtuele machine hebt voor bereid zoals beschreven in [implementatie scenario's van vm's voor SAP on Azure][deployment-guide-3], wordt de Azure VM-agent geïnstalleerd op de virtuele machine. De volgende stap is het implementeren van de Azure-extensie voor SAP, die beschikbaar is in de Azure extension-opslag plaats in de wereld wijde Azure-data centers. Zie [Azure virtual machines planning en implementatie voor SAP net-Weaver][planning-guide-9.1]voor meer informatie.
 
-U kunt Power shell of Azure CLI gebruiken voor het installeren en configureren van de uitgebreide bewakings extensie van Azure voor SAP. Als u de uitbrei ding op een Windows-of Linux-VM wilt installeren met behulp van een Windows-computer, raadpleegt u [Azure PowerShell][deployment-guide-4.5.1]. Als u de uitbrei ding op een Linux-VM wilt installeren met behulp van een Linux-Desktop, raadpleegt u [Azure cli][deployment-guide-4.5.2].
+U kunt Power shell of Azure CLI gebruiken om de Azure-extensie voor SAP te installeren en te configureren. Als u de uitbrei ding op een Windows-of Linux-VM wilt installeren met behulp van een Windows-computer, raadpleegt u [Azure PowerShell][deployment-guide-4.5.1]. Als u de uitbrei ding op een Linux-VM wilt installeren met behulp van een Linux-Desktop, raadpleegt u [Azure cli][deployment-guide-4.5.2].
 
 #### <a name="987cf279-d713-4b4c-8143-6b11589bb9d4"></a>Azure PowerShell voor Linux-en Windows-Vm's
 
-De Azure Enhanced monitoring-extensie voor SAP installeren met behulp van Power shell:
+De Azure-extensie voor SAP installeren met behulp van Power shell:
 
 1. Zorg ervoor dat u de nieuwste versie van de cmdlet Azure PowerShell hebt geïnstalleerd. Zie [deploying Azure PowerShell cmdlets][deployment-guide-4.1](Engelstalig) voor meer informatie.  
 1. Voer de volgende PowerShell-cmdlet uit.
@@ -952,21 +952,21 @@ Zie `Set-AzVMAEMExtension` [set-AzVMAEMExtension][msdn-set-Azvmaemextension]voor
 
 ![De SAP-specifieke Azure-cmdlet Set-AzVMAEMExtension is uitgevoerd.][deployment-guide-figure-900]
 
-De `Set-AzVMAEMExtension` configuratie bevat alle stappen voor het configureren van host-bewaking voor SAP.
+De `Set-AzVMAEMExtension` configuratie bevat alle stappen voor het configureren van het verzamelen van hostgegevens voor SAP.
 
 De script uitvoer bevat de volgende informatie:
 
-* Bevestiging dat de controle van de besturingssysteem schijf en alle extra gegevens schijven is geconfigureerd.
+* Bevestiging dat het verzamelen van gegevens voor de besturingssysteem schijf en alle extra gegevens schijven is geconfigureerd.
 * De volgende twee berichten bevestigen de configuratie van metrische opslag gegevens voor een specifiek opslag account.
-* Een regel van uitvoer geeft de status van de werkelijke update van de bewakings configuratie.
+* Eén regel van uitvoer geeft de status van de werkelijke update van de VM-extensie voor SAP-configuratie.
 * Een andere regel van uitvoer bevestigt dat de configuratie is geïmplementeerd of bijgewerkt.
-* De laatste regel van de uitvoer is informatief. Hier ziet u de opties voor het testen van de bewakings configuratie.
-* Als u wilt controleren of alle stappen van de uitgebreide Azure-bewaking zijn uitgevoerd en dat de Azure-infra structuur de benodigde gegevens bevat, gaat u verder met de gereedheids controle voor de Azure Enhanced monitoring-extensie voor SAP, zoals beschreven in [ Gereedheids controle voor Azure Enhanced monitoring voor SAP][deployment-guide-5.1].
+* De laatste regel van de uitvoer is informatief. Hier ziet u de opties voor het testen van de VM-extensie voor SAP-configuratie.
+* Als u wilt controleren of alle stappen van de Azure VM-extensie voor SAP-configuratie met succes zijn uitgevoerd en dat de Azure-infra structuur de benodigde gegevens bevat, gaat u verder met de gereedheids controle voor de Azure-extensie voor SAP, zoals beschreven in [gereedheids controle voor Azure-extensie voor SAP][deployment-guide-5.1].
 * Wacht 15-30 minuten tot Azure Diagnostics de relevante gegevens wilt verzamelen.
 
 #### <a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>Azure CLI voor Linux-Vm's
 
-De Azure Enhanced monitoring-extensie voor SAP installeren met behulp van Azure CLI:
+De Azure-extensie voor SAP installeren met behulp van Azure CLI:
 
    1. Installeer de klassieke Azure-CLI, zoals beschreven in [Installeer de klassieke Azure-cli][azure-cli].
    1. Meld u aan met uw Azure-account:
@@ -981,7 +981,7 @@ De Azure Enhanced monitoring-extensie voor SAP installeren met behulp van Azure 
       azure config mode arm
       ```
 
-   1. Uitgebreide Azure-bewaking inschakelen:
+   1. Azure-extensie voor SAP inschakelen:
 
       ```
       azure vm enable-aem <resource-group-name> <vm-name>
@@ -1008,7 +1008,7 @@ De Azure Enhanced monitoring-extensie voor SAP installeren met behulp van Azure 
       az vm aem set -g <resource-group-name> -n <vm name>
       ```
 
-1. Controleer of de Azure Enhanced monitoring-extensie actief is op de virtuele Azure Linux-machine. Controleer of het bestand \\var\\lib\\AzureEnhancedMonitor\\PerfCounters bestaat. Als deze bestaat, voert u bij een opdracht prompt de volgende opdracht uit om de gegevens weer te geven die zijn verzameld door Azure Enhanced monitor:
+1. Controleer of de Azure-extensie voor SAP actief is op de virtuele Azure Linux-machine. Controleer of het bestand \\var\\lib\\AzureEnhancedMonitor\\PerfCounters bestaat. Als deze bestaat, voert u bij een opdracht prompt de volgende opdracht uit om de gegevens weer te geven die zijn verzameld door de Azure-extensie voor SAP:
 
    ```
    cat /var/lib/AzureEnhancedMonitor/PerfCounters
@@ -1022,25 +1022,25 @@ De Azure Enhanced monitoring-extensie voor SAP installeren met behulp van Azure 
    ...
    ```
 
-## <a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Controles en probleem oplossing voor end-to-end-bewaking
+## <a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Controles en probleem oplossing voor end-to-end gegevens verzameling voor SAP host agent
 
-Nadat u uw Azure-VM hebt geïmplementeerd en de relevante Azure-bewakings infrastructuur hebt ingesteld, controleert u of alle onderdelen van de Azure Enhanced monitoring-extensie werken zoals verwacht.
+Nadat u uw virtuele Azure-machine hebt geïmplementeerd en de relevante Azure-extensie voor SAP hebt ingesteld, controleert u of alle onderdelen van de extensie werken zoals verwacht.
 
-Voer de gereedheids controle uit voor de uitgebreide bewakings extensie van Azure voor SAP, zoals beschreven in [de gereedheids controle voor de uitgebreide bewakings extensie van Azure voor SAP][deployment-guide-5.1]. Als alle resultaten van de gereedheids controle positief zijn en alle relevante prestatie meter items worden weer gegeven, is Azure monitoring geslaagd. U kunt door gaan met de installatie van de SAP host-agent zoals beschreven in de SAP-notities in [SAP-bronnen][deployment-guide-2.2]. Als de gereedheids controle aangeeft dat er prestatie meter items ontbreken, voert u de status controle voor de infra structuur van Azure monitoring uit, zoals wordt beschreven in de [status controle voor de configuratie van de infra structuur van Azure][deployment-guide-5.2]. Zie [problemen met Azure-bewaking voor SAP oplossen][deployment-guide-5.3]voor meer opties voor probleem oplossing.
+Voer de gereedheids controle uit voor de Azure-extensie voor SAP, zoals beschreven in [de gereedheids controle voor de Azure-extensie voor SAP][deployment-guide-5.1]. Als alle resultaten van de gereedheids controle positief zijn en alle relevante prestatie meter items goed worden weer gegeven, is Azure-extensie voor SAP ingesteld. U kunt door gaan met de installatie van de SAP host-agent zoals beschreven in de SAP-notities in [SAP-bronnen][deployment-guide-2.2]. Als de gereedheids controle aangeeft dat er prestatie meter items ontbreken, voert u de status controle voor de Azure-extensie voor SAP uit, zoals wordt beschreven in [status controle voor Azure-extensie voor SAP-configuratie][deployment-guide-5.2]. Zie [problemen met Azure-extensie voor SAP oplossen][deployment-guide-5.3]voor meer opties voor probleem oplossing.
 
-### <a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Gereedheids controle voor de uitgebreide bewakings extensie van Azure voor SAP
+### <a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Gereedheids controle voor de Azure-extensie voor SAP
 
-Met deze controle wordt ervoor gezorgd dat alle prestatie gegevens die in uw SAP-toepassing worden weer gegeven, worden verzorgd door de onderliggende infra structuur van Azure monitoring.
+Met deze controle wordt ervoor gezorgd dat alle prestatie gegevens die in uw SAP-toepassing worden weer gegeven, worden verzorgd door de onderliggende Azure-extensie voor SAP.
 
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>De gereedheids controle uitvoeren op een Windows-VM
 
 1. Meld u aan bij de virtuele machine van Azure (met een beheerders account is niet nodig).
 1. Open een opdrachtpromptvenster.
-1. Ga naar de opdracht prompt en wijzig de map in de installatiemap van de Azure Enhanced monitoring-extensie voor SAP: C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;version>\\drop
+1. Ga naar de opdracht prompt en wijzig de map in de installatiemap van de Azure-extensie voor SAP: C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;version>\\drop
 
-   De *versie* in het pad naar de bewakings uitbreiding kan variëren. Als er mappen voor meerdere versies van de bewakings extensie in de installatiemap worden weer gegeven, controleert u de configuratie van de AzureEnhancedMonitoring Windows-service en schakelt u over naar de map die wordt aangegeven als *pad naar uitvoerbaar bestand*.
+   De *versie* in het pad naar de extensie kan variëren. Als er mappen worden weer gegeven voor meerdere versies van de uitbrei ding in de installatiemap, controleert u de configuratie van de AzureEnhancedMonitoring Windows-service en schakelt u over naar de map die wordt aangegeven als *pad naar uitvoerbaar bestand*.
 
-   ![Eigenschappen van de service die de uitgebreide bewakings extensie van Azure uitvoert voor SAP][deployment-guide-figure-1000]
+   ![Eigenschappen van de service die de Azure-extensie voor SAP uitvoert][deployment-guide-figure-1000]
 
 1. Voer bij de opdracht prompt **azperflib. exe** zonder para meters uit.
 
@@ -1049,37 +1049,37 @@ Met deze controle wordt ervoor gezorgd dat alle prestatie gegevens die in uw SAP
    >
    >
 
-Als de Azure Enhanced monitoring-extensie niet is geïnstalleerd of als de AzureEnhancedMonitoring-service niet wordt uitgevoerd, is de extensie niet op de juiste wijze geconfigureerd. Zie [problemen met de Azure-bewakings infrastructuur voor SAP oplossen][deployment-guide-5.3]voor meer informatie over het implementeren van de uitbrei ding.
+Als de Azure-extensie voor SAP niet is geïnstalleerd of als de AzureEnhancedMonitoring-service niet wordt uitgevoerd, is de extensie niet op de juiste wijze geconfigureerd. Zie [problemen met de Azure-extensie voor SAP oplossen][deployment-guide-5.3]voor meer informatie over het implementeren van de uitbrei ding.
 
 > [!NOTE]
-> Azperflib. exe is een onderdeel dat niet kan worden gebruikt voor eigen doel einden. Het is een onderdeel dat Azure-bewakings gegevens levert die betrekking hebben op de virtuele machine voor de SAP Hosta Gent.
+> Azperflib. exe is een onderdeel dat niet kan worden gebruikt voor eigen doel einden. Het is een onderdeel dat Azure-infrastructuur gegevens levert die betrekking hebben op de virtuele machine voor de SAP host-agent.
 > 
 
 ##### <a name="check-the-output-of-azperflibexe"></a>Controleer de uitvoer van azperflib. exe
 
-Azperflib. exe-uitvoer toont alle gevulde Azure-prestatie meter items voor SAP. Onder aan de lijst met verzamelde items ziet u de status van Azure-bewaking in een samen vatting en status indicator.
+Azperflib. exe-uitvoer toont alle gevulde Azure-prestatie meter items voor SAP. Onder aan de lijst met verzamelde items wordt de status van de Azure-extensie voor SAP weer gegeven in een samen vatting en status indicator.
 
 ![Uitvoer van de status controle door azperflib. exe uit te voeren, wat aangeeft dat er geen problemen zijn][deployment-guide-figure-1100]
 <a name="figure-11"></a>
 
-Controleer het resultaat dat wordt geretourneerd voor de **tellers totale** uitvoer. dit wordt gerapporteerd als leegen voor de status die in de voor gaande afbeelding wordt weer gegeven.
+Controleer het resultaat dat wordt geretourneerd voor de **tellers totale** uitvoer. dit wordt gerapporteerd als leeg **en voor de status die**in de voor gaande afbeelding wordt weer gegeven.
 
 Interpreteer de resulterende waarden als volgt:
 
-| Resultaat waarden van Azperflib. exe | Status van Azure-bewaking |
+| Resultaat waarden van Azperflib. exe | Azure-uitbrei ding voor SAP-status |
 | --- | --- |
 | **API-aanroepen-niet beschikbaar** | Tellers die niet beschikbaar zijn, zijn mogelijk niet van toepassing op de configuratie van de virtuele machine of fouten. Zie de **integriteits status**. |
 | **Totaal aantal tellers-leeg** |De volgende twee Azure-opslag-items kunnen leeg zijn: <ul><li>Lezen van de opslag op latentie server msec</li><li>Opslag gelezen op latentie E2E msec</li></ul>Alle andere tellers moeten waarden bevatten. |
 | **Integriteits status** |Alleen OK als de retour status **OK**is. |
 | **Diagnostics** |Gedetailleerde informatie over de status. |
 
-Als de **status** waarde niet **OK**is, volgt u de instructies in de [status controle voor de configuratie van de Azure monitoring-infra structuur][deployment-guide-5.2].
+Als de **status** waarde niet **OK**is, volgt u de instructies in [status controleren voor Azure extension for SAP-configuratie][deployment-guide-5.2].
 
 #### <a name="run-the-readiness-check-on-a-linux-vm"></a>De gereedheids controle uitvoeren op een virtuele Linux-machine
 
 1. Maak verbinding met de virtuele Azure-machine met behulp van SSH.
 
-1. Controleer de uitvoer van de uitgebreide bewakings extensie van Azure.
+1. Controleer de uitvoer van de Azure-extensie voor SAP.
 
    a.  Voer `more /var/lib/AzureEnhancedMonitor/PerfCounters` uit.
 
@@ -1105,11 +1105,11 @@ Als de voor gaande controle niet is geslaagd, voert u de volgende extra controle
 
    **Verwacht resultaat**: Hiermee wordt één item weer gegeven dat vergelijkbaar is met:`python /usr/sbin/waagent -daemon`
 
-1. Zorg ervoor dat de Azure Enhanced monitoring-extensie is geïnstalleerd en wordt uitgevoerd.
+1. Zorg ervoor dat de Azure-extensie voor SAP is geïnstalleerd en wordt uitgevoerd.
 
    a.  Voer `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` uit.
 
-   **Verwacht resultaat**: Geeft een lijst van de inhoud van de Azure Enhanced monitoring-extensie Directory.
+   **Verwacht resultaat**: Hiermee wordt de inhoud van de Azure-extensie voor SAP-Directory weer gegeven.
 
    b. Voer `ps -ax | grep AzureEnhanced` uit.
 
@@ -1125,11 +1125,11 @@ Als de voor gaande controle niet is geslaagd, voert u de volgende extra controle
 
 Als u al een SAP NetWeaver ABAP-toepassings server hebt geïnstalleerd, opent u Trans Action ST06 en controleert u of verbeterde controle is ingeschakeld.
 
-Als een van deze controles mislukt en als u meer wilt weten over het opnieuw implementeren van de uitbrei ding, raadpleegt u [problemen met de Azure-bewakings infrastructuur voor SAP oplossen][deployment-guide-5.3].
+Als een van deze controles mislukt en voor gedetailleerde informatie over het opnieuw implementeren van de uitbrei ding, raadpleegt u [problemen met de Azure-extensie voor SAP oplossen][deployment-guide-5.3].
 
-### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Status controle voor de configuratie van de Azure monitoring-infra structuur
+### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Status controle voor de Azure-extensie voor SAP-configuratie
 
-Als sommige bewakings gegevens niet correct worden afgeleverd, zoals wordt aangegeven door de test die wordt beschreven in de [gereedheids controle voor Azure Enhanced monitoring voor SAP][deployment-guide-5.1], voert u de `Test-AzVMAEMExtension` cmdlet uit om te controleren of de infra structuur van Azure monitoring en de bewaking de extensie voor SAP is correct geconfigureerd.
+Als sommige infrastructuur gegevens niet correct worden afgeleverd, zoals wordt aangegeven door de test die wordt beschreven in de [gereedheids controle voor Azure extension for SAP][deployment-guide-5.1], voert u de `Test-AzVMAEMExtension` cmdlet uit om te controleren of de Azure-infra structuur en de Azure-extensie voor SAP correct geconfigureerd.
 
 1. Zorg ervoor dat u de nieuwste versie van de cmdlet Azure PowerShell hebt geïnstalleerd, zoals beschreven in [Azure PowerShell-cmdlets implementeren][deployment-guide-4.1].
 1. Voer de volgende PowerShell-cmdlet uit. Voer de cmdlet `Get-AzEnvironment`uit voor een lijst met beschik bare omgevingen. Als u wereld wijd Azure wilt gebruiken, selecteert u de **Cloud** -omgeving. Voor Azure in China selecteert u **AzureChinaCloud**.
@@ -1146,21 +1146,21 @@ Als sommige bewakings gegevens niet correct worden afgeleverd, zoals wordt aange
 
 1. Het script test de configuratie van de virtuele machine die u selecteert.
 
-   ![Uitvoer van een geslaagde test van de Azure monitoring-infra structuur voor SAP][deployment-guide-figure-1300]
+   ![Uitvoer van een geslaagde test van de Azure-extensie voor SAP][deployment-guide-figure-1300]
 
-Zorg ervoor dat elk resultaat van de status controle **OK**is. Als sommige controles niet **OK**worden weer gegeven, voert u de update-cmdlet uit zoals beschreven in [de Azure Enhanced monitoring-extensie voor SAP configureren][deployment-guide-4.5]. Wacht 15 minuten en herhaal de controles die zijn beschreven in de [gereedheids controle voor uitgebreide controle van Azure][deployment-guide-5.1] voor de SAP-en [status controle voor de configuratie van de infra structuur van Azure monitoring][deployment-guide-5.2]. Als de controles nog steeds een probleem met enkele of alle items aangeven, raadpleegt u [problemen met de Azure-bewakings infrastructuur voor SAP oplossen][deployment-guide-5.3].
+Zorg ervoor dat elk resultaat van de status controle **OK**is. Als sommige controles niet **OK**worden weer gegeven, voert u de update-cmdlet uit zoals beschreven in [de Azure-extensie voor SAP configureren][deployment-guide-4.5]. Wacht 15 minuten en herhaal de controles die zijn beschreven in [gereedheids controle voor Azure Extension voor SAP][deployment-guide-5.1] en [status controle voor Azure-extensie voor SAP-configuratie][deployment-guide-5.2]. Als de controles nog steeds een probleem met enkele of alle items aangeven, raadpleegt u [problemen met de Azure-extensie voor SAP oplossen][deployment-guide-5.3].
 
 > [!Note]
-> U kunt waarschuwingen krijgen in gevallen waarin u beheerde standaard-Azure-schijven gebruikt. Er worden waarschuwingen weer gegeven in plaats van de tests die ' OK ' retour neren. Dit is normaal en bedoeld voor dat schijf type. Zie ook [problemen met de Azure monitoring-infra structuur voor SAP oplossen][deployment-guide-5.3]
+> U kunt waarschuwingen krijgen in gevallen waarin u beheerde standaard-Azure-schijven gebruikt. Er worden waarschuwingen weer gegeven in plaats van de tests die ' OK ' retour neren. Dit is normaal en bedoeld voor dat schijf type. Zie ook [problemen met de Azure-extensie voor SAP oplossen][deployment-guide-5.3]
 > 
 
-### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Problemen met de Azure monitoring-infra structuur voor SAP oplossen
+### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Problemen met Azure-extensie voor SAP oplossen
 
 #### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Prestatie meter items van Azure worden helemaal niet weer gegeven
 
 De AzureEnhancedMonitoring Windows-service verzamelt prestatie gegevens in Azure. Als de service niet juist is geïnstalleerd of niet op uw virtuele machine wordt uitgevoerd, kunnen er geen metrische gegevens voor prestaties worden verzameld.
 
-##### <a name="the-installation-directory-of-the-azure-enhanced-monitoring-extension-is-empty"></a>De installatiemap van de uitgebreide bewakings extensie van Azure is leeg
+##### <a name="the-installation-directory-of-the-azure-extension-for-sap-is-empty"></a>De installatiemap van de Azure-extensie voor SAP is leeg
 
 ###### <a name="issue"></a>Probleem
 
@@ -1170,7 +1170,7 @@ De installatie directory C:\\pakketten\\invoeg\\toepassingen micro soft. AzureCA
 
 De extensie is niet geïnstalleerd. Bepaal of dit een proxy probleem is (zoals eerder beschreven). Mogelijk moet u de computer opnieuw opstarten of het `Set-AzVMAEMExtension` configuratie script opnieuw uitvoeren.
 
-##### <a name="service-for-azure-enhanced-monitoring-does-not-exist"></a>De service voor uitgebreide Azure-bewaking bestaat niet
+##### <a name="service-for-azure-extension-for-sap-does-not-exist"></a>De service voor Azure-extensie voor SAP bestaat niet
 
 ###### <a name="issue"></a>Probleem
 
@@ -1178,16 +1178,16 @@ De AzureEnhancedMonitoring Windows-service bestaat niet.
 
 Azperflib. exe-uitvoer genereert een fout:
 
-![Het uitvoeren van azperflib. exe geeft aan dat de service van de Azure Enhanced monitoring-extensie voor SAP niet wordt uitgevoerd][deployment-guide-figure-1400]
+![Het uitvoeren van azperflib. exe geeft aan dat de service van de Azure-extensie voor SAP niet wordt uitgevoerd][deployment-guide-figure-1400]
 <a name="figure-14"></a>
 
 ###### <a name="solution"></a>Oplossing
 
-Als de service niet bestaat, is de Azure Enhanced monitoring-extensie voor SAP niet op de juiste wijze geïnstalleerd. Implementeer de uitbrei ding opnieuw met behulp van de stappen die worden beschreven in het implementatie scenario in [implementatie scenario's van vm's voor SAP in azure][deployment-guide-3].
+Als de service niet bestaat, is de Azure-extensie voor SAP niet op de juiste wijze geïnstalleerd. Implementeer de uitbrei ding opnieuw met behulp van de stappen die worden beschreven in het implementatie scenario in [implementatie scenario's van vm's voor SAP in azure][deployment-guide-3].
 
 Nadat u de uitbrei ding hebt geïmplementeerd, controleert u na één uur of de prestatie meter items van Azure zijn opgenomen in de Azure VM.
 
-##### <a name="service-for-azure-enhanced-monitoring-exists-but-fails-to-start"></a>De uitgebreide bewakings service van Azure bestaat, maar kan niet worden gestart
+##### <a name="service-for-azure-extension-for-sap-exists-but-fails-to-start"></a>Er bestaat een service voor Azure-extensie voor SAP, maar deze kan niet worden gestart
 
 ###### <a name="issue"></a>Probleem
 
@@ -1195,7 +1195,7 @@ De AzureEnhancedMonitoring Windows-service bestaat en is ingeschakeld, maar kan 
 
 ###### <a name="solution"></a>Oplossing
 
-De configuratie is onjuist. Start de bewakings extensie voor de virtuele machine opnieuw op, zoals beschreven in [de Azure Enhanced monitoring-extensie voor SAP configureren][deployment-guide-4.5].
+De configuratie is onjuist. Start de Azure-extensie voor SAP in de VM opnieuw, zoals beschreven in [de Azure-extensie voor SAP configureren][deployment-guide-4.5].
 
 #### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Sommige prestatie meter items van Azure ontbreken
 
@@ -1207,11 +1207,11 @@ Als u het probleem niet kunt oplossen met SAP Note [1999351] , voert u `Set-AzVM
 
 Metrische gegevens over prestaties in Azure worden verzameld door een daemon. Als de daemon niet wordt uitgevoerd, kunnen er geen prestatie gegevens worden verzameld.
 
-##### <a name="the-installation-directory-of-the-azure-enhanced-monitoring-extension-is-empty"></a>De installatiemap van de uitgebreide bewakings extensie van Azure is leeg
+##### <a name="the-installation-directory-of-the-azure-extension-for-sap-is-empty"></a>De installatiemap van de Azure-extensie voor SAP is leeg
 
 ###### <a name="issue"></a>Probleem
 
-De map \\var\\lib\\waagent\\ heeft geen submap voor de uitgebreide bewakings extensie van Azure.
+De map \\var\\lib\\waagent\\ heeft geen submap voor de Azure-extensie voor SAP.
 
 ###### <a name="solution"></a>Oplossing
 
@@ -1233,13 +1233,13 @@ Als u azperfli. exe uitvoert zoals eerder beschreven, kunt u een resultaat krijg
 
 ###### <a name="solution"></a>Oplossing
 
-De berichten worden veroorzaakt door het feit dat standaard Managed Disks geen Api's leveren die worden gebruikt door de bewakings extensie om te controleren op statistische gegevens van de standaard Azure Storage accounts. Dit is niet van belang. Reden voor het introduceren van de bewaking voor standaard Disk Storage accounts is het beperken van I/O's die regel matig plaatsvonden. Managed disks voor komt een dergelijke beperking door het aantal schijven in een opslag account te beperken. Daarom is het niet zo dat dat type bewakings gegevens niet kritiek zijn.
+De berichten worden veroorzaakt door het feit dat standaard Managed Disks geen Api's leveren die worden gebruikt door de SAP-extensie voor SAP om te controleren op statistische gegevens van de standaard Azure Storage accounts. Dit is niet van belang. Reden voor het introduceren van het verzamelen van gegevens voor standaard Disk Storage accounts is het beperken van I/O's die regel matig zijn opgetreden. Managed disks voor komt een dergelijke beperking door het aantal schijven in een opslag account te beperken. Daarom is het niet zo dat dat type gegevens niet kritiek zijn.
 
 
 #### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Sommige prestatie meter items van Azure ontbreken
 
 De metrische gegevens over prestaties in Azure worden verzameld door een daemon. deze haalt informatie uit verschillende bronnen op. Sommige configuratie gegevens worden lokaal verzameld en sommige prestatie gegevens worden gelezen uit Azure Diagnostics. Opslag items zijn afkomstig uit de logboeken in uw opslag abonnement.
 
-Voor een volledige en bijgewerkte lijst met bekende problemen raadpleegt u SAP Note [1999351], die aanvullende informatie over probleem oplossing biedt voor verbeterde Azure-bewaking voor SAP.
+Voor een volledige en bijgewerkte lijst met bekende problemen raadpleegt u SAP Note [1999351], die extra informatie over probleem oplossing voor Azure extension for SAP bevat.
 
-Als problemen oplossen met SAP Note [1999351] het probleem niet wordt opgelost, voert u `Set-AzVMAEMExtension` het configuratie script opnieuw uit zoals beschreven in [de Azure Enhanced monitoring-extensie voor SAP configureren][deployment-guide-4.5]. Mogelijk moet u een uur wachten, omdat er mogelijk geen opslag analyse-of diagnostische tellers worden gemaakt direct nadat deze zijn ingeschakeld. Als het probleem zich blijft voordoen, opent u een SAP-klant bericht voor ondersteuning op de component BC-OP-NT-AZR voor Windows of BC-OP-LNX-AZR voor een virtuele Linux-machine.
+Als u het probleem niet kunt oplossen met SAP Note [1999351] , voert u het `Set-AzVMAEMExtension` configuratie script opnieuw uit zoals beschreven in [de Azure-extensie voor SAP configureren][deployment-guide-4.5]. Mogelijk moet u een uur wachten, omdat er mogelijk geen opslag analyse-of diagnostische tellers worden gemaakt direct nadat deze zijn ingeschakeld. Als het probleem zich blijft voordoen, opent u een SAP-klant bericht voor ondersteuning op de component BC-OP-NT-AZR voor Windows of BC-OP-LNX-AZR voor een virtuele Linux-machine.

@@ -1,7 +1,7 @@
 ---
 title: Belangrijkste concepten van architectuur &
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over de architectuur, termen, concepten en werk stromen waaruit de Azure Machine Learning-service is opgebouwd.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over de architectuur, termen, concepten en werk stromen waaruit Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,18 +10,18 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4e953ad732852f9ee99c7830997e2d1dc29b8f84
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 91c747b8b4ca58e7714dc101777bad51f9f0286f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845005"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035601"
 ---
-# <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>De werking van Azure Machine Learning-service: Architectuur en concepten
+# <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: Architectuur en concepten
 
-Meer informatie over de architectuur, concepten en werk stroom voor Azure Machine Learning service. De belangrijkste onderdelen van de service en de algemene werk stroom voor het gebruik van de service worden weer gegeven in het volgende diagram:
+Meer informatie over de architectuur, concepten en werk stromen voor Azure Machine Learning. De belangrijkste onderdelen van de service en de algemene werk stroom voor het gebruik van de service worden weer gegeven in het volgende diagram:
 
-![Service architectuur en-werk stroom Azure Machine Learning](./media/concept-azure-machine-learning-architecture/workflow.png)
+![Azure Machine Learning architectuur en werk stroom](./media/concept-azure-machine-learning-architecture/workflow.png)
 
 ## <a name="workflow"></a>Werkstroom
 
@@ -47,10 +47,10 @@ Gebruik deze hulpprogram ma's voor Azure Machine Learning:
 +  Communiceer met de service in een python-omgeving met de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 + Automatiseer uw machine learning activiteiten met de [Azure machine learning cli](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli).
 + Code schrijven in Visual Studio code met [Azure machine learning VS code-extensie](how-to-vscode-tools.md)
-+ Gebruik de [visuele interface (preview) voor Azure machine learning-service](ui-concept-visual-interface.md) om de werk stroom stappen uit te voeren zonder code te schrijven.
++ Gebruik de [visuele interface (preview) voor Azure machine learning](ui-concept-visual-interface.md) om de werk stroom stappen uit te voeren zonder code te schrijven.
 
 > [!NOTE]
-> Hoewel in dit artikel voor waarden en concepten worden gedefinieerd die worden gebruikt door Azure Machine Learning service, worden er geen termen en concepten voor het Azure-platform gedefinieerd. Zie de [Microsoft Azure verklarende woorden lijst](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)voor meer informatie over de terminologie van het Azure-platform.
+> Hoewel in dit artikel voor waarden en concepten worden gedefinieerd die worden gebruikt door Azure Machine Learning, worden er geen termen en concepten voor het Azure-platform gedefinieerd. Zie de [Microsoft Azure verklarende woorden lijst](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)voor meer informatie over de terminologie van het Azure-platform.
 
 ## <a name="glossary"></a>Woordenlijst
 
@@ -75,7 +75,7 @@ Gebruik deze hulpprogram ma's voor Azure Machine Learning:
 
 ### <a name="workspaces"></a>Werkruimten
 
-[De werk ruimte](concept-workspace.md) is de resource op het hoogste niveau voor Azure machine learning service. Het biedt een centrale locatie voor het werken met alle artefacten die u maakt wanneer u Azure Machine Learning-service gebruikt. U kunt een werk ruimte delen met anderen. Zie [Wat is een Azure machine learning-werk ruimte?](concept-workspace.md)voor een gedetailleerde beschrijving van werk ruimten.
+[De werk ruimte](concept-workspace.md) is de resource op het hoogste niveau voor Azure machine learning. Het biedt een centrale locatie voor het werken met alle artefacten die u maakt wanneer u Azure Machine Learning gebruikt. U kunt een werk ruimte delen met anderen. Zie [Wat is een Azure machine learning-werk ruimte?](concept-workspace.md)voor een gedetailleerde beschrijving van werk ruimten.
 
 ### <a name="experiments"></a>Experimenten
 
@@ -87,13 +87,13 @@ Zie [zelf studie voor een voor beeld van het gebruik van een experiment: Train u
 
 De eenvoudigste is een model een stukje code dat een invoer en uitvoer wordt geproduceerd. Het maken van een machine learning-model omvat het selecteren van een algoritme, voorzien van deze gegevens en afstemmen van hyperparameters. Training is een iteratief proces dat een getraind model produceert, wat het model hebt geleerd tijdens de training ingekapseld.
 
-Een model wordt geproduceerd door een uitvoering in Azure Machine Learning. U kunt ook een model gebruiken dat is getraind buiten Azure Machine Learning. U kunt een model registreren in een Azure Machine Learning service-werk ruimte.
+Een model wordt geproduceerd door een uitvoering in Azure Machine Learning. U kunt ook een model gebruiken dat is getraind buiten Azure Machine Learning. U kunt een model registreren in een Azure Machine Learning-werk ruimte.
 
-Azure Machine Learning-service is Framework neutraal. Wanneer u een model maakt, kunt u een populair machine learning Framework gebruiken, zoals Scikit-learn, XGBoost, PyTorch, tensor flow en Chainer.
+Azure Machine Learning is Framework neutraal. Wanneer u een model maakt, kunt u een populair machine learning Framework gebruiken, zoals Scikit-learn, XGBoost, PyTorch, tensor flow en Chainer.
 
-Zie [zelf studie voor een voor beeld van een model trainen met Scikit-Learn en een Estimator: Een model voor de classificatie van afbeeldingen trainen met de Azure Machine Learning Service](tutorial-train-models-with-aml.md).
+Zie [zelf studie voor een voor beeld van een model trainen met Scikit-Learn en een Estimator: Train een afbeeldings classificatie model met](tutorial-train-models-with-aml.md)Azure machine learning.
 
-Het **model register** houdt alle modellen in de werk ruimte van uw Azure machine learning-service bij.
+Het **model register** houdt alle modellen in uw Azure machine learning-werk ruimte bij.
 
 Modellen worden aangeduid met de naam en versie. Telkens wanneer u een model met dezelfde naam registreert als een bestaande, wordt ervan uitgegaan dat het een nieuwe versie is. De versie wordt verhoogd en het nieuwe model wordt geregistreerd onder dezelfde naam.
 
@@ -124,8 +124,8 @@ Raadpleeg voor meer informatie de volgende artikelen:
 
 * [Train ml-modellen met schattingen](how-to-train-ml-models.md).
 * [Train Pytorche diepe Learning-modellen op schaal met Azure machine learning](how-to-train-pytorch.md).
-* [Tensor flow-modellen trainen en registreren op schaal met Azure machine learning service](how-to-train-tensorflow.md).
-* [Ketting modellen trainen en registreren op schaal met Azure machine learning service](how-to-train-chainer.md).
+* [Tensor flow-modellen trainen en registreren op schaal met Azure machine learning](how-to-train-tensorflow.md).
+* [Keten modellen trainen en registreren op schaal met Azure machine learning](how-to-train-chainer.md).
 
 ### <a name="datasets-and-datastores"></a>Gegevens sets en gegevens opslag
 
@@ -147,7 +147,7 @@ Meer informatie over de [beschik bare reken doelen voor training en implementati
 
 Als u wilt een model te trainen, moet u de map waarin het trainingsscript en de bijbehorende bestanden opgeven. U kunt ook een naam voor het experiment opgeven, die wordt gebruikt voor het opslaan van informatie die wordt verzameld tijdens de training. Tijdens de training wordt de hele Directory gekopieerd naar de trainings omgeving (Compute target) en het script dat is opgegeven door de uitvoerings configuratie wordt gestart. Een momentopname van de map worden ook opgeslagen onder het experiment in de werkruimte.
 
-Zie [Zelfstudie: Een model voor de classificatie van afbeeldingen trainen met de Azure Machine Learning Service](tutorial-train-models-with-aml.md).
+Zie [Zelfstudie: Train een afbeeldings classificatie model met](tutorial-train-models-with-aml.md)Azure machine learning.
 
 ### <a name="runs"></a>Uitvoerbewerkingen
 
@@ -193,7 +193,7 @@ Azure Machine Learning kunt twee typen installatie kopieën maken:
 * **FPGA-installatie kopie**: Wordt gebruikt wanneer u implementeert in een veld-Programmeer bare poort matrix in Azure.
 * **Docker-installatie kopie**: Wordt gebruikt wanneer u implementeert voor andere compute-doelen dan FPGA. Voor beelden zijn Azure Container Instances en de Azure Kubernetes-service.
 
-De Azure Machine Learning-service biedt een basis installatie kopie die standaard wordt gebruikt. U kunt ook uw eigen aangepaste installatie kopieën opgeven.
+Azure Machine Learning biedt een basis installatie kopie die standaard wordt gebruikt. U kunt ook uw eigen aangepaste installatie kopieën opgeven.
 
 ### <a name="image-registry"></a>Afbeelding register
 
@@ -239,8 +239,8 @@ Wanneer u uw oplossing ontwikkelt, gebruikt u de Azure Machine Learning python-S
 
 ### <a name="next-steps"></a>Volgende stappen
 
-Om aan de slag te gaan met Azure Machine Learning-service, raadpleegt u:
+Om aan de slag te gaan met Azure Machine Learning raadpleegt u:
 
-* [Wat is Azure Machine Learning Service?](overview-what-is-azure-ml.md)
-* [Een Azure Machine Learning service-werk ruimte maken](how-to-manage-workspace.md)
+* [Wat is Azure Machine Learning?](overview-what-is-azure-ml.md)
+* [Een Azure Machine Learning-werkruimte maken](how-to-manage-workspace.md)
 * [Zelfstudie (deel 1): een model trainen](tutorial-train-models-with-aml.md)

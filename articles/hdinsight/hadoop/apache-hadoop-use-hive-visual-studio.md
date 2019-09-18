@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: 129f200bc9f61d70f4403b1154978d57e09fee26
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 1e5e3854f0b132ede38e182f99435a569c04d49e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917484"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076284"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Apache Hive query's uitvoeren met de Data Lake-hulpprogram ma's voor Visual Studio
 
@@ -115,7 +115,7 @@ Ad hoc-query's kunnen worden uitgevoerd in **batch** of **interactieve** modus.
 
 6. Selecteer op de werk balk het **HDInsight-cluster** dat u wilt gebruiken voor deze query. Selecteer **verzenden** om de instructies als een Hive-taak uit te voeren.
 
-   ![Verzend balk](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
+   ![Azure HDInsight-werk balk verzenden](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
 
 7. Het **overzicht** van de Hive-taak wordt weer gegeven en geeft informatie weer over de taak die wordt uitgevoerd. Gebruik de koppeling **vernieuwen** om de taak informatie te vernieuwen totdat de **taak status** is gewijzigd in **voltooid**.
 

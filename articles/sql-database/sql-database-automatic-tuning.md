@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: 3ddee3dabd51d95f230f0178dfb647f8e297b3d4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9aa9ea1fc8632671ac9ed2c045230b92edaf879d
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569389"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066966"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL Database automatisch afstemmen
 
@@ -71,11 +71,11 @@ Opties voor automatisch afstemmen die beschikbaar zijn in Azure SQL Database zij
 | **Drop Index** : Hiermee worden dagelijks redundante en dubbele indexen geïdentificeerd, met uitzonde ring van unieke indexen en indexen die gedurende een lange periode niet zijn gebruikt (> 90 dagen). Houd er rekening mee dat de optie op dit moment niet compatibel is met toepassingen die gebruikmaken van partitie switches en index hints. | Ja | Nee |
 | **laatste goede plan forceren** (automatische plan correctie): identificeert SQL-query's met behulp van een uitvoerings plan dat lager is dan het vorige goede plan en voert query's uit met behulp van het laatst bekende goede plan in plaats van het teruggedraaide-abonnement. | Ja | Ja |
 
-Automatische afstemming duidt het **maken**van een INDEX, **Drop Index**af en dwingt de **laatste goede plan** aanbevelingen af waarmee de prestaties van uw data base kunnen worden geoptimaliseerd en weer gegeven in [Azure Portal](sql-database-advisor-portal.md), en ze worden beschikbaar gesteld via [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) en [ REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). Zie voor meer informatie over het afdwingen van het laatste goede PLAN en het configureren van automatische afstemmings opties via T-SQL [automatisch afstemmen introduceert automatisch corrigeren van plannen](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/).
+Automatische afstemming duidt het maken van een **index**, **Drop Index**af en **dwingt de laatste goede plan** aanbevelingen af waarmee de prestaties van uw data base kunnen worden geoptimaliseerd en weer gegeven in [Azure Portal](sql-database-advisor-portal.md), en ze worden beschikbaar gesteld via [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) en [ REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). Zie voor meer informatie over het afdwingen van het laatste goede PLAN en het configureren van automatische afstemmings opties via T-SQL [automatisch afstemmen introduceert automatisch corrigeren van plannen](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/).
 
 U kunt de aanbevelingen voor het afstemmen hand matig Toep assen met behulp van de portal of u kunt automatisch afstemmen op zichzelf afstemmen Toep assen. De voor delen van het autonoom Toep assen van het systeem om automatisch afstemmings aanbevelingen voor u toe te passen, is dat er een positieve toename van de prestaties van de werk belasting bestaat en als er geen belang rijke prestatie verbetering wordt gedetecteerd. de aanbeveling voor het afstemmen automatisch terugdraaien. In het geval van query's die worden beïnvloed door het afstemmen van aanbevelingen die niet vaak worden uitgevoerd, kan de validatie fase tot 72 uur duren.
 
-Als u hand matig afstemmings aanbevelingen toepast, zijn de mechanismen voor automatische prestatie validatie en omkering niet beschikbaar. Daarnaast blijven hand matig toegepaste aanbevelingen actief en worden deze weer gegeven in de lijst met aanbevelingen voor 24-48 uur. voordat het systeem ze automatisch intrekt. Als u een aanbeveling eerder wilt verwijderen, kunt u deze hand matig negeren.
+Als u de aanbevelingen voor het afstemmen hand matig toepast via T-SQL, zijn de mechanismen voor automatische prestatie validatie en omkering niet beschikbaar. Daarnaast blijven hand matig toegepaste aanbevelingen actief en worden deze weer gegeven in de lijst met aanbevelingen voor 24-48 uur. voordat het systeem ze automatisch intrekt. Als u een aanbeveling eerder wilt verwijderen, kunt u deze hand matig negeren.
 
 Automatische afstemmings opties kunnen onafhankelijk worden in-of uitgeschakeld per data base, maar ze kunnen worden geconfigureerd op SQL Database servers en toegepast op elke Data Base die instellingen overneemt van de server. SQL Database-servers kunnen Azure-standaard waarden overnemen voor instellingen voor automatisch afstemmen. De standaard waarden van Azure op dit moment worden ingesteld op FORCE_LAST_GOOD_PLAN is ingeschakeld, CREATE_INDEX is ingeschakeld en DROP_INDEX is uitgeschakeld.
 

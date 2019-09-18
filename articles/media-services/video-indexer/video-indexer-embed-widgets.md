@@ -1,7 +1,7 @@
 ---
 title: Video Indexer widgets insluiten in uw toepassingen
 titlesuffix: Azure Media Services
-description: Ontdek hoe u Video Indexer-widgets insluit in uw toepassingen.
+description: Meer informatie over het insluiten van Video Indexer widgets in uw toepassing.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: ec3c7379c8c7f28765fbc4396d3e9804a6c127f6
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: fc0b447630b5e1ac360b1d84869cea02186672fc
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663753"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036629"
 ---
-# <a name="embed-video-indexer-widgets-into-your-applications"></a>Video Indexer widgets insluiten in uw toepassingen
+# <a name="embed-video-indexer-widgets-in-your-applications"></a>Video Indexer widgets insluiten in uw toepassingen
 
-In dit artikel leeft u hoe u Video Indexer-widgets insluit in uw toepassingen. Video Indexer ondersteunt het insluiten van drie typen objecten in uw toepassing: **Cognitieve inzichten**, **speler**en **Redacteur**. 
+In dit artikel wordt uitgelegd hoe u Video Indexer widgets kunt insluiten in uw toepassingen. Video Indexer ondersteunt het insluiten van drie typen objecten in uw toepassing: *Cognitieve inzichten*, *speler*en *Redacteur*. 
 
 Vanaf versie 2 bevat de basis-URL van de widget de regio van het opgegeven account. Een account in de regio vs-West genereert bijvoorbeeld het volgende `https://wus2.videoindexer.ai/embed/insights/...`:.
 
@@ -27,113 +27,109 @@ Vanaf versie 2 bevat de basis-URL van de widget de regio van het opgegeven accou
 
 ### <a name="cognitive-insights-widget"></a>Widget Inzichten
 
-De widget **Inzichten** bevat alle visuele inzichten die tijdens het indexeringsproces zijn opgehaald uit uw video. De widget voor inzichten ondersteunt de volgende optionele URL-parameters:
+Een cognitieve Insights-widget bevat alle visuele inzichten die zijn geëxtraheerd uit het indexerings proces van uw video. De cognitieve Insights-widget ondersteunt de volgende optionele URL-para meters.
 
 |Name|Definitie|Description|
 |---|---|---|
-|`widgets`|Tekenreeksen gescheiden door komma's|Hiermee beheert u welke inzichten u wilt weergeven. <br/>Voorbeeld: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` geeft alleen inzichten over personen en merken weer in de gebruikersinterface<br/>Beschikbare opties: mensen, trefwoorden, aantekeningen, merken, gevoelens, transcript, zoeken.<br/>niet ondersteund via de URL bij version=2<br/><br/>**Opmerking:** De para meter van de widgets-URL wordt niet ondersteund in versie 2. |
-|`locale`|Een korte taal code|Hiermee bepaalt u de inzichten taal. De standaardwaarde is `en`. Bijvoorbeeld: `language=de`.|
-|`tab`|Het standaard geselecteerde tabblad|Hiermee bepaalt u het tabblad inzichten dat standaard wordt weer gegeven. `tab=timeline`Hiermee wordt de inzichten weer gegeven op het tabblad tijd lijn geselecteerd.|
+|`widgets`|Tekenreeksen gescheiden door komma's|Hiermee kunt u de inzichten bepalen die u wilt weer geven. <br/> Voor beeld `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` : alleen mensen en de gebruikers interface-inzichten van de Brands worden weer gegeven.<br/>Beschikbare opties: mensen, trefwoorden, aantekeningen, merken, gevoelens, transcript, zoeken.<br/>Houd er rekening `widgets` mee dat de URL-para meter niet wordt ondersteund in versie 2.<br/>|
+|`locale`|Een korte taal code|Hiermee bepaalt u de inzichten taal. De standaardwaarde is `en`. <br/> Voorbeeld: `locale=de`.|
+|`tab`|Het standaard geselecteerde tabblad|Hiermee bepaalt u het tabblad **inzichten** dat standaard wordt weer gegeven. <br/> Voor beeld `tab=timeline` : Hiermee wordt de inzichten weer gegeven op het tabblad **tijd lijn** geselecteerd.|
 
 ### <a name="player-widget"></a>Widget Speler
 
-Met de widget **Speler** kunt u de video streamen met gebruik van een adaptieve bitrate. De spelerwidget ondersteunt de volgende optionele URL-parameters:
+U kunt de Player-widget gebruiken om video te streamen met behulp van adaptieve bitsnelheid. De Player-widget ondersteunt de volgende optionele URL-para meters.
 
 |Name|Definitie|Description|
 |---|---|---|
-|`t`|Seconden vanaf het begin|Laat de speler starten met afspelen vanaf het opgegeven moment.<br/>Voorbeeld: `t=60`.|
-|`captions`|Een taal code|Haalt de ondertiteling in de opgegeven taal op tijdens het laden van de widget zodat deze beschikbaar is in het menu voor ondertiteling.<br/>Voorbeeld: `captions=en-US`.|
-|`showCaptions`|Een Booleaanse waarde|Zorgt ervoor dat speler wordt geladen met de ondertiteling al ingeschakeld.<br/>Voorbeeld: `showCaptions=true`.|
-|`type`||Hiermee activeert u de weergave van een audiospeler (videogedeelte wordt verwijderd).<br/>Voorbeeld: `type=audio`.|
-|`autoplay`|Een Booleaanse waarde|Geeft aan of de speler het afspelen van de video moet starten wanneer deze wordt geladen (de standaardinstelling is true).<br/>Voorbeeld: `autoplay=false`.|
-|`language`|Een taal code|Hiermee bepaalt u de taal van de speler (de standaardinstelling is en-US)<br/>Voorbeeld: `language=de-DE`.|
+|`t`|Seconden vanaf het begin|Hiermee wordt het afspelen van de speler vanaf het opgegeven tijd punt gestart.<br/> Voorbeeld: `t=60`.|
+|`captions`|Een taal code|Haalt het bijschrift in de opgegeven taal op tijdens het laden van de widget zodat deze beschikbaar is in het menu **bijschriften** .<br/> Voorbeeld: `captions=en-US`.|
+|`showCaptions`|Een Booleaanse waarde|Zorgt ervoor dat speler wordt geladen met de ondertiteling al ingeschakeld.<br/> Voorbeeld: `showCaptions=true`.|
+|`type`||Hiermee wordt een audio speler-weer gave geactiveerd (het video onderdeel wordt verwijderd).<br/> Voorbeeld: `type=audio`.|
+|`autoplay`|Een Booleaanse waarde|Hiermee wordt aangegeven of de speler de video moet starten wanneer deze wordt geladen. De standaardwaarde is `true`.<br/> Voorbeeld: `autoplay=false`.|
+|`language`|Een taal code|Hiermee bepaalt u de taal van de speler. De standaardwaarde is `en-US`.<br/>Voorbeeld: `language=de-DE`.|
 
-### <a name="editor-widget"></a>Editor-widget 
+### <a name="editor-widget"></a>Editor-widget
 
-Met de **Editor** -widget kunt u nieuwe projecten maken en inzicht in de video beheren.
+U kunt de editor-widget gebruiken om nieuwe projecten te maken en de inzichten van een video te beheren. De editor-widget ondersteunt de volgende optionele URL-para meters.
 
 |Name|Definitie|Description|
 |---|---|---|
-|`accessToken`<sup>*</sup>|Tekenreeks|De `accessToken` para meter is vereist wanneer u de editor-widget gebruikt.<br/>Het toegangs token biedt toegang tot Video's die zich alleen in het account bevinden dat wordt gebruikt om de widget in te sluiten. |
-|`language`|Een taal code|Hiermee bepaalt u de taal van de speler (de standaardinstelling is en-US)<br/>Voorbeeld: `language=de-DE`.|
-|`locale`|Een korte taal code|Hiermee bepaalt u de inzichten taal. De standaardwaarde is `en`. Bijvoorbeeld: `language=de`.|
+|`accessToken`<sup>*</sup>|Tekenreeks|Biedt toegang tot Video's die alleen voor komen in het account dat wordt gebruikt om de widget in te sluiten.<br> De editor-widget vereist `accessToken` de para meter.|
+|`language`|Een taal code|Hiermee bepaalt u de taal van de speler. De standaardwaarde is `en-US`.<br/>Voorbeeld: `language=de-DE`.|
+|`locale`|Een korte taal code|Hiermee bepaalt u de inzichten taal. De standaardwaarde is `en`.<br/>Voorbeeld: `language=de`.|
 
-<sup>*</sup>De eigenaar moet voorzichtig zijn `accessToken` . 
+<sup>*</sup>De eigenaar moet `accessToken` voorzichtig zijn.
 
 ## <a name="embedding-public-content"></a>Openbare inhoud insluiten
 
-1. Ga naar de [Video Indexer](https://www.videoindexer.ai/)-website en meld u aan.
-2. Klik op de video waarmee u wilt werken.
-3. Klik op de knop Insluiten die onder de video wordt weergegeven.
+1. Meld u aan bij de [video indexer](https://www.videoindexer.ai/) -website.
+2. Selecteer de video waarmee u wilt werken.
+3. Selecteer de knop **insluiten** die wordt weer gegeven onder de video.
 
     ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
 
-    Nadat u op de knop hebt geklikt, wordt een modaal venster weergegeven waarin u kunt kiezen welke widget u wilt insluiten in uw toepassing.
-    Als u een widget (**cognitieve inzichten**, **speler**of **Editor**) selecteert, genereert de Inge sloten code die u in uw toepassing kunt plakken.
+    Nadat u de knop **insluiten** hebt geselecteerd, kunt u de widget selecteren die u wilt insluiten in uw toepassing. 
+4. Selecteer het gewenste type widget (**cognitieve inzichten**, **speler**of **Redacteur**).
  
-4. Kies het gewenste type widget (**cognitieve inzichten**, **speler**of **Editor**).
-5. Kopieer de invoegcode en voeg deze toe aan uw toepassing. 
+5. Kopieer de insluit code en voeg deze toe aan uw toepassing. 
 
     ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 
 > [!NOTE]
-> Als u problemen hebt met het delen van uw video-Url's, voegt u de para meter ' locatie ' toe aan de koppeling. De para meter moet worden ingesteld op de [Azure-regio's waarin video indexer bestaat](regions.md). Bijvoorbeeld `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+> Als u problemen hebt met het delen van uw video- `location` url's, voegt u de para meter toe aan de koppeling. De para meter moet worden ingesteld op de [Azure-regio's waarin video indexer bestaat](regions.md). Bijvoorbeeld: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 ## <a name="embedding-private-content"></a>Persoonlijke inhoud insluiten
 
-U kunt u invoegcodes van insluitingspop-ups (zoals weergegeven in de vorige sectie) alleen voor **openbare** video's gebruiken. 
-
-Als u een **persoonlijke** video wilt insluiten, moet u een toegangstoken doorgeven in het kenmerk **src** van de **iframe**:
+Als u een privé video wilt insluiten, moet u een toegangs token in het **src** -kenmerk van het iframe door geven:
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
     
-Gebruik de API [**Inzichtenwidget ophalen**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) om de inhoud van de widget Inzichten op te halen, of gebruik [**Toegangstoken van video ophalen**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) en voeg deze toe als een queryparameter aan de URL, zoals hierboven. Geef deze URL op als de waarde **src** van de **iframe**.
+Als u de inhoud van het cognitieve Insights-object wilt ophalen, gebruikt u een van de volgende opties:<br/>
+- De API voor het [verkrijgen van inzichten-widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) .<br/>
+- Het [token voor video toegang ophalen](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?). Voeg het als een query parameter toe aan de URL. Geef deze URL op als de **src** -waarde voor de iframe, zoals eerder is weer gegeven.
 
-Als u de inzichtmogelijkheden wilt bewerken (zoals we in de webtoepassing hebben gedaan) in uw ingesloten widget, moet u een toegangstoken doorgeven met machtigingen voor bewerken. Gebruik [**Inzichtenwidget ophalen**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) of [**Toegangstoken van video ophalen**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) met **&allowEdit=true**. 
+Als u de mogelijkheden voor het bewerken van inzichten in uw Inge sloten object wilt bieden, moet u een toegangs token door geven dat bewerkings machtigingen bevat. Gebruik het [object Insights ophalen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) of het [token video toegang ophalen](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) met `&allowEdit=true`. 
 
 ## <a name="widgets-interaction"></a>Interactie van widgets
 
-De widget **Inzichten** kan communiceren met een video in uw toepassing. In deze sectie wordt beschreven hoe u deze interactie bereikt.
+De widget cognitieve Insights kan communiceren met een video in uw toepassing. In deze sectie wordt beschreven hoe u deze interactie bereikt.
 
 ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget03.png)
 
 ### <a name="cross-origin-communications"></a>Communicatie van verschillende bronnen
 
-Als u Video Indexer-widgets wilt laten communiceren met andere onderdelen, doet de Video Indexer-service het volgende:
+Om Video Indexer widgets te laten communiceren met andere onderdelen, de Video Indexer-service:
 
-- De HTML5-methode **postMessage** voor communicatie van verschillende bronnen wordt gebruikt en 
+- Maakt gebruik van de cross-Origin Communication HTML5-methode **postMessage**. 
 - Het bericht wordt gevalideerd op basis van de bron VideoIndexer.ai. 
 
-Als u kiest voor het implementeren van uw eigen spelercode en het uitvoeren van de integratie met **Inzichten**-widgets, is het uw verantwoordelijkheid om de oorsprong van het bericht dat afkomstig is van VideoIndexer.ai te valideren.
+Als u uw eigen Player-code implementeert en integreert met cognitieve Insights-widgets, is het uw verantwoordelijkheid om de oorsprong van het bericht te valideren dat afkomstig is van VideoIndexer.ai.
 
-### <a name="embed-widgets-in-your-application--blog-recommended"></a>Widgets insluiten in uw toepassing/blog (aanbevolen) 
+### <a name="embed-widgets-in-your-application-or-blog-recommended"></a>Widgets insluiten in uw toepassing of blog (aanbevolen) 
 
-In deze sectie wordt beschreven hoe u interactie bereikt tussen twee Video Indexer-widgets. Wanneer een gebruiker op het besturingselement voor inzicht in uw toepassing klikt, gaat de speler dan naar het gewenste moment.
+In deze sectie wordt uitgelegd hoe u de interactie tussen twee Video Indexer widgets kunt beheersen, zodat wanneer een gebruiker het Insight-besturings element selecteert in uw toepassing, de speler naar het relevante moment springt.
 
+1. De insluit code van de Player-widget kopiëren.
+2. Kopieer de code van de cognitieve Insights-invoeg toepassing.
+3. Voeg het bewerkings [bestand](https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js) toe om de communicatie tussen de twee widgets te verwerken:<br/> 
 `<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>`
 
-1. Kopieer de invoegcode van de widget **Speler**.
-2. Kopieer de invoegcode van de widget **Inzichten**.
-3. Voeg het [**Mediator-bestand**](https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js) voor het afhandelen van de communicatie tussen de twee widgets toe:
+Wanneer een gebruiker nu het besturings element voor inzicht selecteert in uw toepassing, springt de speler naar het gewenste moment.
 
-`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>`
-
-Wanneer een gebruiker nu op het besturingselement voor inzicht in uw toepassing klikt, gaat de speler naar het gewenste moment.
-
-Ga voor meer informatie naar [deze demo](https://codepen.io/videoindexer/pen/NzJeOb).
+Zie voor meer informatie de [video indexer-beide widgets-demo insluiten](https://codepen.io/videoindexer/pen/NzJeOb).
 
 ### <a name="embed-the-cognitive-insights-widget-and-use-azure-media-player-to-play-the-content"></a>De widget Inzichten insluiten en Azure Media Player gebruiken om de inhoud af te spelen
 
-In deze sectie wordt beschreven hoe u interactie tussen de widget **Inzichten** en een Azure Media Player-exemplaar bereikt met de [AMP-invoegtoepassing](https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js).
+In deze sectie wordt uitgelegd hoe u de interactie tussen een cognitieve Insights-widget en een Azure Media Player-exemplaar kunt verkrijgen met behulp van de [amp-invoeg toepassing](https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js).
  
-1. Voeg een Video Indexer-invoegtoepassing voor de AMP-speler toe.<br/> `<script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>`
-2. Instantieer Azure Media Player met de Video Indexer-invoegtoepassing.
+1. Voeg een Video Indexer-invoeg toepassing toe voor de AMP-speler:<br/> `<script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>`
+2. Exemplaar Azure Media Player met de Video Indexer-invoeg toepassing.
 
-        // Init Source
+        // Init the source.
         function initSource() {
             var tracks = [{
             kind: 'captions',
-            // Here is how to load vtt from VI, you can replace it with your vtt url.
+            // To load vtt from VI, replace it with your vtt URL.
             src: this.getSubtitlesUrl("c4c1ad4c9a", "English"),
             srclang: 'en',
             label: 'English'
@@ -147,7 +143,7 @@ In deze sectie wordt beschreven hoe u interactie tussen de widget **Inzichten** 
             ], tracks);
         }
 
-        // Init your AMP instance
+        // Init your AMP instance.
         var myPlayer = amp('vid1', { /* Options */
             "nativeControlsForTouch": false,
             autoplay: true,
@@ -159,30 +155,30 @@ In deze sectie wordt beschreven hoe u interactie tussen de widget **Inzichten** 
             videobreakedown: {}
             }
         }, function () {
-            // Activate the plugin
+            // Activate the plug-in.
             this.videobreakdown({
             videoId: "c4c1ad4c9a",
             syncTranscript: true,
             syncLanguage: true
             });
 
-            // Set the source dynamically
+            // Set the source dynamically.
             initSource.call(this);
         });
 
-3. Kopieer de invoegcode van de widget **Inzichten**.
+3. Kopieer de code van de cognitieve Insights-invoeg toepassing.
 
-Het zou nu mogelijk moeten zijn om te communiceren met uw Azure Media Player.
+U moet nu kunnen communiceren met Azure Media Player.
 
-Ga voor meer informatie naar [deze demo](https://codepen.io/videoindexer/pen/rYONrO).
+Zie de [demo over Azure Media Player en VI](https://codepen.io/videoindexer/pen/rYONrO)voor meer informatie.
 
-### <a name="embed-video-indexer-cognitive-insights-widget-and-use-your-own-player-could-be-any-player"></a>De widget Inzichten van Video Indexer insluiten en uw eigen speler (kan elke speler zijn) gebruiken
+### <a name="embed-the-video-indexer-cognitive-insights-widget-and-use-a-different-video-player"></a>De Video Indexer cognitieve Insights-widget insluiten en een andere video speler gebruiken
 
-Als u uw eigen speler gebruikt, moet u er zelf voor zorgen dat u de speler bewerkt zodat u ermee kunt communiceren. 
+Als u een andere video speler gebruikt dan Azure Media Player, moet u de video speler hand matig bewerken om de communicatie te verzorgen. 
 
 1. Voeg uw videospeler in.
 
-    Gebruik bijvoorbeeld een standaard HTML5-speler.
+    Bijvoorbeeld een standaard HTML5-speler:
 
         <video id="vid1" width="640" height="360" controls autoplay preload>
            <source src="//breakdown.blob.core.windows.net/public/Microsoft%20HoloLens-%20RoboRaid.mp4" type="video/mp4" /> 
@@ -195,51 +191,51 @@ Als u uw eigen speler gebruikt, moet u er zelf voor zorgen dat u de speler bewer
         <script>
     
             (function(){
-            // Reference your player instance
+            // Reference your player instance.
             var playerInstance = document.getElementById('vid1');
         
             function jumpTo(evt) {
               var origin = evt.origin || evt.originalEvent.origin;
         
-              // Validate that event comes from the videobreakdown domain.
+              // Validate that the event comes from the videobreakdown domain.
               if ((origin === "https://www.videobreakdown.com") && evt.data.time !== undefined){
                 
-                // Here you need to call your player "jumpTo" implementation
+                // Call your player's "jumpTo" implementation.
                 playerInstance.currentTime = evt.data.time;
                
-                // Confirm arrival to us
+                // Confirm the arrival to us.
                 if ('postMessage' in window) {
                   evt.source.postMessage({confirm: true, time: evt.data.time}, origin);
                 }
               }
             }
         
-            // Listen to message event
+            // Listen to the message event.
             window.addEventListener("message", jumpTo, false);
           
             }())    
         
         </script>
 
-Ga voor meer informatie naar [deze demo](https://codepen.io/videoindexer/pen/YEyPLd).
+Zie de [demo over Azure Media Player en VI](https://codepen.io/videoindexer/pen/YEyPLd)voor meer informatie.
 
 ## <a name="adding-subtitles"></a>Ondertiteling toevoegen
 
-Als u Video Indexer Insights insluit met uw eigen [Azure Media Player](https://aka.ms/azuremediaplayer), kunt u de methode **GetVttUrl** gebruiken om ondertiteling (ondertiteling) te verkrijgen. U kunt ook een JavaScript-methode aanroepen vanuit de AMP-invoegtoepassing **getSubtitlesUrl** van Video Indexer (zoals eerder besproken). 
+Als u Video Indexer Insights insluit met uw eigen [Azure Media Player](https://aka.ms/azuremediaplayer), kunt u de methode **GetVttUrl** gebruiken om ondertiteling (ondertiteling) te verkrijgen. U kunt ook een Java script-methode aanroepen vanuit de Video Indexer AMP-invoeg toepassing **getSubtitlesUrl** (zoals eerder weer gegeven). 
 
 ## <a name="customizing-embeddable-widgets"></a>Insluitbare widgets aanpassen
 
 ### <a name="cognitive-insights-widget"></a>Widget Inzichten
 
-U kunt de gewenste typen inzichten kiezen door deze op te geven als een waarde voor de volgende URL-para meter toegevoegd aan de Inge sloten code die u ontvangt (van API of van de `&widgets=<list of wanted widgets>`webtoepassing):.
+U kunt kiezen welke typen inzichten u wilt. Als u dit wilt doen, geeft u deze op als waarde voor de volgende URL-para meter die wordt toegevoegd aan de Inge sloten code die u ontvangt (van de API of `&widgets=<list of wanted widgets>`van de webtoepassing):.
 
-De mogelijke waarden zijn: mensen, trefwoorden, gevoelens, transcript, zoeken.
+De mogelijke waarden zijn: **personen**, **tref woorden**, **gevoel**, **Transcripten**en **zoeken**.
 
 Als u bijvoorbeeld een widget wilt insluiten die alleen personen en zoek inzichten bevat, ziet de iframe insluiten URL er als volgt uit:
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
 
-De titel van het iframe-venster kan ook worden aangepast door `&title=<YourTitle>` de URL van de iframe op te geven. (Hiermee wordt de HTML-code aangepast naar \<title>waarde).
+De titel van het iframe-venster kan ook worden aangepast door `&title=<YourTitle>` de URL van de iframe op te geven. (De HTML- \<titel wordt aangepast > waarde).
     
 Als u bijvoorbeeld het iframe-venster de titel ' MyInsights ' wilt geven, ziet de URL er als volgt uit:
 
@@ -255,21 +251,21 @@ Bijvoorbeeld:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
-De Video Indexer-speler heeft standaard automatisch gegenereerde ondertiteling op basis van het transcript van de video dat is geëxtraheerd uit de video met de brontaal die is geselecteerd bij het uploaden van de video.
+Video Indexer Player heeft standaard ondertiteling gegenereerd die is gebaseerd op de transcriptie van de video. De transcriptie wordt geëxtraheerd uit de video met de bron taal die is geselecteerd toen de video werd geüpload.
 
-Als u wilt insluiten met een andere taal, kunt u de URL `&captions=< Language | ”all” | “false” >` voor de invoeg speler toevoegen of ' alles ' als de waarde als u alle beschik bare talen bijschriften wilt hebben.
-Als u wilt dat de bijschriften standaard worden weer gegeven, kunt u door `&showCaptions=true`geven.
+Als u wilt insluiten met een andere taal, kunt u toevoegen `&captions=< Language | ”all” | “false” >` aan de URL van de insluitings speler. Als u bijschriften in alle beschik bare bijschriften van talen wilt, gebruikt `all`u de waarde. Als u wilt dat de bijschriften standaard worden weer gegeven, kunt u door `&showCaptions=true`geven.
 
 De Inge sloten URL ziet er dan als volgt uit: 
 
 `https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
 
-Als u ondertiteling wilt uitschakelen, kunt u 'false' als waarde opgeven voor de ondertitelingsparameter.
+Als u bijschriften wilt uitschakelen, kunt u de waarde van `captions` de para meter `false`door geven als.
 
-Automatisch afspelen: standaard speelt de speler de video af. U ervoor kiezen dit niet te doen door &autoplay=false op te geven in de insluitings-URL hierboven.
+#### <a name="autoplay"></a>Zorgen
+Standaard wordt de video afgespeeld met de speler. u kunt ervoor kiezen om niet door `&autoplay=false` te geven aan de voor gaande insluit-URL.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [dit](video-indexer-view-edit.md) artikel voor meer informatie over het weergeven en bewerken van Video Indexer-inzichten.
+Zie [video indexer Insights weer geven en bewerken](video-indexer-view-edit.md)voor meer informatie over het weer geven en bewerken van video indexer inzichten.
 
 Bekijk ook de [video indexer-CodePen](https://codepen.io/videoindexer/pen/eGxebZ).
