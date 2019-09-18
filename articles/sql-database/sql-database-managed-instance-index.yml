@@ -62,26 +62,6 @@ sections:
           - title: Geavanceerde beveiliging
             href: /azure/sql-database/sql-database-security-index
             html: <p>Beveilig uw exemplaar en databases met ingebouwde beveiligingsfuncties van Azure SQL Database.<p>
-  - title: Nieuwe functies en preview-functies
-    items:
-      - type: paragraph
-        text: 'Onze beheerde exemplaren worden voortdurend verbeterd met nieuwe functies:'
-      - type: list
-        style: unordered
-        items:
-          - html: '(Preview) <a href="/azure/sql-database/sql-database-instance-pools"> Exemplaargroepen</a>: bieden een handige en rendabele manier om kleinere SQL-exemplaren naar de cloud te migreren.'
-          - html: '<a href="https://aka.ms/four-cores-sql-mi-update"> 4 vCores op hardware van de vijfde generatie</a>'
-          - html: 'Ondersteuning voor abonnementen met <a href="https://aka.ms/sql-mi-visual-studio-subscribers" > een maandelijks tegoed van Azure voor Visual Studio-abonnees </a>'
-          - html: 'Ondersteuning voor <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 en SharePoint 2019 </a> en <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a>'
-          - html: 'U kunt een <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">tijdzone configureren</a> tijdens het maken van het exemplaar.'
-          - html: 'Maak exemplaren met <a href="https://aka.ms/managed-instance-collation">sortering op serverniveau van uw keuze</a>.'
-          - html: 'Met de functie voor geo-herstel kunt u <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">uw database herstellen naar een ander datacenter met behulp van PowerShell.</a>'
-          - html: '(Preview) <a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">Verwijderde databases opnieuw maken met PowerShell</a>'
-          - html: Beheerde exemplaren worden beveiligd met een <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">ingebouwde firewall</a>.
-          - html: '(Preview) <a href="https://aka.ms/managed-instance-tde-byok">Gebruik uw eigen versleutelingssleutels</a> tijdens het migreren van on-premises databases waarvoor TDE (Transparent Data Encryption) al is ingeschakeld.'
-          - html: '(Preview) Gebruik <a href="https://aka.ms/managed-instance-failover-groups">geografisch gedistribueerde failovergroepen</a> om een kopie van het exemplaar in een andere regio op te slaan om er zo voor te zorgen dat uw gegevens ook beschikbaar zijn wanneer er in de primaire regio sprake is van een noodsituatie.'
-          - html: '<a href="https://aka.ms/managed-instance-configurable-backup-retention">Configureer dat back-ups tot 35 dagen worden bewaard</a> voor herstel naar een bepaald tijdstip. Het op lange termijn bewaren van back-ups (maximaal tien jaar) is nog steeds niet ingeschakeld, maar u kunt <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">copy-only backups</a> als alternatief gebruiken.'
-          - html: '(Preview) Maak <a href="https://aka.ms/managed-instance-aadlogins">Azure AD-server-principals op exemplaarniveau (aanmeldingen)</a> met behulp van <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> .'
   - title: QuickStarts van vijf minuten
     items:
       - type: paragraph

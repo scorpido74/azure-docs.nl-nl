@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 76c50814c66b941310b73e1d2a52867b0da5aa10
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8f190f6b933c61072df9af954c8db01497e35e82
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813598"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010235"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Gegevens kopiëren naar of van Azure Data Lake Storage Gen2 met behulp van Azure Data Factory
 
@@ -27,10 +27,11 @@ In dit artikel wordt beschreven hoe u gegevens kopieert van en naar Azure Data L
 
 Deze Azure Data Lake Storage Gen2-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron-of sink-matrix](copy-activity-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Gegevens stroom toewijzen](concepts-data-flow-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 - [GetMetadata-activiteit](control-flow-get-metadata-activity.md)
+- [Activiteit verwijderen](delete-activity.md)
 
 Met name met deze connector kunt u het volgende doen:
 
@@ -590,6 +591,17 @@ Hier volgt een voor beeld van de JSON- `preserve`configuratie (zie):
 
 Meer informatie over [bron transformatie](data-flow-source.md) en [sink-trans formatie](data-flow-sink.md) vindt u in de functie gegevens stroom toewijzen.
 
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
+
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
+
+## <a name="getmetadata-activity-properties"></a>Eigenschappen van GetMetadata-activiteit
+
+Als u meer wilt weten over de eigenschappen, controleert u de [GetMetadata-activiteit](control-flow-get-metadata-activity.md) 
+
+## <a name="delete-activity-properties"></a>Eigenschappen van activiteit verwijderen
+
+Als u meer wilt weten over de eigenschappen, controleert u de [activiteit verwijderen](delete-activity.md)
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md##supported-data-stores-and-formats).

@@ -11,20 +11,20 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 29fd82eb0253f2f7f6b9bc8b6a84882e2372124c
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 388e676fbabf427801688cbfb47a1455444fd02e
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984976"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018993"
 ---
-# <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>T-SQL-verschillen in beheerde exemplaren, beperkingen en bekende problemen
+# <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>T-SQL-verschillen, beperkingen en bekende problemen met beheerde exemplaren
 
 In dit artikel vindt u een overzicht van de verschillen in de syntaxis en het gedrag tussen Azure SQL Database beheerde instantie en de on-premises SQL Server data base-engine. De implementatie optie Managed instance biedt hoge compatibiliteit met on-premises SQL Server data base-engine. De meeste functies van de SQL Server data base-engine worden ondersteund in een beheerd exemplaar.
 
 ![Migratie](./media/sql-database-managed-instance/migration.png)
 
-Er zijn enkele beperkingen voor PaaS die in beheerde instantie worden geïntroduceerd en sommige wijzigingen in het gedrag vergeleken met SQL Server. De verschillen zijn onderverdeeld in de volgende categorieën:<a name="Differences"></a>
+Er zijn enkele PaaS-beperkingen die worden geïntroduceerd in een beheerde instantie en sommige gedrags wijzigingen vergeleken met SQL Server. De verschillen zijn onderverdeeld in de volgende categorieën:<a name="Differences"></a>
 
 - [Beschik baarheid](#availability) omvat de verschillen in [altijd](#always-on-availability) en [back-ups](#backup).
 - [Beveiliging](#security) omvat de verschillen in [controle](#auditing), [certificaten](#certificates), [referenties](#credential), [cryptografische providers](#cryptographic-providers), aanmeldingen [en gebruikers](#logins-and-users), en de [Service sleutel en service hoofd sleutel](#service-key-and-service-master-key).
@@ -339,14 +339,14 @@ Een beheerd exemplaar heeft geen toegang tot bestands shares en Windows-mappen, 
 - `ALTER ASSEMBLY`kan niet verwijzen naar bestanden. Zie [ALTER assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Database Mail (db_mail)
- - `sp_send_dbmail`kan geen bijlagen verzenden @file_attachments met behulp van een para meter. Lokale bestands systeem-en Extertal-shares of Azure Blob-opslag zijn niet toegankelijk via deze procedure.
+ - `sp_send_dbmail`kan geen bijlagen verzenden @file_attachments met behulp van een para meter. Lokaal bestands systeem en externe shares of Azure Blob Storage zijn niet toegankelijk vanuit deze procedure.
  - Zie de bekende problemen met betrekking `@query` tot para meter en authenticatie.
  
 ### <a name="dbcc"></a>DBCC
 
 Niet-gedocumenteerde DBCC-instructies die zijn ingeschakeld in SQL Server, worden niet ondersteund in beheerde exemplaren.
 
-- Slechts een beperkt aantal globale `Trace flags` waarden wordt ondersteund. Sessie niveau `Trace flags` wordt niet ondersteund. Zie [tracerings vlaggen](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
+- Slechts een beperkt aantal globale tracerings vlaggen wordt ondersteund. Sessie niveau `Trace flags` wordt niet ondersteund. Zie [tracerings vlaggen](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) en [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) werken met het beperkte aantal globale traceer vlaggen.
 - [DBCC CHECKDB](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) met de opties REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST en REPAIR_REBUILD kan niet worden gebruikt, omdat de Data Base `SINGLE_USER` niet kan worden ingesteld in de modus-Zie [ALTER data base verschillen](#alter-database-statement). Mogelijke beschadigingen van de Data Base worden verwerkt door het ondersteunings team van Azure. Neem contact op met de ondersteuning van Azure als u een merkt-database beschadiging hebt die moet worden opgelost.
 
@@ -479,8 +479,8 @@ Beperkingen:
 - Herstellen van `.BAK` een bestand met een beperking die in dit document is `FILESTREAM` beschreven (bijvoorbeeld of `FILETABLE` objecten) kan niet worden hersteld op een beheerd exemplaar.
 - `.BAK`bestanden die meerdere back-upsets bevatten, kunnen niet worden hersteld. 
 - `.BAK`bestanden die meerdere logboek bestanden bevatten, kunnen niet worden hersteld.
-- Back-ups met data bases die groter zijn dan 8TB, actieve in-memory OLTP objecten of het aantal bestanden dat groter zou zijn dan 280 bestanden per exemplaar, kunnen niet worden hersteld op een Algemeen-exemplaar. 
-- Back-ups die data bases bevatten die groter zijn dan 4 TB of in-memory OLTP objecten met de totale grootte die groter is dan de grootte die is beschreven in [resource limieten](sql-database-managed-instance-resource-limits.md) , kunnen niet worden hersteld op bedrijfskritiek exemplaar.
+- Back-ups die data bases bevatten die groter zijn dan 8 TB, actieve in-memory OLTP objecten of het aantal bestanden dat groter zou zijn dan 280 bestanden per exemplaar, kunnen niet worden hersteld op een Algemeen-exemplaar. 
+- Back-ups met data bases die groter zijn dan 4 TB of in-memory OLTP objecten met de totale grootte die groter is dan de grootte die is beschreven in [resource limieten](sql-database-managed-instance-resource-limits.md) , kunnen niet worden hersteld op bedrijfskritiek exemplaar.
 Zie Restore statements ( [instructies herstellen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)) voor meer informatie over Restore-instructies.
 
  > [!IMPORTANT]
@@ -544,6 +544,16 @@ Een beheerd exemplaar plaatst uitgebreide informatie in fouten Logboeken. Er zij
 
 ## <a name="Issues"></a>Bekende problemen
 
+### <a name="missing-validations-in-restore-process"></a>Ontbrekende validaties in het herstel proces
+
+**Vallen** Sep 2019
+
+`RESTORE`instructies en ingebouwde tijdstippen voor het herstellen van een aantal nessecary-controles worden niet uitgevoerd op de herstelde data base:
+- **DBCC CHECKDB**  -  `DBCC CHECKDB` -instructie kan niet worden uitgevoerd op de herstelde data base.`RESTORE` Als een originele data base beschadigd is of als het back-upbestand is beschadigd terwijl het wordt gekopieerd naar Azure Blob-opslag, worden er geen automatische back-ups gemaakt en neemt Azure-ondersteuning contact op met de klant. 
+- Het ingebouwde herstel proces van het tijdstip wordt niet gecontroleerd. de automatische back-up van Bedrijfskritiek-exemplaar bevat de [in-Memory OLTP-objecten](sql-database-in-memory.md#in-memory-oltp). 
+
+**Tijdelijke oplossing**: Zorg ervoor dat u uitvoert `DBCC CHECKDB` op de bron database voordat u een back-up maakt en gebruik `WITH CHECKSUM` de optie in back-up om te voor komen dat er mogelijke beschadigingen kunnen worden hersteld op een beheerd exemplaar. Zorg ervoor dat de bron database niet in het geheugen aanwezige [OLTP-objecten](sql-database-in-memory.md#in-memory-oltp) bevat als u deze op algemeen niveau herstelt.
+
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Resource Governor op Bedrijfskritiek servicelaag moet mogelijk opnieuw worden geconfigureerd na een failover
 
 **Vallen** Sep 2019
@@ -552,19 +562,19 @@ Een beheerd exemplaar plaatst uitgebreide informatie in fouten Logboeken. Er zij
 
 **Tijdelijke oplossing**: Voer `ALTER RESOURCE GOVERNOR RECONFIGURE` regel matig of als onderdeel van de SQL-Agent taak uit die de SQL-taak uitvoert wanneer het exemplaar wordt gestart als u [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor)gebruikt.
 
-### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Kan niet verificatie, naar externe e-mail servers met behulp van een beveiligde verbinding (SSL)
+### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>Kan niet verifiëren bij externe e-mail servers met behulp van een beveiligde verbinding (SSL)
 
 **Vallen** Aug 2019
 
 Data base mail die is [geconfigureerd met behulp van beveiligde verbinding (SSL)](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail) kan niet worden geverifieerd op sommige e-mail servers buiten Azure. Dit is een beveiligings configuratie probleem dat binnenkort wordt opgelost.
 
-**Enkele** Een tijdelijke beveiligde verbinding (SSL) vormt de configuratie van de data base mail totdat het probleem is opgelost. 
+**Enkele** De tijdelijke Verwijder beveiligde verbinding (SSL) van de configuratie van de data base mail totdat het probleem is opgelost. 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Meerdere data base-Service Broker dialoog vensters moeten opnieuw worden geïnitialiseerd na de upgrade van de servicelaag
 
 **Vallen** Aug 2019
 
-Service Broker dialoog vensters voor meerdere data bases worden gestopt met het leveren van berichten aan de services in andere data bases nadat de bewerking van de service tier is gewijzigd. De berichten zijn **niet verloren gegaan** en kunnen worden gevonden in de wachtrij van de afzender. Elke wijziging van de vCores of de opslag grootte van een exemplaar in het `service_broke_guid` beheerde exemplaar leidt ertoe dat de waarde van de weer gave [sys. data bases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) voor alle data bases wordt gewijzigd. Elke `DIALOG` gemaakt met de instructie [begin dialog](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , die verwijst naar service-Brokers in een andere data base, stopt met het leveren van berichten berichten aan de doel service.
+Service Broker dialoog vensters voor meerdere data bases worden gestopt met het leveren van berichten aan de services in andere data bases nadat de bewerking van de service tier is gewijzigd. De berichten zijn **niet verloren gegaan** en kunnen worden gevonden in de wachtrij van de afzender. Elke wijziging van de vCores of de opslag grootte van een exemplaar in het `service_broke_guid` beheerde exemplaar leidt ertoe dat de waarde van de weer gave [sys. data bases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) voor alle data bases wordt gewijzigd. Elke `DIALOG` gemaakt met de instructie [begin dialog](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , die verwijst naar service-Brokers in een andere data base, stopt met het leveren van berichten aan de doel service.
 
 **Enkele** Stop alle activiteiten die gebruikmaken van cross-data base Service Broker dialoog venster gesprekken voordat u de servicelaag bijwerkt en opnieuw initialiseert. Als er nog andere berichten zijn die niet worden bezorgd na wijziging van de servicelaag, leest u de berichten van de bron wachtrij en verzendt u deze opnieuw naar de doel wachtrij.
 
@@ -592,7 +602,7 @@ Als transactionele replicatie is ingeschakeld voor een data base in een groep me
 
 **Vallen** Jan 2019
 
-SQL Server Management Studio en SQL Server Data Tools niet fuly Azure-Acctive Directory-aanmeldingen en-gebruikers te ondersteunen.
+SQL Server Management Studio en SQL Server Data Tools bieden geen volledige ondersteuning voor Azure Active Directory-aanmeldingen en-gebruikers.
 - Het gebruik van Azure AD server-principals (aanmeldingen) en gebruikers (open bare preview) met SQL Server Data Tools wordt momenteel niet ondersteund.
 - Scripts voor Azure AD server-principals (aanmeldingen) en gebruikers (open bare preview) worden niet ondersteund in SQL Server Management Studio.
 
@@ -612,7 +622,7 @@ De `tempdb` data base is altijd gesplitst in 12 gegevens bestanden en de bestand
 
 Elk Algemeen Managed instance heeft tot 35 TB aan opslag ruimte gereserveerd voor Azure Premium. Elk database bestand wordt geplaatst op een afzonderlijke fysieke schijf. Schijf grootten kunnen 128 GB, 256 GB, 512 GB, 1 TB of 4 TB zijn. Voor ongebruikte ruimte op de schijf worden geen kosten in rekening gebracht, maar de totale som van Azure Premium-schijf grootten mag niet groter zijn dan 35 TB. In sommige gevallen kan een beheerd exemplaar dat niet 8 TB in totaal nodig heeft, de Azure-limiet van 35 TB overschrijden bij de opslag grootte vanwege interne fragmentatie.
 
-Een Algemeen beheerde instantie kan bijvoorbeeld één groot bestand hebben dat 1,2 TB groot is voor een schijf van 4 TB. Het bestand kan ook 248 bestanden van 1 GB bestanden bevatten die elk op afzonderlijke 128 GB-schijven worden geplaatst. In dit voorbeeld:
+Een Algemeen Managed instance kan bijvoorbeeld één groot bestand hebben dat 1,2 TB groot is voor een schijf van 4 TB. Er kunnen ook 248-bestanden zijn met een grootte van 1 GB die wordt geplaatst op afzonderlijke 128 GB-schijven. In dit voorbeeld:
 
 - De totale toegewezen schijf ruimte is 1 x 4 TB + 248 x 128 GB = 35 TB.
 - De totale gereserveerde ruimte voor data bases op het exemplaar is 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.
@@ -629,7 +639,7 @@ In verschillende systeem weergaven, prestatie meter items, fout berichten, XEven
 
 ### <a name="error-logs-arent-persisted"></a>Fouten logboeken zijn niet persistent gemaakt
 
-Fouten logboeken die beschikbaar zijn in het beheerde exemplaar, worden niet persistent gemaakt en hun grootte is niet opgenomen in de maximale opslag limiet. Fout logboeken kunnen automatisch worden gewist als er een failover wordt uitgevoerd. Er zijn mogelijk hiaten in de fouten logboek geschiedenis, omdat een beheerd exemplaar meerdere keer is verplaatst op meerdere virtuele machines.
+Fouten logboeken die beschikbaar zijn in het beheerde exemplaar, worden niet persistent gemaakt en hun grootte is niet opgenomen in de maximale opslag limiet. Fout logboeken kunnen automatisch worden gewist als er een failover wordt uitgevoerd. Er zijn mogelijk hiaten in de fouten logboek geschiedenis, omdat het beheerde exemplaar meerdere keren is verplaatst op verschillende virtuele machines.
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Het transactie bereik van twee data bases binnen hetzelfde exemplaar wordt niet ondersteund
 
