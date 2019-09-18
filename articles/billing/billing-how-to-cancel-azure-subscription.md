@@ -1,6 +1,6 @@
 ---
-title: Uw Azure-abonnement annuleren | Microsoft Docs
-description: Hierin wordt beschreven hoe u uw Azure-abonnement annuleert, zoals het gratis proef abonnement
+title: Uw Azure-abonnement opzeggen | Microsoft Docs
+description: Hier wordt beschreven hoe u een Azure-abonnement, zoals het gratis proefabonnement, kunt opzeggen
 author: bandersmsft
 manager: amberb
 tags: billing
@@ -13,59 +13,59 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: banders
 ms.openlocfilehash: 7756174f01e3fede17bec3e2ac185e89caddc097
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68666433"
 ---
-# <a name="cancel-your-azure-subscription"></a>Uw Azure-abonnement annuleren
+# <a name="cancel-your-azure-subscription"></a>Uw Azure-abonnement opzeggen
 
-U kunt uw Azure-abonnement in de Azure Portal annuleren als u het abonnement niet meer nodig hebt. 
+Als u uw Azure-abonnement niet meer nodig hebt, het opzeggen in de Azure-portal. 
 
-Voordat u uw abonnement annuleert:
-* Maak een back-up van uw gegevens. Als u bijvoorbeeld gegevens in azure Storage of SQL opslaat, downloadt u een kopie. Als u een virtuele machine hebt, slaat u deze lokaal op.
-* Sluit uw services af. Ga naar de [pagina Resources in de beheer Portal](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources)en **Stop** alle actieve virtuele machines, toepassingen of andere services.
-* U kunt uw gegevens migreren. Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/resource-group-move-resources.md).
-* Verwijder alle resources en alle resource groepen. U moet deze verwijderen voordat u een abonnement kunt annuleren. Elke resource groep moet afzonderlijk worden verwijderd. Tijdens het verwijderen van de resource groep moet u het verwijderen bevestigen door de naam van de resource groep op te geven.
-* Als u aangepaste rollen hebt die verwijzen naar dit abonnement in `AssignableScopes`, moet u die aangepaste rollen bijwerken om het abonnement te verwijderen. Als u een aangepaste rol probeert bij te werken nadat u een abonnement hebt geannuleerd, wordt er mogelijk een fout bericht weer geven. Zie [problemen oplossen met aangepaste rollen](../role-based-access-control/troubleshooting.md#problems-with-custom-roles) en [aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md)voor meer informatie.
+Voordat u uw abonnement opzegt, moet u de volgende zaken doen:
+* Maak een back-up van uw gegevens. Als u gegevens opslaat in Azure Storage of SQL, moet u bijvoorbeeld een kopie downloaden. Als u een virtuele machine hebt, slaat u lokaal een kopie van die VM op.
+* Sluit uw services af. Ga naar de [pagina met resources in de beheerportal](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources) en **Stop** alle actieve virtuele machines, toepassingen of andere services.
+* Overweeg uw gegevens te migreren. Zie [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](../azure-resource-manager/resource-group-move-resources.md).
+* Verwijder alle resources en alle resourcegroepen. Deze moeten zijn verwijderd voordat u een abonnement kunt opzeggen. Elke resourcegroep moet afzonderlijk worden verwijderd. Bij het verwijderen van de resourcegroep moet u de verwijdering bevestigen door de naam van de resourcegroep op te geven.
+* Als u aangepaste rollen hebt die verwijzen naar dit abonnement in `AssignableScopes`, moet u die aangepaste rollen bijwerken om het abonnement te kunnen verwijderen. Als u een aangepaste rol probeert bij te werken nadat u een abonnement hebt opgezegd, wordt er mogelijk een foutmelding weergegeven. Zie [Problemen met aangepaste rollen oplossen](../role-based-access-control/troubleshooting.md#problems-with-custom-roles) en [Aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md) voor meer informatie.
 
-Als u een betaald ondersteunings abonnement voor Azure annuleert, wordt u gefactureerd voor de rest van de abonnements periode. Zie Azure-ondersteunings [abonnementen](https://azure.microsoft.com/support/plans/)voor meer informatie.
+Als u een betaald Azure-ondersteuningsplan annuleert, wordt u gefactureerd voor de rest van de abonnementsperiode. Zie [Ondersteuningsabonnementen voor Azure](https://azure.microsoft.com/support/plans/) voor meer informatie.
 
-## <a name="cancel-subscription-in-the-azure-portal"></a>Het abonnement op het Azure Portal annuleren
+## <a name="cancel-subscription-in-the-azure-portal"></a>Abonnement annuleren in de Azure-portal
 
-1. Selecteer uw abonnement op de [pagina Abonnementen in het Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-2. Selecteer het abonnement dat u wilt annuleren.
-3. Selecteer **overzicht**en selecteer vervolgens **abonnement annuleren**.
-    ![Scherm opname van de knop Annuleren](./media/billing-how-to-cancel-azure-subscription/cancel_ibiza.png)
-3. Volg de aanwijzingen en voltooi de annulering.
+1. Selecteer uw abonnement op de [pagina Abonnementen in de Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+2. Selecteer het abonnement dat u wilt opzeggen.
+3. Selecteer **Overzicht** en selecteer vervolgens **Abonnement annuleren**.
+    ![Schermopname waarin de knop ‘Abonnement annuleren’ wordt weergegeven](./media/billing-how-to-cancel-azure-subscription/cancel_ibiza.png)
+3. Volg de aanwijzingen om de opzegging te voltooien.
 
 
 ## <a name="who-can-cancel-a-subscription"></a>Wie kan een abonnement annuleren?
 
-In de volgende tabel wordt de machtiging beschreven die is vereist om een abonnement te annuleren.
+In de onderstaande tabel worden de machtigingen beschreven die zijn vereist voor het opzeggen van een abonnement.
 
-|Abonnementstype     |Wie kan annuleren  |
+|Abonnementstype     |Wie het abonnement kan opzeggen  |
 |---------|---------|
-|Abonnementen die worden gemaakt wanneer u zich aanmeldt voor Azure via de Azure-website. Als u zich bijvoorbeeld aanmeldt voor een [gratis Azure-account](https://azure.microsoft.com/offers/ms-azr-0044p/), [account met betalen naar](https://azure.microsoft.com/offers/ms-azr-0003p/) gebruik-tarieven of als een [Visual Studio-abonnee](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/). |  Account beheerder, eigen aren en mede werkers voor het abonnement  |
-|[Micro soft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) en [Enter prise dev/test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  Eigenaar, eigen aren en mede werkers van het abonnement       |
-|[Azure-abonnement](https://azure.microsoft.com/offers/ms-azr-0017g/) en [Azure-abonnement voor DevTest](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  Eigen aren en mede werkers voor het abonnement      |
+|Abonnementen die zijn gemaakt toen u zich aanmeldde voor Azure via de Azure-website. Bijvoorbeeld toen u zich aanmeldde voor een [gratis Azure-account](https://azure.microsoft.com/offers/ms-azr-0044p/), een [account met tarieven voor betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/) of een [Visual Studio-abonnement](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/). |  De accountbeheerder, eigenaren en inzenders voor het abonnement  |
+|[Microsoft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) en [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  De accounteigenaar, eigenaren en inzenders voor het abonnement       |
+|[Azure-plan](https://azure.microsoft.com/offers/ms-azr-0017g/) en [Azure-plan voor DevTest](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  De eigenaren en inzenders voor het abonnement      |
 
 
-## <a name="what-happens-after-i-cancel-my-subscription"></a>Wat gebeurt er nadat ik mijn abonnement heb geannuleerd?
+## <a name="what-happens-after-i-cancel-my-subscription"></a>Wat gebeurt er nadat ik mijn abonnement heb opgezegd?
 
-Nadat u hebt geannuleerd, wordt de facturering onmiddellijk gestopt. Het kan echter Maxi maal tien minuten duren voordat de annulering wordt weer gegeven in de portal. Als u het midden van een facturerings periode annuleert, sturen we de uiteindelijke factuur op uw gebruikelijke factuur datum na afloop van de periode.
+Nadat u uw abonnement hebt opgezegd, wordt de facturering onmiddellijk stopgezet. Het kan echter wel maximaal 10 minuten duren voordat de opzegging in de portal wordt weergegeven. Als u uw abonnement halverwege een factureringsperiode opzegt, verzenden we de laatste factuur op de gebruikelijke factuurdatum, na afloop van de periode.
 
-Nadat u de bewerking hebt geannuleerd, zijn uw services uitgeschakeld. Dit betekent dat uw virtuele machines zijn toegewezen, tijdelijke IP-adressen worden vrijgemaakt en dat opslag alleen-lezen is.
+Nadat u het abonnement hebt opgezegd, worden uw services uitgeschakeld. Dit betekent dat de toewijzing uw virtuele machines ongedaan wordt gemaakt, dat uw tijdelijke IP-adressen worden vrijgemaakt en dat uw opslag het kenmerk Alleen-lezen heeft.
 
-We wachten 90 dagen voordat u uw gegevens permanent verwijdert, voor het geval u er toegang toe hebt of u van gedachten verandert. U wordt niet in rekening gebracht voor het bewaren van de gegevens. Zie voor meer informatie [micro soft vertrouwens centrum-hoe we uw gegevens beheren](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
+We wachten 90 dagen voordat we uw gegevens permanent verwijderen, voor het geval u er toegang toe moet hebben of u van gedachten verandert. Wij brengen u niets in rekening voor het bewaren van de gegevens. Zie [Vertrouwenscentrum van Microsoft - Hoe we uw gegevens beheren](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409) voor meer informatie.
 
 ## <a name="reactivate-subscription"></a>Abonnement opnieuw activeren
 
-Als u uw abonnement per ongeluk betaalt met betalen naar gebruik, kunt u [dit opnieuw activeren in het account centrum](billing-subscription-become-disable.md).
+Als u per ongeluk uw abonnement met tarieven voor betalen per gebruik opzegt, kunt u [het opnieuw activeren in het accountcentrum](billing-subscription-become-disable.md).
 
-Als uw abonnement geen abonnement is met betalen per gebruik-tarieven, neemt u contact op met de ondersteuning binnen 90 dagen na de annulering om uw abonnement opnieuw te activeren.
+Als uw abonnement geen abonnement is met tarieven voor betalen per gebruik, neemt u binnen 90 dagen na opzegging contact op met het ondersteuningsteam om uw abonnement opnieuw te activeren.
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u vragen hebt of hulp nodig hebt, kunt u [een ondersteunings aanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

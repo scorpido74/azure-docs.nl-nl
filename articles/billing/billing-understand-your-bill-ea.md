@@ -1,6 +1,6 @@
 ---
-title: Meer informatie over uw factuur voor Azure enterprise
-description: Informatie over het lezen en meer informatie over het gebruik en de factuur voor Azure Enterprise-overeenkomsten.
+title: Meer informatie over uw Azure Enterprise-factuur
+description: Lees hoe u meer inzicht kunt krijgen in uw gebruik en de factuur voor een Azure Enterprise-overeenkomst.
 author: adpick
 manager: dougeby
 tags: billing
@@ -12,124 +12,124 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490286"
 ---
-# <a name="understand-your-azure-enterprise-agreement-bill"></a>Meer informatie over uw Enterprise Agreement voor Azure-factuur
+# <a name="understand-your-azure-enterprise-agreement-bill"></a>Meer informatie over uw Azure Enterprise Agreement-factuur
 
-Azure-klanten met een Enterprise Agreement ontvangt een factuur wanneer ze langer zijn dan de creditcard van de organisatie of services die niet zijn gekoppeld aan het tegoed gebruikt.
+Azure-klanten met een Enterprise Agreement ontvangen een factuur wanneer ze het tegoed van de organisatie overschrijden of services gebruiken die niet onder het tegoed vallen.
 
-Tegoed van uw organisatie bevat uw monetaire toezegging. De monetaire toezegging wordt het bedrag dat uw organisatie vooraf betaald voor het gebruik van Azure-services. U kunt monetaire toezeggingsgelden naar uw Enterprise Agreement toevoegen door contact op met uw Microsoft-accountmanager of reseller.  
+Het tegoed van uw organisatie omvat uw financiële toezegging. De financiële toezegging is het bedrag dat uw organisatie vooraf heeft betaald voor het gebruik van Azure-services. U kunt financiële toezeggingsfondsen aan uw Enterprise Agreement toevoegen door contact op te nemen met uw Microsoft-accountmanager of reseller.  
 
 ## <a name="invoices-for-most-customers"></a>Facturen voor de meeste klanten
 
-In deze sectie niet van toepassing op Azure-klanten in Australië, Japan en Singapore. Als u zich in een van deze landen/regio's, Zie [facturen voor andere klanten](#invoices-for-other-customers).
+Deze sectie is niet van toepassing op Azure-klanten in Australië, Japan of Singapore. Zie [Facturen voor andere klanten](#invoices-for-other-customers) als u zich in een van deze landen/regio's bevindt.
 
-U ontvangt een factuur voor Azure als een van de volgende tijdens uw factureringscyclus optreedt:
+U ontvangt een Azure-factuur tijdens de factureringscyclus in de volgende gevallen:
 
-- **Serviceoverschrijding**: Kosten voor het gebruik van uw organisatie meer dan uw saldo.
-- **De kosten apart in rekening gebracht**: De services die wordt gebruikt door uw organisatie niet zijn gekoppeld aan het tegoed. U bent voor de volgende services gefactureerd, ongeacht uw saldo:
+- **Serviceoverschrijding**: De gebruikskosten van uw organisatie overschrijden het tegoed.
+- **Afzonderlijk gefactureerde kosten**: De services die door uw organisatie worden gebruikt, vallen niet onder het tegoed. U wordt gefactureerd voor de volgende services, ongeacht het saldo van uw tegoed:
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
     - Geregistreerde gebruiker
-    - Openlogic
-    - Externe toegang rechten XenApp Essentials geregistreerde gebruiker
+    - OpenLogic
+    - Geregistreerde gebruiker van Remote Access Rights XenApp Essentials
     - Ubuntu Advantage
     - Visual Studio Enterprise (maandelijks)
     - Visual Studio Enterprise (jaarlijks)
     - Visual Studio Professional (maandelijks)
     - Visual Studio Professional (jaarlijks)
-- **Marketplace-kosten**: Azure Marketplace-aankopen en gebruik zijn niet wordt gedekt door een tegoed van uw organisatie. U bent dus voor Marketplace-kosten gefactureerd, ongeacht uw saldo. In de Enterprise-Portal, kan een Enterprise-beheerder in- en uitschakelen van Marketplace-aankopen.
+- **Marketplace-kosten**: Azure Marketplace-aankopen en het gebruik van Azure Marketplace vallen niet onder het tegoed van uw organisatie. U wordt gefactureerd voor Marketplace-kosten, ongeacht het saldo van uw tegoed. In de Enterprise-portal kan een Enterprise-beheerder Marketplace-aankopen in- en uitschakelen.
 
-## <a name="review-charges-for-most-customers"></a>Kosten voor de meeste klanten controleren
-In deze sectie niet van toepassing op Azure-klanten in Australië, Japan en Singapore. Als u zich in een van deze landen, Zie [kosten in rekening gebracht voor andere klanten bekijken](#review-charges-for-other-customers).
+## <a name="review-charges-for-most-customers"></a>Kosten voor de meeste klanten bekijken
+Deze sectie is niet van toepassing op Azure-klanten in Australië, Japan of Singapore. Zie [Kosten voor andere klanten bekijken](#review-charges-for-other-customers) als u zich in een van deze landen/regio's bevindt.
 
-Als u wilt controleren en verifiëren van de kosten op uw factuur, moet u een Enterprise-beheerder zijn. Zie voor meer informatie, [beheerdersrollen in Azure begrijpen Azure Enterprise overeenkomst](billing-understand-ea-roles.md). Als u niet weet wie de Enterprise-beheerder is voor uw organisatie, [contact op met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Als u de kosten op uw factuur wilt inzien en controleren, moet u een Enterprise-beheerder zijn. Zie [Inzicht in Azure Enterprise Agreement-beheerdersrollen in Azure](billing-understand-ea-roles.md) voor meer informatie. Als u niet weet wie de Enterprise-beheerder is voor uw organisatie, neemt u [contact](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) op met de ondersteuning.
 
-Uw factuur ziet al uw Azure-gebruik, gevolgd door een Marketplace-kosten. Als u een tegoed hebt, wordt deze toegepast op gebruik van Azure.
+Op uw factuur staan al uw Azure-gebruikskosten, gevolgd door eventuele kosten voor Marketplace. Als u een tegoed hebt, wordt dit saldo toegepast op het gebruik van Azure.
 
-Vergelijk uw gecombineerde totaalbedrag wordt weergegeven in de Enterprise Portal **rapporten** > **Gebruiksoverzicht** met uw Azure-factuur. De bedragen in het **Gebruiksoverzicht** zijn exclusief btw.
+Vergelijk het gecombineerde totaalbedrag dat wordt weergegeven in **Rapporten** > **Gebruiksoverzicht** met uw Azure-factuur. De bedragen in het **gebruiksoverzicht** zijn exclusief belasting.
 
-1. Aanmelden bij de [Enterprise portal](https://ea.azure.com).
-1. Selecteer **rapporten**.
-1. Overschakelen van de weergave in de rechterbovenhoek van het tabblad **M** naar **C** en overeenkomen met de periode op de factuur.  
-    ![Schermafbeelding van M + C-optie in de samenvatting van gebruik.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
-1. De gecombineerde hoeveelheid **Totaalgebruik** en **Azure Marketplace** moet overeenkomen met de **uitgebreid totaalbedrag** op uw factuur.
-1. Voor meer informatie over uw kosten, gaat u naar **gebruiksgegevens downloaden**.  
-    ![Schermafbeelding van het tabblad gebruiksgegevens downloaden](./media/billing-understand-your-bill-ea/ea-portal-download-usage.png)
+1. Meld u aan bij de [Enterprise-portal](https://ea.azure.com).
+1. Selecteer **Rapporten**.
+1. Wijzig in de rechterbovenhoek van het tabblad de weergave van**M** in **C** en selecteer de periode die op de factuur wordt vermeld.  
+    ![Schermopname van de optie M + C in het gebruiksoverzicht.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
+1. Het gecombineerde bedrag van **Totaal gebruik** en **Azure Marketplace** moet overeenkomen met het **totaal berekende bedrag** op uw factuur.
+1. Ga voor meer informatie over uw kosten naar **Gebruiksgegevens downloaden**.  
+    ![Schermopname van het tabblad Gebruiksgegevens downloaden](./media/billing-understand-your-bill-ea/ea-portal-download-usage.png)
 
 ## <a name="invoices-for-other-customers"></a>Facturen voor andere klanten
 
-In deze sectie is alleen van toepassing op Azure-klanten in Australië, Japan en Singapore.
+Deze sectie is alleen van toepassing op Azure-klanten in Australië, Japan of Singapore.
 
-U ontvangt een of meer Azure-facturen wanneer het volgende gebeurt:
+U ontvangt een of meer Azure-facturen in de volgende gevallen:
 
-- **Serviceoverschrijding**: Kosten voor het gebruik van uw organisatie meer dan uw saldo.
-- **De kosten apart in rekening gebracht**: De services die wordt gebruikt door uw organisatie niet zijn gekoppeld aan het tegoed. U bent voor de volgende services gefactureerd, ongeacht uw saldo:
+- **Serviceoverschrijding**: De gebruikskosten van uw organisatie overschrijden het tegoed.
+- **Afzonderlijk gefactureerde kosten**: De services die door uw organisatie worden gebruikt, vallen niet onder het tegoed. U wordt gefactureerd voor de volgende services, ongeacht het saldo van uw tegoed:
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
     - Geregistreerde gebruiker
-    - Openlogic
-    - Externe toegang rechten XenApp Essentials geregistreerde gebruiker
+    - OpenLogic
+    - Geregistreerde gebruiker van Remote Access Rights XenApp Essentials
     - Ubuntu Advantage
     - Visual Studio Enterprise (maandelijks)
     - Visual Studio Enterprise (jaarlijks)
     - Visual Studio Professional (maandelijks)
     - Visual Studio Professional (jaarlijks)
-- **Marketplace-kosten**: Azure Marketplace-aankopen en gebruik zijn niet inbegrepen bij uw organisatie tegoed en worden afzonderlijk gefactureerd. In de Enterprise-Portal, kan een Enterprise-beheerder in- en uitschakelen van Marketplace-aankopen.
+- **Marketplace-kosten**: Azure Marketplace-aankopen en het gebruik van Azure Marketplace vallen niet onder het tegoed van uw organisatie en worden afzonderlijk gefactureerd. In de Enterprise-portal kan een Enterprise-beheerder Marketplace-aankopen in- en uitschakelen.
 
-Wanneer u kosten in rekening gebracht vanwege hebt voor de service overschrijdingen en kosten die apart in rekening tijdens de factureringsperiode gebracht worden, krijgt u één factuur. Het bevat beide typen kosten in rekening gebracht. Marktplaatsen in de kosten worden altijd afzonderlijk gefactureerd.
+Als er kosten in rekening worden gebracht voor serviceoverschrijdingen en kosten die afzonderlijk worden gefactureerd tijdens de factureringsperiode, ontvangt u één factuur. Deze bevat beide typen kosten. Marketplace-kosten worden altijd afzonderlijk gefactureerd.
 
-## <a name="review-charges-for-other-customers"></a>Controleer de kosten voor andere klanten
+## <a name="review-charges-for-other-customers"></a>Kosten voor andere klanten bekijken
 
-In deze sectie is alleen van toepassing als u zich in Australië, Japan en Singapore.
+Deze sectie is alleen van toepassing als u zich bevindt in Australië, Japan of Singapore.
 
-Als u wilt controleren en verifiëren van de kosten op uw factuur, moet u een Enterprise-beheerder zijn. Zie voor meer informatie, [beheerdersrollen in Azure begrijpen Azure Enterprise overeenkomst](billing-understand-ea-roles.md). Als u niet weet wie de Enterprise-beheerder is voor uw organisatie, [contact op met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Als u de kosten op uw factuur wilt inzien en controleren, moet u een Enterprise-beheerder zijn. Zie [Inzicht in Azure Enterprise Agreement-beheerdersrollen in Azure](billing-understand-ea-roles.md) voor meer informatie. Als u niet weet wie de Enterprise-beheerder is voor uw organisatie, neemt u [contact](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) op met de ondersteuning.
 
-### <a name="review-service-overage-invoice"></a>Overschrijding factuur controleren
+### <a name="review-service-overage-invoice"></a>Serviceoverschrijdingsfactuur bekijken
 
-Vergelijk uw totale hoeveelheid in de Enterprise Portal **rapporten** > **Gebruiksoverzicht** met uw service overschrijding factuur. De overschrijding factuur bevat gebruik die langer is dan tegoed van uw organisatie en/of services die niet zijn gekoppeld aan het tegoed. De bedragen op de **Gebruiksoverzicht** zijn exclusief btw.
+Vergelijk het totaalbedrag voor uw gebruik in de Enterprise-portal in **Rapporten** > **Gebruiksoverzicht** met uw serviceoverschrijdingsfactuur. De serviceoverschrijdingsfactuur omvat het gebruik dat het tegoed van uw organisatie overschrijdt en/of services die niet onder het tegoed vallen. De bedragen in het **gebruiksoverzicht** zijn exclusief belasting.
 
-1. Aanmelden bij de [Enterprise portal](https://ea.azure.com).
-1. Selecteer **rapporten**.
-1. Overschakelen van de weergave in de rechterbovenhoek van het tabblad **M** naar **C** en overeenkomen met de periode op de factuur.  
-    ![Schermafbeelding van M + C-optie in de samenvatting van gebruik.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
-1. De **Totaalgebruik** bedrag moet overeenkomen met de **uitgebreid totaalbedrag** op uw factuur overschrijding.  
-1. Voor meer informatie over uw kosten, gaat u naar **gebruiksgegevens downloaden** > **Geavanceerd rapport downloaden**. Het rapport bevat geen belastingen of kosten voor reserveringen of marketplace-kosten.  
-      ![Schermafbeelding van Geavanceerd rapport downloaden op het tabblad downloaden gebruik.](./media/billing-understand-your-bill-ea/ea-portal-download-usage-advanced.png)
+1. Meld u aan bij de [Enterprise-portal](https://ea.azure.com).
+1. Selecteer **Rapporten**.
+1. Wijzig in de rechterbovenhoek van het tabblad de weergave van**M** in **C** en selecteer de periode die op de factuur wordt vermeld.  
+    ![Schermopname van de optie M + C in het gebruiksoverzicht.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
+1. Het bedrag voor het **totale gebruik** moet overeenkomen met het **totale berekende bedrag** op uw serviceoverschrijdingsfactuur.  
+1. Ga naar **Gebruiksgegevens downloaden** > **Geavanceerd rapport downloaden** voor meer informatie over uw kosten. Het rapport bevat geen belastingen, reserveringskosten of Marketplace-kosten.  
+      ![Schermopname van het downloaden van het geavanceerde rapport op het tabblad Gebruiksgegevens downloaden.](./media/billing-understand-your-bill-ea/ea-portal-download-usage-advanced.png)
 
-De volgende tabel bevat de voorwaarden en beschrijvingen die worden weergegeven op de factuur en klik op de **Gebruiksoverzicht** in de Enterprise portal:
+De volgende tabel bevat de begrippen en beschrijvingen die worden weergegeven in de factuur en in het **gebruiksoverzicht** in de Enterprise-portal:
 
-|Factuur-term|Overzicht gebruik-term|Description|
+|Begrip in factuur|Begrip in gebruiksoverzicht|Beschrijving|
 |---|---|---|
-|Totale hoeveelheid uitgebreid|Totaal gebruik|De totale vóór belastingen gebruik kosten in rekening gebracht voor de specifieke periode voordat het tegoed wordt toegepast.|
-|Toezegging|Toezegging|Het tegoed toegepast die specifieke periode.|
-|Totale verkoop|Totale overschrijding|De kosten van het totale gebruik dat hoger is dan de hoeveelheid tegoed. Dit bedrag bevat geen belasting.|
-|Bedrag|Niet van toepassing|Belasting die voor het bedrag van de totale verkoop voor de specifieke periode geldt.|
-|Totaalbedrag|Niet van toepassing|Het bedrag moet de factuur nadat het tegoed is toegepast en de btw wordt toegevoegd.|
+|Totaal berekend bedrag|Totaal gebruik|De totale gebruikskosten exclusief belasting voor de specifieke periode voordat het tegoed wordt toegepast.|
+|Toezeggingsgebruik|Toezeggingsgebruik|Het tegoed dat tijdens deze specifieke periode is toegepast.|
+|Totale verkoop|Totale overschrijding|De totale gebruikskosten die het tegoed overschrijden. Dit bedrag is exclusief belasting.|
+|Belastingbedrag|Niet van toepassing|Belasting die van toepassing is op het totale verkoopbedrag voor deze specifieke periode.|
+|Totaalbedrag|Niet van toepassing|Het verschuldigde bedrag voor de factuur nadat het tegoed is toegepast en er belasting is toegevoegd.|
 
 ### <a name="marketplace-invoice"></a>Marketplace-factuur
 
-In deze sectie is alleen van toepassing als u zich in Australië, Japan en Singapore.
+Deze sectie is alleen van toepassing als u zich bevindt in Australië, Japan of Singapore.
 
-Vergelijk het totaal op Azure Marketplace **rapporten** > **Gebruiksoverzicht** in de Enterprise-portal met uw marketplace-factuur. De Marketplace-factuur betreft alleen Azure Marketplace-aankopen en -gebruik. De bedragen op de **Gebruiksoverzicht** zijn exclusief btw.
+Vergelijk uw Azure Marketplace-totaal in **Rapporten** > **Gebruiksoverzicht** in de Enterprise-portal met uw Marketplace-factuur. De Marketplace-factuur betreft alleen Azure Marketplace-aankopen en -gebruik. De bedragen in het **gebruiksoverzicht** zijn exclusief belasting.
 
-1. Aanmelden bij de [Enterprise portal](https://ea.azure.com).
-1. Selecteer **rapporten**.
-1. Overschakelen van de weergave in de rechterbovenhoek van het tabblad **M** naar **C** en overeenkomen met de periode op de factuur.  
-     ![Schermafbeelding van M + C-optie op Samenvatting van gebruik.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)  
-1. De **Azure Marketplace** totaal moet overeenkomen met de **totale verkoop** op uw marketplace-factuur.
-1. Voor meer informatie over uw kosten op basis van gebruik, gaat u naar **gebruiksgegevens downloaden**. Onder **Marketplace-kosten**, selecteer **downloaden**. Dit rapport bevat geen belastingen of eenmalige aankopen.  
-     ![Schermafbeelding van downloaden optie onder Marketplace-kosten.](./media/billing-understand-your-bill-ea/ea-portal-download-usage-marketplace.png)
+1. Meld u aan bij de [Enterprise-portal](https://ea.azure.com).
+1. Selecteer **Rapporten**.
+1. Wijzig in de rechterbovenhoek van het tabblad de weergave van**M** in **C** en selecteer de periode die op de factuur wordt vermeld.  
+     ![Schermopname van de optie M + C in het gebruiksoverzicht.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)  
+1. Het totaal bij **Azure Marketplace** moet overeenkomen met dat bij **Totale verkoop** op uw Marketplace-factuur.
+1. Ga naar **Gebruiksgegevens downloaden** voor meer informatie over uw gebruikskosten. Onder de **kosten voor Marketplace** selecteert u **Downloaden**. Dit rapport bevat geen belastingen of eenmalige aankopen.  
+     ![Schermopname van de optie Downloaden onder de kosten voor Marketplace.](./media/billing-understand-your-bill-ea/ea-portal-download-usage-marketplace.png)
 
 ## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
-Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Weergeven en downloaden van uw Azure-gebruik en kosten](billing-download-azure-daily-usage.md)
+- [Uw Azure-gebruik en -kosten weergeven en downloaden](billing-download-azure-daily-usage.md)

@@ -5,27 +5,27 @@ ms.topic: include
 ms.date: 07/01/2019
 ms.author: amberb
 ms.openlocfilehash: a271f03788bc7b831e6d8daff3d53503db5a2710
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67491041"
 ---
-Controleer het overeenkomsttype selecteren om te bepalen van het type van uw factureringsrekening
+Controleer het type overeenkomst om het type van uw factureringsaccount te bepalen
  
-1. Meld u aan bij [Azure Portal]( http://portal.azure.com).
+1. Meld u aan bij de [Azure-portal]( http://portal.azure.com).
  
 2. Zoek naar **kostenbeheer en facturering**.
  
-   ![Schermafbeelding van zoeken in Azure portal](./media/billing-check-account-type/billing-search-cost-management-billing.png)    
+   ![Schermopname van de zoekopdracht in de Azure-portal](./media/billing-check-account-type/billing-search-cost-management-billing.png)    
  
-3. Als u toegang tot slechts één facturering bereik hebt, selecteert u **eigenschappen** aan de linkerkant.
+3. Als u toegang hebt tot slechts één factureringsbereik, selecteert u **Eigenschappen** aan de linkerkant.
  
-    ![Schermafbeelding van microsoft KLANTOVEREENKOMST eigenschappenblad](./media/billing-check-account-type/billing-mca-property.png)
+    ![Schermopname van de Microsoft-klantovereenkomst op de pagina Eigenschappen](./media/billing-check-account-type/billing-mca-property.png)
     
-    De **facturering accounttype** eigenschappen van de pagina bepaalt het type van uw account. Het kan programma van de Microsoft Online Service, Enterprise-overeenkomst of Microsoft KLANTOVEREENKOMST zijn. Zie voor meer informatie over het type facturering accounts, [uw facturering accounts weergeven in Azure portal](../articles/billing/billing-view-all-accounts.md).  
+    Het **Type factureringsaccount** op de pagina Eigenschappen bepaalt het type van uw account. De mogelijke typen zijn: Microsoft Online Services-programma, Enterprise Agreement en Microsoft-klantovereenkomst. Zie [Uw factureringsaccounts weergeven in de Azure-portal](../articles/billing/billing-view-all-accounts.md) voor meer informatie over typen factureringsaccounts.  
  
-4. Als u toegang tot meerdere facturering bereiken hebt, selecteert u **facturering account** of **alle facturering bereiken** aan de linkerkant. Controleer het type in de **facturering accounttype** kolom.
+4. Als u toegang hebt tot meerdere factureringsbereiken, selecteert u **Factureringsaccount** of **Alle factureringsbereiken** aan de linkerkant. Controleer het type in de kolom **Type factureringsaccount**.
  
-    ![Schermafbeelding van microsoft-overeenkomst voor klanten in de lijst van facturering accountpagina](./media/billing-check-account-type/billing-account-type-in-the-list.png)
+    ![Schermopname met Microsoft-klantovereenkomst op de pagina met een lijst van factureringsaccounts](./media/billing-check-account-type/billing-account-type-in-the-list.png)
  

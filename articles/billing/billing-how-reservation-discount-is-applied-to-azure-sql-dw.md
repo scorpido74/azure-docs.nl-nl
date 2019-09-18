@@ -1,6 +1,6 @@
 ---
-title: Hoe reservering kortingen van toepassing op Azure SQL Data Warehouse | Microsoft Docs
-description: Meer informatie over hoe reservering kortingen van toepassing op Azure SQL Data Warehouse kunt u geld besparen.
+title: Hoe reserveringskortingen van toepassing zijn op Azure SQL Data Warehouse | Microsoft Docs
+description: Leer hoe reserveringskortingen van toepassing zijn op Azure SQL Data Warehouse om geld te besparen.
 services: billing
 author: yashesvi
 manager: yashar
@@ -9,43 +9,43 @@ ms.topic: conceptual
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 10e19377d31489cd19465fe6171ffb530bd58c28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "60918361"
 ---
-# <a name="how-reservation-discounts-apply-to-azure-sql-data-warehouse"></a>Hoe reservering kortingen van toepassing op Azure SQL Data Warehouse
+# <a name="how-reservation-discounts-apply-to-azure-sql-data-warehouse"></a>Hoe reserveringskortingen van toepassing zijn op Azure SQL Data Warehouse
 
-Nadat u Azure SQL Data Warehouse gereserveerde capaciteit koopt, wordt de reserveringskorting wordt automatisch toegepast op datawarehouses die aanwezig zijn in deze regio. De reserveringskorting is van toepassing op het gebruik dat wordt verzonden door de SQL Data Warehouse cDWU-meter. Opslag en netwerken worden in rekening gebracht tegen betalen per gebruik-tarieven.
+Nadat u gereserveerde capaciteit voor Azure SQL Data Warehouse hebt gekocht, wordt de reserveringskorting automatisch toegepast op datawarehouses in die regio. De reserveringskorting geldt voor het gebruik dat door de cDWU-meter van SQL Data Warehouse wordt gegenereerd. Opslag en netwerkgebruik worden in rekening gebracht volgens betalen-per-gebruiktarieven.
 
-## <a name="reservation-discount-application"></a>Reservering-korting van toepassing
+## <a name="reservation-discount-application"></a>Toepassing van reserveringskorting
 
-De korting voor SQL Data Warehouse gereserveerde capaciteit wordt toegepast op het uitvoeren van datawarehouses op uurbasis. Als u geen een datawarehouse voor een uur is geïmplementeerd, wordt de gereserveerde capaciteit verspild voor dat uur. Het wordt niet meegenomen.
+De korting voor gereserveerde capaciteit van SQL Data Warehouse wordt elk uur toegepast op warehouses die actief zijn. Als u een uur lang geen warehouse hebt geïmplementeerd, gaat de gereserveerde capaciteit voor dat uur verloren. De capaciteit kan niet worden overgedragen.
 
-Na de aankoop, wordt de reservering die u koopt vergeleken met SQL Data Warehouse gebruik die zijn verzonden door het uitvoeren van datawarehouses op elk gewenst moment in-time. Als u sommige magazijnen afsluit, toepassen reservering kortingen automatisch op andere overeenkomende datawarehouses.
+Na aankoop wordt de reservering die u aanschaft, vergeleken met het SQL Data Warehouse-gebruik dat door actieve warehouses op een bepaald moment wordt gegenereerd. Als u bepaalde warehouses afsluit, zijn de reserveringskortingen automatisch van toepassing op andere overeenkomende warehouses.
 
-Voor datawarehouses die niet worden uitgevoerd voor een volledig uur, wordt de reservering automatisch toegepast op andere bijbehorende exemplaren in dat uur.
+Voor warehouses die geen volledig uur worden uitgevoerd, wordt de reservering automatisch toegepast op andere overeenkomende instanties in dat uur.
 
-## <a name="discount-examples"></a>Korting voor voorbeelden
+## <a name="discount-examples"></a>Kortingsvoorbeelden
 
-De volgende voorbeelden ziet hoe de SQL Data Warehouse gereserveerde capaciteit korting van toepassing is, afhankelijk van de implementaties.
+De volgende voorbeelden laten zien hoe de korting voor gereserveerde capaciteit van SQL Data Warehouse wordt toegepast, afhankelijk van de implementaties.
 
-- **Voorbeeld 1**: U kopen 5 eenheden van 100 cDWU gereserveerde capaciteit. U hebt een DW1500c SQL Data Warehouse-exemplaar voor een uur wordt uitgevoerd. In dit geval wordt gebruik verzonden voor 15 eenheden van 100 cDWU-gebruik. De reserveringskorting is van toepassing op de 5-eenheden die u hebt gebruikt. De kosten worden berekend met behulp van betalen per gebruik-tarieven voor de resterende 10 eenheden van 100 cDWU gebruik die u hebt gebruikt.
+- **Voorbeeld 1**: U koopt 5 eenheden van 100 cDWU gereserveerde capaciteit. U voert een uur lang een DW1500c-instantie van SQL Data Warehouse uit. In dit geval wordt het gebruik gegenereerd voor 15 eenheden van een gebruik van 100 cDWU. De reserveringskorting geldt voor de vijf eenheden die u hebt gebruikt. Er worden kosten in rekening gebracht op basis van betalen-per-gebruiktarieven voor de resterende 10 gebruikte eenheden van 100 cDWU-gebruik.
 
-- **Voorbeeld 2**: U kopen 5 eenheden van 100 cDWU gereserveerde capaciteit. U hebt twee DW100c SQL Data Warehouse-instanties gedurende een uur worden uitgevoerd. In dit geval worden er twee gebruiksgebeurtenissen verzonden voor 1 eenheid van 100 cDWU-gebruik. Beide gebruiksgebeurtenissen krijgen gereserveerde capaciteit kortingen. De resterende 3 eenheden van 100 cDWU gereserveerde capaciteit worden verspild en niet meegenomen voor toekomstig gebruik.
+- **Voorbeeld 2**: U koopt 5 eenheden van 100 cDWU gereserveerde capaciteit. U voert een uur lang twee DW100c-instanties van SQL Data Warehouse uit. In dit geval worden twee gebruiksgebeurtenissen gegenereerd voor 1 eenheid 100 cDWU-gebruik. Beide gebruiksgebeurtenissen krijgen kortingen voor gereserveerde capaciteit. De resterende 3 eenheden van 100 cDWU gereserveerde capaciteit gaan verloren en worden niet overgedragen voor toekomstig gebruik.
 
-- **Voorbeeld 3**: U kopen 1 eenheid van 100 cDWU gereserveerde capaciteit. U hebt twee DW100c SQL Data Warehouse-exemplaren worden uitgevoerd. Elke 30 minuten uitgevoerd. In dit geval u beide gebruiksgebeurtenissen gereserveerde capaciteit kortingen. Er is geen gebruik wordt verrekend met behulp van betalen per gebruik-tarieven.
+- **Voorbeeld 3**: U koopt 1 eenheid van 100 cDWU gereserveerde capaciteit. U voert twee DW100c-instanties van SQL Data Warehouse uit. Elk instantie wordt 30 minuten uitgevoerd. In dit geval krijgen beide gebruiksgebeurtenissen kortingen voor gereserveerde capaciteit. Er wordt geen gebruik in rekening gebracht op basis van betalen-per-gebruiktarieven.
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Contact opnemen
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
 
-- Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+- Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over Azure-reserveringen, de volgende artikelen:
+Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
 - [Wat zijn Azure-reserveringen?](billing-save-compute-costs-reservations.md)
-- [Transacties van de reservering weergeven](billing-view-reservations.md)
-- [Reservering-transacties en via API-gebruik](billing-reservation-apis.md)
+- [Reserveringstransacties weergeven](billing-view-reservations.md)
+- [Reserveringstransacties en gebruik via API ophalen](billing-reservation-apis.md)
 - [Reserveringen beheren](billing-manage-reserved-vm-instance.md)

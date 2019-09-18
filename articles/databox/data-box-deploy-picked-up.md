@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 8/27/2019
+ms.date: 09/10/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 5b78dc8b815802502cda5baf2bf5e9646922d671
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 194b90ab27d02c1fa3eb05bb3ddd78395d351599
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70241435"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898178"
 ---
 ::: zone target="docs"
 
@@ -77,7 +77,7 @@ Zorg ervoor dat het kopiëren van gegevens naar het apparaat is voltooid en dat 
 
 ::: zone-end
 
-## <a name="ship-in-us-canada-europe"></a>Verzenden vanuit de VS, Canada, Europa
+## <a name="in-us-canada-europetabin-us-canada-europe"></a>[In de VS, Canada, Europa](#tab/in-us-canada-europe)
 
 Voer de volgende stappen uit als u het apparaat vanuit de VS, Canada of Europa retourneert.
 
@@ -94,7 +94,7 @@ Voer de volgende stappen uit als u het apparaat vanuit de VS, Canada of Europa r
 4. Nadat de Data Box door de vervoerder is opgehaald en gescand, verandert de orderstatus in de portal in **Opgehaald**. Er wordt ook een tracerings-id weergegeven.
 
 
-## <a name="ship-in-australia"></a>Verzenden vanuit Australië
+## <a name="in-australiatabin-australia"></a>[In Australië](#tab/in-australia)
 
 Voor Azure-datacenters in Australië geldt een extra beveiligingsmaatregel. Alle inkomende verzendingen moeten vooraf worden gemeld. Voer de volgende stappen uit voor verzenden vanuit Australië.
 
@@ -126,7 +126,7 @@ Voor informatie over uw bestelling via de telefoon:
 - Stuur eerst een e-mail over het ophalen.
 - Geef de naam van uw bestelling door via de telefoon.
 
-## <a name="ship-in-japan"></a>Verzenden vanuit Japan 
+## <a name="in-japantabin-japan"></a>[In Japan](#tab/in-japan) 
 
 1. Bewaar de oorspronkelijke doos om het apparaat terug te sturen.
 2. Schakel het apparaat uit en verwijder de kabels.
@@ -185,7 +185,7 @@ Controleer of uw gegevens zijn geüpload naar Azure voordat u deze uit de bron v
 
         ![Beheerde schijf gekoppeld aan resourcegroepen](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
 
-    - Als u een VHDX of een dynamische/differentiërende VHD hebt gekopieerd, wordt de VHDX/VHD als een pagina-blob naar het faseringsopslagaccount geüpload, maar de conversie van de VHD naar een beheerde schijf mislukt. Ga naar uw **faseringsopslagaccount > Blobs** en selecteer de juiste container: Standard - SSD, Standard - HDD of Premium - SSD. De VHD's worden als pagina-blobs geüpload in uw faseringsopslagaccount.
+    - Als u een VHDX of een dynamische/differentiërende VHD hebt gekopieerd, wordt de VHDX/VHD als een pagina-blob naar het faseringsopslagaccount geüpload, maar de conversie van de VHD naar een beheerde schijf mislukt. Ga naar uw **Faseringsopslagaccount > Blobs** en selecteer de juiste container: Standard - SSD, Standard - HDD of Premium - SSD. De VHD's worden als pagina-blobs geüpload in uw faseringsopslagaccount.
 
 ::: zone-end
 

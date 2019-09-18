@@ -1,7 +1,7 @@
 ---
-title: Weergeven en downloaden van Azure-gebruik en de kosten
-description: Beschrijft hoe u downloaden of weergeven van uw Azure dagelijkse gebruik en kosten in rekening gebracht.
-keywords: facturering van gebruik, kosten voor het gebruik, gebruik, gebruik van de weergave, azure-factuur, azure gebruiksgegevens downloaden
+title: Azure-gebruik en -kosten weergeven en downloaden
+description: Hierin wordt beschreven hoe u uw dagelijkse Azure-gebruiksgegevens en -kosten kunt downloaden of weergeven.
+keywords: facturering van gebruik, gebruikskosten, gebruik downloaden, gebruik weergeven, Azure-factuur, Azure-gebruik
 author: bandersmsft
 manager: jureid
 tags: billing
@@ -13,111 +13,111 @@ ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 7d2d7be562eaaa7dd21e63735f5697ffe5a62f8a
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67491433"
 ---
-# <a name="view-and-download-your-azure-usage-and-charges"></a>Weergeven en downloaden van uw Azure-gebruik en kosten
+# <a name="view-and-download-your-azure-usage-and-charges"></a>Uw Azure-gebruik en -kosten weergeven en downloaden
 
-Als u een EA-klant bent of een [Microsoft KLANTOVEREENKOMST](#check-your-access-to-a-microsoft-customer-agreement), kunt u Azure-gebruik en kosten in rekening gebracht in downloaden de [Azure-portal](https://portal.azure.com/). Voor andere abonnementen, gaat u naar de [Azure-Accountcentrum](https://account.azure.com/Subscriptions) op gebruiksgegevens downloaden.
+Als u een EA-klant bent of een [Microsoft-klantovereenkomst](#check-your-access-to-a-microsoft-customer-agreement) hebt, kunt u uw Azure-gebruik en kosten downloaden in de [Azure-portal](https://portal.azure.com/). Voor andere abonnementen gaat u naar het [Azure-accountcentrum](https://account.azure.com/Subscriptions) om uw gebruiksgegevens te downloaden.
 
-Alleen bepaalde functies gemachtigd voor gebruik van Azure-informatie, zoals de accountbeheerder of Enterprise-beheerder. Zie [Toegang tot factureringsgegevens voor Azure beheren](billing-manage-access.md) voor meer informatie over het verkrijgen van toegang tot factureringsgegevens.
+Alleen bepaalde rollen hebben toestemming om Azure-gebruiksgegevens op te vragen, zoals de accountbeheerder of de Enterprise-beheerder. Zie [Toegang tot factureringsgegevens voor Azure beheren](billing-manage-access.md) voor meer informatie over het verkrijgen van toegang tot factureringsgegevens.
 
-Als u hebt een [Microsoft KLANTOVEREENKOMST](#check-your-access-to-a-microsoft-customer-agreement), u moet een factureringsprofiel eigenaar, Inzender, lezer, of factuur manager om uw Azure-gebruik en kosten weer te geven. Zie voor meer informatie over facturering rollen voor Microsoft-klant-overeenkomsten, [facturering profiel rollen en taken](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
+Als u een [Microsoft-klantovereenkomst](#check-your-access-to-a-microsoft-customer-agreement) hebt, moet u een eigenaar, inzender, lezer van het factureringsprofiel of een factuurbeheerder zijn om uw Azure-gebruik en -kosten te kunnen bekijken. Zie [Factureringsprofielrollen en taken](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)voor meer informatie over factureringsrollen voor Microsoft-klantovereenkomsten.
 
-## <a name="download-usage-from-the-account-center-csv"></a>Gebruiksgegevens downloaden via het Accountcentrum (.csv)
+## <a name="download-usage-from-the-account-center-csv"></a>Gebruiksgegevens downloaden uit het accountcentrum (.csv)
 
-1. Aanmelden bij de [Azure-Accountcentrum](https://account.windowsazure.com/subscriptions) als de accountbeheerder.
+1. Meld u als accountbeheerder aan bij het [Azure-accountcentrum](https://account.windowsazure.com/subscriptions).
 
-2. Selecteer het abonnement waarvan u de factuur- en gebruiksgegevens informatie wilt.
+2. Selecteer het abonnement waarvoor u de factuur- en gebruiksgegevens wilt bekijken.
 
-3. Selecteer **FACTURERINGSGESCHIEDENIS**.
+3. Selecteer **Factureringsgeschiedenis**.
 
-    ![Schermafbeelding van de optie factureren geschiedenis](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
+    ![Schermopname van de optie Factureringsgeschiedenis](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
 
-4. U ziet uw overzichten voor de afgelopen zes factureringsperioden en de huidige niet-gefactureerde periode weergegeven.
+4. U kunt uw overzichten voor de afgelopen zes factureringsperioden en de huidige niet-gefactureerde periode bekijken.
 
-    ![Schermafbeelding van factureringsperioden, opties voor het downloaden van de factuur en dagelijkse gebruik en de totale kosten voor elke factureringsperiode](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)
+    ![Schermopname van de factureringsperioden, opties voor het downloaden van facturen en dagelijkse gebruiksgegevens en de totale kosten voor elke factureringsperiode](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)
 
-5. Selecteer **Huidig overzicht weergeven** om een schatting van uw kosten te zien voor het moment waarop de schatting wordt gegenereerd. Deze informatie wordt dagelijks bijgewerkt en omvat mogelijk niet alle uw gebruik. Uw maandelijkse factuur kan afwijken van deze schatting.
+5. Selecteer **Huidig overzicht weergeven** om een schatting van uw kosten te zien voor het moment waarop de schatting wordt gegenereerd. Deze informatie wordt dagelijks bijgewerkt en omvat mogelijk niet alle gebruiksgegevens. Uw maandelijkse factuur kan afwijken van deze schatting.
 
-    ![Schermafbeelding van de optie Huidig overzicht weergeven](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)
+    ![Schermopname van de optie Huidig overzicht weergeven](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)
 
-    ![Schermafbeelding van de schatting van de huidige kosten](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)
+    ![Schermopname van de geschatte huidige kosten](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)
 
 6. Selecteer **Gebruiksgegevens downloaden** om de dagelijkse gebruiksgegevens te downloaden als een CSV-bestand. Als er twee versies beschikbaar zijn, moet u versie 2 downloaden.
 
-    ![Schermafbeelding van de optie gebruiksgegevens downloaden](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
+    ![Schermopname van de optie Gebruiksgegevens downloaden](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
 
-Alleen de accountbeheerder kan toegang tot het Azure-Accountcentrum. Andere facturering beheerders, zoals de eigenaar van een krijgt bij het gebruik van informatie over het gebruik de [facturering-API's](billing-usage-rate-card-overview.md).
+Alleen de accountbeheerder heeft toegang tot het Azure-accountcentrum. Andere factureringsbeheerders, zoals een eigenaar, kunnen gebruiksgegevens downloaden met behulp van de [Billing-API's](billing-usage-rate-card-overview.md).
 
-Zie [Meer informatie over uw factuur voor Microsoft Azure](billing-understand-your-bill.md) voor meer informatie over uw dagelijkse gebruik. Zie voor meer informatie over het beheren van uw kosten, [voorkomen van onverwachte kosten met Azure-facturering en kostenbeheer](billing-getting-started.md).
+Zie [Meer informatie over uw factuur voor Microsoft Azure](billing-understand-your-bill.md) voor meer informatie over uw dagelijkse gebruik. Zie [Onverwachte kosten voorkomen met Azure-facturering en -kostenbeheer](billing-getting-started.md) voor hulp bij het beheren van uw kosten.
 
 ## <a name="download-usage-for-ea-customers"></a>Gebruiksgegevens downloaden voor EA-klanten
 
-Als u wilt weergeven en downloaden van gegevens over gebruik als een EA-klant bent, moet u een Enterprise-beheerder, eigenaar van Account of afdeling beheerder met de weergave in rekening gebracht beleid is ingeschakeld.
+Om als een EA-klant gebruiksgegevens weer te geven en te downloaden, moet u een Enterprise-beheerder, accounteigenaar of afdelingsbeheerder zijn en moet het beleid Kosten weergeven zijn ingeschakeld.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Zoeken naar *kosten Management en facturering*.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Zoek naar *Kostenbeheer en facturering*.
 
-    ![Schermafbeelding van zoeken in Azure portal](./media/billing-download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)
+    ![Schermopname van de zoekopdracht in de Azure-portal](./media/billing-download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)
 
-1. Selecteer **gebruik en kosten**.
-1. Voor de maand die u wilt downloaden, selecteert u **downloaden**.
+1. Selecteer **Gebruik + kosten**.
+1. Selecteer **Downloaden** voor de maand waarvan u de gegevens wilt downloaden.
 
-## <a name="download-usage-for-your-microsoft-customer-agreement"></a>Gebruik voor uw Microsoft-KLANTOVEREENKOMST downloaden
+## <a name="download-usage-for-your-microsoft-customer-agreement"></a>Gebruiksgegevens voor uw Microsoft-klantovereenkomst downloaden
 
-Als u een KLANTOVEREENKOMST van Microsoft hebt, kunt u uw Azure-gebruik en kosten in rekening gebracht voor uw facturering profiel downloaden. U moet een facturering profiel zijn eigenaar, Inzender, lezer, of de manager voor het downloaden van de Azure-gebruik en kosten CSV factuur.
+Als u een Microsoft-klantovereenkomst hebt, kunt u uw Azure-gebruiksgegevens en -kosten voor uw factureringsprofiel downloaden. U moet een eigenaar, inzender, lezer van het factureringsprofiel of een factuurbeheerder zijn om de Azure-gebruiksgegevens en -kosten te kunnen downloaden (.csv).
 
-### <a name="download-usage-for-billed-charges"></a>Gebruiksgegevens voor gefactureerde kosten voor downloaden
+### <a name="download-usage-for-billed-charges"></a>Gebruiksgegevens voor gefactureerde kosten downloaden
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Zoeken naar *kosten Management en facturering*.
-3. Selecteer een profiel voor facturering. Afhankelijk van uw toegang moet u mogelijk eerst een factureringsaccount selecteren.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Zoek naar *Kostenbeheer en facturering*.
+3. Selecteer een factureringsprofiel. Afhankelijk van uw toegang moet u mogelijk eerst een factureringsrekening selecteren.
 4. Selecteer **Facturen**.
-5. In het raster factuur vindt u de rij van de factuur overeenkomt met het gebruik dat u wilt downloaden.
+5. Ga in het factuurraster naar de rij van de factuur die overeenkomt met de gebruiksgegevens die u wilt downloaden.
 6. Klik op het weglatingsteken (`...`) aan het einde van de rij.
 
-    ![Schermafbeelding van de drie puntjes aan het einde van de rij](./media/billing-download-azure-invoice/billingprofile-invoicegrid.png)
+    ![Schermopname van het weglatingsteken aan het einde van de rij](./media/billing-download-azure-invoice/billingprofile-invoicegrid.png)
 
-7. Selecteer in het contextmenu downloaden **kosten en het gebruik van Azure**.
+7. Selecteer **Azure-gebruik en -kosten** in het contextmenu voor het downloaden.
 
-     ![Schermafbeelding van Azure gebruik en de kosten die zijn geselecteerd](./media/billing-download-azure-usage/contextmenu-usage.png)
+     ![Schermopname van het Azure-gebruik en de geselecteerde kosten](./media/billing-download-azure-usage/contextmenu-usage.png)
 
-### <a name="download-usage-for-pending-charges"></a>Gebruiksgegevens voor in behandeling zijnde kosten downloaden
+### <a name="download-usage-for-pending-charges"></a>Gebruiksgegevens voor kosten in behandeling
 
-U kunt ook gebruik van de maand tot heden downloaden voor de huidige factureringsperiode. Deze kosten voor het gebruik dat nog niet is gefactureerd.
+U kunt ook het gebruik van de maand tot heden voor de huidige factureringsperiode downloaden. Deze gebruikskosten zijn nog niet gefactureerd.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Zoeken naar *kosten Management en facturering*.
-3. Selecteer een profiel voor facturering. Afhankelijk van uw toegang moet u mogelijk eerst een factureringsaccount selecteren.
-4. In de **overzicht** gebied, vinden de downloadkoppelingen onder de kosten maand tot heden.
-5. Selecteer **kosten en het gebruik van Azure**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Zoek naar *Kostenbeheer en facturering*.
+3. Selecteer een factureringsprofiel. Afhankelijk van uw toegang moet u mogelijk eerst een factureringsrekening selecteren.
+4. Zoek in het gebied **Overzicht** de downloadkoppelingen onder de kosten (maand tot heden).
+5. Selecteer **Azure-gebruik en -kosten**.
 
-    ![Schermafbeelding van downloaden uit overzicht](./media/billing-download-azure-usage/open-usage.png)
+    ![Schermopname waarop downloaden uit Overzicht wordt weergegeven](./media/billing-download-azure-usage/open-usage.png)
 
-## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>Uw toegang tot een Microsoft-KLANTOVEREENKOMST controleren
+## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>Uw toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
-Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over uw factuur- en gebruiksgegevens kosten:
+Zie voor meer informatie over uw factuur en gebruikskosten:
 
-- [Meer informatie over uw Microsoft Azure gedetailleerd gebruik](billing-understand-your-usage.md)
+- [Begrippen over uw gedetailleerde Microsoft Azure-gebruik begrijpen](billing-understand-your-usage.md)
 - [Meer informatie over uw factuur voor Microsoft Azure](billing-understand-your-bill.md)
-- [Weergeven en uw Microsoft Azure-factuur downloaden](billing-download-azure-invoice.md)
-- [Weergeven en downloaden van uw organisatie Azure-prijzen](billing-ea-pricing.md)
+- [Uw Microsoft Azure-factuur bekijken en downloaden](billing-download-azure-invoice.md)
+- [Azure-prijzen voor uw organisatie bekijken en downloaden](billing-ea-pricing.md)
 
-Als u een Microsoft-KLANTOVEREENKOMST hebt, Zie:
+Als u een Microsoft-klantovereenkomst hebt, raadpleegt u:
 
-- [Meer informatie over uw Azure overeenkomst van Microsoft Customer gedetailleerd gebruik](billing-mca-understand-your-usage.md)
-- [Meer informatie over de kosten op uw factuur KLANTOVEREENKOMST van Microsoft](billing-mca-understand-your-bill.md)
-- [Weergeven en uw Microsoft Azure-factuur downloaden](billing-download-azure-invoice.md)
-- [Weergeven en btw-documenten voor uw Microsoft-KLANTOVEREENKOMST downloaden](billing-mca-download-tax-document.md)
-- [Weergeven en downloaden van uw organisatie Azure-prijzen](billing-ea-pricing.md)
+- [Meer informatie over begrippen over het gedetailleerde gebruik van uw Microsoft-klantovereenkomst](billing-mca-understand-your-usage.md)
+- [Meer informatie over de kosten van uw Microsoft-klantovereenkomst](billing-mca-understand-your-bill.md)
+- [Uw Microsoft Azure-factuur bekijken en downloaden](billing-download-azure-invoice.md)
+- [Belastingdocumenten voor uw Microsoft-klantovereenkomst weergeven en downloaden](billing-mca-download-tax-document.md)
+- [Azure-prijzen voor uw organisatie bekijken en downloaden](billing-ea-pricing.md)

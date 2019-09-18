@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 09/11/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b982e0bcd87a60e29b11c7123fbe5d675ab017b3
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 03ca6163b4f788d50f7f27a2fcaf2c9b6c02d84c
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390411"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910122"
 ---
 ::: zone target="chromeless"
 
@@ -52,7 +52,7 @@ Voltooi voordat u begint de [Zelfstudie: Gegevens kopiëren naar de Azure Data B
 
 De volgende stappen zijn afhankelijk van de locatie waarvandaan u het apparaat retourneert. De instructies zijn verschillend voor de VS/Canada, de Europese Unie (EU), Australië of Aziatische landen.
 
-### <a name="pick-up-in-us-canada"></a>Retourneren vanuit de VS of Canada
+### <a name="in-us-or-canadatabin-us-or-canada"></a>[In de VS of Canada](#tab/in-us-or-canada)
 
 Voer de volgende stappen uit als u het apparaat vanuit de VS of Canada retourneert.
 
@@ -68,7 +68,7 @@ Voer de volgende stappen uit als u het apparaat vanuit de VS of Canada retournee
     - Als het trackingnummer niet wordt vermeld, moet u bij het afhalen door UPS extra kosten betalen.
     - In plaats van het ophalen te plannen, kunt u de Data Box Disk ook zelf naar de dichtstbijzijnde inleverlocatie brengen.
 
-### <a name="pick-up-in-europe"></a>Retourneren vanuit Europa
+### <a name="in-europetabin-europe"></a>[In Europa](#tab/in-europe)
 
 Voer de volgende stappen uit als u het apparaat vanuit Europa retourneert.
 
@@ -81,17 +81,17 @@ Voer de volgende stappen uit als u het apparaat vanuit Europa retourneert.
 4. Ga naar de DHL Express-website voor uw land/regio en kies **Boek een koerier pick-up > Online verzenden**.    
 3. Geef het nummer van de luchtvrachtbrief op en klik op **Boek een koerier** om een ophaalmoment te plannen.
 
-### <a name="pick-up-in-australia"></a>Retourneren vanuit Australië
+### <a name="in-australiatabin-australia"></a>[In Australië](#tab/in-australia)
 
-Azure-datacenters in Australië hebben een extra beveiligingsmelding. Alle inkomende verzendingen moeten een melding vooraf hebben. Voer de volgende stappen uit voor retourneren vanuit Australië.
+Voor Azure-datacenters in Australië geldt een extra beveiligingsmaatregel. Alle inkomende verzendingen moeten een melding vooraf hebben. Voer de volgende stappen uit voor retourneren vanuit Australië.
 
 1. Gebruik het meegeleverde retourlabel en controleer of de TAU-code (het referentienummer) erop staat. Als het retourlabel ontbreekt of als u andere problemen hebt, kunt u een e-mail sturen naar [Data Box Asia Operations](mailto:adbo@microsoft.com). Geef de ordernaam en details over het probleem op in de onderwerpregel.
 3. Bevestig het label op de doos. 
 4. Boek via de koppeling https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference online een afspraak voor de retourzending. 
 
-### <a name="pick-up-in-asia"></a>Retourneren vanuit Azië
+### <a name="in-japan-koreatabin-japan-korea"></a>[In Japan, Korea](#tab/in-japan-korea)
 
-De instructies voor het retourneren verschillen voor Japan, Korea en Singapore.
+Dit zijn de instructies voor retourneren vanuit Japan en Korea.
 
 #### <a name="pick-up-in-japan"></a>Retourneren vanuit Japan
 
@@ -110,10 +110,10 @@ De instructies voor het retourneren verschillen voor Japan, Korea en Singapore.
         d. 17：00-19：00 
     ```
     - **Als u retourneert vanuit Osaka**, wijzigt u het onderwerp in de e-mailsjabloon in: `Pickup request for Microsoft Azure OSA`.
-    - Als er geen vrachtbrief van Japan Post Chakubarai is meegeleverd of ontbreekt, vermeldt u dit in dit e-mail bericht. Quantium Solutions Japan verzoekt Japan Post om de vrachtbrief mee te brengen als het pakket wordt afgehaald.
-    - Als u meerdere orders hebt, moet u een e-mail verzenden om afzonderlijke pakketten op te laten halen.
+    - Als er geen vrachtbrief van Japan Post Chakubarai is meegeleverd of ontbreekt, vermeldt u dit in dit e-mail bericht. Quantium Solutions Japan zal Japan Post verzoeken om de vrachtbrief mee te nemen als het pakket wordt opgehaald.
+    - Als u meerdere orders hebt, moet u een e-mail verzenden om afzonderlijke pakketten te laten ophalen.
 
-3. U ontvangt een bevestiging per e-mail van Quantium Solutions nadat u een retourzending hebt geboekt. De e-mailbevestiging bevat ook informatie over de Chakubarai-vrachtbrief.
+3. U ontvangt per e-mail een bevestiging van Quantium Solutions nadat u het ophalen hebt afgesproken. De e-mailbevestiging bevat ook informatie over de Chakubarai-vrachtbrief.
 
 Zo nodig kunt u contact opnemen met de ondersteuning van Quantium Solutions (in het Japans) via: 
 
@@ -134,7 +134,8 @@ Zo nodig kunt u contact opnemen met de ondersteuning van Quantium Solutions (in 
     3. Als de koerier niet komt om het pakket op te halen, belt u de hotline van *Quantium Solutions International* voor een alternatieve oplossing. 
     4. U krijgt een mondelinge bevestiging als de aanvraag via de telefoon wordt gedaan.
 
-#### <a name="pick-up-in-singapore"></a>Retourneren vanuit Singapore
+
+### <a name="in-singaporetabin-singapore"></a>[In Singapore](#tab/in-singapore)
 
 1. Druk het verzendlabel af en bevestig het op de doos. Als het label is beschadigd of verloren is gegaan:
     - Ga naar **Overzicht > Verzendlabel downloaden** en download een retourlabel.

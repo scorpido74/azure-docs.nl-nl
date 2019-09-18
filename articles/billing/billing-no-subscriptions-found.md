@@ -1,6 +1,6 @@
 ---
-title: Geen abonnementen gevonden fout - Azure portal aanmelden | Microsoft Docs
-description: Is de oplossing voor een probleem opgetreden bij het waarin er geen abonnementen gevonden fout treedt op wanneer zich aanmelden bij Azure portal of Azure-accountcentrum.
+title: Fout Geen abonnementen gevonden - aanmelden bij Azure-portal | Microsoft Docs
+description: Biedt de oplossing voor een probleem waarbij de fout Geen abonnementen gevonden optreedt tijdens het aanmelden bij de Azure-portal of het Azure-accountcentrum.
 services: ''
 documentationcenter: ''
 author: genlin
@@ -17,43 +17,43 @@ ms.date: 05/11/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 094d79026a55e651a1f67a5047dff20c769c359a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "60371225"
 ---
-# <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Geen abonnementen gevonden sign in fout voor Azure-portal of Azure-accountcentrum
+# <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Aanmeldingsfout Geen abonnementen gevonden voor Azure-portal of het Azure-accountcentrum
 
-Mogelijk krijgt u een foutbericht 'Er zijn geen abonnementen gevonden' weergegeven wanneer u probeert te melden bij de [Azure-portal](https://portal.azure.com/) of de [Azure-Accountcentrum](https://account.windowsazure.com/Subscriptions). In dit artikel biedt een oplossing voor dit probleem.
+Mogelijk wordt het foutbericht 'Geen abonnementen gevonden' weergegeven wanneer u zich probeert aan te melden bij de [Azure-portal](https://portal.azure.com/) of het [Azure-accountcentrum](https://account.windowsazure.com/Subscriptions). Dit artikel biedt een oplossing voor dit probleem.
 
 ## <a name="symptom"></a>Symptoom
 
-Als u probeert te melden bij de [Azure-portal](https://portal.azure.com/) of de [Azure account center](https://account.windowsazure.com/Subscriptions), ontvangt u de volgende strekking weergegeven: 'Geen abonnementen gevonden'.
+Wanneer u zich probeert aan te melden bij de [Azure-portal](https://portal.azure.com/) of het [Azure-accountcentrum](https://account.windowsazure.com/Subscriptions), wordt het volgende foutbericht weergegeven: 'Geen abonnementen gevonden'
 
 ## <a name="cause"></a>Oorzaak
 
-Dit probleem treedt op als u hebt geselecteerd op de verkeerde directory, of als uw account beschikt niet over voldoende machtigingen. 
+Dit probleem treedt op als u de verkeerde map hebt geselecteerd of als uw account niet over voldoende machtigingen beschikt. 
 
 ## <a name="solution"></a>Oplossing
 
-### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>Scenario 1: Foutbericht wordt ontvangen in de [Azure-portal](https://portal.azure.com)
+### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>Scenario 1: Het foutbericht wordt ontvangen in de [Azure-portal](https://portal.azure.com)
 
 Dit probleem oplossen:
 
-* Zorg ervoor dat de juiste Azure-map is geselecteerd door te klikken op uw account in de rechterbovenhoek.
+* Zorg ervoor dat de juiste Azure-map is geselecteerd door in de rechterbovenhoek op uw account te klikken.
 
-  ![Selecteer de map aan de bovenkant van de Azure-portal](./media/billing-no-subscriptions-found/directory-switch.png)
-* Als de juiste Azure-map is geselecteerd, maar u nog steeds het foutbericht ontvangen [de rol van eigenaar toewijzen aan uw account](../role-based-access-control/role-assignments-portal.md).
+  ![Selecteer de map in de rechterbovenhoek van de Azure-portal](./media/billing-no-subscriptions-found/directory-switch.png)
+* Als de juiste Azure-map is geselecteerd maar u nog steeds het foutbericht ontvangt, [wijst u de rol van Eigenaar toe aan uw account](../role-based-access-control/role-assignments-portal.md).
 
-### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>Scenario 2: Foutbericht wordt ontvangen in de [Accountcentrum van Azure](https://account.windowsazure.com/Subscriptions)
+### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>Scenario 2: Het foutbericht wordt ontvangen in het [Azure-accountcentrum](https://account.windowsazure.com/Subscriptions)
 
-Controleer of het account dat u gebruikt de accountbeheerder. Om te controleren wie de accountbeheerder is, de volgende stappen uit:
+Controleer of het account dat u gebruikt de accountbeheerder is. Voer de volgende stappen uit om te controleren wie de accountbeheerder is:
 
-1. Aanmelden bij de [abonnementen weergeven in Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Selecteer het abonnement dat u wilt controleren, en ga vervolgens naar **instellingen**.
-1. Selecteer **eigenschappen**. De accountbeheerder voor het abonnement wordt weergegeven in de **accountbeheerder** vak.  
+1. Meld u aan bij de [Abonnementenweergave in de Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Selecteer het abonnement dat u wilt controleren en kijk vervolgens onder **Instellingen**.
+1. Selecteer **Eigenschappen**. De accountbeheerder van het abonnement wordt weergegeven in het vak **Accountbeheerder**.  
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Voor vragen of hulp [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

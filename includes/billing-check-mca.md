@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
 ms.openlocfilehash: d163c88469ec767c8e0d18f5978ecb61f7997c8b
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490300"
 ---
-Controleer het overeenkomsttype selecteren om te bepalen of u toegang tot een rekening voor een Microsoft-KLANTOVEREENKOMST hebt.
+Controleer het type overeenkomst om te bepalen of u toegang hebt tot een factureringsaccount voor een Microsoft-klantovereenkomst.
  
-1. Meld u aan bij [Azure Portal]( http://portal.azure.com).
+1. Meld u aan bij de [Azure-portal]( http://portal.azure.com).
  
 2. Zoek naar **kostenbeheer en facturering**.
  
-   ![Schermafbeelding van zoeken in Azure portal](./media/billing-check-mca/billing-search-cost-management-billing.png)
+   ![Schermopname van de zoekopdracht in de Azure-portal](./media/billing-check-mca/billing-search-cost-management-billing.png)
  
-3. Als u toegang tot slechts één facturering bereik hebt, selecteert u **eigenschappen** aan de linkerkant. U hebt toegang tot factureringsaccount voor een Microsoft-KLANTOVEREENKOMST als de facturering accounttype is **Microsoft KLANTOVEREENKOMST**.
+3. Als u toegang hebt tot slechts één factureringsbereik, selecteert u **Eigenschappen** aan de linkerkant. U hebt toegang tot een factureringsaccount voor een Microsoft-klantovereenkomst als het type factureringsaccount **Microsoft-klantovereenkomst** is.
  
-    ![Schermafbeelding van microsoft KLANTOVEREENKOMST eigenschappenblad](./media/billing-check-mca/billing-mca-property.png)
+    ![Schermopname van de Microsoft-klantovereenkomst op de pagina Eigenschappen](./media/billing-check-mca/billing-mca-property.png)
  
-4. Als u toegang tot meerdere facturering bereik hebt, controleert u het type in de facturering kolom van het account. U hebt toegang tot factureringsaccount voor een Microsoft-KLANTOVEREENKOMST als de facturering accounttype voor het gebruik van de bereiken **Microsoft KLANTOVEREENKOMST**.
+4. Als u toegang hebt tot meer dan één factureringsbereik, controleert u het type in de kolom voor het factureringsaccount. U hebt toegang tot een factureringsaccount voor een Microsoft-klantovereenkomst als het type factureringsaccount voor een of meer van de bereiken **Microsoft-klantovereenkomst** is.
  
-    ![Schermafbeelding van microsoft-overeenkomst voor klanten in de lijst van facturering accountpagina](./media/billing-check-mca/billing-mca-in-the-list.png)
+    ![Schermopname met Microsoft-klantovereenkomst op de pagina met factureringsaccounts](./media/billing-check-mca/billing-mca-in-the-list.png)
  

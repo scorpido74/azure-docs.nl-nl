@@ -1,6 +1,6 @@
 ---
-title: Toevoegen of wijzigen van de beheerders van Azure-abonnement | Microsoft Docs
-description: Beschrijft hoe u wilt toevoegen of wijzigen van de beheerder van een Azure-abonnement met behulp van op rollen gebaseerd toegangsbeheer (RBAC).
+title: Azure-abonnementsbeheerders toevoegen of wijzigen | Microsoft Docs
+description: Hierin wordt beschreven hoe u een Azure-abonnementsbeheerder kunt toevoegen of wijzigen met behulp van op rollen gebaseerd toegangsbeheer (RBAC).
 services: ''
 documentationcenter: ''
 author: genlin
@@ -16,54 +16,54 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: 000315a2d751a05d3e401ee1bb9f593c6e321194
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "64922902"
 ---
-# <a name="add-or-change-azure-subscription-administrators"></a>Toevoegen of wijzigen van de beheerders van Azure-abonnement
+# <a name="add-or-change-azure-subscription-administrators"></a>Azure-abonnementsbeheerders toevoegen of wijzigen
 
-Om de toegang tot Azure-resources te beheren, moet u over de juiste beheerdersrol beschikken. Azure heeft een autorisatiesysteem met de naam op rollen gebaseerd toegangsbeheer (RBAC) met verschillende ingebouwde rollen die kunt u kiezen uit. U kunt deze rollen op verschillende niveaus, zoals de beheergroep, abonnement of resourcegroep toewijzen.
+Om de toegang tot Azure-resources te beheren, moet u over de juiste beheerdersrol beschikken. Azure heeft een autorisatiesysteem met op rollen gebaseerd toegangsbeheer (RBAC) met verschillende ingebouwde rollen waaruit u kunt kiezen. U kunt deze rollen toewijzen aan verschillende bereiken, zoals de beheergroep, het abonnement of de resourcegroep.
 
-Microsoft raadt u toegang tot resources met behulp van RBAC te beheren. Echter, als u nog steeds met behulp van het klassieke implementatiemodel en het klassieke resources beheren met behulp van [PowerShell-Module voor Azure Service Management](https://docs.microsoft.com/powershell/module/servicemanagement/azure), moet u een klassieke administrator gebruiken. 
+Microsoft raadt u aan om de toegang tot resources te beheren met RBAC. Als u echter nog steeds gebruikmaakt van het klassieke implementatiemodel en de klassieke resources beheert met behulp van [de Power shell-module van Azure Service Management](https://docs.microsoft.com/powershell/module/servicemanagement/azure), moet u een klassieke beheerder gebruiken. 
 
 > [!TIP]
-> Als u alleen de Azure-portal gebruiken om de klassieke resources te beheren, hoeft u niet de klassieke administrator gebruiken.
+> Als u de Azure-portal alleen gebruikt voor het beheren van de klassieke resources, hoeft u de klassieke beheerder niet te gebruiken.
 
-Zie voor meer informatie, [Azure Resource Manager en klassieke implementatie](../azure-resource-manager/resource-manager-deployment-model.md) en [beheerders van de klassieke Azure-abonnement](../role-based-access-control/classic-administrators.md).
+Zie [Azure Resource Manager vs. klassieke implementatie](../azure-resource-manager/resource-manager-deployment-model.md) en [Beheerders van het klassieke Azure-abonnement](../role-based-access-control/classic-administrators.md) voor meer informatie.
 
-Dit artikel wordt beschreven hoe toevoegen of wijzigen van de beheerdersrol voor een gebruiker met RBAC op het abonnementsbereik.
+In dit artikel wordt beschreven hoe u de beheerdersrol voor een gebruiker toevoegt of wijzigt met behulp van RBAC in het abonnementsbereik.
 
 <a name="add-an-admin-for-a-subscription"></a>
 
-## <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>Een gebruiker toewijzen als een beheerder van een abonnement
+## <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>Een gebruiker toewijzen als beheerder van een abonnement
 
-Als u een gebruiker een beheerder van een Azure-abonnement, deze toewijzen de [eigenaar](../role-based-access-control/built-in-roles.md#owner) rol (een RBAC-rol) op het abonnementsbereik. De rol eigenaar geeft de gebruiker volledige toegang tot alle resources in het abonnement, waaronder het recht op toegang aan anderen delegeren. Deze stappen zijn hetzelfde als elke andere roltoewijzing.
+Als u een gebruiker wilt toewijzen als beheerder van een Azure-abonnement, geeft u deze persoon de rol van [Eigenaar](../role-based-access-control/built-in-roles.md#owner) (een RBAC-rol) voor het abonnementsbereik. De rol van eigenaar geeft de gebruiker volledige toegang tot alle resources in het abonnement, waaronder het recht om toegang aan anderen te delegeren. Deze stappen zijn hetzelfde als die voor elke andere functietoewijzing.
 
-1. Open in de Azure-portal [abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Open [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) in de Azure-portal.
 
-1. Klik op het abonnement waar u om toegang te verlenen.
+1. Klik op het abonnement waartoe u toegang wilt verlenen.
 
-1. Klik op **toegangsbeheer (IAM)** .
+1. Klik op **Toegangsbeheer (IAM)** .
 
-1. Klik op de **roltoewijzingen** tabblad om de roltoewijzingen voor dit abonnement.
+1. Klik op het tabblad **Roltoewijzingen** om alle roltoewijzingen voor dit abonnement weer te geven.
 
-    ![Schermafbeelding van roltoewijzingen](./media/billing-add-change-azure-subscription-administrator/role-assignments.png)
+    ![Schermopname met roltoewijzingen](./media/billing-add-change-azure-subscription-administrator/role-assignments.png)
 
-1. Klik op **toevoegen** > **roltoewijzing toevoegen** openen de **roltoewijzing toevoegen** deelvenster.
+1. Klik op **Toevoegen** > **Roltoewijzing toevoegen** om het deelvenster **Roltoewijzing toevoegen** te openen.
 
-    Als u geen machtigingen voor het toewijzen van rollen hebt, kunt u de optie is uitgeschakeld.
+    Als u niet bent gemachtigd voor het toewijzen van rollen, is de optie uitgeschakeld.
 
-1. In de **rol** vervolgkeuzelijst, selecteer de **eigenaar** rol.
+1. Selecteer in de vervolgkeuzelijst **Rol** de rol **Eigenaar**.
 
-1. In de **Selecteer** , selecteert u een gebruiker. Als u de gebruiker in de lijst niet ziet, typt u de **Selecteer** in om te zoeken naar de map voor de weergavenamen en e-mailadressen.
+1. Selecteer een gebruiker in de lijst **Selecteren**. Als u de gebruiker niet in de lijst ziet staan, kunt u tekst typen in het vak **Selecteren** om in de map te zoeken naar weergavenamen en e-mailadressen.
 
-    ![Schermafbeelding van de rol van eigenaar geselecteerd](./media/billing-add-change-azure-subscription-administrator/add-role.png)
+    ![Schermopname met de rol Eigenaar geselecteerd](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 
-1. Klik op **opslaan** aan de rol toe te wijzen.
+1. Klik op **Opslaan** om de rol toe te wijzen.
 
-    Na enkele ogenblikken wordt de gebruiker de rol van eigenaar op het abonnementsbereik toegewezen.
+    Na enkele ogenblikken wordt de rol van eigenaar op abonnementsniveau toegewezen aan de gebruiker.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -72,6 +72,6 @@ Als u een gebruiker een beheerder van een Azure-abonnement, deze toewijzen de [e
 * [Procedure: Een Azure-abonnement aan Azure Active Directory koppelen of toevoegen](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Machtigingen voor beheerrol in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 
-## <a name="need-help-contact-support"></a>Hulp nodig? Neem contact op met ondersteuning
+## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
 
-Als u nog steeds hulp nodig hebt, [contact op met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel worden opgelost.
+Als u nog steeds hulp nodig hebt, neemt u [contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
