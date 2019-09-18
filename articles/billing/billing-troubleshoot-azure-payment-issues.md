@@ -1,6 +1,6 @@
 ---
 title: Problemen met Azure-betalingen oplossen
-description: Oplossen van een probleem bij het bijwerken van het betalings informatie account in de Microsoft Azure-portal of het account centrum.
+description: Een probleem oplossen met het bijwerken van het betalingsgegevensaccount in de Microsoft Azure-portal of het Azure-accountcentrum.
 author: v-miegge
 manager: na
 editor: v-jesits
@@ -13,93 +13,93 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: jaserano
 ms.openlocfilehash: 45f6f181ddbf7e76662f76c433d8ff68c18f0de1
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "69657084"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Problemen met Azure-betalingen oplossen
 
-Er kan een probleem optreden wanneer u probeert om het account met betalings gegevens bij te werken in het Microsoft Azure-portal of het Azure-account centrum. Houd rekening met de volgende richt lijnen voordat u het probleem oplost:
+Er kan een probleem optreden wanneer u in de Microsoft Azure-portal of het Azure-accountcentrum het betalingsgegevensaccount bijwerkt. Volg de volgende richtlijnen voordat u aan de slag gaat met het probleem:
 
-- Zorg ervoor dat de gegevens die u hebt ingevoerd voor uw Azure-account profiel (inclusief het e-mail adres van de contact persoon, het adres en het telefoon nummer) juist zijn.
+- Controleer of de gegevens die u hebt opgegeven voor uw Azure-accountprofiel (zoals het e-mailadres, adres en telefoonnummer van de contactpersoon) juist zijn.
 - Controleer of de creditcardgegevens juist zijn.
 - Controleer of u niet al een Microsoft-account hebt met dezelfde gegevens.
 
 ## <a name="issues"></a>Problemen
 
-Als u eventuele fouten wilt oplossen, selecteert u het probleem dat optreedt wanneer u zich probeert aan te melden voor Azure.
+Selecteer het probleem dat optreedt bij aanmelding voor Azure om fouten te corrigeren.
 
-### <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>Een credit card kan niet worden verwijderd uit een opgeslagen betalings methode
+### <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>Kan creditcard niet verwijderen uit een opgeslagen betalingswijze
 
-U kunt het ontwerp van een credit card niet verwijderen uit het actieve abonnement.
+U kunt de creditcard standaard niet verwijderen uit het actieve abonnement.
 
-Als u een bestaande kaart wilt verwijderen, moet er een nieuwe kaart aan het abonnement worden toegevoegd, zodat het oude betalings instrument kan worden verwijderd of u moet het abonnement annuleren. Hiermee verwijdert u het abonnement permanent en verwijdert u de kaart.
+Als u een bestaande kaart wilt verwijderen, moet er een nieuwe kaart aan het abonnement worden toegevoegd, zodat het oude betaalmiddel kan worden verwijderd. U kunt ook het abonnement annuleren. Hiermee verwijdert u het abonnement permanent en verwijdert u ook de kaart.
 
-### <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>U kunt een oude Betalings wijze niet verwijderen nadat u een nieuwe betalings methode hebt toegevoegd
+### <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>Kan een oude betalingswijze niet verwijderen nadat een nieuwe betalingswijze is toegevoegd
 
-Het nieuwe betaalmiddel is mogelijk niet gekoppeld aan het abonnement. Zie [een credit card of bankpas voor Azure toevoegen, bijwerken of verwijderen](billing-how-to-change-credit-card.md)voor meer informatie over het koppelen van het betaal middel aan het abonnement.
+Het nieuwe betaalmiddel is mogelijk niet gekoppeld aan het abonnement. Zie [Een creditcard of debitcard voor Azure toevoegen, bijwerken of verwijderen](billing-how-to-change-credit-card.md) voor meer informatie over het koppelen van het betaalmiddel aan het abonnement.
 
-Zie problemen met [geweigerde kaarten oplossen bij Azure-aanmelding](billing-troubleshoot-declined-card.md)voor meer informatie over het oplossen van problemen met een geweigerde kaart.
+Zie [Problemen met een geweigerde kaart bij Azure-aanmelding oplossen](billing-troubleshoot-declined-card.md) voor meer informatie over het oplossen van problemen met een geweigerde kaart.
 
-### <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>Kan geen Betalings wijze verwijderen vanwege een fout bij het verwijderen van de *Betalings wijze*
+### <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>Kan betalingswijze niet verwijderen door het foutbericht *Kan betalingswijze niet verwijderen*
 
-Dit gebeurt vanwege een openstaand saldo. Wis openstaande saldi voordat u de betalings methode verwijdert.
+Dit komt door een openstaand saldo. Betaal openstaande saldo's voordat u de betalingswijze verwijdert.
 
-### <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Kan abonnementen onder mijn account niet zien om de betalings wijze bij te werken
+### <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Ik zie geen abonnementen in mijn account om de betalingswijze bij te werken
 
-U gebruikt mogelijk een e-mail-ID die afwijkt van de naam die wordt gebruikt voor de abonnementen.
+U gebruikt mogelijk een e-mail-id die afwijkt van de naam die wordt gebruikt voor de abonnementen.
 
-Als u dit probleem wilt oplossen, raadpleegt u [geen abonnementen gevonden aanmeldings fout voor Azure portal of het Azure-account centrum](billing-no-subscriptions-found.md).
+Als u dit probleem wilt oplossen, raadpleegt u [Aanmeldingsfout dat er geen abonnementen zijn gevonden voor Azure Portal of het Azure-accountcentrum](billing-no-subscriptions-found.md).
 
-### <a name="unable-to-make-payment-for-a-subscription"></a>Kan geen betaling voor een abonnement maken
+### <a name="unable-to-make-payment-for-a-subscription"></a>Kan geen betaling doen voor een abonnement
 
-Als het volgende fout bericht wordt weer gegeven: *De betaling is te laat. Er is een probleem met uw betalings wijze* of *de informatie kan niet worden opgeslagen. Sluit de browser en probeer het opnieuw.* , is er een betaling in behandeling op de kaart omdat de kaart is afgewezen door uw financiële instelling.
+Als u het volgende foutbericht krijgt: *De betaling is te laat. Er is een probleem met uw betalingswijze* of *De informatie kan niet worden opgeslagen. Sluit de browser en probeer het opnieuw*, is er een betaling die op de kaart in behandeling is, omdat de kaart is geweigerd door uw financiële instelling.
 
-Controleer of de credit card voldoende saldo heeft om een betaling te doen. Als dat niet het geval is, gebruikt u een andere kaart om de betaling uit te voeren of neemt u contact op met uw financiële instelling om het probleem op te lossen.
+Controleer of het saldo van de creditcard voldoende is om een betaling te doen. Als dat niet het geval is, gebruikt u een andere kaart om de betaling te doen of neemt u contact op met uw financiële instelling om het probleem op te lossen.
 
 Neem contact op met uw bank voor de volgende problemen:
 
-- Internationale trans acties zijn niet ingeschakeld.
-- De kaart heeft een krediet limiet en het saldo moet worden vereffend.
+- Internationale transacties zijn niet ingeschakeld.
+- De kaart heeft een kredietlimiet en het saldo moet worden vereffend.
 - Er is een terugkerende betaling ingeschakeld op de kaart.
 
-### <a name="unable-to-change-payment-method-because-of-browser-issues-browser-does-not-respond-does-not-load-and-so-on"></a>De betalings wijze kan niet worden gewijzigd vanwege browser problemen (de browser reageert niet, wordt niet geladen, enzovoort)
+### <a name="unable-to-change-payment-method-because-of-browser-issues-browser-does-not-respond-does-not-load-and-so-on"></a>De betalingswijze kan niet worden gewijzigd vanwege browserproblemen (de browser reageert niet, wordt niet geladen enzovoort)
 
-Meld u af bij alle actieve Azure-sessies en volg de stappen in het [artikel bladeren in InPrivate in micro soft Edge](https://support.microsoft.com/help/4026200/microsoft-edge-browse-inprivate) om een InPrivate-sessie in micro soft Edge of Internet Explorer te starten.
+Meld u af bij alle actieve Azure-sessies en volg de stappen in het artikel [InPrivate-browsing in Microsoft Edge](https://support.microsoft.com/help/4026200/microsoft-edge-browse-inprivate) om een InPrivate-sessie in Microsoft Edge of Internet Explorer te starten.
 
-Volg in de privé sessie de stappen voor het [wijzigen van een credit card](billing-how-to-change-credit-card.md) om de creditcard gegevens bij te werken of te wijzigen.
+Volg in de privésessie de stappen voor [Een creditcard wijzigen](billing-how-to-change-credit-card.md) om de creditcardgegevens bij te werken of te wijzigen.
 
-U kunt ook proberen het volgende te doen:
+U kunt ook de volgende handelingen uitvoeren:
 
 - Uw browser vernieuwen
 - Een andere browser gebruiken
 - Cookies in de cache verwijderen
 
-### <a name="my-subscription-is-still-disabled-after-updating-the-payment-method"></a>Mijn abonnement is nog steeds uitgeschakeld na het bijwerken van de betalings wijze.
+### <a name="my-subscription-is-still-disabled-after-updating-the-payment-method"></a>Mijn abonnement is nog steeds uitgeschakeld nadat de betalingswijze is bijgewerkt.
 
-Dit probleem treedt op vanwege een openstaand saldo. Wis openstaande saldi voordat u de betalings methode verwijdert.
+Dit probleem treedt op vanwege een openstaand saldo. Betaal openstaande saldo's voordat u de betalingswijze verwijdert.
 
-### <a name="unable-to-change-payment-method-because-of-an-xml-error-response-page"></a>De betalings wijze kan niet worden gewijzigd vanwege een XML-fout pagina
+### <a name="unable-to-change-payment-method-because-of-an-xml-error-response-page"></a>Kan de betalingswijze niet wijzigen vanwege een responspagina met een XML-fout
 
-U ontvangt dit bericht als u [de Azure Portal](https://portal.azure.com/) gebruikt om een nieuwe credit card toe te voegen.
+U ontvangt dit bericht als u [Azure Portal](https://portal.azure.com/) gebruikt om een nieuwe creditcard toe te voegen.
 
-Meld u aan bij de Azure-account Portal met behulp van het e-mail adres van de account beheerder om kaart gegevens toe te voegen.
+U moet u aanmelden bij de Azure-accountportal met het e-mailadres van de accountbeheerder om kaartgegevens toe te voegen.
 
-## <a name="additional-help-resources"></a>Aanvullende hulp bronnen
+## <a name="additional-help-resources"></a>Aanvullende ondersteuningsresources
 
-Andere artikelen over het oplossen van problemen met Azure-facturering en-abonnementen
+Andere artikelen met probleemoplossingen voor Azure Billing en abonnementen
 
 - [Geweigerde kaart](billing-troubleshoot-declined-card.md)
-- [Aanmeldings problemen voor abonnementen](billing-troubleshoot-sign-in-issue.md)
+- [Aanmeldingsproblemen voor abonnementen](billing-troubleshoot-sign-in-issue.md)
 - [Geen abonnementen gevonden](billing-no-subscriptions-found.md)
 - [Weergave voor bedrijfskosten is uitgeschakeld](billing-enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
-## <a name="contact-us-for-help"></a>Neem contact met ons op voor hulp
+## <a name="contact-us-for-help"></a>Contact met ons opnemen voor ondersteuning
 
-Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Documentatie voor Azure billing](index.md)
+- [Documentatie voor Azure Billing](index.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure-reserve ringen aanschaffen met vooraf of maandelijks betalen
-description: Meer informatie over hoe u Azure-reserve ringen kunt aanschaffen met de voor-en maandelijkse betalingen.
+title: Azure-reserveringen aanschaffen met betaling vooraf of per maand
+description: Meer informatie over het aanschaffen van Azure-reserveringen met betaling vooraf of per maand.
 services: billing
 author: bandersmsft
 manager: yashar
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: banders
 ms.openlocfilehash: d211334ad2aa760cd63b98c6827fb2512811a1d3
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "70806946"
 ---
-# <a name="purchase-reservations-with-monthly-payments"></a>Reserve ringen aanschaffen met maandelijkse betalingen
+# <a name="purchase-reservations-with-monthly-payments"></a>Reserveringen aanschaffen met maandelijkse betalingen
 
-Tot nu toe is een betaling vereist voor Azure-reserve ringen. U kunt nu betalen voor reserve ringen met maandelijkse betalingen. In tegens telling tot een aankoop vooraf waarbij u het volledige bedrag betaalt, worden met de optie voor maandelijkse betaling de totale kosten van de reserve ring gelijkmatig verdeeld over elke maand van de periode. De totale kosten vooraf en maandelijkse reserve ringen zijn hetzelfde en u betaalt geen extra kosten wanneer u maandelijks betaalt.
+Tot nu toe moesten Azure-reserveringen vooraf worden betaald. Nu kunt u reserveringen aanschaffen met maandelijkse betalingen. In tegenstelling tot een aankoop vooraf waarbij u het volledige bedrag betaalt, worden bij de optie voor maandelijkse betaling de totale kosten van de reservering gelijkmatig verdeeld over alle maanden in de periode. De totale kosten van betalingen vooraf en per maand voor reserveringen zijn hetzelfde en u hoeft ook geen toeslag te betalen wanneer u voor maandelijks betalen kiest.
 
-Uw maandelijkse betalings bedrag kan variëren, afhankelijk van de markt wisselkoers van de huidige maand voor uw lokale valuta.
+Uw maandbedrag kan variëren op basis van de wisselkoers van de huidige maand voor uw lokale valuta.
 
 Maandelijkse betalingen zijn beschikbaar voor:
 
@@ -27,55 +27,55 @@ Maandelijkse betalingen zijn beschikbaar voor:
 - SQL Database
 - SQL Data Warehouse
 - Cosmos DB
-- Prijs App Service stempel
+- App Service-zegelkosten
 
-Reserve ringen aanschaffen in de [Azure Portal](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade).
+Schaf reserveringen aan in [Azure Portal](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade).
 
-![Voor beeld van reserve ring van inkoop](./media/billing-monthly-payments-reservations/purchase-reservation.png)
+![Voorbeeld van een reserveringsaankoop](./media/billing-monthly-payments-reservations/purchase-reservation.png)
 
-Bij het maken van een reserverings aankoop kunt u het betalings schema bekijken. Klik op **volledig betalings schema weer geven**.
+Bij het aanschaffen van een reservering kunt u het betalingsschema bekijken. Klik op **Volledig betalingsschema weergeven**.
 
-![Voor beeld van betalings schema voor reserverings](./media/billing-monthly-payments-reservations/prepurchase-schedule.png)
+![Voorbeeld van het betalingsschema voor een reservering](./media/billing-monthly-payments-reservations/prepurchase-schedule.png)
 
-Als u het betalings schema na aankoop wilt bekijken, selecteert u een reserve ring, klikt u op de **reserverings order-id**en klikt u vervolgens op het tabblad **betalingen** .
+Als u het betalingsschema na aankoop wilt bekijken, selecteert u een reservering, klikt u op **Reserveringsorder-id** en klikt u vervolgens op het tabblad **Betalingen**.
 
-## <a name="view-payments-made"></a>Gemaakte betalingen weer geven
+## <a name="view-payments-made"></a>Gedane betalingen weergeven
 
-U kunt betalingen weer geven die zijn gemaakt met behulp van Api's, gebruiks gegevens en in kosten analyse. Voor reserve ringen die maandelijks worden betaald, wordt de waarde van de frequentie als **terugkerend** weer gegeven in de API voor gebruiks gegevens en reserverings kosten. Voor reserve ringen die vooraf zijn betaald, wordt de waarde weer gegeven als **eenmalige**.
+U kunt gedane betalingen weergeven met behulp van API's en gebruiksgegevens of in de kostenanalyse. Voor reserveringen die maandelijks worden betaald, wordt de frequentiewaarde weergegeven als **Terugkerend** in gebruiksgegevens en de reserveringskosten-API. Voor reserveringen die vooraf zijn betaald, wordt de waarde weergegeven als **Eenmalig**.
 
-Kosten analyse toont maandelijkse aankopen in de standaard weergave. Pas het **aankoop** filter voor het **type toeslag** en **terugkerend** op de **frequentie** toe om alle aankopen te bekijken. Als u alleen reserve ringen wilt weer geven, past u een filter toe op **reserve ring**.
+Maandelijkse aankopen worden weergegeven in de standaardweergave van de kostenanalyse. Pas het filter **Aankoop** toe op **Kostentype** en het filter **Terugkerend** op **Frequentie** om alle aankopen te bekijken. Als u alleen reserveringen wilt weergeven, past u een filter toe op **Reservering**.
 
-![Voor beeld van de aanschaf kosten van reserve ringen in kosten analyse](./media/billing-monthly-payments-reservations/cost-analysis.png)
+![Voorbeeld van de aanschafkosten van een reservering in de kostenanalyse](./media/billing-monthly-payments-reservations/cost-analysis.png)
 
-## <a name="switch-to-monthly-payments-at-renewal"></a>Overschakelen naar maandelijkse betalingen bij verlenging
+## <a name="switch-to-monthly-payments-at-renewal"></a>Schakelen naar maandelijkse betalingen bij verlenging
 
-Wanneer u een reserve ring verlengt, kunt u de facturerings frequentie wijzigen in maandelijks.
+Wanneer u een reservering verlengt, kunt u de factureringsfrequentie wijzigen in maandelijks.
 
-## <a name="exchange-and-refunds"></a>Exchange en terugbetalingen
+## <a name="exchange-and-refunds"></a>Omruiling en terugbetaling
 
-Net als bij andere reserve ringen kunt u terugbetalen of Exchange-reserve ringen aanschaffen met maandelijkse facturering. Op dit moment kunt u een ondersteunings aanvraag indienen om een ruil of terugbetaling te starten voor een reserve ring die is gekocht met maandelijkse facturering.
+Net als bij andere reserveringen is terugbetaling of omruiling mogelijk van reserveringen die zijn aangeschaft met maandelijkse facturering. Momenteel kunt u een ondersteuningsaanvraag indienen om een omruiling of terugbetaling te starten voor een reservering die is aangeschaft met maandelijkse facturering.
 
-Wanneer u een reserve ring uitwisselt die maandelijks wordt betaald, moet de totale levens duur van de nieuwe aankoop groter zijn dan de overgebleven betalingen die worden geannuleerd voor de geretourneerde reserve ring. Er zijn geen andere limieten of kosten voor uitwisselingen. U kunt een reserve ring uitwisselen die vooraf wordt betaald om een nieuwe reserve ring te kopen die maandelijks wordt gefactureerd. De waarde voor de levens duur van de nieuwe reserve ring moet echter groter zijn dan de naar evenredige waarde van de reserve ring die wordt geretourneerd.
+Wanneer u een reservering met maandelijkse betaling omruilt, moeten de kosten voor de totale levensduur van de nieuwe aankoop hoger zijn dan de resterende betalingen die worden geannuleerd voor de geretourneerde reservering. Er zijn geen andere limieten of kosten verbonden aan omruiling. U kunt een reservering die vooraf is betaald, omruilen voor een nieuwe reservering die maandelijks wordt gefactureerd. De waarde van de levensduur van de nieuwe reservering moet echter hoger zijn dan de waarde naar rato van de reservering die wordt geretourneerd.
 
-Als er een reserve ring wordt geannuleerd die maandelijks wordt betaald, kan micro soft de annulerings kosten voor toekomstige doorgevoerde betalingen die worden geannuleerd, Toep assen. De resterende toegezegde betalingen worden in balans gebracht tegen de restitutie limiet van $50.000 USD.
+Als een reservering met maandelijkse betaling wordt geannuleerd, kan Microsoft annuleringskosten toepassen op de vastgelegde toekomstige betalingen die worden geannuleerd. De resterende vastgelegde betalingen tellen mee voor de restitutielimiet van USD 50.000.
 
-Voor meer informatie over Exchange en terugbetalingen raadpleegt u [self-service uitwisselingen en terugbetalingen voor Azure Reservations](billing-azure-reservations-self-service-exchange-and-refund.md).
+Zie [Selfservice voor omruiling en terugbetaling van Azure-reserveringen](billing-azure-reservations-self-service-exchange-and-refund.md) voor meer informatie over omruiling en terugbetaling.
 
 ## <a name="faq"></a>Veelgestelde vragen
 
-V. Biedt Azure ' gedeeltelijke reserve ringen aan de voor zijde '? '<br>
-A. Nee. Omdat de kosten voor reserve ringen die vooraf zijn betaald en maandelijks hetzelfde zijn, biedt micro soft geen ondersteuning voor gedeeltelijke betalingen op de voor grond.
+V. Biedt Azure ook reserveringen met gedeeltelijke betaling vooraf?<br>
+A. Nee. Omdat de kosten voor reserveringen die vooraf en per maand worden betaald gelijk zijn, biedt Microsoft geen ondersteuning voor gedeeltelijke betaling vooraf.
 
-V. Zijn er maandelijkse betalingen beschikbaar voor het Microsoft Cloud Solution Provider (CSP)-programma?<br>
-A. Ja, partners kunnen reserve ringen voor hun CSP-klanten kopen in de Azure Portal. De mogelijkheid om reserve ringen te kopen met maandelijkse facturering is niet beschikbaar in het partner centrum.
+V. Is maandelijkse betaling beschikbaar voor het Microsoft Cloud Solution Provider (CSP)-programma?<br>
+A. Ja, partners kunnen reserveringen voor hun CSP-klanten kopen in Azure Portal. De mogelijkheid om reserveringen te kopen met maandelijkse facturering is niet beschikbaar in het Partnercentrum.
 
-V. Ik ben een Azure Government klant, kan ik maandelijks betalen voor reserverings aankopen?<br>
+V. Kan ik als Azure Government-klant per maand betalen voor reserveringsaankopen?<br>
 A. Momenteel niet.
 
-V. Wanneer kan ik mezelf uitwisselt of terugbetalen in de Azure Portal, in plaats van een ondersteunings ticket te maken?<br>
-A. Momenteel niet. Aanvragen voor het uitwisselen van reserve ringen en terugstortingen met maandelijkse betalingen worden verwerkt door de ondersteuning van Azure.
+V. Kan ik zelf omruiling of terugbetaling regelen in Azure Portal, in plaats van een ondersteuningsticket te maken?<br>
+A. Momenteel niet. Aanvragen voor omruiling en terugbetaling van reserveringen met maandelijkse betalingen worden verwerkt door de ondersteuning voor Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Wat zijn Azure Reservations?](billing-save-compute-costs-reservations.md) voor meer informatie over reserve ringen.
-- Voor meer informatie over de taken die u moet uitvoeren voordat u een reserve ring aanschaft, raadpleegt u [de juiste VM-grootte bepalen voordat u het aankoopt](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy)
+- Zie [Wat zijn Azure-reserveringen?](billing-save-compute-costs-reservations.md) voor meer informatie over reserveringen.
+- Zie [De juiste VM-grootte bepalen voordat u koopt](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy) voor meer informatie over de taken die u moet uitvoeren voordat u een reservering aanschaft

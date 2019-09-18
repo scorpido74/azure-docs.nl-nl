@@ -1,6 +1,6 @@
 ---
-title: Problemen met aanmelding bij Azure-abonnementen oplossen
-description: Helpt bij het oplossen van de problemen waarbij u zich niet kunt aanmelden bij het Azure Portal of het Azure-account centrum.
+title: Aanmeldingsproblemen voor Azure-abonnementen oplossen
+description: Hulp bij het oplossen van problemen waardoor u zich niet kunt aanmelden bij Azure Portal of het Azure-accountcentrum.
 author: v-miegge
 manager: na
 editor: na
@@ -13,70 +13,70 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: ca641813e8b01a39d31a56e3730424b0fa1d6436
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "69657045"
 ---
-# <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Problemen met aanmelding bij Azure-abonnementen oplossen
+# <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Aanmeldingsproblemen voor Azure-abonnementen oplossen
 
-Deze hand leiding helpt u bij het oplossen van de problemen waarbij u zich niet kunt aanmelden bij de Azure Portal of het Azure-account centrum. 
+Deze handleiding helpt bij het oplossen van problemen waardoor u zich niet kunt aanmelden bij Azure Portal of het Azure-accountcentrum. 
 
 ## <a name="issues"></a>Problemen
 
-### <a name="page-hangs-in-the-loading-status"></a>De pagina loopt vast in de laad status
+### <a name="page-hangs-in-the-loading-status"></a>De pagina loopt vast tijdens de laadstatus
 
-Als uw Internet browser pagina vastloopt, voert u de volgende stappen uit totdat u naar de Azure Portal kunt gaan.
+Als uw internetbrowserpagina vastloopt, voert u elk van de volgende stappen uit totdat de Azure-portal bereikbaar is.
 
 - Vernieuw de pagina.
-- Gebruik een andere Internet browser.
-- Gebruik de modus voor persoonlijke navigatie in uw browser. Voor Internet Explorer: Klik op **extra** > **veiligheid** > InPrivate-**Navigatie**en zoek naar het [Azure Portal](https://portal.azure.com/) of het [Azure-account centrum](https://account.azure.com/Subscriptions)en meld u aan.
+- Gebruik een andere internetbrowser.
+- Gebruik de modus voor privé browsen van uw browser. Voor Internet Explorer: Klik op **Extra** > **Veiligheid** > **InPrivate-browsing** en navigeer naar en meld u aan bij [Azure Portal](https://portal.azure.com/) of het [Azure-accountcentrum](https://account.azure.com/Subscriptions).
 
 ### <a name="you-are-automatically-signed-in-as-a-different-user"></a>U wordt automatisch aangemeld als een andere gebruiker
 
-Dit probleem kan optreden als u meer dan één gebruikers account gebruikt in een Internet browser.
+Dit probleem kan optreden als u meer dan één gebruikersaccount gebruikt in een internetbrowser.
 
-Probeer een van de volgende methoden om het probleem op te lossen:
+Probeer een van de volgende methoden om dit probleem op te lossen:
 
-- De cache wissen en Internet cookies verwijderen. Klik in Internet Explorer op **extra** > **Internet opties** > **verwijderen**. Zorg ervoor dat de selectie vakjes voor tijdelijke bestanden, cookies, wacht woord en browse geschiedenis zijn geselecteerd en klik vervolgens op verwijderen.
-- Stel de instellingen van Internet Explorer opnieuw in om persoonlijke instellingen die u hebt gemaakt, te herstellen. Klik op **extra** > **Internet opties** > **Geavanceerd** > Schakel het selectie vakje **persoonlijke instellingen verwijderen** in > opnieuw in te **stellen**.
-- Gebruik de modus voor persoonlijke navigatie in uw browser. Voor Internet Explorer:  Klik op **extra** > **veiligheid** > InPrivate-**Navigatie**en zoek naar het [Azure Portal](https://portal.azure.com/) of het [Azure-account centrum](https://account.azure.com/Subscriptions)en meld u aan.
+- Wis de cache en verwijder internetcookies. Klik in Internet Explorer op **Extra** > **Internetopties** > **Verwijderen**. Zorg ervoor dat de selectievakjes voor tijdelijke bestanden, cookies, wachtwoorden en de browsegeschiedenis zijn geselecteerd en klik vervolgens op Verwijderen.
+- Stel de instellingen van Internet Explorer opnieuw in om eventuele persoonlijke instellingen die u hebt gemaakt, te herstellen. Klik op **Extra** > **Internetopties** > **Geavanceerd** > selecteer het vakje **Persoonlijke instellingen verwijderen** > **Opnieuw instellen**.
+- Gebruik de modus voor privé browsen van uw browser. Voor Internet Explorer:  Klik op **Extra** > **Veiligheid** > **InPrivate-browsing** en navigeer naar en meld u aan bij [Azure Portal](https://portal.azure.com/) of het [Azure-accountcentrum](https://account.azure.com/Subscriptions).
 
-### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>Ik kan me aanmelden, maar ik zie *geen abonnementen* .
+### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>Ik kan me aanmelden, maar ik zie *Er zijn geen abonnementen gevonden*
 
-Dit probleem treedt op als u hebt geselecteerd op de verkeerde directory, of als uw account beschikt niet over voldoende machtigingen.
+Dit probleem treedt op als u de verkeerde map hebt geselecteerd of als uw account niet over voldoende machtigingen beschikt.
 
-**Scenario 1:** Er wordt een fout bericht ontvangen in de [Azure Portal](https://portal.azure.com/)
+**Scenario 1:** Het foutbericht is ontvangen in [Azure Portal](https://portal.azure.com/)
 
 Dit probleem oplossen:
 
-- Zorg ervoor dat de juiste Azure-map is geselecteerd door te klikken op uw account in de rechterbovenhoek.
-- Als de juiste Azure-Directory is geselecteerd, maar u nog steeds het fout bericht ontvangt, moet uw account worden [toegevoegd als een eigenaar](billing-add-change-azure-subscription-administrator.md).
+- Zorg ervoor dat de juiste Azure-map is geselecteerd door in de rechterbovenhoek op uw account te klikken.
+- Als de juiste Azure-map is geselecteerd maar u nog steeds het foutbericht ontvangt, moet uw account worden [toegevoegd als eigenaar](billing-add-change-azure-subscription-administrator.md).
 
-**Scenario 2:** Er wordt een fout bericht ontvangen in de [Azure-Accountcentrum](https://account.windowsazure.com/Subscriptions)
+**Scenario 2:** Het foutbericht is ontvangen in het [Azure-accountcentrum](https://account.windowsazure.com/Subscriptions)
 
-Controleer of het account dat u gebruikt de accountbeheerder. Om te controleren wie de accountbeheerder is, de volgende stappen uit:
+Controleer of het account dat u gebruikt de accountbeheerder is. Voer de volgende stappen uit om te controleren wie de accountbeheerder is:
 
-1. Aanmelden bij de [abonnementen weergeven in Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Meld u aan bij de [Abonnementenweergave in Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
-2. Selecteer het abonnement dat u wilt controleren, en ga vervolgens naar **instellingen**.
+2. Selecteer het abonnement dat u wilt controleren en kijk vervolgens bij **Instellingen**.
 
-3. Selecteer **eigenschappen**. De accountbeheerder voor het abonnement wordt weergegeven in de **accountbeheerder** vak.
+3. Selecteer **Eigenschappen**. De accountbeheerder van het abonnement wordt weergegeven in het vak **Accountbeheerder**.
 
-## <a name="additional-help-resources"></a>Aanvullende hulp bronnen
+## <a name="additional-help-resources"></a>Aanvullende ondersteuningsresources
 
-Andere artikelen over het oplossen van problemen met Azure-facturering en-abonnementen
+Andere artikelen met probleemoplossingen voor Azure Billing en abonnementen
 
 - [Geweigerde kaart](billing-troubleshoot-declined-card.md)
-- [Problemen bij het registreren van abonnementen](billing-troubleshoot-azure-sign-up.md)
+- [Registratieproblemen voor abonnementen](billing-troubleshoot-azure-sign-up.md)
 - [Geen abonnementen gevonden](billing-no-subscriptions-found.md)
 - [Weergave voor bedrijfskosten is uitgeschakeld](billing-enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
-## <a name="contact-us-for-help"></a>Neem contact met ons op voor hulp
+## <a name="contact-us-for-help"></a>Contact met ons opnemen voor ondersteuning
 
-Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Documentatie voor Azure billing](index.md)
+- [Documentatie voor Azure Billing](index.md)

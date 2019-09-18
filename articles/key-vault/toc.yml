@@ -17,7 +17,7 @@
       href: quick-create-net.md
     - name: Een geheim instellen en ophalen - Node.js
       href: quick-create-node.md
-    - name: Een geheim instellen en ophalen - Resource Manager-sjabloon
+    - name: Geheim instellen en ophalen - sjabloon
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
 - name: Zelfstudies
