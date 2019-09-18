@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: f35a3567ae4ae7c3e2d59f776d3a3bc00ec2be3e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
-ms.translationtype: MT
+ms.openlocfilehash: 45aa1354f6009d5eccd48f85f993bae8949139e3
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142387"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058975"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Problemen met Azure Data Factory oplossen
 
@@ -25,46 +25,273 @@ Raadpleeg [problemen met Azure Data Factory connectors oplossen](connector-troub
 
 ## <a name="azure-databricks"></a>Azure Databricks
 
-| Foutcode | Foutbericht                                          | Description                             | Aanbeveling                             |
-| -------------- | ----------------------------------------------------- | --------------------------------------------------------------| :----------------------------------------------------------- |
-| 3200           | Fout 403.                                                    | Het Databricks-toegangs token is verlopen.                         | Het toegangs token voor Databricks is standaard 90 dagen geldig.  Maak een nieuw token en werk de gekoppelde service bij. |
-| 3201           | Vereist veld ontbreekt: Settings. Task. notebook_task. notebook_path | Ongeldige ontwerpen: Het pad naar de notebook is niet juist opgegeven. | Geef het pad naar de notebook op in de Databricks-activiteit. |
-| 3201           | Cluster... bestaat niet.                                 | Ontwerp fout: Het Databricks-cluster bestaat niet of is verwijderd. | Controleer of het Databricks-cluster bestaat. |
-| 3201           | Ongeldige URI van python-bestand.... Ga naar de Databricks-gebruikers handleiding voor ondersteunde URI-schema's. | Ongeldige ontwerp functie.                                                | Geef een absoluut pad op voor werk ruimte-adresserings `dbfs:/folder/subfolder/foo.py` schema's of voor bestanden die zijn opgeslagen in Databricks File System. |
-| 3201           | {0}LinkedService moet de vereiste eigenschappen Domain en accessToken hebben. | Ongeldige ontwerp functie.                                                | Controleer de [definitie van de gekoppelde service](compute-linked-services.md#azure-databricks-linked-service). |
-| 3201           | {0}LinkedService moet een bestaande cluster-ID of nieuwe cluster informatie opgeven om te maken. | Ongeldige ontwerp functie.                                                | Controleer de [definitie van de gekoppelde service](compute-linked-services.md#azure-databricks-linked-service). |
-| 3201           | Het knooppunt type Standard_D16S_v3 wordt niet ondersteund. Ondersteunde knooppunt typen:   Standard_DS3_v2, Standard_DS4_v2, Standard_DS5_v2, Standard_D8s_v3, Standard_D16s_v3, Standard_D32s_v3, Standard_D64s_v3, Standard_D3_v2, Standard_D8_v3, Standard_D16_v3, Standard_D32_v3, Standard_D64_v3, Standard_D12_v2, Standard_D13_v2, Standard_D14_v2, Standard_D15_v2, Standard_DS12_v2, Standard_DS13_v2, Standard_DS14_v2, Standard_DS15_v2, Standard_E8s_v3, Standard_E16s_v3, Standard_E32s_v3, Standard_E64s_v3, Standard_L4s, Standard_L8s, Standard_L16s, Standard_L32s, Standard_F4s, Standard_F8s, Standard_F16s, Standard_H16, Standard_F4s_v2, Standard_F8s_v2, Standard_F16s_v2, Standard_F32s_v2, Standard_F64s_v2, Standard_F72s_v2, Standard_NC12, Standard_NC24, Standard_NC6s_v3, Standard_NC12s_v3, Standard_ NC24s_v3, Standard_L8s_v2, Standard_L16s_v2, Standard_L32s_v2, Standard_L64s_v2, Standard_L80s_v2. | Ongeldige ontwerp functie.                                                | Raadpleeg het fout bericht.                                          |
-| 3201           | Ongeldige notebook_path:... Er worden momenteel alleen absolute paden ondersteund. Paden moeten beginnen met '/'. | Ongeldige ontwerp functie.                                                | Raadpleeg het fout bericht.                                          |
-| 3202           | Er zijn al 1000 taken in de afgelopen 3600 seconden gemaakt, waardoor de frequentie limiet is overschreden:   1000 aantal gemaakte taken per 3600 seconden. | Er zijn te veel Databricks-uitvoeringen in een uur.                         | Controleer alle pijp lijnen die gebruikmaken van deze Databricks-werk ruimte voor het aanmaak tempo van de taak.  Als pijp lijnen te veel Databricks-runs worden uitgevoerd, migreert u enkele pijp lijnen naar een nieuwe werk ruimte. |
-| 3202           | Kan aanvraag object niet parseren: ' Key ' en ' value ' moeten worden ingesteld voor het JSON-toewijzings veld base_parameters, kreeg ' Key: '... ' ' maar. | Ontwerp fout: Er is geen waarde voor de para meter gegeven.         | Inspecteer de JSON van de pijp lijn en zorg ervoor dat alle para meters in de baseParameters-notebook een niet-lege waarde opgeven. |
-| 3202           | Gebruiker: `SimpleUserContext{userId=..., name=user@company.com, orgId=...}` is niet gemachtigd om toegang te krijgen tot het cluster. | De gebruiker die het toegangs token heeft gegenereerd, heeft geen toegang tot het Databricks-cluster dat is opgegeven in de gekoppelde service. | Zorg ervoor dat de gebruiker over de vereiste machtigingen beschikt in de werk ruimte.   |
-| 3203           | Het cluster heeft de status beëindigd en is niet beschikbaar voor het ontvangen van taken. Herstel het cluster of probeer het later opnieuw. | Het cluster is beëindigd.    Voor interactieve clusters kan dit een race voorwaarde zijn. | De beste manier om deze fout te vermijden, is door taak clusters te gebruiken.             |
-| 3204           | De taak kan niet worden uitgevoerd.  | Fout berichten geven verschillende problemen aan, zoals een onverwachte cluster status of een specifieke activiteit. Er wordt meestal helemaal geen fout bericht weer gegeven.                                                          | N/A                                                          |
+### <a name="error-code--3200"></a>Fout code:  3200
 
+- **Bericht**: Fout 403.
+
+- **Oorzaak**:`The Databricks access token has expired.`
+
+- **Aanbeveling**: Het toegangs token voor Azure Databricks is standaard 90 dagen geldig. Maak een nieuw token en werk de gekoppelde service bij.
+
+
+### <a name="error-code--3201"></a>Fout code:  3201
+
+- **Bericht**:`Missing required field: settings.task.notebook_task.notebook_path.`
+
+- **Oorzaak**:`Bad authoring: Notebook path not specified correctly.`
+
+- **Aanbeveling**: Geef het pad naar de notebook op in de Databricks-activiteit.
+
+<br/>
+
+- **Bericht**:`Cluster   ... does not exist.`
+
+- **Oorzaak**:`Authoring error: Databricks cluster does not exist or has been deleted.`
+
+- **Aanbeveling**: Controleer of het Databricks-cluster bestaat.
+
+<br/>
+
+- **Bericht**:`Invalid Python file URI.... Please visit Databricks user guide for supported URI schemes.`
+
+- **Oorzaak**:`Bad authoring.`
+
+- **Aanbeveling**: Geef een absoluut pad op voor werk ruimte-adresserings `dbfs:/folder/subfolder/foo.py` schema's of voor bestanden die zijn opgeslagen in Databricks File System.
+
+<br/>
+
+- **Bericht**:`{0} LinkedService should have domain and accessToken as required properties.`
+
+- **Oorzaak**:`Bad authoring.`
+
+- **Aanbeveling**: Controleer de [definitie van de gekoppelde service](compute-linked-services.md#azure-databricks-linked-service).
+
+<br/>
+
+- **Bericht**:`{0} LinkedService should specify either existing cluster ID or new cluster information for creation.`
+
+- **Oorzaak**:`Bad authoring.`
+
+- **Aanbeveling**: Controleer de [definitie van de gekoppelde service](compute-linked-services.md#azure-databricks-linked-service).
+
+<br/>
+
+- **Bericht**:`Node type Standard_D16S_v3 is not supported. Supported node types:   Standard_DS3_v2, Standard_DS4_v2, Standard_DS5_v2, Standard_D8s_v3,   Standard_D16s_v3, Standard_D32s_v3, Standard_D64s_v3, Standard_D3_v2,   Standard_D8_v3, Standard_D16_v3, Standard_D32_v3, Standard_D64_v3,   Standard_D12_v2, Standard_D13_v2, Standard_D14_v2, Standard_D15_v2,   Standard_DS12_v2, Standard_DS13_v2, Standard_DS14_v2, Standard_DS15_v2,   Standard_E8s_v3, Standard_E16s_v3, Standard_E32s_v3, Standard_E64s_v3,   Standard_L4s, Standard_L8s, Standard_L16s, Standard_L32s, Standard_F4s,   Standard_F8s, Standard_F16s, Standard_H16, Standard_F4s_v2, Standard_F8s_v2,   Standard_F16s_v2, Standard_F32s_v2, Standard_F64s_v2, Standard_F72s_v2,   Standard_NC12, Standard_NC24, Standard_NC6s_v3, Standard_NC12s_v3,   Standard_NC24s_v3, Standard_L8s_v2, Standard_L16s_v2, Standard_L32s_v2,   Standard_L64s_v2, Standard_L80s_v2.`
+
+- **Oorzaak**:`Bad authoring.`
+
+- **Aanbeveling**: Raadpleeg het fout bericht. 
+
+<br/>
+
+### <a name="error-code--3202"></a>Fout code:  3202
+
+- **Bericht**:`There were already 1000 jobs created in past 3600 seconds, exceeding rate limit:   1000 job creations per 3600 seconds.`
+
+- **Oorzaak**:`Too many Databricks runs in an hour.`
+
+- **Aanbeveling**: Controleer alle pijp lijnen die gebruikmaken van deze Databricks-werk ruimte voor het aanmaak tempo van de taak.  Als pijp lijnen te veel Databricks-runs worden uitgevoerd, migreert u enkele pijp lijnen naar een nieuwe werk ruimte.
+
+<br/>
+
+- **Bericht**:`Could not parse request object: Expected 'key' and 'value' to be set for JSON map field base_parameters, got 'key: "..."' instead.`
+
+- **Oorzaak**:`Authoring error: No value provided for the parameter.`
+
+- **Aanbeveling**: Inspecteer de JSON van de pijp lijn en zorg ervoor dat alle para meters in de baseParameters-notebook een niet-lege waarde opgeven.
+
+<br/>
+
+- **Bericht**: `User: `SimpleUserContext {gebruikersID =..., naam =user@company.com, orgId =...}` is not   authorized to access cluster.`
+
+- **Oorzaak**: De gebruiker die het toegangs token heeft gegenereerd, heeft geen toegang tot het Databricks-cluster dat is opgegeven in de gekoppelde service.
+
+- **Aanbeveling**: Zorg ervoor dat de gebruiker over de vereiste machtigingen beschikt in de werk ruimte.
+
+
+### <a name="error-code--3203"></a>Fout code:  3203
+
+- **Bericht**:`The cluster is in Terminated state, not available to receive jobs. Please fix the cluster or retry later.`
+
+- **Oorzaak**: Het cluster is beëindigd. Voor interactieve clusters kan dit een race voorwaarde zijn.
+
+- **Aanbeveling**: De beste manier om deze fout te vermijden, is door taak clusters te gebruiken.
+
+
+### <a name="error-code--3204"></a>Fout code:  3204
+
+- **Bericht**:`Job execution failed.`
+
+- **Oorzaak**:  Fout berichten geven verschillende problemen aan, zoals een onverwachte cluster status of een specifieke activiteit. Er wordt meestal helemaal geen fout bericht weer gegeven. 
+
+- **Aanbeveling**: N/A
 
 
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 
 De volgende tabel is van toepassing op U-SQL.
 
-| Foutcode         | Foutbericht                                                | Description                                          | Aanbeveling                            |
-| -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 2709                 | Het toegangs token is afkomstig van de verkeerde Tenant.                    | Onjuiste Azure Active Directory-Tenant (Azure AD).                                         | De service-principal die wordt gebruikt voor toegang tot Azure Data Lake Analytics hoort bij een andere Azure AD-Tenant. Maak een nieuwe Service-Principal in dezelfde Tenant als het Data Lake Analytics-account. |
-| 2711,   2705,   2704 | Slag. ACL-verificatie is mislukt. De resource bestaat niet of de gebruiker is niet gemachtigd om de aangevraagde bewerking uit te voeren.<br/><br/>De gebruiker kan geen toegang krijgen tot Data Lake Store.  <br/><br/>De gebruiker is niet gemachtigd om Data Lake Analytics te gebruiken. | De service-principal of het certificaat heeft geen toegang tot het bestand in de opslag. | Zorg ervoor dat de service-principal of het certificaat dat de gebruiker biedt voor Data Lake Analytics taken toegang heeft tot het Data Lake Analytics account en de standaard Data Lake Storage instantie van de hoofdmap. |
-| 2711                 | Kan het bestand of de map Azure Data Lake Store niet vinden.       | Het pad naar het U-SQL-bestand is onjuist of de referenties van de gekoppelde service hebben geen toegang. | Controleer het pad en de referenties die zijn opgenomen in de gekoppelde service. |
-| 2707                 | Het account van AzureDataLakeAnalytics kan niet worden omgezet. Controleer ' AccountName ' en ' DataLakeAnalyticsUri '. | Het Data Lake Analytics-account in de gekoppelde service is onjuist.                  | Controleer of het juiste account is ingesteld.             |
-| 2703                 | Fout-id: E_CQO_SYSTEM_INTERNAL_ERROR (of een fout die begint met ' fout-id: '). | De fout is van Data Lake Analytics.                                    | Een fout zoals in het voor beeld betekent dat de taak is verzonden naar Data Lake Analytics en dat het script is mislukt. Onderzoek in Data Lake Analytics. Ga in de portal naar het Data Lake Analytics-account en zoek de taak met behulp van de Data Factory-activiteit run ID (niet de pijplijn run-ID). De taak bevat meer informatie over de fout en helpt u bij het oplossen van problemen. Als de oplossing niet duidelijk is, neemt u contact op met het Data Lake Analytics ondersteunings team en geeft u de taak-URL op, die uw account naam en de taak-ID bevat. |
-| 2709                 | We kunnen uw taak op dit moment niet accepteren. Het maximum aantal taken in de wachtrij voor uw account is 200. | Deze fout wordt veroorzaakt door het beperken van Data Lake Analytics.                                           | Verminder het aantal verzonden taken naar Data Lake Analytics door Data Factory triggers en gelijktijdigheids instellingen voor activiteiten te wijzigen. Of verg root de limieten voor Data Lake Analytics. |
-| 2709                 | Deze taak is afgewezen omdat deze 24 AUs vereist. Door de beheerder gedefinieerd beleid van deze account voor komt dat een taak meer dan 5 AUs gebruikt. | Deze fout wordt veroorzaakt door het beperken van Data Lake Analytics.                                           | Verminder het aantal verzonden taken naar Data Lake Analytics door Data Factory triggers en gelijktijdigheids instellingen voor activiteiten te wijzigen. Of verg root de limieten voor Data Lake Analytics. |
+
+### <a name="error-code--2709"></a>Fout code:  2709
+
+- **Bericht**:`The access token is from the wrong tenant.`
+
+- **Oorzaak**:  Onjuiste Azure Active Directory-Tenant (Azure AD).
+
+- **Aanbeveling**: Onjuiste Azure Active Directory-Tenant (Azure AD).
+
+<br/>
+
+- **Bericht**:`We cannot accept your job at this moment. The maximum number of queued jobs for   your account is 200. `
+
+- **Oorzaak**:  Deze fout wordt veroorzaakt door het beperken van Data Lake Analytics.
+
+- **Aanbeveling**: Verminder het aantal verzonden taken naar Data Lake Analytics door Data Factory triggers en gelijktijdigheids instellingen voor activiteiten te wijzigen. Of verg root de limieten voor Data Lake Analytics.
+
+<br/>
+
+- **Bericht**:`This job was rejected because it requires 24 AUs. This account's administrator-defined policy prevents a job from using more than 5 AUs.`
+
+- **Oorzaak**:  Deze fout wordt veroorzaakt door het beperken van Data Lake Analytics. 
+
+- **Aanbeveling**: Verminder het aantal verzonden taken naar Data Lake Analytics door Data Factory triggers en gelijktijdigheids instellingen voor activiteiten te wijzigen. Of verg root de limieten voor Data Lake Analytics.
+
+
+### <a name="error-code--2705"></a>Fout code:  2705
+
+- **Bericht**:`Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/><br/>User is   not able to access Data Lake Store.  <br/><br/>User is  not authorized to use Data Lake Analytics.`
+
+- **Oorzaak**:  De service-principal of het certificaat heeft geen toegang tot het bestand in de opslag.
+
+- **Aanbeveling**: Zorg ervoor dat de service-principal of het certificaat dat de gebruiker biedt voor Data Lake Analytics taken toegang heeft tot het Data Lake Analytics account en de standaard Data Lake Storage instantie van de hoofdmap.
+
+
+### <a name="error-code--2711"></a>Fout code:  2711
+
+- **Bericht**:`Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/><br/>User is   not able to access Data Lake Store.  <br/><br/>User is  not authorized to use Data Lake Analytics.`
+
+- **Oorzaak**:  De service-principal of het certificaat heeft geen toegang tot het bestand in de opslag.
+
+- **Aanbeveling**: Zorg ervoor dat de service-principal of het certificaat dat de gebruiker biedt voor Data Lake Analytics taken toegang heeft tot het Data Lake Analytics account en de standaard Data Lake Storage instantie van de hoofdmap.
+
+<br/>
+
+- **Bericht**:`Cannot find the 'Azure Data Lake Store' file or folder.`
+
+- **Oorzaak**:  Het pad naar het U-SQL-bestand is onjuist of de referenties van de gekoppelde service hebben geen toegang.
+
+- **Aanbeveling**: Controleer het pad en de referenties die zijn opgenomen in de gekoppelde service.
+
+
+### <a name="error-code--2704"></a>Fout code:  2704
+
+- **Bericht**:`Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/><br/>User is   not able to access Data Lake Store.  <br/><br/>User is  not authorized to use Data Lake Analytics.`
+
+- **Oorzaak**:  De service-principal of het certificaat heeft geen toegang tot het bestand in de opslag.
+
+- **Aanbeveling**: Zorg ervoor dat de service-principal of het certificaat dat de gebruiker biedt voor Data Lake Analytics taken toegang heeft tot het Data Lake Analytics account en de standaard Data Lake Storage instantie van de hoofdmap.
+
+
+### <a name="error-code--2707"></a>Fout code:  2707
+
+- **Bericht**:`Cannot resolve the account of AzureDataLakeAnalytics. Please check 'AccountName' and   'DataLakeAnalyticsUri'.`
+
+- **Oorzaak**:  Het Data Lake Analytics-account in de gekoppelde service is onjuist.
+
+- **Aanbeveling**: Controleer of het juiste account is ingesteld.
+
+
+### <a name="error-code--2703"></a>Fout code:  2703
+
+- **Bericht**:`Error Id: E_CQO_SYSTEM_INTERNAL_ERROR (or any error that starts with "Error   Id:").`
+
+- **Oorzaak**:  De fout is van Data Lake Analytics. 
+
+- **Aanbeveling**: Een fout zoals in het voor beeld betekent dat de taak is verzonden naar Data Lake Analytics en dat het script is mislukt. Onderzoek in Data Lake Analytics. Ga in de portal naar het Data Lake Analytics-account en zoek de taak met behulp van de Data Factory-activiteit run ID (niet de pijplijn run-ID). De taak bevat meer informatie over de fout en helpt u bij het oplossen van problemen. Als de oplossing niet duidelijk is, neemt u contact op met het Data Lake Analytics ondersteunings team en geeft u de taak-URL op, die uw account naam en de taak-ID bevat.
 
 
 
 ## <a name="azure-functions"></a>Azure Functions
 
-| Foutcode | Foutbericht                           | Description                                                  | Aanbeveling                           |
-| ------------ | --------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 3600         | De antwoord inhoud is geen geldige JObject. | De Azure-functie die is aangeroepen, heeft niet een JSON-nettolading geretourneerd in het antwoord. Azure function-activiteit in Data Factory ondersteunt alleen inhoud van een JSON-antwoord. | Werk de Azure-functie bij om een geldige JSON-nettolading te retour neren. Een functie kan bijvoorbeeld C# de volgende id `(ActionResult)new<OkObjectResult("{`\"retour neren\" \":\"123`}");`. |
-| 3600         | Ongeldige HttpMethod:....               | De HTTP-methode die in de nettolading van de activiteit is opgegeven, wordt niet ondersteund door de Azure function-activiteit. | Gebruik een ondersteunde HTTP-methode, zoals plaatsen, plaatsen, ophalen, verwijderen, opties, kop of TRACERing. |
+### <a name="error-code--3602"></a>Fout code:  3602
+
+- **Bericht**:`Invalid HttpMethod: {method}.`
+
+- **Oorzaak**: De HTTP-methode die in de activiteit lading is opgegeven, wordt niet ondersteund door Azure function-activiteit. 
+
+- **Aanbeveling**: De HTTP-methoden die worden ondersteund, zijn plaatsen, posten, ophalen, verwijderen, opties, kop en TRACERing.
+
+
+### <a name="error-code--3603"></a>Fout code:  3603
+
+- **Bericht**:`Response content is not a valid JObject.`
+
+- **Oorzaak**: De Azure-functie die is aangeroepen, heeft niet een JSON-nettolading geretourneerd in het antwoord. Azure function-activiteit in Data Factory ondersteunt alleen inhoud van een JSON-antwoord. 
+
+- **Aanbeveling**: Werk de Azure-functie bij om een geldige JSON-nettolading te retour neren. Een functie kan bijvoorbeeld C# de volgende id `(ActionResult)new<OkObjectResult("{`\"retour neren\" \":\"123`}");`.
+
+
+### <a name="error-code--3606"></a>Fout code:  3606
+
+- **Bericht**:`Azure function activity missing function key.`
+
+- **Oorzaak**: De definitie van de Azure function-activiteit is niet voltooid. 
+
+- **Aanbeveling**: Controleer of de JSON-definitie van de invoer-AzureFunction voor de eigenschap met de naam ' functionKey ' is.
+
+
+### <a name="error-code--3607"></a>Fout code:  3607
+
+- **Bericht**:`Azure function activity missing function name.`
+
+- **Oorzaak**: De definitie van de Azure function-activiteit is niet voltooid. 
+
+- **Aanbeveling**: Controleer of de JSON-definitie van de invoer AzureFunction de eigenschap ' functie naam ' heeft.
+
+
+### <a name="error-code--3608"></a>Fout code:  3608
+
+- **Bericht**:`Call to provided Azure function '{FunctionName}' failed with status-'{statusCode}' and message - '{message}'.` 
+
+- **Oorzaak**: De details van de Azure-functie in de activiteiten definitie zijn mogelijk onjuist. 
+
+- **Aanbeveling**: Corrigeer de details van de Azure-functie en probeer het opnieuw.
+
+
+### <a name="error-code--3609"></a>Fout code:  3609
+
+- **Bericht**:`Azure function activity missing functionAppUrl.` 
+
+- **Oorzaak**: De definitie van de Azure function-activiteit is niet voltooid. 
+
+- **Aanbeveling**: Controleer of de JSON-definitie van de invoer-AzureFunction voor de eigenschap met de naam ' functionAppUrl ' is.
+
+
+### <a name="error-code--3610"></a>Fout code:  3610
+
+- **Bericht**:`There was an error while calling endpoint.`
+
+- **Oorzaak**: De functie-URL is mogelijk onjuist.
+
+- **Aanbeveling**: Controleer of de waarde voor ' functionAppUrl ' in de JSON van de activiteit juist is en probeer het opnieuw.
+
+
+### <a name="error-code--3611"></a>Fout code:  3611
+
+- **Bericht**:`Azure function activity missing Method in JSON.` 
+
+- **Oorzaak**: De definitie van de Azure function-activiteit is niet voltooid.
+
+- **Aanbeveling**: Controleer of de JSON-definitie van de invoer AzureFunction een eigenschap met de naam ' method ' heeft.
+
+
+### <a name="error-code--3612"></a>Fout code:  3612
+
+- **Bericht**:`Azure function activity missing LinkedService definition in JSON.`
+
+- **Oorzaak**: De definitie van de Azure function-activiteit is niet voltooid.
+
+- **Aanbeveling**: Controleer of de JSON-definitie van de invoer AzureFunction een gekoppelde service Details bevat.
 
 
 
@@ -72,51 +299,266 @@ De volgende tabel is van toepassing op U-SQL.
 
 De volgende tabel is van toepassing op Azure Batch.
 
-| Foutcode | Foutbericht                                                | Description                                                  | Aanbeveling                          |
-| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 2500         | Onverwachte uitzonde ring en uitvoering is mislukt.             | De opdracht kan niet worden gestart of het programma heeft een fout code geretourneerd. | Controleer of het uitvoer bare bestand bestaat. Als het programma is gestart, controleert u of *stdout. txt* en *stderr. txt* zijn geüpload naar het opslag account. Het is een goed idee om copious-Logboeken in uw code te verzenden voor fout opsporing. |
-| 2501         | Geen toegang tot de gebruikers batch-account; Controleer de instellingen van het batch-account. | Onjuiste batch-toegangs sleutel of groeps naam.            | Controleer de naam van de groep en de batch toegangs sleutel in de gekoppelde service. |
-| 2502         | Kan geen toegang krijgen tot het opslag account van de gebruiker; Controleer de instellingen voor het opslag account. | De naam van het opslag account of de toegangs sleutel is onjuist.       | Controleer de naam van het opslag account en de toegangs sleutel in de gekoppelde service. |
-| 2504         | De bewerking heeft een ongeldige status code onjuiste aanvraag geretourneerd.     | Er zijn te veel bestanden in de folderPath van de aangepaste activiteit. De totale grootte van de Resource files mag niet langer zijn dan 32.768 tekens. | Verwijder overbodige bestanden. Of zip en voeg een unzip-opdracht toe om deze uit te pakken. Gebruik bijvoorbeeld`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;  $folder\yourProgram.exe` |
-| 2505         | Kan geen Shared Access Signature maken, tenzij de account sleutel referenties worden gebruikt. | Aangepaste activiteiten bieden alleen ondersteuning voor opslag accounts die gebruikmaken van een toegangs sleutel. | Raadpleeg de beschrijving van de fout.                                            |
-| 2507         | Het mappad bestaat niet of is leeg:....            | Er bevinden zich geen bestanden in het opslag account op het opgegeven pad.       | Het mappad moet de uitvoer bare bestanden bevatten die u wilt uitvoeren. |
-| 2508         | De map Resource bevat dubbele bestanden.               | Meerdere bestanden met dezelfde naam bevinden zich in verschillende submappen van folderPath. | Aangepaste activiteiten een mapstructuur afvlakken onder folderPath.  Als u de mappen structuur wilt behouden, moet u de bestanden zip en uitpakken in Azure Batch met behulp van een unzip opdracht. Gebruik bijvoorbeeld`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;   $folder\yourProgram.exe` |
-| 2509         | Batch-URL... is ongeldig; Deze moet de URI-indeling hebben.         | Batch-Url's moeten overeenkomen met`https://mybatchaccount.eastus.batch.azure.com` | Raadpleeg de beschrijving van de fout.                                            |
-| 2510         | Er is een fout opgetreden tijdens het verzenden van de aanvraag.               | De batch-URL is ongeldig.                                         | Controleer de batch-URL.                                            |
+
+### <a name="error-code--2500"></a>Fout code:  2500
+
+- **Bericht**:`Hit unexpected exception and execution failed.`
+
+- **Oorzaak**:`Can't launch command, or the program returned an error code.`
+
+- **Aanbeveling**:  Controleer of het uitvoer bare bestand bestaat. Als het programma is gestart, controleert u of *stdout. txt* en *stderr. txt* zijn geüpload naar het opslag account. Het is een goed idee om copious-Logboeken in uw code te verzenden voor fout opsporing.
+
+
+### <a name="error-code--2501"></a>Fout code:  2501
+
+- **Bericht**:`Cannot access user batch account; please check batch account settings.`
+
+- **Oorzaak**: Onjuiste batch-toegangs sleutel of groeps naam.
+
+- **Aanbeveling**: Controleer de naam van de groep en de batch toegangs sleutel in de gekoppelde service.
+
+
+### <a name="error-code--2504"></a>Fout code:  2504
+
+- **Bericht**:`Operation returned an invalid status code 'BadRequest'.` 
+
+- **Oorzaak**: Er zijn te veel bestanden in de folderPath van de aangepaste activiteit. De totale grootte van de Resource files mag niet langer zijn dan 32.768 tekens.
+
+- **Aanbeveling**: Verwijder overbodige bestanden. Of zip en voeg een unzip-opdracht toe om deze uit te pakken. Gebruik bijvoorbeeld`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;  $folder\yourProgram.exe`
+
+
+### <a name="error-code--2505"></a>Fout code:  2505
+
+- **Bericht**:`Cannot create Shared Access Signature unless Account Key credentials are used.`
+
+- **Oorzaak**: Aangepaste activiteiten bieden alleen ondersteuning voor opslag accounts die gebruikmaken van een toegangs sleutel.
+
+- **Aanbeveling**: Raadpleeg de beschrijving van de fout.
+
+
+### <a name="error-code--2507"></a>Fout code:  2507
+
+- **Bericht**:`The folder path does not exist or is empty: ....`
+
+- **Oorzaak**: Er bevinden zich geen bestanden in het opslag account op het opgegeven pad.
+
+- **Aanbeveling**: Het mappad moet de uitvoer bare bestanden bevatten die u wilt uitvoeren.
+
+
+### <a name="error-code--2508"></a>Fout code:  2508
+
+- **Bericht**:`There are duplicate files in the resource folder.`
+
+- **Oorzaak**: Meerdere bestanden met dezelfde naam bevinden zich in verschillende submappen van folderPath.
+
+- **Aanbeveling**: Aangepaste activiteiten een mapstructuur afvlakken onder folderPath.  Als u de mappen structuur wilt behouden, moet u de bestanden zip en uitpakken in Azure Batch met behulp van een unzip opdracht. Gebruik bijvoorbeeld`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;   $folder\yourProgram.exe`
+
+
+### <a name="error-code--2509"></a>Fout code:  2509
+
+- **Bericht**:`Batch   url ... is invalid; it must be in Uri format.` 
+
+- **Oorzaak**: Batch-Url's moeten overeenkomen met`https://mybatchaccount.eastus.batch.azure.com`
+
+- **Aanbeveling**: Raadpleeg de beschrijving van de fout.
+
+
+### <a name="error-code--2510"></a>Fout code:  2510
+
+- **Bericht**:`An   error occurred while sending the request.`
+
+- **Oorzaak**: De batch-URL is ongeldig. 
+
+- **Aanbeveling**: Controleer de batch-URL.
+
 
 ## <a name="hdinsight"></a>HDInsight
 
 De volgende tabel is van toepassing op Spark-, Hive-, MapReduce-, Pig-en Hadoop-streaming.
 
-| Fout code | Foutbericht                                                | Description                                                  | Aanbeveling                           |
-| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 2300,   2310 | Het verzenden van een Hadoop-taak is mislukt. Fout: De externe naam kan niet worden omgezet. <br/><br/>Het cluster is niet gevonden. | De door gegeven URI van het cluster is ongeldig.                              | Zorg ervoor dat het cluster niet is verwijderd en dat de gegeven URI juist is. Wanneer u de URI in een browser opent, ziet u de Ambari-gebruikers interface. Als het cluster zich in een virtueel netwerk bevindt, moet de URI de persoonlijke URI zijn. Als u het bestand wilt openen, gebruikt u een virtuele machine die deel uitmaakt van hetzelfde virtuele netwerk. Zie [Direct Connect to Apache Hadoop Services](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#directly-connect-to-apache-hadoop-services)(Engelstalig) voor meer informatie. |
-| 2300         | Het verzenden van een Hadoop-taak is mislukt. Taak:..., cluster:.../. Fout: Een taak is geannuleerd. | Er is een time-out opgetreden voor de taak verzending.                         | Het probleem kan algemeen HDInsight-connectiviteit of een netwerk verbinding zijn. Controleer eerst of de gebruikers interface van HDInsight Ambari beschikbaar is vanuit elke browser. Controleer of uw referenties nog geldig zijn. Als u gebruikmaakt van zelf-hostende Integrated Runtime (IR), moet u ervoor zorgen dat u dit doet vanaf de virtuele machine of computer waarop de zelf-hostende IR is geïnstalleerd. Probeer de taak vervolgens opnieuw uit Data Factory te verzenden. Als het nog steeds niet lukt, neemt u contact op met het Data Factory-team voor ondersteuning. |
-| 2300         | Gasten   De gebruikers naam of het wacht woord van Ambari is onjuist  <br/><br/>Gasten   De gebruikers beheerder is vergrendeld in Ambari.   <br/><br/>403-verboden: Toegang wordt geweigerd. | De referenties voor HDInsight zijn onjuist of verlopen. | Corrigeer de referenties en implementeer de gekoppelde service opnieuw. Controleer eerst of de referenties werken op HDInsight door de cluster-URI in een browser te openen en u aan te melden. Als de referenties niet werken, kunt u ze opnieuw instellen op de Azure Portal. |
-| 2300,   2310 | 502 - De webserver heeft een ongeldig antwoord ontvangen terwijl deze fungeerde als gateway of proxyserver.       <br/>Ongeldige gateway. | Deze fout is van HDInsight.                               | Deze fout is afkomstig uit het HDInsight-cluster. Zie Ambari-fout in [UI 502](https://hdinsight.github.io/ambari/ambari-ui-502-error.html), [502 fouten bij het maken van verbinding met Spark Thrift server](https://hdinsight.github.io/spark/spark-thriftserver-errors.html), [502-fouten bij het verbinden met Spark Thrift server en het](https://hdinsight.github.io/spark/spark-thriftserver-errors.html) [oplossen van problemen met ongeldige gateway fouten in Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502)voor meer informatie. |
-| 2300         | Het verzenden van een Hadoop-taak is mislukt. Taak:..., cluster:... Fout: {\"error\":\"kan de aanvraag voor het verzenden van de taak niet verwerken omdat de Templeton-service bezig is met te veel verzend taak aanvragen. Wacht enige tijd voordat u de bewerking opnieuw probeert uit te voeren. Raadpleeg het bestand config Templeton. parallellism. job. Submit om gelijktijdige aanvragen te configureren.  <br/><br/>Het verzenden van een Hadoop-taak is mislukt. Taak 161da5d4-6fa8-4ef4-a240-6b6428c5ae2f, cluster: `https://abc-analytics-prod-hdi-hd-trax-prod01.azurehdinsight.net/`.   Fout: {\"error\":\"java. io. IOException: org. apache. Hadoop. garens. exceptions. YarnException: Kan application_1561147195099_3730 niet verzenden naar GARENs: org. apache. Hadoop. Security. AccessControlException: De wachtrij root. joblauncher heeft al 500 toepassingen, kan de toepassing niet verzenden: application_1561147195099_3730 \ | Op hetzelfde moment worden er te veel taken verzonden naar HDInsight. | Overweeg het aantal gelijktijdige taken dat naar HDInsight moet worden verzonden te beperken. Raadpleeg Data Factory gelijktijdige activiteit als de taken worden verzonden door dezelfde activiteit. Wijzig de triggers zodat de gelijktijdige pijplijn uitvoeringen in de loop van de tijd worden verdeeld. Raadpleeg de HDInsight-documentatie om `templeton.parallellism.job.submit` de fout te corrigeren. |
-| 2303,   2347 | Hadoop-taak is mislukt met afsluit code 5. Zie 'wasbs://adfjobs@adftrialrun.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderr' voor meer informatie.  <br/><br/>Het uitvoeren van de Hive is mislukt met fout code ' UserErrorHiveOdbcCommandExecutionFailure '.   Zie 'wasbs://adfjobs@eclsupplychainblobd.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.out' voor meer informatie. | De taak is verzonden naar HDInsight en is mislukt op HDInsight. | De taak is verzonden naar HDInsight. Het cluster is mislukt. Open de taak en de logboeken in de gebruikers interface van HDInsight Ambari of open het bestand uit de opslag als het fout bericht wordt voorgesteld. Het bestand bevat de fout Details. |
-| 2328         | Er is een interne server fout opgetreden tijdens het verwerken van de aanvraag. Voer de aanvraag opnieuw uit of neem contact op met de ondersteuning. | Deze fout treedt op in HDInsight op aanvraag.                              | Deze fout is afkomstig van de HDInsight-service wanneer het HDInsight-inrichten mislukt. Neem contact op met het HDInsight-team en geef de naam op van het cluster op aanvraag. |
-| 2310         | java.lang.NullPointerException                               | Deze fout treedt op wanneer de taak wordt verzonden naar een Spark-cluster.      | Deze uitzonde ring komt van HDInsight. Hiermee wordt het werkelijke probleem verborgen. Neem contact op met het HDInsight-team voor ondersteuning. Geef de cluster naam en het tijds bereik voor het uitvoeren van de activiteit op. |
-|              | Alle andere fouten                                             |                                                              | Raadpleeg de [Veelgestelde vragen over](https://hdinsight.github.io/)het [oplossen van problemen met hdinsight](../hdinsight/hdinsight-troubleshoot-guide.md) en hdinsight. |
+
+### <a name="error-code--2300"></a>Fout code:  2300
+
+- **Bericht**:`Hadoop job submission failed. Error: The remote name could not be resolved. <br/><br/>The cluster is not found.`
+
+- **Oorzaak**: De door gegeven URI van het cluster is ongeldig. 
+
+- **Aanbeveling**:  Zorg ervoor dat het cluster niet is verwijderd en dat de gegeven URI juist is. Wanneer u de URI in een browser opent, ziet u de Ambari-gebruikers interface. Als het cluster zich in een virtueel netwerk bevindt, moet de URI de persoonlijke URI zijn. Als u het bestand wilt openen, gebruikt u een virtuele machine die deel uitmaakt van hetzelfde virtuele netwerk. Zie [Direct Connect to Apache Hadoop Services](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#directly-connect-to-apache-hadoop-services)(Engelstalig) voor meer informatie.
+
+<br/>
+
+- **Bericht**:`Hadoop job submission failed. Job: …, Cluster: …/. Error: A task was canceled.`
+
+- **Oorzaak**: Er is een time-out opgetreden voor de taak verzending. 
+
+- **Aanbeveling**: Het probleem kan algemeen HDInsight-connectiviteit of een netwerk verbinding zijn. Controleer eerst of de gebruikers interface van HDInsight Ambari beschikbaar is vanuit elke browser. Controleer of uw referenties nog geldig zijn. Als u gebruikmaakt van zelf-hostende Integrated Runtime (IR), moet u ervoor zorgen dat u dit doet vanaf de virtuele machine of computer waarop de zelf-hostende IR is geïnstalleerd. Probeer de taak vervolgens opnieuw uit Data Factory te verzenden. Als het nog steeds niet lukt, neemt u contact op met het Data Factory-team voor ondersteuning.
+
+
+- **Bericht**:`Unauthorized: Ambari user name or password is incorrect  <br/><br/>Unauthorized: User admin is locked out in Ambari.   <br/><br/>403 - Forbidden: Access is denied.`
+
+- **Oorzaak**: De referenties voor HDInsight zijn onjuist of verlopen.
+
+- **Aanbeveling**: Corrigeer de referenties en implementeer de gekoppelde service opnieuw. Controleer eerst of de referenties werken op HDInsight door de cluster-URI in een browser te openen en u aan te melden. Als de referenties niet werken, kunt u ze opnieuw instellen op de Azure Portal.
+
+<br/>
+
+- **Bericht**:`502 - Web server received an invalid response while acting as a gateway or proxy server. <br/>Bad gateway.`
+
+- **Oorzaak**: Deze fout is van HDInsight.
+
+- **Aanbeveling**: Deze fout is afkomstig uit het HDInsight-cluster. Zie Ambari-fout in [UI 502](https://hdinsight.github.io/ambari/ambari-ui-502-error.html), [502 fouten bij het maken van verbinding met Spark Thrift server](https://hdinsight.github.io/spark/spark-thriftserver-errors.html), [502-fouten bij het verbinden met Spark Thrift server en het](https://hdinsight.github.io/spark/spark-thriftserver-errors.html) [oplossen van problemen met ongeldige gateway fouten in Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502)voor meer informatie.
+
+<br/>
+
+- **Bericht**:`Hadoop job submission failed. Job: …, Cluster: ... Error:   {\"error\":\"Unable to service the submit job request as   templeton service is busy with too many submit job requests. Please wait for some time before retrying the operation. Please refer to the config   templeton.parallellism.job.submit to configure concurrent requests. <br/><br/>Hadoop job submission failed. Job: xx, Cluster: name.   Error: {\"error\":\"java.io.IOException:   org.apache.hadoop.yarn.exceptions.YarnException: Failed to submit   application_1561147195099_3730 to YARN :   org.apache.hadoop.security.AccessControlException: Queue root.joblauncher already has 500 applications, cannot accept submission of application:   application_1561147195099_3730\`
+
+- **Oorzaak**: Op hetzelfde moment worden er te veel taken verzonden naar HDInsight.
+
+- **Aanbeveling**: Overweeg het aantal gelijktijdige taken dat naar HDInsight moet worden verzonden te beperken. Raadpleeg Data Factory gelijktijdige activiteit als de taken worden verzonden door dezelfde activiteit. Wijzig de triggers zodat de gelijktijdige pijplijn uitvoeringen in de loop van de tijd worden verdeeld. Raadpleeg de HDInsight-documentatie om `templeton.parallellism.job.submit` de fout te corrigeren.
+
+
+### <a name="error-code--2303"></a>Fout code:  2303
+
+- **Bericht**:`Hadoop job failed with exit code '5'. See   'wasbs://adfjobs@xx.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderr' for more details. <br/><br/>Hive execution failed with error code 'UserErrorHiveOdbcCommandExecutionFailure'.   See 'wasbs://adfjobs@xx.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.out' for more details.`
+
+- **Oorzaak**: De taak is verzonden naar HDInsight en is mislukt op HDInsight.
+
+- **Aanbeveling**: De taak is verzonden naar HDInsight. Het cluster is mislukt. Open de taak en de logboeken in de gebruikers interface van HDInsight Ambari of open het bestand uit de opslag als het fout bericht wordt voorgesteld. Het bestand bevat de fout Details.
+
+
+### <a name="error-code--2310"></a>Fout code:  2310
+
+- **Bericht**:`Hadoop job submission failed. Error: The remote name could not be resolved. <br/><br/>The cluster is not found.`
+
+- **Oorzaak**: De door gegeven URI van het cluster is ongeldig. 
+
+- **Aanbeveling**:  Zorg ervoor dat het cluster niet is verwijderd en dat de gegeven URI juist is. Wanneer u de URI in een browser opent, ziet u de Ambari-gebruikers interface. Als het cluster zich in een virtueel netwerk bevindt, moet de URI de persoonlijke URI zijn. Als u het bestand wilt openen, gebruikt u een virtuele machine die deel uitmaakt van hetzelfde virtuele netwerk. Zie [Direct Connect to Apache Hadoop Services](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#directly-connect-to-apache-hadoop-services)(Engelstalig) voor meer informatie.
+
+<br/>
+
+- **Bericht**:`502 - Web server received an invalid response while acting as a gateway or proxy server. <br/>Bad gateway.`
+
+- **Oorzaak**: Deze fout is van HDInsight.
+
+- **Aanbeveling**: Deze fout is afkomstig uit het HDInsight-cluster. Zie Ambari-fout in [UI 502](https://hdinsight.github.io/ambari/ambari-ui-502-error.html), [502 fouten bij het maken van verbinding met Spark Thrift server](https://hdinsight.github.io/spark/spark-thriftserver-errors.html), [502-fouten bij het verbinden met Spark Thrift server en het](https://hdinsight.github.io/spark/spark-thriftserver-errors.html) [oplossen van problemen met ongeldige gateway fouten in Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502)voor meer informatie.
+
+<br/>
+
+- **Bericht**:`java.lang.NullPointerException`
+
+- **Oorzaak**: Deze fout treedt op wanneer de taak wordt verzonden naar een Spark-cluster. 
+
+- **Aanbeveling**: Deze uitzonde ring komt van HDInsight. Hiermee wordt het werkelijke probleem verborgen. Neem contact op met het HDInsight-team voor ondersteuning. Geef de cluster naam en het tijds bereik voor het uitvoeren van de activiteit op.
+
+
+### <a name="error-code--2347"></a>Fout code:  2347
+
+- **Bericht**:`Hadoop job failed with exit code '5'. See 'wasbs://adfjobs@xx.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderr' for more details. <br/><br/>Hive execution failed with error code 'UserErrorHiveOdbcCommandExecutionFailure'.   See 'wasbs://adfjobs@xx.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.out' for more details.`
+
+- **Oorzaak**: De taak is verzonden naar HDInsight en is mislukt op HDInsight.
+
+- **Aanbeveling**: De taak is verzonden naar HDInsight. Het cluster is mislukt. Open de taak en de logboeken in de gebruikers interface van HDInsight Ambari of open het bestand uit de opslag als het fout bericht wordt voorgesteld. Het bestand bevat de fout Details.
+
+
+### <a name="error-code--2328"></a>Fout code:  2328
+
+- **Bericht**:`Internal server error occurred while processing the request. Please retry the request or contact support. `
+
+- **Oorzaak**: Deze fout treedt op in HDInsight op aanvraag.
+
+- **Aanbeveling**: Deze fout is afkomstig van de HDInsight-service wanneer het HDInsight-inrichten mislukt. Neem contact op met het HDInsight-team en geef de naam op van het cluster op aanvraag.
 
 
 
 ## <a name="web-activity"></a>Web Activity
 
-| Foutcode | Foutbericht                                                | Description                                                  | Aanbeveling                          |
-| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 2108         | Ongeldige HttpMethod:....                                    | Webactiviteit biedt geen ondersteuning voor de HTTP-methode die is opgegeven in de nettolading van de activiteit. | De ondersteunde HTTP-methoden zijn plaatsen, plaatsen, ophalen en verwijderen. |
-| 2108         | Ongeldige server fout 500.                                     | Interne fout op het eind punt.                               | Gebruik Fiddler of postman om de functionaliteit van de URL te controleren. |
-| 2108         | Niet-geautoriseerde 401.                                             | Ontbrekende geldige verificatie voor de aanvraag.                      | Het token is mogelijk verlopen. Geef een geldige verificatie methode op. Gebruik Fiddler of postman om de functionaliteit van de URL te controleren. |
-| 2108         | Verboden 403.                                                | De vereiste machtigingen ontbreken.                                 | Controleer de gebruikers machtigingen voor de toegang tot de resource. Gebruik Fiddler of postman om de functionaliteit van de URL te controleren.  |
-| 2108         | Ongeldige aanvraag 400.                                              | Ongeldige HTTP-aanvraag.                                         | Controleer de URL, het werk woord en de hoofd tekst van de aanvraag. Gebruik Fiddler of postman om de aanvraag te valideren.  |
-| 2108         | Niet gevonden 404.                                                | De resource is niet gevonden.                                       | Gebruik Fiddler of postman om de aanvraag te valideren.  |
-| 2108         | De service is niet beschikbaar.                                          | De service is niet beschikbaar.                                       | Gebruik Fiddler of postman om de aanvraag te valideren.  |
-| 2108         | Het media type wordt niet ondersteund.                                       | Het inhouds type komt niet overeen met de hoofd tekst van de webactiviteit.           | Geef het inhouds type op dat overeenkomt met de indeling van de nettolading. Gebruik Fiddler of postman om de aanvraag te valideren. |
-| 2108         | De bron waarnaar u op zoek bent, is verwijderd, de naam ervan is gewijzigd of is tijdelijk niet beschikbaar. | De resource is niet beschikbaar.                                | Gebruik Fiddler of postman om het eind punt te controleren. |
-| 2108         | De pagina die u zoekt, kan niet worden weer gegeven omdat er een ongeldige methode (HTTP-term) wordt gebruikt. | Er is een onjuiste methode voor webactiviteiten opgegeven in de aanvraag.   | Gebruik Fiddler of postman om het eind punt te controleren. |
-| 2108         | invalid_payload                                              | De hoofd tekst van de webactiviteit is onjuist.                       | Gebruik Fiddler of postman om het eind punt te controleren. |
+### <a name="error-code--2310"></a>Fout code:  2310
+
+- **Bericht**:`Invalid HttpMethod: '...'.`
+
+- **Oorzaak**: Webactiviteit biedt geen ondersteuning voor de HTTP-methode die is opgegeven in de nettolading van de activiteit.
+
+- **Aanbeveling**:  De ondersteunde HTTP-methoden zijn plaatsen, plaatsen, ophalen en verwijderen.
+
+<br/>
+
+- **Bericht**:`Invalid Server Error 500.`
+
+- **Oorzaak**: Interne fout op het eind punt.
+
+- **Aanbeveling**:  Gebruik Fiddler of postman om de functionaliteit van de URL te controleren.
+
+<br/>
+
+- **Bericht**:`Unauthorized 401.`
+
+- **Oorzaak**: Ontbrekende geldige verificatie voor de aanvraag.
+
+- **Aanbeveling**:  Het token is mogelijk verlopen. Geef een geldige verificatie methode op. Gebruik Fiddler of postman om de functionaliteit van de URL te controleren.
+
+<br/>
+
+- **Bericht**:`Forbidden 403.`
+
+- **Oorzaak**: De vereiste machtigingen ontbreken.
+
+- **Aanbeveling**:  Controleer de gebruikers machtigingen voor de toegang tot de resource. Gebruik Fiddler of postman om de functionaliteit van de URL te controleren.
+
+<br/>
+
+- **Bericht**:`Bad Request 400.`
+
+- **Oorzaak**: Ongeldige HTTP-aanvraag.
+
+- **Aanbeveling**:   Controleer de URL, het werk woord en de hoofd tekst van de aanvraag. Gebruik Fiddler of postman om de aanvraag te valideren.
+
+<br/>
+
+- **Bericht**:`Not found 404.` 
+
+- **Oorzaak**: De resource is niet gevonden.   
+
+- **Aanbeveling**:  Gebruik Fiddler of postman om de aanvraag te valideren.
+
+<br/>
+
+- **Bericht**:`Service unavailable.`
+
+- **Oorzaak**: De service is niet beschikbaar.
+
+- **Aanbeveling**:  Gebruik Fiddler of postman om de aanvraag te valideren.
+
+<br/>
+
+- **Bericht**:`Unsupported Media Type.`
+
+- **Oorzaak**: Het inhouds type komt niet overeen met de hoofd tekst van de webactiviteit.
+
+- **Aanbeveling**:  Geef het inhouds type op dat overeenkomt met de indeling van de nettolading. Gebruik Fiddler of postman om de aanvraag te valideren.
+
+<br/>
+
+- **Bericht**:`The resource you are looking for has been removed, has had its name changed, or is temporarily unavailable.`
+
+- **Oorzaak**: De resource is niet beschikbaar. 
+
+- **Aanbeveling**:  Gebruik Fiddler of postman om het eind punt te controleren.
+
+<br/>
+
+- **Bericht**:`The page you are looking for cannot be displayed because an invalid method (HTTP verb) is being used.`
+
+- **Oorzaak**: Er is een onjuiste methode voor webactiviteiten opgegeven in de aanvraag.
+
+- **Aanbeveling**:  Gebruik Fiddler of postman om het eind punt te controleren.
+
+<br/>
+
+- **Bericht**:`invalid_payload`
+
+- **Oorzaak**: De hoofd tekst van de webactiviteit is onjuist.
+
+- **Aanbeveling**:  Gebruik Fiddler of postman om het eind punt te controleren.
 
 Fiddler gebruiken om een HTTP-sessie van de bewaakte webtoepassing te maken:
 

@@ -10,18 +10,18 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e18157c95dac0de90c50b4b7e8591e32c5b76aaf
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: c02757fb4b48ebf1220a5826bc9699741faa5170
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227236"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066187"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Gebruikers gedrag bijhouden in Azure Active Directory B2C met behulp van Application Insights
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Wanneer u Azure Active Directory (Azure AD) B2C gebruikt in combi natie met Azure-toepassing Insights, kunt u gedetailleerde en aangepaste gebeurtenis logboeken voor uw gebruikers trajecten ophalen. In dit artikel leert u het volgende:
+Wanneer u Azure Active Directory B2C (Azure AD B2C) gebruikt in combi natie met Azure-toepassing Insights, kunt u gedetailleerde en aangepaste gebeurtenis logboeken voor uw gebruikers trajecten ophalen. In dit artikel leert u het volgende:
 
 * Krijg inzichten op het gedrag van gebruikers.
 * Los uw eigen beleid in ontwikkeling of productie op.
@@ -45,7 +45,7 @@ Voer de stappen in aan de [slag met aangepast beleid](active-directory-b2c-get-s
 Wanneer u Application Insights met Azure AD B2C gebruikt, hoeft u alleen maar een resource te maken en de instrumentatie sleutel op te halen.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Zorg ervoor dat u de map gebruikt die uw Azure-abonnement bevat door te klikken op het **filter voor mappen en abonnementen** in het bovenste menu en kies de map die uw abonnement bevat. Deze Tenant is niet uw Azure AD B2C-Tenant.
+2. Zorg ervoor dat u de map met uw Azure-abonnement gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw abonnement bevat. Deze Tenant is niet uw Azure AD B2C-Tenant.
 3. Kies **een resource maken** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **Application Insights**.
 4. Klik op **Create**.
 5. Voer een **naam** in voor de resource.
@@ -111,10 +111,10 @@ Technische profielen kunnen worden beschouwd als functies in het Framework voor 
 
 | Technisch profiel | Taak |
 | ----------------- | -----|
-| AzureInsights-Common | Hiermee maakt u een algemene set para meters die moeten worden opgenomen in alle AzureInsights Technical-profielen. | 
-| AzureInsights-SignInRequest | Maakt een gebeurtenis aanmelden met een set claims wanneer een aanmeldings aanvraag is ontvangen. | 
-| AzureInsights-UserSignup | Hiermee maakt u een UserSignup-gebeurtenis wanneer de gebruiker de registratie optie activeert in een traject voor registreren/aanmelden. | 
-| AzureInsights-SignInComplete | Registreert de geslaagde voltooiing van een verificatie wanneer een token naar de Relying Party-toepassing is verzonden. | 
+| AzureInsights-Common | Hiermee maakt u een algemene set para meters die moeten worden opgenomen in alle AzureInsights Technical-profielen. |
+| AzureInsights-SignInRequest | Maakt een gebeurtenis aanmelden met een set claims wanneer een aanmeldings aanvraag is ontvangen. |
+| AzureInsights-UserSignup | Hiermee maakt u een UserSignup-gebeurtenis wanneer de gebruiker de registratie optie activeert in een traject voor registreren/aanmelden. |
+| AzureInsights-SignInComplete | Registreert de geslaagde voltooiing van een verificatie wanneer een token naar de Relying Party-toepassing is verzonden. |
 
 Voeg de profielen toe aan het bestand *TrustFrameworkExtensions. XML* van het Starter Pack. Deze elementen toevoegen aan het **ClaimsProviders** -element:
 
@@ -181,7 +181,7 @@ Aanroep `Azure-Insights-SignInRequest` als Orchestration-stap 2 om bij te houden
 </OrchestrationStep>
 ```
 
-Voeg  onmiddellijk vóór `SendClaims` de Orchestration-stap een nieuwe stap toe die aanroept. `Azure-Insights-UserSignup` Het wordt geactiveerd wanneer de gebruiker de registratie knop selecteert in een traject voor registreren/aanmelden.
+Voeg onmiddellijk vóór `SendClaims` de Orchestration-stap een nieuwe stap toe die aanroept. `Azure-Insights-UserSignup` Het wordt geactiveerd wanneer de gebruiker de registratie knop selecteert in een traject voor registreren/aanmelden.
 
 ```xml
 <!-- Handles the user clicking the sign up link in the local account sign in page -->
@@ -230,11 +230,11 @@ Sla het bestand *TrustFrameworkExtensions. XML* op en upload het. Roep vervolgen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voeg claim typen en gebeurtenissen toe aan uw gebruikers traject, zodat deze aan uw behoeften voldoen. U kunt [claim](claim-resolver-overview.md) resolvers of een teken reeks claim type gebruiken, de claims toevoegen door een **invoer claim** element toe te voegen aan de Application Insights gebeurtenis of aan het AzureInsights-algemeen technische profiel. 
+Voeg claim typen en gebeurtenissen toe aan uw gebruikers traject, zodat deze aan uw behoeften voldoen. U kunt [claim](claim-resolver-overview.md) resolvers of een teken reeks claim type gebruiken, de claims toevoegen door een **invoer claim** element toe te voegen aan de Application Insights gebeurtenis of aan het AzureInsights-algemeen technische profiel.
 
 - **ClaimTypeReferenceId** is de verwijzing naar een claim type.
-- **PartnerClaimType** is de naam van de eigenschap die wordt weer gegeven in azure Insights. Gebruik de syntaxis van `{property:NAME}`, waarbij `NAME` de eigenschap wordt toegevoegd aan de gebeurtenis. 
-- **DefaultValue** gebruik een wille keurige teken reeks waarde of de claim resolver. 
+- **PartnerClaimType** is de naam van de eigenschap die wordt weer gegeven in azure Insights. Gebruik de syntaxis van `{property:NAME}`, waarbij `NAME` de eigenschap wordt toegevoegd aan de gebeurtenis.
+- **DefaultValue** gebruik een wille keurige teken reeks waarde of de claim resolver.
 
 ```XML
 <InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />

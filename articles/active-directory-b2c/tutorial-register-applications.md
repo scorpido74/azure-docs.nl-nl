@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 08/23/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 651c15c8206f7956bb35520f9c5837cb0c9308f9
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 06b2c273f41bfa74ee968b6fd6676e83767ce8b2
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980695"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063258"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Zelfstudie: Een toepassing registreren in Azure Active Directory B2C
 
-Voordat uw [toepassingen](active-directory-b2c-apps.md) kunnen communiceren met Azure Active Directory (Azure AD) B2C, moeten ze worden geregistreerd in een Tenant die u beheert. Deze zelf studie laat zien hoe u een webtoepassing registreert met behulp van de Azure Portal.
+Voordat uw [toepassingen](active-directory-b2c-apps.md) kunnen communiceren met Azure Active Directory B2C (Azure AD B2C), moeten ze zijn geregistreerd in een Tenant die u beheert. Deze zelf studie laat zien hoe u een webtoepassing registreert met behulp van de Azure Portal.
 
 In dit artikel leert u het volgende:
 
@@ -35,7 +35,7 @@ Als u nog geen eigen [Azure AD B2C Tenant](tutorial-create-tenant.md)hebt gemaak
 
 ## <a name="register-a-web-application"></a>Een web-app registreren
 
-1. Zorg ervoor dat u de map met uw Azure AD B2C-tenant door te klikken op de **map- en abonnementsfilter** in het bovenste menu en de map waarin uw tenant te kiezen.
+1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer **Toepassingen** en vervolgens **Toevoegen**.
 1. Voer een naam in voor de toepassing. Bijvoorbeeld *webapp1*.

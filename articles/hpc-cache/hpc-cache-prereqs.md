@@ -4,14 +4,14 @@ description: Vereisten voor het gebruik van Azure HPC cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7bd1268784df50168e03673ac809b3a5854e2be7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 50c60e38b58815be04cfb892c3622b9579529e67
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775336"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036858"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Vereisten voor de Azure HPC-cache
 
@@ -22,7 +22,7 @@ Voordat u de Azure Portal gebruikt om een nieuwe Azure HPC-cache te maken, moet 
 Een betaald abonnement wordt aanbevolen.
 
 > [!NOTE]
-> Tijdens de open bare preview-versie moet het team van de Azure HPC-cache uw abonnement toevoegen aan de lijst met toegang voordat het kan worden gebruikt voor het maken van een cache-exemplaar. Met deze procedure kunt u ervoor zorgen dat elke klant de reactie snelheid van hoge kwaliteit vanuit hun test caches ontvangt. Vul [dit formulier](https://aka.ms/onboard-hpc-cache) in om toegang aan te vragen.
+> Tijdens de preview-versie moet het Azure HPC-cache team uw abonnement toevoegen aan de lijst met toegang voordat het kan worden gebruikt voor het maken van een cache-exemplaar. Met deze procedure kunt u ervoor zorgen dat elke klant de reactie snelheid van hoge kwaliteit vanuit hun test caches ontvangt. Vul [dit formulier](https://aka.ms/onboard-hpc-cache) in om toegang aan te vragen.
 
 ## <a name="network-infrastructure"></a>Netwerk infrastructuur
 

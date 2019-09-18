@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cbb748e9856b6de9004d57e4393e205ddfcfffb4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c216512aef117a332d3aabfc83ec5615b70b202c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998812"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033835"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Toegang tot Azure AD B2C controle logboeken
 
@@ -92,12 +92,13 @@ Als u toegang op basis van scripts of toepassingen wilt toestaan voor de rapport
 * Microsoft Graph
   * Toepassing: Alle audit logboek gegevens lezen
 
-U kunt deze machtigingen inschakelen voor een bestaande registratie van de toepassing binnen uw B2C-Tenant of een nieuwe maken die specifiek is voor gebruik met audit logboek automatisering.
+U kunt deze machtigingen inschakelen voor een bestaande Azure Active Directory van de toepassing in uw B2C-Tenant of een nieuw item maken dat specifiek is voor het gebruik van de functie voor het automatiseren van het controle logboek.
 
 Als u een nieuwe toepassing wilt maken, de vereiste API-machtigingen wilt toewijzen en een client geheim wilt maken, voert u de volgende stappen uit:
 
-1. Toepassing registreren
-    1. Meld u aan bij de [Azure Portal](https://portal.azure.com), ga naar de map met uw Azure AD B2C Tenant en blader vervolgens naar **Azure AD B2C**.
+1. Toepassing registreren in Azure Active Directory
+    1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en ga naar de map met uw Azure AD B2C Tenant.
+    1. Selecteer **Azure Active Directory** (*niet* Azure AD B2C) in het menu links. U kunt ook **alle services**selecteren en **Azure Active Directory**zoeken en selecteren.
     1. Selecteer in het linkermenu onder **beheren** de optie **app-registraties (verouderd)** .
     1. **Nieuwe toepassings registratie** selecteren
     1. Voer een naam in voor de toepassing. Bijvoorbeeld de *app audit logboek*.

@@ -1,85 +1,85 @@
 ---
-title: Wat is voorwaardelijke toegang in Azure Active Directory? | Microsoft Docs
-description: Meer informatie over hoe voorwaardelijke toegang in Azure Active Directory u helpt bij het implementeren van automatische toegangs beslissingen die niet alleen zijn gebaseerd op wie probeert toegang te krijgen tot een resource, maar ook hoe een resource wordt geopend.
+title: Wat is voorwaardelijke toegang in Azure Active Directory?
+description: Meer informatie over hoe voorwaardelijke toegang de kern is van het nieuwe besturings element op basis van identiteiten.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 02/14/2019
+ms.date: 09/17/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99d17b354e267d003e23e507ca190b951e3ed4a0
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b0463ffad87d00421c2fcb5c8357406d5f692144
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608089"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075332"
 ---
 # <a name="what-is-conditional-access"></a>Wat is voorwaardelijke toegang?
 
-Beveiliging is een topprioriteit voor organisaties die gebruikmaken van de cloud. Als het om het beheren van uw cloudresources gaat, vormen identiteit en toegang belangrijke aspecten bij het beveiligen van de cloud. In een wereld waar mobiliteit en cloud belangrijke begrippen zijn, kunnen gebruikers overal toegang krijgen tot de resources van uw organisatie met behulp van diverse apparaten en apps. Dus het is niet meer voldoende als u zich alleen richt op wie er toegang tot een resource mogen hebben. Voor de juiste balans tussen beveiliging en productiviteit dient u ook rekening te houden met de manier waarop een resource wordt geopend door middel van een beslissing voor toegangsbeheer. Met Azure Active Directory (Azure AD) voorwaardelijke toegang kunt u deze vereiste aanpakken. Voorwaardelijke toegang is een functie van Azure Active Directory. Met voorwaardelijke toegang kunt u geautomatiseerde beslissingen over toegangs beheer implementeren om toegang te krijgen tot uw Cloud-apps die zijn gebaseerd op voor waarden.
+De moderne beveiligings omtrek gaat nu verder dan het netwerk van een organisatie voor het toevoegen van de identiteit van de gebruiker en het apparaat. Organisaties kunnen deze identiteits signalen gebruiken als onderdeel van hun beslissingen voor toegangs beheer. 
 
-Beleid voor voorwaardelijke toegang wordt afgedwongen nadat de eerste-factor Authentication is voltooid. Daarom is voorwaardelijke toegang niet bedoeld als een eerste verdedigings linie voor scenario's als denial-of-service-aanvallen, maar kunnen ook signalen van deze gebeurtenissen (bijvoorbeeld het risico niveau van de aanmelding, de locatie van de aanvraag enzovoort) worden gebruikt om de toegang te bepalen.  
+Voorwaardelijke toegang is het hulp programma dat wordt gebruikt door Azure Active Directory om signalen samen te brengen, beslissingen te nemen en organisatie beleid af te dwingen. Voorwaardelijke toegang bevindt zich op het hart van het nieuwe op identiteits gerichte besturings vlak.
 
-![Beheer](./media/overview/81.png)
+![Conceptuele voorwaardelijke signalen plus beslissing voor het afdwingen van afdwinging](./media/overview/conditional-access-signal-decision-enforcement.png)
 
-In dit artikel vindt u een conceptueel overzicht van voorwaardelijke toegang in azure AD.
+Beleids regels voor voorwaardelijke toegang op hun eenvoudigste manier zijn als-then-instructies, als een gebruiker toegang wil tot een resource, dan moeten ze een actie volt ooien. Voorbeeld: Een salaris beheerder wil toegang tot de salaris toepassing en is vereist voor het uitvoeren van multi-factor Authentication voor toegang.
 
-## <a name="common-scenarios"></a>Algemene scenario's
-
-In een wereld waar mobiliteit en cloud belangrijke begrippen zijn maakt Azure Active Directory vanaf een willekeurige locatie eenmalige aanmelding mogelijk voor apparaten, apps en services. Als gevolg van een toenemend aantal apparaten (waaronder BYOD), werken buiten de organisatie en SaaS-apps van derden, hebt u te maken met twee tegengestelde doelen:
+Beheerders worden geconfronteerd met twee primaire doel stellingen:
 
 - Geef gebruikers de mogelijkheid overal en altijd productief te zijn
-- Beveilig de zakelijke bezittingen - op elk moment
+- De bedrijfs middelen beveiligen
 
-Door gebruik te maken van beleids regels voor voorwaardelijke toegang kunt u de juiste toegangs elementen Toep assen onder de vereiste voor waarden. Voorwaardelijke toegang van Azure AD biedt u de mogelijkheid om de beveiliging toe te voegen wanneer dit nodig is en u de gebruikers wijze van de gebruiker blijft ongewijzigd.
+Door gebruik te maken van beleids regels voor voorwaardelijke toegang kunt u de juiste toegangs beheer Toep assen als dat nodig is om uw organisatie veilig te houden en op de wijze van de gebruiker te blijven wanneer deze niet nodig is.
 
-Hieronder vindt u enkele veelvoorkomende toegangs problemen die u met voorwaardelijke toegang kunt helpen:
+![Voortgangs proces stroom voor voorwaardelijke toegang](./media/overview/conditional-access-overview-how-it-works.png)
 
-- **[Aanmeldingsrisico](conditions.md#sign-in-risk)** : Azure AD Identity Protection detecteert aanmeldingsrisico's. Hoe beperkt u de toegang als een gedetecteerd aanmeldingsrisico op ongeautoriseerde toegang wijst? En als u sterker bewijs wilt hebben dat een aanmelding door een legitieme gebruiker is uitgevoerd? En als uw twijfels sterk genoeg zijn om zelfs bepaalde gebruikers de toegang tot een app te ontzeggen?  
-- **[Netwerklocatie](location-condition.md)** : Azure AD is overal toegankelijk. Wat te doen als een toegangspoging wordt uitgevoerd vanaf een netwerklocatie die niet onder het beheer staat van uw IT-afdeling? Een gebruikersnaam in combinatie met een wachtwoord kan voldoende zijn als bewijs van identiteit voor toegang tot uw bedrijfsnetwerk. Maar wat te doen als u een sterker bewijs van de identiteit wilt bij toegangspogingen uit andere, onverwachte landen of regio's? En als u zelfs toegangspogingen wilt blokkeren vanaf bepaalde locaties?  
-- **[Apparaatbeheer](conditions.md#device-platforms)** : In Azure AD hebben gebruikers toegang tot cloud-apps vanaf een groot aantal apparaten, waaronder mobiele en persoonlijke apparaten. Maar stel dat u eist dat toegangspogingen alleen mogen worden uitgevoerd met apparaten die door de IT-afdeling worden beheerd? En als u zelfs bepaalde typen apparaten de toegang tot cloud-apps in uw omgeving wilt ontzeggen?
-- **[Clienttoepassing](conditions.md#client-apps)** : Tegenwoordig is toegang tot talloze cloud-apps mogelijk met verschillende typen apps, zoals web-apps, mobiele apps of bureaublad-apps. Maar als er nu een toegangspoging wordt ondernomen met een type client-app die bekende problemen veroorzaakt? Stel dat u voor bepaalde typen apps een apparaat nodig hebt dat door de IT-afdeling wordt beheerd?
+Beleid voor voorwaardelijke toegang wordt afgedwongen nadat de eerste-factor Authentication is voltooid. Voorwaardelijke toegang is niet bedoeld als de eerste verdedigings linie van een organisatie voor scenario's als denial-of-service-aanvallen, maar kan signalen van deze gebeurtenissen gebruiken om toegang te bepalen.
 
-Deze vragen en de bijbehorende antwoorden vertegenwoordigen algemene scenario's voor voorwaardelijke toegang tot Azure AD.
-Voorwaardelijke toegang is een functie van Azure Active Directory waarmee u toegangs scenario's kunt afhandelen met behulp van een op beleid gebaseerde aanpak.
+## <a name="common-signals"></a>Algemene signalen
 
-> [!VIDEO https://www.youtube.com/embed/eLAYBwjCGoA]
+Veelvoorkomende signalen die bij het maken van een beleids beslissing kunnen worden gebruikt om rekening mee te houden, zijn de volgende signalen:
 
-## <a name="conditional-access-policies"></a>Beleid voor voorwaardelijke toegang
+- Gebruiker of groepslid maatschap
+   - Beleids regels kunnen worden gericht op specifieke gebruikers en groepen die beheerders een nauw keurige controle over toegang geven.
+- IP-locatie gegevens
+   - Organisaties kunnen vertrouwde IP-adresbereiken maken die kunnen worden gebruikt bij het maken van beleids beslissingen. 
+   - Beheerders kunnen het gehele IP-bereik van landen opgeven om verkeer van te blok keren of toe te staan.
+- Apparaat
+   - Gebruikers met apparaten van specifieke platformen of gemarkeerd met een specifieke status kunnen worden gebruikt bij het afdwingen van beleid voor voorwaardelijke toegang.
+- Toepassing
+   - Gebruikers die toegang proberen te krijgen tot specifieke toepassingen, kunnen verschillende beleids regels voor voorwaardelijke toegang activeren. 
+- Real-time en berekende risico detectie
+   - Hiermee wordt de integratie met Azure AD Identity Protection toegestaan beleids regels voor voorwaardelijke toegang om Risk ante aanmeldings gedrag te identificeren. Beleid kan gebruikers vervolgens dwingen om wachtwoord wijzigingen of multi-factor Authentication uit te voeren om het risico niveau te verminderen of om toegang te blok keren totdat een beheerder hand matige actie onderneemt.
+- Microsoft Cloud App Security (MCAS)
+   - Hiermee kunnen toegang en sessies van gebruikers toepassingen in realtime worden bewaakt en beheerd, waardoor de zicht baarheid en controle van de toegang tot en activiteiten in uw cloud omgeving worden verhoogd.
 
-Een beleid voor voorwaardelijke toegang is een definitie van een toegangs scenario met het volgende patroon:
+## <a name="common-decisions"></a>Algemene beslissingen
 
-![Beheer](./media/overview/10.png)
+- Toegang blokkeren
+   - Meest beperkend besluit
+- Toegang verlenen
+   - Er kunnen nog steeds een of meer van de volgende opties worden vereist:
+      - Multi-factor Authentication vereisen
+      - Vereisen dat het apparaat wordt gemarkeerd als compatibel
+      - Hybride Azure AD-aangesloten apparaat vereisen
+      - Goedgekeurde client-apps vereisen
+      - Beveiligings beleid voor apps vereisen (preview-versie)
 
+## <a name="commonly-applied-policies"></a>Algemeen toegepast beleid
 
-**Als dit gebeurt** definieert de reden voor het activeren van het beleid. De reden wordt gekenmerkt als een groep voorwaarden waaraan is voldaan. In voorwaardelijke toegang van Azure AD spelen de twee toewijzings voorwaarden een speciale rol:
+Veel organisaties hebben algemene toegangs problemen die het beleid voor voorwaardelijke toegang kunnen helpen bij het volgende:
 
-- **[Gebruikers](conditions.md#users-and-groups)** : De gebruikers die een toegangspoging uitvoeren (**Wie**).
-- **[Cloud-apps](conditions.md#cloud-apps-and-actions)** : De doelen van een toegangspoging (**Wat**).
-
-Deze twee voor waarden zijn verplicht in een beleid voor voorwaardelijke toegang. Naast de twee verplichte voorwaarden, kunt u ook aanvullende voorwaarden opnemen. Deze beschrijven hoe de toegangspoging wordt uitgevoerd. Bekende voorbeelden zijn het gebruik van mobiele apparaten of locaties buiten uw bedrijfsnetwerk. Zie [voor waarden in azure Active Directory voorwaardelijke toegang](conditions.md)voor meer informatie.
-
-De combi natie van voor waarden van uw toegangs beheer vertegenwoordigt een beleid voor voorwaardelijke toegang.
-
-![Beheer](./media/overview/51.png)
-
-Met voorwaardelijke toegang van Azure AD kunt u bepalen hoe geautoriseerde gebruikers toegang hebben tot uw Cloud-apps. Het doel van een beleid voor voorwaardelijke toegang is het afdwingen van extra toegangs beheer voor een toegangs poging tot een Cloud-app op basis van de manier waarop een toegangs poging wordt uitgevoerd.
-
-Een benadering op basis van beleid voor het beveiligen van toegang tot uw cloud-apps biedt u de mogelijkheid de beleidsvereisten voor uw omgeving te gaan schetsen aan de hand van de structuur die in dit artikel uiteen wordt gezet en zonder dat u zich zorgen hoeft te maken over de technische implementatie.
-
-## <a name="azure-ad-conditional-access-and-federated-authentication"></a>Voorwaardelijke toegang tot Azure AD en Federated Authentication
-
-Beleid voor voorwaardelijke toegang werkt naadloos samen met [Federated Authentication](../../security/fundamentals/choose-ad-authn.md#federated-authentication). Deze ondersteuning omvat alle ondersteunde voor waarden en besturings elementen en inzicht in hoe beleid wordt toegepast op actieve gebruikers aanmeldingen met behulp van [Azure ad-rapportage](../reports-monitoring/concept-sign-ins.md).
-
-*Federatieve verificatie met Azure AD* betekent dat gebruikersverificatie bij Azure Active Directory wordt verwerkt door een vertrouwde verificatieservice. Een vertrouwde verificatieservice is bijvoorbeeld Active Directory Federation Services (AD FS) of een andere federatieservice. In deze configuratie wordt verificatie van de primaire gebruiker uitgevoerd bij de service en wordt vervolgens Azure Active Directory gebruikt voor aanmelding bij afzonderlijke toepassingen. Voorwaardelijke toegang van Azure AD wordt toegepast voordat toegang wordt verleend aan de toepassing waartoe de gebruiker toegang heeft. 
-
-Wanneer het geconfigureerde beleid voor voorwaardelijke toegang multi-factor Authentication vereist, wordt de standaard instelling Azure MFA gebruikt. Als u de federatieve service voor MFA gebruikt, kunt u Azure Active Directory configureren voor omleiding naar de federatieve services wanneer MFA nodig is door `-SupportsMFA` op `$true` in te stellen in [PowerShell](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings). Deze instelling werkt voor federatieve verificatieservices die ondersteuning bieden voor de aanvraag voor de MFA-uitdaging die door Azure Active Directory wordt uitgegeven met behulp van `wauth= http://schemas.microsoft.com/claims/multipleauthn`.
-
-Nadat de gebruiker is aangemeld bij de federatieve verificatieservice, worden andere beleidsvereisten, zoals het nalevingsbeleid voor apparaten of een goedgekeurde toepassing, door Azure Active Directory verwerkt.
+- Multi-factor Authentication vereisen voor gebruikers met beheerders rollen
+- Multi-factor Authentication vereisen voor Azure-beheer taken
+- Aanmeldingen blok keren voor gebruikers die verouderde verificatie protocollen willen gebruiken
+- Vertrouwde locaties voor registratie van Azure-Multi-Factor Authentication vereisen
+- Toegang vanaf specifieke locaties blok keren of verlenen
+- Risk ante aanmeldingen blok keren
+- Door de organisatie beheerde apparaten vereisen voor specifieke toepassingen
 
 ## <a name="license-requirements"></a>Licentievereisten
 
@@ -89,4 +89,12 @@ Klanten met [Microsoft 365 Business licenties](https://docs.microsoft.com/office
 
 ## <a name="next-steps"></a>Volgende stappen
 
+[Een beleid voor voorwaardelijke toegang op stuk bouwen](concept-conditional-access-policies.md)
+
 Zie [de implementatie van voorwaardelijke toegang plannen in azure Active Directory](plan-conditional-access.md)voor meer informatie over het implementeren van voorwaardelijke toegang in uw omgeving.
+
+[Meer informatie over identiteits beveiliging](../identity-protection/overview-v2.md)
+
+[Meer informatie over Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)
+
+[Meer informatie over Microsoft Intune](https://docs.microsoft.com/intune/index)

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 04a2a3f2557ccef510a831a5c9fbf89bb62cb9a7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 959d959cd269884b3b75c4c23bfd0054ae64ced7
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812831"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033631"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Een Azure AD-toepassingsproxy-implementatie plannen
 
@@ -64,7 +64,7 @@ Als u Azure AD-toepassingsproxy wilt configureren en implementeren, moet aan de 
 
 *  **Azure-onboarding**: Voordat u een toepassings proxy implementeert, moeten gebruikers identiteiten worden gesynchroniseerd vanuit een on-premises Directory of rechtstreeks worden gemaakt in uw Azure AD-tenants. Met Identiteitssynchronisatie kan Azure AD vooraf gebruikers verifiëren voordat ze toegang krijgen tot toepassingen die zijn gepubliceerd met app proxy en de benodigde gebruikers-id hebben om eenmalige aanmelding (SSO) uit te voeren.
 
-* **Vereisten voor voorwaardelijke toegang**: Het is niet raadzaam om toepassings proxy te gebruiken voor toegang tot het intranet, omdat hierdoor latentie wordt toegevoegd die van invloed is op gebruikers. U kunt het beste toepassings proxy gebruiken met pre-authenticatie en beleid voor voorwaardelijke toegang voor externe toegang vanaf het internet.  Een benadering voor het bieden van voorwaardelijke toegang voor intranet gebruik is het moderniseren van toepassingen, zodat deze diretly kunnen worden geverifieerd met AAD. Raadpleeg [bronnen voor het migreren van toepassingen naar Aad](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) voor meer informatie. 
+* **Vereisten voor voorwaardelijke toegang**: Het is niet raadzaam om toepassings proxy te gebruiken voor toegang tot het intranet, omdat hierdoor latentie wordt toegevoegd die van invloed is op gebruikers. U kunt het beste toepassings proxy gebruiken met pre-authenticatie en beleid voor voorwaardelijke toegang voor externe toegang vanaf het internet.  Een benadering voor het bieden van voorwaardelijke toegang voor intranet gebruik is het moderniseren van toepassingen, zodat deze rechtstreeks kunnen worden geverifieerd met AAD. Raadpleeg [bronnen voor het migreren van toepassingen naar Aad](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) voor meer informatie. 
 
 * **Service limieten**: Ter bescherming tegen het overschrijden van resources door afzonderlijke tenants gelden beperkings limieten per toepassing en Tenant. Raadpleeg de [Azure AD-service limieten en-beperkingen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)voor meer informatie over deze limieten. Deze beperkings limieten zijn gebaseerd op een vergelijkend referentie volume dat veel wordt gebruikt en biedt een ruimere buffer voor een meerderheid van de implementaties.
 
@@ -239,7 +239,7 @@ Controleer of uw toepassing toegankelijk is via een toepassings proxy via de ext
 
 3. In het veld **Pre-verificatie** gebruikt u de vervolg keuzelijst om **Azure Active Directory**te selecteren en selecteert u **Opslaan**.
 
-Als verificatie vooraf is ingeschakeld, worden gebruikers eerst door Azure AD aangevraagd voor verificatie en als eenmalige aanmelding configued is, controleert de back-end-toepassing ook de gebruiker voordat toegang tot de toepassing wordt verleend. Als u de modus vooraf-verificatie van passthrough naar Azure AD wijzigt, wordt ook de externe URL met HTTPS geconfigureerd, zodat alle toepassingen die in eerste instantie zijn geconfigureerd voor HTTP, nu worden beveiligd met HTTPS.
+Als verificatie vooraf is ingeschakeld, worden gebruikers eerst door Azure AD aangevraagd voor verificatie en als eenmalige aanmelding is geconfigureerd, controleert de back-end-toepassing ook de gebruiker voordat toegang tot de toepassing wordt verleend. Als u de modus vooraf-verificatie van passthrough naar Azure AD wijzigt, wordt ook de externe URL met HTTPS geconfigureerd, zodat alle toepassingen die in eerste instantie zijn geconfigureerd voor HTTP, nu worden beveiligd met HTTPS.
 
 ### <a name="enable-single-sign-on"></a>Eenmalige aanmelding inschakelen
 
@@ -292,11 +292,11 @@ Gebruikers moeten echter nog steeds dagelijkse privileged-bewerkingen uitvoeren,
 
 ### <a name="reporting-and-monitoring"></a>Rapportage en bewaking
 
-Azure AD biedt meer inzicht in het toepassings gebruik en de operationele status van uw organisatie via [controle logboeken en-rapporten](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs). Met toepassings proxy is het ook heel eenvoudig om connectors in de Azure AD-Portal en Windows-gebeurtenis logboeken te bewaken.
+Azure AD biedt meer inzicht in het toepassings gebruik en de operationele status van uw organisatie via [controle logboeken en-rapporten](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Met toepassings proxy is het ook heel eenvoudig om connectors in de Azure AD-Portal en Windows-gebeurtenis logboeken te bewaken.
 
 #### <a name="application-audit-logs"></a>Auditlogboeken van toepassingen
 
-Deze logboeken bevatten gedetailleerde informatie over aanmeldingen bij toepassingen die zijn geconfigureerd met toepassings proxy en het apparaat en de gebruiker die toegang heeft tot de toepassing. [Audit logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs) bevinden zich in de Azure Portal en in [audit-API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) voor export. Daarnaast zijn [gebruiks-en inzichten rapporten](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-usage-insights-report) ook beschikbaar voor uw toepassing.
+Deze logboeken bevatten gedetailleerde informatie over aanmeldingen bij toepassingen die zijn geconfigureerd met toepassings proxy en het apparaat en de gebruiker die toegang heeft tot de toepassing. [Audit logboeken](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) bevinden zich in de Azure Portal en in [audit-API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) voor export. Daarnaast zijn [gebruiks-en inzichten rapporten](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context) ook beschikbaar voor uw toepassing.
 
 #### <a name="application-proxy-connector-monitoring"></a>Bewaking toepassings proxy connector
 

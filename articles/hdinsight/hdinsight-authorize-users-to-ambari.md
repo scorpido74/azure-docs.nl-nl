@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: hrasheed
-ms.openlocfilehash: bcc29902628f4e7051d6a838d2e9ac145df9e45e
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 533bd750056f2e961ca9239e995fbfc62b2381d0
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916940"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076685"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Gebruikers machtigen voor Apache Ambari-weergaven
 
@@ -30,7 +30,7 @@ Als u dit nog niet hebt gedaan, volgt u [deze instructies](./domain-joined/apach
 
 Als u naar de **Ambari-beheer pagina** van de [Apache AMBARI-webgebruikersinterface](hdinsight-hadoop-manage-ambari.md)wilt **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** gaan, bladert u naar. Voer de gebruikers naam en het wacht woord in van de Cluster beheerder die u hebt gedefinieerd bij het maken van het cluster. Selecteer vervolgens in het Ambari-dash board de optie **Ambari beheren** onder het menu **beheerder** :
 
-![Ambari beheren](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
+![Apache Ambari-dash board beheren](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
 ## <a name="grant-permissions-to-apache-hive-views"></a>Machtigingen verlenen voor het Apache Hive weer gaven
 
@@ -38,11 +38,11 @@ Ambari wordt geleverd met View instances voor [Apache Hive](https://hive.apache.
 
 1. Selecteer op de pagina beheer de koppeling **weer gaven** in de kop van het menu **weer gaven** aan de linkerkant.
 
-    ![Koppeling naar weer gaven](./media/hdinsight-authorize-users-to-ambari/apache-ambari-views-link.png)
+    ![Koppelingen voor weer gave Apache Ambari-weer gaven](./media/hdinsight-authorize-users-to-ambari/apache-ambari-views-link.png)
 
 2. Vouw op de pagina weer gaven de **Hive** -rij uit. Er is één standaard Hive-weer gave die wordt gemaakt wanneer de component service aan het cluster wordt toegevoegd. U kunt indien nodig ook meer Hive-weergave-instanties maken. Een Hive-weer gave selecteren:
 
-    ![Weer gaven-Hive-weer gave](./media/hdinsight-authorize-users-to-ambari/views-apache-hive-view.png)
+    ![HDInsight-weer gaven-Apache Hive weer gave](./media/hdinsight-authorize-users-to-ambari/views-apache-hive-view.png)
 
 3. Schuif naar de onderkant van de pagina weer geven. In het gedeelte *machtigingen* hebt u twee opties voor het verlenen van domein gebruikers hun machtigingen voor de weer gave:
 
@@ -54,20 +54,20 @@ Ambari wordt geleverd met View instances voor [Apache Hive](https://hive.apache.
 
    * Begin met het typen van de gebruikers naam en er wordt een vervolg keuzelijst met eerder gedefinieerde namen weer geven.
 
-     ![Automatisch aanvullen van gebruiker](./media/hdinsight-authorize-users-to-ambari/ambari-user-autocomplete.png)
+     ![Apache Ambari-gebruiker automatisch aanvullen](./media/hdinsight-authorize-users-to-ambari/ambari-user-autocomplete.png)
 
    * Selecteer of voltooi de gebruikers naam. Selecteer de knop **Nieuw** om deze gebruikers naam toe te voegen als een nieuwe gebruiker.
 
    * Schakel het **selectie vakje blauw**in om uw wijzigingen op te slaan.
 
-     ![Gebruiker ingevoerd](./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png)
+     ![Apache Ambari gebruikers machtigingen verlenen](./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png)
 
 1. Selecteer de knop **groep toevoegen** om een groep toe te voegen.
 
    * Begin met het typen van de groeps naam. Het proces van het selecteren van een bestaande groeps naam of het toevoegen van een nieuwe groep is hetzelfde als voor het toevoegen van gebruikers.
    * Schakel het **selectie vakje blauw**in om uw wijzigingen op te slaan.
 
-     ![Groep ingevoerd](./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png)
+     ![Apache Ambari Grant-machtigingen](./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png)
 
 Het rechtstreeks toevoegen van gebruikers aan een weer gave is handig wanneer u machtigingen wilt toewijzen aan een gebruiker om die weer gave te gebruiken, maar niet wilt dat ze lid zijn van een groep die extra machtigingen heeft. Om de hoeveelheid administratieve overhead te verminderen, is het eenvoudiger om machtigingen toe te wijzen aan groepen.
 
@@ -77,7 +77,7 @@ Met de [Apache TEZ](https://tez.apache.org/) View-instanties kunnen gebruikers a
 
 Als u gebruikers en groepen wilt toewijzen aan een instantie van een TEZ-weer gave, vouwt u de rij **TEZ** op de pagina weer gaven uit, zoals eerder is beschreven.
 
-![Weer gaven-TEZ weer geven](./media/hdinsight-authorize-users-to-ambari/views-apache-tez-view.png)
+![HDInsight-weer gaven-Apache TEZ View](./media/hdinsight-authorize-users-to-ambari/views-apache-tez-view.png)
 
 Herhaal de stappen 3-5 in de vorige sectie om gebruikers of groepen toe te voegen.
 
@@ -93,11 +93,11 @@ Er zijn vijf beveiligings rollen voor gebruikers en groepen, die worden vermeld 
 
 Als u rollen wilt beheren, gaat u naar de **pagina beheer van Ambari**en selecteert u vervolgens de koppeling **rollen** in de menu groep *clusters* aan de linkerkant.
 
-![Koppeling naar menu rollen](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
+![Menu koppelingen voor Apache Ambari-rollen](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
 
 Als u de lijst met machtigingen wilt zien die aan elke rol zijn gegeven, klikt u op het blauwe vraag teken naast de **tabelkop tabel op de pagina rollen.**
 
-![Koppelings machtigingen menu rollen](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Koppelings machtigingen menu rollen")
+![Menu opdracht koppelings machtigingen voor Apache Ambari-rollen](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Menu opdracht koppelings machtigingen voor Apache Ambari-rollen")
 
 Op deze pagina zijn er twee verschillende weer gaven die u kunt gebruiken voor het beheren van rollen voor gebruikers en groepen: Blok en lijst.
 
@@ -105,7 +105,7 @@ Op deze pagina zijn er twee verschillende weer gaven die u kunt gebruiken voor h
 
 In de blok weergave wordt elke rol in een eigen rij weer gegeven en worden de rollen **toegewezen aan deze gebruikers** , en **kunnen rollen aan deze groepen worden toegewezen** , zoals eerder beschreven.
 
-![Weer gave rollen blok keren](./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png)
+![Blok weergave van Apache Ambari-rollen](./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png)
 
 ### <a name="list-view"></a>Lijst weergave
 
@@ -113,11 +113,11 @@ De lijst weergave biedt snelle bewerkings mogelijkheden in twee categorieën: Ge
 
 * De categorie gebruikers van de lijst weergave bevat een lijst met alle gebruikers, zodat u een rol voor elke gebruiker in de vervolg keuzelijst kunt selecteren.
 
-    ![Weer gave rollen lijst-gebruikers](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
+    ![Weer gave Apache Ambari-rollen lijst-gebruikers](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
 *  In de categorie groepen van de lijst weergave worden alle groepen weer gegeven, evenals de rol die aan elke groep is toegewezen. In ons voor beeld wordt de lijst met groepen gesynchroniseerd vanuit de Azure AD-groepen die zijn opgegeven in de eigenschap **gebruikers groep** van het cluster. Zie [een HDInsight-cluster maken waarvoor ESP is ingeschakeld](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp).
 
-    ![Weer gave rollen lijst-groepen](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
+    ![Apache Ambari roles list view-groups](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 
     In de bovenstaande afbeelding is de groep ' hiveusers ' toegewezen aan de gebruikersrol *cluster* . Dit is een alleen-lezen rol waarmee de gebruikers van die groep de service configuraties en cluster metrieken kunnen bekijken, maar niet wijzigen.
 
@@ -125,13 +125,13 @@ De lijst weergave biedt snelle bewerkings mogelijkheden in twee categorieën: Ge
 
 We hebben onze machtigingen voor de Azure AD-domein gebruiker ' hiveuser1 ' toegewezen aan Hive-en TEZ-weer gaven. Wanneer we de Ambari-webgebruikersinterface starten en de domein referenties van deze gebruiker invoeren (Azure AD-gebruikers naam in e-mail indeling en wacht woord), wordt de gebruiker omgeleid naar de pagina Ambari weergaven. Hier kan de gebruiker elke toegankelijke weer gave selecteren. De gebruiker kan geen ander deel van de site bezoeken, met inbegrip van het dash board, de services, hosts, waarschuwingen of de beheer pagina's.
 
-![Gebruiker met alleen weer gaven](./media/hdinsight-authorize-users-to-ambari/ambari-user-views-only.png)
+![Apache Ambari-gebruiker met alleen weer gaven](./media/hdinsight-authorize-users-to-ambari/ambari-user-views-only.png)
 
 ## <a name="log-in-to-ambari-as-a-cluster-user"></a>Meld u aan bij Ambari als een cluster gebruiker
 
 We hebben onze Azure AD-domein gebruiker ' hiveuser2 ' toegewezen aan de gebruikersrol *cluster* . Deze rol kan toegang krijgen tot het dash board en alle menu-items. Een cluster gebruiker heeft minder toegestane opties dan een beheerder. Hiveuser2 kan bijvoorbeeld configuraties voor elk van de services weer geven, maar niet bewerken.
 
-![Gebruiker met cluster gebruikersrol](./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png)
+![Apache Ambari-dashboard weergave](./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

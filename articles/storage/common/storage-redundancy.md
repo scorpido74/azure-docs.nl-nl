@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/10/2019
+ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 17d1bd95067c15bd67f80f3713f0e497bff8a68d
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3640d2d88fc679b78395472c667fcde39979728a
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516122"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074338"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundantie
 
@@ -28,16 +28,16 @@ Azure Storage controleert regel matig de integriteit van gegevens die zijn opges
 
 Wanneer u een opslag account maakt, kunt u een van de volgende redundantie opties selecteren:
 
-* [Lokaal redundante opslag (LRS)](storage-redundancy-lrs.md)
-* [Zone-redundante opslag (ZRS)](storage-redundancy-zrs.md)
-* [Geografisch redundante opslag (GRS)](storage-redundancy-grs.md)
-* [Geografisch redundante opslag met leestoegang (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
-* [Geo-zone-redundante opslag (GZRS)](storage-redundancy-gzrs.md)
-* [Geo-zone-redundante opslag met lees toegang (RA-GZRS)](storage-redundancy-gzrs.md)
+- [Lokaal redundante opslag (LRS)](storage-redundancy-lrs.md)
+- [Zone-redundante opslag (ZRS)](storage-redundancy-zrs.md)
+- [Geografisch redundante opslag (GRS)](storage-redundancy-grs.md)
+- [Geografisch redundante opslag met leestoegang (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
+- [Geo-zone-redundante opslag (GZRS)](storage-redundancy-gzrs.md)
+- [Geo-zone-redundante opslag met lees toegang (RA-GZRS)](storage-redundancy-gzrs.md)
 
 De volgende tabel geeft een beknopt overzicht van het bereik van duurzaamheid en beschik baarheid dat elke replicatie strategie biedt voor een bepaald type gebeurtenis (of gebeurtenis van vergelijk bare gevolgen).
 
-| Scenario                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                               |
+| Scenario                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS (preview-versie)                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Niet-beschik baarheid van knoop punt binnen een Data Center                                                                 | Ja                             | Ja                              | Ja                                  | Ja                                  |
 | Een volledig Data Center (zonegebonden of niet-zonegebonden) is niet meer beschikbaar                                           | Nee                              | Ja                              | Ja                                  | Ja                                  |
@@ -45,7 +45,7 @@ De volgende tabel geeft een beknopt overzicht van het bereik van duurzaamheid en
 | Lees toegang tot uw gegevens (in een externe, geo-gerepliceerde regio) in het geval van regionale niet-beschik baarheid | Nee                              | Nee                               | Ja (met RA-GRS)                                   | Ja (met RA-GZRS)                                 |
 | Ontworpen om duurzaamheid \_ van objecten over een bepaald jaar te bieden \_                                          | ten minste 99,999999999% (11 9) | ten minste 99,9999999999% (12 9) | ten minste 99.99999999999999% (16 9) | ten minste 99.99999999999999% (16 9) |
 | Ondersteunde typen opslag accounts                                                                   | GPv2, GPv1, Blob                | GPv2                             | GPv2, GPv1, Blob                     | GPv2                     |
-| SLA voor Beschik baarheid voor lees aanvragen | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,99% (99,9% voor de laag van de cool-toegang) |
+| SLA voor Beschik baarheid voor lees aanvragen | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag met coole toegang) voor GRS<br /><br />Ten minste 99,99% (99,9% voor de laag voor cool-toegang) voor RA-GRS | Ten minste 99,9% (99% voor de laag met coole toegang) voor GZRS<br /><br />Ten minste 99,99% (99,9% voor de laag voor cool-toegang) voor RA-GZRS |
 | SLA voor Beschik baarheid voor schrijf aanvragen | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) |
 
 Alle gegevens in uw opslag account worden gerepliceerd, inclusief blok-blobs en toevoeg-blobs, pagina-blobs, wacht rijen, tabellen en bestanden. Alle typen opslag accounts worden gerepliceerd, maar ZRS vereist een v2-opslag account voor algemeen gebruik.
@@ -61,9 +61,9 @@ Zie de [Azure Storage Sla](https://azure.microsoft.com/support/legal/sla/storage
 
 U kunt de replicatie strategie van uw opslag account wijzigen met behulp van de [Azure Portal](https://portal.azure.com/), [Azure Power shell](storage-powershell-guide-full.md), [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)of een van de [Azure Storage-client bibliotheken](https://docs.microsoft.com/azure/index#pivot=sdkstools). Het wijzigen van het replicatie type van uw opslag account resulteert niet in de tijd.
 
-   > [!NOTE]
-   > Op dit moment kunt u de Azure Portal of de Azure Storage-client bibliotheken niet gebruiken om uw account om te zetten in ZRS, GZRS of RA-GZRS. Als u uw account wilt migreren naar ZRS, raadpleegt u [zone-redundante opslag (ZRS) voor het bouwen van Maxi maal beschik bare Azure Storage toepassingen](storage-redundancy-zrs.md) voor meer informatie. Zie [geo-zone-redundante opslag voor hoge Beschik baarheid en maximale duurzaamheid (preview)](storage-redundancy-zrs.md) voor meer informatie over het migreren van GZRS of Ra-GZRS.
-    
+> [!NOTE]
+> Op dit moment kunt u de Azure Portal of de Azure Storage-client bibliotheken niet gebruiken om uw account om te zetten in ZRS, GZRS of RA-GZRS. Als u uw account wilt migreren naar ZRS, raadpleegt u [zone-redundante opslag (ZRS) voor het bouwen van Maxi maal beschik bare Azure Storage toepassingen](storage-redundancy-zrs.md) voor meer informatie. Zie [geo-zone-redundante opslag voor hoge Beschik baarheid en maximale duurzaamheid (preview)](storage-redundancy-zrs.md) voor meer informatie over het migreren van GZRS of Ra-GZRS.
+
 ### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>Zijn er kosten verbonden aan het wijzigen van de replicatie strategie van mijn account?
 
 Dit is afhankelijk van het pad van de conversie. Bestel van minst naar het duurste, Azure Storage redundantie aanbod LRS, ZRS, GRS, RA-GRS, GZRS en RA-GZRS. Als u bijvoorbeeld *van* LRS naar een ander type replicatie gaat, worden er extra kosten in rekening gebracht, omdat u overstapt naar een geavanceerd redundantie niveau. Als u migreert *naar* GRS of Ra-GRS, worden er kosten in rekening gebracht voor de uitgaande band breedte, omdat uw gegevens (in de primaire regio) worden gerepliceerd naar uw externe secundaire regio. Deze kosten zijn tijdens de eerste Setup eenmalige kosten. Nadat de gegevens zijn gekopieerd, worden er geen verdere migratie kosten in rekening gebracht. Er worden alleen kosten in rekening gebracht voor het repliceren van nieuwe of bijgewerkte bestaande gegevens. Zie [Azure Storage-pagina met prijzen](https://azure.microsoft.com/pricing/details/storage/blobs/)voor meer informatie over de bandbreedte kosten.

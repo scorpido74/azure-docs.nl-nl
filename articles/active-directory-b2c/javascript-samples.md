@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5dfc1ef732c8456356de82f7fe026476fdfc075b
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 92ac1e6a85023d49ceb8242b93651a60da3d2166
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227138"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064188"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-voorbeelden voor gebruik in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-U kunt uw eigen code van de client-side JavaScript toevoegen aan uw Azure Active Directory (Azure AD) B2C-toepassingen. Als u Java script wilt inschakelen voor uw toepassingen, moet u een element toevoegen aan uw [aangepaste beleid](active-directory-b2c-overview-custom.md), een [pagina-indeling](page-layout.md)selecteren en [b2clogin.com](b2clogin.md) in uw aanvragen gebruiken. In dit artikel wordt beschreven hoe u het aangepaste beleid kunt wijzigen om het uitvoeren van scripts mogelijk te maken.
+U kunt uw eigen Java script-client-side code toevoegen aan uw Azure Active Directory B2C-toepassingen (Azure AD B2C). Als u Java script wilt inschakelen voor uw toepassingen, moet u een element toevoegen aan uw [aangepaste beleid](active-directory-b2c-overview-custom.md), een [pagina-indeling](page-layout.md)selecteren en [b2clogin.com](b2clogin.md) in uw aanvragen gebruiken. In dit artikel wordt beschreven hoe u het aangepaste beleid kunt wijzigen om het uitvoeren van scripts mogelijk te maken.
 
 > [!NOTE]
 > Als u Java script wilt inschakelen voor gebruikers stromen, raadpleegt u [Java script en pagina-indelings versies in azure Active Directory B2C](user-flow-javascript-overview.md).

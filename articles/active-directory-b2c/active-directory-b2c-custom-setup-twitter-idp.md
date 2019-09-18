@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 557d25c4921c9906be75bce03c326903e63432de
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: bfe8b1297b155ecd947140149c13da6c3a08c3c8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464798"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065988"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden met een Twitter-account instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In dit artikel leest u hoe u aanmelden voor gebruikers van een Twitter-account kunt inschakelen met behulp van [aangepast beleid](active-directory-b2c-overview-custom.md) in azure Active Directory (Azure AD) B2C.
+Dit artikel laat u zien hoe u aanmelden voor gebruikers van een Twitter-account kunt inschakelen met behulp van [aangepast beleid](active-directory-b2c-overview-custom.md) in Azure Active Directory B2C (Azure AD B2C).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -39,14 +39,14 @@ Als u Twitter als een id-provider in Azure AD B2C wilt gebruiken, moet u een Twi
 5. Voer`https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`in voor de **call back-URL**. Vervang `your-tenant` door de naam van uw Tenant naam en `your-policy-Id` met de id van uw beleid. Bijvoorbeeld `b2c_1A_signup_signin_twitter`. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant, zelfs als de Tenant is gedefinieerd met hoofd letters in Azure AD B2C.
 6. Lees en accepteer de voor waarden aan de onderkant van de pagina en selecteer vervolgens **maken**.
 7. Op de **pagina app-Details** selecteert u **Bewerken > Details bewerken**, schakelt u het selectie vakje **Aanmelden met Twitter inschakelen in**en selecteert u vervolgens **Opslaan**.
-8. Selecteer **sleutels en tokens** en noteer de **CONSUMer-API-sleutel** en de **geheime sleutel** waarden voor de Consumer-API die u later wilt gebruiken.
+8. Selecteer **sleutels en tokens** en noteer de **CONSUMer-API-sleutel** en de geheime sleutel waarden voor de **Consumer-API** die u later wilt gebruiken.
 
 ## <a name="create-a-policy-key"></a>Een beleids sleutel maken
 
 U moet de geheime sleutel opslaan die u eerder in uw Azure AD B2C-Tenant hebt vastgelegd.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het **Directory-en abonnements filter** in het bovenste menu en kies de map die uw Tenant bevat.
+2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
 5. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
@@ -157,7 +157,7 @@ Nu er een knop aanwezig is, moet u deze koppelen aan een actie. De actie in dit 
 Communicatie met Azure AD B2c vindt plaats via een toepassing die u in uw Tenant maakt. In deze sectie vindt u optionele stappen die u kunt uitvoeren om een test toepassing te maken als u dit nog niet hebt gedaan.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het **Directory-en abonnements filter** in het bovenste menu en kies de map die uw Tenant bevat.
+2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer **Toepassingen** en vervolgens **Toevoegen**.
 5. Voer een naam in voor de toepassing, bijvoorbeeld *testapp1*.

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2019
+ms.date: 09/17/2019
 ms.author: magoedte
-ms.openlocfilehash: c63feb02712447d2427061cbfabc525622107043
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 945dc6c35eacab99db28172703e1aebed10bd58a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744579"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067091"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Inzicht in prestaties in een AKS-cluster met Azure Monitor voor containers
 Met Azure Monitor voor containers kunt u de prestatie diagrammen en de status gebruiken om de werk belasting van uw AKS-clusters (Azure Kubernetes service) van twee perspectieven te bewaken. U kunt rechtstreeks vanuit een AKS-cluster bewaken of u kunt alle AKS-clusters in een abonnement bewaken vanuit Azure Monitor. Het weer geven van Azure Container Instances is ook mogelijk wanneer u een specifiek AKS-cluster bewaken.
@@ -170,9 +170,13 @@ Vanuit een uitgevouwen knoop punt kunt u inzoomen op de Pod of container die op 
 
 Selecteer controllers of containers boven aan de pagina om de status en het resource gebruik voor die objecten te controleren. Als u het geheugen gebruik wilt controleren, selecteert u in de vervolg keuzelijst **metriek** de optie **geheugen RSS** of **Geheugen werkset**. **Geheugen RSS** wordt alleen ondersteund voor Kubernetes versie 1.8 en hoger. Anders wordt het weergeven van waarden voor **Min&nbsp; %**  als *NaN&nbsp;%* , dit is een waarde voor het type van numerieke gegevens die een niet-gedefinieerde vertegenwoordigt of Sjabloontaal waarde.
 
-De **werkset geheugen** bevat zowel het residente geheugen als het virtuele geheugen (cache) en is in totaal wat de toepassing gebruikt. In het **geheugen RSS** wordt alleen het hoofd geheugen weer gegeven (dit is niets, maar het residente geheugen met andere woorden). Met deze metriek wordt de werkelijke capaciteit van het beschik bare geheugen weer gegeven.
-
 ![Prestatieweergave container-knooppunten](./media/container-insights-analyze/containers-node-metric-dropdown.png)
+
+De **werkset geheugen** bevat zowel het residente geheugen als het virtuele geheugen (cache) en is in totaal wat de toepassing gebruikt. In het **geheugen RSS** wordt alleen het hoofd geheugen weer gegeven (dit is niets, maar het residente geheugen met andere woorden). Met deze metriek wordt de werkelijke capaciteit van het beschik bare geheugen weer gegeven. Wat is het verschil tussen Resident geheugen en virtueel geheugen?
+
+- Resident geheugen of hoofd geheugen is de werkelijke hoeveelheid computer geheugen die beschikbaar is voor de knoop punten van het cluster.
+
+- Virtueel geheugen is gereserveerde ruimte op de vaste schijf (cache) die door het besturings systeem wordt gebruikt om gegevens van het geheugen naar de schijf te wisselen wanneer deze onder geheugen wordt druk en vervolgens weer terug te halen naar het geheugen, indien nodig.
 
 Standaard zijn de prestatie gegevens gebaseerd op de laatste zes uur, maar u kunt het venster wijzigen met de optie **time Range** in de linkerbovenhoek. U kunt de resultaten ook filteren binnen het tijds bereik door **min**, **Gem**, **50e**, **negen**, **95e**en **Max** te selecteren in de percentiel kiezer. 
 

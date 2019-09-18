@@ -1,7 +1,7 @@
 ---
 title: Gegevens drift (preview-versie) detecteren op AKS-implementaties
-titleSuffix: Azure Machine Learning service
-description: Spoor gegevens drift op in azure Kubernetes Service geïmplementeerde modellen in Azure Machine Learning service.
+titleSuffix: Azure Machine Learning
+description: Spoor gegevens drift op in azure Kubernetes-Service geïmplementeerde modellen in Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 09/13/2019
-ms.openlocfilehash: 80c5ad26150547263469c9f59366e270bf660335
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 59cce0b56a4e54208a454c9f71d9a4c8576b0a8b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993164"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034359"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Gegevens drift (preview) detecteren voor modellen die zijn geïmplementeerd in azure Kubernetes service (AKS)
 
-In dit artikel leert u hoe u kunt controleren op gegevens overdracht tussen de gegevensset van de training en hoe u gegevens van een geïmplementeerd model dewenst. In de context van machine learning kunnen getrainde machine learning modellen gedegradeerde Voorspellings prestaties ondervinden vanwege drift. Met de Azure Machine Learning-service kunt u gegevens drift bewaken en de service kan een e-mail bericht naar u verzenden wanneer er een drift wordt gedetecteerd.
+In dit artikel leert u hoe u kunt controleren op gegevens overdracht tussen de gegevensset van de training en hoe u gegevens van een geïmplementeerd model dewenst. In de context van machine learning kunnen getrainde machine learning modellen gedegradeerde Voorspellings prestaties ondervinden vanwege drift. Met Azure Machine Learning kunt u gegevens drift bewaken en de service kan een e-mail bericht naar u verzenden wanneer er een drift wordt gedetecteerd.
 
 ## <a name="what-is-data-drift"></a>Wat is gegevens drift?
 
@@ -27,7 +27,7 @@ Gegevens drift treedt op wanneer gegevens die aan een model in de productie word
 
 ## <a name="what-can-i-monitor"></a>Wat kan ik controleren?
 
-Met Azure Machine Learning-service kunt u de invoer bewaken in een model dat is geïmplementeerd op AKS en deze gegevens vergelijken met de trainings gegevensset voor het model. Op regel matige intervallen worden de gegevens in de vorm van een [moment opname gemaakt en](how-to-explore-prepare-data.md)vervolgens berekend op basis van de basislijn gegevensset om een gegevensdrijf analyse te maken die: 
+Met Azure Machine Learning kunt u de invoer bewaken in een model dat is geïmplementeerd op AKS en deze gegevens vergelijken met de trainings gegevensset voor het model. Op regel matige intervallen worden de gegevens in de vorm van een [moment opname gemaakt en](how-to-explore-prepare-data.md)vervolgens berekend op basis van de basislijn gegevensset om een gegevensdrijf analyse te maken die: 
 
 + Meet de omvang van de gegevens drift, de zogenaamde drift.
 + Meet de gegevens drift-bijdrage per functie, waardoor wordt gemeld welke functies een gegevens drift hebben veroorzaakt.
@@ -38,20 +38,20 @@ Met Azure Machine Learning-service kunt u de invoer bewaken in een model dat is 
 > [!Note]
 > Deze service is in (preview) en beperkt in configuratie opties. Raadpleeg onze [API-documentatie](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) en [opmerkingen](azure-machine-learning-release-notes.md) bij de release voor meer informatie en updates. 
 
-### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Hoe gegevens drift wordt bewaakt in Azure Machine Learning-service
+### <a name="how-data-drift-is-monitored-in-azure-machine-learning"></a>Hoe gegevens drift wordt bewaakt in Azure Machine Learning
 
-Met behulp van Azure Machine Learning-service wordt data drift bewaakt via gegevens sets of implementaties. Als u wilt controleren op gegevens drift, een basislijn gegevensset, meestal de trainings gegevensset voor een model, is opgegeven. Een tweede gegevensset-meestal model invoer gegevens die zijn verzameld van een implementatie, wordt getest op basis van de gegevensset van de basislijn planning. Beide gegevens sets worden profileeerd en ingevoerd in de data drift-bewakings service. Een machine learning model wordt getraind om verschillen tussen de twee gegevens sets te detecteren. De prestaties van het model worden geconverteerd naar de snelheids coëfficiënt, die de grootte van de gegevens in de twee data sets meet. Het gebruik van [model interpreteert](machine-learning-interpretability-explainability.md)de functies die bijdragen aan de snelheids coëfficiënt worden berekend. Vanuit het profiel gegevensset wordt statistische informatie over elke functie bijgehouden. 
+Met behulp van Azure Machine Learning wordt gegevens drift bewaakt door data sets of implementaties. Als u wilt controleren op gegevens drift, een basislijn gegevensset, meestal de trainings gegevensset voor een model, is opgegeven. Een tweede gegevensset-meestal model invoer gegevens die zijn verzameld van een implementatie, wordt getest op basis van de gegevensset van de basislijn planning. Beide gegevens sets worden profileeerd en ingevoerd in de data drift-bewakings service. Een machine learning model wordt getraind om verschillen tussen de twee gegevens sets te detecteren. De prestaties van het model worden geconverteerd naar de snelheids coëfficiënt, die de grootte van de gegevens in de twee data sets meet. Het gebruik van [model interpreteert](machine-learning-interpretability-explainability.md)de functies die bijdragen aan de snelheids coëfficiënt worden berekend. Vanuit het profiel gegevensset wordt statistische informatie over elke functie bijgehouden. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u er nog geen hebt, maakt u een gratis account voordat u begint. Probeer nog vandaag de [gratis of betaalde versie van de Azure Machine Learning Service](https://aka.ms/AMLFree).
+- Een Azure-abonnement. Als u er nog geen hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 - De Azure Machine Learning SDK voor python is geïnstalleerd. Volg de instructies in [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) om het volgende te doen:
 
     - Een Miniconda-omgeving maken
     - De Azure Machine Learning SDK voor python installeren
 
-- Een [Azure Machine Learning Services-werk ruimte](how-to-manage-workspace.md).
+- Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md).
 
 - Een [configuratie bestand](how-to-configure-environment.md#workspace)voor de werk ruimte.
 
@@ -173,7 +173,7 @@ Als u de resultaten wilt weer geven in uw werk ruimte op de [pagina landings rui
 
 Door de drempel waarde voor de waarschuwing voor het instellen van de drift en een e-mail adres op te geven, wordt er automatisch een [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) e-mail waarschuwing verzonden wanneer de plaatsings coëfficiënt hoger is dan de drempel waarde. 
 
-Om aangepaste waarschuwingen en acties in te stellen, worden alle metrische gegevens waarden opgeslagen in de [Application Insights](how-to-enable-app-insights.md) resource die samen met de Azure machine learning service-werk ruimte is gemaakt. U kunt de koppeling in de e-mail waarschuwing volgen naar de Application Insights-query.
+Om aangepaste waarschuwingen en acties in te stellen, worden alle metrische gegevens waarden opgeslagen in de [Application Insights](how-to-enable-app-insights.md) resource die samen met de Azure machine learning-werk ruimte is gemaakt. U kunt de koppeling in de e-mail waarschuwing volgen naar de Application Insights-query.
 
 ![Waarschuwing voor gegevens drift per E-mail](media/how-to-monitor-data-drift/drift_email.png)
 

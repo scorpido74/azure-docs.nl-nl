@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 59ae3b587751bd4af2c9e5ab0abefb8a5c3bf8e6
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 0cae5166fbbba650b270829b9c8e3711b12a574e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843934"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71073940"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Zelfstudie: Azure-budgetten maken en beheren
 
 Met budgetten in Cost Management kunt u de verantwoordelijkheid in de organisatie beter plannen en stimuleren. Met budgetten kunt u de Azure-services die u gebruikt of waarop u zich abonneert voor een specifieke periode bijhouden. Ze helpen u anderen te informeren over hun uitgaven aan proactief kosten kunt beheren en controleren hoe uitgaven verloopt na verloop van tijd. Wanneer de budgetdrempels die u hebt gemaakt, worden overschreden, worden alleen meldingen worden geactiveerd. Geen van uw resources worden beïnvloed en uw verbruik is niet gestopt. U kunt budgetten gebruiken om te vergelijken en als u kosten analyseren uitgave bij te houden.
 
-Maandelijkse budgetten worden geëvalueerd op basis van elke vier uur. Gegevens voor verbruikte resources zijn echter binnen acht uur beschikbaar. Wanneer aan een budget drempel wordt voldaan, worden e-mail meldingen doorgaans in minder dan 12 uur ontvangen. 
+Kosten-en gebruiks gegevens zijn doorgaans binnen 8-12 uur beschikbaar en budgetten worden elke vier uur geëvalueerd op basis van deze kosten. E-mail meldingen worden normaal gesp roken binnen 12-16 uur ontvangen.
 
 Budgetten automatisch opnieuw instellen aan het einde van een punt (maandelijks, per kwartaal of per jaar) voor hetzelfde budgetbedrag wanneer u een vervaldatum in de toekomst selecteert. Omdat ze opnieuw met hetzelfde budgetbedrag instelt, moet u afzonderlijke budgetten wanneer gebudgetteerde maken bedragen verschillen voor toekomstige perioden.
 

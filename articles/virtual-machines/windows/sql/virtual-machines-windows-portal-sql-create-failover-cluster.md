@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 3ff9a694dca0d2a205c27569a7c744f482b662ec
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3e954a6c714e525e5bbefe8f62c798cf8ac9a517
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100644"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036390"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>SQL Server failover-cluster exemplaar configureren op Azure Virtual Machines
 
@@ -102,14 +102,14 @@ Als aan deze vereisten is voldaan, kunt u door gaan met het bouwen van uw failov
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met uw abonnement.
 
-1. [Maak een Azure](../tutorial-availability-sets.md)-beschikbaarheidsset.
+1. [Maak een Azure-beschikbaarheidsset](../tutorial-availability-sets.md).
 
    Met de beschikbaarheidsset worden virtuele machines gegroepeerd op fout domeinen en update domeinen. De beschikbaarheidsset zorgt ervoor dat uw toepassing niet wordt beïnvloed door afzonderlijke storings punten, zoals de netwerk switch of de energie-eenheid van een rek van servers.
 
    Als u de resource groep voor uw virtuele machines niet hebt gemaakt, doet u dit wanneer u een Azure-beschikbaarheidsset maakt. Als u de Azure Portal gebruikt voor het maken van de beschikbaarheidsset, voert u de volgende stappen uit:
 
    - Klik in de Azure Portal op **+** de Azure Marketplace om deze te openen. Zoeken naar **beschikbaarheidsset**.
-   - Klikop beschikbaarheidsset.
+   - Klik op **beschikbaarheidsset**.
    - Klik op **Create**.
    - Stel op de Blade **beschikbaarheidsset maken** de volgende waarden in:
       - **Naam**: Een naam voor de beschikbaarheidsset.
@@ -267,11 +267,22 @@ Als u het failovercluster wilt maken, hebt u het volgende nodig:
 - Een naam voor het failovercluster
 - Een IP-adres voor het failovercluster. U kunt een IP-adres gebruiken dat niet wordt gebruikt in hetzelfde virtuele Azure-netwerk en subnet als de cluster knooppunten.
 
-Met de volgende Power Shell maakt u een failovercluster. Werk het script bij met de namen van de knoop punten (de namen van de virtuele machines) en een beschikbaar IP-adres uit het Azure-VNET:
+#### <a name="windows-server-2008-2016"></a>Windows Server 2008-2016
+
+Met de volgende Power Shell maakt u een failovercluster voor **Windows Server 2008-2016**. Werk het script bij met de namen van de knoop punten (de namen van de virtuele machines) en een beschikbaar IP-adres uit het Azure-VNET:
 
 ```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
+
+#### <a name="windows-server-2019"></a>Windows Server 2019
+
+Met de volgende Power Shell maakt u een failovercluster voor Windows Server 2019.  Raadpleeg het failovercluster van de blog [voor meer informatie: Cluster netwerk object](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97).  Werk het script bij met de namen van de knoop punten (de namen van de virtuele machines) en een beschikbaar IP-adres uit het Azure-VNET:
+
+```powershell
+New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage -ManagementPointNetworkType Singleton 
+```
+
 
 ### <a name="create-a-cloud-witness"></a>Een cloudwitness maken
 
@@ -415,7 +426,7 @@ De load balancer maken:
    - **Naam**: Een naam voor de taakverdelings regels.
    - **Frontend-IP-adres**: Gebruik het IP-adres voor de SQL Server cluster netwerk resource FCI.
    - **Poort**: Stel in voor de SQL Server FCI TCP-poort. De standaard instantie poort is 1433.
-   - **Back-endpoort**: Deze waarde gebruikt dezelfde poort als de **poort** waarde wanneer u zwevende **IP (direct server return)** inschakelt.
+   - **Back-endpoort**: Deze waarde gebruikt dezelfde poort als de **poort** waarde wanneer u **zwevende IP (direct server return)** inschakelt.
    - **Back-end-pool**: Gebruik de naam van de back-end-groep die u eerder hebt geconfigureerd.
    - **Statustest**: Gebruik de status test die u eerder hebt geconfigureerd.
    - **Sessie persistentie**: Geen.

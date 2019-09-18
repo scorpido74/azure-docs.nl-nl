@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 97972be655a6a03cfe29d8589a144d1e027b86fc
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 0d0329be0b7f864edbfc3c2aabc08f1742359670
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376100"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066782"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Ondersteuningsmatrix voor Hyper-V-evaluatie en -migratie
 
@@ -27,9 +27,9 @@ De tabel bevat een overzicht van de ondersteunde scenario's voor virtuele Hyper-
 **Implementatie** | **Details***
 --- | ---
 **On-premises virtuele Hyper-V-machines evalueren** | [Stel](tutorial-prepare-hyper-v.md) uw eerste beoordeling in.<br/><br/> [Voer](scale-hyper-v-assessment.md) een grootschalige evaluatie uit.
-**Hyper-V-VM's migreren naar Azure** | [Probeer](tutorial-migrate-hyper-v.md) de migratie naar Azure uit te proberen. 
+**Hyper-V-VM's migreren naar Azure** | [Probeer](tutorial-migrate-hyper-v.md) de migratie naar Azure uit te proberen.
 
-Migratie van Hyper-V-servers die met System Center Virtual Machine Manager (VMM) worden beheerd, wordt niet ondersteund door Azure Migrate server migratie. 
+Migratie van Hyper-V-servers die met System Center Virtual Machine Manager (VMM) worden beheerd, wordt niet ondersteund door Azure Migrate server migratie.
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate projecten
 
@@ -44,10 +44,13 @@ Geografie | U kunt Azure Migrate projecten maken in een aantal geographs. Hoewel
   Azure Government | VS (overheid) - Virginia
   Azië en Stille Oceaan | Azië Azië-oost of Zuidoost
   Australië | Australië-oost of Australië-zuidoost
+  Brazilië | Brazilië - zuid
   Canada | Canada-centraal of Canada-oost
   Europa | Europa - noord of Europa - west
+  Frankrijk | Frankrijk - centraal
   India | Centraal-India of India-zuid
   Japan |  Japan-Oost of Japan-West
+  Zuid-Korea | Korea-centraal of Korea-zuid
   Verenigd Koninkrijk | UK-zuid of UK-west
   Verenigde Staten | VS-midden, VS-West 2
 
@@ -87,7 +90,7 @@ Voor evaluatie voert Azure Migrate een licht gewicht in voor de detectie van Hyp
 | **Hyper-V-hosts**          | Een apparaat kan verbinding maken met Maxi maal 300 Hyper-V-hosts.
 | **Detectie**              | Eén apparaat kan Maxi maal 5000 Vm's detecteren.
 | **Beoordelings groep**       | U kunt Maxi maal 35.000 computers in één groep toevoegen.
-| **Onderzoek**             | U kunt Maxi maal 35.000 Vm's in één evaluatie evalueren.
+| **Evaluatie**             | U kunt Maxi maal 35.000 Vm's in één evaluatie evalueren.
 
 
 

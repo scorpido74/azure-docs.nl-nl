@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7f82ad65ecc805d5a45c78e8b190dd0eee4c340c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5784fb4f4ab0f46d2db7e5e8cfe9deeafabb4e90
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882337"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066944"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Gebruiken C# met MapReduce streaming op Apache Hadoop in HDInsight
 
@@ -162,7 +162,7 @@ Nadat u de toepassing hebt gemaakt, bouwt u deze `/bin/Debug/reducer.exe` voor h
 
    * Als u een __Azure Storage-account__gebruikt, klikt u op het pictogram uploaden en bladert u naar de map **bin\debug** voor het **toewijzings** project. Selecteer ten slotte het bestand **Mapper. exe** en klik op **OK**.
 
-        ![pictogram uploaden](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
+        ![Pictogram voor het uploaden van HDInsight voor Mapper](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
     
    * Als u __Azure data Lake Storage__gebruikt, klikt u met de rechter muisknop op een leeg gebied in de bestands vermelding en selecteert u vervolgens __uploaden__. Selecteer ten slotte het bestand **Mapper. exe** en klik op **openen**.
 

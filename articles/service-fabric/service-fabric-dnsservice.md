@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: atsenthi
-ms.openlocfilehash: 94b2b807eb68d628165ca8fa4011b8f3e41d3c6d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
-ms.translationtype: HT
+ms.openlocfilehash: 123e63fb79ba966e4e17b0c55440049a79add905
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599644"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931172"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS-service in azure Service Fabric
 De DNS-service is een optionele systeem service die u in uw cluster kunt inschakelen om andere services te detecteren die gebruikmaken van het DNS-protocol. 
@@ -40,7 +40,7 @@ In het volgende diagram ziet u hoe de DNS-service werkt voor gepartitioneerde st
 
 ![stateful service-eind punten](./media/service-fabric-dnsservice/stateful-dns.png)
 
-Dynamische poorten worden niet ondersteund door de DNS-service. Gebruik de reverse [Proxy service](./service-fabric-reverseproxy.md)om services die beschikbaar zijn op dynamische poorten, op te lossen.
+Dynamische poorten worden niet ondersteund door de DNS-service. Gebruik de [reverse proxy service](./service-fabric-reverseproxy.md)om services die beschikbaar zijn op dynamische poorten, op te lossen.
 
 ## <a name="enabling-the-dns-service"></a>De DNS-service inschakelen
 > [!NOTE]
@@ -179,10 +179,10 @@ DNS-query's die zijn gericht op een partitie, zijn als volgt ingedeeld:
 Waar:
 
 - Het *eerste label van de gepartitioneerde service-DNSName* is het eerste deel van de DNS-naam van uw service.
-- *PartitionPrefix* is een waarde die kan worden ingesteld in de sectie DNS van het cluster manifest of via de Resource Manager-sjabloon van het cluster. De standaard waarde is '-'. Zie [DNS-service-instellingen](./service-fabric-cluster-fabric-settings.md#dnsservice)voor meer informatie.
+- *PartitionPrefix* is een waarde die kan worden ingesteld in de sectie DNS van het cluster manifest of via de Resource Manager-sjabloon van het cluster. De standaard waarde is '--'. Zie [DNS-service-instellingen](./service-fabric-cluster-fabric-settings.md#dnsservice)voor meer informatie.
 - *Doel-partitie: naam* is de naam van de partitie. 
 - *PartitionSuffix* is een waarde die kan worden ingesteld in de sectie DNS van het cluster manifest of via de Resource Manager-sjabloon van het cluster. De standaard waarde is een lege teken reeks. Zie [DNS-service-instellingen](./service-fabric-cluster-fabric-settings.md#dnsservice)voor meer informatie.
-- Resterend gepartitioneerde *service-DNSName* is het resterende deel van de DNS-naam van de service.
+- *Resterend gepartitioneerde service-DNSName* is het resterende deel van de DNS-naam van de service.
 
 In de volgende voor beelden worden DNS-query's weer gegeven voor gepartitioneerde services die worden uitgevoerd `PartitionPrefix` op `PartitionSuffix`een cluster met standaard instellingen voor en: 
 
@@ -192,7 +192,7 @@ In de volgende voor beelden worden DNS-query's weer gegeven voor gepartitioneerd
 De DNS-service retourneert het IP-adres van de primaire replica van de partitie. Als er geen partitie is opgegeven, retourneert de service het IP-adres van de primaire replica van een wille keurige geselecteerde partitie.
 
 ## <a name="using-dns-in-your-services"></a>DNS gebruiken in uw services
-Als u meer dan één service implementeert, kunt u de eind punten van andere services vinden om te communiceren met behulp van een DNS-naam. De DNS-service werkt voor stateless Services en, in Service Fabric versie 6,3 en hoger, voor stateful Services. Voor stateful services die worden uitgevoerd op versies van Service Fabric vóór 6,3, kunt u de ingebouwde reverse [Proxy-service](./service-fabric-reverseproxy.md) voor http-aanroepen gebruiken om een bepaalde service partitie aan te roepen. 
+Als u meer dan één service implementeert, kunt u de eind punten van andere services vinden om te communiceren met behulp van een DNS-naam. De DNS-service werkt voor stateless Services en, in Service Fabric versie 6,3 en hoger, voor stateful Services. Voor stateful services die worden uitgevoerd op versies van Service Fabric vóór 6,3, kunt u de ingebouwde [reverse proxy-service](./service-fabric-reverseproxy.md) voor http-aanroepen gebruiken om een bepaalde service partitie aan te roepen. 
 
 Dynamische poorten worden niet ondersteund door de DNS-service. U kunt de reverse proxy-service gebruiken voor het oplossen van services die gebruikmaken van dynamische poorten.
 

@@ -1,6 +1,6 @@
 ---
-title: Wachtwoordcomplexiteit - Azure Active Directory B2C | Microsoft Docs
-description: Klik hier voor meer informatie over het configureren van de vereisten voor wachtwoordcomplexiteit voor wachtwoorden die worden geleverd door consumenten in Azure Active Directory B2C.
+title: Wachtwoord complexiteit-Azure Active Directory B2C | Microsoft Docs
+description: Complexiteits vereisten configureren voor wacht woorden die door consumenten worden verstrekt in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,70 +10,70 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 37f8305d8ed212cf2c6678b35220d823611b9d7a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 642621e2e04d3e96dc6886b1bdb28c161560b28e
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509020"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065462"
 ---
-# <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Vereisten voor wachtwoordcomplexiteit voor wachtwoorden configureren in Azure Active Directory B2C
+# <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Complexiteits vereisten configureren voor wacht woorden in Azure Active Directory B2C
 
-Azure Active Directory (Azure AD) B2C ondersteunt de complexiteitsvereisten voldoen voor wachtwoorden die worden geleverd door een eindgebruiker bij het maken van een account te wijzigen. Azure AD B2C gebruikt standaard `Strong` wachtwoorden. Azure AD B2C biedt ook ondersteuning voor configuratieopties voor het beheren van de complexiteit van wachtwoorden die klanten kunnen gebruiken.
+Azure Active Directory B2C (Azure AD B2C) ondersteunt het wijzigen van de complexiteits vereisten voor wacht woorden die door een eind gebruiker worden verstrekt bij het maken van een account. Azure AD B2C maakt standaard gebruik `Strong` van wacht woorden. Azure AD B2C biedt ook ondersteuning voor configuratie opties voor het beheren van de complexiteit van wacht woorden die klanten kunnen gebruiken.
 
-## <a name="password-rule-enforcement"></a>Afdwinging van regels wordt wachtwoord
+## <a name="password-rule-enforcement"></a>Wachtwoord regel afdwingen
 
-Tijdens het aanmelden of het wachtwoord opnieuw instellen, een eindgebruiker dient een wachtwoord dat voldoet aan de regels voor wachtwoordcomplexiteit. Regels voor wachtwoordcomplexiteit worden per beleid afgedwongen. Het is mogelijk dat één beleid vereisen dat een pincode van vier cijfers tijdens aanmelden terwijl een andere gebruikersstroom een tekenreeks van acht tekens vereist tijdens de registratie. Bijvoorbeeld, kunt u een beleid met verschillende wachtwoordcomplexiteit voor volwassenen dan voor kinderen.
+Tijdens het registreren of opnieuw instellen van wacht woorden moet een eind gebruiker een wacht woord opgeven dat voldoet aan de complexiteits regels. Regels voor wachtwoord complexiteit worden afgedwongen per gebruikers stroom. Het is mogelijk dat er voor één gebruikers stroom een pincode van vier cijfers is vereist tijdens het aanmelden terwijl een andere gebruikers stroom een teken reeks van acht tekens vereist tijdens de registratie. U kunt bijvoorbeeld een gebruikers stroom met verschillende wachtwoord complexiteit voor volwassenen gebruiken dan voor kinderen.
 
-Wachtwoordcomplexiteit wordt nooit tijdens het aanmelden afgedwongen. Gebruikers hun wachtwoord wijzigen, omdat het niet voldoet aan de vereiste voor het huidige complexiteit nooit gevraagd tijdens het aanmelden.
+Wachtwoord complexiteit wordt nooit afgedwongen tijdens het aanmelden. Gebruikers worden nooit gevraagd tijdens het aanmelden om hun wacht woord te wijzigen, omdat het niet voldoet aan de huidige complexiteits vereisten.
 
-Wachtwoordcomplexiteit kan worden geconfigureerd in de volgende typen gebruikersstromen:
+Wachtwoord complexiteit kan worden geconfigureerd in de volgende typen gebruikers stromen:
 
-- Meld u aan of aanmelden gebruikersstroom
-- Wachtwoord opnieuw instellen van beleid
+- Gebruikers stroom registreren of aanmelden
+- Gebruikers stroom voor wacht woord opnieuw instellen
 
-Als u aangepaste beleidsregels gebruikt, kunt u ([wachtwoordcomplexiteit configureren in een aangepast beleid](active-directory-b2c-reference-password-complexity-custom.md)).
+Als u aangepast beleid gebruikt, kunt u[de complexiteit van het wacht woord configureren in een aangepast beleid](active-directory-b2c-reference-password-complexity-custom.md).
 
-## <a name="configure-password-complexity"></a>Wachtwoordcomplexiteit configureren
+## <a name="configure-password-complexity"></a>Wachtwoord complexiteit configureren
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Zorg ervoor dat u de adreslijst gebruikt die uw Azure AD B2C-tenant bevat door te klikken op het **filter voor adreslijsten en abonnementen** in het bovenste menu en de adreslijst te kiezen waarin uw tenant zich bevindt.
+2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-4. Selecteer **gebruikersstromen**.
-2. Selecteer de gebruikersstroom van een en klikt u op **eigenschappen**.
-3. Onder **wachtwoordcomplexiteit**, de wachtwoordcomplexiteit voor deze gebruikersstroom te wijzigen **eenvoudige**, **sterke**, of **aangepaste**.
+4. Selecteer **gebruikers stromen**.
+2. Selecteer een gebruikers stroom en klik op **Eigenschappen**.
+3. Wijzig onder **wachtwoord complexiteit**de complexiteit van het wacht woord voor deze gebruikers stroom naar **eenvoudig**, **sterk**of **aangepast**.
 
-### <a name="comparison-chart"></a>Vergelijkingstabel
+### <a name="comparison-chart"></a>Vergelijkings grafiek
 
 | Complexiteit | Description |
 | --- | --- |
-| Eenvoudig | Een wachtwoord dat ten minste 8 tot 64 tekens. |
-| Sterk | Een wachtwoord dat ten minste 8 tot 64 tekens. Hiervoor 3 van 4 van kleine letters, hoofdletters, cijfers en symbolen. |
-| Aangepast telefoonnummer | Deze optie biedt de meeste controle over de regels voor wachtwoordcomplexiteit.  Hierdoor kan een aangepaste lengte configureren.  Daarnaast kunt u wachtwoorden alleen-nummer (pincodes) accepteren. |
+| Simpel | Een wacht woord van ten minste 8 tot 64 tekens. |
+| Sterk | Een wacht woord van ten minste 8 tot 64 tekens. Hiervoor zijn 3 van de 4 van kleine letters, hoofd letters, cijfers of symbolen vereist. |
+| Aanpassen | Deze optie biedt de meeste controle over regels voor wachtwoord complexiteit.  Hiermee kan een aangepaste lengte worden geconfigureerd.  Ook kunt u alleen aantal wacht woorden (pincodes) accepteren. |
 
 ## <a name="custom-options"></a>Aangepaste opties
 
 ### <a name="character-set"></a>Tekenset
 
-Hiermee kunt u gaat akkoord met alleen cijfers (pincodes) of de volledige-tekenset.
+Hiermee kunt u alleen cijfers (pincodes) of de volledige tekenset accepteren.
 
-- **Alleen getallen** kunt cijfers alleen (0-9) bij het invoeren van een wachtwoord.
-- **Alle** kunnen een letter, cijfer of symbool.
+- **Getallen mogen alleen** cijfers (0-9) bevatten tijdens het invoeren van een wacht woord.
+- **Alle** letter, cijfer of symbool worden toegestaan.
 
-### <a name="length"></a>Lengte
+### <a name="length"></a>Hoogte
 
-Kunt u voor het beheren van de vereisten voor de lengte van het wachtwoord.
+Hiermee kunt u de lengte vereisten van het wacht woord bepalen.
 
-- **Minimale lengte** moet ten minste 4.
-- **Maximale lengte** moet groter of gelijk zijn aan de minimale lengte en kan worden maximaal 64 tekens.
+- De **minimum lengte** moet mini maal 4 zijn.
+- De **maximum lengte** moet groter zijn dan of gelijk zijn aan de minimum lengte en mag maxi maal 64 tekens lang zijn.
 
-### <a name="character-classes"></a>Tekenklassen
+### <a name="character-classes"></a>Teken klassen
 
-Kunt u voor het beheren van de verschillende tekentypen in het wachtwoord gebruikt.
+Hiermee kunt u de verschillende teken typen beheren die in het wacht woord worden gebruikt.
 
-- **2 van 4: Kleine letter, een hoofdletter, een getal (0-9), symbool** zorgt ervoor dat het wachtwoord bevat ten minste twee tekentypen. Bijvoorbeeld, een getal en een kleine letter.
-- **3 van 4: Kleine letter, een hoofdletter, een getal (0-9), symbool** zorgt ervoor dat het wachtwoord bevat ten minste twee tekentypen. Bijvoorbeeld, een getal, een kleine letter en een hoofdletter.
-- **4 van 4: Kleine letter, een hoofdletter, een getal (0-9), symbool** zorgt ervoor dat het wachtwoord voor een speciale tekens bevat.
+- **2 van 4: Kleine letters, hoofd letters, cijfer (0-9), symbool** zorgt ervoor dat het wacht woord ten minste twee teken typen bevat. Bijvoorbeeld een numeriek teken en een kleine letter.
+- **3 van 4: Kleine letters, hoofd letters, cijfer (0-9), symbool** zorgt ervoor dat het wacht woord ten minste twee teken typen bevat. Bijvoorbeeld een getal, een kleine letter en een hoofd letter.
+- **4 van 4: Kleine letters, hoofd letters, cijfer (0-9), symbool** zorgt ervoor dat het wacht woord alle tekens voor teken typen bevat.
 
     > [!NOTE]
-    > Vereisen van **4 van 4** kan leiden tot frustraties van eindgebruikers. Sommige onderzoek heeft aangetoond dat deze vereiste wachtwoord entropie niet worden verbeterd. Zie [richtlijnen voor het wachtwoord van het NIST](https://pages.nist.gov/800-63-3/sp800-63b.html#appA)
+    > Het vereisen **van 4 van 4** kan leiden tot frustraties van eind gebruikers. Sommige onderzoeken hebben laten zien dat deze vereiste de wachtwoord entropie niet verbetert. Zie [NIST-wachtwoord richtlijnen](https://pages.nist.gov/800-63-3/sp800-63b.html#appA)

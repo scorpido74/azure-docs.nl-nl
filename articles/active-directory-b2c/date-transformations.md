@@ -1,6 +1,6 @@
 ---
-title: Datum van de claims transformatievoorbeelden voor de identiteit ervaring Framework-Schema van de Azure Active Directory B2C | Microsoft Docs
-description: Datum van de claims transformatievoorbeelden voor de identiteit ervaring Framework-Schema van de Azure Active Directory B2C.
+title: Datum van voor beelden van claim transformatie voor het Framework met identiteits ervaring van Azure Active Directory B2C | Microsoft Docs
+description: Datum voor beelden van claim transformatie voor het Framework van de identiteits ervaring van Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,36 +10,36 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ad4c6c78556f98e2905b3583910e498055257c36
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 077915705c242805d3709b5d52d445288fa5336a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511129"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064354"
 ---
-# <a name="date-claims-transformations"></a>Datum claims transformaties
+# <a name="date-claims-transformations"></a>Datum claim transformaties
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In dit artikel biedt voorbeelden voor het gebruik van de gegevenstransformaties claims van het schema Identiteitservaring-Framework in Azure Active Directory (Azure AD) B2C. Zie voor meer informatie, [ClaimsTransformations](claimstransformations.md).
+In dit artikel vindt u voor beelden van het gebruik van de datum claim transformaties van het Framework voor identiteits ervaring in Azure Active Directory B2C (Azure AD B2C). Zie [ClaimsTransformations](claimstransformations.md)voor meer informatie.
 
 ## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan
 
-Controleert of een datum en tijd claim (tekenreeksgegevenstype) is hoger dan een tweede datum en tijd claim (gegevenstype string) en een uitzondering genereert.
+Controleert of een datum-en tijd claim (teken reeks gegevens type) later is dan een tweede datum en tijd claim (teken reeks gegevens type) en genereert een uitzonde ring.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | leftOperand | string | Eerste claim-type moet later zijn dan het tweede argument. |
-| inputClaim | rightOperand | string | Tweede van de claim type, dat eerder zijn dan de eerste claim moet. |
-| InputParameter | AssertIfEqualTo | booleaans | Hiermee geeft u op of deze verklaring moet worden verwerkt als de linkeroperand gelijk aan de rechteroperand is. |
-| InputParameter | AssertIfRightOperandIsNotPresent | booleaans | Hiermee geeft u op of deze verklaring moet worden verwerkt als de rechteroperand ontbreekt. |
-| InputParameter | TreatAsEqualIfWithinMillseconds | int | Hiermee geeft u het aantal milliseconden om toe te staan tussen de twee datums en tijden die rekening houden met de tijden gelijk moet zijn (bijvoorbeeld aan een account voor tijdsverschil). |
+| inputClaim | leftOperand | string | Type van de eerste claim, dat later moet zijn dan de tweede claim. |
+| inputClaim | rightOperand | string | Tweede claim type, dat eerder moet zijn dan de eerste claim. |
+| InputParameter | AssertIfEqualTo | boolean | Hiermee wordt aangegeven of deze bevestiging moet worden door gegeven als de linkeroperand gelijk is aan de rechteroperand. |
+| InputParameter | AssertIfRightOperandIsNotPresent | boolean | Hiermee geeft u op of deze bevestiging moet worden door gegeven als de juiste operand ontbreekt. |
+| InputParameter | TreatAsEqualIfWithinMillseconds | int | Hiermee geeft u het aantal milliseconden op dat is toegestaan tussen de twee datum tijden om de tijden te bepalen die gelijk zijn (bijvoorbeeld om rekening te houden met Clock scheefheid). |
 
-De **AssertDateTimeIsGreaterThan** claimtransformatie wordt altijd uitgevoerd vanuit een [validatie technisch profiel](validation-technical-profile.md) die wordt aangeroepen door een [door zelf bevestigde technisch profiel](self-asserted-technical-profile.md). De **DateTimeGreaterThan** metagegevens van de zelf-gecontroleerde technisch profiel bepaalt het foutbericht dat het technische profiel aan de gebruiker biedt.
+De **AssertDateTimeIsGreaterThan** -claim transformatie wordt altijd uitgevoerd op basis van een [validatie technische profiel](validation-technical-profile.md) dat wordt aangeroepen door een [zelf-bevestigd technisch profiel](self-asserted-technical-profile.md). De meta gegevens van het zelfondertekende technische profiel **DateTimeGreaterThan** bepalen het fout bericht dat de gebruiker aan het technische profiel presenteert.
 
-![AssertStringClaimsAreEqual uitvoering](./media/date-transformations/assert-execution.png)
+![AssertStringClaimsAreEqual-uitvoering](./media/date-transformations/assert-execution.png)
 
-Het volgende voorbeeld vergelijkt de `currentDateTime` claim met de `approvedDateTime` claim. Er is een fout gegenereerd als `currentDateTime` is hoger dan `approvedDateTime`. De transformatie worden waarden als gelijk als ze binnen 5 minuten (30000 in milliseconden) verschil behandeld.
+In het volgende voor beeld wordt `currentDateTime` de claim met `approvedDateTime` de claim vergeleken. Er wordt een fout gegenereerd `currentDateTime` als deze later `approvedDateTime`is dan. De trans formatie behandelt waarden als gelijk als ze binnen vijf minuten (30000 milliseconden) verschillen.
 
 ```XML
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
@@ -55,7 +55,7 @@ Het volgende voorbeeld vergelijkt de `currentDateTime` claim met de `approvedDat
 </ClaimsTransformation>
 ```
 
-De `login-NonInteractive` validatie technisch profiel aanroepen de `AssertApprovedDateTimeLaterThanCurrentDateTime` transformatie claims.
+Het `login-NonInteractive` validatie technische profiel roept de `AssertApprovedDateTimeLaterThanCurrentDateTime` trans formatie van claims aan.
 ```XML
 <TechnicalProfile Id="login-NonInteractive">
   ...
@@ -65,7 +65,7 @@ De `login-NonInteractive` validatie technisch profiel aanroepen de `AssertApprov
 </TechnicalProfile>
 ```
 
-De zelf-gecontroleerde technisch profiel roept de validatie **aanmelding niet-interactieve** technisch profiel.
+Het zelfondertekende technische profiel aanroept het technische profiel voor validatie **aanmelding-niet-interactief** .
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
@@ -80,21 +80,21 @@ De zelf-gecontroleerde technisch profiel roept de validatie **aanmelding niet-in
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
-    - **leftOperand**: 2018-10-01T15:00:00.0000000Z
-    - **rightOperand**: 2018-10-01T14:00:00.0000000Z
-- Resultaat: Fout opgetreden
+- Invoer claims:
+    - **leftOperand**: 2018-10-2016T15:00:00.0000000 Z
+    - **rightOperand**: 2018-10-01T14:00:00.0000000 Z
+- Daardoor Fout gegenereerd
 
 ## <a name="convertdatetodatetimeclaim"></a>ConvertDateToDateTimeClaim
 
-Converteert een **datum** ClaimType naar een **datum-/** ClaimType. De claimtransformatie converteert de tijdnotatie en 12:00:00 AM toegevoegd aan de datum.
+Hiermee wordt een **datum** claim type geconverteerd naar een datum **/tijd** -claim type. De claim transformatie converteert de tijd notatie en voegt 12:00:00 AM toe aan de datum.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | date | Het ClaimType moet worden geconverteerd. |
-| OutputClaim | outputClaim | Datum/tijd | Het ClaimType dat wordt gegenereerd nadat deze ClaimsTransformation is aangeroepen. |
+| InputClaim | inputClaim | date | Het claim type dat moet worden geconverteerd. |
+| OutputClaim | outputClaim | Datum/tijd | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 
-Het volgende voorbeeld ziet u de conversie van de claim `dateOfBirth` (gegevenstype datum) op een andere claim `dateOfBirthWithTime` (gegevenstype datum/tijd).
+In het volgende voor beeld wordt de conversie van de `dateOfBirth` claim (datum gegevens type) naar een `dateOfBirthWithTime` andere claim (gegevens type datetime) gedemonstreerd.
 
 ```XML
   <ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
@@ -109,18 +109,18 @@ Het volgende voorbeeld ziet u de conversie van de claim `dateOfBirth` (gegevenst
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
+- Invoer claims:
     - **inputClaim**: 2019-06-01
-- Uitvoerclaims:
-    - **outputClaim**: 1559347200 (juni 1 2019 12:00:00 uur)
+- Uitvoer claims:
+    - **outputClaim**: 1559347200 (1 juni 2019 12:00:00 uur)
 
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
-Ophalen van de huidige UTC-datum en tijd en de waarde toevoegen aan een ClaimType.
+De huidige UTC-datum en-tijd ophalen en de waarde toevoegen aan een claim type.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| OutputClaim | currentDateTime | Datum/tijd | Het ClaimType dat wordt gegenereerd nadat deze ClaimsTransformation is aangeroepen. |
+| OutputClaim | currentDateTime | Datum/tijd | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 
 ```XML
 <ClaimsTransformation Id="GetSystemDateTime" TransformationMethod="GetCurrentDateTime">
@@ -132,23 +132,23 @@ Ophalen van de huidige UTC-datum en tijd en de waarde toevoegen aan een ClaimTyp
 
 ### <a name="example"></a>Voorbeeld
 
-* Uitvoerclaims:
-    * **currentDateTime**: 1534418820 (augustus 16 2018 11:27:00 uur)
+* Uitvoer claims:
+    * **currentDateTime**: 1534418820 (16 augustus 2018 11:27:00 uur)
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
-Bepalen of een datum/tijd later, eerder of gelijk zijn aan een andere. Het resultaat is een nieuwe Booleaanse ClaimType Boole-waarde met een waarde van `true` of `false`.
+Bepalen of een datum/tijd later, eerder of gelijk aan een andere dateTime is. Het resultaat is een nieuwe Boolean claim type Boole met de waarde `true` of `false`.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | firstDateTime | Datum/tijd | De eerste datum en tijd om te vergelijken of eerder of later zijn dan de tweede datum/tijd. Null-waarde is een uitzondering genereert. |
-| InputClaim | secondDateTime | Datum/tijd | De tweede datum en tijd om te vergelijken of eerder of later zijn dan de eerste datum/tijd. Null-waarde wordt beschouwd als de huidige datetTime. |
-| InputParameter | operator | string | Een van de volgende waarden: dezelfde, later zijn dan of ouder is dan. |
-| InputParameter | timeSpanInSeconds | int | De timespan toevoegen aan de eerste datum/tijd. |
-| OutputClaim | Resultaat | booleaans | Het ClaimType dat wordt gegenereerd nadat deze ClaimsTransformation is aangeroepen. |
+| InputClaim | firstDateTime | Datum/tijd | De eerste datum/tijd om te vergelijken of deze eerder of later is dan de tweede datum/tijd. Null-waarde genereert een uitzonde ring. |
+| InputClaim | secondDateTime | Datum/tijd | De tweede datum/tijd om te vergelijken of deze eerder of later is dan de eerste datum/tijd. Null-waarde wordt beschouwd als de huidige datetTime. |
+| InputParameter | And | string | Een van de volgende waarden: zelfde, later dan of eerder dan. |
+| InputParameter | timeSpanInSeconds | int | De time span toevoegen aan de eerste datum/tijd. |
+| OutputClaim | Resultaat | boolean | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 
-Gebruik die deze transformatie om te bepalen of twee ClaimTypes gelijk, later of ouder is dan alle andere zijn vorderingen. U kunt bijvoorbeeld de laatste keer dat een gebruiker de voorwaarden van de services (TOS) geaccepteerd opslaan. Na 3 maanden, kunt u de gebruiker om de TOS opnieuw toegang te vragen.
-Als u wilt de claimtransformatie uitvoeren, moet u eerst om op te halen van de huidige datum/tijd en de laatste tijd gebruiker accepteert ook de instructies.
+Gebruik deze claim transformatie om te bepalen of twee ClaimTypes gelijk zijn aan, later of eerder dan elkaar. U kunt bijvoorbeeld de laatste keer dat een gebruiker uw service voorwaarden heeft geaccepteerd (TOS) opslaan. Na 3 maanden kunt u de gebruiker vragen om opnieuw toegang te krijgen tot de TOS.
+Als u de claim transformatie wilt uitvoeren, moet u eerst de huidige datum/tijd en de laatste keer dat de gebruiker de TOS accepteert, ophalen.
 
 ```XML
 <ClaimsTransformation Id="CompareLastTOSAcceptedWithCurrentDateTime" TransformationMethod="DateTimeComparison">
@@ -168,11 +168,11 @@ Als u wilt de claimtransformatie uitvoeren, moet u eerst om op te halen van de h
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
-    - **firstDateTime**: 2018-01-01T00:00:00.100000Z
-    - **secondDateTime**: 2018-04-01T00:00:00.100000Z
-- Invoerparameters die zijn opgegeven:
-    - **operator**: later zijn dan
+- Invoer claims:
+    - **firstDateTime**: 2018-01-01T00:00:00.100000 Z
+    - **secondDateTime**: 2018-04-01T00:00:00.100000 Z
+- Invoer parameters:
+    - **operator**: later dan
     - **timeSpanInSeconds**: 7776000 (90 dagen)
-- Uitvoerclaims:
-    - **resultaat**: true
+- Uitvoer claims:
+    - **resultaat**: True

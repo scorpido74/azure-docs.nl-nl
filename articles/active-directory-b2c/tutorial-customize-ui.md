@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: da7ec020b6f3f4a3b1890695a78fb6bdb363d233
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 69279da93197bcaaf1bf600bc9406287253d74bb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849382"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063282"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Zelfstudie: De interface van gebruikers ervaringen aanpassen in Azure Active Directory B2C
 
-U kunt [gebruikers stromen](active-directory-b2c-reference-policies.md) gebruiken in azure Active Directory (Azure AD) B2C voor meer veelvoorkomende gebruikers ervaringen, zoals aanmelden, aanmelden en het bewerken van profielen. In de informatie in deze zelf studie leert u hoe u [de gebruikers interface (UI)](customize-ui-overview.md) van deze ervaringen kunt aanpassen met uw eigen HTML-en CSS-bestanden.
+U kunt [gebruikers stromen](active-directory-b2c-reference-policies.md) gebruiken in Azure Active Directory B2C (Azure AD B2C) voor meer veelvoorkomende gebruikers ervaringen, zoals aanmelden, aanmelden en het bewerken van profielen. In de informatie in deze zelf studie leert u hoe u [de gebruikers interface (UI)](customize-ui-overview.md) van deze ervaringen kunt aanpassen met uw eigen HTML-en CSS-bestanden.
 
 In dit artikel leert u het volgende:
 
@@ -43,7 +43,7 @@ U maakt een Azure Storage-account en een container en plaatst vervolgens de basi
 Hoewel u uw bestanden op veel verschillende manieren kunt opslaan, slaat u deze op in [Azure Blob-opslag](../storage/blobs/storage-blobs-introduction.md).
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Zorg ervoor dat u de map gebruikt die uw Azure-abonnement bevat. Selecteer het **Directory-en abonnements filter** in het bovenste menu en kies de map die uw abonnement bevat. Deze map wijkt af van de directory die uw Azure B2C-Tenant bevat.
+2. Zorg ervoor dat u de map gebruikt die uw Azure-abonnement bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw abonnement bevat. Deze map wijkt af van de directory die uw Azure B2C-Tenant bevat.
 3. Kies alle services in de linkerbovenhoek van het Azure Portal, zoek en selecteer **opslag accounts**.
 4. Selecteer **Toevoegen**.
 5. Selecteer onder **resource groep**de optie **nieuwe maken**, voer een naam in voor de nieuwe resource groep en klik vervolgens op **OK**.
@@ -127,7 +127,7 @@ Als u de gebruikers interface van de registratie-ervaring wilt aanpassen, kunt u
 In deze zelf studie slaat u de bestanden op die u hebt gemaakt in het opslag account, zodat Azure AD B2C deze kunt openen.
 
 1. Kies **alle services** in de linkerbovenhoek van het Azure Portal, zoek en selecteer **opslag accounts**.
-2. Selecteer het opslag account dat u hebt gemaakt , selecteer blobs en selecteer vervolgens de container die u hebt gemaakt.
+2. Selecteer het opslag account dat u hebt gemaakt, selecteer blobs en selecteer vervolgens de container die u hebt gemaakt.
 3. Selecteer **uploaden**, navigeer naar en selecteer het bestand *Custom-UI. html* en klik vervolgens op **uploaden**.
 
     ![De BLOB-pagina in de portal uploaden met de knop uploaden en gemarkeerde bestanden](./media/tutorial-customize-ui/upload-blob.png)

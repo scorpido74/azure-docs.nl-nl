@@ -1,6 +1,6 @@
 ---
-title: Claims toevoegen en aanpassen van gebruikersinvoer met behulp van aangepaste beleidsregels - Azure Active Directory B2C | Microsoft Docs
-description: Informatie over het aanpassen van de invoer van de gebruiker en claims voor de reis registreren of aanmelden toevoegen in Azure Active Directory B2C.
+title: Claims toevoegen en gebruikers invoer aanpassen met aangepast beleid-Azure Active Directory B2C | Microsoft Docs
+description: Meer informatie over het aanpassen van de gebruikers invoer en het toevoegen van claims aan de traject voor registreren of aanmelden in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,31 +10,31 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ae6d55180785c9407662776a95fcba31f8ba5275
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: e29e2e3e61594870cc9d704d64b1040a4211a520
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835207"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066212"
 ---
-#  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Claims toevoegen en aanpassen van gebruikersinvoer met behulp van aangepaste beleidsregels in Azure Active Directory B2C
+#  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Claims toevoegen en gebruikers invoer aanpassen met aangepaste beleids regels in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In dit artikel, kunt u een nieuwe vermelding voor de gebruiker opgegeven (een claim) toevoegen aan uw proefaccount gebruikersbeleving in Azure Active Directory (Azure AD) B2C.  U configureert de vermelding als een vervolgkeuzelijst en bepalen of dit is verplicht.
+In dit artikel voegt u een nieuwe door de gebruiker opgegeven vermelding (een claim) toe aan de Azure Active Directory B2C van uw registratie gebruiker (Azure AD B2C).  U configureert het item als vervolg keuzelijst en definieert of het vereist is.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voer de stappen in het artikel [aan de slag met beleid voor aangepaste](active-directory-b2c-get-started-custom.md). Test de registreren of aanmelden gebruikersbeleving om u te registreren met een nieuwe lokale account voordat u doorgaat.
+Volg de stappen in het artikel [aan de slag met aangepast beleid](active-directory-b2c-get-started-custom.md). Test de inschrijvings-of aanmeldings traject van de gebruiker om een nieuw lokaal account aan te melden voordat u verdergaat.
 
 ## <a name="add-claims"></a>Claims toevoegen
 
-Initiële gegevens verzamelen uit uw gebruikers wordt bereikt met behulp van de gebruikersbeleving registreren of aanmelden. Aanvullende claims kunnen later worden verzameld met behulp van een gebruikersbeleving van profiel bewerken. Telkens wanneer de Azure AD B2C haalt informatie op rechtstreeks van de gebruiker interactief, betekent dit dat de Identity-Ervaringsframework een zelf-gecontroleerde-provider gebruikt.
+Het verzamelen van initiële gegevens van uw gebruikers wordt bereikt met behulp van de inschrijvings-of aanmeldings traject van de gebruiker. Aanvullende claims kunnen later worden verzameld met behulp van een gebruikers traject voor het bewerken van profielen. Elke keer dat Azure AD B2C informatie rechtstreeks van de gebruiker verzamelt, gebruikt het Framework voor identiteits ervaring de zelfbevestigende provider.
 
 
-### <a name="define-the-claim"></a>De claim te definiëren
+### <a name="define-the-claim"></a>De claim definiëren
 
-Laten we de gebruiker vragen voor hun plaats. Voeg het volgende element aan de **ClaimsSchema** -element in het beleidsbestand TrustFrameworkBase:
+Laten we de gebruiker vragen om hun plaats. Voeg het volgende element toe aan het element **ClaimsSchema** in het TrustFrameworkBase-beleids bestand:
 
 ```xml
 <ClaimType Id="city">
@@ -47,11 +47,11 @@ Laten we de gebruiker vragen voor hun plaats. Voeg het volgende element aan de *
 
 De volgende elementen worden gebruikt voor het definiëren van de claim:
 
-- **DisplayName** -een tekenreeks die de gebruiker gerichte label definieert.
-- **UserHelpText** -helpt de gebruiker weten wat is vereist.
-- **UserInputType** -mag een tekstvak, een selectie van keuzerondje, een vervolgkeuzelijst of een meervoudige selectie.
+- **DisplayName** : een teken reeks die het op de gebruiker gerichte label definieert.
+- **UserHelpText** : helpt de gebruiker te begrijpen wat er nodig is.
+- **UserInputType** : kan een tekstvak, een keuze rondje, een vervolg keuzelijst of een meervoudige selectie zijn.
 
-#### <a name="textbox"></a>Tekstvak
+#### <a name="textbox"></a>TextBox
 
 ```xml
 <ClaimType Id="city">
@@ -79,7 +79,7 @@ De volgende elementen worden gebruikt voor het definiëren van de claim:
 
 #### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
-![Besturingselement voor de vervolgkeuzelijst met verschillende opties voor enkelvoudige selectie](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
+![Besturings element voor vervolg keuzelijst met één selectie meerdere opties weer geven](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -96,7 +96,7 @@ De volgende elementen worden gebruikt voor het definiëren van de claim:
 
 #### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
-![Besturingselement voor meervoudige selectie selectievakje met verschillende opties](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
+![Besturings element selectie vakje met meerdere opties](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -111,9 +111,9 @@ De volgende elementen worden gebruikt voor het definiëren van de claim:
 </ClaimType>
 ```
 
-### <a name="add-the-claim-to-the-user-journey"></a>Toevoegen van de claim de gebruikersbeleving
+### <a name="add-the-claim-to-the-user-journey"></a>De claim toevoegen aan de gebruikers traject
 
-1. Toevoegen van de claim als een `<OutputClaim ClaimTypeReferenceId="city"/>` naar de `LocalAccountSignUpWithLogonEmail` technisch profiel vindt u in de TrustFrameworkBase beleid-bestand. In dit technisch profiel maakt gebruik van de SelfAssertedAttributeProvider.
+1. Voeg de claim toe als `<OutputClaim ClaimTypeReferenceId="city"/>` een aan `LocalAccountSignUpWithLogonEmail` het technische profiel dat is gevonden in het TrustFrameworkBase-beleids bestand. Dit technische profiel maakt gebruik van de SelfAssertedAttributeProvider.
 
     ```xml
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -150,7 +150,7 @@ De volgende elementen worden gebruikt voor het definiëren van de claim:
     </TechnicalProfile>
     ```
 
-2. Toevoegen van de claim aan het technische profiel van de AAD-UserWriteUsingLogonEmail als een `<PersistedClaim ClaimTypeReferenceId="city" />` schrijven van de claim naar de map AAD na het verzamelen van de gebruiker. U kunt deze stap overslaan als u liever niet om vast te leggen van de claim in de map voor toekomstig gebruik.
+2. Voeg de claim toe aan het Aad-UserWriteUsingLogonEmail-technische profiel `<PersistedClaim ClaimTypeReferenceId="city" />` als een om de claim te schrijven naar de Aad-map nadat deze van de gebruiker is verzameld. U kunt deze stap overs Laan als u de claim in de map niet wilt behouden voor toekomstig gebruik.
 
     ```xml
     <!-- Technical profiles for local accounts -->
@@ -186,7 +186,7 @@ De volgende elementen worden gebruikt voor het definiëren van de claim:
     </TechnicalProfile>
     ```
 
-3. Voeg de `<OutputClaim ClaimTypeReferenceId="city" />` claim naar de technische profielen die in de map gelezen wanneer een gebruiker zich aanmeldt.
+3. De `<OutputClaim ClaimTypeReferenceId="city" />` claim toevoegen aan de technische profielen die vanuit de Directory worden gelezen wanneer een gebruiker zich aanmeldt.
 
     ```xml
     <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
@@ -236,7 +236,7 @@ De volgende elementen worden gebruikt voor het definiëren van de claim:
     </TechnicalProfile>
     ```
 
-4. Voeg de `<OutputClaim ClaimTypeReferenceId="city" />` claim naar het bestand SignUporSignIn.xml zodat deze claim wordt verzonden naar de toepassing in het token na een geslaagde gebruikersbeleving.
+4. Voeg de `<OutputClaim ClaimTypeReferenceId="city" />` claim toe aan het bestand SignUporSignIn. XML, zodat deze claim wordt verzonden naar de toepassing in het token na een succes volle gebruikers reis.
 
     ```xml
     <RelyingParty>
@@ -261,18 +261,18 @@ De volgende elementen worden gebruikt voor het definiëren van de claim:
 ## <a name="test-the-custom-policy"></a>Het aangepaste beleid testen
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Zorg ervoor dat u de map met uw Azure AD-tenant door te klikken op de **map- en abonnementsfilter** in het bovenste menu en de map met uw Azure AD-tenant te kiezen.
-3. Kies **alle services** in de linkerbovenhoek van de Azure portal en vervolgens zoeken naar en selecteer **App-registraties**.
-4. Selecteer **Identiteitservaring-Framework (Preview)** .
-5. Selecteer **uploaden aangepast beleid**, en upload vervolgens het voor twee beleidsbestanden die u hebt gewijzigd.
-2. Selecteer het beleid voor registreren of aanmelden geüpload en klikt u op de **nu uitvoeren** knop.
-3. U zou het mogelijk om u te registreren met behulp van een e-mailadres.
+2. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD-Tenant bevat.
+3. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
+4. Selecteer **een framework voor identiteits ervaring (preview-versie)** .
+5. Selecteer **aangepast beleid uploaden**en upload vervolgens de twee beleids bestanden die u hebt gewijzigd.
+2. Selecteer het registratie-of aanmeldings beleid dat u hebt geüpload en klik op de knop **nu uitvoeren** .
+3. U moet zich kunnen aanmelden met een e-mail adres.
 
-De registratie-scherm moet er ongeveer als volgt:
+Het scherm voor de aanmelding moet er ongeveer als volgt uitzien:
 
-![Schermopname van het gewijzigde aanmeldingsoptie](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
+![Scherm afbeelding van gewijzigde registratie optie](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
 
-Het token verzonden naar de toepassing bevat de `city` claim.
+Het token dat teruggestuurd naar uw toepassing bevat `city` de claim.
 
 ```json
 {
@@ -294,11 +294,11 @@ Het token verzonden naar de toepassing bevat de `city` claim.
 }
 ```
 
-## <a name="optional-remove-email-verification"></a>Optioneel: Verwijderen van e-mailverificatie
+## <a name="optional-remove-email-verification"></a>Optioneel: E-mail verificatie verwijderen
 
-Als u wilt overslaan e-mailverificatie, kunt u verwijderen `PartnerClaimType="Verified.Email"`. In dit geval het e-mailadres is vereist maar niet geverifieerd, tenzij 'Vereist' = true wordt verwijderd.  Overweeg zorgvuldig als deze optie geschikt is voor uw use-cases is.
+Als u e-mail verificatie wilt overs Laan `PartnerClaimType="Verified.Email"`, kunt u verwijderen. In dit geval is het e-mail adres vereist, maar niet geverifieerd, tenzij ' vereist ' = waar is verwijderd.  Denk voorzichtig te weten als deze optie geschikt is voor uw use cases.
 
-Geverifieerd met het e-mailbericht is standaard ingeschakeld in de `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` in het beleidsbestand TrustFrameworkBase:
+Geverifieerde e-mail is standaard ingeschakeld in de `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` in het TrustFrameworkBase-beleids bestand:
 
 ```xml
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
@@ -306,4 +306,4 @@ Geverifieerd met het e-mailbericht is standaard ingeschakeld in de `<TechnicalPr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [gebruik aangepaste kenmerken in een aangepast profiel bewerken beleid](active-directory-b2c-create-custom-attributes-profile-edit-custom.md).
+Meer informatie over het [gebruik van aangepaste kenmerken in een aangepast profiel bewerkings beleid](active-directory-b2c-create-custom-attributes-profile-edit-custom.md).

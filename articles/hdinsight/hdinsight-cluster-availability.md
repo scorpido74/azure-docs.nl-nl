@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: tyfox
-ms.openlocfilehash: 07b82f475074f5b55a2a5a93f7a59008476233c8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 153c28dc8a06968dc9dd3cfda021496672a094d5
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934316"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076556"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>De beschik baarheid van clusters bewaken met Ambari-en Azure Monitor-logboeken
 
@@ -34,23 +34,23 @@ Vervolgens wordt u gevraagd om een gebruikers naam en wacht woord voor het aanme
 
 Vervolgens gaat u naar het Ambari-dash board, dat widgets bevat die een aantal metrische gegevens bevatten om u een kort overzicht te geven van de status van uw HDInsight-cluster. In deze widgets worden metrische gegevens weer gegeven, zoals het aantal live DataNodes (werk knooppunten) en het beschik journalnodes (Zookeeper-knoop punt), NameNodes (hoofd knooppunten), evenals de metrische gegevens die specifiek zijn voor bepaalde cluster typen, zoals de uptime van de Resource Manager voor Spark-en Hadoop-clusters.
 
-![Ambari-dash board](media/hdinsight-cluster-availability/apache-ambari-dashboard.png)
+![Apache Ambari-weer gave dash board gebruiken](media/hdinsight-cluster-availability/apache-ambari-dashboard.png)
 
 ### <a name="hosts--view-individual-node-status"></a>Hosts: de status van afzonderlijke knoop punten weer geven
 
 U kunt ook status informatie voor afzonderlijke knoop punten weer geven. Klik op het tabblad **hosts** om een lijst met alle knoop punten in uw cluster weer te geven en Bekijk basis informatie over elk knoop punt. De groene controle links van elke knooppunt naam geeft aan dat alle onderdelen op het knoop punt zijn ingesteld. Als een onderdeel op een knoop punt niet beschikbaar is, ziet u een rode waarschuwings driehoek in plaats van de groene controle.
 
-![Ambari hosts weer geven](media/hdinsight-cluster-availability/apache-ambari-hosts1.png)
+![Weer gave HDInsight Apache Ambari-hosts](media/hdinsight-cluster-availability/apache-ambari-hosts1.png)
 
 U kunt vervolgens op de **naam** van een knoop punt klikken om gedetailleerdere metrische gegevens van de host voor dat specifieke knoop punt weer te geven. In deze weer gave wordt de status/Beschik baarheid van elk afzonderlijk onderdeel weer gegeven.
 
-![Ambari fungeert als host voor één knooppunt weergave](media/hdinsight-cluster-availability/apache-ambari-hosts-node.png)
+![Apache Ambari host weer gave met één knoop punt](media/hdinsight-cluster-availability/apache-ambari-hosts-node.png)
 
 ### <a name="ambari-alerts"></a>Ambari-waarschuwingen
 
 Ambari biedt ook verschillende Configureer bare waarschuwingen waarmee u bepaalde gebeurtenissen kunt melden. Wanneer waarschuwingen worden geactiveerd, worden ze weer gegeven in de linkerbovenhoek van Ambari in een rode badge met het aantal waarschuwingen. Als u op deze badge klikt, wordt een lijst met huidige waarschuwingen weer gegeven.
 
-![Aantal Ambari-waarschuwingen](media/hdinsight-cluster-availability/apache-ambari-alerts.png)
+![Aantal huidige waarschuwingen Apache Ambari](media/hdinsight-cluster-availability/apache-ambari-alerts.png)
 
 Als u een lijst met waarschuwings definities en hun statussen wilt weer geven, klikt u op het tabblad **waarschuwingen** , zoals hieronder wordt weer gegeven.
 
@@ -69,7 +69,7 @@ Ambari biedt veel vooraf gedefinieerde waarschuwingen met betrekking tot Beschik
 
 Als u Details voor een waarschuwing wilt weer geven of criteria wilt wijzigen, klikt u op de **naam** van de waarschuwing. Maak een voor beeld van **DataNode-status samenvatting** . U ziet een beschrijving van de waarschuwing en de specifieke criteria die een waarschuwing of kritieke waarschuwing activeren en het controle-interval voor de criteria. Als u de configuratie wilt bewerken, klikt u op de knop **bewerken** in de rechter bovenhoek van het configuratie venster.
 
-![Configuratie van Ambari-waarschuwingen](media/hdinsight-cluster-availability/ambari-alert-configuration.png)
+![Configuratie van Apache Ambari-waarschuwingen](media/hdinsight-cluster-availability/ambari-alert-configuration.png)
 
 Hier kunt u de beschrijving bewerken en, belang rijker, het controle-interval en de drempel waarden voor waarschuwing of kritieke waarschuwingen.
 
@@ -131,7 +131,7 @@ U kunt ook Azure Monitor waarschuwingen instellen die worden geactiveerd wanneer
 
 Voer op de Blade **Logboeken** de voorbeeld query **niet-beschik bare computers** uit door te klikken op **uitvoeren** op die query, zoals hieronder wordt weer gegeven.
 
-![Voorbeeld query niet-beschik bare computers in Log Analytics werkruimte logboeken](media/hdinsight-cluster-availability/portal-unavailable-computers.png)
+![Voor beeld van Blade ' niet-beschik bare computers ' in Log Analytics werkruimte logboeken](media/hdinsight-cluster-availability/portal-unavailable-computers.png)
 
 Als alle knoop punten beschikbaar zijn, moet deze query 0 resultaten voor nu retour neren. Klik op **nieuwe waarschuwings regel** om te beginnen met het configureren van de waarschuwing voor deze query.
 
@@ -141,7 +141,7 @@ Er zijn drie onderdelen voor een waarschuwing: de *resource* waarvoor u de regel
 
 Klik op de titel van de **voor waarde**, zoals hieronder wordt weer gegeven, om het configureren van de signaal logica te volt ooien.
 
-![Voor waarde waarschuwings regel](media/hdinsight-cluster-availability/portal-condition-title.png)
+![Status voor regel voor maken van portal waarschuwing](media/hdinsight-cluster-availability/portal-condition-title.png)
 
 Hiermee opent u de Blade **signaal logica configureren** .
 
@@ -161,7 +161,7 @@ Klik op **gereed** wanneer u klaar bent met het configureren van de signaal logi
 
 Als u nog geen actie groep hebt, klikt u op **nieuwe maken** onder de sectie **actie groepen** .
 
-![Nieuwe actie groep voor waarschuwings regel](media/hdinsight-cluster-availability/portal-create-new-action-group.png)
+![Waarschuwings regel nieuwe actie groep maken](media/hdinsight-cluster-availability/portal-create-new-action-group.png)
 
 Hiermee opent u de Blade **actie groep toevoegen** . Kies een **naam voor de actie groep**, de **korte naam**, het **abonnement**en de **resource groep.** Kies in de sectie **acties** een **actie naam** en selecteer **e-mail/SMS/push/Voice** als **actie type.**
 
@@ -170,19 +170,19 @@ Hiermee opent u de Blade **actie groep toevoegen** . Kies een **naam voor de act
 
 Hiermee opent u de Blade **e-mail/SMS/push/Voice** . Kies een **naam** voor de ontvanger, **Schakel** het vak **e-mail** in en typ een e-mail adres waarnaar de waarschuwing moet worden verzonden. Klik op **OK** op de Blade **e-mail/SMS/push/Voice** en klik vervolgens op de Blade **actie groep toevoegen** om het configureren van uw actie groep te volt ooien.
 
-![Waarschuwings regel actie groep toevoegen](media/hdinsight-cluster-availability/portal-add-action-group.png)
+![Actie groep voor toevoegen van waarschuwings regel maken](media/hdinsight-cluster-availability/portal-add-action-group.png)
 
 Nadat deze Blades zijn gesloten, ziet u dat uw actie groep wordt weer gegeven onder de sectie **actie groepen** . Vul tot slot de **sectie waarschuwings Details** in door een naam en **Beschrijving** voor de **waarschuwings regel** te typen en een **Ernst**te kiezen.
 Klik op **waarschuwings regel maken** om te volt ooien.
 
-![Maken van waarschuwings regel volt ooien](media/hdinsight-cluster-availability/portal-create-alert-rule-finish.png)
+![De waarschuwings regel voor het maken van de portal is voltooid](media/hdinsight-cluster-availability/portal-create-alert-rule-finish.png)
 
 > [!TIP]
 > De mogelijkheid om **Ernst** op te geven is een krachtig hulp programma dat kan worden gebruikt bij het maken van meerdere waarschuwingen. U kunt bijvoorbeeld één waarschuwing maken om een waarschuwing te genereren (Ernst 1) als één hoofd knooppunt wordt weer gegeven en een andere waarschuwing die kritiek (Ernst 0) veroorzaakt in het onwaarschijnlijke geval dat beide hoofd knooppunten omlaag gaan.
 
 Wanneer aan de voor waarde voor deze waarschuwing wordt voldaan, wordt de waarschuwing geactiveerd en ontvangt u een e-mail bericht met de details van de waarschuwing, zoals:
 
-![E-mail waarschuwing Azure Monitor](media/hdinsight-cluster-availability/portal-oms-alert-email.png)
+![Voor beeld van een e-mail bericht Azure Monitor](media/hdinsight-cluster-availability/portal-oms-alert-email.png)
 
 U kunt ook alle waarschuwingen weer geven die zijn geactiveerd, gegroepeerd op Ernst, door naar de Blade **waarschuwingen** in uw **log Analytics-werk ruimte**te gaan.
 

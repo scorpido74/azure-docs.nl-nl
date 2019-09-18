@@ -1,10 +1,10 @@
 ---
-title: Wijzigingen van de apparaatnaam Linux-VM in Azure oplossen | Microsoft Docs
-description: Wordt uitgelegd waarom wijzigen-namen van Linux-VM-apparaat en hoe u het probleem op te lossen.
+title: Problemen met de naam wijzigingen van Linux-VM'S in azure oplossen | Microsoft Docs
+description: In dit artikel wordt uitgelegd waarom de namen van Linux VM-apparaten worden gewijzigd en hoe het probleem kan worden opgelost.
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines-linux
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 0350b6bdc990ed6c2de60e3e98c3768b18d0d636
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7d8a7e7e88837214042fb8f1c109c0b93bfe771b
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710424"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058209"
 ---
-# <a name="troubleshoot-linux-vm-device-name-changes"></a>Wijzigingen van de apparaatnaam Linux-VM oplossen
+# <a name="troubleshoot-linux-vm-device-name-changes"></a>Naam wijzigingen van Linux VM-apparaat oplossen
 
-In dit artikel wordt uitgelegd waarom apparaatnamen wijzigen nadat u een Linux-VM opnieuw opstarten of de gegevensschijven koppelen. Dit artikel bevat ook oplossingen voor dit probleem.
+In dit artikel wordt uitgelegd waarom apparaatnamen worden gewijzigd nadat u een virtuele Linux-machine opnieuw hebt opgestart of de gegevens schijven opnieuw koppelt. Het artikel bevat ook oplossingen voor dit probleem.
 
 ## <a name="symptoms"></a>Symptomen
-U kunt de volgende problemen kan optreden bij het uitvoeren van Linux-VM's in Microsoft Azure:
+U kunt de volgende problemen ondervinden bij het uitvoeren van Linux-Vm's in Microsoft Azure:
 
 - De virtuele machine kan niet worden opgestart na het opnieuw opstarten.
-- Als gegevensschijven worden losgekoppeld en opnieuw gekoppeld, worden de namen van schijf gewijzigd.
-- Een toepassing of script dat verwijst naar een schijf met behulp van de naam van het apparaat is mislukt omdat de naam van het apparaat is gewijzigd.
+- Wanneer gegevens schijven worden losgekoppeld en opnieuw worden gekoppeld, worden de namen van de schijf apparaten gewijzigd.
+- Een toepassing of script dat verwijst naar een schijf met behulp van de apparaatnaam mislukt, omdat de naam van het apparaat is gewijzigd.
 
 ## <a name="cause"></a>Oorzaak
 
-Apparaatpaden in Linux niet worden gegarandeerd consistent via opnieuw wordt opgestart. Apparaatnamen bestaan uit cijfers (letters) van de primaire en secundaire cijfers. Wanneer een nieuw apparaat wordt gedetecteerd door het stuurprogramma voor Linux-opslag, het stuurprogramma wijst primaire en secundaire cijfers van het beschikbare bereik toe aan het apparaat. Wanneer een apparaat wordt verwijderd, wordt de apparaat-getallen worden vrijgemaakt voor hergebruik.
+Device-paden in Linux zijn niet gegarandeerd consistent tijdens het opnieuw opstarten. Apparaatnamen bestaan uit hoofd letters en kleine getallen. Wanneer het stuur programma van het Linux-opslag apparaat een nieuw apparaat detecteert, wijst het stuur programma primaire en secundaire nummers van het beschik bare bereik toe aan het apparaat. Wanneer een apparaat wordt verwijderd, worden de nummers van de apparaten vrij voor hergebruik.
 
-Het probleem treedt op omdat het apparaat scannen in Linux is gepland door de SCSI-subsysteem worden asynchroon uitgevoerd. Als gevolg hiervan kan de padnaam van een apparaat variëren tussen opnieuw wordt opgestart.
+Het probleem treedt op omdat het scannen van apparaten in Linux wordt gepland door het SCSI-subsysteem om asynchroon te worden uitgevoerd. Als gevolg hiervan kan de padnaam van een apparaat variëren tijdens het opnieuw opstarten.
 
 ## <a name="solution"></a>Oplossing
 
-U lost dit probleem, gebruikt u permanente naming. Er zijn vier manieren waarop u met de naamgeving van permanente: door het bestandssysteem label, door UUID, -ID of -pad. Het is raadzaam om met behulp van het bestandssysteem label of de UUID voor Azure Linux VM's.
+U kunt dit probleem oplossen door permanente naamgeving te gebruiken. Er zijn vier manieren om permanente naamgeving te gebruiken: op bestandssysteem label, op UUID, op ID of op pad. U kunt het beste het bestandssysteem label of de UUID voor virtuele Azure Linux-machines gebruiken.
 
-De meeste distributies bieden de `fstab` **nofail** of **nobootwait** parameters. Deze parameters kunt u een systeem om op te starten als de schijf koppelen bij het opstarten is mislukt. Raadpleeg de documentatie bij uw distributie voor meer informatie over deze parameters. Zie voor meer informatie over het configureren van een Linux-VM voor het gebruik van een UUID wanneer u een gegevensschijf toevoegen [verbinding maken met de Linux-VM om te koppelen van de nieuwe schijf](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk).
+**De meeste** distributies bieden `fstab` de **nobootwait** -para meters. Met deze para meters kan een systeem worden opgestart wanneer de schijf niet kan worden gekoppeld bij het opstarten. Raadpleeg uw distributie documentatie voor meer informatie over deze para meters. Zie [verbinding maken met de Linux-VM voor het koppelen van de nieuwe schijf](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)voor meer informatie over het configureren van een virtuele Linux-machine voor het gebruik van een UUID wanneer u een gegevens schijf toevoegt.
 
-Wanneer de Azure Linux-agent is geïnstalleerd op een virtuele machine, de agent Udev-regels gebruikt om een set symbolische koppelingen onder het pad /dev/disk/azure samen te stellen. Toepassingen en scripts kunt u de Udev-regels gebruiken om schijven die zijn gekoppeld aan de virtuele machine, samen met het schijftype en schijf LUN's te identificeren.
+Wanneer de Azure Linux-agent is geïnstalleerd op een virtuele machine, gebruikt de agent udev-regels voor het samen stellen van een set symbolische koppelingen onder het pad/dev/disk/Azure. Toepassingen en scripts gebruiken udev-regels voor het identificeren van schijven die zijn gekoppeld aan de virtuele machine, samen met het schijf type en schijf-Lun's.
 
-Als u al uw fstab zodanig dat uw virtuele machine niet opgestart wordt en u met uw virtuele machine zich niet SSH hebt bewerkt, kunt u de [seriële Console van virtuele machine](./serial-console-linux.md) in te voeren [modus voor één gebruiker](./serial-console-grub-single-user-mode.md) en uw fstab wijzigen.
+Als u uw fstab al op een zodanige manier hebt bewerkt dat uw virtuele machine niet wordt opgestart en u niet naar uw VM kunt werken, kunt u de [VM-seriële console](./serial-console-linux.md) gebruiken om de [modus voor één gebruiker](./serial-console-grub-single-user-mode.md) in te voeren en uw fstab aan te passen.
 
-### <a name="identify-disk-luns"></a>Schijf LUN's identificeren
+### <a name="identify-disk-luns"></a>Schijf-Lun's identificeren
 
-Toepassingen gebruiken LUN's om alle van de gekoppelde schijven te zoeken en te maken van de symbolische koppelingen. De Azure Linux-agent bevat Udev-regels die symbolische koppelingen van een LUN ingesteld op de apparaten:
+Toepassingen gebruiken Lun's om alle gekoppelde schijven te vinden en om symbolische koppelingen te maken. De Azure Linux-agent bevat udev-regels waarmee symbolische koppelingen van een LUN naar de apparaten worden ingesteld:
 
     $ tree /dev/disk/azure
 
@@ -67,7 +67,7 @@ Toepassingen gebruiken LUN's om alle van de gekoppelde schijven te zoeken en te 
         ├── lun1-part2 -> ../../../sdd2
         └── lun1-part3 -> ../../../sdd3
 
-LUN-gegevens van de Linux-Gast-account is opgehaald met behulp van `lsscsi` of een vergelijkbaar hulpprogramma:
+LUN-informatie van het Linux-gast account wordt opgehaald `lsscsi` met of een vergelijkbaar hulp programma:
 
       $ sudo lsscsi
 
@@ -81,7 +81,7 @@ LUN-gegevens van de Linux-Gast-account is opgehaald met behulp van `lsscsi` of e
 
       [5:0:0:1] disk Msft Virtual Disk 1.0 /dev/sdd
 
-De Gast LUN-informatie wordt gebruikt met metagegevens van de Azure-abonnement te vinden van de VHD in Azure Storage dat het partitioneren van gegevens bevat. Bijvoorbeeld, kunt u de `az` CLI:
+De gast-LUN-informatie wordt gebruikt met meta gegevens van het Azure-abonnement om de VHD te vinden in Azure Storage die de partitie gegevens bevat. U kunt bijvoorbeeld de `az` CLI gebruiken:
 
     $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
     [
@@ -111,9 +111,9 @@ De Gast LUN-informatie wordt gebruikt met metagegevens van de Azure-abonnement t
       }
     ]
 
-### <a name="discover-filesystem-uuids-by-using-blkid"></a>Bestandssysteem UUID's detecteren met behulp van blkid
+### <a name="discover-filesystem-uuids-by-using-blkid"></a>Bestandssysteem-UUID detecteren met behulp van blkid
 
-Toepassingen en scripts en de uitvoer van lezen `blkid`, of vergelijkbare gegevensbronnen, om symbolische koppelingen in het pad /dev samen te stellen. De uitvoer ziet u de UUID's van alle schijven die zijn gekoppeld aan de virtuele machine en hun bijbehorende apparaatbestand:
+Toepassingen en scripts lezen de uitvoer van `blkid`of soort gelijke informatie bronnen om symbolische koppelingen te maken in het pad/dev. In de uitvoer ziet u de UUID van alle schijven die zijn gekoppeld aan de virtuele machine en het bijbehorende apparaatbestand:
 
     $ sudo blkid -s UUID
 
@@ -122,7 +122,7 @@ Toepassingen en scripts en de uitvoer van lezen `blkid`, of vergelijkbare gegeve
     /dev/sdb1: UUID="176250df-9c7c-436f-94e4-d13f9bdea744"
     /dev/sdc1: UUID="b0048738-4ecc-4837-9793-49ce296d2692"
 
-De Azure Linux agent Udev-regels maken een set symbolische koppelingen onder het pad /dev/disk/azure:
+De udev-regels van de Azure Linux-agent maken een set symbolische koppelingen onder het pad/dev/disk/Azure:
 
     $ ls -l /dev/disk/azure
 
@@ -132,9 +132,9 @@ De Azure Linux agent Udev-regels maken een set symbolische koppelingen onder het
     lrwxrwxrwx 1 root root  9 Jun  2 23:17 root -> ../../sda
     lrwxrwxrwx 1 root root 10 Jun  2 23:17 root-part1 -> ../../sda1
 
-De koppelingen toepassingen gebruiken om het apparaat van de schijf opstarten en de bronschijf (tijdelijke) te identificeren. In Azure ziet de toepassingen in de paden /dev/disk/azure/root-part1 of /dev/disk/azure-resource-part1 voor het detecteren van deze partities.
+Toepassingen gebruiken de koppelingen voor het identificeren van het opstart schijf apparaat en de bron schijf. In azure moeten toepassingen in de/dev/disk/Azure/root-part1-of/dev/disk/Azure-resource-part1-paden zoeken om deze partities te ontdekken.
 
-Alle aanvullende partities uit de `blkid` lijst zich bevinden op een gegevensschijf. Toepassingen de UUID voor deze partities beheren en gebruiken van een pad voor het detecteren van de naam van het apparaat tijdens runtime:
+Eventuele extra partities van de `blkid` lijst bevinden zich op een gegevens schijf. Toepassingen behouden de UUID voor deze partities en gebruiken een pad om de naam van het apparaat te detecteren tijdens runtime:
 
     $ ls -l /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692
 
@@ -143,7 +143,7 @@ Alle aanvullende partities uit de `blkid` lijst zich bevinden op een gegevenssch
 
 ### <a name="get-the-latest-azure-storage-rules"></a>De meest recente Azure Storage-regels ophalen
 
-Als u de meest recente Azure Storage-regels, voer de volgende opdrachten:
+Voer de volgende opdrachten uit om de meest recente Azure Storage regels op te halen:
 
     # sudo curl -o /etc/udev/rules.d/66-azure-storage.rules https://raw.githubusercontent.com/Azure/WALinuxAgent/master/config/66-azure-storage.rules
     # sudo udevadm trigger --subsystem-match=block
@@ -152,8 +152,8 @@ Als u de meest recente Azure Storage-regels, voer de volgende opdrachten:
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
-- [Ubuntu: Met behulp van UUID](https://help.ubuntu.com/community/UsingUUID)
+- [Ubuntu: UUID gebruiken](https://help.ubuntu.com/community/UsingUUID)
 - [Red Hat: Permanente naamgeving](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/persistent_naming.html)
-- [Linux: Wat UUID's voor u kunnen betekenen](https://www.linux.com/news/what-uuids-can-do-you)
-- [Udev: Inleiding tot beheer van apparaten in een moderne Linux-systeem](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system)
+- [Spreek Wat UUID voor u kan doen](https://www.linux.com/news/what-uuids-can-do-you)
+- [Udev Inleiding tot Apparaatbeheer in een modern Linux-systeem](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system)
 

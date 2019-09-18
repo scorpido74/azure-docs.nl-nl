@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 6cac4bd05f2acf5b11a8235a4bc1e0d09e0c4dc7
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 6d92ebc743bae97ecfa1591add27f470792dcafc
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885937"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037172"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Zelfstudie: Apache Kafka-beleidsregels configureren in HDInsight met Enterprise Security Package (preview)
 
@@ -36,7 +36,7 @@ Een [HDInsight Kafka-cluster met Enterprise Security Package](./apache-domain-jo
 
 2. Meld u aan met uw beheerdersreferenties voor Azure Active Directory (AD). Deze referenties zijn niet hetzelfde als de referenties voor het HDInsight-cluster of de SSH-referenties voor het Linux HDInsight knooppunt.
 
-   ![Beheerinterface van Apache Ranger](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
+   ![Gebruikers interface van HDInsight Apache zwerver-beheerder](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
 
 ## <a name="create-domain-users"></a>Domeingebruikers maken
 
@@ -183,7 +183,7 @@ Op basis van de geconfigureerde Ranger-beleidsregels kan **sales_user** het onde
 
 9. Bekijk de controlegebeurtenissen voor toegang vanuit de gebruikersinterface van Ranger.
 
-   ![Controle van beleid vanuit de Ranger-gebruikersinterface](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   ![Access-gebeurtenissen voor het controleren van gebruikers beleidsregels voor Zwerver ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

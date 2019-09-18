@@ -1,6 +1,6 @@
 ---
-title: Integreren met Azure beheerde identiteiten | Microsoft Docs
-description: Informatie over het gebruik van Azure beheerde identiteiten te verifiëren met toegang tot Azure App-configuratie
+title: Integreren met door Azure beheerde identiteiten | Microsoft Docs
+description: Meer informatie over het gebruik van door Azure beheerde identiteiten om te verifiëren en toegang te krijgen tot Azure-app configuratie
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -13,61 +13,63 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 3977991386dbcd07e92f21d1ac541f486b4f7f0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4318c4b4d8f1b1f0974d0fae0a2ae5bd6e94b593
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393650"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076539"
 ---
-# <a name="integrate-with-azure-managed-identities"></a>Integreren met Azure beheerde identiteiten
+# <a name="integrate-with-azure-managed-identities"></a>Integreren met door Azure beheerde identiteiten
 
-Azure Active Directory [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) vereenvoudigt het beheer van geheimen voor uw cloudtoepassing. Met een beheerde identiteit, kunt u uw code instellen met de service-principal die is gemaakt voor de Azure compute-service waarop het wordt uitgevoerd. U kunt een beheerde identiteit gebruiken in plaats van een afzonderlijke referenties die zijn opgeslagen in Azure Key Vault of een lokale verbindingsreeks. 
+Met Azure Active Directory [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) kunt u het beheer van geheimen vereenvoudigen voor uw Cloud toepassing. Met een beheerde identiteit kunt u uw code instellen voor het gebruik van de service-principal die is gemaakt voor de service Azure Compute waarop deze wordt uitgevoerd. U gebruikt een beheerde identiteit in plaats van een afzonderlijke referentie die is opgeslagen in Azure Key Vault of een lokale connection string. 
 
-Azure App-configuratie en de .NET Core, .NET en Java Spring-clientbibliotheken worden geleverd met ondersteuning voor beheerde service-identiteiten (MSI) die is ingebouwd in deze. Hoewel u niet verplicht om deze te gebruiken, hoeft MSI u voor een toegangstoken met geheimen. Uw code heeft alleen het service-eindpunt voor een appconfiguratie opslaan voor toegang tot het kennen. U kunt deze URL insluiten in uw code rechtstreeks zonder de gevolgen van het blootstellen van een geheim.
+Azure-app configuratie en de .NET core-, .NET-en Java lente-client bibliotheken worden geleverd met beheerde service-identiteit (MSI) ingebouwde ondersteuning. Hoewel u dit niet nodig hebt, kunt u met MSI geen toegangs tokens meer gebruiken die geheimen bevatten. Uw code moet alleen het service-eind punt voor een app-configuratie archief weten om het te openen. U kunt deze URL rechtstreeks insluiten in uw code, zonder dat u een geheim weergeeft.
 
-In deze zelfstudie leert hoe u kunt profiteren van MSI voor toegang tot App-configuratie. Dit is gebaseerd op de web-app die is geïntroduceerd in de quickstarts. Voordat u doorgaat, voltooien [maken van een ASP.NET Core-app met App-configuratie](./quickstart-aspnet-core-app.md) eerste.
+In deze zelfstudie leert hoe u kunt profiteren van MSI voor toegang tot App-configuratie. Dit is gebaseerd op de web-app die is geïntroduceerd in de quickstarts. Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configuratie](./quickstart-aspnet-core-app.md) .
 
-Een code-editor kunt u de stappen in deze zelfstudie doet. [Visual Studio Code](https://code.visualstudio.com/) is een uitstekende optie beschikbaar is op Windows, macOS en Linux-platforms.
+U kunt elke code-editor gebruiken om de stappen in deze zelf studie uit te voeren. [Visual Studio code](https://code.visualstudio.com/) is een uitstekende optie die beschikbaar is op de Windows-, macOS-en Linux-platformen.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een beheerde identiteit toegang verlenen aan App-configuratie.
-> * Uw app configureren voor een beheerde identiteit gebruiken wanneer u verbinding met App-configuratie maken.
+> * Verleen een beheerde identiteit toegang tot de app-configuratie.
+> * Configureer uw app voor het gebruik van een beheerde identiteit wanneer u verbinding maakt met de app-configuratie.
 
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt het volgende nodig om deze zelfstudie te voltooien:
 
-* [.NET Core SDK](https://www.microsoft.com/net/download/windows).
-* [Azure Cloud Shell geconfigureerd](https://docs.microsoft.com/azure/cloud-shell/quickstart).
+* [.Net core SDK](https://www.microsoft.com/net/download/windows).
+* [Azure Cloud shell geconfigureerd](https://docs.microsoft.com/azure/cloud-shell/quickstart).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="add-a-managed-identity"></a>Een beheerde identiteit toevoegen
 
-Als u een beheerde identiteit in de portal instelt, moet u eerst maken van een toepassing als normale en schakel vervolgens de functie.
+Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toepassing als normaal en schakelt u de functie in.
 
-1. Maak een app in de [Azure-portal](https://portal.azure.com) zoals u gewend bent. Ga naar het in de portal.
+1. Maak een App Services-exemplaar in het [Azure Portal](https://portal.azure.com) zoals u dat gewend bent. Ga naar de portal.
 
-2. Schuif omlaag naar de **instellingen** groep in het linkerdeelvenster en selecteer **identiteit**.
+2. Schuif omlaag naar de **instellingen** groep in het linkerdeel venster en selecteer **identiteit**.
 
-3. Op de **systeem toegewezen** tabblad **Status** naar **op** en selecteer **opslaan**.
+3. Schakel op het tabblad **toegewezen systeem** de optie **status** in **op** aan en selecteer **Opslaan**.
+
+4. Antwoord **Ja** wanneer u wordt gevraagd door het systeem toegewezen beheerde identiteit in te scha kelen.
 
     ![Stel beheerde identiteit in App Service in](./media/set-managed-identity-app-service.png)
 
 ## <a name="grant-access-to-app-configuration"></a>Verleen toegang tot de App-configuratie
 
-1. In de [Azure-portal](https://portal.azure.com), selecteer **alle resources** en selecteert u de app-configuratiearchief, dat u in de Quick Start hebt gemaakt.
+1. Selecteer in het [Azure Portal](https://portal.azure.com) **alle resources** en selecteer de app-configuratie opslag die u hebt gemaakt in de Quick Start.
 
 2. Selecteer **toegangsbeheer (IAM)** .
 
-3. Op de **toegang controleren** tabblad **toevoegen** in de **roltoewijzing toevoegen** UI-kaart.
+3. Klik op het tabblad **toegang controleren** op **toevoegen** in de gebruikers interface van de **roltoewijzing toevoegen** .
 
-4. Onder **rol**, selecteer **Inzender**. Onder **toegang toewijzen aan**, selecteer **App Service** onder **door het systeem toegewezen beheerde identiteit**.
+4. Selecteer onder **rol** **Inzender**. Onder **toegang toewijzen aan**selecteert u **app service** onder door het **systeem toegewezen beheerde identiteit**.
 
-5. Onder **abonnement**, selecteer uw Azure-abonnement. Selecteer de resource App Service voor uw app.
+5. Selecteer uw Azure-abonnement onder **abonnement**. Selecteer de App Service Resource voor uw app.
 
 6. Selecteer **Opslaan**.
 
@@ -75,7 +77,9 @@ Als u een beheerde identiteit in de portal instelt, moet u eerst maken van een t
 
 ## <a name="use-a-managed-identity"></a>Een beheerde identiteit gebruiken
 
-1. Open *appsettings.json*, en voeg het volgende script toe. Vervang  *\<service_endpoint >* , met inbegrip van de vierkante haken, de URL naar het opslaan van de app-configuratie:
+1. Zoek de URL naar de app-configuratie in het configuratie scherm van de Azure Portal en klik vervolgens op het tabblad **toegangs toetsen** .
+
+2. Open *appSettings. json*en voeg het volgende script toe. *Vervang\<service_endpoint >* , met inbegrip van de haakjes, door de URL naar uw app-configuratie archief. 
 
     ```json
     "AppConfig": {
@@ -83,7 +87,7 @@ Als u een beheerde identiteit in de portal instelt, moet u eerst maken van een t
     }
     ```
 
-2. Open *Program.cs*, en werk de `CreateWebHostBuilder` methode door het vervangen van de `config.AddAzureAppConfiguration()` methode.
+3. Open *Program.cs*en werk de `CreateWebHostBuilder` methode bij door de `config.AddAzureAppConfiguration()` methode te vervangen.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -103,27 +107,34 @@ Als u een beheerde identiteit in de portal instelt, moet u eerst maken van een t
 
 ## <a name="deploy-from-local-git"></a>Implementeren vanuit lokale Git
 
-De eenvoudigste manier om in te schakelen van lokale Git-implementatie voor uw app met de Kudu-build-server is met Azure Cloud Shell.
+De eenvoudigste manier om lokale Git-implementatie voor uw app in te scha kelen met de kudu-buildserver is door gebruik te maken van Azure Cloud Shell.
 
 ### <a name="configure-a-deployment-user"></a>Een implementatiegebruiker configureren
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
 ### <a name="enable-local-git-with-kudu"></a>Lokale Git met Kudu inschakelen
+Als u nog geen lokale Git-opslag plaats voor uw app hebt, moet u er een initialiseren door de volgende opdrachten uit te voeren vanuit de projectmap van uw app:
 
-Als u lokale Git-implementatie voor uw app met de Kudu-build-server, voert u [ `az webapp deployment source config-local-git` ](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) in Cloud Shell.
+```cmd
+git init
+git add .
+git commit -m "Initial version"
+```
+
+Als u lokale Git-implementatie voor uw app wilt inschakelen met de kudu- [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) buildserver, voert u in Cloud shell uit.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
 ```
 
-Voer voor het maken een app met Git in plaats daarvan [ `az webapp create` ](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) in Cloud Shell met de `--deployment-local-git` parameter.
+Als u in plaats daarvan een app met Git wilt [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) maken, voert u `--deployment-local-git` in Cloud shell uit met de para meter.
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group <group_name> --plan <plan_name> --deployment-local-git
 ```
 
-De `az webapp create` opdracht biedt u iets die vergelijkbaar is met de volgende uitvoer:
+De `az webapp create` opdracht geeft een resultaat vergelijkbaar met de volgende uitvoer:
 
 ```json
 Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
@@ -149,17 +160,17 @@ Voeg, eenmaal terug in het _lokale terminalvenster_, een externe Azure-instantie
 git remote add azure <url>
 ```
 
-Push naar de externe Azure-instantie om uw app te implementeren met de volgende opdracht. Wanneer u wordt gevraagd om een wachtwoord, typt u het wachtwoord die u hebt gemaakt in [een implementatiegebruiker configureren](#configure-a-deployment-user). Gebruik niet het wachtwoord dat u zich aanmeldt bij Azure portal gebruikt.
+Push naar de externe Azure-instantie om uw app te implementeren met de volgende opdracht. Wanneer u wordt gevraagd om een wacht woord, voert u het wacht woord in dat u hebt gemaakt in [een implementatie gebruiker configureren](#configure-a-deployment-user). Gebruik niet het wacht woord dat u gebruikt om u aan te melden bij de Azure Portal.
 
 ```bash
 git push azure master
 ```
 
-Runtime-specifieke automatisering in de uitvoer, zoals MSBuild voor ASP.NET, ziet u mogelijk `npm install` voor Node.js, en `pip install` voor Python.
+Mogelijk ziet u runtime-specifieke automatisering in de uitvoer, zoals MSBuild voor ASP.net, `npm install` node. js en `pip install` voor python.
 
 ### <a name="browse-to-the-azure-web-app"></a>Bladeren naar de Azure-web-app
 
-Blader naar uw web-app met behulp van een browser om te controleren dat de inhoud wordt geïmplementeerd.
+Blader naar uw web-app met behulp van een browser om te controleren of de inhoud is geïmplementeerd.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -169,7 +180,7 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="use-managed-identity-in-other-languages"></a>Beheerde identiteit gebruiken in andere talen
 
-App-configuratie-providers voor .NET Framework en Java Spring hebben ook ingebouwde ondersteuning voor beheerde identiteit. In dergelijke gevallen gebruikt u uw app opslaan van de configuratie van URL-eindpunt in plaats van de volledige verbindingsreeks bij het configureren van een provider. Geef bijvoorbeeld de volgende instellingen in voor de .NET Framework-consoletoepassing in de Quick Start hebt gemaakt, de *App.config* bestand:
+App-configuratie-providers voor .NET Framework en Java Spring hebben ook ingebouwde ondersteuning voor beheerde identiteit. In deze gevallen gebruikt u het URL-eind punt van uw app-configuratie archief in plaats van de volledige connection string wanneer u een provider configureert. Voor de .NET Framework-console-app die u in de Quick Start hebt gemaakt, geeft u bijvoorbeeld de volgende instellingen op in het bestand *app. config* :
 
 ```xml
     <configSections>

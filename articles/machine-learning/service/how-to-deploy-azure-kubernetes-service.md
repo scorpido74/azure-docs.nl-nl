@@ -1,7 +1,7 @@
 ---
 title: Modellen implementeren in azure Kubernetes service
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het implementeren van uw Azure Machine Learning-service modellen als een webservice met behulp van de Azure Kubernetes-service.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het implementeren van uw Azure Machine Learning-modellen als een webservice met behulp van de Azure Kubernetes-service.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 302fad84a2f0443fb639e57d7bb0cfddef4c3443
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: c32560f7bb182ac347e9e5a71b53b57cf80fac38
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858744"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034628"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Een model implementeren in een Azure Kubernetes service-cluster
 
-Meer informatie over het gebruik van de Azure Machine Learning-service voor het implementeren van een model als een webservice op Azure Kubernetes service (AKS). De Azure Kubernetes-service is geschikt voor grootschalige productie-implementaties. Gebruik de Azure Kubernetes-service als u een of meer van de volgende mogelijkheden nodig hebt:
+Meer informatie over het gebruik van Azure Machine Learning voor het implementeren van een model als een webservice op Azure Kubernetes service (AKS). De Azure Kubernetes-service is geschikt voor grootschalige productie-implementaties. Gebruik de Azure Kubernetes-service als u een of meer van de volgende mogelijkheden nodig hebt:
 
 - __Snelle reactie tijd__.
 - Automatisch __schalen__ van de geïmplementeerde service.
@@ -30,15 +30,15 @@ Meer informatie over het gebruik van de Azure Machine Learning-service voor het 
 
 Wanneer u implementeert in azure Kubernetes service, implementeert u naar een AKS-cluster dat is __verbonden met uw werk ruimte__. Er zijn twee manieren om een AKS-cluster te verbinden met uw werk ruimte:
 
-* Maak het AKS-cluster met behulp van de SDK van de Azure Machine Learning-service, de Machine Learning CLI, de [Azure Portal](https://portal.azure.com) of de [pagina voor het land van de werk ruimte (preview)](https://ml.azure.com). Dit proces verbindt automatisch het cluster met de werk ruimte.
-* Koppel een bestaand AKS-cluster aan uw Azure Machine Learning service-werk ruimte. Een cluster kan worden gekoppeld met behulp van de Azure Machine Learning Service SDK, Machine Learning CLI of de Azure Portal.
+* Maak het AKS-cluster met behulp van de Azure Machine Learning SDK, de Machine Learning CLI, de [Azure Portal](https://portal.azure.com) of de [pagina voor het land van de werk ruimte (preview)](https://ml.azure.com). Dit proces verbindt automatisch het cluster met de werk ruimte.
+* Koppel een bestaand AKS-cluster aan uw Azure Machine Learning-werk ruimte. Een cluster kan worden gekoppeld met behulp van de Azure Machine Learning SDK, Machine Learning CLI of de Azure Portal.
 
 > [!IMPORTANT]
 > Het maken of verzenden van een bijlage is een eenmalige taak. Zodra een AKS-cluster is verbonden met de werk ruimte, kunt u het gebruiken voor implementaties. U kunt het AKS-cluster loskoppelen of verwijderen als u het niet meer nodig hebt. Als detatched of verwijderd is, kunt u niet meer implementeren naar het cluster.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een werkruimte van Azure Machine Learning-service. Zie [een Azure machine learning service-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
+- Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
 
 - Een machine learning model dat in uw werk ruimte is geregistreerd. Als u geen geregistreerd model hebt, raadpleegt u [hoe en hoe u modellen implementeert](how-to-deploy-and-where.md).
 
@@ -117,7 +117,7 @@ Zie voor meer informatie de computetarget voor het maken van een ASK-verwijzing 
 Als u al een AKS-cluster in uw Azure-abonnement hebt en dit versie 1.12. # # is, kunt u het gebruiken om uw installatie kopie te implementeren.
 
 > [!TIP]
-> De bestaande AKS-cluster kan zich in een Azure-regio bevinden dan uw Azure Machine Learning service-werk ruimte.
+> Het bestaande AKS-cluster kan zich in een Azure-regio bevinden dan uw Azure Machine Learning-werk ruimte.
 >
 > Als u uw AKS-cluster met behulp van een Azure Virtual Network wilt beveiligen, moet u eerst het virtuele netwerk maken. Zie voor meer informatie [beveiligd experimenten en demijnen met Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).
 
@@ -220,7 +220,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 Zie voor meer informatie de referentie [AZ ml model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) . 
 
-### <a name="using-vs-code"></a>VS code gebruiken
+### <a name="using-vs-code"></a>VS Code gebruiken
 
 Zie voor meer informatie over het gebruik van VS code [implementeren naar AKS via de VS code-extensie](how-to-vscode-tools.md#deploy-and-manage-models).
 

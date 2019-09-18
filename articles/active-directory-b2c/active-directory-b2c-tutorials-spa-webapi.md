@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b53ce30f4c49580bcd8ad3e259adf0300d8bd4a6
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 6d354ab25125b0df90ac3d6852d7eafe5d5aba46
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369323"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064697"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Zelfstudie: Toegang verlenen aan een web-API van ASP.NET Core vanuit een app met één pagina met behulp van Azure Active Directory B2C
 
-In deze zelf studie leert u hoe u een Azure Active Directory (Azure AD) ASP.NET Core Web-API-resource aanroept vanuit een toepassing met één pagina.
+In deze zelf studie leert u hoe u een ASP.NET Core Web-API-resource van Azure Active Directory B2C (Azure AD B2C) aanroept vanuit een toepassing met één pagina.
 
 In deze zelfstudie leert u het volgende:
 
@@ -41,7 +41,7 @@ In deze zelfstudie leert u het volgende:
 Web-API-resources moeten worden geregistreerd in uw tenant voordat deze in staat zijn om beveiligde resourceaanvragen door clienttoepassingen die een toegangstoken aanbieden, kunnen accepteren en erop kunnen reageren.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Zorg ervoor dat u de map gebruikt met uw Azure AD B2C-tenant door te klikken op het **Map- en abonnementsfilter** in het bovenste menu en de map te kiezen waarin uw tenant zich bevindt.
+1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer **Toepassingen** en vervolgens **Toevoegen**.
 1. Voer een naam in voor de toepassing. Bijvoorbeeld *webapi1*.

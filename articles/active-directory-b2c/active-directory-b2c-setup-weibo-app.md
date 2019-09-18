@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 428149fbc015037fa8c92bad6fe72cbd97aad5d7
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 4a019c3f197f123486dd28dc2bdb46e34f6cabc4
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622245"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064907"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Stel registratie in en meld u aan met een Weibo-account met behulp van Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "69622245"
 
 ## <a name="create-a-weibo-application"></a>Een Weibo-toepassing maken
 
-Als u een Weibo-account wilt gebruiken als een id-provider in Azure Active Directory (Azure AD) B2C, moet u een toepassing maken in uw Tenant waarmee deze wordt vertegenwoordigd. Als u nog geen Weibo-account hebt, kunt u zich aanmelden bij [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us).
+Als u een Weibo-account wilt gebruiken als een id-provider in Azure Active Directory B2C (Azure AD B2C), moet u een toepassing maken in uw Tenant waarmee deze wordt vertegenwoordigd. Als u nog geen Weibo-account hebt, kunt u zich aanmelden bij [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us).
 
 1. Meld u aan bij de [Weibo-ontwikkelaars Portal](https://open.weibo.com/) met uw Weibo-account referenties.
 1. Nadat u zich hebt aangemeld, selecteert u uw weergave naam in de rechter bovenhoek.

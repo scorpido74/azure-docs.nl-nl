@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 800454c3a8037d4562ae80d1093519733472c89c
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9a4d4f84626eafdfbc5cc21eef1968a9ed64fcad
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824599"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "71055614"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Zelfstudie: Een ASP.NET Core-en SQL Database-app bouwen in Azure App Service
 
@@ -177,7 +177,7 @@ In deze stap implementeert u de met SQL Database verbonden .NET Core-app met App
 Als u verbindingsreeksen voor de Azure-app wilt instellen, gebruikt u de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell. In de volgende opdracht vervangt u *\<app name>* en de parameter *\<connection_string>* door de eerder gemaakte verbindingsreeks.
 
 ```azurecli-interactive
-az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection_string>' --connection-string-type SQLServer
+az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection="<connection_string>" --connection-string-type SQLServer
 ```
 
 In ASP.net Core kunt u deze benoemde Connection String (`MyDbConnection`) gebruiken met het standaard patroon, zoals een Connection String dat is opgegeven in *appSettings. json*. In dit geval `MyDbConnection` wordt ook gedefinieerd in het bestand *appSettings. json*. Bij het uitvoeren van App Service heeft de connection string die in App Service gedefinieerd, voor rang op de connection string die is gedefinieerd in het bestand *appSettings. json*. De code gebruikt de waarde *appSettings. json* tijdens de lokale ontwikkeling en dezelfde code gebruikt de app service waarde wanneer deze wordt geïmplementeerd.
@@ -369,7 +369,7 @@ git commit -m "added done field"
 git push azure master
 ```
 
-Zodra het `git push` is voltooid, gaat u naar uw app service-app en probeert u een taak item toe tevoegen en te controleren.
+Zodra het `git push` is voltooid, gaat u naar uw app service-app en probeert u een taak item toe te voegen en **te controleren.**
 
 ![Azure-app na Code First Migration](./media/app-service-web-tutorial-dotnetcore-sqldb/this-one-is-done.png)
 

@@ -4,7 +4,7 @@ description: Problemen met het implementeren van problemen met virtuele Linux-ma
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 6aed61f13da8f6a29c1c3fa619af58cb720ea8e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 230319471dbf62bf64ee980d84c360807687ce17
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089951"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058219"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Problemen met het implementeren van problemen met virtuele Linux-machines in azure oplossen
 
@@ -64,7 +64,7 @@ Als u gebruik wilt maken van de GPU-mogelijkheden van Azure N-serie Vm's met Win
 
 ## <a name="is-n-series-vms-available-in-my-region"></a>Zijn er Vm's uit de N-serie beschikbaar in mijn regio?
 
-U kunt de beschik baarheid controleren vanuit de [tabel met beschik bare producten per regio](https://azure.microsoft.com/regions/services)en de prijzen. [](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)
+U kunt de beschik baarheid controleren vanuit de [tabel met beschik bare producten per regio](https://azure.microsoft.com/regions/services)en [de prijzen.](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)
 
 ## <a name="i-am-not-able-to-see-vm-size-family-that-i-want-when-resizing-my-vm"></a>Ik kan de serie van de VM-grootte niet zien die ik wil bij het wijzigen van de grootte van mijn VM.
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3ab2bf0334b58f3a5ac8ad4abacfcc45e0366240
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: da4d1ed7dec8b3b0bc61dd2959a868d03875039c
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917741"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077017"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Apache Ambari-Hive-weer gave gebruiken met Apache Hadoop in HDInsight
 
@@ -34,7 +34,7 @@ Meer informatie over het uitvoeren van Hive-query's met behulp van de Apache Amb
 
 3. Selecteer in de lijst met weer gaven de __Hive-weer gave__.
 
-    ![De Hive-weer gave die is geselecteerd](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
+    ![Apache Ambari Select Apache Hive View](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
     De pagina Hive-weer gave is vergelijkbaar met de volgende afbeelding:
 
@@ -98,25 +98,25 @@ De **visuele uitleg** weergave van de query kan nuttig zijn bij het inzicht in d
 Als u de TEZ-gebruikers interface voor de query wilt weer geven, selecteert u het tabblad **TEZ gebruikers interface** onder het werk blad.
 
 > [!IMPORTANT]  
-> TEZ wordt niet gebruikt om alle query's op te lossen. U kunt veel query's oplossen zonder TEZ te gebruiken. 
+> TEZ wordt niet gebruikt om alle query's op te lossen. U kunt veel query's oplossen zonder TEZ te gebruiken.
 
 ## <a name="view-job-history"></a>Taakgeschiedenis weergeven
 
 Op het tabblad __taken__ wordt een overzicht van Hive-query's weer gegeven.
 
-![Afbeelding van de taak geschiedenis](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
+![Geschiedenis van tabblad taken Apache Hive weer geven](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
 
 ## <a name="database-tables"></a>Database tabellen
 
 U kunt het tabblad __tabellen__ gebruiken om te werken met tabellen in een Hive-data base.
 
-![Afbeelding van het tabblad tabellen](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
+![Afbeelding van het tabblad Apache Hive tabellen](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
 
 ## <a name="saved-queries"></a>Opgeslagen query's
 
 Op het tabblad **query** kunt u desgewenst query's opslaan. Nadat u een query hebt opgeslagen, kunt u deze opnieuw gebruiken op het tabblad __opgeslagen query's__ .
 
-![Afbeelding van het tabblad opgeslagen query's](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+![Tabblad opgeslagen query's Apache Hive weer geven](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
 > Opgeslagen query's worden opgeslagen in de standaard cluster opslag. U kunt de opgeslagen query's vinden in het pad `/user/<username>/hive/scripts`. Deze worden opgeslagen als bestanden met tekst `.hql` zonder opmaak.
@@ -129,7 +129,7 @@ U kunt het onderdeel uitbreiden via door de gebruiker gedefinieerde functies (UD
 
 Declareer en sla een set Udf's op met behulp van het tabblad **UDF** boven aan de Hive-weer gave. Deze Udf's kunnen worden gebruikt in combi natie met de **query-editor**.
 
-![Afbeelding van het tabblad UDF](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
+![Weer gave van het tabblad Udf's Apache Hive weer geven](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
 Nadat u een UDF hebt toegevoegd aan de Hive-weer gave, wordt de knop **Udf's invoegen** weer gegeven onder aan de **query-editor**. Als u dit item selecteert, wordt een vervolg keuzelijst weer gegeven met de Udf's die in de Hive-weer gave zijn gedefinieerd. Als u een UDF selecteert, worden HiveQL-instructies aan uw query toegevoegd om de UDF in te scha kelen.
 

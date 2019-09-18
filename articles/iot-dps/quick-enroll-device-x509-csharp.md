@@ -1,6 +1,6 @@
 ---
 title: In deze snelstart wordt uitgelegd hoe u een X.509-apparaat kunt registreren bij Azure Device Provisioning Service met behulp van C# | Microsoft Docs
-description: In deze quickstart wordt gebruikgemaakt van groepsregistraties. In deze snelstart registreert u X.509-apparaten bij Azure IoT Hub Device Provisioning Service met behulp van C#.
+description: In deze quickstart wordt gebruikgemaakt van groepsregistraties. In deze Snelstartgids schrijft u X. 509-apparaten in voor de Azure C#-IOT hub Device Provisioning Service met behulp van.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -10,105 +10,118 @@ services: iot-dps
 manager: philmea
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: f375044fe7e2276b68476e609f33ca8372db9921
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 15bce340b257b5c221192a6ace5c5f0eac30f85a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60952999"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036009"
 ---
-# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Snelstart: X.509-apparaten registreren bij Device Provisioning Service met behulp van C#
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Quickstart: X.509-apparaten registreren bij Device Provisioning Service met behulp van C#
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
+In deze snelstart wordt uitgelegd hoe u met C# programmatisch een [registratiegroep](concepts-service.md#enrollment-group) kunt maken die gebruikmaakt van tussenliggende of hoofd-CA X.509-certificaten. De registratie groep wordt gemaakt met behulp van de [Microsoft Azure IOT SDK voor .net](https://github.com/Azure/azure-iot-sdk-csharp) en C# een voor beeld van een .net core-toepassing. Een registratiegroep beheert de toegang tot de inrichtingsservice voor apparaten die een gemeenschappelijk handtekeningcertificaat in hun certificaatketen delen. Zie [Apparaattoegang tot de inrichtingsservice beheren met X.509-certificaten](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates) voor meer informatie. Zie [Overzicht van beveiliging op basis van X.509-CA-certificaten](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview) voor meer informatie over het gebruik vanop X.509-certificaten gebaseerde Public Key Infrastructure (PKI) met Azure IoT Hub en Device Provisioning Service. 
 
-In deze snelstart wordt uitgelegd hoe u met C# programmatisch een [registratiegroep](concepts-service.md#enrollment-group) kunt maken die gebruikmaakt van tussenliggende of hoofd-CA X.509-certificaten. De registratiegroep is gemaakt met behulp van de [Microsoft Azure IoT-SDK voor .NET](https://github.com/Azure/azure-iot-sdk-csharp) en een C# .NET Core-voorbeeldtoepassing. Een registratiegroep beheert de toegang tot de inrichtingsservice voor apparaten die een gemeenschappelijk handtekeningcertificaat in hun certificaatketen delen. Zie [Apparaattoegang tot de inrichtingsservice beheren met X.509-certificaten](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates) voor meer informatie. Zie [Overzicht van beveiliging op basis van X.509-CA-certificaten](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview) voor meer informatie over het gebruik vanop X.509-certificaten gebaseerde Public Key Infrastructure (PKI) met Azure IoT Hub en Device Provisioning Service. 
+Deze Snelstartgids verwacht dat u al een IoT hub en Device Provisioning service-exemplaar hebt gemaakt. Als u deze resources nog niet hebt gemaakt, voltooit u de [Set IOT hub Device Provisioning Service met de Azure Portal](./quick-setup-auto-provision.md) Snelstartgids voordat u verdergaat met dit artikel.
 
-Voor deze snelstart wordt aangenomen dat u al een IoT-hub en Device Provisioning Service-exemplaar hebt gemaakt. Als u deze resources niet al hebt gemaakt, voert u de snelstart [IoT Hub Device Provisioning Service instellen met Azure Portal](./quick-setup-auto-provision.md) uit voordat u verdergaat met dit artikel.
-
-Hoewel de stappen in dit artikel zowel op Windows- als op Linux-computers werken, is dit artikel ontwikkeld voor een Windows-ontwikkelcomputer.
+Hoewel de stappen in dit artikel op zowel Windows-als Linux-computers werken, wordt in dit artikel een Windows-ontwikkel computer gebruikt.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-
 ## <a name="prerequisites"></a>Vereisten
 
-* Installeer [Visual Studio 2017](https://www.visualstudio.com/vs/).
-* Installeer [.NET Core SDK](https://www.microsoft.com/net/download/windows).
+* Installeer [Visual Studio 2019](https://www.visualstudio.com/vs/).
+* Installeer [.net core SDK](https://www.microsoft.com/net/download/windows).
 * Installeer [Git](https://git-scm.com/download/).
-
-
 
 ## <a name="prepare-test-certificates"></a>Testcertificaten voorbereiden
 
-Voor deze snelstart hebt u een .pem- of een .cer-bestand met het openbare gedeelte van een tussenliggend of hoofd-CA x.509-certificaat nodig. Dit certificaat moet worden geüpload naar uw inrichtingsservice en door de service worden geverifieerd. 
+Voor deze snelstart hebt u een .pem- of een .cer-bestand met het openbare gedeelte van een tussenliggend of hoofd-CA x.509-certificaat nodig. Dit certificaat moet worden geüpload naar uw inrichtingsservice en door de service worden geverifieerd.
 
-De [Azure IoT C-SDK](https://github.com/Azure/azure-iot-sdk-c) bevat testhulpmiddelen waarmee u een X.509-certificaatketen kunt maken, een basis- of tussencertificaat kunt uploaden vanuit die keten en een bewijs van eigendom kunt uitvoeren met de service om het certificaat te verifiëren. Certificaten die zijn gemaakt met de SDK-hulpmiddelen, zijn alleen ontworpen voor **ontwikkeltesten**. Deze certificaten **mogen niet in productie worden gebruikt**. Ze bevatten in code vastgelegde wachtwoorden ('1234') die na 30 dagen verlopen. Zie [Een x.509-CA-certificaat ophalen](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) in de documentatie van Azure IoT Hub voor meer informatie over het verkrijgen van certificaten die geschikt zijn voor productiegebruik.
+De [Azure IOT C SDK](https://github.com/Azure/azure-iot-sdk-c) bevat hulp middelen waarmee u een X. 509-certificaat keten kunt maken, een basis-of tussen certificaat van die keten moet uploaden en het bewijs van eigendom met de service om het certificaat te verifiëren.
 
-Voer de volgende stappen uit om deze testhulpmiddelen te gebruiken om certificaten te genereren: 
- 
-1. Open een opdrachtprompt of Git Bash-shell en wijzig deze in een werkmap op uw computer. Voer de volgende opdracht uit voor het klonen van de [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-opslagplaats:
-    
+> [!CAUTION]
+> Gebruik certificaten die zijn gemaakt met de SDK-hulpprogram ma's voor alleen ontwikkel tests.
+> Gebruik deze certificaten niet in productie.
+> Ze bevatten in code vastgelegde wacht woorden, zoals *1234*, die na 30 dagen verlopen.
+> Zie [Een x.509-CA-certificaat ophalen](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) in de documentatie van Azure IoT Hub voor meer informatie over het verkrijgen van certificaten die geschikt zijn voor productiegebruik.
+>
+
+Voer de volgende stappen uit om deze test tool te gebruiken voor het genereren van certificaten:
+
+1. Open een opdracht prompt venster of git bash shell en wijzig de werkmap op uw computer. Voer de volgende opdracht uit om de [Azure IOT C SDK](https://github.com/Azure/azure-iot-sdk-c) github-opslag plaats te klonen:
+
    ```cmd/sh
    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
    ```
 
    Deze bewerking kan enkele minuten in beslag nemen.
 
-   De testhulpmiddelen bevinden zich in de *azure-iot-sdk-c/tools/CACertificates* van de opslagplaats die u hebt gekloond.    
+   De testhulpmiddelen bevinden zich in de *azure-iot-sdk-c/tools/CACertificates* van de opslagplaats die u hebt gekloond.
 
-2. Volg de stappen in [Managing test CA certificates for samples and tutorials](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) (CA-testcertificaten voor voorbeelden en zelfstudies beheren). 
+1. Volg de stappen in [Managing test CA certificates for samples and tutorials](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) (CA-testcertificaten voor voorbeelden en zelfstudies beheren).
 
-Naast de hulpmiddelen in de C-SDK geeft het [voorbeeld van verificatie door een groepscertificaat](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample) in de *Microsoft Azure IoT SDK voor .NET* weer hoe u een bewijs van eigendom kunt uitvoeren in C# met een bestaand X.509-tussencertificaat of -basis-CA-certificaat. 
-
+Naast de hulp middelen in de C-SDK, laat het voor beeld van een [verificatie van groeps certificaten](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample) in de *Microsoft Azure IOT SDK voor .net* zien hoe u het bewijs C# van zijn bezit met een bestaand X. 509 tussenliggende of basis-CA-certificaat.
 
 ## <a name="get-the-connection-string-for-your-provisioning-service"></a>De verbindingsreeks voor de inrichtingsservice ophalen
 
 Voor het voorbeeld in deze snelstart hebt u de verbindingsreeks voor de inrichtingsservice nodig.
-1. Meld u aan bij Azure Portal, klik in het linkermenu op de knop **Alle bronnen** en open Device Provisioning Service. 
-2. Klik op **Gedeeld toegangsbeleid**. Klik vervolgens op het toegangsbeleid dat u wilt gebruiken om de eigenschappen te openen. Kopieer of noteer de verbindingsreeks van de primaire sleutel uit het venster **Toegangsbeleid**. 
 
-    ![Verbindingsreeks voor de inrichtingsservice ophalen uit de portal](media/quick-enroll-device-x509-csharp/get-service-connection-string.png)
+1. Meld u aan bij de Azure Portal, selecteer **alle resources**en vervolgens uw Device Provisioning-Service.
+
+1. Selecteer **beleid voor gedeelde toegang**en kies vervolgens het toegangs beleid dat u wilt gebruiken om de eigenschappen te openen. Kopieer en sla de primaire sleutel connection string op in het **toegangs beleid**.
+
+    ![Verbindingsreeks voor de inrichtingsservice ophalen uit de portal](media/quick-enroll-device-x509-csharp/get-service-connection-string-vs2019.png)
 
 ## <a name="create-the-enrollment-group-sample"></a>Een voorbeeld van een registratiegroep maken 
 
-De stappen in deze sectie laten zien hoe u een .NET Core-console-app maakt waarmee een registratiegroep aan uw inrichtingsservice wordt toegevoegd. Met enkele aanpassingen kunt u deze stappen ook volgen om een [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) console-app te maken om aan de registratiegroep toe te voegen. Zie de [Windows IoT Core-documentatie voor ontwikkelaars](https://docs.microsoft.com/windows/iot-core/) voor meer informatie over ontwikkelen met IoT-Core.
-1. Voeg in Visual Studio een Visual C# NET Core Console App-project toe aan de nieuwe oplossing met behulp van de projectsjabloon **Console App (.NET Core)**. Zorg ervoor dat de versie van .NET Framework minimaal 4.5.1 is. Noem het project **CreateEnrollmentGroup**.
+In deze sectie wordt beschreven hoe u een .NET Core-Console-app maakt waarmee een registratie groep wordt toegevoegd aan uw inrichtings service. Met enkele aanpassingen kunt u deze stappen ook volgen om een [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) console-app te maken om aan de registratiegroep toe te voegen. Zie de [Windows IoT Core-documentatie voor ontwikkelaars](https://docs.microsoft.com/windows/iot-core/) voor meer informatie over ontwikkelen met IoT-Core.
 
-    ![Nieuw Windows Classic Desktop-project in Visual C#](media//quick-enroll-device-x509-csharp/create-app.png)
+1. Open Visual Studio en selecteer **een nieuw project maken**. Kies in **een nieuw project maken**de **console-app (.net core)** voor C# project sjabloon en selecteer **volgende**.
 
-2. Klik in Solution Explorer met de rechtermuisknop op het project **CreateEnrollmentGroup** en klik op **Manage NuGet Packages**.
-3. Klik in het venster **NuGet Package Manager** op **Browse** en zoek naar **Microsoft.Azure.Devices.Provisioning.Service**. Accepteer de gebruiksvoorwaarden en klik op **Install** om het **Microsoft.Azure.Devices.Provisioning.Service**-pakket te installeren. Met deze procedure worden het [Azure IoT Provisioning Service Client-SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet-pakket en de bijbehorende afhankelijkheden gedownload en geïnstalleerd. Ook worden verwijzingen hiernaar toegevoegd.
+1. Geef het project de naam *CreateEnrollmentGroup*en selecteer vervolgens **maken**.
+
+    ![Klassiek C# Windows-bureau blad-project configureren](media//quick-enroll-device-x509-csharp/configure-app-vs2019.png)
+
+1. Klik in **Solution Explorer**met de rechter muisknop op het project **CreateEnrollmentGroup** en selecteer vervolgens **NuGet-pakketten beheren**.
+
+1. Selecteer in **NuGet package manager** **Bladeren**, zoek naar en kies **micro soft. Azure. devices. provisioning. service**en selecteer vervolgens **installeren**.
 
     ![Sluit het venster Nuget Package Manager.](media//quick-enroll-device-x509-csharp/add-nuget.png)
 
-4. Voeg aan het begin van het bestand **Program.cs** de volgende `using`-instructies na de andere `using`-instructies toe:
-   
+   Met deze stap wordt een verwijzing naar het [Azure IOT Provisioning Service client SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet-pakket en de bijbehorende afhankelijkheden gedownload, geïnstalleerd en toegevoegd.
+
+1. Voeg de volgende `using` instructies toe achter de `using` andere-instructies boven aan `Program.cs`:
+
    ```csharp
    using System.Security.Cryptography.X509Certificates;
    using System.Threading.Tasks;
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
-    
-5. Voeg de volgende velden toe aan de klasse **Program**:  
-   - Vervang de tijdelijke aanduiding **ProvisioningConnectionString** door de verbindingsreeks van de inrichtingsservice waarvoor u de registratie wilt maken.
-   - Vervang de tijdelijke aanduiding **X509RootCertPath** door het pad naar een .pem- of .cer-bestand dat het openbare deel vertegenwoordigt van een tussenliggend of CA X.509- basiscertificaat dat eerder is geüpload en geverifieerd bij de inrichtingsservice.
-   - U kunt de waarde voor **EnrollmentGroupId** desgewenst wijzigen. De tekenreeks mag alleen kleine letters en afbreekstreepjes bevatten. 
 
-   > [!IMPORTANT]
-   > Voor productiecode dient u op de hoogte te zijn van de volgende beveiligingsoverwegingen:
-   >
-   > - Hard-coding van de verbindingsreeks voor de inrichtingsservicebeheerder is in strijd met de aanbevolen beveiligingsprocedures. In plaats daarvan moet de verbindingsreeks op een veilige manier worden ondergebracht, zoals in een beveiligd configuratiebestand of in het register.
-   > - Upload alleen het openbare deel van het handtekeningcertificaat. Upload nooit .pfx- (PKCS12) of .pem-bestanden met persoonlijke sleutels naar de inrichtingsservice.
-        
+1. Voeg de volgende velden toe aan `Program` de klasse en breng de weer gegeven wijzigingen aan.  
+
    ```csharp
    private static string ProvisioningConnectionString = "{Your provisioning service connection string}";
    private static string EnrollmentGroupId = "enrollmentgrouptest";
    private static string X509RootCertPath = @"{Path to a .cer or .pem file for a verified root CA or intermediate CA X.509 certificate}";
    ```
-    
-6. Voeg de volgende methode toe aan de klasse **Program**. Met deze code wordt een registatiegroepvermelding gemaakt en vervolgens de methode **CreateOrUpdateEnrollmentGroupAsync** in de  **ProvisioningServiceClient** aangeroepen om de registratiegroep toe te voegen aan de inrichtingsservice.
-   
+
+   * Vervang de `ProvisioningConnectionString` waarde van de tijdelijke aanduiding door de Connection String van de inrichtings service waarvoor u de inschrijving wilt maken.
+
+   * Vervang de `X509RootCertPath` waarde van de tijdelijke aanduiding door het pad naar een. pem-of CER-bestand. Dit bestand vertegenwoordigt het open bare deel van een tussenliggend of basis-CA X. 509-certificaat dat eerder is geüpload en geverifieerd met uw inrichtings service.
+
+   * U kunt eventueel de `EnrollmentGroupId` waarde wijzigen. De tekenreeks mag alleen kleine letters en afbreekstreepjes bevatten.
+
+   > [!IMPORTANT]
+   > Voor productiecode dient u op de hoogte te zijn van de volgende beveiligingsoverwegingen:
+   >
+   > * Hard-coding van de verbindingsreeks voor de inrichtingsservicebeheerder is in strijd met de aanbevolen beveiligingsprocedures. In plaats daarvan moet de verbindingsreeks op een veilige manier worden ondergebracht, zoals in een beveiligd configuratiebestand of in het register.
+   > * Upload alleen het openbare deel van het handtekeningcertificaat. Upload nooit .pfx- (PKCS12) of .pem-bestanden met persoonlijke sleutels naar de inrichtingsservice.
+
+1. Voeg de volgende methode toe aan `Program` de klasse. Deze code maakt een vermelding voor de registratie groep en roept `CreateOrUpdateEnrollmentGroupAsync` vervolgens de `ProvisioningServiceClient` -methode aan om de registratie groep toe te voegen aan de inrichtings service.
+
    ```csharp
    public static async Task RunSample()
    {
@@ -143,37 +156,39 @@ De stappen in deze sectie laten zien hoe u een .NET Core-console-app maakt waarm
    }
    ```
 
-7. Vervang tot slot de hoofdtekst van de methode **Main** door de volgende regels:
-   
+1. Ten slotte vervangt u de hoofd tekst `Main` van de-methode door de volgende regels:
+
    ```csharp
    RunSample().GetAwaiter().GetResult();
    Console.WriteLine("\nHit <Enter> to exit ...");
    Console.ReadLine();
    ```
-        
-8. Bouw de oplossing.
+
+1. Bouw de oplossing.
 
 ## <a name="run-the-enrollment-group-sample"></a>Het voorbeeld van de registratiegroep uitvoeren
   
-1. Voer het voorbeeld uit in Visual Studio om de registratiegroep te maken.
- 
-2. Als de inschrijving is gemaakt, worden in het opdrachtvenster de eigenschappen van de nieuwe registratiegroep weergegeven.
+Voer het voorbeeld uit in Visual Studio om de registratiegroep te maken. Wanneer het maken is voltooid, worden in het opdracht prompt venster de eigenschappen van de nieuwe registratie groep weer gegeven.
 
-    ![Eigenschappen van de inschrijving in de opdrachtuitvoer](media/quick-enroll-device-x509-csharp/output.png)
+U kunt controleren of de registratie groep is gemaakt. Ga naar de Device Provisioning Service-samen vatting en selecteer **inschrijvingen beheren**en selecteer vervolgens **registratie groepen**. U ziet nu een nieuwe registratievermelding die overeenkomt met de registratie-ID die u in het voorbeeld hebt gebruikt.
 
-3. Om te controleren of de registratiegroep is gemaakt, selecteert u op de overzichtsblade Device Provisioning Service in Azure Portal de optie **Registraties beheren** en selecteert u vervolgens het tabblad **Registratiegroepen**. U ziet nu een nieuwe registratievermelding die overeenkomt met de registratie-ID die u in het voorbeeld hebt gebruikt. Klik op de vermelding om de vingerafdruk van het certificaat en andere eigenschappen van de vermelding te controleren.
+![Eigenschappen van de inschrijving in de portal](media/quick-enroll-device-x509-csharp/verify-enrollment-portal-vs2019.png)
 
-    ![Eigenschappen van de inschrijving in de portal](media/quick-enroll-device-x509-csharp/verify-enrollment-portal.png)
- 
+Selecteer de vermelding om de vinger afdruk van het certificaat en andere eigenschappen voor de vermelding te controleren.
+
 ## <a name="clean-up-resources"></a>Resources opschonen
-Als u van plan bent om het voorbeeld van de C#-service te verkennen, verwijdert u de resources die u in deze quickstart hebt gemaakt, niet. Als u niet wilt doorgaan, gebruikt u de volgende stappen om alle resources die via deze Snelstartgids zijn gemaakt, te verwijderen.
 
-1. Sluit het uitvoervenster van het C#-voorbeeld op de computer.
-2. Navigeer naar Device Provisioning Service in Azure Portal, klik op **Registraties beheren** en selecteer vervolgens het tabblad **Registratiegroepen**. Selecteer de *Registratie-id* voor de inschrijving die u hebt gemaakt met behulp van deze quickstart. Klik vervolgens op de knop **Verwijderen** boven aan de blade.  
-3. Klik bij Device Provisioning Service in Azure Portal op **Certificaten**, klik op het certificaat dat u hebt geüpload voor deze quickstart en klik op de knop **Verwijderen** bovenaan in het venster **Certificaatgegevens**.  
- 
+Als u van plan bent het C# service voorbeeld te verkennen, moet u de resources die u in deze Quick Start hebt gemaakt, niet opschonen. Gebruik anders de volgende stappen om alle resources te verwijderen die door deze Quick start zijn gemaakt.
+
+1. Sluit het C# voorbeeld venster uitvoer op de computer.
+
+1. Navigeer naar Device Provisioning Service in het Azure Portal, selecteer **inschrijvingen beheren**en selecteer vervolgens **registratie groepen**. Selecteer de *registratie-id* voor de registratie vermelding die u hebt gemaakt met behulp van deze Quick Start en selecteer **verwijderen**.
+
+1. Selecteer in de Azure Portal van uw Device Provisioning Service de optie **certificaten**, kies het certificaat dat u voor deze Quick Start hebt geüpload en selecteer **verwijderen** boven aan de **certificaat gegevens**.  
+
 ## <a name="next-steps"></a>Volgende stappen
-In deze quickstart hebt u een registratiegroep voor een X.509 CA-tussen- of -basiscertificaat gemaakt met Azure IoT Hub Device Provisioning Service. Voor meer informatie over device provisioning, gaat u verder met de zelfstudie voor het instellen van Device Provisioning Service in Azure Portal. 
- 
+
+In deze Quick Start hebt u een registratie groep voor een X. 509-tussenliggend of basis-CA-certificaat gemaakt met behulp van de Azure-IoT Hub Device Provisioning Service. Voor meer informatie over device provisioning, gaat u verder met de zelfstudie voor het instellen van Device Provisioning Service in Azure Portal.
+
 > [!div class="nextstepaction"]
 > [Zelfstudies over Azure IoT Hub Device Provisioning Service](./tutorial-set-up-cloud.md)

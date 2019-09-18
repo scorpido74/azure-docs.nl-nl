@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: a9e84210427612143bffe33efe4a5da5364b7a22
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 091c1a4c9e6adae69ec1c8b3e507624b9f5e6a96
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68310446"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057500"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Zelfstudie: Containerinstallatiekopieën bouwen in de cloud met Azure Container Registry-taken
 
@@ -75,7 +75,7 @@ De opdrachten in deze zelfstudiereeks zijn geformatteerd voor de Bash-shell. Als
 
 Nu u de broncode hebt opgehaald naar uw computer, volgt u deze stappen om een containerregister te maken en de containerinstallatiekopie te bouwen met ACR Tasks.
 
-Om het uitvoeren van de voorbeeldopdrachten eenvoudiger te maken, worden in de zelfstudies in deze serie shell-omgevingsvariabelen gebruikt. Voer de volgende opdracht uit om de variabele `ACR_NAME` in te stellen. Vervang **\<registry-name\>** door een unieke naam voor uw nieuwe containerregister. De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. De andere resources die u in de zelfstudie maakt, zijn gebaseerd op deze naam, dus u hoeft alleen deze eerste variabele te wijzigen.
+Om het uitvoeren van de voorbeeldopdrachten eenvoudiger te maken, worden in de zelfstudies in deze serie shell-omgevingsvariabelen gebruikt. Voer de volgende opdracht uit om de variabele `ACR_NAME` in te stellen. Vervang **\<registry-name\>** door een unieke naam voor uw nieuwe containerregister. De register naam moet uniek zijn in azure, mag alleen kleine letters bevatten en mag 5-50 alfanumerieke tekens bevatten. De andere resources die u in de zelfstudie maakt, zijn gebaseerd op deze naam, dus u hoeft alleen deze eerste variabele te wijzigen.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>

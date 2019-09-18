@@ -1,7 +1,7 @@
 ---
 title: Een Azure Resource Manager sjabloon gebruiken om een werk ruimte te maken
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van een Azure Resource Manager sjabloon voor het maken van een nieuwe Azure Machine Learning service-werk ruimte.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van een Azure Resource Manager sjabloon voor het maken van een nieuwe Azure Machine Learning-werk ruimte.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,28 +10,28 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 34522c9a672de51cfa53ce52c5a6a6506fcd5454
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 7e0897f92dd5ead939cbae9d6bf269bd22152419
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390515"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034769"
 ---
-# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Een Azure Resource Manager sjabloon gebruiken om een werk ruimte voor Azure Machine Learning service te maken
+# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Een Azure Resource Manager sjabloon gebruiken om een werk ruimte te maken voor Azure Machine Learning
 
-In dit artikel leert u verschillende manieren om een Azure Machine Learning service-werk ruimte te maken met behulp van Azure Resource Manager sjablonen. Met een resource manager-sjabloon kunt u eenvoudig resources maken als één gecoördineerde bewerking. Een sjabloon is een JSON-document waarmee de benodigde resources voor een implementatie worden gedefinieerd. Het kan ook implementatie parameters opgeven. Para meters worden gebruikt om invoer waarden op te geven wanneer u de sjabloon gebruikt.
+In dit artikel leert u verschillende manieren om een Azure Machine Learning-werk ruimte te maken met behulp van Azure Resource Manager sjablonen. Met een resource manager-sjabloon kunt u eenvoudig resources maken als één gecoördineerde bewerking. Een sjabloon is een JSON-document waarmee de benodigde resources voor een implementatie worden gedefinieerd. Het kan ook implementatie parameters opgeven. Para meters worden gebruikt om invoer waarden op te geven wanneer u de sjabloon gebruikt.
 
 Zie [een toepassing implementeren met Azure Resource Manager sjabloon](../../azure-resource-manager/resource-group-template-deploy.md)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een **Azure-abonnement**. Als u er nog geen hebt, kunt u de [gratis of betaalde versie van Azure machine learning service](https://aka.ms/AMLFree)proberen.
+* Een **Azure-abonnement**. Als u er nog geen hebt, probeer [dan de gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 
 * Als u een sjabloon van een CLI wilt gebruiken, moet u [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) of de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="resource-manager-template"></a>Resource Manager-sjabloon
 
-De volgende Resource Manager-sjabloon kan worden gebruikt om een Azure Machine Learning service-werk ruimte en gekoppelde Azure-resources te maken:
+De volgende Resource Manager-sjabloon kan worden gebruikt om een Azure Machine Learning-werk ruimte en gekoppelde Azure-resources te maken:
 
 [!code-json[create-azure-machine-learning-service-workspace](~/quickstart-templates/101-machine-learning-create/azuredeploy.json)]
 

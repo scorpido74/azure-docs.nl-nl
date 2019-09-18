@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2019
+ms.date: 09/16/2019
 ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cf3eead3a56297efa3bea90ef48eb464ad63da0
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: ba4beeff5484f774e801842f06d694af456c4e96
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898522"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033751"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Procedure: Uw toepassing weergeven in de Azure Active Directory-toepassingsgalerie
 
@@ -48,12 +48,7 @@ In dit artikel wordt beschreven hoe u een toepassing kunt weer geven in de Azure
 
 - Zorg ervoor dat uw toepassing ondersteuning biedt voor formulier verificatie zodat wachtwoord kluizen kan worden uitgevoerd voor het uitvoeren van eenmalige aanmelding.
 
-- Voor automatische aanvraag voor gebruikers inrichting moet de toepassing worden weer gegeven in de galerie met eenmalige aanmelding die is ingeschakeld met behulp van SAML 2.0/WS-voeder. U kunt een aanvraag indienen voor SSO en gebruikers inrichten samen op de portal, als deze nog niet wordt vermeld.
-
 - U hebt een permanent account nodig om te testen met ten minste twee gebruikers die zijn geregistreerd.
-
-> [!NOTE]
-> We worden uitgevoerd met een groot aantal SCIM-connector aanvragen, dus hebben we geen nieuwe aanvragen meer op onze portal. Wacht op uw aanvragen tot verdere kennisgeving. Onze excuses voor deze vertraging en eventuele ongemak. Dit kan zijn veroorzaakt.
 
 ## <a name="submit-the-request-in-the-portal"></a>De aanvraag verzenden in de portal
 

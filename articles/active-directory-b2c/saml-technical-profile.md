@@ -1,5 +1,5 @@
 ---
-title: Een technische SAML-profiel te definiëren in een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
+title: Een technische SAML-profiel definiëren in een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
 description: Definieer een technische SAML-profiel in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,28 +10,28 @@ ms.topic: reference
 ms.date: 12/21/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dca330f20548d3a93091f89dc8ab2b3cb92f50e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 38215ef49bdc5788e43e4ea0fedef2efd32d8213
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512717"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063789"
 ---
-# <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technische SAML-profiel te definiëren in een aangepast beleid voor Azure Active Directory B2C
+# <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technische SAML-profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C biedt ondersteuning voor de SAML 2.0-id-provider. Dit artikel beschrijft de details van een technisch profiel voor interactie met een claimprovider die ondersteuning biedt voor dit gestandaardiseerde protocol. Met een technische SAML-profiel federeren u met een SAML gebaseerde id-provider, bijvoorbeeld [ADFS](active-directory-b2c-custom-setup-adfs2016-idp.md) en [Salesforce](active-directory-b2c-setup-sf-app-custom.md). Deze federation kan uw gebruikers melden zich aan met hun bestaande sociale of ondernemings-id's.
+Azure Active Directory B2C (Azure AD B2C) biedt ondersteuning voor de SAML 2,0-ID-provider. In dit artikel worden de specifieke specificaties beschreven van een technisch profiel voor interactie met een claim provider die ondersteuning biedt voor dit gestandaardiseerde protocol. Met een SAML-technische profiel kunt u met een id-provider op basis van SAML communiceren, zoals [ADFS](active-directory-b2c-custom-setup-adfs2016-idp.md) en [Sales Force](active-directory-b2c-setup-sf-app-custom.md). Met deze Federatie kunnen uw gebruikers zich aanmelden met hun bestaande sociale of bedrijfs identiteiten.
 
-## <a name="metadata-exchange"></a>Uitwisseling van metagegevens
+## <a name="metadata-exchange"></a>Uitwisseling van meta gegevens
 
-De metagegevens zijn gegevens die in het SAML-protocol wordt gebruikt om beschikbaar te stellen de configuratie van een SAML-partij, zoals een serviceprovider of de id-provider. Metagegevens van definieert de locatie van de services, zoals certificaten voor aanmelden en afmelden, en aanmeldingsmethode. De id-provider maakt gebruik van de metagegevens te weten hoe u om te communiceren met Azure AD B2C. De metagegevens is geconfigureerd in de XML-indeling en kan worden ondertekend met een digitale handtekening, zodat de andere partij kunt controleren of de integriteit van de metagegevens. Wanneer Azure AD B2C met SAML-identiteitsprovider federeert, fungeert deze als een serviceprovider een SAML-aanvraag initiëren en wachten op een SAML-antwoord. En in sommige gevallen, accepteert ongevraagde SAML-verificatie, die ook wel bekend als id-provider is gestart. 
+Meta gegevens worden gebruikt in het SAML-protocol om de configuratie van een SAML-partij, zoals een service provider of ID-provider, beschikbaar te stellen. Meta gegevens definiëren de locatie van de services, zoals aanmelden en afmelden, certificaten, aanmeldings methode en meer. De ID-provider gebruikt de meta gegevens om te weten hoe er met Azure AD B2C kan worden gecommuniceerd. De meta gegevens worden geconfigureerd in XML-indeling en kunnen met een digitale hand tekening worden ondertekend, zodat de andere partij de integriteit van de meta gegevens kan valideren. Wanneer Azure AD B2C federeert met een SAML-ID-provider, fungeert deze als een service provider die een SAML-aanvraag initieert en wacht op een SAML-reactie. En, in sommige gevallen, accepteert niet-aangevraagde SAML-authenticatie, ook wel bekend als id-provider gestart.
 
-De metagegevens kan worden geconfigureerd in beide partijen als 'Statische metagegevens' of 'Dynamische metagegevens'. In de statische modus, Kopieer de gehele metagegevens van de ene partij en stel deze in de andere partij. In de dynamische modus stelt u de URL in de metagegevens van de terwijl de andere partij de configuratie van de dynamisch leest. De beginselen zijn hetzelfde, instellen van de metagegevens van het technische profiel van de Azure AD B2C in uw id-provider en de metagegevens van de id-provider instellen in Azure AD B2C.
+De meta gegevens kunnen in beide partijen worden geconfigureerd als "statische meta gegevens" of "dynamische meta gegevens". In de statische modus kopieert u de volledige meta gegevens van een partij en stelt u deze in bij de andere partij. In de dynamische modus stelt u de URL in op de meta gegevens terwijl de andere partij de configuratie dynamisch leest. De principes zijn hetzelfde, u kunt de meta gegevens van het Azure AD B2C technische profiel instellen in uw ID-provider en de meta gegevens van de ID-provider instellen in Azure AD B2C.
 
-Elke SAML-identiteitsprovider heeft verschillende stappen voor het beschikbaar stellen en het instellen van de serviceprovider in dit geval Azure AD B2C en de metagegevens van de Azure AD B2C instellen in de id-provider. Bekijk documentatie van uw id-provider voor instructies over om dit te doen.
+Elke SAML-ID-provider heeft verschillende stappen om de service provider weer te geven en in te stellen, in dit geval Azure AD B2C, en de Azure AD B2C meta gegevens in de ID-provider in te stellen. Raadpleeg de documentatie van uw identiteits provider voor richt lijnen over hoe u dit doet.
 
-Het volgende voorbeeld ziet u een URL-adres in de SAML-metagegevens van het technische profiel van een Azure AD B2C:
+In het volgende voor beeld ziet u een URL-adres naar de SAML-meta gegevens van een Azure AD B2C technisch profiel:
 
 ```
 https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadata?idptp=your-technical-profile
@@ -39,38 +39,38 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
 
 Vervang de volgende waarden:
 
-- **uw tenant-naam** met de naam van uw tenant, zoals fabrikam.b2clogin.com.
-- **uw beleid** met de naam van uw beleid. Gebruik het beleid dat is waar u het technische SAML-provider-profiel configureren, of een beleidsregel die eigenschappen overneemt van dat beleid.
-- **uw op technisch profiel** met de naam van de provider technisch profiel voor uw SAML-identiteit.
+- **uw-Tenant naam** met de naam van uw Tenant, zoals fabrikam.b2clogin.com.
+- **uw-beleid** met de naam van uw beleid. Gebruik het beleid voor het configureren van het technische profiel voor de SAML-provider of een beleid dat van dat beleid wordt overgenomen.
+- **uw technische profiel** met uw naam van het technische profiel van uw SAML-identiteits provider.
 
-## <a name="digital-signing-certificates-exchange"></a>Digitale ondertekening certificaten exchange
+## <a name="digital-signing-certificates-exchange"></a>Certificaten voor digitale ondertekening uitwisselen
 
-Voor het bouwen van een vertrouwensrelatie tussen Azure AD B2C en de SAML-id-provider, moet u een geldige X509 certificaat met de persoonlijke sleutel. U upload het certificaat met de persoonlijke sleutel (.pfx-bestand) naar het sleutelarchief van de Azure AD B2C-beleid. Azure AD B2C handtekening digitale de SAML-aanmelden-aanvraag met behulp van het certificaat dat u opgeeft. 
+Als u een vertrouwens relatie tussen Azure AD B2C en uw SAML-ID-provider wilt maken, moet u een geldig x509-certificaat met de persoonlijke sleutel opgeven. U uploadt het certificaat met de persoonlijke sleutel (. pfx-bestand) naar het sleutel archief Azure AD B2C beleid. Azure AD B2C het SAML-aanmeldings verzoek digitaal ondertekenen met het certificaat dat u opgeeft.
 
-Het certificaat wordt gebruikt in de volgende manieren:
+Het certificaat wordt op de volgende manieren gebruikt:
 
-- Azure AD B2C genereert en ondertekent een SAML-aanvraag met behulp van de Azure AD B2C persoonlijke sleutel van het certificaat. De SAML-aanvraag is verzonden naar de id-provider, die de aanvraag met behulp van Azure AD B2C openbare sleutel van het certificaat worden gevalideerd. Het openbare certificaat van Azure AD B2C is toegankelijk via de metagegevens van het technische profiel. U kunt ook handmatig het cer-bestand uploaden naar uw SAML-identiteitsprovider.
-- De id-provider zich de gegevens naar Azure AD B2C verzonden met behulp van de persoonlijke sleutel van de id-provider van het certificaat. Azure AD B2C valideert de gegevens via het openbare certificaat van de id-provider. Elke id-provider heeft verschillende stappen voor de installatie, kijkt u naar de documentatie van uw id-provider voor instructies over om dit te doen. In Azure AD B2C moet uw beleid voor toegang tot de openbare sleutel van het certificaat met behulp van de metagegevens van de id-provider.
+- Azure AD B2C genereert en ondertekent een SAML-aanvraag met behulp van de Azure AD B2C persoonlijke sleutel van het certificaat. De SAML-aanvraag wordt verzonden naar de ID-provider, die de aanvraag valideert met Azure AD B2C open bare sleutel van het certificaat. Het open bare certificaat van Azure AD B2C is toegankelijk via de meta gegevens van technische profielen. U kunt het CER-bestand ook hand matig uploaden naar uw SAML-ID-provider.
+- De ID-provider ondertekent de gegevens die naar Azure AD B2C worden verzonden met behulp van de persoonlijke sleutel van het certificaat van de identiteits provider. Azure AD B2C valideert de gegevens met behulp van het open bare certificaat van de identiteits provider. Elke id-provider heeft verschillende stappen voor Setup. Raadpleeg de documentatie van uw identiteits provider voor richt lijnen over hoe u dit doet. In Azure AD B2C moet uw beleid toegang hebben tot de open bare sleutel van het certificaat met behulp van de meta gegevens van de identiteits provider.
 
-Een zelfondertekend certificaat is geschikt voor de meeste scenario's. Voor productieomgevingen, het is raadzaam te gebruiken een X509 certificaat dat is uitgegeven door een certificeringsinstantie. Ook, zoals verderop in dit document wordt beschreven, voor een niet-productieomgeving kunt u uitschakelen voor de SAML-handtekeningcertificaten aan beide zijden.
+Een zelfondertekend certificaat is acceptabel voor de meeste scenario's. Voor productie omgevingen kunt u het beste een x509-certificaat gebruiken dat is uitgegeven door een certificerings instantie. Zoals verderop in dit document wordt beschreven, kunt u voor een niet-productie omgeving de SAML-ondertekening aan beide zijden uitschakelen.
 
-Het volgende diagram toont de uitwisseling van metagegevens en het certificaat:
+In het volgende diagram ziet u de meta gegevens en de uitwisseling van certificaten:
 
-![metagegevens en certificaat exchange](media/saml-technical-profile/technical-profile-idp-saml-metadata.png)
+![meta gegevens en certificaat uitwisseling](media/saml-technical-profile/technical-profile-idp-saml-metadata.png)
 
 
 ## <a name="digital-encryption"></a>Digitale versleuteling
 
-Voor het versleutelen van het SAML-verklaring antwoord, gebruikt de id-provider een openbare sleutel van een versleutelingscertificaat altijd in het technische profiel van een Azure AD B2C. Wanneer Azure AD B2C nodig heeft om de gegevens te ontsleutelen, gebruikt het persoonlijke gedeelte van het versleutelingscertificaat.
+De ID-provider maakt altijd gebruik van een open bare sleutel van een versleutelings certificaat in een Azure AD B2C technisch profiel om de SAML-antwoord bevestiging te versleutelen. Als Azure AD B2C de gegevens moet ontsleutelen, wordt het persoonlijke deel van het versleutelings certificaat gebruikt.
 
-Voor het versleutelen van de SAML-antwoord-bevestiging:
+De bevestiging van een SAML-reactie versleutelen:
 
-1. Upload een geldig X509 certificaat met de persoonlijke sleutel (.pfx-bestand) aan het sleutelarchief van de Azure AD B2C-beleid.
-2. Voeg een **CryptographicKey** element met een id van `SamlAssertionDecryption` aan het technische profiel **CryptographicKeys** verzameling. Stel de **StorageReferenceId** op de naam van de beleidssleutel die u in stap 1 hebt gemaakt.
-3. De metagegevens van het technische profiel instellen **WantsEncryptedAssertions** naar `true`.
-4. Werk de id-provider met de metagegevens van de nieuwe Azure AD B2C technisch profiel. U ziet de **KeyDescriptor** met de **gebruiken** eigenschap ingesteld op `encryption` met de openbare sleutel van uw certificaat.
+1. Upload een geldig x509-certificaat met de persoonlijke sleutel (. pfx-bestand) naar het sleutel archief Azure AD B2C beleid.
+2. Voeg een **CryptographicKey** -element toe met een `SamlAssertionDecryption` id van aan de **CryptographicKeys** -verzameling van het technische profiel. Stel de **StorageReferenceId** in op de naam van de beleids sleutel die u in stap 1 hebt gemaakt.
+3. Stel de **WantsEncryptedAssertions** van de technische profielen `true`in op.
+4. Werk de ID-provider bij met de nieuwe meta gegevens voor het technische profiel van Azure AD B2C. U moet de sleutel **descriptor** zien met de eigenschap **use** ingesteld op `encryption` die de open bare sleutel van uw certificaat bevat.
 
-Het volgende voorbeeld ziet u het gedeelte Azure AD B2C technisch profiel versleuteling van de metagegevens:
+In het volgende voor beeld wordt de sectie technische profiel versleuteling Azure AD B2C van de meta gegevens weer gegeven:
 
 ```XML
 <KeyDescriptor use="encryption">
@@ -81,32 +81,32 @@ Het volgende voorbeeld ziet u het gedeelte Azure AD B2C technisch profiel versle
   </KeyInfo>
 </KeyDescriptor>
 ```
-    
+
 ## <a name="protocol"></a>Protocol
 
-De **naam** kenmerk van het Protocol-element moet worden ingesteld op `SAML2`. 
+Het **naam** kenmerk van het protocol element moet worden ingesteld op `SAML2`.
 
-## <a name="output-claims"></a>Gebruikersclaims
- 
-De **OutputClaims** element bevat een lijst met claims die zijn geretourneerd door de SAML-identiteitsprovider onder de `AttributeStatement` sectie. Mogelijk moet u de naam van de claim die is gedefinieerd in uw beleid aan de naam die is gedefinieerd in de id-provider toewijzen. U kunt ook bevatten claims die niet zijn geretourneerd door de id-provider, zolang u de `DefaultValue` kenmerk.
- 
-Lezen van het SAML-verklaring **NamedId** in **onderwerp** als een genormaliseerde claim, stelt u de claim **PartnerClaimType** naar `assertionSubjectName`. Zorg ervoor dat de **NameId** is de eerste waarde in de verklaring XML. Wanneer u meer dan één assertion definieert, kiest de Azure AD B2C de onderwerpwaarde van de laatste verklaring.
- 
-De **OutputClaimsTransformations** element kan bevatten een verzameling van **OutputClaimsTransformation** elementen die worden gebruikt voor het wijzigen van de uitvoerclaims of nieuwe labels te genereren.
- 
-Het volgende voorbeeld ziet u de claims die wordt geretourneerd door de Facebook-id-provider:
+## <a name="output-claims"></a>Uitvoer claims
 
-- De **issuerUserId** claim is toegewezen aan de **assertionSubjectName** claim.
-- De **first_name** claim is toegewezen aan de **givenName** claim.
-- De **achternaam** claim is toegewezen aan de **achternaam** claim.
-- De **displayName** claim zonder naam toewijzingen.
-- De **e** claim zonder naam toewijzingen.
- 
-Het technische profiel retourneert ook claims die niet zijn geretourneerd door de id-provider: 
- 
-- De **identityProvider** claim met de naam van de id-provider.
-- De **authenticationSource** claim met een standaardwaarde van **socialIdpAuthentication**.
- 
+Het **OutputClaims** -element bevat een lijst met claims die zijn geretourneerd door de SAML- `AttributeStatement` ID-provider in de sectie. Mogelijk moet u de naam van de claim die in uw beleid is gedefinieerd, toewijzen aan de naam die is gedefinieerd in de ID-provider. U kunt ook claims toevoegen die niet worden geretourneerd door de ID-provider zolang u het `DefaultValue` kenmerk hebt ingesteld.
+
+Als u de **NamedId** van de SAML-verklaring als een genormaliseerde claim wilt lezen, stelt u `assertionSubjectName`de claim **PartnerClaimType** **in op** . Zorg ervoor dat het **NameID** de eerste waarde in Assertion XML is. Wanneer u meer dan één bevestiging definieert, wordt in Azure AD B2C de onderwerpwaarde van de laatste bevestiging gekozen.
+
+Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt voor het wijzigen van de uitvoer claims of voor het genereren van nieuwe.
+
+In het volgende voor beeld worden de claims weer gegeven die zijn geretourneerd door de Facebook-ID-provider:
+
+- De claim **issuerUserId** wordt toegewezen aan de **assertionSubjectName** -claim.
+- De claim **first_name** wordt toegewezen aan de claim voor de **OpgegevenNaam** .
+- De claim **last_name** wordt toegewezen aan de claim **Achternaam** .
+- De **DisplayName** claim zonder naam toewijzing.
+- De **e-mail** claim zonder naam toewijzing.
+
+Het technische profiel retourneert ook claims die niet worden geretourneerd door de ID-provider:
+
+- De claim **Identity provider** die de naam van de ID-provider bevat.
+- De **authenticationSource** claim met de standaard waarde **socialIdpAuthentication**.
+
 ```xml
 <OutputClaims>
   <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="assertionSubjectName" />
@@ -123,33 +123,33 @@ Het technische profiel retourneert ook claims die niet zijn geretourneerd door d
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| PartnerEntity | Ja | URL van de metagegevens van de SAML-identiteitsprovider. Kopieer de metagegevens van de id-provider en toe te voegen in het CDATA-element `<![CDATA[Your IDP metadata]]>` |
-| WantsSignedRequests | Nee | Geeft aan of het technische profiel vereist dat alle van de uitgaande verificatieaanvragen moeten worden ondertekend. Mogelijke waarden: `true` of `false`. De standaardwaarde is `true`. Wanneer de waarde is ingesteld op `true`, wordt de **SamlMessageSigning** cryptografische sleutel moet worden opgegeven en alle uitgaande verificatieaanvragen zijn ondertekend. Als de waarde is ingesteld op `false`, wordt de **SigAlg** en **handtekening** parameters (querytekenreeks of parameter plaatsen) worden weggelaten uit de aanvraag. Deze metagegevens bepaalt ook de metagegevens van de **AuthnRequestsSigned** kenmerk, die wordt uitgevoerd in de metagegevens van de Azure AD B2C technisch profiel dat wordt gedeeld met de id-provider. Azure AD B2C niet ondertekenen van de aanvraag als de waarde van **WantsSignedRequests** in het technische profiel metagegevens is ingesteld op `false` en de metagegevens van de id-provider **WantAuthnRequestsSigned** is ingesteld op `false` of niet opgegeven. |
-| XmlSignatureAlgorithm | Nee | De methode die Azure AD B2C gebruikt voor het ondertekenen van de SAML-aanvraag. Deze metagegevens bepaalt de waarde van de **SigAlg** parameter (querytekenreeks of parameter plaatsen) in de SAML-aanvraag. Mogelijke waarden: `Sha256`, `Sha384`, `Sha512`, of `Sha1`. Zorg ervoor dat u de handtekeningalgoritme configureren aan beide zijden met dezelfde waarde. Gebruik alleen de algoritme die ondersteuning biedt voor uw certificaat. | 
-| WantsSignedAssertions | Nee | Geeft aan of het technische profiel is vereist dat alle inkomende bevestigingen zijn ondertekend. Mogelijke waarden: `true` of `false`. De standaardwaarde is `true`. Als de waarde is ingesteld op `true`, alle asserties sectie `saml:Assertion` verzonden door de identiteit van de Azure AD B2C-provider moet worden ondertekend. Als de waarde is ingesteld op `false`, de id-provider mag niet de asserties ondertekenen, maar zelfs als dit het geval, Azure AD B2C de handtekening niet gevalideerd. Deze metagegevens bepaalt ook de markering voor metagegevens **WantsAssertionsSigned**, die wordt uitgevoerd in de metagegevens van de Azure AD B2C technisch profiel dat wordt gedeeld met de id-provider. Als u de validatie van asserties uitschakelt, ook kunt u de validatie van de handtekening antwoord uitschakelen (Zie voor meer informatie, **ResponsesSigned**). |
-| ResponsesSigned | Nee | Mogelijke waarden: `true` of `false`. De standaardwaarde is `true`. Als de waarde is ingesteld op `false`, de id-provider mag niet het SAML-antwoord ondertekenen, maar zelfs als dit het geval, Azure AD B2C de handtekening niet gevalideerd. Als de waarde is ingesteld op `true`, het SAML-antwoord dat is verzonden door de id-provider naar Azure AD B2C is ondertekend en moet worden gevalideerd. Als u de validatie van SAML-antwoord uitschakelt, ook kunt u de validatie van de handtekening assertion uitschakelen (Zie voor meer informatie, **WantsSignedAssertions**). |
-| WantsEncryptedAssertions | Nee | Geeft aan of het technische profiel is vereist dat alle inkomende bevestigingen moeten worden versleuteld. Mogelijke waarden: `true` of `false`. De standaardwaarde is `false`. Als de waarde is ingesteld op `true`, asserties verzonden door de id-provider naar Azure AD B2C moeten worden ondertekend en de **SamlAssertionDecryption** cryptografische sleutel moet worden opgegeven. Als de waarde is ingesteld op `true`, de metagegevens van de Azure AD B2C technisch profiel bevat de **versleuteling** sectie. De id-provider leest de metagegevens en versleutelt de SAML-verklaring antwoord met de openbare sleutel die is opgegeven in de metagegevens van het technische profiel van de Azure AD B2C. Als u de asserties-versleuteling inschakelt, moet u ook mogelijk om uit te schakelen de handtekeningvalidatie van het antwoord (Zie voor meer informatie, **ResponsesSigned**). | 
-| IdpInitiatedProfileEnabled | Nee | Geeft aan of het sessieprofiel van een voor eenmalige aanmelding die is gestart door een SAML-profiel-id-provider is ingeschakeld. Mogelijke waarden: `true` of `false`. De standaardwaarde is `false`. In de stroom gestart door de id-provider, de gebruiker extern is geverifieerd en een ongevraagde reactie wordt verzonden naar Azure AD B2C, die vervolgens het token verbruikt, indelingsstappen wordt uitgevoerd en vervolgens een antwoord naar de relying party-toepassing stuurt. |
-| NameIdPolicyFormat | Nee | Hiermee geeft u beperkingen op de naam-id moet worden gebruikt voor het aangevraagde onderwerp. Als u dit weglaat, kan elk type ondersteund door de id-provider voor het aangevraagde onderwerp-id kan worden gebruikt. Bijvoorbeeld `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`. **NameIdPolicyFormat** kan worden gebruikt met **NameIdPolicyAllowCreate**. Bekijk uw id-provider-documentatie voor informatie over welke naam ID beleid worden ondersteund. |
-| NameIdPolicyAllowCreate | Nee | Bij het gebruik van **NameIdPolicyFormat**, u kunt ook opgeven de `AllowCreate` eigenschap van **NameIDPolicy**. De waarde van deze metagegevens is `true` of `false` om aan te geven of de id-provider is toegestaan tot een nieuw account maken tijdens de stroom aanmelden. Bekijk documentatie van uw id-provider voor instructies over om dit te doen. |
-| AuthenticationRequestExtensions | Nee | Optionele protocol bericht extensie-elementen die worden overeengekomen tussen Azure AD BC en de id-provider. De extensie wordt weergegeven in de XML-indeling. Toevoegen van de XML-gegevens in het element CDATA `<![CDATA[Your IDP metadata]]>`. Raadpleeg de documentatie van uw id-provider om te zien of het element extensions wordt ondersteund. |
-| IncludeAuthnContextClassReferences | Nee | Hiermee geeft u een of meer URI verwijzingen authentication context klassen te identificeren. Bijvoorbeeld, als u wilt toestaan dat een gebruiker zich aanmelden met alleen gebruikersnaam en wachtwoord, de waarde ingesteld op `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`. Als u wilt dat aanmelding via gebruikersnaam en wachtwoord via een beveiligde sessie (SSL/TLS), geef `PasswordProtectedTransport`. Documentatie van uw id-provider voor instructies bekijken over de **AuthnContextClassRef** URI's die worden ondersteund. |
-| IncludeKeyInfo | Nee | Geeft aan of de SAML-aanvraag voor verificatie de openbare sleutel van het certificaat bevat als de binding is ingesteld op `HTTP-POST`. Mogelijke waarden: `true` of `false`. |
+| PartnerEntity | Ja | URL van de meta gegevens van de SAML-ID-provider. Kopieer de meta gegevens van de identiteits provider en voeg deze toe in het CDATA-element`<![CDATA[Your IDP metadata]]>` |
+| WantsSignedRequests | Nee | Geeft aan of voor het technische profiel alle uitgaande verificatie aanvragen moeten worden ondertekend. Mogelijke waarden: `true` of `false`. De standaardwaarde is `true`. Wanneer de waarde is ingesteld op `true`, moet de cryptografie sleutel **SamlMessageSigning** worden opgegeven en alle uitgaande verificatie aanvragen worden ondertekend. Als de waarde is ingesteld op `false`, worden de para meters **SigAlg** en **Signature** (query teken reeks of post parameter) uit de aanvraag wegge laten. Deze meta gegevens bepalen ook het kenmerk **AuthnRequestsSigned** van meta gegevens, dat wordt uitgevoerd in de meta gegevens van het Azure AD B2C technische profiel dat wordt gedeeld met de ID-provider. Azure AD B2C de aanvraag niet ondertekent als de waarde van **WantsSignedRequests** in de meta gegevens van het `false` technische profiel is ingesteld op en de meta gegevens `false` **WantAuthnRequestsSigned** van de identiteits provider is ingesteld op of niet is opgegeven. |
+| XmlSignatureAlgorithm | Nee | De methode die Azure AD B2C gebruikt voor het ondertekenen van de SAML-aanvraag. Met deze meta gegevens bepaalt u de waarde van de para meter **SigAlg** (query teken reeks of post parameter) in de SAML-aanvraag. Mogelijke waarden: `Sha256` `Sha384` ,`Sha512`, of `Sha1`. Zorg ervoor dat u het handtekening algoritme aan beide zijden met dezelfde waarde configureert. Gebruik alleen de algoritme die door uw certificaat wordt ondersteund. |
+| WantsSignedAssertions | Nee | Geeft aan of voor het technische profiel alle binnenkomende verklaringen moeten worden ondertekend. Mogelijke waarden: `true` of `false`. De standaardwaarde is `true`. Als de waarde is ingesteld op `true`, moet alle bevestigingen `saml:Assertion` die door de id-Azure AD B2C provider zijn verzonden, worden ondertekend. Als de waarde is ingesteld op `false`, mag de ID-provider de bevestigingen niet ondertekenen, maar zelfs als dit wel het geval is, kan Azure AD B2C de hand tekening niet valideren. Deze meta gegevens bepalen ook de **WantsAssertionsSigned**van de meta gegevens, die wordt uitgevoerd in de meta gegevens van het Azure AD B2C technische profiel dat wordt gedeeld met de ID-provider. Als u de validatie van beweringen uitschakelt, kunt u ook de validatie van de reactie handtekening uitschakelen (Zie **ResponsesSigned**) voor meer informatie. |
+| ResponsesSigned | Nee | Mogelijke waarden: `true` of `false`. De standaardwaarde is `true`. Als de waarde is ingesteld op `false`, mag de ID-provider het SAML-antwoord niet ondertekenen, maar zelfs als dat wel het geval is, Azure AD B2C de hand tekening niet valideren. Als de waarde is ingesteld op `true`, wordt het SAML-antwoord verzonden door de ID-provider naar Azure AD B2C ondertekend en moet het worden gevalideerd. Als u de SAML-antwoord validatie uitschakelt, kunt u ook de validatie van de hand tekening van de bevestiging uitschakelen (Zie **WantsSignedAssertions**) voor meer informatie. |
+| WantsEncryptedAssertions | Nee | Geeft aan of alle binnenkomende verklaringen moeten worden versleuteld met het technische profiel. Mogelijke waarden: `true` of `false`. De standaardwaarde is `false`. Als de waarde is ingesteld op `true`, moeten bevestigingen die door de ID-provider naar Azure AD B2C worden verzonden, worden ondertekend en moet de cryptografie sleutel **SamlAssertionDecryption** worden opgegeven. Als de waarde is ingesteld op `true`, bevat de meta gegevens van het technische profiel van Azure AD B2C de sectie **versleuteling** . De ID-provider leest de meta gegevens en versleutelt de SAML-reactie bevestiging met de open bare sleutel die is opgenomen in de meta gegevens van het technische profiel van Azure AD B2C. Als u de beweringen versleuteling inschakelt, moet u mogelijk ook de validatie van de reactie handtekening uitschakelen (Zie **ResponsesSigned**) voor meer informatie. |
+| IdpInitiatedProfileEnabled | Nee | Hiermee geeft u op of een sessie profiel voor eenmalige aanmelding is ingeschakeld dat is geïnitieerd door een SAML-ID-provider profiel. Mogelijke waarden: `true` of `false`. De standaardwaarde is `false`. In de stroom die door de ID-provider is gestart, wordt de gebruiker extern geverifieerd en wordt een ongevraagde reactie verzonden naar Azure AD B2C, die vervolgens het token gebruikt, worden de stappen voor het uitvoeren van de indeling uitgevoerd en wordt vervolgens een reactie naar de Relying Party toepassing verzonden. |
+| NameIdPolicyFormat | Nee | Hiermee geeft u beperkingen op voor de naam-id die moet worden gebruikt om het aangevraagde onderwerp weer te geven. Als u dit weglaat, kan elk type id dat wordt ondersteund door de ID-provider voor het aangevraagde onderwerp, worden gebruikt. Bijvoorbeeld `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`. **NameIdPolicyFormat** kan worden gebruikt met **NameIdPolicyAllowCreate**. Raadpleeg de documentatie van uw identiteits provider voor meer informatie over welke naam-ID-beleids regels worden ondersteund. |
+| NameIdPolicyAllowCreate | Nee | Wanneer u **NameIdPolicyFormat**gebruikt, kunt u ook de `AllowCreate` eigenschap van **NameIDPolicy**opgeven. De waarde van deze meta gegevens `true` is `false` of om aan te geven of de ID-provider een nieuw account mag maken tijdens de aanmeldings stroom. Raadpleeg de documentatie van uw identiteits provider voor richt lijnen over hoe u dit doet. |
+| AuthenticationRequestExtensions | Nee | Optionele protocol bericht extensie-elementen die zijn overeengekomen tussen Azure AD BC en de ID-provider. De uitbrei ding wordt weer gegeven in XML-indeling. U voegt de XML-gegevens in het CDATA `<![CDATA[Your IDP metadata]]>`-element toe. Raadpleeg de documentatie van uw identiteits provider om na te gaan of het element Extensions wordt ondersteund. |
+| IncludeAuthnContextClassReferences | Nee | Hiermee geeft u een of meer URI-verwijzingen op die verificatie context klassen identificeren. Als u bijvoorbeeld een gebruiker wilt toestaan zich aan te melden met gebruikers naam en wacht woord, stelt u `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`de waarde in op. Als u het aanmelden via de gebruikers naam en het wacht woord via een beveiligde sessie (SSL/TLS `PasswordProtectedTransport`) wilt toestaan, geeft u op. Raadpleeg de documentatie van uw identiteits provider voor meer informatie over de **AuthnContextClassRef** -uri's die worden ondersteund. |
+| IncludeKeyInfo | Nee | Geeft aan of de SAML-verificatie aanvraag de open bare sleutel van het certificaat bevat wanneer de binding `HTTP-POST`is ingesteld op. Mogelijke waarden: `true` of `false`. |
 
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 
-De **CryptographicKeys** element bevat de volgende kenmerken:
+Het **CryptographicKeys** -element bevat de volgende kenmerken:
 
 | Kenmerk |Vereist | Description |
 | --------- | ----------- | ----------- |
-| SamlMessageSigning |Ja | De X509 certificaat (RSA-sleutelpaar) moet worden gebruikt voor het ondertekenen van SAML-berichten. Azure AD B2C gebruikt deze sleutel om te ondertekenen van de aanvragen en verzend dit naar de id-provider. |
-| SamlAssertionDecryption |Ja | De X509 certificaat (RSA-sleutelpaar) moet worden gebruikt voor het ontsleutelen van SAML-berichten. Dit certificaat moet worden opgegeven door de id-provider. Azure AD B2C gebruikt dit certificaat om de gegevens die is verzonden door de id-provider te ontsleutelen. |
-| MetadataSigning |Nee | De X509 certificaat (RSA-sleutelpaar) moet worden gebruikt om te ondertekenen van SAML-metagegevens. Azure AD B2C gebruikt deze sleutel voor het ondertekenen van de metagegevens.  |
+| SamlMessageSigning |Ja | Het x509-certificaat (RSA key set) dat moet worden gebruikt voor het ondertekenen van SAML-berichten. Azure AD B2C gebruikt deze sleutel om de aanvragen te ondertekenen en te verzenden naar de ID-provider. |
+| SamlAssertionDecryption |Ja | Het x509-certificaat (RSA key set) dat wordt gebruikt voor het ontsleutelen van SAML-berichten. Dit certificaat moet worden verschaft door de ID-provider. Azure AD B2C gebruikt dit certificaat voor het ontsleutelen van de gegevens die zijn verzonden door de ID-provider. |
+| MetadataSigning |Nee | Het x509-certificaat (RSA key set) dat wordt gebruikt voor het ondertekenen van SAML-meta gegevens. Azure AD B2C gebruikt deze sleutel om de meta gegevens te ondertekenen.  |
 
 ## <a name="examples"></a>Voorbeelden
 
-- [AD FS toevoegen als een SAML-id-provider met behulp van aangepaste beleidsregels](active-directory-b2c-custom-setup-adfs2016-idp.md)
-- [Meld u aan met behulp van Salesforce-accounts via SAML](active-directory-b2c-setup-sf-app-custom.md)
+- [ADFS toevoegen als een SAML-ID-provider met behulp van aangepast beleid](active-directory-b2c-custom-setup-adfs2016-idp.md)
+- [Meld u aan met Sales Force-accounts via SAML](active-directory-b2c-setup-sf-app-custom.md)
 
 
 

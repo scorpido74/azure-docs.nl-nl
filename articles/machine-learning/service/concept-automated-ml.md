@@ -1,7 +1,7 @@
 ---
 title: Wat is geautomatiseerde ML/automl
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over hoe Azure Machine Learning service automatisch een algoritme voor u kan kiezen en een model kunt genereren om u tijd te besparen met behulp van de para meters en de criteria die u opgeeft om het beste algoritme voor uw model te selecteren.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over hoe Azure Machine Learning automatisch een algoritme voor u kunt kiezen, en hoe u hiermee een model genereert om u tijd te besparen met behulp van de para meters en de criteria die u opgeeft om het beste algoritme voor uw model te selecteren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7347be086cd9e85dda7b8271548ccb44e8114ff
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 32ff1ba599f4f95cc413bc2bb2c3bbc442405022
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882027"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035707"
 ---
 # <a name="what-is-automated-machine-learning"></a>Wat is geautomatiseerde machine learning?
 
@@ -39,7 +39,7 @@ Gegevens wetenschappers, analisten en ontwikkel aars in verschillende branches k
 
 ## <a name="how-automated-ml-works"></a>Hoe geautomatiseerd ML werkt
 
-Met behulp van **Azure machine learning-service**kunt u uw automatische ml-experimenten ontwerpen en uitvoeren met de volgende stappen:
+Met **Azure machine learning**kunt u uw automatische ml-experimenten ontwerpen en uitvoeren met de volgende stappen:
 
 1. **Bepaal welk ml-probleem** moet worden opgelost: classificatie, prognose of regressie
 
@@ -53,7 +53,7 @@ Met behulp van **Azure machine learning-service**kunt u uw automatische ml-exper
 
   ![Geautomatiseerde machine learning](./media/how-to-automated-ml/automl-concept-diagram2.png)
 
-Tijdens de training maakt de Azure Machine Learning-service een aantal parallelle pijp lijnen die verschillende algoritmen en para meters proberen. Het wordt gestopt zodra de afsluit criteria die in het experiment zijn gedefinieerd, zijn gevonden.
+Tijdens de training maakt Azure Machine Learning een aantal parallelle pijp lijnen die verschillende algoritmen en para meters proberen. Het wordt gestopt zodra de afsluit criteria die in het experiment zijn gedefinieerd, zijn gevonden.
 
 U kunt ook de informatie over geregistreerde uitvoeringen controleren, die de [metrische gegevens bevat](how-to-understand-automated-ml.md) die tijdens de uitvoering zijn verzameld. De trainings uitvoering produceert een met python geserialiseerd object (`.pkl` bestand) dat het model en de voor verwerking van gegevens bevat.
 

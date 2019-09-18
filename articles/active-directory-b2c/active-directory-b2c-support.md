@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a4bb82665ecd9d04c097a127f46814bb7198f393
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: f7f2217677b81c6f3e87eaa2612880adf3b499c2
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227178"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064940"
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Aanvragen voor bestands ondersteuning
-U kunt de volgende stappen gebruiken om ondersteunings aanvragen voor Azure Active Directory (Azure AD) B2C te maken op de Azure Portal:
+U kunt de volgende stappen gebruiken om ondersteunings aanvragen voor Azure Active Directory B2C (Azure AD B2C) op te nemen in de Azure Portal:
 
 1. Schakel over van uw B2C-Tenant naar een andere Tenant waaraan een Azure-abonnement is gekoppeld. Normaal gesp roken is de Tenant van uw werk nemer of de standaard Tenant die voor u is gemaakt toen u zich registreerde voor een Azure-abonnement. Zie [hoe een Azure-abonnement is gerelateerd aan Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)voor meer informatie.
 

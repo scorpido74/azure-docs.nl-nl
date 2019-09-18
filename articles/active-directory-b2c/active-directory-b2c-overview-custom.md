@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a3ded11ac6a68e82fba76e7551699f29f3cb6075
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 335b6c1a12f3786d7c0f1083f5b052aaac4beccb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998418"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065779"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Aangepast beleid in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Aangepaste beleids regels zijn configuratie bestanden waarmee het gedrag van uw Azure Active Directory-Tenant (Azure AD) B2C wordt gedefinieerd. Gebruikers stromen zijn vooraf gedefinieerd in de Azure AD B2C portal voor de meest voorkomende identiteits taken. Aangepaste beleids regels kunnen volledig worden bewerkt door een identiteits ontwikkelaar om veel verschillende taken uit te voeren.
+Aangepaste beleids regels zijn configuratie bestanden waarmee het gedrag van uw Azure Active Directory B2C (Azure AD B2C)-Tenant wordt gedefinieerd. Gebruikers stromen zijn vooraf gedefinieerd in de Azure AD B2C portal voor de meest voorkomende identiteits taken. Aangepaste beleids regels kunnen volledig worden bewerkt door een identiteits ontwikkelaar om veel verschillende taken uit te voeren.
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>Gebruikers stromen en aangepaste beleids regels vergelijken
 

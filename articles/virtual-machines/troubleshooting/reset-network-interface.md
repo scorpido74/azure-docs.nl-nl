@@ -1,10 +1,10 @@
 ---
-title: Het opnieuw instellen van de netwerkinterface voor virtuele Azure Windows-machine | Microsoft Docs
-description: Laat zien hoe u de netwerkinterface voor Azure Windows VM opnieuw instellen
+title: De netwerk interface opnieuw instellen voor Azure Windows VM | Microsoft Docs
+description: Laat zien hoe u de netwerk interface opnieuw instelt voor Azure Windows VM
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
@@ -12,44 +12,44 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: 3a8e005f8678deef9fc4aebd2d620619fe6074bc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: afb8335d3206a76b8f9bc47733e9816126e80af0
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60307284"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058465"
 ---
-# <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Het opnieuw instellen van de netwerkinterface voor Azure Windows VM 
+# <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>De netwerk interface opnieuw instellen voor Azure Windows VM 
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-In dit artikel laat zien hoe de netwerkinterface voor Azure Windows VM het oplossen van problemen wanneer u geen verbinding maken op Microsoft Azure Windows Virtual Machine (VM) na het opnieuw instellen:
+In dit artikel wordt beschreven hoe u de netwerk interface voor Azure Windows VM opnieuw instelt om problemen op te lossen wanneer u geen verbinding kunt maken met Microsoft Azure virtuele Windows-machine (VM):
 
-* U uitschakelen de standaard Standaardnetwerkinterface (NIC). 
-* Stel u handmatig een statisch IP-adres voor de NIC. 
+* U kunt de standaard netwerk interface (NIC) uitschakelen. 
+* U stelt hand matig een statisch IP-adres in voor de NIC. 
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
 
 ## <a name="reset-network-interface"></a>De netwerkinterface opnieuw instellen
 
-### <a name="for-vms-deployed-in-resource-group-model"></a>Voor virtuele machines die worden geïmplementeerd in de groep resourcemodel
+### <a name="for-vms-deployed-in-resource-group-model"></a>Voor Vm's die zijn geïmplementeerd in het resource groeps model
 
 1.  Ga naar de [Azure Portal](https://ms.portal.azure.com).
-2.  Selecteer de betreffende virtuele Machine.
-3.  Selecteer **netwerken** en selecteer vervolgens de netwerkinterface van de virtuele machine.
+2.  Selecteer de betreffende virtuele machine.
+3.  Selecteer **netwerken** en selecteer vervolgens de netwerk interface van de virtuele machine.
 
-    ![De locatie van de netwerk-interface](./media/reset-network-interface/select-network-interface-vm.png)
+    ![Locatie van netwerk interface](./media/reset-network-interface/select-network-interface-vm.png)
     
 4.  Selecteer **IP-configuraties**.
 5.  Selecteer het IP-adres. 
-6.  Als de **privé-IP-toewijzing** is niet **statische**, wijzig dit in **statische**.
-7.  Wijzig de **IP-adres** naar een ander IP-adres dat beschikbaar is in het Subnet.
-8. De virtuele machine wordt opnieuw opgestart om te initialiseren van de nieuwe NIC in het systeem.
-9.  Probeer via RDP verbinding naar uw computer. Als dit lukt, kunt u het particuliere IP-adres terug naar de oorspronkelijke wijzigen als u wilt. Anders kunt u deze. 
+6.  Als de **persoonlijke IP-toewijzing** niet **statisch**is, wijzigt u deze in **statisch**.
+7.  Wijzig het **IP-adres** in een ander IP-adres dat beschikbaar is in het subnet.
+8. De virtuele machine wordt opnieuw opgestart om de nieuwe NIC naar het systeem te initialiseren.
+9.  Probeer RDP naar uw computer. Als u dit hebt gedaan, kunt u het privé-IP-adres opnieuw instellen op het origineel als u dat wilt. Als dat niet het geval is, kunt u deze blijven gebruiken. 
 
 #### <a name="use-azure-powershell"></a>Azure PowerShell gebruiken
 
-1. Zorg ervoor dat u hebt [de nieuwste Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) geïnstalleerd
+1. Zorg ervoor dat u [de nieuwste Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) hebt geïnstalleerd
 2. Open een verhoogde Azure PowerShell-sessie (als administrator uitvoeren). Voer de volgende opdrachten uit:
 
     ```powershell
@@ -70,27 +70,27 @@ In dit artikel laat zien hoe de netwerkinterface voor Azure Windows VM het oplos
     #Add/Change static IP. This process will not change MAC address
     Get-AzVM -ServiceName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
     ```
-3. Probeer via RDP verbinding naar uw computer.  Als dit lukt, kunt u het particuliere IP-adres terug naar de oorspronkelijke wijzigen als u wilt. Anders kunt u deze.
+3. Probeer RDP naar uw computer.  Als u dit hebt gedaan, kunt u het privé-IP-adres opnieuw instellen op het origineel als u dat wilt. Als dat niet het geval is, kunt u deze blijven gebruiken.
 
-### <a name="for-classic-vms"></a>Voor klassieke VM 's
+### <a name="for-classic-vms"></a>Voor klassieke Vm's
 
-Als u wilt herstellen van de netwerkinterface, de volgende stappen uit:
+Voer de volgende stappen uit om de netwerk interface opnieuw in te stellen:
 
 #### <a name="use-azure-portal"></a>Azure Portal gebruiken
 
 1.  Ga naar de [Azure Portal]( https://ms.portal.azure.com).
-2.  Selecteer **virtuele Machines (klassiek)** .
-3.  Selecteer de betreffende virtuele Machine.
+2.  Selecteer **virtual machines (klassiek)** .
+3.  Selecteer de betreffende virtuele machine.
 4.  Selecteer **IP-adressen**.
-5.  Als de **privé-IP-toewijzing** is niet **statische**, wijzig dit in **statische**.
-6.  Wijzig de **IP-adres** naar een ander IP-adres dat beschikbaar is in het Subnet.
+5.  Als de **persoonlijke IP-toewijzing** niet **statisch**is, wijzigt u deze in **statisch**.
+6.  Wijzig het **IP-adres** in een ander IP-adres dat beschikbaar is in het subnet.
 7.  Selecteer **Opslaan**.
-8.  De virtuele machine wordt opnieuw opgestart om te initialiseren van de nieuwe NIC in het systeem.
-9.  Probeer via RDP verbinding naar uw computer. Als dit lukt, kunt u kiezen om terug te zetten van de privé IP-adres terug naar de oorspronkelijke.  
+8.  De virtuele machine wordt opnieuw opgestart om de nieuwe NIC naar het systeem te initialiseren.
+9.  Probeer RDP naar uw computer. Als dit lukt, kunt u ervoor kiezen om het privé-IP-adres terug te zetten naar de oorspronkelijke.  
 
 #### <a name="use-azure-powershell"></a>Azure PowerShell gebruiken
 
-1. Zorg ervoor dat u hebt [de nieuwste Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) geïnstalleerd.
+1. Zorg ervoor dat u [de nieuwste Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) hebt geïnstalleerd.
 2. Open een verhoogde Azure PowerShell-sessie (als administrator uitvoeren). Voer de volgende opdrachten uit:
 
     ```powershell
@@ -111,22 +111,22 @@ Als u wilt herstellen van de netwerkinterface, de volgende stappen uit:
     #Add/Change static IP. This process will not change MAC address
     Get-AzureVM -ServiceName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
     ```
-3. Probeer via RDP verbinding naar uw computer. Als dit lukt, kunt u het particuliere IP-adres terug naar de oorspronkelijke wijzigen als u wilt. Anders kunt u deze. 
+3. Probeer RDP naar uw computer. Als u dit hebt gedaan, kunt u het privé-IP-adres opnieuw instellen op het origineel als u dat wilt. Als dat niet het geval is, kunt u deze blijven gebruiken. 
 
-## <a name="delete-the-unavailable-nics"></a>Het is niet beschikbaar NIC's verwijderen
-Nadat u met de machine via Extern bureaublad kunt, moet u de oude NIC's om het potentiële probleem te voorkomen verwijderen:
+## <a name="delete-the-unavailable-nics"></a>De niet-beschik bare Nic's verwijderen
+Nadat u extern bureau blad naar de computer kunt, moet u de oude Nic's verwijderen om het potentiële probleem te voor komen:
 
 1.  Open Apparaatbeheer.
-2.  Selecteer **weergave** > **verborgen apparaten weergeven**.
-3.  Selecteer **netwerkadapters**. 
-4.  Controleer of u adapters met de naam als 'Microsoft Hyper-V-netwerkadapter'.
-5.  U ziet mogelijk een niet-beschikbare adapter. Deze wordt grijs weergegeven. Met de rechtermuisknop op de adapter en selecteer verwijderen.
+2.  Selecteer **weer** > geven**verborgen apparaten**weer geven.
+3.  Selecteer **netwerk adapters**. 
+4.  Controleer op de adapters met de naam ' Microsoft Hyper-V netwerk adapter '.
+5.  U ziet mogelijk een niet-beschikbare adapter. Deze wordt grijs weergegeven. Klik met de rechter muisknop op de adapter en selecteer vervolgens verwijderen.
 
-    ![de installatiekopie van de NIC](media/reset-network-interface/nicpage.png)
+    ![de afbeelding van de NIC](media/reset-network-interface/nicpage.png)
 
     > [!NOTE]
-    > Verwijder alleen de niet beschikbaar-adapters die de naam 'Microsoft Hyper-V-netwerkadapter' hebben. Als u een van de andere verborgen adapters verwijdert, kan dit ertoe leiden dat andere problemen.
+    > Verwijder alleen de niet-beschik bare adapters die de naam ' Microsoft Hyper-V-netwerk adapter ' hebben. Als u een van de andere verborgen adapters verwijdert, kan dit leiden tot extra problemen.
     >
     >
 
-6.  Nu moeten alle niet beschikbaar netwerkadapters worden gewist van uw systeem.
+6.  Nu moeten alle niet-beschik bare adapters worden gewist van uw systeem.

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: a96c7bd3c461c70f3bdf5e3e12181dbc37008512
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f63648f63d6154b89f641cdc4d2657e0396a8c66
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092343"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036366"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Een gegevens schijf koppelen aan een virtuele Linux-machine met behulp van de portal 
 Dit artikel laat u zien hoe u met de Azure Portal zowel nieuwe als bestaande schijven kunt koppelen aan een virtuele Linux-machine. U kunt ook [een gegevens schijf koppelen aan een virtuele Windows-machine in de Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -36,7 +36,7 @@ Lees de volgende tips voordat u schijven aan uw virtuele machine koppelt:
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Klik op **virtual machines**in het menu links.
 3. Selecteer de virtuele machine in de lijst.
-4. Klik op **schijven**op de pagina virtuelemachines in Essentials.
+4. Klik op **schijven**op de pagina virtuele machines in **Essentials**.
    
     ![Schijf instellingen openen](./media/attach-disk-portal/find-disk-settings.png)
 
@@ -224,9 +224,9 @@ In dit voor beeld gebruikt u de UUID-waarde voor het */dev/sdc1* -apparaat dat i
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
-
+Wanneer u klaar bent, slaat u het *bestand/etc/fstab* -bestand op en start u het systeem opnieuw op.
 > [!NOTE]
-> Later het verwijderen van een gegevens schijf zonder het bewerken van fstab kan ertoe leiden dat de virtuele machine niet kan worden opgestart. De meeste distributies bieden de opties *nobootwait* en/of fstab. Met deze opties kan een systeem worden opgestart zelfs als de schijf niet kan worden gekoppeld tijdens het opstarten. Raadpleeg de documentatie van uw distributie voor meer informatie over deze para meters.
+> Later het verwijderen van een gegevens schijf zonder het bewerken van fstab kan ertoe leiden dat de virtuele machine niet kan worden opgestart. De meeste distributies bieden de opties *nobootwait* *en/* of fstab. Met deze opties kan een systeem worden opgestart zelfs als de schijf niet kan worden gekoppeld tijdens het opstarten. Raadpleeg de documentatie van uw distributie voor meer informatie over deze para meters.
 > 
 > De *niet-werkende* optie zorgt ervoor dat de VM wordt gestart, zelfs als het bestands systeem beschadigd is of wanneer de schijf niet aanwezig is tijdens het opstarten. Zonder deze optie kunt u zich voordoen als beschreven in [kan niet SSH-naar-Linux-VM wegens FSTAB-fouten](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)
 

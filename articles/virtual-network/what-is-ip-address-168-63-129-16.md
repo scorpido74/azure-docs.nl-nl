@@ -1,10 +1,10 @@
 ---
-title: Wat is een IP-adres 168.63.129.16? | Microsoft Docs
+title: Wat is het IP-adres 168.63.129.16? | Microsoft Docs
 description: Meer informatie over IP-adres 168.63.129.16 en hoe het werkt met uw resources.
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,32 +15,32 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: acfd5230d1bd572ea5179651558e3f736a8570af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ea8a8ec1a92a7dbc01dddc175f7116825ba00f9
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65833127"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067785"
 ---
-# <a name="what-is-ip-address-1686312916"></a>Wat is een IP-adres 168.63.129.16?
+# <a name="what-is-ip-address-1686312916"></a>Wat is het IP-adres 168.63.129.16?
 
-IP-adres 168.63.129.16 is een virtuele openbare IP-adres dat wordt gebruikt om een communicatiekanaal met Azure-platform bronnen mogelijk te maken. Klanten kunnen een adresruimte die voor hun privé virtueel netwerk definiëren in Azure. Daarom moeten de Azure-platform-resources worden aangeboden als een unieke openbare IP-adres. Deze virtuele openbare IP-adres vereenvoudigt het uitvoeren van de volgende zaken:
+IP-adres 168.63.129.16 is een virtueel openbaar IP-adres dat wordt gebruikt om een communicatie kanaal naar Azure-platform bronnen te vergemakkelijken. Klanten kunnen elke adres ruimte voor hun particuliere virtuele netwerk in azure definiëren. Daarom moeten de resources van het Azure-platform worden gepresenteerd als een uniek openbaar IP-adres. Dit virtuele open bare IP-adres vereenvoudigt de volgende dingen:
 
-- Hiermee kunt de VM-Agent om te communiceren met de Azure-platform om aan te geven dat deze zich op een status 'Gereed'.
-- Communicatie met de virtuele DNS-server voor naamomzetting gefilterde tot de resources (zoals VM's) die nog geen een aangepaste DNS-server mogelijk maakt. Deze filtering ervoor zorgt dat alleen de hostnamen van de resources en klanten omzetten kunnen.
-- Hiermee kunt [statuscontroles van Azure load balancer](../load-balancer/load-balancer-custom-probe-overview.md) om de status van virtuele machines te bepalen.
-- Kan de virtuele machine om te verkrijgen van een dynamisch IP-adres van de DHCP-service in Azure.
-- Kunt Guest Agent heartbeat-berichten voor de PaaS-rol.
+- Hiermee kan de VM-agent communiceren met het Azure-platform om aan te geven dat deze de status gereed heeft.
+- Maakt communicatie met de virtuele DNS-server mogelijk om gefilterde naam omzetting te bieden aan de resources (zoals VM) die geen aangepaste DNS-server hebben. Deze filtering zorgt ervoor dat klanten alleen de hostnamen van hun resources kunnen omzetten.
+- Hiermee worden [status controles van Azure Load Balancer](../load-balancer/load-balancer-custom-probe-overview.md) ingeschakeld om de status van vm's te bepalen.
+- Hiermee kan de virtuele machine een dynamisch IP-adres verkrijgen van de DHCP-service in Azure.
+- Hiermee schakelt u heartbeat-berichten van de gast agent in voor de functie PaaS.
 
 ## <a name="scope-of-ip-address-1686312916"></a>Bereik van IP-adres 168.63.129.16
 
-Het openbare IP-adres 168.63.129.16 wordt gebruikt in alle regio's en alle nationale clouds. Deze speciale openbare IP-adres is eigendom van Microsoft en heeft geen invloed op. Het is toegestaan door de regel voor standaard de netwerkbeveiligingsgroep. Het is raadzaam dat u dit IP-adres in een lokale firewall-beleid toestaan. De communicatie tussen deze speciale IP-adres en de resources is veilig, omdat alleen het interne Azure-platform kan een bericht van dit IP-adres van bron. Als dit adres wordt geblokkeerd, kan onverwacht gedrag optreden in een verscheidenheid aan scenario's.
+Het open bare IP-adres 168.63.129.16 wordt gebruikt in alle regio's en alle nationale Clouds. Dit speciale open bare IP-adres is eigendom van micro soft en kan niet worden gewijzigd. Het wordt toegestaan door de standaard regel voor de netwerk beveiligings groep. U wordt aangeraden dit IP-adres in alle lokale firewall-beleids regels in zowel binnenkomende als uitgaande richting toe te staan. De communicatie tussen dit speciale IP-adres en de bronnen is veilig, omdat alleen het interne Azure-platform een bericht kan bron van dit IP-adres. Als dit adres wordt geblokkeerd, kan onverwacht gedrag optreden in verschillende scenario's.
 
-[Azure Load Balancer statuscontroles](../load-balancer/load-balancer-custom-probe-overview.md) afkomstig is van dit IP-adres. Als u dit IP-adres blokkeert, mislukken uw tests.
+[Azure Load Balancer status tests](../load-balancer/load-balancer-custom-probe-overview.md) zijn afkomstig van dit IP-adres. Als u dit IP-adres blokkeert, zullen uw tests mislukken.
 
-De statustest afkomstig is uit een privé IP-adres en 168.63.129.16 wordt niet gebruikt in een netwerkscenario met niet-virtuele (klassiek).
+In een scenario met een niet-virtueel netwerk (klassiek), wordt de status test gebrond op basis van een privé-IP-adres en 168.63.129.16 wordt niet gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Beveiligingsgroepen](security-overview.md)
+- [Beveiligings groepen](security-overview.md)
 - [Een netwerkbeveiligingsgroep maken, wijzigen of verwijderen](manage-network-security-group.md)

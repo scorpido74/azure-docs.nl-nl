@@ -1,6 +1,6 @@
 ---
-title: Beheren van gebruikersgegevens in Azure Active Directory B2C | Microsoft Docs
-description: Informatie over het verwijderen of exporteren van gebruikersgegevens in Azure AD B2C.
+title: Gebruikers gegevens beheren in Azure Active Directory B2C | Microsoft Docs
+description: Meer informatie over het verwijderen of exporteren van gebruikers gegevens in Azure AD B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,55 +11,55 @@ ms.date: 05/06/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4cbca467b50dd0e43132b6d09dc0785c501fca0f
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 78726620db119abf617be8a30cf03697b04e382b
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204682"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064072"
 ---
-# <a name="manage-user-data-in-azure-active-directory-b2c"></a>Beheren van gebruikersgegevens in Azure Active Directory B2C
+# <a name="manage-user-data-in-azure-active-directory-b2c"></a>Gebruikers gegevens beheren in Azure Active Directory B2C
 
- Dit artikel wordt beschreven hoe u de gegevens van de gebruiker in Azure Active Directory (Azure AD) B2C kunt beheren met behulp van de bewerkingen die worden geleverd door de [Azure Active Directory Graph API](/previous-versions/azure/ad/graph/api/api-catalog). Gebruikersgegevens beheren omvat het verwijderen van of het exporteren van gegevens uit auditlogboeken.
+ In dit artikel wordt beschreven hoe u de gebruikers gegevens in Azure Active Directory B2C (Azure AD B2C) kunt beheren door gebruik te maken van de bewerkingen die worden meegeleverd door de [Azure Active Directory Graph API](/previous-versions/azure/ad/graph/api/api-catalog). Het beheren van gebruikers gegevens omvat het verwijderen of exporteren van gegevens uit audit Logboeken.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="delete-user-data"></a>Gebruikersgegevens verwijderen
+## <a name="delete-user-data"></a>Gebruikers gegevens verwijderen
 
-Gebruikersgegevens zijn opgeslagen in de Azure AD B2C-directory en in de auditlogboeken. Controle van alle gebruikersgegevens bewaard 7 dagen in Azure AD B2C. Als u verwijderen van gebruikersgegevens in die periode van 7 dagen wilt, kunt u de [verwijderen van een gebruiker](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser) bewerking. Een DELETE-bewerking is vereist voor elk van de Azure AD B2C-tenants waar de gegevens zich kan bevinden. 
+Gebruikers gegevens worden opgeslagen in de map Azure AD B2C en in de audit Logboeken. Alle gebruikers controle gegevens worden 7 dagen in Azure AD B2C bewaard. Als u gebruikers gegevens binnen die periode van 7 dagen wilt verwijderen, kunt u de bewerking [een gebruiker verwijderen](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser) gebruiken. Er is een Verwijder bewerking vereist voor elk van de Azure AD B2C tenants waarin gegevens zich kunnen bevinden.
 
-Elke gebruiker in Azure AD B2C wordt toegewezen een object-ID. De object-ID biedt een unieke id voor u kunt gebruiken om gebruikersgegevens in Azure AD B2C te verwijderen. Afhankelijk van uw architectuur, de object-ID mag een handig correlatie-id voor andere services, zoals financiële, marketing, en klant relatie management databases. 
+Aan elke gebruiker in Azure AD B2C is een object-ID toegewezen. De object-ID biedt een ondubbelzinnige id die u kunt gebruiken om gebruikers gegevens in Azure AD B2C te verwijderen. Afhankelijk van uw architectuur kan de object-ID een handige correlatie-id zijn tussen andere services, zoals financiële, marketing-en data bases voor relatie beheer van klanten.
 
-Er is de meest nauwkeurige manier om de object-ID voor een gebruiker op te halen als onderdeel van een reis verificatie met Azure AD B2C. Als u een geldige aanvraag voor gegevens ontvangt van een gebruiker met behulp van andere methoden, een offlineproces, zoals een zoekopdracht met de klantenondersteuning van een agent, kan het nodig zijn om te zoeken van de gebruiker en noteer het bijbehorende object-ID. 
+De meest nauw keurige manier om de object-ID voor een gebruiker op te halen, is deze te verkrijgen als onderdeel van een verificatie traject met Azure AD B2C. Als u een geldige aanvraag voor gegevens van een gebruiker ontvangt door andere methoden te gebruiken, is het mogelijk dat u een offline proces, zoals een zoek opdracht door een ondersteunings agent van Customer Service, nodig hebt om de gebruiker te vinden en de bijbehorende object-ID te noteren.
 
-Het volgende voorbeeld ziet u een stroom mogelijk verwijderen van gegevens:
+In het volgende voor beeld ziet u een mogelijke stroom voor het verwijderen van gegevens:
 
-1. De gebruiker zich aanmeldt en **verwijderen van mijn gegevens**.
-2. De toepassing biedt een optie om de gegevens in een beheersectie van de toepassing te verwijderen.
-3. De toepassing zorgt ervoor dat een verificatie met Azure AD B2C. Azure AD B2C biedt een token met de object-ID van de gebruiker terug naar de toepassing. 
-4. Het token wordt ontvangen door de toepassing en de object-ID wordt gebruikt om de gebruikersgegevens via een aanroep naar de Azure AD Graph-API te verwijderen. De Azure AD Graph API Hiermee verwijdert u de gebruikersgegevens en retourneert een statuscode 200 OK.
-5. De toepassing coördineert de verwijdering van gebruikersgegevens in de andere organisatie-systemen naar behoefte via de object-ID of andere id.
-6. De toepassing wordt bevestigd dat de verwijdering van gegevens en biedt de volgende stappen aan de gebruiker.
+1. De gebruiker meldt zich aan en selecteert **mijn gegevens verwijderen**.
+2. De toepassing biedt een optie voor het verwijderen van de gegevens in een beheer sectie van de toepassing.
+3. De toepassing dwingt een verificatie af Azure AD B2C. Azure AD B2C levert een token met de object-ID van de gebruiker terug naar de toepassing.
+4. Het token wordt ontvangen door de toepassing en de object-ID wordt gebruikt om de gebruikers gegevens te verwijderen via een aanroep van de Azure AD-Graph API. De Azure AD-Graph API verwijdert de gebruikers gegevens en retourneert de status code 200 OK.
+5. De toepassing organiseert het verwijderen van gebruikers gegevens in andere organisatie systemen, indien nodig, met behulp van de object-ID of andere id's.
+6. De toepassing bevestigt het verwijderen van gegevens en geeft de volgende stappen aan de gebruiker.
 
-## <a name="export-customer-data"></a>Exporteren van gegevens van de klant
+## <a name="export-customer-data"></a>Klant gegevens exporteren
 
-Het proces van het exporteren van gegevens van de klant van Azure AD B2C is vergelijkbaar met de verwijdering.
+Het proces voor het exporteren van klant gegevens uit Azure AD B2C is vergelijkbaar met het verwijderings proces.
 
-Azure AD B2C-gebruikersgegevens is beperkt tot:
+Azure AD B2C gebruikers gegevens beperkt zijn tot:
 
-- **Gegevens die zijn opgeslagen in de Azure Active Directory**: U kunt gegevens in een Azure AD B2C-verificatie de gebruikersbeleving ophalen via de object-ID of een aanmelding naam, zoals een e-mailadres of gebruikersnaam. 
-- **Gebeurtenissen voor specifieke gebruikers controlerapport**: U kunt gegevens indexeren via de object-ID.
+- **Gegevens die zijn opgeslagen in de Azure Active Directory**: U kunt gegevens ophalen in een Azure AD B2C-verificatie gebruiker met behulp van de object-ID of een aanmeldings naam, zoals een e-mail adres of gebruikers naam.
+- **Rapport met gebruikersspecifieke controle gebeurtenissen**: U kunt gegevens indexeren met behulp van de object-ID.
 
-In het volgende voorbeeld van een gegevensstroom exporteren, kunnen de stappen die worden beschreven als die worden uitgevoerd door de toepassing ook worden uitgevoerd met een back-end-proces of een gebruiker met een beheerdersrol in de map:
+In het volgende voor beeld van een gegevens stroom exporteren, de stappen die worden beschreven als uitgevoerd door de toepassing, kunnen ook worden uitgevoerd door een back-end-proces of een gebruiker met een beheerdersrol in de map:
 
-1. De gebruiker zich aanmeldt bij de toepassing. Azure AD B2C dwingt verificatie met Azure multi-factor Authentication af, indien nodig.
-2. Referenties van de gebruiker de toepassing gebruikt voor het aanroepen van een Azure AD Graph API-bewerking voor het ophalen van kenmerken van de gebruiker. De Azure AD Graph-API biedt de kenmerkgegevens in JSON-indeling. Afhankelijk van het schema kunt u de id-token inhoud om op te nemen van alle persoonlijke gegevens over een gebruiker instellen.
-3. De gebruiker audit-activiteit, haalt de toepassing. De Azure AD Graph-API biedt de gebeurtenisgegevens naar de toepassing.
-4. De toepassing de gegevens verzamelt en is beschikbaar voor de gebruiker.
+1. De gebruiker meldt zich aan bij de toepassing. Azure AD B2C wordt zo nodig verificatie afgedwongen met Azure Multi-Factor Authentication.
+2. De toepassing gebruikt de gebruikers referenties om een Azure AD Graph API-bewerking aan te roepen om de gebruikers kenmerken op te halen. De Azure AD-Graph API levert de kenmerk gegevens in JSON-indeling. Afhankelijk van het schema, kunt u de inhoud van het ID-token zo instellen dat alle persoonlijke gegevens over een gebruiker worden meegenomen.
+3. De toepassing haalt de controle activiteit voor gebruikers op. De Azure AD-Graph API levert de gebeurtenis gegevens aan de toepassing.
+4. De toepassing aggregeert de gegevens en maakt deze beschikbaar voor de gebruiker.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer informatie over het beheren van hoe gebruikers toegang tot uw toepassing, [gebruikerstoegang beheren](manage-user-access.md).
+- Zie [gebruikers toegang beheren](manage-user-access.md)voor meer informatie over het beheren van hoe gebruikers toegang krijgen tot uw toepassing.
 
 
 

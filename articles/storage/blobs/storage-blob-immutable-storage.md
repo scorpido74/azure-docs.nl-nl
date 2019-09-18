@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: a3f9768043c9acef9640b8e286611de94e44a7ff
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: aa6bee9cceffc0252dd39d85ebe9d70625e33419
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910492"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036410"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Bedrijfs kritieke gegevens opslaan in Azure Blob Storage
 
@@ -55,7 +55,7 @@ Het verwijderen van containers en accounts is ook niet toegestaan als er blobs z
 > [!IMPORTANT]
 > Een Bewaar beleid op basis van tijd moet worden *vergrendeld* om de BLOB een compatibele onveranderlijke status (schrijven en verwijderen beveiligd) te hebben voor SEC 17a-4 (f) en andere naleving van regelgeving. We raden u aan het beleid binnen een redelijke hoeveelheid tijd te vergren delen, meestal minder dan 24 uur. De initiële status van een toegepast Bewaar beleid op basis van tijd is *ontgrendeld*, zodat u de functie kunt testen en wijzigingen kunt aanbrengen in het beleid voordat u het vergrendelt. Hoewel de status *ontgrendeld* Onveranderbaarheid beveiliging biedt, is het niet raadzaam om de *Ontgrendelde* status te gebruiken voor andere doel einden dan kortings functies. 
 
-Wanneer een Bewaar beleid op basis van tijd op een container wordt toegepast, blijven alle blobs in de container onveranderbaar voor de duur van de *daad werkelijke* Bewaar periode. De daad werkelijke Bewaar periode voor bestaande blobs is gelijk aan het verschil tussen de wijzigings tijd van de BLOB en de door de gebruiker opgegeven Bewaar periode.
+Wanneer een Bewaar beleid op basis van tijd op een container wordt toegepast, blijven alle blobs in de container onveranderbaar voor de duur van de *daad werkelijke* Bewaar periode. De effectieve retentieperiode voor bestaande blobs is gelijk aan het verschil tussen het tijdstip waarop de blob is gemaakt en de door de gebruiker opgegeven retentieperiode.
 
 Voor nieuwe blobs is de effectieve retentieperiode gelijk aan de door de gebruiker opgegeven retentieperiode. Omdat gebruikers het Bewaar interval kunnen uitbreiden, gebruikt onveranderlijke opslag de meest recente waarde van het door de gebruiker opgegeven Bewaar interval om de ingangs periode te berekenen.
 

@@ -1,6 +1,6 @@
 ---
 title: Wat zijn ML-pijp lijnen
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: In dit artikel meer informatie over de machine learning-pijplijnen die u kunt maken met de Azure Machine Learning-SDK voor Python en de voordelen van pijplijnen. Machine learning (ML) pijplijnen worden gebruikt door de datawetenschappers te bouwen, te optimaliseren en beheren van de machine learning-werkstromen.
 services: machine-learning
 ms.service: machine-learning
@@ -11,16 +11,16 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2547ca3af3039af53cb5fd5b244669b9152c21b3
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 07efde7c3664ba1866e59f23c31b9c385ed9c366
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993288"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035491"
 ---
-# <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Wat zijn ML-pijp lijnen in Azure Machine Learning service?
+# <a name="what-are-ml-pipelines-in-azure-machine-learning"></a>Wat zijn ML-pijp lijnen in Azure Machine Learning?
 
-Meer informatie over de machine learning-pijp lijnen die u kunt bouwen en beheren met Azure Machine Learning-service. 
+Meer informatie over de machine learning-pijp lijnen die u kunt bouwen en beheren met Azure Machine Learning. 
 
 Met behulp van machine learning (ML) pijplijnen, gegevenswetenschappers, gegevensengineers en IT-professionals kan samenwerken in de stappen voor het:
 + Voorbereiden van gegevens, zoals normalizations en transformaties
@@ -30,7 +30,7 @@ Met behulp van machine learning (ML) pijplijnen, gegevenswetenschappers, gegeven
 
 Meer informatie over het [uw eerste pijplijn](how-to-create-your-first-pipeline.md).
 
-![Machine learning-pijp lijnen in Azure Machine Learning-service](./media/concept-ml-pipelines/pipeline-flow.png)
+![Machine learning-pijp lijnen in Azure Machine Learning](./media/concept-ml-pipelines/pipeline-flow.png)
 
 <a name="compare"></a>
 ### <a name="which-azure-pipeline-technology-should-i-use"></a>Welke Azure pipeline-technologie moet ik gebruiken?

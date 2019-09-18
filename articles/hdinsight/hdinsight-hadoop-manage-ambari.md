@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3ca9c12caa7fa9b54cd63c2655166d95477dffa2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5b97e577216f5e34cd0a5bdd66eea2cf2efa0fee
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885328"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035914"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-clusters beheren met de Web-UI van Apache Ambari
 
@@ -47,7 +47,7 @@ Wanneer u verbinding maakt met de Ambari-webgebruikersinterface, wordt u gevraag
 
 Wanneer de pagina wordt geopend, ziet u de balk aan de bovenkant. Deze balk bevat de volgende informatie en besturings elementen:
 
-![ambari-nav](./media/hdinsight-hadoop-manage-ambari/ambari-nav.png)
+![ambari-nav](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
 |Item |Description |
 |---|---|
@@ -80,7 +80,7 @@ Waarschuwingen zijn ingedeeld in verschillende standaard groepen, die kunnen wor
 
 U kunt de groepen beheren via het menu **acties** en vervolgens **waarschuwings groepen beheren**selecteren.
 
-![dialoog venster waarschuwings groepen beheren](./media/hdinsight-hadoop-manage-ambari/manage-alerts.png)
+![dialoog venster waarschuwings groepen beheren](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
 U kunt ook waarschuwings methoden beheren en waarschuwings meldingen maken via het menu **acties** door __waarschuwings meldingen beheren__te selecteren. Alle huidige meldingen worden weer gegeven. U kunt hier ook meldingen maken. Meldingen kunnen worden verzonden via **e-mail** of **SNMP** wanneer specifieke combi Naties van waarschuwingen en ernst optreden. U kunt bijvoorbeeld een e-mail bericht verzenden wanneer een van de waarschuwingen in de **standaard groep garen** is ingesteld op **kritiek**.
 
@@ -100,20 +100,20 @@ Op het tabblad **Heatmaps** worden metrische gegevens weer gegeven als gekleurde
 
 Selecteer **hosts**voor meer informatie over de knoop punten in het cluster. Selecteer vervolgens het specifieke knoop punt waarin u bent geïnteresseerd.
 
-![Details van host](./media/hdinsight-hadoop-manage-ambari/host-details.png)
+![Details van host](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
 
 ### <a name="services"></a>Services
 
 De Sidebar **Services** in het dash board biedt een snelle inzicht in de status van de services die op het cluster worden uitgevoerd. Er worden verschillende pictogrammen gebruikt om de status of acties aan te geven die moeten worden uitgevoerd. Zo wordt bijvoorbeeld een geel recycling symbool weer gegeven als een service opnieuw moet worden gerecycled.
 
-![Services-balk aan de zijkant](./media/hdinsight-hadoop-manage-ambari/service-bar.png)
+![Services-balk aan de zijkant](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
 
 > [!NOTE]  
 > De weer gegeven Services verschillen per HDInsight-cluster type en-versie. De services die hier worden weer gegeven, kunnen afwijken van de services die voor uw cluster worden weer gegeven.
 
 Als u een service selecteert, wordt gedetailleerde informatie over de service weer gegeven.
 
-![informatie over service samenvatting](./media/hdinsight-hadoop-manage-ambari/service-details.png)
+![informatie over service samenvatting](./media/hdinsight-hadoop-manage-ambari/ambari-service-details.png)
 
 #### <a name="quick-links"></a>Snelkoppelingen
 
@@ -168,7 +168,7 @@ Op de pagina **hosts** worden alle hosts in het cluster weer gegeven. Voer de vo
 
 Gebruik op de pagina **dash board** of **Services** de knop **acties** onder aan de lijst met Services om alle services te stoppen en te starten.
 
-![Service acties](./media/hdinsight-hadoop-manage-ambari/service-actions.png)
+![Service acties](./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png)
 
 > [!WARNING]  
 > Tijdens het toevoegen van een **service** wordt deze in dit menu niet gebruikt om services aan het HDInsight-cluster toe te voegen. Er moeten nieuwe services worden toegevoegd met behulp van een script actie tijdens het inrichten van het cluster. Zie [HDInsight-clusters aanpassen met behulp van script acties](hdinsight-hadoop-customize-cluster-linux.md)voor meer informatie over het gebruik van script acties.
@@ -195,7 +195,7 @@ Als u een service wilt configureren, gebruikt u de volgende stappen:
 
 2. Selecteer de **Peeringconfiguraties** tabblad. De huidige configuratie wordt weer gegeven. Er wordt ook een lijst met eerdere configuraties weer gegeven.
 
-    ![configuraties](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
+    ![configuraties](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
 
 3. Gebruik de weer gegeven velden om de configuratie te wijzigen en selecteer vervolgens **Opslaan**. Of selecteer een vorige configuratie en selecteer vervolgens **huidige maken** om de vorige instellingen terug te draaien.
 

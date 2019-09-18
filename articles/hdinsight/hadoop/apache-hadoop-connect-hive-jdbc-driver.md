@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 689926d0dbaebaaf56c8238e8fed7a691e8cacf4
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: cd8a6c7e7f5ddf781fcd63f3969eedd8f45424bc
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882478"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058621"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Query's Apache Hive via het JDBC-stuur programma in HDInsight
 
@@ -67,7 +67,7 @@ SQuirreL SQL is een JDBC-client die kan worden gebruikt om Hive-query's op afsta
 
 4. Selecteer in de pictogrammen boven in het dialoog venster **Stuur Programma's** het **+** pictogram om een stuur programma te maken.
 
-    ![Pictogrammen Stuur Programma's](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
+    ![Pictogram voor SQuirreL SQL-toepassings Stuur Programma's](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
 
 5. Voeg in het dialoog venster stuur programma toevoegen de volgende informatie toe:
 
@@ -76,13 +76,13 @@ SQuirreL SQL is een JDBC-client die kan worden gebruikt om Hive-query's op afsta
     * **Extra klassepad**: Gebruik de knop **toevoegen** om de hele jar-bestanden toe te voegen die eerder zijn gedownload
     * **Klassenaam**: org. apache. Hive. JDBC. HiveDriver
 
-   ![dialoog venster stuur programma toevoegen](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
+   ![dialoog venster stuur programma toevoegen met para meters](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
 
    Selecteer **OK** om deze instellingen op te slaan.
 
 6. Selecteer aan de linkerkant van het SQuirreL SQL-venster **aliassen**. Selecteer vervolgens het **+** pictogram om een verbindings alias te maken.
 
-    ![nieuwe alias toevoegen](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
+    ![Dialoog venster nieuwe alias voor SQuirreL SQL toevoegen](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
 7. Gebruik de volgende waarden voor het dialoog venster **alias toevoegen** .
 
@@ -98,16 +98,16 @@ SQuirreL SQL is een JDBC-client die kan worden gebruikt om Hive-query's op afsta
 
     * **Wachtwoord**: Het wacht woord voor het cluster aanmeldings account.
 
-   ![dialoog venster alias toevoegen](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
+   ![dialoog venster alias toevoegen met para meters](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
 
-    > [!IMPORTANT] 
+    > [!IMPORTANT]
     > Gebruik de knop **testen** om te controleren of de verbinding werkt. Bij **het maken van verbinding met: Dialoog venster Hive** in HDInsight wordt weer gegeven, selecteert u **verbinding maken** om de test uit te voeren. Als de test is geslaagd, ziet u een dialoog venster **verbinding geslaagd** . Zie [probleem oplossing](#troubleshooting)als er een fout optreedt.
 
     Als u de verbindings alias wilt opslaan, klikt u op de knop **OK** onder aan het dialoog venster **alias toevoegen** .
 
 8. Selecteer in de vervolg keuzelijst **verbinding maken** met de bovenkant van SQuirreL SQL **Hive op HDInsight**. Wanneer u hierom wordt gevraagd, selecteert u **Connect**.
 
-    ![dialoog venster verbinding](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
+    ![dialoog venster verbinding met para meters](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
 
 9. Als de verbinding tot stand is gebracht, voert u de volgende query in het dialoog venster SQL-query in en selecteert u vervolgens het pictogram **uitvoeren** (een actieve persoon). In het resultaten gebied moeten de resultaten van de query worden weer gegeven.
 

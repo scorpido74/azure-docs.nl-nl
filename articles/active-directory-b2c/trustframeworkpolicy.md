@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b8b2cad95929d6132a4f0ae52597fb1633874ff1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 673807377914aabad5b90d1ac2ecc16623870d30
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592108"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063357"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -41,7 +41,7 @@ Het **TrustFrameworkPolicy** -element bevat de volgende kenmerken:
 | Kenmerk | Vereist | Description |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | Ja | De schema versie die moet worden gebruikt om het beleid uit te voeren. De waarde moet`0.3.0.0` |
-| TenantObjectId | Nee | De unieke object-id van de B2C-Tenant van Azure Active Directory (Azure AD). |
+| TenantObjectId | Nee | De unieke object-id van de Azure Active Directory B2C (Azure AD B2C)-Tenant. |
 | TenantId | Ja | De unieke id van de Tenant waartoe dit beleid behoort. |
 | PolicyId | Ja | De unieke id voor het beleid. Deze id moet worden voorafgegaan door *B2C_1A_* |
 | PublicPolicyUri | Ja | De URI voor het beleid, dat een combi natie is van de Tenant-ID en de beleids-ID. |

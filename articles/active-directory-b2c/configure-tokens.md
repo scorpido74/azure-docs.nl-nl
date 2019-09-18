@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2ed1426bea920d1ef30fb28ff4a975d1268c12ff
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 83f8051fa31b6431d4a8515e2c0912cc1872a402
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846935"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064377"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Tokens configureren in Azure Active Directory B2C
 
-In dit artikel leert u hoe u de [levens duur en compatibiliteit van een token](active-directory-b2c-reference-tokens.md) kunt configureren in azure Active Directory (Azure AD) B2C.
+In dit artikel leert u hoe u de [levens duur en compatibiliteit van een token](active-directory-b2c-reference-tokens.md) in Azure Active Directory B2C (Azure AD B2C) kunt configureren.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -30,7 +30,7 @@ In dit artikel leert u hoe u de [levens duur en compatibiliteit van een token](a
 U kunt de levens duur van het token configureren voor elke gebruikers stroom.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het **Directory-en abonnements filter** in het bovenste menu en kies de map die uw Azure AD B2C Tenant bevat.
+2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Azure AD B2C Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer **gebruikers stromen (beleid)** .
 5. Open de gebruikers stroom die u eerder hebt gemaakt.

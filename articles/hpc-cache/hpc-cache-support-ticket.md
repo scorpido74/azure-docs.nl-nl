@@ -4,42 +4,27 @@ description: Een Help-aanvraag voor Azure HPC-cache openen
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: a252243ae84516fe06a89ef1119c4b4ce58dbeef
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d845195940fdba81562acf4c0cfe9069245bd34c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775622"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036890"
 ---
 # <a name="open-a-support-ticket-for-azure-hpc-cache"></a>Een ondersteunings ticket openen voor Azure HPC-cache
 
 Gebruik de Azure Portal om een ondersteunings ticket te openen. Navigeer naar uw cache-exemplaar en klik vervolgens op de koppeling **nieuwe ondersteunings aanvraag** die onder aan de zijbalk wordt weer gegeven.
 
-> [!NOTE]
-> Tijdens de preview-periode kunt u [deze koppeling](<https://support.microsoft.com/supportforbusiness/productselection?sapId=6b415938-2927-0d9d-6c3c-fbacea64e42d>) ook gebruiken om een ondersteunings aanvraag voor de product-Azure HPC-cache (preview) te openen.
+Als u een ticket wilt openen wanneer u geen actieve cache hebt, gebruikt u de pagina hoofd **hulp en ondersteuning** van de Azure Portal. Kies een **nieuwe ondersteunings aanvraag** en selecteer **technische** voor hulp specifiek voor Azure HPC-cache.
 
-<!-- add screenshot of form with thing to select product etc. -->
+Selecteer uw abonnement in de lijst.
 
-<!-- 
-[ xxx update procedure - this is copied from Azure FXT Edge Filer but Azure HPC Cache has context, you don't need to fill in everything xxx ]
+Als u de preview-service van de Azure HPC-cache wilt zoeken, klikt u op de knop **alle services** en zoekt u op HPC.
 
-1. Open the [Azure portal](https://portal.azure.com/) and sign in.
-1. In the left panel, scroll to the bottom and click **Help + support**.
-1. Click **New support request**. 
+![Scherm afbeelding van het tabblad ondersteunings aanvraag-basis beginselen, deels ingevuld zoals beschreven](media/hpc-cache-support-request.png)
 
-   ![Screenshot of blank support request form](media/fxt-support-blank.png)
+Vul de overige velden in met uw gegevens en voor keuren en verzend het ticket wanneer u klaar bent.
 
-1. Fill out the request form.  
-    1. In the **Basics** tab, choose the **Issue type** ``Technical``. 
-    1. Select your subscription. 
-    1. Under **Service**, select **Azure FXT Edge Filer**. You might need to click the **All services** filter control to find it. 
-    1. Enter a **Summary** and choose the **Problem type**. 
-    ![Screenshot of blank support request form](media/fxt-support-populated.png) 
-    1. Click **Next** to continue. 
-1. In the **Details** tab, add more information about the problem and how to contact you. You can upload a file related to the problem. 
-1. In **Review + create**, check the information and click the **Create** button to submit your request.
-
-After you submit the request, you will receive a confirmation email with a ticket number. A support staff member will contact you about the request.
--->
+Nadat u de aanvraag hebt ingediend, ontvangt u een bevestigings-e-mail met een ticket nummer. Een ondersteunings medewerker-lid neemt contact met u op over de aanvraag.

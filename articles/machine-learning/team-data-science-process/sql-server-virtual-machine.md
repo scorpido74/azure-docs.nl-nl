@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6adc5dfa740d440e78bf2f276447c4585503d7c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e407b26091ad559ab458f76d94e2460660ecd14f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606466"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036616"
 ---
 # <a name="heading"></a>Gegevens verwerken in SQL Server-Machine op Azure
 Dit document wordt uitgelegd hoe u gegevens verkennen en functies voor gegevens die zijn opgeslagen in een SQL Server-VM op Azure te genereren. Dit kan worden gedaan door data wrangling met behulp van SQL of met behulp van een programmeertaal zoals Python.
@@ -87,7 +87,7 @@ Hier volgt een korte uitleg van breedtegraad/lengtegraad locatiegegevens (resour
 * De aanmelding kan worden achterhaald of we Noord of -Zuid, Oost- of -west op de hele wereld.
 * Een andere waarde dan nul honderden cijfers kan worden achterhaald dat we niet breedtegraad lengtegraad gebruiken!
 * De tientallen cijfer biedt een positie naar ongeveer 1000 kilometer zijn verwijderd. Deze geeft ons voor nuttige informatie over welke continent of in de Indische Oceaan worden op.
-* De eenheden cijfers (één decimaal graad) biedt een positie tot 111 kilometer (60 zeemijl, ongeveer 69 mijl). Het kan ons ongeveer welke grote staat of land/regio, zijn we in.
+* De eenheden cijfers (één decimaal graad) biedt een positie tot 111 kilometer (60 zeemijl, ongeveer 69 mijl). U kunt de status, het land of de regio waarin u zich bevindt, melden.
 * De eerste decimaal de moeite waard tot 11.1 km is: het de positie van een grote plaats van een nabijgelegen grote plaats kunt onderscheiden.
 * De tweede decimaalpositie de moeite waard tot 1.1 km is: kan het één village scheiden van de volgende.
 * De derde decimaal de moeite waard is maximaal 110 m: dat het een grote agricultural veld of institutionele campus kunt identificeren.
@@ -116,7 +116,7 @@ Deze functies op basis van locatie kunnen verder worden gebruikt voor het genere
 > 
 
 ### <a name="sql-aml"></a>Verbinding maken met Azure Machine Learning
-De nieuwe functie kan worden toegevoegd als een kolom aan een bestaande tabel of die zijn opgeslagen in een nieuwe tabel en samengevoegd met de oorspronkelijke tabel voor machine learning. Functies kunnen worden gegenereerd of geopend als u al hebt gemaakt, met behulp van de [importgegevens] [ import-data] module in Azure Machine Learning, zoals hieronder weergegeven:
+De nieuwe functie kan worden toegevoegd als een kolom aan een bestaande tabel of die zijn opgeslagen in een nieuwe tabel en samengevoegd met de oorspronkelijke tabel voor machine learning. Functies kunnen worden gegenereerd of geopend als deze al zijn gemaakt met behulp van de module [gegevens importeren][import-data] in azure machine learning, zoals hieronder wordt weer gegeven:
 
 ![lezers van azureml][1] 
 

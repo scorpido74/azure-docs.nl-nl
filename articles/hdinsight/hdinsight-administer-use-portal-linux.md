@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: 8bb6ca0483a7bc0a5af63a1fae7e5e5a5415abba
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: dfe531f8b298be1d90df45f57918f87744912949
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810308"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077066"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Apache Hadoop clusters in HDInsight beheren door gebruik te maken van de Azure Portal
 
@@ -170,7 +170,7 @@ Op de [Start pagina](#homePage)van het cluster:
 
 1. Selecteer **cluster dashboards**.
 
-    ![Menu van HDInsight Hadoop-cluster](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
+    ![Menu van HDInsight Apache Hadoop-cluster](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
 
 1. Selecteer **Ambari Home** op de nieuwe pagina.
 1. Voer de gebruikers naam en het wacht woord van het cluster in.  De standaard naam van het cluster is _admin_.

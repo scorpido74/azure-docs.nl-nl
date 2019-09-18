@@ -4,7 +4,7 @@ description: Het wacht woord van een lokale Windows-gebruikers account opnieuw i
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 ms.assetid: cf353dd3-89c9-47f6-a449-f874f0957013
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 75d6c10ded4038297689835d5ff012f344540e6f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 6faab5bffaddbbd5d8deb9c3834bf3d8fe3e3445
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638854"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058650"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Lokaal Windows-wacht woord voor Azure VM offline opnieuw instellen
 U kunt het lokale Windows-wacht woord van een virtuele machine in azure opnieuw instellen met behulp van de [Azure portal of Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , op voor waarde dat de Azure-gast agent is geïnstalleerd. Deze methode is de belangrijkste manier om een wacht woord opnieuw in te stellen voor een Azure-VM. Als u problemen ondervindt met de Azure Guest agent die niet reageert of als u niet kunt installeren na het uploaden van een aangepaste installatie kopie, kunt u een Windows-wacht woord hand matig opnieuw instellen. In dit artikel wordt beschreven hoe u een wacht woord voor een lokaal account opnieuw instelt door de virtuele schijf van het bron besturingssysteem te koppelen aan een andere virtuele machine. De stappen die in dit artikel worden beschreven, zijn niet van toepassing op Windows-domein controllers. 
@@ -191,7 +191,7 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
    
    1. Selecteer de virtuele machine voor probleem oplossing in de Azure Portal, klik op *schijven*.
    
-   2. Selecteer de gegevens schijf die is gekoppeld in stap 2, klik op ontkoppelen en klik vervolgens op **OK**.
+   2. Selecteer de gegevens schijf die is gekoppeld in stap 2, klik op **ontkoppelen**en klik vervolgens op **OK**.
 
      ![Schijf ontkoppelen](./media/reset-local-password-without-agent/data-disks-classic.png)
      
@@ -212,9 +212,9 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
 2. Verwijder de volgende bestanden van uw externe sessie naar de nieuwe virtuele machine om de omgeving op te schonen:
     
     * Van`%windir%\System32`
-      * verwijdert`FixAzureVM.cmd`
+      * Verwijdert`FixAzureVM.cmd`
     * Van`%windir%\System32\GroupPolicy\Machine\Scripts`
-      * verwijdert`scripts.ini`
+      * Verwijdert`scripts.ini`
     * Van`%windir%\System32\GroupPolicy`
       * Verwijder `gpt.ini` (indien `gpt.ini` aanwezig voor, en u de naam ervan hebt gewijzigd `gpt.ini.bak`in), `.bak` Wijzig de naam `gpt.ini`van het bestand in)
 

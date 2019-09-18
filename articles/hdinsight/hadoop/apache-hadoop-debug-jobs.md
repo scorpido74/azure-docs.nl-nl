@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 751d5b47006f5c99a747503ad4f052b3e03a043c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 8ad2bdd0f12abad08515f0314b9c03cc971127cb
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882428"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059206"
 ---
 # <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Apache Hadoop-Logboeken in azure HDInsight analyseren
 
@@ -110,7 +110,7 @@ Zie voor meer informatie over toepassings logboeken [het beheer van gebruikers l
 ### <a name="access-the-ambari-ui"></a>Toegang tot de Ambari-gebruikers interface
 Klik in het Azure Portal op de naam van een HDInsight-cluster om het deel venster cluster te openen. Klik in het deel venster cluster op **dash board**.
 
-![Cluster dashboard starten](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
+![HDInsight-cluster dashboard starten](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
 
 
 ### <a name="access-the-yarn-ui"></a>Toegang tot de garen-UI
@@ -120,7 +120,7 @@ U kunt de gebruikers interface van garen gebruiken om het volgende te doen:
 
 * **Cluster status ophalen**. Vouw in het linkerdeel venster **cluster**uit en klik op **info**. Dit zijn de details van de cluster status, zoals het totale toegewezen geheugen, de gebruikte kernen, de status van de cluster resource manager, de Cluster versie, enzovoort.
   
-    ![Cluster dashboard garens starten](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "Cluster dashboard garens starten")
+    ![HDInsight-cluster dashboard garens starten](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "HDInsight-cluster dashboard garens starten")
 * **Status van knoop punt ophalen**. Vouw in het linkerdeel venster **cluster**uit en klik op **knoop punten**. Hier vindt u een lijst met alle knoop punten in het cluster, het HTTP-adres van elk knoop punt, de resources die zijn toegewezen aan elk knoop punt, enzovoort.
 * **Taak status bewaken**. Vouw in het linkerdeel venster **cluster**uit en klik vervolgens op **toepassingen** om alle taken in het cluster weer te geven. Als u taken in een bepaalde status wilt bekijken (zoals nieuw, verzonden, actief, enzovoort), klikt u op de juiste koppeling onder **toepassingen**. U kunt verder klikken op de naam van de taak om meer te weten te komen over de taak, zoals de uitvoer, logboeken, enzovoort.
 

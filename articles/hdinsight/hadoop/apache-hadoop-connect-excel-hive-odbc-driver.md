@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: b1231a406ac20512e9ce92032379d697c3346af3
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: c81c0de98442f576145f2c2e12f0b2053b80e83a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882802"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033606"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Excel verbinden met Apache Hadoop in azure HDInsight met het micro soft Hive ODBC-stuur programma
 
@@ -32,9 +32,11 @@ Voordat u met dit artikel begint, moet u beschikken over de volgende items:
 * Een werk station met Office 2010 Professional Plus of hoger of Excel 2010 of hoger.
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Micro soft Hive ODBC-stuur programma installeren
+
 Down load en installeer de versie van het [micro soft Hive ODBC-stuur programma](https://go.microsoft.com/fwlink/?LinkID=286698) die overeenkomt met de versie van de toepassing waarin u het ODBC-stuur programma gaat gebruiken.  Voor dit artikel wordt het stuur programma gebruikt voor Office Excel.
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC-gegevens bron maken
+
 De volgende stappen laten zien hoe u een Hive-ODBC-gegevens bron maakt.
 
 1. Ga vanuit Windows naar Start > Windows-beheer Programma's > ODBC-gegevens bronnen (32-bits)/(64-bits).  Hiermee opent u het venster **ODBC-gegevens bron beheer** .
@@ -65,7 +67,7 @@ De volgende stappen laten zien hoe u een Hive-ODBC-gegevens bron maakt.
    |  Opgehaalde rijen per blok |Bij het ophalen van een groot aantal records is het mogelijk dat deze para meter moet worden afgestemd om optimale prestaties te garanderen. |
    |  Standaard lengte van een teken reeks kolom, binaire kolom lengte, decimale kolom schaal |De lengten en nauw keurigheid van het gegevens type kunnen van invloed zijn op hoe gegevens worden geretourneerd. Ze leiden ertoe dat onjuiste gegevens worden geretourneerd vanwege verlies van nauw keurigheid en/of afkap ping. |
 
-    ![Geavanceerde opties](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "Geavanceerde configuratie opties voor DSN")
+    ![Geavanceerde configuratie opties voor DSN](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "Geavanceerde configuratie opties voor DSN")
 
 1. Selecteer **testen** om de gegevens bron te testen. Wanneer de gegevens bron op de juiste wijze is geconfigureerd, wordt in het test resultaat de waarde **geslaagd**weer gegeven.  
 
@@ -83,7 +85,7 @@ In de volgende stappen wordt beschreven hoe u gegevens uit een Hive-tabel import
 
 2. Ga op het tabblad **gegevens** naar **gegevens** > ophalen**uit andere bronnen** > **van ODBC** om het venster **van ODBC** te starten.
 
-    ![Wizard gegevens verbinding openen](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Wizard gegevens verbinding openen")
+    ![Wizard Excel-gegevens verbinding openen](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Wizard Excel-gegevens verbinding openen")
 
 3. Selecteer in de vervolg keuzelijst de naam van de gegevens bron die u in de laatste sectie hebt gemaakt en selecteer vervolgens **OK**.
 
@@ -91,7 +93,7 @@ In de volgende stappen wordt beschreven hoe u gegevens uit een Hive-tabel import
 
 5. Navigeer vanuit **Navigator**naar **Hive** > **default** > **hivesampletable**en selecteer **Load**. Het duurt enkele minuten voordat de gegevens in Excel worden geïmporteerd.
 
-    ![HDInsight-Hive ODBC-Navigator](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "Wizard gegevens verbinding openen")
+    ![ODBC-Navigator Excel-Hive van HDInsight](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "ODBC-Navigator Excel-Hive van HDInsight")
 
 ## <a name="next-steps"></a>Volgende stappen
 

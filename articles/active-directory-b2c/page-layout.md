@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 011fb262ff91c56269c5b7dc9adf4aaeab9acbd5
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 612d2e3a9a5a324f7d6d8e1b63b6b7e297047239
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68229048"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063843"
 ---
 # <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>Selecteer een pagina-indeling in Azure Active Directory B2C aangepaste beleids regels gebruiken
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-U kunt Java script-client-side code inschakelen in uw Azure Active Directory (Azure AD) B2C-beleid, ongeacht of u gebruik maakt van gebruikers stromen of aangepaste beleids regels. Als u Java script wilt inschakelen voor uw toepassingen, moet u een element toevoegen aan uw [aangepaste beleid](active-directory-b2c-overview-custom.md), een pagina-indeling selecteren en [b2clogin.com](b2clogin.md) in uw aanvragen gebruiken.
+U kunt Java script-client-side code inschakelen in het beleid voor Azure Active Directory B2C (Azure AD B2C), ongeacht of u gebruikers stromen of aangepaste beleids regels gebruikt. Als u Java script wilt inschakelen voor uw toepassingen, moet u een element toevoegen aan uw [aangepaste beleid](active-directory-b2c-overview-custom.md), een pagina-indeling selecteren en [b2clogin.com](b2clogin.md) in uw aanvragen gebruiken.
 
 Een pagina-indeling is een koppeling van elementen die Azure AD B2C biedt en de inhoud die u opgeeft.
 

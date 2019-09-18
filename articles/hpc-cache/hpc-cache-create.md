@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 479adf9419cdd6b04e50fa479d47b56762b2bdc6
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: e1b69f17d964647944f23f4d16a0a1a5f112b60d
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70774684"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037076"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Een HPC-cache van Azure maken
 
@@ -21,7 +21,7 @@ Gebruik de Azure Portal om uw cache te maken.
 
 ## <a name="define-basic-details"></a>Basis Details definiëren
 
-![scherm afbeelding van de pagina project details in Azure Portal](media/create-1.png)
+![scherm afbeelding van de pagina project details in Azure Portal](media/hpc-cache-create-basics.png)
 
 Selecteer in **Project Details**het abonnement en de resource groep die als host moet fungeren voor de Azure HPC-cache. Zorg ervoor dat het abonnement wordt weer gegeven in de lijst met [toegangs voorbeelden](hpc-cache-prereqs.md#azure-subscription) .
 
@@ -47,7 +47,7 @@ Houd er wel voor dat de werkelijke gegevens overdrachts snelheid afhankelijk is 
 
 Voor cache opslag beheert Azure HPC cache welke bestanden in de cache worden opgeslagen en vooraf worden geladen om de frequentie van de cache treffers te maximaliseren. De cache-inhoud wordt voortdurend beoordeeld en bestanden worden verplaatst naar lange termijn opslag wanneer ze minder vaak worden gebruikt. Kies een cache opslag grootte die kan worden ingesteld op de actieve set met werk bestanden, met extra ruimte voor meta gegevens en andere overhead.
 
-![scherm afbeelding van de pagina cache grootte](media/create-cache-iops.png)
+![scherm afbeelding van de pagina cache grootte](media/hpc-cache-create-iops.png)
 
 ## <a name="add-storage-targets"></a>Opslag doelen toevoegen
 
@@ -55,19 +55,21 @@ Opslag doelen zijn de back-end-lange termijn opslag voor de inhoud van uw cache.
 
 U kunt opslag doelen definiëren tijdens het maken van de cache, maar u kunt ze nader hand ook toevoegen met de koppeling in het gedeelte **configureren** van de pagina van de cache in de portal.
 
-![scherm afbeelding van de pagina opslag doelen](media/create-targets.png)
+![scherm afbeelding van de pagina opslag doelen](media/hpc-cache-storage-targets-pop.png)
 
 Klik op de **koppeling opslag doel toevoegen** om uw back-end-opslag systemen te definiëren. De opslag kan Azure Blob-containers of on-premises NFS-systemen zijn.
 
 U kunt Maxi maal tien verschillende opslag doelen definiëren.
 
-Lees [opslag toevoegen](hpc-cache-add-storage.md)voor stapsgewijze instructies voor het toevoegen van een opslag doel. De procedure wijkt af van Blob Storage of voor NFS-exports.
+Stapsgewijze instructies voor het toevoegen van een opslag doel zijn opgenomen in [opslag toevoegen](hpc-cache-add-storage.md). De procedure wijkt af van Blob Storage of voor NFS-exports.
 
-Voor beide typen opslag moet u opgeven hoe het back-end-opslag systeem (een NFS-adres of een BLOB-container naam) en het pad naar de client gerichte naam ruimte worden gezocht.
+Hier volgen enkele tips: 
 
-Wanneer u een Blob-opslag doel maakt, moet u ervoor zorgen dat de cache toegangs machtigingen heeft voor het opslag account, zoals beschreven in [de toegangs beheer rollen toevoegen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account). Als u niet zeker weet dat de rolconfiguratie slaagt, maakt u eerst de cache en voegt u daarna de Blob-opslag toe.
+* Voor beide typen opslag moet u opgeven hoe het back-end-opslag systeem (een NFS-adres of een BLOB-container naam) en het pad naar de client gerichte naam ruimte worden gezocht.
 
-Geef bij het maken van een NFS-opslag doel een [gebruiks model](hpc-cache-add-storage.md#choose-a-usage-model)op. De instelling gebruiks model helpt de cache uw werk stroom te optimaliseren.
+* Wanneer u een Blob-opslag doel maakt, moet u ervoor zorgen dat de cache toegangs machtigingen heeft voor het opslag account, zoals beschreven in [de toegangs beheer rollen toevoegen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account). Als u niet zeker weet dat de rolconfiguratie slaagt, maakt u eerst de cache en voegt u daarna de Blob-opslag toe.
+
+* Geef bij het maken van een NFS-opslag doel een [gebruiks model](hpc-cache-add-storage.md#choose-a-usage-model)op. De instelling gebruiks model helpt de cache uw werk stroom te optimaliseren.
 
 ## <a name="add-resource-tags-optional"></a>Resource Tags toevoegen (optioneel)
 
@@ -77,11 +79,13 @@ Op de pagina **Tags** kunt u [resource Tags](https://go.microsoft.com/fwlink/?li
 
 Nadat u de nieuwe cache hebt geconfigureerd, klikt u op het tabblad **controleren + maken** . In de portal worden uw selecties gevalideerd en kunt u uw keuzes controleren. Als alles correct is, klikt u op **maken**. 
 
-Het maken van de cache duurt ongeveer 10 minuten. U kunt de voortgang volgen in het deel venster meldingen van de Azure Portal. Wanneer deze is voltooid, wordt een melding weer gegeven met een koppeling naar het nieuwe Azure HPC-cache-exemplaar. 
+Het maken van de cache duurt ongeveer 10 minuten. U kunt de voortgang volgen in het deel venster meldingen van de Azure Portal. 
 
-De cache is ook zichtbaar in de lijst met **resources** van uw abonnement. 
+![scherm opname van pagina's voor het maken van de implementatie van de cache en meldingen in de portal](media/hpc-cache-deploy-status.png)
 
-![scherm opname van het Azure HPC-cache-exemplaar in Azure Portal](media/finished-hpc-cache.png)
+Wanneer het maken is voltooid, wordt er een melding weer gegeven met een koppeling naar het nieuwe Azure HPC-cache-exemplaar. de cache wordt weer gegeven in de lijst met **resources** van uw abonnement. 
+
+![scherm opname van het Azure HPC-cache-exemplaar in Azure Portal](media/hpc-cache-new-overview.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

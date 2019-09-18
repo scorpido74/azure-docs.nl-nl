@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 600c808c0bda991bb7203bbf60c098918e274da6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b4642ecfad17bf3e926e9efdec034bbe4aa6c20e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326634"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076311"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Quickstart: Een ASP.NET Core-app maken met Azure-app-configuratie
 
@@ -57,9 +57,9 @@ U gebruikt de [.net core-opdracht regel interface (CLI)](https://docs.microsoft.
 
 ## <a name="add-secret-manager"></a>Secret Manager toevoegen
 
-Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/core/security/app-secrets) toe aan uw project. Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de projectstructuur. Deze aanpak voorkomt dat er per ongeluk appgeheimen worden gedeeld in de broncode.
+Als u een geheim Manager wilt gebruiken `UserSecretsId` , voegt u een element toe aan uw *. csproj* -bestand.
 
-- Open het *. csproj* -bestand. Voeg een `UserSecretsId` element toe zoals hier wordt weer gegeven en vervang de waarde ervan door uw eigen waarden. Dit is meestal een GUID. Sla het bestand op.
+- Open het *. csproj* -bestand. Voeg een `UserSecretsId` element toe, zoals hier wordt weer gegeven. U kunt dezelfde GUID gebruiken, maar u kunt deze waarde ook vervangen door uw eigen waarden. Sla het bestand op.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -77,11 +77,13 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
     </Project>
     ```
 
+Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de projectstructuur. Deze aanpak voorkomt dat er per ongeluk appgeheimen worden gedeeld in de broncode. Voor meer informatie over de geheime beheerder raadpleegt u de [veilige opslag van app-geheimen in de ontwikkeling van ASP.net core](https://docs.microsoft.com/aspnet/core/security/app-secrets)
+
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
 
 1. Voeg een verwijzing naar het `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet-pakket toe door de volgende opdracht uit te voeren:
 
-        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
 
 2. Voer de volgende opdracht uit om de pakketten voor uw project te herstellen:
 
@@ -94,6 +96,9 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
     Deze opdracht moet worden uitgevoerd in de map met het bestand *.csproj*.
 
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
+
+    > [!IMPORTANT]
+    > Bij sommige shells worden de connection string afgekapt, tenzij deze tussen aanhalings tekens staan. Zorg ervoor dat de uitvoer van `dotnet user-secrets` de opdracht de volledige Connection String weergeeft. Als dat niet het geval is, voert u de opdracht opnieuw uit en plaatst u de connection string tussen aanhalings tekens.
 
     Geheime beheerder wordt alleen gebruikt om de web-app lokaal te testen. Wanneer de app is geïmplementeerd op [Azure app service](https://azure.microsoft.com/services/app-service/web), gebruikt u bijvoorbeeld een toepassings instelling **verbindings reeksen** in app service in plaats van met de geheime beheerder om de Connection String op te slaan.
 
@@ -182,7 +187,7 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Snelstartgids hebt u een nieuwe app-configuratie opgeslagen gemaakt en gebruikt met een ASP.NET Core-web-app via de [app-configuratie provider](https://go.microsoft.com/fwlink/?linkid=2074664). Voor meer informatie over het gebruik van app-configuratie gaat u verder met de volgende zelf studie waarin verificatie wordt gedemonstreerd.
+In deze Snelstartgids hebt u een nieuwe app-configuratie opgeslagen gemaakt en gebruikt met een ASP.NET Core-web-app via de [app-configuratie provider](https://go.microsoft.com/fwlink/?linkid=2074664). Voor meer informatie over het gebruik van app-configuratie gaat u verder met de volgende zelf studie waarin wordt getoond hoe u uw web-app kunt configureren om configuratie-instellingen dynamisch te vernieuwen.
 
 > [!div class="nextstepaction"]
-> [Beheerde identiteits integratie](./howto-integrate-azure-managed-service-identity.md)
+> [Dynamische configuratie in een ASP.NET Core-app gebruiken](./enable-dynamic-configuration-aspnet-core.md)

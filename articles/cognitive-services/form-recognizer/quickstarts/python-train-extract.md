@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 53409769fc85422f4c34a14d22e7c44b2d5cce35
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: e7a63d09c3116c7504e9d409b32a44be140d8fe4
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443851"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074145"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Quickstart: Een formulier Recognizer-model trainen en formulier gegevens extra heren met behulp van de REST API met python
 
@@ -38,7 +38,7 @@ Eerst hebt u een set trainings gegevens nodig in een Azure Storage BLOB-containe
 
 Als u een formulier Recognizer-model wilt trainen met de documenten in uw Azure Blob-container, roept u de **Train** API aan door de volgende python-code uit te voeren. Voordat u de code uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<Endpoint>` door de eind punt-URL voor de formulier Recognizer-resource in de Azure-regio waar u uw abonnements sleutels hebt verkregen.
+1. Vervang `<Endpoint>` door de URL van het eind punt voor de resource voor uw formulier herkenning.
 1. Vervang `<Subscription key>` door de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
 1. Vervang `<SAS URL>` door de URL voor Shared Access Signature (SAS) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`:.
 

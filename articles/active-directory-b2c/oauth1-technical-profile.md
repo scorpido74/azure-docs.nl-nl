@@ -1,6 +1,6 @@
 ---
-title: Een technisch profiel OAuth1 definiëren in een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
-description: Een technisch profiel OAuth1 definiëren in een aangepast beleid in Azure Active Directory B2C.
+title: Een OAuth1 technisch profiel definiëren in een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
+description: Definieer een OAuth1 technisch profiel in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,50 +10,50 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 993fc8b2e318b59775f61de391ac75fa765485f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97fa5757f8b77e29545f6d6f6b885334c7b526f1
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66513122"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063991"
 ---
-# <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel OAuth1 definiëren in een aangepast beleid voor Azure Active Directory B2C
+# <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een OAuth1 technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C biedt ondersteuning voor de [OAuth 1.0-protocol](https://tools.ietf.org/html/rfc5849) id-provider. Dit artikel beschrijft de details van een technisch profiel voor interactie met een claimprovider die ondersteuning biedt voor dit gestandaardiseerde protocol. OAuth1 technische profiel, kunt u communiceren met een OAuth1 op basis van id-provider, zoals Twitter. Federatie met de id-provider, kunnen gebruikers melden zich aan met hun bestaande sociale of ondernemings-id's.
+Azure Active Directory B2C (Azure AD B2C) biedt ondersteuning voor de [OAuth 1,0-protocol](https://tools.ietf.org/html/rfc5849) -ID-provider. In dit artikel worden de specifieke specificaties beschreven van een technisch profiel voor interactie met een claim provider die ondersteuning biedt voor dit gestandaardiseerde protocol. Met een OAuth1-technisch profiel kunt u communiceren met een OAuth1-gebaseerde ID-provider, zoals Twitter. Met federeren met de ID-provider kunnen gebruikers zich aanmelden met hun bestaande sociale of bedrijfs identiteiten.
 
 ## <a name="protocol"></a>Protocol
 
-De **naam** kenmerk van de **Protocol** element moet worden ingesteld op `OAuth1`. Bijvoorbeeld, het protocol voor de **Twitter-OAUTH1** technische profiel is `OAuth1`.
+Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `OAuth1`. Het protocol voor het technische profiel **Twitter-OAUTH1** is `OAuth1`bijvoorbeeld.
 
 ```XML
 <TechnicalProfile Id="Twitter-OAUTH1">
   <DisplayName>Twitter</DisplayName>
   <Protocol Name="OAuth1" />
-  ...    
+  ...
 ```
 
-## <a name="input-claims"></a>Invoerclaims
+## <a name="input-claims"></a>Invoer claims
 
-De **InputClaims** en **InputClaimsTransformations** elementen zijn leeg of niet aanwezig.
+De **InputClaims** -en **InputClaimsTransformations** -elementen zijn leeg of ontbreken.
 
-## <a name="output-claims"></a>Gebruikersclaims
+## <a name="output-claims"></a>Uitvoer claims
 
-De **OutputClaims** element bevat een lijst met claims die wordt geretourneerd door de OAuth1-id-provider. Mogelijk moet u de naam van de claim die is gedefinieerd in uw beleid aan de naam die is gedefinieerd in de id-provider toewijzen. U kunt ook bevatten claims die niet zijn geretourneerd door de id-provider, zolang u de **DefaultValue** kenmerk.
+Het **OutputClaims** -element bevat een lijst met claims die zijn geretourneerd door de OAuth1-ID-provider. Mogelijk moet u de naam van de claim die in uw beleid is gedefinieerd, toewijzen aan de naam die is gedefinieerd in de ID-provider. U kunt ook claims toevoegen die niet worden geretourneerd door de ID-provider zolang u het kenmerk **DefaultValue** hebt ingesteld.
 
-De **OutputClaimsTransformations** element kan bevatten een verzameling van **OutputClaimsTransformation** elementen die worden gebruikt voor het wijzigen van de uitvoerclaims of nieuwe labels te genereren.
+Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt voor het wijzigen van de uitvoer claims of voor het genereren van nieuwe.
 
-Het volgende voorbeeld ziet u de claims die wordt geretourneerd door de Twitter-id-provider:
+In het volgende voor beeld worden de claims weer gegeven die zijn geretourneerd door de Twitter-ID-provider:
 
-- De **user_id** claim die is toegewezen aan de **issuerUserId** claim.
-- De **screen_name** claim die is toegewezen aan de **displayName** claim.
-- De **e** claim zonder naam toewijzingen.
+- De **user_id** -claim die is toegewezen aan de **issuerUserId** -claim.
+- De **screen_name** -claim die is toegewezen aan de **DisplayName** -claim.
+- De **e-mail** claim zonder naam toewijzing.
 
-Het technische profiel retourneert ook claims die niet zijn geretourneerd door de id-provider: 
+Het technische profiel retourneert ook claims die niet worden geretourneerd door de ID-provider:
 
-- De **identityProvider** claim met de naam van de id-provider.
-- De **authenticationSource** claim met een standaardwaarde van `socialIdpAuthentication`.
+- De claim **Identity provider** die de naam van de ID-provider bevat.
+- De **authenticationSource** claim met de standaard waarde van `socialIdpAuthentication`.
 
 ```xml
 <OutputClaims>
@@ -69,31 +69,31 @@ Het technische profiel retourneert ook claims die niet zijn geretourneerd door d
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| client_id | Ja | De toepassings-id van de id-provider. |
-| ProviderName | Nee | De naam van de id-provider. |
-| request_token_endpoint | Ja | De URL van het eindpunt van de aanvraag-token aan de hand van RFC 5849. |
-| authorization_endpoint | Ja | De URL van de autorisatie-eindpunt aan de hand van RFC 5849. |
-| access_token_endpoint | Ja | De URL van het token-eindpunt aan de hand van RFC 5849. |
-| ClaimsEndpoint | Nee | De URL van het eindpunt van de gebruiker informatie. | 
-| ClaimsResponseFormat | Nee | De indeling van de claims-antwoord.|
+| client_id | Ja | De toepassings-id van de ID-provider. |
+| ProviderName | Nee | De naam van de ID-provider. |
+| request_token_endpoint | Ja | De URL van het eind punt van het aanvraag token conform RFC 5849. |
+| authorization_endpoint | Ja | De URL van het autorisatie-eind punt conform RFC 5849. |
+| access_token_endpoint | Ja | De URL van het eind punt van het token conform RFC 5849. |
+| ClaimsEndpoint | Nee | De URL van het eind punt voor gebruikers informatie. |
+| ClaimsResponseFormat | Nee | De claim antwoord indeling.|
 
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 
-De **CryptographicKeys** element bevat het volgende kenmerk:
+Het element **CryptographicKeys** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| client_secret | Ja | Het clientgeheim van de toepassing van id-provider.   | 
+| client_secret | Ja | Het client geheim van de identiteits provider toepassing.   |
 
 ## <a name="redirect-uri"></a>Omleidings-URI
 
-Wanneer u de omleidings-URL van uw id-provider configureren, voert u `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`. Vervang **tenant** met de naam van uw tenant (bijvoorbeeld: contosob2c.onmicrosoft.com) en **policyId** met de id van uw beleid (bijvoorbeeld b2c_1a_policy). De omleidings-URI moet zich in alleen kleine letters. Voeg een Omleidings-URL voor alle beleidsregels die gebruikmaken van aanmelding bij de id-provider. 
+Wanneer u de omleidings-URL van uw ID- `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`provider configureert, voert u in. Zorg ervoor dat u de **Tenant** vervangt door de naam van uw Tenant (bijvoorbeeld contosob2c.onmicrosoft.com) en **policyId** met de id van uw beleid (bijvoorbeeld b2c_1a_policy). De omleidings-URI moet in alle kleine letters zijn. Voeg een omleidings-URL toe voor alle beleids regels die gebruikmaken van de aanmelding van de identiteits provider.
 
-Als u de **b2clogin.com** domein in plaats van **login.microsoftonline.com** Zorg ervoor dat u b2clogin.com in plaats van login.microsoftonline.com.
+Als u het **b2clogin.com** -domein gebruikt in plaats van **login.microsoftonline.com** , moet u ervoor zorgen dat u b2clogin.com gebruikt in plaats van login.microsoftonline.com.
 
 Voorbeelden:
 
-- [Twitter als id-provider OAuth1 toevoegen met behulp van aangepaste beleidsregels](active-directory-b2c-custom-setup-twitter-idp.md)
+- [Twitter toevoegen als een OAuth1-ID-provider met behulp van aangepast beleid](active-directory-b2c-custom-setup-twitter-idp.md)
 
 
 

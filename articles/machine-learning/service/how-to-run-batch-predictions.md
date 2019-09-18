@@ -1,7 +1,7 @@
 ---
 title: Batch voorspellingen uitvoeren op grote gegevens met pijp lijnen
-titleSuffix: Azure Machine Learning service
-description: Leer hoe u batch om voorspellingen te doen asynchroon op grote hoeveelheden gegevens met behulp van Azure Machine Learning-service.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over hoe u batch voorspellingen asynchroon kunt uitvoeren op grote hoeveel heden gegevens met behulp van Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: b0d8eef025efb6398f1d7c734ca558540b157fef
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3997f327bd6512eeee2cb5e7a0af802f12d1727a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128259"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034289"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>Batch voorspellingen uitvoeren voor grote gegevens sets met Azure Machine Learning pijp lijnen
 
-In dit artikel leert u hoe u voor spellingen voor grote hoeveel heden gegevens asynchroon kunt maken met behulp van de ML-pijp lijnen met Azure Machine Learning service.
+In dit artikel leert u hoe u voor spellingen voor grote hoeveel heden gegevens asynchroon kunt maken met behulp van de ML-pijp lijnen met Azure Machine Learning.
 
 Batch voorspelling (of batch scoreing) biedt rendabele interferentie, met een niet-parallelle door Voer voor asynchrone toepassingen. Batch voorspelling pijplijnen kunnen schalen om uit te voeren Deductie op terabytes aan productiegegevens. Batch voorspellingen zijn geoptimaliseerd voor voor spellingen met hoge door Voer, brand-en-vergeet voor een grote verzameling gegevens.
 
@@ -30,7 +30,7 @@ In de volgende stappen maakt u een [machine learning-pijp lijn](concept-ml-pipel
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning service](https://aka.ms/AMLFree).
+- Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 
 - Configureer uw ontwikkelomgeving voor het installeren van de SDK van Azure Machine Learning. Zie voor meer informatie, [een ontwikkelomgeving configureren voor Azure Machine Learning](how-to-configure-environment.md).
 

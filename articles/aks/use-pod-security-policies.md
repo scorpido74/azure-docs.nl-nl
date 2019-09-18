@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: mlearned
-ms.openlocfilehash: df8aa51558bc3aa456758510792c198a8bd9cf78
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 3c9e5185bfcaf99765ec29874cea407fe55bfb17
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061842"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058332"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Voor beeld: uw cluster beveiligen met behulp van pod-beveiligings beleid in azure Kubernetes service (AKS)
 
@@ -95,22 +95,21 @@ az aks update \
 
 ## <a name="default-aks-policies"></a>Standaard AKS-beleid
 
-Wanneer u pod-beveiligings beleid inschakelt, maakt AKS twee standaard beleidsregels met de naam privileged en *restricted*. Bewerk of verwijder deze standaard beleidsregels niet. Maak in plaats daarvan uw eigen beleid voor het definiëren van de instellingen die u wilt beheren. Laten we eerst kijken naar wat deze standaard beleidsregels zijn, hoe ze pod-implementaties beïnvloeden.
+Wanneer u pod-beveiligings beleid inschakelt, maakt AKS één standaard beleid met de naam *privileged*. Bewerk of verwijder het standaard beleid niet. Maak in plaats daarvan uw eigen beleid voor het definiëren van de instellingen die u wilt beheren. Laten we eerst kijken naar wat deze standaard beleidsregels zijn, hoe ze pod-implementaties beïnvloeden.
 
-Als u de beschik bare beleids regels wilt weer geven, gebruikt u de opdracht [kubectl Get PSP][kubectl-get] , zoals in het volgende voor beeld wordt weer gegeven. Als onderdeel van het standaard beleid voor *beperkte toegang* , wordt de gebruiker niet gemachtigd om *misbruik* te maken van geprivilegieerde pod-escalatie en de gebruiker *MustRunAsNonRoot*.
+Als u de beschik bare beleids regels wilt weer geven, gebruikt u de opdracht [kubectl Get PSP][kubectl-get] , zoals wordt weer gegeven in het volgende voor beeld
 
 ```console
 $ kubectl get psp
 
 NAME         PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP    READONLYROOTFS   VOLUMES
-privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
-restricted   false          RunAsAny   MustRunAsNonRoot   MustRunAs   MustRunAs   false            configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
+privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *     configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
-Het beveiligings beleid met *beperkte* pod wordt toegepast op elke geverifieerde gebruiker in het AKS-cluster. Deze toewijzing wordt beheerd door ClusterRoles en ClusterRoleBindings. Gebruik de opdracht [kubectl Get clusterrolebindings][kubectl-get] en zoek naar de *standaard: ' beperkt:* binding:
+Het beveiligings beleid *privileged* pod wordt toegepast op elke geverifieerde gebruiker in het AKS-cluster. Deze toewijzing wordt beheerd door ClusterRoles en ClusterRoleBindings. Gebruik de opdracht [kubectl Get clusterrolebindings][kubectl-get] en zoek naar de *standaard: priviledged:* binding:
 
 ```console
-kubectl get clusterrolebindings default:restricted -o yaml
+kubectl get clusterrolebindings default:priviledged -o yaml
 ```
 
 Zoals wordt weer gegeven in de volgende verkorte uitvoer, wordt de *PSP: beperkte* ClusterRole toegewezen aan elk *systeem: geverifieerde* gebruikers. Deze mogelijkheid biedt een basis niveau van beperkingen zonder dat uw eigen beleid wordt gedefinieerd.
@@ -120,12 +119,12 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   [...]
-  name: default:restricted
+  name: default:priviledged
   [...]
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: psp:restricted
+  name: psp:priviledged
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
@@ -322,7 +321,7 @@ Events:
   Warning  BackOff    105s (x5 over 2m11s)  kubelet, aks-agentpool-34777077-0  Back-off restarting failed container
 ```
 
-De gebeurtenissen geven aan dat de container is gemaakt en gestart. Er is niets direct duidelijk wat de oorzaak is van de pod in een mislukte status. Laten we eens kijken naar de pod-logboeken met behulp van de [kubectl][kubectl-logs] -logboeken opdracht:
+De gebeurtenissen geven aan dat de container is gemaakt en gestart. Er is niets direct duidelijk wat de oorzaak is van de pod in een mislukte status. Laten we eens kijken naar de pod-logboeken met behulp van de [kubectl-logboeken][kubectl-logs] opdracht:
 
 ```console
 kubectl-nonadminuser logs nginx-unprivileged-nonroot --previous
@@ -380,15 +379,14 @@ Maak het beleid met behulp van de opdracht [kubectl apply][kubectl-apply] en gee
 kubectl apply -f psp-deny-privileged.yaml
 ```
 
-Als u de beschik bare beleids regels wilt weer geven, gebruikt u de opdracht [kubectl Get PSP][kubectl-get] , zoals in het volgende voor beeld wordt weer gegeven. Vergelijk het beleid voor *PSP-deny-privileges* met het standaard *beperkte* beleid dat in de voor gaande voor beelden is afgedwongen om een pod te maken. Alleen het gebruik van *PRIV* -escalatie wordt door uw beleid geweigerd. Er zijn geen beperkingen voor de gebruiker of groep voor het beleid voor *PSP-deny* -privileged.
+Als u de beschik bare beleids regels wilt weer geven, gebruikt u de opdracht [kubectl Get PSP][kubectl-get] , zoals in het volgende voor beeld wordt weer gegeven. Vergelijk het beleid voor *PSP-deny-privileges* met het standaard *beperkte* beleid dat in de voor gaande voor beelden is afgedwongen om een pod te maken. Alleen het gebruik van *PRIV* -escalatie wordt door uw beleid geweigerd. Er zijn geen beperkingen voor de gebruiker of groep voor het beleid voor *PSP-deny-privileged* .
 
 ```console
 $ kubectl get psp
 
 NAME                  PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP    READONLYROOTFS   VOLUMES
 privileged            true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
-psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
-restricted            false          RunAsAny   MustRunAsNonRoot   MustRunAs   MustRunAs   false            configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
+psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *          configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
 ## <a name="allow-user-account-to-use-the-custom-pod-security-policy"></a>Gebruikers account toestaan het aangepaste pod-beveiligings beleid te gebruiken

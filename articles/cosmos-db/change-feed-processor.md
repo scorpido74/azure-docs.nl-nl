@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 2f0f3d70d51ff35e37506eab1082fc07b16e711c
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 4074f26cdefd650c1b927293f422623841dfff7d
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018785"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71073694"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>De invoer processor wijzigen in Azure Cosmos DB 
 
@@ -95,5 +95,6 @@ Er worden kosten in rekening gebracht voor het verbruikte RUs, omdat gegevens ve
 U kunt nu door gaan met meer informatie over het wijzigen van de feed-processor in de volgende artikelen:
 
 * [Overzicht van wijzigings feed](change-feed.md)
+* [Migreren vanuit de bibliotheek van de wijzigings feed-processor](how-to-migrate-from-change-feed-library.md)
 * [De Estimator van de wijzigings feed gebruiken](how-to-use-change-feed-estimator.md)
 * [Start tijd voor wijzigen van feed-processor](how-to-configure-change-feed-start-time.md)

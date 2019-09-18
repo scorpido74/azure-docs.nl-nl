@@ -1,7 +1,7 @@
 ---
 title: Hoe en waar modellen moeten worden geïmplementeerd
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over hoe en waar u uw Azure Machine Learning-service modellen kunt implementeren, waaronder Azure Container Instances, de Azure Kubernetes-service, Azure IoT Edge en Programmeer bare poort matrices voor velden.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over hoe en waar u uw Azure Machine Learning-modellen kunt implementeren, waaronder Azure Container Instances, de Azure Kubernetes-service, Azure IoT Edge en Programmeer bare poort matrices voor velden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ff3a19a543f87833420f585bbdf7891cc7589746
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: f70975749be52e8498488d7019bf5cb8d858df54
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997193"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034692"
 ---
-# <a name="deploy-models-with-the-azure-machine-learning-service"></a>Implementeer modellen met de Azure Machine Learning-service
+# <a name="deploy-models-with-azure-machine-learning"></a>Modellen met Azure Machine Learning implementeren
 
 Meer informatie over het implementeren van uw machine learning model als een webservice in de Azure-Cloud of het Azure IoT Edge van apparaten.
 
@@ -29,11 +29,11 @@ De werk stroom is vergelijkbaar, [waar u uw model implementeert](#target) :
 1. Implementeer het model op het Compute-doel.
 1. Test het geïmplementeerde model, ook wel webservice genoemd.
 
-Zie [modellen beheren, implementeren en bewaken met Azure machine learning-service](concept-model-management-and-deployment.md)voor meer informatie over de concepten die bij de implementatie werk stroom zijn betrokken.
+Zie [modellen beheren, implementeren en bewaken met Azure machine learning](concept-model-management-and-deployment.md)voor meer informatie over de concepten die zijn betrokken bij de implementatie werk stroom.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een werkruimte van Azure Machine Learning-service. Zie [een Azure machine learning service-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
+- Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
 
 - Een model. Als u geen getraind model hebt, kunt u het model en de afhankelijkheids bestanden van [deze zelf studie](https://aka.ms/azml-deploy-cloud)gebruiken.
 
@@ -41,7 +41,7 @@ Zie [modellen beheren, implementeren en bewaken met Azure machine learning-servi
 
 ## <a name="connect-to-your-workspace"></a>Verbinding maken met uw werk ruimte
 
-De volgende code laat zien hoe u verbinding maakt met een Azure Machine Learning service-werk ruimte met behulp van informatie in cache naar de lokale ontwikkel omgeving:
+De volgende code laat zien hoe u verbinding maakt met een Azure Machine Learning-werk ruimte met behulp van informatie in cache naar de lokale ontwikkel omgeving:
 
 + **De SDK gebruiken**
 
@@ -118,7 +118,7 @@ De code fragmenten in deze sectie laten zien hoe u een model kunt registreren bi
 
 ### <a name="register-a-model-from-a-local-file"></a>Een model registreren vanuit een lokaal bestand
 
-U kunt een model registreren door het lokale pad van het model op te geven. U kunt het pad naar een map of één bestand opgeven. U kunt deze methode gebruiken om modellen te registreren die zijn getraind met de Azure Machine Learning-service en deze vervolgens te downloaden. U kunt deze methode ook gebruiken voor het registreren van modellen die buiten Azure Machine Learning worden getraind.
+U kunt een model registreren door het lokale pad van het model op te geven. U kunt het pad naar een map of één bestand opgeven. U kunt deze methode gebruiken om modellen te registreren die zijn getraind met Azure Machine Learning en vervolgens te downloaden. U kunt deze methode ook gebruiken voor het registreren van modellen die buiten Azure Machine Learning worden getraind.
 
 [!INCLUDE [trusted models](../../../includes/machine-learning-service-trusted-model.md)]
 
@@ -154,7 +154,7 @@ U kunt een model registreren door het lokale pad van het model op te geven. U ku
 
 Zie de documentatie voor de [model klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)voor meer informatie.
 
-Zie [een bestaand model implementeren](how-to-deploy-existing-model.md)voor meer informatie over het werken met modellen die buiten de Azure machine learning-service zijn getraind.
+Zie [een bestaand model implementeren](how-to-deploy-existing-model.md)voor meer informatie over het werken met modellen die buiten Azure machine learning zijn getraind.
 
 <a name="target"></a>
 
@@ -214,7 +214,7 @@ model_path = Model.get_model_path('sklearn_mnist')
 
 #### <a name="optional-automatic-schema-generation"></a>Beschrijving Automatisch schema genereren
 
-Als u automatisch een schema voor uw webservice wilt genereren, geeft u een voor beeld van de invoer en/of uitvoer in de constructor voor een van de gedefinieerde type-objecten. Het type en het voor beeld worden gebruikt voor het automatisch maken van het schema. De Azure Machine Learning-service maakt vervolgens een [OpenAPI](https://swagger.io/docs/specification/about/) -specificatie (Swagger) voor de webservice tijdens de implementatie.
+Als u automatisch een schema voor uw webservice wilt genereren, geeft u een voor beeld van de invoer en/of uitvoer in de constructor voor een van de gedefinieerde type-objecten. Het type en het voor beeld worden gebruikt voor het automatisch maken van het schema. Azure Machine Learning maakt vervolgens tijdens de implementatie een [OpenAPI](https://swagger.io/docs/specification/about/) (Swagger)-specificatie voor de webservice.
 
 Deze typen worden momenteel ondersteund:
 
@@ -630,7 +630,7 @@ Het volgende JSON-document is een voor beeld van een schema (OpenAPI-specificati
     "swagger": "2.0",
     "info": {
         "title": "myservice",
-        "description": "API specification for the Azure Machine Learning service myservice",
+        "description": "API specification for Azure Machine Learning myservice",
         "version": "1.0"
     },
     "schemes": [
@@ -762,7 +762,7 @@ Zie [OpenAPI Specification](https://swagger.io/specification/)(Engelstalig) voor
 Zie [Swagger-CodeGen](https://github.com/swagger-api/swagger-codegen)voor een hulp programma waarmee client bibliotheken kunnen worden gemaakt op basis van de specificatie.
 
 ### <a id="azuremlcompute"></a>Batch-deinterferentie
-Azure Machine Learning Compute-doelen worden gemaakt en beheerd door de Azure Machine Learning-service. Ze kunnen worden gebruikt voor batch voorspelling van Azure Machine Learning pijp lijnen.
+Azure Machine Learning Compute-doelen worden gemaakt en beheerd door Azure Machine Learning. Ze kunnen worden gebruikt voor batch voorspelling van Azure Machine Learning pijp lijnen.
 
 Zie [batch voorspellingen uitvoeren](tutorial-pipeline-batch-scoring-classification.md)voor een overzicht van batch deinterferentie met Azure machine learning compute.
 
@@ -776,7 +776,7 @@ Ondersteuning voor het implementeren naar de rand is in preview. Zie [Deploy Azu
 
 ## <a name="continuously-deploy-models"></a>Continu implementeren van modellen
 
-U kunt modellen voortdurend implementeren met behulp van de Machine Learning-extensie voor [Azure DevOps](https://azure.microsoft.com/services/devops/). U kunt de Machine Learning extensie voor Azure DevOps gebruiken om een implementatie pijplijn te activeren wanneer een nieuw machine learning model wordt geregistreerd in een Azure Machine Learning service-werk ruimte.
+U kunt modellen voortdurend implementeren met behulp van de Machine Learning-extensie voor [Azure DevOps](https://azure.microsoft.com/services/devops/). U kunt de Machine Learning extensie voor Azure DevOps gebruiken om een implementatie pijplijn te activeren wanneer een nieuw machine learning model wordt geregistreerd in een Azure Machine Learning-werk ruimte.
 
 1. Meld u aan voor [Azure-pijp lijnen](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops), wat een continue integratie en levering van uw toepassing naar elk platform of Cloud mogelijk maakt. (Houd er rekening mee dat Azure-pijp lijnen niet hetzelfde zijn als [machine learning pijp lijnen](concept-ml-pipelines.md#compare).)
 
@@ -784,7 +784,7 @@ U kunt modellen voortdurend implementeren met behulp van de Machine Learning-ext
 
 1. Installeer de [machine learning extensie voor Azure-pijp lijnen](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml&targetId=6756afbe-7032-4a36-9cb6-2771710cadc2&utm_source=vstsproduct&utm_medium=ExtHubManageList).
 
-1. Gebruik service verbindingen om een Service-Principal-verbinding in te stellen voor uw Azure Machine Learning service-werk ruimte, zodat u toegang hebt tot uw artefacten. Ga naar project instellingen, selecteer **service verbindingen**en selecteer vervolgens **Azure Resource Manager**:
+1. Gebruik service verbindingen voor het instellen van een Service-Principal-verbinding met uw Azure Machine Learning-werk ruimte, zodat u toegang hebt tot uw artefacten. Ga naar project instellingen, selecteer **service verbindingen**en selecteer vervolgens **Azure Resource Manager**:
 
     [![Azure Resource Manager selecteren](media/how-to-deploy-and-where/view-service-connection.png)](media/how-to-deploy-and-where/view-service-connection-expanded.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Geheel getal van de claims transformatievoorbeelden voor de identiteit ervaring Framework-Schema van de Azure Active Directory B2C | Microsoft Docs
-description: Geheel getal claims transformatievoorbeelden voor de identiteit ervaring Framework-Schema van de Azure Active Directory B2C.
+title: Voor beelden van een geheel getal trans formatie voor het Framework van de identiteits ervaring van Azure Active Directory B2C | Microsoft Docs
+description: Voor beelden van trans formatie van een geheel getal voor het Framework van de identiteits ervaring van Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,29 +10,29 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 976cf55dd8f1c11d1ea605b25086fa644afec980
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d82f7fecfb35c63d586993fed73a83209782a890
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510805"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064217"
 ---
-# <a name="integer-claims-transformations"></a>Geheel getal claims transformaties
+# <a name="integer-claims-transformations"></a>Geheeltallige claim transformaties
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In dit artikel biedt voorbeelden voor het gebruik van de transformaties geheel getal claims van het schema Identiteitservaring-Framework in Azure Active Directory (Azure AD) B2C. Zie voor meer informatie, [ClaimsTransformations](claimstransformations.md).
+In dit artikel vindt u voor beelden van het gebruik van trans formaties met een geheel getal voor het Framework van identiteits ervaring in Azure Active Directory B2C (Azure AD B2C). Zie [ClaimsTransformations](claimstransformations.md)voor meer informatie.
 
-## <a name="convertnumbertostringclaim"></a>ConvertNumberToStringClaim 
+## <a name="convertnumbertostringclaim"></a>ConvertNumberToStringClaim
 
-Een lange gegevenstype converteert naar een tekenreeks-gegevenstype.
+Converteert een lang gegevens type naar een teken reeks gegevens type.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | lang | Het ClaimType moet worden geconverteerd naar een tekenreeks. |
-| OutputClaim | outputClaim | string | Het ClaimType dat wordt gegenereerd nadat deze ClaimsTransformation is aangeroepen. |
+| InputClaim | inputClaim | long | Het claim type dat moet worden geconverteerd naar een teken reeks. |
+| OutputClaim | outputClaim | string | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 
-In dit voorbeeld wordt de `numericUserId` claim met waardetype Long-waarde wordt geconverteerd naar een `UserId` claim met waardetype string.
+In dit voor beeld wordt `numericUserId` de claim met het waardetype Long omgezet in een `UserId` claim met het waardetype string.
 
 ```XML
 <ClaimsTransformation Id="CreateUserId" TransformationMethod="ConvertNumberToStringClaim">
@@ -47,8 +47,8 @@ In dit voorbeeld wordt de `numericUserId` claim met waardetype Long-waarde wordt
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
-    - **inputClaim**: 12334 (long)
-- Uitvoerclaims: 
-    - **outputClaim**: "12334" (tekenreeks)
+- Invoer claims:
+    - **inputClaim**: 12334 (lang)
+- Uitvoer claims:
+    - **outputClaim**: "12334" (teken reeks)
 

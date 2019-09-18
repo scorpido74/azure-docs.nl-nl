@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1e4f79a1978b77c2b744d523c8f42f1497d63007
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 0d8c6929705ab29ced25a847bf7c5a72d57aa49b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918368"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037292"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Spark Structured streaming gebruiken met Apache Kafka en Azure Cosmos DB
 
@@ -42,7 +42,7 @@ Apache Kafka in HDInsight biedt geen toegang tot de Kafka-brokers via het openba
 Hoewel u hand matig een Azure Virtual Network-, Kafka-en Spark-cluster kunt maken, is het eenvoudiger om een Azure Resource Manager sjabloon te gebruiken. Gebruik de volgende stappen om een Azure Virtual Network-, Kafka-en Spark-cluster te implementeren in uw Azure-abonnement.
 
 1. Gebruik de volgende knop om u aan te melden bij Azure en de sjabloon in de Azure Portal te openen.
-    
+
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-spark-scala-kafka-cosmosdb%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="./media/apache-kafka-spark-structured-streaming-cosmosdb/resource-manager-deploy.png" alt="Deploy to Azure"/>
     </a>
@@ -66,11 +66,11 @@ Hoewel u hand matig een Azure Virtual Network-, Kafka-en Spark-cluster kunt make
      > Voor de Structured Streaming-notebook die in dit voorbeeld wordt gebruikt, is Spark in HDInsight 3.6 vereist. Als u een eerdere versie van Spark in HDInsight gebruikt, worden er fouten gegenereerd bij gebruik van de notebook.
 
 2. Gebruik de volgende informatie om de vermeldingen in de sectie **aangepaste implementatie** in te vullen:
-   
-    ![Aangepaste HDInsight-implementatie](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
+
+    ![Aangepaste waarden voor HDInsight-implementatie](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
     * **Abonnement**: Selecteer uw Azure-abonnement.
-   
+
     * **Resourcegroep**: Een groep maken of een bestaande selecteren. Deze groep bevat het HDInsight-cluster.
 
     * **Locatie**: Selecteer een locatie die geografisch dicht bij u ligt.

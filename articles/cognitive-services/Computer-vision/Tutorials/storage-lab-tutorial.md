@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 8ecf5fb7d54e7c9411c1153610d3a637477285bf
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 7caf4493db32201a8e83ffb3722c80c5e9b41a8f
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382992"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057728"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Zelfstudie: Computer Vision gebruiken voor het genereren van afbeeldingsmetagegevens te genereren in Azure Storage
 
@@ -46,7 +46,9 @@ U moet een Computer Vision-resource maken voor uw Azure-account. Deze resource b
 
 1. Ga vervolgens naar het menu voor de resource groep en klik op het Computer Vision-API abonnement dat u zojuist hebt gemaakt. Kopieer de URL onder **Eindpunt** naar een plaats waar u de URL eenvoudig en snel weer kunt ophalen. Klik vervolgens op **Toegangssleutels weergeven**.
 
-    ![Azure Portal pagina met de koppeling](../Images/copy-vision-endpoint.png) naar de eind punt-URL en toegangs sleutels[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+    ![Azure Portal pagina met de koppeling naar de eind punt-URL en toegangs sleutels](../Images/copy-vision-endpoint.png)
+    
+    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 
 1. In het volgende venster kopieert u de waarde van **sleutel 1** naar het klembord.

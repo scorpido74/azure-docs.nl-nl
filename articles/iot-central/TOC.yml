@@ -35,8 +35,6 @@
   items:
     - name: Apparaten verbinden
       items:
-        - name: Een apparaatverbindingsreeks genereren
-          href: howto-generate-connection-string.md
         - name: Een Node.js-toepassing (algemeen) voorbereiden en aansluiten
           href: howto-connect-nodejs.md
         - name: Een MXChip IoT DevKit voorbereiden en aansluiten

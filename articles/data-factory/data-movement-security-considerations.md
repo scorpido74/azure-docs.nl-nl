@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: c42e70efc8543e1d255690070ffb51b865e1754f
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
-ms.translationtype: HT
+ms.openlocfilehash: b571ba8d259a5e3b3b049ad66d4718e9e85d488b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608593"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931258"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Beveiligings overwegingen voor het verplaatsen van gegevens in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -59,7 +59,7 @@ In dit artikel worden beveiligings overwegingen in de volgende twee scenario's v
 
 ### <a name="securing-data-store-credentials"></a>Referenties voor gegevens opslag beveiligen
 
-- **Versleutelde referenties opslaan in een door Azure Data Factory beheerde opslag**. Data Factory helpt u bij het beveiligen van uw referenties voor gegevens archieven door ze te versleutelen met certificaten die worden beheerd door micro soft. Deze certificaten worden elke twee jaar geroteerd (inclusief het vernieuwen van certificaten en de migratie van referenties). De versleutelde referenties worden veilig opgeslagen in een Azure-opslag account dat wordt beheerd door Azure Data Factory-beheer Services. Zie [Azure Storage Security Overview](../security/fundamentals/storage-overview.md)(Engelstalig) voor meer informatie over Azure Storage beveiliging.
+- **Versleutelde referenties opslaan in een door Azure Data Factory beheerde opslag**. Data Factory helpt u bij het beveiligen van uw referenties voor gegevens archieven door ze te versleutelen met certificaten die worden beheerd door micro soft. Deze certificaten worden elke twee jaar geroteerd (inclusief het vernieuwen van certificaten en de migratie van referenties). Zie [Azure Storage Security Overview](../security/fundamentals/storage-overview.md)(Engelstalig) voor meer informatie over Azure Storage beveiliging.
 - **Referenties opslaan in azure Key Vault**. U kunt de referentie van het gegevens archief ook opslaan in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Data Factory haalt de referentie op tijdens het uitvoeren van een activiteit. Zie [referentie opslaan in azure Key Vault](store-credentials-in-key-vault.md)voor meer informatie.
 
 ### <a name="data-encryption-in-transit"></a>Gegevens versleuteling tijdens overdracht
@@ -108,14 +108,15 @@ Hybride scenario's vereisen een zelf-hostende Integration runtime voor installat
 Het opdracht kanaal staat communicatie toe tussen services voor gegevens verplaatsing in Data Factory en zelf-hostende Integration runtime. De communicatie bevat informatie met betrekking tot de activiteit. Het gegevens kanaal wordt gebruikt voor het overbrengen van gegevens tussen on-premises gegevens archieven en gegevens archieven in de Cloud.    
 
 ### <a name="on-premises-data-store-credentials"></a>Referenties voor het on-premises gegevens archief
-De referenties voor uw on-premises gegevens archieven worden altijd versleuteld en opgeslagen. Ze kunnen lokaal worden opgeslagen op de zelf-hostende Integration runtime-computer of worden opgeslagen in Azure Data Factory Managed Storage (net als referenties voor het Cloud archief). 
+De referenties kunnen worden opgeslagen in data factory of worden [verwezen door Data Factory](store-credentials-in-key-vault.md) tijdens de runtime van Azure Key Vault. Als referenties worden opgeslagen in data factory, wordt deze altijd versleuteld opgeslagen op de zelf-hostende Integration runtime. 
+ 
+- **Referenties lokaal opslaan**. Als u de cmdlet **set-AzDataFactoryV2LinkedService** rechtstreeks gebruikt met de verbindings reeksen en de inline referenties in de JSON, wordt de gekoppelde service versleuteld en opgeslagen in de zelf-hostende Integration runtime.  In dit geval worden de referenties via de Azure-back-end-service, die af en toe beveiligd is, naar de zelf-hostende integratie computer waar deze uiteindelijk encrpted en opgeslagen. De zelf-hostende Integration runtime gebruikt Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) om de gevoelige gegevens en referentie gegevens te versleutelen.
 
-- **Referenties lokaal opslaan**. Als u lokaal referenties wilt versleutelen en opslaan in de zelf-hostende Integration runtime, volgt u de stappen in [referenties versleutelen voor on-premises gegevens archieven in azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md). Alle connectors ondersteunen deze optie. De zelf-hostende Integration runtime gebruikt Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) om de gevoelige gegevens en referentie gegevens te versleutelen. 
+- **Referenties opslaan in azure Key Vault**. U kunt de referentie van het gegevens archief ook opslaan in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Data Factory haalt de referentie op tijdens het uitvoeren van een activiteit. Zie [referentie opslaan in azure Key Vault](store-credentials-in-key-vault.md)voor meer informatie.
+
+- **Sla lokaal referenties op zonder de referenties via de Azure-back-end over te brengen naar de zelf-hostende Integration runtime**. Als u lokaal referenties wilt versleutelen en opslaan op de zelf-hostende Integration runtime zonder de referenties via data factory back-end te hoeven door lopen, volgt u de stappen in [referenties versleutelen voor on-premises gegevens archieven in azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md). Alle connectors ondersteunen deze optie. De zelf-hostende Integration runtime gebruikt Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) om de gevoelige gegevens en referentie gegevens te versleutelen. 
 
    Gebruik de cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** om de gekoppelde service referenties en gevoelige gegevens in de gekoppelde service te versleutelen. U kunt vervolgens de JSON die wordt geretourneerd (met het element **EncryptedCredential** in de Connection String) gebruiken om een gekoppelde service te maken met behulp van de cmdlet **set-AzDataFactoryV2LinkedService** .  
-
-- **Bewaar in azure Data Factory Managed Storage**. Als u de cmdlet **set-AzDataFactoryV2LinkedService** rechtstreeks met de verbindings reeksen en de inline-referenties in de JSON gebruikt, wordt de gekoppelde service versleuteld en opgeslagen in azure Data Factory beheerde opslag. De gevoelige gegevens worden nog steeds versleuteld door het certificaat en micro soft beheert deze certificaten.
-
 
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>Poorten die worden gebruikt bij het versleutelen van de gekoppelde service op zelf-hostende Integration runtime
@@ -135,7 +136,7 @@ Azure Virtual Network is een logische weer gave van uw netwerk in de Cloud. U ku
 
 De volgende tabel bevat een overzicht van de aanbevelingen voor het netwerk en zelf-hostende Integration runtime-configuratie op basis van verschillende combi Naties van bron-en doel locaties voor het verplaatsen van hybride gegevens.
 
-| Source      | Bestemming                              | Netwerkconfiguratie                    | Installatie van integratieruntime                |
+| Source      | Destination                              | Netwerkconfiguratie                    | Installatie van integratieruntime                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | On-premises | Virtuele machines en Cloud Services die zijn geïmplementeerd in virtuele netwerken | IPSec VPN (punt-naar-site of site-naar-site) | De zelf-hostende Integration runtime moet worden geïnstalleerd op een virtuele machine van Azure in het virtuele netwerk.  |
 | On-premises | Virtuele machines en Cloud Services die zijn geïmplementeerd in virtuele netwerken | ExpressRoute (persoonlijke peering)           | De zelf-hostende Integration runtime moet worden geïnstalleerd op een virtuele machine van Azure in het virtuele netwerk.  |

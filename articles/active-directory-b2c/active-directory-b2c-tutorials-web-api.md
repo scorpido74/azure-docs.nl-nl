@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 339b118e48a01469312a40e6b0652a4ffb90291a
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: ec6b667dfc554c037d9b0a56e52bc8f212812812
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347126"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064728"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Zelfstudie: Toegang verlenen aan een web-API van ASP.NET met behulp van Azure Active Directory B2C
 
-Deze zelfstudie laat zien hoe u een web-API-resource, die wordt beveiligd in Azure Active Directory (Azure AD) B2C, aanroept vanuit een ASP.NET-webtoepassing.
+In deze zelf studie wordt uitgelegd hoe u een beveiligde web-API-resource aanroept in Azure Active Directory B2C (Azure AD B2C) vanuit een ASP.NET-webtoepassing.
 
 In deze zelfstudie leert u het volgende:
 
@@ -40,7 +40,7 @@ Voltooi de stappen en de vereisten in de [zelfstudie: Verificatie inschakelen in
 Web-API-resources moeten worden geregistreerd in uw tenant voordat deze in staat zijn om beveiligde resourceaanvragen door clienttoepassingen die een toegangstoken aanbieden, kunnen accepteren en erop kunnen reageren.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Zorg ervoor dat u de map gebruikt met uw Azure AD B2C-tenant door te klikken op het **Map- en abonnementsfilter** in het bovenste menu en de map te kiezen waarin uw tenant zich bevindt.
+2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer **Toepassingen** en vervolgens **Toevoegen**.
 5. Voer een naam in voor de toepassing. Bijvoorbeeld *webapi1*.
@@ -89,7 +89,7 @@ Deze twee projecten bevinden zich in de voorbeeldoplossing:
 
 1. Open de oplossing **B2C-WebAPI-DotNet** in Visual Studio.
 2. Open **Web.config** in het project **TaskWebApp**.
-3. Als u de API lokaal wilt uitvoeren, moet u de localhost-instelling gebruiken voor **api:TaskServiceUrl**. Ga als volgt te werk om Web.config te wijzigen: 
+3. Als u de API lokaal wilt uitvoeren, moet u de localhost-instelling gebruiken voor **api:TaskServiceUrl**. Ga als volgt te werk om Web.config te wijzigen:
 
     ```csharp
     <add key="api:TaskServiceUrl" value="https://localhost:44332/"/>
@@ -133,16 +133,16 @@ Deze twee projecten bevinden zich in de voorbeeldoplossing:
 
 ## <a name="run-the-sample"></a>De voorbeeldtoepassing uitvoeren
 
-U moet zowel project **TaskWebApp** als **TaskService** uitvoeren. 
+U moet zowel project **TaskWebApp** als **TaskService** uitvoeren.
 
-1. Klik in Solution Explorer met de rechtermuisknop op de oplossing en selecteer vervolgens **Opstartprojecten instellen...** . 
+1. Klik in Solution Explorer met de rechtermuisknop op de oplossing en selecteer vervolgens **Opstartprojecten instellen...** .
 2. Selecteer **Meerdere opstartprojecten**.
 3. Wijzig de **actie** voor beide projecten in **Start**.
 4. Klik op **OK** om de configuratie op te slaan.
 5. Druk op **F5** om beide toepassingen uit te voeren. Elke toepassing wordt geopend in zijn eigen browsertabblad. `https://localhost:44316/` is de webtoepassing.
     `https://localhost:44332/` is de web-API.
 
-6. Klik in de webtoepassing op **Registreren / aanmelden** om bij de webtoepassing aan te melden. Gebruik het account dat u eerder hebt gemaakt. 
+6. Klik in de webtoepassing op **Registreren / aanmelden** om bij de webtoepassing aan te melden. Gebruik het account dat u eerder hebt gemaakt.
 7. Nadat u bent aangemeld, klikt u op de link **Takenlijst** en maakt u een takenlijstitem.
 
 Als u een takenlijstitem maakt, verzendt de webtoepassing een aanvraag naar de web-API om het takenlijstitem te maken. Uw beveiligde webtoepassing roept de beveiligde web-API in uw Azure AD B2C-tenant aan.

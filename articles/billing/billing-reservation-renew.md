@@ -1,6 +1,6 @@
 ---
-title: Azure-reserve ringen automatisch vernieuwen
-description: Meer informatie over hoe u Azure-reserve ringen automatisch kunt vernieuwen om de reserverings kortingen te blijven ontvangen.
+title: Automatisch Azure-reserveringen verlengen
+description: Lees hoe u automatisch Azure-reserveringen kunt verlengen, zodat u reserveringskortingen blijft ontvangen.
 services: billing
 author: bandersmsft
 manager: yashar
@@ -9,87 +9,87 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: banders
 ms.openlocfilehash: c19c6af68bcde753ec9bed990e08aa81eabdd37d
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68679456"
 ---
-# <a name="automatically-renew-reservations"></a>Reserve ringen automatisch vernieuwen
+# <a name="automatically-renew-reservations"></a>Automatisch reserveringen verlengen
 
-U kunt reserve ringen vernieuwen om automatisch een vervanging te kopen wanneer een bestaande reserve ring verloopt. Automatische verlenging biedt een eenvoudige manier om reserve ringen te blijven ontvangen. U kunt er ook voor zorgen dat de verval datum van een reserve ring nauw keurig moet worden gecontroleerd. Met automatische verlenging voor komt u dat verlies voordelen worden bespaard door niet hand matig te verlengen. De instelling voor het vernieuwen is standaard uitgeschakeld. Hiermee schakelt u de instelling voor het vernieuwen in of uit, tot het verlopen van de bestaande reserve ring.
+U kunt reserveringen verlengen om automatisch een vervanging aan te schaffen wanneer een bestaande reservering verloopt. Automatische verlenging vormt een eenvoudige manier om ervoor te zorgen dat u reserveringskortingen blijft ontvangen. Automatische verlenging zorgt er ook voor dat u de vervaldatum van een reservering niet nauwlettend in de gaten hoeft te houden. Met automatische verlenging voorkomt u dat u besparingen misloopt, doordat u reserveringen niet handmatig hoeft te verlengen. De instelling voor verlenging is standaard uitgeschakeld. U kunt de instelling voor verlenging op elk gewenst moment in- of uitschakelen, tot de vervaldatum van de bestaande reservering.
 
-Bij het vernieuwen van een reserve ring wordt een nieuwe reserve ring gemaakt wanneer de bestaande reserve ring verloopt. De periode van de bestaande reserve ring wordt niet verlengd.
+Als u een reservering verlengt, wordt er een nieuwe reservering gemaakt wanneer de bestaande reservering verloopt. De termijn voor de bestaande reservering wordt niet verlengd.
 
-Meld u aan om op elk gewenst moment automatisch te verlengen. De vernieuwings prijs is 30 dagen vóór het verstrijken van de bestaande reserve ring beschikbaar. Wanneer u de verlenging meer dan 30 dagen vóór de verval datum van de reserve ring inschakelt, ontvangt u een e-mail met een gedetailleerde verlengings kosten van 30 dagen voor de verval datum. De prijs van de reserve ring kan veranderen tussen de tijd dat u de vernieuwings prijs en de verlengings tijd vergren delen. Als dat het geval is, zijn de kosten voor verlenging de laagste van de twee kosten. U kunt wijzigingen aanbrengen in de reserverings hoeveelheid. Als u dit doet, wordt de verlenging bijgewerkt om de prijs in de markt te gebruiken die is ingesteld op het moment dat de hoeveelheid wordt gewijzigd.
+Als u gebruik wilt maken van automatische verlenging, kunt u zich hier op elk moment voor aanmelden. De verlengingsprijs is 30 dagen vóór de vervaldatum van de bestaande reservering beschikbaar. Wanneer u de verlenging meer dan 30 dagen vóór de vervaldatum van de reservering inschakelt, ontvangt u 30 dagen vóór de vervaldatum een e-mail met gedetailleerde informatie over de verlengingskosten. De prijs van de reservering kan veranderen tussen het moment waarop u de verlengingsprijs vastzet en het moment van de daadwerkelijke verlenging. Als dat het geval is, geldt het laagste van de twee bedragen als uw verlengingsprijs. U kunt de reserveringshoeveelheid nog wijzigen. Als u dit doet, wordt de verlenging bijgewerkt zodat de marktprijs wordt gebruikt die is ingesteld op het moment waarop de hoeveelheid werd gewijzigd.
 
-Er is geen verplichting om te verlengen en u kunt de verlenging op elk gewenst moment afmelden voordat de bestaande reserve ring verloopt.
+U bent niet verplicht om uw reserveringen te verlengen en u kunt zich op elk gewenst moment voordat de bestaande reservering verloopt, afmelden voor de verlenging.
 
 ## <a name="set-up-renewal"></a>Verlenging instellen
 
-Ga naar Azure Portal > **reserve ringen**.
+Ga naar Azure-portal > **Reserveringen**.
 
-1. Selecteer de reserve ring.
-2. Klik op **vernieuwen**.
-3. Selecteer **automatisch een nieuwe reserve ring kopen na verloop datum**.  
-  ![Voor beeld van reserverings verlenging](./media/billing-reservation-renew/reservation-renewal.png)
+1. Selecteer de reservering.
+2. Klik op **Verlenging**.
+3. Selecteer **Automatisch een nieuwe reservering aanschaffen na vervaldatum**.  
+  ![Voorbeeld van verlenging van een reservering](./media/billing-reservation-renew/reservation-renewal.png)
 
-## <a name="if-you-dont-renew"></a>Als u niet verlengt
+## <a name="if-you-dont-renew"></a>Wat er gebeurt als u uw reserveringen niet verlengt
 
-Uw services blijven normaal worden uitgevoerd. U betaalt betalen naar gebruik-tarieven voor uw verbruik wanneer de reserve ring verloopt.
+Uw services worden dan nog steeds uitgevoerd zoals normaal. Na het verlopen van de reserveringen worden u tarieven voor betalen per gebruik in rekening gebracht voor uw gebruik.
 
-## <a name="required-renewal-permissions"></a>Vereiste verlengings machtigingen
+## <a name="required-renewal-permissions"></a>Machtigingen die zijn vereist voor verlenging
 
-De volgende voor waarden zijn vereist voor het vernieuwen van een reserve ring:
+Als u een reservering wilt verlengen, moet u aan de volgende voorwaarden voldoen:
 
-- U moet een eigenaar zijn van de bestaande reserve ring.
-- U moet een eigenaar van het abonnement zijn als de reserve ring is beperkt tot één abonnement of resource groep.
-- U moet een eigenaar van het abonnement zijn als het een gedeeld bereik heeft.
+- U moet eigenaar zijn van de bestaande reservering.
+- Als de reservering is bedoeld voor één abonnement of resourcegroep, moet u eigenaar van het abonnement zijn.
+- Als het abonnement een gedeeld bereik heeft, moet u eigenaar van het abonnement zijn.
 
-## <a name="default-renewal-settings"></a>Standaard instellingen voor vernieuwen
+## <a name="default-renewal-settings"></a>Standaardinstellingen voor verlenging
 
-Standaard neemt het vernieuwen alle eigenschappen over van de verlopende reserve ring. Een aankoop van een reserve ring moet dezelfde SKU, regio, bereik, facturerings abonnement, termijn en hoeveelheid hebben.
+Standaard neemt de verlenging alle eigenschappen van de verlopende reservering over. Als u een verlenging voor een reservering aanschaft, heeft die dezelfde SKU, dezelfde regio, hetzelfde bereik, hetzelfde factureringsabonnement, dezelfde termijn en dezelfde hoeveelheid als de oude reservering.
 
-U kunt echter de aankoop hoeveelheid voor de vernieuwings reservering bijwerken om uw besparingen te optimaliseren.
+U kunt de aankoophoeveelheid voor de verlenging van de reserveringen echter bijwerken om uw besparingen te optimaliseren.
 
-## <a name="when-the-new-reservation-is-purchased"></a>Wanneer de nieuwe reserve ring wordt aangeschaft
+## <a name="when-the-new-reservation-is-purchased"></a>Wanneer de nieuwe reservering wordt aangeschaft
 
-Er wordt een nieuwe reserve ring aangeschaft wanneer de bestaande reserve ring verloopt. We proberen een vertraging tussen de twee reserve ringen te voor komen. Continuïteit zorgt ervoor dat uw kosten voorspelbaar zijn en dat u nog steeds kortingen krijgt.
+Wanneer de bestaande reservering verloopt, wordt er een nieuwe reservering aangeschaft. We proberen te voorkomen dat u moet wachten voordat u gebruik kunt maken van de nieuwe reservering. Dankzij deze continuïteit blijven uw kosten voorspelbaar en blijft u kortingen ontvangen.
 
-## <a name="changing-parent-reservation-after-setting-renewal"></a>Bovenliggende Reserve ring wijzigen na instelling van verlenging
+## <a name="changing-parent-reservation-after-setting-renewal"></a>Het wijzigen van de oude reservering na het instellen van de verlenging
 
-Als u een van de volgende wijzigingen aanbrengt in de verval reservering, wordt de reserverings verlenging geannuleerd:
+De verlenging van de reservering wordt geannuleerd als u een van de volgende zaken wijzigt in de verlopende reservering:
 
 - Splitsen
 - Samenvoegen
-- Overdracht van de reserve ring van het ene account naar het andere
-- De reserve ring van een webdirect-abonnement overbrengen naar een EA-abonnement (Enter prise Agreement) of een andere aankoop methode
-- De inschrijving vernieuwen
+- De reservering overdragen van het ene account naar het andere
+- De reservering overdragen van een WebDirect-abonnement naar een EA-abonnement (Enterprise Agreement) of een andere aankoopmethode
+- De inschrijving verlengen
 
-De nieuwe reserve ring neemt het bereik en de flexibiliteits instelling voor de grootte van de instantie over van de verlopende reserve ring tijdens het vernieuwen.
+Bij de verlenging neemt de nieuwe reservering het bereik en de instelling voor de flexibiliteit van de instantiegrootte over van de verlopende reservering.
 
-## <a name="new-reservation-permissions"></a>Nieuwe reserverings machtigingen
+## <a name="new-reservation-permissions"></a>Machtigingen voor de nieuwe reservering
 
-Azure kopieert de machtigingen van de verlopende reserve ring naar de nieuwe reserve ring. Daarnaast heeft de account beheerder van het abonnement van de reserverings aankoop toegang tot de nieuwe reserve ring.
+Azure kopieert de machtigingen voor de verlopende reservering naar de nieuwe reservering. De accountbeheerder voor het abonnement van de reserveringsaankoop heeft ook toegang tot de nieuwe reservering.
 
-## <a name="potential-renewal-problems"></a>Mogelijke problemen met de vernieuwing
+## <a name="potential-renewal-problems"></a>Potentiële problemen bij de verlenging
 
-Azure kan de vernieuwing mogelijk niet verwerken als:
+Azure kan de verlenging mogelijk niet verwerken als:
 
-- Betaling kan niet worden verzameld
-- Er treedt een systeem fout op tijdens het vernieuwen
-- De verlopende SKU is niet actief tijdens het verlengen
-- De EA wordt vernieuwd naar een andere EA
+- de betaling niet kan worden geïnd;
+- er een systeemfout optreedt tijdens de verlenging;
+- de verlopende SKU niet actief is tijdens de verlenging;
+- het EA wordt verlengd in een ander EA.
 
-U ontvangt een e-mail melding als een van de voor gaande voor waarden wordt weer gegeven en de verlenging wordt uitgeschakeld.
+U ontvangt een e-mailmelding als een van de voorgaande omstandigheden zich voordoet en de verlenging wordt gedeactiveerd.
 
 ## <a name="renewal-notification"></a>Melding over verlenging
 
-E-mail berichten worden naar verschillende mensen verzonden, afhankelijk van uw aankoop methode:
+Naar wie de e-mails worden verzonden, is afhankelijk van uw aankoopmethode:
 
-- EA-klanten: e-mail berichten worden verzonden naar de contact persoon voor meldingen die is ingesteld op de EA-Portal.
-- Individuele abonnements klanten met betalen per gebruik-tarieven: e-mail berichten worden verzonden naar gebruikers die als account beheerder zijn ingesteld.
-- Klanten van Cloud Solution Provider: e-mail berichten worden verzonden naar de contact persoon van de partner melding.
+- Klanten met een Enterprise Agreement: Er worden e-mailberichten verzonden naar de contactpersonen voor meldingen, die zijn ingesteld in de EA-portal.
+- Klanten met een afzonderlijk abonnement met tarieven voor betalen per gebruik: Er worden e-mailberichten verzonden naar gebruikers die als accountbeheerder zijn ingesteld.
+- Klanten van een Cloud Solution Provider: Er worden e-mailberichten verzonden naar de contactpersoon voor meldingen van onze partner.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie [Wat zijn Azure Reservations?](billing-save-compute-costs-reservations.md) voor meer informatie over Azure Reservations.
+- Zie [Wat zijn Azure-reserveringen?](billing-save-compute-costs-reservations.md) voor meer informatie over Azure-reserveringen.

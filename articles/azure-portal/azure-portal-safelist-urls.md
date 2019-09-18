@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: kfollis
 ms.author: kfollis
-ms.date: 07/29/2019
+ms.date: 09/13/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 3747ca7504e1a8a6bbeb6237c1b3cb2e5e4afb5b
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
-ms.translationtype: HT
+ms.openlocfilehash: 78c752423d20d183c561d5bcf0bb95246b84ab49
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667473"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076662"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Safelist de Azure Portal Url's op uw firewall of proxy server
 
@@ -22,30 +22,54 @@ Voor goede prestaties en connectiviteit tussen uw lokale of Wide Area netwerk en
 
 ## <a name="azure-portal-urls-for-proxy-bypass"></a>Azure Portal Url's voor het overs laan van een proxy
 
-Voeg de volgende lijst met Url's toe aan uw proxy server of firewall om netwerk verkeer naar deze eind punten toe te staan voor het overs laan van beperkingen:
+De URL-eind punten naar Safelist voor de Azure Portal zijn specifiek voor de Azure-Cloud waar uw organisatie is geïmplementeerd. Selecteer uw Cloud en voeg vervolgens de lijst met Url's toe aan uw proxy server of firewall om netwerk verkeer naar deze eind punten toe te staan om beperkingen over te slaan.
 
-* *.aadcdn.microsoftonline-p.com
-* *.aimon.applicationinsights.io
-* *.azure.com
-* *.azuredatalakestore.net
-* *.azureedge.net
-* *.exp.azure.com
-* *.ext.azure.com
-* *.gfx.ms
-* *.account.microsoft.com
-* *.hosting.portal.azure.net
-* *.marketplaceapi.microsoft.com
-* *.microsoftonline.com
-* *.msauth.net
-* *.msftauth.net
-* *.portal.azure.com
-* *.portalext.visualstudio.com
-* *.sts.microsoft.com
-* *.vortex.data.microsoft.com
-* *.vscommerce.visualstudio.com
-* *.vssps.visualstudio.com
-* *.windows.net
-* *.wpc.azureedge.net
+#### <a name="public-cloudtabpublic-cloud"></a>[Open bare Cloud](#tab/public-cloud)
+```
+*.aadcdn.microsoftonline-p.com
+*.aka.ms
+*.applicationinsights.io
+*.azure.com
+*.azure.net
+*.azureafd.net
+*.azure-api.net
+*.azuredatalakestore.net
+*.azureedge.net
+*.loganalytics.io
+*.microsoft.com
+*.microsoftonline.com
+*.microsoftonline-p.com
+*.msauth.net
+*.msftauth.net
+*.trafficmanager.net
+*.visualstudio.com
+*.windows.net
+*.windows-int.net
+```
+
+#### <a name="us-government-cloudtabus-government-cloud"></a>[NL Government Cloud](#tab/us-government-cloud)
+```
+*.azure.us
+*.loganalytics.us
+*.microsoft.us
+*.microsoftonline.us
+*.msauth.net
+*.usgovcloudapi.net
+*.usgovtrafficmanager.net
+*.windowsazure.us
+```
+
+#### <a name="china-government-cloudtabchina-government-cloud"></a>[Overheids Cloud voor China](#tab/china-government-cloud)
+```
+*.azure.cn
+*.microsoft.cn
+*.microsoftonline.cn
+*.chinacloudapi.cn
+*.trafficmanager.cn
+*.chinacloudsites.cn
+*.windowsazure.cn
+```
+---
 
 > [!NOTE]
 > Verkeer naar deze eind punten maakt gebruik van standaard TCP-poorten voor HTTP (80) en HTTPS (443).
@@ -53,5 +77,11 @@ Voeg de volgende lijst met Url's toe aan uw proxy server of firewall om netwerk 
 >
 ## <a name="next-steps"></a>Volgende stappen
 
-* Moet u IP-adressen safelisten? Down load de lijst met [IP-adresbereiken van Microsoft Azure Data Center](https://www.microsoft.com/download/details.aspx?id=41653).
-* Andere micro soft-Services gebruiken extra Url's en IP-adressen voor connectiviteit. Zie [uw netwerk instellen voor Office 365 om de](/office365/enterprise/set-up-network-for-office-365)netwerk verbinding voor Microsoft 365 services te optimaliseren.
+Moet u IP-adressen safelisten? Down load de lijst met IP-adresbereiken voor Microsoft Azure Data Center voor uw Cloud:
+
+* [Wijd](https://www.microsoft.com/download/details.aspx?id=56519)
+* [NL Government](http://www.microsoft.com/download/details.aspx?id=57063)
+* [Duitsland](http://www.microsoft.com/download/details.aspx?id=57064)
+* [China](http://www.microsoft.com/download/details.aspx?id=57062)
+
+Andere micro soft-Services gebruiken extra Url's en IP-adressen voor connectiviteit. Zie [uw netwerk instellen voor Office 365 om de](/office365/enterprise/set-up-network-for-office-365)netwerk verbinding voor Microsoft 365 services te optimaliseren.

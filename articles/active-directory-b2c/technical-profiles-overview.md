@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 679de2d3a5519e57978239ddd75a4b9fa2ffef3c
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f90b69cde4a961457c987f004e2605e6884bf323
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998760"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063330"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Over technische profielen in Azure Active Directory B2C aangepast beleid
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Een technisch profiel biedt een Framework met een ingebouwd mechanisme voor communicatie met verschillende soorten partijen met behulp van een aangepast beleid in Azure Active Directory (Azure AD) B2C. Technische profielen worden gebruikt om te communiceren met uw Azure AD B2C-Tenant, een gebruiker te maken of een gebruikers profiel te lezen. Een technisch profiel kan worden bevestigd om interactie met de gebruiker mogelijk te maken. Verzamel bijvoorbeeld de referenties van de gebruiker om u aan te melden en vervolgens de pagina voor de registratie pagina of het wacht woord opnieuw instellen weer te geven.
+Een technisch profiel biedt een Framework met een ingebouwd mechanisme om te communiceren met verschillende soorten partijen met behulp van een aangepast beleid in Azure Active Directory B2C (Azure AD B2C). Technische profielen worden gebruikt om te communiceren met uw Azure AD B2C-Tenant, een gebruiker te maken of een gebruikers profiel te lezen. Een technisch profiel kan worden bevestigd om interactie met de gebruiker mogelijk te maken. Verzamel bijvoorbeeld de referenties van de gebruiker om u aan te melden en vervolgens de pagina voor de registratie pagina of het wacht woord opnieuw instellen weer te geven.
 
 ## <a name="type-of-technical-profiles"></a>Type technische profielen
 

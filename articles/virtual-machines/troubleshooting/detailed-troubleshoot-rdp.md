@@ -4,7 +4,7 @@ description: Bekijk gedetailleerde stappen voor probleem oplossing voor probleme
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 keywords: kan geen verbinding maken met extern bureau blad, problemen oplossen met extern bureau blad, extern bureau blad kan geen verbinding maken, fouten extern bureau blad, extern bureau blad oplossen, problemen met extern bureau blad
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a0f4c4172661b0f041a30df2d4d63ba58f203e89
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 053a209829f30ea92d76b29f24d028d77ca732e7
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080528"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058907"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Gedetailleerde stappen voor probleem oplossing voor problemen met verbinding met extern bureau blad met virtuele Windows-machines in azure
 In dit artikel vindt u gedetailleerde stappen voor het oplossen van problemen bij het vaststellen en oplossen van complexe Extern bureaublad fouten voor Azure virtual machines op basis van Windows.

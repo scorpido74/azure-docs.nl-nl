@@ -1,7 +1,7 @@
 ---
 title: Wat zijn FPGA-implementeren?
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het implementeren van een webservice met een model dat wordt uitgevoerd op een FPGA met Azure Machine Learning-service voor een extreem lage latentie.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het implementeren van een webservice met een model dat wordt uitgevoerd op een FPGA met Azure Machine Learning voor een extreem lage latentie.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8f95846844f9ff498b1b99a0b7a375f1c883457d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 929ca8e16db73be5cfa226b5d55a30dbb7b2bc99
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860480"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034455"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Wat zijn veld-Programmeer bare poort matrices (FPGA) en implementeren
 
-Dit artikel bevat een inleiding tot veld-Programmeer bare poort matrices (FPGA) en laat zien hoe u uw modellen kunt implementeren met behulp van Azure Machine Learning-service naar een Azure-FPGA. 
+Dit artikel bevat een inleiding tot veld-Programmeer bare poort matrices (FPGA) en laat zien hoe u uw modellen implementeert met behulp van Azure Machine Learning naar een Azure-FPGA. 
 
 Fpga's bevatten een matrix met Programmeer bare logische blokken en een hiërarchie van Herconfigureer bare onderlinge verbindingen. Met de onderlinge verbindingen kunnen deze blokken na de productie op verschillende manieren worden geconfigureerd. Vergeleken met andere chips, biedt Fpga's een combi natie van programmeer baarheid en prestaties.
 
@@ -28,7 +28,7 @@ Fpga's bevatten een matrix met Programmeer bare logische blokken en een hiërarc
 
 In het volgende diagram en in de tabel ziet u hoe Fpga's met andere processors kan worden vergeleken.
 
-![Diagram van de vergelijking van Azure Machine Learning service FPGA](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
+![Diagram van Azure Machine Learning FPGA-vergelijking](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
 
 |Processor||Description|
 |---|:-------:|------|
@@ -89,7 +89,7 @@ U kunt een model als een webservice implementeren op Fpga's met Azure Machine Le
 
 ### <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement.  Als u er nog geen hebt, maakt u een gratis account voordat u begint. Probeer nog vandaag de [gratis of betaalde versie van de Azure Machine Learning Service](https://aka.ms/AMLFree).
+- Een Azure-abonnement.  Als u er nog geen hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 - FPGA quota. Gebruik de Azure CLI om te controleren of u een quotum hebt:
 
@@ -112,7 +112,7 @@ U kunt een model als een webservice implementeren op Fpga's met Azure Machine Le
 
     Als u geen quota hebt, verzendt u een aanvraag op [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI).
 
-- Een werkruimte van Azure Machine Learning-service en de Azure Machine Learning-SDK voor Python geïnstalleerd. Zie [een werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
+- Er is een Azure Machine Learning-werk ruimte en de Azure Machine Learning SDK voor python geïnstalleerd. Zie [een werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
  
 - De python-SDK voor modellen die door hardware zijn versneld:
 

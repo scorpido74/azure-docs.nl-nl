@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42129870c6ab2bb5e58bdf9aaa323a3d64b479f8
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 12ddbe9f43baf68f6c11c9b720a0f684316af46a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644913"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065322"
 ---
 # <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>REST API claim uitwisselingen toevoegen aan aangepast beleid in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-U kunt interactie met een REST-API toevoegen aan uw [aangepaste beleids regels](active-directory-b2c-overview-custom.md) in azure Active Directory (Azure AD) B2C. In dit artikel wordt beschreven hoe u een Azure AD B2C gebruikers traject maakt dat samenwerkt met de REST-services.
+U kunt interactie met een REST-API toevoegen aan uw [aangepaste beleids regels](active-directory-b2c-overview-custom.md) in Azure Active Directory B2C (Azure AD B2C). In dit artikel wordt beschreven hoe u een Azure AD B2C gebruikers traject maakt dat samenwerkt met de REST-services.
 
 De interactie bevat een claim uitwisseling van informatie tussen de REST API claims en Azure AD B2C. Claim uitwisselingen hebben de volgende kenmerken:
 

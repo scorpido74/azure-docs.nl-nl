@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95aeeacfd85dd79453bff4e365e5b050039f77b9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
-ms.translationtype: MT
+ms.openlocfilehash: 7b898a93b87811fa5139e148a3273d7051af851b
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852470"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056292"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Scenario: Web-app waarmee gebruikers worden aangemeld
 
@@ -55,7 +55,7 @@ Als tweede fase kunt u uw toepassing ook in staat stellen om namens de aangemeld
 
 ## <a name="specifics"></a>Opsporingsgegevens
 
-- Tijdens de registratie van de toepassing moet u een of meerdere opgeven (als u uw app op verschillende locaties implementeert) antwoord-Uri's. In sommige gevallen (ASP.NET/ASP.NET core) moet u de IDToken inschakelen. Ten slotte wilt u een afmeldings-URI instellen, zodat uw toepassing reageert op gebruikers die zich afmelden.
+- Tijdens de registratie van de toepassing moet u een of meerdere opgeven (als u uw app op verschillende locaties implementeert) antwoord-Uri's. In sommige gevallen (ASP.NET/ASP.NET core) moet u het ID-token inschakelen. Ten slotte wilt u een afmeldings-URI instellen, zodat uw toepassing reageert op gebruikers die zich afmelden.
 - In de code voor uw toepassing moet u de instantie opgeven waarvoor u zich aanmeldt voor de web-app. Mogelijk wilt u de token validatie aanpassen (met name in de ISV-scenario's).
 - Webtoepassingen ondersteunen elk account type. Zie [ondersteunde account typen](v2-supported-account-types.md)voor meer informatie.
 

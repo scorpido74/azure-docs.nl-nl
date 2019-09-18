@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 7fca5709a1c7c3ecae11a5fc7de2109f1b20645e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e2bfc65ad8fafa07de6e3727d651fccabaddc90e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839574"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077256"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Zelfstudie: Een C# IOT Edge-module ontwikkelen voor Linux-apparaten
 
@@ -36,7 +36,7 @@ De IoT Edge-module die u maakt in deze zelfstudie filtert de temperatuurgegevens
 
 In deze zelf studie wordt gedemonstreerd hoe u **C#** een module ontwikkelt in **Visual Studio code**en hoe u deze implementeert op een **Linux-apparaat**. Als u modules voor Windows-apparaten ontwikkelt, gaat u in plaats daarvan naar [een C# IOT Edge module ontwikkelen voor Windows-apparaten](tutorial-csharp-module-windows.md) .
 
-Gebruik de volgende tabel om inzicht te krijgen in de opties voor het ontwikkelen en implementeren van C-modules voor Linux: 
+Gebruik de volgende tabel om inzicht te krijgen in de mogelijkheden voor C# het ontwikkelen en implementeren van modules voor Linux: 
 
 | C# | Visual Studio Code | Visual Studio | 
 | -- | ------------------ | ------------- |
@@ -75,7 +75,7 @@ Maak een C#-oplossingssjabloon die u met uw eigen code kunt aanpassen.
 
 3. Voer in het opdrachtpalet de opdracht **Azure IoT Edge: New IoT Edge solution** in en voer deze uit. Volg de aanwijzingen in het opdrachtpalet om uw oplossing te maken.
 
-   | Veld | Waarde |
+   | Veld | Value |
    | ----- | ----- |
    | Map selecteren | Kies de locatie op uw ontwikkelcomputer waar VS Code de oplossingsbestanden moet maken. |
    | Een naam opgeven voor de oplossing | Voer een beschrijvende naam voor de oplossing in of accepteer de standaardnaam **EdgeSolution**. |

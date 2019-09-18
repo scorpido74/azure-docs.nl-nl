@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 5ecd5ee4a053d3ebb550b6f2387a0e915b3c2c23
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5366fb1d32020bfbcfaba36c60c0eb5441e92070
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569408"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71055245"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Azure CLI-voorbeelden voor Azure SQL Database
 
@@ -28,7 +28,7 @@ Azure SQL Database kan worden geconfigureerd met <a href="/cli/azure">Azure CLI<
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren]( /cli/azure/install-azure-cli).
 
-## <a name="single-database--elastic-pools"></a>Individuele database en elastische pools
+## <a name="single-database--elastic-poolstabsingle-database"></a>[Eén data base & elastische Pools](#tab/single-database)
 
 De volgende tabel bevat koppelingen naar Azure CLI-scriptvoorbeelden voor Azure SQL Database.
 
@@ -46,7 +46,7 @@ De volgende tabel bevat koppelingen naar Azure CLI-scriptvoorbeelden voor Azure 
 
 Meer informatie over de [Single Database Azure CLI API](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases).
 
-## <a name="managed-instance"></a>Beheerd exemplaar
+## <a name="managed-instancetabmanaged-instance"></a>[Beheerd exemplaar](#tab/managed-instance)
 
 De volgende tabel bevat koppelingen naar Azure CLI-scriptvoorbeelden voor Azure SQL Database - Beheerd exemplaar.
 
@@ -58,3 +58,5 @@ De volgende tabel bevat koppelingen naar Azure CLI-scriptvoorbeelden voor Azure 
 |||
 
 Lees meer informatie over de [Managed Instance Azure CLI API](sql-database-managed-instance-create-manage.md#azure-cli-create-and-manage-managed-instances) en bekijk [hier andere voorbeelden](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
+
+---

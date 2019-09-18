@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 09/17/2019
 ms.author: alkohli
-ms.openlocfilehash: cd2a776988ba27add54c69b0feccbc3fce8337aa
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551528"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067007"
 ---
 # <a name="what-is-azure-data-box"></a>Wat is Azure Data Box?
 
@@ -109,16 +109,9 @@ Tijdens dit proces wordt u via e-mail op de hoogte gesteld van alle statuswijzig
 
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
-Data Box kunt gegevensoverdracht op basis van de regio waarin de service is geïmplementeerd, land/de regio waaraan het apparaat is verzonden en de doel-Azure storage-account waar u de gegevens overbrengt. 
+Data Box kunt gegevens overdragen op basis van de regio waarin de service is geïmplementeerd, het land/de regio waarnaar het apparaat wordt verzonden en het Azure Storage-doel account waar u de gegevens overdraagt. 
 
-- **Beschikbaarheid van service**: voor deze release is de Data Box-service beschikbaar in de volgende regio’s:
-    - Alle regio's in de Verenigde Staten: US - west-centraal, US - west 2, US - west, US - zuid-centraal, US - centraal, US - noord-centraal, US - oost en US - oost 2.
-    - Europese Unie: Europa - west en Europa - noord.
-    - Verenigd Koninkrijk: UK - zuid en UK - west.
-    - Frankrijk: Frankrijk - centraal en Frankrijk - zuid.
-    - Japan - Japan-Oost en Japan-West.
-    - Australië - Australië-Oost en Australië-Zuidoost.
-    - Canada - Canada-Oost en Canada-centraal.
+- Beschik baarheid van de **service** : Ga naar Azure- [producten die beschikbaar zijn per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)voor meer informatie over de beschik baarheid van regio's. Data Box kan ook in de Azure Government Cloud worden geïmplementeerd. Zie [Wat is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)voor meer informatie.
 
 - **Doelopslagaccounts**: De opslagaccounts waarin de gegevens worden opgeslagen, zijn beschikbaar in alle Azure-regio’s waar de service beschikbaar is.  
 

@@ -1,10 +1,10 @@
 ---
-title: DNS-instellingen op te geven in een serviceconfiguratiebestand | Microsoft Docs
-description: aangepaste DNS-instellingen met behulp van het configuratiebestand voor het virtuele netwerk op te geven
+title: DNS-instellingen opgeven in een service configuratie bestand | Microsoft Docs
+description: aangepaste DNS-instellingen opgeven met het service configuratie bestand voor het virtuele netwerk
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: tysonn
 ms.assetid: 467a4b99-8691-40b3-b640-e25e49675c71
 ms.service: virtual-network
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2016
 ms.author: genli
-ms.openlocfilehash: 0ac488a67d8b9debf6539d199395997cf44cf1e4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f27802d76a8b94a0d5f1eb0c35fd55c93712e557
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60232744"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059067"
 ---
-# <a name="specifying-dns-settings-in-a-service-configuration-file"></a>DNS-instellingen in een serviceconfiguratiebestand opgeven
+# <a name="specifying-dns-settings-in-a-service-configuration-file"></a>DNS-instellingen in een service configuratie bestand opgeven
 ## <a name="dns-elements"></a>DNS-elementen
-Een serviceconfiguratiebestand mag een DnsServers-element met een lijst van IPv4-adressen voor de Domain Name System (DNS)-servers die de service wordt gebruikt. Instellingen in het serviceconfiguratiebestand hebben voorrang op de instellingen in het netwerkconfiguratiebestand. Zie voor meer informatie, [configuratieschema voor Azure-Service (.cscfg-bestand)](https://msdn.microsoft.com/library/azure/ee758710.aspx).
+Een service configuratie bestand kan een DnsServers-element bevatten met een lijst met IPv4-adressen voor de Domain Name System (DNS)-servers die door de service worden gebruikt. Instellingen in het service configuratie bestand hebben voor rang op instellingen in het netwerk configuratie bestand. Zie [Azure service configuration schema (cscfg-bestand)](https://msdn.microsoft.com/library/azure/ee758710.aspx)voor meer informatie.
 
 **NetworkConfiguration-element**
 
@@ -34,16 +34,16 @@ Een serviceconfiguratiebestand mag een DnsServers-element met een lijst van IPv4
       </DnsServers>
 
 > [!WARNING]
-> De **naam** kenmerk in de **DnsServer** element alleen als de naam van een verwijzing wordt gebruikt. Deze staat niet voor de hostnaam voor de DNS-server. Elke **DnsServer** kenmerkwaarde moet uniek zijn in de gehele Microsoft Azure-abonnement.
+> Het kenmerk **name** in het element **DnsServer** wordt alleen gebruikt als verwijzings naam. De naam voor de DNS-server komt niet overeen met de hostnaam. Elke waarde van het **DnsServer** -kenmerk moet uniek zijn binnen het gehele Microsoft Azure-abonnement.
 > 
 > 
 
 ## <a name="see-also"></a>Zie ook
-[Azure Service Configuration Schema (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710)
+[Configuratie schema van Azure-service (. cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710)
 
-[Azure Virtual Network Configuration Schema](https://go.microsoft.com/fwlink/?LinkId=248093)
+[Configuratie schema voor Azure Virtual Network](https://go.microsoft.com/fwlink/?LinkId=248093)
 
-[Een virtueel netwerk met behulp van de configuratiebestanden netwerk configureren](https://go.microsoft.com/fwlink/?LinkId=248094)
+[Een Virtual Network configureren met behulp van netwerk configuratie bestanden](https://go.microsoft.com/fwlink/?LinkId=248094)
 
-[Over instellingen voor Virtueelnetwerk in de beheerportal](https://go.microsoft.com/fwlink/?LinkId=248092)
+[Over Virtual Network instellingen in de Beheerportal](https://go.microsoft.com/fwlink/?LinkId=248092)
 

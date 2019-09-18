@@ -1,7 +1,7 @@
 ---
 title: Automatisch een time-series-prognose model trainen
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van Azure Machine Learning service om een regressie model voor time-series te trainen met geautomatiseerde machine learning.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van Azure Machine Learning voor het trainen van een regressie model voor een time-series met geautomatiseerde machine learning.
 services: machine-learning
 author: trevorbye
 ms.author: trbye
@@ -10,16 +10,16 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: e75de16d0e16bc639a0439220a1c9dfe53e1689b
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: c49d8000888d4094ea1df47920c1927747927f5c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879062"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035046"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisch een time-series-prognose model trainen
 
-In dit artikel leert u hoe u een time-series voorspeld regressie model kunt trainen met behulp van geautomatiseerde machine learning in Azure Machine Learning-service. Het configureren van een prognose model is vergelijkbaar met het instellen van een standaard regressie model met behulp van geautomatiseerde machine learning, maar bepaalde configuratie opties en vooraf verwerkings stappen bestaan voor het werken met gegevens van de tijd reeks. In de volgende voor beelden ziet u hoe u:
+In dit artikel leert u hoe u een regressie model voor Time-Series kunt trainen met behulp van geautomatiseerde machine learning in Azure Machine Learning. Het configureren van een prognose model is vergelijkbaar met het instellen van een standaard regressie model met behulp van geautomatiseerde machine learning, maar bepaalde configuratie opties en vooraf verwerkings stappen bestaan voor het werken met gegevens van de tijd reeks. In de volgende voor beelden ziet u hoe u:
 
 * Gegevens voorbereiden voor time series-model lering
 * Specifieke time series-para meters in [`AutoMLConfig`](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) een object configureren
@@ -37,7 +37,7 @@ Functies die zijn geëxtraheerd uit de trainings gegevens spelen een kritieke ro
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een werkruimte van Azure Machine Learning-service. Zie [een Azure machine learning service werkruimte maken](how-to-manage-workspace.md)om de werk ruimte te maken.
+* Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md)voor het maken van de werk ruimte.
 * In dit artikel wordt ervan uitgegaan dat u bekend bent met het instellen van een geautomatiseerd machine learning experiment. Volg de [zelf studie](tutorial-auto-train-models.md) of Lees [hoe](how-to-configure-auto-train.md) u de ontwerp patronen voor automatische machine learning experimenten kunt zien.
 
 ## <a name="preparing-data"></a>Gegevens voorbereiden

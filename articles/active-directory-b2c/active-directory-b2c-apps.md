@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 09cdc2fb5dba152e467164fd757225c7a9183264
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: b0472b10de3641f1575f7f9a5c223ab5032f0e16
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369401"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066151"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Toepassings typen die kunnen worden gebruikt in Active Directory B2C
 
-Azure Active Directory (Azure AD) B2C ondersteunt verificatie voor een groot aantal moderne toepassings architecturen. Ze zijn allemaal gebaseerd op de protocollen volgens de industrienorm [OAuth 2.0](active-directory-b2c-reference-protocols.md) of [OpenID Connect](active-directory-b2c-reference-protocols.md). In dit artikel worden de typen toepassingen beschreven die u kunt maken, onafhankelijk van de taal of het platform dat u wilt gebruiken. Het biedt ook meer inzicht in de scenario's op hoog niveau voordat u begint met het bouwen van toepassingen.
+Azure Active Directory B2C (Azure AD B2C) ondersteunt verificatie voor verschillende moderne toepassings architecturen. Ze zijn allemaal gebaseerd op de protocollen volgens de industrienorm [OAuth 2.0](active-directory-b2c-reference-protocols.md) of [OpenID Connect](active-directory-b2c-reference-protocols.md). In dit artikel worden de typen toepassingen beschreven die u kunt maken, onafhankelijk van de taal of het platform dat u wilt gebruiken. Het biedt ook meer inzicht in de scenario's op hoog niveau voordat u begint met het bouwen van toepassingen.
 
 Elke toepassing die gebruikmaakt van Azure AD B2C, moet worden geregistreerd in uw [Azure AD B2C Tenant](active-directory-b2c-get-started.md) met behulp van de [Azure Portal](https://portal.azure.com/). Tijdens het registratie proces voor de toepassing worden waarden verzameld en toegewezen, zoals:
 
@@ -132,12 +132,12 @@ Dit scenario met web-API-keten kan worden ondersteund met behulp van de OAuth 2.
 
 Bewerk Azure AD B2C toepassingen niet op de volgende manieren:
 
-- Op andere portals voor toepassings beheer, zoals de [Portal voor toepassings registratie](https://apps.dev.microsoft.com/).
+- Op andere portals voor toepassings beheer, zoals de [Portal voor toepassings registratie](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
 - Graph API of Power shell gebruiken.
 
 Als u de Azure AD B2C toepassing buiten de Azure Portal bewerkt, wordt het een mislukte toepassing en kan deze niet meer worden gebruikt met Azure AD B2C. Verwijder de toepassing en maak deze opnieuw.
 
-Als u de toepassing wilt verwijderen, gaat u naar de [Portal voor toepassings registratie](https://apps.dev.microsoft.com/) en verwijdert u de toepassing daar. De toepassing is alleen zichtbaar als u de eigenaar van de toepassing bent (en niet een beheerder van de tenant).
+Als u de toepassing wilt verwijderen, gaat u naar de [Portal voor toepassings registratie](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) en verwijdert u de toepassing daar. De toepassing is alleen zichtbaar als u de eigenaar van de toepassing bent (en niet een beheerder van de tenant).
 
 ## <a name="next-steps"></a>Volgende stappen
 

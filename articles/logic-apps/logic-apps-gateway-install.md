@@ -8,24 +8,24 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 07/01/2019
-ms.openlocfilehash: c6994127b504cba31df051c757295f3e575bc23f
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.date: 09/01/2019
+ms.openlocfilehash: 3a197ab8d8c44229328c63330bcbc99fb2e64f01
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931208"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077272"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevens gateway voor Azure Logic Apps installeren
 
-Voordat u [verbinding kunt maken met on-premises gegevens bronnen vanuit Azure Logic apps](../logic-apps/logic-apps-gateway-connection.md), downloadt en installeert u de on-premises gegevens gateway op een lokale computer. De gateway werkt als een brug die snelle gegevens overdracht en versleuteling biedt tussen gegevens bronnen on-premises en uw Logic apps. U kunt dezelfde Gateway-installatie gebruiken met andere Cloud Services, zoals Power BI, Microsoft Flow, PowerApps en Azure Analysis Services. Zie de volgende artikelen voor meer informatie over het gebruik van de gateway met deze services:
+Voordat u [verbinding kunt maken met on-premises gegevens bronnen vanuit Azure Logic apps](../logic-apps/logic-apps-gateway-connection.md), downloadt en installeert u de [on-premises gegevens gateway](https://aka.ms/on-premises-data-gateway-installer) op een lokale computer. De gateway werkt als een brug die snelle gegevens overdracht en versleuteling biedt tussen gegevens bronnen on-premises en uw Logic apps. U kunt dezelfde Gateway-installatie gebruiken met andere Cloud Services, zoals Power BI, Microsoft Flow, PowerApps en Azure Analysis Services. Zie de volgende artikelen voor meer informatie over het gebruik van de gateway met deze services:
 
 * [On-premises gegevens gateway van micro soft Power BI](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
 * [Microsoft PowerApps on-premises gegevens gateway](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Microsoft Flow on-premises gegevens gateway](https://flow.microsoft.com/documentation/gateway-manage/)
 * [Azure Analysis Services on-premises gegevens gateway](../analysis-services/analysis-services-gateway.md)
 
-In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downloaden, installeren en instellen, zodat u toegang hebt tot on-premises gegevens bronnen van Azure Logic Apps. U kunt ook meer te weten komen over [de manier waarop de gegevens gateway](#gateway-cloud-service) verderop in dit onderwerp werkt.
+In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downloaden, installeren en instellen, zodat u toegang hebt tot on-premises gegevens bronnen van Azure Logic Apps. U kunt ook meer te weten komen over [de manier waarop de gegevens gateway](#gateway-cloud-service) verderop in dit onderwerp werkt. Zie [Wat is een on-premises gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)? voor meer informatie over de gateway.
 
 <a name="requirements"></a>
 
@@ -264,8 +264,8 @@ Hier vindt u een aantal manieren waarop u uw on-premises Active Directory accoun
 
 Zie de volgende onderwerpen voor meer informatie:
 
-* [FAQ voor on-premises gegevensgateway](https://docs.microsoft.com/data-integration/service-gateway-onprem-faq)
-* [Problemen met de on-premises gegevens gateway oplossen](https://docs.microsoft.com/data-integration/gateway-service-gateway-tshoot)
+* [FAQ voor on-premises gegevensgateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
+* [Problemen met de on-premises gegevens gateway oplossen](https://docs.microsoft.com/data-integration/gateway/gateway-service-gateway-tshoot)
 * [Gateway prestaties bewaken en optimaliseren](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Volgende stappen

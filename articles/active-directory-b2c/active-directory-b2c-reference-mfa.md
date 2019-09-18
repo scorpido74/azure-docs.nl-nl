@@ -1,6 +1,6 @@
 ---
-title: Multi-factor Authentication in Azure Active Directory B2C | Microsoft Docs
-description: Klik hier voor meer informatie over het inschakelen van multi-factor Authentication in consumentgerichte toepassingen die zijn beveiligd door Azure Active Directory B2C.
+title: Multi-Factor Authentication in Azure Active Directory B2C | Microsoft Docs
+description: Multi-Factor Authentication in te scha kelen in consumenten toepassingen die door Azure Active Directory B2C zijn beveiligd.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,42 +10,42 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a14c648e55c25c6244f1ba09d5b73bf31e5f7337
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b872fcfbc2ead2cebdd32ff718b582c13af314e
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509301"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065568"
 ---
-# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Schakel multi-factor authentication in Azure Active Directory B2C
+# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Multi-factor Authentication inschakelen in Azure Active Directory B2C
 
-Azure Active Directory (Azure AD) B2C wordt rechtstreeks geïntegreerd met [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) zodat u een tweede beveiligingslaag aan zich kunnen registreren en aanmelden ervaringen in uw toepassingen toevoegen kunt. U kunt multi-factor authentication inschakelen zonder één regel code te schrijven. Als u al sign up hebt gemaakt en aanmelden gebruiker stromen, kunt u nog steeds met meervoudige verificatie inschakelen.
+Azure Active Directory B2C (Azure AD B2C) kan rechtstreeks worden geïntegreerd met [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) zodat u een tweede beveiligingslaag kunt toevoegen om u aan te melden en zich aan te melden bij uw toepassingen. U schakelt multi-factor Authentication in zonder één regel code te schrijven. Als u al registraties hebt gemaakt en gebruikers stromen hebt aangemeld, kunt u nog steeds multi-factor Authentication inschakelen.
 
-Deze functie helpt scenario's zoals de volgende toepassingen:
+Deze functie helpt toepassingen bij het afhandelen van scenario's zoals de volgende:
 
-- U geen multi-factor authentication voor toegang tot een toepassing vereist, maar u nodig hebt tot een andere. Bijvoorbeeld, de klant kan zich aanmelden bij een automatische verzekering toepassing met een sociale- of lokale account, maar het telefoonnummer moet controleren voordat toegang tot de home verzekering toepassing geregistreerd in dezelfde map.
-- U multi-factor authentication voor toegang tot een toepassing in het algemeen niet vereist, maar u nodig hebt tot de gevoelige delen binnen het. Bijvoorbeeld, de klant kan zich aanmelden bij een toepassing voor bankieren met een sociale of lokale account en controleer of het account in balans brengen, maar het telefoonnummer moeten controleren voordat u probeert een overschrijving.
+- U hebt geen multi-factor Authentication nodig om toegang te krijgen tot één toepassing, maar u hebt deze nodig om toegang te krijgen tot een ander programma. Bijvoorbeeld, de klant kan zich aanmelden bij een automatische verzekerings toepassing met een sociaal of lokaal account, maar moet het telefoon nummer controleren voordat ze toegang krijgen tot de toepassing voor de start van de verzekering die is geregistreerd in dezelfde map.
+- U hebt geen multi-factor Authentication nodig om toegang te krijgen tot een toepassing in het algemeen, maar u hebt deze nodig om toegang te krijgen tot de gevoelige gedeelten erin. De klant kan zich bijvoorbeeld aanmelden bij een bank toepassing met een sociaal of lokaal account en het account saldo controleren, maar moet het telefoon nummer verifiëren voordat een overschrijving wordt gedaan.
 
-## <a name="set-multi-factor-authentication"></a>Verificatie met meerdere factoren instellen
+## <a name="set-multi-factor-authentication"></a>Multi-factor Authentication instellen
 
-Wanneer u een beleid maakt, hebt u de optie voor het inschakelen van meervoudige verificatie.
+Wanneer u een gebruikers stroom maakt, hebt u de mogelijkheid om multi-factor Authentication in te scha kelen.
 
-![Verificatie met meerdere factoren instellen](./media/active-directory-b2c-reference-mfa/add-policy.png)
+![Multi-factor Authentication instellen](./media/active-directory-b2c-reference-mfa/add-policy.png)
 
-Stel **Multifactor-verificatie** naar **ingeschakeld**.
+**Multi-factor Authentication** instellen op **ingeschakeld**.
 
-U kunt **gebruikersstroom uitvoeren** om te controleren of de ervaring. Controleer of de volgende scenario:
+U kunt de **gebruikers stroom uitvoeren** gebruiken om de ervaring te controleren. Bevestig het volgende scenario:
 
-Een klantaccount is gemaakt in uw tenant voordat de stap met meervoudige verificatie plaatsvindt. Tijdens de stap wordt gevraagd de klant een telefoonnummer opgeven en controleren. Als controle geslaagd is, wordt het telefoonnummer dat is gekoppeld aan het account voor later gebruik. Zelfs als de klant annuleert of wegvalt, kan de klant worden gevraagd om te controleren of een telefoonnummer opnieuw tijdens de volgende keer aanmelden met multi-factor authentication is ingeschakeld.
+Er wordt een klant account in uw Tenant gemaakt voordat de multi-factor Authentication-stap wordt uitgevoerd. Tijdens de stap wordt de klant gevraagd om een telefoon nummer op te geven en te verifiëren. Als de verificatie is geslaagd, wordt het telefoon nummer aan het account gekoppeld voor later gebruik. Zelfs als de klant annuleert of uitvalt, kan de klant worden gevraagd om een telefoon nummer opnieuw te verifiëren tijdens de volgende aanmelding waarbij multi-factor Authentication is ingeschakeld.
 
-## <a name="add-multi-factor-authentication"></a>Multi-factor authentication toevoegen
+## <a name="add-multi-factor-authentication"></a>Multi-factor Authentication toevoegen
 
-Het is mogelijk om in te schakelen van meervoudige verificatie voor een beleid dat u eerder hebt gemaakt. 
+Het is mogelijk om multi-factor Authentication in te scha kelen voor een gebruikers stroom die u eerder hebt gemaakt.
 
-Meervoudige verificatie inschakelen:
+Multi-factor Authentication inschakelen:
 
-1. De gebruikersstroom openen en selecteer vervolgens **eigenschappen**. 
-2. Naast **Multifactor-verificatie**, selecteer **ingeschakeld**.
+1. Open de gebruikers stroom en selecteer vervolgens **Eigenschappen**.
+2. Selecteer bij multi- **Factor Authentication**de optie **ingeschakeld**.
 3. Klik bovenaan de pagina op **Opslaan**.
 
 

@@ -1,6 +1,6 @@
 ---
-title: Voorwaardelijke toegang acceptatie kit - Azure Active Directory
-description: Overstappen op Azure AD voor voorwaardelijke toegang voor toegang tot bronnen
+title: Acceptatie pakket voorwaardelijke toegang-Azure Active Directory
+description: Voorwaardelijke toegang van Azure AD voor toegang tot resources
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,150 +11,150 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cc4ff5fb528760be8c910f3da7d5691a6aae0d8
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: c75ec0ec212c99e474d13892178acbdc14e5f386
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67387571"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075280"
 ---
-#  <a name="adopting-azure-ad-conditional-access"></a>Overstappen op Azure AD voorwaardelijke toegang
+#  <a name="adopting-azure-ad-conditional-access"></a>Voorwaardelijke toegang voor Azure AD
 
-Gebruikers kunnen resources van uw organisatie openen vanuit een willekeurige plaats met behulp van verschillende soorten apparaten en apps in een wereld en de cloud en mobiliteit. Als gevolg hiervan is alleen richten op wie toegang heeft tot een resource niet meer genoeg. U kunt bepalen wie toegang heeft en Identificeer waar de gebruiker zich en welk apparaat wordt gebruikt en nog veel meer.
+In een mobiele, wereld wijde Cloud hebben gebruikers vanaf elke locatie toegang tot de resources van uw organisatie via verschillende soorten apparaten en apps. Als gevolg hiervan is het niet langer genoeg om te richten op wie toegang heeft tot een resource. U kunt bepalen wie er toegang heeft en waar de gebruiker zich bevindt en welk apparaat wordt gebruikt en nog veel meer.
 
-Voor dit besturingselement **voorwaardelijke toegang van Azure Active Directory (AD)** kunt u de voorwaarden die een gebruiker moet voldoen aan voor toegang tot een toepassing, zoals multi-factor Authentication (MFA) opgeven. Met behulp van beleid voor voorwaardelijke toegang bepaalt hoe gemachtigde gebruikers (gebruikers die toegang tot een cloud-app zijn verleend) toegang tot cloudapps onder bepaalde omstandigheden. Raadpleeg [wat is voorwaardelijke toegang in Azure Active Directory](overview.md#conditional-access-policies) voor meer informatie.
+Als u dit besturings element wilt opgeven, kunt u met de **voorwaardelijke toegang van Azure Active Directory (AD)** de voor waarden opgeven waaraan gebruikers moeten voldoen om toegang te krijgen tot een toepassing, zoals multi-factor Authentication (MFA). Met behulp van beleid voor voorwaardelijke toegang bepaalt u hoe geautoriseerde gebruikers (gebruikers die toegang hebben tot een Cloud-app) toegang hebben tot Cloud-apps onder specifieke voor waarden. Raadpleeg [Wat is voorwaardelijke toegang in azure Active Directory](overview.md) voor meer informatie.
 
 ## <a name="key-benefits"></a>Belangrijkste voordelen
 
-De belangrijkste voordelen van het gebruik van Azure AD voor voorwaardelijke toegang zijn:
+De belangrijkste voor delen van het gebruik van voorwaardelijke toegang voor Azure AD zijn:
 
-* **De productiviteit te verhogen:** Beleid voor voorwaardelijke toegang (CA) kunnen u richten op het punt waarop gebruikers zijn gevraagd te MFA gebruiken, hebt toegang geblokkeerd of zijn vereist voor het gebruik van een vertrouwd apparaat. U kunt bijvoorbeeld beleidsregels zoals het vereisen van alleen gebruikers MFA in een toepassing als uit het bedrijfsnetwerk instellen. MFA-aanvragen verminderen blijven gebruikers productiever dan als ze MFA telkens wanneer die ze zich moeten aanmelden. Bovendien Azure AD voor voorwaardelijke toegang kunt u beleidsregels per gebruiker verkocht opgeven en maakt ook beleid voor app-specifiek.
-* **Risico's beheren:** Beleid voor voorwaardelijke toegang inschakelen biedt schaalbare identity protection, mogelijkheden voor toegangsbeheer op basis van de risico's en ondersteuning voor systeemeigen meervoudige verificatie. Voorwaardelijke toegang koppelen met identity protection, kunt u definiëren wanneer toegang tot een toepassing wordt geblokkeerd of vergrendeld.
-* **Naleving en beheeracties adres:** Controle aanvragen en goedkeuringen voor de toepassing en inzicht in het algehele gebruik is eenvoudiger met Azure AD omdat deze ondersteuning biedt voor native auditlogboeken voor elke toepassing toegangsaanvraag uitgevoerd. Controle omvat identiteit aanvrager, aangevraagde datum, zakelijke reden, goedkeuringsstatus en identiteit van de fiatteur. Deze gegevens zijn ook beschikbaar via een API, waarmee invoer van deze gegevens in een beveiligingsincident en gebeurtenis bewaking (SIEM)-systeem naar keuze.
-* **Kosten beheren:** Toegangsbeleid verplaatsen naar Azure AD afhankelijk van de aangepaste vermindert of on-premises oplossingen zoals Active Directory Federation Services (ADFS) voor voorwaardelijke toegang, de kosten van het uitvoeren van deze infrastructuur.
+* **Verhoog de productiviteit:** Met beleid voor voorwaardelijke toegang (CA) kunt u het punt instellen waarop gebruikers wordt gevraagd MFA te gebruiken, toegang hebben geblokkeerd of verplicht zijn om een vertrouwd apparaat te gebruiken. Zo kunt u bijvoorbeeld beleids regels instellen, zoals het vereisen dat gebruikers alleen voor MFA in een toepassing worden ingesteld wanneer het bedrijfs netwerk wordt uitgeschakeld. Als u MFA-aanvragen reduceert, blijven gebruikers productiever dan wanneer ze zich aanmelden bij een MFA. Daarnaast kunt u met voorwaardelijke toegang van Azure AD beleids regels per gebruiker opgeven en ook app-specifieke beleids regels maken.
+* **Risico beheren:** Het inschakelen van beleids regels voor voorwaardelijke toegang biedt u de mogelijkheid om identiteits beveiliging in de cloud te baseren, Toegangs beheer mogelijkheden op basis van Risico's en systeem eigen ondersteuning voor multi-factor Authentication. Als u voorwaardelijke toegang met identiteits beveiliging koppelt, kunt u definiëren wanneer de toegang tot een toepassing wordt geblokkeerd of gegatedd.
+* **Naleving en beheer van adressen:** Controleer de toegangs aanvragen en-goed keuringen voor de toepassing en meer informatie over het gebruik van de volledige toepassing met Azure AD omdat deze systeem eigen controle logboeken ondersteunt voor elke aanvraag voor toegang tot toepassingen. Auditing omvat de identiteit van de aanvrager, de aangevraagde datum, de zakelijke reden, de goedkeurings status en de identiteit van de goed keurder. Deze gegevens zijn ook beschikbaar vanuit een API, waardoor het mogelijk is om deze gegevens in een SIEM-systeem (Security Incident and Event monitoring) te importeren.
+* **Kosten beheren:** Door toegangs beleid naar Azure AD te verplaatsen, vermindert u de afhankelijkheid van aangepaste of on-premises oplossingen, zoals Active Directory Federation Services (ADFS) voor voorwaardelijke toegang, waardoor de kosten voor de infra structuur worden verminderd.
 
 ## <a name="customer-case-studies"></a>Casestudy's van klanten
 
-Ontdek hoe de meeste organisaties Azure AD voor voorwaardelijke toegang gebruiken om te definiëren en implementeren van geautomatiseerde wijze het toegangsbeheer voor toegang tot cloud-apps op basis van voorwaarden. De volgende aanbevolen verhalen laten zien hoe deze behoeften van klanten wordt voldaan.
+Ontdek hoe de meeste organisaties gebruikmaken van voorwaardelijke toegang van Azure AD om geautomatiseerde beslissingen over toegangs beheer te definiëren en te implementeren voor toegang tot Cloud-apps op basis van voor waarden. De volgende verhalen laten zien hoe deze klant aan deze behoeften voldoet.
 
-* [**Wipro** mobiele productiviteit met Microsoft cloud beveiligingsprogramma's voor het verbeteren van de klant-engagements stations.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Beleid voor voorwaardelijke toegang in Azure AD is voorzien van het bedrijf voor het delen van documenten, bronnen en toepassingen met vertrouwde externe entiteiten---die hun eigen referenties---behoud van controle over een eigen bedrijfsgegevens kan gebruiken.
-* [**Accenture** te kiezen voor de cloud met Microsoft Cloud App security beveiligt](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security) Accenture evalueert de [App-beheer voor voorwaardelijke toegang](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad) functie van Cloud App Security, dat gebruikmaakt van Azure Active Directory voorwaardelijke toegang tot poort toepassing toegang op basis van bepaalde voorwaarden. LePenske zegt dat deze mogelijkheid kan handig zijn, bijvoorbeeld alleen-lezen toegang inschakelt tijdens het verbieden van downloads.
-* [**Aramex** levering beperkt - multinational vervoer en logistiek maakt office cloud-verbonden met de oplossing voor identiteits- en toegangsbeheer](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en). Ervoor zorgen dat beveiligde toegang is uiterst moeilijk zijn met de Aramex externe werknemers. Het bedrijf is nu toepassen van voorwaardelijke toegang zodat deze externe werknemers toegang krijgen tot hun SaaS-toepassingen buiten het netwerk. De regel voor voorwaardelijke toegang wordt beslissen of u multi-factor Authentication, zodat alleen de juiste personen de juiste toegang af te dwingen.
+* [**Wipro** verstuurt mobiele productiviteit met micro soft Cloud security tools om klant afspraken te verbeteren.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Het beleid voor voorwaardelijke toegang in azure AD heeft het bedrijf in staat gesteld om documenten, resources en toepassingen te delen met behulp van vertrouwde externe entiteiten---die hun eigen referenties kunnen gebruiken---met behoud van de controle over de eigen bedrijfs gegevens.
+* [**Accenture** beveiligt de overstap naar de cloud met Microsoft Cloud app-beveiliging](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security) Accenture de [App-beheer voor voorwaardelijke toegang](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad) -functie van Cloud app Security evalueert, die gebruikmaakt van Azure Active Directory voorwaardelijke toegang tot de poort toegang tot toepassingen op basis van bepaalde voor waarden. LePenske geeft aan dat deze functie nuttig kan zijn voor het inschakelen van alleen-lezen toegang tot bestanden terwijl het downloaden wordt verboden.
+* [ **Aramex** Delivery Limited-wereld wijd logistiek en transport bedrijf maakt met de Cloud verbonden Office met identiteits-en toegangs beheer oplossing](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en). Het garanderen van beveiligde toegang is met name lastig bij de externe werk nemers van Aramex. Het bedrijf past nu voorwaardelijke toegang toe om deze externe werk nemers toegang te geven tot hun SaaS-toepassingen van buiten het netwerk. De regel voor voorwaardelijke toegang bepaalt of Multi-Factor Authentication moet worden afgedwongen, zodat alleen de juiste personen de juiste toegang geven.
 
-Bezoek voor meer informatie over ervaringen van klanten en partners op Azure AD voor voorwaardelijke toegang, - [zien welke geweldige dingen mensen doen met Azure](https://azure.microsoft.com/case-studies/?service=active-directory).
+Ga voor meer informatie over de ervaringen van klanten en partners in voorwaardelijke toegang van Azure AD naar [de fantastische dingen die mensen doen met Azure](https://azure.microsoft.com/case-studies/?service=active-directory).
 
 ## <a name="announcements"></a>Aankondigingen
 
-Azure AD ontvangt verbeteringen regelmatig. Als u wilt bijhouden met de meest recente ontwikkelingen, Zie [wat is er nieuw in Azure Active Directory?](../fundamentals/whats-new.md)
+Azure AD ontvangt verbeteringen regelmatig. Als u op de hoogte wilt blijven van de meest recente ontwikkelingen, raadpleegt u [Wat is er nieuw in azure Active Directory?](../fundamentals/whats-new.md)
 
-Recente blogs door de Tech-Community en Microsoft Identity-afdeling:
+Recente blogs van de technische community en micro soft Identity-divisie:
 
-* 24 september 2018 [voorwaardelijke toegang van Azure Active Directory in Azure Databricks](https://azure.microsoft.com/updates/azure-active-directory-conditional-access-in-azure-databricks/)
-* 21 september 2018 [Azure AD voor voorwaardelijke toegang aangepaste besturingselementen nu in openbare preview](https://azure.microsoft.com/updates/azure-ad-conditional-access-custom-controls-are-in-public-preview/)
-* 21 september 2018 [Azure AD voor voorwaardelijke toegang ondersteuning voor beperkte toegang met Microsoft Cloud App Security is nu beschikbaar](https://azure.microsoft.com/updates/azure-ad-conditional-access-support-for-limited-access-with-microsoft-cloud-app-security-is-now-available/)
-* 21 september 2018 [Azure AD voorwaardelijke toegang: Beheerde browserondersteuning voor iOS/Android-platforms nu in preview](https://azure.microsoft.com/updates/azure-ad-conditional-access-managed-browser-support-for-ios-android-platforms-now-in-preview/)
-* 21 september 2018 [Azure AD voor voorwaardelijke toegang voor landcodes is in openbare preview](https://azure.microsoft.com/updates/azure-ad-conditional-access-for-country-codes-is-in-public-preview/)
-* 21 september 2018 [Azure AD--gebruiksrechtovereenkomst nu beschikbaar](https://azure.microsoft.com/updates/azure-ad-terms-of-use-now-available/)
+* 24 september 2018, [voorwaardelijke toegang Azure Active Directory in azure Databricks](https://azure.microsoft.com/updates/azure-active-directory-conditional-access-in-azure-databricks/)
+* 21 september 2018, [aangepaste besturings elementen voor voorwaardelijke toegang van Azure AD zijn beschikbaar als open bare preview](https://azure.microsoft.com/updates/azure-ad-conditional-access-custom-controls-are-in-public-preview/)
+* 21 september 2018, [ondersteuning voor voorwaardelijke toegang van Azure AD voor beperkte toegang met Microsoft Cloud app Security is nu beschikbaar](https://azure.microsoft.com/updates/azure-ad-conditional-access-support-for-limited-access-with-microsoft-cloud-app-security-is-now-available/)
+* 21 september 2018, [voorwaardelijke toegang tot Azure AD: Beheerde browser ondersteuning voor iOS/Android-platforms nu als preview-versie beschikbaar](https://azure.microsoft.com/updates/azure-ad-conditional-access-managed-browser-support-for-ios-android-platforms-now-in-preview/)
+* 21 september 2018, [voorwaardelijke toegang tot Azure AD voor land codes is in open bare preview](https://azure.microsoft.com/updates/azure-ad-conditional-access-for-country-codes-is-in-public-preview/)
+* 21 september 2018, [Azure AD-gebruiks voorwaarden zijn nu beschikbaar](https://azure.microsoft.com/updates/azure-ad-terms-of-use-now-available/)
 
-## <a name="learning-resources"></a>Learning-resources
+## <a name="learning-resources"></a>Trainings materiaal
 
-Volg de onderstaande koppelingen voor een overzicht van hoe Azure AD voor voorwaardelijke toegang-functies.
+Volg de onderstaande koppelingen voor een overzicht van de werking van de functies voor voorwaardelijke toegang van Azure AD.
 
-* Meer informatie "[wat is voorwaardelijke toegang in Azure Active Directory?](overview.md)"
-* Weet "[wat zijn de voorwaarden in Azure Active Directory voor voorwaardelijke toegang?](conditions.md)"
-* Weet "[wat is de locatievoorwaarde in Azure Active Directory voor voorwaardelijke toegang?](location-condition.md)"
-* Weet "[wat toegang zijn besturingselementen in Azure Active Directory voor voorwaardelijke toegang?](controls.md)"
-* Zoeken "[wat de wat is als hulpprogramma in Azure Active Directory voor voorwaardelijke toegang?"](what-if-tool.md)
-* Ga als volgt [aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory](best-practices.md)
+* Meer informatie over '[Wat is voorwaardelijke toegang in azure Active Directory?](overview.md)'
+* Weet '[Wat zijn de voor waarden in azure Active Directory voorwaardelijke toegang?](conditions.md)'
+* Weet '[Wat is de voor waarde van de locatie in azure Active Directory voorwaardelijke toegang?](location-condition.md)'
+* Weet '[Wat zijn toegangs beheer in azure Active Directory voorwaardelijke toegang?](controls.md)'
+* Zoek '[Wat is het hulp programma wat als? in azure Active Directory voorwaardelijke toegang? '](what-if-tool.md)
+* Volg de [Aanbevolen procedures voor voorwaardelijke toegang in azure Active Directory](best-practices.md)
 
-Bovendien kunt u verwijzen naar de volgende koppelingen voor richtlijnen voor het beveiligen van toegang tot alle services die kunnen worden geïntegreerd met Azure Active Directory.
+Raadpleeg ook de volgende koppelingen voor meer informatie over het beveiligen van de toegang tot alle services die zijn geïntegreerd met Azure Active Directory.
 
-* [Wat is basislijn protection (preview)?](baseline-protection.md) Basislijn-beveiliging zorgt ervoor dat u ten minste het niveau van de basislijn van de beveiliging is ingeschakeld in uw Azure Active Directory-omgeving hebt.
-* [Identiteit en Apparaattoegang toegangsconfiguraties](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations). Beschrijft hoe u veilige toegang tot cloudservices via de Enterprise Mobility + Security-producten configureren door het implementeren van een aanbevolen omgeving en de configuratie, met inbegrip van een voorgeschreven set beleidsregels voor voorwaardelijke toegang en aanverwante mogelijkheden.
-* [Naslaginformatie over Azure Active Directory voor voorwaardelijke toegang](technical-reference.md). Meer informatie:
-   * Welke apps gebruik van voorwaardelijke toegang?
-   * Welke services zijn ingeschakeld met voorwaardelijke toegang?
-* [Inschakelen van voorwaardelijke toegang van Azure Active Directory voor toegang tot beveiligde gebruiker](https://www.youtube.com/watch?v=eLAYBwjCGoA). Bekijk deze video voor informatie over hoe voorwaardelijke toegang speelt een rol in andere Enterprise en Mobility Suite van workloads.
+* [Wat is basis beveiliging (preview)?](baseline-protection.md) Basislijn beveiliging zorgt ervoor dat u ten minste het basis niveau van beveiliging hebt ingeschakeld in uw Azure Active Directory omgeving.
+* [Configuraties voor identiteits-en toegangs apparaten](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations). Hierin wordt beschreven hoe u beveiligde toegang tot Cloud Services configureert via Enterprise Mobility + Security-producten door een aanbevolen omgeving en configuratie te implementeren, met inbegrip van een vereiste set beleids regels voor voorwaardelijke toegang en gerelateerde mogelijkheden.
+* [Azure Active Directory verwijzing naar de instellingen voor voorwaardelijke toegang](technical-reference.md). Ontdekken
+   * Welke apps gebruiken voorwaardelijke toegang?
+   * Welke services worden ingeschakeld met voorwaardelijke toegang?
+* [Schakel Azure Active Directory voorwaardelijke toegang in voor toegang tot beveiligde gebruikers](https://www.youtube.com/watch?v=eLAYBwjCGoA). Bekijk deze video om te zien hoe voorwaardelijke toegang een rol speelt in andere werk belastingen van de Enter prise-en mobiliteits Suite.
 
 ### <a name="training-videos"></a>Trainingsvideo's
 
 **Voorwaardelijke toegang in Enterprise Mobility + Security**
    > [!VIDEO https://www.youtube.com/embed/A7IrxAH87wc]
 
-**Voorwaardelijke toegang op basis van apparaat**
+**Voorwaardelijke toegang op basis van een apparaat**
    > [!VIDEO https://www.youtube.com/embed/AdM0zYB-3WQ]
 
-**Azure Active Directory voor voorwaardelijke toegang inschakelen voor beveiligde toegang**
+**Azure Active Directory voor voorwaardelijke toegang inschakelen voor toegang tot beveiligde gebruikers**
    > [!VIDEO https://www.youtube.com/embed/eLAYBwjCGoA]
 
 ### <a name="online-courses"></a>Online cursussen
 
-Raadpleeg de volgende cursussen voor voorwaardelijke toegang en nog veel meer op [Pluralsight.com](https://www.pluralsight.com/):
+Raadpleeg de volgende cursussen voor voorwaardelijke toegang en meer op [Pluralsight.com](https://www.pluralsight.com/):
 
-* Pluralsight.com: [Ontwerp Identity Management in Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-identity-management-design)
-   * "Deze cursus leidt u door de essentiële items die u weten wilt voor het ontwerpen van uw oplossing voor identiteitsbeheer met Azure AD." Voorwaardelijke toegang van Azure AD wordt beschreven in 'Werken met rollen en toegangsbeheer met Azure AD' module.
+* Pluralsight.com: [Identiteits beheer ontwerpen in Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-identity-management-design)
+   * "Deze cursus leidt u door de belangrijkste items die u moet kennen om uw oplossing voor identiteits beheer te ontwerpen met Azure AD." Voorwaardelijke toegang van Azure AD wordt behandeld in de module ' rollen en Access Control met Azure AD gebruiken '.
 
-* Pluralsight.com: [Ontwerp-verificatie voor Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-authentication-design)
-   * "Deze cursus uitgelegd hoe u Azure AD gebruiken voor het oplossen van alle vereisten van uw cloud-verificatie." Voorwaardelijke toegang van Azure AD wordt beschreven in "Vereisten voor verschillende scenario's voor verificatie"-module.
+* Pluralsight.com: [Verificatie ontwerpen voor Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-authentication-design)
+   * "In deze cursus wordt uitgelegd hoe u Azure AD gebruikt om al uw vereisten voor Cloud verificatie op te lossen." Voorwaardelijke toegang van Azure AD wordt behandeld in de module verificatie vereisten voor verschillende Scenario's.
 
-* Pluralsight.com: [Ontwerp autorisatie voor Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-authorization-design)
-   * "In deze cursus leert autorisatie opties die beschikbaar zijn met Azure en Azure AD." Voorwaardelijke toegang van Azure AD wordt beschreven in de module 'Autorisatie met Azure Resource Manager en Azure AD'.
+* Pluralsight.com: [Autorisatie ontwerpen voor Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-authorization-design)
+   * "Deze cursus beschik bare autorisatie opties voor Azure en Azure AD." Voorwaardelijke toegang van Azure AD wordt behandeld in de module autorisatie met Azure Resource Manager en Azure AD.
 
 ### <a name="books"></a>Boeken
 
-* O'Reilly - [implementeren van oplossingen voor Azure - Second Edition.](https://www.oreilly.com/library/view/implementing-azure-solutions/9781789343045/b7ead3db-eb1c-4ace-897e-86ee25ea86be.xhtml)
-   * 'Aan de slag met Azure-services en meer informatie over het implementeren hiervan in uw organisatie. Voorwaardelijke toegang van Azure AD wordt beschreven in het hoofdstuk [implementeren en Azure Active Directory synchroniseren](https://learning.oreilly.com/library/view/implementing-azure-solutions/9781789343045/02ca8bba-08cf-4691-a7d0-1b96e286e7ea.xhtml). "
+* O'Reilly-de [implementatie van Azure Solutions-Second Edition.](https://www.oreilly.com/library/view/implementing-azure-solutions/9781789343045/b7ead3db-eb1c-4ace-897e-86ee25ea86be.xhtml)
+   * "Ga aan de slag met Azure-Services en leer hoe u deze implementeert in uw organisatie. Voorwaardelijke toegang van Azure AD is opgenomen in het hoofd stuk [Deploying and synchronizing Azure Active Directory](https://learning.oreilly.com/library/view/implementing-azure-solutions/9781789343045/02ca8bba-08cf-4691-a7d0-1b96e286e7ea.xhtml).
 
-* Wiley- [Mastering Microsoft Azure-infrastructuurservices](https://www.wiley.com/Mastering+Microsoft+Azure+Infrastructure+Services-p-9781119003298)
-   * "Dit is alles wat die u nodig hebt om te begrijpen, evalueren, implementeren en onderhouden van omgevingen die gebruikmaken van Microsoft Azure."
+* Wiley- [mastering Microsoft Azure-infrastructuur services](https://www.wiley.com/Mastering+Microsoft+Azure+Infrastructure+Services-p-9781119003298)
+   * "Dit is alles wat u nodig hebt om omgevingen te begrijpen, te evalueren, te implementeren en te onderhouden die gebruikmaken van Microsoft Azure."
 
 ## <a name="white-papers"></a>Technische documenten
 
-* 18 December 2018 bekendgemaakt [maken van een strategie voor flexibele toegang beheren met Azure Active Directory](../authentication/concept-resilient-controls.md)
-   * Dit document bevat informatie over strategieën een organisatie kan vaststellen voor de flexibiliteit om het risico van de vergrendeling van het tijdens onvoorziene onderbrekingen.
+* Gepubliceerd 18 december 2018, [een flexibele toegangs beheer strategie maken met Azure Active Directory](../authentication/concept-resilient-controls.md)
+   * Dit document bevat richt lijnen voor strategieën die een organisatie kan aannemen om flexibiliteit te bieden om het risico van vergren deling tijdens onvoorziene onderbrekingen te verminderen.
 
-* 18 September 2018 bekendgemaakt [Resources voor het migreren van toepassingen naar Azure Active Directory](../manage-apps/migration-resources.md)
-   * In dit technische document bevat een lijst met bronnen voor hulp bij het migreren van toegang tot toepassingen en -verificatie met Azure Active Directory (Azure AD).
+* Gepubliceerd 18 september 2018, [resources voor het migreren van toepassingen naar Azure Active Directory](../manage-apps/migration-resources.md)
+   * Dit Witboek bevat een lijst met resources waarmee u de toegang tot en verificatie van toepassingen kunt migreren naar Azure Active Directory (Azure AD).
 
-* 12 juli 2018 bekendgemaakt [Azure-beveiliging en naleving blauwdruk: PaaS-webtoepassing die als host fungeert voor de officiële Workloads groot-Brittannië](../../security/blueprints/ukofficial-paaswa-overview.md)
-   * Azure blauwdrukken bestaan uit richtlijnen documenten en automation-sjablonen die voor het implementeren van cloud-gebaseerde architecturen voor oplossingen voor scenario's waarvoor accreditatie-en nalevingsvereisten.
+* Gepubliceerd op 12 juli 2018 [Azure-blauwdruk voor beveiliging en naleving: Host voor PaaS-webtoepassingen voor de officiële workloads van het Verenigd Konink rijk](../../security/blueprints/ukofficial-paaswa-overview.md)
+   * Azure-blauw drukken bestaat uit richt lijnen voor documenten en Automation-sjablonen die Cloud architecturen implementeren om oplossingen te bieden voor scenario's met betrekking tot accreditatie-of nalevings vereisten.
 
-## <a name="guidance-for-it-administrators"></a>Richtlijnen voor IT-beheerders
+## <a name="guidance-for-it-administrators"></a>Richt lijnen voor IT-beheerders
 
-Aanmelden bij de [Azure-portal](https://portal.azure.com/) als een globale beheerder, beveiligingsbeheerder of beheerder van voorwaardelijke toegang. Raadpleeg [rol beheerdersmachtigingen in Azure Active Directory.](../users-groups-roles/directory-assign-admin-roles.md)
+Meld u aan bij de [Azure Portal](https://portal.azure.com/) als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang. Raadpleeg de [machtigingen voor beheerdersrol in azure Active Directory.](../users-groups-roles/directory-assign-admin-roles.md)
 
-Als een IT-beheerder, gebruikt u [Azure AD voor voorwaardelijke toegang](overview.md) om te vereisen dat gebruikers verifiëren met behulp van Azure multi-factor Authentication, moet u zich aanmelden met een vertrouwd netwerk of een vertrouwd apparaat.
+Als IT-beheerder kunt u met behulp van [voorwaardelijke toegang van Azure AD](overview.md) vereisen dat gebruikers zich verifiëren met Azure multi-factor Authentication, zich aanmelden vanaf een vertrouwd netwerk of een vertrouwd apparaat.
 
-Hier vindt u nuttige koppelingen om u aan de slag te helpen:
+Hier vindt u nuttige koppelingen om aan de slag te gaan:
 
 * [Aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory](best-practices.md)
-* [Gebruik Azure AD-toegangsbeoordelingen voor het beheren van gebruikers die zijn uitgesloten van beleid voor voorwaardelijke toegang](../governance/conditional-access-exclusion.md)
-* [Procedure: De implementatie van voorwaardelijke toegang in Azure Active Directory plannen](plan-conditional-access.md)
-* [Snelstart: MFA vereisen voor specifieke apps met Azure Active Directory voor voorwaardelijke toegang](app-based-mfa.md)
-* [Snelstart: Gebruiksrechtovereenkomst moet zijn geaccepteerd voordat u toegang tot cloud-apps vereisen](require-tou.md)
-* [Snelstart: Toegang blokkeren als er een risico voor de sessie wordt gedetecteerd met Azure Active Directory voor voorwaardelijke toegang](app-sign-in-risk.md)
-* [Veelgestelde vragen over de Azure AD voorwaardelijke toegang](faqs.md)
-   * Als u meer vragen hebt, kunt u ook weergeven de [MSDN-forum](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD&sort=relevancedesc&brandIgnore=True&searchTerm=password+reset+azure).
-   * Als u het antwoord op een probleem niet kunt vinden, zijn altijd onze ondersteuningsteams beschikbaar om te helpen u verder. Gebruik [Neem contact op met Microsoft ondersteuning](../authentication/active-directory-passwords-troubleshoot.md#contact-microsoft-support).
+* [Azure AD-toegangs beoordelingen gebruiken voor het beheren van gebruikers die zijn uitgesloten van het beleid voor voorwaardelijke toegang](../governance/conditional-access-exclusion.md)
+* [Procedure: De implementatie van voorwaardelijke toegang plannen in Azure Active Directory](plan-conditional-access.md)
+* [Snelstart: MFA vereisen voor specifieke apps met voorwaardelijke toegang Azure Active Directory](app-based-mfa.md)
+* [Snelstart: Vereisen dat gebruiks voorwaarden worden geaccepteerd voor toegang tot Cloud-apps](require-tou.md)
+* [Snelstart: Toegang blok keren wanneer er een sessie risico wordt gedetecteerd met Azure Active Directory voorwaardelijke toegang](app-sign-in-risk.md)
+* [Veelgestelde vragen over voorwaardelijke toegang voor Azure AD](faqs.md)
+   * Voor aanvullende vragen kunt u ook het MSDN- [forum](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD&sort=relevancedesc&brandIgnore=True&searchTerm=password+reset+azure)bekijken.
+   * Als u het antwoord op een probleem niet kunt vinden, zijn onze ondersteunings teams altijd beschikbaar om u verder te helpen. [Neem contact op met micro soft ondersteuning](../authentication/active-directory-passwords-troubleshoot.md#contact-microsoft-support).
 
 ### <a name="tutorials"></a>Zelfstudies
 
-* [**Snelstart: MFA vereisen voor specifieke apps met Azure Active Directory voor voorwaardelijke toegang**](app-based-mfa.md)
-   * In deze Quick Start laat zien hoe het configureren van een Azure AD voor voorwaardelijke toegang-beleid dat is multi-factor authentication voor een geselecteerde cloud-app in uw omgeving vereist.
+* [**Snelstart: MFA vereisen voor specifieke apps met voorwaardelijke toegang Azure Active Directory**](app-based-mfa.md)
+   * In deze Quick start ziet u hoe u een beleid voor voorwaardelijke toegang voor Azure AD configureert waarvoor multi-factor Authentication is vereist voor een geselecteerde Cloud-app in uw omgeving.
 
-* [**Snelstart: Gebruiksrechtovereenkomst moet zijn geaccepteerd voordat u toegang tot cloud-apps vereisen**](require-tou.md)
-   * In deze Quick Start laat zien hoe het configureren van een beleid voor Azure AD voor voorwaardelijke toegang waarvoor een gebruiksrechtovereenkomst moet zijn geaccepteerd voor een geselecteerde cloud-app in uw omgeving.
+* [**Snelstart: Vereisen dat gebruiks voorwaarden worden geaccepteerd voor toegang tot Cloud-apps**](require-tou.md)
+   * In deze Quick start ziet u hoe u een beleid voor voorwaardelijke toegang voor Azure AD configureert waarvoor een gebruiks voorwaarden moeten worden geaccepteerd voor een geselecteerde Cloud-app in uw omgeving.
 
-* [**Snelstart: Toegang blokkeren als er een risico voor de sessie wordt gedetecteerd met Azure Active Directory voor voorwaardelijke toegang**](app-sign-in-risk.md)
-   * In deze Quick Start laat zien hoe het configureren van beleid voor voorwaardelijke toegang waarmee een aanmelding wordt geblokkeerd als het niveau van een geconfigureerde aanmeldingsrisico is gedetecteerd.
+* [**Snelstart: Toegang blok keren wanneer er een sessie risico wordt gedetecteerd met Azure Active Directory voorwaardelijke toegang**](app-sign-in-risk.md)
+   * In deze Quick start ziet u hoe u een beleid voor voorwaardelijke toegang kunt configureren dat een aanmelding blokkeert wanneer een geconfigureerd risico niveau voor aanmelden is gedetecteerd.
 
-* [Zelfstudie: **Migreren van een klassiek beleid waarvoor multi-factor authentication in Azure portal**](policy-migration-mfa.md)
-   * Deze zelfstudie laat zien hoe u migreert van een klassiek beleid waarvoor multi-factor authentication (MFA) voor een cloud-app.
+* [Zelfstudie: **Migreer een klassiek beleid waarvoor multi-factor Authentication is vereist in de Azure Portal**](policy-migration-mfa.md)
+   * In deze zelf studie ziet u hoe u een klassiek beleid migreert waarvoor multi-factor Authentication (MFA) voor een Cloud-app is vereist.
 
-## <a name="end-user-readiness-and-communication"></a>Gereedheid van de eindgebruiker en communicatie
+## <a name="end-user-readiness-and-communication"></a>Gereedheid en communicatie voor eind gebruikers
 
-Voorwaardelijke toegang maakt gebruik van andere Azure AD-mogelijkheden die invloed kunnen zijn op de ervaring van eindgebruikers. Bijvoorbeeld, kunt u Azure multi-factor authentication sterke verificatie inschakelen voor gebruikers. In dat geval gebruikt u de sjablonen van de eindgebruiker van Azure MFA.
+Voorwaardelijke toegang maakt gebruik van andere Azure AD-mogelijkheden die van invloed kunnen zijn op de ervaring van de eind gebruiker. U kunt bijvoorbeeld Azure multi-factor Authentication gebruiken om sterke verificatie voor gebruikers in te scha kelen. In dat geval gebruikt u de sjablonen voor eind gebruikers van Azure MFA.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Begint met de implementatie met de [documentatie voor voorwaardelijke toegang implementatieplanning](plan-conditional-access.md).
+* Start uw implementatie met de documentatie voor de planning van de [voorwaardelijke toegang](plan-conditional-access.md).

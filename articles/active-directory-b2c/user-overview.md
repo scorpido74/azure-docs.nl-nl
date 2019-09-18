@@ -1,6 +1,6 @@
 ---
-title: Overzicht van de gebruiker-accounts in Azure Active Directory B2C | Microsoft Docs
-description: Meer informatie over gebruikersaccounts in Azure Active Directory B2C.
+title: Overzicht van gebruikers accounts in Azure Active Directory B2C | Microsoft Docs
+description: Meer informatie over gebruikers accounts in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,75 +10,75 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42a38b47f9e49652b5fe80aa5bbd0047dc7d1e74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ef4bca3a2b08271b3623a346df6613b5ad16995
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511966"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063141"
 ---
-# <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Overzicht van gebruikersaccounts in Azure Active Directory B2C
+# <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Overzicht van gebruikers accounts in Azure Active Directory B2C
 
-In Azure Active Directory (Azure AD) B2C, kunt u verschillende soorten accounts. Azure Active Directory, Azure Active Directory B2B en Azure Active Directory B2C delen in de typen gebruikersaccounts die kunnen worden gebruikt.
+In Azure Active Directory B2C (Azure AD B2C) kunt u verschillende typen accounts gebruiken. Azure Active Directory, Azure Active Directory B2B en Azure Active Directory B2C share in de typen gebruikers accounts die kunnen worden gebruikt.
 
 De volgende typen accounts zijn beschikbaar:
 
-- **Werkaccount** : een work-account toegang heeft tot resources in een tenant, en met een administrator-rol, tenants kunt beheren.
-- **Gast-account** -een Gast-account kan alleen bestaan uit een Microsoft-account of een Azure Active Directory-gebruiker die kan worden gebruikt voor toegang tot toepassingen of tenants beheren. 
-- **Klantaccount** -een klantaccount is gemaakt door te gaan via een gebruikersstroom Meld u aan in een Azure AD B2C-toepassing of met behulp van Azure AD Graph API, en wordt gebruikt door gebruikers van de toepassingen die zijn geregistreerd bij Azure AD B2C. 
+- **Werk account** : een werk account kan toegang krijgen tot bronnen in een Tenant en met een beheerdersrol, en kan tenants beheren.
+- **Gast account** : een gast account kan alleen een Microsoft-account of een Azure Active Directory gebruiker zijn die kan worden gebruikt voor toegang tot toepassingen of tenants beheren.
+- **Consument account** : een consument account wordt gemaakt door een gebruikers stroom voor het registreren van een gebruiker in een Azure AD B2C toepassing te gebruiken of door gebruik te maken van Azure AD Graph API, en wordt gebruikt door gebruikers van de toepassingen die zijn geregistreerd bij Azure AD B2C.
 
-## <a name="work-account"></a>Werkaccount
+## <a name="work-account"></a>werk account
 
-Een werkaccount, wordt dezelfde manier gemaakt voor alle tenants op basis van Azure AD. Voor het maken van een werkaccount, kunt u de informatie in [Quick Start: Nieuwe gebruikers toevoegen aan Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md) als een testgebruiker zonder beheerdersbevoegdheden een wachtwoord heeft dat u kent, en u een gebruiker moet maken. Een werkaccount wordt gemaakt met behulp van de **nieuwe gebruiker** keuze in Azure portal.
+Een werk account is op dezelfde manier gemaakt voor alle tenants op basis van Azure AD. Als u een werk account wilt maken, kunt u de informatie [gebruiken in Quick Start: Nieuwe gebruikers toevoegen aan Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md) als een testgebruiker zonder beheerdersbevoegdheden een wachtwoord heeft dat u kent, en u een gebruiker moet maken. Er wordt een werk account gemaakt met de optie **nieuwe gebruiker** in de Azure Portal.
 
-Wanneer u een nieuwe werkaccount toevoegt, moet u rekening houden met de volgende configuratie-instellingen:
+Wanneer u een nieuw werk account toevoegt, moet u rekening houden met de volgende configuratie-instellingen:
 
-- **Naam** en **gebruikersnaam** : de **naam** eigenschap bevat de gegeven en achternaam van de gebruiker. De **gebruikersnaam** is de id die de gebruiker moet invoeren om aan te melden. Naam van de gebruiker bevat de volledige domein. Het domeingedeelte van de gebruikersnaam moet lid zijn van de aanvankelijke standaarddomeinnaam *uwdomein.onmicrosoft.com*, of een geverifieerde, niet-gefedereerde [aangepast domein](../active-directory/fundamentals/add-custom-domain.md) naam zoals  *Contoso.com*.
-- **Profiel** -het account is ingesteld met een profiel van gebruikersgegevens. U hebt de mogelijkheid om in te voeren een voornaam, achternaam, functie en de naam van afdeling. Nadat het account is gemaakt, kunt u het profiel bewerken.
-- **Groepen** -een groep gebruiken voor het uitvoeren van beheertaken zoals het toewijzen van licenties of machtigingen voor een aantal gebruikers of apparaten in één keer. U kunt het nieuwe account in een bestaande plaatsen [groep](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) in uw tenant. 
-- **Maprol** -moet u het niveau van toegang dat het gebruikersaccount tot resources in uw tenant heeft opgeven. De volgende machtigingsniveaus zijn beschikbaar:
+- **Naam** en **gebruikers naam** : de eigenschap **name** bevat de opgegeven en de achternaam van de gebruiker. De **gebruikers naam** is de id waarmee de gebruiker zich aanmeldt. De gebruikers naam bevat het volledige domein. Het domein naam gedeelte van de gebruikers naam moet de oorspronkelijke standaard domein naam *your-domain.onmicrosoft.com*of een geverifieerde, niet-federatieve [aangepaste domein](../active-directory/fundamentals/add-custom-domain.md) naam zijn, zoals *contoso.com*.
+- **Profiel** : het account is ingesteld met een profiel van gebruikers gegevens. U hebt de mogelijkheid om een voor naam, achternaam, functie en afdelings naam in te voeren. U kunt het profiel bewerken nadat het account is gemaakt.
+- **Groepen** : gebruik een groep om beheer taken uit te voeren, zoals het toewijzen van licenties of machtigingen aan een aantal gebruikers of apparaten tegelijk. U kunt het nieuwe account in een bestaande [groep](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) in uw Tenant plaatsen.
+- **Directory-functie** : u moet het toegangs niveau opgeven dat de gebruikers account heeft voor de resources in uw Tenant. De volgende machtigings niveaus zijn beschikbaar:
 
-    - **Gebruiker** -gebruikers kunnen toegang tot toegewezen resources, maar de meeste tenantbronnen niet beheren.
-    - **Globale beheerder** -globale beheerders hebben volledige controle over alle tenantresources.
-    - **Beperkte beheerder** -selecteert u de administratieve rollen of functies voor de gebruiker. Zie voor meer informatie over de functies die kunnen worden geselecteerd, [beheerdersrollen toewijzen in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md). 
+    - **Gebruikers** -gebruikers hebben toegang tot toegewezen bronnen maar kunnen de meeste Tenant bronnen niet beheren.
+    - **Globale beheerder** : globale beheerders hebben volledige controle over alle Tenant bronnen.
+    - **Beperkte beheerder** : Selecteer de administratieve rol of rollen voor de gebruiker. Zie [beheerders rollen toewijzen in azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)voor meer informatie over de rollen die kunnen worden geselecteerd.
 
-### <a name="create-a-work-account"></a>Een werkaccount maken
+### <a name="create-a-work-account"></a>Een werk account maken
 
-Gebruik de volgende informatie kunt u een nieuw werkaccount maken:
+U kunt de volgende informatie gebruiken om een nieuw werk account te maken:
 
-- [Azure Portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
+- [Azure-portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 
-### <a name="update-a-user-profile"></a>Een gebruikersprofiel bijwerken
+### <a name="update-a-user-profile"></a>Een gebruikers profiel bijwerken
 
-Gebruik de volgende informatie kunt u het profiel van een gebruiker bijwerken:
+U kunt de volgende informatie gebruiken om het profiel van een gebruiker bij te werken:
 
-- [Azure Portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
+- [Azure-portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
-### <a name="reset-a-password-for-a-user"></a>Een wachtwoord voor een gebruiker opnieuw instellen
+### <a name="reset-a-password-for-a-user"></a>Een wacht woord voor een gebruiker opnieuw instellen
 
-Gebruik de volgende informatie kunt u het wachtwoord van een gebruiker opnieuw instellen: 
+U kunt de volgende informatie gebruiken om het wacht woord van een gebruiker opnieuw in te stellen:
 
-- [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
+- [Azure-portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ## <a name="guest-user"></a>Gastgebruiker
 
-Als een gastgebruiker, kunt u externe gebruikers uitnodigen voor uw tenant. Een typisch scenario voor het uitnodigen van een gastgebruiker aan uw Azure AD B2C-tenant is voor het delen van de verantwoordelijkheden van beheer. Zie voor een voorbeeld van het gebruik van een gastaccount [eigenschappen van de gebruiker van een Azure Active Directory B2B-samenwerking](../active-directory/b2b/user-properties.md).
+U kunt externe gebruikers als gast gebruiker uitnodigen voor uw Tenant. Een typisch scenario voor het uitnodigen van een gast gebruiker aan uw Azure AD B2C-Tenant is het delen van beheer verantwoordelijkheden. Zie [Eigenschappen van een Azure Active Directory B2B-samenwerkings gebruiker](../active-directory/b2b/user-properties.md)voor een voor beeld van het gebruik van een gast account.
 
-Wanneer u een gastgebruiker voor uw tenant uitnodigen, kunt u het e-mailadres van de ontvanger en een bericht met een beschrijving van de uitnodiging opgeven. De voor de uitnodigingskoppeling brengt de gebruiker naar de pagina toestemming waar de **aan de slag** knop wordt geselecteerd en de controle van machtigingen is geaccepteerd. Als een postvak in is niet gekoppeld aan het e-mailadres, betekent dit dat de gebruiker zich door te gaan naar een Microsoft-pagina met behulp van de uitgenodigde referenties kunt navigeren naar de pagina toestemming. De gebruiker wordt vervolgens gedwongen om in te wisselen de uitnodiging dezelfde manier als op de koppeling in het e-mailbericht te klikken. Bijvoorbeeld: `https://myapps.microsoft.com/B2CTENANTNAME`.
+Wanneer u een gast gebruiker uitnodigt voor uw Tenant, geeft u het e-mail adres van de ontvanger en een bericht waarin de uitnodiging wordt beschreven. De uitnodigings koppeling neemt de gebruiker op de pagina toestemming waar de knop **aan de slag** is geselecteerd en de controle van machtigingen wordt geaccepteerd. Als een postvak in niet aan het e-mail adres is gekoppeld, kan de gebruiker naar een micro soft-pagina gaan met behulp van de genodigde referenties om naar de pagina met de toestemming te gaan. De gebruiker kan de uitnodiging vervolgens op dezelfde manier inwisselen als klikken op de koppeling in het e-mail bericht. Bijvoorbeeld: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
-U kunt ook de [Microsoft Graph API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) uitnodigen een gastgebruiker.
+U kunt ook de [Microsoft Graph-API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) gebruiken om een gast gebruiker uit te nodigen.
 
-## <a name="consumer-user"></a>Consumenten-gebruiker
+## <a name="consumer-user"></a>Consumenten gebruiker
 
-De gebruiker consumenten kan zich aanmelden bij toepassingen die zijn beveiligd door Azure AD B2C, maar geen toegang tot Azure-resources, zoals de Azure-portal.  De consument-gebruiker kunt gebruiken voor een lokaal account of federatieve accounts, zoals Facebook of Twitter. Een consumentenaccount is gemaakt met behulp van een [registreren of aanmelden gebruikersstroom](../active-directory-b2c/active-directory-b2c-reference-policies.md).
+De consumenten gebruiker kan zich aanmelden bij toepassingen die zijn beveiligd door Azure AD B2C, maar kunnen geen toegang krijgen tot Azure-resources zoals de Azure Portal.  De gebruiker van de consument kan een lokaal account of federatieve accounts gebruiken, zoals Facebook of Twitter. Een Consumer account wordt gemaakt met behulp van een [registratie-of aanmeldings gebruikers stroom](../active-directory-b2c/active-directory-b2c-reference-policies.md).
 
-U kunt de gegevens die worden verzameld als een consument-gebruikersaccount is gemaakt met behulp van aangepaste kenmerken opgeven. Zie voor meer informatie, [aangepaste kenmerken definiëren in Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md).
+U kunt de gegevens opgeven die worden verzameld wanneer een gebruikers account van een consument wordt gemaakt met behulp van aangepaste gebruikers kenmerken. Zie [aangepaste kenmerken definiëren in azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md)voor meer informatie.
 
-Kunt u de informatie in de **maken van gebruikersaccounts van consumenten** sectie van [gebruiken de Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) om een Azure AD B2C-consument-account te maken. U kunt ook de informatie in de **bijwerken van gebruikersaccounts van consumenten** sectie in hetzelfde artikel voor het beheren van de eigenschappen van het account.
+U kunt de informatie in de sectie **gebruikers accounts voor consumenten maken** gebruiken om een Azure AD B2C-consument account te maken met [behulp van de Azure AD-Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) . U kunt ook de informatie in de sectie **gebruikers accounts van consumenten bijwerken** in hetzelfde artikel gebruiken om de eigenschappen van het account te beheren.
 
-### <a name="migrate-consumer-user-accounts"></a>Migreren van gebruikersaccounts van consumenten
+### <a name="migrate-consumer-user-accounts"></a>Gebruikers accounts van consumenten migreren
 
-Mogelijk hebt u behoefte aan het migreren van bestaande gebruikersaccounts van consumenten van een id-provider naar Azure AD B2C. Zie voor meer informatie, [gebruikersmigratie](active-directory-b2c-user-migration.md) of [gebruikers met sociale identiteiten migreren](active-directory-b2c-social-migration.md).
+Mogelijk moet u bestaande consumenten gebruikers accounts van een id-provider migreren naar Azure AD B2C. Zie [gebruikers migratie](active-directory-b2c-user-migration.md) of [Gebruikers migreren met sociale identiteiten](active-directory-b2c-social-migration.md)voor meer informatie.

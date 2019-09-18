@@ -1,6 +1,6 @@
 ---
-title: StringCollection claims transformatievoorbeelden voor de identiteit ervaring Framework-Schema van de Azure Active Directory B2C | Microsoft Docs
-description: StringCollection claims transformatievoorbeelden voor de identiteit ervaring Framework-Schema van de Azure Active Directory B2C.
+title: Voor beelden van StringCollection-claim transformatie voor het Framework met identiteits ervaring van Azure Active Directory B2C | Microsoft Docs
+description: StringCollection voor beelden van claim transformatie voor het identiteits ervaring Framework-schema van Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,32 +10,32 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 98453daeb34d093b49cdcc636f68c3d7ae017126
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9add75b8922fe958fc348fb2a6dd48a7b300eade
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512442"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063318"
 ---
-# <a name="stringcollection-claims-transformations"></a>StringCollection claims transformaties
+# <a name="stringcollection-claims-transformations"></a>StringCollection-claim transformaties
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In dit artikel biedt voorbeelden voor het gebruik van de tekenreeks verzameling claimtransformaties van het schema Identiteitservaring-Framework in Azure Active Directory (Azure AD) B2C. Zie voor meer informatie, [ClaimsTransformations](claimstransformations.md).
+In dit artikel vindt u voor beelden voor het gebruik van de teken reeks voor het verzamelen van claim transformaties van het Framework voor identiteits ervaring in Azure Active Directory B2C (Azure AD B2C). Zie [ClaimsTransformations](claimstransformations.md)voor meer informatie.
 
 ## <a name="additemtostringcollection"></a>AddItemToStringCollection
 
-Hiermee wordt een claim tekenreeks naar een nieuwe stringCollection claim toegevoegd. 
+Voegt een teken reeks claim toe aan een nieuwe stringCollection-claim.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | item | string | Het ClaimType worden toegevoegd aan de uitvoerclaim. |
-| InputClaim | Verzameling | stringCollection | [Optioneel] Indien opgegeven, wordt de claimtransformatie opgehaald van de items uit deze verzameling en wordt het item wordt toegevoegd aan het einde van de verzameling uitvoerclaim. |
-| OutputClaim | Verzameling | stringCollection | De ClaimTypes die worden gegenereerd nadat deze ClaimsTransformation is aangeroepen. |
+| InputClaim | item | string | Het claim type dat aan de uitvoer claim moet worden toegevoegd. |
+| InputClaim | verzameling | stringCollection | Beschrijving Als deze optie is opgegeven, worden de items uit deze verzameling gekopieerd en wordt het item toegevoegd aan het einde van de claim van de verzameling van de uitvoer. |
+| OutputClaim | verzameling | stringCollection | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 
-Gebruik deze transformatie als u wilt toevoegen van een tekenreeks naar een nieuwe of bestaande stringCollection vorderingen. Wordt vaak gebruikt een **AAD-UserWriteUsingAlternativeSecurityId** technisch profiel. Voordat u een nieuw sociale account is gemaakt, **CreateOtherMailsFromEmail** claimtransformatie leest het ClaimType en de waarde die moet worden toegevoegd de **otherMails** ClaimType. 
+Gebruik deze claim transformatie om een teken reeks toe te voegen aan een nieuwe of bestaande stringCollection. Dit wordt vaak gebruikt in een **Aad-UserWriteUsingAlternativeSecurityId-** technisch profiel. Voordat een nieuw sociaal account wordt gemaakt, leest **CreateOtherMailsFromEmail** claims Transform het claim type en voegt de waarde toe aan het **otherMails** claim type.
 
-De volgende claimtransformatie wordt toegevoegd de **e** ClaimType naar **otherMails** ClaimType.
+De volgende claim transformatie voegt het **e-mail** claim type toe aan **otherMails** claim type.
 
 ```XML
 <ClaimsTransformation Id="CreateOtherMailsFromEmail" TransformationMethod="AddItemToStringCollection">
@@ -51,23 +51,23 @@ De volgende claimtransformatie wordt toegevoegd de **e** ClaimType naar **otherM
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
+- Invoer claims:
   - **verzameling**: ["someone@outlook.com"]
-  - **item**: "admin@contoso.com"
-- Uitvoerclaims: 
-  - **verzameling**: ["someone@outlook.com","admin@contoso.com"]
+  - **item**:admin@contoso.com
+- Uitvoer claims:
+  - **verzameling**: ["someone@outlook.com", "admin@contoso.com"]
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
-Voegt een queryreeks-parameter toe aan een nieuwe stringCollection claim. 
+Voegt een teken reeks parameter toe aan een nieuwe stringCollection-claim.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | Verzameling | stringCollection | [Optioneel] Indien opgegeven, wordt de claimtransformatie opgehaald van de items uit deze verzameling en wordt het item wordt toegevoegd aan het einde van de verzameling uitvoerclaim. |
-| InputParameter | item | string | De waarde die moet worden toegevoegd aan de uitvoerclaim. |
-| OutputClaim | Verzameling | stringCollection | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
+| InputClaim | verzameling | stringCollection | Beschrijving Als deze optie is opgegeven, worden de items uit deze verzameling gekopieerd en wordt het item toegevoegd aan het einde van de claim van de verzameling van de uitvoer. |
+| InputParameter | item | string | De waarde die moet worden toegevoegd aan de uitvoer claim. |
+| OutputClaim | verzameling | stringCollection | De ClaimTypes die wordt geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 
-Gebruik deze transformatie als u wilt een string-waarde toevoegen aan een nieuwe of bestaande stringCollection vorderingen. Het volgende voorbeeld wordt een constante e-mailadres (admin@contoso.com) naar de **otherMails** claim. 
+Gebruik deze claim transformatie om een teken reeks waarde toe te voegen aan een nieuwe of bestaande stringCollection. In het volgende voor beeld wordt een constant eadmin@contoso.com-mail adres () aan de claim **otherMails** toegevoegd.
 
 ```XML
 <ClaimsTransformation Id="SetCompanyEmail" TransformationMethod="AddParameterToStringCollection">
@@ -85,23 +85,23 @@ Gebruik deze transformatie als u wilt een string-waarde toevoegen aan een nieuwe
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
+- Invoer claims:
   - **verzameling**: ["someone@outlook.com"]
-- Invoerparameters 
-  - **item**: "admin@contoso.com"
-- Uitvoerclaims:
-  - **verzameling**: ["someone@outlook.com","admin@contoso.com"]
+- Invoer parameters
+  - **item**:admin@contoso.com
+- Uitvoer claims:
+  - **verzameling**: ["someone@outlook.com", "admin@contoso.com"]
 
 ## <a name="getsingleitemfromstringcollection"></a>GetSingleItemFromStringCollection
 
-Hiermee haalt u het eerste item uit de opgegeven tekenreeks-verzameling. 
+Hiermee wordt het eerste item opgehaald uit de gegeven teken reeks verzameling.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | Verzameling | stringCollection | De ClaimTypes die door de claimtransformatie worden gebruikt om op te halen van het item. |
-| OutputClaim | extractedItem | string | De ClaimTypes die worden gegenereerd nadat deze ClaimsTransformation is aangeroepen. Het eerste item in de verzameling. |
+| InputClaim | verzameling | stringCollection | De ClaimTypes die worden gebruikt door de claim transformatie om het item op te halen. |
+| OutputClaim | extractedItem | string | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen. Het eerste item in de verzameling. |
 
-Het volgende voorbeeld leest de **otherMails** claimen en retourneert het eerste item in de **e** claim. 
+In het volgende voor beeld wordt de **otherMails** -claim gelezen en wordt het eerste item in de **e-mail** claim geretourneerd.
 
 ```XML
 <ClaimsTransformation Id="CreateEmailFromOtherMails" TransformationMethod="GetSingleItemFromStringCollection">
@@ -116,8 +116,8 @@ Het volgende voorbeeld leest de **otherMails** claimen en retourneert het eerste
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
-  - **verzameling**: ["someone@outlook.com","someone@contoso.com"]
-- Uitvoerclaims: 
+- Invoer claims:
+  - **verzameling**: ["someone@outlook.com", "someone@contoso.com"]
+- Uitvoer claims:
   - **extractedItem**: "someone@outlook.com"
 

@@ -1,6 +1,6 @@
 ---
-title: Daemon-app aanroepen web-API's (verplaatsen naar productie) - Microsoft identity-platform
-description: Informatie over het bouwen van een daemon-app dat aanroepen van web-API's (verplaatsen naar productie)
+title: Daemon-app die web-Api's aanroept (naar productie)-micro soft Identity-platform
+description: Meer informatie over het bouwen van een daemon-app die web-Api's aanroept (verplaatsen naar productie)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -12,59 +12,62 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 627dab0cb23800664c5fb5b3df9c61f5071d4b87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c509e061c43c81f72682fb428529a8e72b34066a
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545407"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056327"
 ---
-# <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Daemon-app die aanroepen van web-API's - verplaatsen naar productie
+# <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Daemon-app voor het aanroepen van web-Api's-verplaatsen naar productie
 
-Nu dat u hoe u verkrijgen en gebruiken van een token voor de aanroep van een service-naar-service weet, leert u hoe u uw app verplaatst naar productie.
+Nu u weet hoe u een token kunt verkrijgen en gebruiken voor een service-naar-service-oproep, leert u hoe u uw app naar productie kunt verplaatsen.
 
-## <a name="deployment---case-of-multi-tenant-daemon-apps"></a>Implementatie - aanvraag van multitenant-daemon-apps
+## <a name="deployment---case-of-multi-tenant-daemon-apps"></a>Implementatie van multi tenant-daemon-apps
 
-Als u een ISV het maken van een daemontoepassing die kan worden uitgevoerd in verschillende tenants bent, moet u om ervoor te zorgen dat de tenantbeheerders van de:
+Als u een ISV-toepassing maakt die in meerdere tenants kan worden uitgevoerd, moet u ervoor zorgen dat de Tenant beheerders:
 
-- Richt een service-principal voor de toepassing
+- Een service-principal voor de toepassing inrichten
 - Verleent toestemming voor de toepassing
 
-U moet met een verklaring voor uw klanten deze bewerkingen uit te voeren. Zie voor meer informatie, [aanvragen van toestemming voor een hele tenant](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
+U moet uitleggen wat uw klanten zijn om deze bewerkingen uit te voeren. Zie [toestemming vragen voor een hele Tenant](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)voor meer informatie.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Hier volgen enkele koppelingen naar meer informatie:
+Hier volgen enkele koppelingen voor meer informatie:
 
-### <a name="net"></a>.NET
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-- Als u nog niet gedaan hebt, probeert u de snelstartgids [een token verkrijgen en Microsoft Graph API aanroepen vanuit een console-app met behulp van de identiteit van de app](./quickstart-v2-netcore-daemon.md).
-- Referentiedocumentatie voor:
-  - Het instantiëren van [ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)
-  - Aanroepen van [AcquireTokenForClient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)
-- Andere voorbeelden/zelfstudies:
-  - [Microsoft-identity-platform-console-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) is uitgerust met een eenvoudige .NET Core-daemon-console-toepassing maken waarin de gebruikers van een tenant opvragen van de Microsoft Graph worden weergegeven.
+- Als u dat nog niet hebt gedaan, kunt u het beste [een token aanschaffen en Microsoft Graph-API aanroepen vanuit een console-app met behulp van de identiteit van de app](./quickstart-v2-netcore-daemon.md).
+- Referentie documentatie voor:
+  - [ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) instantiëren
+  - [AcquireTokenForClient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder) aanroepen
+- Andere voor beelden/zelf studies:
+  - [micro soft-Identity-platform-console-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) bevat een eenvoudige .net core daemon-console toepassing die de gebruikers van een Tenant die query's uitvoert op de Microsoft Graph.
 
     ![topologie](media/scenario-daemon-app/daemon-app-sample.svg)
 
-    Hetzelfde voorbeeld ziet u ook de variatie met certificaten.
+    Hetzelfde voor beeld illustreert ook de variatie met certificaten.
 
     ![topologie](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
 
-  - [Microsoft-Identity-platform-ASPNET-WebApp-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) is uitgerust met een ASP.NET MVC-webtoepassing waarmee gegevens uit Microsoft Graph met behulp van de identiteit van de toepassing in plaats van namens een gebruiker wordt gesynchroniseerd. Het voorbeeld ziet u ook de beheerder toestemming proces.
+  - [micro soft-Identity-platform-ASPNET-webapp-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) bevat een ASP.NET MVC-webtoepassing die gegevens synchroniseert van Microsoft Graph met behulp van de identiteit van de toepassing, in plaats van namens een gebruiker. Het voor beeld illustreert ook het proces voor de toestemming van de beheerder.
 
     ![topologie](media/scenario-daemon-app/damon-app-sample-web.svg)
 
-### <a name="python"></a>Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-MSAL Python is momenteel in openbare preview. Zie voor meer informatie, [MSAL Python-client referenties in de opslagplaats voorbeeld](https://github.com/AzureAD/azure-activedirectory-library-for-python/blob/dev/sample/client_credentials_sample.py).
+MSAL python is momenteel beschikbaar als open bare preview.
+Zie voor meer informatie [MSAL python in voor beelden voor opslag](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample)plaatsen.
 
-### <a name="java"></a>Java
+# <a name="javatabjava"></a>[Java](#tab/java)
 
-MSAL Python is momenteel in openbare preview. Zie voor meer informatie, [MSAL Java in de opslagplaats voorbeelden](https://github.com/AzureAD/azure-activedirectory-library-for-java/tree/dev/src/samples).
+msal4j (MSAL. Java) is momenteel beschikbaar als open bare preview. Zie [MSAL java in-repository voor beelden](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples)voor meer informatie.
+
+---

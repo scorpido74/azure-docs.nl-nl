@@ -1,7 +1,7 @@
 ---
 title: Modellen implementeren in Azure Container Instances
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het implementeren van uw Azure Machine Learning-service modellen als een webservice met behulp van Azure Container Instances.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het implementeren van uw Azure Machine Learning-modellen als een webservice met behulp van Azure Container Instances.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: cb80cb92ef93132aae3c57e74c108293da3a7834
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 27988edaf9d6fe70288352b0ba45945e32976d4d
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279143"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034636"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Een model implementeren naar Azure Container Instances
 
-Informatie over het gebruik van de Azure Machine Learning-service voor het implementeren van een model als een webservice op Azure Container Instances (ACI). Gebruik Azure Container Instances als aan een van de volgende voor waarden wordt voldaan:
+Meer informatie over het gebruik van Azure Machine Learning voor het implementeren van een model als een webservice op Azure Container Instances (ACI). Gebruik Azure Container Instances als aan een van de volgende voor waarden wordt voldaan:
 
 - U moet sneller te implementeren en valideren van uw model. U hoeft geen ACI-containers vooraf te maken. Ze worden gemaakt als onderdeel van het implementatie proces.
 - U test een model dat is in ontwikkeling. 
@@ -28,7 +28,7 @@ Zie [quota's en regionale Beschik baarheid voor Azure container instances](https
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een werkruimte van Azure Machine Learning-service. Zie [een Azure machine learning service-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
+- Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
 
 - Een machine learning model dat in uw werk ruimte is geregistreerd. Als u geen geregistreerd model hebt, raadpleegt u [hoe en hoe u modellen implementeert](how-to-deploy-and-where.md).
 
@@ -78,7 +78,7 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 
 Zie voor meer informatie de referentie [AZ ml model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) . 
 
-## <a name="using-vs-code"></a>VS code gebruiken
+## <a name="using-vs-code"></a>VS Code gebruiken
 
 Zie [uw modellen implementeren met VS code](how-to-vscode-tools.md#deploy-and-manage-models).
 

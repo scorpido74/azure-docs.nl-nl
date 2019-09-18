@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: b4d50c39bf670cb8c14d9dbe4feb2fc18c89bf0a
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 201e86908b61efa72eed76346f70cfc55e08d03c
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917242"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076802"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Spark streaming (DStream)-voor beeld met Apache Kafka in HDInsight
 
@@ -40,9 +40,9 @@ Apache Kafka in HDInsight biedt geen toegang tot de Kafka-brokers via het openba
 Hoewel u hand matig een Azure Virtual Network-, Kafka-en Spark-cluster kunt maken, is het eenvoudiger om een Azure Resource Manager sjabloon te gebruiken. Gebruik de volgende stappen om een Azure Virtual Network-, Kafka-en Spark-cluster te implementeren in uw Azure-abonnement.
 
 1. Gebruik de volgende knop om u aan te melden bij Azure en de sjabloon in de Azure Portal te openen.
-    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
-    
+
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+
     De Azure Resource Manager-sjabloon bevindt zich op **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** .
 
     > [!WARNING]  
@@ -51,9 +51,9 @@ Hoewel u hand matig een Azure Virtual Network-, Kafka-en Spark-cluster kunt make
     Met deze sjabloon maakt u een HDInsight 3,6-cluster voor zowel Kafka als Spark.
 
 2. Gebruik de volgende informatie om de vermeldingen in de sectie **aangepaste implementatie** in te vullen:
-   
-    ![Aangepaste HDInsight-implementatie](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
-   
+
+    ![Aangepaste implementatie parameters voor HDInsight](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
+
     * **Resourcegroep**: Een groep maken of een bestaande selecteren. Deze groep bevat het HDInsight-cluster.
 
     * **Locatie**: Selecteer een locatie die geografisch dicht bij u ligt.

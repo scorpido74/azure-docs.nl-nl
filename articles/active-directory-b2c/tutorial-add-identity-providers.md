@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 388ef66351140dab18bd7c92290d84f0f4d734ac
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: bc7828b7926ea6e7f2d6bc3891ee231972ae3208
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622790"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063238"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Zelfstudie: Voeg id-providers toe aan uw toepassingen in Azure Active Directory B2C
 
-Het is wellicht wenselijk dat uw gebruikers zich in uw toepassingen bij verschillende id-providers kunnen aanmelden. Een *id-provider* maakt, onderhoudt en beheert id-gegevens en biedt tegelijkertijd verificatieservices voor toepassingen. U kunt id-providers die worden ondersteund door Azure Active Directory (Azure AD) B2C toevoegen aan uw [gebruikers stromen](active-directory-b2c-reference-policies.md) met behulp van de Azure Portal.
+Het is wellicht wenselijk dat uw gebruikers zich in uw toepassingen bij verschillende id-providers kunnen aanmelden. Een *id-provider* maakt, onderhoudt en beheert id-gegevens en biedt tegelijkertijd verificatieservices voor toepassingen. U kunt met behulp van de Azure Portal ID-providers toevoegen die door Azure Active Directory B2C (Azure AD B2C) worden ondersteund voor uw [gebruikers stromen](active-directory-b2c-reference-policies.md) .
 
 In dit artikel leert u het volgende:
 
@@ -45,12 +45,12 @@ ID-provider toepassingen bieden de id en de sleutel om communicatie met uw Azure
 Als u het aanmelden voor gebruikers vanuit Azure AD wilt inschakelen, moet u een toepassing registreren in de Azure AD-Tenant. De Azure AD-Tenant is niet hetzelfde als uw Azure AD B2C-Tenant.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Zorg ervoor dat u de map gebruikt die uw Azure AD-Tenant bevat door te klikken op het **filter voor mappen en abonnementen** in het bovenste menu en kies de map die uw Azure AD-Tenant bevat.
+1. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD-Tenant bevat.
 1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
 1. Selecteer **nieuwe registratie**.
 1. Voer een naam in voor de toepassing. Bijvoorbeeld `Azure AD B2C App`.
 1. Accepteer de selectie van **accounts in deze organisatie Directory alleen** voor deze toepassing.
-1. Voor de omleidings- **URI**accepteert u de waarde van **Web** en voert u de volgende URL in in `your-B2C-tenant-name` kleine letters, waarbij u vervangt door de naam van uw Azure AD B2C Tenant.
+1. Voor de **omleidings-URI**accepteert u de waarde van **Web** en voert u de volgende URL in in `your-B2C-tenant-name` kleine letters, waarbij u vervangt door de naam van uw Azure AD B2C Tenant.
 
     ```
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
@@ -85,7 +85,7 @@ Als u een Facebook-account wilt gebruiken als een id-provider in Azure AD B2C, m
 1. Selecteer bij **app-geheim**de waarde **weer geven** en noteer deze. U gebruikt zowel de App-ID als het geheim van de app voor het configureren van Facebook als een id-provider in uw Tenant. **App-geheim** is een belang rijke beveiligings referentie die u veilig moet opslaan.
 1. Selecteer het plus teken naast **producten**en selecteer vervolgens onder **Aanmelden bij Facebook**de optie **instellen**.
 1. Selecteer onder **Facebook-aanmelding** in het menu links de optie **instellingen**.
-1. Voer`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`in **geldige OAuth**omleidings-uri's in. Vervang `your-tenant-name` door de naam van uw Tenant. Selecteer **wijzigingen opslaan** onder aan de pagina.
+1. Voer`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`in **geldige OAuth omleidings-uri's**in. Vervang `your-tenant-name` door de naam van uw Tenant. Selecteer **wijzigingen opslaan** onder aan de pagina.
 1. Als u uw Facebook-toepassing beschikbaar wilt maken voor Azure AD B2C, klikt u op de **status** kiezer rechtsboven op de pagina en schakelt u deze **in** om de toepassing openbaar te maken en klikt u vervolgens op **bevestigen**. Op dit moment moet de status worden gewijzigd van **ontwikkeling** naar **Live**.
 
 ## <a name="add-the-identity-providers"></a>De id-providers toevoegen
@@ -110,7 +110,7 @@ Nadat u de toepassing hebt gemaakt voor de ID-provider die u wilt toevoegen, voe
 1. Voer voor **client geheim**het client geheim in dat u eerder hebt vastgelegd.
 1. Behoud de standaard waarden voor het **bereik**, het **antwoord type**en de **antwoord modus**.
 1. Beschrijving Voer een waarde in voor **Domain_hint**. Bijvoorbeeld *ContosoAD*. [Domein hints](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) zijn richt lijnen die zijn opgenomen in de verificatie aanvraag van een toepassing. Ze kunnen worden gebruikt om de gebruiker te versnellen tot hun federatieve IdP-aanmeldings pagina. Of ze kunnen worden gebruikt door een toepassing met meerdere tenants om de gebruiker rechtstreeks naar de aanmeldings pagina van Azure AD te versnellen voor hun Tenant.
-1. Voer onder **claim toewijzing**van de identiteits provider de volgende claim toewijzings waarden in:
+1. Voer onder **claim toewijzing van de identiteits provider**de volgende claim toewijzings waarden in:
 
     * **Gebruikers-id**: *OID*
     * **Weergave naam**: *naam*

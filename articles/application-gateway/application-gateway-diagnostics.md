@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: 6df78a46e6bc8055f8cce89e199d01ad631e178e
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 896e1fb3e93fc0a542f0dca75cc1d87b3a2c237c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306192"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057898"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-end status-en Diagnostische logboeken voor Application Gateway
 
@@ -309,6 +309,8 @@ Het firewall logboek wordt alleen gegenereerd als u het hebt ingeschakeld voor e
 |details.data     | Specifieke gegevens gevonden in de aanvraag die overeenkomen met de regel.         |
 |Details. bestand     | Configuratie bestand waarin de regel is opgenomen.        |
 |details.line     | Regel nummer in het configuratie bestand dat de gebeurtenis heeft geactiveerd.       |
+|hostnaam   | De hostnaam of het IP-adres van de Application Gateway.    |
+|transactionId  | De unieke ID voor een bepaalde trans actie waarmee meerdere regel schendingen kunnen worden gegroepeerd die binnen dezelfde aanvraag zijn opgetreden.   |
 
 ```json
 {
@@ -333,6 +335,8 @@ Het firewall logboek wordt alleen gegenereerd als u het hebt ingeschakeld voor e
       "file": "rules/REQUEST-941-APPLICATION-ATTACK-XSS.conf",
       "line": "865"
     }
+    "hostname": "40.90.218.100", 
+    "transactionId": "AYAcUqAcAcAcAcAcASAcAcAc"
   }
 } 
 

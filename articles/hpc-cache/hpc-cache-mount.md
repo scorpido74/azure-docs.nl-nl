@@ -4,14 +4,14 @@ description: Clients verbinden met een Azure HPC cache-service
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0ccd256ed399fff7c364883ada45d2d15c75a120
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 46f221fd7c340b7f321d317f0e7493448d83177c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775349"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036966"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>De Azure HPC-cache koppelen
 
@@ -19,13 +19,13 @@ Nadat de cache is gemaakt, hebben NFS-clients toegang tot de server met een eenv
 
 Gebruik de koppelings adressen die worden vermeld op de pagina cache-overzicht en het pad van de virtuele naam ruimte dat u instelt tijdens het maken van het opslag doel. 
 
-![scherm afbeelding van de overzichts pagina van het Azure HPC-cache-exemplaar, met een markeer stift rond de lijst met koppelings adressen op de rechter benedenhoek](media/mount-addresses.png)
+![scherm afbeelding van de overzichts pagina van het Azure HPC-cache-exemplaar, met een markeer stift rond de lijst met koppelings adressen op de rechter benedenhoek](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE] 
 > De cache koppel adressen komen overeen met netwerk interfaces in het subnet van de cache. Deze nic's worden weer gegeven in de resource groep met namen `-cluster-nic-` die eindigen op en een getal. Wijzig of verwijder deze interfaces niet, of de cache is niet meer beschikbaar.
 
-De virtuele naam ruimte paden worden weer gegeven op de pagina **opslag doelen** . 
-![scherm afbeelding van het opslag doel paneel van de cache, met een markeer stift rond een vermelding in de kolom pad van de tabel](media/storage-target-path.png)
+De virtuele naam ruimte paden worden weer gegeven op de pagina **opslag doelen** . Klik op de naam van het doel om details weer te geven, inclusief het geaggregeerde pad naar de naam ruimte (of de paden) die eraan zijn gekoppeld. 
+![scherm afbeelding van het opslag doel paneel van de cache, met een markeer stift rond een vermelding in de kolom pad van de tabel](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="mount-command-syntax"></a>Syntaxis van koppelings opdracht
 

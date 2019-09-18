@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b631f078240821e79513c4bd944a33b4725bc52
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 6857697423e494c515bd052cb42af3ad1d9fe188
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207148"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057782"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Taken in het beheer van rechten van Azure AD delegeren (preview-versie)
 
@@ -42,7 +42,7 @@ Stel dat uw organisatie de volgende vijf gebruikers heeft:
 
 | Gebruiker | Afdeling | Opmerkingen |
 | --- | --- | --- |
-| Els | it | Globale beheerder |
+| Els | IT | Globale beheerder |
 | Bob | Research | Bob is ook eigenaar van een onderzoek groep |
 | Carole | Research |  |
 | Dave | Marketing |  |
@@ -69,7 +69,7 @@ Het beheer van rechten heeft de volgende rollen die specifiek zijn voor het behe
 
 | Role | Description |
 | --- | --- |
-| Maker van catalogus | Maak en beheer catalogi. Doorgaans een IT-beheerder die geen globale beheerder of een resource-eigenaar is voor een verzameling resources. De persoon die een catalogus maakt, wordt automatisch de eerste catalogus eigenaar van de catalogus en kan extra catalogus eigenaren toevoegen. |
+| Maker van catalogus | Maak en beheer catalogi. Doorgaans een IT-beheerder die geen globale beheerder of een resource-eigenaar is voor een verzameling resources. De persoon die een catalogus maakt, wordt automatisch de eerste catalogus eigenaar van de catalogus en kan extra catalogus eigenaren toevoegen. Een maker van de catalogus kan geen catalogi beheren of weer geven die niet eigenaar zijn en resources niet kunnen toevoegen die niet zijn opgenomen in een catalogus. Als de maker van de catalogus een andere catalogus moet beheren of resources toevoegt waarvan ze geen eigenaar zijn, kunnen ze een mede-eigenaar van die catalogus of resource aanvragen. |
 | Catalogus eigenaar | Bestaande catalogi bewerken en beheren. Doorgaans een IT-beheerder of eigenaar van een resource, of een gebruiker die de eigenaar van de catalogus heeft opgegeven. |
 | Toegangs pakket beheer | Bewerk en beheer alle bestaande toegangs pakketten in een catalogus. |
 
@@ -131,7 +131,7 @@ Als u het maken van catalogi wilt delegeren, voegt u gebruikers toe aan de maker
 
 1. Klik op **Bewerken**.
 
-1. Klik in de sectie **rechten beheer** voor gemachtigden op **catalogus makers toevoegen** om de gebruikers of groepen te selecteren die de leden van deze rol moeten zijn.
+1. Klik in de sectie **rechten beheer voor gemachtigden** op **catalogus makers toevoegen** om de gebruikers of groepen te selecteren die de leden van deze rol moeten zijn.
 
 1. Klik op **Selecteren**.
 
@@ -139,7 +139,15 @@ Als u het maken van catalogi wilt delegeren, voegt u gebruikers toe aan de maker
 
 ## <a name="add-a-catalog-owner-or-an-access-package-manager"></a>Een catalogus eigenaar of een Access Package Manager toevoegen
 
-Als u het beheer van een catalogus of toegangs pakketten in de catalogus wilt delegeren, voegt u gebruikers toe aan de rol van de catalogus of Access Package Manager. Iedereen die een catalogus maakt, wordt de eerste eigenaar van de catalogus. Volg deze stappen om een gebruiker toe te wijzen aan de rol van catalogus eigenaar of toegangs pakket beheer.
+Als u het beheer van een catalogus of toegangs pakketten in de catalogus wilt delegeren, voegt u gebruikers toe aan de rol van de catalogus of Access Package Manager. Iedereen die een catalogus maakt, wordt de eerste eigenaar van de catalogus. 
+
+De toegewezen catalogus eigenaar of Access package manager moet bekend zijn met het project. De maker van de catalogus moet het toegangs pakket maken als dit van toepassing is op de dag van de dagelijkse werkzaamheden van het project. ze weten de volgende informatie:
+- welke resources zijn er nodig
+- Wie moet er toegang toe hebben
+- Wie moet de toegang goed keuren?
+- Hoe lang het duurt voordat het project wordt
+
+De maker van de catalogus moet de taak delegeren aan de project leider, die het toegangs pakket gaat maken en beheren, indien niet betrokken bij de dagelijkse bewerkingen van het project. Volg deze stappen om een gebruiker toe te wijzen aan de rol van catalogus eigenaar of toegangs pakket beheer:
 
 **Vereiste rol:** Globale beheerder, gebruikers beheerder of catalogus eigenaar
 

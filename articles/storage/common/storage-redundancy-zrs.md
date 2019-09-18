@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f4e36edf86823453e663ed875c7d5e4ffdc2e524
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: f7639eb2807654aab38a4e849c2e58d77f15bc31
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016411"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036254"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zone-redundante opslag (ZRS) voor het bouwen van Maxi maal beschik bare Azure Storage toepassingen
 
@@ -22,11 +22,11 @@ ms.locfileid: "69016411"
 
 ## <a name="support-coverage-and-regional-availability"></a>Dekking en regionale Beschik baarheid
 
-ZRS ondersteunt momenteel standaard v2-account typen voor algemeen gebruik. Zie [Overzicht van Azure-opslagaccounts](storage-account-overview.md) voor meer informatie over de typen opslagaccounts.
+ZRS ondersteunt momenteel standaard typen voor algemeen gebruik v2 en FileStorage-opslag accounts. Zie [Overzicht van Azure-opslagaccounts](storage-account-overview.md) voor meer informatie over de typen opslagaccounts.
 
 ZRS is beschikbaar voor blok-blobs, niet-schijf pagina-blobs, bestanden, tabellen en wacht rijen.
 
-ZRS is algemeen beschikbaar in de volgende regio's:
+Voor algemeen gebruik v2-accounts is ZRS algemeen beschikbaar in de volgende regio's:
 
 - Azië - zuidoost
 - Europa - west
@@ -38,6 +38,10 @@ ZRS is algemeen beschikbaar in de volgende regio's:
 - US - oost
 - US - oost 2
 - US - west 2
+
+Voor FileStorage-accounts is ZRS algemeen beschikbaar in de volgende regio's:
+
+- Europa - west
 
 Micro soft blijft ZRS inschakelen in extra Azure-regio's. Controleer regel matig de pagina met [updates voor Azure-Services](https://azure.microsoft.com/updates/) voor informatie over nieuwe regio's.
 
@@ -64,6 +68,9 @@ Er zijn twee primaire opties voor migratie naar ZRS:
 
 - Gegevens hand matig kopiëren of verplaatsen naar een nieuw ZRS-account vanuit een bestaand account.
 - Een Live migratie aanvragen.
+
+> [!IMPORTANT]
+> Livemigratie wordt momenteel niet ondersteund voor Premium-bestands shares. Op dit moment worden alleen hand matig gekopieerde of verplaatsen van gegevens ondersteund.
 
 Als u de migratie op een bepaalde datum wilt volt ooien, kunt u een hand matige migratie uitvoeren. Een hand matige migratie biedt meer flexibiliteit dan een Livemigratie. Met een hand matige migratie hebt u de controle over de timing.
 
@@ -94,7 +101,7 @@ U kunt Live migratie aanvragen via de [ondersteunings portal van Azure](https://
 4. Geef de volgende waarden op voor het **probleem** gedeelte: 
     - **Ernst**: De standaard waarde ongewijzigd laten.
     - **Probleem type**: Selecteer **gegevens migratie**.
-    - **Categorie**: Selecteer **migreren naar ZRS binnen een regio**.
+    - **Categorie**: Selecteer **migreren naar ZRS**.
     - **Title**: Typ een beschrijvende titel, bijvoorbeeld ZRS- **account migratie**.
     - **Details**: Typ meer details in het vak **Details** . Ik wil bijvoorbeeld migreren naar ZRS vanuit [LRS, GRS] in de \_ \_ regio. 
 5. Selecteer **Volgende**.
@@ -137,7 +144,7 @@ Als u uw gegevens wilt migreren naar een ZRS-account dat zich in een andere regi
 
 ZRS Classic repliceert asynchroon gegevens tussen data centers binnen een tot twee regio's. Gerepliceerde gegevens zijn mogelijk niet beschikbaar tenzij micro soft failover naar de secundaire initieert. Een klassiek ZRS-account kan niet worden geconverteerd naar of van LRS, GRS of RA-GRS. Klassieke ZRS-accounts bieden ook geen ondersteuning voor metrische gegevens of logboek registratie.
 
-ZRS Classic is alleen beschikbaar voor **blok** -blobs in opslag accounts voor algemeen gebruik (GPv1). Zie [Overzicht van Azure-opslagaccount](storage-account-overview.md) voor meer informatie over opslagaccounts.
+ZRS Classic is alleen beschikbaar voor **blok-blobs** in opslag accounts voor algemeen gebruik (GPv1). Zie [Overzicht van Azure-opslagaccount](storage-account-overview.md) voor meer informatie over opslagaccounts.
 
 Gebruik een van de volgende hulpprogram ma's om de ZRS-account gegevens hand matig te migreren naar of van een LRS-, ZRS klassieke, GRS-of RA-GRS-account: AzCopy, Azure Storage Explorer, Azure PowerShell of Azure CLI. U kunt ook uw eigen migratie oplossing bouwen met een van de Azure Storage-client bibliotheken.
 

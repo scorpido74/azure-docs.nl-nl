@@ -14,62 +14,82 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 1a051f3a0c55e207e6a53955d1cb4b9ea7e54a4d
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 9e5bdb574439378b91a243d5d36ebddeb8520d49
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544148"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037456"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Opmerkingen bij de release van Microsoft Azure Storage Explorer
 
-In dit artikel bevat de releaseopmerkingen voor Azure Storage Explorer 1.9.0 release, evenals de opmerkingen bij de release voor eerdere versies.
+Dit artikel bevat de release opmerkingen voor Azure Storage Explorer 1.10.0-release, evenals release opmerkingen voor eerdere versies.
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) is een zelfstandige app waarmee u eenvoudig met Azure Storage-gegevens kunt werken via Windows, macOS en Linux.
 
-## <a name="version-190"></a>Versie 1.9.0
-7/1/2019
+## <a name="version-1100"></a>Versie 1.10.0
+9/12/2019
 
-### <a name="download-azure-storage-explorer-190"></a>Azure Storage Explorer 1.9.0 downloaden
-- [Azure Storage Explorer 1.9.0 voor Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure Storage Explorer 1.9.0 voor Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure Storage Explorer 1.9.0 voor Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-1100"></a>Azure Storage Explorer 1.10.0 downloaden
+- [Azure Storage Explorer 1.10.0 voor Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage Explorer 1.10.0 voor Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage Explorer 1.10.0 in de module Store](https://snapcraft.io/storage-explorer)
+- [Azure Storage Explorer 1.10.0 voor Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Nieuw
 
-* Nu kunt u de Blob-containers via Azure AD (ACL of RBAC-machtigingen) koppelen. Deze functie is bedoeld om u te helpen bij gebruikers die toegang tot containers, maar niet de Storage-Accounts die de containers hebben in. Zie onze Getting Started Guide voor meer informatie over deze functie.
-* Verkrijgen te verbreken van de lease nu werken met RBAC. [#1354](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1354)
-* Toegangsbeleid beheren en de instelling openbaar toegangsniveau nu werkt met RBAC. [#1355](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1355)
-* Verwijderen blob mappen werken nu met RBAC. [#1450](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1450)
-* Het wijzigen van blob-toegangslaag nu werken met RBAC. [#1446](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1446)
-* U kunt nu snel opnieuw instellen van Snelweergavetoegang via 'Help' → "Herstellen". [#1327](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1327)
+* Storage Explorer heeft nu een eigen instellingen voor de gebruikers interface. U hebt toegang tot het bestand via bewerken → instellingen of door te klikken op het pictogram instellingen (het vistuig) op de verticale werk balk aan de linkerkant. Deze functie is de eerste stap die wordt gebruikt om verschillende door de [gebruiker aangevraagde instellingen](https://github.com/microsoft/AzureStorageExplorer/labels/%3Abulb%3A%20setting%20candidate)te bieden. Vanaf deze release worden de volgende instellingen ondersteund:
+    * Thema
+    * Proxy
+    * Afmelden bij afsluiten [#6](https://www.github.com/Microsoft/AzureStorageExplorer/issues/6)
+    * Aanmelden met Device code flow inschakelen
+    * [#1526](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1526) automatisch vernieuwen
+    * AzCopy inschakelen
+    * SAS-duur AzCopy
 
-### <a name="preview-features"></a>Preview-functies
+    Als er andere instellingen zijn die u wilt toevoegen, [opent u een probleem op github met een beschrijving van de instelling die u wilt zien](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=).
+* Storage Explorer ondersteunt nu Managed Disks. U kunt:
+    * Een on-premises VHD uploaden naar een nieuwe schijf
+    * Een schijf downloaden
+    * Schijven kopiëren en plakken in resource groepen en regio's
+    * Schijven verwijderen
+    * Een moment opname van een schijf maken
 
-* Apparaat code flow aanmelden is nu beschikbaar om te bekijken. Als u wilt inschakelen, gaat u naar 'Preview' → 'Gebruik apparaat Code Flow aanmelden'. U wordt aangeraden alle gebruikers die hebben gehad problemen met lege aanmelding bij windows om te proberen deze functie, zoals het blijken te zijn van een meer betrouwbare vorm van aanmelding.
-* Storage Explorer is geïntegreerd met AzCopy is momenteel beschikbaar voor preview. Als u wilt inschakelen, gaat u naar 'Preview' → 'Met AzCopy voor verbeterde Blob uploaden en downloaden'. BLOB-overdracht is voltooid met AzCopy moeten worden snellere en beter.
+    Het uploaden, downloaden en cross-Region kopiëren van schijven wordt mogelijk gemaakt door AzCopy V10 toevoegen.
+* Storage Explorer kan nu worden geïnstalleerd via de module archief op Linux. Wanneer u via de snap Store installeert, worden alle afhankelijkheden voor u geïnstalleerd, inclusief .NET core! Op dit moment hebben we gecontroleerd of Storage Explorer goed werkt op Ubuntu en CentOS. Als u problemen ondervindt tijdens de installatie vanuit de snap Store op andere Linux distributies, [opent u een probleem op github](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). Zie de [aan de slag-hand leiding](https://aka.ms/storageexplorer/snapinformation)voor meer informatie over het installeren vanuit de snap Store. [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
+* Er zijn twee belang rijke wijzigingen aangebracht in de Azure Active Directory (Azure AD) die zijn bedoeld om de functie nuttiger te maken voor ADLS Gen2 gebruikers: * u selecteert nu de Tenant waaraan de resource die u wilt koppelen, zich bevindt. Dit betekent dat u geen RBAC-toegang meer nodig hebt tot het abonnement van de resource.
+        * Als u een ADLS Gen2 BLOB-container koppelt, kunt u nu koppelen aan een specifiek pad in de container.
+* Wanneer u Acl's voor ADLS Gen2-bestanden en-mappen beheert, worden in Storage Explorer nu de beschrijvende namen voor entiteiten in de ACL weer gegeven. [#957](https://www.github.com/Microsoft/AzureStorageExplorer/issues/957)
+* Wanneer u via OID aan een ADLS Gen2-ACL toevoegt, wordt door Storage Explorer nu gevalideerd of de OID deel uitmaakt van een geldige entiteit in uw Tenant. [#1603](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1603)
+* De sneltoetsen voor het navigeren tussen tabbladen gebruiken nu meer standaard toetsen combinaties. [#1018](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1018)
+* Wanneer u op een tabblad klikt, wordt dit nu gesloten. [#1348](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1348)
+* Als een AzCopy-overdracht geen fouten bevat, wordt er in Storage Explorer nu een waarschuwings pictogram weer gegeven om te markeren dat er overs laan is opgetreden. [#1490](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1490)
+* De geïntegreerde AzCopy is bijgewerkt naar versie 10.2.1. Daarnaast kunt u nu de versie van AzCopy weer geven die is geïnstalleerd in het dialoog venster Info. [#1343](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1343)
 
 ### <a name="fixes"></a>Oplossingen
 
-* Vaste wordt kan niet worden geladen van meer dan 50 abonnementen voor één account. [#1416](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1416)
-* Vaste de knop 'Aanmelden' werkt niet op de informatiebalk die wordt weergegeven wanneer een directe koppeling is mislukt. [#1358](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1358)
-* Vaste niet wordt .app-bestanden in macOS te uploaden. [#1119](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1119)
-* Vaste "opnieuw alle' werkt niet voor de naam van een mislukte blob wijzigen. [#992](https://www.github.com/Microsoft/AzureStorageExplorer/issues/992)
-* Vaste "Annuleren" werkt niet tijdens het openen van een blob. [#1464](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1464)
-* Vaste meerdere problemen met de spelling en knopinfo in het hele product. Veel dank alle die deze problemen gerapporteerd. [#1303](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1303), [#1328](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1328), [#1329](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1329), [#1331](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1331), [#1336](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1336), [#1352](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1352), [#1368](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1368), [#1395](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1395)
+* Veel gebruikers hebben uitgevoerd in verschillende ' kan de versie niet lezen van niet-gedefinieerd ' of ' kan geen verbinding met niet-gedefinieerde ' fouten lezen bij het werken met gekoppelde opslag accounts. Hoewel we nog steeds verder gaan met het onderzoeken van de hoofd oorzaak van dit probleem, hebben we in 1.10.0 de fout afhandeling verbeterd rondom het laden van gekoppelde opslag accounts. [#1626](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1626), [#985](https://www.github.com/Microsoft/AzureStorageExplorer/issues/985)en [#1532](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1532)
+* Het was mogelijk dat de Verkenner-structuur (aan de linkerkant) een status krijgt waarin de focus herhaaldelijk naar het bovenste knoop punt springt. Dit probleem is opgelost. [#1596](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1596)
+* Bij het beheren van de moment opnamen van een BLOB zou screenreaders de tijds tempel die is gekoppeld aan de moment opname niet lezen. Dit probleem is opgelost. [#1202](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1202)
+* De proxy-instelling voor macOS is niet ingesteld op het moment dat het verificatie proces ze gebruikt. Dit probleem is opgelost. [#1567](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1567)
+* Als een opslag account in een soevereine Cloud is gekoppeld met behulp van de naam en sleutel, werkt AzCopy niet. Dit probleem is opgelost. [#1544](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1544)
+* Wanneer u verbinding maakt via een connection string, verwijdert Storage Explorer nu de Volg spaties. [#1387](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1387)
 
 ### <a name="known-issues"></a>Bekende problemen
 
-* Bij het uitvoeren van een niet - AzCopy Blob downloaden, wordt de MD5 voor grote bestanden niet wordt gecontroleerd. Dit is vanwege een fout in de Storage-SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* Als u met RBAC kunt moet Storage Explorer enkele management layer-machtigingen voor toegang tot uw opslagresources. Zie de [problemen oplossen met](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor meer informatie.
-* Probeert te krijgen tot ADLS Gen2 Blobs wanneer u zich achter een proxy mislukken.
-* Loskoppelen van een resource koppelen via SAS-URI, zoals een blob-container kan een fout veroorzaken waarmee wordt voorkomen dat andere bijlagen correct weergegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie #537 voor meer informatie.
-* Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u in dat geval heeft niet de blokkering opheffen u, als opmerking bij dit probleem.
+* De instelling voor automatisch vernieuwen heeft nog geen invloed op alle bewerkingen in de BLOB Explorer.
+* Functies voor beheerde schijven worden niet ondersteund in Azure Stack.
+* Als het uploaden of plakken van de schijf mislukt en er een nieuwe schijf is gemaakt vóór de fout, wordt de schijf niet door Storage Explorer verwijderd.
+* Afhankelijk van het annuleren van het uploaden of plakken van een schijf, is het mogelijk om de nieuwe schijf beschadigd te laten. Als dit het geval is, moet u de nieuwe schijf verwijderen of hand matig de schijf-Api's aanroepen om de inhoud van de schijf te vervangen, zodat deze niet meer beschadigd is.
+* Wanneer u een niet-AzCopy-BLOB downloadt, wordt de MD5 voor grote bestanden niet gecontroleerd. Dit wordt veroorzaakt door een fout in de opslag-SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* Wanneer u RBAC gebruikt, heeft Storage Explorer bepaalde beheer laag machtigingen nodig om toegang te krijgen tot uw opslag resources. Raadpleeg de [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor het oplossen van problemen voor meer informatie.
+* Het ontkoppelen van een resource die is gekoppeld via SAS URI, zoals een BLOB-container, kan een fout veroorzaken die voor komt dat andere bijlagen correct worden weer gegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie #537 voor meer informatie.
+* Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u dit doet, neemt u een opmerking over dit probleem op.
 * Azurite is nog niet volledig geïmplementeerd alle Storage-API's. Als gevolg hiervan kunnen er onverwachte fouten of problemen bij het gebruik van Azurite voor opslag.
 * In zeldzame gevallen kan de focus structuur ophalen vastgelopen op Snelweergavetoegang. Registreer de focus, kunt u Alles vernieuwen.
-* Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron. Als tijdelijke oplossing voor dit probleem tijdens het uploaden naar of downloaden van een blob-container, kunt u de experimentele functie voor AzCopy.
+* Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron. U kunt dit probleem omzeilen bij het uploaden naar of downloaden van een BLOB-container met de experimentele AzCopy-functie.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter omzeilen hier beschreven.
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat hier wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
 * Azure Stack biedt geen ondersteuning voor de volgende functies. Poging tot het gebruiken van deze functies tijdens het werken met Azure Stack kunnen resources leiden tot onverwachte fouten.
@@ -77,17 +97,19 @@ In dit artikel bevat de releaseopmerkingen voor Azure Storage Explorer 1.9.0 rel
    * Toegangslagen
    * Voorlopig verwijderen
    * ADLS Gen2
+   * Beheerde schijven
 * De Electron-shell die door de Storage Explorer heeft problemen met sommige hardwareversnelling GPU (graphics processing unit). Als u Storage Explorer is een leeg (leeg) hoofdvenster weergeven, kunt u proberen Storage Explorer starten vanaf de opdrachtregel en GPU-versnelling uitschakelen door toe te voegen de `--disable-gpu` schakelen:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Storage Explorer op Linux uitgevoerd, moet bepaalde afhankelijkheden moeten eerst worden geïnstalleerd. Controleer de Storage Explorer [problemen oplossen met](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) voor meer informatie.
+* Voor het uitvoeren van Storage Explorer op Linux moeten bepaalde afhankelijkheden eerst worden geïnstalleerd. Raadpleeg de [hand leiding voor het oplossen van problemen met](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) Storage Explorer voor meer informatie.
 
 ## <a name="previous-releases"></a>Vorige versies
 
-* [Versie 1.8.1 upgraden](#version-181)
+* [Versie 1.9.0](#version-190)
+* [Versie 1.8.1](#version-181)
 * [Versie 1.8.0](#version-180)
 * [Versie 1.7.0](#version-170)
 * [Versie 1.6.2](#version-162)
@@ -125,48 +147,50 @@ In dit artikel bevat de releaseopmerkingen voor Azure Storage Explorer 1.9.0 rel
 * [Versie 0.7.20160105.0](#version-07201601050)
 * [Versie 0.7.20151116.0](#version-07201511160)
 
-## <a name="version-181"></a>Versie 1.8.1 upgraden
-5/13/2019
 
-### <a name="hotfixes"></a>Hotfixes
-* In sommige gevallen retourneert te klikken op 'meer ' laden op het resourceniveau van de niet de volgende pagina van resources. Dit probleem is opgelost. [#1359](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1359)
-* Op Windows mislukken AzCopy downloaden als een enkel bestand of map is gedownload en de naam van het bestand of map heeft een teken dat ongeldig voor een Windows-pad is. Dit probleem is opgelost. [#1350](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1350)
-* In zeer uitzonderlijke gevallen, er tijdens het uitvoeren van een nieuwe naam is van een bestandsshare of een naam in een bestandsshare als de exemplaren voor de naam wijzigen is mislukt of als de opslag verkennen om te bevestigen van het succes van de exemplaren met Azure, kan de mogelijkheid van Storage Explorer de o verwijderen oorspronkelijke bestanden voordat de kopie is voltooid. Dit probleem is opgelost.
+## <a name="version-190"></a>Versie 1.9.0
+7/1/2019
+
+### <a name="download-azure-storage-explorer-190"></a>Azure Storage Explorer 1.9.0 downloaden
+- [Azure Storage Explorer 1.9.0 voor Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage Explorer 1.9.0 voor Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage Explorer 1.9.0 voor Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Nieuw
 
-* De geïntegreerde AzCopy-versie is bijgewerkt naar versie 10.1.0.
-* CTRL / Cmd + R kan nu worden gebruikt voor het vernieuwen van de momenteel gerichte editor. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
-* De API van Azure Stack-Storage-versie is gewijzigd in 17-04-2017.
-* Het dialoogvenster toegang beheren voor ADLS Gen2 wordt nu het masker synchroon houden op een manier die vergelijkbaar is met andere hulpprogramma's voor POSIX-machtigingen. De gebruikersinterface, waarschuwt u als een wijziging wordt doorgevoerd waarmee zorgt ervoor dat de machtigingen van een gebruiker of groep overschrijdt de grenzen van het masker. [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
-* De vlag voor het berekenen en instellen van de MD5-hash is nu ingeschakeld voor de AzCopy-uploads. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
+* U kunt nu BLOB-containers koppelen via Azure AD (RBAC-of ACL-machtigingen). Deze functie is bedoeld voor gebruikers die toegang hebben tot containers, maar niet de opslag accounts waarin de containers zich bevinden. Raadpleeg de introductie handleiding voor meer informatie over deze functie.
+* Verwervings-en verbreekt lease nu met RBAC. [#1354](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1354)
+* Het beheren van toegangs beleid en het instellen van open bare toegangs niveau werken nu met RBAC. [#1355](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1355)
+* Het verwijderen van BLOB-mappen werkt nu met RBAC. [#1450](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1450)
+* Het wijzigen van de BLOB-toegangs laag werkt nu met RBAC. [#1446](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1446)
+* U kunt de snelle toegang nu snel opnieuw instellen via "Help" → "opnieuw instellen". [#1327](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1327)
 
+### <a name="preview-features"></a>Voorbeeld van functies
 
-### <a name="preview-features"></a>Preview-functies
-
-* Apparaat code flow aanmelden is nu beschikbaar om te bekijken. Als u wilt inschakelen, gaat u naar 'Preview' → 'Gebruik apparaat Code Flow aanmelden'. U wordt aangeraden alle gebruikers die hebben gehad problemen met lege aanmelding bij windows om te proberen deze functie, zoals het blijken te zijn van een meer betrouwbare vorm van aanmelding.
-* Storage Explorer is geïntegreerd met AzCopy is momenteel beschikbaar voor preview. Als u wilt inschakelen, gaat u naar 'Preview' → 'Met AzCopy voor verbeterde Blob uploaden en downloaden'. BLOB-overdracht is voltooid met AzCopy moeten worden snellere en beter.
+* U kunt zich nu aanmelden met een apparaatcode stroom. Als u deze functie wilt inschakelen, gaat u naar ' Preview "→ ' apparaat code flow-aanmelding gebruiken '. We raden aan dat gebruikers problemen ondervinden met lege aanmeld Vensters om deze functie uit te proberen, omdat dit een betrouwbaardere vorm van aanmelding kan zijn.
+* Storage Explorer geïntegreerd met AzCopy is momenteel beschikbaar als preview-versie. Als u dit wilt inschakelen, gaat u naar ' Preview "→" AzCopy gebruiken voor verbeterde BLOB upload en down load ". BLOB-overdrachten die zijn voltooid met AzCopy moeten sneller en beter worden uitgevoerd.
 
 ### <a name="fixes"></a>Oplossingen
 
-* Het dialoogvenster toegangsbeleid stelt u een vervaldatum niet meer op toegang-beleid voor opslag die nog geen een vervaldatum. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
-* Sommige wijzigingen zijn aangebracht aan het genereren van SAS-dialoogvenster om te controleren of dat opgeslagen toegangsbeleid correct worden gebruikt bij het genereren van een SAS. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
-* Wanneer u probeert te uploaden van een niet - 512 byte uitgelijnd bestand naar een pagina-Blob, wordt nu een meer relevante fout weergegeven in Storage Explorer. [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
-* Kopiëren van een Blob-container die u een weergavenaam gebruikt, mislukken. Nu wordt de werkelijke naam van de Blob-container gebruikt. [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
-* Er wordt geprobeerd bepaalde acties uitvoeren op een ADLS-Gen2 map waarin het unicode-tekens in de naam, mislukken. Alle bewerkingen moeten nu worden uitgevoerd. [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
+* Er kunnen niet meer dan 50 abonnementen voor één account worden geladen. [#1416](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1416)
+* De knop ' Aanmelden ' is niet actief op de Info balk die wordt weer gegeven wanneer een directe koppeling mislukt. [#1358](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1358)
+* Er worden geen app-bestanden geüpload naar macOS. [#1119](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1119)
+* ' Alles opnieuw proberen ' is niet actief voor het wijzigen van de naam van een mislukte blob. [#992](https://www.github.com/Microsoft/AzureStorageExplorer/issues/992)
+* ' Annuleren ' is niet actief tijdens het openen van een blob. [#1464](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1464)
+* Er zijn meerdere spel-en knop info-problemen in het product opgelost. Veel dank voor alle personen die deze problemen hebben gerapporteerd! [#1303](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1303), [#1328](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1328), [#1329](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1329), [#1331](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1331), [#1336](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1336), [#1352](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1352), [#1368](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1368), [#1395](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1395)
 
 ### <a name="known-issues"></a>Bekende problemen
 
-* Bij het uitvoeren van een niet - AzCopy Blob downloaden, wordt de MD5 voor grote bestanden niet wordt gecontroleerd. Dit is vanwege een fout in de Storage-SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* Als u met RBAC kunt moet Storage Explorer enkele management layer-machtigingen voor toegang tot uw opslagresources. Zie de [problemen oplossen met](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor meer informatie.
-* Probeert te krijgen tot ADLS Gen2 Blobs wanneer u zich achter een proxy mislukken.
-* Loskoppelen van een resource koppelen via SAS-URI, zoals een blob-container kan een fout veroorzaken waarmee wordt voorkomen dat andere bijlagen correct weergegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie #537 voor meer informatie.
-* Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u in dat geval heeft niet de blokkering opheffen u, als opmerking bij dit probleem.
+* Wanneer u een niet-AzCopy-BLOB downloadt, wordt de MD5 voor grote bestanden niet gecontroleerd. Dit wordt veroorzaakt door een fout in de opslag-SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* Wanneer u RBAC gebruikt, heeft Storage Explorer bepaalde beheer laag machtigingen nodig om toegang te krijgen tot uw opslag resources. Raadpleeg de [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor het oplossen van problemen voor meer informatie.
+* Bij een poging om toegang te krijgen tot ADLS Gen2 blobs na een proxy kan mislukken.
+* Het ontkoppelen van een resource die is gekoppeld via SAS URI, zoals een BLOB-container, kan een fout veroorzaken die voor komt dat andere bijlagen correct worden weer gegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie #537 voor meer informatie.
+* Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u dit doet, neemt u een opmerking over dit probleem op.
 * Azurite is nog niet volledig geïmplementeerd alle Storage-API's. Als gevolg hiervan kunnen er onverwachte fouten of problemen bij het gebruik van Azurite voor opslag.
 * In zeldzame gevallen kan de focus structuur ophalen vastgelopen op Snelweergavetoegang. Registreer de focus, kunt u Alles vernieuwen.
-* Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron. Als tijdelijke oplossing voor dit probleem tijdens het uploaden naar of downloaden van een blob-container, kunt u de experimentele functie voor AzCopy.
+* Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron. U kunt dit probleem omzeilen bij het uploaden naar of downloaden van een BLOB-container met de experimentele AzCopy-functie.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter omzeilen hier beschreven.
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat hier wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
 * Azure Stack biedt geen ondersteuning voor de volgende functies. Poging tot het gebruiken van deze functies tijdens het werken met Azure Stack kunnen resources leiden tot onverwachte fouten.
@@ -180,7 +204,64 @@ In dit artikel bevat de releaseopmerkingen voor Azure Storage Explorer 1.9.0 rel
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Storage Explorer op Linux uitgevoerd, moet bepaalde afhankelijkheden moeten eerst worden geïnstalleerd. Controleer de Storage Explorer [problemen oplossen met](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) voor meer informatie.
+* Voor het uitvoeren van Storage Explorer op Linux moeten bepaalde afhankelijkheden eerst worden geïnstalleerd. Raadpleeg de [hand leiding voor het oplossen van problemen met](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) Storage Explorer voor meer informatie.
+
+## <a name="version-181"></a>Versie 1.8.1
+5/13/2019
+
+### <a name="hotfixes"></a>Hotfixes
+* In sommige gevallen wordt de volgende pagina van resources niet weer gegeven als u op resource niveau op ' meer laden ' klikt. Dit probleem is opgelost. [#1359](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1359)
+* In Windows zouden AzCopy-down loads mislukken als één bestand of map werd gedownload en de naam van het bestand of de map een teken had dat ongeldig was voor een Windows-pad. Dit probleem is opgelost. [#1350](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1350)
+* In extreem zeldzame gevallen moet u tijdens het uitvoeren van een bestands share of een naam wijziging in een bestands share, als de kopieën voor de naamswijziging zijn mislukt, of als opslag verkennen het succes van de kopieën met Azure niet kan bevestigen, is het mogelijk om de o-Storage Explorer te verwijderen riginal-bestanden voordat de kopie is voltooid. Dit probleem is opgelost.
+
+### <a name="new"></a>Nieuw
+
+* De geïntegreerde AzCopy-versie is bijgewerkt naar versie 10.1.0.
+* Ctrl/Cmd + R kan nu worden gebruikt om de huidige focus editor te vernieuwen. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
+* De versie van de Azure Stack Storage-API is gewijzigd in 2017-04-17.
+* In het dialoog venster toegang beheren voor ADLS Gen2 wordt het masker nu op dezelfde manier gesynchroniseerd als andere hulpprogram ma's voor POSIX-machtigingen. De gebruikers interface waarschuwt u ook als er een wijziging wordt aangebracht, waardoor de machtigingen van een gebruiker of groep de grenzen van het masker overschrijden. [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
+* Voor AzCopy uploads is de vlag voor het berekenen en instellen van de MD5-hash nu ingeschakeld. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
+
+
+### <a name="preview-features"></a>Voorbeeld van functies
+
+* U kunt zich nu aanmelden met een apparaatcode stroom. Als u deze functie wilt inschakelen, gaat u naar ' Preview "→ ' apparaat code flow-aanmelding gebruiken '. We raden aan dat gebruikers problemen ondervinden met lege aanmeld Vensters om deze functie uit te proberen, omdat dit een betrouwbaardere vorm van aanmelding kan zijn.
+* Storage Explorer geïntegreerd met AzCopy is momenteel beschikbaar als preview-versie. Als u dit wilt inschakelen, gaat u naar ' Preview "→" AzCopy gebruiken voor verbeterde BLOB upload en down load ". BLOB-overdrachten die zijn voltooid met AzCopy moeten sneller en beter worden uitgevoerd.
+
+### <a name="fixes"></a>Oplossingen
+
+* Het dialoog venster toegangs beleid heeft geen verval datum meer ingesteld voor het toegangs beleid voor opslag dat geen verloop tijd heeft. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
+* Er zijn enkele wijzigingen aangebracht in het dialoog venster SAS genereren om er zeker van te zijn dat opgeslagen toegangs beleid correct wordt gebruikt bij het genereren van een SAS. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
+* Wanneer u probeert een niet-512 byte uitgelijnd bestand te uploaden naar een pagina-blob, wordt in Storage Explorer nu een meer relevante fout weer gegeven. [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
+* Het kopiëren van een BLOB-container die een weergave naam heeft gebruikt, mislukt. Nu wordt de daad werkelijke naam van de BLOB-container gebruikt. [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
+* Als u probeert bepaalde acties uit te voeren op een ADLS Gen2 map met de naam Unicode-tekens, mislukt dit. Alle acties moeten nu werken. [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
+
+### <a name="known-issues"></a>Bekende problemen
+
+* Wanneer u een niet-AzCopy-BLOB downloadt, wordt de MD5 voor grote bestanden niet gecontroleerd. Dit wordt veroorzaakt door een fout in de opslag-SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* Wanneer u RBAC gebruikt, heeft Storage Explorer bepaalde beheer laag machtigingen nodig om toegang te krijgen tot uw opslag resources. Raadpleeg de [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor het oplossen van problemen voor meer informatie.
+* Bij een poging om toegang te krijgen tot ADLS Gen2 blobs na een proxy kan mislukken.
+* Het ontkoppelen van een resource die is gekoppeld via SAS URI, zoals een BLOB-container, kan een fout veroorzaken die voor komt dat andere bijlagen correct worden weer gegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie #537 voor meer informatie.
+* Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u dit doet, neemt u een opmerking over dit probleem op.
+* Azurite is nog niet volledig geïmplementeerd alle Storage-API's. Als gevolg hiervan kunnen er onverwachte fouten of problemen bij het gebruik van Azurite voor opslag.
+* In zeldzame gevallen kan de focus structuur ophalen vastgelopen op Snelweergavetoegang. Registreer de focus, kunt u Alles vernieuwen.
+* Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron. U kunt dit probleem omzeilen bij het uploaden naar of downloaden van een BLOB-container met de experimentele AzCopy-functie.
+* Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat hier wordt beschreven.
+* Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
+* Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
+* Azure Stack biedt geen ondersteuning voor de volgende functies. Poging tot het gebruiken van deze functies tijdens het werken met Azure Stack kunnen resources leiden tot onverwachte fouten.
+   * Bestandsshares
+   * Toegangslagen
+   * Voorlopig verwijderen
+   * ADLS Gen2
+* De Electron-shell die door de Storage Explorer heeft problemen met sommige hardwareversnelling GPU (graphics processing unit). Als u Storage Explorer is een leeg (leeg) hoofdvenster weergeven, kunt u proberen Storage Explorer starten vanaf de opdrachtregel en GPU-versnelling uitschakelen door toe te voegen de `--disable-gpu` schakelen:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Voor het uitvoeren van Storage Explorer op Linux moeten bepaalde afhankelijkheden eerst worden geïnstalleerd. Raadpleeg de [hand leiding voor het oplossen van problemen met](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) Storage Explorer voor meer informatie.
 
 ## <a name="version-180"></a>Versie 1.8.0
 5/1/2019
@@ -188,37 +269,37 @@ In dit artikel bevat de releaseopmerkingen voor Azure Storage Explorer 1.9.0 rel
 ### <a name="new"></a>Nieuw
 
 * De geïntegreerde AzCopy-versie is bijgewerkt naar versie 10.1.0.
-* CTRL / Cmd + R kan nu worden gebruikt voor het vernieuwen van de momenteel gerichte editor. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
-* De API van Azure Stack-Storage-versie is gewijzigd in 17-04-2017.
-* Het dialoogvenster toegang beheren voor ADLS Gen2 wordt nu het masker synchroon houden op een manier die vergelijkbaar is met andere hulpprogramma's voor POSIX-machtigingen. De gebruikersinterface, waarschuwt u als een wijziging wordt doorgevoerd waarmee zorgt ervoor dat de machtigingen van een gebruiker of groep overschrijdt de grenzen van het masker. [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
-* De vlag voor het berekenen en instellen van de MD5-hash is nu ingeschakeld voor de AzCopy-uploads. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
+* Ctrl/Cmd + R kan nu worden gebruikt om de huidige focus editor te vernieuwen. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
+* De versie van de Azure Stack Storage-API is gewijzigd in 2017-04-17.
+* In het dialoog venster toegang beheren voor ADLS Gen2 wordt het masker nu op dezelfde manier gesynchroniseerd als andere hulpprogram ma's voor POSIX-machtigingen. De gebruikers interface waarschuwt u ook als er een wijziging wordt aangebracht, waardoor de machtigingen van een gebruiker of groep de grenzen van het masker overschrijden. [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
+* Voor AzCopy uploads is de vlag voor het berekenen en instellen van de MD5-hash nu ingeschakeld. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
 
 
-### <a name="preview-features"></a>Preview-functies
+### <a name="preview-features"></a>Voorbeeld van functies
 
-* Apparaat code flow aanmelden is nu beschikbaar om te bekijken. Als u wilt inschakelen, gaat u naar 'Preview' → 'Gebruik apparaat Code Flow aanmelden'. U wordt aangeraden alle gebruikers die hebben gehad problemen met lege aanmelding bij windows om te proberen deze functie, zoals het blijken te zijn van een meer betrouwbare vorm van aanmelding.
-* Storage Explorer is geïntegreerd met AzCopy is momenteel beschikbaar voor preview. Als u wilt inschakelen, gaat u naar 'Preview' → 'Met AzCopy voor verbeterde Blob uploaden en downloaden'. BLOB-overdracht is voltooid met AzCopy moeten worden snellere en beter.
+* U kunt zich nu aanmelden met een apparaatcode stroom. Als u deze functie wilt inschakelen, gaat u naar ' Preview "→ ' apparaat code flow-aanmelding gebruiken '. We raden aan dat gebruikers problemen ondervinden met lege aanmeld Vensters om deze functie uit te proberen, omdat dit een betrouwbaardere vorm van aanmelding kan zijn.
+* Storage Explorer geïntegreerd met AzCopy is momenteel beschikbaar als preview-versie. Als u dit wilt inschakelen, gaat u naar ' Preview "→" AzCopy gebruiken voor verbeterde BLOB upload en down load ". BLOB-overdrachten die zijn voltooid met AzCopy moeten sneller en beter worden uitgevoerd.
 
 ### <a name="fixes"></a>Oplossingen
 
-* Het dialoogvenster toegangsbeleid stelt u een vervaldatum niet meer op toegang-beleid voor opslag die nog geen een vervaldatum. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
-* Sommige wijzigingen zijn aangebracht aan het genereren van SAS-dialoogvenster om te controleren of dat opgeslagen toegangsbeleid correct worden gebruikt bij het genereren van een SAS. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
-* Wanneer u probeert te uploaden van een niet - 512 byte uitgelijnd bestand naar een pagina-Blob, wordt nu een meer relevante fout weergegeven in Storage Explorer. [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
-* Kopiëren van een Blob-container die u een weergavenaam gebruikt, mislukken. Nu wordt de werkelijke naam van de Blob-container gebruikt. [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
-* Er wordt geprobeerd bepaalde acties uitvoeren op een ADLS-Gen2 map waarin het unicode-tekens in de naam, mislukken. Alle bewerkingen moeten nu worden uitgevoerd. [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
+* Het dialoog venster toegangs beleid heeft geen verval datum meer ingesteld voor het toegangs beleid voor opslag dat geen verloop tijd heeft. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
+* Er zijn enkele wijzigingen aangebracht in het dialoog venster SAS genereren om er zeker van te zijn dat opgeslagen toegangs beleid correct wordt gebruikt bij het genereren van een SAS. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
+* Wanneer u probeert een niet-512 byte uitgelijnd bestand te uploaden naar een pagina-blob, wordt in Storage Explorer nu een meer relevante fout weer gegeven. [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
+* Het kopiëren van een BLOB-container die een weergave naam heeft gebruikt, mislukt. Nu wordt de daad werkelijke naam van de BLOB-container gebruikt. [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
+* Als u probeert bepaalde acties uit te voeren op een ADLS Gen2 map met de naam Unicode-tekens, mislukt dit. Alle acties moeten nu werken. [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
 
 ### <a name="known-issues"></a>Bekende problemen
 
-* Bij het uitvoeren van een niet - AzCopy Blob downloaden, wordt de MD5 voor grote bestanden niet wordt gecontroleerd. Dit is vanwege een fout in de Storage-SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* Als u met RBAC kunt moet Storage Explorer enkele management layer-machtigingen voor toegang tot uw opslagresources. Zie de [problemen oplossen met](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor meer informatie.
-* Probeert te krijgen tot ADLS Gen2 Blobs wanneer u zich achter een proxy mislukken.
-* Loskoppelen van een resource koppelen via SAS-URI, zoals een blob-container kan een fout veroorzaken waarmee wordt voorkomen dat andere bijlagen correct weergegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie #537 voor meer informatie.
-* Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u in dat geval heeft niet de blokkering opheffen u, als opmerking bij dit probleem.
+* Wanneer u een niet-AzCopy-BLOB downloadt, wordt de MD5 voor grote bestanden niet gecontroleerd. Dit wordt veroorzaakt door een fout in de opslag-SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* Wanneer u RBAC gebruikt, heeft Storage Explorer bepaalde beheer laag machtigingen nodig om toegang te krijgen tot uw opslag resources. Raadpleeg de [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor het oplossen van problemen voor meer informatie.
+* Bij een poging om toegang te krijgen tot ADLS Gen2 blobs na een proxy kan mislukken.
+* Het ontkoppelen van een resource die is gekoppeld via SAS URI, zoals een BLOB-container, kan een fout veroorzaken die voor komt dat andere bijlagen correct worden weer gegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie #537 voor meer informatie.
+* Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u dit doet, neemt u een opmerking over dit probleem op.
 * Azurite is nog niet volledig geïmplementeerd alle Storage-API's. Als gevolg hiervan kunnen er onverwachte fouten of problemen bij het gebruik van Azurite voor opslag.
 * In zeldzame gevallen kan de focus structuur ophalen vastgelopen op Snelweergavetoegang. Registreer de focus, kunt u Alles vernieuwen.
-* Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron. Als tijdelijke oplossing voor dit probleem tijdens het uploaden naar of downloaden van een blob-container, kunt u de experimentele functie voor AzCopy.
+* Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron. U kunt dit probleem omzeilen bij het uploaden naar of downloaden van een BLOB-container met de experimentele AzCopy-functie.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter omzeilen hier beschreven.
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat hier wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
 * Azure Stack biedt geen ondersteuning voor de volgende functies. Poging tot het gebruiken van deze functies tijdens het werken met Azure Stack kunnen resources leiden tot onverwachte fouten.
@@ -232,50 +313,50 @@ In dit artikel bevat de releaseopmerkingen voor Azure Storage Explorer 1.9.0 rel
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Storage Explorer op Linux uitgevoerd, moet bepaalde afhankelijkheden moeten eerst worden geïnstalleerd. Controleer de Storage Explorer [problemen oplossen met](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) voor meer informatie.
+* Voor het uitvoeren van Storage Explorer op Linux moeten bepaalde afhankelijkheden eerst worden geïnstalleerd. Raadpleeg de [hand leiding voor het oplossen van problemen met](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) Storage Explorer voor meer informatie.
 
 ## <a name="version-170"></a>Versie 1.7.0
 3/5/2019
 
-### <a name="download-azure-storage-explorer-170"></a>Download Azure Storage Explorer 1.7.0
+### <a name="download-azure-storage-explorer-170"></a>Azure Storage Explorer 1.7.0 downloaden
 - [Azure Storage Explorer 1.7.0 voor Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
 - [Azure Storage Explorer 1.7.0 voor Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
 - [Azure Storage Explorer 1.7.0 voor Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Nieuw
 
-* U kunt nu de eigenaar en de groep die eigenaar is bij het beheren van toegang voor een ADLS-Gen2 container, bestand of map wijzigen.
-* Op Windows is Opslagverkenner van updates binnen het product nu een incrementele installeren. Dit moet resulteren in een snellere update-ervaring. Als u liever een schone installatie, dan kunt u downloaden de [installatieprogramma](https://azure.microsoft.com/features/storage-explorer/) zelf en installeer vervolgens handmatig. #1089
+* U kunt nu de eigenaar en de groep die eigenaar is wijzigen voor het beheren van de toegang voor een ADLS Gen2-container,-bestand of-map.
+* In Windows is het bijwerken van Storage Explorer van binnen het product nu een incrementele installatie. Dit moet resulteren in een snellere update-ervaring. Als u liever een schone installatie wilt, kunt u het [installatie programma](https://azure.microsoft.com/features/storage-explorer/) zelf downloaden en vervolgens hand matig installeren. #1089
 
-### <a name="preview-features"></a>Preview-functies
+### <a name="preview-features"></a>Voorbeeld van functies
 
-* Apparaat code flow aanmelden is nu beschikbaar om te bekijken. Als u wilt inschakelen, gaat u naar 'Preview' → 'Gebruik apparaat Code Flow aanmelden'. U wordt aangeraden alle gebruikers die hebben gehad problemen met lege aanmelding bij windows om te proberen deze functie, zoals het blijken te zijn van een meer betrouwbare vorm van aanmelding. #938
-* Storage Explorer is geïntegreerd met AzCopy is momenteel beschikbaar voor preview. Als u wilt inschakelen, gaat u naar 'Preview' → 'Met AzCopy voor verbeterde Blob uploaden en downloaden'. BLOB-overdracht is voltooid met AzCopy moeten worden snellere en beter.
+* U kunt zich nu aanmelden met een apparaatcode stroom. Als u deze functie wilt inschakelen, gaat u naar ' Preview "→ ' apparaat code flow-aanmelding gebruiken '. We raden aan dat gebruikers problemen ondervinden met lege aanmeld Vensters om deze functie uit te proberen, omdat dit een betrouwbaardere vorm van aanmelding kan zijn. #938
+* Storage Explorer geïntegreerd met AzCopy is momenteel beschikbaar als preview-versie. Als u dit wilt inschakelen, gaat u naar ' Preview "→" AzCopy gebruiken voor verbeterde BLOB upload en down load ". BLOB-overdrachten die zijn voltooid met AzCopy moeten sneller en beter worden uitgevoerd.
 
 ### <a name="fixes"></a>Oplossingen
 
-* U kunt nu de blob-type dat die u uploaden wilt als wanneer AzCopy is ingeschakeld. #1111
-* Eerder, als u had ingeschakeld statische websites voor een ADLS Gen2 Storage-account en vervolgens gekoppeld met de naam en sleutel, Storage Explorer niet hebben gedetecteerd dat die hiërarchische naamruimte is ingeschakeld. Dit probleem is opgelost. #1081
-* In de blob-editor is op status of retentiedagen resterende sorteren verbroken. Dit probleem is opgelost. #1106
-* Na 1.5.0, Storage Explorer niet meer wachtte op server side kopieën te voltooien voordat u voltooid melden tijdens een hernoemen of kopiëren en plakken. Dit probleem is opgelost. #976
-* Wanneer u de experimentele AzCopy-functie, is de opdracht gekopieerd nadat u hebt geklikt 'Opdracht naar Klembord kopiëren' niet altijd uitvoerbaar op zichzelf. Nu worden alle opdrachten die nodig zijn voor het handmatig uitvoeren van de overdracht gekopieerd. #1079
-* Eerder waren ADLS Gen2 blobs niet toegankelijk als u zich achter een proxy bevindt. Dit is vanwege een fout in een nieuwe VPN-bibliotheek die worden gebruikt door de Storage-SDK. Er is een poging om dit probleem te verhelpen gedaan in 1.7.0, maar sommige mensen mogelijk blijven om te zien van problemen. Een volledige oplossing wordt uitgebracht in een toekomstige update. #1090
-* In 1.7.0, het opslaan in het bestandsdialoogvenster nu juist onthoudt de laatste locatie die u hebt een bestand opgeslagen. #16
-* In het deelvenster Eigenschappen is de SKU-laag van een Storage-account wordt weergegeven als de aard van het account. Dit probleem is opgelost. #654
-* Het is soms onmogelijk om de lease van een blob te verbreken, zelfs als u de naam van de blob juist hebt ingevoerd. Dit probleem is opgelost. #1070
+* U kunt nu het BLOB-type kiezen dat u wilt uploaden als AzCopy is ingeschakeld. #1111
+* Als u voorheen statische websites voor een ADLS Gen2-opslag account hebt ingeschakeld en deze vervolgens aan de naam en sleutel hebt gekoppeld, heeft Storage Explorer niet gedetecteerd dat de hiërarchische naam ruimte werd ingeschakeld. Dit probleem is opgelost. #1081
+* In de BLOB-editor sorteren op resterende Bewaar dagen of de status is verbroken. Dit probleem is opgelost. #1106
+* Na 1.5.0 is Storage Explorer niet langer gewacht op het volt ooien van kopieën van de server voordat het succes wordt gerapporteerd tijdens een naamswijziging of kopiëren & plakken. Dit probleem is opgelost. #976
+* Wanneer u de functie experimentele AzCopy gebruikt, is de opdracht gekopieerd nadat u op ' opdracht kopiëren naar klem bord ' was niet altijd zelf uitvoer bare. Nu worden alle opdrachten die nodig zijn om de overdracht hand matig uit te voeren, gekopieerd. #1079
+* Voorheen werden ADLS Gen2 blobs niet toegankelijk als u zich achter een proxy bevond. Dit werd veroorzaakt door een fout in een nieuwe netwerk bibliotheek die wordt gebruikt door de opslag-SDK. In 1.7.0 is een poging gedaan om dit probleem te verhelpen, maar sommige personen kunnen toch problemen blijven zien. Een volledige oplossing wordt uitgebracht in een toekomstige update. #1090
+* In 1.7.0 maakt het dialoog venster bestand opslaan nu goed plaats op de laatste locatie waar u een bestand hebt opgeslagen. #16
+* In het deel venster Eigenschappen wordt de SKU-laag van een opslag account weer gegeven als het soort account. Dit probleem is opgelost. #654
+* Soms was het onmogelijk om de lease van een BLOB te kraken, zelfs als u de naam van de BLOB correct hebt ingevoerd. Dit probleem is opgelost. #1070
 
 ### <a name="known-issues"></a>Bekende problemen
 
-* Als u met RBAC kunt moet Storage Explorer enkele management layer-machtigingen voor toegang tot uw opslagresources. Zie de [problemen oplossen met](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor meer informatie.
-* Probeert te krijgen tot ADLS Gen2 Blobs wanneer u zich achter een proxy mislukken.
-* Loskoppelen van een resource koppelen via SAS-URI, zoals een blob-container kan een fout veroorzaken waarmee wordt voorkomen dat andere bijlagen correct weergegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie #537 voor meer informatie.
-* Loskoppelen van een resource koppelen via SAS-URI, zoals een blob-container kan een fout veroorzaken waarmee wordt voorkomen dat andere bijlagen correct weergegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie voor meer informatie, #537.
-* Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u in dat geval heeft niet de blokkering opheffen u, als opmerking bij dit probleem.
+* Wanneer u RBAC gebruikt, heeft Storage Explorer bepaalde beheer laag machtigingen nodig om toegang te krijgen tot uw opslag resources. Raadpleeg de [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) voor het oplossen van problemen voor meer informatie.
+* Bij een poging om toegang te krijgen tot ADLS Gen2 blobs na een proxy kan mislukken.
+* Het ontkoppelen van een resource die is gekoppeld via SAS URI, zoals een BLOB-container, kan een fout veroorzaken die voor komt dat andere bijlagen correct worden weer gegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie #537 voor meer informatie.
+* Het ontkoppelen van een resource die is gekoppeld via SAS URI, zoals een BLOB-container, kan een fout veroorzaken die voor komt dat andere bijlagen correct worden weer gegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie #537 voor meer informatie.
+* Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u dit doet, neemt u een opmerking over dit probleem op.
 * Azurite is nog niet volledig geïmplementeerd alle Storage-API's. Als gevolg hiervan kunnen er onverwachte fouten of problemen bij het gebruik van Azurite voor opslag.
 * In zeldzame gevallen kan de focus structuur ophalen vastgelopen op Snelweergavetoegang. Registreer de focus, kunt u Alles vernieuwen.
-* Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron. Als tijdelijke oplossing voor dit probleem tijdens het uploaden naar of downloaden van een blob-container, kunt u de experimentele functie voor AzCopy.
+* Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron. U kunt dit probleem omzeilen bij het uploaden naar of downloaden van een BLOB-container met de experimentele AzCopy-functie.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter omzeilen hier beschreven.
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat hier wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
 * Azure Stack biedt geen ondersteuning voor de volgende functies. Poging tot het gebruiken van deze functies tijdens het werken met Azure Stack kunnen resources leiden tot onverwachte fouten.
@@ -308,46 +389,46 @@ In dit artikel bevat de releaseopmerkingen voor Azure Storage Explorer 1.9.0 rel
 1/9/2019
 
 ### <a name="hotfixes"></a>Hotfixes
-* In 1.6.1, zijn altijd toegevoegd aan ADLS Gen2 ACL's via de object-id entiteiten die gebruikers niet zijn toegevoegd als groepen. Alleen groepen worden nu als groepen en entiteiten zoals bedrijfstoepassingen andService die beveiligings-Principals zijn toegevoegd als gebruikers toegevoegd. [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
-* Als een ADLS Gen2 Storage-account geen containers heeft en is gekoppeld met de naam en sleutel, zou klikt u vervolgens Storage Explorer niet detecteren of het Opslagaccount ADLS Gen2 is. Dit probleem is opgelost. [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048)
-* In 1.6.0, zou de conflicten tijdens het kopiëren en plakken niet gevraagd om een oplossing. In plaats daarvan toch de conflicterende kopie al geen Connection. Nu op het eerste conflict wordt u gevraagd hoe u wilt dat deze wordt worden opgelost. [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
-* Vanwege de API-beperkingen, alle validatietests van objectid's in het dialoogvenster Manage Access zijn uitgeschakeld. Validatie wordt nu alleen uitgevoerd voor de gebruiker UPN's. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
-* De machtigingen voor een groep kunnen niet worden gewijzigd in het dialoogvenster toegang tot het beheren van ADLS-Gen2. Dit probleem is opgelost. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
-* Toegevoegde slepen en neerzetten uploaden ondersteuning in de editor ADLS Gen2. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
-* De URL-eigenschap in het dialoogvenster Eigenschappen voor ADLS Gen2 bestanden en mappen is soms ontbreekt een slash (/). Dit probleem is opgelost. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
-* Als de huidige machtigingen voor een container ADLS Gen2, bestand of map is mislukt, en vervolgens de fout is nu propertly weergegeven in het activiteitenlogboek. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
-* De tijdelijke pad dat is gemaakt voor het openen van bestanden is ingekort om te verminderen de kans dat het maken van een pad dat langer is dan de waarde van MAX_PATH op Windows. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
-* Het dialoogvenster verbinding maken met nu correct wordt weergegeven wanneer er geen aangemelde gebruikers zijn en er zijn geen resources zijn gekoppeld. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
-* In 1.6.0, wilt opslaan van eigenschappen voor HNS Blobs en bestanden coderen van de waarde van elke eigenschap. Dit leidde tot onnodige codering van waarden die het bevat alleen ASCII-tekens. Waarden wordt nu alleen worden gecodeerd als ze niet-ASCII-tekens bevatten. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
-* Het uploaden van een map naar een niet - HNS Blob-container, mislukken als er een SAS gebruikt is en de SAS is geen machtigingen voor lezen. Dit probleem is opgelost. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
-* Annuleren van een AzCopy-overdracht werkt niet. Dit probleem is opgelost. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
-* AzCopy mislukt bij het downloaden van een map van een ADLS Gen2 Blob-container als de map spaties in de naam ervan. Dit probleem is opgelost. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
-* De CosmosDB-editor is onderverdeeld in 1.6.0. Het is nu opgelost. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
+* In 1.6.1 zijn entiteiten die zijn toegevoegd aan ADLS Gen2 Acl's door ObjectId die niet waren gebruikers, altijd toegevoegd als groepen. Nu worden alleen groepen toegevoegd als groepen, en entiteiten zoals zakelijke toepassingen die andService-principals zijn toegevoegd als gebruikers. [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
+* Als een ADLS Gen2 Storage-account geen containers heeft en is gekoppeld aan de naam en de sleutel, dan detecteert Storage Explorer niet dat het opslag account is ADLS Gen2. Dit probleem is opgelost. [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048)
+* In 1.6.0 worden tijdens het kopiëren en plakken conflicten niet gevraagd naar een oplossing. In plaats daarvan mislukt de conflicterende kopie gewoon. Op het eerste conflict wordt u gevraagd hoe u deze oplossing wilt laten oplossen. [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
+* Vanwege API-beperkingen is alle validatie van Objectid's in het dialoog venster toegang beheren uitgeschakeld. Validatie vindt nu alleen plaats voor gebruikers-Upn's. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
+* De machtigingen voor een groep kunnen niet worden gewijzigd in het dialoog venster ADLS Gen2 toegang beheren. Dit probleem is opgelost. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* De ondersteuning voor het uploaden van slepen en neerzetten is toegevoegd aan de ADLS Gen2 editor. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
+* De eigenschap URL in het dialoog venster Eigenschappen voor ADLS Gen2-bestanden en-mappen missen soms een '/'. Dit probleem is opgelost. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* Als het ophalen van de huidige machtigingen voor een ADLS Gen2 container, bestand of map mislukt, wordt de fout nu in het activiteiten logboek weer gegeven. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
+* Het tijdelijke pad dat is gemaakt voor het openen van bestanden is inge kort om de kans op het maken van een pad dat langer is dan MAX_PATH op Windows te verminderen. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
+* Het dialoog venster verbinding maken wordt nu correct weer gegeven wanneer er geen aangemelde gebruikers zijn en er geen resources zijn gekoppeld. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
+* In 1.6.0 wordt met het opslaan van eigenschappen voor niet-HNS-blobs en-bestanden de waarde van elke eigenschap gecodeerd. Dit resulteerde in overbodige code ring van waarden die alleen ASCII-tekens bevatten. De waarden worden nu alleen gecodeerd als ze niet-ASCII-tekens bevatten. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* Het uploaden van een map naar een niet-HNS BLOB-container mislukt als er een SAS werd gebruikt en de SA'S geen lees machtigingen hebben. Dit probleem is opgelost. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* Het annuleren van een AzCopy-overdracht werkt niet. Dit probleem is opgelost. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* AzCopy mislukt bij het downloaden van een map van een ADLS Gen2 BLOB-container als de map spaties bevat. Dit probleem is opgelost. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* De CosmosDB-editor is gebroken in 1.6.0. Het is nu opgelost. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
 ### <a name="new"></a>Nieuw
 
-* U kunt Storage Explorer nu gebruiken voor toegang tot uw Blob-gegevens via [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Als u bent aangemeld en Storage Explorer kan niet worden opgehaald van de sleutels voor uw Storage-account is, wordt een OAuth-token worden gebruikt om te verifiëren bij interactie met uw gegevens.
-* Storage Explorer biedt nu ondersteuning voor opslagaccounts van ADLS Gen2. Wanneer u Storage Explorer detecteert die hiërarchische naamruimte is ingeschakeld voor een opslagaccount, wordt u Zie '(ADLS Gen2 Preview)' naast de naam van uw opslagaccount. Storage Explorer kan detecteren of er hiërarchische naamruimte is ingeschakeld wanneer u bent aangemeld, of als u uw Storage-Account met de naam en sleutel hebt gekoppeld. U kunt Storage Explorer om te gebruiken voor ADLS Gen2 Storage-accounts:
-  * Maken en verwijderen van containers
-  * Eigenschappen van de container en machtigingen (linkerkant) beheren
-  * Weergeven en gegevens binnen containers gaan
+* U kunt nu Storage Explorer gebruiken om toegang te krijgen tot uw BLOB-gegevens via [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Als u bent aangemeld en Storage Explorer de sleutels voor uw opslag account niet kan ophalen, wordt een OAuth-token gebruikt voor verificatie bij interactie met uw gegevens.
+* Storage Explorer ondersteunt nu ADLS Gen2-opslag accounts. Als Storage Explorer detecteert dat hiërarchische naam ruimte is ingeschakeld voor een opslag account, wordt ' (ADLS Gen2 preview) ' weer gegeven naast de naam van uw opslag account. Storage Explorer kan detecteren of hiërarchische naam ruimte is ingeschakeld wanneer u bent aangemeld, of als u uw opslag account hebt gekoppeld aan de naam en sleutel. Voor ADLS Gen2 opslag accounts kunt u Storage Explorer gebruiken voor het volgende:
+  * Containers maken en verwijderen
+  * Container eigenschappen en-machtigingen beheren (aan de linkerkant)
+  * Gegevens binnen containers weer geven en ernaar navigeren
   * Nieuwe mappen maken
-  * Uploaden, downloaden, wijzigen en verwijderen van bestanden en mappen
-  * Eigenschappen van bestanden en mappen en machtigingen (rechterkant) beheren.
+  * Bestanden en mappen uploaden, downloaden, verwijderen en de naam ervan wijzigen
+  * Eigenschappen en machtigingen voor bestanden en mappen beheren (aan de rechter kant).
     
-    Andere standaard Blob-functies, zoals voorlopig verwijderen en momentopnamen, zijn momenteel niet beschikbaar. Beheer van machtigingen is ook alleen beschikbaar wanneer is aangemeld. Bovendien, als u werkt in een ADLS Gen2 Storage-account, wordt Storage Explorer AzCopy gebruiken voor alle uploads, downloads en maken standaard gebruik van de naam en sleutel referenties voor alle bewerkingen, indien beschikbaar.
-* Na sterke gebruikersfeedback, kan de lease break opnieuw leases in één keer op meerdere blobs verbreken worden gebruikt.
+    Andere typische BLOB-functies, zoals zacht verwijderen en moment opnamen, zijn momenteel niet beschikbaar. Het beheren van machtigingen is ook alleen beschikbaar wanneer u bent aangemeld. Wanneer u in een ADLS Gen2 Storage-account werkt Storage Explorer, wordt er bovendien AzCopy gebruikt voor alle uploads en down loads, en wordt de standaard instelling gebruikt voor het gebruik van naam-en sleutel referenties voor alle bewerkingen, indien beschikbaar.
+* Na sterke feedback van de gebruiker kan de afbreek lease opnieuw worden gebruikt om leases op meerdere blobs tegelijk te verstoren.
 
 ### <a name="known-issues"></a>Bekende problemen
 
-* Bij het downloaden van een ADLS Gen2 Storage-account, als een van de bestanden die worden overgebracht al bestaat, wordt soms AzCopy vastlopen. Dit wordt opgelost in een toekomstige hotfix.
-* Loskoppelen van een resource koppelen via SAS-URI, zoals een blob-container kan een fout veroorzaken waarmee wordt voorkomen dat andere bijlagen correct weergegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie voor meer informatie, #537.
-* Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u in dat geval heeft niet de blokkering opheffen u, als opmerking bij dit probleem.
+* Bij het downloaden van een ADLS Gen2 Storage-account wordt een van de bestanden die worden overgedragen al bestaan, AzCopy soms vastlopen. Dit wordt opgelost in een toekomstige hotfix.
+* Het ontkoppelen van een resource die is gekoppeld via SAS URI, zoals een BLOB-container, kan een fout veroorzaken die voor komt dat andere bijlagen correct worden weer gegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie #537 voor meer informatie.
+* Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u dit doet, neemt u een opmerking over dit probleem op.
 * Azurite is nog niet volledig geïmplementeerd alle Storage-API's. Als gevolg hiervan kunnen er onverwachte fouten of problemen bij het gebruik van Azurite voor opslag.
 * In zeldzame gevallen kan de focus structuur ophalen vastgelopen op Snelweergavetoegang. Registreer de focus, kunt u Alles vernieuwen.
-* Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron. Als tijdelijke oplossing voor dit probleem tijdens het uploaden naar of downloaden van een blob-container, kunt u de experimentele functie voor AzCopy.
+* Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron. U kunt dit probleem omzeilen bij het uploaden naar of downloaden van een BLOB-container met de experimentele AzCopy-functie.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter omzeilen hier beschreven.
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat hier wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
 * Azure Stack biedt geen ondersteuning voor de volgende functies. Poging tot het gebruiken van deze functies tijdens het werken met Azure Stack kunnen resources leiden tot onverwachte fouten.
@@ -380,43 +461,43 @@ In dit artikel bevat de releaseopmerkingen voor Azure Storage Explorer 1.9.0 rel
 12/18/2018
 
 ### <a name="hotfixes"></a>Hotfixes
-* Vanwege de API-beperkingen, alle validatietests van objectid's in het dialoogvenster Manage Access zijn uitgeschakeld. Validatie wordt nu alleen uitgevoerd voor de gebruiker UPN's. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
-* De machtigingen voor een groep kunnen niet worden gewijzigd in het dialoogvenster toegang tot het beheren van ADLS-Gen2. Dit probleem is opgelost. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
-* Toegevoegde slepen en neerzetten uploaden ondersteuning in de editor ADLS Gen2. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
-* De URL-eigenschap in het dialoogvenster Eigenschappen voor ADLS Gen2 bestanden en mappen is soms ontbreekt een slash (/). Dit probleem is opgelost. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
-* Als de huidige machtigingen voor een container ADLS Gen2, bestand of map is mislukt, en vervolgens de fout is nu propertly weergegeven in het activiteitenlogboek. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
-* De tijdelijke pad dat is gemaakt voor het openen van bestanden is ingekort om te verminderen de kans dat het maken van een pad dat langer is dan de waarde van MAX_PATH op Windows. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
-* Het dialoogvenster verbinding maken met nu correct wordt weergegeven wanneer er geen aangemelde gebruikers zijn en er zijn geen resources zijn gekoppeld. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
-* In 1.6.0, wilt opslaan van eigenschappen voor HNS Blobs en bestanden coderen van de waarde van elke eigenschap. Dit leidde tot onnodige codering van waarden die het bevat alleen ASCII-tekens. Waarden wordt nu alleen worden gecodeerd als ze niet-ASCII-tekens bevatten. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
-* Het uploaden van een map naar een niet - HNS Blob-container, mislukken als er een SAS gebruikt is en de SAS is geen machtigingen voor lezen. Dit probleem is opgelost. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
-* Annuleren van een AzCopy-overdracht werkt niet. Dit probleem is opgelost. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
-* AzCopy mislukt bij het downloaden van een map van een ADLS Gen2 Blob-container als de map spaties in de naam ervan. Dit probleem is opgelost. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
-* De CosmosDB-editor is onderverdeeld in 1.6.0. Het is nu opgelost. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
+* Vanwege API-beperkingen is alle validatie van Objectid's in het dialoog venster toegang beheren uitgeschakeld. Validatie vindt nu alleen plaats voor gebruikers-Upn's. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
+* De machtigingen voor een groep kunnen niet worden gewijzigd in het dialoog venster ADLS Gen2 toegang beheren. Dit probleem is opgelost. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* De ondersteuning voor het uploaden van slepen en neerzetten is toegevoegd aan de ADLS Gen2 editor. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
+* De eigenschap URL in het dialoog venster Eigenschappen voor ADLS Gen2-bestanden en-mappen missen soms een '/'. Dit probleem is opgelost. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* Als het ophalen van de huidige machtigingen voor een ADLS Gen2 container, bestand of map mislukt, wordt de fout nu in het activiteiten logboek weer gegeven. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
+* Het tijdelijke pad dat is gemaakt voor het openen van bestanden is inge kort om de kans op het maken van een pad dat langer is dan MAX_PATH op Windows te verminderen. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
+* Het dialoog venster verbinding maken wordt nu correct weer gegeven wanneer er geen aangemelde gebruikers zijn en er geen resources zijn gekoppeld. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
+* In 1.6.0 wordt met het opslaan van eigenschappen voor niet-HNS-blobs en-bestanden de waarde van elke eigenschap gecodeerd. Dit resulteerde in overbodige code ring van waarden die alleen ASCII-tekens bevatten. De waarden worden nu alleen gecodeerd als ze niet-ASCII-tekens bevatten. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* Het uploaden van een map naar een niet-HNS BLOB-container mislukt als er een SAS werd gebruikt en de SA'S geen lees machtigingen hebben. Dit probleem is opgelost. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* Het annuleren van een AzCopy-overdracht werkt niet. Dit probleem is opgelost. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* AzCopy mislukt bij het downloaden van een map van een ADLS Gen2 BLOB-container als de map spaties bevat. Dit probleem is opgelost. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* De CosmosDB-editor is gebroken in 1.6.0. Het is nu opgelost. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
 ### <a name="new"></a>Nieuw
 
-* U kunt Storage Explorer nu gebruiken voor toegang tot uw Blob-gegevens via [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Als u bent aangemeld en Storage Explorer kan niet worden opgehaald van de sleutels voor uw Storage-account is, wordt een OAuth-token worden gebruikt om te verifiëren bij interactie met uw gegevens.
-* Storage Explorer biedt nu ondersteuning voor opslagaccounts van ADLS Gen2. Wanneer u Storage Explorer detecteert die hiërarchische naamruimte is ingeschakeld voor een opslagaccount, wordt u Zie '(ADLS Gen2 Preview)' naast de naam van uw opslagaccount. Storage Explorer kan detecteren of er hiërarchische naamruimte is ingeschakeld wanneer u bent aangemeld, of als u uw Storage-Account met de naam en sleutel hebt gekoppeld. U kunt Storage Explorer om te gebruiken voor ADLS Gen2 Storage-accounts:
-  * Maken en verwijderen van containers
-  * Eigenschappen van de container en machtigingen (linkerkant) beheren
-  * Weergeven en gegevens binnen containers gaan
+* U kunt nu Storage Explorer gebruiken om toegang te krijgen tot uw BLOB-gegevens via [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Als u bent aangemeld en Storage Explorer de sleutels voor uw opslag account niet kan ophalen, wordt een OAuth-token gebruikt voor verificatie bij interactie met uw gegevens.
+* Storage Explorer ondersteunt nu ADLS Gen2-opslag accounts. Als Storage Explorer detecteert dat hiërarchische naam ruimte is ingeschakeld voor een opslag account, wordt ' (ADLS Gen2 preview) ' weer gegeven naast de naam van uw opslag account. Storage Explorer kan detecteren of hiërarchische naam ruimte is ingeschakeld wanneer u bent aangemeld, of als u uw opslag account hebt gekoppeld aan de naam en sleutel. Voor ADLS Gen2 opslag accounts kunt u Storage Explorer gebruiken voor het volgende:
+  * Containers maken en verwijderen
+  * Container eigenschappen en-machtigingen beheren (aan de linkerkant)
+  * Gegevens binnen containers weer geven en ernaar navigeren
   * Nieuwe mappen maken
-  * Uploaden, downloaden, wijzigen en verwijderen van bestanden en mappen
-  * Eigenschappen van bestanden en mappen en machtigingen (rechterkant) beheren.
+  * Bestanden en mappen uploaden, downloaden, verwijderen en de naam ervan wijzigen
+  * Eigenschappen en machtigingen voor bestanden en mappen beheren (aan de rechter kant).
     
-    Andere standaard Blob-functies, zoals voorlopig verwijderen en momentopnamen, zijn momenteel niet beschikbaar. Beheer van machtigingen is ook alleen beschikbaar wanneer is aangemeld. Bovendien, als u werkt in een ADLS Gen2 Storage-account, wordt Storage Explorer AzCopy gebruiken voor alle uploads, downloads en maken standaard gebruik van de naam en sleutel referenties voor alle bewerkingen, indien beschikbaar.
-* Na sterke gebruikersfeedback, kan de lease break opnieuw leases in één keer op meerdere blobs verbreken worden gebruikt.
+    Andere typische BLOB-functies, zoals zacht verwijderen en moment opnamen, zijn momenteel niet beschikbaar. Het beheren van machtigingen is ook alleen beschikbaar wanneer u bent aangemeld. Wanneer u in een ADLS Gen2 Storage-account werkt Storage Explorer, wordt er bovendien AzCopy gebruikt voor alle uploads en down loads, en wordt de standaard instelling gebruikt voor het gebruik van naam-en sleutel referenties voor alle bewerkingen, indien beschikbaar.
+* Na sterke feedback van de gebruiker kan de afbreek lease opnieuw worden gebruikt om leases op meerdere blobs tegelijk te verstoren.
 
 ### <a name="known-issues"></a>Bekende problemen
 
-* Bij het downloaden van een ADLS Gen2 Storage-account, als een van de bestanden die worden overgebracht al bestaat, wordt soms AzCopy vastlopen. Dit wordt opgelost in een toekomstige hotfix.
-* Loskoppelen van een resource koppelen via SAS-URI, zoals een blob-container kan een fout veroorzaken waarmee wordt voorkomen dat andere bijlagen correct weergegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie voor meer informatie, #537.
-* Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u in dat geval heeft niet de blokkering opheffen u, als opmerking bij dit probleem.
+* Bij het downloaden van een ADLS Gen2 Storage-account wordt een van de bestanden die worden overgedragen al bestaan, AzCopy soms vastlopen. Dit wordt opgelost in een toekomstige hotfix.
+* Het ontkoppelen van een resource die is gekoppeld via SAS URI, zoals een BLOB-container, kan een fout veroorzaken die voor komt dat andere bijlagen correct worden weer gegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie #537 voor meer informatie.
+* Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u dit doet, neemt u een opmerking over dit probleem op.
 * Azurite is nog niet volledig geïmplementeerd alle Storage-API's. Als gevolg hiervan kunnen er onverwachte fouten of problemen bij het gebruik van Azurite voor opslag.
 * In zeldzame gevallen kan de focus structuur ophalen vastgelopen op Snelweergavetoegang. Registreer de focus, kunt u Alles vernieuwen.
-* Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron. Als tijdelijke oplossing voor dit probleem tijdens het uploaden naar of downloaden van een blob-container, kunt u de experimentele functie voor AzCopy.
+* Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron. U kunt dit probleem omzeilen bij het uploaden naar of downloaden van een BLOB-container met de experimentele AzCopy-functie.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter omzeilen hier beschreven.
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat hier wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
 * Azure Stack biedt geen ondersteuning voor de volgende functies. Poging tot het gebruiken van deze functies tijdens het werken met Azure Stack kunnen resources leiden tot onverwachte fouten.
@@ -446,32 +527,32 @@ In dit artikel bevat de releaseopmerkingen voor Azure Storage Explorer 1.9.0 rel
     ```
 
 ## <a name="version-160"></a>Versie 1.6.0
-12/5/2018
+5-12-2018
 
 ### <a name="new"></a>Nieuw
 
-* U kunt Storage Explorer nu gebruiken voor toegang tot uw Blob-gegevens via [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Als u bent aangemeld en Storage Explorer kan niet worden opgehaald van de sleutels voor uw Storage-account is, wordt een OAuth-token worden gebruikt om te verifiëren bij interactie met uw gegevens.
-* Storage Explorer biedt nu ondersteuning voor opslagaccounts van ADLS Gen2. Wanneer u Storage Explorer detecteert die hiërarchische naamruimte is ingeschakeld voor een opslagaccount, wordt u Zie '(ADLS Gen2 Preview)' naast de naam van uw opslagaccount. Storage Explorer kan detecteren of er hiërarchische naamruimte is ingeschakeld wanneer u bent aangemeld, of als u uw Storage-Account met de naam en sleutel hebt gekoppeld. U kunt Storage Explorer om te gebruiken voor ADLS Gen2 Storage-accounts:
-  * Maken en verwijderen van containers
-  * Eigenschappen van de container en machtigingen (linkerkant) beheren
-  * Weergeven en gegevens binnen containers gaan
+* U kunt nu Storage Explorer gebruiken om toegang te krijgen tot uw BLOB-gegevens via [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Als u bent aangemeld en Storage Explorer de sleutels voor uw opslag account niet kan ophalen, wordt een OAuth-token gebruikt voor verificatie bij interactie met uw gegevens.
+* Storage Explorer ondersteunt nu ADLS Gen2-opslag accounts. Als Storage Explorer detecteert dat hiërarchische naam ruimte is ingeschakeld voor een opslag account, wordt ' (ADLS Gen2 preview) ' weer gegeven naast de naam van uw opslag account. Storage Explorer kan detecteren of hiërarchische naam ruimte is ingeschakeld wanneer u bent aangemeld, of als u uw opslag account hebt gekoppeld aan de naam en sleutel. Voor ADLS Gen2 opslag accounts kunt u Storage Explorer gebruiken voor het volgende:
+  * Containers maken en verwijderen
+  * Container eigenschappen en-machtigingen beheren (aan de linkerkant)
+  * Gegevens binnen containers weer geven en ernaar navigeren
   * Nieuwe mappen maken
-  * Uploaden, downloaden, wijzigen en verwijderen van bestanden en mappen
-  * Eigenschappen van bestanden en mappen en machtigingen (rechterkant) beheren.
+  * Bestanden en mappen uploaden, downloaden, verwijderen en de naam ervan wijzigen
+  * Eigenschappen en machtigingen voor bestanden en mappen beheren (aan de rechter kant).
     
-    Andere standaard Blob-functies, zoals voorlopig verwijderen en momentopnamen, zijn momenteel niet beschikbaar. Beheer van machtigingen is ook alleen beschikbaar wanneer is aangemeld. Bovendien, als u werkt in een ADLS Gen2 Storage-account, wordt Storage Explorer AzCopy gebruiken voor alle uploads, downloads en maken standaard gebruik van de naam en sleutel referenties voor alle bewerkingen, indien beschikbaar.
-* Na sterke gebruikersfeedback, kan de lease break opnieuw leases in één keer op meerdere blobs verbreken worden gebruikt.
+    Andere typische BLOB-functies, zoals zacht verwijderen en moment opnamen, zijn momenteel niet beschikbaar. Het beheren van machtigingen is ook alleen beschikbaar wanneer u bent aangemeld. Wanneer u in een ADLS Gen2 Storage-account werkt Storage Explorer, wordt er bovendien AzCopy gebruikt voor alle uploads en down loads, en wordt de standaard instelling gebruikt voor het gebruik van naam-en sleutel referenties voor alle bewerkingen, indien beschikbaar.
+* Na sterke feedback van de gebruiker kan de afbreek lease opnieuw worden gebruikt om leases op meerdere blobs tegelijk te verstoren.
 
 ### <a name="known-issues"></a>Bekende problemen
 
-* Bij het downloaden van een ADLS Gen2 Storage-account, als een van de bestanden die worden overgebracht al bestaat, wordt soms AzCopy vastlopen. Dit wordt opgelost in een toekomstige hotfix.
-* Loskoppelen van een resource koppelen via SAS-URI, zoals een blob-container kan een fout veroorzaken waarmee wordt voorkomen dat andere bijlagen correct weergegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie voor meer informatie, #537.
-* Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u in dat geval heeft niet de blokkering opheffen u, als opmerking bij dit probleem.
+* Bij het downloaden van een ADLS Gen2 Storage-account wordt een van de bestanden die worden overgedragen al bestaan, AzCopy soms vastlopen. Dit wordt opgelost in een toekomstige hotfix.
+* Het ontkoppelen van een resource die is gekoppeld via SAS URI, zoals een BLOB-container, kan een fout veroorzaken die voor komt dat andere bijlagen correct worden weer gegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie #537 voor meer informatie.
+* Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u dit doet, neemt u een opmerking over dit probleem op.
 * Azurite is nog niet volledig geïmplementeerd alle Storage-API's. Als gevolg hiervan kunnen er onverwachte fouten of problemen bij het gebruik van Azurite voor opslag.
 * In zeldzame gevallen kan de focus structuur ophalen vastgelopen op Snelweergavetoegang. Registreer de focus, kunt u Alles vernieuwen.
-* Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron. Als tijdelijke oplossing voor dit probleem tijdens het uploaden naar of downloaden van een blob-container, kunt u de experimentele functie voor AzCopy.
+* Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron. U kunt dit probleem omzeilen bij het uploaden naar of downloaden van een BLOB-container met de experimentele AzCopy-functie.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter omzeilen hier beschreven.
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat hier wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
 * Azure Stack biedt geen ondersteuning voor de volgende functies. Poging tot het gebruiken van deze functies tijdens het werken met Azure Stack kunnen resources leiden tot onverwachte fouten.
@@ -512,12 +593,12 @@ In dit artikel bevat de releaseopmerkingen voor Azure Storage Explorer 1.9.0 rel
 * Bovendien, als u met behulp van AzCopy:
    * U kunt de AzCopy-opdracht gebruikt voor het uitvoeren van de overdracht naar het Klembord te kopiëren. Klik op 'AzCopy-opdracht naar Klembord kopiëren' in het activiteitenlogboek.
    * U moet de blob-editor handmatig vernieuwen na het uploaden.
-   * Uploaden van bestanden voor toevoeg-blobs wordt niet ondersteund, en vhd-bestanden worden geüpload als pagina-blobs en alle andere bestanden worden geüpload als blok-blobs.
-   * Fouten en conflicten die tijdens het uploaden of downloaden optreden niet worden weergegeven nadat een uploaden of downloaden is voltooid.
+   * Het uploaden van bestanden naar toevoeg-blobs wordt niet ondersteund en VHD-bestanden worden geüpload als pagina-blobs en alle andere bestanden worden geüpload als blok-blobs.
+   * Fouten en conflicten die zich voordoen tijdens het uploaden of downloaden, worden pas afgevoerd nadat het uploaden of downloaden is voltooid.
 
 Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares in de toekomst worden binnenkort.
 * Electron versie 2.0.11 maakt nu gebruik van Storage Explorer.
-* Belangrijke leases kan nu alleen worden uitgevoerd op één blob op een tijdstip. U moet bovendien de naam van de blob waarvan u zijn belangrijke lease invoeren. Deze wijziging is aangebracht om te verminderen de kans op belangrijke per ongeluk een lease, met name voor virtuele machines. #394
+* Belangrijke leases kan nu alleen worden uitgevoerd op één blob op een tijdstip. U moet bovendien de naam van de blob waarvan u zijn belangrijke lease invoeren. Deze wijziging is doorgevoerd om de kans te verminderen dat een lease per ongeluk wordt verbroken, met name voor Vm's. #394
 * Als u ooit aanmelden problemen ondervindt, kunt u nu proberen opnieuw instellen van verificatie. Ga naar het menu 'Help' en klik op "Herstellen" voor toegang tot deze mogelijkheid. #419
 
 ### <a name="fix"></a>Oplossen
@@ -529,13 +610,13 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 
 ### <a name="known-issues"></a>Bekende problemen
 
-* Loskoppelen van een resource koppelen via SAS-URI, zoals een blob-container kan een fout veroorzaken waarmee wordt voorkomen dat andere bijlagen correct weergegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie voor meer informatie, #537.
-* Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u in dat geval heeft niet de blokkering opheffen u, als opmerking bij dit probleem.
+* Het ontkoppelen van een resource die is gekoppeld via SAS URI, zoals een BLOB-container, kan een fout veroorzaken die voor komt dat andere bijlagen correct worden weer gegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie #537 voor meer informatie.
+* Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u dit doet, neemt u een opmerking over dit probleem op.
 * Azurite is nog niet volledig geïmplementeerd alle Storage-API's. Als gevolg hiervan kunnen er onverwachte fouten of problemen bij het gebruik van Azurite voor opslag.
 * In zeldzame gevallen kan de focus structuur ophalen vastgelopen op Snelweergavetoegang. Registreer de focus, kunt u Alles vernieuwen.
-* Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron. Als tijdelijke oplossing voor dit probleem tijdens het uploaden naar of downloaden van een blob-container, kunt u de experimentele functie voor AzCopy.
+* Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron. U kunt dit probleem omzeilen bij het uploaden naar of downloaden van een BLOB-container met de experimentele AzCopy-functie.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter omzeilen hier beschreven.
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat hier wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
 * Azure Stack biedt geen ondersteuning voor de volgende functies. Poging tot het gebruiken van deze functies tijdens het werken met Azure Stack kunnen resources leiden tot onverwachte fouten.
@@ -569,7 +650,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 10/15/2018
 
 ### <a name="hotfixes"></a>Hotfixes
-* De Azure Resource Management API-versie is teruggedraaid als u wilt deblokkeren Azure US Government-gebruikers. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
+* De Azure Resource Management API-versie is teruggedraaid om de blok kering van Azure-gebruikers van de Amerikaanse overheid ongedaan te maken. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
 * Het laden van kringvelden CSS-animaties te verminderen de hoeveelheid GPU die worden gebruikt door de Storage Explorer nu gebruiken. [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
 ### <a name="new"></a>Nieuw
@@ -595,7 +676,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 * In zeldzame gevallen kan de focus structuur ophalen vastgelopen op Snelweergavetoegang. Registreer de focus, kunt u Alles vernieuwen.
 * Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter tijdelijke oplossing beschreven [hier](https://github.com/Azure/azure-storage-node/issues/317).
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat [hier](https://github.com/Azure/azure-storage-node/issues/317)wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
 * Hoewel Azure Stack momenteel geen bestandsshares ondersteunt, wordt een knooppunt bestandsshares nog steeds wordt weergegeven onder een gekoppelde storage-account van Azure Stack.
@@ -625,7 +706,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 10/11/2018
 
 ### <a name="hotfixes"></a>Hotfixes
-* De Azure Resource Management API-versie is teruggedraaid als u wilt deblokkeren Azure US Government-gebruikers. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
+* De Azure Resource Management API-versie is teruggedraaid om de blok kering van Azure-gebruikers van de Amerikaanse overheid ongedaan te maken. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
 * Het laden van kringvelden CSS-animaties te verminderen de hoeveelheid GPU die worden gebruikt door de Storage Explorer nu gebruiken. [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
 ### <a name="new"></a>Nieuw
@@ -651,7 +732,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 * In zeldzame gevallen kan de focus structuur ophalen vastgelopen op Snelweergavetoegang. Registreer de focus, kunt u Alles vernieuwen.
 * Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter tijdelijke oplossing beschreven [hier](https://github.com/Azure/azure-storage-node/issues/317).
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat [hier](https://github.com/Azure/azure-storage-node/issues/317)wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
 * Hoewel Azure Stack momenteel geen bestandsshares ondersteunt, wordt een knooppunt bestandsshares nog steeds wordt weergegeven onder een gekoppelde storage-account van Azure Stack.
@@ -681,7 +762,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 24-09-2018
 
 ### <a name="hotfixes"></a>Hotfixes
-* Azure Resource Management API-versie bijwerken naar 2018-07-01, het toevoegen van ondersteuning voor nieuwe Azure Storage-Account. [#652](https://github.com/Microsoft/AzureStorageExplorer/issues/652)
+* Werk de API-versie van Azure resource management bij naar 2018-07-01 om ondersteuning toe te voegen voor nieuwe Azure Storage-account typen. [#652](https://github.com/Microsoft/AzureStorageExplorer/issues/652)
 
 ### <a name="new"></a>Nieuw
 * Externe resource-bijlagen, bijvoorbeeld voor SAS-verbindingen en emulatoren, is aanzienlijk verbeterd. U kunt nu het volgende doen:
@@ -706,7 +787,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 * In zeldzame gevallen kan de focus structuur ophalen vastgelopen op Snelweergavetoegang. Registreer de focus, kunt u Alles vernieuwen.
 * Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter tijdelijke oplossing beschreven [hier](https://github.com/Azure/azure-storage-node/issues/317).
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat [hier](https://github.com/Azure/azure-storage-node/issues/317)wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
 * Hoewel Azure Stack momenteel geen bestandsshares ondersteunt, wordt een knooppunt bestandsshares nog steeds wordt weergegeven onder een gekoppelde storage-account van Azure Stack.
@@ -766,7 +847,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 * In zeldzame gevallen kan de focus structuur ophalen vastgelopen op Snelweergavetoegang. Registreer de focus, kunt u Alles vernieuwen.
 * Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter tijdelijke oplossing beschreven [hier](https://github.com/Azure/azure-storage-node/issues/317).
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat [hier](https://github.com/Azure/azure-storage-node/issues/317)wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
 * Hoewel Azure Stack momenteel geen bestandsshares ondersteunt, wordt een knooppunt bestandsshares nog steeds wordt weergegeven onder een gekoppelde storage-account van Azure Stack.
@@ -799,7 +880,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 * Toegang tot de $web containers die worden gebruikt door statische Websites wordt nu ondersteund. Hiermee kunt u eenvoudig uploaden en beheren van bestanden en mappen die worden gebruikt door uw website. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
 * De app-balk op macOS is opnieuw zijn gerangschikt. Wijzigingen omvatten een bestandsmenu, enkele belangrijke wijzigingen van de snelkoppeling en diverse nieuwe opdrachten onder het menu van de app. [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
 * Het eindpunt van de instantie voor het aanmelden bij Azure US Government is gewijzigd in https://login.microsoftonline.us/
-* Toegankelijkheid: Wanneer een schermlezer actief is, werkt nu toetsenbordnavigatie met tabellen die worden gebruikt voor het weergeven van items aan de rechterkant. U kunt de pijltoetsen om te navigeren rijen en kolommen, Enter om aan te roepen standaardacties, de sleutel van de context menu te openen om het contextmenu voor een item en Shift of besturingselement multiselect gebruiken. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+* Toegankelijkheids Wanneer een scherm lezer actief is, werkt de toetsenbord navigatie nu met de tabellen die worden gebruikt voor het weer geven van items aan de rechter kant. U kunt de pijltoetsen om te navigeren rijen en kolommen, Enter om aan te roepen standaardacties, de sleutel van de context menu te openen om het contextmenu voor een item en Shift of besturingselement multiselect gebruiken. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
 
 ### <a name="fixes"></a>Oplossingen
 *  Op sommige computers zijn onderliggende processen lang duurt om te starten. Wanneer dit gebeurt, is een fout 'onderliggend proces kan niet tijdig starten' wordt weergegeven. De tijd die is toegewezen voor een onderliggend proces te starten is nu verhoogd van 20 tot 90 seconden. Als u nog steeds door dit probleem ondervindt, stuur een reactie op de gekoppelde GitHub-probleem. [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
@@ -807,20 +888,20 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 * Het niveau van de openbare toegang instellen voor een container alle beleidsregels voor toegang verwijdert, en vice versa. Beleidsregels voor openbare toegang en toegang blijven nu behouden bij het instellen van een van de twee. [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
 * "AccessTierChangeTime" zijn afgekapt in het dialoogvenster Eigenschappen. Dit probleem is opgelost. [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
 * ' Microsoft Azure Storage Explorer-' voorvoegsel ontbreekt in het dialoogvenster Nieuwe map maken. Dit probleem is opgelost. [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
-* Toegankelijkheid: Het dialoogvenster entiteit toevoegen is moeilijk om te navigeren wanneer u VoiceOver. Verbeteringen zijn aangebracht. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
-* Toegankelijkheid: De achtergrondkleur van de knop samenvouwen/uitvouwen voor het deelvenster met eigenschappen en acties is inconsistent met vergelijkbare UI-besturingselementen in thema met hoog Contrast zwart. De kleur is gewijzigd. [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
-* Toegankelijkheid: In het thema met hoog Contrast zwart is de focus opmaak voor de knop 'X' in het dialoogvenster Eigenschappen niet zichtbaar. Dit probleem is opgelost. [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
-* Toegankelijkheid: De tabbladen met eigenschappen en acties zijn verschillende aria-waarden die het heeft geresulteerd in een ervaring van de lezer subpar scherm ontbreekt. De ontbrekende aria-waarden zijn nu toegevoegd. [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
-* Toegankelijkheid: Samengevouwen structuurknooppunten aan de linkerzijde zijn niet aria-uitgevouwen waarde false wordt opgegeven. Dit probleem is opgelost. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+* Toegankelijkheids Het dialoog venster entiteit toevoegen is lastig te navigeren wanneer Voice wordt gebruikt. Verbeteringen zijn aangebracht. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
+* Toegankelijkheids De achtergrond kleur van de knop samen vouwen/uitvouwen voor het deel venster acties en eigenschappen is inconsistent met vergelijk bare UI-besturings elementen in hoog contrast Black-thema. De kleur is gewijzigd. [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
+* Toegankelijkheids In hoog contrast zwart thema is de focus stijl voor de knop X in het dialoog venster Eigenschappen niet zichtbaar. Dit probleem is opgelost. [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
+* Toegankelijkheids Op de tabbladen acties en eigenschappen ontbreken verschillende aria-waarden die hebben geleid tot een subpar-scherm lezers ervaring. De ontbrekende aria-waarden zijn nu toegevoegd. [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
+* Toegankelijkheids Aan de linkerkant is geen aria met de waarde False opgegeven voor samengevouwen structuur knooppunten. Dit probleem is opgelost. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
 
 ### <a name="known-issues"></a>Bekende problemen
-* Loskoppelen van een resource koppelen via SAS-URI, zoals een blob-container kan een fout veroorzaken waarmee wordt voorkomen dat andere bijlagen correct weergegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie [dit probleem](https://github.com/Microsoft/AzureStorageExplorer/issues/537) voor meer informatie.
+* Het ontkoppelen van een resource die is gekoppeld via SAS URI, zoals een BLOB-container, kan een fout veroorzaken die voor komt dat andere bijlagen correct worden weer gegeven. U kunt dit probleem omzeilen, vernieuwt u het knooppunt voor de. Zie [dit probleem](https://github.com/Microsoft/AzureStorageExplorer/issues/537) voor meer informatie.
 * Als u Visual Studio voor Mac en ooit een aangepaste AAD-configuratie hebt gemaakt, is het wellicht niet mogelijk om aan te melden. Verwijder de inhoud van het probleem te omzeilen, ~ /. IdentityService/AadConfigurations. Als u in dat geval heeft niet de blokkering opheffen u, stuur een reactie op [dit probleem](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
 * Azurite is nog niet volledig geïmplementeerd alle Storage-API's. Als gevolg hiervan kunnen er onverwachte fouten of problemen bij het gebruik van Azurite voor opslag.
 * In zeldzame gevallen kan de focus structuur ophalen vastgelopen op Snelweergavetoegang. Registreer de focus, kunt u Alles vernieuwen.
 * Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter tijdelijke oplossing beschreven [hier](https://github.com/Azure/azure-storage-node/issues/317).
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat [hier](https://github.com/Azure/azure-storage-node/issues/317)wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
 * De volgende functies biedt geen ondersteuning voor Azure Stack en er wordt geprobeerd om ze te gebruiken tijdens het werken met Azure Stack kan leiden tot onverwachte fouten:
@@ -880,7 +961,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 * In zeldzame gevallen kan de focus structuur ophalen vastgelopen op Snelweergavetoegang. Registreer de focus, kunt u Alles vernieuwen.
 * Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter tijdelijke oplossing beschreven [hier](https://github.com/Azure/azure-storage-node/issues/317).
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat [hier](https://github.com/Azure/azure-storage-node/issues/317)wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
 * Hoewel Azure Stack momenteel geen bestandsshares ondersteunt, wordt een knooppunt bestandsshares nog steeds wordt weergegeven onder een gekoppelde storage-account van Azure Stack.
@@ -934,7 +1015,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 * In zeldzame gevallen kan de focus structuur ophalen vastgelopen op Snelweergavetoegang. Registreer de focus, kunt u Alles vernieuwen.
 * Uploaden vanaf uw OneDrive-map werkt niet vanwege een fout in NodeJS. De fout is opgelost, maar nog niet is geïntegreerd in Electron.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter tijdelijke oplossing beschreven [hier](https://github.com/Azure/azure-storage-node/issues/317).
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat [hier](https://github.com/Azure/azure-storage-node/issues/317)wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
 * Hoewel Azure Stack momenteel geen bestandsshares ondersteunt, wordt een knooppunt bestandsshares nog steeds wordt weergegeven onder een gekoppelde storage-account van Azure Stack.
@@ -1000,7 +1081,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 ### <a name="known-issues"></a>Bekende problemen
 * In zeldzame gevallen kan de focus structuur ophalen vastgelopen op Snelweergavetoegang. Registreer de focus, kunt u Alles vernieuwen.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter omzeilen hier beschreven.
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat hier wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
 * Hoewel Azure Stack momenteel geen bestandsshares ondersteunt, wordt een knooppunt bestandsshares nog steeds wordt weergegeven onder een gekoppelde storage-account van Azure Stack.
@@ -1036,7 +1117,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 ### <a name="known-issues"></a>Bekende problemen
 * Storage Explorer biedt geen ondersteuning voor AD FS-accounts.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter tijdelijke oplossing beschreven [hier](https://github.com/Azure/azure-storage-node/issues/317).
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat [hier](https://github.com/Azure/azure-storage-node/issues/317)wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Het instellingenvenster account kan worden weergegeven die u wilt opnieuw invoeren van referenties om te filteren op abonnementen.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
@@ -1085,7 +1166,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 ### <a name="known-issues"></a>Bekende problemen
 * Storage Explorer biedt geen ondersteuning voor AD FS-accounts.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter omzeilen hier beschreven.
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat hier wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Het instellingenvenster account kan worden weergegeven die u wilt opnieuw invoeren van referenties om te filteren op abonnementen.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
@@ -1132,7 +1213,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 * Storage Explorer biedt geen ondersteuning voor AD FS-accounts.
 * Sneltoetsen voor 'Weergave Explorer' en 'Accountbeheer weergave' moet Ctrl / Cmd + Shift + E en Ctrl / Cmd + Shift + A respectievelijk.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter omzeilen hier beschreven.
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat hier wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Het instellingenvenster account kan worden weergegeven die u wilt opnieuw invoeren van referenties om te filteren op abonnementen.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
@@ -1196,7 +1277,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 * Storage Explorer biedt geen ondersteuning voor AD FS-accounts.
 * Sneltoetsen voor 'Weergave Explorer' en 'Accountbeheer weergave' moet Ctrl / Cmd + Shift + E en Ctrl / Cmd + Shift + A respectievelijk.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter omzeilen hier beschreven.
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat hier wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Het instellingenvenster account kan worden weergegeven die u wilt opnieuw invoeren van referenties om te filteren op abonnementen.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
@@ -1252,7 +1333,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 * Storage Explorer biedt geen ondersteuning voor AD FS-accounts.
 * Sneltoetsen voor 'Weergave Explorer' en 'Accountbeheer weergave' moet Ctrl / Cmd + Shift + E en Ctrl / Cmd + Shift + A respectievelijk.
 * Wanneer die gericht is op Azure Stack, mislukken bepaalde bestanden als toevoeg-blobs uploaden.
-* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit is omdat we de annuleren filter omzeilen hier beschreven.
+* Na het klikken op 'Annuleren' voor een taak, duren het even voor die taak annuleren. Dit komt doordat we het werkings filter voor annuleren gebruiken dat hier wordt beschreven.
 * Als u de verkeerde PINCODE/Smartcard-certificaat kiest, moet u opnieuw opstarten om Opslagverkenner besluit vergeet.
 * Het instellingenvenster account kan worden weergegeven die u wilt opnieuw invoeren van referenties om te filteren op abonnementen.
 * Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een naam.
@@ -1325,12 +1406,12 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 
 * Bijgewerkte Electron versie 1.7.2 om te profiteren van verschillende essentiële beveiligingsupdates
 * U kunt nu snel toegang tot de online gids voor probleemoplossing in het menu help
-* Storage Explorer probleemoplossing [handleiding][2]
-* [Instructies][3] verbinding wilt maken met een Azure Stack-abonnement
+* [Gids][2] voor het oplossen van problemen Storage Explorer
+* [Instructies][3] voor het maken van verbinding met een Azure stack-abonnement
 
 ### <a name="known-issues"></a>Bekende problemen
 
-* Knoppen op het dialoogvenster voor bevestiging van verwijderen map zich niet registreren met de muis klikt op op Linux. werk is ongeveer het gebruik van de Enter-toets
+* Knoppen op het dialoogvenster voor bevestiging van verwijderen map zich niet registreren met de muis klikt op op Linux. tijdelijke oplossing is om de Enter-toets te gebruiken
 * Als u ervoor de verkeerde PINCODE/Smartcard-certificaat kiest wordt moet u opnieuw op te starten om Opslagverkenner vergeet de beslissing
 * Met meer dan 3 groepen blobs of op hetzelfde moment uploaden van bestanden kan leiden tot fouten
 * Het instellingenvenster account kan worden weergegeven die u opnieuw invoeren van referenties wilt om abonnementen filteren
@@ -1350,17 +1431,17 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 
 #### <a name="new"></a>Nieuw
 
-* Storage Explorer probleemoplossing [handleiding][2]
-* [Instructies][3] verbinding wilt maken met een Azure Stack-abonnement
+* [Gids][2] voor het oplossen van problemen Storage Explorer
+* [Instructies][3] voor het maken van verbinding met een Azure stack-abonnement
 
 #### <a name="fixes"></a>Oplossingen
 
-* Opgelost: Uploaden van het bestand heeft een hoge kans dat een out-of geheugenfout veroorzaakt
-* Opgelost: U kunt nu aanmelden met een PINCODE/Smartcard
-* Opgelost: Open in de Portal nu werkt met Azure China 21Vianet, Azure Duitsland, Azure US Government en Azure Stack
-* Opgelost: Tijdens het uploaden van een map naar een blobcontainer, zou een fout 'Ongeldige bewerking' soms optreden
-* Opgelost: Alles selecteren is bij het beheren van momentopnamen uitgeschakeld
-* Opgelost: De metagegevens van de basis blob mogelijk overschreven nadat u hebt bekeken, de eigenschappen van de momentopnamen ervan verwijderd
+* Vaste Het uploaden van bestanden had een hoge kans om geheugen fout te veroorzaken
+* Vaste U kunt zich nu aanmelden met een pincode of Smart Card
+* Vaste Open in portal werkt nu met Azure China 21Vianet, Azure Duitsland, Azure Amerikaanse overheid en Azure Stack
+* Vaste Tijdens het uploaden van een map naar een BLOB-container treedt er soms een ' ongeldige bewerking ' op
+* Vaste Alles selecteren is uitgeschakeld tijdens het beheren van moment opnamen
+* Vaste De meta gegevens van de basis-BLOB worden mogelijk overschreven na het weer geven van de eigenschappen van de moment opnamen
 
 #### <a name="known-issues"></a>Bekende problemen
 
@@ -1436,7 +1517,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 * Storage Explorer 0.8.9 worden automatisch de meest recente versie voor updates gedownload.
 * Hotfix: met behulp van een portal zou gegenereerde SAS-URI naar een opslagaccount koppelen leiden tot een fout.
 * U kunt nu maken, beheren en blob-momentopnamen te bevorderen.
-* U kunt nu aanmelden bij Azure China 21Vianet, Azure Duitsland en Azure US Government-accounts.
+* U kunt zich nu aanmelden bij Azure China 21Vianet, Azure Duitsland en Azure US Government-accounts.
 * U kunt nu het zoomniveau wijzigen. Gebruik de opties in het menu Weergave inzoomen, uitzoomen en zoomen opnieuw instellen.
 * Unicode-tekens worden nu ondersteund in de metagegevens van de gebruiker voor bestanden en blobs.
 * Verbeterde toegankelijkheid.
@@ -1469,13 +1550,13 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 
 #### <a name="fixes"></a>Oplossingen
 
-* Opgelost: Storage Explorer is nu een vertrouwde app op Mac
-* Opgelost: Ubuntu 14.04 wordt opnieuw ondersteund
-* Opgelost: Soms de account toevoegen gebruikersinterface knippert bij het laden van abonnementen
-* Opgelost: Soms niet alle opslagresources zijn vermeld in het navigatiedeelvenster links
-* Opgelost: Het actiedeelvenster soms leeg acties worden weergegeven
-* Opgelost: De grootte van het venster van de laatste gesloten sessie wordt nu behouden
-* Opgelost: U kunt meerdere tabbladen voor dezelfde resource met behulp van het contextmenu openen
+* Vaste Storage Explorer is nu een vertrouwde app op Mac
+* Vaste Ubuntu 14,04 wordt opnieuw ondersteund
+* Vaste Soms knippert de gebruikers interface van het account toevoegen tijdens het laden van abonnementen
+* Vaste Soms zijn niet alle opslag resources opgenomen in het navigatie deel venster aan de linkerkant
+* Vaste In het actie deel venster worden soms lege acties weer gegeven
+* Vaste De venster grootte van de laatste gesloten sessie wordt nu bewaard
+* Vaste U kunt meerdere tabbladen voor dezelfde resource openen met behulp van het context menu
 
 #### <a name="known-issues"></a>Bekende problemen
 
@@ -1497,7 +1578,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 * Geïntroduceerd afgebakende zoekopdracht met onze nieuwe zoekfunctie voor verbeterde subtekenreeks, opnieuw, zodat u hebt nu twee opties voor het zoeken in:
     * Globale zoeken: Geef een zoekterm in het Zoektekstvak
     * Afgebakende zoekopdracht - Klik op het pictogram met Vergrootglas naast een knooppunt, en vervolgens een zoekterm toevoegen aan het einde van het pad, of met de rechtermuisknop op en selecteer 'Zoeken vanaf hier'
-* We hebben verschillende thema's toegevoegd: Licht (standaard), donker, Hoog Contrast zwart en Hoog Contrast wit. Ga naar bewerken -&gt; thema's aan uw voorkeur thema wijzigen
+* We hebben diverse Thema's toegevoegd: Licht (standaard), donker, hoog contrast zwart en hoog contrast wit. Ga naar bewerken -&gt; thema's aan uw voorkeur thema wijzigen
 * U kunt Blob en bestand eigenschappen wijzigen
 * We bieden nu ondersteuning voor codering (base64) en ongecodeerde Wachtrijberichten
 * Op Linux, een 64-bits besturingssysteem is nu vereist. Voor deze release ondersteunen we alleen 64-bits Ubuntu 16.04.1 LTS
@@ -1505,14 +1586,14 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 
 #### <a name="fixes"></a>Oplossingen
 
-* Opgelost: Scherm problemen blokkeren
-* Opgelost: Verbeterde beveiliging
-* Opgelost: Soms dubbele gekoppelde accounts kunnen worden weergegeven.
-* Opgelost: Een blob met een niet-gedefinieerde type inhoud kan een uitzondering gegenereerd.
-* Opgelost: Openen van het deelvenster Query op een lege tabel is niet mogelijk
-* Opgelost: Is afhankelijk van fouten in het zoekvak
-* Opgelost: Vergroot het aantal resources die zijn geladen uit 50 tot 100 wanneer te klikken op "Meer Load"
-* Opgelost: Op de eerste keer uitvoert als een account is aangemeld bij, selecteren we nu alle abonnementen voor dat account standaard
+* Vaste Problemen bij het bevriezen van het scherm
+* Vaste Verbeterde beveiliging
+* Vaste Soms kunnen er dubbele gekoppelde accounts worden weer gegeven
+* Vaste Een blob met een niet-gedefinieerd inhouds type kan een uitzonde ring genereren
+* Vaste Het openen van het query paneel op een lege tabel is niet mogelijk
+* Vaste De functie voor het zoeken in zoek acties is afhankelijk
+* Vaste Het aantal resources dat is geladen van 50 tot 100 wordt verhoogd wanneer u op extra laden klikt
+* Vaste Bij de eerste uitvoering, als een account is aangemeld, selecteren we nu standaard alle abonnementen voor dat account.
 
 #### <a name="known-issues"></a>Bekende problemen
 
@@ -1533,8 +1614,8 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 #### <a name="fixes"></a>Oplossingen
 
 * Opgelost: racevoorwaarde tijdens de zoekopdracht soms veroorzaakt knooppunten worden niet uit te breiden
-* Opgelost: Bij het verbinden met de Storage-Accounts met de naam en sleutel werkt 'HTTP gebruiken' niet
-* Opgelost: SAS-sleutels (die speciaal Portal gegenereerd) geretourneerd met een fout "afsluitende schuine streep"
+* Vaste ' HTTP gebruiken ' werkt niet wanneer u verbinding maakt met opslag accounts met de account naam en-sleutel
+* Vaste SAS-sleutels (speciaal door de portal gegenereerde poorten) retour neren de fout ' afsluitende slash '
 * Vaste: tabel problemen met importeren
     * Soms zijn partitiesleutel en rijsleutel teruggedraaid
     * Kan niet 'null' partitiesleutels lezen
@@ -1580,7 +1661,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 
 #### <a name="fixes"></a>Oplossingen
 
-* Opgelost: Microsoft-Accounts moet opnieuw worden geverifieerd om de 8-12 uur
+* Vaste Micro soft-accounts moeten elke 8-12 uur opnieuw worden geverifieerd
 
 #### <a name="known-issues"></a>Bekende problemen
 
@@ -1588,7 +1669,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 * macOS-installatie mogelijk verhoogde machtigingen
 * Het instellingenvenster account kan worden weergegeven dat u referenties invoeren moet om abonnementen filteren
 * Naam van bestandsshares, blob-containers en tabellen behouden niet metagegevens of andere eigenschappen van de container, zoals het quotum voor de bestandsshare, niveau openbare toegang of beleidsregels voor toegang
-* Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en metagegevens voor blobs, bestanden en entiteiten blijven behouden tijdens een wijzigen
+* Naam wijzigen van blobs (afzonderlijk of in een nieuwe naam blob-container) behoudt niet momentopnamen. Alle andere eigenschappen en meta gegevens voor blobs, bestanden en entiteiten blijven behouden tijdens het wijzigen van de naam
 * Kopiëren of verwijderen van resources werkt niet binnen de SAS-gekoppelde accounts
 
 07/07/2016
@@ -1599,7 +1680,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 #### <a name="new"></a>Nieuw
 
 * Storage-Accounts zijn gegroepeerd op abonnementen. opslag en bronnen die zijn gekoppeld via de sleutel of SA's worden weergegeven onder het knooppunt (lokale en bijgevoegde)
-* Meld u af van accounts in het Configuratiescherm "Azure-Accountinstellingen"
+* Meld u af bij accounts in het deel venster Azure-account instellingen
 * Proxy-instellingen voor inschakelen en beheren van aanmelding configureren
 * Maken en blob-lease verbreken
 * Open blob-containers, wachtrijen, tabellen en bestanden met één klik
@@ -1636,7 +1717,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 
 * Vaste: uploaden of downloaden van grote blobs kan leiden tot onvolledige uploaden/downloaden
 * Vaste: bewerken, toe te voegen of importeren van een entiteit met een numerieke tekenreekswaarde ("1") zullen converteren naar double
-* Opgelost: Kan niet uitbreiden van het knooppunt van de tabel in de lokale ontwikkelomgeving
+* Vaste Kan het tabel knooppunt niet uitvouwen in de lokale ontwikkel omgeving
 
 #### <a name="known-issues"></a>Bekende problemen
 
@@ -1656,7 +1737,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 
 #### <a name="known-issues"></a>Bekende problemen
 
-* Tabellen: Toevoegen, bewerken of importeren van een entiteit die een eigenschap met een ambiguously numerieke waarde, zoals "1" of "1.0", en de gebruiker probeert te verzenden als een `Edm.String`, de waarde wordt terugkeren via de client-API als een Edm.Double
+* Maateenheidgroeptabellen Toevoegen, bewerken of importeren van een entiteit met een eigenschap met een niet-eenduidige numerieke waarde, zoals "1" of "1,0", en de gebruiker probeert deze te verzenden als een `Edm.String`EDM-client. dubbele
 
 03/31/2016
 
@@ -1702,7 +1783,7 @@ Ten slotte wordt ondersteuning voor het gebruik van AzCopy voor bestandsshares i
 
 * Linux-ondersteuning (pariteit functies voor OS x)
 * Blob-containers met Shared Access Signatures (SAS)-sleutel toevoegen
-* Opslagaccounts voor Azure China 21Vianet toevoegen
+* Opslag accounts voor Azure China 21Vianet toevoegen
 * Storage-Accounts met aangepaste eindpunten toevoegen
 * Openen en de inhoud van tekst en afbeeldingen blobs weergeven
 * Blob-eigenschappen en metagegevens weergeven en bewerken

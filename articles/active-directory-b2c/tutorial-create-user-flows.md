@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 130186af13b9207326cd52b46b880c1f13a16100
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 3633ffb09d71bd166cb7366f860662d9b91c7f07
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67848076"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063401"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Zelfstudie: Gebruikers stromen maken in Azure Active Directory B2C
 
-In uw toepassingen kunt u [gebruikers stromen](active-directory-b2c-reference-policies.md) gebruiken waarmee gebruikers zich kunnen registreren, aanmelden of hun profiel beheren. U kunt meerdere gebruikers stromen van verschillende typen maken in uw Azure Active Directory (Azure AD) B2C-Tenant en deze naar behoefte gebruiken in uw toepassingen. Gebruikers stromen kunnen opnieuw worden gebruikt in verschillende toepassingen.
+In uw toepassingen kunt u [gebruikers stromen](active-directory-b2c-reference-policies.md) gebruiken waarmee gebruikers zich kunnen registreren, aanmelden of hun profiel beheren. U kunt meerdere gebruikers stromen van verschillende typen in uw Azure Active Directory B2C-Tenant (Azure AD B2C) maken en deze naar behoefte gebruiken in uw toepassingen. Gebruikers stromen kunnen opnieuw worden gebruikt in verschillende toepassingen.
 
 In dit artikel leert u het volgende:
 
@@ -41,7 +41,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 Met de registratie-en aanmeldings gebruikers stroom worden zowel registratie-als aanmeldings ervaringen met één configuratie afgehandeld. Gebruikers van uw toepassing ondervinden het juiste pad, afhankelijk van de context.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Zorg ervoor dat u de map met uw Azure AD B2C-tenant door te klikken op de **map- en abonnementsfilter** in het bovenste menu en de map waarin uw tenant te kiezen.
+1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 
     ![Map-en abonnements filter waarvoor B2C-Tenant is geselecteerd](./media/tutorial-create-user-flows/switch-directories.PNG)
 

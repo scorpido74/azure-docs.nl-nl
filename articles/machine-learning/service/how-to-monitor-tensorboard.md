@@ -1,6 +1,6 @@
 ---
 title: Experimenten visualiseren met TensorBoard
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Start TensorBoard om de geschiedenis van experimentele uitvoeringen te visualiseren en mogelijke gebieden te identificeren voor het afstemmen en opnieuw trainen van afstemming.
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: 2e4527ba167076935505b668a7879e5f1446b25e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b96b80a735c0caee8a3aabaf19b04fd0e153ba6b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856075"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034337"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Experimentele uitvoeringen en metrische gegevens visualiseren met TensorBoard en Azure Machine Learning
 
-In dit artikel leert u hoe u de uitvoeringen van uw experiment en metrische gegevens in TensorBoard kunt weer geven met behulp van [het `tensorboard` pakket](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py) in de belangrijkste Azure machine learning Service-SDK. Wanneer u de experimentele uitvoeringen hebt geïnspecteerd, kunt u uw machine learning modellen beter afstemmen en opnieuw trainen.
+In dit artikel leert u hoe u de uitvoeringen van uw experiment en metrische gegevens in TensorBoard kunt weer geven met behulp van [het `tensorboard` pakket](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py) in de belangrijkste Azure machine learning-SDK. Wanneer u de experimentele uitvoeringen hebt geïnspecteerd, kunt u uw machine learning modellen beter afstemmen en opnieuw trainen.
 
 [TensorBoard](https://www.tensorflow.org/tensorboard/r1/overview) is een suite van webtoepassingen voor het inspecteren en leren van uw experiment structuur en prestaties.
 
@@ -43,7 +43,7 @@ Hoe u TensorBoard start met Azure Machine Learning experimenten is afhankelijk v
 
     * Uw eigen Juptyer-notebook server
           * [Installeer de Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) met de `tensorboard` extra
-          * [Maak een Azure machine learning service-werk ruimte](how-to-manage-workspace.md).  
+          * [Maak een Azure machine learning-werk ruimte](how-to-manage-workspace.md).  
           * [Maak een configuratie bestand voor de werk ruimte](how-to-configure-environment.md#workspace).
   
 <a name="direct"></a>
@@ -71,7 +71,7 @@ if not path.exists(exp_dir):
 
 ### <a name="download-tensorflow-demo-experiment-code"></a>Tensor flow-demo-experiment code downloaden
 
-De opslag plaats van tensor flow heeft een MNIST-demo met uitgebreide TensorBoard-instrumentatie. Het is niet nodig om de code van deze demo zodanig te wijzigen dat deze werkt met de Azure Machine Learning-service. In de volgende code wordt de MNIST-code gedownload en in de zojuist gemaakte map experiment opgeslagen.
+De opslag plaats van tensor flow heeft een MNIST-demo met uitgebreide TensorBoard-instrumentatie. Het is niet nodig om de code van deze demo te wijzigen zodat deze werkt met Azure Machine Learning. In de volgende code wordt de MNIST-code gedownload en in de zojuist gemaakte map experiment opgeslagen.
 
 ```python
 import requests
@@ -287,4 +287,4 @@ tb.stop()
 In deze zelf studie hebben we twee experimenten gemaakt en geleerd hoe u TensorBoard kunt starten op basis van hun uitvoerings geschiedenis om gebieden te identificeren voor potentiële afstemming en retraining. 
 
 * Als u tevreden bent met uw model, gaat u naar onze [informatie over het implementeren van een model](how-to-deploy-and-where.md) artikel. 
-* Meer informatie over het afstemmen van [afstemming](how-to-tune-hyperparameters.md). 
+* Meer informatie over het [afstemmen van afstemming](how-to-tune-hyperparameters.md). 

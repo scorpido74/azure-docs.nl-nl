@@ -4,7 +4,7 @@ description: Windows virtual machines opnieuw implementeren in azure om probleme
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 tags: azure-resource-manager,top-support-issue
 ms.assetid: 0ee456ee-4595-4a14-8916-72c9110fc8bd
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 12488033448c7798690b3d6d68782baf2f76adf9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 36af0eeb43fb209ed65f950576f2dc9e97ec3633
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090301"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058629"
 ---
 # <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Windows-virtuele machine opnieuw implementeren naar nieuw Azure-knoop punt
 Als u problemen ondervindt met het oplossen van problemen met de probleem oplossing voor Extern bureaublad (RDP) of toegang tot een toepassing op een virtuele Windows-machine (VM), is het mogelijk dat u de VM opnieuw implementeert. Wanneer u een virtuele machine opnieuw implementeert, wordt de VM door Azure afgesloten, wordt de virtuele machine verplaatst naar een nieuw knoop punt in de Azure-infra structuur en wordt deze weer ingeschakeld en worden alle configuratie opties en bijbehorende resources bewaard. In dit artikel wordt beschreven hoe u een virtuele machine opnieuw implementeert met behulp van Azure PowerShell of de Azure Portal.

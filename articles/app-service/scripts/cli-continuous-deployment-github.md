@@ -13,21 +13,21 @@ ms.workload: web
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 12/11/2017
+ms.date: 09/02/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2d9b9512df294b25fa73b890a646f29dfd0c3d88
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 02853186a1f28d8c6db6b5421c6ebba0640461cb
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113626"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "71057888"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>Een App Service-app maken met continue implementatie vanuit GitHub met behulp van CLI
 
 In dit voorbeeldscript wordt een app gemaakt in App Service met de bijbehorende resources en wordt er vervolgens continue implementatie vanuit een GitHub-opslagplaats ingesteld. Zie [Een app maken en code implementeren vanuit GitHub](cli-deploy-github.md) voor de implementatie van GitHub zonder continue implementatie. Voor dit voorbeeld hebt u het volgende nodig:
 
-* Een GitHub-opslagplaats met toepassingscode, waarvoor u beheerdersbevoegdheden hebt. Structureer uw opslag plaats op basis van de voor bereiding van [uw opslag plaats](../deploy-continuous-deployment.md#prepare-your-repository) om automatisch builds te krijgen.
+* Een GitHub-opslagplaats met toepassingscode, waarvoor u beheerdersbevoegdheden hebt. Structureer uw opslag plaats op basis van de voor [bereiding van uw opslag plaats](../deploy-continuous-deployment.md#prepare-your-repository) om automatisch builds te krijgen.
 * Een [Personal Access Token (PAT)](https://help.github.com/articles/creating-an-access-token-for-command-line-use) voor uw GitHub-account.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

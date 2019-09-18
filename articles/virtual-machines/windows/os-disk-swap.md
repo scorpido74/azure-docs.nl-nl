@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: b213db38dade06e5015227494fa77b2f465ba1d9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 28aad5c3ff80042d1b9de5a8a92137e19c8871fd
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089049"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058536"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>De besturingssysteem schijf wijzigen die wordt gebruikt door een Azure VM met behulp van Power shell
 
@@ -29,7 +29,7 @@ Als u een bestaande VM hebt, maar u de schijf wilt wisselen voor een back-upschi
 
 De VM moet stopped\deallocated zijn. vervolgens kan de bron-ID van de beheerde schijf worden vervangen door de resource-ID van een andere beheerde schijf.
 
-Zorg ervoor dat de VM-grootte en het opslag type compatibel zijn met de schijf die u wilt koppelen. Als de schijf die u wilt gebruiken zich bijvoorbeeld in Premium Storage bevindt, moet de virtuele machine Premium Storage kunnen zijn (zoals een grootte van de DS-serie). 
+Zorg ervoor dat de VM-grootte en het opslag type compatibel zijn met de schijf die u wilt koppelen. Als de schijf die u wilt gebruiken zich bijvoorbeeld in Premium Storage bevindt, moet de virtuele machine Premium Storage kunnen zijn (zoals een grootte van de DS-serie). Beide schijven moeten ook dezelfde grootte hebben.
 
 Een lijst met schijven in een resource groep ophalen met behulp van [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)
 

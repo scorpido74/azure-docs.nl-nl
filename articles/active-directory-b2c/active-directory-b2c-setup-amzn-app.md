@@ -10,25 +10,25 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 89dd592e6e5ea1ce71277035654068ce2f782890
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: bddbd9b588d8ffc2ace3a937fa2c72876eb5e4e9
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622213"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065216"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Registratie instellen en aanmelden met een Amazon-account met Azure Active Directory B2C
 
 ## <a name="create-an-amazon-application"></a>Een Amazon-toepassing maken
 
-Als u een Amazon-account wilt gebruiken als een [ID-provider](active-directory-b2c-reference-oauth-code.md) in azure Active Directory (Azure AD) B2C, moet u een toepassing maken in uw Tenant waarmee deze wordt vertegenwoordigd. Als u nog geen Amazon-account hebt, kunt u zich aanmelden [https://www.amazon.com/](https://www.amazon.com/)bij.
+Als u een Amazon-account wilt gebruiken als een [ID-provider](active-directory-b2c-reference-oauth-code.md) in Azure Active Directory B2C (Azure AD B2C), moet u een toepassing maken in uw Tenant waarmee deze wordt vertegenwoordigd. Als u nog geen Amazon-account hebt, kunt u zich aanmelden [https://www.amazon.com/](https://www.amazon.com/)bij.
 
 1. Meld u aan bij het [Amazon Developer Center](https://login.amazon.com/) met uw Amazon-account referenties.
 1. Als u dit nog niet hebt gedaan, klikt u op registreren, volgt **u**de registratie stappen voor de ontwikkelaar en accepteert u het beleid.
 1. Selecteer **nieuwe toepassing registreren**.
 1. Voer een **naam**, **Beschrijving**en URL voor de **privacyverklaring**in en klik vervolgens op **Opslaan**. De privacyverklaring is een pagina die u beheert en die privacy-informatie verstrekt aan gebruikers.
 1. Kopieer de waarden van de **client-id**in het gedeelte **Web Settings** . Selecteer **geheim weer geven** om het client geheim te ontvangen en kopieer het vervolgens. U hebt beide nodig om een Amazon-account te configureren als een id-provider in uw Tenant. **Client geheim** is een belang rijke beveiligings referentie.
-1. Selecteer **bewerken**in de sectie `https://your-tenant-name.b2clogin.com` Webinstellingen en voer in **toegestane java script-oorsprong** in en `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in **toegestane retour-url's**. Vervang `your-tenant-name` door de naam van uw Tenant. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant, zelfs als de Tenant is gedefinieerd met hoofd letters in Azure AD B2C.
+1. Selecteer **bewerken**in de sectie `https://your-tenant-name.b2clogin.com` **Webinstellingen** en voer in **toegestane java script-oorsprong** in en `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in **toegestane retour-url's**. Vervang `your-tenant-name` door de naam van uw Tenant. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant, zelfs als de Tenant is gedefinieerd met hoofd letters in Azure AD B2C.
 1. Klik op **Opslaan**.
 
 ## <a name="configure-an-amazon-account-as-an-identity-provider"></a>Een Amazon-account configureren als een id-provider

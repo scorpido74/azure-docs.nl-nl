@@ -1,6 +1,6 @@
 ---
 title: ML-pijp lijnen maken, uitvoeren, & bijhouden
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Maken en uitvoeren van een machine learning-pijplijn met de Azure Machine Learning-SDK voor Python. Gebruik ML-pijp lijnen om de werk stromen te maken en te beheren die samen machine learning (ML) fasen. Deze fasen omvatten gegevens voorbereiding, model training, model implementatie en defactory/Score.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 12ba2991f22576dc62559d5c62dc4a0e769d2681
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: f1a0db395b86f473d2372a5ca779020e54186e45
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858770"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034842"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>machine learning-pijp lijnen maken en uitvoeren met Azure Machine Learning SDK
 
@@ -26,11 +26,11 @@ Hoewel u een ander type pijp lijn kunt gebruiken dat een [Azure-pijp lijn](https
 
 Elke fase van een ML-pijp lijn, zoals gegevens voorbereiding en model training, kan een of meer stappen bevatten.
 
-De ML-pijp lijnen die u maakt, zijn zichtbaar voor de leden van uw Azure Machine Learning service- [werk ruimte](how-to-manage-workspace.md). 
+De ML pijp lijnen die u maakt, zijn zichtbaar voor de leden van uw Azure Machine Learning- [werk ruimte](how-to-manage-workspace.md). 
 
 ML-pijp lijnen gebruiken externe Compute-doelen voor berekening en de opslag van de tussenliggende en laatste gegevens die zijn gekoppeld aan deze pijp lijn. Ze kunnen gegevens lezen en schrijven naar ondersteunde [Azure Storage](https://docs.microsoft.com/azure/storage/) locaties.
 
-Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning service](https://aka.ms/AMLFree).
+Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -283,7 +283,7 @@ Hergebruik van vorige resultaten`allow_reuse`() is Key wanneer u pijp lijnen in 
 Nadat u de stappen hebt gedefinieerd, bouwt u de pijp lijn met behulp van enkele of al deze stappen.
 
 > [!NOTE]
-> Er worden geen bestanden of gegevens geüpload naar de Azure Machine Learning-service wanneer u de stappen definieert of de pijp lijn bouwt.
+> Er worden geen bestanden of gegevens geüpload naar Azure Machine Learning wanneer u de stappen definieert of de pijp lijn bouwt.
 
 ```python
 # list of steps to run
@@ -322,7 +322,7 @@ Zie voor meer informatie het [pakket met Azure-pipeline-stappen](https://docs.mi
 
 ## <a name="submit-the-pipeline"></a>Verzenden van de pijplijn
 
-Wanneer u de pijp lijn verzendt, controleert Azure Machine Learning service de afhankelijkheden voor elke stap en uploadt een moment opname van de bronmap die u hebt opgegeven. Als er geen bronmap is opgegeven, wordt de huidige lokale map geüpload. De moment opname wordt ook opgeslagen als onderdeel van het experiment in uw werk ruimte.
+Wanneer u de pijp lijn verzendt, controleert Azure Machine Learning de afhankelijkheden voor elke stap en uploadt een moment opname van de bronmap die u hebt opgegeven. Als er geen bronmap is opgegeven, wordt de huidige lokale map geüpload. De moment opname wordt ook opgeslagen als onderdeel van het experiment in uw werk ruimte.
 
 > [!IMPORTANT]
 > Als u wilt voor komen dat bestanden worden opgenomen in de moment opname, maakt `.amlignore` u een [. gitignore](https://git-scm.com/docs/gitignore) -of-bestand in de map en voegt u de bestanden hieraan toe. Het `.amlignore` bestand gebruikt dezelfde syntaxis en patronen als het [. gitignore](https://git-scm.com/docs/gitignore) -bestand. Als beide bestanden bestaan, heeft `.amlignore` het bestand voor rang.

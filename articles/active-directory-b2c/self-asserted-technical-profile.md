@@ -1,6 +1,6 @@
 ---
-title: Een zelf-gecontroleerde technisch profiel definiëren in een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
-description: Definieer een zelf-gecontroleerde technisch profiel in een aangepast beleid in Azure Active Directory B2C.
+title: Een zelf-bevestigd technisch profiel definiëren in een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
+description: Definieer een zelf-bevestigd technisch profiel in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,34 +10,34 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3c728660f1a77c02f1e4b5fdeb467a7dbba4e36a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4fec742766cebeb5b1d82655e09af77a888c375c
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512664"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063681"
 ---
-# <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een zelf-gecontroleerde technisch profiel definiëren in een aangepast beleid voor Azure Active Directory B2C
+# <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een zelf-bevestigd technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Alle interacties in Azure Active Directory (Azure AD) B2C waar de gebruiker wordt verwacht voor invoer zijn zelf door bevestigde technische profielen. Bijvoorbeeld, een pagina voor het registreren, de aanmeldingspagina opgeven of het wachtwoord opnieuw instellen pagina.
+Alle interacties in Azure Active Directory B2C (Azure AD B2C) waar de gebruiker wordt verwacht om invoer te bieden, zijn zelfondertekende technische profielen. Bijvoorbeeld een aanmeldings pagina, een aanmeldings pagina of een pagina voor het opnieuw instellen van een wacht woord.
 
 ## <a name="protocol"></a>Protocol
 
-De **naam** kenmerk van de **Protocol** element moet worden ingesteld op `Proprietary`. De **handler** kenmerk mag de volledig gekwalificeerde naam van de handler-assembly voor protocol dat wordt gebruikt door Azure AD B2C, voor zelf een door de bevestigde: `Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `Proprietary`. Het kenmerk **handler** moet de volledig gekwalificeerde naam van de assembly van de protocolhandler bevatten die wordt gebruikt door Azure AD B2C, voor zelfbevestigend:`Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
-Het volgende voorbeeld ziet een zelf-gecontroleerde technisch profiel voor e-mailbericht Meld u aan:
+In het volgende voor beeld ziet u een zelf-bevestigd technisch profiel voor het aanmelden via e-mail:
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>Email signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
 ```
- 
-## <a name="input-claims"></a>Invoerclaims
 
-In een zelf-gecontroleerde technisch profiel, kunt u de **InputClaims** en **InputClaimsTransformations** elementen om in te vullen van de waarde van de claims die worden weergegeven op de zelf-gecontroleerde pagina (uitvoer claims). Bijvoorbeeld, in het beleid van het profiel bewerken de gebruikersbeleving eerst het gebruikersprofiel van de Azure AD B2C-directory-service leest vervolgens de zelf-gecontroleerde technisch profiel de invoerclaims ingesteld met de gegevens die zijn opgeslagen in het gebruikersprofiel. Deze claims worden verzameld van het gebruikersprofiel en vervolgens gepresenteerd aan de gebruiker die vervolgens de bestaande gegevens kunt bewerken.
+## <a name="input-claims"></a>Invoer claims
+
+In een niet-bevestigd technisch profiel kunt u de **InputClaims** -en **InputClaimsTransformations** -elementen gebruiken om de waarde van de claims die worden weer gegeven op de door uzelf bevestigde pagina (uitvoer claims), vooraf in te vullen. In het beleid voor het bewerken van profielen leest de gebruikers traject eerst het gebruikers profiel uit de Azure AD B2C Directory-service. vervolgens stelt het zelfondertekende technische profiel de invoer claims in met de gebruikers gegevens die zijn opgeslagen in het gebruikers profiel. Deze claims worden verzameld uit het gebruikers profiel en vervolgens weer gegeven aan de gebruiker die de bestaande gegevens kan bewerken.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
@@ -51,15 +51,15 @@ In een zelf-gecontroleerde technisch profiel, kunt u de **InputClaims** en **Inp
 ```
 
 
-## <a name="output-claims"></a>Gebruikersclaims
+## <a name="output-claims"></a>Uitvoer claims
 
-De **OutputClaims** element bevat een lijst met claims kan worden weergegeven voor het verzamelen van gegevens van de gebruiker. Voor het vullen van de uitvoerclaims met bepaalde waarden, gebruikt u de invoerclaims die eerder zijn beschreven. Het element kan ook een standaardwaarde bevatten. De volgorde van de claims in **OutputClaims** bepaalt de volgorde die Azure AD B2C de claims in het scherm wordt weergegeven. De **DefaultValue** kenmerk wordt alleen toegepast als de claim is nooit is ingesteld. Maar als deze is ingesteld voordat in de vorige stap orchestration, zelfs als de gebruiker de waarde leeg laat, de standaardwaarde is pas van kracht. Om af te dwingen het gebruik van een standaardwaarde, stel de **AlwaysUseDefaultValue** kenmerk `true`. Als u wilt dat de gebruiker een waarde opgeven voor een specifieke uitvoerclaim, stel de **vereist** kenmerk van de **OutputClaims** element op de `true`.
+Het **OutputClaims** -element bevat een lijst met claims die moeten worden gepresenteerd voor het verzamelen van gegevens van de gebruiker. Als u de uitvoer claims vooraf wilt invullen met een aantal waarden, gebruikt u de ingevoerde claims die eerder zijn beschreven. Het element kan ook een standaard waarde bevatten. De volg orde van de claims in **OutputClaims** bepaalt de volg orde waarin de claims op het scherm Azure AD B2C worden weer gegeven. Het kenmerk **DefaultValue** wordt alleen gebruikt als de claim nog nooit is ingesteld. Maar als de gebruiker de waarde leeg heeft, wordt de standaard waarde niet van kracht als deze eerder is ingesteld in een vorige Orchestration-stap. Als u het gebruik van een standaard waarde wilt forceren , stelt u `true`het kenmerk AlwaysUseDefaultValue in op. Als u wilt afdwingen dat de gebruiker een waarde voor een specifieke uitvoer claim opgeeft, stelt u het **vereiste** kenmerk van `true`het **OutputClaims** -element in op.
 
-De **ClaimType** -element in de **OutputClaims** verzameling nodig heeft om in te stellen de **UserInputType** element aan een gebruiker invoer dat wordt ondersteund door Azure AD B2C, zoals `TextBox`of `DropdownSingleSelect`. Of de **OutputClaim** element moet instellen een **DefaultValue**.  
+Het element **claim** type in de **OutputClaims** -verzameling moet het **UserInputType** -element instellen op elk type gebruikers invoer dat wordt ondersteund `TextBox` door Azure AD B2C, zoals of. `DropdownSingleSelect` Of het element **output claim** moet een **DefaultValue**instellen.
 
-De **OutputClaimsTransformations** element kan bevatten een verzameling van **OutputClaimsTransformation** elementen die worden gebruikt voor het wijzigen van de uitvoerclaims of nieuwe labels te genereren.
+Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt voor het wijzigen van de uitvoer claims of voor het genereren van nieuwe.
 
-De volgende uitvoerclaim is altijd ingesteld op `live.com`:
+De volgende uitvoer claim is altijd ingesteld op `live.com`:
 
 ```XML
 <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="live.com" AlwaysUseDefaultValue="true" />
@@ -67,14 +67,14 @@ De volgende uitvoerclaim is altijd ingesteld op `live.com`:
 
 ### <a name="use-case"></a>Use-case
 
-Er zijn vier scenario's voor uitvoerclaims:
+Er zijn vier scenario's voor uitvoer claims:
 
-- **De uitvoer verzamelen van vorderingen van de gebruiker** - wanneer u nodig hebt voor het verzamelen van informatie van de gebruiker, zoals Geboortedatum, moet u de claim toevoegen de **OutputClaims** verzameling. De claims die worden weergegeven voor de gebruiker moeten opgeven de **UserInputType**, zoals `TextBox` of `DropdownSingleSelect`. Als de zelf-gecontroleerde technisch profiel een validatie technisch profiel die dezelfde claim uitvoert bevat, wordt de claim voor de gebruiker niet aanwezig in Azure AD B2C. Als er geen eventuele uitvoerclaim om aan de gebruiker te presenteren, slaat Azure AD B2C het technische profiel.
-- **Instellen van een standaardwaarde is opgegeven in een uitvoerclaim** - zonder dat het verzamelen van gegevens van de gebruiker of het opvragen van de gegevens uit het technische validatieprofiel. De `LocalAccountSignUpWithLogonEmail` zelf een technisch profiel ingesteld door de bevestigde de **uitgevoerd SelfAsserted invoer** claim moet worden `true`.
-- **Een profiel van de technische retourneert de uitvoerclaims** -uw technisch profiel kan een technische validatie-profiel dat bepaalde claims retourneert aanroepen. U kunt naar de claims boven en retourneren aan de volgende indelingsstappen in de gebruikersbeleving. Bijvoorbeeld, wanneer u zich aanmeldt met een lokale account, de zelf-gecontroleerde technisch profiel met de naam `SelfAsserted-LocalAccountSignin-Email` roept de validatie van een technisch profiel met de naam `login-NonInteractive`. In dit technisch profiel valideert de referenties van de gebruiker en geeft ook het gebruikersprofiel. Such as 'userPrincipalName', 'displayName', 'givenName' and 'surName'.
-- **Uitvoer van de claims via uitvoer claimtransformatie**
+- **Het verzamelen van de uitvoer claims van de gebruiker** : wanneer u gegevens moet verzamelen van de gebruiker, zoals geboorte datum, moet u de claim toevoegen aan de **OutputClaims** -verzameling. De claims die aan de gebruiker worden gepresenteerd, moeten de **UserInputType**opgeven, zoals `TextBox` of `DropdownSingleSelect`. Als het zelfvoorziene technische profiel een validatie technisch profiel bevat dat dezelfde claim uitvoert, Azure AD B2C de claim niet aan de gebruiker weer gegeven. Als er voor de gebruiker geen uitvoer claim aanwezig is, Azure AD B2C over overs laan van het technische profiel.
+- Het **instellen van een standaard waarde in een uitvoer claim** -zonder gegevens te verzamelen van de gebruiker of het retour neren van de gegevens uit het technische profiel voor validatie. Het `LocalAccountSignUpWithLogonEmail` zelfondertekende technische profiel stelt de **uitgevoerde-SelfAsserted-invoer** claim in `true`op.
+- **Een technisch profiel voor validatie retourneert de uitvoer claims** -uw technische profiel kan een validatie technische profiel aanroepen dat enkele claims retourneert. U kunt de claims inbellen en terugsturen naar de volgende indelings stappen in de gebruikers reis. Als u zich bijvoorbeeld aanmeldt met een lokaal account, roept het zelfondertekende technische profiel `SelfAsserted-LocalAccountSignin-Email` met de naam het technische `login-NonInteractive`profiel voor validatie op met de naam. Dit technische profiel valideert de gebruikers referenties en retourneert ook het gebruikers profiel. Zoals ' userPrincipalName ', ' displayName ', ' naam ' en ' Achternaam '.
+- **De claims uitvoeren via trans formatie van uitvoer claims**
 
-In het volgende voorbeeld wordt de `LocalAccountSignUpWithLogonEmail` zelf door technisch profiel ziet u het gebruik van gebruikersclaims en stelt de bevestigde **uitgevoerd SelfAsserted invoer** naar `true`. De `objectId`, `authenticationSource`, `newUser` claims zijn uitvoer van de `AAD-UserWriteUsingLogonEmail` technische validatie profileren en worden niet weergegeven aan de gebruiker.
+In het volgende voor beeld demonstreert het `LocalAccountSignUpWithLogonEmail` zelfondertekende technische profiel het gebruik van uitvoer claims en sets **uitgevoerd-SelfAsserted-invoer** naar. `true` De `objectId`, `authenticationSource`, ,`newUser` zijn de uitvoer van `AAD-UserWriteUsingLogonEmail` het technische profiel voor validatie en worden niet weer gegeven aan de gebruiker.
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -113,34 +113,34 @@ In het volgende voorbeeld wordt de `LocalAccountSignUpWithLogonEmail` zelf door 
 
 ```
 
-## <a name="persist-claims"></a>Claims behouden
+## <a name="persist-claims"></a>Claims persistent maken
 
-Als de **PersistedClaims** element niet aanwezig is, de zelf-gecontroleerde technisch profiel blijven niet behouden van de gegevens naar Azure AD B2C. In plaats daarvan wordt een aanroep aan een technische validatie-profiel dat verantwoordelijk is voor het behouden van de gegevens. Het registratiebeleid gebruikt bijvoorbeeld de `LocalAccountSignUpWithLogonEmail` zelf door bevestigde technisch profiel voor het verzamelen van het nieuwe profiel. De `LocalAccountSignUpWithLogonEmail` technisch profiel roept de validatie van technisch profiel voor het maken van het account in Azure AD B2C.
+Als het **PersistedClaims** -element ontbreekt, worden de gegevens niet persistent gemaakt met het zelfondertekende technische profiel dat Azure AD B2C. In plaats daarvan wordt een aanroep uitgevoerd naar een technische profiel voor validatie dat verantwoordelijk is voor het persistent maken van de gegevens. Het aanmeldings beleid maakt bijvoorbeeld gebruik van het `LocalAccountSignUpWithLogonEmail` zelfondertekende technische profiel om het nieuwe gebruikers profiel te verzamelen. Met `LocalAccountSignUpWithLogonEmail` het technische profiel wordt het technische profiel voor validatie aangeroepen om het account te maken in azure AD B2C.
 
-## <a name="validation-technical-profiles"></a>Technische validatie-profielen
+## <a name="validation-technical-profiles"></a>Validatie van technische profielen
 
-Een profiel van de technische wordt gebruikt voor het valideren van sommige of alle van de uitvoerclaims van de verwijzende technisch profiel. De invoer claims van het technische validatieprofiel moeten worden weergegeven in de uitvoerclaims van de zelf-gecontroleerde technisch profiel. Het technische validatieprofiel valideert de invoer van de gebruiker en een fout kunt terugkeren naar de gebruiker. 
+Een validatie technische profiel wordt gebruikt voor het valideren van een aantal of alle uitvoer claims van het referentie-technische profiel. De invoer claims van het technische profiel voor validatie moeten worden weer gegeven in de uitvoer claims van het zelfondertekende technische profiel. Het validatie-technische profiel valideert de gebruikers invoer en kan een fout naar de gebruiker retour neren.
 
-Het technische validatieprofiel mag technisch profiel in het beleid, zoals [Azure Active Directory](active-directory-technical-profile.md) of een [REST-API](restful-technical-profile.md) technische profielen. In het vorige voorbeeld de `LocalAccountSignUpWithLogonEmail` technisch profiel valideert de signinName bestaat niet in de map. Zo niet, in het technische profiel van de validatie van een lokaal account maakt en retourneert de object-id, authenticationSource, nieuwegebruiker. De `SelfAsserted-LocalAccountSignin-Email` technisch profiel aanroepen de `login-NonInteractive` technisch profiel van de validatie van de gebruikersreferenties te valideren.
+Het technische profiel voor validatie kan elk technisch profiel in het beleid zijn, zoals [Azure Active Directory](active-directory-technical-profile.md) of een [rest API](restful-technical-profile.md) technische profielen. In het vorige voor beeld wordt `LocalAccountSignUpWithLogonEmail` met het technische profiel gecontroleerd of de signinName niet in de directory bestaat. Als dat niet het geval is, maakt het technische profiel voor validatie een lokaal account en retourneert het objectId, authenticationSource, newUser. Het `SelfAsserted-LocalAccountSignin-Email` technische profiel roept het `login-NonInteractive` validatie technische profiel aan om de gebruikers referenties te valideren.
 
-U kunt ook het technische profiel van een REST-API aanroept met uw zakelijke logica, invoerclaims overschrijven of gebruikersgegevens verrijken door de verdere integratie met zakelijke line-of-business-toepassing. Zie voor meer informatie, [validatie technisch profiel](validation-technical-profile.md)
+U kunt ook een REST API technisch profiel aanroepen met uw bedrijfs logica, invoer claims overschrijven of gebruikers gegevens verrijken door verder te integreren met zakelijke line-of-business-toepassingen. Zie voor meer informatie [validatie technische profiel](validation-technical-profile.md)
 
 ## <a name="metadata"></a>Metagegevens
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| setting.showContinueButton | Nee | Geeft de knop Doorgaan. Mogelijke waarden: `true` (standaard), of `false` |
-| setting.showCancelButton | Nee | Geeft de knop Annuleren. Mogelijke waarden: `true` (standaard), of `false` |
-| setting.operatingMode | Nee | Voor een aanmeldingspagina bepaalt deze eigenschap het gedrag van het veld gebruikersnaam, zoals validatie voor invoer- en foutberichten. Verwachte waarden: `Username` of `Email`. |
-| ContentDefinitionReferenceId | Ja | De id van de [inhoud definitie](contentdefinitions.md) die zijn gekoppeld aan dit technisch profiel. |
-| EnforceEmailVerification | Nee | Voor aanmelding bij of profiel bewerken, e-mailverificatie wordt afgedwongen. Mogelijke waarden: `true` (standaard), of `false`. | 
-| setting.showSignupLink | Nee | De knop Aanmelden weergegeven. Mogelijke waarden: `true` (standaard), of `false` |
-| setting.retryLimit | Nee | Hiermee bepaalt u het aantal keren dat die een gebruiker proberen kan om de gegevens die wordt vergeleken met het technische profiel van een validatie te bieden. Bijvoorbeeld, probeert een gebruiker om u te registreren met een account dat bestaat al en wordt geprobeerd totdat de limiet bereikt.
-| SignUpTarget | Nee | De aanmelding doel exchange-id. Wanneer de gebruiker op de knop aanmelden klikt, wordt de opgegeven exchange-id in Azure AD B2C uitgevoerd. |
+| setting. showContinueButton | Nee | Hiermee wordt de knop door gaan weer gegeven. Mogelijke waarden: `true` (standaard) of`false` |
+| setting.showCancelButton | Nee | Hiermee wordt de knop Annuleren weer gegeven. Mogelijke waarden: `true` (standaard) of`false` |
+| setting. operatingMode | Nee | Voor een aanmeldings pagina bepaalt deze eigenschap het gedrag van het veld gebruikers naam, zoals invoer validatie en fout berichten. Verwachte waarden: `Username` of `Email`. |
+| ContentDefinitionReferenceId | Ja | De id van de [inhouds definitie](contentdefinitions.md) die aan dit technische profiel is gekoppeld. |
+| EnforceEmailVerification | Nee | Voor de registratie of het profiel bewerken, wordt een e-mail verificatie afgedwongen. Mogelijke waarden: `true` (standaard) of. `false` |
+| setting.showSignupLink | Nee | Hiermee wordt de knop registratie weer gegeven. Mogelijke waarden: `true` (standaard) of`false` |
+| setting.retryLimit | Nee | Hiermee bepaalt u het aantal keren dat een gebruiker de gegevens kan opgeven die worden gecontroleerd op basis van het technische profiel voor validatie. Bijvoorbeeld: een gebruiker probeert zich aan te melden met een account dat al bestaat en het probeert tot de limiet is bereikt.
+| SignUpTarget | Nee | De Exchange-doel-id voor de aanmelding. Wanneer de gebruiker op de knop registratie klikt, wordt Azure AD B2C de opgegeven Exchange-id uitgevoerd. |
 
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 
-De **CryptographicKeys** element wordt niet gebruikt.
+Het element **CryptographicKeys** wordt niet gebruikt.
 
 
 

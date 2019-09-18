@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: a08fc7d7822b4aeddafb588fdb73e86559ce2b12
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 84e423ac055c074028df217060a548b932823496
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849170"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033383"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Toepassings wijzigings analyse (preview) gebruiken in Azure Monitor
 
@@ -87,57 +87,39 @@ In Azure Monitor is de analyse van wijzigingen op dit moment ingebouwd in de erv
 
 ### <a name="enable-change-analysis-at-scale"></a>Wijzigings analyse op schaal inschakelen
 
-Als uw abonnement een groot aantal web-apps bevat, kan het inschakelen van de service op het niveau van de web-app inefficiënt zijn. In dit geval volgt u deze alternatieve instructies.
+Als uw abonnement een groot aantal web-apps bevat, kan het inschakelen van de service op het niveau van de web-app inefficiënt zijn. Voer het volgende script uit om alle web-apps in uw abonnement in te scha kelen.
 
-### <a name="register-the-change-analysis-resource-provider-for-your-subscription"></a>Registreer de resource provider voor de wijzigings analyse voor uw abonnement
+Vereisten:
+* Power shell AZ-module. Volg de instructies op [de Azure PowerShell-module installeren](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.6.0)
 
-1. De functie vlag voor het wijzigen van analyse registreren (preview). Omdat de functie vlag in preview is, moet u deze registreren om deze zichtbaar te maken voor uw abonnement:
+Voer het volgende script uit:
 
-   1. Open [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/).
+```PowerShell
+# Log in to your Azure subscription
+Connect-AzAccount
 
-      ![Scherm afbeelding van wijzigings Cloud Shell](./media/change-analysis/cloud-shell.png)
+# Get subscription Id
+$SubscriptionId = Read-Host -Prompt 'Input your subscription Id'
 
-   1. Wijzig het shell type in **Power shell**.
+# Make Feature Flag visible to the subscription
+Set-AzContext -SubscriptionId $SubscriptionId
 
-      ![Scherm afbeelding van wijzigings Cloud Shell](./media/change-analysis/choose-powershell.png)
+# Register resource provider
+Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
 
-   1. Voer de volgende PowerShell-opdracht uit:
 
-        ``` PowerShell
-        Set-AzContext -Subscription <your_subscription_id> #set script execution context to the subscription you are trying to enable
-        Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.ChangeAnalysis" -ListAvailable #Check for feature flag availability
-        Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
-        ```
+# Enable each web app
+$webapp_list = Get-AzWebApp | Where-Object {$_.kind -eq 'app'}
+foreach ($webapp in $webapp_list)
+{
+    $tags = $webapp.Tags
+    $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
+    Set-AzResource -ResourceId $webapp.Id -Tag $tags -Force
+}
 
-1. Registreer de resource provider voor het wijzigen van de analyse voor het abonnement.
+```
 
-   - Ga naar **abonnementen**en selecteer het abonnement dat u wilt inschakelen in de wijzigings service. Selecteer vervolgens resource providers:
 
-        ![Scherm afbeelding die laat zien hoe u de resource provider voor de wijzigings analyse registreert](./media/change-analysis/register-rp.png)
-
-       - Selecteer **micro soft. ChangeAnalysis**. Selecteer vervolgens boven aan de pagina **registreren**.
-
-       - Nadat de resource provider is ingeschakeld, kunt u een verborgen tag in de web-app instellen om wijzigingen op het niveau van de implementatie te detecteren. Als u een verborgen tag wilt instellen, volgt u de instructies onder **kan geen wijzigings analyse gegevens ophalen**.
-
-   - U kunt ook een Power shell-script gebruiken om de resource provider te registreren:
-
-        ```PowerShell
-        Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
-
-        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
-        ```
-
-        Als u Power shell wilt gebruiken om een verborgen tag in een web-app in te stellen, voert u de volgende opdracht uit:
-
-        ```powershell
-        $webapp=Get-AzWebApp -Name <name_of_your_webapp>
-        $tags = $webapp.Tags
-        $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
-        Set-AzResource -ResourceId <your_webapp_resourceid> -Tag $tag
-        ```
-
-     > [!NOTE]
-     > Nadat u de verborgen tag hebt toegevoegd, moet u mogelijk nog steeds tot 4 uur wachten voordat u de wijzigingen gaat bekijken. De resultaten worden uitgesteld omdat wijzigings analyse alleen om de 4 uur uw web-app scant. Het schema van 4 uur beperkt de gevolgen voor de prestaties van de scan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

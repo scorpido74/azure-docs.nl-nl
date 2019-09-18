@@ -1,6 +1,6 @@
 ---
-title: Bedreigingen voor resources en -gegevens in Azure Active Directory B2C beheren
-description: Meer informatie over detectie en risicobeperking technieken voor denial-of-service-aanvallen en aanvallen wachtwoord in Azure Active Directory B2C.
+title: Bedreigingen voor resources en gegevens in Azure Active Directory B2C beheren
+description: Meer informatie over technieken voor detectie en risico beperking voor denial-of-service-aanvallen en wachtwoord aanvallen in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,46 +10,46 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7232917df6018c9c8afc7e7edd3730a277b193f4
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 281bd73671352e1e525e11a7bfde1882d3ef8864
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798227"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065423"
 ---
-# <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Bedreigingen voor resources en -gegevens in Azure Active Directory B2C beheren
+# <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Bedreigingen voor resources en gegevens in Azure Active Directory B2C beheren
 
-Azure Active Directory (Azure AD) B2C bevat ingebouwde functies die u kunnen helpen beschermen tegen bedreigingen voor uw resources en de gegevens. Deze bedreigingen zijn denial-of-service-aanvallen en wachtwoord aanvallen. Denial-of-service-aanvallen kunnen resources niet beschikbaar maken voor beoogde gebruikers. Wachtwoord aanvallen leiden tot niet-geautoriseerde toegang tot bronnen.
+Azure Active Directory B2C (Azure AD B2C) heeft ingebouwde functies waarmee u uw resources en gegevens kunt beveiligen tegen bedreigingen. Deze bedreigingen omvatten denial-of-service-aanvallen en wacht woorden. Denial-of-service-aanvallen maken het mogelijk dat resources niet beschikbaar zijn voor bedoelde gebruikers. Wachtwoord aanvallen leiden tot onbevoegde toegang tot bronnen.
 
 ## <a name="denial-of-service-attacks"></a>Denial-of-service-aanvallen
 
-Azure AD B2C beschermt tegen SYN overstroming aanvallen met behulp van een cookie SYN. Azure AD B2C wordt ook beveiligt tegen denial-of-service-aanvallen door limieten voor tarieven en verbindingen.
+Azure AD B2C beschermt tegen SYN-flood aanvallen met behulp van een SYN-cookie. Azure AD B2C beschermt ook tegen denial-of-service-aanvallen door limieten voor tarieven en verbindingen te gebruiken.
 
 ## <a name="password-attacks"></a>Wachtwoord aanvallen
 
-Wachtwoorden die zijn ingesteld door gebruikers moeten redelijk complex zijn. Azure AD B2C heeft risicobeperking technieken voor het wachtwoord aanvallen. Risicobeperking omvat detectie van wachtwoord brute-force-aanvallen en woordenboekaanvallen wachtwoord. Azure AD B2C analyseert met behulp van verschillende signalen, de integriteit van aanvragen. Azure AD B2C is ontworpen om u te onderscheiden op intelligente wijze beoogde gebruikers tegen hackers en botnets.
+Wacht woorden die door gebruikers zijn ingesteld, moeten redelijkerwijs ingewikkeld zijn. Azure AD B2C heeft beperkende technieken voor wachtwoord aanvallen. Risico beperking omvat het detecteren van aanvals aanvallen en wacht woorden voor Woordenboek aanvallen. Door verschillende signalen te gebruiken, Azure AD B2C analyseert de integriteit van aanvragen. Azure AD B2C is ontworpen om beoogde gebruikers op intelligente wijze te onderscheiden van hackers en botnets.
 
-Azure AD B2C maakt gebruik van een geavanceerde strategie om account te vergrendelen. De accounts zijn vergrendeld op basis van het IP-adres van de aanvraag en de ingevoerde wachtwoorden. De duur van de vergrendeling van het verhoogt ook op basis van de kans dat het een aanval. Nadat een wachtwoord is 10 keer zonder succes geprobeerd (de poging standaarddrempelwaarde), een vergrendeling van één minuut optreedt. De volgende keer dat een aanmelding mislukt nadat het account is is ontgrendeld (dat wil zeggen, nadat het account is automatisch door de service is ontgrendeld, zodra de vergrendeling is verlopen), een andere één minuut accountvergrendeling plaatsvindt en wordt voortgezet voor elke mislukte aanmelding. Herhaaldelijk hetzelfde wachtwoord invoert, is het niet meegeteld als meerdere mislukte aanmeldingen.
+Azure AD B2C gebruikt een geavanceerde strategie voor het vergren delen van accounts. De accounts zijn vergrendeld op basis van het IP-adres van de aanvraag en de ingevoerde wacht woorden. De duur van de vergren deling neemt ook toe op basis van de kans dat het een aanval is. Nadat een wacht woord tien keer is geprobeerd (de drempel waarde voor de standaard poging), vindt een vergren deling van een minuut plaats. De volgende keer dat een aanmelding wordt mislukt nadat het account is ontgrendeld (dat wil zeggen, nadat het account automatisch is ontgrendeld door de service nadat de vergrendelings periode is verlopen), wordt een vergren deling van één minuut uitgevoerd en wordt voor elke mislukte aanmelding voortgezet. Als u hetzelfde wacht woord herhaaldelijk invoert, telt dit niet op als meerdere mislukte aanmeldingen.
 
-De eerste 10 accountvergrendeling perioden zijn een minuut lang. De volgende 10 accountvergrendeling perioden zijn iets langer en duur na elke 10 accountvergrendeling perioden worden verhoogd. De teller voor accountvergrendeling wordt opnieuw ingesteld op nul na een geslaagde aanmelding, wanneer het account niet is vergrendeld. Perioden van de vergrendeling van het kunnen tot vijf uur duren.
+De eerste 10 vergrendelings perioden zijn één minuut lang. De volgende 10 vergrendelings perioden zijn iets langer en duren na elke 10 vergrendelings periode. De vergrendelings teller wordt na een geslaagde aanmelding opnieuw ingesteld op nul wanneer het account niet is vergrendeld. Vergrendelings perioden kunnen Maxi maal vijf uur duren.
 
-## <a name="manage-password-protection-settings"></a>Instellingen voor beveiliging beheren
+## <a name="manage-password-protection-settings"></a>Instellingen voor wachtwoord beveiliging beheren
 
-Voor het beheren van instellingen voor beveiliging, met inbegrip van de drempelwaarde voor vergrendeling van:
+Instellingen voor wachtwoord beveiliging beheren, met inbegrip van de drempel waarde voor vergren deling:
 
 1. Navigeer naar [Azure Portal](https://portal.azure.com).
-1. Selecteer de **map + abonnement** filteren in het menu rechtsboven in de portal en selecteer vervolgens uw Azure AD B2C-tenant.
-1. Selecteer **Azure Active Directory** in het menu links (of selecteer **alle services** in de linkerbovenhoek van de portal en zoek vervolgens naar en selecteer *Azure Active Directory*).
-1. Onder **Security**, selecteer **verificatiemethoden**en selecteer vervolgens **wachtwoordbeveiliging**.
-1. Voer uw gewenste wachtwoord protection-instellingen en selecteer vervolgens **opslaan**.
+1. Selecteer het filter **Directory + abonnement** in de rechter bovenhoek van de portal en selecteer vervolgens uw Azure AD B2C-Tenant.
+1. Selecteer **Azure Active Directory** in het linkermenu (of selecteer **alle services** in de linkerbovenhoek van de portal, zoek naar en selecteer *Azure Active Directory*).
+1. Selecteer onder **beveiliging** **verificatie methoden**en selecteer vervolgens **wachtwoord beveiliging**.
+1. Voer de gewenste instellingen voor wachtwoord beveiliging in en selecteer vervolgens **Opslaan**.
 
-    ![Azure portal wachtwoord protection-pagina in Azure AD-instellingen](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)
-    <br />*De drempel voor accountvergrendelingen instelt op 5 in **wachtwoordbeveiliging** instellingen*.
+    ![Azure Portal pagina wachtwoord beveiliging in azure AD-instellingen](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)
+    <br />*De drempel waarde voor vergren deling in te stellen op 5 in instellingen voor **wachtwoord beveiliging*** .
 
-## <a name="view-locked-out-accounts"></a>Weergave vergrendelde accounts
+## <a name="view-locked-out-accounts"></a>Vergrendelde accounts weer geven
 
-Als u informatie over vergrendelde accounts, kunt u de Active Directory controleren [rapport van aanmeldingsactiviteiten](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md). Onder **Status**, selecteer **fout**. Mislukte pogingen aanmelden met een **aanmelden foutcode** van `50053` duiden op een vergrendeld account:
+Als u informatie wilt ophalen over vergrendelde accounts, kunt u het [rapport Active Directory-aanmeld activiteit](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)controleren. Selecteer onder **status**de optie **fout**. Mislukte aanmeldings pogingen met een **fout code** voor `50053` aanmelding die een vergrendeld account aangeven:
 
-![Sectie van de Azure AD-in rapport weergeven met de vergrendelde account](media/active-directory-b2c-reference-threat-management/portal-01-locked-account.png)
+![Sectie van het aanmeldings rapport van Azure AD met het account vergrendeld](media/active-directory-b2c-reference-threat-management/portal-01-locked-account.png)
 
-Zie voor meer informatie over het weergeven van het rapport van aanmeldingsactiviteiten in Azure Active Directory, [aanmelden foutcodes voor aanmeldactiviteitenrapporten](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md).
+Zie voor meer informatie over het weer geven van het rapport met aanmeldings activiteiten in Azure Active Directory [fout codes voor aanmeldings activiteiten melden](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md).

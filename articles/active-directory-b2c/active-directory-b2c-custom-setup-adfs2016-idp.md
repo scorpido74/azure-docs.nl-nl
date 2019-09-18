@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5dffba9106493e60b35538a5210a51cead7fb135
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 99d21e773fee59780d82004eaa7213598fe7c8bb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899637"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066129"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Voeg ADFS toe als een SAML-ID-provider met behulp van aangepast beleid in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In dit artikel wordt beschreven hoe u aanmelden voor een AD FS-gebruikers account inschakelt met [aangepaste beleids regels](active-directory-b2c-overview-custom.md) in azure Active Directory (Azure AD) B2C. U schakelt aanmelden in door een SAML- [technische profiel](saml-technical-profile.md) toe te voegen aan een aangepast beleid.
+In dit artikel wordt beschreven hoe u aanmelden voor een AD FS-gebruikers account inschakelt met [aangepaste beleids regels](active-directory-b2c-overview-custom.md) in Azure Active Directory B2C (Azure AD B2C). U schakelt aanmelden in door een SAML- [technische profiel](saml-technical-profile.md) toe te voegen aan een aangepast beleid.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -34,7 +34,7 @@ In dit artikel wordt beschreven hoe u aanmelden voor een AD FS-gebruikers accoun
 U moet uw certificaat opslaan in uw Azure AD B2C-Tenant.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het **Directory-en abonnements filter** in het bovenste menu en kies de map die uw Tenant bevat.
+2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
 5. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
@@ -45,7 +45,7 @@ U moet uw certificaat opslaan in uw Azure AD B2C-Tenant.
 
 ## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
 
-Als u wilt dat gebruikers zich aanmelden met een ADFS-account, moet u het account definiëren als een claim provider waarmee Azure AD B2C met behulp van een eind punt kunnen communiceren. Het eind punt biedt een set claims die wordt gebruikt door Azure AD B2C om te controleren of een specifieke gebruiker is geverifieerd. 
+Als u wilt dat gebruikers zich aanmelden met een ADFS-account, moet u het account definiëren als een claim provider waarmee Azure AD B2C met behulp van een eind punt kunnen communiceren. Het eind punt biedt een set claims die wordt gebruikt door Azure AD B2C om te controleren of een specifieke gebruiker is geverifieerd.
 
 U kunt een ADFS-account definiëren als een claim provider door deze toe te voegen aan het **ClaimsProviders** -element in het extensie bestand van uw beleid.
 
@@ -138,7 +138,7 @@ Nu er een knop aanwezig is, moet u deze koppelen aan een actie. De actie in dit 
     ```XML
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
     ```
-    
+
     Werk de waarde van **TechnicalProfileReferenceId** bij naar de id van het technische profiel dat u eerder hebt gemaakt. Bijvoorbeeld `Contoso-SAML2`.
 
 3. Sla het bestand *TrustFrameworkExtensions. XML* op en upload het opnieuw voor verificatie.
@@ -157,18 +157,18 @@ Vervang de volgende waarden:
 - **uw-Tenant** met de naam van uw Tenant, zoals your-Tenant.onmicrosoft.com.
 - **uw-beleid** met de naam van uw beleid. Bijvoorbeeld B2C_1A_signup_signin_adfs.
 - **uw technische profiel** met de naam van uw technische profiel voor de SAML-identiteits provider. Bijvoorbeeld contoso-SAML2.
- 
+
 Open een browser en navigeer naar de URL. Zorg ervoor dat u de juiste URL typt en dat u toegang hebt tot het XML-bestand met meta gegevens. Als u een nieuwe Relying Party-vertrouwens relatie wilt toevoegen met behulp van de AD FS-beheer module en de instellingen hand matig wilt configureren, voert u de volgende procedure uit op een Federatie server. Lidmaatschap van **Administrators** of gelijkwaardig op de lokale computer is de minimale vereiste om deze procedure te volt ooien.
 
 1. Selecteer in Serverbeheer **extra**en selecteer vervolgens ADFS- **beheer**.
-2. Selecteer **vertrouwens relatie**van Relying Party toevoegen.
+2. Selecteer **vertrouwens relatie van Relying Party toevoegen**.
 3. Kies op de pagina **Welkom** de optie **claims herkennen**en klik vervolgens op **starten**.
 4. Selecteer op de pagina **gegevens bron selecteren** de optie **gegevens importeren over de relying party online publiceren of op een lokaal netwerk**, geef uw Azure AD B2C meta gegevens-URL op en klik op **volgende**.
 5. Voer op de pagina **weergave naam opgeven** een **weergave naam**in, onder **notities**, voer een beschrijving in voor deze Relying Party-vertrouwens relatie en klik vervolgens op **volgende**.
 6. Selecteer op de pagina **Access Control beleid kiezen** een beleid en klik vervolgens op **volgende**.
-7. Controleer de instellingen op de pagina **gereed om een vertrouwens relatie toe** te voegen en klik vervolgens op **volgende** om uw Relying Party vertrouwens gegevens op te slaan.
+7. Controleer de instellingen op de pagina **gereed om een vertrouwens relatie toe te voegen** en klik vervolgens op **volgende** om uw Relying Party vertrouwens gegevens op te slaan.
 8. Klik op de pagina **volt ooien** op **sluiten**. met deze actie wordt automatisch het dialoog venster **claim regels bewerken** weer gegeven.
-9. Selecteer **regel toevoegen**.  
+9. Selecteer **regel toevoegen**.
 10. Selecteer in **claim regel sjabloon** **LDAP-kenmerken als claims verzenden**.
 11. Geef een **claim regel naam**op. Selecteer voor het **kenmerk archief** **Active Directory selecteren**, voeg de volgende claims toe en klik vervolgens op **volt ooien** en **OK**.
 
@@ -179,19 +179,19 @@ Open een browser en navigeer naar de URL. Zorg ervoor dat u de juiste URL typt e
     | Opgegeven naam | given_name |
     | E-mail adres | email |
     | Weergave naam | name |
-    
-    Houd er rekening mee dat deze namen niet worden weer gegeven in de vervolg keuzelijst uitgaand claim type. U moet deze hand matig invoeren in. (De vervolg keuzelijst kan feitelijk worden bewerkt). 
-    
-12.  Op basis van uw certificaat type moet u mogelijk het HASH-algoritme instellen. Selecteer in het venster Eigenschappen van Relying Party Trust (B2C demonstratie) het tabblad **Geavanceerd** en wijzig het **algoritme voor beveiligde hashes** in `SHA-256`en klik op **OK**.  
+
+    Houd er rekening mee dat deze namen niet worden weer gegeven in de vervolg keuzelijst uitgaand claim type. U moet deze hand matig invoeren in. (De vervolg keuzelijst kan feitelijk worden bewerkt).
+
+12.  Op basis van uw certificaat type moet u mogelijk het HASH-algoritme instellen. Selecteer in het venster Eigenschappen van Relying Party Trust (B2C demonstratie) het tabblad **Geavanceerd** en wijzig het **algoritme voor beveiligde hashes** in `SHA-256`en klik op **OK**.
 13. Selecteer in Serverbeheer **extra**en selecteer vervolgens ADFS- **beheer**.
-14. Selecteer de Relying Party-vertrouwens relatie die u hebt gemaakt, selecteer **bijwerken uit federatieve meta gegevens**en klik vervolgens op **bijwerken**. 
+14. Selecteer de Relying Party-vertrouwens relatie die u hebt gemaakt, selecteer **bijwerken uit federatieve meta gegevens**en klik vervolgens op **bijwerken**.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Een Azure AD B2C-toepassing maken
 
 Communicatie met Azure AD B2c vindt plaats via een toepassing die u in uw Tenant maakt. In deze sectie vindt u optionele stappen die u kunt uitvoeren om een test toepassing te maken als u dit nog niet hebt gedaan.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Zorg ervoor dat u de map gebruikt met uw Azure AD B2C-tenant door te klikken op het **Map- en abonnementsfilter** in het bovenste menu en de map te kiezen waarin uw tenant zich bevindt.
+2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer **Toepassingen** en vervolgens **Toevoegen**.
 5. Voer een naam in voor de toepassing, bijvoorbeeld *testapp1*.

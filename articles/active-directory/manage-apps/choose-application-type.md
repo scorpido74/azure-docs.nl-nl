@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 09/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: fb2c49d6436a14e9b6cbb0a92eb0dfba077c8e4d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: d5bd2397c345a4f670bde343f751cd69f825ecb9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424249"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056069"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Het toepassings type kiezen bij het toevoegen van een toepassing in Azure Active Directory
 
@@ -45,7 +45,7 @@ De volgende functies worden ondersteund door een van de voor gaande vier toepass
 
 - **Snelstartgids** : Ga snel aan de slag met een toepassing door [eenvoudige implementaties tappen uit te voeren](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started)
 
-- **Algemeen eigenschappen beheer** : een [directe Deeplink](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) naar een toepassing ophalen, [de huis stijl](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) van een toepassing aanpassen of [de toepassing uitschakelen](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) voor alle gebruikers.
+- **Algemeen eigenschappen beheer** : krijg een [direct diepe koppeling](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) naar een toepassing, [Pas de huis stijl](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) van een toepassing aan of [Schakel de toepassing](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) voor alle gebruikers uit.
 
 - **Gebruikers-en groeps beheer** : u kunt gebruikers en groepen [toewijzen](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) aan of [verwijderen](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) uit een toepassing en eventueel de specifieke toepassings rollen toewijzen waartoe deze gebruikers en groepen toegang hebben
 
@@ -63,7 +63,7 @@ De volgende functies worden ondersteund door een van de voor gaande vier toepass
 
 In de volgende tabel worden de verschillende modi voor eenmalige aanmelding en inrichtingen beschreven die worden ondersteund door elk van de voor gaande toepassings typen. U kunt deze tabel gebruiken om te begrijpen welke toepassing u moet toevoegen ter ondersteuning van een specifiek doel.
 
-  ![Tabel: Verschillende SSO-en inrichtings modi die worden ondersteund door elk app-type](./media/choose-application-type/table1.png)
+  ![Tabel Verschillende SSO-en inrichtings modi die worden ondersteund door elk app-type](./media/choose-application-type/table1.png)
 
 ## <a name="how-to-choose-a-single-sign-on-mode"></a>De modus voor eenmalige aanmelding kiezen
 
@@ -125,9 +125,6 @@ Volg de volgende instructies om de modus voor eenmalige aanmelding van een toepa
 
 - **Automatische inrichting** : Kies de [automatische](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning) **inrichtings modus** als u automatische op API gebaseerde inrichting en/of het ongedaan maken van de inrichting van gebruikers accounts voor deze toepassing wilt inschakelen 
 
-  >[!NOTE]
-  >Deze optie is alleen beschikbaar voor toepassingen binnen de categorie **Featured** van de [Azure AD-toepassings galerie](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal).
-
 - **Automatische inrichting op basis van scim** : gebruik [op scim gebaseerde automatische inrichting](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) als uw toepassing ondersteuning biedt voor het scim-protocol voor het detecteren van wijzigingen aan gebruikers en groepen, die automatisch worden verzonden voor wijzigingen in een toepassing die is geïntegreerd met Azure AD 
 
   >[!NOTE]
@@ -135,7 +132,7 @@ Volg de volgende instructies om de modus voor eenmalige aanmelding van een toepa
 
 ## <a name="how-to-set-an-applications-provisioning-mode"></a>De inrichtings modus van een toepassing instellen
 
-Volg deze instructies om de  inrichtings modus van een toepassing in te stellen:
+Volg deze instructies om de **inrichtings** modus van een toepassing in te stellen:
 
 1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
 1. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.

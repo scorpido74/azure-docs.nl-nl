@@ -4,7 +4,7 @@ description: Introduceert de Azure performance diagnostische VM-extensie voor Wi
 services: virtual-machines-windows'
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: na
 tags: ''
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f933a7414771d5e485498ef909a7dea8e0b1210c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090372"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057551"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>VM-extensie voor Azure-prestatie diagnostiek voor Windows
 
@@ -70,7 +70,7 @@ De volgende JSON toont het schema voor de VM-extensie Azure prestatie diagnostie
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|De versie van de API.
 |publisher|Microsoft.Azure.Performance.Diagnostics|De naam ruimte van de uitgever voor de extensie.
-|Type|AzurePerformanceDiagnostics|Het type van de VM-extensie.
+|type|AzurePerformanceDiagnostics|Het type van de VM-extensie.
 |typeHandlerVersion|1.0|De versie van de extensie-handler.
 |performanceScenario|standaard|Het prestatie scenario waarvoor gegevens moeten worden vastgelegd. Geldige waarden zijn: **Basic**, **vmslow**, **Azure files**en **Custom**.
 |traceDurationInSeconds|300|De duur van de traceringen, als een van de tracerings opties is geselecteerd.

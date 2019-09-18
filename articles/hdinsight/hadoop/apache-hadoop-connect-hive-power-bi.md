@@ -1,7 +1,7 @@
 ---
-title: Apache Hive-gegevens visualiseren met Power BI - Azure HDInsight
-description: Informatie over het gebruik van Microsoft Power BI om verwerkt door Azure HDInsight Hive-gegevens te visualiseren.
-keywords: hdinsight, hadoop, hive, interactive query, interactive hive, LLAP, odbc
+title: Apache Hive gegevens visualiseren met Power BI-Azure HDInsight
+description: Meer informatie over het gebruik van micro soft Power BI voor het visualiseren van Hive-gegevens die worden verwerkt door Azure HDInsight.
+keywords: hdinsight, Hadoop, Hive, Interactive query, Interactive Hive, LLAP, ODBC
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,73 +9,73 @@ ms.custom: hdinsightactive,
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 69353968f6b38f0d16b68c58b9b00c3e6d45850b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0e8f0e6ff6ba4b280d6174b6cec231ddca782912
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446876"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058603"
 ---
-# <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Apache Hive-gegevens visualiseren met Microsoft Power BI met behulp van ODBC in Azure HDInsight
+# <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Apache Hive gegevens visualiseren met micro soft Power BI met behulp van ODBC in azure HDInsight
 
-Informatie over Microsoft Power BI Desktop verbinden met Azure HDInsight met behulp van ODBC- en Apache Hive-gegevens visualiseren.
+Meer informatie over het verbinden van micro soft Power BI Desktop met Azure HDInsight met behulp van ODBC en Apache Hive gegevens visualiseren.
 
 >[!IMPORTANT]
-> U kunt gebruikmaken van het Hive ODBC-stuurprogramma om te via de algemene ODBC-connector in Power BI Desktop importeren. Het is echter niet aanbevolen voor BI workloads vanwege niet-interactieve aard van de Hive-query-engine. [HDInsight Interactive Query-connector](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) en [HDInsight Spark-connector](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) betere mogelijkheden voor de prestaties zijn.
+> U kunt gebruikmaken van het Hive ODBC-stuur programma om te importeren via de algemene ODBC-Connector in Power BI Desktop. Het wordt echter niet aanbevolen voor BI-workloads die niet-interactieve aard hebben van de Hive-query-engine. [Hdinsight Interactive query-connector](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) en [hdinsight Spark-connector](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) zijn betere keuzes voor de prestaties.
 
-In dit artikel hebt u de gegevens van laadt een `hivesampletable` Hive-tabel naar Power BI. De Hive-tabel bevat de gebruiksgegevens van sommige mobiele telefoon. Vervolgens kunt u gegevens over gebruik op een wereldkaart brengt:
+In dit artikel laadt u de gegevens uit een `hivesampletable` Hive-tabel naar Power bi. De Hive-tabel bevat een aantal gebruiks gegevens over mobiele telefoons. U kunt de gebruiks gegevens vervolgens op een wereld kaart uitzetten:
 
-![HDInsight Power BI het rapport met kaart](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png)
+![HDInsight-Power BI het kaart rapport](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png)
 
-De informatie is ook van toepassing op de nieuwe [Interactive Query](../interactive-query/apache-interactive-query-get-started.md) clustertype. Voor informatie over het verbinding maken met HDInsight Interactive Query met behulp van directquery, Zie [gegevens met Microsoft Power BI met behulp van directquery in Azure HDInsight Interactive Query Hive visualiseren](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
+De informatie is ook van toepassing op het nieuwe type [interactieve query](../interactive-query/apache-interactive-query-get-started.md) cluster. Zie voor informatie over het maken van een verbinding met HDInsight interactieve query met behulp van directe query de [Hive-gegevens van interactieve Query's visualiseren met micro soft power bi met behulp van directe query's in azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u verdergaat met dit artikel, hebt u de volgende items:
+Voordat u dit artikel gaat passeren, hebt u de volgende items nodig:
 
-* **HDInsight-cluster**. Het cluster kan zijn voor een HDInsight-cluster met Hive of een nieuw uitgebrachte Interactive Query-cluster. Zie voor het maken van clusters, [-cluster maken](apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+* **HDInsight-cluster**. Het cluster kan een HDInsight-cluster met hive of een nieuw, vrijgegeven interactief query cluster zijn. Zie [cluster maken](apache-hadoop-linux-tutorial-get-started.md#create-cluster)voor meer informatie over het maken van clusters.
 
-* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** . U kunt een kopie van downloaden de [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331).
+* **[Micro soft power bi Desktop](https://powerbi.microsoft.com/desktop/)** . U kunt een kopie downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=45331).
 
 ## <a name="create-hive-odbc-data-source"></a>Hive ODBC-gegevensbron maken
 
-Zie [maken Hive ODBC-gegevensbron](apache-hadoop-connect-excel-hive-odbc-driver.md#create-apache-hive-odbc-data-source).
+Zie de [component ODBC-gegevens bron maken](apache-hadoop-connect-excel-hive-odbc-driver.md#create-apache-hive-odbc-data-source).
 
-## <a name="load-data-from-hdinsight"></a>Laden van gegevens uit HDInsight
+## <a name="load-data-from-hdinsight"></a>Gegevens uit HDInsight laden
 
-De Hive-tabel hivesampletable wordt geleverd met alle HDInsight-clusters.
+De hivesampletable-Hive-tabel wordt geleverd met alle HDInsight-clusters.
 
 1. Start Power BI Desktop.
 
-2. In het menu bovenaan, gaat u naar **Start** > **gegevens ophalen** > **meer...** .
+2. Ga in het bovenste menu naar **Start** > **gegevens** > ophalen**meer...** .
 
-    ![Open HDInsight Power BI-gegevens](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
+    ![HDInsight Excel Power BI gegevens openen](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
 
-3. Uit de **gegevens ophalen** dialoogvenster, selecteer **andere** vanaf de linkerkant, selecteer **ODBC** vanaf de rechterkant en selecteer vervolgens **Connect** aan de onderkant.
+3. Selecteer in het dialoog venster **gegevens ophalen** **andere** links, selecteer **ODBC** aan de rechter kant en selecteer vervolgens **verbinding maken** aan de onderkant.
 
-4. Uit de **uit ODBC** dialoogvenster, selecteer de gegevensbron naam die u hebt gemaakt in de laatste sectie van de vervolgkeuzelijst, en selecteer vervolgens **OK**.
+4. Selecteer in het dialoog venster **vanuit ODBC** de naam van de gegevens bron die u hebt gemaakt in de laatste sectie in de vervolg keuzelijst en selecteer vervolgens **OK**.
 
-5. Uit de **Navigator** dialoogvenster Vouw **ODBC > HIVE > standaard**, selecteer **hivesampletable**, en selecteer vervolgens **Load**.
+5. Vouw in het **Navigatie** venster **ODBC-> Hive > standaard**uit, selecteer **hivesampletable**en selecteer vervolgens **laden**.
 
-6. Uit de **ODBC-stuurprogramma** dialoogvenster, selecteer **standaard of aangepast**en selecteer vervolgens **Connect**.
+6. Selecteer in het dialoog venster **ODBC-stuur programma** de optie **standaard of aangepast**en selecteer vervolgens **verbinding maken**.
 
 ## <a name="visualize-data"></a>Gegevens visualiseren
 
-Volgen op de laatste procedure.
+Door gaan met de laatste procedure.
 
-1. Selecteer in het deelvenster visualisaties **kaart**.  Het is een pictogram van globe.
+1. Selecteer in het deel venster visualisaties de optie **kaart**.  Het is een wereldbol pictogram.
 
-    ![HDInsight Power BI worden aangepast rapport](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-customize.png)
-2. Uit de **velden** venster **land** en **devicemake**. Hier ziet u de gegevens op de kaart uitgezet.
-3. Vouw de kaart.
+    ![Power BI van HDInsight-rapport aanpassen](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-customize.png)
+2. Selecteer in het deel venster **velden** de optie **land** en **devicemake**. U kunt de gegevens weer geven die zijn getekend op de kaart.
+3. Vouw de kaart uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u gegevens uit HDInsight met behulp van Power BI visualiseren.  Zie de volgende artikelen voor meer informatie:
+In dit artikel hebt u geleerd hoe u gegevens kunt visualiseren vanuit HDInsight met behulp van Power BI.  Raadpleeg de volgende artikelen voor meer informatie:
 
-* [Apache Zeppelin gebruiken voor het Apache Hive-query's uitvoeren in Azure HDInsight](../interactive-query/hdinsight-connect-hive-zeppelin.md).
-* [Excel verbinden met HDInsight met het Microsoft Hive ODBC-stuurprogramma](./apache-hadoop-connect-excel-hive-odbc-driver.md).
-* [Excel verbinden met Apache Hadoop met Power Query](apache-hadoop-connect-excel-power-query.md).
-* [Verbinding maken met Azure HDInsight en Apache Hive-query's uitvoeren met behulp van Data Lake Tools voor Visual Studio](apache-hadoop-visual-studio-tools-get-started.md).
-* [Azure HDInsight-hulpprogramma gebruiken voor Visual Studio Code](../hdinsight-for-vscode.md).
+* [Gebruik Apache Zeppelin om Apache Hive query's uit te voeren in azure HDInsight](../interactive-query/hdinsight-connect-hive-zeppelin.md).
+* [Koppel Excel aan HDInsight met het micro soft Hive ODBC-stuur programma](./apache-hadoop-connect-excel-hive-odbc-driver.md).
+* [Verbinding maken tussen Excel en Apache Hadoop met behulp van Power query](apache-hadoop-connect-excel-power-query.md).
+* [Verbinding maken met Azure HDInsight en Apache Hive query's uitvoeren met behulp van data Lake-Hulpprogram ma's voor Visual Studio](apache-hadoop-visual-studio-tools-get-started.md).
+* [Gebruik het hulp programma Azure HDInsight voor Visual Studio code](../hdinsight-for-vscode.md).
 * [Gegevens uploaden naar HDInsight](./../hdinsight-upload-data.md).

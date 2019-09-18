@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 4bec14cd3aa88d885f83142143c7a901ca82057b
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: dde4b4efc62ec444cbbd662a70e7507a1b8f70e7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918212"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066983"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Diep gaande kennis-geavanceerde analyse
 
@@ -23,17 +23,17 @@ HDInsight biedt de mogelijkheid om waardevol inzicht te krijgen in grote hoeveel
 
 ## <a name="advanced-analytics-process"></a>Geavanceerd analyse proces
 
-![Process](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
+![Geavanceerde analyse proces stroom](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
 
-Nadat u het bedrijfs probleem hebt geïdentificeerd en de gegevens hebt verzameld en verwerkt, moet u een model maken dat de vraag vertegenwoordigt die u wilt voors pellen. In uw model worden een of meer machine learning algoritmen gebruikt om het type voor spelling te maken dat het beste bij uw bedrijfs behoeften past.  Het meren deel van uw gegevens moet worden gebruikt om het model te trainen, met de rest die wordt gebruikt om het te testen of te evalueren. 
+Nadat u het bedrijfs probleem hebt geïdentificeerd en de gegevens hebt verzameld en verwerkt, moet u een model maken dat de vraag vertegenwoordigt die u wilt voors pellen. In uw model worden een of meer machine learning algoritmen gebruikt om het type voor spelling te maken dat het beste bij uw bedrijfs behoeften past.  Het meren deel van uw gegevens moet worden gebruikt om het model te trainen, met de rest die wordt gebruikt om het te testen of te evalueren.
 
-Nadat u uw model hebt gemaakt, geladen, getest en geëvalueerd, is de volgende stap het implementeren van uw model, zodat het begint met het leveren van antwoorden op uw vragen. De laatste stap bestaat uit het bewaken van de prestaties van uw model en het afstemmen hiervan. 
+Nadat u uw model hebt gemaakt, geladen, getest en geëvalueerd, is de volgende stap het implementeren van uw model, zodat het begint met het leveren van antwoorden op uw vragen. De laatste stap bestaat uit het bewaken van de prestaties van uw model en het afstemmen hiervan.
 
 ## <a name="common-types-of-algorithms"></a>Algemene typen algoritmen
 
 Geavanceerde analyse oplossingen bieden een reeks machine learning-algoritmen. Hier volgt een samen vatting van de categorie algoritmen en de bijbehorende veelvoorkomende cases voor bedrijfs gebruik.
 
-![Machine Learning use cases](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
+![Samen vattingen van Machine Learning categorie](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
 
 Samen met het selecteren van de beste algoritme (s), moet u overwegen of u gegevens moet opgeven voor de training. Machine learning-algoritmen worden als volgt gecategoriseerd:
 
@@ -98,7 +98,7 @@ Er zijn drie belang rijke taken in dit geavanceerde analyse scenario:
 
 In dit voor beeld wordt de CIFAR-10-installatie kopieset gebruikt die is gecompileerd en gedistribueerd door Alex Krizhevsky, wijnbouw Nair en Geoffrey Hinton,. De CIFAR-10-gegevensset bevat 60.000 32 × 32 kleuren afbeeldingen die deel uitmaken van tien wederzijds exclusieve klassen:
 
-![Installatiekopieën](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
+![Voorbeeld afbeeldingen Machine Learning](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
 
 Voor meer informatie over de gegevensset raadpleegt u het leer proces van Alex Krizhevsky [meerdere lagen van functies van kleine afbeeldingen](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
 
@@ -111,7 +111,7 @@ De gegevensset is gepartitioneerd in een Trainingsset van 50.000 installatie kop
 
 De volledige voor verwerking/Score van de 10.000-installatie kopieën duurt minder dan één minuut op een cluster met 4 worker-knoop punten. Het model voor spelt nauw keurig de labels van ~ 9.100 (91%) installatie kopieën. Een Verwar ring matrix illustreert de meest voorkomende classificatie fouten. De matrix laat bijvoorbeeld zien dat het labelen van honden als katten ongedaan wordt gemaakt en omgekeerd meer dan voor andere label paren plaatsvindt.
 
-![Resultaten](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
+![Grafiek met Machine Learning resultaten](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
 
 ### <a name="try-it-out"></a>Probeer het eens!
 

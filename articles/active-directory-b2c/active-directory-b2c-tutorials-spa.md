@@ -10,16 +10,16 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 06ac81105ad8871c934715c18cd5f78fc3ea05f5
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 06bb71b27edf97f9b7e3333aef93af7bd0e0529e
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858512"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064788"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>Zelfstudie: Verificatie inschakelen in een webtoepassing met één pagina met behulp van Azure Active Directory B2C
 
-Deze zelfstudie laat u zien hoe u Azure Active Directory B2C (Azure AD) kunt gebruiken voor het aanmelden en registreren van gebruikers in een toepassing met één pagina. Met Azure AD B2C kunnen uw toepassingen zich met behulp van open-standaardprotocollen verifiëren bij sociale accounts, Enterprise-accounts en Azure Active Directory-accounts.
+In deze zelf studie wordt uitgelegd hoe u Azure Active Directory B2C (Azure AD B2C) gebruikt om u aan te melden en gebruikers aan te melden bij een toepassing met één pagina (SPA). Met Azure AD B2C kunnen uw toepassingen zich met behulp van open-standaardprotocollen verifiëren bij sociale accounts, Enterprise-accounts en Azure Active Directory-accounts.
 
 In deze zelfstudie leert u het volgende:
 
@@ -49,7 +49,7 @@ Daarnaast hebt u het volgende nodig in uw lokale ontwikkel omgeving:
 In de tweede zelf studie die u als onderdeel van de vereisten hebt voltooid, hebt u een webtoepassing geregistreerd in Azure AD B2C. Om te communiceren met het voorbeeld in deze zelfstudie, moet u een omleidings-URI toevoegen aan de toepassing in Azure AD B2C.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C Tenant bevat door het filter voor **mappen en abonnementen** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
+1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 1. Selecteer **alle services** in de linkerbovenhoek van de Azure Portal, zoek naar en selecteer **Azure AD B2C**.
 1. Selecteer **Toepassingen** en selecteer vervolgens de toepassing *webapp1*.
 1. Voeg onder **Antwoord-URL** `http://localhost:6420` toe.

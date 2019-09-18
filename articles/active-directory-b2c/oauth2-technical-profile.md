@@ -1,6 +1,6 @@
 ---
-title: Een technisch profiel OAuth2 definiëren in een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
-description: Een technisch profiel OAuth2 definiëren in een aangepast beleid in Azure Active Directory B2C.
+title: Een OAuth2 technisch profiel definiëren in een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
+description: Definieer een OAuth2 technisch profiel in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,33 +10,33 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 80b196b34e8eee99ed77c3c8a914f89fa68d87b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63500c057b5c9f497e59589286a852a4394059ec
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512941"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063976"
 ---
-# <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel OAuth2 definiëren in een aangepast beleid voor Azure Active Directory B2C
+# <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een OAuth2 technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C biedt ondersteuning voor de id-provider van de OAuth2-protocol. OAuth2 is het primaire protocol voor de gedelegeerde verificatie en autorisatie. Zie voor meer informatie de [RFC 6749 de OAuth 2.0 machtiging Framework](https://tools.ietf.org/html/rfc6749). Het technische profiel van een OAuth2, kunt u federeren met een OAuth2 op basis van id-provider, zoals Facebook. Federatie met een id-provider, kunnen gebruikers melden zich aan met hun bestaande sociale of ondernemings-id's.
+Azure Active Directory B2C (Azure AD B2C) biedt ondersteuning voor de ID-provider van het OAuth2-protocol. OAuth2 is het primaire protocol voor autorisatie en gedelegeerde authenticatie. Zie [RFC 6749 het OAuth 2,0 Authorization Framework](https://tools.ietf.org/html/rfc6749)(Engelstalig) voor meer informatie. Met een OAuth2-technisch profiel kunt u communiceren met een OAuth2-gebaseerde ID-provider, zoals Facebook. Met federeren met een id-provider kunnen gebruikers zich aanmelden met hun bestaande sociale of bedrijfs identiteiten.
 
 ## <a name="protocol"></a>Protocol
 
-De **naam** kenmerk van de **Protocol** element moet worden ingesteld op `OAuth2`. Bijvoorbeeld, het protocol voor de **Facebook-OAUTH** technische profiel is `OAuth2`:
+Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `OAuth2`. Het protocol voor het **Facebook-OAUTH-** technische profiel is `OAuth2`bijvoorbeeld:
 
 ```XML
 <TechnicalProfile Id="Facebook-OAUTH">
   <DisplayName>Facebook</DisplayName>
   <Protocol Name="OAuth2" />
-  ...    
+  ...
 ```
 
-## <a name="input-claims"></a>Invoerclaims
+## <a name="input-claims"></a>Invoer claims
 
-De **InputClaims** en **InputClaimsTransformations** elementen zijn niet vereist. Maar mogelijk wilt u extra parameters verzenden naar uw id-provider. Het volgende voorbeeld wordt de **domain_hint** query-tekenreeksparameter met de waarde van `contoso.com` de autorisatie-aanvraag.
+De **InputClaims** -en **InputClaimsTransformations** -elementen zijn niet vereist. Maar u wilt mogelijk extra para meters naar uw ID-provider verzenden. In het volgende voor beeld wordt de **domain_hint** -query teken reeks parameter `contoso.com` met de waarde van aan de autorisatie aanvraag toegevoegd.
 
 ```XML
 <InputClaims>
@@ -44,23 +44,23 @@ De **InputClaims** en **InputClaimsTransformations** elementen zijn niet vereist
 </InputClaims>
 ```
 
-## <a name="output-claims"></a>Gebruikersclaims
+## <a name="output-claims"></a>Uitvoer claims
 
-De **OutputClaims** element bevat een lijst met claims die wordt geretourneerd door de OAuth2-id-provider. Mogelijk moet u de naam van de claim die is gedefinieerd in uw beleid aan de naam die is gedefinieerd in de id-provider toewijzen. U kunt ook bevatten claims die niet zijn geretourneerd door de id-provider, zolang u de `DefaultValue` kenmerk.
+Het **OutputClaims** -element bevat een lijst met claims die zijn geretourneerd door de OAuth2-ID-provider. Mogelijk moet u de naam van de claim die in uw beleid is gedefinieerd, toewijzen aan de naam die is gedefinieerd in de ID-provider. U kunt ook claims toevoegen die niet worden geretourneerd door de ID-provider zolang u het `DefaultValue` kenmerk hebt ingesteld.
 
-De **OutputClaimsTransformations** element kan bevatten een verzameling van **OutputClaimsTransformation** elementen die worden gebruikt voor het wijzigen van de uitvoerclaims of nieuwe labels te genereren.
+Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt voor het wijzigen van de uitvoer claims of voor het genereren van nieuwe.
 
-Het volgende voorbeeld ziet u de claims die wordt geretourneerd door de Facebook-id-provider:
+In het volgende voor beeld worden de claims weer gegeven die zijn geretourneerd door de Facebook-ID-provider:
 
-- De **first_name** claim is toegewezen aan de **givenName** claim.
-- De **achternaam** claim is toegewezen aan de **achternaam** claim.
-- De **displayName** claim zonder naam-toewijzing.
-- De **e** claim zonder naam toewijzingen.
+- De claim **first_name** wordt toegewezen aan de claim voor de **OpgegevenNaam** .
+- De claim **last_name** wordt toegewezen aan de claim **Achternaam** .
+- De **DisplayName** claim zonder naam toewijzing.
+- De **e-mail** claim zonder naam toewijzing.
 
-Het technische profiel retourneert ook claims die niet zijn geretourneerd door de id-provider: 
+Het technische profiel retourneert ook claims die niet worden geretourneerd door de ID-provider:
 
-- De **identityProvider** claim met de naam van de id-provider.
-- De **authenticationSource** claim met een standaardwaarde van **socialIdpAuthentication**.
+- De claim **Identity provider** die de naam van de ID-provider bevat.
+- De **authenticationSource** claim met de standaard waarde **socialIdpAuthentication**.
 
 ```xml
 <OutputClaims>
@@ -78,41 +78,41 @@ Het technische profiel retourneert ook claims die niet zijn geretourneerd door d
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| client_id | Ja | De toepassings-id van de id-provider. |
-| IdTokenAudience | Nee | De doelgroep van het id_token. Als u opgeeft, wordt Azure AD B2C controleert of het token in een claim die wordt geretourneerd door de id-provider is en gelijk aan de versie die is opgegeven is. |
-| authorization_endpoint | Ja | De URL van de autorisatie-eindpunt aan de hand van RFC 6749. |
-| AccessTokenEndpoint | Ja | De URL van het token-eindpunt aan de hand van RFC 6749. |  
-| ClaimsEndpoint | Ja | De URL van het eindpunt van de gebruiker informatie aan de hand van RFC 6749. | 
-| AccessTokenResponseFormat | Nee | De indeling van de aanroep van de access-token-eindpunt. Bijvoorbeeld, Facebook is een HTTP GET-methode vereist, maar de reactie van access-token is in JSON-indeling. |
-| AdditionalRequestQueryParameters | Nee | Aanvullende queryparameters. U wilt bijvoorbeeld aanvullende parameters verzenden naar uw id-provider. U kunt meerdere parameters met door komma's scheidingsteken opnemen. | 
-| ClaimsEndpointAccessTokenName | Nee | De naam van de access token queryreeks-parameter. Sommige id-providers claims eindpunten ondersteuning voor GET HTTP-aanvraag. In dit geval wordt het bearer-token verzonden met behulp van een queryreeks-parameter in plaats van de autorisatie-header. |
-| ClaimsEndpointFormatName | Nee | De naam van de indeling queryreeks-parameter. U kunt bijvoorbeeld de naam als instellen `format` in deze LinkedIn claims eindpunt `https://api.linkedin.com/v1/people/~?format=json`. | 
-| ClaimsEndpointFormat | Nee | De waarde van de indeling queryreeks-parameter. U kunt bijvoorbeeld de waarde als instellen `json` in deze LinkedIn claims eindpunt `https://api.linkedin.com/v1/people/~?format=json`. | 
-| ProviderName | Nee | De naam van de id-provider. |
-| response_mode | Nee | De methode die de id-provider gebruikt voor het verzenden van het resultaat terug naar Azure AD B2C. Mogelijke waarden: `query`, `form_post` (standaard), of `fragment`. |
-| scope | Nee | Het bereik van de aanvraag die is gedefinieerd op basis van de OAuth2-specificatie identity provider. Zoals `openid`, `profile`, en `email`. |
-| HttpBinding | Nee | De verwachte HTTP-binding met de toegang tot tokens en claims token-eindpunten. Mogelijke waarden: `GET` of `POST`.  |
-| ResponseErrorCodeParamName | Nee | De naam van de parameter die het foutbericht geretourneerd via een HTTP 200 (Ok bevat). |
-| ExtraParamsInAccessTokenEndpointResponse | Nee | Bevat de extra parameters die kunnen worden geretourneerd in het antwoord van **AccessTokenEndpoint** door sommige id-providers. Bijvoorbeeld, het antwoord van **AccessTokenEndpoint** bevat, zoals een extra parameter `openid`, dit is een verplichte parameter naast de access_token in een **ClaimsEndpoint** aanvraag query tekenreeks. Meerdere namen van parameters moeten worden voorafgegaan en door de door komma's gescheiden ',' scheidingsteken. |
-| ExtraParamsInClaimsEndpointRequest | Nee | Bevat de extra parameters die kunnen worden geretourneerd in de **ClaimsEndpoint** aanvraag door een id-providers. Meerdere namen van parameters moeten worden voorafgegaan en door de door komma's gescheiden ',' scheidingsteken. |
+| client_id | Ja | De toepassings-id van de ID-provider. |
+| IdTokenAudience | Nee | De doel groep van de id_token. Indien opgegeven, Azure AD B2C controleert of het token zich in een claim bevindt die wordt geretourneerd door de ID-provider en is deze gelijk aan de waarde die is opgegeven. |
+| authorization_endpoint | Ja | De URL van het autorisatie-eind punt conform RFC 6749. |
+| AccessTokenEndpoint | Ja | De URL van het eind punt van het token conform RFC 6749. |
+| ClaimsEndpoint | Ja | De URL van het eind punt voor gebruikers gegevens volgens RFC 6749. |
+| AccessTokenResponseFormat | Nee | De indeling van de eindpunt aanroep van het toegangs token. Voor Facebook is bijvoorbeeld een HTTP GET-methode vereist, maar het antwoord van het toegangs token heeft de JSON-indeling. |
+| AdditionalRequestQueryParameters | Nee | Aanvullende query parameters voor aanvragen. U kunt bijvoorbeeld extra para meters verzenden naar uw ID-provider. U kunt meerdere para meters met een komma als scheidings teken gebruiken. |
+| ClaimsEndpointAccessTokenName | Nee | De naam van de query teken reeks parameter voor het toegangs token. De ondersteuning voor claims-eind punten van een id-provider kan een HTTP-aanvraag ophalen. In dit geval wordt het Bearer-token verzonden met behulp van een query reeks parameter in plaats van de autorisatie-header. |
+| ClaimsEndpointFormatName | Nee | De naam van de query teken reeks parameter voor opmaak. U kunt bijvoorbeeld de naam instellen zoals `format` in dit LinkedIn-eind punt `https://api.linkedin.com/v1/people/~?format=json`voor claims. |
+| ClaimsEndpointFormat | Nee | De waarde van de para meter voor de indelings query teken reeks. U kunt bijvoorbeeld de waarde instellen zoals `json` in dit LinkedIn-eind punt `https://api.linkedin.com/v1/people/~?format=json`voor claims. |
+| ProviderName | Nee | De naam van de ID-provider. |
+| response_mode | Nee | De methode die de ID-provider gebruikt om het resultaat terug te sturen naar Azure AD B2C. Mogelijke waarden: `query`, `form_post` (standaard) of `fragment`. |
+| bereik | Nee | Het bereik van de aanvraag die is gedefinieerd volgens de specificatie van de OAuth2-ID-provider. `openid`Zoals, `profile`, en `email`. |
+| HttpBinding | Nee | De verwachte HTTP-binding met het toegangs token en claims token-eind punten. Mogelijke waarden: `GET` of `POST`.  |
+| ResponseErrorCodeParamName | Nee | De naam van de para meter die het fout bericht bevat dat via HTTP 200 (OK) wordt geretourneerd. |
+| ExtraParamsInAccessTokenEndpointResponse | Nee | Bevat de extra para meters die kunnen worden geretourneerd in het antwoord van **AccessTokenEndpoint** door sommige id-providers. Het antwoord van **AccessTokenEndpoint** bevat bijvoorbeeld een extra para meter `openid`, zoals, een verplichte para meter naast de access_token in een query reeks van een **ClaimsEndpoint** -aanvraag. Meerdere parameter namen moeten worden voorafgegaan en gescheiden door een komma ', ' als scheidings teken. |
+| ExtraParamsInClaimsEndpointRequest | Nee | Bevat de extra para meters die in de **ClaimsEndpoint** -aanvraag door sommige id-providers kunnen worden geretourneerd. Meerdere parameter namen moeten worden voorafgegaan en gescheiden door een komma ', ' als scheidings teken. |
 
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 
-De **CryptographicKeys** element bevat het volgende kenmerk:
+Het element **CryptographicKeys** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| client_secret | Ja | Het clientgeheim van de toepassing van id-provider. De cryptografische sleutel is alleen vereist als de **response_types** metagegevens is ingesteld op `code`. In dit geval wordt Azure AD B2C een aanroep voor het uitwisselen van de autorisatiecode voor een toegangstoken. Als de metagegevens is ingesteld op `id_token`, kunt u de cryptografische sleutel weglaten. |  
+| client_secret | Ja | Het client geheim van de identiteits provider toepassing. De cryptografische sleutel is alleen vereist als de **response_types** -meta gegevens `code`zijn ingesteld op. In dit geval maakt Azure AD B2C een andere aanroep voor het uitwisselen van de autorisatie code voor een toegangs token. Als de meta gegevens zijn ingesteld `id_token`op, kunt u de cryptografische sleutel weglaten. |
 
 ## <a name="redirect-uri"></a>Omleidings-URI
 
-Wanneer u de omleidings-URL van uw id-provider configureren, voert u `https://login.microsoftonline.com/te/tenant/policyId/oauth2/authresp`. Vervang **tenant** met de naam van uw tenant (bijvoorbeeld: contosob2c.onmicrosoft.com) en **policyId** met de id van uw beleid (bijvoorbeeld b2c_1a_policy). De omleidings-URI moet zich in alleen kleine letters.
+Wanneer u de omleidings-URL van uw ID- `https://login.microsoftonline.com/te/tenant/policyId/oauth2/authresp`provider configureert, voert u in. Zorg ervoor dat u de **Tenant** vervangt door de naam van uw Tenant (bijvoorbeeld contosob2c.onmicrosoft.com) en **policyId** met de id van uw beleid (bijvoorbeeld b2c_1a_policy). De omleidings-URI moet in alle kleine letters zijn.
 
-Als u de **b2clogin.com** domein in plaats van **login.microsoftonline.com** Zorg ervoor dat u b2clogin.com in plaats van login.microsoftonline.com.
+Als u het **b2clogin.com** -domein gebruikt in plaats van **login.microsoftonline.com** , moet u ervoor zorgen dat u b2clogin.com gebruikt in plaats van login.microsoftonline.com.
 
 Voorbeelden:
 
-- [Google + als een OAuth2-id-provider met behulp van aangepaste beleid toevoegen](active-directory-b2c-custom-setup-goog-idp.md)
+- [Google + als OAuth2-ID-provider toevoegen met aangepaste beleids regels](active-directory-b2c-custom-setup-goog-idp.md)
 
 
 

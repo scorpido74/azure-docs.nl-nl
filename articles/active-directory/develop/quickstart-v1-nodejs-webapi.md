@@ -1,5 +1,5 @@
 ---
-title: Een Web-API beveiligen met Azure Active Directory | Microsoft Docs
+title: 'Quickstart: Een Web-API beveiligen met Azure Active Directory'
 description: Meer informatie over het bouwen van een Node.js REST-web-API die is geïntegreerd met Azure Active Directory voor verificatie.
 services: active-directory
 documentationcenter: nodejs
@@ -14,14 +14,14 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: ryanwi
-ms.custom: aaddev
+ms.custom: seo-javascript-september2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dcbe10c08d581e2ec01e1616da49b7a1b31018d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 7307afb2ce9e10326c42f96733d3f80979c4a4b3
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545975"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056543"
 ---
 # <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>Quickstart: Een Web-API beveiligen met Azure Active Directory
 

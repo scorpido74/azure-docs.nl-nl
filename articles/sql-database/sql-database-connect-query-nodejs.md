@@ -1,5 +1,5 @@
 ---
-title: Node.js gebruiken om een query uit te voeren voor een Azure SQL-database | Microsoft Docs
+title: 'Quickstart: Node. js gebruiken om een query uit te Azure SQL Database'
 description: Node.js gebruiken om een programma te maken dat is verbonden met een Azure SQL-database, en een query voor deze database uitvoeren met behulp van T-SQL-instructies.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
-ms.openlocfilehash: 72e509a9a7f820c26895bdfac9216b0373729f6c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.custom: seo-javascript-september2019
+ms.openlocfilehash: b865bca5db11c4a34a1be4deb2e3145d73599e81
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947103"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059276"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Quickstart: Node.js gebruiken om een query uit te voeren voor een Azure SQL-database
 

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 4554214b74b4d09fa40e355270208bebda4076b7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ca8e13e322c3e192b697248f1252b65f6cbeda7f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775258"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037229"
 ---
 # <a name="add-storage"></a>Opslag toevoegen
 
@@ -27,13 +27,15 @@ U kunt opslag doelen toevoegen tijdens het maken van uw Azure HPC-cache of later
 
 Gebruik het tabblad **opslag doelen** van de wizard cache maken om opslag te definiëren op het moment dat u het cache-exemplaar maakt.
 
-![scherm afbeelding van de pagina opslag doelen](media/create-targets.png)
+![scherm afbeelding van de pagina opslag doelen](media/hpc-cache-storage-targets-pop.png)
 
 Klik op de koppeling **opslag doel toevoegen** om opslag toe te voegen.
 
 ## <a name="add-storage-targets-from-the-cache"></a>Opslag doelen uit de cache toevoegen
 
 Open in de Azure Portal uw cache-exemplaar en klik op **opslag doelen** op de zijbalk aan de linkerkant. De pagina opslag doel bevat een lijst met alle bestaande doelen en bevat een koppeling om een nieuwe toe te voegen.
+
+![scherm afbeelding van de koppeling opslag doelen op de zijbalk, onder de kop configureren, tussen de instellingen en controle van categorie koppen](media/hpc-cache-storage-targets-sidebar.png)
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>Een nieuw Azure Blob-opslag doel toevoegen
 
@@ -52,15 +54,13 @@ Als u een Azure Blob-container wilt definiëren, voert u deze informatie in.
 
 * **Pad naar virtuele naam ruimte** : Stel het client gerichte bestandspad in voor dit opslag doel. Lees de [geaggregeerde naam ruimte configureren](hpc-cache-namespace.md) voor meer informatie over de functie virtuele naam ruimte.
 
-<!--  The namespace path value must end with a slash (``/``) and should not start with one.  -->
-
 Wanneer u klaar bent, klikt u op **OK** om het opslag doel toe te voegen.
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>De toegangs beheer rollen toevoegen aan uw account
 
 De Azure HPC-cache maakt gebruik [van op rollen gebaseerd toegangs beheer (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) om de cache toepassing toegang te geven tot uw opslag account voor Azure Blob Storage-doelen.
 
-De eigenaar van het opslag account moet expliciet de rol [Inzender voor het opslag account](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) inrollen en de [Gegevensinzender voor opslag-blobs](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) voor de gebruiker StorageCache resource provider toevoegen.
+De eigenaar van het opslag account moet expliciet de Inzender rollen voor het [opslag account](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) en de [blobgegevens](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) voor de gebruiker StorageCache resource provider toevoegen.
 
 U kunt dit vooraf doen, of door te klikken op een koppeling op de pagina waar u een Blob-opslag doel toevoegt.
 

@@ -10,25 +10,25 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7286bf1fd51883587aa41dc69d5dae0a3e6fb824
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 158bb3b1329d2ad2cbd55ecf44f980966e2546e2
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622415"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065177"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Registratie instellen en aanmelden met een Google-account met behulp van Azure Active Directory B2C
 
 ## <a name="create-a-google-application"></a>Een Google-toepassing maken
 
-Als u een Google-account wilt gebruiken als een [ID-provider](active-directory-b2c-reference-oauth-code.md) in azure Active Directory (Azure AD) B2C, moet u een toepassing maken in uw Tenant waarmee deze wordt vertegenwoordigd. Als u nog geen Google-account hebt, kunt u zich aanmelden [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp)bij.
+Als u een Google-account wilt gebruiken als een [ID-provider](active-directory-b2c-reference-oauth-code.md) in Azure Active Directory B2C (Azure AD B2C), moet u een toepassing maken in uw Tenant waarmee deze wordt vertegenwoordigd. Als u nog geen Google-account hebt, kunt u zich aanmelden [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp)bij.
 
 1. Meld u aan bij de [Google developers-console](https://console.developers.google.com/) met uw Google-account referenties.
 1. Selecteer in de linkerbovenhoek van de pagina de project lijst en selecteer vervolgens **Nieuw project**.
 1. Voer een **project naam**in, klik op **maken**en zorg ervoor dat u het nieuwe project gebruikt.
 1. Selecteer **referenties** in het linkermenu en selecteer vervolgens**OAuth-client-id** > maken.
 1. Onder **toepassings type**selecteert u **Web Application**.
-1. Voer een **naam** in voor uw toepassing, `https://your-tenant-name.b2clogin.com` Voer in **geautoriseerde java script-oorsprong**in en `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in geautoriseerde omleidings- **uri's**. Vervang `your-tenant-name` door de naam van uw Tenant. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant, zelfs als de Tenant is gedefinieerd met hoofd letters in Azure AD B2C.
+1. Voer een **naam** in voor uw toepassing, `https://your-tenant-name.b2clogin.com` Voer in **geautoriseerde java script-oorsprong**in en `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in **geautoriseerde omleidings-uri's**. Vervang `your-tenant-name` door de naam van uw Tenant. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant, zelfs als de Tenant is gedefinieerd met hoofd letters in Azure AD B2C.
 1. Klik op **Create**.
 1. Kopieer de waarden van de **client-id** en het **client geheim**. U hebt beide nodig om Google te configureren als een id-provider in uw Tenant. **Client geheim** is een belang rijke beveiligings referentie.
 

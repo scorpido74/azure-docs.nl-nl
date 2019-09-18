@@ -1,6 +1,6 @@
 ---
 title: Diep gaande informatie versus machine learning
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Meer informatie over uitgebreide kennis versus machine learning en hoe beide concepten verband houden met kunst matige intelligentie. Grondige kennis kan worden toegepast in scenario's zoals fraude detectie, spraak-en gezichts herkenning, sentiment Analytics en time series-prognoses.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 3b0546c42ddd5252b35d1a77d7b152733beec233
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: cff31916f837141ae54f3c14dd125be6a92a5008
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240961"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035511"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Diep gaande informatie versus machine learning
 
@@ -106,9 +106,9 @@ Convolutional Neural Networks zijn gebruikt in gebieden zoals het herkennen en c
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In de volgende artikelen ziet u hoe u de technologie voor diepe leren gebruikt in de [Azure machine learning-service](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri):
+In de volgende artikelen ziet u hoe u de technologie voor diepe leren gebruikt in [Azure machine learning](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri):
 
 - [Hand matige cijfers classificeren met behulp van een tensor flow-model](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
 - [Geclassificeerde handgeschreven cijfers door gebruik te maken van een tensor flow Estimator en Keras](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 - [Installatie kopieën classificeren met behulp van een Pytorch-model](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
-- [Hand matige cijfers classificeren met behulp van een ketting model](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+- [Hand matige cijfers classificeren met behulp van een ketting model](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: ecceb1177d7b7015afc92f10284a9372d0cfb4a2
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a0ca483005cf1f5aaadcd7a6107b092d581d6773
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375301"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067757"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Ondersteuningsmatrix voor VMware-evaluatie en -migratie
 
@@ -43,10 +43,13 @@ De tabel bevat een overzicht van de ondersteunde scenario's voor virtuele VMware
 Azure Government | VS (overheid) - Virginia
 Azië en Stille Oceaan | Azië Azië-oost of Zuidoost
 Australië | Australië-oost of Australië-zuidoost
+Brazilië | Brazilië - zuid
 Canada | Canada-centraal of Canada-oost
 Europa | Europa - noord of Europa - west
+Frankrijk | Frankrijk - centraal
 India | Centraal-India of India-zuid
 Japan |  Japan-Oost of Japan-West
+Zuid-Korea | Korea-centraal of Korea-zuid
 Verenigd Koninkrijk | UK-zuid of UK-west
 Verenigde Staten | VS-midden, VS-West 2
 
@@ -73,11 +76,11 @@ Azure Migrate voert een licht gewicht apparaat uit om virtuele VMware-machines t
 
 **Ondersteuning** | **Details**
 --- | ---
-**Implementatie van het apparaat** | U implementeert het apparaat als een virtuele VMware-machine. U hebt voldoende resources op de vCenter Server nodig om een virtuele machine toe te wijzen met 32 GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/><br/> Voor het apparaat is toegang tot internet vereist, hetzij rechtstreeks hetzij via een proxy.<br/> De toestel-VM moet worden geïmplementeerd op een ESXi-host waarop versie 5,5 of hoger wordt uitgevoerd. 
+**Implementatie van het apparaat** | U implementeert het apparaat als een virtuele VMware-machine. U hebt voldoende resources op de vCenter Server nodig om een virtuele machine toe te wijzen met 32 GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/><br/> Voor het apparaat is toegang tot internet vereist, hetzij rechtstreeks hetzij via een proxy.<br/> De toestel-VM moet worden geïmplementeerd op een ESXi-host waarop versie 5,5 of hoger wordt uitgevoerd.
 **Azure Migrate project** | Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> U kunt Maxi maal 35.000 Vm's in een project evalueren.
 **Detectie** | Een apparaat kan tot 10.000 VMware-Vm's detecteren op een vCenter Server.<br/> Een apparaat kan verbinding maken met één vCenter Server.
 **Beoordelings groep** | U kunt Maxi maal 35.000 computers in één groep toevoegen.
-**Onderzoek** | U kunt Maxi maal 35.000 Vm's in één evaluatie evalueren.
+**Evaluatie** | U kunt Maxi maal 35.000 Vm's in één evaluatie evalueren.
 
 
 ## <a name="assessment-url-access-requirements"></a>Beoordeling-vereisten voor URL-toegang

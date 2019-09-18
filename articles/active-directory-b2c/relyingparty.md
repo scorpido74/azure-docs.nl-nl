@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bf8d4889c277d59d0c42894281a89345fbf90a84
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: b1bfa945843d185a46f1f1d79fd4dab0e991c769
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716696"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063808"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Het **RelyingParty** -element geeft de gebruikers traject op die moet worden afgedwongen voor de huidige aanvraag om Azure Active Directory (Azure AD) B2C. Ook wordt de lijst met claims opgegeven die de toepassing Relying Party (RP) nodig heeft als onderdeel van het gepubliceerde token. Een RP-toepassing, zoals een web-, mobiele of bureaublad toepassing, roept het RP-beleids bestand aan. Het RP-beleids bestand voert een specifieke taak uit, zoals het aanmelden, het opnieuw instellen van een wacht woord of het bewerken van een profiel. Meerdere toepassingen kunnen hetzelfde RP-beleid gebruiken en één toepassing kan meerdere beleids regels gebruiken. Alle RP-toepassingen ontvangen hetzelfde token met claims en de gebruiker verloopt over hetzelfde traject van de gebruiker.
+Het element **RelyingParty** geeft aan dat de gebruikers traject moet worden afgedwongen voor de huidige aanvraag om Azure Active Directory B2C (Azure AD B2C). Ook wordt de lijst met claims opgegeven die de toepassing Relying Party (RP) nodig heeft als onderdeel van het gepubliceerde token. Een RP-toepassing, zoals een web-, mobiele of bureaublad toepassing, roept het RP-beleids bestand aan. Het RP-beleids bestand voert een specifieke taak uit, zoals het aanmelden, het opnieuw instellen van een wacht woord of het bewerken van een profiel. Meerdere toepassingen kunnen hetzelfde RP-beleid gebruiken en één toepassing kan meerdere beleids regels gebruiken. Alle RP-toepassingen ontvangen hetzelfde token met claims en de gebruiker verloopt over hetzelfde traject van de gebruiker.
 
 In het volgende voor beeld ziet u een **RelyingParty** -element in het *B2C_1A_signup_signin* -beleids bestand:
 
@@ -104,7 +104,7 @@ Het element **DefaultUserJourney** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| ReferenceId | Ja | Een id van de gebruikers traject in het beleid. Zie voor meer informatie [gebruikers ritten](userjourneys.md) |
+| referenceId | Ja | Een id van de gebruikers traject in het beleid. Zie voor meer informatie [gebruikers ritten](userjourneys.md) |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 

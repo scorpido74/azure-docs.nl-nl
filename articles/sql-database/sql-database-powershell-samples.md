@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: c32803fec6107e39a0b8329adaee072e3e291575
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 998497d3e790ba501ac5cdeb4974bf7ee9ea6a54
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567054"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059262"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Azure PowerShell-voorbeelden voor Azure SQL Database
 
@@ -27,7 +27,7 @@ Met Azure SQL Database kunt u uw databases, instanties en pools met behulp van A
 
 Als u ervoor kiest om Power shell lokaal te installeren en te gebruiken, hebt u voor deze zelf studie AZ Power shell 1.4.0 of hoger nodig. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
-## <a name="single-database-and-elastic-pools"></a>Individuele databases en elastische pools
+## <a name="single-database-and-elastic-poolstabsingle-database"></a>[Individuele database en elastische Pools](#tab/single-database)
 
 De volgende tabel bevat koppelingen naar Azure PowerShell-voorbeeldscripts voor Azure SQL Database.
 
@@ -58,7 +58,7 @@ De volgende tabel bevat koppelingen naar Azure PowerShell-voorbeeldscripts voor 
 
 Meer informatie over de [Azure PowerShell API voor individuele databases](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases).
 
-## <a name="managed-instance"></a>Beheerd exemplaar
+## <a name="managed-instancetabmanaged-instance"></a>[Beheerd exemplaar](#tab/managed-instance)
 
 De volgende tabel bevat links naar Azure PowerShell-voorbeeldscripts voor Azure SQL Database - Managed Instance.
 
@@ -74,6 +74,8 @@ De volgende tabel bevat links naar Azure PowerShell-voorbeeldscripts voor Azure 
 
 Meer informatie over de [Managed Instance Azure PowerShell API](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances).
 
+---
+
 ## <a name="additional-resources"></a>Aanvullende resources
 
-De voor beelden die op deze pagina worden weer gegeven, gebruiken de [Azure SQL database](/powershell/module/az.sql/) -cmdlets voor het maken en beheren van Azure SQL-resources. Aanvullende cmdlets voor het uitvoeren van query's en het uitvoeren van veel database taken bevinden zich in de [sqlserver](/powershell/module/sqlserver/) -module. Zie [SQL Server Power shell](/sql/powershell/sql-server-powershell/)(Engelstalig) voor meer informatie.
+De voor beelden die op deze pagina worden weer gegeven, gebruiken de [Azure SQL database-cmdlets](/powershell/module/az.sql/) voor het maken en beheren van Azure SQL-resources. Aanvullende cmdlets voor het uitvoeren van query's en het uitvoeren van veel database taken bevinden zich in de [sqlserver](/powershell/module/sqlserver/) -module. Zie [SQL Server Power shell](/sql/powershell/sql-server-powershell/)(Engelstalig) voor meer informatie.

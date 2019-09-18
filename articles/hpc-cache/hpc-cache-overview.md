@@ -6,16 +6,16 @@ ms.service: hpc-cache
 ms.topic: overview
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: d772f66d14e0c0ab5ac73603e8faeb7e31e9891f
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 77eca3ef58733a616705fdaac1d2880b5a990e8a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843773"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036887"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Wat is Azure HPC Cache?
 
-De Azure HPC-cache versnelt de toegang tot uw gegevens voor HPC-taken (High-Performance Computing). Door bestanden in Azure in de cache op te slaan, is de schaal baarheid van Cloud Computing ook beschikbaar voor werk stromen waarbij uw gegevens worden opgeslagen op WAN-koppelingen, zoals in uw lokale Datacenter omgeving (Network-Attached Storage).
+De Azure HPC-cache versnelt de toegang tot uw gegevens voor HPC-taken (High-Performance Computing). Door bestanden in Azure in de cache op te slaan, is de schaal baarheid van Cloud Computing ook beschikbaar voor werk stromen waarbij uw gegevens worden opgeslagen op WAN-koppelingen, zoals in uw lokale Data Center-network-attached storage omgeving (NAS).
 
 De Azure HPC-cache is eenvoudig te starten en te controleren vanaf de Azure Portal. Bestaande NFS-opslag of nieuwe BLOB-containers kunnen deel uitmaken van de geaggregeerde naam ruimte, waardoor client toegang eenvoudig kan worden gemaakt, zelfs als u het back-end-opslag doel wijzigt.
 

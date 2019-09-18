@@ -1,7 +1,7 @@
 ---
 title: Een diepe Learning Neural-netwerk trainen met Chainer
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het uitvoeren van uw PyTorch-trainings scripts op ondernemings schaal met behulp van de Estimator-klasse van Azure Machine Learning Chainer.  In het voorbeeld script classifis worden handgeschreven cijfer afbeeldingen gemaakt om een diep gaande Neural-netwerk te bouwen met behulp van de keten python-bibliotheek die op numpy wordt uitgevoerd.
+description: Meer informatie over het uitvoeren van uw PyTorch-trainings scripts op ondernemings schaal met behulp van de Estimator-klasse van Azure Machine Learning Chainer.  In het voorbeeld script worden handgeschreven cijfer afbeeldingen geclassificeerd om een diep gaande Neural-netwerk te bouwen met behulp van de keten python-bibliotheek die boven op numpy wordt uitgevoerd.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 91e638793d77a6d38f9813345829720d98545293
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 79c0cadc1b266a6d160cd36fc21dcaf36637a2b1
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002718"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076409"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Keten modellen trainen en registreren op schaal met Azure Machine Learning
 
@@ -84,7 +84,7 @@ In deze zelf studie is het trainings script **chainer_mnist. py** al voor u inge
 
 Als u de mogelijkheden voor bijhouden en metrische gegevens van Azure ML wilt gebruiken, voegt u een kleine hoeveelheid Azure ML-code toe in uw trainings script.  In het trainings script **chainer_mnist. py** ziet u hoe u bepaalde metrische gegevens registreert bij uw Azure ml `Run` -uitvoering met behulp van het-object in het script.
 
-In het meegeleverde trainings script worden voorbeeld gegevens van de Chainer `datasets.mnist.get_mnist` -functie gebruikt.  Voor uw eigen gegevens moet u mogelijk stappen zoals [gegevensset uploaden en scripts](how-to-train-keras.md#upload-dataset-and-scripts) gebruiken om gegevens beschikbaar te maken tijdens de training.
+In het meegeleverde trainings script worden voorbeeld gegevens van de Chainer `datasets.mnist.get_mnist` -functie gebruikt.  Voor uw eigen gegevens moet u mogelijk stappen zoals [gegevensset uploaden en scripts](how-to-train-keras.md) gebruiken om gegevens beschikbaar te maken tijdens de training.
 
 Kopieer het trainings script **chainer_mnist. py** in de projectmap.
 

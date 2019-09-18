@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: 6ac15e042f93befe406553d622c790eeabad7c2c
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 9f16a00bd8bc8e61aecbf6d6bd7f31e90f50140a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060703"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067107"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>Back-up maken van een SAP HANA Data Base naar Azure
 
@@ -26,8 +26,8 @@ ms.locfileid: "70060703"
 **Ondersteuning** | **Details**
 --- | ---
 **Ondersteunde geografische gebieden** | Australië-Zuid-Oost, Oost-Australië <br> Brazilië - zuid <br> Canada-centraal, Canada-oost <br> Zuid-Azië-oost, Azië-oost <br> VS-Oost, VS-Oost 2, West-Centraal VS, VS-West, VS-West 2, Noord-Centraal VS, centraal VS, Zuid-Centraal VS<br> India, midden, India Zuid <br> Japan (oost), Japan (west)<br> Korea Centraal, Korea Zuid <br> Europa - noord, Europa - west <br> UK-zuid, UK-west
-**Ondersteunde VM-besturings systemen** | SLES 12 met SP2 of SP3.
-**Ondersteunde HANA-versies** | Dit SDC op HANA 1. x, MDC op HANA 2. x < = SPS03
+**Ondersteunde VM-besturings systemen** | SLES 12 met SP2, SP3 of SP4.
+**Ondersteunde HANA-versies** | Dit SDC op HANA 1. x, MDC op HANA 2. x < = SPS04 Rev 42
 
 ### <a name="current-limitations"></a>Huidige beperkingen
 
@@ -156,8 +156,8 @@ Geef de beleids instellingen als volgt op:
 Back-ups worden uitgevoerd volgens het beleids schema. U kunt als volgt een back-up op aanvraag uitvoeren:
 
 
-1. Klik in het menu kluis op **back-** upitems.
-2. Selecteer in **back-** upitems de virtuele machine waarop de SAP Hana-data base wordt uitgevoerd en klik vervolgens op **Nu back-up maken**.
+1. Klik in het menu kluis op **Back-upitems**.
+2. Selecteer in **Back-upitems**de virtuele machine waarop de SAP Hana-data base wordt uitgevoerd en klik vervolgens op **Nu back-up maken**.
 3. In **Nu back-up**kunt u het besturings element kalender gebruiken om de laatste dag te selecteren dat het herstel punt moet worden bewaard. Klik vervolgens op **OK**.
 4. De portal meldingen bewaken. U kunt de voortgang van de taak in het kluis dashboard controleren > **back-uptaken** > worden uitgevoerd. Afhankelijk van de grootte van de data base kan het maken van de eerste back-up enige tijd duren.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 8b4764d855663325b2445f7b588b795c15f4edde
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
-ms.translationtype: HT
+ms.openlocfilehash: 095c8fa080d96c9dc6d40261ee5afc559e9ca06b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596336"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933886"
 ---
 # <a name="tutorial-configure-security-agents"></a>Zelfstudie: Beveiligingsagents configureren
 
@@ -87,28 +87,28 @@ Als u een standaard waarde voor een eigenschap wilt gebruiken, verwijdert u de e
 
 1. Zoek en selecteer het apparaat dat u wilt wijzigen in de IoT Hub.
 
-2. Klik op uw apparaat en vervolgens op de module **azureiotsecurity** .
+1. Klik op uw apparaat en vervolgens op de module **azureiotsecurity** .
 
-3. Klik op **module-identiteit, twee**.
+1. Klik op **module-identiteit, twee**.
 
-4. Bewerk de eigenschappen die u wilt wijzigen in de beveiligings module.
+1. Bewerk de eigenschappen die u wilt wijzigen in de beveiligings module.
    
    Gebruik bijvoorbeeld de volgende configuratie om verbindings gebeurtenissen te configureren als hoge prioriteit en elke 7 minuten gebeurtenissen met een hoge prioriteit te verzamelen.
    
-   ```json
+    ```json
     "desired": {
-      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
-        "highPriorityMessageFrequency": {
-          "value" : "PT7M"
-        },    
-        "eventPriorityConnectionCreate": {
-          "value" : "High" 
+        "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
+            "highPriorityMessageFrequency": {
+                "value": "PT7M"
+            },
+            "eventPriorityConnectionCreate": {
+                "value": "High"
+            }
         }
-      } 
-    }, 
+    }
     ```
 
-5. Klik op **Opslaan**.
+1. Klik op **Opslaan**.
 
 ### <a name="using-a-default-value"></a>Een standaard waarde gebruiken
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 0b78b05e30185487df0b06d861b60b63741dc938
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 217601a430b40772eaf1f24c8e1501bc4b4fcae5
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073188"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71055314"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over configuratie en beheer voor Web Apps in azure
 
@@ -71,7 +71,7 @@ De tijd zone van de server instellen voor uw web-app:
     * Waarde = *de tijd zone die u wilt*
 3. Selecteer **Opslaan**.
 
-Zie de kolom tijd **zone** in het artikel [standaard tijd zones](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) voor geaccepteerde waarden.
+Zie de kolom tijd **zone** in het artikel [standaard tijd zones](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) voor geaccepteerde waarden voor de app-services die worden uitgevoerd in Windows. Voor de app-services die worden uitgevoerd op Linux, stelt u de naam van de [TZ-data base](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) in als de waarde van de tijd zone. Hier volgt een voor beeld van de naam van de TZ-Data Base: America/Adak.
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Waarom mislukken mijn doorlopende webtaken?
 
@@ -96,7 +96,7 @@ Houd er rekening mee dat voor het gebruik van een toegewezen of gereserveerd IP-
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>Kan ik mijn App Service-certificaat exporteren voor gebruik buiten Azure, zoals voor een website die elders wordt gehost? 
 
-App Service certificaten worden beschouwd als Azure-resources. Ze zijn niet bedoeld voor gebruik buiten uw Azure-Services. U kunt ze niet exporteren voor gebruik buiten Azure. Zie [Veelgestelde vragen voor app service certificaten en aangepaste domeinen](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview)voor meer informatie.
+Ja, u kunt ze exporteren voor gebruik buiten Azure. Zie [Veelgestelde vragen voor app service certificaten en aangepaste domeinen](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview)voor meer informatie.
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>Kan ik mijn App Service-certificaat exporteren voor gebruik met andere Azure-Cloud Services?
 
@@ -149,7 +149,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ### <a name="resolution"></a>Oplossing
 
-De uitzonde ring is veroorzaakt door een probleem met de Hybrid Connection Manager dat sindsdien is opgelost. Zorg ervoor dat u [uw Hybrid Connection Manager](https://go.microsoft.com/fwlink/?LinkID=841308) bijwerkt om dit probleem op te lossen.
+De uitzonde ring is veroorzaakt door een probleem met de Hybrid Connection Manager dat sindsdien is opgelost. Zorg ervoor dat u [uw Hybrid Connection Manager bijwerkt](https://go.microsoft.com/fwlink/?LinkID=841308) om dit probleem op te lossen.
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>Hoe kan ik een regel voor het opnieuw schrijven van een URL toevoegen?
 
@@ -246,7 +246,7 @@ U kunt een geplande Webtaak maken met behulp van cron-expressies:
     {month} {day of the week}" }
     ```
 
-Zie een geplande Webtaak maken met behulp van [een cron-expressie](webjobs-create.md#CreateScheduledCRON)voor meer informatie over geplande webjobs.
+Zie [een geplande Webtaak maken met behulp van een cron-expressie](webjobs-create.md#CreateScheduledCRON)voor meer informatie over geplande webjobs.
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Hoe kan ik indringings tests uitvoeren voor mijn App Service-app?
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 09/16/2019
 ms.author: jingwang
-ms.openlocfilehash: 29f5b9b704bcf4648e9c24516d8eff5429a0ce1d
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 78b74c1db5f331e7b74a730148d52b1ff7694ec0
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009960"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058983"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens kopiëren naar of van Azure SQL Data Warehouse met behulp van Azure Data Factory 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -444,6 +444,9 @@ Als aan de vereisten zijn niet voldaan, wordt Azure Data Factory controleert of 
    7. `compression` kan **geen compressie**, **GZip**, of **Deflate**.
 
 3. Als uw bron een map is, `recursive` moet u de Kopieer activiteit instellen op True.
+
+>[!NOTE]
+>Als uw bron een map is, noteert u met poly base bestanden ophalen uit de map en alle bijbehorende submappen en worden er geen gegevens opgehaald uit bestanden waarvoor de bestands naam begint met een onderstreping (_) of een punt (.), zoals [hier wordt beschreven: locatie argument](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2).
 
 ```json
 "activities":[

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 7683812c5ee98d21d5aa8191a88926669b2ed120
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6485b7c102977f4fb6963418084f4da050c68558
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102370"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036531"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Zelfstudie: AlwaysOn AlwaysOn-beschikbaarheids groep in azure VM hand matig configureren
 
@@ -82,6 +82,9 @@ Nadat de vereisten zijn voltooid, is de eerste stap het maken van een Windows Se
 
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>Het IP-adres van het Windows Server failover cluster instellen
 
+  > [!NOTE]
+  > In Windows Server 2019 maakt het cluster een **gedistribueerde server naam** in plaats van de naam van het **cluster netwerk**. Als u Windows Server 2019 gebruikt, slaat u de stappen over die verwijzen naar de naam van de cluster kern in deze zelf studie. U kunt een cluster netwerk naam maken met behulp van [Power shell](virtual-machines-windows-portal-sql-create-failover-cluster.md#windows-server-2019). Het failovercluster van [de blog bekijken: Cluster netwerk object](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97) voor meer informatie. 
+
 1. Schuif in **Failoverclusterbeheer**omlaag naar **cluster kern resources** en vouw de cluster gegevens uit. U moet zowel de **naam** als het **IP-adres** van de resources in de **mislukte** status zien. De IP-adres bron kan niet online worden gebracht omdat het cluster hetzelfde IP-adres krijgt als de computer zelf. Daarom is het een dubbel adres.
 
 2. Klik met de rechter muisknop op de mislukte **IP-adres** bron en klik vervolgens op **Eigenschappen**.
@@ -129,7 +132,7 @@ In dit voor beeld gebruikt het Windows-cluster een bestands share om een cluster
 
 1. Klik op **gedeelde mappen**.
 
-1. Klik met derechter muisknop op shares en klik op **nieuwe share...** .
+1. Klik met de rechter muisknop op **shares**en klik op **nieuwe share...** .
 
    ![Nieuwe share](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/48-newshare.png)
 
@@ -186,7 +189,7 @@ Schakel vervolgens de functie **AlwaysOn-beschikbaarheidsgroepen** in. Voer deze
 
 1. Start **SQL Server Configuration Manager**in het **Start** scherm.
 2. Klik in de browser structuur op **SQL Server services**, klik met de rechter muisknop op de service **SQL Server (MSSQLSERVER)** en klik op **Eigenschappen**.
-3. Klik op het tabblad voor AlwaysOn- **Beschik baarheid** en selecteer vervolgens **AlwaysOn-beschikbaarheidsgroepen inschakelen**als volgt:
+3. Klik op het tabblad voor **AlwaysOn-Beschik baarheid** en selecteer vervolgens **AlwaysOn-beschikbaarheidsgroepen inschakelen**als volgt:
 
     ![AlwaysOn-beschikbaarheidsgroepen inschakelen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/54-enableAlwaysOn.png)
 
@@ -231,13 +234,13 @@ Repeat these steps on the second SQL Server.
 
 1. Klik op **gedeelde mappen**.
 
-1. Klik met derechter muisknop op shares en klik op **nieuwe share...** .
+1. Klik met de rechter muisknop op **shares**en klik op **nieuwe share...** .
 
    ![Nieuwe share](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/48-newshare.png)
 
    Gebruik **de wizard gedeelde map maken** om een share te maken.
 
-1. Klikop **Bladeren** in het mappad en zoek of maak een pad voor de data base back-up van de gedeelde map. Klik op **Volgende**.
+1. Klik op **Bladeren** **in het mappad en**Zoek of maak een pad voor de data base back-up van de gedeelde map. Klik op **Volgende**.
 
 1. Controleer bij **naam, beschrijving en instellingen** de share naam en het pad. Klik op **Volgende**.
 
@@ -271,7 +274,7 @@ U bent nu klaar om een beschikbaarheids groep te configureren met de volgende st
 
 ### <a name="create-the-availability-group"></a>Maak de beschikbaarheids groep:
 
-1. Op de extern bureau blad-sessie naar de eerste SQL Server. Klik in **objectverkenner** in SSMS met de rechter muisknop op AlwaysOn **hoge Beschik baarheid** en klik op **wizard Nieuwe beschikbaarheids groep**.
+1. Op de extern bureau blad-sessie naar de eerste SQL Server. Klik in **objectverkenner** in SSMS met de rechter muisknop op **AlwaysOn hoge Beschik baarheid** en klik op **wizard Nieuwe beschikbaarheids groep**.
 
     ![Wizard Nieuwe beschikbaarheids groep starten](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/56-newagwiz.png)
 
@@ -319,11 +322,11 @@ U bent nu klaar om een beschikbaarheids groep te configureren met de volgende st
 
 ### <a name="check-the-availability-group"></a>De beschikbaarheids groep controleren
 
-1. Vouw in **objectverkenner**AlwaysOn- **hoge Beschik baarheid**uit en vouw vervolgens **beschikbaarheids groepen**uit. Nu ziet u de nieuwe beschikbaarheids groep in deze container. Klik met de rechter muisknop op de beschikbaarheids groep en klik op **dash board weer geven**.
+1. Vouw in **objectverkenner** **AlwaysOn-hoge Beschik baarheid**uit en vouw vervolgens **beschikbaarheids groepen**uit. Nu ziet u de nieuwe beschikbaarheids groep in deze container. Klik met de rechter muisknop op de beschikbaarheids groep en klik op **dash board weer geven**.
 
    ![AG-dash board weer geven](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/76-showdashboard.png)
 
-   Uw AlwaysOn- **dash board** moet er ongeveer als volgt uitzien.
+   Uw **AlwaysOn-dash board** moet er ongeveer als volgt uitzien.
 
    ![AG-dash board](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/78-agdashboard.png)
 
@@ -334,7 +337,7 @@ U bent nu klaar om een beschikbaarheids groep te configureren met de volgende st
    ![AG in Failoverclusterbeheer](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/80-clustermanager.png)
 
    > [!WARNING]
-   > Voer geen failover uit voor de beschikbaarheids groep van de Failoverclusterbeheer. Alle failover-bewerkingen moeten vanuit het AlwaysOn- **dash board** in SSMS worden uitgevoerd. Zie [beperkingen voor het gebruik van de Failoverclusterbeheer met beschikbaarheids groepen](https://msdn.microsoft.com/library/ff929171.aspx)voor meer informatie.
+   > Voer geen failover uit voor de beschikbaarheids groep van de Failoverclusterbeheer. Alle failover-bewerkingen moeten vanuit het **AlwaysOn-dash board** in SSMS worden uitgevoerd. Zie [beperkingen voor het gebruik van de Failoverclusterbeheer met beschikbaarheids groepen](https://msdn.microsoft.com/library/ff929171.aspx)voor meer informatie.
     >
 
 Op dit moment hebt u een beschikbaarheids groep met replica's op twee exemplaren van SQL Server. U kunt de beschikbaarheids groep verplaatsen tussen exemplaren. U kunt nog geen verbinding maken met de beschikbaarheids groep omdat u geen listener hebt. Op virtuele machines van Azure is een load balancer vereist voor de listener. De volgende stap is het maken van de load balancer in Azure.
@@ -490,7 +493,7 @@ Stel in SQL Server Management Studio de listener-poort in.
 
 1. Start SQL Server Management Studio en maak verbinding met de primaire replica.
 
-1. Navigeer naar | AlwaysOn-beschikbaarheids**groepen** | voor Beschik baarheid van de beschikbaarheids**groep**.
+1. Navigeer naar **AlwaysOn** | -beschikbaarheids**groepen** | voor Beschik baarheid van de beschikbaarheids**groep**.
 
 1. U ziet nu de naam van de listener die u hebt gemaakt in Failoverclusterbeheer. Klik met de rechter muisknop op de naam van de listener en klik op **Eigenschappen**.
 

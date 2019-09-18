@@ -1,10 +1,10 @@
 ---
-title: Het oplossen van toewijzingsfouten voor virtuele Azure-machine in het klassieke implementatiemodel | Microsoft Docs
-description: Toewijzingsfouten bij het maken, opnieuw opstarten, of het formaat van een klassieke virtuele machine in Azure oplossen
+title: Problemen met Azure VM-toewijzings fouten oplossen in het klassieke implementatie model | Microsoft Docs
+description: Toewijzings fouten oplossen wanneer u een klassieke virtuele machine in azure maakt, opnieuw opstart of de grootte ervan wijzigt
 services: azure-service-management
 documentationcenter: ''
 author: genlin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-resource-manager,azure-service-management
 ms.assetid: bb939e23-77fc-4948-96f7-5037761c30e8
@@ -12,116 +12,116 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 7cd7897e3a0b940bbc636b2fbc3dbbc13b7cf540
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d43176e04337c2faf7be0bea682428056bc4ab46
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505544"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059198"
 ---
-# <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Stappen voor probleemoplossing specifieke toewijzing foutscenario's in het klassieke implementatiemodel
+# <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Probleemoplossings stappen die specifiek zijn voor toewijzing van fout scenario's in het klassieke implementatie model
 
-Hieronder vindt u algemene scenario's toewijzing die ertoe leiden dat een aanvraag voor geheugentoewijzing om te worden vastgemaakt. We u Duik in elk scenario verderop in dit artikel.
+Hieronder vindt u algemene toewijzings scenario's die ervoor zorgen dat een toewijzings aanvraag wordt vastgemaakt. Verderop in dit artikel gaan we in op elk scenario.
 
-- Grootte van een virtuele machine of virtuele machines of rolinstanties toevoegen aan een bestaande cloudservice
+- Het formaat van een virtuele machine wijzigen of Vm's of rolinstanties toevoegen aan een bestaande Cloud service
 - Gedeeltelijk gestopte (toewijzing opgeheven) virtuele machines opnieuw opstarten
 - Volledig gestopte (toewijzing opgeheven) virtuele machines opnieuw opstarten
-- Fasering en productie-implementaties (platform als een service alleen)
-- Affiniteitsgroep (VM of service nabijheid)
-- Affiniteit-groep op basis van het virtuele netwerk
+- Fase ring en productie-implementaties (alleen platform als een service)
+- Affiniteits groep (VM of service nabij)
+- Affiniteit: virtueel netwerk op basis van een groep
 
-Wanneer u een fout bij toewijzen ontvangt, controleert u of een van de vermelde scenario's van toepassing op de fout zijn. Gebruik de toewijzingsfout dat wordt geretourneerd door de Azure-platform voor het identificeren van het betreffende scenario. Als uw aanvraag is vastgemaakt, verwijdert u enkele van de vastgemaakte bestanden beperkingen voor het openen van uw aanvraag met meer clusters, waardoor de kans op succes.
-In het algemeen als de fout wordt niet vermeld dat 'het aangevraagde VM-grootte wordt niet ondersteund', u kunt altijd opnieuw uitvoeren op een later tijdstip. Dit komt doordat er voldoende bronnen zijn vrijgegeven in het cluster om uw aanvraag mogelijk te maken. Als het probleem is dat de aangevraagde VM-grootte niet wordt ondersteund, kunt u een andere VM-grootte. Anders is de enige optie als de vastgemaakte bestanden beperking wilt verwijderen.
+Wanneer u een toewijzings fout ontvangt, controleert u of een van de vermelde scenario's van toepassing is op uw fout. Gebruik de toewijzings fout die door het Azure-platform wordt geretourneerd om het bijbehorende scenario te identificeren. Als uw aanvraag is vastgemaakt, verwijdert u enkele van de vastgezette beperkingen om uw aanvraag te openen voor meer clusters, waardoor de kans op succes van de toewijzing wordt verg root.
+In het algemeen geldt dat als de fout niet wordt vermeld dat ' de aangevraagde VM-grootte niet wordt ondersteund ', u altijd op een later tijdstip opnieuw kunt proberen. Dit komt doordat er in het cluster voldoende resources zijn vrijgemaakt om uw aanvraag te kunnen verwerken. Als het probleem is dat de aangevraagde VM-grootte niet wordt ondersteund, probeert u een andere VM-grootte. Anders is de enige optie voor het verwijderen van de ontkoppelings beperking.
 
-Twee veelvoorkomende foutscenario's zijn gerelateerd aan affiniteitsgroepen. In het verleden een affiniteitsgroep is gebruikt voor dicht in de VM's en service-exemplaren of deze is gebruikt voor het maken van een virtueel netwerk. Affiniteitsgroepen zijn met de introductie van regionale virtuele netwerken, niet meer vereist voor het maken van een virtueel netwerk. Met de verlaging van de netwerklatentie in Azure-infrastructuur, is de aanbeveling voor affiniteitsgroepen voor virtuele machines of service nabijheid gewijzigd.
+Twee veelvoorkomende fout scenario's zijn gerelateerd aan affiniteits groepen. In het verleden werd een affiniteits groep gebruikt voor het sluiten van de Vm's en service-exemplaren, of is deze gebruikt om het maken van een virtueel netwerk in te scha kelen. Met de introductie van regionale virtuele netwerken zijn affiniteits groepen niet langer vereist voor het maken van een virtueel netwerk. Door de netwerk latentie in de Azure-infra structuur te verminderen, is de aanbeveling voor het gebruik van affiniteits groepen voor Vm's of service nabijheid gewijzigd.
 
-Het volgende Diagram toont de taxonomie van de toewijzing van (vastgemaakte)-scenario's. 
+Het volgende diagram toont de taxonomie van de (vastgemaakte) toewijzings scenario's. 
 
-![Vastgemaakte toewijzing taxonomie](./media/virtual-machines-common-allocation-failure/Allocation3.png)
+![Taxonomie vaste toewijzing](./media/virtual-machines-common-allocation-failure/Allocation3.png)
 
-## <a name="resize-a-vm-or-add-vms-or-role-instances-to-an-existing-cloud-service"></a>Grootte van een virtuele machine of virtuele machines of rolinstanties toevoegen aan een bestaande cloudservice
-**Fout**
+## <a name="resize-a-vm-or-add-vms-or-role-instances-to-an-existing-cloud-service"></a>Het formaat van een virtuele machine wijzigen of Vm's of rolinstanties toevoegen aan een bestaande Cloud service
+**Optreedt**
 
 Upgrade_VMSizeNotSupported of GeneralError
 
-**Oorzaak van het cluster vast te maken**
+**Oorzaak van het vastmaken van het cluster**
 
-Een aanvraag om de grootte van een virtuele machine of een virtuele machine of een rolinstantie toevoegen aan een bestaande cloudservice moet worden uitgevoerd op het oorspronkelijke cluster die als host fungeert voor de bestaande cloudservice. Het maken van een nieuwe cloudservice, kunt het Azure-platform om een ander cluster dat is gratis resources of biedt ondersteuning voor de VM-grootte die u hebt aangevraagd te vinden.
+Een aanvraag om de grootte van een virtuele machine of een virtuele machine of een rolinstantie toe te voegen aan een bestaande Cloud service moet worden geprobeerd op het oorspronkelijke cluster dat als host fungeert voor de bestaande Cloud service. Als u een nieuwe Cloud service maakt, kunt u met het Azure-platform een ander cluster vinden dat gratis bronnen heeft of de door u aangevraagde VM-grootte ondersteunt.
 
 **Tijdelijke oplossing**
 
-Als de fout is Upgrade_VMSizeNotSupported *, probeert u een andere VM-grootte. Als u met behulp van een andere VM-grootte kan niet worden gebruikt, maar als het is aanvaardbaar is voor het gebruik van een ander virtueel IP-adres (VIP), maakt u een nieuwe cloudservice als host van de nieuwe virtuele machine en de nieuwe service in de cloud toevoegen aan het regionale virtuele netwerk waar de bestaande virtuele machines worden uitgevoerd. Als uw bestaande cloudservice niet voor een regionaal virtueel netwerk gebruikt wordt, kunt u nog steeds een nieuw virtueel netwerk voor de nieuwe cloudservice maken en vervolgens verbinding maken met uw [bestaand virtueel netwerk naar de nieuw virtueel netwerk](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Zie meer informatie over [regionale virtuele netwerken](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
+Als de fout Upgrade_VMSizeNotSupported * is, probeert u een andere VM-grootte. Als u een andere VM-grootte gebruikt, maar als u een ander virtueel IP-adres (VIP) wilt gebruiken, moet u een nieuwe Cloud service maken om de nieuwe VM te hosten en de nieuwe Cloud service toe te voegen aan het regionale virtuele netwerk waar de bestaande virtuele machines worden uitgevoerd. Als uw bestaande Cloud service geen regionaal virtueel netwerk gebruikt, kunt u nog steeds een nieuw virtueel netwerk voor de nieuwe Cloud service maken en vervolgens uw [bestaande virtuele netwerk verbinden met het nieuwe virtuele netwerk](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Meer informatie over [regionale virtuele netwerken](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
-Als de fout is GeneralError *, is het waarschijnlijk dat het type resource (zoals een bepaalde VM-grootte) wordt ondersteund door het cluster, maar het cluster heeft geen gratis resources op dit moment. Net als bij het bovenstaande scenario, de gewenste compute-resource bij het maken van een nieuwe cloudservice (Houd er rekening mee dat de nieuwe service in de cloud heeft tot het gebruik van een andere VIP) toevoegen en verbinding maken met uw cloudservices met een regionaal virtueel netwerk.
+Als de fout GeneralError * is, is het waarschijnlijk dat het type resource (zoals een bepaalde VM-grootte) door het cluster wordt ondersteund, maar dat het cluster op het moment geen vrije bronnen heeft. Net als in het bovenstaande scenario voegt u de gewenste reken resource toe via het maken van een nieuwe Cloud service (Houd er rekening mee dat de nieuwe Cloud service een andere VIP moet gebruiken) en gebruik een regionaal virtueel netwerk om uw Cloud Services te verbinden.
 
 ## <a name="restart-partially-stopped-deallocated-vms"></a>Gedeeltelijk gestopte (toewijzing opgeheven) virtuele machines opnieuw opstarten
-**Fout**
+**Optreedt**
 
 GeneralError*
 
-**Oorzaak van het cluster vast te maken**
+**Oorzaak van het vastmaken van het cluster**
 
-Gedeeltelijke ongedaan wordt gemaakt betekent dat u (toewijzing opgeheven) een of meer, maar niet alle virtuele machines in een cloudservice gestopt. Wanneer u stoppen (toewijzing ongedaan maken) een virtuele machine, de bijbehorende bronnen worden vrijgegeven. Opnieuw starten die gestopt (toewijzing opgeheven) virtuele machine is daarom een nieuwe aanvraag voor geheugentoewijzing. Opnieuw opstarten van virtuele machines in een gedeeltelijk toewijzing ongedaan wordt gemaakt van de cloudservice is gelijk aan het virtuele machines toe te voegen aan een bestaande cloudservice. De toewijzingsaanvraag bevat om te worden uitgevoerd op het oorspronkelijke cluster die als host fungeert voor de bestaande cloudservice. Het maken van een andere cloudservice, kunt het Azure-platform om een ander cluster dat is gratis resource of biedt ondersteuning voor de VM-grootte die u hebt aangevraagd te vinden.
+Gedeeltelijke toewijzing betekent dat u een of meer, maar niet alle virtuele machines in een Cloud service hebt gestopt (toewijzing ongedaan gemaakt). Wanneer u een virtuele machine stopt (toewijzing opheffen), worden de bijbehorende resources vrijgegeven. Het opnieuw starten van de virtuele machine is gestopt (toewijzing ongedaan gemaakt) is daarom een nieuwe aanvraag voor toewijzingen. Het opnieuw starten van Vm's in een gedeeltelijk niet-toegewezen Cloud service is gelijk aan het toevoegen van Vm's aan een bestaande Cloud service. De toewijzings aanvraag moet worden geprobeerd op het oorspronkelijke cluster dat als host fungeert voor de bestaande Cloud service. Door een andere Cloud service te maken, kan het Azure-platform een ander cluster vinden dat een gratis resource heeft of die de door u aangevraagde VM-grootte ondersteunt.
 
 **Tijdelijke oplossing**
 
-Als het is aanvaardbaar is voor gebruik van een andere VIP-adres, de gestopt (toewijzing opgeheven) virtuele machines verwijderen (maar houden van de gekoppelde schijven) en de virtuele machines via een andere cloudservice toevoegt. Gebruik een regionaal virtueel netwerk om uw cloudservices verbinding te maken:
+Als het acceptabel is om een andere VIP te gebruiken, verwijdert u de gestopte (gespreide) Vm's (maar behoudt u de gekoppelde schijven) en voegt u de virtuele machines weer toe via een andere Cloud service. Een regionaal virtueel netwerk gebruiken om verbinding te maken met uw Cloud Services:
 
-* Als uw bestaande cloudservice maakt gebruik van een regionaal virtueel netwerk, moet u gewoon de nieuwe service in de cloud toevoegen aan hetzelfde virtuele netwerk.
-* Als uw bestaande cloudservice niet voor een regionaal virtueel netwerk gebruikt wordt, een nieuw virtueel netwerk voor de nieuwe cloudservice maken en vervolgens [verbinding maken met uw bestaande virtuele netwerk naar de nieuw virtueel netwerk](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Zie meer informatie over [regionale virtuele netwerken](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
+* Als uw bestaande Cloud service gebruikmaakt van een regionaal virtueel netwerk, kunt u de nieuwe Cloud service gewoon toevoegen aan hetzelfde virtuele netwerk.
+* Als uw bestaande Cloud service geen regionaal virtueel netwerk gebruikt, maakt u een nieuw virtueel netwerk voor de nieuwe Cloud service en verbindt u vervolgens [uw bestaande virtuele netwerk met het nieuwe virtuele netwerk](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Meer informatie over [regionale virtuele netwerken](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
 ## <a name="restart-fully-stopped-deallocated-vms"></a>Volledig gestopte (toewijzing opgeheven) virtuele machines opnieuw opstarten
-**Fout**
+**Optreedt**
 
 GeneralError*
 
-**Oorzaak van het cluster vast te maken**
+**Oorzaak van het vastmaken van het cluster**
 
-Volledige toewijzing is opgeheven betekent dat u bent gestopt (toewijzing opgeheven) alle virtuele machines van een service in de cloud. De toewijzingsaanvragen voor deze virtuele machines opnieuw opstarten moeten worden uitgevoerd op het oorspronkelijke cluster die als host fungeert voor de cloudservice. Het maken van een nieuwe cloudservice, kunt het Azure-platform om een ander cluster dat is gratis resources of biedt ondersteuning voor de VM-grootte die u hebt aangevraagd te vinden.
+Bij volledige toewijzing betekent dat u alle Vm's van een Cloud service hebt gestopt (toewijzing ongedaan gemaakt). De toewijzings aanvragen voor het opnieuw opstarten van deze Vm's moeten worden geprobeerd op het oorspronkelijke cluster dat als host fungeert voor de Cloud service. Als u een nieuwe Cloud service maakt, kunt u met het Azure-platform een ander cluster vinden dat gratis bronnen heeft of de door u aangevraagde VM-grootte ondersteunt.
 
 **Tijdelijke oplossing**
 
-Als het is aanvaardbaar is voor gebruik van een andere VIP-adres, verwijderen van de oorspronkelijke gestopt (toewijzing opgeheven) virtuele machines (maar de gekoppelde schijven behouden) en de bijbehorende cloudservice verwijderen (de rekenresources die gekoppeld zijn al vrijgegeven wanneer u bent gestopt (toewijzing opgeheven) de VM's). Maak een nieuwe cloudservice om toe te voegen van de virtuele machines weer.
+Als het acceptabel is om een andere VIP te gebruiken, verwijdert u de oorspronkelijke (gespreide) Vm's (niet-toegewezen virtuele machines) en verwijdert u de bijbehorende Cloud service (de gekoppelde reken resources zijn al vrijgegeven wanneer u de Vm's hebt gestopt (toewijzing opgeheven)). Maak een nieuwe Cloud service om de Vm's weer toe te voegen.
 
-## <a name="stagingproduction-deployments-platform-as-a-service-only"></a>Fasering/productie-implementaties (platform als een service alleen)
-**Fout**
+## <a name="stagingproduction-deployments-platform-as-a-service-only"></a>Fase ring/productie-implementaties (alleen platform als een service)
+**Optreedt**
 
 New_General * of New_VMSizeNotSupported *
 
-**Oorzaak van het cluster vast te maken**
+**Oorzaak van het vastmaken van het cluster**
 
-De staging-implementatie en de productie-implementatie van een service in de cloud worden gehost in hetzelfde cluster. Wanneer u de tweede implementatie toevoegt, wordt de bijbehorende toewijzingsaanvraag worden uitgevoerd in hetzelfde cluster die als host fungeert voor de eerste implementatie.
+De faserings implementatie en de productie-implementatie van een Cloud service worden gehost in hetzelfde cluster. Wanneer u de tweede implementatie toevoegt, wordt de bijbehorende toewijzings aanvraag in hetzelfde cluster die als host fungeert voor de eerste implementatie uitgevoerd.
 
 **Tijdelijke oplossing**
 
-De eerste implementatie en de oorspronkelijke cloudservice verwijderen en opnieuw implementeren van de cloudservice. Deze actie kan de eerste implementatie terechtkomen in een cluster met voldoende gratis resources om aan te passen van beide implementaties of in een cluster die ondersteuning biedt voor de VM-grootten die u hebt aangevraagd.
+Verwijder de eerste implementatie en de oorspronkelijke Cloud service en implementeer de Cloud service opnieuw. Deze actie kan de eerste implementatie in een cluster met voldoende beschik bare bronnen in beslag brengen voor zowel implementaties als in een cluster die ondersteuning biedt voor de VM-grootten die u hebt aangevraagd.
 
-## <a name="affinity-group-vmservice-proximity"></a>Affiniteitsgroep (nabijheid VM/service)
-**Fout**
+## <a name="affinity-group-vmservice-proximity"></a>Affiniteits groep (VM/service nabij)
+**Optreedt**
 
 New_General * of New_VMSizeNotSupported *
 
-**Oorzaak van het cluster vast te maken**
+**Oorzaak van het vastmaken van het cluster**
 
-Een compute-resource die is toegewezen aan een affiniteitsgroep is gekoppeld aan een cluster. Nieuwe compute-resource-aanvragen in die affiniteitsgroep bevinden worden uitgevoerd in hetzelfde cluster waar de bestaande resources worden gehost. Dit is van toepassing of de nieuwe resources worden gemaakt via een nieuwe cloudservice of een bestaande cloudservice.
+Alle reken resources die zijn toegewezen aan een affiniteits groep, zijn gekoppeld aan één cluster. Nieuwe reken resource-aanvragen in die affiniteits groep worden geprobeerd in hetzelfde cluster waarin de bestaande resources worden gehost. Dit is waar, ongeacht of de nieuwe resources zijn gemaakt via een nieuwe Cloud service of via een bestaande Cloud service.
 
 **Tijdelijke oplossing**
 
-Als een affiniteitsgroep niet nodig is, gebruikt u een affiniteitsgroep of uw compute-resources te groeperen in meerdere affiniteitsgroepen.
+Als een affiniteits groep niet nodig is, gebruik dan geen affiniteits groep of Groepeer uw reken resources in meerdere affiniteits groepen.
 
-## <a name="affinity-group-based-virtual-network"></a>Affiniteit groep gebaseerd virtueel netwerk
-**Fout**
+## <a name="affinity-group-based-virtual-network"></a>Affiniteit-op groep gebaseerd virtueel netwerk
+**Optreedt**
 
 New_General * of New_VMSizeNotSupported *
 
-**Oorzaak van het cluster vast te maken**
+**Oorzaak van het vastmaken van het cluster**
 
-Voordat u regionale virtuele netwerken zijn geïntroduceerd, moest u een virtueel netwerk koppelen aan een affiniteitsgroep. Als gevolg hiervan, compute-resources in een affiniteitsgroep geplaatst zijn gebonden aan de dezelfde beperkingen, zoals beschreven in de ' toewijzing scenario: Affiniteitsgroep (nabijheid VM/service) ' hierboven. De compute-resources zijn gekoppeld aan een cluster.
+Voordat regionale virtuele netwerken werden geïntroduceerd, moest u een virtueel netwerk koppelen aan een affiniteits groep. Als gevolg hiervan worden reken resources die in een affiniteits groep zijn geplaatst, gebonden aan dezelfde beperkingen, zoals wordt beschreven in het scenario toewijzing: Bovenstaande sectie affiniteits groep (VM/service nabij). De reken resources zijn gekoppeld aan één cluster.
 
 **Tijdelijke oplossing**
 
-Als u niet in een affiniteitsgroep hoeft, maakt u een nieuw regionaal virtueel netwerk voor de nieuwe resources die u toevoegen wilt, en vervolgens [verbinding maken met uw bestaande virtuele netwerk naar de nieuw virtueel netwerk](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Zie meer informatie over [regionale virtuele netwerken](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
+Als u geen affiniteits groep nodig hebt, maakt u een nieuw regionaal virtueel netwerk voor de nieuwe resources die u toevoegt en verbindt u vervolgens [uw bestaande virtuele netwerk met het nieuwe virtuele netwerk](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Meer informatie over [regionale virtuele netwerken](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
-U kunt ook [uw affiniteit groep gebaseerd virtueel netwerk migreren naar een regionaal virtueel netwerk](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/), en vervolgens de gewenste resources opnieuw toevoegen.
+U kunt ook het [virtuele netwerk van de affiniteit op basis van een groep naar een regionaal virtueel netwerk migreren](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)en vervolgens de gewenste resources opnieuw toevoegen.
 
 

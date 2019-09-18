@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: c0ade6b0728717cfb8524eea92b63b49a979ec1f
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: e629a921b5c853f1cae2c224be35570cd71e5d37
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018965"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067796"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Een persoonlijk eind punt maken met Azure Portal
 
@@ -199,8 +199,9 @@ Nadat u **myVm*hebt gemaakt, kunt u als volgt verbinding maken met het Internet:
 ## <a name="access-the-sql-database-server-privately-from-the-vm"></a>De SQL database-server privé openen vanuit de VM
 
 1. Open Power shell in de Extern bureaublad van *myVM*.
-2. Voer `myserver.database.windows.net`in. 
-' Er wordt een bericht weer gegeven dat er ongeveer als volgt uitziet:
+2. Voer `nslookup myserver.database.windows.net`in. 
+
+    U ontvangt een bericht dat er ongeveer als volgt uitziet:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16

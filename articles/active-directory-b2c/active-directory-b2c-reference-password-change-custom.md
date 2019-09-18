@@ -1,6 +1,6 @@
 ---
-title: Configureren van wachtwoorden wijzigen met behulp van aangepaste beleidsregels in Azure Active Directory B2C | Microsoft Docs
-description: Informatie over het inschakelen van de gebruikers hun wachtwoord met behulp van aangepaste beleidsregels in Azure Active Directory B2C te wijzigen.
+title: Wachtwoord wijziging configureren met aangepast beleid in Azure Active Directory B2C | Microsoft Docs
+description: Meer informatie over hoe u gebruikers in staat stelt hun wacht woord te wijzigen met behulp van aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a49f62b6fc1ea00084266d4c5405f8bf96d034cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0775920e1d6572223253edbfc066123a515b5480
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509261"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065537"
 ---
-# <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Wachtwoord wijzigen met behulp van aangepaste beleidsregels in Azure Active Directory B2C configureren
+# <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Wachtwoord wijzigingen configureren met aangepast beleid in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In Azure Active Directory (Azure AD) B2C, kunt u gebruikers die zijn aangemeld met een lokaal account hun wachtwoord wijzigen zonder te bewijzen dat de authenticiteit van e-mailverificatie inschakelen. Als de sessie is verlopen op het moment dat de gebruiker het wachtwoord wijzigen stroom, ze wordt gevraagd zich opnieuw aanmelden. In dit artikel leest u hoe het configureren van wachtwoord wijzigen in [aangepast beleid](active-directory-b2c-overview-custom.md). Het is ook mogelijk om te configureren [Self-service voor wachtwoord opnieuw instellen](active-directory-b2c-reference-sspr.md) voor gebruikersstromen.
+In Azure Active Directory B2C (Azure AD B2C) kunt u gebruikers die zijn aangemeld met een lokaal account, hun wacht woord wijzigen zonder dat ze hun authenticiteit moeten bewijzen via e-mail verificatie. Als de sessie verloopt op het moment dat de gebruiker het wacht woord wijzigt, wordt deze gevraagd om u opnieuw aan te melden. In dit artikel leest u hoe u wachtwoord wijzigingen in [aangepaste beleids regels](active-directory-b2c-overview-custom.md)kunt configureren. Het is ook mogelijk om [selfservice voor wachtwoord herstel](active-directory-b2c-reference-sspr.md) voor gebruikers stromen te configureren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voer de stappen in [aan de slag met aangepaste beleidsregels in Active Directory B2C](active-directory-b2c-get-started-custom.md).
+Voer de stappen in aan de [slag met aangepast beleid in Active Directory B2C](active-directory-b2c-get-started-custom.md).
 
-## <a name="add-the-elements"></a>De elementen toe te voegen 
+## <a name="add-the-elements"></a>De elementen toevoegen
 
-1. Open uw *TrustframeworkExtensions.xml* -bestand en voeg de volgende **ClaimType** element met een id van `oldPassword` naar de [ClaimsSchema](claimsschema.md) element: 
+1. Open uw *TrustframeworkExtensions. XML-* bestand en voeg het volgende **claim** type-element toe `oldPassword` met een id van aan het [ClaimsSchema](claimsschema.md) -element:
 
     ```XML
     <BuildingBlocks>
@@ -44,7 +44,7 @@ Voer de stappen in [aan de slag met aangepaste beleidsregels in Active Directory
     </BuildingBlocks>
     ```
 
-2. Een [ClaimsProvider](claimsproviders.md) element bevat het technische profiel waarmee de gebruiker wordt geverifieerd. Voeg de volgende claims-providers voor de **ClaimsProviders** element:
+2. Een [ClaimsProvider](claimsproviders.md) -element bevat het technische profiel waarmee de gebruiker wordt geverifieerd. Voeg de volgende claim providers toe aan het **ClaimsProviders** -element:
 
     ```XML
     <ClaimsProviders>
@@ -120,9 +120,9 @@ Voer de stappen in [aan de slag met aangepaste beleidsregels in Active Directory
     </ClaimsProviders>
     ```
 
-    Vervang `IdentityExperienceFrameworkAppId` met toepassings-ID van de IdentityExperienceFramework-toepassing die u hebt gemaakt in de vereiste zelfstudie. Vervang `ProxyIdentityExperienceFrameworkAppId` met toepassings-ID van de ProxyIdentityExperienceFramework-toepassing die u ook eerder hebt gemaakt.
+    Vervang `IdentityExperienceFrameworkAppId` door de toepassings-id van de IdentityExperienceFramework-toepassing die u hebt gemaakt in de hand leiding voor vereisten. Vervang `ProxyIdentityExperienceFrameworkAppId` door de toepassings-id van de ProxyIdentityExperienceFramework-toepassing die u eerder hebt gemaakt.
 
-3. De [UserJourney](userjourneys.md) element wordt gedefinieerd voor het pad dat de gebruiker worden uitgevoerd wanneer er interactie met uw toepassing. Voeg de **UserJourneys** element als deze niet met bestaat de **UserJourney** geïdentificeerd als `PasswordChange`:
+3. Het [UserJourney](userjourneys.md) -element definieert het pad dat de gebruiker nodig heeft bij interactie met uw toepassing. Voeg het **UserJourneys** -element toe als het niet bestaat met de UserJourney `PasswordChange`geïdentificeerd als:
 
     ```XML
     <UserJourneys>
@@ -150,35 +150,35 @@ Voer de stappen in [aan de slag met aangepaste beleidsregels in Active Directory
     </UserJourneys>
     ```
 
-4. Sla de *TrustFrameworkExtensions.xml* beleid-bestand.
-5. Kopieer de *ProfileEdit.xml* bestand dat u met de beginnerspakket gedownload en geef deze de naam *ProfileEditPasswordChange.xml*.
-6. Open het nieuwe bestand en update de **PolicyId** kenmerk met een unieke waarde. Deze waarde is de naam van uw beleid. Bijvoorbeeld, *B2C_1A_profile_edit_password_change*.
-7. Wijzig de **ReferenceId** kenmerk in `<DefaultUserJourney>` zodat deze overeenkomen met de ID van de nieuwe gebruikersbeleving die u hebt gemaakt. Bijvoorbeeld, *PasswordChange*.
+4. Sla het bestand *TrustFrameworkExtensions. XML* op.
+5. Kopieer het *ProfileEdit. XML-* bestand dat u met het eerste pakket hebt gedownload en noem dit *ProfileEditPasswordChange. XML*.
+6. Open het nieuwe bestand en werk het kenmerk **PolicyId** bij met een unieke waarde. Deze waarde is de naam van uw beleid. Bijvoorbeeld *B2C_1A_profile_edit_password_change*.
+7. Wijzig het kenmerk **ReferenceId** in `<DefaultUserJourney>` zodat dit overeenkomt met de id van de nieuwe gebruikers traject die u hebt gemaakt. Bijvoorbeeld *PasswordChange*.
 8. Sla uw wijzigingen op.
 
-U vindt de voorbeeld-beleid [hier](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change). 
+U kunt [hier](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change)het voorbeeld beleid vinden.
 
-## <a name="test-your-policy"></a>Het beleid testen
+## <a name="test-your-policy"></a>Uw beleid testen
 
-Bij het testen van uw toepassingen in Azure AD B2C, kan het nuttig zijn om de Azure AD B2C-token dat is geretourneerd naar `https://jwt.ms` om te kunnen controleren van de claims in het.
+Bij het testen van uw toepassingen in azure AD B2C kan het nuttig zijn om het Azure AD B2C-token te `https://jwt.ms` retour neren om de claims daarin te kunnen bekijken.
 
 ### <a name="upload-the-files"></a>De bestanden uploaden
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Zorg ervoor dat u de adreslijst gebruikt die uw Azure AD B2C-tenant bevat door te klikken op het **filter voor adreslijsten en abonnementen** in het bovenste menu en de adreslijst te kiezen waarin uw tenant zich bevindt.
+2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-4. Selecteer **Identity-Ervaringsframework**.
-5. Klik op de pagina aangepast beleid **uploaden beleid**.
-6. Selecteer **het beleid overschrijven als deze bestaat**, en zoek en selecteer de *TrustframeworkExtensions.xml* bestand.
+4. Selecteer een **Framework voor identiteits ervaring**.
+5. Klik op het tabblad Aangepaste beleids regels op **beleid uploaden**.
+6. Selecteer **het beleid overschrijven als dit bestaat**, en zoek en selecteer het bestand *TrustframeworkExtensions. XML* .
 7. Klik op **Uploaden**.
-8. Herhaal de stappen 5 tot en met 7 voor de relying party-bestand, zoals *ProfileEditPasswordChange.xml*.
+8. Herhaal stap 5 tot en met 7 voor het Relying Party bestand, zoals *ProfileEditPasswordChange. XML*.
 
 ### <a name="run-the-policy"></a>Het beleid uitvoeren
 
-1. Open het beleid dat u hebt gewijzigd. Bijvoorbeeld, *B2C_1A_profile_edit_password_change*.
-2. Voor **toepassing**, selecteer uw toepassing die u eerder hebt geregistreerd. Om te zien van het token wordt de **antwoord-URL** moet worden weergegeven `https://jwt.ms`.
-3. Klik op **Nu uitvoeren**. Meld u met de acouunt dat u eerder hebt gemaakt. U hebt nu de mogelijkheid om het wachtwoord te wijzigen. 
+1. Open het beleid dat u hebt gewijzigd. Bijvoorbeeld *B2C_1A_profile_edit_password_change*.
+2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Om het token weer te geven, moet de antwoord `https://jwt.ms`- **URL** worden weer gegeven.
+3. Klik op **Nu uitvoeren**. Meld u aan met de acouunt die u eerder hebt gemaakt. U hebt nu de mogelijkheid om het wacht woord te wijzigen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over hoe u kunt [configureren met behulp van aangepaste beleidsregels in Azure Active Directory B2C wachtwoordcomplexiteit](active-directory-b2c-reference-password-complexity-custom.md). 
+- Meer informatie over hoe u [wachtwoord complexiteit kunt configureren met aangepaste beleids regels in azure Active Directory B2C](active-directory-b2c-reference-password-complexity-custom.md).

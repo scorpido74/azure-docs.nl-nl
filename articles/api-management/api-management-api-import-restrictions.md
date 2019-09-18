@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 1a1196da62b9d28280150dd1ddf1582db64a93d4
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d1c80e2ab9ae6a893b1adea6bd68e9b585288d8b
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073783"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074959"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-import beperkingen en bekende problemen
 
@@ -50,14 +50,11 @@ Als u fouten ontvangt bij het importeren van uw OpenAPI-document, moet u ervoor 
 -   **Voor beelden** worden niet ondersteund, maar het **voor beeld** is.
 -   **Meerdelige/formulier-gegevens** worden niet ondersteund.
 
-> [!IMPORTANT]
-> Zie dit [document](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/) voor belangrijke informatie en tips die betrekking hebben op OpenAPI importeren.
-
 ## <a name="wsdl"> </a>WSDL
 
 WSDL-bestanden worden gebruikt voor het maken van SOAP-Pass-Through-en SOAP-to-REST-Api's.
 
--   **SOAP** -bindingen: alleen SOAP-bindingen met de stijl document en letterlijke code ring worden ondersteund. Er is geen ondersteuning voor "RPC"-stijl of SOAP-encoding.
+-   **SOAP-bindingen** : alleen SOAP-bindingen met de stijl document en letterlijke code ring worden ondersteund. Er is geen ondersteuning voor "RPC"-stijl of SOAP-encoding.
 -   **WSDL: import** -dit kenmerk wordt niet ondersteund. Klanten moeten de Imports samen voegen in één document.
 -   **Berichten met meerdere onderdelen** : deze typen berichten worden niet ondersteund.
 -   **WCF wsHttpBinding** -SOAP-services die zijn gemaakt met Windows Communication Foundation moeten BasicHttpBinding-wsHttpBinding gebruiken. dit wordt niet ondersteund.

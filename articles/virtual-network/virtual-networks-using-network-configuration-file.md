@@ -1,10 +1,10 @@
 ---
-title: Configureren van een Azure-netwerk (klassiek) - netwerkconfiguratiebestand | Microsoft Docs
-description: Informatie over het maken en aanpassen van virtuele netwerken (klassiek) met exporteren en importeren van een netwerkconfiguratiebestand wijzigen.
+title: Een Azure Virtual Network (klassiek) configureren-netwerk configuratie bestand | Microsoft Docs
+description: Meer informatie over het maken en wijzigen van virtuele netwerken (klassiek) door het exporteren, wijzigen en importeren van een netwerk configuratie bestand.
 services: virtual-network
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: c29b9059-22b0-444e-bbfe-3e35f83cde2f
@@ -16,29 +16,29 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: e26ec4d268b9bd8852ef8cd2c522995902e15923
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab4faa0f727469e27eb30af54f24036292ec3118
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62108007"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058704"
 ---
-# <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>Een virtueel netwerk (klassiek) met behulp van een netwerkconfiguratiebestand configureren
+# <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>Een virtueel netwerk (klassiek) configureren met behulp van een netwerk configuratie bestand
 > [!IMPORTANT]
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dit artikel gaat over het gebruik van het klassieke implementatiemodel. Microsoft raadt aan dat de meeste nieuwe implementaties het Resource Manager-implementatiemodel gebruiken.
+> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dit artikel gaat over het gebruik van het klassieke implementatiemodel. Micro soft raadt aan de meeste nieuwe implementaties het Resource Manager-implementatie model te gebruiken.
 
-U kunt maken en configureren van een virtueel netwerk (klassiek) met een netwerkconfiguratiebestand met behulp van de Azure classic-opdrachtregelinterface (CLI) of Azure PowerShell. U kunt maken of wijzigen van een virtueel netwerk via het Azure Resource Manager-implementatiemodel met behulp van een netwerkconfiguratiebestand. U niet de Azure-portal gebruiken voor het maken of wijzigen van een virtueel netwerk (klassiek) met behulp van een netwerkconfiguratiebestand, maar u de Azure-portal gebruiken kunt om te maken van een virtueel netwerk (klassiek) zonder een netwerkconfiguratiebestand.
+U kunt een virtueel netwerk (klassiek) maken en configureren met een netwerk configuratie bestand met behulp van de klassieke Azure-opdracht regel interface (CLI) of Azure PowerShell. U kunt een virtueel netwerk niet maken of wijzigen via het Azure Resource Manager-implementatie model met behulp van een netwerk configuratie bestand. U kunt de Azure Portal niet gebruiken voor het maken of wijzigen van een virtueel netwerk (klassiek) met behulp van een netwerk configuratie bestand, maar als u de Azure Portal gebruikt om een virtueel netwerk (klassiek) te maken, hoeft u geen netwerk configuratie bestand te gebruiken.
 
-Het maken en configureren van een virtueel netwerk (klassiek) met een netwerkconfiguratiebestand moet exporteren en importeren van het bestand wijzigen.
+Voor het maken en configureren van een virtueel netwerk (klassiek) met een netwerk configuratie bestand moet het bestand worden geëxporteerd, gewijzigd en geïmporteerd.
 
-## <a name="export"></a>Exporteren van een netwerkconfiguratiebestand
+## <a name="export"></a>Een netwerk configuratie bestand exporteren
 
-U kunt PowerShell of de klassieke Azure CLI gebruiken voor het exporteren van een netwerkconfiguratiebestand. PowerShell exporteert een XML-bestand, terwijl de klassieke Azure CLI een json-bestand exporteert.
+U kunt Power shell of de klassieke Azure-CLI gebruiken om een netwerk configuratie bestand te exporteren. Power shell exporteert een XML-bestand, terwijl de klassieke Azure-CLI een JSON-bestand exporteert.
 
 ### <a name="powershell"></a>PowerShell
  
-1. [Azure PowerShell installeren en aanmelden bij Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install).
-2. Wijzig de map (en zorg ervoor dat deze bestaat) en de bestandsnaam in de volgende opdracht naar wens, voer de opdracht voor het exporteren van het netwerkconfiguratiebestand:
+1. [Installeer Azure PowerShell en meld u aan bij Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install).
+2. Wijzig de directory (en zorg ervoor dat deze bestaat) en typ de bestands naam in de volgende opdracht, en voer vervolgens de opdracht uit om het netwerk configuratie bestand te exporteren:
 
     ```powershell
     Get-AzureVNetConfig -ExportToFile c:\azure\networkconfig.xml
@@ -46,28 +46,28 @@ U kunt PowerShell of de klassieke Azure CLI gebruiken voor het exporteren van ee
 
 ### <a name="azure-classic-cli"></a>Klassieke versie van Azure CLI
 
-1. [De klassieke Azure-CLI installeren](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Voltooi de resterende stappen van een klassieke CLI-opdrachtprompt.
-2. Meld u aan bij Azure door te voeren de `azure login` opdracht.
-3. Zorg ervoor dat u bent in asm-modus door op te geven de `azure config mode asm` opdracht.
-4. Wijzig de map (en zorg ervoor dat deze bestaat) en de bestandsnaam in de volgende opdracht naar wens, voer de opdracht voor het exporteren van het netwerkconfiguratiebestand:
+1. [Installeer de klassieke Azure-cli](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Voltooi de resterende stappen van een klassieke CLI-opdracht prompt.
+2. Meld u aan bij Azure door de `azure login` opdracht in te voeren.
+3. Zorg ervoor dat u zich in de ASM- `azure config mode asm` modus bevindt door de opdracht in te voeren.
+4. Wijzig de directory (en zorg ervoor dat deze bestaat) en typ de bestands naam in de volgende opdracht, en voer vervolgens de opdracht uit om het netwerk configuratie bestand te exporteren:
     
     ```azurecli
     azure network export c:\azure\networkconfig.json
     ```
 
-## <a name="create-or-modify-a-network-configuration-file"></a>Maken of wijzigen van een netwerkconfiguratiebestand
+## <a name="create-or-modify-a-network-configuration-file"></a>Een netwerk configuratie bestand maken of wijzigen
 
-Een netwerkconfiguratiebestand is een XML-bestand (bij gebruik van PowerShell) of een json-bestand (als u de klassieke CLI). U kunt het bestand in een tekst of een XML-/ json-editor kunt bewerken. De [netwerk-instellingen voor het configuratiebestand schema](https://msdn.microsoft.com/library/azure/jj157100.aspx) artikel bevat informatie voor alle instellingen. Zie voor aanvullende informatie over van de instellingen, [virtuele netwerken en instellingen weergeven](manage-virtual-network.md#view-virtual-networks-and-settings). De wijzigingen die u in het bestand aanbrengt:
+Een netwerk configuratie bestand is een XML-bestand (bij gebruik van Power shell) of een JSON-bestand (bij gebruik van de klassieke CLI). U kunt het bestand bewerken in een wille keurige tekst of XML/JSON-editor. Het artikel schema-instellingen voor het [netwerk configuratie bestand](https://msdn.microsoft.com/library/azure/jj157100.aspx) bevat Details voor alle instellingen. Zie [virtuele netwerken en instellingen weer geven](manage-virtual-network.md#view-virtual-networks-and-settings)voor meer uitleg van de instellingen. De wijzigingen die u aanbrengt in het bestand:
 
-- Moet voldoen aan het schema of het importeren van die het netwerkconfiguratiebestand mislukken.
-- Overschrijven van een bestaande netwerkinstellingen voor uw abonnement, dus moet u bijzonder voorzichtig wanneer u wijzigingen aanbrengt. Verwijs bijvoorbeeld naar de configuratiebestanden van de voorbeeld-netwerk die volgen. Stel dat het oorspronkelijke bestand bevat twee **VirtualNetworkSite** instanties, en u gewijzigd, zoals wordt weergegeven in de voorbeelden. Wanneer u het bestand importeert, Azure Hiermee verwijdert u het virtuele netwerk voor de **VirtualNetworkSite** instantie die u in het bestand verwijderd. Dit eenvoudige scenario wordt ervan uitgegaan dat er zijn geen bronnen in het virtuele netwerk, als er waren, het virtuele netwerk kan niet worden verwijderd en het importeren mislukt.
+- Moet voldoen aan het schema of het importeren van het netwerk configuratie bestand mislukt.
+- Overschrijf alle bestaande netwerk instellingen voor uw abonnement. Wees daarom uiterst voorzichtig wanneer u wijzigingen aanbrengt. U kunt bijvoorbeeld verwijzen naar de voorbeeld netwerk configuratie bestanden die volgen. Zeg het oorspronkelijke bestand bevat twee **VirtualNetworkSite** -instanties en u hebt deze gewijzigd, zoals in de voor beelden wordt weer gegeven. Wanneer u het bestand importeert, verwijdert Azure het virtuele netwerk voor het **VirtualNetworkSite** -exemplaar dat u in het bestand hebt verwijderd. In dit vereenvoudigde scenario wordt ervan uitgegaan dat er geen resources in het virtuele netwerk aanwezig waren, alsof het virtuele netwerk niet kan worden verwijderd en mislukt het importeren.
 
 > [!IMPORTANT]
-> Azure rekening gehouden met een subnet dat er iets geïmplementeerd als **gebruikt**. Wanneer een subnet gebruikt wordt, kan niet worden gewijzigd. Voordat u informatie over het subnet in een netwerkconfiguratiebestand wijzigt, verplaatst u alles wat u hebt geïmplementeerd op het subnet naar een ander subnet die is niet wordt gewijzigd. Zie [een virtuele machine of Rolinstantie verplaatsen naar een ander Subnet](virtual-networks-move-vm-role-to-subnet.md) voor meer informatie.
+> Azure beschouwt een subnet waarop iets is geïmplementeerd als **in gebruik**. Wanneer een subnet wordt gebruikt, kan het niet worden gewijzigd. Voordat u de subnetgegevens in een netwerk configuratie bestand wijzigt, moet u alle items die u hebt geïmplementeerd naar het subnet verplaatsen naar een ander subnet dat niet wordt gewijzigd. Zie [een virtuele machine of rolinstantie naar een ander subnet verplaatsen](virtual-networks-move-vm-role-to-subnet.md) voor meer informatie.
 
-### <a name="example-xml-for-use-with-powershell"></a>XML-voorbeeld voor gebruik met PowerShell
+### <a name="example-xml-for-use-with-powershell"></a>Voor beeld-XML voor gebruik met Power shell
 
-Het volgende voorbeeld van het netwerkconfiguratiebestand maakt een virtueel netwerk met de naam *myVirtualNetwork* met een adresruimte van *10.0.0.0/16* in de *VS-Oost* Azure de regio. Het virtuele netwerk bevat één subnet met de naam *mySubnet* met een adresvoorvoegsel van *10.0.0.0/24*.
+In het volgende voor beeld wordt een virtueel netwerk met de naam *myVirtualNetwork* gemaakt met een adres ruimte van *10.0.0.0/16* in de regio *VS Oost* Azure. Het virtuele netwerk bevat één subnet met de naam *mySubnet* met het adres voorvoegsel *10.0.0.0/24*.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -90,11 +90,11 @@ Het volgende voorbeeld van het netwerkconfiguratiebestand maakt een virtueel net
 </NetworkConfiguration>
 ```
 
-Als het netwerkconfiguratiebestand die u hebt geëxporteerd geen inhoud bevat, kunt u het XML-bestand in het vorige voorbeeld kopiëren en plak deze in een nieuw bestand.
+Als het netwerk configuratie bestand dat u hebt geëxporteerd geen inhoud bevat, kunt u de XML in het vorige voor beeld kopiëren en in een nieuw bestand plakken.
 
-### <a name="example-json-for-use-with-the-classic-cli"></a>Voorbeeld van JSON voor gebruik met de klassieke CLI
+### <a name="example-json-for-use-with-the-classic-cli"></a>Voor beeld-JSON voor gebruik met de klassieke CLI
 
-Het volgende voorbeeld van het netwerkconfiguratiebestand maakt een virtueel netwerk met de naam *myVirtualNetwork* met een adresruimte van *10.0.0.0/16* in de *VS-Oost* Azure de regio. Het virtuele netwerk bevat één subnet met de naam *mySubnet* met een adresvoorvoegsel van *10.0.0.0/24*.
+In het volgende voor beeld wordt een virtueel netwerk met de naam *myVirtualNetwork* gemaakt met een adres ruimte van *10.0.0.0/16* in de regio *VS Oost* Azure. Het virtuele netwerk bevat één subnet met de naam *mySubnet* met het adres voorvoegsel *10.0.0.0/24*.
 
 ```json
 {
@@ -117,16 +117,16 @@ Het volgende voorbeeld van het netwerkconfiguratiebestand maakt een virtueel net
 }
 ```
 
-Als het netwerkconfiguratiebestand die u hebt geëxporteerd geen inhoud bevat, kunt u de json kopiëren in het vorige voorbeeld, en plak deze in een nieuw bestand.
+Als het netwerk configuratie bestand dat u hebt geëxporteerd geen inhoud bevat, kunt u de json in het vorige voor beeld kopiëren en plakken in een nieuw bestand.
 
-## <a name="import"></a>Importeren van een netwerkconfiguratiebestand
+## <a name="import"></a>Een netwerk configuratie bestand importeren
 
-U kunt PowerShell of de klassieke CLI gebruiken voor het importeren van een netwerkconfiguratiebestand. PowerShell importeert een XML-bestand, terwijl de klassieke CLI invoer een json-bestand. Als het importeren is mislukt, controleert u of dat het bestand voldoet aan de [network-configuratieschema](https://msdn.microsoft.com/library/azure/jj157100.aspx). 
+U kunt Power shell of de klassieke CLI gebruiken om een netwerk configuratie bestand te importeren. Power shell importeert een XML-bestand, terwijl de klassieke CLI een JSON-bestand importeert. Als het importeren mislukt, controleert u of het bestand voldoet aan het [netwerk configuratie schema](https://msdn.microsoft.com/library/azure/jj157100.aspx). 
 
 ### <a name="powershell"></a>PowerShell
  
-1. [Azure PowerShell installeren en aanmelden bij Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install).
-2. Wijzig de map en bestandsnaam in de volgende opdracht uit als nodig is, voert u de opdracht voor het importeren van het netwerkconfiguratiebestand:
+1. [Installeer Azure PowerShell en meld u aan bij Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install).
+2. Wijzig indien nodig de map en de bestands naam in de volgende opdracht en voer de opdracht uit om het netwerk configuratie bestand te importeren:
  
     ```powershell
     Set-AzureVNetConfig  -ConfigurationPath c:\azure\networkconfig.xml
@@ -134,10 +134,10 @@ U kunt PowerShell of de klassieke CLI gebruiken voor het importeren van een netw
 
 ### <a name="azure-classic-cli"></a>Klassieke versie van Azure CLI
 
-1. [De klassieke Azure-CLI installeren](/cli/azure/install-classic-cli). Voltooi de resterende stappen van een klassieke CLI-opdrachtprompt.
-2. Meld u aan bij Azure door te voeren de `azure login` opdracht.
-3. Zorg ervoor dat u bent in asm-modus door op te geven de `azure config mode asm` opdracht.
-4. Wijzig de map en bestandsnaam in de volgende opdracht uit als nodig is, voert u de opdracht voor het importeren van het netwerkconfiguratiebestand:
+1. [Installeer de klassieke Azure-cli](/cli/azure/install-classic-cli). Voltooi de resterende stappen van een klassieke CLI-opdracht prompt.
+2. Meld u aan bij Azure door de `azure login` opdracht in te voeren.
+3. Zorg ervoor dat u zich in de ASM- `azure config mode asm` modus bevindt door de opdracht in te voeren.
+4. Wijzig indien nodig de map en de bestands naam in de volgende opdracht en voer de opdracht uit om het netwerk configuratie bestand te importeren:
 
     ```azurecli
     azure network import c:\azure\networkconfig.json

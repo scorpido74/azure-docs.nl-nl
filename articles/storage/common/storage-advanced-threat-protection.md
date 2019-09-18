@@ -1,46 +1,44 @@
 ---
 title: Advanced Threat Protection voor Azure Storage
-description: Configureer Azure Storage Advanced Threat Protection om afwijkingen in de account activiteit te detecteren en u te informeren over mogelijk schadelijke pogingen om toegang te krijgen tot uw account.
+description: Geavanceerde bedreigings beveiliging configureren voor Azure Storage om afwijkingen in de account activiteit te detecteren en op de hoogte te worden gesteld van mogelijk schadelijke pogingen om toegang te krijgen tot uw account.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 2a88e778458da3c5faace401863998dda746ac75
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 21204a7a2fb5a6907a8af9cb91fe8b018f7a4714
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051486"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076489"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection voor Azure Storage
 
-Advanced Threat Protection voor Azure Storage biedt een extra laag met beveiligingsinformatie voor de detectie van ongebruikelijke en mogelijk schadelijke pogingen om toegang te verkrijgen tot of aanvallen op opslagaccounts. Deze beveiligingslaag biedt u de mogelijkheid bedreigingen te verhelpen zonder dat u een beveiligings expert of beveiligings bewakings systemen hoeft te beheren. 
+Advanced Threat Protection voor Azure Storage biedt een extra beveiligingslaag waarmee ongebruikelijke en mogelijk schadelijke pogingen voor het openen of exploiteren van opslag accounts worden gedetecteerd. Deze beveiligingslaag biedt u de mogelijkheid bedreigingen te verhelpen zonder beveiligings expert of beveiligings bewakings systemen te beheren.
 
-Beveiligings waarschuwingen worden geactiveerd wanneer afwijkingen in de activiteit optreden.  Deze beveiligings waarschuwingen zijn geïntegreerd met [Azure Security Center](https://azure.microsoft.com/services/security-center/)en worden ook via e-mail verzonden naar abonnements beheerders, met details over verdachte activiteiten en aanbevelingen voor het onderzoeken en oplossen van bedreigingen.
+Beveiligings waarschuwingen worden geactiveerd wanneer afwijkingen in de activiteit optreden. Deze beveiligings waarschuwingen zijn geïntegreerd met [Azure Security Center](https://azure.microsoft.com/services/security-center/)en worden ook via e-mail verzonden naar abonnements beheerders, met details over verdachte activiteiten en aanbevelingen voor het onderzoeken en oplossen van bedreigingen.
 
 > [!NOTE]
-> * Advanced Threat Protection voor Azure Storage is momenteel alleen beschikbaar voor de Blob-opslag.
-> * Voor prijs informatie, inclusief een gratis proef versie van 30 dagen, raadpleegt u de [pagina met Azure Security Center prijzen]( https://azure.microsoft.com/pricing/details/security-center/).
-> * ATP voor Azure Storage-functie is momenteel niet beschikbaar in azure Government en soevereine Cloud regio's.
+> Advanced Threat Protection voor Azure Storage is momenteel alleen beschikbaar voor Blob Storage. De service is niet beschikbaar in azure Government en soevereine Cloud regio's. Voor prijs informatie, inclusief een gratis proef versie van 30 dagen, raadpleegt u de [pagina met Azure Security Center prijzen]( https://azure.microsoft.com/pricing/details/security-center/).
 
-Geavanceerde bedreigings beveiliging voor Azure Storage opname van Diagnostische logboeken met lees-, schrijf-en verwijder aanvragen naar Blob-opslag voor detectie van bedreigingen. Als u de waarschuwingen van Advanced Threat Protection wilt onderzoeken, kunt u gerelateerde opslag activiteiten bekijken met Opslaganalyse logboek registratie. Zie [Opslaganalyse logboek registratie configureren](storage-monitor-storage-account.md#configure-logging)voor meer informatie.
+Geavanceerde bedreigings beveiliging voor Azure Storage opname van Diagnostische logboeken met lees-, schrijf-en verwijder aanvragen naar Blob-opslag voor detectie van bedreigingen. Als u de waarschuwingen van Advanced Threat Protection wilt onderzoeken, kunt u gerelateerde opslag activiteiten bekijken met Opslaganalyse logboek registratie. Zie **logboek registratie configureren** in [een opslag account in het Azure Portal bewaken](storage-monitor-storage-account.md#configure-logging)voor meer informatie.
 
-## <a name="set-up-advanced-threat-protection"></a>Geavanceerde bedreigings beveiliging instellen 
+## <a name="set-up-advanced-threat-protection"></a>Geavanceerde bedreigings beveiliging instellen
 
-### <a name="using-the-portal"></a>De portal gebruiken
+Advanced Threat Protection is standaard ingeschakeld voor uw opslag account. U kunt geavanceerde beveiliging tegen bedreigingen op verschillende manieren configureren, zoals beschreven in de volgende secties.
 
-1. Start de Azure Portal op [https://portal.azure.com](https://portal.azure.com/).
+### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
-2. Ga naar de configuratie pagina van het Azure Storage account dat u wilt beveiligen. Selecteer op de pagina **instellingen** de optie **geavanceerde beveiliging tegen bedreigingen**.
+1. Start de [Azure Portal](https://portal.azure.com/).
+1. Navigeer naar uw Azure Storage-account. Selecteer onder **instellingen**de optie **geavanceerde beveiliging**.
+1. Selecteer de koppeling **instellingen** op de pagina Geavanceerde beveiligings configuratie.
+1. Stel **geavanceerde beveiliging** in **op on**.
+1. Klik op **Opslaan** om het nieuwe of bijgewerkte beleid op te slaan.
 
-3. In de Blade **geavanceerde beveiliging tegen bedreigingen** configureren
-    * Advanced *Threat Protection* inschakelen
-    * Klik op **Opslaan** om het nieuwe of bijgewerkte geavanceerde beveiligings beleid voor bedreigingen op te slaan. (Prijzen in de afbeelding zijn alleen bedoeld als voor beeld.)
-
-![Azure Storage Advanced Threat Protection inschakelen](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
+    ![Azure Storage Advanced Threat Protection inschakelen](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="using-azure-security-center"></a>Met behulp van Azure Security Center
 
@@ -62,7 +60,7 @@ Wanneer u zich abonneert op de Standard-laag in Azure Security Center, wordt gea
 
 Gebruik een Azure Resource Manager sjabloon om een Azure Storage account te implementeren waarop Advanced Threat Protection is ingeschakeld. Zie [opslag account met geavanceerde beveiliging tegen bedreigingen](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)voor meer informatie.
 
-### <a name="using-azure-policy"></a>Azure Policy gebruiken
+### <a name="using-an-azure-policy"></a>Een Azure Policy gebruiken
 
 Gebruik een Azure Policy om geavanceerde bedreigings beveiliging in te scha kelen voor opslag accounts onder een specifiek abonnement of resource groep.
 
@@ -71,7 +69,7 @@ Gebruik een Azure Policy om geavanceerde bedreigings beveiliging in te scha kele
 1. Zoek naar het beleid **geavanceerde beveiliging tegen bedreigingen implementeren op opslag accounts** .
 
      ![Zoek beleid](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
-  
+
 1. Selecteer een Azure-abonnement of resource groep.
 
     ![Abonnement of groep selecteren](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
@@ -80,7 +78,8 @@ Gebruik een Azure Policy om geavanceerde bedreigings beveiliging in te scha kele
 
     ![Pagina beleids definities](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="using-rest-api"></a>REST API gebruiken
+### <a name="using-the-rest-api"></a>Met behulp van de REST API
+
 Gebruik rest API-opdrachten om de geavanceerde instelling voor beveiliging tegen bedreigingen te maken, bij te werken of op te halen voor een specifiek opslag account.
 
 * [Advanced Threat Protection-maken](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
@@ -90,9 +89,9 @@ Gebruik rest API-opdrachten om de geavanceerde instelling voor beveiliging tegen
 
 Gebruik de volgende Power shell-cmdlets:
 
-  * [Advanced Threat Protection inschakelen](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-  * [Geavanceerde beveiliging tegen bedreigingen verkrijgen](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-  * [Geavanceerde bedreigings beveiliging uitschakelen](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+* [Advanced Threat Protection inschakelen](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+* [Geavanceerde beveiliging tegen bedreigingen verkrijgen](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+* [Geavanceerde bedreigings beveiliging uitschakelen](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ## <a name="explore-security-anomalies"></a>Beveiligings afwijkingen verkennen
 
@@ -102,10 +101,9 @@ Wanneer er afwijkingen optreden bij de opslag activiteit, ontvangt u een e-mail 
 * De naam van het opslag account
 * De tijd van de gebeurtenis
 * Het opslag type
-* De mogelijke oorzaken 
+* De mogelijke oorzaken
 * De onderzoek stappen
 * De herstels tappen
-
 
 Het e-mail bericht bevat ook informatie over mogelijke oorzaken en aanbevolen acties voor het onderzoeken en oplossen van mogelijke bedreigingen.
 
@@ -117,10 +115,9 @@ U kunt uw huidige beveiligings waarschuwingen controleren en beheren via de [teg
 
 ## <a name="protection-alerts"></a>Beveiligings waarschuwingen
 
-Waarschuwingen worden gegenereerd door ongebruikelijke en mogelijk schadelijke pogingen om opslag accounts te openen of misbruik te maken. Zie [Azure Storage](../../security-center/security-center-alerts-data-services.md#azure-storage) -waarschuwingen voor een lijst met deze waarschuwingen
+Waarschuwingen worden gegenereerd door ongebruikelijke en mogelijk schadelijke pogingen om opslag accounts te openen of misbruik te maken. Voor een lijst met waarschuwingen voor Azure Storage raadpleegt u de sectie **opslag** in [bedreigings detectie voor gegevens Services in azure Security Center](../../security-center/security-center-alerts-data-services.md#azure-storage) -waarschuwingen
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [Logboeken in azure Storage-accounts](/rest/api/storageservices/About-Storage-Analytics-Logging)
-
 * Meer informatie over [Azure Security Center](../../security-center/security-center-intro.md)

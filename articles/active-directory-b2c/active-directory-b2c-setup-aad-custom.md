@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3c8efc4b7bbee6b3209160b570e3e70bfccfc72e
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 527c7120ad2d890c8abf32d29827ed7454b0ebfd
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70964510"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065305"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden met een Azure Active Directory-account instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In dit artikel wordt beschreven hoe u aanmelden voor gebruikers van een Azure Active Directory-organisatie (Azure AD) inschakelt met [aangepaste beleids regels](active-directory-b2c-overview-custom.md) in azure Active Directory (Azure AD) B2C.
+In dit artikel wordt beschreven hoe u aanmelden voor gebruikers van een Azure Active Directory-organisatie (Azure AD) inschakelt met behulp van [aangepast beleid](active-directory-b2c-overview-custom.md) in Azure Active Directory B2C (Azure AD B2C).
 
 ## <a name="prerequisites"></a>Vereisten
 

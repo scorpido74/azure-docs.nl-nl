@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48eb36151948dc6e39edd4ae0fd863c63e83a52b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: b135838558a493cff0e28a8429d31f5a03a69857
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68741352"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033456"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Met behulp van systeem voor meerdere domeinen Identity Management (SCIM) voor het automatisch inrichten van gebruikers en groepen uit Azure Active Directory voor toepassingen
 
@@ -87,14 +87,14 @@ Toepassingen die ondersteuning bieden voor het SCIM-profiel dat wordt beschreven
     > U kunt desgewenst uitschakelen door het uitschakelen van de toewijzing van 'groepen'-synchronisatie van de groepsobjecten worden weergegeven.
 
 1. Onder **instellingen**definieert het **bereik** veld welke gebruikers en groepen worden gesynchroniseerd. Selecteer **alleen toegewezen gebruikers en groepen synchroniseren** (aanbevolen) om gebruikers en groepen te synchroniseren die zijn toegewezen op het tabblad **gebruikers en groepen** .
-1. Wanneer de configuratie is voltooid, stelt u de inrichtings **status** **in op aan**.
+1. Wanneer de configuratie is voltooid, stelt u de **inrichtings status** **in op aan**.
 1. Selecteer **Opslaan** om de Azure AD-inrichtings service te starten.
 1. Als u alleen toegewezen gebruikers en groepen wilt synchroniseren (aanbevolen), selecteert u het tabblad **gebruikers en groepen** en wijst u de gebruikers of groepen toe die u wilt synchroniseren.
 
-Zodra de initiële synchronisatie is gestart, kunt u **audit logboeken** selecteren in het linkerdeel venster om de voortgang te controleren. hier worden alle acties weer gegeven die door de inrichtings service in uw app worden uitgevoerd. Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](check-status-user-account-provisioning.md).
+Zodra de eerste cyclus is gestart, kunt u **audit logboeken** selecteren in het linkerdeel venster om de voortgang te controleren. Hiermee worden alle acties weer gegeven die door de inrichtings service in uw app worden uitgevoerd. Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](check-status-user-account-provisioning.md).
 
 > [!NOTE]
-> Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan latere synchronisaties, wat ongeveer elke 40 minuten gebeurt, mits de service wordt uitgevoerd.
+> De eerste cyclus duurt langer dan de volgende synchronisaties, wat ongeveer elke 40 minuten gebeurt, zolang de service wordt uitgevoerd.
 
 ## <a name="understanding-the-azure-ad-scim-implementation"></a>Informatie over de Azure AD SCIM-implementatie
 
@@ -689,11 +689,11 @@ De eenvoudigste manier voor het implementeren van een eindpunt SCIM inrichting a
 1. Als de pogingen om verbinding te maken met de toepassing slagen, selecteert u **Opslaan** om de beheerders referenties op te slaan.
 1. In de **toewijzingen** sectie, zijn er twee sets selecteerbare Kenmerktoewijzingen: één voor gebruikersobjecten en één voor de groepsobjecten worden weergegeven. Selecteren om te controleren van de kenmerken die worden gesynchroniseerd vanuit Active Directory van Azure aan uw app. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt zodat deze overeenkomen met de gebruikers en groepen in uw app voor update-bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren.
 1. Onder **instellingen**, wordt de **bereik** veld wordt gedefinieerd welke gebruikers en groepen worden gesynchroniseerd. Selecteer **alleen toegewezen gebruikers en groepen synchroniseren** (aanbevolen) om alleen gebruikers en groepen te synchroniseren die zijn toegewezen op het tabblad **gebruikers en groepen** .
-1. Wanneer de configuratie is voltooid, stelt u de inrichtings **status** **in op aan**.
+1. Wanneer de configuratie is voltooid, stelt u de **inrichtings status** **in op aan**.
 1. Selecteer **Opslaan** om de Azure AD-inrichtings service te starten.
 1. Als u alleen toegewezen gebruikers en groepen wilt synchroniseren (aanbevolen), selecteert u het tabblad **gebruikers en groepen** en wijst u de gebruikers of groepen toe die u wilt synchroniseren.
 
-Zodra de initiële synchronisatie is gestart, kunt u **audit logboeken** selecteren in het linkerdeel venster om de voortgang te controleren. hier worden alle acties weer gegeven die door de inrichtings service in uw app worden uitgevoerd. Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](check-status-user-account-provisioning.md).
+Zodra de eerste cyclus is gestart, kunt u **audit logboeken** selecteren in het linkerdeel venster om de voortgang te controleren. Hiermee worden alle acties weer gegeven die door de inrichtings service in uw app worden uitgevoerd. Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](check-status-user-account-provisioning.md).
 
 De laatste stap bij het controleren van het voorbeeld is de TargetFile.csv-bestand te openen in de map \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug op uw Windows-computer. Nadat het inrichtingsproces is uitgevoerd, wordt dit bestand bevat de details van alle toegewezen en ingericht gebruikers en groepen.
 
@@ -834,7 +834,7 @@ Als u de service in Internet Information Services wilt hosten, bouwt een ontwikk
 
 ### <a name="handling-endpoint-authentication"></a>Verwerking-eindpuntverificatie
 
-Aanvragen van Azure Active Directory bevatten een OAuth 2.0-bearer-token.   Alle services die de aanvraag ontvangen, moeten de verlener verifiëren als Azure Active Directory voor de verwachte Azure Active Directory Tenant, voor toegang tot de Azure Active Directory Graph-webservice.  In het token wordt de verlener geïdentificeerd met een ISS-claim, zoals ' ISS ': 'https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ '.  In dit voor beeld is het basis adres van de claim waarde https://sts.windows.net , dat Azure Active Directory als de verlener identificeert, terwijl het relatieve adres segment cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 een unieke id van de Azure Active Directory Tenant is voor het token dat is uitgegeven. De doel groep van het token is de toepassings sjabloon-id voor de app in de galerie. De toepassings sjabloon-id voor alle aangepaste apps is 8adf8e6e-67b2-4cf2-A259-e3dc5476c621. De toepassings sjabloon-id voor elke app in de galerie varieert. Neem contact ProvisioningFeedback@microsoft.com op met vragen over de toepassings sjabloon-id voor een galerie toepassing. Elk van de toepassingen die in één Tenant zijn geregistreerd, kan dezelfde `iss` claim ontvangen met scim-aanvragen.
+Aanvragen van Azure Active Directory bevatten een OAuth 2.0-bearer-token.   Alle services die de aanvraag ontvangen, moeten de verlener verifiëren als Azure Active Directory voor de verwachte Azure Active Directory Tenant, voor toegang tot de Azure Active Directory Graph-webservice.  In het token wordt de verlener geïdentificeerd met een ISS-claim, zoals ' ISS ': 'https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ '.  In dit voor beeld is het basis adres van de claim waarde https://sts.windows.net , dat Azure Active Directory als de verlener identificeert, terwijl het relatieve adres segment cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 een unieke id van de Azure Active Directory Tenant is voor het token dat is uitgegeven. De doel groep van het token is de toepassings sjabloon-ID voor de app in de galerie. De toepassings sjabloon-ID voor alle aangepaste apps is 8adf8e6e-67b2-4cf2-A259-e3dc5476c621. De toepassings sjabloon-ID voor elke app in de galerie varieert. Neem contact ProvisioningFeedback@microsoft.com op met vragen over de toepassings sjabloon-id voor een galerie toepassing. Elk van de toepassingen die in één Tenant zijn geregistreerd, kan dezelfde `iss` claim ontvangen met scim-aanvragen.
 
 Ontwikkel aars die gebruikmaken van de CLI-bibliotheken van micro soft voor het bouwen van een SCIM-service kunnen aanvragen van Azure Active Directory met het pakket micro soft. Owin. Security. ActiveDirectory verifiëren door de volgende stappen te volgen: 
 

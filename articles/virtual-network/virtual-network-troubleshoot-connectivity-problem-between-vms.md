@@ -1,10 +1,10 @@
 ---
-title: Het oplossen van problemen met connectiviteit tussen virtuele Azure-machines | Microsoft Docs
-description: Informatie over het oplossen van connectiviteitsproblemen met de tussen Azure-VM's.
+title: Connectiviteits problemen tussen virtuele Azure-machines oplossen | Microsoft Docs
+description: Meer informatie over het oplossen van verbindings problemen tussen Azure Vm's.
 services: virtual-network
 documentationcenter: na
 author: chadmath
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
@@ -14,70 +14,70 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: fc3d6ab1d7fdf05963d9ecd350deccd940a95b87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab3ae45081ecc481cb90af8961174e23c86e84b5
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61036306"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056807"
 ---
-# <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Het oplossen van problemen met connectiviteit tussen virtuele Azure-machines
+# <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Verbindings problemen tussen virtuele Azure-machines oplossen
 
-Problemen met connectiviteit tussen virtuele Azure-machines (VM's) kunt u mogelijk ondervindt. Dit artikel bevat stappen waarmee u kunt dit probleem oplossen. 
+U kunt connectiviteits problemen ondervinden tussen virtuele machines van Azure (Vm's). Dit artikel bevat stappen voor probleem oplossing om dit probleem op te lossen. 
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="symptom"></a>Symptoom
 
-Een die virtuele machine van Azure kan geen verbinding met een andere Azure-VM maken.
+Een Azure-VM kan geen verbinding maken met een andere virtuele machine van Azure.
 
 ## <a name="troubleshooting-guidance"></a>Hulp bij het oplossen van problemen 
 
-1. [Controleer of NIC is onjuist geconfigureerd](#step-1-check-whether-nic-is-misconfigured)
-2. [Controleert of het netwerkverkeer wordt geblokkeerd door NSG- of UDR](#step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr)
-3. [Controleer of het netwerkverkeer wordt geblokkeerd door de firewall-VM](#step-3-check-whether-network-traffic-is-blocked-by-vm-firewall)
-4. [Controleer of app van de virtuele machine of service op poort luistert](#step-4-check-whether-vm-app-or-service-is-listening-on-the-port)
-5. [Controleer of het probleem wordt veroorzaakt door SNAT](#step-5-check-whether-the-problem-is-caused-by-snat)
-6. [Controleren of verkeer wordt geblokkeerd door de ACL's voor de klassieke virtuele machine](#step-6-check-whether-traffic-is-blocked-by-acls-for-the-classic-vm)
-7. [Controleer of het eindpunt voor de klassieke virtuele machine is gemaakt](#step-7-check-whether-the-endpoint-is-created-for-the-classic-vm)
-8. [Verbinding gemaakt met een VM-netwerkshare](#step-8-try-to-connect-to-a-vm-network-share)
+1. [Controleren of de NIC onjuist is geconfigureerd](#step-1-check-whether-nic-is-misconfigured)
+2. [Controleer of netwerk verkeer wordt geblokkeerd door NSG of UDR](#step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr)
+3. [Controleer of het netwerk verkeer wordt geblokkeerd door de VM-firewall](#step-3-check-whether-network-traffic-is-blocked-by-vm-firewall)
+4. [Controleren of de VM-app of service luistert op de poort](#step-4-check-whether-vm-app-or-service-is-listening-on-the-port)
+5. [Controleren of het probleem wordt veroorzaakt door SNAT](#step-5-check-whether-the-problem-is-caused-by-snat)
+6. [Controleren of het verkeer wordt geblokkeerd door Acl's voor de klassieke VM](#step-6-check-whether-traffic-is-blocked-by-acls-for-the-classic-vm)
+7. [Controleer of het eind punt is gemaakt voor de klassieke virtuele machine](#step-7-check-whether-the-endpoint-is-created-for-the-classic-vm)
+8. [Probeer verbinding te maken met een VM-netwerk share](#step-8-try-to-connect-to-a-vm-network-share)
 9. [Inter-Vnet-connectiviteit controleren](#step-9-check-inter-vnet-connectivity)
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
 
-Volg deze stappen voor het probleem op te lossen. Nadat u elke stap hebt voltooid, controleert u of het probleem opgelost is. 
+Volg deze stappen om het probleem op te lossen. Nadat u elke stap hebt voltooid, controleert u of het probleem is opgelost. 
 
-### <a name="step-1-check-whether-nic-is-misconfigured"></a>Stap 1: Controleer of NIC is onjuist geconfigureerd
+### <a name="step-1-check-whether-nic-is-misconfigured"></a>Stap 1: Controleren of de NIC onjuist is geconfigureerd
 
-Volg de stappen in [opnieuw instellen van de netwerkinterface voor Azure Windows VM](../virtual-machines/windows/reset-network-interface.md). 
+Volg de stappen in de [netwerk interface opnieuw instellen voor Azure Windows VM](../virtual-machines/windows/reset-network-interface.md). 
 
-Als het probleem zich voordoet nadat u de netwerkinterface (NIC) hebt gewijzigd, volgt u deze stappen:
+Als het probleem optreedt nadat u de netwerk interface (NIC) hebt gewijzigd, voert u de volgende stappen uit:
 
-**Multi-NIC VM 's**
+**Vm's met meerdere NIC'S**
 
-1. Toevoegen van een NIC.
-2. Los de problemen oplossen tijdens de ongeldige NIC of verwijder de ongeldige NIC.  Vervolgens voegt u de NIC opnieuw toe.
+1. Voeg een NIC toe.
+2. Los de problemen in de beschadigde NIC op of verwijder de beschadigde NIC.  Voeg de NIC vervolgens opnieuw toe.
 
-Zie voor meer informatie, [netwerkinterfaces toevoegen of verwijderen van virtuele machines](virtual-network-network-interface-vm.md).
+Zie [netwerk interfaces toevoegen aan of verwijderen uit virtuele machines](virtual-network-network-interface-vm.md)voor meer informatie.
 
-**VM één NIC 's** 
+**Virtuele machine met één NIC** 
 
-- [Windows virtuele machine opnieuw implementeren](../virtual-machines/windows/redeploy-to-new-node.md)
-- [Linux virtuele machine opnieuw implementeren](../virtual-machines/linux/redeploy-to-new-node.md)
+- [Windows-VM opnieuw implementeren](../virtual-machines/windows/redeploy-to-new-node.md)
+- [Linux-VM opnieuw implementeren](../virtual-machines/linux/redeploy-to-new-node.md)
 
-### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>Stap 2: Controleert of het netwerkverkeer wordt geblokkeerd door NSG- of UDR
+### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>Stap 2: Controleer of netwerk verkeer wordt geblokkeerd door NSG of UDR
 
-Gebruik [Network Watcher IP-stroom controleren](../network-watcher/network-watcher-ip-flow-verify-overview.md) en [NSG Stroomregistratie](../network-watcher/network-watcher-nsg-flow-logging-overview.md) om te bepalen of er een Netwerkbeveiligingsgroep (NSG) of door de gebruiker gedefinieerde Route (UDR) waarmee netwerkverkeer verstoort.
+Gebruik [Network Watcher IP-stroom controle](../network-watcher/network-watcher-ip-flow-verify-overview.md) en [NSG flow logboek registratie](../network-watcher/network-watcher-nsg-flow-logging-overview.md) om te bepalen of er een netwerk beveiligings groep (NSG) of een door de gebruiker gedefinieerde route (UDR) is die de verkeers stroom verstoort.
 
-### <a name="step-3-check-whether-network-traffic-is-blocked-by-vm-firewall"></a>Stap 3: Controleer of het netwerkverkeer wordt geblokkeerd door de firewall-VM
+### <a name="step-3-check-whether-network-traffic-is-blocked-by-vm-firewall"></a>Stap 3: Controleer of het netwerk verkeer wordt geblokkeerd door de VM-firewall
 
-De firewall uitschakelen en vervolgens het resultaat te testen. Als het probleem is opgelost, Controleer of de firewall-instellingen en de firewall opnieuw inschakelt.
+Schakel de firewall uit en test vervolgens het resultaat. Als het probleem is opgelost, controleert u de firewall instellingen en schakelt u de firewall opnieuw in.
 
-### <a name="step-4-check-whether-vm-app-or-service-is-listening-on-the-port"></a>Stap 4: Controleer of app van de virtuele machine of service op poort luistert
+### <a name="step-4-check-whether-vm-app-or-service-is-listening-on-the-port"></a>Stap 4: Controleren of de VM-app of service luistert op de poort
 
-U kunt een van de volgende methoden gebruiken om te controleren of de VM-app of service op de poort luistert.
+U kunt een van de volgende methoden gebruiken om te controleren of de VM-app of service luistert op de poort.
 
-- Voer de volgende opdrachten om te controleren of de server bij die poort luistert.
+- Voer de volgende opdrachten uit om te controleren of de server op die poort luistert.
 
 **Windows-VM**
 
@@ -87,27 +87,27 @@ U kunt een van de volgende methoden gebruiken om te controleren of de VM-app of 
 
     netstat -l
 
-- Voer de **telnet** opdracht op de virtuele machine zelf voor het testen van de poort. Als de test mislukt, wordt de toepassing of service niet geconfigureerd om te luisteren op poort.
+- Voer de **Telnet** -opdracht op de virtuele machine zelf uit om de poort te testen. Als de test mislukt, is de toepassing of service niet geconfigureerd om op die poort te Luis teren.
 
-### <a name="step-5-check-whether-the-problem-is-caused-by-snat"></a>Stap 5: Controleer of het probleem wordt veroorzaakt door SNAT
+### <a name="step-5-check-whether-the-problem-is-caused-by-snat"></a>Stap 5: Controleren of het probleem wordt veroorzaakt door SNAT
 
-De virtuele machine wordt geplaatst in sommige scenario's achter een load saldo-oplossing die is afhankelijk van resources buiten Azure. In deze scenario's als u problemen met een onregelmatige verbinding, ondervindt het probleem kan worden veroorzaakt door [SNAT poortuitputting](../load-balancer/load-balancer-outbound-connections.md). Los het probleem, moet u een VIP (of ILPIP voor klassiek) maken voor elke virtuele machine die zich achter de load balancer en beveiligen met NSG of ACL. 
+In sommige gevallen wordt de virtuele machine achter een oplossing voor taak verdeling geplaatst die een afhankelijkheid heeft van resources buiten Azure. Als u in deze scenario's problemen ondervindt met een terugkerende verbinding, kan het probleem worden veroorzaakt door een [SNAT-poort uitgeput](../load-balancer/load-balancer-outbound-connections.md). Om het probleem op te lossen, maakt u een VIP (of ILPIP voor klassiek) voor elke VM die zich achter de load balancer bevindt en die u met NSG of ACL kunt beveiligen. 
 
-### <a name="step-6-check-whether-traffic-is-blocked-by-acls-for-the-classic-vm"></a>Stap 6: Controleren of verkeer wordt geblokkeerd door de ACL's voor de klassieke virtuele machine
+### <a name="step-6-check-whether-traffic-is-blocked-by-acls-for-the-classic-vm"></a>Stap 6: Controleren of het verkeer wordt geblokkeerd door Acl's voor de klassieke VM
 
-Een toegangsbeheerlijst (ACL) biedt de mogelijkheid selectief toestaan of weigeren van verkeer voor het eindpunt van een virtuele machine. Zie voor meer informatie, [beheren de ACL voor een eindpunt](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint).
+Een toegangs beheer lijst (ACL) biedt de mogelijkheid om selectief verkeer toe te staan of te weigeren voor een eind punt van een virtuele machine. Zie [Manage the ACL to a endpoint](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)(Engelstalig) voor meer informatie.
 
-### <a name="step-7-check-whether-the-endpoint-is-created-for-the-classic-vm"></a>Stap 7: Controleer of het eindpunt voor de klassieke virtuele machine is gemaakt
+### <a name="step-7-check-whether-the-endpoint-is-created-for-the-classic-vm"></a>Stap 7: Controleer of het eind punt is gemaakt voor de klassieke virtuele machine
 
-Alle virtuele machines die u in Azure maakt met behulp van het klassieke implementatiemodel kunnen automatisch communiceren via een privénetwerkkanaal met andere virtuele machines in de dezelfde cloudservice of een virtueel netwerk. Computers op andere virtuele netwerken moeten echter eindpunten om te leiden van het binnenkomende netwerkverkeer op een virtuele machine. Zie voor meer informatie, [over het instellen van eindpunten](../virtual-machines/windows/classic/setup-endpoints.md).
+Alle Vm's die u in azure maakt met behulp van het klassieke implementatie model kunnen automatisch communiceren via een particulier netwerk kanaal met andere virtuele machines in dezelfde Cloud service of een virtueel netwerk. Computers in andere virtuele netwerken vereisen echter eind punten om het inkomende netwerk verkeer naar een virtuele machine te sturen. Zie [eind punten instellen](../virtual-machines/windows/classic/setup-endpoints.md)voor meer informatie.
 
-### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>Stap 8: Verbinding gemaakt met een VM-netwerkshare
+### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>Stap 8: Probeer verbinding te maken met een VM-netwerk share
 
-Als u geen verbinding naar een netwerkshare voor de virtuele machine maken, kan het probleem worden veroorzaakt door niet beschikbaar NIC's in de virtuele machine. Als u wilt verwijderen van de niet beschikbaar NIC's, Zie [de niet beschikbaar NIC's verwijderen](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)
+Als u geen verbinding kunt maken met een VM-netwerk share, kan het probleem worden veroorzaakt door niet-beschik bare Nic's in de VM. Als u de niet-beschik bare Nic's wilt verwijderen, raadpleegt [u de niet-beschik bare nic's verwijderen](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)
 
 ### <a name="step-9-check-inter-vnet-connectivity"></a>Stap 9: Inter-Vnet-connectiviteit controleren
 
-Gebruik [Network Watcher IP-stroom controleren](../network-watcher/network-watcher-ip-flow-verify-overview.md) en [NSG Stroomregistratie](../network-watcher/network-watcher-nsg-flow-logging-overview.md) om te bepalen of er een NSG of een UDR die netwerkverkeer verstoort. U kunt ook uw Inter-Vnet-configuratie controleren [hier](https://support.microsoft.com/en-us/help/4032151/configuring-and-validating-vnet-or-vpn-connections).
+Gebruik [Network Watcher IP-stroom controle](../network-watcher/network-watcher-ip-flow-verify-overview.md) en [NSG flow logboek registratie](../network-watcher/network-watcher-nsg-flow-logging-overview.md) om te bepalen of er een NSG of UDR is die de verkeers stroom verstoort. U kunt [hier](https://support.microsoft.com/en-us/help/4032151/configuring-and-validating-vnet-or-vpn-connections)ook uw intersite-Vnet-configuratie controleren.
 
 ### <a name="need-help-contact-support"></a>Hulp nodig? Neem contact op met ondersteuning.
-Als u nog steeds hulp nodig hebt, [contact op met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel worden opgelost.
+Als u nog steeds hulp nodig hebt, neemt u [contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.

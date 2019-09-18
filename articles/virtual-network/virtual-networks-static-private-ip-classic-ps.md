@@ -1,10 +1,10 @@
 ---
-title: Privé-IP-adressen configureren voor virtuele machines (klassiek) - Azure PowerShell | Microsoft Docs
-description: Informatie over het configureren van privé IP-adressen voor virtuele machines (klassiek) met behulp van PowerShell.
+title: Privé IP-adressen voor virtuele machines (klassiek) configureren-Azure PowerShell | Microsoft Docs
+description: Meer informatie over het configureren van privé-IP-adressen voor virtuele machines (klassiek) met behulp van Power shell.
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: tysonn
 tags: azure-service-management
 ms.assetid: 60c7b489-46ae-48af-a453-2b429a474afd
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a1be2966cf568fc5101fb0d887f0d55a8a1876d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00a4f282da3a943516ffce584247ac20935526b5
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952498"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058713"
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>Configureer persoonlijke IP-adressen voor een virtuele machine (klassiek) met behulp van PowerShell
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>Privé-IP-adressen configureren voor een virtuele machine (klassiek) met behulp van Power shell
 
 [!INCLUDE [virtual-networks-static-private-ip-selectors-classic-include](../../includes/virtual-networks-static-private-ip-selectors-classic-include.md)]
 
@@ -35,10 +35,10 @@ Dit artikel is van toepassing op het klassieke implementatiemodel. U kunt ook [b
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-Het voorbeeld onderstaande PowerShell-opdrachten kunt verwachten van een eenvoudige omgeving al gemaakt. Als u wilt dat de opdrachten uitvoeren zoals ze worden weergegeven in dit document, eerst samenstellen van de testomgeving die wordt beschreven [een VNet maken](virtual-networks-create-vnet-classic-netcfg-ps.md).
+In de onderstaande voor beelden van Power shell-opdrachten wordt verwacht dat er al een eenvoudige omgeving is gemaakt. Als u de opdrachten wilt uitvoeren zoals ze worden weer gegeven in dit document, bouwt u eerst de test omgeving op die wordt beschreven in [een VNet maken](virtual-networks-create-vnet-classic-netcfg-ps.md).
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Controleren of een specifiek IP-adres beschikbaar is
-Om te controleren als het IP-adres *192.168.1.101* is beschikbaar in een VNet met de naam *TestVNet*, de volgende PowerShell-opdracht uit en controleer of de waarde voor *IsAvailable*:
+Als u wilt controleren of het IP-adres *192.168.1.101* beschikbaar is in een VNet met de naam *TestVNet*, voert u de volgende Power shell-opdracht uit en controleert u de waarde voor *IsAvailable*:
 
     Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 192.168.1.101 
 
@@ -51,7 +51,7 @@ Verwachte uitvoer:
     OperationStatus      : Succeeded
 
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>Een statisch privé IP-adres opgeven bij het maken van een virtuele machine
-De onderstaande PowerShell-script maakt een nieuwe cloudservice met de naam *TestService*, haalt u vervolgens een installatiekopie van Azure, maakt u een virtuele machine met de naam *DNS01* in de nieuwe service in de cloud de virtuele machine met behulp van de opgehaalde, ingesteld op worden in een subnet met de naam *FrontEnd*, en stelt *192.168.1.7* als een statisch privé IP-adres voor de virtuele machine:
+Met het onderstaande Power shell-script maakt u een nieuwe Cloud service met de naam *TestService*. vervolgens wordt een installatie kopie van Azure opgehaald, een virtuele machine met de naam *DNS01* in de nieuwe Cloud service gemaakt met behulp van de opgehaalde installatie kopie, wordt de virtuele machine ingesteld op een subnet met de naam front- *End*en stelt *192.168.1.7* in als een statisch privé-IP-adres voor de virtuele machine:
 
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage | where {$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
@@ -70,7 +70,7 @@ Verwachte uitvoer:
     New-AzureVM          3b99a86d-84f8-04e5-888e-b6fc3c73c4b9 Succeeded  
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Het statische privé IP-adresgegevens voor een virtuele machine ophalen
-Voer de volgende PowerShell-opdracht om de weergave met het statische privé IP-adresgegevens voor de virtuele machine met het bovenstaande script gemaakt, en houd rekening met de waarden voor *IpAddress*:
+Als u de gegevens van het statische privé-IP-adres voor de virtuele machine wilt weer geven die zijn gemaakt met het bovenstaande script, voert u de volgende Power shell-opdracht uit en bekijkt u de waarden voor *IpAddress*:
 
     Get-AzureVM -Name DNS01 -ServiceName TestService
 
@@ -104,7 +104,7 @@ Verwachte uitvoer:
     OperationStatus             : OK
 
 ## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>Het verwijderen van een statisch privé IP-adres van een virtuele machine
-Toegevoegd aan de virtuele machine in het bovenstaande script de volgende PowerShell-opdracht uitvoeren om te verwijderen van het statische privé IP-adres:
+Voer de volgende Power shell-opdracht uit om het statische privé-IP-adres dat aan de virtuele machine is toegevoegd, te verwijderen uit het bovenstaande script:
 
     Get-AzureVM -ServiceName TestService -Name DNS01 |
       Remove-AzureStaticVNetIP |
@@ -116,8 +116,8 @@ Verwachte uitvoer:
     -------------------- -----------                          ---------------
     Update-AzureVM       052fa6f6-1483-0ede-a7bf-14f91f805483 Succeeded
 
-## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Een statisch privé IP-adres toevoegen aan een bestaande virtuele machine
-Een statisch privé IP-adres toevoegen aan de virtuele machine gemaakt met behulp van het bovenstaande script, moet u de volgende opdracht uitvoeren:
+## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Een statisch privé-IP-adres toevoegen aan een bestaande virtuele machine
+Voer de volgende opdracht uit om een statisch privé-IP-adres toe te voegen aan de virtuele machine die is gemaakt met behulp van het bovenstaande script:
 
     Get-AzureVM -ServiceName TestService -Name DNS01 |
       Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |
