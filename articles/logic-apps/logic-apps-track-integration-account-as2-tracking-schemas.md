@@ -76,7 +76,7 @@ Om te controleren van geslaagd, fouten en eigenschappen van berichten voor busin
 | outgoingHeaders |Woordenlijst met JToken | Uitgaande AS2-bericht-header details. (Optioneel) |
 | isNrrEnabled | Boolean | Gebruik de standaardwaarde als de waarde is niet bekend. (Verplicht) |
 | isMdnExpected | Boolean | Gebruik de standaardwaarde als de waarde is niet bekend. (Verplicht) |
-| mdnType | Enum | Toegestane waarden zijn **NotConfigured**, **synchronisatie**, en **asynchrone**. (Verplicht) |
+| mdnType | Enum | Toegestane waarden zijn **NotConfigured**, **Sync**, en **Async**. (Verplicht) |
 ||||
 
 ## <a name="as2-mdn-tracking-schema"></a>Volgschema voor AS2 MDN
