@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: f8edb27e52d843d9a765aed8da9b75417cf357d1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: badd674030ec014f2e70050c3c45599a26b17882
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552582"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71073816"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Quickstart: Ontvangst gegevens ophalen met behulp van de formulier Recognizer REST API met krul
 
@@ -36,7 +36,7 @@ Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 
 Als u wilt beginnen met het analyseren van een ontvangst, roept u de API voor het **analyseren** van de ontvangst aan met behulp van de onderstaande krul opdracht. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel van uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
+1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel voor uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
 1. Vervang `<your receipt URL>` door het URL-adres van een kwitantie-installatie kopie.
 1. Vervang `<subscription key>` door de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
 
@@ -44,7 +44,7 @@ Als u wilt beginnen met het analyseren van een ontvangst, roept u de API voor he
 curl -i -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/prebuilt/receipt/asyncBatchAnalyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"url\": \"<your receipt URL>\"}"
 ```
 
-U ontvangt een `202 (Success)` antwoord met een bewerkings **locatie** header. De waarde van deze header bevat een bewerkings-ID die u kunt gebruiken om de status van de bewerking op te vragen en de resultaten op te halen. In het volgende voor beeld is de teken `operations/` reeks na de bewerkings-id.
+U ontvangt een `202 (Success)` antwoord met een **bewerkings locatie** header. De waarde van deze header bevat een bewerkings-ID die u kunt gebruiken om de status van de bewerking op te vragen en de resultaten op te halen. In het volgende voor beeld is de teken `operations/` reeks na de bewerkings-id.
 
 ```console
 https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
