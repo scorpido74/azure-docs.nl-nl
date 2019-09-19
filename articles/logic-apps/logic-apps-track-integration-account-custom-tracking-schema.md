@@ -64,7 +64,7 @@ Dit artikel bevat aangepaste code die u in de lagen buiten uw logische app gebru
 | runId | Ja | String | Logische app-id. |
 | operationName | Ja | String | Naam van de bewerking (bijvoorbeeld: actie of trigger). |
 | repeatItemScopeName | Ja | String | Herhaal de itemnaam als de actie binnen een `foreach` / `until` lus. |
-| repeatItemIndex | Ja | Geheel getal | Of de actie is binnen een `foreach` / `until` lus. Geeft aan dat de itemindex herhaalde. |
+| repeatItemIndex | Ja | Integer | Of de actie is binnen een `foreach` / `until` lus. Geeft aan dat de itemindex herhaalde. |
 | trackingId | Nee | String | Tracerings-ID, de berichten correleren. |
 | correlationId | Nee | String | Correlatie-ID, de berichten correleren. |
 | clientRequestId | Nee | String | Client kunt invullen om berichten te correleren. |
