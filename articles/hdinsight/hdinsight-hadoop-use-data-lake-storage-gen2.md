@@ -2,18 +2,18 @@
 title: Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters
 description: Meer informatie over het gebruik van Azure Data Lake Storage Gen2 met Azure HDInsight-clusters.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: hrasheed
-ms.openlocfilehash: bd459998568287db767e98a2094d6f80a126ccde
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: f6bee53268ea99e99d79e218eaf7a5ae9fcb1d05
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077117"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104465"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters
 
@@ -90,9 +90,9 @@ Wijs de beheerde identiteit toe aan de rol van de eigenaar van de **opslag-BLOB*
         ![Opslag instellingen voor het gebruik van Data Lake Storage Gen2 met Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
     
     * Onder **identiteit**selecteert u het juiste abonnement en de zojuist gemaakte door de gebruiker toegewezen beheerde identiteit.
-        
-        ![Identiteits instellingen voor het gebruik van Data Lake Storage Gen2 met Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
-        
+
+        ![Identiteits instellingen voor het gebruik van Data Lake Storage Gen2 met HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
+
 > [!Note]
 > Als u een secundaire Data Lake Storage Gen2 account wilt toevoegen, moet u op het niveau van het opslag account eenvoudigweg de beheerde identiteit toewijzen die u eerder hebt gemaakt voor het nieuwe Data Lake Storage Gen2 opslag account dat u wilt toevoegen. Het is niet toegestaan om een secundaire Data Lake Storage Gen2-account toe te voegen via de Blade ' extra opslag accounts ' op HDInsight. 
 

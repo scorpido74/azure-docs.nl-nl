@@ -2,18 +2,18 @@
 title: Query's uitvoeren op Azure Monitor logboeken voor het bewaken van Azure HDInsight-clusters
 description: Meer informatie over het uitvoeren van query's in Azure Monitor logboeken voor het bewaken van taken die worden uitgevoerd in een HDInsight-cluster.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.author: hrasheed
-ms.openlocfilehash: 031879ac1d0d2dd1148c0c37ee72c60d093f8a7d
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 51344ff7381b6392870b1fd0e331eed38a33915d
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809377"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103509"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor logboeken voor het controleren van HDInsight-clusters doorzoeken
 
@@ -27,38 +27,38 @@ Meer informatie over de basis scenario's voor het gebruik van Azure Monitor logb
 
 ## <a name="prerequisites"></a>Vereisten
 
-* U moet een HDInsight-cluster hebben geconfigureerd om Azure Monitor-logboeken te gebruiken en u hebt de HDInsight-cluster-specifieke Azure Monitor logboeken voor het controleren van oplossingen toegevoegd aan de werk ruimte. Zie [Azure monitor-Logboeken gebruiken met HDInsight-clusters](hdinsight-hadoop-oms-log-analytics-tutorial.md)voor instructies.
+U moet een HDInsight-cluster hebben geconfigureerd om Azure Monitor-logboeken te gebruiken en u hebt de HDInsight-cluster-specifieke Azure Monitor logboeken voor het controleren van oplossingen toegevoegd aan de werk ruimte. Zie [Azure monitor-Logboeken gebruiken met HDInsight-clusters](hdinsight-hadoop-oms-log-analytics-tutorial.md)voor instructies.
 
 ## <a name="analyze-hdinsight-cluster-metrics"></a>Metrische gegevens van HDInsight-cluster analyseren
 
 Meer informatie over het zoeken naar specifieke metrische gegevens voor uw HDInsight-cluster.
 
 1. Open de Log Analytics-werk ruimte die is gekoppeld aan uw HDInsight-cluster via de Azure Portal.
-2. Selecteer de tegel **Zoeken in Logboeken** .
-3. Typ de volgende query in het zoekvak om te zoeken naar alle metrische gegevens voor alle beschik bare gegevens voor alle HDInsight-clusters die zijn geconfigureerd voor het gebruik van Azure Monitor logboeken en selecteer vervolgens **uitvoeren**.
+1. Selecteer de tegel **Zoeken in Logboeken** .
+1. Typ de volgende query in het zoekvak om te zoeken naar alle metrische gegevens voor alle beschik bare gegevens voor alle HDInsight-clusters die zijn geconfigureerd voor het gebruik van Azure Monitor logboeken en selecteer vervolgens **uitvoeren**.
 
         search *
 
-    ![Alle metrische gegevens zoeken](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "Alle metrische gegevens zoeken")
+    ![Apache Ambari Analytics alle metrische gegevens doorzoeken](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "Alle metrische gegevens zoeken")
 
     De uitvoer ziet er als volgt uit:
 
-    ![Zoeken in alle metrische gegevens uitvoer](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics-output.png "Zoeken in alle metrische gegevens uitvoer")
+    ![log Analytics doorzoeken alle metrische gegevens](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics-output.png "Zoeken in alle metrische gegevens uitvoer")
 
-5. Selecteer in het linkerdeel venster onder **type**de waarde die u wilt dieper in en selecteer vervolgens **Toep assen**. Op de volgende scherm afbeelding `metrics_resourcemanager_queue_root_default_CL` ziet u het type geselecteerd.
+1. Selecteer in het linkerdeel venster onder **type**de waarde die u wilt dieper in en selecteer vervolgens **Toep assen**. Op de volgende scherm afbeelding `metrics_resourcemanager_queue_root_default_CL` ziet u het type geselecteerd.
 
     > [!NOTE]  
     > Mogelijk moet u de knop **[+] meer** selecteren om de metrische gegevens te vinden die u zoekt. De knop **Toep assen** bevindt zich ook onder aan de lijst, dus u moet omlaag schuiven om deze weer te geven.
 
     U ziet dat de query in het tekstvak verandert in een van de weer gegeven in het gemarkeerde vak in de volgende scherm afbeelding:
 
-    ![Specifieke metrische gegevens zoeken](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Specifieke metrische gegevens zoeken")
+    ![log Analytics-specifieke metrische gegevens zoeken](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Specifieke metrische gegevens zoeken")
 
-6. Om te dieper in deze specifieke metriek. U kunt bijvoorbeeld de bestaande uitvoer verfijnen op basis van het gemiddelde van de resources die worden gebruikt in een interval van 10 minuten, gecategoriseerd op cluster naam met behulp van de volgende query:
+1. Om te dieper in deze specifieke metriek. U kunt bijvoorbeeld de bestaande uitvoer verfijnen op basis van het gemiddelde van de resources die worden gebruikt in een interval van 10 minuten, gecategoriseerd op cluster naam met behulp van de volgende query:
 
         search in (metrics_resourcemanager_queue_root_default_CL) * | summarize AggregatedValue = avg(UsedAMResourceMB_d) by ClusterName_s, bin(TimeGenerated, 10m)
 
-7. In plaats van te verfijnen op basis van het gemiddelde van gebruikte resources, kunt u de volgende query gebruiken om de resultaten te verfijnen op basis van de gebruikte maximum bronnen (evenals negen tigste en 95e percentiel) in een venster van 10 minuten:
+1. In plaats van te verfijnen op basis van het gemiddelde van gebruikte resources, kunt u de volgende query gebruiken om de resultaten te verfijnen op basis van de gebruikte maximum bronnen (evenals negen tigste en 95e percentiel) in een venster van 10 minuten:
 
         search in (metrics_resourcemanager_queue_root_default_CL) * | summarize ["max(UsedAMResourceMB_d)"] = max(UsedAMResourceMB_d), ["pct95(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 95), ["pct90(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 90) by ClusterName_s, bin(TimeGenerated, 10m)
 
@@ -68,15 +68,16 @@ Meer informatie over het opzoeken van fout berichten tijdens een bepaald tijd ve
 
 1. Open de Log Analytics-werk ruimte die is gekoppeld aan uw HDInsight-cluster via de Azure Portal.
 2. Selecteer de tegel **Zoeken in Logboeken** .
-3. Typ de volgende query om te zoeken naar alle fout berichten voor alle HDInsight-clusters die zijn geconfigureerd voor het gebruik van Azure Monitor logboeken en selecteer vervolgens **uitvoeren**. 
+3. Typ de volgende query om te zoeken naar alle fout berichten voor alle HDInsight-clusters die zijn geconfigureerd voor het gebruik van Azure Monitor logboeken en selecteer vervolgens **uitvoeren**.
 
          search "Error"
 
     U ziet een uitvoer zoals de volgende uitvoer:
 
-    ![Uitvoer van alle fouten zoeken](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-errors-output.png "Uitvoer van alle fouten zoeken")
+    ![Azure Portal fouten in logboek zoeken](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-errors-output.png "Uitvoer van alle fouten zoeken")
 
 4. Selecteer in het linkerdeel venster onder **type** -categorie een fout type dat u wilt dieper in en selecteer vervolgens **Toep assen**.  U ziet dat de resultaten worden verfijnd om alleen de fout van het geselecteerde type weer te geven.
+
 5. U kunt met behulp van de beschik bare opties in het linkerdeel venster dieper in deze specifieke fout lijst gaan. Bijvoorbeeld:
 
     - Fout berichten van een specifiek worker-knoop punt weer geven:

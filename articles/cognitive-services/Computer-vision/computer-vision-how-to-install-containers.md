@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: cbf199c391b49518bb595d7d1a0ed47147903a85
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: d3a36615109383074833e9af634eb611fb863339
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034496"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103656"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Tekst herkennen containers installeren en uitvoeren
 
@@ -36,6 +36,8 @@ U moet voldoen aan de volgende vereisten voordat u Tekst herkennen containers ge
 |Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)en [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Zie voor een uitleg van de basisprincipes van Docker en containers, de [dockeroverzicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker moet worden geconfigureerd, zodat de containers om te verbinden met en facturering gegevens verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
 |Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker` opdrachten.| 
 |Computer Vision resource |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure **Computer Vision** -resource en de bijbehorende API-sleutel de EINDPUNT-URI. Beide waarden zijn beschikbaar op de pagina overzicht en sleutels voor de resource en zijn vereist om de container te starten.<br><br>**{API_KEY}** : Een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}** : Het eind punt op de pagina **overzicht**|
+
+[!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="request-access-to-the-private-container-registry"></a>Aanvraag voor toegang tot de privécontainerregister
 
@@ -77,16 +79,9 @@ Wanneer de container zich op de [hostcomputer](#the-host-computer)bevindt, gebru
 
 ## <a name="run-the-container-with-docker-run"></a>Voer de container uit met`docker run`
 
-Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. De opdracht maakt gebruik van de volgende para meters:
+Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. Raadpleeg de [vereiste para meters verzamelen](#gathering-required-parameters) voor meer informatie over het `{ENDPOINT_URI}` ophalen `{API_KEY}` van de waarden en.
 
-| Tijdelijke aanduiding | Value |
-|-------------|-------|
-|{API_KEY} | Deze sleutel wordt gebruikt om de container te starten en is beschikbaar op de pagina `Cognitive Services` met Azure-sleutels.  |
-|{ENDPOINT_URI} | De URI-waarde van het facturerings eindpunt. Voor beeld:`https://westus.api.cognitive.microsoft.com/vision/v2.0`|
-
-U moet de `vision/v2.0` route ring toevoegen aan de eindpunt-URI, zoals wordt weer gegeven in het volgende BILLING_ENDPOINT_URI-voor beeld.
-
-Vervang deze para meters door uw eigen waarden in de `docker run` volgende voorbeeld opdracht.
+[Voor beelden](computer-vision-resource-container-config.md#example-docker-run-commands) van `docker run` de opdracht zijn beschikbaar.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \

@@ -1,7 +1,7 @@
 ---
-title: 'Voorbeeld: de Analyze image-API aanroepen - Computer Vision'
+title: De Computer Vision-API aanroepen
 titleSuffix: Azure Cognitive Services
-description: Lees hoe u de Computer Vision-API aanroept met behulp van REST in Azure Cognitive Services.
+description: Meer informatie over het aanroepen van de Computer Vision-API met behulp van de REST API in azure Cognitive Services.
 services: cognitive-services
 author: KellyDF
 manager: nitinme
@@ -11,53 +11,61 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 386503a7089c910b52a87cca8d9f2f2203ae0cad
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 417ff7ac345b9a83b3d3f4c50e9fd141d74bc99c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859065"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103550"
 ---
-# <a name="example-how-to-call-the-computer-vision-api"></a>Voorbeeld: de Computer Vision-API aanroepen
+# <a name="call-the-computer-vision-api"></a>De Computer Vision-API aanroepen
 
-In deze handleiding ziet u hoe u de Computer Vision-API aanroept met behulp van REST. De voorbeelden zijn zowel in C# geschreven met behulp van de clientbibliotheek van de Computer Vision-API als in HTTP POST/GET-aanroepen. We richten ons op:
+In dit artikel wordt beschreven hoe u de Computer Vision-API aanroept met behulp van de REST API. De voor beelden worden geschreven in C# met behulp van de computer vision-API-client bibliotheek en als http post of Get-aanroepen. Het artikel is gericht op:
 
-- Instructies voor het ophalen van Tags, Beschrijving en Categorieën.
-- Domeinspecifieke informatie ophalen (beroemdheden).
+- Tags, een beschrijving en categorieën ophalen
+- Domein-specifieke informatie of ' beroemdheden ' ophalen
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Afbeeldings-URL of pad naar een lokaal opgeslagen afbeelding.
-- Ondersteunde invoermethoden: Onbewerkte binaire gegevens van een afbeelding in de vorm van een toepassings-/octetstream- of afbeeldings-URL.
-- Ondersteunde afbeeldingsindelingen: JPEG, PNG, GIF, BMP
-- Grootte van het afbeeldingsbestand: Minder dan 4 MB
-- Afbeeldingsgrootte: Groter dan 50 x 50 pixels
+- Een afbeeldings-URL of een pad naar een lokaal opgeslagen afbeelding
+- Ondersteunde invoer methoden: een onbewerkte binaire afbeelding in de vorm van een toepassing/octet-stream of een afbeeldings-URL
+- Ondersteunde indelingen voor afbeeldings bestanden: JPEG, PNG, GIF en BMP
+- Grootte van het afbeeldingsbestand: 4 MB of minder
+- Afbeeldings afmetingen: 50 &times; 50 pixels of meer
   
-In de onderstaande voorbeelden worden de volgende functies getoond:
+In de voor beelden in dit artikel worden de volgende functies gedemonstreerd:
 
-1. Het analyseren van een afbeelding en het ophalen van een matrix van tags en een geretourneerde beschrijving.
-2. Het analyseren van een afbeelding met een domeinspecifiek model (met name het 'beroemdhedenmodel') en het verkrijgen van het bijbehorende resultaat in JSON retune.
+* Een afbeelding analyseren om een matrix met tags en een beschrijving te retour neren
+* Het analyseren van een installatie kopie met een specifiek domein model (met name het ' beroemdheden-model) om het overeenkomstige resultaat in JSON te retour neren
 
-Functies worden onderverdeeld op:
+De functies bieden de volgende opties:
 
-- **Optie 1:** Gerichte analyse: alleen een gegeven model analyseren
-- **Optie 2:** Uitgebreide analyse: een analyse uitvoeren om meer informatie te geven met [86-categorietaxonomie](../Category-Taxonomy.md)
+- **Optie 1**: Bereik analyse: alleen een opgegeven model analyseren
+- **Optie 2**: Verbeterde analyse-analyseren om aanvullende details te bieden met behulp van de [86-categorie taxonomie](../Category-Taxonomy.md)
   
 ## <a name="authorize-the-api-call"></a>De API-aanroep autoriseren
 
-Voor elke aanroep naar de Computer Vision-API is een abonnementssleutel vereist. Deze sleutel moet worden doorgegeven via een tekenreeksparameter of zijn opgegeven in de aanvraagheader.
+Voor elke aanroep naar de Computer Vision-API is een abonnementssleutel vereist. Deze sleutel moet worden door gegeven via een query reeks parameter of worden opgegeven in de aanvraag header.
 
-U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen.
+Ga op een van de volgende manieren te werk om een gratis proef versie te verkrijgen:
+* Ga naar de pagina [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) . 
+* Ga naar de pagina [een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision.
 
-1. De abonnementssleutel kan worden doorgegeven via een querytekenreeks. Hieronder ziet u een voorbeeld met de Computer Vision-API:
+U kunt de abonnements sleutel door geven door een van de volgende handelingen uit te voeren:
 
-    ```https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>```
+* Geef het door via een query reeks, zoals in dit Computer Vision-API voor beeld:
 
-1. Het doorgeven van de abonnementssleutel kan ook worden opgegeven in de HTTP-aanvraagheader:
+  ```
+  https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
+  ```
 
-    ```ocp-apim-subscription-key: <Your subscription key>```
+* Geef deze op in de header van de HTTP-aanvraag:
 
-1. Wanneer u de-client bibliotheek gebruikt, wordt de abonnements sleutel door gegeven via de constructor van ComputerVisionClient en wordt de regio opgegeven in een eigenschap van de client:
+  ```
+  ocp-apim-subscription-key: <Your subscription key>
+  ```
+
+* Wanneer u de-client bibliotheek gebruikt, geeft u de sleutel door via de constructor van ComputerVisionClient en geeft u de regio op in een eigenschap van de client:
 
     ```
     var visionClient = new ComputerVisionClient(new ApiKeyServiceClientCredentials("Your subscriptionKey"))
@@ -66,13 +74,13 @@ U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure
     }
     ```
 
-## <a name="upload-an-image-to-the-computer-vision-api-service-and-get-back-tags-descriptions-and-celebrities"></a>Een installatie kopie uploaden naar de Computer Vision-API-service en tags, beschrijvingen en beroemdheden ophalen
+## <a name="upload-an-image-to-the-computer-vision-api-service"></a>Een installatie kopie uploaden naar de Computer Vision-API-service
 
-De eenvoudigste manier om de Computer Vision-API-aanroep uit te voeren is door rechtstreeks een afbeelding te uploaden. Dit wordt gedaan door de aanvraag POST te verzenden met het inhoudstype toepassing/octet-stream in combinatie met de gegevens die uit de afbeelding zijn gelezen. Voor Tags en Beschrijving is dit dezelfde uploadmethode als voor alle Computer Vision-API-aanroepen. Het enige verschil wordt bepaald door de queryparameters die de gebruiker opgeeft. 
+De basis manier om de Computer Vision-API-aanroep uit te voeren, is door een afbeelding rechtstreeks te uploaden naar de labels, een beschrijving en beroemdheden. U doet dit door een ' POST '-aanvraag te verzenden met de binaire installatie kopie in de HTTP-bericht, samen met de gegevens die uit de installatie kopie zijn gelezen. De upload methode is hetzelfde voor alle Computer Vision-API-aanroepen. Het enige verschil is de query parameters die u opgeeft. 
 
-Hier ziet u hoe u Tags en Beschrijving voor een gegeven afbeelding kunt ophalen:
+Voor een opgegeven installatie kopie, tags en een beschrijving ophalen met behulp van een van de volgende opties:
 
-**Optie 1:** Een lijst ophalen met Tags en een lijst met Beschrijving
+### <a name="option-1-get-a-list-of-tags-and-a-description"></a>Optie 1: Een lijst met tags en een beschrijving ophalen
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
@@ -92,16 +100,16 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 }
 ```
 
-**Optie 2:** Een lijst ophalen met alleen Tags, of een lijst met alleen Beschrijving:
+### <a name="option-2-get-a-list-of-tags-only-or-a-description-only"></a>Optie 2: Alleen een lijst met tags of een beschrijving ophalen
 
-###### <a name="tags-only"></a>Alleen Tags:
+Voor alleen Tags voert u de volgende handelingen uit:
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag?subscription-key=<Your subscription key>
 var tagResults = await visionClient.TagImageAsync("http://contoso.com/example.jpg");
 ```
 
-###### <a name="description-only"></a>Alleen beschrijving:
+Voer voor een beschrijving alleen een van de volgende handelingen uit:
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe?subscription-key=<Your subscription key>
@@ -111,9 +119,9 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 }
 ```
 
-### <a name="get-domain-specific-analysis-celebrities"></a>Domein-specifieke analyse ophalen (beroemdheden)
+## <a name="get-domain-specific-analysis-celebrities"></a>Domein-specifieke analyse ophalen (beroemdheden)
 
-**Optie 1:** Gerichte analyse: alleen een gegeven model analyseren
+### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Optie 1: Bereik analyse: alleen een opgegeven model analyseren
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/models/celebrities/analyze
 var celebritiesResult = await visionClient.AnalyzeImageInDomainAsync(url, "celebrities");
@@ -126,17 +134,17 @@ GET https://westus.api.cognitive.microsoft.com/vision/v2.0/models
 var models = await visionClient.ListModelsAsync();
 ```
 
-**Optie 2:** Uitgebreide analyse: een analyse uitvoeren om meer informatie te geven met [86-categorietaxonomie](../Category-Taxonomy.md)
+### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-86-categories-taxonomy"></a>Optie 2: Verbeterde analyse-analyseren om aanvullende details te bieden met behulp van de 86-categorie taxonomie
 
-Voor toepassingen waarbij u een generieke afbeeldingsanalyse wilt ophalen naast details uit één of meer domeinspecifieke modellen, breiden we de v1-API uit met de queryparameter voor modellen.
+Voor toepassingen waarvoor u een generieke installatie kopie wilt maken naast Details van een of meer domein-specifieke modellen, breidt u de V1 API uit met behulp van de query parameter model.
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=celebrities
 ```
 
-Wanneer deze methode is ingetrokken, roepen we eerst de 86-categorieënclassificatie aan. Als een van de categorieën overeenkomt met de categorie van een bekend/overeenkomstig model, treedt een tweede ronde van classificatie-aanroepen op. Als bijvoorbeeld 'details=alle' of 'details' 'beroemdheden' bevat, roepen we het beroemdhedenmodel aan nadat de 86-categorieënclassificatie is aangeroepen en bevat het resultaat de persoon uit deze categorie. Dit verhoogt de latentie voor gebruikers die geïnteresseerd zijn in beroemdheden, ten opzichte van Optie 1.
+Wanneer u deze methode aanroept, roept u eerst de classificatie van de [86-categorie](../Category-Taxonomy.md) aan. Als een van de categorieën overeenkomt met die van een bekend of overeenkomend model, treedt er een tweede doorgifte van classificatie aanroepen op. Als "Details = alle" of "Details" bijvoorbeeld "beroemdheden" bevat, roept u het beroemdheden-model aan nadat u de classificatie van de 86-categorie hebt aangeroepen. Het resultaat is inclusief de categorie persoon. In tegens telling tot optie 1 verhoogt deze methode de latentie voor gebruikers die geïnteresseerd zijn in beroemdheden.
 
-Alle v1-queryparameters gedragen zich in dit geval op dezelfde manier.  Als visualFeatures=categorieën niet is opgegeven, wordt dit impliciet ingeschakeld.
+In dit geval werken alle v1-query parameters op dezelfde manier. Als u geen visualFeatures = categorieën opgeeft, wordt deze impliciet ingeschakeld.
 
 ## <a name="retrieve-and-understand-the-json-output-for-analysis"></a>De JSON-uitvoer voor analyse ophalen en begrijpen
 
@@ -171,19 +179,19 @@ Hier volgt een voorbeeld:
 
 Veld | Type | Inhoud
 ------|------|------|
-Labels  | `object` | Object op het hoogste niveau voor matrix van tags
-tags[].Name | `string`  | Trefwoord uit classificatie van tags
-tags[].Score    | `number`  | Betrouwbaarheidsscore, tussen 0 en 1.
-description  | `object` | Object op het hoogste niveau voor een beschrijving.
-description.tags[] |    `string`    | Een lijst met tags.  Als de mogelijkheid om een bijschrift te produceren niet betrouwbaar genoeg is, zijn de tags mogelijk de enige informatiebron die voor de aanroepende functie beschikbaar is.
+Labels  | `object` | Het object op het hoogste niveau voor een matrix met tags.
+tags[].Name | `string`  | Het sleutel woord van de classificatie Tags.
+tags[].Score    | `number`  | De betrouwbaarheids score tussen 0 en 1.
+description  | `object` | Het object op het hoogste niveau voor een beschrijving.
+description.tags[] |    `string`    | De lijst met tags.  Als er onvoldoende vertrouwen is in de mogelijkheid om een bijschrift te maken, zijn de tags mogelijk de enige informatie die beschikbaar is voor de oproepende functie.
 description.captions[].text | `string`  | Een zin die de afbeelding beschrijft.
-description.captions[].confidence   | `number`  | Vertrouwen voor de zin.
+description.captions[].confidence   | `number`  | De betrouwbaarheids score voor de woord groep.
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>De JSON-uitvoer van domein-specifieke modellen ophalen en begrijpen
 
-**Optie 1:** Gerichte analyse: alleen een gegeven model analyseren
+### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Optie 1: Bereik analyse: alleen een opgegeven model analyseren
 
-De uitvoer is een matrix van tags, zoals in dit voorbeeld:
+De uitvoer is een matrix met tags, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```json
 {  
@@ -200,9 +208,9 @@ De uitvoer is een matrix van tags, zoals in dit voorbeeld:
 }
 ```
 
-**Optie 2:** Uitgebreide analyse: een analyse uitvoeren om meer informatie te geven met 86-categorietaxonomie
+### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-the-86-categories-taxonomy"></a>Optie 2: Verbeterde analyse-analyseren om aanvullende details te bieden met behulp van de ' 86-categorieën ' taxonomie
 
-Voor domeinspecifieke modellen die Optie 2 (Uitgebreide analyse) gebruiken, wordt het retourtype voor categorieën uitgebreid. Neem het volgende voorbeeld:
+Voor domein-specifieke modellen met behulp van optie 2 (verbeterde analyse) is het retour type van de categorie uitgebreid, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```json
 {  
@@ -229,20 +237,20 @@ Voor domeinspecifieke modellen die Optie 2 (Uitgebreide analyse) gebruiken, word
 }
 ```
 
-Het categorieënveld is een lijst met één of meer van de [86-categorieën](../Category-Taxonomy.md) in de oorspronkelijke taxonomie. U ziet ook dat categorieën die op een onderstrepingsteken eindigen, overeenkomen met die categorie en de bijbehorende onderliggende elementen (bijvoorbeeld zowel personen_ als personen_groep, voor het beroemdhedenmodel).
+Het veld Categorieën bevat een lijst met een of meer van de [86-categorieën](../Category-Taxonomy.md) in de oorspronkelijke taxonomie. Categorieën die eindigen op een onderstrepings teken, komen overeen met die categorie en de onderliggende items (bijvoorbeeld ' people_ ' of ' people_group ' voor het beroemdheden-model).
 
 Veld   | Type  | Inhoud
 ------|------|------|
-categories | `object`   | Object op het hoogste niveau
-categories[].name    | `string` | Naam van 86-categorietaxonomie
-categories[].score  | `number`  | Betrouwbaarheidsscore, tussen 0 en 1
-categories[].detail  | `object?`      | Optioneel detailobject
+categories | `object`   | Het object op het hoogste niveau.
+categories[].name    | `string` | De naam in de taxonomie lijst van de 86-categorie.
+categories[].score  | `number`  | De betrouwbaarheids score tussen 0 en 1.
+categories[].detail  | `object?`      | Beschrijving Het detail-object.
 
-Let op: als meerdere categorieën overeenkomen (de 86-categorieënclassificatie retourneert bijvoorbeeld een score voor zowel personen_ als personen_jong wanneer model=beroemdheden), worden de details gekoppeld aan de overeenkomst op het meest algemene niveau (in dit voorbeeld personen_).
+Als er meerdere categorieën overeenkomen (bijvoorbeeld: de classificatie van de 86-categorie retourneert een score voor zowel ' people_ ' als ' people_young ' wanneer model = beroemdheden), worden de details bijgevoegd bij de meest algemene level overeenkomst ("people_" in dat voor beeld).
 
-## <a name="errors-responses"></a>Antwoorden op fouten
+## <a name="error-responses"></a>Fout berichten
 
-Deze zijn hetzelfde als vision.analyze, met de aanvullende NotSupportedModel-fout (HTTP 400), die mogelijk wordt geretourneerd in scenario's voor zowel Optie 1 als Optie 2. Als voor Optie 2 (Uitgebreide analyse) eender welke van de modellen die bij de details zijn opgegeven niet worden herkend, retourneert de API een NotSupportedModel, zelfs als één of meer geldig zijn.  Gebruikers kunnen listModels oproepen om te achterhalen welke modellen worden ondersteund.
+Deze fouten zijn identiek aan die van Vision. Analyseer, met de extra NotSupportedModel-fout (HTTP 400), die mogelijk wordt geretourneerd in de scenario's van de optie 1 en optie 2. Voor optie 2 (verbeterde analyse), als een van de modellen die in de details zijn opgegeven, niet wordt herkend, retourneert de API een NotSupportedModel, zelfs als een of meer van beide zijn geldig. Als u wilt weten welke modellen worden ondersteund, kunt u listModels aanroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

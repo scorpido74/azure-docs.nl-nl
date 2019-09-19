@@ -1,34 +1,34 @@
 ---
-title: Azure Data Factory toewijzing gegevenstransformatie stroom voorwaardelijke splitsen
-description: Azure Data Factory stroom voorwaardelijke Split transformatie
+title: Voorwaardelijke Splits transformatie Azure Data Factory toewijzings gegevens stroom
+description: Voorwaardelijke Splits-trans formatie van gegevens stroom Azure Data Factory
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: f9fd346d4c4eaed0797d564fe52dd44e9f0e240a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd51cc2d5f95598154b76b5da8e3fc9e4801100d
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65795643"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104951"
 ---
-# <a name="mapping-data-flow-conditional-split-transformation"></a>Toewijzing van de gegevensstroom voorwaardelijke transformatie splitsen
+# <a name="mapping-data-flow-conditional-split-transformation"></a>Gegevens stroom toewijzen Conditional Split trans formatie
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![voorwaardelijke splitsen werkset](media/data-flow/conditionalsplit2.png "voorwaardelijke werkset splitsen")
+![werkset Conditional Split](media/data-flow/conditionalsplit2.png "werkset Conditional Split")
 
-De voorwaardelijke Split-transformatie kan rijen met gegevens routeren naar verschillende stromen, afhankelijk van de inhoud van de gegevens. De implementatie van de voorwaardelijke Split-transformatie is vergelijkbaar met de beslissingsstructuur van een CASE in een programmeertaal. De transformatie expressies, evalueert en op basis van de resultaten, zorgt ervoor dat de rij met gegevens naar de opgegeven stroom. Deze transformatie biedt ook een standaarduitvoer, zodat als een rij geen expressie overeenkomt met deze wordt omgeleid naar de standaarduitvoer.
+De voorwaardelijke Splits transformatie kan gegevens rijen naar verschillende stromen routeren, afhankelijk van de inhoud van de gegevens. De implementatie van de voorwaardelijke Splits transformatie is vergelijkbaar met een beslissings structuur voor de situatie in een programmeer taal. De trans formatie evalueert expressies en op basis van de resultaten, stuurt de gegevensrij door naar de opgegeven stroom. Deze trans formatie biedt ook een standaard uitvoer, zodat als een rij overeenkomt met geen expressie, deze wordt omgeleid naar de standaard uitvoer.
 
-![voorwaardelijke split](media/data-flow/conditionalsplit1.png "voorwaardelijke opties voor splitsen")
+![Conditional Split](media/data-flow/conditionalsplit1.png "Conditional Split opties")
 
 ## <a name="multiple-paths"></a>Meerdere paden
 
-Aanvullende voorwaarden toevoegen, selecteert u 'Stream toevoegen' in het onderste deelvenster voor configuratie en klikt u op in het tekstvak opbouwfunctie voor expressies om te maken van de expressie.
+Als u aanvullende voor waarden wilt toevoegen, selecteert u ' stream toevoegen ' in het onderste configuratie venster en klikt u in het tekstvak opbouw functie voor expressies om uw expressie te bouwen.
 
-![voorwaardelijke splitsen multi](media/data-flow/conditionalsplit3.png "voorwaardelijke multi splitsen")
+![Conditional Split multi](media/data-flow/conditionalsplit3.png "Conditional Split multi")
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Algemene stroom gegevenstransformaties gebruikt met voorwaardelijke splitsen: [Deelnemen aan de transformatie](data-flow-join.md), [Loopup transformatie](data-flow-lookup.md), [transformatie selecteren](data-flow-select.md)
+Gemeen schappelijke gegevensstroom transformaties die worden gebruikt met Conditional Split: [Deelname aan trans formatie](data-flow-join.md), [opzoek transformatie](data-flow-lookup.md), [Selecteer trans formatie](data-flow-select.md)

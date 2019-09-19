@@ -1,21 +1,21 @@
 ---
-title: 'Zelfstudie: toegang verlenen aan een web-API van ASP.NET - Azure Active Directory B2C | Microsoft Docs'
+title: 'Zelf studie: toegang verlenen tot een ASP.NET-Web-API-Azure Active Directory B2C'
 description: Zelfstudie over het gebruik van Active Directory B2C om een ASP.NET web-API te beveiligen en aan te roepen vanuit een ASP.NET-webtoepassing.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 02/04/2019
+ms.date: 09/19/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: ec6b667dfc554c037d9b0a56e52bc8f212812812
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 87d46fad1c0a5494910a8218c4e40994fc140386
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064728"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103402"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Zelfstudie: Toegang verlenen aan een web-API van ASP.NET met behulp van Azure Active Directory B2C
 
@@ -82,20 +82,20 @@ Er bevinden zich twee projecten in de voorbeeldoplossing:
 
 Deze twee projecten bevinden zich in de voorbeeldoplossing:
 
-- **TaskWebApp**: een lijst met taken maken en bewerken. Het voorbeeld gebruikt de gebruikersstroom voor **registratie of aanmelding** om gebruikers te registreren of aan te melden.
-- **TaskService**: biedt ondersteuning voor het maken, lezen, bijwerken en verwijderen van takenlijstfunctionaliteit. De API wordt beveiligd door Azure AD B2C en wordt aangeroepen door TaskWebApp.
+* **TaskWebApp**: een lijst met taken maken en bewerken. Het voorbeeld gebruikt de gebruikersstroom voor **registratie of aanmelding** om gebruikers te registreren of aan te melden.
+* **TaskService**: biedt ondersteuning voor het maken, lezen, bijwerken en verwijderen van takenlijstfunctionaliteit. De API wordt beveiligd door Azure AD B2C en wordt aangeroepen door TaskWebApp.
 
 ### <a name="configure-the-web-application"></a>De web-app configureren
 
 1. Open de oplossing **B2C-WebAPI-DotNet** in Visual Studio.
-2. Open **Web.config** in het project **TaskWebApp**.
-3. Als u de API lokaal wilt uitvoeren, moet u de localhost-instelling gebruiken voor **api:TaskServiceUrl**. Ga als volgt te werk om Web.config te wijzigen:
+1. Open **Web. config**in het project **project taskwebapp** .
+1. Als u de API lokaal wilt uitvoeren, moet u de localhost-instelling gebruiken voor **api:TaskServiceUrl**. Ga als volgt te werk om Web.config te wijzigen:
 
     ```csharp
     <add key="api:TaskServiceUrl" value="https://localhost:44332/"/>
     ```
 
-3. Configureer de URI van de API. Dit is de URI die de web-app gebruikt om de API-aanvraag te maken. Configureer ook de machtigingen die zijn aangevraagd.
+1. Configureer de URI van de API. Dit is de URI die de web-app gebruikt om de API-aanvraag te maken. Configureer ook de machtigingen die zijn aangevraagd.
 
     ```csharp
     <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/api/" />
@@ -105,26 +105,27 @@ Deze twee projecten bevinden zich in de voorbeeldoplossing:
 
 ### <a name="configure-the-web-api"></a>De web-API configureren
 
-1. Open **Web.config** in het project **TaskService**.
-2. Configureer de API om uw tenant te gebruiken.
+1. Open **Web. config**in het project **TaskService** .
+1. Configureer de API om uw tenant te gebruiken.
 
     ```csharp
+    <add key="ida:AadInstance" value="https://<Your tenant name>.b2clogin.com/{0}/{1}/v2.0/.well-known/openid-configuration" />
     <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
     ```
 
-3. Stel de client-id in op de geregistreerde toepassings-id voor uw API.
+1. Stel de client-ID in op de toepassings-ID van uw geregistreerde Web-API-toepassing, *webapi1*.
 
     ```csharp
     <add key="ida:ClientId" value="<application-ID>"/>
     ```
 
-4. Werk de instelling voor de gebruikersstroom bij met de naam van de gebruikersstroom voor registratie en aanmelding.
+1. Werk de gebruikers stroom instelling bij met de naam van uw registratie-en aanmeldings gebruikers stroom, *B2C_1_signupsignin1*.
 
     ```csharp
-    <add key="ida:SignUpSignInUserFlowId" value="B2C_1_signupsignin1" />
+    <add key="ida:SignUpSignInPolicyId" value="B2C_1_signupsignin1" />
     ```
 
-5. Configureer de bereikinstellingen zodat deze overeenkomen met wat u in de portal hebt gemaakt.
+1. Configureer de instellingen voor bereiken zodat deze overeenkomen met de scopes die u in de portal hebt gemaakt.
 
     ```csharp
     <add key="api:ReadScope" value="Hello.Read" />
@@ -136,16 +137,17 @@ Deze twee projecten bevinden zich in de voorbeeldoplossing:
 U moet zowel project **TaskWebApp** als **TaskService** uitvoeren.
 
 1. Klik in Solution Explorer met de rechtermuisknop op de oplossing en selecteer vervolgens **Opstartprojecten instellen...** .
-2. Selecteer **Meerdere opstartprojecten**.
-3. Wijzig de **actie** voor beide projecten in **Start**.
-4. Klik op **OK** om de configuratie op te slaan.
-5. Druk op **F5** om beide toepassingen uit te voeren. Elke toepassing wordt geopend in zijn eigen browsertabblad. `https://localhost:44316/` is de webtoepassing.
-    `https://localhost:44332/` is de web-API.
+1. Selecteer **Meerdere opstartprojecten**.
+1. Wijzig de **actie** voor beide projecten in **Start**.
+1. Klik op **OK** om de configuratie op te slaan.
+1. Druk op **F5** om beide toepassingen uit te voeren. Elke toepassing wordt in een eigen browser venster geopend.
+    * `https://localhost:44316/`is de webtoepassing.
+    * `https://localhost:44332/` is de web-API.
 
-6. Klik in de webtoepassing op **Registreren / aanmelden** om bij de webtoepassing aan te melden. Gebruik het account dat u eerder hebt gemaakt.
-7. Nadat u bent aangemeld, klikt u op de link **Takenlijst** en maakt u een takenlijstitem.
+1. Selecteer in de webtoepassing **Aanmelden/aanmelden** om u aan te melden bij de webtoepassing. Gebruik het account dat u eerder hebt gemaakt.
+1. Nadat u zich hebt aangemeld, selecteert **u taken lijst** en maakt u een taken lijst item.
 
-Als u een takenlijstitem maakt, verzendt de webtoepassing een aanvraag naar de web-API om het takenlijstitem te maken. Uw beveiligde webtoepassing roept de beveiligde web-API in uw Azure AD B2C-tenant aan.
+Als u een takenlijstitem maakt, verzendt de webtoepassing een aanvraag naar de web-API om het takenlijstitem te maken. Uw beveiligde webtoepassing roept de Web-API aan die wordt beveiligd door Azure AD B2C.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: mlearned
-ms.openlocfilehash: 5dabbb6458d0d0d4af51490bea0c3f38a7c5c41d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 26f1544cab5cf5be2edd52f97c758d46eb835514
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542905"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103794"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory integreren met de Azure Kubernetes-service
 
@@ -39,7 +39,7 @@ Zie [toegang tot webtoepassingen toestaan met OpenID Connect Connect en Azure AD
 
 In een Kubernetes-cluster wordt webhook-token verificatie gebruikt om tokens te authenticeren. Webhook-token verificatie wordt geconfigureerd en beheerd als onderdeel van het AKS-cluster.
 
-Zie de sectie webhook- [token verificatie][kubernetes-webhook] in de Kubernetes-documentatie voor meer informatie over de verificatie van webhook-tokens.
+Zie de sectie [webhook-token verificatie][kubernetes-webhook] in de Kubernetes-documentatie voor meer informatie over de verificatie van webhook-tokens.
 
 Als u Azure AD-verificatie voor een AKS-cluster wilt bieden, worden er twee Azure AD-toepassingen gemaakt. De eerste toepassing is een server onderdeel dat gebruikers verificatie biedt. De tweede toepassing is een client onderdeel dat wordt gebruikt wanneer u wordt gevraagd om de CLI voor verificatie. Deze client toepassing maakt gebruik van de server toepassing voor de daad werkelijke verificatie van de referenties die door de client worden verschaft.
 
@@ -60,7 +60,7 @@ De eerste Azure AD-toepassing wordt toegepast om het lidmaatschap van de Azure A
 
     d. Selecteer **registreren** wanneer u klaar bent.
 
-2. Selecteer **manifest**en bewerk vervolgens de waarde **groupMembershipClaims:** . Wanneer u klaar bent met de updates, selecteert u **Opslaan**.
+2. Selecteer **manifest**en bewerk vervolgens de waarde **groupMembershipClaims:** **.** Wanneer u klaar bent met de updates, selecteert u **Opslaan**.
 
     ![Groepslid maatschap bijwerken](media/aad-integration/edit-manifest.png)
 
@@ -86,7 +86,7 @@ De eerste Azure AD-toepassing wordt toegepast om het lidmaatschap van de Azure A
 
     e. Selecteer **machtigingen toevoegen** om de updates op te slaan.
 
-    f. Onder **toestemming geven**, selecteert u **toestemming geven aan beheerder**. Deze knop is niet beschikbaar als het huidige account geen Tenant beheerder is.
+    f. Onder **toestemming geven**, selecteert u **toestemming geven aan beheerder**. Deze knop is niet beschikbaar het huidige account dat wordt gebruikt, wordt niet vermeld als een Tenant beheerder.
 
     Als de machtigingen zijn verleend, wordt de volgende melding weer gegeven in de portal:
 

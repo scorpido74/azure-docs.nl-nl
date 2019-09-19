@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 413df402d5acc878130a47821efd5fa3a512257d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 9b74491c76747bd635547f6f22964fe792dbf01a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931940"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104091"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Basislijn beleid: Verouderde verificatie blok keren (preview-versie)
 
@@ -106,11 +106,11 @@ Beleid voor **beleids basislijn: Verouderde Authenticatie blok** keren (preview)
 
 Om dit beleid in te scha kelen en uw organisatie te beschermen:
 
-1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
+1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
 1. Blader naar **Azure Active Directory** > **voorwaardelijke toegang**.
 1. Selecteer **basislijn beleid in de lijst met beleids regels: Verouderde verificatie (preview**-versie) blok keren.
 1. Stel **beleid inschakelen** om **beleid direct te gebruiken**in.
-1. Klik op **Opslaan**.
+1. Klik op **Opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

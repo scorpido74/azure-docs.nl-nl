@@ -1,20 +1,20 @@
 ---
 title: Hoge Beschik baarheid voor Hadoop-Azure HDInsight
 description: Meer informatie over hoe HDInsight-clusters de betrouw baarheid en beschik baarheid verbeteren met behulp van een extra hoofd knooppunt. Lees hoe dit van invloed is op Hadoop-services zoals Ambari en Hive, en hoe u afzonderlijk verbinding maakt met elk hoofd knooppunt met behulp van SSH.
-ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 keywords: Hadoop hoge Beschik baarheid
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1bfc17d343f6e788d22cd158fcb849c5895b019f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 615b1e4c5684084b6c5f88d26293b993c1efbf1f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879771"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104413"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Beschik baarheid en betrouw baarheid van Apache Hadoop clusters in HDInsight
 
@@ -106,13 +106,13 @@ De Ambari-webgebruikersinterface is zichtbaar `https://CLUSTERNAME.azurehdinsigh
 
 Wanneer u op de pagina Ambari, worden de geïnstalleerde services weer gegeven aan de linkerkant van de pagina.
 
-![Geïnstalleerde services](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
+![Geïnstalleerde Apache Ambari-Services](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
 
 Er kan een reeks pictogrammen naast een service worden weer gegeven om de status aan te geven. U kunt waarschuwingen met betrekking tot een service weer geven met behulp van de koppeling **waarschuwingen** boven aan de pagina.  Ambari biedt verschillende vooraf gedefinieerde waarschuwingen.
 
 De volgende waarschuwingen helpen bij het bewaken van de beschik baarheid van een cluster:
 
-| Naam van waarschuwing                               | Description                                                                                                                                                                                  |
+| Naam van de waarschuwing                               | Description                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Status van metrische monitor                    | Deze waarschuwing geeft de status van het bewakings proces voor metrische gegevens aan, zoals bepaald door het controle status script.                                                                                   |
 | Heartbeat van de Ambari-agent                   | Deze waarschuwing wordt geactiveerd als de server contact met een agent heeft verloren.                                                                                                                        |
@@ -155,11 +155,11 @@ U kunt elke service selecteren om meer informatie weer te geven.
 
 De service pagina bevat informatie over de status en configuratie van elke service, maar biedt geen informatie over het hoofd knooppunt waarop de service wordt uitgevoerd. Als u deze informatie wilt weer geven, gebruikt u de koppeling **hosts** boven aan de pagina. Op deze pagina worden de hosts in het cluster weer gegeven, met inbegrip van de hoofd knooppunten.
 
-![lijst hosts](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
+![Ambari hoofd knooppunt hosts-lijst](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
 
 Als u de koppeling selecteert voor een van de hoofd knooppunten, worden de services en onderdelen weer gegeven die op dat knoop punt worden uitgevoerd.
 
-![Onderdeel status](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
+![Status van Apache Ambari-onderdeel](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
 
 Zie [HDInsight bewaken en beheren met behulp van de Apache Ambari-webgebruikersinterface](hdinsight-hadoop-manage-ambari.md)voor meer informatie over het gebruik van Ambari.
 

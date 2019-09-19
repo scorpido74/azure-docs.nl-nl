@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c07a978004ee8d2e25772f0d393529cbb509380a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d0ac86dcdb698c554c40325d6a20d6d27de908f8
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967231"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104389"
 ---
 # <a name="tutorial-integrate-apptio-with-azure-active-directory"></a>Zelfstudie: Apptio integreren met Azure Active Directory
 
@@ -85,7 +85,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     Typ in het tekstvak **Id** deze waarde: `urn:federation:apptio`
 
-5. De Apptio-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster Gebruikerskenmerken te openen.
+5. De Apptio-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster gebruikerskenmerken te openen.
 
     ![image](common/edit-attribute.png)
 
@@ -156,7 +156,7 @@ Als u eenmalige aanmelding aan de zijde van **Apptio** wilt configureren, moet u
 
 ### <a name="create-apptio-test-user"></a>Testgebruiker voor Apptio maken
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in Apptio. Werken met het  [ondersteuningsteam van Apptio](https://www.apptio.com/about/contact) om de gebruikers aan het Apptio-platform toe te voegen. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
+In deze sectie maakt u een gebruiker met de naam B. Simon in Apptio. Werk samen met [Apptio-ondersteunings team](https://www.apptio.com/about/contact) om de gebruikers toe te voegen in het Apptio-platform. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
 
 ## <a name="test-sso"></a>SSO testen 
 

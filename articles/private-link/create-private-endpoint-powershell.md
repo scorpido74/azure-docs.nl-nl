@@ -1,18 +1,18 @@
 ---
 title: Een persoonlijk Azure-eind punt maken met behulp van Azure PowerShell | Microsoft Docs
 description: Meer informatie over persoonlijke Azure-koppelingen
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: ca3fec3dbb4fbe77a1d375c0329275b7b799d06b
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 5aa9201e969d9224527d0deea333dc61bda8e444
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067841"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104771"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Een persoonlijk eind punt maken met Azure PowerShell
 Een persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hiermee kunnen Azure-resources, zoals Virtual Machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. 

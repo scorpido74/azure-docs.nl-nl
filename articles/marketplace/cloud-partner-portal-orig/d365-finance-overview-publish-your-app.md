@@ -1,47 +1,23 @@
 ---
-title: Breng uw Microsoft Dynamics 365 Business Central-app naar Microsoft AppSource
-description: Overzicht van de publicatie van een Dynamics 365 Business Central-app naar Microsoft AppSource.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Breng uw micro soft Dynamics 365 Business Central-app over in Microsoft AppSource
+description: Afgeschaft artikel, gegeven koppelingen naar PC-artikelen; was ' overzicht van het publiceren van een Dynamics 365 Business Central-app op Microsoft AppSource. '
+services: Azure, Marketplace, Cloud Partner Portal
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 09/18/2019
 ms.author: pabutler
-ms.openlocfilehash: 062a16d02f26e3f2f6eb815432bed024d5e3746e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aad59ab0ebcf545c7b688843bbdb4f8c02040e4a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935017"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105085"
 ---
-# <a name="bring-your-microsoft-dynamics-365-business-central-app-into-microsoft-appsource"></a>Breng uw Microsoft Dynamics 365 Business Central-app naar Microsoft AppSource
+# <a name="bring-your-microsoft-dynamics-365-business-central-app-into-microsoft-appsource"></a>Breng uw micro soft Dynamics 365 Business Central-app over in Microsoft AppSource
 
-Er zijn tal van voordelen van het gebruik van Dynamics 365 Business Central als een platform voor builders van toepassing:
-
--   Verrijk Dynamics 365 Business Central, een bewezen Microsoft online-oplossing, met uw ervaring.
--   Maak gebruik van de Dynamics 365-huisstijl een merk dat miljoenen gebruikers kent en vertrouwt.
--   Bereik meer klanten voor uw zakelijke apps met Microsoft AppSource.
--   Meer bereiken van een platform dat voorziet in een moderne ervaring en schaal biedt.
--   Bundel met intelligente zakelijke apps zoals Microsoft PowerApps, Microsoft Flow, Power BI, Cortana Intelligence en nog veel meer.
-
-Om uw Business Central-app in Microsoft AppSource:
-
-1.  Maak uw accounts.
-2.  Neem contact op met ons over uw idee app.
-    - De technische aspecten van uw app ontwikkelen
-    - De marketing aspecten van uw app ontwikkelen
-4.  *Publiceer uw app.*
-
-
-## <a name="application-process-and-timeline"></a>Toepassing procedure en tijdlijn
-
-De typische toepassing procedure en tijdlijn wordt weergegeven in het volgende diagram: 
-
-![Takenreeks voor een Dynamics 365 Business Central-app publiceren](./media/d365-financials/image001.png)
-
+De [Cloud Partner-Portal](https://cloudpartner.azure.com/) biedt geen ondersteuning meer voor het maken en beheren van Dynamics 365 Business Central-aanbiedingen. Deze functionaliteit is in plaats daarvan verplaatst naar de portal van micro soft [Partner Center](https://partner.microsoft.com/). Zie [een nieuwe aanbieding voor Dynamics 365 Business Central maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over dit toepassingstype, [aankondiging van Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central/finance-and-operations-business-edition-to-business-central/).  Als u hebt nog niet gedaan, Bekijk ook de [Office 365, Dynamics 365, PowerApps en Power BI bieden Publicatiehandleiding voor](../appsource-offer-publishing-guide.md)
-
-Na deze voorbereidingen, kunt u een nieuwe [aanbieding voor Microsoft Dynamics 365 Business Central](./d365-finance-create-new-offer.md).
+Voordat u een nieuwe aanbieding voor Dynamics 365 Business Central maakt, moet u [een partner centrum-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lezen en vervolgens het [dash board voor commerciële Marketplace](https://partner.microsoft.com/dashboard/directory) openen met de geselecteerde **overzichts** pagina. Volg de instructies in [een nieuwe Dynamics 365 Business Central-aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer) om uw aanbieding te maken.

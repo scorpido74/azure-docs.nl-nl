@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: aabcf7ac6c7bf14264178831bb3e4f6670d29984
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: dad796c8a7a34a782a4f78260ac38bd966eddde9
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960921"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105400"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-clusters schalen
 
@@ -37,7 +37,7 @@ Micro soft biedt de volgende hulpprogram ma's om clusters te schalen:
 |[Azure-CLI](hdinsight-administer-use-command-line.md)|Azure hdinsight-cluster \<grootte van cluster \<naam > aantal doel instanties > |
 |[Azure-portal](https://portal.azure.com)|Open het deel venster HDInsight-cluster, selecteer **cluster grootte** in het menu aan de linkerkant en typ in het deel venster cluster grootte het aantal worker-knoop punten en selecteer Opslaan.|  
 
-![Cluster schalen](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
+![Optie voor Azure Portal schaal cluster](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
 
 Met een van deze methoden kunt u uw HDInsight-cluster binnen enkele minuten omhoog of omlaag schalen.
 
@@ -112,7 +112,7 @@ Als u een lijst met in behandeling zijnde en actieve taken wilt weer geven, kunt
 3. Selecteer in de Ambari-gebruikers interface de optie **garens** in de lijst met Services in het menu aan de linkerkant.  
 4. Selecteer op de pagina GARENs de optie **snelle koppelingen** en beweeg de muis aanwijzer over het actieve hoofd knooppunt en selecteer vervolgens de **gebruikers interface van de Resource Manager**.
 
-    ![UI-gebruikers interface](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
+    ![Gebruikers interface voor Apache Ambari Quick links Resource Manager](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
 U hebt rechtstreeks toegang tot de Resource Manager `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`-gebruikers interface met.
 

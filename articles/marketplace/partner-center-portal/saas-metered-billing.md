@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 3fa485c9fb2835b8270cb35fc75b57251476005f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a244e4f7ac406fecd4c053b39a5e9a9cb6ecab2c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141779"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105502"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Facturering met data limieten met behulp van Marketplace-meet service
 
@@ -55,7 +55,7 @@ Contoso is bijvoorbeeld een uitgever met een SaaS-service met de naam contoso No
     * Na de 50000 e-mails betaalt u $0,5 voor elke 100 e-mail berichten
     * Na de 10000 teksten betaalt u voor elke tekst een bedrag van $0,01
 
-Een Azure-klant die zich abonneert op de CNS-service, kan het inbegrepen aantal tekst en e-mails per maand verzenden op basis van het geselecteerde plan.  Wanneer klanten meer dan het inbegrepen aantal verbruiken, hoeven ze geen plannen te wijzigen of iets anders te doen.  Contoso meet de overschrijding buiten het inbegrepen aantal en start het verzenden van gebruiks gebeurtenissen naar micro soft voor extra gebruik met de [Marketplace meter Service-API](./marketplace-metering-service-apis.md).  Micro soft brengt de klant in rekening voor het aanvullende gebruik zoals opgegeven door de uitgever.
+Een Azure-klant die zich abonneert op de CNS-service, kan het inbegrepen aantal tekst en e-mails per maand verzenden op basis van het geselecteerde plan.  Contoso meet het gebruik tot het inbegrepen aantal zonder gebruik van gebeurtenissen naar micro soft te verzenden.  Wanneer klanten meer dan het inbegrepen aantal verbruiken, hoeven ze geen plannen te wijzigen of iets anders te doen.  Contoso meet de overschrijding buiten het inbegrepen aantal en start het verzenden van gebruiks gebeurtenissen naar micro soft voor extra gebruik met de [Marketplace meter Service-API](./marketplace-metering-service-apis.md).  Micro soft brengt de klant in rekening voor het aanvullende gebruik zoals opgegeven door de uitgever.
 
 ## <a name="billing-dimensions"></a>Facturerings dimensies
 

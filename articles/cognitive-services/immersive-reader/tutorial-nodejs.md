@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: ea9728ac54ae357925bd666ffecf270172137f77
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e0c85dba22a7c689631a853bc22d58d1cc4093aa
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991048"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104994"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Zelfstudie: Start de Insluitende lezer (Node.js)
 
@@ -85,7 +85,7 @@ Open vervolgens _app. js_ en voeg het volgende toe boven aan het bestand. Hierme
 require('dotenv').config();
 ```
 
-Open het _routes\index.js_ -bestand en de volgende import aan de bovenkant van het bestand:
+Open het _routes\index.js_ -bestand en voeg de volgende code toe boven aan het bestand:
 
 ```javascript
 var request = require('request');
@@ -126,7 +126,7 @@ Het **getimmersivereadertoken** -API-eind punt moet worden beveiligd achter een 
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>De insluitende lezer starten met voorbeeld inhoud
 
-1. Open _views\layout.Pug_en voeg de volgende code toe onder het `head` label vóór de `body` tag. Met `script` deze tags worden de insluitende [Lezer-SDK](https://github.com/microsoft/immersive-reader-sdk) en jQuery geladen.
+1. Open _views\layout.Pug_en voeg de volgende code toe onder het `head` label vóór de `body` tag. Met `script` deze tags worden de [insluitende lezer-SDK](https://github.com/microsoft/immersive-reader-sdk) en jQuery geladen.
 
     ```pug
     script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.2.js')
@@ -193,7 +193,7 @@ Het **getimmersivereadertoken** -API-eind punt moet worden beveiligd achter een 
     npm start
     ```
 
-4. Open uw browser en ga naar _http://localhost:3000_ . De bovenstaande inhoud wordt weer geven op de pagina. Klik op de knop insluitende **lezer** om de insluitende lezer te starten met de inhoud.
+4. Open uw browser en ga naar _http://localhost:3000_ . De bovenstaande inhoud wordt weer geven op de pagina. Klik op de knop **insluitende lezer** om de insluitende lezer te starten met de inhoud.
 
 ## <a name="specify-the-language-of-your-content"></a>De taal van uw inhoud opgeven
 
@@ -214,7 +214,7 @@ De insluitende lezer biedt ondersteuning voor veel verschillende talen. U kunt d
     });
     ```
 
-3. Ga opnieuw _http://localhost:3000_ naar opnieuw. De Spaanse tekst op de pagina wordt weer gegeven, en wanneer u op insluitende **lezer**klikt, wordt deze ook in de insluitende lezer getoond.
+3. Ga opnieuw _http://localhost:3000_ naar opnieuw. De Spaanse tekst op de pagina wordt weer gegeven, en wanneer u op **insluitende lezer**klikt, wordt deze ook in de insluitende lezer getoond.
 
 ## <a name="specify-the-language-of-the-immersive-reader-interface"></a>De taal van de insluitende Reader-interface opgeven
 
@@ -264,5 +264,5 @@ U kunt wiskundige inhoud in de insluitende lezer toevoegen met behulp van [MathM
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Verken de insluitende [Lezer SDK](https://github.com/microsoft/immersive-reader-sdk) en de referentie voor de insluitende [Lezer SDK](./reference.md)
+* Verken de [insluitende lezer SDK](https://github.com/microsoft/immersive-reader-sdk) en de referentie voor de [insluitende lezer SDK](./reference.md)
 * Code voorbeelden weer geven op [github](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp)

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: dec3cdd63f3e3ff303bfd60ca1ae77a4c4641190
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 122840614aede3ee112f8fd68cf6dabfa91fa225
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961390"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105518"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Een pijplijn voor gegevensanalyse operationeel maken
 
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u uw gegevens pijplijnen kunt operationeel m
 
 In het volgende scenario zijn de invoer gegevens een plat bestand met een batch vlucht gegevens gedurende één maand. Deze vlucht gegevens omvatten informatie zoals de oorsprong en bestemming lucht haven, de mijlen, de vertrek-en aankomst tijden, enzovoort. Het doel van deze pijp lijn is de dagelijkse vliegtuig prestaties samen te vatten, waarbij elke luchtvaart maatschappij één rij voor elke dag heeft, met de gemiddelde vertrek-en aankomst vertraging in minuten, en de totale hoeveelheid kilo meters die dag.
 
-| JAAR | MAAND | DAY_OF_MONTH | MAATSCHAPPIJ |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
+| YEAR | MAAND | DAY_OF_MONTH | MAATSCHAPPIJ |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2017 | 1 | 3 | AA | 10.142229 | 7,862926 | 2644539 |
 | 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
@@ -33,7 +33,7 @@ De voorbeeld pijplijn wacht totdat er een nieuwe vlucht gegevens van de periode 
 
 In het volgende diagram ziet u de voorbeeld pijplijn.
 
-![Vlucht gegevens pijplijn](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
+![Overzicht van gegevens pijplijn voor HDI Flight](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
 
 ## <a name="apache-oozie-solution-overview"></a>Overzicht van Apache Oozie-oplossing
 
@@ -43,7 +43,7 @@ Oozie beschrijft de pijp lijnen in termen van *acties*, *werk stromen*en *coörd
 
 Het volgende diagram toont het ontwerp op hoog niveau van dit voor beeld Oozie-pijp lijn.
 
-![Oozie Flight-gegevens pijplijn](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
+![Voorbeeld gegevens pijplijn van Oozie Flight](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
 
 ### <a name="provision-azure-resources"></a>Azure-resources inrichten
 
@@ -55,23 +55,23 @@ Voor deze pijp lijn is een Azure SQL Database en een HDInsight Hadoop-cluster op
 2. Richt binnen `oozie` de resource groep een Azure-SQL Server en-data base in. U hebt geen data base nodig die groter is dan de standaard prijs categorie S1.
 3. Ga met behulp van de Azure Portal naar het deel venster voor uw pas geïmplementeerde SQL Database en selecteer **Hulpprogram ma's**.
 
-    ![Knop extra](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-tools-button.png)
+    ![Knop pictogram voor HDInsight SQL DB-hulpprogram ma's](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-tools-button.png)
 
 4. Selecteer **query-editor**.
 
-    ![Knop Query-Editor](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor1.png)
+    ![Preview-versie van SQL DB-query-editor](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor1.png)
 
 5. Selecteer **Aanmelden**in het deel venster **query-editor** .
 
-    ![Knop Aanmelden](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window1.png)
+    ![Aanmeldings venster van de query-Editor SQL DB](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window1.png)
 
 6. Voer uw SQL Database referenties in en selecteer **OK**.
 
-   ![Aanmeldings formulier](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window2.png)
+   ![Query-Editor SQL DB-aanmeld parameters](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window2.png)
 
 7. Voer in het tekst gebied query-editor de volgende SQL-instructies in om `dailyflights` de tabel te maken waarin de samenvattings gegevens van elke uitvoering van de pijp lijn worden opgeslagen.
 
-    ```
+    ```sql
     CREATE TABLE dailyflights
     (
         YEAR INT,
@@ -90,7 +90,7 @@ Voor deze pijp lijn is een Azure SQL Database en een HDInsight Hadoop-cluster op
 
 8. Selecteer **uitvoeren** om de SQL-instructies uit te voeren.
 
-    ![Knop uitvoeren](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-run-button.png)
+    ![De knop voor het uitvoeren van HDInsight SQL DB](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-run-button.png)
 
 Uw Azure SQL Database is nu gereed.
 
@@ -104,12 +104,12 @@ Uw Azure SQL Database is nu gereed.
 
 4. Selecteer in het deel venster **cluster type** het type **Hadoop** -cluster, het **Linux** -besturings systeem en de meest recente versie van het HDInsight-cluster. De **cluster laag** **standaard**behouden.
 
-    ![HDInsight-clustertype](./media/hdinsight-operationalize-data-pipeline/hdinsight-cluster-type.png)
+    ![Configuratie type Azure Portal cluster](./media/hdinsight-operationalize-data-pipeline/hdinsight-cluster-type.png)
 
 5. Kies **selecteren** om de selectie van het cluster type toe te passen.
 6. Voltooi het deel venster **basis begrippen** door een aanmeldings wachtwoord op te `oozie` geven en uw resource groep te selecteren in de lijst en selecteer vervolgens **volgende**.
 
-    ![Basis deel venster HDInsight](./media/hdinsight-operationalize-data-pipeline/hdinsight-basics-pane.png)
+    ![Deel venster basis beginselen van cluster Azure Portal maken](./media/hdinsight-operationalize-data-pipeline/hdinsight-basics-pane.png)
 
 7. Wijzig in het deel venster **opslag** het primaire opslag type ingesteld op **Azure Storage**, selecteer **nieuwe maken**en geef een naam op voor het nieuwe account.
 
@@ -123,13 +123,13 @@ Uw Azure SQL Database is nu gereed.
 
     ![HDInsight Hive-verificatie van de meta Store](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql.png)
 
-10. Voer uw SQL database gebruikers naam en wacht woord in en kies **selecteren**. 
+10. Voer uw SQL database gebruikers naam en wacht woord in en kies **selecteren**.
 
        ![Aanmeldings gegevens van de HDInsight-Hive van de meta Store-verificatie](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql-login.png)
 
-11. Selecteer in het deel venster meta **Store-instellingen** uw Data Base voor het Oozie en verificatie zoals u dat eerder hebt gedaan. 
+11. Selecteer in het deel venster meta **Store-instellingen** uw Data Base voor het Oozie en verificatie zoals u dat eerder hebt gedaan.
 
-       ![Instellingen voor HDInsight-meta Store](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
+       ![Meta Store-instellingen Azure Portal](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
 
 12. Selecteer **Volgende**.
 13. Selecteer in het deel venster **samen vatting** de optie **maken** om uw cluster te implementeren.
@@ -176,17 +176,18 @@ U kunt het bestand kopiëren met behulp van `bash` SCP in uw shell-sessie.
 De voorbeeld gegevens zijn nu beschikbaar. Voor de pijp lijn zijn echter twee Hive-tabellen vereist voor de verwerking, één voor de`rawFlights`inkomende gegevens () en één voor de samenvattings gegevens (`flights`). Maak deze tabellen in Ambari als volgt.
 
 1. Meld u aan bij Ambari door te navigeren naar http\/:/headnodehost: 8080.
+
 2. Selecteer **Hive**in de lijst met Services.
 
-    ![Hive selecteren in Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
+    ![Component Apache Ambari Services-lijst selectie](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
 
 3. Selecteer **Ga naar weer gave** naast het label component weergave 2,0.
 
-    ![Hive-weer gave in Ambari selecteren](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
+    ![Overzichts lijst van Ambari Apache Apache Hive](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
 
-4. Plak in het tekst gebied query de volgende instructies om de `rawFlights` tabel te maken. De `rawFlights` tabel bevat een schema-bij-lezen voor de CSV-bestanden in `/example/data/flights` de map in azure Storage. 
+4. Plak in het tekst gebied query de volgende instructies om de `rawFlights` tabel te maken. De `rawFlights` tabel bevat een schema-bij-lezen voor de CSV-bestanden in `/example/data/flights` de map in azure Storage.
 
-    ```
+    ```sql
     CREATE EXTERNAL TABLE IF NOT EXISTS rawflights (
         YEAR INT,
         MONTH INT,
@@ -211,7 +212,7 @@ De voorbeeld gegevens zijn nu beschikbaar. Voor de pijp lijn zijn echter twee Hi
 
 5. Selecteer **uitvoeren** om de tabel te maken.
 
-    ![Hive-query in Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
+    ![HDI ambari Services-Hive-query](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
 
 6. Als u de `flights` tabel wilt maken, vervangt u de tekst in het tekst gebied query door de volgende instructies. De `flights` tabel is een door een Hive beheerde tabel waarmee gegevens worden gepartitioneerd per jaar, maand en dag van maand. Deze tabel bevat alle historische vlucht gegevens, waarbij de laagste granulatie aanwezig is in de bron gegevens van één rij per vlucht.
 
@@ -463,7 +464,7 @@ Gebruik SCP vanuit uw bash-sessie om uw Oozie-werk`workflow.xml`stroom (), de Hi
 
 7. Bekijk de status met behulp van de Oozie-webconsole. In Ambari selecteert u **Oozie**, **snelle koppelingen**en vervolgens **Oozie web-console**. Selecteer op het tabblad **werk stroom taken** de optie **alle taken**.
 
-    ![Oozie-werk stromen voor webconsole](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
+    ![HDI oozie-webconsole-werk stromen](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
 8. Als de status geslaagd is, query's uitvoeren op de tabel SQL database om de ingevoegde rijen weer te geven. Ga met behulp van de Azure Portal naar het deel venster voor uw SQL Database, selecteer **extra**en open de **query-editor**.
 
@@ -475,7 +476,7 @@ Nu de werk stroom wordt uitgevoerd voor de enkele test dag, kunt u deze werk str
 
 Als u deze werk stroom wilt plannen zodat deze dagelijks (of alle dagen in een datum bereik) wordt uitgevoerd, kunt u een coördinator gebruiken. Een coördinator wordt gedefinieerd door een XML-bestand, bijvoorbeeld `coordinator.xml`:
 
-```
+```xml
 <coordinator-app name="daily_export" start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" timezone="UTC" xmlns="uri:oozie:coordinator:0.4">
     <datasets>
         <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
@@ -554,7 +555,7 @@ Zoals u ziet, geeft de meerderheid van de coördinator alleen configuratie-infor
 
 * Punt 2: Binnen het datum bereik van de werk stroom geeft `dataset` het element op waar u wilt zoeken naar HDFS voor de gegevens voor een bepaald datum bereik en configureert u hoe Oozie bepaalt of de gegevens nog beschikbaar zijn voor verwerking.
 
-    ```
+    ```xml
     <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
         <uri-template>${sourceDataFolder}${YEAR}-${MONTH}-FlightData.csv</uri-template>
         <done-flag></done-flag>
@@ -567,7 +568,7 @@ Zoals u ziet, geeft de meerderheid van de coördinator alleen configuratie-infor
 
 * Punt 3: Het `data-in` element geeft het specifieke tijds tempel aan dat moet worden gebruikt als de nominale tijd bij `uri-template` het vervangen van de waarden in voor de bijbehorende gegevensset.
 
-    ```
+    ```xml
     <data-in name="event_input1" dataset="ds_input1">
         <instance>${coord:current(0)}</instance>
     </data-in>

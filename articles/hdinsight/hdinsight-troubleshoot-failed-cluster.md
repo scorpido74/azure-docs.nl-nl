@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 8ec081a758096298036efacfe1b0e6d62ed00cbd
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: efb2ac4be074508107bb31ae321c27a3d1263d9e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961859"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105350"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problemen oplossen met een trage of mislukte taak in een HDInsight-cluster
 
@@ -80,7 +80,7 @@ Elk HDInsight-cluster is afhankelijk van verschillende Azure-Services en op open
 
 Apache Ambari biedt beheer en bewaking van een HDInsight-cluster met een web-UI en een REST API. Ambari is opgenomen in HDInsight-clusters op basis van Linux. Selecteer het deel venster **cluster dashboard** op de pagina Azure Portal HDInsight.  Selecteer het deel venster **dash board voor HDInsight-cluster** om de Ambari-gebruikers interface te openen en voer de aanmeldings referenties voor het cluster in.  
 
-![Ambari-gebruikersinterface](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
+![Overzicht van Apache Ambari-dash board](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
 
 Als u een lijst met Service weergaven wilt openen, selecteert u **Ambari-weer gaven** op de pagina Azure Portal.  Deze lijst is afhankelijk van welke bibliotheken zijn geïnstalleerd. Zo ziet u een voor beeld van een garen van het wachtrij beheer, Hive-weer gave en TEZ.  Selecteer een service koppeling om de configuratie-en service gegevens te bekijken.
 
@@ -127,7 +127,7 @@ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v
 
 In Ambari wordt een waarschuwing weer gegeven met de hosts waarop de WebHCat-service niet beschikbaar is. U kunt proberen om de WebHCat-service terug te zetten door de service op de host opnieuw te starten.
 
-![WebHCat-server opnieuw starten](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
+![Apache Ambari WebHCat-server opnieuw starten](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
 
 Als er nog geen WebHCat-server beschikbaar is, controleert u het operations-logboek op fout berichten. Controleer de en `stderr` `stdout` de bestanden waarnaar wordt verwezen in het knoop punt voor meer informatie.
 
@@ -176,7 +176,7 @@ Op het niveau van de GARENs zijn er twee soorten time-outs:
 
     In de volgende afbeelding ziet u de joblauncher-wachtrij met een overgebruik van 714,4%. Dit is acceptabel, zolang er nog steeds vrije capaciteit in de standaard wachtrij staat om van te lenen. Wanneer het cluster echter volledig wordt gebruikt en de capaciteit van het garen ten 100% is, moeten nieuwe taken wachten, waardoor de time-outs uiteindelijk worden veroorzaakt.
 
-    ![Joblauncher-wachtrij](./media/hdinsight-troubleshoot-failed-cluster/hdi-job-launcher-queue.png)
+    ![Wachtrij weergave van HDInsight-taak starten](./media/hdinsight-troubleshoot-failed-cluster/hdi-job-launcher-queue.png)
 
     Er zijn twee manieren om dit probleem op te lossen: Verminder de snelheid van de nieuwe taken die worden verzonden of verg root de verbruiks snelheid van oude taken door het cluster omhoog te schalen.
 
@@ -208,7 +208,7 @@ U kunt deze problemen als volgt vaststellen:
 
 De pagina Ambari UI- **stack en-versie** bevat informatie over de configuratie van de Cluster Services en de geschiedenis van de service versie.  Onjuiste versies van de Hadoop-service bibliotheek kunnen een storing in de cluster veroorzaken.  Selecteer in de Ambari-gebruikers interface het menu **beheerder** en vervolgens **stacks en versies**.  Selecteer op de pagina het tabblad **versies** om informatie over de service versie weer te geven:
 
-![Stack en versies](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
+![Apache Ambari-stack en-versies](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 
 ## <a name="step-5-examine-the-log-files"></a>Stap 5: De logboek bestanden controleren
 

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: a2f743b2b7e63df8b81a1024b20e3e27a3f247a9
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4a961080bc124e53a8c5fe4dcc5f3cd6f21e9e5c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932999"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102576"
 ---
-# <a name="configure-anomaly-detector-containers"></a>Anomalie detector containers configureren
+# <a name="configure-anomaly-detector-containers"></a>Anomaly Detector-containers configureren
 
 De **afwijkende detector** container runtime-omgeving wordt geconfigureerd `docker run` met de opdracht argumenten. Deze container heeft verschillende vereiste instellingen, samen met enkele optionele instellingen. Verschillende [voorbeelden](#example-docker-run-commands) van de opdracht beschikbaar zijn. De container-specifieke instellingen zijn de facturerings instellingen. 
 
@@ -104,8 +104,10 @@ Vervang de waarde tussen vier Kante haken, `{}`met uw eigen waarden:
 
 | Tijdelijke aanduiding | Waarde | Indeling of voorbeeld |
 |-------------|-------|---|
-|{API_KEY} | De eindpunt sleutel van de bron voor de anomalie detectie. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URI} | De waarde van het facturerings eindpunt, inclusief de regio.|`https://westus2.api.cognitive.microsoft.com`|
+| **{API_KEY}** | De eindpunt sleutel van de `Anomaly Detector` resource op de pagina `Anomaly Detector` Azure-sleutels. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | De waarde van het facturerings eindpunt is beschikbaar `Anomaly Detector` op de pagina overzicht van Azure.| Zie [vereiste para meters](anomaly-detector-container-howto.md#gathering-required-parameters) voor expliciete voor beelden verzamelen. |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > De `Eula`, `Billing`, en `ApiKey` opties moeten worden opgegeven voor het uitvoeren van de container; anders wordt de container niet start.  Zie voor meer informatie, [facturering](anomaly-detector-container-howto.md#billing).

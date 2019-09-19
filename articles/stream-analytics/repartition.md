@@ -4,19 +4,19 @@ description: In dit artikel wordt beschreven hoe u opnieuw partitioneren gebruik
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 07/26/2019
+ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 9c802e6d23daf502da351549c66a7dae1247c068
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 82e4a225d26bac04ed4754169cc4a79e0a8f9b32
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517434"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101513"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Opnieuw partitioneren gebruiken om de verwerking met Azure Stream Analytics te optimaliseren
 
-Dit artikel laat u zien hoe u opnieuw partitioneren kunt gebruiken om uw Azure Stream Analytics-query te schalen op scenario's [](stream-analytics-scale-jobs.md)die niet volledig kunnen worden geparallelleerd.
+Dit artikel laat u zien hoe u opnieuw partitioneren kunt gebruiken om uw Azure Stream Analytics-query te schalen op scenario's die niet volledig kunnen worden [geparallelleerd](stream-analytics-scale-jobs.md).
 
 U kunt [parallel Lise ring](stream-analytics-parallelization.md) mogelijk niet gebruiken als:
 
@@ -54,7 +54,17 @@ Experimenteer en Bekijk het resource gebruik van uw taak om het exacte aantal pa
 
 ## <a name="repartitions-for-sql-output"></a>Opnieuw partitioneert voor SQL-uitvoer
 
-Wanneer uw taak SQL database voor uitvoer gebruikt, gebruikt u expliciete herpartitionering om het maximale aantal partities te maximaliseren. Omdat SQL het meest geschikt is voor acht schrijvers, moet u de stroom opnieuw partitioneren naar acht vóór het leegmaken of ergens anders, waardoor de taak prestaties kunnen worden verzorgd. Zie [Azure stream Analytics uitvoer naar Azure SQL database](stream-analytics-sql-output-perf.md)voor meer informatie.
+Wanneer uw taak SQL database voor uitvoer gebruikt, gebruikt u expliciete herpartitionering om het maximale aantal partities te maximaliseren. Omdat SQL het meest geschikt is voor acht schrijvers, moet u de stroom opnieuw partitioneren naar acht vóór het leegmaken of ergens anders, waardoor de taak prestaties kunnen worden verzorgd. 
+
+Wanneer er meer dan 8 invoer partities zijn, is het overnemen van het schema voor de invoer partitie mogelijk niet de juiste keuze. Overweeg in uw query om het aantal uitvoer schrijvers [expliciet op te](/stream-analytics-query/into-azure-stream-analytics.md#into-shard-count) geven. 
+
+In het volgende voor beeld wordt gelezen van de invoer, ongeacht of het op natuurlijke wijze is gepartitioneerd, en wordt de stroom tienvoudige opnieuw gepartitioneerd volgens de DeviceID-dimensie en worden de gegevens verwijderd naar uitvoer. 
+
+```sql
+SELECT * INTO [output] FROM [input] PARTITION BY DeviceID INTO 10
+```
+
+Zie [Azure stream Analytics uitvoer naar Azure SQL database](stream-analytics-sql-output-perf.md)voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen

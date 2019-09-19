@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 0fe893ae95b31b1b676a982a60166041a0ad964d
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: cc827f52d227ee36620bd215dfcba96b433804d3
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015910"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103060"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Veelgestelde vragen over Azure Files
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
@@ -100,7 +100,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
    
     \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
 
-    Het eerste conflict van CompanyReport. docx wordt bijvoorbeeld CompanyReport-CentralServer. docx als CentralServer de locatie is waar de oudere schrijf bewerking plaatsvond. Het tweede conflict zou de naam CompanyReport-CentralServer-1. docx hebben.
+    Het eerste conflict van CompanyReport. docx wordt bijvoorbeeld CompanyReport-CentralServer. docx als CentralServer de locatie is waar de oudere schrijf bewerking plaatsvond. Het tweede conflict zou de naam CompanyReport-CentralServer-1. docx hebben. Azure File Sync ondersteunt 100-conflict bestanden per bestand. Zodra het maximum aantal conflict bestanden is bereikt, kan het bestand niet worden gesynchroniseerd totdat het aantal conflict bestanden kleiner is dan 100.
 
 * <a id="afs-storage-redundancy"></a>
   **Wordt geografisch redundante opslag ondersteund voor Azure File Sync?**  
@@ -143,7 +143,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
   * \SyncShareState
 
 * <a id="afs-os-support"></a>
-  **Kan ik Azure File Sync gebruiken met een Windows Server 2008 R2-, Linux-of mijn NAS-apparaat (Network-Attached Storage)?**  
+  **Kan ik Azure File Sync gebruiken met een Windows Server 2008 R2-, Linux-of mijn network-attached storage (NAS)-apparaat?**  
     Momenteel ondersteunt Azure File Sync alleen Windows Server 2019, Windows Server 2016 en Windows Server 2012 R2. Op dit moment hebben we geen andere plannen die we kunnen delen, maar we zijn geopend voor het ondersteunen van extra platformen op basis van de vraag van de klant. Laat het ons weten om [Azure files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) welke platformen we willen ondersteunen.
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
@@ -233,7 +233,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 * <a id="data-compliance-policies"></a>
 **Wat voor nalevings beleid voor gegevens Azure Files worden ondersteund?**  
 
-   Azure Files wordt uitgevoerd boven op dezelfde opslag architectuur die wordt gebruikt in andere opslag Services in Azure Storage. Azure Files past hetzelfde beleid voor gegevens naleving toe dat in andere Azure Storage-services wordt gebruikt. Raadpleeg voor meer informatie over de naleving van Azure Storage gegevens [Azure Storage compliance-aanbiedingen](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)en ga naar het vertrouwens [centrum van micro soft](https://microsoft.com/trustcenter/default.aspx).
+   Azure Files wordt uitgevoerd boven op dezelfde opslag architectuur die wordt gebruikt in andere opslag Services in Azure Storage. Azure Files past hetzelfde beleid voor gegevens naleving toe dat in andere Azure Storage-services wordt gebruikt. Raadpleeg voor meer informatie over de naleving van Azure Storage gegevens [Azure Storage compliance-aanbiedingen](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)en ga naar het [vertrouwens centrum van micro soft](https://microsoft.com/trustcenter/default.aspx).
 
 ## <a name="on-premises-access"></a>On-premises toegang
 
@@ -255,7 +255,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 ## <a name="backup"></a>Back-up
 * <a id="backup-share"></a>
 **Hoe kan ik back-up maken van mijn Azure-bestands share?**  
-    U kunt [moment opnamen](storage-snapshots-files.md) van periodieke shares gebruiken voor beveiliging tegen onbedoeld verwijderen. U kunt ook AzCopy, Robocopy of een back-upprogramma van derden gebruiken dat een back-up kan maken van een gekoppelde bestands share. Azure Backup biedt back-up van Azure Files. Meer informatie over het [maken van back-ups van Azure-bestands shares per Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-files).
+    U kunt [moment opnamen van periodieke shares](storage-snapshots-files.md) gebruiken voor beveiliging tegen onbedoeld verwijderen. U kunt ook AzCopy, Robocopy of een back-upprogramma van derden gebruiken dat een back-up kan maken van een gekoppelde bestands share. Azure Backup biedt back-up van Azure Files. Meer informatie over het [maken van back-ups van Azure-bestands shares per Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-files).
 
 ## <a name="share-snapshots"></a>Momentopnamen van shares
 
@@ -344,7 +344,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 
 * <a id="need-larger-share"></a>
 **Welke grootten zijn er beschikbaar voor Azure-bestands shares?**  
-    Groottes van Azure-bestands shares (Premium en Standard) kunnen tot 100 TiB worden geschaald. Premium-bestands shares tot 100 TiB zijn beschikbaar als GA aanbieding. Het formaat van standaard bestands shares tot 5 TiB zijn beschikbaar als GA aanbieding, terwijl het formaat van Maxi maal 100 TiB in preview is. Zie de sectie onboarding [to large file shares (Standard-laag)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) van de plannings handleiding voor onboarding-instructies voor het grotere voor beeld van de bestands shares voor de laag standaard.
+    Groottes van Azure-bestands shares (Premium en Standard) kunnen tot 100 TiB worden geschaald. Premium-bestands shares tot 100 TiB zijn beschikbaar als GA aanbieding. Het formaat van standaard bestands shares tot 5 TiB zijn beschikbaar als GA aanbieding, terwijl het formaat van Maxi maal 100 TiB in preview is. Zie de sectie [onboarding to large file shares (Standard-laag)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) van de plannings handleiding voor onboarding-instructies voor het grotere voor beeld van de bestands shares voor de laag standaard.
 
 * <a id="open-handles-quota"></a>
 **Hoeveel clients hebben gelijktijdig toegang tot hetzelfde bestand?**    

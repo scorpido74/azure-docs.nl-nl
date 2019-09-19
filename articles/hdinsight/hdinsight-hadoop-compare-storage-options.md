@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: ced2c888a412a72643bb0c12fceb7e83d39936cf
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
-ms.translationtype: HT
+ms.openlocfilehash: d036e56a4ccf826ccd19fb7424b7b76568839b23
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098732"
+ms.locfileid: "71104536"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Opslag opties vergelijken voor gebruik met Azure HDInsight-clusters
 
@@ -34,7 +34,7 @@ De volgende tabel bevat een overzicht van de Azure Storage services die worden o
 |Azure Storage| Blob Storage * * | Object | Blok-blob | Standard | Hot, cool, Archive | Alle | Alle |
 |Azure Data Lake Storage Gen1| N/A | Hiërarchisch (bestands systeem) | N/A | N/A | N/A | alleen 3,6 | Alle behalve HBase |
 
-\* * Voor HDInsight-clusters kunnen alleen secundaire opslag accounts van het type BlobStorage zijn.
+\* * Voor HDInsight-clusters kunnen alleen secundaire opslag accounts van het type BlobStorage en de pagina-blob is geen ondersteunde opslag optie.
 
 Zie [overzicht van Azure Storage-accounts](../storage/common/storage-account-overview.md) voor meer informatie over Azure Storage-account typen
 

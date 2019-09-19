@@ -6,26 +6,29 @@ manager: nitinme
 description: De para meters voor alle Cognitive Services containers
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/24/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 636a41fde345a08db1549e53626522962f9cf74f
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 06f68d28d06dec7c9e738ad8cb50ca337fa840be
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488781"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102010"
 ---
 ## <a name="gathering-required-parameters"></a>Vereiste para meters verzamelen
 
-Er zijn drie primaire para meters voor alle vereiste containers van Cognitive Services. De gebruiksrecht overeenkomst (**EULA**) moet aanwezig zijn met een waarde van `accept`. Daarnaast zijn zowel een eind punt-URL als een API-sleutel nodig.
+Er zijn drie primaire para meters voor alle vereiste containers van Cognitive Services. De gebruiksrecht overeenkomst (EULA) moet aanwezig zijn met een waarde van `accept`. Daarnaast zijn zowel een eind punt-URL als een API-sleutel nodig.
 
-### <a name="endpoint-uri-endpointuri"></a>Eind punt-URI`{Endpoint_URI}`
+> [!NOTE]
+> De enige uitzonde ring op deze drie vereiste para meters is wanneer containers als ' offline ' containers worden beschouwd. Offline containers rapporteren geen gebruik, worden niet gemeten en volgen een andere facturerings methode.
+
+### <a name="endpoint-uri-endpoint_uri"></a>Eind punt-URI`{ENDPOINT_URI}`
 
 De URI-waarde van het **eind punt** is beschikbaar op de pagina *overzicht* van Azure portal van de bijbehorende cognitieve service resource. Ga naar de *overzichts* pagina, beweeg de muis aanwijzer over het `Copy to clipboard` eind punt en er wordt een <span class="docon docon-edit-copy x-hidden-focus"></span> pictogram weer gegeven. Kopieer en gebruik waar nodig.
 
 ![De URI van het eind punt verzamelen voor later gebruik](../media/overview-endpoint-uri.png)
 
-### <a name="keys-apikey"></a>Subknooppuntsleutels`{API_Key}`
+### <a name="keys-api_key"></a>Subknooppuntsleutels`{API_KEY}`
 
 Deze sleutel wordt gebruikt om de container te starten en is beschikbaar op de pagina sleutels van de Azure Portal van de bijbehorende cognitieve service resource. Ga naar de pagina *sleutels* en klik op het `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> pictogram.
 

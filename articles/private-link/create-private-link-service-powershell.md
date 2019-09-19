@@ -1,18 +1,18 @@
 ---
 title: Een persoonlijke Azure-koppelings service maken met behulp van Azure PowerShell | Microsoft Docs
 description: Meer informatie over het maken van een persoonlijke Azure-koppelings service met Azure PowerShell
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 496f3d177446e6c3a4a086f89f15bf5cd66fefed
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 09158a935aac023382049d3aa9ce23a711972023
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018957"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104750"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Een persoonlijke koppelings service maken met behulp van Azure PowerShell
 In dit artikel wordt beschreven hoe u een persoonlijke koppelings service maakt in azure met behulp van Azure PowerShell.
@@ -113,7 +113,7 @@ In deze fase is uw persoonlijke koppelings service gemaakt en is deze klaar om h
 
 Vervolgens laten we zien hoe u deze service kunt toewijzen aan een persoonlijk eind punt in verschillende VNet met behulp van Power shell. Het voor beeld is beperkt tot het maken van het persoonlijke eind punt en het verbinden met de persoonlijke koppelings service die hierboven is gemaakt. U kunt Virtual Machines in de Virtual Network maken voor het verzenden/ontvangen van verkeer naar het persoonlijke eind punt voor het bouwen van uw scenario. 
 
-## <a name="create-a-private-endpoint"></a>Een persoonlijk eind punt maken
+## <a name="create-a-private-endpoint"></a>Een privé-eindpunt maken
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 Maak een virtueel netwerk voor uw persoonlijke eind punt met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In dit voor beeld wordt een virtueel netwerk gemaakt met de naam *vnetPE* in de resource groep met de naam *myResourceGroup*:
  

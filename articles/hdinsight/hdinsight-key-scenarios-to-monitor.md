@@ -2,18 +2,18 @@
 title: Cluster prestaties bewaken-Azure HDInsight
 description: De status en prestaties van Apache Hadoop clusters in azure HDInsight bewaken.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.author: hrasheed
-ms.openlocfilehash: 936307399b658b75962e6969820215f9808d053f
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 7a7544ef9fe5724d1f6c11918411a76461d908e5
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961082"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104402"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Cluster prestaties in azure HDInsight bewaken
 
@@ -36,11 +36,11 @@ Meld u aan bij de [Ambari-webgebruikersinterface](hdinsight-hadoop-manage-ambari
 
 U ziet ook kolommen met het aantal kernen en de hoeveelheid RAM-geheugen voor elke host, en het schijf gebruik en de gemiddelde belasting.
 
-![Tabblad hosts](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
+![Overzicht van Apache Ambari hosts-tabblad](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
 
 Selecteer een van de hostnamen voor een gedetailleerde weer gave van de onderdelen die worden uitgevoerd op die host en de metrische gegevens. De metrische gegevens worden weer gegeven als een selecteerbaar tijd lijn van CPU-gebruik, belasting, schijf gebruik, geheugen gebruik, netwerk gebruik en aantal processen.
 
-![Details van host](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png)
+![Overzicht van Apache Ambari host-Details](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png)
 
 Zie [HDInsight-clusters beheren met de Web-UI van Apache Ambari](hdinsight-hadoop-manage-ambari.md) voor meer informatie over het instellen van waarschuwingen en het weer geven van metrische gegevens.
 
@@ -56,7 +56,7 @@ Wanneer meerdere tenants een groot cluster delen, is er een competitie voor de r
 
 Met GARENs kunnen we resources toewijzen aan deze wacht rijen en kunt u zien of al uw beschik bare resources zijn toegewezen. Als u informatie over uw wacht rijen wilt weer geven, meldt u zich aan bij de Ambari-webgebruikersinterface en selecteert u vervolgens **garen wachtrij beheer** in het bovenste menu.
 
-![GAREN van de wachtrij](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
+![Apache Ambari GARENs-wachtrij beheer](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
 
 Op de pagina GARENs Queue Manager wordt aan de linkerkant een lijst met uw wacht rijen weer gegeven, samen met het percentage toegewezen capaciteit.
 
@@ -64,11 +64,11 @@ Op de pagina GARENs Queue Manager wordt aan de linkerkant een lijst met uw wacht
 
 Voor een gedetailleerdere weer gave van uw wacht rijen, in het Ambari-dash board selecteert u de service **garen** in de lijst aan de linkerkant. Selecteer vervolgens in het vervolg keuzemenu **snelle koppelingen** de **gebruikers interface van Resource Manager** onder het actieve knoop punt.
 
-![Menu-koppeling voor Resource Manager-gebruikers interface](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
+![Koppelingen in het Resource Manager-menu van de gebruikers interface](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
 
 Selecteer in de gebruikers interface van Resource Manager **scheduler** in het menu aan de linkerkant. U ziet een lijst met uw wacht rijen onder *toepassings wachtrijen*. Hier ziet u de capaciteit die voor elk van uw wacht rijen wordt gebruikt, hoe goed de taken worden gedistribueerd en of alle taken zijn beperkt tot een resource.
 
-![Menu gebruikers interface van Resource Manager](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+![Menu van Apache HAdoop Resource Manager-gebruikers interface](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
 ## <a name="storage-throttling"></a>Opslag beperking
 

@@ -2,18 +2,18 @@
 title: SSH-tunneling gebruiken om toegang te krijgen tot Azure HDInsight
 description: Meer informatie over het gebruik van een SSH-tunnel om veilig webbronnen te doorzoeken die worden gehost op uw op Linux gebaseerde HDInsight-knoop punten.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.author: hrasheed
-ms.openlocfilehash: cad2988a9b6d6cdf557eeabee7cc93e0bbba9267
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: d976826fe90946697a32c5b1edb9dd323b01cc1c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879576"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105457"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>SSH-tunneling gebruiken om toegang te krijgen tot Apache Ambari Web UI, JobHistory, NameNode, Apache Oozie en andere UIs
 
@@ -90,19 +90,19 @@ Zodra de opdracht is voltooid, wordt verkeer dat is verzonden naar poort 9876 op
 
 1. Selecteer **opslaan**
 
-    ![SSH-sessie maken](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
+    ![Maken van een putty-sessie HDInsight](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
 1. Vouw in het gedeelte **categorie** aan de linkerkant van het dialoog venster **verbinding**uit, vouw **SSH**uit en selecteer vervolgens **tunnels**.
 
 1. Geef de volgende informatie op over de opties voor het **door sturen van SSH-poort beheren** :
-   
+
    * **Bronpoort**: de poort op de client die u wilt doorsturen. Bijvoorbeeld **9876**.
 
    * **Doel** -het SSH-adres voor het HDInsight-cluster. Bijvoorbeeld **mijncluster-ssh.azurehdinsight.net**.
 
    * **Dynamisch**: hiermee schakelt u de dynamische routering van SOCKS-proxy's in.
-     
-     ![afbeelding van tunneling-opties](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
+
+     ![Opties voor de tunneling van PuTTy-configuratie](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
 
 1. Selecteer **toevoegen** om de instellingen toe te voegen en klik vervolgens op **openen** om een SSH-verbinding te openen.
 
@@ -114,9 +114,9 @@ Zodra de opdracht is voltooid, wordt verkeer dat is verzonden naar poort 9876 op
 > In de stappen in deze sectie wordt de Mozilla FireFox-browser gebruikt, aangezien deze dezelfde proxy instellingen voor alle platforms biedt. Andere moderne browsers, zoals Google Chrome, hebben mogelijk een extensie zoals FoxyProxy nodig om met de tunnel te werken.
 
 1. Configureer de browser voor het gebruik van **localhost** en de poort die u hebt gebruikt bij het maken van de tunnel als een **SOCKS V5** -proxy. De instellingen van de Firefox zien er als volgt uit. Als u een andere poort dan 9876 hebt gebruikt, wijzigt u de poort in het account dat u hebt gebruikt:
-   
-    ![afbeelding van Firefox-instellingen](./media/hdinsight-linux-ambari-ssh-tunnel/firefox-proxy-settings.png)
-   
+
+    ![proxy-instellingen van de Firefox-browser](./media/hdinsight-linux-ambari-ssh-tunnel/firefox-proxy-settings.png)
+
    > [!NOTE]  
    > Als u **externe DNS** selecteert, worden er Domain Name System (DNS)-aanvragen via het HDInsight-cluster. Met deze instelling wordt DNS omgezet met behulp van het hoofd knooppunt van het cluster.
 
@@ -133,7 +133,7 @@ Nadat het cluster is gemaakt, volgt u de volgende stappen om te controleren of u
 
 2. Selecteer in de Ambari-webgebruikersinterface de optie HDFS in de lijst aan de linkerkant van de pagina.
 
-    ![Afbeelding met HDFS geselecteerd](./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png)
+    ![Apache Ambari hdfs-service geselecteerd](./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png)
 
 3. Wanneer de gegevens van de HDFS-service worden weer gegeven, selecteert u **snelle koppelingen**. Er wordt een lijst met de hoofd knooppunten van het cluster weer gegeven. Selecteer een van de hoofd knooppunten en selecteer vervolgens **NameNode-gebruikers interface**.
 
@@ -146,7 +146,7 @@ Nadat het cluster is gemaakt, volgt u de volgende stappen om te controleren of u
 
 4. Er wordt een pagina weer gegeven die vergelijkbaar is met de volgende afbeelding:
 
-    ![Afbeelding van de NameNode-gebruikers interface](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png)
+    ![Afbeelding van de Hadoop NameNode-gebruikers interface](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png)
 
     > [!NOTE]  
     > Let op de URL voor deze pagina. Dit moet vergelijkbaar zijn met `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster`. Deze URI gebruikt de interne Fully Qualified Domain Name (FQDN) van het knoop punt en is alleen toegankelijk als u een SSH-tunnel gebruikt.

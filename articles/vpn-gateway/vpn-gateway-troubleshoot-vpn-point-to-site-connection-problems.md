@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: genli
-ms.openlocfilehash: 37c2cf5ffb5e6eaf8b8da6e7bc9259cfa101c796
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 0a32f9a9fde0983a5b97f7342a111d40ef01c686
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058825"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104822"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Meer Problemen met de verbinding met Azure Point-to-site
 
@@ -48,8 +48,7 @@ Voer de volgende stappen uit om dit probleem op te lossen:
     | Certificaat | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | Huidige Gebruiker\persoonlijk\certificaten |
-    | Azuregateway-*GUID*.cloudapp.net  | Huidige User\Trusted basis certificerings instanties|
-    | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Lokale Computer\Trusted basis certificerings instanties|
+    | AzureRoot. CER    | Lokale Computer\Trusted basis certificerings instanties|
 
 3. Ga naar C:\Users\<username > \AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID >, installeer het certificaat (CER-bestand) hand matig op de opslag van de gebruiker en de computer.
 

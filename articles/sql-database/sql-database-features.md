@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 3cad1a73dd98928ed12748e2acffaea158dc5924
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 594edab4e6a69edb49c8a1ce407c9fd943d11f2b
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010302"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103160"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database functies
 
@@ -114,8 +114,8 @@ Azure-platform biedt een aantal PaaS-mogelijkheden die als extra waarde worden t
 
 | **Platform functie** | **Afzonderlijke data bases en elastische Pools** | **Beheerde instanties en exemplaar groepen** |
 | --- | --- | --- |
-| [Actieve Geo-replicatie](sql-database-active-geo-replication.md) | Ja, alle service lagen dan grootschalige | Nee, Zie [automatische failover-groepen (preview-versie)](sql-database-auto-failover-group.md) als alternatief |
-| [Groepen voor automatische failover](sql-database-auto-failover-group.md) | Ja, alle service lagen dan grootschalige | Ja, in [open bare preview](sql-database-auto-failover-group.md)|
+| [Actieve Geo-replicatie](sql-database-active-geo-replication.md) | Ja, alle service lagen dan grootschalige | Nee, de [groepen voor automatische failover](sql-database-auto-failover-group.md) als alternatief weer geven |
+| [Groepen voor automatische failover](sql-database-auto-failover-group.md) | Ja, alle service lagen dan grootschalige | Ja, Zie [automatische failover-groepen](sql-database-auto-failover-group.md)|
 | Automatisch schalen | Ja, maar alleen in [serverloze model](sql-database-serverless.md). In het niet-serverloze model is de wijziging van de servicelaag (wijziging van vCore, opslag of DTU) snel en online. De wijziging van de servicelaag vereist mini maal of geen uitval tijd. | Nee, u moet gereserveerde Compute en opslag kiezen. De wijziging van de servicelaag (vCore of Max Storage) is online en vergt minimale of geen downtime. |
 | [Automatische back-ups](sql-database-automated-backups.md) | Ja. Volledige back-ups worden elke zeven dagen, differentieel 12 uur en logboek back-ups om de 5-10 minuten uitgevoerd. | Ja. Volledige back-ups worden elke zeven dagen, differentieel 12 uur en logboek back-ups om de 5-10 minuten uitgevoerd. |
 | [Automatisch afstemmen (indexen)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Ja](sql-database-automatic-tuning.md)| Nee |
@@ -169,9 +169,9 @@ U kunt verschillende migratie methoden gebruiken om uw gegevens te verplaatsen t
 
 | **Bron** | **Eén data base en elastische pool** | **Beheerde instanties en exemplaar groepen** |
 | --- | --- | --- |
-| SQL Server (on-premises, AzureVM, Amazon RDS) | **Aanschaffen** [Gegevens migratie service (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Breken** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Aanschaffen** [Gegevens migratie service (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Breken** Systeem eigen back-up/herstellen, [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [momentopname replicatie](sql-database-managed-instance-transactional-replication.md) |
+| SQL Server (on-premises, AzureVM, Amazon RDS) | **Online:** [Gegevens migratie service (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Breken** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Online:** [Gegevens migratie service (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Breken** Systeem eigen back-up/herstellen, [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [momentopname replicatie](sql-database-managed-instance-transactional-replication.md) |
 | Individuele database | **Breken** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Breken** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
-| Beheerd exemplaar | **Aanschaffen** [Transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Breken** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [momentopname replicatie](sql-database-managed-instance-transactional-replication.md) | **Aanschaffen** [Transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Breken** Herstel punt voor meerdere exemplaren ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) of [Azure cli](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [systeem eigen back-up/herstellen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [momentopname replicatie](sql-database-managed-instance-transactional-replication.md) |
+| Beheerd exemplaar | **Online:** [Transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Breken** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [momentopname replicatie](sql-database-managed-instance-transactional-replication.md) | **Online:** [Transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Breken** Herstel punt voor meerdere exemplaren ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) of [Azure cli](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [systeem eigen back-up/herstellen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [momentopname replicatie](sql-database-managed-instance-transactional-replication.md) |
 
 ## <a name="next-steps"></a>Volgende stappen
 

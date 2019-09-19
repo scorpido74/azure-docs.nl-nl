@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 7dba929101a928f0bbcb8553d6dd3b3043d74853
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: fbfc3f48bed5a4772573dcf2ab168cd3498a4cac
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114853"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102018"
 ---
 # <a name="install-and-run-face-containers"></a>Face-containers installeren en uitvoeren
 
@@ -33,6 +33,8 @@ U moet voldoen aan de volgende vereisten voordat u de Face-API-containers gebrui
 |Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)en [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Zie voor een uitleg van de basisprincipes van Docker en containers, de [dockeroverzicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker moet worden geconfigureerd, zodat de containers om te verbinden met en facturering gegevens verzenden naar Azure. <br><br> In Windows moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
 |Vertrouwd met docker | U hebt een basis informatie nodig over docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën. U hebt ook kennis nodig van `docker` basis opdrachten.| 
 |Gezichts bron |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure **Face** -resource en de bijbehorende API-sleutel en de EINDPUNT-URI. Beide waarden zijn beschikbaar op het **overzicht** en op de pagina **sleutels** voor de resource. Ze zijn verplicht om de container te starten.<br><br>**{API_KEY}** : Een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}** : Het eind punt op de pagina **overzicht**
+
+[!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="request-access-to-the-private-container-registry"></a>Aanvraag voor toegang tot de privécontainerregister
 
@@ -80,16 +82,9 @@ Nadat de container zich op de [hostcomputer](#the-host-computer)bevindt, gebruik
 
 ## <a name="run-the-container-with-docker-run"></a>De container uitvoeren met docker-uitvoering
 
-Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om een van de drie containers uit te voeren. De opdracht maakt gebruik van de volgende para meters.
+Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. Raadpleeg de [vereiste para meters verzamelen](#gathering-required-parameters) voor meer informatie over het `{ENDPOINT_URI}` ophalen `{API_KEY}` van de waarden en.
 
-| Tijdelijke aanduiding | Value |
-|-------------|-------|
-|{API_KEY} | Deze sleutel wordt gebruikt om de container te starten en is beschikbaar op de `Cognitive Services` pagina met Azure- **sleutels** . |
-|{ENDPOINT_URI} | De waarde voor de URL van het facturerings eindpunt `Cognitive Services` is beschikbaar op de pagina **overzicht** van Azure. Een voorbeeld is `https://westus.api.cognitive.microsoft.com/face/v1.0`.|
-
-Voeg de `face/v1.0` route ring toe aan de eindpunt-URI, zoals wordt weer gegeven in het voor gaande voor beeld van ENDPOINT_URI. 
-
-Vervang deze para meters door uw eigen waarden in `docker run` het volgende voor beeld van de opdracht:
+[Voor beelden](face-resource-container-config.md#example-docker-run-commands) van `docker run` de opdracht zijn beschikbaar.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \

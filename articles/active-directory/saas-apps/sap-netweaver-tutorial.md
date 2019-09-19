@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b002a9d5385d6cee3f22da7a1ddcf1f0864311ec
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d79c953f22bfe587f740bc29050796834309186a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989039"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103372"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met SAP net-Weaver
 
@@ -56,8 +56,8 @@ Voor het configureren van de integratie van SAP NetWeaver met Azure AD moet u SA
 1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
 1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
 1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **SAP** NetWeaver in het zoekvak.
-1. Selecteer **SAP** netweave uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Typ in de sectie **toevoegen vanuit de galerie** **SAP NetWeaver** in het zoekvak.
+1. Selecteer **SAP Netweave** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-netweaver"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor SAP net-Weaver
 
@@ -69,7 +69,7 @@ Als u Azure AD SSO wilt configureren en testen met SAP NetWeaver, voltooit u de 
     1. **[Maak een Azure AD-test gebruiker om de](#create-an-azure-ad-test-user)** eenmalige aanmelding van Azure ad te testen met B. Simon.
     1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe om B. Simon in te scha kelen voor het gebruik van eenmalige aanmelding voor Azure AD.
 1. **[CONFIGUREER SAP NetWeaver met behulp van SAML](#configure-sap-netweaver-using-saml)** om de SSO-instellingen aan de kant van de toepassing te configureren.
-    1. U kunt een SAP NetWeaver- **[gebruiker maken](#create-sap-netweaver-test-user)** voor een soort B. Simon in SAP NetWeaver die is gekoppeld aan de Azure AD-representatie van de gebruiker.
+    1. U kunt een **[SAP NetWeaver-gebruiker maken](#create-sap-netweaver-test-user)** voor een soort B. Simon in SAP NetWeaver die is gekoppeld aan de Azure AD-representatie van de gebruiker.
 1. **[Test SSO](#test-sso)** om te controleren of de configuratie werkt.
 1. **[SAP Netweave voor OAuth configureren](#configure-sap-netweaver-for-oauth)** om de OAuth-instellingen aan de kant van de toepassing te configureren.
 
@@ -140,7 +140,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met SAP NetWeaver moet u
 
 Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **SAP** NetWeaver-toepassings integratie de sectie **beheren** en selecteer **eenmalige aanmelding**.
+1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **SAP NetWeaver** -toepassings integratie de sectie **beheren** en selecteer **eenmalige aanmelding**.
 1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
 1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
@@ -163,7 +163,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     > ``` 
     > De ServicePrincipal-object-id moet eerst door uzelf worden ingesteld, maar u kunt deze ook hier doorgeven.
 
-1. SAP NetWeaver-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerk toewijzingen moet toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster Gebruikerskenmerken te openen.
+1. SAP NetWeaver-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerk toewijzingen moet toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster gebruikerskenmerken te openen.
 
     ![image](common/edit-attribute.png)
 
@@ -354,7 +354,7 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 2. Wanneer u een OAuth-client registreert `SAML Bearer Grant type`, wordt de gebruikt.
 
     >[!NOTE]
-    >Raadpleeg voor meer informatie OAuth 2,0-client registratie voor het toekennings type voor de [](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type) SAML Bearer.
+    >Raadpleeg voor meer informatie OAuth 2,0-client registratie voor het toekennings [type voor](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type) de SAML Bearer.
 
 3. tcod: SU01/Create User CLIENT1 as `System type` en Assign password, sla het op als moet worden voorzien van de referentie voor de API-programmeur, die deze moet branden met de gebruikers naam voor de aanroepende code. Er mag geen profiel of rol worden toegewezen.
 

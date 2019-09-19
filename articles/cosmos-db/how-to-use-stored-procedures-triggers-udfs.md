@@ -4,14 +4,14 @@ description: Informatie over het registeren en aanroepen van opgeslagen procedur
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 09/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7732039ff2494ef16fda5afe384a824ec786a8cf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3cc144c1b8748710f0500b6ca2a418cd8bf5a2b7
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092925"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104832"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies registreren en gebruiken in Azure Cosmos DB
 
@@ -26,9 +26,9 @@ De volgende voorbeelden laten zien hoe u een opgeslagen procedure registreert en
 > [!NOTE]
 > Bij het uitvoeren van een opgeslagen procedure voor gepartitioneerde containers moet een waarde voor de partitiesleutel worden opgegeven in de aanvraagopties. Opgeslagen procedures zijn altijd gerelateerd aan een partitiesleutel. Items met een andere partitiesleutelwaarde zijn niet zichtbaar voor de opgeslagen procedure. Dit geldt ook voor triggers.
 
-### <a name="stored-procedures---net-sdk"></a>Opgeslagen procedures - .NET SDK
+### <a name="stored-procedures---net-sdk-v2"></a>Opgeslagen procedures-.NET SDK v2
 
-Het volgende voorbeeld laat zien hoe u een opgeslagen procedure registreert met behulp van de .NET SDK:
+In het volgende voor beeld ziet u hoe u een opgeslagen procedure kunt registreren met behulp van de .NET SDK v2:
 
 ```csharp
 string storedProcedureId = "spCreateToDoItem";
@@ -42,7 +42,7 @@ var response = await client.CreateStoredProcedureAsync(containerUri, newStoredPr
 StoredProcedure createdStoredProcedure = response.Resource;
 ```
 
-De volgende code laat zien hoe u een opgeslagen procedure aanroept met behulp van de .NET SDK:
+De volgende code laat zien hoe u een opgeslagen procedure aanroept met behulp van de .NET SDK v2:
 
 ```csharp
 dynamic newItem = new
@@ -56,7 +56,32 @@ dynamic newItem = new
 Uri uri = UriFactory.CreateStoredProcedureUri("myDatabase", "myContainer", "spCreateToDoItem");
 RequestOptions options = new RequestOptions { PartitionKey = new PartitionKey("Personal") };
 var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, newItem);
-var id = result.Response;
+```
+
+### <a name="stored-procedures---net-sdk-v3"></a>Opgeslagen procedures-.NET SDK v3
+
+In het volgende voor beeld ziet u hoe u een opgeslagen procedure kunt registreren met behulp van de .NET SDK V3:
+
+```csharp
+StoredProcedureResponse storedProcedureResponse = await client.GetContainer("database", "container").Scripts.CreateStoredProcedureAsync(new StoredProcedureProperties
+{
+    Id = "spCreateToDoItem",
+    Body = File.ReadAllText(@"..\js\spCreateToDoItem.js")
+});
+```
+
+De volgende code laat zien hoe u een opgeslagen procedure aanroept met behulp van de .NET SDK V3:
+
+```csharp
+dynamic newItem = new
+{
+    category = "Personal",
+    name = "Groceries",
+    description = "Pick up strawberries",
+    isComplete = false
+};
+
+var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), newItem);
 ```
 
 ### <a name="stored-procedures---java-sdk"></a>Opgeslagen procedures - Java SDK
@@ -176,9 +201,9 @@ Bij het uitvoeren worden voorafgaande triggers doorgegeven in het object Request
 > [!NOTE]
 > Ook al wordt de naam van de trigger doorgegeven als een lijst, u kunt slechts één trigger per bewerking uitvoeren.
 
-### <a name="pre-triggers---net-sdk"></a>Voorafgaande triggers - .NET SDK
+### <a name="pre-triggers---net-sdk-v2"></a>Pretriggers-.NET SDK v2
 
-De volgende code laat zien hoe u een voorafgaande trigger registreert met de .NET SDK:
+De volgende code laat zien hoe u een pre-trigger kunt registreren met behulp van de .NET SDK v2:
 
 ```csharp
 string triggerId = "trgPreValidateToDoItemTimestamp";
@@ -193,7 +218,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-De volgende code laat zien hoe u een voorafgaande trigger aanroept met de .NET SDK:
+De volgende code laat zien hoe u een pre-trigger aanroept met behulp van de .NET SDK v2:
 
 ```csharp
 dynamic newItem = new
@@ -207,6 +232,34 @@ dynamic newItem = new
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
 RequestOptions requestOptions = new RequestOptions { PreTriggerInclude = new List<string> { "trgPreValidateToDoItemTimestamp" } };
 await client.CreateDocumentAsync(containerUri, newItem, requestOptions);
+```
+
+### <a name="pre-triggers---net-sdk-v3"></a>Pretriggers-.NET SDK v3
+
+De volgende code laat zien hoe u een pre-trigger kunt registreren met behulp van de .NET SDK V3:
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
+{
+    Id = "trgPreValidateToDoItemTimestamp",
+    Body = File.ReadAllText("@..\js\trgPreValidateToDoItemTimestamp.js"),
+    TriggerOperation = TriggerOperation.Create,
+    TriggerType = TriggerType.Pre
+});
+```
+
+De volgende code laat zien hoe u een pre-trigger aanroept met behulp van de .NET SDK V3:
+
+```csharp
+dynamic newItem = new
+{
+    category = "Personal",
+    name = "Groceries",
+    description = "Pick up strawberries",
+    isComplete = false
+};
+
+await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PreTriggers = new List<string> { "trgPreValidateToDoItemTimestamp" } });
 ```
 
 ### <a name="pre-triggers---java-sdk"></a>Voorafgaande triggers - Java SDK
@@ -301,9 +354,9 @@ client.CreateItem(container_link, item, {
 
 De volgende voorbeelden laten zien hoe u een navolgende trigger registreert met behulp van de Azure Cosmos DB-SDK's. Raadpleeg [Voorbeeld van navolgende trigger](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) als de bron voor deze navolgende trigger is opgeslagen als `trgPostUpdateMetadata.js`.
 
-### <a name="post-triggers---net-sdk"></a>Navolgende triggers - .NET SDK
+### <a name="post-triggers---net-sdk-v2"></a>Post-triggers-.NET SDK v2
 
-De volgende code laat zien hoe u een navolgende trigger registreert met de .NET SDK:
+De volgende code laat zien hoe u een post-trigger kunt registreren met behulp van de .NET SDK v2:
 
 ```csharp
 string triggerId = "trgPostUpdateMetadata";
@@ -318,7 +371,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-De volgende code laat zien hoe u een navolgende trigger aanroept met de .NET SDK:
+De volgende code laat zien hoe u een post-trigger aanroept met behulp van de .NET SDK v2:
 
 ```csharp
 var newItem = { 
@@ -330,6 +383,32 @@ var newItem = {
 RequestOptions options = new RequestOptions { PostTriggerInclude = new List<string> { "trgPostUpdateMetadata" } };
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
 await client.createDocumentAsync(containerUri, newItem, options);
+```
+
+### <a name="post-triggers---net-sdk-v3"></a>Post-triggers-.NET SDK v3
+
+De volgende code laat zien hoe u een post-trigger kunt registreren met behulp van de .NET SDK V3:
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
+{
+    Id = "trgPostUpdateMetadata",
+    Body = File.ReadAllText(@"..\js\trgPostUpdateMetadata.js"),
+    TriggerOperation = TriggerOperation.Create,
+    TriggerType = TriggerType.Post
+});
+```
+
+De volgende code laat zien hoe u een post-trigger aanroept met behulp van de .NET SDK V3:
+
+```csharp
+var newItem = { 
+    name: "artist_profile_1023",
+    artist: "The Band",
+    albums: ["Hellujah", "Rotators", "Spinning Top"]
+};
+
+await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PostTriggers = new List<string> { "trgPostUpdateMetadata" } });
 ```
 
 ### <a name="post-triggers---java-sdk"></a>Navolgende triggers - Java SDK
@@ -422,16 +501,16 @@ client.CreateItem(container_link, item, {
 
 De volgende voorbeelden laten zien hoe u een door de gebruiker gedefinieerde functie registreert met behulp van de Azure Cosmos DB-SDK's. Raadpleeg [Voorbeeld van door de gebruiker gedefinieerde functie](how-to-write-stored-procedures-triggers-udfs.md#udfs) als de bron voor deze door de gebruiker gedefinieerde functie is opgeslagen als `udfTax.js`.
 
-### <a name="user-defined-functions---net-sdk"></a>Door de gebruiker gedefinieerde functies - .NET SDK
+### <a name="user-defined-functions---net-sdk-v2"></a>Door de gebruiker gedefinieerde functies-.NET SDK v2
 
-De volgende code laat zien hoe u een door de gebruiker gedefinieerde functie registreert met de .NET SDK:
+De volgende code laat zien hoe u een door de gebruiker gedefinieerde functie registreert met behulp van de .NET SDK v2:
 
 ```csharp
 string udfId = "Tax";
 var udfTax = new UserDefinedFunction
 {
     Id = udfId,
-    Body = File.ReadAllText($@"..\js\{udfId}.js"),
+    Body = File.ReadAllText($@"..\js\{udfId}.js")
 };
 
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
@@ -439,7 +518,7 @@ await client.CreateUserDefinedFunctionAsync(containerUri, udfTax);
 
 ```
 
-De volgende code laat zien hoe u een door de gebruiker gedefinieerde functie aanroept met de .NET SDK:
+De volgende code laat zien hoe u een door de gebruiker gedefinieerde functie aanroept met behulp van de .NET SDK v2:
 
 ```csharp
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
@@ -448,6 +527,32 @@ var results = client.CreateDocumentQuery<dynamic>(containerUri, "SELECT * FROM I
 foreach (var result in results)
 {
     //iterate over results
+}
+```
+
+### <a name="user-defined-functions---net-sdk-v3"></a>Door de gebruiker gedefinieerde functies-.NET SDK v3
+
+De volgende code laat zien hoe u een door de gebruiker gedefinieerde functie registreert met behulp van de .NET SDK V3:
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateUserDefinedFunctionAsync(new UserDefinedFunctionProperties
+{
+    Id = "Tax",
+    Body = File.ReadAllText(@"..\js\Tax.js")
+});
+```
+
+De volgende code laat zien hoe u een door de gebruiker gedefinieerde functie aanroept met behulp van de .NET SDK V3:
+
+```csharp
+var iterator = client.GetContainer("database", "container").GetItemQueryIterator<dynamic>("SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000");
+while (iterator.HasMoreResults)
+{
+    var results = await iterator.ReadNextAsync();
+    foreach (var result in results)
+    {
+        //iterate over results
+    }
 }
 ```
 

@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: a7ad0f3be754029c654b04d19750aab7bbcd210d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 8e800ec8a7a2dd52e052547efa51deaad8c9bb45
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933633"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104923"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Problemen met de uitvoering van pakketten oplossen in SSIS Integration runtime
 
@@ -55,11 +55,11 @@ De mogelijke oorzaak is dat de ADO.NET-Provider die in het pakket wordt gebruikt
 
 ### <a name="error-message-the-connection--is-not-found"></a>Foutbericht: ' De verbinding '... ' is niet gevonden "
 
-Een bekend probleem in oudere versies van SQL Server Management Studio (SSMS) kan deze fout veroorzaken. Als het pakket een aangepast onderdeel bevat (bijvoorbeeld SSIS Azure Feature Pack of partneronderdelen) dat niet is geïnstalleerd op de computer waarop SSMS wordt gebruikt om de implementatie uit te voeren, wordt het onderdeel door SSMS verwijderd met de fout als gevolg. Upgrade [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) naar de nieuwste versie waarop het probleem is opgelost.
+Een bekend probleem in oudere versies van SQL Server Management Studio (SSMS) kan deze fout veroorzaken. Als het pakket een aangepast onderdeel bevat (bijvoorbeeld SSIS Azure Feature Pack of partneronderdelen) dat niet is geïnstalleerd op de computer waarop SSMS wordt gebruikt om de implementatie uit te voeren, wordt het onderdeel door SSMS verwijderd met de fout als gevolg. Upgrade [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) naar de nieuwste versie waarin het probleem is opgelost.
 
 ### <a name="error-messagessis-executor-exit-code--1073741819"></a>Fout bericht: de afsluit code van de SSIS-uitvoerder:-1073741819.
 
-* Mogelijke oorzaak & aanbevolen actie:
+* Mogelijke oorzaak en aanbevolen actie:
   * Deze fout kan zijn veroorzaakt door de beperking van de Excel-bron en-bestemming wanneer meerdere Excel-bronnen of-bestemmingen parallel in meerdere threads worden uitgevoerd. U kunt deze beperking verhelpen door de Excel-onderdelen te wijzigen zodat deze in de juiste volg orde worden uitgevoerd, of ze in verschillende pakketten te scheiden en de trigger pakket taak uitvoeren te activeren, waarbij de eigenschap ExecuteOutOfProcess is ingesteld op True.
 
 ### <a name="error-message-there-is-not-enough-space-on-the-disk"></a>Foutbericht: Er is onvoldoende ruimte op de schijf
@@ -70,7 +70,7 @@ Deze fout geeft aan dat de lokale schijf wordt gebruikt in het SSIS Integration 
 
 ### <a name="error-message-failed-to-retrieve-resource-from-master-microsoftsqlserverintegrationservicesscalescaleoutcontractcommonmasterresponsefailedexception-code300004-descriptionload-file--failed"></a>Foutbericht: Kan de bron niet ophalen uit de hoofd database. Microsoft.SqlServer.IntegrationServices.Scale.ScaleoutContract.Common.MasterResponseFailedException: Code: 300004. Beschrijving: het laden van het bestand * * * is mislukt.
 
-* Mogelijke oorzaak & aanbevolen actie:
+* Mogelijke oorzaak en aanbevolen actie:
   * Als de SSIS-activiteit een pakket uit het bestands systeem (pakket bestand of project bestand) uitvoert, treedt deze fout op als het project, het pakket of het configuratie bestand niet toegankelijk is met de toegangs referentie voor het pakket dat u in de SSIS-activiteit hebt gegeven
     * Als u Azure-bestand gebruikt:
       * Het bestandspad moet beginnen met de \\naam\>van \\ \<het opslag account\\. file.core.Windows.net\<pad naar bestands share\>
@@ -81,7 +81,7 @@ Deze fout geeft aan dat de lokale schijf wordt gebruikt in het SSIS Integration 
 
 ### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>Foutbericht: "De bestands naam"... " opgegeven in de verbinding is ongeldig
 
-* Mogelijke oorzaak & aanbevolen actie:
+* Mogelijke oorzaak en aanbevolen actie:
   * Er is een ongeldige bestands naam opgegeven
   * Zorg ervoor dat u FQDN (Fully Qualified Domain Name) gebruikt in plaats van korte tijd in uw verbindings beheer
 
@@ -120,19 +120,47 @@ Deze fout treedt op wanneer de SSIS Integration runtime geen toegang kan krijgen
 
 ### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Foutbericht: "Micro soft OLE DB-provider voor Analysis Services. HRESULT Beschrijving van 0x80004005: COM-fout: COM-fout: mscorlib; Er is een uitzonde ring opgetreden bij het doel van een aanroep.
 
-Een mogelijke oorzaak is dat de gebruikers naam of het wacht woord waarvoor Azure multi-factor Authentication is ingeschakeld, is geconfigureerd voor Azure Analysis Services-verificatie. Deze authenticatie wordt niet ondersteund in de SSIS Integration runtime. Probeer een service-principal te gebruiken voor Azure Analysis Services authenticatie:
-1. Bereid een service-principal voor zoals beschreven in [Automation met Service](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal)-principals.
+Een mogelijke oorzaak is dat de gebruikers naam of het wacht woord waarvoor Azure Multi-Factor Authentication is ingeschakeld, is geconfigureerd voor Azure Analysis Services-verificatie. Deze authenticatie wordt niet ondersteund in de SSIS Integration runtime. Probeer een service-principal te gebruiken voor Azure Analysis Services authenticatie:
+1. Bereid een service-principal voor zoals beschreven in [Automation met Service-principals](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal).
 2. Configureer in verbindings beheer **een specifieke gebruikers naam en wacht woord gebruiken**: Stel **AppID** in als de gebruikers naam en **clientSecret** als wacht woord.
 
-### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Foutbericht: ' ADONET-bron kan de verbinding {GUID} niet verkrijgen met het volgende fout bericht: De aanmelding is mislukt voor de gebruiker ' NT AUTHORITY\ANONYMOUS-aanmelding ' bij het gebruik van een beheerde identiteit
+### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Foutbericht: 'ADONET Source has failed to acquire the connection {GUID} with the following error message: De aanmelding is mislukt voor de gebruiker ' NT AUTHORITY\ANONYMOUS-aanmelding ' bij het gebruik van een beheerde identiteit
 
 Zorg ervoor dat u de verificatie methode van verbindings beheer niet configureert als **Active Directory wachtwoord verificatie** wanneer de para meter *ConnectUsingManagedIdentity* is ingesteld op **True**. U kunt het configureren als **SQL-verificatie** in plaats daarvan, wat wordt genegeerd als *ConnectUsingManagedIdentity* is ingesteld.
 
+### <a name="error-message-request-staging-task-with-operation-guid--fail-since-error-failed-to-dispatch-staging-operation-with-error-message-microsoftsqlserverintegrationservicesaisagentcoreaisagentexception-failed-to-load-data-proxy"></a>Foutbericht: "Test taak aanvragen met bewerking-GUID... mislukt omdat fout: Kan de faserings bewerking niet verzenden met het fout bericht: Micro soft. SqlServer. IntegrationServices. AisAgentCore. AisAgentException: Kan de gegevens proxy niet laden. "
+
+Zorg ervoor dat uw Azure SSIS Integration runtime is geconfigureerd met zelf-Hostende Integration runtime. Meer informatie vindt [u in de zelf-hostende IR configureren als proxy voor Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md).
+
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2010-errormessage-the-self-hosted-integration-runtime--is-offline"></a>Foutbericht: "Status van faserings taak: Is mislukt. Fout in faserings taak: Code 2010, ErrorMessage: De zelf-hostende Integration Runtime... is offline '
+
+Zorg ervoor dat uw zelf-Hostende Integration runtime is geïnstalleerd en wordt gestart. Meer informatie vindt [u op het maken en configureren van een zelf-hostende Integration runtime](create-self-hosted-integration-runtime.md)
+
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>Foutbericht: ' Fout met tijdelijke taak: Code 2906, ErrorMessage: De uitvoering van het pakket is mislukt., uitvoer: {"OperationErrorMessages": Optreedt De aangevraagde OLE DB provider... is niet geregistreerd. Als het 64-bits stuur programma niet is geïnstalleerd, voert u het pakket uit in 32-bits modus...
+
+Zorg ervoor dat de overeenkomende provider die wordt gebruikt door uw OLE DB-connectors in uw pakket, correct wordt geïnstalleerd op de zelf-Hostende Integration runtime-machine. Meer informatie vindt [u op zelf-hostende IR configureren als proxy voor Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
+
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Foutbericht: ' Fout met tijdelijke taak: Code 2906, ErrorMessage: De uitvoering van het pakket is mislukt., uitvoer: {"OperationErrorMessages": Optreedt System. IO. FileLoadException: Kan bestand of Assembly ' micro soft. WindowsAzure. Storage, versie =..., Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' of een van de bijbehorende afhankelijkheden niet laden. De manifest definitie van de gevonden assembly komt niet overeen met de assembly-verwijzing. ..."
+
+Een mogelijke oorzaak is dat uw zelf-Hostende Integration runtime niet op de juiste wijze is geïnstalleerd of bijgewerkt. Suggesties voor het downloaden en opnieuw installeren van de nieuwste zelf-hostende Integration runtime. Meer informatie vindt [u op het maken en configureren van een zelf-hostende Integration runtime](create-self-hosted-integration-runtime.md#installation-best-practices)
+
+### <a name="error-message-a-connection-is-required-when-requesting-metadata-if-you-are-working-offline-uncheck-work-offline-on-the-ssis-menu-to-enable-the-connection"></a>Foutbericht: ' Er is een verbinding vereist bij het aanvragen van meta gegevens. Als u offline werkt, schakelt u offline werken in het SSIS-menu uit om de verbinding in te scha kelen "
+
+* Mogelijke oorzaak en aanbevolen actie:
+  * Als er ook een waarschuwings bericht ' het onderdeel biedt geen ondersteuning voor het gebruik van verbindings beheer met de waarde ' ConnectByProxy ' ingesteld op ' True ' in het uitvoerings logboek, betekent dit dat er een verbindings beheer wordt gebruikt voor een onderdeel dat nog geen ConnectByProxy heeft ondersteund. De ondersteunde onderdelen kunt u vinden op [zelf-hostende IR configureren als proxy voor Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy)
+  * Het uitvoerings logboek vindt u in het [rapport SSMS](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) of in de logboekmap die u hebt opgegeven in de activiteit SSIS-pakket uitvoering.
+  * vNet kan ook worden gebruikt om toegang te krijgen tot on-premises gegevens als alternatief. Meer informatie vindt u in een [Azure-SSIS Integration runtime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md)
+
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Foutbericht: "Status van faserings taak: Is mislukt. Fout in faserings taak: Code 2906, ErrorMessage: De uitvoering van het pakket is mislukt., uitvoer: {"OperationErrorMessages": "SSIS-uitvoerings code voor afsluiten:-1. \ n", "LogLocation": "... \\SSISTelemetryExecutionLog.\\.. "," effectiveIntegrationRuntime ":"... "," executionDuration ":...," durationInQueue ": {" integrationRuntimeQueue ":...}}"\\
+
+Zorg ervoor dat C++ Visual runtime is geïnstalleerd op een zelf-hostende Integration runtime-computer. Meer informatie vindt [u op zelf-hostende IR configureren als proxy voor Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
+
 ### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>Meerdere pakket uitvoeringen worden onverwacht geactiveerd
 
-* Mogelijke oorzaak & aanbevolen actie:
-  * De opgeslagen procedure-activiteit ADF wordt gebruikt voor het activeren van de uitvoering van SSIS-pakketten. De t-SQL-opdracht kan leiden tot een tijdelijk probleem en het opnieuw uitvoeren van het programma activeren waardoor meerdere pakket uitvoeringen kunnen worden uitgevoerd.
+* Mogelijke oorzaak en aanbevolen actie:
+  * De opgeslagen procedure-activiteit van ADF of de opzoek activiteit wordt gebruikt voor het activeren van de uitvoering van SSIS-pakketten. De t-SQL-opdracht kan leiden tot een tijdelijk probleem en het opnieuw uitvoeren van het programma activeren waardoor meerdere pakket uitvoeringen kunnen worden uitgevoerd.
   * Gebruik in plaats daarvan ExecuteSSISPackage-activiteit die ervoor zorgt dat de pakket uitvoering niet opnieuw wordt uitgevoerd tenzij gebruikers het aantal pogingen in de activiteit instellen. Meer informatie vindt u op[https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
+  * Verfijn uw t-SQL-opdracht om opnieuw te kunnen worden uitgevoerd door te controleren of er al een uitvoering is geactiveerd
 
 ### <a name="package-execution-takes-too-long"></a>Het uitvoeren van het pakket duurt te lang
 

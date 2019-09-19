@@ -2,18 +2,18 @@
 title: Logboeken voor een HDInsight-cluster beheren-Azure HDInsight
 description: Bepaal de typen, de grootte en het Bewaar beleid voor de logboek bestanden voor HDInsight-activiteiten.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.author: hrasheed
-ms.openlocfilehash: 4e9a6a9ca435971d64ec8f59203a518287e6db4e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: c069b620e129177be5d374f5b23b5e54befd8ca2
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961004"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105428"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Logboeken beheren voor een HDInsight-cluster
 
@@ -79,11 +79,11 @@ Apache Ambari vereenvoudigt het beheer, de configuratie en de controle van een H
 
 Als u een lijst met Service weergaven wilt openen, selecteert u het deel venster **Ambari weer gaven** op de pagina Azure portal voor HDInsight.  Deze lijst varieert, afhankelijk van de bibliotheken die u hebt geïnstalleerd.  Zo ziet u een voor beeld van een garen van het wachtrij beheer, Hive-weer gave en TEZ.  Selecteer een service koppeling om de configuratie-en service gegevens te bekijken.  De pagina Ambari UI **stack en version** bevat informatie over de configuratie-en service versie geschiedenis van Cluster Services. Als u wilt navigeren naar deze sectie van de Ambari-gebruikers interface, selecteert u het menu **beheerder** en vervolgens **stacks en versies**.  Selecteer het tabblad **versies** om informatie over de service versie weer te geven.
 
-![Stack en versies](./media/hdinsight-log-management/ambari-stack-versions.png)
+![Apache Ambari-beheer stack en-versies](./media/hdinsight-log-management/ambari-stack-versions.png)
 
 Met de Ambari-gebruikers interface kunt u de configuratie voor alle (of alle) services die worden uitgevoerd op een bepaalde host (of een knoop punt) in het cluster downloaden.  Selecteer het menu **hosts** en vervolgens de koppeling voor de gewenste host. Selecteer op de pagina van de host de knop **acties host** en **down load vervolgens client configuraties**.
 
-![Configuraties van host-client](./media/hdinsight-log-management/download-client-configs.png)
+![Configuratie van Ambari-host-client downloaden van Apache](./media/hdinsight-log-management/download-client-configs.png)
 
 ### <a name="view-the-script-action-logs"></a>De script actie logboeken weer geven
 
@@ -93,7 +93,7 @@ Met HDInsight- [script acties](hdinsight-hadoop-customize-cluster-linux.md) word
 
 De volgende stap is het controleren van de logboek bestanden voor taak uitvoering voor de verschillende services.  Services kunnen Apache HBase, Apache Spark en vele andere zijn. Een Hadoop-cluster produceert een groot aantal uitgebreide logboeken, zodat u kunt bepalen welke logboeken nuttig zijn (en welke niet) het tijdrovender is.  Meer informatie over het logboek registratie systeem is belang rijk voor het beheer van logboek bestanden.  Hier volgt een voor beeld van een logboek bestand.
 
-![Voor beeld van HDInsight-logboek bestand](./media/hdinsight-log-management/hdi-log-file-example.png)
+![Voor beeld van een logboek bestand van HDInsight voorbeeld uitvoer](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>Toegang tot de Hadoop-logboek bestanden
 
@@ -146,9 +146,9 @@ U hebt nu voldoende informatie om een strategie voor logboek beheer voor de sleu
 
 Nadat u hebt vastgesteld welke logboek bestanden kunnen worden verwijderd, kunt u de logboek registratie parameters op veel Hadoop-Services aanpassen om logboek bestanden na een bepaalde periode automatisch te verwijderen.
 
-Voor bepaalde logboek bestanden kunt u gebruikmaken van een gereduceerde aanpak voor het archiveren van het logboek bestand. Voor Azure Resource Manager activiteiten Logboeken kunt u deze aanpak verkennen met behulp van de Azure Portal.  Stel de archivering van de ARM-Logboeken in door de koppeling **activiteiten logboek**te selecteren in de Azure portal voor uw HDInsight-exemplaar.  Selecteer aan de bovenkant van de pagina zoeken in het activiteiten logboek het menu-item **exporteren** om het deel venster **activiteiten logboek exporteren** te openen.  Vul het abonnement, de regio, in of u wilt exporteren naar een opslag account en hoeveel dagen de logboeken moeten worden bewaard. In dit deel venster kunt u ook aangeven of u wilt exporteren naar een Event Hub. 
+Voor bepaalde logboek bestanden kunt u gebruikmaken van een gereduceerde aanpak voor het archiveren van het logboek bestand. Voor Azure Resource Manager activiteiten Logboeken kunt u deze aanpak verkennen met behulp van de Azure Portal.  Stel de archivering van de ARM-Logboeken in door de koppeling **activiteiten logboek**te selecteren in de Azure portal voor uw HDInsight-exemplaar.  Selecteer aan de bovenkant van de pagina zoeken in het activiteiten logboek het menu-item **exporteren** om het deel venster **activiteiten logboek exporteren** te openen.  Vul het abonnement, de regio, in of u wilt exporteren naar een opslag account en hoeveel dagen de logboeken moeten worden bewaard. In dit deel venster kunt u ook aangeven of u wilt exporteren naar een Event Hub.
 
-![Logboek bestanden exporteren](./media/hdinsight-log-management/hdi-export-log-files.png)
+![Preview van Azure Portal-activiteiten logboek exporteren](./media/hdinsight-log-management/hdi-export-log-files.png)
 
 U kunt ook scripts archiveren in het logboek met Power shell.  Zie [Azure Automation logboeken archiveren in Azure Blob Storage](https://gallery.technet.microsoft.com/scriptcenter/Archive-Azure-Automation-898a1aa8)voor een voor beeld van een Power shell-script.
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: pabutler
-ms.openlocfilehash: 40170540458b7bc7ddb30f88117d472858937e8c
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 0bbe0e9718a25fdff76e591bf388bf829518502e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962939"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105617"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Gebruikskenmerken van klanten van Azure-partners
 
@@ -166,43 +166,28 @@ U kunt ook GUID'S op een nauw keuriger niveau bijhouden, zoals de SKU, waarbij S
 
 De GUID'S moeten worden geregistreerd om de toewijzing van klant gebruik in te scha kelen.
 
-Alle registraties voor sjabloon-GUID'S worden uitgevoerd via de Azure Marketplace-Cloud Partner-portal (CPP).
+Alle registraties voor sjabloon-GUID'S worden uitgevoerd binnen het partner centrum.
 
-Nadat u de GUID aan uw sjabloon of in de gebruikers agent hebt toegevoegd en de GUID hebt geregistreerd in het CPP, worden alle implementaties bijgehouden.
+Nadat u de GUID aan uw sjabloon of in de gebruikers agent hebt toegevoegd en de GUID in het partner centrum hebt geregistreerd, worden alle implementaties bijgehouden.
 
-1. Toep assen op [Azure Marketplace](https://aka.ms/listonazuremarketplace) en toegang krijgen tot het cpp.
+1. Meld u aan als een [commerciële Marketplace-Uitgever](https://aka.ms/JoinMarketplace).
 
-   * Partners moeten [een profiel hebben in cpp](https://docs.microsoft.com/azure/marketplace/become-publisher). We raden u aan de aanbieding in azure Marketplace of AppSource te vermelden.
+   * Partners moeten [beschikken over een profiel in Partner Center](https://docs.microsoft.com/azure/marketplace/become-publisher). We raden u aan de aanbieding in azure Marketplace of AppSource te vermelden.
    * Partners kunnen meerdere GUID'S registreren.
    * Partners kunnen een GUID registreren voor de niet-Marketplace-oplossings sjablonen en aanbiedingen.
 
-1. Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
+1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard).
 
-1. Selecteer in de rechter bovenhoek uw account pictogram en selecteer vervolgens het **Publisher-profiel**.
+1. Selecteer in de rechter bovenhoek het tandwiel pictogram instellingen en selecteer vervolgens **instellingen voor ontwikkel aars**.
 
-   ![Publisher-profiel selecteren](media/marketplace-publishers-guide/guid-image-for-lu.png)
+1. Selecteer op de **pagina account instellingen**de optie **Tracking GUID toevoegen.**
 
-1. Selecteer op de **pagina Profiel**de optie **Tracking GUID toevoegen.**
-
-   ![Selecteer GUID voor tracking toevoegen](media/marketplace-publishers-guide/guid-how-to-add-tracking.png)
-
-1. Voer in het vak **Tracking GUID** uw tracking-GUID in. Voer alleen de GUID in zonder het **PID-** voor voegsel. Voer in het vak **aangepaste beschrijving** uw naam of beschrijving van uw aanbieding in.
-
-   ![Profiel pagina](media/marketplace-publishers-guide/guid-dev-center-login.png)
-
-   ![Voer de GUID en de beschrijving van de aanbieding in](media/marketplace-publishers-guide/guid-dev-center-example.png)
+1. Voer in het vak **GUID** uw tracking-GUID in. Voer alleen de GUID in zonder het **PID-** voor voegsel. Typ in het vak **Beschrijving** de naam of beschrijving van uw aanbieding.
 
 1. Als u meer dan één GUID wilt registreren, selecteert u opnieuw **Tracking GUID toevoegen** . Er worden aanvullende vakken op de pagina weer gegeven.
 
-   ![Selecteer opnieuw tracking GUID toevoegen](media/marketplace-publishers-guide/guid-dev-center-example-add.png)
-
-   ![Voer een andere GUID en een beschrijving van de aanbieding in](media/marketplace-publishers-guide/guid-dev-center-example-description.png)
-
 1. Selecteer **Opslaan**.
 
-   ![Selecteer opslaan](media/marketplace-publishers-guide/guid-dev-center-save.png)
-
-Nadat u de GUID aan uw sjabloon of in de gebruikers agent hebt toegevoegd en de GUID hebt geregistreerd in het CPP, worden alle implementaties bijgehouden.
 
 ## <a name="verify-the-guid-deployment"></a>De GUID-implementatie verifiëren
 

@@ -1,45 +1,23 @@
 ---
-title: Vul het formulier instellingen bieden het | Azure Marketplace
-description: Legt uit de verschillende velden waarvoor waarden in het formulier instellingen bieden voor een nieuwe Dynamics 365 Business Central-toepassing.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Het formulier instellingen voor de aanbieding invullen | Azure Marketplace
+description: Afgeschaft artikel met koppelingen naar PC-artikelen; is "bevat uitleg over de verschillende velden waarvoor waarden zijn vereist in het formulier aanbiedings instellingen voor een nieuwe Dynamics 365 Business Central-toepassing."
+services: Azure, Marketplace, Cloud Partner Portal
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 09/18/2019
 ms.author: pabutler
-ms.openlocfilehash: d29b17e1a109b37a51a0e6bd2af2a7bb02b977a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 84932d693c9c74c74095eb78e750f8d3b1452068
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64934912"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105554"
 ---
-<a name="how-to-fill-out-the-offer-settings-form"></a>Het invullen van het formulier instellingen bieden
-=======================================
+# <a name="how-to-fill-out-the-offer-settings-form"></a>Het formulier instellingen voor de aanbieding invullen
 
-Het formulier van de instellingen voor aanbieding is een eenvoudige methode om de instellingen van de aanbieding te geven.
-De vereiste velden worden hieronder beschreven.
+De [Cloud Partner-Portal](https://cloudpartner.azure.com/) biedt geen ondersteuning meer voor het maken en beheren van Dynamics 365 Business Central-aanbiedingen. Deze functionaliteit is in plaats daarvan verplaatst naar de portal van micro soft [Partner Center](https://partner.microsoft.com/). Zie [een nieuwe aanbieding voor Dynamics 365 Business Central maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)voor meer informatie.
 
-### <a name="offer-id"></a>Aanbiedings-ID
+## <a name="next-steps"></a>Volgende stappen
 
-`OfferId` is een unieke id voor de aanbieding binnen een publisher-profiel.
-Deze ID zijn in URL's voor product zichtbaar. De id kan alleen bestaan uit alfanumerieke tekens in kleine letters en streepjes (-). De ID kan mag niet eindigen met een streepje en een maximum van 50 tekens. Dit veld is vergrendeld zodra een aanbieding live meteen.
-
-Als de partner 'Contoso' maakt bijvoorbeeld een aanbiedings-ID met de naam 'voorbeeld-Web App', wordt het weergegeven in AppSource als:
-
-&emsp; `https://appsource.microsoft.com/marketplace/apps/contoso.sample-Web App?tab=Overview`
-
-
-### <a name="publisher-id"></a>Uitgevers-ID
-
-Deze vervolgkeuzelijst kunt u de uitgeverprofiel dat u wilt publiceren, deze aanbieding onder kiezen. Dit veld is vergrendeld zodra een aanbieding live meteen.
-
-
-### <a name="name"></a>Name
-
-Dit is de weergavenaam voor uw app /-aanbod, dit wordt weergegeven in Microsoft [AppSource](https://appsource.microsoft.com/). De naam mag maximaal 50 tekens bevatten.
-
-> [!NOTE]
-> De korte naam mag niet hetzelfde als de naam van de uitgever in het app-manifest opgegeven.
-
-Klik op **opslaan** uw voortgang opslaan. Volgende stap zou zijn om toe te voegen technische informatie voor uw aanbieding.
+Voordat u een nieuwe aanbieding voor Dynamics 365 Business Central maakt, moet u [een partner centrum-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lezen en vervolgens het [dash board voor commerciële Marketplace](https://partner.microsoft.com/dashboard/directory) openen met de geselecteerde **overzichts** pagina. Volg de instructies in [een nieuwe Dynamics 365 Business Central-aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer) om uw aanbieding te maken.

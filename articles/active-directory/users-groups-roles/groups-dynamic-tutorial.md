@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93b59a108d5d87479c12174e97713d4c12d84f2e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1429841ca1376d67c7372f36bd35694afd4cd7ce
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60471598"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102629"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Zelfstudie: Automatisch groepsleden toevoegen of verwijderen
 
@@ -28,7 +28,7 @@ In Azure Active Directory (Azure AD) kunt u automatisch gebruikers aan beveiligi
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
-> * Een automatisch ingevulde groep van gastgebruikers ook kunnen maken van een partnerbedrijf
+> * Een automatisch gevulde groep gast gebruikers maken van een partner bedrijf
 > * Licenties aan de groep toewijzen voor de partnerspecifieke functies die toegankelijk moeten zijn voor de gastgebruikers
 > * Optioneel: de groep **Alle gebruikers** beveiligen door gastgebruikers te verwijderen zodat bijvoorbeeld alleen lidgebruikers toegang hebben tot interne sites
 
@@ -36,7 +36,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze functie moet een Azure AD Premium-licentie voor u als globale beheerder van de tenant. Als u nog geen licentie hebt, selecteert u in Microsoft Azure Active Directory **Licenties** > **Producten** > **Proberen/kopen**.
+Voor deze functie is een Azure AD Premium licentie voor u vereist als globale beheerder van de Tenant. Als u nog geen licentie hebt, selecteert u in Microsoft Azure Active Directory **Licenties** > **Producten** > **Proberen/kopen**.
 
 U bent niet verplicht licenties aan de gebruikers toe te wijzen om ze op te nemen als leden in dynamische groepen. U hebt slechts het minimum aantal beschikbare licenties voor Microsoft Azure Active Directory Premium P1 in de tenant nodig voor dergelijke gebruikers. 
 
@@ -44,19 +44,31 @@ U bent niet verplicht licenties aan de gebruikers toe te wijzen om ze op te neme
 
 Eerst maakt u een groep voor uw gastgebruikers, die alle afkomstig zijn van één partnerbedrijf. Omdat zij speciale licenties nodig hebben, is het vaak efficiënter om een groep te maken voor dit doel.
 
-1. Meld u aan bij Azure portal (https://portal.azure.com) met een account dat de globale beheerder voor uw tenant.
+1. Meld u aan bij de Azure Portal https://portal.azure.com) (met een account dat de globale beheerder is voor uw Tenant.
 2. Selecteer **Azure Active Directory** > **Groepen** > **Nieuwe groep**.
-   ![opdracht voor het starten van een nieuwe groep selecteren](./media/groups-dynamic-tutorial/new-group.png)
+   ![Selecteer een opdracht voor het starten van een nieuwe groep](./media/groups-dynamic-tutorial/new-group.png)
 3. Ga als volgt te werk op de blade **Groep**:
   
-   * Selecteer **Beveiliging** als het groepstype
-   * Voer `Guest users Contoso` in als de naam en beschrijving voor de groep
-   * Wijzig het **lidmaatschapstype** in **Dynamische gebruiker**
-   * Selecteer **Dynamische query toevoegen**
-  
-4. Selecteer **Geavanceerde regel** en geef het volgende op in het vak **Geavanceerde regel**: `(user.userType -eq "Guest") -and (user.companyName -eq "Contoso")`
-5. Selecteer **Query toevoegen** om de blade te sluiten.
-6. Selecteer, op de blade **Groep**, **Maken** om de groep te maken.
+   * Selecteer **beveiliging** als het groeps type.
+   * Voer `Guest users Contoso` in als de naam en beschrijving voor de groep.
+   * Wijzig het **lidmaatschaps type** in een **dynamische gebruiker**.
+   
+4. Selecteer **eigen aren** en op de Blade **eigen aren toevoegen** zoeken naar de gewenste eigen aren. Klik op de gewenste eigen aars om toe te voegen aan de selectie.
+5. Klik op **selecteren** om de Blade **eigen aars toevoegen** te sluiten.  
+6. Selecteer **dynamische query bewerken** in het vak **dynamische gebruikers leden** .
+7. Op de Blade **dynamische lidmaatschaps regels** :
+
+   * Klik in het veld **eigenschap** op de bestaande waarde en selecteer **User type**. 
+   * Controleer of het **operator** veld **gelijk is aan** geselecteerd.  
+   * Selecteer het veld **waarde** en voer **gast**in. 
+   * Klik op de Hyper link- **expressie toevoegen** om een andere regel toe te voegen.
+   * **Selecteer in**het veld **en/of** .
+   * Selecteer **Bedrijfs naam**in het veld **eigenschap** .
+   * Controleer of het **operator** veld **gelijk is aan** geselecteerd.
+   * Typ **Contoso**in het veld **waarde** .
+   * Klik op **Opslaan** om de Blade **dynamische lidmaatschaps regels** te sluiten.
+   
+8. Selecteer, op de blade **Groep**, **Maken** om de groep te maken.
 
 ## <a name="assign-licenses"></a>Licenties toewijzen
 

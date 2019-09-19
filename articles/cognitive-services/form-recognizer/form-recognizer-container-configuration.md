@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 4a490e8a9f111985df9c9e8c9f73bc36d686cc2a
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: af30719ead8464d0420734818203b8070eb5d145
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348706"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105108"
 ---
 # <a name="configure-form-recognizer-containers"></a>Containers voor formulier herkenning configureren
 
@@ -45,7 +45,7 @@ Met `Billing` deze instelling geeft u de eindpunt-URI op van de _formulier Recog
 
 U kunt deze instelling vinden in het Azure Portal, in het **overzicht van formulier herkenning**, onder **eind punt**.
 
-|Verplicht| Name | Gegevenstype | Description |
+|Vereist| Name | Gegevenstype | Description |
 |--|------|-----------|-------------|
 |Ja| `Billing` | Reeks | URI van de facturering-eindpunt<br><br>Voorbeeld:<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
 
@@ -76,8 +76,8 @@ De exacte syntaxis van de locatie van de host koppelen, is afhankelijk van het h
 
 |Optioneel| Name | Gegevenstype | Description |
 |-------|------|-----------|-------------|
-|Verplicht| `Input` | Reeks | Het doel van de invoer koppelen. De standaardwaarde is `/input`.    <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Verplicht| `Output` | Tekenreeks | Het doel van de uitvoer-koppelpunt. De standaardwaarde is `/output`.  <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Vereist| `Input` | Tekenreeks | Het doel van de invoer koppelen. De standaardwaarde is `/input`.    <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Vereist| `Output` | Tekenreeks | Het doel van de uitvoer-koppelpunt. De standaardwaarde is `/output`.  <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Voorbeeld van de docker-opdrachten uitvoeren
 
@@ -90,16 +90,17 @@ Vervang {_argument_name_} in de volgende tabel door uw eigen waarden:
 
 | Tijdelijke aanduiding | Value |
 |-------------|-------|
-|{FORM_RECOGNIZER_API_KEY} | De sleutel die wordt gebruikt om de container te starten. Deze is beschikbaar op de pagina Azure Portal formulier Recognizer Keys.  |
-|{FORM_RECOGNIZER_ENDPOINT_URI} | De waarde voor de URL van het facturerings eindpunt is beschikbaar op de pagina overzicht van Azure Portal formulier Recognizer.|
-|{COMPUTER_VISION_API_KEY}| De sleutel is beschikbaar op de pagina Azure Portal Computer Vision-API sleutels.|
-|{COMPUTER_VISION_ENDPOINT_URI}|Het facturerings eindpunt. Als u een Computer Vision resource op basis van de Cloud gebruikt, is de URI-waarde beschikbaar op de overzichts pagina Azure Portal Computer Vision-API. Als u een cognitieve- *Services-Recognize-Text* -container gebruikt, gebruikt u de URL van het facturerings eindpunt dat is door `docker run` gegeven aan de container in de opdracht.|
+| **{FORM_RECOGNIZER_API_KEY}** | De sleutel die wordt gebruikt om de container te starten. Deze is beschikbaar op de pagina Azure Portal formulier Recognizer Keys. |
+| **{FORM_RECOGNIZER_ENDPOINT_URI}** | De waarde voor de URL van het facturerings eindpunt is beschikbaar op de pagina overzicht van Azure Portal formulier Recognizer.|
+| **{COMPUTER_VISION_API_KEY}** | De sleutel is beschikbaar op de pagina Azure Portal Computer Vision-API sleutels.|
+| **{COMPUTER_VISION_ENDPOINT_URI}** | Het facturerings eindpunt. Als u een Computer Vision resource op basis van de Cloud gebruikt, is de URI-waarde beschikbaar op de overzichts pagina Azure Portal Computer Vision-API. Als u een cognitieve- *Services-Recognize-Text* -container gebruikt, gebruikt u de URL van het facturerings eindpunt dat is door `docker run` gegeven aan de container in de opdracht. |
+
+Zie [vereiste para meters verzamelen](form-recognizer-container-howto.md#gathering-required-parameters) voor meer informatie over het verkrijgen van deze waarden.
+
+[!INCLUDE [cognitive-services-custom-subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > Als u de container wilt uitvoeren, `Eula`geeft `Billing`u de `ApiKey` opties, en op. anders wordt de container niet gestart. Zie voor meer informatie, [facturering](#billing-configuration-setting).
-
-> [!NOTE] 
-> De waarde ApiKey is de **sleutel** van de pagina Resource sleutels van Azure Form Recognizer.
 
 ## <a name="form-recognizer-container-docker-examples"></a>Docker-voor beelden van de container voor formulier herkenning
 

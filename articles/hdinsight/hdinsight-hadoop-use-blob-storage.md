@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 5d287165e77597943d298178689c216497361570
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: e9ecc34566e6e534b7489c934c0d5fa3b34e219b
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879663"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104483"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure-opslag gebruiken met Azure HDInsight-clusters
 
@@ -45,7 +45,7 @@ Als u ervoor kiest om uw opslag account te beveiligen met de **firewalls en bepe
 ## <a name="hdinsight-storage-architecture"></a>HDInsight-opslagarchitectuur
 Het volgende diagram biedt een abstracte weergave van de HDInsight-opslagarchitectuur bij gebruik van Azure Storage:
 
-![Hadoop-clusters gebruiken de HDFS-API voor toegang tot en opslag van gestructureerde en ongestructureerde gegevens in Blob Storage.](./media/hdinsight-hadoop-use-blob-storage/storage-architecture.png "HDInsight Storage-architectuur")
+![Hadoop-clusters gebruiken HDFS-API voor toegang tot en opslag van gegevens in Blob Storage](./media/hdinsight-hadoop-use-blob-storage/storage-architecture.png "HDInsight Storage architectuur")
 
 HDInsight biedt toegang tot het Distributed File System dat lokaal wordt gekoppeld aan de rekenknooppunten. Dit bestandssysteem is toegankelijk via de volledig gekwalificeerde URI, bijvoorbeeld:
 
@@ -73,6 +73,7 @@ Meerdere WebHCat-taken, waaronder Apache Hive, MapReduce, Apache Hadoop streamin
 Blobs kunnen worden gebruikt voor gestructureerde en ongestructureerde gegevens. De gegevens in blobcontainers worden opgeslagen als sleutel-waardeparen en er is geen maphiërarchie. Maar het slash-teken (/) kan echter worden gebruikt binnen de sleutelnaam deze weergegeven, zodat het lijkt alsof een bestand is opgeslagen in een mapstructuur. De sleutel van de blob kan bijvoorbeeld *input/log1.txt* zijn. Er is niet echt een *invoermap* aanwezig, maar als gevolg van de aanwezigheid van het slash-teken in de naam van de sleutel ziet dit eruit als een bestandspad.
 
 ## <a id="benefits"></a>Voordelen van Azure Storage
+
 De impliciete prestaties van het niet volgen van reken clusters en opslag bronnen worden beperkt door de manier waarop de berekenings clusters worden gemaakt dicht bij de resources van het opslag account in de Azure-regio, waar het netwerk met hoge snelheid het efficiënt maakt voor de Reken knooppunten voor toegang tot de gegevens in azure Storage.
 
 Het opslaan van gegevens in Azure Storage in plaats van HDFS heeft enkele voordelen:
@@ -93,6 +94,7 @@ Bepaalde MapReduce-taken en -pakketten kunnen tussenliggende resultaten generere
 > De meeste HDFS-opdrachten (bijvoorbeeld `ls` `copyFromLocal` , en `mkdir`) werken gewoon zoals verwacht. Alleen de opdrachten die specifiek zijn voor de systeem eigen HDFS-implementatie (aangeduid als DFS), zoals `fschk` en `dfsadmin`, tonen een ander gedrag in azure Storage.
 
 ## <a name="address-files-in-azure-storage"></a>Bestanden in Azure Storage adresseren
+
 Het URI-schema om bestanden in Azure Storage vanuit HDInsight te openen:
 
 ```config
@@ -125,6 +127,7 @@ example/jars/hadoop-mapreduce-examples.jar
 > Als u buiten HDInsight met blobs werkt, zullen de meeste hulpprogramma's de indeling WASB niet herkennen en wordt er in plaats daarvan een standaardpadindeling verwacht, zoals `example/jars/hadoop-mapreduce-examples.jar`.
 
 ##  <a name="blob-containers"></a>Blobcontainers
+
 Als u blobs wilt gebruiken, maakt u eerst een [Azure Storage-account](../storage/common/storage-create-storage-account.md). Als onderdeel hiervan geeft u een Azure-regio op waar het opslagaccount wordt gemaakt. Het cluster en het opslagaccount moeten worden gehost in dezelfde regio. De Hive-metastore SQL Server-Data Base en Apache Oozie-meta Store SQL Server-Data Base moeten zich ook in dezelfde regio bevinden.
 
 Elke blob die u maakt, behoort tot een container in uw Azure Storage-account, ongeacht de locatie van de blob. Deze container kan een bestaande blob zijn die buiten HDInsight is gemaakt. Het kan echter ook een container zijn die is gemaakt voor een HDInsight-cluster.

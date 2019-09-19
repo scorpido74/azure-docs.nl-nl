@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5fa47e029434b70166403b8603c820d611690f2
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: c88457653d73931600c37f5e332cc4327dc7957a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975989"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102888"
 ---
 # <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>Zelfstudie: Shmoop voor scholen integreren met Azure Active Directory
 
@@ -76,7 +76,7 @@ Als u Azure AD SSO wilt configureren en testen met Shmoop voor scholen, voltooit
 
 Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **Shmoop for scholen** Application Integration de sectie **beheren** en selecteer eenmalige **aanmelding**.
+1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **Shmoop for scholen** Application Integration de sectie **beheren** en selecteer **eenmalige aanmelding**.
 1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
 1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
@@ -91,14 +91,14 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met [Shmoop for scholen client support team](mailto:support@shmoop.com) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Shmoop for scholen-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram  **Bewerken**  om het dialoogvenster  **Gebruikerskenmerken**  te openen.
+5. Shmoop for scholen-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op pictogram **bewerken** om het dialoog venster **gebruikers kenmerken** te openen.
 
     ![image](common/edit-attribute.png)
 
     > [!NOTE]
     > Shmoop for school ondersteunt twee rollen voor gebruikers: **Docent** en **student**. Stel deze rollen in azure AD in zodat gebruikers de juiste rollen kunnen toewijzen. Zie [hier](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)voor meer informatie over het configureren van rollen in azure AD.
 
-6. Naast de bovenstaande Shmoop voor scholen toepassing worden slechts enkele kenmerken meer door gegeven aan het SAML-antwoord. Voer in de sectie **gebruikers claims** van het dialoog venster **gebruikers kenmerken** de volgende stappen uit om het SAML-token kenmerk toe te voegen, zoals wordt weer gegeven in de onderstaande tabel: 
+6. Naast de bovenstaande Shmoop voor scholen toepassing worden slechts enkele kenmerken meer door gegeven aan het SAML-antwoord. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel: 
 
     | Name |  Bronkenmerk|
     | --------- | --------------- |
@@ -158,14 +158,14 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-shmoop-for-schools-sso"></a>Shmoop configureren voor scholen-SSO
 
-Als u eenmalige aanmelding wilt configureren **voor Shmoop voor scholen** , moet u de URL voor de **federatieve meta gegevens** van de app verzenden naar [Shmoop voor scholen](mailto:support@shmoop.com)-ondersteunings team. Ze stelt u deze optie om de SAML SSO-verbinding instellen goed aan beide zijden.
+Als u eenmalige aanmelding wilt configureren **voor Shmoop voor scholen** , moet u de URL voor de **federatieve meta gegevens** van de app verzenden naar [Shmoop voor scholen-ondersteunings team](mailto:support@shmoop.com). Ze stelt u deze optie om de SAML SSO-verbinding instellen goed aan beide zijden.
 
 ### <a name="create-shmoop-for-schools-test-user"></a>Shmoop maken voor scholen test gebruiker
 
 In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in Shmoop voor scholen. Shmoop voor scholen ondersteunt just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker niet al aanwezig is in Shmoop for scholen, wordt er na verificatie een nieuwe gemaakt.
 
 > [!NOTE]
-> Als u hand matig een gebruiker moet maken, neemt u contact op met het ondersteunings [team van Shmoop for scholen](mailto:support@shmoop.com).
+> Als u hand matig een gebruiker moet maken, neemt u contact op met het [ondersteunings team van Shmoop for scholen](mailto:support@shmoop.com).
 
 ## <a name="test-sso"></a>SSO testen 
 

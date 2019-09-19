@@ -1,18 +1,18 @@
 ---
 title: Een verbinding met een privé-eind punt beheren in azure
 description: Meer informatie over het beheren van privé-eindpunt verbindingen in azure
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 16654662665607f86aa08d1f9c5638daf2cbc251
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 012b236e997ef9144eaab43862f5f4dd2b324fff
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018920"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104636"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Een verbinding met een privé-eind punt beheren
 Een persoonlijke Azure-koppeling werkt op een goedkeurings stroom model voor de persoonlijke koppeling service, waarmee de gebruiker van de private link een verbinding kan aanvragen met de service provider voor het gebruik van de service. De service provider kan vervolgens bepalen of de gebruiker verbinding mag maken of niet. Met de persoonlijke Azure-koppeling kunnen de service providers de verbinding van het particuliere eind punt op hun resources beheren. In dit artikel vindt u instructies voor het beheren van de verbindingen met een privé-eind punt.

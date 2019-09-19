@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b4ee4ca2ede2e0a2d6d1af906cc34051c76353bd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9bbd62bc05e03641c2abe9308d9238bef23877c2
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073764"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104967"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>De configuratie van uw API Management-service opslaan en configureren met git
 
@@ -99,7 +99,7 @@ git clone https://username:password@{name}.scm.azure-api.net/
 Als er een fout optreedt, kunt u URL-code ring van het wachtwoord gedeelte van de opdracht proberen. Een snelle manier om dit te doen is door Visual Studio te openen en de volgende opdracht uit te voeren in het **venster Direct**. Als u het **venster Direct**wilt openen, opent u een oplossing of project in Visual Studio (of maakt u een nieuwe lege console toepassing) en kiest u **Windows**, **direct** in het menu **fout opsporing** .
 
 ```
-?System.NetWebUtility.UrlEncode("password from the Azure portal")
+?System.Net.WebUtility.UrlEncode("password from the Azure portal")
 ```
 
 Gebruik het versleutelde wacht woord samen met uw gebruikers naam en locatie van de opslag plaats om de Git-opdracht te maken.
@@ -208,13 +208,13 @@ De eerste vier instellingen (`RegistrationEnabled`, `UserRegistrationTerms`, `Us
 | UserRegistrationTermsConsentRequired |Selectie vakje **toestemming vereisen** |
 | RequireUserSigninEnabled |Selectie vakje **anonieme gebruikers omleiden naar aanmeldings pagina** |
 
-De volgende vier instellingen (`DelegationEnabled`, `DelegationUrl`, `DelegatedSubscriptionEnabled`en `DelegationValidationKey`) worden toegewezen aan de volgende instellingen op het tabblad Delegering in het gedeelte **beveiliging** .
+De volgende vier instellingen (`DelegationEnabled`, `DelegationUrl`, `DelegatedSubscriptionEnabled`en `DelegationValidationKey`) worden toegewezen aan de volgende instellingen op het tabblad **delegering** in het gedeelte **beveiliging** .
 
 | Overdrachts instelling | Wordt toegewezen aan |
 | --- | --- |
 | DelegationEnabled |Selectie vakje **aanmelden & aanmelding voor gemachtigde** |
 | DelegationUrl |Tekstvak voor **eind punt-URL van overdracht** |
-| DelegatedSubscriptionEnabled |Selectie vakje voor delegeren van **product abonnement** |
+| DelegatedSubscriptionEnabled |Selectie vakje voor **delegeren van product abonnement** |
 | DelegationValidationKey |Tekstvak voor **validatie sleutel voor gemachtigde** |
 
 De laatste instelling, `$ref-policy`, verwijst naar het bestand met globale beleids overzichten voor het service-exemplaar.

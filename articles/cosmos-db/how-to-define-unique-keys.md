@@ -4,14 +4,14 @@ description: Meer informatie over het definiëren van unieke sleutels voor een A
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/17/2019
 ms.author: thweiss
-ms.openlocfilehash: 67b6ca1914d1728930c29c4a0bbca6cf86753da9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3b950565e0a44f979c11e3eb67b702c4dcb44769
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093325"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104894"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Unieke sleutels voor een Azure Cosmos-container definiëren
 
@@ -43,15 +43,33 @@ Wanneer u een nieuwe container maakt met behulp van de [.NET SDK v2](https://www
 client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), new DocumentCollection
 {
     Id = "container",
+    PartitionKey = new PartitionKeyDefinition { Paths = new Collection<string>(new List<string> { "/myPartitionKey" }) },
     UniqueKeyPolicy = new UniqueKeyPolicy
     {
         UniqueKeys = new Collection<UniqueKey>(new List<UniqueKey>
         {
-            new UniqueKey { Paths = new Collection<string>(new List<string> { "/firstName", "/lastName", "emailAddress" }) },
+            new UniqueKey { Paths = new Collection<string>(new List<string> { "/firstName", "/lastName", "/emailAddress" }) },
             new UniqueKey { Paths = new Collection<string>(new List<string> { "/address/zipCode" }) }
         })
     }
 });
+```
+
+## <a name="use-the-net-sdk-v3"></a>De .NET SDK v3 gebruiken
+
+Wanneer u een nieuwe container maakt met behulp van de [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/), gebruikt u de Fluent API van de SDK voor het declareren van unieke sleutels op een beknopte en lees bare manier.
+
+```csharp
+await client.GetDatabase("database").DefineContainer(name: "container", partitionKeyPath: "/myPartitionKey")
+    .WithUniqueKey()
+        .Path("/firstName")
+        .Path("/lastName")
+        .Path("/emailAddress")
+    .Attach()
+    .WithUniqueKey()
+        .Path("/address/zipCode")
+    .Attach()
+    .CreateIfNotExistsAsync();
 ```
 
 ## <a name="use-the-java-sdk"></a>De Java-SDK gebruiken

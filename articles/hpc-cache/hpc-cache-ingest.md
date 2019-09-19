@@ -4,14 +4,14 @@ description: Azure Blob-opslag vullen voor gebruik met de Azure HPC-cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/18/2019
 ms.author: v-erkell
-ms.openlocfilehash: 07a97b1afa8049ace97f1589393cd76c24f21368
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 0a71efdc0479a69aed8fecc22a6c89c506279d57
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775648"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105315"
 ---
 # <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache"></a>Gegevens verplaatsen naar Azure Blob-opslag voor Azure HPC-cache
 
@@ -31,15 +31,17 @@ Als u het laad hulpprogramma niet wilt gebruiken of als u inhoud wilt toevoegen 
 
 ## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>Gegevens vooraf laden in Blob Storage met CLFSLoad
 
-U kunt het hulp programma [avere CLFSLoad](https://aka.ms/avere-clfsload) gebruiken om gegevens te kopiëren naar een nieuwe Blob Storage-container voordat u deze toevoegt als een opslag doel. Dit hulp programma wordt uitgevoerd op een virtuele Linux-machine en schrijft gegevens in de eigen indeling die nodig is voor de Azure HPC-cache. Dit is de meest efficiënte manier om een BLOB storage-container te vullen voor gebruik met de cache.
+U kunt met behulp van de <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> AVERE CLFSLoad-hulp programma voor het kopiëren van gegevens naar een nieuwe Blob Storage-container voordat u deze toevoegt als een opslag doel. Dit hulp programma wordt uitgevoerd op één Linux-systeem en schrijft gegevens in de eigen indeling die nodig is voor de Azure HPC-cache. CLFSLoad is de meest efficiënte manier om een BLOB storage-container te vullen voor gebruik met de cache.
+
+Het avere CLFSLoad-hulp programma is beschikbaar op verzoek van uw Azure HPC-cache team. Vraag de contact persoon van uw team of open een ondersteunings ticket om hulp aan te vragen.
 
 Deze optie werkt met nieuwe, lege containers. Maak de container voordat u avere CLFSLoad gebruikt.
 
-Gedetailleerde informatie is opgenomen in het [Leesmij-bestand voor avere CLFSLoad](https://github.com/microsoft/Avere-CLFSLoad/blob/master/README.md). <!-- caution literal link -->
+Gedetailleerde informatie is opgenomen in de avere CLFSLoad-distributie, die beschikbaar is op aanvraag vanuit het team van de HPC-cache van Azure. <!-- [Avere CLFSLoad readme](https://github.com/microsoft/Avere-CLFSLoad/blob/master/README.md). --><!-- caution literal link -->
 
 Een algemeen overzicht van het proces:
 
-1. Bereid een Linux-systeem (fysiek of VM) voor met python versie 3,6 of hoger. (Python 3,7 wordt aanbevolen voor betere prestaties.)
+1. Bereid een Linux-systeem (VM of fysiek) voor met python versie 3,6 of hoger. (Python 3,7 wordt aanbevolen voor betere prestaties.)
 1. Installeer de avere-CLFSLoad-software op het Linux-systeem.
 1. Voer de overdracht uit vanaf de Linux-opdracht regel.
 
@@ -50,7 +52,7 @@ Het hulp programma avere CLFSLoad heeft de volgende informatie nodig:
 * Een SAS-token (Shared Access Signature) waarmee het hulp programma naar de container kan schrijven
 * Een lokaal pad naar de gegevens Bron: een lokale map die de te kopiëren gegevens bevat of een lokaal pad naar een gekoppeld extern systeem met de gegevens.
 
-De vereisten worden gedetailleerd beschreven in het [Leesmij-bestand voor avere CLFSLoad](https://aka.ms/avere-clfsload).
+<!-- The requirements are explained in detail in the [Avere CLFSLoad readme](https://aka.ms/avere-clfsload). -->
 
 ## <a name="copy-data-through-the-azure-hpc-cache"></a>Gegevens kopiëren via de Azure HPC-cache
 
