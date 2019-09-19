@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: d8773b330349356410589cf66e8f50636d92b601
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 4bc6e5570870941f050bc289dddfd85d64843df2
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009177"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092100"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Gegevens kopiëren van HDFS met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -30,7 +30,7 @@ In dit artikel wordt beschreven hoe u gegevens kopieert van HDFS-server. Lees vo
 
 Deze HDFS-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
 Deze HDFS-connector ondersteunt met name:
@@ -58,7 +58,7 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service van HDFS
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type moet worden ingesteld op: **Hdfs**. | Ja |
+| type | De eigenschap type moet worden ingesteld op: **Hdfs**. | Ja |
 | url |URL naar HDFS |Ja |
 | authenticationType | Toegestane waarden zijn: **Anoniem**of **Windows**. <br><br> Als u **Kerberos-verificatie** wilt gebruiken voor HDFS-connector, raadpleegt u [deze sectie](#use-kerberos-authentication-for-hdfs-connector) om uw on-premises omgeving dienovereenkomstig in te stellen. |Ja |
 | userName |Gebruikers naam voor Windows-verificatie. Voor Kerberos-verificatie geeft `<username>@<domain>.com`u op. |Ja (voor Windows-verificatie) |
@@ -122,7 +122,7 @@ Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens, JSON, 
 
 | Eigenschap   | Description                                                  | Vereist |
 | ---------- | ------------------------------------------------------------ | -------- |
-| Type       | De eigenschap type onder `location` in DataSet moet worden ingesteld op **HdfsLocation**. | Ja      |
+| type       | De eigenschap type onder `location` in DataSet moet worden ingesteld op **HdfsLocation**. | Ja      |
 | folderPath | Het pad naar de map. Als u een Joker teken wilt gebruiken om de map te filteren, slaat u deze instelling over en geeft u de instellingen voor de activiteit bron op. | Nee       |
 | fileName   | De bestands naam onder de opgegeven folderPath. Als u Joker tekens wilt gebruiken om bestanden te filteren, slaat u deze instelling over en geeft u de instellingen van de activiteit bron op. | Nee       |
 
@@ -161,7 +161,7 @@ Als u gegevens wilt kopiëren van HDFS in de **Orc-indeling**, worden de volgend
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **FileShare** |Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **FileShare** |Ja |
 | folderPath | Pad naar de map. Het Joker teken filter wordt ondersteund, toegestane joker tekens `*` zijn: (komt overeen met nul of `?` meer tekens) en (komt overeen met nul `^` of één teken); gebruik om te escapen als uw werkelijke bestands naam Joker teken of escape-teken bevat. <br/><br/>Voor beelden: root folder/submap/, zie voor beelden van [mappen en bestands filters](#folder-and-file-filter-examples)voor meer voor beelden. |Ja |
 | fileName |  **Naam of het jokerteken filter** voor de bestanden die onder het opgegeven 'folderPath'. Als u een waarde voor deze eigenschap niet opgeeft, wordt de gegevensset verwijst naar alle bestanden in de map. <br/><br/>Voor het filter toegestane jokertekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken).<br/>-Voorbeeld 1: `"fileName": "*.csv"`<br/>-Voorbeeld 2: `"fileName": "???20180427.txt"`<br/>Gebruik `^` om te escapen als uw werkelijke mapnaam Joker teken of escape-teken bevat. |Nee |
 | modifiedDatetimeStart | Bestanden filteren op basis van het kenmerk: Laatst gewijzigd. De bestanden worden geselecteerd als hun laatst gewijzigd binnen het tijdsinterval tussen zijn `modifiedDatetimeStart` en `modifiedDatetimeEnd`. De tijd wordt toegepast op de UTC-tijdzone in de notatie ' 2018-12-01T05:00:00Z '. <br/><br/> Houd er rekening mee dat de prestaties van het verplaatsen van gegevens worden beïnvloed door deze instelling in te scha kelen wanneer u bestands filter van enorme hoeveel heden bestanden wilt uitvoeren. <br/><br/> De eigenschappen kunnen NULL zijn, wat betekent dat er geen filter voor bestands kenmerken wordt toegepast op de gegevensset.  Wanneer `modifiedDatetimeStart` datum / tijdwaarde heeft, maar `modifiedDatetimeEnd` NULL is, betekent dit dat de bestanden waarvan het kenmerk Laatst gewijzigde groter dan is of gelijk is aan de datum / tijdwaarde wordt geselecteerd.  Wanneer `modifiedDatetimeEnd` datum / tijdwaarde heeft, maar `modifiedDatetimeStart` NULL is, betekent dit dat de bestanden waarvan het kenmerk Laatst gewijzigde lager is dan de datum / tijdwaarde wordt geselecteerd.| Nee |
@@ -217,7 +217,7 @@ Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens, JSON, 
 
 | Eigenschap                 | Description                                                  | Vereist                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| Type                     | De eigenschap type onder `storeSettings` moet worden ingesteld op **HdfsReadSetting**. | Ja                                           |
+| type                     | De eigenschap type onder `storeSettings` moet worden ingesteld op **HdfsReadSetting**. | Ja                                           |
 | recursive                | Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen voor de opgegeven map. Houd er rekening mee dat wanneer recursieve is ingesteld op true en de sink is een opslagplaats op basis van bestanden, een lege map of submap is niet gekopieerd of gemaakt in de sink. Toegestane waarden zijn **waar** (standaard) en **false**. | Nee                                            |
 | wildcardFolderPath       | Het mappad met Joker tekens om de bron mappen te filteren. <br>Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens `?` ) en (komt overeen met nul of één `^` teken); gebruik om te escapen als uw werkelijke mapnaam Joker teken of escape-teken bevat. <br>Bekijk meer voor beelden in [map-en bestands filter voorbeelden](#folder-and-file-filter-examples). | Nee                                            |
 | wildcardFileName         | De naam van het bestand met Joker tekens onder de opgegeven folderPath/wildcardFolderPath voor het filteren van bron bestanden. <br>Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens `?` ) en (komt overeen met nul of één `^` teken); gebruik om te escapen als uw werkelijke mapnaam Joker teken of escape-teken bevat.  Bekijk meer voor beelden in [map-en bestands filter voorbeelden](#folder-and-file-filter-examples). | Ja als `fileName` niet is opgegeven in de gegevensset |
@@ -282,7 +282,7 @@ Als u gegevens wilt kopiëren van HDFS in **Orc-indeling**, worden de volgende e
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **HdfsSource** |Ja |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **HdfsSource** |Ja |
 | recursive | Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen voor de opgegeven map. Houd er rekening mee wanneer recursieve is ingesteld op true en sink is opslag op basis van bestanden, lege map/ondergeschikt-folder worden niet gekopieerd/gemaakt bij de sink.<br/>Toegestane waarden zijn: **waar** (standaard), **false** | Nee |
 | distcpSettings | Eigenschaps groep bij gebruik van HDFS DistCp. | Nee |
 | resourceManagerEndpoint | Het eind punt van het garen van een andere bron | Ja als u DistCp gebruikt |

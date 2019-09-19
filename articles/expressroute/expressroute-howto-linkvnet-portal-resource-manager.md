@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 1545e2e7eba23b0bedbfe297c292fc94e1659ae3
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 6185540340bba4299eb9307432480c91d531779a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775286"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088906"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Een virtueel netwerk verbinden met een ExpressRoute-circuit met behulp van de portal
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Dit artikel helpt u bij het maken van een verbinding voor een virtueel netwerk k
 
 * U moet een actief ExpressRoute-circuit hebben.
   * Volg de instructies voor [maken van een ExpressRoute-circuit](expressroute-howto-circuit-portal-resource-manager.md) en laat het circuit inschakelen door de connectiviteitsprovider.
-  * Zorg ervoor dat u Azure private peering is geconfigureerd voor uw circuit hebt. Zie de [configureren routering](expressroute-howto-routing-portal-resource-manager.md) artikel voor routeringsinstructies.
+  * Zorg ervoor dat u Azure private peering is geconfigureerd voor uw circuit hebt. Zie het artikel [peering maken en wijzigen voor een ExpressRoute-circuit](expressroute-howto-routing-portal-resource-manager.md) voor informatie over peering en route ring.
   * Zorg ervoor dat de persoonlijke Azure-peering is geconfigureerd en van de BGP-peering tussen uw netwerk en Microsoft is, zodat u end-to-end-connectiviteit kunt inschakelen.
   * Zorg ervoor dat u hebt een virtueel netwerk en een virtuele netwerkgateway gemaakt en volledig is ingericht. Volg de instructies voor [een virtuele netwerkgateway maken voor ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Het GatewayType 'ExpressRoute', niet VPN maakt gebruik van een virtuele netwerkgateway voor ExpressRoute.
 
@@ -52,15 +52,16 @@ Dit artikel helpt u bij het maken van een verbinding voor een virtueel netwerk k
 
 ### <a name="to-create-a-connection"></a>Een verbinding te maken
 
-1. Zorg ervoor dat uw ExpressRoute-circuit en de persoonlijke Azure-peering is is geconfigureerd. Volg de instructies in [maken van een ExpressRoute-circuit](expressroute-howto-circuit-arm.md) en [configureren routering](expressroute-howto-routing-arm.md). Uw ExpressRoute-circuit moet er uitzien zoals in de volgende afbeelding:
+1. Zorg ervoor dat uw ExpressRoute-circuit en de persoonlijke Azure-peering is is geconfigureerd. Volg de instructies in [een ExpressRoute-circuit maken](expressroute-howto-circuit-arm.md) en [peering maken en wijzigen voor een ExpressRoute-circuit](expressroute-howto-routing-arm.md). Uw ExpressRoute-circuit moet er uitzien zoals in de volgende afbeelding:
 
-   ![Schermafbeelding van de ExpressRoute-circuit](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
+   [![Scherm opname van ExpressRoute-circuit](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "Circuit weer geven")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
 2. U kunt nu beginnen een verbinding voor het koppelen van uw virtuele netwerkgateway voor uw ExpressRoute-circuit wordt ingericht. Klik op **verbinding** > **toevoegen** openen de **verbinding toevoegen** pagina en configureer vervolgens de waarden.
 
-   ![Verbindingen schermopname toevoegen](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)
+   [![Scherm opname van verbinding toevoegen](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "Scherm opname van verbinding toevoegen")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
 3. Nadat de verbinding is geconfigureerd, wordt de informatie voor de verbinding weergegeven in het verbindingsobject.
 
    ![Schermafbeelding van de verbinding-object](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
+
 
 ## <a name="connect-a-vnet-to-a-circuit---different-subscription"></a>Een VNet verbinden met een circuit - ander abonnement
 

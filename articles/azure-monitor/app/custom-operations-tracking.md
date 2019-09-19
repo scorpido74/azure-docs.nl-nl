@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 91467f99e7932ce7ffcd5b3300f8544fb848ccfa
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: d966ff3bc00d5190ebc163d4f4bfa35ba73d21ab
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71019077"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087662"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Aangepaste bewerkingen bijhouden met Application Insights .NET SDK
 
@@ -354,7 +354,7 @@ Wanneer u het verwijderen van een bericht instrumenteert, moet u ervoor zorgen d
 
 ### <a name="dependency-types"></a>Afhankelijkheids typen
 
-Application Insights maakt gebruik van afhankelijkheids type voor cusomize UI-ervaringen. Voor wacht rijen herkent het de volgende `DependencyTelemetry` typen waarmee de ervaring voor het [diagnosticeren van trans acties](/azure-monitor/app/transaction-diagnostics)wordt verbeterd:
+Application Insights maakt gebruik van afhankelijkheids type voor cusomize UI-ervaringen. Voor wacht rijen herkent het de volgende `DependencyTelemetry` typen waarmee de ervaring voor het [diagnosticeren van trans acties](/azure/azure-monitor/app/transaction-diagnostics)wordt verbeterd:
 - `Azure queue`voor Azure Storage wachtrijen
 - `Azure Event Hubs`voor Azure Event Hubs
 - `Azure Service Bus`voor Azure Service Bus

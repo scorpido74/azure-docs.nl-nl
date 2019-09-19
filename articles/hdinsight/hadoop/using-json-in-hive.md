@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: dd1c9f5b10583e886c0357ce64bdf9d8bdc6c4c8
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 629a7c98a7b46b470470445cc56a6f53d9e4f4b4
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883394"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077221"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>JSON-documenten verwerken en analyseren met behulp van Apache Hive in azure HDInsight
 
@@ -91,7 +91,7 @@ De instructie **Select** retourneert alleen één rij.
 
 Dit is de uitvoer van de **Select** -instructie:
 
-![Het JSON-document afvlakken](./media/using-json-in-hive/hdinsight-flatten-json.png)
+![HDInsight-afvlakking van het JSON-document](./media/using-json-in-hive/hdinsight-flatten-json.png)
 
 ## <a name="analyze-json-documents-in-hive"></a>JSON-documenten in Hive analyseren
 Hive biedt drie verschillende mechanismen voor het uitvoeren van query's op JSON-documenten of u kunt uw eigen methoden schrijven:
@@ -115,7 +115,7 @@ FROM StudentsOneLine;
 
 Dit is de uitvoer wanneer u deze query uitvoert in het console venster:
 
-![get_json_object UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
+![Apache Hive JSON-object ophalen UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
 
 Er gelden beperkingen voor de get_json_object UDF:
 
@@ -136,7 +136,7 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
 
 De uitvoer van dit script in de Hive-console:
 
-![json_tuple UDF](./media/using-json-in-hive/hdinsight-json-tuple.png)
+![Apache Hive JSON-query resultaten](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
 De json_tuple UDF maakt gebruik van de syntaxis voor de [zijdelingse weer gave](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) in Hive, waarmee JSON\_tuple een virtuele tabel kan maken door de UDT-functie toe te passen op elke rij van de oorspronkelijke tabel. Complexe JSONs zijn te moeilijk geworden vanwege het herhaalde gebruik van een **laterere weer gave**. Daarnaast kan **JSON_TUPLE** geen geneste jsons verwerken.
 
