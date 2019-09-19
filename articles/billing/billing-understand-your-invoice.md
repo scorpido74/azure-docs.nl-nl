@@ -1,5 +1,5 @@
 ---
-title: Inzicht in uw Azure-factuur | Microsoft Docs
+title: Meer informatie over uw Azure-factuur | Microsoft Docs
 description: Meer informatie over het gebruik van en de factuur voor uw Azure-abonnement
 services: ''
 documentationcenter: ''
@@ -15,105 +15,105 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 77c1a85136b2117af7396b8eec2d8b92b335d61d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "60369925"
 ---
-# <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Meer informatie over uw factuur voor Microsoft Azure
+# <a name="understand-terms-on-your-microsoft-azure-invoice"></a>De voorwaarden op uw Microsoft Azure-factuur begrijpen
 
-De factuur bevat een overzicht van uw kosten en instructies voor de betaling. Het is gedownload in de Portable Document Format (PDF) van de [Azure-portal](https://portal.azure.com/) of kunnen worden verzonden via e-mail. Zie voor meer informatie, [over het verkrijgen van uw Azure-factuur en de dagelijkse gebruiksgegevens](billing-download-azure-invoice-daily-usage-date.md).
+De factuur bevat een overzicht van uw kosten en instructies voor de betaling. Het is beschikbaar als download in het Portable Document Format (.pdf) van de [Azure-portal](https://portal.azure.com/) of kan via e-mail worden verzonden. Voor meer informatie bekijkt u [Uw Azure-factuur en dagelijkse gebruiksgegevens ophalen](billing-download-azure-invoice-daily-usage-date.md).
 
-Een paar dingen om te weten:
+Enkele opmerkingen:
 
--   Als u een gratis proefabonnement, krijgt u uw gedetailleerde gebruiksgegevens vanuit Azure portal, maar u hebt een factuur.
+-   Als u een gratis proefabonnement gebruikt, kunt u gedetailleerde gebruiksgegevens bekijken in de Azure-portal, maar u krijgt geen factuur.
 
--   Maximaal 24 uur van het gebruik van aan het einde van de vorige factureringsperiode mogelijk weergegeven in uw huidige factuur.
+-   Uw huidige factuur kan maximaal 24 uur aan gebruiksgegevens van de voorgaande factureringsperiode bevatten.
 
 -   Kosten op afschriften voor internationale klanten zijn een schatting omdat banken verschillende tarieven hanteren voor het omrekenen van valuta.
 
 >[!VIDEO https://www.youtube.com/embed/jWG1lyJe3Mg]
 
 ## <a name="detailed-terms-and-descriptions-of-your-invoice"></a>Gedetailleerde voorwaarden en beschrijvingen van uw factuur
-De volgende secties worden de belangrijke termen die u op uw factuur en beschrijvingen voor elke term ziet.
+De volgende secties bevatten een lijst met de belangrijke termen die u op uw factuur ziet, en beschrijvingen voor elke periode.
 
 ### <a name="account-information"></a>Accountgegevens
 
-In de sectie accountgegevens van de factuur is boven aan de eerste pagina en wordt informatie weergegeven over uw profiel en -abonnement.
+De sectie accountgegevens van de factuur bevindt zich bovenaan de eerste pagina en toont informatie over uw profiel en abonnement.
 
 ![Sectie accountgegevens van factuur](./media/billing-understand-your-invoice/1.png)
 
-| Termijn | Description |
+| Termijn | Beschrijving |
 | --- | --- |
-| IO-nr. |Een optionele aankoop volgordenummer door u is toegewezen voor bijhouden |
-| Factuurnummer |Een unieke, Microsoft gegenereerd factuur dat wordt gebruikt voor het bij te houden |
-| Factureringscyclus |Datumbereik die betrekking heeft op deze factuur |
-| Factuurdatum |Datum waarop de factuur is gegenereerd, doorgaans een dag na het einde van de factureringscyclus |
+| IO-nummer klant |Een optioneel inkoopordernummer dat door u is toegewezen voor traceringsdoeleinden |
+| Factuurnummer |Een uniek, door Microsoft gegenereerd factuurnummer dat wordt gebruikt voor traceringsdoeleinden |
+| Factureringscyclus |Datumbereik waarop deze factuur betrekking heeft |
+| Factuurdatum |De datum waarop de factuur is gegenereerd, meestal een dag na het einde van de factureringscyclus |
 | Betalingswijze |Het type betaling dat is gebruikt voor het account (factuur of creditcard) |
-| Factureren aan |Factureringsadres dat wordt vermeld voor het account |
-| Abonnement bieden ('betalen per gebruik') |Het type abonnement dat is gekocht (betalen naar gebruik, BizSpark Plus, Azure Pass, enz.). Zie voor meer informatie, [typen Azure-aanbieding](https://azure.microsoft.com/support/legal/offer-details/). |
-| E-mailadres van accounteigenaar | Het e-mailadres waaronder het Microsoft Azure-account is geregistreerd. <br /><br />Zie het wijzigen van het e-mailadres [profielgegevens van uw Azure-account zoals contact-e-mailadres en telefoonnummer wijzigen](billing-how-to-change-azure-account-profile.md). |
+| Factureren aan |Het factuuradres dat voor het account wordt vermeld |
+| Abonnementsaanbieding ('Betalen-naar-gebruik') |Type abonnement dat is gekocht (Betalen-naar-gebruik, BizSpark Plus, Azure Pass, enz.). Zie [Soorten Azure-aanbiedingen](https://azure.microsoft.com/support/legal/offer-details/) voor meer informatie. |
+| E-mailadres van accounteigenaar | Het e-mailadres waarop het Microsoft Azure-account is geregistreerd. <br /><br />Als u het e-mail adres wilt wijzigen, raadpleegt u [De profielgegevens van uw Azure-account wijzigen, zoals contact-e-mail, adres en telefoonnummer](billing-how-to-change-azure-account-profile.md). |
 
 ### <a name="understand-the-invoice-summary"></a>Meer informatie over het factuuroverzicht
-De **factuuroverzicht** sectie van de factuur vindt u de transactiebedragen totaal aantal sinds uw laatste factureringsperiode en de huidige gebruikskosten.
+In de sectie **Factuuroverzicht** staat een overzicht van de transacties sinds uw laatste factuur en de huidige gebruikskosten.
 
-![Samenvatting van de factuur](./media/billing-understand-your-invoice/2.png)
+![Sectie factuuroverzicht](./media/billing-understand-your-invoice/2.png)
 
-De naam van het abonnement ('productie-opslag') is de naam van het abonnement voor deze factuur.
+De naam bij Abonnement ("Productieopslag") is de naam van het abonnement voor deze factuur.
 
 #### <a name="understand-the-previous-charges"></a>Meer informatie over de vorige kosten
-Het vorig saldo, betalingen en openstaande saldo sectie van de factuur geeft een overzicht van transacties sinds uw laatste factureringsperiode.
+In de sectie met het vorige saldo, betalingen en het openstaande saldo van de factuur vindt u een overzicht van de transacties sinds uw laatste factureringsperiode.
 
-| Termijn | Description |
+| Termijn | Beschrijving |
 | --- | --- |
 | Vorig saldo |Het totale verschuldigde bedrag van uw laatste factureringsperiode |
-| Betalingen |Totale betalingen en tegoeden die worden toegepast op de laatste factureringsperiode |
-| Openstaand saldo (van vorige factureringscyclus) |Eventuele tegoeden of het resterende saldo in uw account sinds uw laatste factureringsperiode |
+| Betalingen |Totale betalingen en tegoed toegepast op uw laatste factureringsperiode |
+| Openstaand saldo (van vorige factureringscyclus) |Tegoed of resterend saldo van uw account sinds uw laatste factureringsperiode |
 
 #### <a name="understand-the-current-charges"></a>Meer informatie over de huidige kosten
-De sectie huidige kosten van de factuur bevat details over uw maandelijkse kosten voor de huidige factureringsperiode.
+De sectie Huidige kosten van de factuur bevat details over uw maandelijkse kosten voor de huidige factureringsperiode.
 
-| Termijn | Description |
+| Termijn | Beschrijving |
 | --- | --- |
 | Gebruikskosten |Gebruikskosten zijn de totale maandelijkse kosten op een abonnement voor de huidige factureringsperiode|
-| Kortingen |Servicekortingen die zijn toegepast op uw huidige factureringsperiode.|
-| Aanpassingen |Diverse tegoeden (gratis gebruik, tegoeden, enzovoort) of openstaande kosten die worden toegepast op uw huidige factureringsperiode.<br/><br/>Bijvoorbeeld, als u de Visual Studio Enterprise met MSDN-aanbieding hebt, ziet u een maandelijks tegoed. Als u uw abonnement opzegt, ziet u een maandelijkse gebruikskosten die groter zijn dan het maandelijkse tegoed dat u aan met uw abonnement. De kosten in rekening gebracht aan het begin van de huidige factureringsperiode tot de datum waarop de annulering van het abonnement. |
+| Kortingen |Servicekortingen die zijn toegepast op uw huidige factureringsperiode|
+| Aanpassingen |Diverse tegoeden (gratis gebruik, tegoeden, enzovoort) of openstaande kosten die zijn toegepast op uw huidige factureringsperiode.<br/><br/>Als u bijvoorbeeld de aanbieding Visual Studio Enterprise met MSDN hebt, ziet u een maandelijks tegoed. Als u uw abonnement annuleert, ziet u de maandelijkse gebruikskosten die het maandelijkse tegoed overschrijden dat u bij uw abonnementsaanbieding ontvangt. De kosten worden in rekening gebracht aan het begin van de huidige factureringsperiode tot de annuleringsdatum van het abonnement. |
 
-#### <a name="sold-to-and-payment-instructions"></a>Verkocht aan en instructies over hoe u
+#### <a name="sold-to-and-payment-instructions"></a>Verkocht aan en betalingsinstructies
 
-De volgende tabel beschrijft de verkocht aan en instructies over hoe u op de tweede pagina van uw factuur weergegeven.
+In de volgende tabel worden de instructies voor verkocht aan en betaling beschreven die worden weergegeven op de tweede pagina van uw factuur.
 
-| Termijn |Description |
+| Termijn |Beschrijving |
 | --- | --- |
-| Verkocht aan |Profieladres dat zich op het account. <br/><br/>Als u wijzigen van het adres wilt, Zie [profielgegevens van uw Azure-account zoals contact-e-mailadres en telefoonnummer wijzigen](billing-how-to-change-azure-account-profile.md).|
-| Betalingsinstructies |Instructies voor het betalen, afhankelijk van de betalingswijze (bijvoorbeeld door tegoed kaart of per factuur). |
+| Verkocht aan |Profieladres op het account. <br/><br/>Als u het adres wilt wijzigen, raadpleegt u [De profielgegevens van uw Azure-account wijzigen, zoals contact-e-mail, adres en telefoonnummer](billing-how-to-change-azure-account-profile.md).|
+| Betalingsinstructies |Instructies voor betalen, afhankelijk van de betalingswijze (bijvoorbeeld per creditcard of per factuur). |
 
 #### <a name="usage-charges"></a>Gebruikskosten
 
-Het gedeelte van de kosten voor gebruik van de factuur geeft meter niveau informatie op uw kosten in rekening gebracht.
+In het gedeelte Gebruikskosten van de factuur wordt informatie over het meterniveau van uw kosten weergegeven.
 
-![Sectie van de kosten voor gebruik](./media/billing-understand-your-invoice/3.png)
+![Sectie gebruikskosten](./media/billing-understand-your-invoice/3.png)
 
-De volgende tabel beschrijft de kolomkoppen van de gebruik kosten in rekening gebracht op uw factuur weergegeven.
+De volgende tabel beschrijft de kolomkoppen voor gebruikskosten die op uw factuur worden weergegeven.
 
-| Termijn |Description |
+| Termijn |Beschrijving |
 | --- | --- |
-| Name |Identificeert de service op het hoogste niveau voor het gebruik |
-| Type |Definieert het type Azure-service die invloed kan zijn op de snelheid |
-| Resource |Identificeert de maateenheid voor de meter wordt gebruikt |
-| Regio |Geeft de locatie van de datacenterlocatie voor bepaalde services waarbij de prijs gebaseerd op de datacenterlocatie |
-| Verbruikt |Het bedrag van de meter gebruikt tijdens de factureringsperiode |
-| Inbegrepen |Het bedrag van de meter die is opgenomen gratis inbegrepen in uw huidige factureringsperiode. |
-| Factureerbaar |Bevat het verschil tussen de verbruikte hoeveelheid en het aantal opgenomen. U wordt gefactureerd voor dit bedrag. Bij betalen per gebruik-aanbiedingen waarbij er geen hoeveelheid in de aanbieding is opgenomen, is dit totaal hetzelfde als de verbruikte hoeveelheid |
-| Tarief |Het tarief dat u kosten in per factureerbare eenheid gebracht rekening |
-| Value |Toont het resultaat van het vermenigvuldigen van de hoeveelheid overschrijding kolom met de kolom tarief. Als de verbruikte hoeveelheid niet hoger is dan het aantal opgenomen, zijn er geen kosten in deze kolom. |
-| Subtotaal |De som van alle uw kosten vóór belastingen voor deze factureringsperiode |
-| Eindtotaal |De som van alle kosten na belasting voor deze factureringsperiode |
+| Naam |Identificeert de service op het hoogste niveau voor het gebruik |
+| Type |Hiermee definieert u het type Azure-service dat van invloed kan zijn op het tarief |
+| Resource |Identificeert de maateenheid voor de meter die wordt verbruikt |
+| Regio |Identificeert de datacentrumlocatie voor bepaalde services waarbij de prijs is gebaseerd op de datacentrumlocatie |
+| Verbruikt |De hoeveelheid van de meter die wordt gebruikt tijdens de factureringsperiode |
+| Inbegrepen |De hoeveelheid van de meter die gratis is inbegrepen in uw huidige factureringsperiode |
+| Factureerbaar |Toont het verschil tussen het Verbruikte aantal en de Inbegrepen hoeveelheid. Dit bedrag wordt in rekening gebracht. Bij aanbiedingen van het type betalen-naar-gebruik waarbij er geen hoeveelheid in de aanbieding is opgenomen, is dit totaal hetzelfde als de Verbruikte hoeveelheid |
+| Tarief |Het tarief dat per factureerbare eenheid in rekening wordt gebracht |
+| Waarde |Hier wordt resultaat van het vermenigvuldigen van de kolom Hoeveelheid overschrijding met de kolom Tarief weergegeven. Als het Verbruikte aantal niet groter is dan de Inbegrepen hoeveelheid, worden er in deze kolom geen kosten in rekening gebracht. |
+| Subtotaal |De som van al uw kosten voor belasting voor deze factureringsperiode |
+| Eindtotaal |De som van al uw kosten na belasting voor deze factureringsperiode |
 
-## <a name="how-do-i-make-sure-that-the-charges-in-my-invoice-are-correct"></a>Hoe ik ervoor zorgen dat de kosten in rekening gebracht op mijn factuur correct zijn?
-Als er een kosten in rekening gebracht op uw factuur die u graag meer details op, Zie [meer informatie over uw factuur voor Microsoft Azure.](billing-understand-your-bill.md)
+## <a name="how-do-i-make-sure-that-the-charges-in-my-invoice-are-correct"></a>Hoe weet ik zeker dat de kosten in mijn factuur correct zijn?
+Als er kosten in rekening worden gebracht voor uw factuur waarover u meer informatie wilt, raadpleegt u [Uw factuur voor Microsoft Azure begrijpen.](billing-understand-your-bill.md)
 
 ## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
-Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Voor vragen of hulp [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

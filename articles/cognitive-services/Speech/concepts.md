@@ -251,7 +251,7 @@ Het formulier ITN is het meest geschikt voor toepassingen die op de herkende tek
 
 Omdat scheld woorden natuurlijk een deel uitmaakt van een gesp roken taal, herkent de micro soft Speech-Service dergelijke termen en zinsdelen wanneer ze worden gesp roken. Scheld is mogelijk niet geschikt voor alle toepassingen, met name voor de toepassingen met een beperkte, niet-volwassen gebruikers publiek.
 
-Het gemaskerde ITN-formulier past Grove maskering toe op het inverse tekst normalisatie formulier. Stel de waarde van de waarde van de Gods-taal `masked`instelling in om grove woorden te maskeren. Als scheld woorden worden gemaskeerd, worden woorden die worden herkend als onderdeel van het woorden Lexicon van de taal, vervangen door sterretjes. Bijvoorbeeld: mij een herinnering geven om 5 * * * * * *pen aan te schaffen*. De gemaskeerde ITN vorm van een herkennings resultaat bevat geen hoofdletter gebruik of interpunctie.
+Het gemaskerde ITN-formulier past Grove maskering toe op het inverse tekst normalisatie formulier. Stel de waarde van de waarde van de Gods-taal `masked`instelling in om grove woorden te maskeren. Als scheld woorden worden gemaskeerd, worden woorden die worden herkend als onderdeel van het woorden Lexicon van de taal, vervangen door sterretjes. Bijvoorbeeld: mij een herinnering geven om 5 *pen aan te schaffen*. De gemaskeerde ITN vorm van een herkennings resultaat bevat geen hoofdletter gebruik of interpunctie.
 
 > [!NOTE]
 > Als de query parameter waarde voor scheld woorden is `raw`ingesteld op, is het gemaskerde ITN-formulier hetzelfde als het formulier ITN. Scheld woorden worden *niet* gemaskeerd.

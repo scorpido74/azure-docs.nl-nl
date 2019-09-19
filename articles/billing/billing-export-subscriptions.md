@@ -1,6 +1,6 @@
 ---
-title: Uw Azure-abonnement bovenste niveau gegevens exporteren | Microsoft Docs
-description: Hierin wordt beschreven hoe u alle Azure-abonnement id's die zijn gekoppeld aan uw account kunt bekijken.
+title: De gegevens op het hoogste niveau van uw Azure-abonnement exporteren | Microsoft Docs
+description: Hierin wordt beschreven hoe u alle Azure-abonnements-id's kunt weergeven die zijn gekoppeld aan uw account.
 keywords: ''
 services: billing
 documentationcenter: ''
@@ -16,23 +16,23 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: 8a3d1a3a6b1dce1d729942715bbe5962837ff093
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "60918656"
 ---
-# <a name="export-and-view-your-top-level-subscription-information"></a>Exporteren en uw abonnementsgegevens op het hoogste niveau weergeven
-Als u wilt weergeven van de set van abonnement-id's die zijn gekoppeld aan uw gebruikersreferenties [downloaden van een .json-bestand met gegevens van uw abonnement van het Azure-Accountcentrum](https://account.azure.com/subscriptions/download).
+# <a name="export-and-view-your-top-level-subscription-information"></a>Uw abonnementsgegevens op het hoogste niveau exporteren en weergeven
+Als u de set met abonnements-id's wilt weergeven die zijn gekoppeld aan uw gebruikersreferenties, [downloadt u een .json-bestand met uw abonnementsgegevens in het Azure-accountcentrum](https://account.azure.com/subscriptions/download).
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-De gedownloade .json-bestand bevat de volgende informatie:
-- E-mail: Het e-mailadres dat is gekoppeld aan uw account.
-- De PUID: De unieke id die is gekoppeld aan uw factureringsrekening.
-- SubscriptionIds: Een lijst met abonnementen die deel uitmaken van uw account, geïnventariseerd door abonnements-ID.
+Het gedownloade .json-bestand bevat de volgende informatie:
+- E-mail: Het e-mail adres dat is gekoppeld aan uw account.
+- PUID: De unieke id die is gekoppeld aan uw factureringsaccount.
+- Abonnements-id’s: Een lijst met abonnementen die deel uitmaken van uw account, geïnventariseerd op abonnements-id.
 
-### <a name="subscriptionsjson-sample"></a>Subscriptions.JSON voorbeeld
+### <a name="subscriptionsjson-sample"></a>voorbeeld abonnementen.json
 
 ```json
 {

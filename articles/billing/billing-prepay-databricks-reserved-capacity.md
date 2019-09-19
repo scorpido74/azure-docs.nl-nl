@@ -1,6 +1,6 @@
 ---
-title: De kosten van Azure Databricks met een pre-Purchase optimaliseren
-description: Meer informatie over hoe u kunt vooraf betaald voor kosten voor Azure Databricks met gereserveerde capaciteit om geld te besparen.
+title: De kosten voor Azure Databricks optimaliseren door hiervoor vooraf te betalen
+description: Ontdek hoe u geld kunt besparen door van tevoren gereserveerde capaciteit voor Azure Databricks te kopen.
 services: billing
 author: yashesvi
 manager: yashar
@@ -9,75 +9,75 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: banders
 ms.openlocfilehash: 99eb4de86aa227d558bec54d011a0b1548d27cf0
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67811256"
 ---
-# <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>De kosten van Azure Databricks met een pre-Purchase optimaliseren
+# <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>De kosten voor Azure Databricks optimaliseren door hiervoor vooraf te betalen
 
-U kunt besparen op uw Azure Databricks per eenheid (DBU) als u pre-aankoopplan van Azure Databricks doorvoeren eenheden (DBCU) voor één of drie jaar. U kunt de vooraf aangeschafte DBCUs gebruiken op elk gewenst moment gedurende de termijn van aankoop. In tegenstelling tot virtuele machines, de vooraf aangeschafte eenheden op uurbasis niet verloopt en u deze gebruiken op elk gewenst moment gedurende de termijn van de aankoop.
+U kunt besparen op de kosten voor Azure Databricks-eenheden (DBU's) door van tevoren Azure Databricks-doorvoereenheden (DBCU's) voor één of drie jaar te kopen. U kunt de vooraf gekochte DBCU's op elk gewenst moment tijdens de looptijd gebruiken. Anders dan VM's verlopen vooraf gekochte eenheden niet op uurbasis. Ze zijn dan ook op elk gewenst moment tijdens de looptijd te gebruiken.
 
-Gebruik Azure Databricks trekt automatisch uit de vooraf aangeschafte dbu's. U hoeft te implementeren of een vooraf aangeschafte abonnement toewijzen aan uw Azure Databricks-werkruimten voor het gebruik DBU om op te halen van de kortingen pre-Purchase.
+Elk gebruik van Azure Databricks wordt automatisch in mindering gebracht op de gereserveerde capaciteit. U hoeft de vooraf gekochte DBCU's niet afzonderlijk te implementeren of toe te wijzen aan uw Azure Databricks-werkruimten om de korting te verrekenen met uw DBU-gebruik.
 
-De korting pre-Purchase geldt alleen voor de DBU-gebruik. Andere kosten in rekening gebracht, zoals rekentijd, opslag en netwerken worden afzonderlijk in rekening gebracht.
+De korting voor vooruitbetaling geldt alleen voor het DBU-gebruik. Andere kosten, zoals die voor berekeningen, opslag en netwerken, worden afzonderlijk in rekening gebracht.
 
-## <a name="determine-the-right-size-to-buy"></a>Bepaal de juiste grootte te kopen
+## <a name="determine-the-right-size-to-buy"></a>Bepalen hoeveel DBCU's u moet kopen
 
-Databricks pre-Purchase is van toepassing op alle lagen en Databricks-werkbelastingen. U kunt zien van de pre-Purchase als een groep van de vooraf betaalde Databricks commit-eenheden. Gebruik wordt afgetrokken van de groep, ongeacht de werkbelasting of laag. Gebruik, wordt in mindering gebracht in de volgende verhouding:
+Vooraf gekochte Databricks-capaciteit is van toepassing op alle Databricks-workloads en -servicelagen. U kunt deze capaciteit beschouwen als een pool vooraf betaalde Databricks-doorvoereenheden. Het gebruik wordt in mindering gebracht op de pool, ongeacht de workload of de servicelaag. Hierbij wordt de volgende verhouding gehanteerd:
 
-| **Workload** | **DBU-toepassing verhouding - Standard-laag** | **DBU-toepassing-verhouding, Premium-laag** |
+| **Workload** | **Verhouding DBU-toepassing - Standard-laag** | **Verhouding DBU-toepassing - Premium-laag** |
 | --- | --- | --- |
-| Gegevensanalyse | 0.4 | 0.55 |
-| Data Engineering | 0.15 | 0,30 |
-| Data Engineering Light | 0.07 | 0.22 |
+| Gegevensanalyse | 0,4 | 0,55 |
+| Data Engineering | 0,15 | 0,30 |
+| Data Engineering Light | 0,07 | 0,22 |
 
-Bijvoorbeeld, wanneer een aantal van de Data Analytics-Standard-laag wordt verbruikt, de Databricks-eenheden voor vooraf aangeschafte doorvoeren wordt in mindering gebracht door 0,4 eenheden.
+Als er bijvoorbeeld een hoeveelheid DBU's wordt gebruikt voor Gegevensanalyse - Standard-laag, worden deze na vermenigvuldiging met 0,4 in mindering gebracht op de pool vooraf gekochte Databricks-doorvoereenheden.
 
-Voordat u aanschaft, berekenen van de totale DBU hoeveelheid voor verschillende werkbelastingen en lagen gebruikt. Gebruik de voorgaande ratio's normaliseren naar DBCU en voer vervolgens een projectie van het totale gebruik van vervolgens één of drie jaar.
+Bereken voordat u tot aanschaf overgaat, het totale aantal DBU's dat voor verschillende workloads en servicelagen wordt verbruikt. Reken de DBU's aan de hand van de hierboven genoemde verhoudingen om naar DBCU's en maak vervolgens een prognose van het totale gebruik in het komende jaar of de komende drie jaar.
 
-## <a name="purchase-databricks-commit-units"></a>Databricks doorvoeren eenheden kopen
+## <a name="purchase-databricks-commit-units"></a>Databricks-doorvoereenheden kopen
 
-U kunt de Databricks-abonnementen kopen de [Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D). U moet de rol van eigenaar voor ten minste één enterprise-abonnement hebben voor het kopen van gereserveerde capaciteit.
+U kunt Databricks-abonnementen kopen in de [Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D). Voor de aanschaf van gereserveerde capaciteit moet u de rol van eigenaar hebben voor ten minste één Enterprise Agreement.
 
-- Op dit moment pre-aankoopplan is alleen beschikbaar voor Enterprise Agreement-klanten.
-- U moet zich in een eigenaarsrol voor ten minste één Enterprise-abonnement.
-- Voor Enterprise-abonnementen, **gereserveerde instanties toevoegen** moet zijn ingeschakeld in de [EA-portal](https://ea.azure.com/). Of, als deze instelling is uitgeschakeld, moet u een EA-beheerder van het abonnement zijn.
+- Momenteel is aanschaf vooraf alleen beschikbaar voor klanten met een Enterprise Agreement.
+- U moet de rol van eigenaar hebben voor ten minste één Enterprise Agreement.
+- Voor Enterprise Agreements moet de optie **Gereserveerde instanties toevoegen** zijn ingeschakeld in de [EA Portal](https://ea.azure.com/). Als die instelling is uitgeschakeld, moet u een EA-beheerder van het abonnement zijn.
 
-**Om aan te schaffen:**
+**Ga als volgt te werk om gereserveerde capaciteit te kopen:**
 
-1. Ga naar de [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D).
-1. Selecteer een abonnement. Gebruik de **abonnement** lijst om het abonnement dat wordt gebruikt om te betalen voor de gereserveerde capaciteit te selecteren. De betalingswijze van het abonnement wordt in rekening gebracht de kosten vooraf voor de gereserveerde capaciteit. Kosten worden in mindering gebracht op de monetaire toezeggingsbedrag van de inschrijving of kosten in rekening gebracht als overschrijding.
-1. Selecteer een bereik. Gebruik de **bereik** om te selecteren van een bereik van abonnement:
-    - **Enkele resource groepsbereik** : de reserveringskorting is van toepassing op de overeenkomende resources in alleen de geselecteerde resourcegroep.
-    - **Eén abonnementsbereik** : de reserveringskorting is van toepassing op de overeenkomende resources in het geselecteerde abonnement.
-    - **Gedeeld bereik** : de reserveringskorting is van toepassing op het zoeken naar resources in die in aanmerking komen abonnementen die zich in de context van de facturering. Voor Enterprise Agreement-klanten is de context van de facturering van de inschrijving.
-1. Hoeveel Azure Databricks commit-eenheden u wilt kopen en voltooi de aankoop selecteren.
+1. Ga naar de [Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D).
+1. Selecteer een abonnement. Selecteer in de lijst **Abonnementen** het abonnement dat u wilt gebruiken om voor de gereserveerde capaciteit te betalen. Via de betalingswijze voor het abonnement worden de kosten voor de gereserveerde capaciteit vooraf in rekening gebracht. De kosten worden in mindering gebracht op het toezeggingsbedrag van de inschrijving of in rekening gebracht als overschrijding.
+1. Selecteer een bereik. Gebruik de lijst **Bereik** om een abonnementsbereik te selecteren:
+    - **Bereik van één resourcegroep**: de reserveringskorting wordt alleen toegepast op de overeenkomende resources in de geselecteerde resourcegroep.
+    - **Bereik van één abonnement**: de reserveringskorting wordt toegepast op de overeenkomende resources in het geselecteerde abonnement.
+    - **Gedeeld bereik**: de reserveringskorting wordt toegepast op overeenkomende resources binnen in aanmerking komende abonnementen die zich in de factureringscontext bevinden. Voor Enterprise Agreement-klanten is de factureringscontext de inschrijving.
+1. Selecteer hoeveel Azure Databricks-doorvoereenheden u wilt kopen en voltooi de aankoop.
 
 
-![Voorbeeld van Azure Databricks-aankoop in de Azure portal](./media/billing-prepay-databricks-reserved-capacity/data-bricks-pre-purchase.png)
+![Voorbeeld van de aankoop van Azure Databricks-capaciteit in de Azure-portal](./media/billing-prepay-databricks-reserved-capacity/data-bricks-pre-purchase.png)
 
-## <a name="change-scope-and-ownership"></a>Bereik wijzigen en het eigendom
+## <a name="change-scope-and-ownership"></a>Bereik en eigendom wijzigen
 
-U kunt de volgende typen wijzigingen aanbrengen in een reservering na de aankoop:
+Na aankoop kunt u de volgende typen wijzigingen aanbrengen in een reservering:
 
-- Reserveringsbereik bijwerken
-- Toegang op basis van rollen
+- Het bereik van de reservering bijwerken
+- Op rollen gebaseerde toegang
 
-U kunt geen splitsen of samenvoegen van de pre-Purchase van Databricks commit-eenheid. Zie voor meer informatie over het beheren van reserveringen [reserveringen beheren na de aankoop](billing-manage-reserved-vm-instance.md).
+U kunt de vooraf gekochte pool Databricks-doorvoereenheden niet splitsen of samenvoegen met een andere pool. Raadpleeg [Reserveringen voor Azure-resources beheren](billing-manage-reserved-vm-instance.md) voor meer informatie over het beheren van reserveringen.
 
-## <a name="cancellations-and-exchanges"></a>Annuleringen en uitwisselingen
+## <a name="cancellations-and-exchanges"></a>Annuleren en omwisselen
 
-Annuleren en exchange wordt niet ondersteund voor Databricks pre-Purchase plannen. Alle aankopen in de zijn laatste.
+Vooraf gekochte Databricks-capaciteit kan niet worden geannuleerd of omgewisseld. Alle aankopen zijn definitief.
 
 ## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
-Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer informatie over Azure-reserveringen, de volgende artikelen:
+- Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
   - [Wat zijn Azure-reserveringen?](billing-save-compute-costs-reservations.md)
-  - [Begrijpen hoe een Azure Databricks pre-Purchase DBCU korting wordt toegepast](billing-reservation-discount-databricks.md)
-  - [Inzicht in gebruik van de reservering voor uw Enterprise-inschrijving](billing-understand-reserved-instance-usage-ea.md)
+  - [Inzicht in hoe Azure Databricks-korting op basis van vooraf gekochte DBCU's wordt toegepast](billing-reservation-discount-databricks.md)
+  - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](billing-understand-reserved-instance-usage-ea.md)
