@@ -1,64 +1,87 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie over Ansible op Azure
+summary: Leer Ansible gebruiken om cloudinrichting, configuratiebeheer en toepassingsimplementaties te automatiseren.
 metadata:
-  title: 'Documentatie over Ansible op Azure - zelfstudies, voorbeelden, verwijzingen en resources'
-  description: 'Leer Ansible gebruiken om cloudinrichting, configuratiebeheer en toepassingsimplementaties te automatiseren.'
-  ms.service: azure
-  keywords: 'ansible, azure, devops, zelfstudies, voorbeelden, verwijzing'
-  author: tomarchermsft
-  manager: jeconnoc
-  ms.author: tarcher
+  title: Documentatie over Ansible op Azure
+  description: Leer Ansible gebruiken om cloudinrichting, configuratiebeheer en toepassingsimplementaties te automatiseren.
+  services: azure
+  ms.service: ansible
   ms.topic: landing-page
-  ms.date: 04/22/2019
-abstract:
-  description: 'Gebruik <a href="https://www.ansible.com">Ansible</a> om cloudinrichting, configuratiebeheer en toepassingsimplementaties te automatiseren.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Leer hoe u Ansible installeert en gebruikt voor het maken en beheren van virtuele Linux-machines in Azure.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/media/index/azure_dev-9.svg
-            text: Ansible installeren
-            href: /azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-          - image:
-              src: /azure/media/index/VirtualMachine.svg
-            text: Een Linux-VM configureren
-            href: /azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-          - image:
-              src: /azure/media/index/VirtualMachine.svg
-            text: Een Linux-VM beheren
-            href: /azure/virtual-machines/linux/ansible-manage-linux-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Leer hoe u Ansible gebruikt om berekening-, netwerk- en opslaginfrastructuur te maken in Azure.'
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="/azure/virtual-machines/linux/ansible-create-complete-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json">Maak een virtuele Linux-machine, inclusief een virtueel netwerk, een openbaar IP-adres en een virtuele netwerkinterfacekaart.</a>'
-          - html: <a href="./ansible-run-playbook-in-cloudshell">Voer Ansible uit met Bash in Azure Cloudshell.</a>
-          - html: <a href="./ansible-manage-azure-dynamic-inventories">Maak en beheer een dynamische voorraad van uw Azure-resources.</a>
-          - html: <a href="./ansible-create-configure-vmss">Maak en beheer schaalsets voor virtuele machines in Azure.</a>
-          - html: <a href="./ansible-deploy-app-vmss">Implementeer toepassingen in schaalsets voor virtuele machines in Azure.</a>
-          - html: <a href="./ansible-create-configure-aks">Maak en beheer Azure Kubernetes Service-clusters.</a>
-          - html: <a href="./ansible-create-configure-application-gateway">Webverkeer beheren met een Azure-toepassingsgateway.</a>
-          - html: <a href="./ansible-auto-scale-vmss">Een virtuele-machineschaalset automatisch schalen in Azure met Ansible.</a>
-          - html: <a href="./ansible-scale-azure-web-apps">Web-apps van Azure App Service schalen met Ansible.</a>
-          - html: '<a href="./ansible-create-configure-route-table">Een Azure-routetabel maken, wijzigen of verwijderen met Ansible.</a>'
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Playbook-rollen
-            html: '<p><a href="https://galaxy.ansible.com/Azure/azure_preview_modules/">azure_preview_module</a></p>'
-          - title: Versies en functies
-            html: <p><a href="./ansible-matrix.md">Matrix van functies voor modules en rollen</a></p>
-          - title: Hulpprogramma's
-            html: '<p><a href="https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible">Visual Studio Code-extensie voor Ansible</a></p>'
+  author: TomArcherMsft
+  ms.author: tarcher
+  ms.date: 09/11/2019
+  ms.openlocfilehash: 8a33d1b9661ef84294a35c51ecd42a59dde68f23
+  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/17/2019
+  ms.locfileid: "71075067"
+landingContent:
+- title: Over Ansible op Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Over Ansible op Azure
+      url: ansible-overview.md
+  - linkListType: architecture
+    links:
+    - text: Overzicht met Ansible-modules en -versies
+      url: ansible-matrix.md
+- title: Ansible installeren en configureren
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Ansible-oplossingssjabloon implementeren in CentOS
+      url: ansible-deploy-solution-template.md
+    - text: Ansible installeren in virtuele Linux-machines
+      url: /azure/virtual-machines/linux/ansible-install-configure
+    - text: Playbooks uitvoeren in Cloud Shell
+      url: ansible-run-playbook-in-cloudshell.md
+  - linkListType: tutorial
+    links:
+    - text: Een dynamische voorraad configureren
+      url: ansible-manage-azure-dynamic-inventories.md
+  - linkListType: download
+    links:
+    - text: Visual Studio Code-extensie voor Ansible
+      url: https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible
+- title: Virtuele Linux-machines beheren
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Virtuele Linux-machines configureren
+      url: /azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+    - text: Virtuele Linux-machines beheren
+      url: /azure/virtual-machines/linux/ansible-manage-linux-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+- title: Schaalsets voor virtuele machines beheren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Schaalsets voor virtuele machines configureren
+      url: ansible-create-configure-vmss.md
+    - text: Toepassingen implementeren in schaalsets voor virtuele machines
+      url: ansible-deploy-app-vmss.md
+    - text: De schaal van een schaalset voor virtuele machines automatisch aanpassen
+      url: ansible-auto-scale-vmss.md
+    - text: Aangepaste installatiekopie bijwerken
+      url: ansible-vmss-update-image.md
+- title: Virtuele netwerken beheren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Peering configureren
+      url: ansible-vnet-peering-configure.md
+    - text: Routetabellen configureren
+      url: ansible-create-configure-route-table.md
+- title: AKS beheren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: AKS-clusters configureren
+      url: ansible-create-configure-aks.md
+    - text: Azure CNI-netwerken configureren
+      url: ansible-aks-configure-cni-networking.md
+    - text: Kubenet-netwerken configureren
+      url: ansible-aks-configure-kubenet-networking.md
+    - text: RBAC-rollen in AKS-cluster configureren
+      url: ansible-aks-configure-rbac.md

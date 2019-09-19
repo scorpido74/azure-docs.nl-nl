@@ -1,6 +1,6 @@
 ---
-title: Self-service uitwisselingen en terugstortingen voor Azure Reservations
-description: Meer informatie over hoe u Azure Reservations kunt omruilen of terugbetalen.
+title: Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen
+description: Meer informatie over hoe u Azure-reserveringen kunt inwisselen of retourneren.
 author: yashesvi
 manager: yashesvi
 ms.service: billing
@@ -11,90 +11,90 @@ ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
 ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "69543017"
 ---
-# <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Self-service uitwisselingen en terugstortingen voor Azure Reservations
+# <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen
 
-Azure Reservations flexibiliteit bieden om te voldoen aan uw evoluerende behoeften. U kunt een reservering inwisselen voor een andere reservering van hetzelfde type. U kunt ook een restitutie (tot USD 50.000 per jaar) voor een reservering aanvragen als u deze niet meer nodig hebt.
+Azure-reserveringen bieden flexibiliteit om te voldoen aan uw evoluerende behoeften. U kunt een reservering inwisselen voor een andere reservering van hetzelfde type. U kunt ook een restitutie (tot USD 50.000 per jaar) voor een reservering aanvragen als u deze niet meer nodig hebt.
 
-De selfserviceoptie voor inwisselen en annuleren is niet beschikbaar voor Enterprise Agreement-klanten van de Amerikaanse overheid. Andere abonnements typen van de Amerikaanse overheid, inclusief betalen per gebruik en CSP, worden ondersteund.
+De selfserviceoptie voor inwisselen en annuleren is niet beschikbaar voor Enterprise Agreement-klanten van de Amerikaanse overheid. Andere abonnementstypen voor de Amerikaanse overheid, zoals Betalen per gebruik en CSP, worden wel ondersteund.
 
-U moet beschikken over de machtiging voor de reserverings order voor het uitwisselen van een bestaande reserve ring of een restitutie.
+U moet eigenaarsrechten voor de reserveringsorder hebben om een bestaande reservering in te wisselen of er een restitutie voor te krijgen.
 
-## <a name="exchange-an-existing-reserved-instance"></a>Een bestaande gereserveerde instantie uitwisselen
+## <a name="exchange-an-existing-reserved-instance"></a>Een bestaande gereserveerde instantie inwisselen
 
-U kunt uw reserve ring uitwisselen met drie snelle stappen in de [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
+U kunt uw reservering inwisselen met drie snelle stappen in [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
 
-1. Selecteer de reserve ringen die u wilt terugbetalen en klik op **Exchange**.  
-    ![Voorbeeld afbeelding van weer gave met te retour neren reserve ringen](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-return.png)
-2. Selecteer het VM-product dat u wilt aanschaffen en geef een hoeveelheid op. Zorg ervoor dat het totaal van de nieuwe aankoop hoger is dan het retour totaal. [Bepaal het juiste formaat voordat u het aankoopt](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy).  
-    ![Voorbeeld afbeelding van het te kopen VM-product bij een uitwisseling](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-select-purchase.png)
-3. De trans actie controleren en volt ooien.  
-    ![Voorbeeld afbeelding van het te kopen VM-product bij een uitwisseling, waarbij de retour nering wordt voltooid](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)
+1. Selecteer de reserveringen waarvoor u een restitutie wilt aanvragen en klik op **Inwisselen**.  
+    ![Voorbeeldafbeelding van reserveringen om restitutie voor aan te vragen](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-return.png)
+2. Selecteer het VM-product dat u wilt aanschaffen en geef een hoeveelheid op. Zorg ervoor dat het totaal van de nieuwe aankoop hoger is dan het restitutietotaal. [Bepaal de juiste grootte voordat u overgaat tot aanschaf](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy).  
+    ![Voorbeeldafbeelding van het te kopen VM-product bij een inwisseling](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-select-purchase.png)
+3. Controleer en voltooi de transactie.  
+    ![Voorbeeldafbeelding van het te kopen VM-product bij een inwisseling, waarbij de retournering wordt voltooid](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)
 
-Als u een reserve ring wilt terugbetalen, gaat u naar reserverings **Details** en klikt u op **terugbetaling**.
+Voor restitutie voor een reservering gaat u naar**Reserveringsgegevens** en klikt u op **Restitutie**.
 
-## <a name="how-transactions-are-processed"></a>Hoe trans acties worden verwerkt
+## <a name="how-transactions-are-processed"></a>Hoe transacties worden verwerkt
 
-Eerst annuleert micro soft de bestaande reserve ring en wordt de Pro-nominale hoeveelheid voor die reserve ring terugbetaald. Als er een Exchange is, wordt de nieuwe aankoop verwerkt. Micro soft verwerkt de terugbetalingen met een van de volgende methoden, afhankelijk van uw account type en betalings wijze:
+Microsoft annuleert eerst de bestaande reservering en restitueert het aangepaste bedrag voor die reservering. Als er een inwisseling is, wordt de nieuwe aankoop verwerkt. Microsoft verwerkt restituties met behulp van een van de volgende methoden, afhankelijk van uw accounttype en betalingsmethode:
 
-### <a name="enterprise-agreement-customers"></a>Enter prise Agreement-klanten
+### <a name="enterprise-agreement-customers"></a>Enterprise Agreement-klanten
 
-Geld wordt toegevoegd aan de monetaire toezeg ging voor uitwisselingen en restituties als de oorspronkelijke aankoop is gemaakt met één. Overschrijding-facturen sinds de oorspronkelijke aankopen worden opnieuw geopend en geclassificeerd om ervoor te zorgen dat de monetaire toezeg ging wordt gebruikt. Als de monetaire toezeggings termijn die gebruikmaakt van de reserve ring, niet langer actief is, wordt tegoed toegevoegd aan uw huidige monetaire toezeggings periode van ENTER prise Agreement.
+Geld wordt toegevoegd aan de financiële toezegging voor uitwisselingen en restituties als de oorspronkelijke aankoop hiermee is gedaan. Eventuele overschrijdingsfacturen sinds de oorspronkelijke aankopen worden opnieuw geopend en geëvalueerd om ervoor te zorgen dat de financiële toezegging wordt gebruikt. Als de financiële toezeggingstermijn die gebruikmaakt van de reservering niet langer actief is, wordt tegoed toegevoegd aan uw huidige financiële toezeggingsperiode van de Enterprise Agreement.
 
-Als de oorspronkelijke aankoop is gemaakt als een overschrijding, geeft micro soft een credit nota.
+Als de oorspronkelijke aankoop is gemaakt als een overschrijding, geeft Microsoft een creditnota uit.
 
-### <a name="pay-as-you-go-invoice-payments-and-csp-program"></a>Betalen naar gebruik-factuur betalingen en CSP-programma
+### <a name="pay-as-you-go-invoice-payments-and-csp-program"></a>Betalingen van betalen per gebruik-facturen en CSP-programma
 
-De oorspronkelijke inkoop factuur voor reserve ringen wordt geannuleerd en er wordt een nieuwe factuur gemaakt voor de terugbetaling. Voor uitwisselingen wordt in de nieuwe factuur de terugbetaling en de nieuwe aankoop weer gegeven. Het restitutie bedrag wordt aangepast op basis van de aankoop. Als u alleen een reserve ring terugrestitueert, blijft de evenredige hoeveelheid bij micro soft en wordt deze aangepast op basis van een toekomstige reserve ring.
+De oorspronkelijke inkoopfactuur voor reserveringen wordt geannuleerd en er wordt een nieuwe factuur gemaakt voor de restitutie. Voor inwisselingen wordt in de nieuwe factuur de restitutie en de nieuwe aankoop weergegeven. Het restitutiebedrag wordt aangepast op basis van de aankoop. Als u alleen een reservering restitueert, blijft het bedrag naar rato bij Microsoft en wordt dit aangepast op basis van een toekomstige reserveringsaankoop.
 
-### <a name="pay-as-you-go-credit-card-customers"></a>Betalen per gebruik-creditcard klanten
+### <a name="pay-as-you-go-credit-card-customers"></a>Betalen per gebruik-creditcardklanten
 
-De oorspronkelijke factuur wordt geannuleerd en er wordt een nieuwe factuur gemaakt. Het geld wordt terugbetaald naar de credit card die is gebruikt voor de oorspronkelijke aankoop. Als u uw kaart hebt gewijzigd, [neemt u contact op met de ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+De oorspronkelijke factuur wordt geannuleerd en er wordt een nieuwe factuur gemaakt. Het geld wordt gerestitueerd naar de creditcard die is gebruikt voor de oorspronkelijke aankoop. Als u uw kaart hebt gewijzigd, neemt u [contact op met ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="cancel-exchange-and-refund-policies"></a>Annulerings-, uitwisselings-en terugbetalings beleid
+## <a name="cancel-exchange-and-refund-policies"></a>Beleidsregels voor annuleren, inwisselen en restituties
 
-Azure heeft de volgende beleids regels voor annuleringen, uitwisselingen en restituties.
+Azure heeft de volgende beleidsregels voor annuleringen, inwisselingen en restituties.
 
-**Exchange-beleid**
+**Beleid voor inwisselen**
 
-- U kunt meerdere bestaande reserve ringen retour neren om een nieuwe reserve ring van hetzelfde type aan te schaffen. U kunt geen reserve ringen van het ene type uitwisselen voor een andere. U kunt bijvoorbeeld geen VM-reserve ring retour neren om een SQL-reserve ring aan te schaffen.
-- Alleen eigen aars van reserve ringen kunnen een uitwisseling verwerken. [Meer informatie over het toevoegen of wijzigen van gebruikers die een reserve ring kunnen beheren](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
-- Een uitwisseling wordt verwerkt als restitutie en opnieuw aankoop: er worden verschillende trans acties voor de annulering en de nieuwe aankoop gemaakt. De gefactureerde reserverings hoeveelheid wordt terugbetaald voor de reserve ringen waarvoor u de trans actie hebt ingewisseld. De kosten voor de nieuwe aankoop worden volledig in rekening gebracht. De evenredige reserverings hoeveelheid is de dagelijkse, evenredige rest waarde van de reserve ring die wordt geretourneerd.
-- U kunt reserve ringen omruilen of terugbetalen, zelfs als de Enter prise Agreement voor het aanschaffen van de reserve ring is verlopen en is vernieuwd als een nieuwe overeenkomst.
-- U kunt een gereserveerde eigenschap zoals grootte, regio, hoeveelheid en term wijzigen met een uitwisseling.
-- Het nieuwe aankoop totaal moet gelijk zijn aan of groter zijn dan het geretourneerde bedrag.
-- De nieuwe reserve ring die is gekocht als onderdeel van Exchange, heeft een nieuwe periode vanaf het moment van Exchange.
-- Er zijn geen boeten of jaarlijkse limieten voor uitwisselingen.
+- U kunt meerdere bestaande reserveringen retourneren om een nieuwe reservering van hetzelfde type aan te schaffen. U kunt geen reserveringen van het ene type inwisselen voor een andere. U kunt bijvoorbeeld geen VM-reservering retourneren om een SQL-reservering aan te schaffen.
+- Alleen eigenaars van reserveringen kunnen een inwisseling verwerken. [Meer informatie over het toevoegen of wijzigen van gebruikers die een reservering kunnen beheren](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+- Een inwisseling wordt verwerkt als een restitutie en een nieuwe aankoop: er worden verschillende transacties gemaakt voor de annulering en de nieuwe aankoop. Het reserveringsbedrag naar rato wordt gerestitueerd voor de reserveringen die u inruilt. De kosten voor de nieuwe aankoop worden volledig in rekening gebracht. Het reserveringsbedrag naar rato is de dagelijkse restwaarde naar rato van de reservering die wordt geretourneerd.
+- U kunt reserveringen inwisselen of hier restitutie voor aanvragen zelfs als de Enterprise Agreement die is gebruikt om de reservering aan te schaffen is verlopen en is vernieuwd als een nieuwe overeenkomst.
+- U kunt elke reserveringseigenschap zoals grootte, regio, hoeveelheid en periode wijzigen met een inwisseling.
+- Het nieuwe aankooptotaal moet gelijk zijn aan of groter zijn dan het geretourneerde bedrag.
+- De nieuwe reservering die is gekocht als onderdeel van een inwisseling, heeft een nieuwe periode die start vanaf het moment van de inwisseling.
+- Er is geen boete of jaarlijkse limieten voor inwisselingen.
 
-**Restitutie beleid**
-- Als u een reserve ring annuleert, kunnen er 12% openstaande ontslag kosten in rekening worden gebracht.
-- De terugbetaling die u voor een annulering ontvangt, is het resterende Pro-nominale saldo min de kosten voor de vroege beëindiging van 12%. Als u wilt annuleren, gaat u naar de reserve ring in het Azure Portal en selecteert u **terugbetaling**.
-- Uw totale restitutie bedrag mag niet groter zijn dan $50.000 USD in een voortschrijdende periode van 12 maanden.
-- De restituties worden berekend op basis van de laagste prijs van de aanschaf prijs of de huidige prijs van de reserve ring.
-- Alleen eigen aars van reserve ringen kunnen een terugbetaling verwerken. [Meer informatie over het toevoegen of wijzigen van gebruikers die een reserve ring kunnen beheren](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
-- Micro soft behoudt zich het recht voor om een boete van 12% voor eventuele retouren te berekenen. Er worden momenteel geen kosten in rekening gebracht, maar deze worden in de toekomst in rekening gebracht.
+**Restitutiebeleid**
+- Als u een reservering annuleert, worden er voor de vroegtijdige beëindiging mogelijk kosten van 12% in rekening gebracht.
+- De restitutie die u ontvangt voor een annulering, is het resterende bedrag naar rato minus de kosten voor vroegtijdige beëindiging van 12%. Als u wilt annuleren, gaat u in Azure Portal naar de reservering en selecteert u **Restitutie**.
+- Uw totale restitutiebedrag mag niet groter zijn dan USD 50.000 in een voortschrijdende periode van 12 maanden.
+- Restituties worden berekend op basis van de laagste prijs, zijnde de aankoopprijs of de huidige prijs van de reservering, welke het laagste is.
+- Alleen eigenaren van reserveringen kunnen een restitutie verwerken. [Meer informatie over het toevoegen of wijzigen van gebruikers die een reservering kunnen beheren](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+- Microsoft behoudt zich het recht voor om een boete van 12% voor eventuele restituties te berekenen. Er wordt momenteel geen boete in rekening gebracht, maar deze wordt in de toekomst wel in rekening gebracht.
 
-## <a name="exchange-non-premium-storage-for-premium-storage"></a>Niet-Premium-opslag uitwisselen voor Premium-opslag
+## <a name="exchange-non-premium-storage-for-premium-storage"></a>Niet-Premium Storage inwisselen voor Premium Storage
 
-U kunt een gereserveerde reserve ring uitwisselen voor een VM-grootte die geen ondersteuning biedt voor Premium Storage naar een bijbehorende VM-grootte. Een voor beeld: een _F1_ voor een _D11_. Als u de uitwisseling wilt maken, gaat u naar reserverings gegevens en klikt u op **Exchange**. De periode van de gereserveerde instantie wordt niet opnieuw ingesteld door Exchange of er wordt een nieuwe trans actie gemaakt.
+U kunt een reservering die is gekocht voor een VM-grootte die geen ondersteuning biedt voor Premium Storage inwisselen voor een bijbehorende VM-grootte die deze ondersteuning wel biedt. Bijvoorbeeld een _F1_ voor een _F1s_. Als u de inwisseling wilt maken, gaat u naar Reserveringsdetails en klikt u op **Inwisselen**. De periode van de gereserveerde instantie wordt niet opnieuw ingesteld door de inwisseling en er wordt ook geen nieuwe transactie gemaakt.
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure Reservations beheren](billing-manage-reserved-vm-instance.md)voor meer informatie over het beheren van een reserve ring.
-- Raadpleeg de volgende artikelen voor meer informatie over Azure Reservations:
-    - [Wat zijn Azure Reservations?](billing-save-compute-costs-reservations.md)
-    - [Reserve ringen in azure beheren](billing-manage-reserved-vm-instance.md)
-    - [Begrijpen hoe de reserverings korting wordt toegepast](billing-understand-vm-reservation-charges.md)
-    - [Het gebruik van de reserve ring begrijpen voor uw abonnement voor betalen naar gebruik](billing-understand-reserved-instance-usage.md)
-    - [Het gebruik van de reserve ring begrijpen voor uw Enter prise-inschrijving](billing-understand-reserved-instance-usage-ea.md)
-    - [Windows-software kosten niet inbegrepen bij reserve ringen](billing-reserved-instance-windows-software-costs.md)
-    - [Azure Reservations in het Partner Center-programma van de Cloud Solution Provider (CSP)](/partner-center/azure-reservations)
+- Zie [Azure-reserveringen beheren](billing-manage-reserved-vm-instance.md) voor meer informatie over het beheren van een reservering.
+- Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
+    - [Wat zijn Azure-reserveringen?](billing-save-compute-costs-reservations.md)
+    - [Reserveringen beheren in Azure](billing-manage-reserved-vm-instance.md)
+    - [Begrijpen hoe de reserveringskorting wordt toegepast](billing-understand-vm-reservation-charges.md)
+    - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](billing-understand-reserved-instance-usage.md)
+    - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](billing-understand-reserved-instance-usage-ea.md)
+    - [Kosten van Windows-software zijn niet inbegrepen in reserveringen](billing-reserved-instance-windows-software-costs.md)
+    - [Azure-reserveringen in het CSP-programma (Cloud Solution Provider) van het Partnercentrum](/partner-center/azure-reservations)

@@ -152,6 +152,9 @@
         - name: Gegevenssets toevoegen & registreren
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
+        - name: Trainen met gegevenssets
+          displayName: 'data, dataset'
+          href: how-to-train-with-datasets.md
     - name: Modellen trainen
       items:
         - name: Een trainingsomgeving instellen

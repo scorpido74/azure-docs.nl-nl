@@ -10,13 +10,13 @@ metadata:
   author: nitinme
   ms.author: nitinme
   manager: nitinme
-  ms.date: 09/12/2019
-  ms.openlocfilehash: 2bb26de076096ff47d38ddb12b1bc17f4aeafb34
-  ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+  ms.date: 09/16/2019
+  ms.openlocfilehash: f762586bf04ceab8cd0c81880a86df7d43507038
+  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 09/13/2019
-  ms.locfileid: "70965459"
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71087558"
 highlightedContent:
   items:
   - title: Wat is Cognitive Services?
@@ -53,7 +53,7 @@ conceptualContent:
       text: Face
     - url: ./form-recognizer/index.yml
       itemType: overview
-      text: Formulierherkenning (preview)
+      text: Form Recognizer (preview)
     - url: ./ink-recognizer/index.yml
       itemType: overview
       text: Ink Recognizer (preview)
@@ -93,7 +93,7 @@ conceptualContent:
     - url: ./translator-speech/overview.md
       itemType: overview
       text: Translator Speech (wordt buiten gebruik gesteld)
-  - title: Decision Services
+  - title: Besluit
     summary: Bouw apps die aanbevelingen opleveren voor geïnformeerde en efficiënte besluitvorming.
     links:
     - url: ./anomaly-detector/index.yml
@@ -138,7 +138,7 @@ conceptualContent:
     - url: ./bing-web-search/index.yml
       itemType: overview
       text: Webpagina's zoeken
-  - title: Containers
+  - title: Containers voor Cognitive Services
     summary: Met containerondersteuning in Azure Cognitive Services kunnen ontwikkelaars gebruikmaken van dezelfde uitgebreide API's die beschikbaar zijn in Azure. Ook biedt de ondersteuning flexiliteit in de implementatie en hostlocatie van de service die bij Docker-containers horen.
     links:
     - url: ./cognitive-services-container-support.md

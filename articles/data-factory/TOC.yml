@@ -584,6 +584,8 @@
           href: solution-template-bulk-copy-with-control-table.md
         - name: Delta kopiëren uit database
           href: solution-template-delta-copy-with-control-table.md
+        - name: Gegevens migreren van Amazon S3 naar Azure Storage
+          href: solution-template-migration-s3-azure.md
         - name: Bestanden verplaatsen
           href: solution-template-move-files.md
         - name: Gegevens transformeren met Databricks

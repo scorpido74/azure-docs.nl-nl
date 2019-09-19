@@ -7,11 +7,11 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Een toepassing met meerdere services maken
-      href: terrafom-quickstart.md
     - name: Terraform installeren en configureren
       href: /azure/virtual-machines/linux/terraform-install-configure
       maintainContext: true
+    - name: Een toepassing met meerdere services maken
+      href: terrafom-quickstart.md
     - name: Een Linux-VM maken
       href: /azure/virtual-machines/linux/terraform-create-complete-vm
       maintainContext: true
@@ -67,10 +67,6 @@
   items:
     - name: Configuratiesjablonen
       href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
-- name: Concepten
-  items:
-    - name: Azure Cloud Shell-integratie
-      href: terraform-cloud-shell.md
 - name: Handleidingen
   items:
     - name: Status opslaan in Azure Storage
@@ -79,7 +75,7 @@
   items:
     - name: Azure-moduleregister
       href: 'https://registry.terraform.io/modules/Azure'
-    - name: Naslaginformatie voor Terraform
+    - name: Terraform Azure-provider
       href: 'https://aka.ms/terraform'
 - name: Resources
   items:

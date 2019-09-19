@@ -1,6 +1,6 @@
 ---
-title: Een Azure-account koppelen aan een partner-ID | Microsoft Docs
-description: Volg afspraken met Azure-klanten door een partner-ID te koppelen aan het gebruikers account dat u gebruikt voor het beheren van de resources van de klant.
+title: Een Azure-account aan een partner-id koppelen | Microsoft Docs
+description: Volg afspraken met Azure-klanten door een partner-id aan het gebruikersaccount dat u voor het beheer van de resources van de klant gebruikt, te koppelen.
 services: billing
 author: dhirajgandhi
 manager: dhgandhi
@@ -12,149 +12,149 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 0448ffbccddc913bd6359f5f6bbf42988239afb4
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68706407"
 ---
-# <a name="link-a-partner-id-to-your-azure-accounts"></a>Een partner-ID koppelen aan uw Azure-accounts
+# <a name="link-a-partner-id-to-your-azure-accounts"></a>Een partner-id aan uw Azure-accounts koppelen
 
-Micro soft-partners bieden services waarmee klanten zakelijke en doel stellingen kunnen bereiken met behulp van micro soft-producten. Bij het handelen namens de klant die Azure-Services beheert, configureert en ondersteunt, hebben de partner gebruikers toegang nodig tot de omgeving van de klant. Met de koppeling partner beheerder kunnen partners de netwerk-ID van de partner koppelen aan de referenties die worden gebruikt voor de levering van services.
+Microsoft-partners bieden services waarmee klanten bedrijfs- en missiedoelen kunnen bereiken met behulp van Microsoft-producten. Wanneer partnergebruikers namens de klant Azure-services beheren, configureren en ondersteunen, hebben ze toegang tot de omgeving van de klant nodig. Met behulp van Partner Admin Link kunnen partners hun partnernetwerk-id koppelen aan de referenties die zijn gebruikt voor het leveren van de service.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="get-access-from-your-customer"></a>Toegang krijgen tot uw klant
+## <a name="get-access-from-your-customer"></a>Toegang van uw klant krijgen
 
-Voordat u uw partner-ID koppelt, moet uw klant u toegang geven tot hun Azure-resources met behulp van een van de volgende opties:
+Voordat u uw partner-id koppelt, moet uw klant u toegang geven tot hun Azure-resources door een van de volgende opties te gebruiken:
 
-- **Gast gebruiker**: Uw klant kan u als gast gebruiker toevoegen en op rollen gebaseerd toegangs beheer (RBAC) rollen toewijzen. Zie [gast gebruikers toevoegen vanuit een andere Directory](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)voor meer informatie.
+- **Gastgebruiker**: Uw klant kan u als gastgebruiker toevoegen en elke willekeurige RBAC-rol (Role-Based Access Control) aan u toewijzen. Zie [Gastgebruikers uit een andere directory toevoegen](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) voor meer informatie.
 
-- **Directory-account**: Uw klant kan een gebruikers account voor u maken in een eigen map en een RBAC-rol toewijzen.
+- **Directoryaccount**: Uw klant kan een gebruikersaccount voor u maken in zijn eigen directory en elke willekeurige RBAC-rol aan u toewijzen.
 
-- **Service-Principal**: Uw klant kan een app of script toevoegen uit uw organisatie in hun Directory en een RBAC-rol toewijzen. De identiteit van de app of het script wordt een Service-Principal genoemd.
+- **Service-principal**: Uw klant kan een app of script uit uw organisatie in zijn directory toevoegen en elke willekeurige RBAC-rol aan u toewijzen. De identiteit van de app of het script staat bekend als een service-principal.
 
 ## <a name="link-to-a-partner-id"></a>Koppelen aan een partner-id
 
-Wanneer u toegang hebt tot de resources van de klant, gebruikt u de Azure Portal, Power shell of de Azure CLI om uw Microsoft Partner Network-ID (MPN-ID) te koppelen aan uw gebruikers-ID of Service-Principal. Koppel de partner-ID aan elke Tenant van de klant.
+Wanneer u toegang hebt tot de resources van de klant, gebruikt u Azure Portal, PowerShell of de Azure CLI om uw Microsoft Partner Network-id (MPN ID) aan uw gebruikers-id of service-principal te koppelen. Koppel de partner-id in elke klanttenant.
 
-### <a name="use-the-azure-portal-to-link-to-a-new-partner-id"></a>De Azure Portal gebruiken om een koppeling te maken naar een nieuwe partner-ID
+### <a name="use-the-azure-portal-to-link-to-a-new-partner-id"></a>Azure Portal gebruiken om een nieuwe partner-id te koppelen
 
-1. Ga naar [een koppeling naar een partner-id](https://portal.azure.com/#blade/Microsoft_Azure_Billing/managementpartnerblade) in de Azure Portal.
+1. Ga naar [Koppelen met een partner-id](https://portal.azure.com/#blade/Microsoft_Azure_Billing/managementpartnerblade) in Azure Portal.
 
 2. Meld u aan bij Azure Portal.
 
-3. Voer de micro soft-partner-ID in. De partner-ID is de [Microsoft Partner Network](https://partner.microsoft.com/) -id voor uw organisatie.
+3. Voer de Microsoft partner-id in. De partner-id is de [Microsoft Partner Network-id](https://partner.microsoft.com/) voor uw organisatie.
 
-   ![Scherm afbeelding met een koppeling naar een partner-ID](./media/billing-link-partner-id/link-partner-ID.PNG)
+   ![Schermopname met Koppelen met een partner-id](./media/billing-link-partner-id/link-partner-ID.PNG)
 
-4. Als u een partner-ID voor een andere klant wilt koppelen, schakelt u over naar de map. Selecteer in de **map switch**uw Directory.
+4. Als u een partner-id voor een andere klant wilt koppelen, wisselt u van map. Onder **Schakelen tussen mappen** selecteert u uw map.
 
-   ![Scherm afbeelding met de map voor de switch](./media/billing-link-partner-id/directory-switcher.png)
+   ![Schermopname met Schakelen tussen mappen](./media/billing-link-partner-id/directory-switcher.png)
 
-### <a name="use-powershell-to-link-to-a-new-partner-id"></a>Power shell gebruiken om een koppeling te maken naar een nieuwe partner-ID
+### <a name="use-powershell-to-link-to-a-new-partner-id"></a>PowerShell gebruiken om een nieuwe partner-id te koppelen
 
-1. Installeer de Power shell-module [AZ. ManagementPartner](https://www.powershellgallery.com/packages/Az.ManagementPartner/) .
+1. Installeer de PowerShell-module [Az.ManagementPartner](https://www.powershellgallery.com/packages/Az.ManagementPartner/).
 
-2. Meld u aan bij de Tenant van de klant met het gebruikers account of de Service-Principal. Zie [Aanmelden met Power shell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)voor meer informatie.
+2. Meld u bij de tenant van de klant aan met het gebruikersaccount of de service-principal. Zie [Aanmelden met PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps) voor meer informatie.
 
    ```azurepowershell-interactive
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
-3. Koppeling naar de nieuwe partner-ID. De partner-ID is de [Microsoft Partner Network](https://partner.microsoft.com/) -id voor uw organisatie.
+3. Maak een koppeling met de nieuwe partner-id. De partner-id is de [Microsoft Partner Network-id](https://partner.microsoft.com/) voor uw organisatie.
 
     ```azurepowershell-interactive
     C:\> new-AzManagementPartner -PartnerId 12345
     ```
 
-#### <a name="get-the-linked-partner-id"></a>De gekoppelde partner-ID ophalen
+#### <a name="get-the-linked-partner-id"></a>De gekoppelde partner-id ophalen
 ```azurepowershell-interactive
 C:\> get-AzManagementPartner
 ```
 
-#### <a name="update-the-linked-partner-id"></a>De gekoppelde partner-ID bijwerken
+#### <a name="update-the-linked-partner-id"></a>De gekoppelde partner-id bijwerken
 ```azurepowershell-interactive
 C:\> Update-AzManagementPartner -PartnerId 12345
 ```
-#### <a name="delete-the-linked-partner-id"></a>De gekoppelde partner-ID verwijderen
+#### <a name="delete-the-linked-partner-id"></a>De gekoppelde partner-id verwijderen
 ```azurepowershell-interactive
 C:\> remove-AzManagementPartner -PartnerId 12345
 ```
 
-### <a name="use-the-azure-cli-to-link-to-a-new-partner-id"></a>De Azure CLI gebruiken om een koppeling te maken met een nieuwe partner-ID
+### <a name="use-the-azure-cli-to-link-to-a-new-partner-id"></a>De Azure CLI gebruiken om een nieuwe partner-id te koppelen
 1. Installeer de Azure CLI-extensie.
 
     ```azurecli-interactive
     C:\ az extension add --name managementpartner
     ```
 
-2. Meld u aan bij de Tenant van de klant met het gebruikers account of de Service-Principal. Zie [Aanmelden met de Azure cli](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)voor meer informatie.
+2. Meld u bij de tenant van de klant aan met het gebruikersaccount of de service-principal. Zie [Aanmelden met de Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) voor meer informatie.
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>
     ```
 
-3. Koppeling naar de nieuwe partner-ID. De partner-ID is de [Microsoft Partner Network](https://partner.microsoft.com/) -id voor uw organisatie.
+3. Maak een koppeling met de nieuwe partner-id. De partner-id is de [Microsoft Partner Network-id](https://partner.microsoft.com/) voor uw organisatie.
 
      ```azurecli-interactive
      C:\ az managementpartner create --partner-id 12345
       ```  
 
-#### <a name="get-the-linked-partner-id"></a>De gekoppelde partner-ID ophalen
+#### <a name="get-the-linked-partner-id"></a>De gekoppelde partner-id ophalen
 ```azurecli-interactive
 C:\ az managementpartner show
 ```
 
-#### <a name="update-the-linked-partner-id"></a>De gekoppelde partner-ID bijwerken
+#### <a name="update-the-linked-partner-id"></a>De gekoppelde partner-id bijwerken
 ```azurecli-interactive
 C:\ az managementpartner update --partner-id 12345
 ```
 
-#### <a name="delete-the-linked-partner-id"></a>De gekoppelde partner-ID verwijderen
+#### <a name="delete-the-linked-partner-id"></a>De gekoppelde partner-id verwijderen
 ```azurecli-interactive
 C:\ az managementpartner delete --partner-id 12345
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Neem lid van de discussie in de [micro soft partner-community](https://aka.ms/PALdiscussion) om updates te ontvangen of feedback te verzenden.
+Neem deel aan de discussie in de [Microsoft Partner Community](https://aka.ms/PALdiscussion) om updates te krijgen of feedback te verzenden.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-**Wie kan de partner-ID koppelen?**
+**Wie kan een koppeling met de partner-id maken?**
 
-Elke gebruiker van de partner organisatie die de Azure-resources van een klant beheert, kan de partner-ID aan het account koppelen.
+Elke gebruiker van de partnerorganisatie die de Azure-resources van een klant beheert, kan de partner-id aan het account koppelen.
 
-**Kan een partner-ID worden gewijzigd nadat deze is gekoppeld?**
+**Kan een partner-id worden gewijzigd nadat deze is gekoppeld?**
 
-Ja. Een gekoppelde partner-ID kan worden gewijzigd, toegevoegd of verwijderd.
+Ja. Een gekoppelde partner-id kan worden gewijzigd, toegevoegd of verwijderd.
 
-**Wat gebeurt er als een gebruiker in meer dan één klant Tenant een account heeft?**
+**Wat gebeurt er als een gebruiker een account in meer dan één klanttenant heeft?**
 
-De koppeling tussen de partner-ID en het account wordt uitgevoerd voor elke Tenant van de klant. Koppel de partner-ID aan elke Tenant van de klant.
+De koppeling tussen de partner-id en het account wordt uitgevoerd voor elke klanttenant. Koppel de partner-id in elke klanttenant.
 
-**Kunnen andere partners of klanten de koppeling naar de partner-ID bewerken of verwijderen?**
+**Kunnen andere partners of klanten de koppeling met de partner-id bewerken of verwijderen?**
 
-De koppeling is gekoppeld op het niveau van het gebruikers account. Alleen u kunt de koppeling naar de partner-ID bewerken of verwijderen. De klant en andere partners kunnen de koppeling naar de partner-ID niet wijzigen.
+De koppeling is op gebruikersaccountniveau gekoppeld. Alleen u kunt de koppeling met de partner-id bewerken of verwijderen. De klant en andere partners kunnen de koppeling met de partner-id niet wijzigen.
 
 
-**Welke MPN-ID moet ik gebruiken als mijn bedrijf meerdere heeft?**
+**Welke MPN ID moet ik gebruikers als mijn bedrijf meerdere id's heeft?**
 
-Partner locatie accounts en gekoppelde MPN-Id's moeten worden gebruikt voor het koppelen van de partner-ID.  Meer informatie over [partner accounts](https://docs.microsoft.com/partner-center/account-structure)
+Partnerlocatieaccounts en de bijbehorende MPN id's moeten worden gebruikt voor het koppelen van partner-id's.  Meer informatie over [partneraccounts](https://docs.microsoft.com/partner-center/account-structure)
 
-**Waar vind ik beïnvloede omzet rapportage voor gekoppelde partner-ID?**
+**Waar kan ik de beïnvloede omzetrapporten voor gekoppelde partner-id's vinden?**
 
-Rapportage over de prestaties van Cloud producten is beschikbaar voor partners in het partner centrum van [mijn Insights-dash board](https://partner.microsoft.com/membership/reports/myinsights). U moet de koppeling partner beheerder selecteren als het partner koppelings type.
+Rapporten over de prestaties van cloudproducten zijn voor partners beschikbaar via het Partnercentrum in het [dashboard Mijn inzichten](https://partner.microsoft.com/membership/reports/myinsights). U moet Partnerbeheerkoppeling als partnerkoppelingstype selecteren.
 
-**Waarom kan ik mijn klant niet zien in de rapporten?**
+**Waarom kan ik mijn klant niet in de rapporten vinden?**
 
-U kunt de klant niet zien in de rapporten om de volgende redenen:
+Wanneer u de klant niet in de rapporten ziet, kan dit de volgende redenen hebben
 
-1. Het gekoppelde gebruikers account heeft geen op [rollen gebaseerde toegang tot](https://docs.microsoft.com/azure/role-based-access-control/overview) een Azure-abonnement of-resource van een klant.
+1. Het gekoppelde gebruikersaccount biedt geen [op rollen gebaseerde toegang](https://docs.microsoft.com/azure/role-based-access-control/overview) op welk Azure-abonnement of welke Azure-resource van die klant ook.
 
-2. Het Azure-abonnement waar de gebruiker toegang tot [op rollen gebaseerde toegangs](https://docs.microsoft.com/azure/role-based-access-control/overview) rechten heeft, heeft geen gebruik.
+2. Het Azure-abonnement waarbij de gebruiker [op rollen gebaseerde toegang](https://docs.microsoft.com/azure/role-based-access-control/overview) heeft, heeft geen gebruik.
 
-**Werkt de koppelings partner-ID met Azure Stack?**
+**Werken gekoppelde partner-id's met Azure Stack?**
 
-Ja, u kunt uw partner-ID koppelen voor Azure Stack.
+Ja, u kunt uw partner-id voor Azure Stack koppelen.

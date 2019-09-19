@@ -255,8 +255,18 @@
           href: manage-public-ip-address-prefix.md
     - name: Verplaatsen tussen regio's
       items:
+        - name: Netwerkbeveiligingsgroepen - Portal
+          href: move-across-regions-nsg-portal.md
+        - name: Netwerkbeveiligingsgroepen - PowerShell
+          href: move-across-regions-nsg-powershell.md
         - name: Virtuele netwerken - portal
           href: virtual-network-azure-to-azure-migrate-vnet-portal.md
+        - name: Virtuele netwerken - PowerShell
+          href: virtual-network-azure-to-azure-migrate-vnet-powershell.md
+        - name: Openbare IP-adressen - Portal
+          href: move-across-regions-publicip-portal.md
+        - name: Openbare IP-adressen - PowerShell
+          href: move-across-regions-publicip-powershell.md
     - name: Problemen oplossen
       items:
         - name: Peering-problemen van virtueel netwerk oplossen

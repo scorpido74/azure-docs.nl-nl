@@ -1,7 +1,7 @@
 ---
-title: Uw factuur te betalen voor Microsoft Azure | Microsoft Docs
-description: Hierin wordt beschreven hoe u een factuur betaalt in Azure portal
-keywords: Facturering, vervallen, saldo, nu betalen
+title: Uw factuur voor Microsoft Azure betalen | Microsoft Docs
+description: Hierin wordt beschreven hoe u een factuur kunt betalen in Azure Portal
+keywords: billing, past due, balance, pay now,
 services: billing
 documentationcenter: ''
 author: jureid
@@ -16,43 +16,43 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: banders
 ms.openlocfilehash: acb361cb2fd261265339fddca83c4f1b2e59a1c5
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67495543"
 ---
-# <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Betaling van uw factuur voor Microsoft Azure
+# <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Uw factuur voor Microsoft Azure betalen
 
-In dit artikel is van toepassing op klanten met een Microsoft-overeenkomst voor klanten die zich hebben aangemeld voor Azure via de Azure-website. [Controleer uw toegang tot een Microsoft-KLANTOVEREENKOMST](#check-access-to-a-microsoft-customer-agreement).
+Dit artikel is van toepassing op klanten met een Microsoft-klantovereenkomst die zich hebben aangemeld voor Azure via de Azure-website. [Controleer uw toegang tot een Microsoft-klantovereenkomst](#check-access-to-a-microsoft-customer-agreement).
 
-De standaardmethode voor de betaling van uw facturering-profiel kan worden van een creditcard of selectievakje/wire overdracht. Als u Azure-tegoed hebt, worden die automatisch toegepast op uw factuur elke factureringsperiode. Als u wilt worden in aanmerking voor het betalen via selectievakje/overschrijving, Zie [betaling per factuur](billing-how-to-pay-by-invoice.md).
+De standaardbetalingsmethode van uw factureringsprofiel kan een creditcard zijn of een cheque/directe overboeking. Als u Azure-tegoeden hebt, worden deze elke factureringsperiode automatisch toegepast op uw factuur. Zie [Betalen via factuur](billing-how-to-pay-by-invoice.md) als u in aanmerking wilt komen voor betaling met cheque/directe overboeking.
 
-Als uw standaardbetalingswijze selectievakje/overschrijving is, kunt u de betaling verzenden naar het adres aan de onderkant van uw factuur. U kunt ook kunt u betalen online met een creditcard is geregistreerd in Azure portal.
+Als uw standaardbetalingsmethode is ingesteld op cheque/directe overboeking, kunt u uw betaling verzenden naar het adres dat onder aan uw factuur staat vermeld. U kunt in Azure Portal ook online betalen met een creditcard.
 
-Als uw standaardbetalingswijze creditcard is geregistreerd, worden automatisch in rekening voor uw creditcard elke factureringsperiode nadat de factuur is gegenereerd. U kunt ook betalen online in de Azure-portal als u wilt een andere creditcard gebruiken of als de kosten voor automatische mislukt.
+Als uw standaardbetalingsmethode een creditcard is, worden kosten elke factureringsperiode nadat de factuur is gegenereerd automatisch in rekening gebracht op uw creditcard. U kunt ook online betalen in Azure Portal als u een andere creditcard wilt gebruiken of als de automatische afschrijving mislukt.
 
-## <a name="pay-now-in-the-azure-portal"></a>Nu betalen in Azure portal
+## <a name="pay-now-in-the-azure-portal"></a>Nu betalen in Azure Portal
 
-U moet een facturering profieleigenaar, bijdrager of factuur manager om te betalen voor facturen in Azure portal.
+U moet eigenaar van een factureringsprofiel, inzender of factuurbeheerder zijn om facturen te kunnen betalen in Azure Portal.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Zoek naar **kostenbeheer en facturering**.
-1. In de **overzicht** blade, klikt u op de *samenvatting* tabblad.
+1. Klik in de blade **Overzicht** op het tabblad *Samenvatting*.
 
-    ![Schermafbeelding van tabblad Overzicht](./media/billing-how-to-pay-bill/billing-account-overview.png)
+    ![schermopname van het tabblad Samenvatting](./media/billing-how-to-pay-bill/billing-account-overview.png)
 
-1. Als u een vervaldatum of vervallen facturen, ziet u het totale verschuldigde bedrag.
-1. Klik op de blauwe **nu betalen** knop.
+1. Als u een vervallen of verstreken factuur hebt, ziet u het totale verschuldigde bedrag.
+1. Klik op de blauwe knop **Nu betalen**.
 
-    ![Schermafdruk van knop Nu betalen](./media/billing-how-to-pay-bill/paynow-button-overview.png)
+    ![schermopname van de knop Nu betalen](./media/billing-how-to-pay-bill/paynow-button-overview.png)
 
-1. Klik op de blade nieuwe **selecteert u een betalingswijze** kiest u een bestaande creditcard of een nieuwe toevoegen.<!-- screenshot of select payment method link -->
-1. Nadat de betalingswijze is geselecteerd, klikt u op **nu betalen**.
+1. Klik in de nieuwe blade op **Een betalingswijze selecteren** om een bestaande creditcard te kiezen of een nieuwe toe te voegen.<!-- screenshot of select payment method link -->
+1. Zodra de betalingswijze is geselecteerd, klikt u op **Nu betalen**.
 
-De status van de factuur wordt bijgewerkt in de blade facturen betaald. 
+De status van de factuur wordt bijgewerkt naar betaald op de facturenblade. 
 
 <!-- pay now from invoice blade -->
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-KLANTOVEREENKOMST controleren
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

@@ -1,45 +1,77 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure Portal
+summary: De Azure-portal is een geïntegreerde web-console die een alternatief vormt voor opdrachtregelprogramma's. U kunt uw Azure-abonnement beheren met de Azure-portal. U kunt alles bouwen, beheren en controleren, van eenvoudige web-apps tot complexe cloud-implementaties. Maak aangepaste dashboards voor een georganiseerde weergave van resources en configureer toegankelijkheidsopties voor de beste ervaring.
 metadata:
-  description: Informatie over hoe u de Azure-portal gebruikt en aangepaste dashboards maakt.
-  services: azure portal
-  documentationcenter: ''
-  author: kfollis
-  manager: mtillman
-  editor: ''
-  ms.assetid: 3e12c488-9c8c-4d0d-9b07-e018dec42fc6
+  title: Documentatie voor Azure Portal
+  description: Meer informatie over het beheren van uw Azure-abonnement en -resources met behulp van de webconsole van de Azure-portal.
+  services: Azure portal
   ms.service: azure-portal
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.tgt_pltfrm: na
-  ms.workload: na
-  ms.date: 10/08/2018
+  ms.collection: collection
+  author: kfollis
   ms.author: kfollis
-abstract:
-  description: 'De Azure-portal is een webgebaseerde, geïntegreerde console waarmee u alles kunt bouwen, beheren en bewaken: van eenvoudige web-apps tot complexe cloudtoepassingen. De portal bevat aanpasbare dashboards en toegankelijkheidsopties.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/azure-preview-portal-supported-browsers-devices
-            html: <p>U kunt de Azure-portal uitvoeren op alle moderne desktop- en tablet-apparaten en browsers.</p>
-            title: Ondersteunde browsers en apparaten
-          - href: /azure/azure-portal/azure-portal-change-theme-high-contrast
-            html: <p>Wijzig het contrast of kleurenschema in de Azure-portal.</p>
-            title: Hoog contrast inschakelen
-          - href: /azure/azure-portal/azure-portal-keyboard-shortcuts
-            html: <p>Meer informatie over de sneltoetsen die u overal in de Azure-portal kunt gebruiken.</p>
-            title: Sneltoetsen
-          - href: /azure/azure-portal/azure-portal-dashboards
-            html: <p>Maak meerdere dashboards en deel deze met anderen die toegang hebben tot uw Azure-abonnementen.</p>
-            title: Azure-dashboards maken en delen
-          - href: /azure/azure-portal/azure-portal-dashboard-share-access
-            html: <p>Publiceer een dashboard en deel dit met andere gebruikers binnen uw organisatie.</p>
-            title: Dashboards delen met behulp van RBAC
-          - href: /azure/azure-portal/azure-portal-dashboards-create-programmatically
-            html: <p>Maak dashboards op programmatische wijze en publiceer deze voor uw organisatie</p>
-            title: Op programmatische wijze Azure-dashboards maken
+  ms.date: 09/17/2019
+  ms.openlocfilehash: 7fdd6f95ee2f84abc151f5c6e6e7929df2bc57a1
+  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/17/2019
+  ms.locfileid: "71076657"
+landingContent:
+- title: Over de Azure-portal
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is de Azure-portal?
+      url: azure-portal-overview.md
+    - text: Ondersteunde browsers en apparaten
+      url: azure-portal-supported-browsers-devices.md
+- title: De Azure-portal aanpassen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Aangepaste dashboards maken en delen
+      url: azure-portal-dashboards.md
+    - text: Uw favorieten beheren
+      url: azure-portal-add-remove-sort-favorites.md
+- title: Toegang tot de Azure-portal beheren
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Lijst met veilige Azure-portal-URL's maken
+      url: azure-portal-safelist-urls.md
+    - text: Toegangsbeheer op basis van rollen voor dashboards
+      url: azure-portal-dashboard-share-access.md
+  - linkListType: learn
+    links:
+    - text: Resources beheren in Azure
+      url: /learn/paths/manage-resources-in-azure/
+    - text: Uw Azure-resources beveiligen met op rollen gebaseerd toegangsbeheer (RBAC)
+      url: /learn//modules/secure-azure-resources-with-rbac/
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Onboarden met Azure Quickstart Center
+      url: azure-portal-quickstart-center.md
+  - linkListType: how-to-guide
+    links:
+    - text: Videoserie met instructies voor de Azure-portal
+      url: azure-portal-video-series.md
+  - linkListType: learn
+    links:
+    - text: Basisprincipes van Azure
+      url: /learn/paths/azure-fundamentals/
+    - text: 'Cloudconcepten: de principes van cloudcomputing'
+      url: /learn/modules/principles-cloud-computing/
+- title: Toegankelijkheidsopties gebruiken
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Sneltoetsen
+      url: azure-portal-keyboard-shortcuts.md
+  - linkListType: how-to-guide
+    links:
+    - text: Hoog contrast inschakelen
+      url: azure-portal-change-theme-high-contrast.md

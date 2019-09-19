@@ -123,6 +123,14 @@
       href: load-balancer-query-metrics-rest-api.md
     - name: Poorten voor hoge beschikbaarheid configureren voor de interne Load Balancer
       href: load-balancer-configure-ha-ports.md
+    - name: Verplaatsen tussen regio's
+      items:
+        - name: Externe load balancer - Portal
+          href: move-across-regions-external-load-balancer-portal.md
+        - name: Externe load balancer - PowerShell
+          href: move-across-regions-external-load-balancer-powershell.md
+        - name: Interne load balancer - PowerShell
+          href: move-across-regions-internal-load-balancer-powershell.md
     - name: Problemen oplossen
       items:
         - name: Problemen met Azure Load Balancer oplossen

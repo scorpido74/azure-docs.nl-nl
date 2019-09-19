@@ -1,6 +1,6 @@
 ---
-title: Onverwachte kosten voor komen en facturering in azure beheren
-description: Meer informatie over hoe u onverwachte kosten voor uw Azure-factuur kunt voor komen. Gebruik functies voor het bijhouden en beheren van kosten voor een Azure-abonnement.
+title: Onverwachte kosten voorkomen en facturering beheren in Azure
+description: Meer informatie over het vermijden van onverwachte kosten op uw Azure-factuur. Gebruik functies voor het bijhouden van kosten en beheer voor een Azure-abonnement.
 author: bandersmsft
 manager: amberb
 tags: billing
@@ -12,208 +12,208 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: b64e84c3fff27675029ff35f27972a4aca014ec3
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68612077"
 ---
-# <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Onverwachte kosten voor komen met facturering en kosten beheer van Azure
+# <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Onverwachte kosten voorkomen met Azure-facturering en -kostenbeheer
 
-Wanneer u zich aanmeldt voor Azure, zijn er verschillende dingen die u kunt doen om een beter beeld te krijgen van uw uitgaven:
+Wanneer u zich aanmeldt voor Azure, zijn er een aantal zaken die u kunt doen om meer inzicht in uw uitgaven te krijgen:
 
-- De [prijs calculator](https://azure.microsoft.com/pricing/calculator/) kan een schatting van de kosten bieden voordat u een Azure-resource maakt. 
+- De [Prijscalculator](https://azure.microsoft.com/pricing/calculator/) biedt een schatting van de kosten voordat u een Azure-resource maakt. 
 
-- De [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) biedt u de huidige kosten analyse en prognose voor uw abonnement. 
+- [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) biedt u de huidige kostenanalyse en prognose voor uw abonnement. 
 
-- Als u de kosten voor verschillende projecten of teams wilt groeperen en begrijpen, bekijkt u de [bron code ring](../azure-resource-manager/resource-group-using-tags.md). Als uw organisatie een rapportage systeem heeft dat u wilt gebruiken, Bekijk dan de facturerings- [api's](billing-usage-rate-card-overview.md).
+- Als u kosten voor verschillende projecten of teams wilt groeperen en begrijpen, bekijkt u [resources taggen](../azure-resource-manager/resource-group-using-tags.md). Als uw organisatie over een rapportensysteem beschikt dat u liever gebruikt, bekijkt u de [facturerings-API's](billing-usage-rate-card-overview.md).
 
-- Als uw abonnement is gemaakt op basis van een Enterprise Agreement (EA), kunt u uw kosten bekijken in de Azure Portal. Als uw abonnement is via een Cloud Solution Provider (CSP) of Azure Sponsorship, zijn sommige van de volgende functies mogelijk niet op u van toepassing. Zie [aanvullende bronnen voor EA, CSP en sponsor](#other-offers)voor meer informatie.
+- Als uw abonnement is gemaakt op basis van een Enterprise Agreement (EA), kunt u uw kosten bekijken in Azure Portal. Als uw abonnement via een Cloud Solution Provider (CSP) of Azure Sponsorship loopt, is een aantal van de volgende functies mogelijk niet op u van toepassing. Zie [Aanvullende resources voor EA, CSP en Sponsorship](#other-offers) voor meer informatie.
 
-- Als uw abonnement een gratis proef versie, [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), Azure in open (AIO) of BizSpark is, wordt uw abonnement automatisch uitgeschakeld wanneer al uw tegoeden worden gebruikt. Meer informatie [](#spending-limit) over bestedings limieten om te voor komen dat uw abonnement onverwacht wordt uitgeschakeld.
+- Als uw abonnement een gratis proefversie of een [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)-, Azure in Open (AIO)- of BizSpark-abonnement is, dan wordt dit automatisch uitgeschakeld wanneer al uw tegoed is gebruikt. Krijg meer informatie over [bestedingslimieten](#spending-limit) om te voorkomen dat uw abonnement onverwacht wordt uitgeschakeld.
 
-- Als u zich hebt geregistreerd voor een [gratis Azure-account](https://azure.microsoft.com/free/), [kunt u een aantal van de populairste Azure-Services gedurende 12 maanden gratis gebruiken](billing-create-free-services-included-free-account.md). Bekijk, samen met de hieronder vermelde aanbevelingen, voor [komen dat u in rekening wordt gebracht voor gratis account](billing-avoid-charges-free-account.md).
+- Als u zich hebt aangemeld voor een [gratis Azure-account](https://azure.microsoft.com/free/), [kunt u een aantal van de populairste Azure-services gedurende 12 maanden gratis gebruiken](billing-create-free-services-included-free-account.md). Naast de aanbevelingen die hieronder worden vermeld, zie [Voorkomen dat u moet betalen voor een gratis account](billing-avoid-charges-free-account.md).
 
-## <a name="get-estimated-costs-before-adding-azure-services"></a>Geschatte kosten ophalen voordat u Azure-Services toevoegt
+## <a name="get-estimated-costs-before-adding-azure-services"></a>Geschatte kosten ontvangen voordat u Azure-services toevoegt
 
-Hier vindt u meer informatie over het schatten van de kosten met de volgende hulpprogram ma's:
+Hier ziet u aanvullende informatie over het schatten van kosten met behulp van de volgende hulpprogramma's:
 - Azure-prijscalculator
 - Azure Portal
 - Bestedingslimiet
 
-In de afbeeldingen in de volgende secties worden de voorbeeld prijzen in Amerikaanse dollars weer gegeven.
+Op de afbeeldingen in de volgende secties ziet u voorbeeldprijzen in Amerikaanse dollar.
 
-### <a name="estimate-cost-online-using-the-pricing-calculator"></a>Kosten online schatten met de prijs calculator
+### <a name="estimate-cost-online-using-the-pricing-calculator"></a>Online kosten schatten met behulp van de Prijscalculator
 
-Bekijk de [prijs calculator](https://azure.microsoft.com/pricing/calculator/) om een schatting te krijgen van de maandelijkse kosten van de service waarop u bent geïnteresseerd. U kunt een Azure-resource voor de eerste partij toevoegen om een geschatte kosten te krijgen. In de prijs calculator kunt u het valuta type wijzigen.
+Bekijk de [Prijscalculator](https://azure.microsoft.com/pricing/calculator/) voor geschatte maandelijkse kosten van de service waarin u bent geïnteresseerd. U kunt elke eigen Azure-resource toevoegen om geschatte kosten te krijgen. In de Prijscalculator kunt u valutatype wijzigen.
 
-![Scherm opname van het menu met prijs calculator](./media/billing-getting-started/pricing-calc.png)
+![Schermopname van het menu Prijscalculator](./media/billing-getting-started/pricing-calc.png)
 
-In de prijs calculator wordt een a1 virtuele machine (VM) van Windows bijvoorbeeld geschat om een bepaalde hoeveelheid/maand in reken uren te berekenen als u de hele tijd uitvoert:
+In de Prijscalculator wordt bijvoorbeeld geschat dat de rekenuren voor een A1 virtuele Windows-machine een bepaald bedrag per maand kost als u deze VM de hele tijd blijft uitvoeren:
 
-![Scherm afbeelding van de prijs calculator met een a1 Windows VM-geschatte kosten per maand](./media/billing-getting-started/pricing-calcvm.png)
+![Schermopname van de Prijscalculator, met de geschatte kosten voor een A1 Windows-VM](./media/billing-getting-started/pricing-calcvm.png)
 
-Zie [Veelgestelde vragen over prijzen](https://azure.microsoft.com/pricing/faq/)voor meer informatie over prijzen. Als u met een Azure-verkoper wilt praten, belt u het telefoon nummer dat boven aan de pagina met veelgestelde vragen wordt weer gegeven.
+Zie de [Veelgestelde vragen over prijzen](https://azure.microsoft.com/pricing/faq/) voor meer informatie over prijzen. Als u met een Azure-verkoopmedewerker wilt spreken, belt u het telefoonnummer bovenaan de pagina Veelgestelde vragen.
 
-### <a name="review-estimated-costs-in-the-azure-portal"></a>Bekijk de geschatte kosten in de Azure Portal
+### <a name="review-estimated-costs-in-the-azure-portal"></a>Geschatte kosten controleren in Azure Portal
 
-Wanneer u een service toevoegt in de Azure Portal, is er meestal een weer gave waarin u een geschatte prijs per maand in uw gefactureerde valuta kunt zien. Als u bijvoorbeeld de grootte van uw Windows-VM kiest, ziet u de geschatte maandelijkse kosten voor de reken uren:
+Wanneer u een service in Azure Portal toevoegt, is er doorgaans een weergave beschikbaar met de geschatte kosten per maand in uw gefactureerde valuta. Wanneer u bijvoorbeeld de grootte van uw Windows-VM kiest, ziet u de geschatte maandelijkse kosten voor de rekenuren:
 
-![Voor beeld: een a1 Windows-VM met geschatte kosten per maand](./media/billing-getting-started/vm-size-cost.png)
+![Voorbeeld: een A1 Windows-VM, met geschatte kosten per maand](./media/billing-getting-started/vm-size-cost.png)
 
-### <a name="spending-limit"></a>Controleer of u een bestedings limiet hebt voor
+### <a name="spending-limit"></a> Controleer of er een bestedingslimiet is ingeschakeld
 
-Als u een abonnement hebt dat tegoed gebruikt, is de bestedings limiet standaard ingeschakeld. Op deze manier, wanneer u al uw tegoed aan het best Eden, worden er geen kosten in rekening gebracht voor uw credit card. Bekijk de [volledige lijst met Azure-aanbiedingen en de beschik baarheid van bestedings limieten](https://azure.microsoft.com/support/legal/offer-details/).
+Als u een abonnement hebt waarbij u tegoed gebruikt, wordt de bestedingslimiet standaard voor u ingeschakeld. Op deze manier worden geen kosten in rekening gebracht op uw creditcard wanneer u al uw tegoed verbruikt. Zie de [volledige lijst met Azure-aanbiedingen en de beschikbaarheid van de bestedingslimiet](https://azure.microsoft.com/support/legal/offer-details/).
 
-Wanneer u echter uw bestedings limiet bereikt, worden uw services uitgeschakeld. Dit betekent dat de toewijzing van uw Vm's ongedaan wordt gemaakt. Als u downtime van services wilt voor komen, moet u de bestedings limiet uitschakelen. Alle overschrijding worden in rekening gebracht op uw credit card in het bestand.
+Wanneer u echter uw bestedingslimiet bereikt, worden uw services uitgeschakeld. Dat houdt in dat de toewijzing van uw virtuele machines ongedaan wordt gemaakt. U kunt voorkomen dat de service uitvalt door de bestedingslimiet uit te schakelen. Elke overschrijding van de limiet wordt in rekening gebracht op de voor u geregistreerde creditcard.
 
-Als u wilt controleren of u een bestedings limiet hebt, gaat u naar de [weer gave abonnementen in het account centrum](https://account.windowsazure.com/Subscriptions). Er wordt een banner weer gegeven als uw bestedings limiet is ingeschakeld, vergelijkbaar met het volgende:
+Ga naar de [weergave Abonnementen in het accountcentrum](https://account.windowsazure.com/Subscriptions) om te zien of u een bestedingslimiet hebt ingeschakeld. Er wordt een banner weergegeven als uw bestedingslimiet is ingeschakeld, zoals bij het volgende:
 
-![Scherm afbeelding met een waarschuwing over de bestedings limiet die is ingesteld in het account centrum](./media/billing-getting-started/spending-limit-banner.png)
+![Schermopname met een waarschuwing over een ingeschakelde bestedingslimiet in het accountcentrum](./media/billing-getting-started/spending-limit-banner.png)
 
-Klik op de banner en volg de aanwijzingen om de bestedings limiet te verwijderen. Als u geen creditcard gegevens hebt ingevoerd toen u zich registreerde, moet u deze invoeren om de bestedings limiet te verwijderen. Zie voor meer informatie [Azure bestedings limiet – hoe deze werkt en hoe u deze kunt in-of uitschakelen](https://azure.microsoft.com/pricing/spending-limits/).
+Klik op de banner en volg de instructies om de bestedingslimiet te verwijderen. Als u geen creditcardinformatie hebt ingevoerd op het moment dat u zich hebt aangemeld, moet u die gegevens nu invoeren om de bestedingslimiet te verwijderen. Zie [Azure-bestedingslimiet: hoe werkt dit en hoe kan ik dit inschakelen of verwijderen?](https://azure.microsoft.com/pricing/spending-limits/) voor meer informatie.
 
-## <a name="use-budgets-and-cost-alerts"></a>Budgetten en kosten waarschuwingen gebruiken
+## <a name="use-budgets-and-cost-alerts"></a>Budgetten en kostenwaarschuwingen gebruiken
 
-U kunt [budgetten](../cost-management/tutorial-acm-create-budgets.md) maken om kosten te beheren en [waarschuwingen](../cost-management/cost-mgt-alerts-monitor-usage-spending.md) te maken waarmee de betrokkenen automatisch worden geïnformeerd over uitgave afwijkingen en het overeden van Risico's. Waarschuwingen zijn gebaseerd op uitgaven vergeleken met budget en kosten drempels.
+U kunt [budgetten](../cost-management/tutorial-acm-create-budgets.md) maken om kosten te beheren en [waarschuwingen](../cost-management/cost-mgt-alerts-monitor-usage-spending.md) te maken waarmee belanghebbenden automatisch worden geïnformeerd over afwijkende uitgaven en het risico om teveel uit te geven. Waarschuwingen zijn gebaseerd op de vergelijking tussen uitgaven en drempelwaarden voor budgetten en kosten.
 
-## <a name="monitor-costs-when-using-azure-services"></a>Kosten bewaken bij het gebruik van Azure-Services
-U kunt de kosten controleren met de volgende hulp middelen:
+## <a name="monitor-costs-when-using-azure-services"></a>Kosten bewaken bij het gebruik van Azure-services
+U kunt kosten bewaken met de volgende hulpprogramma's:
 
-- Labels
-- Kosten analyse en brand frequentie
+- Tags
+- Kostenanalyse en burn rate
 - Kostenanalyse
 
-### <a name="tags"></a>Tags toevoegen aan resources om facturerings gegevens te groeperen
+### <a name="tags"></a> Tags aan resources toevoegen om factureringsgegevens te groeperen
 
-U kunt tags gebruiken om facturerings gegevens te groeperen voor ondersteunde services. Als u bijvoorbeeld verschillende Vm's voor verschillende teams uitvoert, kunt u Tags gebruiken om de kosten te categoriseren per kosten plaats (bijvoorbeeld: HR, marketing, financiën, enz.) of omgeving (bijvoorbeeld: productie, voor bereiding, test).
+U kunt tags gebruiken om factureringsgegevens voor ondersteunde services te groeperen. Als u bijvoorbeeld een aantal virtuele machines voor verschillende teams uitvoert, dan kunt u tags gebruiken om kosten per kostencentrum te categoriseren (bijvoorbeeld: HR, marketing, financiën, enzovoort) of omgeving (bijvoorbeeld: productie, preproductie, test).
 
-![Scherm afbeelding van het instellen van tags in de portal](./media/billing-getting-started/tags.png)
+![Schermopname met de instelling van tags in de portal](./media/billing-getting-started/tags.png)
 
-De labels worden weer gegeven in verschillende weer gaven van de kosten rapportage. Ze zijn bijvoorbeeld zichtbaar in de [weer gave kosten analyse](#costs) direct en in het uitgebreide gebruik CSV-bestand na de eerste facturerings periode.
+De tags worden in verschillende kostenrapportenweergaven getoond. Ze zijn bijvoorbeeld meteen zichtbaar in uw [kostenanalyseweergave](#costs) en in het gedetailleerde CSV-gebruiksbestand na uw eerste factureringsperiode.
 
-Zie [Tags gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/resource-group-using-tags.md)voor meer informatie.
+Zie [Tags gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/resource-group-using-tags.md) voor meer informatie.
 
-### <a name="costs"></a>Kosten analyse en brand frequentie bewaken
+### <a name="costs"></a> De kostenanalyse en burn rate bewaken
 
-Nadat u uw Azure-Services hebt uitgevoerd, controleert u de kosten regel matig. U kunt de huidige uitgaven-en brand frequentie bekijken in de Azure Portal.
+Nadat u uw Azure-services bent gaan uitvoeren, moet u de kosten regelmatig controleren. U kunt de huidige uitgaven en burn rate in Azure Portal zien.
 
-1. Ga naar de [abonnementen in de Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) en selecteer een abonnement.
+1. Ga naar de [abonnementen in Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) en selecteer een abonnement.
 
-2. Als de app wordt ondersteund voor uw abonnement, ziet u de kosten analyse en de brand frequentie.
+2. Als kostenanalyse en burn rate voor uw abonnement wordt ondersteund, worden die hier weergegeven.
 
-    ![Scherm opname van de brand frequentie en uitsplitsing in het Azure Portal](./media/billing-getting-started/burn-rate.PNG)
+    ![Schermopname van burn rate en analyse in Azure Portal](./media/billing-getting-started/burn-rate.PNG)
 
-3. Klik op [kosten analyse](../cost-management/quick-acm-cost-analysis.md) in de lijst een van de linkerkant om de kosten specificatie per resource te bekijken. Nadat u een service hebt toegevoegd, moet u 24 uur wachten totdat de gegevens worden weer gegeven.
+3. Klik op [Kostenanalyse](../cost-management/quick-acm-cost-analysis.md) in de lijst om de kostenanalyse per resource weer te geven. Nadat u een service toevoegt, wacht u 24 uur voor de gegevens worden weergegeven.
 
-    ![Scherm opname van de weer gave kosten analyse in Azure Portal](./media/billing-getting-started/cost-analysis.png)
+    ![Schermopname van de kostenanalyseweergave in Azure Portal](./media/billing-getting-started/cost-analysis.png)
 
-4. U kunt filteren op verschillende eigenschappen, zoals [Tags](#tags), resource type, resource groep en time span. Klik op **Toep assen** om de filters te bevestigen en te **downloaden** als u de weer gave wilt exporteren naar een bestand met door komma's gescheiden waarden (. CSV).
+4. U kunt filteren op verschillende eigenschappen zoals [tags](#tags), resourcetype, resourcegroep en periode. Klik op **Toepassen** om de filters te bevestigen en klik op **Downloaden** als u de weergave wilt exporteren naar een CSV-bestand met door komma's gescheiden waarden.
 
-5. Daarnaast kunt u klikken op een resource om uw dagelijkse uitgaven geschiedenis te bekijken en hoeveel resource kosten elke dag.
+5. Daarnaast kunt u op een resource klikken om uw dagelijkse uitgavengeschiedenis weer te geven en om te zien hoeveel de resource per dag kost.
 
-    ![Scherm opname van de weer gave uitgaven geschiedenis in Azure Portal](./media/billing-getting-started/costhistory.png)
+    ![Schermopname van de uitgavengeschiedenisweergave in Azure Portal](./media/billing-getting-started/costhistory.png)
 
-Vergelijk de kosten die u ziet met de schattingen die u hebt gezien tijdens het selecteren van de services. Als de kosten aanzienlijk afwijken van de schattingen, controleert u het prijs plan dat u hebt geselecteerd voor uw resources.
+Vergelijk de kosten die u ziet met de geschatte kosten die hebt gezien toen u de services selecteerde. Als de kosten aanzienlijk afwijken van de geschatte kosten, controleert u het prijsplan dat u voor uw resources hebt geselecteerd.
 
 ## <a name="optimize-and-reduce-costs"></a>Kosten optimaliseren en verlagen
-Als u niet bekend bent met de principes van Cost Management, lees dan [hoe u uw Cloud investering optimaliseert met Azure Cost Management](../cost-management/cost-mgt-best-practices.md).
+Als u niet bekend bent met de principes van kostenbeheer, leest u [Uw cloudinvestering optimaliseren met Azure Cost Management](../cost-management/cost-mgt-best-practices.md).
 
-In de Azure Portal kunt u Azure-kosten ook optimaliseren en verlagen met automatisch afsluiten voor Vm's en Advisor-aanbevelingen.
+In Azure Portal kunt u ook Azure-kosten optimaliseren en verlagen met behulp van automatisch afsluiten voor virtuele machines en Advisor-aanbevelingen.
 
-### <a name="consider-cost-cutting-features-like-auto-shutdown-for-vms"></a>Kosten besparingen overwegen, zoals automatisch afsluiten voor Vm's
+### <a name="consider-cost-cutting-features-like-auto-shutdown-for-vms"></a>Kostenbesparende functies overwegen zoals automatisch afsluiten voor virtuele machines
 
-Afhankelijk van uw scenario kunt u automatisch afsluiten configureren voor uw virtuele machines in de Azure Portal. Zie [automatisch afsluiten voor vm's met Azure Resource Manager](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)voor meer informatie.
+Afhankelijk van uw scenario kunt u automatisch afsluiten voor uw virtuele machines configureren in Azure Portal. Zie [Automatisch afsluiten voor virtuele machines met behulp van Azure Resource Manager](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) voor meer informatie.
 
-![Scherm afbeelding van de optie automatisch afsluiten in de portal](./media/billing-getting-started/auto-shutdown.png)
+![Schermopname van de optie Automatisch afsluiten in de portal](./media/billing-getting-started/auto-shutdown.png)
 
-Automatisch afsluiten is niet hetzelfde als wanneer u op de virtuele machine afsluit met energie beheer. Automatisch afsluiten wordt gestopt en de toewijzing van uw Vm's wordt ongedaan om extra gebruiks kosten te stoppen. Zie Veelgestelde vragen over prijzen voor [Linux vm's](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) en Windows- [vm's](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) over VM-statussen voor meer informatie.
+Automatisch afsluiten is wat anders dan uitschakelen in de virtuele machine met behulp van aan-uitopties. Met Automatisch afsluiten worden uw virtuele machines gestopt en wordt de toewijzing hiervan ongedaan gemaakt om ervoor te zorgen dat er geen extra kosten meer in rekening worden gebracht. Zie de veelgestelde vragen over prijzen voor [virtuele Linux-machines](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) en [virtuele Windows-machines](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) over VM-statussen voor meer informatie.
 
-Bekijk [Azure DevTest Labs](https://azure.microsoft.com/services/devtest-lab/)voor meer kosten voor het knippen van uw ontwikkel-en test omgevingen.
+Raadpleeg [Azure DevTest Labs](https://azure.microsoft.com/services/devtest-lab/) voor meer kostenbesparende functies voor uw ontwikkelings- en testomgevingen.
 
-### <a name="turn-on-and-review-azure-advisor-recommendations"></a>Azure Advisor aanbevelingen inschakelen en controleren
+### <a name="turn-on-and-review-azure-advisor-recommendations"></a>Azure Advisor-aanbevelingen inschakelen en beoordelen
 
-[Azure Advisor](../advisor/advisor-overview.md) helpt u kosten te verlagen door resources te identificeren met weinig gebruik. Ga naar Advisor in de Azure Portal:
+[Azure Advisor](../advisor/advisor-overview.md) helpt u kosten te besparen door resources te identificeren die weinig worden gebruikt. Ga naar Advisor in Azure Portal:
 
-![Scherm afbeelding van de knop Azure Advisor in Azure Portal](./media/billing-getting-started/advisor-button.png)
+![Schermopname van de knop Azure Advisor in Azure Portal](./media/billing-getting-started/advisor-button.png)
 
-U kunt aanbevelingen voor acties op het tabblad **kosten** op het dash board van Advisor ophalen:
+U kunt handige aanbevelingen krijgen op het tabblad **Kosten** in het Advisor-dashboard:
 
-![Scherm opname van voor beeld van Advisor-kosten aanbeveling](./media/billing-getting-started/advisor-action.png)
+![Schermopname van een voorbeeld van de Advisor-aanbevelingen voor kosten](./media/billing-getting-started/advisor-action.png)
 
-Raadpleeg de zelf studie [kosten optimaliseren van aanbevelingen](../cost-management/tutorial-acm-opt-recommendations.md) voor een begeleide zelf studie over aanbevelingen voor kosten besparingen.
+Lees de zelfstudie [Kosten optimaliseren op basis van aanbevelingen](../cost-management/tutorial-acm-opt-recommendations.md) voor een begeleide zelfstudie over kostenbesparende Advisor-aanbevelingen.
 
-## <a name="review-costs-against-your-latest-invoice"></a>Bekijk de kosten voor uw laatste factuur
+## <a name="review-costs-against-your-latest-invoice"></a>Kosten controleren op basis van uw meest recente factuur
 
-Aan het einde van de facturerings cyclus is uw laatste factuur beschikbaar. U kunt ook [facturen en gedetailleerde gebruiks bestanden downloaden](billing-download-azure-invoice-daily-usage-date.md) om er zeker van te zijn dat u goed in rekening wordt gebracht. Zie [inzicht in uw factuur voor Microsoft Azure](billing-understand-your-bill.md)voor meer informatie over het vergelijken van uw dagelijkse gebruik met uw factuur.
+Aan het einde van de factureringscyclus is uw meest recente factuur is beschikbaar. U kunt ook[facturen en bestanden met gedetailleerde gebruiksgegevens downloaden](billing-download-azure-invoice-daily-usage-date.md) om te controleren of de juiste kosten in rekening zijn gebracht. Zie[Meer informatie over uw factuur voor Microsoft Azure](billing-understand-your-bill.md) voor meer informatie over het vergelijken van uw dagelijkse gebruik met uw factuur.
 
 ### <a name="billing-api"></a>Billing-API
 
-Gebruik de API voor Azure-facturering om gebruiks gegevens programmatisch te verkrijgen. Gebruik de RateCard-API en de gebruiks-API samen om uw gefactureerd gebruik te verkrijgen. Zie [inzicht verkrijgen in uw Microsoft Azure Resource verbruik](billing-usage-rate-card-overview.md)voor meer informatie.
+Gebruik de Azure Billing-API om programmatisch gebruiksgegevens op te halen. Gebruik zowel de RateCard-API als de gebruik-API om uw gefactureerde gebruik op te halen. Zie [Inzicht verkrijgen in het gebruik van Microsoft Azure-resources](billing-usage-rate-card-overview.md)voor meer informatie.
 
-## <a name="other-offers"></a>Aanvullende bronnen en speciale gevallen
+## <a name="other-offers"></a> Aanvullende resources en speciale gevallen
 
-### <a name="ea-csp-and-sponsorship-customers"></a>Klanten van EA, CSP en sponsoring
-Neem contact op met uw account manager of Azure-partner om aan de slag te gaan.
+### <a name="ea-csp-and-sponsorship-customers"></a>EA-, CSP- en Sponsorship-klanten
+Ga in gesprek met uw accountbeheerder of Azure-partner om aan de slag te gaan.
 
 | Aanbieding | Resources |
 |-------------------------------|-----------------------------------------------------------------------------------|
-| Enterprise Agreement (EA) | [EA-Portal](https://ea.azure.com/), [help docs](https://ea.azure.com/helpdocs)en [Power bi rapport](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
-| Cloud Solution Provider (CSP) | Neem contact op met uw provider |
-| Azure Sponsorship | [Sponsor Portal](https://www.microsoftazuresponsorships.com/) |
+| Enterprise Agreement (EA) | [EA portal](https://ea.azure.com/), [helpdocumenten](https://ea.azure.com/helpdocs) en [Power BI-rapport](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
+| Cloud Solution Provider (CSP) | In gesprek gaan met uw provider |
+| Azure Sponsorship | [Sponsorship-portal](https://www.microsoftazuresponsorships.com/) |
 
-Als u het beheert voor een grote organisatie, raden we u aan om [Azure Enter prise](/azure/architecture/cloud-adoption-guide/subscription-governance) -steigers en de IT-afdeling van het [bedrijf](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) te lezen (PDF-down load, alleen Engels).
+Als u IT voor een grote organisatie beheert, wordt aanbevolen de [zakelijke ondersteuning voor Azure](/azure/architecture/cloud-adoption-guide/subscription-governance) en het [zakelijke technische document voor IT](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) te lezen (PDF-downloads, alleen in het Engels).
 
-#### <a name="EA"></a>Enterprise Agreement kosten weergaven in het Azure Portal
+#### <a name="EA"></a> Enterprise Agreement-kostenweergaven in Azure Portal
 
-De Enter prise-kosten weergaven zijn momenteel beschikbaar als open bare preview. Items die moeten worden genoteerd:
+Zakelijke kostenweergaven zijn momenteel als openbare preview-versie beschikbaar. Aandachtspunten:
 
-- Abonnements kosten zijn gebaseerd op gebruik en bevatten geen vooruitbetaalde bedragen, overschrijdingen, opgenomen hoeveel heden, aanpassingen en belastingen. De werkelijke kosten worden berekend op het inschrijvings niveau.
-- De bedragen die in de Azure Portal worden weer gegeven, kunnen afwijken van de in de Enter prise Portal. Updates in de Enter prise portal kunnen enkele minuten duren voordat de wijzigingen worden weer gegeven in de Azure Portal.
-- Als u geen kosten ziet, kan dit een van de volgende oorzaken hebben:
-    - U hebt geen machtigingen op het abonnements niveau. Als u kosten weergaven voor ondernemingen wilt bekijken, moet u een facturerings lezer, lezer, Inzender of eigenaar zijn op het abonnements niveau.
-    - U bent een eigenaar van het account en de registratie beheerder heeft de instelling ' AO-weergave kosten ' uitgeschakeld.  Neem contact op met de registratie beheerder om toegang te krijgen tot de kosten.
-    - U bent een afdelings beheerder en de registratie beheerder heeft de instelling **voor de da-weer gave-kosten** uitgeschakeld.  Neem contact op met de registratie beheerder om toegang te krijgen.
-    - U hebt Azure gekocht via een kanaal partner en de partner heeft geen prijs informatie vrijgegeven.  
-- Als u de instellingen met betrekking tot de kosten toegang in de Enter prise Portal bijwerkt, is er een vertraging van enkele minuten voordat de wijzigingen worden weer gegeven in de Azure Portal.
-- De bestedings limiet en de factuur richtlijnen zijn niet van toepassing op EA-abonnementen.
+- Abonnementskosten zijn gebaseerd op gebruik en zijn exclusief vooruitbetaalde bedragen, overschrijdingen, opgenomen hoeveelheden, aanpassingen en belasting. De daadwerkelijke kosten worden op inschrijvingsniveau berekend.
+- De bedragen die in Azure Portal worden weergegeven, kunnen afwijken van de bedragen in de Enterprise-portal. Het kan enkele minuten duren voordat wijzigingen als gevolg van updates in de Enterprise-portal worden weergegeven in Azure Portal.
+- Als u geen kosten ziet, komt dit waarschijnlijk door een van de volgende oorzaken:
+    - U hebt geen machtigingen op abonnementsniveau. Als u de zakelijke kostenweergaven wilt zien, moet u een lezer met factureringsrechten, een lezer, een inzender of een eigenaar op abonnementsniveau zijn.
+    - U bent eigenaar van een account en uw inschrijvingsbeheerder heeft de instelling AO-weergavekosten uitgeschakeld.  Neem contact op met uw inschrijvingsbeheerder voor toegang tot kosten.
+    - U bent een afdelingsbeheerder en uw inschrijvingsbeheerder heeft de instelling **DA-weergavekosten** uitgeschakeld.  Neem contact op met uw inschrijvingsbeheerder voor toegang.
+    - U hebt Azure via een kanaalpartner aangeschaft en de partner heeft geen prijsgegevens gepubliceerd.  
+- Als u instellingen met betrekking tot kostentoegang in de Enterprise-portal bijwerkt, is er een vertraging van enkele minuten voordat de wijzigingen worden weergegeven in Azure Portal.
+- Instructies voor de bestedingslimiet en facturen zijn niet van toepassing op EA-abonnementen.
 
-### <a name="check-your-subscription-and-access"></a>Controleer uw abonnement en toegang
+### <a name="check-your-subscription-and-access"></a>Uw abonnement en toegang controleren
 
-Als u de kosten wilt weer geven, moet u [toegang tot facturerings gegevens op abonnementen niveau](billing-manage-access.md)hebben. Alleen de account beheerder kan toegang krijgen tot het [account centrum](https://account.azure.com/Subscriptions), facturerings gegevens wijzigen en abonnementen beheren. De account beheerder is de persoon die het registratie proces heeft door lopen. Zie voor meer informatie [Azure-beheerders rollen toevoegen of wijzigen waarmee het abonnement of de services worden beheerd](billing-add-change-azure-subscription-administrator.md).
+Als u kosten wilt weergeven, moet u [toegang op abonnementsniveau hebben tot de factureringsgegevens](billing-manage-access.md). Alleen de accountbeheerder heeft toegang tot het [accountcentrum](https://account.azure.com/Subscriptions) en alleen de accountbeheerder kan factureringsgegevens wijzigen en abonnementen beheren. De accountbeheerder is de persoon die het registratieproces heeft doorlopen. Zie [Azure-beheerderrollen toevoegen of wijzigen waarmee het abonnement of de services worden beheerd](billing-add-change-azure-subscription-administrator.md) voor meer informatie.
 
-Als u wilt weten of u de account beheerder bent, gaat u naar [abonnementen in de Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Bekijk de lijst met abonnementen en zoek **mijn rol**. Als *account beheerder* de rol is, hebt u volledige bevoegdheden. Als er iets anders is, zoals de *eigenaar*, hebt u geen volledige bevoegdheden.
+Ga naar [Abonnementen in Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) om te zien of u de accountbeheerder bent. Bekijk de lijst met abonnementen en zoek **Mijn rol**. Als *accountbeheerder* de rol is, dan beschikt u over volledige bevoegdheden. Als er iets anders wordt vermeld, zoals *Eigenaar*, dan beschikt u niet over de volledige bevoegdheden.
 
-![Scherm afbeelding van uw rol in de weer gave abonnementen in de Azure Portal](./media/billing-getting-started/sub-blade-view.PNG)
+![Schermopname van uw rol in de weergave Abonnementen in Azure Portal](./media/billing-getting-started/sub-blade-view.PNG)
 
-Als u abonnementen wilt beheren en de facturerings gegevens wilt wijzigen, gaat u [naar de account beheerder](billing-subscription-transfer.md#whoisaa). Vraag de account beheerder om de taken te volt ooien of [het abonnement naar u over te dragen](billing-subscription-transfer.md).
+[Zoek de accountbeheerder](billing-subscription-transfer.md#whoisaa) om abonnementen te beheren en de factureringsgegevens te wijzigen. Vraag de accountbeheerder om de taken te voltooien of om [het abonnement aan u over te dragen](billing-subscription-transfer.md).
 
-Als uw account beheerder niet langer deel uitmaakt van uw organisatie en u uw facturering wilt beheren, [neemt u contact met ons op](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als uw accountbeheerder niet langer in dienst is bij uw organisatie en u de facturering moet beheren, kunt u [contact met ons opnemen](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 
-### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>Een Service Level Agreement tegoed aanvragen voor een service-incident
+### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>Een Service Level Agreement-tegoed aanvragen voor een service-incident
 
-In de SLA (Service Level Agreement) worden de toezeggingen van Microsoft voor bedrijfstijd en connectiviteit beschreven. Er wordt een service-incident gerapporteerd wanneer Azure Services een probleem ondervindt dat gevolgen heeft voor de uptime of de verbinding, ook wel een *storing*genoemd. Als we de service niveaus voor elke service niet bereiken en onderhouden, zoals beschreven in de SLA, kunt u in aanmerking komen voor een tegoed van een deel van uw maandelijkse service kosten.
+In de SLA (Service Level Agreement) worden de toezeggingen van Microsoft voor bedrijfstijd en connectiviteit beschreven. Een service-incident wordt gerapporteerd wanneer er zich een probleem voordoet bij Azure-services die invloed heeft op de bedrijfstijd of connectiviteit, ook wel *uitval* genoemd. Als we de serviceniveaus voor elke service niet kunnen bereiken en onderhouden zoals dat wordt beschreven in de SLA, komt u mogelijk in aanmerking voor tegoed ter hoogte van een deel van uw maandelijkse servicekosten.
 
-Een tegoed aanvragen:
+U kunt als volgt een tegoed aanvragen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/). Als u meerdere accounts hebt, moet u ervoor zorgen dat u deze gebruikt die werd beïnvloed door Azure downtime. 
-2. Een nieuwe ondersteunings aanvraag maken.
-3. Selecteer onder **type probleem** **facturering**.
-4. Selecteer **restitutie aanvraag**onder **probleem type**.
-5. Voeg details toe om op te geven dat u een SLA-tegoed vraagt, vermeld de datum/tijd/tijd zone en de betrokken Services (Vm's, websites, enzovoort).
-6. Controleer uw contact gegevens en selecteer **maken** om uw aanvraag in te dienen.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/). Als u meerdere accounts hebt, controleert u of u het account gebruikt die door de uitvaltijd van Azure is beïnvloed. 
+2. Maak een nieuwe ondersteuningsaanvraag.
+3. Onder **Probleemtype** selecteert u **Facturering**.
+4. Onder **Probleemtype** selecteert u **Restitutieaanvraag**.
+5. Voeg details toe om op te geven dat u een aanvraag indient voor een SLA-tegoed en noem zowel de datum/tijd/tijdzone als de betrokken services (virtuele machines, websites, enzovoort)
+6. Controleer uw contactgegevens en selecteer **Maken** om uw aanvraag in te dienen.
 
-SLA-drempels variëren per service. De SQL-weblaag heeft bijvoorbeeld een SLA van 99,9%, Vm's hebben een SLA van 99,95% en de SQL Standard-laag heeft een SLA van 99,99%.
+SLA-drempelwaarden variëren per service. De SQL-laag Web heeft bijvoorbeeld een SLA van 99,9%, virtuele machines hebben een SLA van 99,95% en de SQL-laag Standard heeft een SLA van 99,99%.
 
-Voor sommige services zijn er vereisten voor het Toep assen van de SLA. Voor virtuele machines moeten bijvoorbeeld twee of meer exemplaren zijn geïmplementeerd in dezelfde Beschikbaarheidsset.
+Voor een aantal services gelden voorwaarden voordat de SLA van toepassing is. Voor virtuele machines moeten bijvoorbeeld twee of meer instanties in dezelfde beschikbaarheidsset zijn geïmplementeerd.
 
-Zie [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/) en de [Sla-samen vatting van Azure-Services](https://azure.microsoft.com/support/legal/sla/summary/) -documentatie voor meer informatie.
+Zie [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/) en de documentatie met de [SLA-samenvatting voor Azure-services](https://azure.microsoft.com/support/legal/sla/summary/) voor meer informatie.
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u vragen hebt of hulp nodig hebt, kunt u [een ondersteunings aanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [](billing-spending-limit.md) het gebruik van bestedings limieten om te voor komen dat u overbesteedt.
-- Begin met [het analyseren van uw Azure-kosten](../cost-management/quick-acm-cost-analysis.md).
+- Meer informatie over het gebruik van [bestedingslimieten](billing-spending-limit.md) om te voorkomen dat u teveel uitgeeft.
+- Begin met het [analyseren van uw Azure-kosten](../cost-management/quick-acm-cost-analysis.md).

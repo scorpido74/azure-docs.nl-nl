@@ -19,10 +19,10 @@
 - name: Concepten
   expanded: false
   items:
-    - name: Voorwaardelijke toegang implementeren
-      href: howto-conditional-access-adoption-kit.md
     - name: Algemeen beleid voor voorwaardelijke toegang
       href: concept-conditional-access-policy-common.md
+    - name: Onderdelen van beleid voor voorwaardelijke toegang
+      href: concept-conditional-access-policies.md
     - name: Voorwaarden
       href: conditions.md
     - name: Locatievoorwaarden

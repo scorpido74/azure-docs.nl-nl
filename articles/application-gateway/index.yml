@@ -1,69 +1,69 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie over Application Gateway
+### YamlMime:Landing
+title: Documentatie over Azure Application Gateway
+summary: Meer informatie over het maken van toepassingsgateways. Deze documentatie helpt u bij het plannen, implementeren en beheren van webverkeer naar uw Azure-resources.
 metadata:
-  title: Documentatie voor Azure Application Gateway - zelfstudies en API-verwijzing
-  meta.description: 'Learn how to create application gateways. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.'
+  title: Documentatie over Azure Application Gateway
+  description: Informatie over de implementatie van Azure Firewall, een netwerkbeveiligingsservice in de cloud.
   services: application-gateway
-  author: vhorne
   ms.service: application-gateway
   ms.topic: landing-page
-  ms.date: 5/20/2019
+  author: vhorne
   ms.author: victorh
-abstract:
-  description: 'Meer informatie over de implementatie van de Azure Application Gateway-ADC (application delivery controller) als een service. Zelfstudies, API-verwijzingen en andere documentatie laten zien hoe u routering op toepassingsniveau en taakverdelingsservices kunt instellen om een schaalbaar en maximaal beschikbaar webfront-end te bouwen.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Meer informatie over het beheren van webverkeer naar uw resources met Application Gateway:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/portal.svg'
-            text: Azure-portal
-            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-portal'
-          - image:
-              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-powershell'
-          - image:
-              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/cli.svg'
-            text: Azure-CLI
-            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-cli'
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Ontdek hoe u in Azure toepassingsgateways implementeert, beheert en bewaakt'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/application-gateway/application-gateway-web-application-firewall-portal">Een toepassingsgateway met een Web Application Firewall maken</a>
-          - html: <a href="/azure/application-gateway/create-ssl-portal">Een toepassingsgateway configureren met SSL-beëindiging</a>
-          - html: <a href="/azure/application-gateway/create-multiple-sites-portal">Een toepassingsgateway maken en configureren waarop meerdere websites worden gehost</a>
-          - html: <a href="/azure/application-gateway/create-url-route-portal">Een toepassingsgateway maken met omleidingsregels op basis van een pad</a>
-          - html: <a href="/azure/application-gateway/tutorial-url-redirect-cli">Een toepassingsgateway maken met een omleiding op basis van een URL-pad</a>
-          - html: <a href="/azure/application-gateway/tutorial-autoscale-ps">Een toepassingsgateway maken die de toegang tot de webtoepassing verbetert</a>
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: Webverkeer beheren met een toepassingsgateway.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/application-gateway/cli-samples">Azure-CLI</a>
-          - html: <a href="/azure/application-gateway/powershell-samples">Azure PowerShell</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: <p><a href="/powershell/resourcemanager">Azure PowerShell</a></p><p><a href="/cli/azure/network/application-gateway">Azure-CLI</a></p>
-          - title: Talen
-            html: '<p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="/javascript/api/azure-arm-network/ApplicationGateways">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/azure-mgmt-network/azure.mgmt.network.v2018_08_01.operations.applicationgatewaysoperations">Python</a></p>'
-          - title: REST
-            html: '<p><a href="https://msdn.microsoft.com/library/mt684941">Complete naslaginformatie over de REST-API</a></p>'
+  ms.date: 09/18/2019
+  ms.openlocfilehash: ff940f474c6d5d6fd96a03c45be18de39f065b97
+  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/17/2019
+  ms.locfileid: "71076033"
+landingContent:
+- title: Meer informatie over Application Gateway
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Application Gateway?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Veelgestelde vragen
+      url: application-gateway-faq.md
+- title: Een toepassingsgateway implementeren
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Webverkeer omleiden met Azure Application Gateway
+      url: quick-create-portal.md
+- title: Implementeren met SSL-beëindiging
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: SSL-beëindiging en end-to-end-SSL met Application Gateway
+      url: ssl-overview.md
+    - text: Overzicht van het SSL-beleid
+      url: application-gateway-ssl-policy-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Een toepassingsgateway configureren met SSL-beëindiging
+      url: create-ssl-portal.md
+- title: Automatisch schalen en zone-redundante toepassingsgateways
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Automatisch schalen en zone-redundantie in Application Gateway v2
+      url: application-gateway-autoscaling-zone-redundant.md
+  - linkListType: tutorial
+    links:
+    - text: een toepassingsgateway maken die de toegang tot de webtoepassing verbetert
+      url: tutorial-autoscale-ps.md
+- title: Problemen met Application Gateway oplossen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Overzicht van Resource Health voor Application Gateway
+      url: resource-health-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Logboekanalyse gebruiken om Web Application Firewall-logboeken van Application Gateway te onderzoeken
+      url: log-analytics.md
+    - text: Problemen met de back-endstatus van Application Gateway
+      url: application-gateway-backend-health-troubleshooting.md
