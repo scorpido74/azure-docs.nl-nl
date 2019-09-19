@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 4f9a828e5233c88db2106bc648c07578927e0d29
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: c2b409f0eefe5efa389432cbb007cc08e0c6ae1e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514872"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71078240"
 ---
 Azure biedt de volgende ingebouwde RBAC-rollen voor het verlenen van toegang tot Blob-en wachtrij gegevens met behulp van Azure AD en OAuth:
 
@@ -26,4 +26,6 @@ Azure biedt de volgende ingebouwde RBAC-rollen voor het verlenen van toegang tot
 - [Afzender gegevens bericht van opslag wachtrij](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender): Gebruik om machtigingen toe te kennen voor berichten in Azure Storage wacht rijen.
 
 > [!NOTE]
-> Houd er rekening mee dat de toewijzing van RBAC-rollen tot vijf minuten kan duren.
+> RBAC-roltoewijzingen kunnen tot vijf minuten duren voordat het kan worden door gegeven.
+>
+> Alleen rollen die expliciet zijn gedefinieerd voor toegang tot gegevens, hebben een beveiligingsprincipal toegestaan om toegang te krijgen tot BLOB-of wachtrij gegevens. Rollen zoals een **eigenaar**, **bijdrager**en **Inzender voor opslag accounts** geven een beveiligingsprincipal een beveiligings-principal toe om een opslag account te beheren, maar bieden geen toegang tot de BLOB-of wachtrij gegevens binnen dat account.

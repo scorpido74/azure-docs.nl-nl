@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 451def8ccfae947f4be6bebb015c1b34ac44c7f4
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: a76baf65b2dc7d0cdb444b79e697930188417748
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010416"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71089492"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Gegevens kopiëren van ServiceNow met Azure Data Factory
 
@@ -27,7 +27,7 @@ In dit artikel bevat een overzicht over het gebruik van de Kopieeractiviteit in 
 
 Deze ServiceNow-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit ServiceNow kopiëren naar een ondersteunde sink-gegevensopslag. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
@@ -46,7 +46,7 @@ De volgende eigenschappen worden ondersteund voor ServiceNow gekoppelde service:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type moet worden ingesteld op: **ServiceNow** | Ja |
+| type | De eigenschap type moet worden ingesteld op: **ServiceNow** | Ja |
 | endpoint | Het eindpunt van de ServiceNow-server (`http://<instance>.service-now.com`).  | Ja |
 | authenticationType | Het verificatietype te gebruiken. <br/>Toegestane waarden zijn: **Basic**, **OAuth2** | Ja |
 | username | De gebruikersnaam die wordt gebruikt voor verbinding met de ServiceNow-server voor Basic en OAuth2-verificatie.  | Ja |
@@ -85,7 +85,7 @@ Om gegevens te kopiëren van ServiceNow, stel de eigenschap type van de gegevens
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **ServiceNowObject** | Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **ServiceNowObject** | Ja |
 | tableName | Naam van de tabel. | Nee (als 'query' in de activiteitbron is opgegeven) |
 
 **Voorbeeld**
@@ -115,7 +115,7 @@ Om gegevens te kopiëren van ServiceNow, stelt u het brontype in de kopieeractiv
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **ServiceNowSource** | Ja |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **ServiceNowSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM Actual.alm_asset"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
 
 Let op het volgende bij het opgeven van het schema en de kolom voor ServiceNow in de query en **verwijzen naar [tips voor betere prestaties](#performance-tips) op kopiëren prestaties implicatie**.

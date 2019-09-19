@@ -2,18 +2,18 @@
 title: Toegang tot Apache Hadoop garen-toepassings logboeken op op Linux gebaseerde HDInsight-Azure
 description: Meer informatie over het openen van toepassings logboeken op basis van een op Linux gebaseerd HDInsight-cluster (Apache Hadoop) met behulp van de opdracht regel en een webbrowser.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: hrasheed
-ms.openlocfilehash: 2b230f91b9d6b169b89b125bdd0394c2c7ecd96f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 6eb24e85d1d7ffa4f3377d4c2fe8b168303c15f0
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879850"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091510"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Toegang tot Apache Hadoop GARENs van toepassings logboeken op HDInsight op basis van Linux
 
@@ -62,11 +62,11 @@ De interface van de garen-WebResource Manager wordt uitgevoerd op het cluster ho
 1. Navigeer in uw webbrowser naar https://CLUSTERNAME.azurehdinsight.net. Vervang CLUSTERNAME door de naam van uw HDInsight-cluster.
 2. Selecteer in de lijst met services aan de linkerkant de optie **garens**.
 
-    ![Service garen geselecteerd](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
+    ![Apache Ambari garen-service geselecteerd](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 
 3. Selecteer in de vervolg keuzelijst **snelle koppelingen** een van de cluster hoofd knooppunten en selecteer vervolgens het **bestand Manager-logboek**.
 
-    ![Snelle koppelingen voor garens](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
+    ![Snelle koppelingen voor Apache Ambari-garens](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
 
     Er wordt een lijst weer gegeven met koppelingen naar GARENs op hetzelfde basis.
 

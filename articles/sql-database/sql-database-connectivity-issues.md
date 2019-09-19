@@ -9,15 +9,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
+manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: da2107a0573fafd10394931be21fb446f83fd5f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eb34395e0a9ec881c2f5e303383555fa6544369d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569069"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090904"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Werken met SQL Database verbindings problemen en tijdelijke fouten
 
@@ -310,7 +311,7 @@ ORDER BY
 ;
 ```
 
-#### <a name="a-few-returned-rows-from-sysfnxetelemetryblobtargetreadfile"></a>Enkele geretourneerde rijen uit sys. fn_xe_telemetry_blob_target_read_file
+#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>Enkele geretourneerde rijen uit sys. fn_xe_telemetry_blob_target_read_file
 
 In het volgende voor beeld ziet u hoe een geretourneerde rij eruit kan zien. De Null-waarden die worden weer gegeven, zijn vaak niet null in andere rijen.
 
@@ -354,7 +355,7 @@ In de naam ruimte **Microsoft. practices. EnterpriseLibrary. TransientFaultHandl
 Hier vindt u enkele koppelingen naar informatie over EntLib60:
 
 - Gratis boek downloaden: [Hand leiding voor ontwikkel aars voor micro soft Enter prise Library, 2e editie](https://www.microsoft.com/download/details.aspx?id=41145).
-- Aanbevolen procedures: [Algemene richt lijnen voor opnieuw proberen](../best-practices-retry-general.md) hebben een uitstekende uitgebreide beschrijving van de logica voor opnieuw proberen.
+- Best practices: [Algemene richt lijnen voor opnieuw proberen](../best-practices-retry-general.md) hebben een uitstekende uitgebreide beschrijving van de logica voor opnieuw proberen.
 - NuGet downloaden: [Ondernemings bibliotheek-tijdelijke toepassing voor het afhandelen van toepassingen blok 6,0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>

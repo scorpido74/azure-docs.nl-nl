@@ -16,12 +16,12 @@ ms.date: 05/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e491815f25f3744d839efc09ce34793d80d9943a
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: ce66c0239eee3f31695a942a586766694525fbad
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983554"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097602"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Releasegeschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -44,6 +44,9 @@ Hoewel we dit proces door lopen, wordt het versie nummer van de release weer geg
 Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatische upgrade. De release status geeft aan of een release beschikbaar moet worden gesteld voor automatische upgrade of alleen voor down loads. Als automatische upgrade is ingeschakeld op uw Azure AD Connect server, wordt die server automatisch bijgewerkt naar de meest recente versie van Azure AD Connect die is uitgebracht voor automatische upgrade. Houd er rekening mee dat niet alle Azure AD Connect configuraties in aanmerking komen voor automatische upgrade. Volg deze link voor meer informatie over [automatische upgrade](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
 
 ## <a name="14x0"></a>1.4. X. 0
+
+>[!IMPORTANT]
+>Voorheen werden Windows-computers op een lager niveau die zijn gekoppeld aan on-premises AD, in bepaalde omstandigheden onjuist gesynchroniseerd met de Cloud. Als voor beeld is de waarde van het kenmerk userCertificate voor Windows-apparaten op lagere niveaus in AD ingevuld. Maar dergelijke apparaten in azure AD nemen altijd de status ' in behandeling ' door omdat deze versies van het besturings systeem niet zijn ontworpen om te worden geregistreerd bij Azure AD via AAD Sync. In deze versie van Azure AD Connect stopt AAD Sync met het synchroniseren van Windows down level-computers naar Azure AD en worden ook de eerder onjuist gesynchroniseerde apparaten op het lagere niveau van Azure AD verwijderd. Houd er rekening mee dat met deze wijziging geen Windows down level-apparaten worden verwijderd die correct zijn geregistreerd bij Azure AD met behulp van het MSI-pakket. Deze apparaten blijven werken zoals verwacht voor de doel einden van voorwaardelijke toegang op basis van apparaten. Sommige klanten zien mogelijk dat sommige of alle apparaten op het lagere niveau van Windows verdwijnen van Azure AD. Dit is geen oorzaak van bezorgdheid, omdat deze apparaat-id's nooit daad werkelijk door Azure AD worden gebruikt tijdens de autorisatie van voorwaardelijke toegang. Het kan voor komen dat dergelijke klanten https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan hun Windows-down level-apparaten op de juiste manier moeten bezoeken om ervoor te zorgen dat dergelijke apparaten volledig kunnen deel nemen aan voorwaardelijke toegang op basis van een apparaat. Houd er rekening mee dat als u deze verwijderingen van computer/apparaat-down level-objecten in azure AD overschrijdt, de drempel waarde voor het verwijderen van het exporteren krijgt, wordt aanbevolen dat de klant deze verwijderingen kan door lopen.
 
 ### <a name="release-status"></a>Release status
 9/10/2019: Alleen uitgebracht voor automatische upgrade

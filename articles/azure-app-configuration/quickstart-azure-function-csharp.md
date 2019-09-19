@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 5eb9d0631a4d5f4221b5184198290a5109655408
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a15b4e10938c39ba599ffb1ce7437feb788b1115
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326582"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075946"
 ---
 # <a name="quickstart-create-an-azure-function-with-azure-app-configuration"></a>Quickstart: Een Azure-functie maken met Azure-app configuratie
 
@@ -49,15 +49,16 @@ In deze Snelstartgids neemt u de Azure-app Configuration-service op in een Azure
 
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
 
-1. Klik met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren**. Zoek op het tabblad **Bladeren** de volgende NuGet-pakketten aan uw project en voeg deze toe. Als u deze niet kunt vinden, schakelt  u het selectie vakje include Prerelease in.
+1. Klik met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren**. Zoek op het tabblad **Bladeren** de volgende NuGet-pakketten aan uw project en voeg deze toe. Als u deze niet kunt vinden, schakelt u het selectie vakje include Prerelease in.
 
     ```
     Microsoft.Extensions.Configuration.AzureAppConfiguration 2.0.0-preview-009200001-1437 or later
     ```
 
-2. Open *Function1.cs*en voeg een verwijzing toe naar de .net core-app configuratie provider.
+2. Open *Function1.cs*en voeg een verwijzing toe naar de algemene .net core-configuratie provider en de .net core-app-configuratie provider.
 
     ```csharp
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 

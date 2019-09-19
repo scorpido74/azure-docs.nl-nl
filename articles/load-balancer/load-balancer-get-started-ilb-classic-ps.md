@@ -5,6 +5,7 @@ description: Meer informatie over hoe u met PowerShell een interne load balancer
 services: load-balancer
 documentationcenter: na
 author: genlin
+manager: dcscontentpm
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: genli
-ms.openlocfilehash: ef6aac0d97c38798f826304475779ea8059875c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b864a4bf352c547779bb368650971fa8b805fca7
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848539"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090967"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-powershell"></a>Aan de slag met het maken van een interne load balancer (klassiek) met behulp van PowerShell
 
@@ -44,7 +45,7 @@ Ga als volgt te werk om een interne load balancer-set te maken, evenals de serve
 2. Voeg eindpunten toe die overeenkomen met de virtuele machines die het binnenkomende verkeer ontvangen.
 3. Configureer de servers die het verkeer voor gelijke taakverdeling verzenden, zodanig dat het verkeer wordt verzonden naar het VIP-adres (virtuele IP) van het exemplaar van Interne taakverdeling.
 
-### <a name="step-1-create-an-internal-load-balancing-instance"></a>Stap 1: Een exemplaar van interne taakverdeling maken
+### <a name="step-1-create-an-internal-load-balancing-instance"></a>Stap 1: Een exemplaar van een interne taak verdeling maken
 
 Voor een bestaande cloudservice of een cloudservice die in een regionaal virtueel netwerk is geïmplementeerd, kunt u een exemplaar van Interne taakverdeling maken met de volgende Windows PowerShell-opdrachten:
 
@@ -59,7 +60,7 @@ Add-AzureInternalLoadBalancer -ServiceName $svc -InternalLoadBalancerName $ilb �
 
 Als de Windows PowerShell-cmdlet [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx) op deze manier wordt gebruikt, wordt de parameterset DefaultProbe gebruikt. Zie [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx) voor meer informatie over aanvullende parametersets.
 
-### <a name="step-2-add-endpoints-to-the-internal-load-balancing-instance"></a>Stap 2: Eindpunten toevoegen aan het exemplaar van interne taakverdeling
+### <a name="step-2-add-endpoints-to-the-internal-load-balancing-instance"></a>Stap 2: Eind punten toevoegen aan het exemplaar van de interne taak verdeling
 
 Hier volgt een voorbeeld:
 
@@ -75,7 +76,7 @@ $ilb="ilbset"
 Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -Lbset $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
 ```
 
-### <a name="step-3-configure-your-servers-to-send-their-traffic-to-the-new-internal-load-balancing-endpoint"></a>Stap 3: De servers voor het verzenden van hun verkeer naar het nieuwe eindpunt voor interne taakverdeling configureren
+### <a name="step-3-configure-your-servers-to-send-their-traffic-to-the-new-internal-load-balancing-endpoint"></a>Stap 3: Uw servers zo configureren dat ze hun verkeer verzenden naar het nieuwe eind punt van de interne taak verdeling
 
 U moet de servers waarvan het verkeer gelijkmatig moet worden verdeeld, zodanig configureren dat ze het nieuwe IP-adres (VIP) van het exemplaar van Interne taakverdeling gaan gebruiken. Dit is het adres waarop het exemplaar van Interne taakverdeling luistert. In de meeste gevallen hoeft u alleen een DNS-record voor het VIP van het exemplaar van Interne taakverdeling toe te voegen of aan te passen.
 

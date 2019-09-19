@@ -11,16 +11,16 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/30/2018
+ms.date: 09/18/2019
 ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: f239fb4464d2e7f67b91a2d18c21b089ffd52b27
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6e8a6820b3cf3031f11ab04d9baf4a7888491c81
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070487"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098074"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Uw app implementeren op Azure App Service met behulp van FTP/S
 
@@ -72,9 +72,9 @@ Het is raadzaam om app- **referenties** te gebruiken voor het implementeren van 
 
 Voor een betere beveiliging moet u alleen FTP via SSL toestaan. U kunt ook FTP-en FTPS uitschakelen als u geen FTP-implementatie gebruikt.
 
-Selecteer in de resource pagina van de [](https://portal.azure.com)app in azure Portal **app-instellingen** in de linkernavigatiebalk.
+Op de resource pagina van uw app in [Azure Portal](https://portal.azure.com)selecteert u**algemene instellingen** voor **configuratie** > in het linkernavigatievenster.
 
-Als u niet-versleutelde FTP wilt uitschakelen, selecteert u **alleen FTPS**. Als u zowel FTP als FTPS volledig wilt uitschakelen, selecteert u **uitschakelen**. Wanneer u klaar bent, klikt u op **Opslaan**. Als u **alleen FTPS** gebruikt, moet u TLS 1,2 of hoger afdwingen door te navigeren naar de Blade **SSL-instellingen** van uw web-app. TLS 1,0 en 1,1 worden alleen ondersteund met **FTPS**.
+Als u niet-versleutelde FTP wilt uitschakelen, selecteert u **FTPS alleen** in **FTP-status**. Als u zowel FTP als FTPS volledig wilt uitschakelen, selecteert u **uitgeschakeld**. Wanneer u klaar bent, klikt u op **Opslaan**. Als u **alleen FTPS**gebruikt, moet u TLS 1,2 of hoger afdwingen door te navigeren naar de Blade **TLS/SSL-instellingen** van uw web-app. TLS 1,0 en 1,1 worden alleen ondersteund met **FTPS**.
 
 ![FTP/S uitschakelen](./media/app-service-deploy-ftp/disable-ftp.png)
 

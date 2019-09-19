@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2a2b62cc0548b0bbedae35f6a0d72ac327723e60
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
-ms.translationtype: MT
+ms.openlocfilehash: daa075518c569e257fd86a478809a1d1650d4345
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743842"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098110"
 ---
 # <a name="update-management-solution-in-azure"></a>Updatebeheer oplossing in azure
 
@@ -75,7 +75,7 @@ In de volgende tabel ziet u een lijst met ondersteunde besturings systemen:
 
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
-|Windows Server 2019 (Data Center/Data Center core/Standard)<br><br>Windows Server 2016 (Data Center/Data Center core/Standard)<br><br>Windows Server 2012 R2 (Data Center/Standard)<br><br>Windows Server 2008 R2 (RTM en SP1 Standard)|**Update-evaluaties**: Ondersteund<br><br>**Patching**: Vereist Hybrid Runbook Worker. Zie [Hybrid Runbook worker vereisten](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)|
+|Windows Server 2019 (Data Center/Data Center core/Standard)<br><br>Windows Server 2016 (Data Center/Data Center core/Standard)<br><br>Windows Server 2012 R2 (Data Center/Standard)<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 (RTM en SP1 Standard)|**Update-evaluaties**: Ondersteund<br><br>**Patching**: Vereist Hybrid Runbook Worker. Zie [Hybrid Runbook worker vereisten](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)|
 |CentOS 6 (x86/x64) en 7 (x64)      | Linux-agents moeten toegang hebben tot een opslagplaats voor updates. Voor op classificatie gebaseerde patches moet ' yum ' worden geretourneerd om beveiligings gegevens te retour neren die geen deel uitmaakt van het CentOS. Zie [Update classificaties in Linux](#linux-2) voor meer informatie over op CentOS gebaseerde patches op basis van classificaties.          |
 |Red Hat Enterprise 6 (x86/x64) en 7 (x64)     | Linux-agents moeten toegang hebben tot een opslagplaats voor updates.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) en 12 (x64)     | Linux-agents moeten toegang hebben tot een opslagplaats voor updates.        |
@@ -216,13 +216,13 @@ Selecteer in uw Automation-account **updatebeheer** om de status van uw computer
 
 Deze weer gave bevat informatie over uw computers, ontbrekende updates, update-implementaties en geplande update-implementaties. In de **kolom compatibiliteit**ziet u de laatste keer dat de computer is geëvalueerd. In de **gereedheids** kolom van de Update-Agent kunt u zien of de status van de Update Agent is. Als er een probleem is, selecteert u de koppeling om naar probleemoplossings documentatie te gaan en leert u welke stappen u moet ondernemen om het probleem te verhelpen.
 
-Als u een zoek opdracht in het logboek wilt uitvoeren die informatie over de computer, update of implementatie retourneert, selecteert u het item in de lijst. Het deel venster **Zoeken in Logboeken** wordt geopend met een query voor het geselecteerde item:
+Als u een zoek opdracht in het logboek wilt uitvoeren die informatie over de computer, update of implementatie retourneert, selecteert u het item in de lijst. Het deel venster **zoeken** in Logboeken wordt geopend met een query voor het geselecteerde item:
 
 ![Standaard weergave Updatebeheer](media/automation-update-management/update-management-view.png)
 
 ## <a name="install-updates"></a>Updates installeren
 
-Nadat de updates zijn beoordeeld voor alle Linux-en Windows-computers in uw werk ruimte, kunt u de vereiste updates installeren door een *Update-implementatie*te maken. Als u een update-implementatie wilt maken, moet u schrijf toegang hebben tot het Automation-account en schrijf toegang hebben tot de Azure-Vm's die in de implementatie zijn gericht. Een update-implementatie is een geplande installatie van de vereiste updates voor een of meer computers. U geeft de datum en tijd op voor de implementatie en een computer of groep computers die moeten worden opgenomen in het bereik van een implementatie. Zie [computer groepen in azure monitor-logboeken](../azure-monitor/platform/computer-groups.md)voor meer informatie over computer groepen.
+Nadat de updates zijn beoordeeld voor alle Linux-en Windows-computers in uw werk ruimte, kunt u de vereiste updates installeren door een *Update-implementatie*te maken. Als u een update-implementatie wilt maken, moet u schrijf toegang hebben tot het Automation-account en schrijf toegang hebben tot de Azure-Vm's die in de implementatie zijn gericht. Een update-implementatie is een geplande installatie van de vereiste updates voor een of meer computers. U geeft de datum en tijd op voor de implementatie en een computer of groep computers die moeten worden opgenomen in het bereik van een implementatie. Zie [computer groepen in azure monitor](../azure-monitor/platform/computer-groups.md)-logboeken voor meer informatie over computer groepen.
 
 Wanneer u computer groepen opneemt in uw update-implementatie, wordt het groepslid maatschap slechts één keer geëvalueerd, op het moment dat het schema wordt gemaakt. Volgende wijzigingen aan een groep worden niet doorgevoerd. Om deze [dynamische groepen](#using-dynamic-groups)te gebruiken, worden deze groepen tijdens de implementatie omgezet en worden ze gedefinieerd door een query voor virtuele machines in azure of een opgeslagen zoek opdracht voor niet-Azure vm's.
 
@@ -276,11 +276,11 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 
 ## <a name="view-missing-updates"></a>Ontbrekende updates weer geven
 
-Selecteer **ontbrekende updates** om de lijst met updates weer te geven die ontbreken op uw computers. Elke update wordt weer gegeven en kan worden geselecteerd. Informatie over het aantal machines dat moet worden bijgewerkt, het besturings systeem en een koppeling voor meer informatie wordt weer gegeven. In het deel venster **Zoeken in Logboeken** ziet u meer informatie over de updates.
+Selecteer **ontbrekende updates** om de lijst met updates weer te geven die ontbreken op uw computers. Elke update wordt weer gegeven en kan worden geselecteerd. Informatie over het aantal machines dat moet worden bijgewerkt, het besturings systeem en een koppeling voor meer informatie wordt weer gegeven. In het deel venster **zoeken** in Logboeken ziet u meer informatie over de updates.
 
 ## <a name="view-update-deployments"></a>Update-implementaties weer geven
 
-Selecteer het tabblad **Update-implementaties** om de lijst met bestaande update-implementaties weer te geven. Selecteer een van de update-implementaties in de tabel om het deel venster implementatie van de **Update** voor de update-implementatie te openen. Taak logboeken worden Maxi maal 30 dagen opgeslagen.
+Selecteer het tabblad **Update** -implementaties om de lijst met bestaande update-implementaties weer te geven. Selecteer een van de update-implementaties in de tabel om het deel venster implementatie van de **Update** voor de update-implementatie te openen. Taak logboeken worden Maxi maal 30 dagen opgeslagen.
 
 ![Overzicht van de resultaten van update-implementatie](./media/automation-update-management/update-deployment-run.png)
 
@@ -324,7 +324,7 @@ Updatebeheer is afhankelijk van Windows Update om Windows-updates te downloaden 
 
 ### <a name="pre-download-updates"></a>Updates vooraf downloaden
 
-Voor het configureren van updates die automatisch worden gedownload in groepsbeleid, kunt u de instelling voor het [configureren van automatische updates](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) instellen op **3**. Hiermee downloadt u de updates die nodig zijn op de achtergrond, maar worden ze niet geïnstalleerd. Dit houdt Updatebeheer in de controle over schema's, maar laat updates downloaden buiten het onderhouds venster Updatebeheer. Dit kan ervoor zorgen dat het **onderhouds venster** fouten in updatebeheer overschrijdt.
+Voor het configureren van updates die automatisch worden gedownload in groepsbeleid, kunt u de instelling voor het [configureren van automatische updates](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) instellen op **3**. Hiermee downloadt u de updates die nodig zijn op de achtergrond, maar worden ze niet geïnstalleerd. Dit houdt Updatebeheer in de controle over schema's, maar laat updates downloaden buiten het onderhouds venster Updatebeheer. Dit kan ervoor zorgen dat het onderhouds **venster** fouten in updatebeheer overschrijdt.
 
 U kunt dit ook instellen met Power shell, de volgende Power shell uitvoeren op een systeem waarop u automatisch updates wilt downloaden.
 
@@ -382,7 +382,7 @@ Volg de instructies in [computers verbinden zonder Internet toegang](../azure-mo
 
 ## <a name="search-logs"></a>Logboeken zoeken
 
-Naast de details die zijn opgenomen in de Azure Portal, kunt u zoeken naar de logboeken. Selecteer **log Analytics**op de pagina's met oplossingen. Het deel venster **Zoeken in Logboeken** wordt geopend.
+Naast de details die zijn opgenomen in de Azure Portal, kunt u zoeken naar de logboeken. Selecteer **log Analytics**op de pagina's met oplossingen. Het deel venster **zoeken** in Logboeken wordt geopend.
 
 Meer informatie over het aanpassen van query's of het gebruik ervan vanaf verschillende clients en meer vindt u op:  [Documentatie over](
 https://dev.loganalytics.io/)log Analytics Search-API.

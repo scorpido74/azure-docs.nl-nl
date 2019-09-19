@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 68be0d7d13785c9631044766a290eec93637ea64
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5df6ab47c45a64077a39974a30c65fe13f3c851d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879953"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091502"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Heap-dumps inschakelen voor Apache Hadoop Services op HDInsight op basis van Linux
 
@@ -94,11 +94,11 @@ Als u de configuratie voor een service wilt wijzigen, gebruikt u de volgende sta
 
 3. Voer in het veld **filter...** de waarde **kiest**. Alleen items met deze tekst worden weer gegeven.
 
-    ![Gefilterde lijst](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
+    ![Gefilterde lijst Apache Ambari config](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
 4. Zoek het  **\* itemomlaagvoordeservicewaarvoorudeopslagvanheap-dumpswiltinschakelenenvoegdeoptiestoedieuwiltinschakelen.\_** In de volgende afbeelding hebt `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` u de vermelding **HADOOP\_NAMENODE\_kiest** :
 
-    ![HADOOP_NAMENODE_OPTS met-XX: + HeapDumpOnOutOfMemoryError-XX: HeapDumpPath =/tmp/](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
+    ![Apache Ambari Hadoop-namenode-kiest](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 
    > [!NOTE]  
    > Wanneer u heap-dumps inschakelt voor de kaart of een onderliggend proces verminderen, zoekt u naar de velden met de naam **MapReduce. admin. map. Child. java. kiest** en **MapReduce. admin. reduce. Child. java. kiest**.
@@ -111,11 +111,11 @@ Als u de configuratie voor een service wilt wijzigen, gebruikt u de volgende sta
 
 6. Selecteer elke service die opnieuw moet worden opgestart en gebruik de knop **service acties** om de **onderhouds modus in te scha kelen**. Onderhouds modus voor komt dat waarschuwingen worden gegenereerd van de service wanneer u deze opnieuw opstart.
 
-    ![Menu onderhouds modus inschakelen](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
+    ![Menu onderhouds modus HDI inschakelen](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
 
 7. Wanneer u de onderhouds modus hebt ingeschakeld, gebruikt u de knop **opnieuw opstarten** zodat de service **alle gevolgen opnieuw start**
 
-    ![Alle betrokken vermeldingen opnieuw opstarten](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
+    ![Apache Ambari alle betrokken vermeldingen opnieuw opstarten](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
 
    > [!NOTE]  
    > De vermeldingen voor de knop **opnieuw opstarten** kunnen verschillen voor andere services.

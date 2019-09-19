@@ -1,5 +1,5 @@
 ---
-title: Terraform installeren en configureren voor gebruik met Azure | Microsoft Docs
+title: Terraform installeren en configureren om Azure-resources in te richten | Microsoft Docs
 description: Meer informatie over het installeren en configureren van terraform voor het maken van Azure-resources
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -12,16 +12,16 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/19/2018
-ms.author: gwallace
-ms.openlocfilehash: 105b3805e1297f796e0353f9328044896248aaa0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 09/17/2019
+ms.author: tarcher
+ms.openlocfilehash: cd6052db1328fce5ef1a846fbab94fd7066079f6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081760"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090725"
 ---
-# <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Terraform installeren en configureren voor het inrichten van Vm's en andere infra structuur in azure
+# <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Terraform installeren en configureren om Azure-resources in te richten
  
 Terraform biedt een eenvoudige manier om Cloud infrastructuur te definiëren, te bekijken en te implementeren met behulp van een [eenvoudige sjabloon-taal](https://www.terraform.io/docs/configuration/syntax.html). In dit artikel worden de stappen beschreven die nodig zijn om terraform te gebruiken om resources in te richten in Azure.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 14bcded4e3074023aa496588f5bd79eedbe889cf
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: c6cf30a8d4f750aa8e1c2b7531c4a604642e88b4
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008917"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092030"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-preview"></a>Gegevens kopiëren van Jira met Azure Data Factory (Preview)
 
@@ -30,7 +30,7 @@ In dit artikel bevat een overzicht over het gebruik van de Kopieeractiviteit in 
 
 Deze Jira-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit Jira kopiëren naar een ondersteunde sink-gegevensopslag. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
@@ -49,7 +49,7 @@ De volgende eigenschappen worden ondersteund voor Jira gekoppelde service:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type moet worden ingesteld op: **Jira** | Ja |
+| type | De eigenschap type moet worden ingesteld op: **Jira** | Ja |
 | host | Het IP-adres of de hostnaam naam van de Jira-service. (bijvoorbeeld jira.example.com)  | Ja |
 | port | De TCP-poort die de Jira-server wordt gebruikt om te luisteren naar clientverbindingen. De standaardwaarde is 443 als verbinding te maken via HTTPS of 8080 als verbinding te maken via HTTP.  | Nee |
 | username | De gebruikersnaam die u gebruikt voor toegang tot Jira-Service.  | Ja |
@@ -86,7 +86,7 @@ Om gegevens te kopiëren van Jira, stel de eigenschap type van de gegevensset in
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **JiraObject** | Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **JiraObject** | Ja |
 | tableName | Naam van de tabel. | Nee (als 'query' in de activiteitbron is opgegeven) |
 
 **Voorbeeld**
@@ -116,7 +116,7 @@ Om gegevens te kopiëren van Jira, stelt u het brontype in de kopieeractiviteit 
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **JiraSource** | Ja |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **JiraSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**

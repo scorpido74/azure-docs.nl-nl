@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 45aa1354f6009d5eccd48f85f993bae8949139e3
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
-ms.translationtype: HT
+ms.openlocfilehash: ed466b072a771c3aa288a96fa4a0037c31b875f9
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058975"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091998"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Problemen met Azure Data Factory oplossen
 
@@ -282,17 +282,109 @@ De volgende tabel is van toepassing op U-SQL.
 
 - **Oorzaak**: De definitie van de Azure function-activiteit is niet voltooid.
 
-- **Aanbeveling**: Controleer of de JSON-definitie van de invoer AzureFunction een eigenschap met de naam ' method ' heeft.
+- **Aanbeveling**: Controleer of de JSON-definitie van de invoer AzureFunction is voorzien van een eigenschap met de naam method.
 
 
 ### <a name="error-code--3612"></a>Fout code:  3612
 
 - **Bericht**:`Azure function activity missing LinkedService definition in JSON.`
 
-- **Oorzaak**: De definitie van de Azure function-activiteit is niet voltooid.
+- **Oorzaak**: De definitie van de Azure function-activiteit is mogelijk niet voltooid.
 
 - **Aanbeveling**: Controleer of de JSON-definitie van de invoer AzureFunction een gekoppelde service Details bevat.
 
+
+## <a name="azure-machine-learning"></a>Azure Machine Learning
+
+
+### <a name="error-code--4101"></a>Fout code:  4101
+
+- **Bericht**:`AzureMLExecutePipeline activity '%activityName;' has invalid value for property '%propertyName;'.`
+
+- **Oorzaak**: Ongeldige indeling of ontbrekende definitie van een eigenschap.
+
+- **Aanbeveling**:  Controleer of de activiteit is gedefinieerd met de juiste gegevens.
+
+
+### <a name="error-code--4110"></a>Fout code:  4110
+
+- **Bericht**: Er ontbreekt een LinkedService definitie in de JSON van de AzureMLExecutePipeline-activiteit.
+
+- **Oorzaak**: De definitie van de AzureMLExecutePipeline-activiteit is niet voltooid.
+
+- **Aanbeveling**:  Controleer of de JSON-definitie van de input AzureMLExecutePipeline-activiteit gekoppelde service Details bevat.
+
+
+### <a name="error-code--4111"></a>Fout code:  4111
+
+- **Bericht**:`AzureMLExecutePipeline activity has wrong LinkedService type in JSON. Expected LinkedService type: '%expectedLinkedServiceType;', current LinkedService type: Expected LinkedService type: '%currentLinkedServiceType;'.`
+
+- **Oorzaak**: Onjuiste definitie van activiteit.
+
+- **Aanbeveling**:  Controleer of de JSON-definitie van de invoer-AzureMLExecutePipeline de juiste details van de gekoppelde service heeft.
+
+
+### <a name="error-code--4112"></a>Fout code:  4112
+
+- **Bericht**:`AzureMLService linked service has invalid value for property '%propertyName;'.`
+
+- **Oorzaak**: Ongeldige indeling of ontbrekende definitie van een eigenschap.
+
+- **Aanbeveling**:  Controleer of de definitie van de gekoppelde service de juiste gegevens bevat.
+
+
+### <a name="error-code--4121"></a>Fout code:  4121
+
+- **Bericht**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Oorzaak**: De referentie die wordt gebruikt voor toegang tot de Azure ML-service is verlopen.
+
+- **Aanbeveling**:  Controleer of de referenties geldig zijn en probeer het opnieuw
+
+
+### <a name="error-code--4122"></a>Fout code:  4122
+
+- **Bericht**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Oorzaak**: De referenties die zijn opgenomen in de gekoppelde service van de AzureML-service zijn ongeldig of hebben geen machtiging voor de bewerking.
+
+- **Aanbeveling**:  Controleer of de referenties in de gekoppelde service geldig zijn en toegang hebben tot de AzureML-service.
+
+
+### <a name="error-code--4123"></a>Fout code:  4123
+
+- **Bericht**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Oorzaak**:`Properties of the activity such as pipelineParamters are invalid for the Azure ML pipeline.`
+
+- **Aanbeveling**:  Controleer de waarde van de activiteit eigenschappen die overeenkomt met de verwachte payload van de gepubliceerde Azure ML-pijp lijn die is opgegeven in de gekoppelde service.
+
+
+### <a name="error-code--4124"></a>Fout code:  4124
+
+- **Bericht**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Oorzaak**: Het gepubliceerde Azure ML pijp lijn-eind punt bestaat niet.
+
+- **Aanbeveling**:  Controleer of het gepubliceerde Azure ML pijp lijn-eind punt dat is opgegeven in de gekoppelde service bestaat in de Azure ML-service.
+
+
+### <a name="error-code--4125"></a>Fout code:  4125
+
+- **Bericht**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Oorzaak**: Server fout op de Azure ML-service.
+
+- **Aanbeveling**:  Probeer het later opnieuw. Neem contact op met het service team van Azure ML als het probleem blijft bestaan.
+
+
+### <a name="error-code--4126"></a>Fout code:  4126
+
+- **Bericht**:`AzureML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in AzureMLService for more error loggings.`
+
+- **Oorzaak**: Uitvoering van AzureML-pijp lijn mislukt.
+
+- **Aanbeveling**:  Raadpleeg AzureMLService voor meer informatie over het vastleggen van fouten en het oplossen van de ML-pijp lijn
 
 
 ## <a name="custom"></a>Aanpassen
@@ -316,6 +408,15 @@ De volgende tabel is van toepassing op Azure Batch.
 - **Oorzaak**: Onjuiste batch-toegangs sleutel of groeps naam.
 
 - **Aanbeveling**: Controleer de naam van de groep en de batch toegangs sleutel in de gekoppelde service.
+
+
+### <a name="error-code--2502"></a>Fout code:  2502
+
+- **Bericht**:`Cannot access user storage account; please check storage account settings.`
+
+- **Oorzaak**: De naam van het opslag account of de toegangs sleutel is onjuist.
+
+- **Aanbeveling**: Controleer de naam van het opslag account en de toegangs sleutel in de gekoppelde service.
 
 
 ### <a name="error-code--2504"></a>Fout code:  2504
@@ -472,7 +573,7 @@ De volgende tabel is van toepassing op Spark-, Hive-, MapReduce-, Pig-en Hadoop-
 
 ## <a name="web-activity"></a>Web Activity
 
-### <a name="error-code--2310"></a>Fout code:  2310
+### <a name="error-code--2108"></a>Fout code:  2108
 
 - **Bericht**:`Invalid HttpMethod: '...'.`
 
@@ -559,6 +660,25 @@ De volgende tabel is van toepassing op Spark-, Hive-, MapReduce-, Pig-en Hadoop-
 - **Oorzaak**: De hoofd tekst van de webactiviteit is onjuist.
 
 - **Aanbeveling**:  Gebruik Fiddler of postman om het eind punt te controleren.
+
+
+### <a name="error-code--2208"></a>Fout code:  2208
+
+- **Bericht**:`Invoking Web Activity failed with HttpStatusCode - {0}.`
+
+- **Oorzaak**: De doel service heeft de status mislukt geretourneerd.
+
+- **Aanbeveling**:  Gebruik Fiddler/postman om de aanvraag te valideren.
+
+
+### <a name="error-code--2308"></a>Fout code:  2308
+
+- **Bericht**:`No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
+
+- **Oorzaak**: Er kunnen meerdere oorzaken voor deze fout zijn, zoals netwerk connectiviteit, DNS-fout, validatie van server certificaten of time-out.
+
+- **Aanbeveling**:  Gebruik Fiddler/postman om de aanvraag te valideren.
+
 
 Fiddler gebruiken om een HTTP-sessie van de bewaakte webtoepassing te maken:
 

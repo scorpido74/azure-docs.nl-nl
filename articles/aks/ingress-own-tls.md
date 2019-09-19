@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 2b30ade9971ede6f9544b618504033553392e9bd
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: fc7f2180e4166070fe44863aed2b12135b0db8ee
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "67615443"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097849"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Een HTTPS ingress-controller maken en uw eigen TLS-certificaten gebruiken op de Azure Kubernetes-service (AKS)
 
@@ -133,7 +133,7 @@ Beide toepassingen worden nu uitgevoerd op uw Kubernetes-cluster, maar ze zijn g
 In het volgende voor beeld wordt verkeer naar het `https://demo.azure.com/` adres gerouteerd naar de service met de `aks-helloworld`naam. Verkeer naar het adres `https://demo.azure.com/hello-world-two` wordt doorgestuurd naar de `ingress-demo` service. Voor dit artikel hoeft u deze namen van de demo-hosts niet te wijzigen. Geef voor gebruik van productie de namen op die zijn opgegeven als onderdeel van de certificaat aanvraag en het generatie proces.
 
 > [!TIP]
-> Als de hostnaam die tijdens het proces van de certificaat aanvraag is opgegeven, de CN-naam niet overeenkomt met de host die is gedefinieerd in de ingangs route, geeft de controller een *vervalst certificaat*van de Kubernetes ingress-controller weer. Zorg ervoor dat uw certificaat en ingangen voor route-hostnamen overeenkomen.
+> Als de hostnaam die is opgegeven tijdens het proces van de certificaat aanvraag, de naam van de CN, komt niet overeen met de host die is gedefinieerd in de ingangs route, de ingangs controller geeft een valse certificaat waarschuwing voor de *Kubernetes ingress-controller* . Zorg ervoor dat uw certificaat en ingangen voor route-hostnamen overeenkomen.
 
 De sectie *TLS* vertelt de ingangs route om het geheim met de naam *AKS-ingress-TLS* te gebruiken voor de *demo.Azure.com*van de host. Geef het adres van uw eigen host op voor productie gebruik.
 
@@ -177,7 +177,7 @@ ingress.extensions/hello-world-ingress created
 
 ## <a name="test-the-ingress-configuration"></a>De ingangs configuratie testen
 
-Als u de certificaten met onze valse *demo.Azure.com* -host wilt `curl` testen, gebruikt u en geeft u de para meter *--* Resolve op. Met deze para meter kunt u de naam van de *demo.Azure.com* toewijzen aan het open bare IP-adres van uw ingangs controller. Geef het open bare IP-adres van uw eigen ingangs controller op, zoals wordt weer gegeven in het volgende voor beeld:
+Als u de certificaten met onze valse *demo.Azure.com* -host wilt `curl` testen, gebruikt u en geeft u de para meter *--Resolve* op. Met deze para meter kunt u de naam van de *demo.Azure.com* toewijzen aan het open bare IP-adres van uw ingangs controller. Geef het open bare IP-adres van uw eigen ingangs controller op, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```
 curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com

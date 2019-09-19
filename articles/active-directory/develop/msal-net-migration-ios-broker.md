@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 609aeeada78985466cb7c254cab32864e5d84b0e
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
-ms.translationtype: MT
+ms.openlocfilehash: 689e1c8912c567e466d2834172b5d2b98cfbc32c
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70875651"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086848"
 ---
 # <a name="migrating-ios-applications-using-microsoft-authenticator-from-adalnet-to-msalnet"></a>IOS-toepassingen migreren met Microsoft Authenticator van ADAL.NET naar MSAL.NET
 
@@ -36,7 +36,7 @@ In dit document wordt ervan uitgegaan dat u al een Xamarin iOS-app hebt die is g
 
 ### <a name="what-are-brokers"></a>Wat zijn makelaars?
 
-Makelaars zijn toepassingen die door micro soft worden meegeleverd op Android en iOS ([Microsoft Authenticator](https://www.microsoft.com/account/authenticator) op Ios en Android intune-bedrijfsportal op Android). 
+Makelaars zijn toepassingen die door micro soft worden meegeleverd op Android en iOS ([Microsoft Authenticator](https://www.microsoft.com/en-us/account/authenticator) op Ios en Android intune-bedrijfsportal op Android). 
 
 Ze inschakelen:
 

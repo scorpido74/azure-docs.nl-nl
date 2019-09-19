@@ -1,6 +1,6 @@
 ---
-title: Functies in Logboeken-query's van Azure Monitor | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u functies voor het aanroepen van een query uit een andere logboekquery in Azure Monitor gebruiken.
+title: Functies in Azure Monitor-logboek query's | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u functies gebruikt voor het aanroepen van een query vanuit een andere logboek query in Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,41 +13,39 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 4b3116230a085bfbb9a6139fbada4179d802bf5e
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 75beb7b66863efd2fb3679f034a3663dca4a6d2f
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296073"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076706"
 ---
-# <a name="using-functions-in-azure-monitor-log-queries"></a>Met behulp van functies in Azure Monitor logboeken-query 's
+# <a name="using-functions-in-azure-monitor-log-queries"></a>Functies in Azure Monitor-logboek query's gebruiken
 
-Voor het gebruik van een logboekquery met een andere query kunt u deze opslaan als een functie. Hiermee kunt u voor het vereenvoudigen van complexe query's door ze te analyseren in delen en kunt u algemene code met meerdere query's.
+Als u een logboek query met een andere query wilt gebruiken, kunt u deze opslaan als een functie. Zo kunt u complexe query's vereenvoudigen door ze te splitsen in onderdelen en kunt u algemene code gebruiken met meerdere query's.
 
 ## <a name="create-a-function"></a>Een functie maken
 
-Een functie maken met Log Analytics in Azure portal door te klikken op **opslaan** en vervolgens de informatie in de volgende tabel.
+Maak een functie met Log Analytics in het Azure Portal door op **Opslaan** te klikken en vervolgens de informatie in de volgende tabel op te geven.
 
 | Instelling | Description |
 |:---|:---|
-| Name           | Weergavenaam voor de query in **queryverkenner**. |
+| Name           | Weergave naam voor de query in **query Explorer**. |
 | Opslaan als        | Function |
 | Functiealias | Korte naam voor het gebruik van de functie in andere query's. Mag geen spaties bevatten en moet uniek zijn. |
-| Category       | Een categorie om te organiseren opgeslagen query's en functies in **queryverkenner**. |
+| Categorie       | Een categorie voor het ordenen van opgeslagen query's en functies in **query Explorer**. |
 
 > [!NOTE]
-> Een functie in Azure Monitor kan niet een andere functie bevatten.
+> Een functie in Azure Monitor kan geen andere functie bevatten.
 
-> [!NOTE]
-> Opslaan van een functie is mogelijk in Azure Monitor logboeken-query's, maar momenteel niet voor Application Insights-query's.
 
 
 
 ## <a name="use-a-function"></a>Een functie gebruiken
-Een functie wilt gebruiken, met inbegrip van de alias in een andere query. Het kan worden gebruikt als elke andere tabel.
+Gebruik een functie door de bijbehorende alias in een andere query op te nemen. Het kan worden gebruikt als elke andere tabel.
 
 ## <a name="example"></a>Voorbeeld
-De volgende voorbeeldquery retourneert alle ontbrekende beveiligingsupdates gerapporteerd in de laatste dag. Deze query opslaan als een functie met de alias _security_updates_last_day_. 
+De volgende voorbeeld query retourneert alle ontbrekende beveiligings updates die in de afgelopen dag zijn gerapporteerd. Sla deze query op als een functie met de alias _security_updates_last_day_. 
 
 ```Kusto
 Update
@@ -56,19 +54,19 @@ Update
 | where UpdateState == "Needed"
 ```
 
-Maken van een andere query's en naslaginformatie over de _security_updates_last_day_ functie om te zoeken naar benodigde beveiligingsupdates met betrekking tot SQL.
+Maak een andere query en Raadpleeg de functie _security_updates_last_day_ om te zoeken naar aan SQL gerelateerde vereiste beveiligings updates.
 
 ```Kusto
 security_updates_last_day | where Title contains "SQL"
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie andere lessen voor het schrijven van Azure Monitor logboeken-query's:
+Zie andere lessen voor het schrijven van Azure Monitor logboek query's:
 
-- [Bewerkingen op tekenreeksen uitvoeren](string-operations.md)
-- [Datum- en tijdbewerkingen](datetime-operations.md)
-- [Aggregatiefuncties](aggregations.md)
+- [Teken reeks bewerkingen](string-operations.md)
+- [Datum-en tijd bewerkingen](datetime-operations.md)
+- [Aggregatie functies](aggregations.md)
 - [Geavanceerde aggregaties](advanced-aggregations.md)
-- [JSON en gegevensstructuren](json-data-structures.md)
+- [JSON en gegevens structuren](json-data-structures.md)
 - [Joins](joins.md)
-- [Grafieken](charts.md)
+- [Diagrammen](charts.md)

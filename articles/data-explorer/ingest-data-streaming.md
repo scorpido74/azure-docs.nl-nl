@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 5aa2d694c2c74b493a7fd1a2a89d39866928d1d4
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 712273ddfb8b6f781627e2cc7915a1f538f57b4d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843874"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090635"
 ---
 # <a name="streaming-ingestion-preview"></a>Stroom opname (preview-versie)
 
@@ -41,8 +41,9 @@ Gebruik de klassieke opname in (bulk) in plaats van het opnemen van opname wanne
  
 1. Definieer in de [webgebruikersinterface](https://dataexplorer.azure.com/)het [beleid](/azure/kusto/concepts/streamingingestionpolicy) voor het opnemen van gegevens stromen op tabel (len) of data base (s) die streaminggegevens zullen ontvangen. 
 
-    > [!TIP]
-    > Als het beleid is gedefinieerd op database niveau, worden alle tabellen in de data base ingeschakeld voor streaming-opname.
+    > [!NOTE]
+    > * Als het beleid is gedefinieerd op database niveau, worden alle tabellen in de data base ingeschakeld voor streaming-opname.
+    > * Het toegepaste beleid kan verwijzen naar alleen nieuwe opgenomen gegevens en niet naar andere tabellen in de data base.
 
 ## <a name="use-streaming-ingestion-to-ingest-data-to-your-cluster"></a>Stroom opname gebruiken om gegevens op te nemen in uw cluster
 

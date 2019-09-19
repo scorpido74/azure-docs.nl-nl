@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rajanaki
-ms.openlocfilehash: 907a698a675a039dfdc852210adecb94c7bfab25
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1905d6afb023b1bed15f1359fed8477d815acb45
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886895"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087708"
 ---
-# <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Netwerk configuraties van de doel-Azure-VM aanpassen
+# <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Netwerkconfiguraties van de beoogde Azure-VM aanpassen
 
 Dit artikel bevat richt lijnen voor het aanpassen van netwerk configuraties op de doel-Azure-VM wanneer u virtuele machines van Azure repliceert en herstelt van de ene regio naar de andere, met behulp van [Azure site Recovery](site-recovery-overview.md).
 
@@ -23,13 +23,16 @@ Dit artikel bevat richt lijnen voor het aanpassen van netwerk configuraties op d
 
 Meer informatie over hoe Site Recovery herstel na nood gevallen biedt voor [dit scenario](azure-to-azure-architecture.md).
 
-## <a name="support-networking-resources"></a>Ondersteunings netwerk bronnen
+## <a name="supported-networking-resources"></a>Ondersteunde netwerk bronnen
 
 De volgende belang rijke bron configuraties kunnen worden gegeven voor de failover-VM tijdens het repliceren van virtuele Azure-machines.
 
 - [Interne load balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#what-is-standard-load-balancer)
 - [Openbare IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - [Netwerk beveiligings groep](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) zowel voor het subnet als voor de NIC
+
+ > [!IMPORTANT]
+  > Deze instellingen worden op het moment en niet voor de testfailover ondersteund in de failover-bewerking.
 
 ## <a name="pre-requisites"></a>Vereisten
 

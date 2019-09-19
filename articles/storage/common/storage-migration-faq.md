@@ -3,17 +3,18 @@ title: Veelgestelde vragen over Azure Storage migratie | Microsoft Docs
 description: Antwoorden op veelgestelde vragen over het migreren van Azure Storage
 services: storage
 author: genlin
+manager: dcscontentpm
 ms.service: storage
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 2ba09496ed8c110e3bf0e431da20f09c82d5ea0b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 250cdedaa5155f1487cb842be492acd82c0f26b3
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985589"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090824"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Veelgestelde vragen over Azure Storage migratie
 
@@ -238,7 +239,7 @@ Als u virtuele machines hebt, moet u extra stappen uitvoeren voordat u de gegeve
 
 U kunt de cmdlet **Move-AzStorageAccount** gebruiken. Deze cmdlet heeft meerdere stappen (valideren, voorbereiden, door voeren). U kunt de verplaatsing valideren voordat u deze maakt.
 
-Als u virtuele machines hebt, moet u extra stappen uitvoeren voordat u de gegevens van het opslag account migreert. Zie [IaaS-resources van klassiek naar Azure Resource Manager migreren](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md)met behulp van Azure PowerShell voor meer informatie.
+Als u virtuele machines hebt, moet u extra stappen uitvoeren voordat u de gegevens van het opslag account migreert. Zie [IaaS-resources van klassiek naar Azure Resource Manager migreren met behulp van Azure PowerShell](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md)voor meer informatie.
 
 **Hoe kan ik gegevens downloaden naar een Linux-computer vanuit een Azure-opslag account of gegevens uploaden vanaf een Linux-computer?**
 
@@ -299,4 +300,4 @@ Als u alleen gegevens wilt downloaden zonder gebruik te hoeven maken van Storage
 
 ## <a name="need-help-contact-support"></a>Hulp nodig? Neem contact op met ondersteuning.
 
-Als u nog steeds hulp nodig hebt, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
+Als u nog steeds hulp nodig hebt, neemt u [contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.

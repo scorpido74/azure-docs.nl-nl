@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: fc01a20a077a1c624ed490600db919fe3197556c
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 68d4f55d4a382f59386e72779a5f60cfc2a65338
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901761"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091106"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Peering-problemen van virtueel netwerk oplossen
 
@@ -58,7 +58,7 @@ Zie de [vereisten en beperkingen](https://docs.microsoft.com/azure/virtual-netwo
 Volg de stappen in [peering maken in verschillende abonnementen voor Azure cli](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)om virtuele netwerk peering te configureren voor virtuele netwerken in verschillende abonnementen of Active Directory tenants.
 
 > [!Note]
-> Als u Network-peering wilt configureren, moet u in beide abonnementen over de machtiging **netwerk Inzender** beschikken. Zie [machtigingen voor peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering%23permissions)voor meer informatie.
+> Als u Network-peering wilt configureren, moet u in beide abonnementen over de machtiging **netwerk Inzender** beschikken. Zie [machtigingen voor peering](virtual-network-manage-peering.md#permissions)voor meer informatie.
 
 ## <a name="scenario-2-configure-virtual-network-peering-with-hub-spoke-topology-that-uses-on-premises-resources"></a>Scenario 2: Configureer peering voor het virtuele netwerk met hub-spoke-topologie die gebruikmaakt van on-premises resources
 
@@ -104,7 +104,7 @@ Zie [Virtual Network-peering](https://docs.microsoft.com/azure/virtual-network/v
 
 ## <a name="scenario-4-i-have-a-connectivity-issue-between-two-peered-virtual-networks"></a>Scenario 4: Ik heb een connectiviteits probleem tussen twee gekoppelde virtuele netwerken
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een account met de benodigde [rollen en machtigingen](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#roles-permissions). Selecteer het virtuele netwerk, selecteer **peering**en controleer vervolgens het veld **status** . Wat is de status?
+Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een account met de benodigde [rollen en machtigingen](virtual-network-manage-peering.md#permissions). Selecteer het virtuele netwerk, selecteer **peering**en controleer vervolgens het veld **status** . Wat is de status?
 
 ### <a name="connection-type-1-the-peering-status-shows-connected"></a>Verbindings type 1: Met de status van de peering wordt ' connected ' weer gegeven
 
@@ -221,7 +221,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 
 Volg de stappen in [peering maken-Azure cli](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)om dit probleem op te lossen.
 
-### <a name="error-2-not-connected"></a>Fout 2: Geen verbinding
+### <a name="error-2-not-connected"></a>Fout 2: Niet verbonden
 
 U moet peerings uit beide VNets verwijderen en opnieuw maken.
 

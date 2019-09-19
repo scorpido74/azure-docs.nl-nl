@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: f1ceae17195c08af380a7448dd4dbf3bfa3f9de2
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 22d65d20220bfda821fe255e08dd056b761a828d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211869"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086994"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Quickstart: Aanmelden met micro soft toevoegen aan een Java-Web-app
 
@@ -32,10 +32,11 @@ Wanneer u de hand leiding hebt voltooid, accepteert uw toepassing aanmeldingen v
 
 ![Toont hoe de voor beeld-app die door deze Quick start is gegenereerd, werkt](media/quickstart-v2-java-webapp/java-quickstart.svg)
 
-> ## <a name="prerequisites"></a>Vereisten
-> Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig: 
-> - Java Development Kit (JDK) 8 of hoger en Maven.
->
+## <a name="prerequisites"></a>Vereisten
+
+Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig: 
+- Java Development Kit (JDK) 8 of hoger en Maven.
+
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
 > U hebt twee opties om uw Quick Start-toepassing te starten: Express (optie 1) of hand matig (optie 2)
@@ -69,11 +70,11 @@ Wanneer u de hand leiding hebt voltooid, accepteert uw toepassing aanmeldingen v
 > 1. Selecteer **nieuwe registratie**.
 > 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
 >    - Voer in de sectie **Naam** een beschrijvende toepassingsnaam. Deze wordt zichtbaar voor gebruikers van de app. Bijvoorbeeld: `java-webapp`.
->    - Laat de omleidings- **URI** nu leeg en selecteer **registreren**.
+>    - Laat de **omleidings-URI** nu leeg en selecteer **registreren**.
 > 1. Zoek de waarde van de **toepassing (client)-ID** van de toepassing. Werk de waarde van `Enter_the_Application_Id_here` in het bestand *Application. Properties* bij.
 > 1. Zoek de **ID-waarde van de directory (Tenant)** van de toepassing. Werk de waarde van `Enter_the_Tenant_Info_Here` in het bestand *Application. Properties* bij. 
 > 1. Selecteer het menu **Verificatie** en voeg dan de volgende gegevens toe:
->    - Voeg `http://localhost:8080/msal4jsamples/secure/aad` en`https://localhost:8080/msal4jsamples/graph/users`toe bij omleidings-uri's.
+>    - Voeg en `http://localhost:8080/msal4jsamples/secure/aad` toebijomleidings-uri's.`https://localhost:8080/msal4jsamples/graph/users`
 >    - Selecteer **Opslaan**.
 > 1. Kies in het menu links de optie **certificaten & geheimen** en klik in de sectie **client geheimen** op **Nieuw client geheim** :
 >     

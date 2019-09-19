@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: c81eccaa2b3a4335f034b9667f6e7be317635f43
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 094ae511337556ef0c67c86f6d8692cae005430a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933388"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033954"
 ---
 # <a name="http-api-reference"></a>HTTP API-verwijzing
 
@@ -28,7 +28,7 @@ Voor alle HTTP-Api's die door de extensie worden geïmplementeerd, zijn de volge
 | **`connection`** | Querytekenreeks    | De **naam** van de Connection String voor het opslag account. Als deze niet wordt opgegeven, wordt aangenomen dat de standaard connection string voor de functie-app wordt gebruikt. |
 | **`systemKey`**  | Querytekenreeks    | De autorisatie sleutel die is vereist om de API aan te roepen. |
 
-`systemKey`is een autorisatie sleutel die automatisch wordt gegenereerd door de Azure Functions-host. Het geeft specifiek toegang tot de duurzame Api's voor taak uitbreidingen en kan op dezelfde manier worden beheerd als [andere autorisatie sleutels](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). De eenvoudigste manier om de `systemKey` waarde te detecteren is met behulp van de `CreateCheckStatusResponse` eerder vermelde API.
+`systemKey`is een autorisatie sleutel die automatisch wordt gegenereerd door de Azure Functions-host. Het geeft specifiek toegang tot de duurzame Api's voor taak uitbreidingen en kan op dezelfde manier worden beheerd als [andere autorisatie sleutels](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). U kunt url's genereren die de `taskHub`juiste `connection`waarden bevatten, en `systemKey` query teken reeks gebruiken met behulp van [Orchestrator client binding](durable-functions-bindings.md#orchestration-client) api's, `CreateCheckStatusResponse` zoals `CreateHttpManagementPayload` de api's en in .net, `createCheckStatusResponse` of de en `createHttpManagementPayload` Api's in Java script.
 
 In de volgende secties worden de specifieke HTTP-Api's beschreven die worden ondersteund door de uitbrei ding en worden voor beelden gegeven van hoe ze kunnen worden gebruikt.
 

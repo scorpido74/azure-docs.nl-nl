@@ -1,6 +1,6 @@
 ---
-title: Migreren van Azure Containerservice (ACS) naar Azure Kubernetes Service (AKS)
-description: Van Azure Containerservice (ACS) migreren naar Azure Kubernetes Service (AKS).
+title: Migreren van Azure Container Service (ACS) naar Azure Kubernetes service (AKS)
+description: Migreer van Azure Container Service (ACS) naar Azure Kubernetes service (AKS).
 services: container-service
 author: noelbundick
 manager: jeconnoc
@@ -9,42 +9,41 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: dcee8da943603fb0978caf9992be76347ca197d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66f76a8a706f60df786786cbd1ce00b7eafd8d7e
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65977720"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097890"
 ---
-# <a name="migrate-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Migreren van Azure Containerservice (ACS) naar Azure Kubernetes Service (AKS)
+# <a name="migrate-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Migreren van Azure Container Service (ACS) naar Azure Kubernetes service (AKS)
 
-Dit artikel helpt u bij het plannen en uitvoeren van een geslaagde migratie tussen Azure Container Service (ACS) met Kubernetes en Azure Kubernetes Service (AKS). Als u wilt, kunt u belangrijke beslissingen in deze handleiding details van de verschillen tussen ACS en AKS en biedt een overzicht van het migratieproces.
+Dit artikel helpt u bij het plannen en uitvoeren van een geslaagde migratie tussen Azure Container Service (ACS) met Kubernetes en Azure Kubernetes service (AKS). Deze hand leiding bevat informatie over de verschillen tussen ACS en AKS en biedt een overzicht van het migratie proces, om u te helpen bij het nemen van belang rijke beslissingen.
 
 ## <a name="differences-between-acs-and-aks"></a>Verschillen tussen ACS en AKS
 
-ACS en AKS verschillen in enkele belangrijke onderwerpen die invloed hebben op migratie. U moet vóór de migratie, controleren en van plan bent om de volgende verschillen:
+ACS en AKS verschillen in bepaalde belang rijke gebieden die van invloed zijn op de migratie. Voordat u een migratie kunt door nemen, moet u rekening houden met de volgende verschillen:
 
-* AKS-knooppunten gebruiken [beheerde schijven](../virtual-machines/windows/managed-disks-overview.md).
-    * Niet-beheerde schijven moeten worden geconverteerd, voordat u ze aan de AKS-knooppunten koppelen kunt.
-    * Aangepaste `StorageClass` objecten voor Azure-schijven moeten worden gewijzigd van `unmanaged` naar `managed`.
-    * Alle `PersistentVolumes` moet gebruiken `kind: Managed`.
-* Biedt ondersteuning voor AKS [meerdere knooppuntgroepen](https://docs.microsoft.com/azure/aks/use-multiple-node-pools) (momenteel in Preview-versie).
-* Op basis van Windows Server-knooppunten zijn momenteel in [preview in AKS](https://azure.microsoft.com/blog/kubernetes-on-azure/).
-* AKS ondersteunt een beperkte set [regio's](https://docs.microsoft.com/azure/aks/quotas-skus-regions).
-* AKS is een beheerde service met een gehoste controlelaag van Kubernetes. Mogelijk moet u uw toepassingen aanpassen als u de configuratie van de ACS-modellen eerder hebt gewijzigd.
+* AKS-knoop punten gebruiken [beheerde schijven](../virtual-machines/windows/managed-disks-overview.md).
+    * Niet-beheerde schijven moeten worden geconverteerd voordat u ze kunt koppelen aan AKS-knoop punten.
+    * Aangepaste `StorageClass` objecten voor Azure-schijven moeten worden gewijzigd `unmanaged` van `managed`in.
+    * Elk `PersistentVolumes` gebruik .`kind: Managed`
+* AKS ondersteunt [meerdere knooppunt groepen](https://docs.microsoft.com/azure/aks/use-multiple-node-pools) (momenteel als preview-versie).
+* Knoop punten op basis van Windows Server zijn momenteel beschikbaar als [Preview-versie in AKS](https://azure.microsoft.com/blog/kubernetes-on-azure/).
+* AKS ondersteunt een beperkt aantal [regio's](https://docs.microsoft.com/azure/aks/quotas-skus-regions).
+* AKS is een beheerde service met een gehoste Kubernetes-besturings vlak. Mogelijk moet u uw toepassingen aanpassen als u de configuratie van uw ACS-Masters eerder hebt gewijzigd.
 
-## <a name="differences-between-kubernetes-versions"></a>Verschillen tussen de Kubernetes-versies
+## <a name="differences-between-kubernetes-versions"></a>Verschillen tussen Kubernetes-versies
 
-Als waarnaar u migreert naar een nieuwere versie van Kubernetes (bijvoorbeeld van 1.7.x naar 1.9.x), raadpleegt u de volgende bronnen voor meer informatie over een aantal wijzigingen aan de Kubernetes-API:
+Als u migreert naar een nieuwere versie van Kubernetes, raadpleegt u de volgende bronnen om inzicht te krijgen in de strategieën van de Kubernetes-versie:
 
-* [Migreren van een ThirdPartyResource naar CustomResourceDefinition](https://kubernetes.io/docs/tasks/access-kubernetes-api/migrate-third-party-resource/)
-* [Workloads API-wijzigingen in versie 1.8 en 1.9](https://kubernetes.io/docs/reference/workloads-18-19/)
+* [Kubernetes-versie en versie scheefheid ondersteunings beleid](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-versions)
 
 ## <a name="migration-considerations"></a>Overwegingen bij migraties
 
 ### <a name="agent-pools"></a>Agentpools
 
-Hoewel AKS de controlelaag van Kubernetes beheert, definieert u nog steeds de grootte en het aantal knooppunten in het nieuwe cluster wilt opnemen. Ervan uitgaande dat u wilt dat een 1:1-toewijzing van ACS naar AKS, moet u voor het vastleggen van uw bestaande gegevens van de ACS-knooppunt. Deze gegevens gebruiken bij het maken van uw nieuwe AKS-cluster.
+Hoewel AKS het Kubernetes-besturings vlak beheert, definieert u nog steeds de grootte en het aantal knoop punten dat in het nieuwe cluster moet worden meegenomen. Als u wilt dat een toewijzing van 1:1 van ACS naar AKS, moet u de bestaande gegevens van het ACS-knoop punt vastleggen. Gebruik deze gegevens wanneer u een nieuw AKS-cluster maakt.
 
 Voorbeeld:
 
@@ -53,99 +52,99 @@ Voorbeeld:
 | agentpool0 | 3 | Standard_D8_v2 | Linux |
 | agentpool1 | 1 | Standard_D2_v2 | Windows |
 
-Omdat de extra virtuele machines worden geïmplementeerd in uw abonnement tijdens de migratie, moet u controleren of uw quota en limieten voldoende voor deze resources zijn. 
+Omdat er tijdens de migratie extra virtuele machines in uw abonnement worden geïmplementeerd, moet u controleren of uw quota en limieten voldoende zijn voor deze resources. 
 
-Zie voor meer informatie, [Azure-abonnement en Servicelimieten](https://docs.microsoft.com/azure/azure-subscription-service-limits). Om te controleren of uw huidige quota's in Azure portal, gaat u naar de [blade abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), selecteer uw abonnement en selecteer vervolgens **gebruik + quota**.
+Zie [Azure-abonnement en service limieten](https://docs.microsoft.com/azure/azure-subscription-service-limits)voor meer informatie. Als u de huidige quota's wilt controleren, gaat u in het Azure Portal naar de [Blade abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), selecteert u uw abonnement en selecteert u vervolgens **gebruik en quota's**.
 
 ### <a name="networking"></a>Netwerken
 
-Voor complexe toepassingen, zult u doorgaans na verloop van tijd in plaats van in één keer migreren. Dit betekent dat dat de oude en nieuwe omgevingen om te communiceren via het netwerk mogelijk. Toepassingen die eerder is gebruikt `ClusterIP` services om te communiceren moeten mogelijk worden weergegeven als type `LoadBalancer` en op de juiste wijze worden beveiligd.
+Voor complexe toepassingen migreert u doorgaans over tijd in plaats van allemaal tegelijk. Dit betekent dat de oude en nieuwe omgevingen mogelijk moeten communiceren via het netwerk. Toepassingen waarvoor eerder Services `ClusterIP` zijn gebruikt om te communiceren, moeten mogelijk worden weer `LoadBalancer` gegeven als type en moeten op de juiste manier worden beveiligd.
 
-Als u wilt de migratie is voltooid, moet u clients verwijzen naar de nieuwe services die worden uitgevoerd op AKS. Het is raadzaam dat u verkeer omleiden door bij te werken DNS om te verwijzen naar de Load Balancer die bevindt zich voor uw AKS-cluster.
+Als u de migratie wilt volt ooien, moet u clients verwijzen naar de nieuwe services die worden uitgevoerd op AKS. We raden aan dat u verkeer omleidt door DNS te laten verwijzen naar de Load Balancer die zich vóór uw AKS-cluster bevindt.
 
 ### <a name="stateless-applications"></a>Stateless toepassingen
 
-Stateless toepassingen migreren is het meest eenvoudige geval. U zult uw YAML-definities van toepassing op het nieuwe cluster, zorg ervoor dat alles werkt zoals verwacht en omleiden van verkeer voor het activeren van het nieuwe cluster.
+Stateless toepassings migratie is de meest eenvoudige situatie. U past uw YAML-definities toe op het nieuwe cluster, zorg ervoor dat alles naar verwachting werkt en verkeer omleiden om uw nieuwe cluster te activeren.
 
 ### <a name="stateful-applications"></a>Stateful toepassingen
 
-De migratie van stateful toepassingen om te voorkomen dat gegevens verloren gaan of onverwachte downtime zorgvuldig plannen.
+Plan uw migratie van stateful toepassingen om verlies van gegevens of onverwachte downtime te voor komen.
 
-#### <a name="highly-available-applications"></a>Maximaal beschikbare toepassingen
+#### <a name="highly-available-applications"></a>Maxi maal beschik bare toepassingen
 
-U kunt sommige stateful toepassingen in een configuratie met hoge beschikbaarheid implementeren. Deze toepassingen kunnen u gegevens kopiëren voor replica's. Als u momenteel gebruikmaakt van dit soort implementatie, is het mogelijk dat u kunt maken van een nieuw lid op het nieuwe AKS-cluster en vervolgens migreren met minimale invloed op downstream aanroepers. Over het algemeen zijn de migratiestappen voor dit scenario:
+U kunt een aantal stateful toepassingen implementeren in een configuratie met hoge Beschik baarheid. Deze toepassingen kunnen gegevens kopiëren over replica's. Als u momenteel gebruikmaakt van deze soort implementatie, kunt u een nieuw lid maken op het nieuwe AKS-cluster en vervolgens migreren met mini maal effect op downstream-aanroepers. Over het algemeen zijn de migratie stappen voor dit scenario:
 
-1. Maak een nieuwe secundaire replica in AKS.
-2. Wachten op gegevens om te repliceren.
-3. Kan niet meer dan een secundaire replica van de nieuwe primaire maken.
-4. Verkeer verwijzen naar het AKS-cluster.
+1. Maak een nieuwe secundaire replica op AKS.
+2. Wacht tot de gegevens zijn gerepliceerd.
+3. Er wordt een failover uitgevoerd om een secundaire replica de nieuwe primaire te maken.
+4. Punt verkeer naar het AKS-cluster.
 
 #### <a name="migrating-persistent-volumes"></a>Permanente volumes migreren
 
-Als u een bestaande permanente volumes naar AKS migreert bent, volgt u in het algemeen als volgt:
+Als u bestaande permanente volumes migreert naar AKS, voert u de volgende stappen uit:
 
-1. Stilleggen schrijft naar de toepassing. (Deze stap is optioneel en te worden stilgelegd.)
-2. Momentopnamen van de schijven.
-3. Maak nieuwe beheerde schijven van de momentopnamen.
-4. Permanente volumes in AKS maakt.
-5. Bijwerken van de schil specificaties die moeten worden [bestaande volumes gebruiken](https://docs.microsoft.com/azure/aks/azure-disk-volume) in plaats van PersistentVolumeClaims (statische provisioning genoemd).
-6. De toepassing implementeren naar AKS.
-7. Valideren.
-8. Verkeer verwijzen naar het AKS-cluster.
+1. Schrijf het schrijven naar de toepassing. (Deze stap is optioneel en vereist downtime.)
+2. Maak moment opnamen van de schijven.
+3. Nieuwe beheerde schijven maken op basis van de moment opnamen.
+4. Maak permanente volumes in AKS.
+5. Update pod-specificaties om [bestaande volumes te gebruiken](https://docs.microsoft.com/azure/aks/azure-disk-volume) in plaats van PersistentVolumeClaims (static Provisioning).
+6. Implementeer de toepassing op AKS.
+7. Subelementid.
+8. Punt verkeer naar het AKS-cluster.
 
 > [!IMPORTANT]
-> Als u ervoor niet stilleggen schrijfbewerkingen kiest, moet u voor het repliceren van gegevens naar de nieuwe implementatie. Anders zult u de gegevens die is geschreven nadat u de schijf-momentopnamen heeft gemist.
+> Als u ervoor kiest om schrijf bewerkingen niet stil te leggen, moet u gegevens repliceren naar de nieuwe implementatie. Anders mist u de gegevens die zijn geschreven nadat u de moment opnamen van de schijf hebt gemaakt.
 
-Aantal open-source hulpprogramma's kunt u bij het maken van beheerde schijven en volumes tussen Kubernetes-clusters migreren:
+Sommige open source-hulpprogram ma's kunnen u helpen bij het maken van beheerde schijven en het migreren van volumes tussen Kubernetes-clusters:
 
-* [De extensie van Azure CLI schijf kopiëren](https://github.com/noelbundick/azure-cli-disk-copy-extension) kopieert en zet de schijven in resourcegroepen en Azure-regio's.
-* [De extensie van Azure CLI Kube](https://github.com/yaron2/azure-kube-cli) ACS Kubernetes-volumes te inventariseren en ze worden gemigreerd naar een AKS-cluster.
+* Met [Azure cli Disk Copy extension](https://github.com/noelbundick/azure-cli-disk-copy-extension) kopieert en converteert u schijven over resource groepen en Azure-regio's.
+* Met de [extensie Azure uitvoeren cli](https://github.com/yaron2/azure-kube-cli) worden ACS-Kubernetes-volumes geïnventariseerd en gemigreerd naar een AKS-cluster.
 
 #### <a name="azure-files"></a>Azure Files
 
-In tegenstelling tot de schijven, kunnen Azure Files gelijktijdig worden gekoppeld aan meerdere hosts. In uw AKS-cluster, Azure en Kubernetes niet voorkomen dat u het maken van een schil die nog steeds gebruikmaakt van uw ACS-cluster. Zorg ervoor dat de clusters niet naar dezelfde bestanden die op hetzelfde moment schrijven om te voorkomen dat gegevens verloren gaan en onverwacht gedrag.
+In tegens telling tot schijven kunnen Azure Files op meerdere hosts tegelijk worden gekoppeld. In uw AKS-cluster is Azure en Kubernetes niet voor komen dat u een pod maakt die nog steeds wordt gebruikt door uw ACS-cluster. Om gegevens verlies en onverwacht gedrag te voor komen, moet u ervoor zorgen dat de clusters niet op hetzelfde moment naar dezelfde bestanden schrijven.
 
-Als uw toepassing meerdere replica's die naar dezelfde bestandsshare verwijzen hosten kan, gaat u als volgt de stateless migratiestappen uitvoeren en uw YAML-definities implementeren naar het nieuwe cluster. Als dat niet het geval is, moet u mogelijk migratie benadering omvat de volgende stappen:
+Als uw toepassing meerdere replica's kan hosten die naar dezelfde bestands share verwijzen, volgt u de stateless migratie stappen en implementeert u uw YAML-definities naar het nieuwe cluster. Als dat niet het geval is, omvat een mogelijke migratie aanpak de volgende stappen:
 
-1. De toepassing implementeren naar AKS met een aantal replica's van 0.
-2. Schaal de toepassing op de ACS op 0. (Deze stap worden stilgelegd.)
-3. De toepassing schalen in AKS maximaal 1.
-4. Valideren.
-5. Verkeer verwijzen naar het AKS-cluster.
+1. Implementeer uw toepassing naar AKS met een aantal replica's van 0.
+2. Schaal de toepassing op ACS naar 0. (Voor deze stap is downtime vereist.)
+3. Schaal de toepassing op AKS tot 1.
+4. Subelementid.
+5. Punt verkeer naar het AKS-cluster.
 
-Als u beginnen met een lege share- en een kopie maken van de brongegevens bevinden wilt, kunt u de [ `az storage file copy` ](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) opdrachten om uw gegevens te migreren.
+Als u met een lege share wilt beginnen en een kopie van de bron gegevens wilt maken, kunt u de [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) opdrachten gebruiken om uw gegevens te migreren.
 
-### <a name="deployment-strategy"></a>Implementatiestrategie
+### <a name="deployment-strategy"></a>Implementatie strategie
 
-U wordt aangeraden dat u uw bestaande CI/CD-pijplijn gebruiken voor het implementeren van een bekende juiste configuratie in AKS. Uw bestaande implementatietaken klonen en zorg ervoor dat `kubeconfig` verwijst naar het nieuwe AKS-cluster.
+We raden u aan uw bestaande CI/CD-pijp lijn te gebruiken voor het implementeren van een bekende, goede configuratie op AKS. Kloon uw bestaande implementatie taken en zorg ervoor `kubeconfig` dat u naar het nieuwe AKS-cluster verwijst.
 
-Als dat niet mogelijk is, resourcedefinities van ACS exporteren en vervolgens toegepast op AKS. U kunt `kubectl` objecten exporteren.
+Als dat niet mogelijk is, kunt u resource definities exporteren uit ACS en vervolgens Toep assen op AKS. U kunt gebruiken `kubectl` om objecten te exporteren.
 
 ```console
 kubectl get deployment -o=yaml --export > deployments.yaml
 ```
 
-Aantal open-source-hulpprogramma's kunt, afhankelijk van de implementatiebehoeften van uw:
+Er kunnen verschillende open source-hulpprogram ma's worden geholpen, afhankelijk van de behoeften van uw implementatie:
 
-* [Velero](https://github.com/heptio/ark) (dit hulpprogramma moet Kubernetes 1.7.)
-* [Azure CLI Kube-extensie](https://github.com/yaron2/azure-kube-cli)
-* [ReShifter](https://github.com/mhausenblas/reshifter)
+* [Velero](https://github.com/heptio/ark) (Voor dit hulp programma is Kubernetes 1,7.)
+* [Azure uitvoeren CLI-extensie](https://github.com/yaron2/azure-kube-cli)
+* [Reshifter](https://github.com/mhausenblas/reshifter)
 
 ## <a name="migration-steps"></a>Migratiestappen
 
-1. [Een AKS-cluster maken](https://docs.microsoft.com/azure/aks/create-cluster) via Azure portal, Azure CLI of Azure Resource Manager-sjabloon.
+1. [Maak een AKS-cluster](https://docs.microsoft.com/azure/aks/create-cluster) via de sjabloon Azure Portal, Azure CLI of Azure Resource Manager.
 
    > [!NOTE]
-   > Voorbeeld van Azure Resource Manager-sjablonen voor AKS op vinden de [Azure/AKS](https://github.com/Azure/AKS/tree/master/examples/vnet) -bibliotheek op GitHub.
+   > Zoek naar voorbeeld Azure Resource Manager sjablonen voor AKS in de [Azure/AKS-](https://github.com/Azure/AKS/tree/master/examples/vnet) opslag plaats op github.
 
-2. Breng alle benodigde wijzigingen aan uw YAML-definities. Vervang bijvoorbeeld `apps/v1beta1` met `apps/v1` voor `Deployments`.
+2. Breng de benodigde wijzigingen aan in uw YAML-definities. Vervang `apps/v1beta1` bijvoorbeelddoor`Deployments`voor. `apps/v1`
 
-3. [-Volumes migreren](#migrating-persistent-volumes) (optioneel) van uw ACS-cluster naar uw AKS-cluster.
+3. [Volumes migreren](#migrating-persistent-volumes) (optioneel) van uw ACS-cluster naar uw AKS-cluster.
 
-4. Uw CI/CD-systeem gebruiken om toepassingen met AKS te implementeren. Of kubectl gebruiken om toe te passen de YAML-definities.
+4. Gebruik uw CI/CD-systeem om toepassingen te implementeren in AKS. Of gebruik kubectl om de YAML-definities toe te passen.
 
-5. Valideren. Zorg ervoor dat uw toepassingen werken zoals verwacht en dat alle gemigreerde gegevens zijn gekopieerd.
+5. Subelementid. Zorg ervoor dat uw toepassingen werken zoals verwacht en dat alle gemigreerde gegevens zijn gekopieerd.
 
-6. Verkeer omleiden. Bijwerken van de DNS dat deze clients naar uw AKS-implementatie.
+6. Verkeer omleiden. Update DNS naar Point-clients naar uw AKS-implementatie.
 
-7. Taken na de migratie voltooien. Als u volumes gemigreerd waarbij niet stilleggen schrijfbewerkingen, kopieert u deze gegevens naar het nieuwe cluster.
+7. Voltooi taken na de migratie. Als u volumes hebt gemigreerd en geen schrijf bewerkingen wilt door gegeven, kopieert u deze gegevens naar het nieuwe cluster.

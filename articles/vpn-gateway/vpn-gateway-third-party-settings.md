@@ -1,10 +1,10 @@
 ---
-title: Door de community voorgestelde externe VPN- of firewallinstellingen apparaatinstellingen voor Azure VPN-gateway | Microsoft Docs
-description: Meer informatie over door de community voorgestelde externe VPN- of firewallinstellingen apparaatinstellingen voor Azure VPN-gateway.
+title: Door de Community voorgestelde VPN-of firewall-Apparaatinstellingen van derden voor Azure VPN-gateway | Microsoft Docs
+description: Meer informatie over door de Community voorgestelde VPN-of firewall instellingen van derden voor Azure VPN-gateway.
 services: vpn-gateway
 documentationcenter: ''
 author: chadmath
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-vpn-gateway
 ms.assetid: ''
@@ -15,40 +15,40 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: fae790f9b2d5ecc492f7ece5d259809e8664898d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aa4650897abcd38fec4d45f57969d4bf30b9d773
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60457099"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058846"
 ---
-# <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Door de community voorgestelde externe VPN- of firewallinstellingen apparaatinstellingen voor Azure VPN-gateway
+# <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Door de Community voorgestelde VPN-of firewall-Apparaatinstellingen van derden voor Azure VPN-gateway
 
-Dit artikel bevat verschillende voorgestelde oplossingen voor externe VPN- of firewallapparaten die worden gebruikt met Azure VPN-gateway.
+Dit artikel bevat verschillende aanbevolen oplossingen voor VPN-of firewall apparaten van derden die worden gebruikt met Azure VPN gateway.
 
 > [!Note]
-> Technische ondersteuning voor de VPN- of firewallinstellingen apparaten van derden wordt geleverd door de leverancier van het apparaat. 
+> Technische ondersteuning voor VPN-of firewall apparaten van derden wordt geboden door de leverancier van het apparaat. 
 
 ## <a name="more-information"></a>Meer informatie
 
-De volgende tabel bevat enkele veelgebruikte apparaten en verwante Help-onderwerpen:
+De volgende tabel bevat een lijst met verschillende algemene apparaten en gerelateerde hulp:
 
 |Product    |Referentie                                                |
 |-----------|-----------------------------------------------------------|
-|Cisco ASA  |[Community voorgestelde oplossingen voor Cisco ASA op Azure VPN](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco)   |
-|Cisco ISR  |[Community voorgestelde oplossingen voor Cisco ISR op Azure VPN](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |
-|Cisco ASR  |[Community voorgestelde oplossingen voor Cisco ASR op Azure VPN](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
-|Sonicwall |Zoeken naar **Azure VPN** op [Sonicwall-site](https://www.sonicwall.com/en-us/support) |
-| Controlepunt    |Zoeken naar **Azure VPN** op [controlepunt-site](https://supportcenter.checkpoint.com/supportcenter/portal) |
-|Juniper |Zoeken naar **Azure VPN** op [Juniper-site]( https://www.juniper.net/search/public/)|
-|Barracuda  |[Community voorgestelde oplossingen van Barracuda op Azure VPN](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |
-|F5         |[Community voorgestelde oplossingen voor F5 op Azure VPN](https://support.f5.com/csp/#/federated-search?q=%22Azure%20VPN%22&source=support)          |
-|Palo       |[Community voorgestelde oplossingen voor Palo op Azure VPN](https://live.paloaltonetworks.com/t5/forums/searchpage/tab/message?q=Azure+VPN)        |
-|Watchguard |[Community voorgestelde oplossingen voor Watchguard op Azure VPN](http://watchguardsupport.force.com/SupportSearch#q=Azure%20VPN&t=All&sort=relevancy)  |
+|Cisco ASA  |[Door de Community voorgestelde oplossingen voor Cisco ASA op Azure VPN](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco)   |
+|Cisco ISR  |[Community-voorgestelde oplossingen voor Cisco ISR op Azure VPN](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |
+|Cisco ASR  |[Community-voorgestelde oplossingen voor Cisco ASR op Azure VPN](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
+|SonicWall |Zoeken naar **Azure VPN** op de [SonicWALL-site](https://www.sonicwall.com/en-us/support) |
+| Controlepunt    |Zoeken naar **Azure VPN** op [controlepunt site](https://supportcenter.checkpoint.com/supportcenter/portal) |
+|Juniper |Zoeken naar **Azure VPN** op de [Juniper-site]( https://www.juniper.net/search/public/)|
+|Barracuda  |[Door de Community voorgestelde oplossingen voor Barracuda op Azure VPN](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |
+|F5         |[Door de Community voorgestelde oplossingen voor F5 op Azure VPN](https://support.f5.com/csp/#/federated-search?q=%22Azure%20VPN%22&source=support)          |
+|Palo       |[Door de Community voorgestelde oplossingen voor palo op Azure VPN](https://live.paloaltonetworks.com/t5/forums/searchpage/tab/message?q=Azure+VPN)        |
+|Watchguard |[Door de Community voorgestelde oplossingen voor WatchGuard op Azure VPN](http://watchguardsupport.force.com/SupportSearch#q=Azure%20VPN&t=All&sort=relevancy)  |
 
 ## <a name="next-step"></a>Volgende stap
 
-[Instellingen voor Azure Gateways](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
+[Instellingen voor Azure-gateways](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
 
 [Bekende compatibele apparaten](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
 

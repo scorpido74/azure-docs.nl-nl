@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: d98a5f04f60cb7d933ea91e0657f6067fb1c59a8
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 9c55688674fe16f64bfb27788a6e038059694a77
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962801"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087465"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Vereisten voor het beheren van accounts op het Cloud Partner-portal 
 
@@ -21,7 +21,7 @@ Voordat u de [Cloud Partner-Portal](https://cloudpartner.azure.com/) voor elke f
 
 ## <a name="account-terms-and-guidelines"></a>Account voorwaarden en richt lijnen
 
-Controleer zorgvuldig uw rechten en verantwoordelijkheden op het [Microsoft-servicesovereenkomst](https://www.microsoft.com/servicesagreement) en de [gebruiksrecht overeenkomst van micro soft](https://www.microsoft.com/us-en/legal/intellectualproperty/copyright/default.aspx) voordat u een account maakt.  
+Controleer zorgvuldig uw rechten en verantwoordelijkheden op het [Microsoft-servicesovereenkomst](https://www.microsoft.com/servicesagreement) en de [gebruiksrecht overeenkomst van micro soft](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright) voordat u een account maakt.  
 
 Kies uw account naam zorgvuldig.  Het vertegenwoordigt uw organisatie, dus mag het geen auteurs rechtelijk beschermde of contentiouse woorden bevatten.  Micro soft verbiedt bijvoorbeeld het gebruik van de voor waarden van copyright, zoals ' Azure ' en ' micro soft ', in account namen.  Zie [richt lijnen voor Azure Marketplace](https://docs.microsoft.com/azure/marketplace/guidelines) voor meer informatie.
 

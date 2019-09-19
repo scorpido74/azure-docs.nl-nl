@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: be7ff67f07ed8eaeb3f04a15c6185191bf107cf2
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 33f70ba33168190577baf1757e9be0ece5d315ba
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918411"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066891"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Quickstart: Apache Hadoop cluster maken in azure HDInsight met behulp van Azure Portal
 
@@ -34,7 +34,7 @@ In deze sectie maakt u een Hadoop-cluster in HDInsight met behulp van Azure Port
 
 1. Ga vanuit het Azure Portal naar **een resource** > **Analytics** > **HDInsight**maken.
 
-    ![Databricks in Azure Portal](./media/apache-hadoop-linux-create-cluster-get-started-portal/create-hdinsight-cluster.png "Databricks in Azure Portal")
+    ![Een HDInsight-cluster voor resources maken](./media/apache-hadoop-linux-create-cluster-get-started-portal/create-hdinsight-cluster.png "Een HDInsight-cluster voor resources maken")
 
 1. Typ of Selecteer onder**basis beginselen**van **HDInsight** > **snel maken** > de volgende waarden:
 
@@ -101,7 +101,7 @@ In deze sectie maakt u een Hadoop-cluster in HDInsight met behulp van Azure Port
 
 3. Open **Hive-weergave** zoals weergegeven in de volgende schermafbeelding:
 
-    ![Ambari-weergaven selecteren](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png "HDInsight Hive Weergave-menu")
+    ![Hive-weer gave van Ambari selecteren](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png "Menu viewer van HDInsight-Hive")
 
 4. Plak in het tabblad **QUERY** de volgende HiveQL-instructies in het werkblad:
 
@@ -109,13 +109,13 @@ In deze sectie maakt u een Hadoop-cluster in HDInsight met behulp van Azure Port
     SHOW TABLES;
     ```
 
-    ![HDInsight Hive-weergaven](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-apache-hive-view1.png "HDInsight Hive-weergave Query Editor")
+    ![Query-editor voor HDInsight Hive-weer gave](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-apache-hive-view1.png "Query-editor voor HDInsight Hive-weer gave")
 
 5. Selecteer **Uitvoeren**. Er wordt een tabblad **RESULTATEN** weergegeven onder het tabblad **QUERY** met informatie over de taak. 
 
     Nadat de query is voltooid, worden de resultaten van de bewerking weergegeven op het tabblad **QUERY**. U ziet één tabel met de naam **hivesampletable**. Deze Hive-voorbeeldtabel is bij alle HDInsight-clusters inbegrepen.
 
-    ![Resultaten weergave HDInsight-Hive](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-hive-views.png "Resultaten weergave HDInsight-Hive")
+    ![Resultaten van HDInsight Apache Hive weer geven](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-hive-views.png "Resultaten van HDInsight Apache Hive weer geven")
 
 6. Herhaal stap 4 en 5 om de volgende query uit te voeren:
 
@@ -125,7 +125,7 @@ In deze sectie maakt u een Hadoop-cluster in HDInsight met behulp van Azure Port
 
 7. U kunt de resultaten van de query ook opslaan. Selecteer de menuknop aan de rechterkant en geef aan of u de resultaten wilt downloaden als een CSV-bestand of deze wilt opslaan in het opslagaccount dat aan het cluster is gekoppeld.
 
-    ![Resultaat van Hive-query opslaan](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-hive-view-save-results.png "Resultaat van Hive-query opslaan")
+    ![Resultaat van Apache Hive query opslaan](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-hive-view-save-results.png "Resultaat van Apache Hive query opslaan")
 
 Nadat u een Hive-taak hebt voltooid, kunt u [de resultaten exporteren naar een Azure SQL-database of een SQL Server-database](apache-hadoop-use-sqoop-mac-linux.md). U kunt ook [de resultaten weergeven in Excel](apache-hadoop-connect-excel-power-query.md). Zie [Apache Hive en HiveQL gebruiken met Apache Hadoop in HDInsight voor het analyseren van een voorbeeldbestand van de Apache-log4j](hdinsight-use-hive.md) voor meer informatie over het gebruik van Hive in HDInsight.
 
@@ -140,7 +140,7 @@ Nadat u de Snelstartgids hebt voltooid, kunt u het cluster verwijderen. Met HDIn
 
 1. Ga terug naar het browsertabblad voor Azure Portal. U komt terecht op de overzichtspagina voor het cluster. Selecteer **Verwijderen** als u alleen het cluster wilt verwijderen maar het standaardopslagaccount wilt behouden.
 
-    ![HDInsight delete cluster](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-delete-cluster.png "HDInsight-cluster verwijderen")
+    ![Azure HDInsight-cluster verwijderen](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-delete-cluster.png "Azure HDInsight-cluster verwijderen")
 
 2. Als u het cluster en het standaardopslagaccount wilt verwijderen, selecteert u de naam van de resourcegroep (gemarkeerd in de vorige schermafbeelding) om de pagina van de resourcegroep te openen.
 
