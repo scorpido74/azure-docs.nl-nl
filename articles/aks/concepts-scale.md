@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4fc34ed5cdd53977aa20bef84200ba2bf5386979
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d2d7508b4f0a2789a0eae5d6c6205475b5795e36
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899477"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097844"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Schaal opties voor toepassingen in azure Kubernetes service (AKS)
 
-Wanneer u toepassingen uitvoert in azure Kubernetes service (AKS), moet u mogelijk de hoeveelheid reken resources verhogen of verlagen. Als het aantal toepassings exemplaren dat u moet wijzigen, moet het aantal onderliggende Kubernetes-knoop punten mogelijk ook worden gewijzigd. Mogelijk moet u ook snel een groot aantal extra toepassings exemplaren inrichten.
+Wanneer u toepassingen uitvoert in azure Kubernetes service (AKS), moet u mogelijk de hoeveelheid reken resources verhogen of verlagen. Als het aantal toepassings exemplaren dat u moet wijzigen, moet het aantal onderliggende Kubernetes-knoop punten mogelijk ook worden gewijzigd. Het is ook mogelijk dat u snel een groot aantal extra toepassings exemplaren moet inrichten.
 
 In dit artikel worden de belangrijkste concepten geïntroduceerd waarmee u toepassingen in AKS kunt schalen:
 
@@ -27,7 +27,7 @@ In dit artikel worden de belangrijkste concepten geïntroduceerd waarmee u toepa
 
 ## <a name="manually-scale-pods-or-nodes"></a>Peulen of knoop punten hand matig schalen
 
-U kunt replica's (peul) en knoop punten hand matig schalen om te testen hoe uw toepassing reageert op een wijziging in de beschik bare resources en de status. Door resources hand matig te schalen, kunt u ook een ingestelde hoeveelheid resources definiëren die moeten worden gebruikt voor het onderhouden van vaste kosten, zoals het aantal knoop punten. Als u hand matig wilt schalen, definieert u de replica of het aantal knoop punten en maakt u de Kubernetes-API planningen voor het maken van extra peul-of afvoer knooppunten.
+U kunt replica's (peul) en knoop punten hand matig schalen om te testen hoe uw toepassing reageert op een wijziging in de beschik bare resources en de status. Door resources hand matig te schalen, kunt u ook een ingestelde hoeveelheid resources definiëren die moeten worden gebruikt voor het onderhouden van vaste kosten, zoals het aantal knoop punten. Als u hand matig wilt schalen, definieert u de replica of het aantal knoop punten. Met de Kubernetes-API wordt vervolgens gepland dat er meer dan een of meer knoop punten worden gemaakt op basis van die replica of het aantal knoop punten.
 
 Zie [toepassingen schalen in AKS][aks-scale]om aan de slag te gaan met het hand matig schalen van peulen en knoop punten.
 
@@ -43,15 +43,15 @@ Zie pod [automatisch schalen in AKS][aks-hpa]om aan de slag te gaan met de horiz
 
 ### <a name="cooldown-of-scaling-events"></a>Cooldown van het schalen van gebeurtenissen
 
-Als de horizontale pod autoscaleer de metrische gegevens-API elke 30 seconden controleert, is het mogelijk dat eerdere schaal gebeurtenissen niet zijn voltooid voordat een andere controle is uitgevoerd. Dit gedrag kan ertoe leiden dat de pod van de horizontale automatisch schalen het aantal replica's wijzigt voordat de vorige Scale-gebeurtenis de werk belasting van de toepassing kan ontvangen en de resource vereisten dienovereenkomstig aan te passen.
+Als de horizontale pod autoscaleer de metrische gegevens-API elke 30 seconden controleert, is het mogelijk dat eerdere schaal gebeurtenissen niet zijn voltooid voordat een andere controle is uitgevoerd. Dit gedrag kan ertoe leiden dat de pod van de horizontale automatisch schalen het aantal replica's kan wijzigen voordat de vorige schaal gebeurtenis de werk belasting van de toepassing kan ontvangen en de resource vereisten dienovereenkomstig moet worden aangepast.
 
-Als u deze race gebeurtenissen wilt minimaliseren, worden de waarden voor cooldown of delay ingesteld. Deze waarden bepalen hoe lang de pod moet wachten na een schaal gebeurtenis voordat een andere schaal gebeurtenis kan worden geactiveerd. Dit gedrag zorgt ervoor dat het nieuwe aantal replica's van kracht wordt en dat de metrische gegevens API de gedistribueerde werk belasting weer spie gelen. De vertraging voor het opschalen van gebeurtenissen is standaard drie minuten en de vertraging bij het omlaag schalen van gebeurtenissen is 5 minuten
+Als u deze race gebeurtenissen wilt minimaliseren, worden de waarden voor cooldown of delay ingesteld. Deze waarden bepalen hoe lang de pod moet wachten na een schaal gebeurtenis voordat een andere schaal gebeurtenis kan worden geactiveerd. Dit gedrag zorgt ervoor dat het nieuwe aantal replica's van kracht wordt en de metrics API om de gedistribueerde werk belasting weer te geven. De vertraging voor het opschalen van gebeurtenissen is standaard drie minuten en de vertraging bij het omlaag schalen van gebeurtenissen is 5 minuten
 
 Op dit moment kunt u deze cooldown-waarden niet afstemmen op de standaard waarde.
 
 ## <a name="cluster-autoscaler"></a>Cluster automatisch schalen
 
-Om te reageren op het wijzigen van de pod-vraag, heeft Kubernetes een cluster automatisch schalen (momenteel in de preview-versie van AKS) waarmee het aantal knoop punten wordt aangepast op basis van de aangevraagde Compute-resources in de knooppunt groep. De standaard instelling is dat de API-server van de metriek elke 10 seconden wordt gecontroleerd op vereiste wijzigingen in het aantal knoop punten. Als de automatisch schalen van het cluster bepaalt dat een wijziging vereist is, wordt het aantal knoop punten in uw AKS-cluster verhoogd of verlaagd. De cluster-automatische schaal functie werkt met AKS-clusters met RBAC-functionaliteit waarop Kubernetes 1,10. x of hoger wordt uitgevoerd.
+Om te reageren op het wijzigen van de pod-vraag, heeft Kubernetes een cluster automatisch schalen, die momenteel als preview-versie beschikbaar is in AKS, waarmee het aantal knoop punten wordt aangepast op basis van de aangevraagde Compute-resources in de knooppunt groep. De standaard instelling is dat de API-server van de metriek elke 10 seconden wordt gecontroleerd op vereiste wijzigingen in het aantal knoop punten. Als de automatisch schalen van het cluster bepaalt dat een wijziging vereist is, wordt het aantal knoop punten in uw AKS-cluster verhoogd of verlaagd. De cluster-automatische schaal functie werkt met AKS-clusters met RBAC-functionaliteit waarop Kubernetes 1,10. x of hoger wordt uitgevoerd.
 
 ![Kubernetes-cluster automatisch schalen](media/concepts-scale/cluster-autoscaler.png)
 
@@ -71,7 +71,7 @@ Als uw toepassing snel moet worden geschaald, kan sommige peulen in een staat wa
 
 ### <a name="scale-down-events"></a>Gebeurtenissen omlaag schalen
 
-De cluster-automatische schaal functie bewaakt ook de pod-plannings status voor knoop punten die recent geen nieuwe plannings aanvragen hebben ontvangen. Dit scenario geeft aan dat de knooppunt groep meer reken resources heeft dan vereist is, en dat het aantal knoop punten kan worden verminderd.
+De cluster-automatische schaal functie bewaakt ook de pod-plannings status voor knoop punten die recent geen nieuwe plannings aanvragen hebben ontvangen. In dit scenario wordt aangegeven dat de knooppunt groep meer compute-resources heeft dan vereist is en het aantal knoop punten kan worden verkleind.
 
 Een knoop punt dat een drempel waarde door geeft voor niet langer 10 minuten, is standaard gepland voor verwijdering. Wanneer deze situatie zich voordoet, wordt de planning op andere knoop punten in de knooppunt groep uitgevoerd en wordt het aantal knoop punten verkleind door de automatische schaal functie van het cluster.
 

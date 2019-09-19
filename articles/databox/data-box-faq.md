@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: f9afd3ae1d1d5d6235cf8bd0a6350a782ea6afbe
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8dbdbe39f613bb8895be6ae21d8aa29b766781cd
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142933"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098808"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Veelgestelde vragen
 
@@ -50,7 +50,7 @@ A. Data Box is verkrijgbaar tegen een nominaal bedrag voor 10 dagen. Als u het p
 A. Data Box heeft een onbewerkte capaciteit van 100 TB en een bruikbare capaciteit van 80 TB. U kunt met Data Box maximaal 80 TB aan gegevens overdragen. Als u meer gegevens wilt overdragen, moet u meer apparaten bestellen.
 
 ### <a name="q-how-can-i-check-if-data-box-is-available-in-my-region"></a>V. Hoe kan ik controleren of Data Box in mijn regio beschikbaar is? 
-A.  Voor informatie over welke landen/regio's de Data Box beschikbaar is, gaat u naar beschik bare [regio's](data-box-overview.md#region-availability).  
+A.  Voor informatie over welke landen/regio's de Data Box beschikbaar is, gaat u naar [beschik bare regio's](data-box-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>V. In welke regio's kan ik gegevens opslaan met Data Box?
 A. Data Box wordt ondersteund voor alle regio's in VS, Europa-west, Europa-noord, Frank rijk, UK, Japan, Australië en Canada. Ga naar [Beschikbaarheid in de regio](data-box-overview.md#region-availability) voor meer informatie.
@@ -159,7 +159,7 @@ A.  U kunt het kopieerproces als volgt versnellen:
 - Gebruik meerdere gegevensstromen. In bijvoorbeeld Robocopy kunt u de optie voor meerdere threads gebruiken. Meer informatie over de opdracht die u moet gebruiken is te vinden in [Zelfstudie: Gegevens kopiëren naar Azure Data Box en deze gegevens controleren](data-box-deploy-copy-data.md).
 - Gebruik meerdere sessies.
 - In plaats van te kopiëren via een netwerkshare (waarbij de netwerksnelheid beperkend kan zijn), zorgt u ervoor dat de gegevens lokaal aanwezig zijn op de computer waarmee de Data Box is verbonden.
-- Voer een benchmark-test uit van de prestaties van de computer die wordt gebruikt om de gegevens te kopiëren. Download en gebruik het hulpprogramma [Bluestop FIO](https://ci.appveyor.com/project/axboe/fio) om een benchmark-test uit te voeren van de prestaties van de serverhardware. Selecteer de nieuwste versie van x86 of x64, selecteer het tabblad artefacten en down load het MSI-bestand.
+- Voer een benchmark-test uit van de prestaties van de computer die wordt gebruikt om de gegevens te kopiëren. Download en gebruik het hulpprogramma [Bluestop FIO](https://ci.appveyor.com/project/axboe/fio) om een benchmark-test uit te voeren van de prestaties van de serverhardware. Selecteer de nieuwste versie van x86 of x64, selecteer het tabblad **artefacten** en down load het MSI-bestand.
 
 <!--### Q. How to speed up the data copy if the source data has small files (KBs or few MBs)?
 A.  To speed up the copy process:
@@ -180,8 +180,19 @@ A.  Ja. Data Box ondersteunt maximaal 10 opslagaccounts, algemene opslag, klassi
 ### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>V. Mijn apparaat werd geleverd, maar het apparaat lijkt te zijn beschadigd. Wat moet ik doen?
 A. Gebruik het apparaat niet als het beschadigd is gearriveerd of als er bewijs van sabotage is. [Neem contact op met Microsoft Ondersteuning](data-box-disk-contact-microsoft-support.md) en stuur het apparaat zo snel mogelijk terug. U kunt ook een nieuwe Data Box-bestelling maken voor een vervangend apparaat. In dit geval worden er geen kosten voor het vervangende apparaat in rekening gebracht.
 
-### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>V. Kan ik mijn eigen koerier gebruiken om de Data Box te verzenden?
-A. Microsoft verzorgt de verzending van de Data Box van en naar het Azure-datacenter. U kunt de Azure Import/Export-service gebruiken als u uw eigen koerier wilt gebruiken. Ga voor meer informatie naar [Wat is Azure Import/Export-service](../storage/common/storage-import-export-service.md)?
+### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>V. Kan ik mijn Data Box bestelling zelf ophalen? Kan ik de Data Box retour neren via een door mij gekozen provider?
+A. Ja. Micro soft biedt ook zelf-beheerde verzen ding in US Gov regio. Wanneer u de Data Box order plaatst, kunt u de optie voor zelf-beheerde verzen ding kiezen. Voer de volgende stappen uit om uw Data Box-apparaat op te halen:
+    
+1. Nadat u de order hebt geplaatst, wordt de order verwerkt en wordt de Data Box voor bereid. U wordt gewaarschuwd via een e-mail bericht dat uw bestelling gereed is voor ophalen. 
+2. Zodra de bestelling gereed is voor ophalen, gaat u naar uw bestelling in het Azure Portal en gaat u naar de Blade **overzicht** . 
+3. Er wordt een melding met een code in de Azure Portal weer geven. E-mail het [Azure data Box Operations-team](mailto:adbops@microsoft.com) en geef de code op. Het team geeft de locatie op en plant een datum en tijd voor het ophalen. U moet het team aanroepen binnen 5 werk dagen nadat u het e-mail bericht hebt ontvangen.
+
+Wanneer het kopiëren van de gegevens is voltooid, voert u de volgende stappen uit om uw apparaat te retour neren:
+
+1. Als het kopiëren van de gegevens is voltooid zonder fouten, voert u **voorbereiding voor verzending**uit. Nadat de voor bereiding is voltooid, ontvangt u een code in de lokale web-UI van het apparaat. Kopieer de code en sla deze op.
+2. Schakel het apparaat uit en verwijder de verbindings kabels.
+3. Rol het netsnoer op en plaats het veilig aan de achterzijde van het apparaat.
+4. E-mail het [Azure data Box Operations-team](mailto:adbops@microsoft.com) en geef de code op die u eerder hebt opgeslagen. Ze geven u informatie over waar en wanneer u het apparaat moet neerzetten.
 
 ### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>V. Worden de land grenzen van mijn Data Box-apparaten tijdens de verzen ding overschreden?
 A. Alle Data Box apparaten worden verzonden vanuit hetzelfde land als de bestemming en er worden geen internationale grenzen in rekening gebracht. De enige uitzonde ring hierop is voor orders in de Europese Unie (EU), waar apparaten kunnen worden verzonden naar en vanuit elk land van de EU. Dit geldt voor zowel de Data Box als de Data Box Heavy-apparaten.

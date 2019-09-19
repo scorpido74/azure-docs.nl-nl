@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: 43fee2ce25e358bbcff915d2fbef96bf4b7c1a0c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 590757f78086be894cdc2384bb4a4df380e91c27
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233120"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098607"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Python implementeren voor Azure Functions met Visual Studio code
 
@@ -45,7 +45,7 @@ Als u geen Azure-abonnement hebt, [meldt u zich nu](https://azure.microsoft.com/
 
 Installeer de volgende software:
 
-- Python 3.6. x zoals vereist door Azure Functions. [Python 3.6.8](https://www.python.org/downloads/release/python-368/) is de meest recente versie van 3.6. x.
+- Python 3.6. x zoals vereist door Azure Functions. [Python 3.6.9](https://www.python.org/downloads/release/python-369/) is de meest recente versie van 3.6. x.
 - [Visual Studio Code](https://code.visualstudio.com/).
 - De [python-extensie](https://marketplace.visualstudio.com/items?itemName=ms-python.python) zoals beschreven in [Visual Studio code python-zelf studie-vereisten](https://code.visualstudio.com/docs/python/python-tutorial).
 - De [uitbrei ding Azure functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions). Voor algemene informatie gaat u naar de [vscode-Azurefunctions github-opslag plaats](https://github.com/Microsoft/vscode-azurefunctions).
@@ -287,7 +287,7 @@ In deze stappen gebruikt u de extensie functions om een functie-app in azure te 
 
 ### <a name="stream-logs"></a>Logboeken streamen
 
-Ondersteuning voor logboek streaming is momenteel in ontwikkeling, zoals beschreven in [probleem 589](https://github.com/microsoft/vscode-azurefunctions/issues/589) voor de extensie Azure functions. Met de knop **Stream logs** in het pop-upbericht wordt uiteindelijk de logboek uitvoer op Azure verbonden met Visual Studio code. U kunt de logboek stroom ook starten en stoppen in de **Azure functions** Explorer door met de rechter muisknop op het functie project te klikken en **streaming-Logboeken starten** te selecteren of streaming-logboeken te **stoppen**.
+Ondersteuning voor logboek streaming is momenteel in ontwikkeling, zoals beschreven in [probleem 589](https://github.com/microsoft/vscode-azurefunctions/issues/589) voor de extensie Azure functions. Met de knop **Stream logs** in het pop-upbericht wordt uiteindelijk de logboek uitvoer op Azure verbonden met Visual Studio code. U kunt de logboek stroom ook starten en stoppen in de **Azure functions** Explorer door met de rechter muisknop op het functie project te klikken en **streaming-Logboeken starten** te selecteren of **streaming-logboeken te stoppen**.
 
 Op dit moment zijn deze opdrachten echter nog niet operationeel. Streaming van Logboeken is beschikbaar in een browser door de volgende opdracht uit te `<app_name>` voeren, waarbij u vervangt door de naam van uw functions-app in Azure:
 
@@ -444,6 +444,18 @@ In deze sectie voegt u een opslag binding toe aan de functie HttpExample die eer
           "queueName": "outqueue",
           "connection": "AzureWebJobsStorage"
         }
+    ```
+
+1. Vervang de inhoud van *host. json* door het volgende, waarbij u de [verwijzing naar uitbreidings bundels](functions-bindings-register.md#extension-bundles)toevoegt.
+
+    ```json
+    {
+        "version": "2.0",
+        "extensionBundle": {
+            "id": "Microsoft.Azure.Functions.ExtensionBundle",
+            "version": "[1.*, 2.0.0)"
+        }
+    }
     ```
 
 1. Nu u de binding hebt geconfigureerd, kunt u deze in uw functie code gebruiken. Opnieuw wordt de zojuist gedefinieerde binding in uw code weer gegeven als een argument voor `main` de functie  *\_in\_ \_\_init. py*. U kunt bijvoorbeeld `msg` het  *\_ \_bestand\_init\_. py* in HttpExample aanpassen aan het volgende, dat laat zien hoe het argument wordt gebruikt voor het schrijven van een tijds tempel bericht met de naam die wordt gebruikt in de schot. De opmerkingen geven uitleg over de specifieke wijzigingen:

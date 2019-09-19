@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4c13c0b7601257c120c46ec341156a8e8bba332f
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: da9ab6eef98a602635e5e92dca3bd5628846ce62
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967792"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036336"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 
@@ -95,7 +95,7 @@ Als u wilt weten hoe u een Premium-bestands share maakt, raadpleegt u ons artike
 Op dit moment kunt u niet rechtstreeks converteren tussen een standaard bestands share en een Premium-bestands share. Als u wilt overschakelen naar een van beide lagen, moet u een nieuwe bestands share in die laag maken en de gegevens van de oorspronkelijke share hand matig kopiëren naar de nieuwe share die u hebt gemaakt. U kunt dit doen met behulp van een van de Azure Files ondersteunde Kopieer hulpprogramma's, zoals Robocopy of AzCopy.
 
 > [!IMPORTANT]
-> Premium-bestands shares zijn alleen beschikbaar met LRS en zijn beschikbaar in de meeste regio's die opslag accounts aanbieden. Zie de pagina [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=storage) voor Azure als u wilt weten of Premium-bestands shares op dit moment beschikbaar zijn in uw regio.
+> Premium-bestands shares zijn beschikbaar voor LRS in de meeste regio's die opslag accounts en ZRS in een kleinere subset van regio's aanbieden. Zie de pagina [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=storage) voor Azure als u wilt weten of Premium-bestands shares op dit moment beschikbaar zijn in uw regio. Zie [ondersteuning voor dekking en regionale Beschik baarheid](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability)als u wilt weten welke regio's ZRS ondersteunen.
 
 #### <a name="provisioned-shares"></a>Ingerichte shares
 
@@ -157,7 +157,7 @@ Nieuwe bestands shares beginnen met het volledige aantal tegoeden in de burst-Bu
 
 Azure Files standaard shares ondersteunt vier opties voor gegevens redundantie: lokaal redundante opslag (LRS), zone redundant Storage (ZRS), geografisch redundante opslag (GRS) en geo-zone-redundante opslag (GZRS) (preview).
 
-Azure Files Premium-shares ondersteunen alleen lokaal redundante opslag (LRS).
+Azure Files Premium-shares ondersteunen zowel LRS als ZRS. ZRS is momenteel beschikbaar in een kleinere subset van regio's.
 
 In de volgende secties worden de verschillen tussen de verschillende redundantie opties beschreven:
 

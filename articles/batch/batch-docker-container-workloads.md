@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 08/09/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: c8fc8e7d5888f9a0b080c0ca1d24e53068b543be
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c9e24924472e0bb8dbd0e529b739263469b631fb
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095178"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090742"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Container toepassingen uitvoeren op Azure Batch
 
@@ -89,7 +89,7 @@ Aanvullende overwegingen voor het gebruik van een aangepaste Linux-installatie k
 
 ## <a name="container-configuration-for-batch-pool"></a>Container configuratie voor batch-pool
 
-Als u een batch-pool wilt inschakelen om container werkbelastingen uit te voeren, moet u [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) -instellingen opgeven in het [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) -object van de groep. (In dit artikel vindt u koppelingen naar de naslag informatie voor batch .NET API. De bijbehorende instellingen bevinden zich in de [batch-python](/python/api/azure.batch) -API.)
+Als u een batch-pool wilt inschakelen om container werkbelastingen uit te voeren, moet u [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) -instellingen opgeven in het [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) -object van de groep. (In dit artikel vindt u koppelingen naar de naslag informatie voor batch .NET API. De bijbehorende instellingen bevinden zich in de [batch-python](/python/api/overview/azure/batch) -API.)
 
 U kunt een container groep maken met of zonder vooraf opgehaalde container installatie kopieën, zoals wordt weer gegeven in de volgende voor beelden. Met het pull-of prefetch-proces kunt u container installatie kopieën vooraf laden vanuit docker hub of een ander container register op internet. Gebruik voor de beste prestaties een [Azure container Registry](../container-registry/container-registry-intro.md) in dezelfde regio als het batch-account.
 

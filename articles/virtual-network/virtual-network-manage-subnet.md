@@ -1,7 +1,7 @@
 ---
-title: Toevoegen, wijzigen of verwijderen van een virtueel Azure-netwerksubnet
+title: Een subnet van een virtueel netwerk van Azure toevoegen, wijzigen of verwijderen
 titlesuffix: Azure Virtual Network
-description: Informatie over het toevoegen, wijzigen of verwijderen van het subnet van een virtueel netwerk in Azure.
+description: Meer informatie over het toevoegen, wijzigen of verwijderen van een subnet van een virtueel netwerk in Azure.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,102 +13,102 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
-ms.openlocfilehash: 8a8feb0f12fbf5eadcddf239ff2e13c058a566fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4af8c6dbbcbb877351018eb881f4d3b0b447bbce
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64693307"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098983"
 ---
-# <a name="add-change-or-delete-a-virtual-network-subnet"></a>Toevoegen, wijzigen of verwijderen van een subnet van een virtueel netwerk
+# <a name="add-change-or-delete-a-virtual-network-subnet"></a>Een subnet van een virtueel netwerk toevoegen, wijzigen of verwijderen
 
-Informatie over het toevoegen, wijzigen of verwijderen van een subnet van een virtueel netwerk. Alle Azure-resources geïmplementeerd in een virtueel netwerk worden geïmplementeerd in een subnet binnen een virtueel netwerk. Als u geen ervaring met virtuele netwerken, kunt u meer informatie over deze in de [overzicht van Virtual network](virtual-networks-overview.md) of door te voeren een [zelfstudie](quick-create-portal.md). Als u wilt maken, wijzigen, of verwijderen van een virtueel netwerk, Zie [beheren van een virtueel netwerk](manage-virtual-network.md).
+Meer informatie over het toevoegen, wijzigen of verwijderen van een subnet van een virtueel netwerk. Alle Azure-resources die zijn geïmplementeerd in een virtueel netwerk, worden geïmplementeerd in een subnet binnen een virtueel netwerk. Als u geen ervaring hebt met virtuele netwerken, kunt u meer informatie hierover vinden in het [overzicht van Virtual Network](virtual-networks-overview.md) of door een [zelf studie](quick-create-portal.md)te volt ooien. Als u een virtueel netwerk wilt maken, wijzigen of verwijderen, raadpleegt u [een virtueel netwerk beheren](manage-virtual-network.md).
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Voer de volgende taken voordat u de stappen in elke sectie van dit artikel:
+Voer de volgende taken uit voordat u de stappen in een van de secties van dit artikel uitvoert:
 
-- Als u nog een Azure-account hebt, kunt u zich aanmelden voor een [gratis proefaccount](https://azure.microsoft.com/free).
-- Als u de portal gebruikt, opent u https://portal.azure.com, en meld u aan met uw Azure-account.
-- Als u PowerShell-opdrachten gebruikt om taken in dit artikel te voltooien, hetzij de opdrachten uitvoert in de [Azure Cloud Shell](https://shell.azure.com/powershell), of door te voeren PowerShell vanaf uw computer. Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. In deze zelfstudie vereist de Azure PowerShell-moduleversie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
-- Als u Azure-opdrachtregelinterface (CLI)-opdrachten voor taken in dit artikel uit te voeren, hetzij de opdrachten uitvoert in de [Azure Cloud Shell](https://shell.azure.com/bash), of door het uitvoeren van de CLI van de computer. In deze zelfstudie gebruikmaken van Azure CLI versie 2.0.31 of hoger. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Als u de Azure CLI lokaal uitvoert, moet u ook om uit te voeren `az login` voor het maken van een verbinding met Azure.
+- Als u nog geen Azure-account hebt, kunt u zich aanmelden voor een [gratis proef account](https://azure.microsoft.com/free).
+- Als u de portal gebruikt, https://portal.azure.com opent u en meldt u zich aan met uw Azure-account.
+- Als u Power shell-opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/powershell)of Power shell uitvoeren vanaf uw computer. Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Voor deze zelf studie is de Azure PowerShell module versie 1.0.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+- Als u Azure-opdracht regel interface opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Voor deze zelf studie is de Azure CLI-versie 2.0.31 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Als u de Azure cli lokaal uitvoert, moet u ook uitvoeren `az login` om een verbinding te maken met Azure.
 
-Het account dat u zich aanmelden bij of verbinding maken met Azure, moet worden toegewezen aan de [Inzender voor netwerken](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rol of een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) die is toegewezen de nodige acties die worden vermeld in [machtigingen ](#permissions).
+Het account waarmee u zich aanmeldt of verbinding maakt met Azure met, moet worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de juiste acties zijn toegewezen die worden vermeld in [machtigingen](#permissions).
 
 ## <a name="add-a-subnet"></a>Een subnet toevoegen
 
-1. Voer in het zoekvak boven aan de portal, *virtuele netwerken* in het zoekvak in. Wanneer **virtuele netwerken** worden weergegeven in de lijst met zoekresultaten, selecteert u deze.
-2. Selecteer in de lijst met virtuele netwerken, het virtuele netwerk dat u wilt toevoegen van een subnet.
+1. Voer in het zoekvak boven aan de portal *virtuele netwerken* in het zoekvak in. Wanneer **virtuele netwerken** worden weer gegeven in de zoek resultaten, selecteert u deze.
+2. Selecteer in de lijst met virtuele netwerken het virtuele netwerk waaraan u een subnet wilt toevoegen.
 3. Selecteer onder **INSTELLINGEN** **Subnetten**.
-4. Selecteer **+ Subnet**.
-5. Voer waarden in voor de volgende parameters:
-   - **Naam**: De naam moet uniek zijn binnen het virtuele netwerk. Voor een maximale compatibiliteit met andere Azure-services, wordt u aangeraden een letter als het eerste teken van de naam. Azure Application Gateway wordt niet bijvoorbeeld implementeren in een subnet met een naam die met een getal begint.
-   - **Adresbereik**: Het bereik moet uniek zijn binnen de adresruimte voor het virtuele netwerk. Het bereik mogen niet overlappen met adresbereiken van andere subnet binnen het virtuele netwerk. De adresruimte moet worden opgegeven met behulp van notatie (Classless Inter-Domain Routing). U kunt bijvoorbeeld een subnet een adresruimte van 10.0.0.0/24 definiëren in een virtueel netwerk met de adresruimte 10.0.0.0/16. Het kleinste bereik dat u kunt opgeven is /29, waarmee u acht IP-adressen voor het subnet. Azure reserveert de eerste en laatste adres in elk subnet voor conformiteit van protocol. Drie extra adressen zijn gereserveerd voor gebruik met Azure-service. Als gevolg hiervan, het definiëren van een subnet met een/29 adres bereik resultaten in drie bruikbare IP-adressen in het subnet. Als u van plan bent een virtueel netwerk verbinden met een VPN-gateway, moet u een gatewaysubnet maken. Meer informatie over [specifiek adresbereik overwegingen voor het gateway-subnetten](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). U kunt het adresbereik wijzigen nadat het subnet is toegevoegd, klikt u onder bepaalde omstandigheden. Zie voor informatie over het wijzigen van het adresbereik van een subnet, [-subnet-instellingen wijzigen](#change-subnet-settings).
-   - **Netwerkbeveiligingsgroep**: U kunt nul of een bestaande netwerkbeveiligingsgroep aan een subnet voor het filteren van binnenkomend en uitgaand netwerkverkeer voor het subnet koppelen. De netwerkbeveiligingsgroep moet bestaan in hetzelfde abonnement en dezelfde locatie als het virtuele netwerk. Meer informatie over [netwerkbeveiligingsgroepen](security-overview.md) en [over het maken van een netwerkbeveiligingsgroep](tutorial-filter-network-traffic.md).
-   - **Routetabel**: U kunt geen of een bestaande routetabel aan een subnet voor het beheren van routering van netwerkverkeer met andere netwerken kunt koppelen. De routetabel moet bestaan in hetzelfde abonnement en dezelfde locatie als het virtuele netwerk. Meer informatie over [Azure routering](virtual-networks-udr-overview.md) en [een routetabel maken](tutorial-create-route-table-portal.md)
-   - **Service-eindpunten:** Een subnet kan nul of meerdere service-eindpunten ingeschakeld voor deze hebben. Als een service-eindpunt voor een service, schakelt u de service of -services die u wilt inschakelen, service-eindpunten voor uit de **Services** lijst. De locatie wordt automatisch geconfigureerd voor een eindpunt. Service-eindpunten zijn standaard geconfigureerd voor de regio van het virtuele netwerk. Voor Azure Storage, ter ondersteuning van regionale failover-scenario's, worden eindpunten automatisch geconfigureerd naar [gekoppelde Azure-regio's](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
-   - **Delegatie van subnet:** Een subnet kan nul op meerdere overdrachten zijn ingeschakeld voor deze hebben. Subnet delegering biedt expliciete machtigingen voor de service servicespecifieke om resources te maken in het subnet met behulp van een unieke id bij het implementeren van de service. Voor het overdragen van een service, selecteert u de service die u overdragen wilt aan van de **Services** lijst.
+4. Selecteer **+ subnet**.
+5. Voer waarden in voor de volgende para meters:
+   - **Naam**: De naam moet uniek zijn binnen het virtuele netwerk. Voor een maximale compatibiliteit met andere Azure-Services kunt u het beste een letter gebruiken als het eerste teken van de naam. Azure-toepassing gateway kan bijvoorbeeld niet worden geïmplementeerd in een subnet met een naam die begint met een getal.
+   - **Adresbereik**: Het bereik moet uniek zijn binnen de adres ruimte voor het virtuele netwerk. Het bereik mag niet overlappen met andere adresbereiken in het virtuele netwerk. De adres ruimte moet worden opgegeven met behulp van de CIDR-notatie (Classless Inter-Domain Routing). U kunt bijvoorbeeld in een virtueel netwerk met adres ruimte 10.0.0.0/16 een adres ruimte van het subnet van 10.0.0.0/24 definiëren. Het kleinste bereik dat u kunt opgeven, is/29, dat acht IP-adressen voor het subnet bevat. Azure reserveert het eerste en laatste adres in elk subnet voor protocol conformiteit. Er zijn drie extra adressen gereserveerd voor Azure-service gebruik. Als gevolg hiervan resulteert het definiëren van een subnet met een/29-adres bereik in drie bruikbare IP-adressen in het subnet. Als u van plan bent om een virtueel netwerk te verbinden met een VPN-gateway, moet u een gateway-subnet maken. Meer informatie over [specifieke aandachtspunten voor de adres bereik voor gateway-subnetten](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). U kunt het adres bereik wijzigen nadat het subnet is toegevoegd, onder specifieke voor waarden. Zie [subnet Settings wijzigen](#change-subnet-settings)voor meer informatie over het wijzigen van het adres bereik van een subnet.
+   - **Netwerk beveiligings groep**: U kunt nul of één bestaande netwerk beveiligings groep koppelen aan een subnet om binnenkomend en uitgaand netwerk verkeer voor het subnet te filteren. De netwerk beveiligings groep moet zich in hetzelfde abonnement en dezelfde locatie bevinden als het virtuele netwerk. Meer informatie over [netwerk beveiligings groepen](security-overview.md) en [het maken van een netwerk beveiligings groep](tutorial-filter-network-traffic.md).
+   - **Route tabel**: U kunt nul of één bestaande route tabel koppelen aan een subnet om de route ring van netwerk verkeer naar andere netwerken te beheren. De route tabel moet zich in hetzelfde abonnement en dezelfde locatie bevinden als het virtuele netwerk. Meer informatie over [Azure-route ring](virtual-networks-udr-overview.md) en [het maken van een route tabel](tutorial-create-route-table-portal.md)
+   - **Service-eind punten:** Er kunnen voor een subnet nul of meerdere service-eind punten worden ingeschakeld. Als u een service-eind punt voor een service wilt inschakelen, selecteert u de service of services waarvoor u service-eind punten in de lijst met **Services** wilt inschakelen. De locatie wordt automatisch voor een eind punt geconfigureerd. Standaard worden service-eind punten geconfigureerd voor de regio van het virtuele netwerk. Voor Azure Storage voor de ondersteuning van regionale failover-scenario's, worden eind punten automatisch geconfigureerd voor [gekoppelde Azure-regio's](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
+   - **Subnet-overdracht:** Er kunnen voor een subnet nul naar meerdere delegaties worden ingeschakeld. Subnet delegering geeft expliciete machtigingen voor de service om servicespecifieke bronnen in het subnet te maken met behulp van een unieke id bij het implementeren van de service. Als u een service wilt delegeren, selecteert u de service die u wilt delegeren in de lijst met **Services** .
 
-       Als u wilt verwijderen van een service-eindpunt, hef de selectie van de service die u wilt verwijderen van de service-eindpunt voor. Zie voor meer informatie over service-eindpunten en de services die kan worden ingeschakeld voor [overzicht van Virtual network service endpoints](virtual-network-service-endpoints-overview.md). Wanneer u een service-eindpunt voor een service hebt ingeschakeld, moet u ook toegang tot het netwerk voor het subnet voor een resource die zijn gemaakt met de service inschakelen. Bijvoorbeeld, als u de service-eindpunt voor inschakelen *Microsoft.Storage*, moet u ook toegang tot het netwerk aan alle Azure Storage-accounts die u wilt verlenen van toegang tot het netwerk inschakelen. Zie de documentatie voor de afzonderlijke service die u voor het service-eindpunt ingeschakeld voor meer informatie over het inschakelen op subnetten die een service-eindpunt is ingeschakeld voor toegang tot het netwerk.
+       Als u een service-eind punt wilt verwijderen, moet u de service waarvoor u het service-eind punt wilt verwijderen, uitschakelen. Zie [overzicht van virtuele netwerk service-eind punten](virtual-network-service-endpoints-overview.md)voor meer informatie over service-eind punten en de services waarvoor ze kunnen worden ingeschakeld. Zodra u een service-eind punt voor een service inschakelt, moet u ook netwerk toegang inschakelen voor het subnet voor een resource die is gemaakt met de service. Als u bijvoorbeeld het service-eind punt voor *micro soft. Storage*inschakelt, moet u ook netwerk toegang inschakelen voor alle Azure Storage accounts waaraan u netwerk toegang wilt verlenen. Voor meer informatie over het inschakelen van netwerk toegang tot subnetten waarvoor een service-eind punt is ingeschakeld, raadpleegt u de documentatie voor de afzonderlijke service waarvoor u het service-eind punt hebt ingeschakeld.
 
-     Om te valideren dat een service-eindpunt is ingeschakeld voor een subnet, geven de [effectieve routes](diagnose-network-routing-problem.md) voor een netwerkinterface in het subnet. Wanneer u een eindpunt is geconfigureerd, ziet u een *standaard* route met de adresvoorvoegsels van de service en een nextHopType van **VirtualNetworkServiceEndpoint**. Zie voor meer informatie over routering, [routeringoverzicht](virtual-networks-udr-overview.md).
-6. Het subnet toevoegen aan het virtuele netwerk dat u hebt geselecteerd, selecteert u **OK**.
+     Als u wilt controleren of een service-eind punt is ingeschakeld voor een subnet, bekijkt u de [efficiënte routes](diagnose-network-routing-problem.md) voor elke netwerk interface in het subnet. Wanneer een eind punt is geconfigureerd, ziet u een *standaard* route met de adres voorvoegsels van de service en een NextHopType van **VirtualNetworkServiceEndpoint**. Zie [route ring-overzicht](virtual-networks-udr-overview.md)voor meer informatie over route ring.
+6. Selecteer **OK**om het subnet toe te voegen aan het virtuele netwerk dat u hebt geselecteerd.
 
 **Opdrachten**
 
-- Azure CLI: [az network vnet subnet maken](/cli/azure/network/vnet/subnet)
+- Azure CLI: [AZ Network vnet subnet Create](/cli/azure/network/vnet/subnet)
 - PowerShell: [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)
 
 ## <a name="change-subnet-settings"></a>Subnet-instellingen wijzigen
 
-1. Voer in het zoekvak boven aan de portal, *virtuele netwerken* in het zoekvak in. Wanneer **virtuele netwerken** worden weergegeven in de lijst met zoekresultaten, selecteert u deze.
-2. Selecteer in de lijst met virtuele netwerken, het virtuele netwerk waarin het subnet dat u wilt wijzigen van instellingen voor.
+1. Voer in het zoekvak boven aan de portal *virtuele netwerken* in het zoekvak in. Wanneer **virtuele netwerken** worden weer gegeven in de zoek resultaten, selecteert u deze.
+2. Selecteer in de lijst met virtuele netwerken het virtuele netwerk dat het subnet bevat waarvan u de instellingen wilt wijzigen.
 3. Selecteer onder **INSTELLINGEN** **Subnetten**.
-4. Selecteer het subnet dat u wilt wijzigen van instellingen voor in de lijst met subnetten. U kunt de volgende instellingen wijzigen:
+4. Selecteer in de lijst met subnetten het subnet waarvoor u de instellingen wilt wijzigen. U kunt de volgende instellingen wijzigen:
 
-    - **Adresbereik:** Als er geen resources binnen het subnet worden geïmplementeerd, kunt u het adresbereik kunt wijzigen. Als alle resources in het subnet bestaat, moet u de resources verplaatsen naar een ander subnet of deze eerst verwijderen uit het subnet. De stappen die u moet een resource verwijderen of verplaatsen, is afhankelijk van de resource. Voor informatie over het verplaatsen of verwijderen van resources die zich in subnetten, Raadpleeg de documentatie voor elk resourcetype die u wilt verplaatsen of verwijderen. Zie de beperkingen voor **adresbereik** in stap 5 van [toevoegen van een subnet](#add-a-subnet).
-    - **Gebruikers**: U kunt toegang tot het subnet beheren met behulp van ingebouwde rollen of uw eigen aangepaste rollen. Zie voor meer informatie over het toewijzen van rollen en gebruikers toegang krijgen tot het subnet, [roltoewijzing gebruiken voor het beheren van toegang tot uw Azure-resources](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment).
-    - **Netwerkbeveiligingsgroep** en **routetabel**: Zie stap 5 van [toevoegen van een subnet](#add-a-subnet).
-    - **Service-eindpunten**: Service-eindpunten in stap 5 van Zie [toevoegen van een subnet](#add-a-subnet). Bij het inschakelen van een service-eindpunt voor een bestaand subnet, zorg ervoor dat er geen kritieke taken worden uitgevoerd voor de resources in het subnet. Service-eindpunten overschakelen routes op elke netwerkinterface in het subnet van het gebruik van de standaard-route met de *0.0.0.0/0* voorvoegsel en volgend hoptype van *Internet*, voor het gebruik van een nieuwe route met de adres van de voorvoegsels van de service en een volgend hoptype van *VirtualNetworkServiceEndpoint*. Tijdens de switch kunnen geopende TCP-verbindingen worden beëindigd. Het service-eindpunt is niet ingeschakeld totdat verkeersstromen tot de service voor alle netwerkinterfaces worden bijgewerkt met de nieuwe route. Zie voor meer informatie over routering, [routeringoverzicht](virtual-networks-udr-overview.md).
-    - **Delegatie van subnet:** Service-eindpunten in stap 5 van Zie [toevoegen van een subnet](#add-a-subnet). Subnet overdracht kan worden gewijzigd op nul of meerdere overdrachten zijn ingeschakeld voor deze. Als een resource voor een service is al geïmplementeerd in het subnet, kunnen subnet overdracht kan niet worden verwijderd totdat de alle bronnen voor de service zijn verwijderd. Als u wilt delegeren voor een andere service, selecteert u de service die u overdragen wilt aan van de **Services** lijst.
+    - **Adres bereik:** Als er geen resources binnen het subnet zijn geïmplementeerd, kunt u het adres bereik wijzigen. Als er resources in het subnet aanwezig zijn, moet u de resources naar een ander subnet verplaatsen of eerst verwijderen uit het subnet. De stappen die u moet nemen om een resource te verplaatsen of te verwijderen, variëren afhankelijk van de resource. Raadpleeg de documentatie voor elk resource type dat u wilt verplaatsen of verwijderen voor meer informatie over het verplaatsen of verwijderen van resources in subnetten. Zie de beperkingen voor het **adres bereik** in stap 5 van [een subnet toevoegen](#add-a-subnet).
+    - **Gebruikers**: U kunt de toegang tot het subnet beheren door gebruik te maken van ingebouwde rollen of uw eigen aangepaste rollen. Zie [roltoewijzing gebruiken om de toegang tot uw Azure-resources te beheren](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment)voor meer informatie over het toewijzen van rollen en gebruikers om toegang te krijgen tot het subnet.
+    - **Netwerk beveiligings groep** en **route tabel**: Zie stap 5 van [een subnet toevoegen](#add-a-subnet).
+    - **Service-eind punten**: Zie Service-eind punten in stap 5 van [een subnet toevoegen](#add-a-subnet). Wanneer u een service-eind punt voor een bestaand subnet inschakelt, moet u ervoor zorgen dat er geen kritieke taken worden uitgevoerd op een wille keurige bron in het subnet. Service-eind punten scha kelen tussen de routes op elke netwerk interface in het subnet van het gebruik van de standaard route met het adres voorvoegsel *0.0.0.0/0* en het type volgende hop van *Internet*, om een nieuwe route te gebruiken met de adres prefixen van de service en van het type van de volgende hop van *VirtualNetworkServiceEndpoint*. Tijdens de switch kunnen alle open TCP-verbindingen worden beëindigd. Het service-eind punt is niet ingeschakeld totdat verkeer naar de service voor alle netwerk interfaces wordt bijgewerkt met de nieuwe route. Zie [route ring-overzicht](virtual-networks-udr-overview.md)voor meer informatie over route ring.
+    - **Subnet-overdracht:** Zie Service-eind punten in stap 5 van [een subnet toevoegen](#add-a-subnet). Subnet delegering kan worden gewijzigd in nul of er zijn meerdere overdrachten ingeschakeld. Als een resource voor een service al in het subnet is geïmplementeerd, kan er geen subnet-overdracht worden toegevoegd of verwijderd totdat alle resources voor de service zijn verwijderd. Als u wilt delegeren voor een andere service, selecteert u de service die u wilt delegeren in de lijst met **Services** .
 5. Selecteer **Opslaan**.
 
 **Opdrachten**
 
-- Azure CLI: [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)
+- Azure CLI: [AZ Network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)
 - PowerShell: [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig)
 
 ## <a name="delete-a-subnet"></a>Een subnet verwijderen
 
-U kunt een subnet alleen verwijderen als er geen bronnen in het subnet zijn. Als er resources in het subnet zijn, moet u de resources die zich in het subnet voordat u het subnet kunt verwijderen. De stappen waarmee u een resource verwijderen, is afhankelijk van de resource. Voor informatie over resources verwijderen die zich in subnetten, Raadpleeg de documentatie voor elk resourcetype dat u wilt verwijderen.
+U kunt een subnet alleen verwijderen als er geen resources in het subnet aanwezig zijn. Als er resources in het subnet aanwezig zijn, moet u de resources in het subnet verwijderen voordat u het subnet kunt verwijderen. De stappen die u moet nemen om een resource te verwijderen, variëren afhankelijk van de resource. Raadpleeg de documentatie voor elk bron type dat u wilt verwijderen voor meer informatie over het verwijderen van bronnen in subnetten.
 
-1. Voer in het zoekvak boven aan de portal, *virtuele netwerken* in het zoekvak in. Wanneer **virtuele netwerken** worden weergegeven in de lijst met zoekresultaten, selecteert u deze.
-2. Selecteer in de lijst met virtuele netwerken, het virtuele netwerk waarin het subnet dat u wilt verwijderen.
+1. Voer in het zoekvak boven aan de portal *virtuele netwerken* in het zoekvak in. Wanneer **virtuele netwerken** worden weer gegeven in de zoek resultaten, selecteert u deze.
+2. Selecteer in de lijst met virtuele netwerken het virtuele netwerk dat het subnet bevat dat u wilt verwijderen.
 3. Selecteer onder **INSTELLINGEN** **Subnetten**.
-4. Selecteer in de lijst met subnetten, **...** , aan de rechterkant van het subnet u wilt verwijderen
-5. Selecteer **verwijderen**, en selecteer vervolgens **Ja**.
+4. Selecteer in de lijst met subnetten **...** , aan de rechter kant, voor het subnet dat u wilt verwijderen
+5. Selecteer **verwijderen**en selecteer vervolgens **Ja**.
 
 **Opdrachten**
 
-- Azure CLI: [az network vnet verwijderen](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-delete)
+- Azure CLI: [AZ Network vnet delete](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-delete)
 - PowerShell: [Remove-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/remove-azvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ## <a name="permissions"></a>Machtigingen
 
-Om uit te voeren taken op subnetten, moet uw account worden toegewezen aan de [Inzender voor netwerken](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rol of een [aangepaste](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rol die is toegewezen de nodige acties die worden vermeld in de volgende tabel:
+Voor het uitvoeren van taken op subnetten moet uw account worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rol waaraan de juiste acties in de volgende tabel zijn toegewezen:
 
-|Bewerking                                                                   |   Name                                       |
+|Action                                                                   |   Name                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
-|Microsoft.Network/virtualNetworks/subnets/read                           |   Een virtueel netwerksubnet lezen              |
-|Microsoft.Network/virtualNetworks/subnets/write                          |   Maken of bijwerken van een subnet van een virtueel netwerk  |
+|Microsoft.Network/virtualNetworks/subnets/read                           |   Een subnet van een virtueel netwerk lezen              |
+|Microsoft.Network/virtualNetworks/subnets/write                          |   Een subnet van een virtueel netwerk maken of bijwerken  |
 |Microsoft.Network/virtualNetworks/subnets/delete                         |   Subnet van een virtueel netwerk verwijderen            |
-|Microsoft.Network/virtualNetworks/subnets/join/action                    |   Deelnemen aan een virtueel netwerk                     |
-|Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action  |   Een service-eindpunt voor een subnet inschakelen     |
-|Microsoft.Network/virtualNetworks/subnets/virtualMachines/read           |   Ophalen van de virtuele machines in een subnet       |
+|Microsoft.Network/virtualNetworks/subnets/join/action                    |   Lid worden van een virtueel netwerk                     |
+|Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action  |   Een service-eind punt inschakelen voor een subnet     |
+|Microsoft.Network/virtualNetworks/subnets/virtualMachines/read           |   De virtuele machines in een subnet ophalen       |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Maak een virtueel netwerk en subnetten met [PowerShell](powershell-samples.md) of [Azure CLI](cli-samples.md) voorbeeld scripts of met behulp van Azure [Resource Manager-sjablonen](template-samples.md)
-- Maken en toepassen [Azure policy](policy-samples.md) voor virtuele netwerken
+- Een virtueel netwerk en subnetten maken met behulp van [Power shell](powershell-samples.md) of [Azure cli](cli-samples.md) -voorbeeld scripts of met behulp van Azure [Resource Manager-sjablonen](template-samples.md)
+- [Azure-beleid](policy-samples.md) maken en Toep assen voor virtuele netwerken

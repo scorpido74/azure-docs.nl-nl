@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5d618f12b2a83b0aee145470aff900e26241b705
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 80a38767121f5c54afe51a7d4d788716fe9547e2
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147270"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091364"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Uitgebreide offline mogelijkheden voor IoT Edge apparaten, modules en onderliggende apparaten begrijpen
 
@@ -110,7 +110,7 @@ Een manier om deze vertrouwens relatie te maken, wordt gedetailleerd beschreven 
 
 ## <a name="specify-dns-servers"></a>DNS-servers opgeven 
 
-Ter verbetering van de robuustheid wordt u ten zeerste aangeraden de DNS-server adressen op te geven die in uw omgeving worden gebruikt. Zie twee opties voor [het instellen van de DNS-server in het artikel over probleem oplossing](troubleshoot.md#resolution-7).
+Ter verbetering van de robuustheid wordt u ten zeerste aangeraden de DNS-server adressen op te geven die in uw omgeving worden gebruikt. Als u uw DNS-server voor IoT Edge wilt instellen, raadpleegt u de oplossing voor de [module Edge agent doorlopend het ' lege configuratie bestand ' en worden er geen modules gestart op het apparaat](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device) in het artikel over probleem oplossing.
 
 ## <a name="optional-offline-settings"></a>Optionele offline-instellingen
 
@@ -191,7 +191,7 @@ U kunt de lokale opslag ook rechtstreeks in het implementatie manifest configure
 
 Vervang `<HostStoragePath>` en`<ModuleStoragePath>` door de opslag locatie van uw host en module; beide waarden moeten een absoluut pad zijn. 
 
-Bijvoorbeeld `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` : de Directory- **/etc/iotedge/Storage** op uw hostsysteem wordt toegewezen aan de Directory **/iotedge/Storage/** op de container. Of een ander voor beeld voor Windows `"Binds":["C:\\temp:C:\\contemp"]` -systemen: de map **c:\\Temp** op uw hostsysteem wordt toegewezen aan de Directory **\\c: pretemp** op de container. 
+Bijvoorbeeld `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` : de Directory- **/etc/iotedge/Storage** op uw hostsysteem wordt toegewezen aan de Directory **/iotedge/Storage/** op de container. Of een ander voor beeld voor Windows `"Binds":["C:\\temp:C:\\contemp"]` -systemen: de map **c\\: Temp** op uw hostsysteem wordt toegewezen aan de Directory **c\\: pretemp** op de container. 
 
 Controleer op Linux-apparaten of het gebruikers profiel van de IoT Edge hub, UID 1000, lees-, schrijf-en uitvoer machtigingen heeft voor de map van het hostsysteem. Deze machtigingen zijn nodig zodat de IoT Edge hub berichten in de map kan opslaan en later kan ophalen. (De IoT Edge-agent fungeert als root, dus heeft geen aanvullende machtigingen nodig.) Er zijn verschillende manieren om mapmachtigingen te beheren op Linux-systemen, met `chown` inbegrip van het wijzigen van de `chmod` Directory-eigenaar en vervolgens voor het wijzigen van de machtigingen. Bijvoorbeeld:
 
@@ -207,5 +207,5 @@ Meer informatie over de opties voor het maken van [docker-documenten](https://do
 Meer informatie over het instellen van een transparante gateway voor de verbindingen van een bovenliggend/onderliggend apparaat: 
 
 * [Een IoT Edge-apparaat om te fungeren als een transparante gateway configureren](how-to-create-transparent-gateway.md)
-* [Een downstream-apparaat verifiëren bij Azure IoT Hub](how-to-authenticate-downstream-device.md)
-* [Een downstream-apparaat verbinden met een Azure IoT Edge gateway](how-to-connect-downstream-device.md)
+* [Een downstreamapparaat verifiëren voor Azure IoT Hub](how-to-authenticate-downstream-device.md)
+* [Een downstreamapparaat verbinden met een Azure IoT Edge-gateway](how-to-connect-downstream-device.md)

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: raynew
-ms.openlocfilehash: 75a8207cd214a63258ddb167b887fe83b7aa032a
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 784bf15a58e25ba4cba18494adc295343d0c175a
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008829"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098894"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 
@@ -132,7 +132,7 @@ Blok-blobs | Nee | Nee
 Versleuteling op rest (SSE)| Ja | Ja
 Premium Storage | Ja | Ja
 Import/export-service | Nee | Nee
-Azure Storage-accounts waarvoor Firewall is ingeschakeld | Nee  | Ja. Voor doel opslag en cache.
+Azure Storage-accounts waarvoor Firewall is ingeschakeld | Ja. Voor doel opslag en cache. | Ja. Voor doel opslag en cache.
 Opslag account wijzigen | Nee. Het Azure Storage-doel account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Schakel herstel na nood gevallen uit en vervolgens opnieuw in. | Nee
 
 

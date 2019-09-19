@@ -2,18 +2,18 @@
 title: Een HDInsight-cluster verwijderen-Azure
 description: Informatie over de verschillende manieren waarop u een Azure HDInsight-cluster kunt verwijderen
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/17/2019
-ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 08bfdcab0b7fbb8e533cb8d2d6a74d315ad4074c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a28d59cb35004fac6b069f2aa41042b4d46e443f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885227"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091523"
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>Een HDInsight-cluster verwijderen met behulp van uw browser, Power shell of de Azure CLI
 
@@ -29,8 +29,8 @@ De facturering voor het gebruik van HDInsight-clusters begint zodra er een clust
 2. Ga in het menu links naar **alle services** > **Analytics** > **HDInsight-clusters** en selecteer uw cluster.
 
 3. Selecteer in de standaard weergave het pictogram **verwijderen** . Volg de prompt om uw cluster te verwijderen.
-   
-    ![pictogram verwijderen](./media/hdinsight-delete-cluster/hdinsight-delete-cluster.png)
+
+    ![De knop voor HDInsight verwijderen van het cluster](./media/hdinsight-delete-cluster/hdinsight-delete-cluster.png)
 
 ## <a name="azure-powershell-az-module"></a>Azure PowerShell AZ-module
 

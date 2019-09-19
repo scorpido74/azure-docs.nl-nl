@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: 948cdb2ab1af3fe93566497186c025f7f8f39b2e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f0bcf12a43a4732b371dd2d64c0b174a0087bea9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877080"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098944"
 ---
 # <a name="understand-iot-hub-metrics"></a>IoT Hub metrische gegevens begrijpen
 
@@ -81,7 +81,7 @@ IoT Hub biedt diverse metrische gegevens om u een overzicht te geven van de stat
 |c2d<br>. methoden<br>. fout|Mislukte directe aanroepen van methode|Count|Totaal|Het aantal mislukte direct-methode aanroepen.|Er zijn geen dimensies|
 |c2d<br>. methoden<br>.requestSize|Aanvraag grootte van directe-methode aanroepen|Bytes|Average|Het gemiddelde, het minimum en het maximum van alle geslaagde direct-methode aanvragen.|Er zijn geen dimensies|
 |c2d<br>. methoden<br>.responseSize|Antwoord grootte van directe methode aanroepen|Bytes|Average|Het gemiddelde, het minimum en het maximum van alle geslaagde reacties van de methode direct.|Er zijn geen dimensies|
-|c2d<br>. dubbele<br>. Lees<br>.success|Geslaagde dubbele Lees bewerkingen van back-end|Count|Totaal|Het aantal geslaagde back-end-geïnitieerde dubbele Lees bewerkingen.|Er zijn geen dimensies|
+|c2d<br>. dubbele<br>. Lees<br>.success|Geslaagde dubbele Lees bewerkingen van back-end|Count|Totaal|Het aantal geslaagde back-end-geïnitieerde dubbele Lees bewerkingen. Dit aantal bevat geen dubbele Lees bewerkingen die worden geïnitieerd vanuit dubbele query's.|Er zijn geen dimensies|
 |c2d<br>. dubbele<br>. Lees<br>. fout|Mislukte dubbele Lees bewerkingen van back-end|Count|Totaal|Het aantal mislukte back-end-geïnitieerde dubbele Lees bewerkingen.|Er zijn geen dimensies|
 |c2d<br>. dubbele<br>. Lees<br>. grootte|Reactie grootte van dubbele Lees bewerkingen van de back-end|Bytes|Average|Het gemiddelde, het minimum en het maximum van alle geslaagde back-end-geïnitieerde dubbele Lees bewerkingen.|Er zijn geen dimensies|
 |c2d<br>. dubbele<br>.update<br>.success|Geslaagde dubbele updates van back-end|Count|Totaal|Het aantal geslaagde, door de back-end gestarte dubbele updates.|Er zijn geen dimensies|

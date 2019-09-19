@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: f8b9876680899a5d8e87f8a49a0b4ed6c113fb45
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2422a4525c94f3997dd0a9a0859135e9acf59ffa
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001855"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092010"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Zelfstudie: Uw eerste classificatie model maken met geautomatiseerde machine learning
 
@@ -67,7 +67,7 @@ Het scherm **aan** de slag wordt weer gegeven, omdat dit uw eerste experiment me
 
 1. Voer **My-1ste-automl-experimenten** in als experiment naam.
 
-1. Selecteer **een nieuwe Compute maken**. 
+1. Selecteer **een nieuwe Compute maken**. Een compute is een lokale of Cloud resource omgeving die wordt gebruikt om uw trainings script uit te voeren of uw service-implementatie te hosten. Voor dit experiment gebruiken we een op de cloud gebaseerde compute. 
 
     1. Configureer uw berekenings context voor dit experiment.
         
@@ -147,9 +147,9 @@ Wanneer het experiment wordt uitgevoerd, werkt het scherm het **iteratie diagram
 
 ## <a name="deploy-the-model"></a>Het model implementeren
 
-Met behulp van automatische machine learning op de landings pagina voor de werk ruimte, kunt u het beste model implementeren als een webservice om te voors pellen op nieuwe gegevens en mogelijke mogelijkheden voor verkoop kansen te identificeren. Voor dit experiment houdt dit in dat de financiële instelling nu een herhaalde en schaal bare oplossing heeft voor het identificeren van potentiële klanten met vaste termijn storting.
+Met behulp van automatische machine learning op de landings pagina voor de werk ruimte, kunt u in een paar stappen het beste model als een webservice implementeren. Implementatie is de integratie van het model, zodat dit kan voors pellen op nieuwe gegevens en mogelijke verkoop kansen kan identificeren. Voor dit experiment betekent de implementatie van een webservice dat de financiële instelling nu een iteratieve en schaal bare weboplossing heeft voor het identificeren van potentiële klanten met vaste termijn storting. 
 
-In dit experiment wordt **VotingEnsemble** beschouwd als het beste model, op basis van de **AUC_weighted** -metriek.  We implementeren dit model, maar u wordt aangeraden de implementatie ongeveer 20 minuten te volt ooien.
+In dit experiment wordt **VotingEnsemble** beschouwd als het beste model, op basis van de **AUC_weighted** -metriek.  We implementeren dit model, maar u wordt aangeraden de implementatie ongeveer 20 minuten te volt ooien. Het implementatie proces omvat verschillende stappen, waaronder het registreren van het model, het genereren van resources en het configureren van deze voor de webservice.
 
 1. Selecteer op de pagina **detail gegevens uitvoeren** de knop **beste model implementeren** in de rechter bovenhoek.
 
@@ -162,7 +162,7 @@ In dit experiment wordt **VotingEnsemble** beschouwd als het beste model, op bas
     Score script| Automatisch genereren
     Omgevings script| Automatisch genereren
     
-1. Selecteer **Implementeren**.
+1. Selecteer **Implementeren**.  
 
     Het bericht implementatie voltooid wordt weer gegeven wanneer de implementatie is voltooid.
     

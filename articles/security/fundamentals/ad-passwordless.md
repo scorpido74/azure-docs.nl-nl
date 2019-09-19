@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: e702a5921e785100c5971057d1652db9aab26acf
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: d1c69cd1cf9990fc77a24e18d87690210453cf75
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899957"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091956"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Een wereld zonder wacht woorden met Azure Active Directory
 
@@ -107,7 +107,7 @@ Zie [Windows hello voor bedrijven en verificatie](https://docs.microsoft.com/win
 
 #### <a name="user-manages-their-windows-hello-for-business-credentials"></a>Gebruikers beheren hun Windows hello voor bedrijven-referenties
 
-De [micro soft PIN reset Services](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-features#pin-reset) is een functie in azure AD waarmee gebruikers hun pincode zo nodig opnieuw kunnen instellen. Met groeps beleid, Microsoft Intune of een compatibel MDM, kan een beheerder Windows 10-apparaten zo configureren dat ze de micro soft PIN reset-service veilig gebruiken waarmee gebruikers hun verg eten pincode opnieuw kunnen instellen via instellingen of boven het vergrendelings scherm, zonder dat ze hoeven te vereisen opnieuw te registreren.
+De [micro soft PIN reset Services](/windows/security/identity-protection/hello-for-business/hello-feature-pin-reset) is een functie in azure AD waarmee gebruikers hun pincode zo nodig opnieuw kunnen instellen. Met groeps beleid, Microsoft Intune of een compatibel MDM, kan een beheerder Windows 10-apparaten zo configureren dat ze de micro soft PIN reset-service veilig gebruiken waarmee gebruikers hun verg eten pincode opnieuw kunnen instellen via instellingen of boven het vergrendelings scherm, zonder dat ze hoeven te vereisen opnieuw te registreren.
 
 Soms moeten gebruikers terugvallen op het gebruik van wacht woorden. [Self-service voor wacht woord opnieuw instellen](../../active-directory/authentication/howto-sspr-deployment.md) (SSPR) is een andere Azure AD-functie waarmee gebruikers hun wacht woord opnieuw kunnen instellen zonder contact op te nemen met IT-mede werkers. Gebruikers moeten zich registreren voor de selfservice voor het opnieuw instellen van het wacht woord voordat ze de service kunnen gebruiken. Tijdens de registratie kiest de gebruiker een of meer authenticatie methoden die worden ingeschakeld door hun organisatie. SSPR stelt gebruikers in staat om snel een gedeblokkeerd te krijgen en te blijven werken, ongeacht waar ze zijn of op het tijdstip van de dag. Door gebruikers toe te staan zichzelf te deblokkeren, kan uw organisatie de niet-productieve tijd en hoge ondersteunings kosten voor de meest voorkomende problemen met betrekking tot het wacht woord beperken.
 
@@ -123,7 +123,7 @@ Met de Microsoft Authenticator-app kunnen gebruikers hun identiteit verifiëren 
 
 Vereisten voor het gebruik van de Microsoft Authenticator-app voor het uitvoeren van wacht woordloze aanmelding bij Azure AD bevatten het volgende:
 
-* Eind gebruikers zijn ingeschakeld voor Azure Multi-Factor Authentication
+* Eind gebruikers zijn ingeschakeld voor Azure multi-factor Authentication
 
 * Gebruikers worden aanbevolen hun apparaten te registreren met behulp van Microsoft Intune of Mobile Device Management een MDM-oplossing van derden om de implementatie van de app te vereenvoudigen
 
@@ -190,7 +190,7 @@ Met [gecombineerde registratie](../../active-directory/authentication/concept-re
 
 FIDO2 is de nieuwste versie van FIDO Alliance Standard en heeft twee onderdelen: W3C's Web authentication (webauth) en de bijbehorende FIDO Alliance client-to-Authenticator-Protocol (CTAP2). Met de FIDO2-standaarden kunnen gebruikers gebruikmaken van hardware-, mobiele en biogebaseerde verificators om eenvoudig te kunnen verifiëren met veel apps en websites in mobiele en desktop omgevingen.
 
-Micro soft en partners van de branche werken samen met FIDO2-beveiligings apparaten voor Windows hello om eenvoudige en veilige verificatie mogelijk te maken op gedeelde apparaten. Met FIDO2-beveiligings sleutels kunt u uw referenties met u meenemen en veilig verifiëren [](https://aka.ms/azuread418)bij een Windows 10-apparaat dat deel uitmaakt van uw organisatie.
+Micro soft en partners van de branche werken samen met FIDO2-beveiligings apparaten voor Windows hello om eenvoudige en veilige verificatie mogelijk te maken op gedeelde apparaten. Met FIDO2-beveiligings sleutels kunt u uw referenties met u meenemen en veilig verifiëren [bij een Windows](https://aka.ms/azuread418)10-apparaat dat deel uitmaakt van uw organisatie.
 
 Webauthx definieert een API die de ontwikkeling en implementatie van sterke, wacht woordloze authenticatie door Web-apps en services mogelijk maakt. Het CTAP-protocol maakt het mogelijk dat externe apparaten zoals FIDO-compatibele beveiligings sleutels met webauthn werken en als verificator fungeren. Met webverificatie kunnen gebruikers zich aanmelden bij onlineservices met hun gezicht, vinger afdruk, pincode of draag bare FIDO2 beveiligings sleutels, waarbij gebruik wordt gemaakt van krachtige open bare-sleutel referenties in plaats van wacht woorden. Momenteel wordt webauthn ondersteund in micro soft Edge en ondersteuning voor Chrome en Firefox is in ontwikkeling.
 

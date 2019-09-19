@@ -6,43 +6,28 @@ author: mlearned
 manager: gwallace
 ms.service: container-service
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/17/2018
 ms.author: mlearned
-ms.openlocfilehash: 3c11367945b74db9be20ade86c7bc26901440e4d
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: ab744efd205d826cb7ae2c3eda7bba28f4a9bee0
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305153"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097810"
 ---
-# <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Voor beeld: verifiëren met Azure Container Registry van de Azure Kubernetes-service
+# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Verifiëren met Azure Container Registry van de Azure Kubernetes-service
 
 Wanneer u Azure Container Registry (ACR) met Azure Kubernetes service (AKS) gebruikt, moet er een verificatie mechanisme tot stand worden gebracht. In dit artikel vindt u meer informatie over de aanbevolen configuraties voor verificatie tussen deze twee Azure-Services.
 
 U kunt de AKS instellen op ACR-integratie in enkele eenvoudige opdrachten met de Azure CLI.
-
-> [!IMPORTANT]
-> De preview-functies van AKS zijn self-service opt-in. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door klant ondersteuning, op basis van de beste inspanningen. Daarom zijn deze functies niet bedoeld voor productie gebruik. Raadpleeg de volgende artikelen met technische ondersteuning voor meer informatie.
->
-> * [AKS-ondersteunings beleid](support-policies.md)
-> * [Veelgestelde vragen over ondersteuning voor Azure](faq.md)
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 U moet het volgende hebben:
 
 * De rol van **eigenaar** of **Azure-account beheerder** voor het **Azure-abonnement**
-* U hebt ook de Azure CLI-versie 2.0.70 of hoger nodig en de AKS-Preview 0.4.8-extensie
+* U hebt ook de Azure CLI-versie 2.0.73 of hoger nodig
 * [Docker](https://docs.docker.com/install/) moet zijn geïnstalleerd op de client en u moet toegang hebben tot [docker hub](https://hub.docker.com/)
-
-## <a name="install-latest-aks-cli-preview-extension"></a>De meest recente AKS CLI-preview-extensie installeren
-
-U hebt de **AKS-Preview 0.4.13-** uitbrei ding of hoger nodig.
-
-```azurecli
-az extension remove --name aks-preview 
-az extension add -y --name aks-preview
-```
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Een nieuw AKS-cluster maken met ACR-integratie
 
@@ -52,7 +37,7 @@ az login
 az acr create -n myContainerRegistry -g myContainerRegistryResourceGroup --sku basic [in case you do not have an existing ACR]
 az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resource-id>
 ```
-\* * Een ACR-resource-id heeft de volgende indeling: 
+**Een ACR-Resource-ID heeft de volgende indeling:** 
 
 /Subscriptions/<-abonnement: d >/resourceGroups/< Resource-Group-name >/providers/Microsoft.ContainerRegistry/registries/{name} 
   
