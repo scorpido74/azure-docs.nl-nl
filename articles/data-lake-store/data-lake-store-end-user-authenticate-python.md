@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 71ca7bec7f69007fd0290211fac308eb5f3983a7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 6a7e1b36e01094ea8ce65a785de0aad9494f4dbb
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139057"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088882"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Verificatie door eind gebruikers met Azure Data Lake Storage Gen1 met behulp van python
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ In dit artikel leert u hoe u de python-SDK kunt gebruiken om verificatie door ei
 * Verificatie door eind gebruikers zonder multi-factor Authentication
 * Verificatie door eind gebruikers met multi-factor Authentication
 
-Beide opties worden in dit artikel besproken. Zie [service-to-service-verificatie met data Lake Storage gen1](data-lake-store-service-to-service-authenticate-python.md)met behulp van python voor service-naar-service verificatie met data Lake Storage gen1 met python.
+Beide opties worden in dit artikel besproken. Zie [service-to-service-verificatie met data Lake Storage gen1 met behulp van python](data-lake-store-service-to-service-authenticate-python.md)voor service-naar-service verificatie met data Lake Storage gen1 met python.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -47,7 +47,7 @@ Beide opties worden in dit artikel besproken. Zie [service-to-service-verificati
 Als u wilt werken met Data Lake Storage Gen1 met behulp van python, moet u drie modules installeren.
 
 * Module `azure-mgmt-resource`, die Azure-modules bevat voor Active Directory enzovoort.
-* De `azure-mgmt-datalake-store` module, die de Azure data Lake Storage gen1 account beheer bewerkingen bevat. Zie voor meer informatie over deze module, de [referentie voor Azure data Lake Storage gen1 management module](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
+* De `azure-mgmt-datalake-store` module, die de Azure data Lake Storage gen1 account beheer bewerkingen bevat. Zie voor meer informatie over deze module, de [referentie voor Azure data Lake Storage gen1 management module](/python/api/azure-mgmt-datalake-store/).
 * De `azure-datalake-store` module, die de Azure data Lake Storage gen1 bestandssysteem bewerkingen bevat. Zie voor meer informatie over deze module [Azure-datalake-Store module Reference](https://azure-datalake-store.readthedocs.io/en/latest/).
 
 Gebruik de volgende opdrachten om de modules te installeren.

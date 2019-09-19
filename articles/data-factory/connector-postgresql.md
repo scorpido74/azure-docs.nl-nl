@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: a2e1017192d57031c7b6f439a5cee46f3135415c
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 178a551c830ada37d387d8788ad1d9d6eafe1f04
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008812"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71089766"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Gegevens kopiëren van PostgreSQL met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -30,7 +30,7 @@ In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factor
 
 Deze PostgreSQL-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit de PostgreSQL-data base kopiëren naar elk ondersteund Sink-gegevens archief. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
@@ -55,7 +55,7 @@ De volgende eigenschappen worden ondersteund voor PostgreSQL gekoppelde service:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type moet worden ingesteld op: **PostgreSql** | Ja |
+| type | De eigenschap type moet worden ingesteld op: **PostgreSql** | Ja |
 | connectionString | Een ODBC-verbindingsreeks verbinding maakt met Azure Database voor PostgreSQL. <br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. U kunt ook wacht woord in azure Key Vault plaatsen en de `password` configuratie uit de Connection String halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja |
 | connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
 
@@ -150,7 +150,7 @@ De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens uit
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **PostgreSqlTable** | Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **PostgreSqlTable** | Ja |
 | Schema | De naam van het schema. |Nee (als 'query' in de activiteitbron is opgegeven)  |
 | table | Naam van de tabel. |Nee (als 'query' in de activiteitbron is opgegeven)  |
 | tableName | De naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en`table` voor nieuwe werk belasting. | Nee (als 'query' in de activiteitbron is opgegeven) |
@@ -185,7 +185,7 @@ Als u gegevens wilt kopiëren uit PostgreSQL, worden de volgende eigenschappen o
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **PostgreSqlSource** | Ja |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **PostgreSqlSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
 
 > [!NOTE]

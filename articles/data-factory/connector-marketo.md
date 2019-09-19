@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 47ba7277cd9e95fd81456a6500e3277e942a4028
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: fbe299088a7a2edb5319d217defb7c7c00ecfa22
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71007822"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090048"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Gegevens kopiëren van Marketo met Azure Data Factory (Preview)
 
@@ -30,7 +30,7 @@ In dit artikel bevat een overzicht over het gebruik van de Kopieeractiviteit in 
 
 Deze Marketo-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit Marketo kopiëren naar een ondersteunde sink-gegevensopslag. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
@@ -52,7 +52,7 @@ De volgende eigenschappen worden ondersteund voor Marketo gekoppelde service:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type moet worden ingesteld op: **Marketo** | Ja |
+| type | De eigenschap type moet worden ingesteld op: **Marketo** | Ja |
 | endpoint | Het eindpunt van de Marketo-server. (dat wil zeggen 123-ABC-321.mktorest.com)  | Ja |
 | clientId | De client-Id van uw Marketo-service.  | Ja |
 | clientSecret | Het clientgeheim van uw Marketo-service. Dit veld markeren als een SecureString Bewaar deze zorgvuldig in Data Factory, of [verwijzen naar een geheim opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
@@ -87,7 +87,7 @@ Als u wilt kopiëren van gegevens uit Marketo, stel de eigenschap type van de ge
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **MarketoObject** | Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **MarketoObject** | Ja |
 | tableName | Naam van de tabel. | Nee (als 'query' in de activiteitbron is opgegeven) |
 
 **Voorbeeld**
@@ -117,7 +117,7 @@ Als u wilt kopiëren van gegevens uit Marketo, stelt u het brontype in de kopiee
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **MarketoSource** | Ja |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **MarketoSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM Activitiy_Types"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**

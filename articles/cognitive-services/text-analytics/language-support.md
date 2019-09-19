@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: e14cb56db6e45fe86ecd5e73766c47d29dd23fa1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: efac8755be8435ae7929fdcb2ecedb4959c363b9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984232"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097146"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Ondersteuning van talen en regio's voor de Text Analytics-API
 
@@ -48,16 +48,17 @@ Taal ondersteuning wordt in eerste instantie in de preview-fase geïmplementeerd
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | Arabisch      | `ar`          |           |             | ✔ \*                     | |
 | Tsjechisch       | `cs`          |           |             | ✔ \*                     | |
-| Chinees-vereenvoudigd | `zh-CN`| ✔ \***     |             | ✔         |    |
+| Chinees-vereenvoudigd | `zh-hans`| ✔ \***     |             | ✔         |    |
+| Chinees-traditioneel | `zh-hant`| ✔ \***     |             | ✔         |    |
 | Deens      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
 | Nederlands       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
-| Engels     | `en`          | ✔        | ✔           |  ✔ \*\*     |      |
+| Engels     | `en`          | ✔ \***       | ✔           |  ✔ \*\*     |      |
 | Fins     | `fi`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| Frans      | `fr`          | ✔        | ✔           |  ✔            |     |
+| Frans      | `fr`          | ✔ \***       | ✔           |  ✔            |     |
 | Duits      | `de`          | ✔ \*     | ✔           |  ✔           |     |
 | Grieks       | `el`          | ✔ \*     |             |            |     |
 | Hongaars   | `hu`          |           |             |  ✔ \*          |     | 
-| Italiaans     | `it`          | ✔ \*     | ✔           |  ✔ \*           |     |
+| Italiaans     | `it`          | ✔ \***     | ✔           |  ✔ \*           |     |
 | Japans    | `ja`          | ✔ \***         | ✔           |  ✔ \*          |     |
 | Koreaans      | `ko`          |          | ✔           |  ✔ \*          |     |
 | Noors (Bokmål) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |

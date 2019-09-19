@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: ce1d0542530c4f190ace52d45e2369d6ecc18772
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1fd4e9156e29133b1db4fe9ab9a0825eb1aa3b55
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384084"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097582"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Problemen met back-endservers oplossen in Application Gateway
 ==================================================
@@ -81,10 +81,10 @@ Zodra u de status van de back-endserver als beschadigd hebt weer gegeven voor al
 Het bericht dat wordt weer gegeven in de kolom Details van het tabblad back-end bevat meer gedetailleerde informatie over het probleem en op basis hiervan, kunnen we beginnen met het oplossen van het probleem.
 
 > [!NOTE]
-> De standaard test aanvraag wordt verzonden met de indeling <protocol>://127.0.0.1:<port> <http://127.0.0.1/> /, bijvoorbeeld voor een http-test op poort 80 en beschouwt alleen een reactie van HTTP-status codes 200-399 als in orde als antwoord. Het protocol en de doel poort worden overgenomen van HTTP-instellingen. Als u wilt dat Application Gateway op een ander protocol, hostnaam of pad moet testen en een andere status code als in orde kunt accepteren, configureert u een aangepaste test en koppelt u deze aan de HTTP-instellingen.
+> De standaard test aanvraag wordt verzonden in de indeling van \<protocol\>://127.0.0.1:\<poort\>/, bijvoorbeeld <http://127.0.0.1/> voor een http-test op poort 80 en beschouwt alleen een reactie van HTTP-status codes 200-399 als antwoord in orde. Het protocol en de doel poort worden overgenomen van HTTP-instellingen. Als u wilt dat Application Gateway op een ander protocol, hostnaam of pad moet testen en een andere status code als in orde kunt accepteren, configureert u een aangepaste test en koppelt u deze aan de HTTP-instellingen.
 
-### <a name="error-messages"></a>Foutberichten
-
+<a name="error-messages"></a>Foutberichten
+------------------------
 #### <a name="backend-server-timeout"></a>Time-out van back-endserver
 
 **Bericht:** De tijd die de back-end heeft genomen om\'te reageren op de status test van de toepassings gateway, is hoger dan de drempel waarde voor de time-out in de test instelling.

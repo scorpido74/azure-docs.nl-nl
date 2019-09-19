@@ -1,6 +1,6 @@
 ---
 title: De Automated ML-interface van Azure gebruiken voor het trainen & implementeren van modellen
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Automatische machine learning experimenten maken, beheren en implementeren op de landings pagina van Azure Machine Learning werk ruimte (preview).
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 3ee15b5485f4fc0f81788107ce2378c65085e000
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 3a47977f2589227347582dc6fcaff25120e380d7
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910423"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034836"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>Automatische machine learning experimenten maken, verkennen en implementeren met behulp van de landings pagina van Azure Machine Learning werk ruimte (preview)
 
@@ -26,9 +26,9 @@ ms.locfileid: "70910423"
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer nog vandaag de [gratis of betaalde versie van de Azure Machine Learning Service](https://aka.ms/AMLFree).
+* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
-* Een werkruimte van Azure Machine Learning-service. Zie [een Azure machine learning service-werk ruimte maken](how-to-manage-workspace.md).
+* Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md).
 
 ## <a name="get-started"></a>Aan de slag
 

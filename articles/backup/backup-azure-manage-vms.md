@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 025052a5005702232eb9eaf255e6aac2c58fec98
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 0e8dacb97b6ccfb57573fc21c3a4df3694cc7ec8
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735575"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098407"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Back-ups van Azure-VM'S beheren met Azure Backup-Service
 
@@ -45,11 +45,11 @@ Vm's op het kluis dashboard weer geven:
 
     ![Open de Blade kluis dashboard en instellingen](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
-5. Selecteer **Azure virtual machines**op de tegel **back-** upitems.
+5. Selecteer **Azure virtual machines**op de tegel **Back-upitems** .
 
     ![De tegel back-upitems openen](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6. Op de Blade **back-**  upitems kunt u de lijst met beveiligde vm's weer geven. In dit voor beeld beveiligt de kluis één virtuele machine: demobackup.  
+6. Op de Blade **Back-upitems** kunt u de lijst met beveiligde vm's weer geven. In dit voor beeld beveiligt de kluis één virtuele machine: demobackup.  
 
     ![De Blade back-upitems weer geven](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
@@ -62,11 +62,11 @@ Vm's op het kluis dashboard weer geven:
 Een back-upbeleid beheren:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/). Open het kluis dashboard.
-2. Selecteer **Azure virtual machines**op de tegel **back-** upitems.
+2. Selecteer **Azure virtual machines**op de tegel **Back-upitems** .
 
     ![De tegel back-upitems openen](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-3. Op de Blade **back-**  upitems kunt u de lijst met beveiligde vm's en de laatste back-upstatus met de meest recente tijd voor herstel punten weer geven.
+3. Op de Blade **Back-upitems** kunt u de lijst met beveiligde vm's en de laatste back-upstatus met de meest recente tijd voor herstel punten weer geven.
 
     ![De Blade back-upitems weer geven](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
@@ -168,4 +168,4 @@ Er zijn twee manieren om de back-upgegevens van een VM te verwijderen:
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [het maken van een back-up van Azure-vm's vanuit de instellingen van de virtuele machine](backup-azure-vms-first-look-arm.md).
 - Meer informatie over het [herstellen van vm's](backup-azure-arm-restore-vms.md).
-- Meer informatie over het bewaken van [back-ups van Azure-vm's](backup-azure-monitor-vms.md).
+- Meer informatie over het [bewaken van back-ups van Azure-vm's](backup-azure-monitor-vms.md).

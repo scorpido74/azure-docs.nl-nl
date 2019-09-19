@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: atsenthi
-ms.openlocfilehash: f8dfaa39f02aefbdda1f34afa5011ce5fadbae49
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0cc1e51a4d5f9ad54866066a4247e1588da381a6
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624920"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037492"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Service Fabric toepassing implementeren met een door de gebruiker toegewezen beheerde identiteit (preview)
 
@@ -27,7 +27,7 @@ Als u een Service Fabric toepassing wilt implementeren met beheerde identiteit, 
 
 ## <a name="user-assigned-identity"></a>Door gebruiker toegewezen identiteit
 
-Als u een toepassing met een door de gebruiker toegewezen identiteit wilt inschakelen, voegt u eerst de eigenschap **Identity** toe aan de toepassings resource met het type **userAssigned** en de door de gebruiker toegewezen identiteiten. Voeg vervolgens een sectie **managedIdentities** toe aan de sectie **Eigenschappen** van de **toepassings** resource die een lijst met beschrijvende namen bevat voor principalId-toewijzing voor elk van de door de gebruiker toegewezen identiteiten.
+Als u een toepassing met een door de gebruiker toegewezen identiteit wilt inschakelen, voegt u eerst de eigenschap **Identity** toe aan de toepassings resource met het type **userAssigned** en de door de gebruiker toegewezen identiteiten. Voeg vervolgens een sectie **managedIdentities** toe aan de sectie **Eigenschappen** van de **toepassings** resource die een lijst met beschrijvende namen bevat voor principalId-toewijzing voor elk van de door de gebruiker toegewezen identiteiten. Zie [een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell)voor meer informatie over door de gebruiker toegewezen identiteiten.
 
 ### <a name="application-template"></a>Toepassingsjabloon
 
@@ -66,7 +66,7 @@ In het bovenstaande voor beeld wordt de resource naam van de door de gebruiker t
 
 ### <a name="application-package"></a>Toepassingspakket
 
-1. Voor elke identiteit die is gedefinieerd `managedIdentities` in de sectie van de Azure Resource Manager sjabloon, `<ManagedIdentity>` voegt u een tag toe in het manifest van de toepassing, in de sectie principals. Het `Name` kenmerk moet overeenkomen met `name` de eigenschap die in `managedIdentities` de sectie is gedefinieerd.
+1. Voor elke identiteit die is gedefinieerd `managedIdentities` in de sectie van de Azure Resource Manager sjabloon, `<ManagedIdentity>` voegt u een tag toe in het manifest van de toepassing, in de sectie **principals** . Het `Name` kenmerk moet overeenkomen met `name` de eigenschap die in `managedIdentities` de sectie is gedefinieerd.
 
     **ApplicationManifest. XML**
 

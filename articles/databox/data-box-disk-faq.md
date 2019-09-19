@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 08/15/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 1ac91853c78a33645c0ccb234437e3cabc188f88
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: eee33a2e1f5d081c1394368152d0d9afb7091e34
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076901"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098829"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: Veelgestelde vragen
 
@@ -89,6 +89,24 @@ A.  U kunt de status van de Data Box Disk-bestelling volgen in Azure Portal. Als
 ### <a name="q-how-do-i-return-the-disks"></a>V. Hoe kan ik de schijven terugsturen? 
 A.  In de verpakking van de Data Box-schijven zit een verzendlabel. Bevestig het label aan de doos met de schijven en geef de verzegelde verpakking af bij de verzender. Als het label beschadigd is of verloren is gegaan, gaat u naar **Overzicht > Verzendlabel downloaden** en downloadt u een nieuw verzendlabel.
 
+### <a name="can-i-pick-up-my-data-box-disk-order-myself-can-i-return-the-disks-via-a-carrier-that-i-choose"></a>Kan ik mijn Data Box Disk bestelling zelf ophalen? Kan ik de schijven retour neren via een door mij gekozen provider?
+A. Ja. Micro soft biedt ook zelf-beheerde verzen ding in US Gov regio. Wanneer u de Data Box Disk order plaatst, kunt u de optie voor zelf-beheerde verzen ding kiezen. Voer de volgende stappen uit om uw Data Box Disk order op te halen:
+    
+1. Nadat u de order hebt geplaatst, wordt de order verwerkt en worden de schijven voor bereid. U wordt gewaarschuwd via een e-mail bericht dat uw bestelling gereed is voor ophalen. 
+2. Zodra de bestelling gereed is voor ophalen, gaat u naar uw bestelling in het Azure Portal en gaat u naar de Blade **overzicht** . 
+3. Er wordt een melding met een code in de Azure Portal weer geven. E-mail het [Azure data Box Operations-team](mailto:adbops@microsoft.com) en geef de code op. Het team geeft de locatie op en plant een datum en tijd voor het ophalen. U moet het team aanroepen binnen 5 werk dagen nadat u het e-mail bericht hebt ontvangen.
+
+Wanneer het kopiëren en valideren van de gegevens is voltooid, voert u de volgende stappen uit om uw schijf te retour neren:
+
+1. Koppel de schijven los, nadat de gegevensvalidatie is voltooid. Verwijder de verbindingskabels.
+2. Verpak alle schijven en de verbindingskabels in bubbelplastic en plaats deze in de verzenddoos. Er kunnen kosten in rekening worden gebracht als er accessoires ontbreken.
+
+    - Gebruik de verpakking waarin u het pakket hebt gekregen. U wordt aangeraden schijven te verpakken in stevig bubbelplastic.
+    - Zorg ervoor dat alles goed past zodat het product niet in de doos kan gaan schuiven.
+3. Ga naar de **Blade overzicht** voor uw bestelling in azure Portal. Er wordt een melding met een code weer geven.
+4. Gebruik deze code om het [Azure data Box Operations-team](mailto:adbops@microsoft.com) te e-mailen en de code op te geven. Ze geven u informatie over waar en wanneer u de schijven moet neerzetten.
+
+
 ## <a name="migrate-data"></a>Gegevens migreren
 
 ### <a name="q-what-is-the-maximum-data-size-that-can-be-used-with-data-box-disks"></a>V. Wat is de maximale hoeveelheid gegevens die voor Data Box-schijven kan worden gebruikt?  
@@ -113,7 +131,7 @@ A.  U kunt het kopieerproces als volgt versnellen:
 - Gebruik meerdere sessies.
 - In plaats van te kopiëren via een netwerkshare (waarbij de netwerksnelheid beperkend kan zijn), zorgt u ervoor dat de gegevens lokaal aanwezig zijn op de computer waarmee de schijven zijn verbonden.
 - Zorg ervoor dat u USB 3.0 of hoger gebruikt gedurende het hele kopieerproces. Download en gebruik het hulpprogramma [USBView](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview) om de USB-controllers en de USB-apparaten te identificeren die met de computer zijn verbonden.
-- Voer een benchmark-test uit van de prestaties van de computer die wordt gebruikt om de gegevens te kopiëren. Download en gebruik het hulpprogramma [Bluestop FIO](https://ci.appveyor.com/project/axboe/fio) om een benchmark-test uit te voeren van de prestaties van de serverhardware. Selecteer de nieuwste versie van x86 of x64, selecteer het tabblad artefacten en down load het MSI-bestand.
+- Voer een benchmark-test uit van de prestaties van de computer die wordt gebruikt om de gegevens te kopiëren. Download en gebruik het hulpprogramma [Bluestop FIO](https://ci.appveyor.com/project/axboe/fio) om een benchmark-test uit te voeren van de prestaties van de serverhardware. Selecteer de nieuwste versie van x86 of x64, selecteer het tabblad **artefacten** en down load het MSI-bestand.
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>V. Hoe kan ik het kopiëren van de gegevens versnellen als de brongegevens uit kleine bestanden (kB's of enkele MB's) bestaan?
 A.  U kunt het kopieerproces als volgt versnellen:

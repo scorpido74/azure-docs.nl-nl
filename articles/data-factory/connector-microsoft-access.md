@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: 9b7f63606733c8be1a6f9593db0862d39e432d68
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: f01607e6b7dbe5f126d240a51219a6829ff5aaf6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010063"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090074"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Gegevens kopiëren van en naar micro soft Access-gegevens archieven met behulp van Azure Data Factory
 
@@ -27,7 +27,7 @@ In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factor
 
 Deze micro soft Access-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit de micro soft Access-bron kopiëren naar elk ondersteund Sink-gegevens archief. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
@@ -54,7 +54,7 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service van micr
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type moet worden ingesteld op: **MicrosoftAccess** | Ja |
+| type | De eigenschap type moet worden ingesteld op: **MicrosoftAccess** | Ja |
 | connectionString | De ODBC-connection string het referentie deel niet uitsluiten. U kunt de connection string opgeven of de systeem-DSN (gegevens bron naam) gebruiken die u op de Integration Runtime machine hebt ingesteld (u moet nog steeds het referentie deel opgeven in de gekoppelde service).<br>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md).| Ja |
 | authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met het micro soft Access-gegevens archief.<br/>Toegestane waarden zijn: **Basis** en **anoniem**. | Ja |
 | userName | Geef de gebruikers naam op als u basis verificatie gebruikt. | Nee |
@@ -97,7 +97,7 @@ Als u gegevens wilt kopiëren vanuit micro soft Access, worden de volgende eigen
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **MicrosoftAccessTable** | Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **MicrosoftAccessTable** | Ja |
 | tableName | De naam van de tabel in micro soft Access. | Nee voor bron (als "query" in activiteits bron is opgegeven);<br/>Ja voor Sink |
 
 **Voorbeeld**
@@ -128,7 +128,7 @@ Als u gegevens wilt kopiëren uit een micro soft Access-compatibel gegevens arch
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **MicrosoftAccessSource** | Ja |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **MicrosoftAccessSource** | Ja |
 | query | Gebruik de aangepaste query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**

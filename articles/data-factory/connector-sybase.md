@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 26eb3852106fdacd30425abd14aa2c594aed978c
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: f6fcdddb2da005d563ee0a10381e7aa4f26487d0
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71007790"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71089256"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Gegevens van Sybase kopiëren met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -30,7 +30,7 @@ In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factor
 
 Deze Sybase-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens van Sybase-data base kopiëren naar elk ondersteund Sink-gegevens archief. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
@@ -59,7 +59,7 @@ De volgende eigenschappen worden ondersteund voor Sybase-gekoppelde service:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type moet worden ingesteld op: **Sybase** | Ja |
+| type | De eigenschap type moet worden ingesteld op: **Sybase** | Ja |
 | server | De naam van de Sybase-server. |Ja |
 | database | De naam van de Sybase-data base. |Ja |
 | authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de Sybase-data base.<br/>Toegestane waarden zijn: **Basis**en **Windows**. |Ja |
@@ -100,7 +100,7 @@ Als u gegevens wilt kopiëren vanuit Sybase, worden de volgende eigenschappen on
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **SybaseTable** | Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **SybaseTable** | Ja |
 | tableName | De naam van de tabel in de Sybase-data base. | Nee (als 'query' in de activiteitbron is opgegeven) |
 
 **Voorbeeld**
@@ -132,7 +132,7 @@ Als u gegevens wilt kopiëren van Sybase, worden de volgende eigenschappen onder
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **SybaseSource** | Ja |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **SybaseSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**

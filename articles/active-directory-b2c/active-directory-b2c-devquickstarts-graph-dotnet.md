@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 11a9fc521a7b17ae0ff2f579f173f4d43383bdd5
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: c7fcbbbfcc2192160ca852538c015a365518e448
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880087"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065947"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: De Azure AD Graph API gebruiken
 
 >[!NOTE]
 > U moet de [Azure AD-Graph API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-operations-overview) gebruiken om gebruikers in een Azure AD B2C Directory te beheren. Dit wijkt af van de Microsoft Graph-API. Klik [hier](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/) voor meer informatie.
 
-Azure Active Directory (Azure AD) B2C-tenants zijn vaak erg groot. Dit betekent dat veel veelvoorkomende Tenant beheer taken programmatisch moeten worden uitgevoerd. Een goed voorbeeld is gebruikersbeheer. Mogelijk moet u een bestaande gebruikers opslag migreren naar een B2C-Tenant. Of u wilt op de achtergrond gebruikersregistratie op uw eigen pagina hosten en gebruikersaccounts maken in uw Azure AD B2C-adreslijst. Voor dit soort taken moet u gebruikersaccounts kunnen maken, lezen, bijwerken en verwijderen. U kunt deze taken uitvoeren met behulp van de Azure AD-Graph API.
+Azure Active Directory B2C (Azure AD B2C)-tenants moeten vaak erg groot zijn. Dit betekent dat veel veelvoorkomende Tenant beheer taken programmatisch moeten worden uitgevoerd. Een goed voorbeeld is gebruikersbeheer. Mogelijk moet u een bestaande gebruikers opslag migreren naar een B2C-Tenant. Of u wilt op de achtergrond gebruikersregistratie op uw eigen pagina hosten en gebruikersaccounts maken in uw Azure AD B2C-adreslijst. Voor dit soort taken moet u gebruikersaccounts kunnen maken, lezen, bijwerken en verwijderen. U kunt deze taken uitvoeren met behulp van de Azure AD-Graph API.
 
 Voor B2C-tenants zijn er twee primaire modi om te communiceren met de Graph API.
 
@@ -43,10 +43,10 @@ Nadat u een B2C-Tenant hebt, moet u uw toepassing registreren met behulp van de 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Kies uw Azure AD B2C-Tenant door uw account te selecteren in de rechter bovenhoek van de pagina.
 3. Kies in het navigatie deel venster aan de linkerkant **alle services**, klik op **app-registraties**en klik op **nieuwe registratie**.
-4. Volg de aanwijzingen op het scherm en maak een nieuwe toepassing. 
+4. Volg de aanwijzingen op het scherm en maak een nieuwe toepassing.
     1. Een passende naam toevoegen
     2. Selecteer **alleen accounts in deze organisatie Directory**
-    3. Selecteer **Web** als het toepassings type en geef **een aanmeldings-URL** op `https://B2CGraphAPI`(bijvoorbeeld) omdat deze niet relevant is voor dit voor beeld.  
+    3. Selecteer **Web** als het toepassings type en geef **een aanmeldings-URL** op `https://B2CGraphAPI`(bijvoorbeeld) omdat deze niet relevant is voor dit voor beeld.
     4. Klik op registreren.
 5. De toepassing wordt nu weer gegeven in de lijst met toepassingen. Klik erop om de **toepassings-id** (ook wel client-id genoemd) te verkrijgen. Kopieer de app zoals u deze nodig hebt in een latere sectie.
 6. Klik in het menu instellingen op **certificaten & geheimen**.
@@ -65,8 +65,8 @@ U hebt nu een toepassing die toestemming heeft om gebruikers te maken, te lezen 
 
 > [!NOTE]
 > Het kan enkele minuten duren voordat het verlenen van machtigingen is voltooid.
-> 
-> 
+>
+>
 
 ## <a name="configure-delete-or-update-password-permissions-for-your-application"></a>Machtigingen voor het verwijderen of bijwerken van wacht woorden voor uw toepassing configureren
 Op dit moment bevat de machtiging *gegevens lezen en schrijven* **niet** de mogelijkheid om gebruikers te verwijderen of gebruikers wachtwoorden bij te werken. Als u uw toepassing de mogelijkheid wilt geven om gebruikers te verwijderen of wacht woorden bij te werken, moet u deze extra stappen uitvoeren die gebruikmaken van Power shell, anders kunt u door gaan naar de volgende sectie.
@@ -132,8 +132,8 @@ Voor elke aanvraag voor de Graph API is een toegangs token voor verificatie vere
 
 > [!NOTE]
 > Dit code voorbeeld maakt gebruik van ADAL v2 om te communiceren met de Graph API.  U moet ADAL v2 of v3 gebruiken om toegang te krijgen tot tokens die kunnen worden gebruikt met de Azure AD-Graph API.
-> 
-> 
+>
+>
 
 Wanneer `B2CGraphClient` wordt uitgevoerd, wordt er een instantie van `B2CGraphClient` de klasse gemaakt. De constructor voor deze klasse stelt een ADAL-verificatie steiger in:
 
@@ -260,8 +260,8 @@ U kunt zien hoe de POST-aanvraag is geconstrueerd in `B2CGraphClient.SendGraphPo
 
 > [!NOTE]
 > Als de accounts die u wilt migreren vanuit een bestaand gebruikers archief een lagere wachtwoord sterkte hebben dan de [sterke wachtwoord sterkte die door Azure AD B2C wordt afgedwongen](/previous-versions/azure/jj943764(v=azure.100)), kunt u de vereiste voor sterke wacht `DisableStrongPassword` woorden uitschakelen met de waarde in de `passwordPolicies`eigenschap. U kunt bijvoorbeeld de hierboven beschreven aanvraag voor het maken van een gebruiker als volgt `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`wijzigen:.
-> 
-> 
+>
+>
 
 ### <a name="update-consumer-user-accounts"></a>Gebruikers accounts van consumenten bijwerken
 Wanneer u gebruikers objecten bijwerkt, is het proces vergelijkbaar met de-account die u gebruikt om gebruikers objecten te maken. Maar dit proces maakt gebruik van `PATCH` de HTTP-methode:

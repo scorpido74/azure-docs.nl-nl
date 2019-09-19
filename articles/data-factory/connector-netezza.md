@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 5d5db9e837846a20bf4b68f7dc5c39ad587f4de9
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 5d0c09c9cff2fefcc2eee20b9fd2f93dd375115f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009981"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090024"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Gegevens kopiëren van Netezza met behulp van Azure Data Factory
 
@@ -30,7 +30,7 @@ In dit artikel bevat een overzicht over het gebruik van de Kopieeractiviteit in 
 
 Deze Netezza-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
 
@@ -127,7 +127,7 @@ Om gegevens te kopiëren van Netezza, stel de **type** eigenschap van de gegeven
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **NetezzaTable** | Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **NetezzaTable** | Ja |
 | Schema | De naam van het schema. |Nee (als 'query' in de activiteitbron is opgegeven)  |
 | table | Naam van de tabel. |Nee (als 'query' in de activiteitbron is opgegeven)  |
 | tableName | De naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en`table` voor nieuwe werk belasting. | Nee (als 'query' in de activiteitbron is opgegeven) |

@@ -1,6 +1,6 @@
 ---
-title: Over het gebruik van Azure Service Bus-wachtrijen in Node.js | Microsoft Docs
-description: Informatie over het gebruik van Service Bus-wachtrijen in Azure vanuit een Node.js-app.
+title: Azure Service Bus-wacht rijen gebruiken in node. js
+description: Meer informatie over het gebruik van Service Bus wachtrijen in azure vanuit een node. js-app.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -14,42 +14,43 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 1426b3d31159280ad9aac2dd240a5f083c40752d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-javascript-september2019
+ms.openlocfilehash: df3f5a3773265249751352ce8d9c966c54bf197d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65988311"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091798"
 ---
-# <a name="how-to-use-service-bus-queues-with-nodejs-and-the-azure-sb-package"></a>Het gebruik van Service Bus-wachtrijen met Node.js en de azure-sb-pakket
-> [!div class="op_multi_selector" title1="Programmeertaal" title2="Node.js pacakge"]
-> - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-queues.md)
-> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
+# <a name="how-to-use-service-bus-queues-with-nodejs-and-the-azure-sb-package"></a>Service Bus wachtrijen gebruiken met node. js en het pakket Azure-SB
+> [!div class="op_multi_selector" title1="Programmeertaal" title2="Node. js pakket"]
+> - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-queues.md)
+> - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
 
-In deze zelfstudie leert u over het maken van Node.js-toepassingen voor het verzenden van berichten naar en ontvangen van berichten van een Service Bus-wachtrij met de [azure sb](https://www.npmjs.com/package/azure-sb) pakket. De voorbeelden zijn geschreven in JavaScript en gebruik van de Node.js [Azure-module](https://www.npmjs.com/package/azure) die intern maakt gebruik van de `azure-sb` pakket.
+In deze zelf studie leert u hoe u node. js-toepassingen kunt maken om berichten te verzenden naar en berichten te ontvangen van een Service Bus wachtrij met behulp van het pakket [Azure-SB](https://www.npmjs.com/package/azure-sb) . De voor beelden zijn geschreven in Java script en gebruiken de node. js [Azure-module](https://www.npmjs.com/package/azure) die `azure-sb` intern gebruikmaakt van het pakket.
 
-De [azure sb](https://www.npmjs.com/package/azure-sb) maakt gebruik van het pakket [runtime-API's van Service Bus REST](/rest/api/servicebus/service-bus-runtime-rest). U krijgt een snellere ervaring met behulp van de nieuwe [ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus) pakket dat gebruikmaakt van de snellere [AMQP 1.0-protocol](service-bus-amqp-overview.md). Zie voor meer informatie over het nieuwe pakket, [over het gebruik van Service Bus-wachtrijen met Node.js en @azure/service-bus pakket](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package), anders blijven lezen voor meer informatie over gebruik van de [azure](https://www.npmjs.com/package/azure) pakket.
+Het [Azure-SB-](https://www.npmjs.com/package/azure-sb) pakket maakt gebruik van [Service Bus rest runtime-api's](/rest/api/servicebus/service-bus-runtime-rest). U kunt een snellere ervaring krijgen met het nieuwe [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) pakket dat gebruikmaakt van het snellere [AMQP 1,0-protocol](service-bus-amqp-overview.md). Zie [service bus-wacht rijen gebruiken met node. js @azure/service-bus en package](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package)(Engelstalig) voor meer informatie over het nieuwe pakket. anders gaat u verder met lezen om te zien hoe u het [Azure](https://www.npmjs.com/package/azure) -pakket kunt gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
-- Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt uw [voordelen als MSDN-abonnee](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) zich ook aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Als u een wachtrij om te werken met geen hebt, voert u de stappen de [gebruik Azure portal voor het maken van een Service Bus-wachtrij](service-bus-quickstart-portal.md) artikel om een wachtrij te maken.
-    1. Het snel lezen **overzicht** van Service Bus **wachtrijen**. 
-    2. Maken van een Service Bus **naamruimte**. 
-    3. Krijgen de **verbindingsreeks**. 
+- Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt de [voor delen](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) van uw MSDN-abonnee activeren of zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Als u geen wachtrij hebt om mee te werken, voert u de stappen in het [Azure Portal gebruik uit om een service bus wachtrij](service-bus-quickstart-portal.md) artikel te maken om een wachtrij te maken.
+    1. Lees het kort **overzicht** van service bus- **wacht rijen**. 
+    2. Maak een Service Bus **naam ruimte**. 
+    3. Haal de **Connection String**op. 
 
         > [!NOTE]
-        > U maakt een **wachtrij** in de Service Bus-naamruimte met behulp van Node.js in deze zelfstudie. 
+        > In deze zelf studie maakt u een **wachtrij** in de service bus naam ruimte met behulp van node. js. 
  
 
 ## <a name="create-a-nodejs-application"></a>Een Node.js-toepassing maken
-Maak een lege Node.js-toepassing. Zie voor instructies over het maken van een Node.js-toepassing [maken en implementeren van een Node.js-toepassing naar een Azure-Website][Create and deploy a Node.js application to an Azure Website], of [Node.js-Cloudservice] [ Node.js Cloud Service] met behulp van Windows PowerShell.
+Maak een lege node. js-toepassing. Zie [een node. js-toepassing maken en implementeren op een Azure-website][Create and deploy a Node.js application to an Azure Website]of [node. js-Cloud service][Node.js Cloud Service] met behulp van Windows Power shell voor instructies over het maken van een node. js-toepassing.
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Uw toepassing configureren voor het gebruik van Service Bus
-Voor het gebruik van Azure Service Bus, downloaden en gebruiken van de Node.js-Azure-pakket. Dit pakket bevat een set met bibliotheken die met de Service Bus REST-services communiceren.
+Als u Azure Service Bus wilt gebruiken, moet u het node. js Azure-pakket downloaden en gebruiken. Dit pakket bevat een set bibliotheken die communiceren met de Service Bus REST-services.
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Knooppunt Package Manager (NPM) gebruiken om het pakket te verkrijgen
-1. Gebruik de **Windows PowerShell voor Node.js** opdrachtvenster om te navigeren naar de **c:\\knooppunt\\sbqueues\\WebRole1** map waarin u uw voorbeeld hebt gemaakt de toepassing.
-2. Type **npm installeren azure** in het opdrachtvenster in die moet resulteren in de uitvoer is vergelijkbaar met het volgende voorbeeld:
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Gebruik node Package Manager (NPM) om het pakket te verkrijgen
+1. Gebruik de **Windows Power shell voor node. js** opdracht venster om naar de map **c\\:\\node\\sbqueues WebRole1** te navigeren waarin u uw voorbeeld toepassing hebt gemaakt.
+2. Typ **NPM Azure installeren** in het opdracht venster. dit moet resulteren in uitvoer zoals in het volgende voor beeld:
 
     ```
     azure@0.7.5 node_modules\azure
@@ -64,28 +65,28 @@ Voor het gebruik van Azure Service Bus, downloaden en gebruiken van de Node.js-A
         ├── xml2js@0.2.7 (sax@0.5.2)
         └── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
     ```
-3. U kunt de **ls**-opdracht handmatig uitvoeren om te controleren of een **node_modules**-map is gemaakt. In deze map, vinden de **azure** , dit pakket de bibliotheken die u nodig hebt bevat voor toegang tot Service Bus-wachtrijen.
+3. U kunt de **ls**-opdracht handmatig uitvoeren om te controleren of een **node_modules**-map is gemaakt. Zoek in die map naar het **Azure** -pakket, dat de bibliotheken bevat die u nodig hebt om toegang te krijgen tot Service Bus wachtrijen.
 
 ### <a name="import-the-module"></a>De module importeren
-In Kladblok of een andere teksteditor en voeg het volgende toe aan het begin van de **server.js** -bestand van de toepassing:
+Als u Klad blok of een andere tekst editor gebruikt, voegt u het volgende toe aan de bovenkant van het **server. js** -bestand van de toepassing:
 
 ```javascript
 var azure = require('azure');
 ```
 
-### <a name="set-up-an-azure-service-bus-connection"></a>Een Azure Service Bus-verbinding instellen
-De Azure-module leest de omgevingsvariabele `AZURE_SERVICEBUS_CONNECTION_STRING` informatie vereist om verbinding met de Service Bus te verkrijgen. Als deze omgevingsvariabele is niet ingesteld, moet u de accountgegevens opgeven bij het aanroepen van `createServiceBusService`.
+### <a name="set-up-an-azure-service-bus-connection"></a>Een Azure Service Bus verbinding instellen
+De Azure-module leest de omgevings variabele `AZURE_SERVICEBUS_CONNECTION_STRING` voor het verkrijgen van informatie die nodig is om verbinding te maken met Service Bus. Als deze omgevings variabele niet is ingesteld, moet u de account gegevens opgeven `createServiceBusService`wanneer u aanroept.
 
-Voor een voorbeeld van het instellen van de omgevingsvariabelen de [Azure-portal] [ Azure portal] Zie voor een Azure-Website [Node.js-webtoepassing met Storage] [ Node.js Web Application with Storage].
+Zie de [node. js-webtoepassing met Storage][Node.js Web Application with Storage]voor een voor beeld van het instellen van omgevings variabelen in de [Azure Portal][Azure portal] voor een Azure-website.
 
 ## <a name="create-a-queue"></a>Een wachtrij maken
-De **ServiceBusService** object kunt u werken met Service Bus-wachtrijen. De volgende code maakt een **ServiceBusService** object. Voeg deze toe aan de bovenkant van de **server.js** bestand, na de instructie voor het importeren van de Azure-module:
+Met het **ServiceBusService** -object kunt u werken met Service bus-wacht rijen. Met de volgende code wordt een **ServiceBusService** -object gemaakt. Voeg het toe aan de bovenkant van het bestand **server. js** , na de instructie voor het importeren van de Azure-module:
 
 ```javascript
 var serviceBusService = azure.createServiceBusService();
 ```
 
-Door het aanroepen van `createQueueIfNotExists` op de **ServiceBusService** object, de opgegeven wachtrij wordt geretourneerd (indien aanwezig) of een nieuwe wachtrij met de opgegeven naam is gemaakt. De volgende code gebruikt `createQueueIfNotExists` maken of verbinding maken met de wachtrij met de naam `myqueue`:
+Door aanroepen `createQueueIfNotExists` van het object **ServiceBusService** , wordt de opgegeven wachtrij geretourneerd (indien aanwezig) of wordt er een nieuwe wachtrij met de opgegeven naam gemaakt. Met de volgende code `createQueueIfNotExists` maakt of maakt u verbinding met de wachtrij `myqueue`met de naam:
 
 ```javascript
 serviceBusService.createQueueIfNotExists('myqueue', function(error){
@@ -95,7 +96,7 @@ serviceBusService.createQueueIfNotExists('myqueue', function(error){
 });
 ```
 
-De `createServiceBusService` methode biedt ook ondersteuning voor extra opties, zodat ze wachtrij standaardinstellingen, zoals time to live of Maximale wachtrijgrootte bericht negeren. Het volgende voorbeeld wordt de maximale wachtrijgrootte ingesteld op 5 GB en een tijd naar live (TTL) waarde van 1 minuut:
+De `createServiceBusService` -methode biedt ook ondersteuning voor aanvullende opties, waarmee u standaard instellingen voor de wachtrij kunt overschrijven, zoals de bericht tijd in een live of maximale wachtrij grootte. In het volgende voor beeld wordt de maximale wachtrij grootte ingesteld op 5 GB en een TTL-waarde (time to Live) van 1 minuut:
 
 ```javascript
 var queueOptions = {
@@ -111,21 +112,21 @@ serviceBusService.createQueueIfNotExists('myqueue', queueOptions, function(error
 ```
 
 ### <a name="filters"></a>Filters
-Optionele filters gebruiken om bewerkingen kunnen worden toegepast op bewerkingen die worden uitgevoerd met behulp van **ServiceBusService**. Filteren van bewerkingen kunt opnemen logboekregistratie, automatisch opnieuw wordt geprobeerd, enzovoort. Filters zijn objecten die een methode implementeren met de handtekening:
+Optionele filter bewerkingen kunnen worden toegepast op bewerkingen die worden uitgevoerd met behulp van **ServiceBusService**. Filter bewerkingen kunnen logboek registratie, automatisch opnieuw proberen, enzovoort zijn. Filters zijn objecten die een methode implementeren met de handtekening:
 
 ```javascript
 function handle (requestOptions, next)
 ```
 
-Hierna de voorverwerking van de Aanvraagopties, de methode moet aanroepen `next`, een callback met de volgende handtekening te geven:
+Nadat de voor bereiding op de aanvraag opties is uitgevoerd, moet de- `next`methode worden aangeroepen, waarbij een call back wordt door gegeven met de volgende hand tekening:
 
 ```javascript
 function (returnObject, finalCallback, next)
 ```
 
-In deze callback en na de verwerking de `returnObject` (het antwoord van de aanvraag naar de server), moet ofwel de callback aanroepen `next` als deze bestaat als u wilt doorgaan met het verwerken van andere filters of aanroepen `finalCallback`, die de serviceaanroep is beëindigd .
+In deze call back en na het `returnObject` verwerken van (de reactie van de aanvraag naar de server) moet de call back worden aangeroepen `next` als deze bestaat om andere filters, of invoke `finalCallback`, te verwerken, waardoor de service aanroep wordt beëindigd .
 
-Twee filters die logica voor opnieuw proberen implementeren zijn opgenomen in de Azure SDK voor Node.js, `ExponentialRetryPolicyFilter` en `LinearRetryPolicyFilter`. De volgende code maakt een `ServiceBusService` object die gebruikmaakt van de `ExponentialRetryPolicyFilter`:
+De Azure SDK voor node. js `ExponentialRetryPolicyFilter` `LinearRetryPolicyFilter`bevat twee filters waarmee logica voor nieuwe pogingen wordt geïmplementeerd. Met de volgende code wordt `ServiceBusService` een object gemaakt dat `ExponentialRetryPolicyFilter`gebruikmaakt van:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -133,9 +134,9 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Berichten verzenden naar een wachtrij
-Een bericht verzenden naar een Service Bus-wachtrij, het aanroepen van uw toepassing de `sendQueueMessage` methode voor het **ServiceBusService** object. Berichten verzonden naar (en ontvangen van) Service Bus-wachtrijen zijn **BrokeredMessage** objecten en hebben een aantal standaardeigenschappen (zoals **Label** en **TimeToLive**), een woordenlijst die wordt gebruikt voor het opslaan van aangepaste toepassingsspecifieke eigenschappen en een hoofdtekst met willekeurige toepassingsgegevens. Een toepassing kan de hoofdtekst van het bericht ingesteld door een reeks wordt doorgegeven als het bericht. Alle vereiste eigenschappen standaard worden gevuld met standaardwaarden.
+Als u een bericht wilt verzenden naar een service bus wachtrij, roept uw `sendQueueMessage` toepassing de methode aan in het **ServiceBusService** -object. Berichten die worden verzonden naar (en ontvangen van) Service Bus-wacht rijen zijn **BrokeredMessage** -objecten en hebben een aantal standaard eigenschappen (zoals **Label** en **TimeToLive**), een woorden lijst die wordt gebruikt voor het opslaan van aangepaste toepassingsspecifieke eigenschappen, en een hoofd tekst met wille keurige toepassings gegevens. Een toepassing kan de hoofd tekst van het bericht instellen door een teken reeks als het bericht door te geven. Alle vereiste standaard eigenschappen worden gevuld met standaard waarden.
 
-Het volgende voorbeeld ziet u hoe u een testbericht verzenden naar de wachtrij met de naam `myqueue` met behulp van `sendQueueMessage`:
+In het volgende voor beeld ziet u hoe u een test bericht naar de wachtrij `myqueue` verzendt `sendQueueMessage`met de naam:
 
 ```javascript
 var message = {
@@ -150,16 +151,16 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 });
 ```
 
-Service Bus-wachtrijen ondersteunen een maximale berichtgrootte van 256 kB in de [Standard-laag](service-bus-premium-messaging.md) en 1 MB in de [Premium-laag](service-bus-premium-messaging.md). De koptekst, die de standaard- en aangepaste toepassingseigenschappen bevat, kan maximaal 64 kB groot zijn. Er is geen limiet voor het aantal berichten in een wachtrij, maar er is een limiet voor de totale grootte van de berichten door een wachtrij. De grootte van de wachtrij wordt gedefinieerd tijdens het aanmaken, met een bovengrens van 5 GB. Zie voor meer informatie over quota [Service Bus-quota][Service Bus quotas].
+Service Bus-wachtrijen ondersteunen een maximale berichtgrootte van 256 kB in de [Standard-laag](service-bus-premium-messaging.md) en 1 MB in de [Premium-laag](service-bus-premium-messaging.md). De koptekst, die de standaard- en aangepaste toepassingseigenschappen bevat, kan maximaal 64 kB groot zijn. Er is geen limiet voor het aantal berichten in een wachtrij, maar er is een kapje aan de totale grootte van de berichten die door een wachtrij worden bewaard. De grootte van de wachtrij wordt gedefinieerd tijdens het aanmaken, met een bovengrens van 5 GB. Zie [Service Bus quota's][Service Bus quotas]voor meer informatie over quota's.
 
-## <a name="receive-messages-from-a-queue"></a>Berichten ontvangen van een wachtrij
-Berichten worden ontvangen van een wachtrij met de `receiveQueueMessage` methode voor het **ServiceBusService** object. Standaard worden berichten uit de wachtrij verwijderd als ze worden gelezen; u kunt echter (peek) lezen en vergrendelen van het bericht zonder deze te verwijderen uit de wachtrij door in te stellen de optionele parameter `isPeekLock` naar **waar**.
+## <a name="receive-messages-from-a-queue"></a>Berichten van een wachtrij ontvangen
+Er worden berichten van een wachtrij ontvangen met `receiveQueueMessage` behulp van de methode voor het **ServiceBusService** -object. Standaard worden berichten uit de wachtrij verwijderd wanneer ze worden gelezen. u kunt het bericht echter wel lezen en vergren delen zonder het uit de wachtrij te verwijderen door de optionele para meter `isPeekLock` in te stellen op **True**.
 
-Het standaardgedrag van lezen en verwijderen van het bericht als onderdeel van de ontvangstbewerking, is het eenvoudigste model en werkt het beste voor scenario's waarin een toepassing niet verwerken van een bericht tolereren kan wanneer er een fout optreedt. Voor meer informatie over dit probleem, u hebt een scenario waarin de consument problemen met de aanvraag ontvangen en vervolgens vastloopt voordat deze wordt verwerkt. Omdat Service Bus het bericht als verbruikt heeft gemarkeerd, klikt u vervolgens wanneer de toepassing opnieuw wordt opgestart en het verbruik van berichten opnieuw begint, ontbreekt het bericht dat het vastlopen is verbruikt.
+Het standaard gedrag van het lezen en verwijderen van het bericht als onderdeel van de receive-bewerking is het eenvoudigste model en werkt het beste voor scenario's waarin een toepassing niet de verwerking van een bericht kan verdragen wanneer zich een fout voordoet. Om dit gedrag te begrijpen, moet u rekening houden met een scenario waarin de consumer de ontvangst aanvraag uitgeeft en vervolgens vastloopt voordat het proces wordt verwerkt. Omdat Service Bus het bericht als verbruikt heeft gemarkeerd, wordt het bericht dat voor het vastlopen is verbruikt, overgeslagen wanneer de toepassing opnieuw wordt gestart en er opnieuw wordt verbruikt.
 
-Als de `isPeekLock` parameter is ingesteld op **waar**, wordt de ontvangst een bewerking met twee fasen, waardoor er toepassingen kunnen worden ondersteund die geen ontbrekende berichten kunnen tolereren. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd. Nadat de toepassing klaar is met het verwerken van bericht (of deze op betrouwbare wijze voor toekomstige verwerking slaat), is de tweede fase van het ontvangstproces voltooid door het aanroepen van `deleteMessage` methode en het geven van het bericht moet worden verwijderd als een parameter. De `deleteMessage` methode wordt het bericht als verbruikt gemarkeerd en wordt deze verwijderd uit de wachtrij.
+Als de `isPeekLock` para meter is ingesteld op **True**, wordt de ontvangst een bewerking met twee fasen, waardoor het mogelijk is om toepassingen te ondersteunen die geen ontbrekende berichten kunnen verdragen. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd. Nadat de toepassing klaar is met de verwerking van het bericht (of op betrouw bare wijze is opgeslagen voor toekomstige verwerking), wordt de tweede fase van `deleteMessage` het ontvangst proces voltooid door methode aan te roepen en wordt het bericht verwijderd als een para meter. Met `deleteMessage` de-methode wordt het bericht gemarkeerd als verbruikt en wordt het uit de wachtrij verwijderd.
 
-Het volgende voorbeeld ziet u hoe u ontvangen en verwerken van berichten met `receiveQueueMessage`. Het voorbeeld eerst ontvangt en Hiermee verwijdert u een bericht en vervolgens ontvangt een bericht met `isPeekLock` ingesteld op **waar**, verwijdert het bericht met `deleteMessage`:
+In het volgende voor beeld ziet u hoe u berichten ontvangt en `receiveQueueMessage`verwerkt met. In het voor beeld wordt eerst een bericht ontvangen en verwijderd, waarna een bericht `isPeekLock` wordt ontvangen met de instelling ingesteld op **True**. `deleteMessage`vervolgens wordt het bericht met de volgende strekking verwijderd:
 
 ```javascript
 serviceBusService.receiveQueueMessage('myqueue', function(error, receivedMessage){
@@ -180,20 +181,20 @@ serviceBusService.receiveQueueMessage('myqueue', { isPeekLock: true }, function(
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Het vastlopen van de toepassing en onleesbare berichten afhandelen
-Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een ontvangende toepassing kan het bericht te verwerken voor een of andere reden niet, dan kan worden aangeroepen de `unlockMessage` methode voor het **ServiceBusService** object. Dit zorgt ervoor dat Service Bus het bericht in de wachtrij ontgrendelt en het toegankelijk maken voor het opnieuw worden ontvangen door dezelfde consumerende toepassing of door een andere consumerende toepassing.
+Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een ontvanger toepassing het bericht om de een of andere reden niet kan verwerken, kan de `unlockMessage` methode worden aangeroepen voor het **ServiceBusService** -object. het zorgt ervoor dat Service Bus het bericht in de wachtrij ontgrendelt en het beschikbaar maakt om opnieuw te worden ontvangen, ofwel door dezelfde verbruiks toepassing of door een andere consumerende toepassing.
 
-Er is ook een time-out gekoppeld aan een bericht dat in de wachtrij is vergrendeld, en als de toepassing niet kan verwerken van het bericht voordat de time-out van de vergrendeling verloopt (bijvoorbeeld, als de toepassing vastloopt), wordt Service Bus wordt het bericht automatisch ontgrendelen en geef deze als beschikbaar voor het opnieuw worden ontvangen.
+Er is ook een time-out gekoppeld aan een bericht dat in de wachtrij is vergrendeld. als de toepassing het bericht niet kan verwerken voordat de time-out van de vergren deling verloopt (bijvoorbeeld als de toepassing vastloopt), wordt het bericht automatisch door Service Bus ontgrendeld en wordt het beschikbaar om opnieuw te worden ontvangen.
 
-In het geval dat de toepassing is vastgelopen na het verwerken van het bericht, maar voordat de `deleteMessage` methode wordt aangeroepen, wordt het bericht zal opnieuw worden bezorgd bij de toepassing opnieuw wordt gestart. Deze aanpak wordt ook wel genoemd *tenminste eenmaal verwerken*, dat wil zeggen, wordt elk bericht ten minste één keer worden verwerkt, maar in bepaalde situaties hetzelfde bericht opnieuw kan worden bezorgd. Als het scenario niet kan dubbele verwerking tolereren, kunnen ontwikkelaars van toepassingen moeten extra logica toevoegen aan hun toepassing voor het afhandelen van dubbele berichtbezorging. Dit wordt vaak bereikt met behulp van de **MessageId** eigenschap van het bericht, bij meerdere bezorgingspogingen blijft.
+In het geval dat de toepassing vastloopt na het verwerken van het bericht `deleteMessage` , maar voordat de methode wordt aangeroepen, wordt het bericht opnieuw aan de toepassing geleverd wanneer het opnieuw wordt gestart. Deze aanpak wordt vaak ten *minste*eenmaal verwerkt, dat wil zeggen dat elk bericht ten minste één keer wordt verwerkt, maar in bepaalde situaties kan hetzelfde bericht opnieuw worden bezorgd. Als het scenario dubbele verwerking niet kan verdragen, moeten toepassings ontwikkelaars extra logica toevoegen aan de toepassing om dubbele bericht bezorging af te handelen. Dit wordt vaak bereikt met de **MessageId** -eigenschap van het bericht, die constant blijft tijdens bezorgings pogingen.
 
 > [!NOTE]
-> U kunt Service Bus-resources beheren [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). De Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus-naamruimte en berichtentiteiten op een eenvoudige manier te beheren. Het hulpprogramma biedt geavanceerde functies zoals import/export-functionaliteit of de mogelijkheid om te testen, onderwerp, wachtrijen, abonnementen, relayservices, notification hubs en gebeurtenissen hubs. 
+> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende bronnen voor meer informatie over wachtrijen.
+Raadpleeg de volgende bronnen voor meer informatie over wacht rijen.
 
 * [Wachtrijen, onderwerpen en abonnementen][Queues, topics, and subscriptions]
-* [Azure SDK voor Node] [ Azure SDK for Node] -bibliotheek op GitHub
+* [Azure SDK voor knooppunt][Azure SDK for Node] opslagplaats op github
 * [Node.js Developer Center](https://azure.microsoft.com/develop/nodejs/)
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node

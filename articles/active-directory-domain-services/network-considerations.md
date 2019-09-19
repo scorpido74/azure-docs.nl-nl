@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: iainfou
-ms.openlocfilehash: 506967fc4cecd322c694d31789cf09bec22ad3d4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e18f990885a25b7e130dfeb5a0a3425530ee11e6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617327"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086590"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Ontwerp overwegingen voor het virtuele netwerk en configuratie opties voor Azure AD Domain Services
 
@@ -36,7 +36,7 @@ Wanneer u het virtuele netwerk voor Azure AD DS ontwerpt, zijn de volgende overw
     * Als u de latentie wilt minimaliseren, houdt u uw belangrijkste toepassingen dicht bij of in dezelfde regio als het subnet van het virtuele netwerk voor uw Azure AD DS beheerde domein. U kunt peering van virtuele netwerken of VPN-verbindingen (virtueel particulier netwerk) tussen virtuele netwerken van Azure gebruiken.
 * Het virtuele netwerk is niet afhankelijk van de DNS-services die door Azure AD DS worden verschaft.
     * Azure AD DS biedt een eigen DNS-service. Het virtuele netwerk moet worden geconfigureerd voor het gebruik van deze DNS-service adressen. Naam omzetting voor extra naam ruimten kan worden uitgevoerd met behulp van voorwaardelijke doorstuur servers.
-    * U kunt geen aangepaste DNS-server instellingen gebruiken om query's te sturen naar andere DNS-servers, met inbegrip van virtuele machines. Resources in het virtuele netwerk moeten gebruikmaken van de DNS-service van Azure AD DS.
+    * U kunt geen aangepaste DNS-server instellingen gebruiken om query's te sturen van andere DNS-servers, inclusief op Vm's. Resources in het virtuele netwerk moeten gebruikmaken van de DNS-service van Azure AD DS.
 
 > [!IMPORTANT]
 > U kunt Azure-AD DS niet verplaatsen naar een ander virtueel netwerk nadat u de service hebt ingeschakeld.
@@ -68,7 +68,7 @@ Peering op virtueel netwerk is een mechanisme dat twee virtuele netwerken in dez
 
 ![Verbinding met virtueel netwerk met behulp van peering](./media/active-directory-domain-services-design-guide/vnet-peering.png)
 
-Zie [overzicht van Azure Virtual Network](../virtual-network/virtual-network-peering-overview.md)-peering voor meer informatie.
+Zie [overzicht van Azure Virtual Network-peering](../virtual-network/virtual-network-peering-overview.md)voor meer informatie.
 
 ### <a name="virtual-private-networking"></a>Virtueel particulier netwerk
 
@@ -105,7 +105,7 @@ Een [netwerk beveiligings groep (NSG)](https://docs.microsoft.com/azure/virtual-
 
 De volgende regels voor de netwerk beveiligings groep zijn vereist voor Azure AD DS om verificatie-en beheer services te bieden. Wijzig of verwijder deze regels voor netwerk beveiligings groepen niet voor het subnet van het virtuele netwerk waarop uw Azure AD DS beheerde domein is geïmplementeerd.
 
-| Poortnummer | Protocol | Bron                             | Bestemming | Action | Vereist | Doel |
+| Poortnummer | Protocol | Bron                             | Destination | Action | Vereist | Doel |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Ja      | Synchronisatie met uw Azure AD-Tenant. |
 | 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | Ja      | Beheer van uw domein. |

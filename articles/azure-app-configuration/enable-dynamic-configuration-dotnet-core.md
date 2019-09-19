@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie voor het gebruik van dynamische configuratie van Azure App-configuratie in een .NET Core-app | Microsoft Docs
-description: In deze zelfstudie leert u hoe u dynamische update van de configuratiegegevens voor .NET Core-apps
+title: Zelf studie voor het gebruik van Azure-app configuratie dynamische configuratie in een .NET core-app | Microsoft Docs
+description: In deze zelf studie leert u hoe u de configuratie gegevens voor .NET Core-Apps dynamisch kunt bijwerken
 services: azure-app-configuration
 documentationcenter: ''
 author: abarora
@@ -13,40 +13,45 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: 1649fefda5073761d616fc48c602cab84d293ed0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 3eee34f594cb23a8b64f6fd10837c9a641eda62d
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799971"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075972"
 ---
-# <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Zelfstudie: Dynamische configuratie gebruiken in een .NET Core-app
+# <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Zelfstudie: Dynamische configuratie gebruiken in een .NET core-app
 
-De App-configuratie .NET Core-clientbibliotheek biedt ondersteuning voor het bijwerken van een set van configuratie-instellingen op aanvraag zonder dat een toepassing te starten. Dit kan worden geïmplementeerd met het eerste ophalen van een exemplaar van `IConfigurationRefresher` van de opties voor de configuratieprovider en vervolgens calling `Refresh` op dat exemplaar overal in uw code.
+De app-configuratie .NET core client library ondersteunt het bijwerken van een set configuratie-instellingen op aanvraag zonder dat een toepassing opnieuw moet worden opgestart. Dit kan worden geïmplementeerd door eerst een instantie van `IConfigurationRefresher` te verkrijgen van de opties voor de configuratie provider en vervolgens te bellen `Refresh` naar dat exemplaar op een wille keurige plaats in uw code.
 
-Een cache wordt gebruikt om de instellingen bijgewerkt te houden en te voorkomen dat te veel aanroepen voor het opslaan van de configuratie, voor elke instelling. Totdat de waarde in de cache van een instelling is verlopen, wordt de vernieuwingsbewerking niet de waarde bijgewerkt, zelfs wanneer de waarde in het opslaan van de configuratie is gewijzigd. De verlooptijd van de standaard voor elke aanvraag is 30 seconden, maar deze kan worden genegeerd indien nodig.
+Als u de instellingen wilt bijwerken en te veel aanroepen naar de configuratie opslag wilt voor komen, wordt er voor elke instelling een cache gebruikt. Totdat de in de cache opgeslagen waarde van een instelling is verlopen, wordt de waarde niet door de vernieuwings bewerking bijgewerkt, zelfs niet wanneer de waarde is gewijzigd in de configuratie opslag. De standaard verval tijd voor elke aanvraag is 30 seconden, maar kan indien nodig worden overschreven.
 
-In deze zelfstudie leert hoe u dynamische configuratie-updates kunt implementeren in uw code. Dit is gebaseerd op de app die is geïntroduceerd in de QuickStart. Voordat u doorgaat, voltooien [een .NET Core-app maken met App-configuratie](./quickstart-dotnet-core-app.md) eerste.
+In deze zelfstudie leert hoe u dynamische configuratie-updates kunt implementeren in uw code. Het is gebaseerd op de app die is geïntroduceerd in de Quick starts. Voordat u doorgaat, moet u eerst [een .net core-app maken met behulp van app-configuratie](./quickstart-dotnet-core-app.md) .
 
-Een code-editor kunt u de stappen in deze zelfstudie doet. [Visual Studio Code](https://code.visualstudio.com/) is een uitstekende optie die beschikbaar is op Windows, macOS en Linux-platforms.
+U kunt elke code-editor gebruiken om de stappen in deze zelf studie uit te voeren. [Visual Studio code](https://code.visualstudio.com/) is een uitstekende optie die beschikbaar is op de Windows-, macOS-en Linux-platformen.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Instellen van uw toepassing bijwerken van de configuratie met een app-configuratiearchief op aanvraag.
-> * De meest recente configuratie in de controllers van uw toepassing invoeren.
+> * Stel uw toepassing in om de configuratie bij te werken met een app-configuratie archief op aanvraag.
+> * Injecteer de meest recente configuratie in de controllers van uw toepassing.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze zelfstudie wilt, installeert de [.NET Core SDK](https://dotnet.microsoft.com/download).
+Als u deze zelf studie wilt uitvoeren, installeert u de [.net core SDK](https://dotnet.microsoft.com/download).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="reload-data-from-app-configuration"></a>Gegevens opnieuw laden vanuit app-configuratie
 
-Open *Program.cs* en bijwerken van het bestand om op te geven van de configuratie van vernieuwen in de `AddAzureAppConfiguration` methode en trigger handmatig vernieuwen met behulp van de `Refresh` methode.
+Open *Program.cs* en werk het bestand bij om een verwijzing naar de `System.Threading.Tasks` naam ruimte toe te voegen, om `AddAzureAppConfiguration` de configuratie van vernieuwen in de methode op te `Refresh` geven en hand matige vernieuwing te activeren met behulp van de methode.
 
 ```csharp
+using System;
+using System.Threading.Tasks;
+
+namespace TestConsole
+{
 class Program
 {
     private static IConfiguration _configuration = null;
@@ -84,51 +89,52 @@ class Program
         Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
     }
 }
+}
 ```
 
-De `ConfigureRefresh` methode wordt gebruikt om op te geven van de instellingen die wordt gebruikt voor het bijwerken van de configuratiegegevens met het app-configuratiearchief, wanneer een vernieuwingsbewerking wordt geactiveerd. Een exemplaar van `IConfigurationRefresher` kunnen worden opgehaald door het aanroepen van `GetRefresher` methode van de opties die `AddAzureAppConfiguration` methode, en de `Refresh` methode voor dit exemplaar kan worden gebruikt voor het activeren van een vernieuwingsbewerking overal in uw code.
+De `ConfigureRefresh` -methode wordt gebruikt om de instellingen op te geven die worden gebruikt voor het bijwerken van de configuratie gegevens met het app-configuratie archief wanneer een vernieuwings bewerking wordt geactiveerd. Een exemplaar van `IConfigurationRefresher` kan worden opgehaald door de aanroep `GetRefresher` methode voor de opties die aan `AddAzureAppConfiguration` de methode worden door `Refresh` gegeven en de methode op dit exemplaar kan worden gebruikt om een vernieuwings bewerking overal in uw code te activeren.
     
 > [!NOTE]
-> De verlooptijd van de standaard-cache voor een configuratie-instelling is 30 seconden, maar kan worden overschreven door het aanroepen van de `SetCacheExpiration` methode voor de initialisatiefunctie opties doorgegeven als een argument voor de `ConfigureRefresh` methode.
+> De standaard waarde voor de verval tijd van de cache voor een configuratie-instelling is 30 seconden, maar kan `SetCacheExpiration` worden overschreven door het aanroepen van de methode voor de `ConfigureRefresh` initialisatie functie voor opties die als een argument voor de methode wordt door gegeven.
 
 ## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
 
-1. Stel een omgevingsvariabele met de naam **ConnectionString**, en stel deze in op de toegangssleutel voor het opslaan van de app-configuratie. Als u de Windows-opdrachtprompt, voer de volgende opdracht uit en start opnieuw op de opdrachtprompt om toe te staan van de wijziging door te voeren:
+1. Stel een omgevings variabele met de naam **Connections Tring**in en stel deze in op de toegangs sleutel voor uw app-configuratie archief. Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit en start u de opdracht prompt zodat de wijziging kan worden doorgevoerd:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Als u Windows PowerShell gebruikt, voert u de volgende opdracht uit:
+    Als u Windows Power shell gebruikt, voert u de volgende opdracht uit:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-    Als u Mac OS of Linux gebruikt, voert u de volgende opdracht uit:
+    Als u macOS of Linux gebruikt, voert u de volgende opdracht uit:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-1. Voer de volgende opdracht om de console-app te bouwen:
+1. Voer de volgende opdracht uit om de console-app te bouwen:
 
         dotnet build
 
-1. Nadat de build is voltooid, voert u de volgende opdracht om de app lokaal uitvoeren:
+1. Nadat de build is voltooid, voert u de volgende opdracht uit om de app lokaal uit te voeren:
 
         dotnet run
 
     ![Quickstart voor het lokaal starten van een app](./media/quickstarts/dotnet-core-app-run.png)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle resources**, en selecteer het app-configuratie store-exemplaar dat u in de Quick Start hebt gemaakt.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
 
-1. Selecteer **configuratie Explorer**, en de waarden voor de volgende sleutels:
+1. Selecteer **Configuration Explorer**en werk de waarden van de volgende sleutels bij:
 
-    | Sleutel | Waarde |
+    | Sleutel | Value |
     |---|---|
-    | TestApp:Settings:Message | Gegevens uit Azure-App-configuratie - bijgewerkt |
+    | TestApp:Settings:Message | Gegevens van Azure-app configuratie-bijgewerkt |
 
-1. Druk op ENTER om te vernieuwen en de bijgewerkte waarde in het venster opdrachtprompt of PowerShell afdrukken.
+1. Druk op ENTER om een vernieuwen te activeren en de bijgewerkte waarde af te drukken in de opdracht prompt of Power shell-venster.
 
     ![Quickstart voor het lokaal vernieuwen van een app](./media/quickstarts/dotnet-core-app-run-refresh.png)
     
     > [!NOTE]
-    > Omdat de verlooptijd van de cache is ingesteld op 10 seconden met behulp van de `SetCacheExpiration` methode tijdens het instellen van de configuratie voor de bewerking van het vernieuwen, de waarde voor de configuratie-instelling worden alleen bijgewerkt als er ten minste 10 seconden zijn verstreken sinds de laatste vernieuwing voor de betreffende instelling.
+    > Omdat de verval tijd van de cache is ingesteld op 10 seconden `SetCacheExpiration` met behulp van de methode terwijl u de configuratie voor de vernieuwings bewerking opgeeft, wordt de waarde voor de configuratie-instelling alleen bijgewerkt als er ten minste tien seconden zijn verstreken sinds de laatste vernieuwing voor die instelling.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -136,7 +142,7 @@ De `ConfigureRefresh` methode wordt gebruikt om op te geven van de instellingen 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een beheerde Azure-service-identiteit toegevoegd om toegang tot app-configuratie te stroomlijnen en het beheer van referenties voor uw app te verbeteren. Voor meer informatie over het gebruik van App-configuratie, gaat u naar de Azure CLI-voorbeelden.
+In deze zelfstudie hebt u een beheerde Azure-service-identiteit toegevoegd om toegang tot app-configuratie te stroomlijnen en het beheer van referenties voor uw app te verbeteren. Ga verder met de voor beelden van Azure CLI voor meer informatie over het gebruik van app-configuratie.
 
 > [!div class="nextstepaction"]
 > [CLI-voorbeelden](./cli-samples.md)

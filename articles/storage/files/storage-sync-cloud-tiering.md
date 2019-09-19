@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 078582b98bca2137a7d25fa3a0833a4707565170
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 36b09ce8ece010ff24345ddb96654f75542cc9a5
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699376"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098964"
 ---
 # <a name="cloud-tiering-overview"></a>Overzicht van Cloud lagen
 Cloud lagen is een optionele functie van Azure File Sync waarbij veelgebruikte bestanden lokaal op de server worden opgeslagen in de cache, terwijl alle andere bestanden worden gelaagd op Azure Files op basis van beleids instellingen. Wanneer een bestand wordt getierd, wordt het bestand met de Azure File Sync bestandssysteem filter (StorageSync. sys) vervangen door een aanwijzer of een reparsepunt. Het reparsepunt vertegenwoordigt een URL naar het bestand in Azure Files. Een gelaagd bestand heeft zowel het kenmerk offline als het kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS in NTFS, zodat toepassingen van derden veilig gelaagde bestanden kunnen identificeren.
@@ -68,11 +68,11 @@ Wanneer de bestanden in versie 4,0 en hoger van de Azure File Sync-agent zijn ge
 Er zijn verschillende manieren om te controleren of een bestand naar uw Azure-bestands share is getierd:
     
    *  **Controleer de bestands kenmerken van het bestand.**
-     Klik met de rechter muisknop op een bestand, ga naar **Details**en schuif omlaag naar de eigenschap Attributes. Voor een gelaagd bestand zijn de volgende kenmerken ingesteld:     
+     Klik met de rechter muisknop op een bestand, ga naar **Details**en schuif omlaag naar de eigenschap **Attributes** . Voor een gelaagd bestand zijn de volgende kenmerken ingesteld:     
         
         | Kenmerk letter | Kenmerk | Definitie |
         |:----------------:|-----------|------------|
-        | G | Archiveren | Geeft aan dat er een back-up moet worden gemaakt van het bestand met back-upsoftware. Dit kenmerk is altijd ingesteld, ongeacht of het bestand op de schijf is gelaagd of volledig wordt opgeslagen. |
+        | A | Archiveren | Geeft aan dat er een back-up moet worden gemaakt van het bestand met back-upsoftware. Dit kenmerk is altijd ingesteld, ongeacht of het bestand op de schijf is gelaagd of volledig wordt opgeslagen. |
         | P | Sparse-bestand | Geeft aan dat het bestand een sparse-bestand is. Een sparse-bestand is een speciaal type bestand dat NTFS biedt voor efficiënt gebruik wanneer het bestand op de schijf stroom grotendeels leeg is. Azure File Sync maakt gebruik van verspreide bestanden omdat een bestand volledig is gelaagd of gedeeltelijk wordt ingetrokken. In een volledig gelaagd bestand wordt de bestands stroom opgeslagen in de Cloud. Het deel van het bestand bevindt zich al op schijf in een gedeeltelijk ingetrokken bestand. Als een bestand volledig wordt ingetrokken, wordt Azure File Sync geconverteerd van een sparse-bestand naar een gewoon bestand. |
         | L | Reparsepunt | Geeft aan dat het bestand een reparsepunt heeft. Een reparsepunt is een speciale verwijzing voor gebruik door een bestandssysteem filter. Azure File Sync maakt gebruik van reparsepunten om te definiëren dat de Azure File Sync bestandssysteem filter (StorageSync. sys) de locatie van de Cloud waar het bestand is opgeslagen. Dit biedt ondersteuning voor naadloze toegang. Gebruikers hoeven niet te weten dat Azure File Sync wordt gebruikt of hoe ze toegang krijgen tot het bestand in de Azure-bestands share. Wanneer een bestand volledig wordt ingetrokken, verwijdert Azure File Sync het reparsepunt uit het bestand. |
         | O | Offline | Geeft aan dat sommige of alle inhoud van het bestand niet op de schijf worden opgeslagen. Wanneer een bestand volledig is ingetrokken, Azure File Sync dit kenmerk verwijdert. |
@@ -100,10 +100,10 @@ De eenvoudigste manier om een bestand in te trekken op schijf is door het bestan
 
 U kunt Power shell ook gebruiken om te forceren dat een bestand wordt ingetrokken. Deze optie kan nuttig zijn als u meerdere bestanden tegelijk wilt intrekken, bijvoorbeeld alle bestanden in een map. Open een Power shell-sessie met het server knooppunt waar Azure File Sync is geïnstalleerd en voer vervolgens de volgende Power shell-opdrachten uit:
     
-    ```powershell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
-    ```
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
+```
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Waarom wordt de eigenschap *grootte op schijf* voor een bestand niet overeenkomen met de eigenschap *grootte* na gebruik van Azure file sync? 
@@ -113,10 +113,10 @@ In Windows Verkenner worden twee eigenschappen beschikbaar gesteld die de groott
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Hoe kan ik moet een bestand of map geforceerd worden getierd?
 Wanneer de functie voor Cloud lagen is ingeschakeld, worden bestanden in Cloud lagen automatisch gelaagd op basis van de laatste toegangs-en wijzigings tijden om het percentage beschik bare ruimte op het Cloud eindpunt te verkrijgen. Soms wilt u een bestand op laag hand matig geforceerd afdwingen. Dit kan handig zijn als u een groot bestand opslaat dat u niet langer wilt gebruiken gedurende een lange periode en u de beschik bare ruimte op uw volume nu wilt gebruiken voor andere bestanden en mappen. U kunt de lagen afdwingen met behulp van de volgende Power shell-opdrachten:
 
-    ```powershell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
-    ```
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Een Azure File Sync-implementatie plannen](storage-sync-files-planning.md)

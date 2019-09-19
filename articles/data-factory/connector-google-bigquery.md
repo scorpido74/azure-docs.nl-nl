@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 70eb70d7c63d66601aebf8e05a2b14b582058296
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: e46bb5e79b20c303dc2d3c29277047aad9f3ffb1
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009244"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090322"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Gegevens uit Google BigQuery kopiëren met behulp van Azure Data Factory
 
@@ -27,7 +27,7 @@ In dit artikel bevat een overzicht over het gebruik van de Kopieeractiviteit in 
 
 Deze Google BigQuery-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit Google BigQuery kopiëren naar een ondersteunde sink-gegevensopslag. Zie voor een lijst met gegevensarchieven die worden ondersteund als gegevensbronnen of PUT voor de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
@@ -132,7 +132,7 @@ Als u wilt kopiëren van gegevens uit Google BigQuery, stel de eigenschap type v
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **GoogleBigQueryObject** | Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **GoogleBigQueryObject** | Ja |
 | sets | De naam van de Google BigQuery-gegevensset. |Nee (als 'query' in de activiteitbron is opgegeven)  |
 | table | Naam van de tabel. |Nee (als 'query' in de activiteitbron is opgegeven)  |
 | tableName | Naam van de tabel. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `dataset` en`table`voor nieuwe werk belasting. | Nee (als 'query' in de activiteitbron is opgegeven) |

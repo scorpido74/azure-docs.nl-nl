@@ -2,17 +2,17 @@
 title: 'Zelfstudie: Apache Hadoop clusters op aanvraag in azure HDInsight-Data Factory'
 description: Zelf studie-informatie over het maken van on-demand Apache Hadoop clusters in HDInsight met behulp van Azure Data Factory.
 author: hrasheed-msft
-ms.reviewer: jasonh
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: de12725952a2bac6a0b86b1d2e239428c0eaa709
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 0b3062e14873ec971163c125fccd6852d8662663
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736169"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098728"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Zelfstudie: Apache Hadoop clusters op aanvraag maken in HDInsight met behulp van Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -203,7 +203,7 @@ In dit artikel configureert u de Hive-activiteit voor het maken van een Hadoop-c
 
 6. Selecteer **auteur & monitor** om de portal voor het maken van Azure Data Factory ontwerpen en controleren te starten.
 
-    ![Overzicht van Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Overzicht van Azure Data Factory")
+    ![Overzicht van Azure Data Factory Portal](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Overzicht van Azure Data Factory")
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
 
@@ -352,7 +352,7 @@ U kunt ook de volledige resource groep verwijderen die u voor deze zelf studie h
 1. Op de tegel **resources** hebt u het standaard opslag account en de Data Factory vermeld, tenzij u de resource groep met andere projecten deelt.
 1. Selecteer **Resourcegroep verwijderen**. Hiermee verwijdert u het opslag account en de gegevens die zijn opgeslagen in het opslag account.
 
-    ![Resource groep verwijderen](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Resource groep verwijderen")
+    ![Resource groep Azure Portal verwijderen](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Resource groep verwijderen")
 
 1. Voer de naam van de resource groep in om het verwijderen te bevestigen en selecteer vervolgens **verwijderen**.
 

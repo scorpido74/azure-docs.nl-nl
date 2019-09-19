@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b898a93b87811fa5139e148a3273d7051af851b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
-ms.translationtype: HT
+ms.openlocfilehash: 1f9b6d4ce4048b31f17b50184f90aed4d2a8ba81
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056292"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086562"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Scenario: Web-app waarmee gebruikers worden aangemeld
 
@@ -32,15 +32,35 @@ Meer informatie over wat u nodig hebt om een web-app te bouwen waarmee gebruiker
 
 ## <a name="getting-started"></a>Aan de slag
 
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
 Als u uw eerste Portable (ASP.NET Core) Web-Apps wilt maken waarmee gebruikers zich aanmelden, volgt u deze Snelstartgids:
 
 > [!div class="nextstepaction"]
 > [Snelstart: ASP.NET Core web-app die gebruikers aanmeldt](quickstart-v2-aspnet-core-webapp.md)
 
-Als u liever met ASP.NET wilt blijven, probeert u de volgende zelf studie:
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+Als u wilt weten hoe u aanmelden kunt toevoegen aan een verouderde ASP.NET-webtoepassing, probeert u de volgende zelf studie:
 
 > [!div class="nextstepaction"]
 > [Snelstart: ASP.NET-Web-app die gebruikers aanmeldt](quickstart-v2-aspnet-webapp.md)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Als u een Java-ontwikkelaar bent, kunt u de volgende Snelstartgids uitproberen:
+
+> [!div class="nextstepaction"]
+> [Snelstart: Aanmelden met micro soft toevoegen aan een Java-Web-app](quickstart-v2-java-webapp.md)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Als u met python ontwikkelt, kunt u het volgende proberen:
+
+> [!div class="nextstepaction"]
+> [Snelstart: Aanmelden met micro soft toevoegen aan een Python-web-app](quickstart-v2-python-webapp.md)
+
+---
 
 ## <a name="overview"></a>Overzicht
 
@@ -51,7 +71,7 @@ U voegt verificatie toe aan uw web-app zodat gebruikers zich kunnen aanmelden. D
 Als tweede fase kunt u uw toepassing ook in staat stellen om namens de aangemelde gebruiker Web-Api's aan te roepen. Deze volgende fase is een ander scenario, dat u vindt in [Web-app-aanroepen Web-api's](scenario-web-app-call-api-overview.md)
 
 > [!NOTE]
-> Het toevoegen van een aanmelding aan een web-app is het beveiligen van de web-app en het valideren van een gebruikers token. Dit zijn de **middleware** -bibliotheken. Voor dit scenario is de micro soft-verificatie bibliotheken (MSAL) nog niet vereist, die het verkrijgen van een token voor het aanroepen van beveiligde Api's. De verificatie bibliotheken worden alleen geïntroduceerd in het vervolg scenario wanneer de web-app Web-Api's moet aanroepen.
+> Het toevoegen van een aanmelding aan een web-app is het beveiligen van de web-app en het valideren van een gebruikers token. Dit zijn de **middleware** -bibliotheken. In het geval van .NET vereist dit scenario nog geen micro soft-verificatie bibliotheken (MSAL), die het verkrijgen van een token voor het aanroepen van beveiligde Api's zijn. De verificatie bibliotheken worden alleen geïntroduceerd in het vervolg scenario wanneer de web-app Web-Api's moet aanroepen.
 
 ## <a name="specifics"></a>Opsporingsgegevens
 

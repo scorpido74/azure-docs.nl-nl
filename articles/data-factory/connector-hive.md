@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 120aed4277abfb2ea977670c107a4ee759bd3524
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 1db5e0fbdd62ee246d32ca04082b7aedd78ab997
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009146"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090261"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Gegevens kopiëren van Hive met Azure Data Factory 
 
@@ -27,7 +27,7 @@ In dit artikel bevat een overzicht over het gebruik van de Kopieeractiviteit in 
 
 Deze Hive-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit Hive kopiëren naar een ondersteunde sink-gegevensopslag. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
@@ -50,7 +50,7 @@ De volgende eigenschappen worden ondersteund voor Hive gekoppelde service:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type moet worden ingesteld op: **Hive** | Ja |
+| type | De eigenschap type moet worden ingesteld op: **Hive** | Ja |
 | host | Het IP-adres of de hostnaam van de Hive-server, gescheiden door '; ' voor meerdere hosts (alleen wanneer serviceDiscoveryMode is ingeschakeld).  | Ja |
 | port | De TCP-poort die gebruikmaakt van de Hive-server om te luisteren naar clientverbindingen. Als u verbinding met Azure HDInsights maken, geeft u poort 443. | Ja |
 | serverType | Het type van Hive-server. <br/>Toegestane waarden zijn: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Nee |
@@ -98,7 +98,7 @@ Om gegevens te kopiëren van de component, stel de eigenschap type van de gegeve
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **HiveObject** | Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **HiveObject** | Ja |
 | Schema | De naam van het schema. |Nee (als 'query' in de activiteitbron is opgegeven)  |
 | table | Naam van de tabel. |Nee (als 'query' in de activiteitbron is opgegeven)  |
 | tableName | De naam van de tabel met inbegrip van het schema gedeelte. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en`table`voor nieuwe werk belasting. | Nee (als 'query' in de activiteitbron is opgegeven) |
@@ -130,7 +130,7 @@ Om gegevens te kopiëren van Hive, stelt u het brontype in de kopieeractiviteit 
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **HiveSource** | Ja |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **HiveSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**

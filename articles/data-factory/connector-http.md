@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 5a4aa1640de3a090deceea690b21a40e49f8ce4c
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 6dd40527cdb073c76872c5768a7bea44b74155b7
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009088"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092050"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Gegevens kopiëren van een HTTP-eind punt met behulp van Azure Data Factory
 
@@ -37,7 +37,7 @@ Het verschil tussen deze HTTP-connector, de [rest-connector](connector-rest.md) 
 
 Deze HTTP-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens van een HTTP-bron kopiëren naar elk ondersteund Sink-gegevens archief. Zie voor een lijst met gegevens opslaat of Kopieeractiviteit als bronnen en sinks ondersteunt, [ondersteunde gegevensarchieven en indelingen](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -67,7 +67,7 @@ De volgende eigenschappen worden ondersteund voor de HTTP-gekoppelde service:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap **type** moet worden ingesteld op **HttpServer**. | Ja |
+| type | De eigenschap **type** moet worden ingesteld op **HttpServer**. | Ja |
 | url | De basis-URL naar de webserver. | Ja |
 | enableServerCertificateValidation | Geef op of de SSL-certificaat validatie van de server moet worden ingeschakeld wanneer u verbinding maakt met een HTTP-eind punt. Als uw HTTPS-server een zelfondertekend certificaat gebruikt, stelt u deze eigenschap in op **Onwaar**. | Nee<br /> (de standaard waarde is **True**) |
 | authenticationType | Hiermee geeft u het verificatie type op. Toegestane waarden zijn **anoniem**, **basis**, **Digest**, **Windows**en **ClientCertificate**. <br><br> Zie de secties die volgen op deze tabel voor meer eigenschappen en JSON-voor beelden voor deze verificatie typen. | Ja |
@@ -180,7 +180,7 @@ Als u gegevens wilt kopiëren naar en van **Parquet, tekst met scheidings tekens
 
 | Eigenschap    | Description                                                  | Vereist |
 | ----------- | ------------------------------------------------------------ | -------- |
-| Type        | De eigenschap type onder `location` in DataSet moet worden ingesteld op **HttpServerLocation**. | Ja      |
+| type        | De eigenschap type onder `location` in DataSet moet worden ingesteld op **HttpServerLocation**. | Ja      |
 | relativeUrl | Een relatieve URL naar de resource die de gegevens bevat.       | Nee       |
 
 > [!NOTE]
@@ -221,7 +221,7 @@ De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens uit
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap **type** van de DataSet moet worden ingesteld op **HttpFile**. | Ja |
+| type | De eigenschap **type** van de DataSet moet worden ingesteld op **HttpFile**. | Ja |
 | relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Als deze eigenschap niet is opgegeven, wordt alleen de URL gebruikt die in de definitie van de gekoppelde service is opgegeven. | Nee |
 | RequestMethod | De HTTP-methode. Toegestane waarden zijn **Get** (standaard) en **post**. | Nee |
 | additionalHeaders | Aanvullende HTTP-aanvraag headers. | Nee |
@@ -288,7 +288,7 @@ Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens, JSON, 
 
 | Eigenschap                 | Description                                                  | Vereist |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| Type                     | De eigenschap type onder `storeSettings` moet worden ingesteld op **HttpReadSetting**. | Ja      |
+| type                     | De eigenschap type onder `storeSettings` moet worden ingesteld op **HttpReadSetting**. | Ja      |
 | RequestMethod            | De HTTP-methode. <br>Toegestane waarden zijn **Get** (standaard) en **post**. | Nee       |
 | addtionalHeaders         | Aanvullende HTTP-aanvraag headers.                             | Nee       |
 | requestBody              | De hoofd tekst van de HTTP-aanvraag.                               | Nee       |
@@ -345,7 +345,7 @@ Als u gegevens wilt kopiëren uit HTTP in de **Orc-indeling**, worden de volgend
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **http**. | Ja |
+| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **http**. | Ja |
 | httpRequestTimeout | De time-out (de time **span** -waarde) voor de HTTP-aanvraag om een antwoord te krijgen. Deze waarde is de time-out voor het verkrijgen van een reactie, niet de time-out voor het lezen van antwoord gegevens. De standaard waarde is **00:01:40**.  | Nee |
 
 **Voorbeeld**

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: d9e31c1c7decec159de9224f97edfcba15f93966
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 1ac8b4577b50ad9daa8d8da3cdb79120b961f55b
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71007835"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71089051"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-preview"></a>Kopiëren van gegevens uit Xero met Azure Data Factory (Preview)
 
@@ -30,7 +30,7 @@ In dit artikel bevat een overzicht over het gebruik van de Kopieeractiviteit in 
 
 Deze Xero-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit Xero kopiëren naar een ondersteunde sink-gegevensopslag. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
@@ -54,7 +54,7 @@ De volgende eigenschappen worden ondersteund voor Xero gekoppelde service:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type moet worden ingesteld op: **Xero** | Ja |
+| type | De eigenschap type moet worden ingesteld op: **Xero** | Ja |
 | host | Het eindpunt van de server Xero (`api.xero.com`).  | Ja |
 | consumerKey | De consumentsleutel die is gekoppeld aan het Xero-toepassing. Dit veld markeren als een SecureString Bewaar deze zorgvuldig in Data Factory, of [verwijzen naar een geheim opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | privateKey | De persoonlijke sleutel van het .pem-bestand dat is gegenereerd voor uw persoonlijke Xero-toepassing, Zie [maken van een openbaar/persoonlijk sleutelpaar](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Houd er rekening mee te **genereren de privatekey.pem met numbits van 512 bytes** met behulp van `openssl genrsa -out privatekey.pem 512`; 1024 wordt niet ondersteund. Alle tekst in het .pem-bestand met inbegrip van de regel Unix endings(\n) omvatten, Zie het voorbeeld hieronder.<br/><br/>Dit veld markeren als een SecureString Bewaar deze zorgvuldig in Data Factory, of [verwijzen naar een geheim opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
@@ -100,7 +100,7 @@ Als u wilt kopiëren van gegevens uit Xero, stel de eigenschap type van de gegev
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **XeroObject** | Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **XeroObject** | Ja |
 | tableName | Naam van de tabel. | Nee (als 'query' in de activiteitbron is opgegeven) |
 
 **Voorbeeld**
@@ -130,7 +130,7 @@ Als u wilt kopiëren van gegevens uit Xero, stelt u het brontype in de kopieerac
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **XeroSource** | Ja |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **XeroSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM Contacts"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**

@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: dalek
-ms.openlocfilehash: f0a3930cfb3ff403e0ce9d9be308370810e2065a
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 62f2ea36468e30b20ef08bde21bfde961faae8f9
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277014"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067020"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Het gebruik en de kosten voor Application Insights beheren
 
@@ -151,7 +151,7 @@ In elk bewaard record `itemCount` geeft het aantal oorspronkelijke records aan d
 ## <a name="change-the-data-retention-period"></a>Wijzigen van de bewaartermijn voor gegevens
 
 > [!NOTE]
-> Deze functie is tijdelijk verwijderd tijdens het oplossen van een mogelijk probleem.  Deze worden weer gegeven op medio september 2019.
+> Deze functie is tijdelijk verwijderd tijdens het oplossen van een mogelijk probleem.  De eerste week wordt deze weer gegeven in oktober 2019.
 
 De standaard Bewaar periode voor Application Insights resources is 90 dagen. Voor elke Application Insights resource kunnen verschillende Bewaar perioden worden geselecteerd. De volledige set beschik bare Bewaar perioden is 30, 60, 90, 120, 180, 270, 365, 550 of 730 dagen. 
 

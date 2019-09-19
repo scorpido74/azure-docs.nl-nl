@@ -1,7 +1,7 @@
 ---
 title: Toegang tot gegevens in azure Storage-services
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van data stores voor toegang tot Azure Storage-services tijdens de training met Azure Machine Learning service
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van data stores voor toegang tot Azure Storage-services tijdens de training met Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b800a7ef38624dbe89a61dd04e2bd97b02066bb
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: eaed6e7b0ea044ba39a1055ad14de13d5deb9b05
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191928"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035298"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Toegang tot gegevens in azure Storage-services
 
@@ -232,7 +232,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 ## <a name="access-data-during-scoring"></a>Toegang tot gegevens tijdens de Score
 
-De Azure Machine Learning-service biedt verschillende manieren om uw modellen te gebruiken voor het scoren van punten. Sommige van deze methoden bieden geen toegang tot gegevens opslag. Gebruik de volgende tabel om inzicht te krijgen in de methoden waarmee u toegang hebt tot gegevens opslag in de Score:
+Azure Machine Learning biedt verschillende manieren om uw modellen te gebruiken voor het scoren van punten. Sommige van deze methoden bieden geen toegang tot gegevens opslag. Gebruik de volgende tabel om inzicht te krijgen in de methoden waarmee u toegang hebt tot gegevens opslag in de Score:
 
 | Methode | Toegang tot Data Store | Description |
 | ----- | :-----: | ----- |

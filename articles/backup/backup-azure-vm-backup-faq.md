@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 09/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 26d07ac0b09655e170b53af91f890f21d15afb1b
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e1cfb9bf0e8b17df67b2f7060f665d169a71c8d6
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909786"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098383"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Veelgestelde vragen: back-ups maken van virtuele Azure-machines
 
@@ -87,7 +87,7 @@ De geplande back-up wordt binnen twee uur na de geplande back-uptijd geactiveerd
 ### <a name="what-is-the-minimum-allowed-retention-range-for-daily-backup-point"></a>Wat is de mini maal toegestane Bewaar termijn voor dagelijks back-uppunt?
 Het back-upbeleid van Azure Virtual Machine ondersteunt een minimale Bewaar termijn van 7 dagen tot 9999 dagen. Elke wijziging van een bestaand VM-back-upbeleid met minder dan zeven dagen vereist dat een update voldoet aan de minimale Bewaar periode van 7 dagen.
 
-## <a name="restore"></a>Terugzetten
+## <a name="restore"></a>Herstellen
 
 ### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>Hoe kan ik bepalen of u alleen schijven of een volledige virtuele machine wilt herstellen?
 U kunt een VM-herstel bewerking beschouwen als een snelle optie voor het maken van een virtuele Azure-machine. Met deze optie wijzigt u de schijf namen, containers die worden gebruikt door de schijven, open bare IP-adressen en netwerk interface namen. De wijziging houdt unieke resources bij wanneer een virtuele machine wordt gemaakt. De virtuele machine is niet toegevoegd aan een beschikbaarheidsset.
@@ -126,6 +126,10 @@ Met de functie voor [direct terugzetten](backup-instant-restore-capability.md) k
 Nadat u de instellingen voor de sleutel kluis voor de verouderde virtuele machine hebt gewijzigd, blijven back-ups met de nieuwe set details werken. na het herstellen vanaf een herstel punt vóór de wijziging, moet u de geheimen in een sleutel kluis herstellen voordat u de VM kunt maken van  ,. Raadpleeg dit [artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret) voor meer informatie
 
 Voor bewerkingen zoals geheime/sleutel roll-over is deze stap niet vereist en dezelfde sleutel kluis kan na het herstellen worden gebruikt.
+
+### <a name="can-i-access-the-vm-once-restored-due-to-an-vm-having-broken-relationship-with-domain-controller"></a>Kan ik toegang krijgen tot de virtuele machine nadat deze is hersteld vanwege een verbroken relatie met de domein controller?
+
+Ja, u kunt de VM na het herstellen openen als gevolg van een verbroken relatie met de domein controller. Raadpleeg dit [artikel](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps) voor meer informatie
 
 ## <a name="manage-vm-backups"></a>Back-ups van uw virtuele machine beheren
 

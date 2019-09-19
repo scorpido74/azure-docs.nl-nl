@@ -2,18 +2,18 @@
 title: Data Lake-hulpprogram ma's voor Visual Studio met Hortonworks sandbox-Azure HDInsight
 description: Meer informatie over het gebruik van de Azure Data Lake-hulpprogram ma's voor Visual Studio met de sandbox Hortonworks die wordt uitgevoerd op een lokale VM. Met deze hulpprogram ma's kunt u Hive-en Pig-taken in de sandbox maken en uitvoeren en taak uitvoer en-geschiedenis weer geven.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: hrasheed
-ms.openlocfilehash: a80cc44dbc4be0728ad632eefd8b9ed62f7f86b1
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 1edab776ec93f057ebf7e37ac887747f86a27db9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962400"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098774"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>De Azure Data Lake-hulpprogram ma's voor Visual Studio gebruiken met de sandbox Hortonworks
 
@@ -41,7 +41,7 @@ Zorg ervoor dat de Hortonworks sandbox wordt uitgevoerd. Volg vervolgens de stap
 
 2. Klik vanuit **Server Explorer**met de rechter muisknop op het **HDInsight** -item en selecteer vervolgens **verbinding maken met HDInsight-emulator**.
 
-    ![Scherm opname van Server Explorer, waarbij Connect to HDInsight emulator is gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/connect-hdinsight-emulator.png)
+    ![Server Explorer, waarbij Connect to HDInsight emulator is gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/connect-hdinsight-emulator.png)
 
 3. Voer in het dialoog venster **verbinding maken met HDInsight-emulator** het wacht woord in dat u hebt geconfigureerd voor Ambari.
 
@@ -112,7 +112,7 @@ Hive biedt een SQL-achtige query taal (HiveQL) voor het werken met gestructureer
     > [!NOTE]  
     > De informatie is hetzelfde als die vanaf de koppeling van het **taak logboek** beschikbaar is nadat een taak is voltooid.
 
-    ![Scherm afbeelding van uitvoer logboek](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output-box.png)
+    ![Scherm opname van HiveServer2-uitvoer](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output-box.png)
 
 ## <a name="create-a-hive-project"></a>Een Hive-project maken
 
@@ -122,7 +122,7 @@ U kunt ook een project maken dat meerdere Hive-scripts bevat. Gebruik een projec
 
 2. Vouw in de lijst met projecten het item **sjablonen**uit, vouw **Azure data Lake**uit en selecteer vervolgens **Hive (HDInsight)** . Selecteer in de lijst met sjablonen Hive-voor **beeld**. Voer een naam en locatie in en selecteer **OK**.
 
-    ![Scherm afbeelding van het nieuwe project venster met Azure Data Lake, HIVE, Hive-voor beeld en OK gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/new-apache-hive-project.png)
+    ![Nieuw project venster, met Azure Data Lake, Hive-voor beeld en OK](./media/hdinsight-hadoop-emulator-visual-studio/new-apache-hive-project.png)
 
 Het **Hive-voorbeeld** project bevat twee scripts: **WebLogAnalysis. HQL** en **SensorDataAnalysis. HQL**. U kunt deze scripts verzenden met behulp van dezelfde knop **verzenden** bovenaan het venster.
 
@@ -179,7 +179,7 @@ Met Data Lake-hulpprogram ma's kunt u eenvoudig informatie bekijken over taken d
 
 2. Als u een tabel uitbreidt, worden de kolommen voor die tabel weer gegeven. Als u de gegevens snel wilt weer geven, klikt u met de rechter muisknop op een tabel en selecteert u **bovenste 100 rijen weer geven**.
 
-    ![Scherm opname van Server Explorer, waarbij de tabel is uitgevouwen en de bovenste 100 rijen weer geven geselecteerd](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-top-100-rows.png)
+    ![Server Explorer, waarbij de tabel is uitgevouwen en de bovenste 100 rijen weer geven geselecteerd](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-top-100-rows.png)
 
 ### <a name="database-and-table-properties"></a>Data Base-en tabel eigenschappen
 

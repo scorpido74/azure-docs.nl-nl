@@ -1,6 +1,6 @@
 ---
-title: Over het integreren van het algemene schema van de waarschuwing met Logic Apps
-description: Informatie over het maken van een logische app die gebruikmaakt van het algemene waarschuwing schema voor het afhandelen van al uw waarschuwingen.
+title: Het algemene waarschuwings schema integreren met Logic Apps
+description: Meer informatie over het maken van een logische app die gebruikmaakt van het algemene waarschuwings schema voor het afhandelen van al uw waarschuwingen.
 author: ananthradhakrishnan
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,40 +8,40 @@ ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: 13cb3880662e1665b03dd63f009645acbe97fc75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f431e5e5f4537d1a5f889457eb81b881e47ee178
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734893"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091787"
 ---
-# <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Over het integreren van het algemene schema van de waarschuwing met Logic Apps
+# <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Het algemene waarschuwings schema integreren met Logic Apps
 
-In dit artikel wordt beschreven hoe u een logische app die gebruikmaakt van het algemene waarschuwing schema voor het afhandelen van al uw waarschuwingen te maken.
+In dit artikel wordt beschreven hoe u een logische app maakt die gebruikmaakt van het algemene waarschuwings schema voor het afhandelen van al uw waarschuwingen.
 
 ## <a name="overview"></a>Overzicht
 
-De [algemene waarschuwing schema](https://aka.ms/commonAlertSchemaDocs) biedt een gestandaardiseerde en uitbreidbare JSON-schema voor alle uw verschillende typen waarschuwingen. Het algemene schema van de waarschuwing is vooral nuttig zijn bij het programmatisch – via webhooks, runbooks en logic apps gebruikt. In dit artikel laten we zien hoe een enkele logische app voor het afhandelen van al uw waarschuwingen worden geschreven. Dezelfde principes kunnen worden toegepast op andere programmatische methoden. De logische app die wordt beschreven in dit artikel maakt u goed gedefinieerde variabelen voor de ['essentiële' velden](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields), en ook wordt beschreven hoe u kunt verwerken [type waarschuwing](/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) specifieke logica.
+Het [algemene waarschuwings schema](https://aka.ms/commonAlertSchemaDocs) voorziet in een gestandaardiseerd en uitbreidbaar JSON-schema voor al uw verschillende typen waarschuwingen. Het algemene waarschuwings schema is het nuttigst wanneer u programmatisch gebruikmaakt van webhooks, runbooks en Logic apps. In dit artikel laten we zien hoe een enkele logische app kan worden ontworpen om al uw waarschuwingen te verwerken. Dezelfde principes kunnen worden toegepast op andere programmatische methoden. De logische app die in dit artikel wordt beschreven, maakt duidelijk gedefinieerde variabelen voor de [essentiële velden](alerts-common-schema-definitions.md#essentials)en beschrijft ook hoe u de specifieke logica van [waarschuwings typen](alerts-common-schema-definitions.md#alert-context) kunt verwerken.
 
 
 ## <a name="prerequisites"></a>Vereisten 
 
-In dit artikel wordt ervan uitgegaan dat de lezer bekend bent met 
-* Instellen van regels voor waarschuwingen ([metric](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric), [log](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log), [activiteitenlogboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log))
-* Instellen van [actiegroepen](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
-* Inschakelen van de [algemene waarschuwing schema](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema#how-do-i-enable-the-common-alert-schema) uit binnen actiegroepen
+In dit artikel wordt ervan uitgegaan dat de lezer bekend is met 
+* Waarschuwings regels instellen ([metrische gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric), [Logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log), [activiteiten logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log))
+* [Actie groepen](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) instellen
+* Het [algemene waarschuwings schema](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema#how-do-i-enable-the-common-alert-schema) inschakelen vanuit actie groepen
 
-## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>Een logische app gebruik van het algemene schema van de waarschuwing maken
+## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>Een logische app maken met behulp van het gemeen schappelijke waarschuwings schema
 
-1. Ga als volgt de [stappen uit om te maken van uw logische app](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups-logic-app). 
+1. Volg de [stappen die worden beschreven om uw logische app te maken](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups-logic-app). 
 
 1.  Selecteer de trigger: **Wanneer een HTTP-aanvraag wordt ontvangen**.
 
-    ![Triggers voor logische app](media/action-groups-logic-app/logic-app-triggers.png "triggers voor logische app")
+    ![Triggers voor logische apps](media/action-groups-logic-app/logic-app-triggers.png "Triggers voor logische apps")
 
-1.  Selecteer **bewerken** te wijzigen van de HTTP-aanvraag als trigger.
+1.  Selecteer **bewerken** om de HTTP-aanvraag trigger te wijzigen.
 
-    ![HTTP-aanvraag triggers](media/action-groups-logic-app/http-request-trigger-shape.png "triggers voor HTTP-aanvragen")
+    ![HTTP-aanvraag triggers](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP-aanvraag triggers")
 
 
 1.  Kopieer en plak het volgende schema:
@@ -115,32 +115,32 @@ In dit artikel wordt ervan uitgegaan dat de lezer bekend bent met
 
 1. Selecteer **+** **nieuwe stap** en kies vervolgens **een actie toevoegen**.
 
-    ![Een actie toevoegen](media/action-groups-logic-app/add-action.png "een actie toevoegen")
+    ![Een actie toevoegen](media/action-groups-logic-app/add-action.png "Een actie toevoegen")
 
-1. In deze fase, kunt u verschillende connectors (Microsoft Teams, Slack, Salesforce, enzovoort) op basis van uw specifieke zakelijke vereisten toevoegen. U kunt de 'essentiële velden' out-of-the-box. 
+1. In deze fase kunt u een verscheidenheid aan connectors (micro soft teams, toegestane vertraging, Sales Force, enz.) toevoegen op basis van uw specifieke bedrijfs vereisten. U kunt het vak ' essentiële velden ' gebruiken. 
 
-    ![Essential fields](media/alerts-common-schema-integrations/logic-app-essential-fields.png "Essential fields")
+    ![Essentiële velden](media/alerts-common-schema-integrations/logic-app-essential-fields.png "Essentiële velden")
     
-    U kunt ook kunt u voorwaardelijke logica op basis van het type waarschuwing met de optie 'Expression' maken.
+    U kunt ook voorwaardelijke logica ontwerpen op basis van het waarschuwings type met behulp van de optie ' Expression '.
 
-    ![Logische app expressie](media/alerts-common-schema-integrations/logic-app-expressions.png "Logic app-expressie")
+    ![Expressie voor logische app](media/alerts-common-schema-integrations/logic-app-expressions.png "Expressie voor logische app")
     
-     De ['monitoringService' veld](/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) kunt u voor het aanduiden van het type waarschuwing op basis van dat u de voorwaardelijke logica kunt maken.
+     In het [veld ' monitoringService '](alerts-common-schema-definitions.md#alert-context) kunt u het waarschuwings type uniek identificeren, op basis waarvan u de voorwaardelijke logica kunt maken.
 
     
-    Bijvoorbeeld, het onderstaande codefragment controleert als de waarschuwing waarschuwing voor een Application Insights op basis van is en als dit het geval is de lijst met zoekresultaten afgedrukt. Else, it prints 'NA'.
+    In het onderstaande fragment wordt bijvoorbeeld gecontroleerd of de waarschuwing een Application Insights op basis van een logboek waarschuwing is, en als dit het geval is, worden de zoek resultaten afgedrukt. Anders wordt ' N.V.T. ' afgedrukt.
 
     ```text
       if(equals(triggerBody()?['data']?['essentials']?['monitoringService'],'Application Insights'),triggerBody()?['data']?['alertContext']?['SearchResults'],'NA')
     ```
     
-     Meer informatie over [expressies logic app](https://docs.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#logical-comparison-functions).
+     Meer informatie over het [schrijven van expressies voor logische apps](https://docs.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#logical-comparison-functions).
 
     
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over actiegroepen](../../azure-monitor/platform/action-groups.md).
-* [Meer informatie over de algemene waarschuwing schema](https://aka.ms/commonAlertSchemaDocs).
+* Meer [informatie over actie groepen](../../azure-monitor/platform/action-groups.md).
+* Meer [informatie over het algemene waarschuwings schema](https://aka.ms/commonAlertSchemaDocs).
 

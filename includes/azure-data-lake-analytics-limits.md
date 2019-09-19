@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: 7f89dc33c105a82646c8f12422f88a06efdca18b
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "67176427"
 ---
 Azure Data Lake Analytics maakt de complexe taak van het beheren van gedistribueerde infra structuur en complexe code eenvoudig. Resources worden dynamisch ingericht en u kunt deze gebruiken om analyses uit te voeren op Exabyte of-gegevens. Wanneer de taak is voltooid, worden de resources automatisch teruggespoeld. U betaalt alleen voor de gebruikte verwerkings kracht. Bij het vergroten of verkleinen van de hoeveelheid opgeslagen gegevens of gebruikte rekenkracht, hoeft u geen code te herschrijven. Neem contact op met de ondersteuning als u de standaard limieten voor uw abonnement wilt verhogen.

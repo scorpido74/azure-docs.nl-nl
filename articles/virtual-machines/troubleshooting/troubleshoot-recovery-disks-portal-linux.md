@@ -4,7 +4,7 @@ description: Meer informatie over het oplossen van problemen met virtuele Linux-
 services: virtual-machines-linux
 documentationCenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: troubleshooting
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
-ms.openlocfilehash: 2dcd2009d93fdf39d1221f2a2f5354fe68658077
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 87b4d761eb7bd1c4a16998e44e8160cda24a05b4
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103371"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088245"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Problemen met een virtuele Linux-machine oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van de Azure Portal
 Als op de virtuele Linux-machine (VM) een opstart-of schijf fout optreedt, moet u mogelijk de stappen voor probleem oplossing uitvoeren op de virtuele harde schijf zelf. Een voor beeld hiervan is een ongeldige vermelding in `/etc/fstab` die verhindert dat de virtuele machine kan worden opgestart. In dit artikel wordt beschreven hoe u de Azure Portal kunt gebruiken om de virtuele harde schijf te verbinden met een andere Linux-VM om eventuele fouten op te lossen en vervolgens de oorspronkelijke VM opnieuw te maken.
@@ -158,7 +158,7 @@ Wanneer de fouten zijn opgelost, koppelt u de bestaande virtuele harde schijf lo
     sudo umount /dev/sdc1
     ```
 
-2. Ontkoppel nu de virtuele harde schijf van de VM. Selecteer uw virtuele machine in de portal en klik op **schijven**. Selecteer uw bestaande virtuele harde schijf en klik vervolgensop ontkoppelen:
+2. Ontkoppel nu de virtuele harde schijf van de VM. Selecteer uw virtuele machine in de portal en klik op **schijven**. Selecteer uw bestaande virtuele harde schijf en klik vervolgens op **ontkoppelen**:
 
     ![Bestaande virtuele harde schijf ontkoppelen](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
 

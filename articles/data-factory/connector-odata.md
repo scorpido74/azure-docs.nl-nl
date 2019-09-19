@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 2d61963f85bc5d2ec6398c8b7439689e7125f9c6
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: f3afccd2414ae4acbd31452d989e9540d36d512d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010652"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090001"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Gegevens kopiëren van een OData-bron met behulp van Azure Data Factory
 
@@ -31,7 +31,7 @@ In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factor
 
 Deze OData-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit een OData-bron kopiëren naar elk ondersteund Sink-gegevens archief. Zie voor een lijst met gegevens opslaat of Kopieeractiviteit als bronnen en sinks ondersteunt, [ondersteunde gegevensarchieven en indelingen](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -57,7 +57,7 @@ De volgende eigenschappen worden ondersteund voor een gekoppelde OData-service:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap **type** moet worden ingesteld op **OData**. |Ja |
+| type | De eigenschap **type** moet worden ingesteld op **OData**. |Ja |
 | url | De basis-URL van de OData-service. |Ja |
 | authenticationType | Het type verificatie dat wordt gebruikt om verbinding te maken met de OData-bron. Toegestane waarden zijn **anoniem**, **basis**, **Windows**, **AadServicePrincipal**en **ManagedServiceIdentity**. OAuth op basis van de gebruiker wordt niet ondersteund. | Ja |
 | userName | Geef **userName** als u basisverificatie of Windows-verificatie gebruikt. | Nee |
@@ -206,7 +206,7 @@ Als u gegevens wilt kopiëren uit OData, stelt u de eigenschap **type** van de g
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap **type** van de DataSet moet worden ingesteld op **ODataResource**. | Ja |
+| type | De eigenschap **type** van de DataSet moet worden ingesteld op **ODataResource**. | Ja |
 | path | Het pad naar de OData-resource. | Ja |
 
 **Voorbeeld**
@@ -242,7 +242,7 @@ Als u gegevens wilt kopiëren uit OData, worden de volgende eigenschappen onders
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **ODataSource**. | Ja |
+| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **ODataSource**. | Ja |
 | query | OData-query opties voor het filteren van gegevens. Voorbeeld: `"$select=Name,Description&$top=5"`.<br/><br/>**Opmerking**: De OData-connector kopieert gegevens van de gecombineerde URL `[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`:. Zie [ODATA URL Components](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)(Engelstalig) voor meer informatie. | Nee |
 
 **Voorbeeld**

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: b91ec46d47814418de21e9afe3e6e5534473c921
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: e538c8b00bddc8a2fa35b158c1e76f9033b73a56
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008971"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71089190"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Gegevens van Teradata-Vantage kopiëren met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -31,7 +31,7 @@ In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factor
 
 Deze Teradata-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens van Teradata-Vantage kopiëren naar elk ondersteund Sink-gegevens archief. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
@@ -66,7 +66,7 @@ De gekoppelde Teradata-service ondersteunt de volgende eigenschappen:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type moet worden ingesteld op **Teradata**. | Ja |
+| type | De eigenschap type moet worden ingesteld op **Teradata**. | Ja |
 | connectionString | Hiermee geeft u de gegevens op die nodig zijn om verbinding te maken met het Teradata-exemplaar. Raadpleeg de volgende voor beelden.<br/>U kunt ook een wacht woord in azure Key Vault plaatsen en de `password` configuratie uit de Connection String halen. Raadpleeg [referenties opslaan in azure Key Vault](store-credentials-in-key-vault.md) met meer informatie. | Ja |
 | username | Geef een gebruikers naam op om verbinding te maken met Teradata. Van toepassing wanneer u Windows-verificatie gebruikt. | Nee |
 | password | Geef een wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. U kunt er ook voor kiezen om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). <br>Is van toepassing wanneer u Windows-verificatie gebruikt of een verwijzing naar een wacht woord in Key Vault voor basis verificatie. | Nee |
@@ -146,7 +146,7 @@ Als u gegevens wilt kopiëren uit Teradata, worden de volgende eigenschappen ond
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de DataSet moet worden ingesteld op `TeradataTable`. | Ja |
+| type | De eigenschap type van de DataSet moet worden ingesteld op `TeradataTable`. | Ja |
 | database | De naam van het Teradata-exemplaar. | Nee (als 'query' in de activiteitbron is opgegeven) |
 | table | De naam van de tabel in het Teradata-exemplaar. | Nee (als 'query' in de activiteitbron is opgegeven) |
 
@@ -200,7 +200,7 @@ Als u gegevens wilt kopiëren uit Teradata, worden de volgende eigenschappen ond
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden `TeradataSource`ingesteld op. | Ja |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet worden `TeradataSource`ingesteld op. | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `"SELECT * FROM MyTable"`.<br>Wanneer u gepartitioneerde belasting inschakelt, moet u alle bijbehorende ingebouwde partitie parameters in uw query koppelen. Zie de sectie [parallelle kopie van Teradata](#parallel-copy-from-teradata) voor voor beelden. | Nee (als de tabel in de gegevensset is opgegeven) |
 | partitionOptions | Hiermee geeft u de opties voor gegevens partities op die worden gebruikt voor het laden van gegevens uit Teradata. <br>Waarden voor toestaan zijn: **Geen** (standaard), **hash** en **DynamicRange**.<br>Wanneer een partitie optie is ingeschakeld (dat wil zeggen, `None`niet), is de mate van parallelle uitvoering om gegevens uit de Teradata gelijktijdig te laden, bepaald [`parallelCopies`](copy-activity-performance.md#parallel-copy) door de instelling van de Kopieer activiteit. | Nee |
 | partitionSettings | Geef de groep van de instellingen voor het partitioneren van gegevens op. <br>Toep assen als de partitie `None`optie niet is. | Nee |

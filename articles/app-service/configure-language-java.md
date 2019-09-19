@@ -14,12 +14,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0538b3ea4ac3a7999a3028cfd8b2cfafbbf7856c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 91f0c059d22fb921aeb0c65f7d4eba95debd530d
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967278"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097737"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Een Windows java-app configureren voor Azure App Service
 
@@ -39,7 +39,7 @@ Implementeer uw War niet met FTP. Het FTP-hulp programma is ontworpen voor het u
 
 ## <a name="logging-and-debugging-apps"></a>Apps registreren en fouten opsporen
 
-Prestatie rapporten, visualisaties van verkeer en de status checkups zijn beschikbaar voor elke app via de Azure Portal. Zie Azure App Service Diagnostics- [overzicht](overview-diagnostics.md)voor meer informatie.
+Prestatie rapporten, visualisaties van verkeer en de status checkups zijn beschikbaar voor elke app via de Azure Portal. Zie [Azure app service Diagnostics-overzicht](overview-diagnostics.md)voor meer informatie.
 
 ### <a name="ssh-console-access"></a>SSH-console toegang
 
@@ -49,11 +49,11 @@ Prestatie rapporten, visualisaties van verkeer en de status checkups zijn beschi
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
-Zie streaming-logboeken [met de Azure cli](troubleshoot-diagnostic-logs.md#streaming-with-azure-cli)voor meer informatie.
+Zie [Stream-Logboeken in Cloud shell](troubleshoot-diagnostic-logs.md#in-cloud-shell)voor meer informatie.
 
 ### <a name="app-logging"></a>App-logboek registratie
 
-Schakel [toepassings logboeken](troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag) in via de Azure portal of [Azure cli](/cli/azure/webapp/log#az-webapp-log-config) om app service te configureren voor het schrijven van de standaard console-uitvoer van de toepassing en de standaard console fout stromen naar het lokale bestands systeem of Azure Blob Storage. Logboek registratie naar het lokale App Service bestandssysteem exemplaar is uitgeschakeld 12 uur nadat het is geconfigureerd. Als u meer retentie nodig hebt, configureert u de toepassing voor het schrijven van uitvoer naar een BLOB storage-container. Uw Java-en tomcat-app-Logboeken kunt u vinden in de */logfiles/Application/* -map.
+Schakel [toepassings logboeken](troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows) in via de Azure portal of [Azure cli](/cli/azure/webapp/log#az-webapp-log-config) om app service te configureren voor het schrijven van de standaard console-uitvoer van de toepassing en de standaard console fout stromen naar het lokale bestands systeem of Azure Blob Storage. Logboek registratie naar het lokale App Service bestandssysteem exemplaar is uitgeschakeld 12 uur nadat het is geconfigureerd. Als u meer retentie nodig hebt, configureert u de toepassing voor het schrijven van uitvoer naar een BLOB storage-container. Uw Java-en tomcat-app-Logboeken kunt u vinden in de */logfiles/Application/* -map.
 
 Als uw toepassing gebruikmaakt van [logback](https://logback.qos.ch/) of [Log4j](https://logging.apache.org/log4j) voor tracering, kunt u deze traceringen door sturen naar Azure-toepassing Insights met behulp van de configuratie-instructies voor logboek registratie in [Java-traceer Logboeken in Application Insights ](/azure/application-insights/app-insights-java-trace-logs).
 
@@ -320,11 +320,11 @@ Ontwikkel aars kunnen de productie-editie van Azul Zulu Enter prise JDK download
 
 ### <a name="development-support"></a>Ontwikkelings ondersteuning
 
-Product ondersteuning voor de door [Azure ondersteunde Azul ZULU jdk](https://www.azul.com/downloads/azure-only/zulu/) is beschikbaar via micro soft bij het ontwikkelen voor azure of [Azure stack](https://azure.microsoft.com/overview/azure-stack/) met een gekwalificeerd ondersteunings [abonnement voor Azure](https://azure.microsoft.com/support/plans/).
+Product ondersteuning voor de door [Azure ondersteunde Azul ZULU jdk](https://www.azul.com/downloads/azure-only/zulu/) is beschikbaar via micro soft bij het ontwikkelen voor azure of [Azure stack](https://azure.microsoft.com/overview/azure-stack/) met een [gekwalificeerd ondersteunings abonnement voor Azure](https://azure.microsoft.com/support/plans/).
 
 ### <a name="runtime-support"></a>Runtime-ondersteuning
 
-Ontwikkel aars kunnen [een probleem](/azure/azure-supportability/how-to-create-azure-support-request) met de Azul Zulu JDKs via Azure-ondersteuning openen als ze een ondersteunings [plan](https://azure.microsoft.com/support/plans/)hebben.
+Ontwikkel aars kunnen [een probleem](/azure/azure-supportability/how-to-create-azure-support-request) met de Azul Zulu JDKs via Azure-ondersteuning openen als ze een [ondersteunings plan](https://azure.microsoft.com/support/plans/)hebben.
 
 ## <a name="next-steps"></a>Volgende stappen
 

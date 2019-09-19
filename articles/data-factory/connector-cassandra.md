@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 91ac76d85422f5f323a833a99b5cc02d9a07889b
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 1531f2530af9c2fbc90d1bf25f04962fb4148a8d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009466"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090472"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Gegevens kopiëren van Cassandra met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -30,7 +30,7 @@ In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factor
 
 Deze Cassandra-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron matrix](copy-activity-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit de Cassandra-data base kopiëren naar elk ondersteund Sink-gegevens archief. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
@@ -61,7 +61,7 @@ De volgende eigenschappen worden ondersteund voor Cassandra gekoppelde service:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type |De eigenschap type moet worden ingesteld op: **Cassandra** |Ja |
+| type |De eigenschap type moet worden ingesteld op: **Cassandra** |Ja |
 | host |Een of meer IP-adressen of hostnamen van Cassandra-servers.<br/>Geef een door komma's gescheiden lijst met IP-adressen of hostnamen op om gelijktijdig verbinding te maken met alle servers. |Ja |
 | port |De TCP-poort die de Cassandra-server gebruikt om te Luis teren naar client verbindingen. |Nee (de standaard waarde is 9042) |
 | authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de Cassandra-data base.<br/>Toegestane waarden zijn: **Basis**en **anoniem**. |Ja |
@@ -104,7 +104,7 @@ Als u gegevens van Cassandra wilt kopiëren, stelt u de eigenschap type van de g
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de gegevensset moet worden ingesteld op: **CassandraTable** | Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **CassandraTable** | Ja |
 | Keys Pace |De naam van de spatie of het schema in de Cassandra-data base. |Nee (als "query" voor "CassandraSource" is opgegeven) |
 | tableName |De naam van de tabel in de Cassandra-data base. |Nee (als "query" voor "CassandraSource" is opgegeven) |
 
@@ -139,7 +139,7 @@ Als u gegevens wilt kopiëren uit Cassandra, stelt u het bron type in de Kopieer
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **CassandraSource** | Ja |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op: **CassandraSource** | Ja |
 | query |Gebruik de aangepaste query om gegevens te lezen. SQL-92-query of CQL-query. Zie [CQL Reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)(Engelstalig). <br/><br/>Wanneer u SQL query gebruikt, geeft u de naam van de **spatie op. tabel naam** voor de tabel die u wilt doorzoeken. |Nee (als "TableName" en "Keys" in de gegevensset zijn opgegeven). |
 | consistencyLevel |Het consistentie niveau geeft aan hoeveel replica's moeten reageren op een lees aanvraag voordat gegevens worden geretourneerd naar de client toepassing. Cassandra controleert het opgegeven aantal replica's voor gegevens om te voldoen aan de Lees aanvraag. Zie [gegevens consistentie configureren](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) voor meer informatie.<br/><br/>Toegestane waarden zijn: **Een**, **twee**, **drie**, **quorum**, **alle**, **LOCAL_QUORUM**, **EACH_QUORUM**en **LOCAL_ONE**. |Nee (standaard instelling `ONE`) |
 
@@ -252,7 +252,7 @@ In de volgende tabellen ziet u de virtuele tabellen die de gegevens van de kolom
 
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
-| 1 |S1 |G |
+| 1 |S1 |A |
 | 1 |S2 |b |
 | 3 |S1 |t |
 
@@ -260,10 +260,10 @@ In de volgende tabellen ziet u de virtuele tabellen die de gegevens van de kolom
 
 | pk_int | StringSet_value |
 | --- | --- |
-| 1 |G |
+| 1 |A |
 | 1 |B |
 | 1 |C |
-| 3 |G |
+| 3 |A |
 | 3 |E |
 
 ## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit

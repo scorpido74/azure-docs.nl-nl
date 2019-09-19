@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1341f0def306a1167e1e4876365c70901cf89cd2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fc1f6434bea8f75c7bcc7859c6f90d7abdd031b
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087008"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091038"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workable"></a>Zelfstudie: Integratie van Azure Active Directory met Workable
 
@@ -30,7 +30,7 @@ De integratie van Workable met Azure AD heeft de volgende voordelen:
 
 * U kunt in Azure AD bepalen wie er toegang krijgt tot Workable.
 * U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Workable (eenmalige aanmelding).
-* U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
+* U kunt uw accounts in één centrale locatie - Azure portal beheren.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
@@ -63,27 +63,27 @@ Als u de integratie van Workable met Azure AD wilt configureren, dient u Workabl
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u de nieuwe toepassing wilt toevoegen, klikt u op de knop **Nieuwe toepassing** boven aan het dialoogvenster.
+3. Nieuwe toepassing toevoegen, klikt u op **nieuwe toepassing** knop boven aan het dialoogvenster.
 
-    ![De knop Nieuwe toepassing](common/add-new-app.png)
+    ![De knop nieuwe toepassing](common/add-new-app.png)
 
 4. Typ **Workable** in het zoekvak, selecteer **Workable** in het venster met resultaten en klik op de knop **Toevoegen** om de toepassing toe te voegen.
 
     ![Workable in de lijst met resultaten](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configureren en Azure AD eenmalige aanmelding testen
 
 In dit gedeelte gaat u eenmalige aanmelding van Azure AD configureren en testen met Workable op basis van een testgebruiker met de naam **Britta Simon**.
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Workable tot stand is gebracht.
 
 Als u eenmalige aanmelding van Azure AD met Workable wilt testen en configureren, dient u de volgende bouwstenen te voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+1. **[Azure AD eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**  : als u wilt dat uw gebruikers kunnen deze functie gebruiken.
 2. **[Workable-eenmalige aanmelding configureren](#configure-workable-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de clientzijde wil configureren.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)**  - voor het testen van Azure AD eenmalige aanmelding met Britta Simon.
+4. **[Toewijzen van de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)**  - Britta Simon gebruik van Azure AD eenmalige aanmelding inschakelen.
 5. **[Workable-testgebruiker maken](#create-workable-test-user)** : als u een tegenhanger van Britta Simon in Workable wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**  : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
@@ -93,7 +93,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met Workabl
 
 1. In de [Azure-portal](https://portal.azure.com/) op de pagina voor integratie van toepassingen met **Workable** selecteert u **Eenmalige aanmelding**.
 
-    ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
+    ![Koppeling voor eenmalige aanmelding configureren](common/select-sso.png)
 
 2. In het dialoogvenster **Een methode voor eenmalige aanmelding selecteren** selecteert u de modus **SAML/WS-Federation** om eenmalige aanmelding in te schakelen.
 
@@ -120,7 +120,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met Workabl
 
 6. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
-    ![De link om het certificaat te downloaden](common/certificatebase64.png)
+    ![De downloadkoppeling certificaat](common/certificatebase64.png)
 
 7. In het gedeelte **Set up Workable** kopieert u de juiste URL('s) op basis van uw behoeften.
 
@@ -130,7 +130,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met Workabl
 
     b. Azure AD-id
 
-    c. Afmeldings-URL
+    c. URL voor afmelden
 
 ### <a name="configure-workable-single-sign-on"></a>Eenmalige aanmelding van Workable configureren
 
@@ -140,11 +140,11 @@ Als u eenmalige aanmelding voor Workable wilt inschakelen, neemt u contact op me
 
 2. Certificaatbestand
 
-3. Afmeldings-URL
+3. URL voor afmelden
 
-Als eenmalige aanmelding is ingeschakeld, uw werkbare accountmanager laat u weten en kunt u [Workable van SSO-pagina](https://id.workable.com/sso/signin) aan te melden bij uw account werkbare-subdomein.
+Als eenmalige aanmelding is ingeschakeld, laat uw beschik bare account beheerder u weten en kunt u [de SSO-pagina van de website](https://help.workable.com/hc/en-us/articles/360000067753-Single-Sign-on-SSO-Overview-Pro) gebruiken om u aan te melden met het subdomein van uw betredende account.
 
-### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
+### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
@@ -162,7 +162,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype `brittasimon\@yourcompanydomain.extension`. Bijvoorbeeld BrittaSimon@contoso.com.
+    b. Typ`brittasimon\@yourcompanydomain.extension`in het veld **gebruikers naam** . Bijvoorbeeld BrittaSimon@contoso.com.
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 

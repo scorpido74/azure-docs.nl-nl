@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 8b35d2441db654278f9d66f3cbb4e7a79d70e835
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 77ccfc1a67fabca7fde47edac9094c6a68191f0f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128050"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090765"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Quickstart: Uw eerste Batch-taak uitvoeren met de Python-API
 
@@ -116,7 +116,7 @@ Bekijk het bestand `python_quickstart_client.py` en de volgende secties voor de 
 
 ### <a name="preliminaries"></a>Voorbereidingen
 
-Voor het werken met een opslagaccount gebruikt de app het [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob)-pakket om een [BlockBlobService](/python/api/azure.storage.blob.blockblobservice.blockblobservice)-object te maken.
+Voor het werken met een opslagaccount gebruikt de app het [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob)-pakket om een [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice)-object te maken.
 
 ```python
 blob_client = azureblob.BlockBlobService(
@@ -124,7 +124,7 @@ blob_client = azureblob.BlockBlobService(
     account_key=config._STORAGE_ACCOUNT_KEY)
 ```
 
-De app gebruikt de `blob_client`-verwijzing om een container te maken in het opslagaccount en om gegevensbestanden naar de container te uploaden. De bestanden in de opslag zijn gedefinieerd als Batch [ResourceFile](/python/api/azure.batch.models.resourcefile)-objecten die later met Batch kunnen worden gedownload op rekenknooppunten.
+De app gebruikt de `blob_client`-verwijzing om een container te maken in het opslagaccount en om gegevensbestanden naar de container te uploaden. De bestanden in de opslag zijn gedefinieerd als Batch [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile)-objecten die later met Batch kunnen worden gedownload op rekenknooppunten.
 
 ```python
 input_file_paths = [os.path.join(sys.path[0], 'taskdata0.txt'),
@@ -149,11 +149,11 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Een pool met rekenknooppunten maken
 
-Voor het maken van een Batch-pool gebruikt de app de [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter)-klasse om het aantal rekenknooppunten, de VM-grootte en een poolconfiguratie in te stellen. Hier geeft het object [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) een [ImageReference](/python/api/azure.batch.models.imagereference) naar een Ubuntu Server 18.04 LTS-installatiekopie op die is gepubliceerd in de Azure Marketplace. Batch ondersteunt diverse Linux- en Windows Server-installatiekopieën in Azure Marketplace, evenals aangepaste VM-installatiekopieën.
+Voor het maken van een Batch-pool gebruikt de app de [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter)-klasse om het aantal rekenknooppunten, de VM-grootte en een poolconfiguratie in te stellen. Hier geeft het object [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) een [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference) naar een Ubuntu Server 18.04 LTS-installatiekopie op die is gepubliceerd in de Azure Marketplace. Batch ondersteunt diverse Linux- en Windows Server-installatiekopieën in Azure Marketplace, evenals aangepaste VM-installatiekopieën.
 
 Het aantal knooppunten (`_POOL_NODE_COUNT`) en de VM-grootte (`_POOL_VM_SIZE`) zijn gedefinieerde constanten. In het voorbeeld wordt standaard een pool met *Standard_A1_v2*-knooppunten van 2 grootten gemaakt. De voorgestelde grootte in dit snelle voorbeeld biedt een goede balans tussen prestaties en kosten.
 
-Met de [pool.add](/python/api/azure.batch.operations.pooloperations)-methode wordt de pool naar de Batch-service verzonden.
+Met de [pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations)-methode wordt de pool naar de Batch-service verzonden.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -174,7 +174,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-batch-job"></a>Een Batch-taak maken
 
-Een Batch-taak is een logische groep met een of meer taken. Een Batch-taak omvat instellingen die gemeenschappelijk zijn voor de taken, zoals prioriteit en de pool waarop taken moeten worden uitgevoerd. De app gebruikt de [JobAddParameter](/python/api/azure.batch.models.jobaddparameter)-klasse om een taak te maken in de pool. Met de methode [Job. add](/python/api/azure.batch.operations.joboperations) wordt een taak toegevoegd aan het opgegeven batch-account. De Batch-taak heeft in eerste instantie geen taken.
+Een Batch-taak is een logische groep met een of meer taken. Een Batch-taak omvat instellingen die gemeenschappelijk zijn voor de taken, zoals prioriteit en de pool waarop taken moeten worden uitgevoerd. De app gebruikt de [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter)-klasse om een taak te maken in de pool. Met de methode [Job. add](/python/api/azure-batch/azure.batch.operations.joboperations) wordt een taak toegevoegd aan het opgegeven batch-account. De Batch-taak heeft in eerste instantie geen taken.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -185,9 +185,9 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>Taken maken
 
-De app gebruikt de [TaskAddParameter](/python/api/azure.batch.models.taskaddparameter)-klasse om een lijst met taakobjecten te maken. Met elke taak wordt een `resource_files`-invoerobject verwerkt met behulp van een `command_line`-parameter. In het voorbeeld wordt met de opdrachtregel de opdracht `cat` voor de Bash-shell uitgevoerd om het tekstbestand weer te geven. Deze opdracht is een eenvoudig voorbeeld voor demonstratiedoeleinden. Wanneer u Batch gebruikt, geeft u uw app of script op de opdrachtregel op. Batch biedt een aantal manieren om apps en scripts te implementeren op rekenknooppunten.
+De app gebruikt de [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter)-klasse om een lijst met taakobjecten te maken. Met elke taak wordt een `resource_files`-invoerobject verwerkt met behulp van een `command_line`-parameter. In het voorbeeld wordt met de opdrachtregel de opdracht `cat` voor de Bash-shell uitgevoerd om het tekstbestand weer te geven. Deze opdracht is een eenvoudig voorbeeld voor demonstratiedoeleinden. Wanneer u Batch gebruikt, geeft u uw app of script op de opdrachtregel op. Batch biedt een aantal manieren om apps en scripts te implementeren op rekenknooppunten.
 
-Vervolgens worden met de app taken toegevoegd aan de Batch-taak met behulp van de [task.add_collection](/python/api/azure.batch.operations.taskoperations)-methode. Deze methode plaatst de taken in een wachtrij voor uitvoering op de rekenknooppunten. 
+Vervolgens worden met de app taken toegevoegd aan de Batch-taak met behulp van de [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations)-methode. Deze methode plaatst de taken in een wachtrij voor uitvoering op de rekenknooppunten. 
 
 ```python
 tasks = list()

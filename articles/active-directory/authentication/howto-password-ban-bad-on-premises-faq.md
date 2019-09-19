@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82fe917f911be45d7f68662e956fe3bd14f92267
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 74f81cb1f9b62755d2dd2707518b828466e9ed1b
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959885"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097573"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>On-premises Veelgestelde vragen over Azure AD-wachtwoord beveiliging
 
@@ -136,6 +136,10 @@ Nee.
 **V: Waarom wordt er nog steeds zwakke wacht woorden door Azure AD afgewezen, zelfs als ik het beleid in de controle modus heb geconfigureerd?**
 
 De controle modus wordt alleen ondersteund in de on-premises Active Directory omgeving. Azure AD wordt impliciet altijd in de modus ' afdwingen ' wanneer wacht woorden worden geëvalueerd.
+
+**V: Mijn gebruikers zien het traditionele Windows-fout bericht wanneer een wacht woord wordt geweigerd door Azure AD-wachtwoord beveiliging. Is het mogelijk om dit fout bericht aan te passen zodat gebruikers weten wat er echt is gebeurd?**
+
+Nee. Het fout bericht dat door gebruikers wordt weer gegeven wanneer een wacht woord wordt geweigerd door een domein controller, wordt beheerd door de client computer, niet door de domein controller. Dit gedrag treedt op of een wacht woord wordt geweigerd door de standaard Active Directory wachtwoord beleid of door een oplossing op basis van een wacht woord filter, zoals Azure AD-wachtwoord beveiliging.
 
 ## <a name="additional-content"></a>Aanvullende inhoud
 

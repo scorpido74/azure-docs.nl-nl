@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9102d6f3ce3be44107268419517dc9ebe434ac7a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bfb66789df3236c096ea00bcc83ddc435e87f047
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098465"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097650"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Overzicht van lokale cache Azure App Service
 
@@ -49,7 +49,7 @@ De functie Azure App Service lokale cache biedt een weer gave van webrollen van 
 * De lokale cache bevat een eenmalige kopie van de _/site_ -en _/siteextensions_ -mappen van het gedeelde inhouds archief, respectievelijk op _D:\home\site_ en _D:\home\siteextensions_. De bestanden worden gekopieerd naar de lokale cache wanneer de app wordt gestart. De grootte van de twee mappen voor elke app is standaard beperkt tot 300 MB, maar u kunt deze verhogen tot 2 GB.
 * De lokale cache is lezen/schrijven. Elke wijziging wordt echter verwijderd wanneer de app virtuele machines verplaatst of opnieuw wordt gestart. Gebruik niet de lokale cache voor apps die essentiële gegevens in het inhouds archief opslaan.
 * _D:\home\LogFiles_ en _D:\home\Data_ bevatten logboek bestanden en app-gegevens. De twee submappen worden lokaal opgeslagen in het VM-exemplaar en worden periodiek naar het gedeelde inhouds archief gekopieerd. Apps kunnen logboek bestanden en gegevens persistent maken door deze te schrijven naar deze mappen. De kopie naar het gedeelde inhouds archief is echter het meest geschikt voor het geval dat logboek bestanden en gegevens verloren gaan als gevolg van een plotselinge crash van een VM-exemplaar.
-* [](troubleshoot-diagnostic-logs.md#streamlogs) Het streamen van Logboeken wordt beïnvloed door de best mogelijke kopieer activiteit. U kunt in de gestreamde Logboeken een vertraging van één minuut opvolgen.
+* Het [streamen van Logboeken](troubleshoot-diagnostic-logs.md#stream-logs) wordt beïnvloed door de best mogelijke kopieer activiteit. U kunt in de gestreamde Logboeken een vertraging van één minuut opvolgen.
 * In het gedeelde inhouds archief bevindt zich een wijziging in de mappen structuur van de _logboek bestanden_ en _gegevens_ mappen voor apps die gebruikmaken van de lokale cache. Er bevinden zich nu submappen die het naam patroon van ' unieke id ' + tijds tempel volgen. Elk van de submappen komt overeen met een VM-exemplaar waarop de app wordt uitgevoerd of die wordt uitgevoerd.
 * Andere mappen in _D:\home_ blijven in de lokale cache en worden niet gekopieerd naar het gedeelde inhouds archief.
 * App-implementatie via een ondersteunde methode publiceert rechtstreeks naar het archief met duurzame gedeelde inhoud. Als u de _D:\home\site_ -en _D:\home\siteextensions_ -mappen in de lokale cache wilt vernieuwen, moet u de app opnieuw starten. Zie de informatie verderop in dit artikel om de levens cyclus naadloos te maken.

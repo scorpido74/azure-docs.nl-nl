@@ -5,7 +5,7 @@ keywords: SSH-verbinding geweigerd, SSH-fout, Azure SSH, SSH-verbinding is mislu
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: dcb82e19-29b2-47bb-99f2-900d4cfb5bbb
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: fd3c40d56e0ba9cdb50847832051606f81d0e952
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 006dbbe1b7472982a894691d019eb88ef2041dac
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677677"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088270"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Problemen met SSH-verbindingen met een virtuele Azure Linux-machine oplossen die mislukt, fouten veroorzaken of worden geweigerd
 Dit artikel helpt u bij het vinden en corrigeren van de problemen die zich voordoen als gevolg van SSH-fouten (Secure Shell), SSH-verbindings fouten of SSH worden geweigerd wanneer u verbinding probeert te maken met een virtuele Linux-machine (VM). U kunt de Azure Portal-, Azure CLI-of VM-extensie voor toegang voor Linux gebruiken om verbindings problemen op te lossen
@@ -49,7 +49,7 @@ Blijf lezen voor meer gedetailleerde stappen voor probleem oplossing en uitleg.
 U kunt de referenties of de SSH-configuratie opnieuw instellen met een van de volgende methoden:
 
 * [Azure Portal](#use-the-azure-portal) -geweldig als u de SSH-configuratie of SSH-sleutel snel opnieuw moet instellen en u de Azure-hulpprogram ma's niet hebt geïnstalleerd.
-* [Seriële console van Azure VM](https://aka.ms/serialconsolelinux) : de seriële VM-console werkt onafhankelijk van de SSH-configuratie en geeft u een interactieve console voor uw VM. In het geval van ' niet SSH '-situaties is het specifiek dat de seriële console is ontworpen om te helpen oplossen. Hieronder vindt u meer informatie.
+* [Seriële console van Azure VM](https://aka.ms/serialconsolelinux) : de seriële VM-console werkt onafhankelijk van de SSH-configuratie en geeft u een interactieve console voor uw VM. In het geval van ' niet SSH '-situaties is het specifiek dat de seriële console is ontworpen om te helpen oplossen. Meer informatie hieronder.
 * [Azure cli](#use-the-azure-cli) : als u zich al op de opdracht regel bevindt, stelt u de SSH-configuratie of-referenties snel opnieuw in. Als u werkt met een klassieke virtuele machine, kunt u de [klassieke Azure-cli](#use-the-azure-classic-cli)gebruiken.
 * [Azure VMAccessForLinux-extensie](#use-the-vmaccess-extension) : Maak en hergebruik JSON-definitie bestanden om de SSH-configuratie of gebruikers referenties opnieuw in te stellen.
 
