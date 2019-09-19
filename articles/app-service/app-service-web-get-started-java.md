@@ -15,13 +15,13 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
-ms.custom: mvc, seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 615a4c055980381771d3b63eba878846fd583cc9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 3251637d5a5bd0593a9eaf559963921a68a6ccdc
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883608"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102762"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Quickstart: Een Java-app maken op Azure App Service in Windows
 
@@ -34,7 +34,7 @@ ms.locfileid: "70883608"
 > [!NOTE]
 > Dit kan ook worden gedaan met populaire Ide's zoals IntelliJ en eclips. Bekijk onze vergelijk bare documenten op [Azure-Toolkit voor IntelliJ Quick](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) start of [Azure-Toolkit voor eclipse Quick](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)start.
 >
-![Voorbeeld-app die wordt uitgevoerd in Azure](./media/app-service-web-get-started-java/java-hello-world-in-browser.png)
+![Voor beeld-app die wordt uitgevoerd in Azure App Service](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -119,7 +119,7 @@ mvn package azure-webapp:deploy
 
 Zodra de implementatie is voltooid, bladert u naar de geïmplementeerde toepassing met behulp van de volgende URL in uw webbrowser, bijvoorbeeld `http://<webapp>.azurewebsites.net/`.
 
-![Voorbeeld-app die wordt uitgevoerd in Azure](./media/app-service-web-get-started-java/java-hello-world-in-browser.png)
+![Voor beeld-app die wordt uitgevoerd in Azure App Service](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
 **Gefeliciteerd!** U hebt uw eerste Java-app geïmplementeerd op App Service in Windows.
 

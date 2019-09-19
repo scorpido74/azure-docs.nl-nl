@@ -1,30 +1,31 @@
 ---
 title: HDInsight-cluster upgraden naar een nieuwere versie-Azure
 description: Meer informatie over richt lijnen voor het bijwerken van uw Azure HDInsight-cluster naar een nieuwere versie.
-ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: a62da0d27d21589f7b75a89cc184ce9f456f1fed
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 808e592a01bca2066b7d3d37a5fdfa697d739d4b
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960696"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122437"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>HDInsight-cluster upgraden naar een nieuwere versie
+
 Als u gebruik wilt maken van de nieuwste HDInsight-functies, raden we aan dat HDInsight-clusters worden bijgewerkt naar de nieuwste versie. Volg de onderstaande richt lijnen om de versies van uw HDInsight-cluster bij te werken.
 
 > [!NOTE]  
 > Zie [HDInsight-onderdeel versies](hdinsight-component-versioning.md#supported-hdinsight-versions)voor meer informatie over ondersteunde versies van hdinsight.
 
 ## <a name="upgrade-tasks"></a>Upgrade taken
-De werk stroom voor het upgraden van een HDInsight-cluster is als volgt.
 
-![Werk stroom diagram bijwerken](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
+De werk stroom voor het upgraden van een HDInsight-cluster is als volgt.
+![Werk stroom diagram voor HDInsight-upgrade](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
 
 1. Lees elke sectie van dit document voor meer informatie over wijzigingen die mogelijk vereist zijn bij het upgraden van uw HDInsight-cluster.
 2. Maak een cluster als test-of kwaliteits borgings omgeving. Zie [informatie over het maken van HDInsight-clusters op basis van Linux](hdinsight-hadoop-provision-linux-clusters.md) voor meer informatie over het maken van een cluster.
@@ -40,7 +41,7 @@ Zodra u hebt gecontroleerd of alles werkt zoals verwacht, kunt u de downtime voo
 5.  Start taken/Ga door met de verwerking met het nieuwe cluster.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 * [Meer informatie over het maken van HDInsight-clusters op basis van Linux](hdinsight-hadoop-provision-linux-clusters.md)
 * [Verbinding maken met HDInsight via SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [Een op Linux gebaseerd cluster beheren met Apache Ambari](hdinsight-hadoop-manage-ambari.md)
-

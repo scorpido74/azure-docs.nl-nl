@@ -4,7 +4,7 @@ description: Er zijn enkele veelvoorkomende problemen die u kunt ondervinden bij
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
-manager: felixwu
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: a18ae415-0d1c-4bc4-ab6c-c1ddea02c870
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: e8ed7066025dd60f0c157a4ce4caec925fe08792
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: ccb08f853ae0f941dd5f9c0eca8c77f0f650905a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945375"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122754"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>Problemen met de implementatie van Cloud Services oplossen
 Wanneer u een Cloud service toepassings pakket implementeert in azure, kunt u informatie over de implementatie verkrijgen via het deel venster **Eigenschappen** in de Azure Portal. U kunt de details in dit deel venster gebruiken om problemen met de Cloud service op te lossen en u kunt deze informatie aan Azure-ondersteuning verstrekken bij het openen van een nieuwe ondersteunings aanvraag.
@@ -39,7 +39,7 @@ U kunt het deel venster **Eigenschappen** als volgt vinden:
 De URL-koppeling van de website die in de portal wordt weer gegeven, bevat niet de poort. De standaard poort voor websites is 80. Als uw toepassing is geconfigureerd om te worden uitgevoerd in een andere poort, moet u het juiste poort nummer toevoegen aan de URL bij het openen van de website.
 
 1. Klik in de Azure Portal op de implementatie van uw Cloud service.
-2. Controleer in het deel venster **Eigenschappen** van de Azure Portal de poorten voor de rolinstanties (onder **invoer**eindpunten).
+2. Controleer in het deel venster **Eigenschappen** van de Azure Portal de poorten voor de rolinstanties (onder **invoer eindpunten**).
 3. Als de poort niet 80 is, voegt u de juiste poort waarde toe aan de URL wanneer u de toepassing opent. Als u een niet-standaard poort wilt opgeven, typt u de URL, gevolgd door een dubbele punt (:), gevolgd door het poort nummer, zonder spaties.
 
 ## <a name="problem-my-role-instances-recycled-without-me-doing-anything"></a>Fout Mijn rolinstanties worden gerecycled zonder dat ik iets hoeft te doen
@@ -65,9 +65,9 @@ Als u wilt weten of een automatische update verhindert dat u een VIP-wissel uitv
 4. Als een automatische update wordt uitgevoerd, wacht u totdat deze is voltooid voordat u de VIP-swap uitvoert.
 
 ## <a name="problem-a-role-instance-is-looping-between-started-initializing-busy-and-stopped"></a>Fout Een rolinstantie is een lus tussen start, initialiseren, bezet en gestopt
-Dit probleem kan duiden op een probleem met uw programmacode, pakket of configuratiebestand. In dat geval ziet u dat de status elke paar minuten kan worden gewijzigd. de Azure Portal kan bijvoorbeeld worden gerecycled, **bezet**of **initialisatie**. Dit geeft aan dat er iets mis is met de toepassing die ervoor zorgt dat de rolinstantie actief blijft.
+Dit probleem kan duiden op een probleem met uw programmacode, pakket of configuratiebestand. In dat geval ziet u dat de status elke paar minuten kan worden gewijzigd. de Azure Portal kan bijvoorbeeld worden **gerecycled**, **bezet**of **initialisatie**. Dit geeft aan dat er iets mis is met de toepassing die ervoor zorgt dat de rolinstantie actief blijft.
 
-Voor meer informatie over het oplossen van problemen met dit probleem raadpleegt u het blog bericht [Azure PaaS Compute Diagnostics-gegevens](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx) en [veelvoorkomende problemen waardoor rollen kunnen worden](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)gerecycled.
+Voor meer informatie over het oplossen van problemen met dit probleem raadpleegt u het blog bericht [Azure PaaS Compute Diagnostics-gegevens](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx) en [veelvoorkomende problemen waardoor rollen kunnen worden gerecycled](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
 ## <a name="problem-my-application-stopped-working"></a>Fout Mijn toepassing werkt niet meer
 1. Klik in de Azure Portal op de rolinstantie.

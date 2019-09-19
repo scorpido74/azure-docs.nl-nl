@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: f4308cf0309725fc0ba3b5feb047d04af2ebbe66
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 6177f5821efe74fdf3a6aba7fe52f41e9db22728
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638185"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123105"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Wat is een kennis winkel in Azure Search?
 
@@ -132,7 +132,7 @@ De gegevens of documenten die u wilt verrijken, moeten aanwezig zijn in een Azur
 
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 
-[Azure-tabel opslag](search-howto-indexing-azure-tables.md) kan worden gebruikt voor uitgaande gegevens in een Knowledge Store, maar kan niet worden gebruikt als resource voor inkomende gegevens naar een op AI gebaseerde indexerings pijplijn.
+* [Azure Table storage](search-howto-indexing-azure-tables.md)
 
 ### <a name="2---azure-search-service"></a>2-Azure Search-service
 

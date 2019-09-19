@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5175dee24542c716b3d087412864ae7e6f056d18
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4e24246ec4ed30ec93bf8e113d659bc5e3600913
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615986"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130118"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Gegevensbronnen voor QnA Maker-inhoud
 
@@ -202,6 +202,15 @@ Een nieuwe regel tussen twee zinnen.|`\n\n`|`How can I create a bot with \n\n Qn
 |Geneste lijsten|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>U kunt bestelde en niet-geordende lijsten samen nesten. Het tabblad, `\t`, geeft het inspring niveau van het onderliggende element aan.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![indeling voor geneste niet-geordende lijst](../media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![indeling voor geneste geordende lijst](../media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
 
 \* QnA Maker de afbeelding niet op enigerlei manier verwerken. Het is de rol van de client toepassing om de installatie kopie weer te geven. 
+
+Als u inhoud wilt toevoegen met behulp van de Knowledge Base-Api's update/vervangen en de inhoud/het bestand bevat HTML-tags, kunt u de HTML in het bestand behouden door ervoor te zorgen dat het openen en sluiten van de tags in de gecodeerde indeling wordt geconverteerd.
+
+| HTML behouden  | Vertegenwoordiging in de API-aanvraag  | Representatie in KB |
+|-----------|---------|-------------------------|
+| Ja | \&lt; br\&gt; | &lt;uitproberen&gt; |
+| Ja | \&lt; h3\&gt; koptekst\&lt;/h3\&gt; | &lt;H3&gt;header&lt;/H3&gt; |
+
+CR LF (\r\n) wordt ook geconverteerd naar \n in de KB. LF (\n) wordt bewaard. Als u een escape reeks als een \t of \n wilt escapepen, kunt u back slash gebruiken, bijvoorbeeld:\\'\\\\r\\n ' en\\'\\t '
 
 ## <a name="editing-your-knowledge-base-locally"></a>Uw kennis database lokaal bewerken
 

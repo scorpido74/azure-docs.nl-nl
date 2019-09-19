@@ -1,19 +1,19 @@
 ---
 title: Operationeel maken ML Services op HDInsight-Azure
 description: Meer informatie over hoe u uw gegevens model kunt operationeel makenen om voor spellingen te doen met ML-Services in azure HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 4980b4d3a4ec7165a4aba3d02561f6c666150924
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: a05bcdef2b7456fbab852e9728c156e57f847f57
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967688"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123571"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationeel maken ML-cluster in azure HDInsight
 
@@ -50,31 +50,31 @@ Nadat u het server gebruik van MILLILITERs in HDInsight hebt gebruikt om uw gege
 
 1. U krijgt de keuze uit de opties waaruit u kunt kiezen. Kies de eerste optie, zoals wordt weer gegeven in de volgende scherm afbeelding, om **ml server voor uitoefening te configureren**.
 
-    ![Eén vak OP1](./media/r-server-operationalize/admin-util-one-box-1.png)
+    ![R Server Administration Utility selecteren](./media/r-server-operationalize/admin-util-one-box-1.png)
 
 1. U krijgt nu de optie om te kiezen hoe u ML Server wilt operationeel maken. Kies in de weer gegeven opties de eerste door **een**te typen.
 
-    ![Eén vak op2](./media/r-server-operationalize/admin-util-one-box-2.png)
+    ![R Server Administration Utility operationeel maken](./media/r-server-operationalize/admin-util-one-box-2.png)
 
 1. Wanneer u hierom wordt gevraagd, voert u het wacht woord voor een lokale gebruikers beheerder in en voert u het opnieuw in.
 
 1. Er moeten uitvoer resultaten worden weer geven waarin wordt voorgesteld dat de bewerking is geslaagd. U wordt ook gevraagd een andere optie te selecteren in het menu. Selecteer E om terug te gaan naar het hoofd menu.
 
-    ![Eén vak OP3](./media/r-server-operationalize/admin-util-one-box-3.png)
+    ![R Server Administration-hulp programma geslaagd](./media/r-server-operationalize/admin-util-one-box-3.png)
 
 1. U kunt ook diagnostische controles uitvoeren door de volgende diagnostische test uit te voeren:
 
     a. Selecteer in het hoofd menu de optie **6** om diagnostische tests uit te voeren.
 
-    ![diagnostic1](./media/r-server-operationalize/hdinsight-diagnostic1.png)
+    ![Diagnostische R Server Administration-hulpprogram ma's](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
     b. Selecteer in het menu diagnostische tests **een**. Wanneer u hierom wordt gevraagd, voert u het wacht woord in dat u hebt opgegeven voor de gebruiker van de lokale beheerder.
 
-    ![diagnostic2](./media/r-server-operationalize/hdinsight-diagnostic2.png)
+    ![Hulp programma R Server Administration-hulpprogram ma's](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
     c. Controleer of de uitvoer laat zien dat de algehele status is geslaagd.
 
-    ![diagnostic3](./media/r-server-operationalize/hdinsight-diagnostic3.png)
+    ![Hulp programma voor het beheer van R-servers](./media/r-server-operationalize/hdinsight-diagnostic3.png)
 
     d. Voer in de weer gegeven menu opties **E** in om terug te keren naar het hoofd menu en voer **8** in om het beheer hulpprogramma af te sluiten.
 
@@ -148,7 +148,7 @@ Volg deze stappen voor het buiten gebruik stellen van worker-knoop punten:
 
 1. Klik op **acties** > **geselecteerde hosts** > hosts**host** > de**onderhouds modus inschakelen**. In de volgende afbeelding zijn bijvoorbeeld wk3 en wk4 geselecteerd om uit bedrijf te worden genomen.  
 
-   ![worker-knooppunten uit bedrijf nemen](./media/r-server-operationalize/get-started-operationalization.png)  
+   ![Apache Ambari-onderhouds modus inschakelen](./media/r-server-operationalize/get-started-operationalization.png)  
 
 * Selecteer **acties** > **geselecteerde hosts** > **DataNodes** > Klik op uit **bedrijf nemen**.
 * Selecteer **acties** > **geselecteerde hosts** > **NodeManagers** > Klik op uit **bedrijf nemen**.

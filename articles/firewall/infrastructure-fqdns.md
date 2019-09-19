@@ -1,34 +1,33 @@
 ---
-title: FQDN-naam voor de Firewall van Azure-infrastructuur
-description: Meer informatie over de infrastructuur FQDN-namen in de Azure-Firewall
+title: De FQDN van de infra structuur voor Azure Firewall
+description: Meer informatie over infrastructuur FQDN-Azure Firewall
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 9/24/2018
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 34201a0eb4139de64261f77f285096a2aa2dd3aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b134058e1924bae030338411226a9a6aff46557
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61066318"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130208"
 ---
 # <a name="infrastructure-fqdns"></a>FQDN's voor infrastructuur
 
 Azure Firewall bevat een ingebouwde regelverzameling voor infrastructuur-FQDN’s die standaard zijn toegestaan. Deze FQDN’s zijn specifiek voor het platform en kunnen niet voor andere doeleinden worden gebruikt. 
 
-De volgende services zijn opgenomen in de ingebouwde verzameling:
+De volgende services zijn opgenomen in de ingebouwde regel verzameling:
 
-- Toegang tot opslag Platform Image Repository (PIR) COMPUTE
-- Beheerde schijven voor toegang tot opslag status
-- Azure Diagnostics en logboekregistratie (MDS)
-- Azure Active Directory
+- Berekenings toegang tot opslag platform installatie kopie opslagplaats (PIR)
+- Toegang tot de status van beheerde schijven
+- Azure Diagnostics en logboek registratie (MDS)
 
 ## <a name="overriding"></a>Overschrijven 
 
-U kunt deze ingebouwde infrastructuur regelverzameling overschrijven door het maken van een weigeren alle verzameling van de toepassing-regel die als laatste is verwerkt. Deze wordt altijd vóór de infrastructuurregelverzameling verwerkt. Alles wat niet in de infrastructuurregelverzameling staat, wordt standaard geweigerd.
+U kunt deze ingebouwde infrastructuur regel verzameling overschrijven door het maken van een alle toepassings regel verzameling weigeren die het laatst is verwerkt. Deze wordt altijd vóór de infrastructuurregelverzameling verwerkt. Alles wat niet in de infrastructuurregelverzameling staat, wordt standaard geweigerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [implementeren en configureren van een Azure-Firewall](tutorial-firewall-deploy-portal.md).
+- Meer informatie over het [implementeren en configureren van een Azure firewall](tutorial-firewall-deploy-portal.md).

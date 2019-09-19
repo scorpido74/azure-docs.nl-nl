@@ -17,12 +17,12 @@ ms.date: 06/07/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a0a5b5306414eb50a1928ec8a1854f56055681
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9e50f2b92318ada729ad8e3405af8403f31d7b6e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987899"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129293"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Problemen met Azure Active Directory activiteiten logboeken van inhouds pakketten oplossen 
 
@@ -47,7 +47,7 @@ In dit artikel vindt u informatie over de mogelijke oorzaken en het oplossen van
 | Oorzaak | Oplossen |
 | ---   | ---        |
 | Fout bij het vernieuwen van fouten kan worden veroorzaakt wanneer de referenties van de gebruikers die verbinding maken met het inhouds pakket, opnieuw zijn ingesteld, maar niet zijn bijgewerkt in de verbindings instellingen van het inhouds pakket. | Ga in Power BI naar de gegevensset die overeenkomt met het dash board van Azure AD-activiteiten Logboeken (**Azure Active Directory activiteiten logboeken**), kies planning vernieuwen en voer uw Azure AD-referenties in. |
-| Het vernieuwen kan mislukken vanwege grote gegevens sets. | Het Azure AD-inhouds pakket met Power BI kan momenteel alleen kleine gegevens sets (minder dan 500, 00 rijen) ondersteunen vanwege enkele beperkingen in de Power BI-service. Als u vertragings fouten ondervindt of als het vernieuwen mislukt als gevolg van time-outproblemen, kan dit ertoe leiden dat u een grote gegevensset probeert op te halen. Verklein de tijds periode in de query en probeer het opnieuw.|
+| Het vernieuwen kan mislukken vanwege grote gegevens sets. | Het Azure AD-inhouds pakket met Power BI kan momenteel alleen kleine gegevens sets (minder dan 500.000 rijen) ondersteunen vanwege enkele beperkingen in de Power BI-service. Als u vertragings fouten ondervindt of als het vernieuwen mislukt als gevolg van time-outproblemen, kan dit ertoe leiden dat u een grote gegevensset probeert op te halen. Verklein de tijds periode in de query en probeer het opnieuw.|
  
  
 ## <a name="failed-to-update-data-source-credentials"></a>Kan de referenties van de gegevens bron niet bijwerken 

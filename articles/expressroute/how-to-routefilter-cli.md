@@ -1,5 +1,5 @@
 ---
-title: 'Routefilters voor Microsoft-peering - configureren ExpressRoute: Azure CLI | Microsoft Docs'
+title: 'Route filters configureren voor micro soft-peering-ExpressRoute: Azure CLI | Microsoft Docs'
 description: In dit artikel wordt beschreven hoe u routefilters voor Microsoft-Peering met behulp van Azure CLI configureren
 services: expressroute
 author: anzaman
@@ -7,14 +7,14 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman
-ms.openlocfilehash: cfd9f4c52d3ddddd944186a833cba48e6ca76182
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f60bf8de33cd9552bf7c903f4c8921d50e911643
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837858"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123338"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Routefilters voor Microsoft-peering configureren: Azure-CLI
+# <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Route filters voor micro soft-peering configureren: Azure-CLI
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
@@ -24,7 +24,7 @@ ms.locfileid: "60837858"
 
 Met routefilters kunt u een subset van ondersteunde services gebruiken via Microsoft-peering. De stappen in dit artikel kunt u configureren en beheren van routefilters voor ExpressRoute-circuits.
 
-Dynamics 365-services en Office 365-services zoals Exchange Online, SharePoint Online en Skype voor bedrijven, zijn toegankelijk via de Microsoft-peering. Wanneer Microsoft-peering is geconfigureerd in een ExpressRoute-circuit, worden alle voorvoegsels die betrekking hebben op deze services worden geadverteerd via de BGP-sessies worden tot stand gebracht. Er wordt aan elk voorvoegsel een BGP-communitywaarde gekoppeld om de service te identificeren die via het voorvoegsel wordt aangeboden. Zie voor een lijst van de BGP-Communitywaarden en deze worden toegewezen aan services, [BGP-community's](expressroute-routing.md#bgp).
+Office 365-Services, zoals Exchange Online, share point online en Skype voor bedrijven, zijn toegankelijk via micro soft-peering. Wanneer Microsoft-peering is geconfigureerd in een ExpressRoute-circuit, worden alle voorvoegsels die betrekking hebben op deze services worden geadverteerd via de BGP-sessies worden tot stand gebracht. Er wordt aan elk voorvoegsel een BGP-communitywaarde gekoppeld om de service te identificeren die via het voorvoegsel wordt aangeboden. Zie voor een lijst van de BGP-Communitywaarden en deze worden toegewezen aan services, [BGP-community's](expressroute-routing.md#bgp).
 
 Als u de verbinding met alle services vereist, wordt een groot aantal voorvoegsels worden geadverteerd via BGP. Dit verhoogt aanzienlijk de grootte van de routetabellen onderhouden door routers in uw netwerk. Als u van plan alleen een subset van services die worden aangeboden via Microsoft bent-peering, kunt u de grootte van uw routetabellen op twee manieren verkleinen. U kunt:
 
@@ -38,7 +38,7 @@ Wanneer Microsoft-peering is geconfigureerd op uw ExpressRoute-circuit, stel de 
 
 Via een routefilter kunt u services identificeren die u wilt gebruiken via Microsoft-peering op uw ExpressRoute-circuit. Het is in feite een lijst met alle toegestane BGP-communitywaarden. Zodra er een routefilter is gedefinieerd en aan een ExpressRoute-circuit is gekoppeld, worden alle voorvoegsels die overeenkomen met de BGP-communitywaarden naar uw netwerk geadverteerd.
 
-Als u routefilters met Office 365-services op deze koppelen, moet u gemachtigd zijn om te gebruiken Office 365-services via ExpressRoute. Als u bent niet gemachtigd om te gebruiken Office 365-services via ExpressRoute, mislukt de bewerking routefilters koppelen. Zie voor meer informatie over het autorisatieproces [Azure ExpressRoute voor Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd). De verbinding met Dynamics 365-services is niet vereist voor elke toestemming.
+Als u routefilters met Office 365-services op deze koppelen, moet u gemachtigd zijn om te gebruiken Office 365-services via ExpressRoute. Als u bent niet gemachtigd om te gebruiken Office 365-services via ExpressRoute, mislukt de bewerking routefilters koppelen. Zie voor meer informatie over het autorisatieproces [Azure ExpressRoute voor Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd).
 
 > [!IMPORTANT]
 > Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd vóór 1 augustus 2017 hebben alle service-voorvoegsels geadverteerd via Microsoft-peering, zelfs als routefilters zijn niet gedefinieerd. Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd op of na 1 augustus 2017 hebben geen voorvoegsels geadverteerd totdat een routefilter is gekoppeld aan het circuit.
@@ -90,7 +90,7 @@ Selecteer het abonnement waarvoor u wenst te maken van een ExpressRoute-circuit.
 az account set --subscription "<subscription ID>"
 ```
 
-## <a name="prefixes"></a>Stap 1: Een lijst met voorvoegsels en BGP-Communitywaarden ophalen
+## <a name="prefixes"></a>Stap 1: Een lijst met voor voegsels en BGP Community-waarden ophalen
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. Een overzicht van BGP-Communitywaarden
 
@@ -101,15 +101,15 @@ az network route-filter rule list-service-communities
 ```
 ### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Maak een lijst van de waarden die u wilt gebruiken
 
-Maak een lijst van BGP-Communitywaarden die u wilt gebruiken in de routefilter. De BGP-communitywaarde voor Dynamics 365-services is een voorbeeld: 12076:5040.
+Maak een lijst van BGP-Communitywaarden die u wilt gebruiken in de routefilter.
 
-## <a name="filter"></a>Stap 2: Een routefilter en een filterregel voor een maken
+## <a name="filter"></a>Stap 2: Een route filter en een filter regel maken
 
 Een routefilter kan slechts één regel, en de regel moet van het type 'Toestaan'. Deze regel kan een lijst met BGP-Communitywaarden die zijn gekoppeld aan deze hebben.
 
 ### <a name="1-create-a-route-filter"></a>1. Een routefilter maken
 
-Maak eerst de routefilter. De opdracht `az network route-filter create` alleen maakt u een route-filter-resource. Nadat u de resource gemaakt, moet u vervolgens een regel maken en koppelen aan het object route-filter. Voer de volgende opdracht om een route-filter-resource te maken:
+Maak eerst de routefilter. De opdracht `az network route-filter create` maakt alleen een resource voor een route filter. Nadat u de resource gemaakt, moet u vervolgens een regel maken en koppelen aan het object route-filter. Voer de volgende opdracht om een route-filter-resource te maken:
 
 ```azurecli-interactive
 az network route-filter create -n MyRouteFilter -g MyResourceGroup
@@ -123,7 +123,7 @@ Voer de volgende opdracht om een nieuwe regel te maken:
 az network route-filter rule create --filter-name MyRouteFilter -n CRM --communities 12076:5040 --access Allow -g MyResourceGroup
 ```
 
-## <a name="attach"></a>Stap 3: De routefilter koppelen aan een ExpressRoute-circuit
+## <a name="attach"></a>Stap 3: Het route filter koppelen aan een ExpressRoute-circuit
 
 Voer de volgende opdracht uit om de routefilter koppelen aan het ExpressRoute-circuit:
 

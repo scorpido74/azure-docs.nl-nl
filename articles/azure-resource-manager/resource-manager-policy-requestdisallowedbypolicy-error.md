@@ -1,10 +1,10 @@
 ---
-title: RequestDisallowedByPolicy-fout opgetreden bij het Azure-resource-beleid | Microsoft Docs
-description: Beschrijving van de oorzaak van de RequestDisallowedByPolicy-fout.
+title: RequestDisallowedByPolicy-fout met het Azure-resource beleid | Microsoft Docs
+description: Beschrijft de oorzaak van de RequestDisallowedByPolicy-fout.
 services: azure-resource-manager
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c160fe39b02d8adf6c12e3736307cf7f9688b0c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e862637c688fd473b112fdfc0ee197da0444d02f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128440"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121236"
 ---
-# <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>RequestDisallowedByPolicy-fout opgetreden bij het Azure-resource-beleid
+# <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>RequestDisallowedByPolicy-fout met Azure-resource beleid
 
-In dit artikel beschrijft de oorzaak van de RequestDisallowedByPolicy-fout, ook biedt deze oplossing voor deze fout.
+In dit artikel wordt de oorzaak van de RequestDisallowedByPolicy-fout beschreven. deze fout kan ook worden opgelost.
 
 ## <a name="symptom"></a>Symptoom
 
-Tijdens de implementatie, ontvangt u mogelijk een **RequestDisallowedByPolicy** fout waarmee wordt voorkomen dat u het maken van de resources. Het volgende voorbeeld ziet u de volgende fout:
+Tijdens de implementatie ontvangt u mogelijk een **RequestDisallowedByPolicy** -fout die voor komt dat u de resources maakt. In het volgende voor beeld ziet u de fout:
 
 ```json
 {
@@ -39,13 +39,13 @@ Tijdens de implementatie, ontvangt u mogelijk een **RequestDisallowedByPolicy** 
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als u wilt ophalen van informatie over het beleid dat uw implementatie geblokkeerd, gebruik de volgende uitvoer van de methoden:
+Gebruik een van de volgende methoden om details op te halen over het beleid dat uw implementatie heeft geblokkeerd:
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-In PowerShell, geef deze beleids-id als de `Id` parameter om op te halen van meer informatie over het beleid dat uw implementatie geblokkeerd.
+Geef in Power shell de beleids-id als `Id` de para meter op om details op te halen over het beleid dat uw implementatie heeft geblokkeerd.
 
 ```powershell
 (Get-AzPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
@@ -53,7 +53,7 @@ In PowerShell, geef deze beleids-id als de `Id` parameter om op te halen van mee
 
 ### <a name="azure-cli"></a>Azure-CLI
 
-Geef de naam van de beleidsdefinitie in de Azure CLI:
+Geef in azure CLI de naam op van de beleids definitie:
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment
@@ -61,8 +61,8 @@ az policy definition show --name regionPolicyAssignment
 
 ## <a name="solution"></a>Oplossing
 
-Voor beveiliging of naleving wijst de abonnementbeheerders van uw mogelijk beleidsregels die beperken hoe resources worden geïmplementeerd. Uw abonnement kan bijvoorbeeld een beleid waarmee wordt voorkomen dat het openbare IP-adressen, Network Security Groups, door de gebruiker gedefinieerde Routes maken of routetabellen. Het foutbericht in de **symptomen** sectie ziet u de naam van het beleid.
-U lost dit probleem, Controleer de resource-beleidsregels en te bepalen hoe resources die aan de beleidsregels voldoen te implementeren.
+Voor beveiliging of naleving kunnen uw abonnements beheerders beleids regels toewijzen die beperken hoe bronnen worden geïmplementeerd. Uw abonnement kan bijvoorbeeld een beleid hebben dat voor komt dat open bare IP-adressen, netwerk beveiligings groepen, door de gebruiker gedefinieerde routes of route tabellen worden gemaakt. In het fout bericht in de sectie **symptomen** wordt de naam van het beleid weer gegeven.
+U kunt dit probleem oplossen door de bron beleidsregels te controleren en te bepalen hoe u resources implementeert die voldoen aan het beleid.
 
 Raadpleeg voor meer informatie de volgende artikelen:
 

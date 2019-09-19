@@ -1,18 +1,18 @@
 ---
 title: Apache Spark en Apache Hive integreren met de Hive-Warehouse connector
 description: Meer informatie over het integreren van Apache Spark en Apache Hive met de Hive-Warehouse connector op Azure HDInsight.
-ms.service: hdinsight
 author: nakhanha
 ms.author: nakhanha
 ms.reviewer: hrasheed
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 068dc76112db39ad8db118062656013e20cfc2ab
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8a946a75a2dbd487494d70d0fd195a5becf5bd5a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811656"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122211"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Apache Spark en Apache Hive integreren met de Hive-Warehouse connector
 
@@ -22,7 +22,7 @@ Met de component Warehouse connector kunt u profiteren van de unieke functies va
 
 Apache Spark heeft een Structured streaming API die streaming-mogelijkheden biedt die niet beschikbaar zijn in Apache Hive. Vanaf HDInsight 4,0 kunnen Apache Spark 2.3.1 en Apache Hive 3.1.0 afzonderlijke meta Stores bevatten, waardoor interoperabiliteit lastig kan zijn. De Hive-Warehouse connector maakt het gemakkelijker om Spark en Hive samen te gebruiken. De HWC-bibliotheek laadt gegevens van LLAP-daemons parallel uitvoerender, en maakt deze efficiënter en schaalbaar dan het gebruik van een standaard JDBC-verbinding van Spark naar Hive.
 
-![Architectuur](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
+![architectuur van de Hive-Warehouse connector](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
 Enkele van de bewerkingen die worden ondersteund door de Hive Warehouse connector zijn:
 
@@ -42,14 +42,14 @@ Volg deze stappen om de Hive-Warehouse connector in te stellen tussen een Spark 
 1. Maak een HDInsight Interactive query (LLAP) 4,0-cluster met behulp van de Azure Portal met hetzelfde opslag account en een virtueel Azure-netwerk als het Spark-cluster.
 1. Kopieer de inhoud van het `/etc/hosts` bestand op headnode0 van uw interactieve query cluster naar het `/etc/hosts` bestand in de headnode0 van uw Spark-cluster. Met deze stap kan uw Spark-cluster IP-adressen van de knoop punten in het interactieve query cluster omzetten. Bekijk de inhoud van het bijgewerkte bestand met `cat /etc/hosts`. De uitvoer moet er ongeveer als volgt uitzien, zoals in de onderstaande scherm afbeelding wordt weer gegeven.
 
-    ![het hosts-bestand weer geven](./media/apache-hive-warehouse-connector/hive-warehouse-connector-hosts-file.png)
+    ![hosten bestand van Hive Warehouse-connector](./media/apache-hive-warehouse-connector/hive-warehouse-connector-hosts-file.png)
 
 1. Configureer de instellingen van het Spark-cluster door de volgende stappen uit te voeren: 
     1. Ga naar Azure Portal, selecteer HDInsight-clusters en klik vervolgens op de naam van uw cluster.
     1. Selecteer aan de rechter kant onder **cluster dashboards**de optie **Ambari Home**.
     1. Klik in de Ambari-webgebruikersinterface op **SPARK2** > **configs** > **Custom SPARK2-defaults**.
 
-        ![Configuratie van Spark2 Ambari](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
+        ![Configuratie van Apache Ambari Spark2](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
     1. Stel `spark.hadoop.hive.llap.daemon.service.hosts` in op dezelfde waarde als de **component Property. llap. daemon. service. hosts** onder * * Advanced component-Interactive-site * *. Bijvoorbeeld: `@llap0`
 
@@ -59,7 +59,7 @@ Volg deze stappen om de Hive-Warehouse connector in te stellen tussen een Spark 
         jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2
         ```
 
-        >[!Note] 
+        > [!Note]
         > De JDBC-URL moet referenties bevatten om verbinding te maken met Hiveserver2, met inbegrip van een gebruikers naam en wacht woord.
 
     1. Stel `spark.datasource.hive.warehouse.load.staging.dir` in op een geschikte, met HDFS compatibele tijdelijke directory. Als u twee verschillende clusters hebt, moet de map voor gefaseerde installatie een map zijn in de map met tijdelijke bestanden van het opslag account van het LLAP-cluster, zodat HiveServer2 er toegang toe heeft. Bijvoorbeeld, `wasb://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp` waarbij `STORAGE_ACCOUNT_NAME` de naam is van het opslag account dat wordt gebruikt door het cluster en `STORAGE_CONTAINER_NAME` de naam is van de opslag container.
@@ -159,14 +159,14 @@ Spark ondersteunt geen systeem eigen ondersteuning voor het schrijven naar de ta
     ```
 
 2. Filter de tabel `hivesampletable` waarbij de kolom `state` gelijk is `Colorado`aan. Deze query van de Hive-tabel wordt geretourneerd als een Spark-data frame. Vervolgens wordt de data frame opgeslagen in de Hive- `sampletable_colorado` tabel met `write` behulp van de functie.
-    
+
     ```scala
     hive.table("hivesampletable").filter("state = 'Colorado'").write.format(HiveWarehouseSession.HIVE_WAREHOUSE_CONNECTOR).option("table","sampletable_colorado").save()
     ```
 
 In de onderstaande scherm afbeelding ziet u de resulterende tabel.
 
-![resulterende tabel weer geven](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
+![component-Warehouse connector-Hive weer geven](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
 
 ### <a name="structured-streaming-writes"></a>Gestructureerd streamen schrijven
 
@@ -185,7 +185,9 @@ Volg de onderstaande stappen om een component Warehouse connector-voor beeld te 
     1. Open een andere terminal op hetzelfde Spark-cluster.
     1. Typ `nc -lk 9999`bij de opdracht prompt. Met deze opdracht wordt het netcat-hulp programma gebruikt voor het verzenden van gegevens van de opdracht regel naar de opgegeven poort.
     1. Typ de woorden die u wilt opnemen in de Spark-stream, gevolgd door een regel terugloop.
-        ![invoer gegevens naar Spark-stroom](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark-stream-data-input.png)
+
+        ![invoer gegevens naar Apache Spark-stroom](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark-stream-data-input.png)
+
 1. Maak een nieuwe Hive-tabel om de streaminggegevens in op te slaan. Typ in de Spark-shell de volgende opdrachten:
 
     ```scala
@@ -230,8 +232,11 @@ Volg de onderstaande stappen om een component Warehouse connector-voor beeld te 
     1. Ga naar de gebruikers interface van Zwerver `https://CLUSTERNAME.azurehdinsight.net/ranger/`op.
     1. Klik onder **Hive**op de component service voor uw cluster.
         ![zwerver Service Manager](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
-    1. Klik op het tabblad **maskeren** en **Voeg vervolgens nieuwe beleids** ![Hive-beleids lijst toe](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
-    1. Geef een gewenste beleids naam op. Data base selecteren: **Standaard**, Hive-tabel: **demo**, Hive-kolom: **naam**, gebruiker: **Rsadmin2**, toegangs typen: **selecteren**en **gedeeltelijk masker: weer geven laatste 4** van het menu **optie masker selecteren** . Klik op **Toevoegen**.
+    1. Klik op het tabblad **maskeren** en vervolgens op **Nieuw beleid toevoegen**
+
+        ![Hive-beleids lijst van de component Warehouse connector zwerver](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
+
+    a. Geef een gewenste beleids naam op. Data base selecteren: **Standaard**, Hive-tabel: **demo**, Hive-kolom: **naam**, gebruiker: **Rsadmin2**, toegangs typen: **selecteren**en **gedeeltelijk masker: weer geven laatste 4** van het menu **optie masker selecteren** . Klik op **Toevoegen**.
                 ![beleid maken](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Bekijk de inhoud van de tabel opnieuw. Na het Toep assen van het beleid voor zwerver, kunnen we alleen de laatste vier tekens van de kolom zien.
 

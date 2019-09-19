@@ -2,14 +2,14 @@
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 06/18/2019
+ms.date: 09/18/2019
 ms.author: cephalin
-ms.openlocfilehash: 0691b1a531ffebbb2c368bdb37dd4d8025fb4a4e
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: e00db06346b19ef85eb77626eb2ed169d2224b6c
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623714"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129695"
 ---
 Wanneer u de configuratie kloont vanuit een andere implementatie site, kan de gekloonde configuratie bewerkbaar zijn. Sommige configuratie-elementen volgen de inhoud in een wissel (niet sleuf specifiek), terwijl andere configuratie-elementen zich in dezelfde sleuf bevinden na een wissel (sleuf specifiek). In de volgende lijsten ziet u de instellingen die veranderen wanneer u sleuven verwisselt.
 
@@ -19,7 +19,6 @@ Wanneer u de configuratie kloont vanuit een andere implementatie site, kan de ge
 * App-instellingen (kan worden geconfigureerd om naar een sleuf te worden gestickt)
 * Verbindings reeksen (kan zodanig worden geconfigureerd dat ze naar een sleuf worden gestickt)
 * Handlertoewijzingen
-* Bewakings-en diagnostische instellingen
 * Open bare certificaten
 * Inhoud van webjobs
 * Hybride verbindingen *
@@ -27,19 +26,20 @@ Wanneer u de configuratie kloont vanuit een andere implementatie site, kan de ge
 * Service-eind punten *
 * Azure Content Delivery Network *
 
-Functies die zijn gemarkeerd met een sterretje (*) zijn gepland om te worden toegevoegd aan de sleuf. 
+Functies die zijn gemarkeerd met een sterretje (*) zijn gepland om ongewisseld te worden. 
 
 **Instellingen die niet zijn gewisseld**:
 
 * Eind punten publiceren
 * Namen van aangepaste domeinen
-* Persoonlijke certificaten en SSL-bindingen
+* Niet-open bare certificaten en TLS/SSL-instellingen
 * Schaalinstellingen
 * Webjobs-planners
 * IP-beperkingen
 * Altijd aan
-* Protocol instellingen (HTTPS, TLS-versie, client certificaten)
 * Instellingen voor Diagnostische logboeken
 * Cross-Origin-resource delen (CORS)
 
-<!-- VNET and hybrid connections not yet sticky to slot -->
+> [!NOTE]
+> Bepaalde app-instellingen die van toepassing zijn op niet-Verwissel bare instellingen, worden ook niet omgewisseld. Omdat de instellingen voor Diagnostische logboeken niet zijn omgewisseld, worden gerelateerde app `WEBSITE_HTTPLOGGING_RETENTION_DAYS` - `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` instellingen zoals en ook niet omgewisseld, zelfs niet als ze niet als sleuf instellingen worden weer gegeven.
+>

@@ -4,7 +4,7 @@ description: Krijg antwoorden op veelgestelde vragen over de beschik baarheid, p
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 2b9689eeecb0549fae9f7131dd424e15c040b042
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9cd529424a022edfa64f9053a53cbbe9f756637e
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073182"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122074"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over toepassings prestaties voor Web Apps in azure
 
@@ -46,7 +46,7 @@ In sommige scenario's met een hoog geheugen gebruik is het mogelijk dat uw app e
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Hoe kan ik App Service web-apps automatisch met behulp van Power shell?
 
-U kunt Power shell-cmdlets gebruiken om App Service web-apps te beheren en te onderhouden. In het blog bericht automatiseert u web-apps die worden [gehost in azure app service met behulp van Power shell](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/). hier wordt beschreven hoe u op Azure Resource Manager gebaseerde Power shell-cmdlets gebruikt om algemene taken te automatiseren. Het blog bericht bevat ook voorbeeld code voor de verschillende beheer taken voor web-apps. Zie [AZ. websites](/powershell/module/az.websites)(Engelstalig) voor beschrijvingen en syntaxis voor alle app service Web apps-cmdlets.
+U kunt Power shell-cmdlets gebruiken om App Service web-apps te beheren en te onderhouden. In het blog bericht [automatiseert u web-apps die worden gehost in azure app service met behulp van Power shell](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/). hier wordt beschreven hoe u op Azure Resource Manager gebaseerde Power shell-cmdlets gebruikt om algemene taken te automatiseren. Het blog bericht bevat ook voorbeeld code voor de verschillende beheer taken voor web-apps. Zie [AZ. websites](/powershell/module/az.websites)(Engelstalig) voor beschrijvingen en syntaxis voor alle app service Web apps-cmdlets.
 
 ## <a name="how-do-i-view-my-web-apps-event-logs"></a>Hoe kan ik de gebeurtenis logboeken van mijn web-app weer geven?
 
@@ -54,7 +54,7 @@ De gebeurtenis logboeken van uw web-app weer geven:
 
 1. Meld u aan bij uw [kudu-website](https://*yourwebsitename*.scm.azurewebsites.net).
 2. Selecteer in het menu **fout opsporing console** > -**cmd**.
-3. Selecteer de map LogFiles.
+3. Selecteer de map **logfiles** .
 4. Als u gebeurtenis logboeken wilt weer geven, selecteert u het potlood pictogram naast **eventlog. XML**.
 5. Voer de Power shell-cmdlet `Save-AzureWebSiteLog -Name webappname`uit om de logboeken te downloaden.
 
@@ -107,7 +107,7 @@ Tracering van mislukte aanvragen inschakelen:
 
 1. Ga in het Azure Portal naar uw web-app.
 3. Selecteer **alle instellingen** > **Diagnostische logboeken**.
-4. Selecteer **aan**voor tracering van **mislukte aanvragen**.
+4. Selecteer **aan**voor **tracering van mislukte aanvragen**.
 5. Selecteer **Opslaan**.
 6. Selecteer op de Blade Web-App de optie **extra**.
 7. Selecteer **Visual Studio online**.
@@ -149,7 +149,7 @@ Tracering van mislukte aanvragen inschakelen:
 13. Als u de traceringen van mislukte aanvragen wilt downloaden, gaat u in de [Portal](https://portal.azure.com)naar uw website.
 15. Selecteer **extra** > kuduGo > .
 18. Selecteer in het menu **fout opsporing console** > -**cmd**.
-19. Selecteer de map LogFiles en selecteer vervolgens de map met een naam die begint met **W3SVC**.
+19. Selecteer de map **logfiles** en selecteer vervolgens de map met een naam die begint met **W3SVC**.
 20. Als u het XML-bestand wilt weer geven, selecteert u het potlood pictogram.
 
 ## <a name="i-see-the-message-worker-process-requested-recycle-due-to-percent-memory-limit-how-do-i-address-this-issue"></a>Ik zie het bericht ' werk proces heeft een recycle bewerking aangevraagd als gevolg van de limiet van ' percentage geheugen '. Hoe kan ik dit probleem op te lossen?
@@ -185,7 +185,7 @@ Als u geen lokale cache gebruikt en dit probleem ondervindt, dient u een onderst
 
 ## <a name="i-see-the-message-an-attempt-was-made-to-access-a-socket-in-a-way-forbidden-by-its-access-permissions-how-do-i-resolve-this"></a>Ik zie het bericht ' er is een poging gedaan om toegang te krijgen tot een socket op een manier die is verboden door de toegangs machtigingen. ' Hoe kan ik dit oplossen?
 
-Deze fout treedt doorgaans op als de uitgaande TCP-verbindingen op het VM-exemplaar zijn uitgeput. In App Service worden limieten afgedwongen voor het maximum aantal uitgaande verbindingen dat kan worden gemaakt voor elk VM-exemplaar. Zie numerieke limieten voor [meerdere vm's](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)voor meer informatie.
+Deze fout treedt doorgaans op als de uitgaande TCP-verbindingen op het VM-exemplaar zijn uitgeput. In App Service worden limieten afgedwongen voor het maximum aantal uitgaande verbindingen dat kan worden gemaakt voor elk VM-exemplaar. Zie [numerieke limieten voor meerdere vm's](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)voor meer informatie.
 
 Deze fout kan ook optreden als u probeert toegang te krijgen tot een lokaal adres vanuit uw toepassing. Zie [lokale adres aanvragen](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#local-address-requests)voor meer informatie.
 

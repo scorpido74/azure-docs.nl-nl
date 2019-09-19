@@ -1,21 +1,20 @@
 ---
 title: Grafana gebruiken in azure HDInsight
 description: Meer informatie over het openen van het Grafana-dash board met Apache Hadoop clusters in azure HDInsight
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: a61188ce5a0c3ba5e4170e15ed81d599af205205
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: cea0e9709afb65caa23d28be093c28498f2b82d0
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961571"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122982"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Toegang tot Grafana in azure HDInsight
-
 
 [Grafana](https://grafana.com/) is een populaire, open-source grafiek en dash board Builder. Grafana is een uitgebreide functie; het is niet alleen mogelijk dat gebruikers aanpas bare en delende Dash boards kunnen maken, maar biedt ook sjablonen/script Dash boards, LDAP-integratie, meerdere gegevens bronnen en nog veel meer.
 
@@ -27,9 +26,9 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 In deze sectie maakt u een interactief query cluster in HDInsight met behulp van een Azure Resource Manager sjabloon. Het maken van een Azure Resource Manager-sjabloon is niet vereist voor dit artikel. 
 
-1. Klik op de knop **Deploy to Azure** (Implementeren in Azure) hieronder om u aan te melden bij Azure en de Resource Manager-sjabloon te openen in Azure Portal. 
+1. Klik op de knop **Deploy to Azure** (Implementeren in Azure) hieronder om u aan te melden bij Azure en de Resource Manager-sjabloon te openen in Azure Portal.
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-interactive-hive%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-grafana/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-interactive-hive%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-grafana/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 2. Typ of selecteer de waarden zoals voorgesteld in de volgende schermafbeelding:
 
@@ -51,17 +50,17 @@ In deze sectie maakt u een interactief query cluster in HDInsight met behulp van
     |**Clusternaam**     | Voer een naam in voor het Apache Hadoop cluster. Omdat alle clusters in HDInsight dezelfde DNS-naamruimte delen, moet deze naam uniek zijn. De naam mag bestaan uit maximaal 59 tekens, inclusief letters, cijfers en afbreekstreepjes. De eerste en laatste tekens van de naam mogen geen streepjes zijn. |
     |**Gebruikersnaam/Wachtwoord voor clusteraanmeldgegevens**     | De standaardaanmeldingsnaam is **admin**. Het wachtwoord moet uit minstens tien tekens bestaan en moet minstens één cijfer, één hoofdletter, één kleine letter en één niet-alfanumeriek teken bevatten (uitgezonderd ' " ` \). Zorg ervoor dat u **geen makkelijk te raden** wachtwoorden gebruikt, zoals 'Pass@word1'.|
     |**SSH-gebruikersnaam en SSH-wachtwoord**     | De standaardgebruikersnaam is **sshuser**.  U kunt de SSH-gebruikersnaam wijzigen.  Voor het SSH-gebruikerswachtwoord gelden dezelfde vereisten als voor het aanmeldingswachtwoord voor het cluster.|
-       
+
     Sommige eigenschappen zijn vastgelegd in de sjabloon.  U kunt deze waarden uit de sjabloon configureren. Raadpleeg voor meer uitleg over deze eigenschappen [Apache Hadoop-clusters maken in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
 3. Selecteer **Ik ga akkoord met de bovenstaande voorwaarden** en **Vastmaken aan dashboard**, en selecteer vervolgens **Kopen**. U ziet een nieuwe tegel met de mededeling dat **de implementatie wordt verzonden**. Het duurt ongeveer 20 minuten om een cluster te maken.
 
-    ![Voortgang van implementatie van sjabloon](./media/hdinsight-grafana/deployment-progress-tile.png "Voortgang van implementatie van Azure-sjabloon")
+    ![Voortgang van Azure Sjabloonimlementatie](./media/hdinsight-grafana/deployment-progress-tile.png "Voortgang van Azure Sjabloonimlementatie")
 
-4. Als het cluster is gemaakt, wordt de ondertiteling van de tegel gewijzigd in de opgegeven naam van de resourcegroep. De tegel bevat ook het HDInsight-cluster dat binnen de resourcegroep is gemaakt. 
-   
+4. Als het cluster is gemaakt, wordt de ondertiteling van de tegel gewijzigd in de opgegeven naam van de resourcegroep. De tegel bevat ook het HDInsight-cluster dat binnen de resourcegroep is gemaakt.
+
     ![Aan de slag met resourcegroepen in HDInsight op basis van Linux](./media/hdinsight-grafana/hdinsight-linux-get-started-resource-group.png "Azure HDInsight-clusterresourcegroep")
-    
+
 5. De tegel bevat ook de standaardopslag die aan het cluster is gekoppeld. Elk cluster is afhankelijk van een [Azure Storage-account](../hdinsight-hadoop-use-blob-storage.md) of een [Azure Data Lake-account](../hdinsight-hadoop-use-data-lake-store.md). Dit wordt het standaardopslagaccount genoemd. Het HDInsight-cluster en het standaard opslag account moeten zich in dezelfde Azure-regio bevinden. Het opslagaccount wordt niet verwijderd wanneer er clusters worden verwijderd.
     
 
@@ -84,9 +83,7 @@ In deze sectie maakt u een interactief query cluster in HDInsight met behulp van
 
 6. Het dash board Grafana wordt weer gegeven en ziet eruit als in dit voor beeld:
 
-    ![HDInsight Grafana-dash board](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana-dash board")
-
-   
+    ![HDInsight Grafana Web-dash board](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana-dash board")
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 Nadat u het artikel hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt. 
@@ -98,7 +95,7 @@ Nadat u het artikel hebt voltooid, kunt u het cluster verwijderen. Met HDInsight
 
 1. Ga terug naar het browsertabblad voor Azure Portal. U komt terecht op de overzichtspagina voor het cluster. Selecteer **Verwijderen** als u alleen het cluster wilt verwijderen maar het standaardopslagaccount wilt behouden.
 
-    ![HDInsight delete cluster](./media/hdinsight-grafana/hdinsight-delete-cluster.png "HDInsight-cluster verwijderen")
+    ![Pictogram van Azure Portal cluster verwijderen](./media/hdinsight-grafana/hdinsight-delete-cluster.png "HDInsight-cluster verwijderen")
 
 2. Als u het cluster en het standaardopslagaccount wilt verwijderen, selecteert u de naam van de resourcegroep (gemarkeerd in de vorige schermafbeelding) om de pagina van de resourcegroep te openen.
 

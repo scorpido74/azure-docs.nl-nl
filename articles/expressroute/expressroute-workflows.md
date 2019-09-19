@@ -1,19 +1,19 @@
 ---
-title: 'Configuratie van werkstromen - ExpressRoute-circuit: Azure| Microsoft Docs'
+title: 'Circuit configuratie werk stromen-ExpressRoute: Azure| Microsoft Docs'
 description: Deze pagina bevat de werkstromen voor het configureren van ExpressRoute-circuit en -peerings
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/18/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 3ffcc5ac2193e607573ceb93717258f5349d1f15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e0f4d356bb6addf735bf148a80e6be3ca550c8f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883186"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123385"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute-werkstromen voor circuitinrichting en -statussen
 Deze pagina vindt u de inrichting en configuratie van werkstromen op hoog niveau routering-service.
@@ -29,7 +29,7 @@ De volgende afbeelding en de bijbehorende stappen wordt de taken die u volgen mo
    
    * Inschakelen van persoonlijke Azure-peering - inschakelen van deze peering voor het verbinding maken met virtuele machines / services die zijn geïmplementeerd in virtuele netwerken in de cloud.
 
-   * Microsoft-peering inschakelen: Schakel deze optie in om toegang te krijgen tot Office 365 en Dynamics 365. Alle Azure PaaS-services zijn ook toegankelijk via Microsoft-peering.
+   * Schakel micro soft-peering in om toegang te krijgen tot Office 365. Alle Azure PaaS-services zijn ook toegankelijk via Microsoft-peering.
      
      > [!IMPORTANT]
      > U moet ervoor zorgen dat u gebruikmaakt van een afzonderlijke proxyserver / edge verbinding maken met Microsoft dan de versie die u gebruikt voor het Internet. Met behulp van de rand voor ExpressRoute- en Internet veroorzaakt asymmetrische Routering en connectiviteit onderbrekingen voor uw netwerk veroorzaken.

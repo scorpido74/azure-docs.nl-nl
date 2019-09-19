@@ -11,25 +11,27 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: d3a36615109383074833e9af634eb611fb863339
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 97a9b6c60539191850e8205eed4387565b79f6db
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103656"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129872"
 ---
-# <a name="install-and-run-recognize-text-containers"></a>Tekst herkennen containers installeren en uitvoeren
+# <a name="install-and-run-computer-vision-containers"></a>Computer Vision containers installeren en uitvoeren
 
-Het gedeelte tekst herkennen van Computer Vision-is ook beschikbaar als een Docker-container. Hiermee kunt u om te detecteren en extraheer gedrukte tekst uit afbeeldingen van verschillende objecten met verschillende oppervlakken en achtergronden, zoals ontvangsten, posters en visitekaartjes.
+Met containers kunt u de Computer Vision-Api's uitvoeren in uw eigen omgeving. Containers zijn geweldig voor specifieke vereisten voor beveiliging en gegevens beheer. In dit artikel leert u hoe u een Computer Vision-container downloadt, installeert en uitvoert.
+
+Er zijn twee docker-containers beschikbaar voor Computer Vision: *Tekst herkennen* en *lezen*. Met de *tekst herkennen* -container kunt u *gedrukte tekst* detecteren en extra heren uit afbeeldingen van verschillende objecten met verschillende Opper vlakken en achtergronden, zoals bevestigingen, posters en visite kaartjes. De *Lees* container, maar detecteert ook *handgeschreven tekst* in afbeeldingen en biedt ondersteuning voor PDF/TIFF/meerdere pagina's. Zie de [Lees API](concept-recognizing-text.md#read-api) -documentatie voor meer informatie.
 
 > [!IMPORTANT]
-> De tekst herkennen-container wordt op dit moment werkt alleen met Engels.
+> De Tekst herkennen container wordt vervangen door de Lees container. De Lees container is een superset van de voorganger van de Tekst herkennen-container en de gebruikers moeten migreren naar met behulp van de Lees container. Beide containers werken alleen met het Engels.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet voldoen aan de volgende vereisten voordat u Tekst herkennen containers gebruikt:
+U moet voldoen aan de volgende vereisten voordat u de containers gebruikt:
 
 |Vereist|Doel|
 |--|--|
@@ -43,6 +45,8 @@ U moet voldoen aan de volgende vereisten voordat u Tekst herkennen containers ge
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
+[!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
+
 ### <a name="the-host-computer"></a>De hostcomputer
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
@@ -53,20 +57,43 @@ U moet voldoen aan de volgende vereisten voordat u Tekst herkennen containers ge
 
 ## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met`docker pull`
 
-Er zijn container installatie kopieën voor Tekst herkennen beschikbaar. 
+# <a name="readtabread"></a>[Lezen](#tab/read)
 
-| Container | Opslagplaats |
+Er zijn container installatie kopieën voor lezen beschikbaar.
+
+| Container | Container Registry/opslagplaats/naam van installatie kopie |
 |-----------|------------|
-|Tekst herkennen | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
+| Lezen | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
+
+# <a name="recognize-texttabrecognize-text"></a>[Tekst herkennen](#tab/recognize-text)
+
+Er zijn container installatie kopieën voor Tekst herkennen beschikbaar.
+
+| Container | Container Registry/opslagplaats/naam van installatie kopie |
+|-----------|------------|
+| Tekst herkennen | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
+
+***
 
 Gebruik de [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) opdracht om een container installatie kopie te downloaden.
 
+# <a name="readtabread"></a>[Lezen](#tab/read)
+
+### <a name="docker-pull-for-the-read-container"></a>Docker-pull voor de Lees container
+
+```bash
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
+```
+
+# <a name="recognize-texttabrecognize-text"></a>[Tekst herkennen](#tab/recognize-text)
 
 ### <a name="docker-pull-for-the-recognize-text-container"></a>Docker-pull voor de Tekst herkennen container
 
-```
+```bash
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
 ```
+
+***
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -83,8 +110,27 @@ Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/comman
 
 [Voor beelden](computer-vision-resource-container-config.md#example-docker-run-commands) van `docker run` de opdracht zijn beschikbaar.
 
+# <a name="readtabread"></a>[Lezen](#tab/read)
+
 ```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+containerpreview.azurecr.io/microsoft/cognitive-services-read \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+Deze opdracht:
+
+* Voert de Lees container uit van de container installatie kopie.
+* Wijst 8 CPU-kernen en 16 GB aan geheugen toe.
+* Beschrijft TCP-poort 5000 en wijst een pseudo-TTY voor de container toe.
+* Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
+
+# <a name="recognize-texttabrecognize-text"></a>[Tekst herkennen](#tab/recognize-text)
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
 containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
 Eula=accept \
 Billing={ENDPOINT_URI} \
@@ -93,10 +139,12 @@ ApiKey={API_KEY}
 
 Deze opdracht:
 
-* Hiermee wordt een herkende container uitgevoerd vanuit de container installatie kopie
-* Wijst een CPU-kern en 4 GB aan geheugen toe
-* Gebruikt TCP-poort 5000 en wijst er een pseudo-TTY voor de container
-* Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer. 
+* Voert de Tekst herkennen container uit van de container installatie kopie.
+* Wijst 8 CPU-kernen en 16 GB aan geheugen toe.
+* Beschrijft TCP-poort 5000 en wijst een pseudo-TTY voor de container toe.
+* Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
+
+***
 
 Er zijn meer [voor beelden](./computer-vision-resource-container-config.md#example-docker-run-commands) van de `docker run` opdracht beschikbaar. 
 
@@ -105,12 +153,179 @@ Er zijn meer [voor beelden](./computer-vision-resource-container-config.md#examp
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
+<!--  ## Validate container is running -->
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Query uitvoeren op het prediction-eind punt van de container
 
 De container bevat op REST gebaseerde query Voorspellings eindpunt-Api's. 
 
 Gebruik de host, `http://localhost:5000`voor container-api's.
+
+# <a name="readtabread"></a>[Lezen](#tab/read)
+
+### <a name="asynchronous-read"></a>Asynchroon lezen
+
+U kunt de `POST /vision/v2.0/read/core/asyncBatchAnalyze` -en `GET /vision/v2.0/read/operations/{operationId}` -bewerkingen in concert gebruiken om asynchroon een installatie kopie te lezen, vergelijkbaar met de manier waarop de computer vision-service die bijbehorende rest-bewerkingen gebruikt. De asynchrone Post-methode retourneert een `operationId` die wordt gebruikt als id voor de HTTP GET-aanvraag.
+
+Selecteer in de Swagger-gebruikers interface `asyncBatchAnalyze` de om deze uit te vouwen in de browser. Selecteer vervolgens**bestand** **uitproberen** > . In dit voor beeld gebruiken we de volgende afbeelding:
+
+![tabbladen versus spaties](media/tabs-vs-spaces.png)
+
+Wanneer de asynchrone POST met succes is uitgevoerd, wordt een **HTTP 202-** status code geretourneerd. Als onderdeel van de reactie bevindt zich `operation-location` een kop die het eind punt voor de aanvraag bevat.
+
+```http
+ content-length: 0
+ date: Fri, 13 Sep 2019 16:23:01 GMT
+ operation-location: http://localhost:5000/vision/v2.0/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
+ server: Kestrel
+```
+
+De `operation-location` is de volledig gekwalificeerde URL en is toegankelijk via een HTTP Get. Dit is het JSON-antwoord van het uitvoeren `operation-location` van de URL van de vorige installatie kopie:
+
+```json
+{
+  "status": "Succeeded",
+  "recognitionResults": [
+    {
+      "page": 1,
+      "clockwiseOrientation": 2.42,
+      "width": 502,
+      "height": 252,
+      "unit": "pixel",
+      "lines": [
+        {
+          "boundingBox": [
+            56,
+            39,
+            317,
+            50,
+            313,
+            134,
+            53,
+            123
+          ],
+          "text": "Tabs VS",
+          "words": [
+            {
+              "boundingBox": [
+                90,
+                43,
+                243,
+                53,
+                243,
+                123,
+                94,
+                125
+              ],
+              "text": "Tabs",
+              "confidence": "Low"
+            },
+            {
+              "boundingBox": [
+                259,
+                55,
+                313,
+                62,
+                313,
+                122,
+                259,
+                123
+              ],
+              "text": "VS"
+            }
+          ]
+        },
+        {
+          "boundingBox": [
+            221,
+            148,
+            417,
+            146,
+            417,
+            206,
+            227,
+            218
+          ],
+          "text": "Spaces",
+          "words": [
+            {
+              "boundingBox": [
+                230,
+                148,
+                416,
+                141,
+                419,
+                211,
+                232,
+                218
+              ],
+              "text": "Spaces"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+### <a name="synchronous-read"></a>Synchrone Lees bewerking
+
+U kunt de `POST /vision/v2.0/read/core/Analyze` bewerking gebruiken om een afbeelding synchroon te lezen. Wanneer de afbeelding volledig is gelezen en vervolgens alleen de API retourneert een JSON-antwoord. De enige uitzonde ring hierop is als er een fout optreedt. Als er een fout optreedt, wordt de volgende JSON geretourneerd:
+
+```json
+{
+    status: "Failed"
+}
+```
+
+Het JSON-antwoord object heeft dezelfde object grafiek als de asynchrone versie. Als u een Java script-gebruiker bent en type veiligheid wilt, kan de volgende typen worden gebruikt voor het casten van `AnalyzeResult` het JSON-antwoord als een object.
+
+```typescript
+export interface AnalyzeResult {
+    status: Status;
+    recognitionResults?: RecognitionResult[] | null;
+}
+
+export enum Status {
+    NotStarted = 0,
+    Running = 1,
+    Failed = 2,
+    Succeeded = 3
+}
+
+export enum Unit {
+    Pixel = 0,
+    Inch = 1
+}
+
+export interface RecognitionResult {
+    page?: number | null;
+    clockwiseOrientation?: number | null;
+    width?: number | null;
+    height?: number | null;
+    unit?: Unit | null;
+    lines?: Line[] | null;
+}
+
+export interface Line {
+    boundingBox?: number[] | null;
+    text: string;
+    words?: Word[] | null;
+}
+
+export interface Word {
+  boundingBox?: number[] | null;
+  text: string;
+  confidence?: string | null;
+}
+```
+
+Voor een voor beeld van een use-case raadpleegt u de [sandbox type script hier](https://aka.ms/ts-read-api-types) en selecteert u uitvoeren om het gebruiks gemak te visualiseren.
+
+# <a name="recognize-texttabrecognize-text"></a>[Tekst herkennen](#tab/recognize-text)
 
 ### <a name="asynchronous-text-recognition"></a>Asynchrone tekstherkenning
 
@@ -120,10 +335,7 @@ U kunt de `POST /vision/v2.0/recognizeText` en `GET /vision/v2.0/textOperations/
 
 U kunt de `POST /vision/v2.0/recognizeTextDirect` bewerking is synchroon gedrukte tekst in een afbeelding herkennen. Omdat deze bewerking synchroon is, is de aanvraag tekst voor deze bewerking hetzelfde als de `POST /vision/v2.0/recognizeText` bewerking, maar de antwoord tekst voor deze bewerking is hetzelfde als het resultaat van de `GET /vision/v2.0/textOperations/*{id}*` bewerking.
 
-<!--  ## Validate container is running -->
-
-[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
-
+***
 
 ## <a name="stop-the-container"></a>De container stoppen
 
@@ -133,10 +345,9 @@ U kunt de `POST /vision/v2.0/recognizeTextDirect` bewerking is synchroon gedrukt
 
 Als u de container uitvoert met een uitvoer [koppeling](./computer-vision-resource-container-config.md#mount-settings) en logboek registratie ingeschakeld, genereert de container logboek bestanden die handig zijn om problemen op te lossen die optreden tijdens het starten of uitvoeren van de container. 
 
-
 ## <a name="billing"></a>Billing
 
-De Tekst herkennen-containers verzenden facturerings gegevens naar Azure met behulp van een _tekst herkennen_ resource in uw Azure-account. 
+De Cognitive Services-containers verzenden facturerings gegevens naar Azure, met behulp van de bijbehorende resource in uw Azure-account.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -148,12 +359,12 @@ Zie voor meer informatie over deze opties [containers configureren](./computer-v
 
 ## <a name="summary"></a>Samenvatting
 
-In dit artikel hebt u concepten en werk stromen geleerd om Tekst herkennen containers te downloaden, te installeren en uit te voeren. Samenvatting:
+In dit artikel hebt u geleerd concepten en werkstroom voor het downloaden, installeren en Computer Vision-containers uitvoeren. Samenvatting:
 
-* Tekst herkennen biedt een Linux-container voor docker, inkapseling tekst herkennen.
-* Containerinstallatiekopieën worden gedownload uit het Microsoft Container Registry (MCR) in Azure.
+* Computer Vision biedt een Linux-container voor docker, die zowel Tekst herkennen als lezen inkapselen.
+* Container installatie kopieën worden gedownload uit het container register container preview in Azure.
 * Containerinstallatiekopieën uitvoeren in Docker.
-* U kunt de REST API of SDK gebruiken voor het aanroepen van bewerkingen in Tekst herkennen containers door de URI van de host op te geven van de container.
+* U kunt de REST API of SDK gebruiken voor het aanroepen van bewerkingen in Tekst herkennen of het lezen van containers door de URI van de host op te geven van de container.
 * Bij het instantiëren van een container, moet u informatie over facturering opgeven.
 
 > [!IMPORTANT]
@@ -162,7 +373,7 @@ In dit artikel hebt u concepten en werk stromen geleerd om Tekst herkennen conta
 ## <a name="next-steps"></a>Volgende stappen
 
 * Beoordeling [containers configureren](computer-vision-resource-container-config.md) voor configuratie-instellingen
-* Beoordeling [Computer Vision-overzicht](Home.md) voor meer informatie over het herkennen van afdrukken en handgeschreven tekst  
+* Beoordeling [Computer Vision-overzicht](Home.md) voor meer informatie over het herkennen van afdrukken en handgeschreven tekst
 * Raadpleeg de [Computer Vision-API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) voor meer informatie over de methoden die wordt ondersteund door de container.
 * Raadpleeg [Veelgestelde vragen (FAQ)](FAQ.md) het oplossen van problemen met betrekking tot de Computer Vision-functionaliteit.
 * Meer [Cognitive Services containers](../cognitive-services-container-support.md) gebruiken

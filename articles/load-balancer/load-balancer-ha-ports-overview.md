@@ -11,20 +11,20 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/2018
+ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 89deedd3ef99ba76d0bb133bac37c0acee0a9f73
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 350c6ae2e62a88477ce67132b56d9253166d13ec
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275025"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130434"
 ---
 # <a name="high-availability-ports-overview"></a>Overzicht van poorten voor hoge beschikbaarheid
 
 Azure Standard Load Balancer kunt u taakverdeling TCP en UDP-stromen op alle poorten tegelijkertijd wanneer u een interne load balancer. 
 
-Een taakverdelings regel voor poorten met hoge Beschik baarheid (HA) is een variant van een taakverdelings regel, geconfigureerd op een interne Standard Load Balancer. U kunt het gebruik van een load balancer vereenvoudigen door te geven van een regel voor het verdelen van alle TCP en UDP-stromen die op alle poorten van een interne standaardversie van Load Balancer binnenkomen. De beslissing load balancing is per stroom gemaakt. Deze actie is gebaseerd op de volgende vijf-tuple-verbinding: bron-IP-adres, bron poort, doel-IP-adres, doel poort en protocol
+Een regel voor Load Balancing met hoge Beschik baarheid (HA) is een variant van een taakverdelings regel, geconfigureerd op een interne Standard Load Balancer. U kunt het gebruik van een load balancer vereenvoudigen door te geven van een regel voor het verdelen van alle TCP en UDP-stromen die op alle poorten van een interne standaardversie van Load Balancer binnenkomen. De beslissing load balancing is per stroom gemaakt. Deze actie is gebaseerd op de volgende vijf-tuple-verbinding: bron-IP-adres, bron poort, doel-IP-adres, doel poort en protocol
 
 De taakverdelings regels voor de HA-poorten helpen u bij kritieke scenario's, zoals hoge Beschik baarheid en schaal voor Nva's (Network Virtual Appliance) in virtuele netwerken. De functie kan ook helpen bij een groot aantal poorten verdeeld worden moet. 
 
@@ -44,7 +44,7 @@ Voor NVA HA scenario's bieden HA-poorten aan de volgende voordelen:
 - Geef *n*-actieve en actief-passief-scenario's
 - Voorkom de noodzaak voor complexe oplossingen, zoals Apache ZooKeeper-knooppunten voor het bewaken van apparaten
 
-Het volgende diagram toont een virtueel netwerk hub en spoke-implementatie. Geforceerde tunneling in de knooppunten hun verkeer naar de virtuele hub-netwerk en via de NVA, voordat u de vertrouwde ruimte. De NVA's zich achter een interne Standard Load Balancer met de configuratie van een HA-poorten. Al het verkeer kan worden verwerkt en dienovereenkomstig doorgestuurd. Indien geconfigureerd zoals in het volgende diagram wordt weer gegeven, biedt de taakverdelings regel van HA-poorten bovendien stroom symmetrie voor binnenkomend en uitgaand verkeer.
+Het volgende diagram toont een virtueel netwerk hub en spoke-implementatie. Geforceerde tunneling in de knooppunten hun verkeer naar de virtuele hub-netwerk en via de NVA, voordat u de vertrouwde ruimte. De NVA's zich achter een interne Standard Load Balancer met de configuratie van een HA-poorten. Al het verkeer kan worden verwerkt en dienovereenkomstig doorgestuurd. Wanneer de configuratie wordt weer gegeven in het volgende diagram, biedt de taak verdelings regel voor HA-poorten daarnaast een stroom symmetrie voor binnenkomend en uitgaand verkeer.
 
 <a node="diagram"></a>
 ![Diagram van hub en spoke virtueel netwerk, met Nva's geïmplementeerd in HA-modus](./media/load-balancer-ha-ports-overview/nvaha.png)
@@ -94,13 +94,11 @@ U kunt configureren *één* openbare Standard Load Balancer-resource voor de bac
 
 ## <a name="limitations"></a>Beperkingen
 
-- Maximaal beschikbare is poortconfiguratie alleen beschikbaar voor interne load balancers. Het is niet beschikbaar voor openbare load balancers.
-
+- De taakverdelings regels voor HA-poorten zijn alleen beschikbaar voor interne Standard Load Balancer.
 - De combinatie van een HA-poorten taakverdelingsregel en een niet-HA-poorten taakverdelingsregel wordt niet ondersteund.
-
-- De functie voor HA-poorten is niet beschikbaar voor IPv6.
-
-- Flow-symmetrie (voornamelijk voor NVA-scenario's) wordt ondersteund met een back-end-exemplaar en één NIC (en één IP-configuratie) alleen wanneer deze worden gebruikt zoals weer gegeven in het diagram hierboven en met behulp van de taakverdelings regels voor HA-poorten. Het is in geen enkel ander scenario opgenomen. Dit betekent dat twee of meer Load Balancer resources en de bijbehorende regels onafhankelijke beslissingen nemen en nooit gecoördineerd zijn. Zie de beschrijving en diagram voor [virtuele netwerkapparaten](#nva). Wanneer u een meerdere Nic's gebruikt of de NVA tussen een open bare en interne Load Balancer, is de stroom symmetrie niet beschikbaar.  U kunt dit mogelijk omzeilen door middel van de bron NAT'ing de ingangs stroom naar het IP-adres van het apparaat zodat antwoorden op dezelfde NVA kunnen worden ontvangen.  We raden u echter ten zeerste aan om één NIC te gebruiken en de referentie architectuur te gebruiken die wordt weer gegeven in het bovenstaande diagram.
+- Bestaande IP-fragmenten worden doorgestuurd door HA-poorten taakverdelings regels naar hetzelfde doel als eerste pakket.  IP-fragmentatie van een UDP-of TCP-pakket wordt niet ondersteund.
+- De taakverdelings regels voor de HA-poorten zijn niet beschikbaar voor IPv6.
+- Flow-symmetrie (voornamelijk voor NVA-scenario's) wordt ondersteund met een back-end-exemplaar en één NIC (en één IP-configuratie) alleen wanneer deze worden gebruikt zoals weer gegeven in het diagram hierboven en met behulp van de taakverdelings regels voor HA-poorten. Het is in geen enkel ander scenario opgenomen. Dit betekent dat twee of meer Load Balancer resources en de bijbehorende regels onafhankelijke beslissingen nemen en nooit gecoördineerd zijn. Zie de beschrijving en diagram voor [virtuele netwerkapparaten](#nva). Wanneer u meerdere Nic's gebruikt of de NVA tussen een open bare en interne Load Balancer, is de stroom symmetrie niet beschikbaar.  U kunt dit mogelijk omzeilen door middel van de bron NAT'ing de ingangs stroom naar het IP-adres van het apparaat zodat antwoorden op dezelfde NVA kunnen worden ontvangen.  We raden u echter ten zeerste aan om één NIC te gebruiken en de referentie architectuur te gebruiken die wordt weer gegeven in het bovenstaande diagram.
 
 
 ## <a name="next-steps"></a>Volgende stappen

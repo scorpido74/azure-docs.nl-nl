@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 86f455f25bb41833774bb7ad7d81688aad812b5a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7fea8d997d25d6075e30620e7fd3527003c6a8bb
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236812"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128795"
 ---
 # <a name="cli-example-create-a-transform"></a>CLI-voorbeeld: Een transformatie maken
 
@@ -31,10 +31,15 @@ In het Azure CLI-script in dit artikel ziet u hoe u een transformatie kunt maken
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
+> [!NOTE]
+> U kunt alleen een pad opgeven naar een aangepaste standaard Encoder voor een JSON-bestand voor [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset). Zie het voor beeld voor [coderen met een aangepaste transform](custom-preset-cli-howto.md) .
+>
+> U kunt geen bestands naam door geven wanneer u [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)gebruikt.
+
 ## <a name="example-script"></a>Voorbeeldscript
 
 [!code-azurecli-interactive[main](../../../cli_scripts/media-services/create-transform/Create-Transform.sh "Create a transform")]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Overzicht van Media Services](media-services-overview.md)
+[AZ AMS Transform (CLI)](https://docs.microsoft.com/cli/azure/ams/transform?view=azure-cli-latest)

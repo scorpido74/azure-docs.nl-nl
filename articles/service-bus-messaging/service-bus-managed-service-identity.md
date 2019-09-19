@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 139ebe02727bab8cc80f6f0c6bbbd2156f025c21
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: a35ad4f8d480b0f95f4dc782aa06734e33bc54f8
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70992309"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130298"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Azure Service Bus bronnen
 [Identiteiten voor een Azure-resources beheerd](../active-directory/managed-identities-azure-resources/overview.md) is een cross-Azure-functie die u kunt maken van een veilige identiteit die is gekoppeld aan de implementatie waarmee uw toepassingscode wordt uitgevoerd. Daarna kunt u die identiteit koppelen met access-control-rollen die aangepaste machtigingen voor toegang tot specifieke Azure-resources die uw toepassing nodig heeft.
@@ -31,7 +31,7 @@ Wanneer een beveiligingsprincipal (een gebruiker, groep of toepassing) probeert 
  1. Eerst wordt de identiteit van de beveiligingsprincipal geverifieerd en wordt een OAuth 2,0-token geretourneerd. De resource naam voor het aanvragen van een `https://servicebus.azure.net`token is.
  1. Vervolgens wordt het token door gegeven als onderdeel van een aanvraag aan de Service Bus-service om toegang tot de opgegeven bron te autoriseren.
 
-De verificatie stap vereist dat een toepassings aanvraag een OAuth 2,0-toegangs token bevat tijdens runtime. Als een toepassing wordt uitgevoerd binnen een Azure-entiteit, zoals een Azure-VM, een schaalset voor virtuele machines of een Azure function-app, kan deze een beheerde identiteit gebruiken om toegang te krijgen tot de resources. Zie [toegang verifiëren voor Azure service bus resources met Azure Active Directory en beheerde identiteiten voor Azure-resources](service-bus-managed-service-identity.md)voor meer informatie over het verifiëren van aanvragen die door een beheerde identiteit worden door gegeven aan service bus service. 
+De verificatie stap vereist dat een toepassings aanvraag een OAuth 2,0-toegangs token bevat tijdens runtime. Als een toepassing wordt uitgevoerd binnen een Azure-entiteit, zoals een Azure-VM, een schaalset voor virtuele machines of een Azure function-app, kan deze een beheerde identiteit gebruiken om toegang te krijgen tot de resources. 
 
 Voor de autorisatie stap moeten een of meer RBAC-rollen worden toegewezen aan de beveiligingsprincipal. Azure Service Bus biedt RBAC-rollen die sets machtigingen voor Service Bus bronnen omvatten. De rollen die zijn toegewezen aan een beveiligingsprincipal, bepalen de machtigingen die de principal heeft. Zie voor meer informatie over het toewijzen van RBAC-rollen aan Azure Service Bus [Ingebouwde RBAC-rollen voor Azure service bus](#built-in-rbac-roles-for-azure-service-bus). 
 

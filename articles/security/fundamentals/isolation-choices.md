@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 9ab09c7215827369b3e1fc449af68be307881f51
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a3e4a598446c0b59cd678e186906abc61d3d727d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928019"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123048"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolatie in de open bare Azure-Cloud
 ##  <a name="introduction"></a>Inleiding
@@ -105,7 +105,7 @@ Azure Active Directory zijn onder andere de volgende mogelijkheden:
 
 - Azure AD biedt identiteit als een service via federatie door gebruik te maken van [Active Directory Federation Services](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md), synchronisatie en replicatie met on-premises directory's.
 
-- [Multi-factor Authentication van Azure](../../active-directory/authentication/multi-factor-authentication.md) is de multi-factor Authentication-service die gebruikers nodig hebben om aanmeldingen te verifiëren met behulp van een mobiele app, telefoon gesprek of SMS-bericht. Het kan worden gebruikt met Azure AD om on-premises resources te beveiligen met de Azure multi-factor Authentication-Server, en ook met aangepaste toepassingen en mappen met behulp van de SDK.
+- [Azure multi-factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) is de multi-factor Authentication-service waarmee gebruikers zich kunnen verifiëren met behulp van een mobiele app, telefonische oproep of een SMS-bericht. Het kan worden gebruikt met Azure AD om on-premises resources te beveiligen met de Azure Multi-Factor Authentication-Server, en ook met aangepaste toepassingen en mappen met behulp van de SDK.
 
 - Met [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) kunt u virtuele Azure-machines toevoegen aan een Active Directory domein zonder dat u domein controllers hoeft te implementeren. U kunt u aanmelden bij deze virtuele machines met uw zakelijke Active Directory referenties en virtuele machines die lid zijn van een domein beheren door gebruik te maken van groepsbeleid om beveiligings basislijnen af te dwingen op al uw virtuele machines van Azure.
 
@@ -128,19 +128,8 @@ Als op een schijf station dat wordt gebruikt voor opslag een hardwarestoring opt
 Microsoft Azure biedt verschillende Cloud Computing Services die een breed scala aan reken instanties bevatten & Services die automatisch omhoog en omlaag kunnen worden geschaald om te voldoen aan de behoeften van uw toepassing of onderneming. Deze reken instantie en service bieden isolatie op meerdere niveaus om gegevens te beveiligen zonder dat de flexibiliteit van de configuratie die klanten vereisen, wordt gegarandeerd.
 
 ### <a name="isolated-virtual-machine-sizes"></a>Geïsoleerde grootte van virtuele machines
-Azure Compute biedt formaten virtuele machines die zijn geïsoleerd voor een specifiek hardwaretype en bedoeld voor een enkele klant.  Deze formaten virtuele machines zijn ideaal voor workloads waarvoor een hoge mate van isolatie van andere klanten vereist is en voor workloads waarbij elementen als naleving en wettelijke vereisten een rol spelen.  Klanten kunnen er ook voor kiezen om de resources van deze geïsoleerde virtuele machines verder te onderverdelen met behulp [van Azure-ondersteuning voor geneste virtuele machines](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).
 
-Het gebruik van een geïsoleerde grootte garandeert dat uw virtuele machine de enige is die op dat specifieke Server exemplaar wordt uitgevoerd.  De huidige, geïsoleerde virtuele-machine-aanbiedingen omvatten:
-* Standard_E64is_v3
-* Standard_E64i_v3
-* Standard_M128ms
-* Standard_GS5
-* Standard_G5
-* Standard_DS15_v2
-* Standard_D15_v2
-* Standard_F72s_v2
-
-Hier vindt u meer informatie over elke geïsoleerde grootte die u [hier](../../virtual-machines/windows/sizes-memory.md)kunt vinden.
+[!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V-&-basis besturingssysteem isolatie tussen de virtuele machines van de virtuele machine & gast-Vm's
 Het Compute-platform van Azure is gebaseerd op machine virtualisatie, wat inhoudt dat alle klant code wordt uitgevoerd in een Hyper-V-virtuele machine. Op elk Azure-knoop punt (of netwerk eindpunt) bevindt zich een Hyper Visor die rechtstreeks over de hardware wordt uitgevoerd en die een knoop punt opsplitst in een variabele aantal gast Virtual Machines (Vm's).
@@ -352,7 +341,7 @@ Azure-implementatie heeft meerdere lagen voor netwerk isolatie. In het volgende 
 
 - [Netwerk isolatie opties voor computers in virtuele Windows Azure-netwerken](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
 
-Dit omvat het klassieke front-end-en back-end-scenario waarbij computers in een bepaald back-end-netwerk of subnetwerk mogelijk alleen toestaan dat bepaalde clients of andere computers verbinding maken met een bepaald eind punt op basis van een white list van IP-adressen.
+Dit omvat het klassieke front-end-en back-end-scenario waarbij computers in een bepaald back-end-netwerk of subnetwerk mogelijk alleen toestaan dat bepaalde clients of andere computers verbinding maken met een bepaald eind punt op basis van een lijst met toegestane IP-adressen.
 
 - [Reken isolatie](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 

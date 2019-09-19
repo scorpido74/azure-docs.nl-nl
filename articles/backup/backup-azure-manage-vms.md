@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0e8dacb97b6ccfb57573fc21c3a4df3694cc7ec8
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 9e7d6a027a60590396446479aecf1644ef753ecf
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098407"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130173"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Back-ups van Azure-VM'S beheren met Azure Backup-Service
 
@@ -164,6 +164,13 @@ Er zijn twee manieren om de back-upgegevens van een VM te verwijderen:
 
   > [!NOTE]
   > Wanneer u back-upgegevens verwijdert, verwijdert u alle gekoppelde herstel punten. U kunt geen specifieke herstel punten kiezen die u wilt verwijderen.
+
+### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Back-upitem waarbij primaire gegevens bron niet meer bestaat
+
+- Als Azure-Vm's die zijn geconfigureerd voor Azure backup, worden verwijderd of verplaatst zonder de beveiliging te stoppen, mislukken de back-uptaken van geplande back-uptaken en op aanvraag (ad-hoc) met de fout UserErrorVmNotFoundV2. De pre-controle van de back-up wordt alleen als kritiek weer gegeven voor mislukte ad-hoc back-uptaken (mislukte geplande taken worden niet weer gegeven). 
+- Deze back-upitems blijven actief in het systeem dat voldoet aan het back-up-en bewaar beleid dat door de gebruiker is ingesteld. De back-upgegevens voor deze Azure-Vm's worden bewaard volgens het Bewaar beleid. De verlopen herstel punten (met uitzonde ring van het laatste herstel punt) worden gereinigd op basis van de Bewaar termijn die in het back-upbeleid is ingesteld.
+- Gebruikers wordt aangeraden de back-upitems te verwijderen waarin de primaire gegevens bron niet meer bestaat om extra kosten te voor komen, als het back-upbestand/de gegevens voor de verwijderings resources niet langer vereist zijn omdat het laatste herstel punt permanent wordt behouden en de gebruiker wordt gefactureerd als volgens de prijzen voor back-ups die van toepassing zijn.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [het maken van een back-up van Azure-vm's vanuit de instellingen van de virtuele machine](backup-azure-vms-first-look-arm.md).

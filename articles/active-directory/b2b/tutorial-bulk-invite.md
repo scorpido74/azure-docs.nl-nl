@@ -1,140 +1,110 @@
 ---
-title: 'Zelfstudie voor het bulksgewijs nodigt gebruikers van B2B-samenwerking: Azure Active Directory | Microsoft Docs'
+title: Zelf studie voor het bulksgewijs uitnodigen van B2B-samenwerkings gebruikers-Azure Active Directory | Microsoft Docs
 description: In deze zelfstudie leert u hoe u PowerShell en een CSV-bestand gebruikt voor het verzenden van bulk-uitnodigingen naar externe gebruikers van de Microsoft Azure AD B2B-samenwerking.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 9/19/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3bd02afa1fe1aaba6602201f839468a58673c29
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: ec1a6ea8f363f2ddd4a9568700d5bff3330443c0
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278002"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128729"
 ---
-# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Zelfstudie: Bulksgewijs gebruikers uitnodigen voor Microsoft Azure AD B2B-samenwerking
+# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Zelfstudie: Azure AD B2B-samenwerkings gebruikers (preview) bulksgewijs uitnodigen
 
-Als u Azure Active Directory (Azure AD) B2B-samenwerking gebruikt om te werken met externe partners, kunt u tegelijkertijd meerdere gastgebruikers uitnodigen voor uw organisatie. In deze zelfstudie leert u hoe u PowerShell gebruikt voor het verzenden van bulk-uitnodigingen naar externe gebruikers. Ga als volgt te werk:
+|     |
+| --- |
+| In dit artikel wordt een open bare preview-functie van Azure Active Directory beschreven. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.|
+|     |
+
+
+Als u Azure Active Directory (Azure AD) B2B-samenwerking gebruikt om te werken met externe partners, kunt u tegelijkertijd meerdere gastgebruikers uitnodigen voor uw organisatie. In deze zelf studie leert u hoe u de Azure Portal kunt gebruiken om bulk uitnodigingen naar externe gebruikers te verzenden. Ga als volgt te werk:
 
 > [!div class="checklist"]
-> * Bereid een bestand met door komma's gescheiden waarden (.csv) voor waarin u de gebruikersinformatie opneemt
-> * Voer een PowerShell-script uit voor het verzenden van uitnodigingen
+> * Gebruik **gebruikers voor bulk-uitnodiging (preview)** om een bestand met door komma's gescheiden waarden (. CSV) voor te bereiden met de gebruikers gegevens en de voor keuren voor uitnodigingen
+> * Upload het CSV-bestand naar Azure AD
 > * Controleer of de gebruikers zijn toegevoegd aan de map
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
+Als u geen Azure Active Directory hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-### <a name="install-the-latest-azureadpreview-module"></a>Installeer de nieuwste versie van de AzureADPreview-module
-Zorg ervoor dat u de nieuwste versie van de Microsoft Azure AD PowerShell voor Graph-module (AzureADPreview) installeert. 
-
-Controleer eerst welke modules die u hebt geïnstalleerd. Open PowerShell als een gebruiker met verhoogde bevoegdheid (Uitvoeren als administrator) en voer de volgende opdracht uit:
- 
-```powershell  
-Get-Module -ListAvailable AzureAD*
-```
-
-Voer, op basis van de uitvoer, een van de volgende handelingen uit:
-
-- Als er geen resultaten worden geretourneerd, voert u de volgende opdracht uit om de AzureADPreview-module te installeren:
-  
-   ```powershell  
-   Install-Module AzureADPreview
-   ```
-- Als alleen de AzureAD-module wordt weergegeven in de resultaten, voert u de volgende opdrachten uit om de AzureADPreview-module te installeren: 
-
-   ```powershell 
-   Uninstall-Module AzureAD 
-   Install-Module AzureADPreview 
-   ```
-- Als alleen de AzureADPreview-module wordt weergegeven in de resultaten, maar u een bericht ontvangt dat aangeeft dat er een latere versie is, voert u de volgende opdrachten uit om de module bij te werken: 
-
-   ```powershell 
-   Uninstall-Module AzureADPreview 
-   Install-Module AzureADPreview 
-  ```
-
-Mogelijk krijgt u een opdrachtprompt dat u de module vanuit een niet-vertrouwde opslagplaats installeert. Dit gebeurt als u de opslagplaats PSGallery eerder niet hebt ingesteld als een vertrouwde opslagplaats. Druk op **Y** om de module te installeren.
-
-### <a name="get-test-email-accounts"></a>Test-e-mailaccounts ophalen
-
 U moet twee of meer test e-mailaccounts hebben waarnaar u uitnodigingen kunt verzenden. De accounts moet van buiten uw organisatie zijn. U kunt elk type account gebruiken, met inbegrip van sociale accounts, bijvoorbeeld met een adres van gmail.com of outlook.com.
 
-## <a name="prepare-the-csv-file"></a>Het CSV-bestand voorbereiden
+## <a name="invite-guest-users-in-bulk"></a>Gast gebruikers bulksgewijs uitnodigen
 
-Maak in Microsoft Excel een CSV-bestand met de lijst van gebruikersnamen en e-mailadressen van de mensen die u wilt uitnodigen. Vergeet niet de kolomkoppen **Naam** en **InvitedUserEmailAddress** op te nemen. 
+1. Meld u aan bij de Azure Portal met een account dat een gebruikers beheerder in de organisatie is.
+2. Selecteer **Azure Active Directory**in het navigatie deel venster.
+3. Selecteer onder **beheren**de optie **gebruikers** > **bulksgewijs uitnodigen**.
+4. Selecteer op de pagina **gebruikers bulksgewijs uitnodigen (preview)** de optie **downloaden** om een geldig CSV-bestand met de uitnodigings-eigenschappen te verkrijgen.
 
-Maak bijvoorbeeld een werkblad in de volgende indeling:
+    ![Knop downloaden in bulk-uitnodiging](media/tutorial-bulk-invite/bulk-invite-button.png)
 
+5. Open het CSV-bestand en voeg een regel toe voor elke gast gebruiker. De vereiste waarden zijn:
 
-![PowerShell-uitvoer die wacht op acceptatie door de gebruiker](media/tutorial-bulk-invite/AddUsersExcel.png)
+   * **E-mail adres dat moet worden uitgenodigd** : de gebruiker die een uitnodiging ontvangt
 
-Sla het bestand op als **C:\BulkInvite\Invitations.csv**. 
+   * **Omleidings-URL** : de URL waarnaar de uitgenodigde gebruiker is doorgestuurd na acceptatie van de uitnodiging
 
-Als u niet beschikt over Excel, kunt u een CSV-bestand maken in een teksteditor zoals Kladblok. Scheid de waarden met een komma, en plaats elke rij op een nieuwe regel. 
+    ![Voor beeld van een CSV-bestand met gast gebruikers ingevoerd](media/tutorial-bulk-invite/bulk-invite-csv.png)
 
-## <a name="sign-in-to-your-tenant"></a>Aanmelden bij uw tenant
+   > [!NOTE]
+   > Gebruik geen komma's in het **aangepaste uitnodigings bericht** omdat het bericht niet kan worden geparseerd.
 
-Voer de volgende opdracht uit om verbinding te maken met het tenantdomein:
+6. Sla het bestand op.
+7. Blader op de pagina **bulksgewijs uitnodigen gebruikers (preview)** onder **uw CSV-bestand uploaden**naar het bestand. Wanneer u het bestand selecteert, wordt de validatie van het CSV-bestand gestart. 
+8. Wanneer de bestands inhoud is gevalideerd, ziet u dat het **bestand is geüpload**. Als er fouten zijn, moet u deze oplossen voordat u de taak kunt indienen.
+9. Wanneer de validatie van uw bestand wordt door gegeven, selecteert u **verzenden** om te beginnen met de bulk bewerking van Azure waarmee de uitnodigingen worden toegevoegd. 
+10. Als u de taak status wilt weer geven, selecteert u **hier Klik hier om de status van elke bewerking weer te geven**. U kunt ook **bulk bewerkings resultaten selecteren (preview)** in het gedeelte **activiteit** . Voor meer informatie over elk regel item in de bulk bewerking selecteert u de waarden onder de kolommen **# geslaagd**, **# fout**of **Totaal aantal aanvragen** . Als er fouten zijn opgetreden, worden de redenen voor de fout weer gegeven.
 
-```powershell
-Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
-```
-Bijvoorbeeld `Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"`.
+    ![Voor beeld van resultaten van een bulk bewerking](media/tutorial-bulk-invite/bulk-operation-results.png)
 
-Voer uw referenties in wanneer dit wordt gevraagd.
+11. Wanneer de taak is voltooid, ziet u een melding dat de bulk bewerking is geslaagd.
 
-## <a name="send-bulk-invitations"></a>Bulk-uitnodigingen verzenden
+## <a name="verify-guest-users-in-the-directory"></a>Gast gebruikers in de adres lijst controleren
 
-Verzend de uitnodigingen met het volgende PowerShell-script (waarbij **c:\bulkinvite\invitations.csv** het pad van het CSV-bestandis): 
+Controleer of de gast gebruikers die u hebt toegevoegd in de Directory aanwezig zijn in de Azure Portal of met behulp van Power shell.
 
-```powershell
-$invitations = import-csv c:\bulkinvite\invitations.csv
-   
-$messageInfo = New-Object Microsoft.Open.MSGraph.Model.InvitedUserMessageInfo
-   
-$messageInfo.customizedMessageBody = "Hello. You are invited to the Contoso organization."
-   
-foreach ($email in $invitations) 
-   {New-AzureADMSInvitation `
-      -InvitedUserEmailAddress $email.InvitedUserEmailAddress `
-      -InvitedUserDisplayName $email.Name `
-      -InviteRedirectUrl https://myapps.microsoft.com `
-      -InvitedUserMessageInfo $messageInfo `
-      -SendInvitationMessage $true
-   }
-```
-Dit script stuurt een uitnodiging naar de e-mailadressen in het bestand Invitations.csv. De uitvoer ziet er ongeveer als volgt uit voor elke gebruiker:
+### <a name="view-guest-users-in-the-azure-portal"></a>Gast gebruikers weer geven in de Azure Portal
 
-![PowerShell-uitvoer die wacht op acceptatie door de gebruiker](media/tutorial-bulk-invite/B2BBulkImport.png)
+1. Meld u aan bij de Azure Portal met een account dat een gebruikers beheerder in de organisatie is.
+2. Selecteer **Azure Active Directory**in het navigatie deel venster.
+3. Onder **Beheren**, selecteer **Gebruikers**.
+4. Onder **weer geven**selecteert u **Alleen gast gebruikers** en controleert u of de gebruikers die u hebt toegevoegd, worden weer gegeven.
 
-## <a name="verify-users-exist-in-the-directory"></a>Controleer of de gebruikers bestaan in de map
+### <a name="view-guest-users-with-powershell"></a>Gast gebruikers weer geven met Power shell
 
-Controleer of de uitgenodigde gebruikers zijn toegevoegd aan Microsoft Azure AD door de volgende opdracht uit te voeren:
+Voer de volgende opdracht uit:
+
 ```powershell
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
-U ziet dat de gebruikers die u hebt uitgenodigd weergegeven, met een user principal name (UPN) in de indeling *emailaddress*EXT #\@*domein*. Bijvoorbeeld, *lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, waarbij contoso.onmicrosoft.com staat voor de organisatie waarvan u de uitnodigingen verzonden.
+
+De gebruikers die u hebt uitgenodigd, worden weer gegeven met een User Principal Name (UPN) in de notatie *EmailAddress*#EXT #\@*domein*. Bijvoorbeeld, *lstokes_fabrikam. com #\@ext # contoso.onmicrosoft.com*, waarbij contoso.onmicrosoft.com de organisatie is van waaruit u de uitnodigingen hebt verzonden.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u de test-gebruikersaccounts niet meer nodig hebt, kunt u deze uit de map verwijderen. Voer de volgende opdracht uit om een gebruikersaccount te verwijderen:
+Wanneer u deze niet meer nodig hebt, kunt u de test gebruikers accounts in de Directory verwijderen in de Azure Portal op de pagina gebruikers door het selectie vakje naast de gast gebruiker in te scha kelen en vervolgens **verwijderen**te selecteren. 
+
+U kunt ook de volgende Power shell-opdracht uitvoeren om een gebruikers account te verwijderen:
 
 ```powershell
  Remove-AzureADUser -ObjectId "<UPN>"
 ```
+
 Bijvoorbeeld: `Remove-AzureADUser -ObjectId "lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
-
 ## <a name="next-steps"></a>Volgende stappen
+
 In deze zelfstudie hebt u bulk-uitnodigingen naar gastgebruikers buiten uw organisatie verzonden. Vervolgens leert u hoe het proces voor uitnodiging inwisselen werkt.
 
 > [!div class="nextstepaction"]
 > [Meer informatie over het proces voor uitnodiging inwisselen in Microsoft Azure AD B2B-samenwerking](redemption-experience.md)
-

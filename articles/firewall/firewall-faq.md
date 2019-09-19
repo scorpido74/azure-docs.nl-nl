@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 4b258df1711aa51ed4edee6ecd209fa39c7fde27
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: cb5b8bbb322dc401c7a8b057418d392120ef68e3
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018850"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130225"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -163,3 +163,7 @@ Azure Firewall moet meer exemplaren van virtuele machines inrichten terwijl deze
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>Moet de grootte van het subnet van de firewall veranderen wanneer de service wordt geschaald?
 
 Nee. Azure Firewall hebt geen subnet dat groter is dan/26.
+
+## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Staat Azure Firewall standaard toegang tot Active Directory toe?
+
+Nee. Azure Firewall blokkeert standaard Active Directory toegang. Configureer de AzureActiveDirectory-service label om toegang toe te staan. Zie [Azure Firewall-service Tags](service-tags.md)voor meer informatie.

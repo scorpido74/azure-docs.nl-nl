@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 4fb88cbed4e73a7cea2b0ccf01b1429a3ff321f3
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: b882b8ee08c38b6313558916ab46f80ce9dd5130
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018185"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129341"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Beveiligings functies voor het beveiligen van Cloud werkbelastingen die gebruikmaken van Azure Backup
 
@@ -122,9 +122,9 @@ Als u de verwijdering opheffen, gevolgd door de bewerking hervatten wordt de res
 
 Recovery Services kluis kan niet worden verwijderd als er back-upitems in de kluis worden verwijderd. De voorlopig verwijderde items worden permanent verwijderd na 14 dagen na de Verwijder bewerking. U kunt de kluis pas verwijderen nadat alle tijdelijke verwijderde items zijn opgeschoond.  
 
-#### <a name="how-can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Hoe kan ik de gegevens verwijderen die eerder zijn dan de 14 dagen voorlopig verwijderen na verwijdering?
+#### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Kan ik de gegevens die ouder zijn dan de 14 dagen na het verwijderen verwijderen?
 
-U kunt de gegevens niet vóór de 14 dagen na het verwijderen verwijderen. Neem contact op met micro soft ondersteuning als het een blok of een probleem met de compatibiliteit is.
+Nee. U kunt het verwijderen van de voorlopig verwijderde items niet afdwingen. deze worden na 14 dagen automatisch verwijderd. Deze beveiligings functie is ingeschakeld om de back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen.  U moet 14 dagen wachten voordat u een andere bewerking op de virtuele machine uitvoert.  Voor tijdelijke verwijderde items worden er geen kosten in rekening gebracht.  Neem contact op met micro soft ondersteuning als u de virtuele machines die binnen 14 dagen zijn gemarkeerd voor zacht verwijderen, opnieuw moet beveiligen.
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>Kunnen er tijdelijke Verwijder bewerkingen worden uitgevoerd in Power shell of CLI?
 

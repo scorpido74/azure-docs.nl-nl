@@ -1,135 +1,133 @@
 ---
-title: Wat is Azure Active Directory B2C? | Microsoft Docs
-description: Ontdek hoe u identiteiten kunt maken en beheren, zoals voor registreren en aanmelden, en voor profielbeheer in uw toepassing met behulp van Azure Active Directory B2C.
+title: Wat is Azure Active Directory B2C?
+description: Meer informatie over hoe u Azure Active Directory B2C kunt gebruiken ter ondersteuning van externe identiteiten in uw toepassingen, waaronder sociale aanmelding bij Facebook, Google en andere id-providers.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 09/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ca636079439f811a887d16b627473e7d73930799
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 007b23f07afec6163c2158feb3f17ba71e44bdb5
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065696"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71120675"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Wat is Azure Active Directory B2C?
 
-Azure Active Directory B2C (Azure AD B2C) is een identiteits beheer service van Business-to-consumer. Met deze service kunt u aanpassen en beheren hoe gebruikers veilig kunnen omgaan met uw web-, bureaublad- en mobiele toepassingen of toepassingen met één pagina. Met Azure AD B2C kunnen gebruikers zich registreren, aanmelden, kunnen ze wachtwoorden herstellen en profielen bewerken. In Azure AD B2C is een formulier geïmplementeerd van de OpenID Connect- en OAuth 2.0-protocollen. De belangrijke sleutel in de implementatie van deze protocollen wordt gevormd door de beveiligingstokens en de bijbehorende claims waarmee u veilige toegang hebt tot resources.
+Azure Active Directory B2C biedt identiteit van Business-to-Customer als een service. Uw klanten gebruiken hun voorkeurs identiteiten voor sociale netwerken, ondernemingen of lokale accounts om toegang te krijgen tot eenmalige aanmelding voor uw toepassingen en Api's.
 
-Een *gebruikersbeleving* is een aanvraag waarmee een beleid wordt opgegeven dat het gedrag controleert van de wijze waarop de gebruiker en uw toepassing met Azure AD B2C omgaan. Er zijn twee paden beschikbaar voor het definiëren van gebruikersbelevingen in Azure AD B2C.
+![Infographic van Azure AD B2C-id-providers en downstream-toepassingen](media/active-directory-b2c-overview/azureadb2c-overview.png)
 
-Als u een app-ontwikkelaar bent met of zonder ervaring met identiteiten, kunt u desgewenst in de Azure-portal algemene identiteitsgebruikersstromen definiëren. Als u een professional bent op het gebied van identiteiten, een systeemintegrator, een consultant of een in-house identiteitsteam, ervaring hebt met OpenID Connect-stromen en kennis hebt van id-providers en verificatie op basis van claims, dan kunt u kiezen voor aangepaste beleidsregels op basis van XML.
+Azure Active Directory B2C (Azure AD B2C) is een CIAM-oplossing (Customer Identity Access Management) waarmee miljoenen gebruikers en miljarden verificaties per dag kunnen worden ondersteund. Het zorgt voor de schaal en veiligheid van het verificatie platform, het bewaken en automatisch verwerken van bedreigingen zoals denial-of-service-, wachtwoord-en beveiligings aanvallen.
 
-Voordat u een gebruikersbeleving gaat definiëren, dient u een Azure AD B2C-tenant te maken en uw toepassing en API in de tenant te registreren. Als u deze taken hebt uitgevoerd, kunt u beginnen met het definiëren van een gebruikersbeleving met gebruikersstromen of aangepaste beleidsregels. Desgewenst kunt u id-providers toevoegen of wijzigen of de manier waarop de gebruiker de beleving ervaart, aanpassen.
+## <a name="custom-branded-identity-solution"></a>Oplossing met aangepaste merk identiteit
 
-## <a name="protocols-and-tokens"></a>Protocollen en tokens
+Azure AD B2C is een oplossing voor het verifiëren van witte labels. U kunt de volledige gebruikers ervaring met uw merk aanpassen zodat deze naadloos wordt gemengd met uw web-en mobiele toepassingen.
 
-Azure AD B2C ondersteunt de [OpenID Connect- en OAuth 2.0-protocollen](active-directory-b2c-reference-protocols.md) voor gebruikersbelevingen. In de Azure AD B2C-implementatie van OpenID Connect wordt deze gebruikerservaring via de toepassing gestart door verificatieaanvragen te verzenden naar Azure AD B2C.
+Pas elke pagina aan die wordt weer gegeven door Azure AD B2C wanneer uw gebruikers zich aanmelden, zich aanmelden en hun profiel gegevens wijzigen. U kunt de HTML, CSS en Java script in uw gebruikers reizen aanpassen zodat de Azure AD B2C ervaring eruitziet en lijkt alsof het een eigen deel van uw toepassing is.
 
-Het resultaat van een aanvraag bij Azure AD B2C is een beveiligingstoken, zoals een [id-token of toegangstoken](active-directory-b2c-reference-tokens.md). Met dit beveiligingstoken wordt de identiteit van de gebruiker gedefinieerd. Tokens worden ontvangen van Azure AD B2C-eindpunten, zoals een `/token`- of `/authorize`-eindpunt. Met deze tokens kunt u claims openen waarmee u een identiteit kunt valideren en toegang verlenen tot veilige resources.
+![Aangepaste registratie-en aanmeldings pagina's en achtergrond afbeelding](media/active-directory-b2c-overview/sign-in-small.png)
 
-## <a name="tenants-and-applications"></a>Tenants en toepassingen
+## <a name="single-sign-on-access-with-a-user-provided-identity"></a>Toegang met eenmalige aanmelding met een door de gebruiker gedefinieerde identiteit
 
-In Azure AD B2C bestaat een *tenant* uit een adreslijst of directory met gebruikers en vertegenwoordigt deze zo uw organisatie. Elke Azure AD B2C-tenant is uniek en staat volledig los van andere Azure AD B2C-tenants. Mogelijk hebt u al een Azure Active Directory-tenant. De Azure AD B2C-tenant is een andere tenant. Een tenant bevat gegevens over de gebruikers die zich hebben geregistreerd om uw toepassing te gebruiken. Denk hierbij aan gegevens zoals wachtwoorden, profielgegevens en machtigingen. Zie [Zelfstudie: Een Azure Active Directory B2C-tenant maken](tutorial-create-tenant.md).
+Azure AD B2C gebruikt op standaarden gebaseerde verificatie protocollen, waaronder OpenID Connect Connect, OAuth 2,0 en SAML. Het is geïntegreerd met de meeste moderne toepassingen en commerciële software.
 
-Voordat u uw toepassing configureert voor het gebruik van Azure AD B2C, moet u deze eerst via de Azure-portal in de tenant registreren. Tijdens het registratieproces worden er waarden verzameld en toegewezen aan uw toepassing. Deze waarden bevatten een toepassings-id waarmee de toepassing op unieke wijze wordt gedefinieerd, en een URI waarmee antwoorden naar de toepassing worden teruggeleid.
+![Diagram van identiteiten van derden federeren naar Azure AD B2C](media/active-directory-b2c-overview/scenario-singlesignon.png)
 
-De interactie van elke toepassing volgt in grote lijnen hetzelfde patroon:
+Met behulp van de centrale verificatie-instantie voor uw webtoepassingen, mobiele apps en Api's kunt u met Azure AD B2C een SSO-oplossing (single sign-on) maken voor alle toepassingen. Centraliseer de verzameling van gebruikers profielen en de voorkeurs informatie en leg gedetailleerde analyses vast over aanmeldings gedrag en registratie-conversie.
 
-1. De toepassing zorgt ervoor dat de gebruiker een beleid uitvoert.
-2. De gebruiker voltooit het beleid volgens de beleidsdefinitie.
-3. De toepassing ontvangt een token.
-4. De toepassing gebruikt het token om te proberen toegang te krijgen tot een resource.
-5. De resource-server valideert het token om te controleren of toegang kan worden verleend.
-6. Het token wordt regelmatig vernieuwd door de toepassing.
+## <a name="integrate-with-external-user-stores"></a>Integreren met externe gebruikers archieven
 
-Als u een webtoepassing wilt registreren, voert u de stappen uit in [Zelfstudie: een toepassing registreren om registratie en aanmelding in te schakelen in Azure AD B2C](tutorial-register-applications.md). U kunt ook [een web-API-toepassing toevoegen aan uw Azure Active Directory B2C-tenant](add-web-application.md) of [een systeemeigen clienttoepassing toevoegen aan uw Azure Active Directory B2C-tenant](add-native-application.md).
+Azure AD B2C biedt een map die aangepaste kenmerken van 100 kan bevatten per gebruiker. U kunt echter ook integreren met externe systemen. Gebruik bijvoorbeeld Azure AD B2C voor verificatie, maar delegeren aan een externe klant relatiebeheer (CRM) of klant loyale Data Base als de bron van een waarheid voor klant gegevens.
 
-## <a name="user-journeys"></a>Gebruikersbelevingen
+Een ander scenario voor het opslaan van externe gebruikers is om de verificatie voor uw toepassing te Azure AD B2C laten afhandelen, maar te integreren met een extern systeem waarmee gebruikers profielen of persoons gegevens worden opgeslagen. Om bijvoorbeeld te voldoen aan de vereisten voor gegevens locatie, zoals een regionaal of een on-premises beleid voor gegevens opslag.
 
-Het beleid in een gebruikersbeleving kan worden gedefinieerd als een [gebruikersstroom](active-directory-b2c-reference-policies.md) of als [aangepast beleid](active-directory-b2c-overview-custom.md). Vooraf gedefinieerde gebruikersstromen voor de meestvoorkomende identiteitstaken, zoals registratie, aanmelding en het bewerken van profielen, zijn beschikbaar in de Azure-portal.
+![Een logisch diagram van Azure AD B2C het communiceren met een extern gebruikers archief](media/active-directory-b2c-overview/scenario-remoteprofile.png)
 
-Met een gebruikersbeleving kunt u gedrag bepalen door de volgende instellingen te configureren:
+Azure AD B2C kunt het verzamelen van de gegevens van de gebruiker tijdens de registratie of het bewerken van het profiel vergemakkelijken en vervolgens de gegevens naar het externe systeem hand matig. Tijdens toekomstige verificaties kan Azure AD B2C de gegevens van het externe systeem ophalen en, indien nodig, opnemen als onderdeel van het verificatie token antwoord dat wordt verzonden naar uw toepassing.
 
-- Social media-accounts die de gebruiker gebruikt om zich te registreren voor de toepassing
-- Gegevens die van de gebruiker worden gevraagd, zoals voornaam of postcode
-- Multi-Factor Authentication
-- Uiterlijk van pagina's
-- Gegevens die worden geretourneerd naar de toepassing
+## <a name="progressive-profiling"></a>Progressieve profilering
 
-Aangepaste beleidsregels zijn configuratiebestanden die het gedrag van het [Identity Experience Framework](trustframeworkpolicy.md) in de Azure AD B2C-tenant definiëren. Identity Experience Framework is het onderliggende platform dat een vertrouwensrelatie opzet tussen meerdere partijen en de stappen in een gebruikersbeleving uitvoert.
+Een andere reis optie voor een gebruiker bevat progressieve profilering. Met de progressieve profilering kunnen uw klanten snel hun eerste trans actie volt ooien door een minimale hoeveelheid informatie te verzamelen. Verzamelt vervolgens geleidelijk meer profiel gegevens van de klant voor toekomstige aanmeldingen.
 
-Aangepaste beleidsregels kunnen worden gewijzigd voor het voltooien van allerlei taken. Een aangepast beleid bestaat uit een of meer XML-bestanden die in een hiërarchische keten naar elkaar verwijzen. Er is een [beginnerspakket](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) beschikbaar voor aangepaste beleidsregels voor het inschakelen van algemene identiteitstaken.
+![Een visuele voors telling van progressieve profilering](media/active-directory-b2c-overview/scenario-progressive.png)
 
-Er worden zo nodig aangepaste beleidsregels of gebruikersstromen van verschillende typen in de Azure AD B2C-tenant gebruikt.Deze kunnen in toepassingen worden hergebruikt. Deze flexibiliteit zorgt ervoor dat u gebruikersidentiteitservaringen kunt definiëren en aanpassen met geen of minimale wijzigingen van uw code. Beleidsregels worden gebruikt door een speciale queryparameter toe te voegen aan HTTP-verificatieaanvragen. Zie [Aan de slag met aangepaste beleidsregels in Azure Active Directory B2C](active-directory-b2c-get-started-custom.md) als u uw eigen aangepaste beleidsregels wilt maken.
+## <a name="third-party-identity-verification-and-proofing"></a>Verificatie en controle van de identiteit van derden
 
-## <a name="identity-providers"></a>Id-providers
+Gebruik Azure AD B2C om identiteits verificatie en controle te vereenvoudigen door gebruikers gegevens te verzamelen en deze door te geven aan een systeem van derden om validatie, vertrouwens scores en goed keuring van het maken van een gebruikers account uit te voeren.
 
-Het is wellicht wenselijk dat uw gebruikers zich in uw toepassingen bij verschillende id-providers kunnen aanmelden. Een *id-provider* maakt, onderhoudt en beheert id-gegevens en biedt tegelijkertijd verificatieservices voor toepassingen. Via de Azure-portal kunt u id-providers toevoegen die worden ondersteund door Azure AD B2C.
+![Een diagram van de gebruikers stroom voor identiteits controle van derden](media/active-directory-b2c-overview/scenario-idproofing.png)
 
-Gewoonlijk gebruikt u slechts één id-provider in uw toepassing, maar u kunt er eventueel meer toevoegen. Als u een id-provider wilt configureren in uw Azure AD B2C-tenant, maakt u eerst een toepassing op de ontwikkelaarssite van de id-provider en daarna legt u de toepassings-id of client-id vast, evenals het wachtwoord of het clientgeheim van de id-providertoepassing die u maakt. Deze id en wachtwoord worden vervolgens gebruikt om uw toepassing te configureren.
+Dit zijn slechts enkele van de dingen die u kunt doen met Azure AD B2C als uw Business-to-Customer-identiteits platform. In de volgende secties van dit overzicht vindt u een demonstratie toepassing die gebruikmaakt van Azure AD B2C. U kunt ook rechtstreeks naar een dieper [technisch overzicht van Azure AD B2C](technical-overview.md)gaan.
 
-In de volgende artikelen worden de stappen beschreven voor het toevoegen van een aantal veelvoorkomende id-providers aan gebruikersstromen:
+## <a name="example-woodgrove-groceries"></a>Voorbeeld: WoodGrove-boodschappen
 
-- [Amazon](active-directory-b2c-setup-amzn-app.md)
-- [Facebook](active-directory-b2c-setup-fb-app.md)
-- [Microsoft-account](active-directory-b2c-setup-msa-app.md)
+[WoodGrove-boodschappen][woodgrove] zijn een live web-app die door micro soft is gemaakt om verschillende Azure AD B2C functies te demonstreren. In de volgende secties worden enkele van de verificatie opties van Azure AD B2C op de WoodGrove-website gecontroleerd.
 
-In de volgende artikelen worden de stappen beschreven voor het toevoegen van een aantal veelvoorkomende id-providers aan aangepaste beleidsregels:
-- [Amazon](setup-amazon-custom.md)
-- [Google](active-directory-b2c-custom-setup-goog-idp.md)
-- [Microsoft-account](active-directory-b2c-custom-setup-msa-idp.md)
+### <a name="business-overview"></a>Bedrijfs overzicht
 
-Zie [Zelfstudie: Id-providers toevoegen aan uw toepassingen in Azure Active Directory B2C](tutorial-add-identity-providers.md).
+WoodGrove is een online winkel voor de winkels waarmee de boodschappen worden verkocht aan individuele consumenten en zakelijke klanten. Hun zakelijke klanten kopen hun boodschappen namens hun bedrijf of bedrijven die ze beheren.
 
+### <a name="sign-in-options"></a>Aanmeldingsopties
 
-## <a name="page-customization"></a>Pagina-aanpassing
+WoodGrove-boodschappen bieden verschillende aanmeldings opties op basis van de relatie die hun klanten hebben met de Store:
 
-De meeste HTML- en CSS-inhoud die klanten in een gebruikersbeleving krijgen gepresenteerd, kan worden beheerd. Door gebruik te maken van pagina-aanpassing, kunt u het uiterlijk van elke aangepaste beleidsregel of gebruikersstroom aanpassen. U zorgt er ook voor dat er visuele consistentie en merkconsistentie bestaat tussen de toepassing en Azure AD B2C door deze aanpassingsfunctie te gebruiken.
+* **Individuele** klanten kunnen zich aanmelden of zich aanmelden met afzonderlijke accounts, zoals een id-provider voor sociale netwerken of een e-mail adres en wacht woord.
+* **Zakelijke** klanten kunnen zich aanmelden of zich aanmelden met hun bedrijfs referenties.
+* **Partners** en leveranciers zijn personen die de Store van de boodschappen leveren met producten om te verkopen. De identiteit van de partner wordt verschaft door [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md).
 
-Azure AD B2C voert code uit in de browser van de gebruiker en maakt gebruik van een moderne aanpak die Cross-Origin Resource Sharing (CORS) wordt genoemd. U geeft eerst een URL op in een beleid met aangepaste HTML-inhoud. Azure AD B2C combineert elementen van de gebruikersinterface met de HTML-inhoud die vanaf de URL wordt geladen en presenteert vervolgens de pagina aan de gebruiker.
+![Afzonderlijke aanmeldings pagina's (B2C), Business (B2C) en partners (B2B)](media/active-directory-b2c-overview/woodgrove-overview.png)
 
-U verzendt parameters naar Azure AD B2C in een queryreeks. Door de parameter door te geven aan het HTML-eindpunt wordt de pagina-inhoud dynamisch gewijzigd. U wijzigt bijvoorbeeld de achtergrondafbeelding op de registratie- of aanmeldingspagina op basis van een parameter die u doorgeeft vanuit uw webtoepassing of mobiele toepassing.
+### <a name="authenticate-individual-customers"></a>Afzonderlijke klanten verifiëren
 
-Als u pagina's in een gebruikersstroom wilt aanpassen, raadpleegt u [Zelfstudie: de interface van de gebruikerservaring in Azure Active Directory B2C aanpassen](tutorial-customize-ui.md). Zie [De gebruikersinterface van uw toepassing met behulp van een aangepaste beleidsregel in Azure Active Directory B2C aanpassen](active-directory-b2c-ui-customization-custom.md) of [De gebruikersinterface met dynamische inhoud configureren met behulp van aangepaste beleidsregels in Azure Active Directory B2C](active-directory-b2c-ui-customization-custom-dynamic.md) als u pagina's in een aangepaste beleidsregel wilt aanpassen.
+Wanneer een klant **zich aanmeldt met uw persoonlijke account**, wordt deze omgeleid naar een aangepaste aanmeldings pagina die wordt gehost door Azure AD B2C. U kunt in de volgende afbeelding zien dat de gebruikers interface (UI) zo is aangepast dat deze eruitziet als de website van de WoodGrove-boodschappen. Klanten van WoodGrove moeten zich niet bewust zijn dat de verificatie-ervaring wordt gehost en beveiligd door Azure AD B2C.
 
-## <a name="developer-resources"></a>Resources voor ontwikkelaars
+![Aangepaste WoodGrove-aanmeldings pagina gehost door Azure AD B2C](media/active-directory-b2c-overview/sign-in.png)
 
-### <a name="client-applications"></a>Clienttoepassingen
+Met WoodGrove kunnen hun klanten zich registreren en aanmelden met hun Google-, Facebook-of micro soft-account als id-provider. Of ze kunnen zich registreren door hun e-mail adres en een wacht woord te gebruiken om te maken wat een *lokaal account*wordt genoemd.
 
-U kunt kiezen uit toepassingen voor onder meer [iOS](active-directory-b2c-devquickstarts-ios.md), [Android](active-directory-b2c-devquickstarts-android.md) en .NET. Met Azure AD B2C kunt u deze acties mogelijk maken en tegelijkertijd de gebruikers-id's beschermen.
+Wanneer een klant **zich aanmeldt met uw persoonlijke account** en **zich nu aanmeldt**, wordt er een aangepaste aanmeldings pagina weer gegeven.
 
-Als u een ontwikkelaar van ASP.NET-webtoepassingen bent, kunt u uw toepassing instellen voor het verifiëren van accounts met behulp van de stappen in [Zelfstudie: verificatie inschakelen in een webtoepassing met behulp van Azure Active Directory B2C](active-directory-b2c-tutorials-web-app.md).
+![Aangepaste WoodGrove-aanmeldings pagina die wordt gehost door Azure AD B2C](media/active-directory-b2c-overview/sign-up.png)
 
-Als u een ontwikkelaar van bureaubladtoepassingen bent, kunt u uw toepassing instellen voor het verifiëren van accounts met behulp van de stappen in [Zelfstudie: verificatie inschakelen in een bureaubladtoepassing met behulp van Azure Active Directory B2C](active-directory-b2c-tutorials-desktop-app.md).
+Nadat u een e-mail adres hebt ingevoerd en **verificatie code verzenden**hebt geselecteerd, worden de code door Azure AD B2C verzonden. Als ze hun code hebben ingevoerd, selecteert u **code verifiëren**en voert u de overige gegevens in het formulier in. ze moeten ook akkoord gaan met de service voorwaarden.
 
-Als u een ontwikkelaar van toepassingen met één pagina bent, kunt u uw toepassing instellen voor het verifiëren van accounts met behulp van de stappen in [Zelfstudie: verificatie inschakelen in een webtoepassing met één pagina met behulp van Azure Active Directory B2C](active-directory-b2c-tutorials-spa.md).
+Als u op de knop **maken** klikt, wordt Azure AD B2C de gebruiker teruggeleid naar de website van de WoodGrove-boodschappen. Wanneer dit wordt omgeleid, wordt door Azure AD B2C een verificatie token voor OpenID Connect Connect door gegeven aan de WoodGrove-webtoepassing. De gebruiker is nu aangemeld en klaar voor gebruik. de weergave naam wordt weer gegeven in de rechter bovenhoek om aan te geven dat ze zijn aangemeld.
 
-### <a name="apis"></a>API's
-Als uw client- of webtoepassingen API's moeten kunnen aanroepen, kunt u voor deze resources beveiligde toegang instellen in Azure AD B2C.
+![Website van WoodGrove-boodschappen waarop de gebruiker is aangemeld](media/active-directory-b2c-overview/signed-in-individual.png)
 
-Als u een ontwikkelaar van ASP.NET-webtoepassingen bent, kunt u uw toepassing instellen voor het aanroepen van een beveiligde API met behulp van de stappen in [Zelfstudie: toegang verlenen aan een web-API van ASP.NET met behulp van Azure Active Directory B2C](active-directory-b2c-tutorials-web-api.md).
+### <a name="authenticate-business-customers"></a>Zakelijke klanten verifiëren
 
-Als u een ontwikkelaar van bureaubladtoepassingen bent, kunt u uw toepassing instellen voor het aanroepen van een beveiligde API met behulp van de stappen in [Zelfstudie: toegang verlenen aan een web-API van Node.js vanuit een bureaublad-app met behulp van Azure Active Directory B2C](active-directory-b2c-tutorials-desktop-app-webapi.md).
+Wanneer een klant een van de opties onder **zakelijke klanten**selecteert, roept de website van de WoodGrove-boodschappen een andere Azure AD B2C-beleid op dan voor individuele klanten.
 
-Als u een ontwikkelaar van toepassingen met één pagina bent, kunt u uw toepassing instellen voor het verifiëren van accounts met behulp van de stappen in [Zelfstudie: toegang verlenen aan een web-API van ASP.NET Core vanuit een toepassing met één pagina met behulp van Azure Active Directory B2C](active-directory-b2c-tutorials-spa-webapi.md).
+Dit beleid geeft de gebruiker de mogelijkheid om hun bedrijfs referenties te gebruiken voor registratie en aanmelding. In het WoodGrove-voor beeld wordt gebruikers gevraagd zich aan te melden met een Office 365-of Azure AD-account. Dit beleid maakt gebruik van een [Azure AD-toepassing met meerdere tenants](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md) en het `/common` Azure AD-eind punt om Azure AD B2C te communiceren met elke Office 365-klant in de wereld.
 
-### <a name="javascript"></a>JavaScript
+### <a name="authenticate-partners"></a>Partners verifiëren
 
-U kunt uw eigen JavaScript-code aan de clientzijde toevoegen aan uw toepassingen in Azure AD B2C. Als u Java script wilt instellen in uw toepassing, definieert u een [pagina-indeling](page-layout.md) en schakelt u [Java script](javascript-samples.md) in uw gebruikers stromen of aangepast beleid in.
+De koppeling **Aanmelden met uw leveranciers account** maakt gebruik van Azure Active Directory B2B's samenwerkings functionaliteit. Azure AD B2B is een reeks functies in Azure Active Directory om partner identiteiten te beheren. Deze identiteiten kunnen worden afgeleid van Azure Active Directory voor toegang tot met Azure AD B2C beveiligde toepassingen.
 
-### <a name="user-accounts"></a>Gebruikersaccounts
+Meer informatie over Azure AD B2B in [Wat is toegang tot gast gebruikers in azure Active Directory B2B?](../active-directory/b2b/what-is-b2b.md).
 
-Veel algemene tenantbeheertaken moeten programmatisch worden uitgevoerd. Een goed voorbeeld is gebruikersbeheer. U wilt bijvoorbeeld een bestaand gebruikersarchief naar een Azure AD B2C-tenant migreren. Of u wilt op de achtergrond gebruikersregistratie op uw eigen pagina hosten en gebruikersaccounts maken in uw Azure AD B2C-adreslijst. Voor dit soort taken moet u gebruikersaccounts kunnen maken, lezen, bijwerken en verwijderen. U kunt deze taken uitvoeren met behulp van de [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md).
+<!-- UNCOMMENT WHEN REPO IS UPDATED WITH LATEST DEMO CODE
+### Sample code
+
+If you'd like to jump right into the code to see how the WoodGrove Groceries application is built, you can find the repository on GitHub:
+
+[Azure-Samples/active-directory-external-identities-woodgrove-demo][woodgrove-repo] (GitHub)
+-->
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga verder met de volgende zelfstudie om uw toepassing te configureren voor de registratie- en aanmeldingservaring.
+Nu u een idee hebt van wat Azure AD B2C is en enkele van de scenario's waarmee het kan helpen, kunt u een beetje dieper in de functies en technische aspecten.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Een Azure Active Directory B2C-tenant maken](tutorial-create-tenant.md)
+> [Technisch overzicht van Azure AD B2C >](technical-overview.md)
+
+<!-- LINKS - External -->
+[woodgrove]: https://aka.ms/ciamdemo
+[woodgrove-repo]: https://github.com/Azure-Samples/active-directory-external-identities-woodgrove-demo

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2019
+ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: f89e5cc434403e4edc3501d24ce2e94664d13ae9
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 3f5e45bb84ca4fc46ccf1f3f3ab86d43c7c03cab
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307848"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122877"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Verbinding maken met Media Services v3 API-Java
 
@@ -129,3 +129,5 @@ Wanneer u de opdracht uitvoert, worden `pom.xml`de `App.java`-, en andere bestan
 ## <a name="next-steps"></a>Volgende stappen
 
 U kunt nu entiteiten `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` toevoegen en bewerken.
+
+Zie de [Java SDK](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/) -voor beelden opslag plaats voor meer code voorbeelden.

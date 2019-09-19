@@ -14,16 +14,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: e4f2d4f0e7dd9380ba708d84dfe7588043fd4a68
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 08caf4b78b1042d5753dba2bc73e93fa3a250a17
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236696"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122376"
 ---
 # <a name="cli-example-create-and-submit-a-job"></a>CLI-voorbeeld: Een taak maken en verzenden
 
-Wanneer u in Media Services v3 taken verzendt voor het verwerken van uw video's, moet u aan Media Services de locatie van de invoervideo doorgeven. Een van de opties is het opgeven van een HTTPS-URL als een taak invoeren (zoals weergegeven in dit artikel). 
+Wanneer u in Media Services v3 taken verzendt voor het verwerken van uw video's, moet u aan Media Services de locatie van de invoervideo doorgeven. Een van de opties is om een HTTPS-URL op te geven als een taak invoer (zoals weer gegeven in dit artikel). 
 
 ## <a name="prerequisites"></a>Vereisten 
 
@@ -87,4 +87,4 @@ U krijgt ongeveer de volgende reactie:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Overzicht van Media Services](media-services-overview.md)
+[AZ AMS Job (CLI)](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)

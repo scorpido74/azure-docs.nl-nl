@@ -93,7 +93,7 @@ sections:
           - href: /azure/sql-database/sql-database-instance-pools
             html: <p>Gebruik pools met beheerde exemplaren als een eenvoudige en kosteneffectieve oplossing om meerdere beheerde exemplaren te implementeren die resources delen en snel schalen.</p>
             image:
-              src: media/index/i_instancepool.png
+              src: media/index/i-instancepools.svg
             title: Instantie-pool
   - title: QuickStarts van vijf minuten
     items:

@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Integratie met ServiceChannel Azure Active Directory | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met ServiceChannel | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en ServiceChannel.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/12/2019
+ms.date: 08/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 120dbefb6885489155a4b86fae429223766a06bc
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 4adc22982c8c7fa7b7a856ded01f88ee548bde93
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976092"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121968"
 ---
-# <a name="tutorial-integrate-servicechannel-with-azure-active-directory"></a>Zelfstudie: ServiceChannel integreren met Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicechannel"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met ServiceChannel
 
 In deze zelf studie leert u hoe u ServiceChannel integreert met Azure Active Directory (Azure AD). Wanneer u ServiceChannel integreert met Azure AD, kunt u het volgende doen:
 
@@ -58,7 +58,6 @@ Als u de integratie van ServiceChannel in azure AD wilt configureren, moet u Ser
 1. Typ in de sectie **toevoegen vanuit de galerie** **ServiceChannel** in het zoekvak.
 1. Selecteer **ServiceChannel** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-servicechannel"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor ServiceChannel
 
 Azure AD SSO met ServiceChannel configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in ServiceChannel.
@@ -68,9 +67,9 @@ Als u Azure AD SSO wilt configureren en testen met ServiceChannel, voltooit u de
 1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
     1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
     1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-2. **[SERVICECHANNEL SSO configureren](#configure-servicechannel-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+1. **[SERVICECHANNEL SSO configureren](#configure-servicechannel-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
     1. **[Maak een ServiceChannel-test gebruiker](#create-servicechannel-test-user)** -om een equivalent van B. Simon in ServiceChannel te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-3. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
@@ -82,53 +81,22 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
+1. Voer op de pagina **eenmalige aanmelding met SAML instellen** de waarden in voor de volgende velden:
 
-      a. Typ in het tekstvak **id** de waarde als:`http://adfs.<domain>.com/adfs/service/trust`
+    a. Typ in het tekstvak **id** de waarde als:`http://adfs.<domain>.com/adfs/service/trust`
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<customer domain>.servicechannel.com/saml/acs`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Wij raden u aan hiervoor de unieke waarde van de tekenreeks in de id te gebruiken. Neem contact op met het ondersteunings [team van ServiceChannel-clients](https://servicechannel.zendesk.com/hc/en-us) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Wij raden u aan hiervoor de unieke waarde van de tekenreeks in de id te gebruiken. Neem contact op met het [ondersteunings team van ServiceChannel-clients](https://servicechannel.zendesk.com/hc/en-us) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Uw ServiceChannel-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerk toewijzingen moet toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen aan **user.userprincipalname**. ServiceChannel-toepassing verwacht dat **nameidentifier** moeten worden toegewezen aan **User. mail**, dus u moet de kenmerk toewijzing bewerken door op het pictogram **bewerken** te klikken en de kenmerk toewijzing te wijzigen.
+1. De rol claim is vooraf geconfigureerd, zodat u deze niet hoeft te configureren, maar u moet ze nog steeds in azure AD maken met dit [artikel](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management). U kunt de ServiceChannel-hand leiding [hier](https://servicechannel.zendesk.com/hc/articles/217514326-Azure-AD-Configuration-Example) raadplegen voor meer informatie over claims.
 
-    U kunt de ServiceChannel-hand leiding [hier](https://servicechannel.zendesk.com/hc/articles/217514326-Azure-AD-Configuration-Example) raadplegen voor meer informatie over claims.
-
-    ![image](common/edit-attribute.png)
-
-    > [!NOTE]
-    > Raadpleeg deze [koppeling](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) voor meer informatie over het configureren van **rollen** in azure AD.
-
-6. Als u niet alleen in tijd gebruikers inrichten wilt inschakelen, moet u de volgende claims toevoegen, zoals hieronder wordt weer gegeven. De **rol** claim moet worden toegewezen aan **User. assignedroles** die de rol van de gebruiker bevat. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel:
-
-    | Name   |  Bronkenmerk |
-    | ------ | --- |
-    | Role   | user.assignedroles |
-
-    a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. In het tekstvak **Naam** typt u de naam van het kenmerk die voor die rij wordt weergegeven.
-
-    c. Laat **Naamruimte** leeg.
-
-    d. Selecteer Bron bij **Kenmerk**.
-
-    e. Typ de kenmerkwaarde voor die rij in de lijst met **bronkenmerken**.
-
-    f. Klik op **OK**.
-
-    g. Klik op **Opslaan**.
-
-4. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
     ![De downloadkoppeling certificaat](common/certificatebase64.png)
 
-6. Op de sectie **ServiceChannel instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
+1. Op de sectie **ServiceChannel instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -139,10 +107,10 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-    1. Voer in het veld **Naam** `B.Simon` in.  
-    1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-    1. Klik op **Create**.
+   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -152,7 +120,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 1. Selecteer in de lijst toepassingen de optie **ServiceChannel**.
 1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-    ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
+   ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
 
 1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
@@ -164,13 +132,13 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-servicechannel-sso"></a>ServiceChannel SSO configureren
 
-Als u eenmalige aanmelding wilt configureren op **ServiceChannel** , moet u het gedownloade **certificaat (base64)** en de juiste gekopieerde url's verzenden van Azure Portal naar [ServiceChannel ondersteunings team](https://servicechannel.zendesk.com/hc/). Ze stelt u deze optie om de SAML SSO-verbinding instellen goed aan beide zijden.
+Als u eenmalige aanmelding wilt configureren op **ServiceChannel** , moet u het gedownloade **certificaat (base64)** en de juiste gekopieerde url's verzenden van Azure Portal naar [ServiceChannel ondersteunings team](https://servicechannel.zendesk.com/hc/en-us). Ze stelt u deze optie om de SAML SSO-verbinding instellen goed aan beide zijden.
 
 ### <a name="create-servicechannel-test-user"></a>ServiceChannel-test gebruiker maken
 
-De toepassing biedt ondersteuning voor just in time-gebruikersinrichting. Dit betekent dat gebruikers na verificatie automatisch worden aangemaakt in de toepassing. Neem contact op met het ondersteunings [team van ServiceChannel](https://servicechannel.zendesk.com/hc/)voor volledige gebruikers inrichting.
+De toepassing biedt ondersteuning voor just in time-gebruikersinrichting. Dit betekent dat gebruikers na verificatie automatisch worden aangemaakt in de toepassing. Neem contact op met het [ondersteunings team van ServiceChannel](https://servicechannel.zendesk.com/hc/)voor volledige gebruikers inrichting.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>SSO testen
 
 In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
 
@@ -184,3 +152,4 @@ Wanneer u op de tegel ServiceChannel in het toegangs venster klikt, moet u autom
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Probeer ServiceChannel met Azure AD](https://aad.portal.azure.com/)

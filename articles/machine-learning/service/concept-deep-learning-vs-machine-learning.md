@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: cff31916f837141ae54f3c14dd125be6a92a5008
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 791566dc65b41bf3124e84544390d7d843e51273
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035511"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123145"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Diep gaande informatie versus machine learning
 
@@ -37,7 +37,7 @@ Houd rekening met de volgende definities voor een beter begrip van diep leren te
 
 - **Kunst matige intelligentie (AI)** is een techniek waarmee computers Human Intelligence kunnen nabootsen. Het bevat machine learning. 
  
-Het is belang rijk om inzicht te krijgen in de relatie tussen AI, machine learning en diep gaande lessen. Machine learning is een manier om kunst matige intelligentie te krijgen. U kunt met behulp van machine learning en diepe Leer technieken computer systemen en-toepassingen bouwen die vaak aan Human Intelligence zijn gekoppeld. Deze taken omvatten visuele perceptie, spraak herkenning, besluit vorming en taal omzetting.
+Het is belang rijk om inzicht te krijgen in de relatie tussen AI, machine learning en diep gaande lessen. Machine learning is een manier om kunst matige intelligentie te krijgen. U kunt met behulp van machine learning en diepe Leer technieken computer systemen en-toepassingen bouwen die vaak aan Human Intelligence zijn gekoppeld. Deze taken omvatten afbeeldings herkenning, spraak herkenning en taal omzetting.
 
 ## <a name="techniques-of-deep-learning-vs-machine-learning"></a>Technieken van diep leren versus machine learning 
 
@@ -47,12 +47,12 @@ De volgende tabel vergelijkt de twee technieken in meer detail:
 
 | |Alle machine learning |Alleen diep gaande lessen|
 |---|---|---|
-|  **Aantal gegevens punten** | Kan kleine gegevens bedragen gebruiken die door gebruikers worden verschaft. | Vereist een grote hoeveelheid trainings gegevens om beknopte conclusies te maken. |
+|  **Aantal gegevens punten** | Kan kleine hoeveel heden gegevens gebruiken om voor spellingen te maken. | Er moet gebruik worden gemaakt van grote hoeveel heden trainings gegevens om voor spellingen te maken. |
 |  **Hardware-afhankelijkheden** | Kan werken op computers met een laag eind punt. Er is geen grote hoeveelheid reken kracht nodig. | Is afhankelijk van high-end-machines. Er wordt een groot aantal bewerkingen voor matrix vermenigvuldiging uitgevoerd. Met een GPU kunnen deze bewerkingen efficiënt worden geoptimaliseerd. |
 |  **Parametrisatie-proces** | Vereist onderdelen om nauw keurig te worden geïdentificeerd en gemaakt door gebruikers. | Meer informatie over functies op hoog niveau van gegevens en maakt zelf nieuwe functies. |
-|  **Leer benadering** | Verdeelt taken in kleine delen en combineert de ontvangen resultaten vervolgens in één conclusie. | Hiermee lost u het probleem op een end-to-end-basis op. |
-|  **Uitvoerings tijd** | Neemt relatief weinig tijd in beslag om te trainen, variërend van een paar seconden tot enkele uren. | Er is een ongewoon lange tijd nodig om te trainen omdat een diepe leer algoritme veel para meters omvat. |
-|  **Uitvoer** | De uitvoer is doorgaans een numerieke waarde, zoals een score of classificatie. | De uitvoer kan tekst, een score, een element of een geluid zijn. |
+|  **Leer benadering** | Verdeelt het leer proces in kleinere stappen. Vervolgens worden de resultaten van elke Step Into één uitvoer gecombineerd. | Gaat door het leer proces door het probleem te verhelpen. |
+|  **Uitvoerings tijd** | Neemt relatief weinig tijd in beslag om te trainen, variërend van een paar seconden tot enkele uren. | Het duurt doorgaans lang om te trainen omdat een diepe leer algoritme veel lagen omvat. |
+|  **Uitvoer** | De uitvoer is doorgaans een numerieke waarde, zoals een score of classificatie. | De uitvoer kan meerdere indelingen hebben, zoals een tekst, een score of een geluid. |
 
 ## <a name="deep-learning-use-cases"></a>Uitgebreide leer cases
 
@@ -62,7 +62,7 @@ Enkele van de meest voorkomende toepassingen voor diep gaande lessen worden besc
 
 ### <a name="named-entity-recognition"></a>Herkenning benoemde entiteit
 
-Een voor deel van het gebruik van diepe-Learning netwerken is het herkennen van entiteits herkenning, een manier om bepaalde soorten informatie uit ongestructureerde en niet-gelabelde gegevens op te halen. Deze informatie kan mensen, plaatsen, bedrijven of dingen zijn. De informatie kan vervolgens worden opgeslagen in een Structured schema om een lijst met adressen te maken of om te fungeren als een bench Mark voor een identiteits validatie-engine.
+Benoemde entiteits herkenning is een diepe leer methode die een stuk tekst als invoer gebruikt en transformeert in een vooraf opgegeven klasse. Deze nieuwe informatie kan een post code, een datum, een product-ID zijn. De informatie kan vervolgens worden opgeslagen in een Structured schema om een lijst met adressen te maken of om te fungeren als een bench Mark voor een identiteits validatie-engine.
 
 ### <a name="object-detection"></a>Objectdetectie
 
@@ -72,17 +72,21 @@ Object detectie wordt al gebruikt in branches zoals gaming, handels verkeer, toe
 
 ### <a name="image-caption-generation"></a>Bijschrift bij afbeelding genereren
 
-Net als bij afbeeldings herkenning moet in afbeeldings bijschriften voor een bepaalde afbeelding een bijschrift worden gegenereerd waarin de inhoud van de installatie kopie wordt beschreven. Wanneer u objecten op Foto's kunt detecteren en labelen, is de volgende stap het omzetten van deze labels in beschrijvende, samenhangende zinnen. In het algemeen gebruiken systemen voor het ondertitelen van afbeeldingen zeer grote convolutional Neural-netwerken om objecten in de Foto's te detecteren en vervolgens een recurrent Neural-netwerk (RNN) te gebruiken om de labels in samenhangende zinnen te zetten.
+Net als bij afbeeldings herkenning moet in afbeeldings bijschriften voor een bepaalde afbeelding een bijschrift worden gegenereerd waarin de inhoud van de installatie kopie wordt beschreven. Wanneer u objecten op Foto's kunt detecteren en labelen, is de volgende stap het omzetten van deze labels in beschrijvende zinnen. 
+
+Doorgaans gebruiken installatie kopieën voor bijschriften van toepassingen convolutional Neural-netwerken om objecten in een installatie kopie te identificeren en vervolgens een recurrent Neural-netwerk te gebruiken om de labels te omzetten in consistente zinnen.
 
 ### <a name="machine-translation"></a>Machinevertaling
 
-Bij automatische vertaling worden woorden, zinsdelen of zinnen uit de ene taal gebruikt en worden ze automatisch omgezet in een andere taal. Automatische vertaling van de machine is al lange tijd in de buurt, maar het diepe leer heeft indrukwekkende resultaten in twee specifieke gebieden: automatische vertaling van tekst (en vertaling van spraak naar tekst) en automatische vertaling van afbeeldingen. 
+Met machine vertalingen worden woorden of zinnen uit de ene taal gebruikt en worden ze automatisch omgezet in een andere taal. De automatische vertaling van de machine is al lange tijd in de buurt, maar met een diep gaande leer proces worden indrukwekkende resultaten in twee specifieke gebieden gecentraliseerd: automatisch omzetten van tekst (en vertaling van spraak naar tekst) en automatische vertaling van afbeeldingen.
 
-Met de juiste gegevens transformatie kan een diep gaande netwerk tekst, audio en visuele signalen begrijpen. Machine vertalingen kunnen worden gebruikt om geluids fragmenten in grotere audio bestanden te identificeren en het gesp roken woord of de afbeelding als tekst te transcriberen.
+Met de juiste gegevens transformatie kan een Neural-netwerk tekst, audio en visuele signalen begrijpen. Machine vertalingen kunnen worden gebruikt om geluids fragmenten in grotere audio bestanden te identificeren en het gesp roken woord of de afbeelding als tekst te transcriberen.
 
 ### <a name="text-analytics"></a>Tekstanalyse
 
-Een belang rijke taak van een diep gaande training is e-discovery. Bedrijven gebruiken tekst analyse die is gebaseerd op diep gaande informatie over het detecteren van insider-handel en naleving van wettelijke voor Schriften. Hedge funds gebruiken tekst analyse om in te zoomen op enorme document opslagplaatsen om inzicht te krijgen in toekomstige investerings prestaties en markt sentiment. De use-case voor tekst analyse op basis van diep gaande lessen draait rond de mogelijkheid om enorme hoeveel heden tekst gegevens te parseren en analyses of yield-aggregaties uit te voeren.
+Voor tekst analyse op basis van diepe leer methoden moet u grote hoeveel heden tekst gegevens (bijvoorbeeld medische documenten of onkosten ontvangsten) analyseren, patronen herkennen en gestructureerde en beknopte informatie maken.
+
+Bedrijven gebruiken dieper leren om tekst analyse uit te voeren om de handel en naleving van de overheid te detecteren. Een ander algemeen voor beeld is een verzekerings fraude: tekst analyse is vaak gebruikt voor het analyseren van grote hoeveel heden documenten om de kans op fraude van een verzekerings claim te herkennen. 
 
 ## <a name="artificial-neural-networks"></a>Kunst matige Neural netwerken
 
@@ -92,17 +96,17 @@ In de volgende secties worden de meest populaire kunst matige Neural-netwerk top
 
 ### <a name="feedforward-neural-network"></a>Feedforward Neural-netwerk
 
-Het Feedforward Neural-netwerk is het meest eenvoudige type kunst matig Neural netwerk. In een Feedforward-netwerk worden gegevens in slechts één richting van de invoer laag naar de uitvoer laag gezonden. Met Feedforward Neural-netwerken wordt een invoer getransformeerd door een reeks verborgen lagen te plaatsen. Elke laag bestaat uit een set neurons en elke laag is volledig verbonden met alle neurons in de laag. De laatste volledig verbonden laag (de uitvoer laag) vertegenwoordigt de gegenereerde voor spellingen.
+Het Feedforward Neural-netwerk is het meest eenvoudige type kunst matig Neural netwerk. In een Feedforward-netwerk worden de gegevens in slechts één richting verplaatst van de invoer laag naar de uitvoer laag. Met Feedforward Neural-netwerken wordt een invoer getransformeerd door een reeks verborgen lagen te plaatsen. Elke laag bestaat uit een set neurons en elke laag is volledig verbonden met alle neurons in de laag. De laatste volledig verbonden laag (de uitvoer laag) vertegenwoordigt de gegenereerde voor spellingen.
 
 ### <a name="recurrent-neural-network"></a>Recurrent Neural-netwerk
 
-Recurrente Neural Networks is een veelgebruikt Neural netwerk. In deze netwerken wordt de uitvoer van een laag opgeslagen en weer gegeven in de invoer laag om te helpen bij het voors pellen van het resultaat van de laag. Rehuidige Neural-netwerken hebben fantastische leer mogelijkheden. Ze worden veel gebruikt voor complexe taken, zoals het leren van hand schrift en het herkennen van taal.
+Recurrente Neural Networks is een veelgebruikt Neural netwerk. In deze netwerken wordt de uitvoer van een laag opgeslagen en weer gegeven in de invoer laag om te helpen bij het voors pellen van het resultaat van de laag. Rehuidige Neural-netwerken hebben fantastische leer mogelijkheden. Ze worden veel gebruikt voor complexe taken, zoals het maken van een time series-prognose, het leren van hand schrift en het herkennen van taal.
 
 ### <a name="convolutional-neural-networks"></a>Convolutional Neural-netwerken
 
 Een convolutional Neural-netwerk is een bijzonder effectief Neural netwerk en biedt een unieke architectuur. Lagen zijn ingedeeld in drie dimensies: breedte, hoogte en diepte. De neurons in de ene laag worden niet verbonden met alle neurons in de volgende laag, maar alleen voor een kleine regio van de neurons van de laag. De uiteindelijke uitvoer wordt gereduceerd tot één vector met waarschijnlijkheids scores, geordend op de diepte dimensie. 
 
-Convolutional Neural Networks zijn gebruikt in gebieden zoals het herkennen en classificeren van afbeeldingen.
+Convolutional Neural Networks zijn gebruikt in gebieden zoals video herkenning, afbeeldings herkenning en aanbevolen systemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

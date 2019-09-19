@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 7e0b5137355c9fd89600fa48c075c81cfb1190e3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c50615b9cbe5c3ca926d893858bb39eeb5720067
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085455"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129592"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Code-en test Azure Functions lokaal
 
@@ -33,7 +33,7 @@ De manier waarop u functies op uw lokale computer ontwikkelt, is afhankelijk van
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
-Met elk van deze lokale ontwikkel omgevingen kunt u functie-app-projecten maken en vooraf gedefinieerde functie sjablonen gebruiken om nieuwe functies te maken. Elk maakt gebruik van de kern Hulpprogramma's zodat u uw functies kunt testen en fout opsporing uitvoert op de echte functions-runtime op uw eigen computer, net zoals elke andere app. U kunt ook een functie-app-project publiceren vanuit een van deze omgevingen naar Azure.  
+Met elk van deze lokale ontwikkel omgevingen kunt u functie-app-projecten maken en vooraf gedefinieerde functie sjablonen gebruiken om nieuwe functies te maken. Elk maakt gebruik van de kern Hulpprogramma's zodat u uw functies kunt testen en fout opsporing uitvoert op de echte functions-runtime op uw eigen computer, net zoals elke andere app. U kunt uw functie-app-project ook publiceren vanuit een van deze omgevingen naar Azure.  
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,19 +1,19 @@
 ---
 title: Azure Monitor logboeken voor Apache Kafka-Azure HDInsight
 description: Informatie over het gebruik van Azure Monitor logboeken voor het analyseren van logboeken van Apache Kafka cluster op Azure HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 44eea1bc6390e743aff104550e5b6d7e97c45929
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 5739883984d4087d2b2a1bda66c01ff3cfa10eb0
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960117"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122598"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Logboeken voor Apache Kafka op HDInsight analyseren
 
@@ -43,7 +43,7 @@ De stappen voor het inschakelen van Azure Monitor logboeken voor HDInsight zijn 
 * Schijf gebruik:
 
     ```kusto
-    Perf 
+    Perf
     | where ObjectName == "Logical Disk" and CounterName == "Free Megabytes" and InstanceName == "_Total" and ((Computer startswith_cs "hn" and Computer contains_cs "-") or (Computer startswith_cs "wn" and Computer contains_cs "-")) 
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
@@ -82,17 +82,17 @@ De stappen voor het inschakelen van Azure Monitor logboeken voor HDInsight zijn 
 
     > [!IMPORTANT]  
     > Vervang de query waarden door uw specifieke cluster informatie. Bijvoorbeeld `ClusterName_s` moet worden ingesteld op de naam van uw cluster. `HostName_s`moet worden ingesteld op de domein naam van een werk knooppunt in het cluster.
-    
+
     U kunt ook invoeren `*` om te zoeken naar alle typen die zijn geregistreerd. Momenteel zijn de volgende logboeken beschikbaar voor query's:
-    
+
     | Logboektype | Description |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Kafka Broker-server. log |
     | log\_kafkacontroller\_CL | Kafka Broker controller. log |
     | metrische gegevens\_Kafkacl\_ | Kafka JMX-metrische gegevens |
-    
-    ![Afbeelding van de zoek opdracht voor het CPU-gebruik](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
- 
+
+    ![CPU-gebruik voor Apache Kafka log Analytics](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [overzicht van Azure monitor](../../log-analytics/log-analytics-get-started.md)voor meer informatie over Azure monitor en [query Azure monitor logboeken voor het bewaken van HDInsight-clusters](../hdinsight-hadoop-oms-log-analytics-use-queries.md).

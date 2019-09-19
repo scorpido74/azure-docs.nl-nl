@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/11/2019
+ms.date: 09/18/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: 22d65d20220bfda821fe255e08dd056b761a828d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 82a5054a98a5b77cf996be1fddd6502b8f3146bc
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086994"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71120498"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Quickstart: Aanmelden met micro soft toevoegen aan een Java-Web-app
 
@@ -34,8 +34,8 @@ Wanneer u de hand leiding hebt voltooid, accepteert uw toepassing aanmeldingen v
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig: 
-- Java Development Kit (JDK) 8 of hoger en Maven.
+Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
+- [Java Development Kit (JDK)](https://openjdk.java.net/) 8 of hoger en [maven](https://maven.apache.org/).
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden

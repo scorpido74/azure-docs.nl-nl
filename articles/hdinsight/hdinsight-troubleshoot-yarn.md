@@ -1,18 +1,18 @@
 ---
 title: Problemen met YARN in Azure HDInsight oplossen
 description: Vind antwoorden op veelgestelde vragen over het werken met Apache Hadoop YARN en Azure HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 107230a4d8c2e0427c2fcf2a8862559c707831a1
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a0eb0d15d931cf1b2f71740c7a9359cf16205481
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076571"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122518"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Problemen met Apache Hadoop GARENs oplossen met behulp van Azure HDInsight
 
@@ -34,24 +34,24 @@ In dit voorbeeld twee bestaande wachtrijen (**standaard** en **thriftsvr**) beid
 
 1. Selecteer de **Ambari-weergaven** pictogram en selecteer vervolgens het rasterpatroon. Selecteer vervolgens **YARN wachtrijbeheerder**.
 
-    ![Selecteer het pictogram van de Ambari-weergaven](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
+    ![Ambari-dash board voor Apache-wachtrij beheer](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Selecteer de **standaard** wachtrij.
 
-    ![Selecteer de standaardwachtrij](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
+    ![Apache Ambari-garen selecteren standaard wachtrij](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
 3. Voor de **standaard** in de wachtrij, wijzigt u de **capaciteit** van 50% tot 25%. Voor de **thriftsvr** in de wachtrij, wijzigt u de **capaciteit** 25%.
 
     ![De capaciteit aan 25% van de standaard- en thriftsvr wachtrijen wijzigen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. Voor het maken van een nieuwe wachtrij selecteert **wachtrij toevoegen**.
 
-    ![Selecteer de wachtrij toevoegen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
+    ![Ambari-invoeg wachtrij voor Apache-garen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
 5. De naam van de nieuwe wachtrij.
 
-    ![De naam van de wachtrij Spark](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
+    ![Naam wachtrij voor Apache Ambari GARENs-dash board](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
 6. Laat de **capaciteit** waarden op 50% en selecteer vervolgens de **acties** knop.
 
-    ![Selecteer de knop acties](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
+    ![Bewerking voor Ambari-garen selecteren voor Apache](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
 7. Selecteer **slaan en te vernieuwen wachtrijen**.
 
     ![Selecteer opslaan en vernieuwen van wachtrijen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
@@ -64,7 +64,7 @@ Deze wijzigingen zijn zichtbaar onmiddellijk op de gebruikersinterface van YARN 
 
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Hoe kan ik YARN-logboeken downloaden uit een cluster?
 
-### <a name="resolution-steps"></a>Oplossingen 
+### <a name="resolution-steps"></a>Oplossingen
 
 1. Verbinding maken met het HDInsight-cluster met behulp van een Secure Shell (SSH)-client. Zie voor meer informatie, [meer lezen](#additional-reading-2).
 

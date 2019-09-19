@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 8/22/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 1627aea958707eaaef6ee79908a17afc2e8f7b45
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 7560f2395447e81dcd01e1d3e092b39b129b4ce3
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70068975"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129828"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Computer Vision-container gebruiken met Kubernetes en helm
 
-Een optie voor het on-premises beheren van uw Computer Vision-containers is het gebruik van Kubernetes en helm. Door Kubernetes en helm te gebruiken om de Tekst herkennen container installatie kopie te definiëren, maken we een Kubernetes-pakket. Dit pakket wordt on-premises geïmplementeerd op een Kubernetes-cluster. Ten slotte verkennen we hoe u de geïmplementeerde Services kunt testen. Zie [tekst herkennen containers installeren en uitvoeren](computer-vision-how-to-install-containers.md)voor meer informatie over het uitvoeren van docker-containers zonder Kubernetes-indeling.
+Een optie voor het on-premises beheren van uw Computer Vision-containers is het gebruik van Kubernetes en helm. Door Kubernetes en helm te gebruiken om een Computer Vision container installatie kopie te definiëren, maken we een Kubernetes-pakket. Dit pakket wordt on-premises geïmplementeerd op een Kubernetes-cluster. Ten slotte verkennen we hoe u de geïmplementeerde Services kunt testen. Zie [Computer Vision containers installeren en uitvoeren](computer-vision-how-to-install-containers.md)voor meer informatie over het uitvoeren van docker-containers zonder Kubernetes-indeling.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -89,6 +89,86 @@ containerpreview      kubernetes.io/dockerconfigjson        1         30s
 ```
 
 ## <a name="configure-helm-chart-values-for-deployment"></a>Helm-grafiek waarden voor implementatie configureren
+
+# <a name="readtabread"></a>[Lezen](#tab/read)
+
+Maak eerst een map met de naam *Read*en plak de volgende YAML-inhoud in een nieuw bestand met de naam *Chart. yml*.
+
+```yaml
+apiVersion: v1
+name: read
+version: 1.0.0
+description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
+```
+
+Als u de standaard waarden van de helm-grafiek wilt configureren, kopieert en plakt u de `values.yaml`volgende yaml in een bestand met de naam. Vervang de `# {ENDPOINT_URI}` opmerkingen `# {API_KEY}` en door uw eigen waarden.
+
+```yaml
+# These settings are deployment specific and users can provide customizations
+
+read:
+  enabled: true
+  image:
+    name: cognitive-services-read
+    registry: containerpreview.azurecr.io/
+    repository: microsoft/cognitive-services-read
+    tag: latest
+    pullSecret: containerpreview # Or an existing secret
+    args:
+      eula: accept
+      billing: # {ENDPOINT_URI}
+      apikey: # {API_KEY}
+```
+
+> [!IMPORTANT]
+> Als de `billing` waarden `apikey` en niet worden weer gegeven, verlopen de Services na 15 minuten. De verificatie mislukt ook omdat de services niet beschikbaar zijn.
+
+Maak een map *sjablonen* onder de map *lezen* . Kopieer en plak de volgende YAML in een bestand met `deployment.yaml`de naam. Het `deployment.yaml` bestand moet worden gebruikt als een helm-sjabloon.
+
+> Sjablonen genereren manifest bestanden. Dit zijn YAML bron beschrijvingen die Kubernetes kunnen begrijpen. [-Hand leiding voor helm-grafiek sjablonen][chart-template-guide]
+
+```yaml
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: read
+spec:
+  template:
+    metadata:
+      labels:
+        app: read-app
+    spec:
+      containers:
+      - name: {{.Values.read.image.name}}
+        image: {{.Values.read.image.registry}}{{.Values.read.image.repository}}
+        ports:
+        - containerPort: 5000
+        env:
+        - name: EULA
+          value: {{.Values.read.image.args.eula}}
+        - name: billing
+          value: {{.Values.read.image.args.billing}}
+        - name: apikey
+          value: {{.Values.read.image.args.apikey}}
+      imagePullSecrets:
+      - name: {{.Values.read.image.pullSecret}}
+
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: read
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+  selector:
+    app: read-app
+```
+
+De sjabloon specificeert een load balancer service en de implementatie van de container/installatie kopie voor lezen.
+
+# <a name="recognize-texttabrecognize-text"></a>[Tekst herkennen](#tab/recognize-text)
 
 Begin met het maken van een map met de naam *tekst herkenning*, kopiëren en plak de volgende YAML-inhoud in een nieuw `Chart.yml`bestand met de naam.
 
@@ -166,15 +246,73 @@ spec:
 
 De sjabloon specificeert een load balancer service en de implementatie van uw container/afbeelding voor tekst herkenning.
 
+***
+
 ### <a name="the-kubernetes-package-helm-chart"></a>Het Kubernetes-pakket (helm-grafiek)
 
 Het *helm-diagram* bevat de configuratie van de docker-installatie kopie (n) die `containerpreview.azurecr.io` moet worden opgehaald uit het container register.
 
 > Een [helm-grafiek][helm-charts] is een verzameling bestanden waarin een gerelateerde set Kubernetes-resources wordt beschreven. Eén grafiek kan worden gebruikt om een eenvoudig te implementeren, zoals een memcached Pod, of iets complex, zoals een volledige web-app-stack met HTTP-servers, data bases, caches, enzovoort.
 
-De meegeleverde *helm-grafieken* halen de docker-installatie kopieën van de computer vision-service en het herkennen van `containerpreview.azurecr.io` tekst services uit het container register.
+De meegeleverde *helm-grafieken* halen de docker-installatie kopieën van de computer vision-service en de bijbehorende `containerpreview.azurecr.io` service uit het container register.
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>De helm-grafiek op het Kubernetes-cluster installeren
+
+# <a name="readtabread"></a>[Lezen](#tab/read)
+
+Als u de *helm-grafiek*wilt installeren, moet u de [`helm install`][helm-install-cmd] opdracht uitvoeren. Zorg ervoor dat u de installatie opdracht uitvoert vanuit de map `read` die zich boven de map bevindt.
+
+```console
+helm install read --name read
+```
+
+Hier volgt een voorbeeld uitvoer die u kunt verwachten van een geslaagde installatie-uitvoering:
+
+```console
+NAME: read
+LAST DEPLOYED: Thu Sep 04 13:24:06 2019
+NAMESPACE: default
+STATUS: DEPLOYED
+
+RESOURCES:
+==> v1/Pod(related)
+NAME                    READY  STATUS             RESTARTS  AGE
+read-57cb76bcf7-45sdh   0/1    ContainerCreating  0         0s
+
+==> v1/Service
+NAME     TYPE          CLUSTER-IP    EXTERNAL-IP  PORT(S)         AGE
+read     LoadBalancer  10.110.44.86  localhost    5000:31301/TCP  0s
+
+==> v1beta1/Deployment
+NAME    READY  UP-TO-DATE  AVAILABLE  AGE
+read    0/1    1           0          0s
+```
+
+Het volt ooien van de implementatie van Kubernetes kan enkele minuten duren. Voer de volgende opdracht uit om te controleren of zowel de peulen als de services goed zijn geïmplementeerd en beschikbaar zijn:
+
+```console
+kubectl get all
+```
+
+U ziet dat er iets lijkt op de volgende uitvoer:
+
+```console
+λ kubectl get all
+NAME                        READY   STATUS    RESTARTS   AGE
+pod/read-57cb76bcf7-45sdh   1/1     Running   0          17s
+
+NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+service/kubernetes     ClusterIP      10.96.0.1      <none>        443/TCP          45h
+service/read           LoadBalancer   10.110.44.86   localhost     5000:31301/TCP   17s
+
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/read   1/1     1            1           17s
+
+NAME                              DESIRED   CURRENT   READY   AGE
+replicaset.apps/read-57cb76bcf7   1         1         1       17s
+```
+
+# <a name="recognize-texttabrecognize-text"></a>[Tekst herkennen](#tab/recognize-text)
 
 Als u de *helm-grafiek*wilt installeren, moet u de [`helm install`][helm-install-cmd] opdracht uitvoeren. Zorg ervoor dat u de installatie opdracht uitvoert vanuit de map `text-recognizer` die zich boven de map bevindt.
 
@@ -227,6 +365,8 @@ deployment.apps/text-recognizer   1/1     1            1           17s
 NAME                                         DESIRED   CURRENT   READY   AGE
 replicaset.apps/text-recognizer-57cb76bcf7   1         1         1       17s
 ```
+
+***
 
 <!--  ## Validate container is running -->
 

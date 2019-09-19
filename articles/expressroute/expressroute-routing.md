@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/19/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9d4822d07a95fcdec32c0c4146562884302fa4f8
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9bc0d1b31ebeaecce8b4be8699cf87811047b6f9
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308322"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123266"
 ---
 # <a name="expressroute-routing-requirements"></a>Routeringsvereisten voor ExpressRoute
 Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-services, moet u routering instellen en beheren. Sommige connectiviteitsproviders bieden het instellen en beheren van routering aan als een beheerde service. Neem contact op met uw connectiviteitsprovider om na te gaan of ze deze service leveren. Als dat niet het geval is, moet u voldoen aan de volgende vereisten:
@@ -84,7 +84,7 @@ U moet voor het instellen van de BGP-sessies openbare IP-adressen gebruiken waar
 U kunt kiezen om openbare of persoonlijke IPv4-adressen te gebruiken voor persoonlijke peering. We bieden end-to-end-isolatie van uw verkeer, zodat het overlappen van adressen met andere klanten niet mogelijk is in het geval van persoonlijke peering. Deze adressen worden niet geadverteerd naar internet. 
 
 ### <a name="microsoft-peering"></a>Microsoft-peering
-De Microsoft-peering kunt u verbinding maken met Microsoft-cloudservices. De lijst met Services bevat Office 365-Services, zoals Exchange Online, share point online, Skype voor bedrijven, micro soft teams en Dynamics 365. Microsoft ondersteunt bidirectionele connectiviteit op de Microsoft-peering. Verkeer dat is bestemd voor Microsoft Cloud-services, moet geldige openbare IPv4-adressen gebruiken voordat het het Microsoft-netwerk binnenkomt.
+De Microsoft-peering kunt u verbinding maken met Microsoft-cloudservices. De lijst met Services bevat Office 365-Services, zoals Exchange Online, share point online, Skype voor bedrijven en micro soft teams. Microsoft ondersteunt bidirectionele connectiviteit op de Microsoft-peering. Verkeer dat is bestemd voor Microsoft Cloud-services, moet geldige openbare IPv4-adressen gebruiken voordat het het Microsoft-netwerk binnenkomt.
 
 Controleer of uw IP-adres en AS-nummer in een van de volgende registers op uw naam zijn geregistreerd:
 
@@ -218,7 +218,6 @@ Daarnaast worden voorvoegsels door Microsoft gemarkeerd op basis van de service 
 | Exchange Online | 12076:5010 |
 | SharePoint Online | 12076:5020 |
 | Skype voor Bedrijven Online | 12076:5030 |
-| Dynamics 365 | 12076:5040 |
 | Azure Global Services * | 12076:5050 |
 | Andere online services van Office 365 | 12076:5100 |
 
@@ -249,7 +248,6 @@ Daarnaast worden voorvoegsels door Microsoft gemarkeerd op basis van de service 
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Skype voor Bedrijven Online |12076:5130 |
-| Dynamics 365 |12076:5140 |
 | Andere online services van Office 365 |12076:5200 |
 
 ## <a name="next-steps"></a>Volgende stappen

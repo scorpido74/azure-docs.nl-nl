@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 388e676fbabf427801688cbfb47a1455444fd02e
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: dc01f8556fb1c88899cae1a8767cb23d6b6041eb
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018993"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128871"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>T-SQL-verschillen, beperkingen en bekende problemen met beheerde exemplaren
 
@@ -543,6 +543,14 @@ De maximale bestands grootte van `tempdb` mag niet groter zijn dan 24 GB per ker
 Een beheerd exemplaar plaatst uitgebreide informatie in fouten Logboeken. Er zijn veel interne systeem gebeurtenissen vastgelegd in het fouten logboek. Gebruik een aangepaste procedure om fout logboeken te lezen die een aantal irrelevante vermeldingen filteren. Zie [Managed instance – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/)voor meer informatie.
 
 ## <a name="Issues"></a>Bekende problemen
+
+### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongioing-database-restore"></a>Het wijzigen van de servicelaag en het maken van exemplaar bewerkingen worden geblokkeerd door ongioing data base Restore
+
+**Vallen** Sep 2019
+
+Door `RESTORE` de doorlopende instructie, het migratie proces van de gegevens migratie service en de ingebouwde tijd bij het herstellen wordt de service tier of de grootte van het bestaande exemplaar bijgewerkt en er worden nieuwe instanties gemaakt totdat het herstel proces is voltooid. Met het herstel proces worden deze bewerkingen geblokkeerd voor de beheerde instanties en exemplaar groepen in hetzelfde subnet waar het herstel proces wordt uitgevoerd. De exemplaren in exemplaar groepen worden niet beïnvloed. Het maken of wijzigen van service tier-bewerkingen mislukken of time-out: ze worden voortgezet zodra het herstel proces is voltooid of geannuleerd.
+
+**Tijdelijke oplossing**: Wacht tot het herstel proces is voltooid of Annuleer het herstel proces als de bewerking voor het maken of bijwerken van de service tier een hogere prioriteit heeft.
 
 ### <a name="missing-validations-in-restore-process"></a>Ontbrekende validaties in het herstel proces
 

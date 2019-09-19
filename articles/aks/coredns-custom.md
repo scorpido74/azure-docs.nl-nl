@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: 909b32890ea7ff33d6b5b5db3bb55f36f7007c6b
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: b4c771b406d635410c22db5c1c4687a34a2e6eb0
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018665"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130024"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>CoreDNS aanpassen met de Azure Kubernetes-service
 
@@ -20,7 +20,7 @@ Azure Kubernetes service (AKS) maakt gebruik van het [CoreDNS][coredns] -project
 
 Omdat AKS een beheerde service is, kunt u de hoofd configuratie voor CoreDNS (een *CoreFile*) niet wijzigen. In plaats daarvan gebruikt u een Kubernetes *ConfigMap* om de standaard instellingen te overschrijven. Als u de standaard AKS CoreDNS ConfigMaps wilt zien, `kubectl get configmaps --namespace=kube-system coredns -o yaml` gebruikt u de opdracht.
 
-Dit artikel laat u zien hoe u ConfigMaps kunt gebruiken voor de basis aanpassings opties van CoreDNS in AKS.
+Dit artikel laat u zien hoe u ConfigMaps kunt gebruiken voor de basis aanpassings opties van CoreDNS in AKS. Deze aanpak wijkt af van het configureren van CoreDNS in andere contexten, zoals het gebruik van de CoreFile. Controleer de versie van CoreDNS die u gebruikt omdat de configuratie waarden kunnen veranderen tussen versies.
 
 > [!NOTE]
 > `kube-dns`verschillende [aanpassings opties][kubednsblog] aangeboden via een Kubernetes-configuratie kaart. CoreDNS is **niet** achterwaarts compatibel met uitvoeren-DNS. Aanpassingen die u eerder hebt gebruikt, moeten worden bijgewerkt voor gebruik met CoreDNS.
@@ -31,7 +31,7 @@ In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluste
 
 ## <a name="what-is-supportedunsupported"></a>Wat wordt ondersteund/niet ondersteund
 
-Alle ingebouwde CoreDNS-invoeg toepassingen worden ondersteund. Er worden geen invoeg toepassingen van derden ondersteund. 
+Alle ingebouwde CoreDNS-invoeg toepassingen worden ondersteund. Er worden geen invoeg toepassingen van derden ondersteund.
 
 ## <a name="rewrite-dns"></a>DNS opnieuw schrijven
 

@@ -2,17 +2,17 @@
 title: bestand opnemen
 description: bestand opnemen
 services: logic-apps
-author: ecfan
 ms.service: logic-apps
-ms.topic: include
-ms.date: 05/14/2018
+author: ecfan
 ms.author: estfan
+ms.topic: include
+ms.date: 09/18/2019
 ms.custom: include file
-ms.openlocfilehash: 6594031aeccae4b9f0ea843e2d72cb01a67d492d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 1fbf8a8d83871fa4cbed3fa79d3c19d66406329d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175791"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71120952"
 ---
-Voordat u uw logische app toegang krijgt tot een service, moet u een *verbinding* tussen uw logische app en die service. Als u deze verbinding eerder hebt gemaakt, bent u verbindingsgegevens gevraagd wanneer u een trigger of actie voor die service aan uw logische app toevoegen. Ontwerper van logische Apps biedt een eenvoudige manier voor u deze verbinding rechtstreeks vanuit uw logische app te maken.
+Wanneer u een trigger of actie gebruikt waarmee een service voor de eerste keer wordt geopend, wordt u door de Logic Apps Designer gevraagd om een *verbinding* met die service te maken. Vervolgens kunt u de benodigde verbindings gegevens rechtstreeks vanuit uw logische app in de ontwerp functie opgeven.

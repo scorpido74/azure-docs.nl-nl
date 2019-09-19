@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 5aa9201e969d9224527d0deea333dc61bda8e444
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 569bc021d978714472bf40bcf39f7134fec95970
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104771"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130334"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Een persoonlijk eind punt maken met Azure PowerShell
 Een persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hiermee kunnen Azure-resources, zoals Virtual Machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. 
@@ -54,7 +54,7 @@ Azure implementeert resources in een subnet binnen een Virtual Network, dus u mo
 
 ```azurepowershell
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
-  -Name mySubnet ` 
+  -Name mySubnet `
   -AddressPrefix 10.0.0.0/24 `
   -PrivateEndpointNetworkPoliciesFlag "Disabled" `
   -VirtualNetwork $virtualNetwork
@@ -99,15 +99,21 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 
 Maak een SQL Database-Server met behulp van de opdracht New-AzSqlServer. Houd er rekening mee dat de naam van uw SQL Database-Server uniek moet zijn in azure, dus Vervang de waarde van de tijdelijke aanduiding tussen vier Kante haken door uw eigen unieke waarde:
 
-$adminSqlLogin = "SqlAdmin" $password = "ChangeYourAdminPassword1"
+```azurepowershell-interactive
+$adminSqlLogin = "SqlAdmin"
+$password = "ChangeYourAdminPassword1"
 
-$Server = New-AzSqlServer-ResourceGroupName "myResourceGroup" `
-    -ServerName "myserver" ` -Location "WestCentralUS" '-SqlAdministratorCredentials $ (nieuw-object-TypeName System. Management. Automation. PSCredential-argument List $adminSqlLogin, $ ( ConvertTo-SecureString-String $password-AsPlainText-Force))
+$server = New-AzSqlServer -ResourceGroupName "myResourceGroup" `
+    -ServerName "myserver" `
+    -Location "WestCentralUS" `
+    -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminSqlLogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
 
-New-AzSqlDatabase-ResourceGroupName "myResourceGroup" `
-    -ServerName "myserver"` -databaseName "myda"`
-    -RequestedServiceObjectiveName "S0" ` -samplenaam "AdventureWorksLT"
-
+New-AzSqlDatabase  -ResourceGroupName "myResourceGroup" `
+    -ServerName "myserver"`
+    -DatabaseName "myda"`
+    -RequestedServiceObjectiveName "S0" `
+    -SampleName "AdventureWorksLT"
+```
 
 ## <a name="create-a-private-endpoint"></a>Een privé-eindpunt maken
 
@@ -115,20 +121,20 @@ Persoonlijk eind punt voor de SQL Database-Server in uw Virtual Network met [New
 
 ```azurepowershell
 
-$privateEndpointConnection = New-AzPrivateLinkServiceConnection -Name "myConnection" ` 
-  -PrivateLinkServiceId $server.ResourceId ` 
+$privateEndpointConnection = New-AzPrivateLinkServiceConnection -Name "myConnection" `
+  -PrivateLinkServiceId $server.ResourceId `
   -GroupId "sqlServer" 
  
 $virtualNetwork = Get-AzVirtualNetwork -ResourceGroupName  "myResourceGroup" -Name "MyVirtualNetwork"  
  
-$subnet = $virtualNetwork ` 
-  | Select -ExpandProperty subnets ` 
+$subnet = $virtualNetwork `
+  | Select -ExpandProperty subnets `
   | Where-Object  {$_.Name -eq 'mysubnet'}  
  
-$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" ` 
-  -Name "myPrivateEndpoint" ` 
-  -Location "westcentralus" ` 
-  -Subnet  $subnet` 
+$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
+  -Name "myPrivateEndpoint" `
+  -Location "westcentralus" `
+  -Subnet  $subnet`
   -PrivateLinkServiceConnection $privateEndpointConnection
 ``` 
 
@@ -137,12 +143,12 @@ Maak een privé-DNS-zone voor SQL Database Server domein en maak een koppelings 
 
 ```azurepowershell
 
-$zone = New-AzPrivateDnsZone -ResourceGroupName "myResourceGroup" ` 
+$zone = New-AzPrivateDnsZone -ResourceGroupName "myResourceGroup" `
   -Name "privatelink.database.windows.net" 
  
-$link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "myResourceGroup" ` 
-  -ZoneName "privatelink.database.windows.net"` 
-  -Name "mylink" `  
+$link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "myResourceGroup" `
+  -ZoneName "privatelink.database.windows.net"`
+  -Name "mylink" `
   -VirtualNetworkId $virtualNetwork.Id  
  
 $networkInterface = Get-AzResource -ResourceId $privateEndpoint.NetworkInterfaces[0].Id -ApiVersion "2019-04-01" 
@@ -152,8 +158,8 @@ foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) {
 Write-Host "$($ipconfig.properties.privateIPAddress) $($fqdn)"  
 $recordName = $fqdn.split('.',2)[0] 
 $dnsZone = $fqdn.split('.',2)[1] 
-New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink.database.windows.net"  ` 
--ResourceGroupName "myResourceGroup" -Ttl 600 ` 
+New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink.database.windows.net"  `
+-ResourceGroupName "myResourceGroup" -Ttl 600 `
 -PrivateDnsRecords (New-AzPrivateDnsRecordConfig -IPv4Address $ipconfig.properties.privateIPAddress)  
 } 
 } 
@@ -164,9 +170,9 @@ New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink
 Gebruik [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) om het open bare IP-adres van een virtuele machine te retour neren. In dit voor beeld wordt het open bare IP-adres van de *myVM* -VM geretourneerd:
 
 ```azurepowershell
-Get-AzPublicIpAddress ` 
-  -Name myPublicIpAddress ` 
-  -ResourceGroupName myResourceGroup ` 
+Get-AzPublicIpAddress `
+  -Name myPublicIpAddress `
+  -ResourceGroupName myResourceGroup `
   | Select IpAddress 
 ```  
 Open een opdrachtprompt op de lokale computer. Voer de opdracht mstsc uit.  <publicIpAddress>Vervang door het open bare IP-adres dat u in de laatste stap hebt geretourneerd: 

@@ -1,19 +1,19 @@
 ---
 title: Taken verzenden vanuit R-Hulpprogram Ma's voor Visual Studio-Azure HDInsight
 description: Verzend R-taken van uw lokale Visual Studio-machine naar een HDInsight-cluster.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 2d53f1bfc6eade535bfb1b3bb07d5115ffe5fc80
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 1323e46d734d047f68652d0b21902e03182e6b62
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967883"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130259"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Taken verzenden vanuit R-hulpprogramma's voor Visual Studio
 
@@ -41,7 +41,7 @@ RTVS breidt uw R-werk stroom uit door hulpprogram ma's te bieden zoals het [R In
 
    2. Ga naar het menu-item **R tools** en selecteer **Data Science Settings...** .
 
-       ![Instellingen voor data wetenschappen...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+       ![Instellingen voor Visual Studio data Science](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
       > [!NOTE]  
       > Met de aanpak in stap 1 kunt u ook uw persoonlijke gegevens wetenschapper-indeling opslaan en herstellen, in plaats van de opdracht **Data Science Settings** te herhalen.
@@ -56,11 +56,11 @@ RTVS breidt uw R-werk stroom uit door hulpprogram ma's te bieden zoals het [R In
 6. Vanaf de bovenkant van het bestand, drukt u op CTRL + ENTER om elke regel, één per keer, naar het venster R Interactive te verzenden. Sommige regels kunnen even duren als ze pakketten installeren.
     * U kunt ook alle regels in het R-bestand selecteren (CTRL + A) en vervolgens alle uitvoeren (CTRL + ENTER) of het pictogram voor het uitvoeren van een interactieve taak op de werk balk selecteren.
 
-        ![Interactief uitvoeren](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
+        ![Interactieve uitvoering van Visual Studio](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
 7. Nadat u alle regels in het script hebt uitgevoerd, ziet u een uitvoer die er ongeveer als volgt uitzien:
 
-    ![Werkruimte](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
+    ![Hulpprogram ma's voor Visual Studio-werk ruimte R](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Taken verzenden naar een HDInsight ML Services-cluster
 
@@ -96,7 +96,7 @@ Als u een micro soft ml server/micro soft R-client gebruikt vanaf een Windows-co
     rxSetComputeContext(mySparkCluster)
     ```
 
-   ![De Spark-context instellen](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
+   ![Apache Spark-context instellen](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
 
 1. Voer de volgende opdrachten uit in het venster R Interactive:
 
@@ -113,17 +113,17 @@ Als u een micro soft ml server/micro soft R-client gebruikt vanaf een Windows-co
 
     1. Selecteer in het deel venster cluster van HDInsight ML-Services in azure **opslag accounts** in het menu links.
 
-        ![Opslagaccounts](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
+        ![Azure HDInsight Storage-accounts](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. Selecteer het standaard opslag account voor uw cluster en noteer de naam van de container/map.
 
     3. Selecteer **containers** in het menu links in het deel venster opslag account.
 
-        ![Containers](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
+        ![Azure HDInsight Storage-containers](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
     4. Selecteer de container naam van uw cluster, blader naar de map **gebruiker** (mogelijk moet u op *extra laden* onder aan de lijst) en selecteer vervolgens *RevoShare*en **newuser**. Het `people.json` bestand moet in de `newUser` map worden weer gegeven.
 
-        ![Gekopieerd bestand](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
+        ![Locatie van gekopieerde bestandsmap van HDInsight](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
 1. Wanneer u klaar bent met het gebruik van de huidige Apache Spark context, moet u deze stoppen. U kunt niet meerdere contexten tegelijk uitvoeren.
 
@@ -135,4 +135,3 @@ Als u een micro soft ml server/micro soft R-client gebruikt vanaf een Windows-co
 
 * [Opties voor Compute-context voor MILLILITERs Services in HDInsight](r-server-compute-contexts.md)
 * De [combi natie van Scaler en sparkr](../hdinsight-hadoop-r-scaler-sparkr.md) biedt een voor beeld van vertraagde voor spellingen voor de vliegtuig vlucht.
-

@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: d5702576b3353bbc779601c7a5fe91417d73c7a1
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 44a2b0feab19d042de58359a7ea13814415e6c9e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624356"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129550"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Back-ups maken van Azure-bestandsshares en deze terugzetten
 In dit artikel wordt uitgelegd hoe u met Azure Portal back-ups kunt maken van [Azure-bestandsshares](../storage/files/storage-files-introduction.md) en deze kunt herstellen.
@@ -86,13 +86,15 @@ Misschien wilt u zo nu en dan een momentopname van of herstelpunt voor een back-
 
    ![Klik op Back-up om de Azure-bestandsshare aan de kluis te koppelen](./media/backup-file-shares/list-of-azure-files-backup-items.png)
 
-3. Selecteer de gewenste bestandsshare uit de lijst met Azure-bestandsshares. Het menu Back-upitem wordt geopend voor de geselecteerde bestandsshare.
+3. Selecteer de gewenste bestandsshare uit de lijst met Azure-bestandsshares. De details van het **back-Upitem** worden weer gegeven. Klik in het menu **back-upitem** op **Nu back-up maken**. Omdat dit een back-uptaak op aanvraag is, is er geen bewaarbeleid gekoppeld aan het herstelpunt.
 
    ![Klik op Back-up om de Azure-bestandsshare aan de kluis te koppelen](./media/backup-file-shares/backup-item-menu.png)
 
-4. Klik in het menu Back-upitem op **Nu back-up maken**. Omdat dit een back-uptaak op aanvraag is, is er geen bewaarbeleid gekoppeld aan het herstelpunt. Het dialoogvenster **Nu back-up maken** wordt geopend. Geef de laatste dag op die u van het herstelpunt wilt bewaren.
+4. Het dialoogvenster **Nu back-up maken** wordt geopend. Geef de laatste dag op die u van het herstelpunt wilt bewaren.
 
    ![Klik op Back-up om de Azure-bestandsshare aan de kluis te koppelen](./media/backup-file-shares/backup-now-menu.png)
+
+5. Klik op **OK** om de back-uptaak op aanvraag te bevestigen.
 
 ## <a name="restore-from-backup-of-azure-file-share"></a>Herstellen vanuit back-up van Azure-bestandsshare
 Als u een volledige bestandsshare of afzonderlijke bestanden of mappen van een herstelpunt wilt herstellen, leest u over Back-upitem in het vorige gedeelte. Kies **Share herstellen** om een volledige bestandsshare vanaf een gewenst moment te herstellen. Selecteer in de lijst met herstelpunten die wordt weergegeven een herstelpunt dat uw huidige bestandsshare kan overschrijven of dat de bestandsshare naar een alternatieve bestandsshare in dezelfde regio kan herstellen.

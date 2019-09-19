@@ -2,24 +2,18 @@
 title: 'Connectiviteitsproviders en -locaties: Azure ExpressRoute | Microsoft Docs'
 description: Dit artikel bevat een gedetailleerd overzicht van de locaties waar services worden aangeboden en hoe u verbinding maakt met Azure-regio's. Gesorteerd op connectiviteitsprovider.
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-ms.assetid: c878513a-d594-42ad-8b0e-403efd0c4b25
 ms.service: expressroute
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 997d6b29ef41c84766348c8b0ff74c5bc5c877d0
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 63358923dae22a2547d7946cd10ca2a3f02e33a5
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033948"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122816"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute
 
@@ -80,7 +74,7 @@ De volgende tabel toont de locaties per serviceprovider. Als u alle beschikbare 
 
 ### <a name="production-azure"></a>Productie-Azure
 
-| **Serviceprovider** | **Microsoft Azure** | **Voor Office 365 en Dynamics 365** | **Locaties** |
+| **Serviceprovider** | **Microsoft Azure** | **Office 365**  | **Locaties** |
 | --- | --- | --- | --- |
 | **[AARNet](https://www.aarnet.edu.au/network-and-services/connectivity-services/azure-expressroute)** |Ondersteund |Ondersteund |Melbourne, Sydney |
 | **[Airtel](https://www.airtel.in/business/#/)** | Ondersteund | Ondersteund | Chennai2, Mumbai2 |

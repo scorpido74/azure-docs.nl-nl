@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: c49d8000888d4094ea1df47920c1927747927f5c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 5339d963b84c5922138d53e44abe9340d55b4dde
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035046"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130237"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisch een time-series-prognose model trainen
 
@@ -95,10 +95,10 @@ Het `AutoMLConfig` object definieert de instellingen en gegevens die nodig zijn 
 |`time_column_name`|Wordt gebruikt om de kolom datetime op te geven in de invoer gegevens die worden gebruikt voor het bouwen van de tijd reeks en het uitstellen van de frequentie.|✓|
 |`grain_column_names`|Naam (en) die afzonderlijke reeks groepen in de invoer gegevens definiëren. Als korrel niet is gedefinieerd, wordt ervan uitgegaan dat de gegevensset één keer wordt gebruikt.||
 |`max_horizon`|Definieert de maximale gewenste prognose horizon in eenheden van de time-series. Eenheden zijn gebaseerd op het tijds interval van uw trainings gegevens, bijvoorbeeld maandelijks, wekelijks dat de Forecaster moet voors pellen.|✓|
-|`target_lags`|*n* Peri Oden voor het door sturen van doel waarden voordat de training wordt gemodelleerd.||
+|`target_lags`|Het aantal rijen dat de doel waarden moeten worden vertraagd op basis van de frequentie van de gegevens. Dit wordt weer gegeven als een lijst of één geheel getal.||
 |`target_rolling_window_size`|*n* historische Peri Oden die moeten worden gebruikt voor het genereren van prognose waarden, < = grootte van de Trainingsset. Als u dit weglaat, is *n* de volledige grootte van de Trainingsset.||
 
-Maak de instellingen voor de tijd reeks als een woordenlijst object. Stel de `time_column_name` in op `day_datetime` het veld in de gegevensset. Definieer de `grain_column_names` para meter om ervoor te zorgen dat er **twee afzonderlijke tijdreeks groepen** worden gemaakt voor de gegevens. een voor Store A en B. Tenslotte `max_horizon` stelt u de 50 in op om te voors pellen op de hele testset. Stel een venster voor een prognose in op `target_rolling_window_size`10 Peri Oden met en vertraging van de doel waarden 2 `target_lags` Peri Oden met de para meter.
+Maak de instellingen voor de tijd reeks als een woordenlijst object. Stel de `time_column_name` in op `day_datetime` het veld in de gegevensset. Definieer de `grain_column_names` para meter om ervoor te zorgen dat er **twee afzonderlijke tijdreeks groepen** worden gemaakt voor de gegevens. een voor Store A en B. Tenslotte `max_horizon` stelt u de 50 in op om te voors pellen op de hele testset. Stel een venster voor een prognose in op `target_rolling_window_size`10 Peri Oden met, en geef een enkele vertraging op voor de doel waarden voor `target_lags` twee Peri Oden vóór de para meter.
 
 ```python
 time_series_settings = {
@@ -111,8 +111,14 @@ time_series_settings = {
 }
 ```
 
+
+
 > [!NOTE]
 > Automatische machine learning vooraf verwerkte stappen (functie normalisatie, het verwerken van ontbrekende gegevens, het converteren van tekst naar numerieke waarde, enzovoort) worden onderdeel van het onderliggende model. Wanneer u het model gebruikt voor voor spellingen, worden dezelfde vooraf verwerkings stappen die tijdens de training worden toegepast, automatisch toegepast op uw invoer gegevens.
+
+Als u de `grain_column_names` in het bovenstaande code fragment definieert, maakt AutoML twee afzonderlijke tijdreeks groepen, ook wel bekend als meerdere tijd reeksen. Als er geen korrel is gedefinieerd, wordt ervan uitgegaan dat de gegevensset een enkele time series is. Zie de [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)voor meer informatie over eenmalige time-series.
+
+
 
 Maak nu een standaard `AutoMLConfig` object, geef het `forecasting` taak type op en verzend het experiment. Wanneer het model is voltooid, haalt u de best mogelijke run-iteratie op.
 

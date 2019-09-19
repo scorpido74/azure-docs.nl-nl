@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 951d5bb10fbeeac090a1edb510b7214855477eac
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3f64bce34a1bdb11bdbebb99fe28cdf3ff16dfb8
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515347"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128712"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Veelgestelde vragen over Azure SQL grootschalige-data bases
 
@@ -54,7 +54,7 @@ De vCore-gebaseerde service lagen worden voornamelijk onderscheiden op basis van
 | | Beheerd exemplaar  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
 | **IO-door Voer** | Eén data base * * | 500 IOPS per vCore met 7000 maximum aantal IOPS | Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPs is afhankelijk van de werk belasting. | 5000 IOPS met 200.000 maximum aantal IOPS|
 | | Beheerd exemplaar | Is afhankelijk van de grootte van het bestand | N/A | Beheerd exemplaar: Is afhankelijk van de grootte van het bestand|
-|**Beschikbaarheid**|Alle|1 replica, geen lees schaal, geen lokale cache | Meerdere replica's, Maxi maal 15 Lees-en gedeeltelijke lokale cache | 3 replica's, 1 Lees bare, zone-redundante HA, volledige lokale cache |
+|**Beschikbaarheid**|Alle|1 replica, geen lees schaal, geen lokale cache | Meerdere replica's, Maxi maal 4 Lees bare, gedeeltelijke lokale cache | 3 replica's, 1 Lees bare, zone-redundante HA, volledige lokale cache |
 |**Back-ups**|Alle|RA-GRS, 7-35 dagen (standaard 7 dagen)| RA-GRS, 7 dagen, constant tijdstip herstel (PITR) | RA-GRS, 7-35 dagen (standaard 7 dagen) |
 
 \*Elastische Pools worden niet ondersteund in de grootschalige-servicelaag
@@ -242,7 +242,7 @@ Nee. SQL Database grootschalige is een SMP-architectuur en is geen asymmetrische
 
 ### <a name="what-is-the-oldest-sql-server-version-will-sql-database-hyperscale-support-migration-from"></a>Wat is de oudste SQL Server versie SQL Database grootschalige ondersteuning voor migratie van
 
-SQL Server 2005. Zie [migreren naar een enkele data base of een gegroepeerde Data Base](sql-database-single-database-migrate.md#migrate-to-a-single-database-or-a-pooled-database)voor meer informatie. Zie compatibiliteits problemen met [database migratie oplossen](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues)voor compatibiliteits problemen.
+SQL Server 2005. Zie [migreren naar een enkele data base of een gegroepeerde Data Base](sql-database-single-database-migrate.md#migrate-to-a-single-database-or-a-pooled-database)voor meer informatie. Zie [compatibiliteits problemen met database migratie oplossen](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues)voor compatibiliteits problemen.
 
 ### <a name="does-sql-database-hyperscale-support-migration-from-other-data-sources-such-as-aurora-mysql-oracle-db2-and-other-database-platforms"></a>Biedt SQL Database grootschalige ondersteuning voor migratie van andere gegevens bronnen, zoals Aurora, MySQL, Oracle, DB2 en andere database platforms
 

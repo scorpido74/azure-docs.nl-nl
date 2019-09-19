@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: cacd67e26b13df8ef456ac8f1391e4396f5bdd96
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0344fc834cb1ef29c91bc52239d1df2706d1ca81
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873864"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101677"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Quickstart: Een beheerd exemplaar van Azure SQL Database maken
 
@@ -60,7 +60,7 @@ In de volgende stappen wordt uitgelegd hoe u een beheerd exemplaar maakt.
 
    ![Formulier beheerd exemplaar](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
 
-5. Voor gebruik van het beheerde exemplaar als secundaire exemplaarfailovergroep schakelt u het selectievakje in en geeft u het beheerde exemplaar DnsAzurePartner op. Deze functie is beschikbaar als preview-versie en wordt niet weer gegeven in de volgende scherm afbeelding.
+5. Voor gebruik van het beheerde exemplaar als secundaire exemplaarfailovergroep schakelt u het selectievakje in en geeft u het beheerde exemplaar DnsAzurePartner op. 
 6. Selecteer de **prijs categorie** voor de grootte van reken-en opslag resources en om de opties voor de prijs categorie te bekijken. De prijscategorie voor algemeen gebruik met 32 GB geheugen en 16 vCores is de standaardwaarde.
 7. Gebruik de schuifregelaars of tekstvakken om de hoeveelheid opslagruimte en het aantal virtuele kernen op te geven.
 8. Wanneer u klaar bent, selecteert u **Toep assen** om uw selectie op te slaan. 
@@ -117,4 +117,4 @@ Nadat de implementatie is voltooid, controleert u de resources die zijn gemaakt 
 - Een bestaande SQL Server-Data Base van on-premises herstellen naar een beheerd exemplaar: 
     - Gebruik de [Azure database Migration service (DMS) voor migratie](../dms/tutorial-sql-server-to-managed-instance.md) om te herstellen vanuit een back-upbestand van de data base. 
     - Gebruik de [T-SQL-opdracht herstellen](sql-database-managed-instance-get-started-restore.md) om een back-upbestand van een Data Base te herstellen.
-- Zie [Azure SQL database bewaken](../azure-monitor/insights/azure-sql.md)met behulp van Azure SQL-analyse voor geavanceerde bewaking van beheerde exemplaar database prestaties met ingebouwde probleemoplossings informatie.
+- Zie [Azure SQL database bewaken met behulp van Azure SQL-analyse](../azure-monitor/insights/azure-sql.md)voor geavanceerde bewaking van beheerde exemplaar database prestaties met ingebouwde probleemoplossings informatie.

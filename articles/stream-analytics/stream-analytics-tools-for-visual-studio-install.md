@@ -1,6 +1,6 @@
 ---
-title: Instellen van Azure Stream Analytics-hulpprogramma's voor Visual Studio
-description: Dit artikel beschrijft de vereisten voor de installatie en het instellen van de Azure Stream Analytics-hulpprogramma's voor Visual Studio.
+title: Azure Stream Analytics-hulpprogram ma's voor Visual Studio instellen
+description: In dit artikel worden de installatie vereisten en het instellen van de Azure Stream Analytics-hulpprogram ma's voor Visual Studio beschreven.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,60 +9,65 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/22/2018
-ms.openlocfilehash: 673f4935dce28b30c10e6abf4c7d22e00c1dd73a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 447fa07953c15fe67b8a2e313fe9534164f47bbd
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60762199"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130508"
 ---
-# <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Azure Stream Analytics-hulpprogramma's voor Visual Studio installeren
-Azure Stream Analytics-hulpprogramma's ondersteunen Visual Studio 2017, 2015 en 2013. In dit artikel wordt beschreven hoe u het installeren en verwijderen van de hulpprogramma's.
+# <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Azure Stream Analytics-hulpprogram ma's voor Visual Studio installeren
 
-Zie voor meer informatie over het gebruik van de hulpprogramma's, [Stream Analytics-hulpprogramma's voor Visual Studio](stream-analytics-quick-create-vs.md).
+Visual Studio 2019 en Visual Studio 2017 ondersteunen Azure Data Lake en Stream Analytics-Hulpprogram Ma's. In dit artikel wordt beschreven hoe u de hulpprogram ma's installeert en verwijdert.
+
+Voor meer informatie over het gebruik van de hulpprogram [ma's raadpleegt u Quick Start: Een Azure Stream Analytics-taak maken met behulp](stream-analytics-quick-create-vs.md)van Visual Studio.
 
 ## <a name="install"></a>Installeren
-### <a name="recommended-visual-studio-2019-and-2017"></a>Aanbevolen: Visual Studio 2019 en 2017
-* Download [2019 van Visual Studio (Preview-2 of hoger) en Visual Studio 2017 (15.3 of hoger)](https://www.visualstudio.com/). Enterprise- (Ultimate/Premium), Professional- en Community-edities worden ondersteund. De Express-editie wordt niet ondersteund. Visual Studio 2017 op Mac wordt niet ondersteund. 
-* Stream Analytics-hulpprogramma's maken deel uit van de **Azure-ontwikkeling** en **gegevensopslag en verwerking** werkbelastingen in Visual Studio 2017. Schakel een van deze twee workloads in als onderdeel van uw installatie van Visual Studio.
 
-Schakel de **gegevensopslag en verwerking** workload zoals wordt weergegeven:
+De hulpprogram ma's worden ondersteund door Visual Studio Enter prise (Ultimate/Premium), Professional en community Editions. Express Edition en Visual Studio voor Mac ondersteunen deze niet.
 
-![Gegevens gegevensopslag en verwerkingsworkload is geselecteerd](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2017-install-01.png)
+We raden Visual Studio 2019 aan.
 
-Schakel de **Azure-ontwikkeling** workload zoals wordt weergegeven:
+### Installeren voor Visual Studio 2019 en 2017<a name="recommended-visual-studio-2019-and-2017"></a>
 
-![Azure-ontwikkelworkload is geselecteerd](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2017-install-02.png)
+Azure Data Lake-en Stream Analytics-Hulpprogram Ma's maken deel uit van de werk belastingen voor **Azure-ontwikkeling** en- **gegevens opslag en-verwerking** . Schakel een van deze twee werk belastingen in tijdens de installatie. Als Visual Studio al is geïnstalleerd, selecteert u **hulpprogram** > ma's**en functies ophalen** om workloads toe te voegen.
 
-* Kies in het menu Extra **extensies en Updates**. Zoeken naar Azure Data Lake en Stream Analytics-hulpprogramma's in de geïnstalleerde extensies en klik op **Update** naar de nieuwste extensie installeren. 
+Down load [Visual studio 2019 (Preview 2 of hoger) of Visual Studio 2017 (15,3 of hoger)](https://www.visualstudio.com/) en volg de instructies voor het installeren.
 
-![Visual Studio-extensies en updates](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-extensions-updates.png)
+Selecteer de werk belasting voor **gegevens opslag en-verwerking** , zoals wordt weer gegeven:
 
-### <a name="visual-studio-2015-2013"></a>Visual Studio 2015, 2013
-* Visual Studio 2015 of Visual Studio 2013 Update 4 installeren. Enterprise- (Ultimate/Premium), Professional- en Community-edities worden ondersteund. De Express-editie wordt niet ondersteund. 
-* Installeer de Microsoft Azure SDK voor .NET versie 2.7.1 of hoger met behulp van de [Web platform installer](https://www.microsoft.com/web/downloads/platform.aspx).
-* Installeer [Azure Stream Analytics-hulpprogramma's voor Visual Studio](https://www.microsoft.com/en-us/download/details.aspx?id=49504).
+![De werk belasting voor gegevens opslag en-verwerking is geselecteerd](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2019-install-01.png)
 
-## <a name="update"></a>Update
+Selecteer de werk belasting **Azure Development** zoals wordt weer gegeven:
 
-### <a name="visual-studio-2019-and-2017"></a>Visual Studio 2019 en 2017
-De nieuwe versie herinnering wordt weergegeven in de Visual Studio-melding.
+![De werk belasting Azure Development is geselecteerd](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2019-install-02.png)
 
-![Visual Studio de nieuwe versie herinnering](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-new-version-reminder-vs-tools.png)
+Nadat u de werk belasting hebt toegevoegd, werkt u de hulpprogram ma's bij. Deze procedure verwijst naar Visual Studio 2019:
 
-### <a name="visual-studio-2015-and-2013"></a>Visual Studio 2015 en 2013.
-De geïnstalleerde Stream Analytics-hulpprogramma's voor Visual Studio controleren op nieuwe versies automatisch. Volg de instructies in het pop-upvenster voor het installeren van de meest recente versie. 
+1. Selecteer **extensies extensies** **beheren.**  > 
 
+1. Selecteer in **uitbrei dingen beheren**de optie **Updates** en kies **Azure data Lake en stream Analytics hulpprogram ma's**.
+
+1. Selecteer **bijwerken** om de nieuwste extensie te installeren.
+
+![Visual Studio-extensies en-updates](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-vs2019-extensions-updates.png)
+
+### Installeren voor Visual Studio 2015 en 2013<a name="visual-studio-2015-2013"></a>
+
+De hulpprogram ma's worden ondersteund door Visual Studio Enter prise (Ultimate/Premium), Professional en community Editions. De Express-editie ondersteunt deze niet.
+
+* Installeer Visual Studio 2015 of Visual Studio 2013 update 4.
+* Installeer de Microsoft Azure SDK voor .NET versie 2.7.1 of hoger met behulp van het [installatie programma voor het webplatform](https://www.microsoft.com/web/downloads/platform.aspx).
+* Installeer [Microsoft Azure data Lake en stream Analytics Hulpprogram ma's voor Visual Studio](https://www.microsoft.com/en-us/download/details.aspx?id=49504).
+
+## Bijwerk<a name="visual-studio-2019-and-2017"></a><a name="visual-studio-2015-and-2013"></a>
+
+Voor Visual Studio 2019 en Visual Studio 2017 wordt een nieuwe versie-herinnering weer gegeven als een Visual Studio-melding.
+
+Voor Visual Studio 2015 en Visual Studio 2013 worden de hulpprogram ma's automatisch op nieuwe versies gecontroleerd. Volg de instructies voor het installeren van de meest recente versie.
 
 ## <a name="uninstall"></a>Verwijderen
 
-### <a name="visual-studio-2019-and-2017"></a>Visual Studio 2019 en 2017
-Dubbelklik op het installatieprogramma voor Visual Studio en selecteer **wijzigen**. Wissen de **Azure Data Lake en Stream Analytics-hulpprogramma's** selectievakje vanuit de **gegevensopslag en verwerking** workload of de **Azure-ontwikkeling** werkbelasting.
+U kunt Azure Data Lake en Stream Analytics-Hulpprogram Ma's verwijderen. Voor Visual Studio 2019 of Visual Studio 2017 selecteert u **hulpprogram** > ma's**en functies ophalen**. Schakel in **wijzigen**Azure data Lake- **en stream Analytics-hulpprogram ma's**uit. Deze wordt weer gegeven onder de werk belasting voor **gegevens opslag en-verwerking** of de werk belasting **Azure Development** .
 
-### <a name="visual-studio-2015-and-2013"></a>Visual Studio 2015 en 2013.
-Ga naar het Configuratiescherm en verwijderen **Microsoft Azure Data Lake en Stream Analytics-hulpprogramma's voor Visual Studio**.
-
-
-
-
-
+Ga naar **configuratie scherm** > **Program ma's en onderdelen**om te verwijderen van Visual Studio 2015 of Visual Studio 2013. Verwijder **Microsoft Azure data Lake en stream Analytics Hulpprogram ma's voor Visual Studio**.

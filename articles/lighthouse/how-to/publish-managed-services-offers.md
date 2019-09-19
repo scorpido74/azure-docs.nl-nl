@@ -4,15 +4,15 @@ description: Meer informatie over het publiceren van een Managed Service-aanbod 
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/29/2019
+ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: c0c2ccf03292434b3f23b26857ec0d2b3fc3ceed
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 4a1adf1be8798f4bb21b89ff0654287a2958146e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165250"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105264"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Een managed services-aanbod publiceren naar Azure Marketplace
 
@@ -21,9 +21,9 @@ In dit artikel leert u hoe u een aanbieding voor open bare of privé beheerde se
 > [!NOTE]
 > U hebt een geldig [account in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) nodig om deze aanbiedingen te maken en te publiceren. Als u nog geen account hebt, wordt u door het [aanmeldings proces](https://aka.ms/joinmarketplace) geleid door de stappen voor het maken van een account in partner centrum en het inschrijven van het commerciële Marketplace-programma. Uw Microsoft Partner Network-ID (MPN) wordt [automatisch gekoppeld](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started) aan de aanbiedingen die u publiceert voor het bijhouden van invloed op de klant afspraken.
 >
-> Als u een aanbieding niet wilt publiceren naar Azure Marketplace, kunt u klanten hand matig voorbereiden door Azure Resource Manager sjablonen te gebruiken. Zie voor meer informatie onboarding van [een klant naar Azure gedelegeerd resource beheer](onboard-customer.md).
+> Als u een aanbieding niet wilt publiceren naar Azure Marketplace, kunt u klanten hand matig voorbereiden door Azure Resource Manager sjablonen te gebruiken. Zie voor meer informatie [onboarding van een klant naar Azure gedelegeerd resource beheer](onboard-customer.md).
 
-Het publiceren van een managed services-aanbod is vergelijkbaar met het publiceren van een ander type aanbieding naar Azure Marketplace. Zie voor meer informatie over dat proces [Azure Marketplace en AppSource Publishing Guide](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) en [beheer Azure en AppSource Marketplace-aanbiedingen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers). U moet ook het [beleid voor commerciële Marketplace](https://docs.microsoft.com/legal/marketplace/certification-policies)-certificerings instanties, met name de sectie [Managed Services](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) , bekijken.
+Het publiceren van een managed services-aanbod is vergelijkbaar met het publiceren van een ander type aanbieding naar Azure Marketplace. Zie voor meer informatie over dat proces [Azure Marketplace en AppSource Publishing Guide](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) en [beheer Azure en AppSource Marketplace-aanbiedingen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers). U moet ook het [beleid voor commerciële Marketplace-certificerings](https://docs.microsoft.com/legal/marketplace/certification-policies)instanties, met name de sectie [Managed Services](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) , bekijken.
 
 > [!IMPORTANT]
 > Elk abonnement in een beheerde services-aanbieding bevat een sectie **manifest Details** , waarin u de Azure Active Directory (Azure AD)-entiteiten in uw Tenant definieert die toegang hebben tot de gedelegeerde resource groepen en/of-abonnementen voor klanten die Koop dat plan. Het is belang rijk te weten dat elke groep (of gebruiker of Service-Principal) die u hier opgeeft, dezelfde machtigingen heeft voor elke klant die het plan heeft gekocht. Als u verschillende groepen wilt toewijzen voor gebruik met elke klant, moet u een afzonderlijk privé plan publiceren dat exclusief is voor elke klant.
@@ -71,7 +71,7 @@ Ten slotte vult u de sectie **manifest Details** in. Hiermee maakt u een manifes
   - **Azure AD-object-id**: De Azure AD-id van een gebruiker, gebruikers groep of toepassing waaraan bepaalde machtigingen (zoals beschreven in de roldefinitie) worden toegekend voor de resources van uw klanten.
   - **Weergave naam van Azure AD-object**: Een beschrijvende naam om de klant te helpen het doel van deze autorisatie te begrijpen. De klant krijgt deze naam te zien bij het delegeren van resources.
   - **Role Definition**: Selecteer een van de beschik bare ingebouwde Azure AD-rollen in de lijst. Met deze rol bepaalt u de machtigingen die de gebruiker in het veld ID van het **Azure AD-object** heeft op de resources van uw klanten. Zie [ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)voor meer informatie over deze rollen.
-  - **Toewijs bare rollen**: Als u gebruikers toegangs beheerder hebt geselecteerd in de **roldefinitie** voor deze autorisatie, kunt u hier een of meer toewijs bare rollen toevoegen. De gebruiker in het **object-ID-veld van Azure AD** kan deze **toewijs bare rollen** toewijzen aan [beheerde identiteiten](https://docs.microsoft.com/azure/managed-applications/publish-managed-identity). Houd er rekening mee dat er geen andere machtigingen zijn gekoppeld aan de rol beheerder van gebruikers toegang voor deze gebruiker. (Als u geen beheerder voor gebruikers toegang hebt geselecteerd voor de roldefinitie van deze gebruiker, heeft dit veld geen effect.)
+  - **Toewijs bare rollen**: Dit is alleen vereist als u beheerder voor gebruikers toegang hebt geselecteerd in de **roldefinitie** voor deze autorisatie. Als dat het geval is, moet u hier een of meer toewijs bare rollen toevoegen. De gebruiker in het **object-ID-veld van Azure AD** kan deze **toewijs bare rollen** toewijzen aan [beheerde identiteiten](https://docs.microsoft.com/azure/managed-applications/publish-managed-identity). Houd er rekening mee dat er geen andere machtigingen zijn gekoppeld aan de rol beheerder van gebruikers toegang voor deze gebruiker. Als u hier niet een of meer rollen selecteert, wordt er door uw inzending geen certificering door gegeven. (Als u geen beheerder voor gebruikers toegang hebt geselecteerd voor de roldefinitie van deze gebruiker, heeft dit veld geen effect.)
 
 > [!TIP]
 > In de meeste gevallen moet u machtigingen toewijzen aan een Azure AD-gebruikers groep of Service-Principal, in plaats van aan een reeks afzonderlijke gebruikers accounts. Hiermee kunt u toegang voor afzonderlijke gebruikers toevoegen of verwijderen zonder dat u het plan hoeft bij te werken en opnieuw te publiceren wanneer uw toegangs vereisten veranderen.
@@ -82,7 +82,7 @@ Wanneer u klaar bent met het toevoegen van plannen, selecteert u **Opslaan**en g
 
 In het gedeelte **Marketplace** kunt u de tekst en afbeeldingen opgeven die klanten kunnen zien in azure Marketplace en de Azure Portal.
 
-Geef informatie op over de volgende velden in het overzichts gedeelte:
+Geef informatie op over de volgende velden in het **overzichts** gedeelte:
 
 |Veld  |Description  |
 |---------|---------|
@@ -116,7 +116,7 @@ In de sectie **lead beheer** kunt u het CRM-systeem selecteren waarop uw leads w
 
 Ten slotte geeft u de URL van uw **Privacybeleid** en **Gebruiksvoorwaarden** op in het **juridische** gedeelte. U kunt hier ook opgeven of u het [standaard contract](https://docs.microsoft.com/azure/marketplace/standard-contract) wilt gebruiken voor deze aanbieding.
 
-Zorg ervoor dat u uw wijzigingen opslaat voordat u verdergaat met het ondersteunings gedeelte.
+Zorg ervoor dat u uw wijzigingen opslaat voordat u verdergaat met het **ondersteunings** gedeelte.
 
 ## <a name="add-support-info"></a>Ondersteunings informatie toevoegen
 
@@ -130,7 +130,7 @@ Zodra u tevreden bent over alle gegevens die u hebt ingevoerd, is de volgende st
 
 ## <a name="the-customer-onboarding-process"></a>Het onboarding-proces van de klant
 
-Wanneer een klant uw aanbieding toevoegt, kunnen ze [een of meer specifieke abonnementen of resource groepen](view-manage-service-providers.md#delegate-resources) delegeren die vervolgens voor het beheer van gedelegeerde resources van Azure worden uitgevoerd. Als een klant een aanbieding heeft geaccepteerd, maar nog geen resources heeft gedelegeerd, wordt op de pagina [**service providers**](view-manage-service-providers.md) van de Azure Portal een opmerking weer geven boven aan de **provider** .
+Wanneer een klant uw aanbieding toevoegt, kunnen ze [een of meer specifieke abonnementen of resource groepen delegeren](view-manage-service-providers.md#delegate-resources) die vervolgens voor het beheer van gedelegeerde resources van Azure worden uitgevoerd. Als een klant een aanbieding heeft geaccepteerd, maar nog geen resources heeft gedelegeerd, wordt op de pagina [**service providers**](view-manage-service-providers.md) van de Azure Portal een opmerking weer geven boven aan de **provider** .
 
 Voordat een abonnement (of resource groepen binnen een abonnement) kan worden opvolgd, moet het abonnement worden geautoriseerd voor onboarding door de resource provider **micro soft. ManagedServices** hand matig te registreren. Een gebruiker in de Tenant van de klant met de rol Inzender of eigenaar kan dit doen door de stappen te volgen die worden beschreven in [Azure resource providers en-typen](../../azure-resource-manager/resource-manager-supported-services.md).
 

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Ascentis | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Ascentis.
+title: 'Zelfstudie: Azure Active Directory integratie met schuine | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en schuine zijde.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,78 +16,77 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ed6c28491162a729f0e110e953f89dd72fe12ea
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 4fd6c18e3a3af763a2f4404e6b9c808e1bd8a4a5
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68002865"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129927"
 ---
-# <a name="tutorial-integrate-ascentis-with-azure-active-directory"></a>Zelfstudie: Ascentis integreren met Azure Active Directory
+# <a name="tutorial-integrate-ascentis-with-azure-active-directory"></a>Zelfstudie: Een schuine integreren met Azure Active Directory
 
-In deze zelfstudie leert u hoe u Ascentis integreert met Azure Active Directory (Azure AD). Wanneer u Ascentis met Azure AD integreert, kunt u het volgende doen:
+In deze zelf studie leert u hoe u een schuine slag kunt integreren met Azure Active Directory (Azure AD). Wanneer u een uitstoken integreert met Azure AD, kunt u het volgende doen:
 
-* Beheren in Azure AD die toegang tot Ascentis heeft.
-* Kunnen uw gebruikers worden automatisch aangemeld Ascentis met hun Azure AD-accounts.
-* Beheer uw accounts in één centrale locatie - Azure portal.
+* Controle in azure AD die toegang heeft tot een schuine hoogte.
+* Stel in dat uw gebruikers automatisch worden aangemeld bij een uitstoking met hun Azure AD-accounts.
 
-Zie voor meer informatie over de integratie van de SaaS-app met Azure AD, [wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om te beginnen, hebt u de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/).
-* Ingeschakeld abonnement Ascentis eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Onderliggend abonnement voor eenmalige aanmelding (SSO) ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie hebt u configureren en testen van Azure AD-eenmalige aanmelding in een testomgeving.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* Biedt ondersteuning voor Ascentis **SP en IDP** gestart door SSO
+* Schuine ondersteunt door **SP en IDP** geïnitieerde SSO
 
-## <a name="add-ascentis-from-the-gallery"></a>Ascentis uit de galerie toevoegen
+## <a name="add-ascentis-from-the-gallery"></a>Een schuine stok toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van Ascentis in Azure AD, moet u Ascentis uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van schuine wilt configureren in azure AD, moet u een uitstok van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het navigatiedeelvenster links in de **Azure Active Directory** service.
-1. Navigeer naar **bedrijfstoepassingen** en selecteer vervolgens **alle toepassingen**.
-1. Nieuwe toepassing toevoegen, selecteert u **nieuwe toepassing**.
-1. In de **toevoegen vanuit de galerie** sectie, typt u **Ascentis** in het zoekvak in.
-1. Selecteer **Ascentis** van resultaten van het deelvenster en vervolgens de app toevoegen. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie in **de galerie toevoegen** de tekst **schuine** in het zoekvak.
+1. Selecteer **Uitstoken** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configureren en Azure AD eenmalige aanmelding testen
 
-Configureren en testen van Azure AD-eenmalige aanmelding met Ascentis met behulp van een testgebruiker met de naam **B.Simon**. Voor eenmalige aanmelding om te werken, moet u een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Ascentis vast te stellen.
+Configureer en test Azure AD SSO met een schuine met behulp van een test gebruiker met de naam **B. Simon**. Voor eenmalige aanmelding moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker.
 
-Als u wilt configureren en testen van Azure AD-eenmalige aanmelding met Ascentis, voert u de volgende bouwstenen:
+Als u Azure AD SSO wilt configureren en testen met een schuine, voltooit u de volgende bouw stenen:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-sso)**  : als u wilt dat uw gebruikers kunnen deze functie gebruiken.
-2. **[Configureren van SSO Ascentis](#configure-ascentis-sso)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+2. Aflopende **[SSO configureren](#configure-ascentis-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)**  - voor het testen van Azure AD eenmalige aanmelding met Britta Simon.
 4. **[Toewijzen van de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)**  - Britta Simon gebruik van Azure AD eenmalige aanmelding inschakelen.
-5. **[Maken van de testgebruiker Ascentis](#create-ascentis-test-user)**  : als u wilt een equivalent van Britta Simon in Ascentis die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-sso)**  : als u wilt controleren of de configuratie werkt.
+5. **[Maak](#create-ascentis-test-user)** een aflopende gebruiker met een aflopende afspiegeling van Julia Simon die is gekoppeld aan de Azure AD-representatie van de gebruiker.
+6. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD-eenmalige aanmelding configureren
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
-Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Ascentis** toepassingspagina integratie, vinden de **beheren** sectie en selecteer **eenmalige aanmelding**.
-1. Op de **selecteert u een methode voor eenmalige aanmelding** pagina, selecteert u **SAML**.
-1. Op de **instellen van eenmalige aanmelding met SAML** pagina, klikt u op het pictogram voor bewerken/pen voor **SAML-basisconfiguratie** om de instellingen te bewerken.
+1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina voor de **uitstoken** van toepassingen en zoek de sectie **beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Op de **SAML-basisconfiguratie** sectie, als u wilt configureren van de toepassing in **IDP** gestart modus, voer de waarden voor de volgende velden:
+1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
 
     In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://services.ascentis.com/iam/samlsso?spEntityID=<clientname>.ascentis.com`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In de **aanmeldings-URL** tekstvak typt u een URL met behulp van een van de volgende patroon:
+    Typ in het tekstvak **URL voor aanmelding** een URL met een van de volgende patronen:
 
     | |
     |--|
@@ -95,58 +94,58 @@ Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de A
     | `https://selfservice2.ascentis.com/<clientname>/STS/signin.aspx?SAMLResponse=true` |
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de echte antwoord-URL en aanmeldings-URL. Neem contact op met [Ascentis Client ondersteuningsteam](mailto:support@ascentis.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de echte antwoord-URL en aanmeldings-URL. Neem contact op met het [ondersteunings team voor client ondersteuning](mailto:support@ascentis.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-4. Op de **instellen van eenmalige aanmelding met SAML** pagina, in de **SAML-handtekeningcertificaat** sectie, zoeken **certificaat (Base64)** en selecteer **downloaden** voor het downloaden van het certificaat en sla deze op uw computer.
+4. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
     ![De downloadkoppeling certificaat](common/certificatebase64.png)
 
-6. Op de **Ascentis instellen** sectie, kopieert u de juiste URL's op basis van uw behoeften.
+6. Kopieer op de sectie **Uitstoken instellen** de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="configure-ascentis-sso"></a>Ascentis eenmalige aanmelding configureren
+### <a name="configure-ascentis-sso"></a>Onderliggend SSO configureren
 
-Het configureren van eenmalige aanmelding op **Ascentis** zijde, moet u voor het verzenden van de gedownloade **certificaat (Base64)** en toepassing van de gekopieerde URL's van Azure portal om te [Ascentis ondersteuningsteam](mailto:support@ascentis.com). Ze stelt u deze optie om de SAML SSO-verbinding instellen goed aan beide zijden.
+Voor het configureren van eenmalige aanmelding op een **schuine** zijde moet u het gedownloade **certificaat (base64)** en de juiste gekopieerde url's verzenden van Azure Portal naar het [ondersteunings team van de schuine](mailto:support@ascentis.com)kant. Ze stelt u deze optie om de SAML SSO-verbinding instellen goed aan beide zijden.
 ### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
 
-In deze sectie maakt u een testgebruiker in Azure portal B.Simon genoemd.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal, **Azure Active Directory**, selecteer **gebruikers**, en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
-1. In de **gebruiker** eigenschappen als volgt te werk:
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
-   1. In de **gebruikersnaam** en voer de username@companydomain.extension. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B.Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Ascentis.
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan een schuine zijde.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst met toepassingen, **Ascentis**.
-1. Zoek in de pagina overzicht van de app, de **beheren** sectie en selecteer **gebruikers en groepen**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de optie **schuine**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in de **toevoegen toewijzing** dialoogvenster.
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
     ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. In de **gebruikers en groepen** dialoogvenster, selecteer **B.Simon** uit de lijst met gebruikers, klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
-1. Als u een waarde voor de rol in het SAML-verklaring verwacht de **rol selecteren** dialoogvenster, selecteer de juiste rol voor de gebruiker in de lijst en klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-ascentis-test-user"></a>Ascentis testgebruiker maken
+### <a name="create-ascentis-test-user"></a>Een aflopende test gebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam van Britta Simon in Ascentis. Werken met [Ascentis ondersteuningsteam](mailto:support@ascentis.com) om toe te voegen de gebruikers in het Ascentis-platform. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
+In deze sectie maakt u een gebruiker met de naam Julia Simon in schuine vorm. Werk met [ondersteunings team](mailto:support@ascentis.com) met onvoorziene ondersteuning om de gebruikers toe te voegen aan het aflopende platform. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
 
-### <a name="test-sso"></a>Test eenmalige aanmelding 
+### <a name="test-sso"></a>SSO testen 
 
 In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
 
-Wanneer u op de tegel Ascentis in het toegangsvenster, moet u worden automatisch aangemeld bij de Ascentis waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel uitstoken in het toegangs venster klikt, moet u automatisch worden aangemeld bij de schuine kolom waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 

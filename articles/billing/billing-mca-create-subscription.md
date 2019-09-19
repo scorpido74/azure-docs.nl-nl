@@ -1,6 +1,6 @@
 ---
-title: Een extra Azure-abonnement voor uw factureringsrekening maken
-description: Leer hoe u een nieuwe Azure-abonnement toevoegen in Azure portal.
+title: Extra Azure-abonnement maken voor uw factureringsaccount
+description: Meer informatie over het toevoegen van een nieuw Azure-abonnement in de Azure-portal.
 author: amberbhargava
 manager: amberb
 editor: banders
@@ -13,78 +13,78 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 558410d980d261780f7287d1e27ed704b356fc2b
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490944"
 ---
-# <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>Een extra Azure-abonnement voor Microsoft-KLANTOVEREENKOMST maken
+# <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>Een extra Azure-abonnement maken voor een Microsoft-klantovereenkomst
 
-Als u meer abonnementen voor uw factureringsrekening voor het instellen van afzonderlijke omgevingen voor ontwikkelen en testen, beveiliging of om te isoleren van de gegevens om wettelijke redenen maken.
+Maak extra abonnementen voor uw factureringsaccount om afzonderlijke omgevingen in te stellen voor ontwikkeling en testen, beveiliging of om gegevens te isoleren met het oog op naleving.
 
-In dit artikel is van toepassing op een rekening voor een Microsoft-KLANTOVEREENKOMST. [Controleer of u toegang tot een Microsoft-KLANTOVEREENKOMST hebt](#check-access). Als u wilt maken van abonnementen voor andere soorten facturering accounts, Zie [een extra abonnement maken in Azure portal](billing-create-subscription.md).
+Dit artikel is van toepassing op een factureringsaccount voor een Microsoft-klantovereenkomst. [Controleer of u toegang hebt tot een Microsoft-klantovereenkomst](#check-access). Als u abonnementen voor andere soorten factureringsaccounts wilt maken, raadpleegt u [Extra abonnement maken in de Azure-portal](billing-create-subscription.md).
 
-Voor het maken van een abonnement, moet u een **factuur sectie eigenaar**, **factuur sectie Inzender**, of **de maker van de Azure-abonnement**. Zie voor meer informatie, [abonnement facturering rollen en taken](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks). Zie voor andere machtiging voor het maken van Azure-abonnementen voor uw factureringsrekening, [Geef anderen toestemming voor het maken van Azure-abonnementen](#give-others-permission).
+Als u een abonnement wilt maken, moet u een **factuursectie-eigenaar**, **factuursectie-inzender** of **maker van een Azure-abonnement** zijn. Voor meer informatie, zie [Rollen en taken voor abonnementsfacturering](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks). Als u anderen een machtiging wilt geven om Azure-abonnementen te maken voor uw factureringsaccount, raadpleegt u [Anderen een machtiging geven om Azure-abonnementen te maken](#give-others-permission).
 
 ## <a name="create-a-subscription"></a>Een abonnement maken
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-2. Zoeken naar **abonnementen**.
+2. Zoek naar **Abonnementen**.
 
-   ![Schermafbeelding van zoeken in de portal voor abonnementen](./media/billing-mca-create-subscription/billing-search-subscriptions.png)
+   ![Schermopname van zoekopdracht in portal naar abonnementen](./media/billing-mca-create-subscription/billing-search-subscriptions.png)
 
-3. Selecteer **toevoegen**
+3. Selecteer **Toevoegen**
 
-4. Als u toegang tot meerdere accounts van facturering hebt, selecteert u de rekening voor uw Microsoft-KLANTOVEREENKOMST.
+4. Als u toegang hebt tot meerdere factureringsaccounts, selecteert u de factureringsaccount voor uw Microsoft-klantovereenkomst.
 
-   ![Schermafbeelding van pagina-abonnement maken](./media/billing-mca-create-subscription/billing-mca-create-azure-subscription.png)
+   ![Schermopname van de pagina voor het maken van abonnementen](./media/billing-mca-create-subscription/billing-mca-create-azure-subscription.png)
 
-5. Selecteer een profiel voor facturering. De kosten voor uw abonnement wordt gefactureerd voor het geselecteerde profiel voor facturering. Als u toegang tot slechts één factureringsprofiel hebt, wordt de selectie grijs weergegeven.
+5. Selecteer een factureringsprofiel. De kosten voor uw abonnement worden gefactureerd op het geselecteerde factureringsprofiel. Als u toegang hebt tot slechts één factureringsprofiel, wordt de selectie grijs weergegeven.
 
-6. Selecteer een gedeelte van de factuur. De kosten voor uw abonnement wordt gefactureerd in deze sectie van de facturering van het profiel factuur. Als u toegang tot slechts een gedeelte van de factuur hebt, wordt de selectie grijs weergegeven.
+6. Selecteer een factuursectie. De kosten voor uw abonnement worden gefactureerd op deze factuursectie van het factureringsprofiel. Als u toegang hebt tot slechts één factuursectie, wordt de selectie grijs weergegeven.
 
-7. Selecteer een plan voor het abonnement. Selecteer **Microsoft Azure-abonnement voor DevTest**, als u van plan bent dit abonnement gebruiken voor ontwikkeling of testworkloads anders **Microsoft Azure-abonnement**. Als u toegang tot slechts één abonnement hebt, wordt de selectie grijs weergegeven.
+7. Selecteer een plan voor het abonnement. Selecteer **Microsoft Azure Plan for DevTest** als u van plan bent om dit abonnement te gebruiken voor ontwikkelings- of testworkloads. Gebruik anders **Microsoft Azure Plan**. Als u toegang hebt tot slechts één plan, wordt de selectie grijs weergegeven.
 
-8. Voer een naam in voor het abonnement. De naam van de helpt u bij het herkennen van het abonnement in Azure portal.
+8. Voer een naam in voor het abonnement. De naam helpt u om het abonnement in de Azure-portal gemakkelijk te identificeren.
 
 9. Selecteer **Maken**.
 
-## <a name="give-others-permission"></a>Anderen toestemming geven
+## <a name="give-others-permission"></a>Anderen een machtiging geven
 
-Gebruikers toevoegen als ontwikkelaars van Azure-abonnement op een gedeelte van de factuur ze om toestemming te geven aan Azure-abonnementen maken.
+Voeg gebruikers toe als makers van Azure-abonnementen aan een factuursectie om hun een machtiging te geven om Azure-abonnementen te maken.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-2. Zoeken naar **kosten Management en facturering**.
+2. Zoek naar **Kostenbeheer en facturering**.
 
-   ![Schermafbeelding van zoeken in de portal voor abonnementen](./media/billing-mca-create-subscription/billing-search-cost-management-billing.png)
+   ![Schermopname van zoekopdracht in portal naar abonnementen](./media/billing-mca-create-subscription/billing-search-cost-management-billing.png)
 
-3. Ga naar de factureringssectie. Afhankelijk van uw toegang moet u mogelijk een factureringsaccount of factureringsprofiel selecteren. Selecteer in de facturering-account of profiel **factuur secties** en vervolgens een factuur sectie in de lijst. Alle abonnementen die worden gemaakt door de gebruikers worden gefactureerd in deze sectie factuur.
+3. Ga naar de factureringssectie. Afhankelijk van uw toegang moet u mogelijk een factureringsaccount of factureringsprofiel selecteren. In het factureringsaccount of -profiel selecteert u **Factuursecties** en vervolgens een factuursectie uit de lijst. Alle abonnementen die door de gebruikers worden gemaakt, worden gefactureerd op deze factuursectie.
    
-   ![Schermafbeelding van selecteren secties factuur](./media/billing-mca-create-subscription/mca-select-invoice-sections.png)        
+   ![Schermopname van het selecteren van factuursecties](./media/billing-mca-create-subscription/mca-select-invoice-sections.png)        
 
-4. Selecteer **Access Management (IAM)** vanaf de linksboven.
+4. Selecteer **Toegangsbeheer (IAM)** linksboven op de pagina.
 
 5. Selecteer **Toevoegen** bovenaan de pagina.
 
-6. Selecteer **de maker van de Azure-abonnement** voor de rol.
+6. Selecteer **Maker van Azure-abonnementen** als rol.
 
-7. Voer het e-mailadres van de gebruiker aan wie u wilt om toegang te geven.
+7. Voer het e-mailadres in van de gebruiker die u toegang wilt verlenen.
 
 8. Selecteer **Opslaan**.
 
 ## <a name="check-access"></a>Toegang controleren
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Hulp nodig? Neem contact op met ondersteuning
+## <a name="need-help-contact-support"></a>Hulp nodig? Contact opnemen met ondersteuning
 
-Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, kunt u [een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Geef anderen toestemming voor het maken van Azure-resources met behulp van ingebouwde rollen](../role-based-access-control/built-in-roles.md#built-in-role-descriptions)
-- [Een windows-machine maken](../virtual-machines/windows/quick-create-portal.md)
-- [Een linux-machine maken](../virtual-machines/linux/quick-create-portal.md)
-- [Beheergroepen voor resource organisatie en beheer maken](../governance/management-groups/create.md?toc=/azure/billing/TOC.json)
+- [Anderen een machtiging geven om Azure-resources te maken met behulp van ingebouwde rollen](../role-based-access-control/built-in-roles.md#built-in-role-descriptions)
+- [Een virtuele Windows-machine maken](../virtual-machines/windows/quick-create-portal.md)
+- [Een virtuele Linux-machine maken](../virtual-machines/linux/quick-create-portal.md)
+- [Beheergroepen maken voor het organiseren en beheren van resources](../governance/management-groups/create.md?toc=/azure/billing/TOC.json)

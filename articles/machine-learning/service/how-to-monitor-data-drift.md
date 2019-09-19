@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 09/13/2019
-ms.openlocfilehash: 59cce0b56a4e54208a454c9f71d9a4c8576b0a8b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3b3fbce40c93389037435a7cdb1271e773163de3
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034359"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123273"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Gegevens drift (preview) detecteren voor modellen die zijn geïmplementeerd in azure Kubernetes service (AKS)
 
@@ -23,7 +23,7 @@ In dit artikel leert u hoe u kunt controleren op gegevens overdracht tussen de g
 
 ## <a name="what-is-data-drift"></a>Wat is gegevens drift?
 
-Gegevens drift treedt op wanneer gegevens die aan een model in de productie worden geleverd, afwijkt van de gegevens die worden gebruikt om het model te trainen. Het is een van de belangrijkste redenen waarbij de nauw keurigheid van het model in de loop van de tijd afneemt, waardoor gegevens drift helpt bij het detecteren van prestatie problemen van modellen. 
+In de context van machine learning is gegevens drift de wijziging in model invoer gegevens die leidt tot het model leren van prestaties. Het is een van de belangrijkste redenen waarbij de nauw keurigheid van het model in de loop van de tijd afneemt, waardoor gegevens drift helpt bij het detecteren van prestatie problemen van modellen. 
 
 ## <a name="what-can-i-monitor"></a>Wat kan ik controleren?
 

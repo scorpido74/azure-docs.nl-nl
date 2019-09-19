@@ -1,6 +1,6 @@
 ---
-title: Reageren op HTTP-aanvragen-Azure Logic Apps
-description: Reageren op gebeurtenissen in realtime via HTTP met behulp van Azure Logic Apps
+title: HTTPS-aanroepen ontvangen en erop reageren-Azure Logic Apps
+description: HTTPS-aanvragen en-gebeurtenissen in realtime verwerken door gebruik te maken van Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -12,20 +12,22 @@ ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
 ms.topic: article
 ms.date: 09/06/2019
 tags: connectors
-ms.openlocfilehash: 07f143b261d0cff9eba0d4b1803753446c311818
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 668e815f1dc1ead0ad38264bdc71fc3c315b751c
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914344"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122716"
 ---
-# <a name="respond-to-http-requests-by-using-azure-logic-apps"></a>Reageren op HTTP-aanvragen met behulp van Azure Logic Apps
+# <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Binnenkomende HTTPS-aanroepen ontvangen en erop reageren met behulp van Azure Logic Apps
 
-Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde aanvraag-of reactie actie, kunt u geautomatiseerde taken en werk stromen maken die in realtime worden ontvangen en op http-aanvragen reageren. U kunt bijvoorbeeld uw logische app:
+Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde aanvraag-of reactie actie, kunt u geautomatiseerde taken en werk stromen maken die binnenkomende HTTPS-aanvragen ontvangen en erop reageren. U kunt bijvoorbeeld uw logische app:
 
-* Reageer op een HTTP-aanvraag voor gegevens in een on-premises data base.
+* Ontvangen en reageren op een HTTPS-aanvraag voor gegevens in een on-premises data base.
 * Activeer een werk stroom wanneer een externe webhook-gebeurtenis plaatsvindt.
-* Een logische app aanroepen vanuit een andere logische app.
+* Ontvangen en reageren op een HTTPS-aanroep vanuit een andere logische app.
+
+De aanvraag trigger ondersteunt *alleen* https. Als u in plaats daarvan uitgaande HTTP-of HTTPS-aanroepen wilt maken, gebruikt u de ingebouwde [http-trigger of-actie](../connectors/connectors-native-http.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -35,15 +37,15 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde aa
 
 <a name="add-request"></a>
 
-## <a name="add-a-request-trigger"></a>Een trigger voor een aanvraag toevoegen
+## <a name="add-request-trigger"></a>Aanvraag trigger toevoegen
 
-Deze ingebouwde trigger maakt een hand matig aanroepend eind punt dat een binnenkomende HTTP-aanvraag kan ontvangen. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en wordt de logische app uitgevoerd. Voor meer informatie over de onderliggende JSON-definitie van de trigger en hoe u deze trigger aanroept, raadpleegt u de [aanvraag trigger type](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) en [roept u werk stromen met http-eind punten aan in azure Logic apps](../logic-apps/logic-apps-http-endpoint.md)
+Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *alleen* binnenkomende HTTPS-aanvragen kan ontvangen. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en wordt de logische app uitgevoerd. Voor meer informatie over de onderliggende JSON-definitie van de trigger en hoe u deze trigger aanroept, raadpleegt u het [type trigger voor aanvragen](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) en [roept u werk stromen met http-eind punten aan in azure Logic apps](../logic-apps/logic-apps-http-endpoint.md).
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com). Een lege, logische app maken.
 
 1. Wanneer Logic app Designer wordt geopend, voert u in het zoekvak ' HTTP-aanvraag ' in als uw filter. Selecteer in de lijst triggers de trigger **Wanneer een HTTP-aanvraag wordt ontvangen** . Dit is de eerste stap in de werk stroom van uw logische app.
 
-   ![Selecteer de trigger Aanvraag - Wanneer een HTTP-aanvraag is ontvangen](./media/connectors-native-reqres/select-request-trigger.png)
+   ![Aanvraag trigger selecteren](./media/connectors-native-reqres/select-request-trigger.png)
 
    Met de aanvraag trigger worden deze eigenschappen weer gegeven:
 
@@ -52,10 +54,10 @@ Deze ingebouwde trigger maakt een hand matig aanroepend eind punt dat een binnen
    | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Description |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST-URL** | geen | Ja | De eind punt-URL die wordt gegenereerd na het opslaan van de logische app en wordt gebruikt voor het aanroepen van uw logische app |
-   | **JSON-schema van aanvraag tekst** | `schema` | Nee | Het JSON-schema waarmee de eigenschappen en waarden in de binnenkomende HTTP-aanvraag tekst worden beschreven |
+   | **JSON-schema van aanvraag tekst** | `schema` | Nee | Het JSON-schema dat de eigenschappen en waarden in de hoofd tekst van de binnenkomende aanvraag beschrijft |
    |||||
 
-1. Voer desgewenst in het vak **JSON-schema van aanvraag tekst** een JSON-schema in dat de hoofd tekst van de HTTP-aanvraag in de binnenkomende aanvraag beschrijft, bijvoorbeeld:
+1. Voer desgewenst in het vak **JSON-schema van aanvraag tekst** een JSON-schema in dat de hoofd tekst in de binnenkomende aanvraag beschrijft, bijvoorbeeld:
 
    ![Voor beeld van JSON-schema](./media/connectors-native-reqres/provide-json-schema.png)
 
@@ -190,7 +192,7 @@ Hier volgt meer informatie over de uitvoer van de aanvraag trigger:
 
 ## <a name="add-a-response-action"></a>Een reactie actie toevoegen
 
-U kunt de reactie actie gebruiken om te reageren met een Payload (gegevens) naar een binnenkomende HTTP-aanvraag, maar alleen in een logische app die wordt geactiveerd door een HTTP-aanvraag. U kunt de reactie actie op elk gewenst moment in uw werk stroom toevoegen. Zie het [actie type reactie](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)voor meer informatie over de onderliggende JSON-definitie voor deze trigger.
+U kunt de reactie actie gebruiken om te reageren met een Payload (gegevens) naar een binnenkomende HTTPS-aanvraag, maar alleen in een logische app die wordt geactiveerd door een HTTPS-aanvraag. U kunt de reactie actie op elk gewenst moment in uw werk stroom toevoegen. Zie het [actie type reactie](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)voor meer informatie over de onderliggende JSON-definitie voor deze trigger.
 
 Met uw logische app wordt de inkomende aanvraag voor één minuut geopend. Ervan uitgaande dat uw logische app-werk stroom een reactie actie bevat, als de logische app geen antwoord retourneert nadat deze tijd is verstreken, retourneert uw `504 GATEWAY TIMEOUT` logische app een naar de aanroeper. Als uw logische app geen reactie actie bevat, retourneert uw logische app onmiddellijk een `202 ACCEPTED` antwoord op de aanroeper.
 
@@ -224,7 +226,7 @@ Met uw logische app wordt de inkomende aanvraag voor één minuut geopend. Ervan
 
    | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Description |
    |---------------|--------------------|----------|-------------|
-   | **Statuscode** | `statusCode` | Ja | De HTTP-status code die in het antwoord moet worden geretourneerd |
+   | **Statuscode** | `statusCode` | Ja | De status code die in het antwoord moet worden geretourneerd |
    | **Headers** | `headers` | Nee | Een JSON-object dat een of meer headers beschrijft die in het antwoord moeten worden meegenomen |
    | **Hoofdtekst** | `body` | Nee | De antwoord tekst |
    |||||

@@ -4,15 +4,15 @@ description: Meer informatie over hoe u een klant kunt vrijmaken voor het beheer
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/29/2019
+ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: dabee74dc757a8ccdc4384662f5c9bc09a1e5fbe
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 402f82059f939de204e489bb36c2c2b82f816a19
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165032"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105276"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Een klant in gedelegeerd Azure-resourcebeheer plaatsen
 
@@ -20,7 +20,7 @@ In dit artikel wordt uitgelegd hoe u, als service provider, een klant kan opstur
 
 U kunt dit proces herhalen als u resources beheert voor meerdere klanten. Wanneer een geautoriseerde gebruiker zich aanmeldt bij uw Tenant, kan die gebruiker worden geautoriseerd door de klant pacht bereiken om beheer bewerkingen uit te voeren zonder dat ze zich hoeven aan te melden bij elke afzonderlijke klant Tenant.
 
-U kunt uw Microsoft Partner Network-ID (MPN) koppelen aan uw kant-en-Board abonnementen om de gevolgen voor klant afspraken bij te houden en herkenning te ontvangen. Zie [een partner-id koppelen aan uw Azure-accounts](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started)voor meer informatie. Houd er rekening mee dat u deze koppeling afzonderlijk moet uitvoeren voor elke Tenant van de klant waarvoor u resources beheert. 
+U kunt uw Microsoft Partner Network-ID (MPN) koppelen aan uw kant-en-Board abonnementen om de gevolgen voor klant afspraken bij te houden en herkenning te ontvangen. Zie [een partner-id koppelen aan uw Azure-accounts](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started)voor meer informatie. Houd er rekening mee dat u deze koppeling moet uitvoeren in de Tenant van de service provider.
 
 > [!NOTE]
 > Klanten kunnen automatisch worden vrijgegeven wanneer ze een Managed Services-aanbieding (openbaar of privé) aanschaffen die u naar Azure Marketplace hebt gepubliceerd. Zie [Managed Services aanbiedingen to Azure Marketplace](publish-managed-services-offers.md)(Engelstalig) voor meer informatie. U kunt ook het voorbereidings proces dat hier wordt beschreven, gebruiken met een aanbieding die is gepubliceerd op Azure Marketplace.

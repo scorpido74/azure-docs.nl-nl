@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/24/2019
-ms.openlocfilehash: 8565ee03ddff67afb3700aa1cda91ae696a0fc93
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 270bc5401e58f4e5c99cae3c5ab06b4f03ae9543
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960212"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123248"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker gebruiken om Apache Kafka-onderwerpen te repliceren met Kafka in HDInsight
 
@@ -84,7 +84,7 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
     1. Klik op **Toevoegen**.
     1. Geef in het scherm **peering toevoegen** de details op, zoals wordt weer gegeven in de onderstaande scherm afbeelding.
 
-        ![vnet-peering toevoegen](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
+        ![HDInsight Kafka vnet-peering toevoegen](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
 1. IP-reclame configureren:
     1. Ga naar het Ambari-dash board voor het primaire `https://PRIMARYCLUSTERNAME.azurehdinsight.net`cluster:.
@@ -104,7 +104,7 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
     1. Klik op **OK** in de **configuratie wijzigingen opslaan**.
     1. Klik op **opnieuw opstarten**opnieuw starten,**waarbij dit probleem optreedt** in het bericht **opnieuw opstarten is vereist** . >  Klik op **Bevestig opnieuw opstarten**.
 
-        ![Kafka-knoop punten opnieuw starten](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+        ![Apache Ambari alle betrokken software opnieuw opstarten](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 1. Configureer Kafka om te Luis teren op alle netwerk interfaces.
     1. Blijf op het tabblad **configuratie** onder **Services** > **Kafka**. Stel in het gedeelte **Kafka-Broker** de eigenschap **listeners** in `PLAINTEXT://0.0.0.0:9092`op.
@@ -115,7 +115,7 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
     1. Klik op **hosts** in het Ambari-dash board.
     1. Noteer de IP-adressen voor de brokers en Zookeepers. De Broker knooppunten hebben **wn** als de eerste twee letters van de hostnaam en de Zookeeper-knoop punten hebben **ZK** als de eerste twee letters van de hostnaam.
 
-        ![IP-adressen weer geven](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+        ![IP-adressen van Apache Ambari-weergave knooppunt](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
 1. Herhaal de vorige drie stappen voor het tweede cluster **Kafka-secundair-cluster**: IP-reclame configureren, listeners instellen en noteer de Broker-en Zookeeper-IP-adressen.
 
@@ -251,7 +251,7 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
         6. Wijzig de waarde van `auto.create.topics.enable` in waar en selecteer vervolgens __Opslaan__. Voeg een notitie toe en selecteer vervolgens __Opslaan__ opnieuw.
         7. Selecteer de __Kafka__ -service, selecteer __opnieuw opstarten__en selecteer vervolgens __alle betrokkenen opnieuw opstarten__. Selecteer __Bevestig opnieuw opstarten__als dit wordt gevraagd.
 
-        ![automatisch maken van het onderwerp configureren](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
+        ![Kafka inschakelen voor automatisch maken](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 
 ## <a name="start-mirrormaker"></a>MirrorMaker starten
 

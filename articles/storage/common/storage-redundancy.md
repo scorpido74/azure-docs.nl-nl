@@ -9,12 +9,12 @@ ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3640d2d88fc679b78395472c667fcde39979728a
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 6a598ad3f68c613a745fd56f3b368e309afeb8b6
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71074338"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122964"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundantie
 
@@ -28,12 +28,7 @@ Azure Storage controleert regel matig de integriteit van gegevens die zijn opges
 
 Wanneer u een opslag account maakt, kunt u een van de volgende redundantie opties selecteren:
 
-- [Lokaal redundante opslag (LRS)](storage-redundancy-lrs.md)
-- [Zone-redundante opslag (ZRS)](storage-redundancy-zrs.md)
-- [Geografisch redundante opslag (GRS)](storage-redundancy-grs.md)
-- [Geografisch redundante opslag met leestoegang (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
-- [Geo-zone-redundante opslag (GZRS)](storage-redundancy-gzrs.md)
-- [Geo-zone-redundante opslag met lees toegang (RA-GZRS)](storage-redundancy-gzrs.md)
+[!INCLUDE [azure-storage-redundancy](../../../includes/azure-storage-redundancy.md)]
 
 De volgende tabel geeft een beknopt overzicht van het bereik van duurzaamheid en beschik baarheid dat elke replicatie strategie biedt voor een bepaald type gebeurtenis (of gebeurtenis van vergelijk bare gevolgen).
 
@@ -55,7 +50,7 @@ Zie [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/
 Zie de [Azure Storage Sla](https://azure.microsoft.com/support/legal/sla/storage/)voor informatie over Azure Storage garanties voor duurzaamheid en beschik baarheid.
 
 > [!NOTE]
-> Azure Premium Storage ondersteunt alleen lokaal redundante opslag (LRS).
+> Azure Premium Storage ondersteunt momenteel alleen lokaal redundante opslag (LRS).
 
 ## <a name="changing-replication-strategy"></a>Replicatie strategie wijzigen
 

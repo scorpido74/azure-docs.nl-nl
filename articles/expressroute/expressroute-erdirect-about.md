@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: a294c444f10719f69716b25b97cd137874a3e0be
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 916175401cd993392094b2bb16f8fc8746a4d2a8
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954157"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123400"
 ---
 # <a name="about-expressroute-direct"></a>Over ExpressRoute Direct
 
@@ -45,7 +45,7 @@ Voordat u ExpressRoute direct gebruikt, moet u uw abonnement eerst registreren. 
 
 ## <a name="expressroute-direct-circuits"></a>ExpressRoute Direct-circuits
 
-Met Microsoft Azure ExpressRoute kunt u uw on-premises netwerken in de Microsoft Cloud uitbreiden via een persoonlijke verbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft Cloud-services, zoals Microsoft Azure, Office 365 en Dynamics 365.  
+Met Microsoft Azure ExpressRoute kunt u uw on-premises netwerken in de Microsoft Cloud uitbreiden via een persoonlijke verbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met micro soft-Cloud Services, zoals Microsoft Azure, en Office 365.
 
 Elke locatie toegang heeft tot het wereldwijde netwerk van Microsoft en hebben toegang tot andere regio's in een geopolitieke zone standaard en hebben toegang tot alle globale regio's met een premium-circuit.  
 

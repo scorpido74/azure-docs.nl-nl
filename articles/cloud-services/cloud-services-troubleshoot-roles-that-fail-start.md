@@ -4,7 +4,7 @@ description: Hier volgen enkele veelvoorkomende redenen waarom een Cloud service
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
-manager: felixwu
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 9e1ae9ca6106a6a55e0cfc933ad47a5944ed5abb
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945397"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122735"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Problemen met Cloud service rollen oplossen die niet worden gestart
 Hier volgen enkele veelvoorkomende problemen en oplossingen met betrekking tot Azure Cloud Services-rollen die niet worden gestart.
@@ -105,7 +105,7 @@ Voer de volgende stappen uit om de service te implementeren met IntelliTrace ing
 4. Vouw het knoop punt **Azure\\Cloud Services** uit en zoek de implementatie.
 5. Vouw de implementatie uit totdat u de rolinstanties ziet. Klik met de rechter muisknop op een van de exemplaren.
 6. Kies **IntelliTrace-logboeken weer geven**. De **IntelliTrace-samen vatting** wordt geopend.
-7. Zoek de sectie uitzonde ringen van de samen vatting. Als er uitzonde ringen zijn, wordt de sectie uitzonderings **gegevens**genoemd.
+7. Zoek de sectie uitzonde ringen van de samen vatting. Als er uitzonde ringen zijn, wordt de sectie **uitzonderings gegevens**genoemd.
 8. Vouw de **uitzonderings gegevens** uit en zoek naar **System. io. FileNotFoundException** -fouten die vergelijkbaar zijn met het volgende:
 
 ![Uitzonderings gegevens, ontbrekend bestand of assembly](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503390.png)
@@ -114,7 +114,7 @@ Voer de volgende stappen uit om de service te implementeren met IntelliTrace ing
 Ga als volgt te werk om ontbrekende DLL-en assembly fouten op te lossen:
 
 1. Open de oplossing in Visual Studio.
-2. Open de map References in **Solution Explorer**.
+2. Open de map **References** in **Solution Explorer**.
 3. Klik op de assembly die in de fout is geïdentificeerd.
 4. Zoek in het deel venster **Eigenschappen** naar **lokale eigenschap kopiëren** en stel de waarde in op **waar**.
 5. Implementeer de Cloud service opnieuw.

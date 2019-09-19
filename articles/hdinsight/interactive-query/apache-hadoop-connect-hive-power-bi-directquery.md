@@ -1,19 +1,19 @@
 ---
 title: Interactieve query-Hive-gegevens visualiseren met Power BI in azure HDInsight
 description: Micro soft Power BI gebruiken om interactieve query-Hive-gegevens te visualiseren vanuit Azure HDInsight
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 6311ae7e89cab67611396c607d38fd0f00f99dad
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 0f273f75c33362bc99efbd7ac6bc46c3778ae88b
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811615"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123019"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Interactieve query Apache Hive gegevens visualiseren met micro soft Power BI met behulp van directe query's in HDInsight
 
@@ -37,7 +37,7 @@ De `hivesampletable` Hive-tabel wordt geleverd met alle HDInsight-clusters.
 
 2. Ga in de menu balk naar **Start** > **gegevens** > ophalen**meer...** .
 
-    ![HDInsight-Power BI open gegevens](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
+    ![HDInsight-Power BI gegevens meer ophalen](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 
 3. In het venster **gegevens ophalen** voert u **hdinsight** in het zoekvak in.  
 

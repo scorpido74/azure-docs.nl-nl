@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: juliako
-ms.openlocfilehash: 8158611678acc23d89bab377c170759c6bf9677f
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ac31a2945e59df3b57000a0ffdcbca8344e44c18
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962637"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122293"
 ---
 # <a name="animated-character-detection-preview"></a>Detectie van geanimeerde tekens (preview-versie)
 
@@ -91,7 +91,11 @@ Als u een Video Indexer betaalde account hebt, moet u eerst verbinding maken met
     1. Nadat u de nieuwe naam hebt getypt, klikt u op het controle pictogram naast de nieuwe naam. Hiermee slaat u de nieuwe naam op in het model in Video Indexer.
     1. Wanneer u klaar bent met het bewerken van alle gewenste namen, moet u het model trainen.
 
-        Open de pagina aanpassing en klik op het tabblad **tekens met animatie** . Klik voor het relevante model op de koppeling **bewerken in Custom Vision** . Vervolgens wordt u doorgestuurd naar de pagina van het model in Custom Vision. Klik op de **trein** knop om het model te trainen. 
+        Open de pagina aanpassing en klik op het tabblad **tekens met animatie** . Als u een betaald account hebt, kunt u klikken op de koppeling **modellen beheren in Customer Vision** (zoals hieronder weer gegeven). Vervolgens wordt u doorgestuurd naar de pagina van het model in Custom Vision. Klik op de **trein** knop om het model te trainen. 
+        
+        ![Aanpassing van inhoudsmodel](./media/animated-characters-recognition/content-model-customization-tab.png)
+
+        Als u een proef account hebt, is de koppeling **modellen beheren in klant Vision** niet aanwezig. In dit geval kunt u op de pagina voor het aanpassen van het **inhouds model** drukken op **Train** right.
     1. Eenmaal getraind, worden de getrainde tekens herkend door alle Video's die worden geïndexeerd of herindexeerd met het model. 
     Betaalde accounts die toegang hebben tot hun Custom Vision-account kunnen de modellen en gelabelde installatie kopieën daar zien. Meer informatie over [het verbeteren van uw classificatie in Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
 

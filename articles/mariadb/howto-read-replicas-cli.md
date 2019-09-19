@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 2f5029ccbf80551721ecc363aa4c3930961d9154
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 8b3572182832dc7692f6475be44281f56cf58571
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993062"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122763"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Lees replica's maken en beheren in Azure Database for MariaDB met behulp van de Azure CLI en REST API
 
@@ -44,7 +44,12 @@ De `az mariadb server replica create` opdracht moet de volgende parameters:
 | naam | mydemoreplicaserver | De naam van de nieuwe replicaserver die is gemaakt. |
 | source-server | mydemoserver | De naam of ID van de bestaande hoofd-server om te repliceren van. |
 
-Gebruik de `--location` para meter om een lees replica te maken. In het CLI-voor beeld hieronder wordt de replica in VS West gemaakt.
+Gebruik de `--location` para meter om een lees replica te maken. 
+
+> [!NOTE]
+> Replicatie van meerdere regio's is beschikbaar als preview-versie.
+
+In het CLI-voor beeld hieronder wordt de replica in VS West gemaakt.
 
 ```azurecli-interactive
 az mariadb server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus

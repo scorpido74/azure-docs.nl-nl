@@ -1,18 +1,18 @@
 ---
 title: Uw eigen sleutel voor Apache Kafka in azure HDInsight nemen
 description: In dit artikel wordt beschreven hoe u uw eigen sleutel gebruikt van Azure Key Vault om gegevens te versleutelen die zijn opgeslagen in Apache Kafka in azure HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 15638d90fe24938a45f6d4cce156e998f1f9afc2
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: ba49944011546db45d25cc87c2c4b93c8b99502a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000103"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122684"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Uw eigen sleutel voor Apache Kafka in azure HDInsight nemen
 
@@ -22,7 +22,7 @@ Alle beheerde schijven in HDInsight worden beveiligd met Azure Storage-service v
 
 BYOK-versleuteling is een proces dat uit één stap wordt verwerkt tijdens het maken van het cluster zonder extra kosten. Het enige wat u hoeft te doen, is HDInsight registreren als een beheerde identiteit met Azure Key Vault en de versleutelings sleutel toevoegen wanneer u het cluster maakt.
 
-Alle berichten naar het Kafka-cluster (met inbegrip van replica's die worden onderhouden door Kafka) worden versleuteld met een symmetrische gegevens versleutelings sleutel (DEK). De DEK wordt beschermd met behulp van de sleutel versleutelings sleutel (KEK) van uw sleutel kluis. De processen voor versleuteling en ontsleuteling worden volledig verwerkt door Azure HDInsight. 
+Alle berichten naar het Kafka-cluster (met inbegrip van replica's die worden onderhouden door Kafka) worden versleuteld met een symmetrische gegevens versleutelings sleutel (DEK). De DEK wordt beschermd met behulp van de sleutel versleutelings sleutel (KEK) van uw sleutel kluis. De processen voor versleuteling en ontsleuteling worden volledig verwerkt door Azure HDInsight.
 
 U kunt de Azure Portal of Azure CLI gebruiken om de sleutels in de sleutel kluis veilig te draaien. Wanneer een sleutel draait, begint het HDInsight Kafka-cluster binnen enkele minuten met de nieuwe sleutel. Schakel de beveiligings functies ' zacht verwijderen ' in om te beschermen tegen Ransomware-scenario's en onbedoeld verwijderen. Sleutel kluizen zonder deze beveiligings functie worden niet ondersteund.
 
@@ -46,6 +46,7 @@ Als u een BYOK Kafka-cluster wilt maken, gaat u als volgt te werk:
    1. Als u een nieuwe sleutel kluis wilt maken, volgt u de [Azure Key Vault](../../key-vault/key-vault-overview.md) Snelstartgids. Ga voor meer informatie over het importeren van bestaande sleutels naar [sleutels, geheimen en certificaten](../../key-vault/about-keys-secrets-and-certificates.md).
 
    2. Schakel ' zacht-delete ' in op de sleutel kluis met behulp van de opdracht [AZ-kluis update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) cli.
+
         ```Azure CLI
         az keyvault update --name <Key Vault Name> --enable-soft-delete
         ```
@@ -58,16 +59,16 @@ Als u een BYOK Kafka-cluster wilt maken, gaat u als volgt te werk:
 
         b. Stel **Opties** in voor het **genereren** en geven van de sleutel een naam.
 
-        ![Sleutel naam genereren](./media/apache-kafka-byok/apache-kafka-create-key.png "Sleutel naam genereren")
+        ![Apache Kafka sleutel naam genereren](./media/apache-kafka-byok/apache-kafka-create-key.png "Sleutel naam genereren")
 
         c. Selecteer de sleutel die u hebt gemaakt in de lijst met sleutels.
 
-        ![Lijst met Azure Key Vault sleutels](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
+        ![Sleutel lijst voor Apache Kafka-sleutel kluis](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
 
         d. Wanneer u uw eigen sleutel gebruikt voor Kafka-cluster versleuteling, moet u de sleutel-URI opgeven. Kopieer de **sleutel-id** en sla deze ergens op totdat u klaar bent om uw cluster te maken.
 
-        ![Sleutel-id kopiëren](./media/apache-kafka-byok/kafka-get-key-identifier.png)
-   
+        ![Apache Kafka Get sleutel-id](./media/apache-kafka-byok/kafka-get-key-identifier.png)
+
     4. Beheerde identiteit toevoegen aan het toegangs beleid voor de sleutel kluis.
 
         a. Maak een nieuw Azure Key Vault toegangs beleid.
@@ -99,6 +100,7 @@ Als u een BYOK Kafka-cluster wilt maken, gaat u als volgt te werk:
    Geef tijdens het maken van het cluster de volledige sleutel-URL op, met inbegrip van de sleutel versie. Bijvoorbeeld `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. U moet ook de beheerde identiteit toewijzen aan het cluster en de sleutel-URI opgeven.
 
 ## <a name="rotating-the-encryption-key"></a>De versleutelings sleutel draaien
+
    Er zijn mogelijk scenario's waarin u mogelijk de versleutelings sleutels wilt wijzigen die door het Kafka-cluster worden gebruikt nadat het is gemaakt. Dit kan eenvoudig zijn via de portal. Voor deze bewerking moet het cluster toegang hebben tot zowel de huidige sleutel als de beoogde nieuwe sleutel, anders kan de bewerking voor het draaien van de sleutel niet worden uitgevoerd.
 
    Als u de sleutel wilt draaien, moet u de volledige URL van de nieuwe sleutel hebben (zie stap 3 van [de Key Vault en sleutels instellen](#setup-the-key-vault-and-keys)). Als dat het geval is, gaat u naar de sectie cluster eigenschappen Kafka in de portal en klikt u op de **sleutel wijzigen** onder URL voor de **schijf versleutelings sleutel**. Voer in de nieuwe sleutel-URL in en verzend de sleutel om deze te draaien.
@@ -122,7 +124,7 @@ Als u een BYOK Kafka-cluster wilt maken, gaat u als volgt te werk:
 **Wat gebeurt er als het cluster geen toegang meer heeft tot de sleutel kluis of de sleutel?**
 Als het cluster de toegang tot de sleutel verliest, worden waarschuwingen weer gegeven in de Apache Ambari-Portal. In deze status mislukt de **wijzigings sleutel** bewerking. Zodra de toegang tot de sleutel is hersteld, worden de Ambari-waarschuwingen verwijderd en worden bewerkingen, zoals het draaien van sleutels, kunnen worden uitgevoerd.
 
-   ![Kafka Key Access Ambari-waarschuwing](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
+   ![Ambari-waarschuwing voor sleutel toegang Apache Kafka](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
 
 **Hoe kan ik het cluster herstellen als de sleutels worden verwijderd?**
 

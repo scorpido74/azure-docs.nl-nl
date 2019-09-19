@@ -1,6 +1,6 @@
 ---
-title: 'Controleer de verbinding - problemen oplossen met ExpressRoute: Azure| Microsoft Docs'
-description: Deze pagina vindt instructies voor het oplossen van problemen en valideren van end-to-end-connectiviteit van een ExpressRoute-circuit.
+title: 'Connectiviteit controleren-ExpressRoute-probleemoplossings gids: Azure| Microsoft Docs'
+description: Op deze pagina vindt u instructies voor het oplossen van problemen en het valideren van end-to-end-connectiviteit van een ExpressRoute-circuit.
 services: expressroute
 author: rambk
 ms.service: expressroute
@@ -8,100 +8,100 @@ ms.topic: article
 ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 888f4dedf2fda0f54297d42a5f813abf73ded748
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 026900e3dcbf7c20750bb8e17e44ba64897c9a30
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66117890"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123446"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Connectiviteit ExpressRoute controleren
-Dit artikel helpt u bij het controleren en oplossen van ExpressRoute-connectiviteit. ExpressRoute, wat een on-premises netwerk naar de Microsoft cloud via een persoonlijke verbinding die mogelijk gemaakt door een connectiviteitsprovider uitbreidt wordt, omvat de volgende drie afzonderlijke network-zones:
+Dit artikel helpt u bij het controleren en oplossen van problemen met ExpressRoute-connectiviteit. ExpressRoute, dat een on-premises netwerk uitbreidt naar de micro soft-Cloud via een particuliere verbinding die wordt vereenvoudigd door een connectiviteits provider, omvat de volgende drie afzonderlijke netwerk zones:
 
 -   Klantnetwerk
--   Provider-netwerk
--   Microsoft Datacenter
+-   Provider netwerk
+-   Micro soft Data Center
 
-Het doel van dit document is voor de gebruiker kan aangeven wat waar u (of zelfs als) een probleem met de netwerkverbinding bestaat en in welke zone, waardoor te zoeken naar Help-informatie van het juiste team om het probleem te verhelpen. Als Microsoft-ondersteuning is vereist om een probleem te verhelpen, open een ondersteuningsticket met [Microsoft Support][Support].
+Het doel van dit document is om de gebruiker te helpen bij het identificeren van de locatie waar (of zelfs als) een connectiviteits probleem bestaat en binnen welke zone, waardoor hulp wordt gezocht van het juiste team om het probleem op te lossen. Als er ondersteuning voor micro soft nodig is om een probleem op te lossen, opent u een ondersteunings ticket met [Microsoft ondersteuning][Support].
 
 > [!IMPORTANT]
-> Dit document is bedoeld om u te helpen bij het vaststellen en eenvoudige problemen oplossen. Het is niet bedoeld om te worden van een vervanging voor ondersteuning van Microsoft. Open een ondersteuningsticket met [Microsoft Support] [ Support] als u niet het probleem met behulp van de richtlijnen op te lossen.
+> Dit document is bedoeld om eenvoudige problemen op te sporen en te verhelpen. Het is niet bedoeld als vervanging van micro soft-ondersteuning. Open een ondersteunings ticket met [Microsoft ondersteuning][Support] als u het probleem niet kunt oplossen met behulp van de meegeleverde richt lijnen.
 >
 >
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Overzicht
-Het volgende diagram toont de logische connectiviteit van het netwerk van een klant met Microsoft-netwerk met behulp van ExpressRoute.
+In het volgende diagram ziet u de logische verbinding van een klanten netwerk met het micro soft-netwerk met behulp van ExpressRoute.
 [![1]][1]
 
-De getallen geven in het voorgaande diagram sleutel netwerk punten. De netwerk-punten worden vaak in dit artikel verwezen door hun bijbehorende nummers.
+In het voor gaande diagram duiden de getallen op belang rijke netwerk punten. In dit artikel wordt regel matig naar de netwerk punten verwezen met het bijbehorende aantal.
 
-De netwerk-punten 3 en 4 kunnen switches (Layer 2-apparaten) zijn afhankelijk van het ExpressRoute-connectiviteit-model (Cloud Exchange CO-locatie, Point-to-Point Ethernet-verbinding of Any-to-any (IPVPN)). De belangrijkste netwerk punten geïllustreerd zijn als volgt:
+Afhankelijk van het ExpressRoute-connectiviteits model (co-locatie, Point-to-Point Ethernet-verbinding in de Cloud en een wille keurige (IPVPN)), kunnen de netwerk punten 3 en 4 switches zijn (laag 2-apparaten). De belangrijkste netwerk punten worden als volgt geïllustreerd:
 
-1.  Klant compute apparaat (bijvoorbeeld een server of een PC)
-2.  CEs: Klant-randrouters 
-3.  PEs (CE gerichte): Provider van edge. routers/schakelaars die klant randrouters worden geconfronteerd. Genoemd PE CEs in dit document.
-4.  PEs (MSEE gerichte): Provider van Microsoft edge. routers/schakelaars die msee's worden geconfronteerd. Genoemd PE-msee's in dit document.
-5.  Msee's: Microsoft Enterprise Edge (MSEE) ExpressRoute routers
-6.  Gateway van virtueel netwerk (VNet)
-7.  COMPUTE-apparaat op het Azure-VNet
+1.  Klant Compute Device (bijvoorbeeld een server of PC)
+2.  CEs Klant-Edge-routers 
+3.  PEs (CE gericht): Provider Edge routers/switches die zijn gericht zijn op klanten Edge-routers. In dit document wordt PE-CEs genoemd.
+4.  Wachtwoordexportserver (MSEE gericht): Provider Edge routers/switches die zijn gericht op Msee's. In dit document wordt ' PE-Msee's ' genoemd.
+5.  Msee's Micro soft Enter prise Edge (MSEE) ExpressRoute-routers
+6.  Virtual Network (VNet)-gateway
+7.  Compute-apparaat op het Azure-VNet
 
-Als u de connectiviteitsmodellen Cloud Exchange CO-locatie of Point-to-Point Ethernet-verbinding gebruikt, zou de klantenrandrouter (2) tot stand brengen BGP-peering met msee's (5). Netwerk punten 3 en 4 wordt nog steeds aanwezig zijn, maar enigszins transparant als Layer 2-apparaten.
+Als de co-locatie of Point-to-Point-verbindings modellen van de Cloud Exchange worden gebruikt, stelt de klant edge-router (2) BGP-peering in met Msee's (5). Netwerk punten 3 en 4 kunnen nog steeds bestaan, maar zijn enigszins transparant als laag-2-apparaten.
 
-Als het model van de connectiviteit Any-to-any (IPVPN) wordt gebruikt, de PEs (MSEE gerichte) (4) BGP-peering met msee's (5) wilt maken. Routes zou worden doorgegeven aan terug naar het netwerk van de klant via de IPVPN serviceprovider-netwerk.
+Als het verbindings model any-to-any (IPVPN) wordt gebruikt, stelt de PEs (MSEE tegenover) (4) BGP-peering in met Msee's (5). Routes worden vervolgens via het netwerk van de IPVPN-service provider teruggegeven aan het netwerk van de klant.
 
 > [!NOTE]
->Voor hoge beschikbaarheid van ExpressRoute vereist Microsoft dat een redundant paar BGP-sessies tussen msee's (5) en de PE-msee's (4). Een redundant paar netwerkpaden wordt ook aangemoedigd tussen klantnetwerk en PE CEs. In Any-to-any (IPVPN) verbinding model, kan echter een enkel CE-apparaat (2) zijn verbonden met een of meer PEs (3).
+>Voor een hoge Beschik baarheid van ExpressRoute vereist micro soft een redundant paar BGP-sessies tussen Msee's (5) en PE-Msee's (4). Er wordt ook een redundant paar netwerk paden aanbevolen tussen het netwerk van de klant en de PE-CEs. In any-to-any (IPVPN)-verbindings model kan één CE-apparaat (2) echter worden verbonden met een of meer PEs (3).
 >
 >
 
-Voor het valideren van een ExpressRoute-circuit, vallen de volgende stappen uit (met het netwerkpunt aangegeven door het bijbehorende nummer):
-1. [Valideren van circuitinrichting en -status (5)](#validate-circuit-provisioning-and-state)
-2. [Valideren van ten minste één ExpressRoute-peering is geconfigureerd (5)](#validate-peering-configuration)
-3. [Valideren van ARP tussen Microsoft en de service provider (koppeling tussen 4 en 5)](#validate-arp-between-microsoft-and-the-service-provider)
-4. [Valideren van BGP en routes op de MSEE (BGP tussen 4 en 5 en 5 tot en met 6 als een VNet is verbonden)](#validate-bgp-and-routes-on-the-msee)
-5. [Controleer de statistieken verkeer (verkeer te geven tot en met 5)](#check-the-traffic-statistics)
+Als u een ExpressRoute-circuit wilt valideren, worden de volgende stappen behandeld (met het netwerk punt dat wordt aangegeven door het gekoppelde nummer):
+1. [Circuit inrichting en-status valideren (5)](#validate-circuit-provisioning-and-state)
+2. [Controleren of ten minste één ExpressRoute-peering is geconfigureerd (5)](#validate-peering-configuration)
+3. [ARP valideren tussen micro soft en de service provider (koppeling tussen 4 en 5)](#validate-arp-between-microsoft-and-the-service-provider)
+4. [Valideer BGP en routes op de MSEE (BGP tussen 4 en 5 en 5 tot 6 als er een VNet is verbonden)](#validate-bgp-and-routes-on-the-msee)
+5. [Controleer de verkeers statistieken (verkeer dat door 5 wordt door gegeven)](#check-the-traffic-statistics)
 
-Meer controles en controles wordt toegevoegd in de toekomst, terugkomen maandelijks!
+Meer validaties en controles zullen in de toekomst worden toegevoegd. Controleer de maandelijkse back-up.
 
-## <a name="validate-circuit-provisioning-and-state"></a>Valideren van circuitinrichting en -status
-Een ExpressRoute-circuit moet worden gemaakt, ongeacht het model connectiviteit en dus een sleutel gegenereerd voor het inrichten van het circuit. Een ExpressRoute-circuit provisioning maakt een redundante laag-2-verbindingen tussen PE-msee's (4) en de msee's (5). Zie het artikel voor meer informatie over het maken, wijzigen, inrichten en controleer of een ExpressRoute-circuit [maken en aanpassen van een ExpressRoute-circuit][CreateCircuit].
+## <a name="validate-circuit-provisioning-and-state"></a>Circuit inrichting en-status valideren
+Ongeacht het verbindings model moet er een ExpressRoute-circuit worden gemaakt en dus een service sleutel gegenereerd voor het inrichten van een circuit. Bij het inrichten van een ExpressRoute-circuit worden een redundante Layer 2-verbinding tussen PE-Msee's (4) en Msee's (5) tot stand gebracht. Zie het artikel [een ExpressRoute-circuit maken en wijzigen][CreateCircuit]voor meer informatie over het maken, wijzigen, inrichten en verifiëren van een ExpressRoute-circuit.
 
 >[!TIP]
->Een servicesleutel identificatie unieke van een ExpressRoute-circuit. Deze sleutel is vereist voor het merendeel van de powershell-opdrachten die worden vermeld in dit document. Bovendien moet u hulp van Microsoft of van een ExpressRoute-partner voor een ExpressRoute-probleem kunt oplossen, geeft u de servicesleutel voor het identificeren van het circuit gemakkelijk nodig hebt.
+>Een service sleutel is een unieke aanduiding voor een ExpressRoute-circuit. Deze sleutel is vereist voor het meren deel van de Power shell-opdrachten die in dit document worden genoemd. Als u hulp nodig hebt van micro soft of van een ExpressRoute-partner om een ExpressRoute-probleem op te lossen, geeft u de service sleutel op om het circuit eenvoudig te identificeren.
 >
 >
 
-### <a name="verification-via-the-azure-portal"></a>Verificatie via Azure portal
-In de Azure-portal, de status van een ExpressRoute-circuit kan worden gecontroleerd door het selecteren van ![2][2] in het menu links zijbalk en selecteer vervolgens het ExpressRoute-circuit. Selecteren van een ExpressRoute opent circuit vermeld onder 'Alle resources' u de blade van ExpressRoute-circuit. In de ![3][3] sectie van de blade, de ExpressRoute essentials worden vermeld, zoals wordt weergegeven in de volgende schermafbeelding:
+### <a name="verification-via-the-azure-portal"></a>Verificatie via de Azure Portal
+In de Azure Portal, de status van een ExpressRoute-circuit kan worden gecontroleerd door ![2][2] te selecteren in het menu aan de linkerkant en vervolgens op het ExpressRoute-circuit te selecteren. Als u een ExpressRoute-circuit selecteert onder alle resources, wordt de Blade ExpressRoute-circuit geopend. In het gedeelte ![3][3] van de Blade worden de ExpressRoute Essentials weer gegeven, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
 ![4][4]    
 
-In de Essentials ExpressRoute *Circuit status* geeft de status van het circuit aan de kant van Microsoft. *Providerstatus* geeft aan of het circuit is *ingericht/niet ingericht* aan de service-provider. 
+In de ExpressRoute Essentials geeft de status van het *circuit* de status aan van het circuit aan de kant van micro soft. *Provider status* geeft aan of het circuit is *ingericht/niet is ingericht* op de kant van de service provider. 
 
-Voor een ExpressRoute-circuit operationeel is, worden de *Circuit status* moet *ingeschakeld* en de *providerstatus* moet *ingerichte*.
+Voor een ExpressRoute-circuit moet de status van *het circuit* zijn *ingeschakeld* en moet de *status* van de provider worden *ingericht*.
 
 > [!NOTE]
-> Als de *Circuit status* is niet ingeschakeld, neem contact op met [Microsoft Support][Support]. Als de *providerstatus* is niet ingericht, neem contact op met uw serviceprovider.
+> Als de *status* van het circuit niet is ingeschakeld, neemt u contact op met [Microsoft ondersteuning][Support]. Als de *status* van de provider niet is ingericht, neemt u contact op met uw service provider.
 >
 >
 
-### <a name="verification-via-powershell"></a>Verificatie via PowerShell
-Als u de ExpressRoute-circuits in een resourcegroep, gebruik de volgende opdracht:
+### <a name="verification-via-powershell"></a>Verificatie via Power shell
+Als u alle ExpressRoute-circuits in een resource groep wilt weer geven, gebruikt u de volgende opdracht:
 
     Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
 
 >[!TIP]
->U kunt de naam van resourcegroep ophalen via de Azure. Zie de vorige subsectie van dit document en houd er rekening mee dat de naam van de resource is opgenomen in de schermopname.
+>U kunt de naam van de resource groep ophalen via Azure. Zie de vorige subsectie van dit document en Let op dat de naam van de resource groep wordt weer gegeven in de scherm afbeelding voor beeld.
 >
 >
 
-Selecteer een bepaalde ExpressRoute-circuit in een resourcegroep, gebruik de volgende opdracht:
+Als u een bepaald ExpressRoute-circuit wilt selecteren in een resource groep, gebruikt u de volgende opdracht:
 
     Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
 
-Een van het voorbeeldantwoord is:
+Een voor beeld van een antwoord is:
 
     Name                             : Test-ER-Ckt
     ResourceGroupName                : Test-ER-RG
@@ -126,26 +126,26 @@ Een van het voorbeeldantwoord is:
     Peerings                         : []
     Authorizations                   : []
 
-Om te bevestigen of een ExpressRoute-circuit operationele speciale aandacht besteden aan de volgende velden:
+Ga als volgt te werk om te controleren of een ExpressRoute-circuit operationeel is, Let vooral op de volgende velden:
 
     CircuitProvisioningState         : Enabled
     ServiceProviderProvisioningState : Provisioned
 
 > [!NOTE]
-> Als de *CircuitProvisioningState* is niet ingeschakeld, neem contact op met [Microsoft Support][Support]. Als de *ServiceProviderProvisioningState* is niet ingericht, neem contact op met uw serviceprovider.
+> Als de *CircuitProvisioningState* niet is ingeschakeld, neemt u contact op met [Microsoft ondersteuning][Support]. Als de *ServiceProviderProvisioningState* niet is ingericht, neemt u contact op met uw service provider.
 >
 >
 
-### <a name="verification-via-powershell-classic"></a>Verificatie via PowerShell (klassiek)
-Als u de ExpressRoute-circuits onder een abonnement, gebruik de volgende opdracht:
+### <a name="verification-via-powershell-classic"></a>Verificatie via Power shell (klassiek)
+Als u alle ExpressRoute-circuits onder een abonnement wilt weer geven, gebruikt u de volgende opdracht:
 
     Get-AzureDedicatedCircuit
 
-Selecteer een bepaalde ExpressRoute-circuit, gebruik de volgende opdracht:
+Als u een bepaald ExpressRoute-circuit wilt selecteren, gebruikt u de volgende opdracht:
 
     Get-AzureDedicatedCircuit -ServiceKey **************************************
 
-Een van het voorbeeldantwoord is:
+Een voor beeld van een antwoord is:
 
     andwidth                         : 100
     BillingType                      : UnlimitedData
@@ -157,41 +157,41 @@ Een van het voorbeeldantwoord is:
     Sku                              : Standard
     Status                           : Enabled
 
-Om te bevestigen of een ExpressRoute-circuit operationele speciale aandacht besteden aan de volgende velden: ServiceProviderProvisioningState : Ingerichte Status: Enabled
+Ga als volgt te werk om te controleren of een ExpressRoute-circuit operationeel is, Let vooral op de volgende velden: ServiceProviderProvisioningState : Ingerichte status: Enabled
 
 > [!NOTE]
-> Als de *Status* is niet ingeschakeld, neem contact op met [Microsoft Support][Support]. Als de *ServiceProviderProvisioningState* is niet ingericht, neem contact op met uw serviceprovider.
+> Als de *status* niet is ingeschakeld, neemt u contact op met [Microsoft ondersteuning][Support]. Als de *ServiceProviderProvisioningState* niet is ingericht, neemt u contact op met uw service provider.
 >
 >
 
-## <a name="validate-peering-configuration"></a>Een Peeringconfiguratie valideren
-Nadat de service-provider is voltooid de inrichting van het ExpressRoute-circuit, kan een configuratie van de routering via de ExpressRoute-circuit tussen de MSEE-pull-aanvragen (4) en de msee's (5) worden gemaakt. Elk ExpressRoute-circuit kan een, twee of drie routering contexten ingeschakeld hebben: Azure private peering (verkeer naar persoonlijke virtuele netwerken in Azure), Azure openbare peering (verkeer naar openbare IP-adressen in Azure) en Microsoft peering (verkeer tot Office 365 en Dynamics 365). Zie het artikel voor meer informatie over het maken en wijzigen van de configuratie van de routering [maken en wijzigen van de routering voor een ExpressRoute-circuit][CreatePeering].
+## <a name="validate-peering-configuration"></a>Peering-configuratie valideren
+Nadat de service provider de inrichting van het ExpressRoute-circuit heeft voltooid, kan een routerings configuratie worden gemaakt over het ExpressRoute-circuit tussen MSEE-pull (4) en Msee's (5). Elk ExpressRoute-circuit kan een, twee of drie routerings contexten hebben ingeschakeld: Persoonlijke Azure-peering (verkeer naar particuliere virtuele netwerken in Azure), open bare Azure-peering (verkeer naar open bare IP-adressen in Azure) en micro soft-peering (verkeer naar Office 365). Zie voor meer informatie over het maken en wijzigen van routerings configuratie het artikel [route ring maken en wijzigen voor een ExpressRoute-circuit][CreatePeering].
 
-### <a name="verification-via-the-azure-portal"></a>Verificatie via Azure portal
+### <a name="verification-via-the-azure-portal"></a>Verificatie via de Azure Portal
 
 > [!NOTE]
-> Als laag-3 wordt geleverd door de service-provider en de peerings leeg in de portal zijn, moet u de configuratie van het Circuit met de vernieuwknop in de portal vernieuwen. Met deze bewerking is de juiste configuratie van de routering van toepassing op uw circuit. 
+> Als laag 3 wordt opgegeven door de service provider en de peerings zijn leeg in de portal, vernieuwt u de circuit configuratie met behulp van de knop Vernieuwen in de portal. Met deze bewerking wordt de juiste routerings configuratie op uw circuit toegepast. 
 >
 >
 
-In Azure portal, de status van een ExpressRoute-circuit kan worden gecontroleerd door het selecteren van ![2][2] in het menu links zijbalk en selecteer vervolgens het ExpressRoute-circuit. Het selecteren van een ExpressRoute zou circuit vermeld onder 'Alle resources' de ExpressRoute-circuit blade geopend. In de ![3][3] sectie van de blade, de ExpressRoute essentials worden vermeld zoals wordt weergegeven in de volgende schermafbeelding:
+In de Azure Portal kunt u de status van een ExpressRoute-circuit controleren door ![2][2] te selecteren in het menu aan de linkerkant en vervolgens het ExpressRoute-circuit te selecteren. Als u een ExpressRoute-circuit selecteert onder alle resources, wordt de Blade ExpressRoute circuit geopend. In het gedeelte ![3][3] van de Blade wordt de ExpressRoute Essentials weer gegeven, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
 ![5][5]
 
-In het voorgaande voorbeeld als vermelde Azure is private peering routering context ingeschakeld, terwijl Azure openbare en Microsoft-peering routering contexten zijn niet ingeschakeld. Een context die is ingeschakeld peering moet ook de primaire en secundaire point-to-point (vereist voor BGP)-subnetten die worden vermeld. Het/30-subnetten worden gebruikt voor het IP-adres van de interface van de msee's en de PE-msee's. 
+In het voor gaande voor beeld is de genoteerde Azure private peering-routerings context ingeschakeld, terwijl Azure Public-en micro soft-peering routing-contexten niet zijn ingeschakeld. Een geslaagde peering context heeft ook de primaire en secundaire Point-to-Point (vereist voor BGP)-subnetten vermeld. De/30 subnetten worden gebruikt voor het IP-adres van de interface van de Msee's en PE-Msee's. 
 
 > [!NOTE]
-> Als een peering niet is ingeschakeld, controleert u als de primaire en secundaire subnetten die overeenkomt met de configuratie op PE Msee. Als dit niet het geval is, als u wilt wijzigen van de configuratie op de MSEE-routers, Raadpleeg [maken en wijzigen van de routering voor een ExpressRoute-circuit][CreatePeering]
+> Als er geen peering is ingeschakeld, controleert u of de primaire en secundaire subnetten die zijn toegewezen overeenkomen met de configuratie op PE-Msee's. Als dat niet het geval is, raadpleegt u [route ring maken en wijzigen voor een ExpressRoute-circuit][CreatePeering] als u de configuratie van MSEE-routers wilt wijzigen
 >
 >
 
-### <a name="verification-via-powershell"></a>Verificatie via PowerShell
-Als u de configuratiedetails Azure privé-peering, gebruikt u de volgende opdrachten:
+### <a name="verification-via-powershell"></a>Verificatie via Power shell
+Gebruik de volgende opdrachten om de configuratie gegevens van de persoonlijke Azure-peering te verkrijgen:
 
     $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
     Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
 
-Een van het voorbeeldantwoord, voor een correct geconfigureerde privé-peering, is:
+Een voor beeld van een antwoord voor een correct geconfigureerde persoonlijke peering is:
 
     Name                       : AzurePrivatePeering
     Id                         : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt/peerings/AzurePrivatePeering
@@ -208,19 +208,19 @@ Een van het voorbeeldantwoord, voor een correct geconfigureerde privé-peering, 
     MicrosoftPeeringConfig     : null
     ProvisioningState          : Succeeded
 
- Een context die is ingeschakeld peering moet de primaire en secundaire adresvoorvoegsels die worden vermeld. Het/30-subnetten worden gebruikt voor het IP-adres van de interface van de msee's en de PE-msee's.
+ Voor een geslaagde peering context zouden de primaire en secundaire adres voorvoegsels worden weer gegeven. De/30 subnetten worden gebruikt voor het IP-adres van de interface van de Msee's en PE-Msee's.
 
-Als u de Azure configuratiedetails voor openbare peering, gebruikt u de volgende opdrachten:
+Gebruik de volgende opdrachten om de configuratie gegevens voor de open bare Azure-peering te verkrijgen:
 
     $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
     Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
 
-Als u de configuratiegegevens van de Microsoft-peering, gebruikt u de volgende opdrachten:
+Gebruik de volgende opdrachten om de configuratie gegevens van de micro soft-peering te verkrijgen:
 
     $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
      Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 
-Als u een peering niet is geconfigureerd, zou er een foutbericht weergegeven. Een voorbeeldantwoord, wanneer de vermelde peering (openbare Azure-peering in dit voorbeeld) is niet geconfigureerd in het circuit:
+Als er geen peering is geconfigureerd, wordt er een fout bericht weer gegeven. Een voor beeld van een antwoord wanneer de vermelde peering (open bare Azure-peering in dit voor beeld) niet is geconfigureerd binnen het circuit:
 
     Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
     At line:1 char:1
@@ -231,16 +231,16 @@ Als u een peering niet is geconfigureerd, zou er een foutbericht weergegeven. Ee
 
 
 > [!NOTE]
-> Als een peering niet is ingeschakeld, controleert u als de primaire en secundaire subnetten die overeenkomt met de configuratie op de gekoppelde PE-MSEE. Controleer ook of de juiste *VlanId*, *AzureASN*, en *PeerASN* op msee's worden gebruikt en als deze waarden worden toegewezen aan de die worden gebruikt op de gekoppelde PE-MSEE. Als MD5-hash is gekozen, is de gedeelde sleutel moet hetzelfde zijn op een sleutelpaar met MSEE en PE MSEE. Als u de configuratie op de MSEE-routers, verwijzen naar [maken en wijzigen van de routering voor een ExpressRoute-circuit][CreatePeering].  
+> Als er geen peering is ingeschakeld, controleert u of de primaire en secundaire subnetten die zijn toegewezen, overeenkomen met de configuratie van de gekoppelde PE-MSEE. Controleer ook of de juiste *VlanId*, *AzureASN*en *PeerASN* worden gebruikt op msee's en of deze waarden worden toegewezen aan de velden die worden gebruikt op de gekoppelde PE-MSEE. Als MD5-hashing is gekozen, moet de gedeelde sleutel gelijk zijn aan het MSEE-en PE-MSEE-paar. Als u de configuratie van de MSEE-routers wilt wijzigen, raadpleegt u [route ring maken en wijzigen voor een ExpressRoute-circuit][CreatePeering].  
 >
 >
 
-### <a name="verification-via-powershell-classic"></a>Verificatie via PowerShell (klassiek)
-Als u de configuratiedetails Azure privé-peering, gebruikt u de volgende opdracht uit:
+### <a name="verification-via-powershell-classic"></a>Verificatie via Power shell (klassiek)
+Als u de configuratie details van de persoonlijke Azure-peering wilt ophalen, gebruikt u de volgende opdracht:
 
     Get-AzureBGPPeering -AccessType Private -ServiceKey "*********************************"
 
-Er is een voorbeeldantwoord voor een persoonlijke peering is geconfigureerd:
+Een voor beeld van een antwoord voor een geslaagde, persoonlijke peering is:
 
     AdvertisedPublicPrefixes       : 
     AdvertisedPublicPrefixesState  : Configured
@@ -255,39 +255,39 @@ Er is een voorbeeldantwoord voor een persoonlijke peering is geconfigureerd:
     State                          : Enabled
     VlanId                         : 100
 
-Een ingeschakeld is, peering context moet de primaire en secundaire peer-subnetten die worden vermeld. Het/30-subnetten worden gebruikt voor het IP-adres van de interface van de msee's en de PE-msee's.
+Bij een geslaagde peering-context zouden de primaire en secundaire peer-subnetten worden weer gegeven. De/30 subnetten worden gebruikt voor het IP-adres van de interface van de Msee's en PE-Msee's.
 
-Als u de Azure configuratiedetails voor openbare peering, gebruikt u de volgende opdrachten:
+Gebruik de volgende opdrachten om de configuratie gegevens voor de open bare Azure-peering te verkrijgen:
 
     Get-AzureBGPPeering -AccessType Public -ServiceKey "*********************************"
 
-Als u de configuratiegegevens van de Microsoft-peering, gebruikt u de volgende opdrachten:
+Gebruik de volgende opdrachten om de configuratie gegevens van de micro soft-peering te verkrijgen:
 
     Get-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
 
 > [!IMPORTANT]
-> Als laag-3-peerings zijn ingesteld door de serviceprovider, overschrijft instellen van de ExpressRoute-peerings via de portal of PowerShell de instellingen van de service-provider. Opnieuw instellen van de instellingen van de peering kant vereist de ondersteuning van de serviceprovider. De ExpressRoute-peerings alleen wijzigen als het is zeker van zijn dat de serviceprovider services op laag 2 alleen biedt!
+> Als laag 3 peerings zijn ingesteld door de service provider, worden de instellingen van de service provider overschreven door de ExpressRoute-peerings via de portal of Power shell. Voor het opnieuw instellen van de instellingen voor peering aan de provider moet de service provider worden ondersteund. Wijzig de ExpressRoute-peerings alleen als u zeker weet dat de service provider alleen Layer 2-services levert.
 >
 >
 
 > [!NOTE]
-> Als een peering niet is ingeschakeld, controleert u als de primaire en secundaire peer-subnetten die overeenkomt met de configuratie op de gekoppelde PE-MSEE. Controleer ook of de juiste *VlanId*, *AzureAsn*, en *PeerAsn* op msee's worden gebruikt en als deze waarden worden toegewezen aan de die worden gebruikt op de gekoppelde PE-MSEE. Als u de configuratie op de MSEE-routers, verwijzen naar [maken en wijzigen van de routering voor een ExpressRoute-circuit][CreatePeering].
+> Als er geen peering is ingeschakeld, controleert u of de primaire en secundaire peer-subnetten zijn toegewezen die overeenkomen met de configuratie van de gekoppelde PE-MSEE. Controleer ook of de juiste *VlanId*, *AzureAsn*en *PeerAsn* worden gebruikt op msee's en of deze waarden worden toegewezen aan de velden die worden gebruikt op de gekoppelde PE-MSEE. Als u de configuratie van de MSEE-routers wilt wijzigen, raadpleegt u [route ring maken en wijzigen voor een ExpressRoute-circuit][CreatePeering].
 >
 >
 
-## <a name="validate-arp-between-microsoft-and-the-service-provider"></a>Valideren van ARP tussen Microsoft en de service-provider
-In deze sectie maakt gebruik van PowerShell (klassiek)-opdrachten. Als u PowerShell Azure Resource Manager-opdrachten gebruikt hebt, zorgt u ervoor dat u beheerder/co-beheerder toegang tot het abonnement hebben. Voor problemen oplossen met behulp van Azure Resource Manager opdrachten raadpleegt u de [Getting ARP-tabellen in het Resource Manager-implementatiemodel] [ ARP] document.
+## <a name="validate-arp-between-microsoft-and-the-service-provider"></a>ARP valideren tussen micro soft en de service provider
+In deze sectie wordt gebruikgemaakt van Power shell-opdrachten (klassiek). Als u Power shell-Azure Resource Manager opdrachten hebt gebruikt, moet u ervoor zorgen dat u beheerder/co-beheerders toegang hebt tot het abonnement. Raadpleeg de [ARP-tabellen ophalen in het Resource Manager-implementatie model][ARP] document voor probleem oplossing met behulp van Azure Resource Manager-opdrachten.
 
 > [!NOTE]
->Als u ARP, kunnen Azure portal en Azure Resource Manager PowerShell-opdrachten worden gebruikt. Als er fouten optreden met de Azure Resource Manager PowerShell-opdrachten, klassieke PowerShell-opdrachten gebruiken als klassieke PowerShell opdrachten ook met Azure Resource Manager ExpressRoute-circuits werken.
+>Als u ARP wilt ophalen, kunt u zowel de Azure Portal als Azure Resource Manager Power shell-opdrachten gebruiken. Als er fouten optreden met de Azure Resource Manager Power shell-opdrachten, werken klassieke Power shell-opdrachten als klassieke Power shell-opdrachten werken ook met Azure Resource Manager ExpressRoute-circuits.
 >
 >
 
-Als u de ARP-tabel van de primaire MSEE-router voor persoonlijke peering, gebruikt u de volgende opdracht uit:
+Als u de ARP-tabel van de primaire MSEE-router voor de persoonlijke peering wilt ophalen, gebruikt u de volgende opdracht:
 
     Get-AzureDedicatedCircuitPeeringArpInfo -AccessType Private -Path Primary -ServiceKey "*********************************"
 
-Een voorbeeldantwoord voor de opdracht, in het scenario voor geslaagd:
+Een voor beeld van een antwoord voor de opdracht, in het geslaagde scenario:
 
     ARP Info:
 
@@ -295,55 +295,55 @@ Een voorbeeldantwoord voor de opdracht, in het scenario voor geslaagd:
                  113             On-Prem       10.0.0.1           e8ed.f335.4ca9
                    0           Microsoft       10.0.0.2           7c0e.ce85.4fc9
 
-Op deze manier kunt u de ARP-tabel uit de MSEE in controleren de *primaire*/*secundaire* pad voor *persoonlijke*/*openbare*  / *Microsoft* peerings.
+Op dezelfde manier kunt u de ARP-tabel controleren op basis van de MSEE in het *primaire*/*secundaire* pad, voor *privé*/*open bare*/*micro soft* -peerings.
 
-Het volgende voorbeeld ziet dat het antwoord van de opdracht voor een peering bestaat niet.
+In het volgende voor beeld ziet u het antwoord van de opdracht voor een peering bestaat niet.
 
     ARP Info:
        
 > [!NOTE]
-> Wanneer de ARP-tabel heeft geen IP-adressen van de interfaces die zijn toegewezen aan de MAC-adressen, controleert u de volgende informatie:
->1. Als het eerste IP-adres van het/30 subnet toegewezen voor de koppeling tussen de MSEE-pull-aanvraag en de MSEE wordt gebruikt op de interface van de MSEE-pull-aanvraag. Azure maakt altijd gebruik van het tweede IP-adres voor msee's.
->2. Controleer of als de klant (C-code) en de service (S-code) VLAN-tags overeenkomen met beide op een sleutelpaar met een MSEE-pull-aanvraag en de MSEE.
+> Als de ARP-tabel geen IP-adressen heeft van de interfaces die zijn toegewezen aan MAC-adressen, controleert u de volgende informatie:
+>1. Als het eerste IP-adres van het/30-subnet dat is toegewezen voor de koppeling tussen de MSEE-PR en MSEE, wordt gebruikt op de interface van MSEE-PR. Azure maakt altijd gebruik van het tweede IP-adres voor Msee's.
+>2. Controleer of de VLAN-labels van de klant (C-tag) en de service (S-tag) overeenkomen met het MSEE-PR-en MSEE-paar.
 >
 >
 
 ## <a name="validate-bgp-and-routes-on-the-msee"></a>BGP en routes op de MSEE valideren
-In deze sectie maakt gebruik van PowerShell (klassiek)-opdrachten. Als u PowerShell Azure Resource Manager-opdrachten gebruikt hebt, zorgt u ervoor dat u beheerder/co-beheerder toegang tot het abonnement hebben.
+In deze sectie wordt gebruikgemaakt van Power shell-opdrachten (klassiek). Als u Power shell-Azure Resource Manager opdrachten hebt gebruikt, moet u ervoor zorgen dat u beheerder/co-beheerders toegang hebt tot het abonnement.
 
 > [!NOTE]
->Als u BGP-gegevens, kunnen zowel Azure portal en Azure Resource Manager PowerShell-opdrachten worden gebruikt. Als er fouten optreden met de Azure Resource Manager PowerShell-opdrachten, klassieke PowerShell-opdrachten gebruiken als klassieke PowerShell opdrachten ook met Azure Resource Manager ExpressRoute-circuits werken.
+>Als u BGP-gegevens wilt ophalen, kunt u zowel de Azure Portal als Azure Resource Manager Power shell-opdrachten gebruiken. Als er fouten optreden met de Azure Resource Manager Power shell-opdrachten, werken klassieke Power shell-opdrachten als klassieke Power shell-opdrachten werken ook met Azure Resource Manager ExpressRoute-circuits.
 >
 >
 
-Als u de routeringstabel (neighbor BGP) samenvatting voor een bepaalde context van de routering, gebruikt u de volgende opdracht uit:
+Als u de samen vatting van de routerings tabel (BGP-neighbor) wilt ophalen voor een bepaalde routerings context, gebruikt u de volgende opdracht:
 
     Get-AzureDedicatedCircuitPeeringRouteTableSummary -AccessType Private -Path Primary -ServiceKey "*********************************"
 
-Een voorbeeld van een antwoord is:
+Een voor beeld van een antwoord is:
 
     Route Table Summary:
 
             Neighbor                   V                  AS              UpDown         StatePfxRcd
             10.0.0.1                   4                ####                8w4d                  50
 
-Zoals u in het voorgaande voorbeeld, is de opdracht is handig om te bepalen voor hoe lang de routering-context is ingesteld. Tevens wordt aangegeven aantal route voorvoegsels geadverteerd door de peering-router.
+Zoals u in het vorige voor beeld kunt zien, is de opdracht nuttig om te bepalen hoe lang de routerings context tot stand is gebracht. Ook wordt het aantal route voorvoegsels aangegeven dat door de peering router wordt geadverteerd.
 
 > [!NOTE]
-> Als de status in actief of niet-actief is, moet u controleren als de primaire en secundaire peer-subnetten die overeenkomt met de configuratie op de gekoppelde PE-MSEE. Controleer ook of de juiste *VlanId*, *AzureAsn*, en *PeerAsn* op msee's worden gebruikt en als deze waarden worden toegewezen aan de die worden gebruikt op de gekoppelde PE-MSEE. Als MD5-hash is gekozen, is de gedeelde sleutel moet hetzelfde zijn op een sleutelpaar met MSEE en PE MSEE. Als u de configuratie op de MSEE-routers, verwijzen naar [maken en wijzigen van de routering voor een ExpressRoute-circuit][CreatePeering].
+> Als de status actief of inactief is, controleert u of de primaire en secundaire peer-subnetten die zijn toegewezen, overeenkomen met de configuratie van de gekoppelde PE-MSEE. Controleer ook of de juiste *VlanId*, *AzureAsn*en *PeerAsn* worden gebruikt op msee's en of deze waarden worden toegewezen aan de velden die worden gebruikt op de gekoppelde PE-MSEE. Als MD5-hashing is gekozen, moet de gedeelde sleutel gelijk zijn aan het MSEE-en PE-MSEE-paar. Als u de configuratie van de MSEE-routers wilt wijzigen, raadpleegt u [route ring maken en wijzigen voor een ExpressRoute-circuit][CreatePeering].
 >
 >
 
 > [!NOTE]
-> Als bepaalde bestemmingen niet bereikbaar via een bepaalde peering zijn, controleert u de routetabel van de msee's die behoren tot de specifieke context van de peering. Als een overeenkomend voorvoegsel (kan worden NATed IP) in de routeringstabel aanwezig is, moet u controleren als er firewalls/NSG/ACL's op het pad en als ze het verkeer is toegestaan.
+> Als bepaalde doelen niet bereikbaar zijn via een bepaalde peering, controleert u de route tabel van de Msee's die deel uitmaakt van de specifieke peering context. Als er een overeenkomend voor voegsel (mogelijk IP-adres) aanwezig is in de routerings tabel, controleert u of er firewalls/NSG/Acl's zijn op het pad en of het verkeer is toegestaan.
 >
 >
 
-Voor de volledige-routeringstabel van de MSEE over de *primaire* pad voor de betreffende *persoonlijke* routering context, gebruik de volgende opdracht:
+Gebruik de volgende opdracht om de volledige routerings tabel op te halen uit MSEE op het *primaire* pad voor de specifieke routerings context van een *particulier* :
 
     Get-AzureDedicatedCircuitPeeringRouteTableInfo -AccessType Private -Path Primary -ServiceKey "*********************************"
 
-Er is een voorbeeld van de geslaagde resultaat voor de opdracht:
+Een voor beeld van een geslaagd resultaat van de opdracht is:
 
     Route Table Info:
 
@@ -352,24 +352,24 @@ Er is een voorbeeld van de geslaagde resultaat voor de opdracht:
          10.2.0.0/16            10.0.0.1                                       0    #### ##### #####
     ...
 
-Op deze manier kunt u de routeringstabel van de MSEE in controleren de *primaire*/*secundaire* pad voor *persoonlijke* /  *Openbare*/*Microsoft* een peering-context.
+Op dezelfde manier kunt u de routerings tabel controleren op basis van de MSEE in het *primaire*/*secundaire* pad, voor *privé*/-*open bare*/*micro soft* -peering-context.
 
-Het volgende voorbeeld ziet u dat het antwoord van de opdracht voor een peering bestaat niet:
+In het volgende voor beeld ziet u het antwoord van de opdracht voor een peering bestaat niet:
 
     Route Table Info:
 
-## <a name="check-the-traffic-statistics"></a>De statistieken verkeer controleren
-Als u de statistieken van de gecombineerde pad naar de primaire en secundaire verkeer--bytes in en uit--van een peering-context, gebruikt de volgende opdracht uit:
+## <a name="check-the-traffic-statistics"></a>De verkeers statistieken controleren
+Gebruik de volgende opdracht om de statistische gegevens over het gecombineerde primaire en secundaire traject te verkrijgen: bytes in en out--van een peering-context.
 
     Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf683b3a6e5c -AccessType Private
 
-Er is een voorbeeld van de uitvoer van de opdracht:
+Een voor beeld van een uitvoer van de opdracht is:
 
     PrimaryBytesIn PrimaryBytesOut SecondaryBytesIn SecondaryBytesOut
     -------------- --------------- ---------------- -----------------
          240780020       239863857        240565035         239628474
 
-Er is een voorbeeld van de uitvoer van de opdracht voor een niet-bestaande peering:
+Een voorbeeld uitvoer van de opdracht voor een niet-bestaande peering is:
 
     Get-AzureDedicatedCircuitStats : ResourceNotFound: Can not find any subinterface for peering type 'Public' for circuit '97f85950-01dd-4d30-a73c-bf683b3a6e5c' .
     At line:1 char:1
@@ -381,16 +381,16 @@ Er is een voorbeeld van de uitvoer van de opdracht voor een niet-bestaande peeri
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende koppelingen voor meer informatie en hulp:
 
-- [Microsoft-ondersteuning][Support]
+- [Microsoft Ondersteuning][Support]
 - [Een ExpressRoute-circuit maken en wijzigen][CreateCircuit]
-- [Routering voor een ExpressRoute-circuit maken en wijzigen][CreatePeering]
+- [Route ring voor een ExpressRoute-circuit maken en wijzigen][CreatePeering]
 
 <!--Image References-->
-[1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png "logische Express Route-verbinding"
-[2]: ./media/expressroute-troubleshooting-expressroute-overview/portal-all-resources.png "Pictogram voor alle resources"
-[3]: ./media/expressroute-troubleshooting-expressroute-overview/portal-overview.png "Overzicht van pictogram"
-[4]: ./media/expressroute-troubleshooting-expressroute-overview/portal-circuit-status.png "ExpressRoute Essentials voorbeeld schermafbeelding"
-[5]: ./media/expressroute-troubleshooting-expressroute-overview/portal-private-peering.png "ExpressRoute Essentials voorbeeld schermafbeelding"
+[1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png  "Connectiviteit voor logische Express-route"
+[2]: ./media/expressroute-troubleshooting-expressroute-overview/portal-all-resources.png "Pictogram alle resources"
+[3]: ./media/expressroute-troubleshooting-expressroute-overview/portal-overview.png "Pictogram overzicht"
+[4]: ./media/expressroute-troubleshooting-expressroute-overview/portal-circuit-status.png "Voorbeeld scherm van ExpressRoute Essentials"
+[5]: ./media/expressroute-troubleshooting-expressroute-overview/portal-private-peering.png "Voorbeeld scherm van ExpressRoute Essentials"
 
 <!--Link References-->
 [Support]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade

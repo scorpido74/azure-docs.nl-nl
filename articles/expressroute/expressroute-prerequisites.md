@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 09/18/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: f16f797afca6d60029c1f39fea7235ce84e4f954
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 4ef1a768356078c160b798c1a96412adda0330f6
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442219"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123298"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>Vereisten en controlelijst voor ExpressRoute
 Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-services, moet u controleren of er is voldaan aan de vereisten die in de volgende secties worden genoemd.
@@ -21,7 +21,7 @@ Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-ser
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
 ## <a name="azure-account"></a>Azure-account
-* Een geldig en actief Microsoft Azure-account. Dit account is vereist om het ExpressRoute-circuit in te stellen. ExpressRoute-circuits zijn resources in Azure-abonnementen. Een Azure-abonnement is vereist, zelfs als connectiviteit is beperkt tot niet-Azure Microsoft-cloudservices, zoals Office 365-services en Dynamics 365.
+* Een geldig en actief Microsoft Azure-account. Dit account is vereist om het ExpressRoute-circuit in te stellen. ExpressRoute-circuits zijn resources in Azure-abonnementen. Een Azure-abonnement is een vereiste, zelfs als connectiviteit is beperkt tot niet-Azure micro soft-Cloud Services, zoals Office 365.
 * Een actief Office 365-abonnement (als u Office 365-services gebruikt). Zie de sectie Office 365-specifieke vereisten in dit artikel voor meer informatie.
 
 ## <a name="connectivity-provider"></a>Connectiveitsprovider
@@ -48,9 +48,6 @@ Als u Office 365 op ExpressRoute wilt inschakelen, raadpleegt u de volgende docu
 * [Network bandwidth calculators and tools (Calculators en hulpmiddelen voor het berekenen van de netwerkbandbreedte)](https://support.office.com/article/Network-and-migration-planning-for-Office-365-f5ee6c33-bcd7-4b0b-b0f8-dc1d9fb8d132)
 * [Office 365 integration with on-premises environments (Office 365-integratie met on-premises omgevingen)](https://support.office.com/article/Office-365-integration-with-on-premises-environments-263faf8d-aa21-428b-aed3-2021837a4b65)
 * [Geavanceerde trainingsvideo's voor ExpressRoute in Office 365](https://channel9.msdn.com/series/aer/)
-
-## <a name="dynamics-365"></a>Dynamics 365
-Als u van plan bent om Dynamics 365 in te scha kelen op ExpressRoute, raadpleegt u de [dynamics 365-url's](https://support.microsoft.com/kb/2655102) en [IP-](https://support.microsoft.com/kb/2728473)adresbereiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Voor meer informatie over ExpressRoute raadpleegt u de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md).

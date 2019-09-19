@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 186f2f60aad15b336265114d7c85c757e0dd333f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: aba846ade9e2b5e19304df87ea3e29713aacf4ba
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102290"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129970"
 ---
-# <a name="configure-recognize-text-docker-containers"></a>Tekst herkennen docker-containers configureren
+# <a name="configure-computer-vision-docker-containers"></a>Computer Vision docker-containers configureren
 
-De runtime-omgeving van **tekst herkennen** container wordt geconfigureerd `docker run` met de opdracht argumenten. Deze container heeft verschillende vereiste instellingen, samen met enkele optionele instellingen. Verschillende [voorbeelden](#example-docker-run-commands) van de opdracht beschikbaar zijn. De container-specifieke instellingen zijn de facturerings instellingen. 
+U configureert de runtime-omgeving van de computer vision-container `docker run` met behulp van de opdracht argumenten. Deze container heeft verschillende vereiste instellingen, samen met enkele optionele instellingen. Verschillende [voorbeelden](#example-docker-run-commands) van de opdracht beschikbaar zijn. De container-specifieke instellingen zijn de facturerings instellingen. 
 
 ## <a name="configuration-settings"></a>Configuratie-instellingen
 
@@ -63,9 +63,9 @@ Vergeet niet om de `vision/v1.0` route ring toe te voegen aan de URI van het ein
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Instellingen voor http-proxy referenties
+## <a name="http-proxy-credentials-settings"></a>Instellingen voor HTTP-proxy referenties
 
-[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+[!INCLUDE [Container shared configuration HTTP proxy settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-settings"></a>Instellingen voor logboekregistratie
  
@@ -84,14 +84,12 @@ De exacte syntaxis van de locatie van de host koppelen, is afhankelijk van het h
 |Niet toegestaan| `Input` | Tekenreeks | Computer Vision containers gebruiken deze niet.|
 |Optioneel| `Output` | Tekenreeks | Het doel van de uitvoer-koppelpunt. De standaardwaarde is `/output`. Dit is de locatie van de logboeken. Dit omvat container Logboeken. <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Voorbeeld van de docker-opdrachten uitvoeren 
+## <a name="example-docker-run-commands"></a>Voorbeeld van de docker-opdrachten uitvoeren
 
 De volgende voorbeelden gebruiken de configuratie-instellingen om te laten zien hoe u om te schrijven en gebruik `docker run` opdrachten.  Zodra actief is, de container blijft actief totdat u [stoppen](computer-vision-how-to-install-containers.md#stop-the-container) deze.
 
 * **Regel voortzettings teken**: De docker-opdrachten in de volgende secties gebruiken de back slash `\`,, als een regel voortzetting teken. Vervang of verwijder deze op basis van het hostbesturingssysteem vereisten. 
 * **Argument volgorde**: Wijzig de volg orde van de argumenten niet, tenzij u bekend bent met docker-containers.
-
-Vergeet niet om de `vision/v1.0` route ring toe te voegen aan de URI van het eind punt, zoals wordt weer gegeven in de volgende tabel. 
 
 Vervang {_argument_name_} door uw eigen waarden:
 
@@ -104,17 +102,19 @@ Vervang {_argument_name_} door uw eigen waarden:
 
 > [!IMPORTANT]
 > De `Eula`, `Billing`, en `ApiKey` opties moeten worden opgegeven voor het uitvoeren van de container; anders wordt de container niet start.  Zie voor meer informatie, [facturering](computer-vision-how-to-install-containers.md#billing).
-> De ApiKey-waarde is de **sleutel** van de `Cognitive Services` pagina Azure-resource sleutels. 
+> De ApiKey-waarde is de **sleutel** van de `Cognitive Services` pagina Azure-resource sleutels.
 
-## <a name="recognize-text-container-docker-examples"></a>Voor beelden van de docker tekst container herkennen
+## <a name="container-docker-examples"></a>Voor beelden van container docker
 
-De volgende docker-voor beelden zijn voor de tekst container recognize. 
+#### <a name="readtabread"></a>[Lezen](#tab/read)
 
-### <a name="basic-example"></a>Eenvoudige voorbeeld 
+De volgende docker-voor beelden zijn voor de Lees-container.
+
+### <a name="basic-example"></a>Eenvoudige voorbeeld
 
   ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-read \
   Eula=accept \
   Billing={ENDPOINT_URI} \
   ApiKey={API_KEY} 
@@ -123,7 +123,32 @@ De volgende docker-voor beelden zijn voor de tekst container recognize.
 ### <a name="logging-example"></a>Voor beeld van logboek registratie 
 
   ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-read \
+  Eula=accept \
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} \
+  Logging:Console:LogLevel:Default=Information
+  ```
+
+#### <a name="recognize-texttabrecognize-text"></a>[Tekst herkennen](#tab/recognize-text)
+
+De volgende docker-voor beelden zijn voor de Tekst herkennen-container.
+
+### <a name="basic-example"></a>Eenvoudige voorbeeld
+
+  ```
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  Eula=accept \
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} 
+  ```
+
+### <a name="logging-example"></a>Voor beeld van logboek registratie
+
+  ```
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
   containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
   Eula=accept \
   Billing={ENDPOINT_URI} \
@@ -131,6 +156,8 @@ De volgende docker-voor beelden zijn voor de tekst container recognize.
   Logging:Console:LogLevel:Default=Information
   ```
 
+***
+
 ## <a name="next-steps"></a>Volgende stappen
 
-* Beoordeling [over het installeren en uitvoeren van containers](computer-vision-how-to-install-containers.md)
+* Lees [hoe u containers installeert en uitvoert](computer-vision-how-to-install-containers.md).

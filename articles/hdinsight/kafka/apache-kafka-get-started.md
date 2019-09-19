@@ -1,19 +1,19 @@
 ---
 title: Apache Kafka op HDInsight instellen met behulp van Azure Portal-Quick Start
 description: In deze quickstart leert u hoe u met Azure Portal een Apache Kafka-cluster maakt in Azure HDInsight. Er wordt ook aandacht besteed aan Kafka-onderwerpen, -abonnees en -consumenten.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: e0a2eecaa4b2f03fa12353854e75b9fda097675d
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: b66306de6b2afa1e39a91ba3b3981aec4b440e1a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960266"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123586"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Quickstart: Apache Kafka cluster maken in azure HDInsight met behulp van Azure Portal
 
@@ -38,8 +38,8 @@ Gebruik de volgende stappen om een Apache Kafka-cluster te maken in HDInsight:
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Ga in het menu links naar **+ een resource** > **Analytics** > **HDInsight**maken.
-   
-    ![Een HDInsight-cluster maken](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
+
+    ![Azure Portal bron-HDInsight maken](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
 
 3. Geef op het tabblad **Basis** de volgende informatie op:
 
@@ -47,9 +47,9 @@ Gebruik de volgende stappen om een Apache Kafka-cluster te maken in HDInsight:
     | --- | --- |
     | Clusternaam | Een unieke naam voor het HDInsight-cluster. |
     | Abonnement | Selecteer uw abonnement. |
-    
+
    Selecteer __Clustertype__ om het deelvenster **Clusterconfiguratie** weer te geven.
-   
+
    ![Basisconfiguratie van Apache Kafka-cluster in HDInsight](./media/apache-kafka-get-started/custom-basics-kafka1.png)
 
 4. Selecteer bij __cluster configuratie__de volgende waarden:
@@ -61,7 +61,7 @@ Gebruik de volgende stappen om een Apache Kafka-cluster te maken in HDInsight:
 
     Selecteer **selecteren** om de instellingen voor het cluster type op te slaan en terug te keren naar __basis beginselen__.
 
-    ![Clustertype selecteren](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
+    ![HDInsight Apache Kafka-cluster type](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
 
 5. Geef op het tabblad __Basis__ de volgende informatie op:
 
@@ -77,7 +77,7 @@ Gebruik de volgende stappen om een Apache Kafka-cluster te maken in HDInsight:
 
     Voor hoge beschikbaarheid van gegevens wordt u geadviseerd om een regio (locatie) te selecteren die __drie foutdomeinen__ heeft. Raadpleeg het document [Beschikbaarheid van virtuele Linux-machines](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) voor informatie over het aantal foutdomeinen in een regio.
 
-   ![Abonnement selecteren](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
+   ![Basis beginselen van het cluster Azure Portal maken](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
 
     Selecteer __volgende__ om de basis configuratie te volt ooien.
 
@@ -105,7 +105,7 @@ Gebruik de volgende stappen om een Apache Kafka-cluster te maken in HDInsight:
 
 11. Controleer bij **Samenvatting** de configuratie van het cluster. Gebruik de koppeling __Bewerken__ om onjuiste instellingen te wijzigen. Selecteer ten slotte **maken** om het cluster te maken.
 
-    ![Samenvatting clusterconfiguratie](./media/apache-kafka-get-started/kafka-configuration-summary.png)
+    ![samen vatting van Kafka-cluster configuratie](./media/apache-kafka-get-started/kafka-configuration-summary.png)
 
     Het kan tot 20 minuten duren om het cluster te maken.
 

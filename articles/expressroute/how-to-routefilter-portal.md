@@ -1,5 +1,5 @@
 ---
-title: 'Routefilters voor Microsoft-peering configureren: Met Azure ExpressRoute - Portal | Microsoft Docs'
+title: 'Route filters voor micro soft-peering configureren: Azure ExpressRoute-Portal | Microsoft Docs'
 description: In dit artikel wordt beschreven hoe u routefilters voor Microsoft-peering met behulp van de Azure-portal configureren.
 services: expressroute
 author: ganesr
@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 07/01/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 55b5207e4c05712b4d96d4272f9ae193cc4c1720
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: c49b1fa1e2e8421146f5d5012de983c14934c23c
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508606"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122942"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Routefilters voor Microsoft-peering configureren: Azure Portal
+# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Route filters voor micro soft-peering configureren: Azure Portal
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
@@ -24,7 +24,7 @@ ms.locfileid: "67508606"
 
 Met routefilters kunt u een subset van ondersteunde services gebruiken via Microsoft-peering. De stappen in dit artikel kunt u configureren en beheren van routefilters voor ExpressRoute-circuits.
 
-Dynamics 365-services, en Office 365-services zoals Exchange Online, SharePoint Online en Skype voor bedrijven en Azure-services zoals storage en SQL-database zijn toegankelijk via Microsoft-peering. Wanneer Microsoft-peering is geconfigureerd in een ExpressRoute-circuit, worden alle voorvoegsels die betrekking hebben op deze services worden geadverteerd via de BGP-sessies worden tot stand gebracht. Er wordt aan elk voorvoegsel een BGP-communitywaarde gekoppeld om de service te identificeren die via het voorvoegsel wordt aangeboden. Zie voor een lijst van de BGP-Communitywaarden en deze worden toegewezen aan services, [BGP-community's](expressroute-routing.md#bgp).
+Office 365-services zoals Exchange Online, share point online en Skype voor bedrijven, en Azure-Services, zoals Storage en SQL DB, zijn toegankelijk via micro soft-peering. Wanneer Microsoft-peering is geconfigureerd in een ExpressRoute-circuit, worden alle voorvoegsels die betrekking hebben op deze services worden geadverteerd via de BGP-sessies worden tot stand gebracht. Er wordt aan elk voorvoegsel een BGP-communitywaarde gekoppeld om de service te identificeren die via het voorvoegsel wordt aangeboden. Zie voor een lijst van de BGP-Communitywaarden en deze worden toegewezen aan services, [BGP-community's](expressroute-routing.md#bgp).
 
 Als u de verbinding met alle services vereist, wordt een groot aantal voorvoegsels worden geadverteerd via BGP. Dit verhoogt aanzienlijk de grootte van de routetabellen onderhouden door routers in uw netwerk. Als u van plan alleen een subset van services die worden aangeboden via Microsoft bent-peering, kunt u de grootte van uw routetabellen op twee manieren verkleinen. U kunt:
 
@@ -36,9 +36,9 @@ Als u de verbinding met alle services vereist, wordt een groot aantal voorvoegse
 
 Wanneer Microsoft-peering is geconfigureerd op uw ExpressRoute-circuit, stel de Microsoft-randrouters een combinatie van een BGP-sessies met de randrouters (kunt kiezen of uw connectiviteitsprovider). Er worden geen routes geadverteerd naar uw netwerk. Als u dit wel wilt doen, moet u een routefilter koppelen.
 
-Via een routefilter kunt u services identificeren die u wilt gebruiken via Microsoft-peering op uw ExpressRoute-circuit. Het is in feite een lijst van alle de BGP-Communitywaarden die u wilt toestaan. Zodra er een routefilter is gedefinieerd en aan een ExpressRoute-circuit is gekoppeld, worden alle voorvoegsels die overeenkomen met de BGP-communitywaarden naar uw netwerk geadverteerd.
+Via een routefilter kunt u services identificeren die u wilt gebruiken via Microsoft-peering op uw ExpressRoute-circuit. Het is in feite een lijst met alle BGP-Community-waarden die u wilt toestaan. Zodra er een routefilter is gedefinieerd en aan een ExpressRoute-circuit is gekoppeld, worden alle voorvoegsels die overeenkomen met de BGP-communitywaarden naar uw netwerk geadverteerd.
 
-Als u routefilters met Office 365-services op deze koppelen, moet u gemachtigd zijn om te gebruiken Office 365-services via ExpressRoute. Als u bent niet gemachtigd om te gebruiken Office 365-services via ExpressRoute, mislukt de bewerking routefilters koppelen. Zie voor meer informatie over het autorisatieproces [Azure ExpressRoute voor Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd). De verbinding met Dynamics 365-services is niet vereist voor elke toestemming.
+Als u routefilters met Office 365-services op deze koppelen, moet u gemachtigd zijn om te gebruiken Office 365-services via ExpressRoute. Als u bent niet gemachtigd om te gebruiken Office 365-services via ExpressRoute, mislukt de bewerking routefilters koppelen. Zie voor meer informatie over het autorisatieproces [Azure ExpressRoute voor Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd).
 
 > [!IMPORTANT]
 > Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd vóór 1 augustus 2017 hebben alle service-voorvoegsels geadverteerd via Microsoft-peering, zelfs als routefilters zijn niet gedefinieerd. Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd op of na 1 augustus 2017 hebben geen voorvoegsels geadverteerd totdat een routefilter is gekoppeld aan het circuit.
@@ -71,7 +71,7 @@ Voordat u begint met de configuratie, moet u voldoen aan de volgende criteria:
  - U moet een actieve Microsoft-peering. Volg de instructies op [maken en de peering-configuratie wijzigen](expressroute-howto-routing-portal-resource-manager.md)
 
 
-## <a name="prefixes"></a>Stap 1: Een lijst met voorvoegsels en BGP-Communitywaarden ophalen
+## <a name="prefixes"></a>Stap 1: Een lijst met voor voegsels en BGP Community-waarden ophalen
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. Een overzicht van BGP-Communitywaarden
 
@@ -79,9 +79,9 @@ BGP-Communitywaarden die zijn gekoppeld aan services die toegankelijk zijn via M
 
 ### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Maak een lijst van de waarden die u wilt gebruiken
 
-Maak een lijst van [BGP-Communitywaarden](expressroute-routing.md#bgp) u wilt gebruiken in de routefilter. 
+Maak een lijst met de [BGP-Community-waarden](expressroute-routing.md#bgp) die u wilt gebruiken in het route filter. 
 
-## <a name="filter"></a>Stap 2: Een routefilter en een filterregel voor een maken
+## <a name="filter"></a>Stap 2: Een route filter en een filter regel maken
 
 Een routefilter kan slechts één regel, en de regel moet van het type 'Toestaan'. Deze regel kan een lijst met BGP-Communitywaarden die zijn gekoppeld aan deze hebben.
 
@@ -101,14 +101,14 @@ U kunt toevoegen en bijwerken van regels door het tabblad van de regel beheren v
 ![Een routefilter maken](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
 
-De services die u wilt verbinding maken met vanuit de vervolgkeuzelijst en opslaan van de regel als u klaar bent, kunt u selecteren.
+U kunt de services selecteren waarmee u verbinding wilt maken in de vervolg keuzelijst en de regel opslaan wanneer u klaar bent.
 
 ![Een routefilter maken](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
-## <a name="attach"></a>Stap 3: De routefilter koppelen aan een ExpressRoute-circuit
+## <a name="attach"></a>Stap 3: Het route filter koppelen aan een ExpressRoute-circuit
 
-U kunt de routefilter koppelen aan een circuit door de knop 'Circuit toevoegen' te selecteren en het ExpressRoute-circuit in de vervolgkeuzelijst te selecteren.
+U kunt het route filter koppelen aan een circuit door de knop circuit toevoegen te selecteren en het ExpressRoute-circuit te selecteren in de vervolg keuzelijst.
 
 ![Een routefilter maken](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
 
@@ -137,7 +137,7 @@ U kunt de lijst met BGP-Communitywaarden die zijn gekoppeld aan een circuit hier
 
 ### <a name="detach"></a>Een routefilter van een ExpressRoute-circuit ontkoppelen
 
-Als u wilt loskoppelen van een circuit van het routefilter, met de rechtermuisknop op het circuit en klik op 'koppeling'.
+Als u een circuit wilt ontkoppelen van het route filter, klikt u met de rechter muisknop op het circuit en klikt u op de koppeling loskoppelen.
 
 ![Een routefilter maken](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
 
@@ -152,4 +152,4 @@ U kunt een routefilter verwijderen door de verwijderknop selecteren.
 
 * Voor meer informatie over ExpressRoute raadpleegt u de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md).
 
-* Zie voor meer informatie over voorbeelden van routerconfiguratie [routerconfiguraties instellen en beheren van routering](expressroute-config-samples-routing.md). 
+* Zie voor meer informatie over router configuratie voorbeelden router [configuratie-voor beelden voor het instellen en beheren van route ring](expressroute-config-samples-routing.md). 

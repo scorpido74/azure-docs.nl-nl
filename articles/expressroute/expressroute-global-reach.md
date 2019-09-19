@@ -5,18 +5,18 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 09/18/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 28cfbc7183628b00c463f1c3a8a954ba4074409b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e522c7ea306667f675af4bbe7486e25fb7f4ec9f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65415965"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122808"
 ---
-# <a name="expressroute-global-reach"></a>ExpressRoute wereldwijd bereik
-ExpressRoute is een privé- en flexibele manier om uw on-premises netwerken verbinden met Microsoft Cloud. U kunt toegang tot veel Microsoft-cloudservices zoals Azure, Office 365 en Dynamics 365 vanuit uw persoonlijke Datacenter of uw bedrijfsnetwerk. Bijvoorbeeld, wellicht u een filiaal in San Francisco met een ExpressRoute-circuit in Silicon Valley en een ander filiaal in Londen met een ExpressRoute-circuit in dezelfde stad. Beide filialen kunnen zeer snelle verbindingen met Azure-resources in VS West en UK-Zuid hebben. Echter kunnen geen de filialen uitwisselen van gegevens met elkaar. Met andere woorden, 10.0.1.0/24 die gegevens kan verzenden, 10.0.3.0/24 en 10.0.4.0/24, maar niet aan 10.0.2.0/24.
+# <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
+ExpressRoute is een privé- en flexibele manier om uw on-premises netwerken verbinden met Microsoft Cloud. U hebt toegang tot veel micro soft-Cloud Services, zoals Azure, en Office 365 vanuit uw privé Data Center of uw bedrijfs netwerk. Bijvoorbeeld, wellicht u een filiaal in San Francisco met een ExpressRoute-circuit in Silicon Valley en een ander filiaal in Londen met een ExpressRoute-circuit in dezelfde stad. Beide filialen kunnen zeer snelle verbindingen met Azure-resources in VS West en UK-Zuid hebben. Echter kunnen geen de filialen uitwisselen van gegevens met elkaar. Met andere woorden, 10.0.1.0/24 die gegevens kan verzenden, 10.0.3.0/24 en 10.0.4.0/24, maar niet aan 10.0.2.0/24.
 
 ![zonder][1]
 
@@ -39,7 +39,7 @@ ExpressRoute globaal bereik wordt op dat moment ondersteund in de volgende locat
 * Hongkong SAR
 * Ierland
 * Japan
-* Korea
+* Zuid-Korea
 * Nederland
 * Singapore
 * Zwitserland

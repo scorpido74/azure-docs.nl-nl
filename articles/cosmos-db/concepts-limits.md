@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: d3d09d466e05c97de215542c66987aa6b723afce
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9b78c18547ef61b388a56a1272b5621cada43806
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827984"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71120494"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 
@@ -30,6 +30,7 @@ Nadat u in uw abonnement een Azure Cosmos-account hebt gemaakt, kunt u gegevens 
 | Maximum aantal afzonderlijke (logische) partitie sleutels | Onbeperkt |
 | Maximale opslag per container | Onbeperkt |
 | Maximale opslag per data base | Onbeperkt |
+| Maximale grootte van bijlagen per account (bijlage functie wordt afgeschreven) | 2 GB | 
 
 > [!NOTE]
 > Voor aanbevolen procedures voor het beheren van werk belastingen met partitie sleutels waarvoor hogere limieten nodig zijn voor opslag of door Voer, Zie [ontwerpen voor Hot Partition-sleutels](synthetic-partition-keys.md)
@@ -80,7 +81,7 @@ Cosmos DB maakt met regel matige tussen pozen automatisch back-ups van uw gegeve
 
 ## <a name="per-container-limits"></a>Limieten per container
 
-Afhankelijk van de API die u gebruikt, kan een Azure Cosmos-container een verzameling, een tabel of een grafiek vertegenwoordigen. Containers ondersteunen configuraties voor [unieke sleutel beperkingen](unique-keys.md), [opgeslagen procedures, triggers en udf's](stored-procedures-triggers-udfs.md)en indexerings [beleid](how-to-manage-indexing-policy.md). De volgende tabel bevat de limieten die specifiek zijn voor configuraties binnen een container. 
+Afhankelijk van de API die u gebruikt, kan een Azure Cosmos-container een verzameling, een tabel of een grafiek vertegenwoordigen. Containers ondersteunen configuraties voor [unieke sleutel beperkingen](unique-keys.md), [opgeslagen procedures, triggers en udf's](stored-procedures-triggers-udfs.md)en [indexerings beleid](how-to-manage-indexing-policy.md). De volgende tabel bevat de limieten die specifiek zijn voor configuraties binnen een container. 
 
 | Resource | Standaardlimiet |
 | --- | --- |

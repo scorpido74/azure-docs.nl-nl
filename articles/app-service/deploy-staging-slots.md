@@ -12,14 +12,14 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: b86f08fbcb661ae4266658016de7aa92da785bf9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 35618b80dc4731f4d679bab9f035987af50730e8
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070589"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129710"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Faserings omgevingen instellen in Azure App Service
 <a name="Overview"></a>
@@ -88,7 +88,7 @@ Wanneer u twee sleuven (doorgaans van een staging-sleuf naar de productie sleuf)
 
 1. Als de [lokale cache](overview-local-cache.md) is ingeschakeld, wordt de initialisatie van de lokale cache geactiveerd door een HTTP-aanvraag naar de hoofdmap van de toepassing (/) te maken voor elk exemplaar van de bron sleuf. Wacht totdat elke instantie een HTTP-antwoord retourneert. De initialisatie van de lokale cache veroorzaakt een andere herstart van elk exemplaar.
 
-1. Als [automatisch wisselen](#Auto-Swap) is ingeschakeld met [aangepast](#Warm-up)opwarmen, wordt het starten van de [toepassing](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) geactiveerd door een HTTP-aanvraag naar de hoofdmap van de toepassing (/) te maken voor elk exemplaar van de bron sleuf.
+1. Als [automatisch wisselen](#Auto-Swap) is ingeschakeld met [aangepast opwarmen](#Warm-up), wordt het starten van de [toepassing](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) geactiveerd door een HTTP-aanvraag naar de hoofdmap van de toepassing (/) te maken voor elk exemplaar van de bron sleuf.
 
     Als `applicationInitialization` niet wordt opgegeven, wordt een HTTP-aanvraag geactiveerd voor de hoofdmap van de bron sleuf van elk exemplaar. 
     
@@ -219,6 +219,9 @@ U kunt ook het opwarm gedrag aanpassen met een of beide van de volgende [app-ins
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`: Het pad naar de ping om uw site te laten opwarmen. Voeg deze app-instelling toe door een aangepast pad op te geven dat begint met een slash als waarde. Een voorbeeld is `/statuscheck`. De standaardwaarde is `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Geldige HTTP-antwoord codes voor de opwarm bewerking. Voeg deze app-instelling toe met een door komma's gescheiden lijst met HTTP-codes. Een voor beeld `200,202` is. Als de geretourneerde status code zich niet in de lijst bevindt, worden de opwarm-en swap-bewerkingen gestopt. Standaard zijn alle antwoord codes geldig.
+
+> [!NOTE]
+> `<applicationInitialization>`maakt deel uit van elke app die wordt gestart, waarbij deze twee app-instellingen alleen van toepassing zijn op sleuven swaps.
 
 Zie [problemen met swaps oplossen](#troubleshoot-swaps)als u problemen hebt.
 
@@ -368,6 +371,8 @@ Hier volgen enkele veelvoorkomende wissel fouten:
     </conditions>
     ```
 - Sommige [IP-beperkings regels](app-service-ip-restrictions.md) kunnen voor komen dat de wissel bewerking HTTP-aanvragen naar uw app verzendt. IPv4-adresbereiken die beginnen `10.` met `100.` en intern zijn voor uw implementatie. U moet hen toestaan om verbinding te maken met uw app.
+
+- Na het wisselen van sleuven kan de app onverwachte opnieuw opstarten ondervinden. Dit komt doordat de bindings configuratie van de hostnaam na een swap niet meer synchroon is, wat zelf niet tot gevolg heeft dat de computer opnieuw wordt opgestart. Bepaalde onderliggende opslag gebeurtenissen (zoals failovers van het opslag volume) kunnen deze verschillen echter detecteren en alle werk processen afdwingen om opnieuw op te starten. Als u deze typen opnieuw opstarten wilt minimaliseren, stelt u de [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` app-instelling](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) in op *Alle sleuven*. Deze app-instelling werkt echter *niet* met Windows Communication Foundation WCF-apps.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Toegang tot niet-productie sleuven blok keren](app-service-ip-restrictions.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: 5d990a1c39495090fed1c78f1ddf5e879490e6c4
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 393087f4d5c5e7a52fd2dd10d20362a045a0075b
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960674"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122671"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Apache Kafka op HDInsight configureren om automatisch onderwerpen te maken
 
@@ -25,7 +25,7 @@ Gebruik de volgende stappen om het automatisch maken van een onderwerp in een be
 
 1. Selecteer in de [Azure Portal](https://portal.azure.com)het Kafka-cluster.
 
-2. Selecteer __cluster dashboard__in het __cluster overzicht__. 
+2. Selecteer __cluster dashboard__in het __cluster overzicht__.
 
     ![Afbeelding van de portal waarop het cluster dashboard is geselecteerd](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
 
@@ -35,15 +35,15 @@ Gebruik de volgende stappen om het automatisch maken van een onderwerp in een be
 
 3. Selecteer de Kafka-service in de lijst aan de linkerkant van de pagina.
 
-    ![Service lijst](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
+    ![Tabblad Apache Ambari service List](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
 
 4. Selecteer configuraties in het midden van de pagina.
 
-    ![Tabblad Service configuratie](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
+    ![Tabblad Apache Ambari service-configuratie](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
-5. Voer in het veld Filter een waarde van `auto.create`in. 
+5. Voer in het veld Filter een waarde van `auto.create`in.
 
-    ![Afbeelding van het filter veld](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
+    ![Veld Apache Ambari search filter](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
     Hiermee wordt de lijst met eigenschappen gefilterd `auto.create.topics.enable` en wordt de instelling weer gegeven.
 
@@ -53,7 +53,7 @@ Gebruik de volgende stappen om het automatisch maken van een onderwerp in een be
 
 7. Selecteer de Kafka-service, selecteer __opnieuw opstarten__en selecteer vervolgens __alle betrokkenen opnieuw opstarten__. Selecteer __Bevestig opnieuw opstarten__als dit wordt gevraagd.
 
-    ![Afbeelding van selectie opnieuw opstarten](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
+    ![Apache Ambari alle betrokken software opnieuw opstarten](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
 > [!NOTE]  
 > U kunt Ambari-waarden ook instellen via de Ambari-REST API. Dit is over het algemeen moeilijker, omdat u meerdere REST-aanroepen moet maken om de huidige configuratie op te halen, deze te wijzigen, enzovoort. Zie [HDInsight-clusters beheren met het Apache Ambari rest API](../hdinsight-hadoop-manage-ambari-rest-api.md) -document voor meer informatie.

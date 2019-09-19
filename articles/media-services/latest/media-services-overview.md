@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 05/13/2019
+ms.date: 09/17/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: b07675e25c0380921e24059ff0107fcfe1bb3873
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: a752d7759386828e916f68e5903115220812f3e0
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602107"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123045"
 ---
 # <a name="azure-media-services-v3-overview"></a>Overzicht van Azure Media Services v3
 
@@ -49,42 +49,46 @@ Met Media Services kunt u diverse mediawerkstromen bouwen in de cloud. Hier volg
 Informatie over coderen en verpakken van content, video-streaming op aanvraag, live uitzenden en het analyseren van uw video's met Media Services v3. Zelfstudies, API-verwijzingen en andere documentatie laten zien hoe u veilig on-demand of live video- of audiostromen levert aan miljoenen gebruikers.
 
 > [!TIP]
-> Voordat u begint met het ontwikkelen, controleren:<br/>* [Basisconcepten](concepts-overview.md) (incudes belangrijke concepten: verpakking, codering, beveiligen, enz.)<br/>* [Ontwikkelen met Media Services v3 API's](media-services-apis-overview.md) (bevat informatie over het verkrijgen van toegang tot API's voor naamgeving, enz.)
+> Controleer het volgende voordat u begint met ontwikkelen:<br/>* [Basis concepten](concepts-overview.md) (incudes belang rijke concepten: verpakking, code ring, beveiliging, enz.)<br/>* [Ontwikkelen met Media Services v3-api's](media-services-apis-overview.md) (bevat informatie over het openen van Api's, naam conventies, enzovoort)
 
 ### <a name="quickstarts"></a>Snelstartgidsen  
 
-De snelstartgidsen weergeven fundamentele dag-1-instructies voor nieuwe klanten voor het snel uitproberen van Media Services.
+In de Quick starts worden de belangrijkste dag-1 instructies voor nieuwe klanten weer gegeven om Media Services snel uit te proberen.
 
-* [Stream videobestanden - .NET](stream-files-dotnet-quickstart.md)
-* [Stream-video's - CLI](stream-files-cli-quickstart.md)
-* [Stream videobestanden - Node.js](stream-files-nodejs-quickstart.md)
+* [Video bestanden streamen-.NET](stream-files-dotnet-quickstart.md)
+* [Video bestanden streamen-CLI](stream-files-cli-quickstart.md)
+* [Video bestanden streamen: node. js](stream-files-nodejs-quickstart.md)
     
 ### <a name="tutorials"></a>Zelfstudies 
 
-De zelfstudies weergeven procedures op basis van een scenario voor een aantal veelgebruikte Media Services-taken
+De zelf studies tonen op scenario's gebaseerde procedures voor een aantal van de belangrijkste Media Services taken.
 
-* [Codeer externe bestands- en stream-video-REST](stream-files-tutorial-with-rest.md)
-* [Codeer het geüploade bestand en stream-video - .NET](stream-files-tutorial-with-api.md)
-* [Stream live - .NET](stream-live-tutorial-with-api.md)
-* [Analyseren van uw video - .NET](analyze-videos-tutorial-with-api.md)
-* [AES-128 dynamische versleuteling - .NET](protect-with-aes128.md)
+* [Video van extern bestand en stream coderen – REST](stream-files-tutorial-with-rest.md)
+* [Geüpload bestand en stream video coderen-.NET](stream-files-tutorial-with-api.md)
+* [Live-.NET streamen](stream-live-tutorial-with-api.md)
+* [Uw video analyseren-.NET](analyze-videos-tutorial-with-api.md)
+* [AES-128 dynamische versleuteling-.NET](protect-with-aes128.md)
     
+### <a name="samples"></a>Voorbeelden
+
+Gebruik [deze voorbeeld browser](https://docs.microsoft.com/samples/browse/?products=azure-media-services) om te bladeren door Azure Media Services code voorbeelden.
+
 ### <a name="how-to-guides"></a>Handleidingen
 
-Artikelen bevatten voorbeelden van code die laten zien hoe u om een taak te voltooien. In deze sectie vindt u veel voorbeelden, Hier volgen slechts enkele van deze:
+Artikelen bevatten code voorbeelden die laten zien hoe u een taak kunt uitvoeren. In deze sectie vindt u een groot aantal voor beelden, maar hier zijn er slechts enkele:
 
 * [Een account maken - CLI](create-account-cli-how-to.md)
 * [Toegang tot API's - CLI](access-api-cli-how-to.md)
-* [Coderen met HTTPS als invoer - taak .NET](job-input-from-http-how-to.md)  
-* [Monitor voor gebeurtenissen - Portal](monitor-events-portal-how-to.md)
-* [Dynamisch versleutelen met multi-DRM - .NET](protect-with-drm.md) 
-* [Coderen met een aangepaste transformatie - CLI](custom-preset-cli-howto.md)
+* [Coderen met HTTPS als taak invoer-.NET](job-input-from-http-how-to.md)  
+* [Gebeurtenissen bewaken-Portal](monitor-events-portal-how-to.md)
+* [Dynamisch versleutelen met multi-DRM-.NET](protect-with-drm.md) 
+* [Coderen met een aangepaste transform-CLI](custom-preset-cli-howto.md)
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Stel vragen, feedback geven, updates ophalen
+## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk de [Azure Media Services-community](media-services-community.md) artikel om te zien van verschillende manieren kunt u vragen stellen, feedback te geven en updates over Media Services ophalen.
+Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over basisconcepten](concepts-overview.md)
+[Meer informatie over basis concepten](concepts-overview.md)
 

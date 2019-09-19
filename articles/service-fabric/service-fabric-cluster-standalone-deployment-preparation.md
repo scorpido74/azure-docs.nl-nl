@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 78db25fed7c284b31491bdc9e5498493da4c7479
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: dad37af030c456f9ba2cd814fa92a7811dce6aa1
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618844"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130314"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Plannen en voorbereiden van uw Service Fabric een zelfstandige Clusterimplementatie
 
@@ -65,10 +65,11 @@ Hier volgen enkele aanbevolen specificaties voor elke machine die u wilt toevoeg
 * Een minimum van 40 GB beschikbare schijfruimte
 * Een 4-core of hoger CPU
 * Verbinding met een beveiligd netwerk of netwerken voor alle machines
-* Windows Server-besturings systeem geïnstalleerd (geldige versies: 2012 R2, 2016, 1709, 1803 of 2019)
+* Windows Server-besturings systeem geïnstalleerd (geldige versies: 2012 R2, 2016, 1709 of 1803). Service Fabric versie 6.4.654.9590 en hoger ondersteunt ook server 2019 en 1809.
 * [.NET framework 4.5.1 of hoger](https://www.microsoft.com/download/details.aspx?id=40773), volledige installatie
 * [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
 * De [RemoteRegistry service](https://technet.microsoft.com/library/cc754820) moet worden uitgevoerd op alle computers
+* Service Fabric installatie station moet een NTFS-bestands systeem zijn
 
 De Clusterbeheerder implementeren en configureren van het cluster moet hebben [administrator-bevoegdheden](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) op elk van de machines. U kunt Service Fabric niet installeren op een domeincontroller.
 

@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met HTTP-of HTTPS-eind punten van Azure Logic Apps
-description: HTTP-of HTTPS-eind punten in geautomatiseerde taken, processen en werk stromen bewaken met behulp van Azure Logic Apps
+title: HTTP-en HTTPS-eind punten aanroepen-Azure Logic Apps
+description: Uitgaande aanvragen verzenden naar HTTP-en HTTPS-eind punten met behulp van Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,18 +10,20 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 04d9beaef29e76d40c0bb3f9dcf0bb6f4fe3152d
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: df856e0d76dbd5903964bc80aa01b97b7461128a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234383"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122704"
 ---
-# <a name="call-http-or-https-endpoints-by-using-azure-logic-apps"></a>HTTP-of HTTPS-eind punten aanroepen met behulp van Azure Logic Apps
+# <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Uitgaande oproepen verzenden naar HTTP-of HTTPS-eind punten met behulp van Azure Logic Apps
 
-Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde http-connector kunt u werk stromen automatiseren die regel matig een HTTP-of https-eind punt aanroepen door Logic apps te bouwen. U kunt bijvoorbeeld het service-eind punt voor uw website bewaken door dat eind punt op een opgegeven schema te controleren. Wanneer er een specifieke gebeurtenis plaatsvindt op dat eind punt, zoals uw website, activeert de gebeurtenis de werk stroom van uw logische app en worden de opgegeven acties uitgevoerd.
+Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde http-trigger of-actie kunt u geautomatiseerde taken en werk stromen maken die regel matig aanvragen verzenden naar een HTTP-of https-eind punt. Als u in plaats daarvan binnenkomende HTTP-of HTTPS-aanroepen wilt ontvangen en hierop wilt reageren, gebruikt u de ingebouwde [aanvraag-of reactie actie](../connectors/connectors-native-reqres.md).
 
-Als u een  eind punt volgens een regel matig schema wilt controleren of pollen, kunt u de http-trigger als eerste stap in de werk stroom gebruiken. Bij elke controle verzendt de trigger een aanroep of *aanvraag* naar het eind punt. Het antwoord van het eind punt bepaalt of de werk stroom van uw logische app wordt uitgevoerd. De trigger geeft alle inhoud van het antwoord op de acties in uw logische app door.
+U kunt bijvoorbeeld het service-eind punt voor uw website bewaken door dat eind punt op een opgegeven schema te controleren. Wanneer er een specifieke gebeurtenis plaatsvindt op dat eind punt, zoals uw website, activeert de gebeurtenis de werk stroom van uw logische app en worden de opgegeven acties uitgevoerd.
+
+Als u een eind punt volgens een regel matig schema wilt controleren of pollen, kunt u de http-trigger als eerste stap in de werk stroom gebruiken. Bij elke controle verzendt de trigger een aanroep of *aanvraag* naar het eind punt. Het antwoord van het eind punt bepaalt of de werk stroom van uw logische app wordt uitgevoerd. De trigger geeft alle inhoud van het antwoord op de acties in uw logische app door.
 
 U kunt de HTTP-actie als een andere stap in uw werk stroom gebruiken om het eind punt te bellen wanneer u wilt. Het antwoord van het eind punt bepaalt hoe de resterende acties van uw werk stroom worden uitgevoerd.
 
@@ -142,21 +144,21 @@ Zie de volgende secties voor meer informatie over trigger-en actie parameters:
 * [HTTP-trigger parameters](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)
 * [HTTP-actie parameters](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action)
 
-### <a name="output-details"></a>Uitvoer Details
+### <a name="output-details"></a>Uitvoergegevens
 
 Hier vindt u meer informatie over de uitvoer van een HTTP-trigger of actie, waarmee deze gegevens worden geretourneerd:
 
 | Naam van eigenschap | type | Description |
 |---------------|------|-------------|
 | Koppen | object | De headers van de aanvraag |
-| Organen | object | JSON-object | Het object met de inhoud van de hoofd tekst van de aanvraag |
+| body | object | JSON-object | Het object met de inhoud van de hoofd tekst van de aanvraag |
 | Status code | int | De status code van de aanvraag |
 |||
 
 | Statuscode | Description |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Afgewezen |
+| 202 | Geaccepteerd |
 | 400 | Ongeldig verzoek |
 | 401 | Niet geautoriseerd |
 | 403 | Verboden |
