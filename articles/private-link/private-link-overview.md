@@ -1,21 +1,21 @@
 ---
-title: Wat is een persoonlijke Azure-koppeling?
-description: Meer informatie over persoonlijke Azure-koppelingen.
-services: virtual-network
+title: Wat is Azure Private Link?
+description: Informatie over het gebruik van een persoonlijke Azure-koppeling voor toegang tot Azure PaaS-Services (bijvoorbeeld Azure Storage en SQL Database) en Azure gehoste klanten/partner services via een persoonlijk eind punt in uw virtuele netwerk.
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: overview
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 9b7dea0507d4434274d78546b98961b008ea8cd8
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: fc3ae87ce5c4547526ae50f371684ac14dfcf266
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017890"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104662"
 ---
-# <a name="what-is-azure-private-link-preview"></a>Wat is een persoonlijke Azure-koppeling? (Preview)
-Met Azure private link kunt u toegang krijgen tot Azure PaaS-Services (bijvoorbeeld Azure Storage en SQL Database) en Azure hosted Customer/partner-services via een [persoonlijk eind punt](private-endpoint-overview.md) in uw virtuele netwerk. Verkeer tussen uw virtuele netwerk en de service gaat over het micro soft backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt voor komen. U kunt ook uw eigen [privé koppelings service](private-link-service-overview.md) maken in uw virtuele netwerk (VNet) en deze privé leveren aan uw klanten. De installatie en consumptie-ervaring met behulp van persoonlijke Azure-koppeling is consistent voor Azure PaaS-, klanten-en Shared partner services.
+# <a name="what-is-azure-private-link-preview"></a>Wat is Azure Private Link? (Preview)
+Met Azure private link kunt u toegang krijgen tot Azure PaaS-Services (bijvoorbeeld Azure Storage en SQL Database) en Azure hosted Customer/partner-services via een [persoonlijk eind punt](private-endpoint-overview.md) in uw virtuele netwerk. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt ook uw eigen [privé koppelings service](private-link-service-overview.md) maken in uw virtuele netwerk (VNet) en deze privé leveren aan uw klanten. De installatie en consumptie-ervaring met behulp van persoonlijke Azure-koppeling is consistent voor Azure PaaS-, klanten-en Shared partner services.
 
 > [!IMPORTANT]
 > Deze openbare preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Zie [Private endpoint](private-endpoint-overview.md#limitations) en [Private Link service](private-link-service-overview.md#limitations)voor bekende beperkingen.
@@ -38,7 +38,7 @@ Persoonlijke Azure-koppeling biedt de volgende voor delen:
 ## <a name="availability"></a>Beschikbaarheid 
  De volgende tabel geeft een lijst van de services voor persoonlijke koppelingen en de regio's waar ze beschikbaar zijn. 
 
-|Scenario  |Ondersteunde services   |Beschikbare regio's | Status   |
+|Scenario  |Ondersteunde services   |Beschikbare regio's | State   |
 |---------|---------|---------|---------|
 |Persoonlijke koppeling voor services die eigendom zijn van de klant|Persoonlijke koppelings Services achter Standard Load Balancer |West-Centraal VS; WestUS VS Zuid-Centraal; VS-Oost; VS-Noord  |  Preview  |
 |Persoonlijke koppeling voor Azure PaaS Services   | Azure Storage        |  VS-Oost, VS-West, Centraal-West       | Preview         |

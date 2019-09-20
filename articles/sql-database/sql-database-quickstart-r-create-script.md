@@ -1,7 +1,7 @@
 ---
 title: Eenvoudige R-scripts maken en uitvoeren
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Eenvoudige R-scripts uitvoeren in Azure SQL Database Machine Learning-Services (preview).
+description: Voer eenvoudige R-scripts uit in Azure SQL Database Machine Learning Services (preview).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,16 +13,16 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: cfc70b3d8e364c25ccf9fd221699695641a66ef0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a47e7a81ba486056841bdc0fe65cfd10f1b2c412
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708584"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123196"
 ---
-# <a name="create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Maken en eenvoudige R-scripts uitvoeren in Azure SQL Database Machine Learning-Services (preview)
+# <a name="create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Eenvoudige R-scripts maken en uitvoeren in Azure SQL Database Machine Learning Services (preview-versie)
 
-In deze Quick Start, moet u maken en uitvoeren van een set eenvoudige R-scripts met behulp van de openbare preview van [Machine Learning-Services (met R) in Azure SQL Database](sql-database-machine-learning-services-overview.md). Leert u hoe u een goed ingedeelde R-script in de opgeslagen procedure inpakt [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) en voer het script uit in een SQL-database.
+In deze Quick Start maakt en voert u een set eenvoudige R-scripts met behulp van de open bare preview van [Machine Learning Services (met R) in Azure SQL database](sql-database-machine-learning-services-overview.md). U leert hoe u een goed gevormd R-script in de opgeslagen procedure [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) verpakken en het script uitvoert in een SQL database.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
@@ -30,17 +30,17 @@ In deze Quick Start, moet u maken en uitvoeren van een set eenvoudige R-scripts 
 
 - Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/) voordat u begint.
 
-- Als u wilt uitvoeren met de voorbeeldcode in deze oefeningen, moet u eerst een Azure SQL database met Machine Learning-Services (met R) ingeschakeld hebben. Na de onboarding voor de openbare preview wordt Machine Learning voor u ingeschakeld voor uw bestaande of nieuwe database. Volg de stappen in [Meld u aan voor de preview-versie](sql-database-machine-learning-services-overview.md#signup).
+- Als u de voorbeeld code in deze oefeningen wilt uitvoeren, moet u eerst een Azure-SQL database hebben met Machine Learning Services (met R) ingeschakeld. Na de onboarding voor de openbare preview wordt Machine Learning voor u ingeschakeld voor uw bestaande of nieuwe database. Volg de stappen in [Meld u aan voor de preview-versie](sql-database-machine-learning-services-overview.md#signup).
 
-- Zorg ervoor dat u hebt de meest recente geïnstalleerd [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). U kunt R-scripts met behulp van het beheer van andere databases of hulpmiddelen voor query's uitvoeren, maar in deze snelstartgids gebruikt u SSMS.
+- Zorg ervoor dat u de nieuwste versie van [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) hebt geïnstalleerd. U kunt R-scripts uitvoeren met andere database beheer-of query hulpprogramma's, maar in deze Snelstartgids gebruikt u SSMS.
 
-- Deze snelstart moet u een firewallregel op serverniveau configureren. Zie voor informatie over hoe u dit doet, [maken-firewallregel op serverniveau](sql-database-server-level-firewall-rule.md).
+- Voor deze Quick start moet u een firewall regel op server niveau configureren. Zie [firewall regel op server niveau maken](sql-database-server-level-firewall-rule.md)voor meer informatie over hoe u dit doet.
 
 ## <a name="run-a-simple-script"></a>Een eenvoudig script uitvoeren
 
-Als u wilt een R-script uitvoeren, u zult geven deze als een argument naar de procedure in het systeem opgeslagen [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
+Als u een R-script wilt uitvoeren, geeft u dit als een argument door aan de opgeslagen systeem procedure [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
 
-In de volgende stappen, zult u dit R-voorbeeldscript uitvoeren in uw SQL-database:
+In de volgende stappen voert u dit voorbeeld R-script uit in uw SQL database:
 
 ```r
 a <- 1
@@ -52,11 +52,11 @@ print(c(c, d))
 
 1. Open **SQL Server Management Studio** en maak verbinding met de SQL-database.
 
-   Als u hulp bij het maken van een verbinding nodig hebt, raadpleegt u [Quick Start: SQL Server Management Studio gebruiken om verbinding te maken en query's uit te voeren op een Azure SQL database](sql-database-connect-query-ssms.md).
+   Als u hulp nodig hebt bij het [maken van verbinding, raadpleegt u Quick Start: SQL Server Management Studio gebruiken om verbinding te maken en query's uit te voeren op een Azure SQL database](sql-database-connect-query-ssms.md).
 
-1. Het volledige R-script uit te geven de [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) opgeslagen procedure.
+1. Geef het volledige R-script door aan de opgeslagen procedure [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) .
 
-   Het script wordt doorgegeven via de `@script` argument. Alles in de `@script` argument moet een geldige R-code.
+   Het script wordt door gegeven via `@script` het argument. Alles binnen het `@script` argument moet een geldige R-code zijn.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -69,15 +69,15 @@ print(c(c, d))
     '
     ```
 
-   Als er fouten optreden, kan dit zijn omdat de openbare preview van Machine Learning Services (met R) niet is ingeschakeld voor uw SQL-database. Zie [vereisten](#prerequisites) hierboven.
+   Als er fouten optreden, kan dit zijn omdat de openbare preview van Machine Learning Services (met R) niet is ingeschakeld voor uw SQL-database. Zie bovenstaande [vereisten](#prerequisites) .
 
    > [!NOTE]
-   > Als u een beheerder bent, kunt u automatisch externe code uitvoeren. U kunt de machtiging verlenen aan andere gebruikers met de opdracht:
-   <br>**TOEKENNEN uitvoeren van een externe SCRIPT aan**  *\<gebruikersnaam\>*.
+   > Als u een beheerder bent, kunt u externe code automatisch uitvoeren. U kunt machtigingen verlenen aan andere gebruikers met behulp van de opdracht:
+   <br>**elk extern script toekennen aan** *gebruikersnaam\>. \<*
 
-2. Het juiste resultaat wordt berekend en de R- `print` functie retourneert het resultaat dat de **berichten** venster.
+2. Het juiste resultaat wordt berekend en de R `print` -functie retourneert het resultaat in het venster **berichten** .
 
-   Dit ziet er ongeveer als volgt.
+   Dit ziet er ongeveer als volgt uit.
 
     **Results**
 
@@ -86,9 +86,9 @@ print(c(c, d))
     0.5 2
     ```
 
-## <a name="run-a-hello-world-script"></a>Een Hello World-script uitvoeren
+## <a name="run-a-hello-world-script"></a>Een Hallo wereld script uitvoeren
 
-Er is een typisch voorbeeld-script die alleen de tekenreeks "Hallo wereld levert". Voer de volgende opdracht uit.
+Een typisch voor beeld is een script dat alleen de teken reeks ' Hallo wereld ' uitvoert. Voer de volgende opdracht uit.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -98,30 +98,28 @@ WITH RESULT SETS(([Hello World] INT));
 GO
 ```
 
-Invoer voor deze opgeslagen procedure zijn onder andere:
+De invoer van deze opgeslagen procedure omvat:
 
 | | |
 |-|-|
-| @language | definieert de uitbreiding van de taal om aan te roepen, in dit geval R |
-| @script | Hiermee definieert u de opdrachten die is doorgegeven aan de R-runtime. Dit argument moet u uw hele R-script tussen als Unicode-tekst. U kunt ook de tekst toevoegen aan een variabele van het type **nvarchar** en roep vervolgens de variabele |
-| @input_data_1 | gegevens die zijn geretourneerd door de query doorgegeven aan de R-runtime, die als resultaat de gegevens naar SQL Server als een gegevensframe |
-|MET RESULTAATSETS | component definieert het schema van de geretourneerde tabel voor SQL Server, "Hallo wereld" Als de naam van de kolom toe te voegen **int** voor het gegevenstype |
+| @language | Hiermee definieert u de taal extensie die moet worden aangeroepen, in dit geval R |
+| @script | Hiermee worden de opdrachten gedefinieerd die worden door gegeven aan de R-runtime. Het hele R-script moet in dit argument worden inge sloten als Unicode-tekst. U kunt ook de tekst toevoegen aan een variabele van het type **nvarchar** en vervolgens de variabele aanroepen |
+| @input_data_1 | gegevens die door de query zijn geretourneerd, worden door gegeven aan de R-runtime, waarmee de gegevens worden geretourneerd die moeten worden SQL Server als een gegevens frame |
+|MET RESULTATEN SETS | -component definieert het schema van de geretourneerde gegevens tabel voor SQL Server en voegt "Hallo wereld" toe als kolom naam, **int** voor het gegevens type |
 
-De opdracht levert de volgende tekst:
+De opdracht voert de volgende tekst uit:
 
 | Hallo wereld |
 |-------------|
 | 1 |
 
-## <a name="use-inputs-and-outputs"></a>Gebruik invoer en uitvoer
+## <a name="use-inputs-and-outputs"></a>Invoer en uitvoer gebruiken
 
-Standaard [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) accepteert van een enkele gegevensset als invoer, die doorgaans die u in de vorm van een geldige SQL-query opgeven. Vervolgens wordt een enkele R-gegevensframe als uitvoer.
+[Sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) accepteert standaard één gegevensset als invoer, wat doorgaans u opgeeft in de vorm van een geldige SQL-query. Vervolgens wordt er één R-gegevens frame als uitvoer geretourneerd.
 
-Er kan maar één invoergegevensset worden doorgegeven als parameter, en u kunt slechts één gegevensset retourneren. U kunt vanuit de R-code wel andere gegevenssets aanroepen en u kunt, naast de gegevensset, ook andere typen uitvoer retourneren. U kunt ook het uitvoertrefwoord toevoegen aan elke willekeurige parameter om deze te laten retourneren met de resultaten.
+We gebruiken nu de standaard waarden voor invoer en uitvoer van [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql): **Input dataset** en **output dataset**.
 
-Nu gaan we gebruiken de standaard-invoer en uitvoer variabelen van [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql): **InputDataSet** en **OutputDataSet**.
-
-1. Maak een kleine tabel met testgegevens.
+1. Maak een kleine tabel met test gegevens.
 
     ```sql
     CREATE TABLE RTestData (col1 INT NOT NULL)
@@ -137,7 +135,7 @@ Nu gaan we gebruiken de standaard-invoer en uitvoer variabelen van [sp_execute_e
     GO
     ```
 
-1. Gebruik de `SELECT` instructie query uitvoeren op de tabel.
+1. Gebruik de `SELECT` instructie om de tabel op te vragen.
   
     ```sql
     SELECT *
@@ -148,7 +146,7 @@ Nu gaan we gebruiken de standaard-invoer en uitvoer variabelen van [sp_execute_e
 
     ![Inhoud van de RTestData-tabel](./media/sql-database-quickstart-r-create-script/select-rtestdata.png)
 
-1. Voer het volgende R-script. Het ophalen van de gegevens uit de tabel met de `SELECT` -instructie wordt doorgegeven via de R-runtime en de gegevens retourneert als een gegevensframe. De `WITH RESULT SETS` component definieert het schema van de geretourneerde tabel voor SQL Database, de naam van de kolom toegevoegd *NewColName*.
+1. Voer het volgende R-script uit. De gegevens worden opgehaald uit de tabel met behulp van de `SELECT` -instructie, door gegeven in de R-runtime en de gegevens worden als een gegevens frame geretourneerd. De `WITH RESULT SETS` component definieert het schema van de geretourneerde gegevens tabel voor SQL database, waarbij de kolom naam *NewColName*wordt toegevoegd.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -161,7 +159,7 @@ Nu gaan we gebruiken de standaard-invoer en uitvoer variabelen van [sp_execute_e
 
     ![Uitvoer van R-script waarmee gegevens uit een tabel worden geretourneerd](./media/sql-database-quickstart-r-create-script/r-output-rtestdata.png)
 
-1. Nu gaan we wijzigen de namen van de variabelen voor de invoer en uitvoer. De standaard invoer en uitvoernamen zijn **InputDataSet** en **OutputDataSet**, dit script wijzigt de namen **SQL_in** en **SQL_out**:
+1. Nu gaan we de namen van de invoer-en uitvoer variabelen wijzigen. De standaard namen voor invoer en uitvoer variabelen zijn **input dataset** en **output dataset**, met dit script worden de namen gewijzigd in **SQL_in** en **SQL_out**:
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -172,14 +170,14 @@ Nu gaan we gebruiken de standaard-invoer en uitvoer variabelen van [sp_execute_e
     WITH RESULT SETS(([NewColName] INT NOT NULL));
     ```
 
-    Houd er rekening mee dat R hoofdlettergevoelig is. De invoer- en variabelen die worden gebruikt in de R-script (**SQL_out**, **SQL_in**) moeten overeenkomen met de waarden die zijn gedefinieerd met `@input_data_1_name` en `@output_data_1_name`, met inbegrip van de aanvraag.
+    Houd er rekening mee dat R hoofdletter gevoelig is. De invoer-en uitvoer variabelen in het R-script (**SQL_out**, **SQL_in**) moeten overeenkomen met de waarden `@input_data_1_name` die `@output_data_1_name`zijn gedefinieerd met en, inclusief case.
 
    > [!TIP]
    > Er kan maar één invoergegevensset worden doorgegeven als parameter, en u kunt slechts één gegevensset retourneren. U kunt vanuit de R-code wel andere gegevenssets aanroepen en u kunt, naast de gegevensset, ook andere typen uitvoer retourneren. U kunt ook het uitvoertrefwoord toevoegen aan elke willekeurige parameter om deze te laten retourneren met de resultaten.
 
-1. Kunt u ook waarden alleen met behulp van het R-script zonder invoer gegevens genereren (`@input_data_1` is ingesteld op leeg).
+1. U kunt ook alleen waarden genereren met behulp van het R-script zonder`@input_data_1` invoer gegevens (is ingesteld op leeg).
 
-   Het volgende script voert de tekst "Hallo" en "wereld".
+   Met het volgende script wordt de tekst "Hallo" en "wereld" uitgevoerd.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -197,7 +195,7 @@ Nu gaan we gebruiken de standaard-invoer en uitvoer variabelen van [sp_execute_e
 
 ## <a name="check-r-version"></a>R-versie controleren
 
-Als u wilt zien welke versie van R is geïnstalleerd in uw SQL-database, moet u het volgende script uitvoeren.
+Als u wilt zien welke versie van R is geïnstalleerd in uw SQL database, voert u het volgende script uit.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -205,7 +203,7 @@ EXECUTE sp_execute_external_script @language = N'R'
 GO
 ```
 
-Met de R-functie `print` wordt de versie geretourneerd in het **Berichtvenster**. In de onderstaande voorbeelduitvoer ziet u dat SQL-Database in dit geval R versie 3.4.4 geïnstalleerd heeft.
+Met de R-functie `print` wordt de versie geretourneerd in het **Berichtvenster**. In het onderstaande voor beeld ziet u dat SQL Database in dit geval R versie 3.4.4 is geïnstalleerd.
 
 **Results**
 
@@ -232,7 +230,7 @@ nickname       Someone to Lean On
 
 Microsoft biedt een aantal R-pakketten waarin Machine Learning Services vooraf zijn geïnstalleerd in de SQL-database.
 
-Een overzicht van welke R pakketten zijn geïnstalleerd, met inbegrip van versie, afhankelijkheden, licentie en informatie over het pad van de bibliotheek, moet u het volgende script uitvoeren.
+Voer het volgende script uit om een lijst weer te geven van welke R-pakketten zijn geïnstalleerd, inclusief versie, afhankelijkheden, licentie en bibliotheekpad.
 
 ```SQL
 EXEC sp_execute_external_script @language = N'R'
@@ -247,7 +245,7 @@ WITH result sets((
             ));
 ```
 
-De uitvoer is van `installed.packages()` in R en wordt geretourneerd als gevolg hiervan ingesteld.
+De uitvoer is van `installed.packages()` in R en wordt geretourneerd als een resultaatset.
 
 **Results**
 
@@ -255,13 +253,13 @@ De uitvoer is van `installed.packages()` in R en wordt geretourneerd als gevolg 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor het maken van een model voor machine learning met R in SQL-Database, moet u deze Quick Start volgen:
+Als u een machine learning model met behulp van R in SQL Database wilt maken, volgt u deze Snelstartgids:
 
 > [!div class="nextstepaction"]
-> [Maken en train een Voorspellend model in R met Azure SQL Database Machine Learning Services (preview)](sql-database-quickstart-r-train-score-model.md)
+> [Een voorspellend model maken en trainen in R met Azure SQL Database Machine Learning Services (preview)](sql-database-quickstart-r-train-score-model.md)
 
-Zie de volgende artikelen voor meer informatie over Azure SQL Database Machine Learning-Services met R (preview).
+Zie de volgende artikelen voor meer informatie over Azure SQL Database Machine Learning Services met R (preview).
 
-- [Azure SQL Database Machine Learning-Services met R (preview)](sql-database-machine-learning-services-overview.md)
-- [Schrijven van geavanceerde R-functies in Azure SQL Database met behulp van Machine Learning-Services (preview)](sql-database-machine-learning-services-functions.md)
-- [Werken met R- en SQL-gegevens in Azure SQL Database Machine Learning Services (preview)](sql-database-machine-learning-services-data-issues.md)
+- [Azure SQL Database Machine Learning Services met R (preview-versie)](sql-database-machine-learning-services-overview.md)
+- [Geavanceerde R-functies schrijven in Azure SQL Database met behulp van Machine Learning Services (preview)](sql-database-machine-learning-services-functions.md)
+- [Werken met R-en SQL-gegevens in Azure SQL Database Machine Learning Services (preview-versie)](sql-database-machine-learning-services-data-issues.md)
