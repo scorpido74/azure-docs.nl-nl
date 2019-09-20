@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 8/21/2019
 ms.author: dapine
-ms.openlocfilehash: ae4b4b13e81bc000bc0675c80c09101cc4369bc1
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: eac9264a98c6224af56618e439a1cd3f00f7157c
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130131"
+ms.locfileid: "71146820"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Ondersteuning voor containers in Azure Cognitive Services
 
@@ -49,7 +49,7 @@ Azure Cognitive Services-containers bieden de volgende set Docker-containers, di
 | Service | Ondersteunde prijs categorie | Container | Description |
 |---------|----------|----------|-------------|
 |[Anomalie detectie][ad-containers] |F0, S0|**Anomalie detectie** |Met de anomalie detectie-API kunt u afwijkingen in uw time series-gegevens controleren en detecteren met machine learning.<br>[Toegang aanvragen](https://aka.ms/adcontainer)|
-|[Computer Vision][cv-containers] |F0, S1|**Lezen** |Extraheert gedrukte tekst uit afbeeldingen van verschillende objecten met verschillende oppervlakken en achtergronden, zoals ontvangsten, posters en visitekaartjes. De Lees container detecteert ook *handgeschreven tekst* in afbeeldingen en biedt ondersteuning voor PDF/TIFF/meerdere pagina's.<br/><br/>**Belangrijk:** De tekst herkennen-container wordt op dit moment werkt alleen met Engels.<br>[Toegang aanvragen](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
+|[Computer Vision][cv-containers] |F0, S1|**Lezen** |Extraheert gedrukte tekst uit afbeeldingen van verschillende objecten met verschillende oppervlakken en achtergronden, zoals ontvangsten, posters en visitekaartjes. De Lees container detecteert ook *handgeschreven tekst* in afbeeldingen en biedt ondersteuning voor PDF/TIFF/meerdere pagina's.<br/><br/>**Belangrijk:** De Lees container werkt momenteel alleen met Engels.<br>[Toegang aanvragen](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
 |[Computer Vision][cv-containers] |F0, S1|**Tekst herkennen** |Extraheert gedrukte tekst uit afbeeldingen van verschillende objecten met verschillende oppervlakken en achtergronden, zoals ontvangsten, posters en visitekaartjes.<br/><br/>**Belangrijk:** De tekst herkennen-container wordt op dit moment werkt alleen met Engels.<br>[Toegang aanvragen](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
 |[Face][fa-containers] |F0, S0|**Face** |Detecteert menselijke gezichten in afbeeldingen en -kenmerken, zoals gezichtsoriëntatiepunten (zoals hartstukken en ogen), geslacht, leeftijd en andere machine voorspeld gezichtskenmerken identificeert. Naast detectie controleren Face of twee gezichten in dezelfde afbeelding of andere installatiekopieën zijn hetzelfde met behulp van een betrouwbaarheidsscore of gezichten op een database om te zien als een gelijkende vergelijken of identieke face al bestaat. Deze kunt soortgelijke gezichten ook organiseren in groepen, met behulp van gedeelde visuele kenmerken.<br>[Toegang aanvragen](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[Formulier herkenning][fr-containers] |F0, S0|**Formulier herkenning** |Formulier uitleg is van toepassing machine learning technologie om sleutel-waardeparen en tabellen uit formulieren te identificeren en uit te pakken.<br>[Toegang aanvragen](https://aka.ms/FormRecognizerContainerRequestAccess)|

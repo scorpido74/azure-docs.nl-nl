@@ -271,7 +271,7 @@
           href: 'https://docs.microsoft.com/python/api/azure-functions/azure.functions?view=azure-python'
     - name: Naslaginformatie voor app-instellingen
       href: functions-app-settings.md
-    - name: Bindingen
+    - name: Triggers en bindingen
       items:
         - name: Blob Storage
           href: functions-bindings-storage-blob.md
