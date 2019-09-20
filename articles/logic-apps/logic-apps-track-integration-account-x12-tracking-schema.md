@@ -76,7 +76,7 @@ Om u te helpen succes van de monitor, fouten en eigenschappen van berichten voor
 | isTechnicalAcknowledgmentExpected | Boolean | Of de technische bevestiging is geconfigureerd in de X12 overeenkomst. (Verplicht) |
 | isFunctionalAcknowledgmentExpected | Boolean | Of de functionele bevestiging is geconfigureerd in de X12 overeenkomst. (Verplicht) |
 | needAk2LoopForValidMessages | Boolean | Of de AK2-lus is vereist voor een geldig bericht. (Verplicht) |
-| segmentsCount | Geheel getal | Aantal segmenten in de X12 transactieset. (Optioneel) |
+| segmentsCount | Integer | Aantal segmenten in de X12 transactieset. (Optioneel) |
 ||||
 
 ## <a name="x12-transaction-set-acknowledgement-tracking-schema"></a>X12 bevestiging bijhouden schema voor de transactieset
