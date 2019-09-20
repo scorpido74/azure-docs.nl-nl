@@ -1,6 +1,6 @@
 ---
-title: Het gebruik van Azure-reserve ringen voor Enter prise agreements begrijpen
-description: Meer informatie over hoe u uw gebruik kunt lezen om te begrijpen hoe de Azure-reserve ring voor uw Enter prise-registratie wordt toegepast.
+title: Informatie over gebruik van Azure-reserveringen voor Enterprise Agreements
+description: Lees hier hoe u gegevens van uw gebruik kunt opvragen om te begrijpen hoe de Azure-reservering voor uw Enterprise-registratie wordt toegepast.
 author: bandersmsft
 manager: yashar
 tags: billing
@@ -12,154 +12,154 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 507ad62a917120689bee3f1e293e23c9ab8b0f66
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68598094"
 ---
-# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Enterprise Agreement reserverings kosten en gebruik ophalen
+# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Reserveringskosten en gebruiksgegevens voor Enterprise Agreement opvragen
 
-Er zijn reserverings kosten en gebruiks gegevens beschikbaar voor Enterprise Agreement klanten in de Azure Portal en REST-Api's. Dit artikel helpt u bij het volgende:
+Enterprise Agreement-klanten kunnen reserveringskosten en gebruiksgegevens bekijken in de Azure-portal en via REST-API's. In dit artikel worden de volgende onderwerpen besproken:
 
-- Inkoop gegevens reserve ring ophalen
-- Weet welk abonnement, resource groep of resource de reserve ring heeft gebruikt
-- Terugstorting voor reserverings gebruik
-- Reserverings besparingen berekenen
-- Reserve ring verkrijgen onder gebruiks gegevens
-- Reserverings kosten aflossen
+- Aankoopgegevens van reserveringen ophalen
+- Controleren welke abonnementen, resourcegroepen of resources de reservering hebben gebruikt
+- Reserveringsgebruik toerekenen
+- Reserveringsbesparingen berekenen
+- Gegevens over ondergebruikte reserveringen ophalen
+- Reserveringskosten afschrijven
 
-Marketplace-kosten worden geconsolideerd in gebruiks gegevens. U kunt kosten bekijken voor het gebruik van de eerste partij, het gebruik van Marketplace en aankopen vanuit één gegevens bron.
+Marketplace-kosten worden geconsolideerd in gebruiksgegevens. De kosten voor eigen gebruik, het gebruik van Marketplace en aankopen kunt u op één plek inzien.
 
-## <a name="reservation-charges-in-azure-usage-data"></a>Reserverings kosten in azure-gebruiks gegevens
+## <a name="reservation-charges-in-azure-usage-data"></a>Reserveringskosten in Azure-gebruiksgegevens
 
-Gegevens worden onderverdeeld in twee afzonderlijke gegevens sets: De _werkelijke kosten_ en de afgeschreven _kosten_. Hoe deze twee gegevens sets verschillen:
+Gegevens worden verdeeld over twee afzonderlijke gegevenssets: _werkelijke kosten_ en _afgeschreven kosten_. Dit zijn de verschillen tussen deze twee gegevenssets:
 
-**Werkelijke kosten** : bevat gegevens die u kunt afstemmen op uw maandelijkse factuur. Deze gegevens hebben reserve ring van de inkoop kosten en de reserverings toepassings gegevens. Met deze gegevens kunt u weten welk abonnement of welke resource groep of resource de reserverings korting heeft ontvangen op een bepaalde dag. De EffectivePrice voor het gebruik dat de reserverings korting ontvangt, is nul.
+**Werkelijk kosten**: gegevens waarmee u uw maandelijkse factuur kunt afstemmen. Deze gegevens omvatten ook de aanschafkosten van de reservering en details over reserveringstoepassingen. Aan de hand van deze gegevens kunt u vaststellen welk abonnement of welke resourcegroep of resource de reserveringskorting heeft ontvangen op een bepaalde dag. De EffectivePrice voor het gebruik dat de reserveringskorting ontvangt, is nul.
 
-**Afgeschreven kosten** : deze gegevensset is vergelijkbaar met de werkelijke kosten gegevensset, met uitzonde ring van de EffectivePrice voor het gebruik dat de reserverings korting krijgt, de evenredige kosten van de reserve ring (in plaats van nul). Dit helpt u bij het bepalen van de monetaire waarde van reserverings verbruik door een abonnement, resource groep of resource, en kan u helpen om het gebruik van de reserve ring intern terug te brengen. De gegevensset heeft ook ongebruikte reserverings uren. De gegevensset heeft geen reserve ring van de inkoop records. 
+**Afgeschreven kosten**: deze gegevensset is vergelijkbaar met de gegevensset Werkelijke kosten, met als verschil dat de EffectivePrice voor het gebruik dat de reserveringskorting krijgt gelijk is aan de evenredig verdeelde kosten van de reservering (in plaats van nul). Deze gegevens helpen bij het bepalen van de monetaire waarde van reserveringsverbruik door een abonnement, resourcegroep of resource, en kan u helpen om het gebruik van de reservering intern toe te rekenen. De gegevensset heeft ook ongebruikte reserveringsuren. De gegevensset heeft geen records van reserveringsaankopen. 
 
-Vergelijking van twee gegevens sets:
+Vergelijking van de twee gegevenssets:
 
-| Data | Gegevensset voor werkelijke kosten | Gegevensset voor afgeschreven kosten |
+| Gegevens | Gegevensset Werkelijke kosten | Gegevensset Afgeschreven kosten |
 | --- | --- | --- |
-| Reserverings aankopen | Beschikbaar in deze weer gave.<br><br>  Als u dit gegevens filter op ChargeType = &quot;aankoop&quot;wilt ophalen. <br><br> Raadpleeg ReservationID of reservernaam om te weten welke reserve ring de kosten voor zijn.  | Niet van toepassing op deze weer gave. <br><br> Er worden geen inkoop kosten in afgeschreven gegevens gegeven. |
-| EffectivePrice | De waarde is nul voor het gebruik van de reserverings korting. | De waarde is per uur naar evenredige kosten van de reserve ring voor gebruik met de reserverings korting. |
-| Ongebruikte reserve ring (geeft het aantal uur dat de reserve ring niet is gebruikt op een dag en de monetaire waarde van het afval) | Niet van toepassing in deze weer gave. | Beschikbaar in deze weer gave.<br><br> Als u deze gegevens wilt ophalen, filtert &quot;u&quot;op ChargeType = UnusedReservation.<br><br>  Raadpleeg ReservationID of Reservationnaam om te weten welke reserve ring is ondergebruikt. Dit is het gedeelte van de reserve ring dat voor de dag is verspild.  |
-| UnitPrice (prijs van de resource in uw prijzen overzicht) | Beschikbaar | Beschikbaar |
+| Reserveringsaankopen | Beschikbaar in deze weergave.<br><br>  U kunt deze gegevens opvragen door te filteren op ChargeType = &quot;Purchase&quot;. <br><br> Raadpleeg de ReservationID of de ReservationName om vast te stellen voor welke reservering de kosten zijn.  | Niet van toepassing op deze weergave. <br><br> Er worden geen aankoopkosten opgenomen in gegevens van afgeschreven kosten. |
+| EffectivePrice | De waarde is nul voor gebruik waarvoor een reserveringskorting geldt. | De waarde bestaat uit de evenredig verdeelde kosten per uur van de reservering voor gebruik waarvoor een reserveringskorting geldt. |
+| Ongebruikte reservering (het aantal uren dat de reservering niet is gebruikt op een dag en de monetaire waarde van de verspilling) | Niet van toepassing in deze weergave. | Beschikbaar in deze weergave.<br><br> U kunt deze gegevens opvragen door te filteren op ChargeType = &quot;UnusedReservation&quot;.<br><br>  Raadpleeg de ReservationID of de ReservationName om vast te stellen welke reservering niet maximaal is gebruikt. Geeft aan welk gedeelte van de reservering er die dag is verspild.  |
+| UnitPrice (prijs van de resource in uw prijzenoverzicht) | Beschikbaar | Beschikbaar |
 
-Andere informatie die beschikbaar is in azure-gebruiks gegevens is gewijzigd:
+Er zijn aanpassingen doorgevoerd in andere gegevens die beschikbaar zijn voor Azure-gebruiksgegevens:
 
-- Product-en meter gegevens-Azure vervangt niet de oorspronkelijk gebruikte meter met de ReservationId en reserverings naam, zoals eerder was gebruikt.
-- ReservationId en reservernaam: ze zijn hun eigen velden in de gegevens. Voorheen werd deze alleen beschikbaar onder AdditionalInfo.
-- ProductOrderId: de reserverings Order-ID, die als een eigen veld is toegevoegd.
-- ProductOrderName: de product naam van de aangeschafte reserve ring.
-- Periode van 12 maanden of 36 maanden.
-- RINormalizationRatio: beschikbaar onder AdditionalInfo. Dit is de verhouding waar de reserve ring wordt toegepast op de gebruiks record. Als de flexibiliteit van de instantie grootte is ingeschakeld voor uw reserve ring, kan deze van toepassing zijn op andere grootten. De waarde toont de verhouding waarop de reserve ring is toegepast voor de gebruiks record.
+- Product- en metergegevens: de oorspronkelijk gebruikte meter wordt niet meer vervangen door de ReservationId en ReservationName, zoals eerder het geval was.
+- ReservationId en ReservationName: dit zijn nu afzonderlijke velden in de gegevens. Eerder was deze informatie alleen beschikbaar onder AdditionalInfo.
+- ProductOrderId: de id van de reserveringsorder, die als afzonderlijk veld is toegevoegd.
+- ProductOrderName: de productnaam van de gekochte reservering.
+- Term: 12 of 36 maanden.
+- RINormalizationRatio: beschikbaar onder AdditionalInfo. Dit is de verhouding waarmee de reservering wordt toegepast op de gebruiksrecord. Als flexibiliteit van instantiegrootte is ingeschakeld voor uw reservering, kan dit van toepassing zijn op andere grootten. De waarde toont de verhouding waarmee de reservering is toegepast voor de gebruiksrecord.
 
-## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Gebruiks gegevens voor Azure-verbruik en-reserve ring ophalen met behulp van API
+## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Gebruiks- en reserveringsgegevens van Azure opvragen met een API
 
-U kunt de gegevens ophalen met behulp van de API of downloaden van Azure Portal.
+U kunt de gegevens opvragen met behulp van de API of door ze te downloaden uit de Azure-portal.
 
-U roept de [gebruiks gegevens-API](/rest/api/consumption/usagedetails/list) aan met &quot;API versie 2019-04-01&quot; -Preview om de nieuwe gegevens te verkrijgen. Zie [gebruiks voorwaarden](billing-understand-your-usage.md)voor meer informatie over terminologie. De aanroeper moet een ondernemings beheerder voor de Enter prise Agreement zijn met behulp van de [EA-Portal](https://ea.azure.com). Alleen-lezen ondernemings Administrators kunnen de gegevens ook ophalen.
+Als u nieuwe gegevens wilt opvragen, roept u de [API voor gebruiksgegevens](/rest/api/consumption/usagedetails/list) met API-versie &quot;2019-04-01-preview&quot; aan. Zie de [gebruiksvoorwaarden](billing-understand-your-usage.md)voor meer informatie over de gebruikte terminologie. De persoon die de aanroep verstuurt, moet een ondernemingsbeheerder zijn voor de Enterprise Agreement en hiervoor moet de [EA-portal](https://ea.azure.com) worden gebruikt. Ondernemingsbeheerders met de bevoegdheid Alleen-lezen kunnen de gegevens ook opvragen.
 
-De gegevens zijn niet beschikbaar in [rapportage-api's voor zakelijke klanten-gebruiks gegevens](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
+De gegevens zijn niet beschikbaar in [Reporting APIs for Enterprise customers - Usage Details](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) (Rapportage-API's voor Enterprise-klanten - Gebruiksgegevens).
 
-Hier volgt een voor beeld van een aanroep naar de API:
+Hier ziet u een voorbeeld van een aanroep naar de API:
 
 ```
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-04-01-preview&amp;$filter={filter}
 ```
 
-Voor meer informatie over {enrollmentId} en {billingPeriodId} raadpleegt u het artikel [gebruiks gegevens-List-](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) API.
+Zie het artikel over [de API voor gebruiksgegevens](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) voor meer informatie over {enrollmentId} en {billingPeriodId}.
 
-Informatie in de volgende tabel over metrische gegevens en filters kan helpen bij het oplossen van veelvoorkomende reserverings problemen.
+De informatie in de onderstaande tabel over metrische gegevens en filters kan helpen bij het oplossen van veelvoorkomende reserveringsproblemen.
 
-| **Type API-gegevens** | API-aanroep actie |
+| **Type API-gegevens** | Actie van API-aanroep |
 | --- | --- |
-| **Alle kosten (gebruik en aankoop)** | {Metrisch} vervangen door ActualCost |
-| **Gebruik dat de reserverings korting kreeg** | {Metrisch} vervangen door ActualCost<br><br>{Filter} vervangen door: eigenschappen/reservationId% 20ne% 20 |
-| **Gebruik waarvoor geen reserverings korting is verkregen** | {Metrisch} vervangen door ActualCost<br><br>{Filter} vervangen door: eigenschappen/reservationId% 20eq% 20 |
-| **Afgeschreven kosten (gebruik en aankoop)** | {Metrisch} vervangen door AmortizedCost |
-| **Rapport ongebruikte reserverings rapporten** | {Metrisch} vervangen door AmortizedCost<br><br>{Filter} vervangen door: eigenschappen/ChargeType% 20eq% 20 ' UnusedReservation ' |
-| **Reserverings aankopen** | {Metrisch} vervangen door ActualCost<br><br>{Filter} vervangen door: eigenschappen/ChargeType% 20eq% 20 ' aankoop '  |
-| **Restituties** | {Metrisch} vervangen door ActualCost<br><br>{Filter} vervangen door: eigenschappen/ChargeType% 20eq% 20 ' restitutie ' |
+| **Alle kosten (gebruik en aankopen)** | Vervang {metric} door ActualCost |
+| **Gebruik waarvoor een reserveringskorting is ontvangen** | Vervang {metric} door ActualCost<br><br>Vervang {Filter} door: properties/reservationId%20ne%20 |
+| **Gebruik waarvoor geen reserveringskorting is ontvangen** | Vervang {metric} door ActualCost<br><br>Vervang {Filter} door: properties/reservationId%20eq%20 |
+| **Afgeschreven kosten (gebruik en aankopen)** | Vervang {metric} door AmortizedCost |
+| **Rapport ongebruikte reserveringen** | Vervang {metric} door AmortizedCost<br><br>Vervang {filter} door: properties/ChargeType%20eq%20'UnusedReservation' |
+| **Reserveringsaankopen** | Vervang {metric} door ActualCost<br><br>Vervang {filter} door: properties/ChargeType%20eq%20'Purchase'  |
+| **Restituties** | Vervang {metric} door ActualCost<br><br>Vervang {filter} door: properties/ChargeType%20eq%20'Refund' |
 
-## <a name="download-the-usage-csv-file-with-new-data"></a>Down load het CSV-gebruiks bestand met nieuwe gegevens
+## <a name="download-the-usage-csv-file-with-new-data"></a>CSV-bestand met nieuwe gebruiksgegevens downloaden
 
-Als u een EA-beheerder bent, kunt u het CSV-bestand downloaden dat nieuwe gebruiks gegevens bevat uit Azure Portal. Deze gegevens zijn niet beschikbaar in de [EA-Portal](https://ea.azure.com).
+Als u een EA-beheerder bent, kunt u vanuit de Azure-portal het CSV-bestand downloaden dat nieuwe gebruiksgegevens bevat. Deze gegevens zijn niet beschikbaar vanuit de [EA-portal](https://ea.azure.com).
 
-Ga in het Azure Portal naar [Cost Management + billing](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts).
+Ga in de Azure-portal naar [Kostenbeheer en facturering](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts).
 
-1. Selecteer het facturerings account.
-2. Klik op **gebruik + kosten**.
+1. Selecteer het factureringsaccount.
+2. Klik op **Gebruik en kosten**.
 3. Klik op **Downloaden**.  
-![Voor beeld van het downloaden van het bestand met CSV-gebruiks gegevens in de Azure Portal](./media/billing-understand-reserved-instance-usage-ea/portal-download-csv.png)
-4. Selecteer in gebruik en **kosten downloaden** onder **gebruiks Details versie 2** **alle kosten (gebruik en inkoop)** en klik vervolgens op downloaden. Herhaal dit voor **afgeschreven kosten (gebruik en inkoop)** .
+![Voorbeeld waarin wordt aangegeven waar u het CSV-bestand met gebruiksgegevens kunt downloaden in de Azure-portal](./media/billing-understand-reserved-instance-usage-ea/portal-download-csv.png)
+4. Ga naar **Gebruik en kosten downloaden**, selecteer onder **Versie 2 gebruiksdetails** **Alle kosten (gebruik en aankopen)** en klik vervolgens op Downloaden. Herhaal dit voor **Afgeschreven kosten (gebruik en aankopen)** .
 
 De CSV-bestanden die u downloadt, bevatten de werkelijke kosten en afgeschreven kosten.
 
-## <a name="common-cost-and-usage-tasks"></a>Algemene kosten-en gebruiks taken
+## <a name="common-cost-and-usage-tasks"></a>Algemene taken voor kosten en gebruik
 
-De volgende secties bevatten algemene taken die de meeste mensen gebruiken om de reserverings kosten en gebruiks gegevens weer te geven.
+De volgende secties bevatten algemene taken die vaak worden gebruikt om reserveringskosten en gebruiksgegevens te bekijken.
 
-### <a name="get-reservation-purchase-costs"></a>Aanschaf kosten van reserve ring ophalen
+### <a name="get-reservation-purchase-costs"></a>Aankoopkosten van reserveringen opvragen
 
-Inkoop kosten voor reserve ring zijn beschikbaar in gegevens over de werkelijke kosten. Filter voor _ChargeType = Purchase_. Raadpleeg ProductOrderID om te bepalen welke reserverings order voor de aankoop geldt.
+Aankoopkosten voor reserveringen zijn terug te vinden in de gegevens over werkelijke kosten. Filter op _ChargeType = Purchase_. Raadpleeg de ProductOrderID om te bepalen op welke reserveringsorder de aankoop betrekking heeft.
 
-### <a name="get-underutilized-reservation-quantity-and-costs"></a>Gereserveerde reserverings hoeveelheid en kosten voor gebruik
+### <a name="get-underutilized-reservation-quantity-and-costs"></a>Hoeveelheid en kosten voor niet volledig gebruikte reserveringen opvragen
 
-Ontvang afgeschreven kosten gegevens en filter voor _ChargeType_ _= UnusedReservation_. U krijgt de dagelijks ongebruikte reserverings hoeveelheid en de kosten. U kunt de gegevens filteren voor een reserve ring of reserverings order, respectievelijk met de velden _ReservationId_ en _ProductOrderId_ . Als een reserve ring 100% is gebruikt, heeft de record een hoeveelheid van 0.
+Vraag gegevens voor afgeschreven kosten op en filter op _ChargeType_ _= UnusedReservation_. U ziet dan de hoeveelheid en kosten per dag voor ongebruikte reserveringen. U kunt de gegevens filteren op een reservering of reserveringsorder door respectievelijk de velden _ReservationId_ en _ProductOrderId_ te gebruiken. Als een reservering 100% is gebruikt, is de hoeveelheid van de record 0.
 
-### <a name="amortize-reservation-costs"></a>Reserverings kosten aflossen
+### <a name="amortize-reservation-costs"></a>Reserveringskosten afschrijven
 
-Ontvang afgeschreven kosten gegevens en filter voor een reserverings order met _ProductOrderID_ om dagelijkse afgeschreven kosten voor een reserve ring te verkrijgen.
+Vraag gegevens van afgeschreven kosten op en filter op een reserveringsorder met _ProductOrderID_ om per dag de afgeschreven kosten voor een reservering te bekijken.
 
-### <a name="chargeback-for-a-reservation"></a>Terugstorting voor een reserve ring
+### <a name="chargeback-for-a-reservation"></a>Toerekenen van een reservering
 
-U kunt reserve ringen terugstortingen naar andere organisaties per abonnement, resource groepen of tags. Afgeschreven kosten gegevens bieden een financiële waarde voor het gebruik van een reserve ring bij de volgende gegevens typen:
+U kunt reserveringen aan andere organisaties toerekenen per abonnement, resourcegroepen of tags. Gegevens van afgeschreven kosten tonen de monetaire waarde voor het gebruik van een reservering voor de volgende gegevenstypen:
 
-- Bronnen (zoals een virtuele machine)
-- Resource group
-- Labels
-- Subscription
+- Resources (zoals een VM)
+- Resourcegroep
+- Tags
+- Abonnement
 
-### <a name="get-the-blended-rate-for-chargeback"></a>De overvloei factor voor terugstorting ophalen
+### <a name="get-the-blended-rate-for-chargeback"></a>Gemengd tarief voor toerekening opvragen
 
-Als u de overvloei factor wilt bepalen, haalt u de afgeschreven kosten gegevens op en voegt u de totale kosten samen. Voor virtuele machines kunt u de gegevens van de meet waarde of Service type van AdditionalInfo JSON-gegevens gebruiken. De totale kosten delen op basis van het aantal dat is gebruikt om het overvloei percentage op te halen.
+Als u het gemengde tarief wilt bepalen, vraagt u de gegevens van afgeschreven kosten op en aggregeert u de totale kosten. Voor VM's kunt u de gegevens voor MeterName of ServiceType uit de JSON-gegevens AdditionalInfo gebruiken. Deel de totale kosten door de hoeveelheid om het gemengde tarief te bepalen.
 
-### <a name="audit-optimum-reservation-use-for-instance-size-flexibility"></a>Optimale reserverings gebruik controleren voor de flexibiliteit van de instantie grootte
+### <a name="audit-optimum-reservation-use-for-instance-size-flexibility"></a>Optimaal gebruik van reserveringen controleren voor flexibiliteit van instantiegrootte
 
-Meerdere hoeveel heden met de _RINormalizationRatio_, van AdditionalInfo. De resultaten geven aan hoeveel uur van het gebruik van de reserve ring is toegepast op de gebruiks record.
+Vermenigvuldig de hoeveelheid met de _RINormalizationRatio_, in AdditionalInfo. De resultaten geven aan hoeveel uur van het gebruik van de reservering is toegepast op de gebruiksrecord.
 
-### <a name="determine-reservation-savings"></a>Reserverings besparingen bepalen
+### <a name="determine-reservation-savings"></a>Reserveringsbesparingen bepalen
 
-De afgeschreven kosten gegevens ophalen en de gegevens filteren voor een gereserveerde instantie. Kies
+Vraag gegevens van afgeschreven kosten op en filter de gegevens op een gereserveerde instantie. Daarna kunt u het volgende doen:
 
-1. Profiteer van de geschatte kosten voor betalen per gebruik. Vermenigvuldig de waarde _UnitPrice_ met _hoeveelheids_ waarden om geschatte betalen per gebruik-kosten te krijgen, als de reserverings korting niet van toepassing is op het gebruik.
-2. De reserverings kosten ophalen. Som van de _kosten_ waarden om de financiële waarde op te halen van wat u hebt betaald voor de gereserveerde instantie. Deze bevat de gebruikte en ongebruikte kosten van de reserve ring.
-3. Retrekken kosten van de geschatte betalen per gebruik-kosten af om de geschatte besparingen te krijgen.
+1. Geschatte kosten voor betalen naar gebruik opvragen. Vermenigvuldig de waarde voor _UnitPrice_ met de waarden voor _Quantity_ om een schatting te krijgen van de kosten voor betalen naar gebruik, als de reserveringskorting niet is toegepast op het gebruik.
+2. De reserveringskosten opvragen. Bereken de som van de waarden voor _Cost_ om de monetaire waarde te bepalen van wat u hebt betaald voor de gereserveerde instantie. De berekende waarde omvat de gebruikte en ongebruikte kosten van de reservering.
+3. Reserveringskosten aftrekken van de geschatte kosten voor betalen naar gebruik om de geschatte besparingen te bepalen.
 
-## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Reserverings aankopen en aflossingen in kosten analyse
+## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Reserveringsaankopen en afschrijving in kostenanalyse
 
-De reserverings kosten zijn beschikbaar in [kosten analyse](https://aka.ms/costanalysis). Standaard worden in kosten analyse de **werkelijke kosten**weer gegeven. Dit is de manier waarop de kosten op uw factuur worden weer gegeven. Voor het weer geven van de reserverings aankopen die zijn gesplitst en gekoppeld aan de resources die het voor deel hebben gebruikt, schakelt u over naar **afgeschreven kosten**:
+Reserveringskosten zijn beschikbaar in [Kostenanalyse](https://aka.ms/costanalysis). In Kostenanalyse worden standaard de **werkelijke kosten** weergegeven. Dit zijn de kosten die op uw factuur worden vermeld. Als u de reserveringsaankopen wilt uitsplitsen naar de resources die het voordeel hebben gebruikt, schakelt u over naar **Afgeschreven kosten**:
 
-![Voor beeld van het selecteren van afgeschreven kosten in kosten analyse](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
+![Voorbeeld waarin wordt aangegeven waar u afgeschreven kosten kunt selecteren in Kostenanalyse](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-Groeperen op kosten type om een uitsplitsing van het gebruik, de aanschaf en de restitutie te bekijken; of door reserve ring voor een uitsplitsing van de reserve ring en kosten op aanvraag. Onthoud de enige reserverings kosten die u zult zien wanneer de werkelijke kosten worden gekocht, maar de kosten worden toegewezen aan de afzonderlijke resources die de benfit hebben gebruikt bij het bekijken van de kosten. U ziet ook een nieuw **UnusedReservation** -kosten type wanneer u de afgeschreven kosten wilt bekijken.
+Groepeer op kostensoort om een uitsplitsing te zien naar gebruik, aankopen en restituties. Groepeer op reservering voor een uitsplitsing van de kosten voor reserveringen en on-demand. Vergeet niet dat als u naar de werkelijke kosten kijkt, alleen de reserveringskosten voor aankopen worden weergegeven. De kosten worden echter wel toegerekend aan de afzonderlijke resources die het voordeel hebben gebruikt als u naar de afgeschreven kosten kijkt. U ziet ook een nieuwe kostensoort **UnusedReservation** wanneer u de afgeschreven kosten bekijkt.
 
 ## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
-Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor meer informatie over Azure Reservations:
+Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
-- [Wat zijn Azure Reservations?](billing-save-compute-costs-reservations.md)
+- [Wat zijn Azure-reserveringen?](billing-save-compute-costs-reservations.md)
 - [Vooruitbetalen voor Virtual Machines met Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Vooruitbetalen voor compute-resources van SQL Database met gereserveerde capaciteit voor Azure SQL Database](../sql-database/sql-database-reserved-capacity.md)
 - [Azure-reserveringen beheren](billing-manage-reserved-vm-instance.md)
-- [Begrijpen hoe de reserverings korting wordt toegepast](billing-understand-vm-reservation-charges.md)
-- [Het gebruik van de reserve ring begrijpen voor uw abonnement voor betalen naar gebruik](billing-understand-reserved-instance-usage.md)
-- [Windows-software kosten niet inbegrepen bij reserve ringen](billing-reserved-instance-windows-software-costs.md)
+- [Begrijpen hoe de reserveringskorting wordt toegepast](billing-understand-vm-reservation-charges.md)
+- [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](billing-understand-reserved-instance-usage.md)
+- [Kosten van Windows-software die niet zijn inbegrepen bij reserveringen](billing-reserved-instance-windows-software-costs.md)

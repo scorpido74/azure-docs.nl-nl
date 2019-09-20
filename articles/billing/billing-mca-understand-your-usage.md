@@ -1,6 +1,6 @@
 ---
-title: Voorwaarden in de Azure-voor gebruik en de kosten voor een Microsoft-KLANTOVEREENKOMST
-description: Informatie over het lezen en begrijpen van de secties van de Azure-gebruik en kosten CSV voor uw facturering profiel.
+title: Terminologie in het bestand met Azure-gebruik en -kosten voor een Microsoft-klantovereenkomst
+description: Lees hier alles over de secties van het CSV-bestand met gegevens van Azure-gebruik en -kosten voor uw factureringsprofiel.
 author: bandersmsft
 manager: jureid
 tags: billing
@@ -12,120 +12,120 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: d11e31366ea5aa15cf7a790eaee800fa2ea6dabe
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490625"
 ---
-# <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Voorwaarden in de Azure-voor gebruik en de kosten voor een Microsoft-KLANTOVEREENKOMST
+# <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Terminologie in het bestand met Azure-gebruik en -kosten voor een Microsoft-klantovereenkomst
 
-In dit artikel is van toepassing op een rekening voor een Microsoft-KLANTOVEREENKOMST. [Controleer of u toegang tot een Microsoft-KLANTOVEREENKOMST hebt](#check-access-to-a-microsoft-customer-agreement).
+Dit artikel is van toepassing op een factureringsaccount voor een Microsoft-klantovereenkomst. [Controleer of u toegang hebt tot een Microsoft-klantovereenkomst](#check-access-to-a-microsoft-customer-agreement).
 
-Kosten voor het dagelijkse meter op en gebruik bevat de Azure-gebruik en kosten CSV-bestand voor de huidige factureringsperiode.
+Het CSV-bestand met gegevens van Azure-gebruik en -kosten bevat dagelijks gebruikskosten en gebruikskosten op meterniveau voor de huidige factureringsperiode.
 
-Als u uw Azure-voor gebruik en de kosten, Zie [weergeven en downloaden gebruik van Azure en kosten voor uw Microsoft-KLANTOVEREENKOMST](billing-download-azure-daily-usage.md). Het is beschikbaar in een indeling met door komma's gescheiden waarden (.csv) die u in een werkbladtoepassing openen kunt.
+Zie [Uw Azure-gebruik en -kosten weergeven en downloaden](billing-download-azure-daily-usage.md) om dit bestand te downloaden. Het is beschikbaar in een bestandsindeling met door komma's gescheiden waarden (.csv) die u kunt openen in een spreadsheetprogramma.
 
-Gebruikskosten zijn de totale **maandelijkse** kosten op een abonnement. De kosten voor het gebruik rekening geen gehouden met eventuele tegoeden of kortingen.
+Gebruikskosten zijn de totale **maandelijkse** kosten voor een abonnement. In de gebruikskosten wordt geen rekening gehouden met eventuele tegoeden of kortingen.
 
-## <a name="changes-from-azure-ea-usage-and-charges"></a>Wijzigingen van Azure EA-gebruik en de kosten
+## <a name="changes-from-azure-ea-usage-and-charges"></a>Wijzigingen voor gebruik en kosten van Azure EA
 
-Als u een EA-klant bent, zult u merken dat de termen in de Azure facturering gebruik van CSV-bestand van het profiel van de voorwaarden in de Azure EA gebruik van CSV-bestand afwijken. Hier volgt een toewijzing van EA-gebruiksvoorwaarden tot facturering gebruiksvoorwaarden profiel:
+Als u een EA-klant bent, zult u merken dat de terminologie in het CSV-bestand met gegevens van Azure-gebruik voor uw factureringsprofiel verschillen van de terminologie die wordt gebruikt in het CSV-bestand met gegevens van het Azure EA-gebruik. In de onderstaande tabel zijn de gebruikte termen van EA gekoppeld aan die van het factureringsprofiel:
 
-| Gebruik van Azure EA CSV | Microsoft Customer overeenkomst Azure-gebruik en kosten CSV |
+| CSV met gegevens van Azure EA-gebruik | CSV met Azure-gebruik en -kosten voor Microsoft-klantovereenkomst |
 | --- | --- |
 | Date | date |
-| Maand| date |
-| Dag | date |
-| Jaar | date |
+| Month| date |
+| Day | date |
+| Year | date |
 | Product | product |
-| Meter-id | meterID |
+| MeterId | meterId |
 | MeterCategory | meterCategory |
 | MeterSubCategory | meterSubCategory |
 | MeterRegion | meterRegion |
 | MeterName | meterName |
-| ConsumedQuantity | Hoeveelheid |
+| ConsumedQuantity | quantity |
 | ResourceRate | effectivePrice |
 | ExtendedCost | kosten |
-| resourceLocation | resourceLocation |
+| ResourceLocation | resourceLocation |
 | ConsumedService | consumedService |
 | InstanceId | instanceId |
 | ServiceInfo1 | serviceInfo1 |
 | ServiceInfo2 | serviceInfo2 |
-| Aanvullende informatie | Aanvullende informatie |
-| Tags | codes |
-| StoreServiceIdentifier | N/A |
-| Naam van de afdeling | invoiceSection |
+| AdditionalInfo | additionalInfo |
+| Tags | tags |
+| StoreServiceIdentifier | N.v.t. |
+| DepartmentName | invoiceSection |
 | CostCenter | costCenter |
-| unitOfMeasure | unitofMeasure |
+| UnitOfMeasure | unitofMeasure |
 | ResourceGroup | resourceGroup |
 | ChargesBilledSeparately | isAzureCreditEligible |
 
-## <a name="detailed-terms-and-descriptions"></a>Gedetailleerde voorwaarden en beschrijvingen
+## <a name="detailed-terms-and-descriptions"></a>Gedetailleerde termen en beschrijvingen
 
-De volgende voorwaarden worden weergegeven in de Azure-voor gebruik en kosten in rekening gebracht.
+De volgende termen worden gebruikt in het bestand met gegevens van Azure-gebruik en -kosten.
 
-Termijn | Description
+Termijn | Beschrijving
 --- | ---
-invoiceId | De unieke document-ID weergegeven op de factuur PDF
-previousInvoiceId | Verwijzing naar een oorspronkelijke factuur als dit regelitem een restitutie
+InvoiceId | De unieke document-id die op de factuur-PDF wordt vermeld
+previousInvoiceId | Verwijzing naar een oorspronkelijke factuur als dit regelitem een restitutie is
 billingAccountName | Naam van het factureringsaccount
-billingAccountId | De unieke id voor de basis-account
-billingProfileId | Naam van de facturering profiel dat lopen de kosten die worden gefactureerd
-billingProfileName | De unieke id voor de facturering-profiel dat lopen de kosten die worden gefactureerd
-invoiceSectionId | De unieke id voor het gedeelte factuur
-invoiceSectionName | Naam van de factuur-sectie
-costCenter | De kostenplaats die is gedefinieerd voor het abonnement voor het bijhouden van kosten (alleen beschikbaar in open factureringsperioden)
-billingPeriodStartDate | De begindatum van de factureringsperiode waarvoor de factuur is gegenereerd
-billingPeriodEndDate | De einddatum van de factureringsperiode waarvoor de factuur is gegenereerd
-servicePeriodStartDate | De begindatum van de periode voor de classificatie die die is gedefinieerd en vergrendeld prijsgegevens voor de service verbruikt of worden gekocht
-servicePeriodEndDate | De einddatum van de periode voor de classificatie die die is gedefinieerd en vergrendeld prijsgegevens voor de service verbruikt of worden gekocht
-date | Dit is de datum van de classificatie voor Azure Marketplace op gebruik gebaseerde kosten en. Dit is de aankoopdatum voor eenmalige aankopen (reserveringen, Marketplace) of vaste terugkerende kosten (ondersteuning voor aanbiedingen).
-serviceFamily | Service-familie die deel uitmaakt van de service op
-productOrderId | De unieke id voor de volgorde van het product
-productOrderName | Unieke naam op voor de volgorde van het product
+billingAccountId | Unieke id voor het hoofdfactureringsaccount
+billingProfileId | Naam van het factureringsprofiel waaraan de gefactureerde kosten worden toegerekend
+billingProfileName | Unieke id van het factureringsprofiel waaraan de gefactureerde kosten worden toegerekend
+invoiceSectionId | Unieke id voor de factuursectie
+invoiceSectionName | Naam van de factuursectie
+costCenter | De kostenplaats die voor het abonnement is gedefinieerd voor het bijhouden van kosten (alleen beschikbaar in geopende factureringsperioden)
+billingPeriodStartDate | De begindatum van de factureringsperiode waarvoor de factuur wordt gegenereerd
+billingPeriodEndDate | De einddatum van de factureringsperiode waarvoor de factuur wordt gegenereerd
+servicePeriodStartDate | De begindatum van de classificatieperiode waarin de prijzen voor de verbruikte of aangeschafte service zijn gedefinieerd en vergrendeld
+servicePeriodEndDate | De einddatum van de classificatieperiode waarin de prijzen voor de verbruikte of aangeschafte service zijn gedefinieerd en vergrendeld
+date | Voor kosten voor Azure en Marketplace op basis van gebruik is dit de classificatiedatum. Voor eenmalige aankopen (reserveringen, Marketplace) of vaste terugkerende kosten (ondersteuningsaanbiedingen) is dit de aankoopdatum.
+serviceFamily | Servicereeks waarvan de service deel uitmaakt
+productOrderId | Unieke id voor de productorder
+productOrderName | Unieke naam voor de productorder
 consumedService | Naam van de verbruikte service
 meterId | De unieke id voor de meter
 meterName | De naam van de meter
-meterCategory | De naam van de classificatiecategorie voor de meter. Bijvoorbeeld, *Cloudservices*, *netwerken*, enzovoort.
-meterSubCategory | Naam van de onderliggende classificatie metercategorie
-meterRegion | De naam van de regio waar de meter voor de service beschikbaar is. Geeft de locatie van het datacenter voor bepaalde services waarbij de prijs is gebaseerd op de datacenterlocatie.
-aanbieding | Naam van de aanbieding hebt aangeschaft
-productId | De unieke id voor het product de kosten oplopen
-product | Naam van het product de kosten oplopen
-abonnements-ID | De unieke id voor het abonnement de kosten oplopen
-subscriptionName | Naam van het abonnement de kosten oplopen
-reservationId | De unieke id voor het exemplaar van de aangeschafte reservering
-reservationName | Naam van het exemplaar van de aangeschafte reservering
-publisherType | Type van de uitgever (waarden: firstParty, thirdPartyReseller, thirdPartyAgency)
+meterCategory | Naam van de classificatiecategorie voor de meter. Bijvoorbeeld *Cloudservices*, *Netwerken* enz.
+meterSubCategory | Naam van de sub-classificatiecategorie voor de meter
+meterRegion | Naam van de regio waar de meter voor de service beschikbaar is. Identificeert de locatie van het datacenter voor bepaalde services waarbij de prijs is gebaseerd op de locatie van het datacenter.
+offer | Naam van de aangeschafte aanbieding
+productId | Unieke id voor het product waarop de kosten betrekking hebben
+product | Naam van het product waarop de kosten betrekking hebben
+subscription ID | Unieke id voor het abonnement waarop de kosten betrekking hebben
+subscriptionName | Naam van het abonnement waarop de kosten betrekking hebben
+reservationId | Unieke id voor de aangeschafte reserveringsinstantie
+reservationName | Naam van de aangeschafte reserveringsinstantie
+publisherType | Type uitgever (waarden: firstParty, thirdPartyReseller, thirdPartyAgency)
 publisherName | Uitgever voor Marketplace-services
-resourceGroupId | De unieke id voor de resourcegroep die is gekoppeld aan de resource
+resourceGroupId | Unieke id voor de resourcegroep die is gekoppeld aan de resource
 resourceGroupName | Naam van de resourcegroep die is gekoppeld aan de resource
-resourceId | De unieke id voor de resource-instantie
-ResourceType | Type resource-exemplaar
-resourceLocation | Geeft de locatie van het datacenter waar de resource wordt uitgevoerd.
-location | Genormaliseerde locatie van de resource als andere resource-locaties zijn geconfigureerd voor dezelfde regio 's
-Hoeveelheid | Het aantal eenheden die zijn aangeschaft of die worden gebruikt
-unitOfMeasure | De maateenheid voor de service wordt gefactureerd. Bijvoorbeeld, worden compute-services gefactureerd per uur.
-chargeType | Het type van de kosten in rekening gebracht. Waarden: <ul><li>AsCharged-Usage: Opgetelde kosten op basis van gebruik van een Azure-service. Dit geldt ook voor gebruik op basis van virtuele machines die geen kosten in rekening vanwege gereserveerde instanties gebracht.</li><li>AsCharged-PurchaseMarketplace: Eenmalig of vaste terugkerende kosten van Marketplace-aankopen</li><li>AsCharged-UsageMarketplace: Kosten voor Marketplace-services die worden in rekening gebracht op basis van eenheden van het verbruik</li></ul>
-isAzureCreditEligible | Markering waarmee wordt aangegeven of de kosten worden berekend op basis van de service in aanmerking komende te betalen voor het gebruik van Azure-tegoed (waarden: True, False)
+resourceId | Unieke id voor de resource-instantie
+resourceType | Type resource-instantie
+resourceLocation | Hiermee wordt de locatie van het datacenter aangegeven waarin de resource wordt uitgevoerd.
+location | Genormaliseerde locatie van de resource als er verschillende resourcelocaties zijn geconfigureerd voor dezelfde regio's
+quantity | Het aantal eenheden dat is aangeschaft of verbruikt
+unitOfMeasure | De maateenheid voor facturering van de service. Computeservices worden bijvoorbeeld per uur gefactureerd.
+chargeType | Het type kosten. Waarden: <ul><li>AsCharged-Usage: Kosten die het gevolg zijn van het gebruik van een Azure-service. Dit omvat het gebruik van virtuele machines dat niet in rekening word gebracht vanwege gereserveerde instanties.</li><li>AsCharged-PurchaseMarketplace: Eenmalige of vaste terugkerende kosten van Marketplace-aankopen</li><li>AsCharged-UsageMarketplace: Kosten voor Marketplace-services die worden gefactureerd op basis van verbruikseenheden</li></ul>
+isAzureCreditEligible | Vlag die aangeeft of de kosten voor de service in aanmerking komen om te worden betaald met Azure-tegoed (waarden: True, False)
 serviceInfo1 | Servicespecifieke metagegevens
-serviceInfo2 | Ouder veld met optionele servicespecifieke metagegevens
-Aanvullende informatie | Aanvullende servicespecifieke metagegevens.
-codes | Tags die u aan de resource toewijst
+serviceInfo2 | Verouderd veld met optionele, servicespecifieke metagegevens
+additionalInfo | Aanvullende servicespecifieke metagegevens.
+tags | Tags die u toewijst aan de resource
 
-### <a name="make-sure-that-charges-are-correct"></a>Zorg ervoor dat er kosten in rekening gebracht juist zijn
+### <a name="make-sure-that-charges-are-correct"></a>Zorg ervoor dat de kosten juist zijn
 
-Als u wilt om ervoor te zorgen dat de kosten in uw gedetailleerde gebruiksbestand juist zijn, kunt u ze kunt controleren. Zie [meer informatie over de kosten op uw profiel facturering factuur](billing-mca-understand-your-bill.md)
+Als u er zeker van wilt zijn dat de kosten in uw gedetailleerde gebruiksbestand juist zijn, kunt u ze controleren. Zie [Inzicht in de kosten op de factuur van uw Microsoft-klantovereenkomst](billing-mca-understand-your-bill.md).
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-KLANTOVEREENKOMST controleren
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Weergeven en uw Microsoft Azure-factuur downloaden](billing-download-azure-invoice.md)
-- [Weergeven en downloaden van uw Microsoft Azure-gebruik en kosten](billing-download-azure-daily-usage.md)
+- [Uw Microsoft Azure-factuur weergeven en downloaden](billing-download-azure-invoice.md)
+- [Uw Microsoft Azure-gebruik en -kosten weergeven en downloaden](billing-download-azure-daily-usage.md)

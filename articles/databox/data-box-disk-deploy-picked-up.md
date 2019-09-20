@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/11/2019
+ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 03ca6163b4f788d50f7f27a2fcaf2c9b6c02d84c
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 9f0bdbf69336f792479c0089be351e468d3babe2
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910122"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128691"
 ---
 ::: zone target="chromeless"
 
@@ -89,11 +89,7 @@ Voor Azure-datacenters in Australië geldt een extra beveiligingsmaatregel. Alle
 3. Bevestig het label op de doos. 
 4. Boek via de koppeling https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference online een afspraak voor de retourzending. 
 
-### <a name="in-japan-koreatabin-japan-korea"></a>[In Japan, Korea](#tab/in-japan-korea)
-
-Dit zijn de instructies voor retourneren vanuit Japan en Korea.
-
-#### <a name="pick-up-in-japan"></a>Retourneren vanuit Japan
+### <a name="in-japantabin-japan"></a>[In Japan](#tab/in-japan)
 
 1. Schrijf als gegevens van de afzender uw bedrijfsnaam en adresgegevens op de vrachtbrief.
 2. Stuur een e-mail naar Quantium Solutions met behulp van de volgende e-mailsjabloon.
@@ -120,7 +116,7 @@ Zo nodig kunt u contact opnemen met de ondersteuning van Quantium Solutions (in 
 - E-mail：Customerservice.JP@quantiumsolutions.com 
 - Telefoon: 03-5755-0150 
 
-#### <a name="pick-up-in-korea"></a>Retourneren vanuit Korea
+### <a name="in-koreatabin-korea"></a>[In Korea](#tab/in-korea)
 
 1. Zorg ervoor dat u de vrachtbrief voor de retourzending bijlevert.
 2. Ophalen pakket aanvragen indien vrachtbrief aanwezig is:

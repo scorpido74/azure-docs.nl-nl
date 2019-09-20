@@ -1,6 +1,6 @@
 ---
-title: Automatiserings scenario's voor facturering en kosten beheer van Azure | Microsoft Docs
-description: Meer informatie over hoe algemene facturerings-en kosten beheer scenario's worden toegewezen aan verschillende Api's.
+title: Automatiseringsscenario's voor Azure-facturering en kostenbeheer | Microsoft Docs
+description: Lees hoe veelgebruikte scenario's voor facturering en kostenbeheer kunnen worden gekoppeld aan bepaalde API's.
 services: billing
 documentationcenter: ''
 author: bandersmsft
@@ -16,35 +16,35 @@ ms.workload: billing
 ms.date: 6/13/2018
 ms.author: banders
 ms.openlocfilehash: 3d06df9b9a90f26b39afc17b8fcd02c85da567a1
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68443254"
 ---
-# <a name="automation-scenarios-for-billing-and-cost-management"></a>Automatiserings scenario's voor facturering en kosten beheer
+# <a name="automation-scenarios-for-billing-and-cost-management"></a>Automatiseringsscenario's voor facturering en kostenbeheer
 
-Dit artikel bevat algemene scenario's voor facturering en kosten beheer van Azure. Deze scenario's worden toegewezen aan Api's die u kunt gebruiken. Onder elke scenario-naar-API-toewijzing vindt u een overzicht van de Api's en de functionaliteit die ze bieden.
+In dit artikel worden veelgebruikte scenario's voor Azure-facturering en kostenbeheer besproken. Deze scenario's worden gekoppeld aan specifieke API's die u kunt gebruiken. Onder elke koppeling van een scenario aan een API vindt u een overzicht van de API's en de functionaliteit die ze bieden.
 
 ## <a name="common-scenarios"></a>Algemene scenario's
 
-U kunt de facturerings-en Cost Management-Api's in verschillende scenario's gebruiken om vragen met betrekking tot kosten en gebruik te beantwoorden. Hier volgt een overzicht van algemene scenario's:
+U kunt de API's voor facturering en kostenbeheer in verschillende scenario's gebruiken om vragen over kosten en gebruik te beantwoorden. Hier volgt een overzicht van veelvoorkomende scenario's:
 
-- **Factuur afstemming**: Heeft micro soft het juiste bedrag in rekening gebracht?  Wat is mijn factuur en kan ik deze zelf berekenen?
+- **Factuurafstemming**: heeft Microsoft het juiste bedrag in rekening gebracht?  Wat is mijn factuur en kan ik deze zelf berekenen?
 
-- **Cross-kosten**: Nu weet ik hoeveel er in rekening wordt gebracht, wie in mijn organisatie moet betalen?
+- **Doorbelasting van kosten**: ik weet nu hoeveel kosten er in rekening worden gebracht, maar wie in mijn organisatie moet die betalen?
 
-- **Kosten optimalisatie**: Ik weet hoeveel er in rekening is gebracht. Hoe kan ik meer profiteren van het geld dat ik op Azure heb besteed?
+- **Optimalisatie van kosten**: ik weet hoeveel er in rekening is gebracht. Hoe kan ik meer halen uit mijn investering in Azure?
 
-- **Kosten bijhouden**: Ik wil zien hoeveel ik besteed aan het gebruik van Azure in de loop van de tijd. Wat zijn de trends? Hoe kan ik beter doen?
+- **Bijhouden van kosten**: ik wil het verloop van mijn Azure-gebruik en de bijbehorende kosten bekijken. Wat zijn de trends? Hoe kan ik het beter doen?
 
-- **Azure-uitgaven gedurende de maand**: Wat is de uitgaven van mijn huidige maand tot nu toe? Moet ik wijzigingen aanbrengen in mijn uitgaven en/of het gebruik van Azure? Wanneer kan ik in de maand de meeste van Azure gebruiken?
+- **Azure-uitgaven gedurende de maand**: Wat zijn mijn uitgaven voor de huidige maand tot nu toe? Moet ik mijn uitgaven en/of gebruik van Azure aanpassen? Wanneer in de maand is mijn Azure-verbruik het hoogst?
 
-- **Waarschuwingen**: Hoe kan ik op resources gebaseerde verbruik of op basis van financiële waarschuwingen instellen?
+- **Waarschuwingen**: Hoe kan ik op resources gebaseerd verbruik instellen of financiële waarschuwingen?
 
-## <a name="scenario-to-api-mapping"></a>Koppeling van scenario naar API
+## <a name="scenario-to-api-mapping"></a>Koppeling van scenario aan API
 
-|         API        | Factuur afstemming    | Cross-charges    | Kostenoptimalisatie    | Kosten bijhouden    | Midmonth-uitgaven    | Waarschuwingen    |
+|         API        | Factuurafstemming    | Doorbelasting van kosten    | Kostenoptimalisatie    | Bijhouden van kosten    | Halfmaandelijkse uitgaven    | Waarschuwingen    |
 |:---------------------------:|:-------------------------:|:----------------:|:--------------------:|:----------------:|:------------------:|:---------:|
 | Budgetten                     |                           |                  |           X          |                  |                    |     X     |
 | Marketplace-kosten                |             X             |         X        |           X          |         X        |          X         |     X     |
@@ -52,95 +52,95 @@ U kunt de facturerings-en Cost Management-Api's in verschillende scenario's gebr
 | Aanbevelingen voor reserveringen |                           |                  |           X          |                  |                    |           |
 | Reserveringsdetails         |                           |                  |           X          |         X        |                    |           |
 | Reserveringssamenvattingen       |                           |                  |           X          |         X        |                    |           |
-| Gebruiksdetails               |             X             |         X        |           X          |         X        |          X         |     X     |
-| Facturerings perioden             |             X             |         X        |           X          |         X        |                    |           |
+| Gebruiksgegevens               |             X             |         X        |           X          |         X        |          X         |     X     |
+| Factureringsperioden             |             X             |         X        |           X          |         X        |                    |           |
 | Facturen                    |             X             |         X        |           X          |         X        |                    |           |
 | RateCard                    |             X             |                  |           X          |         X        |          X         |           |
 | Niet-geclassificeerd gebruik               |             X             |                  |           X          |                  |          X         |           |
 
 > [!NOTE]
-> De toewijzing scenario-naar-API bevat geen Api's voor Enter prise-verbruik. Gebruik waar mogelijk de algemene verbruiks-Api's voor nieuwe ontwikkel scenario's.
+> De tabel bevat geen API's voor Enterprise-verbruik. Gebruik waar mogelijk de algemene verbruiks-API's voor nieuwe ontwikkelscenario's.
 
-## <a name="api-summaries"></a>API-samen vattingen
+## <a name="api-summaries"></a>Korte API-beschrijvingen
 
 ### <a name="consumption"></a>Verbruik
-Web direct-en Enter prise-klanten kunnen alle volgende Api's gebruiken, tenzij anders vermeld:
+Web Direct-en Enterprise-klanten kunnen alle volgende API's gebruiken, tenzij anders aangegeven:
 
--   [API](https://docs.microsoft.com/rest/api/consumption/budgets) voor budgetten (*Alleen Enter prise-klanten*): Maak kosten-of gebruiks budgetten voor resources, resource groepen of facturerings meters. Wanneer u budgetten hebt gemaakt, kunt u waarschuwingen configureren om u te waarschuwen wanneer u gedefinieerde budget drempels hebt overschreden. U kunt ook acties configureren die moeten worden uitgevoerd wanneer u budget bedragen hebt bereikt.
+-   [API voor budgetten](https://docs.microsoft.com/rest/api/consumption/budgets) (*Alleen voor Enterprise-klanten*): kosten- of gebruiksbudgetten maken voor resources, resourcegroepen of factureringsmeters. Wanneer u budgetten hebt gemaakt, kunt u waarschuwingen configureren om u te waarschuwen wanneer er gedefinieerde budgetdrempels zijn overschreden. U kunt ook acties configureren die moeten worden uitgevoerd wanneer er budgetbedragen zijn bereikt.
 
--   [API voor Marketplace-kosten](https://docs.microsoft.com/rest/api/consumption/marketplaces): Ontvang kosten-en gebruiks gegevens op alle Azure Marketplace-resources (Azure-partner aanbiedingen). U kunt deze gegevens gebruiken om kosten toe te voegen aan alle resources in Marketplace of om de kosten/het gebruik van specifieke bronnen te onderzoeken.
+-   [API voor Marketplace-kosten](https://docs.microsoft.com/rest/api/consumption/marketplaces): gegevens van kosten en gebruik opvragen voor alle Azure Marketplace-resources (Azure-partneraanbiedingen). U kunt deze gegevens gebruiken om de totale kosten voor alle Marketplace-resources te berekenen of om de kosten of het gebruik van specifieke resources nader te onderzoeken.
 
--   [Prijs lijst-API](https://docs.microsoft.com/rest/api/consumption/pricesheet) (*Alleen Enter prise-klanten*): Aangepaste prijzen voor alle meters ophalen. Ondernemingen kunnen deze gegevens gebruiken in combi natie met gebruiks gegevens en informatie over het gebruik van Marketplace om de kosten te berekenen door gebruik te maken van gebruiks-en Marketplace-gegevens. 
+-   [API voor prijzenoverzicht](https://docs.microsoft.com/rest/api/consumption/pricesheet) (*Alleen voor Enterprise-klanten*): aangepaste prijzen opvragen voor alle meters. Ondernemingen kunnen deze gegevens gebruiken in combinatie met gebruiksgegevens en gegevens van Marketplace-gebruik om kostenberekeningen uit te voeren op basis van gebruiks- en Marketplace-gegevens. 
 
--   [API](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations)voor reserverings aanbevelingen: Krijg aanbevelingen voor het kopen van gereserveerde VM-instanties. Aanbevelingen helpen u verwachte kosten besparingen en aankoop bedragen te analyseren. Zie [api's voor automatisering van Azure-reserve ringen](billing-reservation-apis.md)voor meer informatie.
+-   [API voor aanbevelingen voor reserveringen](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations): aanbevelingen opvragen krijgen voor het kopen van gereserveerde instanties van virtuele machines. Aanbevelingen maken het mogelijk om verwachte kostenbesparingen en aankoopbedragen te analyseren. Zie [API's voor automatisering van Azure-reserveringen](billing-reservation-apis.md) voor meer informatie.
 
--   [Reserverings details API](https://docs.microsoft.com/rest/api/consumption/reservationsdetails): Bekijk informatie over eerder gekochte VM-reserve ringen, zoals hoeveel verbruik is gereserveerd en hoeveel er wordt gebruikt. U kunt gegevens weer geven op Details per VM-niveau. Zie [api's voor automatisering van Azure-reserve ringen](billing-reservation-apis.md)voor meer informatie.
+-   [API voor reserveringsdetails](https://docs.microsoft.com/rest/api/consumption/reservationsdetails): informatie bekijken over eerder gekochte VM-reserveringen, zoals hoeveel verbruik is gereserveerd en hoeveel er daadwerkelijke wordt gebruikt. U kunt gegevens op VM-niveau weergeven. Zie [API's voor automatisering van Azure-reserveringen](billing-reservation-apis.md) voor meer informatie.
 
--   [Reserverings samenvattingen API](https://docs.microsoft.com/rest/api/consumption/reservationssummaries): Bekijk geaggregeerde gegevens over VM-reserve ringen die uw organisatie heeft gekocht, zoals hoeveel verbruik is gereserveerd en hoeveel er in de samen voeging wordt gebruikt. Zie [api's voor automatisering van Azure-reserve ringen](billing-reservation-apis.md)voor meer informatie.
+-   [API voor reserveringssamenvattingen](https://docs.microsoft.com/rest/api/consumption/reservationssummaries): geaggregeerde gegevens bekijken van VM-reserveringen die uw organisatie heeft gekocht, zoals hoeveel verbruik is gereserveerd en hoeveel er in totaal wordt gebruikt. Zie [API's voor automatisering van Azure-reserveringen](billing-reservation-apis.md) voor meer informatie.
 
--   [Gebruiks Details-API](https://docs.microsoft.com/rest/api/consumption/usagedetails): Ontvang kosten-en gebruiks gegevens voor alle Azure-resources van micro soft. De gegevens hebben de vorm van detail records voor gebruik, die momenteel per meter per dag worden verzonden. U kunt de informatie gebruiken om de kosten voor alle resources toe te voegen of om de kosten/het gebruik van specifieke resources te onderzoeken.
+-   [API voor gedetailleerde gebruiksgegevens](https://docs.microsoft.com/rest/api/consumption/usagedetails): gegevens van kosten en gebruik opvragen voor alle Azure-resources van Microsoft. U ontvangt de informatie in de vorm van records met gedetailleerde gebruiksgegevens, die momenteel één keer per meter per dag worden verzonden. U kunt de informatie gebruiken om de totale kosten voor alle resources te berekenen of om de kosten of het gebruik van specifieke resources nader te onderzoeken.
 
--   [RateCard-API](/previous-versions/azure/reference/mt219005(v=azure.100)): Ontvang de snelheid van de meter als u een web direct-klant bent. U kunt vervolgens de geretourneerde informatie gebruiken met de informatie over het resource gebruik om de verwachte factuur hand matig te berekenen. 
+-   [API voor RateCards](/previous-versions/azure/reference/mt219005(v=azure.100)): metertarieven opvragen als u een Web Direct-klant bent. U kunt vervolgens aan de hand van de geretourneerde informatie en de informatie over het resourcegebruik de verwachte factuur handmatig berekenen. 
 
--   Niet-geclassificeerde [gebruiks-API](/previous-versions/azure/reference/mt219003(v=azure.100)): Gegevens over onbewerkte gebruik ophalen voordat een meting/kosten worden berekend door Azure.
+-   [API voor niet-geclassificeerd gebruik](/previous-versions/azure/reference/mt219003(v=azure.100)): onbewerkte gegevens van gebruik opvragen voordat er meters/kosten op zijn toegepast.
 
 ### <a name="billing"></a>Billing
--   [API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)voor facturerings perioden: Bepaal welke facturerings periode u wilt analyseren, samen met de factuur-Id's voor die periode. U kunt factuur-Id's gebruiken met de facturerings-API.
+-   [API voor factureringsperioden](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): bepalen welke factureringsperiode u wilt analyseren, samen met de factuur-id's voor die periode. U kunt factuur-id's gebruiken met de API voor facturen.
 
--   [API voor facturen](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices): Down load de download-URL voor een factuur voor een facturerings periode in PDF-vorm.
+-   [API voor facturen](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices): de download-URL voor een factuur opvragen voor een factureringsperiode, in PDF-formaat.
 
-### <a name="enterprise-consumption"></a>Bedrijfs verbruik
-De volgende Api's gelden alleen voor bedrijven:
+### <a name="enterprise-consumption"></a>Enterprise-verbruik
+De volgende API's zijn alleen voor Enterprise:
 
--   [API voor saldo overzicht](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary): Ontvang een maandelijks overzicht van de informatie over saldi, nieuwe aankopen, Azure Marketplace-service kosten, aanpassingen en overschrijding kosten. U kunt deze informatie ophalen voor de huidige facturerings periode of een periode in het verleden. Ondernemingen kunnen deze gegevens gebruiken om te vergelijken met hand matig berekende samenvattings kosten. Deze API biedt geen specifieke informatie over resources of een geaggregeerde weer gave van kosten.
+-   [API voor verkorte balans](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary): een maandelijks overzicht opvragen met informatie over saldi, nieuwe aankopen, Azure Marketplace-servicekosten, correcties en overschrijdingskosten. U kunt deze informatie ophalen voor de huidige factureringsperiode of een periode in het verleden. Ondernemingen kunnen deze gegevens gebruiken voor een vergelijking met handmatig berekende kosten. Deze API biedt geen specifieke informatie over resources en ook geen geaggregeerde weergave van kosten.
 
--   [Gebruiks Details-API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail): Informatie over Azure-gebruik (van micro soft-aanbiedingen) ontvangen voor de huidige maand, een specifieke facturerings periode of een aangepaste datum periode. Ondernemingen kunnen deze gegevens gebruiken om facturen hand matig te berekenen op basis van het aantal en het verbruik. Ondernemingen kunnen ook afdelings-en organisatie gegevens gebruiken om de kosten van verschillende organisaties te beperken. De gegevens bevatten een resource-specifieke weer gave van het gebruik/de kosten.
+-   [API voor gedetailleerde gebruiksgegevens](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail): informatie opvragen over Azure-gebruik (van Microsoft-aanbiedingen) voor de huidige maand, een specifieke factureringsperiode of een aangepaste periode. Ondernemingen kunnen deze gegevens gebruiken om facturen handmatig te berekenen op basis van tarief en verbruik. Ondernemingen kunnen ook gegevens van afdelingen en organisaties gebruiken om kosten aan verschillende organisaties toe te rekenen. De gegevens bieden een resourcespecifieke weergave van het gebruik/de kosten.
 
--   Berekenings- [API voor Marketplace-opslag](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge): Informatie over Azure-gebruik (van partner aanbiedingen) ophalen voor de huidige maand, een specifieke facturerings periode of een aangepaste datum periode. Ondernemingen kunnen deze gegevens gebruiken om facturen hand matig te berekenen op basis van het aantal en het verbruik. Ondernemingen kunnen ook afdelings-en organisatie gegevens gebruiken om de kosten van verschillende organisaties te beperken. Deze API biedt een resource-specifieke weer gave van het gebruik/de kosten.
+-   [API voor Marketplace Store-kosten](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge): informatie opvragen over Azure-gebruik (van partneraanbiedingen) voor de huidige maand, een specifieke factureringsperiode of een aangepaste periode. Ondernemingen kunnen deze gegevens gebruiken om facturen handmatig te berekenen op basis van tarief en verbruik. Ondernemingen kunnen ook gegevens van afdelingen en organisaties gebruiken om kosten aan verschillende organisaties toe te rekenen. Deze API biedt een resourcespecifieke weergave van het gebruik/de kosten.
 
--   [API voor prijzen overzicht](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet): Het toepasselijke tarief voor elke meter voor de opgegeven inschrijvings-en facturerings periode ophalen. U kunt deze frequentie gegevens gebruiken in combi natie met gebruiks gegevens en informatie over het gebruik van Marketplace om de verwachte factuur hand matig te berekenen.
+-   [API voor prijzenoverzichten](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet): het toepasselijke tarief opvragen voor elke meter voor een inschrijvings- en factureringsperiode. U kunt deze tariefgegevens gebruiken in combinatie met gebruiksgegevens en gegevens van het gebruik van Marketplace om de verwachte factuur handmatig te berekenen.
 
--   [API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)voor facturerings perioden: Een lijst met facturerings perioden ophalen. De API biedt u ook een eigenschap die verwijst naar de API-route voor de vier sets Enter prise API-gegevens die betrekking hebben op de facturerings periode: BalanceSummary, UsageDetails, Marketplace-kosten en prijzen overzicht.
+-   [API voor factureringsperioden](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): een lijst met factureringsperioden opvragen. De API biedt ook een eigenschap die verwijst naar de API-route voor de vier sets met Enterprise API-gegevens die betrekking hebben op de factureringsperiode: BalanceSummary, UsageDetails, Marketplace Charges en PriceSheet.
 
--   [API voor gereserveerde instanties](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation): Bekijk 7 dagen, 30 dagen of 60 dagen aan gebruik van virtuele machines en ontvang enkele en gedeelde inkoop aanbevelingen. U kunt deze API gebruiken om verwachte kosten besparingen en aanbevolen aankoop bedragen te analyseren. Zie [api's voor automatisering van Azure-reserve ringen](billing-reservation-apis.md)voor meer informatie.
+-   [API voor aanbevelingen voor gereserveerde instanties](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation): voor een periode van 7 dagen, 30 dagen of 60 dagen gegevens bekijken van het gebruik van virtuele machines en aanbevelingen ontvangen voor enkele en gedeelde aankoop. U kunt deze API gebruiken om verwachte kostenbesparingen en aanbevolen aankoopbedragen te analyseren. Zie [API's voor automatisering van Azure-reserveringen](billing-reservation-apis.md) voor meer informatie.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-### <a name="whats-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>Wat is het verschil tussen de Enter prise Reporting Api's en de verbruiks-Api's? Wanneer moet ik elk gebruiken?
-Deze Api's hebben een vergelijk bare set functionaliteit en kunnen dezelfde uitgebreide set vragen beantwoorden in de facturerings-en kosten beheer ruimte. Maar ze zijn gericht op verschillende doel groepen: 
+### <a name="whats-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>Wat is het verschil tussen de API's voor Enterprise-rapportage en de verbruiks-API's? Wanneer kan ik welke API het beste gebruiken?
+Deze API's hebben een vergelijkbare functionaliteit en kunnen dezelfde algemene set vragen beantwoorden op het gebied van facturering en kostenbeheer. Het verschil is dat ze zijn bedoeld voor verschillende doelgroepen: 
 
-- Enter prise Reporting Api's zijn beschikbaar voor klanten die een Enterprise Agreement met micro soft hebben ondertekend waarmee ze toegang krijgen tot onderhandelde monetaire toezeg gingen en aangepaste prijzen. De Api's vereisen een sleutel die u van de [Enterprise Portal](https://ea.azure.com)kunt verkrijgen. Zie [overzicht van rapportage-api's voor zakelijke klanten](billing-enterprise-api.md)voor een beschrijving van deze api's.
+- API's voor Enterprise-rapportage zijn beschikbaar voor klanten die een Enterprise Agreement met Microsoft hebben ondertekend waarmee ze toegang krijgen tot overeengekomen monetaire toezeggingen en aangepaste prijzen. De API's vereisen een sleutel die u kunt ophalen uit de [Enterprise Portal](https://ea.azure.com). Zie [Overzicht van rapportage-API's voor Enterprise-klanten](billing-enterprise-api.md)voor een beschrijving van deze API's.
 
-- Verbruiks-Api's zijn beschikbaar voor alle klanten, met enkele uitzonde ringen. Zie overzicht van Azure- [verbruiks-API](billing-consumption-api-overview.md) en de [naslag](https://docs.microsoft.com/rest/api/consumption/)informatie voor Azure-verbruiks-API. We raden de meegeleverde Api's aan als de oplossing voor de nieuwste ontwikkelings scenario's. 
+- Verbruiks-API's zijn beschikbaar voor alle klanten, met een paar uitzonderingen. Zie [Overzicht van API voor Azure-gebruiksgegevens](billing-consumption-api-overview.md) en het [overzicht van verbruiks-API's](https://docs.microsoft.com/rest/api/consumption/) voor meer informatie. We raden de meegeleverde API's aan als de oplossing voor scenario's voor de nieuwste ontwikkelingen. 
 
-### <a name="whats-the-difference-between-the-usage-details-api-and-the-usage-api"></a>Wat is het verschil tussen de API voor gebruiks gegevens en de gebruiks-API?
-Deze Api's bieden fundamenteel verschillende gegevens:
+### <a name="whats-the-difference-between-the-usage-details-api-and-the-usage-api"></a>Wat is het verschil tussen de API voor gebruiksgegevens en de gebruiks-API?
+Deze API's bieden fundamenteel verschillende gegevens:
 
-- De [gebruiks gegevens-API](https://docs.microsoft.com/rest/api/consumption/usagedetails) biedt Azure-gebruik en kosten gegevens per meter exemplaar. De opgegeven gegevens zijn al door gegeven via het systeem voor kosten meting in Azure en er zijn kosten op toegepast, samen met andere mogelijke wijzigingen:
+- De [API voor gebruiksgegevens-](https://docs.microsoft.com/rest/api/consumption/usagedetails) biedt gegevens van Azure-gebruik en -kosten per meterexemplaar. De aangeleverde gegevens zijn al verwerkt door het systeem voor kostenmeting in Azure en er zijn kosten op toegepast, samen met andere mogelijke wijzigingen:
 
-   - Wijzigingen in rekening voor het gebruik van vooraf betaalde monetaire toezeg gingen
-   - Wijzigingen in het account voor gebruiks verschillen die door Azure zijn gedetecteerd
+   - Wijzigingen van account voor het gebruik van vooraf betaalde monetaire toezeggingen
+   - Wijzigingen van account voor gebruiksverschillen die door Azure zijn vastgesteld
 
-- De [gebruiks-API](/previous-versions/azure/reference/mt219003(v=azure.100)) biedt onbewerkte gegevens over Azure-gebruik voordat deze het systeem voor de kosten meting in azure passeren. Deze gegevens hebben mogelijk geen correlatie met het gebruik of de berekenings hoeveelheid die na het Azure-meet berekenings systeem wordt weer gegeven.
+- De [gebruiks-API](/previous-versions/azure/reference/mt219003(v=azure.100)) biedt onbewerkte gegevens van Azure-gebruik voordat deze zijn verwerkt door het systeem voor kostenmeting in Azure. Deze gegevens hebben mogelijk geen correlatie met het gebruik of de kosten die beschikbaar zijn nadat het Azure-systeem voor kostenberekening de gegevens heeft verwerkt.
 
-### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Wat is het verschil tussen de API voor factuur en gebruiks gegevens?
-Deze Api's bieden een andere weer gave van dezelfde gegevens:
+### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Wat is het verschil tussen de facturerings-API en de API voor gebruiksgegevens?
+Deze API's bieden een verschillende weergave van dezelfde gegevens:
 
-- De [factuur-API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices) is alleen voor web direct-klanten. Het biedt een maandelijks Rollup van uw factuur op basis van de cumulatieve kosten voor elk meter type. 
+- De [facturerings-API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices) is alleen voor Web Direct-klanten. De API biedt een maandelijks aggregatie van uw factuur op basis van de cumulatieve kosten voor elk metertype. 
 
-- De [gebruiks gegevens-API](https://docs.microsoft.com/rest/api/consumption/usagedetails) biedt een gedetailleerd overzicht van de gebruiks-en kosten records voor elke dag. Zakelijke en Web direct-klanten kunnen deze gebruiken.
+- De [API voor gebruiksgegevens](https://docs.microsoft.com/rest/api/consumption/usagedetails) biedt een gedetailleerd overzicht van de gebruiks-en kostenrecords voor elke dag. Deze API is beschikbaar voor zowel Enterprise- als Web Direct-klanten.
 
-### <a name="whats-the-difference-between-the-price-sheet-api-and-the-ratecard-api"></a>Wat is het verschil tussen de prijzen voor het prijs overzicht en de RateCard-API?
-Deze Api's bieden vergelijk bare gegevens sets, maar hebben verschillende doel groepen:
+### <a name="whats-the-difference-between-the-price-sheet-api-and-the-ratecard-api"></a>Wat is het verschil tussen de API voor het prijzenoverzicht en de RateCard-API?
+Deze API's bieden vergelijkbare gegevenssets, maar hebben verschillende doelgroepen:
 
-- De [prijs lijst-API](https://docs.microsoft.com/rest/api/consumption/pricesheet) biedt de aangepaste prijzen die zijn onderhandeld voor een Enter prise-klant.
+- De [API voor het prijzenoverzicht](https://docs.microsoft.com/rest/api/consumption/pricesheet) biedt de aangepaste prijzen die zijn onderhandeld voor een Enterprise-klant.
 
-- De [RateCard-API](/previous-versions/azure/reference/mt219005(v=azure.100)) biedt de open bare prijzen die van toepassing zijn op Web direct-klanten.
+- De [RateCard-API](/previous-versions/azure/reference/mt219005(v=azure.100)) biedt de openbare prijzen die van toepassing zijn op Web Direct-klanten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie overzicht van [Azure Usage API](billing-consumption-api-overview.md) en [Azure billing API overview](billing-usage-rate-card-overview.md)(Engelstalig) voor meer informatie over het gebruik van Azure api's om programmatisch inzicht te krijgen in uw Azure-gebruik.
+- Zie [Overzicht van API voor Azure-gebruiksgegevens](billing-consumption-api-overview.md) en [Gebruik Azure Billing-API's voor het op programmatische wijze verkrijgen van inzicht in uw gebruik van Azure](billing-usage-rate-card-overview.md) voor informatie over het gebruik van Azure-API's om programmatisch inzicht te krijgen in uw Azure-gebruik.
 
-- Zie [inzicht in uw factuur voor Microsoft Azure](billing-understand-your-bill.md)om uw factuur te vergelijken met het gedetailleerde dagelijks gebruiks bestand en de kosten beheer rapporten in de Azure Portal.
+- Zie [Meer informatie over uw factuur voor Microsoft Azure](billing-understand-your-bill.md) om uw factuur te vergelijken met het bestand met de gedetailleerde dagelijkse gebruiksgegevens en de kostenbeheerrapporten in de Azure-portal.
 
-- Als u vragen hebt of hulp nodig hebt, kunt u [een ondersteunings aanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
+- Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

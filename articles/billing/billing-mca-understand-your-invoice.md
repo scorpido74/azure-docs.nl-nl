@@ -1,6 +1,6 @@
 ---
-title: Meer informatie over uw factuur voor micro soft-klanten overeenkomst in azure
-description: Meer informatie over uw factuur voor micro soft Customer overeenkomst in azure lezen en begrijpen
+title: Informatie over de factuur voor uw Microsoft-klantovereenkomst
+description: Lees hier alles over de factuur voor uw Microsoft-klantovereenkomst in Azure
 author: bandersmsft
 manager: jureid
 tags: billing
@@ -12,100 +12,100 @@ ms.workload: na
 ms.date: 07/22/2019
 ms.author: banders
 ms.openlocfilehash: a5f77120c1d4e8a6721f3bc207132bee19a7772f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68383533"
 ---
-# <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Voor waarden in de klant overeenkomst van micro soft
+# <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Terminologie in uw factuur voor een Microsoft-klantovereenkomst
 
-Dit artikel is van toepassing op een Azure-facturerings account voor een klant overeenkomst van micro soft. [Controleer of u toegang hebt tot een micro soft-klant overeenkomst](#check-access-to-a-microsoft-customer-agreement).
+Dit artikel is van toepassing op een Azure-factureringsaccount voor een Microsoft-klantovereenkomst. [Controleer of u toegang hebt tot een Microsoft-klantovereenkomst](#check-access-to-a-microsoft-customer-agreement).
 
-Uw factuur bevat een samen vatting van uw kosten en instructies voor de betaling. Het is beschikbaar als down load in de Portable Document Format (. PDF) van de [Azure Portal](https://portal.azure.com/) of kan via e-mail worden verzonden. Zie [uw Microsoft Azure factuur bekijken en downloaden](billing-download-azure-invoice.md)voor meer informatie.
+Uw factuur bevat een overzicht van uw kosten en instructies voor betaling. De factuur kan als PDF worden gedownload uit de [Azure-portal](https://portal.azure.com/) of kan per e-mail worden verzonden. Zie [Uw Microsoft Azure-factuur weergeven en downloaden](billing-download-azure-invoice.md) voor meer informatie.
 
 ## <a name="billing-period"></a>Factureringsperiode
 
-U wordt maandelijks gefactureerd. U kunt zien op welke dag van de maand u facturen ontvangt door *factuur datum* te controleren onder de eigenschappen van het facturerings profiel in de [Azure Portal](https://portal.azure.com/). Kosten die plaatsvinden tussen het einde van de facturerings periode en de factuur datum, worden opgenomen in de factuur van de volgende maand, omdat deze zich in de volgende facturerings periode bevinden. De begin-en eind datum van de facturerings periode voor elke factuur worden weer gegeven in het factuur-PDF-bestand boven **facturerings overzicht**.
+U wordt maandelijks gefactureerd. U kunt zien op welke dag van de maand u facturen ontvangt door naar de *factuurdatum* te kijken in de eigenschappen van uw factureringsprofiel in de [Azure-portal](https://portal.azure.com/). Kosten die zijn gemaakt tussen het einde van de factureringsperiode en de factuurdatum worden opgenomen in de factuur van de volgende maand, aangezien deze zich in de volgende factureringsperiode bevinden. De begin-en einddatum van de factureringsperiode voor elke factuur worden vermeld in de PDF-factuur, boven **Factureringsoverzicht**.
 
-## <a name="invoice-terms-and-descriptions"></a>Factuur voorwaarden en-beschrijvingen
+## <a name="invoice-terms-and-descriptions"></a>Gebruikte terminologie in facturen
 
-In de volgende secties vindt u belang rijke termen die u op uw factuur ziet en vindt u beschrijvingen voor elke term.
+De volgende secties bevatten belangrijke termen die op uw factuur worden gebruikt, inclusief beschrijvingen van elke term.
 
-### <a name="invoice-summary"></a>Factuur overzicht
+### <a name="invoice-summary"></a>Factureringsoverzicht
 
-Het **factuur overzicht** bevindt zich bovenaan de eerste pagina en toont informatie over uw facturerings profiel en hoe u betaalt.
+Het **factureringsoverzicht** ziet u bovenaan de eerste pagina en bevat informatie over uw factureringsprofiel en hoe u betaalt.
 
-![Sectie factuur overzicht](./media/billing-understand-your-invoice-mca/invoicesummary.png)
+![Gedeelte Factureringsoverzicht](./media/billing-understand-your-invoice-mca/invoicesummary.png)
 
-| Begrip | Description |
+| Termijn | Beschrijving |
 | --- | --- |
-| Verkocht aan |Adres van uw juridische entiteit, gevonden in de eigenschappen van het facturerings account|
-| Factureren aan |Het factuur adres van het facturerings profiel dat de factuur ontvangt, te vinden in de eigenschappen van het facturerings profiel|
-| Factureringsprofiel |De naam van het facturerings profiel dat de factuur ontvangt |
-| KOOPORDER nummer |Een optioneel inkooporder nummer dat door u is toegewezen voor het bijhouden van |
-| Factuur nummer |Een uniek, door micro soft gegenereerd factuur nummer dat wordt gebruikt voor tracking doeleinden |
-| Factuurdatum |De datum waarop de factuur is gegenereerd, doorgaans vijf tot 12 dagen na het einde van de facturerings cyclus. U kunt de factuur datum controleren in de eigenschappen van het facturerings profiel.|
-| Betalings voorwaarden |Hoe u betaalt voor uw micro soft-factuur. *Net 30 dagen* betekent dat u betaalt binnen 30 dagen na de factuur datum. |
+| Verkocht aan |Adres van uw juridische entiteit, zoals gevonden in de eigenschappen van het factureringsaccount|
+| Factureren aan |Het factuuradres van het factureringsprofiel waarnaar de factuur wordt verzonden, te vinden in de eigenschappen van het factureringsprofiel|
+| Factureringsprofiel |De naam van het factureringsprofiel voor de factuur |
+| Inkoop- getal |Een optioneel inkoopordernummer dat door u is toegewezen voor traceringsdoeleinden |
+| Factuurnummer |Een uniek, door Microsoft gegenereerd factuurnummer dat wordt gebruikt voor traceringsdoeleinden |
+| Factuurdatum |Datum waarop de factuur is gegenereerd, meestal vijf tot 12 dagen na het einde van de factureringscyclus. U kunt de factuurdatum controleren in de eigenschappen van het factureringsprofiel.|
+| Betalingsvoorwaarden |Hoe u betaalt voor uw Microsoft-factuur. *Netto 30 dagen* betekent dat u betaalt binnen 30 dagen na de factuurdatum. |
 
-### <a name="billing-summary"></a>Facturerings overzicht
+### <a name="billing-summary"></a>Factureringsoverzicht
 
-In het **facturerings overzicht** worden de kosten weer gegeven voor het facturerings profiel sinds de vorige facturerings periode, eventuele tegoeden die zijn toegepast, belastingen en het totale verschuldigde bedrag.
+In het **factureringsoverzicht** worden de kosten voor het factureringsprofiel weergegeven sinds de vorige factureringsperiode, eventuele tegoeden die zijn toegepast, belastingen en het totale verschuldigde bedrag.
 
-![Sectie facturerings overzicht](./media/billing-understand-your-invoice-mca/billingsummary.png)
+![Gedeelte Factureringsoverzicht](./media/billing-understand-your-invoice-mca/billingsummary.png)
 
-| Begrip | Description |
+| Termijn | Beschrijving |
 | --- | --- |
-| Kosten|Het totale aantal micro soft-kosten voor dit facturerings profiel sinds de laatste facturerings periode |
-| Credits |Tegoed dat u hebt ontvangen van retourneert |
-| Azure-tegoed toegepast | Azure-tegoed dat automatisch wordt toegepast op Azure-kosten per facturerings periode |
-| Subtotaal |Het verschuldigde bedrag vóór BTW |
-| Btw |Het type en de belasting hoeveelheid die u betaalt, afhankelijk van het land of de regio van uw facturerings profiel. Als u geen BTW hoeft te betalen, ziet u geen belasting op uw factuur. |
-| Geschatte totale besparingen |De geschatte totale hoeveelheid die u hebt bespaard op basis van efficiënte kortingen. Als dit van toepassing is, worden de juiste kortings tarieven vermeld onder de sectie aankoop regel items in Details per factuur. |
+| Kosten|Totaalbedrag van de Microsoft-kosten voor dit factureringsprofiel sinds de laatste factureringsperiode |
+| Tegoeden |Tegoeden die u hebt ontvangen voor retouren |
+| Azure-tegoed toegepast | Azure-tegoeden die elke factureringsperiode automatisch worden verrekend met Azure-kosten |
+| Subtotaal |Het verschuldigde bedrag vóór btw |
+| Btw |Het type en het bedrag aan belasting dat u betaalt, afhankelijk van het land of de regio van uw factureringsprofiel. Als u geen btw hoeft te betalen, ziet u deze vermelding niet op uw factuur. |
+| Geschatte totale besparingen |Het geschatte totaalbedrag dat u hebt bespaard op basis van effectieve kortingen. Als dit van toepassing is, worden de effectieve kortingstarieven vermeld onder de regels met aankoopitems in het gedeelte met gedetailleerde gegevens van de factuur. |
 
-### <a name="invoice-sections"></a>Factuur secties
+### <a name="invoice-sections"></a>Factuursecties
 
-Voor elk factuur gedeelte onder uw facturerings profiel ziet u de kosten, het bedrag van de toegepaste Azure-tegoeden, de belasting en het totale verschuldigde bedrag.
+Voor elke factuursectie onder uw factureringsprofiel ziet u de kosten, het bedrag van de toegepaste Azure-tegoeden, de belasting en het totale verschuldigde bedrag.
 
 `Total = Charges - Azure Credit + Tax`
 
-### <a name="details-by-invoice-section"></a>De sectie Details per factuur
+### <a name="details-by-invoice-section"></a>Gedeelte met factuurdetails
 
-In de details worden de kosten voor elk factuur gedeelte per product order weer gegeven. Binnen elke product order worden kosten uitgesplitst op basis van het type service. U vindt de dagelijkse kosten voor uw producten en services in het Azure Portal en het gebruik van Azure en de kosten CSV. Zie [inzicht krijgen in de kosten op uw factuur voor een micro soft-klant overeenkomst voor](billing-mca-understand-your-bill.md)meer informatie.
+In de details worden de kosten voor elke factuursectie per productorder weergegeven. Binnen elke productorder worden de kosten uitgesplitst op basis van het type service. Dagelijkse kosten voor uw producten en services kunt u vinden in de Azure-portal en het CSV-bestand met gegevens van Azure-gebruik en -kosten. Zie [Inzicht in de kosten op de factuur van uw Microsoft-klantovereenkomst](billing-mca-understand-your-bill.md) voor meer informatie.
 
-Het totale verschuldigde bedrag voor elke service groep wordt berekend door *Azure-tegoed* af te trekken van *tegoeden/kosten* en het toevoegen van *belasting*:
+Het totale verschuldigde bedrag voor elke servicegroep wordt berekend door de waarde voor *Azure-tegoed* in mindering te brengen op de waarde voor *Tegoed/kosten* en de waarde voor *Btw-bedrag* erbij op te tellen:
 
 
-![De sectie Details per factuur](./media/billing-understand-your-invoice-mca/invoicesectiondetails.png)
+![Gedeelte met factuurdetails](./media/billing-understand-your-invoice-mca/invoicesectiondetails.png)
 
-| Begrip |Description |
+| Termijn |Beschrijving |
 | --- | --- |
-| Eenheidsprijs | De werkelijke eenheids prijs van de service (in de prijs valuta) die wordt gebruikt om het gebruik te beoordelen. Dit is uniek voor een product, een service familie, een meter en een aanbieding. |
-| Hoeveelheid | Hoeveelheid die is aangeschaft of verbruikt tijdens de facturerings periode |
-| Kosten/tegoeden | Het nettobedrag van kosten na tegoeden/restituties wordt toegepast |
+| Eenheidsprijs | De werkelijke eenheidsprijs van de service (in de prijsvaluta) die wordt gebruikt om het gebruik te classificeren. Deze prijs is uniek voor een product, servicegroep, meter en aanbieding. |
+| Hoeveelheid | Hoeveelheid die is aangeschaft of verbruikt tijdens de factureringsperiode |
+| Kosten/tegoeden | Het nettobedrag aan kosten na verrekening van tegoeden/restituties |
 | Azure-tegoed | De hoeveelheid Azure-tegoeden die worden toegepast op de kosten/tegoeden|
-| BTW-tarief | BTW-tarief (s), afhankelijk van land/regio |
-| Belasting bedrag | BTW die op aankoop wordt toegepast op basis van het BTW-tarief |
+| Btw-tarief | Een of meer btw-tarieven, afhankelijk van land/regio |
+| Btw-bedrag | Bedrag aan btw dat in rekening is gebracht op basis van het geldende btw-tarief |
 | Totaal | Het totale verschuldigde bedrag voor de aankoop |
 
-### <a name="how-to-pay"></a>Betalen
+### <a name="how-to-pay"></a>Hoe u kunt betalen
 
-Onder aan de factuur staan instructies voor het betalen van uw factuur. U kunt betalen per cheque, draad of online. Als u online betaalt, kunt u een credit card of Azure-tegoed gebruiken, indien van toepassing.
+Onderaan de factuur staan instructies voor het betalen van uw factuur. U kunt betalen per cheque, overboeking of online. Als u online betaalt, kunt u een creditcard of Azure-tegoed gebruiken, indien van toepassing.
 
-### <a name="publisher-information"></a>Informatie over Uitgever
+### <a name="publisher-information"></a>Informatie over uitgever
 
-Als u services van derden in uw factuur hebt, worden de naam en het adres van elke uitgever onder aan uw factuur weer gegeven.
+Als er services van derden op uw factuur worden vermeld, worden de naam en het adres van elke uitgever onderaan uw factuur weer gegeven.
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een micro soft-klant overeenkomst controleren
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie over de kosten voor de factuur van uw facturerings profiel](billing-mca-understand-your-bill.md)
+- [Inzicht in de kosten op de factuur van uw Microsoft-klantovereenkomst](billing-mca-understand-your-bill.md)
 - [Uw Azure-factuur en de dagelijkse gebruiksgegevens ophalen](billing-download-azure-invoice-daily-usage-date.md)
-- [De Azure-prijzen van uw organisatie weer geven](billing-ea-pricing.md)
-- [BTW-documenten voor uw facturerings profiel weer geven](billing-mca-download-tax-document.md)
+- [Azure-prijzen voor uw organisatie bekijken en downloaden](billing-ea-pricing.md)
+- [Belastingdocumenten voor uw Microsoft-klantovereenkomst weergeven](billing-mca-download-tax-document.md)

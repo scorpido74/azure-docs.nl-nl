@@ -4,16 +4,16 @@ description: In dit artikel worden de REST API's beschreven die u kunt gebruiken
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 4b56ef09525473920c5f5925485aae9c793ecc04
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a8cf0d2eb87a823ee4b1d27484e7ea8d89c1abfc
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900859"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105441"
 ---
 # <a name="azure-enterprise-rest-apis"></a>REST API's in Azure Enterprise
 
@@ -31,7 +31,7 @@ Microsoft Enterprise Azure-klanten kunnen gebruiks- en factureringsgegevens opha
 
 **Marketplace Store-kosten**: [API Marketplace Store-kosten](billing-enterprise-api-marketplace-storecharge.md) retourneert op gebruik gebaseerde Marketplace-kosten, uitgesplitst per dag van de opgegeven factureringsperiode of op basis van de begin- en einddatum. Zie [Rapportage-API's voor Enterprise-klanten - Marketplace Store-kosten](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) voor meer informatie.
 
-**Prijzenoverzicht:** de [API Prijzenoverzicht](/billing-enterprise-api-pricesheet.md) biedt het toepasselijke tarief voor elke meter voor een inschrijvings- en factureringsperiode. Zie [Rapportage-API's voor Enterprise-klanten - Prijzenoverzicht](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) voor meer informatie.
+**Prijzenoverzicht:** de [API Prijzenoverzicht](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) biedt het toepasselijke tarief voor elke meter voor een inschrijvings- en factureringsperiode. Zie [Rapportage-API's voor Enterprise-klanten - Prijzenoverzicht](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) voor meer informatie.
 
 **Factureringsperioden:** de [API Factureringsperioden](billing-enterprise-api-billing-periods.md) retourneert een lijst met factureringsperioden met verbruiksgegevens voor een inschrijving (in omgekeerde chronologische volgorde). Elke periode bevat een eigenschap die verwijst naar de API-route voor de vier sets gegevens: BalanceSummary, UsageDetails, Marketplace-kosten en PriceSheet. Zie [Rapportage-API's voor Enterprise-klanten - Factureringsperioden](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) voor meer informatie.
 
