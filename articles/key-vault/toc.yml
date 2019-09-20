@@ -92,6 +92,10 @@
           href: create-certificate-scenarios.md
 - name: Handleidingen
   items:
+    - name: Beveiliging
+      items:
+        - name: Aanbevelingen
+          href: security-recommendations.md
     - name: Een beheerde identiteit in App Service gebruiken
       href: managed-identity.md
     - name: Logboekregistratie voor Azure Key Vault

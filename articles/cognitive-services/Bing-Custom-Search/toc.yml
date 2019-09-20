@@ -31,6 +31,8 @@
               href: sdk-csharp-quick-start.md
             - name: Python gebruiken
               href: sdk-python-quickstart.md
+            - name: Java gebruiken
+              href: sdk-java-quickstart.md
 - name: Zelfstudies
   items:
     - name: Een Aangepaste zoekopdrachten-webpagina bouwen

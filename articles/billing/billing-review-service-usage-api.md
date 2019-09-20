@@ -1,6 +1,6 @@
 ---
-title: Azure Service Resource Usage controleren met REST API | Microsoft Docs
-description: Meer informatie over het gebruik van Azure REST Api's voor het controleren van het gebruik van Azure-service resources.
+title: Resourcegebruik van Azure-service controleren met REST-API | Microsoft Docs
+description: Lees hier hoe u met behulp van REST-API's van Azure het resourcegebruik van Azure-services kunt controleren.
 services: billing
 documentationcenter: na
 author: lleonard-msft
@@ -14,24 +14,24 @@ ms.workload: na
 ms.date: 08/15/2018
 ms.author: banders
 ms.openlocfilehash: 47e19fae26d6e3bc465799980c587d7bb7ed5e92
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68443069"
 ---
-# <a name="review-azure-resource-usage-using-the-rest-api"></a>Het gebruik van Azure-resources controleren met behulp van de REST API
+# <a name="review-azure-resource-usage-using-the-rest-api"></a>Gebruik van Azure-resources controleren met behulp van de REST-API
 
-Met Azure Cost Management Api's kunt u het verbruik van uw Azure-resources controleren en beheren.
+Met behulp van de API's van Azure Cost Management kunt u het verbruik van uw Azure-resources controleren en beheren.
 
-In dit artikel leert u hoe u een dagelijks rapport maakt waarmee een door komma's gescheiden waarde wordt gegenereerd met uw uurverbruik en hoe filters kunnen worden gebruikt om het rapport aan te passen zodat u het gebruik van virtuele machines, data bases en gecodeerde gegevens kunt opvragen. resources in een Azure-resource groep.
+In dit artikel leert u hoe u een dagelijks rapport maakt waarmee een document met door komma's gescheiden waarden wordt gegenereerd met gebruiksgegevens per uur. Er wordt ook uitgelegd hoe u met filters het rapport kunt aanpassen zodat u het gebruik kunt opvragen van virtuele machines, databases en getagde resources in een Azure-resourcegroep.
 
 >[!NOTE]
-> De Cost Management-API bevindt zich momenteel in een persoonlijke preview.
+> De API van Cost Management bevindt zich momenteel in beperkte preview.
 
-## <a name="create-a-basic-cost-management-report"></a>Een eenvoudig kosten beheer rapport maken
+## <a name="create-a-basic-cost-management-report"></a>Een eenvoudig rapport voor kostenbeheer maken
 
-Gebruik de `reports` bewerking in de Cost Management-API om te definiëren hoe de kosten rapportage wordt gegenereerd en waar de rapporten worden gepubliceerd.
+Gebruik de bewerking `reports` in de Cost Management-API om te definiëren hoe de kostenrapportage wordt gegenereerd en waar de rapporten worden gepubliceerd.
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionGuid}/providers/Microsoft.CostManagement/reports/{reportName}?api-version=2018-09-01-preview
@@ -39,16 +39,16 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-De `{subscriptionGuid}` para meter is vereist en moet een abonnements-id bevatten die kan worden gelezen met de referenties die zijn opgegeven in het API-token. Dit`{reportName}`
+De parameter `{subscriptionGuid}` is vereist en moet een abonnements-id bevatten die kan worden gelezen met behulp van de referenties die zijn opgegeven in het API-token. De `{reportName}`
 
 De volgende headers zijn vereist: 
 
-|Aanvraag header|Description|  
+|Aanvraagheader|Beschrijving|  
 |--------------------|-----------------|  
-|*Inhouds type:*| Vereist. Ingesteld op `application/json`. |  
-|*Authorization:*| Vereist. Stel in op een `Bearer` geldig token. |
+|*Content-Type:*| Vereist. Ingesteld op `application/json`. |  
+|*Authorization:*| Vereist. Ingesteld op een geldig `Bearer`-token. |
 
-Configureer de para meters van het rapport in de hoofd tekst van de HTTP-aanvraag. In het onderstaande voor beeld is het rapport ingesteld op het genereren van elke dag wanneer actief, een CSV-bestand dat is geschreven naar een Azure Storage BLOB-container en bevat informatie over uurkosten voor alle resources `westus`in de resource groep.
+Configureer de parameters van het rapport in de body van de HTTP-aanvraag. Het rapport in het onderstaande voorbeeld wordt elke dag gegenereerd als het op actief is gezet. Er wordt dan een CSV-bestand weggeschreven naar een blobcontainer van Azure Storage. Dit bestand bevat informatie over uurkosten voor alle resources in de resourcegroep `westus`.
 
 ```json
 {
@@ -93,11 +93,11 @@ Kan
 
 ## <a name="filtering-reports"></a>Rapporten filteren
 
-In `filter` het `dimensions` gedeelte en van de hoofd tekst van de aanvraag bij het maken van een rapport kunt u zich richten op de kosten voor specifieke resource typen. In de vorige aanvraag tekst ziet u hoe u kunt filteren op alle resources in een regio. 
+Gebruik de secties `filter` en `dimensions` van de body van de aanvraag bij het maken van een rapport om u te richten op de kosten voor specifieke resourcetypen. In de vorige body van de aanvraag ziet u hoe u kunt filteren op alle resources in een regio. 
 
-### <a name="get-all-compute-usage"></a>Alle reken gebruik ophalen
+### <a name="get-all-compute-usage"></a>Gebruik van rekenresources ophalen
 
-Gebruik de `ResourceType` dimensie voor het rapporteren van de kosten van virtuele Azure-machines in uw abonnement op alle regio's.
+Gebruik de dimensie `ResourceType` voor het rapporteren van de kosten van virtuele Azure-machines in uw abonnement voor alle regio's.
 
 ```json
 "filter": {
@@ -112,9 +112,9 @@ Gebruik de `ResourceType` dimensie voor het rapporteren van de kosten van virtue
 }
 ```
 
-### <a name="get-all-database-usage"></a>Alle database gebruik ophalen
+### <a name="get-all-database-usage"></a>Gebruik van databases ophalen
 
-Gebruik de `ResourceType` dimensie om Azure SQL database kosten in uw abonnement te rapporteren over alle regio's.
+Gebruik de dimensie `ResourceType` voor het rapporteren van de kosten van Azure SQL Database in uw abonnement voor alle regio's.
 
 ```json
 "filter": {
@@ -128,9 +128,9 @@ Gebruik de `ResourceType` dimensie om Azure SQL database kosten in uw abonnement
 }
 ```
 
-### <a name="report-on-specific-instances"></a>Rapport over specifieke instanties
+### <a name="report-on-specific-instances"></a>Rapporteren van specifieke instanties
 
-Met `Resource` de dimensie kunt u kosten voor specifieke resources rapporteren.
+Met de dimensie `Resource` kunt u kosten voor specifieke resources rapporteren.
 
 ```json
 "filter": {
@@ -144,9 +144,9 @@ Met `Resource` de dimensie kunt u kosten voor specifieke resources rapporteren.
 }
 ```
 
-### <a name="changing-timeframes"></a>Tijds perioden wijzigen
+### <a name="changing-timeframes"></a>Tijdsperioden wijzigen
 
-Stel de `timeframe` definitie in `Custom` op om een tijds bestek in te stellen buiten de week tot de ingebouwde opties datum en maand.
+Stel `timeframe` in op `Custom` om een tijdsperiode in te stellen buiten de ingebouwde opties voor week tot heden en maand tot heden.
 
 ```json
 "timeframe": "Custom",
@@ -157,4 +157,4 @@ Stel de `timeframe` definitie in `Custom` op om een tijds bestek in te stellen b
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Aan de slag met Azure REST API](https://docs.microsoft.com/rest/api/azure/)   
+- [Aan de slag gaan met Azure REST API](https://docs.microsoft.com/rest/api/azure/)   
