@@ -103,6 +103,8 @@
           href: sizes-hpc.md
         - name: Vorige generaties
           href: sizes-previous-gen.md
+        - name: Geïsoleerde grootten
+          href: isolation.md
         - name: Azure Compute Units (ACU)
           href: acu.md
         - name: vCPU-quota

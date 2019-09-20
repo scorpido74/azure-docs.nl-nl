@@ -271,6 +271,14 @@
           href: ./spark/apache-spark-ipython-notebook-machine-learning.md
         - name: Een Apache Spark-app maken in IntelliJ
           href: ./spark/apache-spark-create-standalone-application.md
+    - name: Concepten
+      items:
+        - name: Best practices voor Spark in HDInsight
+          href: ./spark/spark-best-practices.md
+        - name: Apache Spark-instellingen configureren
+          href: ./spark/apache-spark-settings.md
+        - name: Apache Spark-taken optimaliseren
+          href: ./spark/apache-spark-perf.md
     - name: Procedures
       items:
         - name: Hulpprogramma's gebruiken
@@ -323,10 +331,6 @@
               href: ./spark/apache-spark-resource-manager.md
             - name: Apache Spark-toepassingen beheren met behulp van een uitgebreide History Server
               href: ./spark/apache-azure-spark-history-server.md
-            - name: Apache Spark-instellingen configureren
-              href: ./spark/apache-spark-settings.md
-            - name: Apache Spark-taken optimaliseren
-              href: ./spark/apache-spark-perf.md
             - name: In cache opslaan met IO Cache inschakelen
               href: ./spark/apache-spark-improve-performance-iocache.md
             - name: Notitieblokken gebruiken met Apache Spark

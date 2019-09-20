@@ -195,7 +195,7 @@
           href: howto-data-in-replication.md
         - name: Leesreplica's maken in de Azure-portal
           href: howto-read-replicas-portal.md
-        - name: Leesreplica's maken met de Azure CLI
+        - name: 'Leesreplica''s maken met de Azure CLI, REST API'
           href: howto-read-replicas-cli.md
     - name: Problemen oplossen
       items:

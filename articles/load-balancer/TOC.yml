@@ -129,6 +129,8 @@
           href: move-across-regions-external-load-balancer-portal.md
         - name: Externe load balancer - PowerShell
           href: move-across-regions-external-load-balancer-powershell.md
+        - name: Interne load balancer - Portal
+          href: move-across-regions-internal-load-balancer-portal.md
         - name: Interne load balancer - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: Problemen oplossen

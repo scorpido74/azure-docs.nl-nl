@@ -232,7 +232,7 @@
       items:
         - name: Leesreplica's beheren in de Azure-portal
           href: howto-read-replicas-portal.md
-        - name: Leesreplica's beheren met de Azure CLI
+        - name: 'Leesreplica''s beheren met de Azure CLI, REST API'
           href: howto-read-replicas-cli.md
 - name: Naslaginformatie
   items:

@@ -102,6 +102,8 @@
         - name: Vorige generaties
           href: sizes-previous-gen.md
           displayName: D-series Ds-series A-series Basic
+        - name: Geïsoleerde grootten
+          href: isolation.md
         - name: Azure Compute Units (ACU)
           href: acu.md
         - name: Benchmarkscores

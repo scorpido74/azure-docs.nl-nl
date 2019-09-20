@@ -118,7 +118,7 @@
         - name: Een AKS-cluster verwijderen
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
-        - name: Een ACR met een AKS-cluster maken
+        - name: ACR integreren met een AKS-cluster
           href: cluster-container-registry-integration.md
         - name: Virtuele knooppunten maken
           items:

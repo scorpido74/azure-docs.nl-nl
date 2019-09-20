@@ -89,6 +89,8 @@
           href: authentication-scenarios.md
         - name: Verificatiestromen en app-scenario's
           href: authentication-flows-app-scenarios.md
+        - name: Best practices voor identiteitsplatform
+          href: identity-platform-integration-checklist.md
         - name: Toepassingsscenario's
           items:
             - name: Aanmeldingsdoelgroep
@@ -217,8 +219,6 @@
                   href: scenario-mobile-call-api.md
                 - name: Verplaatsen naar productie
                   href: scenario-mobile-production.md
-            - name: Controlelijst voor integratie
-              href: identity-platform-integration-checklist.md
         - name: Microsoft Authentication Library (MSAL)
           items:
             - name: Overzicht

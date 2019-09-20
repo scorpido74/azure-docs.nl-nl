@@ -1,113 +1,133 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Language Understanding (LUIS)
+summary: Informatie over hoe u de service LUIS gebruikt om uw toepassing in staat te stellen te begrijpen wat een persoon in zijn eigen woorden wil zeggen.
 metadata:
-  document_id: null
-  title: 'Language Understanding (LUIS) - Zelfstudies, snelstarts, API-naslag'
-  description: Informatie over hoe u de service LUIS gebruikt om uw toepassing in staat te stellen te begrijpen wat een persoon in zijn eigen woorden wil zeggen.
+  ms.topic: landing-page
+  ms.date: 09/19/2019
+  ms.author: nitinme
   author: nitinme
-  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: language-understanding
-  ms.topic: landing-page
-  ms.date: 01/23/2019
-  ms.author: nitinme
-abstract:
+  services: cognitive-services
+  title: Documentatie voor Language Understanding (LUIS)
+  titleSuffix: Azure Cognitive Services
   description: Met de service LUIS kunt u uw toepassing in staat stellen te begrijpen wat een persoon in zijn eigen woorden wil zeggen. Met behulp van machine learning geeft LUIS ontwikkelaars de mogelijkheid om toepassingen te ontwikkelen die gebruikersinvoer in een natuurlijke taal ontvangen en hieraan betekenis geven.
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ../media/index/luis-landing-page-video.png
-      width: 250
-    title: 'Wat is er nieuw in LUIS (18:28)'
-    href: 'https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/luis/what-is-luis
-            html: <p>Informatie over de Language Understanding-service (LUIS)</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Wat is LUIS?
-          - href: /azure/cognitive-services/luis/luis-how-plan-your-app
-            html: <p>Maak een overzicht van de intenties en entiteiten die relevant zijn voor uw app.</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Uw LUIS-app plannen
-          - href: /azure/cognitive-services/luis/luis-concept-best-practices
-            html: <p>Gebruik deze best practices wanneer u een LUIS-app maakt.</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Best practices voor een LUIS-app
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/logo_csharp.svg
-          - image:
-              src: media/index/logo_java.svg
-          - image:
-              src: media/index/logo_nodejs.svg
-          - image:
-              src: media/index/logo_python.svg
-        rows:
-          - title: Eindpunt-API
-            values:
-              - href: luis-get-started-cs-get-intent
-              - href: luis-get-started-java-get-intent
-              - href: luis-get-started-node-get-intent
-              - href: luis-get-started-python-get-intent
-          - title: Authoring-API
-            values:
-              - href: luis-get-started-cs-add-utterance
-              - href: luis-get-started-java-add-utterance
-              - href: luis-get-started-node-add-utterance
-              - href: luis-get-started-python-add-utterance
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="luis-quickstart-intents-only">App voor Human Resources (HR)-domein maken</a>
-          - html: <a href="luis-tutorial-prebuilt-intents-entities">Vooraf gemaakte intenties en entiteiten toevoegen</a>
-          - html: <a href="luis-quickstart-intents-regex-entity">Een entiteit in de vorm van een reguliere expressie toevoegen</a>
-          - html: <a href="luis-quickstart-intent-and-list-entity">Een lijstentiteit toevoegen</a>
-          - html: <a href="tutorial-entity-roles">Entiteitsrollen gebruiken</a>
-          - html: <a href="luis-quickstart-primary-and-secondary-data">Een eenvoudige entiteit en woordgroepenlijst toevoegen</a>
-          - html: <a href="luis-quickstart-intent-and-key-phrase">KeyPhrase-entiteit toevoegen</a>
-          - html: <a href="luis-quickstart-intent-and-sentiment-analysis">Sentimentanalyse toevoegen</a>
-  - title: Voorbeelden
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://aka.ms/luis-code-samples">Voorbeelden op GitHub</a><br/>'
-  - title: Video's
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player" > Azure Friday op Build 2018 - Cognitive Services - Taal (LUIS)</a>'
-          - html: '<a href="https://channel9.msdn.com/events/Build/2018/BRK3208" >Build 2018-sessie - Bot-intelligentie, spraakmogelijkheden en aanbevolen NLU-procedures</a>'
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST API's v2
-            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2092356"> Endpoint-API</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2092087"> Authoring-API</a></p>'
-          - title: SDK's
-            html: '<p><a href="https://aka.ms/luis-endpoint-sdk"> .NET Endpoint SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk"> .NET Authoring SDK</a></p>'
-          - title: PowerShell
-            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure-CLI</a></p>'
+  ms.openlocfilehash: 2191d2b3efebe1439f9f6180540929dc83027846
+  ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/19/2019
+  ms.locfileid: "71129268"
+landingContent:
+- title: Over Language Understanding (LUIS)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Language Understanding?
+      url: what-is-luis.md
+    - text: Nieuwe functies
+      url: whats-new.md
+    - text: LUIS-portal
+      url: https://www.luis.ai
+  - linkListType: concept
+    links:
+    - text: Uw app plannen
+      url: luis-how-plan-your-app.md
+    - text: De ontwerpcyclus van uw app
+      url: luis-concept-app-iteration.md
+  - linkListType: video
+    links:
+    - text: 'AI-roadshow: LUIS'
+      url: https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis
+- title: Intenties, entiteiten en functies maken
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Intents
+      url: luis-concept-intent.md
+    - text: Entiteiten
+      url: luis-concept-entity-types.md
+    - text: Een goede voorbeelduiting
+      url: luis-concept-utterance.md
+    - text: Woordgroepenlijstfuncties
+      url: luis-concept-feature.md
+  - linkListType: quickstart
+    links:
+    - text: 'Portal: Een nieuwe LUIS-app maken'
+      url: get-started-portal-build-app.md
+    - text: Met C# SDK
+      url: sdk-python-quickstart-authoring-app.md
+    - text: Met Python SDK
+      url: sdk-python-quickstart-authoring-app.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een nieuwe LUIS-app maken
+      url: luis-how-to-start-new-app.md
+    - text: Intentie toevoegen met voorbeelduitingen
+      url: luis-how-to-add-intents.md
+    - text: Entiteiten toevoegen
+      url: luis-how-to-add-example-utterances.md
+    - text: Een woordgroepenlijstfunctie toevoegen
+      url: luis-how-to-add-features.md
+- title: Versie, trainen, testen en publiceren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Versiebeheer
+      url: luis-concept-version.md
+    - text: Interactief testen
+      url: luis-concept-test.md
+    - text: Batchgewijs testen
+      url: luis-concept-batch-test.md
+  - linkListType: quickstart
+    links:
+    - text: 'Portal: App implementeren in voorspellingseindpunt'
+      url: get-started-portal-deploy-app.md
+    - text: Met C# SDK
+      url: sdk-python-quickstart-authoring-app.md#train-the-app
+    - text: Met Python SDK
+      url: sdk-python-quickstart-authoring-app.md#train-the-app
+  - linkListType: how-to-guide
+    links:
+    - text: Versiebeheer van uw app
+      url: luis-how-to-manage-versions.md
+    - text: Interactief testen
+      url: luis-interactive-test.md
+    - text: Batchgewijs testen
+      url: luis-how-to-batch-test.md
+    - text: Uw app trainen
+      url: luis-how-to-train.md
+    - text: Publiceren om voorspellingseindpunt te gebruiken
+      url: luis-how-to-publish-app.md
+- title: Voorspelling uit eindpunt ophalen
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Met C# .NET SDK
+      url: sdk-csharp-quickstart-query-prediction-endpoint.md
+  - linkListType: quickstart
+    links:
+    - text: Met C# met REST
+      url: luis-get-started-cs-get-intent.md
+    - text: Met Go met REST
+      url: luis-get-started-go-get-intent.md
+    - text: Met Java met REST
+      url: luis-get-started-java-get-intent.md
+    - text: Met Node.js met REST
+      url: luis-get-started-node-get-intent.md
+    - text: Met Python met REST
+      url: luis-get-started-python-get-intent.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Resources voor ontwikkelaars
+      url: developer-reference-resource.md
+    - text: App-limieten
+      url: luis-boundaries.md
+    - text: Vooraf gemaakte entiteiten
+      url: luis-reference-prebuilt-entities.md
+    - text: Aangepaste entiteiten
+      url: luis-concept-entity-types.md#types-of-entities
+    - text: Vooraf gemaakte domeinen
+      url: luis-reference-prebuilt-domains.md

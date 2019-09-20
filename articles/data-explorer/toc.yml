@@ -128,12 +128,18 @@
           href: dealing-with-duplicates.md
     - name: Controleren
       items:
-        - name: Metrische gegevens gebruiken om de clusterstatus te controleren
+        - name: Diagnostische logboeken gebruiken om opname te bewaken
+          href: using-diagnostic-logs.md
+        - name: Metrische gegevens gebruiken om clusterstatus te bewaken
           href: using-metrics.md
     - name: Integreren met andere hulpprogramma's
       items:
-        - name: Gegevens bulkgewijs kopiëren met een Azure Data Factory-sjabloon
-          href: data-factory-template.md
+        - name: Azure Data Factory
+          items:
+            - name: Gegevens bulkgewijs kopiëren met een Azure Data Factory-sjabloon
+              href: data-factory-template.md
+            - name: Besturingsopdrachten uitvoeren met Azure Data Factory
+              href: data-factory-command-activity.md
         - name: Apache Spark-connector
           href: spark-connector.md
         - name: Verbinding vanaf Databricks maken met behulp van Python

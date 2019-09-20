@@ -239,17 +239,17 @@
           href: cognitive-search-concept-troubleshooting.md
         - name: Documentatielinks
           href: cognitive-search-resources-documentation.md
-    - name: Knowledge Store (preview)
-      items:
-        - name: Een kennisarchief maken in de Azure-portal
-          href: knowledge-store-create-portal.md
-        - name: Maken met behulp van REST en Postman
-          href: knowledge-store-howto.md
-        - name: Weergeven met Storage Explorer
-          href: knowledge-store-view-storage-explorer.md
-        - name: Verbinden met Power BI
-          href: knowledge-store-connect-power-bi.md
-    - name: Querygegevens
+        - name: Knowledge Store (preview)
+          items:
+            - name: Een kennisarchief maken in de Azure-portal
+              href: knowledge-store-create-portal.md
+            - name: Maken met behulp van REST en Postman
+              href: knowledge-store-howto.md
+            - name: Weergeven met Storage Explorer
+              href: knowledge-store-view-storage-explorer.md
+            - name: Verbinden met Power BI
+              href: knowledge-store-connect-power-bi.md
+    - name: Query's uitvoeren voor documenten
       items:
         - name: Een basisquery maken
           href: search-query-overview.md
@@ -265,7 +265,7 @@
           href: search-query-lucene-examples.md
         - name: moreLikeThis (preview)
           href: search-more-like-this.md
-    - name: Filters gebruiken
+    - name: Filters toepassen
       items:
         - name: Filteroverzicht
           href: search-filters.md
@@ -283,18 +283,14 @@
       items:
         - name: Paginagerelateerde functies
           href: search-pagination-page-layout.md
-    - name: Relevantie afstemmen
-      items:
-        - name: Scoringprofielen toevoegen
+        - name: Relevantie afstemmen (scoreprofielen)
           href: index-add-scoring-profiles.md
-    - name: Beheer
+    - name: Beheren en bewaken
       items:
         - name: Portaalbeheer
           href: search-manage.md
         - name: PowerShell-beheer
           href: search-manage-powershell.md
-    - name: Bewaking
-      items:
         - name: Activiteit en logboekregistratie bewaken
           href: search-monitor-usage.md
         - name: Analyse zoekverkeer
