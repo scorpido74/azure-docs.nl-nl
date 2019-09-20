@@ -4,7 +4,7 @@ description: In dit artikel vindt u een overzicht van de werk stroom processen w
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: Willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
-ms.openlocfilehash: 383f4d26d44871936ccc910f15575db5aec3ec8c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945331"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162152"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Werk stroom van de klassieke Windows Azure-VM-architectuur 
 Dit artikel bevat een overzicht van de werk stroom processen die zich voordoen wanneer u een Azure-resource, zoals een virtuele machine, implementeert of bijwerkt. 
@@ -37,15 +37,16 @@ Het volgende diagram toont de architectuur van Azure-resources.
 
 **B**. De infrastructuur controller is verantwoordelijk voor het onderhouden en bewaken van alle resources in het Data Center. Het communiceert met Fabric host agents in het Fabric-besturings systeem, zoals de versie van het gast besturingssysteem, het service pakket, de service configuratie en de service status.
 
-**C**. De Hosta Gent bevindt zich op de host OSsystem en is verantwoordelijk voor het instellen van het gast besturingssysteem en het communiceren met de gast agent (WindowsAzureGuestAgent) om de rol bij te werken naar een beoogde doel status en heartbeat-controles uit te voeren met de gast agent. Als de Hosta Gent gedurende tien minuten geen heartbeat-antwoord ontvangt, wordt het gast besturingssysteem door de host-agent opnieuw gestart.
+**C**. De Hosta Gent bevindt zich op het hostbesturingssysteem en is verantwoordelijk voor het instellen van het gast besturingssysteem en het communiceren met de gast agent (WindowsAzureGuestAgent) om de rol bij te werken naar een beoogde doel status en heartbeat-controles uit te voeren met de gast agent. Als de Hosta Gent gedurende tien minuten geen heartbeat-antwoord ontvangt, wordt het gast besturingssysteem door de host-agent opnieuw gestart.
 
 **C2**. WaAppAgent is verantwoordelijk voor het installeren, configureren en bijwerken van WindowsAzureGuestAgent. exe.
 
 **D**.  WindowsAzureGuestAgent is verantwoordelijk voor het volgende:
 
-1. Het gast besturingssysteem configureren, met inbegrip van Firewall, Acl's, LocalStorage resources, service pakket en configuratie en certificaten. Instellen van de SID voor het gebruikers account waarvoor de rol wordt uitgevoerd.
-2. De status van de rol te communiceren met de infra structuur.
-3. WaHostBootstrapper starten en controleren om er zeker van te zijn dat de functie de doel status heeft.
+1. Het gast besturingssysteem configureren, met inbegrip van Firewall, Acl's, LocalStorage resources, service pakket en configuratie en certificaten.
+2. Instellen van de SID voor het gebruikers account waarvoor de rol wordt uitgevoerd.
+3. De status van de rol te communiceren met de infra structuur.
+4. WaHostBootstrapper starten en controleren om er zeker van te zijn dat de functie de doel status heeft.
 
 **E**. WaHostBootstrapper is verantwoordelijk voor:
 
@@ -76,7 +77,7 @@ Het volgende diagram toont de architectuur van Azure-resources.
 
 ## <a name="workflow-processes"></a>Werk stroom processen
 
-1. Een gebruiker doet een aanvraag, zoals het uploaden van. cspkg-en. cscfg-bestanden, om een bron te vertellen dat er een configuratie wijziging moet worden ondertreden, enzovoort. Dit kan worden gedaan via de Azure Portal of een hulp programma dat gebruikmaakt van de Service Management-API, zoals de functie voor het publiceren van Visual Studio. Met deze aanvraag gaat u naar RDFE om alle werkzaamheden aan het abonnement uit te voeren en vervolgens de aanvraag door te geven aan FFE. De rest van deze werk stroom stappen is om een nieuw pakket te implementeren en te starten.
+1. Een gebruiker doet een aanvraag, zoals het uploaden van de bestanden '. cspkg ' en '. cscfg ', waarmee een bron wordt gewaarschuwd om te stoppen of een configuratie wijziging aan te brengen, enzovoort. Dit kan worden gedaan via de Azure Portal of een hulp programma dat gebruikmaakt van de Service Management-API, zoals de functie voor het publiceren van Visual Studio. Met deze aanvraag gaat u naar RDFE om alle werkzaamheden aan het abonnement uit te voeren en vervolgens de aanvraag door te geven aan FFE. De rest van deze werk stroom stappen is om een nieuw pakket te implementeren en te starten.
 2. FFE vindt de juiste machine groep (op basis van invoer van de klant, zoals de affiniteits groep of geografische locatie plus de invoer van de infra structuur, zoals de beschik baarheid van de machine) en communiceert met de Master Fabric-controller in die machine groep.
 3. De infrastructuur controller vindt een host met beschik bare CPU-kernen (of draait een nieuwe host op). Het service pakket en de configuratie worden gekopieerd naar de host en de infrastructuur controller communiceert met de Hosta Gent op het hostbesturingssysteem om het pakket te implementeren (spannings dips, poorten, gast besturingssysteem configureren, enzovoort).
 4. De Hosta Gent start het gast besturingssysteem en communiceert met de gast agent (WindowsAzureGuestAgent). De host verzendt heartbeats naar de gast om er zeker van te zijn dat de rol werkt naar de doel status.

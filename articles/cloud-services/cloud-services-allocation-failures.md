@@ -4,7 +4,7 @@ description: Toewijzingsfouten oplossen die zijn opgetreden bij het implementere
 services: azure-service-management, cloud-services
 documentationcenter: ''
 author: simonxjx
-manager: felixwu
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 529157eb-e4a1-4388-aa2b-09e8b923af74
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 7830b2a5d065f54029839d250e35f3e1b3da2200
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 470778e5c441bb05ffc7c5e1c5ef97a6c30d3359
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945478"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155640"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Toewijzingsfouten oplossen die zijn opgetreden bij het implementeren van Cloud Services in Azure
 ## <a name="summary"></a>Samenvatting
@@ -69,5 +69,5 @@ Hier volgen de algemene toewijzings scenario's die ervoor zorgen dat een toewijz
      New-AzureReservedIP -ReservedIPName {new reserved IP name} -Location {location} -ServiceName {existing service name}
      ```
    * Volg de bovenstaande #2 en zorg ervoor dat u de nieuwe ReservedIP opgeeft in het CSCFG-service.
-4. Affiniteits groep voor nieuwe implementaties verwijderen-Affiniteits groepen worden niet meer aanbevolen. Volg de stappen voor #1 hierboven om een nieuwe Cloud service te implementeren. Zorg ervoor dat de Cloud service zich niet in een affiniteits groep bevindt.
+4. Affiniteits groep voor nieuwe implementaties verwijderen-Affiniteits groepen worden niet meer aanbevolen. Volg de stappen voor 1 hierboven om een nieuwe cloudservice te implementeren. Zorg ervoor dat de Cloud service zich niet in een affiniteits groep bevindt.
 5. Converteren naar een regionaal Virtual Network-Zie [How to migrate from Affinity groups to a regional Virtual Network (VNet) (Engelstalig)](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).

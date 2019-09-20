@@ -8,19 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: bb234e5b34bd8046c4e65d7cc6812cde0db3b5b2
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: e0490913029efc17d12139378369646c286a276c
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995665"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145712"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Caffe gebruiken in Azure HDInsight Spark voor gedistribueerde diep gaande lessen
 
-
 ## <a name="introduction"></a>Inleiding
 
-Grondige kennis is van invloed op alles van de gezondheids zorg tot het Trans Port naar productie, en nog veel meer. Bedrijven gaan dieper leren om harde problemen op te lossen, zoals [afbeeldings classificatie](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [spraak herkenning](https://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html), object herkenning en automatische vertaling. 
+Grondige kennis is van invloed op alles van de gezondheids zorg tot het Trans Port naar productie, en nog veel meer. Bedrijven gaan dieper leren om harde problemen op te lossen, zoals [afbeeldings classificatie](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [spraak herkenning](https://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html), object herkenning en automatische vertaling.
 
 Er zijn [veel populaire Frameworks](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), waaronder [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [tensor flow](https://www.tensorflow.org/), [Apache MXNet](https://mxnet.apache.org/), Theano, enzovoort. [Caffe](https://caffe.berkeleyvision.org/) is een van de meest beroemde niet-symbolische (dwingende) Neural-netwerk kaders en wordt veel gebruikt in veel gebieden, waaronder computer vision. Daarnaast combineert [CaffeOnSpark](https://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) Caffe met Apache Spark, in welk geval een diep gaande leer gemak eenvoudig kan worden gebruikt op een bestaand Hadoop-cluster. U kunt dieper leren gebruiken in combi natie met Spark ETL-pijp lijnen, de systeem complexiteit verminderen en latentie voor het leren van de volledige oplossing.
 
@@ -59,7 +58,6 @@ Om aan de slag te gaan, moet u de afhankelijkheden installeren. De Caffe-site en
     sudo ldconfig
     echo "protobuf installation done"
 
-
 Er zijn twee stappen in de script actie. De eerste stap bestaat uit het installeren van alle vereiste bibliotheken. Deze bibliotheken bevatten de benodigde bibliotheken voor zowel het compileren van Caffe (zoals gflags, glog) als het uitvoeren van Caffe (zoals numpy). u gebruikt libatlas voor CPU-optimalisatie, maar u kunt altijd de CaffeOnSpark-wiki volgen op het installeren van andere optimalisatie Bibliotheken, zoals MKL of CUDA (voor GPU).
 
 De tweede stap is het downloaden, compileren en installeren van protobuf 2.5.0 voor Caffe tijdens runtime. Protobuf 2.5.0 [is vereist](https://github.com/yahoo/CaffeOnSpark/issues/87), maar deze versie is niet beschikbaar als een pakket op Ubuntu 16. Daarom moet u het compileren vanuit de bron code. Er zijn ook enkele bronnen op internet over hoe u deze kunt compileren. Zie [hier](https://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html)voor meer informatie.
@@ -68,10 +66,9 @@ Om aan de slag te gaan, kunt u deze script actie uitvoeren op uw cluster voor al
 
 ![Script acties voor het installeren van afhankelijkheden](./media/apache-spark-deep-learning-caffe/submit-script-action.png)
 
-
 ## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>Stap 2: Caffe bouwen op Apache Spark voor HDInsight op het hoofd knooppunt
 
-De tweede stap bestaat uit het bouwen van Caffe op de hoofd knooppunt en vervolgens de gecompileerde bibliotheken distribueren naar alle worker-knoop punten. In deze stap moet u [ssh in uw hoofd knooppunt](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix). Daarna moet u het [CaffeOnSpark-bouw proces](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)volgen. Hieronder ziet u het script dat u kunt gebruiken om CaffeOnSpark te maken met een paar extra stappen. 
+De tweede stap bestaat uit het bouwen van Caffe op de hoofd knooppunt en vervolgens de gecompileerde bibliotheken distribueren naar alle worker-knoop punten. In deze stap moet u [ssh in uw hoofd knooppunt](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix). Daarna moet u het [CaffeOnSpark-bouw proces](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)volgen. Hieronder ziet u het script dat u kunt gebruiken om CaffeOnSpark te maken met een paar extra stappen.
 
     #!/bin/bash
     git clone https://github.com/yahoo/CaffeOnSpark.git --recursive
@@ -115,7 +112,6 @@ Mogelijk moet u meer doen dan wat de documentatie van CaffeOnSpark vertelt. De w
 - Plaats de gegevens sets in de BLOB-opslag. Dit is een gedeelde locatie die toegankelijk is voor alle worker-knoop punten voor later gebruik.
 - Plaats de gecompileerde Caffe-bibliotheken in BLOB Storage en later kopieert u deze bibliotheken naar alle knoop punten met behulp van script acties om extra compilatie tijd te voor komen.
 
-
 ### <a name="troubleshooting-an-ant-buildexception-has-occurred-exec-returned-2"></a>Meer Er is een ant-BuildException opgetreden: exec heeft geretourneerd: 2
 
 Wanneer u voor het eerst probeert CaffeOnSpark te maken, wordt er soms
@@ -134,7 +130,6 @@ Soms bevat maven een time-outfout voor de verbinding, vergelijkbaar met het volg
     INFO: I/O exception (java.net.SocketException) caught when processing request to {s}->https://repo.maven.apache.org:443: Connection timed out (Read failed)
 
 U moet het over enkele minuten opnieuw proberen.
-
 
 ### <a name="troubleshooting-test-failure-for-caffe"></a>Meer Test fout voor Caffe
 
@@ -167,7 +162,7 @@ Caffe maakt gebruik van een ' expresse-architectuur ', waarbij u voor het opstel
 
 Het model dat u traint, is een voorbeeld model voor MNIST training. De MNIST-data base met handgeschreven cijfers bevat een Trainingsset met 60.000-voor beelden en een testset met 10.000-voor beelden. Het is een subset van een grotere set die beschikbaar is via het NIST. De cijfers zijn genormaliseerd en gecentreerd in een afbeelding met een vaste grootte. CaffeOnSpark heeft een aantal scripts om de gegevensset te downloaden en deze te converteren naar de juiste indeling.
 
-CaffeOnSpark biedt een aantal netwerk topologieën voor MNIST-training. Het is een goed ontwerp van het splitsen van de netwerk architectuur (de topologie van het netwerk) en Optima Lise ring. In dit geval zijn er twee bestanden vereist: 
+CaffeOnSpark biedt een aantal netwerk topologieën voor MNIST-training. Het is een goed ontwerp van het splitsen van de netwerk architectuur (de topologie van het netwerk) en Optima Lise ring. In dit geval zijn er twee bestanden vereist:
 
 het bestand ' Oplosser ' ($ {CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) wordt gebruikt voor het overzien van de optimalisatie en het genereren van parameter updates. Hiermee definieert u bijvoorbeeld of CPU of GPU wordt gebruikt, wat de impuls, het aantal iteraties, enzovoort. Ook wordt gedefinieerd welke neuron-netwerk topologie het programma moet gebruiken (dit is het tweede bestand dat u nodig hebt). Zie [Caffe-documentatie](https://caffe.berkeleyvision.org/tutorial/solver.html)voor meer informatie over Oplosser.
 
@@ -176,7 +171,7 @@ Aangezien u in dit voor beeld CPU gebruikt in plaats van GPU, moet u de laatste 
     # solver mode: CPU or GPU
     solver_mode: CPU
 
-![Caffe Config1](./media/apache-spark-deep-learning-caffe/caffe-configuration1.png
+![Voor beeld van HDInsight Caffe-configuratie](./media/apache-spark-deep-learning-caffe/caffe-configuration1.png
 )
 
 U kunt indien nodig andere regels wijzigen.
@@ -186,7 +181,7 @@ Het tweede bestand ($ {CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt) de
 - Wijzig de "File:/users/mridul/bigml/demodl/mnist_train_lmdb" in "wasb:///projects/machine_learning/image_dataset/mnist_train_lmdb"
 - Wijzig ' File:/users/mridul/bigml/demodl/mnist_test_lmdb/' in ' wasb:///projects/machine_learning/image_dataset/mnist_test_lmdb '
 
-![Caffe Config2](./media/apache-spark-deep-learning-caffe/caffe-configuration2.png)
+![Voor beeld van HDInsight Caffe-configuratie](./media/apache-spark-deep-learning-caffe/caffe-configuration2.png)
 
 Raadpleeg de [Caffe-documentatie over MNIST-gegevensset](https://caffe.berkeleyvision.org/gathered/examples/mnist.html) voor meer informatie over het definiëren van het netwerk.
 
@@ -202,19 +197,19 @@ Omdat u gebruikmaakt van de cluster modus garen, in welk geval het Spark-stuur p
 
     17/02/01 23:22:16 INFO Client: Application report for application_1485916338528_0015 (state: RUNNING)
 
-Als u wilt weten wat er is gebeurd, moet u meestal het logboek van het Spark-stuur programma ophalen. Dit bevat meer informatie. In dit geval moet u naar de gebruikers interface van de GARENs gaan om de relevante GARENs logboeken te vinden. U kunt de GARENs-UI ophalen met behulp van deze URL: 
+Als u wilt weten wat er is gebeurd, moet u meestal het logboek van het Spark-stuur programma ophalen. Dit bevat meer informatie. In dit geval moet u naar de gebruikers interface van de GARENs gaan om de relevante GARENs logboeken te vinden. U kunt de GARENs-UI ophalen met behulp van deze URL:
 
     https://yourclustername.azurehdinsight.net/yarnui
-   
-![GAREN GEBRUIKERS INTERFACE](./media/apache-spark-deep-learning-caffe/apache-yarn-window-1.png)
+
+![browser weergave voor Apache garen scheduler](./media/apache-spark-deep-learning-caffe/apache-yarn-window-1.png)
 
 U kunt bekijken hoeveel resources zijn toegewezen voor deze specifieke toepassing. U kunt op de koppeling ' Planner ' klikken en u ziet dat er voor deze toepassing negen containers worden uitgevoerd. u vraagt garen om acht uitvoerendeers te leveren en een andere container is voor het proces van een stuur programma. 
 
-![GAREN planner](./media/apache-spark-deep-learning-caffe/apache-yarn-scheduler.png)
+![HDI Apache-scheduler-weer gave](./media/apache-spark-deep-learning-caffe/apache-yarn-scheduler.png)
 
 Mogelijk wilt u de logboeken of container logboeken controleren als er fouten zijn opgetreden. Voor de logboeken van Stuur Programma's kunt u op de toepassings-ID in de gebruikers interface van garen klikken en vervolgens op de knop Logboeken klikken. De logboeken van de Stuur Programma's worden naar stderr geschreven.
 
-![GAREN GEBRUIKERS INTERFACE 2](./media/apache-spark-deep-learning-caffe/apache-yarn-window-2.png)
+![Apache-venster in de weer gave browser](./media/apache-spark-deep-learning-caffe/apache-yarn-window-2.png)
 
 Zo ziet u mogelijk een aantal van de onderstaande fout in de stuur programma-Logboeken, wat aangeeft dat u te veel uitvoerders toewijst.
 
@@ -262,7 +257,6 @@ vanuit de hoofd knooppunt. Nadat de container is mislukt, wordt deze veroorzaakt
     WARNING: Logging before InitGoogleLogging() is written to STDERR
     F0201 07:10:48.309725 11624 common.cpp:79] Cannot use GPU in CPU-only Caffe: check mode.
 
-
 ## <a name="getting-results"></a>Resultaten ophalen
 
 Aangezien u 8 voor uitvoerers toewijst en de netwerk topologie eenvoudig is, duurt het Maxi maal 30 minuten om het resultaat uit te voeren. Vanaf de opdracht regel kunt u zien dat u het model op wasb:///mnist.model plaatst en de resultaten plaatst in een map met de naam wasb:///mnist_features_result.
@@ -285,19 +279,19 @@ en het resultaat ziet er als volgt uit:
 
 De SampleID vertegenwoordigt de ID in de MNIST-gegevensset en het label is het nummer dat door het model wordt geïdentificeerd.
 
-
 ## <a name="conclusion"></a>Conclusie
 
 In deze documentatie hebt u geprobeerd CaffeOnSpark te installeren met een eenvoudig voor beeld uit te voeren. HDInsight is een volledig beheerd reken platform voor gedistribueerde Clouds en is de beste plaats voor het uitvoeren van machine learning en geavanceerde analytische workloads voor grote gegevensset, en voor gedistribueerd diep gaande lessen kunt u Caffe in HDInsight Spark gebruiken om dieper te leren werken stappen.
 
-
 ## <a name="seealso"></a>Zie ook
+
 * [Krijgt Apache Spark in azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenario's
+
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="manage-resources"></a>Resources beheren
-* [Resources beheren voor het Apache Spark-cluster in Azure HDInsight](apache-spark-resource-manager.md)
 
+* [Resources beheren voor het Apache Spark-cluster in Azure HDInsight](apache-spark-resource-manager.md)

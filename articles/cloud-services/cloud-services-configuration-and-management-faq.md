@@ -4,7 +4,7 @@ description: In dit artikel vindt u de veelgestelde vragen over de configuratie 
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 480ca33f02242499bdf9fff3fa35695e7d4841a0
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 0c694ffe6ccd23803fbe16001f54b7c1611635cd
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945473"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154725"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Configuratie-en beheer problemen voor Azure Cloud Services: Veelgestelde vragen (FAQ)
 
@@ -207,7 +207,7 @@ Deze stappen kunnen worden geautomatiseerd via een opstart taak, zodat wanneer e
 Zodra dit is gebeurd, kunt u controleren of de HTTP/2 is ingeschakeld of niet door een van de volgende methoden te gebruiken:
 
 - Schakel de Protocol versie in IIS-logboeken in en zoek in de IIS-logboeken. Er wordt HTTP/2 weer gegeven in de logboeken. 
-- Schakel het hulp programma F12-ontwikkel aars in Internet Explorer/micro soft Edge in en schakel over naar het tabblad netwerk om het protocol te controleren. 
+- Schakel het hulp programma F12-ontwikkel aars in Internet Explorer of micro soft Edge in en schakel over naar het tabblad netwerk om het protocol te controleren. 
 
 Zie [http/2 op IIS](https://blogs.iis.net/davidso/http2)voor meer informatie.
 

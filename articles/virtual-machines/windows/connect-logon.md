@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: aa56cfafdcca163d3bdb3f339f84ceeaa37f3dc5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1980ee0bdea1316f6117d9deb7d2adb9df941768
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079926"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162614"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Verbinding maken en aanmelden bij een virtuele machine van Azure waarop Windows wordt uitgevoerd
 U gebruikt de knop **Verbinden** in Azure Portal om een Extern bureaublad-sessie (RDP) te starten vanaf een Windows-computer. Eerst maakt u verbinding met de virtuele machine en meldt u zich aan.
@@ -57,7 +57,7 @@ Als u vanaf een Mac verbinding wilt maken met een Windows-VM, moet u een RDP-cli
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Als u Power shell gebruikt en de Aure Power shell-module is geïnstalleerd, kunt u ook `Get-AzRemoteDesktopFile` verbinding maken via de cmdlet, zoals hieronder wordt weer gegeven.
+Als u Power shell gebruikt en de module Azure PowerShell geïnstalleerd hebt, kunt u ook verbinding maken `Get-AzRemoteDesktopFile` via de cmdlet, zoals hieronder wordt weer gegeven.
 
 In dit voor beeld wordt de RDP-verbinding onmiddellijk gestart, waarbij u dezelfde prompts krijgt als hierboven.
 

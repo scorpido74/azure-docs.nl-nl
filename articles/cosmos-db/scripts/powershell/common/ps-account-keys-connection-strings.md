@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell-script - accountsleutel en verbinding tekenreeks bewerkingen voor een Azure Cosmos-account
-description: 'Azure PowerShell - voorbeeldscript: Account-sleutel en verbinding bewerkingen op tekenreeksen uitvoeren voor een Azure Cosmos-account'
+title: Azure PowerShell script-account sleutel en connection string bewerkingen voor een Azure Cosmos-account
+description: Voor beeld-account sleutel en connection string bewerkingen Azure PowerShell script voor een Azure Cosmos-account
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/20/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 55f28ef6c6ff82f0b82b10ac1dd7931ac46aa2fc
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1eb9cc4c35584b94d3d16654b1bec253e21a91ff
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602515"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154751"
 ---
-# <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>De verbindingstekenreeks en account-sleutel bewerkingen voor een Azure Cosmos-account met behulp van PowerShell
+# <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>Verbindings reeks en account sleutel bewerkingen voor een Azure Cosmos-account met behulp van Power shell
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,8 @@ ms.locfileid: "67602515"
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
-Deze voorbeelden is vereist voor de resourcegroep en het account bestaat. Gebruik een bestaande PowerShell voorbeeld voor het inrichten van een account eerst maken.
+> [!NOTE]
+> Dit voor beeld laat zien hoe u een SQL (core) API-account gebruikt. Als u dit voor beeld voor andere Api's wilt gebruiken, kopieert u de gerelateerde eigenschappen en past u deze toe op uw API-specifiek script
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-keys-connection-strings.ps1 "Connection strings and account keys for Azure Cosmos account")]
 
@@ -39,9 +40,9 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure Resources**| |
-| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | Hiermee wordt een actie op een resource. |
-|**Azure-resourcegroepen**| |
+|**Azure-resources**| |
+| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | Hiermee wordt een actie voor een resource aangeroepen. |
+|**Azure-resource groepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

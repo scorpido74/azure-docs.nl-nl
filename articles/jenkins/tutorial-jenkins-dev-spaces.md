@@ -7,12 +7,12 @@ ms.service: jenkins
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/31/2019
-ms.openlocfilehash: 10ff8f4645ee1e7023c96174236243a3b85de938
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3d5e8ba8a29481a6f37ffd10f577d354fc5fbf0a
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679129"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161494"
 ---
 <!-- GMinchAQ, 06/18/19 -->
 
@@ -53,7 +53,7 @@ In deze zelf studie wordt ervan uitgegaan dat de kern kennis van Azure-Services,
 
 In deze sectie maakt u Azure-resources:
 
-* Een resource groep die alle Auzre-resources voor deze zelf studie bevat.
+* Een resource groep die alle Azure-resources voor deze zelf studie bevat.
 * Een [Azure Kubernetes service](https://docs.microsoft.com/azure/aks/) -cluster (AKS).
 * Een [Azure container Registry](https://docs.microsoft.com/azure/container-registry/) (ACR) voor het bouwen (met behulp van ACR-taken) en het opslaan van docker-installatie kopieën.
 
@@ -349,7 +349,7 @@ Als u stap 3 in deze sectie wilt volt ooien, moet u een opmerking toevoegen aan 
 
 2. Meld u aan bij Jenkins en selecteer de naam van de pijp lijn en kies **nu bouwen**. 
 
-    U kunt ook een webhook instellen om automatisch de Jenkins-pijp lijn te activeren. Wanneer een pull-aanvraag wordt ingevoerd, verzendt GitHub een bericht naar Jenkins, waardoor de pijp lijn wordt geactiveerd. Zie [verbinding maken tussen Jenkins en github](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service.md#connect-jenkins-to-github)voor meer informatie over het instellen van een webhook.
+    U kunt ook een *webhook* instellen om automatisch de Jenkins-pijp lijn te activeren. Wanneer een pull-aanvraag wordt ingevoerd, verzendt GitHub een bericht naar Jenkins, waardoor de pijp lijn wordt geactiveerd. Zie [verbinding maken tussen Jenkins en github](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service.md#connect-jenkins-to-github)voor meer informatie over het instellen van een webhook.
 
 3. Wijzigingen in de huidige gedeelde versie vergelijken:
 

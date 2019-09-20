@@ -4,6 +4,7 @@ description: Problemen met Traffic Manager profielen oplossen wanneer deze worde
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
+manager: dcscontentpm
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -11,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: rohink
-ms.openlocfilehash: f8f457623dff7840ca839ef57580b744a4d916c7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8f043b11c9319d61c4413d01b008b324103ca6c3
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565863"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155220"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Oplossen van problemen met een gedegradeerde status op Azure Traffic Manager
 
-In dit artikel wordt beschreven hoe u een Azure Traffic Manager-profiel oplost dat een gedegradeerde status weergeeft. Als eerste stap in het oplossen van problemen met de status van een Azure-Traffic Manager is de functie voor diagnostische logboek registratie ingeschakeld.  Raadpleeg [Diagnostische logboeken inschakelen](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) voor meer informatie. Voor dit scenario moet u een Traffic Manager profiel hebben geconfigureerd dat verwijst naar een aantal van uw gehoste cloudapp.net-services. Als de status van uw Traffic Manager een gedegradeerde status weergeeft, kan de status van een of meer eind punten worden **verslechterd**:
+In dit artikel wordt beschreven hoe u een Azure Traffic Manager-profiel oplost dat een gedegradeerde status weergeeft. Als eerste stap in het oplossen van problemen met de status van een Azure-Traffic Manager is de functie voor diagnostische logboek registratie ingeschakeld.  Raadpleeg [Diagnostische logboeken inschakelen](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) voor meer informatie. Voor dit scenario moet u een Traffic Manager profiel hebben geconfigureerd dat verwijst naar een aantal van uw gehoste cloudapp.net-services. Als de status van uw Traffic Manager een **gedegradeerde** status weergeeft, kan de status van een of meer eind punten worden **verslechterd**:
 
 ![gedegradeerde eindpunt status](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 

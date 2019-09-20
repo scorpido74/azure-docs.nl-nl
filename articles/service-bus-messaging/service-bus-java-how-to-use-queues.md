@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b85099605d7f660b792186f7e17b0ed4ea43ef04
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 19cfd2c5dd4229e4687fcb1a3286509c9b768d7a
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967858"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155509"
 ---
 # <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Azure Service Bus-wacht rijen gebruiken met Java om berichten te verzenden en te ontvangen
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -42,7 +42,7 @@ In deze zelf studie leert u hoe u Java-toepassingen kunt maken om berichten te v
 ## <a name="configure-your-application-to-use-service-bus"></a>Uw toepassing configureren voor het gebruik van Service Bus
 Zorg ervoor dat u de [Azure SDK voor Java][Azure SDK for Java] hebt geïnstalleerd voordat u dit voor beeld bouwt. Als u een eclips gebruikt, kunt u de [Azure-Toolkit voor eclipse][Azure Toolkit for Eclipse] installeren die de Azure SDK voor Java bevat. U kunt vervolgens de **Microsoft Azure bibliotheken voor Java** toevoegen aan uw project:
 
-![Scherm afbeelding van het tabblad tape wisselaars waar u bibliotheken kunt toevoegen](./media/service-bus-java-how-to-use-queues/eclipselibs.png)
+![Microsoft Azure bibliotheken voor Java toevoegen aan uw eclips-project](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
 Voeg de volgende `import` -instructies toe aan de bovenkant van het Java-bestand:
 

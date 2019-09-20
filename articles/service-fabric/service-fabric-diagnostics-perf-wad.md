@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e29c32c27e7f6c62eb2c6a9cbe2e4d3f1294f038
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66110308"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155168"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Prestatie bewaking met de uitbrei ding voor Windows-Azure Diagnostics
 
@@ -50,7 +50,7 @@ Als u prestatie meter items wilt verzamelen via WAD, moet u de configuratie op d
 
 3. Voeg de prestatie meter items toe die u wilt verzamelen voor `PerformanceCounterConfiguration` de gegevens die in de vorige stap zijn gedeclareerd. Elk item dat u wilt verzamelen, is gedefinieerd met een `counterSpecifier`, `sampleRate`, `unit`, `annotation`en een relevant `sinks`.
 
-Hier volgt een voor beeld van een configuratie met de teller voor de *totale processor tijd* (de hoeveelheid tijd die de CPU gebruikt voor het verwerken van bewerkingen) en *service Fabric actor-methode aanroepen per seconde*, een van de service Fabric aangepaste prestatie meter items. Raadpleeg [betrouw bare prestatie meter items](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) voor actors en betrouw [bare service prestatie meter items](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) voor een volledige lijst met Service Fabric aangepaste prestatie meter items.
+Hier volgt een voor beeld van een configuratie met de teller voor de *totale processor tijd* (de hoeveelheid tijd die de CPU gebruikt voor het verwerken van bewerkingen) en *service Fabric actor-methode aanroepen per seconde*, een van de service Fabric aangepaste prestatie meter items. Raadpleeg [betrouw bare prestatie meter items voor actors](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) en [betrouw bare service prestatie meter items](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) voor een volledige lijst met Service Fabric aangepaste prestatie meter items.
 
  ```json
  "WadCfg": {
@@ -191,9 +191,6 @@ Hier volgt een voor beeld van een configuratie met de teller voor de *totale pro
       },
 ....
 ```
-
- >[!NOTE]
- >U kunt gebruiken `*` om groepen prestatie meter items op te geven die op vergelijk bare wijze worden verzonden, maar het verzenden van items via een Sink (naar Application Insights) vereist dat ze afzonderlijk zijn gedeclareerd. 
 
 1. Wanneer u de juiste prestatie meter items hebt toegevoegd die moeten worden verzameld, moet u de cluster bron upgraden zodat deze wijzigingen worden weer gegeven in het actieve cluster. Sla uw gewijzigde `template.json` op en open Power shell. U kunt uw cluster bijwerken met `New-AzResourceGroupDeployment`. Voor de aanroep zijn de naam van de resource groep, het bijgewerkte sjabloon bestand en het parameter bestand vereist, en wordt u gevraagd om de benodigde wijzigingen aan te brengen in de resources die u hebt bijgewerkt. Wanneer u bent aangemeld bij uw account en zich in het juiste abonnement bevindt, gebruikt u de volgende opdracht om de upgrade uit te voeren:
 

@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2b36e7c333521e9438e76bfbe53a26dce23c2e8a
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: a0faaeee369a2227f6018141e5aa5d18c9037e9d
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194662"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161984"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Oorzaken van niet-naleving bepalen
 
@@ -20,7 +20,7 @@ Wanneer een Azure-resource wordt vastgesteld dat deze niet compatibel is met een
 
 > [!div class="checklist"]
 > - [Compatibiliteits Details](#compliance-details)
-> - [Wijzigings overzicht (preview-versie)](#change-history-preview)
+> - [Wijzigings overzicht (preview-versie)](#change-history)
 
 ## <a name="compliance-details"></a>Nalevingsdetails
 
@@ -79,7 +79,7 @@ Voer de volgende stappen uit om de compatibiliteits gegevens weer te geven:
 > [!NOTE]
 > Voor het beveiligen van gegevens, wanneer een eigenschaps waarde een _geheim_ is, wordt de huidige waarde sterretjes weer gegeven.
 
-In deze details wordt uitgelegd waarom een resource momenteel niet compatibel is, maar niet wanneer de wijziging is aangebracht in de resource waardoor deze niet-compatibel is. Zie voor deze informatie de [wijzigings geschiedenis (preview-versie)](#change-history-preview) hieronder.
+In deze details wordt uitgelegd waarom een resource momenteel niet compatibel is, maar niet wanneer de wijziging is aangebracht in de resource waardoor deze niet-compatibel is. Zie voor deze informatie de [wijzigings geschiedenis (preview-versie)](#change-history) hieronder.
 
 ### <a name="compliance-reasons"></a>Nalevings redenen
 
@@ -94,7 +94,7 @@ De volgende matrix wijst elke mogelijke _reden_ toe aan de verantwoordelijke [vo
 |De huidige waarde moet groter zijn dan of gelijk zijn aan de doel waarde. |greaterOrEquals of **niet** minder |
 |De huidige waarde moet groter zijn dan de doel waarde. |groter of **niet** lessOrEquals |
 |De huidige waarde moet kleiner zijn dan of gelijk zijn aan de doel waarde. |lessOrEquals of **niet** groter |
-|De huidige waarde moet bestaan. |reeds |
+|De huidige waarde moet bestaan. |Reeds |
 |De huidige waarde moet de doel waarde hebben. |in of **niet** notIn |
 |De huidige waarde moet vergelijkbaar zijn met de doel waarde. |zoals of **niet** notLike |
 |De huidige waarde moet hoofdletter gevoelig overeenkomen met de doel waarde. |komt overeen met of **niet** notMatch |

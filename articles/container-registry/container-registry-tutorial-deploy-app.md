@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5a3ffcc75ac37dac1284d0ffb5af234fd2f376cd
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: ac4d78147820c2cf56549abbec7e1fbc873ea260
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310466"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146934"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Zelfstudie: Een web-app implementeren vanuit een Azure-containerregister met geo-replicatie
 
@@ -50,12 +50,16 @@ Als Deploy to web app is uitgeschakeld, is de gebruiker met beheerdersrechten vo
 
 Onder **Web App for Containers**, dat wordt weergegeven na selectie van Deploy to web app, geeft u de volgende waarden voor elke instelling op:
 
-| Instelling | Waarde |
+| Instelling | Value |
 |---|---|
 | **Sitenaam** | Een globaal unieke naam voor de web-app. In dit voorbeeld gebruiken we de indeling `<acrName>-westus` om eenvoudig het register en de regio te identificeren van waaruit de web-app wordt geïmplementeerd. |
 | **Resourcegroep** | **Bestaande gebruiken** > `myResourceGroup` |
 | **App Service-plan/-locatie** | Maak een nieuw abonnement met de naam `plan-westus` in de regio **US - west**. |
-| **Installatiekopie** | `acr-helloworld:v1`
+| **Installatiekopie** | `acr-helloworld:v1` |
+| **Besturingssysteem** | Linux |
+
+> [!NOTE]
+> Wanneer u een nieuw app service-plan maakt om uw container-app te implementeren, wordt automatisch een standaard abonnement geselecteerd om uw toepassing te hosten. Het standaard plan is afhankelijk van de instelling van het besturings systeem.
 
 Selecteer **Maken** om de web-app voor de regio *US - west* in te richten.
 
@@ -84,7 +88,8 @@ Gebruik de procedure die in het vorige gedeelte is beschreven om een tweede web-
 | **Sitenaam** | Een globaal unieke naam voor de web-app. In dit voorbeeld gebruiken we de indeling `<acrName>-eastus` om eenvoudig het register en de regio te identificeren van waaruit de web-app wordt geïmplementeerd. |
 | **Resourcegroep** | **Bestaande gebruiken** > `myResourceGroup` |
 | **App Service-plan/-locatie** | Maak een nieuw abonnement met de naam `plan-eastus` in de regio **US - oost**. |
-| **Installatiekopie** | `acr-helloworld:v1`
+| **Installatiekopie** | `acr-helloworld:v1` |
+| **Besturingssysteem** | Linux |
 
 Selecteer **Maken** om de web-app voor de regio *US - oost* in te richten.
 

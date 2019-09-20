@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 87065709b16a5a0c7076584e8fc33c3830319e4f
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 246e76a0ab94624945723b500ef136e038ab40ec
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999648"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155232"
 ---
 # <a name="where-can-you-use-personalizer"></a>Waar kunt u Personalizer gebruiken?
 
@@ -33,7 +33,7 @@ U kunt persoonlijker Toep assen in situaties waarin:
 * De beste keuze kan en moeten worden geleerd van het gedrag van de collectieve gebruiker en de totale belonings Score.
 * Het gebruik van machine learning voor personalisatie is gebaseerd op de [verantwoordelijke richt lijnen](ethics-responsible-use.md) en keuzes die u hebt gekozen.
 * De contextuele beslissing kan worden uitgedrukt als een classificatie van de beste optie (actie) van een beperkt aantal keuzes.
-* Hoe goed de geclassificeerde keuze voor uw toepassing kan worden bepaald door een aspect van het gedrag van de gebruiker te meten en deze in een _belonings Score_af te drukken. Dit is een getal tussen-1 en 1.
+* Hoe goed de geclassificeerde keuze voor uw toepassing kan worden bepaald door een aspect van het gedrag van de gebruiker te meten en deze in een _[belonings Score](concept-rewards.md)_ af te drukken.
 * De belonings Score brengt niet te veel congevonden of externe factoren in rekening. De duur van het experiment is laag genoeg om de belonings score te berekenen, terwijl deze nog steeds relevant is.
 * U kunt de context voor de rang orde als een lijst van ten minste vijf [functies](concepts-features.md) die u denkt wilt gebruiken om de juiste keuze te maken en die geen persoons gegevens bevatten. (PII).
 * U hebt informatie over elke inhouds keuze, _actie_, als een lijst met ten minste vijf [functies](concepts-features.md) die u kunt gebruiken om de juiste keuze te maken.

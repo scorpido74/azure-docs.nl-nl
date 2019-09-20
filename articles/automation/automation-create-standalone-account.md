@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 32fafaeb6332ca0e76dbc8d72f11872a82ca1cbe
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1cdea358daa3bd0f9e738a0454613ea774a0e6dc
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779155"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146650"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Een zelfstandig Azure Automation-account maken
 
@@ -28,7 +28,6 @@ Wanneer u in de Azure Portal een Automation-account maakt, worden deze accounts 
   * Hiermee maakt u een Service-Principal in Azure Active Directory (Azure AD).
   * Hiermee maakt u een certificaat.
   * Hiermee wijst u het Access Control (RBAC) op basis van rollen toe, waarmee Azure Resource Manager bronnen met behulp van runbooks worden beheerd.
-* **Klassiek uitvoeren als-account**. Met dit account wordt een beheer certificaat geüpload. Het certificaat beheert klassieke resources door gebruik te maken van runbooks.
 
 Met deze accounts die u voor u hebt gemaakt, kunt u snel runbooks bouwen en implementeren ter ondersteuning van uw automatiserings behoeften.
 
@@ -65,18 +64,18 @@ Voer de volgende stappen uit om een Azure Automation-account te maken in de Azur
    ![Automation-account toevoegen](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
 
    > [!NOTE]
-   > Als het volgende bericht wordt weer gegeven in het deel venster Automation- **account toevoegen** , is uw account geen lid van de rol abonnements beheerders en een mede beheerder van het abonnement.
+   > Als het volgende bericht wordt weer gegeven in het deel venster **Automation-account toevoegen** , is uw account geen lid van de rol abonnements beheerders en een mede beheerder van het abonnement.
    >
    > ![Waarschuwing voor Automation-account toevoegen](media/automation-create-standalone-account/create-account-without-perms.png)
 
-1. Voer in het deel venster Automation- **account toevoegen** in het vak **naam** een naam in voor uw nieuwe Automation-account. Deze naam kan niet worden gewijzigd nadat deze is gekozen. *Automation-accountnamen zijn uniek per regio en resourcegroep. Namen voor Automation-Accounts die zijn verwijderd, zijn mogelijk niet onmiddellijk beschikbaar.*
+1. Voer in het deel venster **Automation-account toevoegen** in het vak **naam** een naam in voor uw nieuwe Automation-account. Deze naam kan niet worden gewijzigd nadat deze is gekozen. *Automation-accountnamen zijn uniek per regio en resourcegroep. Namen voor Automation-Accounts die zijn verwijderd, zijn mogelijk niet onmiddellijk beschikbaar.*
 1. Als u meer dan één abonnement hebt, geeft u in het vak **abonnement** het abonnement op dat u wilt gebruiken voor het nieuwe account.
 1. Voor **resource groep**, voert u een nieuwe of bestaande resource groep in of selecteert u deze.
 1. Selecteer bij **locatie**een locatie van een Azure-Data Center.
 1. Zorg ervoor dat **Ja** is geselecteerd voor de optie **Azure uitvoeren als-account** en selecteer vervolgens **maken**.
 
    > [!NOTE]
-   > Als u ervoor kiest om het uitvoeren als-account niet te maken door **Nee** te selecteren voor het maken van een **uitvoeren als-account voor Azure**, wordt er een bericht weer gegeven in het deel venster Automation- **account toevoegen** . Hoewel het account wordt gemaakt in de Azure Portal, heeft het account geen overeenkomstige verificatie-id in het klassieke implementatie model abonnement of in de Directory service van het Azure Resource Manager abonnement. Daarom heeft het Automation-account geen toegang tot resources in uw abonnement. Hiermee wordt voor komen dat runbooks die verwijzen naar dit account, in staat zijn om taken te verifiëren en uit te voeren op resources in die implementatie modellen.
+   > Als u ervoor kiest om het uitvoeren als-account niet te maken door **Nee** te selecteren voor het maken van een **uitvoeren als-account voor Azure**, wordt er een bericht weer gegeven in het deel venster **Automation-account toevoegen** . Hoewel het account wordt gemaakt in de Azure Portal, heeft het account geen overeenkomstige verificatie-id in het klassieke implementatie model abonnement of in de Directory service van het Azure Resource Manager abonnement. Daarom heeft het Automation-account geen toegang tot resources in uw abonnement. Hiermee wordt voor komen dat runbooks die verwijzen naar dit account, in staat zijn om taken te verifiëren en uit te voeren op resources in die implementatie modellen.
    >
    > ![Waarschuwing voor Automation-account toevoegen](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
    >
@@ -97,14 +96,13 @@ Wanneer het Automation-account is gemaakt, worden er automatisch verschillende r
 | AzureRunAsCertificate |Een certificaat Asset dat automatisch wordt gemaakt wanneer het Automation-account wordt gemaakt, of met behulp van een Power shell-script voor een bestaand account. Het certificaat wordt geverifieerd met Azure, zodat u Azure Resource Manager resources kunt beheren vanuit runbooks. Dit certificaat is één jaar geldig. |
 | AzureRunAsConnection |Een verbindings element dat automatisch wordt gemaakt bij het maken van het Automation-account of met behulp van een Power shell-script voor een bestaand account. |
 
-In de volgende tabel vindt u een overzicht van de bronnen voor het klassieke Uitvoeren als-account.
+## <a name="classic-run-as-accounts"></a>Klassieke uitvoeren als-accounts
 
-| Resource | Description |
-| --- | --- |
-| AzureClassicAutomationTutorial Runbook |Een voor beeld van een grafisch runbook. Het runbook haalt alle klassieke virtuele machines in een abonnement op met behulp van het klassieke uitvoeren als-account (certificaat). Vervolgens worden de VM-namen en-status weer gegeven. |
-| AzureClassicAutomationTutorial Script Runbook |Een voor beeld van een Power shell-runbook. Het runbook haalt alle klassieke virtuele machines in een abonnement op met behulp van het klassieke uitvoeren als-account (certificaat). Vervolgens worden de VM-namen en-status weer gegeven. |
-| AzureClassicRunAsCertificate |Een certificaat activum dat automatisch wordt gemaakt. Het certificaat wordt geverifieerd met Azure, zodat u de klassieke Azure-resources kunt beheren vanuit runbooks. Dit certificaat is één jaar geldig. |
-| AzureClassicRunAsConnection |Een verbindings Asset dat automatisch wordt gemaakt. De Asset wordt geverifieerd met Azure, zodat u de klassieke Azure-resources kunt beheren vanuit runbooks. |
+Klassieke uitvoeren als-accounts worden standaard niet meer gemaakt wanneer u een Azure Automation-account maakt. Als u nog steeds een klassiek uitvoeren als-account nodig hebt, moet u de volgende stappen uitvoeren.
+
+1. Selecteer op de pagina **Automation-account** de optie **uitvoeren als-accounts** onder **account instellingen**.
+2. Selecteer een **klassiek uitvoeren als-account voor Azure**.
+3. Klik op **maken** om door te gaan met het maken van een klassiek uitvoeren als-account.
 
 ## <a name="next-steps"></a>Volgende stappen
 

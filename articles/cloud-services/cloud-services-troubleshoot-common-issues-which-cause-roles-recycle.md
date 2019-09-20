@@ -4,7 +4,7 @@ description: Een Cloud service functie die plotseling kan worden gerecycled, kan
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
-manager: felixwu
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 533930d1-8035-4402-b16a-cf887b2c4f85
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 37abdae07c1b0ecc11d39c57b550b1c7f60c73cd
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 554508b1bf784e306cd12a4a601f908e06320933
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945422"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154979"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Algemene problemen waardoor rollen worden herhaald
 In dit artikel worden enkele veelvoorkomende oorzaken van implementatie problemen beschreven en tips voor het oplossen van problemen die u kunnen helpen bij het oplossen van deze problemen. Een indicatie dat er een probleem is met een toepassing is wanneer de rolinstantie niet kan worden gestart, of wordt gerecycled tussen de status initialisatie, bezet en gestopt.
@@ -39,7 +39,7 @@ Controleer het volgende voordat u uw toepassing bouwt en inpakt:
 Azure is een 64-bits omgeving. Daarom werken .NET-assembly's die zijn gecompileerd voor een 32-bits doel niet in Azure.
 
 ## <a name="role-throws-unhandled-exceptions-while-initializing-or-stopping"></a>De rol genereert niet-verwerkte uitzonde ringen tijdens het initialiseren of stoppen
-Uitzonde ringen die worden veroorzaakt door de methoden van de klasse [RoleEntryPoint] , die de []methoden onstart, [OnStop]en [Uitvoeren] bevatten, zijn niet-verwerkte uitzonde ringen. Als er een onverwerkte uitzonde ring optreedt in een van deze methoden, wordt de rol opnieuw gerecycled. Als de rol herhaaldelijk wordt gerecycled, wordt er een onverwerkte uitzonde ring gegenereerd telkens wanneer deze wordt gestart.
+Uitzonde ringen die worden veroorzaakt door de methoden van de klasse [RoleEntryPoint] , die de methoden [onstart], [OnStop]en [Uitvoeren] bevatten, zijn niet-verwerkte uitzonde ringen. Als er een onverwerkte uitzonde ring optreedt in een van deze methoden, wordt de rol opnieuw gerecycled. Als de rol herhaaldelijk wordt gerecycled, wordt er een onverwerkte uitzonde ring gegenereerd telkens wanneer deze wordt gestart.
 
 ## <a name="role-returns-from-run-method"></a>Rol wordt geretourneerd vanuit run-methode
 De methode [Uitvoeren] is bedoeld om voor onbepaalde tijd te worden uitgevoerd. Als uw code de methode [Uitvoeren] overschrijft, moet de slaap stand voor onbepaalde tijd worden ingeschakeld. Als de [Uitvoeren] -methode retourneert, wordt de rol gerecycled.

@@ -1,18 +1,18 @@
 ---
 title: Inzicht krijgen in de werking van effecten
-description: Azure Policy definition hebben verschillende effecten die bepalen hoe de naleving wordt beheerd en gerapporteerd.
+description: Azure Policy definities hebben verschillende effecten die bepalen hoe de naleving wordt beheerd en gerapporteerd.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/29/2019
+ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1ac0e70700b4b093fad09b4d10c6bdcf2e06adac
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 06a5ffbef2b841acc7ea7ecc82d05dfccbc0cab1
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231522"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147002"
 ---
 # <a name="understand-azure-policy-effects"></a>Informatie over Azure Policy-effecten
 
@@ -27,13 +27,14 @@ Deze effecten worden momenteel ondersteund in een beleids definitie:
 - [DeployIfNotExists](#deployifnotexists)
 - [Uitgeschakeld](#disabled)
 - [EnforceRegoPolicy](#enforceregopolicy) evaluatie
+- [Wijzigen](#modify)
 
 ## <a name="order-of-evaluation"></a>Volgorde van de evaluatie
 
 Aanvragen voor het maken of bijwerken van een bron via Azure Resource Manager worden eerst geëvalueerd door Azure Policy. Azure Policy maakt een lijst met alle toewijzingen die van toepassing zijn op de resource en evalueert vervolgens de resource op basis van elke definitie. Azure Policy verschillende effecten verwerkt voordat de aanvraag aan de juiste resource provider wordt door gegeven. Dit voor komt het voor komen van onnodige verwerking door een resource provider wanneer een resource niet voldoet aan de ontworpen governance-besturings elementen van Azure Policy.
 
 - **Uitgeschakelde** wordt eerst gecontroleerd om te bepalen als de beleidsregel moet worden geëvalueerd.
-- **Toevoeg-** wordt vervolgens geëvalueerd. Aangezien toevoegen kan de aanvraag wijzigen, een wijziging aangebracht door toevoegen mogelijk te voorkomen dat een controle of effect van het triggeren van weigeren.
+- **Toevoegen** en **wijzigen** worden vervolgens geëvalueerd. Omdat de aanvraag kan worden gewijzigd, is het mogelijk dat er een wijziging is aangebracht waardoor een controle of weigering van een trigger kan worden verhinderd.
 - **Weigeren** wordt vervolgens geëvalueerd. Weigeren voordat controleren, dubbele logboekregistratie van een resource die ongewenst is voorkomen door te evalueren.
 - **Audit** wordt vervolgens geëvalueerd vóór de aanvraag naar de Resource Provider.
 
@@ -47,7 +48,10 @@ Dit effect is handig voor het testen van situaties of voor wanneer het effect he
 
 ## <a name="append"></a>Toevoegen
 
-Toevoeg-wordt gebruikt voor het toevoegen van extra velden naar de aangevraagde resource tijdens het maken of bijwerken. Een veelvoorkomend voorbeeld is het toevoegen van tags op resources zoals costCenter of IP-adressen opgeven voor een opslagresource is toegestaan.
+Toevoeg-wordt gebruikt voor het toevoegen van extra velden naar de aangevraagde resource tijdens het maken of bijwerken. Een voor beeld hiervan is het opgeven van toegestane IP-adressen voor een opslag resource.
+
+> [!IMPORTANT]
+> Append is bedoeld voor gebruik met niet-label eigenschappen. Bij toevoegen kunnen Tags aan een resource worden toegevoegd tijdens het maken of bijwerken van een aanvraag, maar het is raadzaam om in plaats daarvan het [wijzigings](#modify) effect voor Tags te gebruiken.
 
 ### <a name="append-evaluation"></a>Toevoeg-evaluatie
 
@@ -61,36 +65,7 @@ Een toevoeg-effect heeft alleen een **details** matrix, maar dit vereist is. Als
 
 ### <a name="append-examples"></a>Append-voorbeelden
 
-Voorbeeld 1: Eén **veld/waarde-** paar om een tag toe te voegen.
-
-```json
-"then": {
-    "effect": "append",
-    "details": [{
-        "field": "tags.myTag",
-        "value": "myTagValue"
-    }]
-}
-```
-
-Voorbeeld 2: Twee **veld/waarde-** paren om een set tags toe te voegen.
-
-```json
-"then": {
-    "effect": "append",
-    "details": [{
-            "field": "tags.myTag",
-            "value": "myTagValue"
-        },
-        {
-            "field": "tags.myOtherTag",
-            "value": "myOtherTagValue"
-        }
-    ]
-}
-```
-
-Voorbeeld 3: Eén **veld/waarde-** paar met een niet **-\*[]** - [alias](definition-structure.md#aliases) met een matrix **waarde** om IP-regels in te stellen op een opslag account. Wanneer de niet- **[\*]** -alias een matrix is, voegt het effect de **waarde** toe als de volledige matrix. Als de matrix al bestaat, treedt er een gebeurtenis deny op van het conflict.
+Voorbeeld 1: Eén **veld/waarde-** paar met een niet **-\*[]** - [alias](definition-structure.md#aliases) met een matrix **waarde** om IP-regels in te stellen op een opslag account. Wanneer de niet- **[\*]** -alias een matrix is, voegt het effect de **waarde** toe als de volledige matrix. Als de matrix al bestaat, treedt er een gebeurtenis deny op van het conflict.
 
 ```json
 "then": {
@@ -105,7 +80,7 @@ Voorbeeld 3: Eén **veld/waarde-** paar met een niet **-\*[]** - [alias](definit
 }
 ```
 
-Voor beeld 4: Eén **veld/waarde** -paar met **een\*[]** - [alias](definition-structure.md#aliases) met een matrix **waarde** om IP-regels in te stellen op een opslag account. Door gebruik te maken van de alias **\*[]** , voegt het effect de **waarde** toe aan een mogelijk vooraf bestaande matrix. Als de matrix nog niet bestaat, wordt deze gemaakt.
+Voorbeeld 2: Eén **veld/waarde** -paar met **een\*[]** - [alias](definition-structure.md#aliases) met een matrix **waarde** om IP-regels in te stellen op een opslag account. Door gebruik te maken van de alias **\*[]** , voegt het effect de **waarde** toe aan een mogelijk vooraf bestaande matrix. Als de matrix nog niet bestaat, wordt deze gemaakt.
 
 ```json
 "then": {
@@ -117,6 +92,122 @@ Voor beeld 4: Eén **veld/waarde** -paar met **een\*[]** - [alias](definition-st
             "action": "Allow"
         }
     }]
+}
+```
+
+## <a name="modify"></a>Wijzigen
+
+Modify wordt gebruikt om tags toe te voegen, bij te werken of te verwijderen tijdens het maken of bijwerken van een resource. Een voor beeld hiervan is het bijwerken van tags op resources, zoals costCenter. Een wijzigings beleid moet altijd `mode` zijn ingesteld op _geïndexeerd_. Bestaande niet-compatibele resources kunnen worden hersteld met een [herstel taak](../how-to/remediate-resources.md).
+Eén wijzigings regel kan elk wille keurig aantal bewerkingen hebben.
+
+> [!IMPORTANT]
+> Modify is momenteel alleen voor gebruik met tags. Als u labels beheert, is het raadzaam om wijzigen te gebruiken in plaats van toevoegen als wijzigen biedt extra bewerkings typen en de mogelijkheid om bestaande resources te herstellen. Toevoegen wordt echter aanbevolen als u geen beheerde identiteit kunt maken.
+
+### <a name="modify-evaluation"></a>Evaluatie wijzigen
+
+Met modify worden geëvalueerd voordat de aanvraag wordt verwerkt door een resource provider tijdens het maken of bijwerken van een resource. Met modify worden tags voor een resource toegevoegd of bijgewerkt wanneer wordt voldaan aan de **indienings** voorwaarde van de beleids regel.
+
+Wanneer een beleids definitie die gebruikmaakt van het Modify-effect, wordt uitgevoerd als onderdeel van een evaluatie cyclus, worden er geen wijzigingen aangebracht in resources die al bestaan. In plaats daarvan het markeert een resource die voldoet aan de **als** voorwaarde als niet-compatibel.
+
+### <a name="modify-properties"></a>Eigenschappen wijzigen
+
+De eigenschap **Details** van het effect Modify heeft alle subeigenschappen die de machtigingen definiëren die nodig zijn voor herstel en de **bewerkingen** die worden gebruikt om label waarden toe te voegen, bij te werken of te verwijderen.
+
+- **roleDefinitionIds** (vereist)
+  - Deze eigenschap moet een matrix met tekenreeksen die overeenkomen met toegankelijk is op basis van de rol beheer rol-ID van het abonnement zijn. Zie voor meer informatie, [herstel - beleidsdefinitie configureren](../how-to/remediate-resources.md#configure-policy-definition).
+  - De gedefinieerde rol moet alle bewerkingen bevatten die zijn toegewezen aan de rol [Inzender](../../../role-based-access-control/built-in-roles.md#contributor) .
+- **bewerkingen** lang
+  - Een matrix met alle label bewerkingen die moeten worden voltooid voor overeenkomende resources.
+  - Eigenschappen:
+    - **bewerking** lang
+      - Definieert welke actie moet worden uitgevoerd op een overeenkomende resource. Opties zijn: _addOrReplace_, _toevoegen_, _verwijderen_. Een gezichte lijkt op [](#append) het _toevoegen_ van het effect.
+    - **veld** lang
+      - Het label dat moet worden toegevoegd, vervangen of verwijderd. Label namen moeten voldoen aan dezelfde naam Conventie voor andere [velden](./definition-structure.md#fields).
+    - **waarde** Beschrijving
+      - De waarde waarop de tag moet worden ingesteld.
+      - Deze eigenschap is vereist als de bewerking _addOrReplace_ of _add_is.
+
+### <a name="modify-operations"></a>Bewerkingen wijzigen
+
+De eigenschap array **Operations** maakt het mogelijk verschillende labels op verschillende manieren te wijzigen vanuit één beleids definitie. Elke bewerking bestaat uit **bewerking**-, **veld**-en **waarde** -eigenschappen. Bewerking bepaalt wat de herstel taak doet op de tags, het veld bepaalt welke tag wordt gewijzigd en waarde definieert de nieuwe instelling voor die tag. In het onderstaande voor beeld wordt de volgende tag gewijzigd:
+
+- Hiermee stelt `environment` u de tag in op test, zelfs als deze al met een andere waarde bestaat.
+- Hiermee verwijdert u `TempResource`de tag.
+- Hiermee stelt `Dept` u het label in op de beleids parameter voor de beleids toewijzing geconfigureerde _afdeling_ .
+
+```json
+"details": {
+    ...
+    "operations": [
+        {
+            "operation": "addOrReplace",
+            "field": "tags['environment']",
+            "value": "Test"
+        },
+        {
+            "operation": "Remove",
+            "field": "tags['TempResource']",
+        },
+        {
+            "operation": "addOrReplace",
+            "field": "tags['Dept']",
+            "field": "[parameters('DeptName')]"
+        }
+    ]
+}
+```
+
+De eigenschap **Operation** heeft de volgende opties:
+
+|Bewerking |Description |
+|-|-|
+|addOrReplace |Voegt de gedefinieerde tag en waarde toe aan de resource, zelfs als de tag al bestaat met een andere waarde. |
+|Toevoegen |Voegt de gedefinieerde tag en waarde toe aan de resource. |
+|Verwijderen |Hiermee verwijdert u de gedefinieerde tag uit de resource. |
+
+### <a name="modify-examples"></a>Voor beelden wijzigen
+
+Voorbeeld 1: Voeg de `environment` tag toe en vervang `environment` bestaande tags door ' test ':
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "Test"
+            }
+        ]
+    }
+}
+```
+
+Voorbeeld 2: Verwijder het `env` label en voeg de `environment` tag toe of vervang `environment` bestaande tags door een waarde met para meters:
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "Remove",
+                "field": "tags['env']"
+            },
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "[parameters('tagValue')]"
+            }
+        ]
+    }
 }
 ```
 
@@ -234,7 +325,7 @@ Voorbeeld: Hiermee wordt Virtual Machines geëvalueerd om te bepalen of de uitbr
 
 ## <a name="deployifnotexists"></a>DeployIfNotExists
 
-Net als bij AuditIfNotExists, DeployIfNotExists voert een sjabloonimplementatie wanneer de voorwaarde wordt voldaan.
+Net als bij AuditIfNotExists voert een DeployIfNotExists-beleids definitie een sjabloon implementatie uit wanneer aan de voor waarde wordt voldaan.
 
 > [!NOTE]
 > [Geneste sjablonen](../../../azure-resource-manager/resource-group-linked-templates.md#nested-template) worden ondersteund met **deployIfNotExists**, maar [gekoppelde sjablonen](../../../azure-resource-manager/resource-group-linked-templates.md) worden momenteel niet ondersteund.
@@ -247,7 +338,7 @@ Tijdens een evaluatiecyclus beleidsdefinities met een DeployIfNotExists-effect d
 
 ### <a name="deployifnotexists-properties"></a>DeployIfNotExists-eigenschappen
 
-De **details** eigenschap van het DeployIfNotExists-effect heeft de subeigenschappen die definieert de gerelateerde resources te vergelijken en de sjabloonimplementatie om uit te voeren.
+De eigenschap **Details** van het effect DeployIfNotExists heeft alle subeigenschappen waarmee de gerelateerde resources worden gedefinieerd en de sjabloon implementatie moet worden uitgevoerd.
 
 - **Type** (vereist)
   - Hiermee geeft u het type van de bijbehorende resource aan.

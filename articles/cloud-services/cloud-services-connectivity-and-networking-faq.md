@@ -4,7 +4,7 @@ description: In dit artikel vindt u de veelgestelde vragen over connectiviteit e
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: eef99c7d7a108618b570988dd5d7ec9c2fdb8db4
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: c6d470b9c14f53558d09e6876701cb25ddc15183
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941735"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154877"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemen met de verbinding en het netwerk voor Azure Cloud Services: Veelgestelde vragen (FAQ)
 
@@ -103,7 +103,7 @@ Om ervoor te zorgen dat het open bare IP-adres van uw Cloud service (ook wel een
 - [Het IP-adres van een bestaande Cloud service reserveren](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
 - [Een gereserveerd IP-adres koppelen aan een Cloud service met behulp van een service configuratie bestand](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-Als u meer dan één exemplaar voor uw rollen hebt, kan het koppelen van RIP met uw Cloud service geen uitval tijd veroorzaken. U kunt ook het IP-bereik van uw Azure-Data Center white list. U kunt alle Azure IP-bereiken vinden in het [micro soft Download centrum](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
+Als u meer dan één exemplaar voor uw rollen hebt, kan het koppelen van RIP met uw Cloud service geen uitval tijd veroorzaken. U kunt ook het IP-adres bereik van uw Azure-Data Center toevoegen aan een acceptatie lijst. U kunt alle Azure IP-bereiken vinden in het [micro soft Download centrum](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
 
 Dit bestand bevat de IP-adresbereiken (met inbegrip van compute-, SQL-en opslag bereik) die worden gebruikt in azure-data centers. Er wordt wekelijks een bijgewerkt bestand geplaatst met de huidige geïmplementeerde bereiken en eventuele toekomstige wijzigingen in de IP-bereiken. Nieuwe bereiken die in het bestand worden weer gegeven, worden gedurende ten minste één week niet gebruikt in de data centers. Down load elke week het nieuwe. XML-bestand en voer de benodigde wijzigingen op uw site uit om de services die in Azure worden uitgevoerd correct te identificeren. Gebruikers van Azure ExpressRoute kunnen merken dat dit bestand wordt gebruikt om de BGP-advertisement van Azure Space bij te werken in de eerste week van elke maand.
 

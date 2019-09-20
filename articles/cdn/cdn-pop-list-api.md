@@ -15,20 +15,22 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: bc8e8219c8f8de75b01c584a2a5ce13cc1429fec
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: f677d6b8edfe60646c6368acce9d47b23a35237d
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991780"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146878"
 ---
-# <a name="retrieve-the-current-verizon-pop-ip-list-for-azure-cdn"></a>De huidige Verizon POP IP-lijst voor Azure CDN ophalen
+# <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>De huidige POP-IP-lijst voor Azure CDN ophalen
+
+## <a name="retrieve-the-current-verizon-pop-ip-list-for-azure-cdn"></a>De huidige Verizon POP IP-lijst voor Azure CDN ophalen
 
 U kunt de REST API gebruiken om de set IP-adressen op te halen voor de POP-servers (Point of Presence) van Verizon. Deze POP-servers maken aanvragen voor de oorspronkelijke servers die zijn gekoppeld aan de Azure Content Delivery Network (CDN)-eind punten op een Verizon-Profiel (**Azure CDN Standard van Verizon** of **Azure CDN Premium van Verizon**). Houd er rekening mee dat deze set IP-adressen verschilt van de IP-adressen die een client zou zien wanneer ze aanvragen indienen bij de Pop's. 
 
 Zie [Edge nodes-List](https://docs.microsoft.com/rest/api/cdn/edgenodes/list)(Engelstalig) voor de syntaxis van de rest API bewerking voor het ophalen van de POP-lijst.
 
-# <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>De huidige micro soft POP-IP-lijst voor Azure CDN ophalen
+## <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>De huidige micro soft POP-IP-lijst voor Azure CDN ophalen
 
 Als u uw toepassing wilt vergren delen zodat alleen verkeer van Azure CDN van micro soft wordt geaccepteerd, moet u IP-Acl's instellen voor uw back-end. U kunt ook de set geaccepteerde waarden voor de header X-forward-host die door Azure CDN van micro soft is verzonden, beperken. Deze stappen worden hieronder beschreven:
 

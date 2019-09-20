@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: c3f3d9437a6e796cc91ff1782b3a0774382c5f8b
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ee64a8af35f938def94e369bdb400fed6e2798c0
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067063"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146604"
 ---
 # <a name="troubleshooting"></a>Problemen oplossen
 
@@ -46,10 +46,9 @@ Dit artikel helpt u bij het oplossen van veelvoorkomende problemen die zich kunn
 
 ## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Onregelmatige test fout met een protocol fout
 
-|Symptoom/fout bericht| Mogelijke oorzaken|
-|----|---------|
-Protocol overtreding CR moet worden gevolgd door LF | Dit gebeurt wanneer er een onjuiste koptekst wordt gedetecteerd. Het is in het bijzonder mogelijk dat er geen CRLF wordt gebruikt om het einde van de regel aan te geven, wat in strijd is met de HTTP-specificatie en dat daarom de validatie op het niveau van .NET-webaanvraag mislukt.
- || Dit kan ook worden veroorzaakt door load balancers of Cdn's.
+|Symptoom/fout bericht| Mogelijke oorzaken| Mogelijke oplossingen |
+|----|---------|-----|
+|De server heeft een schending van het protocol doorgevoerd. Sectie = ResponseHeader Details = CR moet worden gevolgd door LF | Dit gebeurt wanneer er een onjuiste koptekst wordt gedetecteerd. Het is in het bijzonder dat sommige headers geen gebruikmaken van CRLF om het einde van de regel aan te geven, wat in strijd is met de HTTP-specificatie. Application Insights dwingt deze HTTP-specificatie af en mislukt de antwoorden met ongeldige headers.| a. Neem contact op met de website van de host provider/CDN-provider om de defecte servers te herstellen. <br> b. Als de mislukte aanvragen resources zijn (bijvoorbeeld stijl bestanden, afbeeldingen, scripts), kunt u overwegen het parseren van afhankelijke aanvragen uit te scha kelen. Als u dit doet, verliest u de mogelijkheid om de beschik baarheid van die bestanden te bewaken).
 
 > [!NOTE]
 > De URL mislukt mogelijk niet bij browsers met een beperkte validatie van HTTP-headers. Zie dit blogbericht voor een gedetailleerde uitleg van dit probleem: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  

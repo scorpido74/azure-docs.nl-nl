@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell-script - een Azure Cosmos-account bijwerken
-description: Azure PowerShell-voorbeeldscript - een Azure Cosmos-account met extra regio's bijwerken
+title: Azure PowerShell script-een Azure Cosmos-account bijwerken
+description: Azure PowerShell script voorbeeld-een Azure Cosmos-account bijwerken of regio's wijzigen
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/06/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8fad9b47b4f451f4b77f32038b26d6dc43809a60
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 7d57264daf4036d1823d3da27c248bdca1d7466d
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603958"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154742"
 ---
-# <a name="update-an-azure-cosmos-account-and-add-a-region-using-powershell"></a>Bijwerken van een Azure Cosmos-account en toevoegen van een regio met behulp van PowerShell
+# <a name="update-an-azure-cosmos-account-or-add-modify-regions-using-powershell"></a>Een Azure Cosmos-account bijwerken of wijzigings regio's toevoegen met Power shell
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,12 @@ ms.locfileid: "67603958"
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-account-update.ps1 "Update and add regions to an Azure Cosmos account")]
+> [!NOTE]
+> U kunt regio's niet wijzigen en andere Cosmos-account eigenschappen wijzigen in dezelfde bewerking. Deze moeten worden uitgevoerd als twee afzonderlijke bewerkingen.
+> [!NOTE]
+> Dit voor beeld laat zien hoe u een SQL (core) API-account gebruikt. Als u dit voor beeld voor andere Api's wilt gebruiken, kopieert u de gerelateerde eigenschappen en past u deze toe op uw API-specifiek script.
+
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-update.ps1 "Add a region to an Azure Cosmos account")]
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
@@ -37,11 +42,11 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure Resources**| |
-| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | Hiermee haalt u een resource. |
-| [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | Een resource-updates. |
-|**Azure-resourcegroepen**| |
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+|**Azure-resources**| |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Een resource maken. |
+| [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | Een resource bijwerken. |
+|**Azure-resource groepen**| |
+| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

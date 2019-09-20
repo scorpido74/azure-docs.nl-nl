@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 09/03/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 3132d31e9e45718fa95c39a1b8160ea303ded25d
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: ee17e204082389db19e1ebe463352a40d7ecd5ae
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883660"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155242"
 ---
 # <a name="what-is-personalizer"></a>Wat is Personalizer?
 
@@ -39,7 +39,7 @@ Personaler gebruikt machine learning modellen om te ontdekken welke actie het ho
 1. Maak en configureer een exemplaar van de personalisatie service in de Azure Portal. Elk exemplaar is een aangepaste lus.
 1. Gebruik SDK om uw persoonlijke voor keur aan te roepen met informatie over uw gebruikers en de inhoud (_acties_ _)._ U hoeft geen schone, gelabelde gegevens op te geven voordat u personaliseren gebruikt. 
 1. Geef in de client toepassing de gebruiker de actie weer die door Personaler is geselecteerd.
-1. Gebruik SDK om uw persoonlijke voor keuren aan te bieden om aan te geven of de gebruiker de gekozen actie voor persoonlijke instellingen heeft geselecteerd. Dit is een _belonings Score_, doorgaans tussen-1 en 1.
+1. Gebruik de SDK om persoonlijk aan te geven of de gebruiker de actie heeft gekozen voor het personaliseren van persoonlijke instellingen. Dit is een _[belonings Score](concept-rewards.md)_ .
 1. Bekijk de analyse in de Azure Portal om te evalueren hoe het systeem werkt en hoe uw gegevens personalisatie helpen.
 
 ## <a name="where-can-i-use-personalizer"></a>Waar kan ik Personaler gebruiken?
@@ -60,7 +60,7 @@ Personaler is geen service voor het persistent maken en beheren van gebruikers p
 Personaler service heeft twee Api's:
 
 * Verzend informatie (_functies_) over uw gebruikers en de inhoud (_acties_) die u wilt personaliseren. Personaler reageert met de bovenste actie.
-* Stuur feedback naar persoonlijkere informatie over hoe goed de classificatie heeft gewerkt, doorgaans tussen 0 en 1 (de vorige sectie zei 1 en 1). 
+* Stuur feedback naar persoonlijkere informatie over hoe goed de classificatie werkt als een [belonings Score](concept-rewards.md). 
 
 ![Eenvoudige reeks gebeurtenissen voor personalisatie](media/what-is-personalizer/personalization-intro.png)
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 4986f888abca94549e921bfe5400d68f6d28c01f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: bc2be73f85ebec7785b9aa06d6152447eee7e33e
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876682"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147291"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Consulting Services voor Azure Marketplace en AppSource
 Consulting Services in azure Marketplace en AppSource biedt micro soft partners het doel om klanten met services te verbinden om hun gebruik van Azure-en bedrijfs doelstellingen te ondersteunen en uit te breiden. 
@@ -24,15 +24,17 @@ Deze consulting-service aanbiedingen zijn klant gerichte afspraken. Uitgevers he
 ## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Advies Services in azure Marketplace VS AppSource-winkel
 De Marketplace-winkel is afgestemd op doel groepen en micro soft-Cloud producten om klanten te helpen vinden wat ze nodig hebben. Elke winkel biedt gespecialiseerde publicatie opties om u te helpen bij het maximaliseren van uw publicatie-investering. De volgende tabel bevat een overzicht van de volgende opties:
 
-|         |Azure Marketplace  |AppSource |
+|         |Azure Marketplace  |Microsoft AppSource |
 |---------|---------|---------|
 |**Gericht**   |**IT-professionals en Cloud ontwikkelaars**|**Zakelijke gebruikers/line-of-Business-besluit vormers**|
 |Relevantie van oplossing     |Technische apps die zijn gebouwd voor of gebouwd op Azure|Zakelijke apps die gebruikmaken van D365, Power BI, O365, Azure. (Invoeg toepassing of voltooide apps toevoegen)|
-|Publicatie opties     |Contact opnemen met me, proef versie, trans acties of advies Services|Contact opnemen met mij, proef versie of advies Services|
+|Publicatie opties     |Contact opnemen met mij, proef versie, trans acties of services voor Azure|Neem contact op met mij, proef versie of services voor Dynamics 365 en Power BI|
 |In product ervaring      |Azure Management Portal|Dynamics 365, Office 365, Office-client-apps| 
-|Overige      |On-premises publicatie via Azure Stack|Advies Services voor Dynamics en Power BI|
+|Overige      |On-premises publicatie via Azure Stack, advies Services voor Azure, beheerde services voor Azure|Advies Services voor Dynamics en Power BI|
 
-Service aanbiedingen die zijn gebaseerd op micro soft Dynamics 365, Office 365 en Power BI, komen in aanmerking voor de lijst op AppSource. Zie [Microsoft AppSource richt lijnen voor advies Services](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)voor meer informatie. 
+Consulting Services-aanbiedingen die zijn gebaseerd op micro soft Dynamics 365 en Power BI komen in aanmerking voor de lijst op Microsoft AppSource. Zie [Microsoft AppSource richt lijnen voor advies Services](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)voor meer informatie. 
+
+Advies Services en Managed Services-aanbiedingen die zijn gebaseerd op Microsoft Azure, komen in aanmerking voor de aanbieding op Azure Marketplace. Zie artikelen over [het publiceren van een Azure Consulting-Service](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) en [het publiceren van een managed services-aanbod voor Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)voor meer informatie.
 
 > [!Note]
 > Advies Services in azure Marketplace moeten gebruikmaken van aanbiedingen die zijn gericht op een * * technische doel groep met focussen op *technische oplossingen en services van Azure.* \* * Consulting Services in AppSource moeten profiteren van de mogelijkheden die zijn gericht op hun expertise bij het leveren van kwaliteits oplossingen voor Dynamics 365, Power BI of PowerApps voor het vermelden van hun advies services-aanbod op AppSource
@@ -149,9 +151,9 @@ Voorbeelden:
 
 Wanneer u de beschrijving van de aanbieding bekijkt en samen vattingen van aanbiedingen, worden de volgende criteria toegepast op het team:
 
-|Type aanbieding  |Verplicht |Aanbevolen  |
+|Type aanbieding  |Vereist |Aanbevolen  |
 |---------|---------|---------|
-|**Onderzoek**    |   Neem een gedetailleerde agenda voor evaluaties van meerdere dagen of meerdere weken op en geef aan welk product de klant kan verwachten      |    Optimaliseer uw aanbod overzicht met de tref woorden van uw belangrijkste zoek machines     |
+|**Evaluatie**    |   Neem een gedetailleerde agenda voor evaluaties van meerdere dagen of meerdere weken op en geef aan welk product de klant kan verwachten      |    Optimaliseer uw aanbod overzicht met de tref woorden van uw belangrijkste zoek machines     |
 |**Briefing**    |   Stel in welk product de klant kan verwachten. Onthoud dat er persoonlijke informatie moet worden aangeboden. Als u een virtuele service levert, kiest u een ander type aanbieding    |  Optimaliseer uw aanbod overzicht met de tref woorden van uw belangrijkste zoek machines       |
 |**Verloop**    |  Neem een gedetailleerde agenda op voor implementaties met meerdere dagen of meerdere weken en stel in welke technische wijzigingen, technische artefacten of andere artefacten een klant kan worden verwacht als gevolg van de betrokkenheid       |    Optimaliseer uw aanbod overzicht met de tref woorden van uw belangrijkste zoek machines     |
 |**Testen van concept**    |    Stel in welke technische wijzigingen, technische artefacten of andere artefacten een klant kan worden verwacht als gevolg van de betrokkenheid     | Optimaliseer uw aanbod overzicht met de tref woorden van uw belangrijkste zoek machines        |

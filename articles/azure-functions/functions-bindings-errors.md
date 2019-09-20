@@ -7,17 +7,17 @@ author: craigshoemaker
 manager: gwallace
 ms.service: azure-functions
 ms.topic: reference
-ms.date: 01/14/2019
+ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: e289243949ee769322d55a7c2dde5bd8e6af1ca1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 23aa30a93e5e3820d431afc00aa77071762feb14
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097509"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155669"
 ---
 # <a name="handle-azure-functions-binding-errors"></a>Azure Functions bindings fouten verwerken
 
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
-Zie de sectie [bindings fout codes](functions-bindings-error-pages.md#binding-error-codes) van het onderwerp Overzicht van [fout afhandeling in azure functions](functions-bindings-error-pages.md) voor koppelingen naar alle relevante fout onderwerpen voor de verschillende services die worden ondersteund door-functies.  
+Voor informatie over fouten die worden geretourneerd door services die worden ondersteund door-functies, zie de sectie [bindings fout codes](functions-bindings-error-pages.md#binding-error-codes) van het artikel Azure functions overzicht van [fout afhandeling](functions-bindings-error-pages.md) .  

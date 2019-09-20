@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b3607f0b462efceab322e6eaf616268a34b02fb0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 2c63d63e57a23963f17b6773f244973b051b57eb
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142088"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162457"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Werken met de vorige versie van Azure Migrate
 
@@ -78,20 +78,20 @@ De weergave van de Azure-gereedheid in de evaluatie toont de gereedheidsstatus v
 
 **Gereedheid** | **Overheids** | **Details**
 --- | --- | ---
-Gereed voor Azure | Geen compatibiliteits problemen. De machine kan worden gemigreerd naar Azure en wordt opgestart in Azure biedt volledige ondersteuning voor Azure. | Voor virtuele machines die gereed zijn, wordt door Azure Migrate een VM-grootte in Azure aanbevolen.
+Gereed voor Azure | Geen compatibiliteits problemen. De machine kan worden gemigreerd naar Azure en wordt opgestart in azure met volledige ondersteuning voor Azure. | Voor virtuele machines die gereed zijn, wordt door Azure Migrate een VM-grootte in Azure aanbevolen.
 Voorwaardelijk gereed voor Azure | De computer kan worden opgestart in azure, maar heeft mogelijk geen volledige ondersteuning voor Azure. Bijvoorbeeld een machine met een oudere versie van Windows Server die niet wordt ondersteund in Azure. | In Azure Migrate worden de gereedheids problemen beschreven en worden er herstels tappen geboden.
 Niet gereed voor Azure |  De virtuele machine wordt niet opgestart in Azure. Als een virtuele machine bijvoorbeeld een schijf heeft die groter is dan 4 TB, kan deze niet worden gehost op Azure. | In Azure Migrate worden de gereedheids problemen beschreven en worden er herstels tappen geboden.
 Gereedheid onbekend | Azure Migrate kunt de gereedheid van Azure niet identificeren, meestal omdat er geen gegevens beschikbaar zijn.
 
 
-#### <a name="azure-vm-properties"></a>Eigenschappen van Azure VM
+#### <a name="azure-vm-properties"></a>Azure VM-eigenschappen
 Gereedheid houdt rekening met een aantal VM-eigenschappen om te bepalen of de virtuele machine kan worden uitgevoerd in Azure.
 
 
 **Eigenschap** | **Details** | **Gereedheid**
 --- | --- | ---
 **Opstart type** | BIOS ondersteund. UEFI wordt niet ondersteund. | Voorwaardelijk gereed als het opstart type UEFI is.
-**Kernen** | Kern < van machines = het maximum aantal kern geheugens (128) dat wordt ondersteund voor een virtuele machine van Azure.<br/><br/> Als er een prestatie geschiedenis beschikbaar is, wordt Azure Migrate beschouwd als de gebruikte kernen.<br/>Als een <br/>comfort factor is opgegeven in de evaluatie-instellingen, het aantal gebruikte kern geheugens wordt vermenigvuldigd met de comfort factor.<br/><br/> Als er geen prestatie geschiedenis is, gebruikt Azure Migrate de toegewezen kernen zonder de comfort factor toe te passen. | Gereed als deze kleiner dan of gelijk aan de limieten zijn.
+**Kernen** | Kern < van machines = het maximum aantal kern geheugens (128) dat wordt ondersteund voor een virtuele machine van Azure.<br/><br/> Als er een prestatie geschiedenis beschikbaar is, wordt Azure Migrate beschouwd als de gebruikte kernen.<br/>Als er een comfort factor is opgegeven in de evaluatie-instellingen, wordt het aantal gebruikte kern geheugens vermenigvuldigd met de comfort factor.<br/><br/> Als er geen prestatie geschiedenis is, gebruikt Azure Migrate de toegewezen kernen zonder de comfort factor toe te passen. | Gereed als deze kleiner dan of gelijk aan de limieten zijn.
 **Geheugenmetabase** | De grootte van het computer geheugen < = de maximale hoeveelheid geheugen (3892 GB op Azure&nbsp;M-serie Standard_M128m<sup>2</sup>) voor een virtuele machine van Azure. [Meer informatie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Als de prestatie geschiedenis beschikbaar is, Azure Migrate beschouwt het gebruikte geheugen.<br/><br/>Als er een comfort factor is opgegeven, wordt het gebruikte geheugen vermenigvuldigd met de comfort factor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen geheugen gebruikt, zonder dat u de comfort factor hoeft toe te passen.<br/><br/> | Gereed indien binnen de limieten.
 **Opslag schijf** | De toegewezen grootte van een schijf moet 4 TB (4096 GB) of minder zijn.<br/><br/> Het aantal schijven dat is gekoppeld aan de computer, moet 65 of minder zijn, inclusief de besturingssysteem schijf. | Gereed indien binnen de limieten.
 **Netwerken** | Aan een machine moet 32 of minder Nic's zijn gekoppeld. | Gereed indien binnen de limieten.
@@ -142,7 +142,7 @@ Met kosten ramingen worden de totale reken-en opslag kosten voor het uitvoeren v
 
 Elke evaluatie op basis van prestaties is gekoppeld aan een betrouwbaarheids classificatie.
 
-- Een betrouwbaarheids classificatie varieert van één ster tot vijf sterren (één-begin de laagste en vijf-begin de hoogste).
+- Een betrouwbaarheids classificatie varieert van één ster tot vijf sterren (één ster is de laagste en vijf sterren de hoogste).
 - De vertrouwens classificatie wordt toegewezen aan een evaluatie op basis van de beschik baarheid van gegevens punten die nodig zijn om de evaluatie te berekenen.
 - De betrouwbaarheidsclassificatie van een evaluatie helpt u om de betrouwbaarheid in te schatten van de aanbevelingen voor de grootte die Azure Migrate geeft.
 - De vertrouwens classificatie is niet beschikbaar voor ' as-is ' on-premises Beoordelingen.
@@ -216,7 +216,7 @@ Nadat u een werk ruimte hebt geconfigureerd, downloadt en installeert u agents o
 4. Kopieer de werkruimte-id en -sleutel. U hebt deze nodig wanneer u de MMA installeert op de on-premises machine.
 
 > [!NOTE]
-> Als u de installatie van agents wilt automatiseren, kunt u een implementatie hulpprogramma, zoals System Center Configuration Manager of een partner programma, zoals een [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), gebruiken dat een agent implementatie oplossing voor Azure migrate heeft orovides.
+> Als u de installatie van agents wilt automatiseren, kunt u een implementatie hulpprogramma, zoals System Center Configuration Manager of een partner programma, zoals [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), gebruiken dat een oplossing voor agent implementatie biedt voor Azure Migrate.
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>De MMA-agent op een Windows-computer installeren

@@ -1,6 +1,6 @@
 ---
-title: Richt lijnen voor het afhandelen van Azure Functions | Microsoft Docs
-description: Bevat algemene richt lijnen voor het afhandelen van fouten die zich voordoen wanneer uw functies worden uitgevoerd, en koppelingen naar onderwerpen over binding-specifieke fouten.
+title: Richt lijnen voor het afhandelen van Azure Functions
+description: Meer informatie over het afhandelen van fouten in Azure Functions met koppelingen naar specifieke bindings fouten.
 services: functions
 cloud: ''
 documentationcenter: ''
@@ -9,26 +9,28 @@ manager: gwallace
 ms.assetid: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 02/01/2018
+ms.date: 09/11/2019
 ms.author: cshoe
-ms.openlocfilehash: fdfee3442986322f242da730bb9ceccbc9f9e250
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d301940998175adb6469e46cff2de918b5cae9df
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097488"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155295"
 ---
 # <a name="azure-functions-error-handling"></a>Fout afhandeling Azure Functions
 
-Dit onderwerp bevat algemene richt lijnen voor het afhandelen van fouten die optreden wanneer uw functies worden uitgevoerd. Het bevat ook koppelingen naar de onderwerpen over het beschrijven van binding-specifieke fouten die zich kunnen voordoen. 
+Het afhandelen van fouten in Azure Functions is belang rijk om te voor komen dat gegevens verloren gaan, gemiste gebeurtenissen en de status van uw toepassing te controleren.
 
-## <a name="handling-errors-in-functions"></a>Fouten in functies afhandelen
+In dit artikel worden algemene strategieën beschreven voor het afhandelen van fouten, samen met koppelingen naar binding-specifieke fouten.
+
+## <a name="handling-errors"></a>Fouten afhandelen
+
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
- 
 ## <a name="binding-error-codes"></a>Bindings fout codes
 
-Wanneer u integreert met Azure-Services, treden er fouten op die afkomstig zijn van de Api's van de onderliggende services. Koppelingen naar de documentatie over de fout code voor deze services vindt u in de sectie **uitzonde ringen en retour codes** van de volgende onderwerpen over triggers en bindingen:
+Wanneer u integreert met Azure-Services, kunnen fouten afkomstig zijn van de Api's van de onderliggende services. Informatie met betrekking tot binding-specifieke fouten is beschikbaar in de sectie **uitzonde ringen en retour codes** van de volgende artikelen:
 
 + [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 

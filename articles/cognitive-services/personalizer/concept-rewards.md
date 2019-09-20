@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 72c425a1ec9fb83cc2e9dd1bae2c4f521109f162
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: bb9a9c1d67e52c21d2cb039832d27547a023da9f
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663378"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154667"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Belonings scores geven aan dat het succes van personalisatie is geslaagd
 
@@ -25,7 +25,7 @@ Personaler traint de machine learning modellen door de beloningen te evalueren.
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Belonings-API gebruiken om belonings score naar persoonlijker te verzenden
 
-Beloningen worden naar persoonlijke voor keuren verzonden met behulp van de belonings- [API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward). Een beloning is een getal tussen-1 en 1. Personaler traint het model om de hoogst mogelijke som van beloningen in de loop van de tijd te krijgen.
+Beloningen worden naar persoonlijke voor keuren verzonden met behulp van de [belonings-API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward). Normaal gesp roken is een beloning een getal van 0 tot en met 1. Een negatieve beloning, met de waarde-1, is mogelijk in bepaalde scenario's en mag alleen worden gebruikt als u ervaring hebt met het versterken van Learning (RL). Personaler traint het model om de hoogst mogelijke som van beloningen in de loop van de tijd te krijgen.
 
 Er worden beloningen verzonden nadat het gebruikers gedrag is opgetreden. Dit kan later dagen duren. De maximale hoeveelheid tijd Personaler wacht totdat een gebeurtenis wordt beschouwd als een vergoeding of een standaard beloning is geconfigureerd met de [wacht tijd](#reward-wait-time) op het Azure Portal.
 
@@ -56,7 +56,7 @@ Als er binnen de [wacht tijd](#reward-wait-time)van de beloning geen vergoeding 
 
 ## <a name="building-up-rewards-with-multiple-factors"></a>Het opbouwen van beloningen met meerdere factoren  
 
-Voor een efficiënte persoonlijke instellingen kunt u de belonings Score (elk getal van-1 en 1) samen stellen op basis van meerdere factoren. 
+Voor effectief aanpassen kunt u de belonings Score op basis van meerdere factoren samen stellen. 
 
 U kunt bijvoorbeeld deze regels Toep assen voor het personaliseren van een lijst met video-inhoud:
 
@@ -80,7 +80,7 @@ Aggregatie-instellingen:
 
 Alle beloningen voor een gebeurtenis, die na de **wacht tijd**van de beloning worden ontvangen, worden genegeerd en hebben geen invloed op de training van modellen.
 
-Als u belonings scores opneemt, kan de uiteindelijke beloning hoger zijn dan 1 of lager zijn dan-1. Dit maakt de service niet meer.
+Als u belonings scores opneemt, ligt uw definitieve beloning mogelijk buiten het verwachte score bereik. Dit maakt de service niet meer.
 
 <!--
 @edjez - is the number ignored if it is outside the acceptable range?
@@ -88,7 +88,7 @@ Als u belonings scores opneemt, kan de uiteindelijke beloning hoger zijn dan 1 o
 
 ## <a name="best-practices-for-calculating-reward-score"></a>Aanbevolen procedures voor het berekenen van de belonings Score
 
-* **Denk na over echte indica toren van geslaagde personalisatie**: Het is eenvoudig om te zien wat de voor delen zijn, maar een goede beloning is gebaseerd op wat u uw gebruikers wilt laten *doen* *in plaats van* wat u wilt.  Een voor beeld: een vergoeding op klikken kan leiden tot het selecteren van inhoud die clickbait gevoelig is.
+* **Denk na over echte indica toren van geslaagde personalisatie**: Het is eenvoudig om te zien wat de voor delen zijn, maar een goede beloning is gebaseerd op wat u uw gebruikers *wilt laten doen in plaats van* wat uwilt.  Een voor beeld: een vergoeding op klikken kan leiden tot het selecteren van inhoud die clickbait gevoelig is.
 
 * **Gebruik een belonings score voor de goede persoonlijke instellingen**: Het personaliseren van een voor stel van een film zou er zeker van zijn dat de gebruiker de film bekijkt en een hoge classificatie krijgt. Omdat de classificatie van films waarschijnlijk afhankelijk is van veel dingen (de kwaliteit van de werking, de stemming van de gebruiker), is het geen goed idee om te bepalen hoe goed *het persoonlijke karakter* heeft gewerkt. De gebruiker die de eerste paar minuten van de film bekijkt, kan echter een beter signaal zijn bij de effectiviteit van de persoonlijke voor keuren en een beloning van 1 na 5 minuten een beter signaal sturen.
 
@@ -100,7 +100,7 @@ Als u belonings scores opneemt, kan de uiteindelijke beloning hoger zijn dan 1 o
     * Als er een lijst met films wordt weer gegeven, kunt u, als de gebruiker de eerste keer aanwijst voor een tijdje, bepalen dat er een bepaalde gebruikers betrokkenheid heeft plaatsgevonden. Het gedrag kan tellen met een belonings Score van 0,1. 
     * Als de gebruiker de pagina opent en vervolgens afsluit, kan de belonings score 0,2 zijn. 
 
-## <a name="reward-wait-time"></a>Wacht tijd op beloning
+## <a name="reward-wait-time"></a>Wachttijd voor beloning
 
 Personaler geeft de informatie van een classificatie oproep samen met de beloningen die worden verzonden in belonings gesprekken om het model te trainen. Deze kunnen zich op verschillende tijdstippen voordoen. Personaler wacht op een beperkte tijd, vanaf het moment dat de rang oproep heeft plaatsgevonden, zelfs als de rang oproep is gemaakt als inactieve gebeurtenis en later wordt geactiveerd.
 

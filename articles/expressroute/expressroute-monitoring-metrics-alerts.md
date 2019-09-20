@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 92ec03e20fb6e681a0afd14048449ad004ebca0c
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: dbe03ef29bd28d465fa671abc915d63d4b038cb2
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991503"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154772"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Bewaking, metrische gegevens en waarschuwingen voor ExpressRoute
 
@@ -23,57 +23,50 @@ Dit artikel helpt u inzicht in de ExpressRoute-bewaking, metrische gegevens en w
 >Met behulp van **klassieke metrische gegevens** wordt niet aanbevolen.
 >
 
-## <a name="circuit-metrics"></a>Circuit metrische gegevens
+## <a name="expressroute-metrics"></a>Metrische gegevens van ExpressRoute
 
-Om te navigeren naar **metrische gegevens**, klikt u op het ExpressRoute-pagina voor het circuit die u wilt bewaken. Onder **bewaking**, vindt u de **metrische gegevens**. Selecteer een van de onderstaande metrische gegevens. De standaard aggregatie wordt toegepast. U kunt eventueel splitsen Toep assen, waardoor de metrische gegevens met verschillende dimensies worden weer gegeven.
+Als u **gegevens**wilt weer geven, gaat u naar de pagina *Azure monitor* en klikt u op *metrische gegevens*. Voor het weer geven van **ExpressRoute** -metrische gegevens, de bestands extensie per bron type *ExpressRoute-circuits*. Als u **Global Reach** metrische gegevens wilt weer geven, filtert u op resource type *ExpressRoute-circuits* en selecteert u een ExpressRoute-circuit resource waarvoor Global REACH is ingeschakeld. Als u **ExpressRoute direct** -metrische gegevens wilt weer geven, filtert u resource type op *ExpressRoute-poorten*. 
 
-### <a name="metrics-available"></a>Beschik bare metrische gegevens: 
-* **Beschikbaarheid** 
-    * ARP-Beschik baarheid
-      * Beschik bare dimensies:
-        * Peer (primaire/secundaire ExpressRoute-router)
-        * Peering-type (privé/openbaar/micro soft)
-    * BGP-Beschik baarheid
-      * Beschik bare dimensies:
-        * Peer (primaire/secundaire ExpressRoute-router)
-        * Peering-type (privé/openbaar/micro soft)
-* **Vervoer**
-    * BitsInPerSecond
-      * Beschik bare dimensies:
-        * Peering-type (privé/openbaar/micro soft)
-    * BitsOutPerSecond
-      * Beschik bare dimensies:
-        * Peering-type (privé/openbaar/micro soft)
-    * GlobalReachBitsInPerSecond
-      * Beschik bare dimensies:
-        * Skey van gekoppeld circuit (Service sleutel)
-    * GlobalReachBitsOutPerSecond
-      * Beschik bare dimensies:
-        * Skey van gekoppeld circuit (Service sleutel)
+Zodra een metriek is geselecteerd, wordt de standaard aggregatie toegepast. U kunt eventueel splitsen Toep assen, waardoor de metriek wordt weer gegeven met verschillende dimensies.
 
+### <a name="available-metrics"></a>Beschik bare metrische gegevens
+|**Gegevens**|**Categorie**|**Dimensie (s)**|**Functie (s)**|
+| --- | --- | --- | --- |
+|ARP-Beschik baarheid|Beschikbaarheid|<ui><li>Peer (primaire/secundaire ExpressRoute-router)</ui></li><ui><li> Peering-type (privé/openbaar/micro soft)</ui></li>|ExpressRoute|
+|BGP-Beschik baarheid|Beschikbaarheid|<ui><li> Peer (primaire/secundaire ExpressRoute-router)</ui></li><ui><li> Peering-type</ui></li>|ExpressRoute|
+|BitsInPerSecond|Verkeer|<ui><li> Peering-type (ExpressRoute)</ui></li><ui><li>Koppeling (ExpressRoute direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
+|BitsOutPerSecond|Verkeer| <ui><li>Peering-type (ExpressRoute)</ui></li><ui><li> Koppeling (ExpressRoute direct) | <ui><li>ExpressRoute<ui><li>ExpressRoute direct</ui></li> |
+|GlobalReachBitsInPerSecond|Verkeer|<ui><li>Skey van gekoppeld circuit (Service sleutel)</ui></li>|Globaal bereik|
+|GlobalReachBitsOutPerSecond|Verkeer|<ui><li>Skey van gekoppeld circuit (Service sleutel)</ui></li>|Globaal bereik|
+|AdminState|Fysieke connectiviteit|Koppelen|ExpressRoute Direct|
+|LineProtocol|Fysieke connectiviteit|Koppelen|ExpressRoute Direct|
+|RxLightLevel|Fysieke connectiviteit|<ui><li>Gekoppeld</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
+|TxLightLevel|Fysieke connectiviteit|<ui><li>Gekoppeld</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
 >[!NOTE]
 >Het gebruik van *GlobalGlobalReachBitsInPerSecond* en *GlobalGlobalReachBitsOutPerSecond* wordt alleen weer gegeven als er ten minste één Global Reach verbinding tot stand is gebracht.
 >
 
-## <a name="bits-in-and-out---metrics-across-all-peerings"></a>Bits in en uit-metrische gegevens voor alle peerings
+## <a name="circuits-metrics"></a>Meet gegevens circuits
+
+### <a name="bits-in-and-out---metrics-across-all-peerings"></a>Bits in en uit-metrische gegevens voor alle peerings
 
 U kunt metrische gegevens weer geven voor alle peerings op een bepaald ExpressRoute-circuit.
 
 ![Circuit metrische gegevens](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
 
-## <a name="bits-in-and-out---metrics-per-peering"></a>Bits in en out-metrische gegevens per peering
+### <a name="bits-in-and-out---metrics-per-peering"></a>Bits in en out-metrische gegevens per peering
 
 Hier vindt u metrische gegevens voor persoonlijke, openbare en Microsoft-peering in bits per seconde.
 
 ![Metrische gegevens per peering](./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg) 
 
-## <a name="bgp-availability---split-by-peer"></a>BGP-Beschik baarheid-splitsen op peer  
+### <a name="bgp-availability---split-by-peer"></a>BGP-Beschik baarheid-splitsen op peer  
 
 U kunt bijna de real-time Beschik baarheid van BGP over Peerings en peers (primaire en secundaire ExpressRoute-routers) bekijken. Dit dash board toont de primaire BGP-sessie voor privé-peering en de tweede BGP-sessie voor persoonlijke peering. 
 
 ![BGP-Beschik baarheid per peer](./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg) 
 
-## <a name="arp-availability---split-by-peering"></a>Beschik baarheid van ARP-splitsen door peering  
+### <a name="arp-availability---split-by-peering"></a>Beschik baarheid van ARP-splitsen door peering  
 
 U kunt bijna de real-time Beschik baarheid van [ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager) over Peerings en peers (primaire en secundaire ExpressRoute-routers) bekijken. Dit dash board toont de sessie van de privé-peering-ARP voor beide peers, maar is voltooid voor micro soft-peering tussen peerings. De standaard aggregatie (Average) is gebruikt voor beide peers.  
 

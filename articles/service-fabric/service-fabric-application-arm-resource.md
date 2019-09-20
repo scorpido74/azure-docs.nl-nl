@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: atsenthi
-ms.openlocfilehash: 3810afa7ad00aa731751aa1f0bfe38d503de5850
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 0bec430cbb98452f8c852c96053f3f699ce5098e
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953207"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71153592"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Toepassingen en services beheren als Azure Resource Manager resources
 
@@ -64,7 +64,7 @@ Het volgende code fragment toont de verschillende soorten resources die kunnen w
 
 ## <a name="add-a-new-application-to-your-resource-manager-template"></a>Een nieuwe toepassing toevoegen aan uw Resource Manager-sjabloon
 
-1. Bereid de Resource Manager-sjabloon voor uw cluster voor op implementatie. Zie [een service Fabric cluster maken](service-fabric-cluster-creation-via-arm.md) met behulp van Azure Resource Manager voor meer informatie.
+1. Bereid de Resource Manager-sjabloon voor uw cluster voor op implementatie. Zie [een service Fabric cluster maken met behulp van Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) voor meer informatie.
 2. Denk na over enkele van de toepassingen die u wilt implementeren in het cluster. Zijn er nog steeds andere toepassingen waarop mogelijk afhankelijkheden kunnen worden toegepast? Bent u van plan een cluster governance of installatie toepassingen te implementeren? Deze soorten toepassingen worden het best beheerd via een resource manager-sjabloon, zoals hierboven is beschreven. 
 3. Wanneer u hebt vastgesteld welke toepassingen u op deze manier wilt implementeren, moeten de toepassingen worden verpakt, ingepakt en op een bestands share worden geplaatst. De share moet toegankelijk zijn via een REST-eind punt voor Azure Resource Manager om te worden gebruikt tijdens de implementatie.
 4. Beschrijf in uw Resource Manager-sjabloon onder uw cluster declaratie de eigenschappen van elke toepassing. Deze eigenschappen omvatten het aantal replica's of instanties en eventuele afhankelijkheids ketens tussen bronnen (andere toepassingen of Services). Zie de [rest API Swagger spec](https://aka.ms/sfrpswaggerspec)voor een lijst met uitgebreide eigenschappen. Houd er rekening mee dat hiermee de toepassings-of service manifesten niet worden vervangen, maar wordt in plaats daarvan een deel van de Resource Manager-sjabloon van het cluster beschreven. Hier volgt een voorbeeld sjabloon met een stateless service *Service1* en een stateful service *Service2* implementeren als onderdeel van *Application1*:
@@ -272,7 +272,7 @@ Als u micro soft. ServiceFabric/clusters/Application uit uw ARM-sjabloon verwijd
 
 ## <a name="manage-an-existing-application-via-resource-manager"></a>Een bestaande toepassing beheren via Resource Manager
 
-Als uw cluster al is geïnstalleerd en sommige toepassingen die u wilt beheren als Resource Manager-resources, al zijn geïmplementeerd, kunt u in plaats van de toepassingen te verwijderen en ze opnieuw te implementeren, een PUT-aanroep gebruiken met dezelfde Api's om de toepassingen te laten ophalen erkend als Resource Manager-resources. 
+Als uw cluster al is geïnstalleerd en sommige toepassingen die u wilt beheren als Resource Manager-resources, al zijn geïmplementeerd, kunt u in plaats van de toepassingen te verwijderen en ze opnieuw te implementeren, een PUT-aanroep gebruiken met dezelfde Api's om de toepassingen te laten ophalen erkend als Resource Manager-resources. Zie [Wat is het service Fabric-toepassings bron model?](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model) voor meer informatie.
 
 > [!NOTE]
 > Als u wilt toestaan dat een cluster upgrade de beschadigde apps negeert, kan de klant "maxPercentUnhealthyApplications: 100 ' in de sectie ' upgradeDescription/healthPolicy '; gedetailleerde beschrijvingen voor alle instellingen bevinden zich in [service fabrics rest API documentatie voor het upgrade beleid](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)van het cluster.

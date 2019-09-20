@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 6ee9e334c10bd2d0f291b5fd1bb547ba3ba83ddb
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d2c84f5b6389ac83206472440d26aa8d81ba76be
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877188"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147362"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub bericht routering gebruiken om apparaat-naar-Cloud-berichten te verzenden naar verschillende eind punten
 
@@ -21,17 +21,21 @@ ms.locfileid: "69877188"
 
 Met bericht routering kunt u berichten van uw apparaten naar Cloud Services verzenden in een geautomatiseerde, schaal bare en betrouw bare manier. Bericht routering kan worden gebruikt voor: 
 
-* Het verzenden van telemetrie- **telefoon berichten en gebeurtenissen** , namelijk levenscyclus gebeurtenissen van apparaten en gebeurtenissen voor het wijzigen van het apparaat naar het ingebouwde eind punt en aangepaste eind punten. Meer informatie over [Routing-eind punten](#routing-endpoints).
+* Het **verzenden van telemetrie-telefoon berichten en gebeurtenissen** , namelijk levenscyclus gebeurtenissen van apparaten en gebeurtenissen voor het wijzigen van het apparaat naar het ingebouwde eind punt en aangepaste eind punten. Meer informatie over [Routing-eind punten](#routing-endpoints).
 
 * **Gegevens filteren voordat deze naar verschillende eind punten worden doorgestuurd** door uitgebreide query's toe te passen. Met bericht routering kunt u een query uitvoeren op de bericht eigenschappen en de bericht tekst, evenals dubbele labels voor apparaten en dubbele eigenschappen van het apparaat. Meer informatie over het gebruik [van query's in bericht routering](iot-hub-devguide-routing-query-syntax.md).
 
-IoT Hub moet schrijf toegang hebben tot deze service-eind punten voor het werken met bericht routering. Als u uw eind punten via de Azure Portal configureert, worden de benodigde machtigingen voor u toegevoegd. Zorg ervoor dat u uw services zo configureert dat de verwachte door Voer wordt ondersteund. Wanneer u uw IoT-oplossing voor het eerst configureert, moet u mogelijk de extra eind punten controleren en alle benodigde aanpassingen voor de werkelijke belasting aanbrengen.
+IoT Hub moet schrijf toegang hebben tot deze service-eind punten voor het werken met bericht routering. Als u uw eind punten via de Azure Portal configureert, worden de benodigde machtigingen voor u toegevoegd. Zorg ervoor dat u uw services zo configureert dat de verwachte door Voer wordt ondersteund. Als u bijvoorbeeld Event Hubs als een aangepast eind punt gebruikt, moet u de **doorvoer eenheden** voor die Event hub configureren zodat deze de ingangs gebeurtenissen kan verwerken die u via IOT hub bericht routering wilt verzenden. Op dezelfde manier moet u, wanneer u een Service Bus wachtrij als eind punt gebruikt, de **maximale grootte** configureren om ervoor te zorgen dat de wachtrij alle gegevens kan bevatten, totdat deze egressed door consumenten. Wanneer u uw IoT-oplossing voor het eerst configureert, moet u mogelijk de extra eind punten controleren en alle benodigde aanpassingen voor de werkelijke belasting aanbrengen.
 
 Met de IoT Hub definieert u een [algemene indeling](iot-hub-devguide-messages-construct.md) voor alle apparaat-naar-Cloud-berichten voor interoperabiliteit in verschillende protocollen. Als een bericht overeenkomt met meerdere routes die naar hetzelfde eind punt wijzen, wordt IoT Hub alleen een bericht voor dat eind punt bezorgd. Daarom hoeft u geen ontdubbeling te configureren voor uw Service Bus wachtrij of onderwerp. In gepartitioneerde wacht rijen, wordt de rang orde van berichten door partitie-affiniteit gegarandeerd. Gebruik deze zelf studie voor meer informatie over het [configureren van bericht routering](tutorial-routing.md).
 
 ## <a name="routing-endpoints"></a>Routerings eindpunten
 
-Een IoT-hub heeft een standaard ingebouwde eind punt (**berichten/gebeurtenissen**) die compatibel is met Event hubs. U kunt [aangepaste eind punten](iot-hub-devguide-endpoints.md#custom-endpoints) maken om berichten naar te sturen door andere services in uw abonnement te koppelen aan de IOT hub. IoT Hub ondersteunt momenteel de volgende services als aangepaste eind punten:
+Een IoT-hub heeft een standaard ingebouwde eind punt (**berichten/gebeurtenissen**) die compatibel is met Event hubs. U kunt [aangepaste eind punten](iot-hub-devguide-endpoints.md#custom-endpoints) maken om berichten naar te sturen door andere services in uw abonnement te koppelen aan de IOT hub. 
+
+Elk bericht wordt doorgestuurd naar alle eind punten waarvan de Routing query's overeenkomen. Met andere woorden, een bericht kan naar meerdere eind punten worden doorgestuurd.
+
+IoT Hub ondersteunt momenteel de volgende services als aangepaste eind punten:
 
 ### <a name="built-in-endpoint"></a>Ingebouwd eind punt
 
@@ -43,9 +47,9 @@ IoT Hub ondersteunt het schrijven van gegevens naar Azure Blob Storage in de [Ap
 
 ![Eindpunt codering van Blob-opslag](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
-IoT Hub biedt ook ondersteuning voor route ring van berichten naar ADLS Gen2-accounts. Dit zijn hiërarchische opslag accounts met [naam ruimten](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)die boven op de Blob-opslag zijn gebouwd. Deze mogelijkheid is in open bare preview en beschikbaar voor nieuwe ADLS Gen2 accounts in VS-West 2 en West-Centraal vs. Deze mogelijkheid wordt binnenkort geïmplementeerd in alle Cloud regio's.
+IoT Hub biedt ook ondersteuning voor routerings berichten naar [Azure data Lake Storage](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction) (ADLS) Gen2-accounts. Dit zijn hiërarchische opslag accounts met [naam ruimten](../storage/blobs/data-lake-storage-namespace.md)die zijn gebouwd boven op de Blob-opslag. Deze mogelijkheid is in open bare preview en beschikbaar voor nieuwe ADLS Gen2 accounts in VS-West 2 en West-Centraal vs. [Meld](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u) u aan om dit voor beeld te bekijken. Deze mogelijkheid wordt binnenkort geïmplementeerd in alle Cloud regio's. 
 
-IoT Hub batch berichten en schrijft gegevens naar een BLOB wanneer de batch een bepaalde grootte bereikt of een bepaalde hoeveelheid tijd is verstreken. IoT Hub wordt standaard ingesteld op de volgende bestands naam Conventie:
+IoT Hub batch berichten en schrijft gegevens naar een BLOB wanneer de batch een bepaalde grootte bereikt of een bepaalde hoeveelheid tijd is verstreken. IoT Hub wordt standaard ingesteld op de volgende bestands naam Conventie: 
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
@@ -73,7 +77,7 @@ Bij het door sturen naar Blob-opslag wordt aangeraden om de blobs in te schrijve
 
 ### <a name="service-bus-queues-and-service-bus-topics"></a>Service Bus-wacht rijen en Service Bus onderwerpen
 
-Service Bus-wacht rijen en-onderwerpen die als IoT Hub-eind punten worden gebruikt, mogen geen **sessies** of **Duplicaten detectie** zijn ingeschakeld. Als een van deze opties is ingeschakeld, wordt het eind punt weer gegeven als onbereikbaar in de Azure Portal.
+Service Bus-wacht rijen en-onderwerpen die als IoT Hub-eind punten worden gebruikt, mogen geen **sessies** of **Duplicaten detectie** zijn ingeschakeld. Als een van deze opties is ingeschakeld, wordt het eind punt weer gegeven als **onbereikbaar** in de Azure Portal.
 
 ### <a name="event-hubs"></a>Event Hubs
 
@@ -119,9 +123,9 @@ In de meeste gevallen is de gemiddelde toename in latentie kleiner dan 500 MS. U
 
 ## <a name="monitoring-and-troubleshooting"></a>Bewaking en probleem oplossing
 
-IoT Hub biedt diverse metrische gegevens met betrekking tot route ring en eind punten om u een overzicht te geven van de status van uw hub en verzonden berichten. U kunt informatie uit meerdere metrische gegevens combi neren om de hoofd oorzaak van problemen vast te stellen. Gebruik bijvoorbeeld metrische **route ring: telemetriegegevens** die zijn neergezet of **D2C.** telemetrie. dropd om het aantal berichten te identificeren dat is verwijderd toen de query's op een van de routes niet overeenkomen en de terugval route is uitgeschakeld. Met [IOT hub metrische gegevens](iot-hub-metrics.md) worden alle metrische gegevens weer gegeven die standaard zijn ingeschakeld voor uw IOT hub.
+IoT Hub biedt diverse metrische gegevens met betrekking tot route ring en eind punten om u een overzicht te geven van de status van uw hub en verzonden berichten. U kunt informatie uit meerdere metrische gegevens combi neren om de hoofd oorzaak van problemen vast te stellen. Gebruik bijvoorbeeld metrische **route ring: telemetriegegevens** die zijn neergezet of **D2C. telemetrie** . dropd om het aantal berichten te identificeren dat is verwijderd toen de query's op een van de routes niet overeenkomen en de terugval route is uitgeschakeld. Met [IOT hub metrische gegevens](iot-hub-metrics.md) worden alle metrische gegevens weer gegeven die standaard zijn ingeschakeld voor uw IOT hub.
 
-U kunt de REST API status van [eind punt ophalen](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) gebruiken [](iot-hub-devguide-endpoints.md#custom-endpoints) om de status van de eind punten op te halen. U kunt het beste de [IOT hub metrische gegevens](iot-hub-metrics.md) met betrekking tot de bericht latentie van de route ring gebruiken om fouten op te sporen en op te sporen wanneer de status van het eind punt dood of slecht is. U kunt bijvoorbeeld voor het type eind punt Event Hubs **D2C. endpoints. latentie. Event hubs**. De status van een onjuist eind punt wordt bijgewerkt naar in orde wanneer IoT Hub een uiteindelijk consistente status van de status heeft bereikt.
+U kunt de REST API status van [eind punt ophalen](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) gebruiken om [de status van](iot-hub-devguide-endpoints.md#custom-endpoints) de eind punten op te halen. U kunt het beste de [IOT hub metrische gegevens](iot-hub-metrics.md) met betrekking tot de bericht latentie van de route ring gebruiken om fouten op te sporen en op te sporen wanneer de status van het eind punt dood of slecht is. U kunt bijvoorbeeld voor het type eind punt Event Hubs **D2C. endpoints. latentie. Event hubs**. De status van een onjuist eind punt wordt bijgewerkt naar in orde wanneer IoT Hub een uiteindelijk consistente status van de status heeft bereikt.
 
 Met behulp van de **routes** Diagnostische logboeken in azure monitor [Diagnostische instellingen](../iot-hub/iot-hub-monitor-resource-health.md)kunt u fouten volgen die optreden tijdens de evaluatie van een routerings query en de status van een eind punt, zoals wordt waargenomen door IOT hub, bijvoorbeeld wanneer een eind punt dood is. Deze Diagnostische logboeken kunnen worden verzonden naar Azure Monitor-logboeken, Event Hubs of Azure Storage voor aangepaste verwerking.
 

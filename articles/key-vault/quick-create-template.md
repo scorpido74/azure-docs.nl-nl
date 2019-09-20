@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/17/2019
 ms.author: jgao
-ms.openlocfilehash: 5a1e0329f8d0227c05924137d5eaddd9658d5b3c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 1e993ec50694d8672fbe05f982d5dbc45a815abb
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076942"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161476"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Quickstart: Een geheim instellen en ophalen uit Azure Key Vault met behulp van Resource Manager-sjabloon
 
@@ -58,6 +58,11 @@ De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quic
 
 [!code-json[<Azure Resource Manager template create key vault>](~/quickstart-templates/101-key-vault-create/azuredeploy.json)]
 
+Er worden twee Azure-resources gedefinieerd in de sjabloon:
+
+* **Micro soft. sleutel kluis/kluizen**: een Azure-sleutel kluis maken.
+* **Micro soft. sleutel kluis/kluizen/geheimen**: Maak een geheim voor sleutel kluis.
+
 Meer Azure Key Vault sjabloon voorbeelden vindt u [hier](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault).
 
 1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. Met de sjabloon worden een sleutelkluis en een geheim gemaakt.
@@ -82,6 +87,8 @@ Meer Azure Key Vault sjabloon voorbeelden vindt u [hier](https://azure.microsoft
 3. Selecteer **Aankoop**. Nadat de sleutel kluis is geïmplementeerd, ontvangt u een melding:
 
     ![Resource Manager-sjabloon, integratie van Key Vault, portal-melding implementeren](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+
+De Azure Portal wordt gebruikt voor het implementeren van de sjabloon. Naast de Azure Portal, kunt u ook de Azure PowerShell, Azure CLI en REST API gebruiken. Zie voor meer informatie over andere implementatie methoden [sjablonen implementeren](../azure-resource-manager/resource-group-template-deploy.md).
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 

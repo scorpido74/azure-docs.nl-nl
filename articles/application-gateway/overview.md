@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 5/31/2019
 ms.author: victorh
-ms.openlocfilehash: 5f7fd47a096ddd57150a466f85fabcfc2f7045d9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 725b284fa58296aea310f618c000e77d9a0fb4c9
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564866"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146627"
 ---
 # <a name="what-is-azure-application-gateway"></a>Wat is Azure Application Gateway?
 
@@ -47,11 +47,11 @@ De Application Gateway-VIP op Standard_v2 of WAF_v2 SKU ondersteunt alleen een s
 
 ## <a name="web-application-firewall"></a>Web Application Firewall
 
-Web Application Firewall (WAF) is een functie van Application Gateway die gecentraliseerde beveiliging van uw webtoepassingen tegen algemene aanvallen en beveiligingsproblemen biedt. WAF is gebaseerd op regels uit de [Core Rule Set 3.0 of 2.2.9 van OWASP (Open Web Application Security Project)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). 
+Web Application Firewall (WAF) is een functie van Application Gateway die gecentraliseerde beveiliging van uw webtoepassingen tegen algemene aanvallen en beveiligingsproblemen biedt. WAF is gebaseerd op regels van de [OWASP (open Web Application Security project) kern regel sets](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1 (alleen WAF_v2), 3,0 en 2.2.9. 
 
 Webtoepassingen zijn in toenemende mate het doel van aanvallen die gebruikmaken van veelvoorkomende bekende beveiligingsproblemen. Veelvoorkomende aanvallen zijn hierbij onder andere aanvallen met SQL-injecties en aanvallen via scripting op meerdere sites. Het kan een hele uitdaging zijn om dergelijke aanvallen in toepassingscode te voorkomen en dit kan tevens veel onderhoud, patching en controle vereisen op meerdere lagen van de toepassingstopologie. Een gecentraliseerde firewall voor webtoepassingen maakt het beveiligingsbeheer veel eenvoudiger en biedt toepassingsbeheerders meer veiligheid tegen bedreigingen of aanvallen. Een WAF-oplossing kan ook sneller reageren op een beveiligingsrisico door een patch voor een bekend beveiligingsprobleem toe te passen op een centrale locatie in plaats van elke afzonderlijke webtoepassing te beveiligen. Bestaande toepassingsgateways kunnen eenvoudig worden geconverteerd naar een toepassingsgateway met Web Application Firewall.
 
-Zie [Web Application firewall (WAF) in Application Gateway (](https://docs.microsoft.com/azure/application-gateway/waf-overview)Engelstalig) voor meer informatie.
+Zie [Web Application firewall (WAF) in Application Gateway](https://docs.microsoft.com/azure/application-gateway/waf-overview)voor meer informatie.
 
 ## <a name="url-based-routing"></a>URL-gebaseerde routering
 
@@ -63,7 +63,7 @@ Zie [URL-based route ring met Application Gateway](https://docs.microsoft.com/az
 
 ## <a name="multiple-site-hosting"></a>Hosting van meerdere sites
 
-Door meerdere sites te hosten, kunt u meer dan een website configureren op dezelfde instantie van de toepassingsgateway. Met deze functie kunt u een efficiëntere topologie voor uw implementaties configureren door maximaal 100 websites toe te voegen aan één toepassingsgateway. Elke website kan worden omgeleid naar een eigen pool. Application Gateway kan bijvoorbeeld verkeer regelen voor `contoso.com` en `fabrikam.com` vanaf twee servergroepen genaamd ContosoServerPool en FabrikamServerPool.
+Door meerdere sites te hosten, kunt u meer dan een website configureren op dezelfde instantie van de toepassingsgateway. Met deze functie kunt u een efficiëntere topologie voor uw implementaties configureren door Maxi maal 100 websites toe te voegen aan één Application Gateway, of 40 voor WAF (voor optimale prestaties). Elke website kan worden omgeleid naar een eigen pool. Application Gateway kan bijvoorbeeld verkeer regelen voor `contoso.com` en `fabrikam.com` vanaf twee servergroepen genaamd ContosoServerPool en FabrikamServerPool.
 
 Aanvragen voor `http://contoso.com` worden gerouteerd naar ContoServerPool en aanvragen voor `http://fabrikam.com` worden gerouteerd naar FabrikamServerPool.
 
@@ -85,7 +85,7 @@ Ondersteuning voor Application Gateway-omleiding biedt de volgende mogelijkheden
 
 Zie [verkeer omleiden](https://docs.microsoft.com/azure/application-gateway/redirect-overview) met Application Gateway voor meer informatie.
 
-## <a name="session-affinity"></a>Sessieaffiniteit
+## <a name="session-affinity"></a>Sessie-affiniteit
 
 De functie Sessieaffiniteit op basis van cookies is handig als u een gebruikerssessie op dezelfde server wilt behouden. Met behulp van de gatewaybeheerde cookies kan de Application Gateway het daarop volgende verkeer van een gebruikerssessie naar dezelfde server leiden voor verwerking. Dit is belangrijk wanneer de sessiestatus lokaal wordt opgeslagen op de server voor een gebruikerssessie.
 
@@ -95,7 +95,7 @@ Application Gateway biedt systeemeigen ondersteuning voor de WebSocket- en HTTP-
 
 De WebSocket- en HTTP-/2-protocollen maken full-duplex-communicatie tussen een server en een client mogelijk via een langdurige TCP-verbinding. Dit maakt een meer interactieve communicatie mogelijk tussen de webserver en de client, die bidirectioneel kan zijn zonder dat hiervoor polling nodig is, zoals vereist in implementaties op basis van HTTP. Deze protocollen hebben een lage overhead, in tegens telling tot HTTP, en kunnen dezelfde TCP-verbinding opnieuw gebruiken voor meerdere aanvragen en antwoorden, wat resulteert in een efficiëntere bron gebruik. Deze protocollen zijn ontworpen om te werken via de traditionele HTTP-poorten: 80 en 443.
 
-Zie ondersteuning voor websockets en [http/2-ondersteuning](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support)voor meer informatie. [](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket)
+Zie ondersteuning voor [Websockets](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) en [http/2-ondersteuning](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support)voor meer informatie.
 
 ## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Ingangscontroller van Azure Kubernetes Service (AKS) (preview) 
 
@@ -106,6 +106,8 @@ Zie [Azure Application Gateway Ingress Controller](https://azure.github.io/appli
 ## <a name="connection-draining"></a>Verwerkingsstop voor verbindingen
 
 Verwerkingsstop voor verbindingen helpt u om back-endgroepsleden zonder problemen te verwijderen tijdens geplande service-updates. Deze instelling wordt ingeschakeld via de HTTP-instelling van de back-end en kan tijdens het maken van de regel worden toegepast op alle leden van een back-endgroep. Wanneer deze functie Application Gateway is ingeschakeld, worden alle exemplaren van een back-end-groep die niet meer worden geregistreerd, niet meer in een nieuwe aanvraag ontvangen en kunnen bestaande aanvragen binnen een geconfigureerde tijds limiet worden voltooid. Dit geldt voor beide back-endservers die expliciet worden verwijderd uit de back-end-pool door een API-aanroep en back-end-exemplaren die als slecht zijn gerapporteerd, zoals bepaald door de status controles.
+
+Zie voor meer informatie de sectie verbindings afvoer van [Application Gateway configuratie-overzicht](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining).
 
 ## <a name="custom-error-pages"></a>Aangepaste foutpagina's
 
@@ -127,13 +129,13 @@ Zie [HTTP-headers herschrijven](rewrite-http-headers.md)voor meer informatie.
 
 ## <a name="sizing"></a>Grootte aanpassen
 
-Application Gateway Standard_v2-en WAF_v2-SKU kunnen worden geconfigureerd voor implementaties met automatisch schalen of vaste grootte. Deze Sku's bieden geen verschillende exemplaar grootten.
+Application Gateway Standard_v2-en WAF_v2-SKU kunnen worden geconfigureerd voor implementaties met automatisch schalen of vaste grootte. Deze Sku's bieden geen verschillende exemplaar grootten. Zie [v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing)voor automatisch schalen voor meer informatie over de prestaties en prijzen van v2.
 
 De Application Gateway Standard-en WAF-SKU worden momenteel aangeboden in drie grootten: **Klein**, **gemiddeld**en **groot**. Kleine exemplaargrootten zijn bedoeld voor het ontwikkelen en testen van scenario's.
 
 Zie [Servicelimieten voor Application Gateway](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits) voor een volledige lijst van toepassingsgateway-limieten.
 
-In de volgende tabel staan gemiddelde doorvoerprestaties voor elk toepassingsgateway-exemplaar waarvoor SSL-offload is uitgeschakeld:
+De volgende tabel toont een gemiddelde prestaties doorvoer voor elke Application Gateway v1-instantie waarvoor SSL-offload is ingeschakeld:
 
 | Gemiddelde grootte van een antwoord van de back-endpagina | Klein | Gemiddeld | Groot |
 | --- | --- | --- | --- |

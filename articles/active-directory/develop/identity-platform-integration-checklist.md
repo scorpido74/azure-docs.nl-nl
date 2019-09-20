@@ -16,12 +16,12 @@ ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4e7b89fbb4b6343db62cf3476f3c35220b12649b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 1f4afe1c31ae964aab82664de12144185069af5a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104034"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145659"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Best practices en aanbevelingen van micro soft Identity platform
 
@@ -78,6 +78,7 @@ Gebruik de volgende controle lijst om ervoor te zorgen dat uw toepassing effecti
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) |  Configureer voor mobiele apps elk platform met de ervaring voor het registreren van toepassingen. Om ervoor te zorgen dat uw toepassing kan profiteren van de Microsoft Authenticator of micro soft Bedrijfsportal voor eenmalige aanmelding, moet uw app een ' Broker omleidings-URI ' hebben geconfigureerd. Hiermee kan micro soft de controle over de toepassing terugsturen na verificatie. Bij het configureren van elk platform helpt de app registratie-ervaring u door het proces. Gebruik de Snelstartgids om een werkend voor beeld te downloaden. Gebruik op iOS, indien mogelijk, brokers en systeem-webweergave.|
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) |  Bewaar in web apps of Web-Api's één token cache per account.  Voor web-apps moet de token cache worden gesleuteld met de account-ID.  Voor web-Api's moet het account worden gefilterd op de hash van het token dat wordt gebruikt om de API aan te roepen. MSAL.NET biedt aangepaste token cache-serialisatie in de subplatformen .NET Framework en .NET core. Uit veiligheids overwegingen is het aan te raden één cache per gebruiker te serialiseren. Meer informatie over de [serialisatie van token cache](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)vindt u hier.|
 | ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) | Als de gegevens die uw app nodig heeft, beschikbaar zijn via [Microsoft Graph](https://developer.microsoft.com/graph), kunt u machtigingen voor deze gegevens aanvragen met behulp van het Microsoft Graph-eind punt in plaats van de afzonderlijke API. |
+| ![PS/2-verbinding](./media/active-directory-integration-checklist/checkbox-two.svg) |Bekijk de toegangs token waarde niet of probeer deze te parseren als een client.  Ze kunnen waarden wijzigen, indelingen of zelfs worden versleuteld zonder waarschuwing: gebruik altijd de id_token als uw client iets moet weten over de gebruiker of Microsoft Graph.  Alleen web-Api's moeten toegangs tokens parseren (omdat ze de indelingen definiëren en de versleutelings sleutels instellen). |
 
 ## <a name="end-user-experience"></a>Eindgebruikerservaring
 

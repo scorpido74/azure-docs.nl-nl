@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: b276766d69c187e2268f5896f23e3bd435ed63c3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b4c1fcd6a719f341dcebfd9f4efc4423241ca3dd
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274821"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147350"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Overzicht van IPv6 voor Azure Load Balancer
 
@@ -27,7 +27,7 @@ ms.locfileid: "68274821"
 >[!NOTE] 
 >Azure Load Balancer ondersteunt twee verschillende typen: Basic en Standard. In dit artikel wordt Basic Load Balancer beschreven. Zie [Standard Load Balancer Overview](load-balancer-standard-overview.md)voor meer informatie over Standard Load Balancer.
 
-Internet gerichte load balancers kunnen met een IPv6-adres worden geïmplementeerd. Naast de IPv4-connectiviteit, kunnen de volgende mogelijkheden worden toegepast:
+Basis-SKU Internet gerichte load balancers kan worden geïmplementeerd met een IPv6-adres. Naast de IPv4-connectiviteit, kunnen de volgende mogelijkheden worden toegepast:
 
 * Systeem eigen end-to-end IPv6-connectiviteit tussen open bare internetclients en Azure Virtual Machines (Vm's) via de load balancer.
 * Systeem eigen end-to-end IPv6-verbinding met uitgaand verkeer tussen Vm's en open bare Internet-clients met IPv6-functionaliteit.
@@ -79,6 +79,7 @@ Beperkingen
 * Het wijzigen van de loadDistributionMethod-para meter voor IPv6 wordt **momenteel niet ondersteund**.
 * Gereserveerde IPv6 Ip's (waarbij IPAllocationMethod = static) worden **momenteel niet ondersteund**.
 * NAT64 (omzetting van IPv6 naar IPv4) wordt niet ondersteund.
+* Standaard SKU load balancers bieden momenteel geen ondersteuning voor IPv6-adressen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,12 +7,12 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: ee8a17846495a122f7432e66c3e343a00dd0a015
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 0c1c3470ae18b2a600af0d5e930b6fc114123728
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194622"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161938"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Gast configuratie beleidsregels maken
 
@@ -54,9 +54,47 @@ Gast configuratie maakt gebruik van de **GuestConfiguration** -resource module v
    Get-Command -Module 'GuestConfiguration'
    ```
 
-## <a name="create-custom-guest-configuration-configuration"></a>Aangepaste configuratie voor gast configuratie maken
+## <a name="create-custom-guest-configuration-configuration-and-resources"></a>Aangepaste configuratie voor gast configuratie en-resources maken
 
 De eerste stap voor het maken van een aangepast beleid voor gast configuratie is het maken van de DSC-configuratie. Zie [overzicht van Power shell DSC](/powershell/dsc/overview/overview)voor een overzicht van DSC-concepten en terminologie.
+
+Als voor uw configuratie alleen resources zijn vereist die zijn ingebouwd met de installatie van de gast configuratie agent, hoeft u alleen een configuratie-MOF-bestand te schrijven. Als u een aanvullend script wilt uitvoeren, moet u een aangepaste resource module ontwerpen.
+
+### <a name="requirements-for-guest-configuration-custom-resources"></a>Vereisten voor aangepaste gast configuratie-resources
+
+Wanneer een gast configuratie een machine controleert, wordt deze eerst `Test-TargetResource` uitgevoerd om te bepalen of deze in de juiste staat is.  De Booleaanse waarde die door de functie wordt geretourneerd, bepaalt of de Azure Resource Manager status voor de gast toewijzing compatibel/niet-compatibel moet zijn.  Als de Booleaanse waarde `$false` voor een resource in de configuratie is, wordt de provider uitgevoerd `Get-TargetResource`.
+Als de Booleaanse waarde `$true` wordt `Get-TargetResource` dan niet aangeroepen.
+
+De functie `Get-TargetResource` heeft speciale vereisten voor gast configuratie die niet nodig zijn voor de configuratie van de desired state van Windows.
+
+- De geretourneerde hashtabel moet een eigenschap met de naam **redenen**bevatten.
+- De eigenschap redenen moet een matrix zijn.
+- Elk item in de matrix moet een hashtabel zijn met sleutels met de naam **code** en een **zin**.
+
+De eigenschap redenen wordt door de service gebruikt om te standaardiseren hoe informatie wordt gepresenteerd wanneer een computer niet meer compatibel is.
+U kunt elk item beschouwen als een ' reden ' dat de resource niet aan het beleid voldoet. De eigenschap is een matrix omdat een bron niet meer dan één reden kan worden nageleefd.
+
+De instellingen voor de eigenschappen **code** en de **term** worden verwacht door de service. Wanneer u een aangepaste resource ontwerpt, stelt u de tekst (meestal stdout) in die u wilt weer geven als de reden waarom de resource niet aan het beleid voldoet als de waarde voor de **woord groep**.  **Code** heeft specifieke opmaak vereisten, zodat rapportage duidelijk informatie kan weer geven over de resource die is gebruikt om de controle uit te voeren. Met deze oplossing wordt de gast configuratie uitbreidbaar. Elke opdracht kan worden uitgevoerd om een machine te controleren zolang de uitvoer kan worden vastgelegd en geretourneerd als een teken reeks waarde voor de eigenschap **phrase** .
+
+- **Code** (teken reeks): De naam van de resource, wordt herhaald en vervolgens een korte naam zonder spaties als een id om de reden.  Deze drie waarden moeten door een dubbele punt worden gescheiden zonder spaties.
+    - Een voor beeld hiervan is ' REGI ster: registry: keynotpresent '.
+- **Zin** (teken reeks): Lees bare tekst om uit te leggen waarom de instelling niet aan het beleid voldoet.
+    - Een voor beeld hiervan is dat de register sleutel $key niet aanwezig is op de computer.
+
+```powershell
+$reasons = @()
+$reasons += @{
+  Code = 'Name:Name:ReasonIdentifer'
+  Phrase = 'Explain why the setting is not compliant'
+}
+return @{
+    reasons = $reasons
+}
+```
+
+#### <a name="scaffolding-a-guest-configuration-project"></a>Een configuratie project voor een gast steiger
+
+Voor ontwikkel aars die het proces van het aan de slag gaan en het werken vanuit voorbeeld code willen versnellen, bestaat een community-project met de naam **gast configuratie project** als een sjabloon voor de [gips](https://github.com/powershell/plaster) -Power shell-module.  Dit hulp programma kan worden gebruikt om een project te maken, met inbegrip van een werkende configuratie en voorbeeld resource, en een verzameling [ziekte](https://github.com/pester/pester) tests om het project te valideren.  De sjabloon bevat ook taak lopers voor Visual Studio code voor het automatiseren van het maken en valideren van het gast configuratie pakket. Zie het project [gast configuratie](https://github.com/microsoft/guestconfigurationproject)van het project github voor meer informatie.
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Configuratie van aangepaste gast configuratie op Linux
 
@@ -141,10 +179,10 @@ In Azure Policy gast configuratie is de optimale manier om geheimen te beheren d
 
 Maak eerst een door de gebruiker toegewezen beheerde identiteit in Azure. De identiteit wordt door machines gebruikt om toegang te krijgen tot geheimen die zijn opgeslagen in Key Vault. Zie [een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)voor gedetailleerde stappen.
 
-Maak vervolgens een Key Vault-exemplaar. Zie voor gedetailleerde stappen [een geheim-Power shell instellen en ophalen](../../../key-vault/quick-create-powershell.md).
+Maak een Key Vault-exemplaar. Zie voor gedetailleerde stappen [een geheim-Power shell instellen en ophalen](../../../key-vault/quick-create-powershell.md).
 Wijs machtigingen toe aan het exemplaar om de door de gebruiker toegewezen identiteit toegang te geven tot geheimen die zijn opgeslagen in Key Vault. Zie voor gedetailleerde stappen [een geheim instellen en ophalen-.net](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
 
-Wijs vervolgens de door de gebruiker toegewezen identiteit toe aan uw computer. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van Power shell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)voor gedetailleerde stappen.
+Wijs de door de gebruiker toegewezen identiteit toe aan uw computer. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van Power shell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)voor gedetailleerde stappen.
 Wijs op schaal deze identiteit toe met behulp van Azure Resource Manager via Azure Policy. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van een sjabloon](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)voor gedetailleerde stappen.
 
 Ten slotte gebruiken de eerder gegenereerde client-ID in uw aangepaste resource om toegang te krijgen tot Key Vault met behulp van het token dat beschikbaar is op de computer. De `client_id` en URL naar het Key Vault-exemplaar kan worden door gegeven aan de resource als [Eigenschappen](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) , zodat de resource niet hoeft te worden bijgewerkt voor meerdere omgevingen of als de waarden moeten worden gewijzigd.
@@ -318,7 +356,7 @@ Met het beleid en de initiatief definities die zijn gemaakt in azure, is de laat
 
 Nadat u een aangepaste Azure Policy hebt gepubliceerd met behulp van uw aangepaste inhouds pakket, zijn er twee velden die moeten worden bijgewerkt als u een nieuwe release wilt publiceren.
 
-- **Version**: Wanneer u de `New-GuestConfigurationPolicy` cmdlet uitvoert, moet u een versie nummer opgeven dat groter is dan het aantal dat momenteel is gepubliceerd.  Met de eigenschap wordt de versie van de toewijzing van de gast configuratie in het nieuwe beleids bestand bijgewerkt zodat de extensie herkent dat het pakket is bijgewerkt.
+- **Version**: Wanneer u de `New-GuestConfigurationPolicy` cmdlet uitvoert, moet u een versie nummer opgeven dat groter is dan wat momenteel wordt gepubliceerd.  Met de eigenschap wordt de versie van de toewijzing van de gast configuratie in het nieuwe beleids bestand bijgewerkt zodat de extensie herkent dat het pakket is bijgewerkt.
 - **contentHash**: Deze eigenschap wordt automatisch bijgewerkt door de `New-GuestConfigurationPolicy` cmdlet.  Het is een hash-waarde van het pakket dat `New-GuestConfigurationPackage`is gemaakt door.  De eigenschap moet correct zijn voor het `.zip` bestand dat u publiceert.  Als alleen de `contentUri` eigenschap wordt bijgewerkt, bijvoorbeeld in het geval dat iemand een hand matige wijziging van de beleids definitie kan aanbrengen vanuit de portal, wordt het inhouds pakket niet geaccepteerd door de extensie.
 
 De eenvoudigste manier om een bijgewerkt pakket vrij te geven, is het proces dat wordt beschreven in dit artikel herhalen en een bijgewerkt versie nummer opgeven.
@@ -334,7 +372,7 @@ Nadat de inhoud is geconverteerd, zijn de bovenstaande stappen voor het maken va
 
 ## <a name="optional-signing-guest-configuration-packages"></a>BESCHRIJVING Gast configuratie pakketten ondertekenen
 
-Aangepaste beleids regels voor gast configuratie gebruik SHA256 hash om te controleren of het beleids pakket niet is gewijzigd van wanneer het is gepubliceerd op het moment dat het wordt gelezen door de server die wordt gecontroleerd.
+Aangepaste beleids regels voor gast configuratie SHA256 hash gebruiken om te valideren dat het beleids pakket niet is gewijzigd wanneer het is gepubliceerd op de server die wordt gecontroleerd.
 Klanten kunnen eventueel ook een certificaat gebruiken om pakketten te ondertekenen en de gast configuratie-extensie dwingen alleen ondertekende inhoud toe te staan.
 
 Om dit scenario in te scha kelen, zijn er twee stappen die u moet volt ooien. Voer de cmdlet uit om het inhouds pakket te ondertekenen en voeg een tag toe aan de machines waarvoor code moet worden ondertekend.

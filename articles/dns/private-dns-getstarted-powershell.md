@@ -1,20 +1,20 @@
 ---
-title: Een Azure DNS-privézone maken met Azure PowerShell
+title: 'Quick Start: een persoonlijke DNS-zone van Azure maken met behulp van Azure PowerShell'
 description: In dit artikel maakt en test u een privé-DNS-zone en-record in Azure DNS. Dit is een stapsgewijze handleiding voor het maken en beheren van uw eerste privé-DNS-zone en -record met behulp van Azure PowerShell.
 services: dns
 author: vhorne
 ms.service: dns
-ms.topic: article
-ms.date: 06/14/2019
+ms.topic: quickstart
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 6603929fa7b4c597a846fc299577a9682d8f54e0
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
-ms.translationtype: MT
+ms.openlocfilehash: b98b4a9c98f7b9477fa97f18702315b0431e4ac8
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854123"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154833"
 ---
-# <a name="create-an-azure-dns-private-zone-using-azure-powershell"></a>Een Azure DNS-privézone maken met Azure PowerShell
+# <a name="create-an-azure-private-dns-zone-using-azure-powershell"></a>Een privé-DNS-zone met Azure maken met behulp van Azure PowerShell
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
@@ -36,7 +36,7 @@ In dit artikel leert u het volgende:
 
 Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-Als u wilt, kunt u deze procedure uitvoeren met behulp van [Azure cli](private-dns-getstarted-cli.md).
+Als u wilt, kunt u deze Snelstartgids volt ooien met behulp van [Azure cli](private-dns-getstarted-cli.md).
 
 ## <a name="create-the-resource-group"></a>De resourcegroep maken
 
@@ -46,7 +46,7 @@ Eerst maakt u een resourcegroep die de DNS-zone gaat bevatten:
 New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 ```
 
-## <a name="create-a-dns-private-zone"></a>Een privé-DNS-zone maken
+## <a name="create-a-private-dns-zone"></a>Een privé-DNS-zone maken
 
 Een DNS-zone wordt gemaakt met de cmdlet `New-AzPrivateDnsZone`.
 
@@ -209,7 +209,5 @@ Remove-AzResourceGroup -Name MyAzureResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een privé-DNS-zone geïmplementeerd, een DNS-record gemaakt en de zone getest.
-U kunt nu meer leren over DNS-privézones.
-
-* [Azure DNS gebruiken voor persoonlijke domeinen](private-dns-overview.md)
+> [!div class="nextstepaction"]
+> [Azure DNS Private Zones scenario's](private-dns-scenarios.md)

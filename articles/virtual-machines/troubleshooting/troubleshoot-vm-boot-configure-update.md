@@ -4,7 +4,7 @@ description: Voer de stappen uit om het probleem op te lossen waarbij het opstar
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 2f3c18ea1887ea5b05bb89f85371139ac83dfe49
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d0a946ede154561aaa49d335b7b91fdae72c51d3
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080166"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155554"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Het opstarten van de VM is vastgelopen op het ophalen van Windows Ready. Uw computer niet uitschakelen in azure
 
@@ -48,7 +48,7 @@ Volg deze stappen om te bepalen of de virtuele machine een versleutelde virtuele
 
 1. Open de virtuele machine op de Azure Portal en blader vervolgens naar de schijven.
 
-2. Bekijk de versleutelings kolom om te controleren of versleuteling is ingeschakeld.
+2. Bekijk de **versleutelings** kolom om te controleren of versleuteling is ingeschakeld.
 
 Als de schijf met het besturings systeem is versleuteld, ontgrendelt u de versleutelde schijf. Voer de volgende stappen uit om de schijf te ontgrendelen.
 

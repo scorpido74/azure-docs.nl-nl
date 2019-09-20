@@ -1,35 +1,26 @@
 ---
-title: Azure CLI-voorbeelden voor Traffic Manager | Microsoft Docs
-description: Azure CLI-voorbeelden voor Traffic Manager
-services: traffic-manager
-documentationcenter: traffic-manager
-author: WenJason
-manager: digimoblie
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: traffic-manager
-ms.devlang: na
+title: Azure CLI-voor beelden voor DNS
+description: Azure CLI-voor beelden voor DNS
+services: dns
+author: vhorne
+ms.service: dns
 ms.topic: sample
-ms.tgt_pltfrm: ''
-ms.workload: infrastructure
-origin.date: 04/30/2018
-ms.date: 05/28/2018
-ms.author: kumud
-ms.openlocfilehash: c28c5599306a8d6bf12b911f1c7e3115529fa897
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.author: victorh
+ms.openlocfilehash: e51b198bc92afdf22269478b96e364934e63c191
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60790892"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154707"
 ---
-# <a name="azure-cli-samples-for-traffic-manager"></a>Azure CLI-voorbeelden voor Traffic Manager
+# <a name="azure-cli-examples-for-azure-dns"></a>Voor beelden van Azure CLI voor Azure DNS
 
-De volgende tabel bevat links naar bash-scripts voor Traffic Manager die zijn gebouwd met behulp van de Azure CLI.
+De volgende tabel bevat koppelingen naar Azure CLI-voor beelden voor Azure DNS.
 
 | | |
 |-|-|
-| [Een DNS-zone en -record maken](./scripts/traffic-manager-cli-create-dns-zone-record.md) | Hiermee maakt u een DNS-zone en een record voor een domeinnaam. |
+| [Een DNS-zone en -record maken](./scripts/dns-cli-create-dns-zone-record.md) | Hiermee maakt u een DNS-zone en een record voor een domeinnaam. |
 | | |
 
 

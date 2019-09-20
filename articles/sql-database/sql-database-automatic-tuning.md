@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: d782c2d9dff45dc152cab2246c95dda063bfd900
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: b6c2885f0919752f7ede7f5a15121be2f8a953ca
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130392"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162321"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL Database automatisch afstemmen
 
@@ -68,7 +68,7 @@ Opties voor automatisch afstemmen die beschikbaar zijn in Azure SQL Database zij
 | Optie voor automatisch afstemmen | Ondersteuning voor één data base en gepoolde data base | Ondersteuning voor instance data base |
 | :----------------------------- | ----- | ----- |
 | **Create Index** : identificeert indexen die de prestaties van uw workload kunnen verbeteren, maakt indexen en controleert automatisch of de prestaties van query's zijn verbeterd. | Ja | Nee | 
-| **Drop Index** : Hiermee worden dagelijks redundante en dubbele indexen geïdentificeerd, met uitzonde ring van unieke indexen en indexen die gedurende een lange periode niet zijn gebruikt (> 90 dagen). Houd er rekening mee dat de optie op dit moment niet compatibel is met toepassingen die gebruikmaken van partitie switches en index hints. | Ja | Nee |
+| **Drop Index** : Hiermee worden dagelijks redundante en dubbele indexen geïdentificeerd, met uitzonde ring van unieke indexen en indexen die gedurende een lange periode niet zijn gebruikt (> 90 dagen). Houd er rekening mee dat deze optie niet compatibel is met toepassingen die gebruikmaken van partitie switches en index hints. Het verwijderen van niet-gebruikte indexen wordt niet ondersteund voor Premium-en Bedrijfskritiek-service lagen. | Ja | Nee |
 | **laatste goede plan forceren** (automatische plan correctie): identificeert SQL-query's met behulp van een uitvoerings plan dat lager is dan het vorige goede plan en voert query's uit met behulp van het laatst bekende goede plan in plaats van het teruggedraaide-abonnement. | Ja | Ja |
 
 Automatische afstemming duidt het maken van een **index**, **Drop Index**af en **dwingt de laatste goede plan** aanbevelingen af waarmee de prestaties van uw data base kunnen worden geoptimaliseerd en weer gegeven in [Azure Portal](sql-database-advisor-portal.md), en ze worden beschikbaar gesteld via [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) en [ REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). Zie voor meer informatie over het afdwingen van het laatste goede PLAN en het configureren van automatische afstemmings opties via T-SQL [automatisch afstemmen introduceert automatisch corrigeren van plannen](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/).

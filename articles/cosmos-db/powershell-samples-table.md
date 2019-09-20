@@ -1,29 +1,30 @@
 ---
-title: Azure PowerShell-voorbeelden voor Azure Cosmos DB - Table-API
-description: Azure PowerShell-voorbeelden voor Azure Cosmos DB - Table-API
+title: Azure PowerShell voor beelden voor Azure Cosmos DB-Table-API
+description: Azure PowerShell voor beelden voor Azure Cosmos DB-Table-API
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: d908dc47b9f8724c5c760c290056a77550cb8058
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 95cd55bd3f87ddb4d37bfc527c8dcd28bdfa42da
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566262"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155200"
 ---
-# <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>Azure PowerShell-voorbeelden voor Azure Cosmos DB - Table-API
+# <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>Azure PowerShell voor beelden voor Azure Cosmos DB-Table-API
 
-De volgende tabel bevat koppelingen naar Azure PowerShell-voorbeeldscripts voor Azure Cosmos DB voor tabel-API.
+De volgende tabel bevat koppelingen naar voor beelden Azure PowerShell scripts voor Azure Cosmos DB voor Table-API.
 
 | | |
 |---|---|
-|[Een account en een tabel maken](scripts/powershell/table/ps-table-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hiermee maakt u een Azure Cosmos-account en een tabel. |
-|[Lijst maken of tabellen ophalen](scripts/powershell/table/ps-table-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Lijst maken of ophalen van tabellen. |
-|[RU/s ophalen](scripts/powershell/table/ps-table-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| RU/s ophalen voor een tabel. |
-|[Update RU/s](scripts/powershell/table/ps-table-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| RU/s voor een tabel bijwerken. |
-|[Een regio toevoegen](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Maak een Azure Cosmos-account en een regio toevoegt aan de lijst met locaties. |
-|[De failover-prioriteit wijzigen](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| De failover-prioriteit van een Azure Cosmos-account met een handmatige failover-trigger wijzigen. |
-|[Account sleutels en connection string taken](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Haal de verbindingsreeksen voor een Azure Cosmos-account. De primaire en secundaire sleutels ophalen van een Azure Cosmos-account. Een accountsleutel opnieuw genereren. |
+|[Een account en een tabel maken](scripts/powershell/table/ps-table-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hiermee maakt u een Azure Cosmos-account en-tabel. |
+|[Tabellen weer geven of ophalen](scripts/powershell/table/ps-table-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tabellen weer geven of ophalen. |
+|[Ophalen van RU/s](scripts/powershell/table/ps-table-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ophalen van RU/s voor een tabel. |
+|[RU/s bijwerken](scripts/powershell/table/ps-table-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Update RU/s voor een tabel. |
+|[Een account bijwerken of een regio toevoegen](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Voeg een regio toe aan een Cosmos-account. Kan ook worden gebruikt om andere account eigenschappen te wijzigen, maar deze moeten gescheiden zijn van wijzigingen in regio's. |
+|[Failover-prioriteit of trigger-failover wijzigen](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Wijzig de prioriteit van de regionale failover van een Azure Cosmos-account of Activeer een hand matige failover. |
+|[Account sleutels of verbindings reeksen](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Haal de primaire en secundaire sleutels, verbindings reeksen of een account sleutel van een Azure Cosmos-account op. |
+|[Een Cosmos-account maken met een IP-firewall](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Maak een Azure Cosmos-account waarvoor IP-firewall is ingeschakeld. |
 |||

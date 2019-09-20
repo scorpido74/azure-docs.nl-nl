@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 216316249197071bdd7a175dfc5339caeddee50a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 2d56b1f800c71a5bbef7ffb1155d05e096113e2c
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086829"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162420"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Verwijzing naar de Azure Active Directory-instellingen voor voorwaardelijke toegang
 
@@ -185,7 +185,7 @@ Deze instelling heeft gevolgen voor toegangs pogingen van de volgende mobiele ap
 | Mobiele Outlook-app | Office 365 Exchange Online | Android, iOS |
 | App Power BI | Power BI-service | Windows 10, Windows 8,1, Windows 7, Android en iOS |
 | Skype voor Bedrijven | Office 365 Exchange Online| Android, IOS |
-| App Visual Studio Team Services | Visual Studio-teamservices | Windows 10, Windows 8,1, Windows 7, iOS en Android |
+| App Visual Studio Team Services | Visual Studio Team Services | Windows 10, Windows 8,1, Windows 7, iOS en Android |
 
 ## <a name="support-for-legacy-authentication"></a>Ondersteuning voor verouderde verificatie
 
@@ -246,7 +246,6 @@ In het beleid voor voorwaardelijke toegang kunt u vereisen dat er een app-beveil
 Deze instelling is van toepassing op de volgende client-apps:
 
 - Micro soft Cortana
-- Microsoft Edge
 - Microsoft OneDrive
 - Microsoft Outlook
 - Microsoft Planner

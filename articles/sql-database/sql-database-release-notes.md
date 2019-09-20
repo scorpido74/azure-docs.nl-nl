@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 232f8b13174aed19477ee0b139c83fba439049ac
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 90482fc859c4dcdd04a70e91da2fd6adb079a795
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101537"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162276"
 ---
 # <a name="sql-database-release-notes"></a>Opmerkingen bij de release SQL Database
 
@@ -26,7 +26,7 @@ Dit artikel bevat een overzicht van SQL Database functies die momenteel beschikb
 
 | Functie | Details |
 | ---| --- |
-| [Persoonlijke Azure-koppeling](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Een persoonlijke koppeling vereenvoudigt de netwerk architectuur en beveiligt de verbinding tussen de eind punten in azure door gegevens op het Azure-netwerk te bewaren, waardoor de bloot stelling aan Internet verloopt. Met persoonlijke koppeling kunt u ook uw eigen services maken en weer geven in Azure. |
+| [Persoonlijke Azure-koppeling](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Private Link vereenvoudigt de netwerkarchitectuur en beveiligt de verbinding tussen eindpunten in Azure doordat gegevens op het Azure-netwerk blijven en niet worden blootgesteld op het openbare internet. U kunt met Private Link ook uw eigen services maken en weergeven in Azure. |
 | Versneld database herstel met afzonderlijke data bases en elastische Pools | Zie [versneld database herstel](sql-database-accelerated-database-recovery.md)voor meer informatie.|
 |Aantal benadering|Zie [geschatte aantallen DISTINCT](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)voor meer informatie.|
 |Batch-modus op Rowstore (onder compatibiliteits niveau 150)|Zie [batch-modus op Rowstore](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)voor meer informatie.|
@@ -60,6 +60,7 @@ Dit artikel bevat een overzicht van SQL Database functies die momenteel beschikb
 
 ### <a name="managed-instance-h2-2019-updates"></a>Managed instance H2 2019-updates
 
+- Met [groepen voor automatische failover](https://azure.microsoft.com/updates/azure-sql-database-auto-failover-groups-feature-now-available-in-all-regions/) kunt u alle data bases van het primaire exemplaar repliceren naar een secundair exemplaar in een andere regio.
 - Configureer het gedrag van het beheerde exemplaar met [globale traceer vlaggen](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/).
 
 ### <a name="managed-instance-h1-2019-updates"></a>Beheerde exemplaren van H1 2019

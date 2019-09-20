@@ -4,7 +4,7 @@ description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: fcea5e4e6bb108f1a8d8036e51a5dae8a9e6431b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f04d943e1db49beed13c183fbd06e401546fc03
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711013"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71153895"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Azure VM-Gast OS firewall is onjuist geconfigureerd
 
@@ -49,13 +49,13 @@ Verbinding maken met de [seriële Console en open vervolgens een PowerShell-sess
 
 De volgende regels kunnen worden bewerkt voor de toegang tot de virtuele machine (via RDP) of om een makkelijker troubleshooting ervaring te bieden:
 
-*   Extern bureaublad (TCP-In): Dit is de standaard-regel die de primaire toegang tot de virtuele machine biedt door toe te staan van RDP in Azure.
+*   Extern bureaublad (TCP-in): Dit is de standaard regel die primaire toegang biedt tot de virtuele machine door RDP in azure toe te staan.
 
-*   Windows Remote Management (HTTP-In): Deze regel kunt u verbinding maken met de virtuele machine met behulp van PowerShell., In Azure, dit soort toegang kunt u gebruik van het uitvoeren van scripts aspect van externe scripts en probleemoplossing.
+*   Windows Remote Management (HTTP-in): Met deze regel kunt u verbinding maken met de virtuele machine met behulp van Power shell. in azure kunt u met dit soort toegang het script aspect van externe scripts en probleem oplossing gebruiken.
 
-*   Bestands- en printerdeling (SMB-In): Deze regel kunnen de toegang tot het netwerk delen als een optie voor het oplossen van problemen.
+*   Bestands-en printer deling (SMB-in): Deze regel maakt toegang tot netwerk shares mogelijk als optie voor het oplossen van problemen.
 
-*   Bestands- en printerdeling (Echoaanvraag - ICMPv4-In): Deze regel kunt u de virtuele machine te pingen.
+*   Bestands-en printer deling (ECHO aanvraag-ICMPv4-in): Met deze regel kunt u de virtuele machine pingen.
 
 U kunt de huidige status van de firewallregel opvragen in de toegang tot de seriële Console-exemplaar.
 
@@ -98,7 +98,7 @@ U kunt de huidige status van de firewallregel opvragen in de toegang tot de seri
 
 ### <a name="offline-mitigations"></a>Offline oplossingen
 
-1.  Als u wilt in- of uitschakelen van firewall-regels, verwijzen naar [in- of uitschakelen van een firewallregel in een Azure VM-Gastbesturingssysteem](enable-disable-firewall-rule-guest-os.md).
+1.  Als u firewall regels wilt in-of uitschakelen, raadpleegt u [een firewall regel op een Azure VM-gast besturingssysteem in-of uitschakelen](enable-disable-firewall-rule-guest-os.md).
 
 2.  Controleer of u zich in de [Guest OS firewall geblokkeerd binnenkomend verkeer scenario](guest-os-firewall-blocking-inbound-traffic.md).
 

@@ -1,69 +1,66 @@
 ---
-title: Analyseren van websitelogboeken met Python-bibliotheken in Spark - Azure
-description: Dit notitieblok demonstreert hoe u voor het analyseren van logboekgegevens met behulp van een aangepaste bibliotheek met Spark op Azure HDInsight.
+title: Website logboeken analyseren met python-bibliotheken in Spark-Azure
+description: Dit notitie blok laat zien hoe u logboek gegevens kunt analyseren met behulp van een aangepaste bibliotheek met Spark in azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.author: hrasheed
-ms.openlocfilehash: 5492f4865e464cf8bedaee6e9b0ab25532e21459
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6d23e8cfa8d20169d2b63723138b60dafb1069de
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448760"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146980"
 ---
-# <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Websitelogboeken analyseren met een aangepaste Python-bibliotheek met Apache Spark-cluster in HDInsight
+# <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Website logboeken analyseren met behulp van een aangepaste python-bibliotheek met Apache Spark cluster op HDInsight
 
-Dit notitieblok demonstreert hoe u voor het analyseren van logboekgegevens met behulp van een aangepaste bibliotheek met Apache Spark in HDInsight. De aangepaste bibliotheek die we gebruiken is een Python-bibliotheek met de naam **iislogparser.py**.
+Dit notitie blok laat zien hoe u logboek gegevens kunt analyseren met behulp van een aangepaste bibliotheek met Apache Spark op HDInsight. De aangepaste bibliotheek die wordt gebruikt, is een python-bibliotheek met de naam **iislogparser.py**.
 
 > [!TIP]  
-> In dit artikel is ook beschikbaar als een Jupyter-notebook in een Spark (Linux)-cluster die u in HDInsight maakt. De notebookervaring kunt u de Python-codefragmenten uitvoeren vanuit het notitieblok zelf. Als u het artikel van binnen een laptop, een Spark-cluster maken, start u een Jupyter-notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), en voer vervolgens de notebook **logboeken analyseren met Spark met behulp van een aangepaste library.ipynb** onder de **PySpark** map.
->
->
+> Dit artikel is ook beschikbaar als een Jupyter-notebook op een Spark-cluster (Linux) dat u in HDInsight maakt. Met de laptop ervaring kunt u de python-fragmenten uit het notitie blok zelf uitvoeren. Als u het artikel vanuit een notitie blok wilt uitvoeren, maakt u een Spark-cluster, start`https://CLUSTERNAME.azurehdinsight.net/jupyter`u een Jupyter-Notebook () en voert u vervolgens het notitie blok **Logboeken analyseren met Spark met behulp van een aangepaste bibliotheek. ipynb** in de map **PySpark** .
 
 **Vereisten:**
 
-U hebt het volgende:
+U moet het volgende hebben:
 
 * Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 * Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure HDInsight](apache-spark-jupyter-spark-sql.md) voor instructies.
 
 ## <a name="save-raw-data-as-an-rdd"></a>Onbewerkte gegevens opslaan als een RDD
-In deze sectie gebruiken we de [Jupyter](https://jupyter.org) laptop die is gekoppeld aan een Apache Spark-cluster in HDInsight taken die de onbewerkte voorbeeldgegevensset verwerken en sla deze op als een Hive-tabel uit te voeren. De voorbeeldgegevens is een CSV-bestand (hvac.csv) beschikbaar in alle clusters standaard.
+In deze sectie gebruiken we het [Jupyter](https://jupyter.org) -notebook dat is gekoppeld aan een Apache Spark-cluster in HDInsight om taken uit te voeren die uw onbewerkte voorbeeld gegevens verwerken en deze op te slaan als een Hive-tabel. De voorbeeld gegevens zijn standaard een CSV-bestand (HVAC. CSV) dat beschikbaar is op alle clusters.
 
-Wanneer uw gegevens is opgeslagen als een Apache Hive-tabel, in de volgende sectie verbinding we met de Hive-tabel met BI-tools, zoals Power BI en Tableau.
+Zodra de gegevens zijn opgeslagen als een Apache Hive tabel, wordt in de volgende sectie verbinding gemaakt met de Hive-tabel met behulp van BI-hulpprogram ma's zoals Power BI en tableau.
 
-1. Klik vanaf het Startboard in [Azure Portal](https://portal.azure.com/) op de tegel voor uw Spark-cluster (als u deze aan het Startboard hebt vastgemaakt). U kunt ook naar uw cluster navigeren onder **Bladeren** > **HDInsight-clusters**.   
+1. Klik vanaf het Startboard in [Azure Portal](https://portal.azure.com/) op de tegel voor uw Spark-cluster (als u deze aan het Startboard hebt vastgemaakt). U kunt ook naar uw cluster navigeren onder **Bladeren** > **HDInsight-clusters**.
+
 2. Klik vanuit de blade Spark-cluster op **Cluster-dashboard** en vervolgens op **Jupyter Notebook**. Voer de beheerdersreferenties voor het cluster in als u daarom wordt gevraagd.
 
    > [!NOTE]
    > Mogelijk bereikt u de Jupyter-notebook voor uw cluster ook door de volgende URL in uw browser te openen. Vervang **CLUSTERNAME** door de naam van uw cluster.
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-   >
-   >
+
 3. Maak een nieuwe notebook. Klik op **Nieuw** en klik vervolgens op **PySpark**.
 
-    ![Een nieuwe Jupyter-notebook maken](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Een nieuwe Jupyter-notebook maken")
+    ![Een nieuwe Apache Jupyter-notebook maken](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Een nieuwe Jupyter-notebook maken")
+
 4. Er wordt een nieuwe notebook gemaakt en geopend met de naam Untitled.pynb. Klik bovenaan op de naam van de notebook en wijzig deze in een beschrijvende naam.
 
     ![Een naam opgeven voor de notebook](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "Een naam opgeven voor de notebook")
-5. Omdat u de notebook met behulp van de PySpark-kernel hebt gemaakt, hoeft u niet expliciet contexten te maken. De Spark- en Hive-contexten worden automatisch voor u gemaakt tijdens het uitvoeren van de eerste codecel. U kunt starten door het importeren van de typen die vereist voor dit scenario zijn. Plak het volgende codefragment in een lege cel en druk op **Shift+Enter**.
+5. Omdat u de notebook met behulp van de PySpark-kernel hebt gemaakt, hoeft u niet expliciet contexten te maken. De Spark- en Hive-contexten worden automatisch voor u gemaakt tijdens het uitvoeren van de eerste codecel. U kunt beginnen met het importeren van de typen die vereist zijn voor dit scenario. Plak het volgende codefragment in een lege cel en druk op **Shift+Enter**.
 
         from pyspark.sql import Row
         from pyspark.sql.types import *
 
-
-1. Maak een RDD met behulp van de voorbeeld-logboekgegevens die al beschikbaar op het cluster. U kunt toegang tot de gegevens in het standaardopslagaccount dat is gekoppeld aan het cluster op **\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log**.
+6. Maak een RDD met behulp van de voorbeeld logboek gegevens die al beschikbaar zijn op het cluster. U kunt toegang krijgen tot de gegevens in het standaard opslag account dat is gekoppeld aan het cluster op **\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log**.
 
         logs = sc.textFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log')
 
-
-1. Haal een voorbeeldlogboek instellen om te controleren of de vorige stap is voltooid.
+7. Haal een voor beeld van een logboekset op om te controleren of de vorige stap is voltooid.
 
         logs.take(5)
 
@@ -79,21 +76,22 @@ Wanneer uw gegevens is opgeslagen als een Apache Hive-tabel, in de volgende sect
          u'2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step3.png X-ARR-LOG-ID=9eace870-2f49-4efd-b204-0d170da46b4a 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 51237 871 32',
          u'2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step4.png X-ARR-LOG-ID=4bea5b3d-8ac9-46c9-9b8c-ec3e9500cbea 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 72177 871 47']
 
-## <a name="analyze-log-data-using-a-custom-python-library"></a>Analyseren van logboekgegevens met behulp van een aangepaste Python-bibliotheek
-1. De eerste paar regels bevatten de headerinformatie in de bovenstaande uitvoer en elke resterende regel komt overeen met het schema dat wordt beschreven in deze header. Deze logboeken parseren kan ingewikkeld zijn. Daarom gebruiken we een aangepaste Python-bibliotheek (**iislogparser.py**) Hiermee kunt u dergelijke veel eenvoudiger logboeken parseren. Deze bibliotheek is standaard opgenomen in uw Spark-cluster in HDInsight op **/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py**.
+## <a name="analyze-log-data-using-a-custom-python-library"></a>Logboek gegevens analyseren met behulp van een aangepaste python-bibliotheek
 
-    Deze bibliotheek is echter niet in de `PYTHONPATH` , zodat we deze niet gebruiken met behulp van een instructie importeren, zoals `import iislogparser`. Voor het gebruik van deze bibliotheek, moeten we deze distribueren naar alle worker-knooppunten. Voer het volgende codefragment.
+1. In de bovenstaande uitvoer bevatten de eerste paar regels de header-informatie en wordt elke resterende regel overeenkomt met het schema dat in die header wordt beschreven. Het parseren van dergelijke logboeken kan gecompliceerd zijn. Daarom gebruiken we een aangepaste python-bibliotheek (**iislogparser.py**) die het parseren van dergelijke logboeken veel eenvoudiger maakt. Deze bibliotheek is standaard opgenomen in uw Spark-cluster op HDInsight op **/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py**.
+
+    Deze bibliotheek bevindt zich echter niet `PYTHONPATH` in de zodat deze niet kan worden gebruikt met behulp `import iislogparser`van een import instructie zoals. Als u deze bibliotheek wilt gebruiken, moeten we deze distribueren naar alle worker-knoop punten. Voer het volgende code fragment uit.
 
         sc.addPyFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
 
-
-1. `iislogparser` biedt een functie `parse_log_line` die retourneert `None` als een regel een rij met koppen wordt en een exemplaar van retourneert de `LogLine` klasse als er een regel. Gebruik de `LogLine` klasse om op te halen van alleen de regels van het logboek van de RDD:
+1. `iislogparser`biedt een functie `parse_log_line` die retourneert `None` of een logboek regel een koprij is en een exemplaar van de `LogLine` klasse retourneert als er een logboek regel wordt aangetroffen. Gebruik de `LogLine` -klasse om alleen de logboek regels uit de RDD te extra heren:
 
         def parse_line(l):
             import iislogparser
             return iislogparser.parse_log_line(l)
         logLines = logs.map(parse_line).filter(lambda p: p is not None).cache()
-2. Ophalen van een aantal opgehaalde log regels om te controleren of de stap is voltooid.
+
+1. Haal een aantal geëxtraheerde logboek regels op om te controleren of de stap is voltooid.
 
        logLines.take(2)
 
@@ -105,7 +103,8 @@ Wanneer uw gegevens is opgeslagen als een Apache Hive-tabel, in de volgende sect
 
        [2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step2.png X-ARR-LOG-ID=2ec4b8ad-3cf0-4442-93ab-837317ece6a1 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 53175 871 46,
         2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step3.png X-ARR-LOG-ID=9eace870-2f49-4efd-b204-0d170da46b4a 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 51237 871 32]
-3. De `LogLine` op zijn beurt heeft enkele nuttige methoden, zoals klasse, `is_error()`, die wordt geretourneerd of een logboekvermelding een fout op te geven heeft. Gebruik deze optie voor het berekenen van het aantal fouten in de uitgepakte log-regels en meld u vervolgens alle fouten naar een ander bestand.
+
+1. De `LogLine` klasse heeft op zijn beurt een aantal handige methoden, zoals `is_error()`, die retourneert of een logboek vermelding een fout code heeft. Gebruik deze voor het berekenen van het aantal fouten in de uitgepakte logboek regels en meld alle fouten vervolgens aan een ander bestand.
 
        errors = logLines.filter(lambda p: p.is_error())
        numLines = logLines.count()
@@ -120,8 +119,8 @@ Wanneer uw gegevens is opgeslagen als een Apache Hive-tabel, in de volgende sect
        # -----------------
 
        There are 30 errors and 646 log entries
-4. U kunt ook **Matplotlib** om een visualisatie van de gegevens samen te stellen. Als u isoleren van de oorzaak van de aanvragen die gedurende een lange periode worden uitgevoerd wilt, wilt u mogelijk zoeken naar de bestanden die de meeste tijd voor het bieden van gemiddeld in beslag nemen.
-   Het onderstaande codefragment wordt de bovenste 25 resources die de meeste tijd voor het bieden van een aanvraag heeft opgehaald.
+1. U kunt **matplotlib** ook gebruiken om een visualisatie van de gegevens te maken. Als u bijvoorbeeld de oorzaak van aanvragen wilt isoleren die gedurende een lange periode worden uitgevoerd, kunt u de bestanden die het meest het meest worden gebruikt, voor het eerst vinden.
+   In het onderstaande fragment worden de belangrijkste 25 resources opgehaald die de meeste tijd nodig hebben om een aanvraag te doen.
 
        def avgTimeTakenByKey(rdd):
            return rdd.combineByKey(lambda line: (line.time_taken, 1),
@@ -162,7 +161,8 @@ Wanneer uw gegevens is opgeslagen als een Apache Hive-tabel, in de volgende sect
         (u'/blogposts/sqlvideos/sqlvideos.jpg', 102.0),
         (u'/blogposts/mvcrouting/step21.jpg', 101.0),
         (u'/blogposts/mvc4/step1.png', 98.0)]
-5. U kunt ook deze informatie in de vorm van diagram aanwezig. Als een eerste stap voor het maken van een diagram laat het ons eerst maken een tijdelijke tabel **AverageTime**. De tabel de logboeken gegroepeerd op tijd om te zien of er ongebruikelijke latentiepieken op een bepaald moment zijn.
+
+1. U kunt deze informatie ook in de vorm van het plot presen teren. Als eerste stap voor het maken van een tekening maakt u eerst een tijdelijke tabel **AverageTime**. De tabel groepeert de logboeken op tijd om te zien of er ongebruikelijke latentie pieken op een bepaald moment zijn.
 
        avgTimeTakenByMinute = avgTimeTakenByKey(logLines.map(lambda p: (p.datetime.minute, p))).sortByKey()
        schema = StructType([StructField('Minutes', IntegerType(), True),
@@ -170,19 +170,21 @@ Wanneer uw gegevens is opgeslagen als een Apache Hive-tabel, in de volgende sect
 
        avgTimeTakenByMinuteDF = sqlContext.createDataFrame(avgTimeTakenByMinute, schema)
        avgTimeTakenByMinuteDF.registerTempTable('AverageTime')
-6. U kunt vervolgens uitvoeren met de volgende SQL-query om op te halen van alle records in de **AverageTime** tabel.
+
+1. Vervolgens kunt u de volgende SQL-query uitvoeren om alle records in de **AverageTime** -tabel op te halen.
 
        %%sql -o averagetime
        SELECT * FROM AverageTime
 
-   De `%%sql` magic gevolgd door `-o averagetime` zorgt ervoor dat de uitvoer van de query lokaal worden bewaard op de Jupyter-server (meestal het hoofdknooppunt van het cluster). De uitvoer wordt opgeslagen als een [Pandas](https://pandas.pydata.org/) gegevensframe met de opgegeven naam **averagetime**.
+   Het `%%sql` Magic wordt gevolgd `-o averagetime` door ervoor te zorgen dat de uitvoer van de query lokaal wordt opgeslagen op de Jupyter-server (doorgaans de hoofd knooppunt van het cluster). De uitvoer wordt persistent gemaakt als een [Panda](https://pandas.pydata.org/) data frame met de opgegeven naam **averagetime**.
 
    Als het goed is, wordt ongeveer de volgende uitvoer weergegeven:
 
-   ![SQL-query-uitvoer](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "SQL query-uitvoer")
+   ![jupyter SQL qyery-uitvoer hdinsight](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "SQL-query-uitvoer")
 
-   Voor meer informatie over de `%%sql` magic, Zie [Parameters ondersteund met de %% sql magic](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
-7. U kunt nu Matplotlib, een bibliotheek gebruikt om de visualisatie van gegevens, samen te gebruiken voor het maken van een diagram. Omdat de grafiek moet worden gemaakt van de lokaal persistente **averagetime** dataframe, het codefragment moet beginnen met de `%%local` Magic-pakket. Dit zorgt ervoor dat de code lokaal op de Jupyter-server wordt uitgevoerd.
+   Zie `%%sql` [para meters die worden ondersteund met%% SQL Magic](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)voor meer informatie over het Magic.
+
+1. U kunt nu matplotlib, een bibliotheek die wordt gebruikt om visualisatie van gegevens te maken, gebruiken om een plot te creëren. Omdat het waarnemings punt moet worden gemaakt van de lokaal blijvende persistente **averagetime** -data frame, moet het code fragment `%%local` beginnen met het Magic. Dit zorgt ervoor dat de code lokaal wordt uitgevoerd op de Jupyter-server.
 
        %%local
        %matplotlib inline
@@ -194,26 +196,27 @@ Wanneer uw gegevens is opgeslagen als een Apache Hive-tabel, in de volgende sect
 
    Als het goed is, wordt ongeveer de volgende uitvoer weergegeven:
 
-   ![Matplotlib uitvoer](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib uitvoer")
-8. Wanneer u klaar bent met het uitvoeren van de toepassing, moet u de notebook afsluiten om de resources vrij te geven. Dit doet u door in het menu **Bestand** in de notebook te klikken op **Sluiten en stoppen**. Hiermee wordt de notebook afgesloten.
+   ![analyse diagram voor Apache Spark-Weblogboeken](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib uitvoer")
+
+1. Wanneer u klaar bent met het uitvoeren van de toepassing, moet u de notebook afsluiten om de resources vrij te geven. Dit doet u door in het menu **Bestand** in de notebook te klikken op **Sluiten en stoppen**. Hiermee wordt de notebook afgesloten.
 
 ## <a name="seealso"></a>Zie ook
-* [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
+* [Krijgt Apache Spark in azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenario's
-* [Apache Spark met BI: Interactieve gegevensanalyses met behulp van Spark in HDInsight met BI-hulpprogramma's uitvoeren](apache-spark-use-bi-tools.md)
-* [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouwtemperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor de resultaten van voedingsinspectie voorspellen](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark met BI: Interactieve gegevens analyse uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
+* [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="create-and-run-applications"></a>Toepassingen maken en uitvoeren
 * [Een zelfstandige toepassing maken met behulp van Scala](apache-spark-create-standalone-application.md)
 * [Apache Livy gebruiken om taken op afstand uit te voeren in een Apache Spark-cluster](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Tools en uitbreidingen
-* [De invoegtoepassing HDInsight Tools for IntelliJ IDEA gebruiken om te maken en verzenden van Apache Spark Scala-toepassingen](apache-spark-intellij-tool-plugin.md)
-* [De invoegtoepassing HDInsight Tools for IntelliJ IDEA gebruiken om op te sporen Apache Spark-toepassingen op afstand](../hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [De invoeg toepassing HDInsight tools for IntelliJ idee gebruiken om Apache Spark scala-toepassingen te maken en in te dienen](apache-spark-intellij-tool-plugin.md)
+* [De invoeg toepassing HDInsight tools for IntelliJ-idee gebruiken om op afstand fouten in Apache Spark toepassingen op te sporen](../hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Apache Zeppelin-notebooks gebruiken met een Apache Spark-cluster in HDInsight](apache-spark-zeppelin-notebook.md)
-* [Beschikbare kernels voor Jupyter-notebook in Apache Spark-cluster voor HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Kernels die beschikbaar zijn voor Jupyter notebook in Apache Spark cluster voor HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Externe pakketten gebruiken met Jupyter-notebooks](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter op uw computer installeren en verbinding maken met een HDInsight Spark-cluster](apache-spark-jupyter-notebook-install-locally.md)
 

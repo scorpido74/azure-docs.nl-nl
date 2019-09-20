@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: vhorne
   ms.author: victorh
-  ms.date: 08/29/2019
-  ms.openlocfilehash: be93b43a72d8a9b33b75abafe15abf65ab8fb58a
-  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.date: 09/20/2019
+  ms.openlocfilehash: 5149324e7de1052bd3a3123758985dd8b722c116
+  ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 08/28/2019
-  ms.locfileid: "70126038"
+  ms.lasthandoff: 09/20/2019
+  ms.locfileid: "71162056"
 landingContent:
 - title: Meer informatie over Azure DNS
   linkLists:
@@ -25,7 +25,7 @@ landingContent:
       url: dns-overview.md
 - title: Een Azure DNS-zone en -record maken
   linkLists:
-  - linkListType: get-started
+  - linkListType: quickstart
     links:
     - text: Een Azure DNS-zone en -record maken met de Azure-portal
       url: dns-getstarted-portal.md
@@ -45,7 +45,7 @@ landingContent:
       url: private-dns-scenarios.md
     - text: Veelgestelde vragen over privé-DNS in Azure
       url: dns-faq-private.md
-  - linkListType: tutorial
+  - linkListType: quickstart
     links:
     - text: Een Azure DNS-privézone maken met de Azure-portal
       url: private-dns-portal.md

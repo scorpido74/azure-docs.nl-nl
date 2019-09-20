@@ -1,19 +1,19 @@
 ---
-title: 'Azure PowerShell-script: Azure Cosmosdb maken (Core) SQL-API-database en -container'
-description: 'Azure PowerShell-script: Azure Cosmosdb maken (Core) SQL-API-database en -container'
+title: Azure PowerShell script-Azure Cosmos DB SQL-API-data base en-container maken
+description: Azure PowerShell script-Azure Cosmos DB SQL-API-data base en-container maken
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: b8b8b30f178ba068bc800103f16adde43cf5dcb1
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 29b0e81dd6eac62a18307788bb023ac3d802f11a
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602223"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154854"
 ---
-# <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>Een database en een container voor Azure Cosmos DB - SQL (Core) API maken
+# <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>Een Data Base en container maken voor de API van Azure Cosmos DB-SQL (core)
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,9 @@ ms.locfileid: "67602223"
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create a database and container for SQL (Core) API")]
+Met dit script maakt u een Cosmos-account voor SQL-API (core) in twee regio's met consistentie op sessie niveau, een Data Base met een gedeelde door Voer en een container met een partitie sleutel, aangepast indexerings beleid, uniek sleutel beleid, TTL, specifieke door Voer en de laatste schrijver WINS beleid voor conflict oplossing met een aangepast pad voor conflict oplossing dat wordt gebruikt `multipleWriteLocations=true`wanneer.
+
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create an account, database, and container for SQL (Core) API")]
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
@@ -37,9 +39,9 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure Resources**| |
+|**Azure-resources**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
-|**Azure-resourcegroepen**| |
+|**Azure-resource groepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d4a0f00c8bcf511f220d3e0df81adac1e9ff0d4
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 49658e3e57748ffb7542508530940aa5331f5db1
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995199"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162411"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Problemen oplossen met hybride Azure Active Directory gekoppelde apparaten 
 
@@ -110,7 +110,7 @@ Ga verder met de volgende stappen voor meer informatie over het oplossen van pro
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 en hoger
 
-Zoek naar de subsectie ' voorafgaande registratie ' in de sectie ' Diagnostische gegevens ' van de uitvoer van de samenvoeg status.
+Zoek naar de subsectie ' voorafgaande registratie ' in de sectie ' Diagnostische gegevens ' van de uitvoer van de samenvoeg status. Deze sectie wordt alleen weer gegeven als het apparaat lid is van een domein en niet kan hybride Azure AD join.
 In het veld ' fout fase ' wordt de fase van de fout bij het samen voegen aangegeven, terwijl ' client code-error ' de fout code van de koppelings bewerking aanduidt.
 
 ```
@@ -181,7 +181,7 @@ Gebruik een van de volgende methoden om de subfout code voor de fout code van de
 
 ##### <a name="windows-10-1803-and-above"></a>Windows 10 1803 en hoger
 
-Zoek naar ' DRS Discovery test ' in de sectie ' Diagnostische gegevens ' van de uitvoer van de samenvoeg status.
+Zoek naar ' DRS Discovery test ' in de sectie ' Diagnostische gegevens ' van de uitvoer van de samenvoeg status. Deze sectie wordt alleen weer gegeven als het apparaat lid is van een domein en niet kan hybride Azure AD join.
 
 ```
 +----------------------------------------------------------------------+
@@ -305,7 +305,7 @@ Zoek het registratie type en zoek naar de fout code in de onderstaande lijst.
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 en hoger
 
-Zoek naar de subsectie ' voorafgaande registratie ' in de sectie ' Diagnostische gegevens ' van de uitvoer van de samenvoeg status.
+Zoek naar de subsectie ' voorafgaande registratie ' in de sectie ' Diagnostische gegevens ' van de uitvoer van de samenvoeg status. Deze sectie wordt alleen weer gegeven als het apparaat lid is van een domein en niet kan hybride Azure AD join.
 Het veld registratie type geeft het type samen voeging aan dat wordt uitgevoerd.
 
 ```

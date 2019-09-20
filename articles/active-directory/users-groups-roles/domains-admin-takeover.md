@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c05e1dc720f49eb190ccdbe1826a1a347fba7fa1
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 00753ee8d7d128222e9fb773f00a23720813a237
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914779"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146467"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Een niet-beheerde Directory als beheerder overnemen in Azure Active Directory
 
@@ -83,19 +83,16 @@ Wanneer u het eigendom van de domein naam controleert, wordt de domein naam van 
 
 - Gebruikers
 - Abonnementen
-- Licentie toewijzingen
+- Licentietoewijzingen
 
 ### <a name="support-for-external-admin-takeover"></a>Ondersteuning voor externe beheerders overname
 Externe beheerders overname wordt ondersteund door de volgende onlineservices:
 
-- Power BI
 - Azure Rights Management
 - Exchange Online
 
 De ondersteunde service plannen zijn onder andere:
 
-- Power BI gratis
-- Power BI Pro
 - PowerApps gratis
 - PowerFlow gratis
 - RMS voor personen
@@ -113,10 +110,6 @@ Wanneer de onbeheerde Tenant zich in dezelfde regio bevindt als de Tenant waarva
 De sleutel en sjablonen worden niet verplaatst wanneer de onbeheerde Tenant zich in een andere regio bevindt. Als de onbeheerde Tenant zich bijvoorbeeld in Europa bevindt en de organisatie waarvan u de eigenaar bent, bevindt zich in Noord-Amerika.
 
 Hoewel RMS voor individuen is ontworpen ter ondersteuning van Azure AD-verificatie om beveiligde inhoud te openen, voor komt u dat gebruikers ook inhoud beveiligen. Als gebruikers inhoud met het abonnement voor RMS voor personen hebben beveiligd en de sleutel en sjablonen niet zijn verplaatst, is deze inhoud niet toegankelijk na de domein overname.
-
-#### <a name="more-information-about-power-bi"></a>Meer informatie over Power BI
-
-Wanneer u een externe overname uitvoert, wordt Power BI inhoud die is gemaakt voordat de overname is opgenomen in een [Power bi gearchiveerde werk ruimte](/power-bi/service-admin-power-bi-archived-workspace). U moet alle inhoud die u wilt gebruiken in de nieuwe Tenant hand matig migreren.
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Azure AD Power shell-cmdlets voor de ForceTakeover-optie
 U kunt deze cmdlets zien die in [Power shell-voor beeld](#powershell-example)worden gebruikt.

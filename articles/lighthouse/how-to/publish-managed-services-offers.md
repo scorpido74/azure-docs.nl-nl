@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 4a1adf1be8798f4bb21b89ff0654287a2958146e
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 4781126bc4fcfb6391db42a75553a13e0e4cc4f9
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105264"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155149"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Een managed services-aanbod publiceren naar Azure Marketplace
 
@@ -24,6 +24,8 @@ In dit artikel leert u hoe u een aanbieding voor open bare of privé beheerde se
 > Als u een aanbieding niet wilt publiceren naar Azure Marketplace, kunt u klanten hand matig voorbereiden door Azure Resource Manager sjablonen te gebruiken. Zie voor meer informatie [onboarding van een klant naar Azure gedelegeerd resource beheer](onboard-customer.md).
 
 Het publiceren van een managed services-aanbod is vergelijkbaar met het publiceren van een ander type aanbieding naar Azure Marketplace. Zie voor meer informatie over dat proces [Azure Marketplace en AppSource Publishing Guide](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) en [beheer Azure en AppSource Marketplace-aanbiedingen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers). U moet ook het [beleid voor commerciële Marketplace-certificerings](https://docs.microsoft.com/legal/marketplace/certification-policies)instanties, met name de sectie [Managed Services](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) , bekijken.
+
+Zodra een klant uw aanbieding heeft toegevoegd, kunnen ze een of meer specifieke abonnementen of resource groepen delegeren die vervolgens voor het [beheer van gedelegeerde resources van Azure](#the-customer-onboarding-process)worden uitgevoerd. Houd er rekening mee dat voordat een abonnement (of resource groepen binnen een abonnement) kan worden opvolgd, het abonnement moet worden geautoriseerd voor onboarding door de resource provider **micro soft. ManagedServices** hand matig te registreren.
 
 > [!IMPORTANT]
 > Elk abonnement in een beheerde services-aanbieding bevat een sectie **manifest Details** , waarin u de Azure Active Directory (Azure AD)-entiteiten in uw Tenant definieert die toegang hebben tot de gedelegeerde resource groepen en/of-abonnementen voor klanten die Koop dat plan. Het is belang rijk te weten dat elke groep (of gebruiker of Service-Principal) die u hier opgeeft, dezelfde machtigingen heeft voor elke klant die het plan heeft gekocht. Als u verschillende groepen wilt toewijzen voor gebruik met elke klant, moet u een afzonderlijk privé plan publiceren dat exclusief is voor elke klant.

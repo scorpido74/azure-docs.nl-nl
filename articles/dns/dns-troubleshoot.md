@@ -1,65 +1,56 @@
 ---
-title: Probleemoplossingsgids voor Azure DNS | Microsoft Docs
-description: Het oplossen van veelvoorkomende problemen met Azure DNS
+title: Gids voor het oplossen van problemen Azure DNS
+description: Veelvoorkomende problemen met Azure DNS oplossen
 services: dns
-documentationcenter: na
-author: genlin
-manager: cshepard
-editor: ''
-ms.assetid: 95b01dc3-ee69-4575-a259-4227131e4f9c
+author: vhorne
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/20/2017
+ms.date: 09/20/2019
 ms.author: genli
-ms.openlocfilehash: 535e7604915555f32a7636b739c49f72cb0220c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 885d41c9cea11805b08b19ec9c3cc4e533813673
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60823892"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162066"
 ---
-# <a name="azure-dns-troubleshooting-guide"></a>Probleemoplossingsgids voor Azure DNS
+# <a name="azure-dns-troubleshooting-guide"></a>Gids voor het oplossen van problemen Azure DNS
 
-Deze pagina bevat informatie over probleemoplossing voor veelgestelde vragen voor Azure DNS.
+Dit artikel bevat informatie over het oplossen van problemen met veelgestelde vragen over Azure DNS.
 
-Als deze stappen het probleem niet verhelpen, u kunt ook zoeken naar of uw probleem plaatsen op onze [ondersteuningsforum op MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork). U kunt ook een Azure-ondersteuningsaanvraag openen.
+Als met deze stappen het probleem niet is opgelost, kunt u ook naar het [ondersteunings forum van de community op MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)zoeken of het probleem daar plaatsen. U kunt ook een Azure-ondersteunings aanvraag openen.
 
 
-## <a name="i-cant-create-a-dns-zone"></a>Kan ik een DNS-zone niet maken
+## <a name="i-cant-create-a-dns-zone"></a>Ik kan geen DNS-zone maken
 
 Probeer een of meer van de volgende stappen om veelvoorkomende problemen op te lossen:
 
-1.  Bekijk de auditlogboeken van Azure DNS om reden van de fout vast te stellen.
-2.  Elke DNS-zonenaam moet uniek zijn binnen de resourcegroep. Een resourcegroep kan dus niet twee DNS-zones met dezelfde naam bevatten. Gebruik een andere zonenaam of een andere resourcegroep.
+1.  Raadpleeg de Azure DNS audit Logboeken om de reden van de fout te bepalen.
+2.  Elke DNS-zonenaam moet uniek zijn binnen de resourcegroep. Dat wil zeggen dat twee DNS-zones met dezelfde naam geen resource groep kunnen delen. Gebruik een andere zonenaam of een andere resourcegroep.
 3.  U ziet mogelijk de foutmelding 'Het maximumaantal zones in abonnement {abonnements-id} is bereikt of overschreden'. Gebruik een ander Azure-abonnement, verwijder enkele zones of neem contact op met de ondersteuning van Azure om uw abonnementslimiet te verhogen.
-4.  U ziet mogelijk de foutmelding 'De zone {zonenaam} is niet beschikbaar'. Dit betekent dat Azure DNS geen naamservers kan toewijzen voor deze DNS-zone. Gebruik dan een andere zonenaam. Als u de eigenaar van de domeinnaam bent, kunt u ook de ondersteuning van Azure vragen naamservers voor u toe te wijzen.
+4.  U ziet mogelijk de foutmelding 'De zone {zonenaam} is niet beschikbaar'. Dit betekent dat Azure DNS geen naamservers kan toewijzen voor deze DNS-zone. Gebruik dan een andere zonenaam. Als u de eigenaar van de domein naam bent, kunt u contact opnemen met de ondersteuning van Azure om naam servers voor u toe te wijzen.
 
 
-### <a name="recommended-documents"></a>**Aanbevolen documenten**
+### <a name="recommended-articles"></a>Aanbevolen artikelen
 
-[DNS-zones en -records](dns-zones-records.md)
-<br>
-[Een DNS-zone maken](dns-getstarted-create-dnszone-portal.md)
+* [DNS-zones en -records](dns-zones-records.md)
+* [Een DNS-zone maken](dns-getstarted-create-dnszone-portal.md)
 
 ## <a name="i-cant-create-a-dns-record"></a>Ik kan geen DNS-record maken
 
 Probeer een of meer van de volgende stappen om veelvoorkomende problemen op te lossen:
 
-1.  Bekijk de auditlogboeken van Azure DNS om reden van de fout vast te stellen.
+1.  Raadpleeg de Azure DNS audit Logboeken om de reden van de fout te bepalen.
 2.  Bestaat de recordset al?  Azure DNS beheert records als *recordsets*. Hierin zijn records met dezelfde naam en van hetzelfde type opgenomen. Als er al een record met dezelfde naam en van hetzelfde type bestaat, kunt u nog een dergelijke record toevoegen door de bestaande recordset te bewerken.
-3.  Probeert u een record te maken in de apex (het hoofdniveau) van de DNS-zone? Dan is het de DNS-conventie om het @-teken te gebruiken als recordnaam. De DNS-standaarden staan CNAME-records in de apex van de zone niet toe.
-4.  Is er sprake van een CNAME-conflict?  De DNS-standaarden staan niet toe dat een CNAME-record dezelfde naam heeft als een record van een ander type. Als u een bestaande CNAME hebt, kunt u geen record maken met dezelfde naam maar van een ander type.  Op dezelfde manier kunt u ook geen CNAME maken als de naam overeenkomt met een bestaande record van een ander type. Verhelp het conflict door de andere record te verwijderen of een andere recordnaam te kiezen.
-5.  Hebt u de limiet voor het aantal toegestane recordsets in een DNS-zone bereikt? Het huidige aantal recordsets en het maximumaantal recordsets worden weergegeven in Azure Portal onder de eigenschappen van de zone. Als u deze limiet hebt bereikt, verwijdert u een aantal recordsets of neemt u contact op met de ondersteuning van Azure om de limiet voor recordsets voor deze zone te laten verhogen. Probeer het vervolgens opnieuw. 
+3.  Probeert u een record te maken in de apex (het hoofdniveau) van de DNS-zone? Dan is het de DNS-conventie om het @-teken te gebruiken als recordnaam. Houd er rekening mee dat de DNS-standaarden geen CNAME-records op de zone Apex toestaan.
+4.  Is er sprake van een CNAME-conflict?  De DNS-standaarden staan geen CNAME-records met dezelfde naam toe als een record van een ander type. Als u een bestaande CNAME hebt, kunt u geen record maken met dezelfde naam maar van een ander type.  Op dezelfde manier kunt u ook geen CNAME maken als de naam overeenkomt met een bestaande record van een ander type. Verhelp het conflict door de andere record te verwijderen of een andere recordnaam te kiezen.
+5.  Hebt u de limiet voor het aantal toegestane recordsets in een DNS-zone bereikt? Het huidige aantal recordsets en het maximumaantal recordsets worden weergegeven in Azure Portal onder de eigenschappen van de zone. Als u deze limiet hebt bereikt, verwijdert u een aantal record sets of neemt u contact op met de ondersteuning van Azure om de limiet voor record sets voor deze zone te verhogen. Probeer het vervolgens opnieuw. 
 
 
-### <a name="recommended-documents"></a>**Aanbevolen documenten**
+### <a name="recommended-articles"></a>Aanbevolen artikelen
 
-[DNS-zones en -records](dns-zones-records.md)
-<br>
-[Een DNS-zone maken](dns-getstarted-create-dnszone-portal.md)
+* [DNS-zones en -records](dns-zones-records.md)
+* [Een DNS-zone maken](dns-getstarted-create-dnszone-portal.md)
 
 
 
@@ -76,9 +67,9 @@ De DNS-naamomzetting vereist meerdere stappen en kan om verschillende redenen mi
 4.  Nadat u het bovenstaande hebt voltooid, zou uw DNS-record correct moeten worden omgezet. U kunt dit controleren door opnieuw [digwebinterface](https://digwebinterface.com) te gebruiken, maar nu met de standaardinstellingen van de naamserver.
 
 
-### <a name="recommended-documents"></a>**Aanbevolen documenten**
+### <a name="recommended-articles"></a>Aanbevolen artikelen
 
-[Een domein delegeren naar Azure DNS](dns-domain-delegation.md)
+* [Een domein delegeren naar Azure DNS](dns-domain-delegation.md)
 
 
 
@@ -91,18 +82,16 @@ Voorbeeld van SRV-recordnamen (servicenaam 'sip', protocol 'tcp'):
 - \_sip.\_tcp (er wordt een record gemaakt in de apex van de zone)
 - \_sip.\_tcp.sipservice (er wordt een recordset gemaakt met de naam 'sipservice')
 
-### <a name="recommended-documents"></a>**Aanbevolen documenten**
+### <a name="recommended-articles"></a>Aanbevolen artikelen
 
-[DNS-zones en -records](dns-zones-records.md)
-<br>
-[DNS-recordsets en -records maken met Azure Portal](dns-getstarted-create-recordset-portal.md)
-<br>
-[SRV-recordtype (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)
+* [DNS-zones en -records](dns-zones-records.md)
+* [DNS-recordsets en -records maken met Azure Portal](dns-getstarted-create-recordset-portal.md)
+* [SRV-recordtype (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Azure DNS-zones en records](dns-zones-records.md)
-* Als u wilt gaan met behulp van Azure DNS, informatie over hoe u [maken van een DNS-zone](dns-getstarted-create-dnszone-portal.md) en [DNS-records maken](dns-getstarted-create-recordset-portal.md).
-* Als u wilt migreren van een bestaande DNS-zone, informatie over hoe u [importeren en exporteren van een DNS-zonebestand](dns-import-export.md).
+* Meer informatie over [Azure DNS zones en records](dns-zones-records.md)
+* Als u Azure DNS wilt gaan gebruiken, leest u hoe u [een DNS-zone maakt](dns-getstarted-create-dnszone-portal.md) en hoe u [DNS-records maakt](dns-getstarted-create-recordset-portal.md).
+* Als u een bestaande DNS-zone wilt migreren, leert u hoe u [een DNS-zone bestand importeert en exporteert](dns-import-export.md).
 

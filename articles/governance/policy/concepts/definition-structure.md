@@ -3,16 +3,16 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe resourcedefinitie beleid wordt gebruikt door Azure Policy tot stand brengen van conventies voor resources in uw organisatie door te beschrijven wanneer het beleid wordt afgedwongen en welk effect te nemen.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/13/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1999a47d18fd3ce6388d6177be85c7debd3c1e97
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: d7e264bda62753693cdd2333625313cf213f142a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70239188"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145568"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -398,6 +398,7 @@ Azure Policy ondersteunt de volgende typen effect:
 - **DeployIfNotExists**: implementeert een resource als deze nog niet bestaat
 - **Uitgeschakelde**: resources voor naleving van de beleidsregel niet evalueren
 - **EnforceRegoPolicy**: Hiermee configureert u de open Policy Agent Admissions-controller in de Azure Kubernetes-service (preview)
+- **Wijzigen**: de gedefinieerde labels worden toegevoegd, bijgewerkt of verwijderd uit een resource
 
 Voor **append**, moet u de volgende gegevens opgeven:
 
@@ -424,6 +425,8 @@ De **DeployIfNotExists** effect vereist de **roleDefinitionId** eigenschap in de
     ]
 }
 ```
+
+**Wijzig** ook de eigenschap **roledefinitionid hebben** vereist in het gedeelte **Details** van de beleids regel voor de [herstel taak](../how-to/remediate-resources.md). Voor het **wijzigen** moet ook een **Operations** -matrix worden gedefinieerd om te bepalen welke acties moeten worden uitgevoerd voor de tags voor de resources.
 
 Zie voor meer informatie over elk effect, de volg orde van evaluatie, eigenschappen en voor beelden [informatie over Azure Policy effecten](effects.md).
 

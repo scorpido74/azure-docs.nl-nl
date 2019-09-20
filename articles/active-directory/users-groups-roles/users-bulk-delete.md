@@ -13,23 +13,26 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2204c572ca1f74f8060d0b6176df69359fe69a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: eb01b46d61b6ba99c3ec9c537dccc350074f5e05
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901709"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146445"
 ---
 # <a name="bulk-delete-users-preview-in-azure-active-directory"></a>Gebruikers bulksgewijs verwijderen (preview) in Azure Active Directory
 
-Azure Active Directory (Azure AD) ondersteunt bulk bewerkingen voor het maken en verwijderen van gebruikers, het bulksgewijs uitnodigen voor gasten en biedt ondersteuning voor het downloaden van lijsten met gebruikers, groepen en groeps leden.
+Met Azure Active Directory-Portal (Azure AD) kunt u een groot aantal leden verwijderen uit een groep met behulp van een bestand met door komma's gescheiden waarden (CSV) om gebruikers bulksgewijs te verwijderen.
 
 ## <a name="to-bulk-delete-users"></a>Gebruikers bulksgewijs verwijderen
 
 1. Meld u aan bij uw Azure AD-organisatie met een account dat een gebruikers beheerder in de organisatie is.
 1. Selecteer in azure AD de optie **gebruikers** > **bulksgewijs verwijderen**.
 1. Selecteer op de pagina **bulksgewijs verwijderen gebruiker** **downloaden** om een geldig CSV-bestand met gebruikers eigenschappen te ontvangen en voeg vervolgens de gebruikers toe die u wilt verwijderen.
-1. Wanneer u klaar bent met het bewerken van het CSV-bestand of als u een van uw eigen kant-en-klaar bent om te uploaden, selecteert u het bestand onder **uw CSV-bestand uploaden** dat moet worden gevalideerd.
+
+   ![Het CSV-bestand bevat de namen en Id's van de gebruikers die u wilt verwijderen](./media/users-bulk-delete/delete-csv-file.png)
+
+1. Wanneer u klaar bent met het bewerken van het CSV-bestand, selecteert u het bestand onder **uw CSV-bestand uploaden** dat moet worden gevalideerd.
 
    ![Selecteer een lokaal CSV-bestand waarin de gebruikers die u wilt verwijderen, worden vermeld](./media/users-bulk-delete/bulk-delete.png)
 

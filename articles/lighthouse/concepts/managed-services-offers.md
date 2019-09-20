@@ -1,46 +1,46 @@
 ---
-title: Beheerde services aanbiedingen op Azure Marketplace
-description: Beheerde services aanbiedingen kunnen serviceproviders resource management aanbiedingen aan klanten in Azure Marketplace verkopen.
+title: Aanbiedingen voor beheerde services in Azure Marketplace
+description: Met beheerde services kunnen service providers resource beheer aanbiedingen verkopen aan klanten in azure Marketplace.
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 07/11/2019
+ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: a6fcf5f1d0ac194d60f834fb8d26db019c538410
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 0a6371a1020182650d83d5e7ec9bb2378b44b557
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809874"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155257"
 ---
-# <a name="managed-services-offers-in-azure-marketplace"></a>Beheerde services aanbiedingen op Azure Marketplace
+# <a name="managed-services-offers-in-azure-marketplace"></a>Aanbiedingen voor beheerde services in Azure Marketplace
 
-In dit artikel beschrijft de nieuwe **beheerde Services** aanbiedingstype in [Azure Marketplace](https://azuremarketplace.microsoft.com). Beheerde services biedt, kunt u resource management-services aanbieden aan klanten met Azure gedelegeerde resource Manager. U kunt deze aanbiedingen beschikbaar maken voor alle potentiële klanten, of alleen naar een of meer specifieke klanten. Omdat u rechtstreeks voor kosten met betrekking tot deze beheerde services facturen, zijn er geen kosten in rekening gebracht door Microsoft.
+In dit artikel wordt het nieuwe aanbod type voor **beheerde services** in [Azure Marketplace](https://azuremarketplace.microsoft.com)beschreven. Met Managed Services kunt u Resource Management Services aanbieden aan klanten met het beheer van de gedelegeerde resources van Azure. U kunt deze aanbiedingen beschikbaar stellen aan alle potentiële klanten of alleen aan een of meer specifieke klanten. Omdat u klanten rechtstreeks factureert voor kosten met betrekking tot deze beheerde services, zijn er geen kosten in rekening gebracht door micro soft.
 
-## <a name="understand-managed-services-offers"></a>Informatie over aanbiedingen van beheerde services
+## <a name="understand-managed-services-offers"></a>Meer informatie over Managed Services-aanbiedingen
 
-Beheerde services biedt stroomlijnen van de onboarding van klanten voor Azure Resourcemanagement gedelegeerd beheer. Wanneer een klant een aanbieding op Azure Marketplace-aankopen, ze zal het mogelijk om op te geven welke abonnementen en/of resourcegroepen uitgevoerd worden moeten zodat de opgegeven gebruikers in uw organisatie kunnen beheertaken uitvoeren voor de klant vanuit uw de tenant van de organisatie.
+Beheerde services bieden een stroom lijn voor het proces van onboarding van klanten voor het beheer van gedelegeerde resources van Azure. Wanneer een klant een aanbieding in azure Marketplace koopt, kunnen ze opgeven welke abonnementen en/of resource groepen onboarding moeten worden uitgevoerd. Houd er rekening mee dat het abonnement eerst moet worden geautoriseerd voor onboarding door de resource provider **micro soft. ManagedServices** hand matig te registreren.
 
-Hierna is er geen verdere actie door de klant of de service-provider vereist om op te halen van de Onboarding van de klant. Dit komt omdat bij het definiëren van de aanbieding in de [Cloud Partner-Portal](https://cloudpartner.azure.com/), maakt u een manifest dat Hiermee geeft u de Azure AD-gebruikers, groepen en service-principes die hebben toegang tot resources van de klant met behulp van Azure resource overgedragen beheer. samen met de functies die het niveau van toegang tot hun definiëren. U kunt machtigingen toewijzen aan een Azure AD-groep in plaats van een serie van afzonderlijke gebruikers of toepassingsaccounts, toevoegen of verwijderen van afzonderlijke gebruikers wanneer uw toegangsvereisten worden gewijzigd.
+Daarna kunnen gebruikers in uw organisatie beheer taken uitvoeren voor deze resources vanuit de Tenant van uw organisatie, op basis van de toegang die u hebt gedefinieerd bij het maken van de aanbieding in de [Cloud Partner-Portal](https://cloudpartner.azure.com/). Dit wordt gedaan via een manifest waarmee de Azure AD-gebruikers,-groepen en-service-principals worden opgegeven die toegang hebben tot klant bronnen met behulp van Azure delegated resource management, samen met rollen die hun toegangs niveau bepalen. Door machtigingen toe te wijzen aan een Azure AD-groep in plaats van een reeks afzonderlijke gebruikers-of toepassings accounts, kunt u afzonderlijke gebruikers toevoegen of verwijderen wanneer uw toegangs vereisten veranderen.
 
-## <a name="public-and-private-offers"></a>Openbare en persoonlijke aanbiedingen
+## <a name="public-and-private-offers"></a>Open bare en persoonlijke aanbiedingen
 
-Ieder aanbod van beheerde services bevat een of meer abonnementen. Deze abonnementen kunnen privé of openbaar zijn.
+Elk managed services-aanbod omvat een of meer abonnementen. Deze abonnementen kunnen privé of openbaar zijn.
 
-Als u uw aanbieding aan specifieke klanten beperken wilt, kunt u een privé-abonnement kunt publiceren. Als u dit doet, kan het plan alleen worden aangeschaft voor de specifieke] abonnement-id's die u opgeeft. Zie voor meer informatie, [persoonlijke aanbiedingen](https://docs.microsoft.com/azure/marketplace/private-offers).
+Als u uw aanbieding wilt beperken tot specifieke klanten, kunt u een privé-abonnement publiceren. Wanneer u dit doet, kan het abonnement alleen worden aangeschaft voor de specifieke] abonnements-Id's die u opgeeft. Zie voor meer informatie [persoonlijke aanbiedingen](https://docs.microsoft.com/azure/marketplace/private-offers).
 
-Openbare plannen kunnen u uw services voor nieuwe klanten te bevorderen. Dit zijn doorgaans meer geschikt wanneer u slechts beperkte toegang tot de tenant van de klant vereist. Wanneer u een relatie met een klant gemaakt hebt als ze besluit om uw organisatie meer toegang te verlenen, kunt u doen door het publiceren van een nieuwe persoonlijke planning voor die klant alleen, of door [onboarding ze voor verdere toegang met behulp van Azure Resource Manager-sjablonen](../how-to/onboard-customer.md).
+Met open bare abonnementen kunt u uw services promo veren tot nieuwe klanten. Dit zijn doorgaans handiger wanneer u alleen beperkte toegang tot de Tenant van de klant nodig hebt. Zodra u een relatie met een klant tot stand hebt gebracht, kunt u dit doen door een nieuw privé-abonnement alleen voor die klant te publiceren, of door het [onboarding voor meer toegang te geven met Azure resource Manager-sjablonen](../how-to/onboard-customer.md).
 
-Houd er rekening mee dat wanneer een plan is gepubliceerd als openbaar, u deze niet in een particuliere wijzigen. Bovendien beperken u niet van de planning van een openbare beschikbaarheid voor bepaalde klanten of zelfs naar een bepaald aantal klanten, maar u dat het plan volledig verkopen voorkomen kunt als u ervoor kiest om dit te doen.
+Houd er rekening mee dat wanneer een plan als openbaar is gepubliceerd, u het niet kunt wijzigen in persoonlijk. Daarnaast kunt u de beschik baarheid van een openbaar abonnement voor bepaalde klanten of zelfs voor een bepaald aantal klanten niet beperken, hoewel u de verkoop van het abonnement niet helemaal als u kiest.
 
-Indien van toepassing, kunt u plannen voor openbare en persoonlijke opnemen in de dezelfde aanbieding.
+Indien nodig kunt u zowel open bare als privé-abonnementen in dezelfde aanbieding toevoegen.
 
-## <a name="publish-managed-service-offers"></a>Beheerde service-aanbiedingen publiceren
+## <a name="publish-managed-service-offers"></a>Aanbiedingen voor beheerde services publiceren
 
-Zie voor informatie over het publiceren van een aanbieding van beheerde services, [een Managed Services-aanbieding publiceren op Azure Marketplace](../how-to/publish-managed-services-offers.md). Raadpleeg voor algemene informatie over het publiceren op Azure Marketplace met behulp van de Cloud Partner-Portal [Azure Marketplace en AppSource Publicatiehandleiding voor](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) en [Azure beheren en de AppSource-Marketplace-aanbiedingen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers).
+Zie [een Managed Services-aanbieding naar Azure Marketplace publiceren](../how-to/publish-managed-services-offers.md)voor meer informatie over het publiceren van een managed services-aanbod. Voor algemene informatie over publiceren naar Azure Marketplace met behulp van de Cloud Partner-portal raadpleegt u [Azure Marketplace en AppSource Publishing Guide](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) en [beheert u Azure en AppSource Marketplace-aanbiedingen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Azure Resourcemanagement overgedragen](azure-delegated-resource-management.md) en [ervaringen voor cross-tenant](cross-tenant-management-experience.md).
-- [Publiceren van aanbiedingen van beheerde services](../how-to/publish-managed-services-offers.md) op Azure Marketplace.
+- Meer informatie over [Azure delegated resource management](azure-delegated-resource-management.md) en [Cross-Tenant beheer ervaring](cross-tenant-management-experience.md).
+- [Publiceer Managed Services aanbiedingen](../how-to/publish-managed-services-offers.md) voor Azure Marketplace.

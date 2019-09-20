@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 120b5606dd6b6f4451b563843f112bd614341eac
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 94c2ac1d662851b5a0b44ec475becb5f5e0403c4
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914792"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146384"
 ---
 # <a name="bulk-download-members-of-a-group-preview-in-azure-active-directory"></a>Leden van een groep (preview) bulksgewijs downloaden in Azure Active Directory
 
@@ -26,10 +26,6 @@ Met Azure Active Directory-Portal (Azure AD) kunt u de leden van een groep in uw
 
 > [!NOTE]
 > Bulk bewerkingen van Azure AD zijn een open bare preview-functie van Azure AD en zijn beschikbaar in elk betaald licentie abonnement voor Azure AD. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de voor waarden voor Preview-versies.
-
-## <a name="bulk-download-service-limits"></a>Service limieten bulksgewijs downloaden
-
-Elke bulk activiteit voor het downloaden van een lijst met groeps leden kan Maxi maal één uur worden uitgevoerd. Zo kunt u een lijst van ten minste 500.000 leden downloaden.
 
 ## <a name="to-bulk-download-group-membership"></a>Groepslid maatschap bulksgewijs downloaden
 
@@ -45,6 +41,10 @@ Elke bulk activiteit voor het downloaden van een lijst met groeps leden kan Maxi
 U kunt de status van al uw bulk aanvragen in behandeling bekijken op de pagina **resultaten van bulk bewerking (preview)** .
 
    ![Op de pagina resultaten van bulk bewerking wordt de status van de bulksgewijze aanvraag weer gegeven](./media/groups-bulk-download-members/bulk-center.png)
+
+## <a name="bulk-download-service-limits"></a>Service limieten bulksgewijs downloaden
+
+Elke bulk activiteit voor het downloaden van een lijst met groeps leden kan Maxi maal één uur worden uitgevoerd. Zo kunt u een lijst met ten minste 500.000 leden downloaden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: juliako
-ms.openlocfilehash: a30fa858ea7befa2363e0ac2742e16d46037d0e0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
-ms.translationtype: HT
+ms.openlocfilehash: a4b7ccf6ece8ed40d6f6c6a22410d4bbe99e590a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123512"
+ms.locfileid: "71146477"
 ---
 # <a name="what-is-video-indexer"></a>Wat is Video Indexer?
 
@@ -54,10 +54,13 @@ Hieronder ziet u de lijst met inzichten die u kunt ophalen uit uw Video's met Vi
 * **Black frame-detectie**: Identificeert zwarte frames die in de video worden weer gegeven.
 * **Extractie van keyframe**: Detecteert stabiele keyframes in een video.
 * **Rollend tegoed**: Identificeer het begin en het einde van de roulerende tegoeden aan het einde van TV-Program ma's en films.
+* **Detectie van animatie tekens** (preview): detectie, groepering en herkenning van tekens in inhoud met animatie via integratie met [Cognitive Services aangepast gezichts vermogen](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Zie voor meer informatie [tekst detectie met animatie](animated-characters-recognition.md).
+* **Redactionele afbeeldings type detectie**: Tags maken op basis van het type (zoals grote opname, middel grote opnamen, close-up, bijna sluiten, twee Foto's, meerdere personen, buiten en binnen, enzovoort). Zie [redactionele shot type Detection](scenes-shots-keyframes.md#editorial-shot-type-detection)(Engelstalig) voor meer informatie.
 
 ### <a name="audio-insights"></a>Audio inzichten
 
 * **Automatische taal detectie**: Identificeert automatisch de taal voor de dominante spraak. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Chinees (vereenvoudigd), Japans, Russisch en Portugees (Brazilië). Als de taal niet met vertrouwen kan worden geïdentificeerd Video Indexer, wordt ervan uitgegaan dat de gesp roken taal Engels is. Zie [Language Identification model (Engelstalig)](language-identification-model.md)voor meer informatie.
+* **Meertalige spraak-identificatie en transcriptie** (preview-versie): Identificeert automatisch de gesp roken taal in verschillende segmenten van de audio, waarbij elk segment van het Media bestand dat moet worden getranscribeerd, wordt verzonden en de transcriptie opnieuw kan worden gecombineerd tot één Unified transcriptie. Zie voor meer informatie [automatisch inhoud identificeren en transcriberen in meerdere talen](multi-language-identification-transcription.md).
 * **Audio-transcriptie**: Hiermee converteert u spraak naar tekst in 12 talen en kunt u uitbrei dingen toestaan. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Chinees (vereenvoudigd), Japans, Arabisch, Russisch, Braziliaans Portugees, Hindi en Koreaans.
 * **Ondertiteling**: Hiermee maakt u ondertiteling in drie indelingen: VTT, TTML, SRT.
 * **Verwerking van twee kanalen**: Automatische detectie, afzonderlijke transcripten en samen voegingen op één tijd lijn.
@@ -75,6 +78,7 @@ Hieronder ziet u de lijst met inzichten die u kunt ophalen uit uw Video's met Vi
 Wanneer het indexeren per kanaal gedeeltelijk resultaat voor deze modellen beschikbaar is
 
 * **Extractie van tref woorden**: Extraheert tref woorden uit spraak en visuele tekst.
+* **Extractie van benoemde entiteiten**: Pakt merken, locaties en mensen uit vanuit spraak en visuele tekst via natuurlijke taal verwerking (NLP).
 * **Brands extractie**: Hiermee worden Brands geëxtraheerd uit spraak-en visuele tekst.
 * **Onderwerp**voor demijnren: Hiermee maakt u de belangrijkste onderwerpen van transcripten onduidelijker. De IPTC-taxonomie op 1e niveau is opgenomen.
 * **Artefacten**: Extraheert een uitgebreide set met artefacten van "volgende niveau Details" voor elk model.

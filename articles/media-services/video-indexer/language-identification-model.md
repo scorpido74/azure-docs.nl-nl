@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: 843b92d3fe34d592b39cd86ece447fef2ff9af67
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 729ac9fc7c8ec6a85b3497c51888d3b5a6fc8558
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931115"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147199"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatische identificatie van de gesp roken taal met taal identificatie model
 
@@ -53,7 +53,7 @@ De dominante taal van het model is beschikbaar in de `sourceLanguage` JSON Insig
 * Als de audio andere talen dan de hierboven vermelde lijst bevat, is het resultaat onverwacht.
 * Als video indexer de taal niet kan identificeren met een hoge mate van`>0.6`betrouw baarheid (), is de terugval taal Engels.
 * Er is geen huidige ondersteuning voor een bestand met audio voor gemengde talen. Als de audio gemengde talen bevat, is het resultaat onverwacht. 
-* Audio-Caustic met lage kwaliteit kunnen invloed hebben op de resultaten van het model.
+* Audio van lage kwaliteit kan van invloed zijn op de model resultaten.
 * Het model vereist ten minste één minuut spraak op de audio.
 * Het model is ontworpen om een spontane spreek spraak te herkennen (geen spraak opdrachten, zingen, enzovoort).
 

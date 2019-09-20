@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: 64bf8f5c8de5f56ee1140e91d0472a33b35570cf
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d8cb8fdebb5a7e4bcbc9f979c98085e90ebd4c68
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878805"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147163"
 ---
 # <a name="handling-event-grid-events"></a>Event Grid-gebeurtenissen verwerken
 
@@ -38,6 +38,9 @@ Toepassingen die Media Services gebeurtenissen verwerken, moeten een aantal aanb
 * Controleer ook of de Event type is ingesteld als een voor bereiding op het proces en ga er niet van uit dat alle gebeurtenissen die u ontvangt, de verwachte typen zijn.
 * Velden negeren die u niet begrijpt.  Met deze procedure kunt u de nieuwe functies die in de toekomst kunnen worden toegevoegd, flexibeler maken.
 * Gebruik het voor voegsel ' subject ' en achtervoegsel overeenkomsten om gebeurtenissen te beperken tot een bepaalde gebeurtenis.
+
+> [!NOTE]
+> Gebeurtenissen zijn onderhevig aan de Event Grid [-Service Level Agreement (Sla)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/). Als u gebeurtenis meldingen wilt ontvangen met behulp van Api's, raadpleegt u voor beelden van het gebruik van gebeurtenissen met [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/ContentProtection/BasicAESClearKey) of [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/ContentProtection/BasicAESClearKey).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 104849557a8580e16fa1860b7919d1c0252debe9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 689322614e2cea4e59a5a573b72bfeb2aafda847
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67176430"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71148398"
 ---
 De volgende tabel bevat de limieten die zijn gekoppeld aan de verschillende service lagen S1, S2, S3 en F1. Zie [prijzen van Azure IOT hub](https://azure.microsoft.com/pricing/details/iot-hub/)voor meer informatie over de kosten van elke *eenheid* in elke laag.
 
@@ -38,6 +38,7 @@ De volgende tabel bevat de limieten die van toepassing zijn op IoT Hub resources
 | Maximale grootte van cloud-naar-apparaat bericht |64 kB |
 | Maximale TTL voor cloud-naar-apparaat berichten |2 dagen |
 | Maximumaantal leveringen voor cloud-naar-apparaat <br/> berichten |100 |
+| Maximale wachtrij diepte van Cloud naar apparaat per apparaat |50 |
 | Maximumaantal leveringen voor feedbackberichten <br/> als antwoord op een cloud-naar-apparaat bericht |100 |
 | Maximale TTL voor feedbackberichten <br/> als antwoord op een cloud-naar-apparaat bericht |2 dagen |
 | [Maximale grootte van het dubbele apparaat](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) <br/> (tags, gerapporteerde eigenschappen en gewenste eigenschappen) | 8 kB |
