@@ -5,14 +5,14 @@ services: terraform
 author: neilpeterson
 ms.service: azure
 ms.topic: quickstart
-ms.date: 02/04/2019
+ms.date: 09/20/2019
 ms.author: nepeters
-ms.openlocfilehash: 57ab3fbc584932cb7d08bda76530bbe95ce61a6f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c53f3a31b46f00d3207cd8f47dcfbfa131c03666
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699089"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173514"
 ---
 # <a name="create-a-terraform-configuration-for-azure"></a>Een Terraform-configuratie maken voor Azure
 
@@ -24,7 +24,7 @@ In dit gedeelte maakt u de configuratie voor een Azure Cosmos DB-exemplaar.
 
 Selecteer **Nu uitproberen** om Azure Cloud Shell te openen. Voer vervolgens `code .` uit om de code-editor van Cloud Shell te openen.
 
-```azurecli-interactive
+```bash
 code .
 ```
 
@@ -34,7 +34,7 @@ Deze configuratie modelleert een Azure-resourcegroep, een willekeurig geheel get
 
 Sla het bestand op als `main.tf` wanneer u klaar bent. Dit kunt u doen met behulp van het beletselteken in de rechterbovenhoek van de code-editor.
 
-```azurecli-interactive
+```hcl
 resource "azurerm_resource_group" "vote-resource-group" {
   name     = "vote-resource-group"
   location = "westus"
@@ -67,7 +67,7 @@ resource "azurerm_cosmosdb_account" "vote-cosmos-db" {
 
 Met de opdracht [terraform init](https://www.terraform.io/docs/commands/init.html) wordt de werkmap geïnitialiseerd. Voer `terraform init` uit in de terminal van Cloud Shell om voorbereidingen te treffen voor de implementatie van de nieuwe configuratie.
 
-```azurecli-interactive
+```bash
 terraform init
 ```
 
@@ -75,13 +75,13 @@ De opdracht [terraform plan](https://www.terraform.io/docs/commands/plan.html) k
 
 Voer `terraform plan` uit om de nieuwe Terraform-configuratie te testen.
 
-```azurecli-interactive
+```bash
 terraform plan --out plan.out
 ```
 
 Pas de configuratie toe met behulp van [terraform apply](https://www.terraform.io/docs/commands/apply.html) en geef hierbij de naam van het plan-bestand op. Met deze opdracht worden de resources geïmplementeerd in uw Azure-abonnement.
 
-```azurecli-interactive
+```bash
 terraform apply plan.out
 ```
 
@@ -98,7 +98,7 @@ Er worden twee omgevingsvariabelen ingesteld: `COSMOS_DB_ENDPOINT` en `COSMOS_DB
 
 De configuratie omvat ook een uitvoerblok, dat de volledig gekwalificeerde domeinnaam (FQDN) van het containerexemplaar retourneert.
 
-```azurecli-interactive
+```hcl
 resource "azurerm_container_group" "vote-aci" {
   name                = "vote-aci"
   location            = "${azurerm_resource_group.vote-resource-group.location}"
@@ -134,13 +134,13 @@ output "dns" {
 
 Voer `terraform plan` uit om het bijgewerkte plan te maken en de benodigde wijzigingen te visualiseren. Als het goed is, ziet u dat er een resource voor een Azure Container Instance is toegevoegd aan de configuratie.
 
-```azurecli-interactive
+```bash
 terraform plan --out plan.out
 ```
 
 Voer ten slotte `terraform apply` uit om de configuratie toe te passen.
 
-```azurecli-interactive
+```bash
 terraform apply plan.out
 ```
 
@@ -156,7 +156,7 @@ Navigeer naar de FQDN van het containerexemplaar. Als alles goed is geconfiguree
 
 Wanneer u klaar bent, kunt u de Azure-resources en de resourcegroep verwijderen met behulp van de opdracht [terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
 
-```azurecli-interactive
+```bash
 terraform destroy -auto-approve
 ```
 

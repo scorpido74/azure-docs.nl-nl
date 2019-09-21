@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 85c2607ae163ab2d29a53440cd65672bdbe0fddf
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6ed6e21f16287148c8764dd98bda378451440e58
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985348"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172782"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weer gaven 
 De gerealiseerde weer gaven in Azure SQL Data Warehouse bieden een lage onderhouds methode voor complexe analytische query's om snelle prestaties te krijgen zonder dat er query's worden gewijzigd. In dit artikel vindt u de algemene richt lijnen voor het gebruik van gerealiseerde weer gaven.
@@ -84,19 +84,21 @@ Hier volgt de algemene richt lijnen voor het gebruik van gerealiseerde weer gave
 
 **Ontwerpen voor uw workload**
 
-- Voordat u begint met het maken van gerealiseerde weer gaven, is het belang rijk dat u een grondige uitleg krijgt van uw werk belasting in termen van query patronen, urgentie, frequentie en de grootte van de resulterende gegevens.  
+Voordat u begint met het maken van gerealiseerde weer gaven, is het belang rijk dat u een grondige uitleg krijgt van uw werk belasting in termen van query patronen, urgentie, frequentie en de grootte van de resulterende gegevens.  
 
-- Gebruikers kunnen UITLEGGEN WITH_RECOMMENDATIONS < SQL_statement-> uitvoeren voor de gerealiseerde weer gaven die worden aanbevolen door de query Optimizer.  Omdat deze aanbevelingen specifiek zijn voor query's, is het mogelijk dat een gerealiseerde weer gave die één query voordoet, niet optimaal is voor andere query's in dezelfde werk belasting.  Bekijk deze aanbevelingen met betrekking tot uw workload behoeften.  De ideale gerealiseerde weer gaven zijn die voor de prestaties van de werk belasting.  
+Gebruikers kunnen UITLEGGEN WITH_RECOMMENDATIONS < SQL_statement-> uitvoeren voor de gerealiseerde weer gaven die worden aanbevolen door de query Optimizer.  Omdat deze aanbevelingen specifiek zijn voor query's, is het mogelijk dat een gerealiseerde weer gave die één query voordoet, niet optimaal is voor andere query's in dezelfde werk belasting.  Bekijk deze aanbevelingen met betrekking tot uw workload behoeften.  De ideale gerealiseerde weer gaven zijn die voor de prestaties van de werk belasting.  
 
 **Houd rekening met de verhouding tussen snellere query's en de kosten** 
 
-- Voor elke gerealiseerde weer gave zijn er kosten voor opslag en kosten voor het weer geven van onderhoud door de tuple-overschakeling. Er is één tupleset per Azure SQL Data Warehouse Server-exemplaar.  Wanneer er te veel gerealiseerde weer gaven zijn, neemt de werk belasting van de tuple-overzetten toe en de prestaties van query's die gebruikmaken van gerealiseerde weer gaven kunnen worden gedegradeerd als tuple-overzetten gegevens niet snel genoeg kan verplaatsen naar index segmenten.  Gebruikers moeten controleren of de kosten die zijn gemaakt voor alle gerealiseerde weer gaven, kunnen worden gecompenseerd door de prestatie verbetering van de query.  Voer deze query uit voor de lijst met gerealiseerde weer gaven in een Data Base: 
+Voor elke gerealiseerde weer gave zijn er kosten voor de gegevens opslag en de kosten voor het onderhouden van de weer gave.  Naarmate gegevens wijzigingen in basis tabellen worden aangebracht, neemt de grootte van de gerealiseerde weer gave toe en wordt de fysieke structuur ook gewijzigd.  Om te voor komen dat de prestaties van query's worden vertraagd, wordt elke gerealiseerde weer gave afzonderlijk beheerd door de Data Warehouse-engine, inclusief het verplaatsen van rijen uit het Delta archief naar de column store-index segmenten en het consolideren van gegevens wijzigingen.  De werk belasting van de onderhouds taken is hoger wanneer het aantal gerealiseerde weer gaven en basis tabel wijzigingen toeneemt.   Gebruikers moeten controleren of de kosten die zijn gemaakt voor alle gerealiseerde weer gaven, kunnen worden gecompenseerd door de prestatie verbetering van de query.  
+
+U kunt deze query uitvoeren voor de lijst met gerealiseerde weer gaven in een Data Base: 
 
 ```sql
 SELECT V.name as materialized_view, V.object_id 
 FROM sys.views V 
 JOIN sys.indexes I ON V.object_id= I.object_id AND I.index_id < 2;
-```
+``` 
 
 Opties om het aantal gerealiseerde weer gaven te verminderen: 
 

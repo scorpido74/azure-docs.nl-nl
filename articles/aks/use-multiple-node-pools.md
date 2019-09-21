@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 92accf4317ef8d0e3837ce3789615b5aaf6f6919
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 7a58e8559587ddcb307c338f5ce87cd6b8e52021
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996902"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171507"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Voor beeld: meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
@@ -79,6 +79,7 @@ De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en behe
 * U kunt de standaard-knooppunt groep (First) niet verwijderen.
 * De invoeg toepassing voor het routeren van HTTP-toepassingen kan niet worden gebruikt.
 * U kunt geen knooppunt groepen toevoegen of verwijderen met behulp van een bestaande resource manager-sjabloon, net als bij de meeste bewerkingen. In plaats daarvan [kunt u een afzonderlijke resource manager-sjabloon gebruiken](#manage-node-pools-using-a-resource-manager-template) om wijzigingen aan te brengen in knooppunt groepen in een AKS-cluster.
+* De naam van een knooppunt groep moet beginnen met een kleine letter en mag alleen alfanumerieke tekens bevatten. Voor Linux-knooppunt Pools moet de lengte tussen 1 en 12 tekens lang zijn voor Windows-knooppunt groepen. de lengte moet tussen 1 en 6 tekens lang zijn.
 
 Hoewel deze functie in preview is, zijn de volgende extra beperkingen van toepassing:
 
@@ -130,6 +131,9 @@ az aks nodepool add \
     --node-count 3 \
     --kubernetes-version 1.12.7
 ```
+
+> [!NOTE]
+> De naam van een knooppunt groep moet beginnen met een kleine letter en mag alleen alfanumerieke tekens bevatten. Voor Linux-knooppunt Pools moet de lengte tussen 1 en 12 tekens lang zijn voor Windows-knooppunt groepen. de lengte moet tussen 1 en 6 tekens lang zijn.
 
 Als u de status van de knooppunt groepen wilt weer geven, gebruikt u de opdracht [AZ AKS node pool List][az-aks-nodepool-list] en geeft u de resource groep en de naam van het cluster op:
 
@@ -580,8 +584,8 @@ Het kan een paar minuten duren voordat u uw AKS-cluster bijwerkt, afhankelijk va
 
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Een openbaar IP-adres per knoop punt in een knooppunt groep toewijzen
 
-> [!NOTE]
-> Tijdens de preview van het toewijzen van een openbaar IP-adres per knoop punt, kan het niet worden gebruikt met de *Standard load BALANCER SKU in AKS* vanwege mogelijke Load Balancer regels die conflicteren met de inrichting van de virtuele machine. In het voor beeld wordt de *Basic Load BALANCER SKU* gebruikt als u een openbaar IP-adres per knoop punt moet toewijzen.
+> [!WARNING]
+> Tijdens de preview van het toewijzen van een openbaar IP-adres per knoop punt, kan het niet worden gebruikt met de *Standard load BALANCER SKU in AKS* vanwege mogelijke Load Balancer regels die conflicteren met de inrichting van de virtuele machine. In de preview-versie moet u de *Basic Load BALANCER SKU* gebruiken als u een openbaar IP-adres per knoop punt moet toewijzen.
 
 AKS-knoop punten vereisen geen eigen open bare IP-adressen voor communicatie. Het kan echter voor komen dat knoop punten in een knooppunt groep hun eigen open bare IP-adressen hebben. Een voor beeld is gaming, waarbij een-console een directe verbinding moet maken met een virtuele machine in de cloud om hops te minimaliseren. Dit kan worden bereikt door te registreren voor een afzonderlijke preview-functie, open bare IP-adres (preview) van het knoop punt.
 

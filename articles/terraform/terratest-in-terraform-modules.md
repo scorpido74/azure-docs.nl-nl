@@ -8,18 +8,18 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 03/19/2019
-ms.openlocfilehash: 9d621905122ab7bf64432323d7d11cf8f1b50750
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 637bb01bff625989e392d5d711ebd5cdef5c0e09
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888368"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169642"
 ---
 # <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Terraform-modules testen in Azure met behulp van Terratest
 
 > [!NOTE]
-> De voorbeeldcode in dit artikel werkt niet met versie 0,12 (en hoger).
+> De voorbeeld code in dit artikel werkt niet met versie 0,12 (en hoger).
 
 U kunt Azure Terraform-modules gebruiken om herbruikbare, samenstelbare en testbare onderdelen te maken. Terraform-modules maken gebruik van inkapseling, wat handig is bij het implementeren van infrastructuur terwijl de code wordt uitgevoerd.
 

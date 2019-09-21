@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 09/16/2019
+ms.date: 09/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: 63358923dae22a2547d7946cd10ca2a3f02e33a5
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: dc80638bfafbd0ade17fe355c5dcbac58d4ff24e
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122816"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172506"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute
 
@@ -40,19 +40,19 @@ U hebt toegang tot Azure-services in alle regio's binnen een geopolitieke regio 
 ## <a name="locations"></a>Azure-regio's naar ExpressRoute-locaties binnen een geopolitieke regio.
 In de volgende tabel vindt u een toewijzing van Azure-regio's aan ExpressRoute-locaties binnen een geopolitieke regio.
 
-| **Geopolitieke regio** | **Zone** | **Azure-regio's** | **ExpressRoute-locaties** |
-| --- | --- | --- | --- |
-| **Australië - overheid** | 1 | Australië Centraal, Australië Centraal 2 |Canberra, Canberra2 |
-| **Europa** | 1 |Frankrijk - centraal, Frankrijk - zuid, Europa - noord, Europa - west, VK - west, VK - zuid |Amsterdam, Amsterdam2, kopen Hagen, Dublin, Frankfurt, Londen, London2, Marseille, Newport (Wales), Parijs, Stockholm, Zürich |
-| **Noord-Amerika** | 1 |US - oost, US - west, US - oost 2, US - west 2, US - centraal, US - zuid-centraal, US - noord-centraal, US - west-centraal, Canada Centraal, Canada Oost |Atlanta, Chicago, Amsterdam, Denver, Las Miami, Los Angeles,, New York, San Antonio, Seattle, Silicon dal, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec, Amsterdam |
-| **Azië** | 2 |Azië - oost, Azië - zuidoost |Hong Kong SAR, Kuala Lumpur, Singapore, Singapore2, Taipei |
-| **India** | 2 |India - west, India - centraal, India - zuid |Chennai, Chennai2, Mumbai, Mumbai2 |
-| **Japan** | 2 |Japan - west, Japan - oost |Osaka, Tokio |
-| **Oceania** | 2 |Australië - zuidoost, Australië - oost |Auckland, Melbourne, Perth, Sydney |
-| **Zuid-Korea** | 2 |Korea Centraal, Korea Zuid |Busan, Seoul|
-| **VAE** | 3 | UAE-centraal, UAE-noord | Dubai, Dubai2 |
-| **Zuid-Afrika** | 3 |Zuid-Afrika-west, Zuid-Afrika-noord |Kaapstad, Johannesburg |
-| **Zuid-Amerika** | 3 |Brazilië - zuid |Sao Paulo |
+| **Geopolitieke regio** | **Azure-regio's** | **ExpressRoute-locaties** |
+| --- | --- | --- |
+| **Australië - overheid** |Australië Centraal, Australië Centraal 2 |Canberra, Canberra2 |
+| **Europa** | Frankrijk - centraal, Frankrijk - zuid, Europa - noord, Europa - west, VK - west, VK - zuid |Amsterdam, Amsterdam2, kopen Hagen, Dublin, Frankfurt, Londen, London2, Marseille, Newport (Wales), Parijs, Stockholm, Zürich |
+| **Noord-Amerika** |US - oost, US - west, US - oost 2, US - west 2, US - centraal, US - zuid-centraal, US - noord-centraal, US - west-centraal, Canada Centraal, Canada Oost |Atlanta, Chicago, Amsterdam, Denver, Las Miami, Los Angeles,, New York, San Antonio, Seattle, Silicon dal, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec, Amsterdam |
+| **Azië** | Azië - oost, Azië - zuidoost |Hong Kong SAR, Kuala Lumpur, Singapore, Singapore2, Taipei |
+| **India** | India - west, India - centraal, India - zuid |Chennai, Chennai2, Mumbai, Mumbai2 |
+| **Japan** | Japan - west, Japan - oost |Osaka, Tokio |
+| **Oceania** | Australië - zuidoost, Australië - oost |Auckland, Melbourne, Perth, Sydney |
+| **Zuid-Korea** | Korea Centraal, Korea Zuid |Busan, Seoul|
+| **VAE** | UAE-centraal, UAE-noord | Dubai, Dubai2 |
+| **Zuid-Afrika** | Zuid-Afrika-west, Zuid-Afrika-noord |Kaapstad, Johannesburg |
+| **Zuid-Amerika** | Brazilië - zuid |Sao Paulo |
 
 
 ## <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>Regio's en geopolitieke grenzen voor nationale clouds

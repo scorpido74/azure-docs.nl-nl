@@ -3,16 +3,16 @@ title: Meer informatie over het controleren van de inhoud van een machine
 description: Meer informatie over hoe Azure Policy gast configuratie gebruikt voor het controleren van instellingen binnen een Azure-machine.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/04/2019
+ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: bfa7f7486a9fa5ef62e8bf9e01dbe39d675d8d27
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 733b7fd8ef5b302df754fc7299b420739baff153
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308560"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172473"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informatie over Azure Policy Gast-configuratie
 
@@ -130,7 +130,7 @@ Gast configuratie beleid biedt momenteel alleen ondersteuning voor het toewijzen
 
 ## <a name="built-in-resource-modules"></a>Ingebouwde resource modules
 
-Bij de installatie van de gast configuratie-uitbrei ding is de Power shell-module ' GuestConfiguration ' opgenomen in de meest recente versie van DSC-resource modules. Deze module kan vanuit de PowerShell Gallery worden gedownload met behulp van de koppeling hand matig downloaden van de module pagina [GuestConfiguration/](https://www.powershellgallery.com/packages/GuestConfiguration/).
+Bij de installatie van de gast configuratie-uitbrei ding is de Power shell-module ' GuestConfiguration ' opgenomen in de meest recente versie van DSC-resource modules. Deze module kan vanuit de PowerShell Gallery worden gedownload met behulp van de koppeling hand matig downloaden van de module pagina [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/).
 De bestands indeling '. nupkg ' kan worden gewijzigd in '. zip ' om deze te decomprimeren en te controleren.
 
 ## <a name="client-log-files"></a>Client logboek bestanden
@@ -175,7 +175,7 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 Voor beelden voor beleids gast configuratie zijn beschikbaar op de volgende locaties:
 
 - [Voor beelden van index-gast configuratie](../samples/index.md#guest-configuration)
-- [Azure Policy-voor beelden github opslag plaats](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration).
+- [Azure Policy-voor beelden GitHub opslag plaats](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)
 
 ## <a name="next-steps"></a>Volgende stappen
 

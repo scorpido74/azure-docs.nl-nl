@@ -2,29 +2,29 @@
 title: bestand opnemen
 description: bestand opnemen
 services: virtual-machines-linux
-author: dlepow
+author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 12/21/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: bca78e2963f19b60071b1b27c8dc65c76818e10e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3f9b86dd3716a25ab95265cf46b616144f57163b
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176045"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168618"
 ---
 ## <a name="overview-of-ssh-and-keys"></a>Overzicht van SSH en sleutels
 
-[SSH](https://www.ssh.com/ssh/) is een versleutelde verbinding-protocol waarmee veilige aanmeldingen via niet-beveiligde verbindingen. SSH is het standaardprotocol voor de verbinding voor virtuele Linux-machines die worden gehost in Azure. Hoewel SSH zelf voorziet in een versleutelde verbinding, maakt met behulp van wachtwoorden met SSH-verbindingen nog steeds de virtuele machine kwetsbaar voor brute-force-aanvallen of te raden van wachtwoorden. Een veiliger en voorkeurs-methode van de verbinding te maken met een virtuele machine via SSH is met behulp van een openbaar / persoonlijk sleutelpaar, ook wel bekend als *SSH-sleutels*. 
+[SSH](https://www.ssh.com/ssh/) is een versleuteld verbindings protocol waarmee beveiligde aanmeldingen via niet-beveiligde verbindingen worden toegestaan. SSH is het standaard verbindings protocol voor Linux-Vm's die worden gehost in Azure. Hoewel SSH zelf een versleutelde verbinding biedt, zorgt het gebruik van wacht woorden met SSH-verbindingen ervoor dat de virtuele machine nog steeds kwetsbaar is voor zwakke aanvallen of het raden van wacht woorden. Een veiligere en voorkeurs methode voor het maken van verbinding met een virtuele machine met SSH is door gebruik te maken van een openbaar-persoonlijk sleutel paar, ook wel *SSH-sleutels*genoemd. 
 
-* De *openbare sleutel* op uw Linux-VM of een andere service die u wilt gebruiken met openbare-sleutelcryptografie is geplaatst.
+* De *open bare sleutel* wordt op uw virtuele Linux-machine geplaatst of op een andere service die u wilt gebruiken met crypto grafie met een open bare sleutel.
 
-* De *privésleutel* blijft op uw lokale systeem. Houd deze privésleutel geheim. Deel deze niet.
+* De *persoonlijke sleutel* blijft op het lokale systeem. Houd deze privésleutel geheim. Deel deze niet.
 
-Als u een SSH-client gebruiken om verbinding maken met uw Linux-VM (met de openbare sleutel), de externe virtuele machine, test de client om te controleren of deze beschikt over de persoonlijke sleutel. Als de client de persoonlijke sleutel heeft, krijgt het toegang tot de virtuele machine. 
+Wanneer u een SSH-client gebruikt om verbinding te maken met uw virtuele Linux-machine (die beschikt over de open bare sleutel), test de externe VM de client om te controleren of deze de persoonlijke sleutel bezit. Als de client de persoonlijke sleutel heeft, wordt de toegang tot de virtuele machine verleend. 
 
-Afhankelijk van het beveiligingsbeleid van uw organisatie, kunt u een enkel openbaar / persoonlijk sleutelpaar voor toegang tot meerdere Azure-VM's en services opnieuw gebruiken. U hoeft niet een afzonderlijke combinatie van sleutel voor elke virtuele machine of service die u wilt openen. 
+Afhankelijk van het beveiligings beleid van uw organisatie, kunt u één enkel openbaar persoonlijk sleutel paar gebruiken om toegang te krijgen tot meerdere Azure-Vm's en-services. U hebt geen afzonderlijk paar sleutels nodig voor elke VM of service die u wilt gebruiken. 
 
-Uw openbare sleutel kan worden gedeeld met iedereen, maar alleen u (of uw lokale beveiligingsinfrastructuur) moet beschikken over uw persoonlijke sleutel.
+Uw open bare sleutel kan worden gedeeld met iedereen, maar alleen u (of uw lokale beveiligings infrastructuur) moet uw persoonlijke sleutel hebben.

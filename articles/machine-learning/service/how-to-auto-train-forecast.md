@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 5339d963b84c5922138d53e44abe9340d55b4dde
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 03c5d46221dc385a390e840381270c01c40bdc6d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130237"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170400"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisch een time-series-prognose model trainen
 
@@ -95,8 +95,10 @@ Het `AutoMLConfig` object definieert de instellingen en gegevens die nodig zijn 
 |`time_column_name`|Wordt gebruikt om de kolom datetime op te geven in de invoer gegevens die worden gebruikt voor het bouwen van de tijd reeks en het uitstellen van de frequentie.|✓|
 |`grain_column_names`|Naam (en) die afzonderlijke reeks groepen in de invoer gegevens definiëren. Als korrel niet is gedefinieerd, wordt ervan uitgegaan dat de gegevensset één keer wordt gebruikt.||
 |`max_horizon`|Definieert de maximale gewenste prognose horizon in eenheden van de time-series. Eenheden zijn gebaseerd op het tijds interval van uw trainings gegevens, bijvoorbeeld maandelijks, wekelijks dat de Forecaster moet voors pellen.|✓|
-|`target_lags`|Het aantal rijen dat de doel waarden moeten worden vertraagd op basis van de frequentie van de gegevens. Dit wordt weer gegeven als een lijst of één geheel getal.||
-|`target_rolling_window_size`|*n* historische Peri Oden die moeten worden gebruikt voor het genereren van prognose waarden, < = grootte van de Trainingsset. Als u dit weglaat, is *n* de volledige grootte van de Trainingsset.||
+|`target_lags`|Het aantal rijen dat de doel waarden moeten worden vertraagd op basis van de frequentie van de gegevens. Dit wordt weer gegeven als een lijst of één geheel getal. Er moet een vertraging worden gebruikt wanneer de relatie tussen de onafhankelijke variabelen en de afhankelijke variabele niet standaard overeenkomen of correleren. Wanneer u bijvoorbeeld de vraag voor een product wilt voors pellen, is de vraag in elke maand mogelijk afhankelijk van de prijs van specifieke producten 3 maanden vóór. In dit voor beeld wilt u mogelijk het doel (de vraag) met drie maanden uitsteld, zodat het model op de juiste relatie wordt getraind.||
+|`target_rolling_window_size`|*n* historische Peri Oden die moeten worden gebruikt voor het genereren van prognose waarden, < = grootte van de Trainingsset. Als u dit weglaat, is *n* de volledige grootte van de Trainingsset. Geef deze para meter op als u alleen een bepaalde hoeveelheid geschiedenis wilt beschouwen bij het trainen van het model.||
+
+Raadpleeg de [referentie documentatie](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) voor meer informatie.
 
 Maak de instellingen voor de tijd reeks als een woordenlijst object. Stel de `time_column_name` in op `day_datetime` het veld in de gegevensset. Definieer de `grain_column_names` para meter om ervoor te zorgen dat er **twee afzonderlijke tijdreeks groepen** worden gemaakt voor de gegevens. een voor Store A en B. Tenslotte `max_horizon` stelt u de 50 in op om te voors pellen op de hele testset. Stel een venster voor een prognose in op `target_rolling_window_size`10 Peri Oden met, en geef een enkele vertraging op voor de doel waarden voor `target_lags` twee Peri Oden vóór de para meter.
 

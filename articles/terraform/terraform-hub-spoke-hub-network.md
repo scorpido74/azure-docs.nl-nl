@@ -1,47 +1,47 @@
 ---
-title: Een virtuele hub-netwerk maken met Terraform in Azure
-description: Zelfstudie over het maken van een hub VNet in Azure die als een algemene verbindingspunt tussen andere netwerken fungeert ter illustratie
+title: Een hub-virtueel netwerk maken met terraform in azure
+description: Zelf studie illustreert het maken van een hub VNet in azure dat fungeert als een algemeen verbindings punt tussen andere netwerken
 services: terraform
 ms.service: azure
-keywords: terraform, hub en spoke, netwerken, hybride netwerken, devops, virtuele machine, azure, VNet-peering, ster-, hub.
+keywords: terraform, hub en spoke, netwerken, hybride netwerken, devops, virtuele machine, azure, VNet-peering, hub-spoke, hub.
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 5f8d9119ea9caeb598946a384f321fa6f7e14def
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 12538c0348efc1621d3f8f6ee0cb93d73c712898
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884687"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173422"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-with-terraform-in-azure"></a>Zelfstudie: Een virtuele hub-netwerk maken met Terraform in Azure
+# <a name="tutorial-create-a-hub-virtual-network-with-terraform-in-azure"></a>Zelfstudie: Een hub-virtueel netwerk maken met terraform in azure
 
-Het virtuele hub-netwerk (VNet) fungeert als het middelpunt van connectiviteit met de on-premises netwerk. De VNet-hosts gedeelde services die worden gebruikt door de werkbelastingen die worden gehost in het knooppunt VNets. Er is geen gedeelde services worden geïmplementeerd voor deze demo in deze zelfstudie.
+Het virtuele netwerk (VNet) van de hub fungeert als het centrale punt van connectiviteit met het on-premises netwerk. Het VNet fungeert als host voor gedeelde services die worden gebruikt door workloads die worden gehost in de spoke-VNets. Voor demo doeleinden worden geen gedeelde services geïmplementeerd in deze zelf studie.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
-> * HCL (HashiCorp Language) gebruiken voor het implementeren van de hub VNet in hub-spoke-topologie
-> * Hub gaan in het virtuele machine maken met behulp van Terraform
-> * Hub-gateway voor virtueel particulier netwerk maken met behulp van Terraform
-> * Hub- en On-Premises Gateway-verbindingen maken met behulp van Terraform
+> * Gebruik de HCL (HashiCorp Language) voor het implementeren van de hub VNet in hub-spoke-topologie
+> * Terraform gebruiken voor het maken van een virtuele machine voor hub-Jump box
+> * Terraform gebruiken voor het maken van een hub-gateway voor een virtueel particulier netwerk
+> * Terraform gebruiken voor het maken van hub-en on-premises gateway verbindingen
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. [Maken van een hub- en -spokenetwerktopologie hybride met Terraform in Azure](./terraform-hub-spoke-introduction.md).
-1. [On-premises virtueel netwerk maken met Terraform in Azure](./terraform-hub-spoke-on-prem.md).
+1. [Maak een hub-en-spoke hybride netwerk topologie met terraform in azure](./terraform-hub-spoke-introduction.md).
+1. [Maak een on-premises virtueel netwerk met terraform in azure](./terraform-hub-spoke-on-prem.md).
 
 ## <a name="create-the-directory-structure"></a>De directorystructuur maken
 
 Het hub-netwerk bestaat uit de volgende onderdelen:
 
 - Hub-netwerk
-- De virtuele netwerkgateway hub
+- Hub van virtuele netwerk gateway
 - Hub gateway-verbindingen 
 
-De volgende Terraform-configuratiebestand definieert de resources:
+Het volgende terraform-configuratie bestand definieert de resources:
 
 1. Blader naar de [Azure-portal](https://portal.azure.com).
 
@@ -61,9 +61,9 @@ De volgende Terraform-configuratiebestand definieert de resources:
     cd hub-spoke
     ```
 
-## <a name="declare-the-hub-vnet"></a>De hub VNet declareren
+## <a name="declare-the-hub-vnet"></a>De hub-VNet declareren
 
-Maak het Terraform-configuratiebestand dat virtuele Hub-netwerk verklaart.
+Maak het terraform-configuratie bestand dat het virtuele hub-netwerk declareert.
 
 1. Maak in Cloud Shell een bestand met de naam `hub-vnet.tf`.
 
@@ -73,7 +73,7 @@ Maak het Terraform-configuratiebestand dat virtuele Hub-netwerk verklaart.
 
 1. Plak de volgende code in de editor:
 
-    ```JSON
+    ```hcl
     locals {
       prefix-hub         = "hub"
       hub-location       = "CentralUS"
@@ -234,4 +234,4 @@ Maak het Terraform-configuratiebestand dat virtuele Hub-netwerk verklaart.
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Een virtueel netwerkapparaat hub maken met Terraform in Azure](./terraform-hub-spoke-hub-nva.md))
+> [Een hub virtueel netwerk apparaat maken met terraform in azure](./terraform-hub-spoke-hub-nva.md))

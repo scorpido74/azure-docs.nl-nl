@@ -3,7 +3,7 @@ title: Terraform installeren en configureren om Azure-resources in te richten | 
 description: Meer informatie over het installeren en configureren van terraform voor het maken van Azure-resources
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: echuvyrov
+author: tomarchermsft
 manager: gwallace
 editor: na
 tags: azure-resource-manager
@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/17/2019
+ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: cd6052db1328fce5ef1a846fbab94fd7066079f6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: cd3c8d7d862788f626356b4cfcdccccca36227b3
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090725"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168731"
 ---
 # <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Terraform installeren en configureren om Azure-resources in te richten
  
@@ -37,7 +37,7 @@ Als u terraform wilt installeren, [downloadt](https://www.terraform.io/downloads
 
 Controleer de configuratie van het pad `terraform` met de opdracht. Er wordt een lijst met beschik bare terraform-opties weer gegeven, zoals in de volgende voorbeeld uitvoer:
 
-```bash
+```console
 azureuser@Azure:~$ terraform
 Usage: terraform [--version] [--help] <command> [args]
 ```
@@ -94,7 +94,7 @@ export ARM_ENVIRONMENT=public
 
 Maak een bestand `test.tf` in een lege map en plak het volgende script.
 
-```tf
+```hcl
 provider "azurerm" {
 }
 resource "azurerm_resource_group" "rg" {
@@ -111,7 +111,7 @@ terraform init
 
 De uitvoer lijkt op die in het volgende voorbeeld:
 
-```bash
+```console
 * provider.azurerm: version = "~> 0.3"
 
 Terraform has been successfully initialized!
@@ -125,7 +125,7 @@ terraform apply
 
 De uitvoer lijkt op die in het volgende voorbeeld:
 
-```bash
+```console
 An execution plan has been generated and is shown below.
 Resource actions are indicated with the following symbols:
   + create

@@ -1,6 +1,6 @@
 ---
-title: On-premises virtueel netwerk maken met Terraform in Azure
-description: Zelfstudie ter illustratie van een on-premises VNet implementeren in Azure met lokale bronnen
+title: On-premises virtueel netwerk maken met terraform in azure
+description: Zelf studie waarin wordt uitgelegd hoe u een on-premises VNet in azure implementeert dat lokale bronnen bevat
 services: terraform
 ms.service: azure
 keywords: terraform, hub en spoke, netwerken, hybride netwerken, devops, virtuele machine, azure, VNet-peering, on-premises
@@ -8,33 +8,33 @@ author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 435ee13de28fb1591a5579761ecc7ad5bf9f9d76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 98c7c2450b4aa828f544ecab4c1e320eb74bab45
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888683"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169783"
 ---
-# <a name="tutorial-create-on-premises-virtual-network-with-terraform-in-azure"></a>Zelfstudie: On-premises virtueel netwerk maken met Terraform in Azure
+# <a name="tutorial-create-on-premises-virtual-network-with-terraform-in-azure"></a>Zelfstudie: On-premises virtueel netwerk maken met terraform in azure
 
-In deze zelfstudie implementeert u een on-premises netwerk met behulp van een Azure-netwerk (VNet). Een Azure-VNet kan worden vervangen door uw eigen privé virtueel netwerk. Om dit te doen, de juiste IP-adressen in de subnetten worden toegewezen.
+In deze zelf studie implementeert u een on-premises netwerk met behulp van een virtueel Azure-netwerk (VNet). Een Azure-VNet kan worden vervangen door uw eigen particuliere virtuele netwerk. U doet dit door de juiste IP-adressen toe te wijzen aan de subnetten.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
-> * HCL (HashiCorp Language) gebruiken voor het implementeren van een on-premises VNet in hub-spoke-topologie
-> * Netwerk van de hub apparaat-resources maken met behulp van Terraform
-> * On-premises virtuele machine maken met behulp van Terraform
-> * On-premises VPN-gateway maken met behulp van Terraform
+> * Gebruik de HCL (HashiCorp Language) voor het implementeren van een on-premises VNet in hub-spoke-topologie
+> * Terraform gebruiken om resources van het netwerk apparaat te maken
+> * Terraform gebruiken voor het maken van een on-premises virtuele machine
+> * Terraform gebruiken voor het maken van een on-premises virtuele particuliere netwerk gateway
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. [Maken van een hub- en -spokenetwerktopologie hybride met Terraform in Azure](./terraform-hub-spoke-introduction.md).
+1. [Maak een hub-en-spoke hybride netwerk topologie met terraform in azure](./terraform-hub-spoke-introduction.md).
 
 ## <a name="create-the-directory-structure"></a>De directorystructuur maken
 
-Om te simuleren van een on-premises netwerk, moet u een Azure-netwerk maken. De demo VNet gebruikt in plaats van een werkelijke persoonlijke on-premises netwerk. Als u wilt hetzelfde doen met uw bestaande on-premises netwerk, de juiste IP-adressen in de subnetten worden toegewezen.
+Als u een on-premises netwerk wilt simuleren, maakt u een virtueel Azure-netwerk. De demo VNet neemt de plaats van een echt privé on-premises netwerk. Als u hetzelfde wilt doen met uw bestaande on-premises netwerk, wijst u de juiste IP-adressen toe aan de subnetten.
 
 1. Blader naar de [Azure-portal](https://portal.azure.com).
 
@@ -56,9 +56,9 @@ Om te simuleren van een on-premises netwerk, moet u een Azure-netwerk maken. De 
 
 ## <a name="declare-the-on-premises-vnet"></a>De on-premises VNet declareren
 
-Maak het Terraform-configuratiebestand dat een on-premises VNet worden gedeclareerd.
+Maak het terraform-configuratie bestand dat een on-premises VNet declareert.
 
-1. Open een nieuw bestand met de naam in Cloud Shell `on-prem.tf`.
+1. Open in Cloud Shell een nieuw bestand met de `on-prem.tf`naam.
 
     ```bash
     code on-prem.tf
@@ -66,7 +66,7 @@ Maak het Terraform-configuratiebestand dat een on-premises VNet worden gedeclare
 
 1. Plak de volgende code in de editor:
 
-    ```JSON
+    ```hcl
     locals {
       onprem-location       = "SouthCentralUS"
       onprem-resource-group = "onprem-vnet-rg"
@@ -228,4 +228,4 @@ Maak het Terraform-configuratiebestand dat een on-premises VNet worden gedeclare
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een virtuele hub-netwerk maken met Terraform in Azure](./terraform-hub-spoke-hub-network.md)
+> [Een hub-virtueel netwerk maken met terraform in azure](./terraform-hub-spoke-hub-network.md)

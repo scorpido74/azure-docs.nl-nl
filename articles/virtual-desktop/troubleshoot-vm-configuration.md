@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 08/29/2019
+ms.date: 09/20/2019
 ms.author: helohr
-ms.openlocfilehash: 03a8e8063f1a66b929311f09bf8e20cd4b951e43
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f919ff1efcb094dec4c810f51a1810f2383ea09d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163299"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174114"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tenants en hostpools maken
 
@@ -179,7 +179,7 @@ De Windows-stack voor virtueel bureau blad wordt automatisch geïnstalleerd met 
 
 Er zijn drie belang rijke manieren waarop de side-by-stack wordt geïnstalleerd of ingeschakeld op virtuele machines van de sessiehost:
 
-- Met de Azure Resource Manager nieuwe sjabloon voor het **maken en inrichten van een Windows Virtual Desktop** -hostgroep
+- Met de Azure Resource Manager nieuwe sjabloon voor het **maken en inrichten van een Windows Virtual Desktop-hostgroep**
 - Door in te voegen en in te scha kelen op de master installatie kopie
 - Hand matig geïnstalleerd of ingeschakeld op elke VM (of met uitbrei dingen/Power shell)
 
@@ -296,17 +296,76 @@ Als uw besturings systeem micro soft Windows 10 is, gaat u verder met de onderst
 
 16. Wanneer de cmdlets worden uitgevoerd, start u de VM opnieuw op met de stack-aan-zij die niet goed werkt.
 
-## <a name="remote-licensing-model-is-not-configured"></a>Het externe licentie model is niet geconfigureerd
+## <a name="remote-licensing-model-isnt-configured"></a>Het externe licentie model is niet geconfigureerd
 
-Als u zich met een Administrator-account aanmeldt bij Windows 10 Enter prise multi-session, ontvangt u mogelijk een melding met de tekst ' Extern bureaublad licentie modus is niet geconfigureerd Extern bureaublad-services werkt niet meer over X dagen. Gebruik op de Connection Broker-server Serverbeheer om de Extern bureaublad licentie modus op te geven. " Als u dit bericht ziet, betekent dit dat u de licentie modus hand matig moet configureren op **per gebruiker**.
+Als u zich met een Administrator-account aanmeldt bij Windows 10 Enter prise multi-session, ontvangt u mogelijk een melding met de tekst ' Extern bureaublad licentie modus is niet geconfigureerd Extern bureaublad-services werkt niet meer over X dagen. Gebruik op de Connection Broker-server Serverbeheer om de Extern bureaublad licentie modus op te geven. "
 
-De licentie modus hand matig configureren:  
+Als de tijds limiet verloopt, wordt een fout bericht weer gegeven met de tekst ' de externe sessie is beëindigd omdat er geen Extern bureaublad licenties voor client toegang beschikbaar zijn voor deze computer. '
 
-1. Ga naar het zoekvak van het **menu Start** , zoek en open **gpedit. msc** om toegang te krijgen tot de lokale Groepsbeleid-editor. 
-2. Ga naar **computer configuratie** > **Beheersjablonen** > **Windows-onderdelen** > extern bureaublad-servicesexternbureaublad > **Session** host >  **Licentie verlening**. 
-3. Selecteer **de licentie modus Extern bureaublad instellen** en wijzig deze in **per gebruiker**.
+Als u een van deze berichten ziet, betekent dit dat u de groepsbeleid editor moet openen en de licentie modus hand matig moet configureren op **per gebruiker**. Het hand matige configuratie proces verschilt, afhankelijk van welke versie van Windows 10 Enter prise multi-session u gebruikt. In de volgende secties wordt uitgelegd hoe u uw versie nummer controleert en wat u moet doen.
 
-We kijken momenteel naar de problemen met de time-out van de melding en de respijt periode en willen deze in een toekomstige update oplossen. 
+>[!NOTE]
+>Voor het virtuele bureau blad van Windows is alleen een RDS-Client Access License (CAL) vereist wanneer uw hostgroep Windows Server Session hosts bevat. Zie [licentie voor uw RDS-implementatie met licenties voor client toegang](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license)voor meer informatie over het configureren van een RDS CAL.
+
+### <a name="identify-which-version-of-windows-10-enterprise-multi-session-youre-using"></a>Bepalen welke versie van Windows 10 Enter prise multi-sessie u gebruikt
+
+Controleren welke versie van Windows 10 Enter prise multi-session u hebt:
+
+1. Meld u aan met uw beheerders account.
+2. Geef "about" op in de zoek balk naast het menu Start.
+3. Selecteer **over uw PC**.
+4. Controleer het nummer naast versie. Het getal moet ' 1809 ' of ' 1903 ' zijn, zoals wordt weer gegeven in de volgende afbeelding.
+   
+    ![Een scherm opname van het Windows-specificaties venster. Het versie nummer is blauw gemarkeerd.](media/windows-specifications.png)
+
+Nu u het versie nummer weet, gaat u verder met de relevante sectie.
+
+### <a name="version-1809"></a>Versie 1809
+
+Als uw versie nummer ' 1809 ' bevat, kunt u een upgrade uitvoeren naar Windows 10 Enter prise multi-session versie 1903 of de hostgroep opnieuw implementeren met de nieuwste installatie kopie.
+
+Als u een upgrade wilt uitvoeren naar Windows 10, versie 1903:
+
+1. Als u dit nog niet hebt gedaan, downloadt en installeert u de [Update voor Windows 10 mei 2019](https://support.microsoft.com/help/4028685/windows-10-get-the-update).
+2. Meld u aan bij uw computer met uw beheerders account.
+3. Voer **gpedit. msc** uit om de Groepsbeleid editor te openen.
+4. Ga onder computer configuratie naar **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > **extern bureaublad Session Host** > -**licentie verlening** .
+5. Selecteer **de licentie modus Extern bureaublad instellen**.
+6. In het venster dat wordt geopend, selecteert u eerst **ingeschakeld**en vervolgens onder Opties de licentie modus voor de extern bureau blad-sessiehostserver opgeven als **per gebruiker**, zoals wordt weer gegeven in de volgende afbeelding.
+    
+    ![Een scherm opname van het venster ' Extern bureaublad licentie modus instellen ' dat is geconfigureerd volgens de instructies in stap 6.](media/group-policy-editor-per-user.png)
+
+7. Selecteer **Toepassen**.
+8. Selecteer **OK**.
+9.  Start de computer opnieuw op.
+
+De hostgroep opnieuw implementeren met de nieuwste installatie kopie:
+
+1. Volg de instructies in [een hostgroep maken met behulp van Azure Marketplace](create-host-pools-azure-marketplace.md) totdat u wordt gevraagd om een versie van het besturings systeem installatie kopie te kiezen. U kunt kiezen voor een multi-sessie met Windows 10 Enter prise met of zonder Office365 ProPlus.
+2. Meld u aan bij uw computer met uw beheerders account.
+3. Voer **gpedit. msc** uit om de Groepsbeleid editor te openen.
+4. Ga onder computer configuratie naar **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > **extern bureaublad Session Host** > -**licentie verlening** .
+5. Selecteer **de licentie modus Extern bureaublad instellen**.
+6. In het venster dat wordt geopend, selecteert u eerst **ingeschakeld**en vervolgens onder Opties de licentie modus voor de extern bureau blad-sessiehostserver opgeven **per gebruiker**.
+7. Selecteer **Toepassen**.
+8. Selecteer **OK**.
+9.  Start de computer opnieuw op.
+
+### <a name="version-1903"></a>Versie 1903
+
+Als uw versie nummer "1903" is, volgt u deze instructies:
+
+1. Meld u aan bij uw computer met uw beheerders account.
+2. Voer **gpedit. msc** uit om de Groepsbeleid editor te openen.
+3. Ga onder computer configuratie naar **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > **extern bureaublad Session Host** > -**licentie verlening** .
+4. Selecteer **de licentie modus Extern bureaublad instellen**.
+6. In het venster dat wordt geopend, selecteert u eerst **ingeschakeld**en vervolgens onder Opties de licentie modus voor de extern bureau blad-sessiehostserver opgeven als **per gebruiker**, zoals wordt weer gegeven in de volgende afbeelding.
+    
+    ![Een scherm opname van het venster ' Extern bureaublad licentie modus instellen ' dat is geconfigureerd volgens de instructies in stap 6.](media/group-policy-editor-per-user.png)
+
+7. Selecteer **Toepassen**.
+8. Selecteer **OK**.
+9.  Start de computer opnieuw op.
 
 ## <a name="next-steps"></a>Volgende stappen
 

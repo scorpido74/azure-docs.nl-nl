@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b909918ff4f9abc1dd64d4c7e5ccb35954b233f7
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 5a9143643b1a1cabb32903933dbd68d665d0424f
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935792"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171141"
 ---
 # <a name="http-features"></a>HTTP-functies
 
@@ -205,7 +205,7 @@ De ingebouwde ondersteuning voor het aanroepen van HTTP-Api's is een gebruiks vr
 Als een van deze beperkingen van invloed kan zijn op uw gebruiks aanvraag, overweeg dan om gebruik te maken van activiteit functies en taalspecifieke HTTP-client bibliotheken voor uitgaande HTTP-aanroepen.
 
 > [!NOTE]
-> Als u een .net-ontwikkelaar bent, vraagt u zich mogelijk af waarom deze `DurableHttpRequest` functie `DurableHttpResponse` en typen worden gebruikt in plaats van de `HttpRequestMessage` ingebouwde `HttpResponseMessage`.net en. Deze ontwerp keuze was opzettelijk. De primaire reden hiervoor is dat gebruikers niet in staat zijn om onjuiste hypo Thesen te doen over het ondersteunde gedrag van de interne HTTP-client. Met duurzame, specifieke typen kunt u het API-ontwerp ook vereenvoudigen en eenvoudigere speciale functies, zoals [beheerde identiteits integratie](#managed-identities) en het [polling Consumer-patroon](#http-202-handling), eenvoudiger maken.
+> Als u een .net-ontwikkelaar bent, vraagt u zich mogelijk af waarom deze `DurableHttpRequest` functie `DurableHttpResponse` en typen worden gebruikt in plaats van de `HttpRequestMessage` ingebouwde `HttpResponseMessage`.net en. Deze ontwerp keuze was opzettelijk. De primaire reden hiervoor is dat gebruikers met aangepaste typen geen onjuiste hypo Thesen kunnen maken over het ondersteunde gedrag van de interne HTTP-client. Met duurzame, specifieke typen kunt u het API-ontwerp ook vereenvoudigen en eenvoudigere speciale functies, zoals [beheerde identiteits integratie](#managed-identities) en het [polling Consumer-patroon](#http-202-handling), eenvoudiger maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

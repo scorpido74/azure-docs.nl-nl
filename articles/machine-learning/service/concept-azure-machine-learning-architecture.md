@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91c747b8b4ca58e7714dc101777bad51f9f0286f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 85ca03bee728ec075383566be14d2484dd7431af
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035601"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170432"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: Architectuur en concepten
 
@@ -63,10 +63,10 @@ Gebruik deze hulpprogram ma's voor Azure Machine Learning:
 + <a href="#compute-targets">Compute-doelen</a>
 + <a href="#training-scripts">Trainings script</a>
 + <a href="#runs">Uitvoeren</a>
++ <a href="#environments">Verschillend</a>
 + <a href="#github-tracking-and-integration">Git-tracking</a>
 + <a href="#snapshots">Snapshot</a>
 + <a href="#activities">Activiteit</a>
-+ <a href="#images">Installatiekopie</a>
 + <a href="#deployment">Implementatie</a>
 + <a href="#web-service-deployments">Webservices</a>
 + <a href="#iot-module-deployments">IoT-modules</a>
@@ -180,28 +180,15 @@ Een activiteit vertegenwoordigt een langdurige bewerking. De volgende bewerkinge
 
 Activiteiten kunnen meldingen geven via de SDK of de Web-UI, zodat u de voortgang van deze bewerkingen eenvoudig kunt bewaken.
 
-### <a name="images"></a>Installatiekopieën
+### <a name="environments"></a>Omgevingen
 
-Installatie kopieën bieden een manier om een model betrouwbaar te implementeren, samen met alle onderdelen die u nodig hebt om het model te gebruiken. Een installatiekopie bevat de volgende items:
+Azure ML-omgevingen worden gebruikt voor het opgeven van de configuratie (docker/python/Spark/etc.) die wordt gebruikt voor het maken van een reproduceer bare omgeving voor gegevens voorbereiding, model training en model. Ze zijn beheerde en geversiede entiteiten in uw Azure Machine Learning-werk ruimte waarmee reproduceer bare, audit bare en Portable machine learning werk stromen kunnen worden toegepast op verschillende Compute-doelen.
 
-* Een model.
-* Een scoring-script of toepassing. U gebruikt het script om invoer door te geven aan het model en de uitvoer van het model te retour neren.
-* De afhankelijkheden die nodig zijn voor het model of het Score script of de toepassing. U kunt bijvoorbeeld een Conda-omgeving-bestand met een lijst met Python-pakketafhankelijkheden opnemen.
+U kunt een omgevings object gebruiken op uw lokale Compute voor het ontwikkelen van uw trainings script, het hergebruiken van dezelfde omgeving op Azure Machine Learning Compute for model-training op schaal en het implementeren van uw model zelfs met diezelfde omgeving. 
 
-Azure Machine Learning kunt twee typen installatie kopieën maken:
+Meer informatie [over het maken en beheren van een herbruikbare ml omgeving](how-to-use-environments.md) voor training en demijnen.
 
-* **FPGA-installatie kopie**: Wordt gebruikt wanneer u implementeert in een veld-Programmeer bare poort matrix in Azure.
-* **Docker-installatie kopie**: Wordt gebruikt wanneer u implementeert voor andere compute-doelen dan FPGA. Voor beelden zijn Azure Container Instances en de Azure Kubernetes-service.
 
-Azure Machine Learning biedt een basis installatie kopie die standaard wordt gebruikt. U kunt ook uw eigen aangepaste installatie kopieën opgeven.
-
-### <a name="image-registry"></a>Afbeelding register
-
-Installatie kopieën worden gecatalogiseerd in het **installatie kopie register** in uw werk ruimte. U kunt aanvullende meta gegevenslabels opgeven wanneer u de installatie kopie maakt, zodat u deze kunt doorzoeken om uw installatie kopie later te vinden.
-
-Voor een voor beeld van het maken van een installatie kopie raadpleegt u [een installatie kopie classificatie model implementeren in azure container instances](tutorial-deploy-models-with-aml.md).
-
-Zie [een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)voor een voor beeld van het implementeren van een model met behulp van een aangepaste installatie kopie.
 
 ### <a name="deployment"></a>Implementatie
 

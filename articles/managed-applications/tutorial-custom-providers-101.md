@@ -1,54 +1,50 @@
 ---
-title: Maken van aangepaste acties en resources in Azure
-description: In deze zelfstudie gaat over het maken van aangepaste acties en resources in Azure Resource Manager en hoe u kunt integreren in aangepaste werkstromen voor Azure Resource Manager-sjablonen, Azure CLI, Azure Policy, en het activiteitenlogboek.
+title: Aangepaste acties en resources maken in azure
+description: Deze zelf studie gaat over het maken van aangepaste acties en resources in Azure Resource Manager. Daarnaast ziet u hoe aangepaste werk stromen compatibel zijn met Azure Resource Manager sjablonen, Azure CLI, Azure Policy en Azure-activiteiten logboek.
 author: jjbfour
 ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 4bbfcf070611e3df5c0fe47070f2ab6961111e07
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: dc1601e344c371a5f0feaadd272a2c6ff40af031
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800041"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172941"
 ---
-# <a name="create-custom-actions-and-resources-in-azure"></a>Maken van aangepaste acties en resources in Azure
+# <a name="create-custom-actions-and-resources-in-azure"></a>Aangepaste acties en resources maken in azure
 
-Aangepaste providers kunnen u werkstromen in Azure aanpassen. Een aangepaste provider is een overeenkomst tussen Azure en een `endpoint`. Hierdoor kan het toevoegen van nieuwe aangepaste API's in de Azure Resource Manager zodat nieuwe implementatie- en beheermogelijkheden. In deze zelfstudie gaat via een eenvoudig voorbeeld van hoe nieuwe acties en resources toevoegen aan Azure en hoe ze integreren.
+Een aangepaste provider is een contract tussen Azure en een eind punt. Met aangepaste providers kunt u werk stromen in azure wijzigen door nieuwe Api's toe te voegen aan Azure Resource Manager. Met deze aangepaste Api's kan Resource Manager gebruikmaken van nieuwe implementatie-en beheer mogelijkheden.
 
-In deze zelfstudie is onderverdeeld in de volgende stappen uit:
+In deze zelf studie wordt een eenvoudig voor beeld van het toevoegen van nieuwe acties en resources aan Azure en hoe u deze kunt integreren.
 
-- Azure Functions instellen voor Azure aangepaste Providers
-- Het ontwerpen van een RESTful-eindpunt voor aangepaste providers
-- Het maken van en het gebruik van de aangepaste provider
+## <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure Functions instellen voor aangepaste Azure-providers
 
-## <a name="setup-azure-functions-for-azure-custom-providers"></a>Azure Functions instellen voor Azure aangepaste Providers
+In deel één van deze zelf studie wordt beschreven hoe u een Azure function-app instelt voor gebruik met aangepaste providers:
 
-Dit deel van de zelfstudie gaat naar informatie over het instellen van een Azure-functie om te werken met aangepaste providers. Aangepaste providers kunnen werken met een openbare URL.
+- [Azure Functions instellen voor aangepaste Azure-providers](./tutorial-custom-providers-function-setup.md)
 
-- [Azure Functions instellen voor Azure aangepaste Providers](./tutorial-custom-providers-function-setup.md)
+Aangepaste providers kunnen werken met elke open bare URL.
 
-## <a name="authoring-a-restful-endpoint-for-custom-providers"></a>Het ontwerpen van een RESTful-eindpunt voor aangepaste providers
+## <a name="author-a-restful-endpoint-for-custom-providers"></a>Een REST-eind punt ontwerpen voor aangepaste providers
 
-Dit deel van de zelfstudie gaat informatie over het ontwerpen van een RESTful-eindpunt voor aangepaste providers.
+In deel twee van deze zelf studie wordt beschreven hoe u een REST-eind punt kunt ontwerpen voor aangepaste providers:
 
-- [Het ontwerpen van een RESTful-eindpunt voor aangepaste providers](./tutorial-custom-providers-function-authoring.md)
+- [Een REST-eind punt ontwerpen voor aangepaste providers](./tutorial-custom-providers-function-authoring.md)
 
-## <a name="creating-and-utilizing-the-custom-provider"></a>Het maken van en het gebruik van de aangepaste provider
+## <a name="create-and-use-a-custom-provider"></a>Een aangepaste provider maken en gebruiken
 
-Dit deel van de zelfstudie gaat informatie over het maken van een aangepaste provider en de aangepaste acties en resources gebruiken.
+In deel drie van deze zelf studie wordt beschreven hoe u een aangepaste provider maakt en de aangepaste acties en resources gebruikt:
 
-- [Maken en te gebruiken een aangepaste Azure Provider](./tutorial-custom-providers-create.md)
+- [Een aangepaste provider maken en gebruiken](./tutorial-custom-providers-create.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd over aangepaste providers en over het bouwen van een. Klik op Doorgaan met de volgende stap van de zelfstudie:
+In deze zelf studie hebt u geleerd over aangepaste providers en hoe u er een kunt maken. Zie [zelf studie als u wilt door gaan met de volgende zelf studie: Azure Functions instellen voor aangepaste Azure-providers](./tutorial-custom-providers-function-setup.md).
 
-- [Zelfstudie: Azure Functions instellen voor Azure aangepaste Providers](./tutorial-custom-providers-function-setup.md)
+Als u naar verwijzingen of een Snelstartgids zoekt, vindt u hier enkele nuttige koppelingen:
 
-Als u referenties of een snelstartgids zoekt, moet u hier enkele koppelingen die nuttig zijn:
-
-- [Snelstart: De aangepaste Resource Provider Azure maken en implementeren van aangepaste resources](./create-custom-provider.md)
-- [Procedure: Aangepaste acties toe te voegen aan Azure REST-API](./custom-providers-action-endpoint-how-to.md)
-- [Procedure: Aangepaste Resources toe te voegen aan Azure REST-API](./custom-providers-resources-endpoint-how-to.md)
+- [Snelstart: Een aangepaste Azure-resource provider maken en aangepaste resources implementeren](./create-custom-provider.md)
+- [Procedure: Aangepaste acties toevoegen aan Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [Procedure: Aangepaste resources toevoegen aan Azure REST API](./custom-providers-resources-endpoint-how-to.md)

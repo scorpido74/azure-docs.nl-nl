@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3da22d11dce1e535763476d906ac45f3da22bc8d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 01e932caf5edc91d5556b60d33e4d100574f93f5
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141288"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170050"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Voorbeeld: Een app voor afbeeldingsverwerking ontdekken met C#
 
@@ -80,7 +80,7 @@ U kunt de voorbeeld-app uitvoeren om te zien hoe deze samenwerkt met u en de Com
    ![Pagina Subscription Key Management](../Images/Vision_UI_Subscription.PNG)  
 1. Geef uw abonnementssleutel op in **Subscription Key**.
 1. Voer de eind punt-URL in het **eind punt**in.  
-   Als u bijvoorbeeld de abonnements sleutel gebruikt uit de gratis proef versie van Computer Vision, voert u de volgende eind punt-URL in:`https://westcentralus.api.cognitive.microsoft.com`
+   Als u bijvoorbeeld de abonnements sleutel gebruikt uit de gratis proef versie van Computer Vision, voert u de volgende eind punt-URL in:`https://westcentralus.api.cognitive.microsoft.com`  
    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. Als u uw abonnementssleutel en eindpunt-URL niet opnieuw wilt invoeren wanneer u de voorbeeld-app later nogmaals uitvoert, kiest u **Save Setting** om de abonnementssleutel en de eindpunt-URL op te slaan op uw computer. Als u de eerder opgeslagen abonnementssleutel en eindpunt-URL wilt verwijderen, kiest u **Delete Setting**.
 

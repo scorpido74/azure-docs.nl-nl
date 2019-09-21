@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395957099a19d11d26fb5bdd2a1eecdd5590dd64
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ba51e10503a3aab7afa2e9639453448d03b91852
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056139"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170471"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Het inrichten van gebruikers accounts voor zakelijke apps beheren in de Azure Portal
 
@@ -81,7 +81,7 @@ Ondersteunde aanpassingen zijn onder andere:
 
 U kunt de Azure AD-inrichtings service voor de geselecteerde toepassing starten en stoppen in het gebied **instellingen** van het **inrichtings** scherm. U kunt er ook voor kiezen om de inrichtings cache te wissen en de service opnieuw te starten.
 
-Als het inrichten voor de eerste keer voor een toepassing wordt ingeschakeld, schakelt u de service in door de **inrichtings status** te wijzigen in **op aan**. Deze wijziging zorgt ervoor dat de Azure AD-inrichtings service een eerste cyclus uitvoert. Het leest de gebruikers die zijn toegewezen in de sectie **gebruikers en groepen** , vraagt de doel toepassing voor ze en voert vervolgens de inrichtings acties uit die zijn gedefinieerd in de sectie Azure AD- **toewijzingen** . Tijdens dit proces slaat de inrichtings service gegevens op in het cache geheugen over de gebruikers accounts die worden beheerd. niet-beheerde accounts in de doel toepassingen die nooit binnen het bereik van de toewijzing vallen, worden niet beïnvloed door de inrichtings bewerkingen. Na de eerste cyclus synchroniseert de inrichtings service automatisch gebruikers-en groeps objecten met een interval van tien minuten.
+Als het inrichten voor de eerste keer voor een toepassing wordt ingeschakeld, schakelt u de service in door de **inrichtings status** te wijzigen in **op aan**. Deze wijziging zorgt ervoor dat de Azure AD-inrichtings service een eerste cyclus uitvoert. Het leest de gebruikers die zijn toegewezen in de sectie **gebruikers en groepen** , vraagt de doel toepassing voor ze en voert vervolgens de inrichtings acties uit die zijn gedefinieerd in de sectie Azure AD- **toewijzingen** . Tijdens dit proces slaat de inrichtings service gegevens op in het cache geheugen over de gebruikers accounts die worden beheerd. niet-beheerde accounts in de doel toepassingen die nooit binnen het bereik van de toewijzing vallen, worden niet beïnvloed door de inrichtings bewerkingen. Na de eerste cyclus synchroniseert de inrichtings service automatisch gebruikers-en groeps objecten met een interval van 40 minuten.
 
 Wijzig de **inrichtings status** in **uit** om de inrichtings service te onderbreken. In deze status wordt in azure geen gebruikers-of groeps objecten in de app gemaakt, bijgewerkt of verwijderd. Wijzig de status weer **in op** en de service wordt opgehaald waar deze is gestopt.
 

@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 07/31/2019
-ms.openlocfilehash: 5848465033ca0b4df3bc7f63e7cef06059f5c3c5
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.date: 09/21/2019
+ms.openlocfilehash: 9bd620ef9664e921aa88792017585b02e44387f8
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667769"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172703"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Zelfstudie: RDS MySQL migreren naar Azure Database for MySQL online met behulp van DMS
 
@@ -109,15 +109,15 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
         FROM
         (SELECT
         KCU.REFERENCED_TABLE_SCHEMA as SchemaName,
-        KCU.TABLE_NAME,
-        KCU.COLUMN_NAME,
-        CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery,
+                    KCU.TABLE_NAME,
+                    KCU.COLUMN_NAME,
+                    CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery,
         CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' ADD CONSTRAINT ', KCU.CONSTRAINT_NAME, ' FOREIGN KEY (`', KCU.COLUMN_NAME, '`) REFERENCES `', KCU.REFERENCED_TABLE_NAME, '` (`', KCU.REFERENCED_COLUMN_NAME, '`) ON UPDATE ',RC.UPDATE_RULE, ' ON DELETE ',RC.DELETE_RULE) AS AddQuery
-        FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC
-        WHERE
-          KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
-          AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA
-      AND KCU.REFERENCED_TABLE_SCHEMA = ('SchemaName') Queries
+                    FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC
+                    WHERE
+                      KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
+                      AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA
+      AND KCU.REFERENCED_TABLE_SCHEMA = 'SchemaName') Queries
       GROUP BY SchemaName;
     ```
 
@@ -213,7 +213,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
 ## <a name="specify-target-details"></a>Doeldetails opgeven
 
-1. Selecteer **Opslaan**en geef vervolgens in het scherm **doel Details** de verbindings gegevens op voor de doel Azure database for mysql server, die vooraf is ingericht en waarvoor het schema Employees is geïmplementeerd met behulp van MySQLDump.
+1. Selecteer **Opslaan**en geef vervolgens in het scherm **doel Details** de verbindings gegevens op voor de doel Azure database for mysql server, die vooraf is ingericht en waarvoor het schema **Employees** is geïmplementeerd met behulp van MySQLDump.
 
     ![Doel selecteren](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-select-target5.png)
 
@@ -239,7 +239,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
     ![Activiteitsstatus-uitvoering](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-activity-status4.png)
 
-2. Selecteer onder **database naam**een specifieke data base om de migratie status voor **volledige gegevens belasting** en incrementele **gegevens synchronisatie** te verkrijgen.
+2. Selecteer onder **database naam**een specifieke data base om de migratie status voor **volledige gegevens belasting** en **incrementele gegevens synchronisatie** te verkrijgen.
 
     Bij **volledige gegevens belasting** wordt de initiële status van de laad migratie weer gegeven, terwijl **incrementele gegevens synchronisatie** de status Change Data Capture (CDC) laat zien.
 

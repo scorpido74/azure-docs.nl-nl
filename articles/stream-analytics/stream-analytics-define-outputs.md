@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 87dca4cf06bd8c5982e5f83a2498496c4bec69fd
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 386dc737bb45eec031aaa1a0c55f4478b8302c54
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984862"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173579"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Inzicht in de uitvoer van Azure Stream Analytics
 
@@ -210,6 +210,7 @@ De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschri
 | Scheidingsteken |Alleen van toepassing op CSV-serialisatie. Stream Analytics ondersteunt een aantal algemene scheidingstekens om gegevens te serialiseren in csv-indeling. Ondersteunde waarden zijn met door komma's, door puntkomma's, spatie, tab en verticale balk. |
 | Indeling |Alleen van toepassing op JSON-type. Met **regel scheiding** wordt opgegeven dat de uitvoer wordt opgemaakt door elk JSON-object gescheiden door een nieuwe regel. **Matrix** geeft aan dat de uitvoer is ingedeeld als een matrix van JSON-objecten. |
 | Eigenschappenkolommen | Optioneel. Door komma's gescheiden kolommen die moeten worden toegevoegd als gebruikers eigenschappen van het uitgaande bericht in plaats van de payload. Meer informatie over deze functie vindt u in de sectie [aangepaste meta gegevens eigenschappen voor uitvoer](#custom-metadata-properties-for-output). |
+| Systeemeigenschaps-kolommen | Optioneel. Sleutel waarde-paren van systeem eigenschappen en bijbehorende kolom namen die aan het uitgaande bericht moeten worden toegevoegd in plaats van de payload. Meer informatie over deze functie vindt u in de sectie [systeem eigenschappen voor service bus wachtrij en onderwerp-uitvoer](#system-properties-for-service-bus-queue-and-topic-outputs)  |
 
 Het aantal partities is [op basis van de Service Bus-SKU en grootte](../service-bus-messaging/service-bus-partitioning.md). Partitiesleutel is een unieke integer-waarde voor elke partitie.
 
@@ -229,6 +230,7 @@ De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschri
 | Encoding |Als u de CSV-of JSON-indeling gebruikt, moet u een code ring opgeven. Alleen de coderingsindeling UTF-8 wordt momenteel ondersteund. |
 | Scheidingsteken |Alleen van toepassing op CSV-serialisatie. Stream Analytics ondersteunt een aantal algemene scheidingstekens om gegevens te serialiseren in csv-indeling. Ondersteunde waarden zijn met door komma's, door puntkomma's, spatie, tab en verticale balk. |
 | Eigenschappenkolommen | Optioneel. Door komma's gescheiden kolommen die moeten worden toegevoegd als gebruikers eigenschappen van het uitgaande bericht in plaats van de payload. Meer informatie over deze functie vindt u in de sectie [aangepaste meta gegevens eigenschappen voor uitvoer](#custom-metadata-properties-for-output). |
+| Systeemeigenschaps-kolommen | Optioneel. Sleutel waarde-paren van systeem eigenschappen en bijbehorende kolom namen die aan het uitgaande bericht moeten worden toegevoegd in plaats van de payload. Meer informatie over deze functie vindt u in de sectie [systeem eigenschappen voor service bus wachtrij en onderwerp-uitvoer](#system-properties-for-service-bus-queue-and-topic-outputs) |
 
 Het aantal partities is [op basis van de Service Bus-SKU en grootte](../service-bus-messaging/service-bus-partitioning.md). De partitie sleutel is een unieke gehele waarde voor elke partitie.
 
@@ -294,6 +296,25 @@ In het volgende voor beeld voegen we de twee `DeviceId` velden `DeviceStatus` en
 De volgende scherm afbeelding ziet u de eigenschappen van uitvoer berichten die zijn geïnspecteerd in EventHub via [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer).
 
 ![Aangepaste eigenschappen van gebeurtenis](./media/stream-analytics-define-outputs/09-stream-analytics-custom-properties.png)
+
+## <a name="system-properties-for-service-bus-queue-and-topic-outputs"></a>Systeem eigenschappen voor de Service Bus wachtrij en onderwerp-uitvoer 
+U kunt query kolommen als [systeem eigenschappen](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) koppelen aan uw uitgaande service bus-wachtrij of onderwerp-berichten. Deze kolommen worden niet in de payload gezet, maar de bijbehorende [systeem eigenschap](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) BrokeredMessage wordt gevuld met de query kolom waarden.
+Deze systeem eigenschappen worden ondersteund `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`.
+Teken reeks waarden van deze kolommen worden geparseerd als overeenkomend type eigenschaps waarde van het systeem en eventuele fouten bij het parseren worden behandeld als gegevens fouten.
+Dit veld wordt als een JSON-object indeling gegeven. Meer informatie over deze indeling is als volgt:
+* Omgeven door {}accolades.
+* Geschreven in sleutel/waarde-paren.
+* Sleutels en waarden moeten teken reeksen zijn.
+* Sleutel is de naam en waarde van de systeem eigenschap is de kolom naam van de query.
+* Sleutels en waarden worden gescheiden door een dubbele punt.
+* Elke sleutel/waarde-paar wordt gescheiden door een komma.
+
+Hier ziet u hoe u deze eigenschap gebruikt –
+
+* Ophalen`select *, column1, column2 INTO queueOutput FROM iotHubInput`
+* Kolom systeem eigenschappen:`{ "MessageId": "column1", "PartitionKey": "column2"}`
+
+Hiermee stelt u `MessageId` de service bus-wachtrij berichten `column1`in met de waarden en PartitionKey wordt `column2`ingesteld met de waarden.
 
 ## <a name="partitioning"></a>Partitionering
 

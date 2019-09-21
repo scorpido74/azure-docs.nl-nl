@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 11/13/2017
-ms.openlocfilehash: 284dcd99dc77d7ec0fb5cb214d49b6fcf93a6aef
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 09/20/2019
+ms.openlocfilehash: bf9539512961930a97d9dcfe86722d0103c1facc
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854486"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173458"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Een VM-cluster maken met Terraform en HCL
 
@@ -46,7 +46,7 @@ In deze sectie genereert u een Azure service-principal en twee Terraform-configu
 
 5. Kopieer de volgende code in uw bestand met variabelendeclaraties:
 
-   ```tf
+   ```hcl
    variable subscription_id {}
    variable tenant_id {}
    variable client_id {}
@@ -64,7 +64,7 @@ In deze sectie genereert u een Azure service-principal en twee Terraform-configu
 
 7. Kopieer de volgende code in uw variabelenbestand. Zorg dat u de plaatsaanduidingen als volgt vervangt: Voor `subscription_id` gebruikt u de Azure-abonnements-id die u hebt opgegeven bij het uitvoeren van `az account set`. Voor `tenant_id` gebruikt u de waarde `tenant` die is geretourneerd vanuit `az ad sp create-for-rbac`. Voor `client_id` gebruikt u de waarde `appId` die is geretourneerd vanuit `az ad sp create-for-rbac`. Voor `client_secret` gebruikt u de waarde `password` die is geretourneerd vanuit `az ad sp create-for-rbac`.
 
-   ```tf
+   ```hcl
    subscription_id = "<azure-subscription-id>"
    tenant_id = "<tenant-returned-from-creating-a-service-principal>"
    client_id = "<appId-returned-from-creating-a-service-principal>"
@@ -79,7 +79,7 @@ In deze sectie maakt u een bestand dat de resourcedefinities voor uw infrastruct
 
 2. Kopieer de volgende voorbeelden van resourcedefinities in het zojuist gemaakte bestand `main.tf`: 
 
-   ```tf
+   ```hcl
    resource "azurerm_resource_group" "test" {
     name     = "acctestrg"
     location = "West US 2"
@@ -227,7 +227,7 @@ De opdracht [terraform init](https://www.terraform.io/docs/commands/init.html) w
 
 Voer de volgende opdracht uit om Terraform te initialiseren:
 
-  ```cmd
+  ```bash
   terraform init
   ```
 
@@ -245,13 +245,13 @@ Bij het verwerken van de opdracht `terraform plan` wordt Terraform vernieuwd en 
 
 Als u uw uitvoeringsplan niet wilt opslaan, voert u de volgende opdracht uit:
 
-  ```cmd
+  ```bash
   terraform plan
   ```
 
 Als u uw uitvoeringsplan wel wilt opslaan, voert u de volgende opdracht uit (vervang de tijdelijke aanduiding &lt;path> door het gewenste uitvoerpad):
 
-  ```cmd
+  ```bash
   terraform plan -out=<path>
   ```
 
@@ -263,13 +263,13 @@ De laatste stap van deze zelfstudie bestaat uit het gebruiken van de opdracht [t
 
 Als u het meest recente uitvoeringsplan wilt toepassen, voert u de volgende opdracht uit:
 
-  ```cmd
+  ```bash
   terraform apply
   ```
 
 Als u een eerder opgeslagen uitvoeringsplan wilt uitvoeren, voert u de volgende opdracht uit (vervang de tijdelijke aanduiding &lt;path> door het pad naar het opgeslagen uitvoeringsplan):
 
-  ```cmd
+  ```bash
   terraform apply <path>
   ```
 

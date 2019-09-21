@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
-ms.author: roiyz
-ms.openlocfilehash: c44722403967f3563472692f97cb2a114e6294cd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: 4526456b608f0920c73ae28446a822661995acab
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084462"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173984"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Uitbrei ding voor NVIDIA GPU-stuur programma voor Windows
 
@@ -75,7 +75,7 @@ In de volgende JSON wordt het schema voor de uitbrei ding weer gegeven.
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.HpcCompute | string |
-| Type | NvidiaGpuDriverWindows | string |
+| type | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.2 | int |
 
 
@@ -161,7 +161,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 
 | Foutcode | Betekenis | Mogelijke actie |
 | :---: | --- | --- |
-| 0 | Bewerking is geslaagd |
+| 0 | Bewerking is voltooid |
 | 1 | De bewerking is voltooid. Opnieuw opstarten is vereist. |
 | 100 | De bewerking wordt niet ondersteund of kan niet worden voltooid. | Mogelijke oorzaken: De Power shell-versie wordt niet ondersteund, de VM-grootte is geen VM van de N-serie, fout bij het downloaden van gegevens. Controleer de logboek bestanden om de oorzaak van de fout te achterhalen. |
 | 240, 840 | Time-out van bewerking. | Probeer het opnieuw. |
@@ -176,4 +176,4 @@ Als u hulp nodig hebt op elk gewenst moment in dit artikel, u kunt contact opnem
 ## <a name="next-steps"></a>Volgende stappen
 Zie [virtuele machines en functies voor Windows](features-windows.md)voor meer informatie over uitbrei dingen.
 
-Zie grootten van [virtuele machines](../windows/sizes-gpu.md)die zijn geoptimaliseerd voor GPU voor meer informatie over vm's van de N-serie.
+Zie [grootten van virtuele machines](../windows/sizes-gpu.md)die zijn geoptimaliseerd voor GPU voor meer informatie over vm's van de N-serie.

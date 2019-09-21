@@ -3,7 +3,7 @@ title: Azure VM-extensies en-functies voor Windows | Microsoft Docs
 description: Meer informatie over de uitbrei dingen die beschikbaar zijn voor virtuele machines van Azure, gegroepeerd op wat ze bieden of verbeteren.
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
-ms.author: roiyz
+ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a7f204245e59cbda11c663a80828a20a79c9923
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a19b6bd8da82498aae45657d30883db14efd9343
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084561"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174070"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Extensies en functies van virtuele machines voor Windows
 
@@ -35,7 +35,7 @@ Dit artikel bevat een overzicht van VM-extensies, vereisten voor het gebruik van
 Er zijn verschillende verschillende Azure VM-extensies beschikbaar, elk met een specifieke use-case. Voorbeelden zijn:
 
 - Pas Power shell desired state configurations toe aan een virtuele machine met de DSC-extensie voor Windows. Zie [Azure desired state Configuration extension](dsc-overview.md)(Engelstalig) voor meer informatie.
-- De bewaking van een virtuele machine configureren met de VM-extensie van micro soft monitoring agent. Zie [Azure Vm's verbinden met Azure monitor](../../log-analytics/log-analytics-azure-vm-extension.md)-logboeken voor meer informatie.
+- De bewaking van een virtuele machine configureren met de VM-extensie van micro soft monitoring agent. Zie [Azure Vm's verbinden met Azure monitor-logboeken](../../log-analytics/log-analytics-azure-vm-extension.md)voor meer informatie.
 - Configureer een virtuele Azure-machine met behulp van chef. Zie [Azure VM-implementatie automatiseren met chef](../windows/chef-automation.md)voor meer informatie.
 - Configureer de bewaking van uw Azure-infra structuur met de Datadog-extensie. Zie de [Datadog-blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)voor meer informatie.
 
@@ -220,7 +220,7 @@ In het volgende voor beeld ziet u een exemplaar van de aangepaste script extensi
 }
 ```
 
-Als **u de opdracht verplaatst naar** de eigenschap Execute naar de **beveiligde** configuratie, wordt de uitvoerings reeks beveiligd, zoals wordt weer gegeven in het volgende voor beeld:
+Als u de opdracht verplaatst naar de eigenschap **Execute** naar de **beveiligde** configuratie, wordt de uitvoerings reeks beveiligd, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```json
 {
@@ -282,9 +282,9 @@ Microsoft.Compute     CustomScriptExtension                1.9
 
 #### <a name="agent-updates"></a>Agent updates
 
-De Windows-gast agent bevat alleen *code voor extensie verwerking*. de Windows-inrichtings *code* is afzonderlijk. U kunt de Windows-gast agent verwijderen. Het is niet mogelijk om de automatische update van het venster gast agent uit te scha kelen.
+De Windows-gast agent bevat alleen *code voor extensie verwerking*. de *Windows-inrichtings code* is afzonderlijk. U kunt de Windows-gast agent verwijderen. Het is niet mogelijk om de automatische update van het venster gast agent uit te scha kelen.
 
-De *verwerkings code voor uitbrei dingen* is verantwoordelijk voor de communicatie met de Azure-infra structuur en het verwerken van de VM-extensie bewerkingen, zoals installaties, rapportage status, het bijwerken van de afzonderlijke uitbrei dingen en het verwijderen ervan. Updates bevatten beveiligingsfixes, oplossingen voor fouten en verbeteringen in de verwerkings code van de *uitbrei ding*.
+De *verwerkings code voor uitbrei dingen* is verantwoordelijk voor de communicatie met de Azure-infra structuur en het verwerken van de VM-extensie bewerkingen, zoals installaties, rapportage status, het bijwerken van de afzonderlijke uitbrei dingen en het verwijderen ervan. Updates bevatten beveiligingsfixes, oplossingen voor fouten en verbeteringen in de *verwerkings code van de uitbrei ding*.
 
 Zie [geïnstalleerde Windows-gast agent detecteren](agent-windows.md#detect-the-vm-agent)om te controleren welke versie wordt uitgevoerd.
 
@@ -367,7 +367,7 @@ De volgende stappen voor probleem oplossing zijn van toepassing op alle VM-exten
 
 ### <a name="view-extension-status"></a>Uitbrei ding status weer geven
 
-Nadat een VM-extensie is uitgevoerd op een virtuele machine, gebruikt u [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) om de extensie status te retour neren. *Substatussen [0]* toont aan dat de extensie is ingericht, wat betekent dat de implementatie is gelukt naar de virtuele machine, maar dat de uitvoering van de uitbrei ding in de virtuele machine is mislukt, Substatussen *[1]* .
+Nadat een VM-extensie is uitgevoerd op een virtuele machine, gebruikt u [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) om de extensie status te retour neren. *Substatussen [0]* toont aan dat de extensie is ingericht, wat betekent dat de implementatie is gelukt naar de virtuele machine, maar dat de uitvoering van de uitbrei ding in de virtuele machine is mislukt, *Substatussen [1]* .
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
@@ -417,7 +417,7 @@ U kunt een uitbrei ding ook als volgt verwijderen in de Azure Portal:
 4. Kies **verwijderen**.
 
 ## <a name="common-vm-extensions-reference"></a>Naslag informatie over algemene VM-extensies
-| Extensie naam | Description | Meer informatie |
+| Extensienaam | Description | Meer informatie |
 | --- | --- | --- |
 | Aangepaste script extensie voor Windows |Scripts uitvoeren op een virtuele Azure-machine |[Aangepaste script extensie voor Windows](custom-script-windows.md) |
 | DSC-extensie voor Windows |Uitbrei ding Power shell DSC (desired state Configuration) |[DSC-extensie voor Windows](dsc-overview.md) |

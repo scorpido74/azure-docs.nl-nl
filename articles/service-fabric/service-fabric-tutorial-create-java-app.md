@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 57c9bd8caf6e8762ed07ac5e6f4ff16171569723
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b3210b97fe6fb0cd16499d5c33538c8e2babe612
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900676"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173611"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Zelfstudie: Een toepassing maken met een Java API-front-end-service en een stateful back-end-service op Azure Service Fabric
 
 Deze zelfstudie is deel één van een serie. Wanneer u klaar bent, hebt u een stem toepassing met een Java-web-front-end die stem resultaten opslaat in een stateful back-end-service op Azure Service Fabric. Voor deze zelfstudie hebt u een werkende Mac OSX- of Linux-ontwikkelaarsmachine nodig. Als u de stemtoepassing niet handmatig wilt maken, kunt u [de broncode downloaden](https://github.com/Azure-Samples/service-fabric-java-quickstart) voor de voltooide toepassing en verdergaan met [Het voorbeeld van een stemtoepassing doorlopen](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application). Denk ook na over de [Snelstartgids voor Java reliable Services.](service-fabric-quickstart-java-reliable-services.md).
 
-![Lokale stem-app](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
+![Voorbeeld van een Service Fabric-stemtoepassing](./media/service-fabric-tutorial-create-java-app/service-fabric-java-voting-app-sample.png)
 
 In deze zelfstudiereeks leert u het volgende:
 > [!div class="checklist"]
@@ -60,15 +60,15 @@ Maak eerst de webfront-end van de stemtoepassing. Een web-UI aangedreven door An
 
 2. Maak een project via **File** > **New** > **Other** > **Service Fabric** > **Service Fabric Project**.
 
-    ![Dialoogvenster voor nieuw project in Eclipse](./media/service-fabric-tutorial-create-java-app/create-sf-proj-wizard.png)
+    ![Nieuw Service Fabric project in eclips](./media/service-fabric-tutorial-create-java-app/service-fabric-project-wizard.png)
 
 3. Geef in het dialoog venster **wizard ServiceFabric project** de naam project **stem** en selecteer **volgende**.
 
-    ![Stateless Java-service kiezen in het dialoogvenster voor een nieuwe service](./media/service-fabric-tutorial-create-java-app/name-sf-proj-wizard.png) 
+    ![Stateless Java-service kiezen in het dialoogvenster voor een nieuwe service](./media/service-fabric-tutorial-create-java-app/name-service-fabric-project-wizard.png) 
 
 4. Selecteer **stateless service**op de pagina **service toevoegen** en noem uw service **VotingWeb**. Selecteer **volt ooien** om het project te maken.
 
-    ![Stateless service maken]( ./media/service-fabric-tutorial-create-java-app/createvotingweb.png)
+    ![Een stateless service maken voor uw Service Fabric project]( ./media/service-fabric-tutorial-create-java-app/add-service-fabric-votingweb-service.png)
 
     Eclipse maakt een toepassing en een serviceproject en geeft deze weer in Package Explorer.
 
@@ -416,7 +416,7 @@ Service Fabric biedt u de mogelijkheid om uw gegevens consistent en betrouwbaar 
 
 3. Eclipse maakt een serviceproject en geeft dit weer in Package Explorer.
 
-    ![Solution Explorer](./media/service-fabric-tutorial-create-java-app/packageexplorercompletejava.png)
+    ![Project Verkenner-eclips](./media/service-fabric-tutorial-create-java-app/service-fabric-package-explorer-java.png)
 
 ### <a name="add-the-votingdataservicejava-file"></a>Het bestand VotingDataService.java toevoegen
 
@@ -557,7 +557,7 @@ De basis voor de front-end stateless service en de back-endservice is nu gemaakt
 
 1. Klik met de rechter muisknop op het **stem** project in de pakket Verkenner en selecteer **nieuwe** > **map**. Noem de map **VotingRPC/src/rpcmethods**.
 
-    ![VotingRPC-pakket maken](./media/service-fabric-tutorial-create-java-app/createvotingrpcpackage.png)
+    ![Een VotingRPC-pakket maken in de eclips-pakket Verkenner](./media/service-fabric-tutorial-create-java-app/create-voting-rpc-package-java.png)
 
 3. Maak onder *Voting/VotingRPC/src/rpcmethods* een bestand met de naam *VotingRPC.java* en plak het volgende in het bestand **VotingRPC.java**. 
 
@@ -720,7 +720,7 @@ De stemtoepassing bestaat uit twee services:
 - Web-front-endservice (VotingWeb): een Java web-front-endservice die de webpagina ondersteunt en API's beschikbaar stelt om te communiceren met de back-endservice.
 - Back-endservice (VotingDataService): een Java-webservice die methoden definieert die worden aangeroepen via externe procedureaanroepen (RPC) om stemmen vast te leggen.
 
-![Diagram van de toepassing](./media/service-fabric-tutorial-create-java-app/walkthroughjavavoting.png)
+![Voorbeeld diagram stem](./media/service-fabric-tutorial-create-java-app/walkthrough-java-voting.png)
 
 Wanneer u een actie uitvoert in de toepassing (item toevoegen, stemmen, item verwijderen), gebeurt het volgende:
 1. Een JavaScript verzendt de juiste aanvraag als een HTTP-aanvraag naar de web-API in de web-front-endservice.

@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 3fa68cf3996efa047b7573306749acb56b4c9411
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 77805b15d0061d0ab4b6ef2185c2f7f1c3459f0c
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "70744088"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172051"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions ontwikkelen met Visual Studio code
 
@@ -90,7 +90,7 @@ Met de project sjabloon maakt u een project in de taal die u hebt gekozen en ins
     >[!IMPORTANT]
     >Omdat het bestand local. settings. json geheimen kan bevatten, moet u het uitsluiten van uw project broncode beheer.
 
-U kunt nu invoer-en uitvoer bindingen aan uw functie toevoegen door [het function. JSON-bestand te wijzigen](#javascript-2) of door [een para meter toe te C# voegen aan een functie van een klassen bibliotheek](#c-class-library-2).
+U kunt nu invoer-en uitvoer bindingen aan uw functie toevoegen door [het function. JSON-bestand te wijzigen](#add-a-function-to-your-project) of door [een para meter toe te C# voegen aan een functie van een klassen bibliotheek](#add-a-function-to-your-project).
 
 U kunt ook [een nieuwe functie toevoegen aan uw project](#add-a-function-to-your-project).
 
@@ -98,11 +98,11 @@ U kunt ook [een nieuwe functie toevoegen aan uw project](#add-a-function-to-your
 
 Met uitzonde ring van HTTP-en timer-triggers, worden bindingen geïmplementeerd in uitbreidings pakketten. U moet de uitbreidings pakketten installeren voor de triggers en bindingen die deze nodig hebben. Het proces voor het installeren van bindings uitbreidingen is afhankelijk van de taal van uw project.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-### <a name="c-class-library"></a>C\# -klassebibliotheek
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Voer de [DotNet-opdracht add package](/dotnet/core/tools/dotnet-add-package) uit in het Terminal venster om de uitbreidings pakketten te installeren die u nodig hebt in uw project. Met de volgende opdracht wordt de extensie Azure Storage geïnstalleerd, waarmee bindingen voor blob-, wachtrij-en tabel opslag worden geïmplementeerd.
 
@@ -110,19 +110,23 @@ Voer de [DotNet-opdracht add package](/dotnet/core/tools/dotnet-add-package) uit
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
+---
+
 ## <a name="add-a-function-to-your-project"></a>Een functie toevoegen aan uw project
 
 U kunt een nieuwe functie toevoegen aan een bestaand project door een van de vooraf gedefinieerde functies trigger sjablonen te gebruiken. Als u een nieuwe functie trigger wilt toevoegen, selecteert u F1 om het opdracht palet te openen en zoekt en voert u **de opdracht uit Azure functions: Create-** functie. Volg de aanwijzingen om het trigger type te kiezen en definieer de vereiste kenmerken van de trigger. Als voor uw trigger een toegangs sleutel of connection string om verbinding te maken met een service, moet u dit doen voordat u de functie trigger maakt.
 
 De resultaten van deze actie zijn afhankelijk van de taal van uw project:
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 Er wordt een nieuwe map gemaakt in het project. De map bevat een nieuwe functie. JSON-bestand en het nieuwe Java script-code bestand.
 
-### <a name="c-class-library"></a>C\# -klassebibliotheek
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Er wordt C# een nieuw Class Library-bestand (. cs) toegevoegd aan uw project.
+
+---
 
 ## <a name="add-input-and-output-bindings"></a>Invoer-en uitvoer bindingen toevoegen
 
@@ -130,7 +134,7 @@ U kunt de functie uitbreiden door invoer-en uitvoer bindingen toe te voegen. Het
 
 In de volgende voor beelden wordt verbinding gemaakt met `outqueue`een opslag wachtrij met de naam, waarbij de Connection String voor het `MyStorageConnection` opslag account is ingesteld in de toepassings instelling in lokale. settings. json.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 Met Visual Studio code kunt u bindingen toevoegen aan uw function. JSON-bestand door een handige set prompts te volgen. Als u een binding wilt maken, klikt u met de rechter muisknop (CTRL + klik op macOS) op het bestand **Function. json** in de map function en selecteert u **binding toevoegen**:
 
@@ -168,7 +172,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 Zie voor meer informatie de referentie voor de uitvoer van de [wachtrij opslag](functions-bindings-storage-queue.md#output---javascript-example) .
 
-### <a name="c-class-library"></a>C\# -klassebibliotheek
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Werk de functie methode bij om de volgende para meter toe `Run` te voegen aan de methode definitie:
 
@@ -181,6 +185,8 @@ Voor deze code moet u de volgende `using` instructie toevoegen:
 ```cs
 using Microsoft.Azure.WebJobs.Extensions.Storage;
 ```
+
+---
 
 De `msg` para meter is `ICollector<T>` een type dat een verzameling berichten vertegenwoordigt die naar een uitvoer binding worden geschreven wanneer de functie is voltooid. U voegt een of meer berichten aan de verzameling toe. Deze berichten worden verzonden naar de wachtrij wanneer de functie is voltooid.
 
@@ -208,7 +214,7 @@ Met de volgende stappen publiceert u uw project naar een nieuwe functie-app die 
 
 1. **In Azure: Het** gebied functies selecteert u het pictogram **implementeren in functie-app** .
 
-    ![Instellingen voor functie-apps](./media/functions-develop-vs-code/function-app-publish-project.png)
+    ![Instellingen voor functie-app](./media/functions-develop-vs-code/function-app-publish-project.png)
 
 1. Als u niet bent aangemeld, wordt u gevraagd u **aan te melden bij Azure**. U kunt ook **een gratis Azure-account maken**. Nadat u zich hebt aangemeld vanuit de browser, gaat u terug naar Visual Studio code.
 

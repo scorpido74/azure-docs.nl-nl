@@ -1,45 +1,45 @@
 ---
-title: Valideren van een hub en spoke-netwerk met Terraform in Azure
-description: Zelfstudie voor het valideren van de hub en spoke-topologie met alle virtuele netwerken met elkaar verbonden.
+title: Een hub-en spoke-netwerk valideren met terraform in azure
+description: Zelf studie voor het valideren van hub-en spoke-netwerk topologie met alle virtuele netwerken die met elkaar zijn verbonden.
 services: terraform
 ms.service: azure
-keywords: terraform, hub en spoke, netwerken, hybride netwerken, devops, virtuele machine, azure, vnet-peering
+keywords: terraform, hub en spoke, netwerken, hybride netwerken, devops, virtuele machine, azure, vnet-peering,
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 157be65a19a1f790b911aa9d861c5f18fc8c0813
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 09/20/2019
+ms.openlocfilehash: e35af0fcf4a8f1f8f0446be44fe5b0bb6eeec693
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128250"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169707"
 ---
-# <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>Zelfstudie: Valideren van een hub en spoke-netwerk met Terraform in Azure
+# <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>Zelfstudie: Een hub-en spoke-netwerk valideren met terraform in azure
 
-In dit artikel hebt uitvoeren u de terraform bestanden die zijn gemaakt in het vorige artikel in deze reeks. Het resultaat is een validatie van de verbinding tussen de demo van virtuele netwerken.
+In dit artikel voert u de terraform-bestanden uit die zijn gemaakt in het vorige artikel in deze serie. Het resultaat is een validatie van de connectiviteit tussen de virtuele demo netwerken.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
-> * HCL (HashiCorp Language) gebruiken voor het implementeren van de Hub VNet in hub-spoke-topologie
-> * Gebruik Terraform-abonnement om te controleren of de resources worden geïmplementeerd
-> * Gebruik Terraform toepassen voor het maken van de resources in Azure
-> * Controleer of de verbinding tussen de verschillende netwerken
-> * Alle resources verwijderen met behulp van Terraform
+> * Gebruik de HCL (HashiCorp Language) voor het implementeren van de hub VNet in hub-spoke-topologie
+> * Het terraform-abonnement gebruiken om te controleren welke resources moeten worden geïmplementeerd
+> * Gebruik terraform Toep assen om de resources in azure te maken
+> * De connectiviteit tussen verschillende netwerken controleren
+> * Terraform gebruiken om alle resources te vernietigen
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. [Maken van een hub- en -spokenetwerktopologie hybride met Terraform in Azure](./terraform-hub-spoke-introduction.md).
-1. [On-premises virtueel netwerk maken met Terraform in Azure](./terraform-hub-spoke-on-prem.md).
-1. [Een virtuele hub-netwerk maken met Terraform in Azure](./terraform-hub-spoke-hub-network.md).
-1. [Een virtueel netwerkapparaat hub maken met Terraform in Azure](./terraform-hub-spoke-hub-nva.md).
-1. [Een knooppunt virtuele netwerken maken met Terraform in Azure](./terraform-hub-spoke-spoke-network.md).
+1. [Maak een hub-en-spoke hybride netwerk topologie met terraform in azure](./terraform-hub-spoke-introduction.md).
+1. [Maak een on-premises virtueel netwerk met terraform in azure](./terraform-hub-spoke-on-prem.md).
+1. [Een hub-virtueel netwerk maken met terraform in azure](./terraform-hub-spoke-hub-network.md).
+1. [Maak een hub virtueel netwerk apparaat met terraform in azure](./terraform-hub-spoke-hub-nva.md).
+1. [Maak een spoke-virtuele netwerk met terraform in azure](./terraform-hub-spoke-spoke-network.md).
 
-## <a name="verify-your-configuration"></a>Controleer de configuratie
+## <a name="verify-your-configuration"></a>De configuratie controleren
 
-Na het voltooien van de [vereisten](#prerequisites), controleren of de juiste configuratiebestanden weergegeven worden.
+Controleer na het volt ooien van de [vereisten](#prerequisites)of de juiste configuratie bestanden aanwezig zijn.
 
 1. Blader naar de [Azure-portal](https://portal.azure.com).
 
@@ -59,82 +59,82 @@ Na het voltooien van de [vereisten](#prerequisites), controleren of de juiste co
     cd hub-spoke
     ```
 
-1. Voer de `ls` opdracht uit om te controleren of de `.tf` configuratiebestanden in de vorige zelfstudies hebt gemaakt, worden weergegeven:
+1. Voer de `ls` opdracht uit om te controleren `.tf` of de configuratie bestanden die zijn gemaakt in de vorige zelf studies, worden weer gegeven:
 
-    ![Terraform demo-configuratiebestanden](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-config-files.png)
+    ![Terraform-demo configuratie bestanden](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-config-files.png)
 
 ## <a name="deploy-the-resources"></a>De resources implementeren
 
-1. De provider Terraform initialiseren:
+1. Initialiseer de terraform-provider:
     
     ```bash
     terraform init
     ```
     
-    ![Van de voorbeeldresultaten van de opdracht "terraform init"](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-init.png)
+    ![Voor beeld van de resultaten van de opdracht ' terraform init '](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-init.png)
     
-1. Voer de `terraform plan` opdracht om te zien van het effect van de implementatie te bevestigen voordat kan worden uitgevoerd:
+1. Voer de `terraform plan` opdracht uit om het effect van de implementatie te bekijken voordat deze wordt uitgevoerd:
 
     ```bash
     terraform plan
     ```
     
-    ![Van de voorbeeldresultaten van de opdracht "terraform plan"](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-plan.png)
+    ![Voorbeeld resultaten van de opdracht ' terraform plan '](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-plan.png)
 
-1. De oplossing implementeert:
+1. De oplossing implementeren:
 
     ```bash
     terraform apply
     ```
     
-    Voer `yes` wanneer hierom wordt gevraagd om te bevestigen van de implementatie.
+    Voer `yes` in wanneer u wordt gevraagd de implementatie te bevestigen.
 
-    ![Van de voorbeeldresultaten van de opdracht 'terraform toepassen'](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-apply.png)
+    ![Voor beeld van de resultaten van de opdracht ' terraform Apply '](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-apply.png)
     
-## <a name="test-the-hub-vnet-and-spoke-vnets"></a>Testen van de hub VNet en het knooppunt VNets
+## <a name="test-the-hub-vnet-and-spoke-vnets"></a>De hub VNet en spoke VNets testen
 
-Deze sectie wordt beschreven hoe u test de verbinding van de gesimuleerde on-premises-omgeving met de hub VNet.
+In deze sectie wordt uitgelegd hoe u de connectiviteit van de gesimuleerde on-premises omgeving naar het hub-VNet kunt testen.
 
-1. In de Azure-portal, blader naar de **on-premises-vnet-rg** resourcegroep.
+1. Blader in het Azure Portal naar de resource groep **premises-vnet-RG** .
 
-1. In de **on-premises-vnet-rg** tabblad, selecteert u de virtuele machine met de naam **on-premises-vm**.
+1. Op het tabblad **premises-vnet-RG** selecteert u de virtuele machine met de naam **premises-VM**.
 
 1. Selecteer **Verbinden**.
 
-1. Naast de tekst **aanmelden met lokaal VM-account**, Kopieer de **ssh** opdracht naar het Klembord.
+1. Kopieer de **SSH** -opdracht naar het klem bord naast de tekst **aanmelding met een lokaal VM-account**.
 
-1. Uitvoeren vanaf een Linux-prompt `ssh` verbinding maken met de gesimuleerde on-premises omgeving. Gebruik het wachtwoord dat is opgegeven in de `on-prem.tf` parameterbestand.
+1. Uitvoeren vanaf een Linux-prompt `ssh` verbinding maken met de gesimuleerde on-premises omgeving. Gebruik het wacht woord dat is `on-prem.tf` opgegeven in het parameter bestand.
 
-1. Voer de `ping` opdracht test de verbinding met de jumpbox-VM in de hub VNet:
+1. Voer de `ping` opdracht uit om de verbinding met de JumpBox-vm in het hub-VNet te testen:
 
    ```bash
    ping 10.0.0.68
    ```
 
-1. Voer de `ping` opdracht test de verbinding met de jumpbox-VM's in elk knooppunt:
+1. Voer de `ping` opdracht uit om de verbinding met de JumpBox vm's in elke spoke te testen:
 
    ```bash
    ping 10.1.0.68
    ping 10.2.0.68
    ```
 
-1. Om af te sluiten de ssh-sessie op de **on-premises-vm** virtuele machine, voer `exit` en druk op &lt;Enter >.
+1. Als u de SSH-sessie op de virtuele machine met **premises-VM** wilt afsluiten &lt;, voert `exit` u in en drukt u op ENTER >.
 
-## <a name="troubleshoot-vpn-issues"></a>Problemen met VPN
+## <a name="troubleshoot-vpn-issues"></a>VPN-problemen oplossen
 
-Zie het artikel voor informatie over het oplossen van VPN-fouten, [een hybride VPN-verbinding oplossen](/azure/architecture/reference-architectures/hybrid-networking/troubleshoot-vpn).
+Zie het artikel [problemen met een hybride VPN-verbinding oplossen](/azure/architecture/reference-architectures/hybrid-networking/troubleshoot-vpn)voor meer informatie over het oplossen van VPN-fouten.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer het niet meer nodig hebt, verwijdert u de resources in deze reeks zelfstudies hebt gemaakt.
+Als u deze niet meer nodig hebt, verwijdert u de resources die zijn gemaakt in de reeks zelf studies.
 
-1. De resources die zijn gedeclareerd in het plan verwijderen:
+1. Verwijder de resources die zijn gedeclareerd in het plan:
 
     ```bash
     terraform destroy
     ```
 
-    Voer `yes` wanneer hierom wordt gevraagd de verwijdering van de resources te bevestigen.
+    Voer `yes` in wanneer u wordt gevraagd het verwijderen van de resources te bevestigen.
 
 1. Wijzig de mappen in de bovenliggende map:
 
@@ -142,7 +142,7 @@ Wanneer het niet meer nodig hebt, verwijdert u de resources in deze reeks zelfst
     cd ..
     ```
 
-1. Verwijder de `hub-scope` directory (met inbegrip van alle bestanden):
+1. Verwijder de `hub-scope` map (inclusief alle bestanden):
 
     ```bash
     rm -r hub-spoke
@@ -151,4 +151,4 @@ Wanneer het niet meer nodig hebt, verwijdert u de resources in deze reeks zelfst
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Meer informatie over het gebruik van Terraform in Azure](/azure/terraform)
+> [Meer informatie over het gebruik van terraform in azure](/azure/terraform)

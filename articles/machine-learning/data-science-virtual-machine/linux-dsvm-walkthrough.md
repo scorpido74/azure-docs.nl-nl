@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 759c804fd4128d7b28cbba078cab5e9d7e6453f6
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: f9d4b933bc9c6e11dde8168d9797a1b6196e6f47
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208297"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170699"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Data Wetenschappen met een Linux-Data Science Virtual Machine in azure
 
@@ -30,7 +30,7 @@ Voordat u een Linux-DSVM kunt gebruiken, moet u beschikken over de volgende vere
 
 * **Azure-abonnement**. Zie [vandaag nog uw gratis Azure-account maken](https://azure.microsoft.com/free/)om een Azure-abonnement te krijgen.
 * [**Linux-Data Science virtual machine**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Zie [de Linux-Data Science virtual machine inrichten](linux-dsvm-intro.md)voor meer informatie over het inrichten van de virtuele machine.
-* [**X2Go**](https://wiki.x2go.org/doku.php) is op uw computer geïnstalleerd met een open xfce-sessie. Zie [de X2Go-client installeren en configureren](linux-dsvm-intro.md#install-and-configure-the-x2go-client)voor meer informatie.
+* [**X2Go**](https://wiki.x2go.org/doku.php) is op uw computer geïnstalleerd met een open xfce-sessie. Zie [de X2Go-client installeren en configureren](linux-dsvm-intro.md#x2go)voor meer informatie.
 * Voor een soepelere schuif ervaring kunt u in de Firefox-webbrowser van DSVM de `gfx.xrender.enabled` vlag in `about:config`-of uitschakelen. [Meer informatie](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). U kunt ook `mousewheel.enable_pixel_scrolling` overwegen `False`om in te stellen op. [Meer informatie](https://support.mozilla.org/questions/981140).
 * **Azure machine learning-account**. Als u er nog geen hebt, kunt u zich registreren voor een nieuw account op de [Start pagina van Azure machine learning](https://studio.azureml.net/). U kunt het gratis proberen om aan de slag te gaan.
 
@@ -382,7 +382,7 @@ U kunt ook het tabblad **verkennen** gebruiken om inkijkende grafieken te genere
 
 1. Selecteer **distributies**.
 1. Selecteer **histogram**voor **word_freq_remove** en **word_freq_you**.
-1. Selecteer **Uitvoeren**. Als het goed is, ziet u in één grafiek venster beide dichtheids grafieken, waar het woord duidelijker wordt weer gegeven in e-mail berichten dan _verwijderen_.
+1. Selecteer **Uitvoeren**. Als het goed is, _ziet u in_ één grafiek venster beide dichtheids grafieken, waar het woord duidelijker wordt weer gegeven in e-mail berichten dan _verwijderen_.
 
 De **correlatie** punten zijn ook interessant. Een tekening maken:
 

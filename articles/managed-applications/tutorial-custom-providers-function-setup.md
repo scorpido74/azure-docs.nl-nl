@@ -1,68 +1,58 @@
 ---
-title: Azure Functions instellen voor Azure aangepaste Providers
-description: In deze zelfstudie gaat over het maken van een Azure-functie en instellen voor gebruik met Azure aangepaste Providers
+title: Azure Functions instellen voor aangepaste Azure-providers
+description: In deze zelf studie wordt uitgelegd hoe u een Azure function-app maakt en deze instelt op werken met aangepaste Azure-providers
 author: jjbfour
 ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: d7e4de43659db88bfd9aad40cc3b9f1753189bba
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 6b5ab6948d382a9925c9ced91e04f360ecf51a0e
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799992"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173029"
 ---
-# <a name="setup-azure-functions-for-azure-custom-providers"></a>Azure Functions instellen voor Azure aangepaste Providers
+# <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure Functions instellen voor aangepaste Azure-providers
 
-Aangepaste providers kunnen u werkstromen in Azure aanpassen. Een aangepaste provider is een overeenkomst tussen Azure en een `endpoint`. In deze zelfstudie doorloopt het proces van het instellen van een Azure-functie om te werken als een aangepaste provider `endpoint`.
+Een aangepaste provider is een contract tussen Azure en een eind punt. Met aangepaste providers kunt u werk stromen wijzigen in Azure. In deze zelf studie leert u hoe u een Azure function-app instelt voor gebruik als een eind punt voor een aangepaste provider.
 
-In deze zelfstudie is onderverdeeld in de volgende stappen uit:
-
-- Het maken van de Azure-functie
-- Installeren van Azure Table-bindingen
-- Bijwerken van de RESTful HTTP-methoden
-- Azure Resource Manager NuGet-pakketten toevoegen
-
-In deze zelfstudie bouwt op de volgende zelfstudies:
-
-- [Het maken van uw eerste Azure-functie via Azure portal](../azure-functions/functions-create-first-azure-function.md)
-
-## <a name="creating-the-azure-function"></a>Het maken van de Azure-functie
+## <a name="create-the-azure-function-app"></a>De Azure-functie-app maken
 
 > [!NOTE]
-> In deze zelfstudie, wordt er een eenvoudige service-eindpunt met behulp van een Azure-functie, maar een aangepaste provider kunt een openbaar toegankelijke `endpoint`. Azure Logic Apps, Azure API Management en Azure Web Apps zijn een goede alternatieven.
+> In deze zelf studie maakt u een eenvoudig service-eind punt dat gebruikmaakt van een Azure-functie-app. Een aangepaste provider kan echter elk openbaar toegankelijk eind punt gebruiken. Alternatieven zijn Azure Logic Apps, Azure API Management en de Web Apps functie van Azure App Service.
 
-Voor deze zelfstudie begint, moet u de zelfstudie volgen [het maken van uw eerste Azure-functie in Azure portal](../azure-functions/functions-create-first-azure-function.md). De zelfstudie maakt een .NET core-webhookfunctie die kan worden gewijzigd in de Azure-portal.
+Als u deze zelf studie wilt starten, moet u eerst de zelf studie [uw eerste Azure-functie-app maken in de Azure Portal](../azure-functions/functions-create-first-azure-function.md). In deze zelf studie maakt u een .NET core-webhook-functie die kan worden gewijzigd in de Azure Portal. Het is ook de basis van de huidige zelf studie.
 
-## <a name="install-azure-table-bindings"></a>Installeren van Azure Table-bindingen
+## <a name="install-azure-table-storage-bindings"></a>Azure Table Storage-bindingen installeren
 
-In deze sectie gaat via snelle stappen voor het installeren van de Azure Table storage-bindingen.
+De Azure Table Storage-bindingen installeren:
 
-1. Navigeer naar de `Integrate` tabblad voor de HttpTrigger.
-2. Klik op de `+ New Input`.
-3. Selecteer `Azure Table Storage`.
-4. Installeer de `Microsoft.Azure.WebJobs.Extensions.Storage` als deze nog niet is geïnstalleerd.
-5. Update de `Table parameter name` naar 'tableStorage' en de `Table name` naar 'myCustomResources'.
-6. Sla de bijgewerkte invoerparameter.
+1. Ga naar het tabblad **integreren** voor de http trigger.
+1. Selecteer **+ nieuwe invoer**.
+1. Selecteer **Azure Table Storage**.
+1. Installeer de extensie micro soft. Azure. webjobs. Extensions. Storage als deze nog niet is geïnstalleerd.
+1. Typ **tableStorage**in het vak **naam para meter van tabel** .
+1. Voer in het vak **tabel naam** **myCustomResources**in.
+1. Selecteer **Opslaan** om de bijgewerkte invoer parameter op te slaan.
 
-![Overzicht van de aangepaste provider](./media/create-custom-providers/azure-functions-table-bindings.png)
+![Overzicht van de aangepaste provider waarin tabel bindingen worden weer gegeven](./media/create-custom-providers/azure-functions-table-bindings.png)
 
-## <a name="update-restful-http-methods"></a>Bijwerken van de RESTful HTTP-methoden
+## <a name="update-restful-http-methods"></a>RESTERENDE HTTP-methoden bijwerken
 
-In deze sectie gaat via snelle stappen voor het instellen van de Azure-functie om op te nemen van de RESTful-aanvraagmethoden van aangepaste provider.
+De Azure-functie zo instellen dat de vervolg aanvraag methoden van de aangepaste provider worden toegevoegd:
 
-1. Navigeer naar de `Integrate` tabblad voor de HttpTrigger.
-2. Update de `Selected HTTP methods` aan: GET, POST, DELETE en PUT.
+1. Ga naar het tabblad **integreren** voor de http trigger.
+1. Selecteer onder **geselecteerde HTTP-methoden** **ophalen**, **plaatsen**, **verwijderen**en **plaatsen**.
 
-![Overzicht van de aangepaste provider](./media/create-custom-providers/azure-functions-http-methods.png)
+![Overzicht van de aangepaste provider met HTTP-methoden](./media/create-custom-providers/azure-functions-http-methods.png)
 
-## <a name="modifying-the-csproj"></a>De csproj wijzigen
+## <a name="add-azure-resource-manager-nuget-packages"></a>Azure Resource Manager NuGet-pakketten toevoegen
 
 > [!NOTE]
-> Als de csproj ontbreekt uit de map, wordt deze kan handmatig worden toegevoegd of worden één keer wordt weergegeven de `Microsoft.Azure.WebJobs.Extensions.Storage` extensie is geïnstalleerd op de functie.
+> Als uw C# project bestand ontbreekt in de projectmap, kunt u het hand matig toevoegen. Het wordt ook weer gegeven nadat de uitbrei ding micro soft. Azure. webjobs. Extensions. Storage is geïnstalleerd op de functie-app.
 
-Vervolgens wordt het csproj-bestand bevatten handige NuGet-bibliotheken die het maakt het eenvoudiger om te parseren van binnenkomende aanvragen van aangepaste providers bijgewerkt. Volg de stappen in [extensies toevoegen via de portal](../azure-functions/install-update-binding-extensions-manual.md) en het csproj om op te nemen van de volgende verwijzingen van pakket bijwerken:
+Werk vervolgens het C# project bestand bij om nuttige NuGet-bibliotheken op te kunnen bevatten. Deze bibliotheken maken het gemakkelijker om binnenkomende aanvragen van aangepaste providers te parseren. Volg de stappen om [uitbrei dingen toe te voegen vanuit de portal](../azure-functions/install-update-binding-extensions-manual.md) en werk het C# project bestand bij om de volgende pakket verwijzingen op te nemen:
 
 ```xml
 <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.4" />
@@ -70,7 +60,7 @@ Vervolgens wordt het csproj-bestand bevatten handige NuGet-bibliotheken die het 
 <PackageReference Include="Microsoft.Azure.WebJobs.Script.ExtensionsMetadataGenerator" Version="1.1.*" />
 ```
 
-Voorbeeld csproj-bestand:
+Het volgende XML-element is een C# voorbeeld project bestand:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -88,6 +78,7 @@ Voorbeeld csproj-bestand:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel wordt een Azure-functie om te werken als een aangepaste Azure Provider setup `endpoint`. Ga naar het volgende artikel voor informatie over het ontwerpen van een RESTful aangepaste provider `endpoint`.
+In deze zelf studie stelt u een Azure function-app in om te werken als een Azure aangepaste provider-eind punt.
 
-- [Zelfstudie: Het ontwerpen van een aangepaste provider RESTful-eindpunt](./tutorial-custom-providers-function-authoring.md)
+Zie [zelf studie voor meer informatie over het maken van een gerustend eind punt van een aangepaste provider: Een REST-eind punt](./tutorial-custom-providers-function-authoring.md)van een aangepaste provider ontwerpen.
+

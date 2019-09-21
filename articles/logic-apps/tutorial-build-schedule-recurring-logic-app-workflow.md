@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 9392cfc9c789a757c3ad533a3dbd4719f5292be5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 809d76791522fa135932baaf6e237570ab0af35a
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931569"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172179"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Zelfstudie: Geautomatiseerde, op planning gebaseerde, terugkerende werk stromen maken met behulp van Azure Logic Apps
 
@@ -235,7 +235,7 @@ Vervolgens voegt u een voorwaarde toe waarmee wordt gecontroleerd of de actuele 
 
 1. Selecteer **nieuwe stap**onder de vorige actie.
 
-1. Selecteer onder **Kies een actie de**optie **ingebouwd**en zoek naar voor waarde en selecteer de actie voor de **voor waarde** .
+1. Selecteer onder **Kies een actie de**optie **ingebouwd**. Voer in het zoekvak ' condition ' in als uw filter. Selecteer in de lijst acties de actie **voor de voor waarde** .
 
    ![Selecteer de actie voor waarde](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-condition-action.png)
 
@@ -245,17 +245,17 @@ Vervolgens voegt u een voorwaarde toe waarmee wordt gecontroleerd of de actuele 
 
    1. In de voor waarde klikt u in het vak **een waarde kiezen** op de linkerkant van de voor waarde.
 
-   1. Wanneer de lijst met dynamische inhoud wordt weer gegeven, selecteert u de eigenschap **travelTime** onder **variabelen**.
+   1. Selecteer in de lijst met dynamische inhoud die wordt weer gegeven onder **variabelen**de eigenschap **travelTime** .
 
       ![Voor waarde samen stellen aan de linkerkant](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
-   1. Selecteer in het vak voor de vergelijking deze operator: **is groter dan**
+   1. Selecteer in het vak middelste vergelijking de operator **is groter dan** .
 
    1. Geef in het vak **een waarde kiezen** op de rechter zijde de volgende limiet op:`15`
 
       Wanneer u klaar bent, ziet de voor waarde eruit als in dit voor beeld:
 
-      ![Voorwaarde bouwen](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
+      ![Voor waarde voltooid](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
 
 1. Sla uw logische app op.
 

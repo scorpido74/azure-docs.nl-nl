@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 11/08/2018
-ms.openlocfilehash: 7e66f374a1f5f4fb050f366fdad0e787292101f8
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 09/20/2019
+ms.openlocfilehash: 7a628eb02170346a826cab19498d6fdf40cebddd
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128171"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173387"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Een Terraform-basissjabloon maken in Azure met behulp van Yeoman
 
@@ -74,7 +74,7 @@ Vanaf een opdrachtprompt:
 1. Voer `mkdir <new-directory-name>` in.
 
     > [!NOTE]
-    > Vervang `<new-directory-name>` met de naam van uw nieuwe map. In dit voorbeeld hebben we de nieuwe map `GeneratorDocSample` genoemd.
+    > Vervang `<new-directory-name>` door de naam van de nieuwe map. In dit voorbeeld hebben we de nieuwe map `GeneratorDocSample` genoemd.
 
     ![mkdir](media/terraform-vscode-module-generator/ymg-mkdir-GeneratorDocSample.png)
 
@@ -229,7 +229,7 @@ Al deze items zijn vooraf geïnstalleerd in Cloud Shell.
 
 1. Start een Azure Cloud Shell-sessie in de [Azure-portal](https://portal.azure.com/), op [shell.azure.com](https://shell.azure.com) of in de [mobiele Azure-app](https://azure.microsoft.com/features/azure-portal/mobile-app/).
 
-1. De pagina **Welkom bij Azure Cloud Shell** wordt geopend. Selecteer **Bash (Linux)**. (PowerShell wordt niet ondersteund.)
+1. De pagina **Welkom bij Azure Cloud Shell** wordt geopend. Selecteer **Bash (Linux)** . (PowerShell wordt niet ondersteund.)
 
     ![Welkom bij Azure Cloud Shell](media/terraform-vscode-module-generator/ymg-welcome-to-azure-cloud-shell.png)
 
@@ -250,7 +250,7 @@ Al deze items zijn vooraf geïnstalleerd in Cloud Shell.
 
 1. Maak de map $GOPATH als deze nog niet bestaat: Voer `mkdir ~/go` in.
 
-1. Maak een map in de map $GOPATH: Voer `mkdir ~/go/src` in. Deze map wordt gebruikt voor het ordenen van ander projectmappen die u, zoals maakt mogelijk de `<your-module-name>` map we in de volgende stap maken.
+1. Maak een map in de map $GOPATH: Voer `mkdir ~/go/src` in. Deze map wordt gebruikt voor het bewaren en organiseren van verschillende project mappen die u kunt maken, zoals `<your-module-name>` de map die in de volgende stap wordt gemaakt.
 
 1. Maak een map om de Terraform-module in op te slaan: Voer `mkdir ~/go/src/<your-module-name>` in.
 

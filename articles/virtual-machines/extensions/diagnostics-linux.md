@@ -3,18 +3,18 @@ title: Diagnostische Azure-berekenings-Linux-extensie | Microsoft Docs
 description: De diagnostische extensie van Azure Linux (LAD) configureren voor het verzamelen van metrische gegevens en logboek gebeurtenissen van virtuele Linux-machines die in Azure worden uitgevoerd.
 services: virtual-machines-linux
 author: abhijeetgaiha
-manager: sankalpsoni
+manager: gwallace
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: c4028ff4fef5472ba2a964f70db6d4fe11eeaba6
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 1da5d8aba92ac5cca5f7cdc281e169ce284b202d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918802"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169173"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>De diagnostische Linux-extensie gebruiken om metrische gegevens en logboeken te bewaken
 
@@ -168,7 +168,7 @@ In deze optionele sectie worden extra bestemmingen gedefinieerd waarnaar de uitb
 Element | Value
 ------- | -----
 name | Een teken reeks die wordt gebruikt om te verwijzen naar deze Sink elders in de configuratie van de extensie.
-Type | Het type Sink dat wordt gedefinieerd. Bepaalt de andere waarden (indien van toepassing) in exemplaren van dit type.
+type | Het type Sink dat wordt gedefinieerd. Bepaalt de andere waarden (indien van toepassing) in exemplaren van dit type.
 
 Versie 3,0 van de diagnostische Linux-extensie ondersteunt twee Sink-typen: EventHub en JsonBlob.
 
@@ -310,7 +310,7 @@ Deze optionele sectie bepaalt het verzamelen van metrische gegevens. Onbewerkte 
 Element | Value
 ------- | -----
 wastafel | Beschrijving Een door komma's gescheiden lijst met de namen van de sinks waarnaar LAD geaggregeerde metrische resultaten verzendt. Alle geaggregeerde metrische gegevens worden gepubliceerd naar elke vermelde sink. Zie [sinksConfig](#sinksconfig). Voorbeeld: `"EHsink1, myjsonsink"`.
-Type | Identificeert de werkelijke provider van de metriek.
+type | Identificeert de werkelijke provider van de metriek.
 Klasse | Samen met "Counter" identificeert de specifieke metriek binnen de naam ruimte van de provider.
 counter | Samen met "class" identificeert de specifieke metriek binnen de naam ruimte van de provider.
 counterSpecifier | Identificeert de specifieke metrische waarde binnen de metrische naam ruimte van Azure.

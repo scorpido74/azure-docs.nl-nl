@@ -1,21 +1,18 @@
 ---
-title: 'Quickstart: Een geo-kunst matige intelligentie instellen'
-titleSuffix: Azure Data Science Virtual Machine
-description: Informatie over het maken en configureren van de Geo AI Data Science Virtual Machine. De Geo AI Data Science Virtual Machine biedt u de hulpmiddelen om AI en ML-oplossingen met behulp van geografische gegevens te maken.
-keywords: deep learning, AI, hulpprogramma's voor data science, virtuele machine voor datatechnologie, georuimtelijke analyses
-services: machine-learning
+title: 'Quickstart: Een Geo AI-DSVM maken'
+description: Configureer en maak een geo AI-Data Science Virtual Machine op Azure voor georuimtelijke analyse en machine learning.
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: quickstart
-ms.date: 03/05/2018
-ms.openlocfilehash: 7afeec3f71cd1af30093801fedabf3f0357ae3d0
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 09/13/2019
+ms.openlocfilehash: 6b32d1f76091d7bbb8f870402020d0ac247d425b
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208055"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170719"
 ---
 # <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Quickstart: Een geografische, kunst matige intelligentie virtuele machine instellen op Azure 
 

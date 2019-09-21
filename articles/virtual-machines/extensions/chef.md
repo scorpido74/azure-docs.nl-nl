@@ -3,7 +3,7 @@ title: Chef-extensie voor Azure-Vm's | Microsoft Docs
 description: Implementeer de chef-client op een virtuele machine met behulp van de VM-extensie chef.
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
-ms.author: roiyz
-ms.openlocfilehash: 0ed042b3b004fd43bc03304c3042c2ac3e1a6482
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: e82a5fefcc7f582df65d945735d9840fc3e49829
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092554"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169142"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef VM-extensie voor Linux en Windows
 
@@ -71,7 +71,7 @@ In de volgende JSON wordt het schema voor de VM-extensie chef weer gegeven. Voor
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (datum) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | string |
-| Type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
+| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Instellingen

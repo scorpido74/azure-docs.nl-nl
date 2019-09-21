@@ -3,7 +3,7 @@ title: Extensie van de virtuele machine Azure Monitor voor Linux | Microsoft Doc
 description: De Log Analytics-agent op Linux-machine met behulp van de extensie van een virtuele machine implementeren.
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
-ms.author: roiyz
-ms.openlocfilehash: 8ce10deaf49b6d7796a6b932beb15a1527322f69
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: 95b630342ac2b4bc9cf51f3aa3d8563c4962ce11
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084387"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168931"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Extensie van de virtuele machine Azure Monitor voor Linux
 
@@ -36,7 +36,7 @@ Azure Monitor Logboeken biedt bewakings-, waarschuwings-en waarschuwings functie
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-Raadpleeg het overzichts artikel [log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) voor meer informatie over de ondersteunde Linux-distributies.
+Raadpleeg het [overzichts artikel log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) voor meer informatie over de ondersteunde Linux-distributies.
 
 ### <a name="agent-and-vm-extension-version"></a>Versie agent en VM-extensie
 De volgende tabel bevat een overzicht van de versie van de Azure Monitor VM-extensie en Log Analytics agent bundel voor elke release. Een koppeling naar de opmerkingen bij de release voor de versie van Log Analytics-agent-bundel is opgenomen. Opmerkingen bij de release bevatten informatie over oplossingen voor problemen en nieuwe functies die beschikbaar zijn voor een opgegeven agent-release.  

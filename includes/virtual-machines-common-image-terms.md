@@ -2,28 +2,28 @@
 title: bestand opnemen
 description: bestand opnemen
 services: virtual-machines-windows, virtual-machines-linux
-author: dlepow
+author: cynthn
 ms.service: multiple
 ms.topic: include
 ms.date: 10/09/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 50d71a3967e61e5d531f4bfeae3582b56230a0d2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 98d765e2f6909f00f8dfe76d06aef017aad67adf
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176028"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174945"
 ---
 ## <a name="terminology"></a>Terminologie
 
-Een Marketplace-installatiekopie in Azure heeft de volgende kenmerken:
+Een Marketplace-installatie kopie in azure heeft de volgende kenmerken:
 
-* **Publisher**: De organisatie waarvoor de installatiekopie is gemaakt. Voorbeelden: Canonical, MicrosoftWindowsServer
-* **Bieden**: De naam van een groep gerelateerde afbeeldingen gemaakt door een uitgever. Voorbeelden: UbuntuServer, WindowsServer
-* **SKU**: Een exemplaar van een aanbieding, zoals een grote release van een distributie. Voorbeelden: 18.04-LTS, 2019 Datacenter
-* **Version**: Het versienummer van de SKU van een afbeelding. 
+* **Uitgever**: De organisatie waarvoor de installatiekopie is gemaakt. Voorbeelden: Canonical, MicrosoftWindowsServer
+* **Aanbieding**: De naam van een groep gerelateerde installatie kopieën die door een uitgever zijn gemaakt. Voorbeelden: UbuntuServer, WindowsServer
+* **SKU**: Een exemplaar van een aanbieding, zoals een grote release van een distributie. Voorbeelden: 18,04-LTS, 2019-Data Center
+* **Version**: Het versie nummer van een afbeeldings-SKU. 
 
-Geef deze waarden afzonderlijk als parameters voor het identificeren van een Marketplace-installatiekopie wanneer u een virtuele machine via een programma implementeert. Sommige hulpprogramma's voor een afbeelding accepteren *URN*, die deze waarden, gescheiden door het teken dubbele punt (:) worden gecombineerd: *Uitgever*:*bieden*:*Sku*:*versie*. In een URN, kunt u vervangen het versienummer met 'nieuwste', de meest recente versie van de installatiekopie te selecteren. 
+Als u een Marketplace-installatie kopie wilt identificeren wanneer u een virtuele machine programmatisch implementeert, dient u deze waarden afzonderlijk op te geven als para meters. Sommige hulpprogram ma's accepteren een afbeelding *urn*, dat deze waarden combineert, gescheiden door de dubbele punt (:) ring *Uitgever*:*aanbieding*:*SKU*:*versie*. In een URN kunt u het versie nummer vervangen door ' laatste ', waarmee de meest recente versie van de installatie kopie wordt geselecteerd. 
 
-Als de installatiekopie-uitgever biedt een extra licentie en Aankoopvoorwaarden, moet u deze voorwaarden akkoord en programmatische implementatie inschakelen. U moet ook opgeven *abonnement aanschaffen* parameters bij het implementeren van een virtuele machine via een programma. Zie [een installatiekopie implementeren met de voorwaarden van Marketplace](#deploy-an-image-with-marketplace-terms).
+Als de uitgever van de installatie kopie aanvullende licentie-en aankoop voorwaarden biedt, moet u deze voor waarden accepteren en programmatische implementatie inschakelen. U moet ook de para meters van het *aankoop plan* opgeven wanneer u een virtuele machine programmatisch implementeert. Zie [een installatie kopie implementeren met Marketplace-voor waarden](#deploy-an-image-with-marketplace-terms).

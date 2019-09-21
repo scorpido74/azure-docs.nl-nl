@@ -2,28 +2,28 @@
 title: bestand opnemen
 description: bestand opnemen
 services: virtual-machines-windows, virtual-machines-linux
-author: dlepow
+author: cynthn
 ms.service: multiple
 ms.topic: include
 ms.date: 10/09/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4d2235eaea457c89d01a632afa5dd5a862bec344
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8e0e549f88caf4a541642bab77faf54b5e536b29
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176027"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174944"
 ---
-## <a name="deploy-an-image-with-marketplace-terms"></a>Een installatiekopie implementeren met de voorwaarden van Marketplace
+## <a name="deploy-an-image-with-marketplace-terms"></a>Een installatie kopie implementeren met Marketplace-voor waarden
 
-Enkele VM-installatiekopieën in de Azure Marketplace zijn extra licentie en aankoop voorwaarden die u accepteren moet voordat u ze via een programma kunt implementeren.  
+Sommige VM-installatie kopieën in de Azure Marketplace hebben aanvullende licentie-en aankoop voorwaarden die u moet accepteren voordat u ze via een programma kunt implementeren.  
 
-Voor het implementeren van een virtuele machine uit een dergelijke afbeelding, moet u akkoord met de voorwaarden van de afbeelding zowel programmatische implementatie inschakelen. U hoeft alleen te doen dit maar eenmaal per abonnement. Daarna wordt telkens wanneer u een virtuele machine implementeren via een programma uit de afbeelding die u ook moet om op te geven *abonnement aanschaffen* parameters.
+Als u een virtuele machine van een dergelijke installatie kopie wilt implementeren, moet u de voor waarden van de installatie kopie accepteren en programmatische implementatie inschakelen. U hoeft dit slechts één keer per abonnement te doen. Telkens wanneer u een virtuele machine via een programma vanuit de installatie kopie implementeert, moet u ook de para meters van het *aankoop plan* opgeven.
 
-De volgende secties tonen hoe u:
+In de volgende secties ziet u hoe u:
 
-* Uitzoeken of een Marketplace-installatiekopie aanvullende licentievoorwaarden heeft 
-* Accepteer de voorwaarden via een programma
-* Aankoop planning parameters opgeven wanneer u een virtuele machine via een programma implementeren
+* Nagaan of er aanvullende licentie voorwaarden zijn voor een Marketplace-installatie kopie 
+* De termen via een programma accepteren
+* De para meters van het aankoop plan opgeven wanneer u een virtuele machine programmatisch implementeert
 

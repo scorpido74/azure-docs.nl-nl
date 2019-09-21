@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 08/28/2019
-ms.openlocfilehash: 9a80cb7ba44c86d449e4ff4178a2982db302a717
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/20/2019
+ms.openlocfilehash: 6feeab9b48715a8fe1f6c6fe11ae90b6be71a57a
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138351"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173478"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Een virtuele Azure-machineschaalset maken van een aangepaste Packer-installatiekopie met behulp van Terraform
 
@@ -42,9 +42,9 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Maak drie nieuwe bestanden in een lege map met de volgende namen:
 
-- ```variables.tf```: dit bestand bevat de waarden van de variabelen die worden gebruikt in de sjabloon.
-- ```output.tf```: dit bestand beschrijft de instellingen die worden weergegeven na implementatie.
-- ```vmss.tf```Dit bestand bevat de code van de infra structuur die u implementeert.
+- `variables.tf` : Dit bestand bevat de waarden van de variabelen die in de sjabloon worden gebruikt.
+- `output.tf` : In dit bestand worden de instellingen beschreven die na de implementatie worden weer gegeven.
+- `vmss.tf` : Dit bestand bevat de code van de infra structuur die u implementeert.
 
 ##  <a name="create-the-variables"></a>De variabelen maken 
 
@@ -52,7 +52,7 @@ In deze stap definieert u de variabelen waarmee de met Terraform gemaakte resour
 
 Bewerk het bestand `variables.tf`, kopieer de volgende code en sla de wijzigingen op.
 
-```tf 
+```hcl
 variable "location" {
   description = "The location where resources are created"
   default     = "East US"
@@ -70,7 +70,7 @@ variable "resource_group_name" {
 
 Sla het bestand op.
 
-Wanneer u de Terraform-sjabloon implementeert, wilt u de volledig gekwalificeerde domeinnaam die wordt gebruikt voor toegang tot de toepassing ophalen. Gebruik het resourcetype ```output``` van Terraform en haal de eigenschap ```fqdn``` van de resource op. 
+Wanneer u de Terraform-sjabloon implementeert, wilt u de volledig gekwalificeerde domeinnaam die wordt gebruikt voor toegang tot de toepassing ophalen. Gebruik het resourcetype `output` van Terraform en haal de eigenschap `fqdn` van de resource op. 
 
 Bewerk het bestand `output.tf` en kopieer de volgende code om de volledig gekwalificeerde domeinnaam voor de virtuele machines beschikbaar te maken. 
 
@@ -89,9 +89,9 @@ In deze stap maakt u de volgende netwerkinfrastructuur in een nieuwe Azure-resou
 
 U hebt ook een resourcegroep nodig waarin alle resources worden gemaakt. 
 
-Bewerk en kopieer de volgende code naar het bestand ```vmss.tf```: 
+Bewerk en kopieer de volgende code naar het bestand `vmss.tf`: 
 
-```tf 
+```hcl
 
 resource "azurerm_resource_group" "vmss" {
   name     = "${var.resource_group_name}"
@@ -145,7 +145,7 @@ Initialiseer de Terraform-omgeving door de volgende opdracht uit te voeren in de
 terraform init 
 ```
  
-De invoegtoepassingen van de provider worden vanuit het Terraform-register gedownload naar de map ```.terraform``` in de directory waar u de opdracht hebt uitgevoerd.
+De invoegtoepassingen van de provider worden vanuit het Terraform-register gedownload naar de map `.terraform` in de directory waar u de opdracht hebt uitgevoerd.
 
 Voer de volgende opdracht uit om de infrastructuur in Azure te implementeren.
 
@@ -185,8 +185,7 @@ In deze stap maakt u de volgende resources in het netwerk dat eerder is geïmple
 
 Voeg de volgende code aan het einde van het bestand `vmss.tf` toe.
 
-```tf
-
+```hcl
 
 resource "azurerm_lb" "vmss" {
   name                = "vmss-lb"
@@ -303,7 +302,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
 
 Pas de implementatie aan door de volgende code toe te voegen aan `variables.tf`:
 
-```tf 
+```hcl
 variable "application_port" {
     description = "The port that you want to expose to the external load balancer"
     default     = 80

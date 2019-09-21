@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: a48c2fdcce5126747f00cd3b901839864d438346
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 9e14a9f3f2f27112a591f14e9a93580f66aadef7
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058277"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169550"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights voor ASP.NET Core toepassingen
 
@@ -29,14 +29,14 @@ Het voor beeld dat hier wordt gebruikt, is een [MVC](https://docs.microsoft.com/
 
 Met de [Application INSIGHTS SDK voor ASP.net core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) kunt u uw toepassingen bewaken, ongeacht waar of hoe ze worden uitgevoerd. Als uw toepassing wordt uitgevoerd en netwerk verbinding heeft met Azure, kan telemetrie worden verzameld. Application Insights bewaking wordt ondersteund overal wat .NET core ondersteunt. Ondersteunings dekkingen:
 * **Besturingssysteem**: Windows, Linux of Mac.
-* **Hosting methode**: In behandeling of out-of-process. 
+* **Hosting methode**: In behandeling of out-of-process.
 * **Implementatie methode**: Framework-afhankelijk of zelfstandig.
-* **Webserver**: IIS (Internet Information Server) of Kestrel. 
+* **Webserver**: IIS (Internet Information Server) of Kestrel.
 * **Hosting platform**: De functie Web Apps van Azure App Service, Azure VM, docker, Azure Kubernetes service (AKS), enzovoort.
 * **IDE**: Visual Studio, VS code of opdracht regel.
 
 > [!NOTE]
-> Als u ASP.NET Core 3,0-Preview gebruikt, samen met Application Insights, moet u de [2.8.0-beta2-](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0-beta2) versie of hoger gebruiken. Dit is de enige versie die bekend is bij het werken met ASP.NET Core 3,0. Daarnaast wordt onboarding op basis van Visual Studio nog niet ondersteund voor ASP.NET Core 3,0-apps.
+> Als u ASP.NET Core 3,0-Preview gebruikt, samen met Application Insights, moet u de [2.8.0-beta3-](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0-beta3) versie of hoger gebruiken. Dit is de enige versie die bekend is bij het werken met ASP.NET Core 3,0. Daarnaast wordt onboarding op basis van Visual Studio nog niet ondersteund voor ASP.NET Core 3,0-apps.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -241,9 +241,9 @@ Volledige lijst met instellingen in`ApplicationInsightsServiceOptions`
 |AddAutoCollectedMetricExtractor | Schakel AutoCollectedMetrics extractor in/uit. Dit is een TelemetryProcessor die vooraf geaggregeerde metrische gegevens over aanvragen/afhankelijkheden verzendt voordat steek proeven worden uitgevoerd. | true
 |RequestCollectionOptions.TrackExceptions | Rapportage van niet-verwerkte uitzonderings tracering door de verzamelings module voor aanvragen in-of uitschakelen. | False in netstandard 2.0 (omdat uitzonde ringen worden bijgehouden met ApplicationInsightsLoggerProvider), anders waar.
 
-Zie de [Configureer bare instellingen in `ApplicationInsightsServiceOptions` ](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Microsoft.ApplicationInsights.AspNetCore/Extensions/ApplicationInsightsServiceOptions.cs) voor de meest recente lijst.
+Zie de [Configureer bare instellingen in `ApplicationInsightsServiceOptions` ](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) voor de meest recente lijst.
 
-### <a name="sampling"></a>Steekproeven
+### <a name="sampling"></a>Steekproef nemen
 
 De Application Insights SDK voor ASP.NET Core ondersteunt zowel vaste als adaptieve steek proeven. Adaptieve steek proeven zijn standaard ingeschakeld. 
 

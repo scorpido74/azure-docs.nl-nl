@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
-ms.author: roiyz
-ms.openlocfilehash: 167780971ec59efd1ca197958798564d1ef2d596
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: 83646c0b11bf558f667b29271a27d31e5489c157
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092318"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174014"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Uitbrei ding van NVIDIA GPU-stuur programma voor Linux
 
@@ -76,7 +76,7 @@ In de volgende JSON wordt het schema voor de uitbrei ding weer gegeven.
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.HpcCompute | string |
-| Type | NvidiaGpuDriverLinux | string |
+| type | NvidiaGpuDriverLinux | string |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Instellingen
@@ -177,7 +177,7 @@ Extensie uitvoering uitvoer wordt vastgelegd in het volgende bestand:
 
 | Afsluitcode | Betekenis | Mogelijke actie |
 | :---: | --- | --- |
-| 0 | Bewerking is geslaagd |
+| 0 | Bewerking is voltooid |
 | 1 | Onjuist gebruik van uitbrei ding | Uitvoer logboek van uitvoering controleren |
 | 10 | Linux-integratie Services voor Hyper-V en Azure zijn niet beschikbaar of geïnstalleerd | Controleer de uitvoer van lspci |
 | 11 | NVIDIA GPU niet gevonden op deze VM-grootte | Een [ondersteunde VM-grootte en besturings systeem](../linux/n-series-driver-setup.md) gebruiken |
@@ -193,4 +193,4 @@ Als u hulp nodig hebt op elk gewenst moment in dit artikel, u kunt contact opnem
 ## <a name="next-steps"></a>Volgende stappen
 Zie [virtuele machines en functies voor Linux](features-linux.md)voor meer informatie over uitbrei dingen.
 
-Zie grootten van [virtuele machines](../linux/sizes-gpu.md)die zijn geoptimaliseerd voor GPU voor meer informatie over vm's van de N-serie.
+Zie [grootten van virtuele machines](../linux/sizes-gpu.md)die zijn geoptimaliseerd voor GPU voor meer informatie over vm's van de N-serie.

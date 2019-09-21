@@ -3,7 +3,7 @@ title: Extensie van de virtuele machine Azure Monitor voor Windows | Microsoft D
 description: Implementeer de Log Analytics-agent op virtuele Windows-machines met behulp van een extensie van een virtuele machine.
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2019
-ms.author: roiyz
-ms.openlocfilehash: 393b01d7815d94e4ad623c552f4110421c9d98bd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: fe8bafcb63c1a27b905bdc339c07d30c9f0a5982
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092257"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168929"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Extensie van de virtuele machine Azure Monitor voor Windows
 
@@ -31,7 +31,7 @@ Azure Monitor Logboeken biedt bewakings mogelijkheden voor Cloud-en on-premises 
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-Raadpleeg het overzichts artikel [log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) voor meer informatie over de ondersteunde Windows-besturings systemen.
+Raadpleeg het [overzichts artikel log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) voor meer informatie over de ondersteunde Windows-besturings systemen.
 
 ### <a name="agent-and-vm-extension-version"></a>Versie agent en VM-extensie
 De volgende tabel bevat een overzicht van de versie van de Windows Azure Monitor VM-extensie en Log Analytics agent bundel voor elke release. 
@@ -88,7 +88,7 @@ De volgende JSON toont het schema voor de uitbrei ding van de Log Analytics agen
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
-| Type | MicrosoftMonitoringAgent |
+| type | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
 | workspaceId (bijvoorbeeld)* | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (bijvoorbeeld) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |

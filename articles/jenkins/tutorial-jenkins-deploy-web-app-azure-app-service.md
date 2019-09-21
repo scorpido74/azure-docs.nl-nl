@@ -8,19 +8,19 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 06f1c0123d6bdf56b5182605016d2feb80adf18b
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: c4e4a984adc0ec6af99667ff36c009ca730acf48
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172971"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172836"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Zelfstudie: implementatie vanuit GitHub naar Azure App Service met continue integratie en implementatie in Jenkins
 
 In deze zelfstudie implementeert u een voorbeeld van een Java-web-app vanuit GitHub in [Azure App Service op Linux](/azure/app-service/containers/app-service-linux-intro) door het instellen van continue integratie (CI) en continue implementatie (CD) in Jenkins. Wanneer u de app bijwerkt door doorvoeracties te pushen naar GitHub, wordt uw app automatisch door Jenkins gecompileerd en opnieuw gepubliceerd naar Azure App Service. De voorbeeld-app in deze zelfstudie is ontwikkeld met behulp van het [Spring Boot](https://projects.spring.io/spring-boot/)-framework. 
 
-![Overzicht](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
+![Overzicht van GitHub naar Azure App Service-implementatie](media/tutorial-jenkins-deploy-web-app-azure-app-service/azure-continuous-integration-deployment-overview.png)
 
 In deze zelfstudie voert u de volgende taken uit:
 
@@ -97,19 +97,19 @@ Als u wilt dat Jenkins GitHub bewaakt en reageert wanneer er nieuwe doorvoeracti
 
 1. Selecteer op de pagina **Manage Jenkins** de optie **Configure System**. 
 
-   ![Systeem configureren](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
+   ![Het systeem in Jenkins configureren](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
 
 1. Geef in de sectie **GitHub** details op voor uw GitHub-server. Selecteer in de lijst **Add GitHub Server** de optie **GitHub Server**. 
 
-   ![GitHub-server toevoegen](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
+   ![GitHub-server toevoegen in Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
 
 1. Als de eigenschap **Manage hooks** niet is geselecteerd, selecteert u deze eigenschap. Selecteer **Geavanceerd** zodat u andere instellingen kunt opgeven. 
 
-   !['Advanced' kiezen voor meer instellingen](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
+   ![Geavanceerde instellingen voor Jenkins voor GitHub-server opgeven](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
 
 1. Selecteer in de lijst **Manage additional GitHub actions** de optie **Convert login and password to token**.
 
-   !['Manage additional GitHub actions' kiezen](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
+   ![De aanmelding en het wacht woord naar het token voor GitHub converteren](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
 
 1. Selecteer **From login and password** zodat u uw GitHub-gebruikersnaam en -wachtwoord kunt invoeren. Wanneer u klaar bent, selecteert u **token referenties maken**, waarmee u een [github Personal Access token (Pat)](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)maakt.   
 
@@ -181,11 +181,11 @@ Maak in Jenkins de pijplijntaak voor het compileren en implementeren van uw app.
 
 1. Ga terug naar de Jenkins-startpagina en selecteer **New Item**. 
 
-   !['New Item' selecteren](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
+   ![Een Jenkins-pijplijn maken](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
 
 1. Geef een naam op voor de pijplijntaak, bijvoorbeeld 'Mijn-Java-Web-App' en selecteer **Pijplijn**. Selecteer aan de onderkant **OK**.  
 
-   !['Pipeline' selecteren](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
+   ![De Jenkins-pijplijn taak een naam](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
 
 1. Stel Jenkins in met uw service-principal, zodat Jenkins kan implementeren in Azure zonder gebruik te maken van uw eigen referenties.
 
@@ -199,7 +199,7 @@ Maak in Jenkins de pijplijntaak voor het compileren en implementeren van uw app.
       WEB_APP=yourWebAppName
       ```
 
-      !['Prepare an environment for the run' selecteren en omgevingsvariabelen instellen](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-run.png)
+      ![Een omgeving voorbereiden voor de uitvoering en omgevings variabelen instellen](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-jenkins-run.png)
 
 1. Selecteer **Opslaan** als u klaar bent.
 
@@ -254,7 +254,7 @@ Nu geeft u het build- en implementatiescript op dat Jenkins moet gebruiken.
 
 1. Selecteer in Jenkins de eerder gemaakte pijplijntaak. 
 
-   ![Pijplijntaak voor uw web-app selecteren](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
+   ![De Jenkins-pijplijn taak voor uw web-app selecteren](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
 
 1. Selecteer **Configure** in het linkermenu.
 
@@ -272,7 +272,7 @@ Nu geeft u het build- en implementatiescript op dat Jenkins moet gebruiken.
 
    Wanneer u klaar bent, ziet de pijplijndefinitie er ongeveer uit als in dit voorbeeld: 
 
-   ![Pijplijn wijzen naar script](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
+   ![Uw Jenkins-pijp lijn naar het script wijzen](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
 
 1. Selecteer **Opslaan** als u klaar bent.
 

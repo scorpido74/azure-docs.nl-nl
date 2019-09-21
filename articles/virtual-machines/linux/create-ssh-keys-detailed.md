@@ -3,7 +3,7 @@ title: Gedetailleerde stappen-SSH-sleutel paar voor virtuele Azure Linux-machine
 description: Meer informatie over het maken en beheren van een open bare en persoonlijke SSH-sleutel paar voor virtuele Linux-machines in Azure.
 services: virtual-machines-linux
 documentationcenter: ''
-author: dlepow
+author: cynthn
 manager: gwallace
 editor: ''
 tags: ''
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/17/2018
-ms.author: danlep
-ms.openlocfilehash: f166f460f1518588bd12cc5d0581101d417dd41a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: cynthn
+ms.openlocfilehash: da1454518cff12c2ae05f717b0165c02f437ee74
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083756"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168621"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Gedetailleerde stappen: SSH-sleutels voor verificatie voor een virtuele Linux-machine in azure maken en beheren 
 Met een SSH-sleutel paar (Secure Shell) kunt u een virtuele Linux-machine in azure maken die standaard gebruikmaakt van SSH-sleutels voor verificatie, waardoor het niet nodig is om zich aan te melden. Vm's die zijn gemaakt met de Azure Portal, Azure CLI, Resource Manager-sjablonen of andere hulpprogram ma's, kunnen uw open bare SSH-sleutel opnemen als onderdeel van de implementatie, waarmee SSH-sleutel verificatie wordt ingesteld voor SSH-verbindingen. 
@@ -43,7 +43,7 @@ Als u geen SSH-sleutels wilt gebruiken, kunt u uw virtuele Linux-machine instell
 
 ## <a name="generate-keys-with-ssh-keygen"></a>Sleutels genereren met ssh-keygen
 
-Voor het maken van de sleutels is `ssh-keygen`een voorkeurs opdracht, die beschikbaar is met OpenSSH-hulpprogram ma's in de Azure Cloud shell, een macOS-of Linux-host, het Windows-subsysteem [voor Linux](https://docs.microsoft.com/windows/wsl/about)en andere hulpprogram ma's. `ssh-keygen`vraagt een reeks vragen en schrijft een persoonlijke sleutel en een overeenkomende open bare sleutel. 
+Voor het maken van de sleutels is `ssh-keygen`een voorkeurs opdracht, die beschikbaar is met OpenSSH-hulpprogram ma's in de Azure Cloud shell, een macOS-of Linux-host, het Windows- [subsysteem voor Linux](https://docs.microsoft.com/windows/wsl/about)en andere hulpprogram ma's. `ssh-keygen`vraagt een reeks vragen en schrijft een persoonlijke sleutel en een overeenkomende open bare sleutel. 
 
 SSH-sleutels worden standaard opgeslagen in de `~/.ssh`-directory.  Als u niet beschikt over de map `~/.ssh`, wordt deze door de opdracht `ssh-keygen` voor u gemaakt met de juiste machtigingen.
 
@@ -125,7 +125,7 @@ ls -al ~/.ssh
 
 `Enter passphrase (empty for no passphrase):`
 
-Het is raadzaam om een wachtwoordzin toe te voegen aan uw persoonlijke sleutel. Zonder een wachtwoordzin om het sleutel bestand te beveiligen, kan iedereen met het bestand deze gebruiken om zich aan te melden bij een server met de bijbehorende open bare sleutel. Het toevoegen van een wachtwoordzin biedt meer beveiliging in het geval iemand toegang kan krijgen tot uw persoonlijke sleutel bestand, zodat u tijd hebt om de sleutels te wijzigen.
+Het is *raadzaam* om een wachtwoordzin toe te voegen aan uw persoonlijke sleutel. Zonder een wachtwoordzin om het sleutel bestand te beveiligen, kan iedereen met het bestand deze gebruiken om zich aan te melden bij een server met de bijbehorende open bare sleutel. Het toevoegen van een wachtwoordzin biedt meer beveiliging in het geval iemand toegang kan krijgen tot uw persoonlijke sleutel bestand, zodat u tijd hebt om de sleutels te wijzigen.
 
 ## <a name="generate-keys-automatically-during-deployment"></a>Automatisch sleutels genereren tijdens implementatie
 

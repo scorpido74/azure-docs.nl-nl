@@ -3,7 +3,7 @@ title: Gebruik terraform om een volledige virtuele Linux-machine in azure te mak
 description: Meer informatie over het gebruik van terraform voor het maken en beheren van een volledige virtuele Linux-machine omgeving in azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: echuvyrov
+author: tomarchermsft
 manager: gwallace
 editor: na
 tags: azure-resource-manager
@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/14/2017
-ms.author: gwallace
-ms.openlocfilehash: 83fba1ae29c2912e440f8983ded844414443a1a7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 09/20/2019
+ms.author: tarcher
+ms.openlocfilehash: b9e379907f28c0d8698eb11aacb88970cf8d6dc4
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100806"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173860"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Een complete infrastructuur voor virtuele Linux-machines maken in Azure met Terraform
 
@@ -35,7 +35,7 @@ De `provider` sectie vertelt terraform u een Azure-provider wilt gebruiken. Zie 
 > [!TIP]
 > Als u omgevings variabelen voor de waarden maakt of de [Azure Cloud shell bash-ervaring](/azure/cloud-shell/overview) gebruikt, hoeft u de variabelen declaraties in deze sectie niet op te maken.
 
-```tf
+```hcl
 provider "azurerm" {
     subscription_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     client_id       = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -46,7 +46,7 @@ provider "azurerm" {
 
 In het volgende gedeelte maakt u een resource `myResourceGroup` groep met `eastus` de naam op de locatie:
 
-```tf
+```hcl
 resource "azurerm_resource_group" "myterraformgroup" {
     name     = "myResourceGroup"
     location = "eastus"
@@ -62,7 +62,7 @@ In aanvullende secties verwijst u naar de resource groep met *$ {azurerm_resourc
 ## <a name="create-virtual-network"></a>Virtueel netwerk maken
 In de volgende sectie wordt een virtueel netwerk met de naam *myVnet* gemaakt in de adres ruimte *10.0.0.0/16* :
 
-```tf
+```hcl
 resource "azurerm_virtual_network" "myterraformnetwork" {
     name                = "myVnet"
     address_space       = ["10.0.0.0/16"]
@@ -77,7 +77,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
 
 In het volgende gedeelte maakt u een subnet met de naam *mySubnet* in het virtuele netwerk *myVnet* :
 
-```tf
+```hcl
 resource "azurerm_subnet" "myterraformsubnet" {
     name                 = "mySubnet"
     resource_group_name  = "${azurerm_resource_group.myterraformgroup.name}"
@@ -90,7 +90,7 @@ resource "azurerm_subnet" "myterraformsubnet" {
 ## <a name="create-public-ip-address"></a>Openbaar IP-adres maken
 Als u toegang wilt krijgen tot bronnen op het Internet, maakt en wijst u een openbaar IP-adres toe aan uw VM. In het volgende gedeelte maakt u een openbaar IP-adres met de naam *myPublicIP*:
 
-```tf
+```hcl
 resource "azurerm_public_ip" "myterraformpublicip" {
     name                         = "myPublicIP"
     location                     = "eastus"
@@ -107,7 +107,7 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 ## <a name="create-network-security-group"></a>Netwerk beveiligings groep maken
 Met netwerk beveiligings groepen wordt de stroom van het netwerk verkeer in en uit uw virtuele machine beheerd. In de volgende sectie wordt een netwerk beveiligings groep gemaakt met de naam *myNetworkSecurityGroup* en wordt een regel gedefinieerd voor het toestaan van SSH-verkeer op TCP-poort 22:
 
-```tf
+```hcl
 resource "azurerm_network_security_group" "myterraformnsg" {
     name                = "myNetworkSecurityGroup"
     location            = "eastus"
@@ -135,7 +135,7 @@ resource "azurerm_network_security_group" "myterraformnsg" {
 ## <a name="create-virtual-network-interface-card"></a>Virtuele netwerk interface kaart maken
 Een virtuele netwerk interface kaart (NIC) verbindt uw VM met een bepaald virtueel netwerk, een openbaar IP-adres en een netwerk beveiligings groep. In de volgende sectie van een terraform-sjabloon wordt een virtuele NIC gemaakt met de naam *myNIC* verbonden met de virtuele netwerk resources die u hebt gemaakt:
 
-```tf
+```hcl
 resource "azurerm_network_interface" "myterraformnic" {
     name                = "myNIC"
     location            = "eastus"
@@ -159,7 +159,7 @@ resource "azurerm_network_interface" "myterraformnic" {
 ## <a name="create-storage-account-for-diagnostics"></a>Opslag account maken voor diagnostische gegevens
 Als u Diagnostische gegevens over opstarten voor een virtuele machine wilt opslaan, hebt u een opslag account nodig. Deze diagnostische gegevens over opstarten kunnen u helpen problemen op te lossen en de status van uw virtuele machine te controleren. Het opslag account dat u maakt, is alleen om de diagnostische gegevens over opstarten op te slaan. Aangezien elk opslag account een unieke naam moet hebben, genereert de volgende sectie een wille keurige tekst:
 
-```tf
+```hcl
 resource "random_id" "randomId" {
     keepers = {
         # Generate a new ID only when a new resource group is defined
@@ -172,7 +172,7 @@ resource "random_id" "randomId" {
 
 U kunt nu een opslag account maken. In de volgende sectie wordt een opslag account gemaakt met de naam op basis van de wille keurige tekst die in de vorige stap is gegenereerd:
 
-```tf
+```hcl
 resource "azurerm_storage_account" "mystorageaccount" {
     name                = "diag${random_id.randomId.hex}"
     resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
@@ -193,7 +193,7 @@ De laatste stap bestaat uit het maken van een virtuele machine en het gebruik va
 
  SSH-sleutel gegevens vindt u in de sectie *ssh_keys* . Geef een geldige open bare SSH-sleutel op in het veld *key_data* .
 
-```tf
+```hcl
 resource "azurerm_virtual_machine" "myterraformvm" {
     name                  = "myVM"
     location              = "eastus"
@@ -243,7 +243,7 @@ resource "azurerm_virtual_machine" "myterraformvm" {
 
 Als u al deze secties samen wilt brengen en terraform in actie wilt zien, maakt u een bestand met de naam *terraform_azure. tf* en plakt u de volgende inhoud:
 
-```tf
+```hcl
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
     subscription_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -421,7 +421,7 @@ terraform plan
 
 Nadat u de vorige opdracht hebt uitgevoerd, ziet u iets zoals in het volgende scherm:
 
-```bash
+```console
 Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but will not be
 persisted to local or remote state storage.
@@ -456,7 +456,7 @@ terraform apply
 
 Zodra de terraform is voltooid, is uw VM-infra structuur klaar. Het open bare IP-adres van uw virtuele machine verkrijgen met [AZ VM show](/cli/azure/vm):
 
-```azurecli
+```azurecli-interactive
 az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
 ```
 

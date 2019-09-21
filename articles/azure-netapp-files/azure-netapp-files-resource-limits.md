@@ -1,6 +1,6 @@
 ---
 title: Resource limieten voor Azure NetApp Files | Microsoft Docs
-description: Hierin worden de limieten voor Azure NetApp Files resources beschreven, inclusief limieten voor NetApp-accounts, capaciteits Pools, volumes, moment opnamen en het overgedragen subnet.
+description: Beschrijft de limieten voor Azure NetApp Files resources en hoe toename van de resource limiet kan worden aangevraagd.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 09/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 15d0a584d88045f6020162a88124cd9d6a4735bf
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: f7213ddee5d7bdfd41508f5fee66de63cde5b7c4
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984008"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170033"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Resourcelimieten voor Azure NetApp Files
 
@@ -40,10 +40,27 @@ In de volgende tabel worden resource limieten voor Azure NetApp Files beschreven
 |  Minimum grootte van één capaciteits groep   |  4 TiB     |    Nee  |
 |  Maximale grootte van één capaciteits groep    |  500 TiB   |   Nee   |
 |  Minimum grootte van één volume    |    100 GiB    |    Nee    |
-|  Maximale grootte van één volume     |    100 TiB    |    Nee       |
-|  Maximum aantal bestanden (inodes) per volume     |    50.000.000    |    Nee    |    
+|  Maximale grootte van één volume     |    100 TiB    |    Nee    |
+|  Maximum aantal bestanden ([maxfiles](#maxfiles)) per volume     |    100.000.000    |    Ja    |    
+|  Maximale grootte van één bestand     |    16 TiB    |    Nee    |    
 
-## <a name="request-limit-increase"></a>Toename van aanvraag limiet 
+## Limieten voor maxfiles<a name="maxfiles"></a> 
+
+Azure NetApp Files volumes hebben een limiet van *maxfiles*. De limiet voor maxfiles is het aantal bestanden dat een volume kan bevatten. De limiet voor het aantal maxfiles voor een Azure NetApp Files volume wordt geïndexeerd op basis van de grootte (quotum) van het volume. De maxfiles-limiet voor een volume verhoogt of verlaagt de snelheid van 20.000.000 bestanden per TiB van de ingerichte grootte van het volume. 
+
+De service past de maxfiles-limiet voor een volume dynamisch aan op basis van de ingerichte grootte. Een volume dat aanvankelijk is geconfigureerd met een grootte van 1 TiB zou bijvoorbeeld een maxfiles-limiet hebben van 20.000.000. Volgende wijzigingen in de grootte van het volume zouden leiden tot een automatische aanpassing van de limiet van maxfiles op basis van de volgende regels: 
+
+|    Volume grootte (quotum)     |  Automatische aanpassing van de limiet van maxfiles    |
+|----------------------------|-------------------|
+|    < 1 TiB                 |    20.000.000     |
+|    > = 1 TiB, maar < 2 TiB    |    40.000.000     |
+|    > = 2 TiB, maar < 3 TiB    |    60.000.000     |
+|    > = 3 TiB, maar < 4 TiB    |    80.000.000     |
+|    > = 4 TiB                |    100.000.000    |
+
+Voor elke volume grootte kunt u een [ondersteunings aanvraag](#limit_increase) initiëren om de limiet van maxfiles meer dan 100.000.000 te verhogen.
+
+## Toename van aanvraag limiet<a name="limit_increase"></a> 
 
 U kunt een ondersteunings aanvraag voor Azure maken om de aanpas bare limieten van de bovenstaande tabel te verg Roten. 
 
@@ -64,6 +81,7 @@ Vanuit Azure Portal navigatie vlak:
         |  Account |  *Subscription ID*   |  *Aangevraagd nieuw Maxi maal **account** nummer*    |  *Welk scenario of use-case vraagt de aanvraag?*  |
         |  Groep    |  *Abonnements-ID, account-URI*  |  *Nieuw maximum **groeps** nummer aangevraagd*   |  *Welk scenario of use-case vraagt de aanvraag?*  |
         |  Volume  |  *Abonnements-ID, account-URI, groeps-URI*   |  *Nieuw maximum **volume** nummer aangevraagd*     |  *Welk scenario of use-case vraagt de aanvraag?*  |
+        |  Maxfiles  |  *Abonnements-ID, account-URI, groeps-URI, volume-URI*   |  *Aangevraagd aantal voor nieuwe maximum **maxfiles***     |  *Welk scenario of use-case vraagt de aanvraag?*  |    
 
     2. Geef de juiste ondersteunings methode op en geef uw contract informatie op.
 

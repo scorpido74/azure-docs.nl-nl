@@ -3,7 +3,7 @@ title: Azure VM-extensies en-functies voor Linux | Microsoft Docs
 description: Meer informatie over de uitbrei dingen die beschikbaar zijn voor virtuele machines van Azure, gegroepeerd op wat ze bieden of verbeteren.
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
-ms.author: roiyz
-ms.openlocfilehash: 1a3fe1f70143e2c33a3e4d309991f1174eb2d6dd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: f66ec2ea9d0c042b698db1725980e981a27a55d0
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092394"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169013"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Extensies en functies van virtuele machines voor Linux
 
@@ -183,7 +183,7 @@ In het volgende voor beeld ziet u een exemplaar van de aangepaste script extensi
 }
 ```
 
-Als **u de opdracht verplaatst naar** de eigenschap Execute naar de **beveiligde** configuratie, wordt de uitvoerings reeks beveiligd, zoals wordt weer gegeven in het volgende voor beeld:
+Als u de opdracht verplaatst naar de eigenschap **Execute** naar de **beveiligde** configuratie, wordt de uitvoerings reeks beveiligd, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```json
 {
@@ -231,11 +231,11 @@ Uitgevers maken updates beschikbaar voor regio's op verschillende tijdstippen, z
 
 #### <a name="agent-updates"></a>Agent updates
 
-De Linux-VM-agent bevat code voor de inrichtings *agent* en uitbrei *ding van extensie* in één pakket, dat niet kan worden gescheiden. U kunt de inrichtings *agent* uitschakelen als u wilt inrichten op Azure met behulp van Cloud-init. Zie voor het [gebruik van Cloud-init](../linux/using-cloud-init.md).
+De Linux-VM-agent bevat code voor de *inrichtings agent* en *uitbrei ding van extensie* in één pakket, dat niet kan worden gescheiden. U kunt de *inrichtings agent* uitschakelen als u wilt inrichten op Azure met behulp van Cloud-init. Zie voor het [gebruik van Cloud-init](../linux/using-cloud-init.md).
 
-Ondersteunde versies van de agents kunnen gebruikmaken van automatische updates. De enige code die kan worden bijgewerkt is de verwerkings code van de *uitbrei ding*, niet de inrichtings code. De *inrichtings agent code* wordt uitgevoerd als code.
+Ondersteunde versies van de agents kunnen gebruikmaken van automatische updates. De enige code die kan worden bijgewerkt is de *verwerkings code van de uitbrei ding*, niet de inrichtings code. De *inrichtings agent code* wordt uitgevoerd als code.
 
-De *verwerkings code voor uitbrei dingen* is verantwoordelijk voor de communicatie met de Azure-infra structuur en het verwerken van de VM-extensie bewerkingen, zoals installaties, rapportage status, het bijwerken van de afzonderlijke uitbrei dingen en het verwijderen ervan. Updates bevatten beveiligingsfixes, oplossingen voor fouten en verbeteringen in de verwerkings code van de *uitbrei ding*.
+De *verwerkings code voor uitbrei dingen* is verantwoordelijk voor de communicatie met de Azure-infra structuur en het verwerken van de VM-extensie bewerkingen, zoals installaties, rapportage status, het bijwerken van de afzonderlijke uitbrei dingen en het verwijderen ervan. Updates bevatten beveiligingsfixes, oplossingen voor fouten en verbeteringen in de *verwerkings code van de uitbrei ding*.
 
 Wanneer de agent is geïnstalleerd, wordt er een bovenliggende daemon gemaakt. Deze bovenliggende sleutel voert een onderliggend proces uit dat wordt gebruikt voor het afhandelen van extensies. Als er een update beschikbaar is voor de agent, wordt deze gedownload, wordt het onderliggende proces door de bovenliggende computer gestopt, bijgewerkt en vervolgens opnieuw opgestart. Als er een probleem is met de update, wordt het bovenliggende proces teruggezet naar de vorige onderliggende versie.
 
@@ -403,7 +403,7 @@ U kunt een uitbrei ding ook als volgt verwijderen in de Azure Portal:
 
 ## <a name="common-vm-extension-reference"></a>Naslag informatie over algemene VM-extensies
 
-| Extensie naam | Description | Meer informatie |
+| Extensienaam | Description | Meer informatie |
 | --- | --- | --- |
 | Aangepaste script extensie voor Linux |Scripts uitvoeren op een virtuele Azure-machine |[Aangepaste script extensie voor Linux](custom-script-linux.md) |
 | VM-extensie voor toegang |Toegang tot een virtuele Azure-machine herstellen |[VM-extensie voor toegang](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |

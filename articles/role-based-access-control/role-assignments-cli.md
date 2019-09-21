@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1b898f42fa6f66fba7c84daa67769249642bd986
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 3420374e90790bd1ffe4c845c19de1bfed317302
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996488"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173729"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>Toegang tot Azure-resources beheren met RBAC en Azure CLI
 
@@ -371,7 +371,23 @@ In het volgende voor beeld wordt de rol *facturerings lezer* toegewezen aan de *
 az role assignment create --role "Billing Reader" --assignee alain@example.com --scope /providers/Microsoft.Management/managementGroups/marketing-group
 ```
 
-## <a name="remove-access"></a>Remove access
+### <a name="create-a-role-assignment-for-a-new-service-principal"></a>Een roltoewijzing maken voor een nieuwe Service-Principal
+
+Als u een nieuwe Service-Principal maakt en een rol onmiddellijk probeert toe te wijzen aan die Service-Principal, kan die roltoewijzing in sommige gevallen mislukken. Als u bijvoorbeeld een script gebruikt voor het maken van een nieuwe beheerde identiteit en vervolgens probeert een rol toe te wijzen aan die Service-Principal, kan de roltoewijzing mislukken. De oorzaak van deze fout is waarschijnlijk een replicatie vertraging. De service-principal wordt gemaakt in één regio. de roltoewijzing kan echter plaatsvinden in een andere regio waarvoor de Service-Principal nog niet is gerepliceerd. Als u dit scenario wilt aanpakken, geeft u het Principal-type op bij het maken van de roltoewijzing.
+
+Als u een roltoewijzing wilt maken, gebruikt u [AZ Role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create), geeft u `--assignee-object-id`een waarde op voor `--assignee-principal-type` , `ServicePrincipal`en stelt u vervolgens in op.
+
+```azurecli
+az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --assignee-principal-type <assignee_principal_type> --resource-group <resource_group> --scope </subscriptions/subscription_id>
+```
+
+In het volgende voor beeld wordt de rol van *Inzender voor virtuele machines* toegewezen aan de door *MSI-test* beheerde identiteit in het *Pharma* van de resource groep:
+
+```azurecli
+az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 33333333-3333-3333-3333-333333333333 --assignee-principal-type ServicePrincipal --resource-group pharma-sales
+```
+
+## <a name="remove-access"></a>Toegang verwijderen
 
 Als u de toegang wilt verwijderen in RBAC, verwijdert u een roltoewijzing met behulp van [AZ Role Assignment delete](/cli/azure/role/assignment#az-role-assignment-delete):
 

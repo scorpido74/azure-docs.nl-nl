@@ -3,7 +3,7 @@ title: Aangepaste scripts uitvoeren op Linux-Vm's in azure | Microsoft Docs
 description: Configuratie taken voor Linux-VM'S automatiseren met behulp van de aangepaste script extensie v2
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
-ms.author: roiyz
-ms.openlocfilehash: 23354ce310ad4916c8fa2eb9cb99c5e4521b4a62
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: 3a999b93ce7246a91db8dd3df7536513b6e11029
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084739"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174041"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Gebruik de aangepaste script extensie versie 2 van Azure met virtuele Linux-machines
 De aangepaste script extensie versie 2 downloadt en voert scripts uit op virtuele machines van Azure. Deze uitbrei ding is handig voor configuratie na de implementatie, software-installatie of een andere configuratie/beheer taak. U kunt scripts downloaden van Azure Storage of een andere toegankelijke Internet locatie, of u kunt deze opgeven voor de runtime van de uitbrei ding. 
@@ -110,7 +110,7 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
 | publisher | Microsoft.Compute.Extensions | string |
-| Type | CustomScript | string |
+| type | CustomScript | string |
 | typeHandlerVersion | 2.0 | int |
 | fileUris (bijvoorbeeld) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
 | commandToExecute (bijvoorbeeld) | python MyPythonScript.py \<mijn-param1 > | string |

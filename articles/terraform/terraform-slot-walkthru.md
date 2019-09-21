@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 4/05/2018
-ms.openlocfilehash: 08e90a69791b0555a6497166f6008e8619f40704
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: ec2ed1da46df2793a241c9c89d168a6c5d462b9d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889216"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169825"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Gebruik Terraform om infrastructuur in te richten met Azure-implementatiesites
 
@@ -74,7 +74,7 @@ In dit artikel ziet u een voorbeeld van het gebruik van implementatiesites waarb
 
 1. Plak de volgende code in de editor:
 
-    ```JSON
+    ```hcl
     # Configure the Azure provider
     provider "azurerm" { }
 
@@ -266,7 +266,7 @@ Als u het wisselen tussen de twee implementatiesites wilt testen, voert u de vol
 
 1. Plak de volgende code in de editor:
 
-    ```JSON
+    ```hcl
     # Configure the Azure provider
     provider "azurerm" { }
 

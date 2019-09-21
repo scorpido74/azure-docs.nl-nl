@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: d647a643dafe50a5768261c2b09bf8c4154be469
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 464c1a8ab27f6615fdffd8efa6ab20d75e10a7c1
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086249"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171180"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-bindingen voor Azure Functions
 
@@ -529,7 +529,7 @@ De invoer binding voor tabel opslag ondersteunt de volgende scenario's:
 
 * **Een of meer rijen in Java script lezen**
 
-  Stel de `filter` eigenschappen `take` en in. Niet instellen `partitionKey` of `rowKey`. Open de entiteit (of entiteiten) van de invoer `context.bindings.<name>`tabel met behulp van. De gedeserialiseerd objecten hebben `RowKey` en `PartitionKey` eigenschappen.
+  Stel de `filter` eigenschappen `take` en in. Niet instellen `partitionKey` of `rowKey`. Open de entiteit (of entiteiten) van de invoer `context.bindings.<BINDING_NAME>`tabel met behulp van. De gedeserialiseerd objecten hebben `RowKey` en `PartitionKey` eigenschappen.
 
 ## <a name="output"></a>Output
 
@@ -786,7 +786,7 @@ De tabel opslag-uitvoer binding ondersteunt de volgende scenario's:
 
 * **Een of meer rijen schrijven in Java script**
 
-  In Java script-functies opent u de tabel `context.bindings.<name>`uitvoer met.
+  In Java script-functies opent u de tabel `context.bindings.<BINDING_NAME>`uitvoer met.
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonderingen en retourcodes
 

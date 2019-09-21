@@ -6,34 +6,34 @@ author: vermagit
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 05/29/2018
-ms.author: azcspmt;jonbeck;cynthn;danlep;amverma
+ms.author: azcspmt;jonbeck;cynthn;amverma
 ms.custom: include file
-ms.openlocfilehash: 88d9491bae1fcc6acb7ab631514aa4f6244f593d
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 0930fa371500125c15cd969b9e9f4b7a2853612e
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538041"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174946"
 ---
 ## <a name="deployment-considerations"></a>Overwegingen bij de implementatie
-* **Azure-abonnement** : het implementeren van meer dan een paar rekenintensieve instanties, kunt u een abonnement op gebruiksbasis of andere Aankoopopties. Als u een [gratis account van Azure](https://azure.microsoft.com/free/) gebruikt, kunt u slechts een paar Azure Compute-resources van Azure gebruiken.
+* **Azure-abonnement** : als u meer dan een aantal computerintensieve exemplaren wilt implementeren, kunt u een abonnement op basis van betalen naar gebruik of andere aankoop opties overwegen. Als u een [gratis account van Azure](https://azure.microsoft.com/free/) gebruikt, kunt u slechts een paar Azure Compute-resources van Azure gebruiken.
 
-* **Prijzen en beschikbaarheid** -deze VM-grootten worden alleen aangeboden in de standaard prijscategorie. Controleer [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/) voor beschikbaarheid in Azure-regio's. 
-* **Quotum voor kerngeheugens** : mogelijk moet u het quotum voor kerngeheugens in uw Azure-abonnement van de standaardwaarde verhogen. Uw abonnement kan het aantal kernen dat u in een bepaalde groottefamilie VM implementeren kunt, met inbegrip van de H-serie ook beperken. Om aan te vragen een quotaverhoging [opent u een ondersteuningsaanvraag online klant](../articles/azure-supportability/how-to-create-azure-support-request.md) gratis. (De standaardlimieten kunnen variëren, afhankelijk van uw abonnementscategorie).
+* **Prijzen en beschik baarheid** : deze VM-grootten worden alleen aangeboden in de prijs categorie Standard. Controleer of de beschik [bare producten per regio beschikbaar zijn](https://azure.microsoft.com/global-infrastructure/services/) in azure-regio's. 
+* **Quotum voor kernen** : u moet mogelijk het quotum voor kernen in uw Azure-abonnement verhogen van de standaard waarde. Uw abonnement kan ook het aantal kernen beperken dat u kunt implementeren in bepaalde VM-grootte families, inclusief de H-serie. Als u een quotum toename wilt aanvragen, opent u gratis [een aanvraag voor een online klant ondersteuning](../articles/azure-supportability/how-to-create-azure-support-request.md) . (De standaard limieten kunnen variëren, afhankelijk van de categorie abonnement.)
   
   > [!NOTE]
-  > Neem contact op met ondersteuning voor Azure hebt u behoeften aan grootschalige capaciteit. Azure-quota tegoed worden beperkt, niet capaciteit garanties. Ongeacht uw quotum u betaalt alleen voor de kernen dat u gebruikt.
+  > Neem contact op met de ondersteuning van Azure als er grootschalige capaciteits behoeften zijn. Azure-quota zijn krediet limieten, geen capaciteits garanties. Ongeacht uw quotum worden er alleen kosten in rekening gebracht voor kernen die u gebruikt.
   > 
   > 
-* **Virtueel netwerk** ; een Azure [virtueel netwerk](https://azure.microsoft.com/documentation/services/virtual-network/) is niet vereist voor het gebruik van de rekenintensieve instanties. Echter, voor veel implementaties moet u ten minste een cloud-gebaseerde Azure-netwerk, of een site-naar-site-verbinding als u nodig hebt voor toegang tot on-premises bronnen. Wanneer dat nodig is, maakt u een nieuw virtueel netwerk voor het implementeren van de exemplaren. Rekenintensieve VM's toe te voegen aan een virtueel netwerk in een affiniteitsgroep wordt niet ondersteund.
-* **Vergroten of verkleinen** – vanwege hun gespecialiseerde hardware, u kunt alleen de grootte van rekenintensieve instanties binnen dezelfde grootte familie (H-serie of rekenintensieve A-serie). U kunt bijvoorbeeld alleen een VM uit de H-serie van een grootte van de H-serie naar een ander formaat. Bovendien wordt vergroten of verkleinen van de grootte van een niet-rekenintensieve rekenintensieve grootte niet ondersteund.  
+* **Virtueel netwerk** : een virtueel Azure- [netwerk](https://azure.microsoft.com/documentation/services/virtual-network/) is niet vereist voor het gebruik van de compute-intensieve exemplaren. Voor veel implementaties hebt u echter mini maal een Azure Virtual Network op basis van de Cloud of een site-naar-site-verbinding nodig als u toegang nodig hebt tot on-premises resources. Als dat nodig is, maakt u een nieuw virtueel netwerk om de exemplaren te implementeren. Het toevoegen van Compute-intensieve Vm's aan een virtueel netwerk in een affiniteits groep wordt niet ondersteund.
+* **Grootte wijzigen** : vanwege hun gespecialiseerde hardware kunt u alleen Compute-intensieve instanties binnen dezelfde grootte familie (H-serie of COMPUTE-intensieve A-serie) wijzigen. U kunt bijvoorbeeld alleen het formaat van een VM van de H-serie wijzigen van de grootte van de h-serie in een andere. Bovendien wordt het wijzigen van de grootte van een niet-reken intensief formaat naar een berekenings intensief formaat niet ondersteund.  
 
 ## <a name="rdma-capable-instances"></a>Met RDMA compatibele exemplaren
-Een subset van de rekenintensieve instanties (A8, A9, H16r, H16mr, HB en HC) zijn voorzien van een netwerkinterface voor remote direct memory access (RDMA) verbinding. Geselecteerde N-serie beschikbaar aangeduid met 'r', zoals de NC24rs-configuraties (NC24rs_v2 en NC24rs_v3), zijn ook RDMA-functionaliteit. Deze interface is naast de standaard Azure netwerkinterface beschikbaar voor andere VM-grootten. 
+Een subset van de computerintensieve instanties (A8, A9, H16r, H16mr, HB en HC) functie een netwerk interface voor RDMA-connectiviteit (Remote Direct Memory Access). De geselecteerde N-serie-grootten die zijn aangewezen met r, zoals de NC24rs-configuraties (NC24rs_v2 en NC24rs_v3), zijn ook geschikt voor RDMA. Deze interface is een aanvulling op de standaard Azure-netwerk interface die beschikbaar is voor andere VM-grootten. 
   
-Deze interface kunt de RDMA-functionaliteit om te communiceren via een netwerk InfiniBand (IB), besturingssysteem EDR tarieven voor HB, HC, FDR tarieven voor virtuele machines H16r, H16mr en RDMA-compatibele N-serie en QDR tarieven voor virtuele machines van A8 en A9-exemplaren. Deze RDMA-mogelijkheden kunnen stimuleren de schaalbaarheid en prestaties van bepaalde Message Passing Interface (MPI)-toepassingen. Zie voor meer informatie over de snelheid, de details in de tabellen op deze pagina.
+Met deze interface kunnen de RDMA-compatibele instanties via een InfiniBand (IB)-netwerk communiceren, met behulp van EDR-tarieven voor HB, HC, FDR-tarieven voor virtuele machines van de N-serie van H16r, H16mr en RDMA, en zijn de prijzen voor A8 en A9 virtual machines. Deze RDMA-mogelijkheden kunnen de schaal baarheid en prestaties van bepaalde MPI-toepassingen (Message Passing Interface) verhogen. Zie de details in de tabellen op deze pagina voor meer informatie over de snelheid.
 
 > [!NOTE]
-> In Azure, IP-via IB alleen wordt ondersteund op de SR-IOV ingeschakeld virtuele machines (SR-IOV voor InfiniBand, momenteel HB en HC). RDMA via IB wordt ondersteund voor alle exemplaren van de RDMA-functionaliteit.
+> In azure wordt IP over IB alleen ondersteund op de SR-IOV ingeschakelde Vm's (SR-IOV voor InfiniBand, momenteel HB en HC). RDMA via IB wordt ondersteund voor alle exemplaren met RDMA-functionaliteit.
 >
 

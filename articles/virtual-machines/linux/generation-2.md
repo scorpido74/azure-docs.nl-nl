@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 09/20/2019
 ms.author: lahugh
-ms.openlocfilehash: 5dbd13775bd91a2bab3a7a4989cb14f4d7b44fa8
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 6bd74fa299385acb1abe4b32db5d35366249eaa6
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900719"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173920"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 (preview) op Azure
 
@@ -49,7 +49,7 @@ Virtuele machines van de eerste generatie worden ondersteund door alle VM-groott
 * [Mv2-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series)
 * [NCv2-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv2-series) en [NCv3-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv3-series)
 * [ND-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nd-series)
-* [NVv2-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
+* [NVv3-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>VM-installatie kopieën van generatie 2 in azure Marketplace
 
@@ -80,20 +80,21 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 
 | Functie | Generatie 1 | Generatie 2 |
 |---------|--------------|--------------|
-| Opstarten             | PCAT                      | UEFI                               |
-| Schijf controllers | IDE                       | SCSI                               |
+| Opstarten             | PCAT         | UEFI |
+| Schijf controllers | IDE          | SCSI |
 | Formaten van virtuele machines         | Alle VM-grootten | Alleen Vm's die ondersteuning bieden voor Premium Storage |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Mogelijkheden van generatie 1 vs. generatie 2
 
 | Mogelijkheid | Generatie 1 | Generatie 2 |
 |------------|--------------|--------------|
-| BESTURINGSSYSTEEM schijf > 2 TB                    | BxDxH                        | :heavy_check_mark: |
-| Besturings systeem voor aangepaste schijf/image/swap         | :heavy_check_mark:         | :heavy_check_mark: |
-| Ondersteuning voor schaal sets voor virtuele machines | :heavy_check_mark:         | :heavy_check_mark: |
-| ASR/back-up                        | :heavy_check_mark:         | BxDxH                |
-| Gedeelde installatiekopiegalerie              | :heavy_check_mark:         | BxDxH                |
-| Azure Disk Encryption             | :heavy_check_mark:         | BxDxH                |
+| BESTURINGSSYSTEEM schijf > 2 TB                    | BxDxH                | :heavy_check_mark: |
+| Besturings systeem voor aangepaste schijf/image/swap         | :heavy_check_mark: | :heavy_check_mark: |
+| Ondersteuning voor schaal sets voor virtuele machines | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Site Recovery               | :heavy_check_mark: | BxDxH                |
+| Back-up maken/herstellen                    | :heavy_check_mark: | :heavy_check_mark: |
+| Gedeelde installatiekopiegalerie              | :heavy_check_mark: | BxDxH                |
+| Azure Disk Encryption             | :heavy_check_mark: | BxDxH                |
 
 ## <a name="creating-a-generation-2-vm"></a>Een virtuele machine van de tweede generatie maken
 
@@ -101,14 +102,37 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 
 In de Azure Portal of Azure CLI kunt u virtuele machines van de tweede generatie maken op basis van een Marketplace-installatie kopie die ondersteuning biedt voor UEFI-opstart bewerkingen.
 
-De `windowsserver-gen2preview` aanbieding bevat alleen installatie kopieën van Windows-generatie 2. Deze verpakking voor komt Verwar ring tussen de generatie 1 en generatie 2 installatie kopieën. Als u een virtuele machine van de tweede generatie wilt maken, selecteert u **installatie kopieën** uit deze aanbieding en volgt u het standaard proces voor het maken van de virtuele machine.
+#### <a name="azure-portal"></a>Azure Portal
 
-Marketplace biedt op dit moment de volgende installatie kopieën van Windows Generation 2:
+Installatie kopieën van de tweede generatie voor Windows en SLES zijn opgenomen in dezelfde server aanbieding als de gen1-installatie kopieën. Wat het betekent voor een stroom perspectief is dat, u selecteert de aanbieding en de SKU in de portal voor uw VM. Als de SKU zowel installatie kopieën van de 1e 1 als de tweede generatie ondersteunt, kunt u een virtuele machine van de tweede generatie maken op het tabblad *Geavanceerd* in de stroom voor het maken van de virtuele machine.
 
-* 2019-datacenter-gen2
-* 2016-datacenter-gen2
-* 2012-r2-datacenter-gen2
-* 2012-datacenter-gen2
+Momenteel ondersteunen de volgende Sku's de installatie kopieën van de eerste en tweede generatie:
+
+* Windows Server 2012
+* Windows Server 2012 R2
+* Windows Server 2016
+* Windows Server 2019
+
+Wanneer u een Windows Server-SKU als het aanbod selecteert, is er op het tabblad **Geavanceerd** een optie voor het maken van een virtuele machine van het soort **generatie 1** (BIOS) of **generatie 2** (UEFI). Als u **gen 2**selecteert, moet u ervoor zorgen dat de VM-grootte die is geselecteerd op het tabblad **basis beginselen** , wordt [ondersteund voor virtuele machines van de tweede generatie](#generation-2-vm-sizes).
+
+![Selecteer generatie 1 of generatie 2 virtuele machine](./media/generation-2/gen1-gen2-select.png)
+
+#### <a name="powershell"></a>PowerShell
+
+U kunt ook Power shell gebruiken om een virtuele machine te maken door rechtstreeks te verwijzen naar de SKU van de eerste en 2e generatie.
+
+Gebruik bijvoorbeeld de volgende Power shell-cmdlet om een lijst op te halen van de sku's `WindowsServer` in de aanbieding.
+
+```powershell
+Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
+```
+
+Als u een virtuele machine met Windows Server 2012 als besturings systeem maakt, selecteert u de VM-SKU van generatie 1 (BIOS) of generatie 2 (UEFI), die er als volgt uitziet:
+
+```powershell
+2012-Datacenter
+2012-datacenter-gensecond
+```
 
 Zie de sectie [functies en mogelijkheden](#features-and-capabilities) voor een huidige lijst met ondersteunde Marketplace-installatie kopieën.
 
@@ -131,7 +155,7 @@ U kunt ook virtuele machines van de tweede generatie maken met behulp van schaal
 * **Ik heb een VHD-bestand van mijn on-premises generatie 2 VM. Kan ik dat VHD-bestand gebruiken om een virtuele machine van de tweede generatie in azure te maken?**
   Ja, u kunt uw VHD-bestand van de tweede generatie naar Azure brengen en gebruiken om een virtuele machine van de tweede generatie te maken. Gebruik de volgende stappen om dit te doen:
     1. Upload het. VHD-archief naar een opslag account in dezelfde regio waarin u de virtuele machine wilt maken.
-    1. Een beheerde schijf maken op basis van het VHD-bestand. Stel de eigenschap Hyper-generatie in op v2. Met de volgende Power shell-opdrachten wordt de eigenschap Hyper-generatie ingesteld tijdens het maken van een beheerde schijf.
+    1. Een beheerde schijf maken op basis van het VHD-bestand. Stel de eigenschap Hyper-V Generation in op v2. Met de volgende Power shell-opdrachten wordt de eigenschap Hyper-V Generation ingesteld bij het maken van een beheerde schijf.
 
         ```powershell
         $sourceUri = 'https://xyzstorage.blob.core.windows.net/vhd/abcd.vhd'. #<Provide location to your uploaded .vhd file>

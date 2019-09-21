@@ -8,13 +8,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 1/10/2019
-ms.openlocfilehash: 477b2ec1af4c52f51c3ab20ac2ddf7ef043dfcc7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 0373b254a900fd34232bb6863c93802fa7b51aab
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60885415"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169963"
 ---
 # <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Een Kubernetes-cluster maken met een Application Gateway-controller voor inkomend verkeer, met behulp van Azure Kubernetes Service en Terraform
 [Azure Kubernetes Service (AKS)](/azure/aks/) beheert uw gehoste Kubernetes-omgeving. Met AKS kunt u snel en eenvoudig in containers geplaatste toepassingen implementeren en beheren, zonder dat u kennis hoeft te hebben van het indelen van containers. Het verlicht ook de last van actieve bewerkingen en onderhoud door inrichten, upgraden en bronnen op aanvraag schalen mogelijk te maken, zonder uw toepassingen offline te brengen.
@@ -38,7 +38,7 @@ In deze zelfstudie leert u hoe u de volgende taken uitvoert bij het maken van ee
 - **Azure-service-principal**: volg de aanwijzingen in de sectie **De service-principal maken** in het artikel [Een Azure-service-principal maken met de Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Noteer de waarden voor appId, displayName en password.
   - Noteer de Object-id van de service-principal die wordt weergegeven wanneer u de volgende opdracht hebt uitgevoerd
 
-    ```bash
+    ```azurecli
     az ad sp list --display-name <displayName>
     ```
 
@@ -82,7 +82,7 @@ Maak het Terraform-configuratiebestand waarin de Azure-provider wordt gedeclaree
 
 1. Plak de volgende code in de editor:
 
-    ```JSON
+    ```hcl
     provider "azurerm" {
         version = "~>1.18"
     }
@@ -99,17 +99,21 @@ Maak het Terraform-configuratiebestand waarin de Azure-provider wordt gedeclaree
     ```bash
     :wq
     ```
-   ## <a name="define-input-variables"></a>Invoervariabelen definiëren
-   Maak het Terraform-configuratiebestand waarin alle variabelen staan die zijn vereist voor deze implementatie
-1. Maak in Cloud Shell een bestand met de naam `variables.tf`
+
+## <a name="define-input-variables"></a>Invoervariabelen definiëren
+Maak het terraform-configuratie bestand met een lijst met alle variabelen die vereist zijn voor deze implementatie.
+
+1. Maak in Cloud Shell een bestand met de naam `variables.tf`.
+
     ```bash
     vi variables.tf
     ```
+
 1. Activeer de invoegmodus door op de toets I te drukken.
 
-2. Plak de volgende code in de editor:
+1. Plak de volgende code in de editor:
     
-    ```JSON
+    ```hcl
     variable "resource_group_name" {
       description = "Name of the resource group already created."
     }
@@ -254,9 +258,9 @@ Maak een Terraform-configuratiebestand waarin alle resources worden gemaakt.
 
 1. Plak de volgende codeblokken in de editor:
 
-    a. Maak een locals-blok voor hergebruik van berekende variabelen
+    a. Maak een lokale blok kering voor berekende variabelen die u opnieuw kunt gebruiken.
 
-    ```JSON
+    ```hcl
     # # Locals block for hardcoded names. 
     locals {
         backend_address_pool_name      = "${azurerm_virtual_network.test.name}-beap"
@@ -268,8 +272,10 @@ Maak een Terraform-configuratiebestand waarin alle resources worden gemaakt.
         app_gateway_subnet_name = "appgwsubnet"
     }
     ```
-    b. Maak een gegevensbron voor Resourcegroep, nieuwe Gebruikersidentiteit
-    ```JSON
+
+    b. Maak een gegevens bron voor de resource groep en de nieuwe gebruikers-id.
+
+    ```hcl
     data "azurerm_resource_group" "rg" {
       name = "${var.resource_group_name}"
     }
@@ -284,8 +290,10 @@ Maak een Terraform-configuratiebestand waarin alle resources worden gemaakt.
       tags = "${var.tags}"
     }
     ```
-    c. Maak basisnetwerkresources
-   ```JSON
+
+    c. Basis netwerk bronnen maken.
+
+    ```hcl
     resource "azurerm_virtual_network" "test" {
       name                = "${var.virtual_network_name}"
       location            = "${data.azurerm_resource_group.rg.location}"
@@ -328,8 +336,10 @@ Maak een Terraform-configuratiebestand waarin alle resources worden gemaakt.
       tags = "${var.tags}"
     }
     ```
-    d. Maak een Application Gateway-resource
-    ```JSON
+
+    d. Application Gateway resource maken.
+
+    ```hcl
     resource "azurerm_application_gateway" "network" {
       name                = "${var.app_gateway_name}"
       resource_group_name = "${data.azurerm_resource_group.rg.name}"
@@ -393,8 +403,10 @@ Maak een Terraform-configuratiebestand waarin alle resources worden gemaakt.
       depends_on = ["azurerm_virtual_network.test", "azurerm_public_ip.test"]
     }
     ```
-    e. Maak roltoewijzingen
-    ```JSON
+
+    e. Roltoewijzingen maken.
+
+    ```hcl
     resource "azurerm_role_assignment" "ra1" {
       scope                = "${data.azurerm_subnet.kubesubnet.id}"
       role_definition_name = "Network Contributor"
@@ -424,8 +436,10 @@ Maak een Terraform-configuratiebestand waarin alle resources worden gemaakt.
       depends_on           = ["azurerm_user_assigned_identity.testIdentity", "azurerm_application_gateway.network"]
     }
     ```
-    f. Het Kubernetes-cluster maken
-    ```JSON
+
+    f. Maak de Kubernetes-cluster.
+
+    ```hcl
     resource "azurerm_kubernetes_cluster" "k8s" {
       name       = "${var.aks_name}"
       location   = "${data.azurerm_resource_group.rg.location}"
@@ -502,7 +516,7 @@ Met [Terraform-uitvoer](https://www.terraform.io/docs/configuration/outputs.html
 
 1. Plak de volgende code in de editor:
 
-    ```JSON
+    ```hcl
     output "client_key" {
         value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.client_key}"
     }
@@ -559,7 +573,7 @@ In Terraform wordt de status lokaal bijgehouden via het bestand `terraform.tfsta
 
 1. Maak in Cloud Shell een container in uw Azure-opslagaccount (vervang de tijdelijke aanduidingen &lt;YourAzureStorageAccountName> en &lt;YourAzureStorageAccountAccessKey> door de juiste waarden voor uw Azure-opslagaccount).
 
-    ```bash
+    ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
     ```
 
@@ -586,7 +600,7 @@ In deze sectie ziet u hoe u de opdracht `terraform init` gebruikt om de resource
 
 1. Plak de volgende variabelen, die eerder zijn gemaakt, in de editor:
 
-    ```JSON
+    ```hcl
       resource_group_name = <Name of the Resource Group already created>
 
       location = <Location of the Resource Group>

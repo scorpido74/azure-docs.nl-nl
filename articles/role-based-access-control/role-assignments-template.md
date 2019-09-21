@@ -10,87 +10,156 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/19/2019
+ms.date: 09/06/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e6511ff84c251577a5ff483f892387ab7d3d4d41
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: d9ec2fc76fb1cc33898c331a79167f9291fc8c63
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360453"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172987"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Toegang tot Azure-resources beheren met RBAC en Azure Resource Manager sjablonen
 
-[Op rollen gebaseerd toegangsbeheer (RBAC)](overview.md) is de manier waarop u de toegang tot Azure-resources beheert. Naast het gebruik van Azure PowerShell of de Azure CLI kunt u de toegang tot Azure-resources beheren met RBAC en [Azure Resource Manager sjablonen](../azure-resource-manager/resource-group-authoring-templates.md). Sjablonen kunnen nuttig zijn als u resources consistent en herhaaldelijk wilt implementeren. In dit artikel wordt beschreven hoe u toegang kunt beheren met RBAC en sjablonen.
+[Op rollen gebaseerd toegangsbeheer (RBAC)](overview.md) is de manier waarop u de toegang tot Azure-resources beheert. Naast het gebruik van Azure PowerShell of de Azure CLI kunt u de toegang tot Azure-resources beheren met behulp van [Azure Resource Manager-sjablonen](../azure-resource-manager/resource-group-authoring-templates.md). Sjablonen kunnen nuttig zijn als u resources consistent en herhaaldelijk wilt implementeren. In dit artikel wordt beschreven hoe u toegang kunt beheren met RBAC en sjablonen.
 
-## <a name="assign-role-to-resource-group-or-subscription"></a>Rol toewijzen aan de resource groep of het abonnement
+## <a name="create-a-role-assignment-at-a-resource-group-scope-without-parameters"></a>Een roltoewijzing maken in een bereik van een resource groep (zonder para meters)
 
-In RBAC verleent u toegang door een roltoewijzing te maken. In de volgende sjabloon ziet u:
-- Een rol toewijzen aan een gebruiker, groep of toepassing in de resource groep of het abonnements bereik
+In RBAC verleent u toegang door een roltoewijzing te maken. In de volgende sjabloon ziet u een eenvoudige manier om een roltoewijzing te maken. Sommige waarden worden opgegeven in de sjabloon. In de volgende sjabloon ziet u:
+
+-  De rol van [lezer](built-in-roles.md#reader) toewijzen aan een gebruiker, groep of toepassing in een bereik van een resource groep
+
+Als u de sjabloon wilt gebruiken, moet u het volgende doen:
+
+- Een nieuw JSON-bestand maken en de sjabloon kopiëren
+- Vervang `<your-principal-id>` door de unieke id van een gebruiker, groep of toepassing om de rol aan toe te wijzen. De id heeft de volgende indeling:`11111111-1111-1111-1111-111111111111`
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2018-09-01-preview",
+            "name": "[guid(resourceGroup().id)]",
+            "properties": {
+                "roleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]",
+                "principalId": "<your-principal-id>"
+            }
+        }
+    ]
+}
+```
+
+Hier vindt u een voor beeld van [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) en [AZ Group Deployment opdrachten maken](/cli/azure/group/deployment#az-group-deployment-create) voor het starten van de implementatie in een resource groep met de naam ExampleGroup.
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json
+```
+
+```azurecli
+az group deployment create --resource-group ExampleGroup --template-file rbac-test.json
+```
+
+Hieronder ziet u een voor beeld van de toewijzing van de rol van lezers aan een gebruiker voor een resource groep na het implementeren van de sjabloon.
+
+![Roltoewijzing op het bereik van de resource groep](./media/role-assignments-template/role-assignment-template.png)
+
+## <a name="create-a-role-assignment-at-a-resource-group-or-subscription-scope"></a>Een roltoewijzing maken voor een resource groep of abonnements bereik
+
+De vorige sjabloon is niet zeer flexibel. De volgende sjabloon maakt gebruik van para meters en kan worden gebruikt in verschillende bereiken. In de volgende sjabloon ziet u:
+
+- Een rol toewijzen aan een gebruiker, groep of toepassing in een resource groep of abonnements bereik
 - De rol van eigenaar, bijdrager en lezer opgeven als een para meter
 
 Als u de sjabloon wilt gebruiken, moet u de volgende invoer opgeven:
+
 - De unieke id van een gebruiker, groep of toepassing waaraan de rol moet worden toegewezen
 - De rol die moet worden toegewezen
 - Een unieke id die wordt gebruikt voor de roltoewijzing, of u kunt de standaard-id gebruiken
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "principalId": {
-      "type": "string",
-      "metadata": {
-        "description": "The principal to assign the role to"
-      }
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "principalId": {
+            "type": "string",
+            "metadata": {
+                "description": "The principal to assign the role to"
+            }
+        },
+        "builtInRoleType": {
+            "type": "string",
+            "allowedValues": [
+                "Owner",
+                "Contributor",
+                "Reader"
+            ],
+            "metadata": {
+                "description": "Built-in role to assign"
+            }
+        },
+        "roleNameGuid": {
+            "type": "string",
+            "defaultValue": "[newGuid()]",
+            "metadata": {
+                "description": "A new GUID used to identify the role assignment"
+            }
+        }
     },
-    "builtInRoleType": {
-      "type": "string",
-      "allowedValues": [
-        "Owner",
-        "Contributor",
-        "Reader"
-      ],
-      "metadata": {
-        "description": "Built-in role to assign"
-      }
+    "variables": {
+        "Owner": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
+        "Contributor": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+        "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
     },
-    "roleNameGuid": {
-      "type": "string",
-      "defaultValue": "[newGuid()]",
-      "metadata": {
-        "description": "A new GUID used to identify the role assignment"
-      }
-    }
-  },
-  "variables": {
-    "Owner": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
-    "Contributor": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
-    "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Authorization/roleAssignments",
-      "apiVersion": "2018-09-01-preview",
-      "name": "[parameters('roleNameGuid')]",
-      "properties": {
-        "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
-        "principalId": "[parameters('principalId')]"
-      }
-    }
-  ]
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2018-09-01-preview",
+            "name": "[parameters('roleNameGuid')]",
+            "properties": {
+                "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
+                "principalId": "[parameters('principalId')]"
+            }
+        }
+    ]
 }
 ```
 
-Hieronder ziet u een voor beeld van een toewijzing van een lees functie aan een gebruiker voor een resource groep na het implementeren van de sjabloon.
+Als u de unieke id van een gebruiker wilt ophalen om de rol toe te wijzen, kunt u de opdrachten [Get-AzADUser](/powershell/module/az.resources/get-azaduser) of [AZ AD User show](/cli/azure/ad/user#az-ad-user-show) gebruiken.
 
-![Roltoewijzing met behulp van een sjabloon](./media/role-assignments-template/role-assignment-template.png)
+```azurepowershell
+$userid = (Get-AzADUser -DisplayName "{name}").id
+```
 
-Het bereik van de roltoewijzing wordt bepaald op basis van het niveau van de implementatie. In dit artikel worden de implementatie opdrachten voor de resource groep en het abonnements niveau weer gegeven.
+```azurecli
+userid=$(az ad user show --upn-or-object-id "{email}" --query objectId --output tsv)
+```
 
-## <a name="assign-role-to-resource"></a>Rol toewijzen aan resource
+Het bereik van de roltoewijzing wordt bepaald op basis van het niveau van de implementatie. Hier vindt u een voor beeld van [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) en [AZ Group Deployment opdrachten maken](/cli/azure/group/deployment#az-group-deployment-create) voor het starten van de implementatie in een bereik van een resource groep.
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $userid -builtInRoleType Reader
+```
+
+```azurecli
+az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Reader
+```
+
+Hier vindt u een voor beeld van [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) en [AZ Deployment Create](/cli/azure/deployment#az-deployment-create) opdrachten voor het starten van de implementatie op een abonnements bereik en het opgeven van de locatie.
+
+```azurepowershell
+New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $userid -builtInRoleType Reader
+```
+
+```azurecli
+az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Reader
+```
+
+## <a name="create-a-role-assignment-at-a-resource-scope"></a>Een roltoewijzing maken in een resource bereik
 
 Als u een roltoewijzing op het niveau van een resource wilt maken, is de indeling van de roltoewijzing afwijkend. U geeft de naam ruimte van de resource provider en het resource type van de resource waaraan u de rol wilt toewijzen. U neemt ook de naam van de resource op in de naam van de roltoewijzing.
 
@@ -101,245 +170,168 @@ Voor het type en de naam van de roltoewijzing gebruikt u de volgende indeling:
 "name": "{resource-name}/Microsoft.Authorization/{role-assign-GUID}"
 ```
 
-Met de volgende sjabloon wordt een opslag account geïmplementeerd en wordt er een rol aan toegewezen. U implementeert deze met de opdrachten van de resource groep.
+In de volgende sjabloon ziet u:
+
+- Een nieuw opslagaccount maken
+- Een rol toewijzen aan een gebruiker, groep of toepassing in het bereik van het opslag account
+- De rol van eigenaar, bijdrager en lezer opgeven als een para meter
+
+Als u de sjabloon wilt gebruiken, moet u de volgende invoer opgeven:
+
+- De unieke id van een gebruiker, groep of toepassing waaraan de rol moet worden toegewezen
+- De rol die moet worden toegewezen
+- Een unieke id die wordt gebruikt voor de roltoewijzing, of u kunt de standaard-id gebruiken
+
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "principalId": {
-      "type": "string",
-      "metadata": {
-        "description": "The principal to assign the role to"
-      }
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "principalId": {
+            "type": "string",
+            "metadata": {
+                "description": "The principal to assign the role to"
+            }
+        },
+        "builtInRoleType": {
+            "type": "string",
+            "allowedValues": [
+                "Owner",
+                "Contributor",
+                "Reader"
+            ],
+            "metadata": {
+                "description": "Built-in role to assign"
+            }
+        },
+        "roleNameGuid": {
+            "type": "string",
+            "defaultValue": "[newGuid()]",
+            "metadata": {
+                "description": "A new GUID used to identify the role assignment"
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
     },
-    "builtInRoleType": {
-      "type": "string",
-      "allowedValues": [
-        "Owner",
-        "Contributor",
-        "Reader"
-      ],
-      "metadata": {
-        "description": "Built-in role to assign"
-      }
+    "variables": {
+        "Owner": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
+        "Contributor": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+        "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]",
+        "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
     },
-    "roleNameGuid": {
-      "type": "string",
-      "defaultValue": "[newGuid()]",
-      "metadata": {
-        "description": "A new GUID used to identify the role assignment"
-      }
-    },
-    "location": {
-        "type": "string",
-        "defaultValue": "[resourceGroup().location]"
-    }
-  },
-  "variables": {
-    "Owner": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
-    "Contributor": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
-    "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]",
-    "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
-  },
-  "resources": [
-    {
-      "apiVersion": "2019-04-01",
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageName')]",
-      "location": "[parameters('location')]",
-      "sku": {
-          "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "properties": {}
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
-      "apiVersion": "2018-09-01-preview",
-      "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', parameters('roleNameGuid'))]",
-      "dependsOn": [
-          "[variables('storageName')]"
-      ],
-      "properties": {
-        "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
-        "principalId": "[parameters('principalId')]"
-      }
-    }
-  ]
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('storageName')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
+            "apiVersion": "2018-09-01-preview",
+            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', parameters('roleNameGuid'))]",
+            "dependsOn": [
+                "[variables('storageName')]"
+            ],
+            "properties": {
+                "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
+                "principalId": "[parameters('principalId')]"
+            }
+        }
+    ]
 }
 ```
 
-Hieronder ziet u een voor beeld van een rol voor Inzender toewijzing aan een gebruiker voor een opslag account na de implementatie van de sjabloon.
-
-![Roltoewijzing met behulp van een sjabloon](./media/role-assignments-template/role-assignment-template-resource.png)
-
-## <a name="deploy-template-using-azure-powershell"></a>Een sjabloon implementeren met behulp van Azure PowerShell
-
-[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
-
-Voer de volgende stappen uit om de vorige sjabloon te implementeren naar een resource groep of een abonnement met behulp van Azure PowerShell.
-
-1. Maak een nieuw bestand met de naam RBAC-RG. json en kopieer de vorige sjabloon.
-
-1. Meld u aan bij [Azure PowerShell](/powershell/azure/authenticate-azureps).
-
-1. De unieke id van een gebruiker, groep of toepassing ophalen. U kunt bijvoorbeeld de opdracht [Get-AzADUser](/powershell/module/az.resources/get-azaduser) gebruiken om Azure AD-gebruikers weer te geven.
-
-    ```azurepowershell
-    $userid = (Get-AzADUser -DisplayName "{name}").id
-    ```
-
-1. De sjabloon genereert een standaard waarde voor de GUID die wordt gebruikt om de roltoewijzing te identificeren. Als u een specifieke GUID moet opgeven, geeft u die waarde op voor de para meter roleNameGuid. De id heeft de volgende indeling:`11111111-1111-1111-1111-111111111111`
-
-Voer de volgende stappen uit om de rol toe te wijzen op het niveau van een resource of resource groep:
-
-1. Maak een voorbeeld resource groep.
-
-    ```azurepowershell
-    New-AzResourceGroup -Name ExampleGroup -Location "Central US"
-    ```
-
-1. Gebruik de opdracht [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) om de implementatie te starten.
-
-    ```azurepowershell
-    New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json -principalId $userid -builtInRoleType Reader
-    ```
-
-    Hieronder ziet u een voor beeld van de uitvoer.
-
-    ```Output
-    PS /home/user> New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json -principalId $userid -builtInRoleType Reader
-    
-    DeploymentName          : rbac-rg
-    ResourceGroupName       : ExampleGroup
-    ProvisioningState       : Succeeded
-    Timestamp               : 7/17/2018 7:46:32 PM
-    Mode                    : Incremental
-    TemplateLink            :
-    Parameters              :
-                              Name             Type                       Value
-                              ===============  =========================  ==========
-                              principalId      String                     22222222-2222-2222-2222-222222222222
-                              builtInRoleType  String                     Reader
-                              roleNameGuid     String                     11111111-1111-1111-1111-111111111111
-    
-    Outputs                 :
-    DeploymentDebugLogLevel :
-    ```
-
-Als u de rol wilt toewijzen op het niveau van een abonnement, gebruikt u de opdracht [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) en geeft u een locatie op voor de implementatie.
+Als u de vorige sjabloon wilt implementeren, gebruikt u de opdrachten van de resource groep. Hier vindt u een voor beeld van [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) en [AZ Group Deployment opdrachten maken](/cli/azure/group/deployment#az-group-deployment-create) voor het starten van de implementatie in een resource bereik.
 
 ```azurepowershell
-New-AzDeployment -Location centralus -TemplateFile rbac-rg.json -principalId $userid -builtInRoleType Reader
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $userid -builtInRoleType Contributor
 ```
-
-Het bevat een vergelijk bare uitvoer naar de implementatie opdracht voor resource groepen.
-
-## <a name="deploy-template-using-the-azure-cli"></a>Een sjabloon implementeren met behulp van Azure CLI
-
-Als u de vorige sjabloon wilt implementeren met behulp van de Azure CLI naar een resource groep of een abonnement, voert u de volgende stappen uit.
-
-1. Maak een nieuw bestand met de naam RBAC-RG. json en kopieer de vorige sjabloon.
-
-1. Meld u aan bij de [Azure cli](/cli/azure/authenticate-azure-cli).
-
-1. De unieke id van een gebruiker, groep of toepassing ophalen. U kunt bijvoorbeeld de opdracht [AZ AD User show](/cli/azure/ad/user#az-ad-user-show) gebruiken om een Azure AD-gebruiker weer te geven.
-
-    ```azurecli
-    userid=$(az ad user show --upn-or-object-id "{email}" --query objectId --output tsv)
-    ```
-
-1. De sjabloon genereert een standaard waarde voor de GUID die wordt gebruikt om de roltoewijzing te identificeren. Als u een specifieke GUID moet opgeven, geeft u die waarde op voor de para meter roleNameGuid. De id heeft de volgende indeling:`11111111-1111-1111-1111-111111111111`
-
-Voer de volgende stappen uit om de rol toe te wijzen op het niveau van een resource of resource groep:
-
-1. Maak een voorbeeld resource groep.
-
-    ```azurecli
-    az group create --name ExampleGroup --location "Central US"
-    ```
-
-1. Gebruik de opdracht [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) om de implementatie te starten.
-
-    ```azurecli
-    az group deployment create --resource-group ExampleGroup --template-file rbac-rg.json --parameters principalId=$userid builtInRoleType=Reader
-    ```
-
-    Hieronder ziet u een voor beeld van de uitvoer.
-
-    ```Output
-    C:\Azure\Templates>az group deployment create --resource-group ExampleGroup --template-file rbac-rg.json --parameters principalId=$userid builtInRoleType=Reader
-    
-    {
-      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/rbac-rg",
-      "name": "rbac-rg",
-      "properties": {
-        "additionalProperties": {
-          "duration": "PT9.5323924S",
-          "outputResources": [
-            {
-              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ExampleGroup/providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111",
-              "resourceGroup": "ExampleGroup"
-            }
-          ],
-          "templateHash": "0000000000000000000"
-        },
-        "correlationId": "33333333-3333-3333-3333-333333333333",
-        "debugSetting": null,
-        "dependencies": [],
-        "mode": "Incremental",
-        "outputs": null,
-        "parameters": {
-          "builtInRoleType": {
-            "type": "String",
-            "value": "Reader"
-          },
-          "principalId": {
-            "type": "String",
-            "value": "22222222-2222-2222-2222-222222222222"
-          },
-          "roleNameGuid": {
-            "type": "String",
-            "value": "11111111-1111-1111-1111-111111111111"
-          }
-        },
-        "parametersLink": null,
-        "providers": [
-          {
-            "id": null,
-            "namespace": "Microsoft.Authorization",
-            "registrationState": null,
-            "resourceTypes": [
-              {
-                "aliases": null,
-                "apiVersions": null,
-                "locations": [
-                  null
-                ],
-                "properties": null,
-                "resourceType": "roleAssignments"
-              }
-            ]
-          }
-        ],
-        "provisioningState": "Succeeded",
-        "template": null,
-        "templateLink": null,
-        "timestamp": "2018-07-17T19:00:31.830904+00:00"
-      },
-      "resourceGroup": "ExampleGroup"
-    }
-    ```
-
-Als u de rol wilt toewijzen op het niveau van een abonnement, gebruikt u de opdracht [AZ Deployment Create](/cli/azure/deployment#az-deployment-create) en geeft u een locatie op voor de implementatie.
 
 ```azurecli
-az deployment create --location centralus --template-file rbac-rg.json --parameters principalId=$userid builtInRoleType=Reader
+az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Contributor
 ```
 
-Het bevat een vergelijk bare uitvoer naar de implementatie opdracht voor resource groepen.
+Hieronder ziet u een voor beeld van de toewijzing van de rol Inzender aan een gebruiker van een opslag account na de implementatie van de sjabloon.
+
+![Roltoewijzing bij resource bereik](./media/role-assignments-template/role-assignment-template-resource.png)
+
+## <a name="create-a-role-assignment-for-a-new-service-principal"></a>Een roltoewijzing maken voor een nieuwe Service-Principal
+
+Als u een nieuwe Service-Principal maakt en een rol onmiddellijk probeert toe te wijzen aan die Service-Principal, kan die roltoewijzing in sommige gevallen mislukken. Als u bijvoorbeeld een nieuwe beheerde identiteit maakt en vervolgens probeert een rol toe te wijzen aan die Service-Principal in hetzelfde Azure Resource Manager sjabloon, kan de roltoewijzing mislukken. De oorzaak van deze fout is waarschijnlijk een replicatie vertraging. De service-principal wordt gemaakt in één regio. de roltoewijzing kan echter plaatsvinden in een andere regio waarvoor de Service-Principal nog niet is gerepliceerd. Als u dit scenario wilt aanpakken, moet u `principalType` de eigenschap `ServicePrincipal` instellen op bij het maken van de roltoewijzing.
+
+In de volgende sjabloon ziet u:
+
+- Een nieuwe beheerde ID voor de service-principal maken
+- Het opgeven van de`principalType`
+- De rol van Inzender toewijzen aan de Service-Principal in een bereik van een resource groep
+
+Als u de sjabloon wilt gebruiken, moet u de volgende invoer opgeven:
+
+- De basis naam van de beheerde identiteit, of u kunt de standaard teken reeks gebruiken
+
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "baseName": {
+            "type": "string",
+            "defaultValue": "msi-test"
+        }
+    },
+    "variables": {
+        "identityName": "[concat(parameters('baseName'), '-bootstrap')]",
+        "bootstrapRoleAssignmentId": "[guid(concat(resourceGroup().id, 'contributor'))]",
+        "contributorRoleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+            "name": "[variables('identityName')]",
+            "apiVersion": "2018-11-30",
+            "location": "[resourceGroup().location]"
+        },
+        {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2018-09-01-preview",
+            "name": "[variables('bootstrapRoleAssignmentId')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
+            ],
+            "properties": {
+                "roleDefinitionId": "[variables('contributorRoleDefinitionId')]",
+                "principalId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2018-11-30').principalId]",
+                "scope": "[resourceGroup().id]",
+                "principalType": "ServicePrincipal"
+            }
+        }
+    ]
+}
+```
+
+Hier vindt u een voor beeld van [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) en [AZ Group Deployment opdrachten maken](/cli/azure/group/deployment#az-group-deployment-create) voor het starten van de implementatie in een bereik van een resource groep.
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup2 -TemplateFile rbac-test.json
+```
+
+```azurecli
+az group deployment create --resource-group ExampleGroup2 --template-file rbac-test.json
+```
+
+Hieronder ziet u een voor beeld van de toewijzing van de rol Inzender aan een nieuwe beheerde ID service-principal na de implementatie van de sjabloon.
+
+![Roltoewijzing voor een nieuwe beheerde ID service-principal](./media/role-assignments-template/role-assignment-template-msi.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
