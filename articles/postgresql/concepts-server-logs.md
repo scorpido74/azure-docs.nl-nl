@@ -49,14 +49,14 @@ In de volgende tabel wordt beschreven wat zich in elk logboek bevindt. Afhankeli
 | TenantId | Uw Tenant-ID |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Tijds tempel voor het vastleggen van het logboek in UTC |
-| type | Het type van het logboek. Altijd `AzureDiagnostics` |
+| Type | Het type van het logboek. Altijd `AzureDiagnostics` |
 | SubscriptionId | GUID voor het abonnement waartoe de server behoort |
 | ResourceGroup | Naam van de resource groep waartoe de server behoort |
 | ResourceProvider | De naam van de resource provider. Altijd `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Resource-URI |
 | Resource | Naam van de server |
-| Categorie | `PostgreSQLLogs` |
+| Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
 | Gelijk | Logboek registratie niveau, voor beeld: LOGBOEK, FOUT, KENNISGEVING |
 | Message | Primair logboek bericht | 
