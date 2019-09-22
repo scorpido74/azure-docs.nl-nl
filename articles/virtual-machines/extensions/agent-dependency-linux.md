@@ -77,8 +77,8 @@ De volgende JSON toont het schema voor de Azure VM dependency agent-extensie op 
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |
-| Type | DependencyAgentLinux |
-| typeHandlerVersion | 9,5 |
+| type | DependencyAgentLinux |
+| typeHandlerVersion | 9.5 |
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 
