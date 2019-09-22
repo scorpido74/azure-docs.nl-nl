@@ -92,16 +92,16 @@ Voor beeld van JSON-nettolading:
 
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
-   | FXXX | LIJN\_GEGEVENS | EU |
-   | FYYY | LIJN\_GEGEVENS | VS |
+   | FXXX | LIJN\_DATA | EU |
+   | FYYY | LIJN\_DATA | US |
 
 * Time Series Insights gebeurtenis tabel na afvlakking:
 
    | deviceId | messageId | deviceLocation | timestamp | reeks. Stroom tarief ft3/s | reeks. Engine oliedruk psi |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | LIJN\_GEGEVENS | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
-   | FXXX | LIJN\_GEGEVENS | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
-   | FYYY | LIJN\_GEGEVENS | VS | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
+   | FXXX | LIJN\_DATA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
+   | FXXX | LIJN\_DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
+   | FYYY | LIJN\_DATA | US | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
 Opmerkingen voor deze twee tabellen:
 
